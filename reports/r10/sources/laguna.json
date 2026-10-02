@@ -1,0 +1,2637 @@
+{
+  "sourceId": "laguna",
+  "name": "Laguna",
+  "entryUrl": "https://www.laguna.rs/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:34.327Z",
+  "requests": [
+    {
+      "url": "https://laguna.rs/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 2066224,
+      "sha256": "49a0f542eb819daef09afa3016b3b15514744a70eedea8cb007d99d4183423cd",
+      "accessedAt": "2026-10-01T20:48:35.933Z"
+    },
+    {
+      "url": "https://laguna.rs/rss/blogs/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=utf-8",
+      "bytes": 125379,
+      "sha256": "f3fddb30d78e119bcebf682211465fb5841265c24679ed0bed69551e1fd8dd6b",
+      "accessedAt": "2026-10-01T20:48:36.336Z"
+    },
+    {
+      "url": "https://laguna.rs/bukmarker/ucitelj-macevanja-ekskluzivno-u-onlajn-prodaji-od-25-do-30-septembra-2026-prvih-100-citalaca-ocekuje-potpisan-primerak/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 711126,
+      "sha256": "ef187e2f8cfed6b234e20b2b8fbb84600559892b7c41c8ba1f3c518cd725ec76",
+      "accessedAt": "2026-10-01T20:48:36.611Z"
+    },
+    {
+      "url": "https://laguna.rs/bukmarker/starway-magija-od-24-do-27-septembra-2026-u-svim-delfi-knjizarama-na-laguna-rs-delfi-rs-i-dicearena-rs/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 698203,
+      "sha256": "1c7b1d826d291773fecb6c9589dc7f39713de7bc19818849d0efa3b725b7c516",
+      "accessedAt": "2026-10-01T20:48:36.973Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://laguna.rs/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 384,
+    "sha256": "0a232dc93b2a64811a1bff6d15644137f0fda728fae2e19724411837e6eeb835",
+    "accessedAt": "2026-10-01T20:48:35.163Z",
+    "disallowed": [
+      "/auth*?*",
+      "/*?qfunc="
+    ]
+  },
+  "endpoint": {
+    "id": "laguna",
+    "name": "Laguna",
+    "url": "https://laguna.rs/rss/blogs/",
+    "format": "rss",
+    "language": "sr-RS",
+    "region": "global",
+    "sourceFamilyId": "laguna",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://laguna.rs"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://laguna.rs/bukmarker/starway-magija-od-24-do-27-septembra-2026-u-svim-delfi-knjizarama-na-laguna-rs-delfi-rs-i-dicearena-rs/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:36.995Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 100,
+  "literaryCandidateCount": 100,
+  "sample": {
+    "sourceId": "laguna",
+    "source": {
+      "name": "Laguna",
+      "url": "https://laguna.rs/bukmarker/starway-magija-od-24-do-27-septembra-2026-u-svim-delfi-knjizarama-na-laguna-rs-delfi-rs-i-dicearena-rs/",
+      "language": "sr-RS"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "„StarWay magija“ od 24. do 27. septembra 2026. u svim Delfi knjižarama, na laguna.rs, delfi.rs i dicearena.rs",
+    "publishedAt": "2026-09-22T21:30:00.000Z",
+    "description": "„StarWay magija“ donosi posebne popuste na knjige, mange, društvene igre i još mnogo toga, a od 24. do 27. septembra 2026. godine očekuju vas neverovatne pogodnosti za odabrane artikle.",
+    "discoveredAt": "2026-10-01T20:48:36.339Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://laguna.rs/bukmarker/starway-magija-od-24-do-27-septembra-2026-u-svim-delfi-knjizarama-na-laguna-rs-delfi-rs-i-dicearena-rs/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 698203,
+      "sha256": "1c7b1d826d291773fecb6c9589dc7f39713de7bc19818849d0efa3b725b7c516",
+      "accessedAt": "2026-10-01T20:48:36.973Z",
+      "headline": "„StarWay magija“ od 24. do 27. septembra 2026. u svim Delfi knjižarama, na laguna.rs, delfi.rs i dicearena.rs",
+      "excerpt": "„StarWay magija“ od 24. do 27. septembra 2026. u svim Delfi knjižarama, na laguna.rs, delfi.rs i dicearena.rs22. septembar 2026.Vesti„StarWay magija“ donosi posebne popuste na knjige, mange, društvene igre i još mnogo toga, a od 24. do 27. septembra 2026. godine očekuju vas neverovatne pogodnosti za odabrane artikle.Ovo su samo neki od naslova u izdanju Lagune koje možete nabaviti snižene 30%:„Šti",
+      "publishedDates": [
+        {
+          "value": "2026-09-22T21:30:00.000Z",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-22T21:30:00.000Z",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        }
+      ],
+      "canonical": "https://laguna.rs/bukmarker/starway-magija-od-24-do-27-septembra-2026-u-svim-delfi-knjizarama-na-laguna-rs-delfi-rs-i-dicearena-rs/",
+      "language": "sr-RS",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:36.995Z",
+  "foundItems": [
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/ucitelj-macevanja-ekskluzivno-u-onlajn-prodaji-od-25-do-30-septembra-2026-prvih-100-citalaca-ocekuje-potpisan-primerak/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Učitelj mačevanja“ ekskluzivno u onlajn prodaji od 25. do 30. septembra 2026 - prvih 100 čitalaca očekuje potpisan primerak!",
+      "publishedAt": "2026-09-25T08:48:00.000Z",
+      "description": "Posle dugog iščekivanja, novi roman Dejana Stojiljkovića „Učitelj mačevanja“ stiže pred čitaoce, i to uz posebnu priliku za sve koji jedva čekaju nastavak njegovog popularnog istorijskog serijala.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/starway-magija-od-24-do-27-septembra-2026-u-svim-delfi-knjizarama-na-laguna-rs-delfi-rs-i-dicearena-rs/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„StarWay magija“ od 24. do 27. septembra 2026. u svim Delfi knjižarama, na laguna.rs, delfi.rs i dicearena.rs",
+      "publishedAt": "2026-09-22T21:30:00.000Z",
+      "description": "„StarWay magija“ donosi posebne popuste na knjige, mange, društvene igre i još mnogo toga, a od 24. do 27. septembra 2026. godine očekuju vas neverovatne pogodnosti za odabrane artikle.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/bulgakovljev-klasik-majstor-i-margarita-upola-cene-od-16-septembra-2026/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bulgakovljev klasik „Majstor i Margarita“ upola cene od 16. septembra 2026!",
+      "publishedAt": "2026-09-17T13:28:00.000Z",
+      "description": "Ljubitelji velikih književnih klasika, sada imate priliku da po posebnoj ceni nabavite jedno od najznačajnijih dela ruske i svetske književnosti. Od 16. septembra 2026. godine kultni roman „Majstor i Margarita“ Mihaila Bulgakova, u prevodu Zlate Kocić, u izdanju Lagune, dostupan je uz 50% popusta.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-grcka-tajna-topla-i-inspirativna-mediteranska-prica/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Grčka tajna“: Topla i inspirativna mediteranska priča",
+      "publishedAt": "2026-09-28T11:21:00.000Z",
+      "description": "Kada Rubi stigne na Krf, dočekuju je svetlucavo more, vreli pesak i prilika za novi početak. Spremna je da nauči sve tajne ugostiteljskog posla u taverni svoje tetke Hejzel i odlučna da ne dozvoli da joj pažnju odvuče Janis, njen zgodni kolega, bez obzira na snažnu privlačnost koja među njima postoji. Jer ponovno zbližavanje s nekim znači suočavanje sa sopstvenom prošlošću \u2013 i razlogom zbog kojeg…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prica-koja-ledi-krv-triler-kamen-boga-janusa-eli-grifits-u-prodaji-od-24-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Priča koja ledi krv - triler „Kamen boga Janusa“ Eli Grifits u prodaji od 24. septembra",
+      "publishedAt": "2026-09-22T10:34:00.000Z",
+      "description": "Triler „Kamen boga Janusa“ britanske autorke Eli Grifits drugi je roman u serijalu o misterijama doktorke Rut Galovej.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/jedinstvena-i-emotivna-prica-o-odanosti-ja-sam-bunt-rosa-montgomerija-u-prodaji-od-23-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jedinstvena i emotivna priča o odanosti - „Ja sam Bunt“ Rosa Montgomerija u prodaji od 23. septembra",
+      "publishedAt": "2026-09-21T10:18:00.000Z",
+      "description": "Roman „Ja sam Bunt“, nagrađivanog britanskog pisca za decu i mlade Rosa Montgomerija, dirljiva je i uzbudljiva priča o odanosti, hrabrosti i ljubavi kakva ne poznaje granice \u2013 ispričana iz ugla prkosnog četvoronožnog heroja velikog srca.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/ljudi-obredi-i-svakodnevica-u-zemlji-faraona-godinu-dana-u-zivotu-starog-egipta-donalda-p-rajana-u-prodaji-od-17-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ljudi, obredi i svakodnevica u zemlji faraona: „Godinu dana u životu starog Egipta“ Donalda P. Rajana u prodaji od 17. septembra",
+      "publishedAt": "2026-09-15T06:48:00.000Z",
+      "description": "Kad pomislimo na stari Egipat, prvo se setimo piramida, mumija, grobnica i zlata. Ali iza velikih spomenika stajali su ljudi: zemljoradnici, ribari, zanatlije, sveštenici, lekari, pisari, žene u domaćinstvu i radnici koji su gradili večne kuće za svoje vladare.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/arturo-peres-reverte-moji-usamljeni-junaci-polazu-racune-jedino-sebi/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Arturo Peres-Reverte: Moji usamljeni junaci polažu račune jedino sebi",
+      "publishedAt": "2026-09-14T13:28:00.000Z",
+      "description": "Novi roman Artura Peres-Revertea „Ostrvo usnule žene“ odvija se poput napete šahovske partije na Egejskom moru. Reč je o izuzetno složenom i zaokruženom delu. Čitaoci željni avanture dobiće elegantnu priču u stilu engleskih ratnih filmova iz četrdesetih godina prošlog veka.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/dobro-dosli-na-manifestaciju-oktobar-mesec-knjige/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dobro došli na manifestaciju „Oktobar - mesec knjige“",
+      "publishedAt": "2026-10-01T21:59:00.000Z",
+      "description": "Dragi knjigoljupci, izdavačka kuća Laguna i Delfi knjižare ove godine ne učestvuju na Sajmu knjiga, ali donosimo sajam u Lagunu i Delfi knjižare, i to tokom celog oktobra. Vrata naših knjižara biće širom otvorena za čitaoce, uz odlične popuste, poklone i bogat program promocija, druženja sa autorima i potpisivanja knjiga.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/samo-na-laguna-rs-nabavite-cak-10-naslova-za-999-dinara/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Samo na laguna.rs! Nabavite čak 10 naslova za 999 dinara!",
+      "publishedAt": "2026-10-01T21:40:00.000Z",
+      "description": "Lagunin sajt je mesto na kome će, od 1. do 10. oktobra 2026. trajati akcija „10 za 999“, tokom koje ćete biti u prilici da, u izboru od preko 150 najrazličitijih naslova iz naše bogate produkcije, nabavite deset za samo 999 dinara.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/hitovi-domace-i-svetske-knjizevnosti-tokom-manifestacije-oktobar-mesec-knjige/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hitovi domaće i svetske književnosti tokom manifestacije „Oktobar - mesec knjige“",
+      "publishedAt": "2026-10-01T21:30:00.000Z",
+      "description": "Oktobar je tradicionalno mesec u kojem se slavi lepota i važnost knjige i čitanja i sinonim je za najveća književna okupljanja. Izdavačka kuća Laguna i Delfi knjižare pripremaju vam tokom celog oktobra brojna lepa iznenađenja \u2013 nove hit naslove domaće i strane produkcije, poklone, promocije i druženja sa piscima.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/veliki-broj-promocija-i-druzenja-sa-piscima-tokom-oktobra-u-laguni-i-delfi-knjizarama/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Veliki broj promocija i druženja sa piscima tokom oktobra u Laguni i Delfi knjižarama",
+      "publishedAt": "2026-10-01T21:26:00.000Z",
+      "description": "U želji da čitaocima ne nedostaje nijedan segment Sajma knjiga na koji su navikli, u Laguninim i Delfi knjižarama tokom oktobra i trajanja manifestacije „Oktobar \u2013 mesec knjige“ skoro 50 pisaca imaće promocije knjiga i potpisivanja u knjižarama.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-kraljica-ester-porodica-kao-izbor/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Kraljica Ester“: Porodica kao izbor",
+      "publishedAt": "2026-10-01T14:23:00.000Z",
+      "description": "U središtu romana „Kraljica Ester“ američkog klasika Džona Irvinga (1942) je Ester Nah, jevrejska devojčica rođena u Beču 1905. koja na putu ka Americi odnosno po dospevanju u Sjedinjene Države ostaje bez roditelja. Glavna junakinja tako završava u sirotištu u Mejnu, lišena porodice i gotovo potpuno odvojena od svog verskog porekla.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-roditelji-kucnih-ljubimaca-o-nesposobnosti-da-se-bude-s-ljudima/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Roditelji kućnih ljubimaca“: O nesposobnosti da se bude s ljudima",
+      "publishedAt": "2026-10-01T14:21:00.000Z",
+      "description": "Posle romanâ „Boldvin“ i „Smrtni ishod atletskih povreda“ (za koji je dobila nagradu „Zlatni suncokret“ i širu čitalačku publiku), Milica Vučković ispisuje roman o junaku-paradoksu, junaku koji se gadio svakoga koga je voleo, junaku koji je suštinski nesposoban da bude sa ljudima. Neko bi rekao da uvodna rečenica ovog teksta potvrđuje mišljenje izdavača da je reč o delu o usamljenosti. Ipak, juna…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/pocela-manifestacija-oktobar-mesec-knjige/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Počela manifestacija „Oktobar - mesec knjige“!",
+      "publishedAt": "2026-10-01T13:47:00.000Z",
+      "description": "Laguna i Delfi knjižare svečano su danas, povodom „Oktobra \u2013 meseca knjige“, otvorile vrata svojih knjižara. Moći ćete danas, i tokom celog meseca, da uživate u novim naslovima, velikim popustima, sjajnim poklonima i druženju s piscima koje počinje večeras, promocijom romana Dejana Stojiljkovića, „Učitelj mačevanja \u2013 knjiga I“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/jelena-bacic-alimpic-predstavlja-roman-krojacev-sin-u-regionu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jelena Bačić Alimpić predstavlja roman „Krojačev sin“ u regionu",
+      "publishedAt": "2026-10-01T12:28:00.000Z",
+      "description": "Posle velikog interesovanja čitalaca u Banjaluci i Vukovaru, Jelena Bačić Alimpić nastavlja druženje sa publikom širom regiona. Jedna od najčitanijih domaćih književnica predstaviće svoj novi roman „Krojačev sin“ u Trsteniku, Vlasenici i Istočnom Sarajevu.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/jelena-bacic-alimpic-sa-citaocima-3-oktobra-u-laguninoj-knjizari-u-novosadskom-big-shopping-centru/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jelena Bačić Alimpić sa čitaocima 3. oktobra u Laguninoj knjižari u novosadskom BIG Shopping centru",
+      "publishedAt": "2026-10-01T12:28:00.000Z",
+      "description": "Proslavljena bestseler autorka Jelena Bačić Alimpić družiće se sa čitaocima i potpisivati knjige u subotu 3. oktobra u Laguninoj knjižari u BIG Shopping centru u Novom Sadu. Druženje je zakazano za 17 sati, u okviru naše posebne manifestacije „Oktobar \u2013 mesec knjige“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/bojan-savic-ostojic-3-oktobra-potpisuje-knjige-u-knjizari-isidora-sekulic-u-pancevu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bojan Savić Ostojić 3. oktobra potpisuje knjige u knjižari „Isidora Sekulić“ u Pančevu",
+      "publishedAt": "2026-10-01T12:26:00.000Z",
+      "description": "Pisac i prevodilac Bojan Savić Ostojić potpisivaće knjige u subotu 3. oktobra u Laguninoj knjižari „Isidora Sekulić“ u Pančevu, s početkom u 18 sati.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/promocija-knjige-brak-u-modernoj-srbiji-aleksandre-vuletic-u-kragujevcu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Promocija knjige „Brak u modernoj Srbiji“ Aleksandre Vuletić u Kragujevcu",
+      "publishedAt": "2026-10-01T11:59:00.000Z",
+      "description": "U Istorijskom arhivu Šumadije u Kragujevcu u sredu 7. oktobra, u 13 sati biće predstavljena knjiga „Brak u modernoj Srbiji“ istoričarke Aleksandre Vuletić.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/ojgen-ruge-gost-gete-instituta-razgovor-o-romanu-dani-umiruce-svetlosti-6-oktobra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ojgen Ruge gost Gete Instituta - Razgovor o romanu „Dani umiruće svetlosti“ 6. oktobra",
+      "publishedAt": "2026-10-01T10:31:00.000Z",
+      "description": "Jedan od najznačajnijih savremenih nemačkih pisaca Ojgen Ruge biće gost Književnog kafea Gete instituta u Beogradu u utorak 6. oktobra od 19 sati.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/promocija-romana-roditelji-kucnih-ljubimaca-milice-vuckovic-8-oktobra-od-19-sati-u-maloj-sali-kolarca/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Promocija romana „Roditelji kućnih ljubimaca“ Milice Vučković 8. oktobra od 19 sati u Maloj sali Kolarca",
+      "publishedAt": "2026-10-01T10:30:00.000Z",
+      "description": "Autorka Milica Vučković prvi put će pred beogradskom publikom predstaviti novi roman „Roditelji kućnih ljubimaca“ 8. oktobra od 19 sati u Maloj sali Kolarca. Pored autorke, o knjizi će govoriti i Zoran Paunović, profesor na Filološkom fakultetu, Nikola Zavišić, pozorišni reditelj, kao i urednica knjige Jasmina Radojičić. Moderatorka će biti novinarka Sara Arsenović, a specijalni gost muzičar Stra…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/price-koje-cuvaju-od-zaborava-proslo-vreme-predstavljena-zbirka-price-uz-ognjiste-vlade-arsica/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Priče koje čuvaju od zaborava prošlo vreme - Predstavljena zbirka „Priče uz ognjište“ Vlade Arsića",
+      "publishedAt": "2026-09-30T12:22:00.000Z",
+      "description": "U prepunoj Bukmarker kafeteriji knjižare Delfi SKC 29. septemba predstavljena je zbirka Vlade Arsića „Priče uz ognjište“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/promocija-novog-romana-dejana-stojiljkovica-ucitelj-macevanja-1-oktobra-u-knjizari-delfi-skc/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Promocija novog romana Dejana Stojiljkovića „Učitelj mačevanja“ 1. oktobra u knjižari Delfi SKC",
+      "publishedAt": "2026-09-30T11:08:00.000Z",
+      "description": "Promocija novog romana Dejana Stojiljkovića „Učitelj mačevanja“ biće održana u četvtak 1. oktobra od 18 sati u knjižari Delfi SKC.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nova-lagunina-knjizara-u-obrenovcu-najveci-popusti-i-poklon-uz-svaku-kupovinu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nova Lagunina knjižara u Obrenovcu: Najveći popusti i poklon uz svaku kupovinu",
+      "publishedAt": "2026-09-30T10:49:00.000Z",
+      "description": "Ljubitelji knjiga u Obrenovcu od 2. oktobra 2026. dobijaju novu adresu za omiljene knjige, poklone i druženje sa književnošću. Nova Lagunina knjižara otvara svoja vrata i donosi pažljivo odabranu ponudu Laguninih hitova, knjiga za najmlađe, kao i bogat gift program.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/upoznajte-svog-omiljenog-zmajoroga-orion-zvezdic-i-izvor-snova-aleksandre-filipovic-u-prodaji-od-2-oktobra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Upoznajte svog omiljenog zmajoroga: „Orion Zvezdić i Izvor snova“ Aleksandre Filipović u prodaji od 2. oktobra",
+      "publishedAt": "2026-09-30T09:27:00.000Z",
+      "description": "Zaronite u očaravajući svet višestruko nagrađivane književnice Aleksandre Filipović i uživajte u najnovijoj knjizi \u2013 „Orion Zvezdić i Izvor snova“ \u2013 koja će vas nasmejati, podstaći na razmišljanje i ulepšati vam detinjstvo.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nedeljnik-u-knjizarama-delfi-300926/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nedeljnik u knjižarama Delfi",
+      "publishedAt": "2026-09-30T09:10:00.000Z",
+      "description": "Novi broj lista Nedeljnik je na kioscima, a od petka ga možete kupiti za samo 29 dinara u svim knjižarama Delfi širom Srbije uz kupovinu bilo koje Lagunine knjige, knjige drugih izdavača ili proizvoda iz gift programa u vrednosti većoj od 150 dinara.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/emotivna-prica-o-ljubavi-i-potisnutim-secanjima-roman-jednacina-zivota-sofije-lundberj-u-prodaji-od-2-oktobra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emotivna priča o ljubavi i potisnutim sećanjima - roman „Jednačina života“ Sofije Lundberj u prodaji od 2. oktobra",
+      "publishedAt": "2026-09-30T08:42:00.000Z",
+      "description": "Švedska autorka Sofija Lundberj u novom romanu „Jednačina života“, baš kao i u svim svojim prethodnim knjigama, kao što su „Crveni adresar“, „Upitnik je pola srca“ ili „Kao pero na vetru“, pokazuje jedinstvenu sposobnost da nas gane i probudi u nama emocije o kojima ćemo još dugo razmišljati.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/uzbudjenje-misterija-i-romansa-triler-ova-prica-vam-moze-spasti-zivot-tifani-kram-u-prodaji-od-2-oktobra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Uzbuđenje, misterija i romansa - triler „Ova priča vam može spasti život“ Tifani Kram u prodaji od 2. oktobra",
+      "publishedAt": "2026-09-30T07:46:00.000Z",
+      "description": "Roman „Ova priča vam može spasti život“ autorke Tifani Kram dinamičan je triler sa elementima humora i romanse.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nova-izdanja-domacih-pisaca-septembar/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nova izdanja domaćih pisaca",
+      "publishedAt": "2026-09-30T06:09:00.000Z",
+      "description": "Uskoro će se na knjižarskim policama naći devetnaesto izdanje romana „Duge noći i crne zastave“ Dejana Stojiljkovića. U proleće 1386. godine granice Srbije potresaju upadi osmanlijskih pljačkaških hordi. U jednom takvom prepadu, brzi osmanlijski konjanici uspevaju da iz pograničnog manastira ukradu kivot čija je sadržina poznata samo srpskom knezu Lazaru Hrebeljanoviću.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/uzbudljiva-i-zagonetna-prica-o-veri-u-novi-pocetak-kuca-skrivenih-pisama-izi-brum-u-prodaji-od-1-oktobra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Uzbudljiva i zagonetna priča o veri u novi početak - „Kuća skrivenih pisama“ Izi Brum u prodaji od 1. oktobra",
+      "publishedAt": "2026-09-29T12:36:00.000Z",
+      "description": "Roman „Kuća skrivenih pisama“ britanske spisateljice Izi Brum uzbudljiva je i zagonetna priča o nadi novog početka, čija se radnja odvija na grčkom ostrvu i otkriva njegove davno zakopane tajne.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/igrajmo-se-zajedno-dve-razlicite-avanture-uz-boreal-i-nasukane/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Igrajmo se zajedno: Dve različite avanture uz „Boreal“ i „Nasukane“",
+      "publishedAt": "2026-09-29T11:26:00.000Z",
+      "description": "Bukmarker kafeterija ovog puta je ugostila dve igre koje na različite načine vode igrače u istraživanje i otkrivanje novih svetova. U okviru događaja „Igrajmo se zajedno \u2013 Učenje igara“, za stolovima su se igrali „Boreal“ i „Nasukani“, dve igre različitog karaktera, ali sa zajedničkim osećajem istraživanja, planiranja i otkrivanja.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/umesto-na-sajmu-knjiga-ovog-oktobra-sajam-donosimo-u-delfi-knjizare-i-lagunu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Umesto na Sajmu knjiga, ovog oktobra sajam donosimo u Delfi knjižare i Lagunu",
+      "publishedAt": "2026-09-28T16:02:00.000Z",
+      "description": "Izdavačka kuća Laguna i Delfi knjižare ove godine ne učestvuju na Sajmu knjiga, ali donose sajam u knjižare, i to tokom celog oktobra. Vrata naših knjižara biće širom otvorena za čitaoce, uz odlične popuste, poklone i bogat program promocija, druženja sa autorima i potpisivanja knjiga.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/semper-idem-konkurs/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zašto je važan „Semper idem“ - konkurs povodom jubilarnog izdanja romana Đorđa Lebovića u izdanju Lagune",
+      "publishedAt": "2026-09-28T14:25:00.000Z",
+      "description": "Povodom objavljivanja jubilarnog izdanja romana „Semper idem“ Đorđa Lebovića u izdanju Lagune, knjige koja je obeležila prve dekade XXI veka i zauzela posebno mesto među čitaocima, raspisujemo konkurs na temu „Zašto je važan ’Semper idem’“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/epska-fantastika-u-najboljem-izdanju-medved-i-zmija-adrijana-cajkovskog-u-prodaji-od-30-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Epska fantastika u najboljem izdanju - „Medved i Zmija“ Adrijana Čajkovskog u prodaji od 30. septembra",
+      "publishedAt": "2026-09-28T13:23:00.000Z",
+      "description": "U romanu „Medved i Zmija“ Adrijana Čajkovskog, drugoj knjizi iz serijala „Odjeci pada“, pratimo sudbinu Manije, ćerke dvoje ljudi koji su pripadali različitim klanovima.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/novo-izdanje-romana-veriti-kolin-huver-sa-filmskim-koricama-u-prodaji-od-30-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Novo izdanje romana „Veriti“ Kolin Huver sa filmskim koricama u prodaji od 30. septembra",
+      "publishedAt": "2026-09-28T13:17:00.000Z",
+      "description": "Senzacionalni psihološki triler bestseler autorke Kolin Huver „Veriti“, kojim su opsednuti čitaoci širom sveta, dolazi u bioskope početkom oktobra, a u sve Lagunine i Delfi knjižare stiže novo izdanje romana, sa filmskim koricama.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prepoznajte-tugu-i-vratite-radost-u-svoj-zivot-knjiga-dobro-sam-a-nisam-skrivena-depresija-u-prodaji-od-30-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prepoznajte tugu i vratite radost u svoj život - knjiga „Dobro sam, a nisam: Skrivena depresija“ u prodaji od 30. septembra",
+      "publishedAt": "2026-09-28T12:49:00.000Z",
+      "description": "Knjiga „Dobro sam, a nisam: Skrivena depresija“ dr Džudit Džozef prva je knjiga koja razotkriva depresiju koja se ne vidi. Svima koji kolegama, porodici, poznanicima i prijateljima deluju sasvim dobro, a iznutra se osećaju veoma loše, ova knjiga nudi pet jasnih koraka za izlazak iz kruga depresije skrivene iza uspešnosti, odgovornosti i stalnog funkcionisanja.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/poslednje-poglavlje-velike-porodicne-sage-okupljanje-na-plantazi-caja-dzenet-maklaud-troter-u-prodaji-od-29-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poslednje poglavlje velike porodične sage - „Okupljanje na plantaži čaja“ Dženet Maklaud Troter u prodaji od 29. septembra",
+      "publishedAt": "2026-09-28T12:36:00.000Z",
+      "description": "„Okupljanje na plantaži čaja“ Dženet Maklaud Troter dramatičan je, dirljiv i strastan završetak velike sage o engleskim porodicama koje su život provodile na toplim i zelenim plantažama čaja. Prati doba velikih promena u Indiji i Britaniji posle Drugog svetskog rata.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/dositejevo-pero-bojanu-ljubenovicu-za-heroje-plavog-dana/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Dositejevo pero“ Bojanu Ljubenoviću za „Heroje plavog dana“",
+      "publishedAt": "2026-09-28T12:21:00.000Z",
+      "description": "Nagrada „Dositejevo zlatno pero“ pripalo je piscu i aforističaru Bojanu Ljubenoviću za „Heroje plavog dana“, završnom delu trilogije i priče o neznanim junacima i njihovim dobrim delima, o nerazdvojnoj družini i prijateljstvu koje se pamti čitav život.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/beograd-onomad-kad-nije-bilo-novih-varvara-izlozba-crteza-nostalgicnih-secanja-dusana-petricica-u-grafickom-kolektivu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Beograd, onomad“, kad nije bilo novih varvara: Izložba crteža nostalgičnih sećanja Dušana Petričića u Grafičkom kolektivu",
+      "publishedAt": "2026-09-28T11:44:00.000Z",
+      "description": "U ponedeljak, 28. septembra u 19 sati, u Galeriji Grafičkog kolektiva svečano će biti otvorena izložba crteža Dušana Petričića, nostalgičnih sećanja jednog od najznačajnijih predstavnika naše umetničke scene, sabranih u naslov „Beograd, onomad“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/iza-korica-cetvrt-veka-plesa-sitnih-demona/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Iza korica: Četvrt veka „Plesa sitnih demona“",
+      "publishedAt": "2026-09-28T11:41:00.000Z",
+      "description": "Bio je septembar, 2001, možda čak eto i deveti, kada je Narodna knjiga iz Beograda objavila moj prvi roman „Ples sitnih demona“. Zadnja stranica Danasa posvetiće ovu kolumnu tom lepom jubileju.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nikola-dzejn-hobs-dozvolite-sebi-opustenost/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nikola Džejn Hobs: Dozvolite sebi opuštenost",
+      "publishedAt": "2026-09-28T11:35:00.000Z",
+      "description": "Kako da naučimo da se odmaramo bez krivice, poštujući svoje potrebe i živeći u skladu sa svojim najdubljim vrednostima, otkriva nam psihološkinja Nikola Džejn Hobs, kroz razgovor o knjizi „Opuštena žena“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/stefan-ticmi-pisanje-je-prostor-u-kojem-se-najbolje-osecam/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Stefan Tićmi: Pisanje je prostor u kojem se najbolje osećam",
+      "publishedAt": "2026-09-28T11:27:00.000Z",
+      "description": "U oktobru prošle godine, na policama knjižara širom naše zemlje, našao se roman „Tata kaže gambit“ autora Stefana Mitića Tićmija. Reč je o četvrtom romanu ovog leskovačkog pisca za koji je početkom ove godine dobio nagradu Politikinog zabavnika za delo namenjeno mladima na srpskom jeziku. Ovo je drugi put da Tićmi dobija ovo značajno književno priznanje, nakon što je 2019. godine osvojio pomenutu…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-rosa-i-bjerk-grob-u-ledu-dvostruka-potraga-na-islandski-nacin/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Rosa i Bjerk: Grob u ledu“: Dvostruka potraga na islandski način",
+      "publishedAt": "2026-09-28T11:24:00.000Z",
+      "description": "Roman „Rosa i Bjerk: Grob u ledu“ finsko-islandske autorke Satu Reme (1980) drugi je deo serijala o islandskoj policajki Hildir Runarsdotir. Poput prvog, zasniva se na spoju kriminalističke istrage, snažne atmosfere islandskog pejzaža i lične priče glavne junakinje, ali je u nastavku upravo njena porodična prošlost još značajnija. Ubistvo i policijska istraga postaju način da se postepeno otvaraj…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/darko-tusevljakovic-dobitnik-nagrade-liplje-za-karotu-na-31-medjunarodnom-sajmu-knjiga-u-banjaluci/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Darko Tuševljaković dobitnik Nagrade „Liplje“ za „Karotu“ na 31. Međunarodnom sajmu knjiga u Banjaluci",
+      "publishedAt": "2026-09-28T08:20:00.000Z",
+      "description": "Nagradu „Liplje“, koja se dodjeljuje za savremenu književnost, dobio je roman „Karota“ Darka Tuševljakovića, ovogodišnji dobitnik Ninove nagrade za najbolji roman objavljen 2025. godine, kao i nagrade „Beskrajni plavi krug“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prvi-sajam-knjiga-u-banjaluci-ljiljane-sarac/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prvi sajam knjiga u Banjaluci Ljiljane Šarac",
+      "publishedAt": "2026-09-28T08:07:00.000Z",
+      "description": "Roman „Obe strane Drine“ Ljiljane Šarac već je prešao na drugu obalu reke i autorki otvorio vrata mnogih biblioteka i manifestacija u Republici Srpskoj. Na talasu njegove aktuelnosti stigao je poziv od organizatora Glasa Srpske da bude predstavljen u Banjaluci na 31. Međunarodnom sajmu knjiga.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/ponuda-koja-se-ne-odbija-knjiga-mafija-globalna-istorija-rajana-dzindzerasa-u-prodaji-od-29-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ponuda koja se ne odbija - knjiga „Mafija: Globalna istorija“ Rajana Džindžerasa u prodaji od 29. septembra",
+      "publishedAt": "2026-09-28T08:05:00.000Z",
+      "description": "Zašto mafije nastaju, zašto opstaju i šta njihovo postojanje govori o društvima koja ih stvaraju, saznajamo u knjizi „Mafija: Globalna istorija“ Rajana Džindžerasa. Knjiga prati nastanak organizovanog kriminala i njegovo pretvaranje u globalni ekonomski i politički fenomen",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/ptica-koja-pamti-nebo-pred-novosadskom-publikom/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Ptica koja pamti nebo“ pred novosadskom publikom",
+      "publishedAt": "2026-09-28T06:40:00.000Z",
+      "description": "U prepunoj Čitaonici Gradske biblioteke u Novom Sadu održana je 25. septembra promocija romana „Ptica koja pamti nebo“ Slavice Mastikose, objavljenog u izdanju Lagune.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-vitez-sedam-kraljevstava-vitestvo-ponovo-zivi/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Vitez sedam kraljevstava“: Viteštvo ponovo živi",
+      "publishedAt": "2026-09-25T14:44:00.000Z",
+      "description": "Knjigom „Vitez sedam kraljevstava“, koja, kao i sve njegove, obiluje zanimljivim likovima, domišljatim dijalozima i napetom akcijom punom obrta, Džordž R. R. Martin nam još jednom dokazuje zašto je neprikosnoven pripovedač našeg doba.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-knjige-ne-trazi-se-svet-kao-udobno-krilo/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz knjige „Ne traži se“: Svet kao udobno krilo",
+      "publishedAt": "2026-09-25T14:43:00.000Z",
+      "description": "Ko za sobom ostavlja klupka crnih dlaka? Ko je toliko nespretan ili bezobziran da razbije saksiju sa cvećem? I ko se to usuđuje da izgrebe nameštaj, pa i predmete, kojima je neprikosnoveni vlasnik baš on, četvoronožni gospodar kuće? Bucko će sprovesti pravu detektivsku istragu čiji rezultat mu se nimalo neće dopasti, jer njemu nije dovoljno da bude dominantan, već da bude jedini.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/zbirka-kratkih-prica-hangar-za-snove-darka-tusevljakovica-u-prodaji-od-28-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zbirka kratkih priča „Hangar za snove“ Darka Tuševljakovića u prodaji od 28. septembra",
+      "publishedAt": "2026-09-25T11:25:00.000Z",
+      "description": "Zbirka kratkih priča „Hangar za snove“ Darka Tuševljakovića, koja je dobila Andrićevu nagradu i objavljena 2022, sada je dobila reizdanje koje će se u izdanju Lagune naći u prodaji od ponedeljka 28. septembra. Zanimljivo je da reizdanje sadrži predgovor autora napisan specijalno za ovo izdanje, u kojem objašnjava kako je nastala zbirka.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/novo-izdanje-casopisa-bukmarker-u-svim-delfi-knjizarama-sve-o-manifestaciji-oktobar-mesec-knjige-i-hitovima-domace-i-strane-produkcije/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Novo izdanje časopisa Bukmarker u svim Delfi knjižarama: sve o manifestaciji „Oktobar - mesec knjige“ i hitovima domaće i strane produkcije",
+      "publishedAt": "2026-09-25T10:49:00.000Z",
+      "description": "Oktobar je u svetu ljubitelja knjiga poseban mesec! Onaj u kojem se na sva zvona slavi lepota i važnost čitanja.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/dolazi-vreme-crne-ruke-apisov-apostol-slavise-pavlovica-u-prodaji-od-28-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dolazi vreme „Crne ruke“: „Apisov apostol“ Slaviše Pavlovića u prodaji od 28. septembra",
+      "publishedAt": "2026-09-25T10:27:00.000Z",
+      "description": "Nakon deset godina od prvog objavljivanja, u knjižare stiže novo, ćirilično izdanje romana „Apisov apostol“ \u2013 književnika, scenariste i publiciste Slaviše Pavlovića \u2013 u kojem smo svedoci nevidljivog rata koji vodi organizacija u čije postojanje niko ne veruje.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/raskosna-i-majstorska-panorama-ruske-kulture-natasin-ples-orlanda-fajdzisa-u-prodaji-od-28-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raskošna i majstorska panorama ruske kulture: „Natašin ples“ Orlanda Fajdžisa u prodaji od 28. septembra",
+      "publishedAt": "2026-09-25T09:57:00.000Z",
+      "description": "Jedna od onih knjiga zbog kojih se povremeno zapitate kako ste uopšte dosad mogli bez nje, „Natašin ples“ britanskog istoričara i pisca Orlanda Fajdžisa pouzdana je i fascinantna kulturna istorija Rusije, koja obuhvata period od izgradnje Sankt Peterburga za vreme Petra Velikog početkom XVIII veka do kraja Staljinove ere.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/bukmarker-podkast-ep-38-jelica-greganovic-u-malo-samo-da-ti-kazem-staje-ceo-svet/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bukmarker podkast, ep. 38 - Jelica Greganović: U malo „samo da ti kažem“ staje ceo svet",
+      "publishedAt": "2026-09-24T12:45:00.000Z",
+      "description": "„Duhovitost je potvrda imanja duha“, poručuje naša sledeća gošća podkasta, novinarka i autorka Jelica Greganović, i potvrđuje svakom svojom knjigom \u2013 humor je njen zaštitni znak!",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/laguna-na-31-medjunarodnom-sajmu-knjiga-u-banjaluci-ljiljana-sarac-potpisuje-25-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Laguna na 31. Međunarodnom sajmu knjiga u Banjaluci: Ljiljana Šarac potpisuje 25. septembra!",
+      "publishedAt": "2026-09-24T12:33:00.000Z",
+      "description": "Laguna već tradicionalno učestvuje na Međunarodnom banjalučkom sajmu knjiga, u organizaciji Glasa Srpske, koji se održava od 22. do 28. septembra 2026. u Sportskom centru „Borik“, na kojem će predstaviti najveće hitove domaće i svetske književnosti.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/otkrijte-svoju-strast-zavolite-svoj-posao-obogatite-svoj-zivot-knjiga-sta-je-vas-san-sajmona-skviba-u-prodaji-od-25-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Otkrijte svoju strast. Zavolite svoj posao. Obogatite svoj život - knjiga „Šta je vaš san?“ Sajmona Skviba u prodaji od 25. septembra",
+      "publishedAt": "2026-09-24T09:34:00.000Z",
+      "description": "Od malih nogu nas uče da postoji samo jedan siguran put kroz život: dobra škola, stabilan posao i što manje grešaka i loših odluka. Toliko se trudimo da sledimo ta pravila da retko zastanemo i zapitamo se: „Šta zapravo želim? Da li je posao od devet do pet za mene? Kakav posao ili biznis želim da stvorim? I da li uopšte mogu da ostvarim taj san?“",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/igrajmo-se-zajedno-ucenje-igre-boreal-i-nasukani-u-bukmarker-kafeteriji-25-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Igrajmo se zajedno - učenje igre „Boreal“ i „Nasukani“ u Bukmarker kafeteriji 25. septembra",
+      "publishedAt": "2026-09-24T09:02:00.000Z",
+      "description": "Ljubitelji društvenih igara, imaćete priliku da upoznate nove društvene igre „Boreal“ i „Nasukani“ na događaju „Igrajmo se zajedno“ u Bukmarker kafeteriji, koji će se održati 25. septembra 2026. godine od 16 do 20 sati.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/predstavljanje-knjige-vlade-arsica-price-uz-ognjiste-29-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Predstavljanje knjige Vlade Arsića „Priče uz ognjište“ 29. septembra",
+      "publishedAt": "2026-09-24T08:33:00.000Z",
+      "description": "U utorak 29. septembra 2026. godine, od 18 sati, u kafeteriji Bukmarker knjižare Delfi SKC održaće se promocija nove knjige poznatog domaćeg autora Vlade Arsića „Priče uz ognjište“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/bukmarker-casopis-slavi-sesti-rodjendan-i-nagradjuje/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bukmarker časopis slavi šesti rođendan i nagrađuje!",
+      "publishedAt": "2026-09-24T08:29:00.000Z",
+      "description": "Dragi čitaoci, vaš i naš omiljeni časopis o književnosti u novembru slavi šesti rođendan i tim povodom tradicionalno organizujemo foto-konkurs „Po meri knjigoljubaca“ na Laguninom zvaničnom Instagram profilu.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/uzbudljiv-emotivan-i-nezaboravan-roman-atmosfera-bestseler-autorke-tejlor-dzenkins-rid-u-prodaji-od-25-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Uzbudljiv, emotivan i nezaboravan roman „Atmosfera“ bestseler autorke Tejlor Dženkins Rid u prodaji od 25. septembra",
+      "publishedAt": "2026-09-24T06:17:00.000Z",
+      "description": "Novi roman jedne od najomiljenijih savremenih autorki Tejlor Dženkins Rid „Atmosfera“ priča je o ljubavi koja menja živote, o ljudima koji se usuđuju da sanjaju više od drugih i o tome da se najveća otkrića ponekad ne nalaze među zvezdama, već u ljudskom srcu.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-izgubljena-jagnjad-razlozno-samouveren-prvenac/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Izgubljena jagnjad“: Razložno samouveren prvenac",
+      "publishedAt": "2026-09-23T13:21:00.000Z",
+      "description": "Roman „Izgubljena jagnjad“ mlade američke autorke Medlin Keš gradi svet u kojem se ozbiljne i potpuno apsurdne stvari neprestano sudaraju, a upravo iz toga nastaju specifičan humor i energija knjige. U središtu štiva je porodica Flin, koja se nalazi u stanju gotovo potpunog unutrašnjeg rasula. Bad i Ketrin pokušavaju da spasu svoj brak tako što uvode otvorenu vezu, ali njihov dogovor više doprino…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-jubilarnog-izdanja-romana-semper-idem-djordja-lebovica-lepote-strahote/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz jubilarnog izdanja romana „Semper idem“ Đorđa Lebovića: Lepote strahote",
+      "publishedAt": "2026-09-23T13:17:00.000Z",
+      "description": "Pred nama je sada tvrdoukoričeno, jubilarno izdanje romana „Semper idem“, knjige koja je do sada prodata u više od 100.000 primeraka i koja je već odavno zauzela istaknuto mesto u savremenoj srpskoj književnosti. Priča vam je, verujem, poznata.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-mange-alisa-u-nicijoj-zemlji-5-kada-igre-vise-nisu-najstrasniji-deo-price/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz mange „Alisa u Ničijoj zemlji 5“: Kada igre više nisu najstrašniji deo priče",
+      "publishedAt": "2026-09-23T12:37:00.000Z",
+      "description": "Postoji trenutak u svakoj survival priči kada shvatite da pravila više nisu važna koliko ljudi koji ih igraju. Alisa u Ničijoj zemlji je od početka možda bila manga o preživljavanju, psihološkim igrama i ljudskoj prirodi pod pritiskom, ali peti deo pravi značajan zaokret. Nakon haosa na Plaži i krvave igre Veštica (10 herc), u 4. dvobroju, Haro Aso ne pokušava da podigne tenziju samo većim brojem…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/delfi-kutak-je-procitao-roman-krik/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Delfi Kutak je pročitao roman „Krik“",
+      "publishedAt": "2026-09-23T12:32:00.000Z",
+      "description": "Razmišljala sam koji citat da stavim kao uvodni, ali sam odustala, jer bi mnogi mogli biti na tom mestu \u2013 na baš svakoj stranici postoje bar dve rečenice ili više njih koje se pamte. Videćete.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/zene-koje-su-obelezile-srednjovekovnu-srbiju-predstavljena-knjiga-vladarke-iz-praiskona/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Žene koje su obeležile srednjovekovnu Srbiju - predstavljena knjiga „Vladarke iz praiskona“",
+      "publishedAt": "2026-09-23T11:18:00.000Z",
+      "description": "Povest o kneginjama i kraljicama srpskim i princezama srpskog porekla, od najstarijih pisanim izvorima posvedočenih vremena do sredine XIV stoleća i zenita carstva Stefana Dušana, napisala je istoričarka Katarina Mitrović u knjizi „Vladarke iz praiskona“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nedeljnik-u-knjizarama-delfi-septmebar/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nedeljnik u knjižarama Delfi",
+      "publishedAt": "2026-09-23T09:09:00.000Z",
+      "description": "Novi broj lista Nedeljnik je na kioscima, a od petka ga možete kupiti za samo 29 dinara u svim knjižarama Delfi širom Srbije uz kupovinu bilo koje Lagunine knjige, knjige drugih izdavača ili proizvoda iz gift programa u vrednosti većoj od 150 dinara.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nada-i-istrajnost-u-nemilosrdnom-svetu-alisa-u-nicijoj-zemlji-povratak-u-prodaji-od-24-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nada i istrajnost u nemilosrdnom svetu - „Alisa u Ničijoj zemlji: Povratak“ u prodaji od 24. septembra",
+      "publishedAt": "2026-09-22T10:25:00.000Z",
+      "description": "Manga „Alisa u Ničijoj zemlji: Povratak“ Hara Asa priča je o nadi i istrajnosti u svetu koji naizgled nema smisla ni samilosti.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/kolika-je-cena-pripadanja-pravom-drustvu-treseri-dzuli-soto-u-prodaji-od-24-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kolika je cena pripadanja „pravom“ društvu? „Trešeri“ Džuli Soto u prodaji od 24. septembra",
+      "publishedAt": "2026-09-22T10:21:00.000Z",
+      "description": "Roman „Trešeri“ američke bestseler autorke Džuli Soto govori o prijateljstvu, pritisku vršnjaka, tajnama i ceni pripadanja „pravom“ društvu.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/cak-60-popusta-na-odabrane-lagunine-naslove-jos-jedna-septembarska-vikend-akcija-pred-nama/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Čak 60% popusta na odabrane Lagunine naslove - još jedna septembarska vikend akcija pred nama",
+      "publishedAt": "2026-09-21T15:03:00.000Z",
+      "description": "Pred nama je još jedan uzbudljiv čitalački vikend, u kome vas od 25. do 27. septembra 2026. na odabrane Lagunine naslove očekuju popusti do čak 60%. Akciju možete iskoristiti u svim Delfi knjižarama širom Srbije i na sajtovima laguna.rs i delfi.rs.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/novi-ulov-zivotni-ciklus-obicne-hobotnice/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Novi ulov: Životni ciklus obične hobotnice",
+      "publishedAt": "2026-09-21T14:54:00.000Z",
+      "description": "U Laguninom izdanju uskoro će se naći naslov „Životni ciklus obične hobotnice“ autorke Eme Najt, koji se prošle godine našao u širem izboru za prestižnu kanadsku nagradu Giller.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/suncem-okupan-roman-jedno-zlatno-leto-karli-fortjun-u-prodaji-od-23-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Suncem okupan roman „Jedno zlatno leto“ Karli Fortjun u prodaji od 23. septembra",
+      "publishedAt": "2026-09-21T09:33:00.000Z",
+      "description": "Roman „Jedno zlatno leto“ prava je književna poslastica, jer autorka Karli Fortjun uspeva da dočara leto i da ga „zarobi“ u knjigu na opčinjavajući način.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/igrajmo-se-zajedno-u-bukmarker-kafeteriji-ovog-puta-se-sitno-seckalo/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Igrajmo se zajedno: U Bukmarker kafeteriji ovog puta se „Sitno seckalo“",
+      "publishedAt": "2026-09-21T08:16:00.000Z",
+      "description": "Bukmarker kafeterija ponovo je bila mesto okupljanja ljubitelja društvenih igara u okviru događaja „Igrajmo se zajedno \u2013 Učenje igara“, a ovog puta za stolovima se našla igra koja je, osim igrača, vrlo brzo uspela da okupi i glad.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/slavica-mastikosa-predstavlja-roman-ptica-koja-pamti-nebo-u-gradskoj-biblioteci-u-novom-sadu-25-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Slavica Mastikosa predstavlja roman „Ptica koja pamti nebo“ u Gradskoj biblioteci u Novom Sadu 25. septembra",
+      "publishedAt": "2026-09-21T06:22:00.000Z",
+      "description": "Čitaonica Gradske bibilioteke u Novom Sadu u petak 25. septembra od 19 sati ugostiće poznatu i cenjenu autorku Slavicu Mastikosu, i tom prilikom biće reči o njenom najnovijem ostvarenju „Ptica koja pamti nebo“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/neka-citanje-lektire-bude-uzivanje-na-tri-ili-vise-odabranih-laguninih-naslova-15-popusta/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Neka čitanje lektire bude uživanje: Na tri ili više odabranih Laguninih naslova 15% popusta",
+      "publishedAt": "2026-09-18T20:33:00.000Z",
+      "description": "Dragi đaci, roditelji i ljubitelji čitanja, Počinje školska godina, a sa njom i mnoštvo knjiga u okviru lektire koje treba pročitati!",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nova-akcija-lagune-i-henkela-citaj-jasnije-od-10-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nova akcija Lagune i Henkela - „Čitaj jasnije“ od 10. septembra",
+      "publishedAt": "2026-09-18T20:27:00.000Z",
+      "description": "Pod sloganom „Čitaj jasnije“ u periodu od 10. septembra 2026. godine pa sve do isteka zaliha, uz kupovinu naslova sa Lagunine top-liste beletristike na poklon dobijate dve Clin maramice za naočare kompanije Henkel. Akcija važi u svim Delfi knjižarama širom Srbije.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nova-septembarska-vikend-akcija-pred-nama-popusti-do-cak-60-na-odabrane-lagunine-naslove/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nova septembarska vikend akcija pred nama - popusti do čak 60% na odabrane Lagunine naslove",
+      "publishedAt": "2026-09-18T20:14:00.000Z",
+      "description": "Zakoračite u još jedan čitalački vikend uz Lagunine naslove koji će od 18. do 20. septembra 2026. biti na popustu do 60%. Akciju možete iskoristiti u svim Delfi knjižarama širom Srbije i na sajtovima laguna.rs i delfi.rs.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/serijal-sedam-sestara-sada-kao-komplet/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Serijal „Sedam sestara“ sada kao komplet!",
+      "publishedAt": "2026-09-18T13:48:00.000Z",
+      "description": "Velika porodična saga Lusinde Rajli sada je dostupna u posebnom kompletu od osam knjiga! Jedan od najvoljenijih književnih serijala poslednjih godina sada možete imati u celini \u2013 od prve knjige „Sedam sestara“ do završnice „Atlas \u2013 priča Tate Solta“, koju je prema želji Lusinde Rajli završio njen sin Hari Vitaker.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/predstavljanje-knjige-vixere-srdjana-cvijica-u-banatskom-velikom-selu-20-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Predstavljanje knjige „Vixere“ Srđana Cvijića u Banatskom Velikom Selu 20. septembra",
+      "publishedAt": "2026-09-18T12:40:00.000Z",
+      "description": "U nedelju 20. septembra od 17 sati u Banatskom Velikom Selu biće predstavljena knjiga „Vixere \u2013 Udbina ubistva u srcu Evrope“ autora Srđana Cvijića, u organizaciji privatnog kulturnog centra „Soltur 95“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/cista-briljantnost-neznanje-sporost-i-identitet-milana-kundere-u-prodaji-od-21-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Čista briljantnost: „Neznanje“, „Sporost“ i „Identitet“ Milana Kundere u prodaji od 21. septembra",
+      "publishedAt": "2026-09-18T11:40:00.000Z",
+      "description": "„Neznanje“ je polifono i duboko dirljivo delo o povratku koji ne ispunjava očekivanja, o sudaru sećanja i zaborava, i o bolnom otkriću da ono što smo nekada zvali domom možda više ne postoji \u2013 osim u našoj glavi.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nova-izdanja-laguninih-autora-septembar/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nova izdanja Laguninih autora",
+      "publishedAt": "2026-09-18T11:35:00.000Z",
+      "description": "Tri romana Lagunine bestseler autorke Jelene Bačić Alimpić doživeće nova izdanja. Na knjižarskim policama uskoro će se naći trideset peto izdanje romana „Pisma gospođe Vilme“, u kojem se govori o tajnama porodične prošlosti i sudbini žene koja je žrtvovala svoj život zbog ljubavi. U štampi je i trinaesto izdanje „Knjige uspomena“, drugog dela trilogije „Kazna za greh“, kao i osmo izdanje romana „…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/sineasti-u-ulozi-pisca-kada-se-filmski-umetnici-late-pera/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sineasti u ulozi pisca: Kada se filmski umetnici late pera",
+      "publishedAt": "2026-09-18T07:08:00.000Z",
+      "description": "Dok čitamo hit triler „Nestao bez pozdrava“, koji je glumačka zvezda Ris Viderspun napisala sa slavnim autorom Harlanom Kobenom, podsećamo se kako su se i mnogi drugi filmski umetnici odlično pokazali u svetu književnosti.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-knjige-sonny-boy-od-bronksa-do-korleonea/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz knjige „Sonny Boy“: Od Bronksa do Korleonea",
+      "publishedAt": "2026-09-17T13:26:00.000Z",
+      "description": "Memoari Ala Paćina predstavljaju priču o životu i karijeri jednog od najprepoznatljivijih glumaca modernog američkog filma, ali i mnogo više od klasične autobiografije slavne ličnosti. Paćino se u njima vraća svojim počecima, detinjstvu u Bronksu, majci, baki i dedi, prvim odlascima u bioskop i otkrivanju pozorišta. Iza svetski poznatog glumca tako se pojavljuje mladić koji je dugo bio mnogo više…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-knjige-jesi-li-snimio-ovo-cetverorucni-dnevnik-jedne-sumorne-epohe/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz knjige „Jesi li snimio ovo?“: Četveroručni dnevnik jedne sumorne epohe",
+      "publishedAt": "2026-09-17T13:06:00.000Z",
+      "description": "Portal Velike priče jedno je od zanimljivijih mjesta na ex-jugoslavenskome kulturnom i medijskom prostoru. Nastala kao ekstenzija njuz magazina Nedeljnik, te kao neka vrsta osobnog šou-projekta urednika Veljka Lalića, Velike priče su platforma za duge tekstove, intelektualna razmatranja, višemjesečne i višegodišnje ekskurse nekih od najuglednijih i međunarodno najprepoznatljivijih pisaca, novinar…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/bukmarker-podkast-ep-37-ana-atanaskovic-krik-za-zivotom/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bukmarker podkast, ep. 37 - Ana Atanasković: Krik za životom",
+      "publishedAt": "2026-09-17T08:57:00.000Z",
+      "description": "Nakon zapaženih naslova „Moja ljubav Nikola Tesla“ i „Zmajeva žena“, kao i knjige „Prestonice“, naša sledeća gošća podkasta Ana Atanasković predstavlja novi roman \u2013 „Krik“!",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/interaktivne-knjige-za-decu-pile-zna-put-do-kuce-zeka-zna-put-do-kuce-i-tigric-zna-put-do-kuce-u-prodaji-od-18-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interaktivne knjige za decu „Pile zna put do kuće“, „Zeka zna put do kuće“ i „Tigrić zna put do kuće“ u prodaji od 18. septembra",
+      "publishedAt": "2026-09-17T08:26:00.000Z",
+      "description": "Dragi mališani, hajde da zajedno sa piletom, zekom i tigrićem pronađemo put do kuće \u2013 i to uz zanimljive knjige!",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/katarina-mitrovic-zivot-u-slavnoj-proslosti-koja-to-nikad-nije-bila/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Katarina Mitrović: Život u „slavnoj prošlosti“, koja to nikad nije bila, veliko je opterećenje",
+      "publishedAt": "2026-09-17T08:12:00.000Z",
+      "description": "Katarina Mitrović (Beograd, 1973) po vokaciji je istoričarka, naučna savetnica u Centru za istorijsku geografiju i istorijsku demografiju na Filozofskom fakultetu Univerziteta u Beogradu.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/autenticnost-i-osecaj-za-duh-epohe-u-knjizari-delfi-skc-predstavljen-novi-roman-nenada-novaka-stefanovica-velika-trka/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Autentičnost i osećaj za duh epohe - u knjižari Delfi SKC predstavljen novi roman Nenada Novaka Stefanovića „Velika trka“",
+      "publishedAt": "2026-09-16T13:18:00.000Z",
+      "description": "U knjižari Delfi SKC tražilo se mesto više na predstavljanju novog triler-romana Nenada Novaka Stefanovića „Velika trka“, koji nas ovom pričom vodi u Beograd 1939. i prikazuje novi slučaj islednika Krste Pavlovića (dobro poznatog junaka iz Nenadovih prethodnih romana: „Ubistvo u Kapetan Mišinoj“ i „Jedno ubistvo u Patrijaršiji“).",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nedeljnik-u-knjizarama-delfi-16-09/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nedeljnik u knjižarama Delfi",
+      "publishedAt": "2026-09-16T10:06:00.000Z",
+      "description": "Novi broj lista Nedeljnik je na kioscima, a od petka ga možete kupiti za samo 29 dinara u svim knjižarama Delfi širom Srbije uz kupovinu bilo koje Lagunine knjige, knjige drugih izdavača ili proizvoda iz gift programa u vrednosti većoj od 150 dinara.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prica-o-zenama-koje-su-oblikovale-srpsku-srednjovekovnu-istoriju-promocija-knjige-vladarke-iz-praiskona-katarine-mitrovic-22-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Priča o ženama koje su oblikovale srpsku srednjovekovnu istoriju: Promocija knjige „Vladarke iz praiskona“ Katarine Mitrović 22. septembra",
+      "publishedAt": "2026-09-16T07:09:00.000Z",
+      "description": "Ko su bile prve srpske kneginje, županice i kraljice? Kakve su bile njihove uloge u životu srednjovekovne Srbije i koliko su njihov život, uticaj i sudbine ostali zabeleženi u istorijskim izvorima?",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/odrzana-promocija-obe-strane-drine-u-smederevu/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Održana promocija „Obe strane Drine“ u Smederevu",
+      "publishedAt": "2026-09-16T06:53:00.000Z",
+      "description": "Autorka Ljiljana Šarac odazvala se pozivu Narodne biblioteke Smederevo da predstavi svoj najnoviji roman „Obe strane Drine“, u okviru manifestacije „Smederevska jesen“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/jelena-bacic-alimpic-predstavila-roman-krojacev-sin-u-banjaluci-i-vukovaru/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jelena Bačić Alimpić predstavila roman „Krojačev sin“ u Banjaluci i Vukovaru",
+      "publishedAt": "2026-09-15T12:46:00.000Z",
+      "description": "Poznata srpska književnica Jelena Bačić Alimpić održala je izuzetno posećene i emotivne književne večeri u Banjaluci i Vukovaru.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/laguna-poslednji-put-nagradjuje-tri-najzanimljivija-komentara/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Laguna poslednji put nagrađuje tri najzanimljivija komentara!",
+      "publishedAt": "2026-09-15T12:31:00.000Z",
+      "description": "Laguna još ovaj put nagrađuje svoje najaktivnije posetioce i najzanimljivije osvrte! Za sam kraj akcije, kao i do sada, nagrađujemo tri najzanimljivija komentara koja ste tokom prethodnog meseca ostavili na našem sajtu o pročitanim knjigama.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nabokovljev-prelomljeni-zrak-od-17-septembra-u-prodaji/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nabokovljev „Prelomljeni zrak“ od 17. septembra u prodaji",
+      "publishedAt": "2026-09-15T09:31:00.000Z",
+      "description": "Svi poštovaoci Vladimira Nabokova imaće priliku da se od 17. septembra upuste u njegovu dramu „Prelomljeni zrak“, koja će biti objavljena u izdanju Lagune u prevodu Zorana Paunovića. U pitanju je prvi roman koji je Nabokov napisao u Americi i, bez sumnje, jedan je od politički najangažovanijih Nabokovljevih romana u kojem se majstorski prikazuje ludilo totalitarizma i njegovih krajnjih posledica.…",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/novi-roman-ildefonsa-falkonesa-u-ljubavi-i-u-ratu-nastavak-cuvene-katedrale-na-moru-u-prodaji-od-17-septembra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Novi roman Ildefonsa Falkonesa „U ljubavi i u ratu“, nastavak čuvene „Katedrale na moru“, u prodaji od 17. septembra",
+      "publishedAt": "2026-09-15T07:42:00.000Z",
+      "description": "Dvadeset godina nakon ogromnog uspeha „Katedrale na moru“, Ildefonso Falkones donosi nastavak najčitanije istorijske sage našeg vremena. Novi roman „U ljubavi i u ratu“ je veličanstvena istorijska priča o ljubavi, odanosti, osveti i iskupljenju.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/tocak-vremena-se-zvanicno-vraca-nakon-sokantnog-ukidanja-serije/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "„Točak vremena“ se zvanično vraća nakon šokantnog ukidanja serije",
+      "publishedAt": "2026-09-14T13:37:00.000Z",
+      "description": "Žanr fantastike okuplja verovatno najveći broj čitalaca i gledalaca željnih epskih avantura. Njihov gotovo nezasiti apetit jasno se pokazao kada je kritički hvaljeni serijal Džordža R. R. Martina, Pesma leda i vatre, pretočen u televizijski fenomen pod nazivom „Igra prestola“.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/decja-knjiga-nedelje-kako-je-vila-mila-dobila-krila/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dečja knjiga nedelje - „Kako je vila Mila dobila krila“",
+      "publishedAt": "2026-09-14T13:27:00.000Z",
+      "description": "Za svoje članove Laguna uvek ima dobre vesti! Svake nedelje jedan od aktuelnijih naslova proglašavamo za Dečju knjigu nedelje. To znači da će naši članovi samo te nedelje moći da kupe Dečju knjigu nedelje sa specijalnim DODATNIM popustom od 30%.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/knjiga-nedelje-klitemnestra/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Knjiga nedelje - „ Klitemnestra“",
+      "publishedAt": "2026-09-14T13:25:00.000Z",
+      "description": "Za svoje članove Laguna uvek ima dobre vesti! Svake nedelje jedan od aktuelnijih naslova proglašavamo za Knjigu nedelje. To znači da će naši članovi samo te nedelje moći da kupe Knjigu nedelje sa specijalnim DODATNIM popustom od 30%.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/nenad-novak-stefanovic-dvadeseti-vek-vek-aviona-i-logora/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nenad Novak Stefanović: Dvadeseti vek - vek aviona i logora",
+      "publishedAt": "2026-09-14T13:22:00.000Z",
+      "description": "Književnik Nenad Novak Stefanović je i novom knjigom privukao veliku pažnju čitalaca. U središtu „Velike trke“ je ubistvo uglednog industrijalca, koje se u Beogradu dešava 1939. godine, u trenutku dok Evropa klizi ka ratu, što je još jedan zadatak za islednika Krstu Pavlovića, junaka i ranijih Stefanovićevih knjiga.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-ostavljena-vaj-kiland/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Ostavljena“ Vaj Kiland:",
+      "publishedAt": "2026-09-14T12:12:00.000Z",
+      "description": "Vaj Kiland je tokom godina napisala neke zaista izuzetne savremene ljubavne romane, ali bi „Ostavljena“ lako mogla da mi postane njen najdraži naslov. Ova knjiga je iskrena, duhovita, izuzetno emotivna i savršeno romantična da mi je osmeh ostao na licu \u2013 uz poneku suzu u oku \u2013 još dugo nakon što sam sklopila poslednju stranicu.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "laguna",
+      "source": {
+        "name": "Laguna",
+        "url": "https://laguna.rs/bukmarker/prikaz-romana-povratak-u-knjizaru-morisaki-satosija-jagisave/",
+        "language": "sr-RS"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prikaz romana „Povratak u knjižaru ’Morisaki’“ Satošija Jagisave",
+      "publishedAt": "2026-09-14T12:08:00.000Z",
+      "description": "Čitaoci kojima se dopao prvi Jagisavin roman o doživljajima jednog knjižara u tokijskoj četvrti Đimboćo, verovatno će biti radoznali da pročitaju šta se dalje dešavalo sa simpatičnim ujkom knjižárom, njegovom sestričinom Takako i ujnom koja se vratila svom neobičnom mužu da mu pomogne u vođenju radnje.",
+      "discoveredAt": "2026-10-01T20:48:36.339Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f3fddb30d78e119bcebf682211465fb5841265c24679ed0bed69551e1fd8dd6b"
+}

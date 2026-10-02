@@ -1,0 +1,31 @@
+{
+  "sourceId": "anvil-publishing",
+  "name": "Anvil Publishing",
+  "entryUrl": "https://www.anvilpublishing.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:43.973Z",
+  "requests": [
+    {
+      "url": "https://www.anvilpublishing.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 559,
+      "sha256": "b77a97792755ac2a633e70712fb41a59eb0c75b9e5665e2e8f05f41ec1bb611e",
+      "accessedAt": "2026-10-01T20:48:45.497Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.anvilpublishing.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 442,
+    "sha256": "3d334f6c4c45b5a60f323931fd56ec6ae1248bc43dbbfc292014e766ef26f7ad",
+    "accessedAt": "2026-10-01T20:48:45.065Z",
+    "disallowed": [
+      "/anvil2012/wp-admin/"
+    ]
+  }
+}

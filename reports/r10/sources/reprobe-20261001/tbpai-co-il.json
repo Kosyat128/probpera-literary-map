@@ -1,0 +1,43 @@
+{
+  "sourceId": "tbpai-co-il",
+  "name": "Book Publishers Association of IsraelPO Box",
+  "entryUrl": "https://www.tbpai.co.il/",
+  "countryCodes": [
+    "IL"
+  ],
+  "coverageCountryCodes": [
+    "IL"
+  ],
+  "attemptedAt": "2026-10-01T20:43:34.862Z",
+  "requests": [
+    {
+      "url": "https://tbpai.co.il/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 65792,
+      "sha256": "7526c28cad50e3ad90705a5cf8466076006cbb81e9e647f8344def08e644fd07",
+      "accessedAt": "2026-10-01T20:43:39.833Z"
+    },
+    {
+      "url": "https://tbpai.co.il/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1664,
+      "sha256": "5dcd3f4a2b767eeaf408583a4bbb55501c1471245399ef9033862537e3ce39de",
+      "accessedAt": "2026-10-01T20:43:41.239Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://tbpai.co.il/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 115,
+    "sha256": "3c7fabb6ce52e0d9427f2d7b110549b59032f9c7d499cbf45e802741c7336ed9",
+    "accessedAt": "2026-10-01T20:43:38.043Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

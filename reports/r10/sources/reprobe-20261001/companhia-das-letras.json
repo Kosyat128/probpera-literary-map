@@ -1,0 +1,37 @@
+{
+  "sourceId": "companhia-das-letras",
+  "name": "Companhia das Letras",
+  "entryUrl": "https://www.companhiadasletras.com.br/",
+  "countryCodes": [
+    "BR"
+  ],
+  "coverageCountryCodes": [
+    "BR"
+  ],
+  "attemptedAt": "2026-10-01T20:44:43.117Z",
+  "requests": [
+    {
+      "url": "https://www.companhiadasletras.com.br/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 88078,
+      "sha256": "922224c5918080a681759a86340537ec0991e3be8605d7b92eae28d673b8475e",
+      "accessedAt": "2026-10-01T20:44:44.302Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.companhiadasletras.com.br/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 140,
+    "sha256": "e882b8c2dd06694c55aa6520a06a9d1e5d0274a6f590ed5589ccee77c25fafd6",
+    "accessedAt": "2026-10-01T20:44:44.215Z",
+    "disallowed": [
+      "/checkout/",
+      "/account/",
+      "/login/"
+    ]
+  }
+}

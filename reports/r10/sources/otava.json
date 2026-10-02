@@ -1,0 +1,29 @@
+{
+  "sourceId": "otava",
+  "name": "Otava",
+  "entryUrl": "https://otava.fi/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:37.653Z",
+  "requests": [
+    {
+      "url": "https://otava.fi/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 38440,
+      "sha256": "a7a60c6bf45f00bc7bde8172169333528b186a18c815a93345a2a8f8c1a2220d",
+      "accessedAt": "2026-10-01T20:48:37.872Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://otava.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 166,
+    "sha256": "fbb8a87a91e441df5ff099e5b9b09d2acc73bba8ca0c906743c82565020875b1",
+    "accessedAt": "2026-10-01T20:48:37.825Z",
+    "disallowed": []
+  }
+}

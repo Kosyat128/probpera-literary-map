@@ -1,0 +1,478 @@
+{
+  "sourceId": "aufbau",
+  "name": "Aufbau",
+  "entryUrl": "https://www.aufbau-verlage.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:11.611Z",
+  "requests": [
+    {
+      "url": "https://www.aufbau-verlage.de/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 305015,
+      "sha256": "efa379dbb0ae6aaf615b0214a93c5755a4ebe8118858e17bd27d62964bea96d7",
+      "accessedAt": "2026-10-01T20:48:12.246Z"
+    },
+    {
+      "url": "https://www.aufbau-verlage.de/pressemitteilungen",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 75630,
+      "sha256": "6a091451e4e6bf8233b862195a4359d25a51081c17f2e5243c6e5dac0204405f",
+      "accessedAt": "2026-10-01T20:48:12.624Z"
+    },
+    {
+      "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 63404,
+      "sha256": "e1f7d5e3bd076145a4f3203029508f648def3010f9f50a33f9fa9ecdc3b481fd",
+      "accessedAt": "2026-10-01T20:48:12.795Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.aufbau-verlage.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2027,
+    "sha256": "773fb8d35bb9a39d35335ee6db8dc5c912d2aacbfb823152d9c61cd647dd902d",
+    "accessedAt": "2026-10-01T20:48:12.085Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  },
+  "endpoint": {
+    "id": "aufbau",
+    "name": "Aufbau",
+    "url": "https://www.aufbau-verlage.de/pressemitteilungen",
+    "format": "html",
+    "language": "de",
+    "region": "global",
+    "sourceFamilyId": "aufbau",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.aufbau-verlage.de"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/aufbau\\x2dverlage\\/[^/]+\\/?$|^\\/more\\/[^/]+\\/?$|^\\/aufbau\\x2daudio\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0"
+    ],
+    "verifiedAt": "2026-10-01T20:48:12.799Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 13,
+  "literaryCandidateCount": 13,
+  "sample": {
+    "sourceId": "aufbau",
+    "source": {
+      "name": "Aufbau",
+      "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+      "language": "de"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:12.649Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 63404,
+      "sha256": "e1f7d5e3bd076145a4f3203029508f648def3010f9f50a33f9fa9ecdc3b481fd",
+      "accessedAt": "2026-10-01T20:48:12.795Z",
+      "headline": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+      "excerpt": "11. März 2026 • Preisverleihung Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026 Kerstin Schomburg Die Aufbau Verlage gratulieren zur Auszeichnung für das Hörbuch »Der Fluch der Falodun Frauen« von Oyinkan Braithwaite.Für das Label Aufbau Audio hatte die Schauspielerin den 2025 bei Blumenbar auf Deutsch erschienenen Roman der britisch-nigerianischen Bestsellerautorin Oyinkan Braithwai",
+      "publishedDates": [],
+      "canonical": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:12.799Z",
+  "foundItems": [
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/more/more-relaunch",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "more mit Neuauftritt als Printlabel: Aufbau Verlage relaunchen Romance-Imprint",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/pressemitteilungen",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Direkt zum Inhalt",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/pressemitteilungen?f%5B0%5D=publisher%3A5",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aufbau Verlage (15)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/pressemitteilungen?f%5B0%5D=publisher%3A17",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Andere Bibliothek (3)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/pressemitteilungen?f%5B0%5D=publisher%3A18",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ch. Links Verlag (3)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/pressemitteilungen?f%5B0%5D=publisher%3A2",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aufbau Audio (1)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/wir-trauern-um-unsere-autorin-marie-christin-fuchs",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wir trauern um unsere Autorin Marie-Christin Fuchs",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/markus-dockhorn",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Markus Dockhorn übernimmt die Herstellungsleitung der Aufbau Verlage",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/dr-yves-pallade-wird-neuer-cfo-der-aufbau-verlage",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr. Yves Pallade wird neuer CFO der Aufbau Verlage",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/patrick-sielemann-neue-leitung-belletristik",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Patrick Sielemann übernimmt die Leitung Belletristik bei den Aufbau Verlagen",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/der-aufbau-verlag-trauert-um-greg-iles",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Der Aufbau Verlag trauert um Greg Iles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "source": {
+        "name": "Aufbau",
+        "url": "https://www.aufbau-verlage.de/die-aufbau-verlage-werden-80",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Aufbau Verlage werden 80",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:12.649Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "6a091451e4e6bf8233b862195a4359d25a51081c17f2e5243c6e5dac0204405f"
+}

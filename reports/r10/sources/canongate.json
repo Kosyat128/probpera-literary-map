@@ -1,0 +1,25 @@
+{
+  "sourceId": "canongate",
+  "name": "Canongate",
+  "entryUrl": "https://canongate.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:51.634Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "response_too_large",
+  "robots": {
+    "url": "https://canongate.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 179,
+    "sha256": "05c10b21f7663157668320ed6f361ddd211816d2f345082b6cc445da5b27303e",
+    "accessedAt": "2026-10-01T20:47:51.985Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-includes/",
+      "/xmlrpc.php",
+      "/?s="
+    ]
+  }
+}

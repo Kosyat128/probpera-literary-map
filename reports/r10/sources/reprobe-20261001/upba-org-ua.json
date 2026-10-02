@@ -1,0 +1,24 @@
+{
+  "sourceId": "upba-org-ua",
+  "name": "Ukrainian Publishers &. Booksellers Association",
+  "entryUrl": "https://www.upba.org.ua/",
+  "countryCodes": [
+    "UA"
+  ],
+  "coverageCountryCodes": [
+    "UA"
+  ],
+  "attemptedAt": "2026-10-01T20:43:19.624Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "This operation was aborted",
+  "robots": {
+    "url": "https://www.upba.org.ua/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 119,
+    "sha256": "734897ce7a803a7334a525d8dbcb2a5ffb655df38b6760352e1407bb4207a047",
+    "accessedAt": "2026-10-01T20:43:26.070Z",
+    "disallowed": []
+  }
+}

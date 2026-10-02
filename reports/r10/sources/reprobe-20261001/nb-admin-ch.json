@@ -1,0 +1,97 @@
+{
+  "sourceId": "nb-admin-ch",
+  "name": "Swiss National Library",
+  "entryUrl": "https://www.nb.admin.ch/",
+  "countryCodes": [
+    "CH"
+  ],
+  "coverageCountryCodes": [
+    "CH"
+  ],
+  "attemptedAt": "2026-10-01T20:44:14.103Z",
+  "requests": [
+    {
+      "url": "https://www.nb.admin.ch/de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 271802,
+      "sha256": "62ca6baf864a8db26ace3237e00dc3c016ba8d679764d1e735efe06a0cd7520b",
+      "accessedAt": "2026-10-01T20:44:14.735Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/newnsb?display=list&newsCategoryIDs=all&publisherIDs=729&sort=dateDecreasing&start_date=2025-01-01&topicIDs=all",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 259626,
+      "sha256": "d111e6d2ccf59df4423e850081a523895ab116435950dd018a1a6fd8f150ed88",
+      "accessedAt": "2026-10-01T20:44:15.087Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/unlesbar",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 234499,
+      "sha256": "56f4e255808f8d274b4eedb29dd10324f2c553e25b7da9a03fd585c617e980e1",
+      "accessedAt": "2026-10-01T20:44:15.256Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/rilke-zum-abschied-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 234107,
+      "sha256": "07b27932f32b765e19fbb89bc6301fa802e4966578bc23995fc3475a7b7a2e6b",
+      "accessedAt": "2026-10-01T20:44:15.442Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/swiss-press-photo-26-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 235272,
+      "sha256": "5e457b262f5c66d10a4c192b0935da55faefea13cebcc257a1003a04dc88acc0",
+      "accessedAt": "2026-10-01T20:44:15.617Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/vergangene-ausstellungen",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 270413,
+      "sha256": "2a9fe6238a3775a9dfb1907956a4876b8b6413e877e5947cdd3ef11de8102c67",
+      "accessedAt": "2026-10-01T20:44:15.800Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/vvernissage-unlesbar-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 233009,
+      "sha256": "5aa4ccfddc51f21e74513139c4a2b856434afc0f713336565025628a73a4ebe8",
+      "accessedAt": "2026-10-01T20:44:15.985Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/le-biographe-en-ses-archives-de",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 233875,
+      "sha256": "44aad705bebc56782fcd1a4f40aec6db9445397a191352199556f1de6fe8bd37",
+      "accessedAt": "2026-10-01T20:44:16.151Z"
+    },
+    {
+      "url": "https://www.nb.admin.ch/de/veranstaltungskalender",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 254432,
+      "sha256": "d5133ebc37848db61b4da33d8f069b982ce4a9c524cd07324d50851c9f92ef08",
+      "accessedAt": "2026-10-01T20:44:16.348Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.nb.admin.ch/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 68,
+    "sha256": "acfb5b745be168d2aa2ce6438569e5cd37c937d70e3bc335affc42eecb09dff8",
+    "accessedAt": "2026-10-01T20:44:14.382Z",
+    "disallowed": []
+  }
+}

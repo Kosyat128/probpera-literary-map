@@ -1,0 +1,400 @@
+{
+  "sourceId": "harpercollins-india",
+  "name": "HarperCollins India",
+  "entryUrl": "https://harpercollins.co.in/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:53.214Z",
+  "requests": [
+    {
+      "url": "https://harpercollins.co.in/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 194850,
+      "sha256": "7e19aa7fc98710e935f9b16fa03b86f5c9353316176d00dda50c5c55aa52edee",
+      "accessedAt": "2026-10-01T20:47:58.184Z"
+    },
+    {
+      "url": "https://harpercollins.co.in/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 86906,
+      "sha256": "52d15326e718d5b79fab33e7f77fe60f2c6d1e086eff01df18708dd3ecd217ae",
+      "accessedAt": "2026-10-01T20:48:00.776Z"
+    },
+    {
+      "url": "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 143820,
+      "sha256": "150ae5413de644a2176dda0c1a060c9ac63be62b3ba059f1f20792c01e3d5c8b",
+      "accessedAt": "2026-10-01T20:48:03.411Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://harpercollins.co.in/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 672,
+    "sha256": "1ed3ddc928339de9ea921071b7d8a0fa63dcef0dbbd43bd01ddcd733798fe78f",
+    "accessedAt": "2026-10-01T20:47:54.667Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-includes/",
+      "/wp-content/plugins/",
+      "/wp-content/aiowps_backups/",
+      "/wp-content/uploads/hc-import-logs/",
+      "/sales-mailer/",
+      "/userreview/",
+      "/logs/",
+      "/mailer/",
+      "/new-release-notification-mailer/",
+      "/broadcast/",
+      "/pushalert/",
+      "/old-website-bk/",
+      "/Resume/",
+      "/user_review_ajaxdata.php",
+      "/?s=",
+      "/search/",
+      "/list/"
+    ]
+  },
+  "endpoint": {
+    "id": "harpercollins-india",
+    "name": "HarperCollins India",
+    "url": "https://harpercollins.co.in/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "harpercollins-india",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://harpercollins.co.in"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:03.416Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "harpercollins-india",
+    "source": {
+      "name": "HarperCollins India",
+      "url": "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Top nutrition and wellbeing books for Indian readers",
+    "publishedAt": "2026-09-16T07:11:51.000Z",
+    "description": "Long term health is a function of the food people eat, the habits they follow, the way they manage stress, and the attention they pay to physical and mental well-being. Today there’s information about wellness everywhere, but books are still among the best ways to learn about these subjects in a more comprehensive way, as […] The post Top nutrition and wellbeing books for Indian readers appeared …",
+    "discoveredAt": "2026-10-01T20:48:00.778Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 143820,
+      "sha256": "150ae5413de644a2176dda0c1a060c9ac63be62b3ba059f1f20792c01e3d5c8b",
+      "accessedAt": "2026-10-01T20:48:03.411Z",
+      "headline": "Top nutrition and wellbeing books for Indian readers - HarperCollins",
+      "excerpt": "<style>.woocommerce-product-gallery{ opacity: 1 !important; }</style> Top nutrition and wellbeing books for Indian readers | HarperCollins India<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-P5SKQTQ\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-P5SKQTQ\" height=\"0\" width=\"0\" style=\"display:none;visib",
+      "publishedDates": [
+        {
+          "value": "2026-09-16T07:11:51+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-16T07:11:51+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-16T07:11:51+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:03.416Z",
+  "foundItems": [
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Top nutrition and wellbeing books for Indian readers",
+      "publishedAt": "2026-09-16T07:11:51.000Z",
+      "description": "Long term health is a function of the food people eat, the habits they follow, the way they manage stress, and the attention they pay to physical and mental well-being. Today there’s information about wellness everywhere, but books are still among the best ways to learn about these subjects in a more comprehensive way, as […] The post Top nutrition and wellbeing books for Indian readers appeared …",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/blog/on-his-quest-to-understand-india-more-deeply-ramachandra-guha-finds-himself-in-an-argument-with-gandhi/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On his quest to understand India more deeply, Ramachandra Guha finds himself in an argument with Gandhi.",
+      "publishedAt": "2026-09-25T12:15:31.000Z",
+      "description": "Ramachandra Guha has written on a range of topics, from Gandhi’s fiercest debates to cricket, environmentalism and the extraordinary lives that shaped India. Few figures in Indian history have inspired as much admiration, debate and disagreement as Mohandas Karamchand Gandhi. More than seven decades after his death, his ideas continue to provoke questions. It […] The post On his quest to understa…",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/editors-recommend/no-one-gets-out-of-here-alive-is-a-searching-fiercely-intimate-new-book-by-ranbir-sidhu/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A searching new novel that’s fiercely intimate",
+      "publishedAt": "2026-09-24T08:58:33.000Z",
+      "description": "No one gets out of here alive is entirely unafraid of speaking the stories families often leave untold. For Harper Broadcast, Sidhu speaks about inherited silences, Punjab’s troubled present and masculinity. But above all it speaks of belonging, and the lifelong task of imagining a freer self. Q1. ‘I wonder at this thing we call […] The post A searching new novel that’s fiercely intimate appeared…",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/uncategorized/in-conversation-with-daisy-rockwell-about-her-latest-translation-wandered-the-traveller/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Conversation with Daisy Rockwell about her latest translation, Wandered the Traveller",
+      "publishedAt": "2026-10-01T08:53:13.000Z",
+      "description": "In a candid conversation with Harper Broadcast conversation, Daisy Rockwell talks about translating Nisar Aziz Butt’s Wandered the Traveller, a 1955 Urdu novel centred on Afgar, a fiercely intellectual young woman searching for a life of her own. Daisy reflects on the challenge of translating a heroine who can move from Tolstoy and Gorky to […] The post In Conversation with Daisy Rockwell about h…",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/press-release/harpercollins-presents-animals-by-raghu-rai/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "HarperCollins presents Animals by Raghu Rai",
+      "publishedAt": "2026-09-29T10:37:01.000Z",
+      "description": "Five decades of photography. Over 200 photographs. One collectible volume. The first of Raghu Rai’s books to be published posthumously, and a deeply personal selection from the photographer’s own archive, offering a striking portrait of his enduring engagement with the natural world. Hardback | Non-fiction/Photography| 208 pp | INR 3999 Available wherever books are sold | […] The post HarperColli…",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/press-release/peck-peck-by-bonnie-garmus/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Peck & Peck by Bonnie Garmus",
+      "publishedAt": "2026-10-01T06:22:02.000Z",
+      "description": "Bonnier Books UK Paperback |Fiction | 384 pp | INR 699 Releasing October 2026 The number one bestselling author of global sensation Lessons in Chemistry, Bonnie Garmus returns with Peck & Peck, an irresistible new novel about a young man whose life turns upside down when he is hired by the most prestigious, secretive and […] The post Peck & Peck by Bonnie Garmus appeared first on HarperCollins.",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/press-release/atyukt-behuray-wins-collins-spelling-bee-season-7/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Atyukt Behuray Wins Collins Spelling Bee Season 7",
+      "publishedAt": "2026-09-29T06:50:06.000Z",
+      "description": "New Delhi, 26 September 2026 \u2013 Atyukt Behuray, a Class 8 student of Shanti Asiatic School, Ahmedabad, Gujarat, has won Collins Spelling Bee Season 7 at the national finale held at Le Méridien, Connaught Place, New Delhi. The seventh season saw participation from more than 20,000 students across the country. Following a series of online […] The post Atyukt Behuray Wins Collins Spelling Bee Season …",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/press-release/adam-eve-by-jeffrey-archer/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adam & Eve by Jeffrey Archer",
+      "publishedAt": "2026-09-25T07:52:22.000Z",
+      "description": "The breathtaking epic from the master storyteller Releasing 6 October 2026 HarperCollins Publishers India is delighted to announce the forthcoming publication of Adam & Eve, the final novel from master storyteller and global bestseller Jeffrey Archer. Set against the backdrop of two world wars, the novel tells the story of Eve, the daughter of an […] The post Adam & Eve by Jeffrey Archer appeared…",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/announcements/a-queer-shade-of-saffron/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Queer Shade of Saffron",
+      "publishedAt": "2026-09-24T08:45:10.000Z",
+      "description": "Download QR The post A Queer Shade of Saffron appeared first on HarperCollins.",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "source": {
+        "name": "HarperCollins India",
+        "url": "https://harpercollins.co.in/press-release/grenade-by-coco-mellors/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "GRENADE by Coco Mellors",
+      "publishedAt": "2026-09-17T05:29:45.000Z",
+      "description": "THE NEW NOVEL FROM THE ACCLAIMED, SUNDAY TIMES BESTSELLING AUTHOR OF BLUE SISTERS AND CLEOPATRA AND FRANKENSTEIN ‘I want to be a mother \u2013 and I want to be free.’ When filmmaker Zuzu arrives in Paris for the premiere of her first feature, she has only three days before she must return to Los Angeles to try, once […] The post GRENADE by Coco Mellors appeared first on HarperCollins.",
+      "discoveredAt": "2026-10-01T20:48:00.778Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "52d15326e718d5b79fab33e7f77fe60f2c6d1e086eff01df18708dd3ecd217ae"
+}

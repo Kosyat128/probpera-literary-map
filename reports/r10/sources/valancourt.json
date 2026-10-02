@@ -1,0 +1,32 @@
+{
+  "sourceId": "valancourt",
+  "name": "Valancourt Books",
+  "entryUrl": "https://www.valancourtbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:47.130Z",
+  "requests": [
+    {
+      "url": "https://www.valancourtbooks.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 105516,
+      "sha256": "7c34386e2d2cb680a029536146082bd054f5a7eb2b9841b3973eeada75d2a172",
+      "accessedAt": "2026-10-01T20:51:48.208Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.valancourtbooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 172,
+    "sha256": "02663b5d7ada35fc4310b753ff808a1da3c48cc0d17ee777d536e8b32afae89d",
+    "accessedAt": "2026-10-01T20:51:47.877Z",
+    "disallowed": [
+      "/ajax/",
+      "/apps/"
+    ]
+  }
+}

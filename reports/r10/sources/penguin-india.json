@@ -1,0 +1,16 @@
+{
+  "sourceId": "penguin-india",
+  "name": "Penguin India",
+  "entryUrl": "https://www.penguin.co.in/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:53.464Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_406",
+  "robots": {
+    "url": "https://www.penguin.co.in/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  }
+}

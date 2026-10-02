@@ -1,0 +1,389 @@
+{
+  "sourceId": "biblioasis",
+  "name": "Biblioasis",
+  "entryUrl": "https://www.biblioasis.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:50.284Z",
+  "requests": [
+    {
+      "url": "https://www.biblioasis.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 153578,
+      "sha256": "8037ae28d0d5be8c9a0f49d24cbcb1522f5f09e336b40f73e6c0b573649f978e",
+      "accessedAt": "2026-10-01T20:47:51.619Z"
+    },
+    {
+      "url": "https://www.biblioasis.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml",
+      "bytes": 171798,
+      "sha256": "8af688b76b8ada370d72001f8b48ebc3781ba94f94b018d0fcbeae65b84929b8",
+      "accessedAt": "2026-10-01T20:47:52.270Z"
+    },
+    {
+      "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 192450,
+      "sha256": "a486eb52631b05fad67dac04ca3ee991ce84c4f260abaa9c319cdacf23c21b8a",
+      "accessedAt": "2026-10-01T20:47:52.935Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.biblioasis.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 294,
+    "sha256": "9f44f9cadc02419c09ad8918df94e8d2974446387ba56fb3c0ad3de3002a2436",
+    "accessedAt": "2026-10-01T20:47:50.965Z",
+    "disallowed": [
+      "/events/action~posterboard/",
+      "/events/action~agenda/",
+      "/events/action~oneday/",
+      "/events/action~month/",
+      "/events/action~week/",
+      "/events/action~stream/",
+      "/*add-to-cart=*"
+    ]
+  },
+  "endpoint": {
+    "id": "biblioasis",
+    "name": "Biblioasis",
+    "url": "https://www.biblioasis.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "biblioasis",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.biblioasis.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/"
+    ],
+    "verifiedAt": "2026-10-01T20:47:52.945Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "biblioasis",
+    "source": {
+      "name": "Biblioasis",
+      "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize!",
+    "publishedAt": "2026-03-18T21:03:17.000Z",
+    "description": "Biblioasis is thrilled to share that this morning on Wednesday, March 18, the Writers’ Trust announced their finalists for the 2026 Shaughnessy Cohen Prize for Political Writing, which included both […] The post ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize! appeared first on Biblioasis.",
+    "discoveredAt": "2026-10-01T20:47:52.273Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 192450,
+      "sha256": "a486eb52631b05fad67dac04ca3ee991ce84c4f260abaa9c319cdacf23c21b8a",
+      "accessedAt": "2026-10-01T20:47:52.935Z",
+      "headline": "Blog - Latest News",
+      "excerpt": "Biblioasis is thrilled to share that this morning on Wednesday, March 18, the Writers’ Trust announced their finalists for the 2026 Shaughnessy Cohen Prize for Political Writing, which included both On Book Banning by Ira Wells and On Oil by Don Gillmor! About On Book Banning, the jury wrote: “Ira Wells offers direct and incisive writing that brings suppressed voices into the light and challenges ",
+      "publishedDates": [
+        {
+          "value": "2026-03-18T21:03:17+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-03-18T21:03:17+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-03-18T21:03:17+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:52.945Z",
+  "foundItems": [
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize!",
+      "publishedAt": "2026-03-18T21:03:17.000Z",
+      "description": "Biblioasis is thrilled to share that this morning on Wednesday, March 18, the Writers’ Trust announced their finalists for the 2026 Shaughnessy Cohen Prize for Political Writing, which included both […] The post ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize! appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/decadence-finalist-hilary-weston-prize/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "DECADENCE a finalist for the 2026 Hilary Weston Writers’ Trust Prize for Nonfiction!",
+      "publishedAt": "2026-09-09T15:05:21.000Z",
+      "description": "Biblioasis is thrilled to share that Decadence by Richard Kelly Kemick has been announced as a finalist for the 2026 Hilary Weston Writers’ Trust Prize for Nonfiction! You can check […] The post DECADENCE a finalist for the 2026 Hilary Weston Writers’ Trust Prize for Nonfiction! appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/daphnis-and-chloe-longlisted-for-the-giller-prize/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "DAPHNIS AND CHLOE longlisted for the Giller Prize!",
+      "publishedAt": "2026-09-08T15:16:51.000Z",
+      "description": "Biblioasis is thrilled to share that Colin McAdam’s Daphnis and Chloe has been longlisted for the 2026 Giller Prize! The longlist of fourteen works was selected for the first time […] The post DAPHNIS AND CHLOE longlisted for the Giller Prize! appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/memoir-is-bullshit/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Memoir is bullshit",
+      "publishedAt": "2026-07-02T20:57:22.000Z",
+      "description": "An interview with Richard Kelly Kemick, author of Decadence I think what I love most about Richard Kelly Kemick’s work\u2014regardless of whether he’s writing poetry, fiction, or nonfiction\u2014is his emotional […] The post Memoir is bullshit appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/john-metcalf-on-alex-pugsley/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Metcalf on Alex Pugsley",
+      "publishedAt": "2026-05-15T20:24:54.000Z",
+      "description": "In this week’s Bibliophile, we’re pleased to feature the following guest article by Biblioasis senior editor John Metcalf on the works of Alex Pugsley. Silver Lake, the third installment of Pugsley’s Aubrey […] The post John Metcalf on Alex Pugsley appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/the-mechanics-of-obliviousness/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Mechanics of Obliviousness",
+      "publishedAt": "2026-04-24T20:42:53.000Z",
+      "description": "An excerpt from one of the last interviews with Elaine Dewar I was heading down I-75 in Michigan on a short family vacation almost four years ago to the day […] The post The Mechanics of Obliviousness appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/our-seasons/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our seasons",
+      "publishedAt": "2026-04-17T20:51:22.000Z",
+      "description": "An interview with David Macfarlane, author of On Sports The other week, in The Tyee, the writer Cole Nowicki wrote an excellent essay about sports and money, using David Macfarlane’s new […] The post Our seasons appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/night-shift-with-the-bicycle-cops/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Night shift with the bicycle cops",
+      "publishedAt": "2026-04-10T16:56:53.000Z",
+      "description": "An interview with Don Gillmor, author of Cherry Beach Don Gillmor’s latest book\u2014a layered literary crime thriller called Cherry Beach\u2014comes out next Tuesday and has already been leading our Canadian sales […] The post Night shift with the bicycle cops appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/in-strange-company/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In strange company",
+      "publishedAt": "2026-04-02T15:57:13.000Z",
+      "description": "Poems from Who Else in the Dark Headed There by Garth Martens Since it’s Poetry Month, and we’re standing at the threshold of the long Easter weekend, I want to […] The post In strange company appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "source": {
+        "name": "Biblioasis",
+        "url": "https://www.biblioasis.com/the-sound-of-the-crowd/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The sound of the crowd",
+      "publishedAt": "2026-03-27T15:41:00.000Z",
+      "description": "Welcoming baseball season with an excerpt from On Sports by David Macfarlane It’s the start of baseball season. I’m sure most of you already knew that. I don’t watch much […] The post The sound of the crowd appeared first on Biblioasis.",
+      "discoveredAt": "2026-10-01T20:47:52.273Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8af688b76b8ada370d72001f8b48ebc3781ba94f94b018d0fcbeae65b84929b8"
+}

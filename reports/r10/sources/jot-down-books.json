@@ -1,0 +1,22 @@
+{
+  "sourceId": "jot-down-books",
+  "name": "Jot Down Cultural Magazine",
+  "entryUrl": "https://www.jotdown.es/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:55.090Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.jotdown.es/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 118,
+    "sha256": "10cc9fd775d9044738660013181835b786b8fc60e589835da0b0095960e9c7c0",
+    "accessedAt": "2026-10-01T20:51:55.305Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

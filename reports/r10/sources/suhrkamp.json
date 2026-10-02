@@ -1,0 +1,49 @@
+{
+  "sourceId": "suhrkamp",
+  "name": "Suhrkamp",
+  "entryUrl": "https://www.suhrkamp.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:10.527Z",
+  "requests": [
+    {
+      "url": "https://www.suhrkamp.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 806291,
+      "sha256": "83e79e5e2d97313615424e3cb959ca5b1641e3c4c3c693bb6adabfb4ef381f33",
+      "accessedAt": "2026-10-01T20:48:11.268Z"
+    },
+    {
+      "url": "https://www.suhrkamp.de/presse/willkommen-s-1335",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 234671,
+      "sha256": "d0d16213ec520f0f26b26c7cd43bd96c18782bd9082ed5da4b2310569f31f30f",
+      "accessedAt": "2026-10-01T20:48:11.575Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.suhrkamp.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 637,
+    "sha256": "12106de3aa2d31d04e85dcff5179caad495d41981e4adccf9a4595b734e595cb",
+    "accessedAt": "2026-10-01T20:48:11.045Z",
+    "disallowed": [
+      "/lucee-api/",
+      "/api/",
+      "/steps/",
+      "/login",
+      "/account",
+      "/login/",
+      "/account/",
+      "/search",
+      "/search/",
+      "/rights/search",
+      "/rights/search/"
+    ]
+  }
+}

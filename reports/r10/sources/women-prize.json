@@ -1,0 +1,273 @@
+{
+  "sourceId": "women-prize",
+  "name": "Women’s Prize for Fiction",
+  "entryUrl": "https://womensprize.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:44.546Z",
+  "requests": [
+    {
+      "url": "https://womensprize.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 186271,
+      "sha256": "1b14d1a78199fac3e8b821e0971dde4930775e6738cfcb65ea20f8167af8f867",
+      "accessedAt": "2026-10-01T20:48:45.097Z"
+    },
+    {
+      "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 196520,
+      "sha256": "13022325057f1c0a1ab52522b1be982239215c402090ca95f1a81cea5be11a23",
+      "accessedAt": "2026-10-01T20:48:47.357Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://womensprize.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 473,
+    "sha256": "6b59f6ba188ceb1447463ff5172804c9feb36a666619a9a0bb9eeafd39c15263",
+    "accessedAt": "2026-10-01T20:48:45.021Z",
+    "disallowed": [
+      "/admin/wp-content/uploads/wc-logs/",
+      "/admin/wp-content/uploads/woocommerce_transient_files/",
+      "/admin/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/admin/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "women-prize",
+    "name": "Women’s Prize for Fiction",
+    "url": "https://womensprize.com/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "women-prize",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://womensprize.com"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/prizes\\/[^/]+\\/?$|^\\/event\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:47.365Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 6,
+  "literaryCandidateCount": 6,
+  "sample": {
+    "sourceId": "women-prize",
+    "source": {
+      "name": "Women’s Prize for Fiction",
+      "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Write like a Reader with Daisy Buchanan - SOLD OUT",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:45.173Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 196520,
+      "sha256": "13022325057f1c0a1ab52522b1be982239215c402090ca95f1a81cea5be11a23",
+      "accessedAt": "2026-10-01T20:48:47.357Z",
+      "headline": "Write like a Reader with Daisy Buchanan \u2013 SOLD OUT",
+      "excerpt": "Write like a Reader with Daisy Buchanan - SOLD OUT - Women's Prize : Women's Prize <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style> <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-MVMLTCHD\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> Search Looking for a book or author? Head to our library to discover your next read. Home > Events > Write",
+      "publishedDates": [
+        {
+          "value": "2026-07-22T10:14:41+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:47.365Z",
+  "foundItems": [
+    {
+      "sourceId": "women-prize",
+      "source": {
+        "name": "Women’s Prize for Fiction",
+        "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Write like a Reader with Daisy Buchanan - SOLD OUT",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:45.173Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "women-prize",
+      "source": {
+        "name": "Women’s Prize for Fiction",
+        "url": "https://womensprize.com/event/new-voices-womens-prize-discoveries/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Voices: Women's Prize Discoveries",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:45.173Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "women-prize",
+      "source": {
+        "name": "Women’s Prize for Fiction",
+        "url": "https://womensprize.com/writing-tips-from-the-2027-discoveries-judges/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers' Toolkit Writing tips from the 2027 Discoveries Judges",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:45.173Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "women-prize",
+      "source": {
+        "name": "Women’s Prize for Fiction",
+        "url": "https://womensprize.com/discoveries-launches-for-2027/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "News Discoveries Launches for 2027",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:45.173Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "women-prize",
+      "source": {
+        "name": "Women’s Prize for Fiction",
+        "url": "https://womensprize.com/fiona-valpy-how-i-research/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writers' Toolkit Fiona Valpy: How I Research",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:45.173Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "women-prize",
+      "source": {
+        "name": "Women’s Prize for Fiction",
+        "url": "https://womensprize.com/introducing-originators/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "News Introducing Originators",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:45.173Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "1b14d1a78199fac3e8b821e0971dde4930775e6738cfcb65ea20f8167af8f867"
+}

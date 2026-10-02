@@ -1,0 +1,93 @@
+{
+  "sourceId": "letterenfonds",
+  "name": "Dutch Foundation for Literature",
+  "entryUrl": "https://www.letterenfonds.nl/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:02.366Z",
+  "requests": [
+    {
+      "url": "https://www.letterenfonds.nl/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 275332,
+      "sha256": "5a03663b47640ac29189d81454678f1c9c49c10decdba199d2daf7e27a95593e",
+      "accessedAt": "2026-10-01T20:52:02.907Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/actueel/johannes-vermeerprijs-2026-naar-babs-gons",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 274122,
+      "sha256": "924f635347bcb86a9a7ba8a237b1289b8c290ba267dd5e6e385ae1502a2f390e",
+      "accessedAt": "2026-10-01T20:52:03.233Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/vertalingendatabase-1",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 210439,
+      "sha256": "73eedc4d373ea8d984682086ac029f564d27c143176a83cebf72d282f6b3f84b",
+      "accessedAt": "2026-10-01T20:52:03.375Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/veelgestelde-vragen",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 267205,
+      "sha256": "a3cff52a442f0b5251bccd6d770f2ec395510283cbed4fee2d5e9f625b606330",
+      "accessedAt": "2026-10-01T20:52:03.528Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/ontmoet-het-team",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1044896,
+      "sha256": "be40023701570987a436718e6fc085e9a4e3bd53ecdf9fdc938175f99cf66f70",
+      "accessedAt": "2026-10-01T20:52:03.759Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/subsidiewijzer",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 1100141,
+      "sha256": "02b180acdcb119745e40ebe07aa189677051ea17b1102dc8a6223ae039bc2ebe",
+      "accessedAt": "2026-10-01T20:52:04.043Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/over-het-fonds",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 235387,
+      "sha256": "871c6b2cf1d3b0fbcd7381ef12f92278bedf82bd9733ed7b6969ef42a99c3637",
+      "accessedAt": "2026-10-01T20:52:04.274Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/actueel/visitatiecommissie-prijst-sterke-band-rijkscultuurfondsen-met-eigen-sector",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 222375,
+      "sha256": "43bb112f658460ddd293eec05dca73aa42e202f46014920dced8c05b903b734f",
+      "accessedAt": "2026-10-01T20:52:04.426Z"
+    },
+    {
+      "url": "https://www.letterenfonds.nl/actueel/in-memoriam-sjoerd-kuyper",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 212173,
+      "sha256": "f46966f0524efba9a6b0b058fb43542fb98637b60f038ed39b0b728cb7f3bb88",
+      "accessedAt": "2026-10-01T20:52:04.568Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.letterenfonds.nl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1322,
+    "sha256": "04f52857cffd08497477f03fdab6b1a89d1c16f5758a580751b3daac1b2fd7e7",
+    "accessedAt": "2026-10-01T20:52:02.673Z",
+    "disallowed": []
+  }
+}

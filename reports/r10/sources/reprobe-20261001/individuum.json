@@ -1,0 +1,130 @@
+{
+  "sourceId": "individuum",
+  "name": "Individuum",
+  "entryUrl": "https://individuum.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:41.545Z",
+  "requests": [
+    {
+      "url": "https://individuum.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 52565,
+      "sha256": "a0cbcc3e4b8d888ee7f780ef76af64700e42c9f10edef140f24f14caae9c15e0",
+      "accessedAt": "2026-10-01T20:44:41.976Z"
+    },
+    {
+      "url": "https://individuum.ru/books/pesni-dzhinnov/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 19371,
+      "sha256": "e0e67e37378586514e145db9297891dd63b128df43287cabf783ccb1a8f0be2e",
+      "accessedAt": "2026-10-01T20:44:42.109Z"
+    },
+    {
+      "url": "https://individuum.ru/books/povest-ob-uzhase-istoriya-goticheskogo-romana/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21885,
+      "sha256": "8496ba0969a5325bd9dca3e048aca1b2b10c1fd8abc5f65badb43982f3141ed9",
+      "accessedAt": "2026-10-01T20:44:42.234Z"
+    },
+    {
+      "url": "https://individuum.ru/books/brazhniki-i-bludnitsy-podarochnoe-izdanie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 20177,
+      "sha256": "ed9e00f3dca37669152dff38e901496a60794992f31d84f7480d476705b25fbd",
+      "accessedAt": "2026-10-01T20:44:42.397Z"
+    },
+    {
+      "url": "https://individuum.ru/books/vypuskayte-demonov-kak-risovat-s-udovolstviem/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 19894,
+      "sha256": "ac9d84ad981fc7969d534a9ec588d27970f529a688851b48b6d1b70b43745873",
+      "accessedAt": "2026-10-01T20:44:42.502Z"
+    },
+    {
+      "url": "https://individuum.ru/books/dver-v-dver-kak-natsisty-i-evrei-okazalis-sosedyami-po-emigratsii-v-argentine/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 22122,
+      "sha256": "7fd3a4fc5240bedc7c1b5a80e263f1e072cd92f50e2d99c2066bb072c2854d9b",
+      "accessedAt": "2026-10-01T20:44:42.630Z"
+    },
+    {
+      "url": "https://individuum.ru/books/koreyskiy-pleylist-kak-k-pop-pomogaet-ponyat-sovremennyy-mir/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21001,
+      "sha256": "456399c5ba4898fc19d1e383d3ef9d6b79bdbf623c85e9a633aafce552e101b0",
+      "accessedAt": "2026-10-01T20:44:42.884Z"
+    },
+    {
+      "url": "https://individuum.ru/books/kolumbusshtrasse-semeynaya-istoriya-1935-1945/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 23404,
+      "sha256": "4fe5049fdd774d57b60e659c480664b94631f31696683e10a7184a667f249e4f",
+      "accessedAt": "2026-10-01T20:44:42.992Z"
+    },
+    {
+      "url": "https://individuum.ru/books/dendrarium-pyat-sadov-zaklyuchennogo-degtyaryeva/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 21136,
+      "sha256": "f6520d91fd52251504aaf11b736a6bd6479ebca98d022acb48642d6fcf726bdb",
+      "accessedAt": "2026-10-01T20:44:43.114Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://individuum.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 1015,
+    "sha256": "646c3507e269e88d4e1cc1f8738e35d2281a6e310c07177905214f5118360ff5",
+    "accessedAt": "2026-10-01T20:44:41.873Z",
+    "disallowed": [
+      "*/index.php",
+      "/bitrix/",
+      "/*show_include_exec_time=",
+      "/*show_page_exec_time=",
+      "/*show_sql_stat=",
+      "/*bitrix_include_areas=",
+      "/*clear_cache=",
+      "/*clear_cache_session=",
+      "/*ADD_TO_COMPARE_LIST",
+      "/*ORDER_BY",
+      "/*PAGEN",
+      "/*?print=",
+      "/*&print=",
+      "/*print_course=",
+      "/*?action=",
+      "/*&action=",
+      "/*register=",
+      "/*forgot_password=",
+      "/*change_password=",
+      "/*login=",
+      "/*logout=",
+      "/*auth=",
+      "/*backurl=",
+      "/*back_url=",
+      "/*BACKURL=",
+      "/*BACK_URL=",
+      "/*back_url_admin=",
+      "/*?utm_source=",
+      "/*?bxajaxid=",
+      "/*&bxajaxid=",
+      "/*?view_result=",
+      "/*&view_result="
+    ]
+  }
+}

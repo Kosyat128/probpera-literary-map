@@ -1,0 +1,399 @@
+{
+  "sourceId": "corpus",
+  "name": "Corpus",
+  "entryUrl": "https://www.corpus.ru/",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:41.584Z",
+  "requests": [
+    {
+      "url": "https://www.corpus.ru/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 151512,
+      "sha256": "5533ddfe5b376a4b3183c0724d22e189b5c280a2e6ba1d313011c1e2d7154f71",
+      "accessedAt": "2026-10-01T20:44:42.237Z"
+    },
+    {
+      "url": "https://www.corpus.ru/news/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 46218,
+      "sha256": "98bc7f2779a5c15b58025c0ef03361a1a6c9fce6727fde5ebc51a847d9c9c6bf",
+      "accessedAt": "2026-10-01T20:44:42.404Z"
+    },
+    {
+      "url": "https://www.corpus.ru/news/obyavlen-short-list-bukerovskoj-premii-2026-goda.htm",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 45125,
+      "sha256": "de7e3d21b0a4e26aefde383abab61208d7ad53d768a6f4e2f059f09c5718fba2",
+      "accessedAt": "2026-10-01T20:44:42.543Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.corpus.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 533,
+    "sha256": "00ed56f1a688665b0fe40c1f6a1f18182694ee5236d1798a8097e68e428444ba",
+    "accessedAt": "2026-10-01T20:44:42.012Z",
+    "disallowed": [
+      "/tag/",
+      "/*login",
+      "/viewcart/",
+      "/search_results/",
+      "/forgot_pass/",
+      "/*news_zoom",
+      "/adv_search/",
+      "/*?section",
+      "/index.php?",
+      "/orderthankyou/",
+      "/*?fb_action",
+      "*/*?&params",
+      "/cms/",
+      "/css/",
+      "/js/",
+      "/*.php",
+      "*/?params*",
+      "/?cat=",
+      "/?page_id=",
+      "*/?&params*",
+      "/?&params",
+      "/*.rss"
+    ]
+  },
+  "endpoint": {
+    "id": "corpus",
+    "name": "Corpus",
+    "url": "https://www.corpus.ru/news/",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "eksmo-ast",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.corpus.ru"
+    ],
+    "linkPattern": "^\\/\\/[^/]+\\/?$|^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.corpus.ru/news/obyavlen-short-list-bukerovskoj-premii-2026-goda.htm"
+    ],
+    "verifiedAt": "2026-10-01T20:44:42.546Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "corpus",
+    "source": {
+      "name": "Corpus",
+      "url": "https://www.corpus.ru/news/obyavlen-short-list-bukerovskoj-premii-2026-goda.htm",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "23 сентября 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:42.415Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.corpus.ru/news/obyavlen-short-list-bukerovskoj-premii-2026-goda.htm",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 45125,
+      "sha256": "de7e3d21b0a4e26aefde383abab61208d7ad53d768a6f4e2f059f09c5718fba2",
+      "accessedAt": "2026-10-01T20:44:42.543Z",
+      "headline": "Объявлен шорт-лист Букеровской премии 2026 года",
+      "excerpt": "Объявлен шорт-лист Букеровской премии 2026 года <div><img src=\"https://mc.yandex.ru/watch/21913648\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div> Corpus Новости Объявлен шорт-лист Букеровской премии 2026 года Объявлен шорт-лист Букеровской премии 2026 года 23 сентября 2026 Организаторы Букеровской премии объявили короткий список претендентов на одну из самых престижных наград в мире анг",
+      "publishedDates": [],
+      "canonical": "https://www.corpus.ru/news/obyavlen-short-list-bukerovskoj-premii-2026-goda.htm",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:42.546Z",
+  "foundItems": [
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/obyavlen-short-list-bukerovskoj-premii-2026-goda.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "23 сентября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/prokat-vyshel-dokumentalnyj-film-o-pokushenii-na-salmana-rushdi.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "28 сентября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/svoboda-prihodit-v-polnoch-voshla-v-short-list-premii-prosvetitel-perevod.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "21 сентября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/leonid-parfyonov-predstavit-dokumentalnyj-film-nabokove-novyj-tom-namedni.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "15 сентября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/novyj-roman-patrika-de-vitta-dodzh-citi-nominirovan-na-premiyu-giller.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "09 сентября 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/umer-vengerskij-pisatel-peter-nadash.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "27 августа 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/novyj-roman-fred-vargas-o-komissare-adamberge-vyjdet-v-izdatelstve-corpus.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "24 августа 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/dve-knigi-corpus-voshli-v-spisok-luchshih-trillerov-xxi-veka-po-versii-the-new-york-times.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "20 августа 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/kino-vyhodit-film-o-shef-povare-ehntoni-burdene-avtore-bestsellera-myaso-s-krovyu.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "12 августа 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "corpus",
+      "source": {
+        "name": "Corpus",
+        "url": "https://www.corpus.ru/news/novyj-film-paolo-sorrentino-poluchil-italyanskij-zolotoj-globus.htm",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "07 августа 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:42.415Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "98bc7f2779a5c15b58025c0ef03361a1a6c9fce6727fde5ebc51a847d9c9c6bf"
+}

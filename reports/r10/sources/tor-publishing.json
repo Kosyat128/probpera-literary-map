@@ -1,0 +1,16 @@
+{
+  "sourceId": "tor-publishing",
+  "name": "Tor Publishing Group",
+  "entryUrl": "https://torpublishinggroup.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:53.202Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://us.macmillan.com",
+  "robots": {
+    "url": "https://torpublishinggroup.com/robots.txt",
+    "error": "external_redirect:https://us.macmillan.com",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "sourceId": "jbpa-or-jp",
+  "name": "Japan Book Publishers Association",
+  "entryUrl": "https://www.jbpa.or.jp/",
+  "countryCodes": [
+    "JP"
+  ],
+  "coverageCountryCodes": [
+    "JP"
+  ],
+  "attemptedAt": "2026-10-01T20:42:47.690Z",
+  "requests": [
+    {
+      "url": "https://www.jbpa.or.jp/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 20357,
+      "sha256": "1fef0f1535467190c423642379b5fc624aa1b14115cd1429a64d25224f723feb",
+      "accessedAt": "2026-10-01T20:42:49.587Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.jbpa.or.jp/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

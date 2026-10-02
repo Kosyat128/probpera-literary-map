@@ -1,0 +1,46 @@
+{
+  "checkedAt": "2026-10-01T22:06:54.143Z",
+  "scope": "Next patch, exact historical reverse projections and source-before-site social links",
+  "productionApplied": false,
+  "humanReview": false,
+  "releaseAccepted": false,
+  "nextVersion": "16.3.8",
+  "productionAudit": {
+    "exitCode": 0,
+    "totalVulnerabilities": 0
+  },
+  "offlineLockfileRevalidation": {
+    "exitCode": 0,
+    "byteIdentical": true,
+    "lifecycleScriptsExecuted": false,
+    "sharedNodeModulesChanged": false
+  },
+  "focusedTests": {
+    "files": 10,
+    "passed": 209,
+    "failed": 0
+  },
+  "articleEvidenceAndScopedSelectorTests": {
+    "files": 2,
+    "passed": 7,
+    "failed": 0
+  },
+  "current26ParserProofCheck": {
+    "records": 26,
+    "allOriginalProofQuotesGrounded": true,
+    "acceptedRecordsUnchanged": true,
+    "recordSha256": "6404a12b9474c7b66ba4719f65c4bbc009fa153aebff1050a496eab86e865e7d"
+  },
+  "socialLinks": {
+    "order": [
+      "original article",
+      "https://probpera.ru/#literary-news"
+    ],
+    "photoCaptionVisibleUrls": true,
+    "longUrlCaption": "Native clickable source and site labels retain complete facts",
+    "textFallbackRetained": true,
+    "templateRevisionChangesExistingPostAtSameRemoteId": true
+  },
+  "actualPatchedAdminBuild": "Pending remote CI npm ci using Next16.3.8; shared local node_modules remain16.3.3",
+  "lockfileSha256": "a843cb079f56ec07db5742fe41bfe2041e58523eabc711a6ca5a327904bd565c"
+}

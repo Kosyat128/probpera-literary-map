@@ -1,0 +1,33 @@
+{
+  "sourceId": "colibri",
+  "name": "Colibri",
+  "entryUrl": "https://www.colibri.bg/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:37.002Z",
+  "requests": [
+    {
+      "url": "https://www.colibri.bg/__superjs/challenge?u=%2F",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 364,
+      "sha256": "16d03e61746402463e8cf2331a2ebdfbb6cffa2977527956ed34620fc30299e3",
+      "accessedAt": "2026-10-01T20:48:37.651Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.colibri.bg/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 215,
+    "sha256": "4cb3e1459d88a0d0ee5cba709bdf2aa254ecd20d9ecedd30c7e0e7f15fd83c70",
+    "accessedAt": "2026-10-01T20:48:37.492Z",
+    "disallowed": [
+      "*filter",
+      "*currency",
+      "*f_sort"
+    ]
+  }
+}

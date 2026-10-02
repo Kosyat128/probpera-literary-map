@@ -1,0 +1,249 @@
+{
+  "sourceId": "rara-ee",
+  "name": "National Library of Estonia",
+  "entryUrl": "https://www.rara.ee/",
+  "countryCodes": [
+    "EE"
+  ],
+  "coverageCountryCodes": [
+    "EE"
+  ],
+  "attemptedAt": "2026-10-01T20:43:53.584Z",
+  "requests": [
+    {
+      "url": "https://www.rara.ee/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 611006,
+      "sha256": "5873969af0fd48e15e9c208aed3e92f7b996917a32dacd91f42a22cd33afe36d",
+      "accessedAt": "2026-10-01T20:43:55.266Z"
+    },
+    {
+      "url": "https://www.rara.ee/rekonstrueerimine/valmistume-avamiseks-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 169080,
+      "sha256": "7de7e6deb8499731d06a7eb1bb231c4ebaa1218578cb1dc85a219ca96638a62a",
+      "accessedAt": "2026-10-01T20:43:56.407Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.rara.ee/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 201,
+    "sha256": "051e27c99bd76ee788a190d8cef7d65bc6eb7c3d0dbe7ffc57e9d9eeaf3b2000",
+    "accessedAt": "2026-10-01T20:43:54.329Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "rara-ee",
+    "name": "National Library of Estonia",
+    "url": "https://www.rara.ee/",
+    "format": "html",
+    "language": "et",
+    "region": "europe",
+    "sourceFamilyId": "rara-ee",
+    "countryCodes": [
+      "EE"
+    ],
+    "coverageCountryCodes": [
+      "EE"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.rara.ee"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/sirvi\\/[^/]+\\/?$|^\\/uuri\\/[^/]+\\/?$|^\\/laenuta\\/[^/]+\\/?$|^\\/partnerile\\/[^/]+\\/?$|^\\/pimedate\\x2draamatukogu\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.rara.ee/rekonstrueerimine/"
+    ],
+    "verifiedAt": "2026-10-01T20:43:56.418Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "rara-ee",
+    "source": {
+      "name": "National Library of Estonia",
+      "url": "https://www.rara.ee/rekonstrueerimine/",
+      "language": "et"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Valmistume avamiseks 2027",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:43:55.437Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.rara.ee/rekonstrueerimine/valmistume-avamiseks-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 169080,
+      "sha256": "7de7e6deb8499731d06a7eb1bb231c4ebaa1218578cb1dc85a219ca96638a62a",
+      "accessedAt": "2026-10-01T20:43:56.407Z",
+      "headline": "Valmistume avamiseks 2027",
+      "excerpt": "Uus Tõnismäe hoone Vaata lahtiolekuaegu Ava info Tagasi Tõnismäele! Valmistume avamiseks 2027 RaRa Solarise saatkond E-L 10-20, P 10-19 Muud lahtiolekuajad [email protected] +372 6307 100 Avaleht Rekonstrueerimine Valmistume avamiseks 2027 Valmistume avamiseks 2027 Kolime asenduspinnalt Tõnismäele. Kuidas see käib? Ehitaja annab rekonstrueeritud Tõnismäe hoone Eesti Rahvusraamatukogule (RaRa) üle ",
+      "publishedDates": [
+        {
+          "value": "2025-04-25T09:38:22+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.rara.ee/rekonstrueerimine/valmistume-avamiseks-2027/",
+      "language": "et",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:43:56.418Z",
+  "foundItems": [
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/rekonstrueerimine/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Valmistume avamiseks 2027",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:55.437Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/kuidas-laenutada/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Kuidas laenutada?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:55.437Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/pimedate-raamatukogu/uudised/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Pimedate raamatukogu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:55.437Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/hoiuraamatukogu/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Hoiuraamatukogu",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:55.437Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "rara-ee",
+      "source": {
+        "name": "National Library of Estonia",
+        "url": "https://www.rara.ee/laenuta/kasutajaks-registreerumine/",
+        "language": "et"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "raamatukogu kasutajaks registreerumise",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:43:55.437Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "5873969af0fd48e15e9c208aed3e92f7b996917a32dacd91f42a22cd33afe36d"
+}

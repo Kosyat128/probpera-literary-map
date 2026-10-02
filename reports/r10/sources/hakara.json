@@ -1,0 +1,381 @@
+{
+  "sourceId": "hakara",
+  "name": "Hakara",
+  "entryUrl": "https://www.hakara.in/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:10.637Z",
+  "requests": [
+    {
+      "url": "https://hakara.in/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 961335,
+      "sha256": "47d9b505f7956485ed48a9d65b7f8984615966b05cfaf54b291326a8c3f41ecf",
+      "accessedAt": "2026-10-01T20:52:14.894Z"
+    },
+    {
+      "url": "https://hakara.in/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 565917,
+      "sha256": "a6f4d50209b3ff88708211dbfd10dd0d758745c348ffb8ecd8f4ff3c6259fbb7",
+      "accessedAt": "2026-10-01T20:52:16.296Z"
+    },
+    {
+      "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 612590,
+      "sha256": "3edfb87fbeff94e099b17c4ff3a2bfe6f01c490652504c6b6c7ec3f0676171d1",
+      "accessedAt": "2026-10-01T20:52:17.358Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://hakara.in/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 250,
+    "sha256": "d4807fcdaba24d68bf66e13a32e6773c4072a9bfc2e24c0f94c39128ff952955",
+    "accessedAt": "2026-10-01T20:52:12.885Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "hakara",
+    "name": "Hakara",
+    "url": "https://hakara.in/feed/",
+    "format": "rss",
+    "language": "mr-IN",
+    "region": "global",
+    "sourceFamilyId": "hakara",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://hakara.in"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://hakara.in/ten-poems-bedarkar-gummuluri/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:17.477Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "hakara",
+    "source": {
+      "name": "Hakara",
+      "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+      "language": "mr-IN"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri",
+    "publishedAt": "2026-05-24T08:17:28.000Z",
+    "description": "मराठी | English 1 Pull yourself togetherBirds are bound to fly awayWhat sorrow in that… A few tracesRemain with youUse thoseTo live by, with resolve History sees only remainsAs living… The post ‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri appeared first on ​हाकारा । hākārā.",
+    "discoveredAt": "2026-10-01T20:52:16.306Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 612590,
+      "sha256": "3edfb87fbeff94e099b17c4ff3a2bfe6f01c490652504c6b6c7ec3f0676171d1",
+      "accessedAt": "2026-10-01T20:52:17.358Z",
+      "headline": "Ten Poems: Swanand Bedarkar | Satya Gummuluri",
+      "excerpt": "Ten Poems: Swanand Bedarkar | Satya Gummuluri Skip to content Skip to footer ​हाकारा । hākārāA bilingual online journal of creative expression Close ‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri 24 मे , 2026 आवृत्ती २५: हाक/ Edition 25: Call Discover An Author Swanand Bedarkar स्वानंद बेदरकर हे 'साहित्य' ह्या विषयातील नव्या पिढीतील आश्वासक नाव आहे. भारतीय सं",
+      "publishedDates": [
+        {
+          "value": "2026-05-24T08:17:28+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-05-24T08:17:28+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-05-24T08:17:28+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+      "language": "mr-IN",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:17.477Z",
+  "foundItems": [
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri",
+      "publishedAt": "2026-05-24T08:17:28.000Z",
+      "description": "मराठी | English 1 Pull yourself togetherBirds are bound to fly awayWhat sorrow in that… A few tracesRemain with youUse thoseTo live by, with resolve History sees only remainsAs living… The post ‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/four-poems-srajana-kaikini/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘Four Poems’: Srajana Kaikini",
+      "publishedAt": "2026-05-24T22:59:30.000Z",
+      "description": "Jamun Pop This cask is full of jamunRhinestone memories, jaded diamonds,Gulp it in, spit it out. As if the blind gods spat out by Kolhatkar in Pandharpur,suddenly got stuck in my… The post ‘Four Poems’: Srajana Kaikini appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/of-wires-and-tenderness-a-coming-of-age-marathi/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘तारा आणि हळवेपणाच्या गोष्टी : मोठं होत जाण्याची कहाणी’ | मूळ कथन : स्नेहा बिस्वास । मराठी अनुवाद : प्रिया साठे",
+      "publishedAt": "2026-05-24T11:59:05.000Z",
+      "description": "मराठी | English जागतिकीकरणाच्या व्यापक सांस्कृतिक वातावरणात, दूरसंचार-साधनांनी लेखिकेची वैयक्तिक जडणघडण कशी घडवली, याचा वेध घेणारं हे दृश्यात्मक आत्मकथनात्मक लेखन आहे. मानवी आयुष्य संवादातून घडत जातं. आपल्याला उपलब्ध असलेल्या संवादमाध्यमांमुळे… The post ‘तारा आणि हळवेपणाच्या गोष्टी : मोठं होत जाण्याची कहाणी’ | मूळ कथन : स्नेहा बिस्वास । मराठी अनुवाद : प्रिया साठे appeared first on ​हाकारा । hākār…",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/the-roast-potato-party-das-sathe-marathi/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘द रोस्ट पोटॅटो पार्टी’: मूळ कथन : प्रीतम दास । मराठी अनुवाद : प्रिया साठे",
+      "publishedAt": "2026-05-24T11:49:36.000Z",
+      "description": "मराठी | English द रोस्ट पोटॅटो पार्टी ‘द रोस्ट पोटॅटो पार्टी’ लोकांना बोलावण्यासाठी आयोजित केलेली नव्हती. खरं तर, ते औपचारिक निमंत्रणही नव्हतंच. मुळात ही एक संशोधनाधारित कलाकृती सादर करण्याची प्रक्रिया… The post ‘द रोस्ट पोटॅटो पार्टी’: मूळ कथन : प्रीतम दास । मराठी अनुवाद : प्रिया साठे appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/swaroopa-naik/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘जिथे उत्तर थांबतं’ : स्वरूपा मोरवाल-नाईक",
+      "publishedAt": "2026-05-24T09:45:36.000Z",
+      "description": "प्रस्तावना : “व्यक्तीमधल्या प्रत्येक प्रकृतीला हाक दिली तर \u2014म्हणतात ना, व्यक्ती तितक्याच प्रकृती.” “आपण एखाद्या व्यक्तीला हाक मारतो,तेव्हा ती एकच व्यक्ती प्रतिसाद देते असं आपल्याला वाटतं. पण प्रत्यक्षात त्या हाकेला… The post ‘जिथे उत्तर थांबतं’ : स्वरूपा मोरवाल-नाईक appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/call-salman-bashir-baba-gayatri-lele/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘कॉलिंग’ | मूळ इंग्रजी कथन : सलमान बशीर बाबा । मराठी अनुवाद : गायत्री लेले",
+      "publishedAt": "2026-05-24T09:24:13.000Z",
+      "description": "मराठी | English \u2013 हॅलो… \u2013 (शांतता.)\u2013 हॅलो, कोणी आहे का ?\u2013 (पुनःश्च शांतता.)\u2013 हॅलो ? माझ्या आवाजाचं नेमकं काय होतंय ? तो पोहोचत नाहीये का ? की असाच विरून जातोय… The post ‘कॉलिंग’ | मूळ इंग्रजी कथन : सलमान बशीर बाबा । मराठी अनुवाद : गायत्री लेले appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/call-salman-bashir-baba/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘calling’: Salman Bashir Baba",
+      "publishedAt": "2026-05-24T09:00:38.000Z",
+      "description": "मराठी | English \u2013 Hello! \u2013 (Silence) \u2013 Hello? Are you there? \u2013 (Silence returns) \u2013 Hello? What happens to my voice? Does it not reach? Does it disappear? \u2013… The post ‘calling’: Salman Bashir Baba appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/the-poem-tree-and-other-poems-vinay-sharma/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘the poem tree’ & Other poems: Vinay Sharma",
+      "publishedAt": "2026-05-24T08:49:34.000Z",
+      "description": "“I wait for you to recognize me it is a ploy a measure of my extension that I evade I change as you near where I was but where I… The post ‘the poem tree’ & Other poems: Vinay Sharma appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/ten-poems-swanand-bedarkar-marathi/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘दहा कविता’ : स्वानंद बेदरकर",
+      "publishedAt": "2026-05-24T08:01:48.000Z",
+      "description": "मराठी | English १ सावर स्वतःलापक्षी उडून जातातचत्यात दुःख कसले… काही ठसे आहेत तुझ्याजवळते वापरनेटाने जगण्यासाठी इतिहास ठशांनाच मानतोजिवंत प्रमाणबाकी सारे झूट उठ, डोळे पूस आवरून घे सारं काही ती बघ,विस्मरणातील ठसे घेऊनतुझी… The post ‘दहा कविता’ : स्वानंद बेदरकर appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "source": {
+        "name": "Hakara",
+        "url": "https://hakara.in/zero-miles-diaries-suchita-khallal-marathi/",
+        "language": "mr-IN"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "‘झिरो माईल्स डायरीज’ : सुचिता खल्लाळ",
+      "publishedAt": "2026-05-24T07:39:37.000Z",
+      "description": "एक अनंत अंतरावरून चालतधावत रखडत पडतधापा टाकत अखेर वाटतं आपल्याला कुठल्या एका बिंदूवर कीपोहोचलोय आपण कुठल्याशा एका निश्चित मुक्कामी खूप खूप दुरून लांबवरून शिणूनभागूनटेकलाय आपला झिजका तळवाकोण्या एका थांब्यावर नेमका… The post ‘झिरो माईल्स डायरीज’ : सुचिता खल्लाळ appeared first on ​हाकारा । hākārā.",
+      "discoveredAt": "2026-10-01T20:52:16.306Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a6f4d50209b3ff88708211dbfd10dd0d758745c348ffb8ecd8f4ff3c6259fbb7"
+}

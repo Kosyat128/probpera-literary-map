@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-02T00:32:50.122Z",
+  "userAuthorizedMainMergeAndActivation": true,
+  "phase": "locally_integrated_remote_release_pending",
+  "news": {
+    "canonicalRecords": 689,
+    "publicEligibleNow": 652,
+    "requestedPublicRange": [
+      600,
+      700
+    ],
+    "rangeMetLocally": true,
+    "priorCurrentBatch": 26,
+    "additionalSixBatches": 405,
+    "totalNewReviewedThisCompletion": 431,
+    "batches": [
+      {
+        "batchId": "news-expanded-a-20261002",
+        "records": 80,
+        "recordSha256": "9162534fb248a321da42257c4c8edbf512317eb88b1d6374f5593e13360cc04f",
+        "proofReview": "reports/r10/publication/news-expanded-a-root-proof-review-20261002.json"
+      },
+      {
+        "batchId": "news-expanded-b-20261002",
+        "records": 80,
+        "recordSha256": "c9208baaa4bb21a0cf85c235d5d95564bc946056f7a3f04f0447408432007fac",
+        "proofReview": "reports/r10/publication/news-expanded-b-root-proof-review-20261002.json"
+      },
+      {
+        "batchId": "news-expanded-c-20261002",
+        "records": 44,
+        "recordSha256": "7ec22bc3a9706ae70d7821fc6ab00d1a34216642c73192966ce723d494c58da4",
+        "proofReview": "reports/r10/publication/news-expanded-c-root-proof-review-20261002.json"
+      },
+      {
+        "batchId": "news-expanded-d-20261002",
+        "records": 88,
+        "recordSha256": "4cb9cb0bb7d190b9f3d22e4e5f70a2a5a32439605a52fbd992baac3cdb534f0d",
+        "proofReview": "reports/r10/publication/news-expanded-d-root-proof-review-20261002.json"
+      },
+      {
+        "batchId": "news-expanded-e-20261002",
+        "records": 73,
+        "recordSha256": "60a64d3d935b1907cd274e8845c56fabbeffb38912001f73df9dceb404f75748",
+        "proofReview": "reports/r10/publication/news-expanded-e-root-proof-review-20261002.json"
+      },
+      {
+        "batchId": "news-september-f-20261002",
+        "records": 40,
+        "recordSha256": "028d3e55ae35cdadd27df369f82f43bda21f1628e451ed3c59980892ce5c620f",
+        "proofReview": "reports/r10/publication/news-september-f-root-proof-review-20261002.json"
+      }
+    ],
+    "archiveDatesRetained": true,
+    "datedSeptemberBackfillExcludedFromFreshTelegram": true
+  },
+  "sources": {
+    "registered": 223,
+    "active": 222,
+    "verifiedProfiles": 217,
+    "lastMeasuredAvailable": 212,
+    "organisationCountries": 63,
+    "evidence": "reports/r10/sources/completion-scoped-followup-20261002.json"
+  },
+  "calendar": {
+    "annualUniqueDates": 2340,
+    "RussianCountryWriters": 53,
+    "RussianBirthdays": 49,
+    "RussianMemorials": 48,
+    "conditionalAdditional1000NotMet": true,
+    "evidence": "reports/r10/calendar/russian-expansion-final-review-20261002.json"
+  },
+  "schedule": {
+    "preparation": "every two hours",
+    "preparationCronUTC": "17 */2 * * *",
+    "telegram": "one post each hour from08:00 through22:00 Europe/Moscow",
+    "deliveryCronUTC": "0 5-19 * * *",
+    "targetFreshDaily": [
+      10,
+      15
+    ],
+    "archivalBatchSend": false,
+    "hourlyNativeAdmissionCapture": true
+  },
+  "postFormat": {
+    "sourceLinkFirst": true,
+    "siteLinkBelow": true,
+    "ordinaryEventDateLabel": false,
+    "photoPriority": true,
+    "textFallbackAllowed": true,
+    "VK": "deferred by user"
+  },
+  "authorRubric": {
+    "bookOfMonthSourceReference": false,
+    "userInstruction": "Нет я говорил убрать или не ставить источник в Книга месяца"
+  },
+  "release": {
+    "mainMerged": false,
+    "productionApplied": false,
+    "nativeWorkersEnabledVerified": false,
+    "actualNativePreparationReceipt": false,
+    "actualNativeTelegramReceipt": false
+  },
+  "validation": {
+    "publicBuildPassed": true,
+    "focusedAuthorColumnBrowser": {
+      "desktop": "passed",
+      "mobile": "passed"
+    },
+    "runtimePostgresCases": 11,
+    "lintPassed": true,
+    "fullSuite": {
+      "passed": 4379,
+      "failed": 0,
+      "skipped": 11,
+      "testFiles": 660
+    },
+    "focusedBrowserLimitation": "Both desktop and mobile assertions passed; owned Windows preview wrappers required cleanup after teardown hung. Full remote browser checks remain pending.",
+    "nativeHourlyCapture": {
+      "focusedPassed": 95,
+      "newCases": 25,
+      "deliveryBundlePassed": true,
+      "evidence": "reports/r10/qa/native-hourly-admissions-20261002.json"
+    }
+  }
+}

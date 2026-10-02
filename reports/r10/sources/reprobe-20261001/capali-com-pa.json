@@ -1,0 +1,20 @@
+{
+  "sourceId": "capali-com-pa",
+  "name": "Panamanian Book Chamber",
+  "entryUrl": "https://www.capali.com.pa/",
+  "countryCodes": [
+    "PA"
+  ],
+  "coverageCountryCodes": [
+    "PA"
+  ],
+  "attemptedAt": "2026-10-01T20:43:38.073Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.capali.com.pa/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

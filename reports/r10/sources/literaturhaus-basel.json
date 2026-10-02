@@ -1,0 +1,93 @@
+{
+  "sourceId": "literaturhaus-basel",
+  "name": "Literaturhaus Basel",
+  "entryUrl": "https://www.literaturhaus-basel.ch/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:58.384Z",
+  "requests": [
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 105388,
+      "sha256": "6291ed27d19102f5e0b07bee7c62d9ce99acb3202c586849200c5ef82ed91a86",
+      "accessedAt": "2026-10-01T20:51:59.231Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_zonta-poetry-slam/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91146,
+      "sha256": "776ea0aa99f9d5356ed83a176a5d3d0b1eef9d34178748324732e44a53712767",
+      "accessedAt": "2026-10-01T20:51:59.489Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_das-wortstellwerk-zu-gast-im-literaturhaus/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91840,
+      "sha256": "ebc2d3bfb0e5af1a14c845882816da7c8b1f5f2c439b9977383316bd6fb0c592",
+      "accessedAt": "2026-10-01T20:51:59.695Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_warum-literatur-glucklich-macht/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91740,
+      "sha256": "366724c8d9ab9dc7fb09bf009a05ee90584b2d9a96bf8285d684a57e6d2105be",
+      "accessedAt": "2026-10-01T20:51:59.919Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_theaterplatz-quartier-wanderung-im-oktober-i/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91344,
+      "sha256": "ba70104e13293a732bab73b0ba19d77da97416f16e8a9cb30f175bb3fed20161",
+      "accessedAt": "2026-10-01T20:52:00.138Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_theaterplatz-quartier-wanderung-im-oktober-ii/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91376,
+      "sha256": "ecf678e90623f74c3f956ddfe5533e7ce19270837a228033504d81965d0c2fb4",
+      "accessedAt": "2026-10-01T20:52:00.383Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_schreibcafe/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91712,
+      "sha256": "d1fedef18a3b81bb8d71b4ed9b9e0cf7d58ae056fa332591467799e64a348f01",
+      "accessedAt": "2026-10-01T20:52:00.611Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_birgit-birnbacher/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91663,
+      "sha256": "de415affb657d7b8134f58d8ae99cfb825d9df38554a04c3f2751647eeae6133",
+      "accessedAt": "2026-10-01T20:52:00.823Z"
+    },
+    {
+      "url": "https://www.literaturhaus-basel.ch/de/veranstaltung/2026_sofalesung-mit-julia-trachsel/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91630,
+      "sha256": "ff22001c1582c7189a3259595d6a87164f022bf6dfa0a2f87788a87fcbfb6fce",
+      "accessedAt": "2026-10-01T20:52:01.043Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.literaturhaus-basel.ch/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 23,
+    "sha256": "16ceb5ee3e0dc13aa9adf31a3ebbe45a1d965b8c2b9f72eaf84e5911e140ed95",
+    "accessedAt": "2026-10-01T20:51:58.807Z",
+    "disallowed": []
+  }
+}

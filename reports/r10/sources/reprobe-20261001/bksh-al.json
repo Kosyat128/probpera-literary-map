@@ -1,0 +1,33 @@
+{
+  "sourceId": "bksh-al",
+  "name": "National Library of Albania",
+  "entryUrl": "https://www.bksh.al/",
+  "countryCodes": [
+    "AL"
+  ],
+  "coverageCountryCodes": [
+    "AL"
+  ],
+  "attemptedAt": "2026-10-01T20:43:43.583Z",
+  "requests": [
+    {
+      "url": "https://www.bksh.al/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 2633,
+      "sha256": "4b0a2999c2535c1b1fe390803bb0099238bf70201ec51efeffc9fd0517b1f60c",
+      "accessedAt": "2026-10-01T20:43:44.359Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.bksh.al/robots.txt",
+    "status": 200,
+    "contentType": "text/html; charset=utf-8",
+    "bytes": 2633,
+    "sha256": "4b0a2999c2535c1b1fe390803bb0099238bf70201ec51efeffc9fd0517b1f60c",
+    "accessedAt": "2026-10-01T20:43:44.268Z",
+    "disallowed": []
+  }
+}

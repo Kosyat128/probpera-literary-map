@@ -1,0 +1,333 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T23:00:37.447Z",
+  "status": "existing-calendar-completed-with-documented-conditional-volume-remainder",
+  "scope": "Final source-backed date-only review of the existing writer calendar. This is not a declaration that the whole archive or production release has passed.",
+  "instructions": {
+    "archivePackage": "PROBPERA_R10_FINAL",
+    "documents": [
+      {
+        "path": "../r10-package/PROBPERA_R10_FINAL/01_MASTER_SPEC.md",
+        "sha256": "89cf296edae019cab46931d666fd709b4483f1a7134ada0c4e559f96d24733d3"
+      },
+      {
+        "path": "../r10-package/PROBPERA_R10_FINAL/workpacks/40_CALENDAR.md",
+        "sha256": "07bbfa59296e9db92116034f93407302f9f1b90b89574f22e515be3cb7fbdc05"
+      },
+      {
+        "path": "../r10-package/PROBPERA_R10_FINAL/04_ACCEPTANCE.md",
+        "sha256": "8459f29f199b47f44f8881763d71752c9b0c3e1b3b38cbfc8d1f6d51fe041e29"
+      }
+    ],
+    "calendarCriteria": "C01-C14",
+    "primaryRules": [
+      "Only verified birth/death date, precision and evidence changes to existing writers.",
+      "No new authors, event types, route, UI, filters, database or ICS.",
+      "At least 2000 total and cumulative +1000 unique verified dates conditional on adequate corpus; honest remainder is permitted, fabricated precision is prohibited.",
+      "Corrections are reported separately from newly visible events; historical baselines are not invented."
+    ],
+    "externalPrompt": {
+      "file": "../r10-input/PROBPERA_CODEX_R10_FINAL_PROMPT.txt",
+      "directRead": "unavailable: EFS-encrypted input copy; original Desktop path absent on this host",
+      "relevantCalendarClause": "Parent independently read it in earlier context and confirmed the same conditional volume and existing-writer/date-only restrictions."
+    },
+    "userSupersession": {
+      "request": "Календарь добавь события все связанные с русскими писателями; календарные даты расширь.",
+      "implementation": "Expanded exact annual birth/memorial dates within the existing Russian country writer corpus, preserving uncertainty.",
+      "noExplicitCalendarArchitectureWaiver": true,
+      "otherAcceptedDirections": "Later image alignment/showcase requests, paced Telegram enablement, text fallback and deferred VK are separate explicit user directions; they do not add calendar event types."
+    }
+  },
+  "actual": {
+    "writerRows": 1684,
+    "uniqueWriterIdentities": 1671,
+    "annualUniqueEvents": 2340,
+    "birthdays": 1287,
+    "memorials": 1053,
+    "uniqueEventIdentities": 2340,
+    "timezone": "Europe/Moscow",
+    "years": {
+      "2026": {
+        "total": 2338,
+        "months": [
+          222,
+          195,
+          191,
+          200,
+          195,
+          173,
+          189,
+          181,
+          185,
+          190,
+          208,
+          209
+        ]
+      },
+      "2028": {
+        "total": 2340,
+        "months": [
+          222,
+          197,
+          191,
+          200,
+          195,
+          173,
+          189,
+          181,
+          185,
+          190,
+          208,
+          209
+        ]
+      }
+    },
+    "russian": {
+      "writerRows": 53,
+      "birthdays": 49,
+      "memorials": 48,
+      "totalAnnualEvents": 97,
+      "definition": "Existing russia country corpus; not an ethnic-national classification of all writers in other countries."
+    }
+  },
+  "thisFinalDatePacket": {
+    "fields": 4,
+    "newVisibleEvents": 1,
+    "calendarCorrections": 3,
+    "beforeAnnualEvents": 2339,
+    "afterAnnualEvents": 2340,
+    "calendarOverlayFieldsBefore": 25,
+    "calendarOverlayFieldsAfter": 29,
+    "changes": [
+      {
+        "writerKey": "russia:andrei_platonov",
+        "field": "birthDate",
+        "expectedOld": null,
+        "value": "1899-08-28",
+        "sourceUrl": "https://www.prlib.ru/history/2056240",
+        "sourceDocumentSha256": "cccbc2dad98681d28a9d45a33238458d49680449197a5fbdc79417b6a3ea9c86",
+        "checkedAt": "2026-10-01T20:39:17.406Z",
+        "resolution": "The President Library explicitly distinguishes 16 August old style and 28 August modern style. Culture.RF independently corroborates 28 August; the competing cached 1 September claim is not selected."
+      },
+      {
+        "writerKey": "russia:gogol",
+        "field": "deathDate",
+        "expectedOld": "1852-02-21",
+        "value": "1852-03-04",
+        "sourceUrl": "https://www.culture.ru/persons/8127/nikolai-gogol",
+        "sourceDocumentSha256": "2654894b74f540504a45ea7d8f8a767e4b1b7040c440262b9f6d6be166562c2d",
+        "checkedAt": "2026-10-01T20:39:17.004Z",
+        "resolution": "Existing 21 February was the Julian day. The referenced preferred Julian statement converts to 4 March; the institutional modern-calendar page confirms 4 March."
+      },
+      {
+        "writerKey": "russia:pasternak",
+        "field": "birthDate",
+        "expectedOld": "1890-01-29",
+        "value": "1890-02-10",
+        "sourceUrl": "https://www.culture.ru/persons/9531/boris-pasternak",
+        "sourceDocumentSha256": "f65a0d2f1fa07d54341aae0343893a1680091487fe46fd58ef2216ed27db047e",
+        "checkedAt": "2026-10-01T20:39:18.690Z",
+        "resolution": "Existing 29 January was the Julian day. Both referenced Julian-to-Gregorian and direct Gregorian claims agree with the institutional 10 February day."
+      },
+      {
+        "writerKey": "russia:leskov",
+        "field": "birthDate",
+        "expectedOld": "1831-02-04",
+        "value": "1831-02-16",
+        "sourceUrl": "https://www.culture.ru/persons/8216/nikolai-leskov",
+        "sourceDocumentSha256": "e79c8b5dfba4dfdd6c27e11be81011e26a2f2c725bc1b5769112c1c556bdae59",
+        "checkedAt": "2026-10-01T20:39:17.933Z",
+        "resolution": "Existing 4 February was the Julian day. Both referenced Julian-to-Gregorian and direct Gregorian claims agree with the institutional 16 February day."
+      }
+    ],
+    "effectiveLayer": "applyCalendarWriterDatePatches creates calendar-only writer clones consumed by LiteraryCalendar.selectCalendarEvents; canonical writer profiles remain unchanged."
+  },
+  "cumulative": {
+    "originalOperationBaseline": null,
+    "originalOperationScopeId": null,
+    "observedCorrectedBaseline": 2237,
+    "acceptedNetVisibleGrowth": 103,
+    "restoredConfirmedJanuaryFirstEvents": 9,
+    "newOrRefinedValuesExcludingThoseConfirmations": 94,
+    "minimumTotal2000": "met",
+    "additional1000": "not achieved and not claimed",
+    "remainingFromObservedBaseline": 897,
+    "remainingIfOnlyNewOrRefinedValues": 906,
+    "limitation": "The observed 2237 baseline is a verified local reference, not a replacement for the unknown original historical operation baseline.",
+    "corpusAssessment": "The currently verified existing-writer corpus does not provide a ready source-backed batch sufficient for +1000. Partial/year-only facts, living writers, disputed dates and draft identities cannot fill the remainder.",
+    "evidence": "reports/r10/calendar/completion-scope.md",
+    "evidenceLimit": "The historical held-field capacity audit is retained as dated evidence, not presented as a freshly researched complete census."
+  },
+  "heldUncertainty": {
+    "unresolvedWriters": [
+      {
+        "writerKey": "russia:nestor",
+        "reason": "Only year-level birth/death evidence; ecclesiastical commemoration is not an exact historical death day."
+      },
+      {
+        "writerKey": "russia:kirill-turovsky",
+        "reason": "Approximate lifetime and saint commemoration cannot be represented as exact birth/death dates."
+      },
+      {
+        "writerKey": "russia:avvakum",
+        "reason": "Institutional sources disagree on November birth day; cached Wikidata labels historical dates Gregorian. Calendar style remains unresolved.",
+        "sources": [
+          "https://avvakum.rusarchives.ru/letopis-zhizni-protopopa-avvakuma",
+          "https://inslav.ru/sites/default/files/editions/2020_materialy_virtmuzeya.pdf"
+        ]
+      },
+      {
+        "writerKey": "russia:kantemir",
+        "reason": "President Library and the national encyclopedia record competing 1708/1709 years; preserve uncertain birth.",
+        "sources": [
+          "https://www.prlib.ru/Great_Russia/cultural_XVIII/Kantemir",
+          "https://old.bigenc.ru/domestic_history/text/3794404"
+        ]
+      }
+    ],
+    "unresolvedHistoricalDateFields": 7,
+    "livingMemorialsIntentionallyAbsent": [
+      "russia:pelevin",
+      "russia:sergey_lukyanenko"
+    ],
+    "noExactDateInferredFromYearOrReligiousCommemoration": true,
+    "noLivingDeathInvented": true,
+    "milestoneResearch": {
+      "file": "reports/r10/calendar/russian-milestones-research-20261001.md",
+      "publiclyIntegrated": false,
+      "reason": "Book/premiere/literary anniversaries would require new event types outside the accepted calendar scope."
+    }
+  },
+  "preservation": {
+    "canonicalCountryProfilesUnchanged": true,
+    "noNonDateChanges": true,
+    "noNewWriterRecords": true,
+    "noNewEventTypes": true,
+    "historical25FieldPacketPreserved": true,
+    "priorEventIdentitiesPreserved": true,
+    "ruEnParity": true,
+    "replay": true,
+    "rollback": true,
+    "existingKinds": [
+      "birth",
+      "memory"
+    ],
+    "newRoute": false,
+    "newCalendarUi": false,
+    "newFilters": false,
+    "newAuthors": false,
+    "newDatabase": false,
+    "newIcs": false,
+    "knownLeapDayPolicy": "Display 29 February only in leap years; do not transfer its anniversary to another day."
+  },
+  "validation": {
+    "commands": [
+      {
+        "command": "node scripts/build-russian-calendar-expansion-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/build-russian-calendar-expansion-attestation-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/build-calendar-followup-attestation-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/audit-russian-calendar-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/audit-popular-calendar-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/audit-russian-calendar-expansion-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      }
+    ],
+    "focusedGovernance": {
+      "command": "npx vitest run scripts/lib/reviewed-next-builder-followup.test.mjs scripts/lib/reviewed-next-security-followup.test.mjs scripts/lib/reviewed-russian-calendar-expansion.test.mjs scripts/lib/reviewed-calendar-followup.test.mjs scripts/lib/reviewed-calendar-security-followup.test.mjs scripts/lib/reviewed-undici-security-followup.test.mjs scripts/lib/stage5-content-data-lock.test.mjs --maxWorkers=2",
+      "files": 7,
+      "passed": 81,
+      "failed": 0
+    },
+    "typescript": {
+      "command": "npx tsc -b --pretty false",
+      "exitCode": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    "builderRegression": "Resolved; separately reviewed exact Next builder followup preserves all prior packet hashes.",
+    "evidence": "reports/r10/calendar/next-builder-followup-review-20261002.json",
+    "visual": {
+      "existingEvidence": "reports/r10/calendar/browser-check.json",
+      "kind": "historical local browser evidence",
+      "newBrowserSessionPerformedByThisReviewer": false,
+      "claim": "No new UI or production visual acceptance claim."
+    }
+  },
+  "materialRemaining": [
+    {
+      "criteria": [
+        "C04"
+      ],
+      "status": "documented conditional corpus/evidence remainder",
+      "detail": "+1000 is not achieved. 897 remain against the observed 2237 reference; do not add unsupported dates, authors or event types to reach it."
+    },
+    {
+      "criteria": [
+        "R03",
+        "R05",
+        "R06",
+        "R14",
+        "R15",
+        "R18"
+      ],
+      "status": "root release verification; outside this calendar review",
+      "detail": "Root must attach exact final-commit required CI/review, main/deploy and live released snapshot/count/runtime receipts. This report does not promote earlier release-pending documents to current production evidence."
+    },
+    {
+      "criteria": [
+        "S",
+        "Q",
+        "R06"
+      ],
+      "status": "user-deferred VK",
+      "detail": "VK is explicitly postponed by the user; its app/token/delivery/native acceptance must not block the authorised calendar/site/Telegram finish."
+    }
+  ],
+  "conditionalScenariosNotInvented": [
+    {
+      "criteria": [
+        "P36"
+      ],
+      "detail": "No erroneous event identity merge/split was performed; universal lineage migration is not claimed."
+    },
+    {
+      "criteria": [
+        "S18",
+        "R08"
+      ],
+      "detail": "No live old-backup restore was performed; documented pause/shadow reconciliation remains the operating requirement, not a claim of a restore drill."
+    }
+  ],
+  "release": {
+    "commitPerformedByThisReviewer": false,
+    "remoteWrites": 0,
+    "newProviderWrites": 0,
+    "humanReview": false,
+    "productionAppliedByThisReviewer": false,
+    "liveCalendarNotIndependentlyVerifiedHere": true
+  },
+  "exactNextStep": "Root performs the authorised final required checks and main/deployment verification, preserving the documented +1000 remainder and held uncertainty. No further fabricated or architecture-changing calendar expansion is required."
+}

@@ -1,0 +1,1205 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-expanded-a-20261002",
+  "checkedAt": "2026-10-01T22:15:20.418Z",
+  "reviewer": "root_agent_independent_from_batch_author",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "canonicalWritten": false,
+  "remoteWrites": 0,
+  "records": 80,
+  "recordSha256": "9162534fb248a321da42257c4c8edbf512317eb88b1d6374f5593e13360cc04f",
+  "rawResponseDigestsChecked": 80,
+  "issues": [],
+  "results": [
+    {
+      "id": "latine-hispanic-fiction-selection-20260925",
+      "sourceId": "prh",
+      "responseSha256": "77e05a9b36d6bfaf4c913462aa55b6caa135a501d03ee307f1d58f40936c0a1f",
+      "bodyBytes": 108677,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 351,
+      "enCharacters": 329
+    },
+    {
+      "id": "autumn-audiobook-library-selection-20260925",
+      "sourceId": "prh-library",
+      "responseSha256": "764aca35507e8f202fe008947a487c0c3267467147019786a1853a1f7629d939",
+      "bodyBytes": 308872,
+      "primaryMeta": [
+        "2026-09-25T20:38:49+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T20:38:49+00:00"
+      ],
+      "publishedAt": "2026-09-25T20:38:49+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 321,
+      "enCharacters": 333
+    },
+    {
+      "id": "george-saunders-portland-reading-recommendations-20260925",
+      "sourceId": "literary-arts",
+      "responseSha256": "70fdeb81ce38aae57d5015137caf9f5f9731db415c353f27099ed26db0b94a19",
+      "bodyBytes": 174961,
+      "primaryMeta": [
+        "2026-09-25T15:58:53+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T15:58:53+00:00"
+      ],
+      "publishedAt": "2026-09-25T15:58:53+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 336,
+      "enCharacters": 354
+    },
+    {
+      "id": "advanced-editorial-workshop-registration-20260928",
+      "sourceId": "turkyaybir-org-tr",
+      "responseSha256": "f8c3ee7a0fb73ab73e2b7520f16fdde832ccb1809a433b93b2b36fc8e8bb01a7",
+      "bodyBytes": 104972,
+      "primaryMeta": [],
+      "primaryLd": [
+        "2026-09-28T14:13:07+03:00"
+      ],
+      "publishedAt": "2026-09-28T14:13:07+03:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 337,
+      "enCharacters": 362
+    },
+    {
+      "id": "westminster-book-awards-submissions-20261001",
+      "sourceId": "publishers-org-uk",
+      "responseSha256": "330447788b6c98152a20a5c5c0133043a0c767dd0f08d8110236e1a6a525f9be",
+      "bodyBytes": 75323,
+      "primaryMeta": [
+        "2026-10-01T09:13:47+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T09:13:47+00:00"
+      ],
+      "publishedAt": "2026-10-01T09:13:47+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 322,
+      "enCharacters": 343
+    },
+    {
+      "id": "bogota-publishers-tax-proposal-statement-20261001",
+      "sourceId": "camlibro-com-co",
+      "responseSha256": "fa753727f0c58c52e54b35b52c9796e06e49aebc58a9e2c39a9c7a45b11742f1",
+      "bodyBytes": 168859,
+      "primaryMeta": [
+        "2026-10-01T16:26:07+00:00",
+        "2026-10-01T16:26:07+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T16:26:07+00:00"
+      ],
+      "publishedAt": "2026-10-01T16:26:07+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 358,
+      "enCharacters": 349
+    },
+    {
+      "id": "indonesia-international-book-fair-programme-20260927",
+      "sourceId": "ikapi-org",
+      "responseSha256": "9ee696a19a1270b4467995d6e49798659e7d0a910c3b6e142257891ca9a13898",
+      "bodyBytes": 195825,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-27",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 347,
+      "enCharacters": 355
+    },
+    {
+      "id": "finland-lukuloma-autumn-reading-campaign-20261001",
+      "sourceId": "publishers-fi",
+      "responseSha256": "7053ec1f020492ccab639259c9ba48809c2e7bf83b6ad962c189bf57e8444d87",
+      "bodyBytes": 95470,
+      "primaryMeta": [
+        "2026-10-01T10:16:15+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T10:16:15+00:00"
+      ],
+      "publishedAt": "2026-10-01T10:16:15+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 342,
+      "enCharacters": 335
+    },
+    {
+      "id": "montevideo-fair-forty-eighth-programme-20261001",
+      "sourceId": "cul-com-uy",
+      "responseSha256": "91e4e98a204eae266e7db7c4b6013f3ce0d22e2ca2046f42368091c002b7ac92",
+      "bodyBytes": 184822,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 330,
+      "enCharacters": 349
+    },
+    {
+      "id": "lithuania-ekultura-digital-award-20261001",
+      "sourceId": "lnb-lt",
+      "responseSha256": "709b61dce26b364e373ccb638b25238f6062f5cbdad9cf6ac96fb21e0ac8fee6",
+      "bodyBytes": 68878,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 360,
+      "enCharacters": 344
+    },
+    {
+      "id": "pen-germany-exile-writers-exhibition-20261001",
+      "sourceId": "pen-deutschland-de",
+      "responseSha256": "f202cd4d8f3d516fd9f990176ddb95876c43c0943ec86bd4b1a1fd9fbdfd32f8",
+      "bodyBytes": 218507,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T09:39:37+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 333,
+      "enCharacters": 354
+    },
+    {
+      "id": "norsk-pen-wahab-sbhatu-interview-20260930",
+      "sourceId": "norskpen-no",
+      "responseSha256": "2e61cc9ebb02b1715f6e48e8d2a8e74462e63bc11f5ebf3e70a7096ea8a8e36b",
+      "bodyBytes": 172103,
+      "primaryMeta": [
+        "2026-09-30T09:18:31+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T09:18:31+00:00"
+      ],
+      "publishedAt": "2026-09-30T09:18:31+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 349,
+      "enCharacters": 333
+    },
+    {
+      "id": "carol-dettmann-pen-sydney-obituary-20260930",
+      "sourceId": "pen-org-au",
+      "responseSha256": "29d22342667c098529d32014ac3df94d445ecf7d28094e9758dce291df30db49",
+      "bodyBytes": 243759,
+      "primaryMeta": [
+        "2026-09-30T08:33:35+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T08:33:35+00:00"
+      ],
+      "publishedAt": "2026-09-30T08:33:35+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 346,
+      "enCharacters": 344
+    },
+    {
+      "id": "cassava-republic-twenty-year-film-feature-20261001",
+      "sourceId": "brittle-paper",
+      "responseSha256": "487baeb9a291ce15d29fb5592c53469cba356e11b02d061383e0df1da3a87feb",
+      "bodyBytes": 102633,
+      "primaryMeta": [
+        "2026-10-01T06:57:10-05:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T06:57:10-05:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 371,
+      "enCharacters": 342
+    },
+    {
+      "id": "asymptote-september-world-dispatches-20260925",
+      "sourceId": "asymptote",
+      "responseSha256": "0c3b9d6a88cfd3b1d0d41d89e62bedcc36dbae14a1e7548b28e199f295cf8104",
+      "bodyBytes": 1468074,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 353,
+      "enCharacters": 340
+    },
+    {
+      "id": "oxford-academic-ai-disclosure-report-20261001",
+      "sourceId": "dosdoce",
+      "responseSha256": "c818d3634b11bdada49b27158c1f84516810d5aadb38895ace0e187a48940a6a",
+      "bodyBytes": 94300,
+      "primaryMeta": [
+        "2026-10-01T06:33:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T06:33:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 347,
+      "enCharacters": 356
+    },
+    {
+      "id": "mia-couto-rio-ceguera-review-20260929",
+      "sourceId": "el-boomeran",
+      "responseSha256": "c2d372de97df9075902f4ea834935bde97c5986b70be555dc89a0d8da7d8a3f4",
+      "bodyBytes": 127940,
+      "primaryMeta": [
+        "2026-09-29T07:44:45+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T07:44:45+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 334,
+      "enCharacters": 336
+    },
+    {
+      "id": "il-libraio-september-2026-reading-guide-20261001",
+      "sourceId": "il-libraio",
+      "responseSha256": "29f438bf51173d38aea9c2873a6635013440443e35eae0e767ce6a5125614263",
+      "bodyBytes": 1243009,
+      "primaryMeta": [
+        "2026-10-01T07:25:17+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01 09:25:17"
+      ],
+      "publishedAt": "2026-10-01T07:25:17+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 347,
+      "enCharacters": 341
+    },
+    {
+      "id": "franny-choi-we-radiant-things-excerpt-20261001",
+      "sourceId": "electric-literature",
+      "responseSha256": "0354874a82cf2f74035bb8d1a47a7c9c7c123a3718095f6adf858cc7474e0110",
+      "bodyBytes": 195369,
+      "primaryMeta": [
+        "2026-10-01T11:10:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T11:10:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T11:10:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 353,
+      "enCharacters": 350
+    },
+    {
+      "id": "irish-language-book-year-2026-winners-20261001",
+      "sourceId": "books-ireland",
+      "responseSha256": "50346b61ef05e58ee04515958c3b01d5f47c791150cc2c2eab2e691ed162d90e",
+      "bodyBytes": 136721,
+      "primaryMeta": [
+        "2026-10-01T14:12:13+01:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T14:12:13+01:00"
+      ],
+      "publishedAt": "2026-10-01T14:12:13+01:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 353,
+      "enCharacters": 377
+    },
+    {
+      "id": "new-writing-north-sinead-rocks-chair-20260925",
+      "sourceId": "new-writing-north",
+      "responseSha256": "2f6643bdd78309a87948cf833590251249932123a0c68691d798e584e0996faf",
+      "bodyBytes": 59007,
+      "primaryMeta": [
+        "2026-09-25T09:19:39+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T09:19:39+00:00"
+      ],
+      "publishedAt": "2026-09-25T09:19:39+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 341,
+      "enCharacters": 341
+    },
+    {
+      "id": "bertelsmann-demand-book-production-2027-20261001",
+      "sourceId": "buchmarkt",
+      "responseSha256": "69d83254953f7ecb97ca613017b95a0af428dd1cacfbc4835793460dd5cd6f94",
+      "bodyBytes": 111092,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 352,
+      "enCharacters": 348
+    },
+    {
+      "id": "anna-schapiro-debut-buchkultur-review-20260929",
+      "sourceId": "buchkultur",
+      "responseSha256": "a3349f436fc70afe4b2f281d015d2063c81a2ae585e3cd55edc08e6b8e32943b",
+      "bodyBytes": 71768,
+      "primaryMeta": [
+        "2026-09-29T16:01:27+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T16:01:27+00:00"
+      ],
+      "publishedAt": "2026-09-29T16:01:27+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 390,
+      "enCharacters": 388
+    },
+    {
+      "id": "sofia-pirandello-cellulosa-review-20261001",
+      "sourceId": "minima-moralia",
+      "responseSha256": "5e9929b5a5ba86a1b62f9344346854c8ab8b5894908887522b52de822d9c7dca",
+      "bodyBytes": 187040,
+      "primaryMeta": [
+        "2026-10-01T07:44:03+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T07:44:03+00:00"
+      ],
+      "publishedAt": "2026-10-01T07:44:03+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 354,
+      "enCharacters": 347
+    },
+    {
+      "id": "francesca-maccani-il-tuo-nome-review-20261001",
+      "sourceId": "sololibri",
+      "responseSha256": "a9f54cc955ba0d37887f8cb5ee1bf7e4ee56ad5d96f6be985ee3181660ac3787",
+      "bodyBytes": 119656,
+      "primaryMeta": [
+        "2026-10-01T15:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-10-01T17:00:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T15:00:00Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 337,
+      "enCharacters": 363
+    },
+    {
+      "id": "la-condena-first-noir-festival-report-20261001",
+      "sourceId": "zenda-libros",
+      "responseSha256": "ac4160eac3d78c32af8ea5d82332998d4c587e3e5d7d74db5e7b56905a85bceb",
+      "bodyBytes": 212120,
+      "primaryMeta": [
+        "2026-10-01T11:25:20+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T13:25:20"
+      ],
+      "publishedAt": "2026-10-01T11:25:20+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 372,
+      "enCharacters": 344
+    },
+    {
+      "id": "camila-fabbri-serpiente-october-announcement-20261001",
+      "sourceId": "placer-lectura",
+      "responseSha256": "671ee9c45fc1420d7183b63693e54f25bda6b51ad7c89a7af82deb77a5b9daa3",
+      "bodyBytes": 193841,
+      "primaryMeta": [
+        "2026-10-01T21:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T21:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T21:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 377,
+      "enCharacters": 379
+    },
+    {
+      "id": "enrico-galiano-cuore-review-20260930",
+      "sourceId": "le-litteraire",
+      "responseSha256": "b0bc7e81942bcc35c0c8c4df1bed0fb90ab48b70ea7e3e250552684bcfa660ea",
+      "bodyBytes": 110808,
+      "primaryMeta": [
+        "2026-09-30T23:06:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T23:06:00+00:00"
+      ],
+      "publishedAt": "2026-09-30T23:06:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 370,
+      "enCharacters": 362
+    },
+    {
+      "id": "krakow-book-fair-professional-programme-20261001",
+      "sourceId": "pik-org-pl",
+      "responseSha256": "7e8ae85804e2df8748329466e920aae33f877a41b05da9a452c44c228f0f1d44",
+      "bodyBytes": 155989,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 360,
+      "enCharacters": 354
+    },
+    {
+      "id": "bulgaria-japan-literary-corner-opened-20260929",
+      "sourceId": "nationallibrary-bg",
+      "responseSha256": "1736b3b080f19703132a421bccce60f24c1d860050b9a569bcafbda2831ee9b4",
+      "bodyBytes": 190905,
+      "primaryMeta": [
+        "2026-09-29T12:20:40+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T12:20:40+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 377,
+      "enCharacters": 361
+    },
+    {
+      "id": "chicago-review-chirby-2026-shortlist-20261001",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "dd2453065b702e568f7123fac75b838cb637f2167ada8e010f349ef1371e5387",
+      "bodyBytes": 247875,
+      "primaryMeta": [
+        "2026-10-01T14:50:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T14:50:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T14:50:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 357,
+      "enCharacters": 366
+    },
+    {
+      "id": "pamplona-ramon-andres-biennale-programme-20260929",
+      "sourceId": "acantilado",
+      "responseSha256": "0efecbe1e436703e8cfdc16b20d8a8f4935dfc34132c22f37c821e2460fe1508",
+      "bodyBytes": 266612,
+      "primaryMeta": [
+        "2026-09-29T08:58:40+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T08:58:40+00:00"
+      ],
+      "publishedAt": "2026-09-29T08:58:40+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 342,
+      "enCharacters": 360
+    },
+    {
+      "id": "daisy-rockwell-wandered-traveller-interview-20261001",
+      "sourceId": "harpercollins-india",
+      "responseSha256": "d50986706cb544be708b8e2cce5314b98eac5ed6e481f3db21d98c9998adf62a",
+      "bodyBytes": 142752,
+      "primaryMeta": [
+        "2026-10-01T08:53:13+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T08:53:13+00:00"
+      ],
+      "publishedAt": "2026-10-01T08:53:13+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 367,
+      "enCharacters": 377
+    },
+    {
+      "id": "noongar-first-words-rainbow-resource-20261001",
+      "sourceId": "fremantle-press",
+      "responseSha256": "80408e5a5edec40cdc6230e22a005780746a368b8bc42fb3a6b613761ac7e8d1",
+      "bodyBytes": 181686,
+      "primaryMeta": [
+        "2026-10-01T04:24:17+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T04:24:17+00:00"
+      ],
+      "publishedAt": "2026-10-01T04:24:17+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 347,
+      "enCharacters": 343
+    },
+    {
+      "id": "duke-october-books-literary-studies-20261001",
+      "sourceId": "duke-press-blog",
+      "responseSha256": "2f0ee97b424192023332fc00333d9e7fd0f18ea3560d834baaeec9ae52e858a4",
+      "bodyBytes": 193661,
+      "primaryMeta": [
+        "2026-10-01T12:00:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T12:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 361,
+      "enCharacters": 385
+    },
+    {
+      "id": "pavilion-poetry-spring-2027-announcement-20261001",
+      "sourceId": "liverpool-press-blog",
+      "responseSha256": "bc4cff2fc0add2877fd5e4968e317d79fb9ea4e9baa9c577f7e31de43d4d02ce",
+      "bodyBytes": 123680,
+      "primaryMeta": [
+        "2026-10-01T13:25:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T13:25:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 370,
+      "enCharacters": 351
+    },
+    {
+      "id": "juan-mora-latinx-encounters-interview-20260925",
+      "sourceId": "unc-press-blog",
+      "responseSha256": "7af414efd5f1bc2550c8b10afd085dd83de4a40935cd5d53b6e2e8498fbf2cb2",
+      "bodyBytes": 141750,
+      "primaryMeta": [
+        "2026-09-25T20:42:53+00:00",
+        "2026-09-25T16:42:53-04:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T20:42:53+00:00"
+      ],
+      "publishedAt": "2026-09-25T20:42:53+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 398,
+      "enCharacters": 382
+    },
+    {
+      "id": "toronto-peking-confucianism-book-series-20260928",
+      "sourceId": "toronto-press",
+      "responseSha256": "a73ec7919c8712f8bdb6e129382135559af51d92e4c864f901c954514171f492",
+      "bodyBytes": 103471,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 378,
+      "enCharacters": 404
+    },
+    {
+      "id": "sean-thor-conroe-walk-book-review-20261001",
+      "sourceId": "cleveland-review-books",
+      "responseSha256": "72d9efc455edc68750199aff8798a091ba625d5da4497b39c50e2f8691a9dc86",
+      "bodyBytes": 164300,
+      "primaryMeta": [
+        "2026-10-01T12:48:47+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T12:48:47+00:00"
+      ],
+      "publishedAt": "2026-10-01T12:48:47+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 351,
+      "enCharacters": 366
+    },
+    {
+      "id": "slavici-mara-lipova-literary-report-20261001",
+      "sourceId": "cultura-romania",
+      "responseSha256": "a2b2d6be319b19fdde87942ee25eb51906eaf1b1bbe686a020ce431066c2e0e5",
+      "bodyBytes": 155872,
+      "primaryMeta": [
+        "2026-10-01T15:48:33+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T15:48:33+00:00"
+      ],
+      "publishedAt": "2026-10-01T15:48:33+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 369,
+      "enCharacters": 382
+    },
+    {
+      "id": "fann-attiki-zurich-residence-conversation-20260928",
+      "sourceId": "litlogos",
+      "responseSha256": "bf08be365ce5a56eeeb04b460338ad62a0fdd2997fd5e6121ea4a257b331fc17",
+      "bodyBytes": 280083,
+      "primaryMeta": [
+        "2026-09-28T12:35:18+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28T12:35:18+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 353,
+      "enCharacters": 353
+    },
+    {
+      "id": "david-hugendick-stuttgart-reading-october-20261001",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "be40a2459d81e97d449bdc05f219efda5150e994d555cf77d163e650d7754176",
+      "bodyBytes": 130140,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 341,
+      "enCharacters": 354
+    },
+    {
+      "id": "formula-bula-finnish-comics-paris-20260925",
+      "sourceId": "literature-finland",
+      "responseSha256": "4358c5813c2fef51e5f47f30a3e6ba242705ba0b07f4a90de31b2288f03ba15b",
+      "bodyBytes": 83594,
+      "primaryMeta": [
+        "2026-09-25T19:15:00+03:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T19:15:00+03:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 337,
+      "enCharacters": 364
+    },
+    {
+      "id": "publishers-shared-reading-conference-discussion-20260930",
+      "sourceId": "publishers-org-uk",
+      "responseSha256": "fda9d00d3813a42b2c9207529728ac4bf8bb43f3a0f00d1fcb5923c67b9f6205",
+      "bodyBytes": 88309,
+      "primaryMeta": [
+        "2026-09-30T11:52:03+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T11:52:03+00:00"
+      ],
+      "publishedAt": "2026-09-30T11:52:03+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 388,
+      "enCharacters": 351
+    },
+    {
+      "id": "bogota-children-festival-full-programme-20261001",
+      "sourceId": "camlibro-com-co",
+      "responseSha256": "af395b1a20e7f9b67241da81ffee9e0124eb582327d6fe1b41b754f1047f6615",
+      "bodyBytes": 167772,
+      "primaryMeta": [
+        "2026-10-01T16:14:40+00:00",
+        "2026-10-01T16:14:40+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T16:14:40+00:00"
+      ],
+      "publishedAt": "2026-10-01T16:14:40+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 381,
+      "enCharacters": 373
+    },
+    {
+      "id": "tarp-knygu-september-journal-issue-20260928",
+      "sourceId": "lnb-lt",
+      "responseSha256": "a95f1792a79fa7b442383593affe2c62bd5b71b9a8e98d817a69a3c99a85000d",
+      "bodyBytes": 75218,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 365,
+      "enCharacters": 339
+    },
+    {
+      "id": "moldova-library-night-october-2026-20260929",
+      "sourceId": "bnrm-md",
+      "responseSha256": "af68e57679f4c9b75d26985b27eef3426c91cc132d99d90f12ee337f49bced1c",
+      "bodyBytes": 195075,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 348,
+      "enCharacters": 366
+    },
+    {
+      "id": "pen-writers-exile-frankfurt-programme-20261001",
+      "sourceId": "pen-deutschland-de",
+      "responseSha256": "9b0f514d32dc7d73fc138671eb3892d7a662e0e1c85330b873bae810b56d0ea3",
+      "bodyBytes": 216545,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01T07:30:32+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 364,
+      "enCharacters": 329
+    },
+    {
+      "id": "norway-banned-books-week-2026-registration-20260929",
+      "sourceId": "norskpen-no",
+      "responseSha256": "a3b8ca5181bd9a4bf8f0c87c1f0bbd30349c697cf36d1246e534f801a04e893f",
+      "bodyBytes": 166877,
+      "primaryMeta": [
+        "2026-09-29T09:12:30+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T09:12:30+00:00"
+      ],
+      "publishedAt": "2026-09-29",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 344,
+      "enCharacters": 378
+    },
+    {
+      "id": "pen-heaney-2026-poetry-shortlist-report-20260928",
+      "sourceId": "publishing-perspectives",
+      "responseSha256": "bbb50aa0494d9c333c19e426373f8a55936af2496a21c8278a97751bd53e14c5",
+      "bodyBytes": 87227,
+      "primaryMeta": [
+        "2026-09-28T12:50:23+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T12:50:23+00:00"
+      ],
+      "publishedAt": "2026-09-28T12:50:23+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 355,
+      "enCharacters": 371
+    },
+    {
+      "id": "gathigia-warui-new-creative-nonfiction-20260930",
+      "sourceId": "brittle-paper",
+      "responseSha256": "62b10d468db7e11288b2500769c37859b921cb66c3cc56c4bed2cf06149c8a3a",
+      "bodyBytes": 103816,
+      "primaryMeta": [
+        "2026-09-30T00:01:50-05:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T00:01:50-05:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 363,
+      "enCharacters": 337
+    },
+    {
+      "id": "amy-wang-julias-anus-new-fiction-20260930",
+      "sourceId": "electric-literature",
+      "responseSha256": "2a192288f1f32c992f05e7d08e4239ec1097cf70f98fc7685bcc5423865800ee",
+      "bodyBytes": 159690,
+      "primaryMeta": [
+        "2026-09-30T11:10:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T11:10:00+00:00"
+      ],
+      "publishedAt": "2026-09-30T11:10:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 361,
+      "enCharacters": 335
+    },
+    {
+      "id": "tristan-rosenstock-inis-mara-excerpt-20260929",
+      "sourceId": "books-ireland",
+      "responseSha256": "b7c83ebf17b5fc546851b0324004e4d09317a6b3f7c59233ae67e48a3fec1ee5",
+      "bodyBytes": 139061,
+      "primaryMeta": [
+        "2026-09-29T14:42:40+01:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T14:42:40+01:00"
+      ],
+      "publishedAt": "2026-09-29T14:42:40+01:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 369,
+      "enCharacters": 378
+    },
+    {
+      "id": "significant-ink-2026-awardees-20260925",
+      "sourceId": "new-writing-north",
+      "responseSha256": "1dfe901e030077c134034efb15ecb2681136df7f37a30aae7071ea6b867f6bd4",
+      "bodyBytes": 66095,
+      "primaryMeta": [
+        "2026-09-25T08:35:45+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-25T08:35:45+00:00"
+      ],
+      "publishedAt": "2026-09-25T08:35:45+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 386,
+      "enCharacters": 357
+    },
+    {
+      "id": "teresa-preis-residenz-press-appointment-20261001",
+      "sourceId": "buchmarkt",
+      "responseSha256": "6c0d5634bbf9c400181b7104522d685bb388fc14e4b0804bc2e297d196c0c032",
+      "bodyBytes": 108194,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-10-01",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 354,
+      "enCharacters": 351
+    },
+    {
+      "id": "buch-wien-five-day-2026-programme-20260928",
+      "sourceId": "buchkultur",
+      "responseSha256": "6e1ff5f2be57afebcbe6da0ab1941434def6af73dc8f7e6325fd4efcfc292bca",
+      "bodyBytes": 88233,
+      "primaryMeta": [
+        "2026-09-28T13:05:20+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T13:05:20+00:00"
+      ],
+      "publishedAt": "2026-09-28T13:05:20+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 353,
+      "enCharacters": 323
+    },
+    {
+      "id": "helen-garner-dove-dolore-review-20260930",
+      "sourceId": "minima-moralia",
+      "responseSha256": "191ce77d7648ff3f525d6ebb2d3874d77dc926857310c8bcf4f68961c16c05d7",
+      "bodyBytes": 188346,
+      "primaryMeta": [
+        "2026-09-30T08:36:01+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T08:36:01+00:00"
+      ],
+      "publishedAt": "2026-09-30T08:36:01+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 358,
+      "enCharacters": 374
+    },
+    {
+      "id": "laura-dangelo-modernita-review-20261001",
+      "sourceId": "sololibri",
+      "responseSha256": "55df03f8b4551f2917812e67f81282a6497d8c03e39e4610f657182e68b5f2a8",
+      "bodyBytes": 123892,
+      "primaryMeta": [
+        "2026-10-01T14:00:00Z"
+      ],
+      "primaryLd": [
+        "2026-10-01T16:00:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T14:00:00Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 388,
+      "enCharacters": 379
+    },
+    {
+      "id": "avi-shlaim-three-worlds-interview-20261001",
+      "sourceId": "public-books",
+      "responseSha256": "a14ce62317cb9b31ac8e62f33f3c3397a407c935dce88c9c1be6ea38fd2e1e24",
+      "bodyBytes": 132863,
+      "primaryMeta": [
+        "2026-10-01T15:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T15:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T15:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 370,
+      "enCharacters": 378
+    },
+    {
+      "id": "delta-dirac-first-essay-award-winners-20261001",
+      "sourceId": "revista-mercatto",
+      "responseSha256": "44a5db881187da765706c06acd24e7f104d6273b2e4e84ec0d04e65c6e12930d",
+      "bodyBytes": 84229,
+      "primaryMeta": [
+        "2026-10-01T12:32:00+02:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T12:32:00+02:00"
+      ],
+      "publishedAt": "2026-10-01T12:32:00+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 393,
+      "enCharacters": 399
+    },
+    {
+      "id": "october-spanish-historical-fiction-selection-20261001",
+      "sourceId": "placer-lectura",
+      "responseSha256": "87b3db65223fcfe2a97524c8ca22723addd4e7d78607b8697b8fc4e3a88bc7c6",
+      "bodyBytes": 206736,
+      "primaryMeta": [
+        "2026-10-01T19:30:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T19:30:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T19:30:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 358,
+      "enCharacters": 370
+    },
+    {
+      "id": "yourcenar-trente-trois-noms-review-20260930",
+      "sourceId": "le-litteraire",
+      "responseSha256": "2ea079019ebe14df1634a2eb4f17b2469baef2f5e433fc2a3b481172ff029415",
+      "bodyBytes": 110408,
+      "primaryMeta": [
+        "2026-09-30T23:04:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T23:04:00+00:00"
+      ],
+      "publishedAt": "2026-09-30T23:04:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 344,
+      "enCharacters": 364
+    },
+    {
+      "id": "poland-literary-rights-contract-guide-20260929",
+      "sourceId": "pik-org-pl",
+      "responseSha256": "89855eb192d39858bbe4138f0895a227f89c219985b61056c4164ba1508f8581",
+      "bodyBytes": 153802,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 374,
+      "enCharacters": 356
+    },
+    {
+      "id": "pismena-literary-club-ten-year-book-20260925",
+      "sourceId": "nationallibrary-bg",
+      "responseSha256": "dc0e04f7df39c1c8e8030c182dd60e2f74c144f51e7e8cb1667ca9b557d0d20d",
+      "bodyBytes": 204532,
+      "primaryMeta": [
+        "2026-09-25T11:32:23+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T11:32:23+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 377,
+      "enCharacters": 365
+    },
+    {
+      "id": "chicago-review-october-reading-selection-20261001",
+      "sourceId": "chicago-review-books",
+      "responseSha256": "0bc06acd2beecce0d585c3c60e5edbd72c2082a30fe432e77c479b308693efaf",
+      "bodyBytes": 238235,
+      "primaryMeta": [
+        "2026-10-01T10:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T10:00:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T10:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 352,
+      "enCharacters": 367
+    },
+    {
+      "id": "bonnie-garmus-peck-peck-india-announcement-20261001",
+      "sourceId": "harpercollins-india",
+      "responseSha256": "46b479a4c94fe138c35cf91dc6b69df32afe4ec36c8527597b862f32f7831d05",
+      "bodyBytes": 138179,
+      "primaryMeta": [
+        "2026-10-01T06:22:02+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T06:22:02+00:00"
+      ],
+      "publishedAt": "2026-10-01T06:22:02+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 374,
+      "enCharacters": 350
+    },
+    {
+      "id": "james-foley-astro-animals-comic-resource-20261001",
+      "sourceId": "fremantle-press",
+      "responseSha256": "3b84803875c51867f094392bad3a28de24bb7d2ca07d56bece9ddb8376bcfd29",
+      "bodyBytes": 182222,
+      "primaryMeta": [
+        "2026-10-01T03:09:38+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T03:09:38+00:00"
+      ],
+      "publishedAt": "2026-10-01T03:09:38+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 369,
+      "enCharacters": 352
+    },
+    {
+      "id": "duke-october-author-events-programme-20260930",
+      "sourceId": "duke-press-blog",
+      "responseSha256": "171769d9df16bed8061bf0384a23e9c918612062d0a77a5af0d9017b613fbb13",
+      "bodyBytes": 158783,
+      "primaryMeta": [
+        "2026-09-30T12:00:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T12:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 347,
+      "enCharacters": 366
+    },
+    {
+      "id": "basho-narrow-road-oku-current-review-20260929",
+      "sourceId": "cleveland-review-books",
+      "responseSha256": "021830385f1755bba7fc139f05e24c8a0bfc629832553f08ad37ccbcf8492755",
+      "bodyBytes": 172771,
+      "primaryMeta": [
+        "2026-09-29T12:44:04+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-29T12:44:04+00:00"
+      ],
+      "publishedAt": "2026-09-29T12:44:04+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 343,
+      "enCharacters": 343
+    },
+    {
+      "id": "xiao-hai-adrift-south-public-books-review-20260930",
+      "sourceId": "public-books",
+      "responseSha256": "623931ab6813c3e4eed85dbbf2966dadeef67154536fd6795c5504b52f6675fd",
+      "bodyBytes": 116886,
+      "primaryMeta": [
+        "2026-09-30T15:00:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-30T15:00:00+00:00"
+      ],
+      "publishedAt": "2026-09-30T15:00:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 372,
+      "enCharacters": 365
+    },
+    {
+      "id": "roger-chartier-reading-digital-lecture-report-20261001",
+      "sourceId": "revista-letras-libres",
+      "responseSha256": "a928839966e34c8f231fbaebe7e64dbae7ad4afb71f4059352bb4fa9aa8a05a3",
+      "bodyBytes": 278959,
+      "primaryMeta": [
+        "2026-10-01T15:36:00+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T15:36:00+00:00"
+      ],
+      "publishedAt": "2026-10-01T15:36:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 347,
+      "enCharacters": 327
+    },
+    {
+      "id": "mercurio-weekly-books-211-20261001",
+      "sourceId": "revista-mercatto",
+      "responseSha256": "a8c4fe550ed8c3a50b671b5307d83f8c882f0e9f5e4a4d9a47640b584ed34829",
+      "bodyBytes": 84257,
+      "primaryMeta": [
+        "2026-10-01T11:04:24+02:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T11:04:24+02:00"
+      ],
+      "publishedAt": "2026-10-01T11:04:24+02:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 367,
+      "enCharacters": 371
+    },
+    {
+      "id": "fili-helsinki-book-fair-translation-programme-20260925",
+      "sourceId": "literature-finland",
+      "responseSha256": "451c1d878828407d6e7bbdc21965124ced12aba38dc2c216974465d3a5d80974",
+      "bodyBytes": 85980,
+      "primaryMeta": [
+        "2026-09-25T14:00:57+03:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-25T14:00:57+03:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 359,
+      "enCharacters": 358
+    },
+    {
+      "id": "karavan-stellenbosch-woordfees-programme-20260930",
+      "sourceId": "karavan-press",
+      "responseSha256": "289f501e03cde66a1398ff06f8ce24127b68692e9281be4b3b364e26669c86fb",
+      "bodyBytes": 160913,
+      "primaryMeta": [
+        "2026-09-30T11:14:07+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-30T11:14:07+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 336,
+      "enCharacters": 354
+    },
+    {
+      "id": "unwin-2027-judging-panel-announcement-20260928",
+      "sourceId": "publishers-org-uk",
+      "responseSha256": "978311706132c66b1746192f57a07bbe15997e52f969308e2ba5d3e382f720e0",
+      "bodyBytes": 75036,
+      "primaryMeta": [
+        "2026-09-28T10:20:47+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-28T10:20:47+00:00"
+      ],
+      "publishedAt": "2026-09-28T10:20:47+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 350,
+      "enCharacters": 339
+    },
+    {
+      "id": "booktube-colombia-casa-libros-interview-20260930",
+      "sourceId": "camlibro-com-co",
+      "responseSha256": "d2f8921f4356edb0e2e1d7208dc17fb479089b0a4d9b7040cd0db65bb0145e3b",
+      "bodyBytes": 162561,
+      "primaryMeta": [
+        "2026-10-01T00:54:45+00:00",
+        "2026-10-01T00:54:45+00:00"
+      ],
+      "primaryLd": [
+        "2026-10-01T00:54:45+00:00"
+      ],
+      "publishedAt": "2026-09-30",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 351,
+      "enCharacters": 323
+    },
+    {
+      "id": "lithuania-easy-language-reading-resources-20260928",
+      "sourceId": "lnb-lt",
+      "responseSha256": "a804ed24a4d25a1caba561fc3e472ac26da0b159076580a64f1372cf5d04b9bc",
+      "bodyBytes": 69911,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-28",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 370,
+      "enCharacters": 354
+    },
+    {
+      "id": "cheng-lei-pen-melbourne-pending-chair-20260927",
+      "sourceId": "pen-org-au",
+      "responseSha256": "3076f0892f8304322154abee05246c55ce3e38ff63430b8dc99d5051581d2489",
+      "bodyBytes": 231192,
+      "primaryMeta": [
+        "2026-09-26T19:21:57+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-26T19:21:57+00:00"
+      ],
+      "publishedAt": "2026-09-27",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 369,
+      "enCharacters": 380
+    },
+    {
+      "id": "nani-jansen-reventlow-radical-justice-tour-20260929",
+      "sourceId": "brittle-paper",
+      "responseSha256": "15f1bebefbf687d46dfd4d0bdb5395d058970bb1f6ddbc2ffb37669d4faeb6d2",
+      "bodyBytes": 99012,
+      "primaryMeta": [
+        "2026-09-29T04:19:47-05:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T04:19:47-05:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 358,
+      "enCharacters": 367
+    },
+    {
+      "id": "audible-human-european-translations-report-20260929",
+      "sourceId": "dosdoce",
+      "responseSha256": "c7084aa57b4d3a5c605bfa190b98d908d938b0b38be6a3faa7db523e77e1987d",
+      "bodyBytes": 92208,
+      "primaryMeta": [
+        "2026-09-29T06:27:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-29T06:27:00+00:00",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 368,
+      "enCharacters": 368
+    }
+  ]
+}

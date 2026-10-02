@@ -1,10 +1,11 @@
 import { readFileSync } from 'node:fs';
+import { projectReviewedRussianCalendarExpansion, reviewedRussianCalendarExpansionAdditionPaths } from './reviewed-russian-calendar-expansion.mjs';
 import { projectReviewedUndiciSecurityFollowup } from './reviewed-undici-security-followup.mjs';
 import { execFileSync } from 'node:child_process';
 import { describe, expect, it } from 'vitest';
 import { calendarFollowupAttestation as packet, calendarIntegrationAttestation as integration, calendarFollowupSha256 as sha, projectReviewedCalendarFollowup as project, isReviewedCalendarAddition as addition, reviewedCalendarAdditionPaths } from './reviewed-calendar-followup.mjs';
 import { r10DeltaAttestation, projectReviewedR10Delta, isReviewedR10Addition } from './reviewed-r10-delta.mjs';
-const read=path=>projectReviewedUndiciSecurityFollowup(path,readFileSync(path,'utf8').replace(/\r\n?/gu,'\n'));
+const read=path=>projectReviewedUndiciSecurityFollowup(path,projectReviewedRussianCalendarExpansion(path,readFileSync(path,'utf8').replace(/\r\n?/gu,'\n')));
 const historical=(commit,path)=>execFileSync('git',['-c',`safe.directory=${process.cwd()}`,'show',`${commit}:${path}`],{encoding:'utf8',maxBuffer:20*1024*1024}).replace(/\r\n?/gu,'\n');
 
 describe('User-authorized exact calendar follow-up review',()=>{
@@ -33,7 +34,7 @@ describe('User-authorized exact calendar follow-up review',()=>{
     }
   });
   it('pins every new overlay, adapter and supporting source and rejects altered addition bytes',()=>{
-    expect([...reviewedCalendarAdditionPaths]).toEqual(packet.additions.map(item=>item.path));
+    expect([...reviewedCalendarAdditionPaths]).toEqual([...packet.additions.map(item=>item.path), ...reviewedRussianCalendarExpansionAdditionPaths]);
     for(const entry of packet.additions){
       const source=read(entry.path);
       expect(addition(entry.path,source)).toBe(true);

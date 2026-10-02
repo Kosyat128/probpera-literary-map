@@ -1,0 +1,74 @@
+{
+  "sourceId": "gummerus-fi",
+  "name": "Gummerus Publishers",
+  "entryUrl": "https://gummerus.fi/",
+  "countryCodes": [
+    "FI"
+  ],
+  "coverageCountryCodes": [
+    "FI"
+  ],
+  "attemptedAt": "2026-10-01T20:42:46.636Z",
+  "requests": [
+    {
+      "url": "https://gummerus.fi/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 540808,
+      "sha256": "b45c8779f465967e899230d49b151040df311020f4234a1a69dfdad733d92417",
+      "accessedAt": "2026-10-01T20:42:47.368Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://gummerus.fi/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 3612,
+    "sha256": "121d5e16e13499612c7b75b25c57a2b4908cef35b9e3573402f94bec65800a77",
+    "accessedAt": "2026-10-01T20:42:46.969Z",
+    "disallowed": [
+      "/admin",
+      "/cart/",
+      "/*/cart/",
+      "/checkout",
+      "/*/checkout",
+      "/checkouts/",
+      "/*/checkouts/",
+      "/orders",
+      "/*/orders",
+      "/account",
+      "/*/account",
+      "/55547822358",
+      "/cdn/wpm/*.js",
+      "/services",
+      "/sf_*",
+      "/cart.js",
+      "/*/cart.js",
+      "/recommendations/products",
+      "/*/recommendations/products",
+      "/collections/*sort_by*",
+      "/*/collections/*sort_by*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/*/collections/*+*",
+      "/*/collections/*%2B*",
+      "/*/collections/*%2b*",
+      "/collections/*filter*&*filter*",
+      "/*/collections/*filter*&*filter*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*/blogs/*+*",
+      "/*/blogs/*%2B*",
+      "/*/blogs/*%2b*",
+      "/*?*ls=*&ls=*",
+      "/*?*ls%3*ls%3*",
+      "/*?*oseid=*",
+      "/*?*preview_theme_id=*",
+      "/*?*preview_script_id=*"
+    ]
+  }
+}

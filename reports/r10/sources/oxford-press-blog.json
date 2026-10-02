@@ -1,0 +1,750 @@
+{
+  "sourceId": "oxford-press-blog",
+  "name": "Oxford University Press",
+  "entryUrl": "https://blog.oup.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.778Z",
+  "requests": [
+    {
+      "url": "https://blog.oup.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 131649,
+      "sha256": "de858fece93bf9ef93adb9c6263dbea4354300a0800114260ffff0ab5b7e568d",
+      "accessedAt": "2026-10-01T20:51:39.481Z"
+    },
+    {
+      "url": "https://blog.oup.com/2026/08/translation-not-imitation-what-legal-educators-can-learn-from-schools/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74651,
+      "sha256": "03a9cbc96ef32751126d264089d0303e26776cfb8703fdc8fb197735633b1d93",
+      "accessedAt": "2026-10-01T20:51:39.772Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://blog.oup.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 119,
+    "sha256": "00bec99dd929e505e0cb2893d263f0c35479cd40ca548d294a0a8ee4e5fd3ee8",
+    "accessedAt": "2026-10-01T20:51:39.360Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "oxford-press-blog",
+    "name": "Oxford University Press",
+    "url": "https://blog.oup.com/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "oxford-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://blog.oup.com"
+    ],
+    "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://blog.oup.com/2026/08/translation-not-imitation-what-legal-educators-can-learn-from-schools/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:39.778Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 25,
+  "literaryCandidateCount": 25,
+  "sample": {
+    "sourceId": "oxford-press-blog",
+    "source": {
+      "name": "Oxford University Press",
+      "url": "https://blog.oup.com/2026/08/translation-not-imitation-what-legal-educators-can-learn-from-schools/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Translation, not imitation: what legal educators can learn from schools",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:39.573Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://blog.oup.com/2026/08/translation-not-imitation-what-legal-educators-can-learn-from-schools/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74651,
+      "sha256": "03a9cbc96ef32751126d264089d0303e26776cfb8703fdc8fb197735633b1d93",
+      "accessedAt": "2026-10-01T20:51:39.772Z",
+      "headline": "Translation, not imitation: what legal educators can learn from schools",
+      "excerpt": "OUP Law Teacher of the Year 2026 Rebekah Marangon of Aston University has been named the Oxford University Press Law Teacher of the Year 2026! Read More By Rebekah Marangon August 28th 2026 Teaching is something of a family profession in our household. My dad was a primary school headteacher, my mum was a head of department and teacher in further education, and my sisters teach in primary and seco",
+      "publishedDates": [
+        {
+          "value": "2026-08-28T09:30:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-28T09:30:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-08-28T09:30:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://blog.oup.com/2026/08/translation-not-imitation-what-legal-educators-can-learn-from-schools/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:39.778Z",
+  "foundItems": [
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/translation-not-imitation-what-legal-educators-can-learn-from-schools/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Translation, not imitation: what legal educators can learn from schools",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/women-memory-and-the-archives-of-lebanons-civil-war/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women, memory, and the archives of Lebanon’s Civil War",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/getting-lost-in-revision/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Getting lost in revision",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/why-the-wests-critics-speak-a-western-moral-language/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Why the West’s critics speak a Western moral language",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/answering-two-questions-from-readers/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Answering two questions from readers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/gloves-gauntlets-and-gaunt-people/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gloves, gauntlets, and gaunt people",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/chemical-periodicity/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chemical periodicity: why does the chemistry of some elements resemble the chemistry of others?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/unsavory-etymologies-dung-and-its-kin/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Unsavory etymologies: dung and its kin",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/boots-or-rather-shoes-on-the-ground/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Boots (or rather, shoes) on the ground",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/09/i-had-to-look-them-up/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "I had to look (them up)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/tarry-or-hurry/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tarry or hurry?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/climate-adaptation-who-will-we-become-in-a-warming-world/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Climate Adaptation - who will we become in a warming world?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/abraham-lincoln-and-the-election-of-1860-timeline/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Abraham Lincoln and the election of 1860 [timeline]",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/on-big-and-little-foxes/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On big and little foxes",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/the-right-wing-revolution-is-guaranteed-to-continue-long-past-trump/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The right-wing revolution is guaranteed to continue long past Trump",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/supper-with-an-etymologist/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Supper with an etymologist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/gender-justice-in-these-times/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gender Justice in these times",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/the-kings-of-etymological-rings/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The kings of etymological rings",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2026/08/how-can-they-do-it-when-we-cant/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How can they do it when we can’t?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2025/10/the-sound-of-suspense-hitchcock-and-herrmann-playlist/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The sound of suspense: Hitchcock and Herrmann [playlist]",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2024/07/how-to-choose-the-right-journal/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How to choose the right journal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2024/07/ai-attitudes-and-behaviour-researcher-profiles-interactive/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AI attitudes and behaviour: researcher profiles [interactive]",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2024/06/speech-ai-and-the-future-of-neurology/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Speech, AI, and the future of neurology",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2024/06/a-listeners-guide-to-sand-rush-playlist/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A listener’s guide to Sand Rush [playlist]",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "source": {
+        "name": "Oxford University Press",
+        "url": "https://blog.oup.com/2024/05/working-together-william-walton-and-oxford-university-press/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Working together: William Walton and Oxford University Press",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.573Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "de858fece93bf9ef93adb9c6263dbea4354300a0800114260ffff0ab5b7e568d"
+}

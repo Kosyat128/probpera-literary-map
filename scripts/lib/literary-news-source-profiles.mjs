@@ -6309,6 +6309,3040 @@ export const R10_SOURCE_PROFILES = [
   "autoPublication": false,
   "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
   "refreshIntervalSeconds": 7200
+},
+{
+  "id": "pik-org-pl",
+  "name": "Polish Chamber of Books (PIK)",
+  "url": "https://pik.org.pl/feed/",
+  "format": "rss",
+  "language": "pl-PL",
+  "region": "europe",
+  "sourceFamilyId": "pik-org-pl",
+  "countryCodes": [
+    "PL"
+  ],
+  "coverageCountryCodes": [
+    "PL"
+  ],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://pik.org.pl"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/"
+  ],
+  "verifiedAt": "2026-10-01T20:43:52.173Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_membership_directory",
+    "url": "https://internationalpublishers.org/about/",
+    "organisation": "Polish Chamber of Books (PIK)ul. Oleandrów",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Polish Chamber of Books (PIK)ul. Oleandrów 8, 00-629 Warsaw Poland www.pik.org.pl",
+    "status": "organisation_country"
+  },
+  "sourceClass": "publishing-association",
+  "evidenceReport": "reports/r10/sources/reprobe-20261001/pik-org-pl.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "millikitabxana-az",
+  "name": "National Library of Azerbaijan",
+  "url": "https://www.millikitabxana.az/en/news",
+  "format": "html",
+  "language": "en",
+  "region": "europe",
+  "sourceFamilyId": "millikitabxana-az",
+  "countryCodes": [
+  "AZ"
+],
+  "coverageCountryCodes": [
+  "AZ"
+],
+  "topics": [
+  "heritage",
+  "discoveries",
+  "festivals",
+  "releases"
+],
+  "articleOrigins": [
+  "https://www.millikitabxana.az"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026"
+],
+  "verifiedAt": "2026-10-01T20:43:49.301Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/en\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_national_library_directory",
+  "url": "https://www.cenl.org/library/national-library-of-azerbaijan-m-f-axundov-adina-azerbaycan-milli-kitabxana/",
+  "organisation": "National Library of Azerbaijan",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Azerbaycan Milli Kitabxana / National Library of Azerbaijan",
+  "status": "organisation_country"
+},
+  "sourceClass": "library",
+  "evidenceReport": "reports/r10/sources/reprobe-20261001/millikitabxana-az.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "nationallibrary-bg",
+  "name": "St.St. Cyril and Methodius National Library",
+  "url": "https://www.nationallibrary.bg/www/feed/",
+  "format": "rss",
+  "language": "bg-BG",
+  "region": "europe",
+  "sourceFamilyId": "nationallibrary-bg",
+  "countryCodes": [
+    "BG"
+  ],
+  "coverageCountryCodes": [
+    "BG"
+  ],
+  "topics": [
+    "heritage",
+    "discoveries",
+    "festivals",
+    "releases"
+  ],
+  "articleOrigins": [
+    "https://www.nationallibrary.bg"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/"
+  ],
+  "verifiedAt": "2026-10-01T20:43:54.151Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_national_library_directory",
+    "url": "https://www.cenl.org/library/national-library-of-bulgaria-st-st-cyrill-and-methodius-national-library/",
+    "organisation": "St.St. Cyril and Methodius National Library",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Национална библиотека „Св. cв. Кирил и Методий / St.St. Cyril and Methodius National Library",
+    "status": "organisation_country"
+  },
+  "sourceClass": "library",
+  "evidenceReport": "reports/r10/sources/reprobe-20261001/nationallibrary-bg.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "chicago-review-books",
+  "name": "Chicago Review of Books",
+  "url": "https://chireviewofbooks.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "chicago-review-books",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://chireviewofbooks.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/"
+  ],
+  "verifiedAt": "2026-10-01T20:56:28.009Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://chireviewofbooks.com/",
+    "organisation": "Chicago Review of Books",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Chicago Review of Books",
+    "status": "organisation_country"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/reprobe-20261001/chicago-review-books.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "archipelago-books",
+  "name": "Archipelago Books",
+  "url": "https://archipelagobooks.org/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "north-america",
+  "sourceFamilyId": "archipelago-books",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://archipelagobooks.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/"
+  ],
+  "verifiedAt": "2026-10-01T20:47:53.200Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://archipelagobooks.org/",
+    "organisation": "Archipelago Books",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Archipelago Books & Elsewhere Editions The Old American Can Factory 232 Third Street #A111 Brooklyn, NY 11215 [email protected] Illustrations created by artist Gracey Zhang ExploreAbout News Books Events Support My Account Latest Catalog ConnectSign",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "f087a1a4b3941314bd9a57ef284b06c57652fcdbe8047dabd8e0fe8ad57f66f0",
+    "accessedAt": "2026-10-01T21:03:58.984Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/archipelago-books.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "acantilado",
+  "name": "Acantilado",
+  "url": "https://www.acantilado.es/feed/",
+  "format": "rss",
+  "language": "es",
+  "region": "europe",
+  "sourceFamilyId": "acantilado",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.acantilado.es"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:47:51.410Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://www.acantilado.es/contacto/",
+    "organisation": "Acantilado",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Contacto Muntaner, 462 E-08006 Barcelona Tel.: (+34) 934 144 906 correo@acantilado.es En Acantilado no se aceptan ni valoran manuscritos no solicitados. Distribución Distribución Si lo desea",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "59bf8ff79cf3175fa4fc8d4e414ffacab4ccd18879b429251a967a999e0d41e0",
+    "accessedAt": "2026-10-01T21:03:59.184Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/acantilado.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "biblioasis",
+  "name": "Biblioasis",
+  "url": "https://www.biblioasis.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "north-america",
+  "sourceFamilyId": "biblioasis",
+  "countryCodes": [
+    "CA"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.biblioasis.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/"
+  ],
+  "verifiedAt": "2026-10-01T20:47:52.945Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://www.biblioasis.com/contact/",
+    "organisation": "Biblioasis",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "ContactYou are here: Home1 / Contact Biblioasis Bookstore is located at: 1520 Wyandotte Street East Windsor, ON N9A 3L2 Tel: 519-968-2206 Email: bookstore@biblioasis.com biblioasisbookshop.com Biblioasis Publishing (Office Only) is located at: 1686 Ottawa S",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "2e9126b980c2753cdeef2ef11e1a20ef85883244a9c6fe25099f4bdfd3f33756",
+    "accessedAt": "2026-10-01T21:04:02.681Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/biblioasis.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "serpents-tail",
+  "name": "Serpent’s Tail",
+  "url": "https://serpentstail.com/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "europe",
+  "sourceFamilyId": "serpents-tail",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://serpentstail.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/"
+  ],
+  "verifiedAt": "2026-10-01T20:47:53.523Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://serpentstail.com/",
+    "organisation": "Serpent’s Tail",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "h x Basket 0 © 2026 Profile Books Limited Serpent's Tail, an imprint of Profile Books 29 Cloth Fair London EC1A 7JQ Email: [email protected] Phone: + 44 20 7841 6300 Registered in England & Wales under No. 3120147 VAT Number 674 9638 76 About Serpent’s Tai",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "0b49c55d8779957266ed9299b8f8076d32548d37d90f11eb06fdeeb9e8d7d683",
+    "accessedAt": "2026-10-01T21:03:59.348Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/serpents-tail.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "fitzcarraldo",
+  "name": "Fitzcarraldo Editions",
+  "url": "https://fitzcarraldoeditions.com/news/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "fitzcarraldo",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://fitzcarraldoeditions.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/"
+],
+  "verifiedAt": "2026-10-01T20:47:53.212Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://fitzcarraldoeditions.com/",
+  "organisation": "Fitzcarraldo Editions",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Fitzcarraldo Editions",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/fitzcarraldo.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "virago",
+  "name": "Virago",
+  "url": "https://www.virago.co.uk/category/virago-news/",
+  "format": "html",
+  "language": "en-US",
+  "region": "europe",
+  "sourceFamilyId": "hachette-livre",
+  "countryCodes": [
+  "GB"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.virago.co.uk"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/"
+],
+  "verifiedAt": "2026-10-01T20:56:32.294Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/virago\\x2dnews\\/2026\\/08\\/26\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/07\\/14\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/06\\/25\\/[^/]+\\/?$|^\\/virago\\x2dnews\\/2026\\/05\\/31\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.virago.co.uk/imprint/lbbg/virago/page/about-virago/virago-company-information/",
+  "organisation": "Virago",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "ollows: Little, Brown Book Group Limited Registered address: Carmelite House 50 Victoria Embankment LONDON EC4Y 0DZ United Kingdom Registration number: 2304585 VAT number: 205505305 Telephone Number: +44 (0)20 3122 7000 Email: info@littlebrown.co.uk Hachet",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "0bfa8e8216a60b5e3ae6d13fe843702ba8522a822c0ff35ad035e9c2bc0437b4",
+  "accessedAt": "2026-10-01T21:04:00.074Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/virago.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "hachette-book-group",
+  "name": "Hachette Book Group",
+  "url": "https://www.hachettebookgroup.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "north-america",
+  "sourceFamilyId": "hachette-livre",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.hachettebookgroup.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/"
+  ],
+  "verifiedAt": "2026-10-01T20:56:34.007Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://www.hachettebookgroup.com/",
+    "organisation": "Hachette Book Group",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Footer Hachette Book Group is a leading book publisher based in New York and a division of Hachette Livre, the third-largest publisher in the world. Social Media Facebook Twitter Instagram YouTube Tiktok Linkedin Pinterest",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "1b9606682370a30dc179b18610ff1163710171c07284dbf80d7a40b5931c031d",
+    "accessedAt": "2026-10-01T21:04:00.939Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/hachette-book-group.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "harpercollins-india",
+  "name": "HarperCollins India",
+  "url": "https://harpercollins.co.in/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "asia",
+  "sourceFamilyId": "harpercollins-india",
+  "countryCodes": [
+    "IN"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://harpercollins.co.in"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:03.416Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://harpercollins.co.in/contact-us/",
+    "organisation": "HarperCollins India",
+    "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+    "excerpt": "Address4th Floor, Cyber City, Building No 10,Tower A, Gurugram, Haryana 122002, IndiaPhone+91 12448-94800 Download QR ExploreBooksFirst chapterAuthorsaudiobooksblogsVideosAbout usAbout usteamimprintscataloguescontact usOur ContributorsHarper broadcastblogpress",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "b8243a56b67aac05b11754eb829fe9fd16c1adc078a22d9d9475817534381d90",
+    "accessedAt": "2026-10-01T21:16:16.930Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/harpercollins-india.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "nyrb",
+  "name": "New York Review Books",
+  "url": "https://www.nyrb.com/blogs/nyrb-news",
+  "format": "html",
+  "language": "en",
+  "region": "north-america",
+  "sourceFamilyId": "nyrb",
+  "countryCodes": [
+  "US"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.nyrb.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues"
+],
+  "verifiedAt": "2026-10-01T20:47:56.105Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blogs\\/nyrb\\x2dnews\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.nyrb.com/pages/contact-us",
+  "organisation": "New York Review Books",
+  "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+  "excerpt": "New York Review Books207 East 32nd StNew York, NY 10016-6305Tel 212 757-8070Fax 212 333-5374 Book OrdersTel 646 215-2500Fax 212 333-5374 Please visit our Frequently Asked Questions page for answers to common queries. Examination and Desk Copy Requests: Our boo",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "2292a97a4240a32d788c67ca2b6ae21017d349e26a810412fb45029e16302b02",
+  "accessedAt": "2026-10-01T21:16:11.489Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/nyrb.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "coffee-house-press",
+  "name": "Coffee House Press",
+  "url": "https://coffeehousepress.org/blogs/news",
+  "format": "html",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "coffee-house-press",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://coffeehousepress.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards"
+],
+  "verifiedAt": "2026-10-01T20:47:58.021Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blogs\\/news\\/[^/]+\\/?$|^\\/collections\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://coffeehousepress.org/",
+  "organisation": "Coffee House Press",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Coffee House Press",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/coffee-house-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "europa-editions",
+  "name": "Europa Editions",
+  "url": "https://www.europaeditions.com/news",
+  "format": "html",
+  "language": "en",
+  "region": "north-america",
+  "sourceFamilyId": "europa-editions",
+  "countryCodes": [
+  "US"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.europaeditions.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award"
+],
+  "verifiedAt": "2026-10-01T20:48:00.959Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.europaeditions.com/",
+  "organisation": "Europa Editions",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "us Contact us Our authors Latest titles Follow us © Europa Editions 27 Union Square West, Suite 302 New York, N.Y. 10003 | info@europaeditions.com | privacy | cookie | credits",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "1e2c75d718c4e94a02794a3140eed8d7e30675dde2137e6e109207e1902ee364",
+  "accessedAt": "2026-10-01T21:04:02.298Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/europa-editions.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "saraband",
+  "name": "Saraband",
+  "url": "https://saraband.net/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "saraband",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://saraband.net"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:04.445Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://saraband.net/",
+    "organisation": "Saraband",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Saraband",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/saraband.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "comma-press",
+  "name": "Comma Press",
+  "url": "https://commapress.co.uk/",
+  "format": "html",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "comma-press",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://commapress.co.uk"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions"
+],
+  "verifiedAt": "2026-10-01T20:48:04.864Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+|^\\/events\\/.+|^\\/series\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://commapress.co.uk/",
+  "organisation": "Comma Press",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Comma Press",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/comma-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "editions-verdier",
+  "name": "Editions Verdier",
+  "url": "https://editions-verdier.fr/feed/",
+  "format": "rss",
+  "language": "fr-FR",
+  "region": "europe",
+  "sourceFamilyId": "editions-verdier",
+  "countryCodes": [
+    "FR"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://editions-verdier.fr"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:06.696Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://editions-verdier.fr/informations-generales/",
+    "organisation": "Editions Verdier",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "er (1945-2009), Colette Olive et Michèle Planel. Contacts Siège social : 11220 LagrassePermanence à Paris : 82, boulevard de Ménilmontant - 75020 Paris(33) 01 43 79 20 45contact[at]editions-verdier.fr GérancePierre Audoux, Mathilde Azzopardi, Émilie Thoma",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "3d64b08f564f25678b3d1abe44365b13fd94093c6998da8f3e0e08a1a1189620",
+    "accessedAt": "2026-10-01T21:04:03.411Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/editions-verdier.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "editions-metailie",
+  "name": "Editions Métailié",
+  "url": "https://editions-metailie.com/feed/",
+  "format": "rss",
+  "language": "fr-FR",
+  "region": "europe",
+  "sourceFamilyId": "editions-metailie",
+  "countryCodes": [
+    "FR"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://editions-metailie.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://editions-metailie.com/chronique/lhumanite/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:05.542Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://editions-metailie.com/",
+    "organisation": "Editions Métailié",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "ombie Ecosse Pologne Mozambique Amérique Latine Allemagne Belgique Brésil Nicaragua Angleterre Cuba France Espagne Italie Chili Irlande Portugal Pérou Angola Uruguay Éditions Métailié 20 rue des Grands Augustins 75006 PARIS 01 56 81 02 45 Suivez-nous sur ©",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "aa262648ccde352befafa52b3ce992df1e1e4e7505274e8d1229966fea1b61eb",
+    "accessedAt": "2026-10-01T21:04:03.156Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/editions-metailie.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "quidam-editeur",
+  "name": "Quidam Editeur",
+  "url": "https://www.quidamediteur.com/actus",
+  "format": "html",
+  "language": "fr",
+  "region": "global",
+  "sourceFamilyId": "quidam-editeur",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.quidamediteur.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.quidamediteur.com/actus/lili"
+],
+  "verifiedAt": "2026-10-01T20:48:07.183Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/actus\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.quidamediteur.com/contact",
+  "organisation": "Quidam Editeur",
+  "status": "office_country_unconfirmed",
+  "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/quidam-editeur.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "anagrama",
+  "name": "Anagrama",
+  "url": "https://www.anagrama-ed.es/",
+  "format": "html",
+  "language": "es",
+  "region": "europe",
+  "sourceFamilyId": "anagrama",
+  "countryCodes": [
+  "ES"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.anagrama-ed.es"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694"
+],
+  "verifiedAt": "2026-10-01T20:48:07.656Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/noticias\\/.+|^\\/libro\\/panorama\\x2dde\\x2dnarrativas\\/\\x2dque\\x2dsoy\\x2dun\\x2dciervo\\x2d\\/9788433951144\\/[^/]+\\/?$|^\\/libro\\/compactos\\/el\\x2ddesfile\\x2ddel\\x2damor\\/9788433950871\\/[^/]+\\/?$|^\\/radio\\x2danagrama\\/tema\\x2dlibre\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.anagrama-ed.es/",
+  "organisation": "Anagrama",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Pau Claris, 172. 08037 Barcelona. Editorial fundada por Jorge Herralde Grau en 1969. En nuestro catálogo figuran más de 4.500 títulos, donde se pueden encontrar muchos de los autores",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "d91a3c880422ed2bad5d025532db6e2b9ec1c28abbde947e47372e0d93496c8e",
+  "accessedAt": "2026-10-01T21:04:03.677Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/anagrama.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "libros-asteroide",
+  "name": "Libros del Asteroide",
+  "url": "https://librosdelasteroide.com/",
+  "format": "html",
+  "language": "es",
+  "region": "europe",
+  "sourceFamilyId": "libros-asteroide",
+  "countryCodes": [
+  "ES"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://librosdelasteroide.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027"
+],
+  "verifiedAt": "2026-10-01T20:48:08.447Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/actualidad\\x2dasteroide\\/440\\/[^/]+\\/?$|^\\/actualidad\\x2dasteroide\\/425\\/[^/]+\\/?$|^\\/actualidad\\x2dasteroide\\/442\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/actualidad\\x2dasteroide\\/438\\/[^/]+\\/?$|^\\/paseos\\/77\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://librosdelasteroide.com/",
+  "organisation": "Libros del Asteroide",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Contacto C/ Santaló 11, 3º 1ª 08021 Barcelona, España +34 93 280 25 24 Contexto de editores Libros del Asteroide es miembro de Contexto de Editores Más información Distribución Consulta aquí nues",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "4c6532058d9d9ff78bbde2f7507e796b6efb875c9a5b759e8e252ac7be0a4e80",
+  "accessedAt": "2026-10-01T21:04:04.178Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/libros-asteroide.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "impedimenta",
+  "name": "Impedimenta",
+  "url": "https://impedimenta.es/feed",
+  "format": "rss",
+  "language": "es",
+  "region": "europe",
+  "sourceFamilyId": "impedimenta",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://impedimenta.es"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://impedimenta.es/archivos/38218"
+  ],
+  "verifiedAt": "2026-10-01T20:48:10.505Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://impedimenta.es/",
+    "organisation": "Impedimenta",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": " electrónico He leído y acepto la Política de privacidad REGISTRO Juan Álvarez Mendizábal, 27 28008 Madrid, España +34 915 401 988edicion@impedimenta.es Nosotros Aviso legal y Privacidad Política de Cookies Catálogo Distribuidores Foreign rights SeguirSegu",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "46481ba3e4aabefe3504e413444184d04478bc63b83b638f51da31332d5e0cda",
+    "accessedAt": "2026-10-01T21:04:04.855Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/impedimenta.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "nordica-libros",
+  "name": "Nórdica Libros",
+  "url": "https://nordicalibros.com/feed/",
+  "format": "rss",
+  "language": "es",
+  "region": "europe",
+  "sourceFamilyId": "nordica-libros",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://nordicalibros.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:22.035Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://nordicalibros.com/contacto/",
+    "organisation": "Nórdica Libros",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "ares a los anteriormente contratados por el destinatario. Dirección Doctor Blanco Soler, 26. 28054. Madrid Teléfono +34 917 055 057 Email info@nordicalibros.com",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "6b805be86d2efda94999cfacf2b7f8e6b960455d5ee94a87422ada5298f4932d",
+    "accessedAt": "2026-10-01T21:04:06.623Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/nordica-libros.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "aufbau",
+  "name": "Aufbau",
+  "url": "https://www.aufbau-verlage.de/pressemitteilungen",
+  "format": "html",
+  "language": "de",
+  "region": "europe",
+  "sourceFamilyId": "aufbau",
+  "countryCodes": [
+  "DE"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.aufbau-verlage.de"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0"
+],
+  "verifiedAt": "2026-10-01T20:48:12.799Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/aufbau\\x2daudio\\/[^/]+\\/?$|^\\/more\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.aufbau-verlage.de/impressum",
+  "organisation": "Aufbau",
+  "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+  "excerpt": "Aufbau Verlage GmbH & Co. KG Prinzenstraße 85 10969 Berlin Telefon +49(0) 30 28394 -0 Fax +49(0) 30 28394 -100 E-Mail: info[at]aufbau-verlage.de Registergericht: Amtsgericht Charlottenburg Registernummer: HRA 40423 B USt.Ident.Nr: DE 261725915 Persönlich hafte",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "f3eef1dfbaf333d2c160ff17e7b4c01503773c97c44bfbb9256535e5786fbe0b",
+  "accessedAt": "2026-10-01T21:16:10.388Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/aufbau.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "klett-cotta",
+  "name": "Klett-Cotta",
+  "url": "https://www.klett-cotta.de/aktuelles/news-c-106",
+  "format": "html",
+  "language": "de",
+  "region": "europe",
+  "sourceFamilyId": "klett-cotta",
+  "countryCodes": [
+  "DE"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.klett-cotta.de"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342"
+],
+  "verifiedAt": "2026-10-01T20:48:16.016Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/beitrag\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.klett-cotta.de/service/kontakt-c-105",
+  "organisation": "Klett-Cotta",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Kontakt - Klett-Cotta-Verlag (J. G. Cotta’sche Buchhandlung Nachfolger GmbH)Rotebühlstraße 77 70178 Stuttgart Telefon 0711/6672-0 Fax: 0711/6672-2030 info@klett-cotta.de Abteilungen, Informationen und Ansprechpartner Für Leser:innen E-Mail: info@klett-cotta.d",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "9b2d856fc164cee94f4dcc1b6e15f0e70d4386617bdbe908e7bdd64092f19996",
+  "accessedAt": "2026-10-01T21:04:04.814Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/klett-cotta.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "minimum-fax",
+  "name": "Minimum Fax",
+  "url": "https://www.minimumfax.com/#",
+  "format": "html",
+  "language": "it-IT",
+  "region": "europe",
+  "sourceFamilyId": "minimum-fax",
+  "countryCodes": [
+  "IT"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.minimumfax.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130"
+],
+  "verifiedAt": "2026-10-01T20:48:18.656Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/event\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.minimumfax.com/",
+  "organisation": "Minimum Fax",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Denominazione sociale: MINIMUM FAX S.R.L. Sede legale: ROMA (RM) VIALE DELLA BELLA VILLA, 1 (ALTEZZA VIA CASILINA 939) - CAP 00172 Numero e sede di iscrizione al registro imprese: RM-1997-155274 DEL 25/02/1997",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "8f3cb102688b53a8f40adcc565773dd3d32f2e7eb6fab7e1ad426a1bad45854e",
+  "accessedAt": "2026-10-01T21:04:05.185Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/minimum-fax.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "iperborea",
+  "name": "Iperborea",
+  "url": "https://iperborea.com/news/",
+  "format": "html",
+  "language": "it",
+  "region": "europe",
+  "sourceFamilyId": "iperborea",
+  "countryCodes": [
+  "IT"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://iperborea.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/"
+],
+  "verifiedAt": "2026-10-01T20:48:17.797Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://iperborea.com/",
+  "organisation": "Iperborea",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "IPERBOREA SRL Via Gian Battista Vico, 16/A 20123 Milano - P.IVA IT08968860158 Cap. Soc. € 46.000,00 iperborea@pec.it Privacy Policy Cookie Policy Sitemap Chi siamo Paesi Titoli Autori News Eventi Contatti ",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "51beab132d83eaeb79f6fd4c0f079a3c724b83479caed301049bf951513ab159",
+  "accessedAt": "2026-10-01T21:04:06.240Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/iperborea.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "nottetempo",
+  "name": "Nottetempo",
+  "url": "https://www.edizioninottetempo.it/",
+  "format": "html",
+  "language": "it",
+  "region": "global",
+  "sourceFamilyId": "nottetempo",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.edizioninottetempo.it"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025"
+],
+  "verifiedAt": "2026-10-01T20:48:20.651Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/it\\/newspost\\/[^/]+\\/?$|^\\/it\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.edizioninottetempo.it/",
+  "organisation": "Nottetempo",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Nottetempo",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/nottetempo.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "bookhug",
+  "name": "Book*hug Press",
+  "url": "https://bookhugpress.ca/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "north-america",
+  "sourceFamilyId": "bookhug",
+  "countryCodes": [
+    "CA"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://bookhugpress.ca"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:32.357Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://bookhugpress.ca/contact-bookhugpress/",
+    "organisation": "Book*hug Press",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Contact Us and Masthead Contact Information Address Book*hug Press 401 Richmond St. West Suite 251 Toronto, ON M5V 3A8, Canada Masthead Jay Millar, Co-publisher Hazel Millar, Co-publisher Reid Millar, Sales and Marketing Manager Britt Landry, Managing Edit",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "31845775946e6ad65ea25b934302507e817b36fd494338b6830f9f5907fe2fa0",
+    "accessedAt": "2026-10-01T21:04:14.059Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/bookhug.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "arsenal-pulp",
+  "name": "Arsenal Pulp Press",
+  "url": "https://arsenalpulp.com/News",
+  "format": "html",
+  "language": "en",
+  "region": "north-america",
+  "sourceFamilyId": "arsenal-pulp",
+  "countryCodes": [
+  "CA"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://arsenalpulp.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox"
+],
+  "verifiedAt": "2026-10-01T20:48:23.679Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/News\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://arsenalpulp.com/About-Arsenal-Pulp-Press/Contact",
+  "organisation": "Arsenal Pulp Press",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Arsenal Pulp Press #202 - 211 East Georgia Street Vancouver, BC, V6A 1Z6Canada phone 604.687.4233fax 604.687.4283Follow us on FacebookFollow us on Twitter: @ArsenalpulpFollow us on Instagram: @arsenalpulp Gene",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "2cb9f01ce6dcd18e04b6ded0c9e5e295e6436904f57fcb7f35896070490c7c97",
+  "accessedAt": "2026-10-01T21:04:07.347Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/arsenal-pulp.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "scribe-publications",
+  "name": "Scribe Publications",
+  "url": "https://scribepublications.com.au/news",
+  "format": "html",
+  "language": "en",
+  "region": "oceania",
+  "sourceFamilyId": "scribe-publications",
+  "countryCodes": [
+  "AU"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://scribepublications.com.au"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award"
+],
+  "verifiedAt": "2026-10-01T20:48:28.910Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://scribepublications.com.au/contact",
+  "organisation": "Scribe Publications",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "ContactScribe Publications18-20 Edward Street Brunswick 3056 Victoria, Australia Tel: ‭+61 3 9388 8780‬info@scribepub.com.auVisit Scribe UK or USScribe UKScribe USScribe PublicationsIf you’re looking for information on how to get ",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "06a6dfcea41fa5ad5d064b09496ef3a8dbe8691dfe868a64399cd828e8bced7d",
+  "accessedAt": "2026-10-01T21:04:07.656Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/scribe-publications.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "uqp",
+  "name": "University of Queensland Press",
+  "url": "https://www.uqp.com.au/",
+  "format": "html",
+  "language": "en",
+  "region": "oceania",
+  "sourceFamilyId": "uqp",
+  "countryCodes": [
+  "AU"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.uqp.com.au"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards"
+],
+  "verifiedAt": "2026-10-01T20:48:32.632Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blog\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.uqp.com.au/",
+  "organisation": "University of Queensland Press",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "n back to top Phone: +61 7 3365 7244 Fax: +61 7 3365 7579 Email: reception@uqp.com.au University of Queensland Press PO Box 6042 St Lucia, QLD 4067 Australia © The University of Queensland 2026 Privacy & Terms of use website by Inkahoots Acknowledgement of Tra",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "7dbc40ee7fbf001db01b40fdde25d8eeb66a5e3c4871eeb8b186ec848dcb2e50",
+  "accessedAt": "2026-10-01T21:04:11.558Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/uqp.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "fremantle-press",
+  "name": "Fremantle Press",
+  "url": "https://fremantlepress.com.au/feed/",
+  "format": "rss",
+  "language": "en-AU",
+  "region": "oceania",
+  "sourceFamilyId": "fremantle-press",
+  "countryCodes": [
+    "AU"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://fremantlepress.com.au"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:40.440Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://fremantlepress.com.au/contact-us/",
+    "organisation": "Fremantle Press",
+    "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+    "excerpt": "Postal address:Fremantle Press1/10 Parry StreetFremantle WA 6160 Street address:1/10 Parry StreetFremantle WA 6160 T+61 (0)8 9430 6331E admin@fremantlepress.com.auABN 78 910 098 021 Custom publishingVisit our custom publishing page Foreign rights, sales and di",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "9577a142ef26e5773bc985fedd85085a763aaad1666c19da6f84b67b545b925f",
+    "accessedAt": "2026-10-01T21:16:22.236Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/fremantle-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "spinifex-press",
+  "name": "Spinifex Press",
+  "url": "https://www.spinifexpress.com.au/",
+  "format": "html",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "spinifex-press",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.spinifexpress.com.au"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover"
+],
+  "verifiedAt": "2026-10-01T20:48:33.750Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/events\\/.+|^\\/ebook\\x2dstore\\/p\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.spinifexpress.com.au/",
+  "organisation": "Spinifex Press",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Spinifex Press",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/spinifex-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "czechlit",
+  "name": "Czech Literary Centre",
+  "url": "https://www.czechlit.cz/en/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "czechlit",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.czechlit.cz"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:34.128Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.czechlit.cz/en/",
+    "organisation": "Czech Literary Centre",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Czech Literary Centre",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/czechlit.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "wsoy",
+  "name": "WSOY",
+  "url": "https://www.wsoy.fi/",
+  "format": "html",
+  "language": "fi",
+  "region": "europe",
+  "sourceFamilyId": "wsoy",
+  "countryCodes": [
+  "FI"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.wsoy.fi"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/"
+],
+  "verifiedAt": "2026-10-01T20:48:38.679Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/artikkelit\\/[^/]+\\/?$|^\\/kirjat\\/[^/]+\\/?$|^\\/tekija\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.wsoy.fi/",
+  "organisation": "WSOY",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Käyntiosoite Lönnrotinkatu 18 A00120 Helsinki Postiosoite PL 125900101 Helsinki Puhelinvaihde 010 5060 200 Tietosuoja ja rekisteriselosteEvästeetBriefly in English Lönnrotinkatu 18 A00120 Helsink",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31",
+  "accessedAt": "2026-10-01T21:04:11.874Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/wsoy.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "ordfront",
+  "name": "Ordfront",
+  "url": "https://ordfrontforlag.se/feed/podcast/ordfronten/",
+  "format": "rss",
+  "language": "sv-SE",
+  "region": "europe",
+  "sourceFamilyId": "ordfront",
+  "countryCodes": [
+    "SE"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://ordfrontforlag.se"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/"
+  ],
+  "verifiedAt": "2026-10-01T20:48:39.638Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://ordfrontforlag.se/",
+    "organisation": "Ordfront",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Genvägar Press Manus Vi som jobbar här Om oss Kontakta oss Besöksadress: Stortorget 1 111 29 Stockholm Fakturaadress: Ordfront förlag c/o Förlagsekonomi Skönviksvägen 238 122 42 Enskede faktura.5567980957@forlagsekonomi.se Följ oss FacebookInstagramTwi",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "1a2e1f2bc7b75380d557b08fca1a794d0cf27a20111c70d2ec39044ce25531c7",
+    "accessedAt": "2026-10-01T21:04:12.091Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/ordfront.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "ikaros",
+  "name": "Ikaros",
+  "url": "https://ikarosbooks.gr/el/",
+  "format": "html",
+  "language": "el",
+  "region": "europe",
+  "sourceFamilyId": "ikaros",
+  "countryCodes": [
+  "GR"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://ikarosbooks.gr"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/"
+],
+  "verifiedAt": "2026-10-01T20:48:40.662Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/el\\/news\\/.+|^\\/el\\/events\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://ikarosbooks.gr/el/contact/",
+  "organisation": "Ikaros",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "άθεσή σας για την καλύτερη δυνατή εξυπηρέτηση. Βιβλιοπωλείο, Παραγγελίες Βουλής 4, Σύνταγμα 105 62, Αθήνα Τηλ: 210 3225152 fax: 211 2687003 Email: orders@ikarosbooks.gr Εκδόσεις, Λογιστήριο, Ατελιέ Βουλής 35, Σύνταγμα 105 57, Αθήνα Τηλ: 216 7005964 Email:",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "971bcba3a5150da6dba9b1f49063e253cfcfe98a65bc2899746fac79c0bf35bf",
+  "accessedAt": "2026-10-01T21:04:13.065Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/ikaros.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "adarna",
+  "name": "Adarna House",
+  "url": "https://adarna.com.ph/",
+  "format": "html",
+  "language": "en",
+  "region": "asia",
+  "sourceFamilyId": "adarna",
+  "countryCodes": [
+  "PH"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://adarna.com.ph"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025"
+],
+  "verifiedAt": "2026-10-01T20:48:43.690Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blogs\\/kuwentong\\x2dadarna\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://adarna.com.ph/",
+  "organisation": "Adarna House",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "babasang Filipino. Visit us109 Scout Fernandez corner Scout Torillo Streets, Barangay Sacred Heart, Quezon City, 1103 Open hoursMon - Fri · 8:00 AM - 5:00 PM Get in touch kaibigan@adarna.com.ph © 2026 Adarna House, Inc. All rights reserved. PayPal",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "c97a2289217e966cc296687cdc83ff2f39f47fe70e3a960b03ea2d78dc8e598a",
+  "accessedAt": "2026-10-01T21:04:12.559Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/adarna.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "women-prize",
+  "name": "Women’s Prize for Fiction",
+  "url": "https://womensprize.com/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "women-prize",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://womensprize.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/"
+],
+  "verifiedAt": "2026-10-01T20:48:47.365Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/event\\/.+|^\\/[^/]{12,}\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://womensprize.com/",
+  "organisation": "Women’s Prize for Fiction",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Women’s Prize for Fiction",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/women-prize.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "booker-new-media",
+  "name": "The Bookseller",
+  "url": "https://www.thebookseller.com/Syndication/DF.cfm?f=7&ft=10",
+  "format": "rss",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "booker-new-media",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.thebookseller.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist"
+  ],
+  "verifiedAt": "2026-10-01T20:48:48.056Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.thebookseller.com/news",
+    "organisation": "The Bookseller",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "The Bookseller",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/booker-new-media.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "bookbrunch",
+  "name": "BookBrunch",
+  "url": "https://www.bookbrunch.co.uk/#",
+  "format": "html",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "bookbrunch",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.bookbrunch.co.uk"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist"
+],
+  "verifiedAt": "2026-10-01T20:48:49.621Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/page\\/article\\x2ddetail\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.bookbrunch.co.uk/",
+  "organisation": "BookBrunch",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "BookBrunch",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/bookbrunch.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "big-book-award",
+  "name": "Большая книга",
+  "url": "https://bigbook.ru/novosti",
+  "format": "html",
+  "language": "ru-RU",
+  "region": "global",
+  "sourceFamilyId": "big-book-award",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://bigbook.ru"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona"
+],
+  "verifiedAt": "2026-10-01T20:48:51.447Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/novosti\\/.+|^\\/eksperty\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://bigbook.ru/",
+  "organisation": "Большая книга",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "Большая книга",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/big-book-award.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "yasnaya-polyana-award",
+  "name": "Премия Ясная Поляна",
+  "url": "https://www.yppremia.ru/news",
+  "format": "html",
+  "language": "ru",
+  "region": "europe",
+  "sourceFamilyId": "yasnaya-polyana-award",
+  "countryCodes": [
+  "RU"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.yppremia.ru"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026"
+],
+  "verifiedAt": "2026-10-01T20:48:49.034Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.yppremia.ru/contacts",
+  "organisation": "Премия Ясная Поляна",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "ращаться к координатору литературной премии «Ясная Поляна»: E-mail yppremia@yandex.ru адрес 119034, Россия, Москва, ул. Льва Толстого, д. 21 Музей-усадьба Л.Н. Толстого «Хамовники» (с пометкой «Литературная премия «Ясная Поляна») подписатьсяна нашу рассылк",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "2ba681b79ccbb809a7d46add53a838f1f8356e2654a7c23b93c1719c1c261404",
+  "accessedAt": "2026-10-01T21:04:14.542Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/yasnaya-polyana-award.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "voprosy-literatury",
+  "name": "Вопросы литературы",
+  "url": "https://voplit.ru/category/events/",
+  "format": "html",
+  "language": "ru-RU",
+  "region": "europe",
+  "sourceFamilyId": "voprosy-literatury",
+  "countryCodes": [
+  "RU"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://voplit.ru"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/"
+],
+  "verifiedAt": "2026-10-01T20:48:50.927Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://voplit.ru/about/contacts/",
+  "organisation": "Вопросы литературы",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "вости Юр. информация Контакты Адрес и время работы Юридический и почтовый адрес редакции:125375, г. Москва, Большой Гнездниковский пер., дом 10. Редакция работает с понедельника по пятницу с 10 до 20 часов; дни приема: понедельник, среда и пятница с 10 до ",
+  "status": "organisation_country",
+  "scope": "official_contact_page",
+  "responseSha256": "7882772630b6989fcf03785c7fd21a7d3227ba8187599cb92f5d7d43c1b7d91c",
+  "accessedAt": "2026-10-01T21:04:14.707Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/voprosy-literatury.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "duke-press-blog",
+  "name": "Duke University Press",
+  "url": "https://dukeupress.wordpress.com/feed/",
+  "format": "rss",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "duke-press-blog",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://dukeupress.wordpress.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/"
+  ],
+  "verifiedAt": "2026-10-01T20:56:30.257Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://dukeupress.wordpress.com/",
+    "organisation": "Duke University Press",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Duke University Press",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/duke-press-blog.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "cambridge-press-blog",
+  "name": "Cambridge University Press",
+  "url": "https://cambridgeblog.org/",
+  "format": "html",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "cambridge-press-blog",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://cambridgeblog.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/"
+],
+  "verifiedAt": "2026-10-01T20:51:40.195Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://cambridgeblog.org/",
+  "organisation": "Cambridge University Press",
+  "status": "office_country_unconfirmed",
+  "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/cambridge-press-blog.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "liverpool-press-blog",
+  "name": "Liverpool University Press",
+  "url": "https://liverpooluniversitypress.blog/feed/",
+  "format": "rss",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "liverpool-press-blog",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://liverpooluniversitypress.blog"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/"
+  ],
+  "verifiedAt": "2026-10-01T20:56:30.240Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://liverpooluniversitypress.blog/",
+    "organisation": "Liverpool University Press",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Liverpool University Press",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/liverpool-press-blog.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "unc-press-blog",
+  "name": "University of North Carolina Press",
+  "url": "https://uncpressblog.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "unc-press-blog",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://uncpressblog.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:44.766Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://uncpressblog.com/",
+    "organisation": "University of North Carolina Press",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "University of North Carolina Press",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/unc-press-blog.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "syracuse-press",
+  "name": "Syracuse University Press",
+  "url": "https://press.syr.edu/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "north-america",
+  "sourceFamilyId": "syracuse-press",
+  "countryCodes": [
+    "US"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://press.syr.edu"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:43.941Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://press.syr.edu/",
+    "organisation": "Syracuse University Press",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "X Facebook YouTube LinkedIn Instagram Bluesky Syracuse University Press 621 Skytop Road, Suite 110 map this locationGoogle map location Syracuse, New York 13244-5290 supress@syr.edu For book orders, conta",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "551109115475a34cee415e15d733adb23de86c57008e6e18c914eb2e05c82b83",
+    "accessedAt": "2026-10-01T21:04:16.229Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/syracuse-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "virginia-press",
+  "name": "University of Virginia Press",
+  "url": "https://www.upress.virginia.edu/",
+  "format": "html",
+  "language": "en",
+  "region": "north-america",
+  "sourceFamilyId": "virginia-press",
+  "countryCodes": [
+  "US"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.upress.virginia.edu"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/"
+],
+  "verifiedAt": "2026-10-01T20:51:45.085Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/news\\/.+|^\\/author\\x2dcorner\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/title\\/[^/]+\\/?$|^\\/exhibits\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.upress.virginia.edu/",
+  "organisation": "University of Virginia Press",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "PressCareer OpportunitiesWalker Cowen Memorial PrizePrivacy PolicyContact UsP.O. Box 400318 (Postal)Charlottesville, VA 22904-4318210 Sprigg Lane (Courier)Charlottesville, VA 22903-2417434 924-3468 (main)1-800-831-3406 (toll-free)434 982-2655 (fax)General Inquiries",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321",
+  "accessedAt": "2026-10-01T21:04:15.804Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/virginia-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "toronto-press",
+  "name": "University of Toronto Press",
+  "url": "https://utorontopress.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "toronto-press",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://utorontopress.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://utorontopress.com/awards-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:46.113Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://utorontopress.com/",
+    "organisation": "University of Toronto Press",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "University of Toronto Press",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/toronto-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "world-literature-today",
+  "name": "World Literature Today",
+  "url": "https://worldliteraturetoday.org/weekly",
+  "format": "html",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "world-literature-today",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://worldliteraturetoday.org"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature"
+],
+  "verifiedAt": "2026-10-01T20:51:49.506Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/blog\\/.+", ""),
+  "countryEvidence": {
+  "method": "official_organisation_identity",
+  "url": "https://www.worldliteraturetoday.org/",
+  "organisation": "World Literature Today",
+  "statement": "Organisation country is distinct from the country of each covered event.",
+  "excerpt": "World Literature Today",
+  "status": "office_country_unconfirmed"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/world-literature-today.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "prototype-publishing",
+  "name": "Prototype",
+  "url": "https://prototypepublishing.co.uk/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "europe",
+  "sourceFamilyId": "prototype-publishing",
+  "countryCodes": [
+    "GB"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://prototypepublishing.co.uk"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:55.511Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://prototypepublishing.co.uk/about/contact/",
+    "organisation": "Prototype",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "ge, otherwise, you can find us here: Email: admin[at]prototypepublishing.co.uk Post: 71 Oriel Road, London E9 5SG, UK Contact form Your Name (we need this) Your Email (we need this too) What are you contacting us about? Your Message <div class=\"grecaptcha-",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "66667636c1a399f374a420338975eecb44339df87313f54534d1158eddba07dd",
+    "accessedAt": "2026-10-01T21:04:17.202Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/prototype-publishing.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "guernica-magazine",
+  "name": "Guernica",
+  "url": "https://www.guernicamag.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "guernica-magazine",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.guernicamag.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.guernicamag.com/places-of-memory/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:51.141Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.guernicamag.com/",
+    "organisation": "Guernica",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Guernica",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/guernica-magazine.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "cleveland-review-books",
+  "name": "Cleveland Review of Books",
+  "url": "https://clereviewofbooks.com/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "cleveland-review-books",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://clereviewofbooks.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/"
+  ],
+  "verifiedAt": "2026-10-01T20:56:40.559Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.clereviewofbooks.com/",
+    "organisation": "Cleveland Review of Books",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Cleveland Review of Books",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/cleveland-review-books.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "public-books",
+  "name": "Public Books",
+  "url": "https://www.publicbooks.org/feed/",
+  "format": "rss",
+  "language": "en-US",
+  "region": "global",
+  "sourceFamilyId": "public-books",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.publicbooks.org"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:52.731Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.publicbooks.org/",
+    "organisation": "Public Books",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Public Books",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/public-books.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "revista-letras-libres",
+  "name": "Letras Libres",
+  "url": "https://letraslibres.com/feed/",
+  "format": "rss",
+  "language": "es",
+  "region": "global",
+  "sourceFamilyId": "revista-letras-libres",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://letraslibres.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:02.365Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://letraslibres.com/",
+    "organisation": "Letras Libres",
+    "status": "office_country_unconfirmed",
+    "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/revista-letras-libres.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "revista-mercatto",
+  "name": "Mercurio",
+  "url": "https://www.revistamercurio.es/feed/",
+  "format": "rss",
+  "language": "es",
+  "region": "global",
+  "sourceFamilyId": "revista-mercatto",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.revistamercurio.es"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:56.907Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://revistamercurio.es/",
+    "organisation": "Mercurio",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Mercurio",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/revista-mercatto.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "cultura-romania",
+  "name": "Cultura",
+  "url": "https://revistacultura.ro/feed/",
+  "format": "rss",
+  "language": "ro-RO",
+  "region": "global",
+  "sourceFamilyId": "cultura-romania",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://revistacultura.ro"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/"
+  ],
+  "verifiedAt": "2026-10-01T20:51:57.836Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://revistacultura.ro/",
+    "organisation": "Cultura",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Cultura",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/cultura-romania.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "liternet-bulgaria",
+  "name": "LiterNet",
+  "url": "https://liternet.bg/publisher/rss",
+  "format": "rss",
+  "language": "bg",
+  "region": "global",
+  "sourceFamilyId": "liternet-bulgaria",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://liternet.bg"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://liternet.bg/publish11/p_antov/ivanisha.htm"
+  ],
+  "verifiedAt": "2026-10-01T20:51:58.749Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://liternet.bg/",
+    "organisation": "LiterNet",
+    "status": "office_country_unconfirmed",
+    "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/liternet-bulgaria.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "litlogos",
+  "name": "Literaturhaus Switzerland",
+  "url": "https://literaturhaus.ch/feed/",
+  "format": "rss",
+  "language": "de-CH",
+  "region": "europe",
+  "sourceFamilyId": "litlogos",
+  "countryCodes": [
+    "CH"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://literaturhaus.ch"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://literaturhaus.ch/saisoneroeffnung-2026-2027/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:02.548Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://literaturhaus.ch/impressum/",
+    "organisation": "Literaturhaus Switzerland",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Impressum Redaktion Museumsgesellschaft und Literaturhaus Zürich, Limmatquai 62, 8001 Zürich, SchweizTelefon +41 44 254 50 08info@literaturhaus.chNicola Steiner, Isabelle Vonlanthen, Sandra Gubler Design und Progra",
+    "status": "organisation_country",
+    "scope": "official_contact_page",
+    "responseSha256": "e701a2116b419e66a1c84ff55832698d03afe223704f81bf747ef76dd8beedc5",
+    "accessedAt": "2026-10-01T21:04:19.499Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/litlogos.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literaturhaus-salzburg",
+  "name": "Literaturhaus Salzburg",
+  "url": "https://www.literaturhaus-salzburg.at/feed/",
+  "format": "rss",
+  "language": "de",
+  "region": "europe",
+  "sourceFamilyId": "literaturhaus-salzburg",
+  "countryCodes": [
+    "AT"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.literaturhaus-salzburg.at"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:00.634Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://www.literaturhaus-salzburg.at/",
+    "organisation": "Literaturhaus Salzburg",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Newsletter Presse Kontakt Impressum LITERATURHAUS SALZBURGStrubergasse 23, H.C. Artmann-PlatzA-5020 Salzburg Telefon: +43 662 422 411Fax: +43 662 422 411-13E-Mail: info@literaturhaus-salzburg.at Instagram Fac",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "4874072bb02d40db30b1799817d5e2ee943cf25c7fdffe53590fb28f2329352e",
+    "accessedAt": "2026-10-01T21:04:19.552Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literaturhaus-salzburg.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literaturhaus-stuttgart",
+  "name": "Literaturhaus Stuttgart",
+  "url": "https://www.literaturhaus-stuttgart.de/feed.xml",
+  "format": "rss",
+  "language": "de-DE",
+  "region": "europe",
+  "sourceFamilyId": "literaturhaus-stuttgart",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.literaturhaus-stuttgart.de"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.literaturhaus-stuttgart.de/event/6853.html"
+  ],
+  "verifiedAt": "2026-10-01T20:52:02.734Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://www.literaturhaus-stuttgart.de/",
+    "organisation": "Literaturhaus Stuttgart",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "Literaturhaus Stuttgart Breitscheidstraße 4 70174 Stuttgart Fon (0711) 22 02 17 - 3 Fax (0711) 22 02 17 - 48 info@literaturhaus-stuttgart.de Barrierefreiheit Kontakt Anfahrt",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "6a1d362326172ecd132828e061d589f97007ed8db4d9198ff02cc4c1a47d20c7",
+    "accessedAt": "2026-10-01T21:04:19.806Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literaturhaus-stuttgart.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "literature-finland",
+  "name": "FILI",
+  "url": "https://fili.fi/feed/",
+  "format": "rss",
+  "language": "fi",
+  "region": "europe",
+  "sourceFamilyId": "literature-finland",
+  "countryCodes": [
+    "FI"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://fili.fi"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:03.315Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_contact_address",
+    "url": "https://fili.fi/",
+    "organisation": "FILI",
+    "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+    "excerpt": "nen kääntäjäpalkinto 100 kääntäjääJulkaisutFILIn kirjanostotFILI PodcastFILIn kirjavideotBooks from Finland -lehden arkistoFILIMeistäYhteys­tiedotMedialleLogopankkiFILI, Hallituskatu 2 B 00170 Helsinki *protected email*Saavutetta­vuusselosteTietosuojaselost",
+    "status": "organisation_country",
+    "scope": "footer",
+    "responseSha256": "5244bc71eac7006f20bc2c136ad7eb18a08cfd8f2cf9cc7b01c01785ce96477c",
+    "accessedAt": "2026-10-01T21:04:19.838Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/literature-finland.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "irish-literature",
+  "name": "Literature Ireland",
+  "url": "https://www.literatureireland.com/",
+  "format": "html",
+  "language": "en-GB",
+  "region": "europe",
+  "sourceFamilyId": "irish-literature",
+  "countryCodes": [
+  "IE"
+],
+  "coverageCountryCodes": [],
+  "topics": [
+  "publishing",
+  "releases",
+  "awards",
+  "festivals"
+],
+  "articleOrigins": [
+  "https://www.literatureireland.com"
+],
+  "parserVersion": "r10-source-profile-1",
+  "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+  "exampleArticleUrls": [
+  "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/"
+],
+  "verifiedAt": "2026-10-01T20:52:04.870Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "linkPattern": new RegExp("^\\/latest\\/[^/]+\\/?$", ""),
+  "countryEvidence": {
+  "method": "official_contact_address",
+  "url": "https://www.literatureireland.com/",
+  "organisation": "Literature Ireland",
+  "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+  "excerpt": "Trinity Centre for Literary and Cultural Translation 36 Fenian Street Trinity College Dublin Dublin D02 CH22 Ireland Cookies & privacy notice Policies & legal notes Download brand assets Contact details Make a donation Sign up to our newslett",
+  "status": "organisation_country",
+  "scope": "footer",
+  "responseSha256": "d1456f05b9458536d5990640983cf72147627ca7d0ac40f18f4d08c65f3fdff5",
+  "accessedAt": "2026-10-01T21:04:20.232Z"
+},
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/irish-literature.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "ireland-book-awards",
+  "name": "An Post Irish Book Awards",
+  "url": "https://www.irishbookawards.ie/feed/",
+  "format": "rss",
+  "language": "en-GB",
+  "region": "global",
+  "sourceFamilyId": "ireland-book-awards",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://www.irishbookawards.ie"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:16.909Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.irishbookawards.ie/",
+    "organisation": "An Post Irish Book Awards",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "An Post Irish Book Awards",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/ireland-book-awards.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "stella-prize",
+  "name": "Stella Prize",
+  "url": "https://stella.org.au/feed/",
+  "format": "rss",
+  "language": "en-AU",
+  "region": "oceania",
+  "sourceFamilyId": "stella-prize",
+  "countryCodes": [
+    "AU"
+  ],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://stella.org.au"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:10.631Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_registration_identity",
+    "url": "https://stella.org.au/",
+    "organisation": "Stella Prize",
+    "statement": "The organisation declares its Australian Registered Body Number in its own legal footer; event geography is separate.",
+    "excerpt": "o@stella.org.au ARBN: 657 317 283 Stella acknowledges the Traditional Owners of the land throughout Australia and recognises their continuing connection to land, waters, community, and culture.We pay our respect to Elders past and present and, through them, t",
+    "status": "organisation_country",
+    "scope": "official_footer",
+    "responseSha256": "236ea8f57512f65e9a76abd308de2a68c5679eb247d37a30aa28a796a40948fa",
+    "accessedAt": "2026-10-01T21:04:21.922Z"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/stella-prize.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "hakara",
+  "name": "Hakara",
+  "url": "https://hakara.in/feed/",
+  "format": "rss",
+  "language": "mr-IN",
+  "region": "global",
+  "sourceFamilyId": "hakara",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://hakara.in"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://hakara.in/ten-poems-bedarkar-gummuluri/"
+  ],
+  "verifiedAt": "2026-10-01T20:52:17.477Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://www.hakara.in/",
+    "organisation": "Hakara",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Hakara",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/hakara.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
+},
+{
+  "id": "karavan-press",
+  "name": "Karavan Press",
+  "url": "https://karavanpress.com/feed/",
+  "format": "rss",
+  "language": "en",
+  "region": "global",
+  "sourceFamilyId": "karavan-press",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "topics": [
+    "publishing",
+    "releases",
+    "awards",
+    "festivals"
+  ],
+  "articleOrigins": [
+    "https://karavanpress.com"
+  ],
+  "parserVersion": "r10-source-profile-1",
+  "exampleArticleUrls": [
+    "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/"
+  ],
+  "verifiedAt": "2026-10-01T20:56:32.785Z",
+  "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate.",
+  "countryEvidence": {
+    "method": "official_organisation_identity",
+    "url": "https://karavanpress.com/",
+    "organisation": "Karavan Press",
+    "statement": "Organisation country is distinct from the country of each covered event.",
+    "excerpt": "Karavan Press",
+    "status": "office_country_unconfirmed"
+  },
+  "sourceClass": "literary-news",
+  "evidenceReport": "reports/r10/sources/karavan-press.json",
+  "autoPublication": false,
+  "profileScope": "Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.",
+  "refreshIntervalSeconds": 7200
 }
 ];
 
@@ -11285,6 +14319,2381 @@ export const R10_SOURCE_GEOGRAPHY = {
       "statement": "Organisation country is distinct from the country of each covered event.",
       "excerpt": "Academy of American Poets",
       "status": "organisation_country"
+    }
+  },
+  "and-other-stories": {
+    "sourceFamilyId": "and-other-stories",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.andotherstories.org/",
+      "organisation": "And Other Stories",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "And Other Stories",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "archipelago-books": {
+    "sourceFamilyId": "archipelago-books",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://archipelagobooks.org/",
+      "organisation": "Archipelago Books",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Archipelago Books & Elsewhere Editions The Old American Can Factory 232 Third Street #A111 Brooklyn, NY 11215 [email protected] Illustrations created by artist Gracey Zhang ExploreAbout News Books Events Support My Account Latest Catalog ConnectSign",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "f087a1a4b3941314bd9a57ef284b06c57652fcdbe8047dabd8e0fe8ad57f66f0",
+      "accessedAt": "2026-10-01T21:03:58.984Z"
+    }
+  },
+  "acantilado": {
+    "sourceFamilyId": "acantilado",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.acantilado.es/contacto/",
+      "organisation": "Acantilado",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Contacto Muntaner, 462 E-08006 Barcelona Tel.: (+34) 934 144 906 correo@acantilado.es En Acantilado no se aceptan ni valoran manuscritos no solicitados. Distribución Distribución Si lo desea",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "59bf8ff79cf3175fa4fc8d4e414ffacab4ccd18879b429251a967a999e0d41e0",
+      "accessedAt": "2026-10-01T21:03:59.184Z"
+    }
+  },
+  "biblioasis": {
+    "sourceFamilyId": "biblioasis",
+    "countryCodes": [
+      "CA"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.biblioasis.com/contact/",
+      "organisation": "Biblioasis",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ContactYou are here: Home1 / Contact Biblioasis Bookstore is located at: 1520 Wyandotte Street East Windsor, ON N9A 3L2 Tel: 519-968-2206 Email: bookstore@biblioasis.com biblioasisbookshop.com Biblioasis Publishing (Office Only) is located at: 1686 Ottawa S",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "2e9126b980c2753cdeef2ef11e1a20ef85883244a9c6fe25099f4bdfd3f33756",
+      "accessedAt": "2026-10-01T21:04:02.681Z"
+    }
+  },
+  "faber": {
+    "sourceFamilyId": "faber",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.faber.co.uk/",
+      "organisation": "Faber & Faber",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Faber & Faber",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "canongate": {
+    "sourceFamilyId": "canongate",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://canongate.co.uk/",
+      "organisation": "Canongate",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Canongate",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "serpents-tail": {
+    "sourceFamilyId": "serpents-tail",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://serpentstail.com/",
+      "organisation": "Serpent’s Tail",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "h x Basket 0 © 2026 Profile Books Limited Serpent's Tail, an imprint of Profile Books 29 Cloth Fair London EC1A 7JQ Email: [email protected] Phone: + 44 20 7841 6300 Registered in England & Wales under No. 3120147 VAT Number 674 9638 76 About Serpent’s Tai",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "0b49c55d8779957266ed9299b8f8076d32548d37d90f11eb06fdeeb9e8d7d683",
+      "accessedAt": "2026-10-01T21:03:59.348Z"
+    }
+  },
+  "fitzcarraldo": {
+    "sourceFamilyId": "fitzcarraldo",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://fitzcarraldoeditions.com/",
+      "organisation": "Fitzcarraldo Editions",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Fitzcarraldo Editions",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "virago": {
+    "sourceFamilyId": "hachette-livre",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.virago.co.uk/imprint/lbbg/virago/page/about-virago/virago-company-information/",
+      "organisation": "Virago",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ollows: Little, Brown Book Group Limited Registered address: Carmelite House 50 Victoria Embankment LONDON EC4Y 0DZ United Kingdom Registration number: 2304585 VAT number: 205505305 Telephone Number: +44 (0)20 3122 7000 Email: info@littlebrown.co.uk Hachet",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "0bfa8e8216a60b5e3ae6d13fe843702ba8522a822c0ff35ad035e9c2bc0437b4",
+      "accessedAt": "2026-10-01T21:04:00.074Z"
+    }
+  },
+  "john-murray": {
+    "sourceFamilyId": "john-murray",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.johnmurraypress.co.uk/",
+      "organisation": "John Murray",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "John Murray",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "hachette-book-group": {
+    "sourceFamilyId": "hachette-livre",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.hachettebookgroup.com/",
+      "organisation": "Hachette Book Group",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Footer Hachette Book Group is a leading book publisher based in New York and a division of Hachette Livre, the third-largest publisher in the world. Social Media Facebook Twitter Instagram YouTube Tiktok Linkedin Pinterest",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "1b9606682370a30dc179b18610ff1163710171c07284dbf80d7a40b5931c031d",
+      "accessedAt": "2026-10-01T21:04:00.939Z"
+    }
+  },
+  "tor-publishing": {
+    "sourceFamilyId": "tor-publishing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://torpublishinggroup.com/",
+      "organisation": "Tor Publishing Group",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Tor Publishing Group",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "harpercollins-india": {
+    "sourceFamilyId": "harpercollins-india",
+    "countryCodes": [
+      "IN"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://harpercollins.co.in/contact-us/",
+      "organisation": "HarperCollins India",
+      "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+      "excerpt": "Address4th Floor, Cyber City, Building No 10,Tower A, Gurugram, Haryana 122002, IndiaPhone+91 12448-94800 Download QR ExploreBooksFirst chapterAuthorsaudiobooksblogsVideosAbout usAbout usteamimprintscataloguescontact usOur ContributorsHarper broadcastblogpress",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "b8243a56b67aac05b11754eb829fe9fd16c1adc078a22d9d9475817534381d90",
+      "accessedAt": "2026-10-01T21:16:16.930Z"
+    }
+  },
+  "penguin-india": {
+    "sourceFamilyId": "penguin-india",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.penguin.co.in/",
+      "organisation": "Penguin India",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Penguin India",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "juggernaut-books": {
+    "sourceFamilyId": "juggernaut-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.juggernaut.in/",
+      "organisation": "Juggernaut Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Juggernaut Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "knopf-doubleday": {
+    "sourceFamilyId": "knopf-doubleday",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://knopfdoubleday.com/",
+      "organisation": "Knopf Doubleday",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Knopf Doubleday",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "nyrb": {
+    "sourceFamilyId": "nyrb",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.nyrb.com/pages/contact-us",
+      "organisation": "New York Review Books",
+      "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+      "excerpt": "New York Review Books207 East 32nd StNew York, NY 10016-6305Tel 212 757-8070Fax 212 333-5374 Book OrdersTel 646 215-2500Fax 212 333-5374 Please visit our Frequently Asked Questions page for answers to common queries. Examination and Desk Copy Requests: Our boo",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "2292a97a4240a32d788c67ca2b6ae21017d349e26a810412fb45029e16302b02",
+      "accessedAt": "2026-10-01T21:16:11.489Z"
+    }
+  },
+  "new-directions": {
+    "sourceFamilyId": "new-directions",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.ndbooks.com/",
+      "organisation": "New Directions",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "New Directions",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "graywolf-press": {
+    "sourceFamilyId": "graywolf-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.graywolfpress.org/",
+      "organisation": "Graywolf Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Graywolf Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "coffee-house-press": {
+    "sourceFamilyId": "coffee-house-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://coffeehousepress.org/",
+      "organisation": "Coffee House Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Coffee House Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "milkweed-editions": {
+    "sourceFamilyId": "milkweed-editions",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://milkweed.org/",
+      "organisation": "Milkweed Editions",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Milkweed Editions",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "tin-house": {
+    "sourceFamilyId": "tin-house",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://tinhouse.com/",
+      "organisation": "Tin House",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Tin House",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "melville-house": {
+    "sourceFamilyId": "melville-house",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.mhpbooks.com/",
+      "organisation": "Melville House",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Melville House",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "europa-editions": {
+    "sourceFamilyId": "europa-editions",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.europaeditions.com/",
+      "organisation": "Europa Editions",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "us Contact us Our authors Latest titles Follow us © Europa Editions 27 Union Square West, Suite 302 New York, N.Y. 10003 | info@europaeditions.com | privacy | cookie | credits",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "1e2c75d718c4e94a02794a3140eed8d7e30675dde2137e6e109207e1902ee364",
+      "accessedAt": "2026-10-01T21:04:02.298Z"
+    }
+  },
+  "restless-books": {
+    "sourceFamilyId": "restless-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://restlessbooks.org/",
+      "organisation": "Restless Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Restless Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "pushkin-press": {
+    "sourceFamilyId": "pushkin-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://pushkinpress.com/",
+      "organisation": "Pushkin Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Pushkin Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "peirene-press": {
+    "sourceFamilyId": "peirene-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.peirenepress.com/",
+      "organisation": "Peirene Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Peirene Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "galley-beggar": {
+    "sourceFamilyId": "galley-beggar",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.galleybeggar.co.uk/",
+      "organisation": "Galley Beggar Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Galley Beggar Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "saraband": {
+    "sourceFamilyId": "saraband",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://saraband.net/",
+      "organisation": "Saraband",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Saraband",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "salt-publishing": {
+    "sourceFamilyId": "salt-publishing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.saltpublishing.com/",
+      "organisation": "Salt Publishing",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Salt Publishing",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "comma-press": {
+    "sourceFamilyId": "comma-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://commapress.co.uk/",
+      "organisation": "Comma Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Comma Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "editions-verdier": {
+    "sourceFamilyId": "editions-verdier",
+    "countryCodes": [
+      "FR"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://editions-verdier.fr/informations-generales/",
+      "organisation": "Editions Verdier",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "er (1945-2009), Colette Olive et Michèle Planel. Contacts Siège social : 11220 LagrassePermanence à Paris : 82, boulevard de Ménilmontant - 75020 Paris(33) 01 43 79 20 45contact[at]editions-verdier.fr GérancePierre Audoux, Mathilde Azzopardi, Émilie Thoma",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "3d64b08f564f25678b3d1abe44365b13fd94093c6998da8f3e0e08a1a1189620",
+      "accessedAt": "2026-10-01T21:04:03.411Z"
+    }
+  },
+  "editions-metailie": {
+    "sourceFamilyId": "editions-metailie",
+    "countryCodes": [
+      "FR"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://editions-metailie.com/",
+      "organisation": "Editions Métailié",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ombie Ecosse Pologne Mozambique Amérique Latine Allemagne Belgique Brésil Nicaragua Angleterre Cuba France Espagne Italie Chili Irlande Portugal Pérou Angola Uruguay Éditions Métailié 20 rue des Grands Augustins 75006 PARIS 01 56 81 02 45 Suivez-nous sur ©",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "aa262648ccde352befafa52b3ce992df1e1e4e7505274e8d1229966fea1b61eb",
+      "accessedAt": "2026-10-01T21:04:03.156Z"
+    }
+  },
+  "zulma": {
+    "sourceFamilyId": "zulma",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.zulma.fr/",
+      "organisation": "Zulma",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Zulma",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "le-tripode": {
+    "sourceFamilyId": "le-tripode",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://le-tripode.net/",
+      "organisation": "Le Tripode",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Le Tripode",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "quidam-editeur": {
+    "sourceFamilyId": "quidam-editeur",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.quidamediteur.com/contact",
+      "organisation": "Quidam Editeur",
+      "status": "office_country_unconfirmed",
+      "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+    }
+  },
+  "finitude": {
+    "sourceFamilyId": "finitude",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.finitude.fr/",
+      "organisation": "Finitude",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Finitude",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "anagrama": {
+    "sourceFamilyId": "anagrama",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.anagrama-ed.es/",
+      "organisation": "Anagrama",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Pau Claris, 172. 08037 Barcelona. Editorial fundada por Jorge Herralde Grau en 1969. En nuestro catálogo figuran más de 4.500 títulos, donde se pueden encontrar muchos de los autores",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "d91a3c880422ed2bad5d025532db6e2b9ec1c28abbde947e47372e0d93496c8e",
+      "accessedAt": "2026-10-01T21:04:03.677Z"
+    }
+  },
+  "libros-asteroide": {
+    "sourceFamilyId": "libros-asteroide",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://librosdelasteroide.com/",
+      "organisation": "Libros del Asteroide",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Contacto C/ Santaló 11, 3º 1ª 08021 Barcelona, España +34 93 280 25 24 Contexto de editores Libros del Asteroide es miembro de Contexto de Editores Más información Distribución Consulta aquí nues",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "4c6532058d9d9ff78bbde2f7507e796b6efb875c9a5b759e8e252ac7be0a4e80",
+      "accessedAt": "2026-10-01T21:04:04.178Z"
+    }
+  },
+  "impedimenta": {
+    "sourceFamilyId": "impedimenta",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://impedimenta.es/",
+      "organisation": "Impedimenta",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": " electrónico He leído y acepto la Política de privacidad REGISTRO Juan Álvarez Mendizábal, 27 28008 Madrid, España +34 915 401 988edicion@impedimenta.es Nosotros Aviso legal y Privacidad Política de Cookies Catálogo Distribuidores Foreign rights SeguirSegu",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "46481ba3e4aabefe3504e413444184d04478bc63b83b638f51da31332d5e0cda",
+      "accessedAt": "2026-10-01T21:04:04.855Z"
+    }
+  },
+  "paginas-espuma": {
+    "sourceFamilyId": "paginas-espuma",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://paginasdeespuma.com/",
+      "organisation": "Páginas de Espuma",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Páginas de Espuma",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "nordica-libros": {
+    "sourceFamilyId": "nordica-libros",
+    "countryCodes": [
+      "ES"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://nordicalibros.com/contacto/",
+      "organisation": "Nórdica Libros",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ares a los anteriormente contratados por el destinatario. Dirección Doctor Blanco Soler, 26. 28054. Madrid Teléfono +34 917 055 057 Email info@nordicalibros.com",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "6b805be86d2efda94999cfacf2b7f8e6b960455d5ee94a87422ada5298f4932d",
+      "accessedAt": "2026-10-01T21:04:06.623Z"
+    }
+  },
+  "sexto-piso": {
+    "sourceFamilyId": "sexto-piso",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://sextopiso.es/",
+      "organisation": "Sexto Piso",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Sexto Piso",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "suhrkamp": {
+    "sourceFamilyId": "suhrkamp",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.suhrkamp.de/",
+      "organisation": "Suhrkamp",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Suhrkamp",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "hanser": {
+    "sourceFamilyId": "hanser",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.hanser-literaturverlage.de/",
+      "organisation": "Hanser",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Hanser",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "aufbau": {
+    "sourceFamilyId": "aufbau",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.aufbau-verlage.de/impressum",
+      "organisation": "Aufbau",
+      "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+      "excerpt": "Aufbau Verlage GmbH & Co. KG Prinzenstraße 85 10969 Berlin Telefon +49(0) 30 28394 -0 Fax +49(0) 30 28394 -100 E-Mail: info[at]aufbau-verlage.de Registergericht: Amtsgericht Charlottenburg Registernummer: HRA 40423 B USt.Ident.Nr: DE 261725915 Persönlich hafte",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "f3eef1dfbaf333d2c160ff17e7b4c01503773c97c44bfbb9256535e5786fbe0b",
+      "accessedAt": "2026-10-01T21:16:10.388Z"
+    }
+  },
+  "wagenbach": {
+    "sourceFamilyId": "wagenbach",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.wagenbach.de/",
+      "organisation": "Wagenbach",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Wagenbach",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "wallstein": {
+    "sourceFamilyId": "wallstein",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.wallstein-verlag.de/",
+      "organisation": "Wallstein",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Wallstein",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "klett-cotta": {
+    "sourceFamilyId": "klett-cotta",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.klett-cotta.de/service/kontakt-c-105",
+      "organisation": "Klett-Cotta",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Kontakt - Klett-Cotta-Verlag (J. G. Cotta’sche Buchhandlung Nachfolger GmbH)Rotebühlstraße 77 70178 Stuttgart Telefon 0711/6672-0 Fax: 0711/6672-2030 info@klett-cotta.de Abteilungen, Informationen und Ansprechpartner Für Leser:innen E-Mail: info@klett-cotta.d",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "9b2d856fc164cee94f4dcc1b6e15f0e70d4386617bdbe908e7bdd64092f19996",
+      "accessedAt": "2026-10-01T21:04:04.814Z"
+    }
+  },
+  "edizioni-sur": {
+    "sourceFamilyId": "edizioni-sur",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.edizionisur.it/",
+      "organisation": "Edizioni Sur",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Edizioni Sur",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "minimum-fax": {
+    "sourceFamilyId": "minimum-fax",
+    "countryCodes": [
+      "IT"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.minimumfax.com/",
+      "organisation": "Minimum Fax",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Denominazione sociale: MINIMUM FAX S.R.L. Sede legale: ROMA (RM) VIALE DELLA BELLA VILLA, 1 (ALTEZZA VIA CASILINA 939) - CAP 00172 Numero e sede di iscrizione al registro imprese: RM-1997-155274 DEL 25/02/1997",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "8f3cb102688b53a8f40adcc565773dd3d32f2e7eb6fab7e1ad426a1bad45854e",
+      "accessedAt": "2026-10-01T21:04:05.185Z"
+    }
+  },
+  "iperborea": {
+    "sourceFamilyId": "iperborea",
+    "countryCodes": [
+      "IT"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://iperborea.com/",
+      "organisation": "Iperborea",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "IPERBOREA SRL Via Gian Battista Vico, 16/A 20123 Milano - P.IVA IT08968860158 Cap. Soc. € 46.000,00 iperborea@pec.it Privacy Policy Cookie Policy Sitemap Chi siamo Paesi Titoli Autori News Eventi Contatti ",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "51beab132d83eaeb79f6fd4c0f079a3c724b83479caed301049bf951513ab159",
+      "accessedAt": "2026-10-01T21:04:06.240Z"
+    }
+  },
+  "nottetempo": {
+    "sourceFamilyId": "nottetempo",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.edizioninottetempo.it/",
+      "organisation": "Nottetempo",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Nottetempo",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "cossee": {
+    "sourceFamilyId": "cossee",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.cossee.com/",
+      "organisation": "Cossee",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Cossee",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "van-oorschot": {
+    "sourceFamilyId": "van-oorschot",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.vanoorschot.nl/",
+      "organisation": "Van Oorschot",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Van Oorschot",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "atlas-contact": {
+    "sourceFamilyId": "atlas-contact",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.atlascontact.nl/",
+      "organisation": "Atlas Contact",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Atlas Contact",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "querido": {
+    "sourceFamilyId": "querido",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.querido.nl/",
+      "organisation": "Querido",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Querido",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "uitgeverij-vrijdag": {
+    "sourceFamilyId": "uitgeverij-vrijdag",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.uitgeverijvrijdag.be/",
+      "organisation": "Uitgeverij Vrijdag",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Uitgeverij Vrijdag",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "relogio-dagua": {
+    "sourceFamilyId": "relogio-dagua",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://relogiodagua.pt/",
+      "organisation": "Relógio d’Água",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Relógio d’Água",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "bookhug": {
+    "sourceFamilyId": "bookhug",
+    "countryCodes": [
+      "CA"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://bookhugpress.ca/contact-bookhugpress/",
+      "organisation": "Book*hug Press",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Contact Us and Masthead Contact Information Address Book*hug Press 401 Richmond St. West Suite 251 Toronto, ON M5V 3A8, Canada Masthead Jay Millar, Co-publisher Hazel Millar, Co-publisher Reid Millar, Sales and Marketing Manager Britt Landry, Managing Edit",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "31845775946e6ad65ea25b934302507e817b36fd494338b6830f9f5907fe2fa0",
+      "accessedAt": "2026-10-01T21:04:14.059Z"
+    }
+  },
+  "arsenal-pulp": {
+    "sourceFamilyId": "arsenal-pulp",
+    "countryCodes": [
+      "CA"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://arsenalpulp.com/About-Arsenal-Pulp-Press/Contact",
+      "organisation": "Arsenal Pulp Press",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Arsenal Pulp Press #202 - 211 East Georgia Street Vancouver, BC, V6A 1Z6Canada phone 604.687.4233fax 604.687.4283Follow us on FacebookFollow us on Twitter: @ArsenalpulpFollow us on Instagram: @arsenalpulp Gene",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "2cb9f01ce6dcd18e04b6ded0c9e5e295e6436904f57fcb7f35896070490c7c97",
+      "accessedAt": "2026-10-01T21:04:07.347Z"
+    }
+  },
+  "text-publishing": {
+    "sourceFamilyId": "text-publishing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.textpublishing.com.au/",
+      "organisation": "Text Publishing",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Text Publishing",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "scribe-publications": {
+    "sourceFamilyId": "scribe-publications",
+    "countryCodes": [
+      "AU"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://scribepublications.com.au/contact",
+      "organisation": "Scribe Publications",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ContactScribe Publications18-20 Edward Street Brunswick 3056 Victoria, Australia Tel: ‭+61 3 9388 8780‬info@scribepub.com.auVisit Scribe UK or USScribe UKScribe USScribe PublicationsIf you’re looking for information on how to get ",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "06a6dfcea41fa5ad5d064b09496ef3a8dbe8691dfe868a64399cd828e8bced7d",
+      "accessedAt": "2026-10-01T21:04:07.656Z"
+    }
+  },
+  "uqp": {
+    "sourceFamilyId": "uqp",
+    "countryCodes": [
+      "AU"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.uqp.com.au/",
+      "organisation": "University of Queensland Press",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "n back to top Phone: +61 7 3365 7244 Fax: +61 7 3365 7579 Email: reception@uqp.com.au University of Queensland Press PO Box 6042 St Lucia, QLD 4067 Australia © The University of Queensland 2026 Privacy & Terms of use website by Inkahoots Acknowledgement of Tra",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "7dbc40ee7fbf001db01b40fdde25d8eeb66a5e3c4871eeb8b186ec848dcb2e50",
+      "accessedAt": "2026-10-01T21:04:11.558Z"
+    }
+  },
+  "fremantle-press": {
+    "sourceFamilyId": "fremantle-press",
+    "countryCodes": [
+      "AU"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://fremantlepress.com.au/contact-us/",
+      "organisation": "Fremantle Press",
+      "statement": "Organisation office country confirmed from its own contact address, independently of article or event geography.",
+      "excerpt": "Postal address:Fremantle Press1/10 Parry StreetFremantle WA 6160 Street address:1/10 Parry StreetFremantle WA 6160 T+61 (0)8 9430 6331E admin@fremantlepress.com.auABN 78 910 098 021 Custom publishingVisit our custom publishing page Foreign rights, sales and di",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "9577a142ef26e5773bc985fedd85085a763aaad1666c19da6f84b67b545b925f",
+      "accessedAt": "2026-10-01T21:16:22.236Z"
+    }
+  },
+  "spinifex-press": {
+    "sourceFamilyId": "spinifex-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.spinifexpress.com.au/",
+      "organisation": "Spinifex Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Spinifex Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "czechlit": {
+    "sourceFamilyId": "czechlit",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.czechlit.cz/en/",
+      "organisation": "Czech Literary Centre",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Czech Literary Centre",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "litcentrum": {
+    "sourceFamilyId": "litcentrum",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.litcentrum.sk/",
+      "organisation": "Slovak Literary Centre",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Slovak Literary Centre",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "vbz": {
+    "sourceFamilyId": "vbz",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.vbz.hr/",
+      "organisation": "V.B.Z.",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "V.B.Z.",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "laguna": {
+    "sourceFamilyId": "laguna",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.laguna.rs/",
+      "organisation": "Laguna",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Laguna",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "polirom-blog": {
+    "sourceFamilyId": "polirom-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://blog.polirom.ro/",
+      "organisation": "Polirom",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Polirom",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "colibri": {
+    "sourceFamilyId": "colibri",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.colibri.bg/",
+      "organisation": "Colibri",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Colibri",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "otava": {
+    "sourceFamilyId": "otava",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://otava.fi/",
+      "organisation": "Otava",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Otava",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "wsoy": {
+    "sourceFamilyId": "wsoy",
+    "countryCodes": [
+      "FI"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.wsoy.fi/",
+      "organisation": "WSOY",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Käyntiosoite Lönnrotinkatu 18 A00120 Helsinki Postiosoite PL 125900101 Helsinki Puhelinvaihde 010 5060 200 Tietosuoja ja rekisteriselosteEvästeetBriefly in English Lönnrotinkatu 18 A00120 Helsink",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31",
+      "accessedAt": "2026-10-01T21:04:11.874Z"
+    }
+  },
+  "ordfront": {
+    "sourceFamilyId": "ordfront",
+    "countryCodes": [
+      "SE"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://ordfrontforlag.se/",
+      "organisation": "Ordfront",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Genvägar Press Manus Vi som jobbar här Om oss Kontakta oss Besöksadress: Stortorget 1 111 29 Stockholm Fakturaadress: Ordfront förlag c/o Förlagsekonomi Skönviksvägen 238 122 42 Enskede faktura.5567980957@forlagsekonomi.se Följ oss FacebookInstagramTwi",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "1a2e1f2bc7b75380d557b08fca1a794d0cf27a20111c70d2ec39044ce25531c7",
+      "accessedAt": "2026-10-01T21:04:12.091Z"
+    }
+  },
+  "ikaros": {
+    "sourceFamilyId": "ikaros",
+    "countryCodes": [
+      "GR"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://ikarosbooks.gr/el/contact/",
+      "organisation": "Ikaros",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "άθεσή σας για την καλύτερη δυνατή εξυπηρέτηση. Βιβλιοπωλείο, Παραγγελίες Βουλής 4, Σύνταγμα 105 62, Αθήνα Τηλ: 210 3225152 fax: 211 2687003 Email: orders@ikarosbooks.gr Εκδόσεις, Λογιστήριο, Ατελιέ Βουλής 35, Σύνταγμα 105 57, Αθήνα Τηλ: 216 7005964 Email:",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "971bcba3a5150da6dba9b1f49063e253cfcfe98a65bc2899746fac79c0bf35bf",
+      "accessedAt": "2026-10-01T21:04:13.065Z"
+    }
+  },
+  "metis-kitap": {
+    "sourceFamilyId": "metis-kitap",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.metiskitap.com/",
+      "organisation": "Metis Kitap",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Metis Kitap",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "hong-kong-literary-festival": {
+    "sourceFamilyId": "hong-kong-literary-festival",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.festival.org.hk/",
+      "organisation": "Hong Kong International Literary Festival",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Hong Kong International Literary Festival",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "openbook-taiwan": {
+    "sourceFamilyId": "openbook-taiwan",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.openbook.org.tw/",
+      "organisation": "Openbook",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Openbook",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "gramedia-blog": {
+    "sourceFamilyId": "gramedia-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.gramedia.com/blog/",
+      "organisation": "Gramedia",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Gramedia",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "mizan": {
+    "sourceFamilyId": "mizan",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://mizan.com/",
+      "organisation": "Mizan",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Mizan",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "adarna": {
+    "sourceFamilyId": "adarna",
+    "countryCodes": [
+      "PH"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://adarna.com.ph/",
+      "organisation": "Adarna House",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "babasang Filipino. Visit us109 Scout Fernandez corner Scout Torillo Streets, Barangay Sacred Heart, Quezon City, 1103 Open hoursMon - Fri · 8:00 AM - 5:00 PM Get in touch kaibigan@adarna.com.ph © 2026 Adarna House, Inc. All rights reserved. PayPal",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "c97a2289217e966cc296687cdc83ff2f39f47fe70e3a960b03ea2d78dc8e598a",
+      "accessedAt": "2026-10-01T21:04:12.559Z"
+    }
+  },
+  "ateneo-press": {
+    "sourceFamilyId": "ateneo-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://unipress.ateneo.edu/",
+      "organisation": "Ateneo de Manila University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Ateneo de Manila University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "anvil-publishing": {
+    "sourceFamilyId": "anvil-publishing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.anvilpublishing.com/",
+      "organisation": "Anvil Publishing",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Anvil Publishing",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "women-prize": {
+    "sourceFamilyId": "women-prize",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://womensprize.com/",
+      "organisation": "Women’s Prize for Fiction",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Women’s Prize for Fiction",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "dublin-literary-award": {
+    "sourceFamilyId": "dublin-literary-award",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://dublinliteraryaward.ie/",
+      "organisation": "Dublin Literary Award",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Dublin Literary Award",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "tsa-prize": {
+    "sourceFamilyId": "tsa-prize",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://societyofauthors.org/",
+      "organisation": "The Society of Authors",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Society of Authors",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "booker-new-media": {
+    "sourceFamilyId": "booker-new-media",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.thebookseller.com/news",
+      "organisation": "The Bookseller",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "The Bookseller",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "literary-review": {
+    "sourceFamilyId": "literary-review",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://literaryreview.co.uk/",
+      "organisation": "Literary Review",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literary Review",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "bookbrunch": {
+    "sourceFamilyId": "bookbrunch",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.bookbrunch.co.uk/",
+      "organisation": "BookBrunch",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "BookBrunch",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "russian-pen": {
+    "sourceFamilyId": "russian-pen",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://ruspen.ru/",
+      "organisation": "Русский ПЕН-центр",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Русский ПЕН-центр",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "big-book-award": {
+    "sourceFamilyId": "big-book-award",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://bigbook.ru/",
+      "organisation": "Большая книга",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Большая книга",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "yasnaya-polyana-award": {
+    "sourceFamilyId": "yasnaya-polyana-award",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.yppremia.ru/contacts",
+      "organisation": "Премия Ясная Поляна",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ращаться к координатору литературной премии «Ясная Поляна»: E-mail yppremia@yandex.ru адрес 119034, Россия, Москва, ул. Льва Толстого, д. 21 Музей-усадьба Л.Н. Толстого «Хамовники» (с пометкой «Литературная премия «Ясная Поляна») подписатьсяна нашу рассылк",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "2ba681b79ccbb809a7d46add53a838f1f8356e2654a7c23b93c1719c1c261404",
+      "accessedAt": "2026-10-01T21:04:14.542Z"
+    }
+  },
+  "prosodia": {
+    "sourceFamilyId": "prosodia",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://prosodia.ru/",
+      "organisation": "Prosodia",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Prosodia",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "voprosy-literatury": {
+    "sourceFamilyId": "voprosy-literatury",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://voplit.ru/about/contacts/",
+      "organisation": "Вопросы литературы",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "вости Юр. информация Контакты Адрес и время работы Юридический и почтовый адрес редакции:125375, г. Москва, Большой Гнездниковский пер., дом 10. Редакция работает с понедельника по пятницу с 10 до 20 часов; дни приема: понедельник, среда и пятница с 10 до ",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "7882772630b6989fcf03785c7fd21a7d3227ba8187599cb92f5d7d43c1b7d91c",
+      "accessedAt": "2026-10-01T21:04:14.707Z"
+    }
+  },
+  "zvezda-journal": {
+    "sourceFamilyId": "zvezda-journal",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://zvezdaspb.ru/",
+      "organisation": "Звезда",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Звезда",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "uc-press": {
+    "sourceFamilyId": "uc-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.ucpress.edu/blog/",
+      "organisation": "University of California Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of California Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "mit-press": {
+    "sourceFamilyId": "mit-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://mitpress.mit.edu/blog/",
+      "organisation": "MIT Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "MIT Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "yale-press": {
+    "sourceFamilyId": "yale-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://yalebooks.yale.edu/",
+      "organisation": "Yale University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Yale University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "harvard-press-blog": {
+    "sourceFamilyId": "harvard-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://blog.hup.harvard.edu/",
+      "organisation": "Harvard University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Harvard University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "duke-press-blog": {
+    "sourceFamilyId": "duke-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://dukeupress.wordpress.com/",
+      "organisation": "Duke University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Duke University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "columbia-press-blog": {
+    "sourceFamilyId": "columbia-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://cupblog.org/",
+      "organisation": "Columbia University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Columbia University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "oxford-press-blog": {
+    "sourceFamilyId": "oxford-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://blog.oup.com/",
+      "organisation": "Oxford University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Oxford University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "cambridge-press-blog": {
+    "sourceFamilyId": "cambridge-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://cambridgeblog.org/",
+      "organisation": "Cambridge University Press",
+      "status": "office_country_unconfirmed",
+      "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+    }
+  },
+  "manchester-press": {
+    "sourceFamilyId": "manchester-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://manchesteruniversitypress.co.uk/",
+      "organisation": "Manchester University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Manchester University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "edinburgh-press-blog": {
+    "sourceFamilyId": "edinburgh-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://euppublishingblog.com/",
+      "organisation": "Edinburgh University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Edinburgh University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "liverpool-press-blog": {
+    "sourceFamilyId": "liverpool-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://liverpooluniversitypress.blog/",
+      "organisation": "Liverpool University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Liverpool University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "bristol-press": {
+    "sourceFamilyId": "bristol-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://bristoluniversitypress.co.uk/",
+      "organisation": "Bristol University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Bristol University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "minnesota-press": {
+    "sourceFamilyId": "minnesota-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.upress.umn.edu/",
+      "organisation": "University of Minnesota Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of Minnesota Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "unc-press-blog": {
+    "sourceFamilyId": "unc-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://uncpressblog.com/",
+      "organisation": "University of North Carolina Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of North Carolina Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "nebraska-press": {
+    "sourceFamilyId": "nebraska-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.nebraskapress.unl.edu/",
+      "organisation": "University of Nebraska Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of Nebraska Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "notre-dame-press": {
+    "sourceFamilyId": "notre-dame-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://undpress.nd.edu/",
+      "organisation": "University of Notre Dame Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of Notre Dame Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "syracuse-press": {
+    "sourceFamilyId": "syracuse-press",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://press.syr.edu/",
+      "organisation": "Syracuse University Press",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "X Facebook YouTube LinkedIn Instagram Bluesky Syracuse University Press 621 Skytop Road, Suite 110 map this locationGoogle map location Syracuse, New York 13244-5290 supress@syr.edu For book orders, conta",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "551109115475a34cee415e15d733adb23de86c57008e6e18c914eb2e05c82b83",
+      "accessedAt": "2026-10-01T21:04:16.229Z"
+    }
+  },
+  "indiana-press": {
+    "sourceFamilyId": "indiana-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://iupress.org/",
+      "organisation": "Indiana University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Indiana University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "iowa-press": {
+    "sourceFamilyId": "iowa-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://uipress.uiowa.edu/",
+      "organisation": "University of Iowa Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of Iowa Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "virginia-press": {
+    "sourceFamilyId": "virginia-press",
+    "countryCodes": [
+      "US"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.upress.virginia.edu/",
+      "organisation": "University of Virginia Press",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "PressCareer OpportunitiesWalker Cowen Memorial PrizePrivacy PolicyContact UsP.O. Box 400318 (Postal)Charlottesville, VA 22904-4318210 Sprigg Lane (Courier)Charlottesville, VA 22903-2417434 924-3468 (main)1-800-831-3406 (toll-free)434 982-2655 (fax)General Inquiries",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321",
+      "accessedAt": "2026-10-01T21:04:15.804Z"
+    }
+  },
+  "penn-state-press": {
+    "sourceFamilyId": "penn-state-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.psupress.org/",
+      "organisation": "Penn State University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Penn State University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "fordham-press": {
+    "sourceFamilyId": "fordham-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://fordhampress.com/",
+      "organisation": "Fordham University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Fordham University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "chicago-press": {
+    "sourceFamilyId": "chicago-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://press.uchicago.edu/",
+      "organisation": "University of Chicago Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of Chicago Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "toronto-press": {
+    "sourceFamilyId": "toronto-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://utorontopress.com/",
+      "organisation": "University of Toronto Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "University of Toronto Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "ubc-press": {
+    "sourceFamilyId": "ubc-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.ubcpress.ca/",
+      "organisation": "UBC Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "UBC Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "mcgill-queens-press": {
+    "sourceFamilyId": "mcgill-queens-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.mqup.ca/",
+      "organisation": "McGill-Queen’s University Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "McGill-Queen’s University Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "peter-owen": {
+    "sourceFamilyId": "peter-owen",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.peterowen.com/",
+      "organisation": "Peter Owen",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Peter Owen",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "dedalus-books": {
+    "sourceFamilyId": "dedalus-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.dedalusbooks.com/",
+      "organisation": "Dedalus Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Dedalus Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "valancourt": {
+    "sourceFamilyId": "valancourt",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.valancourtbooks.com/",
+      "organisation": "Valancourt Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Valancourt Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "world-literature-today": {
+    "sourceFamilyId": "world-literature-today",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.worldliteraturetoday.org/",
+      "organisation": "World Literature Today",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "World Literature Today",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "literary-translation-uk": {
+    "sourceFamilyId": "literary-translation-uk",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.bclt.org.uk/",
+      "organisation": "Literary Translation at the British Centre",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literary Translation at the British Centre",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "charco-press": {
+    "sourceFamilyId": "charco-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://charcopress.com/",
+      "organisation": "Charco Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Charco Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "prototype-publishing": {
+    "sourceFamilyId": "prototype-publishing",
+    "countryCodes": [
+      "GB"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://prototypepublishing.co.uk/about/contact/",
+      "organisation": "Prototype",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "ge, otherwise, you can find us here: Email: admin[at]prototypepublishing.co.uk Post: 71 Oriel Road, London E9 5SG, UK Contact form Your Name (we need this) Your Email (we need this too) What are you contacting us about? Your Message <div class=\"grecaptcha-",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "66667636c1a399f374a420338975eecb44339df87313f54534d1158eddba07dd",
+      "accessedAt": "2026-10-01T21:04:17.202Z"
+    }
+  },
+  "tilted-axis": {
+    "sourceFamilyId": "tilted-axis",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.tiltedaxispress.com/",
+      "organisation": "Tilted Axis Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Tilted Axis Press",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "guernica-magazine": {
+    "sourceFamilyId": "guernica-magazine",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.guernicamag.com/",
+      "organisation": "Guernica",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Guernica",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "asap-journal": {
+    "sourceFamilyId": "asap-journal",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://asapjournal.com/",
+      "organisation": "ASAP/Journal",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "ASAP/Journal",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "cleveland-review-books": {
+    "sourceFamilyId": "cleveland-review-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.clereviewofbooks.com/",
+      "organisation": "Cleveland Review of Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Cleveland Review of Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "public-books": {
+    "sourceFamilyId": "public-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.publicbooks.org/",
+      "organisation": "Public Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Public Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "bookforum": {
+    "sourceFamilyId": "bookforum",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.bookforum.com/",
+      "organisation": "Bookforum",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Bookforum",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "revista-letras-libres": {
+    "sourceFamilyId": "revista-letras-libres",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://letraslibres.com/",
+      "organisation": "Letras Libres",
+      "status": "office_country_unconfirmed",
+      "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+    }
+  },
+  "revista-mercatto": {
+    "sourceFamilyId": "revista-mercatto",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://revistamercurio.es/",
+      "organisation": "Mercurio",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Mercurio",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "jot-down-books": {
+    "sourceFamilyId": "jot-down-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.jotdown.es/",
+      "organisation": "Jot Down Cultural Magazine",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Jot Down Cultural Magazine",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "page-libraires": {
+    "sourceFamilyId": "page-libraires",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.pagedeslibraires.fr/",
+      "organisation": "PAGE des libraires",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "PAGE des libraires",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "remue-net": {
+    "sourceFamilyId": "remue-net",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://remue.net/",
+      "organisation": "Remue.net",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Remue.net",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "revue-litteraire": {
+    "sourceFamilyId": "revue-litteraire",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.lanrf.fr/",
+      "organisation": "La Nouvelle Revue Française",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "La Nouvelle Revue Française",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "revue-respiro": {
+    "sourceFamilyId": "revue-respiro",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.respiro.org/",
+      "organisation": "Respiro",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Respiro",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "cultura-romania": {
+    "sourceFamilyId": "cultura-romania",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://revistacultura.ro/",
+      "organisation": "Cultura",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Cultura",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "observator-cultural": {
+    "sourceFamilyId": "observator-cultural",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.observatorcultural.ro/",
+      "organisation": "Observator cultural",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Observator cultural",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "liternet-bulgaria": {
+    "sourceFamilyId": "liternet-bulgaria",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://liternet.bg/",
+      "organisation": "LiterNet",
+      "status": "office_country_unconfirmed",
+      "statement": "Observed country names describe distribution, publishing coverage or a brand rather than an independently confirmed organisation office address."
+    }
+  },
+  "litlogos": {
+    "sourceFamilyId": "litlogos",
+    "countryCodes": [
+      "CH"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://literaturhaus.ch/impressum/",
+      "organisation": "Literaturhaus Switzerland",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Impressum Redaktion Museumsgesellschaft und Literaturhaus Zürich, Limmatquai 62, 8001 Zürich, SchweizTelefon +41 44 254 50 08info@literaturhaus.chNicola Steiner, Isabelle Vonlanthen, Sandra Gubler Design und Progra",
+      "status": "organisation_country",
+      "scope": "official_contact_page",
+      "responseSha256": "e701a2116b419e66a1c84ff55832698d03afe223704f81bf747ef76dd8beedc5",
+      "accessedAt": "2026-10-01T21:04:19.499Z"
+    }
+  },
+  "literaturhaus-basel": {
+    "sourceFamilyId": "literaturhaus-basel",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.literaturhaus-basel.ch/",
+      "organisation": "Literaturhaus Basel",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literaturhaus Basel",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "literaturhaus-salzburg": {
+    "sourceFamilyId": "literaturhaus-salzburg",
+    "countryCodes": [
+      "AT"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.literaturhaus-salzburg.at/",
+      "organisation": "Literaturhaus Salzburg",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Newsletter Presse Kontakt Impressum LITERATURHAUS SALZBURGStrubergasse 23, H.C. Artmann-PlatzA-5020 Salzburg Telefon: +43 662 422 411Fax: +43 662 422 411-13E-Mail: info@literaturhaus-salzburg.at Instagram Fac",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "4874072bb02d40db30b1799817d5e2ee943cf25c7fdffe53590fb28f2329352e",
+      "accessedAt": "2026-10-01T21:04:19.552Z"
+    }
+  },
+  "literaturhaus-berlin": {
+    "sourceFamilyId": "literaturhaus-berlin",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.literaturhaus-berlin.de/",
+      "organisation": "Literaturhaus Berlin",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literaturhaus Berlin",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "literaturhaus-hamburg": {
+    "sourceFamilyId": "literaturhaus-hamburg",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.literaturhaus-hamburg.de/",
+      "organisation": "Literaturhaus Hamburg",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Literaturhaus Hamburg",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "literaturhaus-stuttgart": {
+    "sourceFamilyId": "literaturhaus-stuttgart",
+    "countryCodes": [
+      "DE"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.literaturhaus-stuttgart.de/",
+      "organisation": "Literaturhaus Stuttgart",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Literaturhaus Stuttgart Breitscheidstraße 4 70174 Stuttgart Fon (0711) 22 02 17 - 3 Fax (0711) 22 02 17 - 48 info@literaturhaus-stuttgart.de Barrierefreiheit Kontakt Anfahrt",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "6a1d362326172ecd132828e061d589f97007ed8db4d9198ff02cc4c1a47d20c7",
+      "accessedAt": "2026-10-01T21:04:19.806Z"
+    }
+  },
+  "letterenfonds": {
+    "sourceFamilyId": "letterenfonds",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.letterenfonds.nl/",
+      "organisation": "Dutch Foundation for Literature",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Dutch Foundation for Literature",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "flanders-literature": {
+    "sourceFamilyId": "flanders-literature",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.flandersliterature.be/",
+      "organisation": "Flanders Literature",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Flanders Literature",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "literature-finland": {
+    "sourceFamilyId": "literature-finland",
+    "countryCodes": [
+      "FI"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://fili.fi/",
+      "organisation": "FILI",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "nen kääntäjäpalkinto 100 kääntäjääJulkaisutFILIn kirjanostotFILI PodcastFILIn kirjavideotBooks from Finland -lehden arkistoFILIMeistäYhteys­tiedotMedialleLogopankkiFILI, Hallituskatu 2 B 00170 Helsinki *protected email*Saavutetta­vuusselosteTietosuojaselost",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "5244bc71eac7006f20bc2c136ad7eb18a08cfd8f2cf9cc7b01c01785ce96477c",
+      "accessedAt": "2026-10-01T21:04:19.838Z"
+    }
+  },
+  "norla": {
+    "sourceFamilyId": "norla",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://norla.no/en",
+      "organisation": "NORLA",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "NORLA",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "swedish-literature": {
+    "sourceFamilyId": "swedish-literature",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.kulturradet.se/",
+      "organisation": "Swedish Arts Council",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Swedish Arts Council",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "irish-literature": {
+    "sourceFamilyId": "irish-literature",
+    "countryCodes": [
+      "IE"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_contact_address",
+      "url": "https://www.literatureireland.com/",
+      "organisation": "Literature Ireland",
+      "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+      "excerpt": "Trinity Centre for Literary and Cultural Translation 36 Fenian Street Trinity College Dublin Dublin D02 CH22 Ireland Cookies & privacy notice Policies & legal notes Download brand assets Contact details Make a donation Sign up to our newslett",
+      "status": "organisation_country",
+      "scope": "footer",
+      "responseSha256": "d1456f05b9458536d5990640983cf72147627ca7d0ac40f18f4d08c65f3fdff5",
+      "accessedAt": "2026-10-01T21:04:20.232Z"
+    }
+  },
+  "ireland-book-awards": {
+    "sourceFamilyId": "ireland-book-awards",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.irishbookawards.ie/",
+      "organisation": "An Post Irish Book Awards",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "An Post Irish Book Awards",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "miles-franklin": {
+    "sourceFamilyId": "miles-franklin",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.milesfranklin.com.au/",
+      "organisation": "Miles Franklin Literary Award",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Miles Franklin Literary Award",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "stella-prize": {
+    "sourceFamilyId": "stella-prize",
+    "countryCodes": [
+      "AU"
+    ],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_registration_identity",
+      "url": "https://stella.org.au/",
+      "organisation": "Stella Prize",
+      "statement": "The organisation declares its Australian Registered Body Number in its own legal footer; event geography is separate.",
+      "excerpt": "o@stella.org.au ARBN: 657 317 283 Stella acknowledges the Traditional Owners of the land throughout Australia and recognises their continuing connection to land, waters, community, and culture.We pay our respect to Elders past and present and, through them, t",
+      "status": "organisation_country",
+      "scope": "official_footer",
+      "responseSha256": "236ea8f57512f65e9a76abd308de2a68c5679eb247d37a30aa28a796a40948fa",
+      "accessedAt": "2026-10-01T21:04:21.922Z"
+    }
+  },
+  "hakara": {
+    "sourceFamilyId": "hakara",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.hakara.in/",
+      "organisation": "Hakara",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Hakara",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "jimsaan": {
+    "sourceFamilyId": "jimsaan",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://jimsaan.com/",
+      "organisation": "Jimsaan",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Jimsaan",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "editions-elyzad": {
+    "sourceFamilyId": "editions-elyzad",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://elyzad.com/",
+      "organisation": "Elyzad",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Elyzad",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "editions-fennec": {
+    "sourceFamilyId": "editions-fennec",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.editionslefennec.com/",
+      "organisation": "Le Fennec",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Le Fennec",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "barzakh": {
+    "sourceFamilyId": "barzakh",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.editions-barzakh.com/",
+      "organisation": "Barzakh",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Barzakh",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "moran-publishers": {
+    "sourceFamilyId": "moran-publishers",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://moranpublishers.com/",
+      "organisation": "Moran Publishers",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Moran Publishers",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "kwela-books": {
+    "sourceFamilyId": "kwela-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://www.kwela.com/",
+      "organisation": "Kwela Books",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Kwela Books",
+      "status": "office_country_unconfirmed"
+    }
+  },
+  "karavan-press": {
+    "sourceFamilyId": "karavan-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "countryEvidence": {
+      "method": "official_organisation_identity",
+      "url": "https://karavanpress.com/",
+      "organisation": "Karavan Press",
+      "statement": "Organisation country is distinct from the country of each covered event.",
+      "excerpt": "Karavan Press",
+      "status": "office_country_unconfirmed"
     }
   }
 };

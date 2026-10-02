@@ -1,0 +1,285 @@
+{
+  "sourceId": "anagrama",
+  "name": "Anagrama",
+  "entryUrl": "https://www.anagrama-ed.es/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:06.698Z",
+  "requests": [
+    {
+      "url": "https://www.anagrama-ed.es/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 97219,
+      "sha256": "0ca25d2fcdc1a85b0fee5be8fc8b2ab221683736db2d4a9ac2a54132b39341d7",
+      "accessedAt": "2026-10-01T20:48:07.335Z"
+    },
+    {
+      "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 69111,
+      "sha256": "ad8a85355d2f7e932b2e36426c8af5e06096af9f861238ef4d52c9926724a308",
+      "accessedAt": "2026-10-01T20:48:07.653Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.anagrama-ed.es/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 75,
+    "sha256": "f6f9199c9b855cd434eca2b82415f5b0f851f71cbd82bfc333063fd9b5f12bf9",
+    "accessedAt": "2026-10-01T20:48:06.927Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "anagrama",
+    "name": "Anagrama",
+    "url": "https://www.anagrama-ed.es/",
+    "format": "html",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "anagrama",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.anagrama-ed.es"
+    ],
+    "linkPattern": "^\\/eventos\\/[^/]+\\/?$|^\\/premios\\/[^/]+\\/?$|^\\/libro\\/panorama\\x2dde\\x2dnarrativas\\/\\x2dque\\x2dsoy\\x2dun\\x2dciervo\\x2d\\/9788433951144\\/[^/]+\\/?$|^\\/libro\\/compactos\\/el\\x2ddesfile\\x2ddel\\x2damor\\/9788433950871\\/[^/]+\\/?$|^\\/noticias\\/.+|^\\/radio\\x2danagrama\\/tema\\x2dlibre\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694"
+    ],
+    "verifiedAt": "2026-10-01T20:48:07.656Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "anagrama",
+    "source": {
+      "name": "Anagrama",
+      "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Trece tachas halladas detrás de una novela, por Ernesto Carrión",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:07.389Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 69111,
+      "sha256": "ad8a85355d2f7e932b2e36426c8af5e06096af9f861238ef4d52c9926724a308",
+      "accessedAt": "2026-10-01T20:48:07.653Z",
+      "headline": "Trece tachas halladas detrás de una novela",
+      "excerpt": "ARTÍCULOSTrece tachas halladas detrás de una novelaSi la imaginación es frivolidad, la poesía es trascendencia. Quieres darle vida a una novela punzante y poética, amarga e inestable. Quieres darle vida a un libro que sea puro aire platónico y carne ruidosa enlazándose en la caída. POR Ernesto Carrión28/09/2026 1. Nunca se sabe. Al principio, no. A veces, todo lo que tienes en la mente es una intu",
+      "publishedDates": [],
+      "canonical": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:07.656Z",
+  "foundItems": [
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Trece tachas halladas detrás de una novela, por Ernesto Carrión",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/libro/panorama-de-narrativas/-que-soy-un-ciervo-/9788433951144/PN_1189",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "¿Qué soy, un ciervo?, de Polly Barton",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/libro/compactos/el-desfile-del-amor/9788433950871/CM_878",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El desfile del amor, de Sergio Pitol",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/radio-anagrama/tema-libre/diario-de-escritura-con-david-trueba-y-sara-mesa",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diario de escritura, con David Trueba y Sara Mesa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/radio-anagrama/tema-libre/un-barco-en-la-selva",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "#30 Un barco en la selva",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/radio-anagrama/tema-libre/la-inspiracion-un-espiritu-que-te-habita",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "#29 La inspiración: un espíritu que te habita",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "source": {
+        "name": "Anagrama",
+        "url": "https://www.anagrama-ed.es/radio-anagrama/tema-libre/un-hackeo-de-futuro",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "#28 Un hackeo de futuro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:07.389Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "0ca25d2fcdc1a85b0fee5be8fc8b2ab221683736db2d4a9ac2a54132b39341d7"
+}

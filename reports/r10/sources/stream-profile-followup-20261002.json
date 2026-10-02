@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:25:09.014Z",
+  "scope": "Current bounded source index, production discovery parser, and separate article detail probes. Availability and article identity only; no publication or freshness guarantee.",
+  "previousBaseline": {
+    "checkpoint": "2026-09-27",
+    "promotedProfiles": 108,
+    "combinedRegistry": 115
+  },
+  "counts": {
+    "reviewedSourceOverrides": 1,
+    "availableEndpoints": 1,
+    "separatelyVerifiedDetails": 1,
+    "currentArticleFinds": 8,
+    "published": 0
+  },
+  "failedSources": [],
+  "results": [
+    {
+      "sourceId": "nli-ie",
+      "endpoint": "https://www.nli.ie/",
+      "countryCodes": [
+        "IE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 28,
+      "currentArticleCandidateCount": 8,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:news-stories\\/news|exhibitions-events)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.nli.ie/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 112608,
+          "responseSha256": "4ff2f3e44ad46e12c31921a7efbf296dac7d3bd7fa932ad5bf0381a17db51737",
+          "accessedAt": "2026-10-01T21:25:08.789Z"
+        },
+        {
+          "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 103043,
+          "responseSha256": "84a01cd66a1ca9e5de3c3f4caa551a87dcbbd8b45a9a3e10540308d17822d1f8",
+          "accessedAt": "2026-10-01T21:25:08.997Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+        "discoveryTitle": "The next chapter in ‘Reimagining the National Library’ begins",
+        "detailHeadline": "The next chapter in ‘Reimagining the National Library’ begins",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2754,
+        "detailTextSha256": "d6fd31f53c6fc62a9667e4ba90602f97b058ef291dac8c3877638d46d04da42e"
+      },
+      "publicCount": 0
+    }
+  ]
+}

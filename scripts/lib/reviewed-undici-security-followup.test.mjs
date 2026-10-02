@@ -1,4 +1,6 @@
 import {readFileSync} from 'node:fs';
+import {projectReviewedNextSecurityFollowup} from './reviewed-next-security-followup.mjs';
+import {projectReviewedRussianCalendarExpansion} from './reviewed-russian-calendar-expansion.mjs';
 import {projectReviewedR10SourcePunctuation} from './reviewed-r10-source-punctuation.mjs';
 import {execFileSync} from 'node:child_process';
 import {describe,expect,it} from 'vitest';
@@ -6,7 +8,7 @@ import {undiciSecurityFollowupAttestation as packet,undiciSecurityFollowupSha256
   projectReviewedUndiciSecurityFollowup as project} from './reviewed-undici-security-followup.mjs';
 import {projectReviewedDependencySecurity} from './reviewed-dependency-security.mjs';
 
-const read=path=>projectReviewedR10SourcePunctuation(path,readFileSync(path,'utf8'));
+const read=path=>projectReviewedR10SourcePunctuation(path,projectReviewedRussianCalendarExpansion(path,projectReviewedNextSecurityFollowup(path,readFileSync(path,'utf8'))));
 const historical=path=>execFileSync('git',['-c',`safe.directory=${process.cwd()}`,'show',`${packet.baselineCommitSha}:${path}`],
   {encoding:'utf8',maxBuffer:20*1024*1024}).replace(/\r\n?/gu,'\n');
 

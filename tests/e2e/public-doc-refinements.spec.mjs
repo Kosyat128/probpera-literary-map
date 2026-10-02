@@ -16,25 +16,28 @@ test("book of the month and the section directory keep a coherent desktop grid",
     timeout: 60_000,
   });
   await expect(book.locator(".book-action-secondary")).toBeVisible();
-  await expect(book.locator(".book-source-link")).toBeVisible();
+  await expect(book.locator(".book-source-link")).toHaveCount(0);
 
   const bookGeometry = await book.evaluate((element) => {
     const copy = element.querySelector(":scope > div:last-child");
     const primaryActions = element.querySelector(".book-actions-primary");
-    const source = element.querySelector(".book-source-link");
-    if (!copy || !primaryActions || !source) return null;
+    const description = copy?.querySelector(":scope > p");
+    if (!copy || !primaryActions || !description) return null;
     const copyBox = copy.getBoundingClientRect();
     const actionBox = primaryActions.getBoundingClientRect();
-    const sourceBox = source.getBoundingClientRect();
+    const descriptionBox = description.getBoundingClientRect();
     return {
       copyWidth: copyBox.width,
-      sourceAfterActions: sourceBox.top >= actionBox.bottom - 1,
+      actionsAfterDescription: actionBox.top >= descriptionBox.bottom - 1,
+      actionsFitCopy:
+        actionBox.left >= copyBox.left - 1 && actionBox.right <= copyBox.right + 1,
       overflow: element.scrollWidth - element.clientWidth,
     };
   });
   expect(bookGeometry).not.toBeNull();
   expect(bookGeometry.copyWidth).toBeGreaterThan(540);
-  expect(bookGeometry.sourceAfterActions).toBe(true);
+  expect(bookGeometry.actionsAfterDescription).toBe(true);
+  expect(bookGeometry.actionsFitCopy).toBe(true);
   expect(bookGeometry.overflow).toBeLessThanOrEqual(1);
 
   await page.setViewportSize({ width: 1024, height: 860 });

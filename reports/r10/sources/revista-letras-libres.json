@@ -1,0 +1,627 @@
+{
+  "sourceId": "revista-letras-libres",
+  "name": "Letras Libres",
+  "entryUrl": "https://letraslibres.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:52.534Z",
+  "requests": [
+    {
+      "url": "https://letraslibres.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 435717,
+      "sha256": "beaa883da90ae3993124d72ce141b84d5455ac14e149d1ea989feb626094956c",
+      "accessedAt": "2026-10-01T20:51:56.519Z"
+    },
+    {
+      "url": "https://letraslibres.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 23318,
+      "sha256": "64c84fa048cfa41230e321c8332b42d32fbe0b01191c3aba6cb358e8ec6861a2",
+      "accessedAt": "2026-10-01T20:51:57.955Z"
+    },
+    {
+      "url": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 290247,
+      "sha256": "3e66b1b63f9badaa5e0fc8fdb26908d5b78d0b1e02407d4de71fea949e091c92",
+      "accessedAt": "2026-10-01T20:52:02.350Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://letraslibres.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "revista-letras-libres",
+    "name": "Letras Libres",
+    "url": "https://letraslibres.com/feed/",
+    "format": "rss",
+    "language": "es",
+    "region": "global",
+    "sourceFamilyId": "revista-letras-libres",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://letraslibres.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:02.365Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "revista-letras-libres",
+    "source": {
+      "name": "Letras Libres",
+      "url": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+      "language": "es"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras”",
+    "publishedAt": "2026-10-01T08:21:31.000Z",
+    "description": "El escritor, finalista del Premio Planeta y ganador del Premio Nadal, traducido a numerosas lenguas, recupera dos libros en el volumen Zeta (Páginas de Espuma). The post Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras” appeared first on Letras Libres.",
+    "discoveredAt": "2026-10-01T20:51:57.956Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 290247,
+      "sha256": "3e66b1b63f9badaa5e0fc8fdb26908d5b78d0b1e02407d4de71fea949e091c92",
+      "accessedAt": "2026-10-01T20:52:02.350Z",
+      "headline": "Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras”",
+      "excerpt": "LO MÁS LEÍDO Política Viva la acampada aunque pierda porAnónimo García Libros Cuando escribe la viuda de un poeta porGisela Kozak Rovero Literatura Prometeo redimido porDavid Toscana Cine y TV Vida y milagros del increíble Chicho porFidel Moreno LiteraturaManuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras” El escritor, finalista del Premio Planeta y ganador del Prem",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T08:21:31+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T08:21:31+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T08:21:31+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+      "language": "es",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:02.365Z",
+  "foundItems": [
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras”",
+      "publishedAt": "2026-10-01T08:21:31.000Z",
+      "description": "El escritor, finalista del Premio Planeta y ganador del Premio Nadal, traducido a numerosas lenguas, recupera dos libros en el volumen Zeta (Páginas de Espuma). The post Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras” appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/gabriel-zaid-y-la-poesia-indigena-del-norte-de-mexico-un-acontecimiento-literario/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un acontecimiento literario",
+      "publishedAt": "2026-10-01T06:43:00.000Z",
+      "description": "Pocos libros se atreven a zanjar terrenos inexplorados. Ese es el caso de \"Poesía indígena del norte de México\", una antología donde Gabriel Zaid pone bajo la mira la lírica popular de culturas que habitualmente han sido colocadas al margen. The post Un acontecimiento literario appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/cine-tv/todo-cabe-en-el-cine-fantastico-sabiendolo-acomodar/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Todo cabe en el cine fantástico, sabiéndolo acomodar",
+      "publishedAt": "2026-10-01T19:31:40.000Z",
+      "description": "No hay categoría más libre y ecléctica que la de cine fantástico, y así lo muestra esta selección de películas programadas en el reciente Fantastic Fest 2026. The post Todo cabe en el cine fantástico, sabiéndolo acomodar appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/cultura/roger-chartier-cazador-furtivo/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Roger Chartier, cazador furtivo",
+      "publishedAt": "2026-10-01T15:36:00.000Z",
+      "description": "En una iluminadora conferencia, el historiador francés Roger Chartier abordó discusiones fundamentales en torno a la lectura, la IA y la edición de libros. The post Roger Chartier, cazador furtivo appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/el-exilio-plural/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El exilio plural",
+      "publishedAt": "2026-10-01T06:40:00.000Z",
+      "description": "Con motivo de los 25 años de su edición española, Letras Libres entrevistó a cuatro destacados autores acerca del exilio español en México. Esta conversación no solo se detiene en los claroscuros de aquel intercambio, sino que también subraya lo heterogéneo que fue: nos invita a comprenderlo no solo como un “transtierro” intelectual, sino como uno diverso y variopinto. The post El exilio plural a…",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/muy-antiguo-y-muy-moderno-dario/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Muy antiguo y muy moderno: Darío",
+      "publishedAt": "2026-10-01T06:19:00.000Z",
+      "description": "Errante en la vida y en el arte, Rubén Darío se deslizó con paso andariego entre países, pero también entre tradiciones literarias. Su diálogo con la poesía francesa le permitió renovar el español, aunque muchos autores y críticos le hayan reprochado, en su tiempo, ese espíritu inquieto. The post Muy antiguo y muy moderno: Darío appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/la-pervivencia-del-mundo-clasico/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La pervivencia del mundo clásico",
+      "publishedAt": "2026-10-01T06:12:00.000Z",
+      "description": "\"Clásicos sin filtros\", de Mary Beard, ofrece hermosos atisbos a la vida romana, dentro de una vasta ensalada con muchos signos de interrogación. The post La pervivencia del mundo clásico appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/dos-poemas-146/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dos poemas",
+      "publishedAt": "2026-10-01T06:08:00.000Z",
+      "description": "Mi infancia es abisal,un fondo en mí que siento por momentos.En él deambula la niña que fui,quien no hallaba lugar entre los suyos.Su hermano, que leía y hablaba con sus padres,tenía muchas palabras y ella era solo un cuerpo emocional.En la madurez ya sin ser ella requiero sus tropiezos,sus búsquedas a ciegas para tocar las cuerdas del transcurso. ~ • En mi adolescencia amaba el álgebra.A mí tan …",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/la-prensa-desde-el-margen/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La prensa desde el margen",
+      "publishedAt": "2026-10-01T06:04:00.000Z",
+      "description": "A menudo ignoradas por la historia literaria, las escritoras del exilio enfrentaron obstáculos para desempeñarse en el campo cultural. No obstante, desde el periodismo y la escritura íntima, confrontaron los prejuicios de su tiempo y dejaron plasmado un testimonio elocuente de aquellos días aciagos. The post La prensa desde el margen appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/borges-y-el-monstruo-de-la-poesia/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Borges y el monstruo de la poesía",
+      "publishedAt": "2026-10-01T06:02:00.000Z",
+      "description": "Las conferencias compiladas en “Jorge Luis Borges. Conferencias reunidas 1960-1985” recorren a Shakespeare, Camoens o la literatura fantástica, pero las reúne la idea de la poesía como un don. The post Borges y el monstruo de la poesía appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/angel-zarraga-en-el-norte-de-africa-el-mural-de-fedalah/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ángel Zárraga en el norte de África: el mural de Fedalah",
+      "publishedAt": "2026-10-01T06:01:00.000Z",
+      "description": "Durante el siglo XX, el relato dominante de la cultura mexicana exaltó un muralismo público, revolucionario, indigenista, proletario y anticlerical. Un mural de Ángel Zárraga, recientemente descubierto en una iglesia de Marruecos, pone en entredicho esa visión simplista del arte nacional. The post Ángel Zárraga en el norte de África: el mural de Fedalah appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/un-entramado-de-alianzas-los-cientificos-del-exilio-espanol/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Un entramado de alianzas: los científicos del exilio español",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "A su llegada a México, los científicos exiliados se encontraron con instituciones novedosas que les permitieron mantener sus proyectos y discusiones en curso. Esta continuidad fue clave para que sus aportes fortalecieran el aparato académico de un país que comenzaba a reconstruirse después de la Revolución. The post Un entramado de alianzas: los científicos del exilio español appeared first on Le…",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/la-documentacion-al-servicio-de-la-poesia/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La documentación al servicio de la poesía",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "Pocos libros se atreven a zanjar terrenos inexplorados. Ese es el caso de Poesía indígena del norte de México, una antología donde Gabriel Zaid pone bajo la mira la lírica popular de culturas que habitualmente han sido colocadas al margen. The post La documentación al servicio de la poesía appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/el-fin-del-centro/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "El fin del centro",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "Si en la confrontación electoral de hace unos años conquistar el centro era la prioridad, hoy la dinámica política ha cambiado radicalmente. La polarización nos obliga a preguntarnos si seremos capaces de construir un nuevo espacio político común para gestionar nuestras diferencias. The post El fin del centro appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/poemas-efimeros/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Poemas efímeros",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "Querido Reinaldo,leyendo el capítulo sobre los poemasefímeros de Virgiliohe podido ver a la vezlos ochenta poemas frente a mí.Los he leído todos al mismo tiempo,ochenta lecturas simultáneasen mi patio de Illinoiscuando por fin la algarabía de los pájarosde tu verano colorido no es más que tintaamenazante pero solo tinta.Y esa lectura imposible convierte todos los jardinesdel exilio en el patio in…",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/observaciones-varias/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Observaciones varias",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "Nuestra vida está llena de pequeñas contradicciones y extravagancias que solemos pasar por alto. Este brevísimo registro de algunas de ellas es una invitación a detenernos a observar, como decía Borges, la rareza fundamental del mundo. The post Observaciones varias appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/repensar-el-primer-federalismo/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Repensar el primer federalismo",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "Repensar el período de la primera República Federal implica volver a una trama política fundacional en el Estado mexicano. The post Repensar el primer federalismo appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/sobre-los-cubiertos-de-mesa/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sobre los cubiertos de mesa",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "Los primeros gestos civilizatorios se manifestaron en las normas sobre los hábitos alimenticios. No hay mejor ejemplo que los cubiertos de mesa para observar este procedimiento. The post Sobre los cubiertos de mesa appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/espere-en-la-linea-12/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Espere en la línea",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "The post Espere en la línea appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "source": {
+        "name": "Letras Libres",
+        "url": "https://letraslibres.com/revista/pablo-rasgado-mas-alla-del-borramiento/01/10/2026/",
+        "language": "es"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pablo Rasgado: más allá del borramiento",
+      "publishedAt": "2026-10-01T06:00:00.000Z",
+      "description": "\"Pentimento\", proyecto de Pablo Rasgado en el Laboratorio Arte Alameda, conduce a reconocer la importancia de lo no develado y no explicado en el arte contemporáneo. The post Pablo Rasgado: más allá del borramiento appeared first on Letras Libres.",
+      "discoveredAt": "2026-10-01T20:51:57.956Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "64c84fa048cfa41230e321c8332b42d32fbe0b01191c3aba6cb358e8ec6861a2"
+}

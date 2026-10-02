@@ -1,0 +1,673 @@
+{
+  "sourceId": "edizioni-sur",
+  "name": "Edizioni Sur",
+  "entryUrl": "https://www.edizionisur.it/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:14.559Z",
+  "requests": [
+    {
+      "url": "https://www.edizionisur.it/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 597599,
+      "sha256": "98ff5c1b96617b5d9e28ba7086cbb7ac3de62a9fd560429e1e3c4347b7ddace4",
+      "accessedAt": "2026-10-01T20:48:15.113Z"
+    },
+    {
+      "url": "https://www.edizionisur.it/prodotto/linvincibile-estate-di-liliana/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 997592,
+      "sha256": "34783c2202aeba1f2df21445f3793d7dbb79e8b41d114851b9ba7156212b5c42",
+      "accessedAt": "2026-10-01T20:48:15.412Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.edizionisur.it/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 271,
+    "sha256": "bca77c81e1a22fdb1488beb0dfa0d74ab084462b94e42b0bf5a6fe2130da2e08",
+    "accessedAt": "2026-10-01T20:48:14.844Z",
+    "disallowed": [
+      "/wp-admin",
+      "/_OLD",
+      "/_DEV",
+      "/?s=*",
+      "*.html",
+      "*.htm"
+    ]
+  },
+  "endpoint": {
+    "id": "edizioni-sur",
+    "name": "Edizioni Sur",
+    "url": "https://www.edizionisur.it/",
+    "format": "html",
+    "language": "it-IT",
+    "region": "global",
+    "sourceFamilyId": "edizioni-sur",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.edizionisur.it"
+    ],
+    "linkPattern": "^\\/prodotto\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.edizionisur.it/prodotto/linvincibile-estate-di-liliana/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:15.460Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 22,
+  "literaryCandidateCount": 22,
+  "sample": {
+    "sourceId": "edizioni-sur",
+    "source": {
+      "name": "Edizioni Sur",
+      "url": "https://www.edizionisur.it/prodotto/linvincibile-estate-di-liliana/",
+      "language": "it-IT"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "L’invincibile estatedi Liliana",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:15.220Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.edizionisur.it/prodotto/linvincibile-estate-di-liliana/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 997592,
+      "sha256": "34783c2202aeba1f2df21445f3793d7dbb79e8b41d114851b9ba7156212b5c42",
+      "accessedAt": "2026-10-01T20:48:15.412Z",
+      "headline": "L’invincibile estatedi Liliana",
+      "excerpt": "Home / Libri / SUR / L’invincibile estate di Liliana Messico SUR Cristina Rivera Garza L’invincibile estatedi Liliana Traduzione: Giulia Zavagna Argomenti: Femminismi, Legami, Storie vere Sur 075 Riveragarza Invincibileestate Coverpulitzer Acquista libro 19,00 € Aggiunto Acquista ebook 12,99 € Aggiunto Pagine: 324 Formato ebook: ePub con Social DRM Data uscita: 19 Aprile 2023 ISBN: 9788869983566 M",
+      "publishedDates": [
+        {
+          "value": "2023-02-17T14:27:35+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.edizionisur.it/prodotto/linvincibile-estate-di-liliana/",
+      "language": "it-IT",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:15.460Z",
+  "foundItems": [
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/linvincibile-estate-di-liliana/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’invincibile estatedi Liliana",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/dove-finisce-il-mondo/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sheila Armstrong Dove finisce il mondo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/la-parabola-del-seminatore/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La parabola del seminatore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/il-colore-viola/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il colore viola",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/diario-della-guerra-al-maiale/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diario della guerra al maiale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/sulle-tracce-di-truman-capote/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sulle tracce di Truman Capote",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/in-cerca-dei-giardini-delle-nostre-madri/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In cerca dei giardini delle nostre madri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/il-viaggio-inutile/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il viaggio inutile",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/bomarzo/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manuel Mujica Lainez Bomarzo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/tante-cose-non-le-so/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tante cose non le so",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/il-colpo-segreto/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il colpo segreto",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/lultima-nebbia-opere-complete/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’ultima nebbia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/il-museo-degli-sforzi-inutili/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il Museo degli sforzi inutili",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/crazy-salad/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nora Ephron Crazy Salad Cose che ho da dire sulle donne",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/la-ferrovia-sotterranea/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La ferrovia sotterranea",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/ragazza-donna-altro/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ragazza, donna, altro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/la-casa-dei-gunner/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La casa dei Gunner",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/le-vene-aperte-dellamerica-latina/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le vene aperte dell’America Latina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/la-chiamata/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Leila Guerriero La chiamata Storia di una donna argentina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/la-prenotazione/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La prenotazione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/1971-lanno-doro-del-rock/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "1971. L’anno d’oro del rock",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "source": {
+        "name": "Edizioni Sur",
+        "url": "https://www.edizionisur.it/prodotto/ascoltare-il-rumore-la-riscoperta-dellanalogico-nellera-della-musica-digitale/",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ascoltare il rumore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.220Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "98ff5c1b96617b5d9e28ba7086cbb7ac3de62a9fd560429e1e3c4347b7ddace4"
+}

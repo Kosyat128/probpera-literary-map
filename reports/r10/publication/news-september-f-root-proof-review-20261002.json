@@ -1,0 +1,557 @@
+{
+  "schemaVersion": 1,
+  "batchId": "news-september-f-20261002",
+  "checkedAt": "2026-10-01T22:45:29.541Z",
+  "reviewer": "root_agent_independent_from_batch_author",
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false,
+  "canonicalWritten": false,
+  "remoteWrites": 0,
+  "records": 40,
+  "recordSha256": "028d3e55ae35cdadd27df369f82f43bda21f1628e451ed3c59980892ce5c620f",
+  "rawResponseDigestsChecked": 40,
+  "issues": [],
+  "results": [
+    {
+      "id": "r10-news-f-mathieu-belezi-cetait-notre-terre-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "c2fcc6166e142f42004a0c90c36f60b5d2f059d0c94386104fb8ac55f30c8e7b",
+      "bodyBytes": 212424,
+      "primaryMeta": [
+        "2026-09-22T19:59:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:59:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 272,
+      "enCharacters": 259
+    },
+    {
+      "id": "r10-news-f-stephane-giusti-halte-au-feu-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "07eab2ea1f384bc7304284967a99d20540cd65e58d3ed56aee2706abddcbf2de",
+      "bodyBytes": 213537,
+      "primaryMeta": [
+        "2026-09-22T19:58:36+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:58:36.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 257,
+      "enCharacters": 278
+    },
+    {
+      "id": "r10-news-f-isabella-caldart-new-york-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "15877f75a118beaecf8f3599ae7a375c41515cd1b1aacc00c876c8976dbdb175",
+      "bodyBytes": 132946,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-23T14:48:17.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 300,
+      "enCharacters": 287
+    },
+    {
+      "id": "r10-news-f-hachette-halloween-horror-selection-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "968b055f176235a557b1f652a72121c873edc7623e2eeb2eddd8419ee5c3f4c5",
+      "bodyBytes": 474196,
+      "primaryMeta": [
+        "2026-09-22T14:10:27+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T14:10:27.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 285,
+      "enCharacters": 299
+    },
+    {
+      "id": "r10-news-f-elke-erb-fellbach-volume-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "65c00b9f6f40846d8736d6ed4943023183f32914857c9df48e5947af9d7da6b8",
+      "bodyBytes": 130412,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-23T14:47:46.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 320,
+      "enCharacters": 305
+    },
+    {
+      "id": "r10-news-f-hollie-mcnish-french-book-interview-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "7a23873708ff985234c09263cafecb5327b92f0ca1d8e71ecf53c31876400728",
+      "bodyBytes": 225718,
+      "primaryMeta": [
+        "2026-09-22T19:55:08+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:55:08.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 306,
+      "enCharacters": 299
+    },
+    {
+      "id": "r10-news-f-okwiri-oduor-anderwelttage-stuttgart-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "2cdf67904e660d63b4df6f6a63a0e75c43a42175c2ea0833917668a9e5cdf26f",
+      "bodyBytes": 132876,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-23T14:46:47.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 298
+    },
+    {
+      "id": "r10-news-f-martine-delvaux-divas-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "9bdb0a69871271f53138f8bbdc0044d60d297a925446b0d996af4b60258ed49b",
+      "bodyBytes": 212485,
+      "primaryMeta": [
+        "2026-09-22T19:54:23+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:54:23.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 278
+    },
+    {
+      "id": "r10-news-f-django-wexler-only-way-out-excerpt-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "89e015363c3b90dcf34498613ad89604c55ea15a9e7b562d336f12a0b2173b79",
+      "bodyBytes": 346704,
+      "primaryMeta": [
+        "2026-09-18T15:45:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-18T15:45:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 294,
+      "enCharacters": 290
+    },
+    {
+      "id": "r10-news-f-siri-hustvedt-stuttgart-future-address-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "14615476c1d8958ff144a694c2deb093c345549a541a070adae3ce5a83a3e7d1",
+      "bodyBytes": 138076,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T13:58:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 298
+    },
+    {
+      "id": "r10-news-f-emmanuelle-lambert-la-meilleure-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "308ef86154948b75c4df80d051932bb52424bafd1c731b20c87261b7748415c6",
+      "bodyBytes": 212488,
+      "primaryMeta": [
+        "2026-09-22T19:53:44+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:53:44.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 314,
+      "enCharacters": 271
+    },
+    {
+      "id": "r10-news-f-malika-specht-austen-collage-workshop-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "bacf9b61068c0d7e56d29eedddabdcab715aa8bad49ad2fa4b5ae9fcf8e14eab",
+      "bodyBytes": 130944,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T06:08:20.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 282
+    },
+    {
+      "id": "r10-news-f-en-attendant-nadeau-literary-travel-roundup-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "25762ba0e1d2ce95f94d0407d3f0c7c5fe8b816e27f83282fed89fb2b7635b2f",
+      "bodyBytes": 230046,
+      "primaryMeta": [
+        "2026-09-22T19:53:42+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:53:42.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 296,
+      "enCharacters": 296
+    },
+    {
+      "id": "r10-news-f-celine-righi-chambre-fougere-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "983cc3ff8da57267577db58f0ddcc65f15c3eb2d58b3faa7f43088ab6f123989",
+      "bodyBytes": 209589,
+      "primaryMeta": [
+        "2026-09-22T19:51:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T19:51:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 306,
+      "enCharacters": 281
+    },
+    {
+      "id": "r10-news-f-hachette-halloween-picture-book-selection-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "64f4c1d3d74d1be24432807e843c5f7e38bec24c0290b9c215b7986dcaa8ad46",
+      "bodyBytes": 340644,
+      "primaryMeta": [
+        "2026-09-16T17:57:34+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-16T17:57:34.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 310,
+      "enCharacters": 310
+    },
+    {
+      "id": "r10-news-f-stuttgart-independent-publisher-market-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "7e523e282f89a88a19bdd46adca75762aacd81daf9f10e564ae0216592955319",
+      "bodyBytes": 347053,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T06:05:44.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 311,
+      "enCharacters": 299
+    },
+    {
+      "id": "r10-news-f-megan-bontrager-botanical-horror-cover-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "c19579329b02387b4c07631476017f0c7e14b240f18c4f03ae184e273f9e0389",
+      "bodyBytes": 290153,
+      "primaryMeta": [
+        "2026-09-16T14:45:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-16T14:45:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 309,
+      "enCharacters": 263
+    },
+    {
+      "id": "r10-news-f-enrique-vila-matas-canon-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "262a4e4a4119bd4a270b54bb8197753102b52eda2a5c486509fdc20dd98d9252",
+      "bodyBytes": 211533,
+      "primaryMeta": [
+        "2026-09-20T22:00:36+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-20T22:00:36.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 294
+    },
+    {
+      "id": "r10-news-f-dan-levy-hachette-data-appointment-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "d8a658c45abcfa9918c8a514668576ffce8d1c660207df879648d19e5f232c85",
+      "bodyBytes": 322529,
+      "primaryMeta": [
+        "2026-09-16T13:54:38+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-16"
+      ],
+      "publishedAt": "2026-09-16T13:54:38.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 287,
+      "enCharacters": 259
+    },
+    {
+      "id": "r10-news-f-dilek-mayaturk-bilingual-poetry-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "8379eaff71e6855fe8bf2ac99a53e7b5e125bf3c225436f59d1a86c0963a7905",
+      "bodyBytes": 134652,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T05:53:38.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 292,
+      "enCharacters": 273
+    },
+    {
+      "id": "r10-news-f-philippe-jaenada-javel-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "e2fa820829bc687862d5dcab9f25eea1c866955c85e9d151d7b24b523efa2ea0",
+      "bodyBytes": 216490,
+      "primaryMeta": [
+        "2026-09-18T22:02:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-18T22:02:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 280
+    },
+    {
+      "id": "r10-news-f-rebekka-salm-metzina-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "c721a901553eef81f4527d7b93ad63f6d46dd5f207b6d672adeefde759df7ae0",
+      "bodyBytes": 132768,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T05:46:49.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 285,
+      "enCharacters": 282
+    },
+    {
+      "id": "r10-news-f-paul-murray-bee-sting-interview-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "20e2aba22779097aa9b2f744ade04051f91239f522242190b5ee3a1d2ac66dd8",
+      "bodyBytes": 221428,
+      "primaryMeta": [
+        "2026-09-18T22:00:37+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-18T22:00:37.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 304,
+      "enCharacters": 294
+    },
+    {
+      "id": "r10-news-f-ann-dye-hachette-operations-appointment-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "94f5446c256d999aee3bbafc67b412898686da166a796e91cb5e60049dadc85f",
+      "bodyBytes": 322489,
+      "primaryMeta": [
+        "2026-09-15T18:01:34+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-15"
+      ],
+      "publishedAt": "2026-09-15T18:01:34.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 263
+    },
+    {
+      "id": "r10-news-f-kaschnitz-old-garden-illustrated-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "d83e83f890858b41986c0323cb29e1f2fbb977234e079cf68f3f19574ef8cabd",
+      "bodyBytes": 131351,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T05:46:48.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 298,
+      "enCharacters": 295
+    },
+    {
+      "id": "r10-news-f-masashi-matsuie-maison-ete-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "ccd6e6948484890219f0c8b53b6ac49705893131d115cecb1e941cd854f97a3d",
+      "bodyBytes": 213201,
+      "primaryMeta": [
+        "2026-09-17T22:00:03+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-17T22:00:03.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 304,
+      "enCharacters": 281
+    },
+    {
+      "id": "r10-news-f-amy-leow-nameless-god-cover-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "8f7ef06a3731d78d8d1829e45fbc2a1f3da65af2534ccacae6b43de801c447cb",
+      "bodyBytes": 289894,
+      "primaryMeta": [
+        "2026-09-14T14:45:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-14T14:45:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 303,
+      "enCharacters": 287
+    },
+    {
+      "id": "r10-news-f-stefan-auer-silent-cinema-book-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "80b586b75ebb2e5cdfe7eb99e2e4ec1ab26ac454ae09e89a5eefc6d526d3bf78",
+      "bodyBytes": 133078,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T05:46:47.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 302
+    },
+    {
+      "id": "r10-news-f-pierre-ducrozet-eden-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "50bc8d7d154605cfdea8d089ada60b0fa6e82c8cbc22c4f751d3928431ccc449",
+      "bodyBytes": 208114,
+      "primaryMeta": [
+        "2026-09-16T22:00:54+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-16T22:00:54.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 295,
+      "enCharacters": 290
+    },
+    {
+      "id": "r10-news-f-hachette-changing-story-second-festival-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "023d715173722b97eaad4d5c47f14e4f78b6fb1c0f891bef6ec8cb5869decdd6",
+      "bodyBytes": 305818,
+      "primaryMeta": [
+        "2026-09-14T13:35:42+00:00"
+      ],
+      "primaryLd": [
+        "2026-09-14"
+      ],
+      "publishedAt": "2026-09-14T13:35:42.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 297,
+      "enCharacters": 281
+    },
+    {
+      "id": "r10-news-f-kerstin-ehmer-heldinnen-meere-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "7121d94efe806bbf5844a79b2123db0e6e82e66cf830d591c91549f22ae0bcb7",
+      "bodyBytes": 132866,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T05:46:45.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 260,
+      "enCharacters": 283
+    },
+    {
+      "id": "r10-news-f-juan-gabriel-vasquez-feliza-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "67b9d43dd02b5d3f98974d26367864ac027cb4c213be74d10441532151090a4e",
+      "bodyBytes": 215560,
+      "primaryMeta": [
+        "2026-09-15T19:59:09+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T19:59:09.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 321,
+      "enCharacters": 292
+    },
+    {
+      "id": "r10-news-f-enrico-ippolito-irrlichter-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "1666e497897a8efefff5996b0e0d093966f5bcdd237e895d9b6b11a27e3098d4",
+      "bodyBytes": 133161,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-22T05:46:43.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 299,
+      "enCharacters": 297
+    },
+    {
+      "id": "r10-news-f-agnes-clancier-valadon-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "ee241447fd876bd90e6694873714cde68a4bf4ecc07015623245e13def1db8ce",
+      "bodyBytes": 211326,
+      "primaryMeta": [
+        "2026-09-15T19:57:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T19:57:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 297,
+      "enCharacters": 288
+    },
+    {
+      "id": "r10-news-f-joy-sorman-vie-brute-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "e41663187e2528f265539f7fe514c768eb57f633f6e4463201d399b719283510",
+      "bodyBytes": 208450,
+      "primaryMeta": [
+        "2026-09-15T19:56:26+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T19:56:26.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 285,
+      "enCharacters": 279
+    },
+    {
+      "id": "r10-news-f-km-enright-prince-ash-cover-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "9033eaaa1ac11133ff86f421f3597068bef7ec708fc640c8f3d475c502608179",
+      "bodyBytes": 321522,
+      "primaryMeta": [
+        "2026-09-10T13:45:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-10T13:45:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 293,
+      "enCharacters": 275
+    },
+    {
+      "id": "r10-news-f-olivier-rolin-guerre-eternelle-review-20261002",
+      "sourceId": "en-attendant-nadeau",
+      "responseSha256": "8f06ba67a419feed4600987fcaa353322ed13b12d5ce01533f9fbf1cf0d836f0",
+      "bodyBytes": 213347,
+      "primaryMeta": [
+        "2026-09-15T19:54:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-15T19:54:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 286,
+      "enCharacters": 271
+    },
+    {
+      "id": "r10-news-f-ash-huang-immortals-cover-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "030a077291970ac72f37a254dd73211671841d75055d5b9415c050a3b56fae62",
+      "bodyBytes": 286052,
+      "primaryMeta": [
+        "2026-09-09T14:45:00+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-09T14:45:00.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 296,
+      "enCharacters": 279
+    },
+    {
+      "id": "r10-news-f-florian-illies-jan-wagner-clouds-reading-20261002",
+      "sourceId": "literaturhaus-stuttgart",
+      "responseSha256": "5bf030f3000550fdc2c5934a096722f6057bdc137f65722bb9b3bf23cf09a66e",
+      "bodyBytes": 130662,
+      "primaryMeta": [],
+      "primaryLd": [],
+      "publishedAt": "2026-09-20T19:23:44.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 314,
+      "enCharacters": 305
+    },
+    {
+      "id": "r10-news-f-taylor-larue-steelborn-interview-20261002",
+      "sourceId": "hachette-book-group",
+      "responseSha256": "843340f43ecc9ccbffa7581e264cdaf37dec7ff5ab014dfc321e570c690ac659",
+      "bodyBytes": 293789,
+      "primaryMeta": [
+        "2026-09-08T15:37:15+00:00"
+      ],
+      "primaryLd": [],
+      "publishedAt": "2026-09-08T15:37:15.000Z",
+      "proofQuotesGrounded": true,
+      "ruCharacters": 304,
+      "enCharacters": 265
+    }
+  ]
+}

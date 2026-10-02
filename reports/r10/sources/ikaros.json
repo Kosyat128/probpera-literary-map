@@ -1,0 +1,281 @@
+{
+  "sourceId": "ikaros",
+  "name": "Ikaros",
+  "entryUrl": "https://ikarosbooks.gr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:38.681Z",
+  "requests": [
+    {
+      "url": "https://ikarosbooks.gr/el/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 596332,
+      "sha256": "f55b39c62e7fb9cf56312ae3fb862e00ebfef3d0c753d58713fbd9be155f4d57",
+      "accessedAt": "2026-10-01T20:48:39.893Z"
+    },
+    {
+      "url": "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 400219,
+      "sha256": "da06173c32e2f6a9c9499d930908f81fa0f8c5913b0097b60f253c0ae8030f06",
+      "accessedAt": "2026-10-01T20:48:40.630Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://ikarosbooks.gr/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "ikaros",
+    "name": "Ikaros",
+    "url": "https://ikarosbooks.gr/el/",
+    "format": "html",
+    "language": "el",
+    "region": "global",
+    "sourceFamilyId": "ikaros",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://ikarosbooks.gr"
+    ],
+    "linkPattern": "^\\/el\\/news\\/.+|^\\/el\\/events\\/.+|^\\/el\\/support\\x2dlegal\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:40.662Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 7,
+  "literaryCandidateCount": 7,
+  "sample": {
+    "sourceId": "ikaros",
+    "source": {
+      "name": "Ikaros",
+      "url": "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/",
+      "language": "el"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Προσεχείς Εκδόσεις | Σεπτέμβριος - Δεκέμβριος 2026",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:40.006Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 400219,
+      "sha256": "da06173c32e2f6a9c9499d930908f81fa0f8c5913b0097b60f253c0ae8030f06",
+      "accessedAt": "2026-10-01T20:48:40.630Z",
+      "headline": "Προσεχείς Εκδόσεις | Σεπτέμβριος - Δεκέμβριος 2026",
+      "excerpt": "ΝΕΑ Προσεχείς Εκδόσεις | Σεπτέμβριος - Δεκέμβριος 2026 09 Σεπτεμβρίου 2026 ΝΕΟΤΕΡΑ ΑΡΘΡΑ White Ravens: «Το κατέβασμα του φεγγαριού» στα καλύτερα βιβλία του 2026 ΒΡΑΒΕΙΑ-ΔΙΑΚΡΙΣΕΙΣ H βραβευμένη Κολομβιανή ποιήτρια Andrea Cote σε Αθήνα και Θεσσαλονίκη ΝΕΑ Βραβείο Jean Monnet 2026 στον Γκεόργκι Γκοσποντίνοφ! ΒΡΑΒΕΙΑ-ΔΙΑΚΡΙΣΕΙΣ Back to School: Επιλεγμένα παιδικά βιβλία με 50% έκπτωση! ΠΑΙΔΙΚΟ ΒΙΒΛΙΟ Ν",
+      "publishedDates": [],
+      "canonical": "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/",
+      "language": "el",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:40.662Z",
+  "foundItems": [
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Προσεχείς Εκδόσεις | Σεπτέμβριος - Δεκέμβριος 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/news/white-ravens-to-katebasma-tou-pheggariou-sta-kalutera-biblia-tou-2026/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "White Ravens: «Το κατέβασμα του φεγγαριού» στα καλύτερα βιβλία του 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/news/h-brabeumene-kolombiane-poietria-andrea-cote-se-athena-kai-thessalonike/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "H βραβευμένη Κολομβιανή ποιήτρια Andrea Cote σε Αθήνα και Θεσσαλονίκη",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/events/e-andrea-cote-ste-thessalonike-parousiazei-to-poietiko-biblio-tes-agapete-mpeth-sto-bibliopoleio-konstantinides/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Η Andrea Cote στη Θεσσαλονίκη | Παρουσιάζει το ποιητικό βιβλίο της «Αγαπητή Μπεθ» στο βιβλιοπωλείο Κωνσταντινίδης",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/events/o-thodores-papaioannou-parousiazei-te-libena-sto-bibliopoleio-dadoo-thessalonike/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ο Θοδωρής Παπαϊωάννου παρουσιάζει τη Λιβένα στο βιβλιοπωλείο Dadoo (Θεσσαλονίκη)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/events/e-stauroula-pagona-sto-bibliopoleio-dadoo-thessalonike/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Η Σταυρούλα Παγώνα στο βιβλιοπωλείο Dadoo (Θεσσαλονίκη)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "source": {
+        "name": "Ikaros",
+        "url": "https://ikarosbooks.gr/el/events/o-soteres-gounelas-parousiazei-to-biblio-tou-gia-ton-khresto-giannara-sten-ellenike-etaireia-periballontos-kai-politismou-plaka/",
+        "language": "el"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ο Σωτήρης Γουνελάς παρουσιάζει το βιβλίο του «Για τον Χρήστο Γιανναρά» στην Ελληνική Εταιρεία Περιβάλλοντος και Πολιτισμού (Πλάκα)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:40.006Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f55b39c62e7fb9cf56312ae3fb862e00ebfef3d0c753d58713fbd9be155f4d57"
+}

@@ -1,0 +1,176 @@
+{
+  "sourceId": "minimum-fax",
+  "name": "Minimum Fax",
+  "entryUrl": "https://www.minimumfax.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:15.470Z",
+  "requests": [
+    {
+      "url": "https://www.minimumfax.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 57905,
+      "sha256": "3f79c76599454b62f2b4eae619094fb962df153b8ce4234fcea1d3c0601b0c71",
+      "accessedAt": "2026-10-01T20:48:16.647Z"
+    },
+    {
+      "url": "https://www.minimumfax.com/#",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 57905,
+      "sha256": "8938323d1e67f5a3660e78af354ede1d87a947a962cc553a424b2930d1f3f83a",
+      "accessedAt": "2026-10-01T20:48:17.225Z"
+    },
+    {
+      "url": "https://www.minimumfax.com/event/vito-bruno-a-napoli-2026-10-03-2143/register",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 22898,
+      "sha256": "14fd57daf08c9e85dc484880c84cb35b68095a5d3aef18cfacd7d5f9dd6dccf3",
+      "accessedAt": "2026-10-01T20:48:17.938Z"
+    },
+    {
+      "url": "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130/register",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 26248,
+      "sha256": "62fece8b7db357d7081b0afc16fb7652207a41574868125cfdcb3a10ac2afb8f",
+      "accessedAt": "2026-10-01T20:48:18.653Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.minimumfax.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 63,
+    "sha256": "a59ab41ecc3fb93397a8af104cd095bb7e5ab4a32cf3443f6f953b7e9f54c8ae",
+    "accessedAt": "2026-10-01T20:48:16.086Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "minimum-fax",
+    "name": "Minimum Fax",
+    "url": "https://www.minimumfax.com/#",
+    "format": "html",
+    "language": "it-IT",
+    "region": "global",
+    "sourceFamilyId": "minimum-fax",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.minimumfax.com"
+    ],
+    "linkPattern": "^\\/event\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130"
+    ],
+    "verifiedAt": "2026-10-01T20:48:18.656Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 2,
+  "literaryCandidateCount": 2,
+  "sample": {
+    "sourceId": "minimum-fax",
+    "source": {
+      "name": "Minimum Fax",
+      "url": "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130",
+      "language": "it-IT"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "08 ott Giuseppe De Marzo a Roma H 18:30 Roma Biblioteca Goffredo Mameli",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:17.237Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130/register",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 26248,
+      "sha256": "62fece8b7db357d7081b0afc16fb7652207a41574868125cfdcb3a10ac2afb8f",
+      "accessedAt": "2026-10-01T20:48:18.653Z",
+      "headline": "Giuseppe De Marzo a Roma",
+      "excerpt": "Tutti gli Eventi Presentazione Italia Giuseppe De Marzo a Roma Presentazione Giuseppe De Marzo a Roma Giovedì 8 ottobre alle ore 18.30 Giuseppe De Marzo presenta L'Internazionale della Terra presso la Biblioteca Goffredo Mameli di Roma nell'ambito di Officina PignetoDisuguaglianze, inquinamento, povertà, esclusione sociale, collasso climatico, malattie, nuove patologie, eventi meteorologici estrem",
+      "publishedDates": [],
+      "canonical": "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130/register",
+      "language": "it-IT",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:18.656Z",
+  "foundItems": [
+    {
+      "sourceId": "minimum-fax",
+      "source": {
+        "name": "Minimum Fax",
+        "url": "https://www.minimumfax.com/event/vito-bruno-a-napoli-2026-10-03-2143",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "03 ott Vito Bruno a Napoli H 19:45 Roma minimumfax",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.237Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "minimum-fax",
+      "source": {
+        "name": "Minimum Fax",
+        "url": "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130",
+        "language": "it-IT"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "08 ott Giuseppe De Marzo a Roma H 18:30 Roma Biblioteca Goffredo Mameli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:17.237Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8938323d1e67f5a3660e78af354ede1d87a947a962cc553a424b2930d1f3f83a"
+}

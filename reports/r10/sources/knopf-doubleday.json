@@ -1,0 +1,32 @@
+{
+  "sourceId": "knopf-doubleday",
+  "name": "Knopf Doubleday",
+  "entryUrl": "https://knopfdoubleday.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:54.360Z",
+  "requests": [
+    {
+      "url": "https://knopfdoubleday.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 92560,
+      "sha256": "bd27e52656276bf871efb6b2f6451ac11051d325df1e53e47dda80ec53f2cb96",
+      "accessedAt": "2026-10-01T20:47:56.201Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://knopfdoubleday.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 235,
+    "sha256": "bf1095d912f7805ca627573b09e531bfdec231ef4d324a9eb17cec9eb9575ee6",
+    "accessedAt": "2026-10-01T20:47:55.458Z",
+    "disallowed": [
+      "/*blackhole",
+      "/?blackhole"
+    ]
+  }
+}

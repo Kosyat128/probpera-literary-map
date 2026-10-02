@@ -1560,6 +1560,58 @@
       "sourceDocumentSha256": "ca42e5a127da64445834317985edf8eec1b8cf439359b4806eba07268c894f98",
       "displayOnly": true,
       "socialReuseApproved": false
+    },
+    "academie-francaise-roman-first-selection-20261001": {
+      "sourceUrl": "https://actualitte.com/article/134343/prix-litteraires/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026",
+      "imageUrl": "https://actualitte.com/uploads/images/grand-prix-du-roman-de-l-academie-francaise-la-premiere-selection-2026-6abe708cb2a00167452547.jpg",
+      "alt": {
+        "ru": "Французская академия объявила первую подборку романов на премию 2026 года",
+        "en": "Académie française announces its first 2026 novel-prize selection"
+      },
+      "acquiredAt": "2026-10-01T20:56:36.675Z",
+      "method": "og:image",
+      "sourceDocumentSha256": "2abc33274d5a8fa0457b5ba8c563cd8cbe9a87b0d63c14696262917358c70e71",
+      "displayOnly": true,
+      "socialReuseApproved": false
+    },
+    "ast-sergey-aksakov-birth-anniversary-feature-20261001": {
+      "sourceUrl": "https://ast.ru/news/sergey-aksakov-pisatel-kritik-i-tsenzor/",
+      "imageUrl": "https://ast.ru/upload/resize_cache/iblock/928/n10kwu3bnh79ic64lziflumu3pkm86z1/600_315_2/astrahov_1200.jpg",
+      "alt": {
+        "ru": "АСТ опубликовало материал о Сергее Аксакове к его дню рождения",
+        "en": "AST publishes a Sergey Aksakov feature for his birth anniversary"
+      },
+      "acquiredAt": "2026-10-01T20:56:37.126Z",
+      "method": "og:image",
+      "sourceDocumentSha256": "25bba491c08fb3eb7442df0470ca9fdf298f72c789bcf8f78ec39932c545b3fa",
+      "displayOnly": true,
+      "socialReuseApproved": false
+    },
+    "asymptote-bojanovic-dizdarevic-translation-interview-20261001": {
+      "sourceUrl": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+      "imageUrl": "https://www.asymptotejournal.com/blog/wp-content/uploads/2026/10/dizdarevic%CC%81-bojanovic%CC%81.png",
+      "alt": {
+        "ru": "Урош Боянович и Айла Диздаревич обсудили перевод поэзии для Asymptote",
+        "en": "Uros Bojanović and Ajla Dizdarević discuss translating poetry with Asymptote"
+      },
+      "acquiredAt": "2026-10-01T20:58:44.084Z",
+      "method": "og:image",
+      "sourceDocumentSha256": "eafcfd202c633c0bfd36af95168e917ce793a2bb93046ab0a9b49c53fb512099",
+      "displayOnly": true,
+      "socialReuseApproved": false
+    },
+    "avi-shlaim-three-worlds-interview-20261001": {
+      "sourceUrl": "https://www.publicbooks.org/the-hyphen-unites-avi-shlaim-on-arab-jewish-life/",
+      "imageUrl": "https://www.publicbooks.org/wp-content/uploads/2026/10/Remains_of_Old_Jewish_Houses_in_Kirkuk_16.jpg",
+      "alt": {
+        "ru": "Public Books опубликовал разговор с Ави Шлаимом о Three Worlds",
+        "en": "Public Books interviews Avi Shlaim about Three Worlds"
+      },
+      "acquiredAt": "2026-10-01T21:34:06.187Z",
+      "method": "og:image",
+      "sourceDocumentSha256": "a14ce62317cb9b31ac8e62f33f3c3397a407c935dce88c9c1be6ea38fd2e1e24",
+      "displayOnly": true,
+      "socialReuseApproved": false
     }
   }
 }

@@ -1,0 +1,29 @@
+{
+  "sourceId": "unionjp-com",
+  "name": "Union of Jordanian PublishersSport CityP.O. Box:",
+  "entryUrl": "https://www.unionjp.com/",
+  "countryCodes": [
+    "JO"
+  ],
+  "coverageCountryCodes": [
+    "JO"
+  ],
+  "attemptedAt": "2026-10-01T20:43:21.035Z",
+  "requests": [
+    {
+      "url": "https://www.unionjp.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 88638,
+      "sha256": "98ea5af3a9c29d2957cf79463fe07b198ad518ca5204cda11bdb65962d21cb21",
+      "accessedAt": "2026-10-01T20:43:22.165Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.unionjp.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

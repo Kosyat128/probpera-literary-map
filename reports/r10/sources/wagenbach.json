@@ -1,0 +1,48 @@
+{
+  "sourceId": "wagenbach",
+  "name": "Wagenbach",
+  "entryUrl": "https://www.wagenbach.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:12.801Z",
+  "requests": [
+    {
+      "url": "https://www.wagenbach.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 23773,
+      "sha256": "01e3b37947f908a34183f0e37bd2b7af2ebc3c756dc62462a6ed0009f9047351",
+      "accessedAt": "2026-10-01T20:48:13.334Z"
+    },
+    {
+      "url": "https://www.wagenbach.de/presse.html",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 18161,
+      "sha256": "7065b659905d89440cc0eae4090cc962604a8df3cc04489b4f524f9ce57eedf1",
+      "accessedAt": "2026-10-01T20:48:13.763Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.wagenbach.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 839,
+    "sha256": "9e37da7f6aca7860264f8ae98f8012b02aa205c1ab0bbcd1a7c86491f128b73d",
+    "accessedAt": "2026-10-01T20:48:13.161Z",
+    "disallowed": [
+      "/administrator/",
+      "/cache/",
+      "/cli/",
+      "/includes/",
+      "/installation/",
+      "/language/",
+      "/libraries/",
+      "/logs/",
+      "/tmp/"
+    ]
+  },
+  "feedAttemptError": "http_404"
+}

@@ -1,0 +1,685 @@
+{
+  "sourceId": "nottetempo",
+  "name": "Nottetempo",
+  "entryUrl": "https://www.edizioninottetempo.it/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:17.798Z",
+  "requests": [
+    {
+      "url": "https://www.edizioninottetempo.it/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 258536,
+      "sha256": "ec4bc097d265bc8bc8211f7b9911ca12c645ba4cc28fddc18c38350d90af03db",
+      "accessedAt": "2026-10-01T20:48:19.561Z"
+    },
+    {
+      "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 192874,
+      "sha256": "92f72cc61178f683df776981ef0fdaec12908fca0bc43e0e758f2acb8421a9d4",
+      "accessedAt": "2026-10-01T20:48:20.638Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.edizioninottetempo.it/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=UTF-8",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-10-01T20:48:18.561Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "nottetempo",
+    "name": "Nottetempo",
+    "url": "https://www.edizioninottetempo.it/",
+    "format": "html",
+    "language": "it",
+    "region": "global",
+    "sourceFamilyId": "nottetempo",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.edizioninottetempo.it"
+    ],
+    "linkPattern": "^\\/it\\/newspost\\/[^/]+\\/?$|^\\/it\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025"
+    ],
+    "verifiedAt": "2026-10-01T20:48:20.651Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 23,
+  "literaryCandidateCount": 23,
+  "sample": {
+    "sourceId": "nottetempo",
+    "source": {
+      "name": "Nottetempo",
+      "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+      "language": "it"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "nottetempo a Più libri più liberi 2025",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:19.627Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 192874,
+      "sha256": "92f72cc61178f683df776981ef0fdaec12908fca0bc43e0e758f2acb8421a9d4",
+      "accessedAt": "2026-10-01T20:48:20.638Z",
+      "headline": "nottetempo a Più libri più liberi 2025",
+      "excerpt": "nottetempo a Più libri più liberi 2025 Da giovedì 4 a lunedì 8 dicembre saremo a Più libri più liberi, la Fiera nazionale della Piccola e Media Editoria che si tiene alla Nuvola (Viale Asia, 40/44), a Roma. Ci trovate tutti i giorni allo stand E42, e ai seguenti incontri con i nostri autori: - 6 dicembre, ore 15.30 (Sala Nettuno): Fernando Rennis presenta Pop is dead con Patrizio Ruviglioni; - 7 d",
+      "publishedDates": [],
+      "canonical": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:20.651Z",
+  "foundItems": [
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "nottetempo a Più libri più liberi 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/newsletter-librai",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sei un libraio? Iscriviti alla newsletter dedicata a te",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/la-scoperta-del-mondo-nuova-edizione",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Luciana Castellina La scoperta del mondo - Nuova edizione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/newspost/chiusura-natalizia-562",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Chiusura natalizia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/newspost/burhan-s-nmez-in-italia",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Burhan Sönmez in Italia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/stomp",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fabio De Luca (a cura di) Stomp!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/la-guerra-dei-rifiuti",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alexander Clapp La guerra dei rifiuti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/qualcuno-ammazzi-dorothea",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gaia Giovagnoli Qualcuno ammazzi Dorothea",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/lynchiano",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John Higgs Lynchiano",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/newsletter",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Iscriviti Subito",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/parlare-di-dio",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Byung-Chul Han Parlare di Dio",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/la-cronologia-dell-acqua",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lidia Yuknavitch La cronologia dell'acqua",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/leggere-le-onde",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lidia Yuknavitch Leggere le onde",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/la-marcia-sul-posto",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Valerio Valentini La marcia sul posto",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/drive",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "James Sallis Drive",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/la-societao-della-stanchezza",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Byung-Chul Han La società della stanchezza",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/contro-la-scuola-neoliberale",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Autori vari Contro la scuola neoliberale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/vendo-tiroide-causa-doppio-regalo",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alessandro Gori Vendo tiroide causa doppio regalo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/8-6-gradi-di-separazione",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Giulia Scomazzon 8.6 gradi di separazione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/mal-di-pietre-2",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Milena Agus Mal di pietre",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/la-caduta-del-cielo",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Davi Kopenawa e Bruce Albert La caduta del cielo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/news",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Appuntamenti e notizie",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "source": {
+        "name": "Nottetempo",
+        "url": "https://www.edizioninottetempo.it/it/per-librai-e-store-online",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Per librai e store online",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:19.627Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ec4bc097d265bc8bc8211f7b9911ca12c645ba4cc28fddc18c38350d90af03db"
+}

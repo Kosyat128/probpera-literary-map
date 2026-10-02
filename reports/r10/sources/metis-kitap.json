@@ -1,0 +1,29 @@
+{
+  "sourceId": "metis-kitap",
+  "name": "Metis Kitap",
+  "entryUrl": "https://www.metiskitap.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:39.447Z",
+  "requests": [
+    {
+      "url": "https://www.metiskitap.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 39674,
+      "sha256": "cc3f6d07c70967ba133eb77b5e784eb7f04d89157b10c041f8e065770f80b3ed",
+      "accessedAt": "2026-10-01T20:48:40.371Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.metiskitap.com/robots.txt",
+    "status": 200,
+    "contentType": "text/html",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-10-01T20:48:40.244Z",
+    "disallowed": []
+  }
+}

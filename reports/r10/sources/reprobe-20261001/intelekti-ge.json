@@ -1,0 +1,109 @@
+{
+  "sourceId": "intelekti-ge",
+  "name": "Intelekti Publishing",
+  "entryUrl": "https://intelekti.ge/",
+  "countryCodes": [
+    "GE"
+  ],
+  "coverageCountryCodes": [
+    "GE"
+  ],
+  "attemptedAt": "2026-10-01T20:42:43.751Z",
+  "requests": [
+    {
+      "url": "https://intelekti.ge/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 349535,
+      "sha256": "ada99e8468749be481fb7070b034de5e52120648e7b79d403ce15fd241e45a7c",
+      "accessedAt": "2026-10-01T20:42:45.002Z"
+    },
+    {
+      "url": "https://intelekti.ge/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 217715,
+      "sha256": "5339ea931081cf4a6f2cf61ec32a095ee4f651d9545febb28b20fce9f046191a",
+      "accessedAt": "2026-10-01T20:42:46.616Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%9d%e1%83%97%e1%83%90%e1%83%a0-%e1%83%ad%e1%83%98%e1%83%9a%e1%83%90%e1%83%ab%e1%83%94-%e1%83%ae%e1%83%90%e1%83%9a%e1%83%ae%e1%83%98-%e1%83%98%e1%83%95%e1%83%98%e1%83%ac/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 148566,
+      "sha256": "cbb2892fdb5fe351f928c5023dcb1d714a5c724302f30b92a7807d711e05a9b9",
+      "accessedAt": "2026-10-01T20:42:46.772Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%94%e1%83%a0%e1%83%97%e1%83%92%e1%83%a3%e1%83%9a%e1%83%98-%e1%83%9b%e1%83%99%e1%83%98%e1%83%97%e1%83%ae%e1%83%95%e1%83%94%e1%83%9a%e1%83%98%e1%83%a1-%e1%83%91%e1%83%9a%e1%83%9d%e1%83%92%e1%83%98/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 167875,
+      "sha256": "9d7cc9db8602943d2db240b6b9e27d666efbf0f5b5f21b33c65994a541db9563",
+      "accessedAt": "2026-10-01T20:42:46.944Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%a0%e1%83%94%e1%83%9f%e1%83%98%e1%83%9b%e1%83%98%e1%83%a1-%e1%83%9b%e1%83%90%e1%83%98%e1%83%9b%e1%83%a3%e1%83%9c%e1%83%98-%e1%83%9b%e1%83%94%e1%83%a4%e1%83%98%e1%83%a1%e1%83%a2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 174653,
+      "sha256": "7dea64b5ed29ff3e27373f4b6ea6a432c7ea6b13516a448295603c2351e12f6c",
+      "accessedAt": "2026-10-01T20:42:47.101Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%96%e1%83%90%e1%83%9c%e1%83%93%e1%83%90-%e1%83%a9%e1%83%94%e1%83%a9%e1%83%94%e1%83%9a%e1%83%90%e1%83%a8%e1%83%95%e1%83%98%e1%83%9a%e1%83%98%e1%83%a1-%e1%83%a0%e1%83%94%e1%83%99%e1%83%9d%e1%83%9b/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 186790,
+      "sha256": "e5c37cecd60c6fd4e5946c34bcbbeb8679497f43dfa28f30af27aaf4df5880ae",
+      "accessedAt": "2026-10-01T20:42:48.986Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%ac%e1%83%98%e1%83%92%e1%83%9c%e1%83%98-%e1%83%a0%e1%83%9d%e1%83%9b%e1%83%94%e1%83%9a%e1%83%98%e1%83%aa-%e1%83%94%e1%83%ab%e1%83%a6%e1%83%95%e1%83%9c%e1%83%94%e1%83%91%e1%83%90-%e1%83%ac/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 196209,
+      "sha256": "64cd871ad128e5e61a7d8724bebe6a2d0c032fddc80731eaf108be2970dfa13e",
+      "accessedAt": "2026-10-01T20:42:50.799Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%a0%e1%83%a3%e1%83%a1%e1%83%a3%e1%83%93%e1%83%90%e1%83%9c-%e1%83%a0%e1%83%a3%e1%83%ae%e1%83%90%e1%83%ab%e1%83%94-%e1%83%a0%e1%83%9d%e1%83%92%e1%83%9d%e1%83%a0-%e1%83%9b%e1%83%98%e1%83%95/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 173711,
+      "sha256": "6ac2ca0bc97250e990d27db8b6c8d32092d9242d9256c210c6e95133bd124d43",
+      "accessedAt": "2026-10-01T20:42:52.591Z"
+    },
+    {
+      "url": "https://intelekti.ge/memento-memorias-%e1%83%9e%e1%83%9d%e1%83%94%e1%83%96%e1%83%98%e1%83%90-%e1%83%a1%e1%83%98%e1%83%99%e1%83%95%e1%83%93%e1%83%98%e1%83%9a%e1%83%98%e1%83%a1-%e1%83%a8%e1%83%94%e1%83%a1%e1%83%90/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 171551,
+      "sha256": "1a9557d5e5b14bb83d3f11c4e96de5e87a4630722e6258ffcb7b1682f1825d83",
+      "accessedAt": "2026-10-01T20:42:54.345Z"
+    },
+    {
+      "url": "https://intelekti.ge/%e1%83%9a%e1%83%9d%e1%83%a0%e1%83%99%e1%83%90%e1%83%a1-%e1%83%91%e1%83%94%e1%83%93%e1%83%98%e1%83%a1%e1%83%ac%e1%83%94%e1%83%a0%e1%83%90-%e1%83%93%e1%83%90-%e1%83%97%e1%83%90%e1%83%95%e1%83%98/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 169835,
+      "sha256": "6d4d887be80bc0b6f96bb2203259c59a9a2e85364b46312e303e59538446923b",
+      "accessedAt": "2026-10-01T20:42:56.210Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://intelekti.ge/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 311,
+    "sha256": "b4b30cec805dd23723410fbaee997076a188db5f0f1df1d8d7aa8fdb4d9ce37f",
+    "accessedAt": "2026-10-01T20:42:44.463Z",
+    "disallowed": [
+      "/*?*filter_*",
+      "/*?*query_type_*",
+      "/*?*stock_status=*"
+    ]
+  }
+}

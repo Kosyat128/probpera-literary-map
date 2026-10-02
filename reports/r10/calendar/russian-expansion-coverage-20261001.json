@@ -1,0 +1,577 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-10-01T20:39:18.733Z",
+  "scope": "Current existing Russia writer corpus; exact annual birth and memorial events only",
+  "before": {
+    "totalAnnualEvents": 2339,
+    "calendarFields": 25,
+    "visibleRussianBirths": 48,
+    "visibleRussianMemorials": 48
+  },
+  "after": {
+    "totalAnnualEvents": 2340,
+    "calendarFields": 29,
+    "writerRows": 53,
+    "visibleRussianBirths": 49,
+    "visibleRussianMemorials": 48
+  },
+  "changes": [
+    {
+      "writerKey": "russia:andrei_platonov",
+      "field": "birthDate",
+      "previous": null,
+      "value": "1899-08-28",
+      "precision": "day",
+      "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+      "method": "referenced-wikidata-statement",
+      "claimIds": [
+        "Q315147$9db4a466-d36d-4a01-af6c-e58c51031829"
+      ],
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q315147&oldid=2530033063",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.prlib.ru/history/2056240",
+          "checkedAt": "2026-10-01T20:39:17.406Z",
+          "finding": "16 (28) августа 1899",
+          "sourceDocumentSha256": "cccbc2dad98681d28a9d45a33238458d49680449197a5fbdc79417b6a3ea9c86"
+        },
+        {
+          "sourceUrl": "https://www.culture.ru/persons/13775/andrei-platonov",
+          "checkedAt": "2026-10-01T20:39:17.162Z",
+          "sourceDocumentSha256": "ce4948cb2dd4942f79614bc6761aff4ed7299049e78004d0b60a454e2f886f9b",
+          "finding": "28 августа 1899"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:gogol",
+      "field": "deathDate",
+      "previous": "1852-02-21",
+      "value": "1852-03-04",
+      "precision": "day",
+      "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+      "method": "referenced-julian-claim-with-institutional-gregorian-source",
+      "claimIds": [
+        "q43718$49fe1a31-427f-0660-3880-b12eb9b04056"
+      ],
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q43718&oldid=2533018092",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8127/nikolai-gogol",
+          "checkedAt": "2026-10-01T20:39:17.004Z",
+          "finding": "04 марта 1852",
+          "sourceDocumentSha256": "2654894b74f540504a45ea7d8f8a767e4b1b7040c440262b9f6d6be166562c2d"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:pasternak",
+      "field": "birthDate",
+      "previous": "1890-01-29",
+      "value": "1890-02-10",
+      "precision": "day",
+      "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+      "method": "referenced-wikidata-statement",
+      "claimIds": [
+        "q41223$5E8F7722-3791-4B13-9C3D-62F0A1AC918B"
+      ],
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q41223&oldid=2536709737",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/9531/boris-pasternak",
+          "checkedAt": "2026-10-01T20:39:18.690Z",
+          "finding": "10 февраля 1890",
+          "sourceDocumentSha256": "f65a0d2f1fa07d54341aae0343893a1680091487fe46fd58ef2216ed27db047e"
+        }
+      ]
+    },
+    {
+      "writerKey": "russia:leskov",
+      "field": "birthDate",
+      "previous": "1831-02-04",
+      "value": "1831-02-16",
+      "precision": "day",
+      "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+      "method": "referenced-wikidata-statement",
+      "claimIds": [
+        "Q209004$292D0895-3BAD-4A55-8E74-B7E54F6B15A3"
+      ],
+      "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q209004&oldid=2529671148",
+      "supportingSources": [
+        {
+          "sourceUrl": "https://www.culture.ru/persons/8216/nikolai-leskov",
+          "checkedAt": "2026-10-01T20:39:17.933Z",
+          "finding": "16 февраля 1831",
+          "sourceDocumentSha256": "e79c8b5dfba4dfdd6c27e11be81011e26a2f2c725bc1b5769112c1c556bdae59"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "canonicalCountryProfilesUnchanged": true,
+    "noNonDateChanges": true,
+    "noNewWriterRecords": true,
+    "noNewEventTypes": true,
+    "historical25FieldPacketPreserved": true,
+    "priorEventIdentitiesPreserved": true,
+    "ruEnParity": true,
+    "replay": true,
+    "rollback": true
+  },
+  "unresolvedHistoricalDates": [
+    {
+      "writerKey": "russia:nestor",
+      "reason": "Only year-level birth/death evidence; ecclesiastical commemoration is not an exact historical death day."
+    },
+    {
+      "writerKey": "russia:kirill-turovsky",
+      "reason": "Approximate lifetime and saint commemoration cannot be represented as exact birth/death dates."
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "reason": "Institutional sources disagree on November birth day; cached Wikidata labels historical dates Gregorian. Calendar style remains unresolved.",
+      "sources": [
+        "https://avvakum.rusarchives.ru/letopis-zhizni-protopopa-avvakuma",
+        "https://inslav.ru/sites/default/files/editions/2020_materialy_virtmuzeya.pdf"
+      ]
+    },
+    {
+      "writerKey": "russia:kantemir",
+      "reason": "President Library and the national encyclopedia record competing 1708/1709 years; preserve uncertain birth.",
+      "sources": [
+        "https://www.prlib.ru/Great_Russia/cultural_XVIII/Kantemir",
+        "https://old.bigenc.ru/domestic_history/text/3794404"
+      ]
+    }
+  ],
+  "intentionallyAbsentLivingMemorials": [
+    "russia:pelevin",
+    "russia:sergey_lukyanenko"
+  ],
+  "records": [
+    {
+      "writerKey": "russia:nestor",
+      "name": "Нестор Летописец",
+      "birthDate": "1056",
+      "deathDate": "1114",
+      "birthVisible": false,
+      "deathVisible": false
+    },
+    {
+      "writerKey": "russia:kirill-turovsky",
+      "name": "Кирилл Туровский",
+      "birthDate": "",
+      "deathDate": "",
+      "birthVisible": false,
+      "deathVisible": false
+    },
+    {
+      "writerKey": "russia:avvakum",
+      "name": "Протопоп Аввакум Петров",
+      "birthDate": "1620",
+      "deathDate": "1682",
+      "birthVisible": false,
+      "deathVisible": false
+    },
+    {
+      "writerKey": "russia:trediakovsky",
+      "name": "Василий Кириллович Тредиаковский",
+      "birthDate": "1703-03-05",
+      "deathDate": "1768-08-17",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:kantemir",
+      "name": "Антиох Дмитриевич Кантемир",
+      "birthDate": "",
+      "deathDate": "1744-04-11",
+      "birthVisible": false,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:lomonosov",
+      "name": "Михаил Васильевич Ломоносов",
+      "birthDate": "1711-11-19",
+      "deathDate": "1765-04-15",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:derzhavin",
+      "name": "Гавриил Романович Державин",
+      "birthDate": "1743-07-14",
+      "deathDate": "1816-07-20",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:fonvizin",
+      "name": "Денис Иванович Фонвизин",
+      "birthDate": "1745-04-14",
+      "deathDate": "1792-12-01",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:karamzin",
+      "name": "Николай Михайлович Карамзин",
+      "birthDate": "1766-12-12",
+      "deathDate": "1826-06-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:krylov",
+      "name": "Иван Андреевич Крылов",
+      "birthDate": "1769-02-13",
+      "deathDate": "1844-11-21",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:zhukovsky",
+      "name": "Василий Андреевич Жуковский",
+      "birthDate": "1783-02-09",
+      "deathDate": "1852-04-24",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:batushkov",
+      "name": "Константин Николаевич Батюшков",
+      "birthDate": "1787-05-29",
+      "deathDate": "1855-07-19",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:griboedov",
+      "name": "Александр Сергеевич Грибоедов",
+      "birthDate": "1795-01-15",
+      "deathDate": "1829-02-11",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:pushkin",
+      "name": "Александр Сергеевич Пушкин",
+      "birthDate": "1799-06-06",
+      "deathDate": "1837-02-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:fyodor_tyutchev",
+      "name": "Фёдор Иванович Тютчев",
+      "birthDate": "1803-12-05",
+      "deathDate": "1873-07-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:gogol",
+      "name": "Николай Васильевич Гоголь",
+      "birthDate": "1809-04-01",
+      "deathDate": "1852-03-04",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:goncharov",
+      "name": "Иван Александрович Гончаров",
+      "birthDate": "1812-06-18",
+      "deathDate": "1891-09-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:lermontov",
+      "name": "Михаил Юрьевич Лермонтов",
+      "birthDate": "1814-10-15",
+      "deathDate": "1841-07-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:turgenev",
+      "name": "Иван Сергеевич Тургенев",
+      "birthDate": "1818-11-09",
+      "deathDate": "1883-09-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:afanasiy_fet",
+      "name": "Афанасий Афанасьевич Фет",
+      "birthDate": "1820-12-05",
+      "deathDate": "1892-12-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:nekrasov",
+      "name": "Николай Алексеевич Некрасов",
+      "birthDate": "1821-12-10",
+      "deathDate": "1878-01-08",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:dostoevsky",
+      "name": "Фёдор Михайлович Достоевский",
+      "birthDate": "1821-11-11",
+      "deathDate": "1881-02-09",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:ostrovsky",
+      "name": "Александр Николаевич Островский",
+      "birthDate": "1823-04-12",
+      "deathDate": "1886-06-14",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:saltykov-shchedrin",
+      "name": "Михаил Евграфович Салтыков-Щедрин",
+      "birthDate": "1826-01-27",
+      "deathDate": "1889-05-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:tolstoy",
+      "name": "Лев Николаевич Толстой",
+      "birthDate": "1828-09-09",
+      "deathDate": "1910-11-20",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:leskov",
+      "name": "Николай Семёнович Лесков",
+      "birthDate": "1831-02-16",
+      "deathDate": "1895-03-05",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:chekhov",
+      "name": "Антон Павлович Чехов",
+      "birthDate": "1860-01-29",
+      "deathDate": "1904-07-15",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:maxim_gorky",
+      "name": "Максим Горький",
+      "birthDate": "1868-03-28",
+      "deathDate": "1936-06-18",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:alexander_kuprin",
+      "name": "Александр Иванович Куприн",
+      "birthDate": "1870-09-07",
+      "deathDate": "1938-08-25",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:buninin",
+      "name": "Иван Алексеевич Бунин",
+      "birthDate": "1870-10-22",
+      "deathDate": "1953-11-08",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:blok",
+      "name": "Александр Александрович Блок",
+      "birthDate": "1880-11-28",
+      "deathDate": "1921-08-07",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:andrei_bely",
+      "name": "Андрей Белый",
+      "birthDate": "1880-10-26",
+      "deathDate": "1934-01-08",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:yevgeny_zamyatin",
+      "name": "Евгений Иванович Замятин",
+      "birthDate": "1884-02-01",
+      "deathDate": "1937-03-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:akhmatova",
+      "name": "Анна Андреевна Ахматова",
+      "birthDate": "1889-06-23",
+      "deathDate": "1966-03-05",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:pasternak",
+      "name": "Борис Леонидович Пастернак",
+      "birthDate": "1890-02-10",
+      "deathDate": "1960-05-30",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:bulgakov",
+      "name": "Михаил Афанасьевич Булгаков",
+      "birthDate": "1891-05-15",
+      "deathDate": "1940-03-10",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:mandelstam",
+      "name": "Осип Эмильевич Мандельштам",
+      "birthDate": "1891-01-15",
+      "deathDate": "1938-12-27",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:tsvetaeva",
+      "name": "Марина Ивановна Цветаева",
+      "birthDate": "1892-10-08",
+      "deathDate": "1941-08-31",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:vladimir_mayakovsky",
+      "name": "Владимир Владимирович Маяковский",
+      "birthDate": "1893-07-19",
+      "deathDate": "1930-04-14",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:mikhail_zoshchenko",
+      "name": "Михаил Михайлович Зощенко",
+      "birthDate": "1894-08-09",
+      "deathDate": "1958-07-22",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:esenin",
+      "name": "Сергей Александрович Есенин",
+      "birthDate": "1895-10-03",
+      "deathDate": "1925-12-28",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:andrei_platonov",
+      "name": "Андрей Платонович Платонов",
+      "birthDate": "1899-08-28",
+      "deathDate": "1951-01-05",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:nabrakov",
+      "name": "Владимир Владимирович Набоков",
+      "birthDate": "1899-04-22",
+      "deathDate": "1977-07-02",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:vasily_grossman",
+      "name": "Василий Семёнович Гроссман",
+      "birthDate": "1905-12-12",
+      "deathDate": "1964-09-14",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:sholokhov",
+      "name": "Михаил Александрович Шолохов",
+      "birthDate": "1905-05-24",
+      "deathDate": "1984-02-21",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:varlam_shalamov",
+      "name": "Варлам Тихонович Шаламов",
+      "birthDate": "1907-06-18",
+      "deathDate": "1982-01-17",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:alexander_tvardovsky",
+      "name": "Александр Трифонович Твардовский",
+      "birthDate": "1910-06-21",
+      "deathDate": "1971-12-18",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:solzhenitsyn",
+      "name": "Александр Исаевич Солженицын",
+      "birthDate": "1918-12-11",
+      "deathDate": "2008-08-03",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:brodsky",
+      "name": "Иосиф Александрович Бродский",
+      "birthDate": "1940-05-24",
+      "deathDate": "1996-01-28",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:pelevin",
+      "name": "Виктор Олегович Пелевин",
+      "birthDate": "1962-11-22",
+      "deathDate": null,
+      "birthVisible": true,
+      "deathVisible": false
+    },
+    {
+      "writerKey": "russia:sergey_ivanovich_ozhegov",
+      "name": "Сергей Иванович Ожегов",
+      "birthDate": "1900-09-22",
+      "deathDate": "1964-12-15",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:robert_shtilmark",
+      "name": "Роберт Александрович Штильмарк",
+      "birthDate": "1909-04-03",
+      "deathDate": "1985-09-30",
+      "birthVisible": true,
+      "deathVisible": true
+    },
+    {
+      "writerKey": "russia:sergey_lukyanenko",
+      "name": "Сергей Васильевич Лукьяненко",
+      "birthDate": "1968-04-11",
+      "deathDate": null,
+      "birthVisible": true,
+      "deathVisible": false
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "sourceId": "bn-argentina",
+  "name": "Biblioteca Nacional Mariano Moreno",
+  "entryUrl": "https://www.bn.gob.ar/noticias",
+  "countryCodes": [
+    "AR"
+  ],
+  "coverageCountryCodes": [
+    "AR"
+  ],
+  "attemptedAt": "2026-10-01T20:44:23.487Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.bn.gob.ar/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

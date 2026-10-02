@@ -1,0 +1,48 @@
+{
+  "sourceId": "nlg-gr",
+  "name": "National Library of Greece",
+  "entryUrl": "https://www.nlg.gr/",
+  "countryCodes": [
+    "GR"
+  ],
+  "coverageCountryCodes": [
+    "GR"
+  ],
+  "attemptedAt": "2026-10-01T20:43:56.476Z",
+  "requests": [
+    {
+      "url": "https://www.nlg.gr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 204690,
+      "sha256": "b50620d40122d229d51eeafebc5053c57acbc95641498122c8f908f9bd933348",
+      "accessedAt": "2026-10-01T20:43:57.329Z"
+    },
+    {
+      "url": "https://www.nlg.gr/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 19313,
+      "sha256": "395bf026df2d9f53ce275b7aa60c5ba443d38611f8f846cd2dfd2bd279f204af",
+      "accessedAt": "2026-10-01T20:43:57.701Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.nlg.gr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 360,
+    "sha256": "8338678bfe4f361a73e357b3a28ab071c173c5a622469717789c41c2931d7afd",
+    "accessedAt": "2026-10-01T20:43:57.242Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  }
+}

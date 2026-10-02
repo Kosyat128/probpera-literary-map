@@ -1,0 +1,389 @@
+{
+  "sourceId": "fremantle-press",
+  "name": "Fremantle Press",
+  "entryUrl": "https://fremantlepress.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:28.933Z",
+  "requests": [
+    {
+      "url": "https://fremantlepress.com.au/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 329921,
+      "sha256": "7d41cb634db55f53394bc6507913d36796098ea6ed8dafa6819c0a65523ffb20",
+      "accessedAt": "2026-10-01T20:48:35.914Z"
+    },
+    {
+      "url": "https://fremantlepress.com.au/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 58614,
+      "sha256": "e40949ec554546aa7d4b8e062e0f0fb5b6e026935b255a82bca3d91dd6b510aa",
+      "accessedAt": "2026-10-01T20:48:37.926Z"
+    },
+    {
+      "url": "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 178717,
+      "sha256": "e15ca81f2fd8680376ac79175aff21db923356c2004b3c686ed407ec36ca1672",
+      "accessedAt": "2026-10-01T20:48:40.433Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://fremantlepress.com.au/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 488,
+    "sha256": "e940268b277f9325660ed7e708ce1ed63bd886031ae1836935fabdc5165abc25",
+    "accessedAt": "2026-10-01T20:48:31.417Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/wp-content/uploads/wpforms/"
+    ]
+  },
+  "endpoint": {
+    "id": "fremantle-press",
+    "name": "Fremantle Press",
+    "url": "https://fremantlepress.com.au/feed/",
+    "format": "rss",
+    "language": "en-AU",
+    "region": "global",
+    "sourceFamilyId": "fremantle-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://fremantlepress.com.au"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:40.440Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "fremantle-press",
+    "source": {
+      "name": "Fremantle Press",
+      "url": "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/",
+      "language": "en-AU"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction",
+    "publishedAt": "2026-09-23T06:46:45.000Z",
+    "description": "Bernice Barry is still in the running for the richest individual prize in the region for her novel The Names of a Hare. Awarded by the Historical Novel Society of Australasia, in partnership with the ARA Group, to novels where the majority of the story is set more than 50 years ago. The Historical Novel […] The post Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction appeared…",
+    "discoveredAt": "2026-10-01T20:48:37.927Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 178717,
+      "sha256": "e15ca81f2fd8680376ac79175aff21db923356c2004b3c686ed407ec36ca1672",
+      "accessedAt": "2026-10-01T20:48:40.433Z",
+      "headline": "Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction",
+      "excerpt": "Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction 23 September 202623 September 2026 Bernice Barry is still in the running for the richest individual prize in the region for her novel The Names of a Hare. Awarded by the Historical Novel Society of Australasia, in partnership with the ARA Group, to novels where the majority of the story is set more than 50 years ago. The Hist",
+      "publishedDates": [
+        {
+          "value": "2026-09-23T06:46:45+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-23T06:46:45+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-23T06:46:45+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/",
+      "language": "en-AU",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:40.440Z",
+  "foundItems": [
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction",
+      "publishedAt": "2026-09-23T06:46:45.000Z",
+      "description": "Bernice Barry is still in the running for the richest individual prize in the region for her novel The Names of a Hare. Awarded by the Historical Novel Society of Australasia, in partnership with the ARA Group, to novels where the majority of the story is set more than 50 years ago. The Historical Novel […] The post Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction appeared…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/09/23/fremantle-press-author-david-whish-wilson-wins-wa-premiers-book-award/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fremantle Press author David Whish-Wilson wins WA Premier’s Book Award",
+      "publishedAt": "2026-09-23T06:45:00.000Z",
+      "description": "O’Keefe by David Whish-Wilson has taken out the fiction prize in the WA Premier’s Book Awards. David’s win has taken place just days after releasing his latest crime novel Free World. O’Keefe is a pulse-pounding thriller that takes a hard look at the Australian ‘cocaine gold rush’, where maritime crime meets the ruthless currents of […] The post Fremantle Press author David Whish-Wilson wins WA P…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/09/24/record-year-four-writers-shortlisted-for-the-hungerford-award-from-the-largest-submission-pool-in-35-years/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Record Year: Four Writers Shortlisted for the Hungerford Award from the Largest Submission Pool in 35 Years",
+      "publishedAt": "2026-09-24T06:45:00.000Z",
+      "description": "Four Western Australian writers are shortlisted for the Hungerford Award. This year, 128 manuscripts were received, the largest number in the Award’s 35-year history. Speaking on behalf of Fremantle Press, Publisher Georgia Richter said this just proved how vital it was to have an award exclusively for Western Australian writers. Georgia said, ‘It is a […] The post Record Year: Four Writers Short…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/09/22/top-10-literary-highlights-of-new-york/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Top 10 Literary Highlights of New York",
+      "publishedAt": "2026-09-22T06:49:37.000Z",
+      "description": "New York has long been a city of writers, readers and literary appreciators. Gone Guru is partly based on author Nadine Browne’s past experiences in New York City, but this isn’t the first time we’ve visited New York between the pages. Back in 2013, Fremantle Press authors Alice Nelson and Natasha Lester both researched novels […] The post Top 10 Literary Highlights of New York appeared first on …",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/09/19/fremantle-press-acquires-dockers-book-in-grand-final-week/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fremantle Press acquires Dockers book in Grand Final Week",
+      "publishedAt": "2026-09-19T06:58:09.000Z",
+      "description": "Australian journalist Geoff Hutchison has teamed up with a retired federal court judge and a shady footy columnist from the Fremantle Shipping News for The Season with Snaps Truly. Hutchison, who is representing the elusive author Snaps Truly, said, ‘The Season is less of a blow-by-blow of every 2026 game, and more of a series of […] The post Fremantle Press acquires Dockers book in Grand Final W…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/10/01/learn-the-words-for-the-noongar-walken/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Learn the words for the Noongar walken",
+      "publishedAt": "2026-10-01T04:24:17.000Z",
+      "description": "Noongar Boodja Waangkan: Noongar First Words is for those interested in learning about the vibrant, living First Nations language and culture of the Noongar people. Created by Wadjak Balardong Noongar and Badimaya Yamatji author Jayden Boundry, and Wardandi Noongar and Ait Koedhal illustrator Tyrown Waigana, it is an illustrated book of first Noongar words. In […] The post Learn the words for the…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/10/01/create-an-amazing-comic-using-your-favourite-astro-animal/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Create an AMAZING comic using your favourite astro animal",
+      "publishedAt": "2026-10-01T03:09:38.000Z",
+      "description": "In Amazing Astro Animals, author\u2013illustrator James Foley tells the true stories of the animals who went to space, including dogs, monkeys, earthworms, even jellyfish. To celebrate the book’s blend of science and storytelling, we’ve created a free classroom activity that invites students to choose their favourite astro animal and turn its journey into a comic […] The post Create an AMAZING comic u…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/10/01/oral-history-activity/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oral history activity",
+      "publishedAt": "2026-10-01T02:38:00.000Z",
+      "description": "We all have stories to tell and experiences we would like to share. Inspired by Sally Morgan’s My Place for Younger Readers, this classroom activity invites students to interview someone about their life, memories and experiences. By recording and preserving these personal stories, students will explore how oral histories help us understand the past and […] The post Oral history activity appeared…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/10/01/help-little-blue-get-home/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Help Little Blue get home!",
+      "publishedAt": "2026-10-01T02:09:33.000Z",
+      "description": "It’s a big world for a little duckling! In Little Blue, Where Are You? by Sally Morgan and Karen Blair, Skippy Gillespie is taking himself for a walk in the park \u2013 but he is not alone! Rocky Road Jack has followed him, and that nasty cat now has his eyes firmly on a tiny […] The post Help Little Blue get home! appeared first on Fremantle Press.",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "source": {
+        "name": "Fremantle Press",
+        "url": "https://fremantlepress.com.au/2026/09/29/imagining-the-after-rebecca-higgie-on-love-death-and-memory/",
+        "language": "en-AU"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Imagining the After: Rebecca Higgie on love, death and memory",
+      "publishedAt": "2026-09-29T01:01:00.000Z",
+      "description": "What began with the surreal image of a dead whale swimming between Perth skyscrapers grew into Rebecca Higgie’s sweeping exploration of love, memory, climate crisis and the stories we tell about the dead. We spoke to Rebecca about the six-year journey behind The Book of the After, the real-world urgency shaping its imagined futures, and […] The post Imagining the After: Rebecca Higgie on love, de…",
+      "discoveredAt": "2026-10-01T20:48:37.927Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "e40949ec554546aa7d4b8e062e0f0fb5b6e026935b255a82bca3d91dd6b510aa"
+}

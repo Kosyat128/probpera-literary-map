@@ -1,0 +1,381 @@
+{
+  "sourceId": "public-books",
+  "name": "Public Books",
+  "entryUrl": "https://www.publicbooks.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:51.414Z",
+  "requests": [
+    {
+      "url": "https://www.publicbooks.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 144633,
+      "sha256": "a71755b8615608a46cd6373c7b5eb39956267c0c3fd0a6fe2832f83558ed20e9",
+      "accessedAt": "2026-10-01T20:51:52.388Z"
+    },
+    {
+      "url": "https://www.publicbooks.org/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 14561,
+      "sha256": "b10dc13b409ee7210ad79e72d7897e9579ef0d3e943551073e0e03841ae4bec9",
+      "accessedAt": "2026-10-01T20:51:52.542Z"
+    },
+    {
+      "url": "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 119169,
+      "sha256": "ec59e970d40ed622997bd1e3128c95d7ba1a07bdacdd8a3e681c443b9038dcda",
+      "accessedAt": "2026-10-01T20:51:52.721Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.publicbooks.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 177,
+    "sha256": "83208b1c63a30e6317683c5516d3e30438b5ba794bc2659dc6e6a9a911f898a5",
+    "accessedAt": "2026-10-01T20:51:52.099Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "public-books",
+    "name": "Public Books",
+    "url": "https://www.publicbooks.org/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "public-books",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.publicbooks.org"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:52.731Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "public-books",
+    "source": {
+      "name": "Public Books",
+      "url": "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "“The Poetics of Social Forms”: Remembering Fredric Jameson (1934-2024)",
+    "publishedAt": "2026-09-22T15:00:00.000Z",
+    "description": "“No other thinker, Hegelian Marxist or otherwise, has lived up to this modernist vocation with the originality, intellectual élan, aesthetic intelligence, and political trenchancy of Fredric Jameson.” The post “The Poetics of Social Forms”: Remembering Fredric Jameson (1934\u20132024) appeared first on Public Books.",
+    "discoveredAt": "2026-10-01T20:51:52.544Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 119169,
+      "sha256": "ec59e970d40ed622997bd1e3128c95d7ba1a07bdacdd8a3e681c443b9038dcda",
+      "accessedAt": "2026-10-01T20:51:52.721Z",
+      "headline": "“The Poetics of Social Forms”: Remembering Fredric Jameson (1934\u20132024)",
+      "excerpt": "Essays Politics “The Poetics of Social Forms”: Remembering Fredric Jameson (1934\u20132024) 9.22.2026 Link Copied! Antonio Y. Vázquez-Arroyo Advertisement History is what hurts. \u2014The Political Unconscious (1981) One summer afternoon, 10 years ago, I received an email that I initially thought was a prank from a friend. The sender’s name was “FR Jameson,” whom I had been reading for decades and whose boo",
+      "publishedDates": [
+        {
+          "value": "2026-09-22T15:00:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-22T15:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-22T15:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:52.731Z",
+  "foundItems": [
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“The Poetics of Social Forms”: Remembering Fredric Jameson (1934-2024)",
+      "publishedAt": "2026-09-22T15:00:00.000Z",
+      "description": "“No other thinker, Hegelian Marxist or otherwise, has lived up to this modernist vocation with the originality, intellectual élan, aesthetic intelligence, and political trenchancy of Fredric Jameson.” The post “The Poetics of Social Forms”: Remembering Fredric Jameson (1934\u20132024) appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/the-hyphen-unites-avi-shlaim-on-arab-jewish-life/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Hyphen Unites: Avi Shlaim on Arab-Jewish Life",
+      "publishedAt": "2026-10-01T15:00:00.000Z",
+      "description": "Avi Shlaim, historian and influential scholar of Israel’s relationship with the Arab world, joins John Plotz and Yuval Evri to discuss class, caste differences, and destructive ethno-nationalist ideologies in mainstream Israeli politics. The post The Hyphen Unites: Avi Shlaim on Arab-Jewish Life appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/the-life-of-the-mind-of-a-factory-worker/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Life of the Mind of a Factory Worker",
+      "publishedAt": "2026-09-30T15:00:00.000Z",
+      "description": "“Beware to those who read ‘Adrift in the South’ solely as a cautionary tale about the Chinese state without considering the international flows of goods and power.” The post The Life of the Mind of a Factory Worker appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/long-distance-talkers-the-great-depression-speaks/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Long-Distance Talkers: The Great Depression Speaks",
+      "publishedAt": "2026-09-29T15:00:00.000Z",
+      "description": "During the Great Depression, the Works Progress Administration conducted thousands of interviews among American workers. Anne Trubek's “American Made” gives them new voice. The post Long-Distance Talkers: The Great Depression Speaks appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/if-we-rot-you-rot-with-us/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "If We Rot, You Rot with Us",
+      "publishedAt": "2026-09-28T15:00:00.000Z",
+      "description": "“Despite the enduring belief that literary nonsense is primarily directed toward children\u2014an idea that has its roots in the popularity of Lewis Carroll and Dr. Seuss\u2014literary nonsense has historically been weaponized by the masses, always under the guise of stupidity, to effect change.” The post If We Rot, You Rot with Us appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/the-last-graduate-students/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Last Graduate Students?",
+      "publishedAt": "2026-09-24T15:00:00.000Z",
+      "description": "“I began writing this as a record of what it felt like to be a student then, as collective attachments to values\u2014long recognized as fraying, with the knell of the next scapegoat, or horrifying spectacle\u2014face the final chopping block: public good, responsibility to others, democracy itself.” The post The Last Graduate Students? appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/the-treachery-of-machine-realism/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Treachery of Machine Realism",
+      "publishedAt": "2026-09-23T15:00:00.000Z",
+      "description": "“The bombed elementary school in Iran appears to have become a target thanks to satellite imaging. In this case, what the image represented \u2014 and to who \u2014 was a matter of life and death.” The post The Treachery of Machine Realism appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/the-uninhabitable-front/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Uninhabitable Front",
+      "publishedAt": "2026-09-17T15:00:00.000Z",
+      "description": "“Israeli military aircraft flew low over the Lebanese villages of Ras Naqoura and Aita al-Shaab, spraying agricultural fields with a fine mist... Within days, the green of fields, orchards, and olive groves turned brown. Farmers who had worked the same soil for generations watched their trees die.” The post The Uninhabitable Front appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/being-undocumented-is-already-a-chronic-stress-then-add-in-blackness-talking-with-dr-felecia-russell-on-the-experience-of-black-undocumented-folks/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "“Being Undocumented Is Already a Chronic Stress. Then, Add in Blackness”: Talking with Dr. Felecia Russell on the Experience of Black Undocumented Folks",
+      "publishedAt": "2026-09-16T15:00:00.000Z",
+      "description": "\"Growing up, I really didn't get exposed to the conversations about immigration, until I found out that I didn't have the proper documentation. Once I learned that, my world, I felt, just really shattered.\" The post “Being Undocumented Is Already a Chronic Stress. Then, Add in Blackness”: Talking with Dr. Felecia Russell on the Experience of Black Undocumented Folks appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "source": {
+        "name": "Public Books",
+        "url": "https://www.publicbooks.org/remember-them-palestine-scholars-murdered-in-the-gaza-genocide/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Remember Them: Palestine Scholars Murdered in the Gaza Genocide",
+      "publishedAt": "2026-09-15T15:00:00.000Z",
+      "description": "“In Palestine, some 87,000 students have suffered a near total disruption of their studies for the duration of the genocide, and more than 1200 have been killed. Upwards of 200 academic staff have perished, many in targeted attacks.” The post Remember Them: Palestine Scholars Murdered in the Gaza Genocide appeared first on Public Books.",
+      "discoveredAt": "2026-10-01T20:51:52.544Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "b10dc13b409ee7210ad79e72d7897e9579ef0d3e943551073e0e03841ae4bec9"
+}

@@ -1,0 +1,11 @@
+{
+  "sourceId": "yale-press",
+  "name": "Yale University Press",
+  "entryUrl": "https://yalebooks.yale.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.037Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

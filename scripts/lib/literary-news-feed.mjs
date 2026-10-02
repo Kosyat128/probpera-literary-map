@@ -305,7 +305,8 @@ export function createNewsService({
     const request = (headers) => {
       if (budget.httpRequests >= maxHttpRequests) throw failure("fetch_failed");
       budget.httpRequests += 1;
-      return fetchImpl(currentPage, { signal: controller.signal, redirect: "manual", maxResponseBytes, timeoutMs, headers });
+      return fetchImpl(currentPage, { signal: controller.signal, redirect: "manual", maxResponseBytes, timeoutMs,
+        headers: { ...headers, "User-Agent": "ProbperaLiteraryNews/1.0 (+https://probpera.ru)" } });
     };
     controllers.add(controller);
     let timer;

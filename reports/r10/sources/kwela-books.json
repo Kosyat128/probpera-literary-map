@@ -1,0 +1,16 @@
+{
+  "sourceId": "kwela-books",
+  "name": "Kwela Books",
+  "entryUrl": "https://www.kwela.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:21.086Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.kwela.com/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

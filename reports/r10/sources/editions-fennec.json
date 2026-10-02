@@ -1,0 +1,16 @@
+{
+  "sourceId": "editions-fennec",
+  "name": "Le Fennec",
+  "entryUrl": "https://www.editionslefennec.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:18.665Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND www.editionslefennec.com",
+  "robots": {
+    "url": "https://www.editionslefennec.com/robots.txt",
+    "error": "getaddrinfo ENOTFOUND www.editionslefennec.com",
+    "disallowed": []
+  }
+}

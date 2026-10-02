@@ -30,6 +30,23 @@ function service(t, options = {}) {
   return instance;
 }
 
+test("listing requests identify the service without browser impersonation", async (t) => {
+  const requests = [];
+  const instance = service(t, { fetchImpl: async (_url, options) => {
+    requests.push(options);
+    return requests.length === 1 ? new Response(null, { status: 304 }) : response();
+  } });
+  await instance.refresh();
+  assert.equal(requests.length, 2);
+  for (const request of requests) {
+    assert.equal(request.headers["User-Agent"], "ProbperaLiteraryNews/1.0 (+https://probpera.ru)");
+    assert.equal(request.redirect, "manual");
+  }
+  assert.match(requests[0].headers.Accept, /text\/html/);
+  assert.equal(requests[1].headers.Accept, "*/*");
+  assert.equal((await instance.getFeed()).sources[0].status, "ok");
+});
+
 test("production sources are immutable approved endpoints with compiled patterns", () => {
   assert.ok(LITERARY_NEWS_SOURCES.length >= 100 && LITERARY_NEWS_SOURCES.length <= 250);
   assert.equal(new Set(LITERARY_NEWS_SOURCES.map((source) => source.id)).size, LITERARY_NEWS_SOURCES.length);

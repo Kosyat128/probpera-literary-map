@@ -1,0 +1,20 @@
+{
+  "sourceId": "norla",
+  "name": "NORLA",
+  "entryUrl": "https://norla.no/en",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:03.318Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_404",
+  "robots": {
+    "url": "https://norla.no/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 70,
+    "sha256": "feb7f8a5cf9b5aefa412d2d0a3b622174da43826a5ac24c2a1aa5198f838d7ad",
+    "accessedAt": "2026-10-01T20:52:03.583Z",
+    "disallowed": []
+  }
+}

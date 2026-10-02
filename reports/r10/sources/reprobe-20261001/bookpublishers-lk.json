@@ -1,0 +1,35 @@
+{
+  "sourceId": "bookpublishers-lk",
+  "name": "Sri Lanka Book Publishers Association",
+  "entryUrl": "https://www.bookpublishers.lk/",
+  "countryCodes": [
+    "LK"
+  ],
+  "coverageCountryCodes": [
+    "LK"
+  ],
+  "attemptedAt": "2026-10-01T20:43:08.052Z",
+  "requests": [
+    {
+      "url": "https://www.bookpublishers.lk/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 46846,
+      "sha256": "8e6fb9d6472dfe8afb2782e3450d9602d0732f505e3def36b76907329c3115fa",
+      "accessedAt": "2026-10-01T20:43:09.246Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.bookpublishers.lk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 706,
+    "sha256": "9f567e8788a7c9d35308c072cbdbfaa53677f36b86bf602b939c64fac7e6db49",
+    "accessedAt": "2026-10-01T20:43:08.731Z",
+    "disallowed": [
+      "/cgi-bin/"
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "sourceId": "bookforum",
+  "name": "Bookforum",
+  "entryUrl": "https://www.bookforum.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:51.657Z",
+  "requests": [
+    {
+      "url": "https://www.bookforum.com/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 520329,
+      "sha256": "1b153ac6675bb01cee96e6334ad02fbecba039a912640b0791d97758da929f64",
+      "accessedAt": "2026-10-01T20:51:52.151Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/the-summer-issue-of-bookforum-is-out-now-63059",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 283066,
+      "sha256": "df500f4bf0506eae328fb5ae5230f691df6ae39fb038e0239fcf5814af9f77b3",
+      "accessedAt": "2026-10-01T20:51:52.408Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/head-like-a-hole-62892",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 339781,
+      "sha256": "47b49ad181ec83b7b1d98803b527549ac716de00b94a6fa70283db47ad407606",
+      "accessedAt": "2026-10-01T20:51:52.521Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/always-be-selling-62909",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 375730,
+      "sha256": "38826e9fedc48da44e210cfeb27059a4b80c127194f7fae595cf1f356edc8bc4",
+      "accessedAt": "2026-10-01T20:51:53.478Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/something-rotten-62919",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 322979,
+      "sha256": "f2490b55022ef2d4cab054e8bba724ef879e91e689a065b1ad0bfb655992a0c1",
+      "accessedAt": "2026-10-01T20:51:53.711Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/grammar-of-discontent-62937",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 340961,
+      "sha256": "d18cbf81d75a0fac32a2697ae308d84b118f8532172e6b9e8bf2cb78038d4c8a",
+      "accessedAt": "2026-10-01T20:51:53.821Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/portrait-of-an-eye-62961",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 344911,
+      "sha256": "90c1eef23855b7143e35a16ac75c4655fa4bfc9c5a81cb6e412a5551a228dd92",
+      "accessedAt": "2026-10-01T20:51:53.919Z"
+    },
+    {
+      "url": "https://www.bookforum.com/print/3301/not-that-innocent-62948",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 302879,
+      "sha256": "f8bd05e7f053a5384de0674d17cb004d0f4be049a7ae0c484d353d2ddc49f9fd",
+      "accessedAt": "2026-10-01T20:51:54.028Z"
+    },
+    {
+      "url": "https://www.bookforum.com/interviews/attention-economy-62971",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 322022,
+      "sha256": "29a4dc5bd4d40f1ef2537759ca5946bff14b4a115c3fdee82779e9989cd591e3",
+      "accessedAt": "2026-10-01T20:51:55.078Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.bookforum.com/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

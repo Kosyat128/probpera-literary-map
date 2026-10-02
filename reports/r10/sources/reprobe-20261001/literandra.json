@@ -1,0 +1,16 @@
+{
+  "sourceId": "literandra",
+  "name": "Literandra",
+  "entryUrl": "https://literandra.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:45:00.291Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "external_redirect:https://www.hugedomains.com",
+  "robots": {
+    "url": "https://literandra.com/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

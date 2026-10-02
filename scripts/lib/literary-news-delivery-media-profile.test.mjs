@@ -23,6 +23,16 @@ async function fixture() {
     destinations: [destination], now, readBytes: async () => normalized.bytes, ...opts }) };
 }
 describe('native delivery media materialization', () => {
+  it('deduplicates exact identities and rejects conflicts before any storage write', async () => {
+    const f = await fixture();
+    const registry = { assets: [f.asset, structuredClone(f.asset)], downloadHosts: ['publisher.example'] };
+    expect((await f.run({ registry })).index.assets).toHaveLength(1);
+    expect(f.storage.writeJpeg).toHaveBeenCalledTimes(1);
+    f.storage.writeJpeg.mockClear(); f.storage.writeIndex.mockClear();
+    registry.assets[1].credit = 'Conflicting rights snapshot';
+    await expect(f.run({ registry })).rejects.toThrow('delivery_media_identity_conflict');
+    expect(f.storage.writeJpeg).not.toHaveBeenCalled(); expect(f.storage.writeIndex).not.toHaveBeenCalled();
+  });
   it('keeps a valid decoded panoramic derivative after bounded normalization', async () => {
     const f = await fixture();
     const source = await sharp({ create: { width: 6000, height: 320, channels: 3, background: '#445566' } }).png().toBuffer();

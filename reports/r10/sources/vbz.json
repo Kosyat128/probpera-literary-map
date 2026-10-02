@@ -1,0 +1,600 @@
+{
+  "sourceId": "vbz",
+  "name": "V.B.Z.",
+  "entryUrl": "https://www.vbz.hr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:34.129Z",
+  "requests": [
+    {
+      "url": "https://www.vbz.hr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 1055204,
+      "sha256": "e0956a8f558fa4833318f56a043e951e65c800d667e0c7400461408d1eb32537",
+      "accessedAt": "2026-10-01T20:48:34.513Z"
+    },
+    {
+      "url": "https://www.vbz.hr/novosti/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 466296,
+      "sha256": "439179f0c1217f63429f02c19b49402137f6d9fb53bf6e69b63433b133a1fc33",
+      "accessedAt": "2026-10-01T20:48:34.830Z"
+    },
+    {
+      "url": "https://www.vbz.hr/ljetni-katalog-2026-trileri-romani-hitovi-i-feel-good-naslovi-za-dugo-toplo-ljeto/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 436037,
+      "sha256": "d92e918d34be52e1c53d74912fc09d7c096fe01b515721eb7889a6c84dc81341",
+      "accessedAt": "2026-10-01T20:48:36.077Z"
+    },
+    {
+      "url": "https://www.vbz.hr/book-zona-pristupnica/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 433367,
+      "sha256": "dde16323db5e7f69bc0572fc714deac70812a653073a5fd7b2accab3f74fb5a6",
+      "accessedAt": "2026-10-01T20:48:37.117Z"
+    },
+    {
+      "url": "https://www.vbz.hr/citaj-svijet-mjesec-publicistike-u-v-b-z-u/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 435581,
+      "sha256": "5ffbf160e95da701629046d5f85dd210f50a5c02c863f173672b8469348b21fa",
+      "accessedAt": "2026-10-01T20:48:38.200Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.vbz.hr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 746,
+    "sha256": "2149098c494fc44c76a750c1d2b35ec0b7914f9eea6e99b042ebfd2abcfb793b",
+    "accessedAt": "2026-10-01T20:48:34.365Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/*?add_to_wishlist=",
+      "/*?wc-ajax=get_refreshed_fragments",
+      "/*?s=",
+      "/*?post_type=",
+      "/*?add-to-cart=",
+      "/*?product_tag=",
+      "/*?orderby=",
+      "/*?session=",
+      "/*?filter_",
+      "/cart/",
+      "/checkout/",
+      "/my-account/",
+      "/addons/",
+      "/wp-login.php",
+      "/wp-register.php",
+      "/wp-includes/",
+      "/wp-content/plugins/",
+      "/wp-content/themes/",
+      "/*?wc-ajax=add_to_cart",
+      "/*?filter",
+      "/*?ep_filter",
+      "/*?ep-highlight",
+      "/wp-json/",
+      "/?rest_route=/"
+    ]
+  },
+  "endpoint": {
+    "id": "vbz",
+    "name": "V.B.Z.",
+    "url": "https://www.vbz.hr/novosti/",
+    "format": "html",
+    "language": "hr",
+    "region": "global",
+    "sourceFamilyId": "vbz",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.vbz.hr"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/book\\/[^/]+\\/?$|^\\/autor\\/[^/]+\\/?$|^\\/vbz\\x2dizdavac\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.vbz.hr/citaj-svijet-mjesec-publicistike-u-v-b-z-u/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:38.218Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 17,
+  "literaryCandidateCount": 17,
+  "sample": {
+    "sourceId": "vbz",
+    "source": {
+      "name": "V.B.Z.",
+      "url": "https://www.vbz.hr/citaj-svijet-mjesec-publicistike-u-v-b-z-u/",
+      "language": "hr"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "ČITAJ SVIJET - MJESEC PUBLICISTIKE U V.B.Z.-u",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:34.930Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.vbz.hr/citaj-svijet-mjesec-publicistike-u-v-b-z-u/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 435581,
+      "sha256": "5ffbf160e95da701629046d5f85dd210f50a5c02c863f173672b8469348b21fa",
+      "accessedAt": "2026-10-01T20:48:38.200Z",
+      "headline": "ČITAJ SVIJET \u2013 MJESEC PUBLICISTIKE U V.B.Z.-u",
+      "excerpt": "Od 1. do 30. listopada u svim V.B.Z. knjižarama i online na vbz.hr očekuju vas popusti do 50% na odabranu publicistiku. Od knjiga koje pomažu da bolje razumijemo sebe, do naslova koji objašnjavaju svijet oko nas. Na akciji vas očekuju naslovi iz područja self-helpa i osobnog razvoja, popularne znanosti, psihologije, ekonomije i društva, povijesti i politike, filozofije, biografija, autobiografija ",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T07:36:14+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T07:36:14+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T07:36:14+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.vbz.hr/citaj-svijet-mjesec-publicistike-u-v-b-z-u/",
+      "language": "hr",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:38.218Z",
+  "foundItems": [
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/ljetni-katalog-2026-trileri-romani-hitovi-i-feel-good-naslovi-za-dugo-toplo-ljeto/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LJETNI KATALOG 2026. TRILERI, ROMANI, HITOVI I FEEL GOOD NASLOVI ZA DUGO TOPLO LJETO",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/book-zona-pristupnica/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Zona pristupnica",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/citaj-svijet-mjesec-publicistike-u-v-b-z-u/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ČITAJ SVIJET - MJESEC PUBLICISTIKE U V.B.Z.-u",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/drago-glamuzina-predstavlja-novu-knjigu-pjesama-crveni-ze/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Drago Glamuzina predstavlja novu knjigu pjesama Crveni ze",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/citamo-domace-srdan-gavrilovic-predstavlja-svoj-prvi-roman-ovjerena-kopija/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ČITAMO DOMAĆE: Srđan Gavrilović predstavlja svoj prvi roman Ovjerena kopija",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/predstavljen-program-19-vriska-vise-od-50-dogadanja-i-brojni-domaci-regionalni-i-medunarodni-autori/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "­Predstavljen program 19. VRISKA: više od 50 događanja i brojni domaći, regionalni i međunarodni autori",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/%f0%9f%93%9a-velika-prodajna-akcija-vriska/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "📚 VELIKA PRODAJNA AKCIJA VRISKA!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/saptac-svjetski-bestseler-sada-i-na-netflixu/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ŠAPTAČ: SVJETSKI BESTSELER SADA I NA NETFLIXU",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/ljeto-pocinje-dobrom-knjigom/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "LJETO POČINJE DOBROM KNJIGOM ⛱️☀️📘",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/predstavljanje-novog-romana-marinka-kosceca-preko-mosta-u-kinoteka-baru/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Predstavljanje novog romana Marinka Koščeca „Preko mosta“ u Kinoteka baru",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/predstavljanje-antologije-poljske-poezije-drugog-kraja-svijeta-nece-biti-u-izboru-i-prijevodu-durdice-cilic/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Predstavljanje antologije poljske poezije „Drugog kraja svijeta neće biti” u izboru i prijevodu Đurđice Čilić",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/loyalty-program-vbz-a/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Loyalty program VBZ-a",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/opci-uvjeti-programa-vjernosti/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Opći uvjeti programa vjernosti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/raspisan-natjecaj-za-v-b-z-nagradu-za-najbolji-neobjavljeni-roman-2023/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Natječaj V.B.Z.-a",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/propozicije-natjecaja-2023/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Propozicije natječaja",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/vbz-izdavac/zaprimanje-rukopisa/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Zaprimanje rukopisa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "vbz",
+      "source": {
+        "name": "V.B.Z.",
+        "url": "https://www.vbz.hr/vbz-izdavac/europom-u-30-knjiga/",
+        "language": "hr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Europom u 30 knjiga",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:34.930Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "439179f0c1217f63429f02c19b49402137f6d9fb53bf6e69b63433b133a1fc33"
+}

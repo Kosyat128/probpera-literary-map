@@ -28,12 +28,26 @@ export function checkedPreparationSourceUrl(input,sources=LITERARY_NEWS_SOURCES)
   if(!source)fail('daily_source_destination_rejected');return{url,source};
 }
 export async function boundedPreparationBytes(response,maxBytes){
-  if(!response.body||Number(response.headers.get('content-length'))>maxBytes)fail('daily_source_response_too_large');
+  if(!response.body)fail('daily_source_response_too_large');
+  if(Number(response.headers.get('content-length'))>maxBytes){
+    await response.body.cancel().catch(()=>{});fail('daily_source_response_too_large');}
   const reader=response.body.getReader(),chunks=[];let size=0;
   try{while(true){const{done,value}=await reader.read();if(done)break;size+=value.byteLength;
     if(size>maxBytes)fail('daily_source_response_too_large');chunks.push(Buffer.from(value));}
     return Buffer.concat(chunks,size);
   }finally{await reader.cancel().catch(()=>{});reader.releaseLock();}
+}
+function preparationSourceMaxBytes(source,listing){
+  const checked=(field,fallback)=>{
+    const property=Object.getOwnPropertyDescriptor(source,field);
+    if(!property){if(field in source)fail('daily_source_byte_limit_invalid');return fallback;}
+    if(!Object.isFrozen(source)||!Object.hasOwn(property,'value')||!Number.isSafeInteger(property.value)
+      ||property.value<1||property.value>2*1024*1024)fail('daily_source_byte_limit_invalid');
+    return property.value;
+  };
+  // Both fields are checked before network work, even when only one is used.
+  const listingMaxBytes=checked('listingMaxBytes',1024*1024),detailMaxBytes=checked('detailMaxBytes',512*1024);
+  return listing?listingMaxBytes:detailMaxBytes;
 }
 /** Fixed approved hosts only. Cloudflare global_fetch_strictly_public sends through the public Internet;
  * credentials, IP literals, arbitrary ports and cross-origin redirects are never accepted. */
@@ -43,7 +57,7 @@ export function createPreparationSourceFetch({sources=LITERARY_NEWS_SOURCES,fetc
   let requests=0;
   return async(input,options={})=>{
     let{url,source}=checkedPreparationSourceUrl(input,sources);
-    const maxBytes=options.includeBytes?1024*1024:512*1024;
+    let maxBytes=preparationSourceMaxBytes(source,options.includeBytes);
     const remaining=deadline-current().getTime();if(remaining<=0)fail('daily_preparation_deadline');
     const signal=AbortSignal.timeout(Math.min(options.includeBytes?8000:12000,remaining));
     for(let redirects=0;redirects<4;redirects++){
@@ -53,7 +67,8 @@ export function createPreparationSourceFetch({sources=LITERARY_NEWS_SOURCES,fetc
         'User-Agent':'ProbperaLiteraryNewsPreparation/1.0 (+https://probpera.ru)'}});
       if(response.status>=300&&response.status<400){await response.body?.cancel().catch(()=>{});const target=new URL(response.headers.get('location'),url);
         if(target.origin!==url.origin)fail('daily_source_redirect_rejected');
-        ({url,source}=checkedPreparationSourceUrl(target.href,sources));continue;}
+        ({url,source}=checkedPreparationSourceUrl(target.href,sources));
+        maxBytes=preparationSourceMaxBytes(source,options.includeBytes);continue;}
       if(response.status!==200){await response.body?.cancel().catch(()=>{});fail('daily_source_http_'+response.status);}
       const contentType=response.headers.get('content-type')||'';
       if(!/^(?:text\/(?:html|xml|plain)|application\/(?:xhtml\+xml|rss\+xml|atom\+xml|xml))(?:;|$)/i.test(contentType)){
@@ -164,7 +179,7 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
     const cooling=state.providerStop&&Date.parse(state.providerStop.retryAfterAt)>started.getTime();
     const admittedToday=state.accepted.filter(r=>dailyNewsDay(new Date(r.provenance.firstAcceptedAt))===day).length;
     const intake=cooling||admittedToday>=DAILY_NEWS_LIMITS.maximum?{details:[],counts:{checkedSources:0}}:await collect({
-      current:started,sourceLimit:32,detailLimit:10,reviewed:[...reviewed,...state.accepted],
+      current:started,sourceLimit:32,detailLimit:10,rotationMinutes:120,reviewed:[...reviewed,...state.accepted],
       fetchImpl:createPreparationSourceFetch({fetchImpl,current:now,deadline})});
     const bounded=await boundedNativeNewsCandidates(intake,state,now());
     const result=await execute({intake:bounded.intake,previous:state,reviewed,withdrawals,current:now(),maxAiCalls:bounded.maximum*2,

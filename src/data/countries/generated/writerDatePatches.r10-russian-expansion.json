@@ -1,0 +1,131 @@
+{
+  "version": 1,
+  "evaluatedAt": "2026-10-01T20:39:18.733Z",
+  "sourceReviewSha256": "e15ecea2be79a66aaf9fb97b04cc097bf6cbb3f220510aebe68548801b35d70a",
+  "cachedSnapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+  "patches": [
+    {
+      "id": "r10-russian-expansion:russia:andrei_platonov:birthDate:60f524feef10",
+      "writerKey": "russia:andrei_platonov",
+      "field": "birthDate",
+      "expectedOld": null,
+      "expectedEvidence": null,
+      "appliedValue": "1899-08-28",
+      "evidence": {
+        "value": "1899-08-28",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q315147",
+        "claimIds": [
+          "Q315147$9db4a466-d36d-4a01-af6c-e58c51031829"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q315147&oldid=2530033063",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.prlib.ru/history/2056240",
+            "checkedAt": "2026-10-01T20:39:17.406Z",
+            "finding": "16 (28) августа 1899",
+            "sourceDocumentSha256": "cccbc2dad98681d28a9d45a33238458d49680449197a5fbdc79417b6a3ea9c86"
+          },
+          {
+            "sourceUrl": "https://www.culture.ru/persons/13775/andrei-platonov",
+            "checkedAt": "2026-10-01T20:39:17.162Z",
+            "sourceDocumentSha256": "ce4948cb2dd4942f79614bc6761aff4ed7299049e78004d0b60a454e2f886f9b",
+            "finding": "28 августа 1899"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian-expansion:russia:gogol:deathDate:e418ba2a7a18",
+      "writerKey": "russia:gogol",
+      "field": "deathDate",
+      "expectedOld": "1852-02-21",
+      "expectedEvidence": null,
+      "appliedValue": "1852-03-04",
+      "evidence": {
+        "value": "1852-03-04",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q43718",
+        "claimIds": [
+          "q43718$49fe1a31-427f-0660-3880-b12eb9b04056"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q43718&oldid=2533018092",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-julian-claim-with-institutional-gregorian-source",
+        "originalCalendarModel": "http://www.wikidata.org/entity/Q1985786",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8127/nikolai-gogol",
+            "checkedAt": "2026-10-01T20:39:17.004Z",
+            "finding": "04 марта 1852",
+            "sourceDocumentSha256": "2654894b74f540504a45ea7d8f8a767e4b1b7040c440262b9f6d6be166562c2d"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian-expansion:russia:pasternak:birthDate:15cde48ec367",
+      "writerKey": "russia:pasternak",
+      "field": "birthDate",
+      "expectedOld": "1890-01-29",
+      "expectedEvidence": null,
+      "appliedValue": "1890-02-10",
+      "evidence": {
+        "value": "1890-02-10",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q41223",
+        "claimIds": [
+          "q41223$5E8F7722-3791-4B13-9C3D-62F0A1AC918B"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q41223&oldid=2536709737",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/9531/boris-pasternak",
+            "checkedAt": "2026-10-01T20:39:18.690Z",
+            "finding": "10 февраля 1890",
+            "sourceDocumentSha256": "f65a0d2f1fa07d54341aae0343893a1680091487fe46fd58ef2216ed27db047e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "r10-russian-expansion:russia:leskov:birthDate:12841cce059b",
+      "writerKey": "russia:leskov",
+      "field": "birthDate",
+      "expectedOld": "1831-02-04",
+      "expectedEvidence": null,
+      "appliedValue": "1831-02-16",
+      "evidence": {
+        "value": "1831-02-16",
+        "precision": "day",
+        "calendarModel": "http://www.wikidata.org/entity/Q1985727",
+        "wikidataId": "Q209004",
+        "claimIds": [
+          "Q209004$292D0895-3BAD-4A55-8E74-B7E54F6B15A3"
+        ],
+        "sourceUrl": "https://www.wikidata.org/w/index.php?title=Q209004&oldid=2529671148",
+        "retrievedAt": "2026-08-31T21:18:08.951Z",
+        "snapshotSha256": "7979469db1953dc55f22dca3f818e93e38e762afbf64795019bba5a9b9534092",
+        "method": "referenced-wikidata-statement",
+        "supportingSources": [
+          {
+            "sourceUrl": "https://www.culture.ru/persons/8216/nikolai-leskov",
+            "checkedAt": "2026-10-01T20:39:17.933Z",
+            "finding": "16 февраля 1831",
+            "sourceDocumentSha256": "e79c8b5dfba4dfdd6c27e11be81011e26a2f2c725bc1b5769112c1c556bdae59"
+          }
+        ]
+      }
+    }
+  ]
+}

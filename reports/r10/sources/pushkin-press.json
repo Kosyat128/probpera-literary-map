@@ -1,0 +1,399 @@
+{
+  "sourceId": "pushkin-press",
+  "name": "Pushkin Press",
+  "entryUrl": "https://pushkinpress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:00.212Z",
+  "requests": [
+    {
+      "url": "https://pushkinpress.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 221118,
+      "sha256": "ef321bc434ed4630fa9c59be3ed21f86bfbc79d3852737ec564f07804fa7de58",
+      "accessedAt": "2026-10-01T20:48:00.869Z"
+    },
+    {
+      "url": "https://pushkinpress.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 9562,
+      "sha256": "e9ff1cdd7be0ae303a37cc2c917925b1667113add1f80b1370639d6edd349780",
+      "accessedAt": "2026-10-01T20:48:01.000Z"
+    },
+    {
+      "url": "https://pushkinpress.com/freelancer-callout-audiobook-editing-mastering-engineer/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103142,
+      "sha256": "b949faab51da3df85e2a670e2d34d2a27366227dc22fd00f199aa7ac65c0b02a",
+      "accessedAt": "2026-10-01T20:48:01.322Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://pushkinpress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1588,
+    "sha256": "0194ac3abbeb07ae3d7df4c62d774f704387385baed3bb3594f34a08c82873ea",
+    "accessedAt": "2026-10-01T20:48:00.660Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/?s=",
+      "/page/*/?s=",
+      "/search/",
+      "/*.pdf$",
+      "/?s=",
+      "/search/",
+      "/wp-admin/",
+      "/wp-includes/",
+      "/?s=",
+      "/page/*/?s=",
+      "/search/"
+    ]
+  },
+  "endpoint": {
+    "id": "pushkin-press",
+    "name": "Pushkin Press",
+    "url": "https://pushkinpress.com/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "pushkin-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://pushkinpress.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://pushkinpress.com/freelancer-callout-audiobook-editing-mastering-engineer/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:01.328Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "pushkin-press",
+    "source": {
+      "name": "Pushkin Press",
+      "url": "https://pushkinpress.com/freelancer-callout-audiobook-editing-mastering-engineer/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Freelancer Callout: Audiobook Editing/ Mastering Engineer",
+    "publishedAt": "2026-08-19T09:22:41.000Z",
+    "description": "Pushkin Press, an independent publisher of literary and translated fiction and nonfiction, is seeking exceptional freelance audio editors to work with us on a rolling, per-project basis. We value excellence and rigorous attention to detail and seek candidates who match this profile. Some of our audiobook readers are professional narrators who deliver clean, self-edited punch-and-roll audio files …",
+    "discoveredAt": "2026-10-01T20:48:01.001Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://pushkinpress.com/freelancer-callout-audiobook-editing-mastering-engineer/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 103142,
+      "sha256": "b949faab51da3df85e2a670e2d34d2a27366227dc22fd00f199aa7ac65c0b02a",
+      "accessedAt": "2026-10-01T20:48:01.322Z",
+      "headline": "Freelancer Callout: Audiobook Editing/ Mastering Engineer \u2013 Pushkin Press",
+      "excerpt": "Freelancer Callout: Audiobook Editing/ Mastering Engineer \u2013 Pushkin Press <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style> Skip to content POSTED 19th August 2026 Freelancer Callout: Audiobook Editing/ Mastering Engineer Pushkin Press, an independent publisher of literary and translated fiction and nonfiction, is seeking exceptional freelance audio editors to work with us on a",
+      "publishedDates": [
+        {
+          "value": "2026-08-19T10:22:41+01:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-19T10:22:41+01:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        },
+        {
+          "value": "2026-08-19T10:22:41+01:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://pushkinpress.com/freelancer-callout-audiobook-editing-mastering-engineer/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:01.328Z",
+  "foundItems": [
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/freelancer-callout-audiobook-editing-mastering-engineer/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Freelancer Callout: Audiobook Editing/ Mastering Engineer",
+      "publishedAt": "2026-08-19T09:22:41.000Z",
+      "description": "Pushkin Press, an independent publisher of literary and translated fiction and nonfiction, is seeking exceptional freelance audio editors to work with us on a rolling, per-project basis. We value excellence and rigorous attention to detail and seek candidates who match this profile. Some of our audiobook readers are professional narrators who deliver clean, self-edited punch-and-roll audio files …",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/tessa-hadley-presents-mavis-gallant/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tessa Hadley presents Mavis Gallant",
+      "publishedAt": "2025-05-14T10:47:22.000Z",
+      "description": "From Tessa Hadley’s introduction to The Latehomecomer by Mavis Gallant, available as part of the Pushkin Press Classics library Mavis Gallant mostly didn’t keep her reviews; even when they were kind, she too often felt they were “off the target”. But there was one review in El País, when she was first translated into Spanish, […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/wit2024/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Women in Translation Month: Classics",
+      "publishedAt": "2024-08-01T10:36:04.000Z",
+      "description": "August is Women in Translation month. There’s such an overwhelming cast of brilliant, contemporary female writers constantly publishing amazing books, but today we’d like to take you back through a very short history of some translated women who aren’t so well known. But, make no mistake, their writing glitters nonetheless, and each has as much […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/pushkin-childrens-supports-primaries/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pushkin Children’s Supports Primaries",
+      "publishedAt": "2026-06-22T16:43:26.000Z",
+      "description": "Every child deserves a classroom of books. In celebration of the National Year of Reading 2026, Pushkin Children’s is helping to make that happen. We’re gifting 500 books \u2013 50 to 10 state primary schools across the UK. This includes a complete set of Pushkin Children’s Classics, plus 32 additional titles to be selected from […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/deluxe-gifts-from-pushkin-press-classics-2/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Deluxe Gifts from Pushkin Press Classics",
+      "publishedAt": "2025-11-26T11:13:32.000Z",
+      "description": "Classics Editor Sofia Smith-Laing describes the perfect recipients for our gorgeously giftable deluxe classics collection. Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/sink-your-fangs-into-white-teeth-red-blood/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sink your fangs into White Teeth, Red Blood",
+      "publishedAt": "2025-10-02T13:35:27.000Z",
+      "description": "Uncover the dark secrets behind this blood-soaked book of poetry with the collection’s editor, Sofia Smith-Laing No black lipstick in my make-up kit, and the closest I’ve ever got to dressing up as a vampire is receiving a set of plastic fangs in a party bag as a child. But like all of us, even […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/introducing-ithell-colquhoun/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Introducing Ithell Colquhoun",
+      "publishedAt": "2025-06-06T08:20:48.000Z",
+      "description": "It’s taken decades and the alignment of many stars, but Ithell Colquhoun’s time has finally come. The artist died in relative obscurity in 1988, having spent the second half of her long life (she was born in 1906) living and working in a studio in a Cornish valley, initially without heat or running water. But, […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/staff-picks-classics/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Staff Picks: Classics",
+      "publishedAt": "2024-12-13T15:24:39.000Z",
+      "description": "We asked members of the team to choose their favourite Pushkin Press Classic. These are their picks! India | Publishing Operations Director A Woman in the Polar Night by Christiane Ritter, translated by Jane Degras This rediscovered classic holds pure magic between its pages. Adventure across a landscape of immeasurable beauty and experience the strength […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/hello-hermann-hesse/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hello, Hermann Hesse",
+      "publishedAt": "2024-10-02T08:55:39.000Z",
+      "description": "‘A writer of genius’ \u2013The Times Hermann Hesse’s novels \u2013 spiritual, profound, influenced by Eastern philosophy and Jungian psychology \u2013 have been totems and guides for seekers all over the world since he began writing at the turn of the 20th century. Hesse himself was a troubled, questioning child, straining against the repressive atmosphere of his […] Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "pushkin-press",
+      "source": {
+        "name": "Pushkin Press",
+        "url": "https://pushkinpress.com/classics-for-your-holiday/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Classics for Your Holiday",
+      "publishedAt": "2024-06-25T14:51:24.000Z",
+      "description": "Ranging from the sober to the surreal, madcap to mordant, these Pushkin Classics \u2013 all thrillers of sorts \u2013 will entertain and intrigue you over the summer holidays. Source",
+      "discoveredAt": "2026-10-01T20:48:01.001Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "e9ff1cdd7be0ae303a37cc2c917925b1667113add1f80b1370639d6edd349780"
+}

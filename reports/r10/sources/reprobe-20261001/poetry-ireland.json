@@ -1,0 +1,137 @@
+{
+  "sourceId": "poetry-ireland",
+  "name": "Poetry Ireland",
+  "entryUrl": "https://www.poetryireland.ie/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:45:01.194Z",
+  "requests": [
+    {
+      "url": "https://www.poetryireland.ie/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 55163,
+      "sha256": "b17ce6132b9f508b1f32c46140df8877ef14cf7afd369b111928b87b6d85ac30",
+      "accessedAt": "2026-10-01T20:45:01.947Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 50241,
+      "sha256": "67c140d85df051274c557445a923c9c49d7320bd346ab340dc36ab8506c7d288",
+      "accessedAt": "2026-10-01T20:45:02.315Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/lawrence-oshaughnessy-award-reading",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32895,
+      "sha256": "22296cad108383e0fb730d8cc9668ff727791627bd7f486938e06b88664a54ca",
+      "accessedAt": "2026-10-01T20:45:02.611Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/black-history-month-celebration-poetry-ireland-and-irish-writers-centre",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 34579,
+      "sha256": "08f0565f689e17f9ee66e29474faf4912a9424e846468451b2e03f025d49abad",
+      "accessedAt": "2026-10-01T20:45:02.886Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-poetry-lobby-october",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30622,
+      "sha256": "520e084d367a31533deaebe4bb2f33a2520fe6375a7b876ea4318280e26d1d1d",
+      "accessedAt": "2026-10-01T20:45:03.139Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-munster-poetry-slam",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31766,
+      "sha256": "251bacc5a47f28486ba89ee7e1fa6ac9378b0423ace1921161f1135caf926e14",
+      "accessedAt": "2026-10-01T20:45:03.447Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-connacht-poetry-slam",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 31935,
+      "sha256": "e8dbf42dac935f29aeaed643c2a2f96b41de5b209143eda573351dd9640bd4ce",
+      "accessedAt": "2026-10-01T20:45:03.753Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/partnership-event-september-poetry-barrow",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 30767,
+      "sha256": "f6d85b68919992e638fb73d9629d6e472b1dde29d49f2e9df410a67742ee959e",
+      "accessedAt": "2026-10-01T20:45:04.041Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/introductions-ceadlinte-night-two",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35349,
+      "sha256": "c8fb86f430905c74acc24b4ec080364c794763037ad2d8edb234fa35e729cb3a",
+      "accessedAt": "2026-10-01T20:45:04.366Z"
+    },
+    {
+      "url": "https://www.poetryireland.ie/news-events/contentious-spaces-rosaleen-mcdonagh-conversation-katherine-odonnell",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 32779,
+      "sha256": "fd9f288f32648fe1174bc42a0a31c7d5a3b10156fbec51e16984871f47e2e08b",
+      "accessedAt": "2026-10-01T20:45:04.670Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.poetryireland.ie/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2157,
+    "sha256": "b1fa75e688b358790589c3b9e59025a76ad5c51b8b108f1d1f31a119f8b5b78e",
+    "accessedAt": "2026-10-01T20:45:01.591Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/search?",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/search?",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  }
+}

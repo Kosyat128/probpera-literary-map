@@ -1,0 +1,392 @@
+{
+  "sourceId": "editions-verdier",
+  "name": "Editions Verdier",
+  "entryUrl": "https://editions-verdier.fr/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:03.828Z",
+  "requests": [
+    {
+      "url": "https://editions-verdier.fr/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102884,
+      "sha256": "d23234935b8367fcda4bc88e2b76ca76fd981095a3fe3833beb08ebf57ae97c3",
+      "accessedAt": "2026-10-01T20:48:04.905Z"
+    },
+    {
+      "url": "https://editions-verdier.fr/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 29023,
+      "sha256": "a959ad477f4751939b350ec38a06278aef1652749adb42c98f579717ac0b9d87",
+      "accessedAt": "2026-10-01T20:48:05.264Z"
+    },
+    {
+      "url": "https://editions-verdier.fr/2026/09/29/addict-culture1er-septembre-2026-par-cecile-d/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 34690,
+      "sha256": "8d398362c45fff09d53a6ab29c0a8416eec0b29d97785810abb34f60a2e1f86d",
+      "accessedAt": "2026-10-01T20:48:05.609Z"
+    },
+    {
+      "url": "https://editions-verdier.fr/2026/09/23/la-liberte-19-septembre-2026-par-daniel-fattore/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 34892,
+      "sha256": "b029beb6b4a02a0d31d72ec417f05e2533cc15dbcbe0af90ab33515797ac70e6",
+      "accessedAt": "2026-10-01T20:48:05.966Z"
+    },
+    {
+      "url": "https://editions-verdier.fr/2026/09/22/la-marseillaise-9-septembre-2026-par-anne-marie-thomazeau/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 38809,
+      "sha256": "4fd3c563939fcac187044cf28d265b21d9e613c00beb97ca5a5416604874ad13",
+      "accessedAt": "2026-10-01T20:48:06.339Z"
+    },
+    {
+      "url": "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36918,
+      "sha256": "d78f10a70711262c5b8d4ade2c15a117af5d2e248148886d7304e0943b8f9523",
+      "accessedAt": "2026-10-01T20:48:06.695Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://editions-verdier.fr/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 120,
+    "sha256": "89af7a626a11d552b817c5759f494f6b9ea7aa6a5c309147a0dab1de03cd133a",
+    "accessedAt": "2026-10-01T20:48:04.423Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "editions-verdier",
+    "name": "Editions Verdier",
+    "url": "https://editions-verdier.fr/feed/",
+    "format": "rss",
+    "language": "fr-FR",
+    "region": "global",
+    "sourceFamilyId": "editions-verdier",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://editions-verdier.fr"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:06.696Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "editions-verdier",
+    "source": {
+      "name": "Editions Verdier",
+      "url": "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/",
+      "language": "fr-FR"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "La Croix, 18 septembre 2026, par Isaure Hiace",
+    "publishedAt": "2026-09-21T12:40:51.000Z",
+    "description": "Cinq nouvelles voix singulières de la rentrée littéraire Parmi les dizaines de premiers romans qui paraissent en cette rentrée,...",
+    "discoveredAt": "2026-10-01T20:48:05.265Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36918,
+      "sha256": "d78f10a70711262c5b8d4ade2c15a117af5d2e248148886d7304e0943b8f9523",
+      "accessedAt": "2026-10-01T20:48:06.695Z",
+      "headline": "La Croix, 18 septembre 2026, par Isaure Hiace",
+      "excerpt": "La Croix, 18 septembre 2026, par Isaure Hiace Cinq nouvelles voix singulières de la rentrée littéraire Parmi les dizaines de premiers romans qui paraissent en cette rentrée, La Croix L’Hebdo en a sélectionné cinq originaux, émouvants et étonnants. […] La narratrice souffre d’un strabisme intermittent et s’interroge sur l’influence de ce léger handicap sur son être et son parcours. Cette enquête in",
+      "publishedDates": [],
+      "canonical": "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/",
+      "language": "fr-FR",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:06.696Z",
+  "foundItems": [
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/29/addict-culture1er-septembre-2026-par-cecile-d/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Addict-culture,1er septembre 2026, par Cécile D.",
+      "publishedAt": "2026-09-29T12:56:50.000Z",
+      "description": "Lire l’article",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/23/la-liberte-19-septembre-2026-par-daniel-fattore/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Liberté, 19 septembre 2026, par Daniel Fattore",
+      "publishedAt": "2026-09-23T10:33:05.000Z",
+      "description": "Lire l’article",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/22/la-marseillaise-9-septembre-2026-par-anne-marie-thomazeau/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Marseillaise, 9 septembre 2026, par Anne-Marie Thomazeau",
+      "publishedAt": "2026-09-22T13:08:25.000Z",
+      "description": "L’autre principe d’Archimède Emma Marsantes revient chez Verdier avec N’efface pas mes cercles, une saga familiale sur quatre générations...",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La Croix, 18 septembre 2026, par Isaure Hiace",
+      "publishedAt": "2026-09-21T12:40:51.000Z",
+      "description": "Cinq nouvelles voix singulières de la rentrée littéraire Parmi les dizaines de premiers romans qui paraissent en cette rentrée,...",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/21/lintervalle-21-septembre-2026-par-fabien-ribery/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L’Intervalle, 21 septembre 2026, par Fabien Ribery",
+      "publishedAt": "2026-09-21T10:27:09.000Z",
+      "description": "Lire l’article",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/18/diacritik-18-septembre-2026-par-garance-roubieu/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Diacritik, 18 septembre 2026, par Garance Roubieu",
+      "publishedAt": "2026-09-18T12:38:28.000Z",
+      "description": "Lire l’article",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/18/le-matricule-des-anges-septembre-2026-par-jerome-delclos/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Le Matricule des anges, septembre 2026, par Jérôme Delclos",
+      "publishedAt": "2026-09-18T12:29:56.000Z",
+      "description": "Éclats d’absolu À suivre la lumière, Giorgio Vasta et Ramak Fazel traquent l’impossible tout de la vie dans les...",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/18/etudes-septembre-2026-par-odile-de-loisy/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Études, septembre 2026, par Odile de Loisy",
+      "publishedAt": "2026-09-18T12:23:23.000Z",
+      "description": "En ce printemps 2026, la réouverture du LaM de Villeneuve d’Ascq (Lille Métropole Musée d’art moderne, d’art contemporain et...",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/17/les-inrockuptibles-15-septembre-2026-par-sylvie-tanette/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les Inrockuptibles, 15 septembre 2026, par Sylvie Tanette",
+      "publishedAt": "2026-09-17T13:58:52.000Z",
+      "description": "Je ne raconte pas l’apocalypse, mais l’après. Le créateur du post-exotisme publie onze livres chez onze maisons d’édition différentes....",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "source": {
+        "name": "Editions Verdier",
+        "url": "https://editions-verdier.fr/2026/09/17/revueabsalon-17-septembre-2006-par-amelie-lucas-gary/",
+        "language": "fr-FR"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "revueabsalon, 17 septembre 2006, par Amélie Lucas-Gary",
+      "publishedAt": "2026-09-17T09:10:15.000Z",
+      "description": "Lire l’article",
+      "discoveredAt": "2026-10-01T20:48:05.265Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a959ad477f4751939b350ec38a06278aef1652749adb42c98f579717ac0b9d87"
+}

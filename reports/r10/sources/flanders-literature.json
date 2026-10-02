@@ -1,0 +1,60 @@
+{
+  "sourceId": "flanders-literature",
+  "name": "Flanders Literature",
+  "entryUrl": "https://www.flandersliterature.be/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:02.597Z",
+  "requests": [
+    {
+      "url": "https://www.flandersliterature.be/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 95884,
+      "sha256": "a5ed7461422d48e9dc8e54b298e5dded2e34a3c2ebc4415ee8fc8cb1899121c6",
+      "accessedAt": "2026-10-01T20:52:03.162Z"
+    },
+    {
+      "url": "https://www.flandersliterature.be/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80511,
+      "sha256": "75ec65bc0abeb67b35e96f5507c635885b5e481b10f22dee412f151a01ca18c1",
+      "accessedAt": "2026-10-01T20:52:03.682Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.flandersliterature.be/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1594,
+    "sha256": "3200f655bd0e859a4fb1a7237cc64d4cec38824f6f5ee914c37d0b9de0f9c554",
+    "accessedAt": "2026-10-01T20:52:02.990Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password/",
+      "/index.php/user/register/",
+      "/index.php/user/login/",
+      "/index.php/user/logout/"
+    ]
+  }
+}

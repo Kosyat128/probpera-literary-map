@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { projectReviewedCalendarSecurityFollowup } from "./reviewed-calendar-security-followup.mjs";
+import { projectReviewedRussianCalendarExpansion } from "./reviewed-russian-calendar-expansion.mjs";
 import { describe, expect, it } from "vitest";
 import { loadR10ExactSourcePunctuation, normalizeR10ExactSourcePunctuation as normalize,
   r10PunctuationLiteralRanges as ranges } from "./r10-exact-source-punctuation.mjs";
@@ -9,7 +10,7 @@ import { r10PunctuationAttestation as packet, r10PunctuationSha256 as sourceSha,
   projectReviewedR10SourcePunctuation as project } from "./reviewed-r10-source-punctuation.mjs";
 
 const registry = loadR10ExactSourcePunctuation();
-const read = path => projectReviewedCalendarSecurityFollowup(path, readFileSync(path, "utf8"));
+const read = path => projectReviewedCalendarSecurityFollowup(path, projectReviewedRussianCalendarExpansion(path, readFileSync(path, "utf8")));
 const sha = value => createHash("sha256").update(value).digest("hex");
 const dash = String.fromCodePoint(0x2014);
 const reviewedPath = "data/news/reviewed.json";

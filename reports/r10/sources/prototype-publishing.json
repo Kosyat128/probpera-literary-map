@@ -1,0 +1,388 @@
+{
+  "sourceId": "prototype-publishing",
+  "name": "Prototype",
+  "entryUrl": "https://prototypepublishing.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:49.178Z",
+  "requests": [
+    {
+      "url": "https://prototypepublishing.co.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 167641,
+      "sha256": "5d3e56961d5e780ecebf276d6150b1e4b5eeb2bec56744dbd4bba81754aee7d0",
+      "accessedAt": "2026-10-01T20:51:54.679Z"
+    },
+    {
+      "url": "https://prototypepublishing.co.uk/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 37221,
+      "sha256": "2fad79b2cd991581465e44ae0ebe214d34f17bb392e8000cd4699349045d18d3",
+      "accessedAt": "2026-10-01T20:51:55.108Z"
+    },
+    {
+      "url": "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 118025,
+      "sha256": "996dd0eb8c682084298ae3a42601ab564d2c176e3bb60859de2b55f8704b2548",
+      "accessedAt": "2026-10-01T20:51:55.506Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://prototypepublishing.co.uk/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 453,
+    "sha256": "5546445419e4ac7a4d973f4f542e161bf1c4818276c9af4dcaebc9866c68ee9c",
+    "accessedAt": "2026-10-01T20:51:50.914Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "prototype-publishing",
+    "name": "Prototype",
+    "url": "https://prototypepublishing.co.uk/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "prototype-publishing",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://prototypepublishing.co.uk"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:55.511Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "prototype-publishing",
+    "source": {
+      "name": "Prototype",
+      "url": "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am-6.30pm, St Columba’s Hall",
+    "publishedAt": "2026-04-13T05:45:23.000Z",
+    "description": "... Read More The post Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am\u20136.30pm, St Columba’s Hall appeared first on Prototype.",
+    "discoveredAt": "2026-10-01T20:51:55.109Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 118025,
+      "sha256": "996dd0eb8c682084298ae3a42601ab564d2c176e3bb60859de2b55f8704b2548",
+      "accessedAt": "2026-10-01T20:51:55.506Z",
+      "headline": "Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am\u20136.30pm, St Columba’s Hall - Prototype",
+      "excerpt": "We’re excited to have a stall at this year’s Free Verse Poetry Book and Magazine Fair, which celebrates the vitality of poetry in the UK. It’s an unrivalled opportunity to browse and buy the very best in contemporary poetry, and to meet publishers, organisations and poets. What is it? Free Verse is a book and magazine fair. Publishers each have their own stall, and bring along their latest wares f",
+      "publishedDates": [
+        {
+          "value": "2026-04-13T05:45:23+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-04-13T05:45:23+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-04-13T05:45:23+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:55.511Z",
+  "foundItems": [
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am-6.30pm, St Columba’s Hall",
+      "publishedAt": "2026-04-13T05:45:23.000Z",
+      "description": "... Read More The post Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am\u20136.30pm, St Columba’s Hall appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/09/10/glue-book-fair-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "GLUE Book Fair 2026 | The ICA, 12-13 September 2026",
+      "publishedAt": "2026-09-10T08:35:27.000Z",
+      "description": "... Read More The post GLUE Book Fair 2026 | The ICA, 12\u201313 September 2026 appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/04/21/jen-calleja-caitriona-lally-at-west-cork-literary-festival/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jen Calleja & Caitríona Lally at West Cork Literary Festival | Saturday 11 July",
+      "publishedAt": "2026-04-21T12:26:10.000Z",
+      "description": "... Read More The post Jen Calleja & Caitríona Lally at West Cork Literary Festival | Saturday 11 July appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/03/10/the-indie-press-fair-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Indie Press Fair at the Alternative Book Fair London | Saturday 11 April 2026, 10am-5pm | Islington Central Library",
+      "publishedAt": "2026-03-10T10:54:12.000Z",
+      "description": "... Read More The post The Indie Press Fair at the Alternative Book Fair London | Saturday 11 April 2026, 10am\u20135pm | Islington Central Library appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/01/29/launch-of-happiness-by-yuri-felsen-pushkin-house/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book launch of ‘Happiness’ by Yuri Felsen, with Bryan Karetnyk, Matthew Janney and Maria Rubins | Pushkin House, Tuesday 10 March 2026, 7-8.30pm (in person & online)",
+      "publishedAt": "2026-01-29T14:17:33.000Z",
+      "description": "... Read More The post Book launch of ‘Happiness’ by Yuri Felsen, with Bryan Karetnyk, Matthew Janney and Maria Rubins | Pushkin House, Tuesday 10 March 2026, 7\u20138.30pm (in person & online) appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/09/10/pig-data-uk-tour/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PIG DATA UK Tour with Anne Vegter & Astrid Alben (plus special guests) | November 2026",
+      "publishedAt": "2026-09-10T08:46:12.000Z",
+      "description": "... Read More The post PIG DATA UK Tour with Anne Vegter & Astrid Alben (plus special guests) | November 2026 appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/09/21/kicking-the-pricks-events/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Kicking the Pricks: The Last of England | London Events",
+      "publishedAt": "2026-09-21T11:54:48.000Z",
+      "description": "... Read More The post Kicking the Pricks: The Last of England | London Events appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/09/10/typographia-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Typographia: a Modern Fair for Print Culture | Saturday 26 September, Libreria and Second Home, Spitalfields",
+      "publishedAt": "2026-09-10T08:40:59.000Z",
+      "description": "... Read More The post Typographia: a Modern Fair for Print Culture | Saturday 26 September, Libreria and Second Home, Spitalfields appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2026/01/29/new-canons-ica/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Canons: Readings from Innovative Independent Publishers | Institute of Contemporary Arts, Wednesday 11 March",
+      "publishedAt": "2026-01-29T14:18:51.000Z",
+      "description": "... Read More The post New Canons: Readings from Innovative Independent Publishers | Institute of Contemporary Arts, Wednesday 11 March appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "source": {
+        "name": "Prototype",
+        "url": "https://prototypepublishing.co.uk/2025/11/04/launch-of-significant-others-by-frank-r-jagoe/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Launch of Significant Others by frank r jagoe | Thursday 20 November, The People’s Letters, 7.30-11.00pm",
+      "publishedAt": "2025-11-04T09:19:56.000Z",
+      "description": "... Read More The post Launch of Significant Others by frank r jagoe | Thursday 20 November, The People’s Letters, 7.30\u201311.00pm appeared first on Prototype.",
+      "discoveredAt": "2026-10-01T20:51:55.109Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "2fad79b2cd991581465e44ae0ebe214d34f17bb392e8000cd4699349045d18d3"
+}

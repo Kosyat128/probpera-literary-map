@@ -1,0 +1,20 @@
+{
+  "sourceId": "bnportugal-gov-pt",
+  "name": "National Library of Portugal",
+  "entryUrl": "https://www.bnportugal.gov.pt/",
+  "countryCodes": [
+    "PT"
+  ],
+  "coverageCountryCodes": [
+    "PT"
+  ],
+  "attemptedAt": "2026-10-01T20:44:02.036Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "This operation was aborted",
+  "robots": {
+    "url": "https://www.bnportugal.gov.pt/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  }
+}

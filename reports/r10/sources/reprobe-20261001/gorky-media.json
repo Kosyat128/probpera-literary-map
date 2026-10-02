@@ -1,0 +1,93 @@
+{
+  "sourceId": "gorky-media",
+  "name": "Горький",
+  "entryUrl": "https://gorky.media/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:53.706Z",
+  "requests": [
+    {
+      "url": "https://gorky.media/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 63681,
+      "sha256": "24e3482f7a4a0ba0c18295434e8661772eff6f47028af6ef6a81c1e12ca0b81a",
+      "accessedAt": "2026-10-01T20:44:54.052Z"
+    },
+    {
+      "url": "https://gorky.media/context/vek-dzhaza-i-ego-literatura",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 99180,
+      "sha256": "7bb9ff6d33e99894109bfd2fec138644dd35fa0d7f94ccd17c65730ae8039298",
+      "accessedAt": "2026-10-01T20:44:54.198Z"
+    },
+    {
+      "url": "https://gorky.media/reviews/tsirkumlatorii-stalin-knigi-nedeli",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 70107,
+      "sha256": "3484091a80e0a894f5e6298055ef2c8b9281c2cae9ac9f923a2d9fda413ef26d",
+      "accessedAt": "2026-10-01T20:44:54.311Z"
+    },
+    {
+      "url": "https://gorky.media/context/romanticheskii-egoist",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80416,
+      "sha256": "b50ac93fc73d40bd4734d05d52314c5e00973c847fc96fa98772e51ee37b77bb",
+      "accessedAt": "2026-10-01T20:44:54.441Z"
+    },
+    {
+      "url": "https://gorky.media/reviews/evolyutsiya-nesovershenstva",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 59536,
+      "sha256": "cab0f0f6bb9b47ec663d74328b8de0c2d011532d346719ef1af4af83888fbc49",
+      "accessedAt": "2026-10-01T20:44:54.553Z"
+    },
+    {
+      "url": "https://gorky.media/fragments/telnoe-narozhnoe-pryazhenoe",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 77434,
+      "sha256": "cbfe2163d9de6f5a88b9fad09805c977ac578abb513b9869fe0b22dd19b83093",
+      "accessedAt": "2026-10-01T20:44:54.674Z"
+    },
+    {
+      "url": "https://gorky.media/context/ocharovanie-nashchupyvayushchei-yunosti",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93576,
+      "sha256": "4049fa845bbb44cea1a669cd46a50f83ae8f0dedad2d84bd9c2968c10f967b94",
+      "accessedAt": "2026-10-01T20:44:54.809Z"
+    },
+    {
+      "url": "https://gorky.media/context/spokoinoi-nochi-tetenki-i-dyadenki",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 69555,
+      "sha256": "7e81c9f8e51c80e12f8898d58eebfcfd6754b0d12bdd489907c14c28b568e47e",
+      "accessedAt": "2026-10-01T20:44:54.926Z"
+    },
+    {
+      "url": "https://gorky.media/fragments/zont-i-shveinaya-mashinka",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 62646,
+      "sha256": "27b9967d7d7e179d5491866a7fb3cdef45aceebb84bfa9a4a93c512d18405ca5",
+      "accessedAt": "2026-10-01T20:44:55.039Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://gorky.media/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 24,
+    "sha256": "e5c4b84484ee4216e9373be99380320c25dd94805f99f0a805846f087636553f",
+    "accessedAt": "2026-10-01T20:44:53.924Z",
+    "disallowed": []
+  }
+}

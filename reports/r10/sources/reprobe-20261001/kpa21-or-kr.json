@@ -1,0 +1,33 @@
+{
+  "sourceId": "kpa21-or-kr",
+  "name": "Korean Publishers Association",
+  "entryUrl": "https://www.kpa21.or.kr/",
+  "countryCodes": [
+    "KR"
+  ],
+  "coverageCountryCodes": [
+    "KR"
+  ],
+  "attemptedAt": "2026-10-01T20:43:39.410Z",
+  "requests": [
+    {
+      "url": "https://www.kpa21.or.kr/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 1580,
+      "sha256": "311d863a8e784a19c1a30d10f70f0d7309db400f3ba0135d5b20618a663e20ea",
+      "accessedAt": "2026-10-01T20:43:42.036Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.kpa21.or.kr/robots.txt",
+    "status": 200,
+    "contentType": "text/html",
+    "bytes": 1590,
+    "sha256": "6d26806ddfe78e535566876a87dd42d135eb8318b16eb1996aab6191927b4086",
+    "accessedAt": "2026-10-01T20:43:41.713Z",
+    "disallowed": []
+  }
+}

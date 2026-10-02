@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "id": "AUTHOR-COLUMN-REFERENCE-REMOVAL-20261002",
+  "baselineCommitSha": "af4f0a4598c40144d7e62c706793a156bfe79d09",
+  "historicalPinsChanged": false,
+  "authorization": {
+    "userAuthorized": true,
+    "request": "Источник тут не надо, это авторская рубрика",
+    "scope": "Remove only the redundant external source action from the existing book-of-month author column and its unused icon import.",
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "allowedProjectionPaths": [
+    "src/App.tsx",
+    "scripts/lib/reviewed-next-builder-followup.mjs",
+    "tests/e2e/public-doc-refinements.spec.mjs"
+  ],
+  "sourceBaselines": {
+    "src/App.tsx": "334ab1dadf4260110db2a76a20ef1c755f95b12ed919d30ca6faf5800df9b3cb",
+    "scripts/lib/reviewed-next-builder-followup.mjs": "adcb8349504a2757818a8a2c11a42ba6743887201e939301501525f412a73974",
+    "tests/e2e/public-doc-refinements.spec.mjs": "e4e26140ecf5982b184b89d3b505d55d1abcbf9fe5707a47069ddbb9a6830144"
+  },
+  "reviewedSources": {
+    "src/App.tsx": "b83d614140d4519cb0128760b37f6f28e2ede50ce1a1b417ddba5b83343cb3c2",
+    "scripts/lib/reviewed-next-builder-followup.mjs": "7820579025835ddf77509ab459531811c56a7bc13911676c3cebd8a0016c1f4c",
+    "tests/e2e/public-doc-refinements.spec.mjs": "4fcbe7f0d1584b1e2608ceddaea0b360bcc455cd2ca34a1d2a71a3c06b7390c1"
+  },
+  "projections": [
+    {
+      "path": "src/App.tsx",
+      "id": "author-column-unused-source-icon",
+      "before": "import BrandBookIcon from \"./components/BrandBookIcon\";\nimport BrandExternalLinkIcon from \"./components/BrandExternalLinkIcon\";\nimport BrandSearchIcon from \"./components/BrandSearchIcon\";",
+      "after": "import BrandBookIcon from \"./components/BrandBookIcon\";\nimport BrandSearchIcon from \"./components/BrandSearchIcon\";"
+    },
+    {
+      "path": "src/App.tsx",
+      "id": "author-column-source-link-removal",
+      "before": "                  </div>\n                  {bookOfMonth.sourceUrl && (\n                    <ActionLink\n                      className=\"book-source-link\"\n                      size=\"md\"\n                      surface=\"dark\"\n                      variant=\"text\"\n                      endIcon={<BrandExternalLinkIcon />}\n                      href={bookOfMonth.sourceUrl}\n                      target=\"_blank\"\n                      rel=\"noreferrer\"\n                    >\n                      {t(\"Источник сведений\")}\n                    </ActionLink>\n                  )}\n                </div>\n              )}\n            </div>\n          </article>\n\n          <div className=\"book-month-supporting has-news\">",
+      "after": "                  </div>\n                </div>\n              )}\n            </div>\n          </article>\n\n          <div className=\"book-month-supporting has-news\">"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-builder-followup.mjs",
+      "id": "author-column-read-boundary-import",
+      "before": "import {createHash} from 'node:crypto';",
+      "after": "import {createHash} from 'node:crypto';\nimport {projectReviewedAuthorColumnReferenceRemoval} from './reviewed-author-column-reference-removal.mjs';"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-builder-followup.mjs",
+      "id": "author-column-read-boundary-projection",
+      "before": " let projected=source.replace(/\\r\\n?/gu,'\\n');",
+      "after": " let projected=projectReviewedAuthorColumnReferenceRemoval(relativePath,source);"
+    },
+    {
+      "path": "tests/e2e/public-doc-refinements.spec.mjs",
+      "id": "author-column-browser-contract",
+      "before": "  await expect(book.locator(\".book-action-secondary\")).toBeVisible();\n  await expect(book.locator(\".book-source-link\")).toBeVisible();\n\n  const bookGeometry = await book.evaluate((element) => {\n    const copy = element.querySelector(\":scope > div:last-child\");\n    const primaryActions = element.querySelector(\".book-actions-primary\");\n    const source = element.querySelector(\".book-source-link\");\n    if (!copy || !primaryActions || !source) return null;\n    const copyBox = copy.getBoundingClientRect();\n    const actionBox = primaryActions.getBoundingClientRect();\n    const sourceBox = source.getBoundingClientRect();\n    return {\n      copyWidth: copyBox.width,\n      sourceAfterActions: sourceBox.top >= actionBox.bottom - 1,\n      overflow: element.scrollWidth - element.clientWidth,\n    };\n  });\n  expect(bookGeometry).not.toBeNull();\n  expect(bookGeometry.copyWidth).toBeGreaterThan(540);\n  expect(bookGeometry.sourceAfterActions).toBe(true);\n  expect(bookGeometry.overflow).toBeLessThanOrEqual(1);",
+      "after": "  await expect(book.locator(\".book-action-secondary\")).toBeVisible();\n  await expect(book.locator(\".book-source-link\")).toHaveCount(0);\n\n  const bookGeometry = await book.evaluate((element) => {\n    const copy = element.querySelector(\":scope > div:last-child\");\n    const primaryActions = element.querySelector(\".book-actions-primary\");\n    const description = copy?.querySelector(\":scope > p\");\n    if (!copy || !primaryActions || !description) return null;\n    const copyBox = copy.getBoundingClientRect();\n    const actionBox = primaryActions.getBoundingClientRect();\n    const descriptionBox = description.getBoundingClientRect();\n    return {\n      copyWidth: copyBox.width,\n      actionsAfterDescription: actionBox.top >= descriptionBox.bottom - 1,\n      actionsFitCopy:\n        actionBox.left >= copyBox.left - 1 && actionBox.right <= copyBox.right + 1,\n      overflow: element.scrollWidth - element.clientWidth,\n    };\n  });\n  expect(bookGeometry).not.toBeNull();\n  expect(bookGeometry.copyWidth).toBeGreaterThan(540);\n  expect(bookGeometry.actionsAfterDescription).toBe(true);\n  expect(bookGeometry.actionsFitCopy).toBe(true);\n  expect(bookGeometry.overflow).toBeLessThanOrEqual(1);"
+    }
+  ],
+  "foundations": [
+    {
+      "path": "scripts/governance/header-library-owner-refinement-20260912.json",
+      "sha256Raw": "eb0df84d46bdded81f3e820fd7479ec3d8462a4920c6208348acda6900945cc4",
+      "sha256Lf": "eb0df84d46bdded81f3e820fd7479ec3d8462a4920c6208348acda6900945cc4",
+      "jsonSha256": "dfa2034d0eea799a0fd6b4cd1594bbdb231ce3b208b4ab61213916adb4ea9d8a"
+    },
+    {
+      "path": "scripts/governance/book-r49n-package-reviewed-20260912.json",
+      "sha256Raw": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3",
+      "sha256Lf": "09ba0a3762cc4a811b3a99c2e07f3e94f9401fb076247499edde5b8af6bc8db3",
+      "jsonSha256": "932f3b3d81d4f3db0fc901f9b31bf3719490afffd0b11549f87f094611f398e8"
+    },
+    {
+      "path": "scripts/governance/r10-forward-delta-20260926.json",
+      "sha256Raw": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "sha256Lf": "7a73d06682bed7327a9370f287808b652dc16691c039d699e789829c48984460",
+      "jsonSha256": "7f277e58d5e0a46f7bc12a87e606304e63d05cf8a9c48781331d151cbbafef69"
+    },
+    {
+      "path": "scripts/governance/next-security-followup-reviewed-20261002.json",
+      "sha256Raw": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "sha256Lf": "e38e56603f34a54f271ea30870c772829c3910335241f690e2bab65ee9365438",
+      "jsonSha256": "7cd5c87f83d924c33232b1cc495a35004a0a049989457a4e7ca8f7e4cd47d3bc"
+    },
+    {
+      "path": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+      "sha256Raw": "02f41ba0d6c1af41ff965f434e9f85d91c346af3b3996034002dce66f79f3748",
+      "sha256Lf": "02f41ba0d6c1af41ff965f434e9f85d91c346af3b3996034002dce66f79f3748",
+      "jsonSha256": "ecfffbda991969b7f7f86e54918c8982146e2d3508aaaccf23736a13c692749e"
+    },
+    {
+      "path": "scripts/governance/russian-calendar-expansion-reviewed-20261001.json",
+      "sha256Raw": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "sha256Lf": "91461d8240e4ce2142ae99e0239f42b63e6f121442dd3ff4a1765122ebfe68b4",
+      "jsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49"
+    }
+  ],
+  "scope": {
+    "removedAppLines": 15,
+    "addedAppLines": 0,
+    "bookOfMonthSourceDataChanged": false,
+    "newsSourceLinksChanged": false,
+    "coverCreditsChanged": false,
+    "authorContentChanged": false,
+    "oldAppSourceBaselinesChanged": false,
+    "browserContractChangedByOwningAgent": true
+  },
+  "readBoundary": "Before historical R10/calendar/Next checks, restore exactly the two App removal fragments, one reader integration and the affected browser contract through the common outer Next-builder reader. No older hash or negative assertion changes.",
+  "baselineEvidence": {
+    "app": {
+      "kind": "exact-Git-source",
+      "commitSha": "af4f0a4598c40144d7e62c706793a156bfe79d09",
+      "path": "src/App.tsx",
+      "sha256Lf": "334ab1dadf4260110db2a76a20ef1c755f95b12ed919d30ca6faf5800df9b3cb"
+    },
+    "preparedNextBuilderHelper": {
+      "kind": "prepared-reviewed-source-not-in-App-baseline-Git",
+      "path": "scripts/lib/reviewed-next-builder-followup.mjs",
+      "governingAttestation": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+      "governingAttestationJsonSha256": "ecfffbda991969b7f7f86e54918c8982146e2d3508aaaccf23736a13c692749e",
+      "sha256Lf": "adcb8349504a2757818a8a2c11a42ba6743887201e939301501525f412a73974",
+      "retainedSource": "import {createHash} from 'node:crypto';\nimport {readFileSync} from 'node:fs';\n\n// Additive local agent evidence; unchanged earlier authority and release gates.\nexport const nextBuilderFollowupAttestation=JSON.parse(readFileSync(\n new URL('../governance/next-builder-followup-reviewed-20261002.json',import.meta.url),'utf8'));\nexport const nextBuilderFollowupSha256=source=>createHash('sha256')\n .update(source.replace(/\\r\\n?/gu,'\\n')).digest('hex');\n\n/** Remove only exact builder-followup fragments; unrelated drift stays visible. */\nexport function projectReviewedNextBuilderFollowup(relativePath,source){\n let projected=source.replace(/\\r\\n?/gu,'\\n');\n const deltas=nextBuilderFollowupAttestation.projections.filter(delta=>delta.path===relativePath);\n if(!deltas.length)return projected;\n // Older calendar readers can have removed this builder boundary already.\n // Leave those bytes untouched for their unchanged whole-file/fragment locks.\n if(relativePath.startsWith('scripts/build-')&&!projected.includes('projectReviewedNextBuilderFollowup'))return projected;\n if(nextBuilderFollowupSha256(projected)===nextBuilderFollowupAttestation.sourceBaselines[relativePath])return projected;\n if(deltas.every(delta=>!projected.includes(delta.after)&&delta.before&&\n  [delta.before,...(delta.earlierBeforeVariants||[])].some(before=>projected.split(before).length===2)))return projected;\n for(const delta of deltas){\n  if(!delta.after||projected.split(delta.after).length!==2)\n   throw Error('Missing or duplicate reviewed Next builder delta: '+delta.id);\n  projected=projected.replace(delta.after,delta.before);\n }\n return projected;\n}\n",
+      "limitation": "This newly prepared helper did not exist at af4f0a; its predecessor bytes are retained here and are not claimed as Git bytes at that commit."
+    },
+    "browserContract": {
+      "kind": "exact-Git-source",
+      "commitSha": "af4f0a4598c40144d7e62c706793a156bfe79d09",
+      "path": "tests/e2e/public-doc-refinements.spec.mjs",
+      "sha256Lf": "e4e26140ecf5982b184b89d3b505d55d1abcbf9fe5707a47069ddbb9a6830144"
+    }
+  }
+}

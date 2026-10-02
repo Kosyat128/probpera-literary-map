@@ -1,0 +1,1589 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:04:29.554Z",
+  "scope": "Official organisation footer/contact location only; source countries do not identify event or author nationality.",
+  "checked": 68,
+  "confirmed": 43,
+  "results": [
+    {
+      "sourceId": "chicago-review-books",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://chireviewofbooks.com/",
+          "sha256": "aa7bbb19a3ba1c65c7d0defc6d3befbfb875211c21813cdf31e3520474f2f343",
+          "accessedAt": "2026-10-01T21:03:59.041Z",
+          "bytes": 178422
+        }
+      ]
+    },
+    {
+      "sourceId": "archipelago-books",
+      "status": "organisation_country",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://archipelagobooks.org/",
+        "organisation": "Archipelago Books",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Archipelago Books & Elsewhere Editions The Old American Can Factory 232 Third Street #A111 Brooklyn, NY 11215 [email protected] Illustrations created by artist Gracey Zhang ExploreAbout News Books Events Support My Account Latest Catalog ConnectSign",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "f087a1a4b3941314bd9a57ef284b06c57652fcdbe8047dabd8e0fe8ad57f66f0",
+        "accessedAt": "2026-10-01T21:03:58.984Z"
+      },
+      "requests": [
+        {
+          "url": "https://archipelagobooks.org/",
+          "sha256": "f087a1a4b3941314bd9a57ef284b06c57652fcdbe8047dabd8e0fe8ad57f66f0",
+          "accessedAt": "2026-10-01T21:03:58.984Z",
+          "bytes": 231254
+        }
+      ]
+    },
+    {
+      "sourceId": "acantilado",
+      "status": "organisation_country",
+      "countryCodes": [
+        "ES"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.acantilado.es/contacto/",
+        "organisation": "Acantilado",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Contacto Muntaner, 462 E-08006 Barcelona Tel.: (+34) 934 144 906 correo@acantilado.es En Acantilado no se aceptan ni valoran manuscritos no solicitados. Distribución Distribución Si lo desea",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "59bf8ff79cf3175fa4fc8d4e414ffacab4ccd18879b429251a967a999e0d41e0",
+        "accessedAt": "2026-10-01T21:03:59.184Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.acantilado.es/",
+          "sha256": "a09d3b2ff8d44bcd9babd8c68b3e8739deb3cb7f44a45c3b77363c5b5f7f9ce1",
+          "accessedAt": "2026-10-01T21:03:59.081Z",
+          "bytes": 198448
+        },
+        {
+          "url": "https://www.acantilado.es/contacto/",
+          "sha256": "59bf8ff79cf3175fa4fc8d4e414ffacab4ccd18879b429251a967a999e0d41e0",
+          "accessedAt": "2026-10-01T21:03:59.184Z",
+          "bytes": 110494
+        }
+      ]
+    },
+    {
+      "sourceId": "biblioasis",
+      "status": "organisation_country",
+      "countryCodes": [
+        "CA"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.biblioasis.com/contact/",
+        "organisation": "Biblioasis",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ContactYou are here: Home1 / Contact Biblioasis Bookstore is located at: 1520 Wyandotte Street East Windsor, ON N9A 3L2 Tel: 519-968-2206 Email: bookstore@biblioasis.com biblioasisbookshop.com Biblioasis Publishing (Office Only) is located at: 1686 Ottawa S",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "2e9126b980c2753cdeef2ef11e1a20ef85883244a9c6fe25099f4bdfd3f33756",
+        "accessedAt": "2026-10-01T21:04:02.681Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.biblioasis.com/",
+          "sha256": "f37694713a8e109993409a0eb3c49fa8d351647d145d3724ccefc91ba2ac45bd",
+          "accessedAt": "2026-10-01T21:03:59.839Z",
+          "bytes": 152189
+        },
+        {
+          "url": "https://www.biblioasis.com/contact/",
+          "sha256": "2e9126b980c2753cdeef2ef11e1a20ef85883244a9c6fe25099f4bdfd3f33756",
+          "accessedAt": "2026-10-01T21:04:02.681Z",
+          "bytes": 122661
+        }
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "status": "organisation_country",
+      "countryCodes": [
+        "GB"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://serpentstail.com/",
+        "organisation": "Serpent’s Tail",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "h x Basket 0 © 2026 Profile Books Limited Serpent's Tail, an imprint of Profile Books 29 Cloth Fair London EC1A 7JQ Email: [email protected] Phone: + 44 20 7841 6300 Registered in England & Wales under No. 3120147 VAT Number 674 9638 76 About Serpent’s Tai",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "0b49c55d8779957266ed9299b8f8076d32548d37d90f11eb06fdeeb9e8d7d683",
+        "accessedAt": "2026-10-01T21:03:59.348Z"
+      },
+      "requests": [
+        {
+          "url": "https://serpentstail.com/",
+          "sha256": "0b49c55d8779957266ed9299b8f8076d32548d37d90f11eb06fdeeb9e8d7d683",
+          "accessedAt": "2026-10-01T21:03:59.348Z",
+          "bytes": 306379
+        }
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://fitzcarraldoeditions.com/",
+          "sha256": "06f15286201a518e2bea34870ccb8218a3a9c124d5304887aa9d913ac9296332",
+          "accessedAt": "2026-10-01T21:03:59.321Z",
+          "bytes": 101083
+        }
+      ]
+    },
+    {
+      "sourceId": "virago",
+      "status": "organisation_country",
+      "countryCodes": [
+        "GB"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.virago.co.uk/imprint/lbbg/virago/page/about-virago/virago-company-information/",
+        "organisation": "Virago",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ollows: Little, Brown Book Group Limited Registered address: Carmelite House 50 Victoria Embankment LONDON EC4Y 0DZ United Kingdom Registration number: 2304585 VAT number: 205505305 Telephone Number: +44 (0)20 3122 7000 Email: info@littlebrown.co.uk Hachet",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "0bfa8e8216a60b5e3ae6d13fe843702ba8522a822c0ff35ad035e9c2bc0437b4",
+        "accessedAt": "2026-10-01T21:04:00.074Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.virago.co.uk/",
+          "sha256": "3025e2f01e99358360e73f63535c139e2f3fff54f98f6563b4b529f636c3727b",
+          "accessedAt": "2026-10-01T21:03:59.394Z",
+          "bytes": 260449
+        },
+        {
+          "url": "https://www.virago.co.uk/imprint/lbbg/virago/page/about-virago/virago-company-information/",
+          "sha256": "0bfa8e8216a60b5e3ae6d13fe843702ba8522a822c0ff35ad035e9c2bc0437b4",
+          "accessedAt": "2026-10-01T21:04:00.074Z",
+          "bytes": 159588
+        }
+      ]
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "status": "organisation_country",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.hachettebookgroup.com/",
+        "organisation": "Hachette Book Group",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Footer Hachette Book Group is a leading book publisher based in New York and a division of Hachette Livre, the third-largest publisher in the world. Social Media Facebook Twitter Instagram YouTube Tiktok Linkedin Pinterest",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "1b9606682370a30dc179b18610ff1163710171c07284dbf80d7a40b5931c031d",
+        "accessedAt": "2026-10-01T21:04:00.939Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.hachettebookgroup.com/",
+          "sha256": "1b9606682370a30dc179b18610ff1163710171c07284dbf80d7a40b5931c031d",
+          "accessedAt": "2026-10-01T21:04:00.939Z",
+          "bytes": 549926
+        }
+      ]
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "status": "organisation_country",
+      "countryCodes": [
+        "IN"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://harpercollins.co.in/",
+        "organisation": "HarperCollins India",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "rperCollins AustraliaSecurityPrivacy PolicyDisclaimerTerms of UseDigital PiracyFollow HarperCollins India:FacebookTwitterYouTubeLinkedInFollow HarperCollinsChildren’s Books:FacebookInstagramYouTube© 2025 ·HarperCollins· All rights reserved",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "d68fa506a0bcde3ef6d9a7b4ce2bbc3e1cc39a4c7c7b445ef3536efd1f1ccf22",
+        "accessedAt": "2026-10-01T21:04:02.783Z"
+      },
+      "requests": [
+        {
+          "url": "https://harpercollins.co.in/",
+          "sha256": "d68fa506a0bcde3ef6d9a7b4ce2bbc3e1cc39a4c7c7b445ef3536efd1f1ccf22",
+          "accessedAt": "2026-10-01T21:04:02.783Z",
+          "bytes": 194850
+        }
+      ]
+    },
+    {
+      "sourceId": "nyrb",
+      "status": "organisation_country",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.nyrb.com/",
+        "organisation": "New York Review Books",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "er, is now in theaters The film, based on Arthur Schnitzler's Late Fame (NYRB Classics) releases in New York and Los Angeles. Read more Quick links Search About Us Contact Us FAQ Privacy Policy Cookie Consent Terms of Service Wishlist You might also be inter",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "19ab5e5b0030be622edb66ff7b4417181395ba9c6ed9d2b9fd4df21669f28167",
+        "accessedAt": "2026-10-01T21:04:00.362Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.nyrb.com/",
+          "sha256": "19ab5e5b0030be622edb66ff7b4417181395ba9c6ed9d2b9fd4df21669f28167",
+          "accessedAt": "2026-10-01T21:04:00.362Z",
+          "bytes": 300256
+        }
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://coffeehousepress.org/",
+          "sha256": "6bd6fd39c083f43823b8cfcddda2fb904f352eb8257d8414ffdc3db785b2c49b",
+          "accessedAt": "2026-10-01T21:04:00.899Z",
+          "bytes": 599507
+        },
+        {
+          "url": "https://coffeehousepress.org/pages/contact",
+          "sha256": "447b98c7afb0cba06402d462084d6fbfcca9ab932467e17ad3e21f2e978708c9",
+          "accessedAt": "2026-10-01T21:04:01.236Z",
+          "bytes": 345892
+        }
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "status": "organisation_country",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.europaeditions.com/",
+        "organisation": "Europa Editions",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "us Contact us Our authors Latest titles Follow us © Europa Editions 27 Union Square West, Suite 302 New York, N.Y. 10003 | info@europaeditions.com | privacy | cookie | credits",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "1e2c75d718c4e94a02794a3140eed8d7e30675dde2137e6e109207e1902ee364",
+        "accessedAt": "2026-10-01T21:04:02.298Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.europaeditions.com/",
+          "sha256": "1e2c75d718c4e94a02794a3140eed8d7e30675dde2137e6e109207e1902ee364",
+          "accessedAt": "2026-10-01T21:04:02.298Z",
+          "bytes": 484713
+        }
+      ]
+    },
+    {
+      "sourceId": "saraband",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://saraband.net/",
+          "sha256": "bffb95554759517490e81f7bec84682ffbb41e9a719a2628f23713af9c1360ce",
+          "accessedAt": "2026-10-01T21:04:01.542Z",
+          "bytes": 272300
+        },
+        {
+          "url": "https://saraband.net/contact-us/",
+          "sha256": "935e5e6329d98c92b95c09dc6d5c2c5ac18a44525c14ded0cc15f63c0baed4ad",
+          "accessedAt": "2026-10-01T21:04:01.774Z",
+          "bytes": 249916
+        }
+      ]
+    },
+    {
+      "sourceId": "comma-press",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://commapress.co.uk/",
+          "sha256": "fbea9b6c231fc869d2110df8f4fefc21aa4b941e87b19f47119f961624c0d519",
+          "accessedAt": "2026-10-01T21:04:02.795Z",
+          "bytes": 55510
+        },
+        {
+          "url": "https://commapress.co.uk/contact",
+          "sha256": "2f6a52acb8f18f773aaf80549b75c84a989132b5040b0ec67698ddaacbb2dc8a",
+          "accessedAt": "2026-10-01T21:04:03.170Z",
+          "bytes": 30127
+        }
+      ]
+    },
+    {
+      "sourceId": "editions-verdier",
+      "status": "organisation_country",
+      "countryCodes": [
+        "FR"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://editions-verdier.fr/informations-generales/",
+        "organisation": "Editions Verdier",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "er (1945-2009), Colette Olive et Michèle Planel. Contacts Siège social : 11220 LagrassePermanence à Paris : 82, boulevard de Ménilmontant \u2013 75020 Paris(33) 01 43 79 20 45contact[at]editions-verdier.fr GérancePierre Audoux, Mathilde Azzopardi, Émilie Thoma",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "3d64b08f564f25678b3d1abe44365b13fd94093c6998da8f3e0e08a1a1189620",
+        "accessedAt": "2026-10-01T21:04:03.411Z"
+      },
+      "requests": [
+        {
+          "url": "https://editions-verdier.fr/",
+          "sha256": "d23234935b8367fcda4bc88e2b76ca76fd981095a3fe3833beb08ebf57ae97c3",
+          "accessedAt": "2026-10-01T21:04:03.038Z",
+          "bytes": 102884
+        },
+        {
+          "url": "https://editions-verdier.fr/informations-generales/",
+          "sha256": "3d64b08f564f25678b3d1abe44365b13fd94093c6998da8f3e0e08a1a1189620",
+          "accessedAt": "2026-10-01T21:04:03.411Z",
+          "bytes": 45594
+        }
+      ]
+    },
+    {
+      "sourceId": "editions-metailie",
+      "status": "organisation_country",
+      "countryCodes": [
+        "FR"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://editions-metailie.com/",
+        "organisation": "Editions Métailié",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ombie Ecosse Pologne Mozambique Amérique Latine Allemagne Belgique Brésil Nicaragua Angleterre Cuba France Espagne Italie Chili Irlande Portugal Pérou Angola Uruguay Éditions Métailié 20 rue des Grands Augustins 75006 PARIS 01 56 81 02 45 Suivez-nous sur ©",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "aa262648ccde352befafa52b3ce992df1e1e4e7505274e8d1229966fea1b61eb",
+        "accessedAt": "2026-10-01T21:04:03.156Z"
+      },
+      "requests": [
+        {
+          "url": "https://editions-metailie.com/",
+          "sha256": "aa262648ccde352befafa52b3ce992df1e1e4e7505274e8d1229966fea1b61eb",
+          "accessedAt": "2026-10-01T21:04:03.156Z",
+          "bytes": 76993
+        }
+      ]
+    },
+    {
+      "sourceId": "quidam-editeur",
+      "status": "organisation_country",
+      "countryCodes": [
+        "FR"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.quidamediteur.com/contact",
+        "organisation": "Quidam Editeur",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "150 13631 Arles cedex. Tél. : +33 (0)4 90 49 58 05 Comptoir parisien : 13, place André-Masson 75013 Paris. Tél.: 01 53 80 02 23. Diffusion Suisse : Servidis : Chemin des Chalets 7 1279 Chavannes-de-Bogis. Responsable commerciale : Léa Lamon: llamon@servid",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "3d87eda9173e23b80dd1fff9911e62ef7fc944e779ecbf27a9b51ff77da38420",
+        "accessedAt": "2026-10-01T21:04:03.755Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.quidamediteur.com/",
+          "sha256": "2e10826a9e3419cc3437655ca68a19de679e6311957d9adf8363106035777ab8",
+          "accessedAt": "2026-10-01T21:04:03.664Z",
+          "bytes": 32303
+        },
+        {
+          "url": "https://www.quidamediteur.com/contact",
+          "sha256": "3d87eda9173e23b80dd1fff9911e62ef7fc944e779ecbf27a9b51ff77da38420",
+          "accessedAt": "2026-10-01T21:04:03.755Z",
+          "bytes": 10575
+        }
+      ]
+    },
+    {
+      "sourceId": "anagrama",
+      "status": "organisation_country",
+      "countryCodes": [
+        "ES"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.anagrama-ed.es/",
+        "organisation": "Anagrama",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Pau Claris, 172. 08037 Barcelona. Editorial fundada por Jorge Herralde Grau en 1969. En nuestro catálogo figuran más de 4.500 títulos, donde se pueden encontrar muchos de los autores",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "d91a3c880422ed2bad5d025532db6e2b9ec1c28abbde947e47372e0d93496c8e",
+        "accessedAt": "2026-10-01T21:04:03.677Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.anagrama-ed.es/",
+          "sha256": "d91a3c880422ed2bad5d025532db6e2b9ec1c28abbde947e47372e0d93496c8e",
+          "accessedAt": "2026-10-01T21:04:03.677Z",
+          "bytes": 97219
+        }
+      ]
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "status": "organisation_country",
+      "countryCodes": [
+        "ES"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://librosdelasteroide.com/",
+        "organisation": "Libros del Asteroide",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Contacto C/ Santaló 11, 3º 1ª 08021 Barcelona, España +34 93 280 25 24 Contexto de editores Libros del Asteroide es miembro de Contexto de Editores Más información Distribución Consulta aquí nues",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "4c6532058d9d9ff78bbde2f7507e796b6efb875c9a5b759e8e252ac7be0a4e80",
+        "accessedAt": "2026-10-01T21:04:04.178Z"
+      },
+      "requests": [
+        {
+          "url": "https://librosdelasteroide.com/",
+          "sha256": "4c6532058d9d9ff78bbde2f7507e796b6efb875c9a5b759e8e252ac7be0a4e80",
+          "accessedAt": "2026-10-01T21:04:04.178Z",
+          "bytes": 138876
+        }
+      ]
+    },
+    {
+      "sourceId": "impedimenta",
+      "status": "organisation_country",
+      "countryCodes": [
+        "ES"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://impedimenta.es/",
+        "organisation": "Impedimenta",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": " electrónico He leído y acepto la Política de privacidad REGISTRO Juan Álvarez Mendizábal, 27 28008 Madrid, España +34 915 401 988edicion@impedimenta.es Nosotros Aviso legal y Privacidad Política de Cookies Catálogo Distribuidores Foreign rights SeguirSegu",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "46481ba3e4aabefe3504e413444184d04478bc63b83b638f51da31332d5e0cda",
+        "accessedAt": "2026-10-01T21:04:04.855Z"
+      },
+      "requests": [
+        {
+          "url": "https://impedimenta.es/",
+          "sha256": "46481ba3e4aabefe3504e413444184d04478bc63b83b638f51da31332d5e0cda",
+          "accessedAt": "2026-10-01T21:04:04.855Z",
+          "bytes": 323276
+        }
+      ]
+    },
+    {
+      "sourceId": "nordica-libros",
+      "status": "organisation_country",
+      "countryCodes": [
+        "ES"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://nordicalibros.com/contacto/",
+        "organisation": "Nórdica Libros",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ares a los anteriormente contratados por el destinatario. Dirección Doctor Blanco Soler, 26. 28054. Madrid Teléfono +34 917 055 057 Email info@nordicalibros.com",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "6b805be86d2efda94999cfacf2b7f8e6b960455d5ee94a87422ada5298f4932d",
+        "accessedAt": "2026-10-01T21:04:06.623Z"
+      },
+      "requests": [
+        {
+          "url": "https://nordicalibros.com/",
+          "sha256": "310907379b8d03ca48b76659283819689d16a7e893bf0eba17254bca58369210",
+          "accessedAt": "2026-10-01T21:04:05.381Z",
+          "bytes": 210866
+        },
+        {
+          "url": "https://nordicalibros.com/contacto/",
+          "sha256": "6b805be86d2efda94999cfacf2b7f8e6b960455d5ee94a87422ada5298f4932d",
+          "accessedAt": "2026-10-01T21:04:06.623Z",
+          "bytes": 168270
+        }
+      ]
+    },
+    {
+      "sourceId": "aufbau",
+      "status": "organisation_country",
+      "countryCodes": [
+        "DE"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.aufbau-verlage.de/",
+        "organisation": "Aufbau",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "*Alle Preisangaben in Euro für Deutschland inkl. gesetzl. Mehrwertsteuer. 1Wir versenden versandkostenfrei innerhalb Deutschlands. Für weitere Versandkosten und Liefergebiete, klicken Sie bitt",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "efa379dbb0ae6aaf615b0214a93c5755a4ebe8118858e17bd27d62964bea96d7",
+        "accessedAt": "2026-10-01T21:04:04.058Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.aufbau-verlage.de/",
+          "sha256": "efa379dbb0ae6aaf615b0214a93c5755a4ebe8118858e17bd27d62964bea96d7",
+          "accessedAt": "2026-10-01T21:04:04.058Z",
+          "bytes": 305015
+        }
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "status": "organisation_country",
+      "countryCodes": [
+        "DE"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.klett-cotta.de/service/kontakt-c-105",
+        "organisation": "Klett-Cotta",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Kontakt - Klett-Cotta-Verlag (J. G. Cotta’sche Buchhandlung Nachfolger GmbH)Rotebühlstraße 77 70178 Stuttgart Telefon 0711/6672-0 Fax: 0711/6672-2030 info@klett-cotta.de Abteilungen, Informationen und Ansprechpartner Für Leser:innen E-Mail: info@klett-cotta.d",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "9b2d856fc164cee94f4dcc1b6e15f0e70d4386617bdbe908e7bdd64092f19996",
+        "accessedAt": "2026-10-01T21:04:04.814Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.klett-cotta.de/",
+          "sha256": "4b17e3fee180f621aa757c33fd4d887ede867814af0d1e83a7595e4e5c39453b",
+          "accessedAt": "2026-10-01T21:04:04.637Z",
+          "bytes": 436220
+        },
+        {
+          "url": "https://www.klett-cotta.de/service/kontakt-c-105",
+          "sha256": "9b2d856fc164cee94f4dcc1b6e15f0e70d4386617bdbe908e7bdd64092f19996",
+          "accessedAt": "2026-10-01T21:04:04.814Z",
+          "bytes": 158532
+        }
+      ]
+    },
+    {
+      "sourceId": "minimum-fax",
+      "status": "organisation_country",
+      "countryCodes": [
+        "IT"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.minimumfax.com/",
+        "organisation": "Minimum Fax",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Denominazione sociale: MINIMUM FAX S.R.L. Sede legale: ROMA (RM) VIALE DELLA BELLA VILLA, 1 (ALTEZZA VIA CASILINA 939) - CAP 00172 Numero e sede di iscrizione al registro imprese: RM-1997-155274 DEL 25/02/1997",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "8f3cb102688b53a8f40adcc565773dd3d32f2e7eb6fab7e1ad426a1bad45854e",
+        "accessedAt": "2026-10-01T21:04:05.185Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.minimumfax.com/",
+          "sha256": "8f3cb102688b53a8f40adcc565773dd3d32f2e7eb6fab7e1ad426a1bad45854e",
+          "accessedAt": "2026-10-01T21:04:05.185Z",
+          "bytes": 57905
+        }
+      ]
+    },
+    {
+      "sourceId": "iperborea",
+      "status": "organisation_country",
+      "countryCodes": [
+        "IT"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://iperborea.com/",
+        "organisation": "Iperborea",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "IPERBOREA SRL Via Gian Battista Vico, 16/A 20123 Milano - P.IVA IT08968860158 Cap. Soc. € 46.000,00 iperborea@pec.it Privacy Policy Cookie Policy Sitemap Chi siamo Paesi Titoli Autori News Eventi Contatti ",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "51beab132d83eaeb79f6fd4c0f079a3c724b83479caed301049bf951513ab159",
+        "accessedAt": "2026-10-01T21:04:06.240Z"
+      },
+      "requests": [
+        {
+          "url": "https://iperborea.com/",
+          "sha256": "51beab132d83eaeb79f6fd4c0f079a3c724b83479caed301049bf951513ab159",
+          "accessedAt": "2026-10-01T21:04:06.240Z",
+          "bytes": 138559
+        }
+      ]
+    },
+    {
+      "sourceId": "nottetempo",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.edizioninottetempo.it/",
+          "sha256": "0b98538a81904996218b3a5d749f6b55735c9fe4a1161cb49dc4aada0e235181",
+          "accessedAt": "2026-10-01T21:04:09.299Z",
+          "bytes": 258537
+        },
+        {
+          "url": "https://www.edizioninottetempo.it/it/contatti",
+          "sha256": "b808be5e20089bef2e287f0ec9718a89c7280be9a89bfa430f9af119d6bceaa5",
+          "accessedAt": "2026-10-01T21:04:10.254Z",
+          "bytes": 185318
+        }
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "status": "organisation_country",
+      "countryCodes": [
+        "CA"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://bookhugpress.ca/contact-bookhugpress/",
+        "organisation": "Book*hug Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Contact Us and Masthead Contact Information Address Book*hug Press 401 Richmond St. West Suite 251 Toronto, ON M5V 3A8, Canada Masthead Jay Millar, Co-publisher Hazel Millar, Co-publisher Reid Millar, Sales and Marketing Manager Britt Landry, Managing Edit",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "31845775946e6ad65ea25b934302507e817b36fd494338b6830f9f5907fe2fa0",
+        "accessedAt": "2026-10-01T21:04:14.059Z"
+      },
+      "requests": [
+        {
+          "url": "https://bookhugpress.ca/",
+          "sha256": "42c439dedf4889f60dfe321435996775ef2a149a52abefc8426222e23ae0f3c9",
+          "accessedAt": "2026-10-01T21:04:10.951Z",
+          "bytes": 424296
+        },
+        {
+          "url": "https://bookhugpress.ca/contact-bookhugpress/",
+          "sha256": "31845775946e6ad65ea25b934302507e817b36fd494338b6830f9f5907fe2fa0",
+          "accessedAt": "2026-10-01T21:04:14.059Z",
+          "bytes": 221450
+        }
+      ]
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "status": "organisation_country",
+      "countryCodes": [
+        "CA"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://arsenalpulp.com/About-Arsenal-Pulp-Press/Contact",
+        "organisation": "Arsenal Pulp Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Arsenal Pulp Press #202 - 211 East Georgia Street Vancouver, BC, V6A 1Z6Canada phone 604.687.4233fax 604.687.4283Follow us on FacebookFollow us on Twitter: @ArsenalpulpFollow us on Instagram: @arsenalpulp Gene",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "2cb9f01ce6dcd18e04b6ded0c9e5e295e6436904f57fcb7f35896070490c7c97",
+        "accessedAt": "2026-10-01T21:04:07.347Z"
+      },
+      "requests": [
+        {
+          "url": "https://arsenalpulp.com/",
+          "sha256": "20df05fda32aefe52c907e8f4fe6aabcfa3555a85c4bf80f5a133a0005db5317",
+          "accessedAt": "2026-10-01T21:04:07.138Z",
+          "bytes": 64155
+        },
+        {
+          "url": "https://arsenalpulp.com/About-Arsenal-Pulp-Press/Contact",
+          "sha256": "2cb9f01ce6dcd18e04b6ded0c9e5e295e6436904f57fcb7f35896070490c7c97",
+          "accessedAt": "2026-10-01T21:04:07.347Z",
+          "bytes": 26305
+        }
+      ]
+    },
+    {
+      "sourceId": "scribe-publications",
+      "status": "organisation_country",
+      "countryCodes": [
+        "AU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://scribepublications.com.au/contact",
+        "organisation": "Scribe Publications",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ContactScribe Publications18\u201320 Edward Street Brunswick 3056 Victoria, Australia Tel: ‭+61 3 9388 8780‬info@scribepub.com.auVisit Scribe UK or USScribe UKScribe USScribe PublicationsIf you’re looking for information on how to get ",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "06a6dfcea41fa5ad5d064b09496ef3a8dbe8691dfe868a64399cd828e8bced7d",
+        "accessedAt": "2026-10-01T21:04:07.656Z"
+      },
+      "requests": [
+        {
+          "url": "https://scribepublications.com.au/",
+          "sha256": "7d5439267846a6a57ff5d6a0048ce101c300ab36f8a06e24e269b89dfa0d06c2",
+          "accessedAt": "2026-10-01T21:04:07.225Z",
+          "bytes": 590688
+        },
+        {
+          "url": "https://scribepublications.com.au/contact",
+          "sha256": "06a6dfcea41fa5ad5d064b09496ef3a8dbe8691dfe868a64399cd828e8bced7d",
+          "accessedAt": "2026-10-01T21:04:07.656Z",
+          "bytes": 466204
+        }
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "status": "organisation_country",
+      "countryCodes": [
+        "AU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.uqp.com.au/",
+        "organisation": "University of Queensland Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "n back to top Phone: +61 7 3365 7244 Fax: +61 7 3365 7579 Email: reception@uqp.com.au University of Queensland Press PO Box 6042 St Lucia, QLD 4067 Australia © The University of Queensland 2026 Privacy & Terms of use website by Inkahoots Acknowledgement of Tra",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "7dbc40ee7fbf001db01b40fdde25d8eeb66a5e3c4871eeb8b186ec848dcb2e50",
+        "accessedAt": "2026-10-01T21:04:11.558Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.uqp.com.au/",
+          "sha256": "7dbc40ee7fbf001db01b40fdde25d8eeb66a5e3c4871eeb8b186ec848dcb2e50",
+          "accessedAt": "2026-10-01T21:04:11.558Z",
+          "bytes": 510601
+        }
+      ]
+    },
+    {
+      "sourceId": "fremantle-press",
+      "status": "organisation_country",
+      "countryCodes": [
+        "AU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://fremantlepress.com.au/",
+        "organisation": "Fremantle Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "rd Hungerford Award Podcasts Tips for writers For readers Books Authors News Events Author bookings Fremantle Press is proudly supported by the WA Government Fremantle Press respectfully acknowledges the Wadjak people of the Noongar nation as the traditional ",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "e522df5d6f4bd871e25de07e3e57f5a7270fddd69b98f43c9c865fe9669189c6",
+        "accessedAt": "2026-10-01T21:04:13.425Z"
+      },
+      "requests": [
+        {
+          "url": "https://fremantlepress.com.au/",
+          "sha256": "e522df5d6f4bd871e25de07e3e57f5a7270fddd69b98f43c9c865fe9669189c6",
+          "accessedAt": "2026-10-01T21:04:13.425Z",
+          "bytes": 329921
+        }
+      ]
+    },
+    {
+      "sourceId": "spinifex-press",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.spinifexpress.com.au/",
+          "sha256": "95a56339039d13a1ec8d25a8f6edc4414ee3a30851f5129b1779afb56f55921d",
+          "accessedAt": "2026-10-01T21:04:10.986Z",
+          "bytes": 710878
+        }
+      ]
+    },
+    {
+      "sourceId": "czechlit",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.czechlit.cz/en/",
+          "sha256": "89830081330a8e920c83dcacebf109078ce39d9b27b20ab224effbd9f91dda70",
+          "accessedAt": "2026-10-01T21:04:11.810Z",
+          "bytes": 56492
+        }
+      ]
+    },
+    {
+      "sourceId": "wsoy",
+      "status": "organisation_country",
+      "countryCodes": [
+        "FI"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.wsoy.fi/",
+        "organisation": "WSOY",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Käyntiosoite Lönnrotinkatu 18 A00120 Helsinki Postiosoite PL 125900101 Helsinki Puhelinvaihde 010 5060 200 Tietosuoja ja rekisteriselosteEvästeetBriefly in English Lönnrotinkatu 18 A00120 Helsink",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31",
+        "accessedAt": "2026-10-01T21:04:11.874Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.wsoy.fi/",
+          "sha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31",
+          "accessedAt": "2026-10-01T21:04:11.874Z",
+          "bytes": 116390
+        }
+      ]
+    },
+    {
+      "sourceId": "ordfront",
+      "status": "organisation_country",
+      "countryCodes": [
+        "SE"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://ordfrontforlag.se/",
+        "organisation": "Ordfront",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Genvägar Press Manus Vi som jobbar här Om oss Kontakta oss Besöksadress: Stortorget 1 111 29 Stockholm Fakturaadress: Ordfront förlag c/o Förlagsekonomi Skönviksvägen 238 122 42 Enskede faktura.5567980957@forlagsekonomi.se Följ oss FacebookInstagramTwi",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "1a2e1f2bc7b75380d557b08fca1a794d0cf27a20111c70d2ec39044ce25531c7",
+        "accessedAt": "2026-10-01T21:04:12.091Z"
+      },
+      "requests": [
+        {
+          "url": "https://ordfrontforlag.se/",
+          "sha256": "1a2e1f2bc7b75380d557b08fca1a794d0cf27a20111c70d2ec39044ce25531c7",
+          "accessedAt": "2026-10-01T21:04:12.091Z",
+          "bytes": 143992
+        }
+      ]
+    },
+    {
+      "sourceId": "ikaros",
+      "status": "organisation_country",
+      "countryCodes": [
+        "GR"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://ikarosbooks.gr/el/contact/",
+        "organisation": "Ikaros",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "άθεσή σας για την καλύτερη δυνατή εξυπηρέτηση. Βιβλιοπωλείο, Παραγγελίες Βουλής 4, Σύνταγμα 105 62, Αθήνα Τηλ: 210 3225152 fax: 211 2687003 Email: orders@ikarosbooks.gr Εκδόσεις, Λογιστήριο, Ατελιέ Βουλής 35, Σύνταγμα 105 57, Αθήνα Τηλ: 216 7005964 Email:",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "971bcba3a5150da6dba9b1f49063e253cfcfe98a65bc2899746fac79c0bf35bf",
+        "accessedAt": "2026-10-01T21:04:13.065Z"
+      },
+      "requests": [
+        {
+          "url": "https://ikarosbooks.gr/el/",
+          "sha256": "24f09d01224629e330eb3d04647328250c1d240318c652cd77829f31cf6880c5",
+          "accessedAt": "2026-10-01T21:04:12.881Z",
+          "bytes": 596332
+        },
+        {
+          "url": "https://ikarosbooks.gr/el/contact/",
+          "sha256": "971bcba3a5150da6dba9b1f49063e253cfcfe98a65bc2899746fac79c0bf35bf",
+          "accessedAt": "2026-10-01T21:04:13.065Z",
+          "bytes": 111220
+        }
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "status": "organisation_country",
+      "countryCodes": [
+        "PH"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://adarna.com.ph/",
+        "organisation": "Adarna House",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "babasang Filipino. Visit us109 Scout Fernandez corner Scout Torillo Streets, Barangay Sacred Heart, Quezon City, 1103 Open hoursMon - Fri · 8:00 AM - 5:00 PM Get in touch kaibigan@adarna.com.ph © 2026 Adarna House, Inc. All rights reserved. PayPal",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "c97a2289217e966cc296687cdc83ff2f39f47fe70e3a960b03ea2d78dc8e598a",
+        "accessedAt": "2026-10-01T21:04:12.559Z"
+      },
+      "requests": [
+        {
+          "url": "https://adarna.com.ph/",
+          "sha256": "c97a2289217e966cc296687cdc83ff2f39f47fe70e3a960b03ea2d78dc8e598a",
+          "accessedAt": "2026-10-01T21:04:12.559Z",
+          "bytes": 127985
+        }
+      ]
+    },
+    {
+      "sourceId": "women-prize",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://womensprize.com/",
+          "sha256": "1b14d1a78199fac3e8b821e0971dde4930775e6738cfcb65ea20f8167af8f867",
+          "accessedAt": "2026-10-01T21:04:12.817Z",
+          "bytes": 186271
+        }
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.thebookseller.com/news",
+          "sha256": "d343578e2f7c027726bab1b9aab0df714d84b5d965609117125ae41aee0d95a5",
+          "accessedAt": "2026-10-01T21:04:13.685Z",
+          "bytes": 248879
+        },
+        {
+          "url": "https://www.thebookseller.com/contact-us/contact-us?redirected=1",
+          "sha256": "18a9d8bed9853581b32dccb128dcd3b5c9f79542bec3ad571d49e52c0b727d46",
+          "accessedAt": "2026-10-01T21:04:14.306Z",
+          "bytes": 80298
+        }
+      ]
+    },
+    {
+      "sourceId": "bookbrunch",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.bookbrunch.co.uk/",
+          "sha256": "1d683eaa664905904df3168ff073f323bbb374cbcb6970dccc49f60715a68165",
+          "accessedAt": "2026-10-01T21:04:14.033Z",
+          "bytes": 76280
+        },
+        {
+          "url": "https://www.bookbrunch.co.uk/page/contact/",
+          "sha256": "c94cb5482106a833eeabf84c77eeb9ab7d00c88252c37990c071fca3f23fdb9b",
+          "accessedAt": "2026-10-01T21:04:14.604Z",
+          "bytes": 44917
+        }
+      ]
+    },
+    {
+      "sourceId": "big-book-award",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://bigbook.ru/",
+          "sha256": "2e21ddcf0428c16a25ed9fb933b3bee65225d473e9fcd3fb7ed986c67e7c8c5c",
+          "accessedAt": "2026-10-01T21:04:14.380Z",
+          "bytes": 202120
+        }
+      ]
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "status": "organisation_country",
+      "countryCodes": [
+        "RU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.yppremia.ru/contacts",
+        "organisation": "Премия Ясная Поляна",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ращаться к координатору литературной премии «Ясная Поляна»: E-mail yppremia@yandex.ru адрес 119034, Россия, Москва, ул. Льва Толстого, д. 21 Музей-усадьба Л.Н. Толстого «Хамовники» (с пометкой «Литературная премия «Ясная Поляна») подписатьсяна нашу рассылк",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "2ba681b79ccbb809a7d46add53a838f1f8356e2654a7c23b93c1719c1c261404",
+        "accessedAt": "2026-10-01T21:04:14.542Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.yppremia.ru/",
+          "sha256": "859a924bd619cdd96c6163cc8d8a9824b9cc554e3864026c680c86362b6d1515",
+          "accessedAt": "2026-10-01T21:04:14.432Z",
+          "bytes": 189824
+        },
+        {
+          "url": "https://www.yppremia.ru/contacts",
+          "sha256": "2ba681b79ccbb809a7d46add53a838f1f8356e2654a7c23b93c1719c1c261404",
+          "accessedAt": "2026-10-01T21:04:14.542Z",
+          "bytes": 22341
+        }
+      ]
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "status": "organisation_country",
+      "countryCodes": [
+        "RU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://voplit.ru/about/contacts/",
+        "organisation": "Вопросы литературы",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "вости Юр. информация Контакты Адрес и время работы Юридический и почтовый адрес редакции:125375, г. Москва, Большой Гнездниковский пер., дом 10. Редакция работает с понедельника по пятницу с 10 до 20 часов; дни приема: понедельник, среда и пятница с 10 до ",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "7882772630b6989fcf03785c7fd21a7d3227ba8187599cb92f5d7d43c1b7d91c",
+        "accessedAt": "2026-10-01T21:04:14.707Z"
+      },
+      "requests": [
+        {
+          "url": "https://voplit.ru/",
+          "sha256": "29a13ccfa748ac7ec480a822fd9896621939eef16a6ddb1eafa4c0a2bf4bb72c",
+          "accessedAt": "2026-10-01T21:04:14.627Z",
+          "bytes": 150197
+        },
+        {
+          "url": "https://voplit.ru/about/contacts/",
+          "sha256": "7882772630b6989fcf03785c7fd21a7d3227ba8187599cb92f5d7d43c1b7d91c",
+          "accessedAt": "2026-10-01T21:04:14.707Z",
+          "bytes": 65548
+        }
+      ]
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://dukeupress.wordpress.com/",
+          "sha256": "340903f36eb2318d45b5d294a74bf53d65d5b127e36aa9af062c943f3d8badcb",
+          "accessedAt": "2026-10-01T21:04:14.853Z",
+          "bytes": 310598
+        }
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "status": "organisation_country",
+      "countryCodes": [
+        "GB"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://cambridgeblog.org/",
+        "organisation": "Cambridge University Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "About the Blog Terms of Use Contact Us Privacy Policy © Cambridge University Press",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "289330311c1b90c87938cb88d194a23d25743b619d75de82f2c9b8ce3810bb87",
+        "accessedAt": "2026-10-01T21:04:15.109Z"
+      },
+      "requests": [
+        {
+          "url": "https://cambridgeblog.org/",
+          "sha256": "289330311c1b90c87938cb88d194a23d25743b619d75de82f2c9b8ce3810bb87",
+          "accessedAt": "2026-10-01T21:04:15.109Z",
+          "bytes": 109068
+        }
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://liverpooluniversitypress.blog/",
+          "sha256": "87df4a971a0ee4d7dec9419a3042f4fd50f2ac7edb46b9d6f1337248305a2dbf",
+          "accessedAt": "2026-10-01T21:04:14.875Z",
+          "bytes": 106356
+        }
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://uncpressblog.com/",
+          "sha256": "a455cd73e6b3271c1de4262e070b90f3127a122070d860d9ca8617e038fba4ad",
+          "accessedAt": "2026-10-01T21:04:15.820Z",
+          "bytes": 263714
+        }
+      ]
+    },
+    {
+      "sourceId": "syracuse-press",
+      "status": "organisation_country",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://press.syr.edu/",
+        "organisation": "Syracuse University Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "X Facebook YouTube LinkedIn Instagram Bluesky Syracuse University Press 621 Skytop Road, Suite 110 map this locationGoogle map location Syracuse, New York 13244-5290 supress@syr.edu For book orders, conta",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "551109115475a34cee415e15d733adb23de86c57008e6e18c914eb2e05c82b83",
+        "accessedAt": "2026-10-01T21:04:16.229Z"
+      },
+      "requests": [
+        {
+          "url": "https://press.syr.edu/",
+          "sha256": "551109115475a34cee415e15d733adb23de86c57008e6e18c914eb2e05c82b83",
+          "accessedAt": "2026-10-01T21:04:16.229Z",
+          "bytes": 187166
+        }
+      ]
+    },
+    {
+      "sourceId": "virginia-press",
+      "status": "organisation_country",
+      "countryCodes": [
+        "US"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.upress.virginia.edu/",
+        "organisation": "University of Virginia Press",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "PressCareer OpportunitiesWalker Cowen Memorial PrizePrivacy PolicyContact UsP.O. Box 400318 (Postal)Charlottesville, VA 22904-4318210 Sprigg Lane (Courier)Charlottesville, VA 22903-2417434 924-3468 (main)1-800-831-3406 (toll-free)434 982-2655 (fax)General Inquiries",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321",
+        "accessedAt": "2026-10-01T21:04:15.804Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.upress.virginia.edu/",
+          "sha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321",
+          "accessedAt": "2026-10-01T21:04:15.804Z",
+          "bytes": 52117
+        }
+      ]
+    },
+    {
+      "sourceId": "toronto-press",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://utorontopress.com/",
+          "sha256": "c534e4ac39e65d0c2c539743f1ce686791ca2da19a92836ec470b96ceadfc126",
+          "accessedAt": "2026-10-01T21:04:15.343Z",
+          "bytes": 99492
+        }
+      ]
+    },
+    {
+      "sourceId": "world-literature-today",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://worldliteraturetoday.org/",
+          "sha256": "131e36fba4d5c2a5ae09d9319a3b517af0b7f2aec67d7d87aa70f12b01c4ec93",
+          "accessedAt": "2026-10-01T21:04:15.937Z",
+          "bytes": 95775
+        },
+        {
+          "url": "https://worldliteraturetoday.org/contact",
+          "sha256": "7567a41678245c0f29144d08f8e43469c0f9346922a2eaf359d2d87bc46a48aa",
+          "accessedAt": "2026-10-01T21:04:16.216Z",
+          "bytes": 42595
+        }
+      ]
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "status": "organisation_country",
+      "countryCodes": [
+        "GB"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://prototypepublishing.co.uk/about/contact/",
+        "organisation": "Prototype",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "ge, otherwise, you can find us here: Email: admin[at]prototypepublishing.co.uk Post: 71 Oriel Road, London E9 5SG, UK Contact form Your Name (we need this) Your Email (we need this too) What are you contacting us about? Your Message <div class=\"grecaptcha-",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "66667636c1a399f374a420338975eecb44339df87313f54534d1158eddba07dd",
+        "accessedAt": "2026-10-01T21:04:17.202Z"
+      },
+      "requests": [
+        {
+          "url": "https://prototypepublishing.co.uk/",
+          "sha256": "2101f9d03df65d6d68bba93eaf6d70fbc797e06b172912a2d0ff42d110cef625",
+          "accessedAt": "2026-10-01T21:04:16.647Z",
+          "bytes": 167642
+        },
+        {
+          "url": "https://prototypepublishing.co.uk/about/contact/",
+          "sha256": "66667636c1a399f374a420338975eecb44339df87313f54534d1158eddba07dd",
+          "accessedAt": "2026-10-01T21:04:17.202Z",
+          "bytes": 118989
+        }
+      ]
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.guernicamag.com/",
+          "sha256": "3315a11735f184457a6e2390a98d9f931b2ae9f6ab875f5b39036ec98e88bf51",
+          "accessedAt": "2026-10-01T21:04:16.313Z",
+          "bytes": 131566
+        },
+        {
+          "url": "https://www.guernicamag.com/about/contact/",
+          "sha256": "c5cdd451aeca3d57319d14004d675ffb6303d2f3cd25f6c6b6250da476876f5c",
+          "accessedAt": "2026-10-01T21:04:16.815Z",
+          "bytes": 89172
+        }
+      ]
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://clereviewofbooks.com/",
+          "sha256": "f094e2748c8fe250b3f8b7cacecb37f8b6faaaac4fbd0bfbc883e9f182c5904b",
+          "accessedAt": "2026-10-01T21:04:19.107Z",
+          "bytes": 203384
+        }
+      ]
+    },
+    {
+      "sourceId": "public-books",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.publicbooks.org/",
+          "sha256": "a71755b8615608a46cd6373c7b5eb39956267c0c3fd0a6fe2832f83558ed20e9",
+          "accessedAt": "2026-10-01T21:04:16.980Z",
+          "bytes": 144633
+        },
+        {
+          "url": "https://www.publicbooks.org/contact/",
+          "sha256": "a3e5138aba0476e933df45dbb17359093b42c87f7728f438d929306c3976a9ea",
+          "accessedAt": "2026-10-01T21:04:17.137Z",
+          "bytes": 69811
+        }
+      ]
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "status": "organisation_country",
+      "countryCodes": [
+        "MX"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://letraslibres.com/",
+        "organisation": "Letras Libres",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "oesía Ficción ENSAYOS Historia Ideas Literatura AUDIO Y VIDEO Videos Podcasts REVISTA Número actual México Número actual España Destacados MÁS LL Acceso Suscribirme Quienes Somos Nuestros Autores Contacto © 2021 Letras Libres | Términos y Condiciones | Pol",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "f1cc728825f049c7db9e15201ba9516817b5a37edc73460add8dbea18d21b482",
+        "accessedAt": "2026-10-01T21:04:20.326Z"
+      },
+      "requests": [
+        {
+          "url": "https://letraslibres.com/",
+          "sha256": "f1cc728825f049c7db9e15201ba9516817b5a37edc73460add8dbea18d21b482",
+          "accessedAt": "2026-10-01T21:04:20.326Z",
+          "bytes": 437160
+        }
+      ]
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.revistamercurio.es/",
+          "sha256": "fdf8354d0a100528027259c698387b55c25bf46784dff3b7a70cfd919abd3c0f",
+          "accessedAt": "2026-10-01T21:04:20.543Z",
+          "bytes": 115408
+        },
+        {
+          "url": "https://www.revistamercurio.es/contacto/",
+          "sha256": "a935a411c4144fe93fcb2271b89f2e243037b942c438e6d39c4a73b1cc41da81",
+          "accessedAt": "2026-10-01T21:04:21.450Z",
+          "bytes": 60289
+        }
+      ]
+    },
+    {
+      "sourceId": "cultura-romania",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://revistacultura.ro/",
+          "sha256": "98c79f76cebdd23590fb339bb5c376a120d08a523e6b142bb3eb0ca514aad554",
+          "accessedAt": "2026-10-01T21:04:17.670Z",
+          "bytes": 346225
+        },
+        {
+          "url": "https://revistacultura.ro/contact/",
+          "sha256": "9bfec3edae34a3c05d32e32c7690bcfa28a7eac478a44418c3a64d71a6109e04",
+          "accessedAt": "2026-10-01T21:04:17.794Z",
+          "bytes": 126517
+        }
+      ]
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "status": "organisation_country",
+      "countryCodes": [
+        "BG"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://liternet.bg/",
+        "organisation": "LiterNet",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "формация от областта на културата, зона за изразяване на позиции по обществения и културния живот в България. Искате ли да публикувате е-книга? За Електронно издателство LiterNet накратко Електронно издателство LiterNet (ISBN 978-954-304) е специализирано в ",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "c3cdfce8849f1fbd2d4626a1f68e593821a1fa459a856d5b6ce3a3fe5de79a56",
+        "accessedAt": "2026-10-01T21:04:18.251Z"
+      },
+      "requests": [
+        {
+          "url": "https://liternet.bg/",
+          "sha256": "c3cdfce8849f1fbd2d4626a1f68e593821a1fa459a856d5b6ce3a3fe5de79a56",
+          "accessedAt": "2026-10-01T21:04:18.251Z",
+          "bytes": 70666
+        }
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "status": "organisation_country",
+      "countryCodes": [
+        "CH"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://literaturhaus.ch/impressum/",
+        "organisation": "Literaturhaus Switzerland",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Impressum Redaktion Museumsgesellschaft und Literaturhaus Zürich, Limmatquai 62, 8001 Zürich, SchweizTelefon +41 44 254 50 08info@literaturhaus.chNicola Steiner, Isabelle Vonlanthen, Sandra Gubler Design und Progra",
+        "status": "organisation_country",
+        "scope": "official_contact_page",
+        "responseSha256": "e701a2116b419e66a1c84ff55832698d03afe223704f81bf747ef76dd8beedc5",
+        "accessedAt": "2026-10-01T21:04:19.499Z"
+      },
+      "requests": [
+        {
+          "url": "https://literaturhaus.ch/",
+          "sha256": "e5ea948a51b99d11f5341263ba7aa39fb6e1a62dd1391a139db9d99a22bef2c2",
+          "accessedAt": "2026-10-01T21:04:19.283Z",
+          "bytes": 218716
+        },
+        {
+          "url": "https://literaturhaus.ch/impressum/",
+          "sha256": "e701a2116b419e66a1c84ff55832698d03afe223704f81bf747ef76dd8beedc5",
+          "accessedAt": "2026-10-01T21:04:19.499Z",
+          "bytes": 259642
+        }
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "status": "organisation_country",
+      "countryCodes": [
+        "AT"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.literaturhaus-salzburg.at/",
+        "organisation": "Literaturhaus Salzburg",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Newsletter Presse Kontakt Impressum LITERATURHAUS SALZBURGStrubergasse 23, H.C. Artmann-PlatzA-5020 Salzburg Telefon: +43 662 422 411Fax: +43 662 422 411-13E-Mail: info@literaturhaus-salzburg.at Instagram Fac",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "4874072bb02d40db30b1799817d5e2ee943cf25c7fdffe53590fb28f2329352e",
+        "accessedAt": "2026-10-01T21:04:19.552Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.literaturhaus-salzburg.at/",
+          "sha256": "4874072bb02d40db30b1799817d5e2ee943cf25c7fdffe53590fb28f2329352e",
+          "accessedAt": "2026-10-01T21:04:19.552Z",
+          "bytes": 211751
+        }
+      ]
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "status": "organisation_country",
+      "countryCodes": [
+        "DE"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.literaturhaus-stuttgart.de/",
+        "organisation": "Literaturhaus Stuttgart",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Literaturhaus Stuttgart Breitscheidstraße 4 70174 Stuttgart Fon (0711) 22 02 17 - 3 Fax (0711) 22 02 17 - 48 info@literaturhaus-stuttgart.de Barrierefreiheit Kontakt Anfahrt",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "6a1d362326172ecd132828e061d589f97007ed8db4d9198ff02cc4c1a47d20c7",
+        "accessedAt": "2026-10-01T21:04:19.806Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.literaturhaus-stuttgart.de/",
+          "sha256": "6a1d362326172ecd132828e061d589f97007ed8db4d9198ff02cc4c1a47d20c7",
+          "accessedAt": "2026-10-01T21:04:19.806Z",
+          "bytes": 199386
+        }
+      ]
+    },
+    {
+      "sourceId": "literature-finland",
+      "status": "organisation_country",
+      "countryCodes": [
+        "FI"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://fili.fi/",
+        "organisation": "FILI",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "nen kääntäjäpalkinto 100 kääntäjääJulkaisutFILIn kirjanostotFILI PodcastFILIn kirjavideotBooks from Finland -lehden arkistoFILIMeistäYhteys­tiedotMedialleLogopankkiFILI, Hallituskatu 2 B 00170 Helsinki *protected email*Saavutetta­vuusselosteTietosuojaselost",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "5244bc71eac7006f20bc2c136ad7eb18a08cfd8f2cf9cc7b01c01785ce96477c",
+        "accessedAt": "2026-10-01T21:04:19.838Z"
+      },
+      "requests": [
+        {
+          "url": "https://fili.fi/",
+          "sha256": "5244bc71eac7006f20bc2c136ad7eb18a08cfd8f2cf9cc7b01c01785ce96477c",
+          "accessedAt": "2026-10-01T21:04:19.838Z",
+          "bytes": 203862
+        }
+      ]
+    },
+    {
+      "sourceId": "irish-literature",
+      "status": "organisation_country",
+      "countryCodes": [
+        "IE"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://www.literatureireland.com/",
+        "organisation": "Literature Ireland",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "Trinity Centre for Literary and Cultural Translation 36 Fenian Street Trinity College Dublin Dublin D02 CH22 Ireland Cookies & privacy notice Policies & legal notes Download brand assets Contact details Make a donation Sign up to our newslett",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "d1456f05b9458536d5990640983cf72147627ca7d0ac40f18f4d08c65f3fdff5",
+        "accessedAt": "2026-10-01T21:04:20.232Z"
+      },
+      "requests": [
+        {
+          "url": "https://www.literatureireland.com/",
+          "sha256": "d1456f05b9458536d5990640983cf72147627ca7d0ac40f18f4d08c65f3fdff5",
+          "accessedAt": "2026-10-01T21:04:20.232Z",
+          "bytes": 48259
+        }
+      ]
+    },
+    {
+      "sourceId": "ireland-book-awards",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://www.irishbookawards.ie/",
+          "sha256": "aac08e61d68ced614cf68f75554710fa13ab9344ab9ae183723a0d3b6a611bc3",
+          "accessedAt": "2026-10-01T21:04:26.702Z",
+          "bytes": 655291
+        },
+        {
+          "url": "https://www.irishbookawards.ie/resources/contact-us/",
+          "sha256": "a8dc6233f3cf771d1e9be654a1d6d25c8350b2f0ca3c689fad0af43a6cf35414",
+          "accessedAt": "2026-10-01T21:04:29.541Z",
+          "bytes": 211441
+        }
+      ]
+    },
+    {
+      "sourceId": "stella-prize",
+      "status": "organisation_country",
+      "countryCodes": [
+        "AU"
+      ],
+      "evidence": {
+        "method": "official_contact_address",
+        "url": "https://stella.org.au/",
+        "organisation": "Stella Prize",
+        "statement": "Organisation country confirmed from its own footer or contact address; independent of article/event geography.",
+        "excerpt": "o@stella.org.au ARBN: 657 317 283 Stella acknowledges the Traditional Owners of the land throughout Australia and recognises their continuing connection to land, waters, community, and culture.We pay our respect to Elders past and present and, through them, t",
+        "status": "organisation_country",
+        "scope": "footer",
+        "responseSha256": "236ea8f57512f65e9a76abd308de2a68c5679eb247d37a30aa28a796a40948fa",
+        "accessedAt": "2026-10-01T21:04:21.922Z"
+      },
+      "requests": [
+        {
+          "url": "https://stella.org.au/",
+          "sha256": "236ea8f57512f65e9a76abd308de2a68c5679eb247d37a30aa28a796a40948fa",
+          "accessedAt": "2026-10-01T21:04:21.922Z",
+          "bytes": 109622
+        }
+      ]
+    },
+    {
+      "sourceId": "hakara",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://hakara.in/",
+          "sha256": "3c590b449675beb6327cc515c50fb274a3053b3d94c7a7a2e42943e2d67c75ac",
+          "accessedAt": "2026-10-01T21:04:22.389Z",
+          "bytes": 961330
+        }
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "status": "office_country_unconfirmed",
+      "requests": [
+        {
+          "url": "https://karavanpress.com/",
+          "sha256": "49312d86f3267736baeefc481845ff570c21d4cf89538f261f9ee4a6d6eb0534",
+          "accessedAt": "2026-10-01T21:04:21.726Z",
+          "bytes": 191700
+        }
+      ]
+    }
+  ]
+}

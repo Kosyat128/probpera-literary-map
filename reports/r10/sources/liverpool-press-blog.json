@@ -1,0 +1,382 @@
+{
+  "sourceId": "liverpool-press-blog",
+  "name": "Liverpool University Press",
+  "entryUrl": "https://liverpooluniversitypress.blog/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:28.464Z",
+  "requests": [
+    {
+      "url": "https://liverpooluniversitypress.blog/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 106356,
+      "sha256": "87df4a971a0ee4d7dec9419a3042f4fd50f2ac7edb46b9d6f1337248305a2dbf",
+      "accessedAt": "2026-10-01T20:56:29.084Z"
+    },
+    {
+      "url": "https://liverpooluniversitypress.blog/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 173838,
+      "sha256": "31f49135bfb06cfc41134ad7006118405702624119bcc4cf9eb7dbf9b9ab81d0",
+      "accessedAt": "2026-10-01T20:56:29.317Z"
+    },
+    {
+      "url": "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 123680,
+      "sha256": "bc4cff2fc0add2877fd5e4968e317d79fb9ea4e9baa9c577f7e31de43d4d02ce",
+      "accessedAt": "2026-10-01T20:56:30.233Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://liverpooluniversitypress.blog/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 658,
+    "sha256": "6f13437fc822d8ded13510e8c46e4b0f4218aeff575bbe6c52fb1d723b473930",
+    "accessedAt": "2026-10-01T20:56:28.717Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-login.php",
+      "/wp-signup.php",
+      "/press-this.php",
+      "/remote-login.php",
+      "/activate/",
+      "/cgi-bin/",
+      "/mshots/v1/",
+      "/next/",
+      "/public.api/"
+    ]
+  },
+  "endpoint": {
+    "id": "liverpool-press-blog",
+    "name": "Liverpool University Press",
+    "url": "https://liverpooluniversitypress.blog/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "liverpool-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://liverpooluniversitypress.blog"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:30.240Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "liverpool-press-blog",
+    "source": {
+      "name": "Liverpool University Press",
+      "url": "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Announcing our 2027 Pavilion Poetry collections",
+    "publishedAt": "2026-10-01T13:25:00.000Z",
+    "description": "This National Poetry Day, we’re thrilled to introduce our 2027 Pavilion Poetry collections: Question to the Creatures by Martha Sprackland, Tsvetaeva ’27 by Sasha Dugdale, and Before & After the Night by Jemma Borg. The collections will publish in spring 2027 and can be preordered now from our website. Learn more about each of these … Continue reading →",
+    "discoveredAt": "2026-10-01T20:56:29.320Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 123680,
+      "sha256": "bc4cff2fc0add2877fd5e4968e317d79fb9ea4e9baa9c577f7e31de43d4d02ce",
+      "accessedAt": "2026-10-01T20:56:30.233Z",
+      "headline": "Announcing our 2027 Pavilion Poetry collections",
+      "excerpt": "This National Poetry Day, we’re thrilled to introduce our 2027 Pavilion Poetry collections: Question to the Creatures by Martha Sprackland, Tsvetaeva ’27 by Sasha Dugdale, and Before & After the Night by Jemma Borg. The collections will publish in spring 2027 and can be preordered now from our website. Learn more about each of these brilliant new collections in our below announcement. Question to ",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T13:25:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:30.240Z",
+  "foundItems": [
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Announcing our 2027 Pavilion Poetry collections",
+      "publishedAt": "2026-10-01T13:25:00.000Z",
+      "description": "This National Poetry Day, we’re thrilled to introduce our 2027 Pavilion Poetry collections: Question to the Creatures by Martha Sprackland, Tsvetaeva ’27 by Sasha Dugdale, and Before & After the Night by Jemma Borg. The collections will publish in spring 2027 and can be preordered now from our website. Learn more about each of these … Continue reading →",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/10/writing-to-win-the-prize-prize-contests-in-18th-century-europe/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writing to win the prize: prize contests in 18th-century Europe",
+      "publishedAt": "2026-09-10T10:00:00.000Z",
+      "description": "Essay competitions in the long eighteenth century, edited by Avi Lifschitz and Martin Urmann, recently published in the Oxford University Studies in the Enlightenment Series.This book is the first to provide a preliminary, and necessarily incomplete, overview of this phenomenon across national and linguistic borders, institutional settings and media outlets. In this blog post, Avi Lifschitz and M…",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/29/what-can-translation-do/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "What Can Translation Do?",
+      "publishedAt": "2026-09-29T14:40:00.000Z",
+      "description": "In a new blog post to mark International Translation Day 2026, World Writing in French series editors Charles Forsdick and Martin Munro reflect on translation's role in sustaining linguistic and literary diversity, and ask an urgent question: what can translation do?",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/22/oxford-university-voltaire-a-living-edition/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Oxford University Voltaire: a living edition",
+      "publishedAt": "2026-09-22T11:30:00.000Z",
+      "description": "Explore the latest updates to Oxford University Voltaire, the living digital edition of Voltaire’s complete works, with newly added content and ongoing enhancements for researchers and libraries.",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/02/liverpool-university-press-to-publish-art-libraries-journal-from-2027/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Liverpool University Press to publish Art Libraries Journal from 2027",
+      "publishedAt": "2026-09-02T09:23:00.000Z",
+      "description": "Liverpool University Press will become the new publisher of Art Libraries Journal from 2027, continuing the journal’s established legacy following its publication by Cambridge University Press.",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/10/01/revisiting-abercrombies-the-preservation-of-rural-england-one-hundred-years-on-town-planning-review-97-5-featured-article/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Revisiting Abercrombie’s ‘The Preservation of Rural England’ one hundred years on | Town Planning Review 97.5 Featured Article",
+      "publishedAt": "2026-10-01T10:45:00.000Z",
+      "description": "The editors of Town Planning Review have selected 'Revisiting Abercrombie’s ‘The Preservation of Rural England’ one hundred years on', by Mark Scott, Nick Gallent and Menelaos Gkartzios. as the Featured Article from Volume 97.5. Explore both the landmark text and this new centenary reassessment side by side, free to read for a limited time.",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/24/call-for-an-editor-continuity-and-change/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Call for an Editor | Continuity and Change",
+      "publishedAt": "2026-09-24T09:00:00.000Z",
+      "description": "Continuity and Change aims to define a field of historical sociology concerned with long-term continuities and discontinuities in the structures of past societies. Emphasis is upon studies whose agenda or methodology combines elements from traditional fields such as history, sociology, law, demography, economics or anthropology, or ranges freely between them. There is a strong commitment … Contin…",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/15/new-towns-new-britain/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "New Towns, New Britain",
+      "publishedAt": "2026-09-15T07:50:00.000Z",
+      "description": "Having worked for Historic England and its predecessor organisations for over forty years, Elain Harwood (1958\u20132023) was an immensely well-respected lecturer, tutor, tour guide, author and latterly, Senior Architectural Investigator. After Elaine's death in 2023, Alistair Fair was invited to come on board as editor of this book, using Elaine's manuscript as the basis of the present text, though w…",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/11/the-state-bibles/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The State Bibles",
+      "publishedAt": "2026-09-11T14:26:51.000Z",
+      "description": "The State Bibles: The Anglo-Dutch Politics of the King James Version and the Statenvertaling, by Esther van Raamsdonk, published by the British Academy, is the first extended comparative study of two key bible translations of the early modern period \u2013 the King James Version (1611) and the Dutch Statenvertaling (1637).",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "source": {
+        "name": "Liverpool University Press",
+        "url": "https://liverpooluniversitypress.blog/2026/09/09/the-defiant-creativity-of-liverpools-black-community/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The defiant creativity of Liverpool’s Black community",
+      "publishedAt": "2026-09-09T14:30:12.000Z",
+      "description": "Professor Stephen Small, author of the recently published Black Liverpool, ‘The real thing’: West African, West Indian and Afro-American culture at the end of the twentieth century, introduces his new book in this blog post, touching on how different the history of Black Liverpool is to that of Black London, and the influences which makes … Continue reading →",
+      "discoveredAt": "2026-10-01T20:56:29.320Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "31f49135bfb06cfc41134ad7006118405702624119bcc4cf9eb7dbf9b9ab81d0"
+}

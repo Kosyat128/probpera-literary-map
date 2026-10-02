@@ -1,0 +1,365 @@
+{
+  "sourceId": "fitzcarraldo",
+  "name": "Fitzcarraldo Editions",
+  "entryUrl": "https://fitzcarraldoeditions.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:52.149Z",
+  "requests": [
+    {
+      "url": "https://fitzcarraldoeditions.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 101083,
+      "sha256": "1ed8d8d65fe1a6f08bf558cc218985cbd41f4b46599bdccb2ccf0a637379a1d3",
+      "accessedAt": "2026-10-01T20:47:52.576Z"
+    },
+    {
+      "url": "https://fitzcarraldoeditions.com/news/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 75390,
+      "sha256": "330666ab91f50b4c6e96f6d3d74c0c50379bca1be1efce5d9f1d3676dc3de26c",
+      "accessedAt": "2026-10-01T20:47:52.950Z"
+    },
+    {
+      "url": "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57475,
+      "sha256": "9ac27bb0cf3dc412f8ce8fbe5ca17a498db26535e26e117981324c9b978e966d",
+      "accessedAt": "2026-10-01T20:47:53.209Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://fitzcarraldoeditions.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 378,
+    "sha256": "aaabe6660533699f2f931a3a73bfc6a131d635bef02d4dba310a64998224427c",
+    "accessedAt": "2026-10-01T20:47:52.422Z",
+    "disallowed": [
+      "/wp/wp-admin/",
+      "/?s=",
+      "/page/*/?s=",
+      "/search/",
+      "/wp-json/",
+      "/?rest_route="
+    ]
+  },
+  "endpoint": {
+    "id": "fitzcarraldo",
+    "name": "Fitzcarraldo Editions",
+    "url": "https://fitzcarraldoeditions.com/news/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "fitzcarraldo",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://fitzcarraldoeditions.com"
+    ],
+    "linkPattern": "^\\/collections\\/[^/]+\\/?$|^\\/subscribe\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/"
+    ],
+    "verifiedAt": "2026-10-01T20:47:53.212Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 9,
+  "literaryCandidateCount": 9,
+  "sample": {
+    "sourceId": "fitzcarraldo",
+    "source": {
+      "name": "Fitzcarraldo Editions",
+      "url": "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "NEWS 11.06.2026 Independent Bookshop Week 2026 at Lala Books, Camberwell Read more...",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:47:52.966Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 57475,
+      "sha256": "9ac27bb0cf3dc412f8ce8fbe5ca17a498db26535e26e117981324c9b978e966d",
+      "accessedAt": "2026-10-01T20:47:53.209Z",
+      "headline": "Independent Bookshop Week 2026 at Lala Books, Camberwell",
+      "excerpt": "Independent Bookshop Week 2026 at Lala Books, Camberwell News 11.06.2026 We are excited to announce that we will be partnering with Lala Books in Camberwell for Independent Bookshop Week 13\u201320 June 2026. Lala Books will have a range of Fitzcarraldo Editions goods to offer to customers throughout the week of 13\u201420 June. This will include the following items: a limited number of bookmarks, tote bags",
+      "publishedDates": [
+        {
+          "value": "2026-06-11T14:35:07+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-06-11T14:35:07+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-06-11T14:35:07+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:53.212Z",
+  "foundItems": [
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NEWS 11.06.2026 Independent Bookshop Week 2026 at Lala Books, Camberwell Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/09/mathias-enards-perfecting-the-shot-book-tour/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NEWS 03.09.2026 Mathias Enard’s Perfecting the Shot Book Tour Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/07/marie-darrieussecqs-how-to-make-a-woman-book-tour/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS 21.07.2026 Marie Darrieussecq’s How to Make a Woman Book Tour Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/06/holly-pesters-cafes-book-tour/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS 24.06.2026 Holly Pester’s Cafés Book Tour Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/06/alice-hattricks-fancy-work-book-tour/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS 11.06.2026 Alice Hattrick’s Fancy Work Book Tour Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/08/oluwaseun-olayiwola-reads-from-strange-beach-2/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS, READINGS 17.08.2026 Oluwaseun Olayiwola reads from Strange Beach Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/08/alice-hattrick-reads-from-fancy-work/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS, READINGS 12.08.2026 Alice Hattrick reads from Fancy Work Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/08/holly-pester-reads-from-cafes/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS, READINGS 06.08.2026 Holly Pester reads from Cafés Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "source": {
+        "name": "Fitzcarraldo Editions",
+        "url": "https://fitzcarraldoeditions.com/2026/07/makenna-goodman-reads-from-helen-of-nowhere/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "EVENTS, READINGS 30.07.2026 Makenna Goodman reads from Helen of Nowhere Read more...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:52.966Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "330666ab91f50b4c6e96f6d3d74c0c50379bca1be1efce5d9f1d3676dc3de26c"
+}

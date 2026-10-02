@@ -1,0 +1,25 @@
+{
+  "sourceId": "literary-translation-uk",
+  "name": "Literary Translation at the British Centre",
+  "entryUrl": "https://www.bclt.org.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:47.878Z",
+  "requests": [
+    {
+      "url": "https://www.bclt.org.uk/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 129218,
+      "sha256": "5cd6ac2b057c319af70c2be5f12bc199acaabd350e7ba808eee27d4dd637e393",
+      "accessedAt": "2026-10-01T20:51:49.125Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.bclt.org.uk/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

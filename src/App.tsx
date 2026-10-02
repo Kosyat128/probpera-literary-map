@@ -21,7 +21,6 @@ import CountryFlagIcon from "./components/CountryFlagIcon";
 import WriterPortrait, { writerHasApprovedPortrait } from "./components/WriterPortrait";
 import BrandArrowIcon from "./components/BrandArrowIcon";
 import BrandBookIcon from "./components/BrandBookIcon";
-import BrandExternalLinkIcon from "./components/BrandExternalLinkIcon";
 import BrandSearchIcon from "./components/BrandSearchIcon";
 import BrandFilterIcon from "./components/BrandFilterIcon";
 import "./styles/ui-polish-controls.css";
@@ -3081,20 +3080,6 @@ export default function App() {
                       {t("Открыть автора и страну")}
                     </Button>
                   </div>
-                  {bookOfMonth.sourceUrl && (
-                    <ActionLink
-                      className="book-source-link"
-                      size="md"
-                      surface="dark"
-                      variant="text"
-                      endIcon={<BrandExternalLinkIcon />}
-                      href={bookOfMonth.sourceUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t("Источник сведений")}
-                    </ActionLink>
-                  )}
                 </div>
               )}
             </div>

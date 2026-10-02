@@ -370,6 +370,8 @@ describe("native prepared text and validated transport receipts", () => {
     expect(prepared.payload.link_preview_options.is_disabled).toBe(true);
     expect(prepared.payload.text).toContain(item.source.url);
     expect(prepared.payload.text).toContain("https://probpera.ru/#literary-news");
+    expect(prepared.payload.text.indexOf(item.source.url))
+      .toBeLessThan(prepared.payload.text.indexOf("https://probpera.ru/#literary-news"));
   });
   it("shadow cannot call any external write method", async () => {
     const fetchImpl = vi.fn();

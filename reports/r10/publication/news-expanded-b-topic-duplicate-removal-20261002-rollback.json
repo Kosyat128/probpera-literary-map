@@ -1,0 +1,18 @@
+{
+  "batchId": "news-expanded-b-topic-duplicate-removal-20261002",
+  "checkedAt": "2026-10-01T22:34:11.345Z",
+  "action": "rollback",
+  "written": true,
+  "beforeCount": 445,
+  "afterCount": 444,
+  "beforeSha256": "f0e181a2db4347403cc727b697707269df13ce77989aa53466d3c4d307fb337a",
+  "afterRecordSha256": "6cfff675cbef7f4f0f370f3f69aa00b9b3047bdc64b2cee88f5c4afec10ed967",
+  "addedOrRemoved": [
+    "impedimenta-october-press-reading-selection-20261002"
+  ],
+  "unchanged": [],
+  "held": [],
+  "firstPublicationCount": 0,
+  "currentlyPublicNew": 0,
+  "publication": "not_deployed"
+}

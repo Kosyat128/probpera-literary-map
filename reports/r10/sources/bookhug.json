@@ -1,0 +1,407 @@
+{
+  "sourceId": "bookhug",
+  "name": "Book*hug Press",
+  "entryUrl": "https://bookhugpress.ca/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:21.207Z",
+  "requests": [
+    {
+      "url": "https://bookhugpress.ca/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 424680,
+      "sha256": "22f367e722c1b619e073d37de0fe278c8f1436415147ab6e9c493c3c5267bb6e",
+      "accessedAt": "2026-10-01T20:48:27.480Z"
+    },
+    {
+      "url": "https://bookhugpress.ca/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 95839,
+      "sha256": "84759484e93e200ed059f4f916daf8d1ce495065ae68d80a084a5ac8d9bdb363",
+      "accessedAt": "2026-10-01T20:48:29.283Z"
+    },
+    {
+      "url": "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 226486,
+      "sha256": "e1bddb004e196daa9179c838755d1a9d352fb9cf370427e41d4d4e9a43dadb1e",
+      "accessedAt": "2026-10-01T20:48:32.347Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bookhugpress.ca/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 814,
+    "sha256": "da93ca26e1e07038d84617692aab4ac6d0a1761baefb2fbe539287eafc3d67a7",
+    "accessedAt": "2026-10-01T20:48:21.748Z",
+    "disallowed": [
+      "/calendar/action~posterboard/",
+      "/calendar/action~agenda/",
+      "/calendar/action~oneday/",
+      "/calendar/action~month/",
+      "/calendar/action~week/",
+      "/calendar/action~stream/",
+      "/calendar/action~undefined/",
+      "/calendar/action~http:/",
+      "/calendar/action~default/",
+      "/calendar/action~poster/",
+      "/calendar/action~*/",
+      "/*controller=ai1ec_exporter_controller*",
+      "/*/action~*/",
+      "/?s=",
+      "/search/",
+      "/cart/",
+      "/checkout/",
+      "/my-account/",
+      "/*?orderby=",
+      "/*?filter_",
+      "/*?add-to-cart=",
+      "/*?add_to_wishlist=",
+      "/*&add_to_wishlist=",
+      "/*?add-to-cart=",
+      "/*&add-to-cart="
+    ]
+  },
+  "endpoint": {
+    "id": "bookhug",
+    "name": "Book*hug Press",
+    "url": "https://bookhugpress.ca/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "bookhug",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bookhugpress.ca"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/"
+    ],
+    "verifiedAt": "2026-10-01T20:48:32.357Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "bookhug",
+    "source": {
+      "name": "Book*hug Press",
+      "url": "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Book*hug Wrapped 2025: Author’s Edition",
+    "publishedAt": "2025-12-10T20:02:47.000Z",
+    "description": "It is time for the 2025 edition of our annual Book*hug Wrapped series, where we ask our authors what their favourite books of the year have been (which luckily coincides with gift giving season). We hope you enjoy this year’s selections, and that some of these titles will end up in your to be read pile! We sure know they’ll end up on ours! Michael V. Smith, author of Soundtrack: A Lyric Memoir In…",
+    "discoveredAt": "2026-10-01T20:48:29.285Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 226486,
+      "sha256": "e1bddb004e196daa9179c838755d1a9d352fb9cf370427e41d4d4e9a43dadb1e",
+      "accessedAt": "2026-10-01T20:48:32.347Z",
+      "headline": "Book*hug Wrapped 2025: Author’s Edition | Book*hug Press",
+      "excerpt": "It is time for the 2025 edition of our annual Book*hug Wrapped series, where we ask our authors what their favourite books of the year have been (which luckily coincides with gift giving season). We hope you enjoy this year’s selections, and that some of these titles will end up in your to be read pile! We sure know they’ll end up on ours! Michael V. Smith, author of Soundtrack: A Lyric Memoir Inc",
+      "publishedDates": [
+        {
+          "value": "2025-12-10T20:02:47+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-12-10T16:02:47-04:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2025-12-10T16:02:47-04:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:32.357Z",
+  "foundItems": [
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book*hug Wrapped 2025: Author’s Edition",
+      "publishedAt": "2025-12-10T20:02:47.000Z",
+      "description": "It is time for the 2025 edition of our annual Book*hug Wrapped series, where we ask our authors what their favourite books of the year have been (which luckily coincides with gift giving season). We hope you enjoy this year’s selections, and that some of these titles will end up in your to be read pile! We sure know they’ll end up on ours! Michael V. Smith, author of Soundtrack: A Lyric Memoir In…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/bookhug-wrapped-2025-staff-edition/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book*hug Wrapped 2025: Staff Edition",
+      "publishedAt": "2025-12-19T17:29:55.000Z",
+      "description": "It is time for part two of the 2025 edition of our annual Book*hug Wrapped series, where we ask our staff what their favourite books of the year have been (which luckily coincides with gift giving season). We hope you enjoy this year’s selections, and that some of these titles will end up on your wish list! Happy reading! Britt Landry, Publishing Assistant Saturn Peach by Lily Wang Palestine and …",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/ten-essential-reads-for-for-short-story-month-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Ten Essential Reads for For Short Story Month 2026",
+      "publishedAt": "2026-05-25T13:00:51.000Z",
+      "description": "For Short Story Month, we’ve compiled a list of ten essential short story collections from our catalogue that everyone should check out! From speculative worlds to flash fiction and well beyond, these impressive collections prove that, while the stories may be short, they pack a powerful punch that will leave a lasting impression. Discover them for yourself today! PS) In celebration of Short Stor…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/behind-the-book-with-liz-johnston-author-of-the-fall-down-effect/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Behind The Book With Liz Johnston, Author of The Fall-Down Effect",
+      "publishedAt": "2026-05-06T20:53:30.000Z",
+      "description": "Today, we invite Liz Johnston to the Book*hug blog to share the story of how she began writing her debut novel The Fall-Down Effect! Finding initial inspiration through reading environmental articles on The Narwhal, as well as from the works of Annie Proulx and Kim Trainor, Liz details how she came to settle on the classic three-act novel structure, and how she chose to address current issues suc…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/behind-the-book-with-d-nandi-odhiambo-author-of-amapiano-eyes/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Behind The Book With D. Nandi Odhiambo, author of Amapiano Eyes",
+      "publishedAt": "2026-04-29T18:21:22.000Z",
+      "description": "Today, we invite D. Nandi Odhiambo to the Book*hug blog to share the story of how he began writing his latest novel Amapiano Eyes! While he initally set out with the goal of taking a break from writing, the book grew organically out of fragmented sentences jotted down during the Covid-19 Pandemic, with Nandi finding further inspiration from philosophical writings, personal loss, and Amapiano DJ s…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/on-collage-with-camilla-gibb-author-of-i-used-to-be-a-pisces/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Collage With Camilla Gibb, author of I Used to Be a Pisces",
+      "publishedAt": "2026-04-24T14:51:04.000Z",
+      "description": "Today, we invite Camilla Gibb to the Book*hug blog to share the story of how revisiting collage work saved her from writers block, and subsequently led to the writing of her debut poetry collection I Used to Be a Pisces ! Take it away Camilla! _________________________________________________________ I finished writing my last novel in 2019. A novel subsequently published into the great hollow ca…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/koh-i-noor-the-playlist-by-michael-eddy/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Koh-i-Noor: The Playlist by Michael Eddy",
+      "publishedAt": "2026-06-03T17:09:06.000Z",
+      "description": "Koh-i-Noor: The Playlist is here! Michael Eddy has curated an official playlist for his debut novel Koh-i-Noor. Michael has also written sixteen vignettes, explaining how he associates each song with his book! Michael crafts a fascinating mixtape-essay that walks us through his early love of Hip Hop, his art school days in Halifax’s “Golden Age”, and later his time living and working in China, al…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/jelly-baby-the-playlist-by-therese-estacion/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jelly, Baby: The Playlist by Therese Estacion",
+      "publishedAt": "2026-05-27T17:35:05.000Z",
+      "description": "Jelly, Baby: The Playlist is here! Therese Estacion has curated an official playlist for her debut collection of essays Jelly, Baby: Essays on Disbaility and Vulnerability. Therese has also written thoughtful blurbs for each song, explaining their relevance to her writing process and the themes explored within her book! Take it away Therese! _______________________________________________________…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/behind-the-poem-with-jennifer-lovegrove/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Behind the Poem With Jennifer LoveGrove",
+      "publishedAt": "2026-05-20T17:51:22.000Z",
+      "description": "Today, we invite Jennifer LoveGrove to the blog to share the story behind the writing of Amber: resting place of departed souls, one of the poems in her latest collection The Tinder Sonnets. Read on for insight into the various associations Jennifer drew from the word Amber, and how this shaped her writing. Take it away Jennifer! Content Warning: This piece discusses SA and violence towards women…",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "bookhug",
+      "source": {
+        "name": "Book*hug Press",
+        "url": "https://bookhugpress.ca/gold-star-the-playlist-by-emma-mckenna/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gold Star: The Playlist by Emma McKenna",
+      "publishedAt": "2026-05-13T17:33:29.000Z",
+      "description": "Gold Star: The Playlist is here! Emma McKenna has curated a playlist of songs that inspired the writing of her poetry collection Gold Star. We hope you enjoy! The Playlist: Calling Over Time by Edith Frost Give Out by Sharon Van Etten Metal Heart by Cat Power Protection by Emma Ruth Rundle War by Brutus FOUR TEETH by True Widow Anyone Can Play Guitar by Midwife Listen to the full playlist online …",
+      "discoveredAt": "2026-10-01T20:48:29.285Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "84759484e93e200ed059f4f916daf8d1ce495065ae68d80a084a5ac8d9bdb363"
+}

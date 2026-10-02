@@ -1,0 +1,16 @@
+{
+  "sourceId": "text-publishing",
+  "name": "Text Publishing",
+  "entryUrl": "https://www.textpublishing.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:23.681Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_406",
+  "robots": {
+    "url": "https://www.textpublishing.com.au/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  }
+}

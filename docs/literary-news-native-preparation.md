@@ -19,6 +19,16 @@ the fixed HTTPS registry, reject credentials/IP literals/unregistered ports and
 cross-origin redirects, and bound response streams to 1 MiB for listings or 512 KiB
 for details. Pool concurrency is four; discarded response bodies are closed.
 
+Only reviewed, frozen source profiles may set their own `listingMaxBytes` or
+`detailMaxBytes`: each must be a positive safe integer capped at 2 MiB. The measured
+Asymptote and Liechtenstein National Library detail pages are examples of this narrow
+exception; profiles without overrides retain the defaults. Both fields are validated before any
+request, and a redirect rechecks the matched destination profile. Caller `maxBytes`
+cannot change the bound. HTML and bytes are transient parser input; details do not
+retain raw bytes or persist HTML. The exception leaves request budgets, deadlines,
+host checks and concurrency unchanged, consistent with the [Workers streaming and
+memory guidance](https://developers.cloudflare.com/workers/platform/limits/#memory).
+
 Only exact source publication metadata within seven days is eligible. Up to five
 eligible candidates can enter the shared two-pass grounded RU/EN engine per run.
 Both provider calls use the existing Cloudflare AI binding and a 45-second abort

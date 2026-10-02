@@ -1,0 +1,29 @@
+{
+  "sourceId": "bapus-org",
+  "name": "Bangladesh Publishers & Book-sellers Association (BAPUS)",
+  "entryUrl": "https://www.bapus.org/",
+  "countryCodes": [
+    "BD"
+  ],
+  "coverageCountryCodes": [
+    "BD"
+  ],
+  "attemptedAt": "2026-10-01T20:43:09.252Z",
+  "requests": [
+    {
+      "url": "https://www.bapus.org/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 27283,
+      "sha256": "5f7e3c5aaabb9014aa77509b76743d6adea01a38434ded261aad41529f464505",
+      "accessedAt": "2026-10-01T20:43:21.029Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "no_literary_article_links",
+  "robots": {
+    "url": "https://www.bapus.org/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

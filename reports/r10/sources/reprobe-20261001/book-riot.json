@@ -1,0 +1,388 @@
+{
+  "sourceId": "book-riot",
+  "name": "Book Riot",
+  "entryUrl": "https://bookriot.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:44.894Z",
+  "requests": [
+    {
+      "url": "https://bookriot.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 205146,
+      "sha256": "d22cbc9f53f8fb9a17bfc5e44c427c4f78fa9c77acafc31641fd24e80dff6c6d",
+      "accessedAt": "2026-10-01T20:44:52.004Z"
+    },
+    {
+      "url": "https://bookriot.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 238883,
+      "sha256": "fde3cd682e9d88d97b95b13768216b18532486f9db0d53c35efa27e93b162a92",
+      "accessedAt": "2026-10-01T20:44:53.489Z"
+    },
+    {
+      "url": "https://bookriot.com/book-riots-deals-of-the-day-for-october-1-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 226954,
+      "sha256": "d69ddfc9f36a3e3ac4264bc186d0184090fb6eaffa35878adc5288e27d87e61a",
+      "accessedAt": "2026-10-01T20:44:54.714Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://bookriot.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 214,
+    "sha256": "f6095993a15afb30d85cc9c2712ad791ff350803deef57a8b35250840ac17cc6",
+    "accessedAt": "2026-10-01T20:44:45.234Z",
+    "disallowed": [
+      "/wp-login.php",
+      "/wp-admin/",
+      "/wp-content/plugins/",
+      "/?s=*",
+      "/search/",
+      "/search/_target*"
+    ]
+  },
+  "endpoint": {
+    "id": "book-riot",
+    "name": "Book Riot",
+    "url": "https://bookriot.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "book-riot",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://bookriot.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://bookriot.com/book-riots-deals-of-the-day-for-october-1-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:44:54.725Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "book-riot",
+    "source": {
+      "name": "Book Riot",
+      "url": "https://bookriot.com/book-riots-deals-of-the-day-for-october-1-2026/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Book Riot’s Deals of the Day for October 1, 2026",
+    "publishedAt": "2026-10-01T15:12:45.000Z",
+    "description": "Pachinko, Circe, Blacktop Wasteland, The Disaster Gay Detective Agency, and more of today's best book deals.",
+    "discoveredAt": "2026-10-01T20:44:53.492Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://bookriot.com/book-riots-deals-of-the-day-for-october-1-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 226954,
+      "sha256": "d69ddfc9f36a3e3ac4264bc186d0184090fb6eaffa35878adc5288e27d87e61a",
+      "accessedAt": "2026-10-01T20:44:54.714Z",
+      "headline": "Book Riot's Deals of the Day for October 1, 2026",
+      "excerpt": "Today's Featured Book Deals <img width=\"158\" height=\"240\" src=\"https://bookriot.com/wp-content/uploads/2026/06/pachinko.jpg.optimal.jpg\" class=\"attachment-160x240 size-160x240\" alt=\"Pachinko\" align=\"center\" style=\"max-width:160px;margin:0 auto;\" decoding=\"async\" srcset=\"https://bookriot.com/wp-content/uploads/2026/06/pachinko.jpg.optimal.jpg 987w, https://bookriot.com/wp-content/uploads/2026/06/pa",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T15:12:45+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-10-01T15:12:45+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-10-01T15:12:45+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://bookriot.com/book-riots-deals-of-the-day-for-october-1-2026/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:54.725Z",
+  "foundItems": [
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/book-riots-deals-of-the-day-for-october-1-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Riot’s Deals of the Day for October 1, 2026",
+      "publishedAt": "2026-10-01T15:12:45.000Z",
+      "description": "Pachinko, Circe, Blacktop Wasteland, The Disaster Gay Detective Agency, and more of today's best book deals.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/new-childrens-books-october-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "10 of the Best New Children’s Books Out in October 2026",
+      "publishedAt": "2026-10-01T10:00:00.000Z",
+      "description": "The best new children's books out in October 2026 include historical middle grade books, fantasy graphic novels, and humorous picture books.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/bestselling-books-october-1-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Bestselling Books of the Week, According to All the Lists",
+      "publishedAt": "2026-10-01T10:11:00.000Z",
+      "description": "Publishers Weekly, USA Today, the NYT, Amazon, and Indie Bestsellers all have their own bestseller lists. Here are the combined results.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/ya-book-news-october-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A New SUNRISE ON THE REAPING Trailer, The BSC at 40, and More YA Book Talk",
+      "publishedAt": "2026-10-01T10:01:00.000Z",
+      "description": "Catch up on the latest in YA book news, including a reflection on the Baby-Sitters Club as the series turns 40 and more.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/new-queer-latine-books-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "12 New Queer Latine Books (…Plus 14 More)",
+      "publishedAt": "2026-10-01T09:00:00.000Z",
+      "description": "The new queer Latine books out in 2026 include litfic set in Bogotá’s queer underground, a return to the graveyard gays, and much more.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/books-for-fans-of-practical-magic/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "4 Bewitching Books for Fans of PRACTICAL MAGIC",
+      "publishedAt": "2026-10-01T10:00:00.000Z",
+      "description": "Fans of Practical Magic will love these beautifully written novels about sisters, witches, feminism, and love.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/queer-time-travel-romance-books/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "5 Queer Time Travel Romance Books",
+      "publishedAt": "2026-10-01T10:00:00.000Z",
+      "description": "These queer time travel romance books include a sapphic love story about agents in a time war and an M/M romance inspired by 13 Going On 30.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/books-i-wish-i-had-as-an-undocumented-child/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Books I Wish I Had as an Undocumented Child",
+      "publishedAt": "2026-10-01T09:00:00.000Z",
+      "description": "Katya Suvorova, the author of Ungrateful Immigrant Daughter, discusses three books she wishes she had as an undocumented child.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/biggest-literary-controversies-of-the-last-15-years-part-1/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Biggest Literary Controversies of the Last 15 Years: Part 1",
+      "publishedAt": "2026-10-01T09:00:00.000Z",
+      "description": "We're kicking off our 15th anniversary celebration with a look at the biggest literary controversies of the last 15 years.",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "book-riot",
+      "source": {
+        "name": "Book Riot",
+        "url": "https://bookriot.com/something-of-a-miracle/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "📚 Something of a miracle",
+      "publishedAt": "2026-10-01T09:30:00.000Z",
+      "description": "Book Riot turns 15 today!",
+      "discoveredAt": "2026-10-01T20:44:53.492Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "fde3cd682e9d88d97b95b13768216b18532486f9db0d53c35efa27e93b162a92"
+}

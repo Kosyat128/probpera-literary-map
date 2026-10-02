@@ -1,0 +1,16 @@
+{
+  "sourceId": "harvard-press-blog",
+  "name": "Harvard University Press",
+  "entryUrl": "https://blog.hup.harvard.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.037Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "getaddrinfo ENOTFOUND blog.hup.harvard.edu",
+  "robots": {
+    "url": "https://blog.hup.harvard.edu/robots.txt",
+    "error": "getaddrinfo ENOTFOUND blog.hup.harvard.edu",
+    "disallowed": []
+  }
+}

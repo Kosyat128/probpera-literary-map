@@ -1,0 +1,105 @@
+{
+  "sourceId": "cpl-org-pe",
+  "name": "Càmara Peruana del LibroAv. Cuba",
+  "entryUrl": "https://www.cpl.org.pe/",
+  "countryCodes": [
+    "PE"
+  ],
+  "coverageCountryCodes": [
+    "PE"
+  ],
+  "attemptedAt": "2026-10-01T20:43:00.152Z",
+  "requests": [
+    {
+      "url": "https://cpl.org.pe/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 288734,
+      "sha256": "19863fd02e444e1e11a7b767613b736f5ba1b507648562bc1851c71c7da0654f",
+      "accessedAt": "2026-10-01T20:43:02.508Z"
+    },
+    {
+      "url": "https://cpl.org.pe/category/noticias/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 275071,
+      "sha256": "a30e4bb6eaaa4ad139f6da1bd3b6772fc3d7de7097786c0a4afb678a022a27eb",
+      "accessedAt": "2026-10-01T20:43:02.966Z"
+    },
+    {
+      "url": "https://cpl.org.pe/la-comision-de-editoriales-independientes-de-la-camara-peruana-del-libro-organiza-irrumpe-2026-la-feria-que-reescribe-la-cultura-editorial-del-pais/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 276685,
+      "sha256": "76bae13d22a63edf28a9a87d0634e13162524b3f32d37a5610d79a929babb4c8",
+      "accessedAt": "2026-10-01T20:43:03.159Z"
+    },
+    {
+      "url": "https://cpl.org.pe/la-camara-peruana-del-libro-invita-al-encuentro-de-jovenes-lectores-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 271480,
+      "sha256": "961ef601ec125d39a2e877202ee05955c45fbdfbbb1e96075107b475d8e386c4",
+      "accessedAt": "2026-10-01T20:43:03.333Z"
+    },
+    {
+      "url": "https://cpl.org.pe/la-camara-peruana-del-libro-presenta-a-su-nuevo-consejo-directivo-para-el-periodo-2026-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 273391,
+      "sha256": "7c8ac78e91e90088fae9aeeaa170bbb80c484655df45d6ed3ffa306aaf77c690",
+      "accessedAt": "2026-10-01T20:43:03.489Z"
+    },
+    {
+      "url": "https://cpl.org.pe/segunda-edicion-del-foro-internacional-de-redes-editoriales-fire-2026-reunira-a-especialistas-en-arequipa/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 276783,
+      "sha256": "c77f8f49ad5b2099066f18352b2584a4ab593eb8db4bfb60382f3b9ec03bfece",
+      "accessedAt": "2026-10-01T20:43:03.648Z"
+    },
+    {
+      "url": "https://cpl.org.pe/irrumpe-2026-la-feria-amplia-sus-espacios-y-se-traslada-a-la-plaza-tupac-amaru-en-el-distrito-de-magdalena-del-mar/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 278082,
+      "sha256": "c6c9f4bae97ed11a073dbf139cd3fcfd32ffd100c07bad5b1b41a3ada5e06869",
+      "accessedAt": "2026-10-01T20:43:03.819Z"
+    },
+    {
+      "url": "https://cpl.org.pe/peru-en-la-50-fil-buenos-aires-2026-ampliacion-de-postulaciones/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 271752,
+      "sha256": "2d51589fd76b888a26b473e255bcadf03600b17516640a04a38c14d905fda2d8",
+      "accessedAt": "2026-10-01T20:43:03.965Z"
+    },
+    {
+      "url": "https://cpl.org.pe/camara-peruana-del-libro-recibe-reconocimiento-por-sus-80-anos-fomentando-la-lectura-en-el-pais/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 273267,
+      "sha256": "93c6cccb693b652599a370a59051cac6ce77ca1b6063ab27e6510fd1c9ef71e4",
+      "accessedAt": "2026-10-01T20:43:04.113Z"
+    },
+    {
+      "url": "https://cpl.org.pe/feria-internacional-del-libro-de-lima-cumple-30-anos-cambia-de-sede-y-evoluciona-para-brindar-mas-fil-lima-para-mas-peruanos/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 275100,
+      "sha256": "6079c367c9cfbde2f1bcf6f70ee2c5904c428f273f52d110c845b15b1e876180",
+      "accessedAt": "2026-10-01T20:43:04.258Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.cpl.org.pe/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 23,
+    "sha256": "eaeaa8d3511d1622227d89707d995b8b1f0902f5b86fdbe58882d1cef260d4d7",
+    "accessedAt": "2026-10-01T20:43:01.055Z",
+    "disallowed": []
+  }
+}

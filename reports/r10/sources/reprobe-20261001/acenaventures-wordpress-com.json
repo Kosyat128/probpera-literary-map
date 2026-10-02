@@ -1,0 +1,53 @@
+{
+  "sourceId": "acenaventures-wordpress-com",
+  "name": "Acena Publishers Nigeria Limited",
+  "entryUrl": "https://acenaventures.wordpress.com/advert-2/",
+  "countryCodes": [
+    "NG"
+  ],
+  "coverageCountryCodes": [
+    "NG"
+  ],
+  "attemptedAt": "2026-10-01T20:56:23.862Z",
+  "requests": [
+    {
+      "url": "https://acenaventures.wordpress.com/advert-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 80605,
+      "sha256": "9db8c3968d023413c461d9d21bfc3a7bd469e52ae7217b5d86cfc39d14d8cc9c",
+      "accessedAt": "2026-10-01T20:56:24.418Z"
+    },
+    {
+      "url": "https://acenaventures.wordpress.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 1705,
+      "sha256": "7c3d1a12e244d9359b70eaf3290a551efd3a3c688bb1669133b6bf04a7c9156e",
+      "accessedAt": "2026-10-01T20:56:24.741Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://acenaventures.wordpress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 654,
+    "sha256": "0b20ccf126aa6918ab006fd1a5d81508442ba02568561eca37913c67fb3276cd",
+    "accessedAt": "2026-10-01T20:56:24.328Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-login.php",
+      "/wp-signup.php",
+      "/press-this.php",
+      "/remote-login.php",
+      "/activate/",
+      "/cgi-bin/",
+      "/mshots/v1/",
+      "/next/",
+      "/public.api/"
+    ]
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links"
+}

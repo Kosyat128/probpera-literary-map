@@ -1,0 +1,107 @@
+{
+  "sourceId": "landsbokasafn-is",
+  "name": "National and University Library of Iceland",
+  "entryUrl": "https://landsbokasafn.is/",
+  "countryCodes": [
+    "IS"
+  ],
+  "coverageCountryCodes": [
+    "IS"
+  ],
+  "attemptedAt": "2026-10-01T20:43:56.477Z",
+  "requests": [
+    {
+      "url": "https://landsbokasafn.is/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 266678,
+      "sha256": "726aa025ab34e3ce573004ed745480b92ed4798f1c1c77311bb2ea8d21feaa67",
+      "accessedAt": "2026-10-01T20:43:57.420Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 39400,
+      "sha256": "5a0337007f81e6471c63ff0bfa0603429071958766443cfa2ecdebc18847dbff",
+      "accessedAt": "2026-10-01T20:43:57.544Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/read-japan-project-2025-faerir-landsbokasafni-bokagjof/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102962,
+      "sha256": "466d402f5e8bb109903a3360bdc9f658028162abbffcdf60b6ebb4d41a47185f",
+      "accessedAt": "2026-10-01T20:43:57.996Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/ertu-ad-byrja-i-haskola-islands/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93879,
+      "sha256": "84779c14ac095a9e7d445e3d87d9b6735445bc9f2e71afaa1469570cc55e98a3",
+      "accessedAt": "2026-10-01T20:43:58.133Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/uppfaersla/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 93609,
+      "sha256": "569480992199955fadb7653a70329a68776c6e3f7e32894786b507b845f7a949",
+      "accessedAt": "2026-10-01T20:43:58.591Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/natasha-s-hlytur-maistjornuna-fyrir-mara-kemur-i-heimsokn/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 98990,
+      "sha256": "cb593e2b0686423fa21f4c438ee586de79faf690924cbf1fc424bb4249e41974",
+      "accessedAt": "2026-10-01T20:43:59.112Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/180-ar-fra-stofnun-handritasafns/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97268,
+      "sha256": "342a74c3a1611b2395db871c614e2455c1a320aed3b33cb9d09268bcf1d69e86",
+      "accessedAt": "2026-10-01T20:43:59.739Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/bokadu-stund-fyrir-bok/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 96971,
+      "sha256": "a929553cf751355160594c82587709c94523d2d7c5fa4fd9741a8ffd039dc41c",
+      "accessedAt": "2026-10-01T20:43:59.871Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/vid-erum-margar-2/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 97684,
+      "sha256": "f9e31a6b9f1436da996340b1dd6b50ee8716389dde9c62f2e8e23ef9fd642bd0",
+      "accessedAt": "2026-10-01T20:44:00.394Z"
+    },
+    {
+      "url": "https://landsbokasafn.is/anna-sigurdardottir-heidursdoktorsnafnbot-vid-haskola-islands/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102525,
+      "sha256": "a779622518502176d42470f79d842d2105adf072728b147db1b1bee99da223ef",
+      "accessedAt": "2026-10-01T20:44:01.014Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://landsbokasafn.is/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 117,
+    "sha256": "de2a10265c7d7b521696ea441953ea41119a68f1f4c22923f0cf546b1ca2d422",
+    "accessedAt": "2026-10-01T20:43:57.115Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "sourceId": "dedalus-books",
+  "name": "Dedalus Books",
+  "entryUrl": "https://www.dedalusbooks.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:46.893Z",
+  "requests": [
+    {
+      "url": "https://www.dedalusbooks.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 17800,
+      "sha256": "7cf0d02f761941e05e25bcd6e48aac4b596a5d8f62f8c7877176cdd02dae4a9e",
+      "accessedAt": "2026-10-01T20:51:47.629Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.dedalusbooks.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=UTF-8",
+    "bytes": 2489,
+    "sha256": "93ad14502f713b2b20730bf9bbf906206506b58d003f632dbfa5ae30e243bcd0",
+    "accessedAt": "2026-10-01T20:51:47.530Z",
+    "disallowed": [
+      "/images/"
+    ]
+  }
+}

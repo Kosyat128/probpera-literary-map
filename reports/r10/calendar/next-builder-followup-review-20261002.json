@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T23:00:37.447Z",
+  "status": "local-reproducibility-and-focused-governance-pass",
+  "defect": {
+    "entrypoint": "node scripts/build-russian-calendar-expansion-attestation-r10.mjs --check",
+    "observedFailure": "russian-date-prior-undici-test-import: occurrence count 1, expected 2",
+    "cause": "The accepted Next security patch added outer imports/read boundaries which the older calendar builder read as unexpected historical bytes."
+  },
+  "resolution": {
+    "method": "Separate exact additive projection before the accepted Next and older calendar layers.",
+    "reviewedFragments": 9,
+    "reviewedPaths": 5,
+    "priorAuthorityFilesUnchanged": 7,
+    "historicalPinsChanged": false,
+    "packet": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+    "packetJsonSha256": "ecfffbda991969b7f7f86e54918c8982146e2d3508aaaccf23736a13c692749e",
+    "nextSecurityPacketJsonSha256": "7cd5c87f83d924c33232b1cc495a35004a0a049989457a4e7ca8f7e4cd47d3bc",
+    "russianCalendarPacketJsonSha256": "bc1330bda023dc1fe9172a6275230d51124d92c70475fe643c3e5d8dd9e9bd49",
+    "boundaries": "Builders project the exact new builder layer first, then the accepted Next layer, then their existing calendar projections. Immutable-addition checks hash those exact projected bytes.",
+    "earlierBytes": "Marker-free older builder bytes are left unchanged for their unchanged historical whole-file/fragment checks; no hash bypass is added."
+  },
+  "checks": {
+    "builders": [
+      {
+        "command": "node scripts/build-russian-calendar-expansion-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/build-russian-calendar-expansion-attestation-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/build-calendar-followup-attestation-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/audit-russian-calendar-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/audit-popular-calendar-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      },
+      {
+        "command": "node scripts/audit-russian-calendar-expansion-r10.mjs --check",
+        "exitCode": 0,
+        "result": "pass"
+      }
+    ],
+    "focusedGovernance": {
+      "command": "npx vitest run scripts/lib/reviewed-next-builder-followup.test.mjs scripts/lib/reviewed-next-security-followup.test.mjs scripts/lib/reviewed-russian-calendar-expansion.test.mjs scripts/lib/reviewed-calendar-followup.test.mjs scripts/lib/reviewed-calendar-security-followup.test.mjs scripts/lib/reviewed-undici-security-followup.test.mjs scripts/lib/stage5-content-data-lock.test.mjs --maxWorkers=2",
+      "files": 7,
+      "passed": 81,
+      "failed": 0
+    },
+    "typescript": {
+      "command": "npx tsc -b --pretty false",
+      "exitCode": 0
+    },
+    "lint": {
+      "command": "npm run lint",
+      "exitCode": 0
+    },
+    "negativeGuards": [
+      "Missing, duplicate and changed individual integration fragments reject.",
+      "Unrelated appended bytes remain visible and do not match prior full-file hashes.",
+      "Removing all builder integration fragments does not qualify as accepted predecessor bytes.",
+      "Both predecessor builders equal their exact Git bytes.",
+      "All seven prior authority files retain raw/LF/canonical-JSON hashes.",
+      "Immutable Russian builder additions remain accepted only by exact projected hashes."
+    ]
+  },
+  "files": [
+    {
+      "path": "scripts/build-russian-calendar-expansion-attestation-r10.mjs",
+      "sha256": "c0d81408438fc14ca2bb013479696453c792082eeaf7e121d5841301a41b5c58"
+    },
+    {
+      "path": "scripts/build-calendar-followup-attestation-r10.mjs",
+      "sha256": "eec02257a6461df6dbf9018da100f5df6fecf3d27de962d264cc49ee8b4bc5d8"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-security-followup.mjs",
+      "sha256": "6bba8723534067aa81e99499505b71f8c5e802dc4b5d7953eaf6209c5a6050b2"
+    },
+    {
+      "path": "scripts/lib/reviewed-russian-calendar-expansion.mjs",
+      "sha256": "431dfba4d63676daf8fb9149eb7ff544ad6555a1e59ca283460f7efd7c39db59"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-security-followup.test.mjs",
+      "sha256": "4be80e8d4a48bb01fc9ba6090af038399e982570531ce586250a046c906f59c1"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-builder-followup.mjs",
+      "sha256": "adcb8349504a2757818a8a2c11a42ba6743887201e939301501525f412a73974"
+    },
+    {
+      "path": "scripts/lib/reviewed-next-builder-followup.test.mjs",
+      "sha256": "b4c9cf43739fb8d6a7a531275a052c140b6d7cdeb8b6253c86c3df7aa00f8aa9"
+    },
+    {
+      "path": "scripts/governance/next-builder-followup-reviewed-20261002.json",
+      "sha256": "02f41ba0d6c1af41ff965f434e9f85d91c346af3b3996034002dce66f79f3748"
+    }
+  ],
+  "scope": {
+    "canonicalNewsChanged": false,
+    "calendarFactsChanged": false,
+    "runtimeWorkerChanged": false,
+    "dependencyVersionChanged": false,
+    "priorPacketsChanged": false,
+    "remoteWrites": 0,
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  }
+}

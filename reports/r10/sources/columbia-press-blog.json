@@ -1,0 +1,11 @@
+{
+  "sourceId": "columbia-press-blog",
+  "name": "Columbia University Press",
+  "entryUrl": "https://cupblog.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.617Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

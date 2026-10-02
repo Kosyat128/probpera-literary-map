@@ -1,0 +1,751 @@
+{
+  "sourceId": "adarna",
+  "name": "Adarna House",
+  "entryUrl": "https://adarna.com.ph/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:42.840Z",
+  "requests": [
+    {
+      "url": "https://adarna.com.ph/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 127985,
+      "sha256": "d2d818e31b0c13b51c87ba30f024d5ec728f0ca8ee470673a20e5b1b9908d781",
+      "accessedAt": "2026-10-01T20:48:43.412Z"
+    },
+    {
+      "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 83493,
+      "sha256": "7b4c2ce3057ec77a609cc25c817fca1d5fbd453c3c4046fb30ee909f3938d8e7",
+      "accessedAt": "2026-10-01T20:48:43.686Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://adarna.com.ph/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 3612,
+    "sha256": "be4ee73450d7eca86eaa9e34c17009d0b9c85a49f7c84572f19ccfd36542304d",
+    "accessedAt": "2026-10-01T20:48:43.160Z",
+    "disallowed": [
+      "/admin",
+      "/cart/",
+      "/*/cart/",
+      "/checkout",
+      "/*/checkout",
+      "/checkouts/",
+      "/*/checkouts/",
+      "/orders",
+      "/*/orders",
+      "/account",
+      "/*/account",
+      "/9814894",
+      "/cdn/wpm/*.js",
+      "/services",
+      "/sf_*",
+      "/cart.js",
+      "/*/cart.js",
+      "/recommendations/products",
+      "/*/recommendations/products",
+      "/collections/*sort_by*",
+      "/*/collections/*sort_by*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/*/collections/*+*",
+      "/*/collections/*%2B*",
+      "/*/collections/*%2b*",
+      "/collections/*filter*&*filter*",
+      "/*/collections/*filter*&*filter*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*/blogs/*+*",
+      "/*/blogs/*%2B*",
+      "/*/blogs/*%2b*",
+      "/*?*ls=*&ls=*",
+      "/*?*ls%3*ls%3*",
+      "/*?*oseid=*",
+      "/*?*preview_theme_id=*",
+      "/*?*preview_script_id=*"
+    ]
+  },
+  "endpoint": {
+    "id": "adarna",
+    "name": "Adarna House",
+    "url": "https://adarna.com.ph/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "adarna",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://adarna.com.ph"
+    ],
+    "linkPattern": "^\\/collections\\/[^/]+\\/?$|^\\/pages\\/[^/]+\\/?$|^\\/blogs\\/kuwentong\\x2dadarna\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025"
+    ],
+    "verifiedAt": "2026-10-01T20:48:43.690Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 24,
+  "literaryCandidateCount": 24,
+  "sample": {
+    "sourceId": "adarna",
+    "source": {
+      "name": "Adarna House",
+      "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Adarna House Goes to Frankfurt Book Fair 2025",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:43.449Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 83493,
+      "sha256": "7b4c2ce3057ec77a609cc25c817fca1d5fbd453c3c4046fb30ee909f3938d8e7",
+      "accessedAt": "2026-10-01T20:48:43.686Z",
+      "headline": "Adarna House Goes to Frankfurt Book Fair 2025",
+      "excerpt": "Adarna House Goes to Frankfurt Book Fair 2025 Contact Us●Product Catalog●Blog & Announcements●Free Worksheets●Help & FAQs × AdarnaHouse × Books ▾ On SaleNewest TitlesAward-Winning TitlesBy Reading Level/AgeBy Book TypeBy Subject MatterRio Alma CollectionAnino ComicsA Plus (A+) Exclusive Products ▾ Big BooksWiKAHONAlamin, AlaminBuribooks Programs & Services ▾ Educational WorkshopsLive Storytelling ",
+      "publishedDates": [],
+      "canonical": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:43.690Z",
+  "foundItems": [
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adarna House Goes to Frankfurt Book Fair 2025",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/the-power-of-storytelling-at-home-adarna-house-honored-at-the-parents-choice-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Power of Storytelling at Home: Adarna House Honored at the Parents’ Choice Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-and-angat-buhay-launch-readgalo-the-gift-of-reading-book-donation-drive",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adarna House and Angat Buhay Launch \"Readgalo: The Gift of Reading\" Book Donation Drive",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/a-partnership-for-meaningful-learning-the-brilliant-hour-activity-books",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Partnership for Meaningful Learning: The Brilliant Hour Activity Books",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-donates-rights-for-over-1-million-books-to-deped",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adarna House Donates Rights for Over 1 Million Books to DepEd",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-leads-reading-remediation-workshop-in-tanay-rizal",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adarna House Leads Reading Remediation Workshop in Tanay, Rizal",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-and-ascott-makati-launch-adarna-books-suite-1",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adarna House and Ascott Makati Launch Adarna Books Suite",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-and-rmhc-empower-educators-through-beginning-reading-workshop",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Adarna House and RMHC Empower Educators Through Beginning Reading Workshop",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/how-adarna-house-helped-bring-reading-and-values-to-millions-of-filipino-children_",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Adarna House Helped Bring Reading and Values to Millions of Filipino Children",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/anino-comics-presents-vaklat-before-the-slay",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anino Comics Presents Vaklat! Before The Slay",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/klasrum-adarna-kicks-off-at-xavier-school-nuvali",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Klasrum Adarna Kicks Off at Xavier School Nuvali",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/si-al-estrella-ay-laking-adarna",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Si Al Estrella ay LAKING ADARNA",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/collections/award-winning-titles",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Award-Winning Titles",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/book-development-partnership",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Book Development Partnership",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/readgalo",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NEW: Readgalo 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/free-resources",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Free Worksheets",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/collections/all",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "By Reading Level/Age",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/collections/rio-alma-collection-childrens-books",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rio Alma Collection",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/programs-services",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Programs & Services",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/klasrum-adarna",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Educational Workshops",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/magkuwentuhan-tayo",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Live Storytelling Sessions",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/buklod-aklatan",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sponsor a Library",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/publishing-rights",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Publishing & Rights",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "adarna",
+      "source": {
+        "name": "Adarna House",
+        "url": "https://adarna.com.ph/pages/about-us",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Partner with Us",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:43.449Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "d2d818e31b0c13b51c87ba30f024d5ec728f0ca8ee470673a20e5b1b9908d781"
+}

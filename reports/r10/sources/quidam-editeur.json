@@ -1,0 +1,220 @@
+{
+  "sourceId": "quidam-editeur",
+  "name": "Quidam Editeur",
+  "entryUrl": "https://www.quidamediteur.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:05.544Z",
+  "requests": [
+    {
+      "url": "https://www.quidamediteur.com/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 32303,
+      "sha256": "2e10826a9e3419cc3437655ca68a19de679e6311957d9adf8363106035777ab8",
+      "accessedAt": "2026-10-01T20:48:06.858Z"
+    },
+    {
+      "url": "https://www.quidamediteur.com/actus",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 9321,
+      "sha256": "e03a7da6da68694415aae85e65189d0a79908365ed048b012fd531458d6c9825",
+      "accessedAt": "2026-10-01T20:48:06.964Z"
+    },
+    {
+      "url": "https://www.quidamediteur.com/actus/media",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 13299,
+      "sha256": "7474f99a0baad2d0421f74c626b6d26cb9813c56e89698b6a43c6f213e75e8c2",
+      "accessedAt": "2026-10-01T20:48:07.083Z"
+    },
+    {
+      "url": "https://www.quidamediteur.com/actus/lili",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 12606,
+      "sha256": "19cf61a16c13914b1ef4f85a912a47e500eaf4ef9c6e7fd40c552067f2a616c7",
+      "accessedAt": "2026-10-01T20:48:07.182Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.quidamediteur.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 291,
+    "sha256": "b22a188d817d9bc6d77d654b49020c08180cd0c991b850e4025fa942e2d56639",
+    "accessedAt": "2026-10-01T20:48:06.149Z",
+    "disallowed": [
+      "/content/*.txt$",
+      "/kirby/",
+      "/site/",
+      "/panel/",
+      "/assets/",
+      "/thumbs/",
+      "/webmail/",
+      "/siteCathy/",
+      "/sitemaps/",
+      "/stats/",
+      "/v1/",
+      "/help",
+      "/*.md$"
+    ]
+  },
+  "endpoint": {
+    "id": "quidam-editeur",
+    "name": "Quidam Editeur",
+    "url": "https://www.quidamediteur.com/actus",
+    "format": "html",
+    "language": "fr",
+    "region": "global",
+    "sourceFamilyId": "quidam-editeur",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.quidamediteur.com"
+    ],
+    "linkPattern": "^\\/actus\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.quidamediteur.com/actus/lili"
+    ],
+    "verifiedAt": "2026-10-01T20:48:07.183Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 3,
+  "literaryCandidateCount": 3,
+  "sample": {
+    "sourceId": "quidam-editeur",
+    "source": {
+      "name": "Quidam Editeur",
+      "url": "https://www.quidamediteur.com/actus/lili",
+      "language": "fr"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Les 18-19-20 septembre, Quidam est à Lisons Libres, salon des éditeurs indépendants d'Île-de-France. C'est à la Halle des Blancs Manteaux. Stand 29-30. Jane Sautièe y sera en dédicace dimanche vers 16h.",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:06.967Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.quidamediteur.com/actus/lili",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 12606,
+      "sha256": "19cf61a16c13914b1ef4f85a912a47e500eaf4ef9c6e7fd40c552067f2a616c7",
+      "accessedAt": "2026-10-01T20:48:07.182Z",
+      "headline": "Les 18-19-20 septembre, Quidam est à Lisons Libres, salon des éditeurs indépendants d'Île-de-France. C'est à la Halle des Blancs Manteaux. Stand 29-30. Jane Sautièe y sera en dédicace dimanche vers 16h.",
+      "excerpt": "Partager Partager cette page 18 sept. 2026 Les 18-19-20 septembre, Quidam est à Lisons Libres, salon des éditeurs indépendants d'Île-de-France. C'est à la Halle des Blancs Manteaux. Stand 29-30. Jane Sautièe y sera en dédicace dimanche vers 16h.",
+      "publishedDates": [
+        {
+          "value": "2026-09-17T11:42:14+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.quidamediteur.com/actus/lili",
+      "language": "fr",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:07.183Z",
+  "foundItems": [
+    {
+      "sourceId": "quidam-editeur",
+      "source": {
+        "name": "Quidam Editeur",
+        "url": "https://www.quidamediteur.com/actus/media",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Arno Bertina discutera avec Jane Sautière de «De la terre des pleurs un grand vent s'éleva», ainsi qu'avec Caroline Knecht, autrice de «Ainsi la Cour décide» (La Découverte). C'est à la médiathèque Persépolis de Saint-Ouen à 15 h 45.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:06.967Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "quidam-editeur",
+      "source": {
+        "name": "Quidam Editeur",
+        "url": "https://www.quidamediteur.com/actus/lili",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Les 18-19-20 septembre, Quidam est à Lisons Libres, salon des éditeurs indépendants d'Île-de-France. C'est à la Halle des Blancs Manteaux. Stand 29-30. Jane Sautièe y sera en dédicace dimanche vers 16h.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:06.967Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "quidam-editeur",
+      "source": {
+        "name": "Quidam Editeur",
+        "url": "https://www.quidamediteur.com/actus/monte",
+        "language": "fr"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La librairie du Parc (211 avenue Jean Jaurès, Paris 19e) accueille Jane Sautière pour «De la terre des pleurs un grand vent s'éleva». C'est à 19 h.",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:06.967Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "e03a7da6da68694415aae85e65189d0a79908365ed048b012fd531458d6c9825"
+}

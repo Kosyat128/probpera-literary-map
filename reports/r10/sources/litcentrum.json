@@ -1,0 +1,16 @@
+{
+  "sourceId": "litcentrum",
+  "name": "Slovak Literary Centre",
+  "entryUrl": "https://www.litcentrum.sk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:33.756Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.litcentrum.sk/robots.txt",
+    "error": "fetch failed",
+    "disallowed": []
+  }
+}

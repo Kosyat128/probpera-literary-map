@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "diagnosedAt": "2026-10-01T22:57:02.285Z",
+  "repository": "Kosyat128/probpera-literary-map",
+  "headSha": "af4f0a4598c40144d7e62c706793a156bfe79d09",
+  "workflowRunId": 36933179499,
+  "jobId": 110610257921,
+  "jobName": "Browser / webgl-3",
+  "jobLogsFetchedThrough": "GitHub Actions joblogs connector",
+  "failure": {
+    "step": "Run browser checks",
+    "shard": "5/6",
+    "project": "mobile-chromium",
+    "spec": "tests/e2e/public-doc-refinements.spec.mjs",
+    "line": 19,
+    "locator": ".book-of-day .book-source-link",
+    "message": "Element not found; expected visible within10000ms",
+    "attempts": 2,
+    "passed": 24,
+    "skipped": 9,
+    "failed": 1,
+    "shaderOrGPUFailure": false
+  },
+  "retainedArtifact": {
+    "artifactId": 11197966430,
+    "sha256": "b519bcf60e7f68c674d14810cb56bb21ac517751a7b7391366da06e97a19e069",
+    "localZip": ".tmp/webgl-3-af4f-diagnostics.zip",
+    "errorContexts": [
+      ".tmp/webgl-3-af4f-diagnostics/test-results/webgl-5/public-doc-refinements-boo-7d55c-eep-a-coherent-desktop-grid-mobile-chromium/error-context.md",
+      ".tmp/webgl-3-af4f-diagnostics/test-results/webgl-5/public-doc-refinements-boo-7d55c-eep-a-coherent-desktop-grid-mobile-chromium-retry1/error-context.md"
+    ],
+    "localZipSha256": "b519bcf60e7f68c674d14810cb56bb21ac517751a7b7391366da06e97a19e069",
+    "zipDigestMatchesGitHub": true
+  },
+  "originalDiagnosis": {
+    "selectedBook": "Дэвид Копперфилд",
+    "workKey": "england:charles_dickens:david-copperfield-editorial",
+    "bookLoaded": true,
+    "bothActionsVisible": true,
+    "legacySourceUrlAbsent": true,
+    "structuredReviewedSourcesPresent": true,
+    "cause": "October monthly selection chose a reviewed V2 record without legacysourceUrl; old UI/test required that legacy conditional reference link."
+  },
+  "latestUserRequirement": {
+    "instruction": "Remove the source reference from this authorial book-of-month rubric.",
+    "supersedesProposedStructuredSourceFallback": true
+  },
+  "resolution": {
+    "app": "Removed only existing book-source-link ActionLink and its unused icon import; preserved cover, author prose, actions and layout.",
+    "test": "Assert no book-source-link; retain copy/action and directory grid/overflow checks.",
+    "discardedOwnedHelperAndTests": true,
+    "newsAndTelegramSourceLinksChanged": false,
+    "protectedGlobeChanged": false
+  },
+  "verification": {
+    "sourceScopeFocusedTestsPassed": 12,
+    "typecheck": "npx tsc --noEmit passed",
+    "focusedBrowser": "Fresh built preview required; root coordinates build and CI.",
+    "focusedBrowserCommand": "npx playwright test --config=playwright.config.mjs tests/e2e/public-doc-refinements.spec.mjs --grep \"book of the month and the section directory\" --workers=1"
+  },
+  "remoteWrites": 0
+}

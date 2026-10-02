@@ -1,0 +1,16 @@
+{
+  "sourceId": "manchester-press",
+  "name": "Manchester University Press",
+  "entryUrl": "https://manchesteruniversitypress.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:39.835Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://manchesteruniversitypress.co.uk/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,415 @@
+{
+  "sourceId": "coffee-house-press",
+  "name": "Coffee House Press",
+  "entryUrl": "https://coffeehousepress.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:56.207Z",
+  "requests": [
+    {
+      "url": "https://coffeehousepress.org/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 599507,
+      "sha256": "e08bf0b7536269d3ca402b577762a78961f36d9d3489341d07b1b1d877685b86",
+      "accessedAt": "2026-10-01T20:47:57.149Z"
+    },
+    {
+      "url": "https://coffeehousepress.org/blogs/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 379415,
+      "sha256": "02b4ea77a68cede5d89a6a44ee1d61cd1d21c4904cd519e2ad8f6e2bcc789123",
+      "accessedAt": "2026-10-01T20:47:57.590Z"
+    },
+    {
+      "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 360876,
+      "sha256": "d370f018a786859c3ab8dffd54a2e3e9db5a53e1688aed6f58530ad54790ec29",
+      "accessedAt": "2026-10-01T20:47:58.005Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://coffeehousepress.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 3642,
+    "sha256": "bae85bd08791fd0942234a4632c60ba76d5be92f91642b808cd1cbe556b45ed1",
+    "accessedAt": "2026-10-01T20:47:56.635Z",
+    "disallowed": [
+      "/admin",
+      "/cart/",
+      "/*/cart/",
+      "/checkout",
+      "/*/checkout",
+      "/checkouts/",
+      "/*/checkouts/",
+      "/orders",
+      "/*/orders",
+      "/account",
+      "/*/account",
+      "/14759808",
+      "/cdn/wpm/*.js",
+      "/services",
+      "/sf_*",
+      "/cart.js",
+      "/*/cart.js",
+      "/recommendations/products",
+      "/*/recommendations/products",
+      "/collections/*sort_by*",
+      "/*/collections/*sort_by*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/*/collections/*+*",
+      "/*/collections/*%2B*",
+      "/*/collections/*%2b*",
+      "/collections/*filter*&*filter*",
+      "/*/collections/*filter*&*filter*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*/blogs/*+*",
+      "/*/blogs/*%2B*",
+      "/*/blogs/*%2b*",
+      "/*?*ls=*&ls=*",
+      "/*?*ls%3*ls%3*",
+      "/*?*oseid=*",
+      "/*?*preview_theme_id=*",
+      "/*?*preview_script_id=*"
+    ]
+  },
+  "endpoint": {
+    "id": "coffee-house-press",
+    "name": "Coffee House Press",
+    "url": "https://coffeehousepress.org/blogs/news",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "coffee-house-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://coffeehousepress.org"
+    ],
+    "linkPattern": "^\\/blogs\\/news\\/[^/]+\\/?$|^\\/collections\\/[^/]+\\/?$|^\\/blogs\\/book\\x2dtours\\/[^/]+\\/?$|^\\/pages\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards"
+    ],
+    "verifiedAt": "2026-10-01T20:47:58.021Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "coffee-house-press",
+    "source": {
+      "name": "Coffee House Press",
+      "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:47:57.637Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 360876,
+      "sha256": "d370f018a786859c3ab8dffd54a2e3e9db5a53e1688aed6f58530ad54790ec29",
+      "accessedAt": "2026-10-01T20:47:58.005Z",
+      "headline": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+      "excerpt": "Congratulations to Brian Evenson! His latest collection of short stories, Good Night, Sleep Tight, is a finalist for the 2025 World Fantasy Award for Collections! The World Fantasy Awards will be presented on Sunday, November 2 at the World Fantasy Convention in Brighton. Click here to order your copy Click here to explore Brian Evenson's work Share Share Link Close Copy link ← Older Post Newer Po",
+      "publishedDates": [
+        {
+          "value": "2025-07-07T15:51:07Z",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:58.021Z",
+  "foundItems": [
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/the-spring-2026-season-catalog-is-here",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Spring 2026 Season Catalog is Here!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/sand-catcher-longlisted-for-the-national-translation-award-in-prose",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sand-Catcher Named a Winner for the National Translation Award in Prose!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/alt-nature-named-a-finalist-for-the-lambda-literary-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alt-Nature Named a Finalist for the Lambda Literary Awards!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/coffee-house-press-bookmark-contest",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Coffee House Press Bookmark Contest",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/brewed-for-you-the-book-matching-quiz",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Brewed for You: The Book-Matching Quiz!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/alcala-borzutzky-and-dutton-are-finalists-for-the-big-other-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alcalá, Borzutzky, and Dutton are Finalists for the Big Other Awards!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/editorial-announcement-1",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Editorial Announcement",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/blogs/news/a-message-from-coffee-house-press",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "A Message from Coffee House Press",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "source": {
+        "name": "Coffee House Press",
+        "url": "https://coffeehousepress.org/collections/all",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Continue browsing",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:47:57.637Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "02b4ea77a68cede5d89a6a44ee1d61cd1d21c4904cd519e2ad8f6e2bcc789123"
+}

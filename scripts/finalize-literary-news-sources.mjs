@@ -1,6 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { checkedProbeSourceId } from './lib/literary-news-probe-patterns.mjs';
 import { LITERARY_NEWS_SOURCES } from './lib/literary-news-sources.mjs';
+import { R10_SOURCE_PROFILES, R10_SOURCE_GEOGRAPHY } from './lib/literary-news-source-profiles.mjs';
+import { SOURCE_GROWTH_APPROVED_IDS, SOURCE_GROWTH_HELD, SOURCE_GROWTH_FOLLOWUP_REPORTS } from './lib/literary-news-source-growth-review.mjs';
 import { promotedNewsSourceEndpoint, serializeNewsSourceCode } from './lib/literary-news-source-promotion.mjs';
 
 const root='reports/r10/sources';
@@ -35,12 +37,15 @@ const rejected={
   'rsl':'Selected sample is a film-club discussion without an evidenced book relation; profile needs narrower selection.',
   'corpus':'Candidate headline is only a date; needs a source-specific headline selector before admission.',
 };
-const family=id=>['prh','prh-library','penguinrandomhousegrupoeditorial-com'].includes(id)?'penguin-random-house':['ast','corpus','eksmo'].includes(id)?'eksmo-ast':id;
+const family=id=>['prh','prh-library','penguinrandomhousegrupoeditorial-com'].includes(id)?'penguin-random-house':['ast','corpus','eksmo'].includes(id)?'eksmo-ast':['virago','hachette-book-group'].includes(id)?'hachette-livre':id;
 const uncertainCountries=new Set(['penbelarus-org','pen-kurd-org','brittle-paper']);
-const profiles=[];const records=[];const geography=new Map();
+const profiles=[];const records=[];const geography=new Map(Object.entries(R10_SOURCE_GEOGRAPHY));
+const priorProfileIds=new Set(R10_SOURCE_PROFILES.map(source=>source.id));
+const approvedGrowth=new Set(SOURCE_GROWTH_APPROVED_IDS);
 for(const c of candidates.candidates){
   checkedProbeSourceId(c.id);
-  let r;try{r=JSON.parse(await readFile(root+'/'+c.id+'.json','utf8'));}catch{r={sourceId:c.id,status:'not_probed',reason:'No runtime evidence recorded.'};}
+  const reportPath=SOURCE_GROWTH_FOLLOWUP_REPORTS[c.id]||root+'/'+c.id+'.json';
+  let r;try{r=JSON.parse(await readFile(reportPath,'utf8'));}catch{r={sourceId:c.id,status:'not_probed',reason:'No runtime evidence recorded.'};}
   c.sourceFamilyId=family(c.id);
   if(c.id==='netflix-book-adaptations'){c.discoveryEnabled=false;c.disabledReason='robots_disallowed';r.discoveryEnabled=false;r.disabledReason='robots_disallowed';await writeFile(root+'/'+c.id+'.json',JSON.stringify(r,null,2)+'\n');}
   const evidence={method:c.discovery.method,url:c.discovery.url,organisation:c.name,statement:'Organisation country is distinct from the country of each covered event.'};
@@ -52,26 +57,31 @@ for(const c of candidates.candidates){
   else{evidence.method='official_organisation_identity';evidence.excerpt=c.name;}
   if(c.id==='asymptote'){evidence.url='https://www.asymptotejournal.com/about/';evidence.excerpt='Asymptote is incorporated in Singapore.';}
   if(uncertainCountries.has(c.id)){c.countryCodes=[];evidence.status='office_country_unconfirmed';evidence.statement='Literary constituency is recorded as coverage only; no office-country claim is made.';}
-  else evidence.status='organisation_country';
-  c.countryEvidence=evidence;
-  geography.set(c.id,{sourceFamilyId:c.sourceFamilyId,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,countryEvidence:evidence});
-  if(rejected[c.id]){
-    r.technicalProbeStatus=r.technicalProbeStatus||r.status;r.status='editorial_profile_held';r.reason=rejected[c.id];
-    await writeFile(root+'/'+c.id+'.json',JSON.stringify(r,null,2)+'\n');
+  else evidence.status=c.countryCodes.length?'organisation_country':'office_country_unconfirmed';
+  if(!Object.hasOwn(R10_SOURCE_GEOGRAPHY,c.id)) {
+    c.countryEvidence=c.countryEvidence||evidence;
+    geography.set(c.id,{sourceFamilyId:c.sourceFamilyId,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,countryEvidence:c.countryEvidence});
   }
-  c.status=r.status;c.probe={attemptedAt:r.attemptedAt||null,lastSuccessAt:r.status==='runtime_verified'?r.lastSuccessAt:null,reason:r.reason,report:root+'/'+c.id+'.json'};
+  const editorialHold=SOURCE_GROWTH_HELD[c.id]||(!approvedGrowth.has(c.id)&&rejected[c.id])
+    ||(!priorProfileIds.has(c.id)&&r.status==='runtime_verified'&&!approvedGrowth.has(c.id)?'Unreviewed additional source profile; technical availability cannot establish literary news scope.':null);
+  if(editorialHold){
+    r={...r,technicalProbeStatus:r.technicalProbeStatus||r.status,status:'editorial_profile_held',reason:editorialHold};
+  }
+  c.status=r.status;c.probe={attemptedAt:r.attemptedAt||null,lastSuccessAt:r.status==='runtime_verified'?r.lastSuccessAt:null,reason:r.reason,report:reportPath};
   if(r.status==='runtime_verified'){
     const p={...promotedNewsSourceEndpoint(r.endpoint,r,LITERARY_NEWS_SOURCES),...geography.get(c.id)};
     p.sourceClass=c.sourceClass;
-    p.evidenceReport=root+'/'+c.id+'.json';
+    p.evidenceReport=reportPath;
     p.autoPublication=false;
     p.profileScope='Discovery only; source content cannot grant publication rights. Every item remains held pending factual and bilingual review.';
     p.refreshIntervalSeconds=['festival','awards'].includes(c.sourceClass)?21600:7200;
     profiles.push(p);
   }
-  records.push({sourceId:c.id,name:c.name,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,sourceFamilyId:c.sourceFamilyId,sourceClass:c.sourceClass,status:r.status,reason:r.reason,endpoint:r.endpoint?.url||null,format:r.endpoint?.format||null,language:r.endpoint?.language||c.languageHint,finds:r.status==='runtime_verified'?r.candidateCount||0:0,ready:0,public:0,sample:r.status==='runtime_verified'?{url:r.sample.source.url,title:r.sample.title,detailHeadline:r.sample.detail.headline,sourcePublishedAt:r.sample.publishedAt||null,observedAt:r.sample.detail.accessedAt}:null,evidence:root+'/'+c.id+'.json'});
+  records.push({sourceId:c.id,name:c.name,countryCodes:c.countryCodes,coverageCountryCodes:c.coverageCountryCodes,sourceFamilyId:c.sourceFamilyId,sourceClass:c.sourceClass,status:r.status,reason:r.reason,endpoint:r.endpoint?.url||null,format:r.endpoint?.format||null,language:r.endpoint?.language||c.languageHint,finds:r.status==='runtime_verified'?r.candidateCount||0:0,ready:0,public:0,sample:r.status==='runtime_verified'?{url:r.sample.source.url,title:r.sample.title,detailHeadline:r.sample.detail.headline,sourcePublishedAt:r.sample.publishedAt||null,observedAt:r.sample.detail.accessedAt}:null,evidence:reportPath});
 }
 const serialize=serializeNewsSourceCode;
+const appended=profiles.filter(source=>!priorProfileIds.has(source.id));
+profiles.splice(0,profiles.length,...R10_SOURCE_PROFILES,...appended);
 await writeFile('scripts/lib/literary-news-source-profiles.mjs','/** Code-owned destinations, promoted only after recorded bounded HTTP, runtime parser and item-detail probes. */\nexport const R10_SOURCE_PROFILES = [\n'+profiles.map(serialize).join(',\n')+'\n];\n\nexport const R10_SOURCE_GEOGRAPHY = '+JSON.stringify(Object.fromEntries(geography),null,2)+';\n');
 await writeFile('data/news/r10-source-candidates.json',JSON.stringify(candidates,null,2)+'\n');
 const counts={researchedCandidates:records.length,runtimeVerifiedEndpoints:profiles.length,verifiedSourceFamilies:new Set(profiles.map(x=>x.sourceFamilyId)).size,verifiedOrganisationCountries:[...new Set(profiles.flatMap(x=>x.countryCodes))].sort(),researchedOrganisationCountries:[...new Set(records.flatMap(x=>x.countryCodes))].sort(),languages:[...new Set(profiles.map(x=>x.language))].sort(),formats:Object.fromEntries(['rss','atom','html'].map(f=>[f,profiles.filter(x=>x.format===f).length])),finds:records.reduce((n,x)=>n+x.finds,0),ready:0,public:0};

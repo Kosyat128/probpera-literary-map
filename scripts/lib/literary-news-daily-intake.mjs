@@ -24,11 +24,14 @@ function circularSelection(rows, count, slot) {
 /** Every approved active endpoint has a turn; Russian sources keep a share of
  * every bounded run, while worldwide sources rotate by region and country. */
 export function selectDailyNewsSources({sources=LITERARY_NEWS_SOURCES,current=new Date(),
-  sourceLimit=DAILY_NEWS_INTAKE_LIMITS.sources}={}) {
+  sourceLimit=DAILY_NEWS_INTAKE_LIMITS.sources,rotationMinutes=DAILY_NEWS_INTAKE_LIMITS.rotationMinutes}={}) {
   if (!Number.isFinite(current.getTime()) || !Number.isSafeInteger(sourceLimit) || sourceLimit<1
-    || sourceLimit>DAILY_NEWS_INTAKE_LIMITS.maximumSources || !Array.isArray(sources)) throw Error('daily_source_budget_invalid');
+    || sourceLimit>DAILY_NEWS_INTAKE_LIMITS.maximumSources || !Array.isArray(sources)
+    || !Number.isSafeInteger(rotationMinutes) || rotationMinutes<30 || rotationMinutes>1440) throw Error('daily_source_budget_invalid');
   const active=sources.filter(s=>s.discoveryEnabled!==false && ['html','rss','atom'].includes(s.format||'html'));
-  const slot=Math.floor(current.getTime()/(DAILY_NEWS_INTAKE_LIMITS.rotationMinutes*60000));
+  // Follow the caller's actual schedule: advancing four 30-minute slots per
+  // two-hour Cron can indefinitely skip most endpoints at some registry sizes.
+  const slot=Math.floor(current.getTime()/(rotationMinutes*60000));
   const russian=active.filter(s=>/^ru(?:-|$)/i.test(s.language||''));
   const worldwide=active.filter(s=>!/^ru(?:-|$)/i.test(s.language||''));
   const buckets=new Map();
@@ -51,14 +54,16 @@ function sourceContract(source) {
 
 /** This is a bounded factual review intake, never an automatic confirmed flag.
  * A missing publication date stays unknown; observedAt is not publishedAt. */
-export function extractDailyNewsDetail(html, url) {
+export function extractDailyNewsDetail(html, url, source = {}) {
   const $ = load(html), dates = [], images = [];
   for (const selector of ['meta[property="article:published_time"]','meta[name="date"]','meta[name="DC.date.issued"]']) {
     const value = $(selector).attr('content'); if (value) dates.push({ value, method: selector });
   }
   for (const property of ['og:image','twitter:image']) {
     const value = $(`meta[property="${property}"],meta[name="${property}"]`).first().attr('content');
-    const parsed = canonicalUrl(value, url); if (value && parsed) images.push({ url: parsed.href, method: property,
+    const parsed = canonicalUrl(value, url);
+    const brandingImage = parsed && /(?:^|[\/._-])(?:logo|favicon|site-icon|placeholder|avatar|default)(?:[\/._-]|$)/iu.test(parsed.pathname);
+    if (value && parsed && !brandingImage && !images.some(image => image.url === parsed.href)) images.push({ url: parsed.href, method: property,
       displayOnly: true, socialReuseApproved: false });
   }
   $('script[type="application/ld+json"]').each((_, element) => {
@@ -72,17 +77,32 @@ export function extractDailyNewsDetail(html, url) {
       }; visit(JSON.parse($(element).html()));
     } catch { /* Invalid JSON-LD does not become evidence. */ }
   });
-  const headline = plain($('.entry-title, h1[itemprop="headline"]').first().text()
-    || $('meta[property="og:title"]').attr('content') || $('h1').first().text() || $('title').text());
-  $('script,style,nav,footer,header,aside').remove();
-  const main = $('article, main, .entry-content, .post-content, .news-detail').first();
-  return { headline: headline.slice(0, 500), text: plain((main.length ? main : $.root()).text()).slice(0, 14000),
+  const selectedHeadline = source.detailHeadlineSelector ? $(source.detailHeadlineSelector).first() : null;
+  const headline = plain((selectedHeadline?.is('meta') ? selectedHeadline.attr('content') : selectedHeadline?.text())
+    || $('article h1, main h1, .news-detail h1').first().text()
+    || $('.entry-title, h1[itemprop="headline"]').first().text()
+    || $('meta[property="og:title"]').attr('content') || $('h1').first().text() || $('head > title').first().text());
+  // Some publisher layouts nest the primary article inside a footer wrapper.
+  // Capture the code-owned precise scope before removing surrounding chrome.
+  const selectedBody = source.detailTextSelector ? $(source.detailTextSelector).first().clone() : null;
+  $('script,style,noscript,template,svg,form,nav,footer,header,aside').remove();
+  // Keep paragraph/list boundaries in the exact evidence text. Adjacent HTML
+  // blocks otherwise concatenate words and corrupt quotations sent for review.
+  $('p,li,h1,h2,h3,h4,blockquote,br').append('\n');
+  if (selectedBody?.length) {
+    selectedBody.find('script,style,noscript,template,svg,form,nav,footer,header,aside').remove();
+    selectedBody.find('p,li,h1,h2,h3,h4,blockquote,br').append('\n');
+  }
+  const main = selectedBody?.length ? selectedBody : $('article, .entry-content, .post-content, .news-detail').first();
+  const body = main.length ? main : $('main').first();
+  return { headline: headline.slice(0, 500), text: plain((body.length ? body : $.root()).text()).slice(0, 14000),
     publishedDates: dates.slice(0, 8), images, language: $('html').attr('lang') || null,
     canonical: canonicalUrl($('link[rel="canonical"]').attr('href') || url, url)?.href || url };
 }
 
 export async function collectDailyNewsReview({ current = new Date(), detailLimit = DAILY_NEWS_INTAKE_LIMITS.details,
-  sourceLimit=DAILY_NEWS_INTAKE_LIMITS.sources, sources:approvedSources=LITERARY_NEWS_SOURCES,
+  sourceLimit=DAILY_NEWS_INTAKE_LIMITS.sources, rotationMinutes=DAILY_NEWS_INTAKE_LIMITS.rotationMinutes,
+  sources:approvedSources=LITERARY_NEWS_SOURCES,
   reviewed:reviewedInput=[],readReviewed=null,fetchImpl,
   resolveMediaEvidence=async()=>({status:'rights_unverified'}) } = {}) {
   if(typeof fetchImpl!=='function')throw Error('daily_fetch_adapter_required');
@@ -90,7 +110,7 @@ export async function collectDailyNewsReview({ current = new Date(), detailLimit
   const reviewed = typeof readReviewed==='function' ? await readReviewed() : reviewedInput;
   if(!Array.isArray(reviewed))throw Error('daily_reviewed_input_invalid');
   const existing = new Set(reviewed.map(row => canonicalUrl(row.source.url)?.href));
-  const sources=selectDailyNewsSources({sources:approvedSources,current,sourceLimit});
+  const sources=selectDailyNewsSources({sources:approvedSources,current,sourceLimit,rotationMinutes});
   const sourceById=new Map(sources.map(s=>[s.id,s]));
   const requests = [], documents = [];
   const service = createNewsService({ sources, now: () => current, readReviewed: () => [],
@@ -124,13 +144,13 @@ export async function collectDailyNewsReview({ current = new Date(), detailLimit
       const source=sourceById.get(row.sourceId),result = await fetchImpl(row.source.url,{encoding:source?.encoding});
       return { ...row,sourceProfile:sourceContract(source),resolvedMediaEvidence:await resolveMediaEvidence(row,current),
         evidence: { url: result.url, httpStatus: result.status, accessedAt: result.accessedAt,
-        responseSha256: result.sha256, ...extractDailyNewsDetail(result.text, result.url) } };
+        responseSha256: result.sha256, ...extractDailyNewsDetail(result.text, result.url, source) } };
     } catch (error) { return { ...row,sourceProfile:sourceContract(sourceById.get(row.sourceId)),
       resolvedMediaEvidence:{status:'rights_unverified'},evidence: null,
       detailError: /^http_\d+$/.test(error.message) ? error.message : 'detail_unavailable' }; }
   });
   return { schemaVersion: 2, contract:DAILY_NEWS_INTAKE_CONTRACT,generatedAt: current.toISOString(), editorialTimeZone: 'Europe/Moscow',
-    selectedSources:sources.map(sourceContract),budgets:{sourceLimit,detailLimit,rotationMinutes:DAILY_NEWS_INTAKE_LIMITS.rotationMinutes},
+    selectedSources:sources.map(sourceContract),budgets:{sourceLimit,detailLimit,rotationMinutes},
     scope: 'Current bounded source intake and fetched article evidence; all findings remain held until factual and RU/EN review.',
     counts: { approvedActiveSources:approvedSources.filter(s=>s.discoveryEnabled!==false).length,
       checkedSources: sources.length, totalFinds: finds.length, unreviewedRecentOrUndated: candidates.length,

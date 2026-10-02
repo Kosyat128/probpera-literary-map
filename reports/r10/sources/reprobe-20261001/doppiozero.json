@@ -1,0 +1,1876 @@
+{
+  "sourceId": "doppiozero",
+  "name": "Doppiozero",
+  "entryUrl": "https://www.doppiozero.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:59.679Z",
+  "requests": [
+    {
+      "url": "https://www.doppiozero.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 220915,
+      "sha256": "a390a3a8fceff2ba398bf79184564d36a7746ee67180b7128d4c04a025a146e1",
+      "accessedAt": "2026-10-01T20:45:00.510Z"
+    },
+    {
+      "url": "https://www.doppiozero.com/il-pop-di-tommaso-labranca",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 98228,
+      "sha256": "ccdb70224a7587213b2fd64cd444ccd2e2fabe28aa1bc9bd9ece57c6f38bba7c",
+      "accessedAt": "2026-10-01T20:45:00.972Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.doppiozero.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2027,
+    "sha256": "773fb8d35bb9a39d35335ee6db8dc5c912d2aacbfb823152d9c61cd647dd902d",
+    "accessedAt": "2026-10-01T20:45:00.199Z",
+    "disallowed": [
+      "/core/",
+      "/profiles/",
+      "/README.md",
+      "/composer/Metapackage/README.txt",
+      "/composer/Plugin/ProjectMessage/README.md",
+      "/composer/Plugin/Scaffold/README.md",
+      "/composer/Plugin/VendorHardening/README.txt",
+      "/composer/Template/README.txt",
+      "/modules/README.txt",
+      "/sites/README.txt",
+      "/themes/README.txt",
+      "/web.config",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips",
+      "/node/add/",
+      "/search/",
+      "/user/register",
+      "/user/password",
+      "/user/login",
+      "/user/logout",
+      "/media/oembed",
+      "/*/media/oembed",
+      "/index.php/admin/",
+      "/index.php/comment/reply/",
+      "/index.php/filter/tips",
+      "/index.php/node/add/",
+      "/index.php/search/",
+      "/index.php/user/password",
+      "/index.php/user/register",
+      "/index.php/user/login",
+      "/index.php/user/logout",
+      "/index.php/media/oembed",
+      "/index.php/*/media/oembed"
+    ]
+  },
+  "endpoint": {
+    "id": "doppiozero",
+    "name": "Doppiozero",
+    "url": "https://www.doppiozero.com/",
+    "format": "html",
+    "language": "it",
+    "region": "global",
+    "sourceFamilyId": "doppiozero",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.doppiozero.com"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.doppiozero.com/il-pop-di-tommaso-labranca"
+    ],
+    "verifiedAt": "2026-10-01T20:45:00.979Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 69,
+  "literaryCandidateCount": 69,
+  "sample": {
+    "sourceId": "doppiozero",
+    "source": {
+      "name": "Doppiozero",
+      "url": "https://www.doppiozero.com/il-pop-di-tommaso-labranca",
+      "language": "it"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Il pop di Tommaso Labranca",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:45:00.597Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.doppiozero.com/il-pop-di-tommaso-labranca",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 98228,
+      "sha256": "ccdb70224a7587213b2fd64cd444ccd2e2fabe28aa1bc9bd9ece57c6f38bba7c",
+      "accessedAt": "2026-10-01T20:45:00.972Z",
+      "headline": "Il pop di Tommaso Labranca",
+      "excerpt": "Libri Il pop di Tommaso Labranca Pasquale Palmieri 1 Ottobre 2026 “Di solito gli osservatori credono di raggiungere precisione e imparzialità ponendosi in orbita geostatica sull’oggetto del loro studio, avvertendo nel frattempo della loro totale non-appartenenza all’ambiente che analizzano. Io invece non mi trovo sopra, ma dentro al trash. Lo osservo e lo difendo attivamente dagli attacchi dei suo",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T03:10:00+0200",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.doppiozero.com/il-pop-di-tommaso-labranca",
+      "language": "it",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:45:00.979Z",
+  "foundItems": [
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/il-pop-di-tommaso-labranca",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il pop di Tommaso Labranca",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/pasquale-palmieri",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Pasquale Palmieri",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/la-guerra-non-e-un-videogame",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La guerra non è un videogame",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/di-tutti-e-di-nessuno-echo-chamber",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Di tutti e di nessuno. The Echo Chamber",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/amelia-rosselli-geometrie-della-resa",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Amelia Rosselli, geometrie della resa",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/silvia-vizzardelli",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Silvia Vizzardelli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/hartmut-rosa-la-democrazia-e-la-religione",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hartmut Rosa: la democrazia e la religione",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/fan-ho-cartier-bresson-doriente",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fan Ho, Cartier-Bresson d'oriente",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/carola-allemandi",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Carola Allemandi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/matematici-del-novacene",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Matematici del Novacene",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/luca-barbieri-viale",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Luca Barbieri Viale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/anna-kantoch-stagioni-nere",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anna Kańtoch, stagioni nere",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/alessandro-mezzena-lona",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alessandro Mezzena Lona",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/tu-non-sai-lacqua-cosa-e",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tu non sai l’acqua cosa è",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/valentina-domenici",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Valentina Domenici",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/naza-il-buio-osceno-che-ci-riguarda",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Naza: il buio osceno che ci riguarda",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/aki-sasamoto-disorientarsi-allhangar-bicocca",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aki Sasamoto: disorientarsi all’Hangar Bicocca",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/margherita-artoni",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Margherita Artoni",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/caroline-dawson-dal-cile-al-canada",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Caroline Dawson dal Cile al Canada",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/csi-reunion-tour",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "CSI reunion tour",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/davide-ferrario",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Davide Ferrario",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/woke-limmaginario-e-la-politica",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Woke: l’immaginario e la politica",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/enrico-redaelli",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Enrico Redaelli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/carlo-mollino-dalla-alla-z",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Carlo Mollino dall’A alla Z",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/maria-luisa-ghianda",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Maria Luisa Ghianda",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/larazzo-di-bayeux-sbarca-londra",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "L'Arazzo di Bayeux sbarca a Londra",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/dress-code-29-donna-con-la-gonna",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dress code 29. Donna con la gonna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/bianca-terracciano",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bianca Terracciano",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/la-vita-segreta-dei-titoli",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "La vita segreta dei titoli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/il-dilemma-tedesco-nulla-si-ripete",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il dilemma tedesco: nulla si ripete",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/manlio-brusatin-il-colore",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Manlio Brusatin, il colore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/luisa-bertolini",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Luisa Bertolini",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/aldes-il-sesso-degli-angeli",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aldes: Il sesso degli angeli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/uguaglianza-diseguale",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Uguaglianza diseguale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/francesca-rigotti",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Francesca Rigotti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/tra-sisifo-e-chuck-jones-coyote-vs-acme",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tra Sisifo e Chuck Jones: Coyote vs. Acme",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/francesco-dasero",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Francesco D'Asero",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/vai-scoprire-cosa-ce-nello-spazio",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vai a scoprire cosa c’è nello spazio!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/wallace-federer-e-la-battaglia-navale",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wallace, Federer e la battaglia navale",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/riccardo-fedriga",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Riccardo Fedriga",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/america-al-voto-trump-e-lutopia-di-ayn-rand",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "America al voto. Trump e l’utopia di Ayn Rand",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/martin-bruno-fotografia-e-psichedelia",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Martin Bruno: fotografia e psichedelia",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/aurelio-andrighetto",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Aurelio Andrighetto",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/samah-jabr-una-psichiatra-in-palestina",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Samah Jabr una psichiatra in Palestina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/collezione-di-polvere",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Collezione di polvere",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/valerio-gaeti-scolpire-i-promessi-sposi",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Valerio Gaeti. Scolpire I Promessi Sposi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/salvatore-silvano-nigro",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Salvatore Silvano Nigro",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/una-tomba-in-germania",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Una tomba in Germania",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/davide-carnevali",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Davide Carnevali",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/acemoglu-nobel-economia-e-ai",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Acemoglu: Nobel, economia e AI",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/alfredo-gigliobianco",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alfredo Gigliobianco",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/segnature-postali",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "segnature postali",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/alberto-cortes-devozioni-damore",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alberto Cortés, devozioni d’amore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/josef-albers-scrivere-il-colore",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Josef Albers: scrivere il colore",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/carne-e-celluloide-shards",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Carne e celluloide: The Shards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/tommaso-tuppini",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Tommaso Tuppini",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/disegnare-mostri-e-facile",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Disegnare mostri è facile",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/alessandro-bonaccorsi",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Alessandro Bonaccorsi",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/como-stadio-vista-lago",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Como, stadio vista lago",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/andrea-giardina",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Andrea Giardina",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/quando-il-cinema-era-il-mondo",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quando il cinema era il mondo",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/gabriele-gimmelli",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gabriele Gimmelli",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/occhio-rotondo-72-mannequins",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Occhio rotondo 72. Mannequins",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/marco-belpoliti",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Marco Belpoliti",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/occhio-rotondo-71-in-fila",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Occhio rotondo 71. In fila",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/il-teatro-del-no",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Il teatro del no",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/maria-luisa-bigai",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Maria Luisa Bigai",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/negare-o-svelare",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Negare o svelare",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "doppiozero",
+      "source": {
+        "name": "Doppiozero",
+        "url": "https://www.doppiozero.com/annalisa-de-curtis",
+        "language": "it"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Annalisa de Curtis",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:45:00.597Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a390a3a8fceff2ba398bf79184564d36a7746ee67180b7128d4c04a025a146e1"
+}

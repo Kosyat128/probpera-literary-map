@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:28:22.989Z",
+  "reviewer": "root-independent-agent-review",
+  "batchId": "current-news-reviewed-20261002",
+  "recordSha256": "6404a12b9474c7b66ba4719f65c4bbc009fa153aebff1050a496eab86e865e7d",
+  "records": 26,
+  "sourceCapturesMatched": 26,
+  "sourceQuoteChecks": "Every exact proof quote matches a separately retained HTTP200 source body or headline; all26 response digests match captured evidence.",
+  "editorialChecks": [
+    "RU/EN facts and named works match; original untranslated titles retained where no official Russian title is evidenced.",
+    "Interviews, rights acquisitions, shortlist announcements and future events are distinguished from completed releases.",
+    "All publication dates have explicit source evidence; eight date-only records preserve precision.",
+    "Unneeded editing-process statements were removed in both languages.",
+    "Historical ceremony, generic bookshelf and logo proposals are not applied as article illustrations."
+  ],
+  "manualScope": "Agent review of the complete batch and selected underlying article facts; this does not assert human editorial review.",
+  "beforeCanonical": 258,
+  "afterCanonical": 284,
+  "eligibleLocal": 247,
+  "publicProductionCount": null,
+  "currentlyPublicNew": 0,
+  "target": [
+    600,
+    700
+  ],
+  "targetReached": false,
+  "limitations": [
+    "The requested600-700public items remain pending. Held discovery candidates are not counted as news.",
+    "This report is local editorial evidence, not a deployment or Telegram acknowledgement."
+  ]
+}

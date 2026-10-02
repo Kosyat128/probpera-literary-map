@@ -1,0 +1,16 @@
+{
+  "sourceId": "faber",
+  "name": "Faber & Faber",
+  "entryUrl": "https://www.faber.co.uk/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:51.412Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://www.faber.co.uk/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,466 @@
+{
+  "sourceId": "nb-no",
+  "name": "National Library of Norway",
+  "entryUrl": "https://www.nb.no/",
+  "countryCodes": [
+    "NO"
+  ],
+  "coverageCountryCodes": [
+    "NO"
+  ],
+  "attemptedAt": "2026-10-01T20:44:01.021Z",
+  "requests": [
+    {
+      "url": "https://www.nb.no/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 190118,
+      "sha256": "bcbb94777f11d3ccc146c1c350fc26c050ad1faea3b7c557ed89d242614d6dc8",
+      "accessedAt": "2026-10-01T20:44:01.713Z"
+    },
+    {
+      "url": "https://www.nb.no/nyheter/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 166082,
+      "sha256": "f619bbb21732757b9c7a4c6007dc30c78bfcd8fd6be7fa9a749a352d54d8ce8d",
+      "accessedAt": "2026-10-01T20:44:02.123Z"
+    },
+    {
+      "url": "https://www.nb.no/pressemeldinger/handverksfestivalen-2026-kjokkenet-rommet-reiskapane-maten/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 161064,
+      "sha256": "ff333b96735e7c01e8fbb55bedd3d2f794934ab395991fd03f9bbf6b9d3b9e67",
+      "accessedAt": "2026-10-01T20:44:02.539Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.nb.no/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 245,
+    "sha256": "0ba978e46d13eee912b728c5dd83c093c269f4326fe49d8fec69a0687813fd0c",
+    "accessedAt": "2026-10-01T20:44:01.334Z",
+    "disallowed": [
+      "/cgi-bin/wa",
+      "/archives/",
+      "/sok/",
+      "/baser/",
+      "/emigrasjon/",
+      "/gallerinor/",
+      "/idtjeneste/",
+      "/test/"
+    ]
+  },
+  "endpoint": {
+    "id": "nb-no",
+    "name": "National Library of Norway",
+    "url": "https://www.nb.no/nyheter/",
+    "format": "html",
+    "language": "nb-NO",
+    "region": "europe",
+    "sourceFamilyId": "nb-no",
+    "countryCodes": [
+      "NO"
+    ],
+    "coverageCountryCodes": [
+      "NO"
+    ],
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "articleOrigins": [
+      "https://www.nb.no"
+    ],
+    "linkPattern": "^\\/\\/[^/]+\\/?$|^\\/[^/]{12,}\\/?$|^\\/skole\\/[^/]+\\/?$|^\\/pressemeldinger\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.nb.no/pressemeldinger/handverksfestivalen-2026-kjokkenet-rommet-reiskapane-maten/"
+    ],
+    "verifiedAt": "2026-10-01T20:44:02.549Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 13,
+  "literaryCandidateCount": 13,
+  "sample": {
+    "sourceId": "nb-no",
+    "source": {
+      "name": "National Library of Norway",
+      "url": "https://www.nb.no/pressemeldinger/handverksfestivalen-2026-kjokkenet-rommet-reiskapane-maten/",
+      "language": "nb-NO"
+    },
+    "region": "europe",
+    "topics": [
+      "heritage",
+      "discoveries",
+      "festivals",
+      "releases"
+    ],
+    "title": "Handverksfestivalen 2026: Kjøkkenet - rommet, reiskapane, maten",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:02.156Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.nb.no/pressemeldinger/handverksfestivalen-2026-kjokkenet-rommet-reiskapane-maten/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 161064,
+      "sha256": "ff333b96735e7c01e8fbb55bedd3d2f794934ab395991fd03f9bbf6b9d3b9e67",
+      "accessedAt": "2026-10-01T20:44:02.539Z",
+      "headline": "Handverksfestivalen 2026: Kjøkkenet \u2013 rommet, reiskapane, maten",
+      "excerpt": "Stillbiletet er henta frå filmen Hjemme hos oss (Ola Winger, 1971) \u2013 Foto: Sverre Bergli / Per Foss / Nasjonalbiblioteket Kjøkkenet blir kalla det viktigaste rommet i huset \u2013 eit rom fullt av handverk, kunnskap og kulturhistorie. Rommet, reiskapane og maten står i sentrum når Nasjonalbiblioteket inviterer til Handverksfestivalen 18. og 19. september, med verkstader, foredrag, film og mat på Solli ",
+      "publishedDates": [
+        {
+          "value": "2026-09-02T08:00:00+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.nb.no/pressemeldinger/handverksfestivalen-2026-kjokkenet-rommet-reiskapane-maten/",
+      "language": "nb-NO",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:02.549Z",
+  "foundItems": [
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/handverksfestivalen-2026-kjokkenet-rommet-reiskapane-maten/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Handverksfestivalen 2026: Kjøkkenet - rommet, reiskapane, maten",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/fosseforedraget-og-fosseprisen-2026-med-litteraturprogram-heile-veka-pa-nasjonalbiblioteket/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fosseforedraget og Fosseprisen 2026 med litteraturprogram heile veka på Nasjonalbiblioteket",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/to-festivaler-ny-strid-sesong-norsk-spillhistorie-og-matkultur-pa-nasjonalbiblioteket-i-host/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "To festivaler, ny Strid-sesong, norsk spillhistorie og matkultur på Nasjonalbiblioteket i høst",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/ny-bok-forteller-historier-om-norge-gjennom-50-kart/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ny bok forteller historier om Norge gjennom 50 kart",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/nasjonalbiblioteket-fordeler-24-millionar-til-leselyst-og-felles-digital-loysing-for-biblioteka/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nasjonalbiblioteket fordeler 24 millionar til leselyst og felles digital løysing for biblioteka",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/ny-sesong-av-strid-tar-for-seg-norsk-vikingtid-og-middelalder/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ny sesong av «Strid» tar for seg norsk vikingtid og middelalder",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/ny-forskning-skriver-kvinner-inn-i-den-skandinaviske-filmhistorien/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ny forskning skriver kvinner inn i den skandinaviske filmhistorien",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/nye-sprakmodeller-fra-nasjonalbiblioteket-skal-styrke-ki-tilpasset-norske-forhold/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Nye språkmodeller fra Nasjonalbiblioteket skal styrke KI tilpasset norske forhold",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/invitasjon-lansering-av-forste-sprakmodeller-trent-pa-opphavsrettsbeskyttet-tekst-fra-norske-aviser/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Invitasjon: Lansering av første språkmodeller trent på opphavsrettsbeskyttet tekst fra norske aviser",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/fleire-enn-nokon-gong-bruker-biblioteka-i-noreg/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Fleire enn nokon gong bruker biblioteka i Noreg",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/ny-statistikkloysing-gir-betre-innsikt-i-kva-noreg-les/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ny statistikkløysing gir betre innsikt i kva Noreg les",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/med-pennen-pa-strupen-satiretegningens-dilemmaer-i-ny-utstilling-pa-nasjonalbiblioteket-fra-19-mars/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Med pennen på strupen - satiretegningens dilemmaer i ny utstilling på Nasjonalbiblioteket fra 19. mars",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "nb-no",
+      "source": {
+        "name": "National Library of Norway",
+        "url": "https://www.nb.no/pressemeldinger/ukjent-filmhistorie-i-ny-utgivelse-fra-nasjonalbiblioteket/",
+        "language": "nb-NO"
+      },
+      "region": "europe",
+      "topics": [
+        "heritage",
+        "discoveries",
+        "festivals",
+        "releases"
+      ],
+      "title": "Ukjent filmhistorie i ny utgivelse fra Nasjonalbiblioteket",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:02.156Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "f619bbb21732757b9c7a4c6007dc30c78bfcd8fd6be7fa9a749a352d54d8ce8d"
+}

@@ -1,0 +1,375 @@
+{
+  "sourceId": "europa-editions",
+  "name": "Europa Editions",
+  "entryUrl": "https://www.europaeditions.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:58.535Z",
+  "requests": [
+    {
+      "url": "https://www.europaeditions.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 484713,
+      "sha256": "341a51d90c44c509f73f7db9eb132014c58c848722d2008258c854708c6a20ce",
+      "accessedAt": "2026-10-01T20:48:00.124Z"
+    },
+    {
+      "url": "https://www.europaeditions.com/news",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29803,
+      "sha256": "c4061247856a3d12ae5e5df8074a5600ce3207c644ead5f4a3a782fd3f0fe17c",
+      "accessedAt": "2026-10-01T20:48:00.563Z"
+    },
+    {
+      "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 24903,
+      "sha256": "aad796f397a929e12bcb308cc213beb00d703a4cd12f03f7586b20d3debe9226",
+      "accessedAt": "2026-10-01T20:48:00.955Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.europaeditions.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 432,
+    "sha256": "8387cfdb478ec4afc5ea7e03832211e0cfada8030673d5a91e82d1f583a7614d",
+    "accessedAt": "2026-10-01T20:47:58.931Z",
+    "disallowed": [
+      "/profile/",
+      "/shopping/",
+      "/*_action.php$",
+      "/shopping_*",
+      "/profile_*",
+      "/form_*"
+    ]
+  },
+  "endpoint": {
+    "id": "europa-editions",
+    "name": "Europa Editions",
+    "url": "https://www.europaeditions.com/news",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "europa-editions",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.europaeditions.com"
+    ],
+    "linkPattern": "^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award"
+    ],
+    "verifiedAt": "2026-10-01T20:48:00.959Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "europa-editions",
+    "source": {
+      "name": "Europa Editions",
+      "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Passengers Longlisted for the National Book Award",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:00.572Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 24903,
+      "sha256": "aad796f397a929e12bcb308cc213beb00d703a4cd12f03f7586b20d3debe9226",
+      "accessedAt": "2026-10-01T20:48:00.955Z",
+      "headline": "Volumes",
+      "excerpt": "Passengers Longlisted for the National Book Award Home News Passengers Longlisted for the National Book Award Volumes Alexander Maksik Passengers 2026, min., $ 27.95 Alexander Maksik Passengers 2026, pp. 256, $ 26.00 Alexander Maksik Passengers 2026, pp. 256, $ 18.99 Passengers Longlisted for the National Book Award We are so thrilled to announce that Passengers by Alexander Maksik has been longli",
+      "publishedDates": [],
+      "canonical": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:00.959Z",
+  "foundItems": [
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Passengers Longlisted for the National Book Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2673/night-of-a-thousand-hells-longlisted-for-the-national-book-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Night of a Thousand Hells Longlisted for the National Book Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2665/europa-on-tour",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Fall 2026: Europa goes on tour!",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2649/the-best-book-of-the-century",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Best Book of the Century",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2662/emanuela-anechoum-on-tour-for-tangerinn",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Emanuela Anechoum on tour for Tangerinn",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2656/anne-claire-berest-on-tour-for-gabri",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Anne & Claire Berest on tour for Gabriële",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2657/in-memory-of-tim-mohr",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In Memory of Tim Mohr",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2655/discover-the-story-of-gabri-buffet",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Discover the story of Gabriële Buffet",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2651/nicola-lagioia-on-tour-for-the-city-of-the-living-.",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Nicola Lagioia on tour for The City of the Living",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "europa-editions",
+      "source": {
+        "name": "Europa Editions",
+        "url": "https://www.europaeditions.com/news/2650/shannon-bowring-on-tour-for-where-the-forest-meets-the-river",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Shannon Bowring on tour for Where the Forest Meets the River",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:00.572Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "c4061247856a3d12ae5e5df8074a5600ce3207c644ead5f4a3a782fd3f0fe17c"
+}

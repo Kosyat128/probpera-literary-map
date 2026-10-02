@@ -55,4 +55,40 @@ describe('honest daily photo supply and accepted receipt counts',()=>{
     expect(result.images).toEqual([{url:'https://publisher.example/image.jpg',method:'og:image',displayOnly:true,socialReuseApproved:false}]);
     expect(extractDailyNewsDetail('<main>No source date</main>','https://publisher.example/book').publishedDates).toEqual([]);
   });
+  it('uses the article headline and keeps separate paragraphs readable without site navigation',()=>{
+    const html='<header><h1>Publisher logo</h1></header><meta property="og:title" content="Publisher homepage">'
+      +'<main><nav>Catalogue Subscribe</nav><article><h1>The verified new novel</h1>'
+      +'<p>First supported fact.</p><p>Second supported fact.</p><ul><li>Third fact.</li><li>Fourth fact.</li></ul>'
+      +'</article></main><footer>Cookie policy</footer>';
+    const result=extractDailyNewsDetail(html,'https://publisher.example/news/book');
+    expect(result.headline).toBe('The verified new novel');
+    expect(result.text).toBe('The verified new novel First supported fact. Second supported fact. Third fact. Fourth fact.');
+    expect(result.publishedDates).toEqual([]);
+  });
+  it('rejects publisher-logo metadata while retaining a distinct article image without granting reuse rights',()=>{
+    const result=extractDailyNewsDetail('<meta property="og:image" content="/uploads/logo_library.png">'
+      +'<meta name="twitter:image" content="/uploads/poetry-workshop.jpg"><article><h1>A poetry workshop</h1></article>',
+      'https://publisher.example/news/poetry');
+    expect(result.images).toEqual([{url:'https://publisher.example/uploads/poetry-workshop.jpg',
+      method:'twitter:image',displayOnly:true,socialReuseApproved:false}]);
+    const duplicate=extractDailyNewsDetail('<meta property="og:image" content="/event.jpg">'
+      +'<meta name="twitter:image" content="/event.jpg">','https://publisher.example/news/event');
+    expect(duplicate.images).toHaveLength(1);
+  });
+  it('excludes lazy-image fallback HTML and signup forms from the bounded evidence text',()=>{
+    const html='<article><h1>A literary award</h1><p>The prize has seven finalists.</p>'
+      +'<noscript><img src="/image.jpg" srcset="/image.jpg 900w" alt="image fallback"></noscript>'
+      +'<template>Unused template text</template><svg><text>Decorative text</text></svg>'
+      +'<form><label>Newsletter email</label><button>Subscribe</button></form><p>The jury meets in October.</p></article>';
+    expect(extractDailyNewsDetail(html,'https://publisher.example/news/prize').text)
+      .toBe('A literary award The prize has seven finalists. The jury meets in October.');
+  });
+  it('uses a code-owned detail selector for publishers with a site-logo h1 and a separate article body',()=>{
+    const html='<h1>Publisher logo</h1><div class="actual-title">A supported publication</div>'
+      +'<main>Shop and subscribe<div class="actual-body"><p>First fact.</p><p>Second fact.</p></div></main>';
+    const result=extractDailyNewsDetail(html,'https://publisher.example/news/book',{
+      detailHeadlineSelector:'.actual-title',detailTextSelector:'.actual-body'});
+    expect(result.headline).toBe('A supported publication');expect(result.text).toBe('First fact. Second fact.');
+    expect(result.publishedDates).toEqual([]);
+  });
 });

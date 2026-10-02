@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:26:49.459Z",
+  "scope": "Source corpus completion and measured source availability; no news-item publication, production deployment, delivery receipt or human release acceptance claim.",
+  "requestBaseline": {
+    "checkpoint": "2026-09-27",
+    "verifiedProfiles": 108,
+    "additionalWorkingSourcesRequested": 100,
+    "target": 208
+  },
+  "beforeThisContinuation": {
+    "verifiedProfiles": 146,
+    "organisationCountries": 56
+  },
+  "counts": {
+    "researchedCandidates": 474,
+    "verifiedProfiles": 217,
+    "profilesAddedThisContinuation": 71,
+    "netProfileIncreaseFromRequest": 109,
+    "currentlyAvailableProfiles": 212,
+    "netAvailableIncreaseFromRequest": 104,
+    "verifiedSourceFamilies": 215,
+    "currentlyAvailableSourceFamilies": 210,
+    "organisationCountries": 63,
+    "organisationCountryCodes": [
+      "AL",
+      "AR",
+      "AT",
+      "AU",
+      "AZ",
+      "BA",
+      "BE",
+      "BG",
+      "BR",
+      "CA",
+      "CH",
+      "CL",
+      "CM",
+      "CN",
+      "CO",
+      "CZ",
+      "DE",
+      "DK",
+      "EG",
+      "ES",
+      "FI",
+      "FR",
+      "GB",
+      "GH",
+      "GR",
+      "HU",
+      "ID",
+      "IE",
+      "IN",
+      "IT",
+      "JP",
+      "KE",
+      "KR",
+      "LI",
+      "LT",
+      "LU",
+      "MD",
+      "ME",
+      "MX",
+      "MY",
+      "NA",
+      "NG",
+      "NO",
+      "NZ",
+      "PE",
+      "PH",
+      "PL",
+      "PT",
+      "RS",
+      "RU",
+      "SE",
+      "SG",
+      "SI",
+      "SK",
+      "TH",
+      "TR",
+      "TW",
+      "UA",
+      "UG",
+      "US",
+      "UY",
+      "ZA",
+      "ZW"
+    ],
+    "addedOrganisationCountryCodes": [
+      "AT",
+      "AZ",
+      "BG",
+      "CH",
+      "GR",
+      "IN",
+      "PH"
+    ],
+    "baseLanguages": 28,
+    "languageLocales": 46,
+    "formats": {
+      "rss": 114,
+      "atom": 1,
+      "html": 102
+    },
+    "combinedRegistry": 223,
+    "enabledCombinedRegistry": 222,
+    "sourceGrammarsReviewed": 64,
+    "reviewedGrammarsAvailable": 63,
+    "reviewedGrammarDetailsVerified": 63,
+    "runtimeHeldFinds": 4543,
+    "newPublicNews": 0,
+    "registeredEndpoints": 223,
+    "activeEndpoints": 222
+  },
+  "completion": {
+    "additionalWorkingSourceTargetMet": true,
+    "verifiedWith": "createNewsService production default DNS-pinned HTTPS transport with explicit truthful crawler identity",
+    "finalRuntimeEvidence": "reports/r10/sources/completion-runtime-identified/runtime-verification.json",
+    "finalRuntimeCheckedAt": "2026-10-01T21:18:30.338Z",
+    "failedSources": [
+      {
+        "sourceId": "pac-org-cn",
+        "error": "fetch_failed"
+      },
+      {
+        "sourceId": "samokat",
+        "error": "http_500"
+      },
+      {
+        "sourceId": "letture-org",
+        "error": "redirect_not_allowed"
+      },
+      {
+        "sourceId": "bookbrunch",
+        "error": "http_403"
+      },
+      {
+        "sourceId": "liternet-bulgaria",
+        "error": "http_500"
+      }
+    ],
+    "liveNetworkSnapshotOnly": true,
+    "permanentSourceFreshnessNotClaimed": true
+  },
+  "quality": {
+    "sourceScopeReview": "agent_editorial_review",
+    "itemAcceptanceGranted": false,
+    "technicalSuccessAloneCannotPromote": true,
+    "newNonLiteraryProfileHolds": [
+      {
+        "sourceId": "le-tripode",
+        "reason": "Observed sample is a book catalogue record, not a news article."
+      },
+      {
+        "sourceId": "edizioni-sur",
+        "reason": "Observed sample is a product record with WebPage metadata, not a news article."
+      },
+      {
+        "sourceId": "penn-state-press",
+        "reason": "Observed sample is a catalogue record; a news-only endpoint remains required."
+      },
+      {
+        "sourceId": "chicago-press",
+        "reason": "Observed sample is a catalogue record; its generic date metadata does not establish news identity."
+      },
+      {
+        "sourceId": "gramedia-blog",
+        "reason": "Observed sample is an unrelated film article without an evidenced book relation."
+      },
+      {
+        "sourceId": "asap-journal",
+        "reason": "Observed sample is a visual art biennial review without an evidenced book relation."
+      },
+      {
+        "sourceId": "oxford-press-blog",
+        "reason": "Observed sample is a law-teaching discussion without an evidenced literary news relation."
+      },
+      {
+        "sourceId": "pushkin-press",
+        "reason": "Observed sample is a contractor recruitment notice, not literary news."
+      },
+      {
+        "sourceId": "laguna",
+        "reason": "Observed sample is a retail discount campaign; book news requires a narrower endpoint."
+      },
+      {
+        "sourceId": "vbz",
+        "reason": "Observed sample is a retail discount campaign; book news requires a narrower endpoint."
+      },
+      {
+        "sourceId": "diacritik",
+        "reason": "Observed sample is a performing arts festival without an evidenced literary news relation."
+      },
+      {
+        "sourceId": "john-murray",
+        "reason": "Observed sample is a retail giveaway; a genuine literary news representative remains required."
+      },
+      {
+        "sourceId": "moran-publishers",
+        "reason": "Observed sample is a retail gift promotion; a genuine literary news representative remains required."
+      }
+    ],
+    "exactSourceSpecificHeadlineSelectors": [
+      "archipelago-books",
+      "biblioasis",
+      "europa-editions",
+      "guernica-magazine",
+      "nli-ie"
+    ],
+    "nonLiteraryNavigationExcluded": true,
+    "datedHTMLPathsGeneralized": [
+      "penbelarus-org",
+      "words-without-borders",
+      "national-book-review",
+      "bnl-public-lu",
+      "god-literatury",
+      "virago"
+    ],
+    "unknownOfficeCountriesRemainEmpty": true,
+    "weakOfficeCountryEvidenceRemoved": [
+      "quidam-editeur",
+      "cambridge-press-blog",
+      "revista-letras-libres",
+      "liternet-bulgaria"
+    ],
+    "publisherFamiliesGrouped": {
+      "hachette-livre": [
+        "virago",
+        "hachette-book-group"
+      ]
+    },
+    "boundedResponseOverrides": [
+      "asymptote",
+      "landesbibliothek-li",
+      "klett-cotta",
+      "scribe-publications",
+      "hakara",
+      "hachette-book-group"
+    ],
+    "historicRawSourceSnapshotsPreserved": true,
+    "datedFollowupReports": 130,
+    "oldLiteralProfileOrderPreservedThroughIndex": 145,
+    "publicationGatesUnchanged": true,
+    "newProbeMetadataPunctuation": "Convenience metadata and agent prose use the editorial short-hyphen policy. External headlines, source excerpts and RSS descriptions retain their original decoded literal values, encoded with JSON Unicode escapes. Original response byte hashes remain unchanged."
+  },
+  "evidence": {
+    "sourceCorpus": "reports/r10/sources/coverage.json",
+    "streamGrammar": "reports/r10/sources/stream-profile-review-20261001.json",
+    "streamGrammarFollowup": "reports/r10/sources/stream-profile-followup-20261002.json",
+    "sourceDisplayIdentity": "reports/r10/sources/source-display-identity-review-20261002.json",
+    "officeCountryAddresses": "reports/r10/sources/country-address-followup-20261002.json",
+    "crawlerIdentity": "reports/r10/sources/pinned-source-identification-20261002.json",
+    "relocatedLocalDiagnosticFiles": 51,
+    "unregisteredMetadataReportsNormalized": 60,
+    "exactSourceLiteralPreservation": "reports/r10/sources/source-proof-literal-preservation-20261002.json"
+  },
+  "focusedValidation": {
+    "runner": "vitest",
+    "sourceSuiteFiles": 3,
+    "sourceTestsPassed": 14,
+    "sourceTestsFailed": 0,
+    "historicalPunctuationRemainingFailure": "Latest unrelated additive news batch contains unnormalized prose/source titles; owned by the content task."
+  },
+  "authorization": {
+    "humanReview": false,
+    "releaseAccepted": false,
+    "productionApplied": false
+  },
+  "canonicalRegistry": {
+    "method": "JSON recursively sorted object keys, preserved array order; RegExp represented as {regex:source,flags}",
+    "registrySha256": "ce818d189f227387b33ee074fe9ceacbdf9948801a83fefbe67cb9241cf58bca",
+    "profileSourceSha256": "05b784bc683d830630da52febf4d45189dcfa9ab146c1c5ff0986646ccf6e83c",
+    "registeredEndpoints": 223,
+    "activeEndpoints": 222
+  }
+}

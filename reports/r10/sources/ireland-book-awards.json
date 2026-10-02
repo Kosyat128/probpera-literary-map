@@ -1,0 +1,256 @@
+{
+  "sourceId": "ireland-book-awards",
+  "name": "An Post Irish Book Awards",
+  "entryUrl": "https://www.irishbookawards.ie/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:52:04.586Z",
+  "requests": [
+    {
+      "url": "https://www.irishbookawards.ie/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 655291,
+      "sha256": "8c92f1501ccadc8c8d29885fb57f02a5fac0655d8417674cecfa7ca4d8359a9a",
+      "accessedAt": "2026-10-01T20:52:12.781Z"
+    },
+    {
+      "url": "https://www.irishbookawards.ie/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 21934,
+      "sha256": "35b8f11d8c96cafeb031d13fdc9ee9441e85d959a662ed11090dbff9e57d3a0d",
+      "accessedAt": "2026-10-01T20:52:14.332Z"
+    },
+    {
+      "url": "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 230449,
+      "sha256": "4f06065c88e80f4a4633f232506a9ae762d1cc72d8c4cddb56f7aa995de921a6",
+      "accessedAt": "2026-10-01T20:52:16.872Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.irishbookawards.ie/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 180,
+    "sha256": "e2a4a5d8c06de36fc59575243e64e4013c0f38c62cb485a099e838fd997a9cad",
+    "accessedAt": "2026-10-01T20:52:06.433Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "ireland-book-awards",
+    "name": "An Post Irish Book Awards",
+    "url": "https://www.irishbookawards.ie/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "ireland-book-awards",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.irishbookawards.ie"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:16.909Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 5,
+  "literaryCandidateCount": 5,
+  "sample": {
+    "sourceId": "ireland-book-awards",
+    "source": {
+      "name": "An Post Irish Book Awards",
+      "url": "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY",
+    "publishedAt": "2021-06-25T15:26:24.000Z",
+    "description": "WHAT IS IRELAND READS? Ireland Reads is a new campaign to get the whole country reading this month in the lead up to a national day of reading on Thursday, February 25. Irish libraries have teamed up with publishers, booksellers, authors and others for the campaign which is part of the government Keep Well initiative and […] The post SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY appe…",
+    "discoveredAt": "2026-10-01T20:52:14.334Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 230449,
+      "sha256": "4f06065c88e80f4a4633f232506a9ae762d1cc72d8c4cddb56f7aa995de921a6",
+      "accessedAt": "2026-10-01T20:52:16.872Z",
+      "headline": "SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY - Irish Book Awards",
+      "excerpt": "SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY - Irish Book Awards Skip to content 20th Anniversary Submissions The Awards Shortlist 2025 An Post Bookshop of the Year Judges Irish Voting Academy Sponsors & Partners IBA Scholarship New Voices 2021 Winners Key Dates Irish Voting Academy An Post Irish Book of the Year Sponsors & Partners An Post Bookshop of the Year longlist revealed for ",
+      "publishedDates": [
+        {
+          "value": "2021-06-25T15:26:24+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2021-06-25T15:26:24+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2021-06-25T15:26:24+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:16.909Z",
+  "foundItems": [
+    {
+      "sourceId": "ireland-book-awards",
+      "source": {
+        "name": "An Post Irish Book Awards",
+        "url": "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY",
+      "publishedAt": "2021-06-25T15:26:24.000Z",
+      "description": "WHAT IS IRELAND READS? Ireland Reads is a new campaign to get the whole country reading this month in the lead up to a national day of reading on Thursday, February 25. Irish libraries have teamed up with publishers, booksellers, authors and others for the campaign which is part of the government Keep Well initiative and […] The post SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY appe…",
+      "discoveredAt": "2026-10-01T20:52:14.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ireland-book-awards",
+      "source": {
+        "name": "An Post Irish Book Awards",
+        "url": "https://www.irishbookawards.ie/latest-news-title-one-copy-3/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Latest News Title One Copy",
+      "publishedAt": "2021-05-17T19:33:16.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu volutpat odio facilisis mauris sit. Velit laoreet id donec ultrices tincidunt arcu non. Vestibulum rhoncus est pellentesque elit. Fermentum posuere urna nec tincidunt. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Lorem ipsum dolor […] The post Latest Ne…",
+      "discoveredAt": "2026-10-01T20:52:14.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ireland-book-awards",
+      "source": {
+        "name": "An Post Irish Book Awards",
+        "url": "https://www.irishbookawards.ie/latest-news-title-one-copy-2/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Latest News Title One Copy",
+      "publishedAt": "2021-05-17T19:33:11.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu volutpat odio facilisis mauris sit. Velit laoreet id donec ultrices tincidunt arcu non. Vestibulum rhoncus est pellentesque elit. Fermentum posuere urna nec tincidunt. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Lorem ipsum dolor […] The post Latest Ne…",
+      "discoveredAt": "2026-10-01T20:52:14.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ireland-book-awards",
+      "source": {
+        "name": "An Post Irish Book Awards",
+        "url": "https://www.irishbookawards.ie/latest-news-title-one-copy/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Latest News Title One Copy",
+      "publishedAt": "2021-05-17T19:33:08.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu volutpat odio facilisis mauris sit. Velit laoreet id donec ultrices tincidunt arcu non. Vestibulum rhoncus est pellentesque elit. Fermentum posuere urna nec tincidunt. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Lorem ipsum dolor […] The post Latest Ne…",
+      "discoveredAt": "2026-10-01T20:52:14.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "ireland-book-awards",
+      "source": {
+        "name": "An Post Irish Book Awards",
+        "url": "https://www.irishbookawards.ie/latest-news-title-one/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Latest News Title One",
+      "publishedAt": "2021-04-21T14:58:05.000Z",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu volutpat odio facilisis mauris sit. Velit laoreet id donec ultrices tincidunt arcu non. Vestibulum rhoncus est pellentesque elit. Fermentum posuere urna nec tincidunt. Scelerisque felis imperdiet proin fermentum leo vel orci porta. Lorem ipsum dolor […] The post Latest Ne…",
+      "discoveredAt": "2026-10-01T20:52:14.334Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "35b8f11d8c96cafeb031d13fdc9ee9441e85d959a662ed11090dbff9e57d3a0d"
+}

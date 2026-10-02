@@ -1,0 +1,28 @@
+{
+  "sourceId": "tsa-prize",
+  "name": "The Society of Authors",
+  "entryUrl": "https://societyofauthors.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:45.573Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://societyofauthors.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 604,
+    "sha256": "fa16dae1f0f1c43555b65f835ea0566729898fb64bb19d644eb7ccfdb47aaaf4",
+    "accessedAt": "2026-10-01T20:48:45.918Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/wp-content/uploads/wpforms/"
+    ]
+  }
+}

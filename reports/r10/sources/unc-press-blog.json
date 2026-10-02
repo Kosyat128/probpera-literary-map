@@ -1,0 +1,431 @@
+{
+  "sourceId": "unc-press-blog",
+  "name": "University of North Carolina Press",
+  "entryUrl": "https://uncpressblog.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:40.688Z",
+  "requests": [
+    {
+      "url": "https://uncpressblog.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 263714,
+      "sha256": "5eab0226b48f69dc270f2d100279460ae410ce69e62de67666819f86bb1c289e",
+      "accessedAt": "2026-10-01T20:51:42.012Z"
+    },
+    {
+      "url": "https://uncpressblog.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 145591,
+      "sha256": "4685a21684fba57c50e686ec3e2d2d6bec6d2ccbcc019e0420e8481435889786",
+      "accessedAt": "2026-10-01T20:51:42.357Z"
+    },
+    {
+      "url": "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 139927,
+      "sha256": "ee7a41b61ccfd700f6ed9bf62fa4f030508c4c0242cf825a119578a52ed487de",
+      "accessedAt": "2026-10-01T20:51:44.759Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://uncpressblog.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 287,
+    "sha256": "9491fed3859ed01dcee717f0daa5eb4e4ac8a6613357675617ca04062272c802",
+    "accessedAt": "2026-10-01T20:51:41.675Z",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "unc-press-blog",
+    "name": "University of North Carolina Press",
+    "url": "https://uncpressblog.com/feed/",
+    "format": "rss",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "unc-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://uncpressblog.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:44.766Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "unc-press-blog",
+    "source": {
+      "name": "University of North Carolina Press",
+      "url": "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Q&A with Juan Mora, Author of Latinx Encounters",
+    "publishedAt": "2026-09-25T20:42:53.000Z",
+    "description": "New from UNC Press Blog Latinx Encounters: How Mexicans, Mexican Americans, and Puerto Ricans Made the Modern Midwest reexamines the history of the American Midwest through the experiences of Mexican, Mexican American, and Puerto Rican migrants. The latest volume in the Latinx Histories series traces the movement of people, labor, culture, and ideas across regions and borders, revealing how Latin…",
+    "discoveredAt": "2026-10-01T20:51:42.368Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 139927,
+      "sha256": "ee7a41b61ccfd700f6ed9bf62fa4f030508c4c0242cf825a119578a52ed487de",
+      "accessedAt": "2026-10-01T20:51:44.759Z",
+      "headline": "Q&A with Juan Mora, Author of Latinx Encounters - UNC Press Blog",
+      "excerpt": "Latinx Encounters: How Mexicans, Mexican Americans, and Puerto Ricans Made the Modern Midwest reexamines the history of the American Midwest through the experiences of Mexican, Mexican American, and Puerto Rican migrants. The latest volume in the Latinx Histories series traces the movement of people, labor, culture, and ideas across regions and borders, revealing how Latinx communities helped shap",
+      "publishedDates": [
+        {
+          "value": "2026-09-25T20:42:53+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-25T20:42:53+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2026-09-25T20:42:53+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:44.766Z",
+  "foundItems": [
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Q&A with Juan Mora, Author of Latinx Encounters",
+      "publishedAt": "2026-09-25T20:42:53.000Z",
+      "description": "New from UNC Press Blog Latinx Encounters: How Mexicans, Mexican Americans, and Puerto Ricans Made the Modern Midwest reexamines the history of the American Midwest through the experiences of Mexican, Mexican American, and Puerto Rican migrants. The latest volume in the Latinx Histories series traces the movement of people, labor, culture, and ideas across regions and borders, revealing how Latin…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/08/27/protecting-authors-from-publishing-scams/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Protecting Authors from Publishing Scams",
+      "publishedAt": "2026-08-27T14:06:18.000Z",
+      "description": "New from UNC Press Blog UNC Press authors are receiving more scam emails and messages offering book promotion, reviews, book club appearances, podcast interviews, film and television opportunities, marketing services, and other opportunities. Scammers may also pretend to be established authors, publishers, literary agents, editors, journalists, book clubs, or other real people and organizations. …",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/07/22/2026-native-american-indigenous-studies-association-annual-meeting/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Native American & Indigenous Studies Association Annual Meeting",
+      "publishedAt": "2026-07-22T21:00:20.000Z",
+      "description": "New from UNC Press Blog Although UNC Press will not be attending the Native American & Indigenous Studies Association annual meeting in-person this year, you can still visit our virtual booth to browse our recent titles on display & to connect with editor Andreina Fernandez. A Message from Editor Andreina Fernandez: I hope those of you in Chile are enjoying what I am sure is… Continue Reading 202…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/06/03/2026-american-association-for-the-history-of-medicine-annual-meeting/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 American Association for the History of Medicine Annual Meeting",
+      "publishedAt": "2026-06-03T21:03:19.000Z",
+      "description": "New from UNC Press Blog UNC Press is excited to be exhibiting in-person at the American Association for the History of Medicine annual meeting! We hope you’ll stop by our table to say hello to editor Sandra Korn & to browse our new titles on display. If you can’t join us in-person, you can always visit our virtual booth! From Sandra Korn, our new history… Continue Reading 2026 American Associatio…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/06/04/longleaf-services-welcomes-three-new-client-presses/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Longleaf Services Welcomes Three New Client Presses",
+      "publishedAt": "2026-06-04T14:07:21.000Z",
+      "description": "New from UNC Press Blog Longleaf Services is pleased to welcome three new distributed client presses to the group: Washington State University Press, The Pennsylvania State University Press, and Hong Kong University Press. Longleaf welcomed Washington State University Press in early May 2026. Known for publishing works that explore the history, culture, environment, and people of the Pacific Nort…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/05/18/across-the-atlantic-a-kings-speech-and-a-plague-ship/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Across the Atlantic: A King’s Speech and a Plague Ship",
+      "publishedAt": "2026-05-18T18:09:03.000Z",
+      "description": "New from UNC Press Blog The following is a guest post from Bassam Sidiki, author of the forthcoming book Parasitic Empires: Infection, Insularity, Inter-Imperiality, 1880\u20132022 (November 2026). What does King Charles III’s speech to the US Congress on April 28th have to do with the outbreak, earlier that month, of Hantavirus aboard a Dutch-owned cruise ship sailing from Argentina to Cape Verde? An…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/05/14/behind-the-booth-the-hidden-work-of-academic-conferences/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Behind the Booth: The Hidden Work of Academic Conferences",
+      "publishedAt": "2026-05-14T14:18:01.000Z",
+      "description": "New from UNC Press Blog Academic conferences have long been a cornerstone of university press marketing. We sat down with our Academic Marketing Specialist, Ann Bingham, to talk about how conferences have evolved, what goes into planning and budgeting, and how authors can make the most of these events. Read on for a closer look at how UNC Press brings its books to these spaces.… Continue Reading …",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/05/05/unc-press-welcomes-sandra-korn-as-history-editor/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UNC Press Welcomes Sandra Korn as History Editor",
+      "publishedAt": "2026-05-05T18:22:54.000Z",
+      "description": "New from UNC Press Blog We’re pleased to announce that Sandra Korn will join UNC Press as History Editor, effective May 26, 2026. Korn comes to us from Wayne State University Press, where she spent four years as an acquiring editor, revitalizing established lists and launching new series. Books she acquired there have received national and international recognition, including When Detroit Played …",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/04/22/john-mcleod-promoted-to-chief-operating-officer-director-of-intellectual-property/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "John McLeod Promoted to Chief Operating Officer & Director of Intellectual Property",
+      "publishedAt": "2026-04-22T20:57:39.000Z",
+      "description": "New from UNC Press Blog The University of North Carolina Press is pleased to announce the promotion of John McLeod to the expanded role of Chief Operating Officer & Director of Intellectual Property. In this position, McLeod will oversee contracts, rights, and intellectual property strategy, including emerging licensing opportunities related to artificial intelligence. He will continue to oversee…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/04/16/celebrating-five-years-since-the-launch-of-latinx-histories-series-qa-with-michael-staudenmaier/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Celebrating Five Years Since the Launch of Our Latinx Histories Series: Q&A With Michael Staudenmaier",
+      "publishedAt": "2026-04-16T20:50:47.000Z",
+      "description": "New from UNC Press Blog This spring, the Latinx Histories series is celebrating its 5-year anniversary! It serves as a great point to reflect, acknowledge the series accomplishments thus far, and preview the exciting work to come. Below read a reflection from the series editors and enjoy a Q&A with author Michael Staudenmaier. Our first three books in the series have all garnered praise and… Cont…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/04/03/unc-chapel-hill-based-open-access-journal-launches-on-partnership-for-open-publishing-pop/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UNC Chapel Hill-Based Open Access Journal Launches on Partnership for Open Publishing (POP)",
+      "publishedAt": "2026-04-03T14:00:00.000Z",
+      "description": "New from UNC Press Blog UNC Press is pleased to announce the launch of Teaching Educational Research Methods (TERM), a new open-access interdisciplinary journal based at UNC-Chapel Hill and hosted in partnership with the UNC-Chapel Hill University Library. TERM’s inaugural special issue, titled Why Teaching (and Learning) Educational Research Matters, was published on April 2, 2026, as part of th…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "source": {
+        "name": "University of North Carolina Press",
+        "url": "https://uncpressblog.com/2026/02/27/how-black-students-fought-for-justice-in-a-forgotten-high-school-sit-in/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How Black Students Fought for Justice in a Forgotten High School Sit\u2011In",
+      "publishedAt": "2026-02-27T22:09:36.000Z",
+      "description": "New from UNC Press Blog For a timely read during Black History Month, we’re sharing a guest post by Aaron G. Fountain Jr., author of High School Students Unite! Teen Activism, Education Reform, and FBI Surveillance in Postwar America. In this post, Fountain invites us to look beyond familiar narratives of the civil rights era and consider the power of Black youth whose courage has too… Continue R…",
+      "discoveredAt": "2026-10-01T20:51:42.368Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "4685a21684fba57c50e686ec3e2d2d6bec6d2ccbcc019e0420e8481435889786"
+}

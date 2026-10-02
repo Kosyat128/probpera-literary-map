@@ -1,0 +1,22 @@
+{
+  "sourceId": "and-other-stories",
+  "name": "And Other Stories",
+  "entryUrl": "https://www.andotherstories.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:50.279Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "challenge_document",
+  "robots": {
+    "url": "https://www.andotherstories.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 139,
+    "sha256": "33054830210f4230628a1169ae24c50d2dc603857bc6efb3ea22b31512d4346f",
+    "accessedAt": "2026-10-01T20:47:50.751Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "sourceId": "mediafederatie-nl",
+  "name": "De MediafederatieHogehilweg",
+  "entryUrl": "https://mediafederatie.nl/",
+  "countryCodes": [
+    "NL"
+  ],
+  "coverageCountryCodes": [
+    "NL"
+  ],
+  "attemptedAt": "2026-10-01T20:43:41.672Z",
+  "requests": [
+    {
+      "url": "https://www.mediafederatie.nl/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 73279,
+      "sha256": "657d1685ecf5b2ec4fb4114c7437d841a2a7e558b33a3656ee5a20b9c6cb9721",
+      "accessedAt": "2026-10-01T20:43:42.586Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/agenda/leer-werken-met-chatgpt-en-copilot-verdieping-okt-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 76624,
+      "sha256": "705e3cc4a8f78063e926e81ec82b48cd275216de4d3db47f86472e621a9f7111",
+      "accessedAt": "2026-10-01T20:43:42.801Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/agenda/video-s-maken-voor-social-media",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 76785,
+      "sha256": "0f1aa49804222c80926e3d9c26325c1402a7a075d3b539a72163216a35eb6b91",
+      "accessedAt": "2026-10-01T20:43:42.963Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/themas/auteursrecht-en-collectieve-rechten",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 35952,
+      "sha256": "fede62bf146f9edc8ac107260e5db6062de163034698be8236f017ec321300bf",
+      "accessedAt": "2026-10-01T20:43:43.153Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/agenda/ai-voor-werkprocessen-najaar",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 72323,
+      "sha256": "f817df98cbbd9378b9cca647d0f2a89538905b19b93d1a8ce7a26d00ea0c78e1",
+      "accessedAt": "2026-10-01T20:43:43.289Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/themas/sociaal-beleid-and-hr",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 36845,
+      "sha256": "bd91873306c953848d71cea3a63bfa06e54a1a6028be628f070a56b029f4f08a",
+      "accessedAt": "2026-10-01T20:43:43.438Z"
+    },
+    {
+      "url": "https://www.mediafederatie.nl/themas/overige-onderwerpen",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 38959,
+      "sha256": "ef694414bc33bbbd7fb610ebf908f5b20fea774b0915462feae2e8a89d669612",
+      "accessedAt": "2026-10-01T20:43:43.578Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.mediafederatie.nl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 38,
+    "sha256": "5adb441027c8ce50686a8caa74565be2ab7b14daccd6e9db3653c828a62ab872",
+    "accessedAt": "2026-10-01T20:43:42.401Z",
+    "disallowed": [
+      "/api/"
+    ]
+  }
+}

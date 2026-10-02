@@ -28,6 +28,20 @@ async function fixture(overrides={},fileName="Fixture.png"){
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
 }
 describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it('preserves current rights metadata when an archived admission caches the same manual image identity',async()=>{
+    const f=await fixture(),store=storeFixture();
+    const first=await resolveNewsMediaBatch([item],[destination],{...f.options,store});
+    const asset=structuredClone(first.mediaOptions.registry.assets[0]);
+    asset.credit='Reviewed current attribution';
+    const fetchImpl=vi.fn();
+    const result=await resolveNewsMediaBatch([],[destination],{...f.options,store,fetchImpl,
+      registry:{...first.mediaOptions.registry,assets:[asset]}});
+    expect(result.mediaOptions.registry.assets).toEqual([asset]);
+    expect(fetchImpl).not.toHaveBeenCalled();
+    const unrelated=await resolveNewsMediaBatch([],[destination],{...f.options,store,fetchImpl});
+    expect(unrelated.mediaOptions.registry.assets).toHaveLength(1);
+    expect(unrelated.mediaOptions.registry.assets[0].credit).not.toBe(asset.credit);
+  });
   it('checks a newly available exact source photo before an already cached and manually supplied portrait',async()=>{
     const f=await fixture(),store=storeFixture();
     const portrait=await resolveNewsMediaBatch([item],[destination],{...f.options,store});

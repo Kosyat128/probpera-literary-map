@@ -1,0 +1,101 @@
+{
+  "sourceId": "lnb-lv",
+  "name": "National Library of Latvia",
+  "entryUrl": "https://lnb.gov.lv/",
+  "countryCodes": [
+    "LV"
+  ],
+  "coverageCountryCodes": [
+    "LV"
+  ],
+  "attemptedAt": "2026-10-01T20:43:57.739Z",
+  "requests": [
+    {
+      "url": "https://lnb.gov.lv/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 325138,
+      "sha256": "18c2edde89a394c6d288e94098e8452aa76e541b0e0fbfdeb1d8db6ea86f5419",
+      "accessedAt": "2026-10-01T20:43:58.301Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/news/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 288676,
+      "sha256": "0fda93ef4ac2f24280a74a00d92b4d1178fcfdcd6174ed63ee5e17acc6c14a1a",
+      "accessedAt": "2026-10-01T20:43:58.428Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/library/atbalsti-biblioteku/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 289086,
+      "sha256": "302c9522b1a4e4e83aeae386a174893f6fc07979e89b70465b3dbb309ff3f502",
+      "accessedAt": "2026-10-01T20:43:58.567Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/library/fotografesana-un-filmesana/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 289110,
+      "sha256": "19b54ee314fff03ae4839fcfecfe23945c98a5c670ece7c226dae6e8e6934f19",
+      "accessedAt": "2026-10-01T20:43:58.667Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/library/klusti-par-lasitaju/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 289090,
+      "sha256": "7f1f7d0dad30a49d05d80eef8aa9421da1d10e5c18cb9962d518997ac43c5c3b",
+      "accessedAt": "2026-10-01T20:43:58.855Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/services/atbalsts-petniecibai/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 290108,
+      "sha256": "67e795da1203bf3af48cf93ae9bf82b66ed375706e90de9d679f09c30608dcfd",
+      "accessedAt": "2026-10-01T20:43:58.958Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/services/digitalizacija-pec-pieprasijuma/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 290096,
+      "sha256": "c2096b188245dd7d169090bc2cf37b99a234bb8dd4d4e64bc8d0895add4e9e0c",
+      "accessedAt": "2026-10-01T20:43:59.055Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/services/izsniegums/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 290049,
+      "sha256": "614a2bc44e8d4c63aa32808587a908e087fceacd9ed0307224220cbd70a6e269",
+      "accessedAt": "2026-10-01T20:43:59.161Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/services/jauta-bibliotekaram/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 290078,
+      "sha256": "948830b53d63993a28349e67c42a70c6f233b2533c4c8c3a47d71205ae482d66",
+      "accessedAt": "2026-10-01T20:43:59.282Z"
+    },
+    {
+      "url": "https://lnb.gov.lv/services/kopesana-iesiesana-digitalizacija/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 290114,
+      "sha256": "006e490ed793bd5b09fb85e5a499c1273832f0ca092584b25d5f4c465a89e66e",
+      "accessedAt": "2026-10-01T20:43:59.378Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://lnb.gov.lv/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  }
+}

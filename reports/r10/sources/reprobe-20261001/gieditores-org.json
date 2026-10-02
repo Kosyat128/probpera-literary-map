@@ -1,0 +1,26 @@
+{
+  "sourceId": "gieditores-org",
+  "name": "Grupo Ibero-Americano de Editores (GIE)",
+  "entryUrl": "https://gieditores.org/",
+  "countryCodes": [
+    "ES"
+  ],
+  "coverageCountryCodes": [
+    "ES"
+  ],
+  "attemptedAt": "2026-10-01T20:42:52.415Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://gieditores.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 115,
+    "sha256": "d19b86c344e8ee5358e031313658880dbbfd1b0e7b5ffcd8c13c7675b380ee9e",
+    "accessedAt": "2026-10-01T20:42:55.417Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

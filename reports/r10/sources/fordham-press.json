@@ -1,0 +1,37 @@
+{
+  "sourceId": "fordham-press",
+  "name": "Fordham University Press",
+  "entryUrl": "https://fordhampress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:44.418Z",
+  "requests": [
+    {
+      "url": "https://fordhampress.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 334915,
+      "sha256": "c1d3e51d988272a2c7d84829081eb9fd2d3e412822719f766240fd9351ac4e80",
+      "accessedAt": "2026-10-01T20:51:46.818Z"
+    },
+    {
+      "url": "https://fordhampress.com/event",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 210897,
+      "sha256": "ba198685abbf3e19ac6e07bb6be05848bef76ae5397cc9c766addaf3f549db75",
+      "accessedAt": "2026-10-01T20:51:47.795Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://fordhampress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=UTF-8",
+    "bytes": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "accessedAt": "2026-10-01T20:51:45.189Z",
+    "disallowed": []
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-01T21:47:48.814Z",
+  "phase": "before-additional-expanded-batches",
+  "local": true,
+  "production": false,
+  "fullSuite": {
+    "command": "npm test -- --maxWorkers=2",
+    "passed": 4277,
+    "failed": 0,
+    "skipped": 11,
+    "files": 646
+  },
+  "focusedAfterSuite": {
+    "files": 5,
+    "passed": 41,
+    "failed": 0,
+    "scope": "Intake image/text safeguards, real source selectors, profiles and exact source punctuation."
+  },
+  "lint": {
+    "command": "npm run lint",
+    "exitCode": 0
+  },
+  "sql": {
+    "command": "check-literary-news-runtime-latest-query.mjs with isolated PGlite",
+    "passed": 11,
+    "failed": 0,
+    "productionBodyHashVerified": true
+  },
+  "notes": [
+    "The first unrestricted parallel Windows run had two timeout failures; a complete bounded-concurrency rerun determines this full-suite result.",
+    "CI/browser acceptance and exact public main deployment are still pending."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "sourceId": "publishsa-co-za",
+  "name": "Publishers Association of South AfricaPO Box",
+  "entryUrl": "https://www.publishsa.co.za/",
+  "countryCodes": [
+    "ZA"
+  ],
+  "coverageCountryCodes": [
+    "ZA"
+  ],
+  "attemptedAt": "2026-10-01T20:43:26.455Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "fetch failed",
+  "robots": {
+    "url": "https://www.publishsa.co.za/robots.txt",
+    "error": "This operation was aborted",
+    "disallowed": []
+  }
+}

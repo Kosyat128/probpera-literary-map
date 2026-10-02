@@ -1,0 +1,382 @@
+{
+  "sourceId": "karavan-press",
+  "name": "Karavan Press",
+  "entryUrl": "https://karavanpress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:56:30.260Z",
+  "requests": [
+    {
+      "url": "https://karavanpress.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 191700,
+      "sha256": "49312d86f3267736baeefc481845ff570c21d4cf89538f261f9ee4a6d6eb0534",
+      "accessedAt": "2026-10-01T20:56:31.766Z"
+    },
+    {
+      "url": "https://karavanpress.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 79801,
+      "sha256": "ce624215e7c76a67013c3efd964fcbe7d8b103208aa0e2bcd7b075cf08343213",
+      "accessedAt": "2026-10-01T20:56:31.931Z"
+    },
+    {
+      "url": "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 121401,
+      "sha256": "4850c086c9b50e070e87cd64dc3128b36f88c388c25c22af99fc99ef5c056d1e",
+      "accessedAt": "2026-10-01T20:56:32.780Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://karavanpress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 632,
+    "sha256": "0c865ed41f698a55d9c7a6fad7f73ec11c4ed112fc75d56d75968a15acb60142",
+    "accessedAt": "2026-10-01T20:56:30.623Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-login.php",
+      "/wp-signup.php",
+      "/press-this.php",
+      "/remote-login.php",
+      "/activate/",
+      "/cgi-bin/",
+      "/mshots/v1/",
+      "/next/",
+      "/public.api/"
+    ]
+  },
+  "endpoint": {
+    "id": "karavan-press",
+    "name": "Karavan Press",
+    "url": "https://karavanpress.com/feed/",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "karavan-press",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://karavanpress.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/"
+    ],
+    "verifiedAt": "2026-10-01T20:56:32.785Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "karavan-press",
+    "source": {
+      "name": "Karavan Press",
+      "url": "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Melissa A. Volker at the Muizenberg Literary Heritage Festival, 26 September 2026",
+    "publishedAt": "2026-09-22T14:44:58.000Z",
+    "description": "Full programme: Tickets: Quicket",
+    "discoveredAt": "2026-10-01T20:56:31.932Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 121401,
+      "sha256": "4850c086c9b50e070e87cd64dc3128b36f88c388c25c22af99fc99ef5c056d1e",
+      "accessedAt": "2026-10-01T20:56:32.780Z",
+      "headline": "Melissa A. Volker at the Muizenberg Literary Heritage Festival, 26 September 2026",
+      "excerpt": "Full programme: Tickets: Quicket Share this: Share on X (Opens in new window) X Share on Facebook (Opens in new window) Facebook Like Loading... Related Leave a comment Cancel reply Δ",
+      "publishedDates": [
+        {
+          "value": "2026-09-22T14:44:58+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/",
+      "language": "en",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:56:32.785Z",
+  "foundItems": [
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Melissa A. Volker at the Muizenberg Literary Heritage Festival, 26 September 2026",
+      "publishedAt": "2026-09-22T14:44:58.000Z",
+      "description": "Full programme: Tickets: Quicket",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/29/malika-lueen-ndlovu-wins-the-2026-university-of-johannesburg-prize-for-south-african-writing/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malika Lueen Ndlovu wins the 2026 University of Johannesburg Prize for South African Writing",
+      "publishedAt": "2026-09-29T15:18:09.000Z",
+      "description": "The University of Johannesburg Prize for South African Writing (UJ Prize) in English has announced its 2026 winners: Michelle Kekana was awarded the Debut Prize for The Fragile Mental Health of Strong Women (Jacana), and Malika Lueen Ndlovu the Main Prize for Griefseed (Karavan Press). The prize is open to South African works in English … Continue reading Malika Lueen Ndlovu wins the 2026 Univers…",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/21/in-the-slowness-of-melting-by-glen-l-thompson-launching-at-wordsworth-books-gardens/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "In the Slowness of Melting by Glen L. Thompson launching at Wordsworth Books Gardens",
+      "publishedAt": "2026-09-21T06:58:32.000Z",
+      "description": "Please join us for the launch of In the Slowness of Melting, Glen L. Thompson‘s debut poetry collection. Glen will be in conversation with Stephen Symons: Wordsworth Books Gardens Centre, Wednesday, 30 September 2026, 5.30 for 6PM.",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/17/malika-lueen-ndlovus-griefseed-shortlisted-for-the-uj-prize-for-south-africa-writing/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Malika Lueen Ndlovu’s Griefseed shortlisted for the UJ Prize for South Africa Writing",
+      "publishedAt": "2026-09-17T16:40:38.000Z",
+      "description": "The University of Johannesburg Prize (UJ Prize) for South African Writing has announced its shortlists for books published in 2025. Debut Prize: Buried in the Chest by Lindani Mbuyunza-Memani Not This Tender by Sarah Uheida The Fragile Mental Health of Strong Women by Michelle Myeko Kekana Main Prize: Griefseed by Malika Lueen Ndlovu Song of … Continue reading Malika Lueen Ndlovu’s Griefseed shor…",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/30/karavan-press-authors-at-the-toyota-stellenbosch-woordfees/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Karavan Press authors at the Toyota Stellenbosch Woordfees",
+      "publishedAt": "2026-09-30T11:14:07.000Z",
+      "description": "We are heading to Stellenbosch for the annual Woordfees that is taking place between 3 and 11 October this year. Two authors feature with their Karavan Press titles on the programme, Erika Viljoen and Louis Viljoen: MONDAY, 5 OCTOBER 2026, 11:30 | EasyEquities Skrywerskamer Louis Viljoen: Selected Plays As dramaturg is Louis Viljoen bekend vir … Continue reading Karavan Press authors at the Toyot…",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/21/author-zubayr-charles/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Author: Zubayr Charles",
+      "publishedAt": "2026-09-21T07:07:50.000Z",
+      "description": "ZUBAYR CHARLES is a UCT Master’s in Creative Writing graduate and multi-disciplinary writer from Cape Town. He is known as the playwright and theatre-maker of hit plays such as Mercy, this bra’s a psycho, The Battered Housewives’ Club and Brasse, Tot Laat Toe. He was part of the Baxter Theatre’s How to Write a Musical … Continue reading Author: Zubayr Charles",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/30/writing-the-storms-with-jenna-mervis/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writing the Storms with Jenna Mervis",
+      "publishedAt": "2026-09-30T11:54:51.000Z",
+      "description": "Jenna Mervis, author of Braided River (Indeed Books), is hosting a writing workshop on 10 October 2026 in Hout Bay. Please email Jenna to book your place.",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/26/klara-du-plessis-is-die-wenner-van-die-breyten-breytenbach-prys-vir-digkuns-vir-haar-bundel-ekt-act/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Klara du Plessis is die wenner van die Breyten Breytenbach-prys vir digkuns vir haar bundel ‘Ek’t Act’",
+      "publishedAt": "2026-09-26T21:00:17.000Z",
+      "description": "Netwerk24 kykNET Rapport Breyten Breytenbach-prys vir digkuns 2026 Wenner: Klara du Plessis vir Ek’t Act (Karavan Press) Commendatio: Ronelda Kamfer Klara du Plessis se Ek’t Act verteenwoordig ’n belangrike verskuiwing in die nuwer diaspora-literatuur. Dit breek weg van die sentimentele, voorspelbare gegriefdheid en nostalgie van Suid-Afrikaners wat in die buiteland verlang na ’n idolized verlede…",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/21/karavan-press-title-please-dont-call-me-moffie-by-zubayr-charles/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Karavan Press title: Please, don’t call me moffie by Zubayr Charles",
+      "publishedAt": "2026-09-21T07:12:41.000Z",
+      "description": "After viewing a viral online video of a brutal homophobic attack in an unknown country, five men in their late twenties reflect on their experiences of growing up, grappling with their identities and confronting toxic masculinity in Cape Town, South Africa. The play then shifts its focus to a surprise birthday party for Mushfeeq, planned … Continue reading Karavan Press title: Please, don’t call …",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "karavan-press",
+      "source": {
+        "name": "Karavan Press",
+        "url": "https://karavanpress.com/2026/09/16/karavan-press-title-aggressiewe-water-by-erika-viljoen/",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Karavan Press title: Aggressiewe Water by Erika Viljoen",
+      "publishedAt": "2026-09-16T04:50:33.000Z",
+      "description": "Jy skryf so genoeglik, ek sal graag sien dat hierdie briewe ’n wyer gehoor bereik. \u2013 A N D R É P. B R I N K Een dag was daar … ’n mama en ’n papa en twee kindertjies wat uitgewyk het na ’n stuk veld in die Klein-Karoo waar niemand anders nog permanent … Continue reading Karavan Press title: Aggressiewe Water by Erika Viljoen",
+      "discoveredAt": "2026-10-01T20:56:31.932Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "ce624215e7c76a67013c3efd964fcbe7d8b103208aa0e2bcd7b075cf08343213"
+}

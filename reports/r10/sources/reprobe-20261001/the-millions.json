@@ -1,0 +1,32 @@
+{
+  "sourceId": "the-millions",
+  "name": "The Millions",
+  "entryUrl": "https://themillions.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:44:47.371Z",
+  "requests": [
+    {
+      "url": "https://themillions.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 66793,
+      "sha256": "bdf0ac935356973439edaa48cca41aa71127d0f0cf78c833b57aa7a5c44ffcee",
+      "accessedAt": "2026-10-01T20:44:47.916Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://themillions.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 78,
+    "sha256": "480e78e711eb7830dac7632d2f70b949ceaaac5be23f54a3edf9d31b8964290e",
+    "accessedAt": "2026-10-01T20:44:47.627Z",
+    "disallowed": [
+      "/wp-login.php",
+      "/wp-admin/"
+    ]
+  }
+}

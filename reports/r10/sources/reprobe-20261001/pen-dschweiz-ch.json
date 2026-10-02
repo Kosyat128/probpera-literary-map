@@ -1,0 +1,41 @@
+{
+  "sourceId": "pen-dschweiz-ch",
+  "name": "Swiss German PEN",
+  "entryUrl": "https://www.pen-dschweiz.ch/",
+  "countryCodes": [
+    "CH"
+  ],
+  "coverageCountryCodes": [
+    "CH"
+  ],
+  "attemptedAt": "2026-10-01T20:44:20.020Z",
+  "requests": [
+    {
+      "url": "https://www.pen-dschweiz.ch/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 12216,
+      "sha256": "e786594db411ea16a7cb3695c6260612f8739bcdbe5a5e7d12946560edd9c906",
+      "accessedAt": "2026-10-01T20:44:21.211Z"
+    },
+    {
+      "url": "https://www.pen-dschweiz.ch/veranstaltungen/writers-in-prison-day-mit-yousri-alghoul-palastina-2",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 6744,
+      "sha256": "993c6cd5e46a1d7b8263f0996f39be535560efee200f21c99ef4675972bd0faa",
+      "accessedAt": "2026-10-01T20:44:21.332Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.pen-dschweiz.ch/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "accessedAt": "2026-10-01T20:44:20.674Z",
+    "disallowed": []
+  }
+}

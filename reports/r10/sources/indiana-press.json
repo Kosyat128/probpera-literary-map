@@ -1,0 +1,11 @@
+{
+  "sourceId": "indiana-press",
+  "name": "Indiana University Press",
+  "entryUrl": "https://iupress.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:42.319Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

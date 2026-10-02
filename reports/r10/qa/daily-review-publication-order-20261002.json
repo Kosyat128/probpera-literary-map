@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T23:11:10.620Z",
+  "kind": "bounded-independent-review-context-regression",
+  "change": {
+    "module": "scripts/lib/literary-news-daily-automation.mjs",
+    "oldSelection": "records.slice(-80)",
+    "newSelection": "Finite explicit publication epochs descending; original input index as stable tie-break; project at most80records.",
+    "dateOnlyMethod": "Existing dailyPublicationEpoch interprets YYYY-MM-DD at midnight Europe/Moscow (+03:00).",
+    "captureOrVerificationFallback": false,
+    "horizonAdded": false,
+    "inputMutation": false,
+    "payloadFieldsChanged": false,
+    "canonicalWritten": false,
+    "apiCalls": 0,
+    "remoteWrites": 0
+  },
+  "regression": {
+    "test": "scripts/lib/literary-news-daily-review-context.test.mjs",
+    "method": "Run the actual automation with an isolated in-memory AI fixture and inspect the genuine independent-review request messages.",
+    "appendedArchiveCase": {
+      "currentArticles": 90,
+      "olderArchiveAppended": 120,
+      "oldTailWouldContainArchiveOnly": true,
+      "actualReviewContextCount": 80,
+      "actualReviewContextCurrent": 80,
+      "actualReviewContextArchive": 0
+    },
+    "precisionCase": {
+      "dateOnlyMoscowOrdering": true,
+      "equivalentTimestampStableTies": true,
+      "unknownAndInvalidPublicationExcluded": true,
+      "captureAndEventDatesNotUsedForOrdering": true,
+      "explicitOlderPublicationRetainedWhenUnderLimit": true,
+      "inputFrozenAndUnchanged": true
+    },
+    "draftReviewAndQuoteGatesUnchanged": true,
+    "maxAiCallsInFixture": 30,
+    "requestsPerFixture": 2,
+    "annualWindowUnchanged": {
+      "start": "2026-09-29",
+      "endExclusive": "2027-09-30",
+      "timeZone": "Europe/Moscow"
+    }
+  },
+  "validation": {
+    "command": "npx vitest run scripts/lib/literary-news-daily-review-context.test.mjs scripts/lib/literary-news-daily-automation.test.mjs --maxWorkers=2",
+    "testFilesPassed": 2,
+    "testsPassed": 19
+  },
+  "digests": {
+    "moduleSha256": "d2f50e3e3b7a290c9656393cc2e29acaf54a131bbb99dd4a0bcb00e88ba0844d",
+    "testSha256": "dcd30d49e4070f55200966650eb03bd39ee4306d17862e9e169cea43e6d79e54",
+    "canonicalObservedSha256": "1324b9d1de40a5a42943d95ed8aa70f96c42efe5fb40e4d950e3f4ec299ad31f"
+  },
+  "limits": [
+    "The regression uses synthetic test evidence only and makes no provider requests or publication writes.",
+    "Full release checks remain owned by root."
+  ]
+}

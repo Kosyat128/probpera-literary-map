@@ -1,0 +1,378 @@
+{
+  "sourceId": "litlogos",
+  "name": "Literaturhaus Switzerland",
+  "entryUrl": "https://www.literaturhaus.ch/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:58.161Z",
+  "requests": [
+    {
+      "url": "https://literaturhaus.ch/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 218716,
+      "sha256": "e5ea948a51b99d11f5341263ba7aa39fb6e1a62dd1391a139db9d99a22bef2c2",
+      "accessedAt": "2026-10-01T20:52:00.155Z"
+    },
+    {
+      "url": "https://literaturhaus.ch/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 14696,
+      "sha256": "8ff2d40166ae914cd289b49bb1ac8d3a7586dfef180ed97be3f723e1c6f49947",
+      "accessedAt": "2026-10-01T20:52:01.248Z"
+    },
+    {
+      "url": "https://literaturhaus.ch/saisoneroeffnung-2026-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 362181,
+      "sha256": "a0eac208ba7bdfa94db1e76fc99b5f4b2aaac048c29ae2222750d2c3c11d82a4",
+      "accessedAt": "2026-10-01T20:52:02.533Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://literaturhaus.ch/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 114,
+    "sha256": "7318a56383467e6ec2770f7cc9aa40452c4c5ad0186b092e8940fbf5e4e933ef",
+    "accessedAt": "2026-10-01T20:51:59.498Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "litlogos",
+    "name": "Literaturhaus Switzerland",
+    "url": "https://literaturhaus.ch/feed/",
+    "format": "rss",
+    "language": "de-CH",
+    "region": "global",
+    "sourceFamilyId": "litlogos",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://literaturhaus.ch"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://literaturhaus.ch/saisoneroeffnung-2026-2027/"
+    ],
+    "verifiedAt": "2026-10-01T20:52:02.548Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "litlogos",
+    "source": {
+      "name": "Literaturhaus Switzerland",
+      "url": "https://literaturhaus.ch/saisoneroeffnung-2026-2027/",
+      "language": "de-CH"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Saisoneröffnung 2026/2027",
+    "publishedAt": "2026-09-02T12:53:30.000Z",
+    "description": "Impressionen der Saisoneröffnung vom 2. September 2026 im Grossen Saal des Konservatoriums Zürich auf Einladung von Literaturhaus und Zürcher Kantonalbank. Nora Gomringer, Jürg Halter und Sarah Elena Müller hielten eine Rede an die Sprache und die Musiker*in Anna Trauffer verstärkte die Worte mit sphärischen Klängen. Anschliessend spazierten die Gäst*innen ans Limmatquai, wo bei Speis & Trank ang…",
+    "discoveredAt": "2026-10-01T20:52:01.250Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://literaturhaus.ch/saisoneroeffnung-2026-2027/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 362181,
+      "sha256": "a0eac208ba7bdfa94db1e76fc99b5f4b2aaac048c29ae2222750d2c3c11d82a4",
+      "accessedAt": "2026-10-01T20:52:02.533Z",
+      "headline": "Saisoneröffnung 2026/2027",
+      "excerpt": "Saisoneröffnung 2026/2027 - Literaturhaus Zürich <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style> Skip to content Zur Übersicht Saisoneröffnung 2026/2027 2. September 2026 Das Literaturhaus und die Zürcher Kantonalbank luden in den grossen Saal des Konservatoriums Zürich ein. Am 2. September wurde anlässlich der Saisoneröffnung die Sprache gefeiert. Die Autor*innen Nora Gomrin",
+      "publishedDates": [
+        {
+          "value": "2026-09-02T12:53:30+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-09-02T12:53:30+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://literaturhaus.ch/saisoneroeffnung-2026-2027/",
+      "language": "de-CH",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:52:02.548Z",
+  "foundItems": [
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/saisoneroeffnung-2026-2027/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Saisoneröffnung 2026/2027",
+      "publishedAt": "2026-09-02T12:53:30.000Z",
+      "description": "Impressionen der Saisoneröffnung vom 2. September 2026 im Grossen Saal des Konservatoriums Zürich auf Einladung von Literaturhaus und Zürcher Kantonalbank. Nora Gomringer, Jürg Halter und Sarah Elena Müller hielten eine Rede an die Sprache und die Musiker*in Anna Trauffer verstärkte die Worte mit sphärischen Klängen. Anschliessend spazierten die Gäst*innen ans Limmatquai, wo bei Speis & Trank ang…",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/rueckblick-2025-innovatives-programm-und-markante-steigerung-der-publikumszahlen/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rückblick 2025: Innovatives Programm und markante Steigerung der Publikumszahlen",
+      "publishedAt": "2026-04-08T13:39:53.000Z",
+      "description": "Für das Literaturhaus Zürich war 2025 ein Jahr, in dem sich programmatische Innovation und Publikumserfolg auf beglückende Weise die Hand gereicht haben \u2013 und dafür möchten wir Ihnen allen danken!",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/83551-2/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rekordsommer, Rekord am Literaturfestival Zürich!",
+      "publishedAt": "2026-08-19T13:08:24.000Z",
+      "description": "Schön wars! Aber leider schon vorbei... Für Sehnsüchtige gibt es aber alle Veranstaltungen per Video on Demand zum nachschauen. Tauchen Sie nochmals ein, in die Sommerabende im Alten Botanischen Garten und lassen Sie sich von unseren Stargäst*innen und ihren Büchern inspirieren.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/die-erfindung-der-wahrheit-felicitas-hoppe-und-thomas-straessle-ueber-luegen-literatur-und-die-gegenwart/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Die Erfindung der Wahrheit - Felicitas Hoppe und Thomas Strässle über Lügen, Literatur und die Gegenwart",
+      "publishedAt": "2026-03-03T09:49:17.000Z",
+      "description": "Anlässlich der Ausstellung «Phänomen Münchhausen» im Strauhof unterhielten sich Schriftstellerin Felicitas Hoppe und Literaturwissenschaftler Thomas Strässle über das Verhältnis von Literatur und Wahrheit.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/writer-in-residence-fann-attiki-cave-72/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Writer in Residence: Fann Attiki - Cave 72",
+      "publishedAt": "2026-09-28T12:35:18.000Z",
+      "description": "Fann Attiki ist unser 32. Writer in Residence. Von August 2026 bis Januar 2027 ist, der aus der Republik Kongo stammende Autor, zu Gast in Zürich. Mit «Cave 72» hat er einen der eindrucksvollsten Debütromane der jüngeren afrikanischen Gegenwartsliteratur vorgelegt.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/sibylle-anderl-bequeme-neue-welt/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sibylle Anderl - Bequeme neue Welt",
+      "publishedAt": "2026-09-21T12:27:04.000Z",
+      "description": "Gegen die Bequemlichkeit: Warum wir Anstrengung brauchen, um Mensch zu bleiben.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/joana-osman-und-mirjam-zadoff-hoffnung-und-frieden-neu-denken/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Joana Osman und Mirjam Zadoff - Hoffnung und Frieden neu denken",
+      "publishedAt": "2026-06-09T09:58:56.000Z",
+      "description": "Wie können wir in einer zunehmend gespaltenen Welt wieder ein Miteinander finden? Was gibt uns Hoffnung? Joana Osman und Mirjam Zadoff luden zu einem Versuch ein, auf diese Fragen gemeinsam Antworten zu finden \u2013 Ausgangspunkt waren ihre aktuellen Bücher.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/wolfgang-bauer-kriegsreportage-der-fiktion-die-wirklichkeit-entgegensetzen/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Wolfgang Bauer - Kriegsreportage. Der Fiktion die Wirklichkeit entgegensetzen",
+      "publishedAt": "2026-05-18T12:57:37.000Z",
+      "description": "Im Rahmen unserer Kooperation mit dem Schweizerischen Institut für Auslandforschung SIAF sprach Martin Meyer mit dem Kriegsreporter Wolfgang Bauer \u2013 gerade aus der Ukraine kommend. Er berichtete von seinen Erfahrungen an den Frontlinien unserer Gegenwart, von Freundschaften in Afghanistan und was es bedeutet, Serienmördern die Hand zu geben. Ein eindrückliches Gespräch!",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/raoul-schrott-zeitgeist-ein-plaedoyer-fuer-menschlichkeit/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Raoul Schrott - Zeitgeist. Ein Plädoyer für Menschlichkeit",
+      "publishedAt": "2026-03-23T09:35:25.000Z",
+      "description": "Der Schriftsteller Raoul Schrott sorgte im Gespräch mit Martin Meyer über seinen neuen Essay «Zeitgeist» für einen spannenden Abend \u2013 an dem auch die Diskussionen nicht zu kurz kamen.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "litlogos",
+      "source": {
+        "name": "Literaturhaus Switzerland",
+        "url": "https://literaturhaus.ch/bernhard-schlink-gerechtigkeit/",
+        "language": "de-CH"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bernhard Schlink - Gerechtigkeit",
+      "publishedAt": "2026-03-06T12:51:52.000Z",
+      "description": "Alle wollen Gerechtigkeit immer für sich, manchmal auch für andere, selten für alle. Aber was ist Gerechtigkeit, und wie ist sie zu haben? Über diese und andere Fragen sprach der Bestseller-Autor und Jurist Bernhard Schlink mit Nicola Steiner und mit dem Publikum.",
+      "discoveredAt": "2026-10-01T20:52:01.250Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "8ff2d40166ae914cd289b49bb1ac8d3a7586dfef180ed97be3f723e1c6f49947"
+}

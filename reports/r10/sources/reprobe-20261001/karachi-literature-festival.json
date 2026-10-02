@@ -1,0 +1,43 @@
+{
+  "sourceId": "karachi-literature-festival",
+  "name": "Karachi Literature Festival",
+  "entryUrl": "https://www.karachiliteraturefestival.com/",
+  "countryCodes": [
+    "PK"
+  ],
+  "coverageCountryCodes": [
+    "PK"
+  ],
+  "attemptedAt": "2026-10-01T20:44:30.234Z",
+  "requests": [
+    {
+      "url": "https://www.karachiliteraturefestival.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 368525,
+      "sha256": "8af568e75de41596d71baf779fd4fa3da7179d3e5daa1563ddaf872c99d98feb",
+      "accessedAt": "2026-10-01T20:44:30.863Z"
+    },
+    {
+      "url": "https://www.karachiliteraturefestival.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 2041,
+      "sha256": "67f6efd0671a3a6cb3698bc95b8908a1cb0224f9a5d278e2ea8542e59f7b78cf",
+      "accessedAt": "2026-10-01T20:44:31.066Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "runtime_parser_no_literary_item",
+  "robots": {
+    "url": "https://www.karachiliteraturefestival.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 150,
+    "sha256": "969923d6579136b38c5e24ea20d86726e5683b04f8e9b2c8f0c329657947977f",
+    "accessedAt": "2026-10-01T20:44:30.748Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  }
+}

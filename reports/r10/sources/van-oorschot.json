@@ -1,0 +1,108 @@
+{
+  "sourceId": "van-oorschot",
+  "name": "Van Oorschot",
+  "entryUrl": "https://www.vanoorschot.nl/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:19.075Z",
+  "requests": [
+    {
+      "url": "https://www.vanoorschot.nl/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 159086,
+      "sha256": "690f9001821e09c5f380b93922bc7457a14bc3ab1eec26b5f07c68f48a67ab7d",
+      "accessedAt": "2026-10-01T20:48:19.821Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/category/nieuws/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 124898,
+      "sha256": "819f5b48026d37f01ede6d8f6006b9f6741e98a166b745f9f56831699cf45f39",
+      "accessedAt": "2026-10-01T20:48:19.969Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/a-achmatova/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102055,
+      "sha256": "e2b4314acabddbb0e36b506a6962580e6809836b22d70ca90e60b13909821c6c",
+      "accessedAt": "2026-10-01T20:48:20.244Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/irma-achten/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 121844,
+      "sha256": "50bcf590addfef31d879ca22bcd44e1c239e7312521314e353e48153fc42e38f",
+      "accessedAt": "2026-10-01T20:48:20.322Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/martien-van-agtmaal/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 107841,
+      "sha256": "8bbd9be0c517c1da4ab99ab9d2897307f3213caa84851af3614a9f929a4d66db",
+      "accessedAt": "2026-10-01T20:48:20.398Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/s-anderson/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 101673,
+      "sha256": "1f65d91562a0e91badb232297275228a6ccfcd002e8432c8bba30d94caf53e55",
+      "accessedAt": "2026-10-01T20:48:20.483Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/vasili-antipov/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 105620,
+      "sha256": "fe5f4ab76da114339ccbcd05ef59dafc6c558d7e10090c699cc24cc6b0e446cb",
+      "accessedAt": "2026-10-01T20:48:20.574Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/peter-paul-de-baar/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 107806,
+      "sha256": "702e2586b67f2dc2b2db36487cd2f0199d0a7577ce39df026dd04894829e034e",
+      "accessedAt": "2026-10-01T20:48:20.656Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/gerbrand-bakker/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 107010,
+      "sha256": "de08ffdd67ef338d9b0967587561ddfb966842e8ac490decf1ceab3129599936",
+      "accessedAt": "2026-10-01T20:48:20.733Z"
+    },
+    {
+      "url": "https://www.vanoorschot.nl/writers/hannah-bakx-en-roos-hamelink/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 102055,
+      "sha256": "8b492642dc84fbf107587c01b2664bd629fe30445b845381e74a36dc63a115b8",
+      "accessedAt": "2026-10-01T20:48:20.841Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.vanoorschot.nl/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 446,
+    "sha256": "dafce7a127354fd8e8f21522384bd4015ceea4ad8f5f500d1316f360a955e71c",
+    "accessedAt": "2026-10-01T20:48:19.704Z",
+    "disallowed": [
+      "/wp-content/uploads/wc-logs/",
+      "/wp-content/uploads/woocommerce_transient_files/",
+      "/wp-content/uploads/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/"
+    ]
+  }
+}

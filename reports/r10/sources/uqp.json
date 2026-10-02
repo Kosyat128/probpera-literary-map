@@ -1,0 +1,836 @@
+{
+  "sourceId": "uqp",
+  "name": "University of Queensland Press",
+  "entryUrl": "https://www.uqp.com.au/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:26.126Z",
+  "requests": [
+    {
+      "url": "https://www.uqp.com.au/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 510601,
+      "sha256": "7dbc40ee7fbf001db01b40fdde25d8eeb66a5e3c4871eeb8b186ec848dcb2e50",
+      "accessedAt": "2026-10-01T20:48:31.141Z"
+    },
+    {
+      "url": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 339392,
+      "sha256": "809d8b939ec0cee4941447bff9870c980d02d6043c41f3583c65a34250190b30",
+      "accessedAt": "2026-10-01T20:48:32.622Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.uqp.com.au/robots.txt",
+    "error": "http_404",
+    "disallowed": []
+  },
+  "endpoint": {
+    "id": "uqp",
+    "name": "University of Queensland Press",
+    "url": "https://www.uqp.com.au/",
+    "format": "html",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "uqp",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.uqp.com.au"
+    ],
+    "linkPattern": "^\\/[^/]{12,}\\/?$|^\\/pages\\/[^/]+\\/?$|^\\/blog\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards"
+    ],
+    "verifiedAt": "2026-10-01T20:48:32.632Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 29,
+  "literaryCandidateCount": 29,
+  "sample": {
+    "sourceId": "uqp",
+    "source": {
+      "name": "University of Queensland Press",
+      "url": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "UQP Authors Shortlisted for the 2026 South Australian Literary Awards",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:31.241Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 339392,
+      "sha256": "809d8b939ec0cee4941447bff9870c980d02d6043c41f3583c65a34250190b30",
+      "accessedAt": "2026-10-01T20:48:32.622Z",
+      "headline": "UQP Authors Shortlisted for the 2026 South Australian Literary Awards",
+      "excerpt": "Posted 04.09.2026 UQP Authors Shortlisted for the 2026 South Australian Literary Awards A huge congratulations to the below authors who have been shortlisted in the 2026 South Australian Literary Awards spanning three categories: Leo and Ralph by Peter CarnavaaLittle Bones by Sandy BignaDiscipline by Randa Abdel-Fattah We Speak of Flowers by Eileen ChongThe Rot by Evelyn AraluenEstablished in 1986",
+      "publishedDates": [
+        {
+          "value": "2026-09-04T10:00:00+10:00",
+          "method": "meta[property=\"article:published_time\"]"
+        }
+      ],
+      "canonical": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards",
+      "language": null,
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:32.632Z",
+  "foundItems": [
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP Authors Shortlisted for the 2026 South Australian Literary Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-queensland-literary-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP Authors Shortlisted for the 2026 Queensland Literary Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/dr-jm-fields-book-the-eagle-and-the-crow-wins-the-2026-native-american-and-indigenous-studies-associations-naisa-best-first-book-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Dr JM Fields' book 'The Eagle and The Crow' wins the 2026 Native American and Indigenous Studies Association’s (NAISA) Best First Book Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-titles-longlisted-for-the-2026-voss-literary-prize",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP titles longlisted for the 2026 Voss Literary Prize",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/little-bones-by-sandy-bigna-wins-the-2026-cbca-honour-book-younger-readers-book-of-the-year",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Little Bones by Sandy Bigna is a 2026 CBCA Honour Book, Younger Readers Book of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-titles-shortlisted-for-the-2026-prime-ministers-literary-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP titles shortlisted for the 2026 Prime Minister's Literary Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-margaret-and-colin-roderick-literary-award-shortlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Margaret and Colin Roderick Literary Award Shortlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/the-2026-miles-franklin-literary-award-shortlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2026 Miles Franklin Literary Award Shortlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-margaret-and-colin-roderick-literary-award-longlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Margaret and Colin Roderick Literary Award Longlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/the-2026-miles-franklin-literary-award-longlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The 2026 Miles Franklin Literary Award Longlist",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-nsw-literary-awards-shortlist-highly-commended",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 NSW Literary Awards Shortlist & Highly Commended",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-uqp-mentorship-prize-for-under-represented-writers",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 UQP Mentorship Prize for Under-represented Writers",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-recipient-of-the-uqp-quentin-bryce-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 Recipient of the UQP Quentin Bryce Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-abia-winner-for-small-publishers-adult-book-of-the-year",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 ABIA winner for Small Publishers’ Adult Book of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-abia-business-award-uqp-shortlisted-for-small-publisher-of-the-year",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 ABIA Business Award: UQP Shortlisted for Small Publisher of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/2026-abia-business-award-aviva-tuffield-shortlisted-for-commissioning-editor-publisher-of-the-year",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "2026 ABIA Business Award: Aviva Tuffield Shortlisted for Commissioning Editor/Publisher of the Year",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/als-gold-medal-shortlist-2026",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "ALS Gold Medal Shortlist 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/meg-caddys-a-flash-in-the-dust-shortlisted-for-the-ara-historical-novel-prize-cya-category",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meg Caddy's 'A Flash in the Dust' shortlisted for the ARA Historical Novel Prize CYA category",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/meg-caddys-a-flash-in-the-dust-longlisted-for-the-ara-historical-novel-prize",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Meg Caddy's 'A Flash in the Dust' longlisted for the ARA Historical Novel Prize CYA category",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-acquires-second-verse-novel-by-cbca-honour-book-winner-sandy-bigna",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP acquires second verse novel by CBCA Honour Book winner Sandy Bigna",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/the-age-book-of-the-year-non-fiction-shortlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Age Book of The Year non-fiction shortlist 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/rachel-mortons-the-sun-was-electric-light-shortlisted-for-the-barbara-jefferis-award",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Rachel Morton's 'The Sun Was Electric Light' shortlisted for the Barbara Jefferis Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/song-of-a-thousand-seas-by-zana-fraillon-win-prime-ministers-literary-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Song of a Thousand Seas by Zana Fraillon wins Prime Ministers Literary Awards",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-acquires-new-novel-from-george-kemp-and-sells-north-american-rights-to-soft-serve",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP acquires new novel from George Kemp and sells North American rights to 'Soft Serve'",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/beyond-the-margins-australian-editors-in-conversation-series-q-a-with-the-editors-and-creators",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Beyond the Margins: Australian editors in conversation series | Q&A with the editors and creators",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-acquires-exceptional-debut-poetry-collection-tim-loveday",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP acquires exceptional debut poetry collection by Tim Loveday",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/vale-lorraine",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vale Lorraine Marwood",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/vale-herb-warton",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Vale Herb Warton",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "uqp",
+      "source": {
+        "name": "University of Queensland Press",
+        "url": "https://www.uqp.com.au/blog/uqp-appoints-new-publishing-director",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "UQP Appoints New Publishing Director",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:31.241Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "7dbc40ee7fbf001db01b40fdde25d8eeb66a5e3c4871eeb8b186ec848dcb2e50"
+}

@@ -1,0 +1,111 @@
+{
+  "sourceId": "nhanam",
+  "name": "Nhã Nam",
+  "entryUrl": "https://nhanam.vn/",
+  "countryCodes": [
+    "VN"
+  ],
+  "coverageCountryCodes": [
+    "VN"
+  ],
+  "attemptedAt": "2026-10-01T20:44:31.069Z",
+  "requests": [
+    {
+      "url": "https://nhanam.vn/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 318288,
+      "sha256": "7e9aab4e7dcc64a35436c79dc47436720700cbe201d6d9088cf445de8dec916d",
+      "accessedAt": "2026-10-01T20:44:33.292Z"
+    },
+    {
+      "url": "https://nhanam.vn/mba-bang-hinh-tron-goi-hai-nam-kien-thuc-quan-tri-kinh-doanh-qua-truc-quan-sinh-dong-tb-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 218705,
+      "sha256": "4bc12050c0a4e0827540ac8e10a1791f0e1e9d97cdcd49904e986501d80214d3",
+      "accessedAt": "2026-10-01T20:44:34.450Z"
+    },
+    {
+      "url": "https://nhanam.vn/dai-dien-nha-nam-tham-du-hoi-sach-liber-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 129670,
+      "sha256": "3dce0626a79209924eced03e61aa9cc4fa733020fc7ff020fb4d16a6d190aa60",
+      "accessedAt": "2026-10-01T20:44:34.927Z"
+    },
+    {
+      "url": "https://nhanam.vn/hoi-sach-nha-nam-chao-thu-2026",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 189860,
+      "sha256": "c1c61beafbcdb59536fe78e042537f85620b97d1559e8d7b63cc0581e2f7c856",
+      "accessedAt": "2026-10-01T20:44:35.722Z"
+    },
+    {
+      "url": "https://nhanam.vn/copy-of-dam-bi-ghet-tb-142-000",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 330539,
+      "sha256": "8a7d173617f1760f518050cac507d57e9fcf17653907ef5483e2d38743af8fba",
+      "accessedAt": "2026-10-01T20:44:36.736Z"
+    },
+    {
+      "url": "https://nhanam.vn/ha-noi-bam-sau-pho-phuong-artbook",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 208022,
+      "sha256": "1e0cc754cfaa4f2c87c0300c6950cef13ab25071e4e10e2c623f4eaa9e331b8d",
+      "accessedAt": "2026-10-01T20:44:37.457Z"
+    },
+    {
+      "url": "https://nhanam.vn/sach-moi-xuat-ban",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 241731,
+      "sha256": "b28d3f530954bc42ada9d11cb78ab66c9f1ff49af5b9e5d7b4f315cbde44dedf",
+      "accessedAt": "2026-10-01T20:44:37.749Z"
+    },
+    {
+      "url": "https://nhanam.vn/sach-sap-xuat-ban",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 165827,
+      "sha256": "cffa6e1cb81d6177821db3299357ba36b263dd91d51ad7eb51ae72031e9705be",
+      "accessedAt": "2026-10-01T20:44:38.250Z"
+    },
+    {
+      "url": "https://nhanam.vn/sach-chu-de-dong-duong",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 249798,
+      "sha256": "78dbddd142a603343d876201926272fc36ee3a125996685e90d2c3f841ca0070",
+      "accessedAt": "2026-10-01T20:44:39.379Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://nhanam.vn/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1393,
+    "sha256": "e9fcdd07673ed56c25cabe81192307161568e4afa83b891211505aff9176095f",
+    "accessedAt": "2026-10-01T20:44:32.496Z",
+    "disallowed": [
+      "/admin",
+      "/cart",
+      "/search",
+      "/checkout",
+      "/account",
+      "/collections/*sortBy*",
+      "/collections/*+*",
+      "/collections/*%2B*",
+      "/collections/*%2b*",
+      "/blogs/*+*",
+      "/blogs/*%2B*",
+      "/blogs/*%2b*",
+      "/*previewThemeId*"
+    ]
+  }
+}

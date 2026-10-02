@@ -1,0 +1,11 @@
+{
+  "sourceId": "notre-dame-press",
+  "name": "University of Notre Dame Press",
+  "entryUrl": "https://undpress.nd.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:41.396Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

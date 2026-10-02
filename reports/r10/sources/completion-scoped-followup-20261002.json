@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T22:58:28.463Z",
+  "method": "JSON recursively sorted object keys, preserved array order; RegExp represented as {regex:source,flags}",
+  "registrySha256": "e78aeaa4181638a5b5b85c1cd9bb3f90c99bbea1bf1fe560fbf717b30e646673",
+  "profileSourceSha256": "05b784bc683d830630da52febf4d45189dcfa9ab146c1c5ff0986646ccf6e83c",
+  "counts": {
+    "registeredEndpoints": 223,
+    "activeEndpoints": 222,
+    "verifiedProfiles": 217,
+    "organisationCountries": 63,
+    "verifiedSourceFamilies": 215
+  },
+  "lastMeasuredAvailability": {
+    "verifiedProfiles": 212,
+    "sourceFamilies": 210,
+    "checkedAt": "2026-10-01",
+    "evidence": "reports/r10/sources/completion-runtime-identified/runtime-verification.json",
+    "meaning": "Retained production-transport listing measurement; no new HTTP request is claimed by this metadata followup."
+  },
+  "additiveScopedExtractionReports": [
+    "reports/r10/sources/scoped-article-extraction-reviewed-20261002.json",
+    "reports/r10/sources/british-library-scoped-extraction-20261002.json",
+    "reports/r10/sources/new-zealand-scoped-extraction-20261002.json",
+    "reports/r10/sources/books-ireland-nbuv-scoped-extraction-20261002.json"
+  ],
+  "immutableOfficeProofAndHistoricalProfileArrayPreserved": true,
+  "remoteWrites": 0,
+  "beforeLastScopedOverridesSha256": "2699ecce616717fba09d03fc2ffe640f99b9c7bba00b44b3eaa4a16c52d7a9dc"
+}

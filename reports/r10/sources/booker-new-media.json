@@ -1,0 +1,715 @@
+{
+  "sourceId": "booker-new-media",
+  "name": "The Bookseller",
+  "entryUrl": "https://www.thebookseller.com/news",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:45.972Z",
+  "requests": [
+    {
+      "url": "https://www.thebookseller.com/news",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 248922,
+      "sha256": "fc9c21bf4afc913a0c80cc41716889c4b45df8d57d33ccb3590a7ea0d432c508",
+      "accessedAt": "2026-10-01T20:48:47.525Z"
+    },
+    {
+      "url": "https://www.thebookseller.com/Syndication/DF.cfm?f=7&ft=10",
+      "status": 200,
+      "contentType": "application/xml;charset=UTF-8",
+      "bytes": 23175,
+      "sha256": "a2082b71963ae11fa0b77e195ae28ca9d041aeeb345e19c65ca3d30132dbb24f",
+      "accessedAt": "2026-10-01T20:48:47.665Z"
+    },
+    {
+      "url": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 104309,
+      "sha256": "ca4330c217da82f5eb612a063f2a600caeb3ba7fb09f5dd19cfdfcc2906c1329",
+      "accessedAt": "2026-10-01T20:48:48.049Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.thebookseller.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=UTF-8",
+    "bytes": 2679,
+    "sha256": "0624ac9b5de30a3037e783f29dd2129a0536f5db578b1d1cfea86a5b340247a3",
+    "accessedAt": "2026-10-01T20:48:46.634Z",
+    "disallowed": [
+      "/AcuCustom/Sitename/Fonts/",
+      "/AfcTool/fontawesome/webfonts/",
+      "/AfcTemp/DesignCentre/",
+      "/*?utm_source=*",
+      "/*?fbclid=*",
+      "/*?Preview=",
+      "/*?preview=",
+      "/dynamic-forms",
+      "/online-forms",
+      "/afotrack",
+      "/personal-message-campaign-channel",
+      "/search?",
+      "/login",
+      "/ao-d-f-t-link",
+      "/preview/",
+      "/AcuCustom/Sitename/Applications/",
+      "/AcuCustom/Sitename/Assets/",
+      "/AcuCustom/Sitename/Documents/",
+      "/AcuCustom/Sitename/Fonts/",
+      "/AcuCustom/Sitename/Skins/",
+      "/AcuCustom/Sitename/Styling/",
+      "/AcuCustom/Sitename/Templates/",
+      "/AcuCustom/Sitename/Users/",
+      "/AcuGeoIP/",
+      "/AcuLicence/",
+      "/AcuPatches/",
+      "/AcuStorageMonitor/",
+      "/AcuSystem/",
+      "/AcuUpdate/",
+      "/AfcAutomation/",
+      "/AfcChannel/",
+      "/AfcCommunityMgr/",
+      "/AfcControl/",
+      "/AfcCRM/",
+      "/AfcDesignCentre/",
+      "/AfcEdition/",
+      "/AfcEmail/",
+      "/AfcEngine/",
+      "/AfcForm/",
+      "/AfcLicence/",
+      "/AfcLiveEdit/",
+      "/AfcLogin/",
+      "/AfcMediaLibrary/",
+      "/AfcMessage/",
+      "/AfcMyMessages/",
+      "/AfcRecruitment/",
+      "/AfcRegistration/",
+      "/AfcRelated/",
+      "/AfcRest/",
+      "/AfcScript/",
+      "/AfcSearch/",
+      "/AfcSecurity/",
+      "/AfcSiteMap/",
+      "/AfcStandard/",
+      "/AfcStorageMonitor/",
+      "/AfcStyle/",
+      "/AfcTemp/DesignCentre/cus.cfm",
+      "/AfcTool/fontawesome/webfonts/",
+      "/AfcTool/fontawesome/webfonts5.5.0/",
+      "/AfcUpdate/",
+      "/AfcUpdater/",
+      "/AfoCampaign/",
+      "/AfoCommentAndRating/",
+      "/AfoCommunity/",
+      "/AfoComparison/",
+      "/AfoContact/",
+      "/AfoContentSubscription/",
+      "/AfoDynamicForm/",
+      "/AfoECard/",
+      "/AfoECommerce/",
+      "/AfoExternalIntegration/",
+      "/AfoForum/",
+      "/AfoMediaWave/",
+      "/AfoMyInterests/",
+      "/AfoMyLibrary/",
+      "/AfoNewsletter/",
+      "/AfoOnlineForm/",
+      "/AfoPromotion/",
+      "/AfoSiteAnalysis/",
+      "/AfoSocialBookMark/",
+      "/AfoSyndicationAndAggregation/",
+      "/AfoTaxonomyMgr/",
+      "/AfoTeamTime/",
+      "/AfoWave/",
+      "/afotrack/",
+      "/CampaignStatistics/",
+      "/com/",
+      "/control/",
+      "/Control/",
+      "/AfcFormWidgetJS.js",
+      "/AfcUser/cfc/CrossDomainLogin.cfc",
+      "/AfcUser/cfc/US_LoginDisplay.cfc"
+    ]
+  },
+  "endpoint": {
+    "id": "booker-new-media",
+    "name": "The Bookseller",
+    "url": "https://www.thebookseller.com/Syndication/DF.cfm?f=7&ft=10",
+    "format": "rss",
+    "language": "en",
+    "region": "global",
+    "sourceFamilyId": "booker-new-media",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.thebookseller.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist"
+    ],
+    "verifiedAt": "2026-10-01T20:48:48.056Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 20,
+  "literaryCandidateCount": 20,
+  "sample": {
+    "sourceId": "booker-new-media",
+    "source": {
+      "name": "The Bookseller",
+      "url": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+      "language": "en"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Baillie Gifford Prize for Non-Fiction reveals 2026 shortlist",
+    "publishedAt": "2026-10-01T09:00:49.000Z",
+    "description": "Nicholas Boggs, Anand Gopal, Patrick Radden Keefe, Edmund Richardson, Matthew Sweet and Andrea Wulf have been shortlisted for the 2026 Baillie Gifford Prize for Non-Fiction.",
+    "discoveredAt": "2026-10-01T20:48:47.667Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+      "status": 200,
+      "contentType": "text/html;charset=UTF-8",
+      "bytes": 104309,
+      "sha256": "ca4330c217da82f5eb612a063f2a600caeb3ba7fb09f5dd19cfdfcc2906c1329",
+      "accessedAt": "2026-10-01T20:48:48.049Z",
+      "headline": "Baillie Gifford Prize for Non-Fiction reveals 2026 shortlist",
+      "excerpt": "Baillie Gifford Prize for Non-Fiction reveals 2026 shortlist ao link Subscribe from just £3.65 a week SUBSCRIBE menucloseTopicsChildren'sBookshop HeroesInternationalLibrariesEventsAcademicPrizesThe British Book AwardsThe YA Book prizePublishing Calendar 2026ObituariesBookshopsThe Bookseller's Disability IssueBroadcastArchiveNewsRightsCommentBestsellersBooksPreviewsAuthor InterviewsBuyer's GuidesSp",
+      "publishedDates": [
+        {
+          "value": "2026-10-01T07:45:00Z",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+      "language": "En",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:48.056Z",
+  "foundItems": [
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Baillie Gifford Prize for Non-Fiction reveals 2026 shortlist",
+      "publishedAt": "2026-10-01T09:00:49.000Z",
+      "description": "Nicholas Boggs, Anand Gopal, Patrick Radden Keefe, Edmund Richardson, Matthew Sweet and Andrea Wulf have been shortlisted for the 2026 Baillie Gifford Prize for Non-Fiction.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/six-exceptional-writers-win-wellcome-collection-non-fiction-awards-202627",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Six ‘exceptional’ writers win Wellcome Collection Non-fiction Awards 2026/27",
+      "publishedAt": "2026-09-30T08:00:00.000Z",
+      "description": "Six writers have won the Wellcome Collection Non-Fiction Awards 2026/27, a development programme for writers who ‘have a big idea for a book about health and being human’.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/goldsmiths-prize-2026-shortlist-celebrates-newness-of-many-different-kinds",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Goldsmiths Prize 2026 shortlist celebrates ‘newness of many different kinds’",
+      "publishedAt": "2026-09-30T08:30:00.000Z",
+      "description": "Six titles that celebrate “newness of many different kinds” have been shortlisted for this year’s £10,000 Goldsmith’s prize.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/bbc-national-short-story-award-2026-winner-named-as-cherise-saywell",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "BBC National Short Story Award 2026 winner named as Cherise Saywell",
+      "publishedAt": "2026-09-30T07:32:14.000Z",
+      "description": "Cherise Saywell has been named as the winner of the BBC National Short Story Award 2026 for Ditto.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/claudia-amuah-wins-mo-siewcharran-prize-2026-for-the-other-woman",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Claudia Amuah wins Mo Siewcharran Prize 2026 for The Other Woman",
+      "publishedAt": "2026-09-28T08:34:46.000Z",
+      "description": "Claudia Amuah has been awarded the Mo Siewcharran Prize 2026 by Bookouture for her novel The Other Woman, taking home £2,500 as well as detailed editorial feedback and a follow-up online session.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/giulia-de-biase-leaves-nurnberg-milano-to-launch-film-and-tv-agency-gdb-literary",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Giulia De Biase leaves Nurnberg Milano to launch film and TV agency GDB Literary",
+      "publishedAt": "2026-10-01T07:45:00.000Z",
+      "description": "Guilia De Biase has departed her role as affiliate agent at Nurnberg Milano to found her own literary and film agency, GDB Literary, based in Milan.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/threshing-day-little-brown-extremely-sorry-as-new-fourth-wing-novel-fails-to-land-at-indies",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Threshing Day? Little, Brown ‘extremely sorry’ as new Fourth Wing book fails to land at indies",
+      "publishedAt": "2026-10-01T07:34:30.000Z",
+      "description": "Little, Brown has apologised to independent bookshops who have not yet received their orders of the latest book by Rebecca Yarros, which was published on 29th September.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/jack-mackays-gloam-wins-two-week-junior-book-awards",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Jack Mackay’s Gloam wins two Week Junior Book Awards",
+      "publishedAt": "2026-09-29T14:18:47.000Z",
+      "description": "Jack Mackay’s debut novel Gloam (Rock the Boat) has won two prizes at the Week Junior Book Awards 2026, taking both the Breakthrough and Audiobook awards.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/books-in-the-media-scattered-applause-for-charles-spencers-memories-of-princess-diana",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Books in the Media: scattered applause for Charles Spencer's memories of Princess Diana",
+      "publishedAt": "2026-09-30T14:51:28.000Z",
+      "description": "Charles Spencer’s memoir Swan Song: Diana, My Sister, which was announced by Penguin Michael Joseph only a month out from publication, has not only captured news headlines but dominates this week’s review pages.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/industry-celebrates-life-of-magnificent-co-conspirator-literary-agent-simon-trewin",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Industry celebrates life of 'magnificent co-conspirator' literary agent Simon Trewin",
+      "publishedAt": "2026-10-01T19:52:17.000Z",
+      "description": "St Martin-in-the-Fields was packed to the rafters as several hundred people from the trade celebrated the late literary agent Simon Trewin and newly unmasked Bookseller columnist, Miss Daisy Frost.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/bonnier-books-uk-appoints-stefanie-bierwerth-publisher-at-large-for-zaffre",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bonnier Books UK appoints Stefanie Bierwerth publisher-at-large for Zaffre",
+      "publishedAt": "2026-10-01T07:45:00.000Z",
+      "description": "Due to join Bonnier in December, Bierwerth arrives from Quercus/John Murray Group, where she is publisher of fiction and head of crime and thrillers.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/inspired-launches-coaching-business-for-publishing-and-creative-industry-leaders",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Inspired launches coaching business for publishing and creative industry leaders",
+      "publishedAt": "2026-09-30T11:07:26.000Z",
+      "description": "Inspired Search & Selection has launched Inspired Executive Coaching, with 10% of profits supporting the agency’s inaugural Coaching Fund for those in the publishing and creative industries who would not otherwise have access to professional coaching.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/ai-might-kill-us-but-is-that-so-bad",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "AI might kill us, but is that so bad?",
+      "publishedAt": "2026-10-01T15:20:28.000Z",
+      "description": "While the advent of AI has alarmed most writers, Bonnie Garmus argues it has also shone a light on the hubris of humankind.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/pa-renews-call-for-national-decade-of-reading-at-labour-party-conference",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "PA renews call for National Decade of Reading at Labour Party Conference",
+      "publishedAt": "2026-09-30T15:12:09.000Z",
+      "description": "Rebecca Sinclair, president of the PA and chief brand officer of PRH UK, called for a National Decade of Reading at the Labour Party Conference.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/julia-donaldson-and-axel-scheffler-gruffa-roll-on-with-a-third-straight-indie-number-one",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Julia Donaldson and Axel Scheffler Gruffa-roll on, with a third straight indie number one",
+      "publishedAt": "2026-09-30T13:45:00.000Z",
+      "description": "Despite losing the top spot in the NielsenIQ BookScan’s wider Total Consumer Market, Julia Donaldson and Axel Scheffler’s Gruffalo Granny (Macmillan Children’s) has earned a third consecutive week in prime position in the Independent Bookshop Top 20, according to NielsenIQ BookScan’s latest data.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/one-last-revelation-from-miss-daisy-frost",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "One last revelation from Miss Daisy Frost",
+      "publishedAt": "2026-10-01T08:18:50.000Z",
+      "description": "The closely-kept secret of the identity of Miss Daisy Frost, junior agent and The Bookseller gossip columnist, is finally revealed.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/quarto-adult-publishing-director-denise-bates-to-step-down",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Quarto adult publishing director Denise Bates to step down",
+      "publishedAt": "2026-09-30T07:45:00.000Z",
+      "description": "Denise Bates, group publishing director for adult publishing at The Quarto Group, is to step down later this year to pursue new projects within and beyond publishing.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/katie-espiner-made-ceo-of-hachette-uk-while-david-shelley-becomes-executive-chair",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Katie Espiner made CEO of Hachette UK as David Shelley becomes executive chair",
+      "publishedAt": "2026-09-29T15:08:53.000Z",
+      "description": "Katie Espiner has been named CEO of Hachette UK as the current CEO, David Shelley, becomes executive chair of Hachette UK and Hachette Book Group. Shelley also takes up a new role as global advisor to the CEO and deputy CEO of Hachette Livre.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/hey-big-spencer-princess-dianas-swan-song-lands-in-first-place",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Hey big Spencer: Princess Diana’s Swan Song lands in first place",
+      "publishedAt": "2026-09-30T11:53:46.000Z",
+      "description": "Charles Spencer’s tell-all book about his sister’s life \u2013 and death \u2013 has flown straight to the top of the Official UK Top 50, according to NielsenIQ BookScan’s Total Consumer Market (TCM).",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "booker-new-media",
+      "source": {
+        "name": "The Bookseller",
+        "url": "https://www.thebookseller.com/news/crime-writer-peter-may-dies",
+        "language": "en"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Crime writer Peter May dies",
+      "publishedAt": "2026-09-29T14:18:34.000Z",
+      "description": "Scottish crime writer Peter May has died at his holiday home in the south of France, his publisher riverrun has announced.",
+      "discoveredAt": "2026-10-01T20:48:47.667Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "a2082b71963ae11fa0b77e195ae28ca9d041aeeb345e19c65ca3d30132dbb24f"
+}

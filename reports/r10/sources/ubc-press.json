@@ -1,0 +1,115 @@
+{
+  "sourceId": "ubc-press",
+  "name": "UBC Press",
+  "entryUrl": "https://www.ubcpress.ca/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:46.000Z",
+  "requests": [
+    {
+      "url": "https://www.ubcpress.ca/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 54222,
+      "sha256": "a09df223eb40a79a3962d7ea3c3eaa521b21cac343c83edeae82bd0d50d4a5b1",
+      "accessedAt": "2026-10-01T20:51:47.155Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/rss/1.xml",
+      "status": 200,
+      "contentType": "text/xml;charset=UTF-8",
+      "bytes": 469,
+      "sha256": "2bc165f0fe81bb2af1c49fe9f56781da899c47ec29f1b9ba9b50cb46ab2dfd68",
+      "accessedAt": "2026-10-01T20:51:47.411Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/news-events",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 35843,
+      "sha256": "aa75b31113564720d2c2f1b7938a43314900b23af32999177cae1700a32ae714",
+      "accessedAt": "2026-10-01T20:51:47.718Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/how-to-publish-a-book-with-a-university-press-a-scholarly-publishing-seminar",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 30487,
+      "sha256": "732b903e70036061d3355aa14fe8771e1a8cf45c9c939380639c967c1f12f9b3",
+      "accessedAt": "2026-10-01T20:51:48.040Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/book-launch-event-visiting-with-aunties",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 28784,
+      "sha256": "75c69152fe098c15c7006657dc088a56e6253b26a14963acf0247eac8b696fb3",
+      "accessedAt": "2026-10-01T20:51:48.393Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/edmonton-book-launch-party-legal-unhousing",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29120,
+      "sha256": "a5a579da3986729e1412aee7db0606080a64850debe4613d0fc0c33e1cf2828f",
+      "accessedAt": "2026-10-01T20:51:48.673Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/furby-house-books-presents-in-the-shadow-of-the-manhattan-project",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29601,
+      "sha256": "1ab81b42869719873943492b8a9348a49f64f2b7ca845c51e0607a12828e2676",
+      "accessedAt": "2026-10-01T20:51:48.934Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/saskatoon-book-launch-party-legal-unhousing",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29050,
+      "sha256": "e5d1de351c0f9759f0e7b24e5419e6a7e9ec09c2db58e5872659919192cf1ae3",
+      "accessedAt": "2026-10-01T20:51:49.193Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/publishers-represented",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 36863,
+      "sha256": "e741187bfb22507372b6d1cdd52102daddea78eab9e495841689ffb22fbf6645",
+      "accessedAt": "2026-10-01T20:51:49.588Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/sociology-lecture-series-anti-asian-racism-and-the-covid-19-pandemic-in-canada",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 29335,
+      "sha256": "94c1899c577aa8dc725fd8fd93cda9a539875567df8e377f3c49b7e15a2143d1",
+      "accessedAt": "2026-10-01T20:51:49.858Z"
+    },
+    {
+      "url": "https://www.ubcpress.ca/advanced-search",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 33262,
+      "sha256": "7a02a435ee5d8cd5a79bd6bd9ab1407af7265af91d2a85a912a8fce373776c3d",
+      "accessedAt": "2026-10-01T20:51:50.113Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.ubcpress.ca/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1345,
+    "sha256": "cb23b71362b9a6fd3e08477f4b71731e17cb8dc305b9e3abe112164f93157c57",
+    "accessedAt": "2026-10-01T20:51:46.650Z",
+    "disallowed": [
+      "/basket",
+      "/payment",
+      "/payment-complete",
+      "/cgi-bin/"
+    ]
+  },
+  "feedAttemptError": "advertised_feed_has_no_item_links"
+}

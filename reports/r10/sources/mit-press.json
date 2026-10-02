@@ -1,0 +1,16 @@
+{
+  "sourceId": "mit-press",
+  "name": "MIT Press",
+  "entryUrl": "https://mitpress.mit.edu/blog/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.036Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "http_403",
+  "robots": {
+    "url": "https://mitpress.mit.edu/robots.txt",
+    "error": "http_403",
+    "disallowed": []
+  }
+}

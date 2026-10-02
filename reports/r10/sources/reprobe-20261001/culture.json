@@ -1,0 +1,592 @@
+{
+  "sourceId": "culture",
+  "name": "Культура.РФ",
+  "entryUrl": "https://www.culture.ru/news",
+  "countryCodes": [
+    "RU"
+  ],
+  "coverageCountryCodes": [
+    "RU"
+  ],
+  "attemptedAt": "2026-10-01T20:44:21.334Z",
+  "requests": [
+    {
+      "url": "https://www.culture.ru/news",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 489347,
+      "sha256": "eace16a5c4b5fb8685f7d55ec3cce893c12b7ae17eb0fbf9105f21bc1a477e21",
+      "accessedAt": "2026-10-01T20:44:22.200Z"
+    },
+    {
+      "url": "https://www.culture.ru/news/259352/18-oktyabrya-v-novosibirske-startuet-sibirskii-opernyi-festival-vasilisy-berzhanskoi",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 420790,
+      "sha256": "b9c7f8b3ff6b4bcc244a7561ea58ee44d6d988a3eb603f2ba746e20feac121ba",
+      "accessedAt": "2026-10-01T20:44:22.600Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.culture.ru/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 2591,
+    "sha256": "62677cbff437aca9300c7f48a8ba871e875c45dbb3dc9db0000b06f42df473c2",
+    "accessedAt": "2026-10-01T20:44:21.765Z",
+    "disallowed": [
+      "/?",
+      "/c/",
+      "/search",
+      "/cms",
+      "/auth/login",
+      "/*title=*",
+      "/*startDateTo=*",
+      "/*rubricPaths=*",
+      "/*rubric=*",
+      "/*year=*",
+      "/*actor=*",
+      "/*director=*",
+      "/*country=*",
+      "/*federalSubject=*",
+      "/*city=*",
+      "/*theater=*",
+      "/*architect=*",
+      "/*subordinationType=*",
+      "/*author=*",
+      "/*ethnic=*",
+      "/*touristRouteId=*",
+      "/reviews/",
+      "/s/pushka/"
+    ]
+  },
+  "endpoint": {
+    "id": "culture",
+    "name": "Культура.РФ",
+    "url": "https://www.culture.ru/news",
+    "format": "html",
+    "language": "ru",
+    "region": "europe",
+    "sourceFamilyId": "culture",
+    "countryCodes": [
+      "RU"
+    ],
+    "coverageCountryCodes": [
+      "RU"
+    ],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.culture.ru"
+    ],
+    "linkPattern": "^\\/live\\/broadcast\\/167656\\/[^/]+\\/?$|^\\/materials\\/258722\\/[^/]+\\/?$|^\\/news\\/.+",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.culture.ru/news/259352/18-oktyabrya-v-novosibirske-startuet-sibirskii-opernyi-festival-vasilisy-berzhanskoi"
+    ],
+    "verifiedAt": "2026-10-01T20:44:22.615Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 18,
+  "literaryCandidateCount": 18,
+  "sample": {
+    "sourceId": "culture",
+    "source": {
+      "name": "Культура.РФ",
+      "url": "https://www.culture.ru/news/259352/18-oktyabrya-v-novosibirske-startuet-sibirskii-opernyi-festival-vasilisy-berzhanskoi",
+      "language": "ru"
+    },
+    "region": "europe",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Месяц 29 сент18 октября в Новосибирске стартует Сибирский оперный фестиваль Василисы Бержанской",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:44:22.249Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.culture.ru/news/259352/18-oktyabrya-v-novosibirske-startuet-sibirskii-opernyi-festival-vasilisy-berzhanskoi",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 420790,
+      "sha256": "b9c7f8b3ff6b4bcc244a7561ea58ee44d6d988a3eb603f2ba746e20feac121ba",
+      "accessedAt": "2026-10-01T20:44:22.600Z",
+      "headline": "18 октября в Новосибирске стартует Сибирский оперный фестиваль Василисы Бержанской",
+      "excerpt": "Новости18 октября в Новосибирске стартует Сибирский оперный фестиваль Василисы БержанскойС 18 октября по 30 декабря в Новосибирске во второй раз пройдет Сибирский оперный фестиваль Василисы Бержанской . Международный проект популяризирует оперное искусство и поддерживает молодых исполнителей.Программа объединяет мировую оперную классику, мелодии барокко , русскую музыкальную традицию и ее современ",
+      "publishedDates": [],
+      "canonical": "https://www.culture.ru/news/259352/18-oktyabrya-v-novosibirske-startuet-sibirskii-opernyi-festival-vasilisy-berzhanskoi",
+      "language": "ru",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:44:22.615Z",
+  "foundItems": [
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259352/18-oktyabrya-v-novosibirske-startuet-sibirskii-opernyi-festival-vasilisy-berzhanskoi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 29 сент18 октября в Новосибирске стартует Сибирский оперный фестиваль Василисы Бержанской",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259339/18-sentyabrya-vo-vladivostoke-otkryvaetsya-tikhookeanskii-teatralnyi-festival",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 16 сент18 сентября во Владивостоке открывается Тихоокеанский театральный фестиваль",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259336/12-sentyabrya-v-kolomenskom-proidet-festival-kazachya-stanica-moskva",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 11 сент12 сентября в Коломенском пройдет фестиваль «Казачья станица Москва»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259335/11-sentyabrya-v-ekaterinburge-startuet-mezhdunarodnyi-festival-molodezhi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 11 сент11 сентября в Екатеринбурге стартует Международный фестиваль молодежи",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259331/10-sentyabrya-v-moskve-startuet-festival-kukolnikov-istoki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 08 сент10 сентября в Москве стартует фестиваль кукольников «Истоки»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259355/v-krasnoyarske-otkrylas-tretya-yarmarka-sovremennogo-iskusstva-skan",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 01 октВ Красноярске открылась Третья ярмарка современного искусства СКАН",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259354/pamyatka-o-poryadke-peredachi-dokumentov-lichnogo-proiskhozhdeniya-v-gosudarstvennyi-municipalnyi-arkhiv",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 01 октПамятка о порядке передачи документов личного происхождения в государственный, муниципальный архив",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259353/1-oktyabrya-moskovskii-teatr-sovremennik-predstavit-spektakl-edinomyshlenniki",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 30 сент1 октября Московский театр «Современник» представит спектакль «Единомышленники»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259351/v-muzee-politicheskoi-istorii-otkrylas-vystavka-pamyat-mesta-mesto-pamyati",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 28 сентВ Музее политической истории открылась выставка «Память места. Место памяти»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259347/s-26-sentyabrya-po-4-oktyabrya-proidet-moskovskaya-knizhnaya-nedelya",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 25 сентС 26 сентября по 4 октября пройдет Московская книжная неделя",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259343/24-sentyabrya-v-moskve-startuet-v-vystavka-prorestavraciyu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 23 сент24 сентября в Москве стартует V выставка «ПРОреставрацию»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259342/v-muzee-sovremennoi-istorii-rossii-prokhodit-vystavka-otchayannyi-farfor",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 21 сентВ Музее современной истории России проходит выставка «Отчаянный фарфор»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259341/v-muzee-dekorativnogo-iskusstva-startuet-proekt-vrubel-rozhdenie-novogo-iskusstva",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 18 сентВ Музее декоративного искусства стартует проект «Врубель. Рождение нового искусства»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259338/serpukhovskii-istoriko-khudozhestvennyi-muzei-predstavlyaet-vystavku-bogi-i-lyudi",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 15 сентСерпуховский историко-художественный музей представляет выставку «Боги и люди»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259337/moskovskii-dom-dostoevskogo-predstavlyaet-vystavku-legenda-o-pesnyarakh",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 14 сент«Московский дом Достоевского» представляет выставку «Легенда о Песнярах»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/news/259333/14-i-vypusk-yarmarki-cosmoscow-posetilo-bolee-60-tysyach-chelovek",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 09 сент14-й выпуск ярмарки Cosmoscow посетило более 60 тысяч человек",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/materials/258722/medved-za-nei-chto-snilos-tatyane-larinoi-i-pochemu",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "«Медведь за ней»: что снилось Татьяне Лариной и почемуМнения литературоведов и психологовМнения литературоведов и психологов",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "culture",
+      "source": {
+        "name": "Культура.РФ",
+        "url": "https://www.culture.ru/live/broadcast/167656/personalnaya-vystavka-yuriya-evgenevicha-sivachyova-geroi-nashego-vremeni",
+        "language": "ru"
+      },
+      "region": "europe",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Месяц 02 октДень пт 13:00Персональная выставка Юрия Евгеньевича Сивачёва «Герои нашего времени»",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:44:22.249Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "eace16a5c4b5fb8685f7d55ec3cce893c12b7ae17eb0fbf9105f21bc1a477e21"
+}

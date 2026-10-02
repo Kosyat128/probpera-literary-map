@@ -1,0 +1,101 @@
+{
+  "sourceId": "aie-it",
+  "name": "AIE",
+  "entryUrl": "https://www.aie.it/",
+  "countryCodes": [
+    "IT"
+  ],
+  "coverageCountryCodes": [
+    "IT"
+  ],
+  "attemptedAt": "2026-10-01T20:42:55.502Z",
+  "requests": [
+    {
+      "url": "https://www.aie.it/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 156278,
+      "sha256": "4b69bb4950796c4ca52a65d2263712bdf4a8c3df2a1d3ce55e53f855ca73c875",
+      "accessedAt": "2026-10-01T20:42:57.015Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/News.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 155195,
+      "sha256": "47a4484afd992d4d05da644b17dffb9b255f641c4930a8de37ef7dfcf20eb376",
+      "accessedAt": "2026-10-01T20:42:57.659Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/LibroinParlamento.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 93104,
+      "sha256": "6283b37e4b0afaf8533bf3c13dafaecf692a7747adbdc20ce73a3d763e94383b",
+      "accessedAt": "2026-10-01T20:42:57.946Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/Fieredellibro.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 242209,
+      "sha256": "959cda88cf52a034e80f9d9aea0e236b355e9e2eb673fa908456ac6db0f25f06",
+      "accessedAt": "2026-10-01T20:42:58.459Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/Studiericerche/Videopresentazionideidati.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 148015,
+      "sha256": "6b2e1aef4862a284d7cc6a57316393b7206ca4214342698440bb010940560d29",
+      "accessedAt": "2026-10-01T20:42:58.841Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/Rassegnastampa.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91941,
+      "sha256": "d65e68dfc791dc011df24c0702cbe82f5bf0f7e84ff9264c90be53c1a82739be",
+      "accessedAt": "2026-10-01T20:42:59.052Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/EmergenzaCovid-19.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 152017,
+      "sha256": "12dde55db062a3d960ae56defde29082c46b619628a34b1a63a3f188c49bddc5",
+      "accessedAt": "2026-10-01T20:42:59.349Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/GiornaledellaLibreria.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 91615,
+      "sha256": "f026c3d06b6f6d6c6ba66aecddfcaa12546b48cc827881b265dbf3d412cd973b",
+      "accessedAt": "2026-10-01T20:42:59.565Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEtiinforma/AIEeuniversit%C3%A0.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 137728,
+      "sha256": "3d6f66ff8142e7f25114b081bc506d87a20e2d4c1778faf4c747fb53f3eb20a5",
+      "accessedAt": "2026-10-01T20:42:59.926Z"
+    },
+    {
+      "url": "https://www.aie.it/Cosafacciamo/AIEperleaziende.aspx",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 87052,
+      "sha256": "972f7afa257b52b59484820dc49a4a35f7500beddf0ce6bbada9ab63f3678a58",
+      "accessedAt": "2026-10-01T20:43:00.147Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.aie.it/robots.txt",
+    "error": "http_406",
+    "disallowed": []
+  }
+}

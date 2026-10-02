@@ -1,0 +1,33 @@
+{
+  "batchId": "news-september-f-20261002",
+  "checkedAt": "2026-10-01T22:43:43.019Z",
+  "writtenCanonical": false,
+  "remoteWrites": 0,
+  "networkRequests": 0,
+  "proposedReviewed": 40,
+  "held": 20,
+  "bodyHTTP200": 60,
+  "fullBodyDigestsChecked": 60,
+  "added": 40,
+  "mergeHeld": [],
+  "beforeReviewedCount": 488,
+  "proposedReviewedCount": 528,
+  "eligiblePublicAfter": 491,
+  "freshForTelegram": 0,
+  "sourceIds": [
+    "en-attendant-nadeau",
+    "literaturhaus-stuttgart",
+    "hachette-book-group"
+  ],
+  "sourceCountryCodes": [
+    "DE",
+    "US"
+  ],
+  "canonicalBeforeSha256": "85edc08a1184834775c4497b61262bc3f57615d968857de785835e838af7ea74",
+  "recordSha256": "028d3e55ae35cdadd27df369f82f43bda21f1628e451ed3c59980892ce5c620f",
+  "limitations": [
+    "September archive is dated by primary publisher evidence; it is excluded from fresh Telegram intake.",
+    "The overall Kometenparade market and separately timed author sessions are identified distinctly for root semantic review.",
+    "The Selbert exhibition duplicate is held. Image metadata has not been approved for reuse."
+  ]
+}

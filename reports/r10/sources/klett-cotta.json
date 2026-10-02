@@ -1,0 +1,430 @@
+{
+  "sourceId": "klett-cotta",
+  "name": "Klett-Cotta",
+  "entryUrl": "https://www.klett-cotta.de/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:14.522Z",
+  "requests": [
+    {
+      "url": "https://www.klett-cotta.de/",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 436220,
+      "sha256": "49e14ad246757f08c13eb2dacaf3167010c4cc8bc36acee728d577d09b091a81",
+      "accessedAt": "2026-10-01T20:48:15.269Z"
+    },
+    {
+      "url": "https://www.klett-cotta.de/aktuelles/news-c-106",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 171082,
+      "sha256": "2d7f8e07c6254e382895506984eb56db53e9630ef58d05b7c170f6ce25d80d5c",
+      "accessedAt": "2026-10-01T20:48:15.575Z"
+    },
+    {
+      "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 724156,
+      "sha256": "b7962ce6d994dd00782a5493bf9293fd62d24dc9e805c37b4104e537b5d343e3",
+      "accessedAt": "2026-10-01T20:48:15.993Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://www.klett-cotta.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 534,
+    "sha256": "dc49f1e879b5d77f587b37a2693fab3d87b71cc9cc8f8dcb9eaa3c900dbeca5d",
+    "accessedAt": "2026-10-01T20:48:14.803Z",
+    "disallowed": [
+      "/api/",
+      "/shop/",
+      "/search",
+      "/search/",
+      "/forms/"
+    ]
+  },
+  "endpoint": {
+    "id": "klett-cotta",
+    "name": "Klett-Cotta",
+    "url": "https://www.klett-cotta.de/aktuelles/news-c-106",
+    "format": "html",
+    "language": "de",
+    "region": "global",
+    "sourceFamilyId": "klett-cotta",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://www.klett-cotta.de"
+    ],
+    "linkPattern": "^\\/beitrag\\/[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342"
+    ],
+    "verifiedAt": "2026-10-01T20:48:16.016Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 12,
+  "literaryCandidateCount": 12,
+  "sample": {
+    "sourceId": "klett-cotta",
+    "source": {
+      "name": "Klett-Cotta",
+      "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+      "language": "de"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:48:15.591Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 724156,
+      "sha256": "b7962ce6d994dd00782a5493bf9293fd62d24dc9e805c37b4104e537b5d343e3",
+      "accessedAt": "2026-10-01T20:48:15.993Z",
+      "headline": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+      "excerpt": "Georg-Büchner-Preis 2025 für Ursula Krechel | Klett-CottaZum Inhalt springenBelletristik & Sachbuch|Psychologie & PsychotherapieAutor:innenAktuellesVerlageServiceGeorg-Büchner-Preis 2025 für Ursula KrechelHerzlichen Glückwunsch!15.7.2025Die Deutsche Akademie für Sprache und Dichtung verleiht den Georg-Büchner-Preis 2025 an unsere Autorin Ursula Krechel. Der Preis ist mit 50.000 Euro dotiert und wi",
+      "publishedDates": [
+        {
+          "value": "2025-07-15",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        }
+      ],
+      "canonical": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+      "language": "de",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:48:16.016Z",
+  "foundItems": [
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/bernardine-evaristo-erhaelt-den-women-s-prize-outstanding-contribution-award-b-334",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Bernardine Evaristo erhält den Women’s Prize Outstanding Contribution Award",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/buchvorstellung-in-zuerich-b-344",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Buchvorstellung in Zürich",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/claus-koch-bei-swr-leute-b-345",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Claus Koch bei SWR Leute",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/interview-mit-claus-koch-b-343",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Interview mit Claus Koch",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/lyneham-auf-der-shortlist-fuer-den-phantastikpreis-der-stadt-wetzlar-b-341",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lyneham auf der Shortlist für den Phantastikpreis der Stadt Wetzlar",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/prof-peter-henningsen-im-gesundheitsgespraech-von-bayern-2-b-340",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Prof. Peter Henningsen im Gesundheitsgespräch von Bayern 2",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/trauer-um-dr-wulf-bertram-b-329",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Trauer um Dr. Wulf Bertram",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/lesebericht-jiaming-tang-cinema-love-b-330",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lesebericht: Jiaming Tang, »Cinema Love«",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/lesebericht-ronald-d-gerste-wie-technik-geschichte-macht-b-336",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lesebericht: Ronald D. Gerste, »Wie Technik Geschichte macht«",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/sylvester-groth-liest-auf-den-marmorklippen-b-326",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Sylvester Groth liest »Auf den Marmorklippen«",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "klett-cotta",
+      "source": {
+        "name": "Klett-Cotta",
+        "url": "https://www.klett-cotta.de/beitrag/lesebericht-und-nachgefragt-raimund-schulz-welten-im-aufbruch-b-327",
+        "language": "de"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lesebericht und Nachgefragt: Raimund Schulz, »Welten im Aufbruch«",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:48:15.591Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "2d7f8e07c6254e382895506984eb56db53e9630ef58d05b7c170f6ce25d80d5c"
+}

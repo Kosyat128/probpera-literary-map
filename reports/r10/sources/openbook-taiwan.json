@@ -1,0 +1,130 @@
+{
+  "sourceId": "openbook-taiwan",
+  "name": "Openbook",
+  "entryUrl": "https://www.openbook.org.tw/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:48:40.380Z",
+  "requests": [
+    {
+      "url": "https://www.openbook.org.tw/",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 63202,
+      "sha256": "70f311fa7dbf97c80973020e4d803ac9a90686b7c39d1afddca4dc2ef95fe4cc",
+      "accessedAt": "2026-10-01T20:48:41.819Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72976",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 68256,
+      "sha256": "a2c38ed86da2dfb4fdda70550b73ca205fbaac77e113403a6be74f8a85163098",
+      "accessedAt": "2026-10-01T20:48:42.360Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72980",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 74535,
+      "sha256": "1b763159f719a73c7a99ec332afffce54973b70a78788c330c51433ee7075f1f",
+      "accessedAt": "2026-10-01T20:48:42.854Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72971",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 71792,
+      "sha256": "973e97bfaf4c675516e22e3d1ec72bfeb44889cf5f161c8d407d7c9e0ea86992",
+      "accessedAt": "2026-10-01T20:48:43.355Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72884",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 71337,
+      "sha256": "9fb6a6511633f1094d126ea44dddfeda4b727a9c7a9706cdac7df595614fc35d",
+      "accessedAt": "2026-10-01T20:48:43.843Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72883",
+      "status": 200,
+      "contentType": "text/html",
+      "bytes": 70694,
+      "sha256": "a9ebfc64404be33e4bc2fea217636d2f817aafc9551d89d22d7f521f64842280",
+      "accessedAt": "2026-10-01T20:48:44.135Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72960",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 65043,
+      "sha256": "0ea40ea7a9c2d51dcb7de2be268ecaa8eccfde385a886bedd132ae0e939f1574",
+      "accessedAt": "2026-10-01T20:48:44.601Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-72313",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 74420,
+      "sha256": "9cebf4c534512a742a189eac8a2adf642032122a6ce57baefae4435b803a7751",
+      "accessedAt": "2026-10-01T20:48:45.076Z"
+    },
+    {
+      "url": "https://www.openbook.org.tw/article/p-71874",
+      "status": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 90829,
+      "sha256": "65a87fb2285ddbf83c1090bdf4b7efe82d6c0d65292cf203ecd55ffa96fecdfc",
+      "accessedAt": "2026-10-01T20:48:45.564Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.openbook.org.tw/robots.txt",
+    "status": 200,
+    "contentType": "text/plain",
+    "bytes": 2189,
+    "sha256": "278e83bcf567badfebcdea4d5d20ca9898e4449fe4eb2e3b5a08227b4ca9b762",
+    "accessedAt": "2026-10-01T20:48:41.532Z",
+    "disallowed": [
+      "/includes/",
+      "/misc/",
+      "/modules/",
+      "/profiles/",
+      "/scripts/",
+      "/themes/",
+      "/CHANGELOG.txt",
+      "/cron.php",
+      "/INSTALL.mysql.txt",
+      "/INSTALL.pgsql.txt",
+      "/INSTALL.sqlite.txt",
+      "/install.php",
+      "/INSTALL.txt",
+      "/LICENSE.txt",
+      "/MAINTAINERS.txt",
+      "/update.php",
+      "/UPGRADE.txt",
+      "/xmlrpc.php",
+      "/admin/",
+      "/comment/reply/",
+      "/filter/tips/",
+      "/node/add/",
+      "/search/",
+      "/user/register/",
+      "/user/password/",
+      "/user/login/",
+      "/user/logout/",
+      "/?q=admin/",
+      "/?q=comment/reply/",
+      "/?q=filter/tips/",
+      "/?q=node/add/",
+      "/?q=search/",
+      "/?q=user/password/",
+      "/?q=user/register/",
+      "/?q=user/login/",
+      "/?q=user/logout/"
+    ]
+  }
+}

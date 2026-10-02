@@ -1,0 +1,3099 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-01T21:13:13.197Z",
+  "scope": "Current bounded source index, production discovery parser, and separate article detail probes. Availability and article identity only; no publication or freshness guarantee.",
+  "previousBaseline": {
+    "checkpoint": "2026-09-27",
+    "promotedProfiles": 108,
+    "combinedRegistry": 115
+  },
+  "counts": {
+    "reviewedSourceOverrides": 64,
+    "availableEndpoints": 63,
+    "separatelyVerifiedDetails": 62,
+    "currentArticleFinds": 820,
+    "published": 0
+  },
+  "failedSources": [
+    {
+      "sourceId": "nli-ie",
+      "error": "detail_article_identity_missing"
+    },
+    {
+      "sourceId": "samokat",
+      "error": "fetch_failed"
+    }
+  ],
+  "results": [
+    {
+      "sourceId": "anel-qc-ca",
+      "endpoint": "https://www.anel.qc.ca/",
+      "countryCodes": [
+        "CA"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 14,
+      "currentArticleCandidateCount": 5,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/dossiers-et-enjeux\\/(?:innovation-technologie|droit-dauteur|projets)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.anel.qc.ca/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 124066,
+          "responseSha256": "abbe9f340cfa410c4d4f91ba971df34d92d085ff7baed6d2fe7408b84fbdd730",
+          "accessedAt": "2026-10-01T21:12:49.944Z"
+        },
+        {
+          "url": "https://www.anel.qc.ca/dossiers-et-enjeux/innovation-technologie/commercialiser-des-livres-numeriques-accessibles-en-europe-en-2025/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 143171,
+          "responseSha256": "a61ec976e2fedb7eca917b746e733eb38abe73a7062f7f006747e5778c6461c5",
+          "accessedAt": "2026-10-01T21:12:50.134Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.anel.qc.ca/dossiers-et-enjeux/innovation-technologie/commercialiser-des-livres-numeriques-accessibles-en-europe-en-2025/",
+        "discoveryTitle": "La commercialisation des livres numériques accessibles en Europe depuis 2025",
+        "detailHeadline": "La commercialisation des livres numériques accessibles en Europe depuis 2025",
+        "publicationDates": [
+          {
+            "value": "2024-12-06T20:02:30+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2024-12-06T15:02:30-05:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2024-12-06T20:02:30+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 6177,
+        "detailTextSha256": "7d505a436850fd1c0eac9b1dd74d12c1a1bb4fee0713778a93967c365c3f1600"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "kiwi-verlag-de",
+      "endpoint": "https://www.kiwi-verlag.de/",
+      "countryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 7,
+      "currentArticleCandidateCount": 1,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/magazin\\/[^/]+\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.kiwi-verlag.de/",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "bytes": 700807,
+          "responseSha256": "ee19a7204cd7ab7bf9eb7a18bb19ae67d678b9763bccb7baba8606085eeaaaf4",
+          "accessedAt": "2026-10-01T21:12:49.526Z"
+        },
+        {
+          "url": "https://www.kiwi-verlag.de/magazin/ausgezeichnet/shida-bazyar-erhaelt-den-wilhelm-raabe-literaturpreis-2026",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "bytes": 378188,
+          "responseSha256": "0e30fcd7801a677261d49ec27ea40a117893919dd51225b491005c9a2a3f2b16",
+          "accessedAt": "2026-10-01T21:12:49.735Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.kiwi-verlag.de/magazin/ausgezeichnet/shida-bazyar-erhaelt-den-wilhelm-raabe-literaturpreis-2026",
+        "discoveryTitle": "Shida Bazyar erhält den Wilhelm Raabe-Literaturpreis 2026",
+        "detailHeadline": "Shida Bazyar erhält den Wilhelm Raabe-Literaturpreis 2026",
+        "publicationDates": [
+          {
+            "value": "2026-09-22T12:24:13+02:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 80,
+        "detailTextSha256": "409825d799487b65c753b6fee084e3cb4130be75291ddd985ff85771cb2bb5a4"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "press-princeton-edu",
+      "endpoint": "https://press.princeton.edu/",
+      "countryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 26,
+      "currentArticleCandidateCount": 9,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:news|ideas)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://press.princeton.edu/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 149734,
+          "responseSha256": "e01f39553b23ab9cd3f49c8a4f85b4d0752cfe47047812b52e7b1cb1d4475df9",
+          "accessedAt": "2026-10-01T21:12:49.644Z"
+        },
+        {
+          "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 122420,
+          "responseSha256": "cc78adfa9728a07a05bd0c414861a7307b02a58960af3c88514dd5775339209d",
+          "accessedAt": "2026-10-01T21:12:49.763Z"
+        }
+      ],
+      "sample": {
+        "url": "https://press.princeton.edu/news/bartz-v-anthropic",
+        "discoveryTitle": "Princeton University Press statement on the proposed Bartz v. Anthropic class action suit settlement October 01, 2026",
+        "detailHeadline": "Princeton University Press statement on the proposed Bartz v. Anthropic class action suit settlement",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 11868,
+        "detailTextSha256": "db0d32822de9066cd62eebbc89bba0ca4a06bf7da7f5ab435a2c4ae840d5abba"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "sne-fr",
+      "endpoint": "https://www.sne.fr/",
+      "countryCodes": [
+        "FR"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 23,
+      "currentArticleCandidateCount": 4,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:actu|evenement_sne)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.sne.fr/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 259564,
+          "responseSha256": "b15842749f620eb3f59091c73657e037630f5f3aa0638cccff55be0746799e1e",
+          "accessedAt": "2026-10-01T21:12:49.700Z"
+        },
+        {
+          "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 140466,
+          "responseSha256": "b906ccc9d050887a8c042fd06074929e583f3772836cfc7d5052b63ed88977db",
+          "accessedAt": "2026-10-01T21:12:49.830Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.sne.fr/actu/ledition-en-perspective-le-rapport-dactivite-du-syndicat-national-de-ledition-2025-2026-est-disponible/",
+        "discoveryTitle": "L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible",
+        "detailHeadline": "L’édition en perspective : le rapport d’activité du Syndicat national de l’édition 2025-2026 est disponible",
+        "publicationDates": [
+          {
+            "value": "2026-06-25T14:11:10+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 953,
+        "detailTextSha256": "6f094579c0cf239eafb78ada043af59db03cdf02350fb2ac34bdde2e35059270"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "bookunion-ru",
+      "endpoint": "https://bookunion.ru/",
+      "countryCodes": [
+        "RU"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 19,
+      "currentArticleCandidateCount": 11,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/news\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://bookunion.ru/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 137545,
+          "responseSha256": "735ee83108ceca990a08b21f814bc77a8bf72e29b84e32f8f1ce152c854c9066",
+          "accessedAt": "2026-10-01T21:12:50.179Z"
+        },
+        {
+          "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 110811,
+          "responseSha256": "3462cf3c1c5d7c48d9ee95c8692dd532c85f446dbbf363bda6b12fa12e6f8b05",
+          "accessedAt": "2026-10-01T21:12:50.360Z"
+        }
+      ],
+      "sample": {
+        "url": "https://bookunion.ru/news/otraslevaia-konferentsiia-knizhnyi-rynok-rossii-2026-kliuchevye-itogi-vyzovy-i-tochki-rosta/",
+        "discoveryTitle": "Отраслевая конференция «Книжный рынок России - 2026»: ключевые итоги, вызовы и точки роста",
+        "detailHeadline": "Отраслевая конференция «Книжный рынок России \u2014 2026»: ключевые итоги, вызовы и точки роста",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 12907,
+        "detailTextSha256": "893a08ad0fa7dccdb67fcb9ae86cc48b237694775cae889cbaebb071be476955"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "publishingireland-com",
+      "endpoint": "https://www.publishingireland.com/news/",
+      "countryCodes": [
+        "IE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 15,
+      "currentArticleCandidateCount": 8,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/[^/]{12,}\\/?$",
+        "linkSelector": ".articles .article a[href]",
+        "articleContainer": ".article",
+        "titleSelector": ".title, .article-title, h1, h2, h3, h4"
+      },
+      "requests": [
+        {
+          "url": "https://www.publishingireland.com/news/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 79978,
+          "responseSha256": "77b06a2b1531a43e64746590151e075b529a15c4ce19768919098168ac0b8baf",
+          "accessedAt": "2026-10-01T21:12:50.250Z"
+        },
+        {
+          "url": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 79979,
+          "responseSha256": "8fea2ccbf2182f4d0fc7b851a346a2888cab4efe982cd59cbbf69e66eb4fed6c",
+          "accessedAt": "2026-10-01T21:12:50.380Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.publishingireland.com/little-beetle-press-launches-new-international-literary-and-creative-festival/",
+        "discoveryTitle": "Little Beetle Press launches new international literary and creative festival",
+        "detailHeadline": "Little Beetle Press launches new international literary and creative festival",
+        "publicationDates": [
+          {
+            "value": "2026-07-14T12:30:57+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-07-14T12:30:57+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-07-14T12:30:57+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1317,
+        "detailTextSha256": "060e40abad68ecf7a7a7b1f674062b53c2984ad4959e596977fc53f4ca608786"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "adeb-be",
+      "endpoint": "https://www.adeb.be/",
+      "countryCodes": [
+        "BE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 4,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/fr\\/infos\\/presse\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.adeb.be/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 164935,
+          "responseSha256": "90a2cb9e03a5bb590c44731d80ea313a34ec7fef7f75dfa4f689d29fca3fad59",
+          "accessedAt": "2026-10-01T21:12:51.026Z"
+        },
+        {
+          "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 91260,
+          "responseSha256": "c5943e035458957ea43c3bc4a8ad8b12afbfb0ad776a501a279529a3948e4b05",
+          "accessedAt": "2026-10-01T21:12:51.203Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.adeb.be/fr/infos/presse/turbulences-dans-l-ecosysteme-du-livre",
+        "discoveryTitle": "Turbulences dans l'écosystème du livre ?",
+        "detailHeadline": "Turbulences dans l'écosystème du livre ?",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 847,
+        "detailTextSha256": "ae520fdbfafde0cb2efa6a0d1c5e7a2e99e824895b0e05f4069b4c8f73937330"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "kbr-be",
+      "endpoint": "https://www.kbr.be/en/news/",
+      "countryCodes": [
+        "BE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 38,
+      "currentArticleCandidateCount": 33,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/[^/]{12,}\\/?$",
+        "linkSelector": "article h2 a[href], article h3 a[href], article a[rel~=bookmark]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.kbr.be/en/news/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 229850,
+          "responseSha256": "42c3368a565c19774a236f05f2228485d4b526d79f1464ffc86e3f224bfdc500",
+          "accessedAt": "2026-10-01T21:12:50.699Z"
+        },
+        {
+          "url": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 202899,
+          "responseSha256": "ad1c893447dc82da45e0b96a4c92531f5f09a48337ea5cf589c29365a1755053",
+          "accessedAt": "2026-10-01T21:12:50.952Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.kbr.be/en/reopening-kbr-museum-may-23-2025/",
+        "discoveryTitle": "Reopening of the KBR Museum on May 23, 2025",
+        "detailHeadline": "Reopening of the KBR Museum on May 23, 2025",
+        "publicationDates": [
+          {
+            "value": "2025-01-23T13:18:06+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2025-01-23T13:18:06+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2025-01-23T13:18:06+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2787,
+        "detailTextSha256": "46ffa481321708fdf9de19a45c669eefe78afbbd6bd979d7dfbf7b6f45166dd8"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "nub-ba",
+      "endpoint": "https://nub.ba/novosti",
+      "countryCodes": [
+        "BA"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 12,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/[^/]{12,}\\/?$",
+        "linkSelector": "article a[href]",
+        "articleContainer": "article",
+        "titleSelector": ".post-preview-title, h2, h3"
+      },
+      "requests": [
+        {
+          "url": "https://nub.ba/novosti",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 41487,
+          "responseSha256": "9c8ce6b32a0d6e9bb789a42387b5ef73ab21070e999629af94389b2a18e61021",
+          "accessedAt": "2026-10-01T21:12:50.942Z"
+        },
+        {
+          "url": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 20578,
+          "responseSha256": "ed15541935c920970668e6cc40d03ec6aa229e6450f17ec7910c75b099a2a76b",
+          "accessedAt": "2026-10-01T21:12:51.263Z"
+        }
+      ],
+      "sample": {
+        "url": "https://nub.ba/o-knjizevnosti-sjecanju-i-identitetu-odrzana-promocija-romana-sandro-elvedina-nezirovica",
+        "discoveryTitle": "O književnosti, sjećanju i identitetu: održana promocija romana „Sandro“ Elvedina Nezirovića",
+        "detailHeadline": "O književnosti, sjećanju i identitetu: održana promocija romana „Sandro“ Elvedina Nezirovića",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2580,
+        "detailTextSha256": "26d59963a6884ad27d37973cc74c783a297ae83447db7376819eb189d5c13582"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "nkp-cz",
+      "endpoint": "https://www.nkp.cz/",
+      "countryCodes": [
+        "CZ"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 39,
+      "currentArticleCandidateCount": 8,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/o-knihovne\\/aktuality\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.nkp.cz/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 91505,
+          "responseSha256": "ae425437c16421def1f56c7bfcf7efeafcff59ea600d703d814bcd7031219e6e",
+          "accessedAt": "2026-10-01T21:12:51.281Z"
+        },
+        {
+          "url": "https://www.nkp.cz/o-knihovne/aktuality/cena-rudolfa-medka-pro-rok-2026",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 81254,
+          "responseSha256": "44950ea69c31b185b179c6d2506a38bf48713fa18f779021058278219f2269cc",
+          "accessedAt": "2026-10-01T21:12:52.070Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.nkp.cz/o-knihovne/aktuality/cena-rudolfa-medka-pro-rok-2026",
+        "discoveryTitle": "Cena Rudolfa Medka pro rok 2026",
+        "detailHeadline": "Cena Rudolfa Medka pro rok 2026",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2746,
+        "detailTextSha256": "790db5810b36f3aa0f8ba4bba1df4129bc843f1a14695e1de2dd9841027751b2"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "oszk-hu",
+      "endpoint": "https://oszk.hu/en",
+      "countryCodes": [
+        "HU"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 15,
+      "currentArticleCandidateCount": 8,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/news\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://oszk.hu/en",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 50589,
+          "responseSha256": "fc11e291142f02b3f8434d9c888152fe5a02ef6eb6c628fd61a423e4ebf2c6e6",
+          "accessedAt": "2026-10-01T21:12:51.373Z"
+        },
+        {
+          "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 38883,
+          "responseSha256": "9bd70c3c228d00675baf76d691d90700e16bbf0eb1d2ef660c67bea1599f71f5",
+          "accessedAt": "2026-10-01T21:12:51.479Z"
+        }
+      ],
+      "sample": {
+        "url": "https://oszk.hu/en/news/azerbaijani-book-corner-opened-national-library-foreign-literature_260324",
+        "discoveryTitle": "Azerbaijani Book Corner Opened at the National Library of Foreign Literature",
+        "detailHeadline": "Azerbaijani Book Corner Opened at the National Library of Foreign Literature",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 6258,
+        "detailTextSha256": "32f1d71ebbec03c7baece93d65c99530db4d849c12e88aa83a758144d358eed8"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "nli-ie",
+      "endpoint": "https://www.nli.ie/",
+      "countryCodes": [
+        "IE"
+      ],
+      "status": "ok",
+      "detailError": "detail_article_identity_missing",
+      "beforeRecordedCandidateCount": 28,
+      "currentArticleCandidateCount": 8,
+      "articleDetailVerified": false,
+      "parser": {
+        "linkPattern": "^\\/(?:news-stories\\/news|exhibitions-events)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.nli.ie/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 112608,
+          "responseSha256": "4ff2f3e44ad46e12c31921a7efbf296dac7d3bd7fa932ad5bf0381a17db51737",
+          "accessedAt": "2026-10-01T21:12:51.850Z"
+        },
+        {
+          "url": "https://www.nli.ie/news-stories/news/next-chapter-reimagining-national-library-begins",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 103043,
+          "responseSha256": "84a01cd66a1ca9e5de3c3f4caa551a87dcbbd8b45a9a3e10540308d17822d1f8",
+          "accessedAt": "2026-10-01T21:12:52.001Z"
+        },
+        {
+          "url": "https://www.nli.ie/news-stories/news/nli-opening-hours-update",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 90182,
+          "responseSha256": "2e00965aa3620d37e5bf218be640433853e7792a3b16d9f8ccbb8aaa910b2d2a",
+          "accessedAt": "2026-10-01T21:12:52.134Z"
+        },
+        {
+          "url": "https://www.nli.ie/exhibitions-events/exhibition-seamus-heaney-listen-now-again",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 107804,
+          "responseSha256": "85b75f0e02d9627c0d5678295bcfc25f887da7dbe4610f7f4c80a919c6a8e877",
+          "accessedAt": "2026-10-01T21:12:52.261Z"
+        }
+      ],
+      "sample": null,
+      "publicCount": 0
+    },
+    {
+      "sourceId": "landesbibliothek-li",
+      "endpoint": "https://www.landesbibliothek.li/feed/",
+      "countryCodes": [
+        "LI"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.landesbibliothek.li/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 49534,
+          "responseSha256": "d6b49d73e7f5419cf174790ffad4e45ae344f492fd07b78af23396729a52f9e4",
+          "accessedAt": "2026-10-01T21:12:51.722Z"
+        },
+        {
+          "url": "https://www.landesbibliothek.li/napoleon-der-schatten-der-revolution-eine-biografie-von-bart-van-loo/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 1643511,
+          "responseSha256": "a221167bceaddd5d51025e95ed394232a40b9a2717acd9286c5a27e752497382",
+          "accessedAt": "2026-10-01T21:12:52.341Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.landesbibliothek.li/napoleon-der-schatten-der-revolution-eine-biografie-von-bart-van-loo/",
+        "discoveryTitle": "Napoleon: der Schatten der Revolution : eine Biografie von Bart van Loo",
+        "detailHeadline": "Napoleon: der Schatten der Revolution : eine Biografie von Bart van Loo",
+        "publicationDates": [
+          {
+            "value": "2026-10-01T07:00:54+02:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "sourcePublishedAt": "2026-10-01T07:00:54.000Z",
+        "detailTextCharacters": 1718,
+        "detailTextSha256": "26a915a10a5cde39cb44154c1c70720ee61408201f8c1c9a231b9fd3e6543211"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "bnl-public-lu",
+      "endpoint": "https://bnl.public.lu/fr.html",
+      "countryCodes": [
+        "LU"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 36,
+      "currentArticleCandidateCount": 3,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/fr\\/a-la-une\\/(?:agenda|actualites)\\/\\d{4}\\/[^/]+\\.html$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://bnl.public.lu/fr.html",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 172840,
+          "responseSha256": "bf030c61444ecba3406e776ddeb1f6bd280579fcc8bb5dea4e28e3fbfdefe712",
+          "accessedAt": "2026-10-01T21:12:51.979Z"
+        },
+        {
+          "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 134358,
+          "responseSha256": "60efa8e91e4debd0b453eb7cbf2d9aa9962202ecfcb43af95f8b55064b8ce9e8",
+          "accessedAt": "2026-10-01T21:12:52.161Z"
+        }
+      ],
+      "sample": {
+        "url": "https://bnl.public.lu/fr/a-la-une/agenda/2026/paix-inachevee.html",
+        "discoveryTitle": "En octobre : une nouvelle exposition à découvrir",
+        "detailHeadline": "La paix (in)achevée",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 5888,
+        "detailTextSha256": "7ff7c0fc2acf6bb95b58a864ad3cf8092bd9bded08dc67502c4d40f6e50eb426"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "nb-cg-me",
+      "endpoint": "https://www.nb-cg.me/en",
+      "countryCodes": [
+        "ME"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 22,
+      "currentArticleCandidateCount": 5,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/events\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.nb-cg.me/en",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 49265,
+          "responseSha256": "e3e9305c3fda65724072a6987370240a0a0590e4d0d4f1d130eb84b1a7d66936",
+          "accessedAt": "2026-10-01T21:12:52.458Z"
+        },
+        {
+          "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 19015,
+          "responseSha256": "514912a355ce96a28565e312a8b04b0db5f25e2686be19d422b362a9855f23f7",
+          "accessedAt": "2026-10-01T21:12:52.611Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.nb-cg.me/en/events/1093-notice-to-authors-and-contributors-of-bibliografski-vjesnik-bibibliographic-herald",
+        "discoveryTitle": "20 Jul NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD) We are pleased to inform you that Issue No. 1 (2026) of Bibliografski vjesnik is currently in print and will soon be available to readers. At the same time, we invite all interested authors to submit their scholarly and professional papers for publication in forthcoming issues of the journal.",
+        "detailHeadline": "NOTICE TO AUTHORS AND CONTRIBUTORS OF BIBLIOGRAFSKI VJESNIK (BIBIBLIOGRAPHIC HERALD)",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1095,
+        "detailTextSha256": "2929a7fb4ffc1ff59974b08f980b3a6505a9fb1b11a2c42abd30afb26f9e2057"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "bn-org-pl",
+      "endpoint": "https://www.bn.org.pl/",
+      "countryCodes": [
+        "PL"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 26,
+      "currentArticleCandidateCount": 6,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/aktualnosci\\/\\d+-[^/]+\\.html$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.bn.org.pl/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 53990,
+          "responseSha256": "a9ea2cc267db73c2558261a76d48b8f31121093c52d4abb5a823d1d898746a33",
+          "accessedAt": "2026-10-01T21:12:52.589Z"
+        },
+        {
+          "url": "https://www.bn.org.pl/aktualnosci/6247-damian-holewiusz-kierownikiem-zakladu-gromadzenia-i-uzupelniania-zbiorow.html",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 31057,
+          "responseSha256": "cd0e6ba1a6d468d8ca5241fff310c07b8e429a88c8afaf769333e7066f5e86b6",
+          "accessedAt": "2026-10-01T21:12:52.806Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.bn.org.pl/aktualnosci/6247-damian-holewiusz-kierownikiem-zakladu-gromadzenia-i-uzupelniania-zbiorow.html",
+        "discoveryTitle": "czytaj więcej o Damian Holewiusz kierownikiem Zakładu Gromadzenia i Uzupełniania Zbiorów",
+        "detailHeadline": "Damian Holewiusz kierownikiem Zakładu Gromadzenia i Uzupełniania Zbiorów",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1126,
+        "detailTextSha256": "2363e9b1660586a947db51f6c2f03a89af3205d18c37562581f3d4516883292a"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "snk-sk",
+      "endpoint": "https://snk.sk/en/",
+      "countryCodes": [
+        "SK"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 12,
+      "currentArticleCandidateCount": 6,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/novinky\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://snk.sk/en/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 35869,
+          "responseSha256": "f6364ad9fce90e73c66db36dbf94d8cba114c664c8be59689d2bac409b71e293",
+          "accessedAt": "2026-10-01T21:12:52.652Z"
+        },
+        {
+          "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 37093,
+          "responseSha256": "c4ae458ffe9a7e0843d14726d583a64b8338065d99e7bc094657fda02edeaa64",
+          "accessedAt": "2026-10-01T21:12:52.835Z"
+        }
+      ],
+      "sample": {
+        "url": "https://snk.sk/en/novinky/bibliograficke-dni-2026",
+        "discoveryTitle": "Seminár Bibliografické dni 2026",
+        "detailHeadline": "Seminár Bibliografické dni 2026",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1341,
+        "detailTextSha256": "3a3ceb47aa7a128134b43c2be3caa418810d2ce666ee3c56cdf10b7ba7f3898c"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "kb-se",
+      "endpoint": "https://www.kb.se/",
+      "countryCodes": [
+        "SE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 8,
+      "currentArticleCandidateCount": 7,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/om-oss\\/(?:nyheter\\/nyhetsarkiv|evenemang\\/evenemang)\\/[^/]+\\.html$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.kb.se/",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=UTF-8",
+          "bytes": 127921,
+          "responseSha256": "64c7e6515fb8075f4103ae57fa30a83a049de97dc16db6cd05f9fba64858599b",
+          "accessedAt": "2026-10-01T21:12:53.249Z"
+        },
+        {
+          "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=UTF-8",
+          "bytes": 74157,
+          "responseSha256": "f09bbdb23845fb5daff485dc26500827603842d73b18fcf8335481e14d0c0a7d",
+          "accessedAt": "2026-10-01T21:12:53.409Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.kb.se/om-oss/nyheter/nyhetsarkiv/2026-09-17-unik-samling-tidskrifter-blir-nu-allmant-tillganglig.html",
+        "discoveryTitle": "Unik samling tidskrifter blir nu allmänt tillgänglig",
+        "detailHeadline": "Unik samling tidskrifter blir nu allmänt tillgänglig",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2403,
+        "detailTextSha256": "dcd04f77a87fadb750ab45df9a18adb3e061c13a3b7bd3a31e188743bbb55fd9"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "pen-international-org",
+      "endpoint": "https://www.pen-international.org/",
+      "countryCodes": [
+        "GB"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 19,
+      "currentArticleCandidateCount": 12,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/news\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.pen-international.org/",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "bytes": 405365,
+          "responseSha256": "f428d7bfee11db06a0815dc690d73cf9715d89d84fbdd2d27467e38c872716aa",
+          "accessedAt": "2026-10-01T21:12:53.023Z"
+        },
+        {
+          "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+          "httpStatus": 200,
+          "contentType": "text/html",
+          "bytes": 200436,
+          "responseSha256": "4900ed8769b3c4a1f249f152d824a5c5a48cab03e72171f866a8f3d5360be7c7",
+          "accessedAt": "2026-10-01T21:12:53.274Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.pen-international.org/news/china-hong-kong-jimmy-lais-arbitrary-detention-raised-at-united-nations-2026",
+        "discoveryTitle": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations",
+        "detailHeadline": "China - Hong Kong: Jimmy Lai’s arbitrary detention raised at United Nations",
+        "publicationDates": [
+          {
+            "value": "2026-09-16T15:42:00+0100",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3178,
+        "detailTextSha256": "7bfae390792bc4faa2c93b927a7907b93d8c7ad4b65f698cf7dd21b116edc068"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "penbelarus-org",
+      "endpoint": "https://penbelarus.org/en/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 8,
+      "currentArticleCandidateCount": 23,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/\\d{4}\\/\\d{2}\\/\\d{2}\\/[^/]+\\.html$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://penbelarus.org/en/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 165687,
+          "responseSha256": "1bcad3e3672dcdade0f6f48e8678803fd9fa90c5961df5c2c09ed5a6937047b3",
+          "accessedAt": "2026-10-01T21:12:53.204Z"
+        },
+        {
+          "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 140752,
+          "responseSha256": "9fc511817bcd61fa017361dfa07331302abcb2d58097a4b3e7b8188f60563ec6",
+          "accessedAt": "2026-10-01T21:12:54.031Z"
+        }
+      ],
+      "sample": {
+        "url": "https://penbelarus.org/en/2026/03/04/belaruski-pen-pryznany-ekstremisczkim-farmavannem.html",
+        "discoveryTitle": "On February 27, 2026, the KGB designated PEN Belarus an “extremist formation”",
+        "detailHeadline": "PEN Belarus Designated an “Extremist Formation”!",
+        "publicationDates": [
+          {
+            "value": "2026-03-04T16:07:50+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2953,
+        "detailTextSha256": "7c1313fb44fa6d3c45bbdfa59b710875aca2bf4d9a57cd0c5e664d55449a9e1b"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "pencatala-cat",
+      "endpoint": "https://www.pencatala.cat/",
+      "countryCodes": [
+        "ES"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 18,
+      "currentArticleCandidateCount": 6,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/noticia\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.pencatala.cat/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 124333,
+          "responseSha256": "266dc04ebc34c91485346ebae9a144a8d66716ffe4faaca4de41dd0aa1db22ef",
+          "accessedAt": "2026-10-01T21:12:54.582Z"
+        },
+        {
+          "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 95142,
+          "responseSha256": "5180c867c18d677932d26059846e1671f8a34e91fd706233fe7e05dd9a024ffe",
+          "accessedAt": "2026-10-01T21:12:56.147Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.pencatala.cat/noticia/prova-de-vida-ja-marius-serra-escriu-a-temesgen-ghebreyesus/",
+        "discoveryTitle": "«Prova de vida ja!»: Màrius Serra escriu a Temesgen Ghebreyesus",
+        "detailHeadline": "«Prova de vida ja!»: Màrius Serra escriu a Temesgen Ghebreyesus",
+        "publicationDates": [
+          {
+            "value": "2026-09-24T09:17:14+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1556,
+        "detailTextSha256": "167323c662eae19e203bdee2493e350aeda473c5ac73a8a3207d427be2e909db"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "irishpen-com",
+      "endpoint": "https://irishpen.com/",
+      "countryCodes": [
+        "IE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 100,
+      "currentArticleCandidateCount": 99,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/\\d{2}\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://irishpen.com/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 111406,
+          "responseSha256": "54e7c4a6cc1936674e616b7bdb6e479f367fe36a8226bab4c2d0533d96d9afc5",
+          "accessedAt": "2026-10-01T21:12:53.668Z"
+        },
+        {
+          "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 91862,
+          "responseSha256": "c23e0a782753417274448d93197de27a8a81807c5ea2868db66c7fe2fb12ea14",
+          "accessedAt": "2026-10-01T21:12:53.813Z"
+        }
+      ],
+      "sample": {
+        "url": "https://irishpen.com/2026/09/16/festival-of-italian-and-irish-literature-in-ireland-25-to-26-september-2026/",
+        "discoveryTitle": "Festival of Italian and Irish Literature in Ireland: 25 to 26 September 2026",
+        "detailHeadline": "Festival of Italian and Irish Literature in Ireland: 25 to 26 September 2026",
+        "publicationDates": [
+          {
+            "value": "2026-09-16T11:26:56+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-16T11:26:56+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-09-16T11:26:56+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1423,
+        "detailTextSha256": "55cd3fa29a694cae0b46d882a3f9a33c7f086220817033f5443f250e9d57572b"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "scottishpen-org",
+      "endpoint": "https://scottishpen.org/",
+      "countryCodes": [
+        "GB"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 14,
+      "currentArticleCandidateCount": 5,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/[^/]{12,}\\/?$",
+        "linkSelector": ".news-item .news-description a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://scottishpen.org/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 61160,
+          "responseSha256": "0341da7a23bb7bd5cd986c32d59d738e622d464e99462f9dad5b9278ff4f0b34",
+          "accessedAt": "2026-10-01T21:12:53.709Z"
+        },
+        {
+          "url": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 70656,
+          "responseSha256": "eb6fcd4bc60319f91a5bdb54e752089f7a6c5c47fbdb433d1221037563ae68ff",
+          "accessedAt": "2026-10-01T21:12:53.802Z"
+        }
+      ],
+      "sample": {
+        "url": "https://scottishpen.org/scottish-poets-respond-to-israels-genocide-in-gaza/",
+        "discoveryTitle": "Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza",
+        "detailHeadline": "Updated August 2025: Scottish poets respond to Israel’s genocide in Gaza",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 14000,
+        "detailTextSha256": "f987314bd1e612d5dad477e30cd9a689ff0eeaa8935ad3e23f9f6b7b0b0159a2"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "god-literatury",
+      "endpoint": "https://godliteratury.ru/",
+      "countryCodes": [
+        "RU"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 66,
+      "currentArticleCandidateCount": 54,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/articles\\/\\d{4}\\/\\d{2}\\/\\d{2}\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://godliteratury.ru/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 269360,
+          "responseSha256": "37a11855c8e22c2a54c7b007523dc9c3df578d637dacf4c3af8653763f947ff0",
+          "accessedAt": "2026-10-01T21:12:54.389Z"
+        },
+        {
+          "url": "https://godliteratury.ru/articles/2026/09/29/andrej-rubanov-snova-zdorovo-poklon-iz-tambova",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 146232,
+          "responseSha256": "ceb6f5d8a5119a535c64ba15f3b0df8db10601ab9e97ddd579934320a60fd56a",
+          "accessedAt": "2026-10-01T21:12:54.745Z"
+        }
+      ],
+      "sample": {
+        "url": "https://godliteratury.ru/articles/2026/09/29/andrej-rubanov-snova-zdorovo-poklon-iz-tambova",
+        "discoveryTitle": "Андрей Рубанов: «Снова-здорово, поклон из Тамбова»",
+        "detailHeadline": "Андрей Рубанов: «Снова-здорово, поклон из Тамбова» - Год Литературы",
+        "publicationDates": [
+          {
+            "value": "2026-09-29T17:27:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 9591,
+        "detailTextSha256": "c59e728f7eece706ed394913c2515fe7333ac4c1577de9516c93249fac67b984"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "ast",
+      "endpoint": "https://ast.ru/news/",
+      "countryCodes": [
+        "RU"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 14,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/news\\/[^/]+\\/?$",
+        "linkSelector": "a.news-item[href]",
+        "articleContainer": "a.news-item",
+        "titleSelector": ".news-item__title"
+      },
+      "requests": [
+        {
+          "url": "https://ast.ru/news/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 138485,
+          "responseSha256": "088ea097f1c1535263881aefa025749758aa1bd156186306e15dbf77f74d8cd4",
+          "accessedAt": "2026-10-01T21:12:54.526Z"
+        },
+        {
+          "url": "https://ast.ru/news/novye-detskie-knigi-2026-goda-top-bestsellerov-izdatelstva-ast/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 152789,
+          "responseSha256": "90239e1b865d2844c3e9d540e5b8883bf6ec8bab143240b93d45f9e8dcb735f4",
+          "accessedAt": "2026-10-01T21:12:54.844Z"
+        }
+      ],
+      "sample": {
+        "url": "https://ast.ru/news/novye-detskie-knigi-2026-goda-top-bestsellerov-izdatelstva-ast/",
+        "discoveryTitle": "Новые детские книги 2026 года: топ бестселлеров Издательства АСТ",
+        "detailHeadline": "Новые детские книги 2026 года: топ бестселлеров Издательства АСТ",
+        "publicationDates": [
+          {
+            "value": "2026-10-01T19:10:00+0300",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 747,
+        "detailTextSha256": "4aca237f7503afd0f3c190849ad6d45389e78844e6258750f1fee482955a28c0"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "samokat",
+      "endpoint": "https://samokatbook.ru/",
+      "countryCodes": [
+        "RU"
+      ],
+      "status": "error",
+      "error": "fetch_failed",
+      "beforeRecordedCandidateCount": 32,
+      "currentArticleCandidateCount": 0,
+      "articleDetailVerified": false,
+      "parser": {
+        "linkPattern": "^\\/(?:news|meropriyatiya\\/[^/]+)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [],
+      "sample": null,
+      "publicCount": 0
+    },
+    {
+      "sourceId": "ndl-japan",
+      "endpoint": "https://www.ndl.go.jp/en/news/news_index",
+      "countryCodes": [
+        "JP"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 70,
+      "currentArticleCandidateCount": 64,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/news\\/fy\\d{4}\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.ndl.go.jp/en/news/news_index",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 192742,
+          "responseSha256": "b43bf573f719b10b073068ca5047ce94752527749cd01697689174fb460ffb04",
+          "accessedAt": "2026-10-01T21:12:56.259Z"
+        },
+        {
+          "url": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 155705,
+          "responseSha256": "c9cc29a22c1480f103aa2cd9642e97a76abd68a84316dba4ea9b63bb4fe142cd",
+          "accessedAt": "2026-10-01T21:12:57.126Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.ndl.go.jp/en/news/fy2025/260317_02",
+        "discoveryTitle": "The ILCL will hold an event entitled Polish Children’s Books: Illustrator Piotr Socha and the Picture Book of Bees on Sunday, April 19, 2026",
+        "detailHeadline": "2026-3-17 The ILCL will hold an event entitled Polish Children’s Books: Illustrator Piotr Socha and the Picture Book of Bees on Sunday, April 19, 2026",
+        "publicationDates": [
+          {
+            "value": "2026-03-17T05:59:00.000Z+09:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 729,
+        "detailTextSha256": "4d4a759fe2cda62a5ef703ae6b79eec5bb6911f0b729af54768a807f768071ae"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "bn-chile",
+      "endpoint": "https://www.bibliotecanacional.gob.cl/noticias",
+      "countryCodes": [
+        "CL"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/noticias\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.bibliotecanacional.gob.cl/noticias",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 52892,
+          "responseSha256": "e235118e518b427900e124e2d7f0c8f45ce1ba8ca83813134115c1f17365a60f",
+          "accessedAt": "2026-10-01T21:12:56.173Z"
+        },
+        {
+          "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 43479,
+          "responseSha256": "e8b72e6da8a3c1ca186bca35802507521765c5aafd20e19e21a6dc7a6c57b0f8",
+          "accessedAt": "2026-10-01T21:12:56.772Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.bibliotecanacional.gob.cl/noticias/bibliotecas-nacionales-de-chile-peru-y-argentina-crearan-repositorio-digital-dedicado-jose",
+        "discoveryTitle": "Bibliotecas nacionales de Chile, Perú y Argentina crearán repositorio digital dedicado a José de San Martín",
+        "detailHeadline": "Bibliotecas nacionales de Chile, Perú y Argentina crearán repositorio digital dedicado a José de San Martín",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3859,
+        "detailTextSha256": "71c78467c3e2d124628b72c0c96bcfad5c46368a2aa61fa499adce39b8d38c87"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "bn-peru",
+      "endpoint": "https://www.gob.pe/institucion/bnp/noticias",
+      "countryCodes": [
+        "PE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 25,
+      "currentArticleCandidateCount": 25,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/institucion\\/bnp\\/noticias\\/\\d+-[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.gob.pe/institucion/bnp/noticias",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 191932,
+          "responseSha256": "67e28818d685bcd3cab06b432c0d9dc772071032bcae458ceefe521960833946",
+          "accessedAt": "2026-10-01T21:12:56.548Z"
+        },
+        {
+          "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 40034,
+          "responseSha256": "214e40e8c8d897aa2d165be3c6669c55dcebee8642852adbecd834a17634067f",
+          "accessedAt": "2026-10-01T21:12:56.923Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.gob.pe/institucion/bnp/noticias/1437512-reconocimiento-jorge-basadre-grohmann-2026-la-bnp-distinguio-a-quienes-transforman-sus-comunidades-a-traves-de-las-bibliotecas",
+        "discoveryTitle": "“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecas",
+        "detailHeadline": "“Reconocimiento Jorge Basadre Grohmann” 2026: La BNP distinguió a quienes transforman sus comunidades a través de las bibliotecas",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 5089,
+        "detailTextSha256": "da3299ab07989087fcc8fc9cff5df1b861dff6e5ba4dc40b72b3f3a010a49da7"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "asymptote",
+      "endpoint": "https://www.asymptotejournal.com/blog/feed/",
+      "countryCodes": [
+        "SG"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/",
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.asymptotejournal.com/blog/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 16363,
+          "responseSha256": "d2490c147fbbc83db0c78685a903aa0f71dcc9e4854899aaf30e324ff535a740",
+          "accessedAt": "2026-10-01T21:12:56.661Z"
+        },
+        {
+          "url": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 1477756,
+          "responseSha256": "ffc454d8fc1e5f066afd4d7d59f3e204a42404c093ad918f7b34d13fe3fda923",
+          "accessedAt": "2026-10-01T21:12:57.326Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.asymptotejournal.com/blog/2026/10/01/the-violence-of-poetics-uros-bojanovic-and-ajla-dizdarevic-in-conversation/",
+        "discoveryTitle": "The Violence of Poetics: Uros Bojanović and Ajla Dizdarević in Conversation",
+        "detailHeadline": "The Violence of Poetics: Uros Bojanović and Ajla Dizdarević in Conversation - Asymptote Blog",
+        "publicationDates": [],
+        "sourcePublishedAt": "2026-10-01T12:59:56.000Z",
+        "detailTextCharacters": 14000,
+        "detailTextSha256": "24bcef4b95644abb54fe22be197aff7c71c4931316c92dff000fdd6e47c7a7be"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "taipei-book-fair",
+      "endpoint": "https://www.tibe.org.tw/",
+      "countryCodes": [
+        "TW"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 7,
+      "currentArticleCandidateCount": 7,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/tw\\/news_detail\\/\\d+\\/\\d+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.tibe.org.tw/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 38058,
+          "responseSha256": "d34d7fafae5f7ac0a3bdd1c0c2d7c2cd5c89c5af2619b3293bd41b912e738f9c",
+          "accessedAt": "2026-10-01T21:12:58.305Z"
+        },
+        {
+          "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 28341,
+          "responseSha256": "bf9fa535af77a093afefb8a164776145b22d64464c98d221f78510ad1e0d679f",
+          "accessedAt": "2026-10-01T21:12:58.720Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.tibe.org.tw/tw/news_detail/19/1919",
+        "discoveryTitle": "2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力",
+        "detailHeadline": "2027台北國際書展 徵展起跑 主題國捷克 揮灑「閱讀自由捷」活力",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2083,
+        "detailTextSha256": "ea0068c203e63fed2c9da543e5f992b1d18f4337ccfb0f8f1f792e0e6131de22"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "livres-hebdo",
+      "endpoint": "https://www.livreshebdo.fr/prix-litteraires#Actualite",
+      "countryCodes": [
+        "FR"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 3,
+      "currentArticleCandidateCount": 2,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/article\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.livreshebdo.fr/prix-litteraires",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 210546,
+          "responseSha256": "a8307f759f6c12eb8f155a89df5bb305341bdcad8648f507dd47a289cb7ee272",
+          "accessedAt": "2026-10-01T21:12:58.544Z"
+        },
+        {
+          "url": "https://www.livreshebdo.fr/article/le-prix-du-meilleur-livre-etranger-2026-devoile-sa-deuxieme-selection",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 230611,
+          "responseSha256": "412c1232021161c7b7b77921e63e5295f64155c3b8e36c51bce670a6896243b0",
+          "accessedAt": "2026-10-01T21:13:00.208Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.livreshebdo.fr/article/le-prix-du-meilleur-livre-etranger-2026-devoile-sa-deuxieme-selection",
+        "discoveryTitle": "Pour son édition 2026, le prix du Meilleur Livre étranger dévoile sa deuxième sélection, composée de neuf ouvrages : six romans et trois titres de non-fiction.",
+        "detailHeadline": "Le prix du Meilleur livre étranger 2026 dévoile sa deuxième sélection",
+        "publicationDates": [
+          {
+            "value": "2026-10-01T16:23:09",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 355,
+        "detailTextSha256": "fc74d572dae84ca1cb49d29a6b53e21862d1cd5773ab165fd91608de41b28184"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "eterna-cadencia",
+      "endpoint": "https://eternacadencia.com.ar/",
+      "countryCodes": [
+        "AR"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 20,
+      "currentArticleCandidateCount": 9,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/blog\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://eternacadencia.com.ar/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 100680,
+          "responseSha256": "af92b36e0ff04ff398b76f774ee86ebe6856a94bfec9ecc63ee4851af844a08d",
+          "accessedAt": "2026-10-01T21:12:58.328Z"
+        },
+        {
+          "url": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 47443,
+          "responseSha256": "2c555e5105503fb06cd900bc40d974432475df6753e95d330a4960ca9827b438",
+          "accessedAt": "2026-10-01T21:12:58.672Z"
+        }
+      ],
+      "sample": {
+        "url": "https://eternacadencia.com.ar/blog/virginia-woolf-editora",
+        "discoveryTitle": "Virginia Woolf, editora",
+        "detailHeadline": "Virginia Woolf, editora - Eterna Cadencia",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 7919,
+        "detailTextSha256": "0de64330bc42f8116a6203a3de98b8e6398b6ae8b7b871953acf2954457f5ffe"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "lom",
+      "endpoint": "https://lom.cl/",
+      "countryCodes": [
+        "CL"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 9,
+      "currentArticleCandidateCount": 9,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/blogs\\/(?:agenda|blog)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://lom.cl/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 282911,
+          "responseSha256": "4067e4c7c64c22303fc6941b2aa3f3e3cde5396da41fdd8403a655e682d9aa13",
+          "accessedAt": "2026-10-01T21:12:57.983Z"
+        },
+        {
+          "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 164533,
+          "responseSha256": "c6cd28a607c49decd03d177f29ac91055736e72db0a82a6c3eb0001a01c3b6af",
+          "accessedAt": "2026-10-01T21:12:58.344Z"
+        }
+      ],
+      "sample": {
+        "url": "https://lom.cl/blogs/blog/hay-palabras-que-son-llamado",
+        "discoveryTitle": "Palabras contra el borramiento: Dos libros para nombrar Gaza",
+        "detailHeadline": "Palabras contra el borramiento: Dos libros para nombrar Gaza",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 9029,
+        "detailTextSha256": "5e9c8627439ddd2b86217c9e4445539421f7fee24c28c00dc1d67c58fb54cf6c"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "words-without-borders",
+      "endpoint": "https://wordswithoutborders.org/",
+      "countryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 16,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:read\\/article\\/\\d{4}-\\d{2}|events)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://wordswithoutborders.org/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 186223,
+          "responseSha256": "bda2e2e2fea4883ce46cf7d55fbbbf1e957342f58157d14fa2759db1c63820ff",
+          "accessedAt": "2026-10-01T21:12:58.624Z"
+        },
+        {
+          "url": "https://wordswithoutborders.org/read/article/2026-10/the-national-book-award-interviews-maria-stepanova-and-sasha-dugdale-the-disappearing-act/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 122243,
+          "responseSha256": "11e9b22869fa9321b87a7a9d56c13dd0112721bca772358264729ea571278889",
+          "accessedAt": "2026-10-01T21:12:58.737Z"
+        }
+      ],
+      "sample": {
+        "url": "https://wordswithoutborders.org/read/article/2026-10/the-national-book-award-interviews-maria-stepanova-and-sasha-dugdale-the-disappearing-act/",
+        "discoveryTitle": "The National Book Award Interviews: Maria Stepanova and Sasha Dugdale",
+        "detailHeadline": "The National Book Award Interviews: Maria Stepanova and Sasha Dugdale",
+        "publicationDates": [
+          {
+            "value": "2026-10-01T13:00:02+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-10-01T13:00:02+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-10-01T13:00:02+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 9476,
+        "detailTextSha256": "9bb784108b9c581603d9ef2d05c62d65236aeb68a1d4f6be8950f6d0ae3fb98e"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "national-book-review",
+      "endpoint": "https://www.thenationalbookreview.com/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 5,
+      "currentArticleCandidateCount": 30,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/features\\/\\d{4}\\/\\d{1,2}\\/\\d{1,2}\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.thenationalbookreview.com/",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 248001,
+          "responseSha256": "9c4d4fbab5e5092740ebb738d0634199beded8fd9386132307a2c44cbf61ea7b",
+          "accessedAt": "2026-10-01T21:12:59.276Z"
+        },
+        {
+          "url": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 148022,
+          "responseSha256": "9e0771bd4e61708d480d6aa9a75e6996202aab74dca33c27a9733c6fd5648ea2",
+          "accessedAt": "2026-10-01T21:12:59.371Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.thenationalbookreview.com/features/2026/9/23/hot-five-a-thrilling-new-book-from-scott-turow-a-cbs-anchors-memoir-and-more",
+        "discoveryTitle": "HOT FIVE: A Thrilling New Book from Scott Turow, a CBS Anchor's Memoir, and More",
+        "detailHeadline": "HOT FIVE: A Thrilling New Book from Scott Turow, a CBS Anchor's Memoir, and More",
+        "publicationDates": [
+          {
+            "value": "2026-09-23T19:46:09-0400",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3700,
+        "detailTextSha256": "3610ed80bd9c18e69ad58119e1651cde3ea42edb89503e362ac05798986cefa2"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "writers-mosaic",
+      "endpoint": "https://writersmosaic.org.uk/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 26,
+      "currentArticleCandidateCount": 18,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:my-hit-list|close-up|content)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://writersmosaic.org.uk/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 234673,
+          "responseSha256": "6a13f224ece3ce2f1404f9f95c531cff2a2d7ed8588b5b1aa08dc0ef6fc37639",
+          "accessedAt": "2026-10-01T21:13:00.941Z"
+        },
+        {
+          "url": "https://writersmosaic.org.uk/content/ebony-reid-in-conversation-with-lemara-lindsay-prince/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 143815,
+          "responseSha256": "1a21798ccc7526198750b19cd26b0fc1a5e919eb909e9370a100e86592d2607a",
+          "accessedAt": "2026-10-01T21:13:02.653Z"
+        }
+      ],
+      "sample": {
+        "url": "https://writersmosaic.org.uk/content/ebony-reid-in-conversation-with-lemara-lindsay-prince/",
+        "discoveryTitle": "Ebony Reid: 'I needed to showcase those lighter moments, the difficulties of wanting to escape trap life and then documenting the reasons why they can't escape it.'",
+        "detailHeadline": "Original series",
+        "publicationDates": [
+          {
+            "value": "2026-09-23T07:00:32+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3451,
+        "detailTextSha256": "00b30d277393f4197eb4799889714e1ba0ddae6b21119bfa95dc68b6cf3ec0d5"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "national-centre-writing",
+      "endpoint": "https://nationalcentreforwriting.org.uk/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 7,
+      "currentArticleCandidateCount": 1,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:events|writing-hub)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://nationalcentreforwriting.org.uk/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 181654,
+          "responseSha256": "40a0f733e8ba78f1dd0fe1264782b35989cc5e7355fffe4f8605a87b5f7d7212",
+          "accessedAt": "2026-10-01T21:12:59.090Z"
+        },
+        {
+          "url": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 142024,
+          "responseSha256": "2e7df04b07014dd2d02fdebe3699a53f55647c29d848b722ed7d3a0cafba2fba",
+          "accessedAt": "2026-10-01T21:12:59.252Z"
+        }
+      ],
+      "sample": {
+        "url": "https://nationalcentreforwriting.org.uk/events/on-tour-with-bad-betty-press-2026/",
+        "discoveryTitle": "More Information",
+        "detailHeadline": "On Tour with Bad Betty Press",
+        "publicationDates": [
+          {
+            "value": "2026-05-07T14:11:01+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 4969,
+        "detailTextSha256": "8b140f184b6ed6e7f4db7e1f14afcd2d05f3d4b53da6950fa26b10b9995db99b"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "literature-wales",
+      "endpoint": "https://www.literaturewales.org/news/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 24,
+      "currentArticleCandidateCount": 8,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/lw-news\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.literaturewales.org/news/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 55391,
+          "responseSha256": "fcedc0d1067ed818f43b6868095da29bd86687e3a161a8664863f0ab53680fff",
+          "accessedAt": "2026-10-01T21:12:59.876Z"
+        },
+        {
+          "url": "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 51715,
+          "responseSha256": "fa9e6f10ab4859b4dd20c76d09bfc39425faa8e0e9389860ddd5b8e3a7440403",
+          "accessedAt": "2026-10-01T21:13:00.198Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.literaturewales.org/lw-news/applications-for-wales-book-of-the-year-2027-now-open/",
+        "discoveryTitle": "Submissions for Wales Book of the Year 2027 Now Open",
+        "detailHeadline": "Submissions for Wales Book of the Year 2027 Now Open",
+        "publicationDates": [
+          {
+            "value": "2026-09-16T13:03:46+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1321,
+        "detailTextSha256": "02245a7ed3c62dbcf89c02360e93e849bf9200ff72ebd9ca9cbedb8dfa1f09d8"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "boersenblatt",
+      "endpoint": "https://www.boersenblatt.net/thema/alle-news-aus-der-buchbranche",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 11,
+      "currentArticleCandidateCount": 7,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/news\\/(?:[^/]+\\/){0,2}[^/]+-\\d+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.boersenblatt.net/thema/alle-news-aus-der-buchbranche",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 112992,
+          "responseSha256": "38ede85aba6cc867cc0612cc671ac7017890435b6d4bd660037ee8df76aeddd0",
+          "accessedAt": "2026-10-01T21:12:59.680Z"
+        },
+        {
+          "url": "https://www.boersenblatt.net/news/personalia/verstaerkung-und-neustrukturierung-beim-liberte-buchservice-443077",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 98397,
+          "responseSha256": "8898835bb70ddf56dc364b1e058006f2a6b386de2ff8223fa6177d3d2a427d16",
+          "accessedAt": "2026-10-01T21:12:59.784Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.boersenblatt.net/news/personalia/verstaerkung-und-neustrukturierung-beim-liberte-buchservice-443077",
+        "discoveryTitle": "Verstärkung und Neustrukturierung beim Liberté Buchservice",
+        "detailHeadline": "Verstärkung und Neustrukturierung beim Liberté Buchservice",
+        "publicationDates": [
+          {
+            "value": "2026-10-01T17:33:30+0200",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3037,
+        "detailTextSha256": "65b718cbbc254c4ce7b5392c9c00ba2138589a6b131bbb83fbca3d70df398fad"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "poets-writers",
+      "endpoint": "https://www.pw.org/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 21,
+      "currentArticleCandidateCount": 13,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/content\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.pw.org/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 103521,
+          "responseSha256": "7d2b9cf1e912ca54dbc3ee0328636d5d45bd248e99a5343688d8e31000b5205c",
+          "accessedAt": "2026-10-01T21:13:01.093Z"
+        },
+        {
+          "url": "https://www.pw.org/content/the_new_nonfiction_2026",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 75686,
+          "responseSha256": "2a65918ea1d9f0c3b9dff66fd20acf8cf0f3e4a3bbd42d43a46564b40f31caa0",
+          "accessedAt": "2026-10-01T21:13:01.692Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.pw.org/content/the_new_nonfiction_2026",
+        "discoveryTitle": "The New Nonfiction 2026",
+        "detailHeadline": "The New Nonfiction 2026",
+        "publicationDates": [
+          {
+            "value": "2026-08-19T00:00:00-04:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-08-19T00:00:00-0400",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 9375,
+        "detailTextSha256": "f323f1c8c056cdf4021c9a7b3a80a58a2e1845303e3787eb71c5d33798ba4627"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "poets-org",
+      "endpoint": "https://poets.org/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 2,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?!academy-american-poets\\/?$)[^/]{12,}\\/?$",
+        "linkSelector": "article h2 a[href], article h3 a[href], article a[rel~=bookmark]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://poets.org/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 69946,
+          "responseSha256": "d5e7a8c9a8e68b5e5d0d833c3570452934a5e5fff06854bbd9f2985486436bfe",
+          "accessedAt": "2026-10-01T21:13:00.800Z"
+        },
+        {
+          "url": "https://poets.org/october-2026-poem-day-guest-editor-edward-hirsch",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 68574,
+          "responseSha256": "d05d4b0f5bcbe801740db294b5126acea5f3a78726976b9022e5d6dd8ac24448",
+          "accessedAt": "2026-10-01T21:13:01.020Z"
+        }
+      ],
+      "sample": {
+        "url": "https://poets.org/october-2026-poem-day-guest-editor-edward-hirsch",
+        "discoveryTitle": "October 2026 Poem-a-Day Guest Editor Edward Hirsch",
+        "detailHeadline": "October 2026 Poem-a-Day Guest Editor Edward Hirsch",
+        "publicationDates": [
+          {
+            "value": "Wed, 09/16/2026 - 10:14",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 11635,
+        "detailTextSha256": "d4b3ca1eae5d4b64c99a79d06d079f3d4e950703f80dbd93d7ca6c064af4f0c9"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "millikitabxana-az",
+      "endpoint": "https://www.millikitabxana.az/en/news",
+      "countryCodes": [
+        "AZ"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 13,
+      "currentArticleCandidateCount": 13,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/en\\/news\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.millikitabxana.az/en/news",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 58377,
+          "responseSha256": "01625b9584572c3f2de2ce004e8d899ed169dc78658405a8e198ed1de814982f",
+          "accessedAt": "2026-10-01T21:13:00.990Z"
+        },
+        {
+          "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 58083,
+          "responseSha256": "8ccb194085b8b5ac4b9ed54e710fc66c0bc7e5e651d308f7510b976b5682c1fb",
+          "accessedAt": "2026-10-01T21:13:01.308Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+        "discoveryTitle": "An event dedicated to April 23 - World Book and Copyright Day was held at the National Library.",
+        "detailHeadline": "An event dedicated to April 23 \u2013 World Book and Copyright Day was held at the National Library.",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2232,
+        "detailTextSha256": "dd18f5f956520a946e9556502e579d9dd9451a9b2684aad8708d4006e6e3a443"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "nationallibrary-bg",
+      "endpoint": "https://www.nationallibrary.bg/www/feed/",
+      "countryCodes": [
+        "BG"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 2,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": null,
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.nationallibrary.bg/www/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 19104,
+          "responseSha256": "36a7aa896c0e780f9e45ea68fc9b41e1c87c2d924e29f573011803a0f5544894",
+          "accessedAt": "2026-10-01T21:13:01.945Z"
+        },
+        {
+          "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 190905,
+          "responseSha256": "6441b0a398ac7dd76c9e6ecbcbe6d651c71e16836ce961768bd3cb474c397114",
+          "accessedAt": "2026-10-01T21:13:03.019Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+        "discoveryTitle": "Националната библиотека откри литературен кът на Япония",
+        "detailHeadline": "Националната библиотека откри литературен кът на Япония",
+        "publicationDates": [
+          {
+            "value": "2026-09-29T12:20:40+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-09-29T12:20:40+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": "2026-09-29T12:20:40.000Z",
+        "detailTextCharacters": 2192,
+        "detailTextSha256": "fb3dcf0377a9e875cbcf56b6457a74d1e2965de081c5f7ff8777596ff22b0621"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "archipelago-books",
+      "endpoint": "https://archipelagobooks.org/feed/",
+      "countryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": null,
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://archipelagobooks.org/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 10350,
+          "responseSha256": "143f2094cb477d1b8d6cb2869487be304e07b2f119e5122ba525ad271d4c63a3",
+          "accessedAt": "2026-10-01T21:13:01.473Z"
+        },
+        {
+          "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 187618,
+          "responseSha256": "9d41cdf18071abac0c711bfacb08753a50f7b8e1d18a7aedc5709639f344cb9b",
+          "accessedAt": "2026-10-01T21:13:01.607Z"
+        }
+      ],
+      "sample": {
+        "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+        "discoveryTitle": "Mira Rosenthal receives the 2025 Found in Translation Award",
+        "detailHeadline": "Mira Rosenthal receives the 2025 Found in Translation Award",
+        "publicationDates": [
+          {
+            "value": "2025-04-03T15:51:30+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2025-04-03T15:51:30+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2025-04-03T15:51:30+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": "2025-04-03T15:51:30.000Z",
+        "detailTextCharacters": 5470,
+        "detailTextSha256": "efd75371707699b574515bf9cde8caa5ea03b7e07edf0cc605027a7570dc8c2c"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "biblioasis",
+      "endpoint": "https://www.biblioasis.com/feed/",
+      "countryCodes": [
+        "CA"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": null,
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.biblioasis.com/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml",
+          "bytes": 171798,
+          "responseSha256": "8af688b76b8ada370d72001f8b48ebc3781ba94f94b018d0fcbeae65b84929b8",
+          "accessedAt": "2026-10-01T21:13:02.391Z"
+        },
+        {
+          "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 192450,
+          "responseSha256": "a486eb52631b05fad67dac04ca3ee991ce84c4f260abaa9c319cdacf23c21b8a",
+          "accessedAt": "2026-10-01T21:13:02.910Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+        "discoveryTitle": "ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize!",
+        "detailHeadline": "ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize!",
+        "publicationDates": [
+          {
+            "value": "2026-03-18T21:03:17+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-03-18T21:03:17+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-03-18T21:03:17+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": "2026-03-18T21:03:17.000Z",
+        "detailTextCharacters": 5121,
+        "detailTextSha256": "2f001b9fdea165de3d5acead6f7f36106533f5a624d1becf49e1118b5a9806c2"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "virago",
+      "endpoint": "https://www.virago.co.uk/category/virago-news/",
+      "countryCodes": [
+        "GB"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 4,
+      "currentArticleCandidateCount": 12,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/virago-news\\/\\d{4}\\/\\d{2}\\/\\d{2}\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.virago.co.uk/category/virago-news/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 230793,
+          "responseSha256": "c4f6f17ef0bdb1d13841345f78c9fc6baaa268cd73f28f205b487a55b2a8e53c",
+          "accessedAt": "2026-10-01T21:13:01.927Z"
+        },
+        {
+          "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 192442,
+          "responseSha256": "1487b9b7b9d210e0d51236037786774cb45c5aabaad16e39b62fb30e1ca15b35",
+          "accessedAt": "2026-10-01T21:13:02.792Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+        "discoveryTitle": "Five Australian Classics",
+        "detailHeadline": "Five Australian Classics",
+        "publicationDates": [
+          {
+            "value": "2026-08-26T12:50:20+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2336,
+        "detailTextSha256": "d458587e5c482220f230f70156dbdc5743465c11de7f989627261d7a2603a8c9"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "endpoint": "https://www.hachettebookgroup.com/feed/",
+      "countryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 49,
+      "currentArticleCandidateCount": 49,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": null,
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.hachettebookgroup.com/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 1071125,
+          "responseSha256": "85e2c2dff4ba7635b3f6cba2e30af53d193bae8c7ec0f20fd854e9d9f5f75925",
+          "accessedAt": "2026-10-01T21:13:06.360Z"
+        },
+        {
+          "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 290372,
+          "responseSha256": "49c676d6e4a8878b243e45f683d22c5a440a9b2fa4eeef78e38b8f99bc0f09ed",
+          "accessedAt": "2026-10-01T21:13:06.493Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+        "discoveryTitle": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+        "detailHeadline": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+        "publicationDates": [
+          {
+            "value": "2026-09-28T13:34:55+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "sourcePublishedAt": "2026-09-28T13:34:55.000Z",
+        "detailTextCharacters": 4460,
+        "detailTextSha256": "6db4c252453bb40fbbbbd7db5c95d95f2610373f8d80e8a9ad5ffbf7dd08bf7d"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "endpoint": "https://coffeehousepress.org/blogs/news",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 9,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/blogs\\/news\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://coffeehousepress.org/blogs/news",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 379415,
+          "responseSha256": "528031e1d0285e031e5bacba20d9dc67de02c8f463194a8e2af75d44b6e90a3c",
+          "accessedAt": "2026-10-01T21:13:03.199Z"
+        },
+        {
+          "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 360876,
+          "responseSha256": "c6d2fb0cfaf9d81afe8c5b8b9b0c5d520b123303a338a1744392595c02788861",
+          "accessedAt": "2026-10-01T21:13:03.590Z"
+        }
+      ],
+      "sample": {
+        "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+        "discoveryTitle": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+        "detailHeadline": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+        "publicationDates": [
+          {
+            "value": "2025-07-07T15:51:07Z",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 404,
+        "detailTextSha256": "a56182b062cfc11fce87cba5578d7c294667eede4fcbff1841d824de16e280cb"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "europa-editions",
+      "endpoint": "https://www.europaeditions.com/news",
+      "countryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/news\\/\\d+\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.europaeditions.com/news",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 29803,
+          "responseSha256": "fd94094dd80bd1c8670a38ddf306904e98fb48255786af94be0b8c9a9058c0f6",
+          "accessedAt": "2026-10-01T21:13:03.315Z"
+        },
+        {
+          "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 24903,
+          "responseSha256": "aad796f397a929e12bcb308cc213beb00d703a4cd12f03f7586b20d3debe9226",
+          "accessedAt": "2026-10-01T21:13:03.664Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+        "discoveryTitle": "Passengers Longlisted for the National Book Award",
+        "detailHeadline": "Passengers Longlisted for the National Book Award",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1164,
+        "detailTextSha256": "d648546fdc75d3974f39a971a01927c2b665257a5d93a6f7c3bae23c1a84c6ad"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "comma-press",
+      "endpoint": "https://commapress.co.uk/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 19,
+      "currentArticleCandidateCount": 6,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:news|events)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://commapress.co.uk/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 55510,
+          "responseSha256": "600456bd436db212f440b727f1e6e1f80bbf33405decba088529ea130ab489bd",
+          "accessedAt": "2026-10-01T21:13:04.089Z"
+        },
+        {
+          "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 39097,
+          "responseSha256": "d2041359c5b64ab4fa514683518fa5b5482dfe767ef359a6d570178dbb0fb3a9",
+          "accessedAt": "2026-10-01T21:13:04.622Z"
+        }
+      ],
+      "sample": {
+        "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+        "discoveryTitle": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+        "detailHeadline": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 4809,
+        "detailTextSha256": "ae361dd5c0f907742bf450eae4753f1e6a2f3a172f72ea6bcccc731387448036"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "anagrama",
+      "endpoint": "https://www.anagrama-ed.es/",
+      "countryCodes": [
+        "ES"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 7,
+      "currentArticleCandidateCount": 1,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/noticias\\/[^/]+\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.anagrama-ed.es/",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 97219,
+          "responseSha256": "7a40f5c9cc7c07f80f2a3661eaf718de09729b501994d63342a64f76a93afe99",
+          "accessedAt": "2026-10-01T21:13:04.410Z"
+        },
+        {
+          "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 69111,
+          "responseSha256": "afda34a348b7c1b4da9ddda8f4608480a294b378e29ab68eb4d99900f77ef51b",
+          "accessedAt": "2026-10-01T21:13:04.661Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+        "discoveryTitle": "Trece tachas halladas detrás de una novela, por Ernesto Carrión",
+        "detailHeadline": "Trece tachas halladas detrás de una novela",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 8808,
+        "detailTextSha256": "dc4934d0eaf1e548a99fb0467168d78dd4e0e369b86e4702584aa45c42a7200d"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "endpoint": "https://librosdelasteroide.com/",
+      "countryCodes": [
+        "ES"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 9,
+      "currentArticleCandidateCount": 11,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/actualidad-asteroide\\/\\d+\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://librosdelasteroide.com/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 138876,
+          "responseSha256": "cabad7f51cc029907bccebe1aae73c3f23f93447f82c9539c6ef39d858ce93b8",
+          "accessedAt": "2026-10-01T21:13:04.165Z"
+        },
+        {
+          "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 51024,
+          "responseSha256": "8feefce7d878b6a66a01dd4f2a7dc42fb3147ec2702cefd264273f006d5cec32",
+          "accessedAt": "2026-10-01T21:13:04.375Z"
+        }
+      ],
+      "sample": {
+        "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+        "discoveryTitle": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+        "detailHeadline": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1897,
+        "detailTextSha256": "26f97e37e4e6e5341a5959d40d4605c5be5869c93d6c8efb345d76a2db5e6b3d"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "aufbau",
+      "endpoint": "https://www.aufbau-verlage.de/pressemitteilungen",
+      "countryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 13,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:[^/]+\\/)?[^/]+\\/?$",
+        "linkSelector": ".page-press--teaser a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.aufbau-verlage.de/pressemitteilungen",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 75630,
+          "responseSha256": "6a091451e4e6bf8233b862195a4359d25a51081c17f2e5243c6e5dac0204405f",
+          "accessedAt": "2026-10-01T21:13:04.645Z"
+        },
+        {
+          "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 63404,
+          "responseSha256": "e1f7d5e3bd076145a4f3203029508f648def3010f9f50a33f9fa9ecdc3b481fd",
+          "accessedAt": "2026-10-01T21:13:04.747Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+        "discoveryTitle": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+        "detailHeadline": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2897,
+        "detailTextSha256": "cf6768ef7987a705b4dfa6d9bfe6c576f5a8e41351ca13a105003787eece71e3"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "klett-cotta",
+      "endpoint": "https://www.klett-cotta.de/aktuelles/news-c-106",
+      "countryCodes": [
+        "DE"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 12,
+      "currentArticleCandidateCount": 12,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/beitrag\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.klett-cotta.de/aktuelles/news-c-106",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 171082,
+          "responseSha256": "61ae826731a9ed4d3d28196275fb93e5c7ef702526593f1e69b67c14f312d54e",
+          "accessedAt": "2026-10-01T21:13:05.082Z"
+        },
+        {
+          "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 724156,
+          "responseSha256": "da1f8e8f4ff38bf0298b4f9827a49eef498130ff79611394a2de93471397d52d",
+          "accessedAt": "2026-10-01T21:13:05.520Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+        "discoveryTitle": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+        "detailHeadline": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+        "publicationDates": [
+          {
+            "value": "2025-07-15",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 7780,
+        "detailTextSha256": "0702ffea8eefd51c9f3bb6648414b0b2a9a5ed0d26499af99acb2b41e9f93ae6"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "nottetempo",
+      "endpoint": "https://www.edizioninottetempo.it/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 23,
+      "currentArticleCandidateCount": 3,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/it\\/newspost\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.edizioninottetempo.it/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 258537,
+          "responseSha256": "7b3c22ec35ee5c97bb66eff8ed89a135a996d204cf661f371cffb639d862b8b6",
+          "accessedAt": "2026-10-01T21:13:08.413Z"
+        },
+        {
+          "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 192874,
+          "responseSha256": "c05ecb029ff3f8eec79ca367847c4084f466cb32f3e68100e2c69d830c5dedd2",
+          "accessedAt": "2026-10-01T21:13:09.665Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+        "discoveryTitle": "nottetempo a Più libri più liberi 2025",
+        "detailHeadline": "nottetempo a Più libri più liberi 2025",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 1397,
+        "detailTextSha256": "887bc124d6f4e9e80517d500918e85aa846102282d0314753948df6cf36674c5"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "scribe-publications",
+      "endpoint": "https://scribepublications.com.au/news",
+      "countryCodes": [
+        "AU"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 25,
+      "currentArticleCandidateCount": 25,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/news\\/.+",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://scribepublications.com.au/news",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 539582,
+          "responseSha256": "146ab123d923c0b294c29b2b6f76afdf1f54ecaf1163c6aa95ea8d76cff971dd",
+          "accessedAt": "2026-10-01T21:13:05.219Z"
+        },
+        {
+          "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 557761,
+          "responseSha256": "ac8487e4ac877337e93f9c4c1775a83235a9affca84f190cf6168edb0c757288",
+          "accessedAt": "2026-10-01T21:13:05.483Z"
+        }
+      ],
+      "sample": {
+        "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+        "discoveryTitle": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+        "detailHeadline": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3555,
+        "detailTextSha256": "1761d10c4db5361739a32bdadd7ee0be6f7b9a768b041fdf3f7622d2ae5b20a0"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "spinifex-press",
+      "endpoint": "https://www.spinifexpress.com.au/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 27,
+      "currentArticleCandidateCount": 3,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/events\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.spinifexpress.com.au/",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 710878,
+          "responseSha256": "95a56339039d13a1ec8d25a8f6edc4414ee3a30851f5129b1779afb56f55921d",
+          "accessedAt": "2026-10-01T21:13:05.917Z"
+        },
+        {
+          "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+          "httpStatus": 200,
+          "contentType": "text/html;charset=utf-8",
+          "bytes": 148845,
+          "responseSha256": "d0b61c32c035767e97ce4813edc16a234e61cfb08e497329ca67a0d3f481a328",
+          "accessedAt": "2026-10-01T21:13:06.313Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+        "discoveryTitle": "Over the Rainbow Online Book Launch with Sall Grover",
+        "detailHeadline": "Over the Rainbow Online Book Launch with Sall Grover",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2482,
+        "detailTextSha256": "7d0795f6e92f8bcc4c3a1fe9538f11d65f4c148a52025332655805963a6e4de5"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "wsoy",
+      "endpoint": "https://www.wsoy.fi/",
+      "countryCodes": [
+        "FI"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 9,
+      "currentArticleCandidateCount": 4,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/artikkelit\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.wsoy.fi/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 116390,
+          "responseSha256": "ec21be8157d0a5623c34d91b12bbcf7157d562b5a43249ebbdcd1a4c10aa9b31",
+          "accessedAt": "2026-10-01T21:13:06.043Z"
+        },
+        {
+          "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 102247,
+          "responseSha256": "c9d1bc27c2eb931b2e76cff1069f7e2aa4b1eceec9302b225769c8a4fa48ac80",
+          "accessedAt": "2026-10-01T21:13:06.139Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+        "discoveryTitle": "WSOY:n syksyn 2026 kirjat on julkistettu",
+        "detailHeadline": "WSOY:n syksyn 2026 kirjat on julkistettu",
+        "publicationDates": [
+          {
+            "value": "2026-04-15T07:21:17+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3769,
+        "detailTextSha256": "9cff2111e3b0dd065c4794acda54b690660ee140dd23ecf3c9ce9aec867b3a7b"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "women-prize",
+      "endpoint": "https://womensprize.com/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 6,
+      "currentArticleCandidateCount": 2,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/event\\/[^/]+\\/?$",
+        "linkSelector": "a.event_card[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://womensprize.com/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 186271,
+          "responseSha256": "1b14d1a78199fac3e8b821e0971dde4930775e6738cfcb65ea20f8167af8f867",
+          "accessedAt": "2026-10-01T21:13:06.441Z"
+        },
+        {
+          "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 196520,
+          "responseSha256": "8e060a1eda1562ee73deea3e8726724b347349b23353f2585d6ee50a909b3217",
+          "accessedAt": "2026-10-01T21:13:08.870Z"
+        }
+      ],
+      "sample": {
+        "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+        "discoveryTitle": "Write like a Reader with Daisy Buchanan - SOLD OUT",
+        "detailHeadline": "Write like a Reader with Daisy Buchanan \u2013 SOLD OUT",
+        "publicationDates": [
+          {
+            "value": "2026-07-22T10:14:41+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 3990,
+        "detailTextSha256": "5584b2d40ffef1b6aeec7c5938feba686734dc76a9f48c3dab3ec1e934c934e0"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "big-book-award",
+      "endpoint": "https://bigbook.ru/novosti",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 11,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/novosti\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://bigbook.ru/novosti",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 194500,
+          "responseSha256": "738ae9d00216e2b35cfe3c4531708434c19bb42db10a2e09732adc361a5c50e6",
+          "accessedAt": "2026-10-01T21:13:07.425Z"
+        },
+        {
+          "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=utf-8",
+          "bytes": 181697,
+          "responseSha256": "b03ffccdc48fa0d6882e8f80419b515a48d9233990cde9e03569444b4cff79f4",
+          "accessedAt": "2026-10-01T21:13:08.441Z"
+        }
+      ],
+      "sample": {
+        "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+        "discoveryTitle": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+        "detailHeadline": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 5089,
+        "detailTextSha256": "1e714d0fb893921a44f06b1ab065971ce5ba6c9a2363a6000ae4e6b3d4bdd5f2"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "virginia-press",
+      "endpoint": "https://www.upress.virginia.edu/",
+      "countryCodes": [
+        "US"
+      ],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 9,
+      "currentArticleCandidateCount": 2,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": "^\\/(?:news|author-corner)\\/[^/]+\\/?$",
+        "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.upress.virginia.edu/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 52117,
+          "responseSha256": "720a62133d0c1924a0f4e89f9ffe96b5a830faad8c6571c847f5bcd6b352f321",
+          "accessedAt": "2026-10-01T21:13:07.295Z"
+        },
+        {
+          "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 36144,
+          "responseSha256": "2cbb4d2e3acad7a26fded18d8a6f7128cc922b97cbe46804368a733ded565406",
+          "accessedAt": "2026-10-01T21:13:07.683Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+        "discoveryTitle": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social JusticeThe University of Virginia Press is pleased to announce Dis(place)ment, Migration, and Social Justice, a new series that will publish the latest scholarship on forced relocation with a focus on...Continue Reading",
+        "detailHeadline": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social Justice",
+        "publicationDates": [],
+        "sourcePublishedAt": null,
+        "detailTextCharacters": 2301,
+        "detailTextSha256": "6272c2865f716791dc84c55840d6103abeb76c2dce30c739c00908cc789d958e"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "endpoint": "https://www.guernicamag.com/feed/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 20,
+      "currentArticleCandidateCount": 20,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": null,
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://www.guernicamag.com/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 539784,
+          "responseSha256": "bbe031147e5ab18616fe7ad23215745329d0d0600209b26bd47003b0d5c690eb",
+          "accessedAt": "2026-10-01T21:13:08.217Z"
+        },
+        {
+          "url": "https://www.guernicamag.com/places-of-memory/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 129808,
+          "responseSha256": "ea894fe161f6b60341dc80a999b843584b535bd17b0be6d6d642b583deba2c09",
+          "accessedAt": "2026-10-01T21:13:08.300Z"
+        }
+      ],
+      "sample": {
+        "url": "https://www.guernicamag.com/places-of-memory/",
+        "discoveryTitle": "Places of Memory: A Novel Excerpt",
+        "detailHeadline": "Places of Memory: A Novel Excerpt",
+        "publicationDates": [
+          {
+            "value": "2026-07-15T10:16:25+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          }
+        ],
+        "sourcePublishedAt": "2026-07-15T10:16:25.000Z",
+        "detailTextCharacters": 14000,
+        "detailTextSha256": "764f1aaa7f0fff74499738b9085f3f5b3a6a8ea1d277e5bdf889163f05cc924f"
+      },
+      "publicCount": 0
+    },
+    {
+      "sourceId": "hakara",
+      "endpoint": "https://hakara.in/feed/",
+      "countryCodes": [],
+      "status": "ok",
+      "beforeRecordedCandidateCount": 10,
+      "currentArticleCandidateCount": 10,
+      "articleDetailVerified": true,
+      "parser": {
+        "linkPattern": null,
+        "linkSelector": "a[href]",
+        "articleContainer": null,
+        "titleSelector": null
+      },
+      "requests": [
+        {
+          "url": "https://hakara.in/feed/",
+          "httpStatus": 200,
+          "contentType": "application/rss+xml; charset=UTF-8",
+          "bytes": 565917,
+          "responseSha256": "cbcb520ff5c77e43a6d5ef2657c242afe2ca6367dadf25c2aa15c9f58e6be779",
+          "accessedAt": "2026-10-01T21:13:12.066Z"
+        },
+        {
+          "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+          "httpStatus": 200,
+          "contentType": "text/html; charset=UTF-8",
+          "bytes": 612584,
+          "responseSha256": "9a899f228aa13f2b9fe2ef180d5c3573461d6ebd2788cb90d95dfc009ce3885b",
+          "accessedAt": "2026-10-01T21:13:13.151Z"
+        }
+      ],
+      "sample": {
+        "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+        "discoveryTitle": "‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri",
+        "detailHeadline": "Ten Poems: Swanand Bedarkar | Satya Gummuluri",
+        "publicationDates": [
+          {
+            "value": "2026-05-24T08:17:28+00:00",
+            "method": "meta[property=\"article:published_time\"]"
+          },
+          {
+            "value": "2026-05-24T08:17:28+00:00",
+            "method": "jsonld.datePublished"
+          },
+          {
+            "value": "2026-05-24T08:17:28+00:00",
+            "method": "jsonld.datePublished"
+          }
+        ],
+        "sourcePublishedAt": "2026-05-24T08:17:28.000Z",
+        "detailTextCharacters": 6625,
+        "detailTextSha256": "83f7749e61c39e74081a0afb0584140b3917cd21ef8c2bd6c7c86dee6743f018"
+      },
+      "publicCount": 0
+    }
+  ]
+}

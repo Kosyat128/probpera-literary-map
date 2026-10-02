@@ -1,0 +1,393 @@
+{
+  "sourceId": "serpents-tail",
+  "name": "Serpent’s Tail",
+  "entryUrl": "https://serpentstail.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:47:51.752Z",
+  "requests": [
+    {
+      "url": "https://serpentstail.com/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 306379,
+      "sha256": "03d177601df00fb75ffe641f83da8fc794a708fbe66ec1f5ca7e72261b42e2c3",
+      "accessedAt": "2026-10-01T20:47:52.468Z"
+    },
+    {
+      "url": "https://serpentstail.com/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 88214,
+      "sha256": "facbf2fbd5e4d704c46e9e822cdb38dd0f1bb0ea363c1bb770033048d784b216",
+      "accessedAt": "2026-10-01T20:47:52.637Z"
+    },
+    {
+      "url": "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 283079,
+      "sha256": "b2b7e4ad3fd8fe7755bf1af4ebdda7d7741870fb509e021f0998c4f857ea284a",
+      "accessedAt": "2026-10-01T20:47:53.513Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://serpentstail.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 1507,
+    "sha256": "8a19702b309180927d2b74f316124c0eb0350fe2ea8b3e3856c4b05b72716fa9",
+    "accessedAt": "2026-10-01T20:47:52.219Z",
+    "disallowed": [
+      "/wp-content/uploads/sites/2/wc-logs/",
+      "/wp-content/uploads/sites/2/woocommerce_transient_files/",
+      "/wp-content/uploads/sites/2/woocommerce_uploads/",
+      "/*?add-to-cart=",
+      "/*?*add-to-cart=",
+      "/wp-admin/",
+      "/*.pdf$",
+      "/?s=",
+      "/search/",
+      "/wp-admin/",
+      "/wp-includes/"
+    ]
+  },
+  "endpoint": {
+    "id": "serpents-tail",
+    "name": "Serpent’s Tail",
+    "url": "https://serpentstail.com/feed/",
+    "format": "rss",
+    "language": "en-GB",
+    "region": "global",
+    "sourceFamilyId": "serpents-tail",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://serpentstail.com"
+    ],
+    "parserVersion": "r10-source-profile-1",
+    "exampleArticleUrls": [
+      "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/"
+    ],
+    "verifiedAt": "2026-10-01T20:47:53.523Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 10,
+  "literaryCandidateCount": 10,
+  "sample": {
+    "sourceId": "serpents-tail",
+    "source": {
+      "name": "Serpent’s Tail",
+      "url": "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/",
+      "language": "en-GB"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut Fiction Nero Book Award",
+    "publishedAt": "2025-11-20T16:26:42.000Z",
+    "description": "A huge congratulations to Rochelle Dowden-Lord, who has been shortlisted for the 2025 Debut Fiction Nero Book Award, for her novel Lush. The judges said: ‘Set on a crumbling French vineyard, Lush sees a group of influential wine-lovers invited to taste the oldest bottle of wine in the world. A funny, hedonistic romp ensues, the […] The post Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut …",
+    "discoveredAt": "2026-10-01T20:47:52.638Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 283079,
+      "sha256": "b2b7e4ad3fd8fe7755bf1af4ebdda7d7741870fb509e021f0998c4f857ea284a",
+      "accessedAt": "2026-10-01T20:47:53.513Z",
+      "headline": "Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut Fiction Nero Book Award",
+      "excerpt": "Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut Fiction Nero Book Award 20 November 2025 A huge congratulations to Rochelle Dowden-Lord, who has been shortlisted for the 2025 Debut Fiction Nero Book Award, for her novel Lush. The judges said: ‘Set on a crumbling French vineyard, Lush sees a group of influential wine-lovers invited to taste the oldest bottle of wine in the world. A funny, h",
+      "publishedDates": [
+        {
+          "value": "2025-11-20T16:26:42+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2025-11-20T16:26:42+00:00",
+          "method": "jsonld.datePublished",
+          "type": "Article"
+        },
+        {
+          "value": "2025-11-20T16:26:42+00:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/",
+      "language": "en-GB",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:47:53.523Z",
+  "foundItems": [
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut Fiction Nero Book Award",
+      "publishedAt": "2025-11-20T16:26:42.000Z",
+      "description": "A huge congratulations to Rochelle Dowden-Lord, who has been shortlisted for the 2025 Debut Fiction Nero Book Award, for her novel Lush. The judges said: ‘Set on a crumbling French vineyard, Lush sees a group of influential wine-lovers invited to taste the oldest bottle of wine in the world. A funny, hedonistic romp ensues, the […] The post Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut …",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/09/23/the-end-of-everything-is-shortlisted-for-the-booker-prize/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The End of Everything is shortlisted for the Booker Prize",
+      "publishedAt": "2026-09-23T13:26:47.000Z",
+      "description": "We are delighted that M. John Harrison’s The End of Everything has been shortlisted for the 2026 Booker Prize! Here’s what the judges had to say: ‘The End of Everything can be read as a thriller, a mystery, a satire, a dystopia, a road novel, a work of realism; whatever the reader is looking for can be […] The post The End of Everything is shortlisted for the Booker Prize appeared first on Serpen…",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/07/28/the-end-of-everything-is-longlisted-for-the-booker-prize/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The End of Everything is longlisted for the Booker Prize",
+      "publishedAt": "2026-07-28T14:07:29.000Z",
+      "description": "We are delighted that M. John Harrison’s The End of Everything has been longlisted for the 2026 Booker Prize! Here’s what the judges had to say about this haunting apocalyptic adventure: ‘Two beachcombers meet and exchange words at the intertidal; we are in Kent, and it is the near-future, but one that recognises itself to be in […] The post The End of Everything is longlisted for the Booker Priz…",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/04/23/serpents-tail-alumni-susan-choi-is-shortlisted-for-the-2026-womens-prize-for-fiction/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Serpent’s Tail alumni, Susan Choi, is shortlisted for the 2026 Women’s Prize for Fiction",
+      "publishedAt": "2026-04-23T15:40:49.000Z",
+      "description": "Congratulations to Serpent’s Tail alumni Susan Choi on her Women’s Prize shortlisting! We’re so pleased to see that Susan Choi has been shortlisted for the 2026 Women’s Prize for Fiction. Susan began her publishing journey with Serpent’s Tail, and her book, Trust Exercise, was published in 2019. Find out more about the book below! Trust […] The post Serpent’s Tail alumni, Susan Choi, is shortlist…",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/02/23/gurnaik-johal-is-shortlisted-for-young-writer-of-the-year-award/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Gurnaik Johal is shortlisted for the Young Writer of the Year Award",
+      "publishedAt": "2026-02-23T11:44:29.000Z",
+      "description": "We are pleased to announce that Gurnaik Johal has been shortlisted for the Charlotte Aitken Trust Sunday Times Young Writer of the Year Award for his debut novel Saraswati. Johal is one of four authors chosen by chair and Sunday Times chief literary critic Johanna Thomas-Corr, alongside fellow judges Caleb […] The post Gurnaik Johal is shortlisted for the Young Writer of the Year Award appeared f…",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/03/31/spring-reads-for-2026/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Spring Reads for 2026",
+      "publishedAt": "2026-03-31T12:19:40.000Z",
+      "description": "As we head into the Easter weekend, it’s the perfect time to pick up a new book or two. From epic family sagas to genre-blending short-stories, from the streets of London during the Blitz to India’s sacred Saraswati river, dive into a new Serpent’s Tail read this Spring. Which books do you plan on reading? […] The post Spring Reads for 2026 appeared first on Serpent's Tail.",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2025/11/24/serpents-tail-and-vipers-christmas-gift-guide-2025/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Serpent’s Tail and Viper’s Christmas Gift Guide 2025",
+      "publishedAt": "2025-11-24T15:06:26.000Z",
+      "description": "From the treacherous world of the Klondike Gold Rush, to an unforgettable quartet of stories about gender; and from addictive, twisty thrillers that will keep you glued to the sofa, to thoughtful, provocative novels that will leave you questioning the world around you \u2013 give yourself and your loved ones the gift of a great […] The post Serpent’s Tail and Viper’s Christmas Gift Guide 2025 appeared…",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/07/03/air-read-an-extract/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Air - Read an Extract",
+      "publishedAt": "2026-07-03T16:30:14.000Z",
+      "description": "Two men venture through strange landscapes towards unknowable destinations. Paul, a feted designer, wanders the echoing corridors of a server farm in Norway \u2013 before, in a sudden blackout, he seems to vanish. In another time and space, a wounded stranger wakes in a forest, watched over by a young girl who helps him flee […] The post Air \u2013 Read an Extract appeared first on Serpent's Tail.",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2026/06/11/on-time-and-water-by-andri-snaer-magnason-now-available-on-disney/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "On Time and Water by Andri Snær Magnason - now available on Disney+",
+      "publishedAt": "2026-06-11T11:08:05.000Z",
+      "description": "Set against the Icelandic landscape, where centuries of ice are disappearing within a lifetime, poet Andri Snær Magnason sets out to create a cinematic time capsule to hold onto what is slipping away \u2014 family, memory, time and water. Drawn from his book, published with Serpent’s Tail in 2020, comes this powerful documentary, directed by […] The post On Time and Water by Andri Snær Magnason \u2013 now …",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "serpents-tail",
+      "source": {
+        "name": "Serpent’s Tail",
+        "url": "https://serpentstail.com/2025/12/11/one-sun-only-read-an-extract/",
+        "language": "en-GB"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "One Sun Only - Read an Extract",
+      "publishedAt": "2025-12-11T11:02:18.000Z",
+      "description": "A young woman takes stock following a burglary. A teenager becomes obsessed with the obituaries in a weekly magazine. Grandchildren mourn the grandparents who loved them and the ones who didn’t. Painters and almost-painters try to distinguish Good Art from Bad Art. People grapple with life-altering illness, unrequited love and promises they have every intention […] The post One Sun Only \u2013 Read an…",
+      "discoveredAt": "2026-10-01T20:47:52.638Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "facbf2fbd5e4d704c46e9e822cdb38dd0f1bb0ea363c1bb770033048d784b216"
+}

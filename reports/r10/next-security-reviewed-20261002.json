@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "patch": {
+    "workspace": "@probpera/admin",
+    "package": "next",
+    "before": "16.3.3",
+    "after": "16.3.8",
+    "advisory": "https://github.com/advisories/GHSA-vcvr-r3jv-pc5j",
+    "fixedRelease": "https://github.com/vercel/next.js/releases/tag/v16.3.8"
+  },
+  "changedPackages": [
+    "apps/admin",
+    "node_modules/@next/env",
+    "node_modules/@next/swc-darwin-arm64",
+    "node_modules/@next/swc-darwin-x64",
+    "node_modules/@next/swc-linux-arm64-gnu",
+    "node_modules/@next/swc-linux-arm64-musl",
+    "node_modules/@next/swc-linux-x64-gnu",
+    "node_modules/@next/swc-linux-x64-musl",
+    "node_modules/@next/swc-win32-arm64-msvc",
+    "node_modules/@next/swc-win32-x64-msvc",
+    "node_modules/next",
+    "node_modules/next/node_modules/postcss"
+  ],
+  "lifecycleScriptsExecuted": false,
+  "sharedNodeModulesChanged": false,
+  "productionAudit": {
+    "command": "npm audit --omit=dev --audit-level=high",
+    "before": {
+      "exitCode": 1,
+      "result": {
+        "auditReportVersion": 2,
+        "vulnerabilities": {
+          "next": {
+            "name": "next",
+            "severity": "critical",
+            "isDirect": true,
+            "via": [
+              {
+                "source": 1240609,
+                "name": "next",
+                "dependency": "next",
+                "title": "Next.js: Remote Code Execution in next/og ImageResponse",
+                "url": "https://github.com/advisories/GHSA-vcvr-r3jv-pc5j",
+                "severity": "critical",
+                "cwe": [
+                  "CWE-1395"
+                ],
+                "cvss": {
+                  "score": 0,
+                  "vectorString": null
+                },
+                "range": ">=16.2.0 <16.3.6"
+              }
+            ],
+            "effects": [],
+            "range": "16.2.0 - 16.3.5",
+            "nodes": [
+              "node_modules/next"
+            ],
+            "fixAvailable": {
+              "name": "next",
+              "version": "16.3.8",
+              "isSemVerMajor": false
+            }
+          }
+        },
+        "metadata": {
+          "vulnerabilities": {
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "high": 0,
+            "critical": 1,
+            "total": 1
+          },
+          "dependencies": {
+            "prod": 213,
+            "dev": 528,
+            "optional": 179,
+            "peer": 0,
+            "peerOptional": 0,
+            "total": 776
+          }
+        }
+      }
+    },
+    "after": {
+      "exitCode": 0,
+      "result": {
+        "auditReportVersion": 2,
+        "vulnerabilities": {},
+        "metadata": {
+          "vulnerabilities": {
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "high": 0,
+            "critical": 0,
+            "total": 0
+          },
+          "dependencies": {
+            "prod": 212,
+            "dev": 528,
+            "optional": 179,
+            "peer": 0,
+            "peerOptional": 0,
+            "total": 775
+          }
+        }
+      }
+    }
+  },
+  "historicalPinsChanged": false,
+  "humanReview": false,
+  "releaseAccepted": false,
+  "productionApplied": false
+}

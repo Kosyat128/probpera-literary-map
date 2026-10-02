@@ -1,20 +1,24 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-29T20:43:28.449Z",
-  "observedPeriod": "2026-09-26 to 2026-09-29; no invented 7-day or 30-day history",
+  "generatedAt": "2026-10-01T21:19:46.578Z",
+  "observedPeriod": "2026-09-26 to 2026-10-01; no invented 7-day or 30-day history",
   "scope": "Local live source research and runtime parser probes; not a deployment or publication receipt.",
   "counts": {
-    "researchedCandidates": 306,
-    "runtimeVerifiedEndpoints": 146,
-    "verifiedSourceFamilies": 145,
+    "researchedCandidates": 474,
+    "runtimeVerifiedEndpoints": 217,
+    "verifiedSourceFamilies": 215,
     "verifiedOrganisationCountries": [
       "AL",
       "AR",
+      "AT",
       "AU",
+      "AZ",
       "BA",
       "BE",
+      "BG",
       "BR",
       "CA",
+      "CH",
       "CL",
       "CM",
       "CN",
@@ -28,9 +32,11 @@
       "FR",
       "GB",
       "GH",
+      "GR",
       "HU",
       "ID",
       "IE",
+      "IN",
       "IT",
       "JP",
       "KE",
@@ -47,6 +53,7 @@
       "NO",
       "NZ",
       "PE",
+      "PH",
       "PL",
       "PT",
       "RS",
@@ -161,12 +168,17 @@
     ],
     "languages": [
       "ar",
+      "bg",
+      "bg-BG",
       "bs",
       "bs-BA",
       "ca",
       "cs",
       "da-DK",
       "de",
+      "de-CH",
+      "de-DE",
+      "el",
       "en",
       "en-AU",
       "en-CA",
@@ -184,6 +196,7 @@
       "it-IT",
       "ko",
       "lt",
+      "mr-IN",
       "nb-NO",
       "pl",
       "pl-PL",
@@ -202,18 +215,18 @@
       "zh-Hant"
     ],
     "formats": {
-      "rss": 74,
+      "rss": 114,
       "atom": 1,
-      "html": 71
+      "html": 102
     },
-    "finds": 3460,
+    "finds": 4418,
     "ready": 0,
     "public": 0
   },
   "statusCounts": {
-    "blocked": 134,
-    "runtime_verified": 146,
-    "editorial_profile_held": 26
+    "blocked": 219,
+    "runtime_verified": 217,
+    "editorial_profile_held": 38
   },
   "records": [
     {
@@ -538,7 +551,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/giller.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/giller.json"
     },
     {
       "sourceId": "brooklyn-book-festival",
@@ -722,7 +735,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/kent-literary-research.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/kent-literary-research.json"
     },
     {
       "sourceId": "netflix-book-adaptations",
@@ -906,7 +919,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/hay-festival-queretaro.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/hay-festival-queretaro.json"
     },
     {
       "sourceId": "brisbane-writers-festival",
@@ -1012,7 +1025,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/intelekti-ge.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/intelekti-ge.json"
     },
     {
       "sourceId": "hoeplieditore-it",
@@ -1034,7 +1047,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/hoeplieditore-it.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/hoeplieditore-it.json"
     },
     {
       "sourceId": "acenaventures-wordpress-com",
@@ -1048,7 +1061,7 @@
       "sourceFamilyId": "acenaventures-wordpress-com",
       "sourceClass": "publishing-association",
       "status": "blocked",
-      "reason": "private_destination",
+      "reason": "runtime_parser_no_literary_item",
       "endpoint": null,
       "format": null,
       "language": "en",
@@ -1056,7 +1069,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/acenaventures-wordpress-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/acenaventures-wordpress-com.json"
     },
     {
       "sourceId": "gummerus-fi",
@@ -1078,7 +1091,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/gummerus-fi.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/gummerus-fi.json"
     },
     {
       "sourceId": "unswpress-com",
@@ -1100,7 +1113,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/unswpress-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/unswpress-com.json"
     },
     {
       "sourceId": "penguinrandomhousegrupoeditorial-com",
@@ -1390,7 +1403,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/group-sagepub-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/group-sagepub-com.json"
     },
     {
       "sourceId": "jbpa-or-jp",
@@ -1412,7 +1425,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/jbpa-or-jp.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/jbpa-or-jp.json"
     },
     {
       "sourceId": "bildungsmedien-de",
@@ -1434,7 +1447,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bildungsmedien-de.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bildungsmedien-de.json"
     },
     {
       "sourceId": "boersenverein-de",
@@ -1456,7 +1469,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/boersenverein-de.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/boersenverein-de.json"
     },
     {
       "sourceId": "publishers-org",
@@ -1562,7 +1575,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/afrilivres-net.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/afrilivres-net.json"
     },
     {
       "sourceId": "arab-pa-org",
@@ -1584,7 +1597,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/arab-pa-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/arab-pa-org.json"
     },
     {
       "sourceId": "eulac-org",
@@ -1606,7 +1619,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/eulac-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/eulac-org.json"
     },
     {
       "sourceId": "eepg-org",
@@ -1628,7 +1641,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/eepg-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/eepg-org.json"
     },
     {
       "sourceId": "gieditores-org",
@@ -1642,7 +1655,7 @@
       "sourceFamilyId": "gieditores-org",
       "sourceClass": "publishing-association",
       "status": "blocked",
-      "reason": "no_literary_article_links",
+      "reason": "fetch failed",
       "endpoint": null,
       "format": null,
       "language": "es",
@@ -1650,7 +1663,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/gieditores-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/gieditores-org.json"
     },
     {
       "sourceId": "bolognachildrensbookfair-com",
@@ -1700,7 +1713,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/fibut-is.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/fibut-is.json"
     },
     {
       "sourceId": "universitypressplc-com",
@@ -1750,7 +1763,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/aie-it.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/aie-it.json"
     },
     {
       "sourceId": "dkagencies-com",
@@ -1772,7 +1785,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/dkagencies-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/dkagencies-com.json"
     },
     {
       "sourceId": "lojagirassolbrasil-com-br",
@@ -1794,7 +1807,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/lojagirassolbrasil-com-br.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/lojagirassolbrasil-com-br.json"
     },
     {
       "sourceId": "editores-org-ar",
@@ -1816,7 +1829,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/editores-org-ar.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/editores-org-ar.json"
     },
     {
       "sourceId": "publishers-ca",
@@ -1894,7 +1907,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/cpl-org-pe.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/cpl-org-pe.json"
     },
     {
       "sourceId": "camlibro-com-co",
@@ -1944,7 +1957,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/cavelibro-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/cavelibro-org.json"
     },
     {
       "sourceId": "abk-bg",
@@ -2016,7 +2029,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bookindustryja-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bookindustryja-com.json"
     },
     {
       "sourceId": "as-editeurs-org",
@@ -2060,7 +2073,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/caniem-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/caniem-com.json"
     },
     {
       "sourceId": "publishers-asn-au",
@@ -2082,7 +2095,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/publishers-asn-au.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/publishers-asn-au.json"
     },
     {
       "sourceId": "publishers-org-nz",
@@ -2210,7 +2223,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bookpublishers-lk.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bookpublishers-lk.json"
     },
     {
       "sourceId": "fiponline-org",
@@ -2232,7 +2245,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/fiponline-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/fiponline-org.json"
     },
     {
       "sourceId": "pac-org-cn",
@@ -2302,7 +2315,7 @@
       "sourceFamilyId": "bapus-org",
       "sourceClass": "publishing-association",
       "status": "blocked",
-      "reason": "fetch failed",
+      "reason": "no_literary_article_links",
       "endpoint": null,
       "format": null,
       "language": "en",
@@ -2310,7 +2323,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bapus-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bapus-org.json"
     },
     {
       "sourceId": "forlaggare-se",
@@ -2332,7 +2345,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/forlaggare-se.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/forlaggare-se.json"
     },
     {
       "sourceId": "publishers-fi",
@@ -2382,7 +2395,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/forleggerforeningen-no.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/forleggerforeningen-no.json"
     },
     {
       "sourceId": "upba-org-ua",
@@ -2396,7 +2409,7 @@
       "sourceFamilyId": "upba-org-ua",
       "sourceClass": "publishing-association",
       "status": "blocked",
-      "reason": "http_500",
+      "reason": "This operation was aborted",
       "endpoint": null,
       "format": null,
       "language": "uk",
@@ -2404,7 +2417,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/upba-org-ua.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/upba-org-ua.json"
     },
     {
       "sourceId": "unionjp-com",
@@ -2426,7 +2439,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/unionjp-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/unionjp-com.json"
     },
     {
       "sourceId": "epa-org-ae",
@@ -2448,7 +2461,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/epa-org-ae.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/epa-org-ae.json"
     },
     {
       "sourceId": "publishingireland-com",
@@ -2526,7 +2539,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/asdel-ch.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/asdel-ch.json"
     },
     {
       "sourceId": "swissbooks-ch",
@@ -2548,7 +2561,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/swissbooks-ch.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/swissbooks-ch.json"
     },
     {
       "sourceId": "gzs-si",
@@ -2570,7 +2583,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/gzs-si.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/gzs-si.json"
     },
     {
       "sourceId": "uik-ba",
@@ -2584,7 +2597,7 @@
       "sourceFamilyId": "uik-ba",
       "sourceClass": "publishing-association",
       "status": "blocked",
-      "reason": "http_500",
+      "reason": "no_literary_article_links",
       "endpoint": null,
       "format": null,
       "language": "bs",
@@ -2592,7 +2605,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/uik-ba.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/uik-ba.json"
     },
     {
       "sourceId": "mkke-hu",
@@ -2614,7 +2627,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/mkke-hu.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/mkke-hu.json"
     },
     {
       "sourceId": "enelvi-org",
@@ -2636,7 +2649,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/enelvi-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/enelvi-org.json"
     },
     {
       "sourceId": "nigerianpublishers-org",
@@ -2708,7 +2721,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/publishsa-co-za.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/publishsa-co-za.json"
     },
     {
       "sourceId": "gpba-en",
@@ -2752,7 +2765,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/publishersunionlb-com.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/publishersunionlb-com.json"
     },
     {
       "sourceId": "tbpai-co-il",
@@ -2774,7 +2787,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/tbpai-co-il.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/tbpai-co-il.json"
     },
     {
       "sourceId": "capali-com-pa",
@@ -2796,7 +2809,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/capali-com-pa.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/capali-com-pa.json"
     },
     {
       "sourceId": "singaporebookpublishers-sg",
@@ -2818,7 +2831,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/singaporebookpublishers-sg.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/singaporebookpublishers-sg.json"
     },
     {
       "sourceId": "bookpublishers-am",
@@ -2862,7 +2875,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/kpa21-or-kr.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/kpa21-or-kr.json"
     },
     {
       "sourceId": "biott-org",
@@ -2934,7 +2947,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/boek-be.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/boek-be.json"
     },
     {
       "sourceId": "mediafederatie-nl",
@@ -2956,7 +2969,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/mediafederatie-nl.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/mediafederatie-nl.json"
     },
     {
       "sourceId": "cul-com-uy",
@@ -3019,16 +3032,22 @@
       ],
       "sourceFamilyId": "pik-org-pl",
       "sourceClass": "publishing-association",
-      "status": "blocked",
-      "reason": "detail_not_verified",
-      "endpoint": null,
-      "format": null,
-      "language": "pl",
-      "finds": 0,
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://pik.org.pl/feed/",
+      "format": "rss",
+      "language": "pl-PL",
+      "finds": 12,
       "ready": 0,
       "public": 0,
-      "sample": null,
-      "evidence": "reports/r10/sources/pik-org-pl.json"
+      "sample": {
+        "url": "https://pik.org.pl/2026/10/01/program-dla-branzy-na-miedzynarodowych-targach-ksiazki-w-krakowie/",
+        "title": "Program dla branży na Międzynarodowych Targach Książki w Krakowie®",
+        "detailHeadline": "Program dla branży na Międzynarodowych Targach Książki w Krakowie® - Polska Izba Książki",
+        "sourcePublishedAt": "2026-10-01T16:30:47.000Z",
+        "observedAt": "2026-10-01T20:43:52.160Z"
+      },
+      "evidence": "reports/r10/sources/reprobe-20261001/pik-org-pl.json"
     },
     {
       "sourceId": "bksh-al",
@@ -3050,7 +3069,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bksh-al.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bksh-al.json"
     },
     {
       "sourceId": "nla-am",
@@ -3072,7 +3091,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nla-am.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nla-am.json"
     },
     {
       "sourceId": "onb-ac-at",
@@ -3087,14 +3106,14 @@
       "sourceClass": "library",
       "status": "editorial_profile_held",
       "reason": "Sample is a service/education centre landing page, not a demonstrated literary news item.",
-      "endpoint": "https://www.onb.ac.at/",
-      "format": "html",
-      "language": "de-AT",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
       "finds": 0,
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/onb-ac-at.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/onb-ac-at.json"
     },
     {
       "sourceId": "millikitabxana-az",
@@ -3107,16 +3126,22 @@
       ],
       "sourceFamilyId": "millikitabxana-az",
       "sourceClass": "library",
-      "status": "blocked",
-      "reason": "detail_not_verified",
-      "endpoint": null,
-      "format": null,
-      "language": "az",
-      "finds": 0,
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.millikitabxana.az/en/news",
+      "format": "html",
+      "language": "en",
+      "finds": 13,
       "ready": 0,
       "public": 0,
-      "sample": null,
-      "evidence": "reports/r10/sources/millikitabxana-az.json"
+      "sample": {
+        "url": "https://www.millikitabxana.az/en/news/umumdunya-kitab-ve-muelliflik-huququ-gunu-2026",
+        "title": "An event dedicated to April 23 - World Book and Copyright Day was held at the National Library.",
+        "detailHeadline": "An event dedicated to April 23 - World Book and Copyright Day was held at the National Library.",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:43:49.298Z"
+      },
+      "evidence": "reports/r10/sources/reprobe-20261001/millikitabxana-az.json"
     },
     {
       "sourceId": "kbr-be",
@@ -3185,16 +3210,22 @@
       ],
       "sourceFamilyId": "nationallibrary-bg",
       "sourceClass": "library",
-      "status": "editorial_profile_held",
-      "reason": "Sample concerns the music department anniversary; literary scope needs a narrower profile.",
+      "status": "runtime_verified",
+      "reason": null,
       "endpoint": "https://www.nationallibrary.bg/www/feed/",
       "format": "rss",
       "language": "bg-BG",
-      "finds": 0,
+      "finds": 10,
       "ready": 0,
       "public": 0,
-      "sample": null,
-      "evidence": "reports/r10/sources/nationallibrary-bg.json"
+      "sample": {
+        "url": "https://www.nationallibrary.bg/www/2026/09/29/%d0%bd%d0%b0%d1%86%d0%b8%d0%be%d0%bd%d0%b0%d0%bb%d0%bd%d0%b0%d1%82%d0%b0-%d0%b1%d0%b8%d0%b1%d0%bb%d0%b8%d0%be%d1%82%d0%b5%d0%ba%d0%b0-%d0%be%d1%82%d0%ba%d1%80%d0%b8-%d0%bb%d0%b8%d1%82%d0%b5%d1%80-4/",
+        "title": "Националната библиотека откри литературен кът на Япония",
+        "detailHeadline": "Националната библиотека откри литературен кът на Япония - Национална библиотека \"Св. св. Кирил и Методий\"",
+        "sourcePublishedAt": "2026-09-29T12:20:40.000Z",
+        "observedAt": "2026-10-01T20:43:54.140Z"
+      },
+      "evidence": "reports/r10/sources/reprobe-20261001/nationallibrary-bg.json"
     },
     {
       "sourceId": "nsk-hr",
@@ -3216,7 +3247,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nsk-hr.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nsk-hr.json"
     },
     {
       "sourceId": "cypruslibrary-gov-cy",
@@ -3310,7 +3341,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/rara-ee.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/rara-ee.json"
     },
     {
       "sourceId": "kansalliskirjasto-fi",
@@ -3332,7 +3363,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/kansalliskirjasto-fi.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/kansalliskirjasto-fi.json"
     },
     {
       "sourceId": "nplg-gov-ge",
@@ -3354,7 +3385,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nplg-gov-ge.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nplg-gov-ge.json"
     },
     {
       "sourceId": "dnb-de",
@@ -3376,7 +3407,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/dnb-de.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/dnb-de.json"
     },
     {
       "sourceId": "nlg-gr",
@@ -3398,7 +3429,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nlg-gr.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nlg-gr.json"
     },
     {
       "sourceId": "oszk-hu",
@@ -3448,7 +3479,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/landsbokasafn-is.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/landsbokasafn-is.json"
     },
     {
       "sourceId": "nli-ie",
@@ -3498,7 +3529,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bncf-firenze-sbn-it.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bncf-firenze-sbn-it.json"
     },
     {
       "sourceId": "bncrm-beniculturali-it",
@@ -3520,7 +3551,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bncrm-beniculturali-it.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bncrm-beniculturali-it.json"
     },
     {
       "sourceId": "lnb-lv",
@@ -3542,7 +3573,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/lnb-lv.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/lnb-lv.json"
     },
     {
       "sourceId": "landesbibliothek-li",
@@ -3648,7 +3679,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/maltalibraries-gov-mt.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/maltalibraries-gov-mt.json"
     },
     {
       "sourceId": "bnrm-md",
@@ -3741,14 +3772,14 @@
       "sourceClass": "library",
       "status": "editorial_profile_held",
       "reason": "Sample is a crafts festival; literary relevance not demonstrated.",
-      "endpoint": "https://www.nb.no/",
+      "endpoint": "https://www.nb.no/nyheter/",
       "format": "html",
       "language": "nb-NO",
       "finds": 0,
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nb-no.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nb-no.json"
     },
     {
       "sourceId": "bn-org-pl",
@@ -3790,7 +3821,7 @@
       "sourceFamilyId": "bnportugal-gov-pt",
       "sourceClass": "library",
       "status": "blocked",
-      "reason": "no_literary_article_links",
+      "reason": "This operation was aborted",
       "endpoint": null,
       "format": null,
       "language": "pt",
@@ -3798,7 +3829,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bnportugal-gov-pt.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bnportugal-gov-pt.json"
     },
     {
       "sourceId": "bibnat-ro",
@@ -3820,7 +3851,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bibnat-ro.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bibnat-ro.json"
     },
     {
       "sourceId": "nb-rs",
@@ -3898,7 +3929,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nuk-uni-lj-si.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nuk-uni-lj-si.json"
     },
     {
       "sourceId": "bne-es",
@@ -3920,7 +3951,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bne-es.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bne-es.json"
     },
     {
       "sourceId": "kb-se",
@@ -3970,7 +4001,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nb-admin-ch.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nb-admin-ch.json"
     },
     {
       "sourceId": "mkutup-gov-tr",
@@ -3992,7 +4023,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/mkutup-gov-tr.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/mkutup-gov-tr.json"
     },
     {
       "sourceId": "nbuv-gov-ua",
@@ -4035,14 +4066,14 @@
       "sourceClass": "library",
       "status": "editorial_profile_held",
       "reason": "Sample is a library location page; excluded from literary agenda.",
-      "endpoint": "https://www.nls.uk/",
-      "format": "html",
-      "language": "en-GB",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
       "finds": 0,
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nls-uk.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nls-uk.json"
     },
     {
       "sourceId": "library-wales",
@@ -4064,7 +4095,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/library-wales.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/library-wales.json"
     },
     {
       "sourceId": "vaticanlibrary-va",
@@ -4086,7 +4117,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/vaticanlibrary-va.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/vaticanlibrary-va.json"
     },
     {
       "sourceId": "pen-international-org",
@@ -4290,7 +4321,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/chinesepen-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/chinesepen-org.json"
     },
     {
       "sourceId": "pen-dk",
@@ -4500,7 +4531,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/philippinepen-ph.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/philippinepen-ph.json"
     },
     {
       "sourceId": "penclub-com-pl",
@@ -4650,7 +4681,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/pensweden-org.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/pensweden-org.json"
     },
     {
       "sourceId": "pen-dschweiz-ch",
@@ -4672,7 +4703,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/pen-dschweiz-ch.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/pen-dschweiz-ch.json"
     },
     {
       "sourceId": "pen-org-au",
@@ -4743,14 +4774,14 @@
       "sourceClass": "library",
       "status": "editorial_profile_held",
       "reason": "Selected sample is a film-club discussion without an evidenced book relation; profile needs narrower selection.",
-      "endpoint": "https://www.rsl.ru/",
+      "endpoint": "https://www.rsl.ru/news?userTypeFilter=1",
       "format": "html",
       "language": "ru",
       "finds": 0,
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/rsl.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/rsl.json"
     },
     {
       "sourceId": "culture",
@@ -4772,7 +4803,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/culture.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/culture.json"
     },
     {
       "sourceId": "publishers-weekly",
@@ -4900,7 +4931,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/litres.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/litres.json"
     },
     {
       "sourceId": "ad-marginem",
@@ -4950,7 +4981,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nlo.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nlo.json"
     },
     {
       "sourceId": "samokat",
@@ -5022,7 +5053,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/literaturhaus.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/literaturhaus.json"
     },
     {
       "sourceId": "ndl-japan",
@@ -5072,7 +5103,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bn-argentina.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bn-argentina.json"
     },
     {
       "sourceId": "bn-brasil",
@@ -5094,7 +5125,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/bn-brasil.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/bn-brasil.json"
     },
     {
       "sourceId": "bn-chile",
@@ -5241,7 +5272,7 @@
       "sourceFamilyId": "huza-press",
       "sourceClass": "publisher",
       "status": "blocked",
-      "reason": "private_destination",
+      "reason": "detail_not_verified",
       "endpoint": null,
       "format": null,
       "language": "en",
@@ -5249,7 +5280,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/huza-press.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/huza-press.json"
     },
     {
       "sourceId": "bakwa-magazine",
@@ -5299,7 +5330,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/sahitya-akademi.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/sahitya-akademi.json"
     },
     {
       "sourceId": "lti-korea",
@@ -5321,7 +5352,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/lti-korea.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/lti-korea.json"
     },
     {
       "sourceId": "cassava-republic",
@@ -5372,7 +5403,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/jacana.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/jacana.json"
     },
     {
       "sourceId": "modjaji",
@@ -5450,7 +5481,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/karachi-literature-festival.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/karachi-literature-festival.json"
     },
     {
       "sourceId": "galle-literary-festival",
@@ -5472,7 +5503,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/galle-literary-festival.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/galle-literary-festival.json"
     },
     {
       "sourceId": "taipei-book-fair",
@@ -5522,7 +5553,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nhanam.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nhanam.json"
     },
     {
       "sourceId": "qatar-national-library",
@@ -5544,7 +5575,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/qatar-national-library.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/qatar-national-library.json"
     },
     {
       "sourceId": "abu-dhabi-arabic-centre",
@@ -5566,7 +5597,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/abu-dhabi-arabic-centre.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/abu-dhabi-arabic-centre.json"
     },
     {
       "sourceId": "antares",
@@ -5588,7 +5619,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/antares.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/antares.json"
     },
     {
       "sourceId": "seoul-book-fair",
@@ -5638,7 +5669,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/jaipur-literature-festival.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/jaipur-literature-festival.json"
     },
     {
       "sourceId": "dhaka-lit-fest",
@@ -5660,7 +5691,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/dhaka-lit-fest.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/dhaka-lit-fest.json"
     },
     {
       "sourceId": "nepal-literature-festival",
@@ -5682,7 +5713,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/nepal-literature-festival.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/nepal-literature-festival.json"
     },
     {
       "sourceId": "femrite",
@@ -5838,7 +5869,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/rosman.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/rosman.json"
     },
     {
       "sourceId": "azbooka",
@@ -5860,7 +5891,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/azbooka.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/azbooka.json"
     },
     {
       "sourceId": "alpina",
@@ -5882,7 +5913,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/alpina.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/alpina.json"
     },
     {
       "sourceId": "mif",
@@ -5904,7 +5935,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/mif.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/mif.json"
     },
     {
       "sourceId": "polyandria",
@@ -5926,7 +5957,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/polyandria.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/polyandria.json"
     },
     {
       "sourceId": "individuum",
@@ -5948,7 +5979,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/individuum.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/individuum.json"
     },
     {
       "sourceId": "corpus",
@@ -5970,7 +6001,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/corpus.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/corpus.json"
     },
     {
       "sourceId": "actualitte",
@@ -6132,7 +6163,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/premio-strega.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/premio-strega.json"
     },
     {
       "sourceId": "salone-libro-torino",
@@ -6182,7 +6213,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/leya.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/leya.json"
     },
     {
       "sourceId": "companhia-das-letras",
@@ -6204,7 +6235,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/companhia-das-letras.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/companhia-das-letras.json"
     },
     {
       "sourceId": "eterna-cadencia",
@@ -6282,7 +6313,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/fondo-cultura-economica.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/fondo-cultura-economica.json"
     },
     {
       "sourceId": "literary-hub",
@@ -6430,7 +6461,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/book-riot.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/book-riot.json"
     },
     {
       "sourceId": "the-rumpus",
@@ -6472,7 +6503,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/the-millions.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/the-millions.json"
     },
     {
       "sourceId": "los-angeles-review-books",
@@ -6490,7 +6521,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/los-angeles-review-books.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/los-angeles-review-books.json"
     },
     {
       "sourceId": "paris-review",
@@ -6565,16 +6596,22 @@
       "coverageCountryCodes": [],
       "sourceFamilyId": "chicago-review-books",
       "sourceClass": "literary-news",
-      "status": "blocked",
-      "reason": "private_destination",
-      "endpoint": null,
-      "format": null,
-      "language": "en",
-      "finds": 0,
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://chireviewofbooks.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
       "ready": 0,
       "public": 0,
-      "sample": null,
-      "evidence": "reports/r10/sources/chicago-review-books.json"
+      "sample": {
+        "url": "https://chireviewofbooks.com/2026/10/01/announcing-the-2026-chicago-review-of-books-awards-shortlist/",
+        "title": "Announcing the 2026 Chicago Review of Books Awards Shortlist",
+        "detailHeadline": "Announcing the 2026 Chicago Review of Books Awards Shortlist - Chicago Review of Books",
+        "sourcePublishedAt": "2026-10-01T14:50:00.000Z",
+        "observedAt": "2026-10-01T20:56:27.996Z"
+      },
+      "evidence": "reports/r10/sources/reprobe-20261001/chicago-review-books.json"
     },
     {
       "sourceId": "bookpage",
@@ -6634,7 +6671,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/five-books.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/five-books.json"
     },
     {
       "sourceId": "granta",
@@ -6652,7 +6689,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/granta.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/granta.json"
     },
     {
       "sourceId": "writers-mosaic",
@@ -6862,7 +6899,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/gorky-media.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/gorky-media.json"
     },
     {
       "sourceId": "prochtenie",
@@ -6944,7 +6981,7 @@
       "sourceFamilyId": "polka-academy",
       "sourceClass": "literary-news",
       "status": "blocked",
-      "reason": "detail_not_verified",
+      "reason": "fetch failed",
       "endpoint": null,
       "format": null,
       "language": "ru",
@@ -6952,7 +6989,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/polka-academy.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/polka-academy.json"
     },
     {
       "sourceId": "sydney-review-books",
@@ -6970,7 +7007,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/sydney-review-books.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/sydney-review-books.json"
     },
     {
       "sourceId": "australian-book-review",
@@ -6988,7 +7025,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/australian-book-review.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/australian-book-review.json"
     },
     {
       "sourceId": "books-publishing-au",
@@ -7030,7 +7067,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/literaturkritik.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/literaturkritik.json"
     },
     {
       "sourceId": "buchmarkt",
@@ -7144,7 +7181,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/litprom.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/litprom.json"
     },
     {
       "sourceId": "literaturhaus-at",
@@ -7162,7 +7199,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/literaturhaus-at.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/literaturhaus-at.json"
     },
     {
       "sourceId": "minima-moralia",
@@ -7204,7 +7241,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/doppiozero.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/doppiozero.json"
     },
     {
       "sourceId": "sololibri",
@@ -7375,16 +7412,16 @@
       "coverageCountryCodes": [],
       "sourceFamilyId": "diacritik",
       "sourceClass": "literary-news",
-      "status": "blocked",
-      "reason": "private_destination",
-      "endpoint": null,
-      "format": null,
-      "language": "fr",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a performing arts festival without an evidenced literary news relation.",
+      "endpoint": "https://diacritik.com/feed/",
+      "format": "rss",
+      "language": "fr-FR",
       "finds": 0,
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/diacritik.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/diacritik.json"
     },
     {
       "sourceId": "le-litteraire",
@@ -7442,7 +7479,7 @@
       "sourceFamilyId": "literandra",
       "sourceClass": "literary-news",
       "status": "blocked",
-      "reason": "fetch failed",
+      "reason": "external_redirect:https://www.hugedomains.com",
       "endpoint": null,
       "format": null,
       "language": "en",
@@ -7450,7 +7487,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/literandra.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/literandra.json"
     },
     {
       "sourceId": "afrocritik",
@@ -7468,7 +7505,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/afrocritik.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/afrocritik.json"
     },
     {
       "sourceId": "open-book-festival",
@@ -7486,7 +7523,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/open-book-festival.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/open-book-festival.json"
     },
     {
       "sourceId": "short-story-day-africa",
@@ -7570,7 +7607,7 @@
       "ready": 0,
       "public": 0,
       "sample": null,
-      "evidence": "reports/r10/sources/poetry-ireland.json"
+      "evidence": "reports/r10/sources/reprobe-20261001/poetry-ireland.json"
     },
     {
       "sourceId": "poets-org",
@@ -7595,6 +7632,3510 @@
         "observedAt": "2026-09-29T20:42:42.289Z"
       },
       "evidence": "reports/r10/sources/poets-org.json"
+    },
+    {
+      "sourceId": "and-other-stories",
+      "name": "And Other Stories",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "and-other-stories",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "challenge_document",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/and-other-stories.json"
+    },
+    {
+      "sourceId": "archipelago-books",
+      "name": "Archipelago Books",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "archipelago-books",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://archipelagobooks.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://archipelagobooks.org/2025/04/mira-rosenthal-receives-the-2025-found-in-translation-award/",
+        "title": "Mira Rosenthal receives the 2025 Found in Translation Award",
+        "detailHeadline": "Archipelago Books",
+        "sourcePublishedAt": "2025-04-03T15:51:30.000Z",
+        "observedAt": "2026-10-01T20:47:53.192Z"
+      },
+      "evidence": "reports/r10/sources/archipelago-books.json"
+    },
+    {
+      "sourceId": "acantilado",
+      "name": "Acantilado",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "acantilado",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.acantilado.es/feed/",
+      "format": "rss",
+      "language": "es",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.acantilado.es/jose-maria-mico-premio-internacional-alfonso-reyes-2026/",
+        "title": "José María Micó, Premio Internacional Alfonso Reyes",
+        "detailHeadline": "José María Micó, Premio Internacional Alfonso Reyes | ACANTILADO",
+        "sourcePublishedAt": "2026-08-26T09:53:00.000Z",
+        "observedAt": "2026-10-01T20:47:51.376Z"
+      },
+      "evidence": "reports/r10/sources/acantilado.json"
+    },
+    {
+      "sourceId": "biblioasis",
+      "name": "Biblioasis",
+      "countryCodes": [
+        "CA"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "biblioasis",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.biblioasis.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.biblioasis.com/on-book-banning-and-on-oil-finalists-for-the-2026-writers-trust-shaughnessy-cohen-prize/",
+        "title": "ON BOOK BANNING and ON OIL finalists for the 2026 Writers’ Trust Shaughnessy Cohen Prize!",
+        "detailHeadline": "Blog - Latest News",
+        "sourcePublishedAt": "2026-03-18T21:03:17.000Z",
+        "observedAt": "2026-10-01T20:47:52.935Z"
+      },
+      "evidence": "reports/r10/sources/biblioasis.json"
+    },
+    {
+      "sourceId": "faber",
+      "name": "Faber & Faber",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "faber",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/faber.json"
+    },
+    {
+      "sourceId": "canongate",
+      "name": "Canongate",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "canongate",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "response_too_large",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/canongate.json"
+    },
+    {
+      "sourceId": "serpents-tail",
+      "name": "Serpent’s Tail",
+      "countryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "serpents-tail",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://serpentstail.com/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://serpentstail.com/2025/11/20/lush-by-rochelle-dowden-lord-shortlisted-for-the-2025-debut-fiction-nero-book-award/",
+        "title": "Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut Fiction Nero Book Award",
+        "detailHeadline": "Lush by Rochelle Dowden-Lord shortlisted for 2025 Debut Fiction Nero Book Award",
+        "sourcePublishedAt": "2025-11-20T16:26:42.000Z",
+        "observedAt": "2026-10-01T20:47:53.513Z"
+      },
+      "evidence": "reports/r10/sources/serpents-tail.json"
+    },
+    {
+      "sourceId": "fitzcarraldo",
+      "name": "Fitzcarraldo Editions",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "fitzcarraldo",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://fitzcarraldoeditions.com/news/",
+      "format": "html",
+      "language": "en-US",
+      "finds": 9,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://fitzcarraldoeditions.com/2026/06/independent-bookshop-week-2026-at-lala-books-camberwell/",
+        "title": "NEWS 11.06.2026 Independent Bookshop Week 2026 at Lala Books, Camberwell Read more...",
+        "detailHeadline": "Independent Bookshop Week 2026 at Lala Books, Camberwell",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:47:53.209Z"
+      },
+      "evidence": "reports/r10/sources/fitzcarraldo.json"
+    },
+    {
+      "sourceId": "virago",
+      "name": "Virago",
+      "countryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "hachette-livre",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.virago.co.uk/category/virago-news/",
+      "format": "html",
+      "language": "en-US",
+      "finds": 4,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.virago.co.uk/virago-news/2026/08/26/five-australian-classics/",
+        "title": "Five Australian Classics",
+        "detailHeadline": "Five Australian Classics",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:56:32.286Z"
+      },
+      "evidence": "reports/r10/sources/virago.json"
+    },
+    {
+      "sourceId": "john-murray",
+      "name": "John Murray",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "john-murray",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a retail giveaway; a genuine literary news representative remains required.",
+      "endpoint": "https://www.johnmurraypress.co.uk/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/john-murray.json"
+    },
+    {
+      "sourceId": "hachette-book-group",
+      "name": "Hachette Book Group",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "hachette-livre",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.hachettebookgroup.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 49,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.hachettebookgroup.com/raising-readers/hachette-book-group-named-finalist-in-ragans-2026-zenith-awards-for-raising-readers-social-impact-campaign/",
+        "title": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+        "detailHeadline": "Hachette Book Group Named Finalist in Ragan’s 2026 Zenith Awards for Raising Readers Social Impact Campaign",
+        "sourcePublishedAt": "2026-09-28T13:34:55.000Z",
+        "observedAt": "2026-10-01T20:56:33.996Z"
+      },
+      "evidence": "reports/r10/sources/hachette-book-group.json"
+    },
+    {
+      "sourceId": "tor-publishing",
+      "name": "Tor Publishing Group",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "tor-publishing",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "external_redirect:https://us.macmillan.com",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/tor-publishing.json"
+    },
+    {
+      "sourceId": "harpercollins-india",
+      "name": "HarperCollins India",
+      "countryCodes": [
+        "IN"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "harpercollins-india",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://harpercollins.co.in/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://harpercollins.co.in/blog/top-nutrition-and-wellbeing-books-for-indian-readers/",
+        "title": "Top nutrition and wellbeing books for Indian readers",
+        "detailHeadline": "Top nutrition and wellbeing books for Indian readers - HarperCollins",
+        "sourcePublishedAt": "2026-09-16T07:11:51.000Z",
+        "observedAt": "2026-10-01T20:48:03.411Z"
+      },
+      "evidence": "reports/r10/sources/harpercollins-india.json"
+    },
+    {
+      "sourceId": "penguin-india",
+      "name": "Penguin India",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "penguin-india",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_406",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/penguin-india.json"
+    },
+    {
+      "sourceId": "juggernaut-books",
+      "name": "Juggernaut Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "juggernaut-books",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/juggernaut-books.json"
+    },
+    {
+      "sourceId": "knopf-doubleday",
+      "name": "Knopf Doubleday",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "knopf-doubleday",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/knopf-doubleday.json"
+    },
+    {
+      "sourceId": "nyrb",
+      "name": "New York Review Books",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "nyrb",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.nyrb.com/blogs/nyrb-news",
+      "format": "html",
+      "language": "en",
+      "finds": 8,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.nyrb.com/blogs/nyrb-news/2026-pen-translation-prize-winner-minna-zallman-proctors-translation-of-the-leucothea-dialogues",
+        "title": "2026 PEN Translation Prize winner: Minna Zallman Proctor's translation of 'The Leucothea Dialogues'",
+        "detailHeadline": "2026 PEN Translation Prize winner: Minna Zallman Proctor's translation",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:47:56.100Z"
+      },
+      "evidence": "reports/r10/sources/nyrb.json"
+    },
+    {
+      "sourceId": "new-directions",
+      "name": "New Directions",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "new-directions",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/new-directions.json"
+    },
+    {
+      "sourceId": "graywolf-press",
+      "name": "Graywolf Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "graywolf-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/graywolf-press.json"
+    },
+    {
+      "sourceId": "coffee-house-press",
+      "name": "Coffee House Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "coffee-house-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://coffeehousepress.org/blogs/news",
+      "format": "html",
+      "language": "en",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://coffeehousepress.org/blogs/news/brian-evenson-named-a-finalist-for-the-2025-world-fantasy-awards",
+        "title": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+        "detailHeadline": "Good Night, Sleep Tight Named a Finalist for the 2025 World Fantasy Awards!",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:47:58.005Z"
+      },
+      "evidence": "reports/r10/sources/coffee-house-press.json"
+    },
+    {
+      "sourceId": "milkweed-editions",
+      "name": "Milkweed Editions",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "milkweed-editions",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/milkweed-editions.json"
+    },
+    {
+      "sourceId": "tin-house",
+      "name": "Tin House",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "tin-house",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "external_redirect:https://zandoprojects.com",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/tin-house.json"
+    },
+    {
+      "sourceId": "melville-house",
+      "name": "Melville House",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "melville-house",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/melville-house.json"
+    },
+    {
+      "sourceId": "europa-editions",
+      "name": "Europa Editions",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "europa-editions",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.europaeditions.com/news",
+      "format": "html",
+      "language": "en",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.europaeditions.com/news/2674/passengers-longlisted-for-the-national-book-award",
+        "title": "Passengers Longlisted for the National Book Award",
+        "detailHeadline": "Volumes",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:00.955Z"
+      },
+      "evidence": "reports/r10/sources/europa-editions.json"
+    },
+    {
+      "sourceId": "restless-books",
+      "name": "Restless Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "restless-books",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/restless-books.json"
+    },
+    {
+      "sourceId": "pushkin-press",
+      "name": "Pushkin Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "pushkin-press",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a contractor recruitment notice, not literary news.",
+      "endpoint": "https://pushkinpress.com/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/pushkin-press.json"
+    },
+    {
+      "sourceId": "peirene-press",
+      "name": "Peirene Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "peirene-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/peirene-press.json"
+    },
+    {
+      "sourceId": "galley-beggar",
+      "name": "Galley Beggar Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "galley-beggar",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/galley-beggar.json"
+    },
+    {
+      "sourceId": "saraband",
+      "name": "Saraband",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "saraband",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://saraband.net/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://saraband.net/2026/03/04/debut-author-rozie-kellys-kingfisher-longlisted-for-the-womens-prize-for-fiction-2026/",
+        "title": "Debut author Rozie Kelly’s Kingfisher longlisted for the Women’s Prize for Fiction 2026",
+        "detailHeadline": "Debut author Rozie Kelly’s Kingfisher longlisted for the Women’s Prize for Fiction 2026",
+        "sourcePublishedAt": "2026-03-04T14:14:57.000Z",
+        "observedAt": "2026-10-01T20:48:04.432Z"
+      },
+      "evidence": "reports/r10/sources/saraband.json"
+    },
+    {
+      "sourceId": "salt-publishing",
+      "name": "Salt Publishing",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "salt-publishing",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/salt-publishing.json"
+    },
+    {
+      "sourceId": "comma-press",
+      "name": "Comma Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "comma-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://commapress.co.uk/",
+      "format": "html",
+      "language": "en",
+      "finds": 19,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://commapress.co.uk/news/comma-press-opens-dinesh-allirajah-prize-2027-submissions",
+        "title": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+        "detailHeadline": "Comma Press opens Dinesh Allirajah Prize 2027 Submissions",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:04.859Z"
+      },
+      "evidence": "reports/r10/sources/comma-press.json"
+    },
+    {
+      "sourceId": "editions-verdier",
+      "name": "Editions Verdier",
+      "countryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "editions-verdier",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://editions-verdier.fr/feed/",
+      "format": "rss",
+      "language": "fr-FR",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://editions-verdier.fr/2026/09/21/la-croix-18-septembre-2026-par-isaure-hiace/",
+        "title": "La Croix, 18 septembre 2026, par Isaure Hiace",
+        "detailHeadline": "La Croix, 18 septembre 2026, par Isaure Hiace",
+        "sourcePublishedAt": "2026-09-21T12:40:51.000Z",
+        "observedAt": "2026-10-01T20:48:06.695Z"
+      },
+      "evidence": "reports/r10/sources/editions-verdier.json"
+    },
+    {
+      "sourceId": "editions-metailie",
+      "name": "Editions Métailié",
+      "countryCodes": [
+        "FR"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "editions-metailie",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://editions-metailie.com/feed/",
+      "format": "rss",
+      "language": "fr-FR",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://editions-metailie.com/chronique/lhumanite/",
+        "title": "L'Humanité",
+        "detailHeadline": "L'Humanité - Editions Métailié",
+        "sourcePublishedAt": "2020-04-29T15:33:06.000Z",
+        "observedAt": "2026-10-01T20:48:05.540Z"
+      },
+      "evidence": "reports/r10/sources/editions-metailie.json"
+    },
+    {
+      "sourceId": "zulma",
+      "name": "Zulma",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "zulma",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/zulma.json"
+    },
+    {
+      "sourceId": "le-tripode",
+      "name": "Le Tripode",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "le-tripode",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a book catalogue record, not a news article.",
+      "endpoint": "https://le-tripode.net/",
+      "format": "html",
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/le-tripode.json"
+    },
+    {
+      "sourceId": "quidam-editeur",
+      "name": "Quidam Editeur",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "quidam-editeur",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.quidamediteur.com/actus",
+      "format": "html",
+      "language": "fr",
+      "finds": 3,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.quidamediteur.com/actus/lili",
+        "title": "Les 18-19-20 septembre, Quidam est à Lisons Libres, salon des éditeurs indépendants d'Île-de-France. C'est à la Halle des Blancs Manteaux. Stand 29-30. Jane Sautièe y sera en dédicace dimanche vers 16h.",
+        "detailHeadline": "Les 18-19-20 septembre, Quidam est à Lisons Libres, salon des éditeurs indépendants d'Île-de-France. C'est à la Halle des Blancs Manteaux. Stand 29-30. Jane Sautièe y sera en dédicace dimanche vers 16h.",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:07.182Z"
+      },
+      "evidence": "reports/r10/sources/quidam-editeur.json"
+    },
+    {
+      "sourceId": "finitude",
+      "name": "Finitude",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "finitude",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/finitude.json"
+    },
+    {
+      "sourceId": "anagrama",
+      "name": "Anagrama",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "anagrama",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.anagrama-ed.es/",
+      "format": "html",
+      "language": "es",
+      "finds": 7,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.anagrama-ed.es/noticias/general/trece-tachas-halladas-detras-de-una-novela-1694",
+        "title": "Trece tachas halladas detrás de una novela, por Ernesto Carrión",
+        "detailHeadline": "Trece tachas halladas detrás de una novela",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:07.653Z"
+      },
+      "evidence": "reports/r10/sources/anagrama.json"
+    },
+    {
+      "sourceId": "libros-asteroide",
+      "name": "Libros del Asteroide",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "libros-asteroide",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://librosdelasteroide.com/",
+      "format": "html",
+      "language": "es",
+      "finds": 9,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://librosdelasteroide.com/actualidad-asteroide/440/tierra-la-nueva-novela-de-maggie-ofarrell-llegara-a-librerias-el-1-de-febrero-de-2027",
+        "title": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+        "detailHeadline": "«Tierra», la nueva novela de Maggie O’Farrell, llegará a librerías el 1 de febrero de 2027",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:08.444Z"
+      },
+      "evidence": "reports/r10/sources/libros-asteroide.json"
+    },
+    {
+      "sourceId": "impedimenta",
+      "name": "Impedimenta",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "impedimenta",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://impedimenta.es/feed",
+      "format": "rss",
+      "language": "es",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://impedimenta.es/archivos/38218",
+        "title": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras - ELLE - 30 de septiembre 2026",
+        "detailHeadline": "Soy jefa de Cultura, he leído 14 libros en septiembre y estas son las 4 novelas que voy a recomendar a mis amigas más lectoras - ELLE - 30 de septiembre 2026 - Impedimenta",
+        "sourcePublishedAt": "2026-10-01T09:26:18.000Z",
+        "observedAt": "2026-10-01T20:48:10.496Z"
+      },
+      "evidence": "reports/r10/sources/impedimenta.json"
+    },
+    {
+      "sourceId": "paginas-espuma",
+      "name": "Páginas de Espuma",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "paginas-espuma",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "es",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/paginas-espuma.json"
+    },
+    {
+      "sourceId": "nordica-libros",
+      "name": "Nórdica Libros",
+      "countryCodes": [
+        "ES"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "nordica-libros",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://nordicalibros.com/feed/",
+      "format": "rss",
+      "language": "es",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://nordicalibros.com/las-tres-recomendaciones-para-la-feria-del-libro-de-madrid/",
+        "title": "Las tres recomendaciones para la Feria del Libro de Madrid",
+        "detailHeadline": "Las tres recomendaciones para la Feria del Libro de Madrid - Nórdica Libros",
+        "sourcePublishedAt": "2024-06-03T09:36:29.000Z",
+        "observedAt": "2026-10-01T20:48:22.027Z"
+      },
+      "evidence": "reports/r10/sources/nordica-libros.json"
+    },
+    {
+      "sourceId": "sexto-piso",
+      "name": "Sexto Piso",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "sexto-piso",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "es",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/sexto-piso.json"
+    },
+    {
+      "sourceId": "suhrkamp",
+      "name": "Suhrkamp",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "suhrkamp",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/suhrkamp.json"
+    },
+    {
+      "sourceId": "hanser",
+      "name": "Hanser",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "hanser",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/hanser.json"
+    },
+    {
+      "sourceId": "aufbau",
+      "name": "Aufbau",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "aufbau",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.aufbau-verlage.de/pressemitteilungen",
+      "format": "html",
+      "language": "de",
+      "finds": 13,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.aufbau-verlage.de/aufbau-audio/deutscher-hoerbuchpreis-2026-0",
+        "title": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+        "detailHeadline": "Sprecherin Anja Herden erhält den Deutschen Hörbuchpreis 2026",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:12.795Z"
+      },
+      "evidence": "reports/r10/sources/aufbau.json"
+    },
+    {
+      "sourceId": "wagenbach",
+      "name": "Wagenbach",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "wagenbach",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/wagenbach.json"
+    },
+    {
+      "sourceId": "wallstein",
+      "name": "Wallstein",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "wallstein",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/wallstein.json"
+    },
+    {
+      "sourceId": "klett-cotta",
+      "name": "Klett-Cotta",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "klett-cotta",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.klett-cotta.de/aktuelles/news-c-106",
+      "format": "html",
+      "language": "de",
+      "finds": 12,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.klett-cotta.de/beitrag/georg-buechner-preis-2025-fuer-ursula-krechel-b-342",
+        "title": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+        "detailHeadline": "Georg-Büchner-Preis 2025 für Ursula Krechel",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:15.993Z"
+      },
+      "evidence": "reports/r10/sources/klett-cotta.json"
+    },
+    {
+      "sourceId": "edizioni-sur",
+      "name": "Edizioni Sur",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "edizioni-sur",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a product record with WebPage metadata, not a news article.",
+      "endpoint": "https://www.edizionisur.it/",
+      "format": "html",
+      "language": "it-IT",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/edizioni-sur.json"
+    },
+    {
+      "sourceId": "minimum-fax",
+      "name": "Minimum Fax",
+      "countryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "minimum-fax",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.minimumfax.com/#",
+      "format": "html",
+      "language": "it-IT",
+      "finds": 2,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.minimumfax.com/event/giuseppe-de-marzo-a-roma-2026-10-08-2130",
+        "title": "08 ott Giuseppe De Marzo a Roma H 18:30 Roma Biblioteca Goffredo Mameli",
+        "detailHeadline": "Giuseppe De Marzo a Roma",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:18.653Z"
+      },
+      "evidence": "reports/r10/sources/minimum-fax.json"
+    },
+    {
+      "sourceId": "iperborea",
+      "name": "Iperborea",
+      "countryCodes": [
+        "IT"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "iperborea",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://iperborea.com/news/",
+      "format": "html",
+      "language": "it",
+      "finds": 11,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://iperborea.com/news/992/premio-orbil-2026-a-lotte-pelomatto/",
+        "title": "PREMIO ORBIL 2026 A «LOTTE PELOMATTO»",
+        "detailHeadline": "PREMIO ORBIL 2026 A «LOTTE PELOMATTO»",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:17.795Z"
+      },
+      "evidence": "reports/r10/sources/iperborea.json"
+    },
+    {
+      "sourceId": "nottetempo",
+      "name": "Nottetempo",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "nottetempo",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.edizioninottetempo.it/",
+      "format": "html",
+      "language": "it",
+      "finds": 23,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.edizioninottetempo.it/it/newspost/nottetempo-a-pi-libri-pi-liberi-2025",
+        "title": "nottetempo a Più libri più liberi 2025",
+        "detailHeadline": "nottetempo a Più libri più liberi 2025",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:20.638Z"
+      },
+      "evidence": "reports/r10/sources/nottetempo.json"
+    },
+    {
+      "sourceId": "cossee",
+      "name": "Cossee",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "cossee",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "external_redirect:http://www.uitgeverijcossee.nl",
+      "endpoint": null,
+      "format": null,
+      "language": "nl",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/cossee.json"
+    },
+    {
+      "sourceId": "van-oorschot",
+      "name": "Van Oorschot",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "van-oorschot",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "nl",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/van-oorschot.json"
+    },
+    {
+      "sourceId": "atlas-contact",
+      "name": "Atlas Contact",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "atlas-contact",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "nl",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/atlas-contact.json"
+    },
+    {
+      "sourceId": "querido",
+      "name": "Querido",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "querido",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "nl",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/querido.json"
+    },
+    {
+      "sourceId": "uitgeverij-vrijdag",
+      "name": "Uitgeverij Vrijdag",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "uitgeverij-vrijdag",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "external_redirect:https://www.pelckmansuitgevers.be",
+      "endpoint": null,
+      "format": null,
+      "language": "nl",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/uitgeverij-vrijdag.json"
+    },
+    {
+      "sourceId": "relogio-dagua",
+      "name": "Relógio d’Água",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "relogio-dagua",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "pt",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/relogio-dagua.json"
+    },
+    {
+      "sourceId": "bookhug",
+      "name": "Book*hug Press",
+      "countryCodes": [
+        "CA"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "bookhug",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://bookhugpress.ca/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://bookhugpress.ca/bookhug-wrapped-2025-authors-edition/",
+        "title": "Book*hug Wrapped 2025: Author’s Edition",
+        "detailHeadline": "Book*hug Wrapped 2025: Author’s Edition | Book*hug Press",
+        "sourcePublishedAt": "2025-12-10T20:02:47.000Z",
+        "observedAt": "2026-10-01T20:48:32.347Z"
+      },
+      "evidence": "reports/r10/sources/bookhug.json"
+    },
+    {
+      "sourceId": "arsenal-pulp",
+      "name": "Arsenal Pulp Press",
+      "countryCodes": [
+        "CA"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "arsenal-pulp",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://arsenalpulp.com/News",
+      "format": "html",
+      "language": "en",
+      "finds": 11,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://arsenalpulp.com/News/2026/BC-and-Yukon-Book-Prize-winners-Amber-Dawn-Lea-Taranto-and-L.E.-Fox",
+        "title": "BC and Yukon Book Prize winners: Amber Dawn, Léa Taranto and L.E. Fox",
+        "detailHeadline": "BC and Yukon Book Prize winners: Amber Dawn, Léa Taranto and L.E. Fox",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:23.677Z"
+      },
+      "evidence": "reports/r10/sources/arsenal-pulp.json"
+    },
+    {
+      "sourceId": "text-publishing",
+      "name": "Text Publishing",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "text-publishing",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_406",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/text-publishing.json"
+    },
+    {
+      "sourceId": "scribe-publications",
+      "name": "Scribe Publications",
+      "countryCodes": [
+        "AU"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "scribe-publications",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://scribepublications.com.au/news",
+      "format": "html",
+      "language": "en",
+      "finds": 25,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://scribepublications.com.au/news/night-of-a-thousand-hells-is-longlisted-for-the-2026-translated-literature-national-book-award",
+        "title": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+        "detailHeadline": "Night of a Thousand Hells is longlisted for the 2026 Translated Literature National Book Award",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:28.893Z"
+      },
+      "evidence": "reports/r10/sources/scribe-publications.json"
+    },
+    {
+      "sourceId": "uqp",
+      "name": "University of Queensland Press",
+      "countryCodes": [
+        "AU"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "uqp",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.uqp.com.au/",
+      "format": "html",
+      "language": "en",
+      "finds": 29,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.uqp.com.au/blog/uqp-authors-shortlisted-for-the-2026-south-australian-literary-awards",
+        "title": "UQP Authors Shortlisted for the 2026 South Australian Literary Awards",
+        "detailHeadline": "UQP Authors Shortlisted for the 2026 South Australian Literary Awards",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:32.622Z"
+      },
+      "evidence": "reports/r10/sources/uqp.json"
+    },
+    {
+      "sourceId": "fremantle-press",
+      "name": "Fremantle Press",
+      "countryCodes": [
+        "AU"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "fremantle-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://fremantlepress.com.au/feed/",
+      "format": "rss",
+      "language": "en-AU",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://fremantlepress.com.au/2026/09/23/names-of-a-hare-one-leap-closer-to-the-2026-hnsa-award-for-adult-fiction/",
+        "title": "Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction",
+        "detailHeadline": "Names of a Hare one leap closer to the 2026 HNSA Award for Adult Fiction",
+        "sourcePublishedAt": "2026-09-23T06:46:45.000Z",
+        "observedAt": "2026-10-01T20:48:40.433Z"
+      },
+      "evidence": "reports/r10/sources/fremantle-press.json"
+    },
+    {
+      "sourceId": "spinifex-press",
+      "name": "Spinifex Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "spinifex-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.spinifexpress.com.au/",
+      "format": "html",
+      "language": "en-GB",
+      "finds": 27,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.spinifexpress.com.au/events/over-the-rainbow-online-book-launch-with-sall-grover",
+        "title": "Over the Rainbow Online Book Launch with Sall Grover",
+        "detailHeadline": "Over the Rainbow Online Book Launch with Sall Grover",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:33.745Z"
+      },
+      "evidence": "reports/r10/sources/spinifex-press.json"
+    },
+    {
+      "sourceId": "czechlit",
+      "name": "Czech Literary Centre",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "czechlit",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.czechlit.cz/en/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.czechlit.cz/en/results-support-for-foreign-translations-of-czech-literature/",
+        "title": "Results: Support for foreign translations of Czech literature",
+        "detailHeadline": "Results: Support for foreign translations of Czech literature",
+        "sourcePublishedAt": "2026-09-01T12:00:36.000Z",
+        "observedAt": "2026-10-01T20:48:34.126Z"
+      },
+      "evidence": "reports/r10/sources/czechlit.json"
+    },
+    {
+      "sourceId": "litcentrum",
+      "name": "Slovak Literary Centre",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "litcentrum",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "fetch failed",
+      "endpoint": null,
+      "format": null,
+      "language": "sk",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/litcentrum.json"
+    },
+    {
+      "sourceId": "vbz",
+      "name": "V.B.Z.",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "vbz",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a retail discount campaign; book news requires a narrower endpoint.",
+      "endpoint": "https://www.vbz.hr/novosti/",
+      "format": "html",
+      "language": "hr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/vbz.json"
+    },
+    {
+      "sourceId": "laguna",
+      "name": "Laguna",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "laguna",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a retail discount campaign; book news requires a narrower endpoint.",
+      "endpoint": "https://laguna.rs/rss/blogs/",
+      "format": "rss",
+      "language": "sr-RS",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/laguna.json"
+    },
+    {
+      "sourceId": "polirom-blog",
+      "name": "Polirom",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "polirom-blog",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "getaddrinfo ENOTFOUND blog.polirom.ro",
+      "endpoint": null,
+      "format": null,
+      "language": "ro",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/polirom-blog.json"
+    },
+    {
+      "sourceId": "colibri",
+      "name": "Colibri",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "colibri",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "bg",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/colibri.json"
+    },
+    {
+      "sourceId": "otava",
+      "name": "Otava",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "otava",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "fi",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/otava.json"
+    },
+    {
+      "sourceId": "wsoy",
+      "name": "WSOY",
+      "countryCodes": [
+        "FI"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "wsoy",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.wsoy.fi/",
+      "format": "html",
+      "language": "fi",
+      "finds": 9,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.wsoy.fi/artikkelit/wsoyn-syksyn-2026-kirjat-on-julkistettu/",
+        "title": "WSOY:n syksyn 2026 kirjat on julkistettu",
+        "detailHeadline": "WSOY:n syksyn 2026 kirjat on julkistettu",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:38.675Z"
+      },
+      "evidence": "reports/r10/sources/wsoy.json"
+    },
+    {
+      "sourceId": "ordfront",
+      "name": "Ordfront",
+      "countryCodes": [
+        "SE"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "ordfront",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://ordfrontforlag.se/feed/podcast/ordfronten/",
+      "format": "rss",
+      "language": "sv-SE",
+      "finds": 50,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://ordfrontforlag.se/podcast/kvinnor-skulle-inte-ens-ga-ut-pa-stan-ensamma-an-mindre-resa/",
+        "title": "”Kvinnor skulle inte ens gå ut på stan ensamma - än mindre resa”",
+        "detailHeadline": "”Kvinnor skulle inte ens gå ut på stan ensamma - än mindre resa”",
+        "sourcePublishedAt": "2025-06-27T10:50:47.000Z",
+        "observedAt": "2026-10-01T20:48:39.616Z"
+      },
+      "evidence": "reports/r10/sources/ordfront.json"
+    },
+    {
+      "sourceId": "ikaros",
+      "name": "Ikaros",
+      "countryCodes": [
+        "GR"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "ikaros",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://ikarosbooks.gr/el/",
+      "format": "html",
+      "language": "el",
+      "finds": 7,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://ikarosbooks.gr/el/news/prosekheis-ekdoseis-septembrios-dekembrios-2026/",
+        "title": "Προσεχείς Εκδόσεις | Σεπτέμβριος - Δεκέμβριος 2026",
+        "detailHeadline": "Προσεχείς Εκδόσεις | Σεπτέμβριος - Δεκέμβριος 2026",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:40.630Z"
+      },
+      "evidence": "reports/r10/sources/ikaros.json"
+    },
+    {
+      "sourceId": "metis-kitap",
+      "name": "Metis Kitap",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "metis-kitap",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "tr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/metis-kitap.json"
+    },
+    {
+      "sourceId": "hong-kong-literary-festival",
+      "name": "Hong Kong International Literary Festival",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "hong-kong-literary-festival",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/hong-kong-literary-festival.json"
+    },
+    {
+      "sourceId": "openbook-taiwan",
+      "name": "Openbook",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "openbook-taiwan",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "zh",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/openbook-taiwan.json"
+    },
+    {
+      "sourceId": "gramedia-blog",
+      "name": "Gramedia",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "gramedia-blog",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is an unrelated film article without an evidenced book relation.",
+      "endpoint": "https://www.gramedia.com/blog/rss/",
+      "format": "rss",
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/gramedia-blog.json"
+    },
+    {
+      "sourceId": "mizan",
+      "name": "Mizan",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "mizan",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "id",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/mizan.json"
+    },
+    {
+      "sourceId": "adarna",
+      "name": "Adarna House",
+      "countryCodes": [
+        "PH"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "adarna",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://adarna.com.ph/",
+      "format": "html",
+      "language": "en",
+      "finds": 24,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://adarna.com.ph/blogs/kuwentong-adarna/adarna-house-goes-to-frankfurt-book-fair-2025",
+        "title": "Adarna House Goes to Frankfurt Book Fair 2025",
+        "detailHeadline": "Adarna House Goes to Frankfurt Book Fair 2025",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:43.686Z"
+      },
+      "evidence": "reports/r10/sources/adarna.json"
+    },
+    {
+      "sourceId": "ateneo-press",
+      "name": "Ateneo de Manila University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "ateneo-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/ateneo-press.json"
+    },
+    {
+      "sourceId": "anvil-publishing",
+      "name": "Anvil Publishing",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "anvil-publishing",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/anvil-publishing.json"
+    },
+    {
+      "sourceId": "women-prize",
+      "name": "Women’s Prize for Fiction",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "women-prize",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://womensprize.com/",
+      "format": "html",
+      "language": "en-US",
+      "finds": 6,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://womensprize.com/event/write-like-a-reader-with-daisy-buchanan/",
+        "title": "Write like a Reader with Daisy Buchanan - SOLD OUT",
+        "detailHeadline": "Write like a Reader with Daisy Buchanan - SOLD OUT",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:47.357Z"
+      },
+      "evidence": "reports/r10/sources/women-prize.json"
+    },
+    {
+      "sourceId": "dublin-literary-award",
+      "name": "Dublin Literary Award",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "dublin-literary-award",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/dublin-literary-award.json"
+    },
+    {
+      "sourceId": "tsa-prize",
+      "name": "The Society of Authors",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "tsa-prize",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/tsa-prize.json"
+    },
+    {
+      "sourceId": "booker-new-media",
+      "name": "The Bookseller",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "booker-new-media",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.thebookseller.com/Syndication/DF.cfm?f=7&ft=10",
+      "format": "rss",
+      "language": "en",
+      "finds": 20,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.thebookseller.com/news/baillie-gifford-prize-for-non-fiction-reveals-2026-shortlist",
+        "title": "Baillie Gifford Prize for Non-Fiction reveals 2026 shortlist",
+        "detailHeadline": "Baillie Gifford Prize for Non-Fiction reveals 2026 shortlist",
+        "sourcePublishedAt": "2026-10-01T09:00:49.000Z",
+        "observedAt": "2026-10-01T20:48:48.049Z"
+      },
+      "evidence": "reports/r10/sources/booker-new-media.json"
+    },
+    {
+      "sourceId": "literary-review",
+      "name": "Literary Review",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literary-review",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/literary-review.json"
+    },
+    {
+      "sourceId": "bookbrunch",
+      "name": "BookBrunch",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "bookbrunch",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.bookbrunch.co.uk/#",
+      "format": "html",
+      "language": "en",
+      "finds": 11,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.bookbrunch.co.uk/page/article-detail/baillie-gifford-prize-announces-eclectic-charismatic-2026-shortlist",
+        "title": "Baillie Gifford Prize announces...",
+        "detailHeadline": "Baillie Gifford Prize announces ‘eclectic, charismatic’ 2026 shortlist",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:49.618Z"
+      },
+      "evidence": "reports/r10/sources/bookbrunch.json"
+    },
+    {
+      "sourceId": "russian-pen",
+      "name": "Русский ПЕН-центр",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "russian-pen",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "fetch failed",
+      "endpoint": null,
+      "format": null,
+      "language": "ru",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/russian-pen.json"
+    },
+    {
+      "sourceId": "big-book-award",
+      "name": "Большая книга",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "big-book-award",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://bigbook.ru/novosti",
+      "format": "html",
+      "language": "ru-RU",
+      "finds": 11,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://bigbook.ru/novosti/natsionalnaya-literaturnaya-premiya-bolshaya-kniga-obyavila-spisok-finalistov-xxi-sezona",
+        "title": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+        "detailHeadline": "Национальная литературная премия «Большая книга» объявила список финалистов XXI сезона",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:51.439Z"
+      },
+      "evidence": "reports/r10/sources/big-book-award.json"
+    },
+    {
+      "sourceId": "yasnaya-polyana-award",
+      "name": "Премия Ясная Поляна",
+      "countryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "yasnaya-polyana-award",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.yppremia.ru/news",
+      "format": "html",
+      "language": "ru",
+      "finds": 9,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.yppremia.ru/news/besplatny-dostup-k-knigam-finalistov-2026",
+        "title": "Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна»",
+        "detailHeadline": "17 Сентября 2026 Литрес открывает бесплатный доступ к книгам финалистов 24-го сезона премии «Ясная Поляна»",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:49.031Z"
+      },
+      "evidence": "reports/r10/sources/yasnaya-polyana-award.json"
+    },
+    {
+      "sourceId": "prosodia",
+      "name": "Prosodia",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "prosodia",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "ru",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/prosodia.json"
+    },
+    {
+      "sourceId": "voprosy-literatury",
+      "name": "Вопросы литературы",
+      "countryCodes": [
+        "RU"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "voprosy-literatury",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://voplit.ru/category/events/",
+      "format": "html",
+      "language": "ru-RU",
+      "finds": 28,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://voplit.ru/2023/12/28/legkaya-kavaleriya-uchrezhdaet-ezhegodnuyu-premiyu-tri-bogatyrya/",
+        "title": "События «Легкая кавалерия» учреждает ежегодную премию «Три богатыря» Премия присуждается за лучшие публикации в рубрике «Легкая кавалерия» в течение года. Номинации премии «Три богатыря»: «Алеша Попович» - для начинающих критиков, «Никита Добрынич» - для продолжающих, «Илья Муромец» - для опытных. Жюри премии - редакция журнала «Вопросы литературы». Председатель жюри - Игорь Олегович Шайтанов.",
+        "detailHeadline": "«Легкая кавалерия» учреждает ежегодную премию «Три богатыря» - Вопросы литературы",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:48:50.923Z"
+      },
+      "evidence": "reports/r10/sources/voprosy-literatury.json"
+    },
+    {
+      "sourceId": "zvezda-journal",
+      "name": "Звезда",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "zvezda-journal",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "ru",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/zvezda-journal.json"
+    },
+    {
+      "sourceId": "uc-press",
+      "name": "University of California Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "uc-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/uc-press.json"
+    },
+    {
+      "sourceId": "mit-press",
+      "name": "MIT Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "mit-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/mit-press.json"
+    },
+    {
+      "sourceId": "yale-press",
+      "name": "Yale University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "yale-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/yale-press.json"
+    },
+    {
+      "sourceId": "harvard-press-blog",
+      "name": "Harvard University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "harvard-press-blog",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "getaddrinfo ENOTFOUND blog.hup.harvard.edu",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/harvard-press-blog.json"
+    },
+    {
+      "sourceId": "duke-press-blog",
+      "name": "Duke University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "duke-press-blog",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://dukeupress.wordpress.com/feed/",
+      "format": "rss",
+      "language": "en",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://dukeupress.wordpress.com/2026/10/01/new-books-in-october-12/",
+        "title": "New Books in October",
+        "detailHeadline": "New Books in October",
+        "sourcePublishedAt": "2026-10-01T12:00:00.000Z",
+        "observedAt": "2026-10-01T20:56:30.248Z"
+      },
+      "evidence": "reports/r10/sources/duke-press-blog.json"
+    },
+    {
+      "sourceId": "columbia-press-blog",
+      "name": "Columbia University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "columbia-press-blog",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/columbia-press-blog.json"
+    },
+    {
+      "sourceId": "oxford-press-blog",
+      "name": "Oxford University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "oxford-press-blog",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a law-teaching discussion without an evidenced literary news relation.",
+      "endpoint": "https://blog.oup.com/",
+      "format": "html",
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/oxford-press-blog.json"
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "name": "Cambridge University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "cambridge-press-blog",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://cambridgeblog.org/",
+      "format": "html",
+      "language": "en-US",
+      "finds": 21,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/",
+        "title": "NEW BOOK: Providence, Evil and Salvation: A Thomist Perspective",
+        "detailHeadline": "Providence, Evil and Salvation",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:51:40.190Z"
+      },
+      "evidence": "reports/r10/sources/cambridge-press-blog.json"
+    },
+    {
+      "sourceId": "manchester-press",
+      "name": "Manchester University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "manchester-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/manchester-press.json"
+    },
+    {
+      "sourceId": "edinburgh-press-blog",
+      "name": "Edinburgh University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "edinburgh-press-blog",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/edinburgh-press-blog.json"
+    },
+    {
+      "sourceId": "liverpool-press-blog",
+      "name": "Liverpool University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "liverpool-press-blog",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://liverpooluniversitypress.blog/feed/",
+      "format": "rss",
+      "language": "en",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://liverpooluniversitypress.blog/2026/10/01/announcing-our-2027-pavilion-poetry-collections/",
+        "title": "Announcing our 2027 Pavilion Poetry collections",
+        "detailHeadline": "Announcing our 2027 Pavilion Poetry collections",
+        "sourcePublishedAt": "2026-10-01T13:25:00.000Z",
+        "observedAt": "2026-10-01T20:56:30.233Z"
+      },
+      "evidence": "reports/r10/sources/liverpool-press-blog.json"
+    },
+    {
+      "sourceId": "bristol-press",
+      "name": "Bristol University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "bristol-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/bristol-press.json"
+    },
+    {
+      "sourceId": "minnesota-press",
+      "name": "University of Minnesota Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "minnesota-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/minnesota-press.json"
+    },
+    {
+      "sourceId": "unc-press-blog",
+      "name": "University of North Carolina Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "unc-press-blog",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://uncpressblog.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 12,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://uncpressblog.com/2026/09/25/qa-with-juan-mora-author-of-latinx-encounters/",
+        "title": "Q&A with Juan Mora, Author of Latinx Encounters",
+        "detailHeadline": "Q&A with Juan Mora, Author of Latinx Encounters - UNC Press Blog",
+        "sourcePublishedAt": "2026-09-25T20:42:53.000Z",
+        "observedAt": "2026-10-01T20:51:44.759Z"
+      },
+      "evidence": "reports/r10/sources/unc-press-blog.json"
+    },
+    {
+      "sourceId": "nebraska-press",
+      "name": "University of Nebraska Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "nebraska-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/nebraska-press.json"
+    },
+    {
+      "sourceId": "notre-dame-press",
+      "name": "University of Notre Dame Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "notre-dame-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/notre-dame-press.json"
+    },
+    {
+      "sourceId": "syracuse-press",
+      "name": "Syracuse University Press",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "syracuse-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://press.syr.edu/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://press.syr.edu/the-book-of-disappearance-is-longlisted-for-the-2025-international-booker-prize/",
+        "title": "“The Book of Disappearance” is longlisted for the 2025 International Booker Prize",
+        "detailHeadline": "“The Book of Disappearance” is longlisted for the 2025 International Booker Prize - Syracuse University Press",
+        "sourcePublishedAt": "2025-03-04T20:41:58.000Z",
+        "observedAt": "2026-10-01T20:51:43.934Z"
+      },
+      "evidence": "reports/r10/sources/syracuse-press.json"
+    },
+    {
+      "sourceId": "indiana-press",
+      "name": "Indiana University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "indiana-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/indiana-press.json"
+    },
+    {
+      "sourceId": "iowa-press",
+      "name": "University of Iowa Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "iowa-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/iowa-press.json"
+    },
+    {
+      "sourceId": "virginia-press",
+      "name": "University of Virginia Press",
+      "countryCodes": [
+        "US"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "virginia-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.upress.virginia.edu/",
+      "format": "html",
+      "language": "en",
+      "finds": 9,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.upress.virginia.edu/news/uva-press-announces-new-series-dis-place-ment-migration-and-social-justice/",
+        "title": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social JusticeThe University of Virginia Press is pleased to announce Dis(place)ment, Migration, and Social Justice, a new series that will publish the latest scholarship on forced relocation with a focus on...Continue Reading",
+        "detailHeadline": "UVA Press Announces New Series: Dis(place)ment, Migration, and Social Justice",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:51:45.083Z"
+      },
+      "evidence": "reports/r10/sources/virginia-press.json"
+    },
+    {
+      "sourceId": "penn-state-press",
+      "name": "Penn State University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "penn-state-press",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a catalogue record; a news-only endpoint remains required.",
+      "endpoint": "https://www.psupress.org/",
+      "format": "html",
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/penn-state-press.json"
+    },
+    {
+      "sourceId": "fordham-press",
+      "name": "Fordham University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "fordham-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/fordham-press.json"
+    },
+    {
+      "sourceId": "chicago-press",
+      "name": "University of Chicago Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "chicago-press",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a catalogue record; its generic date metadata does not establish news identity.",
+      "endpoint": "https://press.uchicago.edu/index.html",
+      "format": "html",
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/chicago-press.json"
+    },
+    {
+      "sourceId": "toronto-press",
+      "name": "University of Toronto Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "toronto-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://utorontopress.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://utorontopress.com/awards-2026/",
+        "title": "Explore Our Award-Winning Titles: Where Scholarship Meets Excellence",
+        "detailHeadline": "Explore Our Award-Winning Titles: Where Scholarship Meets Excellence",
+        "sourcePublishedAt": "2026-07-28T18:35:49.000Z",
+        "observedAt": "2026-10-01T20:51:46.110Z"
+      },
+      "evidence": "reports/r10/sources/toronto-press.json"
+    },
+    {
+      "sourceId": "ubc-press",
+      "name": "UBC Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "ubc-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/ubc-press.json"
+    },
+    {
+      "sourceId": "mcgill-queens-press",
+      "name": "McGill-Queen’s University Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "mcgill-queens-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/mcgill-queens-press.json"
+    },
+    {
+      "sourceId": "peter-owen",
+      "name": "Peter Owen",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "peter-owen",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "external_redirect:https://xoilaczvc.cc",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/peter-owen.json"
+    },
+    {
+      "sourceId": "dedalus-books",
+      "name": "Dedalus Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "dedalus-books",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/dedalus-books.json"
+    },
+    {
+      "sourceId": "valancourt",
+      "name": "Valancourt Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "valancourt",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/valancourt.json"
+    },
+    {
+      "sourceId": "world-literature-today",
+      "name": "World Literature Today",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "world-literature-today",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://worldliteraturetoday.org/weekly",
+      "format": "html",
+      "language": "en",
+      "finds": 15,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://worldliteraturetoday.org/blog/news-and-events/elizabeth-acevedo-wins-nsk-neustadt-prize-childrens-and-young-adult-literature",
+        "title": "Elizabeth Acevedo Wins NSK Neustadt Prize for Children’s and Young Adult Literature",
+        "detailHeadline": "Elizabeth Acevedo Wins NSK Neustadt Prize for Children’s and Young Adult Literature",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:51:49.501Z"
+      },
+      "evidence": "reports/r10/sources/world-literature-today.json"
+    },
+    {
+      "sourceId": "literary-translation-uk",
+      "name": "Literary Translation at the British Centre",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literary-translation-uk",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/literary-translation-uk.json"
+    },
+    {
+      "sourceId": "charco-press",
+      "name": "Charco Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "charco-press",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/charco-press.json"
+    },
+    {
+      "sourceId": "prototype-publishing",
+      "name": "Prototype",
+      "countryCodes": [
+        "GB"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "prototype-publishing",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://prototypepublishing.co.uk/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://prototypepublishing.co.uk/2026/04/13/free-verse-poetry-book-magazine-fair-2026/",
+        "title": "Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am-6.30pm, St Columba’s Hall",
+        "detailHeadline": "Free Verse Poetry Book & Magazine Fair 2026, Saturday 25 April, 11am-6.30pm, St Columba’s Hall - Prototype",
+        "sourcePublishedAt": "2026-04-13T05:45:23.000Z",
+        "observedAt": "2026-10-01T20:51:55.506Z"
+      },
+      "evidence": "reports/r10/sources/prototype-publishing.json"
+    },
+    {
+      "sourceId": "tilted-axis",
+      "name": "Tilted Axis Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "tilted-axis",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/tilted-axis.json"
+    },
+    {
+      "sourceId": "guernica-magazine",
+      "name": "Guernica",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "guernica-magazine",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.guernicamag.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 20,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.guernicamag.com/places-of-memory/",
+        "title": "Places of Memory: A Novel Excerpt",
+        "detailHeadline": "Andra Otilia Nicolescu",
+        "sourcePublishedAt": "2026-07-15T10:16:25.000Z",
+        "observedAt": "2026-10-01T20:51:51.132Z"
+      },
+      "evidence": "reports/r10/sources/guernica-magazine.json"
+    },
+    {
+      "sourceId": "asap-journal",
+      "name": "ASAP/Journal",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "asap-journal",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a visual art biennial review without an evidenced book relation.",
+      "endpoint": "https://asapjournal.com/",
+      "format": "html",
+      "language": "en-US",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/asap-journal.json"
+    },
+    {
+      "sourceId": "cleveland-review-books",
+      "name": "Cleveland Review of Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "cleveland-review-books",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://clereviewofbooks.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://clereviewofbooks.com/on-sean-thor-conroes-the-walk-book/",
+        "title": "Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book”",
+        "detailHeadline": "Backtracking Is Never the Move: On Sean Thor Conroe’s “The Walk Book”",
+        "sourcePublishedAt": "2026-10-01T12:48:47.000Z",
+        "observedAt": "2026-10-01T20:56:40.523Z"
+      },
+      "evidence": "reports/r10/sources/cleveland-review-books.json"
+    },
+    {
+      "sourceId": "public-books",
+      "name": "Public Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "public-books",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.publicbooks.org/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.publicbooks.org/the-poetics-of-social-forms-remembering-fredric-jameson-1934-2024/",
+        "title": "“The Poetics of Social Forms”: Remembering Fredric Jameson (1934-2024)",
+        "detailHeadline": "“The Poetics of Social Forms”: Remembering Fredric Jameson (1934-2024)",
+        "sourcePublishedAt": "2026-09-22T15:00:00.000Z",
+        "observedAt": "2026-10-01T20:51:52.721Z"
+      },
+      "evidence": "reports/r10/sources/public-books.json"
+    },
+    {
+      "sourceId": "bookforum",
+      "name": "Bookforum",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "bookforum",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/bookforum.json"
+    },
+    {
+      "sourceId": "revista-letras-libres",
+      "name": "Letras Libres",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "revista-letras-libres",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://letraslibres.com/feed/",
+      "format": "rss",
+      "language": "es",
+      "finds": 20,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://letraslibres.com/literatura/manuel-vilas-la-literatura-es-el-gran-idioma-comun-que-borra-todas-las-fronteras/01/10/2026/",
+        "title": "Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras”",
+        "detailHeadline": "Manuel Vilas: “La literatura es el gran idioma común que borra todas las fronteras”",
+        "sourcePublishedAt": "2026-10-01T08:21:31.000Z",
+        "observedAt": "2026-10-01T20:52:02.350Z"
+      },
+      "evidence": "reports/r10/sources/revista-letras-libres.json"
+    },
+    {
+      "sourceId": "revista-mercatto",
+      "name": "Mercurio",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "revista-mercatto",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.revistamercurio.es/feed/",
+      "format": "rss",
+      "language": "es",
+      "finds": 9,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.revistamercurio.es/2026/10/01/libros-de-la-semana-211/",
+        "title": "Libros de la semana #211",
+        "detailHeadline": "Libros de la semana #211",
+        "sourcePublishedAt": "2026-10-01T09:04:24.000Z",
+        "observedAt": "2026-10-01T20:51:56.902Z"
+      },
+      "evidence": "reports/r10/sources/revista-mercatto.json"
+    },
+    {
+      "sourceId": "jot-down-books",
+      "name": "Jot Down Cultural Magazine",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "jot-down-books",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_403",
+      "endpoint": null,
+      "format": null,
+      "language": "es",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/jot-down-books.json"
+    },
+    {
+      "sourceId": "page-libraires",
+      "name": "PAGE des libraires",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "page-libraires",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/page-libraires.json"
+    },
+    {
+      "sourceId": "remue-net",
+      "name": "Remue.net",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "remue-net",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/remue-net.json"
+    },
+    {
+      "sourceId": "revue-litteraire",
+      "name": "La Nouvelle Revue Française",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "revue-litteraire",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/revue-litteraire.json"
+    },
+    {
+      "sourceId": "revue-respiro",
+      "name": "Respiro",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "revue-respiro",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "no_literary_article_links",
+      "endpoint": null,
+      "format": null,
+      "language": "ro",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/revue-respiro.json"
+    },
+    {
+      "sourceId": "cultura-romania",
+      "name": "Cultura",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "cultura-romania",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://revistacultura.ro/feed/",
+      "format": "rss",
+      "language": "ro-RO",
+      "finds": 1,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://revistacultura.ro/imagini-lipova-inainte-si-dupa-mara-lui-slavici/",
+        "title": "Imagini. Lipova - înainte și după „Mara” lui Slavici",
+        "detailHeadline": "Imagini. Lipova - înainte și după „Mara” lui Slavici",
+        "sourcePublishedAt": "2026-10-01T15:48:33.000Z",
+        "observedAt": "2026-10-01T20:51:57.830Z"
+      },
+      "evidence": "reports/r10/sources/cultura-romania.json"
+    },
+    {
+      "sourceId": "observator-cultural",
+      "name": "Observator cultural",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "observator-cultural",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "ro",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/observator-cultural.json"
+    },
+    {
+      "sourceId": "liternet-bulgaria",
+      "name": "LiterNet",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "liternet-bulgaria",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://liternet.bg/publisher/rss",
+      "format": "rss",
+      "language": "bg",
+      "finds": 31,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://liternet.bg/publish11/p_antov/ivanisha.htm",
+        "title": "Пламен Антов. За романа \"Иваниша от Севера\" от Тихомир Тодоров",
+        "detailHeadline": "Пламен Антов - За романа \"Иваниша от Севера\" от Тихомир Тодоров",
+        "sourcePublishedAt": "2021-03-27T20:06:34.000Z",
+        "observedAt": "2026-10-01T20:51:58.747Z"
+      },
+      "evidence": "reports/r10/sources/liternet-bulgaria.json"
+    },
+    {
+      "sourceId": "litlogos",
+      "name": "Literaturhaus Switzerland",
+      "countryCodes": [
+        "CH"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "litlogos",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://literaturhaus.ch/feed/",
+      "format": "rss",
+      "language": "de-CH",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://literaturhaus.ch/saisoneroeffnung-2026-2027/",
+        "title": "Saisoneröffnung 2026/2027",
+        "detailHeadline": "Saisoneröffnung 2026/2027",
+        "sourcePublishedAt": "2026-09-02T12:53:30.000Z",
+        "observedAt": "2026-10-01T20:52:02.533Z"
+      },
+      "evidence": "reports/r10/sources/litlogos.json"
+    },
+    {
+      "sourceId": "literaturhaus-basel",
+      "name": "Literaturhaus Basel",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literaturhaus-basel",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/literaturhaus-basel.json"
+    },
+    {
+      "sourceId": "literaturhaus-salzburg",
+      "name": "Literaturhaus Salzburg",
+      "countryCodes": [
+        "AT"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literaturhaus-salzburg",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.literaturhaus-salzburg.at/feed/",
+      "format": "rss",
+      "language": "de",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.literaturhaus-salzburg.at/haus-kulturprogramm-salzburg/news-wissenswertes/salzburger-jugend-literaturwettbewerb/",
+        "title": "Barbi Marković erhält Helena-Adler-Preis für rebellische Literatur 2026",
+        "detailHeadline": "Barbi Marković erhält Helena-Adler-Preis für rebellische Literatur 2026 - Literaturhaus Salzburg",
+        "sourcePublishedAt": "2026-03-16T08:03:31.000Z",
+        "observedAt": "2026-10-01T20:52:00.624Z"
+      },
+      "evidence": "reports/r10/sources/literaturhaus-salzburg.json"
+    },
+    {
+      "sourceId": "literaturhaus-berlin",
+      "name": "Literaturhaus Berlin",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literaturhaus-berlin",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "external_redirect:https://li-be.de",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/literaturhaus-berlin.json"
+    },
+    {
+      "sourceId": "literaturhaus-hamburg",
+      "name": "Literaturhaus Hamburg",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literaturhaus-hamburg",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "fetch failed",
+      "endpoint": null,
+      "format": null,
+      "language": "de",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/literaturhaus-hamburg.json"
+    },
+    {
+      "sourceId": "literaturhaus-stuttgart",
+      "name": "Literaturhaus Stuttgart",
+      "countryCodes": [
+        "DE"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literaturhaus-stuttgart",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.literaturhaus-stuttgart.de/feed.xml",
+      "format": "rss",
+      "language": "de-DE",
+      "finds": 50,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.literaturhaus-stuttgart.de/event/6853.html",
+        "title": "Irish Poets in Conversation: Transnational Poetics of Extinction",
+        "detailHeadline": "Irish Poets in Conversation: Transnational Poetics of Extinction / Leeanne Quinn, Aifric Mac Aodha, Matthew Rice | Literaturhaus Stuttgart",
+        "sourcePublishedAt": "2026-10-01T09:37:48.000Z",
+        "observedAt": "2026-10-01T20:52:02.729Z"
+      },
+      "evidence": "reports/r10/sources/literaturhaus-stuttgart.json"
+    },
+    {
+      "sourceId": "letterenfonds",
+      "name": "Dutch Foundation for Literature",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "letterenfonds",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "detail_not_verified",
+      "endpoint": null,
+      "format": null,
+      "language": "nl",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/letterenfonds.json"
+    },
+    {
+      "sourceId": "flanders-literature",
+      "name": "Flanders Literature",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "flanders-literature",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/flanders-literature.json"
+    },
+    {
+      "sourceId": "literature-finland",
+      "name": "FILI",
+      "countryCodes": [
+        "FI"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "literature-finland",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://fili.fi/feed/",
+      "format": "rss",
+      "language": "fi",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://fili.fi/filin-fellowship-ohjelma-vuonna-2026/",
+        "title": "FILIn fellowship-ohjelma 2026, vielä ehdit hakea 15.5. asti",
+        "detailHeadline": "FILIn fellowship-ohjelma 2026, vielä ehdit hakea 15.5. asti",
+        "sourcePublishedAt": "2026-05-08T07:00:00.000Z",
+        "observedAt": "2026-10-01T20:52:03.305Z"
+      },
+      "evidence": "reports/r10/sources/literature-finland.json"
+    },
+    {
+      "sourceId": "norla",
+      "name": "NORLA",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "norla",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "http_404",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/norla.json"
+    },
+    {
+      "sourceId": "swedish-literature",
+      "name": "Swedish Arts Council",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "swedish-literature",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "fetch failed",
+      "endpoint": null,
+      "format": null,
+      "language": "sv",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/swedish-literature.json"
+    },
+    {
+      "sourceId": "irish-literature",
+      "name": "Literature Ireland",
+      "countryCodes": [
+        "IE"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "irish-literature",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.literatureireland.com/",
+      "format": "html",
+      "language": "en-GB",
+      "finds": 4,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.literatureireland.com/latest/ireland-at-the-frankfurt-book-fair-2026/",
+        "title": "Ireland at the Frankfurt Book Fair 2026",
+        "detailHeadline": "Literature Ireland | Ireland at the Frankfurt Book Fair 2026",
+        "sourcePublishedAt": null,
+        "observedAt": "2026-10-01T20:52:04.864Z"
+      },
+      "evidence": "reports/r10/sources/irish-literature.json"
+    },
+    {
+      "sourceId": "ireland-book-awards",
+      "name": "An Post Irish Book Awards",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "ireland-book-awards",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://www.irishbookawards.ie/feed/",
+      "format": "rss",
+      "language": "en-GB",
+      "finds": 5,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://www.irishbookawards.ie/squeeze-in-a-read-this-february-25th-for-ireland-reads-day/",
+        "title": "SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY",
+        "detailHeadline": "SQUEEZE IN A READ THIS FEBRUARY 25TH FOR IRELAND READS DAY - Irish Book Awards",
+        "sourcePublishedAt": "2021-06-25T15:26:24.000Z",
+        "observedAt": "2026-10-01T20:52:16.872Z"
+      },
+      "evidence": "reports/r10/sources/ireland-book-awards.json"
+    },
+    {
+      "sourceId": "miles-franklin",
+      "name": "Miles Franklin Literary Award",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "miles-franklin",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "robots_disallowed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/miles-franklin.json"
+    },
+    {
+      "sourceId": "stella-prize",
+      "name": "Stella Prize",
+      "countryCodes": [
+        "AU"
+      ],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "stella-prize",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://stella.org.au/feed/",
+      "format": "rss",
+      "language": "en-AU",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://stella.org.au/2026/09/book-of-the-month-pink-mountain-on-locust-island-september-2026/",
+        "title": "Book of the Month - Pink Mountain on Locust Island - September 2026",
+        "detailHeadline": "Book of the Month - Pink Mountain on Locust Island - September 2026",
+        "sourcePublishedAt": "2026-09-07T06:50:03.000Z",
+        "observedAt": "2026-10-01T20:52:10.614Z"
+      },
+      "evidence": "reports/r10/sources/stella-prize.json"
+    },
+    {
+      "sourceId": "hakara",
+      "name": "Hakara",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "hakara",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://hakara.in/feed/",
+      "format": "rss",
+      "language": "mr-IN",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://hakara.in/ten-poems-bedarkar-gummuluri/",
+        "title": "‘Ten Poems’ | Original Poems: Swanand Bedarkar | English Translation: Satya Gummuluri",
+        "detailHeadline": "Ten Poems: Swanand Bedarkar | Satya Gummuluri",
+        "sourcePublishedAt": "2026-05-24T08:17:28.000Z",
+        "observedAt": "2026-10-01T20:52:17.358Z"
+      },
+      "evidence": "reports/r10/sources/hakara.json"
+    },
+    {
+      "sourceId": "jimsaan",
+      "name": "Jimsaan",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "jimsaan",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "getaddrinfo ENOTFOUND jimsaan.com",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/jimsaan.json"
+    },
+    {
+      "sourceId": "editions-elyzad",
+      "name": "Elyzad",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "editions-elyzad",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "runtime_parser_no_literary_item",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/editions-elyzad.json"
+    },
+    {
+      "sourceId": "editions-fennec",
+      "name": "Le Fennec",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "editions-fennec",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "getaddrinfo ENOTFOUND www.editionslefennec.com",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/editions-fennec.json"
+    },
+    {
+      "sourceId": "barzakh",
+      "name": "Barzakh",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "barzakh",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "fetch failed",
+      "endpoint": null,
+      "format": null,
+      "language": "fr",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/barzakh.json"
+    },
+    {
+      "sourceId": "moran-publishers",
+      "name": "Moran Publishers",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "moran-publishers",
+      "sourceClass": "literary-news",
+      "status": "editorial_profile_held",
+      "reason": "Observed sample is a retail gift promotion; a genuine literary news representative remains required.",
+      "endpoint": "https://moranpublishers.com/feed/",
+      "format": "rss",
+      "language": "en-US",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/moran-publishers.json"
+    },
+    {
+      "sourceId": "kwela-books",
+      "name": "Kwela Books",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "kwela-books",
+      "sourceClass": "literary-news",
+      "status": "blocked",
+      "reason": "fetch failed",
+      "endpoint": null,
+      "format": null,
+      "language": "en",
+      "finds": 0,
+      "ready": 0,
+      "public": 0,
+      "sample": null,
+      "evidence": "reports/r10/sources/kwela-books.json"
+    },
+    {
+      "sourceId": "karavan-press",
+      "name": "Karavan Press",
+      "countryCodes": [],
+      "coverageCountryCodes": [],
+      "sourceFamilyId": "karavan-press",
+      "sourceClass": "literary-news",
+      "status": "runtime_verified",
+      "reason": null,
+      "endpoint": "https://karavanpress.com/feed/",
+      "format": "rss",
+      "language": "en",
+      "finds": 10,
+      "ready": 0,
+      "public": 0,
+      "sample": {
+        "url": "https://karavanpress.com/2026/09/22/melissa-a-volker-at-the-muizenberg-literary-heritage-festival-26-september-2026/",
+        "title": "Melissa A. Volker at the Muizenberg Literary Heritage Festival, 26 September 2026",
+        "detailHeadline": "Melissa A. Volker at the Muizenberg Literary Heritage Festival, 26 September 2026",
+        "sourcePublishedAt": "2026-09-22T14:44:58.000Z",
+        "observedAt": "2026-10-01T20:56:32.780Z"
+      },
+      "evidence": "reports/r10/sources/karavan-press.json"
     }
   ]
 }

@@ -1,0 +1,96 @@
+{
+  "batchId": "current-news-reviewed-20261002",
+  "checkedAt": "2026-10-01T21:26:03.554Z",
+  "writtenCanonical": false,
+  "remoteWrites": 0,
+  "beforeReviewedCount": 258,
+  "proposedReviewedCount": 284,
+  "added": 26,
+  "unchanged": 0,
+  "held": [],
+  "eligiblePublicBefore": 221,
+  "eligiblePublicAfter": 247,
+  "sourceIds": [
+    "prh",
+    "landesbibliothek-li",
+    "nb-rs",
+    "publishing-perspectives",
+    "brittle-paper",
+    "asymptote",
+    "publishing-scotland",
+    "actualitte",
+    "il-libraio",
+    "god-literatury",
+    "ast"
+  ],
+  "sourceCountryCodes": [
+    "FR",
+    "IT",
+    "LI",
+    "RS",
+    "RU",
+    "SG",
+    "US"
+  ],
+  "storyCountryCodes": [
+    "BA",
+    "BR",
+    "CA",
+    "DE",
+    "EG",
+    "ES",
+    "ET",
+    "FR",
+    "GB",
+    "IN",
+    "IS",
+    "IT",
+    "LI",
+    "MY",
+    "NG",
+    "NL",
+    "PT",
+    "RS",
+    "RU",
+    "SG",
+    "SR",
+    "US",
+    "ZW"
+  ],
+  "explicitPublicationDateCount": 26,
+  "dateOnlyPublicationCount": 8,
+  "unknownPublicationDateCount": 0,
+  "freshWithinSevenDays": 26,
+  "dates": [
+    "2026-09-28",
+    "2026-09-30",
+    "2026-10-01"
+  ],
+  "summaryLengths": {
+    "ru": {
+      "min": 289,
+      "max": 372
+    },
+    "en": {
+      "min": 297,
+      "max": 384
+    }
+  },
+  "duplicateCheck": "stable id/eventKey, canonical source URLs and agent-reviewed news-stage identity; no duplicates",
+  "canonicalBeforeSha256": "25b7ea6abb2ecefd2e872cfb2fc2b470ed23e5d12cbfffd90bc0a8e78b4f6c54",
+  "recordSha256": "6404a12b9474c7b66ba4719f65c4bbc009fa153aebff1050a496eab86e865e7d",
+  "intentionallyExcluded": [
+    "3 Books Ireland pages: HTTP 403",
+    "English PEN shortlist: article request timed out",
+    "Gallimard Jeunesse appointment: effective July, not new October change",
+    "Kodansha manga selection: selected in summer",
+    "Napoleon biography: undated underlying release",
+    "Film scheduled October 1: no verified post-release confirmation"
+  ],
+  "limitations": [
+    "Freshness is based on explicit publisher dates, never on access time.",
+    "The existing public total is not claimed to reach 600-700; this proposal adds exactly 26 genuine items.",
+    "Image candidates are source-article display proposals only, with social reuse unapproved.",
+    "Publication dates without verified ISO offset retain date-only precision. Source-host country count and story-country coverage are reported separately."
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "sourceId": "dnb-de",
+  "name": "German National Library",
+  "entryUrl": "https://www.dnb.de/",
+  "countryCodes": [
+    "DE"
+  ],
+  "coverageCountryCodes": [
+    "DE"
+  ],
+  "attemptedAt": "2026-10-01T20:43:55.593Z",
+  "requests": [
+    {
+      "url": "https://www.dnb.de/DE/Home/home_node.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 84093,
+      "sha256": "abf3b89fa8732c2e5d455475d42de7da877b5f1317b731a90f6b191f934b6343",
+      "accessedAt": "2026-10-01T20:43:56.934Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Maustag/20261003MaustagLeipzig.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 45792,
+      "sha256": "e3d61446ced071c2578230146bd5ed5a901d80d1a152771a2f22bf83f4fb02f6",
+      "accessedAt": "2026-10-01T20:43:57.884Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Maustag/20261003MaustagFrankfurt_event.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 46061,
+      "sha256": "b541df6b7411b33c911fcfd14584c8e7df8cc7c788a6a7291d1cc036bcbd8582",
+      "accessedAt": "2026-10-01T20:43:59.965Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Studispezial/20261005BiblfuehrungErstsemester_event.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 44322,
+      "sha256": "691b0c4c87f53fc25609ab0252c22a109d68aee526542774be51de17fba8aafc",
+      "accessedAt": "2026-10-01T20:44:00.438Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Kulturell/Veranstaltungskalender/Studispezial/20261005BiblfuehrungErstsemester14_event.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 44329,
+      "sha256": "320b911c0b9cdc1b80e7152fc8f411c63afe4ab854dff43805632ac816f548f4",
+      "accessedAt": "2026-10-01T20:44:00.919Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Ueber-uns/DBSM/dbsm_node.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 78276,
+      "sha256": "a7116c5069e4c8031a870607accc5f30364ca367dddf7b6a40ac42eeb83a0075",
+      "accessedAt": "2026-10-01T20:44:02.633Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Ueber-uns/DEA/dea_node.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 79416,
+      "sha256": "432219204a01c5bd9ffe2f10235d343779561cb3d3772b84c4ce1074c32cc120",
+      "accessedAt": "2026-10-01T20:44:08.694Z"
+    },
+    {
+      "url": "https://www.dnb.de/DE/Ueber-uns/DMA/dma_node.html",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 68860,
+      "sha256": "a0155d5e84163eab8f4267c039d117926979beaded430cbd1f291cbbe9d3f252",
+      "accessedAt": "2026-10-01T20:44:10.925Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.dnb.de/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 356,
+    "sha256": "87df89ff02bb48a139bc6018f8475492db0750b688db8c577cb3ea4931e6bfa4",
+    "accessedAt": "2026-10-01T20:43:56.167Z",
+    "disallowed": [
+      "/SiteGlobals/",
+      "/DE/Service/",
+      "/EN/Service/"
+    ]
+  }
+}

@@ -1,0 +1,652 @@
+{
+  "sourceId": "cambridge-press-blog",
+  "name": "Cambridge University Press",
+  "entryUrl": "https://www.cambridgeblog.org/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:38.856Z",
+  "requests": [
+    {
+      "url": "https://cambridgeblog.org/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 109068,
+      "sha256": "21163a992c43d9cb5e44f3f4162428c1a7bcc8f39fd6a88813ce4a2574c993e0",
+      "accessedAt": "2026-10-01T20:51:39.836Z"
+    },
+    {
+      "url": "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74296,
+      "sha256": "ffe60b87ee41485598abcebf618ad54d6c844a7aa2a1f32cdf814e2e870ea2c5",
+      "accessedAt": "2026-10-01T20:51:40.190Z"
+    }
+  ],
+  "status": "runtime_verified",
+  "reason": null,
+  "robots": {
+    "url": "https://cambridgeblog.org/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 184,
+    "sha256": "310065a4874f6ceda2fab03d3ca753e3a80b393ecbdfe103b7627258801bee39",
+    "accessedAt": "2026-10-01T20:51:39.602Z",
+    "disallowed": [
+      "/wp-admin/"
+    ]
+  },
+  "endpoint": {
+    "id": "cambridge-press-blog",
+    "name": "Cambridge University Press",
+    "url": "https://cambridgeblog.org/",
+    "format": "html",
+    "language": "en-US",
+    "region": "global",
+    "sourceFamilyId": "cambridge-press-blog",
+    "countryCodes": [],
+    "coverageCountryCodes": [],
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "articleOrigins": [
+      "https://cambridgeblog.org"
+    ],
+    "linkPattern": "^\\/\\d{4}\\/\\d{2}\\/(?:\\d{2}\\/)?[^/]+\\/?$",
+    "parserVersion": "r10-source-profile-1",
+    "linkSelector": "a[href]:not(nav a):not(header a):not(footer a)",
+    "exampleArticleUrls": [
+      "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/"
+    ],
+    "verifiedAt": "2026-10-01T20:51:40.195Z",
+    "collectionNote": "Runtime parser and a real literary item fetched on 2026-10-01. Findings remain held until fact and RU/EN review. Country of organisation and event coverage are separate."
+  },
+  "candidateCount": 21,
+  "literaryCandidateCount": 21,
+  "sample": {
+    "sourceId": "cambridge-press-blog",
+    "source": {
+      "name": "Cambridge University Press",
+      "url": "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/",
+      "language": "en-US"
+    },
+    "region": "global",
+    "topics": [
+      "publishing",
+      "releases",
+      "awards",
+      "festivals"
+    ],
+    "title": "NEW BOOK: Providence, Evil and Salvation: A Thomist Perspective",
+    "publishedAt": null,
+    "description": null,
+    "discoveredAt": "2026-10-01T20:51:39.883Z",
+    "verification": "held",
+    "reasons": [
+      "missing_event_date",
+      "bilingual_review_required",
+      "topic_review_required"
+    ],
+    "detail": {
+      "url": "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 74296,
+      "sha256": "ffe60b87ee41485598abcebf618ad54d6c844a7aa2a1f32cdf814e2e870ea2c5",
+      "accessedAt": "2026-10-01T20:51:40.190Z",
+      "headline": "Providence, Evil and Salvation",
+      "excerpt": "Providence, Evil and SalvationFifteen Eighty Four | Cambridge University Press <iframe src=https://www.googletagmanager.com/ns.html?id=GTM-M7PQZMQB height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> x Home About the Blog Subjects Archive Contact Us Podcast x Fifteen Eighty Four Academic perspectives from Cambridge University Press Home About the Blog Subjects Archive Contact Us ",
+      "publishedDates": [
+        {
+          "value": "2026-08-10T03:10:00+00:00",
+          "method": "meta[property=\"article:published_time\"]"
+        },
+        {
+          "value": "2026-08-10T04:10:00+01:00",
+          "method": "jsonld.datePublished",
+          "type": "BlogPosting"
+        },
+        {
+          "value": "2026-08-10T04:10:00+01:00",
+          "method": "jsonld.datePublished",
+          "type": "WebPage"
+        }
+      ],
+      "canonical": "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/",
+      "language": "en-US",
+      "articleEvidence": true
+    }
+  },
+  "lastSuccessAt": "2026-10-01T20:51:40.195Z",
+  "foundItems": [
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/providence-evil-and-salvation/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "NEW BOOK: Providence, Evil and Salvation: A Thomist Perspective",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/the-victorian-asylum-as-a-publishing-house/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "English literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/motivation-2026/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Motivation 2026",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/victorian-flower-boxes-and-the-roots-of-eco-activism/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "English literature",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/why-do-people-kill-for-their-religion/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Why do people kill for their religion?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/schooling-and-west-african-freedom/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Schooling and West African Freedom",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/07/the-devil-does-not-explain-evil/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Devil does not Explain Evil",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/07/the-oceans-we-built-why-i-wrote-earths-amphibious-transformation/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "The Oceans We Built: Why I Wrote Earth’s Amphibious Transformation",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/07/out-of-the-margins-late-antique-craftworkers-in-the-making/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Out of the Margins: Late Antique Craftworkers in the Making",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/07/how-did-the-father-of-art-history-memorialize-himself/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "How did the “Father of Art History” Memorialize Himself?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/06/building-a-bourbon-millennium/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Building a Bourbon Millennium",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/06/punishment-or-pragmatism-lessons-for-dealing-with-failure-from-the-dutch-golden-age/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Punishment or Pragmatism? Lessons for Dealing with Failure from the...",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/06/when-is-a-bullet-too-deadly-to-use/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "When is a bullet too deadly to use?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/09/why-isnt-romani-history-part-of-the-atlantic-world/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "European History",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/our-artificial-future-an-introduction/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Our Artificial Future: An Introduction",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/should-bureaucrats-be-easier-to-fire/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Law & Government",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/the-forgotten-legal-scholars-of-colonial-india-and-mandatory-palestine/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "History & Classics",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/why-the-ecowas-court-matters-for-womens-rights-in-africa/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Law & Government",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2026/08/the-batwa-as-global-legal-subjects-progress-belonging-and-rwandanness/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Law & Government",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2016/01/the-times-of-r-k-laxman-acche-din-good-days/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "20th JanThe Times of R. K. Laxman: Acche Din (Good Days)",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    },
+    {
+      "sourceId": "cambridge-press-blog",
+      "source": {
+        "name": "Cambridge University Press",
+        "url": "https://cambridgeblog.org/2015/12/climate-change-and-paris-2015-%e2%88%92-pessimism-or-cautious-optimism/",
+        "language": "en-US"
+      },
+      "region": "global",
+      "topics": [
+        "publishing",
+        "releases",
+        "awards",
+        "festivals"
+      ],
+      "title": "Climate Change and Paris 2015 − Pessimism or Cautious Optimism?",
+      "publishedAt": null,
+      "description": null,
+      "discoveredAt": "2026-10-01T20:51:39.883Z",
+      "verification": "held",
+      "reasons": [
+        "missing_event_date",
+        "bilingual_review_required",
+        "topic_review_required"
+      ]
+    }
+  ],
+  "responseSha256": "21163a992c43d9cb5e44f3f4162428c1a7bcc8f39fd6a88813ce4a2574c993e0"
+}

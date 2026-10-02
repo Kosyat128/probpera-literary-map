@@ -1,0 +1,11 @@
+{
+  "sourceId": "minnesota-press",
+  "name": "University of Minnesota Press",
+  "entryUrl": "https://www.upress.umn.edu/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:40.426Z",
+  "requests": [],
+  "status": "blocked",
+  "reason": "robots_disallowed"
+}

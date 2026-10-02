@@ -1,0 +1,60 @@
+{
+  "sourceId": "huza-press",
+  "name": "Huza Press",
+  "entryUrl": "https://huza.press/",
+  "countryCodes": [
+    "RW"
+  ],
+  "coverageCountryCodes": [
+    "RW"
+  ],
+  "attemptedAt": "2026-10-01T20:56:23.866Z",
+  "requests": [
+    {
+      "url": "https://huza.press/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 110116,
+      "sha256": "0f20e2069a5fa30fda95b91765074ac8694306c4cd8636b530cedee411cd9072",
+      "accessedAt": "2026-10-01T20:56:24.293Z"
+    },
+    {
+      "url": "https://huza.press/feed/",
+      "status": 200,
+      "contentType": "application/rss+xml; charset=UTF-8",
+      "bytes": 5222,
+      "sha256": "82009b78c98327d1bbbeb0e6f8d04f74102af2741cb9026da01e04263338ef1e",
+      "accessedAt": "2026-10-01T20:56:24.472Z"
+    },
+    {
+      "url": "https://huza.press/2023/10/19/not-my-time-to-die/",
+      "status": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 209744,
+      "sha256": "fa24769b1322c6389e3b1b97e246df2549b082eaa2e3a6438bf215f4fae9e030",
+      "accessedAt": "2026-10-01T20:56:24.556Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://huza.press/robots.txt",
+    "status": 200,
+    "contentType": "text/plain; charset=utf-8",
+    "bytes": 620,
+    "sha256": "5db0e8cc0f71a2d051b2b581fedfb449761aca880a3511ba7fa00d9b1060ca3a",
+    "accessedAt": "2026-10-01T20:56:24.196Z",
+    "disallowed": [
+      "/wp-admin/",
+      "/wp-login.php",
+      "/wp-signup.php",
+      "/press-this.php",
+      "/remote-login.php",
+      "/activate/",
+      "/cgi-bin/",
+      "/mshots/v1/",
+      "/next/",
+      "/public.api/"
+    ]
+  }
+}

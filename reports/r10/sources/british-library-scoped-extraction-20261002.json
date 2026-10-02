@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "british-library-scoped-extraction-20261002",
+  "reviewedAt": "2026-10-01T22:27:35.942Z",
+  "scope": "One code-owned detail extraction override; original source initializer, URL grammar and fetch limits unchanged.",
+  "sourceId": "british-library",
+  "url": "https://www.bl.uk/about/press/releases/british-library-announces-2027-programme",
+  "httpStatus": 200,
+  "accessedAt": "2026-10-01T21:57:30.866Z",
+  "rawDocumentSha256": "7a6cf7f773cf5c409edc00a356851de6c1930db6ae1920d1cdd3e44e2c3e920d",
+  "rawDocumentBytes": 109407,
+  "retainedLocalDocument": ".tmp/news-expanded-c-20261002/source-documents/269.bin",
+  "selectors": {
+    "headline": "main#content h1",
+    "body": "main#content > div[class*=\"ContentBlockRenderer\"]"
+  },
+  "finding": "The first article is a 54-character hero; substantive prose is its ContentBlockRenderer sibling within main#content.",
+  "primaryPublication": {
+    "value": "2026-10-01",
+    "precision": "date-only",
+    "method": "visible date inside primary article hero",
+    "literal": "1 October 2026"
+  },
+  "extractedBodySha256": "5b732efc89dbf26759b9d1df2e7e00ce32999de3eda2e8c0a6f2556148c5c72c",
+  "extractedBodyCharacters": 9879,
+  "assertions": {
+    "heroOnlyFalseBodyExcluded": true,
+    "fullProgrammeProseRetrieved": true,
+    "christieExhibitionDatesRetained": true,
+    "comicAnniversaryProgrammeRetained": true,
+    "publicationTimeInferred": false,
+    "canonicalWrites": 0,
+    "remoteWrites": 0
+  },
+  "validation": "scripts/lib/british-library-scoped-extraction-20261002.test.mjs plus full retained document digest check"
+}

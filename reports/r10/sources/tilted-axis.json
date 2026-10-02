@@ -1,0 +1,73 @@
+{
+  "sourceId": "tilted-axis",
+  "name": "Tilted Axis Press",
+  "entryUrl": "https://www.tiltedaxispress.com/",
+  "countryCodes": [],
+  "coverageCountryCodes": [],
+  "attemptedAt": "2026-10-01T20:51:49.509Z",
+  "requests": [
+    {
+      "url": "https://www.tiltedaxispress.com/",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 183495,
+      "sha256": "351db715d9db670d2eb434c32bc38d18e91c7276d71802ba448333eae39d80cd",
+      "accessedAt": "2026-10-01T20:51:50.155Z"
+    },
+    {
+      "url": "https://www.tiltedaxispress.com/faqs-delivery-orders",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 109122,
+      "sha256": "f8753955bacff39e156774c8db9a1c4f84cfde6bdb511fd059778f28531ef23c",
+      "accessedAt": "2026-10-01T20:51:50.618Z"
+    },
+    {
+      "url": "https://www.tiltedaxispress.com/sales-distribution",
+      "status": 200,
+      "contentType": "text/html;charset=utf-8",
+      "bytes": 113940,
+      "sha256": "296e44e1bf6812a9974a9a2fd88f700baae0c0c8e1f57c00397f078f3a2a25f8",
+      "accessedAt": "2026-10-01T20:51:50.878Z"
+    }
+  ],
+  "status": "blocked",
+  "reason": "detail_not_verified",
+  "robots": {
+    "url": "https://www.tiltedaxispress.com/robots.txt",
+    "status": 200,
+    "contentType": "text/plain;charset=utf-8",
+    "bytes": 1514,
+    "sha256": "dbe65ee8c132aaff23a50eda65e37e23f4a75831b6ad9c87f57917989186d301",
+    "accessedAt": "2026-10-01T20:51:50.012Z",
+    "disallowed": [
+      "/config",
+      "/search",
+      "/account$",
+      "/account/",
+      "/commerce/digital-download/",
+      "/api/",
+      "/static/",
+      "/*?author=*",
+      "/*&author=*",
+      "/*?tag=*",
+      "/*&tag=*",
+      "/*?month=*",
+      "/*&month=*",
+      "/*?view=*",
+      "/*&view=*",
+      "/*?format=json",
+      "/*&format=json",
+      "/*?format=page-context",
+      "/*&format=page-context",
+      "/*?format=main-content",
+      "/*&format=main-content",
+      "/*?format=json-pretty",
+      "/*&format=json-pretty",
+      "/*?format=ical",
+      "/*&format=ical",
+      "/*?reversePaginate=*",
+      "/*&reversePaginate=*"
+    ]
+  }
+}
