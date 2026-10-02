@@ -4,7 +4,7 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { bindXctestrun, xctestPassed, instrumentationPassed, nativeRuntimeCommandContext, parseAndroidCertificate, parseAndroidPackage, parseAndroidInstrumentationPackage, runNativeInstallRuntime,
-  validateOwnedAndroidTarget, validateRuntimeReceipt } from './native-install-runtime.mjs';
+  androidAdbServerArguments, parseOwnedAdbServerPort, createAndroidOfflineGate, parseAndroidOfflineState, validateOwnedAndroidTarget, validateRuntimeReceipt } from './native-install-runtime.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
 function receipt(platform = 'android') {
@@ -26,12 +26,109 @@ afterEach(async () => {
   }
 });
 
+describe('strict owned Android offline gates', () => {
+  const wifiDisabled = 'Wifi is disabled\nWifi scanning is only available when wifi is enabled';
+  const offline = () => ({ airplaneMode: '1\n', mobileData: '0\n', wifiStatus: wifiDisabled + '\n' });
+  const launch = ['shell','am','start','-W','-n','ru.probpera.literaryplanet.dev/ru.probpera.literaryplanet.MainActivity'];
+  const instrument = ['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetSecureStoreRuntimeTest',
+    '-e','literaryRunId','a'.repeat(32),'-e','literaryPhase','read','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner'];
+  const readArgs = [ ['shell','settings','get','global','airplane_mode_on'], ['shell','settings','get','global','mobile_data'], ['shell','cmd','wifi','status'] ];
+  function fixture() {
+    const state = { replies: offline(), calls: [], records: [] };
+    const adb = async (args, timeoutMs, cleanup) => {
+      state.calls.push({ args: [...args], timeoutMs, cleanup });
+      const key = args[0] === 'shell' && args[1] === 'settings' ? args[4] === 'airplane_mode_on' ? 'airplaneMode' : 'mobileData'
+        : args.join(',') === 'shell,cmd,wifi,status' ? 'wifiStatus' : null;
+      return key ? state.replies[key] : 'synthetic-local-command-only';
+    };
+    return { state, adb, gate: createAndroidOfflineGate(adb, entry => { state.records.push(entry); }) };
+  }
+  it('binds an explicit local ADB server port without changing the historical optional default', () => {
+    expect(androidAdbServerArguments()).toEqual([]);
+    expect(parseOwnedAdbServerPort('5038')).toBe(5038);
+    expect(androidAdbServerArguments(5038)).toEqual(['-H','127.0.0.1','-P','5038']);
+    expect(Object.isFrozen(androidAdbServerArguments(5038))).toBe(true);
+    expect(() => androidAdbServerArguments('5038')).toThrow();
+  });
+  it.each(['05038','5038; kill-server','1e4','5039','1022','65536','null'])
+    ('rejects an ambiguous/out-of-range CLI ADB port before invocation %s', value => {
+      expect(() => parseOwnedAdbServerPort(value)).toThrow();
+    });
+  it('requires all three exact disabled observations and canonical LF/CRLF line endings', () => {
+    const expected = { airplaneMode: '1', mobileData: '0', wifiStatus: wifiDisabled };
+    expect(parseAndroidOfflineState(offline())).toEqual(expected);
+    expect(parseAndroidOfflineState(Object.fromEntries(Object.entries(offline()).map(([key,value]) => [key,value.replaceAll('\n','\r\n')])))).toEqual(expected);
+    expect(Object.isFrozen(parseAndroidOfflineState(offline()))).toBe(true);
+  });
+  it.each([
+    { airplaneMode: '0\n' }, { mobileData: '1\n' }, { mobileData: undefined },
+    { wifiStatus: wifiDisabled.replace('Wifi is disabled','Wifi is enabled') },
+    { wifiStatus: 'Wifi is disabled\nWifi scanning is always available\n' },
+    { wifiStatus: wifiDisabled + '\nunknown extra reply\n' }, { airplaneMode: '1\n0\n' },
+  ])('denies a connected, missing or ambiguous observation %j', patch => {
+    expect(() => parseAndroidOfflineState({ ...offline(), ...patch })).toThrow();
+  });
+  it('rejects executable state accessors before invoking one', () => {
+    let reads = 0; const value = offline();
+    Object.defineProperty(value,'wifiStatus',{ enumerable:true, get() { reads++; return wifiDisabled; } });
+    expect(() => parseAndroidOfflineState(value)).toThrow(); expect(reads).toBe(0);
+  });
+  it.each([['install',['install','/owned/synthetic.apk']],['launch',launch],['instrument',instrument]])
+    ('checks exact read-only state immediately before the %s boundary', async (checkpoint,args) => {
+      const f = fixture(); await f.gate.command(checkpoint,args,60_000);
+      expect(f.state.calls.map(value => value.args)).toEqual([...readArgs,args]);
+      expect(f.state.calls.slice(0,3).every(value => value.timeoutMs === 5000 && value.cleanup === false)).toBe(true);
+      expect(f.state.records).toHaveLength(1);
+      expect(f.state.records[0]).toMatchObject({ checkpoint, status:'PASS', state:{ airplaneMode:'1',mobileData:'0',wifiStatus:wifiDisabled } });
+    });
+  it('retains a failed read observation and never dispatches the guarded install', async () => {
+    const calls = [], records = [], gate = createAndroidOfflineGate(async args => {
+      calls.push([...args]); if(calls.length === 2) throw new Error('synthetic unavailable read'); return '1\n';
+    }, entry => { records.push(entry); });
+    await expect(gate.command('install',['install','/owned/synthetic.apk'])).rejects.toThrow(/not verifiably offline/u);
+    expect(calls).toEqual(readArgs.slice(0,2)); expect(records).toMatchObject([{ status:'FAIL',reason:'android-offline-state-unavailable' }]);
+    expect(JSON.stringify(records)).not.toContain('synthetic unavailable read');
+  });
+  it('rechecks after a prior successful launch and denies later Wi-Fi re-enablement', async () => {
+    const f = fixture(); await f.gate.command('first-launch',launch);
+    f.state.replies.wifiStatus = wifiDisabled.replace('Wifi is disabled','Wifi is enabled');
+    await expect(f.gate.command('after-reboot-launch',launch)).rejects.toThrow(/not verifiably offline/u);
+    expect(f.state.calls.filter(value => value.args[2] === 'start')).toHaveLength(1);
+    expect(f.state.records.map(value => value.status)).toEqual(['PASS','FAIL']);
+  });
+  it('snapshots arguments before any awaited state read and cannot redirect an admitted command', async () => {
+    let resolve; const pending = new Promise(done => { resolve = done; }); const calls = [], records = [];
+    const gate = createAndroidOfflineGate(async args => {
+      calls.push([...args]); if(calls.length === 1) return pending;
+      return args.join(',') === 'shell,cmd,wifi,status' ? wifiDisabled : args[0] === 'install' ? 'synthetic-only' : '0';
+    }, entry => { records.push(entry); });
+    const args = ['install','/owned/synthetic.apk'], result = gate.command('install',args);
+    args[1] = '/unreviewed/changed.apk'; resolve('1'); await result;
+    expect(calls[3]).toEqual(['install','/owned/synthetic.apk']); expect(records[0].status).toBe('PASS');
+  });
+  it.each([
+    ['shell','sh','-c','am start arbitrary'],
+    [...launch.slice(0,5), launch[5] + '; cmd wifi set-wifi enabled'],
+    [...instrument.slice(0,13),'read; cmd wifi set-wifi enabled',instrument[14]],
+  ].map(args => [args]))('rejects unowned command/argument injection before any device access %j', async args => {
+    const f = fixture(); await expect(f.gate.command('launch',args)).rejects.toThrow();
+    expect(f.state.calls).toEqual([]); expect(f.state.records).toEqual([]);
+  });
+  it('provides a separate read-only post-reboot check and carries cleanup mode without setting network state', async () => {
+    const f = fixture(); await f.gate.verify('owned-target-after-reboot',true);
+    expect(f.state.calls.map(value => value.args)).toEqual(readArgs);
+    expect(f.state.calls.every(value => value.cleanup === true)).toBe(true);
+    expect(f.state.records[0]).toMatchObject({ checkpoint:'owned-target-after-reboot',status:'PASS' });
+  });
+});
+
 describe('exact-package local native runner gates', () => {
   it('removes ambient credential/JVM injection and keeps command homes/temp within this run without process mutation', () => {
     const keys = ['VITE_SUPABASE_URL', 'Supabase_SECRET_KEY', 'PLANET_PAYMENT_KEY', 'LITERARY_PLANET_TEST_TOKEN', 'TURNSTILE_SECRET',
       'YANDEX_METRIKA_COUNTER_ID', 'CMS_TOKEN', 'CLOUDFLARE_API_TOKEN', 'YOOKASSA_SECRET_KEY', 'PSP_KEY', 'PAYMENT_KEY', 'AUTH_TOKEN',
       'JAVA_TOOL_OPTIONS', '_JAVA_OPTIONS', 'JDK_JAVA_OPTIONS', 'JAVA_OPTS', 'GRADLE_OPTS', 'java_tool_options', 'NODE_OPTIONS',
-      'JAVA_HOME', 'GRADLE_USER_HOME', 'ANDROID_USER_HOME', 'ANDROID_SDK_HOME', 'TMPDIR', 'TMP', 'TEMP', 'DEVELOPER_DIR'];
+      'JAVA_HOME', 'GRADLE_USER_HOME', 'ADB_SERVER_SOCKET', 'ADB_SERVER_PORT', 'ADB_VENDOR_KEYS', 'adb_server_socket', 'ANDROID_ADB_SERVER_PORT',
+      'ANDROID_EMULATOR_HOME', 'ANDROID_AVD_HOME', 'ANDROID_SDK_ROOT', 'ANDROID_USER_HOME', 'ANDROID_SDK_HOME', 'TMPDIR', 'TMP', 'TEMP', 'DEVELOPER_DIR'];
     const ambient = { PATH: 'synthetic-required-tool-path', SystemRoot: 'synthetic-os-root',
       ...Object.fromEntries(keys.map(key => [key, 'synthetic-private-or-redirected-value'])) }, before = { ...ambient };
     const output = path.resolve('/synthetic-own-runtime'), result = nativeRuntimeCommandContext(ambient, output);

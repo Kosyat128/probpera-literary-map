@@ -137,11 +137,23 @@ export async function inspectPreviousAndroidApk(root, bytes) {
   const { unzipSync } = createRequire(path.join(root,'package.json'))('fflate');
   return inspectPreviousAndroidArchive(bytes, unzipSync);
 }
+export function validateOwnedAdbServerPort(value) {
+  check(typeof value === 'number' && Number.isSafeInteger(value) && value >= 1024 && value <= 65535 && value % 2 === 0,
+    'Use one explicit even owned ADB server port from 1024 through 65534.');
+  return value;
+}
+export function parseOwnedAdbServerPort(value) {
+  check(typeof value === 'string' && /^[1-9][0-9]{3,4}$/u.test(value), 'Use a canonical decimal owned ADB server port.');
+  return validateOwnedAdbServerPort(Number(value));
+}
+export function androidAdbServerArguments(value) {
+  return Object.freeze(value === undefined ? [] : ['-H','127.0.0.1','-P',String(validateOwnedAdbServerPort(value))]);
+}
 /** Pure per-run command configuration. Ambient JVM flags can print secrets to
  * stderr or redirect Java writes before even a read-only metadata command. */
 export function nativeRuntimeCommandContext(ambient, output) {
   check(path.isAbsolute(output), 'An absolute owned runtime output is required.');
-  const blocked = /^(?:VITE_|SUPABASE|PLANET_|LITERARY_PLANET_|TURNSTILE|YANDEX_|CMS_|CLOUDFLARE|YOOKASSA|PSP_|PAYMENT_|AUTH_|JAVA_TOOL_OPTIONS$|_JAVA_OPTIONS$|JDK_JAVA_OPTIONS$|JAVA_OPTS$|GRADLE_OPTS$|NODE_OPTIONS$|JAVA_HOME$|GRADLE_USER_HOME$|ANDROID_USER_HOME$|ANDROID_SDK_HOME$|TMPDIR$|TMP$|TEMP$|DEVELOPER_DIR$)/iu;
+  const blocked = /^(?:VITE_|SUPABASE|PLANET_|LITERARY_PLANET_|TURNSTILE|YANDEX_|CMS_|CLOUDFLARE|YOOKASSA|PSP_|PAYMENT_|AUTH_|JAVA_TOOL_OPTIONS$|_JAVA_OPTIONS$|JDK_JAVA_OPTIONS$|JAVA_OPTS$|GRADLE_OPTS$|NODE_OPTIONS$|JAVA_HOME$|GRADLE_USER_HOME$|ADB_|ANDROID_ADB_SERVER_PORT$|ANDROID_EMULATOR_HOME$|ANDROID_AVD_HOME$|ANDROID_SDK_ROOT$|ANDROID_USER_HOME$|ANDROID_SDK_HOME$|TMPDIR$|TMP$|TEMP$|DEVELOPER_DIR$)/iu;
   const home = path.join(output, 'command-user'), temporary = path.join(output, 'command-temp'), android = path.join(output, 'android-user');
   const env = Object.fromEntries(Object.entries(ambient).filter(([key]) => !blocked.test(key)));
   Object.assign(env, { ANDROID_USER_HOME: android, TMPDIR: temporary, TMP: temporary, TEMP: temporary, DEVELOPER_DIR });
@@ -206,6 +218,74 @@ export function parseAndroidCertificate(text) {
   const certificates = [...text.matchAll(/^Signer #[0-9]+ certificate SHA-256 digest: ([a-f0-9]{64})\s*$/gmu)].map(match => match[1]);
   check(certificates.length === 1, 'Exactly one verified signing certificate is required.'); return certificates[0];
 }
+const ANDROID_WIFI_DISABLED = 'Wifi is disabled\nWifi scanning is only available when wifi is enabled';
+function androidOfflineReply(value) {
+  check(typeof value === 'string' && value.length <= 256, 'Bounded offline state reply required.');
+  return value.replaceAll('\r\n', '\n').replace(/\n$/u, '');
+}
+/** Only exact read-only guest observations are accepted. Airplane mode alone
+ * permits Wi-Fi re-enablement; disabled cellular and scanning are separate.
+ * The owned AVD wrapper sets these beforehand. This operator never sets them. */
+export function parseAndroidOfflineState(value) {
+  check(ownRecord(value) && Object.keys(value).sort().join(',') === 'airplaneMode,mobileData,wifiStatus', 'Exact offline state fields required.');
+  const airplaneMode = androidOfflineReply(value.airplaneMode), mobileData = androidOfflineReply(value.mobileData), wifiStatus = androidOfflineReply(value.wifiStatus);
+  check(airplaneMode === '1' && mobileData === '0' && wifiStatus === ANDROID_WIFI_DISABLED, 'Owned Android target is not verifiably offline.');
+  return Object.freeze({ airplaneMode, mobileData, wifiStatus });
+}
+function androidOfflineCommandArgs(value) {
+  const length = Array.isArray(value) ? Object.getOwnPropertyDescriptor(value, 'length')?.value : null;
+  check(Array.isArray(value) && Object.getPrototypeOf(value) === Array.prototype && Number.isSafeInteger(length) && length >= 2 && length <= 32
+    && Reflect.ownKeys(value).length === length + 1, 'Exact bounded Android command array required.');
+  const copied = [];
+  for (let index = 0; index < length; index++) {
+    const field = Object.getOwnPropertyDescriptor(value, String(index));
+    check(field && Object.hasOwn(field, 'value') && field.enumerable && typeof field.value === 'string'
+      && field.value.length > 0 && field.value.length <= 2048 && !/[\u0000-\u001f\u007f]/u.test(field.value), 'Primitive Android command arguments required.');
+    copied.push(field.value);
+  }
+  const install = copied[0] === 'install' && (copied.length === 2 || copied.length === 3 && copied[1] === '-r')
+    && !copied.at(-1).startsWith('-') && copied.at(-1).endsWith('.apk');
+  const launch = copied.length === 6 && copied.slice(0, 5).join(',') === 'shell,am,start,-W,-n'
+    && copied[5] === 'ru.probpera.literaryplanet.dev/ru.probpera.literaryplanet.MainActivity';
+  const instrument = copied.length === 15 && copied.slice(0, 7).join(',') === 'shell,am,instrument,-w,-r,-e,class'
+    && ['PlanetSecureStoreRuntimeTest','PlanetPreferencesRuntimeTest','PlanetPreviousPreferencesRuntimeTest'].some(name => copied[7] === 'ru.probpera.literaryplanet.' + name)
+    && copied[8] === '-e' && copied[9] === 'literaryRunId' && /^[a-f0-9]{32}$/u.test(copied[10])
+    && copied[11] === '-e' && copied[12] === 'literaryPhase'
+    && ['write','read','remove','clear','absent','parallel','corrupt','unsupported-language','unsupported-theme','plugin-failure','timeout'].includes(copied[13])
+    && copied[14] === 'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner';
+  check(install || launch || instrument, 'Only the existing exact Android install, launch or fixture command may cross this offline gate.');
+  return Object.freeze(copied);
+}
+/** argv-bound gate; safe to import without device access. The adb port remains
+ * responsible for exact owned-target binding, command deadlines and aborts.
+ * Success records this observation only, never complete OS/product acceptance. */
+export function createAndroidOfflineGate(adb, record) {
+  check(typeof adb === 'function' && typeof record === 'function', 'Explicit owned Android command and record ports required.');
+  let sequence = 0;
+  async function verify(checkpoint, cleanup = false) {
+    check(typeof checkpoint === 'string' && /^[a-z][a-z0-9-]{0,95}$/u.test(checkpoint) && typeof cleanup === 'boolean', 'Exact local offline checkpoint required.');
+    const id = 'android-offline-' + ++sequence;
+    try {
+      const state = parseAndroidOfflineState({
+        airplaneMode: await adb(['shell','settings','get','global','airplane_mode_on'], 5000, cleanup),
+        mobileData: await adb(['shell','settings','get','global','mobile_data'], 5000, cleanup),
+        wifiStatus: await adb(['shell','cmd','wifi','status'], 5000, cleanup),
+      });
+      record({ id, checkpoint, status: 'PASS', state, observedAt: new Date().toISOString() });
+      return state;
+    } catch {
+      record({ id, checkpoint, status: 'FAIL', reason: 'android-offline-state-unavailable' });
+      throw new Error('Owned Android target is not verifiably offline.');
+    }
+  }
+  return Object.freeze({ verify, async command(checkpoint, args, timeoutMs = 30_000, cleanup = false) {
+    const copied = androidOfflineCommandArgs(args);
+    check(Number.isSafeInteger(timeoutMs) && timeoutMs > 0 && timeoutMs <= 180_000, 'Bounded Android command deadline required.');
+    await verify(checkpoint, cleanup);
+    return adb(copied, timeoutMs, cleanup);
+  } });
+}
+
 export function instrumentationPassed(text) {
   return typeof text === 'string' && /(?:^|\n)OK \(1 test\)\s*(?:\n|$)/u.test(text)
     && !/FAILURES!!!|INSTRUMENTATION_FAILED|INSTRUMENTATION_ABORTED|Process crashed|shortMsg=/u.test(text);
@@ -272,6 +352,8 @@ export async function simulatorAppDigest(directory) { return appDigest(await rea
 export async function runNativeInstallRuntime(options = {}) {
   const root = await realpath(options.rootDir ?? fileURLToPath(new URL('../../', import.meta.url)));
   const platform = options.platform; check(platform === 'android' || platform === 'ios', 'Use android or ios.');
+  check(platform === 'android' || options.adbServerPort === undefined, 'An ADB server port applies only to Android.');
+  const adbServerArgs = androidAdbServerArguments(options.adbServerPort);
   const runId = options.runId ?? randomUUID().replaceAll('-', '');
   check(/^[a-f0-9]{32}$/u.test(runId), 'Use one exact run UUID without separators.');
   const output = path.resolve(root, options.outDir ?? '.tmp/native-runtime/' + runId);
@@ -286,6 +368,7 @@ export async function runNativeInstallRuntime(options = {}) {
   const report = { schemaVersion: 1, kind: 'literary-planet-native-install-runtime', platform, channel: 'dev', runId,
     startedAt: new Date().toISOString(), status: 'NOT_RUN', releaseReady: false, installed: false, hardwareProtectionTested: false,
     checks: [], dependencies: [], commands: [], captures: [], cleanup: {},
+    ...(adbServerArgs.length === 0 ? {} : { adbServer: { host: adbServerArgs[1], port: Number(adbServerArgs[3]) } }),
     limits: ['No production/remote/store/payment authorization.', 'Emulator/simulator observations do not establish hardware protection.',
       'Screenshots and process liveness require UI review; neither proves full product/native acceptance.'] };
   const abort = new AbortController(), interrupt = () => abort.abort();
@@ -322,11 +405,12 @@ export async function runNativeInstallRuntime(options = {}) {
       timer = setTimeout(() => { if (child.exitCode === null && child.signalCode === null) { timedOut = true; child.kill('SIGKILL'); } }, timeoutMs);
     });
   }
-  const adb = (args, timeoutMs, cleanup) => command(tools.adb, ['-s', options.serial, ...args], timeoutMs, cleanup);
+  const adb = (args, timeoutMs, cleanup) => command(tools.adb, [...adbServerArgs, '-s', options.serial, ...args], timeoutMs, cleanup);
+  const offline = createAndroidOfflineGate(adb, entry => { report.checks.push(entry); });
   const sim = (args, timeoutMs, cleanup) => command(tools.xcrun, ['simctl', ...args], timeoutMs, cleanup);
   const record = (id, status, reason) => { report.checks.push({ id, status, ...(reason ? { reason } : {}) }); };
   async function androidInstrument(phase, cleanup = false, preference = false) {
-    const text = await adb(['shell', 'am', 'instrument', '-w', '-r', '-e', 'class', 'ru.probpera.literaryplanet.' + (preference ? 'PlanetPreferencesRuntimeTest' : 'PlanetSecureStoreRuntimeTest'),
+    const text = await offline.command('instrument-' + (preference ? 'preferences-' : 'secure-') + phase, ['shell', 'am', 'instrument', '-w', '-r', '-e', 'class', 'ru.probpera.literaryplanet.' + (preference ? 'PlanetPreferencesRuntimeTest' : 'PlanetSecureStoreRuntimeTest'),
       '-e', 'literaryRunId', runId, '-e', 'literaryPhase', phase, 'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner'], 60_000, cleanup);
     check(instrumentationPassed(text), 'Synthetic secure-store instrumentation did not pass: ' + phase);
   }
@@ -336,7 +420,7 @@ export async function runNativeInstallRuntime(options = {}) {
   }
   async function androidPreviousPreference(phase, cleanup = false) {
     check(['write','read','remove'].includes(phase), 'Exact historical preference fixture phase required.');
-    const text = await adb(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetPreviousPreferencesRuntimeTest',
+    const text = await offline.command('instrument-previous-' + phase, ['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetPreviousPreferencesRuntimeTest',
       '-e','literaryRunId',runId,'-e','literaryPhase',phase,'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner'],60_000,cleanup);
     check(instrumentationPassed(text), 'Historical isolated Preferences fixture did not pass: ' + phase);
   }
@@ -426,19 +510,20 @@ export async function runNativeInstallRuntime(options = {}) {
       check((await adb(['emu', 'avd', 'name'])).replaceAll('\r\n', '\n').trim() === options.avdName + '\nOK', 'Emulator is not the explicitly owned run AVD.');
       check((await adb(['shell', 'pm', 'list', 'packages', receipt.applicationId])).trim() === '', 'Refuse an already installed application; use a fresh own emulator.');
       check(Number((await adb(['shell', 'getprop', 'ro.build.version.sdk'])).trim()) >= 28, 'Synthetic instrumentation requires API 28 or newer.');
+      await offline.verify('owned-target-before-install');
       if (previousAssessment?.ready) {
         const plan = androidPreviousUpdatePlan(receipt,previousAssessment,runId);
-        await adb(plan.previousInstall,60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'previous';
+        await offline.command('install-previous',plan.previousInstall,60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'previous';
         await installedAndroidBytes(previousAssessment.previous.artifactSha256,'installed-previous-base.apk');
         record('previous-version-installed-byte-equality','PASS');
-        await adb(['install',path.resolve(root,receipt.testArtifactPath)],60_000); ownedTestInstall = true;
+        await offline.command('install-previous-fixture',['install',path.resolve(root,receipt.testArtifactPath)],60_000); ownedTestInstall = true;
         legacyPreferenceSeeded = true;
-        const seeded = await adb(plan.seedArguments,60_000); check(instrumentationPassed(seeded),'Previous application preference seed did not pass.');
+        const seeded = await offline.command('instrument-previous-seed',plan.seedArguments,60_000); check(instrumentationPassed(seeded),'Previous application preference seed did not pass.');
         record('previous-version-preferences-seed','PASS');
         await adb(['shell','am','force-stop',receipt.applicationId]);
-        await adb(plan.currentUpdate,60_000); installedAndroidGeneration = 'current';
-      } else { await adb(['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
-        await adb(['install', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true; }
+        await offline.command('install-current-update',plan.currentUpdate,60_000); installedAndroidGeneration = 'current';
+      } else { await offline.command('install-current',['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
+        await offline.command('install-current-fixture',['install', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true; }
       await installedAndroidBytes(receipt.artifactSha256,'installed-base.apk');
       report.installed = true; record('installed-package-byte-equality', 'PASS');
       if (previousAssessment?.ready) {
@@ -450,7 +535,7 @@ export async function runNativeInstallRuntime(options = {}) {
       }
       await androidInstrument('write'); record('secure-storage-write-ciphertext-readback', 'PASS');
       await androidPreference('write');
-      const launch = async () => { await adb(['shell', 'am', 'start', '-W', '-n', receipt.applicationId + '/ru.probpera.literaryplanet.MainActivity']);
+      const launch = async () => { await offline.command('application-launch',['shell', 'am', 'start', '-W', '-n', receipt.applicationId + '/ru.probpera.literaryplanet.MainActivity']);
         await delay(2500, undefined, { signal: abort.signal });
         check(/^[1-9][0-9]*(?: [1-9][0-9]*)*$/u.test((await adb(['shell', 'pidof', receipt.applicationId])).trim()), 'Native process is not alive.'); };
       await launch(); await capture('first-launch.png'); record('first-launch', 'PASS');
@@ -458,12 +543,14 @@ export async function runNativeInstallRuntime(options = {}) {
       await androidPreference('read', 'read-after-process');
       await adb(['shell', 'input', 'keyevent', 'KEYCODE_HOME']); await launch(); record('background-return-liveness', 'PASS');
       if (options.reboot === true) {
+        await offline.verify('owned-target-before-reboot');
         await adb(['reboot']); let booted = false;
         for (let attempt = 0; attempt < 20; attempt++) {
           await delay(2000, undefined, { signal: abort.signal });
           try { if ((await adb(['shell', 'getprop', 'sys.boot_completed'], 5000)).trim() === '1') { booted = true; break; } } catch {}
         }
         check(booted, 'Owned emulator did not reboot within the bounded window.');
+        await offline.verify('owned-target-after-reboot');
         await androidInstrument('read'); await launch(); record('system-restart-secure-readback', 'PASS');
         await androidPreference('read', 'read-after-system-restart');
       } else { record('system-restart-secure-readback', 'NOT_RUN', 'Use --reboot-owned-target for this own emulator only.');
@@ -474,8 +561,8 @@ export async function runNativeInstallRuntime(options = {}) {
       await androidInstrument('remove'); record('secure-store-remove', 'PASS');
       await androidInstrument('absent');
       await adb(['uninstall', receipt.applicationId]); ownedAndroidInstall = false;
-      await adb(['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
-      await adb(['install', '-r', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true;
+      await offline.command('install-clean-current',['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
+      await offline.command('install-clean-fixture',['install', '-r', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true;
       await androidInstrument('absent'); await launch(); await capture('clean-reinstall.png'); record('clean-reinstall-qa-key-absent', 'PASS');
       await androidPreference('absent', 'absent-after-clean-reinstall');
     } else {
@@ -541,7 +628,11 @@ export async function runNativeInstallRuntime(options = {}) {
     if (ownedAndroidInstall) {
       if (ownedTestInstall) { try { if (legacyPreferenceSeeded || installedAndroidGeneration === 'previous') await androidPreviousPreference('remove',true);
         else await androidInstrument('clear', true, true); report.cleanup.preferenceFixtureRemoved = true; } catch { report.cleanup.preferenceFixtureRemoved = false; } }
-      try { if (ownedTestInstall && installedAndroidGeneration === 'current') await androidInstrument('clear', true); await adb(['uninstall', receipt.applicationId], 30_000, true); report.cleanup.mainApplicationRemoved = true; }
+      if (ownedTestInstall && installedAndroidGeneration === 'current') {
+        try { await androidInstrument('clear', true); report.cleanup.secureFixtureRemoved = true; }
+        catch { report.cleanup.secureFixtureRemoved = false; }
+      }
+      try { await adb(['uninstall', receipt.applicationId], 30_000, true); report.cleanup.mainApplicationRemoved = true; }
       catch { report.cleanup.mainApplicationRemoved = false; }
     }
     if (ownedTestInstall) { try { await adb(['uninstall', 'ru.probpera.literaryplanet.dev.test'], 30_000, true); report.cleanup.testApplicationRemoved = true; } catch { report.cleanup.testApplicationRemoved = false; } }
@@ -561,11 +652,11 @@ if (isLocalCliEntry(import.meta.url)) {
     const name = args[index];
     if (name === '--execute') values.execute = true;
     else if (name === '--reboot-owned-target') values.reboot = true;
-    else if (['--platform', '--receipt', '--out', '--run-id', '--serial', '--avd-name'].includes(name) && typeof args[index + 1] === 'string' && !args[index + 1].startsWith('--')) values[name.slice(2)] = args[++index];
-    else throw new Error('Use --platform android|ios --receipt relative.json --out .tmp/... [--run-id 32hex --serial emulator-N --avd-name LiteraryPlanet-V12-32hex --execute --reboot-owned-target].');
+    else if (['--platform', '--receipt', '--out', '--run-id', '--serial', '--avd-name', '--adb-server-port'].includes(name) && typeof args[index + 1] === 'string' && !args[index + 1].startsWith('--')) values[name.slice(2)] = args[++index];
+    else throw new Error('Use --platform android|ios --receipt relative.json --out .tmp/... [--run-id 32hex --serial emulator-N --avd-name LiteraryPlanet-V12-32hex --adb-server-port EVENPORT --execute --reboot-owned-target].');
   }
   const report = await runNativeInstallRuntime({ platform: values.platform, receiptPath: values.receipt, outDir: values.out,
-    runId: values['run-id'], serial: values.serial, avdName: values['avd-name'], execute: values.execute, reboot: values.reboot });
+    runId: values['run-id'], serial: values.serial, avdName: values['avd-name'], adbServerPort: values['adb-server-port'] === undefined ? undefined : parseOwnedAdbServerPort(values['adb-server-port']), execute: values.execute, reboot: values.reboot });
   process.stdout.write(json({ status: report.status, platform: report.platform, runId: report.runId, releaseReady: false }));
   process.exitCode = report.status === 'PASS' ? 0 : 2;
 }
