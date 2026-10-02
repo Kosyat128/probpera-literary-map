@@ -7,6 +7,14 @@ const workers = Object.freeze([
     flags: Object.freeze({ NEWS_DELIVERY_ENABLED: 'enabled' }) }),
 ]);
 const fail = code => { throw new Error(code); };
+const expectationArgs = Object.freeze({ '--expect-enabled': 'enabled', '--expect-disabled': 'disabled',
+  '--expect-delivery-only': 'delivery-only', '--expect-auto-resume': 'auto-resume' });
+
+export function parseNativeNewsWorkerArgs(args) {
+  if (!Array.isArray(args) || args.length !== 1 || typeof args[0] !== 'string'
+    || !Object.hasOwn(expectationArgs, args[0])) fail('native_check_configuration_invalid');
+  return expectationArgs[args[0]];
+}
 
 async function boundedJson(response) {
   if (!response.ok) {
@@ -33,7 +41,7 @@ async function boundedJson(response) {
 export async function verifyNativeNewsWorkers({ accountId, apiToken, expected, fetchImpl = fetch } = {}) {
   if (typeof accountId !== 'string' || !/^[a-f0-9]{32}$/i.test(accountId)
     || typeof apiToken !== 'string' || !/^[A-Za-z0-9_-]{1,512}$/.test(apiToken)
-    || !['enabled', 'disabled'].includes(expected)) fail('native_check_configuration_invalid');
+    || !['enabled', 'disabled', 'delivery-only', 'auto-resume'].includes(expected)) fail('native_check_configuration_invalid');
   const read = async (worker, suffix) => {
     const url = new URL('https://api.cloudflare.com');
     url.pathname = `/client/v4/accounts/${accountId}/workers/scripts/${worker.name}/${suffix}`;
@@ -47,13 +55,23 @@ export async function verifyNativeNewsWorkers({ accountId, apiToken, expected, f
     return boundedJson(response);
   };
   const results = [];
+  let actualExpected = expected;
   for (const worker of workers) {
     const settings = await read(worker, 'settings');
     if (!Array.isArray(settings.bindings)) fail('native_check_bindings_invalid');
+    if (expected === 'auto-resume' && worker.name === 'probpera-literary-news-preparation') {
+      const active = settings.bindings.filter(row => row?.name === 'NEWS_AUTOMATION_ENABLED');
+      const bootstrap = settings.bindings.filter(row => row?.name === 'NEWS_AUTOMATION_BOOTSTRAP');
+      if (active.length !== 1 || bootstrap.length !== 1 || active[0].type !== 'plain_text'
+        || bootstrap[0].type !== 'plain_text' || !['true', 'false'].includes(active[0].text)
+        || bootstrap[0].text !== active[0].text) fail('native_check_flag_mismatch');
+      actualExpected = active[0].text === 'true' ? 'enabled' : 'delivery-only';
+    }
     const flags = {};
     for (const [name, expectation] of Object.entries(worker.flags)) {
       const matching = settings.bindings.filter(row => row?.name === name);
-      const value = expectation === 'enabled' ? String(expected === 'enabled') : expectation;
+      const enabled = actualExpected === 'enabled' || actualExpected === 'delivery-only' && worker.name === 'probpera-literary-news-delivery';
+      const value = expectation === 'enabled' ? String(enabled) : expectation;
       if (matching.length !== 1 || matching[0].type !== 'plain_text' || matching[0].text !== value) fail('native_check_flag_mismatch');
       Object.defineProperty(flags, name, { value, enumerable: true });
     }
@@ -62,16 +80,16 @@ export async function verifyNativeNewsWorkers({ accountId, apiToken, expected, f
       || schedules.schedules[0]?.cron !== worker.cron) fail('native_check_schedule_mismatch');
     results.push({ worker: worker.name, flags, cronUtc: worker.cron });
   }
-  return { readonly: true, externalWrites: 0, providerRequests: 4, expected, workers: results,
+  return { readonly: true, externalWrites: 0, providerRequests: 4, expected: actualExpected,
+    ...(expected === 'auto-resume' ? { requestedExpected: 'auto-resume' } : {}), workers: results,
     deliveryConfirmed: false, checkedAt: new Date().toISOString() };
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   try {
-    const args = process.argv.slice(2);
-    if (args.length !== 1 || !['--expect-enabled', '--expect-disabled'].includes(args[0])) fail('native_check_configuration_invalid');
+    const expected = parseNativeNewsWorkerArgs(process.argv.slice(2));
     const result = await verifyNativeNewsWorkers({ accountId: process.env.CLOUDFLARE_ACCOUNT_ID,
-      apiToken: process.env.CLOUDFLARE_API_TOKEN, expected: args[0] === '--expect-enabled' ? 'enabled' : 'disabled' });
+      apiToken: process.env.CLOUDFLARE_API_TOKEN, expected });
     console.log(JSON.stringify(result, null, 2));
   } catch (error) {
     const code = /^native_check_[a-z_]+$/.test(error?.message || '') ? error.message : 'native_check_failed';

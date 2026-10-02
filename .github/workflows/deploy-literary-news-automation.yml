@@ -1,6 +1,9 @@
 name: Deploy native literary news automation
 
 on:
+  schedule:
+    # One recovery attempt after the daily UTC reset; successful activation skips future probes.
+    - cron: "7 0 * * *"
   workflow_dispatch:
     inputs:
       expected_main_sha:
@@ -8,7 +11,12 @@ on:
         required: true
         type: string
       enabled:
-        description: Activate the verified one-year preparation and Telegram schedule
+        description: Activate the verified Telegram delivery schedule
+        required: true
+        type: boolean
+        default: false
+      preparation_enabled:
+        description: Also activate preparation after both real AI protocols pass; keep false while AI quota is unavailable
         required: true
         type: boolean
         default: false
@@ -22,7 +30,7 @@ concurrency:
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'schedule' || (vars.LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME == 'true' && vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED == 'true' && vars.LITERARY_NEWS_RUNTIME_ENABLED == 'true'))
     runs-on: ubuntu-latest
     timeout-minutes: 30
     environment:
@@ -30,17 +38,32 @@ jobs:
     env:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      DEPLOY_ENABLED: ${{ github.event_name == 'schedule' || inputs.enabled }}
+      DEPLOY_PREPARATION_ENABLED: ${{ github.event_name == 'schedule' || inputs.preparation_enabled }}
+      DEPLOY_EXPECTED_SHA: ${{ github.event_name == 'schedule' && github.sha || inputs.expected_main_sha }}
     steps:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
       - name: Verify the immutable release invocation
+        id: invocation
         env:
           GH_TOKEN: ${{ github.token }}
-          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
-          ENABLED: ${{ inputs.enabled }}
+          EXPECTED_MAIN_SHA: ${{ env.DEPLOY_EXPECTED_SHA }}
+          ENABLED: ${{ env.DEPLOY_ENABLED }}
+          PREPARATION_ENABLED: ${{ env.DEPLOY_PREPARATION_ENABLED }}
           NATIVE_DELIVERY_ENABLED: ${{ vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED }}
+          NATIVE_PREPARATION_ENABLED: ${{ vars.LITERARY_NEWS_NATIVE_PREPARATION_ENABLED }}
           RUNTIME_ENABLED: ${{ vars.LITERARY_NEWS_RUNTIME_ENABLED }}
+          LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME: ${{ vars.LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME }}
+          LITERARY_NEWS_NATIVE_PREPARATION_RESUME_AFTER: ${{ vars.LITERARY_NEWS_NATIVE_PREPARATION_RESUME_AFTER }}
+          LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON: ${{ vars.LITERARY_NEWS_NATIVE_PREPARATION_BLOCK_REASON }}
+          LITERARY_NEWS_NATIVE_DELIVERY_ENABLED: ${{ vars.LITERARY_NEWS_NATIVE_DELIVERY_ENABLED }}
+          LITERARY_NEWS_RUNTIME_ENABLED: ${{ vars.LITERARY_NEWS_RUNTIME_ENABLED }}
         run: |
           set -Eeuo pipefail
           [[ "$EXPECTED_MAIN_SHA" =~ ^[0-9a-f]{40}$ ]]
@@ -48,24 +71,31 @@ jobs:
           [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
           test -n "$CLOUDFLARE_ACCOUNT_ID"
           test -n "$CLOUDFLARE_API_TOKEN"
+          [[ "$PREPARATION_ENABLED" != "true" || "$ENABLED" == "true" ]]
           if [[ "$ENABLED" == "true" ]]; then
             [[ "$NATIVE_DELIVERY_ENABLED" == "true" && "$RUNTIME_ENABLED" == "true" ]]
+            if [[ "$GITHUB_EVENT_NAME" != "schedule" ]]; then
+              [[ "$NATIVE_PREPARATION_ENABLED" == "$PREPARATION_ENABLED" ]]
+            fi
           fi
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 24
-          cache: npm
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
+            node scripts/check-literary-news-quota-resume.mjs
+          else
+            echo "run_needed=true" >> "$GITHUB_OUTPUT"
+          fi
       - name: Install exact dependencies
+        if: steps.invocation.outputs.run_needed == 'true'
         run: npm ci
       - name: Verify native preparation, delivery and media boundaries
+        if: steps.invocation.outputs.run_needed == 'true'
         run: |
-          npx vitest run scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
+          npx vitest run scripts/check-literary-news-quota-resume.test.mjs scripts/verify-native-news-workers.test.mjs scripts/check-literary-news-native-ai-binding.test.mjs scripts/lib/literary-news-preparation-fence.test.mjs scripts/workers/literary-news-preparation-worker.test.mjs scripts/workers/literary-news-delivery-worker.test.mjs scripts/lib/literary-news-daily-automation.test.mjs scripts/lib/literary-news-delivery-media-profile.test.mjs
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-preparation.jsonc --outdir .tmp/native-news-preparation
           node node_modules/wrangler/bin/wrangler.js deploy --dry-run --config scripts/wrangler.literary-news-delivery.jsonc --outdir .tmp/native-news-delivery
       - name: Verify the deployed public feed before activating writes
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
         env:
-          NEWS_RELEASE_SHA: ${{ inputs.expected_main_sha }}
+          NEWS_RELEASE_SHA: ${{ env.DEPLOY_EXPECTED_SHA }}
         run: |
           node --input-type=module <<'NODE'
           import {checkDeployedReleaseCodeHead} from './scripts/check-deployed-release-head.mjs';
@@ -74,7 +104,7 @@ jobs:
           NODE
           node scripts/verify-literary-news-live.mjs --expected-head "$NEWS_RELEASE_SHA"
       - name: Verify the bounded runtime and existing Telegram history
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -99,7 +129,7 @@ jobs:
           console.log(JSON.stringify({historyReconciled:true,dayStatus:checkedDeliveryDayStatus(status.data,now),dueJobs:due.data.length}));
           NODE
       - name: Verify current Telegram identity and publication rights without posting
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
@@ -115,7 +145,7 @@ jobs:
           console.log(JSON.stringify({telegramRightsVerified:true,destinationId:destination.id,readonly:true,delivered:0}));
           NODE
       - name: Validate retained preparation ownership and checkpoints without writes
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true' && env.DEPLOY_PREPARATION_ENABLED == 'true'
         run: |
           node --input-type=module <<'NODE'
           import {createDailyNewsStorageClient} from './scripts/lib/literary-news-daily-automation.mjs';
@@ -126,23 +156,18 @@ jobs:
           console.log(JSON.stringify(await checkNativeNewsActivationReadiness({owner,ledger,profile})));
           NODE
       - name: Verify both configured AI protocols with unpublished fixtures
-        if: inputs.enabled
-        run: |
-          node --input-type=module <<'NODE'
-          import {createDailyWorkersAiClient} from './scripts/lib/literary-news-daily-automation.mjs';
-          const client=createDailyWorkersAiClient({accountId:process.env.CLOUDFLARE_ACCOUNT_ID,apiToken:process.env.CLOUDFLARE_API_TOKEN,maxCalls:2});
-          const messages=[{role:'system',content:'This is a connectivity check using an isolated fixture, not a real source or publication. Return valid JSON for the supplied schema. For a draft return status held, reason connectivity_fixture, empty strings in both title and summary languages, category publishing, eventIdentity connectivity fixture, literaryEvidence empty and facts empty. For a review return accepted false, all other booleans false, duplicateOf null, unsupportedClaims and factChecks empty. Do not invent news.'}];
-          for(const phase of ['draft','review']){
-            const result=await client.request({phase,messages});
-            if(phase==='draft'?result.status!=='held':result.accepted!==false)throw Error('native_ai_protocol_unconfirmed');
-            console.log(JSON.stringify({phase,protocolConfirmed:true,published:false}));
-          }
-          NODE
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true' && env.DEPLOY_PREPARATION_ENABLED == 'true'
+        # Match production env.AI.run using an isolated Worker preview with explicit
+        # deployment-token auth. No local OAuth, production bindings or publication.
+        run: node scripts/check-literary-news-native-ai-binding.mjs
       - name: Establish disabled Workers and their coordinators
+        id: establish_workers
+        if: steps.invocation.outputs.run_needed == 'true'
         run: |
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:false --var NEWS_AUTOMATION_BOOTSTRAP:false
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:false
       - name: Install only the delivery credentials through stdin
+        if: steps.invocation.outputs.run_needed == 'true'
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -161,7 +186,7 @@ jobs:
           });
           NODE
       - name: Restore verified photo bytes
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
         uses: actions/cache@v5
         with:
           path: .tmp/news-social-media
@@ -169,7 +194,7 @@ jobs:
           restore-keys: |
             literary-news-jpeg-${{ runner.os }}-${{ hashFiles('data/news/social-media-assets.json', 'scripts/lib/literary-news-media*.mjs', 'package-lock.json') }}-
       - name: Prepare licensed photo bytes and complete admissions
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
         env:
           SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -177,10 +202,11 @@ jobs:
           node scripts/sync-literary-news-delivery-media.mjs
           node scripts/publish-literary-news.mjs --capture
       - name: Activate the verified native schedules
-        if: inputs.enabled
+        if: steps.invocation.outputs.run_needed == 'true' && env.DEPLOY_ENABLED == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          EXPECTED_MAIN_SHA: ${{ inputs.expected_main_sha }}
+          EXPECTED_MAIN_SHA: ${{ env.DEPLOY_EXPECTED_SHA }}
+          PREPARATION_ENABLED: ${{ env.DEPLOY_PREPARATION_ENABLED }}
         run: |
           set -Eeuo pipefail
           [[ "$(gh api "repos/$GITHUB_REPOSITORY/commits/main" --jq '.sha')" == "$EXPECTED_MAIN_SHA" ]]
@@ -190,31 +216,46 @@ jobs:
           if(head.codePending)throw Error('public_site_release_unconfirmed');
           NODE
           node scripts/verify-literary-news-live.mjs --expected-head "$EXPECTED_MAIN_SHA"
-          node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
+          if [[ "$PREPARATION_ENABLED" == "true" ]]; then
+            node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-preparation.jsonc --var NEWS_AUTOMATION_ENABLED:true --var NEWS_AUTOMATION_BOOTSTRAP:true
+          fi
           node node_modules/wrangler/bin/wrangler.js deploy --config scripts/wrangler.literary-news-delivery.jsonc --var NEWS_DELIVERY_ENABLED:true
       - name: Verify the actual Worker flags and Cron schedules
+        if: steps.invocation.outputs.run_needed == 'true'
         env:
-          ENABLED: ${{ inputs.enabled }}
+          ENABLED: ${{ env.DEPLOY_ENABLED }}
+          PREPARATION_ENABLED: ${{ env.DEPLOY_PREPARATION_ENABLED }}
         run: |
-          if [[ "$ENABLED" == "true" ]]; then
+          if [[ "$ENABLED" == "true" && "$PREPARATION_ENABLED" == "true" ]]; then
             node scripts/verify-native-news-workers.mjs --expect-enabled
+          elif [[ "$ENABLED" == "true" ]]; then
+            node scripts/verify-native-news-workers.mjs --expect-delivery-only
           else
             node scripts/verify-native-news-workers.mjs --expect-disabled
           fi
       - name: Record the schedule window
+        if: steps.invocation.outputs.run_needed == 'true'
         env:
-          ENABLED: ${{ inputs.enabled }}
+          ENABLED: ${{ env.DEPLOY_ENABLED }}
+          PREPARATION_ENABLED: ${{ env.DEPLOY_PREPARATION_ENABLED }}
         run: |
           node --input-type=module <<'NODE'
           import {appendFile} from 'node:fs/promises';
           import {DAILY_NEWS_WINDOW} from './scripts/lib/literary-news-daily-profile.mjs';
-          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native preparation and delivery enabled: ${process.env.ENABLED}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Preparation: every two hours; Telegram: hourly from 08:00 through 22:00 Moscow, target 10-15 fresh literary news daily, photo priority with text fallback. Actual publication and Telegram acknowledgements require postflight verification.\n`);
+          const preparation=process.env.ENABLED==='true'&&process.env.PREPARATION_ENABLED==='true';
+          await appendFile(process.env.GITHUB_STEP_SUMMARY,`Native delivery enabled: ${process.env.ENABLED}. Native preparation enabled: ${preparation}. Window: ${DAILY_NEWS_WINDOW.start} through ${DAILY_NEWS_WINDOW.endExclusive} (exclusive), ${DAILY_NEWS_WINDOW.timeZone}. Telegram: hourly from 08:00 through 22:00 Moscow, target 10-15 fresh literary news daily, photo priority with text fallback. ${preparation?'Preparation: every two hours after both AI protocols passed.':'Preparation remains disabled; the verified existing public feed supplies delivery. No AI inference or checkpoint writes were authorized by this delivery-only activation.'} Actual Telegram acknowledgements require postflight verification.\n`);
           NODE
       - name: Record recovery requirements after a failed activation
-        if: failure() && inputs.enabled
+        if: failure() && env.DEPLOY_ENABLED == 'true' && (github.event_name != 'schedule' || steps.establish_workers.outcome != 'skipped')
         run: |
           cat >> "$GITHUB_STEP_SUMMARY" <<'RECOVERY'
           Activation failed. The native delivery repository flag is an operator-controlled switch; this workflow does not have permission to restore it. Do not assume that Telegram delivery is active or that rollback happened.
 
           Recovery: invoke this workflow on the current exact main SHA with enabled=false and verify that both Workers were deployed disabled. Then restore LITERARY_NEWS_NATIVE_DELIVERY_ENABLED=false using an authorized repository operator, enabling the existing bounded Node delivery fallback. Keep the native AI owner checkpoint intact; preparation ownership requires a separate explicit handoff before any Node AI writer can commit. Investigate the failed step before retrying activation.
           RECOVERY
+      - name: Record a stopped automatic recovery before Worker changes
+        if: failure() && github.event_name == 'schedule' && steps.establish_workers.outcome == 'skipped'
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'STOP'
+          Automatic preparation recovery stopped before any Worker configuration or retained checkpoint changes. Existing delivery configuration remains unchanged. Inspect the failed release, rights, history, ownership or AI protocol gate; this is not a successful preparation activation. The daily recovery schedule can try again after the next UTC reset. No paid plan upgrade or Node AI ownership transfer occurred.
+          STOP

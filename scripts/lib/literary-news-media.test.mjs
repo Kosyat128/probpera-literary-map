@@ -217,6 +217,17 @@ describe("native photo delivery without duplicate creates",()=>{
     expect((await transport.send({destination:telegram,prepared:f.prepared,remoteId:"17",remoteMediaKind:"photo",delivery})).remoteId).toBe("17");
     expect(calls).toEqual(["sendPhoto","editMessageMedia"]);
   });
+  it("acknowledges an unchanged photo edit at its existing ID without inventing a file receipt",async()=>{
+    const f=await prepared();
+    const description="Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message";
+    const fetchImpl=vi.fn(async()=>Response.json({ok:false,error_code:400,description},{status:400}));
+    const transport=createNewsSocialTransport({mode:"live",telegramToken:"fixture",fetchImpl,mediaOptions:f.mediaOptions});
+    const {delivery}=await transport.prepareDelivery({destination:telegram,prepared:f.prepared,providerAccountId:"42"});
+    expect(await transport.send({destination:telegram,prepared:f.prepared,remoteId:"17",remoteMediaKind:"photo",delivery}))
+      .toEqual({kind:"accepted",unchanged:true,remoteId:"17",remoteMediaKind:"photo",remoteUrl:"https://t.me/c/123/17"});
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    expect(new URL(fetchImpl.mock.calls[0][0]).pathname.endsWith("/editMessageMedia")).toBe(true);
+  });
   it("uploads a VK photo before wall.post, binds owner and never sends its token to the upload host",async()=>{
     const f=await prepared(vk),calls=[];
     const fetchImpl=vi.fn(async(url,options)=>{const method=url.split("/").at(-1);calls.push(method);const data=Object.fromEntries(new URLSearchParams(options.body));

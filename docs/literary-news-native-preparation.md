@@ -4,8 +4,9 @@ The private Worker is `probpera-literary-news-preparation`, configured by
 `scripts/wrangler.literary-news-preparation.jsonc`. Its public request handler always
 returns 404. The fixed Cron invokes one `DailyNewsPreparationCoordinator` SQLite
 Durable Object. The coordinator owns approved daily profile and annual ledger writes;
-scheduled GitHub Actions only collect delivery/media snapshots and deliver existing
-reviewed items.
+scheduled GitHub delivery/media Actions only collect snapshots and deliver existing
+reviewed items. A separate guarded deployment workflow can activate the native
+coordinator after its verification checks pass.
 
 The default configuration disables preparation. Activation requires the existing AI
 and `NEWS_STATE` bindings, `NEWS_AUTOMATION_WRITER=native`, and an explicit bootstrap
@@ -74,6 +75,60 @@ ledger/profile and transfer their exact digest to the small fence while native
 remains disabled. Bootstrap cannot silently perform that transfer.
 
 ## Verification limits
+
+On 2026-10-02, the intended GitHub token reached the real native AI binding in run
+`36955958406`; the draft request stopped with `ai_quota_exceeded`. Preparation was
+left disabled. This result establishes the initial quota stop, not successful
+draft/review execution or a continuous supply of new stories.
+
+The explicit delivery-only deployment keeps `NEWS_AUTOMATION_ENABLED=false`,
+`NEWS_AUTOMATION_BOOTSTRAP=false` and `NEWS_AUTOMATION_WRITER=native`, while setting
+`NEWS_DELIVERY_ENABLED=true`. Delivery uses the existing reviewed feed and its
+eligible records, spacing and receipt checks. It does not invoke AI preparation,
+generate replacement stories or transfer ledger ownership to another writer. Both
+Cron schedules stay unchanged; the disabled preparer performs no scheduled work.
+
+After this deployment, `node scripts/verify-native-news-workers.mjs
+--expect-delivery-only` checks the two Workers' settings and schedules with exactly
+four read-only GETs. It requires preparation/bootstrap off and delivery on, rejects
+conflicting expectation flags, and prints only approved operational fields. These
+configuration checks do not prove a Telegram receipt or guarantee future feed
+availability. Returning to full preparation requires restored provider capacity
+and a successful two-protocol activation check; a quota error must not be bypassed.
+
+The owner authorized automatic retry after the next intended UTC quota reset.
+`LITERARY_NEWS_NATIVE_PREPARATION_AUTO_RESUME=true` enables the daily deployment
+check at 00:07 UTC (03:07 Moscow), with the earliest allowed instant fixed by
+`LITERARY_NEWS_NATIVE_PREPARATION_RESUME_AFTER=2026-10-03T00:00:00.000Z`. Before that
+instant the workflow skips activation. Afterwards it first reads both Workers'
+actual flags and schedules with four GETs. If full preparation is already enabled,
+it skips the fixture requests and redeployment. Otherwise it checks both unpublished
+AI fixture protocols and all existing activation guards before any production
+configuration write. A refused request, quota error or invalid protocol response
+leaves preparation disabled and keeps delivery available from the reviewed feed.
+The scheduled check does not purchase capacity or configure a paid-plan upgrade.
+
+`LITERARY_NEWS_NATIVE_PREPARATION_ENABLED=false` may remain as the repository's
+initial configuration after successful automatic activation; the workflow does not
+write GitHub variables. With the explicit auto-resume flag, the read-only operations
+monitor selects `expected: 'auto-resume'` in the fixed four-GET verifier and uses the
+validated actual Worker mode as its source of truth. While preparation remains off, it reports
+`preparation_disabled`, the explicitly configured `ai_quota_exceeded` block reason,
+and unknown preparation counts as `null`. It reports the canonical scheduled retry
+timestamp separately; that timestamp is not evidence of recovered quota or a
+successful activation. Once the actual preparation flags are on, every original
+profile, ledger, ownership, heartbeat, freshness and provider-stop check is required
+again, regardless of the historical repository flag or quota reason. Feed identity,
+Telegram delivery heartbeat, due queue and actual daily/historical receipts remain
+required in both modes. Neither this monitor nor the scheduled activation uses a
+Codex session or the Node fallback writer for runtime preparation.
+
+Activation checks both unpublished fixture protocols through an isolated remote
+AI binding using the explicitly supplied GitHub deployment token. It does not read
+local Wrangler OAuth, install another credential, or use production KV, queues,
+coordinators or Telegram. The same `env.AI.run` adapter, models and response parser
+used by preparation are checked. A refused preview or AI request blocks activation;
+successful fixture responses do not establish any actual news publication.
 
 Local tests use fake AI/storage and do not establish account quota, deployment,
 delivery or a daily supply guarantee. Wrangler dry-run proves bundling only.

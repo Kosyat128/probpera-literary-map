@@ -17,6 +17,9 @@ async function boundedJson(response) {
   } finally { await reader.cancel().catch(() => {}); reader.releaseLock(); }
 }
 const validId = (id) => Number.isSafeInteger(id) && id > 0;
+// Exact MESSAGE_NOT_MODIFIED mapping in Telegram's official Bot API server.
+// Other HTTP 400 errors cannot establish the state of an existing message.
+const telegramNotModified = "Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message";
 const retrySeconds = (value, fallback = 60) => Number.isSafeInteger(Number(value)) && Number(value) > 0 ? Math.min(Number(value), 86400) : fallback;
 function vkUploadFailure(response) {
   const {status,data}=response;
@@ -185,6 +188,10 @@ export function createNewsSocialTransport({ mode = "shadow", telegramToken, vkTo
           remoteUrl: /^-100\d+$/.test(destination.id) ? `https://t.me/c/${destination.id.slice(4)}/${data.result.message_id}` : null,
         };
         if (data?.ok === false && [401, 403].includes(data.error_code)) return { kind: "blocked", scope: "auth", code: "telegram_permission_denied" };
+        if (status === 400 && data?.ok === false && data.error_code === 400 && data.description === telegramNotModified
+          && validId(Number(remoteId)) && ["literary-news-text-v1", "literary-news-photo-v1"].includes(prepared.profile))
+          return { kind: "accepted", unchanged: true, remoteId: String(remoteId), remoteMediaKind: prepared.media ? "photo" : "text",
+            remoteUrl: /^-100\d+$/.test(destination.id) ? `https://t.me/c/${destination.id.slice(4)}/${remoteId}` : null };
         if (data?.ok === false && data.error_code === 400) return { kind: "blocked", code: "telegram_request_rejected" };
       } else {
         if (!data?.error && validId(data?.response?.post_id)

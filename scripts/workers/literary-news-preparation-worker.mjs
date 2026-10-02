@@ -1,10 +1,12 @@
 import {Buffer} from 'node:buffer';
 import {collectDailyNewsReview} from '../lib/literary-news-daily-intake.mjs';
 import {LITERARY_NEWS_SOURCES} from '../lib/literary-news-sources.mjs';
-import {canonicalUrl} from '../lib/literary-news-reviewed.mjs';
+import {canonicalUrl,validTimestamp} from '../lib/literary-news-reviewed.mjs';
 import {newsJsonStream} from '../lib/literary-news-json.mjs';
 import {readNewsJsonArray} from '../lib/literary-news-json-reader.mjs';
-import {runDailyNewsAutomation,mergeDailyLedgers,dailyNewsModelRequest,parseDailyNewsModelResult,validateDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
+import {runDailyNewsAutomation,mergeDailyLedgers,validateDailyLedger,checkedDailyCandidate} from '../lib/literary-news-daily-automation.mjs';
+import {createPreparationBindingAi} from '../lib/literary-news-preparation-binding-ai.mjs';
+export {createPreparationBindingAi} from '../lib/literary-news-preparation-binding-ai.mjs';
 import {DAILY_NEWS_PROFILE_KEY,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_OWNER_KEY,DAILY_NEWS_WINDOW,DAILY_NEWS_LIMITS,
   dailyNewsDay,dailyNewsDigest,approvedDailySource,validateDailyApprovedPayload,validateDailyNewsRecord} from '../lib/literary-news-daily-profile.mjs';
 import {acquireNewsPreparationLease,stageNewsPreparationCheckpoint,confirmNewsPreparationCheckpoint,stageNewsPreparationPublication,
@@ -82,25 +84,6 @@ export function createPreparationSourceFetch({sources=LITERARY_NEWS_SOURCES,fetc
     }fail('daily_source_redirect_limit');
   };
 }
-export function createPreparationBindingAi(binding,{deadline=Infinity,now=()=>Date.now(),timeoutMs=45000}={}){
-  if(typeof binding?.run!=='function')fail('daily_ai_binding_missing');let stopped=null;
-  return{async request(args){
-    if(stopped)throw stopped;
-    if(deadline-now()<timeoutMs+15000)fail('ai_execution_deadline');
-    const{model,input}=dailyNewsModelRequest(args);let timer;
-    try{const result=await Promise.race([binding.run(model,input,{signal:AbortSignal.timeout(timeoutMs)}),new Promise((_,reject)=>{
-      timer=setTimeout(()=>reject(Error('ai_request_timeout')),timeoutMs);})]);
-      const codes=[...(Array.isArray(result?.errors)?result.errors:[]),result?.error].filter(Boolean).map(e=>Number(e.code));
-      if(codes.some(c=>[4006,3036,402].includes(c)))throw Object.assign(Error('ai_quota_exceeded'),{httpStatus:result?.status===402?402:null});
-      if(codes.includes(429)||result?.status===429)throw Object.assign(Error('ai_http_429'),{httpStatus:429});
-      return parseDailyNewsModelResult(result);
-    }catch(error){const code=Number(error?.code||error?.cause?.code),http=Number(error?.status||error?.statusCode||error?.httpStatus);
-      const quota=[4006,3036,402].includes(code)||http===402||/(?:^|\D)(?:4006|3036)(?:\D|$)/.test(error?.message||'');
-      stopped=Object.assign(Error(quota?'ai_quota_exceeded':http===429?'ai_http_429':safeError(error)),
-        {httpStatus:Number.isInteger(http)&&http>=100&&http<=599?http:null});throw stopped;
-    }finally{clearTimeout(timer);}
-  }};
-}
 async function readJsonBinding(kv,key,maxBytes,{onEntry}={}){
   const raw=await kv.get(key,maxBytes>4096?'stream':'text');if(raw===null)return null;
   if(typeof raw==='string'){
@@ -146,6 +129,15 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
   const owner=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_OWNER_KEY,4096);
   if(owner!==null&&!(owner.schemaVersion===1&&owner.owner==='native'&&owner.nativeEnabled===true&&owner.drained===false))fail('daily_native_owner_not_authorized');
   if(owner===null&&!bootstrap)fail('daily_native_owner_not_authorized');
+  const previousReport=await readJsonBinding(env.NEWS_STATE,PREPARATION_REPORT_KEY,65536);
+  if(previousReport?.stoppedReason==='ai_quota_exceeded'){
+    if(!validTimestamp(previousReport.checkedAt)||Date.parse(previousReport.checkedAt)>started.getTime())
+      fail('daily_provider_quota_checkpoint_uncertain');
+    const stoppedDay=new Date(previousReport.checkedAt).toISOString().slice(0,10);
+    if(stoppedDay===started.toISOString().slice(0,10))return{status:'provider_quota_cooldown',stoppedReason:'ai_quota_exceeded',
+      checkedAt:previousReport.checkedAt,retryAfterAt:new Date(Date.UTC(started.getUTCFullYear(),started.getUTCMonth(),started.getUTCDate()+1)).toISOString(),
+      publicationConfirmed:false,deliveryConfirmed:false};
+  }
   const previous=await readJsonBinding(env.NEWS_STATE,DAILY_NEWS_LEDGER_KEY,DAILY_NEWS_LIMITS.ledgerBytes,{onEntry:async record=>{
     await validateDailyNewsRecord(record,started);return record;
   }});
@@ -193,6 +185,8 @@ export async function runNativeNewsPreparation(env,storage,{now=()=>new Date(),c
     result.report.native={window:DAILY_NEWS_WINDOW,writer:'native',sourceCounts:intake.counts||null,
       maximumCandidateAttempts:bounded.maximum,maximumAiCalls:bounded.maximum*2,deadlineMinutes:6,deterministicHeld:bounded.held,
       ownerFence:'durable-object-lease-and-staged-ledger-hash'};
+    // A quota result belongs to the UTC day when it was observed, including a run crossing midnight.
+    if(result.report.stoppedReason==='ai_quota_exceeded')result.report.checkedAt=now().toISOString();
     await env.NEWS_STATE.put(PREPARATION_REPORT_KEY,JSON.stringify(result.report));
     return result.report;
   }finally{await releaseNewsPreparationLease(storage,lease.leaseId);}
