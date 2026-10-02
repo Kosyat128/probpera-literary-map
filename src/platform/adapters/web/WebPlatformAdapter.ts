@@ -20,6 +20,7 @@ import { BOOKY_PREFERENCE_KEY, BookyPreferenceUnsupportedError, decodeBookyPrefe
 import { BOOKY_READER_POLICY_KEY, parseBookyReaderPolicy } from "../../../host/bookyReaderPolicy";
 import { BOOKY_JOURNEY_PROGRESS_KEY, parseBookyJourneyProgress } from "../../../host/bookyJourneyProgress";
 import { BOOKY_MOTION_PREFERENCE_KEY, isBookyMotionMode } from "../../../host/bookyMotionPreference";
+import { BOOKY_SIZE_PREFERENCE_KEY, BOOKY_COMPANION_SIZES, isBookyCompanionSize } from "../../../host/bookySizePreference";
 
 type EventHost = Pick<EventTarget, "addEventListener" | "removeEventListener">;
 export interface WebAdapterConnection extends EventHost { readonly type?: string; }
@@ -57,6 +58,7 @@ const preferenceValues = new Map<string, readonly string[]>([
   ["probpera-planet-welcome-v1", ["completed"]],
   ["probpera-planet-graphics-quality-v1", ["high", "balanced", "economy"]],
   [BOOKY_MOTION_PREFERENCE_KEY, ["system", "calm"]],
+  [BOOKY_SIZE_PREFERENCE_KEY, BOOKY_COMPANION_SIZES],
   ["probpera-planet-download-network-v1", ["any-network", "wifi-only"]],
   ["probpera.globe-edition.v2", [...GLOBE_EDITION_IDS, "antique", "modern", "earth"]],
   ["probpera.globe-style.v1", ["antique", "modern", "earth"]],
@@ -104,14 +106,15 @@ export function createWebPlatformAdapter(
   const preferences: PreferenceStore = Object.freeze({
     persistence: "best-effort" as const,
     async get(key: string) {
-      if (key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) {
+      if (key === BOOKY_SIZE_PREFERENCE_KEY || key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY) {
         try {
           const value = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null).getItem(key);
           // Preserve invalid/future records for controller classification, and
           // never accept the resilient facade's cached value or empty fallback.
           if (value === null || typeof value === "string") return value;
         } catch { /* A failed read cannot supply current policy or progress. */ }
-        throw new Error(key === BOOKY_MOTION_PREFERENCE_KEY ? "booky-motion-preference-unavailable"
+        throw new Error(key === BOOKY_SIZE_PREFERENCE_KEY ? "booky-size-preference-unavailable"
+          : key === BOOKY_MOTION_PREFERENCE_KEY ? "booky-motion-preference-unavailable"
           : key === BOOKY_JOURNEY_PROGRESS_KEY ? "booky-journey-progress-unavailable" : "booky-reader-policy-unavailable");
       }
       if (key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY || key === GLOBE_STAND_PREFERENCE_KEY || key === GLOBE_BACKGROUND_PREFERENCE_KEY
@@ -137,8 +140,9 @@ export function createWebPlatformAdapter(
       return value !== null && permitted.includes(value) ? value : null;
     },
     async set(key: string, value: string) {
-      if (key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
-        if (key === BOOKY_MOTION_PREFERENCE_KEY ? !isBookyMotionMode(value)
+      if (key === BOOKY_SIZE_PREFERENCE_KEY || key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
+        if (key === BOOKY_SIZE_PREFERENCE_KEY ? !isBookyCompanionSize(value)
+          : key === BOOKY_MOTION_PREFERENCE_KEY ? !isBookyMotionMode(value)
           : key === BOOKY_JOURNEY_PROGRESS_KEY ? typeof value !== "string" || !parseBookyJourneyProgress(value)
           : key === BOOKY_READER_POLICY_KEY ? typeof value !== "string" || !parseBookyReaderPolicy(value)
           : key === BOOKY_PREFERENCE_KEY ? typeof value !== "string" || decodeBookyPreference(value)?.sourceSchemaVersion !== 2 : !parseGlobeComposition(value)) return false;
@@ -155,7 +159,7 @@ export function createWebPlatformAdapter(
         && readWebStorage("local", key, storageHost) === value;
     },
     async remove(key: string) {
-      if (key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
+      if (key === BOOKY_SIZE_PREFERENCE_KEY || key === BOOKY_MOTION_PREFERENCE_KEY || key === BOOKY_JOURNEY_PROGRESS_KEY || key === BOOKY_READER_POLICY_KEY || key === BOOKY_PREFERENCE_KEY || key === GLOBE_COMPOSITION_PREFERENCE_KEY) {
         try {
           const storage = strictWebStorage("local", browser as Pick<Window, "localStorage" | "sessionStorage"> | null);
           storage.removeItem(key);

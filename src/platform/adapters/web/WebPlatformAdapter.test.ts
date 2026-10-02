@@ -1,3 +1,42 @@
+import { BOOKY_SIZE_PREFERENCE_KEY as SIZE } from "../../../host/bookySizePreference";
+describe("Booky size browser preference port", () => {
+  it("allows exact size values and preserves unknown raw records without arbitrary keys", async () => {
+    const env = browserEnvironment(), store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    expect(await store.get(SIZE)).toBeNull();
+    for (const value of ["small", "normal", "large"]) { expect(await store.set(SIZE, value)).toBe(true); expect(await store.get(SIZE)).toBe(value); }
+    vi.mocked(env.browser.localStorage.setItem).mockClear();
+    for (const value of ["", "LARGE", "large ", "future", "{}", null, true]) expect(await store.set(SIZE, value as string)).toBe(false);
+    expect(env.browser.localStorage.setItem).not.toHaveBeenCalled();
+    env.browser.localStorage.setItem(SIZE, "future"); expect(await store.get(SIZE)).toBe("future");
+    expect(env.browser.localStorage.getItem(SIZE)).toBe("future"); expect(await store.set(SIZE + "-other", "large")).toBe(false);
+    expect(await store.get(SIZE + "-other")).toBeNull();
+    expect(await store.remove(SIZE)).toBe(true); expect(await store.get(SIZE)).toBeNull();
+  });
+  it("rejects failed reads, failed storage writes and mismatched readback", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage, store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw Error("private"); });
+    await expect(store.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable");
+    vi.mocked(storage.getItem).mockReturnValueOnce(true as unknown as string); await expect(store.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable");
+    vi.mocked(storage.setItem).mockImplementationOnce(() => { throw Error("private"); }); expect(await store.set(SIZE, "large")).toBe(false);
+    vi.mocked(storage.setItem).mockImplementationOnce(() => undefined); expect(await store.set(SIZE, "large")).toBe(false);
+    vi.mocked(storage.getItem).mockImplementationOnce(() => { throw Error("private"); }); expect(await store.set(SIZE, "large")).toBe(false);
+    expect(await store.set(SIZE, "normal")).toBe(true);
+    vi.mocked(storage.removeItem).mockImplementationOnce(() => undefined); expect(await store.remove(SIZE)).toBe(false);
+    const missing = createWebPlatformAdapter({ window: null }).preferences;
+    await expect(missing.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable"); expect(await missing.set(SIZE, "large")).toBe(false);
+  });
+  it("bypasses the safe facade's cached fallback rather than confirming unsaved size", async () => {
+    const env = browserEnvironment(), storage = env.browser.localStorage;
+    storage.setItem(SIZE, "large"); const read = vi.mocked(storage.getItem).getMockImplementation()!;
+    installSafeWebStorage(env.browser, null);
+    const store = createWebPlatformAdapter({ window: env.browser }).preferences;
+    vi.mocked(storage.setItem).mockImplementation(() => { throw Error("denied"); });
+    vi.mocked(storage.getItem).mockImplementation(() => { throw Error("denied"); });
+    env.browser.localStorage.setItem(SIZE, "normal"); expect(env.browser.localStorage.getItem(SIZE)).toBe("normal");
+    expect(await store.set(SIZE, "normal")).toBe(false); await expect(store.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable");
+    vi.mocked(storage.getItem).mockImplementation(read); expect(await store.get(SIZE)).toBe("large");
+  });
+});
 import { BOOKY_JOURNEY_PROGRESS_KEY as JOURNEY_PROGRESS, BOOKY_JOURNEY_PROGRESS_MAX_LENGTH } from "../../../host/bookyJourneyProgress";
 import { afterEach, describe, expect, it, onTestFinished, vi } from "vitest";
 import { installSafeWebStorage } from "../../../utils/safeWebStorage";

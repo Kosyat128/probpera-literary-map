@@ -56,6 +56,9 @@
 .planet-mascot-controls__size-choices { display: grid; grid-template-columns: repeat(3, minmax(44px, 1fr)); gap: 4px; }
 .planet-mascot-controls__size-choices button { min-width: 44px; min-height: 44px; padding: 8px 4px; font-size: 13px; }
 .planet-mascot-controls__size-choices [aria-pressed="true"] { border-color: #725089; background: #f0e7f4; box-shadow: inset 0 0 0 1px #725089; }
+.planet-mascot-controls__size-status { margin: 6px 0 0; color: var(--planet-muted, #625942); font-weight: 400; }
+.planet-mascot-controls__size-status:empty { margin: 0; }
+.planet-mascot-controls .planet-mascot-controls__size-retry { width: 100%; margin-top: 6px; }
 .planet-mascot-controls .planet-mascot-controls__walk { width: 100%; min-height: 52px; padding: 7px 9px; font-size: 13px; box-shadow: 0 2px 8px #17112425; }
 .planet-mascot-controls__walk > span { font-size: 20px; line-height: 1; vertical-align: middle; }
 .planet-mascot-target { position: fixed; z-index: 1051; width: 40px; height: 40px; box-sizing: border-box;

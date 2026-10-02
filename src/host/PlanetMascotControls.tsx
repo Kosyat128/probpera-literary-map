@@ -14,12 +14,13 @@ import type { BookyMotionMode, BookyMotionSnapshot } from "./bookyMotionPreferen
 import { isBookyRouteComplete } from "./bookyTourProgress";
 import { PLANET_MASCOT_ROUTES, getPlanetMascotStep, type PlanetMascotAction,
   type PlanetMascotScreen, type PlanetMascotTarget } from "./planetMascotRoutes";
+import { BOOKY_COMPANION_SIZES, type BookyCompanionSize, type BookySizeSnapshot } from "./bookySizePreference";
+export type { BookyCompanionSize } from "./bookySizePreference";
 import "./PlanetMascotControls.css";
 
 type Position = Readonly<{ left: number; top: number }>;
 type Rect = Position & Readonly<{ width: number; height: number }>;
-const COMPANION_SIZES = ["small", "normal", "large"] as const;
-export type BookyCompanionSize = typeof COMPANION_SIZES[number];
+const COMPANION_SIZES = BOOKY_COMPANION_SIZES;
 export type PlanetMascotControlsProps = {
   controller: PlanetMascotController;
   snapshot: PlanetMascotSnapshot;
@@ -37,7 +38,9 @@ export type PlanetMascotControlsProps = {
   onPositionChange: (position: Position | null) => void;
   /** App-owned presentation can survive moves between the globe and collection. */
   size?: BookyCompanionSize;
-  onSizeChange?: (size: BookyCompanionSize) => void;
+  onSizeChange?: (size: BookyCompanionSize) => boolean | void;
+  sizePersistence?: BookySizeSnapshot;
+  onRetrySize?: () => boolean;
   persistence: PlanetMascotPersistenceSnapshot;
   onRetryPersistence: () => boolean;
   motion: BookyMotionSnapshot;
@@ -117,7 +120,7 @@ function companionViewport(): Rect {
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, readerEntry = null, onHelpOpen, position, onPositionChange, size: controlledSize, onSizeChange, persistence, onRetryPersistence, motion, onMotionChange,
+  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, readerEntry = null, onHelpOpen, position, onPositionChange, size: controlledSize, onSizeChange, sizePersistence, onRetrySize, persistence, onRetryPersistence, motion, onMotionChange,
   onRetryMotion, onRecoverMotion, onRetryContent, onRestartContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
@@ -670,7 +673,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const resizeCompanion = (next: BookyCompanionSize) => {
     const current = controller.getSnapshot();
     if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
-      || document.hidden || next === companionSize) return;
+      || document.hidden || next === companionSize && (!sizePersistence || sizePersistence.state === "ready" || sizePersistence.state === "saving")) return;
     cancelPoint.current?.(); walk.stop();
     const intent = drag.current; drag.current = null;
     if (intent) {
@@ -679,7 +682,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     }
     walkStopActivation.current = null; setPointerLook(null); setGesture("rest");
     // Measured presentation repositions safely without resetting the user's
-    // committed coordinates or changing saved preferences and tours.
+    // committed coordinates or changing the helper route and tours.
     setLocalSize(next); onSizeChange?.(next);
   };
   const resetPosition = () => {
@@ -811,8 +814,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
         {value === "small" ? ru ? "Меньше" : "Small" : value === "large" ? ru ? "Больше" : "Large" : ru ? "Обычный" : "Normal"}
       </button>)}
     </div>
+    {sizePersistence && <>
+      <p className="planet-mascot-controls__size-status" role="status" aria-live="polite" aria-atomic="true"
+        data-booky-size-state={sizePersistence.state} data-booky-size-error={sizePersistence.error ?? ""}>
+        {sizePersistence.state === "loading" ? ru ? "Восстанавливаем размер…" : "Restoring size…"
+          : sizePersistence.state === "saving" ? ru ? "Сохраняем размер…" : "Saving size…"
+          : sizePersistence.state === "failed" ? sizePersistence.error === "write"
+            ? ru ? "Размер изменён, но не сохранён." : "The size changed but could not be saved."
+            : ru ? "Не удалось восстановить размер. Выберите размер или повторите попытку." : "Could not restore the size. Choose a size or try again."
+          : ""}</p>
+      {sizePersistence.state === "failed" && onRetrySize && <button type="button" data-booky-size-retry=""
+        className="planet-mascot-controls__size-retry" onClick={() => {
+          if (onRetrySize()) root.current?.querySelector<HTMLButtonElement>(`[data-booky-size="${companionSize}"]`)?.focus({ preventScroll: true });
+        }}>{sizePersistence.error === "write" ? ru ? "Сохранить снова" : "Save again" : ru ? "Повторить" : "Try again"}</button>}
+    </>}
   </div>;
-
   if (!snapshot.available) return null;
   return <>
     {targetCue && targetCue.phase !== "returning" && <div className="planet-mascot-target" aria-hidden="true" data-booky-target={targetCue.phase}

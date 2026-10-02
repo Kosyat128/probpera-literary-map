@@ -1,3 +1,44 @@
+import { BOOKY_SIZE_PREFERENCE_KEY as SIZE } from "./bookySizePreference";
+describe("Booky size native preference port", () => {
+  it("allows only exact size writes and preserves raw unknown reads", async () => {
+    const f = fixture(), store = f.services.preferences;
+    expect(await store.get(SIZE)).toBeNull();
+    for (const value of ["small", "normal", "large"]) {
+      expect(await store.set(SIZE, value)).toBe(true); expect(await store.get(SIZE)).toBe(value);
+    }
+    f.preferences.set.mockClear();
+    for (const value of ["", "LARGE", "large ", "future", "{}", null, true]) {
+      expect(await store.set(SIZE, value as string)).toBe(false);
+    }
+    expect(f.preferences.set).not.toHaveBeenCalled();
+    f.memory.set(SIZE, "future"); expect(await store.get(SIZE)).toBe("future");
+    expect(f.memory.get(SIZE)).toBe("future"); expect(await store.set(SIZE + "-other", "large")).toBe(false);
+    expect(await store.get(SIZE + "-other")).toBeNull();
+    expect(await store.remove(SIZE)).toBe(true); expect(await store.get(SIZE)).toBeNull();
+  });
+  it("rejects unavailable or nonstring reads and requires actual writes/readback", async () => {
+    const f = fixture(), store = f.services.preferences;
+    f.preferences.get.mockRejectedValueOnce(Error("private")); await expect(store.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable");
+    f.preferences.get.mockResolvedValueOnce({ value: true } as unknown as { value: string }); await expect(store.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable");
+    f.preferences.set.mockResolvedValueOnce(undefined); expect(await store.set(SIZE, "large")).toBe(false);
+    f.preferences.set.mockRejectedValueOnce(Error("private")); expect(await store.set(SIZE, "large")).toBe(false);
+    f.preferences.set.mockResolvedValueOnce(false as unknown as void); expect(await store.set(SIZE, "large")).toBe(false);
+    f.preferences.get.mockRejectedValueOnce(Error("private")); expect(await store.set(SIZE, "large")).toBe(false);
+    expect(await store.set(SIZE, "normal")).toBe(true);
+    f.preferences.remove.mockResolvedValueOnce(undefined); expect(await store.remove(SIZE)).toBe(false);
+    await expect(fixture({ preferences: undefined }).services.preferences.get(SIZE)).rejects.toThrow("booky-size-preference-unavailable");
+  });
+  it("orders size writes and their confirmations before subsequent reads", async () => {
+    const f = fixture(), gate = deferred<void>(), trace: string[] = [];
+    f.preferences.set.mockImplementation(async ({ key, value }) => { trace.push("set:" + value); if (value === "large") await gate.promise; f.memory.set(key, value); });
+    f.preferences.get.mockImplementation(async ({ key }) => { const value = f.memory.get(key) ?? null; trace.push("get:" + value); return { value }; });
+    const first = f.services.preferences.set(SIZE, "large"), second = f.services.preferences.set(SIZE, "normal"), read = f.services.preferences.get(SIZE);
+    await flush(); expect(trace).toEqual(["set:large"]); gate.resolve();
+    expect(await Promise.all([first, second, read])).toEqual([true, true, "normal"]);
+    expect(trace).toEqual(["set:large", "get:large", "set:normal", "get:normal", "get:normal"]);
+  });
+});
+
 import { BOOKY_JOURNEY_PROGRESS_KEY as JOURNEY_PROGRESS, BOOKY_JOURNEY_PROGRESS_MAX_LENGTH } from "./bookyJourneyProgress";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createHostPlatformServices, type HostAppBridge, type HostAppState, type HostListenerHandle,

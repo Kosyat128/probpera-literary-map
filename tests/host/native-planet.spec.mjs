@@ -3091,3 +3091,128 @@ test("hidden Booky trigger remains exposed after the real Menu large-text round 
     await original.dispose();
   }
 });
+
+test("Booky companion size restores from the native preference port after reload", async ({}, testInfo) => {
+  test.setTimeout(90_000);
+  const fixture = await open({ route: "/?country=russia#atlas", viewport: { width: 390, height: 844 },
+    reducedMotion: "reduce", hasTouch: true, isMobile: true,
+    preferences: { "probpera-planet-welcome-v1": "completed", "probpera-booky-size-v1": "future-size" } });
+  const { page } = fixture, sizeKey = "probpera-booky-size-v1", visibilityKey = "probpera-booky-adult-v1";
+  const companion = page.locator('.planet-mascot-controls[data-planet-mascot-pet]');
+  const selection = () => { const url = new URL(page.url()); return { country: url.searchParams.get("country"), hash: url.hash }; };
+  const selected = { country: "russia", hash: "#atlas" };
+  let reloadedScene;
+  async function collapseCountrySheet() {
+    const sheet = page.locator('.atlas-country-presentation[data-atlas-country="russia"]');
+    await expect(sheet).toBeVisible();
+    for (const phase of ["half", "expanded"]) {
+      if (await sheet.getAttribute("data-atlas-sheet-state") !== phase) continue;
+      await sheet.locator(".atlas-country-sheet-toggle").tap();
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", phase === "half" ? "expanded" : "collapsed");
+    }
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+  }
+  async function showSizeControls() {
+    await expect(companion).toHaveCount(1);
+    if (await companion.getAttribute("data-planet-mascot-active") !== "true") await companion.locator('[data-planet-mascot-toggle]').tap();
+    await expect(companion).toHaveAttribute("data-planet-mascot-active", "true");
+    if (await companion.locator('[data-planet-mascot-collapse]').isVisible()) await companion.locator('[data-planet-mascot-collapse]').tap();
+    await expect(companion).toHaveAttribute("data-planet-mascot-panel-state", "closed");
+    const options = companion.locator('[data-booky-actions-toggle]');
+    if (await options.getAttribute("aria-expanded") !== "true") await options.tap();
+    await expect(options).toHaveAttribute("aria-expanded", "true");
+    await expect(companion.locator('[data-booky-size="large"]:visible')).toBeEnabled();
+  }
+  async function hideForScene() {
+    await companion.locator('[data-planet-mascot-hide]').tap();
+    await expect(companion).toHaveAttribute("data-planet-mascot-active", "false");
+    await expect.poll(() => JSON.parse(fixture.preferenceMemory.get(visibilityKey) ?? "null")?.visible).toBe(false);
+    await expect(page.locator("canvas")).toHaveCount(1);
+  }
+  try {
+    expect(selection()).toEqual(selected);
+    await collapseCountrySheet();
+    await showSizeControls();
+    const sizeStatus = companion.locator('[data-booky-size-state]');
+    await expect(sizeStatus).toHaveAttribute("data-booky-size-state", "failed");
+    await expect(sizeStatus).toHaveAttribute("data-booky-size-error", "read");
+    await expect(sizeStatus).toHaveText("Не удалось восстановить размер. Выберите размер или повторите попытку.");
+    expect(fixture.preferenceMemory.get(sizeKey)).toBe("future-size");
+    expect(fixture.preferenceOperations.filter(value => value.key === sizeKey && value.operation === "set")).toEqual([]);
+    const retry = companion.locator('[data-booky-size-retry]');
+    await expect(retry).toBeVisible(); await expect(retry).toBeEnabled();
+    const retryBounds = await retry.boundingBox(); expect(retryBounds).not.toBeNull();
+    expect(retryBounds.width).toBeGreaterThanOrEqual(44); expect(retryBounds.height).toBeGreaterThanOrEqual(44);
+    const unknownNotice = await sizeStatus.innerText();
+    const unknownCapture = testInfo.outputPath("booky-size-unknown-preference-ru.png");
+    await browserFrames(page); await page.screenshot({ path: unknownCapture });
+    await testInfo.attach("booky-size-unknown-preference-ru", { path: unknownCapture, contentType: "image/png" });
+    const readsBeforeRetry = fixture.preferenceOperations.filter(value => value.key === sizeKey && value.operation === "get").length;
+    await retry.tap();
+    await expect.poll(() => fixture.preferenceOperations.filter(value => value.key === sizeKey && value.operation === "get").length).toBeGreaterThan(readsBeforeRetry);
+    await expect(sizeStatus).toHaveAttribute("data-booky-size-state", "failed");
+    await expect(sizeStatus).toHaveAttribute("data-booky-size-error", "read");
+    expect(fixture.preferenceMemory.get(sizeKey)).toBe("future-size");
+    expect(fixture.preferenceOperations.filter(value => value.key === sizeKey && value.operation === "set")).toEqual([]);
+    // Choosing the current default is an explicit repair of the unknown record.
+    const normal = companion.locator('[data-booky-size="normal"]:visible');
+    await expect(normal).toHaveAttribute("aria-pressed", "true"); await normal.tap();
+    await expect.poll(() => fixture.preferenceMemory.get(sizeKey)).toBe("normal");
+    await expect(sizeStatus).toHaveAttribute("data-booky-size-state", "ready");
+    const operationsStart = fixture.preferenceOperations.length;
+    await companion.locator('[data-booky-size="large"]:visible').tap();
+    await expect(companion).toHaveAttribute("data-booky-companion-size", "large");
+    await expect(companion.locator('[data-planet-mascot-avatar]')).toHaveCSS("width", "80px");
+    await expect.poll(() => fixture.preferenceMemory.get(sizeKey)).toBe("large");
+    await expect.poll(() => {
+      const operations = fixture.preferenceOperations.slice(operationsStart);
+      const write = operations.findIndex(value => value.operation === "set" && value.key === sizeKey && value.value === "large");
+      return write >= 0 && operations.slice(write + 1).some(value => value.operation === "get" && value.key === sizeKey);
+    }).toBe(true);
+    await expect(companion.locator('[data-booky-size-state]')).toHaveAttribute("data-booky-size-state", "ready");
+    // Keep the existing one-document-canvas helpers unchanged. The companion's
+    // decorative 3D canvas is retired by a real Hide action before reload.
+    await hideForScene();
+    const urlBeforeReload = page.url(), reloadOperationsStart = fixture.preferenceOperations.length;
+    await page.reload();
+    await nativeRootReady(page);
+    expect(page.url()).toBe(urlBeforeReload); expect(selection()).toEqual(selected);
+    reloadedScene = await captureScene(page);
+    await expect.poll(() => fixture.preferenceOperations.slice(reloadOperationsStart)
+      .some(value => value.operation === "get" && value.key === sizeKey)).toBe(true);
+    const observations = [];
+    for (const language of ["ru", "en"]) {
+      if (await page.locator("html").getAttribute("lang") !== language) await nativeLanguage(page, language, "tap");
+      await expect(page.locator("html")).toHaveAttribute("lang", language);
+      await retained(page, reloadedScene); expect(selection()).toEqual(selected);
+      await collapseCountrySheet(); await showSizeControls();
+      await expect(companion).toHaveAttribute("data-booky-companion-size", "large");
+      await expect(companion.locator('[data-planet-mascot-avatar]')).toHaveCSS("width", "80px");
+      await expect(companion.locator('[data-booky-size="large"]:visible')).toHaveAttribute("aria-pressed", "true");
+      await expect(companion.locator('[data-booky-size][aria-pressed="true"]:visible')).toHaveCount(1);
+      await expect(companion.locator('[data-booky-size-state]')).toHaveAttribute("data-booky-size-state", "ready");
+      expect(fixture.preferenceMemory.get(sizeKey)).toBe("large");
+      await browserFrames(page);
+      const name = "booky-size-restored-large-" + language;
+      const capture = testInfo.outputPath(name + ".png");
+      await page.screenshot({ path: capture });
+      await testInfo.attach(name, { path: capture, contentType: "image/png" });
+      observations.push({ language, size: "large", avatarWidth: 80, sizeState: "ready", selection: selection(), capture: name + ".png" });
+      await hideForScene(); await retained(page, reloadedScene);
+    }
+    await nativeLanguage(page, "ru", "tap");
+    await expect(page.locator("html")).toHaveAttribute("lang", "ru");
+    await retained(page, reloadedScene); expect(selection()).toEqual(selected);
+    expect(fixture.errors).toEqual([]); expect(fixture.consoleErrors).toEqual([]);
+    await testInfo.attach("booky-size-native-reload-observations", { contentType: "application/json", body: JSON.stringify({
+      preferenceKey: sizeKey, storedValue: fixture.preferenceMemory.get(sizeKey), observations,
+      unknownPreferenceRecovery: { rawValue: "future-size", reason: "read", notice: unknownNotice,
+        automaticWrites: false, genuineRetryPreservedRawValue: true, explicitNormalReplacement: true,
+        retryBounds, capture: "booky-size-unknown-preference-ru.png" },
+      preferenceOperations: fixture.preferenceOperations.filter(value => value.key === sizeKey),
+      samePreferencePortAcrossReload: true, newDocumentSceneBaseline: true, sameGlobeAcrossPostReloadLocales: true,
+      browserCapabilities: fixture.browserCapabilities,
+      scope: "Actual app source and Android adapter with a Node-owned simulated native preference port. One 390x844 touch viewport; no installed PWA/APK, OS-storage or full visual acceptance. Scene identity is compared only within the reloaded document.",
+    }) });
+  } finally { await reloadedScene?.dispose(); }
+});
