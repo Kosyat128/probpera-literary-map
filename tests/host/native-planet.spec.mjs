@@ -2807,6 +2807,33 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       await preserved();
       expect(await cameraPose(original)).toEqual(pose);
 
+      const skinGuide = globe.locator('[data-globe-skin-guide]');
+      const skinGuideTrigger = skinGuide.locator('summary');
+      await exposed(skinGuideTrigger, 'Booky skin tip');
+      await expect(header.locator('.atlas-immersive-identity strong')).toBeVisible();
+      if (viewport.width === 390 && viewport.height === 844) {
+        await skinGuideTrigger.tap();
+        await expect(skinGuide).toHaveAttribute('open', '');
+        await expect(skinGuide.locator('[data-globe-skin-store-status="planned"]')).toContainText('внутреннюю валюту');
+        await exposed(skinGuide.locator('.globe-skin-guide__close'), 'Skin tip close');
+        await exposed(skinGuide.locator('[data-globe-skin-guide-choose]'), 'Real skin choice action');
+        await evidence(fixture, testInfo, 'premium-globe-skin-tip-ru', { actualGuide: true, purchasesAvailable: false, sameCanonicalGlobe: true });
+        await page.keyboard.press('Escape');
+        await expect(skinGuide).not.toHaveAttribute('open', '');
+        await expect(skinGuideTrigger).toBeFocused();
+        await nativeLanguage(page, 'en', 'tap');
+        await preserved();
+        await skinGuideTrigger.tap();
+        await expect(skinGuide).toHaveAttribute('open', '');
+        await expect(skinGuide.locator('[data-globe-skin-store-status="planned"]')).toContainText('in-app currency');
+        await evidence(fixture, testInfo, 'premium-globe-skin-tip-en', { actualGuide: true, purchasesAvailable: false, sameCanonicalGlobe: true });
+        await skinGuide.locator('[data-globe-skin-guide-choose]').tap();
+        await expect(skinGuide).not.toHaveAttribute('open', '');
+        await expect(selector).toBeFocused();
+        await page.keyboard.press('Escape');
+        await nativeLanguage(page, 'ru', 'tap');
+        await preserved();
+      }
       const editionControl = await exposed(selector, "compact edition selector");
       await expect(selector).toHaveAccessibleName(/издани|edition/iu);
       const previousEdition = await globe.getAttribute("data-globe-edition");

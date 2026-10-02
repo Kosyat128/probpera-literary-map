@@ -17,6 +17,7 @@ import * as THREE from "three";
 import { installPlanetAppearance } from "../host/planetAppearance";
 import "../host/planetAppearance.css";
 import PlanetEditionPreferenceStatus from "../host/PlanetEditionPreferenceStatus";
+import GlobeSkinGuide from "./GlobeSkinGuide";
 import { usePlanetEditionPreference } from "../host/planetEditionPreference";
 import type { PlanetCompositionPresentation } from "../host/planetCompositionPresentation";
 import type { GlobeSceneInspectionBridge } from "../host/planetSceneInspectionBridge";
@@ -2035,6 +2036,7 @@ export default function LiteraryGlobe({
     && (standInspection.phase !== "closed" || standInspection.request));
   const standInspectionActiveRef = useRef(standInspectionActive);
   useLayoutEffect(() => { standInspectionActiveRef.current = standInspectionActive; }, [standInspectionActive]);
+  const skinSelectRef = useRef<HTMLSelectElement>(null);
   const [inspectionZoom, setInspectionZoom] = useState<GlobeCameraView["inspectionZoom"] | null>(null);
   const handleInspectionZoomChange = useCallback((next: GlobeCameraView["inspectionZoom"] | null) => {
     setInspectionZoom(current => current?.zoom === next?.zoom && current?.minZoom === next?.minZoom
@@ -3144,6 +3146,28 @@ export default function LiteraryGlobe({
     );
   }
 
+  const compactEditionSelector = (
+      <label className="globe-edition-compact-select" data-globe-edition-selector="">
+        <span>{isPlanetApplication ? language === "ru" ? "Облик глобуса" : "Globe skin" : t("Текущее издание глобуса")}</span>
+        <select
+          ref={skinSelectRef}
+          aria-label={isPlanetApplication ? language === "ru" ? "Облик глобуса — выбрать издание" : "Globe skin — choose edition" : undefined}
+          value={pendingEditionId ?? renderedEditionId}
+          disabled={Boolean(pendingEditionId)}
+          aria-busy={Boolean(pendingEditionId)}
+          onChange={(event) => {
+            void requestEdition(event.currentTarget.value as GlobeEditionId);
+          }}
+        >
+          {AVAILABLE_GLOBE_EDITIONS.map((edition) => (
+            <option key={edition.id} value={edition.id}>
+              {edition.compactLabel[language]}
+            </option>
+          ))}
+        </select>
+      </label>
+  );
+
   return (
     <div
       ref={setContainerRef}
@@ -3162,7 +3186,8 @@ export default function LiteraryGlobe({
       onWheelCapture={() => markPrewarmInputActivity(420)}
       onKeyDownCapture={(event) => {
         markPrewarmInputActivity(420);
-        if (sourceDialogRef.current?.open || standInspectionActiveRef.current || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")) return;
+        if (sourceDialogRef.current?.open || standInspectionActiveRef.current || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")
+          || (event.target instanceof Element && event.target.closest("[data-globe-skin-guide][open]"))) return;
         if (event.key !== "Escape" || !touchActivationPolicy.escapeDeactivates) {
           return;
         }
@@ -3517,23 +3542,10 @@ export default function LiteraryGlobe({
         </button>
       </div>
 
-      <label className="globe-edition-compact-select" data-globe-edition-selector="">
-        <span>{t("Текущее издание глобуса")}</span>
-        <select
-          value={pendingEditionId ?? renderedEditionId}
-          disabled={Boolean(pendingEditionId)}
-          aria-busy={Boolean(pendingEditionId)}
-          onChange={(event) => {
-            void requestEdition(event.currentTarget.value as GlobeEditionId);
-          }}
-        >
-          {AVAILABLE_GLOBE_EDITIONS.map((edition) => (
-            <option key={edition.id} value={edition.id}>
-              {edition.compactLabel[language]}
-            </option>
-          ))}
-        </select>
-      </label>
+      {isPlanetApplication ? <div className="globe-edition-application-selector">
+        {compactEditionSelector}
+        <GlobeSkinGuide selectRef={skinSelectRef} disabled={Boolean(pendingEditionId)} />
+      </div> : compactEditionSelector}
 
       <span
         className={`globe-style-status${visualStyleError ? " is-error" : ""}`}
