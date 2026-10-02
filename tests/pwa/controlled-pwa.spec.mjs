@@ -1434,3 +1434,177 @@ test("explicit rollback survives a full persistent browser restart offline under
       await testInfo.attach("pwa-persistent-rollback-generation", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" }); }
   }
 });
+
+test("saved Booky size survives a full persistent browser restart offline through the real Web preference port", async ({ request }, testInfo) => {
+  test.setTimeout(180_000);
+  const { lstat, mkdir, mkdtemp, realpath, rm, rmdir } = await import("node:fs/promises");
+  const { dirname, join, resolve, sep } = await import("node:path");
+  const checkout = await realpath(process.cwd()), temporary = resolve(".tmp");
+  const temporaryStat = await lstat(temporary), temporaryRoot = await realpath(temporary);
+  if (!temporaryStat.isDirectory() || temporaryStat.isSymbolicLink() || temporaryRoot !== join(checkout, ".tmp")) {
+    throw new Error("A real checkout temporary directory is required");
+  }
+  const profileRoot = await mkdtemp(join(temporaryRoot, "pwa-booky-size-d267-profile-")), profile = join(profileRoot, "profile");
+  await mkdir(profile);
+  const sizeKey = "probpera-booky-size-v1", visibilityKey = "probpera-booky-adult-v1";
+  let context, scene;
+  const errors = [], blockedRequests = [];
+  const evidence = { localQaOnly: true, browserChannel: "msedge", persistentLaunches: 0, restarts: 0,
+    sameDisposableProfile: true, firstContextClosed: false, offlineBeforeFirstNavigation: false,
+    preferenceKey: sizeKey, documents: [], locales: [], screenshots: [], capturesReviewed: false,
+    profileRemoved: false, actualOsInstallation: false, realStorePurchase: false, productionProvider: false,
+    stageAccepted: false, releaseReady: false, completed: false };
+  const licenseRequests = status => status.requests.filter(item => item.method === "POST"
+    && ["/planet/api/license/identity", "/planet/api/license/session"].includes(item.pathname));
+  const launch = async offline => {
+    context = await chromium.launchPersistentContext(profile, { channel: "msedge", headless: true, baseURL: qaOrigin,
+      viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, hasTouch: true,
+      serviceWorkers: "allow", reducedMotion: "reduce", offline });
+    await context.route("**/*", route => {
+      const url = new URL(route.request().url());
+      if (["data:", "blob:"].includes(url.protocol) || url.origin === qaOrigin) return route.continue();
+      blockedRequests.push({ origin: url.origin, pathname: url.pathname }); return route.abort();
+    });
+    evidence.persistentLaunches++; if (evidence.persistentLaunches > 1) evidence.restarts++;
+    const page = context.pages()[0] ?? await context.newPage();
+    expect(context.pages()).toHaveLength(1); expect(page.url()).toBe("about:blank");
+    page.on("pageerror", error => errors.push(error.name)); return page;
+  };
+  const companion = page => page.locator('.planet-mascot-controls[data-planet-mascot-pet]');
+  const authorizedGlobe = async page => {
+    await expect(page.locator("[data-pwa-authorized]")).toBeVisible({ timeout: 45_000 });
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+    await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-view", "immersive");
+    await expect(page.locator(".magazine-hero, .site-header")).toHaveCount(0);
+    await expect(page.locator(".native-planet-launch")).toBeHidden();
+    await expect(page.locator("#atlas canvas")).toHaveCount(1); await expect(page.locator("canvas")).toHaveCount(1);
+  };
+  const showSizes = async page => {
+    const sheet = page.locator('.atlas-country-presentation[data-atlas-country="russia"]');
+    await expect(sheet).toBeVisible();
+    for (const phase of ["half", "expanded"]) {
+      if (await sheet.getAttribute("data-atlas-sheet-state") !== phase) continue;
+      await sheet.locator(".atlas-country-sheet-toggle").tap();
+      await expect(sheet).toHaveAttribute("data-atlas-sheet-state", phase === "half" ? "expanded" : "collapsed");
+    }
+    await expect(sheet).toHaveAttribute("data-atlas-sheet-state", "collapsed");
+    const pet = companion(page); await expect(pet).toHaveCount(1);
+    if (await pet.getAttribute("data-planet-mascot-active") !== "true") await pet.locator('[data-planet-mascot-toggle]').tap();
+    await expect(pet).toHaveAttribute("data-planet-mascot-active", "true");
+    if (await pet.locator('[data-planet-mascot-collapse]').isVisible()) await pet.locator('[data-planet-mascot-collapse]').tap();
+    await expect(pet).toHaveAttribute("data-planet-mascot-panel-state", "closed");
+    const options = pet.locator('[data-booky-actions-toggle]');
+    if (await options.getAttribute("aria-expanded") !== "true") await options.tap();
+    await expect(options).toHaveAttribute("aria-expanded", "true");
+    await expect(pet.locator('[data-booky-size="large"]:visible')).toBeEnabled(); return pet;
+  };
+  const assertLarge = async page => {
+    const pet = companion(page);
+    await expect(pet).toHaveAttribute("data-booky-companion-size", "large");
+    await expect(pet).toHaveAttribute("data-booky-mobile-composition", "true");
+    await expect(pet.locator('[data-planet-mascot-avatar]')).toHaveCSS("width", "80px");
+    await expect(pet.locator('[data-planet-mascot-avatar]')).toHaveCSS("height", "80px");
+    await expect(pet.locator('[data-booky-size="large"]:visible')).toHaveAttribute("aria-pressed", "true");
+    await expect(pet.locator('[data-booky-size][aria-pressed="true"]:visible')).toHaveCount(1);
+    await expect(pet.locator('[data-booky-size-state]')).toHaveAttribute("data-booky-size-state", "ready");
+    await expect(pet.locator('[data-booky-size-state]')).toHaveAttribute("data-booky-size-error", "");
+    await expect.poll(() => page.evaluate(key => localStorage.getItem(key), sizeKey)).toBe("large");
+  };
+  const hideForScene = async page => {
+    await companion(page).locator('[data-planet-mascot-hide]').tap();
+    await expect(companion(page)).toHaveAttribute("data-planet-mascot-active", "false");
+    await expect.poll(() => page.evaluate(key => JSON.parse(localStorage.getItem(key) ?? "null")?.visible, visibilityKey)).toBe(false);
+    // The real Hide action retires the decorative Booky canvas before the
+    // existing authorized-globe/one-document-canvas oracles are used.
+    await expect(page.locator("canvas")).toHaveCount(1);
+    await expect(page.locator("#atlas canvas")).toHaveCount(1);
+  };
+  const executable = (page, pathname) => page.evaluate(async url => {
+    const response = await fetch(url); if (!response.ok) throw new Error("Executable response unavailable");
+    const bytes = await response.arrayBuffer();
+    return { buildId: response.headers.get("X-Literary-Planet-Build"), bytes: bytes.byteLength,
+      sha256: [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("") };
+  }, pathname);
+  const screenshot = async (page, name) => {
+    await page.screenshot({ path: testInfo.outputPath(name), fullPage: false }); evidence.screenshots.push(name);
+  };
+  try {
+    const online = await launch(false); await openAuthorized(online);
+    const marker = await installed(online), originalUrl = new URL(online.url());
+    const asset = marker.manifest.files.find(file => file.kind === "asset" && /\.js$/u.test(file.url));
+    expect(asset).toMatchObject({ url: expect.stringMatching(/^\/planet\/assets\/.+\.js$/u), sha256: expect.stringMatching(/^[a-f0-9]{64}$/u) });
+    const expectedExecutable = { buildId: marker.manifest.buildId, bytes: asset.bytes, sha256: asset.sha256 };
+    expect(await executable(online, asset.url)).toEqual(expectedExecutable);
+    const pet = await showSizes(online);
+    await pet.locator('[data-booky-size="large"]:visible').tap(); await assertLarge(online);
+    await screenshot(online, "pwa-booky-size-large-before-close.png");
+    await hideForScene(online);
+    evidence.build = { buildId: marker.manifest.buildId, manifestSha256: marker.manifestSha256,
+      executablePath: asset.url, executable: expectedExecutable };
+    evidence.beforeClose = { storedSize: await online.evaluate(key => localStorage.getItem(key), sizeKey),
+      confirmedSizeState: "ready", chosenSize: "large", avatarWidth: 80, realWebPreferencePort: true };
+    const before = licenseRequests(await control(request, { action: "status" }));
+    expect(before.some(item => item.pathname.endsWith("/identity"))).toBe(true);
+    expect(before.some(item => item.pathname.endsWith("/session"))).toBe(true);
+    await context.close(); context = undefined; expect(online.isClosed()).toBe(true); evidence.firstContextClosed = true;
+
+    const cold = await launch(true); expect(await cold.evaluate(() => navigator.onLine)).toBe(false);
+    evidence.offlineBeforeFirstNavigation = true;
+    const response = await cold.goto(originalUrl.href, { waitUntil: "domcontentloaded" });
+    expect(response.status()).toBe(200); expect(response.headers()["x-literary-planet-build"]).toBe(marker.manifest.buildId);
+    // Visibility was saved by the real control. Size restoration is a fresh
+    // controller read in this new document, with no injected preference data.
+    await expect(companion(cold)).toHaveAttribute("data-planet-mascot-active", "false");
+    await authorizedGlobe(cold); expect(await installed(cold)).toEqual(marker);
+    expect(await executable(cold, asset.url)).toEqual(expectedExecutable);
+    await expect.poll(() => cold.evaluate(() => window.__literaryPlanetQaScenes?.()
+      .filter(item => document.querySelector("#atlas")?.contains(item.canvas)).length), { timeout: 45_000 }).toBe(1);
+    scene = await cold.evaluateHandle(() => ({ document,
+      scene: window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)) }));
+    evidence.documents.push({ phase: "reopened-offline", servedBuildId: response.headers()["x-literary-planet-build"],
+      freshDocumentAfterClosedBrowser: true });
+    for (const [index, locale] of ["ru", "en", "ru"].entries()) {
+      if (index > 0) await selectLocale(cold, locale);
+      await expect(cold.locator("html")).toHaveAttribute("lang", locale);
+      const current = new URL(cold.url());
+      expect(current.origin).toBe(originalUrl.origin); expect(current.pathname).toBe("/planet/" + locale + "/");
+      expect(current.search).toBe(originalUrl.search); expect(current.hash).toBe(originalUrl.hash);
+      await expect(cold.locator('.atlas-country-presentation[data-atlas-country="russia"]')).toBeVisible();
+      expect(await cold.evaluate(() => navigator.onLine)).toBe(false);
+      const details = cold.locator(".pwa-status-card__details");
+      if (await details.getAttribute("open") === null) await details.locator(":scope > summary").click();
+      await expect(details.locator('[data-pwa-access-verification="saved"]')).toBeVisible();
+      await details.locator(":scope > summary").click();
+      await showSizes(cold); await assertLarge(cold);
+      if (index < 2) await screenshot(cold, "pwa-booky-size-restored-large-" + locale + ".png");
+      await hideForScene(cold);
+      expect(await executable(cold, asset.url)).toEqual(expectedExecutable);
+      expect(await scene.evaluate(previous => {
+        const current = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.scene.canvas);
+        return previous.document === document && previous.scene.canvas.isConnected && Boolean(current?.renderer && current.camera && current.scene)
+          && current.renderer === previous.scene.renderer && current.camera === previous.scene.camera && current.scene === previous.scene.scene;
+      })).toBe(true);
+      evidence.locales.push({ locale, storedSize: "large", confirmedSizeState: "ready", avatarWidth: 80,
+        selectedCountry: "russia", savedVerification: true, sameSceneWithinReopenedDocument: true, canonicalGlobeCanvasCount: 1 });
+    }
+    const after = licenseRequests(await control(request, { action: "status" })); expect(after).toEqual(before);
+    evidence.offlineLicenseApiRequests = after.length - before.length;
+    expect(errors).toEqual([]); expect(blockedRequests).toEqual([]);
+    expect(evidence.persistentLaunches).toBe(2); expect(evidence.restarts).toBe(1); evidence.completed = true;
+  } finally {
+    try {
+      await scene?.dispose().catch(() => undefined); if (context) await context.close();
+      const parentStat = await lstat(dirname(profileRoot)), rootStat = await lstat(profileRoot), profileStat = await lstat(profile);
+      const actualParent = await realpath(dirname(profileRoot)), actualRoot = await realpath(profileRoot), actualProfile = await realpath(profile);
+      if (!parentStat.isDirectory() || parentStat.isSymbolicLink() || !rootStat.isDirectory() || rootStat.isSymbolicLink()
+        || !profileStat.isDirectory() || profileStat.isSymbolicLink() || resolve(profile) !== profile
+        || actualParent !== temporaryRoot || actualRoot !== profileRoot || actualProfile !== profile
+        || dirname(profileRoot) !== temporaryRoot || !profileRoot.startsWith(join(temporaryRoot, "pwa-booky-size-d267-profile-"))
+        || dirname(profile) !== profileRoot || !actualProfile.startsWith(actualRoot + sep)) {
+        throw new Error("Refuse cleanup outside the exact disposable Booky-size profile");
+      }
+      await rm(profile, { recursive: true, force: true }); await rmdir(profileRoot); evidence.profileRemoved = true;
+    } finally { evidence.blockedRequests = blockedRequests;
+      await testInfo.attach("pwa-booky-size-persistent-offline", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" }); }
+  }
+});
