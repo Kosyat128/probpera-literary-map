@@ -754,9 +754,34 @@ test("a corrupt candidate preserves the active build; explicit update and rollba
   const bad = await control(request, { action: "candidate", corruptPath: asset.url });
   await page.evaluate(async () => { const registration = await navigator.serviceWorker.getRegistration("/planet/"); await registration.update(); });
   await expect.poll(() => page.evaluate(async () => (await navigator.serviceWorker.getRegistration("/planet/")).installing?.state ?? "none"), { timeout: 60_000 }).toBe("none");
-  expect(await page.evaluate(id => caches.has("literary-planet-pwa-v1-" + id), bad.buildId)).toBe(false);
+  const rejected = await page.evaluate(async id => {
+    const cacheName = "literary-planet-pwa-v1-" + id;
+    if (!(await caches.keys()).includes(cacheName)) return null;
+    const candidate = await caches.match("/planet/__pwa_candidate__", { cacheName });
+    if (!candidate) return null;
+    const bytes = await candidate.arrayBuffer();
+    if (bytes.byteLength > 1024) throw new Error("Candidate observation exceeds its metadata bound");
+    const registration = await navigator.serviceWorker.getRegistration("/planet/");
+    return { candidate: JSON.parse(new TextDecoder().decode(bytes)),
+      complete: Boolean(await caches.match("/planet/__pwa_complete__", { cacheName })),
+      installing: Boolean(registration.installing), waiting: Boolean(registration.waiting) };
+  }, bad.buildId);
+  expect(rejected).toEqual({ candidate: { schemaVersion: 1, state: "CANDIDATE", buildId: bad.buildId,
+    manifestSha256: expect.stringMatching(/^[a-f0-9]{64}$/u) }, complete: false, installing: false, waiting: false });
+  // The real installer retains verified partial files for retry. Its marker and
+  // the corrupt download prove failure occurred after executable setup.
+  const badRequests = (await control(request, { action: "status" })).requests;
+  const controls = badRequests.flatMap((row, index) => row.method === "POST" && row.pathname === "/__pwa_qa__/control" ? [index] : []);
+  expect(controls.length).toBeGreaterThanOrEqual(2);
+  const candidateRequests = badRequests.slice(controls.at(-2) + 1, controls.at(-1));
+  expect(candidateRequests.some(row => row.method === "GET" && row.pathname === asset.url)).toBe(true);
   expect(await originalDocument.evaluate(original => original === document)).toBe(true);
   expect(await page.evaluate(id => caches.has("literary-planet-pwa-v1-" + id), previous.manifest.buildId)).toBe(true);
+  const activeBytes = await page.evaluate(async pathname => {
+    const response = await fetch(pathname), bytes = await response.arrayBuffer();
+    return { buildId: response.headers.get("X-Literary-Planet-Build"), sha256: [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("") };
+  }, asset.url);
+  expect(activeBytes).toEqual({ buildId: previous.manifest.buildId, sha256: asset.sha256 });
   const good = await control(request, { action: "candidate" });
   await page.evaluate(async () => { const registration = await navigator.serviceWorker.getRegistration("/planet/"); await registration.update(); });
   const update = page.locator(".connectivity-status button").filter({ hasText: "Обновить" });
@@ -848,6 +873,7 @@ test("a corrupt candidate preserves the active build; explicit update and rollba
     await testInfo.attach("pwa-update-notice-host-evidence", { body: JSON.stringify({ localQaOnly: true,
       sameNoticeHostAndConnectivityAcrossCollection: true, sameCanvasRendererCameraSceneBeforeExplicitActivation: true,
       keyboardUpdateAndRollbackFromCollectionClose: true, corruptedCandidateRejected: true,
+      corruptCandidateEnteredInstall: true, failedCandidateState: "CANDIDATE",
       selectedWholeVerifiedGenerations: [previous.manifest.buildId, good.buildId, previous.manifest.buildId],
     }), contentType: "application/json" });
   } finally { await context.setOffline(false); }

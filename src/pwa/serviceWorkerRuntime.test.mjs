@@ -1,6 +1,7 @@
 import { createHash, webcrypto } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { installPwaWorker, normalizePwaWorkerConfig } from "./serviceWorkerRuntime.js";
+import { PWA_BOOTSTRAP_MAX_MARKER_BYTES as MAX_MARKER_BYTES } from "./pwaBootstrapBudgets.ts";
 
 const ORIGIN = "https://probpera.ru";
 const PREFIX = "literary-planet-pwa-v1-";
@@ -626,6 +627,108 @@ describe("isolated immutable PWA configuration", () => {
     const env = environment();
     env.worker.registration.scope = ORIGIN + "/";
     expect(() => installPwaWorker(env.worker, env.config)).toThrow("registration scope");
+  });
+});
+
+describe("bounded completed-generation metadata", () => {
+  it("installs and rereads an expanded rollback generation while corrupt bytes remain incomplete", async () => {
+    const largeShell = build => {
+      const pkg = shell(build, true);
+      for (let index = 0; index < 600; index++) {
+        const url = `/planet/assets/${String(index).padStart(4, "0")}-${"x".repeat(200)}.bin`;
+        const body = `package ${build} ${index}`;
+        pkg.bodies.set(url, body);
+        pkg.config.files.push({ url, bytes: Buffer.byteLength(body), sha256: sha256(body), kind: "asset" });
+      }
+      return pkg;
+    };
+    const caches = memoryCaches(), prior = environment(largeShell("a"), caches);
+    await prior.lifetime("install"); await prior.lifetime("activate");
+    const priorCache = caches.stores.get(prior.registration.cacheName);
+    const priorMarker = await (await priorCache.match(MARKER)).text();
+    const bad = environment(anchored(largeShell("c"), prior), caches);
+    expect(Buffer.byteLength(JSON.stringify(normalizePwaWorkerConfig(bad.config)))).toBeGreaterThan(MAX_MARKER_BYTES / 2);
+    const damaged = bad.config.files.find(file => file.url.endsWith(".bin"));
+    bad.bodies.set(damaged.url, "!".repeat(damaged.bytes));
+    await expect(bad.lifetime("install")).rejects.toThrow("integrity mismatch");
+    const badCache = caches.stores.get(bad.registration.cacheName);
+    expect(await badCache.match(CANDIDATE)).toBeDefined();
+    expect(await badCache.match(MARKER)).toBeUndefined();
+    await expect(bad.lifetime("activate")).rejects.toThrow("incomplete shell");
+    expect(bad.worker.clients.claim).not.toHaveBeenCalled();
+    expect(bad.worker.skipWaiting).not.toHaveBeenCalled();
+    expect(await (await priorCache.match(MARKER)).text()).toBe(priorMarker);
+    expect(await (await prior.fetchRequest("/planet/en/", { mode: "navigate" })).text()).toContain("EN a");
+
+    const current = environment(anchored(largeShell("b"), prior), caches);
+    await current.lifetime("install");
+    const currentCache = caches.stores.get(current.registration.cacheName);
+    const installedMarker = await (await currentCache.match(MARKER)).text();
+    expect(Buffer.byteLength(installedMarker)).toBeGreaterThan(MAX_MARKER_BYTES / 2);
+    expect(Buffer.byteLength(installedMarker)).toBeLessThanOrEqual(MAX_MARKER_BYTES);
+    expect(caches.stores.has(bad.registration.cacheName)).toBe(false);
+    await current.lifetime("activate");
+    current.worker.fetch.mockClear();
+    await current.send(readinessRequest(current));
+    expect(current.client.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({ status: "complete", fileCount: current.config.files.length }));
+    expect(current.worker.fetch).not.toHaveBeenCalled();
+    const restarted = environment(current, caches);
+    await restarted.send({ type: "PLANET_ROLLBACK_STATUS", requestId: "expanded-restart" });
+    expect(restarted.client.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({ ready: true,
+      activeBuildId: current.config.buildId, rollbackBuildId: prior.config.buildId }));
+    await restarted.send({ type: "PLANET_ACTIVATE_ROLLBACK", requestId: "expanded-rollback",
+      engineBuildId: current.config.buildId, targetBuildId: prior.config.buildId });
+    expect(restarted.client.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({ accepted: true, activeBuildId: prior.config.buildId }));
+    for (const pathname of ["/planet/ru/", "/planet/en/", "/planet/assets/app-a.js", damaged.url]) {
+      const response = await restarted.fetchRequest(pathname, { mode: pathname.endsWith("/") ? "navigate" : undefined,
+        clientId: "expanded-document", resultingClientId: "expanded-document" });
+      expect(await response.text()).toBe(prior.bodies.get(pathname));
+      expect(response.headers.get("X-Literary-Planet-Build")).toBe(prior.config.buildId);
+    }
+    expect((await restarted.fetchRequest("/planet/assets/app-b.js", { clientId: "expanded-document" })).type).toBe("error");
+    expect(restarted.worker.fetch).not.toHaveBeenCalled();
+  }, 60_000);
+
+  it("accepts the complete marker at its byte limit and rejects one extra byte before adoption", async () => {
+    const sample = environment(shell("b", true));
+    await sample.lifetime("install");
+    const observedMarker = await (await sample.caches.stores.get(sample.registration.cacheName).match(MARKER)).json();
+    observedMarker.completedAt = Number.MAX_SAFE_INTEGER;
+    observedMarker.activationSequence = Number.MAX_SAFE_INTEGER;
+    const config = structuredClone(normalizePwaWorkerConfig(sample.config));
+    config.rollbackReference = { buildId: "a".repeat(64), manifestSha256: "f".repeat(64),
+      routes: Array.from({ length: 1024 }, (_, index) => `/planet/assets/${String(index).padStart(4, "0")}-${"x".repeat(480)}`) };
+    const envelope = manifest => JSON.stringify({ ...observedMarker, manifest });
+    let remaining = MAX_MARKER_BYTES - Buffer.byteLength(envelope(config));
+    expect(remaining).toBeGreaterThan(0);
+    for (let index = 0; remaining > 0 && index < config.rollbackReference.routes.length; index++) {
+      const extra = Math.min(512 - config.rollbackReference.routes[index].length, remaining);
+      config.rollbackReference.routes[index] += "x".repeat(extra); remaining -= extra;
+    }
+    expect(remaining).toBe(0);
+    expect(Buffer.byteLength(envelope(config))).toBe(MAX_MARKER_BYTES);
+    const accepted = environment({ ...shell("b", true), config });
+    await accepted.lifetime("install");
+    const cache = accepted.caches.stores.get(accepted.registration.cacheName);
+    const marker = await (await cache.match(MARKER)).json();
+    marker.completedAt = Number.MAX_SAFE_INTEGER; marker.activationSequence = Number.MAX_SAFE_INTEGER;
+    const maximum = JSON.stringify(marker);
+    expect(Buffer.byteLength(maximum)).toBe(MAX_MARKER_BYTES);
+    await cache.put(MARKER, new Response(maximum));
+    await accepted.send({ type: "PLANET_UPDATE_STATUS", requestId: "maximum-marker" });
+    expect(accepted.client.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({ ready: true }));
+
+    const oversized = structuredClone(config);
+    oversized.rollbackReference.routes[1023] += "x";
+    expect(Buffer.byteLength(JSON.stringify(oversized))).toBeLessThan(MAX_MARKER_BYTES);
+    expect(Buffer.byteLength(envelope(oversized))).toBe(MAX_MARKER_BYTES + 1);
+    expect(() => environment({ ...shell("c", true), config: oversized })).toThrow("metadata budget");
+    await cache.put(MARKER, new Response(maximum + " "));
+    await accepted.send({ type: "PLANET_UPDATE_STATUS", requestId: "oversized-stored-marker" });
+    expect(accepted.client.postMessage).toHaveBeenLastCalledWith(expect.objectContaining({ ready: false }));
+    expect(await (await cache.match(MARKER)).text()).toBe(maximum + " ");
+    expect(accepted.worker.clients.claim).not.toHaveBeenCalled();
+    expect(accepted.worker.skipWaiting).not.toHaveBeenCalled();
   });
 });
 

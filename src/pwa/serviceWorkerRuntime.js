@@ -21,6 +21,9 @@ function record(value) { return value !== null && typeof value === "object" && !
 function exactKeys(value, allowed, required = allowed) {
   if (!record(value) || Object.keys(value).some((key) => !allowed.includes(key)) || required.some((key) => !Object.hasOwn(value, key))) throw new Error("Invalid shell configuration fields");
 }
+function completeMarker(manifest, manifestSha256, completedAt, activationSequence = 0) {
+  return { state: "COMPLETE", manifestSha256, completedAt, activationSequence, manifest };
+}
 function safePath(input, origin) {
   if (typeof input !== "string" || input.length > 512 || !input.startsWith(SCOPE) || /[\u0000-\u0020\u007f\\?#]/u.test(input)) throw new Error("Shell file must have an exact local scoped pathname");
   const url = new URL(input, origin);
@@ -70,7 +73,10 @@ export function normalizePwaWorkerConfig(input, origin = "https://probpera.ru") 
   }
   const entrypoints = Object.freeze({ ...(Object.hasOwn(input.entrypoints, "root") ? { root: SCOPE } : {}), ru: SCOPE + "ru/", en: SCOPE + "en/" });
   const config = Object.freeze({ schemaVersion: 1, scopePath: SCOPE, buildId: input.buildId, entrypoints, files: Object.freeze(files), ...(rollbackReference ? { rollbackReference } : {}) });
-  if (encoder.encode(JSON.stringify(config)).byteLength > MAX_MARKER_BYTES / 2) throw new Error("Shell configuration exceeds metadata budget");
+  // COMPLETE stores one manifest. Reserve its full envelope at the largest
+  // accepted counters, under the unchanged bounded marker reader.
+  const largestMarker = completeMarker(config, "0".repeat(64), Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+  if (encoder.encode(JSON.stringify(largestMarker)).byteLength > MAX_MARKER_BYTES) throw new Error("Shell configuration exceeds metadata budget");
   return config;
 }
 
@@ -294,7 +300,7 @@ export function installPwaWorker(worker, input) {
     await assertCandidate();
     await verifyCache(cacheName, config);
     await assertCandidate();
-    const marker = { state: "COMPLETE", manifestSha256: await configHash(), completedAt: Date.now(), activationSequence: 0, manifest: config };
+    const marker = completeMarker(config, await configHash(), Date.now());
     await cache.put(markerUrl, new ResponseClass(JSON.stringify(marker), { headers: { "Content-Type": "application/json" } }));
     // Preserve resumability if writing COMPLETE fails; remove only afterwards.
     await cache.delete(candidateUrl).catch(() => undefined);
@@ -336,7 +342,8 @@ export function installPwaWorker(worker, input) {
     const activationSequence = Math.max(currentMarker.activationSequence, ...candidates.map(({ marker }) => marker.activationSequence)) + 1;
     if (!Number.isSafeInteger(activationSequence)) throw new Error("Activation sequence exhausted");
     const currentCache = await worker.caches.open(cacheName);
-    await currentCache.put(markerUrl, new ResponseClass(JSON.stringify({ ...currentMarker, activationSequence }), { headers: { "Content-Type": "application/json" } }));
+    await currentCache.put(markerUrl, new ResponseClass(JSON.stringify(completeMarker(currentMarker.manifest,
+      currentMarker.manifestSha256, currentMarker.completedAt, activationSequence)), { headers: { "Content-Type": "application/json" } }));
     // A new explicit worker activation selects its own complete app generation.
     // A later rollback selection belongs only to this engine build.
     await currentCache.delete(selectionUrl);
