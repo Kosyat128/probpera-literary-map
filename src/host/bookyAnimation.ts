@@ -18,6 +18,7 @@ type BookyRig = {
   leftArm: Object3D;
   rightArm: Object3D;
   eyes: readonly [Object3D, Object3D];
+  upperLids?: readonly [Object3D, Object3D];
   pupils: readonly [Object3D, Object3D];
   brows: readonly [Object3D, Object3D];
   mouth: Object3D;
@@ -63,7 +64,7 @@ export function boundedBookyLook(value?: BookyLook): BookyLook {
  * a static readable pose, also used when motion is reduced or suspended. */
 export function createBookyPose(rig: BookyRig) {
   const members = [...new Set([rig.body, rig.leftArm, rig.rightArm, ...rig.eyes,
-    ...rig.pupils, ...rig.brows, rig.mouth, rig.frontCover, rig.bookmark,
+    ...(rig.upperLids ?? []), ...rig.pupils, ...rig.brows, rig.mouth, rig.frontCover, rig.bookmark,
     rig.leftLeg, rig.rightLeg, rig.leftFoot, rig.rightFoot].filter((object): object is Object3D => Boolean(object)))];
   const rest = members.map(object => ({ object, position: object.position.clone(),
     quaternion: object.quaternion.clone(), scale: object.scale.clone() }));
@@ -128,9 +129,18 @@ export function createBookyPose(rig: BookyRig) {
       const pupil = rig.pupils[index], eye = rig.eyes[index];
       pupil.position.x += curious ? .020 + look.x * .004 + inspect * .005 : look.x * .021;
       pupil.position.y += curious ? .009 - look.y * .004 + inspect * .003 : -look.y * .016 - (nod ? .005 : 0);
-      const lid = index === 0 && wink ? 1 - winkClose * .93 : 1 - blink * .91;
-      eye.scale.y *= (curious ? 1.035 : reassuring ? .96 : 1) * lid;
-      if (!eye.getObjectById(pupil.id)) pupil.scale.y *= lid;
+      const upperLid = rig.upperLids?.[index];
+      if (upperLid) {
+        const closure = index === 0 && wink ? winkClose : blink;
+        // The .016 open half-height becomes .270 at closure. Move the centre
+        // by the same .254 growth to keep the upper edge fixed throughout.
+        upperLid.scale.y *= 1 + closure * (.270 / .016 - 1);
+        upperLid.position.y -= closure * .254;
+      } else {
+        const lid = index === 0 && wink ? 1 - winkClose * .93 : 1 - blink * .91;
+        eye.scale.y *= (curious ? 1.035 : reassuring ? .96 : 1) * lid;
+        if (!eye.getObjectById(pupil.id)) pupil.scale.y *= lid;
+      }
       rig.brows[index].position.y += curious ? (index ? .006 : .04)
         : wink ? (index ? .010 : .023) : celebrating ? .027 : guiding || greeting ? .013 : dragging ? .018 : reassuring ? .008 : 0;
       rig.brows[index].rotation.z += curious ? (index ? -.025 : .065)
@@ -184,7 +194,7 @@ export function createBookyPose(rig: BookyRig) {
         if (rig.rightLeg) rig.rightLeg.rotation.x += expression * .10;
         if (rig.leftFoot) rig.leftFoot.rotation.x -= expression * .07;
         if (rig.rightFoot) rig.rightFoot.rotation.x -= expression * .07;
-        for (const eye of rig.eyes) eye.scale.y *= 1 + expression * .045;
+        if (!rig.upperLids) for (const eye of rig.eyes) eye.scale.y *= 1 + expression * .045;
         rig.mouth.scale.y *= 1 + expression * .10;
       }
       if (twirl) {
@@ -211,7 +221,7 @@ export function createBookyPose(rig: BookyRig) {
         for (let index = 0; index < 2; index += 1) {
           rig.pupils[index].position.x -= expression * (.015 + look.x * .010);
           rig.pupils[index].position.y -= expression * (.010 - look.y * .010);
-          rig.eyes[index].scale.y *= 1 - expression * .11;
+          if (!rig.upperLids) rig.eyes[index].scale.y *= 1 - expression * .11;
           rig.brows[index].rotation.z += (index ? 1 : -1) * expression * .05;
         }
         rig.mouth.scale.x *= 1 - expression * .10;
@@ -232,7 +242,7 @@ export function createBookyPose(rig: BookyRig) {
         rig.leftArm.rotation.z -= expression * .10;
         for (let index = 0; index < 2; index += 1) {
           rig.pupils[index].position.y -= expression * .012;
-          rig.eyes[index].scale.y *= 1 - expression * .06;
+          if (!rig.upperLids) rig.eyes[index].scale.y *= 1 - expression * .06;
         }
         rig.mouth.scale.y *= 1 - expression * .06;
       }

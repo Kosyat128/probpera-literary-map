@@ -2,11 +2,17 @@ import { useCallback, useEffect, useId, useRef, useState, type RefObject } from 
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import bookyPortrait from "../assets/mascots/knizhulyk-green-v1.png";
 import Button from "../ui/Button";
+import PlanetMascotAvatar from "../host/PlanetMascotAvatar";
+import type { BookyGesture, BookyLook } from "../host/bookyAnimation";
 
-export default function GlobeSkinGuide({ selectRef, disabled = false }: { selectRef: RefObject<HTMLSelectElement>; disabled?: boolean }) {
+const playfulGestures: readonly BookyGesture[] = ["wink", "nod", "curious", "happy", "highfive", "greeting"];
+
+export default function GlobeSkinGuide({ selectRef, disabled = false, calmMotion = true, runtimeActive = true }: { selectRef: RefObject<HTMLSelectElement>; disabled?: boolean; calmMotion?: boolean; runtimeActive?: boolean }) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
   const [open, setOpen] = useState(false);
+  const [expression, setExpression] = useState<{ gesture: BookyGesture; key: number }>({ gesture: "greeting", key: 0 });
+  const [look, setLook] = useState<BookyLook>({ x: 0, y: 0 });
   const root = useRef<HTMLDetailsElement>(null), summary = useRef<HTMLElement>(null);
   const panelId = useId(), headingId = useId();
   const close = useCallback((restoreFocus = false) => {
@@ -32,8 +38,12 @@ export default function GlobeSkinGuide({ selectRef, disabled = false }: { select
     // the focused real select, which remains operable by touch and keyboard.
     try { select.showPicker?.(); } catch { /* Focused select is the fallback. */ }
   };
-  return <details ref={root} className="globe-skin-guide" data-globe-skin-guide=""
-    onToggle={event => setOpen(event.currentTarget.open)}
+  return <details ref={root} className="globe-skin-guide" data-globe-skin-guide="" data-booky-calm={calmMotion ? "true" : undefined}
+    onToggle={event => {
+      const next = event.currentTarget.open;
+      if (next) { setExpression({ gesture: "greeting", key: 0 }); setLook({ x: 0, y: 0 }); }
+      setOpen(next);
+    }}
     onBlur={event => { if (!event.currentTarget.contains(event.relatedTarget)) close(); }}
     onKeyDown={event => {
       if (event.key === "Escape" && root.current?.open) { event.preventDefault(); event.stopPropagation(); close(true); }
@@ -46,7 +56,21 @@ export default function GlobeSkinGuide({ selectRef, disabled = false }: { select
     </summary>
     <div id={panelId} className="globe-skin-guide__panel" role="region" aria-labelledby={headingId}>
       <div className="globe-skin-guide__heading">
-        <img src={bookyPortrait} alt="" aria-hidden="true" width="48" height="52" />
+        <button type="button" className="globe-skin-guide__character" data-globe-skin-character=""
+          aria-label={ru ? "Поиграть с Книжуликом: нажми, и он ответит жестом" : "Play with Mr. Booky: tap and he will respond with a gesture"}
+          title={ru ? "Поздоровайся с Книжуликом" : "Say hello to Mr. Booky"}
+          onClick={() => setExpression(previous => ({ gesture: playfulGestures[previous.key % playfulGestures.length], key: previous.key + 1 }))}
+          onPointerMove={event => {
+            if (event.pointerType !== "mouse" || calmMotion) return;
+            const bounds = event.currentTarget.getBoundingClientRect();
+            setLook({ x: Math.max(-1, Math.min(1, (event.clientX - bounds.left) / bounds.width * 2 - 1)),
+              y: Math.max(-1, Math.min(1, (event.clientY - bounds.top) / bounds.height * 2 - 1)) });
+          }}
+          onPointerLeave={() => setLook({ x: 0, y: 0 })} onBlur={() => setLook({ x: 0, y: 0 })}>
+          {open && <PlanetMascotAvatar src={bookyPortrait} interaction={expression.gesture} reactionKey={expression.key}
+            lookAt={look} active={runtimeActive} calmMotion={calmMotion} />}
+          <span aria-hidden="true">{ru ? "Нажми" : "Tap me"}</span>
+        </button>
         <div><small>{ru ? "Помогу выбрать" : "Let me help you choose"}</small><h2 id={headingId}>{name}</h2></div>
         <button type="button" className="globe-skin-guide__close" onClick={() => close(true)}
           aria-label={ru ? "Закрыть подсказку" : "Close the tip"}>

@@ -2673,6 +2673,8 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       await expect(header.locator(".interface-language-control")).toHaveCount(1);
       await expect(header.locator(".interface-language-control")).toBeHidden();
       for (const action of [filters, search, menu]) expect(await action.getAttribute("aria-label")).toBeTruthy();
+      await expect(menu).toHaveCSS('border-radius', '12px');
+      await expect(menu.locator('svg.atlas-application-menu-icon path')).toHaveAttribute('d', 'M5 7h14M5 12h14M5 17h14');
       const actions = [];
       for (const [target, label] of [[filters, "visible Filters"], [search, "visible Search"], [menu, "visible Menu"]]) {
         actions.push(await exposed(target, label));
@@ -2812,15 +2814,40 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       await exposed(skinGuideTrigger, 'Booky skin tip');
       await expect(header.locator('.atlas-immersive-identity strong')).toBeVisible();
       if (viewport.width === 390 && viewport.height === 844) {
+        await page.emulateMedia({ reducedMotion: 'no-preference' });
         await skinGuideTrigger.tap();
         await expect(skinGuide).toHaveAttribute('open', '');
         await expect(skinGuide.locator('[data-globe-skin-store-status="planned"]')).toContainText('внутреннюю валюту');
         await exposed(skinGuide.locator('.globe-skin-guide__close'), 'Skin tip close');
         await exposed(skinGuide.locator('[data-globe-skin-guide-choose]'), 'Real skin choice action');
+        const character = skinGuide.locator('[data-globe-skin-character]');
+        const avatar = character.locator('[data-planet-mascot-avatar]');
+        await exposed(character, 'Interactive 3D Booky');
+        await expect(avatar).toHaveAttribute('data-renderer-state', 'live3d');
+        await expect(avatar).toHaveAttribute('data-booky-interaction', 'greeting');
+        await character.tap();
+        await expect(avatar).toHaveAttribute('data-booky-interaction', 'wink');
+        await expect(avatar.locator('canvas')).toHaveAttribute('data-booky-animating', 'true');
+        await page.waitForTimeout(240); // Capture the finite wink while its lid is moving.
+        await evidence(fixture, testInfo, 'booky-guide-live-wink-ru', { actual3D: true, finiteGesture: 'wink', reducedMotion: false });
+        await expect.poll(() => avatar.locator('canvas').getAttribute('data-booky-animating')).toBe('false');
+        await page.emulateMedia({ reducedMotion: 'reduce' });
+        await character.tap();
+        await expect(avatar).toHaveAttribute('data-booky-interaction', 'nod');
+        await expect.poll(() => avatar.locator('canvas').getAttribute('data-booky-animating')).toBe('false');
+        await page.emulateMedia({ reducedMotion: 'no-preference' });
+        for (const gesture of ['curious', 'happy', 'highfive', 'greeting']) {
+          await character.tap();
+          await expect(avatar).toHaveAttribute('data-booky-interaction', gesture);
+          await expect(avatar.locator('canvas')).toHaveAttribute('data-booky-animating', 'true');
+          await expect.poll(() => avatar.locator('canvas').getAttribute('data-booky-animating')).toBe('false');
+        }
+        await page.emulateMedia({ reducedMotion: 'reduce' });
         await evidence(fixture, testInfo, 'premium-globe-skin-tip-ru', { actualGuide: true, purchasesAvailable: false, sameCanonicalGlobe: true });
         await page.keyboard.press('Escape');
         await expect(skinGuide).not.toHaveAttribute('open', '');
         await expect(skinGuideTrigger).toBeFocused();
+        await expect(skinGuide.locator('[data-booky-canvas]')).toHaveCount(0);
         await nativeLanguage(page, 'en', 'tap');
         await preserved();
         await skinGuideTrigger.tap();
@@ -2909,6 +2936,62 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
     expect(bookyGeometry.button.width, 'Booky actual-history touch width').toBeGreaterThanOrEqual(44);
     expect(bookyGeometry.button.height, 'Booky actual-history touch height').toBeGreaterThanOrEqual(44);
     expect(bookyGeometry.ownHits, 'Booky actual-history own hit points').toEqual([true,true,true,true,true]);
+    // Actual companion controls: size, touch drag, locale/panel handoff and hide/return.
+    const companion = page.locator('.planet-mascot-controls[data-planet-mascot-pet]');
+    await companion.locator('[data-planet-mascot-toggle]').tap();
+    await expect(companion).toHaveAttribute('data-planet-mascot-active', 'true');
+    await expect(companion.locator('[data-planet-mascot-panel]')).toBeVisible();
+    await companion.locator('[data-planet-mascot-collapse]').tap();
+    await companion.locator('[data-booky-actions-toggle]').tap();
+    for (const [size, pixels] of [['small',44],['large',80],['normal',56],['large',80]]) {
+      const choice = companion.locator('[data-booky-size="'+size+'"]:visible');
+      await exposed(choice, 'Companion '+size+' size');
+      await choice.tap();
+      await expect(companion).toHaveAttribute('data-booky-companion-size', size);
+      await expect(choice).toHaveAttribute('aria-pressed', 'true');
+      await expect(companion.locator('[data-planet-mascot-avatar]')).toHaveCSS('width', pixels+'px');
+      await browserFrames(page);
+      const bounds = await companion.boundingBox();
+      expect(bounds.x).toBeGreaterThanOrEqual(11);
+      expect(bounds.x+bounds.width).toBeLessThanOrEqual(391);
+    }
+    await evidence(fixture, testInfo, 'booky-companion-large-actions-ru', { actualSizePixels:80, realSizeControls:true });
+    const moveHandle = companion.locator('[data-planet-mascot-move]');
+    const handle = await exposed(moveHandle, 'Companion touch move');
+    const beforeMove = await companion.boundingBox();
+    const touchSession = await page.context().newCDPSession(page);
+    try {
+      const start={x:handle.bounds.x+handle.bounds.width/2,y:handle.bounds.y+handle.bounds.height/2};
+      await touchAt(touchSession,'touchStart',start);
+      for(const offset of[15,30,45]){await touchAt(touchSession,'touchMove',{x:start.x-offset,y:start.y-10});await browserFrames(page);}
+      await touchAt(touchSession,'touchEnd');
+    } finally { await touchSession.detach(); }
+    const afterMove=await companion.boundingBox();
+    expect(Math.abs(afterMove.x-beforeMove.x)).toBeGreaterThan(10);
+    await companion.locator('[data-booky-actions-toggle]').tap();
+    await nativeLanguage(page,'en','tap');
+    await expect(companion).toHaveAttribute('data-booky-companion-size','large');
+    const collectionMenu=await nativeMenu(page,'tap');
+    await collectionMenu.locator('[data-atlas-action="open-collection"]').tap();
+    await expect(page.locator('.native-planet-panel')).toBeVisible();
+    await expect(companion).toHaveAttribute('data-booky-companion-size','large');
+    await page.locator('.native-planet-panel').getByRole('button',{name:'Return to the planet',exact:true}).tap();
+    await expect(companion).toHaveAttribute('data-booky-companion-size','large');
+    await companion.locator('[data-booky-actions-toggle]').tap();
+    await exposed(companion.locator('[data-booky-size="normal"]:visible'),'Normal size EN');
+    await companion.locator('[data-booky-size="normal"]:visible').tap();
+    await expect(companion.locator('[data-planet-mascot-avatar]')).toHaveCSS('width','56px');
+    await companion.locator('[data-planet-mascot-hide]').tap();
+    await expect(companion).toHaveAttribute('data-planet-mascot-active','false');
+    await exposed(companion.locator('[data-planet-mascot-toggle]'),'Hidden Booky return EN');
+    await companion.locator('[data-planet-mascot-toggle]').tap();
+    await expect(companion).toHaveAttribute('data-booky-companion-size','normal');
+    await expect(companion.locator('[data-planet-mascot-panel]')).toBeVisible();
+    await companion.locator('[data-planet-mascot-collapse]').tap();
+    await companion.locator('[data-booky-actions-toggle]').tap();
+    await companion.locator('[data-planet-mascot-hide]').tap();
+    await nativeLanguage(page,'ru','tap');
+    await preserved();
     expect(fixture.consoleErrors).toEqual([]);
     await testInfo.attach("compact-mobile-observations", { body: JSON.stringify(observations), contentType: "application/json" });
   } finally { await original.dispose(); }

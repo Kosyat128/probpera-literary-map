@@ -182,6 +182,7 @@ interface Props {
   economical?: boolean;
   qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
+  bookyCalmMotion?: boolean;
   standCustomization?: GlobeStandPresentation;
   standControls?: ReactNode;
   sourceDialogRequestId?: number;
@@ -2020,6 +2021,7 @@ export default function LiteraryGlobe({
   economical = false,
   qualityTier,
   runtimeActive = true,
+  bookyCalmMotion = true,
   standCustomization,
   standControls,
   sourceDialogRequestId = 0,
@@ -3544,7 +3546,7 @@ export default function LiteraryGlobe({
 
       {isPlanetApplication ? <div className="globe-edition-application-selector">
         {compactEditionSelector}
-        <GlobeSkinGuide selectRef={skinSelectRef} disabled={Boolean(pendingEditionId)} />
+        <GlobeSkinGuide selectRef={skinSelectRef} disabled={Boolean(pendingEditionId)} calmMotion={bookyCalmMotion} runtimeActive={runtimeActive} />
       </div> : compactEditionSelector}
 
       <span

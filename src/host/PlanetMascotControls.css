@@ -2,7 +2,7 @@
   position: fixed;
   z-index: 1050;
   box-sizing: border-box;
-  width: 176px;
+  width: calc(var(--planet-mascot-avatar-size) + 16px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,6 +51,11 @@
 .planet-mascot-controls__tools { display: flex; justify-content: center; gap: 6px; }
 .planet-mascot-controls__tools button { display: grid; place-items: center; width: 44px; padding: 4px; font-size: 24px; box-shadow: 0 2px 8px #17112425; }
 .planet-mascot-controls__tools svg { display: block; width: 24px; height: 24px; pointer-events: none; }
+.planet-mascot-controls__size { width: 100%; min-width: 0; margin-top: 12px; font: 600 13px/1.4 "Source Sans 3 Local", var(--sans, sans-serif); }
+.planet-mascot-controls__size > span { display: block; margin-bottom: 6px; color: var(--planet-muted, #625942); }
+.planet-mascot-controls__size-choices { display: grid; grid-template-columns: repeat(3, minmax(44px, 1fr)); gap: 4px; }
+.planet-mascot-controls__size-choices button { min-width: 44px; min-height: 44px; padding: 8px 4px; font-size: 13px; }
+.planet-mascot-controls__size-choices [aria-pressed="true"] { border-color: #725089; background: #f0e7f4; box-shadow: inset 0 0 0 1px #725089; }
 .planet-mascot-controls .planet-mascot-controls__walk { width: 100%; min-height: 52px; padding: 7px 9px; font-size: 13px; box-shadow: 0 2px 8px #17112425; }
 .planet-mascot-controls__walk > span { font-size: 20px; line-height: 1; vertical-align: middle; }
 .planet-mascot-target { position: fixed; z-index: 1051; width: 40px; height: 40px; box-sizing: border-box;
@@ -225,7 +230,7 @@
   border: 0;
 }
 @media (max-width: 640px), (max-height: 540px) {
-  .planet-mascot-controls { width: 112px; --planet-mascot-avatar-size: 88px; }
+  .planet-mascot-controls { width: calc(var(--planet-mascot-avatar-size) + 24px); --planet-mascot-avatar-size: 88px; }
   .planet-mascot-controls__panel { padding: 18px 16px 18px 22px; border-radius: 4px 18px 6px 4px; font-size: 16px; }
   .planet-mascot-controls__panel::before { left: 10px; }
   .planet-mascot-controls__heading { top: -18px; }
@@ -235,10 +240,10 @@
 @media (max-height: 540px) and (orientation: landscape) {
   /* Keep the full-size mobile character and touch targets in one short row. */
   .planet-mascot-controls[data-planet-mascot-active="true"] {
-    width: 312px;
+    width: calc(var(--planet-mascot-avatar-size) + 224px);
     max-width: calc(100vw - 24px);
     display: grid;
-    grid-template-columns: 96px 94px minmax(0, 1fr);
+    grid-template-columns: calc(var(--planet-mascot-avatar-size) + 8px) 94px minmax(0, 1fr);
     align-items: center;
   }
   .planet-mascot-controls > .planet-mascot-controls__persistence { grid-column: 1 / -1; }
@@ -361,11 +366,11 @@
 .planet-mascot-controls .planet-mascot-controls__options { display: none; }
 .planet-mascot-controls[data-planet-mascot-pet][data-booky-mobile-composition="true"][data-planet-mascot-active="true"] {
   --planet-mascot-avatar-size: 56px;
-  --booky-dock-max-left: max(12px, calc(100vw - 144px));
-  width: 120px;
+  --booky-dock-max-left: max(12px, calc(100vw - var(--planet-mascot-avatar-size) - 88px));
+  width: calc(var(--planet-mascot-avatar-size) + 64px);
   max-width: calc(100vw - 24px);
   display: grid;
-  grid-template-columns: 64px 44px;
+  grid-template-columns: calc(var(--planet-mascot-avatar-size) + 8px) 44px;
   grid-template-rows: auto;
   align-items: center;
   gap: 8px;
@@ -393,11 +398,23 @@
   grid-column: 1 / -1;
   grid-row: 2;
 }
+.planet-mascot-controls[data-booky-mobile-composition="true"][data-planet-mascot-active="true"][data-booky-actions-open="true"] {
+  --booky-dock-max-left: max(12px, calc(100vw - 224px));
+  width: 200px;
+  max-height: max(44px, calc(var(--booky-available-height) - 24px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.planet-mascot-controls[data-booky-mobile-composition="true"] > .planet-mascot-controls__size {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  margin-top: 0;
+}
 .planet-mascot-controls[data-booky-mobile-composition="true"][data-booky-actions-open="true"] > .planet-mascot-controls__walk,
 .planet-mascot-controls[data-booky-mobile-composition="true"][data-planet-mascot-gesture="walking"] > .planet-mascot-controls__walk {
   display: block;
   grid-column: 1 / -1;
-  grid-row: 3;
+  grid-row: 4;
   min-height: 44px;
   height: auto;
   padding: 7px 9px;
@@ -421,7 +438,7 @@
 .planet-mascot-controls[data-booky-mobile-composition="true"] > .planet-mascot-controls__persistence { grid-column: 1 / -1; }
 .planet-mascot-controls[data-booky-mobile-composition="true"][data-planet-mascot-active="true"][data-planet-mascot-closed-notice="true"] {
   width: min(280px, calc(100vw - 24px));
-  grid-template-columns: 64px minmax(44px, 1fr);
+  grid-template-columns: calc(var(--planet-mascot-avatar-size) + 8px) minmax(44px, 1fr);
   max-height: max(44px, calc(var(--booky-available-height) - 24px));
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -434,7 +451,7 @@
 /* The same mounted avatar occupies the left column of the sticky help header. */
 .planet-mascot-controls[data-booky-mobile-composition="true"][data-planet-mascot-active="true"][data-booky-help-sheet="true"] {
   --booky-dock-max-left: none;
-  width: 64px;
+  width: calc(var(--planet-mascot-avatar-size) + 8px);
   display: block;
   max-height: none;
   overflow: visible;
@@ -454,10 +471,10 @@
 .planet-mascot-controls[data-booky-help-sheet="true"] .planet-mascot-controls__leaf { padding: 12px; }
 .planet-mascot-controls[data-booky-help-sheet="true"] .planet-mascot-controls__heading {
   top: 0;
-  min-height: 88px;
+  min-height: max(88px, calc(var(--planet-mascot-avatar-size) + 32px));
   box-sizing: border-box;
   margin: -12px -12px 0;
-  padding: 12px 12px 12px 84px;
+  padding: 12px 12px 12px calc(var(--planet-mascot-avatar-size) + 28px);
   gap: 8px;
   align-items: center;
 }
@@ -475,7 +492,7 @@
 }
 .planet-mascot-controls[data-booky-help-sheet="true"] .planet-mascot-controls__heading-actions [data-booky-stop-gesture]:disabled { display: none; }
 .planet-mascot-controls[data-booky-help-sheet="true"][data-booky-expanded-text="true"] .planet-mascot-controls__heading {
-  padding-top: 88px;
+  padding-top: max(88px, calc(var(--planet-mascot-avatar-size) + 32px));
   padding-left: 12px;
 }
 .planet-mascot-controls[data-booky-help-sheet="true"][data-booky-expanded-text="true"] .planet-mascot-controls__heading h2 {
@@ -606,7 +623,7 @@
 @media (min-width: 560px) and (max-height: 540px) and (orientation: landscape) {
   .native-planet-app[data-planet-edition] .planet-mascot-controls[data-booky-help-sheet="true"][data-booky-expanded-text="true"] .planet-mascot-controls__heading {
     padding-top: 12px;
-    padding-left: 84px;
+    padding-left: calc(var(--planet-mascot-avatar-size) + 28px);
   }
   .native-planet-app[data-planet-edition] .planet-mascot-controls[data-booky-help-sheet="true"][data-booky-expanded-text="true"] .planet-mascot-controls__heading h2 {
     flex: 0 0 auto;
@@ -618,3 +635,15 @@
     right: auto;
   }
 }
+
+.native-planet-app[data-planet-edition] .planet-mascot-controls[data-booky-mobile-composition="true"] .planet-mascot-controls__size-choices button { padding: 8px 4px; }
+
+/* Keep size labels whole and treat their choices as one compact control. */
+.planet-mascot-controls[data-booky-mobile-composition="true"][data-planet-mascot-active="true"][data-booky-actions-open="true"] {
+  grid-template-columns: calc(var(--planet-mascot-avatar-size) + 8px) minmax(44px, 1fr);
+}
+.planet-mascot-controls[data-booky-mobile-composition="true"][data-booky-actions-open="true"] > .planet-mascot-controls__options { justify-self: end; }
+.planet-mascot-controls__size { box-sizing: border-box; padding: 8px; border: 1px solid #d7c8a7; border-radius: 14px; background: #fbf5e5; }
+.planet-mascot-controls__size > span { color: #66583f; text-align: center; }
+.planet-mascot-controls__size-choices button { white-space: nowrap; overflow-wrap: normal; font-size: 12px; border-color: #d7c8a7; border-radius: 9px; background: #fffaf0; }
+.planet-mascot-controls__size-choices [aria-pressed="true"] { border-color: #725089; background: #eee2f4; }

@@ -67,7 +67,8 @@ describe("original articulated Mr. Booky model", () => {
       expect(bounds.min.y).toBeGreaterThan(-1.30); expect(bounds.max.y).toBeLessThan(1.35);
       expect(bounds.getSize(new THREE.Vector3()).z).toBeGreaterThan(.55);
       for (const name of ["booky-front-hardcover", "booky-page-block", "booky-layered-leaf-edges", "booky-left-open-glove",
-        "booky-right-grip-glove", "booky-smile-teeth", "booky-smile-tongue", "booky-magnifier-lens"]) {
+        "booky-right-grip-glove", "booky-smile-teeth", "booky-smile-tongue", "booky-magnifier-lens",
+        "booky-soft-upper-lid-left", "booky-soft-upper-lid-right"]) {
         expect(model.group.getObjectByName(name)).toBeInstanceOf(THREE.Mesh);
       }
       const lens = model.group.getObjectByName("booky-magnifier-lens") as THREE.Mesh<THREE.BufferGeometry, THREE.MeshPhysicalMaterial>;
@@ -95,7 +96,7 @@ describe("original articulated Mr. Booky model", () => {
     try {
       const rig = model.rig, pose = createBookyPose(rig);
       const members = [rig.body, rig.leftArm, rig.rightArm, rig.frontCover, rig.bookmark,
-        rig.leftLeg, rig.rightLeg, rig.leftFoot, rig.rightFoot, ...rig.eyes, ...rig.pupils, ...rig.brows, rig.mouth];
+        rig.leftLeg, rig.rightLeg, rig.leftFoot, rig.rightFoot, ...rig.eyes, ...rig.upperLids, ...rig.pupils, ...rig.brows, rig.mouth];
       const transforms = () => members.map(object => [...object.position.toArray(),
         ...object.quaternion.toArray(), ...object.scale.toArray()]);
       const rest = transforms();
@@ -104,6 +105,12 @@ describe("original articulated Mr. Booky model", () => {
       const pointing: BookyInput = { ...neutral, mood: "guiding", interaction: "pointing" };
       const greeting: BookyInput = { ...neutral, interaction: "greeting", reactionKey: 1 };
       const originalPupil = rig.pupils[0].position.clone(), originalEye = rig.eyes[0].position.clone();
+      const eyeScales = rig.eyes.map(eye => eye.scale.clone()), pupilScales = rig.pupils.map(pupil => pupil.scale.clone());
+      const lid = model.group.getObjectByName("booky-soft-upper-lid-left") as THREE.Mesh;
+      const pupilInk = model.group.getObjectByName("booky-pupil-ink-left") as THREE.Mesh;
+      const sclera = model.group.getObjectByName("booky-sclera-left")!;
+      expect(rig.upperLids[0].parent).toBe(rig.eyes[0].parent);
+      expect(new THREE.Box3().setFromObject(lid, true).min.y).toBeGreaterThan(new THREE.Box3().setFromObject(sclera, true).max.y);
       const look = boundedBookyLook({ x: 200, y: -200 });
       expect(look).toEqual({ x: 1, y: -1 });
       pose(pointing, look, null, false);
@@ -113,7 +120,18 @@ describe("original articulated Mr. Booky model", () => {
       const pointed = transforms();
       for (let repeat = 0; repeat < 12; repeat++) {
         pose(greeting, { x: -.6, y: .4 }, .34, false);
-        expect(rig.eyes[0].scale.y).toBeLessThan(.2);
+        rig.eyes.forEach((eye, index) => expect(eye.scale.equals(eyeScales[index])).toBe(true));
+        rig.pupils.forEach((pupil, index) => expect(pupil.scale.equals(pupilScales[index])).toBe(true));
+        // Actual lid geometry hides the preserved pupil from the front; this
+        // bypasses disabled UI picking only for the geometry assertion.
+        model.group.updateMatrixWorld(true);
+        const ray = new THREE.Raycaster(rig.pupils[0].localToWorld(new THREE.Vector3(0, 0, 1)),
+          new THREE.Vector3(0, 0, -1).transformDirection(rig.pupils[0].matrixWorld));
+        const lidHits: THREE.Intersection[] = [], pupilHits: THREE.Intersection[] = [];
+        THREE.Mesh.prototype.raycast.call(lid, ray, lidHits);
+        THREE.Mesh.prototype.raycast.call(pupilInk, ray, pupilHits);
+        expect(lidHits.length).toBeGreaterThan(0); expect(pupilHits.length).toBeGreaterThan(0);
+        expect(Math.min(...lidHits.map(hit => hit.distance))).toBeLessThan(Math.min(...pupilHits.map(hit => hit.distance)));
         pose(pointing, look, null, false);
         expect(transforms()).toEqual(pointed);
       }

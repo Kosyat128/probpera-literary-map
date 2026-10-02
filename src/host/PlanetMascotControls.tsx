@@ -18,6 +18,8 @@ import "./PlanetMascotControls.css";
 
 type Position = Readonly<{ left: number; top: number }>;
 type Rect = Position & Readonly<{ width: number; height: number }>;
+const COMPANION_SIZES = ["small", "normal", "large"] as const;
+export type BookyCompanionSize = typeof COMPANION_SIZES[number];
 export type PlanetMascotControlsProps = {
   controller: PlanetMascotController;
   snapshot: PlanetMascotSnapshot;
@@ -33,6 +35,9 @@ export type PlanetMascotControlsProps = {
   onHelpOpen?: () => void;
   position: Position | null;
   onPositionChange: (position: Position | null) => void;
+  /** App-owned presentation can survive moves between the globe and collection. */
+  size?: BookyCompanionSize;
+  onSizeChange?: (size: BookyCompanionSize) => void;
   persistence: PlanetMascotPersistenceSnapshot;
   onRetryPersistence: () => boolean;
   motion: BookyMotionSnapshot;
@@ -112,7 +117,7 @@ function companionViewport(): Rect {
   return { ...view, top, height: Math.max(0, view.top + view.height - top) };
 }
 export default function PlanetMascotControls({ controller, snapshot, screen, countryLabel, writerLabel,
-  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, readerEntry = null, onHelpOpen, position, onPositionChange, persistence, onRetryPersistence, motion, onMotionChange,
+  onAction, pointRequest, completionReactionRef, atlasSearchVisible = false, readerEntry = null, onHelpOpen, position, onPositionChange, size: controlledSize, onSizeChange, persistence, onRetryPersistence, motion, onMotionChange,
   onRetryMotion, onRecoverMotion, onRetryContent, onRestartContent, readerSettings }: PlanetMascotControlsProps) {
   const { language } = useInterfaceLanguage();
   const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";
@@ -121,6 +126,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const toggle = useRef<HTMLButtonElement>(null), heading = useRef<HTMLHeadingElement>(null);
   const actionsToggle = useRef<HTMLButtonElement>(null);
   const [actionsOpen, setActionsOpen] = useState(false);
+  const [localSize, setLocalSize] = useState<BookyCompanionSize>("normal");
+  const companionSize = controlledSize ?? localSize;
   const [readerPaused, setReaderPaused] = useState(false);
   const seenReaderKey = useRef<string | null>(null), readerCollapseIntent = useRef<number | null>(null);
   const readerWalkStop = useRef<(() => void) | null>(null);
@@ -159,6 +166,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
   const shown = snapshot.visibility === "shown", open = shown && snapshot.panel === "open";
   const compact = view.width <= 1024 && screen === "globe" && view.height < 240 || typeof window !== "undefined"
     && window.matchMedia("(max-width: 640px), (max-width: 1024px) and (max-height: 540px) and (orientation: landscape)").matches;
+  const avatarSize = compact ? companionSize === "small" ? 44 : companionSize === "large" ? 80 : 56
+    : companionSize === "small" ? 128 : companionSize === "large" ? 192 : 160;
   useLayoutEffect(() => { setActionsOpen(false); }, [open, shown, snapshot.available, screen, compact]);
   useLayoutEffect(() => {
     const key = readerEntry?.key ?? null;
@@ -337,7 +346,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     if (card.current?.firstElementChild) observer?.observe(card.current.firstElementChild);
     measure();
     return () => observer?.disconnect();
-  }, [snapshot.available, shown, open, language, view.width, view.height]);
+  }, [snapshot.available, shown, open, language, view.width, view.height, companionSize]);
 
   useLayoutEffect(() => {
     const previous = prior.current;
@@ -658,6 +667,21 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     dockDetached.current = Boolean(dock);
     onPositionChange(clamped(next, petSize.width, petSize.height, view));
   };
+  const resizeCompanion = (next: BookyCompanionSize) => {
+    const current = controller.getSnapshot();
+    if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
+      || document.hidden || next === companionSize) return;
+    cancelPoint.current?.(); walk.stop();
+    const intent = drag.current; drag.current = null;
+    if (intent) {
+      suppressAvatarClick.current = intent.source === "avatar";
+      if (intent.element.hasPointerCapture(intent.pointerId)) intent.element.releasePointerCapture(intent.pointerId);
+    }
+    walkStopActivation.current = null; setPointerLook(null); setGesture("rest");
+    // Measured presentation repositions safely without resetting the user's
+    // committed coordinates or changing saved preferences and tours.
+    setLocalSize(next); onSizeChange?.(next);
+  };
   const resetPosition = () => {
     const current = controller.getSnapshot();
     if (current.revision !== snapshot.revision || !current.available || current.visibility !== "shown"
@@ -778,6 +802,16 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
     {persistence.state === "failed" && <button type="button" data-planet-mascot-retry-preference=""
       onClick={retryPreference}>{ru ? "Повторить" : "Try again"}</button>}
   </div>;
+  const sizeControls = <div id={`${id}-size-control`} className="planet-mascot-controls__size"
+    role="group" aria-labelledby={`${id}-size-label`}>
+    <span id={`${id}-size-label`}>{ru ? "Размер Книжулика" : "Mr. Booky’s size"}</span>
+    <div className="planet-mascot-controls__size-choices">
+      {COMPANION_SIZES.map(value => <button key={value} type="button" data-booky-size={value}
+        aria-pressed={companionSize === value} disabled={characterRestoring} onClick={() => resizeCompanion(value)}>
+        {value === "small" ? ru ? "Меньше" : "Small" : value === "large" ? ru ? "Больше" : "Large" : ru ? "Обычный" : "Normal"}
+      </button>)}
+    </div>
+  </div>;
 
   if (!snapshot.available) return null;
   return <>
@@ -793,6 +827,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-booky-mobile-composition={compact ? "true" : undefined}
       data-booky-help-sheet={helpSheet ? "true" : undefined}
       data-booky-actions-open={compact && actionsOpen ? "true" : undefined}
+      data-booky-companion-size={companionSize}
       data-booky-reader-owned={readerEntry ? "true" : "false"} data-booky-reader-paused={readerPaused ? "true" : "false"}
       data-planet-mascot-active={shown ? "true" : "false"} data-planet-mascot-visibility={snapshot.visibility}
       data-planet-mascot-panel-state={open ? "open" : "closed"}
@@ -801,7 +836,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       data-booky-returning={targetCue?.phase === "returning" ? "true" : undefined}
       data-planet-mascot-closed-notice={!open && persistence.state !== "idle" ? "true" : undefined}
       style={{ ...displayPosition, "--booky-available-height": `${view.height}px`,
-        "--booky-help-header-height": `${Math.max(88, cardTextSize.heading)}px`,
+        "--planet-mascot-avatar-size": `${avatarSize}px`,
+        "--booky-help-header-height": `${Math.max(88, avatarSize + 32, cardTextSize.heading)}px`,
         left: helpSheet ? displayPosition.left
           : `min(${displayPosition.left}px, var(--booky-dock-max-left, ${displayPosition.left}px))` } as CSSProperties}
       onPointerDown={event => event.stopPropagation()} onPointerUp={event => event.stopPropagation()}
@@ -863,7 +899,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       </button>
       {shown && <button ref={actionsToggle} type="button" className="planet-mascot-controls__options"
         data-booky-actions-toggle="" aria-expanded={actionsOpen}
-        aria-controls={`${id}-move-controls ${id}-walk-control`}
+        aria-controls={`${id}-move-controls ${id}-walk-control ${id}-size-control`}
         aria-label={ru ? "Действия Книжулика" : "Mr. Booky’s actions"}
         title={ru ? "Действия Книжулика" : "Mr. Booky’s actions"} onClick={() => {
           const current = controller.getSnapshot();
@@ -912,6 +948,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
             : "Tap Mr. Booky for tips or drag the character to move him. Use the arrow button for keyboard movement. Home restores the default position."}
         </span>
       </div>}
+      {shown && compact && actionsOpen && !open && sizeControls}
       {shown && <button id={`${id}-walk-control`} type="button" className="planet-mascot-controls__walk"
         data-booky-walk={walk.active ? undefined : ""} data-booky-walk-stop={walk.active ? "" : undefined}
         disabled={!walk.active && !walk.canStart}
@@ -1099,6 +1136,7 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
                 {ru ? "Вернуть на место" : "Return to default spot"}
               </button>
             </div>
+            {sizeControls}
           </details>
         </>}
         <details ref={gestureGallery} id={`${id}-gestures`} className="planet-mascot-controls__extras planet-mascot-controls__gestures" data-booky-gestures="">

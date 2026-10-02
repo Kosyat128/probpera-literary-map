@@ -69,6 +69,7 @@ interface Props {
   economical?: boolean;
   qualityTier?: GlobeQualityTier;
   runtimeActive?: boolean;
+  bookyCalmMotion?: boolean;
   standCustomization?: GlobeStandPresentation;
   backgroundCustomization?: GlobeBackgroundPresentation;
   composition?: PlanetCompositionPresentation;
@@ -102,6 +103,7 @@ export default function LiteraryWorldMap({
   economical = false,
   qualityTier,
   runtimeActive = true,
+  bookyCalmMotion = true,
   standCustomization,
   backgroundCustomization,
   composition,
@@ -225,6 +227,7 @@ export default function LiteraryWorldMap({
           economical={economical}
           qualityTier={qualityTier}
           runtimeActive={runtimeActive}
+          bookyCalmMotion={bookyCalmMotion}
           standCustomization={standCustomization}
           backgroundCustomization={backgroundCustomization}
           composition={composition}

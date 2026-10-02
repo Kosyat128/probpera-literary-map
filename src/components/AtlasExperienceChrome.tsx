@@ -172,7 +172,7 @@ export default function AtlasExperienceChrome({
               className="atlas-application-menu-toggle atlas-application-toolbar-button atlas-application-toolbar-button--menu"
               size="md"
               surface="dark"
-              icon={<span className="atlas-application-menu-icon" aria-hidden="true"><i /><i /><i /></span>}
+              icon={<svg className="atlas-application-menu-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" /></svg>}
               aria-label={menuLabel}
               title={menuLabel}
               aria-expanded={menuOpen}

@@ -29,7 +29,7 @@ import { usePlanetComposition } from "./host/planetComposition";
 import { compositionCustomizationView, readLegacyWebViewGlobeEdition } from "./host/planetCompositionPresentation";
 import PlanetStandControls from "./host/PlanetStandControls";
 import PlanetSceneInspectionControls from "./host/PlanetSceneInspectionControls";
-import PlanetMascotControls from "./host/PlanetMascotControls";
+import PlanetMascotControls, { type BookyCompanionSize } from "./host/PlanetMascotControls";
 import { createPlanetMascotController } from "./host/planetMascot";
 import { createPlanetMascotPersistence } from "./host/planetMascotPersistence";
 import BookyReaderSettings, { useBookyReaderSettingsState } from "./host/BookyReaderSettings";
@@ -618,6 +618,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     return () => readerPolicyStore.stop();
   }, [readerPolicyStore, isPlanetApplication, platformVisibility]);
   const [mascotPosition, setMascotPosition] = useState<{ left: number; top: number } | null>(null);
+  const [mascotSize, setMascotSize] = useState<BookyCompanionSize>("normal");
   const [mascotPointRequest, setMascotPointRequest] = useState<{ id: number; action: PlanetMascotAction } | null>(null);
   const mascotCompletionReactionRef = useRef<(() => boolean) | null>(null);
   const celebrateJourneyCompletion = useCallback(() => { mascotCompletionReactionRef.current?.(); }, []);
@@ -3184,6 +3185,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
                 economical={atlasExperience.economical}
                 qualityTier={isPlanetApplication ? graphics.qualityTier : undefined}
                 runtimeActive={globeRuntimeActive}
+                bookyCalmMotion={!bookyMotionSnapshot.hydrated || bookyMotionSnapshot.mode === "calm"}
                 sourceDialogRequestId={isPlanetApplication ? globeSourceRequestId : undefined}
                 standCustomization={isPlanetApplication ? standPresentation : undefined}
                 backgroundCustomization={isPlanetApplication ? backgroundPresentation : undefined}
@@ -3474,6 +3476,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       completionReactionRef={mascotCompletionReactionRef}
       atlasSearchVisible={atlasSearchOpen} onHelpOpen={() => setAtlasSearchVisibility(false)}
       position={mascotPosition} onPositionChange={setMascotPosition}
+      size={mascotSize} onSizeChange={setMascotSize}
       persistence={mascotPersistenceSnapshot} onRetryPersistence={mascotPersistence.retry}
       motion={bookyMotionSnapshot} onMotionChange={bookyMotion.selectMode} onRetryMotion={bookyMotion.retry}
       onRecoverMotion={bookyMotion.recoverWithCalm}

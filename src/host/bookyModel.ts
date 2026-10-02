@@ -13,6 +13,7 @@ export interface BookyRig {
   readonly leftFoot: THREE.Group;
   readonly rightFoot: THREE.Group;
   readonly eyes: readonly [THREE.Group, THREE.Group];
+  readonly upperLids: readonly [THREE.Group, THREE.Group];
   readonly pupils: readonly [THREE.Group, THREE.Group];
   readonly brows: readonly [THREE.Group, THREE.Group];
   readonly mouth: THREE.Group;
@@ -103,7 +104,7 @@ export function createBookyModel(): OwnedBookyModel {
     const white = finish(new THREE.MeshPhysicalMaterial({ color: "#fff4e5", roughness: .61, clearcoat: .06, envMapIntensity: .25 })); white.name = "booky-soft-glove";
     const purple = finish(new THREE.MeshPhysicalMaterial({ color: "#8b57ac", roughness: .67, clearcoat: .05 }));
     const brown = finish(new THREE.MeshStandardMaterial({ color: "#483329", roughness: .69 }));
-    const cheek = finish(new THREE.MeshStandardMaterial({ color: "#52865d", roughness: .88 })); cheek.name = "booky-soft-cheek";
+    const cheek = finish(new THREE.MeshStandardMaterial({ color: "#b79881", roughness: .88 })); cheek.name = "booky-soft-cheek";
     // Readable dark pupils remain dark under the renderer's broad environment.
     // Only the small authored catchlights are white, never the whole pupil.
     const pupilInk = finish(new THREE.MeshStandardMaterial({ color: "#090b10", roughness: .56, envMapIntensity: .08 }));
@@ -380,27 +381,34 @@ export function createBookyModel(): OwnedBookyModel {
       result.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3)); result.setIndex(indices); result.computeVertexNormals();
       return result;
     };
-    const iris = irisGeometry(), eyes: THREE.Group[] = [], pupils: THREE.Group[] = [], brows: THREE.Group[] = [];
+    const iris = irisGeometry(), eyes: THREE.Group[] = [], upperLids: THREE.Group[] = [], pupils: THREE.Group[] = [], brows: THREE.Group[] = [];
+    const upperLidGeometry = own(new THREE.SphereGeometry(1, 20, 12));
+    upperLidGeometry.scale(.220, .016, .012);
     // Capped rounded brows and a broader iris give a gentle, attentive face at
-    // 88px too. The eye groups still own their pupils for clean blink poses.
+    // 88px too. Independent soft lids leave the eye and pupil shapes intact.
     const browShape = sweep([[-.145, -.006, 0], [-.075, .052, .008], [.04, .066, .008], [.139, .018, 0]],
       [.009, .025, .023, .009], 22, 10);
     for (const [side, x] of [["left", -.237], ["right", .237]] as const) {
       const eye = node(frontCover, `booky-eye-${side}`, facePosition(x, .215, .274)); eyes.push(eye);
       mesh(eye, `booky-eye-socket-${side}`, ellipsoid([0, .001, -.011], [.215, .249, .034]), frontGreen);
       mesh(eye, `booky-sclera-${side}`, ellipsoid([0, 0, 0], [.205, .237, .044]), eyeWhite);
+      // Open lower edge .244 clears the sclera's .237 upper edge. A blink
+      // grows down from the fixed .276 top, in front of the iris/pupil depth.
+      const upperLid = node(eye.parent!, `booky-upper-lid-${side}`, [eye.position.x, eye.position.y + .260, eye.position.z + .080]);
+      upperLids.push(upperLid);
+      mesh(upperLid, `booky-soft-upper-lid-${side}`, upperLidGeometry, frontGreen);
       const pupil = node(eye, `booky-pupil-${side}`, [.006, -.014, .047]); pupils.push(pupil);
       const colored = mesh(pupil, `booky-iris-${side}`, iris, irisFinish); colored.scale.set(.137, .166, 1);
       mesh(pupil, `booky-pupil-ink-${side}`, ellipsoid([0, 0, .007], [.102, .130, .009]), pupilInk);
-      fused(pupil, `booky-eye-catchlights-${side}`, [ellipsoid([-.035, .061, .016], [.019, .025, .005]),
-        ellipsoid([.037, -.041, .014], [.005, .006, .003])], sparkle);
+      fused(pupil, `booky-eye-catchlights-${side}`, [ellipsoid([-.035, .061, .016], [.022, .029, .005]),
+        ellipsoid([.037, -.041, .014], [.007, .009, .003])], sparkle);
       const brow = node(frontCover, `booky-brow-${side}`, facePosition(x, side === "left" ? .499 : .508, .282)); brows.push(brow);
       const browMesh = mesh(brow, `booky-sculpted-brow-${side}`, browShape, brown);
       browMesh.rotation.z = side === "left" ? .035 : -.025;
     }
     mesh(frontCover, "booky-soft-nose", ellipsoid(facePosition(.005, -.055, .275), [.048, .036, .025]), frontGreen);
-    fused(frontCover, "booky-smile-cheeks", [ellipsoid(facePosition(-.326, -.104, .258), [.076, .039, .006]),
-      ellipsoid(facePosition(.326, -.104, .258), [.076, .039, .006])], cheek);
+    fused(frontCover, "booky-smile-cheeks", [ellipsoid(facePosition(-.330, -.106, .264), [.080, .048, .012]),
+      ellipsoid(facePosition(.330, -.106, .264), [.080, .048, .012])], cheek);
     const mouth = node(frontCover, "booky-mouth", facePosition(0, -.253, .267));
     mesh(mouth, "booky-smile-cavity", shape(s => {
       s.moveTo(-.231, .030); s.bezierCurveTo(-.100, -.015, .102, -.014, .237, .041);
@@ -680,6 +688,7 @@ export function createBookyModel(): OwnedBookyModel {
     const rig: BookyRig = Object.freeze({ body, frontCover, bookmark, leftArm, rightArm,
       leftLeg: legs[0], rightLeg: legs[1], leftFoot: feet[0], rightFoot: feet[1],
       eyes: Object.freeze(eyes) as unknown as readonly [THREE.Group, THREE.Group],
+      upperLids: Object.freeze(upperLids) as unknown as readonly [THREE.Group, THREE.Group],
       pupils: Object.freeze(pupils) as unknown as readonly [THREE.Group, THREE.Group],
       brows: Object.freeze(brows) as unknown as readonly [THREE.Group, THREE.Group], mouth });
     group.updateMatrixWorld(true);
