@@ -60,7 +60,8 @@ export function nativeAiProbeRuntimeOptions(remoteProxyConnectionString) {
   if (!remoteProxyConnectionString) fail('native_ai_probe_remote_connection_missing');
   return { name: 'probpera-native-news-ai-binding-proof', modules: true,
     script: 'export default { fetch() { return new Response(null, { status: 404 }); } };',
-    compatibilityDate: '2026-09-30',
+    // Match Wrangler's remote proxy date; the pinned local workerd is older than production.
+    compatibilityDate: '2025-04-28', cf: false,
     ai: { binding: 'AI', remoteProxyConnectionString } };
 }
 

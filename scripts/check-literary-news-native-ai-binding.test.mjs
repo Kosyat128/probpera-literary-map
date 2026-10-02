@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { convertV4MiniflareOptions } from 'miniflare';
 import { checkNativeNewsAiBinding as check, nativeAiProbeRuntimeOptions,
   startNativeAiProbeSession } from './check-literary-news-native-ai-binding.mjs';
@@ -131,7 +132,9 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
   it('validates the pinned Miniflare AI-only fixture and contains no publication or credential bindings', () => {
     const options = nativeAiProbeRuntimeOptions('http://localhost:19291');
     const converted = convertV4MiniflareOptions(options);
-    expect(Object.keys(options).sort()).toEqual(['ai', 'compatibilityDate', 'modules', 'name', 'script']);
+    expect(Object.keys(options).sort()).toEqual(['ai', 'cf', 'compatibilityDate', 'modules', 'name', 'script']);
+    expect(options.cf).toBe(false);
+    expect(converted.cf).toBe(false);
     expect(options.ai).toEqual({ binding: 'AI', remoteProxyConnectionString: 'http://localhost:19291' });
     expect(converted.workers).toHaveLength(1);
     expect(() => nativeAiProbeRuntimeOptions()).toThrow('native_ai_probe_remote_connection_missing');
@@ -140,5 +143,14 @@ describe('Genuine native AI binding readiness with explicitly intended Actions a
     expect(source).toContain("startRemoteProxySession({ AI: { type: 'ai', remote: true } }");
     expect(source).not.toContain('getPlatformProxy(');
     expect(source).not.toContain('wrangler.json');
+  });
+  it('uses a fixture date supported by the installed local runtime instead of the newer production date', () => {
+    const runtimeVersion = createRequire(import.meta.url)('workerd/package.json').version;
+    const match = /^\d+\.(\d{4})(\d{2})(\d{2})\./.exec(runtimeVersion);
+    expect(match).not.toBeNull();
+    const releaseDate = `${match[1]}-${match[2]}-${match[3]}`;
+    expect(nativeAiProbeRuntimeOptions('http://127.0.0.1:19291').compatibilityDate <= releaseDate).toBe(true);
+    // The formerly used production date could pass schema validation and fail workerd startup.
+    expect('2026-09-30' > releaseDate).toBe(true);
   });
 });
