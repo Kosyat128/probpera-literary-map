@@ -1124,3 +1124,266 @@ body[data-planet-portal-edition] > :is(.book-collection-dialog__backdrop, .book-
   .interface-language-control--flags button[aria-pressed="true"] { outline: 2px solid Highlight; outline-offset: -2px; }
   .interface-language-control--flags .interface-language-control__selected { background: Highlight; forced-color-adjust: none; }
 }
+
+/* App navigation and reading surfaces: one restrained visual hierarchy. */
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-panel {
+  gap: 0;
+  padding: 10px;
+  background: linear-gradient(145deg, var(--planet-chrome-raised), var(--planet-chrome));
+  border-color: color-mix(in srgb, var(--planet-on-dark) 16%, transparent);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px #0007, inset 0 1px 0 #ffffff0a;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-heading {
+  margin: 4px 12px 10px;
+  font-size: .75rem;
+  line-height: 1.5;
+  letter-spacing: .035em;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group--explore {
+  margin-top: 7px;
+  padding-top: 7px;
+  border-top: 1px solid color-mix(in srgb, var(--planet-on-dark) 10%, transparent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 14px;
+  align-items: center;
+  gap: 11px;
+  width: 100%;
+  min-height: 52px;
+  padding: 8px 11px;
+  color: var(--planet-on-dark);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  box-shadow: none;
+  font-size: .9rem;
+  font-weight: 550;
+  white-space: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-action .ui-action__label {
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: start;
+  line-height: 1.4;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-action > .ui-action__icon:first-child {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  color: var(--planet-accent);
+  background: color-mix(in srgb, var(--planet-on-dark) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--planet-on-dark) 7%, transparent);
+  border-radius: 10px;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-action > .ui-action__icon:last-child {
+  width: 14px;
+  height: 14px;
+  color: var(--planet-muted-dark);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-action > .ui-action__icon:last-child svg { width: 14px; height: 14px; }
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action:not(:disabled):hover {
+  background: color-mix(in srgb, var(--planet-on-dark) 7%, transparent);
+  border-color: color-mix(in srgb, var(--planet-on-dark) 9%, transparent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action:not(:disabled):active {
+  background: color-mix(in srgb, var(--planet-accent) 14%, var(--planet-chrome));
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action:disabled {
+  color: var(--planet-muted-dark);
+  opacity: .6;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-language {
+  margin-top: 9px;
+  padding: 12px 10px 3px;
+  font-size: .8rem;
+  border-color: color-mix(in srgb, var(--planet-on-dark) 12%, transparent);
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-language .interface-language-control--flags button {
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-language .interface-language-control--flags button[aria-pressed="true"] {
+  color: var(--planet-on-dark);
+  background: color-mix(in srgb, var(--planet-accent) 12%, transparent);
+  border-color: var(--planet-accent);
+  box-shadow: none;
+}
+.native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome :is(button, select):focus-visible {
+  outline: 3px solid var(--planet-accent);
+  outline-offset: 2px;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--planet-surface);
+  box-shadow: 0 3px 15px #00000004;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header h1 {
+  font-family: "Source Serif 4 Local", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -.02em;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel :is(button, select, input, summary, a, section):focus-visible {
+  outline: 3px solid var(--planet-accent-strong);
+  outline-offset: 2px;
+}
+.native-planet-app[data-planet-edition] .native-collection-shortcuts {
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 16px 0;
+}
+.native-planet-app[data-planet-edition] .native-collection-shortcuts button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 12px;
+  color: var(--planet-muted);
+  background: transparent;
+  border: 1px solid var(--planet-line);
+  border-radius: 999px;
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 550;
+  line-height: 1.4;
+  cursor: pointer;
+}
+.native-planet-app[data-planet-edition] .native-collection-shortcuts button:hover { color: var(--planet-ink); background: var(--native-paper-tonal); }
+.native-planet-app[data-planet-edition] .native-planet-panel .recent-history {
+  margin: 12px 16px 0;
+  padding: 0 14px;
+  color: var(--planet-ink);
+  background: var(--planet-card);
+  border: 1px solid var(--planet-line);
+  border-radius: 16px;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .recent-history > summary {
+  min-height: 48px;
+  padding-block: 12px;
+  font-size: .925rem;
+  font-weight: 550;
+  line-height: 1.5;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-section { padding: 22px 16px 28px; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-heading {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-heading .section-kicker {
+  font-size: .725rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: .06em;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-heading h2 {
+  margin: 8px 0 10px;
+  color: var(--planet-ink);
+  font-family: "Source Serif 4 Local", Georgia, serif;
+  font-size: clamp(1.65rem, 4vw, 2rem);
+  font-weight: 550;
+  line-height: 1.2;
+  letter-spacing: -.025em;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-heading p { font-size: .9rem; line-height: 1.55; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-total {
+  display: grid;
+  gap: 4px;
+  min-width: 54px;
+  margin-top: 22px;
+  padding: 10px 12px;
+  color: var(--planet-muted);
+  background: var(--native-paper-tonal);
+  border: 1px solid var(--planet-line);
+  border-radius: 14px;
+  text-align: center;
+}
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-total strong { color: var(--planet-ink); font-size: 1.4rem; line-height: 1.2; }
+.native-planet-app[data-planet-edition] .native-planet-panel .book-archive-total span { font-size: .7rem; line-height: 1.4; }
+.native-planet-app[data-planet-edition] .native-book-archive-about > summary {
+  width: fit-content;
+  min-height: 44px;
+  -webkit-user-select: none;
+  user-select: none;
+  padding-block: 12px;
+  color: var(--planet-muted);
+  font-size: .8rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.native-planet-app[data-planet-edition] .native-book-archive-about[open] p { margin-block: 2px 12px; }
+.native-planet-app[data-planet-edition] .native-collection-tools {
+  margin: 8px 16px 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--planet-line);
+  scroll-margin-block: 16px;
+}
+.native-planet-app[data-planet-edition] .native-collection-tools > h2 {
+  margin: 0 0 12px;
+  color: var(--planet-ink);
+  font-family: "Source Serif 4 Local", Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+}
+.native-planet-app[data-planet-edition] .native-collection-tools > :is(.planet-graphics-settings, .planet-downloads, .pwa-help) {
+  margin: 10px 0;
+  padding: 0 14px;
+  background: var(--planet-card);
+  border: 1px solid var(--planet-line);
+  border-radius: 16px;
+}
+.native-planet-app[data-planet-edition] .native-collection-tools > details > summary {
+  min-height: 48px;
+  padding-block: 12px;
+  color: var(--planet-ink);
+  font-size: .925rem;
+  font-weight: 550;
+  line-height: 1.5;
+  cursor: pointer;
+}
+@media (max-width: 420px) {
+  .native-planet-app[data-planet-edition] .native-planet-panel .native-planet-panel__header { gap: 8px; padding-inline: 12px; }
+  .native-planet-app[data-planet-edition] .native-planet-panel .book-archive-heading { gap: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action { transition: none; }
+}
+@media (forced-colors: active) {
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-panel,
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action,
+  .native-planet-app[data-planet-edition] .native-collection-shortcuts button,
+  .native-planet-app[data-planet-edition] .native-collection-tools > details,
+  .native-planet-app[data-planet-edition] .native-planet-panel .recent-history {
+    color: CanvasText;
+    background: Canvas;
+    border-color: CanvasText;
+  }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action:is(:hover, :active) {
+    color: HighlightText;
+    background: Highlight;
+    border-color: Highlight;
+  }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-group > .atlas-application-menu-action:disabled { color: GrayText; opacity: 1; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome :is(button, select):focus-visible { outline-color: Highlight; }
+  .native-planet-app[data-planet-edition] .atlas-experience-surface[data-atlas-view="immersive"] .atlas-application-chrome .atlas-application-menu-language .interface-language-control--flags button[aria-pressed="true"] { border-color: Highlight; outline: 2px solid Highlight; }
+}

@@ -2659,8 +2659,9 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
   }
 
   try {
-    for (const viewport of [{ width: 330, height: 844 }, { width: 390, height: 844 },
-      { width: 390, height: 480 }, { width: 844, height: 390 }]) {
+    for (const viewport of [{ width: 320, height: 844 }, { width: 330, height: 844 },
+      { width: 390, height: 844 }, { width: 430, height: 844 }, { width: 390, height: 480 },
+      { width: 844, height: 390 }, { width: 768, height: 1024 }]) {
       await page.setViewportSize(viewport);
       await nativeRootReady(page);
       await collapseCountrySheet();
@@ -2753,6 +2754,34 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       await expect(collection).toBeVisible();
       const returnToGlobe = collection.getByRole("button", { name: /^(?:Вернуться к планете|Return to the planet)$/u });
       await exposed(returnToGlobe, "Collection return");
+      if (viewport.width === 390 && viewport.height === 844) {
+        const archive = collection.locator('.book-archive-heading');
+        const tools = collection.locator('#native-collection-tools');
+        const shortcut = collection.locator('[data-native-collection-tools-shortcut]');
+        await expect(archive).toBeVisible();
+        await expect(collection.locator('.native-book-archive-intro')).toHaveText('Находите книги, сохраняйте избранное и собирайте собственные полки.');
+        expect(await archive.evaluate((node, id) => Boolean(node.compareDocumentPosition(document.getElementById(id)) & Node.DOCUMENT_POSITION_FOLLOWING), 'native-collection-tools')).toBe(true);
+        const about = collection.locator('.native-book-archive-about');
+        await expect(about).not.toHaveAttribute('open', '');
+        await about.locator('summary').tap();
+        await expect(about.locator('p')).toContainText('редакционной проверки');
+        await about.locator('summary').tap();
+        await evidence(fixture, testInfo, 'premium-collection-ru-390x844', { contentBeforeUtilities: true, originalEditorialDescriptionRetained: true });
+        await exposed(shortcut, 'Collection settings shortcut'); await shortcut.tap();
+        await expect(tools).toBeFocused(); await expect(tools.locator('h2')).toBeInViewport();
+        const downloads = tools.locator('[data-planet-downloads]');
+        await downloads.locator('summary').tap();
+        await expect(downloads).toContainText('Дополнительных пакетов для загрузки пока нет.');
+        await evidence(fixture, testInfo, 'premium-collection-tools-390x844', { genuineShortcutFocusAndScroll: true, actualDownloads: true });
+        await downloads.locator('summary').tap();
+        await (await nativeLanguageButton(page, collection, 'en')).tap();
+        await expect(collection.locator('.native-book-archive-intro')).toHaveText('Discover books, save favourites and create your own shelves.');
+        await expect(shortcut).toHaveText('Settings and help');
+        expect(selection()).toEqual(canonicalSelection);
+        await collection.locator('.native-planet-panel__content').evaluate(node => node.scrollTo({ top: 0, behavior: 'instant' }));
+        await evidence(fixture, testInfo, 'premium-collection-en-390x844', { locale: 'en', actualArchiveRetained: true });
+        await (await nativeLanguageButton(page, collection, 'ru')).tap();
+      }
       await returnToGlobe.tap();
       await expect(collection).toBeHidden();
       await expect(menu).toBeFocused();
@@ -2811,6 +2840,16 @@ test("compact premium mobile chrome retains the actual globe across menu, locale
       observations.push(observation);
       await evidence(fixture, testInfo, "compact-mobile-" + viewport.width + "x" + viewport.height, observation);
     }
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+    await openMenu();
+    await exposed(popup.locator('[data-atlas-action="open-collection"]'), 'Menu Collection at 200 percent text');
+    await menuLanguageFlags();
+    await expect(popup.locator('[data-atlas-action="open-collection"]')).toHaveCSS('white-space', 'normal');
+    await evidence(fixture, testInfo, 'premium-menu-large-text-390x844', { rootFontScale: '200%', exposedFlags: true, actualMenu: true });
+    await page.keyboard.press('Escape');
+    await page.evaluate(() => { document.documentElement.style.removeProperty('font-size'); });
+    await preserved();
     const beforeZoom = await settledCameraPose(original);
     const zoomIn = globe.locator('[data-globe-control="zoom-in"]');
     await exposed(zoomIn, "touch zoom in");

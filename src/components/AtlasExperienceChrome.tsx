@@ -30,6 +30,13 @@ type Props = {
   searchOpen: boolean;
 };
 
+function MenuChevronIcon() {
+  return <svg className="atlas-application-menu-chevron" viewBox="0 0 16 16" fill="none"
+    width="14" height="14" aria-hidden="true" focusable="false">
+    <path d="m6 3.5 4.5 4.5L6 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>;
+}
+
 export default function AtlasExperienceChrome({
   closeButtonRef,
   searchButtonRef,
@@ -123,7 +130,7 @@ export default function AtlasExperienceChrome({
         {applicationRoot ? <nav className="atlas-application-actions" aria-label={t("Литературная планета")}>
           <IconButton
             ref={filtersButtonRef}
-            className="atlas-immersive-filter-toggle"
+            className="atlas-immersive-filter-toggle atlas-application-toolbar-button atlas-application-toolbar-button--filter"
             size="md"
             surface="dark"
             icon={<BrandFilterIcon />}
@@ -136,7 +143,7 @@ export default function AtlasExperienceChrome({
           />
           <IconButton
             ref={searchButtonRef}
-            className="atlas-immersive-search-toggle"
+            className="atlas-immersive-search-toggle atlas-application-toolbar-button atlas-application-toolbar-button--search"
             size="md"
             surface="dark"
             icon={<BrandSearchIcon />}
@@ -162,7 +169,7 @@ export default function AtlasExperienceChrome({
             }}>
             <IconButton
               ref={closeButtonRef}
-              className="atlas-application-menu-toggle"
+              className="atlas-application-menu-toggle atlas-application-toolbar-button atlas-application-toolbar-button--menu"
               size="md"
               surface="dark"
               icon={<span className="atlas-application-menu-icon" aria-hidden="true"><i /><i /><i /></span>}
@@ -183,32 +190,43 @@ export default function AtlasExperienceChrome({
             <div ref={menuPanelRef} id={menuId} className="atlas-application-menu-panel"
               data-atlas-application-menu-panel="" role="group" aria-label={menuLabel} hidden={!menuOpen}>
               <p className="atlas-application-menu-heading">{t("Литературная планета")}</p>
-              {onAppearance && <Button size="md" surface="dark" variant="secondary" startIcon={<BrandQuillIcon />}
-                data-atlas-action="open-appearance" onClick={() => runMenuAction(onAppearance)}>
-                {language === "ru" ? "Оформление" : "Appearance"}
-              </Button>}
-              <Button size="md" surface="dark" variant="secondary" startIcon={<BrandBookIcon />}
-                data-atlas-action="open-collection" onClick={() => runMenuAction(onCollection)}>
-                {language === "ru" ? "Коллекция" : "Collection"}
-              </Button>
-              <Button size="md" surface="dark" variant="secondary" startIcon={<BrandSparkleIcon />}
-                disabled={randomDisabled} data-atlas-action="random-journey"
-                aria-label={t("Случайное литературное путешествие")}
-                onClick={() => runMenuAction(onRandomJourney)}>
-                {t("Случайное путешествие")}
-              </Button>
-              {onSource && <Button size="md" surface="dark" variant="secondary" startIcon={<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
-                <path d="M12 11v6M12 7.3v.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              </svg>}
-                data-atlas-action="globe-source" onClick={() => runMenuAction(onSource)}>
-                {language === "ru" ? "Источник и права" : "Source and rights"}
-              </Button>}
+              <div className="atlas-application-menu-group atlas-application-menu-group--personal"
+                role="group" aria-label={language === "ru" ? "Личная планета" : "Your planet"}>
+                {onAppearance && <Button className="atlas-application-menu-action atlas-application-menu-action--appearance"
+                  size="md" surface="dark" variant="secondary" startIcon={<BrandQuillIcon />} endIcon={<MenuChevronIcon />}
+                  data-atlas-action="open-appearance" onClick={() => runMenuAction(onAppearance)}>
+                  {language === "ru" ? "Оформление" : "Appearance"}
+                </Button>}
+                <Button className="atlas-application-menu-action atlas-application-menu-action--collection"
+                  size="md" surface="dark" variant="secondary" startIcon={<BrandBookIcon />} endIcon={<MenuChevronIcon />}
+                  data-atlas-action="open-collection" onClick={() => runMenuAction(onCollection)}>
+                  {language === "ru" ? "Коллекция" : "Collection"}
+                </Button>
+              </div>
+              <div className="atlas-application-menu-group atlas-application-menu-group--explore"
+                role="group" aria-label={language === "ru" ? "Исследовать планету" : "Explore the planet"}>
+                <Button className="atlas-application-menu-action atlas-application-menu-action--journey"
+                  size="md" surface="dark" variant="secondary" startIcon={<BrandSparkleIcon />}
+                  disabled={randomDisabled} data-atlas-action="random-journey"
+                  aria-label={t("Случайное литературное путешествие")}
+                  onClick={() => runMenuAction(onRandomJourney)}>
+                  {t("Случайное путешествие")}
+                </Button>
+                {onSource && <Button className="atlas-application-menu-action atlas-application-menu-action--source"
+                  size="md" surface="dark" variant="secondary" endIcon={<MenuChevronIcon />}
+                  startIcon={<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.6" />
+                    <path d="M12 11v6M12 7.3v.2" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>}
+                  data-atlas-action="globe-source" onClick={() => runMenuAction(onSource)}>
+                  {language === "ru" ? "Источник и права" : "Source and rights"}
+                </Button>}
+              </div>
               <div className="atlas-application-menu-language"
                 onClickCapture={event => {
                   if (event.target instanceof Element && event.target.closest("button:not(:disabled)")) closeMenu(true);
                 }}>
-                <span>{t("Язык интерфейса")}</span>
+                <span className="atlas-application-menu-language-title">{t("Язык интерфейса")}</span>
                 {languageControl}
               </div>
             </div>

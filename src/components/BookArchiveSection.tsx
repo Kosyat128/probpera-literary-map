@@ -180,7 +180,7 @@ import {
 } from "../data/cms/homepage";
 import { useReadingLibrary } from "../hooks/useReadingLibrary";
 import { useBookCollections, type BookCollectionPersistenceStatus } from "../hooks/useBookCollections";
-import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
+import { useInterfaceLanguage, type InterfaceLanguage } from "../i18n/InterfaceLanguage";
 import {
   articlePath,
   navigateToArticle,
@@ -274,6 +274,11 @@ type Props = {
   nativePanelActive?: boolean;
   onNativeDetailClosed?: () => void;
   embeddedInPlanet?: boolean;
+};
+
+const applicationArchiveCopy: Record<InterfaceLanguage, { description: string; about: string; count: string }> = {
+  ru: { description: "Находите книги, сохраняйте избранное и собирайте собственные полки.", about: "Об архиве", count: "в архиве" },
+  en: { description: "Discover books, save favourites and create your own shelves.", about: "About the archive", count: "in archive" },
 };
 
 const shelfKeyboardInstructions = {
@@ -4506,6 +4511,24 @@ export default function BookArchiveSection({
             }. ${number(filteredItems.length)} ${t("результатов")}.`
           : t("В архиве нет книг по выбранным условиям");
 
+  const archiveDescription = (
+    <p
+      {...cmsCoreFieldMarker(
+        "book-archive",
+        "description",
+        coreBookArchive?.description ||
+          "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.",
+        { kind: "textarea", label: "Описание книжного архива" }
+      )}
+    >
+      {language === "ru" && coreBookArchive?.description
+        ? coreBookArchive.description
+        : t(
+            "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки."
+          )}
+    </p>
+  );
+
   return (
     <section
       ref={archiveSectionRef}
@@ -4548,25 +4571,17 @@ export default function BookArchiveSection({
               ? coreBookArchive.title
               : t("Книжный архив")}
           </h2>
-          <p
-            {...cmsCoreFieldMarker(
-              "book-archive",
-              "description",
-              coreBookArchive?.description ||
-                "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки.",
-              { kind: "textarea", label: "Описание книжного архива" }
-            )}
-          >
-            {language === "ru" && coreBookArchive?.description
-              ? coreBookArchive.description
-              : t(
-                  "Произведения связаны с карточками писателей и литературными традициями стран. Расширенные сведения публикуются только после редакционной проверки."
-                )}
-          </p>
+          {embeddedInPlanet ? <>
+            <p className="native-book-archive-intro">{applicationArchiveCopy[language].description}</p>
+            <details className="native-book-archive-about">
+              <summary>{applicationArchiveCopy[language].about}</summary>
+              {archiveDescription}
+            </details>
+          </> : archiveDescription}
         </div>
         <div className="book-archive-total">
           <strong>{number(queue.counts.total)}</strong>
-          <span>{t("произведений из единой базы стран")}</span>
+          <span>{embeddedInPlanet ? applicationArchiveCopy[language].count : t("произведений из единой базы стран")}</span>
         </div>
       </header>
 

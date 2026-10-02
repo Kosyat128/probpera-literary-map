@@ -3505,10 +3505,25 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
       <NativePlanetPanel open={nativeCollectionOpen} onClose={requestReturnToPlanet} onBack={handleNativePanelBack}
         globeRef={nativeGlobeRootRef} returnFocusRef={atlasExperience.closeButtonRef} sectionRequest={mascotSectionRequest}
         companion={nativeCollectionOpen ? mascotControls : null}>
-        <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
-        {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
-        {productHelp}
+        <div className="native-collection-shortcuts">
+          <button type="button" data-native-collection-tools-shortcut="" aria-controls="native-collection-tools"
+            onClick={event => {
+              const target = event.currentTarget.closest('.native-planet-panel')?.querySelector<HTMLElement>('#native-collection-tools');
+              target?.focus({ preventScroll: true });
+              target?.scrollIntoView({ block: 'start', behavior: 'instant' });
+            }}>
+            {language === "ru" ? "Настройки и помощь" : "Settings and help"}
+            <BrandArrowIcon />
+          </button>
+        </div>
         {collectionContent}
+        <section id="native-collection-tools" className="native-collection-tools" tabIndex={-1}
+          aria-labelledby="native-collection-tools-title">
+          <h2 id="native-collection-tools-title">{language === "ru" ? "Настройки и помощь" : "Settings and help"}</h2>
+          <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
+          {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
+          {productHelp}
+        </section>
       </NativePlanetPanel>
       {!nativeCollectionOpen && mascotControls}
       <NativePlanetLaunch ready={globeViewSample.revision > 0} failed={archiveDataStatus === "error"} onComplete={completePlanetLaunch} />
