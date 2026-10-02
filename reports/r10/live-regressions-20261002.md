@@ -19,6 +19,10 @@ The lead photo and 1+6 selection are unchanged. Local checks at 1440x900,
 1280x720 and 1280x600 confirm no horizontal overflow and a reachable footer;
 the exact final CSS is pinned in the current independent UI packet. The focused
 governance checks after this final spacing adjustment passed all 67 tests.
+The owner's subsequent thumbnail alignment request places each of the six
+secondary images to the right of its title, with identical title/image top
+coordinates and a 14px horizontal gap. A normal CSS grid preserves the complete
+title and avoids overlap. All three desktop checks passed again.
 
 The 190 events are October 2026's monthly count. The canonical country runtime
 contains 2340 annual unique dates, of which 2338 occur in the non-leap year 2026.
