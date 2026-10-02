@@ -1,0 +1,30 @@
+{
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "globals": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "9529caf7700fd79d2421ef4299904db2544b0cd02d174058f6ae717c395866b3"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "cf602e4af87861a67fa9e1fd2c2a2a12a1318497fe2a947990fa199d3b8bd31c"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "36e939d11e57a2c0cff469ac1c17a1a99474f82808ad527aea5468d0f68951a8"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "a7164caa4bfdce9534e2b912d09fe1ea67c9476fd0168019f65a51519d1183aa"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "988061df88ec9815d046bf7ebceb3689be1a27252a4fe27c9a434571ea247986"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "54d194c2d64d4880dc0bb844f24ba345af4eada9420bed9dbb4a7bc32d688427"
+    }
+  ],
+  "previousNextAction": "Continue S03.acceptance with the confirmed local rollback/profile composition gap: one isolated current QA PWA authority/build, explicit update then rollback, close its owned disposable persistent browser, reopen the same profile offline before navigation, and verify newer worker engine/selected previous generation, executable SHA, saved access, RU/EN and one canonical scene. The append-only D265 proposal is staged externally and needs ROOT review/source binding before execution; no personal OS installation/profile, unrelated packaging or passed old cases/suites. Preserve D262 current-public route proof and D263/D264 targeted consent/status evidence with their source identities; final CSS is newer than the retained public516efd compile. All11 criteria, approval/cache/provider/legal/editorial/installed-device/stage/release gates remain unchanged."
+}

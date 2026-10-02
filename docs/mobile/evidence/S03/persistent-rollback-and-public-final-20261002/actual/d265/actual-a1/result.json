@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "decision": "D265",
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "pass": true,
+  "buildInvocations": 1,
+  "browserInvocations": 1,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "actualOsInstallation": false,
+  "providerValidated": false,
+  "productionActionsPerformed": false,
+  "buildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+  "sourceBeforeAfterEqual": true,
+  "strictAuditPassed": true,
+  "persistentLaunches": 2,
+  "browserRestarts": 1,
+  "selectedPreviousShaVerified": true,
+  "offlineBeforeNavigation": true,
+  "profileRemoved": true,
+  "qualification": "Real current controlled QA PWA and worker in a disposable persistent Edge profile, with locally signed QA access. Candidate B is derived by the existing QA server from actual A executable bytes with updated digest/worker, not a second Vite product compilation. Same profile survives explicit rollback and close/reopen offline. This is browser/profile evidence, not installed OS/device/store/provider/full visual/stage/release acceptance. Page-origin request fence does not universally constrain service-worker traffic; offline reopen and bounded license ledger are proved separately.",
+  "signerClosed": true
+}

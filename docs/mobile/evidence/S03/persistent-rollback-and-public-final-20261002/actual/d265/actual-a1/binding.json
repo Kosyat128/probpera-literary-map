@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\producer.mjs",
+      "sha256": "cfbe382a793a19f263f34991223b2e3bed63e4e9d6a9ab276466ed073b968902"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\pwa.config.mjs",
+      "sha256": "aba15eaa7d57726c881ab6b8dda2de000dbf8cd65d3f07a1477214d85cd4777b"
+    }
+  ],
+  "additional": [
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459"
+    },
+    {
+      "path": "node_modules/@playwright/test/package.json",
+      "sha256": "be51f784a5742a1aa075e0173f5f04f189a791cc30c40e3bb18be584f696764e"
+    },
+    {
+      "path": "node_modules/vite/package.json",
+      "sha256": "e5ed0f85215f871fe22a48987dcd77fcfbe14064a53c0c9f7f48186a6b7e2cf0"
+    },
+    {
+      "path": "node_modules/esbuild/package.json",
+      "sha256": "9d0bc453f4e791553c4cc2298ba023b409241fd9801e494741666eb0f6051490"
+    }
+  ],
+  "scope": "One fresh current QA authority/compilation and one composed persistent rollback case. No full suites/extra TSC/packaging/provider/OS installation.",
+  "rootReview": "Full append/config and source guards read by ROOT. Independent static review confirmed engine B/application A, new-client binding and owned-profile cleanup traps; no defect identified."
+}

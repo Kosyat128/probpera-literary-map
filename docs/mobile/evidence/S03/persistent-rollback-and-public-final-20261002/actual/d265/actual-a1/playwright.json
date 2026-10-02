@@ -1,0 +1,123 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\pwa.config.mjs"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\pwa.config.mjs",
+    "rootDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": true,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-rollback-persistent-d265/runtime/actual-a1/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "s03-d265-msedge-390",
+        "name": "s03-d265-msedge-390",
+        "testDir": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work/tests/pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "controlled-pwa.spec.mjs"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "controlled-pwa.spec.mjs",
+      "file": "controlled-pwa.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "explicit rollback survives a full persistent browser restart offline under the newer worker engine",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "s03-d265-msedge-390",
+              "projectName": "s03-d265-msedge-390",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 84232,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T04:55:06.147Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "pwa-persistent-rollback-generation",
+                      "contentType": "application/json",
+                      "body": "ewogICJsb2NhbFFhT25seSI6IHRydWUsCiAgImJyb3dzZXJDaGFubmVsIjogIm1zZWRnZSIsCiAgInBlcnNpc3RlbnRMYXVuY2hlcyI6IDIsCiAgInJlc3RhcnRzIjogMSwKICAic2FtZURpc3Bvc2FibGVQcm9maWxlIjogdHJ1ZSwKICAiZmlyc3RDb250ZXh0Q2xvc2VkIjogdHJ1ZSwKICAib2ZmbGluZUJlZm9yZUZpcnN0TmF2aWdhdGlvbiI6IHRydWUsCiAgImRvY3VtZW50cyI6IFsKICAgIHsKICAgICAgInBoYXNlIjogInJlb3BlbmVkLW9mZmxpbmUiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICJhMDg3ZjYzZDcxMTcxMjhkOWRkNGViODMwMWFiNzNhNDRiMjVlZDVkMjk0ZjBhMzg0ZTRhZTkwNzY0ZTBiYTQxIiwKICAgICAgInNlcnZlZEJ1aWxkSWQiOiAiMzQ0Y2MxZjcwZjk2NDg4MjU1OWYyNzJlNzA3NmM3NmZmYTA1OTJiYTE4NGFkYjFiOWRlZTc4NzUyNjFhMjFiYiIsCiAgICAgICJkaXN0aW5jdEZyb21DbG9zZWREb2N1bWVudCI6IHRydWUKICAgIH0KICBdLAogICJsb2NhbGVzIjogWwogICAgewogICAgICAibG9jYWxlIjogInJ1IiwKICAgICAgInNlbGVjdGVkQ291bnRyeSI6ICJydXNzaWEiLAogICAgICAic2F2ZWRWZXJpZmljYXRpb24iOiB0cnVlLAogICAgICAid2hvbGVQcmV2aW91c0dlbmVyYXRpb24iOiB0cnVlLAogICAgICAic2FtZVNjZW5lV2l0aGluUmVvcGVuZWREb2N1bWVudCI6IHRydWUKICAgIH0sCiAgICB7CiAgICAgICJsb2NhbGUiOiAiZW4iLAogICAgICAic2VsZWN0ZWRDb3VudHJ5IjogInJ1c3NpYSIsCiAgICAgICJzYXZlZFZlcmlmaWNhdGlvbiI6IHRydWUsCiAgICAgICJ3aG9sZVByZXZpb3VzR2VuZXJhdGlvbiI6IHRydWUsCiAgICAgICJzYW1lU2NlbmVXaXRoaW5SZW9wZW5lZERvY3VtZW50IjogdHJ1ZQogICAgfSwKICAgIHsKICAgICAgImxvY2FsZSI6ICJydSIsCiAgICAgICJzZWxlY3RlZENvdW50cnkiOiAicnVzc2lhIiwKICAgICAgInNhdmVkVmVyaWZpY2F0aW9uIjogdHJ1ZSwKICAgICAgIndob2xlUHJldmlvdXNHZW5lcmF0aW9uIjogdHJ1ZSwKICAgICAgInNhbWVTY2VuZVdpdGhpblJlb3BlbmVkRG9jdW1lbnQiOiB0cnVlCiAgICB9CiAgXSwKICAic2NyZWVuc2hvdHMiOiBbCiAgICAicHdhLXJvbGxiYWNrLWJlZm9yZS1jbG9zZS5wbmciLAogICAgInB3YS1yb2xsYmFjay1yZW9wZW5lZC1ydS5wbmciLAogICAgInB3YS1yb2xsYmFjay1yZW9wZW5lZC1lbi5wbmciCiAgXSwKICAiY2FwdHVyZXNSZXZpZXdlZCI6IGZhbHNlLAogICJwcm9maWxlUmVtb3ZlZCI6IHRydWUsCiAgImFjdHVhbE9zSW5zdGFsbGF0aW9uIjogZmFsc2UsCiAgInJlYWxTdG9yZVB1cmNoYXNlIjogZmFsc2UsCiAgInByb2R1Y3Rpb25Qcm92aWRlciI6IGZhbHNlLAogICJzdGFnZUFjY2VwdGVkIjogZmFsc2UsCiAgInJlbGVhc2VSZWFkeSI6IGZhbHNlLAogICJjb21wbGV0ZWQiOiB0cnVlLAogICJidWlsZHMiOiB7CiAgICAicHJldmlvdXMiOiAiMzQ0Y2MxZjcwZjk2NDg4MjU1OWYyNzJlNzA3NmM3NmZmYTA1OTJiYTE4NGFkYjFiOWRlZTc4NzUyNjFhMjFiYiIsCiAgICAiZW5naW5lIjogImEwODdmNjNkNzExNzEyOGQ5ZGQ0ZWI4MzAxYWI3M2E0NGIyNWVkNWQyOTRmMGEzODRlNGFlOTA3NjRlMGJhNDEiLAogICAgImNoYW5nZWRQYXRoIjogIi9wbGFuZXQvYXNzZXRzL0FydGljbGVMaWJyYXJ5U2VjdGlvbi1ESGFUTzA5Sy5qcyIsCiAgICAicHJldmlvdXNNYW5pZmVzdFNoYTI1NiI6ICIwNWU1NjVlMDNlNGU4OGYxYWNiMGEyODc3M2YwNGY3ODQwNjI5N2FlYmNlN2IxY2IwM2VhNGNmYTZkYjU1MDJjIiwKICAgICJlbmdpbmVNYW5pZmVzdFNoYTI1NiI6ICJiNWJhNGIxMTQ1NTUyNGYzZjk5ZWQ0Zjg0YjYxODZkZThmYTBhYTYzNDY1Njk1ZjhiOTU2NmM1NTQ2ZDhlMzJmIiwKICAgICJwcmV2aW91c0FjdGl2YXRpb25TZXF1ZW5jZSI6IDEsCiAgICAiZW5naW5lQWN0aXZhdGlvblNlcXVlbmNlIjogMiwKICAgICJwcmV2aW91c0V4ZWN1dGFibGUiOiB7CiAgICAgICJidWlsZElkIjogIjM0NGNjMWY3MGY5NjQ4ODI1NTlmMjcyZTcwNzZjNzZmZmEwNTkyYmExODRhZGIxYjlkZWU3ODc1MjYxYTIxYmIiLAogICAgICAiYnl0ZXMiOiAxMTExOCwKICAgICAgInNoYTI1NiI6ICJiNWNiMGM5YjgxNzRkZTIxZDQ5ZGY0Zjc0NjM3MTUwYzQxNDRlZmFkNTY2YWM2MTZlMmJhMWM5ZDhlMzRmMTg0IgogICAgfSwKICAgICJlbmdpbmVFeGVjdXRhYmxlIjogewogICAgICAiYnVpbGRJZCI6ICJhMDg3ZjYzZDcxMTcxMjhkOWRkNGViODMwMWFiNzNhNDRiMjVlZDVkMjk0ZjBhMzg0ZTRhZTkwNzY0ZTBiYTQxIiwKICAgICAgImJ5dGVzIjogMTEyMDksCiAgICAgICJzaGEyNTYiOiAiMWMzMmM4NDk3YjA1YTdhNThlMjQwYzhlNDY3YzVlMjdmNjk3OWU3ZDg5ZWFkNDQ5OTQwYzY1ZDk5ZjBjN2I2ZiIKICAgIH0KICB9LAogICJzZWxlY3Rpb25CZWZvcmVDbG9zZSI6IHsKICAgICJzdGF0dXMiOiB7CiAgICAgICJ0eXBlIjogIlBMQU5FVF9ST0xMQkFDS19TVEFUVVNfUkVTVUxUIiwKICAgICAgInJlcXVlc3RJZCI6ICJxYS1wZXJzaXN0ZW50LXJvbGxiYWNrLTE3OTA5MTY5NzA0OTYiLAogICAgICAiZW5naW5lQnVpbGRJZCI6ICJhMDg3ZjYzZDcxMTcxMjhkOWRkNGViODMwMWFiNzNhNDRiMjVlZDVkMjk0ZjBhMzg0ZTRhZTkwNzY0ZTBiYTQxIiwKICAgICAgImFjdGl2ZUJ1aWxkSWQiOiAiMzQ0Y2MxZjcwZjk2NDg4MjU1OWYyNzJlNzA3NmM3NmZmYTA1OTJiYTE4NGFkYjFiOWRlZTc4NzUyNjFhMjFiYiIsCiAgICAgICJyb2xsYmFja0J1aWxkSWQiOiBudWxsLAogICAgICAicmVhZHkiOiBmYWxzZQogICAgfSwKICAgICJwZXJzaXN0ZWQiOiB7CiAgICAgICJ2YWx1ZSI6IHsKICAgICAgICAic2NoZW1hVmVyc2lvbiI6IDEsCiAgICAgICAgImVuZ2luZUJ1aWxkSWQiOiAiYTA4N2Y2M2Q3MTE3MTI4ZDlkZDRlYjgzMDFhYjczYTQ0YjI1ZWQ1ZDI5NGYwYTM4NGU0YWU5MDc2NGUwYmE0MSIsCiAgICAgICAgImJ1aWxkSWQiOiAiMzQ0Y2MxZjcwZjk2NDg4MjU1OWYyNzJlNzA3NmM3NmZmYTA1OTJiYTE4NGFkYjFiOWRlZTc4NzUyNjFhMjFiYiIsCiAgICAgICAgIm1hbmlmZXN0U2hhMjU2IjogIjA1ZTU2NWUwM2U0ZTg4ZjFhY2IwYTI4NzczZjA0Zjc4NDA2Mjk3YWViY2U3YjFjYjAzZWE0Y2ZhNmRiNTUwMmMiLAogICAgICAgICJyZXF1ZXN0ZWRCeSI6ICI4MWIzNzg5Zi1jYTM0LTRmMWItOTExNC1mNGVkYTFiNTkwYjYiCiAgICAgIH0sCiAgICAgICJieXRlcyI6IDMxNiwKICAgICAgInNoYTI1NiI6ICI4YmM1ZDIxNTgwNGE1NDMzZDQ1OTQ5NDY5NTljMTk5OTNmY2Q3YTk1ZWYwMTFjY2EyOThhODRkZjg0MWY5NTBkIgogICAgfQogIH0sCiAgInNlbGVjdGlvbkFmdGVyUmVvcGVuIjogewogICAgInN0YXR1cyI6IHsKICAgICAgInR5cGUiOiAiUExBTkVUX1JPTExCQUNLX1NUQVRVU19SRVNVTFQiLAogICAgICAicmVxdWVzdElkIjogInFhLXBlcnNpc3RlbnQtcm9sbGJhY2stMTc5MDkxNjk3OTEwNCIsCiAgICAgICJlbmdpbmVCdWlsZElkIjogImEwODdmNjNkNzExNzEyOGQ5ZGQ0ZWI4MzAxYWI3M2E0NGIyNWVkNWQyOTRmMGEzODRlNGFlOTA3NjRlMGJhNDEiLAogICAgICAiYWN0aXZlQnVpbGRJZCI6ICIzNDRjYzFmNzBmOTY0ODgyNTU5ZjI3MmU3MDc2Yzc2ZmZhMDU5MmJhMTg0YWRiMWI5ZGVlNzg3NTI2MWEyMWJiIiwKICAgICAgInJvbGxiYWNrQnVpbGRJZCI6IG51bGwsCiAgICAgICJyZWFkeSI6IGZhbHNlCiAgICB9LAogICAgInBlcnNpc3RlZCI6IHsKICAgICAgInZhbHVlIjogewogICAgICAgICJzY2hlbWFWZXJzaW9uIjogMSwKICAgICAgICAiZW5naW5lQnVpbGRJZCI6ICJhMDg3ZjYzZDcxMTcxMjhkOWRkNGViODMwMWFiNzNhNDRiMjVlZDVkMjk0ZjBhMzg0ZTRhZTkwNzY0ZTBiYTQxIiwKICAgICAgICAiYnVpbGRJZCI6ICIzNDRjYzFmNzBmOTY0ODgyNTU5ZjI3MmU3MDc2Yzc2ZmZhMDU5MmJhMTg0YWRiMWI5ZGVlNzg3NTI2MWEyMWJiIiwKICAgICAgICAibWFuaWZlc3RTaGEyNTYiOiAiMDVlNTY1ZTAzZTRlODhmMWFjYjBhMjg3NzNmMDRmNzg0MDYyOTdhZWJjZTdiMWNiMDNlYTRjZmE2ZGI1NTAyYyIsCiAgICAgICAgInJlcXVlc3RlZEJ5IjogIjgxYjM3ODlmLWNhMzQtNGYxYi05MTE0LWY0ZWRhMWI1OTBiNiIKICAgICAgfSwKICAgICAgImJ5dGVzIjogMzE2LAogICAgICAic2hhMjU2IjogIjhiYzVkMjE1ODA0YTU0MzNkNDU5NDk0Njk1OWMxOTk5M2ZjZDdhOTVlZjAxMWNjYTI5OGE4NGRmODQxZjk1MGQiCiAgICB9CiAgfSwKICAib2ZmbGluZUxpY2Vuc2VBcGlSZXF1ZXN0cyI6IDAsCiAgImJsb2NrZWRSZXF1ZXN0cyI6IFtdCn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7e57d1aee4d9d53cc8f3-3b8959f688e5c772f742",
+          "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/pwa/controlled-pwa.spec.mjs",
+          "line": 1257,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T04:55:05.450Z",
+    "duration": 84979.92700000001,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "localQaOnly": true,
+  "browserChannel": "msedge",
+  "persistentLaunches": 2,
+  "restarts": 1,
+  "sameDisposableProfile": true,
+  "firstContextClosed": true,
+  "offlineBeforeFirstNavigation": true,
+  "documents": [
+    {
+      "phase": "reopened-offline",
+      "engineBuildId": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+      "servedBuildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+      "distinctFromClosedDocument": true
+    }
+  ],
+  "locales": [
+    {
+      "locale": "ru",
+      "selectedCountry": "russia",
+      "savedVerification": true,
+      "wholePreviousGeneration": true,
+      "sameSceneWithinReopenedDocument": true
+    },
+    {
+      "locale": "en",
+      "selectedCountry": "russia",
+      "savedVerification": true,
+      "wholePreviousGeneration": true,
+      "sameSceneWithinReopenedDocument": true
+    },
+    {
+      "locale": "ru",
+      "selectedCountry": "russia",
+      "savedVerification": true,
+      "wholePreviousGeneration": true,
+      "sameSceneWithinReopenedDocument": true
+    }
+  ],
+  "screenshots": [
+    "pwa-rollback-before-close.png",
+    "pwa-rollback-reopened-ru.png",
+    "pwa-rollback-reopened-en.png"
+  ],
+  "capturesReviewed": false,
+  "profileRemoved": true,
+  "actualOsInstallation": false,
+  "realStorePurchase": false,
+  "productionProvider": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "completed": true,
+  "builds": {
+    "previous": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+    "engine": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+    "changedPath": "/planet/assets/ArticleLibrarySection-DHaTO09K.js",
+    "previousManifestSha256": "05e565e03e4e88f1acb0a28773f04f78406297aebce7b1cb03ea4cfa6db5502c",
+    "engineManifestSha256": "b5ba4b11455524f3f99ed4f84b6186de8fa0aa63465695f8b9566c5546d8e32f",
+    "previousActivationSequence": 1,
+    "engineActivationSequence": 2,
+    "previousExecutable": {
+      "buildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+      "bytes": 11118,
+      "sha256": "b5cb0c9b8174de21d49df4f74637150c4144efad566ac616e2ba1c9d8e34f184"
+    },
+    "engineExecutable": {
+      "buildId": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+      "bytes": 11209,
+      "sha256": "1c32c8497b05a7a58e240c8e467c5e27f6979e7d89ead449940c65d99f0c7b6f"
+    }
+  },
+  "selectionBeforeClose": {
+    "status": {
+      "type": "PLANET_ROLLBACK_STATUS_RESULT",
+      "requestId": "qa-persistent-rollback-1790916970496",
+      "engineBuildId": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+      "activeBuildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+      "rollbackBuildId": null,
+      "ready": false
+    },
+    "persisted": {
+      "value": {
+        "schemaVersion": 1,
+        "engineBuildId": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+        "buildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+        "manifestSha256": "05e565e03e4e88f1acb0a28773f04f78406297aebce7b1cb03ea4cfa6db5502c",
+        "requestedBy": "81b3789f-ca34-4f1b-9114-f4eda1b590b6"
+      },
+      "bytes": 316,
+      "sha256": "8bc5d215804a5433d4594946959c19993fcd7a95ef011cca298a84df841f950d"
+    }
+  },
+  "selectionAfterReopen": {
+    "status": {
+      "type": "PLANET_ROLLBACK_STATUS_RESULT",
+      "requestId": "qa-persistent-rollback-1790916979104",
+      "engineBuildId": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+      "activeBuildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+      "rollbackBuildId": null,
+      "ready": false
+    },
+    "persisted": {
+      "value": {
+        "schemaVersion": 1,
+        "engineBuildId": "a087f63d7117128d9dd4eb8301ab73a44b25ed5d294f0a384e4ae90764e0ba41",
+        "buildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+        "manifestSha256": "05e565e03e4e88f1acb0a28773f04f78406297aebce7b1cb03ea4cfa6db5502c",
+        "requestedBy": "81b3789f-ca34-4f1b-9114-f4eda1b590b6"
+      },
+      "bytes": 316,
+      "sha256": "8bc5d215804a5433d4594946959c19993fcd7a95ef011cca298a84df841f950d"
+    }
+  },
+  "offlineLicenseApiRequests": 0,
+  "blockedRequests": []
+}

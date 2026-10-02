@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "decision": "D265",
+  "kind": "external-rollback-persistent-composition-proposal",
+  "frozen": true,
+  "observedBaseHead": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "futureSourceBinding": "PENDING_ROOT_CURRENT_SOURCE_COMMIT_AND_RUNTIME_AUTHORITY",
+  "owners": [
+    {
+      "path": "tests/pwa/controlled-pwa.spec.mjs",
+      "originalPath": "original/tests/pwa/controlled-pwa.spec.mjs",
+      "originalSha256": "bba3b996f8509e21f049d5756b481987b7eba1aaae2897daf2a1b2a14866307e",
+      "proposedPath": "proposed/tests/pwa/controlled-pwa.spec.mjs",
+      "proposedSha256": "75f1ac6660f7fd73a92ee5bf7e1279a906fb09353ad7c76b94f7237d9da3374b",
+      "appendOnly": true,
+      "existingPrefixBytes": 87099,
+      "existingCasesUnchanged": true
+    }
+  ],
+  "focusedCase": {
+    "path": "focused-case.txt",
+    "sha256": "674b52b337ce4890c8679e04ab46d1ddaaab64a181a7e218b76ca059f6dcce63",
+    "title": "explicit rollback survives a full persistent browser restart offline under the newer worker engine",
+    "plannedCases": 1,
+    "plannedPersistentLaunches": 2,
+    "plannedBrowserProcessRestarts": 1,
+    "plannedCaptureNames": [
+      "pwa-rollback-before-close.png",
+      "pwa-rollback-reopened-ru.png",
+      "pwa-rollback-reopened-en.png"
+    ],
+    "actualExecution": false
+  },
+  "config": {
+    "path": "runtime/pwa.config.mjs",
+    "sha256": "aba15eaa7d57726c881ab6b8dda2de000dbf8cd65d3f07a1477214d85cd4777b",
+    "webServer": false,
+    "buildCommand": false
+  },
+  "selectedDependencyWitnesses": [
+    {
+      "path": "tests/pwa/support/local-server.mjs",
+      "sha256": "e76cfdeec6ccc5119ccbbd6fc40a097e252191d44ae7e4dde6bd692d0edfb4c6"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.js",
+      "sha256": "109b9f59b4c6de3d760cc728d7fdfceafa189cb2ace6b5f93b6e9f6b26696fbc"
+    },
+    {
+      "path": "src/pwa/serviceWorkerRuntime.test.mjs",
+      "sha256": "d4dd91d8c720fd464b2910ad8348152f61c2df40e5d257140228c43bfefdb609"
+    },
+    {
+      "path": "playwright.pwa.config.mjs",
+      "sha256": "af8689ad47ae071bbd7eff3fd8f13338b9fb69c165d5e99f1736f84f52054f31"
+    },
+    {
+      "path": "scripts/mobile/build-pwa.mjs",
+      "sha256": "f9c6dd13010be24e9bb49f1ac5eabad48a521753f072e46300ec28be5bb441a9"
+    },
+    {
+      "path": "scripts/mobile/verify-pwa-artifact.mjs",
+      "sha256": "12dfe1d4754b65450c1dd0bd4305255ee41581ae0874a03b0a4aa355466df5a9"
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e"
+    }
+  ],
+  "scope": {
+    "actualOsInstallation": false,
+    "providerValidated": false,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "testsRunByAuthor": false,
+    "buildsRunByAuthor": false,
+    "browserRunByAuthor": false
+  },
+  "review": {
+    "authorWholeAppendAndConfigRead": true,
+    "originalPrefixByteIdentityVerified": true,
+    "independentReview": "PENDING_RESPONSE_NO_EXECUTION",
+    "rootReviewRequiredBeforeCanonicalApply": true
+  },
+  "diff": {
+    "added": 182,
+    "removed": 0,
+    "owners": 1
+  },
+  "notes": {
+    "path": "review.md",
+    "sha256": "87d7f6b21934c3af960755866a526c4808e060f3a049e777217a2857b2a481e7"
+  },
+  "pendingBinding": {
+    "path": "runtime-binding.pending.json",
+    "sha256": "74ec6f5b73430f75ef1ba8add9301f311fb638cde16a8ef6be9853acd0682b2c",
+    "executable": false
+  }
+}

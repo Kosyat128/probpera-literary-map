@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "reviewer": "ROOT direct actual image inspection",
+  "d265CaptureCount": 3,
+  "d266CaptureCount": 4,
+  "d265Verdict": "Actual before-close and reopened offline RU/EN app frames were directly inspected. Header, globe selection guide, golden Russia globe and country controls remain visible and aligned. Runtime assertions separately prove persisted generation/access/scene behavior.",
+  "d266Verdict": "All four actual current compiled RU/EN access/deletion images were directly inspected. Language flags, selected-state indicator, single service-unavailable live status, form spacing and real disabled checkbox remain visible. No clipped content or horizontal overflow observed; long deletion disclosure remains readable. These unavailable public fallback frames do not replace configured checked-consent proof.",
+  "fullVisualAcceptance": false,
+  "recordedAt": "2026-10-02T05:12:12.660Z",
+  "captures": [
+    {
+      "run": "D265",
+      "name": "pwa-rollback-before-close.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser\\controlled-pwa-explicit-ro-f176a-der-the-newer-worker-engine-s03-d265-msedge-390\\pwa-rollback-before-close.png",
+      "sha256": "62b9d936bf638d1965aafaa3ceda21a3fe2b6e825c095fe704d5f8aa4d865f2b"
+    },
+    {
+      "run": "D265",
+      "name": "pwa-rollback-reopened-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser\\controlled-pwa-explicit-ro-f176a-der-the-newer-worker-engine-s03-d265-msedge-390\\pwa-rollback-reopened-ru.png",
+      "sha256": "53e0fff2ca88e2f07a285781fe49df2700e7cb99295c94cde2fa4b5c22ffcb61"
+    },
+    {
+      "run": "D265",
+      "name": "pwa-rollback-reopened-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser\\controlled-pwa-explicit-ro-f176a-der-the-newer-worker-engine-s03-d265-msedge-390\\pwa-rollback-reopened-en.png",
+      "sha256": "dc76461dbff0078096fa63fa6b0b9463c76ace15b9e855324ea67e4e185df3c6"
+    },
+    {
+      "run": "D266",
+      "name": "delete-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-en.png",
+      "sha256": "d5b9209f10dae0edc11bd851f392120b48142f636ee7a6dc526493f5f0bd7d23"
+    },
+    {
+      "run": "D266",
+      "name": "delete-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-ru.png",
+      "sha256": "a4bd737be284858367da483553b35e391ca8570929f1eed29d18467b50e785ff"
+    },
+    {
+      "run": "D266",
+      "name": "planet-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-en.png",
+      "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5"
+    },
+    {
+      "run": "D266",
+      "name": "planet-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-ru.png",
+      "sha256": "fa90ad8c9dff909dd9c7f72744a6f1457cf078ec34d2f4f611af7cc14e4d07c3"
+    }
+  ],
+  "rawD265ObservationCapturesReviewed": false,
+  "qualification": "Separate ROOT review; original producer/fixture flags are retained verbatim. Browser/profile and four disabled public fallback frames do not constitute universal rendering, configured Auth, installed-device or full visual acceptance."
+}

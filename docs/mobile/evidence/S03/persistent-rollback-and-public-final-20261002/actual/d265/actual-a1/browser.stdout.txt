@@ -1,0 +1,7 @@
+
+Running 1 test using 1 worker
+
+
+
+[1/1] [s03-d265-msedge-390] › tests\pwa\controlled-pwa.spec.mjs:1257:1 › explicit rollback survives a full persistent browser restart offline under the newer worker engine
+  1 passed (1.4m)

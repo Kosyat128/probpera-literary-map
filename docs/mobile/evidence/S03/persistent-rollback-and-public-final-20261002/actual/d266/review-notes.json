@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "d266-final-public-account-runner-review",
+  "status": "frozen-not-executed-by-agent",
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "runner": {
+    "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-final-d266/run.mjs",
+    "sha256": "314bf7dc9d43042c43be72d6f556c61a63fd458c0640f7f61a93fd00b0fe459c"
+  },
+  "reuse": [
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-d262/compile.mjs",
+      "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91"
+    },
+    {
+      "path": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-d262/public.config.mjs",
+      "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8"
+    }
+  ],
+  "currentInputs": {
+    "src/pwa/account.css": "d6cfc6362e80052c83408c33b7dca1173f2da0766d624b5a4dd0f83f507e09b8",
+    "tests/e2e/planet-account-pages.spec.mjs": "072f6be4f98375250704009183891faa72ace92ad385c05f03e728a34221571e"
+  },
+  "invocation": "node \"D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-final-d266/run.mjs\"",
+  "freshOutputs": {
+    "runtime": "s03-account-public-final-d266/actual-a1",
+    "cache": "s03-account-public-final-d266/actual-a1/cache",
+    "build": "literary-planet-v12-work/.tmp/d266-public-account-a1"
+  },
+  "executionPlan": [
+    "Require clean exact source HEAD, current CSS/test pins and frozen helper pins; all runtime/build directories must be fresh.",
+    "One canonical Vite site build with sanitized child environment, empty external cache as cwd, envDir false, base / and localQA false.",
+    "Bind actual observed compiled modules to before-snapshot inputs, including account.css and PlanetAccountPage.tsx. Installed node_modules bytes are observed, without an invented exhaustive toolchain closure.",
+    "Execute only the exact source-bound canonical site.webmanifest write statement; run generatePlanetAccountPages purely and write exactly four generated account HTML files into the fresh build.",
+    "Serve only the contained fresh build on 127.0.0.1 and run the existing public mobile case once, using the known working literal title grep with the frozen one-file/one-project config.",
+    "Require one expected case and zero unexpected/skipped/flaky cases; collect four primary RU/EN access/deletion PNGs with four unique hashes. Attachment copies must match primary hashes and are counted separately.",
+    "Write source/output after inventories and require unchanged HEAD, clean source, equal source/output inventories and unchanged frozen helper bytes; preserve raw execution/report files and final result."
+  ],
+  "sourceGuardScope": {
+    "declaredRoots": 13,
+    "additionalInputs": ["public", "apps/admin/catalog-assets", "reports/public-image-delivery.json", "playwright.config.mjs"],
+    "sourceRows": "measured at execution",
+    "observedModules": "measured at execution"
+  },
+  "selectedCase": "built canonical account routes remain private, bilingual and outside the globe runtime",
+  "expectedCases": 1,
+  "expectedPrimaryCaptures": ["planet-account-ru.png", "planet-account-en.png", "delete-account-ru.png", "delete-account-en.png"],
+  "qualification": "Current compiled public account disabled/unavailable fallback only, preserving canonical/private/noindex, same DOM and locale/deep-link behavior. Configured consent and checked paint are separate evidence. ROOT must directly review four primary captures. No TSC, esbuild/Auth fixture, CMS/article/SEO pipeline, provider validation, OS installation, production action or stage acceptance.",
+  "preparation": {"canonicalEdits": false, "buildsRun": false, "testsRun": false, "browserRun": false, "approvalsChanged": false, "acceptanceChanged": false}
+}

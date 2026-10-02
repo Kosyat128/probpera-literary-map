@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "decision": "D266",
+  "kind": "current-public-account-final-css",
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "nodeVersion": "v24.19.0",
+  "pass": true,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\d266-public-account-a1",
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compile.mjs",
+      "bytes": 2667,
+      "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+      "bytes": 798,
+      "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\run.mjs",
+      "bytes": 13929,
+      "sha256": "314bf7dc9d43042c43be72d6f556c61a63fd458c0640f7f61a93fd00b0fe459c"
+    }
+  ],
+  "commands": [
+    {
+      "name": "compile",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compile.mjs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\d266-public-account-a1",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\cache",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\compile-report.json"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\cache",
+      "start": "2026-10-02T05:08:17.978Z",
+      "exitCode": 0
+    },
+    {
+      "name": "browser",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+        "--grep",
+        "built canonical account routes remain private, bilingual and outside the globe runtime",
+        "--workers=1"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\cache",
+      "start": "2026-10-02T05:08:51.442Z",
+      "exitCode": 0
+    }
+  ],
+  "scope": {
+    "publicEdition": true,
+    "localQa": false,
+    "environmentFilesRead": false,
+    "publicDisabledFallback": true,
+    "configuredConsent": false,
+    "providerValidated": false,
+    "actualOsInstallation": false,
+    "fullVisualAcceptance": false,
+    "productionActionsPerformed": false,
+    "approvalsChanged": false
+  },
+  "qualification": "One fresh source-bound canonical public Vite compilation and one existing mobile public-account fallback case. Final checkbox CSS is measured through observed compiled source modules. Four unique RU/EN account-route captures require ROOT review. Configured checked-consent paint remains separate evidence; no TSC, React/Auth/API fixture, CMS/article/SEO pipeline or stage acceptance.",
+  "observedModules": 1339,
+  "accountCss": {
+    "path": "src/pwa/account.css",
+    "bytes": 6274,
+    "sha256": "d6cfc6362e80052c83408c33b7dca1173f2da0766d624b5a4dd0f83f507e09b8"
+  },
+  "manifest": {
+    "source": {
+      "path": "scripts/build-article-pages.mjs",
+      "sha256": "6c96bc4bd7c62a7e26e4bbe38eb2ae5f7616c7b4bf48b869d4dabb1dd0bfaff3"
+    },
+    "statementSha256": "d19be4a2b19b7101dacdc6673a84962d449005e3c86370563842e9c6870d7c91",
+    "qualification": "Exact canonical site.webmanifest write statement only, with siteRootPath / and empty siteBasePath; no broader generator/writer pipeline."
+  },
+  "publicBuildSha256": "97e90d2677d2c5d8ef70296e50ac9cbc535d5ee0e460eaa4cbb46de602e3c66f",
+  "builtFiles": 6128,
+  "origin": "http://127.0.0.1:61166",
+  "captures": [
+    {
+      "path": "planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile/delete-account-en.png",
+      "bytes": 215200,
+      "sha256": "d5b9209f10dae0edc11bd851f392120b48142f636ee7a6dc526493f5f0bd7d23"
+    },
+    {
+      "path": "planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile/delete-account-ru.png",
+      "bytes": 232914,
+      "sha256": "a4bd737be284858367da483553b35e391ca8570929f1eed29d18467b50e785ff"
+    },
+    {
+      "path": "planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile/planet-account-en.png",
+      "bytes": 133204,
+      "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5"
+    },
+    {
+      "path": "planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile/planet-account-ru.png",
+      "bytes": 142195,
+      "sha256": "fa90ad8c9dff909dd9c7f72744a6f1457cf078ec34d2f4f611af7cc14e4d07c3"
+    }
+  ],
+  "browserCases": 1,
+  "captureAttachmentCopies": 4,
+  "captureQualification": "Four unique PNG files counted once; Playwright copied attachments are not counted as additional images.",
+  "sourceBeforeAfterEqual": true,
+  "outputBeforeAfterEqual": true,
+  "checks": {
+    "freshPublicCompilations": 1,
+    "existingPublicMobileCases": 1,
+    "declaredSnapshotRoots": 13,
+    "additionalSnapshotInputs": 4,
+    "sourceRows": 8218,
+    "sourceBeforeAfterEqual": true,
+    "outputBeforeAfterEqual": true
+  }
+}

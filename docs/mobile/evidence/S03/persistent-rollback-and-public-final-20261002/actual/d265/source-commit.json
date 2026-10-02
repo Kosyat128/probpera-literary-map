@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "parent": "ba33161ffe7e22c7b91f5cf49c2e0774b81332a7",
+  "testsPending": true,
+  "changedFiles": [
+    "tests/pwa/controlled-pwa.spec.mjs"
+  ],
+  "appendOnly": true,
+  "originalSha256": "bba3b996f8509e21f049d5756b481987b7eba1aaae2897daf2a1b2a14866307e",
+  "fixtureSha256": "75f1ac6660f7fd73a92ee5bf7e1279a906fb09353ad7c76b94f7237d9da3374b",
+  "stageAccepted": false,
+  "releaseReady": false
+}

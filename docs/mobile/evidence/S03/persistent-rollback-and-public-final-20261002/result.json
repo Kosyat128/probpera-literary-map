@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "decision": "D266",
+  "relatedDecisions": [
+    "D265"
+  ],
+  "kind": "persistent-offline-rollback-and-current-public-account-checkpoint",
+  "sourceCommit": "938e61b1aa08f156833fd772eac1c4e644d4b727",
+  "recordedAt": "2026-10-02T05:12:12.660Z",
+  "pass": true,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "pwaBuildId": "344cc1f70f964882559f272e7076c76ffa0592ba184adb1b9dee7875261a21bb",
+  "publicBuildSha256": "97e90d2677d2c5d8ef70296e50ac9cbc535d5ee0e460eaa4cbb46de602e3c66f",
+  "checks": {
+    "pwaCompilations": 1,
+    "publicCompilations": 1,
+    "strictAudits": 1,
+    "persistentRollbackCases": 1,
+    "existingPublicMobileCases": 1,
+    "persistentLaunches": 2,
+    "fullBrowserRestarts": 1,
+    "sourceBeforeAfterEqual": true,
+    "publicOutputBeforeAfterEqual": true,
+    "actualCaptures": 7
+  },
+  "qualification": "D265 at938e61b1: one fresh current QA PWA compilation/strict audit and one new composed browser case passed first invocation. Explicit update/rollback persisted through one full browser-process restart in the same disposable profile with offline mode set before first navigation: previous executable SHA/selection, newer worker engine, saved local QA access, RU/EN/country and one canonical scene were verified. Two persistent launches; profile cleanup/signer shutdown confirmed. CandidateB is derived by the existing local QA server from actualA bytes, not a second product compilation. D266 at the same source: one fresh canonical public-site compilation and one existing mobile account case passed with final1a548 checkbox CSS observed in compiled modules; four unique RU/EN access/deletion frames directly reviewed, preserving single unavailable live status,44px flags, no overflow and private/noindex/locale routes. Seven actual captures reviewed in total; existing configured consent/forced-colors evidence remains separately bound to D263/D264. No OS install/live-provider/full visual/editorial/legal/stage/release acceptance.",
+  "scope": {
+    "localQaAccess": true,
+    "publicDisabledFallback": true,
+    "configuredConsentRechecked": false,
+    "actualOsInstallation": false,
+    "providerValidated": false,
+    "fullVisualAcceptance": false,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "productionActionsPerformed": false
+  },
+  "evidence": [
+    {
+      "name": "d265/apply.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\apply.mjs",
+      "sha256": "1519c157b83a06929f3635bb50ab6a4a7b4a56f9702d17037be61ad4da7be35d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/apply.mjs",
+        "sha256": "1519c157b83a06929f3635bb50ab6a4a7b4a56f9702d17037be61ad4da7be35d"
+      }
+    },
+    {
+      "name": "d265/focused-case.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\focused-case.txt",
+      "sha256": "674b52b337ce4890c8679e04ab46d1ddaaab64a181a7e218b76ca059f6dcce63",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/focused-case.txt",
+        "sha256": "674b52b337ce4890c8679e04ab46d1ddaaab64a181a7e218b76ca059f6dcce63"
+      }
+    },
+    {
+      "name": "d265/proposal-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\proposal-manifest.json",
+      "sha256": "06cb95f0f12d0fac3d2acf2b0a06af56930e0f5ca67f3bd405d59fb2bf78f6d5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/proposal-manifest.json",
+        "sha256": "06cb95f0f12d0fac3d2acf2b0a06af56930e0f5ca67f3bd405d59fb2bf78f6d5"
+      }
+    },
+    {
+      "name": "d265/review.md",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\review.md",
+      "sha256": "87d7f6b21934c3af960755866a526c4808e060f3a049e777217a2857b2a481e7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/review.md",
+        "sha256": "87d7f6b21934c3af960755866a526c4808e060f3a049e777217a2857b2a481e7"
+      }
+    },
+    {
+      "name": "d265/source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\source-commit.json",
+      "sha256": "6637cee2fd0a3dabd3b06ca63a528a68c1302d2c6c2219810a2ebc5b325082c1",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/source-commit.json",
+        "sha256": "6637cee2fd0a3dabd3b06ca63a528a68c1302d2c6c2219810a2ebc5b325082c1"
+      }
+    },
+    {
+      "name": "d265/runtime/launch.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\launch.mjs",
+      "sha256": "ee907e8d107a207b988ff76432a874254d7270d624cf173ac20abd381c48e085",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/runtime/launch.mjs",
+        "sha256": "ee907e8d107a207b988ff76432a874254d7270d624cf173ac20abd381c48e085"
+      }
+    },
+    {
+      "name": "d265/runtime/producer.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\producer.mjs",
+      "sha256": "cfbe382a793a19f263f34991223b2e3bed63e4e9d6a9ab276466ed073b968902",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/runtime/producer.mjs",
+        "sha256": "cfbe382a793a19f263f34991223b2e3bed63e4e9d6a9ab276466ed073b968902"
+      }
+    },
+    {
+      "name": "d265/runtime/pwa.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\pwa.config.mjs",
+      "sha256": "aba15eaa7d57726c881ab6b8dda2de000dbf8cd65d3f07a1477214d85cd4777b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/runtime/pwa.config.mjs",
+        "sha256": "aba15eaa7d57726c881ab6b8dda2de000dbf8cd65d3f07a1477214d85cd4777b"
+      }
+    },
+    {
+      "name": "d265/runtime/launcher.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\launcher.execution.json",
+      "sha256": "73ae37bfd95840b092237c0c3f80c092b101b1296497f472393eeb1a91f9d910",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/runtime/launcher.execution.json",
+        "sha256": "73ae37bfd95840b092237c0c3f80c092b101b1296497f472393eeb1a91f9d910"
+      }
+    },
+    {
+      "name": "d265/runtime/launcher.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\launcher.stdout.txt",
+      "sha256": "fa117d7709e2e77ebf4e8859cd61c5db36e96b0273c643fd2a417d25afc6ee86",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/runtime/launcher.stdout.txt",
+        "sha256": "fa117d7709e2e77ebf4e8859cd61c5db36e96b0273c643fd2a417d25afc6ee86"
+      }
+    },
+    {
+      "name": "d265/runtime/launcher.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\launcher.stderr.txt",
+      "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/runtime/launcher.stderr.txt",
+        "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082"
+      }
+    },
+    {
+      "name": "d265/actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\result.json",
+      "sha256": "30e533ba134e38928bd7d6bde39d4e4657b8cb5a9d6eb20d8942ce518aa972f7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/result.json",
+        "sha256": "30e533ba134e38928bd7d6bde39d4e4657b8cb5a9d6eb20d8942ce518aa972f7"
+      }
+    },
+    {
+      "name": "d265/actual-a1/binding.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\binding.json",
+      "sha256": "4e942c436b71da143fd91628772baf4c7762b0730212c3e1d844c63fcf8b36eb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/binding.json",
+        "sha256": "4e942c436b71da143fd91628772baf4c7762b0730212c3e1d844c63fcf8b36eb"
+      }
+    },
+    {
+      "name": "d265/actual-a1/artifact.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\artifact.json",
+      "sha256": "9b8b956f1195cd6bc09e603faa59fa366d4437a72e9f5347ce7898ebbeab6f8c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/artifact.json",
+        "sha256": "9b8b956f1195cd6bc09e603faa59fa366d4437a72e9f5347ce7898ebbeab6f8c"
+      }
+    },
+    {
+      "name": "d265/actual-a1/asset-provenance.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\asset-provenance.json",
+      "sha256": "197761376073f7e88a96756b58bced8d9d14a75412989fad6e0291cc3934a394",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/asset-provenance.json",
+        "sha256": "197761376073f7e88a96756b58bced8d9d14a75412989fad6e0291cc3934a394"
+      }
+    },
+    {
+      "name": "d265/actual-a1/browser-observation.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser-observation.json",
+      "sha256": "8348af66f30a23289971c5aa0f296b4e9e7e3c3548d348bc8b7a94ca2047f3eb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/browser-observation.json",
+        "sha256": "8348af66f30a23289971c5aa0f296b4e9e7e3c3548d348bc8b7a94ca2047f3eb"
+      }
+    },
+    {
+      "name": "d265/actual-a1/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser.execution.json",
+      "sha256": "6f899f022e4ece2ae72a4b33af5095e93f69333ae735a735f0f0f2ffea746802",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/browser.execution.json",
+        "sha256": "6f899f022e4ece2ae72a4b33af5095e93f69333ae735a735f0f0f2ffea746802"
+      }
+    },
+    {
+      "name": "d265/actual-a1/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser.stdout.txt",
+      "sha256": "c0655dda62986464683cf9697f09043ccdac7b33a08eb07d42323a347f871371",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/browser.stdout.txt",
+        "sha256": "c0655dda62986464683cf9697f09043ccdac7b33a08eb07d42323a347f871371"
+      }
+    },
+    {
+      "name": "d265/actual-a1/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser.stderr.txt",
+      "sha256": "7c607bbf12ad075e56392a3a923b15919f93d496ef95f2e8e086d1ac10b68384",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/browser.stderr.txt",
+        "sha256": "7c607bbf12ad075e56392a3a923b15919f93d496ef95f2e8e086d1ac10b68384"
+      }
+    },
+    {
+      "name": "d265/actual-a1/build-execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\build-execution.json",
+      "sha256": "17d6ce7f64dd92997c39849b21375bdd661dbd9fbf10a46410c79a1b5e092fd6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/build-execution.json",
+        "sha256": "17d6ce7f64dd92997c39849b21375bdd661dbd9fbf10a46410c79a1b5e092fd6"
+      }
+    },
+    {
+      "name": "d265/actual-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\playwright.json",
+      "sha256": "600b688753708d6b26cccb14028a0a70cd2be9fe5abb9faf39ed6b71c25390a6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/playwright.json",
+        "sha256": "600b688753708d6b26cccb14028a0a70cd2be9fe5abb9faf39ed6b71c25390a6"
+      }
+    },
+    {
+      "name": "d265/actual-a1/server-request-ledger.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\server-request-ledger.json",
+      "sha256": "1d3b9d827df1823da5ef121253755acb989b43dc28579797282c6ecc4dc7a3eb",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/server-request-ledger.json",
+        "sha256": "1d3b9d827df1823da5ef121253755acb989b43dc28579797282c6ecc4dc7a3eb"
+      }
+    },
+    {
+      "name": "d265/actual-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\source-before.json",
+      "sha256": "cf49bb9d55273a385363a4e782cff60e30571fd93bdab8fc1410b6087a130462",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/source-before.json",
+        "sha256": "cf49bb9d55273a385363a4e782cff60e30571fd93bdab8fc1410b6087a130462"
+      }
+    },
+    {
+      "name": "d265/actual-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\source-after.json",
+      "sha256": "cf49bb9d55273a385363a4e782cff60e30571fd93bdab8fc1410b6087a130462",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/source-after.json",
+        "sha256": "cf49bb9d55273a385363a4e782cff60e30571fd93bdab8fc1410b6087a130462"
+      }
+    },
+    {
+      "name": "d265/actual-a1/strict-audit.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\strict-audit.execution.json",
+      "sha256": "eefb14991c9c7f513f4440e433b3e6ec6ae4adb63cd2f5e1fe65cf304083eda0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/strict-audit.execution.json",
+        "sha256": "eefb14991c9c7f513f4440e433b3e6ec6ae4adb63cd2f5e1fe65cf304083eda0"
+      }
+    },
+    {
+      "name": "d265/actual-a1/strict-audit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\strict-audit.json",
+      "sha256": "6b577fb5b777e880dd03dfaeedcc2d743d3bd53e8b3b1d028e159777e207a90e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/strict-audit.json",
+        "sha256": "6b577fb5b777e880dd03dfaeedcc2d743d3bd53e8b3b1d028e159777e207a90e"
+      }
+    },
+    {
+      "name": "d265/actual-a1/strict-audit.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\strict-audit.stdout.txt",
+      "sha256": "6b577fb5b777e880dd03dfaeedcc2d743d3bd53e8b3b1d028e159777e207a90e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/strict-audit.stdout.txt",
+        "sha256": "6b577fb5b777e880dd03dfaeedcc2d743d3bd53e8b3b1d028e159777e207a90e"
+      }
+    },
+    {
+      "name": "d265/actual-a1/strict-audit.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\strict-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d265/actual-a1/strict-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "d266/run.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\run.mjs",
+      "sha256": "314bf7dc9d43042c43be72d6f556c61a63fd458c0640f7f61a93fd00b0fe459c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/run.mjs",
+        "sha256": "314bf7dc9d43042c43be72d6f556c61a63fd458c0640f7f61a93fd00b0fe459c"
+      }
+    },
+    {
+      "name": "d266/review-notes.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\review-notes.json",
+      "sha256": "4ed9ed7bb387edfe6ba13aa780be96f061d098113f10488a5514ec4e3843cfe2",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/review-notes.json",
+        "sha256": "4ed9ed7bb387edfe6ba13aa780be96f061d098113f10488a5514ec4e3843cfe2"
+      }
+    },
+    {
+      "name": "d266/reused-d262/compile.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compile.mjs",
+      "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/reused-d262/compile.mjs",
+        "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91"
+      }
+    },
+    {
+      "name": "d266/reused-d262/public.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+      "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/reused-d262/public.config.mjs",
+        "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8"
+      }
+    },
+    {
+      "name": "d266/actual-a1/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\result.json",
+      "sha256": "a419c6c2a5792ba19f3678ddd2b201c9f466af36fe5d28dd95fa25af066a95a0",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/result.json",
+        "sha256": "a419c6c2a5792ba19f3678ddd2b201c9f466af36fe5d28dd95fa25af066a95a0"
+      }
+    },
+    {
+      "name": "d266/actual-a1/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\source-before.json",
+      "sha256": "1a49bef31d68b30c5327218711b09e28608d7d7dca180027a91b2c52376f658c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/source-before.json",
+        "sha256": "1a49bef31d68b30c5327218711b09e28608d7d7dca180027a91b2c52376f658c"
+      }
+    },
+    {
+      "name": "d266/actual-a1/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\source-after.json",
+      "sha256": "1a49bef31d68b30c5327218711b09e28608d7d7dca180027a91b2c52376f658c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/source-after.json",
+        "sha256": "1a49bef31d68b30c5327218711b09e28608d7d7dca180027a91b2c52376f658c"
+      }
+    },
+    {
+      "name": "d266/actual-a1/compile-report.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\compile-report.json",
+      "sha256": "a4a57bca290ae460908949b5beb071581965d68d64ca0838a88149f1a1d3582b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/compile-report.json",
+        "sha256": "a4a57bca290ae460908949b5beb071581965d68d64ca0838a88149f1a1d3582b"
+      }
+    },
+    {
+      "name": "d266/actual-a1/compile.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\compile.execution.json",
+      "sha256": "7ff319221efe000b2fcc322009140fa00ae6f236d4bbb819359d8fdfcdd405e7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/compile.execution.json",
+        "sha256": "7ff319221efe000b2fcc322009140fa00ae6f236d4bbb819359d8fdfcdd405e7"
+      }
+    },
+    {
+      "name": "d266/actual-a1/compile.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\compile.stdout.txt",
+      "sha256": "202be0540a27b22b80aa140236dc22e00f6fcc23d615de05a08c8703d50da68c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/compile.stdout.txt",
+        "sha256": "202be0540a27b22b80aa140236dc22e00f6fcc23d615de05a08c8703d50da68c"
+      }
+    },
+    {
+      "name": "d266/actual-a1/compile.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\compile.stderr.txt",
+      "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/compile.stderr.txt",
+        "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a"
+      }
+    },
+    {
+      "name": "d266/actual-a1/observed-modules.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\observed-modules.json",
+      "sha256": "22252c893816996d17e7f05f05b358c7b7d7581f814860abe17918bf7452f437",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/observed-modules.json",
+        "sha256": "22252c893816996d17e7f05f05b358c7b7d7581f814860abe17918bf7452f437"
+      }
+    },
+    {
+      "name": "d266/actual-a1/canonical-manifest-statement.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\canonical-manifest-statement.mjs",
+      "sha256": "d19be4a2b19b7101dacdc6673a84962d449005e3c86370563842e9c6870d7c91",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/canonical-manifest-statement.mjs",
+        "sha256": "d19be4a2b19b7101dacdc6673a84962d449005e3c86370563842e9c6870d7c91"
+      }
+    },
+    {
+      "name": "d266/actual-a1/compiled-snapshot.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\compiled-snapshot.json",
+      "sha256": "9bd6ff7204fbaa3b90ed5a596d76d56ae1f8164cd5acc7e3c43041bad914cfaa",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/compiled-snapshot.json",
+        "sha256": "9bd6ff7204fbaa3b90ed5a596d76d56ae1f8164cd5acc7e3c43041bad914cfaa"
+      }
+    },
+    {
+      "name": "d266/actual-a1/route-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\route-manifest.json",
+      "sha256": "e44a6e5144cff28b82f49d8653cc2af19b9e7aaa37cf52a9d46f3347264eb958",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/route-manifest.json",
+        "sha256": "e44a6e5144cff28b82f49d8653cc2af19b9e7aaa37cf52a9d46f3347264eb958"
+      }
+    },
+    {
+      "name": "d266/actual-a1/output-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\output-before.json",
+      "sha256": "97e90d2677d2c5d8ef70296e50ac9cbc535d5ee0e460eaa4cbb46de602e3c66f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/output-before.json",
+        "sha256": "97e90d2677d2c5d8ef70296e50ac9cbc535d5ee0e460eaa4cbb46de602e3c66f"
+      }
+    },
+    {
+      "name": "d266/actual-a1/output-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\output-after.json",
+      "sha256": "97e90d2677d2c5d8ef70296e50ac9cbc535d5ee0e460eaa4cbb46de602e3c66f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/output-after.json",
+        "sha256": "97e90d2677d2c5d8ef70296e50ac9cbc535d5ee0e460eaa4cbb46de602e3c66f"
+      }
+    },
+    {
+      "name": "d266/actual-a1/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\playwright.json",
+      "sha256": "47fdce0f21cc4e0696bb2cca091b84fc41d59d4af23c75bb2cb0cbea4a9cd328",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/playwright.json",
+        "sha256": "47fdce0f21cc4e0696bb2cca091b84fc41d59d4af23c75bb2cb0cbea4a9cd328"
+      }
+    },
+    {
+      "name": "d266/actual-a1/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser.execution.json",
+      "sha256": "58a48f8dc69c06e2f0367a13d9ccdf8fb6a440e0250b77240d222606ed4576b7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/browser.execution.json",
+        "sha256": "58a48f8dc69c06e2f0367a13d9ccdf8fb6a440e0250b77240d222606ed4576b7"
+      }
+    },
+    {
+      "name": "d266/actual-a1/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser.stdout.txt",
+      "sha256": "47e2ff4f6c624e30dc8a545c45eeb6d666ae24a44fa4e74dd4ef0b728c9c8022",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/browser.stdout.txt",
+        "sha256": "47e2ff4f6c624e30dc8a545c45eeb6d666ae24a44fa4e74dd4ef0b728c9c8022"
+      }
+    },
+    {
+      "name": "d266/actual-a1/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/d266/actual-a1/browser.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "captures/d265/pwa-rollback-before-close.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser\\controlled-pwa-explicit-ro-f176a-der-the-newer-worker-engine-s03-d265-msedge-390\\pwa-rollback-before-close.png",
+      "sha256": "62b9d936bf638d1965aafaa3ceda21a3fe2b6e825c095fe704d5f8aa4d865f2b",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d265/pwa-rollback-before-close.png",
+        "sha256": "62b9d936bf638d1965aafaa3ceda21a3fe2b6e825c095fe704d5f8aa4d865f2b"
+      }
+    },
+    {
+      "name": "captures/d265/pwa-rollback-reopened-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser\\controlled-pwa-explicit-ro-f176a-der-the-newer-worker-engine-s03-d265-msedge-390\\pwa-rollback-reopened-ru.png",
+      "sha256": "53e0fff2ca88e2f07a285781fe49df2700e7cb99295c94cde2fa4b5c22ffcb61",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d265/pwa-rollback-reopened-ru.png",
+        "sha256": "53e0fff2ca88e2f07a285781fe49df2700e7cb99295c94cde2fa4b5c22ffcb61"
+      }
+    },
+    {
+      "name": "captures/d265/pwa-rollback-reopened-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-rollback-persistent-d265\\runtime\\actual-a1\\browser\\controlled-pwa-explicit-ro-f176a-der-the-newer-worker-engine-s03-d265-msedge-390\\pwa-rollback-reopened-en.png",
+      "sha256": "dc76461dbff0078096fa63fa6b0b9463c76ace15b9e855324ea67e4e185df3c6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d265/pwa-rollback-reopened-en.png",
+        "sha256": "dc76461dbff0078096fa63fa6b0b9463c76ace15b9e855324ea67e4e185df3c6"
+      }
+    },
+    {
+      "name": "captures/d266/delete-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-en.png",
+      "sha256": "d5b9209f10dae0edc11bd851f392120b48142f636ee7a6dc526493f5f0bd7d23",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d266/delete-account-en.png",
+        "sha256": "d5b9209f10dae0edc11bd851f392120b48142f636ee7a6dc526493f5f0bd7d23"
+      }
+    },
+    {
+      "name": "captures/d266/delete-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-ru.png",
+      "sha256": "a4bd737be284858367da483553b35e391ca8570929f1eed29d18467b50e785ff",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d266/delete-account-ru.png",
+        "sha256": "a4bd737be284858367da483553b35e391ca8570929f1eed29d18467b50e785ff"
+      }
+    },
+    {
+      "name": "captures/d266/planet-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-en.png",
+      "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d266/planet-account-en.png",
+        "sha256": "a51b19f0bad96a2b2b9df1d698769d8ce6ad268fdfb18ae6f5104eece39e12b5"
+      }
+    },
+    {
+      "name": "captures/d266/planet-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-final-d266\\actual-a1\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-ru.png",
+      "sha256": "fa90ad8c9dff909dd9c7f72744a6f1457cf078ec34d2f4f611af7cc14e4d07c3",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/persistent-rollback-and-public-final-20261002/actual/captures/d266/planet-account-ru.png",
+        "sha256": "fa90ad8c9dff909dd9c7f72744a6f1457cf078ec34d2f4f611af7cc14e4d07c3"
+      }
+    }
+  ]
+}

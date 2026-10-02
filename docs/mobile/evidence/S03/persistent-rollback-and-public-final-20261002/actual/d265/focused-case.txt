@@ -1,0 +1,182 @@
+
+
+test("explicit rollback survives a full persistent browser restart offline under the newer worker engine", async ({ request }, testInfo) => {
+  test.setTimeout(240_000);
+  const { lstat, mkdir, mkdtemp, realpath, rm, rmdir } = await import("node:fs/promises");
+  const { dirname, join, resolve, sep } = await import("node:path");
+  const checkout = await realpath(process.cwd()), temporary = resolve(".tmp");
+  const temporaryStat = await lstat(temporary), temporaryRoot = await realpath(temporary);
+  if (!temporaryStat.isDirectory() || temporaryStat.isSymbolicLink() || temporaryRoot !== join(checkout, ".tmp")) {
+    throw new Error("A real checkout temporary directory is required");
+  }
+  const profileRoot = await mkdtemp(join(temporaryRoot, "pwa-rollback-profile-")), profile = join(profileRoot, "profile");
+  await mkdir(profile);
+  let context, scene;
+  const errors = [], blockedRequests = [];
+  const evidence = { localQaOnly: true, browserChannel: "msedge", persistentLaunches: 0, restarts: 0,
+    sameDisposableProfile: true, firstContextClosed: false, offlineBeforeFirstNavigation: false,
+    documents: [], locales: [], screenshots: [], capturesReviewed: false, profileRemoved: false,
+    actualOsInstallation: false, realStorePurchase: false, productionProvider: false,
+    stageAccepted: false, releaseReady: false, completed: false };
+  const licenseRequests = status => status.requests.filter(item => item.method === "POST"
+    && ["/planet/api/license/identity", "/planet/api/license/session"].includes(item.pathname));
+  const launch = async offline => {
+    context = await chromium.launchPersistentContext(profile, { channel: "msedge", headless: true, baseURL: qaOrigin,
+      viewport: { width: 390, height: 844 }, deviceScaleFactor: 1, hasTouch: true,
+      serviceWorkers: "allow", reducedMotion: "reduce", offline });
+    await context.route("**/*", route => {
+      const url = new URL(route.request().url());
+      if (["data:", "blob:"].includes(url.protocol) || url.origin === qaOrigin) return route.continue();
+      blockedRequests.push({ origin: url.origin, pathname: url.pathname }); return route.abort();
+    });
+    evidence.persistentLaunches++; if (evidence.persistentLaunches > 1) evidence.restarts++;
+    const page = context.pages()[0] ?? await context.newPage();
+    expect(context.pages()).toHaveLength(1); expect(page.url()).toBe("about:blank");
+    page.on("pageerror", error => errors.push(error.name)); return page;
+  };
+  const stamp = (page, buildId) => page.evaluate(async id => {
+    const cache = await caches.open("literary-planet-pwa-v1-" + id), response = await cache.match("/planet/__pwa_complete__");
+    if (!response) throw new Error("Verified generation stamp is absent");
+    return response.json();
+  }, buildId);
+  const selection = page => page.evaluate(async () => {
+    const worker = navigator.serviceWorker.controller;
+    if (!worker) throw new Error("No active worker");
+    return new Promise((resolve, reject) => {
+      const requestId = "qa-persistent-rollback-" + Date.now();
+      const timeout = setTimeout(() => { navigator.serviceWorker.removeEventListener("message", listener); reject(new Error("Rollback status timed out")); }, 10_000);
+      const listener = event => {
+        if (event.source !== worker || event.data?.requestId !== requestId) return;
+        clearTimeout(timeout); navigator.serviceWorker.removeEventListener("message", listener); resolve(event.data);
+      };
+      navigator.serviceWorker.addEventListener("message", listener); worker.postMessage({ type: "PLANET_ROLLBACK_STATUS", requestId });
+    });
+  });
+  const persisted = (page, engineId) => page.evaluate(async id => {
+    const cache = await caches.open("literary-planet-pwa-v1-" + id), response = await cache.match("/planet/__pwa_selection__");
+    if (!response) throw new Error("Persisted rollback selection is absent");
+    const bytes = await response.arrayBuffer();
+    if (bytes.byteLength > 4096) throw new Error("Rollback selection exceeds its metadata bound");
+    return { value: JSON.parse(new TextDecoder().decode(bytes)), bytes: bytes.byteLength,
+      sha256: [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("") };
+  }, engineId);
+  const executable = (page, pathname) => page.evaluate(async url => {
+    const response = await fetch(url); if (!response.ok) throw new Error("Executable response unavailable");
+    const bytes = await response.arrayBuffer();
+    return { buildId: response.headers.get("X-Literary-Planet-Build"), bytes: bytes.byteLength,
+      sha256: [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(value => value.toString(16).padStart(2, "0")).join("") };
+  }, pathname);
+  const authorizedGlobe = async page => {
+    await expect(page.locator("[data-pwa-authorized]")).toBeVisible({ timeout: 45_000 });
+    await expect(page.locator("#atlas .literary-globe")).toHaveAttribute("data-globe-webgl-context", "ready", { timeout: 45_000 });
+    await expect(page.locator('[data-atlas-experience]')).toHaveAttribute("data-atlas-view", "immersive");
+    await expect(page.locator(".magazine-hero, .site-header")).toHaveCount(0);
+    await expect(page.locator(".native-planet-launch")).toBeHidden();
+    await expect(page.locator("#atlas canvas")).toHaveCount(1); await expect(page.locator("canvas")).toHaveCount(1);
+  };
+  try {
+    const online = await launch(false); await openAuthorized(online);
+    const previous = await installed(online), originalUrl = new URL(online.url());
+    const good = await control(request, { action: "candidate" });
+    const oldFile = previous.manifest.files.find(file => file.url === good.changedPath);
+    expect(oldFile).toMatchObject({ kind: "asset", url: expect.stringMatching(/\.js$/u) });
+    const previousBytes = { buildId: previous.manifest.buildId, bytes: oldFile.bytes, sha256: oldFile.sha256 };
+    expect(await executable(online, good.changedPath)).toEqual(previousBytes);
+    await online.evaluate(async () => { const registration = await navigator.serviceWorker.getRegistration("/planet/"); await registration.update(); });
+    const update = online.locator(".connectivity-status button").filter({ hasText: "Обновить" });
+    await expect(update).toBeVisible({ timeout: 60_000 });
+    await Promise.all([online.waitForEvent("domcontentloaded"), update.click()]); await authorizedGlobe(online);
+    const next = await stamp(online, good.buildId), nextFile = next.manifest.files.find(file => file.url === good.changedPath);
+    expect(next).toMatchObject({ state: "COMPLETE", manifest: { buildId: good.buildId,
+      rollbackReference: { buildId: previous.manifest.buildId, manifestSha256: previous.manifestSha256 } } });
+    expect(next.activationSequence).toBeGreaterThan(previous.activationSequence);
+    expect(nextFile.sha256).not.toBe(oldFile.sha256);
+    expect(await executable(online, good.changedPath)).toEqual({ buildId: good.buildId, bytes: nextFile.bytes, sha256: nextFile.sha256 });
+    await context.setOffline(true);
+    const rollback = online.getByRole("button", { name: "Вернуть предыдущую версию", exact: true });
+    await expect(rollback).toBeVisible({ timeout: 60_000 });
+    await Promise.all([online.waitForEvent("domcontentloaded"), rollback.click()]); await authorizedGlobe(online);
+    await expect(rollback).toHaveCount(0);
+    expect(await executable(online, good.changedPath)).toEqual(previousBytes);
+    const expectedStatus = { engineBuildId: good.buildId, activeBuildId: previous.manifest.buildId, rollbackBuildId: null, ready: false };
+    const beforeState = await selection(online); expect(beforeState).toMatchObject(expectedStatus);
+    const beforeSelection = await persisted(online, good.buildId);
+    expect(beforeSelection.value).toMatchObject({ schemaVersion: 1, engineBuildId: good.buildId,
+      buildId: previous.manifest.buildId, manifestSha256: previous.manifestSha256, requestedBy: expect.any(String) });
+    expect(beforeSelection.value.requestedBy.length).toBeGreaterThan(0);
+    const beforeStamp = await stamp(online, previous.manifest.buildId);
+    expect(beforeStamp).toEqual(previous);
+    expect(await stamp(online, good.buildId)).toEqual(next);
+    evidence.builds = { previous: previous.manifest.buildId, engine: good.buildId, changedPath: good.changedPath,
+      previousManifestSha256: previous.manifestSha256, engineManifestSha256: next.manifestSha256,
+      previousActivationSequence: previous.activationSequence, engineActivationSequence: next.activationSequence,
+      previousExecutable: previousBytes, engineExecutable: { buildId: good.buildId, bytes: nextFile.bytes, sha256: nextFile.sha256 } };
+    evidence.selectionBeforeClose = { status: beforeState, persisted: beforeSelection };
+    const filename = "pwa-rollback-before-close.png";
+    await online.screenshot({ path: testInfo.outputPath(filename), fullPage: false }); evidence.screenshots.push(filename);
+    const before = licenseRequests(await control(request, { action: "status" }));
+    expect(before.some(item => item.pathname.endsWith("/identity"))).toBe(true);
+    expect(before.some(item => item.pathname.endsWith("/session"))).toBe(true);
+    await context.close(); context = undefined; expect(online.isClosed()).toBe(true); evidence.firstContextClosed = true;
+
+    const cold = await launch(true); expect(await cold.evaluate(() => navigator.onLine)).toBe(false);
+    evidence.offlineBeforeFirstNavigation = true;
+    // Real navigation binds the new worker client before probes of selected A resources.
+    const response = await cold.goto(originalUrl.href, { waitUntil: "domcontentloaded" });
+    expect(response.status()).toBe(200); expect(response.headers()["x-literary-planet-build"]).toBe(previous.manifest.buildId);
+    await authorizedGlobe(cold);
+    expect(await cold.evaluate(() => navigator.serviceWorker.controller.scriptURL)).toBe(qaOrigin + "/planet/sw.js");
+    const reopenedState = await selection(cold); expect(reopenedState).toMatchObject(expectedStatus);
+    const reopenedSelection = await persisted(cold, good.buildId); expect(reopenedSelection).toEqual(beforeSelection);
+    expect(await stamp(cold, previous.manifest.buildId)).toEqual(previous); expect(await stamp(cold, good.buildId)).toEqual(next);
+    evidence.selectionAfterReopen = { status: reopenedState, persisted: reopenedSelection };
+    await expect.poll(() => cold.evaluate(() => window.__literaryPlanetQaScenes?.()
+      .filter(item => document.querySelector("#atlas")?.contains(item.canvas)).length), { timeout: 45_000 }).toBe(1);
+    scene = await cold.evaluateHandle(() => ({ document,
+      scene: window.__literaryPlanetQaScenes().find(item => document.querySelector("#atlas").contains(item.canvas)) }));
+    evidence.documents.push({ phase: "reopened-offline", engineBuildId: reopenedState.engineBuildId,
+      servedBuildId: response.headers()["x-literary-planet-build"], distinctFromClosedDocument: true });
+    for (const [index, locale] of ["ru", "en", "ru"].entries()) {
+      if (index > 0) await selectLocale(cold, locale);
+      await expect(cold.locator("html")).toHaveAttribute("lang", locale); await authorizedGlobe(cold);
+      const current = new URL(cold.url());
+      expect(current.origin).toBe(originalUrl.origin); expect(current.pathname).toBe("/planet/" + locale + "/");
+      expect(current.search).toBe(originalUrl.search); expect(current.hash).toBe(originalUrl.hash);
+      await expect(cold.locator('.atlas-country-presentation[data-atlas-country="russia"]')).toBeVisible();
+      expect(await cold.evaluate(() => navigator.onLine)).toBe(false);
+      expect(await executable(cold, good.changedPath)).toEqual(previousBytes);
+      expect(await selection(cold)).toMatchObject(expectedStatus);
+      const details = cold.locator(".pwa-status-card__details");
+      if (await details.getAttribute("open") === null) await details.locator(":scope > summary").click();
+      await expect(details.locator('[data-pwa-access-verification="saved"]')).toBeVisible();
+      await details.locator(":scope > summary").click();
+      expect(await scene.evaluate(previous => {
+        const current = window.__literaryPlanetQaScenes().find(item => item.canvas === previous.scene.canvas);
+        return previous.document === document && previous.scene.canvas.isConnected && Boolean(current?.renderer && current.camera && current.scene)
+          && current.renderer === previous.scene.renderer && current.camera === previous.scene.camera && current.scene === previous.scene.scene;
+      })).toBe(true);
+      evidence.locales.push({ locale, selectedCountry: "russia", savedVerification: true, wholePreviousGeneration: true, sameSceneWithinReopenedDocument: true });
+      if (index < 2) { const screenshot = "pwa-rollback-reopened-" + locale + ".png";
+        await cold.screenshot({ path: testInfo.outputPath(screenshot), fullPage: false }); evidence.screenshots.push(screenshot); }
+    }
+    const after = licenseRequests(await control(request, { action: "status" })); expect(after).toEqual(before);
+    evidence.offlineLicenseApiRequests = after.length - before.length;
+    expect(errors).toEqual([]); expect(blockedRequests).toEqual([]);
+    expect(evidence.persistentLaunches).toBe(2); expect(evidence.restarts).toBe(1); evidence.completed = true;
+  } finally {
+    try {
+      await scene?.dispose().catch(() => undefined); if (context) await context.close();
+      const parentStat = await lstat(dirname(profileRoot)), rootStat = await lstat(profileRoot), profileStat = await lstat(profile);
+      const actualParent = await realpath(dirname(profileRoot)), actualRoot = await realpath(profileRoot), actualProfile = await realpath(profile);
+      if (!parentStat.isDirectory() || parentStat.isSymbolicLink() || !rootStat.isDirectory() || rootStat.isSymbolicLink()
+        || !profileStat.isDirectory() || profileStat.isSymbolicLink() || resolve(profile) !== profile
+        || actualParent !== temporaryRoot || actualRoot !== profileRoot || actualProfile !== profile
+        || dirname(profileRoot) !== temporaryRoot || !profileRoot.startsWith(join(temporaryRoot, "pwa-rollback-profile-"))
+        || dirname(profile) !== profileRoot || !actualProfile.startsWith(actualRoot + sep)) {
+        throw new Error("Refuse cleanup outside the exact disposable profile");
+      }
+      await rm(profile, { recursive: true, force: true }); await rmdir(profileRoot); evidence.profileRemoved = true;
+    } finally { evidence.blockedRequests = blockedRequests;
+      await testInfo.attach("pwa-persistent-rollback-generation", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" }); }
+  }
+});
