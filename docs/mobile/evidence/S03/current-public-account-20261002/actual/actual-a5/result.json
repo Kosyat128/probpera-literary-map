@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "decision": "D262",
+  "kind": "current-public-account-mobile-fallback",
+  "sourceCommit": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "pass": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\d262-public-account-a2",
+  "helpers": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\run.mjs",
+      "bytes": 15552,
+      "sha256": "9f1768ae4c9d1c7167af80f4fa03f74d9e5f15ab3e33d1e6267215d245c6aa1f"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compile.mjs",
+      "bytes": 2667,
+      "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+      "bytes": 798,
+      "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8"
+    }
+  ],
+  "tools": [
+    {
+      "name": "vite",
+      "version": "7.3.6",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vite\\package.json",
+      "bytes": 5158,
+      "sha256": "e5ed0f85215f871fe22a48987dcd77fcfbe14064a53c0c9f7f48186a6b7e2cf0"
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "version": "5.2.0",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@vitejs\\plugin-react\\package.json",
+      "bytes": 1980,
+      "sha256": "162dae2eb246170739d7899d2ce1715a3e17f775fcd75a674da6be6f681225d6"
+    },
+    {
+      "name": "vitest",
+      "version": "4.1.10",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\package.json",
+      "bytes": 5932,
+      "sha256": "caa41f04799bd42f3cfd100c4282e630d77ffc7deb1e7e4927794fcb7f137f34"
+    },
+    {
+      "name": "typescript",
+      "version": "5.9.3",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\package.json",
+      "bytes": 3620,
+      "sha256": "822ef7ca6452205657b6288b066481ecf508bfbf43455d715cf7d3ec457561e6"
+    },
+    {
+      "name": "esbuild",
+      "version": "0.28.2",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\esbuild\\package.json",
+      "bytes": 3980,
+      "sha256": "9d0bc453f4e791553c4cc2298ba023b409241fd9801e494741666eb0f6051490"
+    },
+    {
+      "name": "cheerio",
+      "version": "1.2.0",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\cheerio\\package.json",
+      "bytes": 4843,
+      "sha256": "026f4c64a6a1d210e59ad0b6f66988857fc65e3485c24af3358a4196046e8f0c"
+    },
+    {
+      "name": "@playwright/test",
+      "version": "1.62.1",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\package.json",
+      "bytes": 754,
+      "sha256": "be51f784a5742a1aa075e0173f5f04f189a791cc30c40e3bb18be584f696764e"
+    },
+    {
+      "name": "playwright",
+      "version": "1.62.1",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\playwright\\package.json",
+      "bytes": 1416,
+      "sha256": "ca170ec143a88ed3043ac953eb3b2377b2b97304104f4e1e23316684ce2c35af"
+    },
+    {
+      "name": "playwright-core",
+      "version": "1.62.1",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\playwright-core\\package.json",
+      "bytes": 876,
+      "sha256": "07c47543631fef9508760365dee9fbe958c562093ec8d122543949ed231f233f"
+    }
+  ],
+  "commands": [
+    {
+      "name": "browser",
+      "executable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "args": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+        "test",
+        "--config",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+        "--grep",
+        "built canonical account routes remain private, bilingual and outside the globe runtime",
+        "--workers=1"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\cache",
+      "start": "2026-10-02T04:30:03.333Z",
+      "exitCode": 0
+    }
+  ],
+  "scope": {
+    "publicEdition": true,
+    "localQa": false,
+    "environmentFilesRead": false,
+    "providerValidated": false,
+    "legalApproved": false,
+    "actualOsInstallation": false,
+    "fullVisualAcceptance": false,
+    "productionActionsPerformed": false
+  },
+  "retainedFreshCompilation": {
+    "execution": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\compile.execution.json",
+      "bytes": 979,
+      "sha256": "aa438c33f1177770778e42980b5aa1e0c22189f2f61822eec590dc2ee4499e6c"
+    },
+    "report": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\compile-report.json",
+      "bytes": 919492,
+      "sha256": "a45f7e6828fba103ca4671cbd29215c68a75c9167c3f150ee5c612fa27094899"
+    },
+    "recompiled": false,
+    "browserWasNotPreviouslyRun": true
+  },
+  "manifestQualification": "Exact source-bound site.webmanifest write statement from canonical build-article-pages.mjs, using canonical base / variables; no full article/SEO/export pipeline or source writes.",
+  "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n8 !== 4\n\n    at run (file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-d262/run.mjs:106:106)\n    at async file:///D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-d262/run.mjs:112:117"
+}

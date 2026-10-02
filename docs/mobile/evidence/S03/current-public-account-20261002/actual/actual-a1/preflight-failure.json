@@ -1,0 +1,13 @@
+{
+  "decision": "D262",
+  "sourceCommit": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "pass": false,
+  "exitCode": 1,
+  "phase": "installed-tool-metadata-preflight",
+  "failure": "ERR_PACKAGE_PATH_NOT_EXPORTED: @vitejs/plugin-react/package.json cannot be addressed through package exports",
+  "compilationsPerformed": 0,
+  "browserCasesPerformed": 0,
+  "retryCorrection": "Read the installed checkout package.json by its direct path; use new empty a2 output/cache",
+  "stageAccepted": false,
+  "releaseReady": false
+}

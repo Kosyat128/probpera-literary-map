@@ -1,0 +1,30 @@
+[
+  {
+    "pathname": "/ru/planet-account/",
+    "status": 200,
+    "title": "Восстановление доступа",
+    "sha256": "1d2f0e26a13e315eeeae89302865d5d229bf25005037d363eed24586a675d9e9",
+    "noindex": true
+  },
+  {
+    "pathname": "/ru/delete-account/",
+    "status": 200,
+    "title": "Удаление аккаунта",
+    "sha256": "3b0a29b83ca6546f4a3c92c82143e4952ebc87eed87e7aa96718101bc3052709",
+    "noindex": true
+  },
+  {
+    "pathname": "/en/planet-account/",
+    "status": 200,
+    "title": "Restore access",
+    "sha256": "34daed0c356af38406457488cab1db0cadc39e70924cc45707bb3e4a5092e37f",
+    "noindex": true
+  },
+  {
+    "pathname": "/en/delete-account/",
+    "status": 200,
+    "title": "Delete your account",
+    "sha256": "20292fcbbcf01aafecccaf90fa3b696f6894344d294d47b6d70fc5d481ca5280",
+    "noindex": true
+  }
+]

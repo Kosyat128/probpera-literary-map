@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "decision": "D262",
+  "kind": "focused-current-public-account-mobile-working-evidence",
+  "sourceCommit": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "recordedAt": "2026-10-02T04:33:31.481Z",
+  "pass": true,
+  "criterionIds": [
+    "S03.acceptance"
+  ],
+  "stageAccepted": false,
+  "releaseReady": false,
+  "publicBuildSha256": "05135fdeccfbab40b4b82e4a611693b4a9a15d2bf7aa71bab06591790ee6fb21",
+  "checks": {
+    "actualPublicCompilations": 1,
+    "actualMobileCases": 1,
+    "rawHttpRoutes": 4,
+    "captureReferences": 8,
+    "uniqueCaptures": 4,
+    "sourceFiles": 8218,
+    "sourceBeforeAfterEqual": true,
+    "outputBeforeAfterEqual": true
+  },
+  "rawProducerAggregateFalsePreserved": true,
+  "scope": {
+    "canonicalPublicEdition": true,
+    "controlledQaPwa": false,
+    "authApiStubs": false,
+    "currentAccountFallback": true,
+    "checkedConsentPaint": false,
+    "fullVisualAcceptance": false,
+    "fullBilingualContent": false,
+    "fullAccessibility": false,
+    "providerValidated": false,
+    "legalAccepted": false,
+    "actualOsInstallation": false,
+    "stageAccepted": false,
+    "productionActionsPerformed": false
+  },
+  "qualification": "One fresh canonical Vite site compile, exact canonical manifest write statement and production pure account route generator; no complete CMS/article/SEO pipeline or deployment. Current public HTTP fallback only. Mobile oracle verifies RU/EN flags, same main node, locale routes/canonical/returnTo/hash,44px flag targets, no horizontal overflow, no globe/CMS/analytics and unavailable deletion guard. Preflight/package metadata, missing manifest, inappropriate sitemap writer and no-test selector failures remain separate; compiler was retained without repetition. Actual mobile case passed once. Original producer failed afterwards by counting four duplicated Playwright attachment copies as extra captures; its false aggregate is retained, with this scoped ROOT derivation from original browser/source/output reports. Tool package metadata and observed compiled module bytes are bound, not an exhaustive installed dependency closure.",
+  "findings": [
+    "Current public RU/EN account layouts and genuine native disabled consent remain readable in four reviewed frames.",
+    "Unavailable service text is duplicated above and below actions in both public modes; next scoped polish should show one status while retaining retry and safe disabled actions."
+  ],
+  "evidence": [
+    {
+      "name": "source-commit.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\source-commit.json",
+      "sha256": "346c3640d9f5da304408ac23134da8914e579e42eab69b156d641bb2e1ece793",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/source-commit.json",
+        "sha256": "346c3640d9f5da304408ac23134da8914e579e42eab69b156d641bb2e1ece793"
+      }
+    },
+    {
+      "name": "run.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\run.mjs",
+      "sha256": "9f1768ae4c9d1c7167af80f4fa03f74d9e5f15ab3e33d1e6267215d245c6aa1f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/run.mjs",
+        "sha256": "9f1768ae4c9d1c7167af80f4fa03f74d9e5f15ab3e33d1e6267215d245c6aa1f"
+      }
+    },
+    {
+      "name": "compile.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compile.mjs",
+      "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/compile.mjs",
+        "sha256": "f1cdc2e3a1a3fbcdde8b958a5d9db39be13915ec2ae758e85dbd6629bd06ba91"
+      }
+    },
+    {
+      "name": "public.config.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+      "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/public.config.mjs",
+        "sha256": "7cf5a3e4c236e4cd9584703a25290ebbd0a1e6539c504856ee6123df7ac0a9c8"
+      }
+    },
+    {
+      "name": "preflight-a1.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\preflight-a1.mjs",
+      "sha256": "e902d4d22dcad064a3e67f60b8c098f9acffc7a1553a45043978b6642437c687",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/preflight-a1.mjs",
+        "sha256": "e902d4d22dcad064a3e67f60b8c098f9acffc7a1553a45043978b6642437c687"
+      }
+    },
+    {
+      "name": "compiled-a2.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\compiled-a2.mjs",
+      "sha256": "3f0c44de220fc7b954faf646a19f5a246173cb9f42cae4bf9d76e85b46c2ebf3",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/compiled-a2.mjs",
+        "sha256": "3f0c44de220fc7b954faf646a19f5a246173cb9f42cae4bf9d76e85b46c2ebf3"
+      }
+    },
+    {
+      "name": "writer-a3.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\writer-a3.mjs",
+      "sha256": "3c6014186f353918be4d20ca1a50e50ae7f5e182cd4d2dfccc9001f4a9aa1087",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/writer-a3.mjs",
+        "sha256": "3c6014186f353918be4d20ca1a50e50ae7f5e182cd4d2dfccc9001f4a9aa1087"
+      }
+    },
+    {
+      "name": "selection-a4.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\selection-a4.mjs",
+      "sha256": "13f55231f10dbd4f2e93d85a8abfd0b8601a265ddf090f36cd9d0a5efccb718c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/selection-a4.mjs",
+        "sha256": "13f55231f10dbd4f2e93d85a8abfd0b8601a265ddf090f36cd9d0a5efccb718c"
+      }
+    },
+    {
+      "name": "actual-a1/preflight-failure.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a1\\preflight-failure.json",
+      "sha256": "8001d4126feb1eb733bd70df70cc8701958a0307d505d81e853029c70b7193cd",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a1/preflight-failure.json",
+        "sha256": "8001d4126feb1eb733bd70df70cc8701958a0307d505d81e853029c70b7193cd"
+      }
+    },
+    {
+      "name": "actual-a2/compile.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\compile.execution.json",
+      "sha256": "aa438c33f1177770778e42980b5aa1e0c22189f2f61822eec590dc2ee4499e6c",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/compile.execution.json",
+        "sha256": "aa438c33f1177770778e42980b5aa1e0c22189f2f61822eec590dc2ee4499e6c"
+      }
+    },
+    {
+      "name": "actual-a2/compile.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\compile.stdout.txt",
+      "sha256": "d8083da193168079906f0fead80fd7ef3c404fcb95cd09f1bc30ed63c657845f",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/compile.stdout.txt",
+        "sha256": "d8083da193168079906f0fead80fd7ef3c404fcb95cd09f1bc30ed63c657845f"
+      }
+    },
+    {
+      "name": "actual-a2/compile.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\compile.stderr.txt",
+      "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/compile.stderr.txt",
+        "sha256": "aa9b7207d2d2d42fbf4e013331ee76fc39b9b042505b38551893c1f60f35b63a"
+      }
+    },
+    {
+      "name": "actual-a2/compile-report.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\compile-report.json",
+      "sha256": "a45f7e6828fba103ca4671cbd29215c68a75c9167c3f150ee5c612fa27094899",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/compile-report.json",
+        "sha256": "a45f7e6828fba103ca4671cbd29215c68a75c9167c3f150ee5c612fa27094899"
+      }
+    },
+    {
+      "name": "actual-a2/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\source-before.json",
+      "sha256": "6d82d3c27fc9ca67157e4277d1a8b64d6efe20ec05560cd44cc601262be96fd6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/source-before.json",
+        "sha256": "6d82d3c27fc9ca67157e4277d1a8b64d6efe20ec05560cd44cc601262be96fd6"
+      }
+    },
+    {
+      "name": "actual-a2/observed-modules.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\observed-modules.json",
+      "sha256": "26532593f85a1736a24023cc7d9200ce0a38aef2d0c202f501f73f2785aae169",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/observed-modules.json",
+        "sha256": "26532593f85a1736a24023cc7d9200ce0a38aef2d0c202f501f73f2785aae169"
+      }
+    },
+    {
+      "name": "actual-a2/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a2\\result.json",
+      "sha256": "8d0804aae15526f5be28aec4a94b5048989358a448dbbed218424011a7b0f912",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a2/result.json",
+        "sha256": "8d0804aae15526f5be28aec4a94b5048989358a448dbbed218424011a7b0f912"
+      }
+    },
+    {
+      "name": "actual-a3/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a3\\result.json",
+      "sha256": "17a4d107e2b8f453af5987d7e96591540ba0e3ac690f5d615922b097e1cf9a61",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a3/result.json",
+        "sha256": "17a4d107e2b8f453af5987d7e96591540ba0e3ac690f5d615922b097e1cf9a61"
+      }
+    },
+    {
+      "name": "actual-a3/canonical-manifest-statement.mjs",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a3\\canonical-manifest-statement.mjs",
+      "sha256": "d19be4a2b19b7101dacdc6673a84962d449005e3c86370563842e9c6870d7c91",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a3/canonical-manifest-statement.mjs",
+        "sha256": "d19be4a2b19b7101dacdc6673a84962d449005e3c86370563842e9c6870d7c91"
+      }
+    },
+    {
+      "name": "actual-a4/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a4\\result.json",
+      "sha256": "ebeff79d0c8b153b6d5bb7021b5a206d061d0a19df4e8bb3a519822dc1ce982d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a4/result.json",
+        "sha256": "ebeff79d0c8b153b6d5bb7021b5a206d061d0a19df4e8bb3a519822dc1ce982d"
+      }
+    },
+    {
+      "name": "actual-a4/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a4\\browser.execution.json",
+      "sha256": "52a43ee99df057efe8f12a029cfc3241dfc4aa04b30ebbc01f7b05158869ec5d",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a4/browser.execution.json",
+        "sha256": "52a43ee99df057efe8f12a029cfc3241dfc4aa04b30ebbc01f7b05158869ec5d"
+      }
+    },
+    {
+      "name": "actual-a4/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a4\\browser.stdout.txt",
+      "sha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a4/browser.stdout.txt",
+        "sha256": "bef44b71926303f638fcf3917875642de7e01f8828d85d994561945390fde863"
+      }
+    },
+    {
+      "name": "actual-a4/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a4\\browser.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a4/browser.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "actual-a4/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a4\\playwright.json",
+      "sha256": "0a06eacbae2d2aa5940657e8e2aa498c8f595b34c5f3ebe639b6497b26c9ab14",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a4/playwright.json",
+        "sha256": "0a06eacbae2d2aa5940657e8e2aa498c8f595b34c5f3ebe639b6497b26c9ab14"
+      }
+    },
+    {
+      "name": "actual-a5/result.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\result.json",
+      "sha256": "0df8fc1c90cd07c33167d845e68a5ec7551e4fc3f3ed7945b6d2f223a60e9934",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/result.json",
+        "sha256": "0df8fc1c90cd07c33167d845e68a5ec7551e4fc3f3ed7945b6d2f223a60e9934"
+      }
+    },
+    {
+      "name": "actual-a5/playwright.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\playwright.json",
+      "sha256": "9055b5f825a94b451a4a9a358e5684863b7d4492e93f71c82107bb852bb44ce4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/playwright.json",
+        "sha256": "9055b5f825a94b451a4a9a358e5684863b7d4492e93f71c82107bb852bb44ce4"
+      }
+    },
+    {
+      "name": "actual-a5/source-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\source-before.json",
+      "sha256": "6d82d3c27fc9ca67157e4277d1a8b64d6efe20ec05560cd44cc601262be96fd6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/source-before.json",
+        "sha256": "6d82d3c27fc9ca67157e4277d1a8b64d6efe20ec05560cd44cc601262be96fd6"
+      }
+    },
+    {
+      "name": "actual-a5/source-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\source-after.json",
+      "sha256": "6d82d3c27fc9ca67157e4277d1a8b64d6efe20ec05560cd44cc601262be96fd6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/source-after.json",
+        "sha256": "6d82d3c27fc9ca67157e4277d1a8b64d6efe20ec05560cd44cc601262be96fd6"
+      }
+    },
+    {
+      "name": "actual-a5/observed-modules.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\observed-modules.json",
+      "sha256": "26532593f85a1736a24023cc7d9200ce0a38aef2d0c202f501f73f2785aae169",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/observed-modules.json",
+        "sha256": "26532593f85a1736a24023cc7d9200ce0a38aef2d0c202f501f73f2785aae169"
+      }
+    },
+    {
+      "name": "actual-a5/compiled-snapshot.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\compiled-snapshot.json",
+      "sha256": "55b2a8ccdc1ed6cbf89747793deb0f964119bf4d656c69c01eaa42fd375d0cb6",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/compiled-snapshot.json",
+        "sha256": "55b2a8ccdc1ed6cbf89747793deb0f964119bf4d656c69c01eaa42fd375d0cb6"
+      }
+    },
+    {
+      "name": "actual-a5/route-manifest.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\route-manifest.json",
+      "sha256": "bb77eb26f85f7d596991948d74091ddf36bf4ae4f123bef4a80e32f88cb220a7",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/route-manifest.json",
+        "sha256": "bb77eb26f85f7d596991948d74091ddf36bf4ae4f123bef4a80e32f88cb220a7"
+      }
+    },
+    {
+      "name": "actual-a5/output-before.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\output-before.json",
+      "sha256": "05135fdeccfbab40b4b82e4a611693b4a9a15d2bf7aa71bab06591790ee6fb21",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/output-before.json",
+        "sha256": "05135fdeccfbab40b4b82e4a611693b4a9a15d2bf7aa71bab06591790ee6fb21"
+      }
+    },
+    {
+      "name": "actual-a5/output-after.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\output-after.json",
+      "sha256": "05135fdeccfbab40b4b82e4a611693b4a9a15d2bf7aa71bab06591790ee6fb21",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/output-after.json",
+        "sha256": "05135fdeccfbab40b4b82e4a611693b4a9a15d2bf7aa71bab06591790ee6fb21"
+      }
+    },
+    {
+      "name": "actual-a5/browser.execution.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser.execution.json",
+      "sha256": "004051b13ee541ad72e7c760beea000b63f2421eb77beff01ffb052045a0451a",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/browser.execution.json",
+        "sha256": "004051b13ee541ad72e7c760beea000b63f2421eb77beff01ffb052045a0451a"
+      }
+    },
+    {
+      "name": "actual-a5/browser.stdout.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser.stdout.txt",
+      "sha256": "9f09b7828c8821b8df7e0a9a11fa0e1b06e440474946aa38642ab0e9cd4777d4",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/browser.stdout.txt",
+        "sha256": "9f09b7828c8821b8df7e0a9a11fa0e1b06e440474946aa38642ab0e9cd4777d4"
+      }
+    },
+    {
+      "name": "actual-a5/browser.stderr.txt",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/browser.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "actual-a5/http-head-content.json",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\http-head-content.json",
+      "sha256": "1b5abb38866dd82d2bd079c2f626fd66c3919ea5acf3494ef1b5f76e6018b704",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/actual-a5/http-head-content.json",
+        "sha256": "1b5abb38866dd82d2bd079c2f626fd66c3919ea5acf3494ef1b5f76e6018b704"
+      }
+    },
+    {
+      "name": "captures/planet-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-ru.png",
+      "sha256": "0ecf869558cc74cad4c8f8f30ac0674a4f4e7ec44b71dc2a8aa2fc21de7a6621",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/captures/planet-account-ru.png",
+        "sha256": "0ecf869558cc74cad4c8f8f30ac0674a4f4e7ec44b71dc2a8aa2fc21de7a6621"
+      }
+    },
+    {
+      "name": "captures/planet-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-en.png",
+      "sha256": "e73f67f7e6b40618e3a3d00234723e8a14566df9a44c0ffdc1dc19eb905e2839",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/captures/planet-account-en.png",
+        "sha256": "e73f67f7e6b40618e3a3d00234723e8a14566df9a44c0ffdc1dc19eb905e2839"
+      }
+    },
+    {
+      "name": "captures/delete-account-ru.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-ru.png",
+      "sha256": "3dff202b0d1881c9cb725f5cc88ede69cd1448087954763c05458c07122bc13e",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/captures/delete-account-ru.png",
+        "sha256": "3dff202b0d1881c9cb725f5cc88ede69cd1448087954763c05458c07122bc13e"
+      }
+    },
+    {
+      "name": "captures/delete-account-en.png",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-en.png",
+      "sha256": "5cebbb022e3c2116b332b372ffd70fc43158428c307dda3bbd22d8c9d24f5f59",
+      "canonicalCopy": {
+        "path": "docs/mobile/evidence/S03/current-public-account-20261002/actual/captures/delete-account-en.png",
+        "sha256": "5cebbb022e3c2116b332b372ffd70fc43158428c307dda3bbd22d8c9d24f5f59"
+      }
+    }
+  ]
+}

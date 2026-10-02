@@ -1,0 +1,34 @@
+{
+  "globals": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "40f9daa1b66b6d8983992a652c54d26913ce6f8c50dfd78cf0a38a5583b89ca8"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "sha256": "661b87478bc15a63d635d6e9dc66caa6cb70f07d1e703eb1b75752ab53eb831b"
+    },
+    {
+      "path": "docs/mobile/DECISIONS.md",
+      "sha256": "00d3ea512c2bf7f59611fcad6f46e49156b379dba1b6bfff16b417fdf95b98c1"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "sha256": "192d67ae05e6d5af3275c4d2723652301a2e4a7f2bef3e0d6f92ef86c7044e1d"
+    },
+    {
+      "path": "docs/mobile/BLOCKERS.md",
+      "sha256": "f0611b904c223ddf7cd47f71931462e5640c6102363667d6ea51b1f487a6e31b"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "sha256": "792a26567f52d1c56208ed6090b211d1c82c28c78839bb7dc086e21564991715"
+    }
+  ],
+  "previousNextAction": "Continue S03.acceptance with the bounded current-public mobile fallback/e2e gap: the existing built canonical account routes oracle has been adapted to flag IDs, but has not yet run against a source-bound current public compilation. Inspect and bind the applicable current public-account build closure before one selected existing mobile case; do not substitute the private QA PWA or retained old public HTML. Keep the inconclusive EN native-checkbox still-frame paint separate from functional consent retention and resolve it before full account visual acceptance. Preserve passed flags/native/offline/account/marker/update evidence without reruns for documentation; all11 routed criteria, approvals and installed-device/provider/legal/editorial/stage/release gates remain unchanged.",
+  "sourceCommit": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "verifier": {
+    "path": "scripts/mobile/verify-state.mjs",
+    "sha256": "f31e2b86d3e415a541a9186cac35ec1765ce4ae235eeecb310038cee46260ebf"
+  }
+}

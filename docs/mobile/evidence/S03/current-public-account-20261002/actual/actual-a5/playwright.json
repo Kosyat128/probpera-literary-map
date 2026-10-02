@@ -1,0 +1,139 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+      "--grep",
+      "built canonical account routes remain private, bilingual and outside the globe runtime",
+      "--workers=1"
+    ],
+    "configFile": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\public.config.mjs",
+    "rootDir": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/CodexData/.codex/visualizations/2026/09/20/01a0bd7e-e7b5-7111-b319-db1a60746e94/s03-account-public-d262/actual-a5/browser-output",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "current-public-mobile",
+        "name": "current-public-mobile",
+        "testDir": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "planet-account-pages.spec.mjs"
+        ],
+        "timeout": 45000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.62.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "planet-account-pages.spec.mjs",
+      "file": "planet-account-pages.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "built canonical account routes remain private, bilingual and outside the globe runtime",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 45000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "current-public-mobile",
+              "projectName": "current-public-mobile",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-02T04:30:04.908Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "planet-account-ru",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\attachments\\planet-account-ru-4c282f3f539666aa84427b8873360a2d7c05ec4e.png"
+                    },
+                    {
+                      "name": "planet-account-en",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\attachments\\planet-account-en-b65a8c3d672aaed1850545ea69718bc8206cc64c.png"
+                    },
+                    {
+                      "name": "delete-account-ru",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\attachments\\delete-account-ru-0ff4a889027a864eb9759e583111e6ef9dfe0b3e.png"
+                    },
+                    {
+                      "name": "delete-account-en",
+                      "contentType": "image/png",
+                      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\attachments\\delete-account-en-af6c01e7138a54d2a38b0871f8fc31cb31bc2321.png"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "93315fd6e3dbb3af322d-41753e8674c075c2fffb",
+          "file": "planet-account-pages.spec.mjs",
+          "line": 6,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-02T04:30:03.912Z",
+    "duration": 3081.329,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

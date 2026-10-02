@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "82e04e6e8b1787a06d53898fff28a22e943ad854",
+  "recordedAt": "2026-10-02T04:33:31.481Z",
+  "reviewer": "ROOT direct image inspection",
+  "reviewScope": "Four actual current public mobile full-page frames; readable RU/EN, flags and controls contained, disabled unchecked native consent visible; duplicate unavailable notice recorded separately.",
+  "fullVisualAcceptance": false,
+  "captures": [
+    {
+      "name": "planet-account-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-ru.png",
+      "sha256": "0ecf869558cc74cad4c8f8f30ac0674a4f4e7ec44b71dc2a8aa2fc21de7a6621"
+    },
+    {
+      "name": "planet-account-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\planet-account-en.png",
+      "sha256": "e73f67f7e6b40618e3a3d00234723e8a14566df9a44c0ffdc1dc19eb905e2839"
+    },
+    {
+      "name": "delete-account-ru",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-ru.png",
+      "sha256": "3dff202b0d1881c9cb725f5cc88ede69cd1448087954763c05458c07122bc13e"
+    },
+    {
+      "name": "delete-account-en",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\09\\20\\01a0bd7e-e7b5-7111-b319-db1a60746e94\\s03-account-public-d262\\actual-a5\\browser-output\\planet-account-pages-built-eab70-d-outside-the-globe-runtime-current-public-mobile\\delete-account-en.png",
+      "sha256": "5cebbb022e3c2116b332b372ffd70fc43158428c307dda3bbd22d8c9d24f5f59"
+    }
+  ]
+}
