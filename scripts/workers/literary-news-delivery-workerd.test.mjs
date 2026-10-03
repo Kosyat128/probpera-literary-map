@@ -108,7 +108,7 @@ describe('native delivery under the actual Workers fetch implementation',()=>{
       deliveredThisRun:0,providerWriteAttempts:0,externalRequests:7});
     expect(requests).toHaveLength(7);expect(heartbeats).toHaveLength(1);
     expect(heartbeats[0]).toMatchObject({p_key:'heartbeat:native-delivery',p_state:{heartbeatRecorded:true,externalRequests:7}});
-    expect(requests.every(url=>!url.startsWith('https://api.telegram.org'))).toBe(true);
+    expect(requests.every(url=>new URL(url).origin!=='https://api.telegram.org')).toBe(true);
   },15000);
   it('rejects a real Workers redirect without following it or attempting publication',async()=>{
     const {report,requests,heartbeats}=await runWorkerd({redirect:true});
