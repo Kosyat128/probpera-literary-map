@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-parent-pin-report-staging-input",
+  "finalized": true,
+  "sourceCommit": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "previousReport": "f14a6b1450016a4e0abed00d8a7f26a723aabe06",
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-parent-pin-enrollment.json",
+    "sha256": "f973793e921e1500af1ff4cc000e24f7d46c0b90affa29707d9e3e3ac600cfd1"
+  },
+  "originalIntegration": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-integration-4caa0a58-a548-41bd-896e-68b8c0ff949c\\integration.json",
+    "sha256": "d4ee9446ea3199d4c114a5bef8b3448973f787bf0ce8ffd70335b669f2689f9b"
+  },
+  "successorIntegration": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-integration-a3.json",
+    "sha256": "05051fbca9df71c3c1576690a94f70437b1ec5d4ffe9c2773cbf23ddb9c6602b"
+  },
+  "testTypeCorrection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-test-type-correction.json",
+    "sha256": "c594f86c3ba001bb1624960d37c9fcf47f6607befda5190563c6d491957764df"
+  },
+  "enrollment": {
+    "execution": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-units-a5222607-a559-45a6-b939-7258a14b521e\\execution.json",
+      "sha256": "0249bf9c7ce87f6c87d8c0371905a8b132a7303214d34a7b85602a88eebf0296"
+    },
+    "vitest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-units-a5222607-a559-45a6-b939-7258a14b521e\\vitest.json",
+      "sha256": "40e3e3b737118204154892baa40feb740aff2d53e14a40dd4ac0b49df52e3e65"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-units-a5222607-a559-45a6-b939-7258a14b521e\\stdout.txt",
+      "sha256": "7414343bb341f625aba4aee741306b27f166e1ac16c55cb4bd12572080c52b3b"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-units-a5222607-a559-45a6-b939-7258a14b521e\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "protectedParser": {
+    "execution": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-protected-parser-units-97f59b30-0f24-4f3a-8b03-2c42088f7b02\\execution.json",
+      "sha256": "aae1300bd0ef16946a6acf2f656cc4dc8d0e8826549a12e9b0c78b0280233537"
+    },
+    "vitest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-protected-parser-units-97f59b30-0f24-4f3a-8b03-2c42088f7b02\\vitest.json",
+      "sha256": "d4b27468221e2ba63a090e6100a9f7c7a5fbe23e1171ade35625a0fa8203c8b2"
+    },
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-protected-parser-units-97f59b30-0f24-4f3a-8b03-2c42088f7b02\\stdout.txt",
+      "sha256": "c7665d861c2b7a62abb240a78958b58360a5fe7bd8e0822b7382d8019534be69"
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-protected-parser-units-97f59b30-0f24-4f3a-8b03-2c42088f7b02\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "initialTypeScript": {
+    "result": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-db14337f-3c29-4cfc-8c9d-0502ad07c90f\\result.json",
+      "sha256": "c48486a205f5239adb36d6102dc4d8b152ebaaaa7c68b9e21cac994d2cd11575"
+    },
+    "stdout": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-db14337f-3c29-4cfc-8c9d-0502ad07c90f\\stdout.txt",
+      "sha256": "d34496dc28c2548fef0d6633d860f9fcac267319b122c5cf239df15a47f712c2"
+    },
+    "stderr": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-db14337f-3c29-4cfc-8c9d-0502ad07c90f\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "finalTypeScript": {
+    "result": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\result.json",
+      "sha256": "786a6ec19f3d40e3e8333970bc6efe1c461e24025587d0e2e31bd8d6f8dc20e7"
+    },
+    "stdout": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "sourceReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-review.json",
+    "sha256": "50c8b1266d377a720ed774a58f25b10281d1049b08a5d2c481f97dd921b9d766"
+  },
+  "originalManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-parent-pin-enrollment-a2\\manifest.json",
+    "sha256": "60e46ebcb6dd5f2aa4e3a2961b6bde74f91ac350672e4e2060756288dd02d8db"
+  },
+  "extraHistory": [
+    {
+      "id": "source-commit-preparation-a1",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-source-commit-preparation-a1.json",
+        "sha256": "fa53e2e05e4d30b146768d7bbb1632f2da05525e1ecac58c1700056ac7c840d2"
+      }
+    }
+  ]
+}

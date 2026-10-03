@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-parent-pin-enrollment-working-evidence",
+  "sourceCommit": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "status": "PARTIAL",
+  "result": "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/result.json",
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "protectedAdmission": "NOT_RUN",
+    "appChildActivation": false,
+    "remoteOperations": 0
+  }
+}

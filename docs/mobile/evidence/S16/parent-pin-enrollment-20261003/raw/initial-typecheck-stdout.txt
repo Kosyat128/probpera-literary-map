@@ -1,0 +1,15 @@
+src/child/parentPinEnrollment.test.ts(226,37): error TS2345: Argument of type '(p: Uint8Array<ArrayBufferLike>, s: Uint8Array<ArrayBufferLike>) => Promise<Uint8Array<ArrayBufferLike>>' is not assignable to parameter of type '(pin: Uint8Array<ArrayBufferLike>, salt: Uint8Array<ArrayBufferLike>, iterations: number) => Promise<Uint8Array<ArrayBuffer>>'.
+  Type 'Promise<Uint8Array<ArrayBufferLike>>' is not assignable to type 'Promise<Uint8Array<ArrayBuffer>>'.
+    Type 'Uint8Array<ArrayBufferLike>' is not assignable to type 'Uint8Array<ArrayBuffer>'.
+      Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+        Type 'SharedArrayBuffer' is not assignable to type 'ArrayBuffer'.
+          Types of property '[Symbol.toStringTag]' are incompatible.
+            Type '"SharedArrayBuffer"' is not assignable to type '"ArrayBuffer"'.
+src/child/parentPinEnrollment.test.ts(359,84): error TS2322: Type 'ArrayBufferView<ArrayBufferLike>' is not assignable to type 'T'.
+  'ArrayBufferView<ArrayBufferLike>' is assignable to the constraint of type 'T', but 'T' could be instantiated with a different subtype of constraint 'ArrayBufferView<ArrayBufferLike> | null'.
+src/child/parentPinEnrollment.test.ts(359,96): error TS2345: Argument of type 'ArrayBufferView<ArrayBufferLike> | null' is not assignable to parameter of type 'ArrayBufferView<ArrayBufferLike>'.
+  Type 'null' is not assignable to type 'ArrayBufferView<ArrayBufferLike>'.
+src/child/parentPinEnrollment.test.ts(385,27): error TS2345: Argument of type 'ArrayBufferView<ArrayBufferLike> | null' is not assignable to parameter of type 'ArrayBufferView<ArrayBufferLike>'.
+  Type 'null' is not assignable to type 'ArrayBufferView<ArrayBufferLike>'.
+src/child/parentPinEnrollment.test.ts(385,75): error TS2322: Type 'ArrayBufferView<ArrayBufferLike>' is not assignable to type 'T'.
+  'ArrayBufferView<ArrayBufferLike>' is assignable to the constraint of type 'T', but 'T' could be instantiated with a different subtype of constraint 'ArrayBufferView<ArrayBufferLike> | null'.

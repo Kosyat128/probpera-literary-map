@@ -1,0 +1,1 @@
+JSON report written to D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/parent-pin-protected-parser-units-97f59b30-0f24-4f3a-8b03-2c42088f7b02/vitest.json

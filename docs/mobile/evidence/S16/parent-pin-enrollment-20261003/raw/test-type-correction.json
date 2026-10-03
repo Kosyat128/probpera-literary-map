@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-parent-pin-test-type-correction",
+  "originalIntegration": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-integration-4caa0a58-a548-41bd-896e-68b8c0ff949c\\integration.json",
+    "sha256": "d4ee9446ea3199d4c114a5bef8b3448973f787bf0ce8ffd70335b669f2689f9b"
+  },
+  "file": "src/child/parentPinEnrollment.test.ts",
+  "beforeSha256": "1679bb5e75a43a622634103f80c44ba57fa44c7f785ad85157e407f0d065d95f",
+  "afterSha256": "26781fc0048b12fa674796356354bc9de3bba6a286ac98581eddf11708ae3bd7",
+  "productionSourceChanged": false,
+  "emittedJavaScriptByteIdentical": true,
+  "emittedJavaScriptSha256": "42cd2584c7cca43c73665715298b1b4bd62c6bef9ffe745d54e61b0bd0b81244",
+  "typeScriptVersion": "5.9.3",
+  "originalTypeScriptFailure": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-db14337f-3c29-4cfc-8c9d-0502ad07c90f\\result.json",
+    "preserved": true
+  },
+  "checksRerun": 0,
+  "qualification": "Original72 enrollment and6 selected protected tests retain their original recorded source; unchanged production files and exact identical emitted test JavaScript qualify the type-only correction. Only final TSC must run again.",
+  "releaseReady": false
+}

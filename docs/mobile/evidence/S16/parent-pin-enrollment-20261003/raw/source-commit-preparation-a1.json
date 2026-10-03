@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-parent-pin-local-commit-preparation",
+  "status": "FAIL",
+  "helper": "commit-parent-pin-source.mjs",
+  "nodeExitCode": 1,
+  "gitDiffCheckExitCode": 2,
+  "finding": "src/child/childProtectedState.ts:383: new blank line at EOF.",
+  "sourceWrites": 0,
+  "gitStageOrCommitExecuted": false,
+  "applicationChecksRerun": 0,
+  "qualification": "The source-reviewed candidate has one added terminal LF; default Git blank-at-eof styling blocked this optional precommit check. Preserve candidate bytes and mixed line endings; successor uses only process-scoped whitespace=cr-at-eol,-blank-at-eof, preserving all other diff checks. This is not a unit/TypeScript/native outcome.",
+  "globalGitConfigurationChanged": false,
+  "releaseReady": false
+}

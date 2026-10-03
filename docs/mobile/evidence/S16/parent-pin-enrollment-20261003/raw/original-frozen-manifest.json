@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_SOURCE_CANDIDATE_NOT_RUN",
+  "stage": "S16",
+  "criterionStillFirstUnresolved": "S03.acceptance",
+  "assignmentSourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "assignmentReportHead": "a0b94c62cb055a60c84cf350374cd001017c451c",
+  "priorStagedCandidate": {
+    "path": "../next-parent-pin-enrollment/src/child/parentPinEnrollment.ts",
+    "sha256": "038022b2a5cb87815feadfce80402daf5a4be501cbde27ec305b3f035a55c35d",
+    "status": "SOURCE_ONLY_NOT_RUN_PRESERVED"
+  },
+  "ownedPaths": [
+    {
+      "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5",
+      "size": 29867,
+      "path": "src/child/childProtectedState.ts",
+      "sourceBeforeSha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d"
+    },
+    {
+      "sha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991",
+      "size": 29021,
+      "path": "src/child/parentPinEnrollment.ts",
+      "sourceBeforeSha256": null
+    },
+    {
+      "sha256": "1679bb5e75a43a622634103f80c44ba57fa44c7f785ad85157e407f0d065d95f",
+      "size": 35688,
+      "path": "src/child/parentPinEnrollment.test.ts",
+      "sourceBeforeSha256": null
+    }
+  ],
+  "unchangedReadDependencies": [
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    }
+  ],
+  "validation": {
+    "unit": "NOT_RUN",
+    "typescript": "NOT_RUN",
+    "build": "NOT_RUN",
+    "installedNative": "NOT_RUN",
+    "independentSourceReview": "BOTH_REENTRY_FINDINGS_FIXED_SOURCE_REVIEW_ONLY"
+  },
+  "limitations": [
+    "Genuine native protected enrollment/rotation/recovery lifecycle authority, control-rollback resistance and continuous trusted time remain unsupported dependencies; private encrypted partition storage is not this authority.",
+    "Actual platform PIN input clearing/ownership/lifecycle and timing calibration require real constructor-owned native ports.",
+    "Tests use explicit synthetic native/calibration/recovery/input/KDF ports and real SHA. Existing real600k WebCrypto comparison is retained without rerun.",
+    "Unregistered module; no ParentGate/child admission/App activation/release acceptance."
+  ],
+  "actions": "B staging only; no project writes, execution, Git, remote, deployment, merge or publication"
+}
+

@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+  "headSha": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-03T11:06:13.159Z",
+  "updatedAt": "2026-10-03T11:29:59.120Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1563,7 +1563,10 @@
         "docs/mobile/evidence/S16/native-private-transport-20261003/evidence-manifest.json",
         "docs/mobile/evidence/S16/child-static-svg-20261003/entry.json",
         "docs/mobile/evidence/S16/child-static-svg-20261003/result.json",
-        "docs/mobile/evidence/S16/child-static-svg-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/child-static-svg-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/entry.json",
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/result.json",
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -5208,7 +5211,10 @@
         "docs/mobile/evidence/S16/native-private-transport-20261003/evidence-manifest.json",
         "docs/mobile/evidence/S16/child-static-svg-20261003/entry.json",
         "docs/mobile/evidence/S16/child-static-svg-20261003/result.json",
-        "docs/mobile/evidence/S16/child-static-svg-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/child-static-svg-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/entry.json",
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/result.json",
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -13273,7 +13279,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue independent S16 programming with protected native PIN enrollment/verification/recovery and authenticated native host-current binding under the durable commit lock before admitted child index ports; then complete replay-resistant authority/trusted time and clear-before-render lifecycle/route App wiring. The static SVG codec proves resource handling only and grants no protected admission, PIN, profile/package review, rights or App activation. Remaining documented media formats and independently reviewed exact-byte RU/EN child assets remain required. S03.acceptance remains IN_PROGRESS with11 OPEN criteria and S16 with36 OPEN; preserve the four original conditions and seven owner inputs. Preserve existing RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passed scopes for reporting, create D stages, invent approvals/trusted time, rewrite historical FAIL/NOT_RUN or deploy/push/merge/publish.",
+    "nextAction": "Complete the staged pure Android/Swift canonical protected-envelope validators and exact PIN-only transitions, then implement a genuine constructor-owned native PIN lifecycle, calibration, input and independent recovery provider with one-use permission, full durable CAS/readback and authenticated native host-current binding. Continue supported replay-resistant authority/trusted continuous time, admitted child index ports and clear-before-render route/account/profile/lifecycle App wiring. The private TypeScript enrollment/replacement/recovery coordinator and strict seed decoder now have scoped local proofs; they supply no native provider, protected admission, trusted clock, child content review, rights or App activation. S03.acceptance remains IN_PROGRESS with11 OPEN criteria and S16 with36 OPEN; preserve the four original conditions and seven owner inputs. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passed scopes for reporting, create D stages, invent approvals, rewrite historical FAIL/NOT_RUN or deploy/push/merge/publish.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13654,7 +13660,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
-    "headShaMeaning": "SVG source ddbc10c3d35c5d28823df901a44f1a932dd772e2 follows native source 3c79db7c6d299032a357781861a919f454981daf and report a0b94c62cb055a60c84cf350374cd001017c451c. Final67 selected cases (65 helper and2 exact SVG loader) and TSC ran at reportHEADdirty8; their exact file bytes match frozen SVG source. Actual35 Edge resource checks ran at the clean SVG source. Original A1 53PASS1FAIL54filtered remains original; its13 unchanged nonSVG preflight PASS are retained separately, never added as new final checks. Android/PWA/iOSweb preparations at3c79 predate SVG and do not contain this change. No current-source build, installed OS/native authority, App, rights, full inventory, stage or release acceptance.",
+    "headShaMeaning": "PIN source f2d8d8d2aefb6c040698972dca818b4223844b3a follows SVG source ddbc10c3d35c5d28823df901a44f1a932dd772e2 and report f14a6b1450016a4e0abed00d8a7f26a723aabe06. Actual72 full new PIN cases and6 selected protected parser/CAS cases ran on the original reportHEADdirty3, with21 other protected cases filtered. Their two production files match current source exactly; the new test differs only by type annotations, qualified by the retained root actual emitted-JavaScript-byte-identical proof. Final TSC ran on corrected reportHEADdirty3 and all1778 captured bytes match this frozen source. Original test-typing TSC FAIL remains original, and source-commit whitespace preparation is separate tooling evidence. No unit rerun, new build/browser/installedOS, genuine native provider, calibration, admission, App, content approval, stage or release acceptance.",
     "requirementCount": 342,
     "bilingualRequirementCount": 107,
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",

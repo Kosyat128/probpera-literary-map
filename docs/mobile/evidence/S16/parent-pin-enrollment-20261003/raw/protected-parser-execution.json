@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-parent-pin-focused-unit-execution",
+  "check": "protected-parser",
+  "startedAt": "2026-10-03T11:09:22.470Z",
+  "finishedAt": "2026-10-03T11:09:23.796Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "src/child/childProtectedState.test.ts",
+    "--testNamePattern=(?:^| )(strictly decodes and freezes a canonical full record without claiming authority|rejects malformed policy, PIN journal, future fields and accessors without invoking them|missing native guarantees, explicit adult mode and absent child selection never publish readiness|PIN attempt CAS advances the entire record durably and preserves protected mode/profile/clock|PIN CAS denies stale full state, changed verifier and journal times beyond native sampled time|mode/profile CAS requires exact revision changes and preserves the complete PIN journal)$",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-protected-parser-units-97f59b30-0f24-4f3a-8b03-2c42088f7b02\\vitest.json"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "pass": true,
+  "integration": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-enrollment-integration-4caa0a58-a548-41bd-896e-68b8c0ff949c\\integration.json",
+    "sha256": "d4ee9446ea3199d4c114a5bef8b3448973f787bf0ce8ffd70335b669f2689f9b"
+  },
+  "recordedRepositoryHead": "f14a6b1450016a4e0abed00d8a7f26a723aabe06",
+  "recordedLastCommittedAppSource": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+  "dirtySourceFiles": [
+    {
+      "path": "src/child/childProtectedState.ts",
+      "beforeSha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d",
+      "afterSha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5"
+    },
+    {
+      "path": "src/child/parentPinEnrollment.ts",
+      "beforeSha256": null,
+      "afterSha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991"
+    },
+    {
+      "path": "src/child/parentPinEnrollment.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "1679bb5e75a43a622634103f80c44ba57fa44c7f785ad85157e407f0d065d95f"
+    }
+  ],
+  "recordedBinding": {
+    "sourceCommit": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+    "repositoryHead": "f14a6b1450016a4e0abed00d8a7f26a723aabe06",
+    "sourceFingerprint": "c383cda44d1fe70fcebd21749390c270b733a3ec61574789ed6617a658cced34",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "capturedSourceCount": 1778,
+  "inputsUnchanged": true,
+  "summary": {
+    "total": 27,
+    "passed": 6,
+    "failed": 0,
+    "pendingOrFiltered": 21,
+    "assertions": 27,
+    "executed": 6,
+    "skippedOrFiltered": 21,
+    "scope": "EXACT_SIX_RETAINED_PARSER_AND_CAS_TESTS",
+    "nameFilter": "(?:^| )(strictly decodes and freezes a canonical full record without claiming authority|rejects malformed policy, PIN journal, future fields and accessors without invoking them|missing native guarantees, explicit adult mode and absent child selection never publish readiness|PIN attempt CAS advances the entire record durably and preserves protected mode/profile/clock|PIN CAS denies stale full state, changed verifier and journal times beyond native sampled time|mode/profile CAS requires exact revision changes and preserves the complete PIN journal)$",
+    "selectedTitles": [
+      "strictly decodes and freezes a canonical full record without claiming authority",
+      "rejects malformed policy, PIN journal, future fields and accessors without invoking them",
+      "missing native guarantees, explicit adult mode and absent child selection never publish readiness",
+      "PIN attempt CAS advances the entire record durably and preserves protected mode/profile/clock",
+      "PIN CAS denies stale full state, changed verifier and journal times beyond native sampled time",
+      "mode/profile CAS requires exact revision changes and preserves the complete PIN journal"
+    ],
+    "actualExecutedTitles": [
+      "strictly decodes and freezes a canonical full record without claiming authority",
+      "rejects malformed policy, PIN journal, future fields and accessors without invoking them",
+      "missing native guarantees, explicit adult mode and absent child selection never publish readiness",
+      "PIN attempt CAS advances the entire record durably and preserves protected mode/profile/clock",
+      "PIN CAS denies stale full state, changed verifier and journal times beyond native sampled time",
+      "mode/profile CAS requires exact revision changes and preserves the complete PIN journal"
+    ],
+    "syntheticPorts": true,
+    "installedNativeRuntime": "NOT_RUN",
+    "real600kFixtureRerun": false
+  },
+  "isolatedEnv": true,
+  "installedNativeRuntime": "NOT_RUN",
+  "genuineAuthorityProvider": "NOT_SUPPLIED",
+  "childAppActivation": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteRequests": 0
+}

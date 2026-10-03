@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-parent-pin-enrollment-independent-source-review",
+  "status": "ACK",
+  "scope": "FROZEN_SOURCE_REVIEW_ONLY",
+  "assignmentSourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "assignmentReportHead": "a0b94c62cb055a60c84cf350374cd001017c451c",
+  "candidate": {
+    "path": "next-parent-pin-enrollment-a2",
+    "manifest": { "path": "next-parent-pin-enrollment-a2/manifest.json", "sha256": "60e46ebcb6dd5f2aa4e3a2961b6bde74f91ac350672e4e2060756288dd02d8db", "bytes": 2496 },
+    "ready": { "path": "next-parent-pin-enrollment-a2/READY.md", "sha256": "7a50585fb4df9d9f601a8dfab984cb1be975582159f29748f5ac505f69b0c6fe", "bytes": 2077 },
+    "files": [
+      { "path": "src/child/childProtectedState.ts", "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5", "bytes": 29867, "sourceBeforeSha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d", "currentBeforeMatched": true },
+      { "path": "src/child/parentPinEnrollment.ts", "sha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991", "bytes": 29021, "sourceBeforeSha256": null, "currentPathAbsent": true },
+      { "path": "src/child/parentPinEnrollment.test.ts", "sha256": "1679bb5e75a43a622634103f80c44ba57fa44c7f785ad85157e407f0d065d95f", "bytes": 35688, "sourceBeforeSha256": null, "currentPathAbsent": true }
+    ]
+  },
+  "unchangedReadDependenciesVerified": [
+    { "path": "src/child/parentGate.ts", "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690" },
+    { "path": "src/child/parentPinVerification.ts", "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17" }
+  ],
+  "resolvedFindings": [
+    {
+      "id": "INITIAL_PREPARATION_REENTRY",
+      "resolution": "Exclusive preparation is reserved before injected initial clock/random callbacks; generation, visibility, disposal and external cancellation are fenced before the owned job becomes active. Focused clock/random reentry and random-background cases are authored."
+    },
+    {
+      "id": "FINAL_CLOCK_CANCELLATION_CLEANUP",
+      "resolution": "Cleanup snapshots existing cancellation, awaits it and genuine retirement; cancellation created during retirement or the final clock callback is awaited and covered by another genuine close receipt before capacity release, without a subsequent injected clock on that cancelled path. Focused deferred cancellation/re-close case is authored."
+    }
+  ],
+  "reviewedFacts": [
+    "The shared pure decoder permits only a full explicit adult pin:null seed. The existing enrolled decoder continues to require a valid PIN record; missing or corrupt state is not a first-enrollment seed.",
+    "Before the decoder span, existing code is byte-identical after excluding the new seed type/comment and relocated decoder comment. The native store/pinStore tail is byte-identical apart from one added terminal LF; no native storage or enrolled pinStore behavior is widened.",
+    "PIN and confirmation are independently copied and wiped; owned salt and credential IDs are 32 bytes. The real WebCrypto KDF remains the default with an explicit 600000-iteration floor, distinct mandatory calibration dependency, minimum four digits and maximum 60000ms technical window.",
+    "Original inspection identity, native-owned session, epoch/boot and one native absolute continuous deadline bind exact whole-record before/after bytes, checksums and revisions. Native lifecycle authority must independently authenticate and perform locked one-use full CAS/readback; a private encrypted partition is not that authority.",
+    "Canonical full bytes, registry checksum and clock coordinates are validated before a wrong lifecycle kind is classified as a known denial.",
+    "Recovery requires a distinct genuine native/system/account port, binds the complete mutation coordinates and rejects reuse of opaque permission identities. Inspection wire IDs are collision checked and capped at 2048 for the constructor lifetime without eviction or automatic rotation.",
+    "Unknown, malformed or lost begin/commit/retirement receipts seal ownership and retain unknown capacity. Cancellation is prompt for the caller while actual work, late buffer wiping and genuine terminal cleanup retain the exclusive lane.",
+    "Authored focused cases use explicit synthetic native/input/calibration/recovery/KDF ports and real SHA. They do not attest installed OS authority, trusted native time, rollback resistance or device calibration.",
+    "No App registration, child admission capability, public parent approval, native authority provider implementation or release acceptance is added. Prior staged draft remains separate and NOT_RUN."
+  ],
+  "findings": [],
+  "requiredNextValidation": "Parent performs scoped integration and actual unit/TypeScript/build validation; unexecuted checks remain NOT_RUN.",
+  "validation": { "unit": "NOT_RUN", "typescript": "NOT_RUN", "build": "NOT_RUN", "installedNative": "NOT_RUN", "genuineAuthorityProvider": "NOT_SUPPLIED" },
+  "acceptance": { "S03Open": 11, "S16Open": 36, "stageAccepted": false, "releaseReady": false },
+  "actions": { "checkoutWrites": false, "gitExecuted": false, "checksExecuted": false, "remoteActions": 0, "candidateEdits": false, "receiptWriteOnly": true }
+}
