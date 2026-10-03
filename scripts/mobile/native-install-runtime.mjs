@@ -166,6 +166,15 @@ async function regular(root, relative, maximum = 512 * 1024 * 1024) {
   check(within(root, target) && stat.isFile() && !stat.isSymbolicLink() && stat.size <= maximum && await realpath(target) === target, 'Missing, linked or oversized input.');
   return readFile(target);
 }
+export const nativeProtectedFixtureSourcePaths = Object.freeze([
+  'apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java',
+  'apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift',
+]);
+export function verifyNativeProtectedFixtureSources(files) {
+  check(Array.isArray(files) && nativeProtectedFixtureSourcePaths.every(filename => files.some(file => file?.path === filename && hash(file.sha256))),
+    'Missing required structural envelope fixture source binding.');
+  return true;
+}
 export async function nativeRuntimeSources(rootDir) {
   const root = await realpath(rootDir);
   const roots = ['src', 'apps/mobile/android', 'apps/mobile/ios', 'native.html', 'vite.native.config.ts', 'vite.config.ts',
@@ -175,6 +184,7 @@ export async function nativeRuntimeSources(rootDir) {
   const files = [];
   for (const filename of [...new Set(names.filter(name => name && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(name)))].sort())
     files.push({ path: filename, sha256: sha(await regular(root, filename)) });
+  verifyNativeProtectedFixtureSources(files);
   return { sha256: sha(json(files)), files };
 }
 export function validateRuntimeReceipt(value, platform) {
@@ -252,6 +262,8 @@ function androidOfflineCommandArgs(value) {
       ? copied[12] === 'literaryChildDataPhase' && ['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'].includes(copied[13])
       : copied[7] === 'ru.probpera.literaryplanet.PlanetChildDataTransportRuntimeTest'
         ? copied[12] === 'literaryChildTransportPhase' && copied[13] === 'wire'
+        : copied[7] === 'ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest'
+          ? copied[12] === 'literaryProtectedEnvelopePhase' && copied[13] === 'codec'
         : ['PlanetSecureStoreRuntimeTest','PlanetPreferencesRuntimeTest','PlanetPreviousPreferencesRuntimeTest'].some(name => copied[7] === 'ru.probpera.literaryplanet.' + name)
         && copied[12] === 'literaryPhase' && ['write','read','remove','clear','absent','parallel','corrupt','unsupported-language','unsupported-theme','plugin-failure','timeout'].includes(copied[13]))
     && copied[8] === '-e' && copied[9] === 'literaryRunId' && /^[a-f0-9]{32}$/u.test(copied[10])
@@ -298,6 +310,19 @@ export function xctestPassed(text) {
   return typeof text === 'string' && /Executed 1 test, with 0 failures/u.test(text)
     && /\*\* TEST EXECUTE SUCCEEDED \*\*/u.test(text) && !/Test Case .* skipped|TEST EXECUTE FAILED|\b(?:failed|error):/iu.test(text);
 }
+/** Exact frozen nine-test structural class only. Its success establishes no
+ * OS storage, PIN input, permission, checkpoint, clock or child admission. */
+export function protectedEnvelopeFixturePassed(text, platform) {
+  if (typeof text !== 'string' || text.length > 4 * 1024 * 1024
+    || /FAILURES!!!|INSTRUMENTATION_FAILED|INSTRUMENTATION_ABORTED|Process crashed|shortMsg=|\bskipped\b|TEST EXECUTE FAILED|\b(?:failed|error):/iu.test(text)) return false;
+  if (platform === 'android') {
+    const summaries = [...text.matchAll(/^OK \(([0-9]+) tests?\)[ \t]*\r?$/gmu)];
+    return summaries.length === 1 && summaries[0][1] === '9' && !/INSTRUMENTATION_STATUS_CODE:\s*-[1234]\b/u.test(text);
+  }
+  const summaries = [...text.matchAll(/^[ \t]*Executed ([0-9]+) tests?, with ([0-9]+) failures\b.*$/gmu)];
+  return platform === 'ios' && summaries.length > 0 && /\*\* TEST EXECUTE SUCCEEDED \*\*/u.test(text)
+    && summaries.every(row => row[1] === '9' && row[2] === '0');
+}
 const childDataPhases = Object.freeze(['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear']);
 /** Each destructive fixture uses a separate deterministic, run-owned namespace.
  * These identifiers are isolation metadata, never native/PIN authority. */
@@ -314,6 +339,11 @@ export function childTransportFixtureArguments(runId) {
   check(/^[a-f0-9]{32}$/u.test(runId), 'Exact own private transport fixture required.');
   return Object.freeze(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetChildDataTransportRuntimeTest',
     '-e','literaryRunId',runId,'-e','literaryChildTransportPhase','wire','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+}
+export function childProtectedFixtureArguments(runId) {
+  check(/^[a-f0-9]{32}$/u.test(runId), 'Exact own structural envelope fixture required.');
+  return Object.freeze(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest',
+    '-e','literaryRunId',runId,'-e','literaryProtectedEnvelopePhase','codec','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
 }
 export function bindXctestrun(input, { templateDir, binary, runId, phase }) {
   check(input?.__xctestrun_metadata__?.FormatVersion === 2 && Array.isArray(input.TestConfigurations) && input.TestConfigurations.length === 1,
@@ -346,15 +376,17 @@ export function bindXctestrun(input, { templateDir, binary, runId, phase }) {
     check(Array.isArray(target.DependentProductPaths) && target.DependentProductPaths.length <= 32, 'Malformed XCTest product paths.');
     target.DependentProductPaths = target.DependentProductPaths.map(host);
   }
-  const preference = phase.startsWith('preferences:'), childData = phase.startsWith('child-data:'), childTransport = phase.startsWith('child-transport:');
-  const selected = preference ? phase.slice('preferences:'.length) : childData ? phase.slice('child-data:'.length) : childTransport ? phase.slice('child-transport:'.length) : phase;
-  check(/^[a-f0-9]{32}$/u.test(runId) && (childTransport ? ['wire'] : childData ? childDataPhases : preference ? ['write', 'read', 'parallel', 'corrupt', 'remove', 'absent', 'clear', 'unsupported-language', 'unsupported-theme', 'plugin-failure', 'timeout']
+  const preference = phase.startsWith('preferences:'), childData = phase.startsWith('child-data:'), childTransport = phase.startsWith('child-transport:'), childProtected = phase.startsWith('child-protected:');
+  const selected = preference ? phase.slice('preferences:'.length) : childData ? phase.slice('child-data:'.length) : childTransport ? phase.slice('child-transport:'.length) : childProtected ? phase.slice('child-protected:'.length) : phase;
+  check(/^[a-f0-9]{32}$/u.test(runId) && (childProtected ? ['codec'] : childTransport ? ['wire'] : childData ? childDataPhases : preference ? ['write', 'read', 'parallel', 'corrupt', 'remove', 'absent', 'clear', 'unsupported-language', 'unsupported-theme', 'plugin-failure', 'timeout']
     : ['write', 'read', 'parallel', 'corrupt', 'remove', 'absent']).includes(selected), 'Wrong synthetic XCTest phase.');
   target.EnvironmentVariables = { ...target.EnvironmentVariables };
   for (const key of ['LITERARY_PLANET_SECURE_TEST_RUN_ID','LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID','LITERARY_PLANET_SECURE_TEST_PHASE','LITERARY_PLANET_PREFERENCE_TEST_PHASE','LITERARY_PLANET_CHILD_DATA_TEST_PHASE','LITERARY_PLANET_CHILD_TRANSPORT_TEST_RUN_ID','LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE']) delete target.EnvironmentVariables[key];
-  target.EnvironmentVariables[childTransport ? 'LITERARY_PLANET_CHILD_TRANSPORT_TEST_RUN_ID' : childData ? 'LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID' : 'LITERARY_PLANET_SECURE_TEST_RUN_ID'] = runId;
-  target.EnvironmentVariables[childTransport ? 'LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE' : childData ? 'LITERARY_PLANET_CHILD_DATA_TEST_PHASE' : preference ? 'LITERARY_PLANET_PREFERENCE_TEST_PHASE' : 'LITERARY_PLANET_SECURE_TEST_PHASE'] = selected;
-  target.OnlyTestIdentifiers = [childTransport ? 'PlanetChildDataTransportRuntimeTests/testPrivateTransportPhase' : childData ? 'PlanetChildDataStoreRuntimeTests/testDurableDataPhase' : 'PlanetSecureStoreRuntimeTests/' + (preference ? 'testPreferencePhase' : 'testSecureStoragePhase')];
+  if (!childProtected) {
+    target.EnvironmentVariables[childTransport ? 'LITERARY_PLANET_CHILD_TRANSPORT_TEST_RUN_ID' : childData ? 'LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID' : 'LITERARY_PLANET_SECURE_TEST_RUN_ID'] = runId;
+    target.EnvironmentVariables[childTransport ? 'LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE' : childData ? 'LITERARY_PLANET_CHILD_DATA_TEST_PHASE' : preference ? 'LITERARY_PLANET_PREFERENCE_TEST_PHASE' : 'LITERARY_PLANET_SECURE_TEST_PHASE'] = selected;
+  }
+  target.OnlyTestIdentifiers = [childProtected ? 'PlanetChildProtectedEnvelopeRuntimeTests' : childTransport ? 'PlanetChildDataTransportRuntimeTests/testPrivateTransportPhase' : childData ? 'PlanetChildDataStoreRuntimeTests/testDurableDataPhase' : 'PlanetSecureStoreRuntimeTests/' + (preference ? 'testPreferencePhase' : 'testSecureStoragePhase')];
   target.SkipTestIdentifiers = []; target.ParallelizationEnabled = false;
   return result;
 }
@@ -565,6 +597,9 @@ export async function runNativeInstallRuntime(options = {}) {
         await offline.command('install-current-fixture',['install', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true; }
       await installedAndroidBytes(receipt.artifactSha256,'installed-base.apk');
       report.installed = true; record('installed-package-byte-equality', 'PASS');
+      const protectedResult = await offline.command('instrument-child-protected-codec',childProtectedFixtureArguments(runId),60_000);
+      check(protectedEnvelopeFixturePassed(protectedResult,'android'), 'Exact nine-test structural envelope fixture did not pass.');
+      report.checks.push({id:'child-protected-codec',status:'PASS',backend:'synthetic-boundary',scope:'synthetic-structural-only',tests:9});
       if (previousAssessment?.ready) {
         await androidPreference('read','preserved-after-previous-update');
         report.previousArtifact.runtimeTested = true;
@@ -627,24 +662,25 @@ export async function runNativeInstallRuntime(options = {}) {
         const value = bindXctestrun(xctestrun, { templateDir: path.dirname(path.resolve(root, receipt.xctestrunPath)), binary, runId:fixtureId, phase });
         const own = path.join(output, 'secure-' + phase.replace(':', '-') + '-' + report.commands.length + '.xctestrun');
         await writeFile(own, json(value), { flag: 'wx' }); await command('/usr/bin/plutil', ['-convert', 'xml1', own],30_000,cleanup);
-        const preference = phase.startsWith('preferences:'), childData = phase.startsWith('child-data:'), childTransport = phase.startsWith('child-transport:');
-        const identifier = childTransport ? 'PlanetChildDataTransportRuntimeTests/testPrivateTransportPhase' : childData ? 'PlanetChildDataStoreRuntimeTests/testDurableDataPhase' : 'PlanetSecureStoreRuntimeTests/' + (preference ? 'testPreferencePhase' : 'testSecureStoragePhase');
+        const preference = phase.startsWith('preferences:'), childData = phase.startsWith('child-data:'), childTransport = phase.startsWith('child-transport:'), childProtected = phase.startsWith('child-protected:');
+        const identifier = value.TestConfigurations[0].TestTargets[0].OnlyTestIdentifiers[0];
         const result = await command('/usr/bin/xcodebuild', ['test-without-building', '-xctestrun', own,
           '-destination', 'platform=iOS Simulator,id=' + id, '-only-testing:AppSecureStorageTests/' + identifier,
           '-parallel-testing-enabled', 'NO', '-maximum-concurrent-test-simulator-destinations', '1'], 60_000,cleanup);
-        check(xctestPassed(result), 'Synthetic Keychain XCTest did not pass: ' + phase);
+        check(childProtected ? protectedEnvelopeFixturePassed(result,'ios') : xctestPassed(result), 'Synthetic XCTest did not pass: ' + phase);
         const installedPath = (await sim(['get_app_container', id, receipt.applicationId, 'app'])).trim();
         check(path.isAbsolute(installedPath) && installedPath.split(path.sep).includes(id) && await appDigest(installedPath) === receipt.artifactSha256,
           'XCTest changed the exact installed application.');
-        report.checks.push({ id: (childTransport ? 'child-transport-' + label : childData ? 'child-data-' + label : preference ? 'preferences-' + label.replace('preferences:', '') : 'keychain-' + label), status: 'PASS',
-          ...(childData || childTransport ? {scope:'synthetic-partition-only',fixtureRunId:fixtureId} : {}),
-          backend: phase === 'preferences:plugin-failure' || phase === 'preferences:timeout' ? 'synthetic-boundary' : 'native-os', xctestrunSha256: sha(await readFile(own)) });
+        report.checks.push({ id: (childProtected ? 'child-protected-' + label : childTransport ? 'child-transport-' + label : childData ? 'child-data-' + label : preference ? 'preferences-' + label.replace('preferences:', '') : 'keychain-' + label), status: 'PASS',
+          ...(childProtected ? {scope:'synthetic-structural-only',tests:9} : childData || childTransport ? {scope:'synthetic-partition-only',fixtureRunId:fixtureId} : {}),
+          backend: childProtected || phase === 'preferences:plugin-failure' || phase === 'preferences:timeout' ? 'synthetic-boundary' : 'native-os', xctestrunSha256: sha(await readFile(own)) });
       };
       iosChildInstrument = async (phase,fixtureId = primaryChildId,label = phase,cleanup = false) => {
         if (phase === 'write') childFixtureIds.add(fixtureId);
         await instrument('child-data:' + phase,label,fixtureId,cleanup);
         if (phase === 'clear') childFixtureIds.delete(fixtureId);
       };
+      await instrument('child-protected:codec','codec');
       await instrument('write');
       await instrument('preferences:write');
       await iosChildInstrument('write');

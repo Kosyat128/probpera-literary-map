@@ -1,6 +1,6 @@
 import {describe,expect,it} from 'vitest';
 import path from 'node:path';
-import {bindXctestrun,childDataScenarioRunId,childDataFixtureArguments,childTransportFixtureArguments,createAndroidOfflineGate} from './native-install-runtime.mjs';
+import {bindXctestrun,childDataScenarioRunId,childDataFixtureArguments,childTransportFixtureArguments,childProtectedFixtureArguments,protectedEnvelopeFixturePassed,nativeProtectedFixtureSourcePaths,verifyNativeProtectedFixtureSources,createAndroidOfflineGate} from './native-install-runtime.mjs';
 
 const runId='a'.repeat(32), binary=path.resolve('/synthetic/build/App.app'), templateDir=path.dirname(binary);
 const phases=['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'];
@@ -56,5 +56,66 @@ describe('owned native child-data fixture dispatch',()=>{
     }
     expect(()=>childDataScenarioRunId(runId,'../other')).toThrow();
     for(const phase of ['child-data:remove','child-data:read\n','child-data:'])expect(()=>bindXctestrun(input(),{binary,templateDir,runId,phase})).toThrow();
+  });
+});
+
+describe('owned native structural envelope fixture dispatch',()=>{
+  it('requires both exact structural fixture sources in the binary source fingerprint',()=>{
+    expect(nativeProtectedFixtureSourcePaths).toEqual([
+      'apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java',
+      'apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift',
+    ]);
+    expect(Object.isFrozen(nativeProtectedFixtureSourcePaths)).toBe(true);
+    const rows=nativeProtectedFixtureSourcePaths.map(path=>({path,sha256:'a'.repeat(64)}));
+    expect(verifyNativeProtectedFixtureSources(rows)).toBe(true);
+    for(const index of [0,1])expect(()=>verifyNativeProtectedFixtureSources(rows.filter((_,selected)=>selected!==index))).toThrow();
+    expect(()=>verifyNativeProtectedFixtureSources([{...rows[0],sha256:'invalid'},rows[1]])).toThrow();
+    expect(()=>verifyNativeProtectedFixtureSources(null)).toThrow();
+  });
+  it('selects the exact Android structural class and phase while denying cross-fixture commands before ADB',async()=>{
+    const args=childProtectedFixtureArguments(runId);
+    expect(args).toEqual(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest',
+      '-e','literaryRunId',runId,'-e','literaryProtectedEnvelopePhase','codec','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+    expect(Object.isFrozen(args)).toBe(true);
+    const calls=[],gate=createAndroidOfflineGate(async(command)=>{calls.push(command);if(command[1]==='settings')return command[4]==='airplane_mode_on'?'1\n':'0\n';if(command.join(',')==='shell,cmd,wifi,status')return 'Wifi is disabled\nWifi scanning is only available when wifi is enabled\n';return 'synthetic';},()=>{});
+    await gate.command('structural-envelope',args,60000);expect(calls).toHaveLength(4);expect(calls[3]).toEqual(args);
+    calls.length=0;
+    for(const [index,value]of [[7,'ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest'],[12,'literaryChildDataPhase'],[13,'clear'],[13,'codec; shutdown'],[10,'A'.repeat(32)],[14,'unrelated.test/runner']]){
+      const denied=[...args];denied[index]=value;await expect(gate.command('structural-denied',denied,60000)).rejects.toThrow();expect(calls).toEqual([]);
+    }
+    for(const id of ['','A'.repeat(32),'a'.repeat(31),runId+';'])expect(()=>childProtectedFixtureArguments(id)).toThrow();
+  });
+  it('selects the whole nine-test XCTest structural class and clears unrelated fixture state without mutating its template',()=>{
+    const original=input(),before=JSON.stringify(original),target=bindXctestrun(original,{binary,templateDir,runId,phase:'child-protected:codec'}).TestConfigurations[0].TestTargets[0];
+    expect(target.OnlyTestIdentifiers).toEqual(['PlanetChildProtectedEnvelopeRuntimeTests']);
+    expect(target.EnvironmentVariables).toEqual({DYLD_FRAMEWORK_PATH:templateDir+'/Frameworks'});
+    expect(target.SkipTestIdentifiers).toEqual([]);expect(target.ParallelizationEnabled).toBe(false);expect(JSON.stringify(original)).toBe(before);
+    for(const phase of ['child-protected:clear','child-protected:wire','child-protected:codec\n','child-protected:'])expect(()=>bindXctestrun(input(),{binary,templateDir,runId,phase})).toThrow();
+    expect(()=>bindXctestrun(input(),{binary,templateDir,runId:'A'.repeat(32),phase:'child-protected:codec'})).toThrow();
+  });
+  it('accepts exactly nine successful structural tests and refuses short, duplicate, skipped, failed or mixed summaries',()=>{
+    const android='OK (9 tests)\n',ios='Executed 9 tests, with 0 failures (0 unexpected)\n** TEST EXECUTE SUCCEEDED **\n';
+    expect(protectedEnvelopeFixturePassed(android,'android')).toBe(true);expect(protectedEnvelopeFixturePassed(ios,'ios')).toBe(true);
+    expect(protectedEnvelopeFixturePassed(android+'INSTRUMENTATION_CODE: -1\n','android')).toBe(true);
+    for(const count of [0,1,8,10]){
+      expect(protectedEnvelopeFixturePassed(`OK (${count} tests)\n`,'android')).toBe(false);
+      expect(protectedEnvelopeFixturePassed(`Executed ${count} tests, with 0 failures\n** TEST EXECUTE SUCCEEDED **\n`,'ios')).toBe(false);
+    }
+    for(const suffix of ['INSTRUMENTATION_FAILED','INSTRUMENTATION_STATUS_CODE: -1','INSTRUMENTATION_STATUS_CODE: -2','INSTRUMENTATION_STATUS_CODE: -3','INSTRUMENTATION_STATUS_CODE: -4','FAILURES!!!','Process crashed','skipped','OK (9 tests)\n','OK (8 tests)\n'])expect(protectedEnvelopeFixturePassed(android+suffix,'android')).toBe(false);
+    for(const suffix of ['Test Case example skipped','TEST EXECUTE FAILED','error: unavailable','Executed 9 tests, with 1 failures','Executed 8 tests, with 0 failures'])expect(protectedEnvelopeFixturePassed(ios+suffix,'ios')).toBe(false);
+    expect(protectedEnvelopeFixturePassed('Executed 9 tests, with 0 failures','ios')).toBe(false);
+    expect(protectedEnvelopeFixturePassed(android,'unknown')).toBe(false);expect(protectedEnvelopeFixturePassed(null,'android')).toBe(false);
+  });
+  it('restores exact secure, preference, data and transport selections after a structural class selection',()=>{
+    const structural=bindXctestrun(input(),{binary,templateDir,runId,phase:'child-protected:codec'});
+    for(const [phase,identifier,key,value]of [
+      ['write','PlanetSecureStoreRuntimeTests/testSecureStoragePhase','LITERARY_PLANET_SECURE_TEST_PHASE','write'],
+      ['preferences:timeout','PlanetSecureStoreRuntimeTests/testPreferencePhase','LITERARY_PLANET_PREFERENCE_TEST_PHASE','timeout'],
+      ['child-data:read','PlanetChildDataStoreRuntimeTests/testDurableDataPhase','LITERARY_PLANET_CHILD_DATA_TEST_PHASE','read'],
+      ['child-transport:wire','PlanetChildDataTransportRuntimeTests/testPrivateTransportPhase','LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE','wire']]){
+      const target=bindXctestrun(structural,{binary,templateDir,runId,phase}).TestConfigurations[0].TestTargets[0];
+      expect(target.OnlyTestIdentifiers).toEqual([identifier]);expect(target.EnvironmentVariables[key]).toBe(value);
+    }
+    expect(structural.TestConfigurations[0].TestTargets[0].OnlyTestIdentifiers).toEqual(['PlanetChildProtectedEnvelopeRuntimeTests']);
   });
 });

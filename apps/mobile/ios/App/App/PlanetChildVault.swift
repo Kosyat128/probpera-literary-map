@@ -17,6 +17,289 @@ fileprivate protocol PlanetChildCheckpoint: AnyObject {
  * App/content rollback stays unadmitted without the separate genuine checkpoint.
  * No Capacitor registration, Auth-key extension, enrollment, clear or recovery. */
 final class PlanetChildVault {
+    /** Pure structural codec, unused by every candidate/protected IO path.
+     * An action enum, digest, timestamp argument or decoded envelope establishes
+     * no native permission, checkpoint, trusted time, PIN proof or admission. */
+    enum PinLifecycleAction: String { case enroll, replace, recover }
+    final class ProtectedEnvelope {
+        private static let maximumEpoch: UInt64 = 8640000000000000
+        private final class Storage {
+            private var bytes: [UInt8]
+            init(_ input: Data) { bytes = Array(input) } // Own even bytesNoCopy input.
+            var count: Int { bytes.count }
+            func byte(_ index: Int) -> UInt8 { bytes[index] }
+            func copy(_ range: Range<Int>? = nil) -> Data { range.map { Data(bytes[$0]) } ?? Data(bytes) }
+            func wipe() { bytes.withUnsafeMutableBytes { _ = $0.initializeMemory(as: UInt8.self, repeating: 0) } }
+            deinit { wipe() }
+        }
+        private struct Pin {
+            var revision: UInt64 = 0, iterations: UInt64 = 0, count: UInt64 = 0
+            var blockedUntilMs: UInt64 = 0, lastObservedMs: UInt64 = 0
+            var credential: Range<Int> = 0..<0, salt: Range<Int> = 0..<0
+            var pending = false
+        }
+        private let lock = NSLock()
+        private let storage: Storage
+        private var disposed = false
+        private let revision: UInt64, pin: Pin?, logicalAnchorMs: UInt64
+        private let revisionEnd: Int, pinStart: Int, pinEnd: Int
+        private let policyVersion: String, policyChecksum: String, maxIterations: UInt64
+        let checksum: String // Identity only, never checkpoint or authorization.
+        private init(_ storage: Storage, revision: UInt64, pin: Pin?, logical: UInt64,
+                     revisionEnd: Int, pinStart: Int, pinEnd: Int, version: String, policy: String,
+                     maximum: UInt64, checksum: String) {
+            self.storage = storage; self.revision = revision; self.pin = pin; logicalAnchorMs = logical
+            self.revisionEnd = revisionEnd; self.pinStart = pinStart; self.pinEnd = pinEnd
+            policyVersion = version; policyChecksum = policy; maxIterations = maximum; self.checksum = checksum
+        }
+        private static func require(_ valid: Bool) throws { if !valid { throw Failure.unavailable } }
+        /** Ordered schema grammar checks the exact TS JSON.stringify bytes.
+         * No JSONSerialization, Unicode repair or platform key reserialization.
+         * Missing/corrupt data never becomes an unenrolled seed. */
+        static func decode(_ input: Data, policyVersion version: String, policyChecksum policy: String,
+                           maxIterations maximum: UInt64) throws -> ProtectedEnvelope {
+            try require(!input.isEmpty && input.count <= PlanetChildVault.maxBytes && identifier(version)
+                        && hash(policy) && maximum >= 600000 && maximum <= 0xffffffff)
+            let owned = Storage(input), p = Cursor(owned); var accepted = false
+            defer { if !accepted { owned.wipe() } }
+            try p.field("schemaVersion", first: true); _ = try p.number(1, 1)
+            try p.field("revision"); let revision = try p.number(1, PlanetChildVault.maximumSafe), revisionEnd = p.index
+            try p.field("mode"); let mode = try p.asciiString(); try require(mode == "adult" || mode == "child")
+            try p.field("selectionRevision"); _ = try p.number(1, PlanetChildVault.maximumSafe)
+            try p.field("profileRevision"); _ = try p.number(1, PlanetChildVault.maximumSafe)
+            try p.field("policyChecksum"); try require(p.asciiString() == policy)
+            try p.field("registryChecksum"); let registryChecksum = try p.asciiString(); try require(hash(registryChecksum))
+            try p.field("registry"); let registryStart = p.index
+            let active = try registry(p, version: version), registryEnd = p.index
+            var registryBytes = owned.copy(registryStart..<registryEnd)
+            defer { registryBytes.resetBytes(in: 0..<registryBytes.count) }
+            try require(PlanetChildVault.digest(registryBytes) == registryChecksum)
+            try p.field("pin"); let pinStart = p.index
+            let pin: Pin?
+            if p.take("null") { pin = nil } else { pin = try readPin(p, version: version, maximum: maximum) }
+            let pinEnd = p.index
+            try p.field("clock"); let logical = try clock(p)
+            try p.token("}")
+            try require(p.index == owned.count && (pin != nil || mode == "adult")
+                        && (mode != "child" || active != nil) && (pin == nil || pin!.lastObservedMs >= logical))
+            var fullBytes = owned.copy(); defer { fullBytes.resetBytes(in: 0..<fullBytes.count) }
+            let result = ProtectedEnvelope(owned, revision: revision, pin: pin, logical: logical,
+                revisionEnd: revisionEnd, pinStart: pinStart, pinEnd: pinEnd, version: version, policy: policy,
+                maximum: maximum, checksum: PlanetChildVault.digest(fullBytes))
+            accepted = true; return result
+        }
+        func isUnenrolled() throws -> Bool { lock.lock(); defer { lock.unlock() }; try Self.require(!disposed); return pin == nil }
+        func copyCanonicalBytes() throws -> Data { lock.lock(); defer { lock.unlock() }; try Self.require(!disposed); return storage.copy() }
+        func close() { lock.lock(); defer { lock.unlock() }; disposed = true; storage.wipe() }
+        deinit { close() }
+        /** PIN-only structural comparison. A future owned provider separately
+         * authenticates permission/time and calibrated KDF policy under its lock.
+         * Neither validation nor this sampledLogicalMs parameter creates them. */
+        static func validateTransition(_ before: ProtectedEnvelope, _ after: ProtectedEnvelope,
+                                       action: PinLifecycleAction, sampledLogicalMs: UInt64) throws {
+            var oldBytes = try before.copyCanonicalBytes(); defer { oldBytes.resetBytes(in: 0..<oldBytes.count) }
+            var nextBytes = try after.copyCanonicalBytes(); defer { nextBytes.resetBytes(in: 0..<nextBytes.count) }
+            try require(sampledLogicalMs <= PlanetChildVault.maximumSafe && before.policyVersion == after.policyVersion
+                && before.policyChecksum == after.policyChecksum && before.maxIterations == after.maxIterations
+                && before.revision < PlanetChildVault.maximumSafe && after.revision == before.revision + 1)
+            guard let nextPin = after.pin else { throw Failure.unavailable }
+            try require(action == .enroll ? before.pin == nil : before.pin != nil)
+            if let oldPin = before.pin {
+                try require(oldPin.revision < PlanetChildVault.maximumSafe && nextPin.revision == oldPin.revision + 1
+                    && !equalRange(oldBytes, oldPin.credential, nextBytes, nextPin.credential)
+                    && !equalRange(oldBytes, oldPin.salt, nextBytes, nextPin.salt)
+                    && sampledLogicalMs >= oldPin.lastObservedMs)
+            } else { try require(nextPin.revision == 1) }
+            try require(nextPin.count == 0 && nextPin.blockedUntilMs == 0 && !nextPin.pending
+                && nextPin.lastObservedMs == sampledLogicalMs && sampledLogicalMs >= before.logicalAnchorMs
+                && equalRange(oldBytes, before.revisionEnd..<before.pinStart, nextBytes, after.revisionEnd..<after.pinStart)
+                && equalRange(oldBytes, before.pinEnd..<oldBytes.count, nextBytes, after.pinEnd..<nextBytes.count))
+        }
+        private static func equalRange(_ left: Data, _ a: Range<Int>, _ right: Data, _ b: Range<Int>) -> Bool {
+            if a.count != b.count { return false }; var different: UInt8 = 0
+            for offset in 0..<a.count { different |= left[a.lowerBound + offset] ^ right[b.lowerBound + offset] }; return different == 0
+        }
+        private static func identifier(_ value: String) -> Bool {
+            let bytes = Array(value.utf8)
+            let alphanumeric: (UInt8) -> Bool = { $0 >= 48 && $0 <= 57 || $0 >= 65 && $0 <= 90 || $0 >= 97 && $0 <= 122 }
+            return !bytes.isEmpty && bytes.count <= 96 && alphanumeric(bytes[0])
+                && bytes.allSatisfy { alphanumeric($0) || $0 == 46 || $0 == 95 || $0 == 45 }
+        }
+        private static func hash(_ value: String) -> Bool {
+            let bytes = Array(value.utf8); return bytes.count == 64 && bytes.allSatisfy { $0 >= 48 && $0 <= 57 || $0 >= 97 && $0 <= 102 }
+        }
+        private static func registry(_ p: Cursor, version: String) throws -> String? {
+            try p.field("schemaVersion", first: true); _ = try p.number(1, 1)
+            try p.field("policyVersion"); try require(p.asciiString() == version)
+            try p.field("activeProfileId"); let active = try p.nullableString(); try require(active == nil || identifier(active!))
+            try p.field("profiles"); try p.token("["); var ids = Set<String>()
+            if !p.take("]") { repeat { try require(ids.count < 4); let id = try profile(p); try require(ids.insert(id).inserted) } while p.take(","); try p.token("]") }
+            try p.token("}"); try require(active == nil || ids.contains(active!)); return active
+        }
+        private static func profile(_ p: Cursor) throws -> String {
+            try p.field("id", first: true); let id = try p.asciiString(); try require(identifier(id))
+            try p.field("label"); var label = try p.stringUnits()
+            defer { label.withUnsafeMutableBytes { _ = $0.initializeMemory(as: UInt8.self, repeating: 0) } }
+            try require(!label.isEmpty && label.count <= 80 && !ecmaSpace(label[0]) && !ecmaSpace(label[label.count - 1])
+                        && label.allSatisfy { $0 > 31 && $0 != 127 })
+            try p.field("exactAge"); let age = try p.number(3, 17)
+            try p.field("ageBand"); let band = try p.asciiString()
+            try require(band == (age <= 5 ? "3-5" : age <= 8 ? "6-8" : age <= 11 ? "9-11" : age <= 14 ? "12-14" : "15-17"))
+            try p.field("locale"); let locale = try p.asciiString(); try require(locale == "ru" || locale == "en")
+            try p.field("ageConfirmedAt"); try date(p.asciiString())
+            try p.field("readingLevel"); let level = try p.nullableString(); try require(level == nil || ["plain", "developing", "fluent"].contains(level!))
+            try p.field("allowedTopics"); if !p.take("null") { try topics(p) }
+            try p.field("blockedTopics"); try topics(p)
+            try p.field("soundEnabled"); _ = try p.bool()
+            try p.field("motion"); let motion = try p.asciiString(); try require(motion == "calm" || motion == "system")
+            try p.field("narrationEnabled"); _ = try p.bool(); try p.token("}"); return id
+        }
+        private static func ecmaSpace(_ value: UInt16) -> Bool {
+            return [9, 10, 11, 12, 13, 32, 160, 0x1680, 0x2028, 0x2029, 0x202f, 0x205f, 0x3000, 0xfeff].contains(value)
+                || value >= 0x2000 && value <= 0x200a
+        }
+        private static func date(_ value: String) throws {
+            let bytes = Array(value.utf8), punctuation: [Int: UInt8] = [4:45, 7:45, 10:84, 13:58, 16:58, 19:46, 23:90]
+            try require(bytes.count == 24 && bytes.enumerated().allSatisfy { offset, byte in
+                punctuation[offset].map { $0 == byte } ?? (byte >= 48 && byte <= 57) })
+            let decimal: (Range<Int>) -> Int = { range in range.reduce(0) { $0 * 10 + Int(bytes[$1] - 48) } }
+            let year = decimal(0..<4), month = decimal(5..<7), day = decimal(8..<10)
+            try require(month >= 1 && month <= 12); var days = [31,28,31,30,31,30,31,31,30,31,30,31]
+            if year % 4 == 0 && (year % 100 != 0 || year % 400 == 0) { days[1] = 29 }
+            try require(day >= 1 && day <= days[month - 1] && decimal(11..<13) <= 23 && decimal(14..<16) <= 59 && decimal(17..<19) <= 59)
+            // Four-digit proleptic Gregorian years, including year0000, all
+            // precede TS's maximum epoch bound. No Foundation Date rollover.
+        }
+        private static func topics(_ p: Cursor) throws {
+            try p.token("["); var values = Set<String>()
+            if !p.take("]") { repeat {
+                try require(values.count < 64); let value = try p.asciiString(), bytes = Array(value.utf8)
+                try require(!bytes.isEmpty && bytes.count <= 64 && (bytes[0] >= 48 && bytes[0] <= 57 || bytes[0] >= 97 && bytes[0] <= 122)
+                    && bytes.allSatisfy { $0 >= 48 && $0 <= 57 || $0 >= 97 && $0 <= 122 || $0 == 46 || $0 == 95 || $0 == 45 }
+                    && values.insert(value).inserted)
+            } while p.take(","); try p.token("]") }
+        }
+        private static func readPin(_ p: Cursor, version: String, maximum: UInt64) throws -> Pin {
+            var pin = Pin(); try p.field("schemaVersion", first: true); _ = try p.number(1, 1)
+            try p.field("policyVersion"); try require(p.asciiString() == version)
+            try p.field("revision"); pin.revision = try p.number(1, PlanetChildVault.maximumSafe)
+            try p.field("credentialId"); pin.credential = try p.hashRange()
+            try p.field("verifier"); try p.field("algorithm", first: true); try require(p.asciiString() == "PBKDF2-HMAC-SHA256")
+            try p.field("iterations"); pin.iterations = try p.number(600000, maximum)
+            try p.field("saltHex"); pin.salt = try p.hashRange()
+            try p.field("hashHex"); _ = try p.hashRange(); try p.token("}")
+            try p.field("attempts"); try p.field("count", first: true); pin.count = try p.number(0, PlanetChildVault.maximumSafe)
+            try p.field("blockedUntilMs"); pin.blockedUntilMs = try p.number(0, PlanetChildVault.maximumSafe)
+            try p.field("lastObservedMs"); pin.lastObservedMs = try p.number(0, PlanetChildVault.maximumSafe)
+            try p.field("pendingAttemptId"); if !p.take("null") { _ = try p.hashRange(); pin.pending = true }
+            try p.token("}"); try p.token("}")
+            try require(pin.count == 0 ? pin.blockedUntilMs == 0 && !pin.pending : pin.blockedUntilMs >= pin.lastObservedMs); return pin
+        }
+        private static func clock(_ p: Cursor) throws -> UInt64 {
+            try p.field("schemaVersion", first: true); _ = try p.number(1, 1)
+            try p.field("bootId"); try require(PlanetChildVault.validBoot(p.asciiString()))
+            try p.field("uptimeAnchorMs"); _ = try p.number(0, PlanetChildVault.maximumSafe)
+            try p.field("logicalAnchorMs"); let logical = try p.number(0, PlanetChildVault.maximumSafe)
+            try p.field("epochAnchor"); if !p.take("null") {
+                try p.field("epochAnchorMs", first: true); let epoch = try p.number(0, maximumEpoch)
+                try p.field("validUntilEpochMs"); try require(p.number(0, maximumEpoch) > epoch)
+                try p.field("proofChecksum"); _ = try p.hashRange(); try p.token("}")
+            }; try p.token("}"); return logical
+        }
+        /** Byte offsets are native UTF8 offsets, not Swift Character indexes.
+         * Values retain UTF16 code units so escaped lone surrogates survive
+         * exactly as JS strings; malformed UTF8 never enters a Swift String. */
+        private final class Cursor {
+            private let storage: Storage
+            private(set) var index = 0
+            init(_ storage: Storage) { self.storage = storage }
+            func field(_ name: String, first: Bool = false) throws { try token((first ? "{" : ",") + "\"" + name + "\":") }
+            func token(_ value: String) throws { try ProtectedEnvelope.require(take(value)) }
+            func take(_ value: String) -> Bool {
+                let bytes = Array(value.utf8); if index + bytes.count > storage.count { return false }
+                for offset in bytes.indices { if storage.byte(index + offset) != bytes[offset] { return false } }
+                index += bytes.count; return true
+            }
+            private func byte() throws -> UInt8 { try ProtectedEnvelope.require(index < storage.count); let value = storage.byte(index); index += 1; return value }
+            func number(_ minimum: UInt64, _ maximum: UInt64) throws -> UInt64 {
+                try ProtectedEnvelope.require(index < storage.count && storage.byte(index) >= 48 && storage.byte(index) <= 57); var value: UInt64 = 0
+                if storage.byte(index) == 48 { index += 1 } else {
+                    while index < storage.count && storage.byte(index) >= 48 && storage.byte(index) <= 57 {
+                        let digit = UInt64(storage.byte(index) - 48); index += 1
+                        try ProtectedEnvelope.require(value <= (PlanetChildVault.maximumSafe - digit) / 10); value = value * 10 + digit
+                    }
+                }; try ProtectedEnvelope.require(value >= minimum && value <= maximum); return value
+            }
+            func bool() throws -> Bool { if take("true") { return true }; try token("false"); return false }
+            func nullableString() throws -> String? { if take("null") { return nil }; return try asciiString() }
+            func asciiString() throws -> String {
+                var units = try stringUnits(); defer { units.withUnsafeMutableBytes { _ = $0.initializeMemory(as: UInt8.self, repeating: 0) } }
+                try ProtectedEnvelope.require(units.allSatisfy { $0 < 128 }); return String(bytes: units.map { UInt8($0) }, encoding: .ascii)!
+            }
+            func hashRange() throws -> Range<Int> { let start = index; try ProtectedEnvelope.require(ProtectedEnvelope.hash(asciiString())); return start..<index }
+            func stringUnits() throws -> [UInt16] {
+                let start = index; try token("\""); var units: [UInt16] = [], ended = false, accepted = false
+                defer { if !accepted { units.withUnsafeMutableBytes { _ = $0.initializeMemory(as: UInt8.self, repeating: 0) } } }
+                while index < storage.count {
+                    let next = try byte(); if next == 34 { ended = true; break }; try ProtectedEnvelope.require(next >= 32)
+                    if next == 92 {
+                        let escaped = try byte()
+                        switch escaped {
+                        case 34, 92, 47: units.append(UInt16(escaped))
+                        case 98: units.append(8)
+                        case 102: units.append(12)
+                        case 110: units.append(10)
+                        case 114: units.append(13)
+                        case 116: units.append(9)
+                        case 117:
+                            var unit: UInt16 = 0
+                            for _ in 0..<4 { let digit = try byte(); let value: UInt16
+                                if digit >= 48 && digit <= 57 { value = UInt16(digit - 48) }
+                                else if digit >= 97 && digit <= 102 { value = UInt16(digit - 97 + 10) }
+                                else if digit >= 65 && digit <= 70 { value = UInt16(digit - 65 + 10) }
+                                else { throw Failure.unavailable }; unit = unit * 16 + value
+                            }; units.append(unit)
+                        default: throw Failure.unavailable
+                        }
+                    } else if next < 128 { units.append(UInt16(next)) } else {
+                        let count: Int, minimum: UInt32; var scalar: UInt32
+                        if next >= 0xc2 && next <= 0xdf { count = 1; minimum = 0x80; scalar = UInt32(next & 0x1f) }
+                        else if next >= 0xe0 && next <= 0xef { count = 2; minimum = 0x800; scalar = UInt32(next & 0x0f) }
+                        else if next >= 0xf0 && next <= 0xf4 { count = 3; minimum = 0x10000; scalar = UInt32(next & 0x07) }
+                        else { throw Failure.unavailable }
+                        for _ in 0..<count { let continuation = try byte(); try ProtectedEnvelope.require(continuation >= 0x80 && continuation <= 0xbf); scalar = scalar * 64 + UInt32(continuation & 0x3f) }
+                        try ProtectedEnvelope.require(scalar >= minimum && scalar <= 0x10ffff && !(scalar >= 0xd800 && scalar <= 0xdfff))
+                        if scalar <= 0xffff { units.append(UInt16(scalar)) }
+                        else { let adjusted = scalar - 0x10000; units.append(UInt16(0xd800 + (adjusted >> 10))); units.append(UInt16(0xdc00 + (adjusted & 0x3ff))) }
+                    }; try ProtectedEnvelope.require(units.count <= 96)
+                }
+                try ProtectedEnvelope.require(ended); var quoted = quote(units)
+                defer { quoted.withUnsafeMutableBytes { _ = $0.initializeMemory(as: UInt8.self, repeating: 0) } }
+                try ProtectedEnvelope.require(quoted.count == index - start && quoted.indices.allSatisfy { quoted[$0] == storage.byte(start + $0) })
+                accepted = true; return units
+            }
+            private func quote(_ units: [UInt16]) -> [UInt8] {
+                var result: [UInt8] = [34], at = 0; let hex = Array("0123456789abcdef".utf8)
+                let shortEscapes: [UInt16: UInt8] = [8:98, 9:116, 10:110, 12:102, 13:114]
+                func scalar(_ value: UInt32) {
+                    if value < 0x80 { result.append(UInt8(value)) }
+                    else if value < 0x800 { result.append(UInt8(0xc0 | (value >> 6))); result.append(UInt8(0x80 | (value & 0x3f))) }
+                    else if value < 0x10000 { result.append(UInt8(0xe0 | (value >> 12))); result.append(UInt8(0x80 | ((value >> 6) & 0x3f))); result.append(UInt8(0x80 | (value & 0x3f))) }
+                    else { result.append(UInt8(0xf0 | (value >> 18))); result.append(UInt8(0x80 | ((value >> 12) & 0x3f))); result.append(UInt8(0x80 | ((value >> 6) & 0x3f))); result.append(UInt8(0x80 | (value & 0x3f))) }
+                }
+                while at < units.count {
+                    let value = units[at]; at += 1
+                    if value == 34 || value == 92 { result.append(92); result.append(UInt8(value)) }
+                    else if let short = shortEscapes[value] { result.append(92); result.append(short) }
+                    else if value >= 0xd800 && value <= 0xdbff && at < units.count && units[at] >= 0xdc00 && units[at] <= 0xdfff {
+                        scalar(0x10000 + (UInt32(value - 0xd800) << 10) + UInt32(units[at] - 0xdc00)); at += 1
+                    } else if value < 32 || value >= 0xd800 && value <= 0xdfff {
+                        result += [92,117,hex[Int(value >> 12)],hex[Int((value >> 8) & 15)],hex[Int((value >> 4) & 15)],hex[Int(value & 15)]]
+                    } else { scalar(UInt32(value)) }
+                }; result.append(34); return result
+            }
+        }
+    }
     static let maxBytes = 131072
     private static let maximumSafe: UInt64 = 9007199254740991
     private static let processLock = NSLock()
