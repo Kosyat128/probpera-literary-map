@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-checkpoint-preview-launch",
+  "status": "PASS",
+  "startedAt": "2026-10-03T22:06:03.393Z",
+  "finishedAt": "2026-10-03T22:06:07.126Z",
+  "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+  "reportCommit": "e14d80e54f66d7bdd8136c7f2c0754d7ddb94701",
+  "binding": {
+    "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+    "sourceFingerprint": "e250530f87d194207deed08d8c21b7f8bd9ef1e3f8ee329f1742a39ea7f134cb",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "originalCommands": {
+    "workingDirectory": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+    "pwaPreview": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort --outDir \".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle\"",
+    "previewUrl": "http://127.0.0.1:4173/",
+    "sqlTests": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedger.integration.test.ts",
+    "transportTests": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedgerSupabase.test.ts",
+    "serverTypes": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/typescript/bin/tsc --noEmit --project server/planet/tsconfig.json",
+    "androidPrepare": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" scripts/mobile/prepare-local-release.mjs android",
+    "pwaPrepare": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" scripts/mobile/prepare-local-release.mjs pwa",
+    "qualification": "Build commands executed once on final current source. Focused suites executed separately on their exact changed inputs, not combined/repeated. Preview command supplied for owner use; preview/browser/device scenarios not run."
+  },
+  "originalInstructions": {
+    "result": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-checkpoint-ledger-20261004\\result.json",
+      "sha256": "e9b5079f71d9ad8318e5f25ab66f915aceaddc05ecd376a5e92487c244a54428",
+      "bytes": 30029
+    },
+    "runCommands": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-checkpoint-ledger-20261004\\RUN_COMMANDS.txt",
+      "sha256": "0451f8f111bade012846f166c6c10d61912552ab9ceee22a783ded716f74f7b3",
+      "bytes": 1603
+    },
+    "qualification": "Committed original unrun preview instructions remain byte-exact; this receipt supersedes only their preview launch configuration and URL."
+  },
+  "correctedCommands": {
+    "workingDirectory": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+    "pwaPreview": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vite/bin/vite.js preview --config vite.pwa.config.ts --configLoader runner --host 127.0.0.1 --port 4173 --strictPort --outDir \".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle\"",
+    "previewUrl": "http://127.0.0.1:4173/planet/",
+    "sqlTests": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedger.integration.test.ts",
+    "transportTests": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedgerSupabase.test.ts",
+    "serverTypes": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/typescript/bin/tsc --noEmit --project server/planet/tsconfig.json",
+    "androidPrepare": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" scripts/mobile/prepare-local-release.mjs android",
+    "pwaPrepare": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" scripts/mobile/prepare-local-release.mjs pwa",
+    "qualification": "Corrected command is checked only by local HTML/JS/CSS/SW response hashes; no browser/PWA installation/offline/update acceptance."
+  },
+  "configuration": {
+    "path": "vite.pwa.config.ts",
+    "sha256": "531880a0187da3ed87e65465dc139d8839bc8cafccd398c8bf541bd76b772860",
+    "base": "/planet/",
+    "envDir": false,
+    "envPrefix": [],
+    "configLoader": "runner"
+  },
+  "pwaArtifact": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520\\pwa-bundle\\artifact.json",
+    "sha256": "6cac74f2d91d879e772629d4dc3ce74d9c525871d93e1d3c85248cbb84783576",
+    "bytes": 500182
+  },
+  "httpChecks": [
+    {
+      "path": "index.html",
+      "url": "http://127.0.0.1:4173/planet/",
+      "status": 200,
+      "bytes": 4542,
+      "sha256": "1c9f40511a969d771789f1be02029638a8fc945a987cbea7cebc3c2575af248d",
+      "expectedSha256": "1c9f40511a969d771789f1be02029638a8fc945a987cbea7cebc3c2575af248d",
+      "pass": true
+    },
+    {
+      "path": "assets/index-LiEPD0OW.js",
+      "url": "http://127.0.0.1:4173/planet/assets/index-LiEPD0OW.js",
+      "status": 200,
+      "bytes": 1609540,
+      "sha256": "7749505030088d682e2c39aae65c5c6e46173ff10d1839d78f95c32d7cad945b",
+      "expectedSha256": "7749505030088d682e2c39aae65c5c6e46173ff10d1839d78f95c32d7cad945b",
+      "pass": true
+    },
+    {
+      "path": "assets/index-C2-qfnGG.css",
+      "url": "http://127.0.0.1:4173/planet/assets/index-C2-qfnGG.css",
+      "status": 200,
+      "bytes": 748658,
+      "sha256": "608559f3b1a5aa3e1e2254b211897526e66a1e6d1f76e8134e920b28d51fc796",
+      "expectedSha256": "608559f3b1a5aa3e1e2254b211897526e66a1e6d1f76e8134e920b28d51fc796",
+      "pass": true
+    },
+    {
+      "path": "sw.js",
+      "url": "http://127.0.0.1:4173/planet/sw.js",
+      "status": 200,
+      "bytes": 305051,
+      "sha256": "af726a219bd57af88482b98b2da80aaafe5ec0d876d4afbb796836c8f969450a",
+      "expectedSha256": "af726a219bd57af88482b98b2da80aaafe5ec0d876d4afbb796836c8f969450a",
+      "pass": true
+    }
+  ],
+  "process": {
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "node_modules/vite/bin/vite.js",
+      "preview",
+      "--config",
+      "vite.pwa.config.ts",
+      "--configLoader",
+      "runner",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "4173",
+      "--strictPort",
+      "--outDir",
+      ".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle"
+    ],
+    "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+    "startedAt": "2026-10-03T22:06:05.161Z",
+    "finishedAt": "2026-10-03T22:06:06.059Z",
+    "exitCode": 1,
+    "signal": null,
+    "spawnError": null,
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\preview-launch-a1\\stdout.txt",
+      "sha256": "a66f4021b4e2d2ff5e5a92163df013e9b7975a95873c6accde167bc574b2b2f0",
+      "bytes": 46
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\preview-launch-a1\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "cleanup": {
+      "ownedPid": 33112,
+      "closed": true,
+      "onlyOwnedProcess": true,
+      "command": [
+        "taskkill.exe",
+        "/PID",
+        "33112",
+        "/T",
+        "/F"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\preview-launch-a1\\cleanup.stdout.txt",
+        "sha256": "d83d06986e50bc4d1eee68bc3fbd20812e86dfa01c7dbc938007d20f5e3262f2",
+        "bytes": 332
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\preview-launch-a1\\cleanup.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  },
+  "startupAndRequestsBudgetMs": 20000,
+  "cleanupBudgetMs": 5000,
+  "sourceUnchanged": true,
+  "writes": "Owned B evidence only; Vite runner config loader avoids checkout .vite-temp output.",
+  "browserAcceptance": "NOT_RUN",
+  "installationOfflineUpdate": "NOT_RUN",
+  "serviceWorkerExecution": "NOT_RUN",
+  "deviceRuntime": "NOT_RUN",
+  "remoteRequests": 0,
+  "releaseReady": false,
+  "errorCode": null
+}

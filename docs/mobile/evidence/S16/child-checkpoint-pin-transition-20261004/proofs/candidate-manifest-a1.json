@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "state": "prepared_unrun",
+  "createdAt": "2026-10-03T22:02:27.7427142Z",
+  "baseSource": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+  "sourceFingerprint": "e250530f87d194207deed08d8c21b7f8bd9ef1e3f8ee329f1742a39ea7f134cb",
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "projectModifiedByThisAgent": false,
+  "checksRun": false,
+  "focusedCases": 56,
+  "files": [
+    {
+      "sourcePath": "server/planet/childCheckpointPinTransition.ts",
+      "before": {
+        "exists": false
+      },
+      "after": {
+        "candidate": "childCheckpointPinTransition.ts",
+        "sha256": "4a455f0aa993978db3b82b975aab6daa420b7867b75ea369ffaa4fbba342f5a7",
+        "bytes": 8838,
+        "lines": 114,
+        "CRLF": 0,
+        "LFOnly": 114,
+        "trailingLF": true
+      }
+    },
+    {
+      "sourcePath": "server/planet/childCheckpointPinTransition.test.ts",
+      "before": {
+        "exists": false
+      },
+      "after": {
+        "candidate": "childCheckpointPinTransition.test.ts",
+        "sha256": "808e368f0c20bd196de317b24d84251b2baacb0a1249f4071d94b83f6a2302a6",
+        "bytes": 16774,
+        "lines": 202,
+        "CRLF": 0,
+        "LFOnly": 202,
+        "trailingLF": true
+      }
+    }
+  ],
+  "contractAndCodecInputs": [
+    {
+      "path": "src/child/childProtectedState.ts",
+      "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5",
+      "bytes": 29867,
+      "lines": 383,
+      "CRLF": 0,
+      "LFOnly": 383,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/childPackage.ts",
+      "sha256": "e7ebba5afcf9bc1d7b6c6fc545f5ad47518d5b7cfc24482b4d4f8b8c7c3c2326",
+      "bytes": 14884,
+      "lines": 198,
+      "CRLF": 0,
+      "LFOnly": 198,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148",
+      "bytes": 8046,
+      "lines": 143,
+      "CRLF": 0,
+      "LFOnly": 143,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554",
+      "bytes": 13533,
+      "lines": 210,
+      "CRLF": 0,
+      "LFOnly": 210,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/childDataNamespace.ts",
+      "sha256": "2a0b9497bc77f8fd9cf078ce2e3b91cff1ac16c842dd38df28e59d236be1c97a",
+      "bytes": 4771,
+      "lines": 80,
+      "CRLF": 0,
+      "LFOnly": 80,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/childStartup.ts",
+      "sha256": "b4a14185df88814b675b218dc4774e9be35356d5cdb5bc7eba02e95a11374f76",
+      "bytes": 17419,
+      "lines": 243,
+      "CRLF": 0,
+      "LFOnly": 243,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/parentPinEnrollment.ts",
+      "sha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991",
+      "bytes": 29021,
+      "lines": 378,
+      "CRLF": 0,
+      "LFOnly": 378,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17",
+      "bytes": 12705,
+      "lines": 203,
+      "CRLF": 0,
+      "LFOnly": 203,
+      "trailingLF": true
+    },
+    {
+      "path": "src/child/parentGate.ts",
+      "sha256": "8bca38c2cd344a27dca505ceca96cd34d14a1f7c62caa05b073d6555aad1b690",
+      "bytes": 16365,
+      "lines": 277,
+      "CRLF": 0,
+      "LFOnly": 277,
+      "trailingLF": true
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+      "bytes": 202069,
+      "lines": 2194,
+      "CRLF": 0,
+      "LFOnly": 2194,
+      "trailingLF": true
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+      "bytes": 227573,
+      "lines": 3316,
+      "CRLF": 0,
+      "LFOnly": 3316,
+      "trailingLF": true
+    },
+    {
+      "path": "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
+      "sha256": "2d5efd71dc6afcfc307c20ebf1052a6fd48a462573c1863d484e13177061a06a",
+      "bytes": 31738,
+      "lines": 433,
+      "CRLF": 0,
+      "LFOnly": 433,
+      "trailingLF": true
+    },
+    {
+      "path": "server/planet/childCheckpointLedgerSupabase.ts",
+      "sha256": "c14da3bfbdbd58abf6b024a3f73b7daa192189da071325ebb747922daa8879e5",
+      "bytes": 16332,
+      "lines": 206,
+      "CRLF": 0,
+      "LFOnly": 206,
+      "trailingLF": true
+    },
+    {
+      "path": "server/planet/tsconfig.json",
+      "sha256": "32b506ef684ed09d50d7f9f1fbc26507e5178babe1bcd439a68d291a373639d5",
+      "bytes": 340,
+      "lines": 15,
+      "CRLF": 0,
+      "LFOnly": 15,
+      "trailingLF": true
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8",
+      "bytes": 17160,
+      "lines": 206,
+      "CRLF": 204,
+      "LFOnly": 2,
+      "trailingLF": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "bytes": 454352,
+      "lines": 12629,
+      "CRLF": 12629,
+      "LFOnly": 0,
+      "trailingLF": true
+    }
+  ],
+  "existingSourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\source-checkpoint.json",
+    "sha256": "4aa8d88ec02e94f79ffde70f34535fb22aba8a6f8b08f2fa58de36fb5c51595d"
+  },
+  "retainedProofs": {
+    "scope": {
+      "native": 8,
+      "sql": 14,
+      "transport": 41
+    },
+    "references": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a2\\checks.json",
+        "sha256": "51d277982cbb24b96e5546a8b6c69f1fb2e3a944a23d9246363773767a95444b",
+        "bytes": 2126
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\sql-a4\\checks.json",
+        "sha256": "93181d10bde7c1765785dd9e19f861f2c2ff0fc298aeed570d7f4ba563979256",
+        "bytes": 1712
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\native-result.json",
+        "sha256": "43ac29817ea6550ecdb98ab2dfc11cb46dad776199505f691154f54001360457",
+        "bytes": 1500
+      }
+    ],
+    "qualification": "These 63 cases were previously executed on their own exact input scopes at source7472; unchanged scopes are retained, not repeated or claimed to test this unrun candidate."
+  },
+  "api": {
+    "name": "validateChildCheckpointPinTransition",
+    "requestFields": [
+      "action",
+      "capturedLogicalMs",
+      "expectedRevision",
+      "nextRevision",
+      "expectedRecordSha256",
+      "nextRecordSha256",
+      "expectedBytes",
+      "nextBytes"
+    ],
+    "policyFields": [
+      "version",
+      "checksum",
+      "maxPinIterations",
+      "iterations"
+    ],
+    "output": "Null refusal or detached frozen exact primitive comparison metadata only.",
+    "canonicalSemantics": "Existing full-record canonical encoder/decoders plus native PIN-only validateTransition rules; only full root revision and PIN segment change.",
+    "timeDomain": "capturedLogicalMs is comparison-only native-capture input, not server/epoch time, a new deadline or trusted-clock admission."
+  },
+  "boundaries": [
+    "Pure private backend validator only, no Auth/network/RPC or SQL changes.",
+    "No recovery/issuer permission, signed witness, native action/session provenance or installation provisioning.",
+    "No PIN entry, derivation or device calibration proof is supplied; exact configured replacement iterations are compared only.",
+    "Shared, resizable, detached, subclass and prototype-spoofed shared buffers deny using intrinsic brand/capacity checks.",
+    "Complete byte and comparison/policy snapshots precede the first real WebCrypto digest await; owned temporary buffers are wiped.",
+    "No plaintext records/profile labels/PIN verifiers are returned, logged or persisted.",
+    "Factories null/nil and App activation remain inactive; no genuine native/recovery/clock/device/remote acceptance.",
+    "Original operation/context hash serialization remains undefined and is not invented."
+  ],
+  "review": "Independent exact-byte source review requested; execution and integration remain root-owned."
+}

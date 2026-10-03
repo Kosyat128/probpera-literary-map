@@ -1,0 +1,14 @@
+PowerShell; cwd C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+Checked local PWA /planet/ launch (source7472 artifacts, matching current relevant inputs):
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/vite/bin/vite.js preview --config vite.pwa.config.ts --configLoader runner --host 127.0.0.1 --port 4173 --strictPort --outDir ".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle"
+http://127.0.0.1:4173/planet/
+
+New transition checks (actually executed once):
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/vitest/vitest.mjs run server/planet/childCheckpointPinTransition.test.ts --maxWorkers=1
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/typescript/bin/tsc --noEmit --project server/planet/tsconfig.json
+
+Base delivery: D:\CodexData\.codex\visualizations\2026\10\02\01a0fd35-3865-7973-8f4c-0c7a0148df47\release-completion\literary-planet-child-checkpoint-delivery-20261004-794678c6-3aa8-4c2a-8ecc-0a79a9339a5e.zip
+SHA256 51f13d8574b26c4d67ef8e8c8bfc862ba52fc58e0ac617979cdba9562403fed6
+Current two-file source delta: proofs/source-changes.patch
+Installed/native OS, browser/offline/update acceptance and iOS compilation NOT_RUN; releaseReady=false.

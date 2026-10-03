@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "server/planet/childCheckpointPinTransition.test.ts",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-pin-transition-work-20261004\\a1\\vitest.json"
+  ],
+  "startedAt": "2026-10-03T22:18:53.164Z",
+  "finishedAt": "2026-10-03T22:18:54.913Z",
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "timedOut": false,
+  "overflow": false
+}

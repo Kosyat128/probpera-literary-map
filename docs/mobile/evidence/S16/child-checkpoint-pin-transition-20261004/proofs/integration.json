@@ -1,0 +1,38 @@
+{
+  "status": "INTEGRATED",
+  "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+  "previousReport": "e14d80e54f66d7bdd8136c7f2c0754d7ddb94701",
+  "manifestSha256": "d62a396314409291206808d1bcf7f9fcf50a354b037925302a2a36f651b0d7e0",
+  "files": [
+    {
+      "sourcePath": "server/planet/childCheckpointPinTransition.ts",
+      "before": {
+        "exists": false
+      },
+      "after": {
+        "candidate": "childCheckpointPinTransition.ts",
+        "sha256": "4a455f0aa993978db3b82b975aab6daa420b7867b75ea369ffaa4fbba342f5a7",
+        "bytes": 8838,
+        "lines": 114,
+        "CRLF": 0,
+        "LFOnly": 114,
+        "trailingLF": true
+      }
+    },
+    {
+      "sourcePath": "server/planet/childCheckpointPinTransition.test.ts",
+      "before": {
+        "exists": false
+      },
+      "after": {
+        "candidate": "childCheckpointPinTransition.test.ts",
+        "sha256": "808e368f0c20bd196de317b24d84251b2baacb0a1249f4071d94b83f6a2302a6",
+        "bytes": 16774,
+        "lines": 202,
+        "CRLF": 0,
+        "LFOnly": 202,
+        "trailingLF": true
+      }
+    }
+  ]
+}

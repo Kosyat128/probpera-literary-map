@@ -1,0 +1,61 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "server/planet/childCheckpointPinTransition.test.ts",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-pin-transition-work-20261004\\a1\\vitest.json"
+      ],
+      "startedAt": "2026-10-03T22:18:53.164Z",
+      "finishedAt": "2026-10-03T22:18:54.913Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false,
+      "overflow": false
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-pin-transition-work-20261004\\a1\\tsconfig.json"
+      ],
+      "startedAt": "2026-10-03T22:18:53.181Z",
+      "finishedAt": "2026-10-03T22:18:55.043Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false,
+      "overflow": false
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "server/planet/tsconfig.json"
+      ],
+      "startedAt": "2026-10-03T22:18:53.196Z",
+      "finishedAt": "2026-10-03T22:18:55.687Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false,
+      "overflow": false
+    }
+  ],
+  "passed": 56,
+  "failed": 0,
+  "pending": 0,
+  "sourceFingerprint": "80915b8324946ffae49bd31a18f9cd01db41b1b276afa24ae537ca468f319166",
+  "sourceUnchanged": true,
+  "scope": "Only new pure full-record PIN-transition validation; no authority, Auth, KDF, clock, native admission or runtime check."
+}
