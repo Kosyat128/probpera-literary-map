@@ -1184,6 +1184,135 @@ final class PlanetChildVault {
     /** A real private UI is not genuine checkpoint/action/admission authority.
      * Production stays unsupported and no plugin/route is activated here. */
     private static PinNativeInput actualSdkPinInput(PlanetChildVault vault) { return null; }
+    /** Pure canonical attempt-journal planning only. These owned bytes do not
+     * prove durable reservation/finalization, trusted time, a matching PIN,
+     * checkpoint permission or Parent Gate admission. A future genuine private
+     * verifier must durably charge the reservation BEFORE actual derivation,
+     * retain it after cancellation/crash, and authenticate full-record readback.
+     * No existing lifecycle, UI, KDF, storage or factory is activated here. */
+    private enum PinAttemptCompletion { match, mismatch }
+    private static final class PinAttemptReservation implements AutoCloseable {
+        final PinAttemptJournal owner;final String challengeId,expectedChecksum,reservationChecksum;
+        final long rootRevision,pinRevision,count,reservedAtMs,blockedUntilMs,delayMs;
+        private final byte[] expected,reserved;private boolean consumed,closed;
+        private PinAttemptReservation(PinAttemptJournal owner,String challenge,byte[] expected,byte[] reserved,
+            long root,long pin,long count,long at,long blocked,long delay) throws Exception {
+            this.owner=owner;challengeId=challenge;this.expected=expected;this.reserved=reserved;
+            expectedChecksum=digest(expected);reservationChecksum=digest(reserved);rootRevision=root;pinRevision=pin;
+            this.count=count;reservedAtMs=at;blockedUntilMs=blocked;delayMs=delay;
+        }
+        private void fence() throws Exception {
+            require(!closed&&owner.reservation==this&&digest(expected).equals(expectedChecksum)
+                &&digest(reserved).equals(reservationChecksum));
+        }
+        private byte[] copyExpectedBytes() throws Exception { synchronized(owner){owner.open();fence();require(!consumed);return expected.clone();} }
+        private byte[] copyReservedBytes() throws Exception { synchronized(owner){owner.open();fence();require(!consumed);return reserved.clone();} }
+        private void wipe() { closed=true;Arrays.fill(expected,(byte)0);Arrays.fill(reserved,(byte)0); }
+        public void close() { synchronized(owner){wipe();} }
+    }
+    private static final class PinAttemptFinalization implements AutoCloseable {
+        final PinAttemptJournal owner;final PinAttemptReservation reservation;final String checksum;
+        private final byte[] canonical;private boolean closed;
+        private PinAttemptFinalization(PinAttemptJournal owner,PinAttemptReservation original,byte[] owned) throws Exception {
+            this.owner=owner;reservation=original;canonical=owned;checksum=digest(owned);
+        }
+        private byte[] copyCanonicalBytes() throws Exception { synchronized(owner){owner.open();
+            require(!closed&&owner.finalization==this&&owner.reservation==reservation&&reservation.consumed
+                &&digest(canonical).equals(checksum));return canonical.clone();} }
+        private void wipe() { closed=true;Arrays.fill(canonical,(byte)0); }
+        public void close() { synchronized(owner){wipe();} }
+    }
+    /** One original planning operation per owner. reserve/finalize are burned
+     * before interpreting their untrusted operation arguments. close only
+     * clears owned memory; it never generates a refund record or restores use. */
+    private static final class PinAttemptJournal implements AutoCloseable {
+        private final String version,policyChecksum;private final long maximumIterations;private final long[] delays;
+        private PinAttemptReservation reservation;private PinAttemptFinalization finalization;
+        private boolean reservationStarted,closed;
+        private PinAttemptJournal(String version,String checksum,long maximumIterations,long[] delays) throws Exception {
+            require(ProtectedEnvelope.identifier(version)&&ProtectedEnvelope.hash(checksum)&&maximumIterations>=600000
+                &&maximumIterations<=0xffffffffL&&delays!=null&&delays.length>=1&&delays.length<=64);
+            long[] owned=delays.clone();for(int i=0;i<owned.length;i++)require(owned[i]>0&&owned[i]<=MAX_SAFE&&(i==0||owned[i]>owned[i-1]));
+            this.version=version;policyChecksum=checksum;this.maximumIterations=maximumIterations;this.delays=owned;
+        }
+        private void open() throws Exception { require(!closed); }
+        private static long increment(long value) throws Exception { require(value>=0&&value<MAX_SAFE);return value+1; }
+        private static long add(long value,long delay) throws Exception { require(value>=0&&value<=MAX_SAFE&&delay>0&&delay<=MAX_SAFE-value);return value+delay; }
+        private static void observed(ProtectedEnvelope value,long at) throws Exception {
+            require(at>=0&&at<=MAX_SAFE&&at>=value.logicalAnchorMs&&at>=value.lastObservedMs);
+        }
+        private synchronized PinAttemptReservation reserve(byte[] current,String challengeId,long sampledLogicalMs) throws Exception {
+            open();require(!reservationStarted);reservationStarted=true;
+            require(ProtectedEnvelope.hash(challengeId));ProtectedEnvelope before=null;byte[] expected=null,charged=null;
+            try{before=ProtectedEnvelope.decode(current,version,policyChecksum,maximumIterations);require(!before.unenrolled);
+                observed(before,sampledLogicalMs);if(sampledLogicalMs<before.blockedUntilMs)throw new PinKnownRefusal();
+                long root=increment(before.revision),pin=increment(before.pinRevision),count=increment(before.count);
+                long delay=delays[(int)Math.min(count-1,delays.length-1)],blocked=add(sampledLogicalMs,delay);
+                expected=before.copyCanonicalBytes();charged=rebuild(before,expected,root,pin,count,blocked,sampledLogicalMs,challengeId);
+                try(ProtectedEnvelope validated=ProtectedEnvelope.decode(charged,version,policyChecksum,maximumIterations)){
+                    require(validated.revision==root&&validated.pinRevision==pin&&validated.count==count
+                        &&validated.blockedUntilMs==blocked&&validated.lastObservedMs==sampledLogicalMs&&challengeId.equals(validated.pendingAttemptId));}
+                PinAttemptReservation original=new PinAttemptReservation(this,challengeId,expected,charged,root,pin,count,sampledLogicalMs,blocked,delay);
+                reservation=original;expected=null;charged=null;return original;
+            }finally{if(before!=null)before.close();if(expected!=null)Arrays.fill(expected,(byte)0);if(charged!=null)Arrays.fill(charged,(byte)0);}
+        }
+        private synchronized PinAttemptFinalization finalizeAttempt(PinAttemptReservation original,byte[] current,
+            PinAttemptCompletion completion,long sampledLogicalMs) throws Exception {
+            open();require(original!=null&&original.owner==this&&reservation==original&&!original.consumed&&!original.closed);
+            original.consumed=true;ProtectedEnvelope before=null;byte[] owned=null,completed=null;
+            try{original.fence();require(completion!=null&&current!=null&&current.length>0&&current.length<=MAX_BYTES);
+                owned=current.clone();require(MessageDigest.isEqual(owned,original.reserved));
+                before=ProtectedEnvelope.decode(owned,version,policyChecksum,maximumIterations);
+                require(!before.unenrolled&&before.revision==original.rootRevision&&before.pinRevision==original.pinRevision
+                    &&before.count==original.count&&before.blockedUntilMs==original.blockedUntilMs&&before.lastObservedMs==original.reservedAtMs
+                    &&original.challengeId.equals(before.pendingAttemptId));observed(before,sampledLogicalMs);
+                long root=increment(before.revision),pin=increment(before.pinRevision);
+                long count=completion==PinAttemptCompletion.match?0:original.count;
+                long blocked=completion==PinAttemptCompletion.match?0:Math.max(original.blockedUntilMs,add(sampledLogicalMs,original.delayMs));
+                completed=rebuild(before,owned,root,pin,count,blocked,sampledLogicalMs,null);
+                try(ProtectedEnvelope validated=ProtectedEnvelope.decode(completed,version,policyChecksum,maximumIterations)){
+                    require(validated.revision==root&&validated.pinRevision==pin&&validated.count==count&&validated.blockedUntilMs==blocked
+                        &&validated.lastObservedMs==sampledLogicalMs&&validated.pendingAttemptId==null);}
+                PinAttemptFinalization result=new PinAttemptFinalization(this,original,completed);finalization=result;completed=null;return result;
+            }finally{if(before!=null)before.close();if(owned!=null)Arrays.fill(owned,(byte)0);if(completed!=null)Arrays.fill(completed,(byte)0);original.wipe();}
+        }
+        /** Narrowly reparse the already validated PIN slice to locate numeric
+         * revision and attempts boundaries. No key search through profile text
+         * and no platform JSON ordering/escaping or verifier reconstruction. */
+        private static int[] pinSpans(ProtectedEnvelope envelope,byte[] canonical) throws Exception {
+            String text=new String(canonical,envelope.pinStart,envelope.pinEnd-envelope.pinStart,StandardCharsets.UTF_8);
+            ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(text);
+            p.field("schemaVersion",true);p.number(1,1);p.field("policyVersion",false);p.string();
+            p.field("revision",false);int revisionStart=p.byteOffset(p.index);p.number(1,MAX_SAFE);int revisionEnd=p.byteOffset(p.index);
+            p.field("credentialId",false);p.string();p.field("verifier",false);
+            p.field("algorithm",true);p.string();p.field("iterations",false);p.number(600000,0xffffffffL);
+            p.field("saltHex",false);p.string();p.field("hashHex",false);p.string();p.token("}");
+            p.field("attempts",false);int attemptsStart=p.byteOffset(p.index);
+            p.field("count",true);p.number(0,MAX_SAFE);p.field("blockedUntilMs",false);p.number(0,MAX_SAFE);
+            p.field("lastObservedMs",false);p.number(0,MAX_SAFE);p.field("pendingAttemptId",false);p.nullableString();p.token("}");
+            int attemptsEnd=p.byteOffset(p.index);p.token("}");require(p.index==text.length());
+            return new int[]{envelope.pinStart+revisionStart,envelope.pinStart+revisionEnd,envelope.pinStart+attemptsStart,envelope.pinStart+attemptsEnd};
+        }
+        private static byte[] rebuild(ProtectedEnvelope envelope,byte[] old,long root,long pin,long count,long blocked,long at,String pending) throws Exception {
+            require(!envelope.unenrolled);int rootStart="{\"schemaVersion\":1,\"revision\":".getBytes(StandardCharsets.US_ASCII).length;
+            int[] spans=pinSpans(envelope,old);byte[] rootBytes=Long.toString(root).getBytes(StandardCharsets.US_ASCII);
+            byte[] pinBytes=Long.toString(pin).getBytes(StandardCharsets.US_ASCII);
+            byte[] attemptBytes=("{\"count\":"+count+",\"blockedUntilMs\":"+blocked+",\"lastObservedMs\":"+at
+                +",\"pendingAttemptId\":"+(pending==null?"null":"\""+pending+"\"")+"}").getBytes(StandardCharsets.US_ASCII);
+            byte[] result=null;
+            try{int size=old.length-(envelope.revisionEnd-rootStart)-(spans[1]-spans[0])-(spans[3]-spans[2])+rootBytes.length+pinBytes.length+attemptBytes.length;
+                require(size>0&&size<=MAX_BYTES);result=new byte[size];int offset=0;
+                offset=copy(old,0,rootStart,result,offset);offset=copy(rootBytes,0,rootBytes.length,result,offset);
+                offset=copy(old,envelope.revisionEnd,spans[0],result,offset);offset=copy(pinBytes,0,pinBytes.length,result,offset);
+                offset=copy(old,spans[1],spans[2],result,offset);offset=copy(attemptBytes,0,attemptBytes.length,result,offset);
+                offset=copy(old,spans[3],old.length,result,offset);require(offset==size);byte[] owned=result;result=null;return owned;
+            }finally{Arrays.fill(rootBytes,(byte)0);Arrays.fill(pinBytes,(byte)0);Arrays.fill(attemptBytes,(byte)0);if(result!=null)Arrays.fill(result,(byte)0);}
+        }
+        private static int copy(byte[] from,int start,int end,byte[] to,int at) throws Exception {
+            require(start>=0&&end>=start&&end<=from.length&&at>=0&&end-start<=to.length-at);System.arraycopy(from,start,to,at,end-start);return at+end-start;
+        }
+        public synchronized void close() { closed=true;if(reservation!=null)reservation.wipe();if(finalization!=null)finalization.wipe();Arrays.fill(delays,0); }
+    }
     static final int MAX_BYTES = 131072;
     private static final long MAX_SAFE = 9007199254740991L;
     private static final ReentrantLock PROCESS_LOCK = new ReentrantLock();

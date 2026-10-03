@@ -1939,3 +1939,208 @@ fileprivate final class PinNativePinViewController: UIViewController {
 }
 // Genuine host construction/admission and native recovery remain unavailable.
 // This UI has no bridge/plugin registration and is never selected by App flags.
+
+/** Closed canonical attempt planner only. It supplies no native checkpoint,
+ * durable pre-KDF reservation, trusted time, PIN comparison or Parent Gate proof.
+ * A future verification provider must durably CAS both exact full-record plans
+ * under genuine authority; cancellation/crash can never refund a charged record. */
+fileprivate struct PinAttemptMetadata {
+    let revision: UInt64, pinRevision: UInt64, count: UInt64
+    let blockedUntilMs: UInt64, lastObservedMs: UInt64, logicalAnchorMs: UInt64
+    let pendingAttemptId: String?
+    let rootRevision: Range<Int>, pinRevisionBytes: Range<Int>, attemptsBytes: Range<Int>
+}
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    /** Reuse the already validated ordered envelope. Parse only its bounded PIN
+     * slice to locate numeric/attempt bytes; credential/verifier bytes are copied
+     * verbatim, including the original fixed algorithm/salt/hash/iteration value. */
+    func attemptMetadata() throws -> PinAttemptMetadata {
+        lock.lock(); defer { lock.unlock() }; try Self.require(!disposed && pin != nil)
+        var pinBytes=storage.copy(pinStart..<pinEnd); defer { pinBytes.resetBytes(in:0..<pinBytes.count) }
+        let owned=Storage(pinBytes); defer { owned.wipe() }; let cursor=Cursor(owned)
+        try cursor.field("schemaVersion",first:true); _=try cursor.number(1,1)
+        try cursor.field("policyVersion"); try Self.require(cursor.asciiString()==policyVersion)
+        try cursor.field("revision"); let pinRevisionStart=cursor.index
+        let pinRevision=try cursor.number(1,9007199254740991), pinRevisionEnd=cursor.index
+        try cursor.field("credentialId"); _=try cursor.hashRange()
+        try cursor.field("verifier"); try cursor.field("algorithm",first:true)
+        try Self.require(cursor.asciiString()=="PBKDF2-HMAC-SHA256")
+        try cursor.field("iterations"); _=try cursor.number(600000,maxIterations)
+        try cursor.field("saltHex"); _=try cursor.hashRange()
+        try cursor.field("hashHex"); _=try cursor.hashRange(); try cursor.token("}")
+        try cursor.field("attempts"); let attemptsStart=cursor.index
+        try cursor.field("count",first:true); let count=try cursor.number(0,9007199254740991)
+        try cursor.field("blockedUntilMs"); let blocked=try cursor.number(0,9007199254740991)
+        try cursor.field("lastObservedMs"); let observed=try cursor.number(0,9007199254740991)
+        try cursor.field("pendingAttemptId"); let pending=try cursor.nullableString()
+        try cursor.token("}"); let attemptsEnd=cursor.index; try cursor.token("}")
+        try Self.require(cursor.index==owned.count && (pending==nil || Self.hash(pending!)))
+        let rootStart=Array("{\"schemaVersion\":1,\"revision\":".utf8).count
+        return PinAttemptMetadata(revision:revision,pinRevision:pinRevision,count:count,
+            blockedUntilMs:blocked,lastObservedMs:observed,logicalAnchorMs:logicalAnchorMs,pendingAttemptId:pending,
+            rootRevision:rootStart..<revisionEnd,pinRevisionBytes:(pinStart+pinRevisionStart)..<(pinStart+pinRevisionEnd),
+            attemptsBytes:(pinStart+attemptsStart)..<(pinStart+attemptsEnd))
+    }
+    func planAttempt(_ metadata: PinAttemptMetadata, rootRevision: UInt64, pinRevision: UInt64,
+                     count: UInt64, blockedUntilMs: UInt64, observedMs: UInt64, pendingId: String?) throws -> Data {
+        lock.lock(); defer { lock.unlock() }; try Self.require(!disposed && pin != nil)
+        try Self.require(rootRevision>=1 && rootRevision<=9007199254740991 && pinRevision>=1 && pinRevision<=9007199254740991
+            && count<=9007199254740991 && blockedUntilMs<=9007199254740991 && observedMs<=9007199254740991
+            && (pendingId==nil || Self.hash(pendingId!)))
+        try Self.require(metadata.revision==revision && metadata.pinRevision==pin?.revision
+            && metadata.rootRevision.lowerBound>=0 && metadata.rootRevision.upperBound==revisionEnd
+            && metadata.pinRevisionBytes.lowerBound>=pinStart && metadata.pinRevisionBytes.upperBound<=pinEnd
+            && metadata.attemptsBytes.lowerBound>=metadata.pinRevisionBytes.upperBound && metadata.attemptsBytes.upperBound<=pinEnd)
+        var original=storage.copy(); defer { original.resetBytes(in:0..<original.count) }
+        let pending=pendingId.map { "\"" + $0 + "\"" } ?? "null"
+        // Decimal UInt64 values and validated lowercase hex identifiers only.
+        // No entered PIN, JSON parser/serializer or unrelated record field is reconstructed.
+        let attempts="{\"count\":\(count),\"blockedUntilMs\":\(blockedUntilMs),\"lastObservedMs\":\(observedMs),\"pendingAttemptId\":\(pending)}"
+        var result=Data(); var accepted=false
+        defer { if !accepted { result.resetBytes(in:0..<result.count) } }
+        result.append(original[0..<metadata.rootRevision.lowerBound]); result.append(contentsOf:String(rootRevision).utf8)
+        result.append(original[metadata.rootRevision.upperBound..<metadata.pinRevisionBytes.lowerBound])
+        result.append(contentsOf:String(pinRevision).utf8)
+        result.append(original[metadata.pinRevisionBytes.upperBound..<metadata.attemptsBytes.lowerBound])
+        result.append(contentsOf:attempts.utf8); result.append(original[metadata.attemptsBytes.upperBound..<original.count])
+        try Self.require(!result.isEmpty && result.count<=131072)
+        let decoded=try Self.decode(result,policyVersion:policyVersion,policyChecksum:policyChecksum,maxIterations:maxIterations)
+        defer { decoded.close() }
+        accepted=true; return result
+    }
+}
+fileprivate enum PinAttemptComparison { case match, mismatch }
+fileprivate final class PinAttemptReservation {
+    fileprivate weak var owner: PinAttemptJournal?
+    let challengeId: String, count: UInt64, delayMs: UInt64, reservedLogicalMs: UInt64
+    let rootRevision: UInt64, pinRevision: UInt64, checksum: String
+    private let lock=NSLock(), expected: PinOwnedBytes, reserved: PinOwnedBytes
+    private var disposed=false, consumed=false
+    fileprivate init(owner: PinAttemptJournal, expected: Data, reserved: Data,
+                     challengeId: String, count: UInt64, delayMs: UInt64, logicalMs: UInt64,
+                     rootRevision: UInt64, pinRevision: UInt64, checksum: String) {
+        self.owner=owner; self.expected=PinOwnedBytes(expected); self.reserved=PinOwnedBytes(reserved)
+        self.challengeId=challengeId; self.count=count; self.delayMs=delayMs; reservedLogicalMs=logicalMs
+        self.rootRevision=rootRevision; self.pinRevision=pinRevision; self.checksum=checksum
+    }
+    func copyExpectedBytes() throws -> Data { lock.lock(); defer { lock.unlock() }; try NativePinSessions.require(!disposed); return try expected.copy() }
+    func copyReservedBytes() throws -> Data { lock.lock(); defer { lock.unlock() }; try NativePinSessions.require(!disposed); return try reserved.copy() }
+    fileprivate func consume(_ journal: PinAttemptJournal) throws -> Data {
+        lock.lock(); defer { lock.unlock() }; let used=consumed; consumed=true
+        try NativePinSessions.require(owner === journal && !used && !disposed)
+        return try reserved.copy()
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; expected.close(); reserved.close() }
+    deinit { close() }
+}
+fileprivate final class PinAttemptFinalization {
+    fileprivate weak var owner: PinAttemptJournal?
+    private let lock=NSLock(), expected: PinOwnedBytes, next: PinOwnedBytes
+    let checksum: String, rootRevision: UInt64, pinRevision: UInt64
+    private var disposed=false
+    fileprivate init(owner: PinAttemptJournal, expected: Data, next: Data, checksum: String, rootRevision: UInt64, pinRevision: UInt64) {
+        self.owner=owner; self.expected=PinOwnedBytes(expected); self.next=PinOwnedBytes(next)
+        self.checksum=checksum; self.rootRevision=rootRevision; self.pinRevision=pinRevision
+    }
+    // All copies first join the original owner's lifetime and identity gate.
+    // Lock order is journal -> result -> byte backing; close never calls upward.
+    func copyExpectedBytes() throws -> Data {
+        guard let original=owner else { throw PlanetChildVault.Failure.unavailable }
+        return try original.copyFinalization(self,expected:true)
+    }
+    func copyNextBytes() throws -> Data {
+        guard let original=owner else { throw PlanetChildVault.Failure.unavailable }
+        return try original.copyFinalization(self,expected:false)
+    }
+    fileprivate func copyOwnedBytes(expected takeExpected: Bool) throws -> Data {
+        lock.lock(); defer { lock.unlock() }; try NativePinSessions.require(!disposed)
+        return try (takeExpected ? expected : next).copy()
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; expected.close(); next.close() }
+    deinit { close() }
+}
+fileprivate final class PinAttemptJournal {
+    private static let maximum: UInt64=9007199254740991
+    private let lock=NSLock(), version: String, policyChecksum: String, maximumIterations: UInt64, delays: [UInt64]
+    private var reserveEntered=false, finalizeEntered=false, disposed=false, active: PinAttemptReservation?
+    private var finalization: PinAttemptFinalization?
+    init(policyVersion: String, policyChecksum: String, maxIterations: UInt64, backoffDelaysMs: [UInt64]) throws {
+        let versionBytes=Array(policyVersion.utf8)
+        let alphanumeric: (UInt8)->Bool = { $0>=48 && $0<=57 || $0>=65 && $0<=90 || $0>=97 && $0<=122 }
+        try NativePinSessions.require(!versionBytes.isEmpty && versionBytes.count<=96 && alphanumeric(versionBytes[0])
+            && versionBytes.allSatisfy { alphanumeric($0) || $0==46 || $0==95 || $0==45 }
+            && NativePinSessions.hash(policyChecksum) && maxIterations>=600000 && maxIterations<=0xffffffff
+            && !backoffDelaysMs.isEmpty && backoffDelaysMs.count<=64)
+        var previous: UInt64=0
+        for delay in backoffDelaysMs { try NativePinSessions.require(delay>previous && delay<=Self.maximum); previous=delay }
+        version=policyVersion; self.policyChecksum=policyChecksum; maximumIterations=maxIterations; delays=backoffDelaysMs
+    }
+    private static func add(_ left: UInt64,_ right: UInt64) throws -> UInt64 {
+        try NativePinSessions.require(left<=maximum && right<=maximum-left); return left+right
+    }
+    private static func digest(_ value: Data) -> String { SHA256.hash(data:value).map { String(format:"%02x",$0) }.joined() }
+    private static func bounded(_ bytes: Data) throws { try NativePinSessions.require(!bytes.isEmpty && bytes.count<=131072) }
+    private func envelope(_ bytes: Data) throws -> PlanetChildVault.ProtectedEnvelope {
+        try PlanetChildVault.ProtectedEnvelope.decode(bytes,policyVersion:version,policyChecksum:policyChecksum,maxIterations:maximumIterations)
+    }
+    /** Reserve exactly once for this closed owner, including rejected input.
+     * Returned bytes are a structural CAS plan, not evidence of durable charge. */
+    func reserve(_ current: Data, originalChallengeId: String, sampledLogicalMs: UInt64) throws -> PinAttemptReservation {
+        lock.lock()
+        let available = !disposed && !reserveEntered; if available { reserveEntered=true }
+        lock.unlock(); try NativePinSessions.require(available)
+        try Self.bounded(current); try NativePinSessions.require(NativePinSessions.hash(originalChallengeId) && sampledLogicalMs<=Self.maximum)
+        var owned=Data(Array(current)); defer { owned.resetBytes(in:0..<owned.count) }
+        let before=try envelope(owned); defer { before.close() }; let meta=try before.attemptMetadata()
+        try NativePinSessions.require(sampledLogicalMs>=meta.logicalAnchorMs && sampledLogicalMs>=meta.lastObservedMs
+            && sampledLogicalMs>=meta.blockedUntilMs)
+        let count=try Self.add(meta.count,1), revision=try Self.add(meta.revision,1), pinRevision=try Self.add(meta.pinRevision,1)
+        let delay=delays[Int(min(count-1,UInt64(delays.count-1)))], blocked=try Self.add(sampledLogicalMs,delay)
+        var next=try before.planAttempt(meta,rootRevision:revision,pinRevision:pinRevision,count:count,
+            blockedUntilMs:blocked,observedMs:sampledLogicalMs,pendingId:originalChallengeId)
+        defer { next.resetBytes(in:0..<next.count) }
+        let result=PinAttemptReservation(owner:self,expected:owned,reserved:next,challengeId:originalChallengeId,count:count,
+            delayMs:delay,logicalMs:sampledLogicalMs,rootRevision:revision,pinRevision:pinRevision,checksum:Self.digest(next))
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed && active==nil else { result.close(); throw PlanetChildVault.Failure.unavailable }
+        active=result; return result
+    }
+    /** Burn the exact original reservation before current bytes/time/outcome
+     * validation. Neither close, cancellation nor malformed finalization refunds it. */
+    func finalize(_ reservation: PinAttemptReservation, currentExactBytes: Data,
+                  comparison: PinAttemptComparison, sampledLogicalMs: UInt64) throws -> PinAttemptFinalization {
+        lock.lock()
+        let owned = !disposed && !finalizeEntered && active === reservation && reservation.owner === self
+        if owned { finalizeEntered=true }
+        lock.unlock(); try NativePinSessions.require(owned)
+        var expected=try reservation.consume(self); defer { expected.resetBytes(in:0..<expected.count); reservation.close() }
+        try Self.bounded(currentExactBytes)
+        var current=Data(Array(currentExactBytes)); defer { current.resetBytes(in:0..<current.count) }
+        try NativePinSessions.require(current==expected && Self.digest(current)==reservation.checksum && sampledLogicalMs<=Self.maximum)
+        let before=try envelope(expected); defer { before.close() }; let meta=try before.attemptMetadata()
+        try NativePinSessions.require(meta.pendingAttemptId==reservation.challengeId && meta.count==reservation.count
+            && meta.revision==reservation.rootRevision && meta.pinRevision==reservation.pinRevision
+            && meta.lastObservedMs==reservation.reservedLogicalMs && sampledLogicalMs>=meta.lastObservedMs
+            && sampledLogicalMs>=meta.logicalAnchorMs)
+        let revision=try Self.add(meta.revision,1), pinRevision=try Self.add(meta.pinRevision,1)
+        let count: UInt64, blocked: UInt64
+        switch comparison {
+        case .match: count=0; blocked=0
+        case .mismatch: count=meta.count; blocked=max(meta.blockedUntilMs,try Self.add(sampledLogicalMs,reservation.delayMs))
+        }
+        var next=try before.planAttempt(meta,rootRevision:revision,pinRevision:pinRevision,count:count,
+            blockedUntilMs:blocked,observedMs:sampledLogicalMs,pendingId:nil)
+        defer { next.resetBytes(in:0..<next.count) }
+        let result=PinAttemptFinalization(owner:self,expected:expected,next:next,checksum:Self.digest(next),rootRevision:revision,pinRevision:pinRevision)
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed && finalization==nil else { result.close(); throw PlanetChildVault.Failure.unavailable }
+        finalization=result; return result
+    }
+    fileprivate func copyFinalization(_ original: PinAttemptFinalization, expected: Bool) throws -> Data {
+        lock.lock(); defer { lock.unlock() }
+        try NativePinSessions.require(!disposed && finalization === original && original.owner === self)
+        return try original.copyOwnedBytes(expected:expected)
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; active?.close(); finalization?.close() }
+    deinit { close() }
+}
