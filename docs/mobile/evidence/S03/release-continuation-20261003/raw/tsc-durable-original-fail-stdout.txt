@@ -1,0 +1,3 @@
+src/child/childDurableData.ts(248,12): error TS2367: This comparison appears to be unintentional because the types 'false | null' and 'true' have no overlap.
+src/child/childDurableData.ts(276,36): error TS2367: This comparison appears to be unintentional because the types 'false | null' and 'true' have no overlap.
+src/child/childDurableData.ts(302,11): error TS2367: This comparison appears to be unintentional because the types 'false | null' and 'true' have no overlap.

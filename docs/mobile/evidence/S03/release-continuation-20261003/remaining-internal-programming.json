@@ -1,0 +1,79 @@
+{
+  "stage": "S16",
+  "status": "IN_PROGRESS",
+  "implementationOwner": "Codex",
+  "sourceFoundation": [
+    "src/child/childPackage.ts",
+    "src/child/childIndex.ts",
+    "src/child/childMedia.ts",
+    "src/child/childProtectedState.ts",
+    "src/child/childDurableData.ts",
+    "src/child/childMediaDecode.ts",
+    "src/child/childMediaPresentation.ts",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+    "apps/mobile/ios/App/App/PlanetChildDataStore.swift"
+  ],
+  "protectedAdmission": "UNAVAILABLE",
+  "appActivation": false,
+  "approvedProductionChildContent": false,
+  "ownerInputsReference": "decisions/RELEASE_DECISIONS.json",
+  "nextIndependentAction": "S03.acceptance remains IN_PROGRESS with 11 OPEN criteria; installed application/native OS evidence, a selected PSP and real transactions, reviewed RU/EN editorial/legal materials, configured real Auth/deletion and specifically authorized remote validation remain pending. Continue independent S16 programming with 36 OPEN criteria: integrate the private native atomic four-purpose storage candidates with native-owned scope/generation retirement and admitted host ports; verify their actual installed storage/lifecycle boundaries; implement genuine protected admission, supported native replay-resistant authority/trusted time, native PIN enrollment/verification/recovery and clear-before-render/route/lifecycle App wiring. Retain the actual isolated Web IndexedDB and static media decoder/presentation proofs as scoped local foundations; complete documented required media formats and independently reviewed exact-byte RU/EN content before activation. Native data partition activation grants no PIN, profile, package, review or rights authority. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passing scopes for reports, create D stages, invent approvals/trusted time, publish/deploy/push/merge or rewrite historical FAIL/NOT_RUN evidence.",
+  "remainingInternalProgramming": [
+    {
+      "work": "Protected child admission",
+      "status": "OPEN",
+      "responsibility": "Replace the unavailable factory only with genuine verified native authority; tested synthetic ports do not grant admission."
+    },
+    {
+      "work": "Supported native authority and trusted time",
+      "status": "OPEN",
+      "responsibility": "Provide supported replay-resistant checkpoint/epoch and restart continuity; uncertain reboot or clock state stays denied without a trusted anchor."
+    },
+    {
+      "work": "Native PIN enrollment, verification and recovery",
+      "status": "OPEN",
+      "responsibility": "Integrate genuine protected input and durable attempt/CAS bookkeeping with revocable Parent Gate capabilities; no preference PIN or approval boolean."
+    },
+    {
+      "work": "Durable separate child data ports",
+      "status": "OPEN",
+      "responsibility": "Retain isolated Web four-store atomic persistence. Implement or finish private native four-purpose atomic candidates with native-owned context/generation retirement and durable current-scope CAS; dispatch-only JS isCurrent checks and independent Preferences writes do not satisfy the transaction contract. Storage partitions grant no PIN/profile/package/review authority."
+    },
+    {
+      "work": "Clear before render and lifecycle integration",
+      "status": "OPEN",
+      "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes."
+    },
+    {
+      "work": "Reviewed child media rendering",
+      "status": "OPEN",
+      "responsibility": "The retained static PNG/JPEG/WebP/PCM-WAV codec and owned Web presentation foundations have scoped local proofs. Complete documented required media formats, independently reviewed exact-byte RU/EN production assets and native/App/lifecycle integration before activation; neither muted synthetic audio nor scoped browser fixtures grant content or native admission."
+    }
+  ],
+  "qualification": "These are remaining Codex programming tasks, separate from the seven owner input actions. Integrated source foundations do not establish production child activation, native authority, approved content or installed-device acceptance.",
+  "localContinuation": {
+    "isolatedWebStorage": "43 synthetic unit cases plus 44 actual Edge IndexedDB checks; no App/native ports admission",
+    "staticMediaDecoder": "retained actual distinct local cases in explicit raw proofs",
+    "ownedWebPresentation": "retained actual distinct local cases in explicit raw proofs",
+    "privateNativeDataCandidates": "Reviewed current source candidates only; no admitted JS transaction backend, PIN/profile/package authority, native plugin or App activation",
+    "nativeCandidateOsRuntime": "NOT_RUN",
+    "iosCandidateCompilation": "NOT_RUN",
+    "actualWebMediaProofs": [
+      {
+        "kind": "literary-planet-child-media-web-codec-proof",
+        "checks": 28,
+        "proofId": "actual-edge-codec",
+        "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+      },
+      {
+        "kind": "literary-planet-child-media-web-presentation-proof",
+        "checks": 22,
+        "proofId": "actual-edge-presentation",
+        "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24"
+      }
+    ],
+    "audibleAudioVerified": false,
+    "appActivation": false,
+    "nativeProtectedAdmission": "UNAVAILABLE"
+  }
+}

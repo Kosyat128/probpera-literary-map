@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "6141029e20f955b8838032ba0da601bca80a46a7",
+  "previousHead": "b9f351788ef415a5518c3c9e4b7e755809a8cff7",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "sha256": "e47f3783ced0c4e8ccfb51d7ee0b9035941851761c0bc2929f218fd8dfb0f34e"
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.test.mjs",
+      "sha256": "05f3a1dbe6c585d6957673f45d0ded33eba33d62c0095b105649f286424d2a10"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-02T22:29:04.300Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "status": "PASS"
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.test.mjs",
+      "status": "PASS"
+    }
+  ],
+  "remoteOperations": 0
+}

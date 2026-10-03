@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-release-continuation-entry",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "inputSha256": "599a07cf9747d6ecfef5686431f75c3247759ee103fa799642f31bee25918c9c",
+  "generatedAt": "2026-10-03T03:00:33.581Z",
+  "additive": true,
+  "checkoutWrites": false,
+  "releaseReady": false
+}

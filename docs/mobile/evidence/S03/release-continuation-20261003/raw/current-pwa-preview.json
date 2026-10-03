@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-local-preview-command",
+  "binding": {
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "preparation": {
+    "path": ".tmp/mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28/preparation.json",
+    "sha256": "ac661c03c9912778a9df5ee73eee5364adafc86217dabe735cc22bfb0c89753f",
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647"
+  },
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vite\\bin\\vite.js",
+    "preview",
+    "--config",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\vite.pwa.config.ts",
+    "--outDir",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28\\pwa-bundle",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "4173",
+    "--strictPort"
+  ],
+  "startedAt": "2026-10-03T02:53:58.498Z",
+  "finishedAt": "2026-10-03T02:54:00.667Z",
+  "checks": [
+    {
+      "path": "/planet/",
+      "status": 200,
+      "rootPresent": true
+    },
+    {
+      "path": "/planet/manifest.webmanifest",
+      "status": 200,
+      "startUrl": "/planet/"
+    }
+  ],
+  "failure": null,
+  "inputsUnchanged": true,
+  "pass": true,
+  "remoteServiceRequests": 0,
+  "scope": "Local launch command and HTTP entry/manifest only; no install or full PWA offline scenario",
+  "releaseReady": false
+}

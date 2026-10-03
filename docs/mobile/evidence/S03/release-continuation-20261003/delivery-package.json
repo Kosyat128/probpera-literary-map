@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-local-delivery",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "assembly": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-release-continuation-20261003-cae44e12-b333-4848-a3cd-4d7d4af16579.assembly.json",
+    "sha256": "b56c6419bfc660ba27be4cf22eb0bacca8a3c17723e8076a54b5379ba7da212f"
+  },
+  "archive": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-release-continuation-20261003-cae44e12-b333-4848-a3cd-4d7d4af16579.zip",
+    "sha256": "59c6f8082ba302382b7f25aa0d16885f739b11b998bc63ccf299041a35b11505",
+    "bytes": 440869265,
+    "compression": "stored",
+    "library": "fflate@0.8.3",
+    "archivedEntries": {
+      "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+      "centralDirectoryVerified": true,
+      "entrySha256Verified": true,
+      "filesVerified": 4440,
+      "rawBytesVerified": 440009493,
+      "zip64": false,
+      "crcVerification": "NOT_RUN"
+    }
+  },
+  "currentPreparations": [
+    {
+      "mode": "android",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-6089ee95-5ac8-417e-a68f-45459bfa5b62\\preparation.json",
+        "sha256": "5941ea69a69bb442a6147d236ac70ba616dbf563d4607f86585853f118c60d91"
+      }
+    },
+    {
+      "mode": "pwa",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28\\preparation.json",
+        "sha256": "ac661c03c9912778a9df5ee73eee5364adafc86217dabe735cc22bfb0c89753f"
+      }
+    },
+    {
+      "mode": "ios-bundle",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-4a5e6d31-78e2-49ab-b771-3550543b57d8\\preparation.json",
+        "sha256": "84a1ede2958c5b34421d102c5358300e485375bf44edcc8b392742e3711d1cf3"
+      }
+    }
+  ],
+  "sourceExport": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source-export.json",
+    "sha256": "18b3736b0927a10d2f0b37ff9813b4982b78d406c7b1580e85c77d50c1b5cee5"
+  },
+  "sourceImport": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\result.json",
+    "sha256": "35dacf45e9584da555c473a4b3efb4634b4e35adedad171930c5f4c94adc1e44"
+  },
+  "runbook": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\RELEASE_CONTINUATION_RUNBOOK.final.md",
+    "sha256": "b95724caa7ce1b24219f199e0bb6ba64155d213d2c671c91eb98a592f7ec7e4c"
+  },
+  "releaseReady": false,
+  "stageAccepted": false,
+  "remoteOperations": 0
+}

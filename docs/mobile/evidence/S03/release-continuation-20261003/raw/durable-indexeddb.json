@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-durable-indexeddb-proof",
+  "startedAt": "2026-10-02T23:03:54.247Z",
+  "pass": true,
+  "cases": [
+    {
+      "phase": "write",
+      "checks": [
+        {
+          "id": "real-backend-created",
+          "status": "PASS"
+        },
+        {
+          "id": "explicit-scope-activation",
+          "status": "PASS"
+        },
+        {
+          "id": "only-four-child-purpose-stores",
+          "status": "PASS"
+        },
+        {
+          "id": "strict-durability-hint-observed",
+          "status": "PASS"
+        },
+        {
+          "id": "reentrant-close-at-real-complete-denied",
+          "status": "PASS"
+        },
+        {
+          "id": "search-initially-empty",
+          "status": "PASS"
+        },
+        {
+          "id": "search-actual-cas-and-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "search-stored-envelope",
+          "status": "PASS"
+        },
+        {
+          "id": "history-initially-empty",
+          "status": "PASS"
+        },
+        {
+          "id": "history-actual-cas-and-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "history-stored-envelope",
+          "status": "PASS"
+        },
+        {
+          "id": "cache-initially-empty",
+          "status": "PASS"
+        },
+        {
+          "id": "cache-actual-cas-and-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "cache-stored-envelope",
+          "status": "PASS"
+        },
+        {
+          "id": "offline-initially-empty",
+          "status": "PASS"
+        },
+        {
+          "id": "offline-actual-cas-and-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "offline-stored-envelope",
+          "status": "PASS"
+        },
+        {
+          "id": "concurrent-cas-one-winner",
+          "status": "PASS"
+        },
+        {
+          "id": "history-revision-after-concurrency",
+          "status": "PASS"
+        },
+        {
+          "id": "actual-tx-abort-after-put-denies",
+          "status": "PASS"
+        },
+        {
+          "id": "actual-tx-abort-rolls-back",
+          "status": "PASS"
+        },
+        {
+          "id": "actual-aba-retires-pending-put",
+          "status": "PASS"
+        },
+        {
+          "id": "actual-aba-fresh-context-established",
+          "status": "PASS"
+        },
+        {
+          "id": "aba-old-lease-denied",
+          "status": "PASS"
+        },
+        {
+          "id": "aba-original-history-restored",
+          "status": "PASS"
+        },
+        {
+          "id": "locale-en-new-namespace",
+          "status": "PASS"
+        },
+        {
+          "id": "locale-en-does-not-inherit",
+          "status": "PASS"
+        },
+        {
+          "id": "locale-ru-restored",
+          "status": "PASS"
+        },
+        {
+          "id": "corrupt-record-not-an-empty-slot",
+          "status": "PASS"
+        },
+        {
+          "id": "corrupt-record-not-repaired",
+          "status": "PASS"
+        },
+        {
+          "id": "durable-retirement",
+          "status": "PASS"
+        }
+      ],
+      "allPass": true
+    },
+    {
+      "phase": "restart",
+      "checks": [
+        {
+          "id": "real-backend-created",
+          "status": "PASS"
+        },
+        {
+          "id": "explicit-scope-activation",
+          "status": "PASS"
+        },
+        {
+          "id": "only-four-child-purpose-stores",
+          "status": "PASS"
+        },
+        {
+          "id": "strict-durability-hint-observed",
+          "status": "PASS"
+        },
+        {
+          "id": "new-process-search-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "new-process-history-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "new-process-offline-readback",
+          "status": "PASS"
+        },
+        {
+          "id": "new-process-corruption-remains-denied",
+          "status": "PASS"
+        },
+        {
+          "id": "different-exact-age-same-band-activation",
+          "status": "PASS"
+        },
+        {
+          "id": "different-exact-age-no-inheritance",
+          "status": "PASS"
+        },
+        {
+          "id": "original-exact-age-restored",
+          "status": "PASS"
+        },
+        {
+          "id": "original-exact-age-history-persisted",
+          "status": "PASS"
+        },
+        {
+          "id": "durable-retirement",
+          "status": "PASS"
+        }
+      ],
+      "allPass": true
+    }
+  ],
+  "errors": [],
+  "sourceFiles": [
+    {
+      "path": "src/child/childDurableData.ts",
+      "sha256": "dbf2954761cbdac38a82248d26b66ca2b87db1519d98f7431a509611606fd977"
+    },
+    {
+      "path": "src/child/childDataNamespace.ts",
+      "sha256": "2a0b9497bc77f8fd9cf078ce2e3b91cff1ac16c842dd38df28e59d236be1c97a"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childPackage.ts",
+      "sha256": "e7ebba5afcf9bc1d7b6c6fc545f5ad47518d5b7cfc24482b4d4f8b8c7c3c2326"
+    }
+  ],
+  "emittedModules": [
+    {
+      "path": "modules/childDurableData.js",
+      "sha256": "1a54a957c402eb9834d0c593aa0d5673af84f4c4c58ba118c737ef08df00e2ef",
+      "bytes": 28403
+    },
+    {
+      "path": "modules/childDataNamespace.js",
+      "sha256": "e854c4e7e4cc16ab5bff0329498145f306939e63170e841ad0d63f6da455b0b4",
+      "bytes": 4082
+    },
+    {
+      "path": "modules/childProfile.js",
+      "sha256": "059be384b83101ab71d59b5ec228352e444fc57669797a74d453c6bb197ea704",
+      "bytes": 7175
+    },
+    {
+      "path": "modules/childAccessPolicy.js",
+      "sha256": "f563f1b1f5adcb3b7c750f8427b87f900e265b06ef929f1141b01aa146f49b0d",
+      "bytes": 10654
+    },
+    {
+      "path": "modules/childPackage.js",
+      "sha256": "d1d9179fbf5f11778958e751ab7bc98b4269d7b731628747e5465020405314be",
+      "bytes": 13700
+    }
+  ],
+  "externalRequests": [],
+  "launches": 2,
+  "restarts": 1,
+  "storageBoundary": "actual-browser-indexeddb",
+  "admissionBoundary": "explicit-synthetic-host-and-index-request",
+  "childContentActivated": false,
+  "installedOsRuntime": false,
+  "nativeAuthority": false,
+  "releaseReady": false,
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolVersions": {
+    "node": "v24.19.0",
+    "typescript": "5.9.3",
+    "playwright": "1.62.1",
+    "edge": [
+      "154.0.4258.48",
+      "154.0.4258.48"
+    ]
+  },
+  "sourceCommit": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+  "repositoryHead": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+  "inputSha256": "1acd8f40467a7d4d694ad430541dc808c8d25e514b0260c300219fd78bae0ccb",
+  "scriptSha256": "e502b245a9659d0f75ca7b80b96d9b6d5b42d1351ee2f5d5aa4c1b963f99ed99",
+  "profileRemoved": true,
+  "finishedAt": "2026-10-02T23:03:58.662Z"
+}

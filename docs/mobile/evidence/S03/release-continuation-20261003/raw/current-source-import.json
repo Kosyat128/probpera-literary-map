@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-source-continuation-import-verification",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "repositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "sourceExport": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source-export.json",
+    "sha256": "18b3736b0927a10d2f0b37ff9813b4982b78d406c7b1580e85c77d50c1b5cee5"
+  },
+  "sourceBundleSha256": "bd42f4e074693580d216b9e726c37cb9c1e3b45b42e17827d0d105cf55ba2ef1",
+  "baselinePrerequisite": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+  "sourceGraphSha256": "24211b025f126e07d0d1f7fcfd93322e7c79859193b0550386e99ce1e756edbb",
+  "sourceCommitCount": 11,
+  "reportCommitCount": 1,
+  "pass": true,
+  "fullPackParsed": true,
+  "expectedTipVerified": true,
+  "incrementalCompletenessWithOnlyBaseline": true,
+  "incrementalObjectCount": 360,
+  "incrementalObjectInventorySha256": "80436178d6aa453e37648f5f0513aa1b92d1a18fc7699b64314d0275bc2dcfee",
+  "incrementalVerificationScope": "Every object reachable from exact final source tip excluding baseline reachability is present in the imported owned object store with original alternates unset.",
+  "connectivityVerified": true,
+  "connectivityScope": "Exact final-tip reachable object connectivity using the original read-only prerequisite pool. Full historical object-store integrity is not checked.",
+  "fullHistoryIntegrity": "NOT_RUN",
+  "blobContentIntegrity": "NOT_RUN_BY_CONNECTIVITY",
+  "commitGraphVerification": "NOT_RUN_PROCESS_LOCAL_DISABLED",
+  "existingBaselineObjectsReadOnly": true,
+  "standaloneFreshClone": false,
+  "originalRefsChanged": false,
+  "originalConfigChanged": false,
+  "originalCommitGraphChanged": false,
+  "remoteActions": 0,
+  "releaseReady": false,
+  "inputSha256": "6744823503d52658e9898e1875895e3f055ec9e1f236afe22a1c64072d82d018",
+  "attempts": [
+    {
+      "name": "init",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "init",
+        "--bare",
+        "--template=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare"
+      ],
+      "stdout": {
+        "path": "init.stdout.txt",
+        "sha256": "a3f82ed7582e731d0a395714e388d8904b6336f68f157992aea4327be8b66d34",
+        "bytes": 203
+      },
+      "stderr": {
+        "path": "init.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    },
+    {
+      "name": "baseline-ref",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "--git-dir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "update-ref",
+        "refs/heads/prerequisite",
+        "6cf30bff556be65eeaa64b46bb1f52218b9084ed"
+      ],
+      "stdout": {
+        "path": "baseline-ref.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "baseline-ref.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    },
+    {
+      "name": "unbundle",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "--git-dir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "bundle",
+        "unbundle",
+        "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source.bundle"
+      ],
+      "stdout": {
+        "path": "unbundle.stdout.txt",
+        "sha256": "7f5c85b262b6b51c4e23ed2a41b32078d4e073344b3380fadc4706ba5d3a1f75",
+        "bytes": 104
+      },
+      "stderr": {
+        "path": "unbundle.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    },
+    {
+      "name": "incremental-objects",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "--git-dir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "cat-file",
+        "--batch-check"
+      ],
+      "stdout": {
+        "path": "incremental-objects.stdout.txt",
+        "sha256": "e6391eb86a158e998792040fdaf6614e9b0d679c7af6a38c8f05fbe8417eb258",
+        "bytes": 18360
+      },
+      "stderr": {
+        "path": "incremental-objects.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    },
+    {
+      "name": "source-ref",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "--git-dir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "update-ref",
+        "refs/heads/codex/literary-planet-v12-bilingual-final-autopilot",
+        "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647"
+      ],
+      "stdout": {
+        "path": "source-ref.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "source-ref.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    },
+    {
+      "name": "commit",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "--git-dir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "cat-file",
+        "-e",
+        "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647^{commit}"
+      ],
+      "stdout": {
+        "path": "commit.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "commit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    },
+    {
+      "name": "connectivity",
+      "exitCode": 0,
+      "command": [
+        "git",
+        "-c",
+        "core.hooksPath=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "--git-dir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-import-9847f199-cee4-48ee-8361-f24a926e48a7\\owned-bare",
+        "fsck",
+        "--connectivity-only",
+        "--no-reflogs",
+        "--no-dangling",
+        "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647"
+      ],
+      "stdout": {
+        "path": "connectivity.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "connectivity.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "timeoutOrLaunchFailure": false
+    }
+  ],
+  "finishedAt": "2026-10-03T02:50:24.821Z"
+}

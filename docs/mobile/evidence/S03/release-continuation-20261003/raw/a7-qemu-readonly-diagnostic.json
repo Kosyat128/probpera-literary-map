@@ -1,0 +1,48 @@
+{
+  "cpuSeconds": 5.34375,
+  "workingBytes": 142962688,
+  "appInstalled": false,
+  "checkedAt": "2026-10-02T23:31:45.3626878Z",
+  "pid": 35200,
+  "guestBootVerified": false,
+  "threadGroups": [
+    {
+      "stateAndReason": "Wait, EventPairLow",
+      "count": 2
+    },
+    {
+      "stateAndReason": "Wait, Executive",
+      "count": 1
+    },
+    {
+      "stateAndReason": "Wait, Unknown",
+      "count": 1
+    },
+    {
+      "stateAndReason": "Wait, UserRequest",
+      "count": 5
+    }
+  ],
+  "hostChanges": 0,
+  "parentPid": 35424,
+  "started": "2026-10-02T23:28:45.3575906Z",
+  "kind": "owned-qemu-readonly-diagnostic",
+  "sockets": [
+    {
+      "State": 100,
+      "LocalPort": 55769
+    },
+    {
+      "State": 5,
+      "LocalPort": 55769
+    },
+    {
+      "State": 5,
+      "LocalPort": 55768
+    }
+  ],
+  "schemaVersion": 1,
+  "runId": "4d83da9c0ba4473eb4f3e3fb9ce13738",
+  "exactGuardVerified": true,
+  "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+}

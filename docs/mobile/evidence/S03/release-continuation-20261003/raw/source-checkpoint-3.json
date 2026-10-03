@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "52202817e51892e14fc467677b40c613fffc3cd6",
+  "previousHead": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "src/child/childDurableData.ts",
+      "sha256": "310f2bc46887a8a6702457d877b26d63ea360f1cddc4945e9f7982989f880fa3"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-02T23:10:07.326Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [],
+  "remoteOperations": 0
+}

@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-media-web-presentation-proof",
+  "startedAt": "2026-10-03T02:03:05.537Z",
+  "pass": true,
+  "checks": [
+    {
+      "id": "actual-owned-canvas-created",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-bitmap-presentation",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-owned-image-pixels",
+      "status": "PASS"
+    },
+    {
+      "id": "owned-pixels-clear-before-new-decoder",
+      "status": "PASS"
+    },
+    {
+      "id": "synchronous-host-transition",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-clear-before-host-publication",
+      "status": "PASS"
+    },
+    {
+      "id": "new-generation-image",
+      "status": "PASS"
+    },
+    {
+      "id": "trusted-expiry-presentation-sealed",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-expiry-clears-canvas-and-bitmap",
+      "status": "PASS"
+    },
+    {
+      "id": "background-first-image",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-background-clear",
+      "status": "PASS"
+    },
+    {
+      "id": "background-denies-fresh-render",
+      "status": "PASS"
+    },
+    {
+      "id": "foreground-needs-fresh-admission",
+      "status": "PASS"
+    },
+    {
+      "id": "sound-disabled-narration-loads-silently",
+      "status": "PASS"
+    },
+    {
+      "id": "captured-profile-sound-denies-play",
+      "status": "PASS"
+    },
+    {
+      "id": "enabled-narration-loads-without-autoplay",
+      "status": "PASS"
+    },
+    {
+      "id": "no-source-start-before-user-click",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-transient-trusted-button-action",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-one-source-start",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-ended-lease-cleared",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-narration-buffer-wiped",
+      "status": "PASS"
+    },
+    {
+      "id": "actual-owned-canvas-removed",
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "sourceFiles": [
+    {
+      "path": "src/child/childMediaPresentation.ts",
+      "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+    },
+    {
+      "path": "src/child/childMediaDecode.ts",
+      "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+    },
+    {
+      "path": "src/child/childMedia.ts",
+      "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+    },
+    {
+      "path": "src/child/childDataNamespace.ts",
+      "sha256": "2a0b9497bc77f8fd9cf078ce2e3b91cff1ac16c842dd38df28e59d236be1c97a"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    },
+    {
+      "path": "src/child/childAccessPolicy.ts",
+      "sha256": "7e4234106e38fd9667adb225ec0d75ba87cdf669ef248e558cbb22440a5b3554"
+    },
+    {
+      "path": "src/child/childPackage.ts",
+      "sha256": "e7ebba5afcf9bc1d7b6c6fc545f5ad47518d5b7cfc24482b4d4f8b8c7c3c2326"
+    }
+  ],
+  "emittedModules": [
+    {
+      "path": "modules/childMediaPresentation.js",
+      "sha256": "7e48e865078d07f16c4ec089dc1d515a013eaf1a1b0b45a742436488c9c83c6d",
+      "bytes": 19011
+    },
+    {
+      "path": "modules/childMediaDecode.js",
+      "sha256": "c6e2dc1ff48678acd05aea7ef4eecbe7be54e53aa4e5a09849f248b3545a9de4",
+      "bytes": 28393
+    },
+    {
+      "path": "modules/childMedia.js",
+      "sha256": "ecc893aba1375b4f23a81f2bd7aff845a6eb73b6067286eab5f6db57da5fd6d8",
+      "bytes": 21264
+    },
+    {
+      "path": "modules/childDataNamespace.js",
+      "sha256": "e854c4e7e4cc16ab5bff0329498145f306939e63170e841ad0d63f6da455b0b4",
+      "bytes": 4082
+    },
+    {
+      "path": "modules/childProfile.js",
+      "sha256": "059be384b83101ab71d59b5ec228352e444fc57669797a74d453c6bb197ea704",
+      "bytes": 7175
+    },
+    {
+      "path": "modules/childAccessPolicy.js",
+      "sha256": "f563f1b1f5adcb3b7c750f8427b87f900e265b06ef929f1141b01aa146f49b0d",
+      "bytes": 10654
+    },
+    {
+      "path": "modules/childPackage.js",
+      "sha256": "d1d9179fbf5f11778958e751ab7bc98b4269d7b731628747e5465020405314be",
+      "bytes": 13700
+    }
+  ],
+  "externalRequests": [],
+  "generatedFixtures": [
+    {
+      "mime": "image/png",
+      "bytes": 93,
+      "sha256": "6f4ed949cb72625e8fff2e4f7e0093a517c099bdb7664097f9a93c49a0a5afcd",
+      "source": "own-3x2-canvas"
+    },
+    {
+      "mime": "audio/wav",
+      "bytes": 1004,
+      "sha256": "76e408e2130c00ec7af2095e8a662ee640714e597b8be984bca4bc0972485393",
+      "source": "own-10ms-PCM-muted-output"
+    }
+  ],
+  "launches": 1,
+  "codecBoundary": "actual-browser-codec-and-owned-DOM-canvas",
+  "admissionBoundary": "explicit-synthetic-host-and-byte-loader-no-human-or-native-proof",
+  "audioBoundary": "actual-button-activation-muted-output-not-audible-sound-proof",
+  "childContentActivated": false,
+  "installedOsRuntime": false,
+  "nativeAuthority": false,
+  "releaseReady": false,
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolVersions": {
+    "node": "v24.19.0",
+    "typescript": "5.9.3",
+    "playwright": "1.62.1",
+    "edge": "154.0.4258.48"
+  },
+  "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+  "inputSha256": "528888ec2a29a6a458c31cf5ec945c297e79f75e3b4f716ebe0371e41ac631c6",
+  "scriptSha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d",
+  "profileRemoved": true,
+  "finishedAt": "2026-10-03T02:03:08.587Z"
+}

@@ -1,0 +1,5 @@
+Exception: D:\CodexData\.codex\visualizations\2026\10\02\01a0fd35-3865-7973-8f4c-0c7a0148df47\release-completion\android-owned-emulator\Install-PinnedSdkPackages-a2.ps1:6
+Line |
+   6 |  : ool]$Condition,[string]$Code) { if(-not $Condition) { throw $Code } }
+     |                                                          ~~~~~~~~~~~
+     | INSUFFICIENT_PROJECT_VOLUME_FREE_SPACE

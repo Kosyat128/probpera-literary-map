@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-owned-a7-final-forensic-summary",
+  "createdAt": "2026-10-02T23:46:14.712Z",
+  "status": "OWN_GUEST_BOOT_NOT_VERIFIED",
+  "original": {
+    "version": "a7",
+    "runId": "4d83da9c0ba4473eb4f3e3fb9ce13738",
+    "result": ".tmp/mobile-owned-avd-4d83da9c0ba4473eb4f3e3fb9ce13738/result.json",
+    "resultSha256": "74bbacf67e27d4e7ab3bdff70be08aa8e702b5eceb7fca55145124d483b833e3",
+    "status": "FAIL",
+    "failureCode": "OWN_SOFTWARE_EMULATOR_BOOT_TIMEOUT_300S",
+    "startedAt": "2026-10-02T23:28:43.880Z",
+    "finishedAt": "2026-10-02T23:33:54.425Z",
+    "totalLifecycleMilliseconds": 310545,
+    "emulatorStartedAt": "2026-10-02T23:28:45.306Z",
+    "emulatorStoppedAt": "2026-10-02T23:33:47.703Z",
+    "configuredBootDeadlineMilliseconds": 300000,
+    "inputSha256": "f3827924cf1cb3c411b2eede0ff5172b2d37f9e10ccab59cff6afd5a8b3e5202",
+    "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+    "sourceFingerprint": "d2cffd69ce2ce2e9fdf2658ee299273ebea3820dd546695ace982f04ece130c9",
+    "bootstrap": "NOT_RUN",
+    "runtime": "NOT_RUN",
+    "protectedAppCommands": 0,
+    "ownQemuProcess": {
+      "kind": "literary-planet-owned-qemu-process-inspection",
+      "status": "OWN_QEMU_OBSERVED",
+      "launcherPid": 35424,
+      "processes": [
+        {
+          "pid": 35200,
+          "parentPid": 35424,
+          "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+          "createdAt": "2026-10-02T23:28:45.3575900Z"
+        }
+      ],
+      "commandLinePublished": false,
+      "guestBootVerified": false,
+      "inspectionScriptSha256": "e737a3254178ddf38464ca63eff5019fa4a21109e9062f21c520fa22140844f5"
+    },
+    "guestLaunchMarkers": {
+      "status": "CAPTURED",
+      "qemuLaunchMarkerObserved": false,
+      "kernelVersionObserved": false,
+      "kernelBootObserved": false,
+      "bootCompletedMarkerObserved": false,
+      "metricsWarningObserved": false,
+      "guestBootVerified": false,
+      "sourcePath": "logs/emulator.stdout.txt",
+      "sourceSha256": "ef7378c008d72b20a791df992d57430b20c23c86d50865203ee28fcebd092086"
+    },
+    "dataImage": {
+      "status": "MEASURED",
+      "configuredDataBytes": 2147483648,
+      "imageLogicalBytes": 6442450944,
+      "attributes": 544,
+      "sparse": true,
+      "allocatedBytes": 74448896,
+      "allocationStatus": "MEASURED",
+      "allocationFailure": null,
+      "measurementScriptSha256": "2353e88e9fa57cb4d23c126c4dbd94157eea67693f295d58c5723277c4c5d6b3"
+    },
+    "cleanup": {
+      "emulatorStopped": true,
+      "adbServerStopped": true,
+      "avdDeleted": true,
+      "sourceAndLicencePreserved": true
+    },
+    "releaseReady": false
+  },
+  "rootReadOnlyDiagnostic": {
+    "path": "a7-qemu-readonly-diagnostic.json",
+    "sha256": "f0f7243d369776881a2d1f58a6b12455814a46f01d20afc02930e84814dbc45a",
+    "value": {
+      "cpuSeconds": 5.34375,
+      "workingBytes": 142962688,
+      "appInstalled": false,
+      "checkedAt": "2026-10-02T23:31:45.3626878Z",
+      "pid": 35200,
+      "guestBootVerified": false,
+      "threadGroups": [
+        {
+          "stateAndReason": "Wait, EventPairLow",
+          "count": 2
+        },
+        {
+          "stateAndReason": "Wait, Executive",
+          "count": 1
+        },
+        {
+          "stateAndReason": "Wait, Unknown",
+          "count": 1
+        },
+        {
+          "stateAndReason": "Wait, UserRequest",
+          "count": 5
+        }
+      ],
+      "hostChanges": 0,
+      "parentPid": 35424,
+      "started": "2026-10-02T23:28:45.3575906Z",
+      "kind": "owned-qemu-readonly-diagnostic",
+      "sockets": [
+        {
+          "State": 100,
+          "LocalPort": 55769
+        },
+        {
+          "State": 5,
+          "LocalPort": 55769
+        },
+        {
+          "State": 5,
+          "LocalPort": 55768
+        }
+      ],
+      "schemaVersion": 1,
+      "runId": "4d83da9c0ba4473eb4f3e3fb9ce13738",
+      "exactGuardVerified": true,
+      "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+    }
+  },
+  "establishedFacts": [
+    "Owned headless QEMU was created and verified by exact PID/parent/SDK path/creation time/nonce.",
+    "At the retained diagnostic all nine QEMU threads waited; no console5556 or bridge5557 listener existed.",
+    "Software SwiftShader/no-Vulkan/no-metrics/show-kernel did not produce guest kernel, boot completion or private ADB serial evidence within the configured300s.",
+    "Guest/app install/runtime checks were not conducted; cleanup of own processes/AVD and source/license preservation all reported true."
+  ],
+  "cause": {
+    "status": "UNAVAILABLE",
+    "privateAdbRegistrationAloneExplainsFailure": false,
+    "rendererOrEarlierGuestStartupFailureProven": false,
+    "preciseRemainingInvestigation": "A bounded own-process startup/module/stack investigation on Codex infrastructure, with exact owned PID guards and local installed tools. PATH and standard Windows Kits cdb/windbg locations were absent in limited read-only discovery. No host configuration change or new blind VM run is authorised by this summary."
+  },
+  "sdk": {
+    "originalStatus": "FAIL",
+    "qualificationStatus": "PASS_WITH_SDK_METADATA_CHANGE",
+    "originalInstallationSha256": "947630593e084609c9faf0355e24b902e203509be673f51d53eefd87b73e5433",
+    "qualificationSha256": "1415afc7818592b316e153948ae45b22d141e09e052feb3b1c90a5404e56a5df",
+    "packages": [
+      {
+        "path": "emulator",
+        "revision": "37.2.12",
+        "archiveSha256": "3b524b6e0f1f5506d3d81af62ec9ce15b2a6f80f467e99574e167514ca181401",
+        "archiveSha1": "488ed747e82de7e9bb5247becd1ac043c7e5e85d"
+      },
+      {
+        "path": "system-images;android-36;default;x86_64",
+        "revision": "2",
+        "archiveSha256": "e1b9d9fb665001ef27b16e57d8762a2d54aec6bff617e17506edb8676667b9da",
+        "archiveSha1": "829c076e8ff448a336097ae25a355b495ba36e2c"
+      }
+    ],
+    "guestOsValidated": false
+  },
+  "primaryTroubleshootingSource": "https://developer.android.com/studio/run/emulator-troubleshooting",
+  "documentedFlagsApplied": [
+    "-gpu swiftshader",
+    "-feature -Vulkan"
+  ],
+  "workaroundOutcome": "FAIL_NOT_RELABELED",
+  "protectedStateAdmission": "UNAVAILABLE",
+  "nativeTimeAdmission": "UNAVAILABLE",
+  "installedOsPass": false,
+  "releaseReady": false,
+  "ownerProgrammingRequired": false
+}

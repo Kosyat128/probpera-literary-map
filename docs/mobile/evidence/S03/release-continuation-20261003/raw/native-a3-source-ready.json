@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "status": "READY",
+  "proposal": "child-index-repair-nativecandidatea3",
+  "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+  "manifestSha256": "e2eaae60a62979419cbd9c06049573963bac70c20f04e8cca2cf9040cf7610a3",
+  "ownedPaths": 5,
+  "androidCompilation": "NOT_RUN",
+  "androidRuntime": "NOT_RUN",
+  "iosCompilation": "NOT_RUN",
+  "iosRuntime": "NOT_RUN",
+  "appActivation": false,
+  "nativePinAuthority": "UNAVAILABLE",
+  "protectedAdmission": false,
+  "storageLease": "native-private-data-partition-only",
+  "review": {
+    "scope": "Bounded author source review; exact staged five paths await independent root review",
+    "status": "PENDING_FINAL_PEER_ACK",
+    "execution": false,
+    "agent": "/root/presentation_review"
+  },
+  "limits": {
+    "valueBytes": 8388608,
+    "snapshotBytes": 33554432,
+    "slots": 4096,
+    "readsPerBatch": 64,
+    "writesPerBatch": 64,
+    "operationTimeoutMs": 60000,
+    "aggregateOwnedMutationBytes": 33554432
+  },
+  "api": [
+    "activate(scope)",
+    "operation(lease,timeoutMs)",
+    "transact(lease,reads,expectedRevisionMutations,cancellation)",
+    "cancel(cancellation)",
+    "retire(lease)",
+    "close()"
+  ],
+  "actualPlatformPrimitives": {
+    "android": "Dedicated AndroidKeystore AES-GCM/noBackup AtomicFile + bounded process/FileChannel lock and exact readback",
+    "ios": "Dedicated WhenUnlockedThisDeviceOnly nonsync Keychain AES key/CryptoKit AES.GCM + protected backup-excluded atomic rename snapshot/process flock"
+  },
+  "phases": [
+    "write",
+    "read",
+    "atomic",
+    "retire",
+    "corrupt",
+    "missing-key",
+    "missing-cipher",
+    "clear"
+  ],
+  "androidRunner": {
+    "class": "ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest",
+    "runIdArgument": "literaryRunId",
+    "phaseArgument": "literaryChildDataPhase",
+    "note": "Only an authorized isolated installed target, private localhost ADB port/exact serial, and actual offline guard before each app command. No runner executed."
+  },
+  "iosRunner": {
+    "test": "AppSecureStorageTests/PlanetChildDataStoreRuntimeTests/testDurableDataPhase",
+    "environment": [
+      "LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID",
+      "LITERARY_PLANET_CHILD_DATA_TEST_PHASE"
+    ],
+    "note": "Requires separately available actual Mac/Xcode installed target; no Swift/XCTest execution on Windows."
+  },
+  "plan": [
+    "Fresh32hex run ID: write; full test-process close; read; atomic; retire; clear",
+    "Each destructive phase gets a separate fresh32hex run ID: write; corrupt|missing-key|missing-cipher; clear"
+  ],
+  "exclusions": [
+    "No public plugin or JS transaction callback bridge",
+    "No parent/PIN anti-rollback or trusted rights time",
+    "No weakening of ParentVault or Auth three-slot key allowlist",
+    "No App child content activation"
+  ],
+  "failureSemantics": "Whole batch is checked before mutation. Pre-publication failure rolls staged writes back; post-publication/readback/ack failure is unknown commitment, never false rollback or parent authority.",
+  "rootReviewRepairs": [
+    "Weak Swift owner references avoid store-activeLease ARC retention cycle",
+    "Explicit off_t snapshot size comparison",
+    "Android/iOS write phase compares actual namespace against a literal JavaScript canonical full-tuple namespace",
+    "Both platforms enforce remaining aggregate32MiB mutation byte budget under each Mutation lock BEFORE cloning",
+    "Android rechecks owned external read/write list sizes after snapshot copies",
+    "Stored revision stays strictly below JavaScript MAX_SAFE and mutation expected revision below MAX_SAFE-1; scope versions retain inclusive MAX_SAFE",
+    "Android test fixture canonicalizes private noBackup parent before building its owned run directory"
+  ],
+  "canonicalNamespaceFixture": {
+    "kind": "JavaScript-JSON.stringify-full11-coordinate-tuple",
+    "expected": "probpera-child-v1/search/5b312c226368696c64222c2273796e7468657469632d6368696c64222c312c392c227275222c2273796e7468657469632d706f6c696379222c2261616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161222c2273796e7468657469632d7061636b616765222c312c2261616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161225d",
+    "sourceSha256": "b509d09a7a5d63db1fdd025114b0701fffa0cad0409303c3b98b579f9176ac37",
+    "runtime": "NOT_RUN"
+  },
+  "priorProposals": [
+    {
+      "proposal": "child-index-repair-nativecandidate",
+      "manifestSha256": "087634fdb397707b7761d827ac21b389c22cd3fd118504ba68d17c5138602838",
+      "preserved": true
+    },
+    {
+      "proposal": "child-index-repair-nativecandidatea2",
+      "manifestSha256": "09276c4f5d354375bf939ce5aab623698bd3326429c4ffa9cb9838daf545d7c3",
+      "preserved": true
+    }
+  ]
+}

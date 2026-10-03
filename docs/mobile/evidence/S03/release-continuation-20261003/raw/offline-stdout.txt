@@ -1,0 +1,11 @@
+
+ RUN  v4.1.10 D:/CodexProjects/Работа по сайту/literary-planet-v12-work
+
+ ✓ scripts/mobile/native-install-runtime.test.mjs (75 tests | 47 skipped) 17ms
+
+ Test Files  1 passed (1)
+      Tests  28 passed | 47 skipped (75)
+   Start at  01:28:25
+   Duration  1.11s (transform 194ms, setup 0ms, import 857ms, tests 17ms, environment 0ms)
+
+JSON report written to D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-offline-guard-a1/vitest.json

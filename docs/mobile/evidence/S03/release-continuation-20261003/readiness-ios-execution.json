@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-channel-check-execution",
+  "binding": {
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "platform": "ios",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\release-readiness.mjs",
+    "--evidence",
+    ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/readiness-input-ios.json",
+    "--report",
+    ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/readiness-ios.json"
+  ],
+  "startedAt": "2026-10-03T03:01:56.434Z",
+  "finishedAt": "2026-10-03T03:01:59.055Z",
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "originalSelection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\release-continuation-staged-a5bcdf90-6379-486b-b7a6-37a19c6ca20a\\docs\\mobile\\evidence\\S03\\release-continuation-20261003\\readiness-input-ios.json",
+    "sha256": "60061ab614b7e517ae3bb3487c0e55b343421fd96eee101c24a5e0685017c8ac"
+  },
+  "actualSelection": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-ios.json",
+    "sha256": "f2a9ec90e6c814d2bc0276421646ac7631b1d4611cf15999aaf5cbc2fbbe0fc2"
+  },
+  "sourceChanges": false,
+  "proofBytesChanged": false,
+  "onlyFamilyProofPathsRebased": true,
+  "releaseReady": false
+}

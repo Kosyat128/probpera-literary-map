@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+  "previousHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "src/child/childMediaPresentation.test.ts",
+      "sha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+    },
+    {
+      "path": "src/child/childMediaPresentation.ts",
+      "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+    },
+    {
+      "path": "tests/child/child-media-presentation-web.mjs",
+      "sha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-03T02:02:16.197Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [
+    {
+      "path": "tests/child/child-media-presentation-web.mjs",
+      "status": "PASS"
+    }
+  ],
+  "remoteOperations": 0
+}

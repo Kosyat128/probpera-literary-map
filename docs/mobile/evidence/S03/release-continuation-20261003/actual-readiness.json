@@ -1,0 +1,980 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-three-channel-checks",
+  "binding": {
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30",
+  "stagedProposal": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\release-continuation-staged-a5bcdf90-6379-486b-b7a6-37a19c6ca20a",
+  "mirror": [
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/prior-packet-result.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/prior-packet-result.json",
+      "sha256": "61a3a53e8e602501d7c02a86d73a85231687ce3bb9dab40b9424dc149ebc9505",
+      "bytes": 82254
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/prior-packet-manifest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/prior-packet-manifest.json",
+      "sha256": "5aa2b2c9d51e2b7dad4cec91c37a2a48b93c5778d4451e7b7d8b028855266e3a",
+      "bytes": 1460741
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-1.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/source-checkpoint-1.json",
+      "sha256": "4170bc1c4ca99ad50b3a2ef6c22a9733a4aab44300f931f61b232c8cb673be30",
+      "bytes": 1127
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-2.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/source-checkpoint-2.json",
+      "sha256": "0000c68e520363abd60b1c02d9fbc4d2ec54565d0808f9ba26219443018851b6",
+      "bytes": 1154
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-3.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/source-checkpoint-3.json",
+      "sha256": "257da79768382dd664dee2e2855bf3383a0d0778b2c2c5d9020e59cff83a1c4a",
+      "bytes": 758
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-4.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/source-checkpoint-4.json",
+      "sha256": "3712f36bd22feecefe77ab4aa8015b75eac2521de444f5832e8e4e8bc053dff4",
+      "bytes": 1431
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-5.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/source-checkpoint-5.json",
+      "sha256": "65c3a788bb854f6985fb49c0cf58ff017682ebc64a78b8430c676974e30639d8",
+      "bytes": 1176
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-6.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/source-checkpoint-6.json",
+      "sha256": "b2a7ec20db191d00e2967663c20f3b15c49ab959c72015171d7aad145f55cb85",
+      "bytes": 2222
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/offline-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/offline-execution.json",
+      "sha256": "9ea87caaaa78d9d436c4bf0d48e04eaf5aeaf4720e977c8ce155b81fe8f48d2d",
+      "bytes": 706
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/offline-vitest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/offline-vitest.json",
+      "sha256": "a71693db533c90c576436a346773cf1893cb1357d685493271c0de3791a5f16b",
+      "bytes": 28875
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/offline-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/offline-stdout.txt",
+      "sha256": "b45e07f7baaf611d37f7e6f77c261570d19ba2a93a898d90caadc019c7351cbb",
+      "bytes": 511
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/offline-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/offline-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/durable-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/durable-execution.json",
+      "sha256": "3f804dfff5a4412f07e90f3ad0fdbcde19e070e2bf6f6f156efd8aa068498720",
+      "bytes": 701
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/durable-vitest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/durable-vitest.json",
+      "sha256": "4a7b4d97b5ea42f6187a4fb5493de6e3793a8d7618b678449fc2fd63e3aaceec",
+      "bytes": 18611
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/durable-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/durable-stdout.txt",
+      "sha256": "31765d0652d496e88fba87b7de1e0386c23083879e6cf8cea383de646df4d341",
+      "bytes": 154
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/durable-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/durable-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/durable-indexeddb.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/durable-indexeddb.json",
+      "sha256": "6ab91b6883c38e8a892b93b4c32690298f602d4cc471ad4bc5a1f240e3365f89",
+      "bytes": 7023
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/durable-type-qualification.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/durable-type-qualification.json",
+      "sha256": "af8a0beeb1532b3fd8d64fdea9addb60d377c399c07aee252956b988f009e879",
+      "bytes": 868
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-app-typecheck.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-app-typecheck.json",
+      "sha256": "abc185bd4ef34e15d7f2446ba2c5660a3fcda57e1d05e4954ff0df29ac3cafc4",
+      "bytes": 229721
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-avd-final-attempt.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-avd-final-attempt.json",
+      "sha256": "74bbacf67e27d4e7ab3bdff70be08aa8e702b5eceb7fca55145124d483b833e3",
+      "bytes": 65955
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-vitest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-vitest.json",
+      "sha256": "3a265b08a8ecfd3b3ce84e9c8f36851572e9f46f577d4defd3dd8b5e18f509a6",
+      "bytes": 40125
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-vitest-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-vitest-dirty-scope.json",
+      "sha256": "eb743ffe7ff8136609d4a6abb9db49888b38e6b4b9612650487171b4990fd449",
+      "bytes": 990
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-execution.json",
+      "sha256": "a678d93fe994f3bc6513a1c4b49a8295fac78352302f88bb2914ab91392c5966",
+      "bytes": 742
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-execution-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-execution-dirty-scope.json",
+      "sha256": "eb743ffe7ff8136609d4a6abb9db49888b38e6b4b9612650487171b4990fd449",
+      "bytes": 990
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-stdout.txt",
+      "sha256": "0981c8bdbdc824f90be1f09c1add7165122de8532691557ecc610885a074d0e8",
+      "bytes": 159
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-stdout-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-stdout-dirty-scope.json",
+      "sha256": "eb743ffe7ff8136609d4a6abb9db49888b38e6b4b9612650487171b4990fd449",
+      "bytes": 990
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a1-stderr-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a1-stderr-dirty-scope.json",
+      "sha256": "eb743ffe7ff8136609d4a6abb9db49888b38e6b4b9612650487171b4990fd449",
+      "bytes": 990
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-vitest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-vitest.json",
+      "sha256": "4c2aa281f7786b8cc7b6c37c3f9338d7a3cb94d2cecc74cc2842e1c2ec4a753b",
+      "bytes": 14043
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-vitest-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-vitest-dirty-scope.json",
+      "sha256": "885fb2791564baacd9f566bcea9ec55c86fa3e8de032f4b6a7c9875fe742da13",
+      "bytes": 964
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-execution.json",
+      "sha256": "cbe6f7d06663ee92d6d6d75f2fbe9ed8f95bab597c760368acc00e149e0d63ba",
+      "bytes": 3511
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-execution-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-execution-dirty-scope.json",
+      "sha256": "885fb2791564baacd9f566bcea9ec55c86fa3e8de032f4b6a7c9875fe742da13",
+      "bytes": 964
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-stdout.txt",
+      "sha256": "0e158a7e08a41db7dc4d90fb2060c8bd55cbc263769656d2b411aac8fd4aee41",
+      "bytes": 159
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-stdout-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-stdout-dirty-scope.json",
+      "sha256": "885fb2791564baacd9f566bcea9ec55c86fa3e8de032f4b6a7c9875fe742da13",
+      "bytes": 964
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-decode-a2-stderr-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-decode-a2-stderr-dirty-scope.json",
+      "sha256": "885fb2791564baacd9f566bcea9ec55c86fa3e8de032f4b6a7c9875fe742da13",
+      "bytes": 964
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-vitest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-vitest.json",
+      "sha256": "7038c493b5814b3f949635ca5eff3b23b54b92b82295ed93e7f3c81116c37edb",
+      "bytes": 10954
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-vitest-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-vitest-dirty-scope.json",
+      "sha256": "1fcf2f7200ee672d47a86da89be74fdd43043558579cea880cc02f0bf64e140d",
+      "bytes": 533
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-execution.json",
+      "sha256": "cd3584b1563f9920286e41071bb048e73d668e19a11c741ae392f5ec2f19ee62",
+      "bytes": 737
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-execution-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-execution-dirty-scope.json",
+      "sha256": "1fcf2f7200ee672d47a86da89be74fdd43043558579cea880cc02f0bf64e140d",
+      "bytes": 533
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-stdout.txt",
+      "sha256": "5ccb6556a2a401e8755883fc26eb67c85524ef6eb8574bef6288540f9802ba59",
+      "bytes": 165
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-stdout-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-stdout-dirty-scope.json",
+      "sha256": "1fcf2f7200ee672d47a86da89be74fdd43043558579cea880cc02f0bf64e140d",
+      "bytes": 533
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/child-media-presentation-a1-stderr-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/child-media-presentation-a1-stderr-dirty-scope.json",
+      "sha256": "1fcf2f7200ee672d47a86da89be74fdd43043558579cea880cc02f0bf64e140d",
+      "bytes": 533
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/actual-edge-codec.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/actual-edge-codec.json",
+      "sha256": "dfc64858ea705813b954b57b1abb112fa097074007d84ea520c5626f13cf23e4",
+      "bytes": 5926
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/actual-edge-presentation.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/actual-edge-presentation.json",
+      "sha256": "72b3b5f639b6463e04f31583495bd9d8fe8605d89b166c1634312e5ed3107d6a",
+      "bytes": 5484
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/tsc-durable-original-fail.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/tsc-durable-original-fail.json",
+      "sha256": "bceb76b874f44f0c1d6ea70d1e0aba5813fdea47127cdd5b38aa9efe79efa412",
+      "bytes": 229128
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/tsc-durable-original-fail-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/tsc-durable-original-fail-stdout.txt",
+      "sha256": "d90deeca375c51401c38af62a0e43df78ec95aa9b52fa99f6bda4bc24fe0c816",
+      "bytes": 477
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/tsc-durable-original-fail-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/tsc-durable-original-fail-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/tsc-codec-original-pass.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/tsc-codec-original-pass.json",
+      "sha256": "6d6f3ff6763e3a75c3a18bdc5a8c1c7c03520ddb63812765f0f0b6a04096b7ea",
+      "bytes": 229418
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/tsc-codec-original-pass-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/tsc-codec-original-pass-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/tsc-codec-original-pass-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/tsc-codec-original-pass-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-avd-a2.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-avd-a2.json",
+      "sha256": "a2981eeb109e0add037c0874d49444443c55ce9e1afa8a4f2c9823bb08789690",
+      "bytes": 4190
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-avd-a3.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-avd-a3.json",
+      "sha256": "4cda41130c11f78e6b09edc02c8103ffd3e49dd42e872a52178d1e87905847c2",
+      "bytes": 29300
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-avd-a4.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-avd-a4.json",
+      "sha256": "0b293a32abaa05a6ab7f8e74dbc7b1336b057882348654d57990751c5bdff987",
+      "bytes": 61822
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-avd-a5.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-avd-a5.json",
+      "sha256": "5a3b413083e2d5db7951e917e636b67bd6fbf2e81a98ac325e98173b9e0ae1a2",
+      "bytes": 64003
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-avd-a6.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-avd-a6.json",
+      "sha256": "5443cfb51104bcc00183cc6327ef7f8880c6e2dc2d35250c8ce5c9300d21748f",
+      "bytes": 65527
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-install-a2-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/sdk-install-a2-execution.json",
+      "sha256": "dde26a5e2eb0e33c1fa4ef099e05dd475a7135976c0c8b31f029e118687ae47c",
+      "bytes": 1490
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-install-a2-stdout.log",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/sdk-install-a2-stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-install-a2-stderr.log",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/sdk-install-a2-stderr.log",
+      "sha256": "d3970ac40355d6a1a8dd0e4351af5b84d67c0457e5e84f0724e45dc0142bbacb",
+      "bytes": 385
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-install-a3.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/sdk-install-a3.json",
+      "sha256": "947630593e084609c9faf0355e24b902e203509be673f51d53eefd87b73e5433",
+      "bytes": 87733
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-qualification-a2.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/sdk-qualification-a2.json",
+      "sha256": "1415afc7818592b316e153948ae45b22d141e09e052feb3b1c90a5404e56a5df",
+      "bytes": 3040
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/a5-image-measurement-qualification.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/a5-image-measurement-qualification.json",
+      "sha256": "3916a58d18ccaa640f62b122e6c5adb0f7cd6cc6b1de305fe5f39343f77d3ab4",
+      "bytes": 1668
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/a6-forensic-summary.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/a6-forensic-summary.json",
+      "sha256": "183b122fe1a63be3c8deccf361e182d48ca5e2b422a5173b0a7a143a22e90ba0",
+      "bytes": 3041
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/a7-final-forensic-summary.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/a7-final-forensic-summary.json",
+      "sha256": "b5a1dafa38f7c24f74bc05bd93aa3941b8b9fcac03afa67101794ab7a1383524",
+      "bytes": 6471
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/a7-qemu-readonly-diagnostic.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/a7-qemu-readonly-diagnostic.json",
+      "sha256": "f0f7243d369776881a2d1f58a6b12455814a46f01d20afc02930e84814dbc45a",
+      "bytes": 1021
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/owned-sdk-avd-raw-evidence-manifest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/owned-sdk-avd-raw-evidence-manifest.json",
+      "sha256": "164049c93853f4f6b3bfd4da4086b95c6174a3a8cfde5a36caeb5f7b26dcfb49",
+      "bytes": 224507
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-authority-dependencies.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-authority-dependencies.json",
+      "sha256": "4360352afddfb6fcf69cd90e037f731eb4fee1eb67d79e5eb4808617d7915610",
+      "bytes": 5073
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-authority-capability-review.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-authority-capability-review.json",
+      "sha256": "9bace42dc02a136206a519ea326ddeb19a8cf8e477dfb74bb4270be8d3469fda",
+      "bytes": 2191
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-vitest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-vitest.json",
+      "sha256": "6d27b147f676c157cfc0fae32610b24a58744f585d8e5c53a9d34f1ed21e3ec9",
+      "bytes": 29259
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-vitest-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-vitest-dirty-scope.json",
+      "sha256": "6be9a869a39a1dbc0aeebada2e1b5cd5f017b0e789240cee733c0129dfc727d0",
+      "bytes": 721
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-execution.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-execution.json",
+      "sha256": "38ed8afd52eca7a382acce08c76e730ff9a88de3a15cba544bbab4b0756b0e0a",
+      "bytes": 803
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-execution-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-execution-dirty-scope.json",
+      "sha256": "6be9a869a39a1dbc0aeebada2e1b5cd5f017b0e789240cee733c0129dfc727d0",
+      "bytes": 721
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-stdout.txt",
+      "sha256": "95922987e25c195a63a646a3f83f1306930cd1b8839d9f9b5e2d244168c48e58",
+      "bytes": 161
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-stdout-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-stdout-dirty-scope.json",
+      "sha256": "6be9a869a39a1dbc0aeebada2e1b5cd5f017b0e789240cee733c0129dfc727d0",
+      "bytes": 721
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-child-command-a1-stderr-dirty-scope.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-child-command-a1-stderr-dirty-scope.json",
+      "sha256": "6be9a869a39a1dbc0aeebada2e1b5cd5f017b0e789240cee733c0129dfc727d0",
+      "bytes": 721
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-a2-javac-proposal-only.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-a2-javac-proposal-only.json",
+      "sha256": "03967a569be87f70ba0f4e07ec7c0d5e8c99e6272e20cd65e4b7b123a6840426",
+      "bytes": 789
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-a3-source-ready.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-a3-source-ready.json",
+      "sha256": "d84c3f09cdbd753e10526490ab501266aeb82eba4cb80425f95e809b5a15cfcb",
+      "bytes": 4862
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/native-a3-source-manifest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/native-a3-source-manifest.json",
+      "sha256": "e2eaae60a62979419cbd9c06049573963bac70c20f04e8cca2cf9040cf7610a3",
+      "bytes": 1127
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/latest-protected-content.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/latest-protected-content.json",
+      "sha256": "24e8c1f2709610a0f4c5e3dc8d6854696c38f538e11683fbdfa4f94581c29f92",
+      "bytes": 290
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-tsc-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-tsc-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-tsc-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-tsc-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-preview.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-pwa-preview.json",
+      "sha256": "c841b797f9a1982a778e41ec1d324567d23462060092478d5ccac5d8b94a6b61",
+      "bytes": 1834
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-preview-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-pwa-preview-stdout.txt",
+      "sha256": "a66f4021b4e2d2ff5e5a92163df013e9b7975a95873c6accde167bc574b2b2f0",
+      "bytes": 46
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-preview-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-pwa-preview-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-native-preflight.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-native-preflight.json",
+      "sha256": "7800ed126ef687a62ef4b33638b2c84544c33cb1976346332f865931948f146e",
+      "bytes": 32318
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/continuation-proposal-a1-tooling-failure.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/continuation-proposal-a1-tooling-failure.json",
+      "sha256": "29a14deca06314280043af510188de0e81d088e94b06b55cfff2ef40261c7664",
+      "bytes": 621
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-preparation-android.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-preparation-android.json",
+      "sha256": "5941ea69a69bb442a6147d236ac70ba616dbf563d4607f86585853f118c60d91",
+      "bytes": 300446
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-native-audit-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-native-audit-stdout.txt",
+      "sha256": "8c9a663d3be37c9229d3bf842a8504b9fda10c13f786448e11755e6de3de1aaa",
+      "bytes": 1045
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-native-audit-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-native-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-android-assemble-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-android-assemble-stdout.txt",
+      "sha256": "9921e60d8bd517a88413e946dfa9bdb87bba1104e957c81451f2714ae2282116",
+      "bytes": 13632
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-android-assemble-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-android-assemble-stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-android-instrumentation-assemble-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-android-instrumentation-assemble-stdout.txt",
+      "sha256": "d65c02b33612324f65dfe76490f561c7baa9c16144b90c7e200e5e892ab1aa7c",
+      "bytes": 14864
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-android-instrumentation-assemble-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-android-instrumentation-assemble-stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-android-native-binary.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-android-native-binary.json",
+      "sha256": "ee3b345aa1cbb67f5de1d81dd001ce609d0d54c5cd7fd8622cc4d3a556e14876",
+      "bytes": 196093
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-preparation-pwa.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-preparation-pwa.json",
+      "sha256": "ac661c03c9912778a9df5ee73eee5364adafc86217dabe735cc22bfb0c89753f",
+      "bytes": 286367
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-pwa-audit-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-pwa-pwa-audit-stdout.txt",
+      "sha256": "878307435351e9402103c3e4c48446b6e4d35eafee266ae0ea1f5e578aa9bd8f",
+      "bytes": 797
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-pwa-audit-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-pwa-pwa-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-preparation-ios-bundle.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-preparation-ios-bundle.json",
+      "sha256": "84a1ede2958c5b34421d102c5358300e485375bf44edcc8b392742e3711d1cf3",
+      "bytes": 286557
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-ios-bundle-native-audit-stdout.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-ios-bundle-native-audit-stdout.txt",
+      "sha256": "d2540fadf6e78956f35a9a9d2b5549dd4cfe22743caafd346757259036e2d8c4",
+      "bytes": 1041
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-ios-bundle-native-audit-stderr.txt",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-ios-bundle-native-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-source-export.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-source-export.json",
+      "sha256": "18b3736b0927a10d2f0b37ff9813b4982b78d406c7b1580e85c77d50c1b5cee5",
+      "bytes": 18037
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-source-graph.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-source-graph.json",
+      "sha256": "24211b025f126e07d0d1f7fcfd93322e7c79859193b0550386e99ce1e756edbb",
+      "bytes": 31577
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-source-files-manifest.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-source-files-manifest.json",
+      "sha256": "2159d6afe7fdfe03d2d954f4578cb219d4b67bab331bbbc8c938b72685912309",
+      "bytes": 352049
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-source-import.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/raw/current-source-import.json",
+      "sha256": "35dacf45e9584da555c473a4b3efb4634b4e35adedad171930c5f4c94adc1e44",
+      "bytes": 12813
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/entry.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/entry.json",
+      "sha256": "99f34ef323b9820a9dba60f51a627443e5556bc9577ee48ac7ccecbf680d9c4d",
+      "bytes": 345
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/result.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/result.json",
+      "sha256": "f29bac07c18e4fa2640bbab4d278c941390ea81d7b4b2383a6689d3b09f764a8",
+      "bytes": 70343
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/remaining-internal-programming.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/remaining-internal-programming.json",
+      "sha256": "4f66fcc05f28cdda34e2a330f56c46c8734fa767de9a11b5d89d08ab3f30cbff",
+      "bytes": 5496
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/four-original-conditions.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/four-original-conditions.json",
+      "sha256": "58b8b0e73a410330849c9f243a07f0dc366c3ba60ac1f15326633c88d6a30af9",
+      "bytes": 5766
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-android.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/readiness-input-android.json",
+      "sha256": "a187f072cafca759477eaa2d59ce3d5e6fb856821d413acb00ccf0cc70395b2f",
+      "bytes": 11025
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-pwa.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/readiness-input-pwa.json",
+      "sha256": "b00acdad611e55a896a45f97298bd025ba3bec1b277d0c38c3a3e240a2d077b3",
+      "bytes": 5979
+    },
+    {
+      "stagedPath": "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-ios.json",
+      "actualPath": ".tmp/mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30/evidence/readiness-input-ios.json",
+      "sha256": "60061ab614b7e517ae3bb3487c0e55b343421fd96eee101c24a5e0685017c8ac",
+      "bytes": 6928
+    }
+  ],
+  "runs": [
+    {
+      "platform": "android",
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-android.json",
+        "sha256": "071fa7197282c3a6a5ece313e76280ee42e34b9caa38c37aa8b72d9e862faf33"
+      },
+      "execution": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\android.execution.json",
+        "sha256": "7def0015d404d436e143ea1c144e2ddb0be40232cc536e86dc942a2af6b9584e"
+      },
+      "selection": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-android.json",
+        "sha256": "2d64bc62c2957e32c95b1a0fc312ef34a2144fb3f1cefd86dd6146658eca889f"
+      },
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\android.stdout.txt",
+        "sha256": "9a8d1ffaa87a7fd58a27d6968acb0b50bed5bc1c08d29a787777d4e020c1e682"
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\android.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 2,
+      "gates": [
+        {
+          "id": "local-tests",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "content-preservation",
+          "status": "PASS"
+        },
+        {
+          "id": "ru-en-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-local",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-remote",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "editorial-legal",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "psp-commercial-decision",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "payment-sandbox",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "remote-authorization",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "package-integrity",
+          "status": "PASS"
+        },
+        {
+          "id": "native-binary",
+          "status": "PASS"
+        },
+        {
+          "id": "installed-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-preferences",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-secret-storage",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "lifecycle-update",
+          "status": "NOT_RUN"
+        }
+      ],
+      "errors": [
+        "local-tests:NOT_RUN",
+        "ru-en-runtime:NOT_RUN",
+        "auth-deletion-local:NOT_RUN",
+        "auth-deletion-remote:BLOCKED_EXTERNAL",
+        "editorial-legal:BLOCKED_EXTERNAL",
+        "psp-commercial-decision:BLOCKED_EXTERNAL",
+        "payment-sandbox:BLOCKED_EXTERNAL",
+        "remote-authorization:BLOCKED_EXTERNAL",
+        "installed-runtime:NOT_RUN",
+        "os-preferences:NOT_RUN",
+        "os-secret-storage:NOT_RUN",
+        "lifecycle-update:NOT_RUN"
+      ]
+    },
+    {
+      "platform": "pwa",
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-pwa.json",
+        "sha256": "3287140cbf6b51b993bbbb6f7105ee4fcf75e21c364e0fab58e6c756bce3027f"
+      },
+      "execution": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\pwa.execution.json",
+        "sha256": "fcf6a980ff0c85ba725bdeba0c2ec9374d78d85aad59fee39a8434d775824b37"
+      },
+      "selection": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-pwa.json",
+        "sha256": "fd50b9f524738db2d97b3fd02484ce171feffe8e4ba4acb0e3b838d33caea6f7"
+      },
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\pwa.stdout.txt",
+        "sha256": "5835b4bea6ac80c0c1be94fba9620b0bc6c5a233b701211151aad26484cf0a6a"
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\pwa.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 2,
+      "gates": [
+        {
+          "id": "local-tests",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "content-preservation",
+          "status": "PASS"
+        },
+        {
+          "id": "ru-en-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-local",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-remote",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "editorial-legal",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "psp-commercial-decision",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "payment-sandbox",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "remote-authorization",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "package-integrity",
+          "status": "PASS"
+        },
+        {
+          "id": "pwa-install-offline-update",
+          "status": "NOT_RUN"
+        }
+      ],
+      "errors": [
+        "local-tests:NOT_RUN",
+        "ru-en-runtime:NOT_RUN",
+        "auth-deletion-local:NOT_RUN",
+        "auth-deletion-remote:BLOCKED_EXTERNAL",
+        "editorial-legal:BLOCKED_EXTERNAL",
+        "psp-commercial-decision:BLOCKED_EXTERNAL",
+        "payment-sandbox:BLOCKED_EXTERNAL",
+        "remote-authorization:BLOCKED_EXTERNAL",
+        "pwa-install-offline-update:NOT_RUN"
+      ]
+    },
+    {
+      "platform": "ios",
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-ios.json",
+        "sha256": "712aa6e3f8e4228c8119bd4ae893f44e1ccc2af3ee8bd4aa90d416501ba5e492"
+      },
+      "execution": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\ios.execution.json",
+        "sha256": "4d858b9d8ad9178cb8089dc40692392a9295f36122614ef70899801b5bb542e9"
+      },
+      "selection": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-ios.json",
+        "sha256": "f2a9ec90e6c814d2bc0276421646ac7631b1d4611cf15999aaf5cbc2fbbe0fc2"
+      },
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\ios.stdout.txt",
+        "sha256": "c2f889a71bc7c35cd5e03d1a34b1b13629ea6714a91875b515789bcd3b14e138"
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\ios.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 2,
+      "gates": [
+        {
+          "id": "local-tests",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "content-preservation",
+          "status": "PASS"
+        },
+        {
+          "id": "ru-en-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-local",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-remote",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "editorial-legal",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "psp-commercial-decision",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "payment-sandbox",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "remote-authorization",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "package-integrity",
+          "status": "PASS"
+        },
+        {
+          "id": "native-binary",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "installed-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-preferences",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-secret-storage",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "lifecycle-update",
+          "status": "NOT_RUN"
+        }
+      ],
+      "errors": [
+        "local-tests:NOT_RUN",
+        "ru-en-runtime:NOT_RUN",
+        "auth-deletion-local:NOT_RUN",
+        "auth-deletion-remote:BLOCKED_EXTERNAL",
+        "editorial-legal:BLOCKED_EXTERNAL",
+        "psp-commercial-decision:BLOCKED_EXTERNAL",
+        "payment-sandbox:BLOCKED_EXTERNAL",
+        "remote-authorization:BLOCKED_EXTERNAL",
+        "native-binary:NOT_RUN",
+        "installed-runtime:NOT_RUN",
+        "os-preferences:NOT_RUN",
+        "os-secret-storage:NOT_RUN",
+        "lifecycle-update:NOT_RUN"
+      ]
+    }
+  ],
+  "releaseReady": false,
+  "remoteActions": 0,
+  "checksActuallyExecuted": 3
+}

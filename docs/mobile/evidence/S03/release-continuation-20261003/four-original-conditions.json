@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-four-original-conditions",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "generatedAt": "2026-10-03T03:00:33.581Z",
+  "releaseReady": false,
+  "stageAccepted": false,
+  "productionActionsAuthorized": false,
+  "conditions": [
+    {
+      "id": "installed-native-os",
+      "status": "NOT_RUN",
+      "compiledAndroid": true,
+      "compiledIOS": false,
+      "actualInstalledApplication": false,
+      "prefs": "NOT_RUN",
+      "secrets": "NOT_RUN",
+      "lifecycle": "NOT_RUN",
+      "ownedSoftwareEmulatorBootstrap": "FAIL",
+      "ownedAvdProofId": "owned-avd-final-attempt"
+    },
+    {
+      "id": "chosen-psp-and-real-transactions",
+      "status": "BLOCKED_EXTERNAL",
+      "ownerSelected": false,
+      "provisionalCandidate": "YooKassa sandbox",
+      "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+      "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+      "registryReference": {
+        "path": "docs/mobile/RELEASE_DECISIONS.json",
+        "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+      }
+    },
+    {
+      "id": "reviewed-ru-en-editorial-legal",
+      "status": "PENDING",
+      "items": [
+        {
+          "id": "account-service-copy",
+          "status": "PENDING",
+          "locales": {
+            "ru": {
+              "version": "source-648ff0900f3fd16f",
+              "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+              "representation": "typescript-object-source"
+            },
+            "en": {
+              "version": "source-f71f331c26e7ced8",
+              "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+              "representation": "typescript-object-source"
+            }
+          },
+          "registryReference": {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          }
+        },
+        {
+          "id": "password-recovery-copy",
+          "status": "PENDING",
+          "locales": {
+            "ru": {
+              "version": "source-ad116fa67cbf2f80",
+              "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+              "representation": "typescript-object-source"
+            },
+            "en": {
+              "version": "source-0ac226f6dc2fd10c",
+              "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+              "representation": "typescript-object-source"
+            }
+          },
+          "registryReference": {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          }
+        },
+        {
+          "id": "auth-errors-copy",
+          "status": "PENDING",
+          "locales": {
+            "ru": {
+              "version": "source-ec772f41b057aff3",
+              "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+              "representation": "typescript-object-source"
+            },
+            "en": {
+              "version": "source-36a957fa9cd5979e",
+              "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+              "representation": "typescript-object-source"
+            }
+          },
+          "registryReference": {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          }
+        },
+        {
+          "id": "sandbox-payment-copy",
+          "status": "PENDING",
+          "locales": {
+            "ru": {
+              "version": "source-16f4d31500f2df98",
+              "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+              "representation": "typescript-object-source"
+            },
+            "en": {
+              "version": "source-cb958b6a410ce26d",
+              "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+              "representation": "typescript-object-source"
+            }
+          },
+          "registryReference": {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          }
+        },
+        {
+          "id": "account-deletion-disclosure",
+          "status": "PENDING",
+          "locales": {
+            "ru": {
+              "version": "draft-ad5e930404c20802",
+              "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+              "representation": "plaintext-draft"
+            },
+            "en": {
+              "version": "draft-6a33158124526fb6",
+              "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+              "representation": "plaintext-draft"
+            }
+          },
+          "registryReference": {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          }
+        }
+      ]
+    },
+    {
+      "id": "configured-auth-deletion-and-remote-grant",
+      "status": "NOT_RUN",
+      "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+      "realAuth": "NOT_RUN",
+      "realDeletion": "NOT_RUN",
+      "remoteAuthorization": "BLOCKED_EXTERNAL",
+      "remoteOperations": 0,
+      "registryReference": {
+        "path": "docs/mobile/RELEASE_DECISIONS.json",
+        "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+      }
+    }
+  ]
+}

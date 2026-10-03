@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-continuation-proposal-tooling-failure",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "command": ["stage-release-continuation.mjs", "continuation-input-a2.final.json"],
+  "actualExitCode": 1,
+  "reportedStatus": "PROPOSAL_FAILED",
+  "errorCode": "ACTUAL_TAP_SUMMARY_REQUIRED",
+  "checkoutWrites": false,
+  "cause": "The report helper expected TAP summary lines, but the preserved actual offline run used Vitest and has a JSON reporter. No application test failed in this report invocation.",
+  "applicationTestsRerun": false,
+  "releaseReady": false
+}

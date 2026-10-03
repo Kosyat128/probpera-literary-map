@@ -1,0 +1,27 @@
+[
+  {
+    "path": "src/child/childMedia.ts",
+    "beforeSha256": "a95f3c57c3a2e81b496c020f6adb4d74e3871df16d53152fedd8f41dfae8e2b2",
+    "afterSha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+  },
+  {
+    "path": "src/child/childMedia.test.ts",
+    "beforeSha256": "aa0e3ad1408d12af4196d8e6efca5451711988ec054fd41d9edc64eeb687e5d8",
+    "afterSha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+  },
+  {
+    "path": "src/child/childMediaDecode.ts",
+    "beforeSha256": null,
+    "afterSha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+  },
+  {
+    "path": "src/child/childMediaDecode.test.ts",
+    "beforeSha256": null,
+    "afterSha256": "0607dde30f88496cd18f063fd64ff702d26c6c3155127b6da0bff19b8e3ef923"
+  },
+  {
+    "path": "tests/child/child-media-decode-web.mjs",
+    "beforeSha256": null,
+    "afterSha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+    "beforeSha256": null,
+    "afterSha256": "485b71075b6eea02a3cd7de80d326f323b34414ae634e84437b84b9be0f4ea09"
+  },
+  {
+    "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDataStoreRuntimeTest.java",
+    "beforeSha256": null,
+    "afterSha256": "e93ec48d97e3a7e9ea0c243411a8786b38cc95e69be703de1e47a732dc088509"
+  },
+  {
+    "path": "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+    "beforeSha256": null,
+    "afterSha256": "a57daa38522ca91222786016e8584d1e3bd8bbd797ec7b621f88a8715a317282"
+  },
+  {
+    "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataStoreRuntimeTests.swift",
+    "beforeSha256": null,
+    "afterSha256": "29b981463ff41e821d1c3a5c1002ebeaf4b3c649bbcaeba03af94f23c0a72567"
+  },
+  {
+    "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "beforeSha256": "db0a92a53777a985116dd8878619b58707dad63b92b6608a62302ad821754c71",
+    "afterSha256": "28bd8885c697c3300894e3754daff6dbc3c14c75640e387968a32391922994c0"
+  }
+]

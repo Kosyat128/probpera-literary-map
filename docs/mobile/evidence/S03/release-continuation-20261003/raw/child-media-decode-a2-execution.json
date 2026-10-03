@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-10-02T23:26:22.640Z",
+  "finishedAt": "2026-10-02T23:26:24.097Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\scoped.config.mjs",
+    "src/child/childMediaDecode.test.ts",
+    "--testNamePattern=^(?:child static codec preflight admits bounded png structural dimensions|child static codec preflight denies byte getters, shared buffers, unsupported MIME and truncated containers|reviewed child decoder lifecycle re-reads exact ru loader bytes after decode and exposes a revocable resource|reviewed child decoder lifecycle re-reads exact en loader bytes after decode and exposes a revocable resource|reviewed child decoder lifecycle rejects mismatched decoded dimensions before second rights read|reviewed child decoder lifecycle fresh loader deny or changed exact bytes cannot publish an already decoded bitmap|reviewed child decoder lifecycle does not extend an earlier review expiry when the fresh rights read grants a longer lease|reviewed child decoder lifecycle denies elapsed trusted deadline before timer delivery and closes the late codec result|reviewed child decoder lifecycle latches rollback uncertainty even if a later trusted sample returns to the old epoch|reviewed child decoder lifecycle background seals pending decode, foreground needs a new request, late result stays closed|reviewed child decoder lifecycle A→B→A host generation and exact scope changes cannot resurrect original decode|reviewed child decoder lifecycle current lease detects profile/locale/index changes and closes already published resources|reviewed child decoder lifecycle timeout, external abort and dispose settle before an unabortable codec, with one pending job maximum|reviewed child decoder lifecycle short review timer cancels pending codec independently from the longer operational timeout|reviewed child decoder lifecycle consumes rejected async visitors and closes a resource instead of treating them as completion|reviewed child decoder lifecycle reentrant visitor/background cannot leave an old ready state|reviewed child decoder lifecycle snapshot inspection cannot cancel a newer request started reentrantly by the trusted host port|reviewed child decoder lifecycle a clock callback changing scope at the final lease reschedule prevents any visitor handoff|reviewed child decoder lifecycle a final clock callback retiring the ready resource or revoking host admission makes isCurrent false|Web codec ownership using explicit synthetic browser API constructors uses a local MIME Blob, closes an abort-late bitmap, and rejects a second unresolved job|Web codec ownership using explicit synthetic browser API constructors owns exactly one live bitmap until release, without URLs/network or codec authority|Web codec ownership using explicit synthetic browser API constructors checks preflight independently before invoking the browser API|child static codec preflight rejects the legacy misaligned IDAT fixture despite matching PNG signature and IEND)$",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-media-decode-a2\\vitest.json"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "isolatedEnv": true
+}

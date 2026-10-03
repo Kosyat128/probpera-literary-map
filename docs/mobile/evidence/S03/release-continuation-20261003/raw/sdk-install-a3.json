@@ -1,0 +1,2113 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-pinned-emulator-installation",
+  "startedAt": "2026-10-02T22:11:12.8114783+00:00",
+  "status": "FAIL",
+  "sourceCodeCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+  "packages": [
+    {
+      "path": "emulator",
+      "revision": "37.2.12",
+      "download": {
+        "url": "https://dl.google.com/android/repository/emulator-windows_x64-16428233.zip",
+        "bytes": 455342868,
+        "vendorSha1": "488ed747e82de7e9bb5247becd1ac043c7e5e85d",
+        "sha256": "3b524b6e0f1f5506d3d81af62ec9ce15b2a6f80f467e99574e167514ca181401"
+      },
+      "installation": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\emulator",
+      "inspection": {
+        "files": [
+          {
+            "path": "concrt140.dll",
+            "bytes": 312472,
+            "sha256": "0171d98d9da11d2ce111e0c7597ec652c4410bca9d86090f85854628335c826b"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qwebpAndroidEmu.dll",
+            "bytes": 536216,
+            "sha256": "77b81db04aec9580c1fb8b5853ec8734ad1178bc06accf2b495d69d529b5b2ba"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qwbmpAndroidEmu.dll",
+            "bytes": 34456,
+            "sha256": "ad8cc470988190079cbcf73fc84794d83d2e453ea20f5fb15a3c185bf5af9074"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qtiffAndroidEmu.dll",
+            "bytes": 419992,
+            "sha256": "a5984eb1f306df8eb480ec705e02297092c835fb346112f07ccd4b5c8d997edc"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qtgaAndroidEmu.dll",
+            "bytes": 36504,
+            "sha256": "6509c6647a9094676f885d51b2db4f096d12668c760a1a27d3dc8241137a1787"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qsvgAndroidEmu.dll",
+            "bytes": 38040,
+            "sha256": "7ff52cc22644e66b59c452e755d7391339cf29a8e3e90febb14ccd08d447ea2f"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qjpegAndroidEmu.dll",
+            "bytes": 620696,
+            "sha256": "133dd7cb77b26191c18ca56d1fc3c965b75a88d461bc27067171e93d2933034e"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qicoAndroidEmu.dll",
+            "bytes": 44696,
+            "sha256": "f215411c73c14421280ebe8733fc43608f449a61a76f252d8ef8d020a830fbe5"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qicnsAndroidEmu.dll",
+            "bytes": 52888,
+            "sha256": "9cddcb4d207082cfbe40860dcfc92eeafef03fc227448c8c946305e76bb339cd"
+          },
+          {
+            "path": "lib64/qt/plugins/imageformats/qgifAndroidEmu.dll",
+            "bytes": 45720,
+            "sha256": "c6243ff0ac5f79efd37ba16b7ea95a509ef8a927116dc5aa06cbd8910cb603d1"
+          },
+          {
+            "path": "lib64/qt/plugins/platforms/qwindowsAndroidEmu.dll",
+            "bytes": 836248,
+            "sha256": "4acd9aade45823cf9bb011c882c5ca4c2a092631550299828a1ad20fa7f53301"
+          },
+          {
+            "path": "lib64/qt/plugins/iconengines/qsvgiconAndroidEmu.dll",
+            "bytes": 60056,
+            "sha256": "190ac5ffb661386df6671eda2279cd91c1535d6e3248550f1485b1f96e97a264"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6WebSocketsAndroidEmu.dll",
+            "bytes": 192664,
+            "sha256": "3d7cb1a7ce761ecffa56ff0659d9075e5b1715bd5e3e585993608e31372edd8b"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6WebEngineWidgetsAndroidEmu.dll",
+            "bytes": 168088,
+            "sha256": "e6556d05bb36b1275cfb756caa1a7f3e35a560cb7acaecbe2803112c47ed6afc"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6WebEngineCoreAndroidEmu.dll",
+            "bytes": 121830552,
+            "sha256": "15fa734428b4ab2fac3765c8021920cc2bdb3bb378b09376ab42c3b283b97de9"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6WebChannelAndroidEmu.dll",
+            "bytes": 249496,
+            "sha256": "5f9005937f83211334dda3556660efaab03b5fa26facde1f21bf6105bd66fd43"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6SvgWidgetsAndroidEmu.dll",
+            "bytes": 55448,
+            "sha256": "f3208fc6ed75ef73447e6e03dc206d8ae1aa1b818ad2a3a602d15d6367edf696"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6SvgAndroidEmu.dll",
+            "bytes": 357528,
+            "sha256": "2ee7738c9c62a03eb1496aca941962137e2f3945fde750f4eccee4594db52454"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6QuickWidgetsAndroidEmu.dll",
+            "bytes": 112792,
+            "sha256": "dc2aaa21916fea079f5394d337c617ff536d21e6c3d81e0a3ef813655d403f72"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6QuickAndroidEmu.dll",
+            "bytes": 5184664,
+            "sha256": "acf6465ab6ea27af2f603944eaea4df29572f4e0058a6eaa9948ad22f73912ad"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6QmlModelsAndroidEmu.dll",
+            "bytes": 674968,
+            "sha256": "b164e45b7d726ee0f975dcb132587eb08660bc20d8d753ad0c0701c83208bbd0"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6WidgetsAndroidEmu.dll",
+            "bytes": 5962904,
+            "sha256": "727e6d08a43764251a3e3cec45a600086e5da94768cbeb01a21a4e0a8348ea77"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6QmlAndroidEmu.dll",
+            "bytes": 4609176,
+            "sha256": "75c643612666dbd1ac268d03f9b10ec0de458ad3e5ab8904b574e260b0dd0dad"
+          },
+          {
+            "path": "lib64/qt/resources/icudtl.dat",
+            "bytes": 10462432,
+            "sha256": "97b978a19edd4746e9a44d9a44bb4bc519e127a203c247837ec0922f573449e3"
+          },
+          {
+            "path": "lib64/qt/resources/qtwebengine_resources_100p.pak",
+            "bytes": 123370,
+            "sha256": "19873701a88d7dcd18077f9276f3e542250497bee4f7826d080774213b312dd6"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/fr.pak",
+            "bytes": 413965,
+            "sha256": "ae0d35cf592468e4b72da9658c9af682e596bd3ba6e594ca8122c33b85255f2c"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/fil.pak",
+            "bytes": 399222,
+            "sha256": "3aa5bad14be01ad2c5a7fecacf512dbb57616bf16fbe7d553e40dd9337878dae"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/fi.pak",
+            "bytes": 353547,
+            "sha256": "8222b5588bc302be57818223d0f1e291360cb08aaafe06fb4769468b9233ff33"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/fa.pak",
+            "bytes": 565495,
+            "sha256": "3fe2ad3474d52cdb5f929bc2c63eb379643ae3feb3bf7e34c3f918237fb5159f"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/et.pak",
+            "bytes": 344426,
+            "sha256": "32379bba982da0b361100f8f9271c289db5d299958f85113858b396f37f7cd41"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/es.pak",
+            "bytes": 382409,
+            "sha256": "e6198e40e12ac8e9615bbb56712f69138e7322e14d2ba1e20abe545c72e7271c"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/es-419.pak",
+            "bytes": 382210,
+            "sha256": "aa1179a4ce08b685f60576aa35ebde757bb6b06d31173f21ebeacea8792eddde"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/en-US.pak",
+            "bytes": 315798,
+            "sha256": "7ab9a7bf46e9339877e1e909274445a82d9bf4d58f30f82a7f3661541f669d79"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/en-GB.pak",
+            "bytes": 312335,
+            "sha256": "faf5861e23f30877f049a47b475e204fef426282918fa80efc1aa976a9299a2e"
+          },
+          {
+            "path": "lib64/qt/resources/qtwebengine_devtools_resources.pak",
+            "bytes": 8556411,
+            "sha256": "cedf0456f1e8a515e6b162a96822cef5f42bafe963ea39e3c252ca7dbe32de16"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/el.pak",
+            "bytes": 697417,
+            "sha256": "4179eea0d62a89a1f8903ca8508160e80d79c2c4e136cf8d0dbe5cb70d98851e"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/da.pak",
+            "bytes": 358263,
+            "sha256": "c987dc75e85fe802eff7d561b32dc08bfc9474d7ef9388406388f8405fce7c88"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/cs.pak",
+            "bytes": 397768,
+            "sha256": "d4c350468dfb8bf592e7557187686b12191e0fc33ca4e3e209a6a907863a58df"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ca.pak",
+            "bytes": 386979,
+            "sha256": "796f01201556e0d069f68ce9283167aa1cb0146d4fcda4d9707c67df09583894"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/bn.pak",
+            "bytes": 822291,
+            "sha256": "c549d1d0414627d4686041fb7cdf952b1e17e8fe9b54e7a22d76687520bdda5a"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/bg.pak",
+            "bytes": 635744,
+            "sha256": "5ef0b461748785cdccf269c95b8ad69b4b3017689ab3b3d6ba784d9d447d5202"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ar.pak",
+            "bytes": 608347,
+            "sha256": "a9ad7484aeb595ff0e479173bc82e20d2c5e548a45e56380694e77004c1e99d1"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/am.pak",
+            "bytes": 556852,
+            "sha256": "8ee48daff9c94bc8cc4253722d2e35854fae19dd774e342441f0fc6e00e02e84"
+          },
+          {
+            "path": "lib64/qt/resources/qtwebengine_resources.pak",
+            "bytes": 1913641,
+            "sha256": "1b1565cad4cf1b61b80bb0ebed8914f11fcb8cceba1251601c8c6066af7a682b"
+          },
+          {
+            "path": "lib64/qt/resources/qtwebengine_resources_200p.pak",
+            "bytes": 154401,
+            "sha256": "d24d50a107d4fc6797cce349318285be4bd16d3a972f6a0f666a1e68934fa291"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/de.pak",
+            "bytes": 384126,
+            "sha256": "b7fde52ee655314591d4d19b936f21878e6fe2cced6580a42c852f75a8a2df66"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6PositioningAndroidEmu.dll",
+            "bytes": 471704,
+            "sha256": "e389552e3eb5a1982a4824e5407b1e2fefbefaf2ed5c36e05ad09853cb1c055e"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6OpenGLAndroidEmu.dll",
+            "bytes": 1916056,
+            "sha256": "db2e31b4d6fbcdc5fdbb6745bf30e4e07054543afe119da3edba2d4448aa230d"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6NetworkAndroidEmu.dll",
+            "bytes": 1353880,
+            "sha256": "de19fdb60ed10912b23294a0064ee159a24e4c76a2c1ade01d15d0f122184c8e"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/lv.pak",
+            "bytes": 415035,
+            "sha256": "72e597b1abb944ea4aab2981df7964e4a076cbb6ca739dad08ae1a3308808c98"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/lt.pak",
+            "bytes": 417883,
+            "sha256": "02ba05ffa892bab6417a5b86bd90bbede9e5471ea9e62dda281f9a99859b5790"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ko.pak",
+            "bytes": 388312,
+            "sha256": "8683a3b0a7723b21e601b6c80746c72e876126640ccbe87b091784920c25319f"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/kn.pak",
+            "bytes": 922065,
+            "sha256": "e264da703f99ac4ba8de09984bc720a6a0b8720a3c679a4483b0b59940b2fc04"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ja.pak",
+            "bytes": 461430,
+            "sha256": "fafd891f9c877c4fd4092273b96505e1e766c2672b733a7110d179bca9c0d228"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/it.pak",
+            "bytes": 376354,
+            "sha256": "71ef12495828bee0d59e6501515174faa0a3f1c9f8854f368d8ba0eec3456b14"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/id.pak",
+            "bytes": 339006,
+            "sha256": "66d9fe86c25c4535b7e6330a979dfd1ae4833a6672c108bdf9d65bc0657e399e"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/hu.pak",
+            "bytes": 413919,
+            "sha256": "58a0b1469916f91f1f284f18ab38e135bcf12fa267125f6c1ca37c1b851e5247"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/hr.pak",
+            "bytes": 384295,
+            "sha256": "06d371f359f1be0b84819bd7b2c0802fc75b7fa56c5217f7c38376aa650452de"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ml.pak",
+            "bytes": 957643,
+            "sha256": "3115186e5e4ae371f518b6589d3004df79732a6ed37a08bb6bb15afc0148a09f"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/hi.pak",
+            "bytes": 835350,
+            "sha256": "d09f7f328e24a03aaf5833058643be3291f2b446da72a54d83cb099cfafaa619"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/gu.pak",
+            "bytes": 797630,
+            "sha256": "d263c5a51ef7947061a2bd82681137e654a2da8ffd7e3d69b0c0bffa7dffe321"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/fr.pak",
+            "bytes": 413965,
+            "sha256": "ae0d35cf592468e4b72da9658c9af682e596bd3ba6e594ca8122c33b85255f2c"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/fil.pak",
+            "bytes": 399222,
+            "sha256": "3aa5bad14be01ad2c5a7fecacf512dbb57616bf16fbe7d553e40dd9337878dae"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/fi.pak",
+            "bytes": 353547,
+            "sha256": "8222b5588bc302be57818223d0f1e291360cb08aaafe06fb4769468b9233ff33"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/fa.pak",
+            "bytes": 565495,
+            "sha256": "3fe2ad3474d52cdb5f929bc2c63eb379643ae3feb3bf7e34c3f918237fb5159f"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/et.pak",
+            "bytes": 344426,
+            "sha256": "32379bba982da0b361100f8f9271c289db5d299958f85113858b396f37f7cd41"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/es.pak",
+            "bytes": 382409,
+            "sha256": "e6198e40e12ac8e9615bbb56712f69138e7322e14d2ba1e20abe545c72e7271c"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/es-419.pak",
+            "bytes": 382210,
+            "sha256": "aa1179a4ce08b685f60576aa35ebde757bb6b06d31173f21ebeacea8792eddde"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/en-US.pak",
+            "bytes": 315798,
+            "sha256": "7ab9a7bf46e9339877e1e909274445a82d9bf4d58f30f82a7f3661541f669d79"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/he.pak",
+            "bytes": 493586,
+            "sha256": "f96b383782565004e001b54b846107b752e55badfa5491f0f5fe41a744c67d7d"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/mr.pak",
+            "bytes": 781940,
+            "sha256": "c45c9ddf3bfe77adea3aa13dfd3652af07088a30a3d89e259f37a79f717f6fd6"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ms.pak",
+            "bytes": 355383,
+            "sha256": "bd0637b3605a31c2bcbb5a2929ea4a2305690e269b594dd5b818876dded517e1"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/nb.pak",
+            "bytes": 346774,
+            "sha256": "ae292979c3a8ab04dd723e43e26df1d4a65caeda1bbd9497273b5b9cfe47bdcc"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6GuiAndroidEmu.dll",
+            "bytes": 7543448,
+            "sha256": "1db8391263a4e364b7edfcc2c42993a7592722e8c0e606e93c435f6082a68905"
+          },
+          {
+            "path": "lib64/qt/lib/Qt6CoreAndroidEmu.dll",
+            "bytes": 5682328,
+            "sha256": "8f1c778d1d9e62057e759e73d575f70286c166d9cd7785ddf4a7c73fca3a4461"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/zh-TW.pak",
+            "bytes": 319566,
+            "sha256": "ec06936d2c71e26a376d616dbacc5408aa078327f90b1ba20c51eb9b12c97bd2"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/zh-CN.pak",
+            "bytes": 322027,
+            "sha256": "c8b887d3f6d9daa42adca82e55f71481cc5976f1ed1857173e67f6cdc900f64a"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/vi.pak",
+            "bytes": 445316,
+            "sha256": "011c8514164fc75a7de4e5eb8573210291a476b6b661e1f8b2864e3b829f7096"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/uk.pak",
+            "bytes": 639909,
+            "sha256": "19244f1965cc58473344f55f58caa259416ca68a85d501f99e3f55eb54f8effe"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/tr.pak",
+            "bytes": 374059,
+            "sha256": "31bb50079a43894ae6ff934d6b982475b464e595c2ae6d975219280a2bdc8eb9"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/th.pak",
+            "bytes": 739027,
+            "sha256": "727239d6f665b7e2a994ff2027145f4876c0bbcd3ffdbfa6455b092729936f3d"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/te.pak",
+            "bytes": 875896,
+            "sha256": "edf981655c289142005233d9494e45482d8351b2d887b414c836ec3417670163"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ta.pak",
+            "bytes": 946482,
+            "sha256": "384ad87702e33b1df53bdb92c79a6c045196121f0d9a16a928166e358be80854"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/sw.pak",
+            "bytes": 366920,
+            "sha256": "46e44188c09b804fcd4c8326a41f90b605b83d2c5294befc0858a4e8f2ea0f29"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/sv.pak",
+            "bytes": 349077,
+            "sha256": "369fdd891613d15e53d2d6ef2da9d5abbd95786e3740634c8365d11e25a56046"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/sr.pak",
+            "bytes": 600934,
+            "sha256": "2d79802681c5017eb03864c4a8e31a89584fdc83ad779ed9ff681174028cffda"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/sl.pak",
+            "bytes": 387866,
+            "sha256": "574cb1af3fd1ffa02a7dfa395c219d9c045f3c62bebdf0ada8a50918b10829c5"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/sk.pak",
+            "bytes": 404314,
+            "sha256": "96ab728be7f39a10f3f390f4bbff1bdebaf16e0ba76022a63b5c8c0bd84971b4"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ru.pak",
+            "bytes": 638845,
+            "sha256": "514cfb05f0f294ee35858b5646589e70275b3f7530a58564be9844707cb39ae2"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ro.pak",
+            "bytes": 390689,
+            "sha256": "8dc418ed1602017d4d050c21ff285c7ee1a31026341014e7d27c82124b3237eb"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/pt-PT.pak",
+            "bytes": 379447,
+            "sha256": "97af2da22f60e0ea013041fa07621aa24d720dd67385f8018b5c44b7706f3aa8"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/pt-BR.pak",
+            "bytes": 378008,
+            "sha256": "ea1ab8b7711d14eac098f55ceebc87f6de143a455b7d62faa86a07e461bb91f8"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/pl.pak",
+            "bytes": 399417,
+            "sha256": "e362b80b508e42f44ed728ccf896b66db082ae4ecda1c5b012a02a673c5f5117"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/nl.pak",
+            "bytes": 358651,
+            "sha256": "404891c71fa02d262c09b3d89999b925988ece60b86e0fea77f45aa14c242ef3"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/gu.pak",
+            "bytes": 797630,
+            "sha256": "d263c5a51ef7947061a2bd82681137e654a2da8ffd7e3d69b0c0bffa7dffe321"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/en-GB.pak",
+            "bytes": 312335,
+            "sha256": "faf5861e23f30877f049a47b475e204fef426282918fa80efc1aa976a9299a2e"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/he.pak",
+            "bytes": 493586,
+            "sha256": "f96b383782565004e001b54b846107b752e55badfa5491f0f5fe41a744c67d7d"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/hr.pak",
+            "bytes": 384295,
+            "sha256": "06d371f359f1be0b84819bd7b2c0802fc75b7fa56c5217f7c38376aa650452de"
+          },
+          {
+            "path": "resources/macroPreviews/Track_horizontal_plane.mp4",
+            "bytes": 972478,
+            "sha256": "d8bd23d3ac6bbd7a9932da20bc6e6cb3b1de3cc3a6ec722acdd440edfdcab063"
+          },
+          {
+            "path": "resources/macroPreviews/Reset_position.mp4",
+            "bytes": 240740,
+            "sha256": "8bdc6c977cd38168281b6751ee4ead48e6a4fa937de91eec0dd6036d39e5925c"
+          },
+          {
+            "path": "resources/Toren1BD.posters",
+            "bytes": 157,
+            "sha256": "76df35d81794eb16636209d9d51759464a4fae51e4a9a454061ab29e4cf3039f"
+          },
+          {
+            "path": "resources/Toren1BD.obj",
+            "bytes": 3609412,
+            "sha256": "2e1884867d1aa0c332f7e4a353de0feb3b56ce6e0234ce1994c44b6af79f492a"
+          },
+          {
+            "path": "resources/Toren1BD.mtl",
+            "bytes": 345,
+            "sha256": "e8ac9e5f35aa6cb2d7eacaf407a328324f925587c12e093dcb6efef775bcc438"
+          },
+          {
+            "path": "resources/Toren1BD_Main.png",
+            "bytes": 3845619,
+            "sha256": "3684940df1a01acd0a698550fbfc7f645c4b02597f5444d2286d39414f59a0f4"
+          },
+          {
+            "path": "resources/Toren1BD_Decor.png",
+            "bytes": 3669905,
+            "sha256": "12dd7b5496b5f839da200388cb1bb8c3103eb718a1b5cf146a54b2b9f6051376"
+          },
+          {
+            "path": "resources/poster.png",
+            "bytes": 164254,
+            "sha256": "2d92ce9c1674b01e6409cd0b9e5d905dee4785075abbb976e56afe97606df5e9"
+          },
+          {
+            "path": "resources/default360.mp4",
+            "bytes": 2452815,
+            "sha256": "4e1b24c71799249fa3d9bb5c1d55a5979507a3694f9f7b975419a6b958bec37d"
+          },
+          {
+            "path": "resources/macroPreviews/Track_vertical_plane.mp4",
+            "bytes": 631994,
+            "sha256": "cedfde80f46a8e64638653d44e99971eca9603dc235004acb108a1213bfed7b4"
+          },
+          {
+            "path": "resources/default360.jpg",
+            "bytes": 474640,
+            "sha256": "fae25b1eb03fb34424028beb4d1c908e93b36dd35c19ccb8ca7eea6d092ead04"
+          },
+          {
+            "path": "resources/default.jpg",
+            "bytes": 289695,
+            "sha256": "e5831817a8c8b4f82583501fdc0b48d9e8d16557ffd8e997a7074d1847c7d810"
+          },
+          {
+            "path": "qemu/windows-x86_64/vcruntime140.dll",
+            "bytes": 110232,
+            "sha256": "ab8cb749ec5c4d931d8eba6c36505b0e2f6f4cedc5e9dad2b8d002b46694e899"
+          },
+          {
+            "path": "qemu/windows-x86_64/vcruntime140_threads.dll",
+            "bytes": 28312,
+            "sha256": "6d7c165f2a9a60a566b509f7c894187a73c70d62d32d1fea608ce6a3a5f66a4b"
+          },
+          {
+            "path": "qemu/windows-x86_64/vcruntime140_1.dll",
+            "bytes": 39576,
+            "sha256": "e83e2afcc7f66e579256e7d7160eb739970bb8d1544b55d73002c5b1c19c087d"
+          },
+          {
+            "path": "qemu/windows-x86_64/vccorlib140.dll",
+            "bytes": 341656,
+            "sha256": "8aaee185281309c83e55add96eb6dfd5dde8c5aafc91c4e86e0ad079d689d8d2"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-x86_64.exe",
+            "bytes": 66910360,
+            "sha256": "ae40b8a811e6264cb62d3dff65650d188faf87507dce8e5f53deb909d029fc55"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-x86_64-headless.exe",
+            "bytes": 57215128,
+            "sha256": "38a5930dd323993b36ec4220277c695082e3dd829600203dc1d9bb882b8786f0"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-i386.exe",
+            "bytes": 66875032,
+            "sha256": "b8a6d92043c016dfa0a53f0690d3c7665c27bca12cdfe43850a08f9db16c2e7a"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-i386-headless.exe",
+            "bytes": 57179800,
+            "sha256": "a0571f97c9e90de22a6299b0462772bbbe92ef040c50654570e438d061e6f286"
+          },
+          {
+            "path": "resources/default.mp4",
+            "bytes": 500254,
+            "sha256": "2bc1cdd0a57d16d0c995d912e310751c3b44525822c8c1fe130cca463d90debf"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-armel.exe",
+            "bytes": 67977880,
+            "sha256": "eb304697895b791722cbff9ef8457c63b74bbe00e72f8d03e7a4c30be3437069"
+          },
+          {
+            "path": "resources/macroPreviews/Walk_to_image_room.mp4",
+            "bytes": 950115,
+            "sha256": "7b10ef6070e8798b62881a972c7e80565fe08961ef100fa37bd8b798b9262475"
+          },
+          {
+            "path": "resources/macros/Track_horizontal_plane",
+            "bytes": 52928,
+            "sha256": "7690a7b85173fa45215b8810c3e5b4994196191a5be4105f1f145eb843870c84"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10_pro_fold/SystemUIEmulationPixel10ProFoldOverlay.apk",
+            "bytes": 8542,
+            "sha256": "83fddb604f55eaebf8575287fa7849cb73d572f3a4d2ff138568efa599ac3c7c"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10_pro_fold/EmulationPixel10ProFoldOverlay.apk",
+            "bytes": 16734,
+            "sha256": "f6cdb777249a693d29b008f201db62cb45329448c4f9def0c3a494426f522b3f"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10_pro/SystemUIEmulationPixel10ProOverlay.apk",
+            "bytes": 12803,
+            "sha256": "ae48b0d2f2b9ed49bb8929ea7dc05bb630b83eb6acf210cbe9d0ddcf5f383fed"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10_pro/EmulationPixel10ProOverlay.apk",
+            "bytes": 8542,
+            "sha256": "8dfeef3440b549bbb9ec8946c8b040f4e3591ce20d689d01a1345ca2c0a4fa5a"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10/SystemUIEmulationPixel10Overlay.apk",
+            "bytes": 12803,
+            "sha256": "f225123a8b970943787d466cdb4449a361bfcd5b68cd8e66744cf622cf889c36"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10/EmulationPixel10Overlay.apk",
+            "bytes": 8542,
+            "sha256": "b8e7242ddb14feba8c9239026c518f112aeef942d638da4715492fc71be61a82"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10_pro_xl/SystemUIEmulationPixel10ProXLOverlay.apk",
+            "bytes": 16962,
+            "sha256": "501073488c04c22ad5dabec08b22bc4a936db7cde407d2efadc1d8bee321dda6"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10_pro_xl/EmulationPixel10ProXLOverlay.apk",
+            "bytes": 16797,
+            "sha256": "02f09ac5ad0a9ea8339fd729843a4d6efae073c925407672e96c3a53a7cb8e06"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10_pro_fold/SystemUIEmulationPixel10ProFoldOverlay.apk",
+            "bytes": 12701,
+            "sha256": "3a5cb7398a0a7a8439c63f743d12ce15e73248969659915d4c9a14f95ad27709"
+          },
+          {
+            "path": "resources/macros/Reset_position",
+            "bytes": 28,
+            "sha256": "dc8cca7cf6a5293cc6b577a4fd0b6d3339d52117e57f3a8dcd5d5f5a5928d862"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10_pro_fold/EmulationPixel10ProFoldOverlay.apk",
+            "bytes": 20893,
+            "sha256": "b1cdbe7b45a6ac8400bce2c5a1e233481be10564cb500444bf68cbba865c76e0"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10_pro/EmulationPixel10ProOverlay.apk",
+            "bytes": 16797,
+            "sha256": "701c27c4853280330dfa8339e6b32e5a2b4b141fb3b61ac28d5d2b2d8bf80c6a"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10/SystemUIEmulationPixel10Overlay.apk",
+            "bytes": 16962,
+            "sha256": "0e9c97448e3a2f600cd2cc9278f2317b1276e12a06739ea482dacda6106de9f4"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10/EmulationPixel10Overlay.apk",
+            "bytes": 16797,
+            "sha256": "e064dfe79d70973446a05818f46706863b6514143f00bf66ea7dfce691a0f5ea"
+          },
+          {
+            "path": "resources/skins/android-36/data/misc/pixel_10_pro_fold/displayconfig/display_layout_configuration.xml",
+            "bytes": 1311,
+            "sha256": "a64e2eca65bc2f9196215fb72a88c9035a584319f8b3da3606fff161be642be8"
+          },
+          {
+            "path": "resources/skins/android-36/data/misc/pixel_10_pro_fold/devicestate/device_state_configuration.xml",
+            "bytes": 3290,
+            "sha256": "86e021141048b6b957b021c3478c3e74a76ac0ec4e7312bceae74a81dcf3c8b9"
+          },
+          {
+            "path": "resources/skins/android-36/data/misc/pixel_10_pro_fold/extra_feature.xml",
+            "bytes": 829,
+            "sha256": "ba27b7a61457027e2a77917f8b07d716d3e918097901a14833749252b15aa38f"
+          },
+          {
+            "path": "resources/skins/android-36/data/misc/pixel_10_pro_fold/display_settings.xml",
+            "bytes": 303,
+            "sha256": "2adca8f98a2c8ee0f780e10ca16587ac92641df5e93ab4437c3c47ad41b0041d"
+          },
+          {
+            "path": "resources/macros/Walk_to_image_room",
+            "bytes": 37137,
+            "sha256": "b0a7017912cab2023e40d2d7de7773632342ba2832fd334496f0b3aaa714fda5"
+          },
+          {
+            "path": "resources/macros/Track_vertical_plane",
+            "bytes": 28373,
+            "sha256": "626498bdc8882365093e7a38dbea66cf9a2a812d3c31ad7355435d7e564a2324"
+          },
+          {
+            "path": "resources/skins/android-36/user/pixel_10_pro/SystemUIEmulationPixel10ProOverlay.apk",
+            "bytes": 16962,
+            "sha256": "cc8e353c3e53f111cf09b8433eb205dbaab1576a6ccab879f51c2f099af1c1f0"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-armel-headless.exe",
+            "bytes": 58279064,
+            "sha256": "8b37de52a39b98cd5b4e4490c65f0eda9bd17ffabec66ddeac16b946feb8628c"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-aarch64.exe",
+            "bytes": 68225176,
+            "sha256": "9ae1f939d433b9e4fa5c616bd6347b9b536b2b455504badd25fb60c473bf9e94"
+          },
+          {
+            "path": "qemu/windows-x86_64/qemu-system-aarch64-headless.exe",
+            "bytes": 58526360,
+            "sha256": "9945ca57546a408b72c0434d8f9ae5d17e8735f22e19eaeae4aa147d70120167"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/sl.pak",
+            "bytes": 387866,
+            "sha256": "574cb1af3fd1ffa02a7dfa395c219d9c045f3c62bebdf0ada8a50918b10829c5"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/sk.pak",
+            "bytes": 404314,
+            "sha256": "96ab728be7f39a10f3f390f4bbff1bdebaf16e0ba76022a63b5c8c0bd84971b4"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ru.pak",
+            "bytes": 638845,
+            "sha256": "514cfb05f0f294ee35858b5646589e70275b3f7530a58564be9844707cb39ae2"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ro.pak",
+            "bytes": 390689,
+            "sha256": "8dc418ed1602017d4d050c21ff285c7ee1a31026341014e7d27c82124b3237eb"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/pt-PT.pak",
+            "bytes": 379447,
+            "sha256": "97af2da22f60e0ea013041fa07621aa24d720dd67385f8018b5c44b7706f3aa8"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/pt-BR.pak",
+            "bytes": 378008,
+            "sha256": "ea1ab8b7711d14eac098f55ceebc87f6de143a455b7d62faa86a07e461bb91f8"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/pl.pak",
+            "bytes": 399417,
+            "sha256": "e362b80b508e42f44ed728ccf896b66db082ae4ecda1c5b012a02a673c5f5117"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/nl.pak",
+            "bytes": 358651,
+            "sha256": "404891c71fa02d262c09b3d89999b925988ece60b86e0fea77f45aa14c242ef3"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/nb.pak",
+            "bytes": 346774,
+            "sha256": "ae292979c3a8ab04dd723e43e26df1d4a65caeda1bbd9497273b5b9cfe47bdcc"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/sr.pak",
+            "bytes": 600934,
+            "sha256": "2d79802681c5017eb03864c4a8e31a89584fdc83ad779ed9ff681174028cffda"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ms.pak",
+            "bytes": 355383,
+            "sha256": "bd0637b3605a31c2bcbb5a2929ea4a2305690e269b594dd5b818876dded517e1"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ml.pak",
+            "bytes": 957643,
+            "sha256": "3115186e5e4ae371f518b6589d3004df79732a6ed37a08bb6bb15afc0148a09f"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/lv.pak",
+            "bytes": 415035,
+            "sha256": "72e597b1abb944ea4aab2981df7964e4a076cbb6ca739dad08ae1a3308808c98"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/lt.pak",
+            "bytes": 417883,
+            "sha256": "02ba05ffa892bab6417a5b86bd90bbede9e5471ea9e62dda281f9a99859b5790"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ko.pak",
+            "bytes": 388312,
+            "sha256": "8683a3b0a7723b21e601b6c80746c72e876126640ccbe87b091784920c25319f"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/kn.pak",
+            "bytes": 922065,
+            "sha256": "e264da703f99ac4ba8de09984bc720a6a0b8720a3c679a4483b0b59940b2fc04"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ja.pak",
+            "bytes": 461430,
+            "sha256": "fafd891f9c877c4fd4092273b96505e1e766c2672b733a7110d179bca9c0d228"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/it.pak",
+            "bytes": 376354,
+            "sha256": "71ef12495828bee0d59e6501515174faa0a3f1c9f8854f368d8ba0eec3456b14"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/id.pak",
+            "bytes": 339006,
+            "sha256": "66d9fe86c25c4535b7e6330a979dfd1ae4833a6672c108bdf9d65bc0657e399e"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/hu.pak",
+            "bytes": 413919,
+            "sha256": "58a0b1469916f91f1f284f18ab38e135bcf12fa267125f6c1ca37c1b851e5247"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/mr.pak",
+            "bytes": 781940,
+            "sha256": "c45c9ddf3bfe77adea3aa13dfd3652af07088a30a3d89e259f37a79f717f6fd6"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/sv.pak",
+            "bytes": 349077,
+            "sha256": "369fdd891613d15e53d2d6ef2da9d5abbd95786e3740634c8365d11e25a56046"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/sw.pak",
+            "bytes": 366920,
+            "sha256": "46e44188c09b804fcd4c8326a41f90b605b83d2c5294befc0858a4e8f2ea0f29"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/ta.pak",
+            "bytes": 946482,
+            "sha256": "384ad87702e33b1df53bdb92c79a6c045196121f0d9a16a928166e358be80854"
+          },
+          {
+            "path": "qemu/windows-x86_64/msvcp140.dll",
+            "bytes": 565400,
+            "sha256": "f19e2faecc4390b97e9a1ea80efa3b9cea74c1e71b8c5e108de2b91902499ac4"
+          },
+          {
+            "path": "qemu/windows-x86_64/msvcp140_codecvt_ids.dll",
+            "bytes": 21656,
+            "sha256": "f5bc2badde31a45c1a1bbb38078d657f5d5e2567443233fe9a3cb3bb80e3828a"
+          },
+          {
+            "path": "qemu/windows-x86_64/msvcp140_atomic_wait.dll",
+            "bytes": 40088,
+            "sha256": "ea0d74d9c35caee43ddb7fc7f2aba14dab20262edcc67b99b2b558085ab3f619"
+          },
+          {
+            "path": "qemu/windows-x86_64/msvcp140_2.dll",
+            "bytes": 257688,
+            "sha256": "33e29216253dffc17e075e7f1515a957a95838aadf0ea31a50a6282430abf297"
+          },
+          {
+            "path": "qemu/windows-x86_64/msvcp140_1.dll",
+            "bytes": 25752,
+            "sha256": "5dd32c7f1b4c70ba2b254ec3f66d6bb605edb75b8e0cdbb14b03dae2b1092f2d"
+          },
+          {
+            "path": "qemu/windows-x86_64/concrt140.dll",
+            "bytes": 312472,
+            "sha256": "28e4d3140298286e51f3a0578cc7ece33fe975c0d430155d7b8907768bfa23ff"
+          },
+          {
+            "path": "lib64/vulkan/layers/VkLayer_khronos_validation.json",
+            "bytes": 117475,
+            "sha256": "e275925d7c6ac0c87e0bdffae4caef8b62d3cacee28268d535da42ad72448e5f"
+          },
+          {
+            "path": "lib64/vulkan/layers/VkLayer_khronos_validation.dll",
+            "bytes": 20812952,
+            "sha256": "7ec372c9ecff4e8b711c69d2cb8aaf05c7a6e623e5a0f3699387554bae35c8b5"
+          },
+          {
+            "path": "lib64/vulkan/vulkan-1.dll",
+            "bytes": 780952,
+            "sha256": "ee5fabf74c8a07853bb2e00dcc6d76dba50a3faaf2cd164cae54cad4a9e83a64"
+          },
+          {
+            "path": "lib64/vulkan/vk_swiftshader.dll",
+            "bytes": 23806104,
+            "sha256": "4838ed06728f55f3410edfd9c1c9a2b3bffdfffc9fc2fec2cc6a8c0dcbf7e96e"
+          },
+          {
+            "path": "lib64/vulkan/vk_swiftshader_icd.json",
+            "bytes": 132,
+            "sha256": "a3749d1edd6f36d06920d6c35eab292c99b90a79b39a98250896d15ff3ce0b1c"
+          },
+          {
+            "path": "lib64/vulkan/lvp_icd.json",
+            "bytes": 136,
+            "sha256": "86fca984943cbc73b18c7a3ede313e9791b5b62f3f8c434e09345fc782c59d4c"
+          },
+          {
+            "path": "lib64/vulkan/libvulkan_lvp.dll",
+            "bytes": 50707096,
+            "sha256": "8bed8efaf08d4cab416e96e18b1a546ce4f3816113d035f1b9b4750b0895f7f5"
+          },
+          {
+            "path": "lib64/vulkan/glslangValidator.exe",
+            "bytes": 7543448,
+            "sha256": "29b154cc8a31b21aed984a2fb7d650216bf1176f29629b2aaae79e42ec9d13aa"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/zh-TW.pak",
+            "bytes": 319566,
+            "sha256": "ec06936d2c71e26a376d616dbacc5408aa078327f90b1ba20c51eb9b12c97bd2"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/zh-CN.pak",
+            "bytes": 322027,
+            "sha256": "c8b887d3f6d9daa42adca82e55f71481cc5976f1ed1857173e67f6cdc900f64a"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/vi.pak",
+            "bytes": 445316,
+            "sha256": "011c8514164fc75a7de4e5eb8573210291a476b6b661e1f8b2864e3b829f7096"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/uk.pak",
+            "bytes": 639909,
+            "sha256": "19244f1965cc58473344f55f58caa259416ca68a85d501f99e3f55eb54f8effe"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/tr.pak",
+            "bytes": 374059,
+            "sha256": "31bb50079a43894ae6ff934d6b982475b464e595c2ae6d975219280a2bdc8eb9"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/th.pak",
+            "bytes": 739027,
+            "sha256": "727239d6f665b7e2a994ff2027145f4876c0bbcd3ffdbfa6455b092729936f3d"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/te.pak",
+            "bytes": 875896,
+            "sha256": "edf981655c289142005233d9494e45482d8351b2d887b414c836ec3417670163"
+          },
+          {
+            "path": "lib64/qt/translations/qtwebengine_locales/hi.pak",
+            "bytes": 835350,
+            "sha256": "d09f7f328e24a03aaf5833058643be3291f2b446da72a54d83cb099cfafaa619"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10_pro_xl/EmulationPixel10ProXLOverlay.apk",
+            "bytes": 8542,
+            "sha256": "8a5de141eb996dd339e5e7e4cfccacd563697c943e69c35a067fff2f03edc0e1"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/el.pak",
+            "bytes": 697417,
+            "sha256": "4179eea0d62a89a1f8903ca8508160e80d79c2c4e136cf8d0dbe5cb70d98851e"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/da.pak",
+            "bytes": 358263,
+            "sha256": "c987dc75e85fe802eff7d561b32dc08bfc9474d7ef9388406388f8405fce7c88"
+          },
+          {
+            "path": "include/flatbuffers/idl.h",
+            "bytes": 48604,
+            "sha256": "d99b054a3e23d3952e83955eaaef1411b8896f370a1fc147db0f554493c40f41"
+          },
+          {
+            "path": "include/flatbuffers/hash.h",
+            "bytes": 3754,
+            "sha256": "b7f00a703ecf89dccb779446f6f8860194b1e8d0d8a05318978472f523ed741a"
+          },
+          {
+            "path": "include/flatbuffers/grpc.h",
+            "bytes": 10231,
+            "sha256": "3f92302f56caceabbf543419b87b3316a1f504c2f115215048879e324fd35447"
+          },
+          {
+            "path": "include/flatbuffers/flexbuffers.h",
+            "bytes": 68927,
+            "sha256": "9a02634a7fa571f82774d90ef24ed3a0cdee2f2a5ee9dd8b88f1876b072c1c69"
+          },
+          {
+            "path": "include/flatbuffers/flex_flat_util.h",
+            "bytes": 1256,
+            "sha256": "a681c3e59cbbf34925ab1bb22b3bc622cdca7f95eecd33ddcd764547707404b9"
+          },
+          {
+            "path": "include/flatbuffers/flatc.h",
+            "bytes": 4169,
+            "sha256": "419c0a5fdecad87ee369278ede02e8117d1abd1f8951d1b16305aa53e3b3c302"
+          },
+          {
+            "path": "include/flatbuffers/flatbuffers.h",
+            "bytes": 11282,
+            "sha256": "888963c8007dbd8fe16fdc7c9f88f21e6889ebc20797a273e9f8f22146975352"
+          },
+          {
+            "path": "include/flatbuffers/flatbuffer_builder.h",
+            "bytes": 64211,
+            "sha256": "84296868cd6451e4c0e1406ae279e1ecd5eb7be4b8aa1ca0fcccfcfcb2caafdd"
+          },
+          {
+            "path": "include/flatbuffers/file_manager.h",
+            "bytes": 1447,
+            "sha256": "95bf99cc37ca6d684ab8d523467f8e3f7b98629255d111615cd4856f247ac9b5"
+          },
+          {
+            "path": "include/flatbuffers/minireflect.h",
+            "bytes": 14078,
+            "sha256": "481737e73d469f2dd7b58d3c8c56653838442bbf4bf6769983c280ec8dbb2a1a"
+          },
+          {
+            "path": "include/flatbuffers/detached_buffer.h",
+            "bytes": 3375,
+            "sha256": "38e41f1dacf783d7a054f96fc1b66efa2a33024c4963528daa35f5412bf72d10"
+          },
+          {
+            "path": "include/flatbuffers/code_generators.h",
+            "bytes": 8526,
+            "sha256": "a7da888e9479c6aa1493e1fab13c97305f4ea9b4e196da85652d969ddd161201"
+          },
+          {
+            "path": "include/flatbuffers/code_generator.h",
+            "bytes": 3075,
+            "sha256": "c2b00807e483dd8ce1049d6620906b5349a9edf62842892438ded5f15275cd25"
+          },
+          {
+            "path": "include/flatbuffers/buffer.h",
+            "bytes": 7575,
+            "sha256": "a00c8ac34560cb8895ad6750361d8b16eb91af122b06373fccc550cec404aa95"
+          },
+          {
+            "path": "include/flatbuffers/buffer_ref.h",
+            "bytes": 1564,
+            "sha256": "957422cd84baa78255d9d2d3a21c123a3846b7bd01be610048f593f917f57d12"
+          },
+          {
+            "path": "include/flatbuffers/base.h",
+            "bytes": 17949,
+            "sha256": "afa3999865867372b6764d1382acd4c60ac15213d2bf6c289fde0f42c5b89abc"
+          },
+          {
+            "path": "include/flatbuffers/array.h",
+            "bytes": 9457,
+            "sha256": "15b3046a9a2c2a7c56132647d74eff47ce4a74189563a8288322d7da722875a6"
+          },
+          {
+            "path": "include/flatbuffers/allocator.h",
+            "bytes": 2656,
+            "sha256": "9162274dd90d8522a47ae3de21b5c7c07ecf4906eb156d5643ec057e0a08fbd6"
+          },
+          {
+            "path": "drivers/UsbAssist.sys",
+            "bytes": 39176,
+            "sha256": "15fbd6822cdca1f43bddaf1d04a900d9c6bb47131f645f24fc1f53df83f06d93"
+          },
+          {
+            "path": "drivers/UsbAssist.inf",
+            "bytes": 1542,
+            "sha256": "dbf8945da4e9af9425a8e2dd42bc58cf02f4fd76ec9101603bc17a3b54978c88"
+          },
+          {
+            "path": "include/flatbuffers/default_allocator.h",
+            "bytes": 2445,
+            "sha256": "29fe922300719cf7a0c4e8b23ab6c3976cf357c9f7b0c078c3c449d849ff5b18"
+          },
+          {
+            "path": "drivers/usbassist.cat",
+            "bytes": 11698,
+            "sha256": "8e06afd5d19319b3bece3b4999205a4c83c283cbbb62f52599693fea921efe8d"
+          },
+          {
+            "path": "include/flatbuffers/reflection_generated.h",
+            "bytes": 60098,
+            "sha256": "d4519a230dbac3b3a5e3b4649952d035f8ee67507c184f2268f3752c228bcbb3"
+          },
+          {
+            "path": "include/flatbuffers/registry.h",
+            "bytes": 4650,
+            "sha256": "1fa9d47a8dc6db7f83f5c202f899dc306bf0849e065fcd2b435959e102ee430c"
+          },
+          {
+            "path": "lib/flatbuffers.lib",
+            "bytes": 9489852,
+            "sha256": "dd5ea79c01ed886a9899700eaff7fc31e0f4e7a73e2e5e2161f68422d3ab8c93"
+          },
+          {
+            "path": "lib/emulator_stats.proto",
+            "bytes": 1840,
+            "sha256": "5b87475e665984dd15b046e2763429be7010a2f60dc3b9358dd3ef52e15779ad"
+          },
+          {
+            "path": "lib/emulator_controller.proto",
+            "bytes": 82399,
+            "sha256": "564e00a929e7e4a7af78269a738ea715f32d88c0fc9f92659bb8a1251c9d558f"
+          },
+          {
+            "path": "lib/emulator_access.json",
+            "bytes": 6499,
+            "sha256": "c70a962250289c5840c3fd414a63382048de93a0e97cade9bef3d60257004fc3"
+          },
+          {
+            "path": "lib/emulated_bluetooth.proto",
+            "bytes": 2073,
+            "sha256": "f59389735fc2e74fd4617c14ecef6702ac68354afa6a5eed96b75686a6d17f16"
+          },
+          {
+            "path": "lib/emulated_bluetooth_device.proto",
+            "bytes": 14655,
+            "sha256": "8fafd7fe1f54d30d105ce71875bd5d50c26e03b20c22b9a47ff78f84417e1fdc"
+          },
+          {
+            "path": "lib/emu-original-feature-flags.protobuf",
+            "bytes": 23491,
+            "sha256": "8f724ff9fd5803637a24711bf7d8bde86fe0e88db6378be9ffd6954be19ff9fe"
+          },
+          {
+            "path": "lib/ca-bundle.pem",
+            "bytes": 258424,
+            "sha256": "0f119da204025da7808273fab42ed8e030cafb5c7ea4e1deda4e75f066f528fb"
+          },
+          {
+            "path": "lib/advancedFeatures.ini",
+            "bytes": 28490,
+            "sha256": "0f4532724ad5d666139607ab64bfb3eb42af140343ffb69c97afe72cb686d5f8"
+          },
+          {
+            "path": "include/flatbuffers/reflection.h",
+            "bytes": 22609,
+            "sha256": "f4449e48588efc9d29b29b4ab2d8a5f0952aba61db638fc28f55331578ca2be1"
+          },
+          {
+            "path": "lib/adb_service.proto",
+            "bytes": 3291,
+            "sha256": "10d5a120f68f05d094eac6d9b2a6aca9527712b38338858625250508a20f9355"
+          },
+          {
+            "path": "include/flatbuffers/pch/flatc_pch.h",
+            "bytes": 1158,
+            "sha256": "0d635070518bb4504b5099a6618dc32ea6014e2c135b703f5a50fd27335ecb0d"
+          },
+          {
+            "path": "include/flatbuffers/verifier.h",
+            "bytes": 13858,
+            "sha256": "a17ae4637aba7e795ce13db457e2493df03765a995d8be0ee7d72fb7f943070a"
+          },
+          {
+            "path": "include/flatbuffers/vector.h",
+            "bytes": 13905,
+            "sha256": "3235eeb3aaaf4bb2507853b870aca7b247998d7a3743de8ac25e9a7ccb67d78e"
+          },
+          {
+            "path": "include/flatbuffers/vector_downward.h",
+            "bytes": 8955,
+            "sha256": "f164c29795acad5a0f1c4aacb4647769620d4853a5701420b14c057d96ff8061"
+          },
+          {
+            "path": "include/flatbuffers/util.h",
+            "bytes": 27330,
+            "sha256": "6e3f36928b061e422f900ee4f122d4f63e9475809648083025b2d24a9caa76d8"
+          },
+          {
+            "path": "include/flatbuffers/table.h",
+            "bytes": 6944,
+            "sha256": "7e7165a7b344a7129d2c3a7ae48862a4c8b72dca9b119058de9549ad3a03539c"
+          },
+          {
+            "path": "include/flatbuffers/struct.h",
+            "bytes": 1630,
+            "sha256": "5f6d95432a8e5adf645a878a8853c5c7e8dd113f9662604d4157f8ca08104cc2"
+          },
+          {
+            "path": "include/flatbuffers/string.h",
+            "bytes": 2267,
+            "sha256": "ff1c4afa8934cb2c93f2f763b734ec0f947e3ea11d4b4c3e92999ab65c501ace"
+          },
+          {
+            "path": "include/flatbuffers/stl_emulation.h",
+            "bytes": 19621,
+            "sha256": "d825b76357e9fbeb227930297873611cb535856b716356a0b4a1098440d8a721"
+          },
+          {
+            "path": "include/flatbuffers/pch/pch.h",
+            "bytes": 1033,
+            "sha256": "b91e6389f7ef608c075b0392b9ebd7d8e908481ea9a948e49961181caf3b2aae"
+          },
+          {
+            "path": "drivers/UsbAssist_Install.bat",
+            "bytes": 1183,
+            "sha256": "04a7034211d4da4546bc6ed096157ab3b424f34cb9971db563761162f373893e"
+          },
+          {
+            "path": "drivers/Install_Drivers.bat",
+            "bytes": 178,
+            "sha256": "5524ae497304ff496649937cd3d0bf5e94848c6c09a42fe7ff7705103cf66916"
+          },
+          {
+            "path": "drivers/Android_USB_Assistant.inf",
+            "bytes": 1553,
+            "sha256": "928c1e94f0787347f6ff00b5abcc1c5c7981f5633f59996ef56db2d8766dacb6"
+          },
+          {
+            "path": "netsimd.exe",
+            "bytes": 23328920,
+            "sha256": "0368fa2385bfdee331c487691be68f9a9b57a6dae350e245c20a32bb627dc3e9"
+          },
+          {
+            "path": "msvcp140.dll",
+            "bytes": 565400,
+            "sha256": "ada511763ea4016d3375a7602ce51070f8e525ca6a786d1e15a6f2dfc3260f47"
+          },
+          {
+            "path": "msvcp140_codecvt_ids.dll",
+            "bytes": 21656,
+            "sha256": "d092a0b6a853a28ad249be77a45801b3211df709fcac9fa15a08b018d1d8772f"
+          },
+          {
+            "path": "msvcp140_atomic_wait.dll",
+            "bytes": 40088,
+            "sha256": "c6806bd18e0a30401b0e2374e8faec1a2f5a3333a215ef307257f28a6a6c7a8d"
+          },
+          {
+            "path": "msvcp140_2.dll",
+            "bytes": 257688,
+            "sha256": "73bbfa2be642115b7daabdfbae33cfab7db85d1250ebe9a4f47178d7c8fb0917"
+          },
+          {
+            "path": "msvcp140_1.dll",
+            "bytes": 25752,
+            "sha256": "d2c71eeccca2570fca3685ab63d12285579ed87c7ae7b54d51e79245ef187838"
+          },
+          {
+            "path": "mksdcard.exe",
+            "bytes": 26776,
+            "sha256": "5cf3bc968187598aa4560d337472dd668a409e5d3fa0485c7e2207b557928fe1"
+          },
+          {
+            "path": "LICENSE",
+            "bytes": 524,
+            "sha256": "f2afd2180c83fc2b9faad741599dfe2095fd2557df2e479873bf87af62cf111d"
+          },
+          {
+            "path": "liblibprotobuf.dll",
+            "bytes": 3743384,
+            "sha256": "e6d3476bc6d4f85eb818ebc43442bbef48afc939a90670a541f96caafe79ca31"
+          },
+          {
+            "path": "nimble_bridge.exe",
+            "bytes": 15903384,
+            "sha256": "8f29d65573e4a2ffb13823e96f86e7af708eab90bd23f511bafa03857c30f34f"
+          },
+          {
+            "path": "libglib2_windows_msvc-x86_64.dll",
+            "bytes": 1193112,
+            "sha256": "fd9b707220700b9ccbb1a1a60e05d2932d0893574dfc82dedf26fa080edb97dd"
+          },
+          {
+            "path": "libandroid-emu-metrics.dll",
+            "bytes": 12210328,
+            "sha256": "5e26b99206450209009acdad164d1552131d2bf67e899024d880dddb24dff3ee"
+          },
+          {
+            "path": "libandroid-emu-curl.dll",
+            "bytes": 463512,
+            "sha256": "8fc11a64ad9d2ef2ad372e9403954b0cf3c3ea6de4aa70362dde6e93460464f8"
+          },
+          {
+            "path": "libandroid-emu-base-logging.dll",
+            "bytes": 65688,
+            "sha256": "42619dfd5bfe33d0c43569f156320628e672152e2f193ce3c2f6011ec17122a7"
+          },
+          {
+            "path": "libandroid-emu-agents.dll",
+            "bytes": 30360,
+            "sha256": "5bf260f8cf4c996fe0837d905a9c18ac7938658d064dcc16afd50e4092dd6dae"
+          },
+          {
+            "path": "libabseil_dll.dll",
+            "bytes": 832664,
+            "sha256": "e785e7657283f53909f9d757c32dce958f0d1b0552fe1d86f3f756db03c67911"
+          },
+          {
+            "path": "emulator.exe",
+            "bytes": 23458968,
+            "sha256": "653dfa9797ea524723c3eef98fd532776de9a056a1de2ef389dce782ab92037d"
+          },
+          {
+            "path": "emulator-check.exe",
+            "bytes": 15760024,
+            "sha256": "e009fac5154ec6fb6236b6cc515cc1fc1259bfce44d4baae1728186d32c387f3"
+          },
+          {
+            "path": "crashreport.exe",
+            "bytes": 1741464,
+            "sha256": "cf901dce66607ead62e819542a7ebb8c11424d4376707f70c66a34d7bf8ac001"
+          },
+          {
+            "path": "crashpad_handler.exe",
+            "bytes": 877720,
+            "sha256": "4084196d803cc1dd14b1a32a35906eff7ab1675638b5f860f913fee53be39f05"
+          },
+          {
+            "path": "libandroid-emu-protos.dll",
+            "bytes": 1437848,
+            "sha256": "ff70ae2a60bf66097d6480b4dabe79e2c5cfae5fb82b250b9ee82551d0c843ca"
+          },
+          {
+            "path": "NOTICE.csv",
+            "bytes": 45855,
+            "sha256": "54e77fbabe6bf16dedf57342d51cdb24935e0a8a6032d51a36ff1157679235d7"
+          },
+          {
+            "path": "NOTICE.txt",
+            "bytes": 241466,
+            "sha256": "d07c24063cf4e45416ba3a5c708f7634904348d8fe41f0585c03cb96d6494710"
+          },
+          {
+            "path": "package.xml",
+            "bytes": 17909,
+            "sha256": "272e002a9f35251619bb0884935c1377b978b76f1f9222d33b09b1122c11dac1"
+          },
+          {
+            "path": "drivers/Android_USB_Assistant.cat",
+            "bytes": 14932,
+            "sha256": "c3e3a92c6100c897b2b1c4025bd692308f47f3ce3a5ee0bdd3de7422512dd67b"
+          },
+          {
+            "path": "drivers/Android_USB_Assistant_Install.bat",
+            "bytes": 269,
+            "sha256": "38958121a786d5b07892378dc7909f70e0b4c7a6485a9b2c01f3af0228a6d748"
+          },
+          {
+            "path": "bin64/tune2fs.exe",
+            "bytes": 78520,
+            "sha256": "dab206fa0b4b154a9b288f45a4f70d9c5205ee335ac896c4563c41c41cc8e26c"
+          },
+          {
+            "path": "bin64/resize2fs.exe",
+            "bytes": 58040,
+            "sha256": "130f978b58ab621a997cb32f917746ba7eb96d0c92f9d42dbb48f6f73e12aed5"
+          },
+          {
+            "path": "bin64/e2fsck.exe",
+            "bytes": 260280,
+            "sha256": "085f219560c1364dd13550f33ece3da39a912e21efd643ca4d4e904f08f58541"
+          },
+          {
+            "path": "bin64/cygwin1.dll",
+            "bytes": 3380584,
+            "sha256": "8b672e75a1a94e8e9146409cd875e01e420673610b051a16018efb2d99f76ab0"
+          },
+          {
+            "path": "bin64/cyguuid-1.dll",
+            "bytes": 26808,
+            "sha256": "80e9e2a4afbe6a7b45cd9bb634ebe01ced9438e991d7b2fed1b9e92f8f23d739"
+          },
+          {
+            "path": "bin64/cygintl-8.dll",
+            "bytes": 52408,
+            "sha256": "9c877cd7b054babd82cb43d35baf842bc4713e9059b33e958b3ce850cf292144"
+          },
+          {
+            "path": "bin64/cygiconv-2.dll",
+            "bytes": 1044664,
+            "sha256": "ddf7944692f7fdf3e576f392282e894fb838cb5898d45002f11c24303f7189b0"
+          },
+          {
+            "path": "bin64/cyggcc_s-1.dll",
+            "bytes": 120504,
+            "sha256": "57d000ba0250524b9d7edaa4a1b2fc66f3fbb40e7c42414522798a5f5f21564f"
+          },
+          {
+            "path": "bin64/cygext2fs-2.dll",
+            "bytes": 267960,
+            "sha256": "0b89d89349c6e6d8917c0f69ac464fbc8709d1d1b375a5b4a98d241e9b96a113"
+          },
+          {
+            "path": "bin64/cyge2p-2.dll",
+            "bytes": 39096,
+            "sha256": "075739893d19a0ff4d42cdea5cae4395d7dd2ba71b363055cbc1766c6b748e77"
+          },
+          {
+            "path": "bin64/cygcom_err-2.dll",
+            "bytes": 23224,
+            "sha256": "12b17e3b4fa54cfe5178b81587caac1ef801b9e96b5f1600aca9058e2c8ce376"
+          },
+          {
+            "path": "bin64/cygblkid-1.dll",
+            "bytes": 213696,
+            "sha256": "06f6563de0d99c53dfc4c87f365343b96a48d21ad8e69a1acd0a24d9d5092dd2"
+          },
+          {
+            "path": "vcruntime140.dll",
+            "bytes": 110232,
+            "sha256": "2944ab25ad58cc205b2cff44c4c4ade8a44175b4e47b57f01f352bd9f7bfa082"
+          },
+          {
+            "path": "vcruntime140_threads.dll",
+            "bytes": 28312,
+            "sha256": "dd697dd40e8bef8792d7a598d15248a1992d40a20edf9c78a03907bef940c63e"
+          },
+          {
+            "path": "vcruntime140_1.dll",
+            "bytes": 39576,
+            "sha256": "9ddeba88a64e56e6c7573f590dd4d2d8493694a94eadad8183154b04d4fb0529"
+          },
+          {
+            "path": "vccorlib140.dll",
+            "bytes": 341656,
+            "sha256": "1474ba3a311d32af80a2c7b45d6f7a4e7ebd8e061a3640df593dd34ed837df67"
+          },
+          {
+            "path": "source.properties",
+            "bytes": 103,
+            "sha256": "ba13085f647fb8389a4d06a1de0e4104ac4e841733e50f67223ac230e1ce685a"
+          },
+          {
+            "path": "qsn.exe",
+            "bytes": 34746008,
+            "sha256": "38cd5ab1828721dbb64ca7df09c436a0418bf6193e9e5622e9d3bf52beaa8436"
+          },
+          {
+            "path": "qemu-img.exe",
+            "bytes": 1584280,
+            "sha256": "913ad101fec9ecb2e49943c1056fb89b8ec131ad4fc503cf3b7b7436c94a386f"
+          },
+          {
+            "path": "lib/grpc_endpoint_description.proto",
+            "bytes": 2408,
+            "sha256": "766cc29cb9683e4e90e825e78769a616d8de024e456bc90c6b87bd97a85d60bf"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/de.pak",
+            "bytes": 384126,
+            "sha256": "b7fde52ee655314591d4d19b936f21878e6fe2cced6580a42c852f75a8a2df66"
+          },
+          {
+            "path": "lib/hardware-properties.ini",
+            "bytes": 31318,
+            "sha256": "13a89cc7cfa84c5fe48cd7eb8d296bca321dcd0d90f7bcb751efd963ae2c653d"
+          },
+          {
+            "path": "lib/snapshot_service.proto",
+            "bytes": 14107,
+            "sha256": "0aacf854e1e774f6a054e0112a9210ab71bca29906f8db06255b29d6af11b531"
+          },
+          {
+            "path": "lib64/libglib2_windows_msvc-x86_64.dll",
+            "bytes": 1193112,
+            "sha256": "409b07da525e072c9f9073e0959c5898f12ede9dff4e727e1249c966d1bf83ef"
+          },
+          {
+            "path": "lib64/libgfxstream_backend.dll",
+            "bytes": 22858904,
+            "sha256": "6cd0f21087fa6e6c4f5ab69de59bfe6d5d0cf663ff59b2517796d4d0886545d1"
+          },
+          {
+            "path": "lib64/libemugl_common.dll",
+            "bytes": 158360,
+            "sha256": "5e02acbae5de98c21112cfb29ca5d5147c172f3962bf49d57495b3f0dc5554af"
+          },
+          {
+            "path": "lib64/libandroid-emu-tracing.dll",
+            "bytes": 80024,
+            "sha256": "c690cb5ba3b66dd846ab62b27b7febc41194a13e0b2a636854535aed1b89d121"
+          },
+          {
+            "path": "lib64/libandroid-emu-shared.dll",
+            "bytes": 2703000,
+            "sha256": "fce2cb58376e8f2d8630c9f33e0a54212d4102e979865637ac4d3cfbd335fce1"
+          },
+          {
+            "path": "lib64/libandroid-emu-protos.dll",
+            "bytes": 1437848,
+            "sha256": "0b3c6a13efdc7aa128cd6c3108ab39ab3d3f8c8068d645e9b838f7a0d607830c"
+          },
+          {
+            "path": "lib64/libandroid-emu-metrics.dll",
+            "bytes": 12210328,
+            "sha256": "c59d11fb3821aa0ab14bd32135613e29e6647424f26e786fdd867b386e7b7ecc"
+          },
+          {
+            "path": "lib64/libandroid-emu-curl.dll",
+            "bytes": 463512,
+            "sha256": "33d0d1e8b8966ed3af09a3ec93c54e2a1f92b4ce51d8f64ca4c7e57729c98e97"
+          },
+          {
+            "path": "lib64/libandroid-emu-base-logging.dll",
+            "bytes": 65688,
+            "sha256": "cb44b0e054ad55ecc6f205f79fbc6f5db33f97e7dc59b6f7c51cde7b128bf2f2"
+          },
+          {
+            "path": "lib64/libimage_converter.dll",
+            "bytes": 19096,
+            "sha256": "64b07565e701ca1a3a30592d288b0772463a231aa7f22c1bd662b5fb700dca00"
+          },
+          {
+            "path": "lib64/libandroid-emu-agents.dll",
+            "bytes": 30360,
+            "sha256": "f05bd76efa80bd5b5c94f31112e87c6088af25f9dd182c2e9b13f6d7d03eef05"
+          },
+          {
+            "path": "lib/pkgconfig/flatbuffers.pc",
+            "bytes": 268,
+            "sha256": "1349a97e4ce0d37a45b303d79980ab66ac559f0895303b04988ee9fc3bf1fb8a"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/tr",
+            "bytes": 20308,
+            "sha256": "f6de025aa8c4e1d2305fb5c445b74ead4279edeef2753dec1d22b1d11bbd3520"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/th",
+            "bytes": 18995,
+            "sha256": "de4fdfe7466b06dac19cb130966294bab9f56cc3dc03f6a798184c684f099550"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/sv",
+            "bytes": 1008,
+            "sha256": "36f7e8de76d5ad57aca36a07be7f3e6edeec4dbc478538cf33251045837e8ac4"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/sl",
+            "bytes": 2293,
+            "sha256": "260e63359a991493a76589da8d76b143a7415b1f59f9782cba0381f4dfd26541"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/ru",
+            "bytes": 18870,
+            "sha256": "3283cf206340af4d5f2bfbe304bba4ef721529b530b47f9123c82fc60734499e"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/pt-br",
+            "bytes": 20341,
+            "sha256": "2c199c0b905e51970baf1a13d459a15a12a454653757c024cccac60d107caed8"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/pt",
+            "bytes": 20361,
+            "sha256": "21ff17368b2e3b15f4b677a115c1d190924f59a0bf52328359704629c68f979b"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/pl",
+            "bytes": 20493,
+            "sha256": "b7588b8d461ea09aa41ea0942f99902b7eaba89e16184d290fa1654c69f227ea"
+          },
+          {
+            "path": "lib64/libabseil_dll.dll",
+            "bytes": 832664,
+            "sha256": "d8ea8923b548d29b70d64ef877c97f4dd0021a4928ec5c9aebdad75b0d3cfd25"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/no",
+            "bytes": 20729,
+            "sha256": "ed52d795be968fc2892ea9d3f29caeafbce47d6b5f5f80da2da55e003faea2e6"
+          },
+          {
+            "path": "lib64/liblibprotobuf.dll",
+            "bytes": 3743384,
+            "sha256": "55438b57371e99752663edbc608c015ff27bcb6374a10a91acccf01ef1a17f15"
+          },
+          {
+            "path": "lib64/gles_angle/d3dcompiler_47.dll",
+            "bytes": 4917400,
+            "sha256": "ccff9cc8d9e241631f6de7ccf244febcbc90a0166ebad9151e136062f1c84886"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/cs.pak",
+            "bytes": 397768,
+            "sha256": "d4c350468dfb8bf592e7557187686b12191e0fc33ca4e3e209a6a907863a58df"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ca.pak",
+            "bytes": 386979,
+            "sha256": "796f01201556e0d069f68ce9283167aa1cb0146d4fcda4d9707c67df09583894"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/bn.pak",
+            "bytes": 822291,
+            "sha256": "c549d1d0414627d4686041fb7cdf952b1e17e8fe9b54e7a22d76687520bdda5a"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/bg.pak",
+            "bytes": 635744,
+            "sha256": "5ef0b461748785cdccf269c95b8ad69b4b3017689ab3b3d6ba784d9d447d5202"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/ar.pak",
+            "bytes": 608347,
+            "sha256": "a9ad7484aeb595ff0e479173bc82e20d2c5e548a45e56380694e77004c1e99d1"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_locales/am.pak",
+            "bytes": 556852,
+            "sha256": "8ee48daff9c94bc8cc4253722d2e35854fae19dd774e342441f0fc6e00e02e84"
+          },
+          {
+            "path": "lib64/qt/bin/QtWebEngineProcess.exe",
+            "bytes": 679064,
+            "sha256": "f3a5c43d17ab7c851e8327009c1fe3a47f448286bb3876fa85bd5356e6635cb3"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_resources.pak",
+            "bytes": 1913641,
+            "sha256": "1b1565cad4cf1b61b80bb0ebed8914f11fcb8cceba1251601c8c6066af7a682b"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_resources_200p.pak",
+            "bytes": 154401,
+            "sha256": "d24d50a107d4fc6797cce349318285be4bd16d3a972f6a0f666a1e68934fa291"
+          },
+          {
+            "path": "lib64/libshadertranslator.dll",
+            "bytes": 1525912,
+            "sha256": "002b14eb6a4e47b8f3a8c95be9ff1fb6897a41fe28e58825cea3a4f9b2cc1209"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_resources_100p.pak",
+            "bytes": 123370,
+            "sha256": "19873701a88d7dcd18077f9276f3e542250497bee4f7826d080774213b312dd6"
+          },
+          {
+            "path": "lib64/qt/bin/icudtl.dat",
+            "bytes": 10462432,
+            "sha256": "97b978a19edd4746e9a44d9a44bb4bc519e127a203c247837ec0922f573449e3"
+          },
+          {
+            "path": "lib64/gles_swiftshader/libGLESv2.dll",
+            "bytes": 7254680,
+            "sha256": "a849a4ab9aeb43ed0663fe5872706dbf05d2c41e8252d176df0e92aa880327ca"
+          },
+          {
+            "path": "lib64/gles_swiftshader/libGLES_CM.dll",
+            "bytes": 6519448,
+            "sha256": "516d58757ec895f061256a1f22cddd2b028efd306fa418fa6724924d166c2067"
+          },
+          {
+            "path": "lib64/gles_swiftshader/libEGL.dll",
+            "bytes": 188056,
+            "sha256": "e41abc077a3b0d54c977febdfab81531a264056efff2578da08768cc3586ab30"
+          },
+          {
+            "path": "lib64/gles_angle/vulkan-1.dll",
+            "bytes": 934040,
+            "sha256": "77c2625556e8e5d1bafdbe78de37c0a9d8fff2111ad0cc9f98ebc290d9afcba8"
+          },
+          {
+            "path": "lib64/gles_angle/vk_swiftshader.dll",
+            "bytes": 4323992,
+            "sha256": "1d98a6a788c5e2953199a573327716ebb46cf823d56a24016b88f6c68e77312d"
+          },
+          {
+            "path": "lib64/gles_angle/vk_swiftshader_icd.json",
+            "bytes": 106,
+            "sha256": "32d83ff113fef532a9f97e0d2831f8656628ab1c99e9060f0332b1532839afd9"
+          },
+          {
+            "path": "lib64/gles_angle/libGLESv2.dll",
+            "bytes": 12488856,
+            "sha256": "81a3074f66acd10959d7bb4e8db2d648d8aa788fb600312bed123f8176cd896b"
+          },
+          {
+            "path": "lib64/gles_angle/libEGL.dll",
+            "bytes": 470168,
+            "sha256": "6b9dead15f8c05437b5a3b94b08a25bbb3058b2e224d456cfda0046a00f36213"
+          },
+          {
+            "path": "lib64/qt/bin/qtwebengine_devtools_resources.pak",
+            "bytes": 8556411,
+            "sha256": "cedf0456f1e8a515e6b162a96822cef5f42bafe963ea39e3c252ca7dbe32de16"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/nl-be",
+            "bytes": 43,
+            "sha256": "5e9664de1730b593dd2a5096cde16d37a265d16f659231a88c59a0ebe9151e0c"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/nl",
+            "bytes": 20434,
+            "sha256": "ed8b82551b1776f7f21eb4ae331c128773969a249c95f427448281778e283683"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/modifiers",
+            "bytes": 293,
+            "sha256": "7714afcbbc888df1db09ba7e329cc0415bdc0594bf3622b2edd9ca10512f52bd"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/ar",
+            "bytes": 18962,
+            "sha256": "0ce160bedfc412d71a5c9f0083c7224296c150439bfd6063ad7dafb962331603"
+          },
+          {
+            "path": "lib/pc-bios/vgabios-virtio.bin",
+            "bytes": 38912,
+            "sha256": "58506fd17a02f7a70fc64f225bb842c9ca53f7262874159f4a58121b8e101569"
+          },
+          {
+            "path": "lib/pc-bios/vgabios-stdvga.bin",
+            "bytes": 38912,
+            "sha256": "6f939e75651ce4fe99ee9326bd9e5561d92e17ade1e75c8f7e8cfa47a4ec197b"
+          },
+          {
+            "path": "lib/pc-bios/vgabios-cirrus.bin",
+            "bytes": 38400,
+            "sha256": "e890de8e603b518cc3f2e4f094d33eda44915638b2cb33fdd914093b46812cb1"
+          },
+          {
+            "path": "lib/pc-bios/multiboot.bin",
+            "bytes": 1024,
+            "sha256": "502944f1158be61a6315ee5f84588185433cbf5c5cea2f50ef098ac31e529777"
+          },
+          {
+            "path": "lib/pc-bios/linuxboot.bin",
+            "bytes": 1024,
+            "sha256": "72e0d9f4f1c280c8deb0f21a075f2e312ff00a969117c4155fc3a4f6eb20ead4"
+          },
+          {
+            "path": "lib/pc-bios/linuxboot_dma.bin",
+            "bytes": 1536,
+            "sha256": "9c49e255340c78fc12e54ed043462bca02fb7fca29b7cfab62ff88a5344b6950"
+          },
+          {
+            "path": "lib/pc-bios/kvmvapic.bin",
+            "bytes": 9216,
+            "sha256": "cdf057a71b07e3b52b19cbe210bdefa59250d01a9810b960f7fe1f98eed95a27"
+          },
+          {
+            "path": "lib/pc-bios/efi-virtio.rom",
+            "bytes": 242176,
+            "sha256": "ba7dac7b2af9bb08e1c1d5bf3123b1f1c59a7aba6ed55a0445d23980d9b7ffb9"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/bepo",
+            "bytes": 18975,
+            "sha256": "ee683d00b9758d88cf4f50154188ecf7e5a3f81d5d684a83fb22e69df124f1de"
+          },
+          {
+            "path": "lib/pc-bios/efi-e1000e.rom",
+            "bytes": 240128,
+            "sha256": "ccfecb84f8120d1433ebb89188d1aea8310da79a36ca7ea46c0047a9c2ae16b0"
+          },
+          {
+            "path": "lib/pc-bios/bios.bin",
+            "bytes": 131072,
+            "sha256": "8d9b43b9a1631980487183feee0db866f2587e86cd97623e10e17cfbf314a389"
+          },
+          {
+            "path": "lib/pc-bios/bios-256k.bin",
+            "bytes": 262144,
+            "sha256": "fae6e5c734757b1ba3424c0d78b39147610b738402b04ddfd6cf9f99a1523c86"
+          },
+          {
+            "path": "lib/cmake/flatbuffers/FlatBuffersTargets.cmake",
+            "bytes": 4316,
+            "sha256": "5c5eca9f3b9f491a9cb7acfb147b925dba3e25a7035b512a88dba6228551e56b"
+          },
+          {
+            "path": "lib/cmake/flatbuffers/FlatBuffersTargets-release.cmake",
+            "bytes": 920,
+            "sha256": "a656dbb01879ff8b3da6f81dd05ca9693b229d2d860e4842429604065b093958"
+          },
+          {
+            "path": "lib/cmake/flatbuffers/flatbuffers-config.cmake",
+            "bytes": 284,
+            "sha256": "ab680382852786b256047ea29372a90db557a5fca7c1e8526617769edbbc000a"
+          },
+          {
+            "path": "lib/cmake/flatbuffers/flatbuffers-config-version.cmake",
+            "bytes": 380,
+            "sha256": "97e8516c96b1c49ffc8181433bd5f34c08d1659a62b36ef4d45b04eeeebea3a6"
+          },
+          {
+            "path": "lib/cmake/flatbuffers/BuildFlatBuffers.cmake",
+            "bytes": 17531,
+            "sha256": "3cd34d85fca2653fdc93293442895f2d9d2c382b5e6d78b62f7b95308261dc41"
+          },
+          {
+            "path": "lib/ui_controller_service.proto",
+            "bytes": 5092,
+            "sha256": "cfc3a635cbb5fdfa55090aaab8c6dc0bf61c31938ed3ed2bf0fd9b9853d0945a"
+          },
+          {
+            "path": "lib/snapshot.proto",
+            "bytes": 5555,
+            "sha256": "7b5c7907ec96d7ab35932466894cb285b4fada2ba276b09b726cbc77b890c14c"
+          },
+          {
+            "path": "lib/pc-bios/efi-e1000.rom",
+            "bytes": 240128,
+            "sha256": "db2344767bb7b496f1b8741913b480dad8ce6f826244611aa6e5cdc5579784a3"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/common",
+            "bytes": 2077,
+            "sha256": "a0cc3f3721bb11df45348baa879072ab373ecfe92a7fd1e45541ed902adc7074"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/cz",
+            "bytes": 20375,
+            "sha256": "d5f6a644729ba9bb5da4d83d699fe433fc8c5e7d7e60218bef8cce09d89627ad"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/da",
+            "bytes": 20396,
+            "sha256": "f8dd3484dfb5617f96fd87c9564e18f16dc19824e9e1e6f698d4d206378b7c23"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/mk",
+            "bytes": 18851,
+            "sha256": "076dd9aa5a9f4468087fc83adb071a6eb4c1ab6b8c12a3d0c6080cb9edc39303"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/Makefile",
+            "bytes": 1194,
+            "sha256": "d56661825a549ad83390aafa11881eeb3d0f8b55febeeeb5c7b5f13c297bb738"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/lv",
+            "bytes": 19784,
+            "sha256": "391c46335d2d06f503c88fcd468225192f9ac06e59f9983a68638c214c20d8e5"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/lt",
+            "bytes": 20332,
+            "sha256": "2f237f9724fc4a3b9801b391079078aa0f019a54abbec988a881307aee4348f4"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/ja",
+            "bytes": 18329,
+            "sha256": "076e0bc30c928c0b528fb687623850e829f22f5486bf1d51f693aafcd25f5bfc"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/it",
+            "bytes": 20478,
+            "sha256": "1e917ee38a18e93ea3b6234c13615e771451ca833349410409ee3cc4cce18949"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/is",
+            "bytes": 20420,
+            "sha256": "096e635b078e3f635c6aa5851b70b360fe511a054e2f469f1a664266273624ad"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/hu",
+            "bytes": 20373,
+            "sha256": "ef53e3162c420c74c1adcf9eed9e59435ca4258e3806c217ee46d0a06273bff3"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/hr",
+            "bytes": 20421,
+            "sha256": "05bac1ef2b94794e9d77905f6960f0af190bace7607ebd17705094efe331a047"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/fr-ch",
+            "bytes": 20381,
+            "sha256": "c64dc95002d93a74515d9d7632b5661c7aa89e585962ff147e335fbf92dacc42"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/fr-ca",
+            "bytes": 18730,
+            "sha256": "7b946ab38f0bc5d992b71a73793858d688408a2c37601e6de9311dfa39789088"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/fr-be",
+            "bytes": 20377,
+            "sha256": "0f915ed333321390967b3043ca519f3d684b9e715162061e7c8ad61ca8ec93e9"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/fr",
+            "bytes": 20399,
+            "sha256": "5f656b7504d85be95e51d93161904f40be0c201d23782c135cc6bc7583d9ac6c"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/fo",
+            "bytes": 20383,
+            "sha256": "9f13f8af355921d91c390f0945902dd5f93f09f72690f47d86cefb6832570ed2"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/fi",
+            "bytes": 19770,
+            "sha256": "905486ffce53aca5bff69821ad14e15fc6d3f9054f67a4fb5dc33834c0721948"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/et",
+            "bytes": 18457,
+            "sha256": "abca485e8b4752f37aa9b315a0c8af7481878d4d9efab1c8940d8876c8670695"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/es",
+            "bytes": 20369,
+            "sha256": "63927c650cef2ccd6fdcb7a8f4da53de23126a24c0d3b73b5ad7fa2da9db748d"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/en-us",
+            "bytes": 18252,
+            "sha256": "b487efae070850c1edc651c5a72c5f31eaf6b0d72640b4f1515acd9bfffd3564"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/en-gb",
+            "bytes": 20385,
+            "sha256": "7429d2cc9ce055da9ef5b20144db459285a62b0cd33a8d4eada9ada638f674f7"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/de-ch",
+            "bytes": 20380,
+            "sha256": "bd096e27852d4dab5827e3bfeeca9353554a1bd0538be787b5e1f386eb35bfd3"
+          },
+          {
+            "path": "lib/pc-bios/keymaps/de",
+            "bytes": 20497,
+            "sha256": "7c18ff304868a3611874792318f82da2a62aab46521e43897162f9f6d50ada4b"
+          },
+          {
+            "path": "lib/hostapd.conf",
+            "bytes": 72186,
+            "sha256": "ec59f9e548f8abac42bfa45f466646e57d4e61231a6f2256d3a9952086a9ffd6"
+          },
+          {
+            "path": "resources/skins/android-36/userdebug/pixel_10_pro_xl/SystemUIEmulationPixel10ProXLOverlay.apk",
+            "bytes": 12803,
+            "sha256": "3465cff51a49676771de16af07aeb385cea5cca22bb31366e9588695d6209579"
+          }
+        ],
+        "sourcePropertiesSha256": "ba13085f647fb8389a4d06a1de0e4104ac4e841733e50f67223ac230e1ce685a",
+        "packageMetadataSha256": "272e002a9f35251619bb0884935c1377b978b76f1f9222d33b09b1122c11dac1",
+        "expandedBytes": 1121594689
+      }
+    },
+    {
+      "path": "system-images;android-36;default;x86_64",
+      "revision": "2",
+      "download": {
+        "url": "https://dl.google.com/android/repository/sys-img/android/x86_64-36_r02.zip",
+        "bytes": 844217077,
+        "vendorSha1": "829c076e8ff448a336097ae25a355b495ba36e2c",
+        "sha256": "e1b9d9fb665001ef27b16e57d8762a2d54aec6bff617e17506edb8676667b9da"
+      },
+      "installation": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\system-images\\android-36\\default\\x86_64",
+      "inspection": {
+        "files": [
+          {
+            "path": "advancedFeatures.ini",
+            "bytes": 733,
+            "sha256": "a57f5ac2c59b48654e87f630354feb0fe7e6c88198f6af04187c66be5d54c66f"
+          },
+          {
+            "path": "data/misc/modem_simulator/iccprofile_for_sim_tel_alaska.xml",
+            "bytes": 14474,
+            "sha256": "462cc26ddaa9d6c470a2d9415771c80e323b526b1863f099accb298955b14db3"
+          },
+          {
+            "path": "data/misc/modem_simulator/iccprofile_for_carrierapitests.xml",
+            "bytes": 16537,
+            "sha256": "dc4b5f5344f084fc44f89250bbcf2b12e452eb98c104e4ef3ec115366eb6ce32"
+          },
+          {
+            "path": "data/misc/emulator/config/radioconfig.xml",
+            "bytes": 1433,
+            "sha256": "534a81b662ad62fc70ec0ea22715670524a05a066afc9fdac8e7c0f5a7789cd7"
+          },
+          {
+            "path": "data/misc/emulator/version.txt",
+            "bytes": 112,
+            "sha256": "2f4ecb211f6b497d6011a75390fb0469ceaec4b816c10209198e43bafa57c695"
+          },
+          {
+            "path": "data/misc/GoldfishSkinConfig",
+            "bytes": 783,
+            "sha256": "763b66cad27dc57354f456bb763e27acf8859059890e6515daba90e77c906b75"
+          },
+          {
+            "path": "data/local.prop",
+            "bytes": 46,
+            "sha256": "49b05d093a46d35d85df01fb99133f077fcc725cc49efe1a1bedae884d24e20b"
+          },
+          {
+            "path": "data/empty_data_disk",
+            "bytes": 107,
+            "sha256": "e4dc7c33a83013f3d9eb9b5a5693c912e83a9c7f978933b5c7600039dbfde903"
+          },
+          {
+            "path": "VerifiedBootParams.textproto",
+            "bytes": 356,
+            "sha256": "1e7679f6abdabf66a685a9005c1ef468d1fa02dfa9d6040cab8cb358d882c527"
+          },
+          {
+            "path": "data/misc/modem_simulator/iccprofile_for_sim0.xml",
+            "bytes": 14647,
+            "sha256": "a2744726a306b18d7547251026201aa5c6a9e120aa1555992eeb8b0a3b4aa6d9"
+          },
+          {
+            "path": "vendor.img",
+            "bytes": 103809024,
+            "sha256": "7642724c862f2308d9652354b61b4430d37acfaf51ebe8a9579d8d3f692c6087"
+          },
+          {
+            "path": "source.properties",
+            "bytes": 319,
+            "sha256": "1a6e7c0b326c24c28ba501aa5ada247dd9fb0f087b662865f7bc649991fe74d1"
+          },
+          {
+            "path": "ramdisk.img",
+            "bytes": 2184138,
+            "sha256": "e1e798efba67b02c6813946283d94c6a33e55a30514865e1efe4b9b0c81fbac0"
+          },
+          {
+            "path": "package.xml",
+            "bytes": 18294,
+            "sha256": "154910d2395cc98f13a16ae4751968f80999017c9d01845e073c7e83472a0aaf"
+          },
+          {
+            "path": "NOTICE.txt",
+            "bytes": 5324318,
+            "sha256": "2d4d925fe74484fb5708f7788c6a9f22c15586c2fc4e3c45ac58e34273aea13e"
+          },
+          {
+            "path": "kernel-ranchu",
+            "bytes": 20489216,
+            "sha256": "3f366c20522314f8ccbef89210eabec3491d18997799882e1f0d4d8134e8b937"
+          },
+          {
+            "path": "kernel_cmdline.txt",
+            "bytes": 32,
+            "sha256": "ec34f1f155caa37116a3396e454beefab1eed40b66d95027450a1e4dbb95b2ff"
+          },
+          {
+            "path": "encryptionkey.img",
+            "bytes": 18874368,
+            "sha256": "522bd0b6a2c92e37de465059bb9487bb9597a9aae032b469a8ebe0b38146d8c3"
+          },
+          {
+            "path": "build.prop",
+            "bytes": 5281,
+            "sha256": "565447ab254aa5f2b974186471c28d10cfcab25c346470673d9f7b4d3ac0ac0b"
+          },
+          {
+            "path": "system.img",
+            "bytes": 1898971136,
+            "sha256": "e4a0d85f11c5996ff3eded87800ac55a441829fb193502841ea128af82027d86"
+          },
+          {
+            "path": "data/misc/modem_simulator/etc/modem_simulator/files/numeric_operator.xml",
+            "bytes": 297,
+            "sha256": "c2557e604beea20b67642cdbb14ae7b792f804e4476b3f6cf47035690234f436"
+          }
+        ],
+        "sourcePropertiesSha256": "1a6e7c0b326c24c28ba501aa5ada247dd9fb0f087b662865f7bc649991fe74d1",
+        "packageMetadataSha256": "154910d2395cc98f13a16ae4751968f80999017c9d01845e073c7e83472a0aaf",
+        "expandedBytes": 2049707357
+      }
+    }
+  ],
+  "sdkRecognition": {
+    "exitCode": 0,
+    "stdoutSha256": "55d89c2cc399865ef310e0338c221150143ff2dbd1f96377c6683a2bf867b1d2",
+    "stderrSha256": "da5ed32bcab31d9c251e8386484f8346ed8309a3008fa73de8d5646c5c064142",
+    "licensePromptAnswer": "no",
+    "operation": "--list_installed"
+  },
+  "sourceChanged": null,
+  "licenseAcceptancePerformed": false,
+  "hostOsChangesPerformed": false,
+  "avdCreated": false,
+  "appInstalled": false,
+  "productionActionsAuthorized": false,
+  "releaseReady": false,
+  "preservation": null,
+  "failureCode": "EXISTING_SDK_BYTES_CHANGED",
+  "diskBudget": {
+    "archiveBytes": 1299559945,
+    "combinedExpandedMaximumBytes": 6442450944,
+    "ownedAvdDataMaximumBytes": 2147483648,
+    "ownedAvdCacheMaximumBytes": 536870912,
+    "reserveMinimumBytes": 4294967296,
+    "requiredAvailableBytes": 14721332745,
+    "stagingPublicationUsesMove": true
+  },
+  "actualCombinedExpandedBytes": 3171302046,
+  "finishedAt": "2026-10-02T22:13:49.2195455+00:00"
+}

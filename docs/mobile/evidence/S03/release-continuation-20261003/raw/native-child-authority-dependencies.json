@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-child-authority-dependency-audit",
+  "status": "SOURCE_AUDIT_ONLY",
+  "observedAt": "2026-10-03T02:42:57.7917233+03:00",
+  "repositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+  "sourceFiles": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395"
+    },
+    {
+      "path": "src/child/childProtectedState.ts",
+      "sha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d"
+    },
+    {
+      "path": "src/child/parentPinVerification.ts",
+      "sha256": "c047c7a594bf9e4357cb5a212bd58b8a48a8d12a4b0748b54b99b53eb404ac17"
+    }
+  ],
+  "actualRuntime": "NOT_RUN",
+  "admittedProtectedState": "UNAVAILABLE",
+  "releaseReady": false,
+  "sourceWritten": false,
+  "findings": [
+    {
+      "component": "Android nonrollback/action authority",
+      "source": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "line": 109,
+      "fact": "actualSdkCheckpoint returns null; authenticated read and committed mutation require non-null checkpoint",
+      "remainingProgramming": "Implement trusted constructor-owned VerifiedCheckpoint provider and native Parent Gate coordinator, durable enrollment/migration, exact one-use action binding, current-digest verification/advance/read-back, and production wiring",
+      "genuineDependency": "Select and document a concrete supported SDK/device authority that guarantees the required current full-record nonrollback checkpoint and durable consumption; plain AndroidKeystore AES is explicitly not admitted",
+      "sdkImpossibleClaim": false
+    },
+    {
+      "component": "iOS nonrollback/action authority",
+      "source": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "line": 84,
+      "fact": "actualSDKCheckpoint returns nil; protected read/CAS fails unavailable",
+      "remainingProgramming": "Implement admitted native checkpoint/action provider and private parent verification/coordinator integration",
+      "genuineDependency": "Supported provider/OS capability with stated checkpoint guarantee and installed-OS evidence; public Keychain candidate storage alone does not satisfy the contract",
+      "sdkImpossibleClaim": false
+    },
+    {
+      "component": "Protected native bridge and full-record consumers",
+      "source": "src/child/childProtectedState.ts",
+      "line": 25,
+      "fact": "No default ChildNativeRecordPort; required native authentication, exact CAS/boot/deadline/action permission. Production source search finds createChildProtectedState only at its declaration and native vault references only inside vault declarations",
+      "remainingProgramming": "Wire trusted native read/CAS into application-owned protected-state construction and parent coordinator; never supply a public preference/plugin writer or boolean admission fixture",
+      "genuineDependency": "Provider must first be admitted; runtime wiring alone cannot upgrade a null authority"
+    },
+    {
+      "component": "Parent PIN and trusted time",
+      "source": "src/child/parentPinVerification.ts",
+      "line": 25,
+      "fact": "Requires atomic rollback-resistant secureStore, ephemeral input, KDF and a stable trusted clock. ChildEpochAnchorAuthority is an optional injected contract, with no default authority",
+      "remainingProgramming": "Implement and wire genuine native PIN enrollment/verification/input cleanup, calibrated KDF policy, durable attempt state, and authenticated epoch-anchor verification",
+      "genuineDependency": "Actual provider and trusted anchor provenance/validity; device/session unlock, Date.now, process operationalClock and stored checksums are insufficient"
+    },
+    {
+      "component": "Boot identity and installed OS checks",
+      "source": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "line": 107,
+      "fact": "Android candidate reads /proc/sys/kernel/random/boot_id plus elapsedRealtime; iOS candidate explicitly throws on iOS18+ and reads kern.bootsessionuuid only on earlier OS",
+      "remainingProgramming": "Admit documented supported boot-identity replacement where needed, then verify real boot/restart/clock behavior on owned installed OS",
+      "genuineDependency": "Own emulator has not booted; no Android/iOS runtime guarantee established. The source absence of provider is separate from the emulator timeout"
+    }
+  ],
+  "ownerProgrammingRequired": false,
+  "nextCodexWork": "Provider/OS capability investigation and implementation contract, genuine adapter/coordinator/wiring once guarantees are available, meaningful installed-OS runtime evidence after diagnosed own VM bootstrap; no fake factory or further blind five-minute retries"
+}

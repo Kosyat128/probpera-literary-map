@@ -1,0 +1,17 @@
+[
+  {
+    "path": "docs/mobile/RELEASE_DECISIONS.json",
+    "beforeSha256": "31e66c5d6d6658fd06f92601b7dfc100e54f9ad46fa2a9efcf43dea27e300289",
+    "afterSha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+  },
+  {
+    "path": "scripts/mobile/native-install-runtime.mjs",
+    "beforeSha256": "e47f3783ced0c4e8ccfb51d7ee0b9035941851761c0bc2929f218fd8dfb0f34e",
+    "afterSha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80"
+  },
+  {
+    "path": "scripts/mobile/native-install-runtime.test.mjs",
+    "beforeSha256": "05f3a1dbe6c585d6957673f45d0ded33eba33d62c0095b105649f286424d2a10",
+    "afterSha256": "0c4bcc9c23178974cb9ff7b01bca7576841e35ee2e5a23013f11911cc1046893"
+  }
+]

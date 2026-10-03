@@ -1,0 +1,19 @@
+{
+  "startedAt": "2026-10-02T23:21:02.396Z",
+  "finishedAt": "2026-10-02T23:21:04.194Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/scoped.config.mjs",
+    "src/child/childMedia.test.ts",
+    "src/child/childMediaDecode.test.ts",
+    "--reporter=json",
+    "--outputFile=D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-media-decode-a1/vitest.json"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "errorCode": null,
+  "isolatedEnv": true
+}

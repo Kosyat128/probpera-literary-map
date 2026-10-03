@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+  "previousHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "src/child/childDurableData.test.ts",
+      "sha256": "927152f3bb27a5e0d007da45b24df5590d3cfaa45ece0e5b07491aa8b39f83f2"
+    },
+    {
+      "path": "src/child/childDurableData.ts",
+      "sha256": "dbf2954761cbdac38a82248d26b66ca2b87db1519d98f7431a509611606fd977"
+    },
+    {
+      "path": "tests/child/child-durable-indexeddb.mjs",
+      "sha256": "e502b245a9659d0f75ca7b80b96d9b6d5b42d1351ee2f5d5aa4c1b963f99ed99"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-02T23:03:27.074Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [
+    {
+      "path": "tests/child/child-durable-indexeddb.mjs",
+      "status": "PASS"
+    }
+  ],
+  "remoteOperations": 0
+}

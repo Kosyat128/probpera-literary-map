@@ -1,0 +1,17 @@
+[
+  {
+    "path": "src/child/childMediaPresentation.ts",
+    "beforeSha256": null,
+    "afterSha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+  },
+  {
+    "path": "src/child/childMediaPresentation.test.ts",
+    "beforeSha256": null,
+    "afterSha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+  },
+  {
+    "path": "tests/child/child-media-presentation-web.mjs",
+    "beforeSha256": null,
+    "afterSha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+  }
+]

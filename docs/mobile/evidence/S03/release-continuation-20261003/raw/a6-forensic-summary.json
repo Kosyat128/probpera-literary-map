@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-owned-a6-forensic-summary",
+  "createdAt": "2026-10-03T02:22:00.5769640+03:00",
+  "status": "BOOT_NOT_VERIFIED",
+  "original": {
+    "path": ".tmp/mobile-owned-avd-08b18b5d55ff4e24a7b5c6664c719286/result.json",
+    "sha256": "5443cfb51104bcc00183cc6327ef7f8880c6e2dc2d35250c8ce5c9300d21748f",
+    "status": "FAIL",
+    "failureCode": "OWN_SOFTWARE_EMULATOR_BOOT_TIMEOUT_300S",
+    "inputSha256": "c88a4b759ae6e09457156155f23ec5cefbfcf446f2eb4e82248efcd723e20c52",
+    "sourceCommit": "52202817e51892e14fc467677b40c613fffc3cd6",
+    "modified": false
+  },
+  "diagnosticCorrection": {
+    "originalStatus": "OWN_QEMU_NOT_OBSERVED",
+    "reason": "Original inspector and this subagent process filter omitted qemu-system-x86_64-headless.exe; absence conclusions were unsupported",
+    "originalInspectorSha256": "892aa566e1319538e9472f1b84608a0a6a962d62759dfc580df62a6de6ce0a72",
+    "fixedInspectorSha256": "e737a3254178ddf38464ca63eff5019fa4a21109e9062f21c520fa22140844f5"
+  },
+  "rootReportedActualQemu": {
+    "source": "ROOT reported its authorised exact CIM plus live Get-Process observation in the parent task message; raw tool output is not retained by this subagent",
+    "pid": 18872,
+    "parentPid": 28108,
+    "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\emulator\\qemu\\windows-x86_64\\qemu-system-x86_64-headless.exe",
+    "startedAt": "2026-10-02T23:10:51.482Z",
+    "wasAliveDuringObservation": true,
+    "cpuSeconds": 6.671875,
+    "workingSetBytes": 142942208,
+    "nonceValidatedByRoot": true,
+    "commandLinePublished": false
+  },
+  "ownLogObservations": {
+    "path": ".tmp/mobile-owned-avd-08b18b5d55ff4e24a7b5c6664c719286/logs/emulator.stdout.txt",
+    "sha256": "cd6ea163a7dc342bc615ef3ecfc764d35ab6b0a3503fcde623e10d8d5908990f",
+    "metricsWarningObserved": false,
+    "guestKernelObserved": false,
+    "bootCompletedObserved": false,
+    "lastRendererSelection": "Vulkan lavapipe / GLES swiftshader; guest driver software",
+    "causeEstablished": false,
+    "interpretation": "QEMU existed, but neither guest boot nor own private ADB serial was confirmed. Renderer startup stall and ADB discovery remain hypotheses."
+  },
+  "ownImage": {
+    "status": "MEASURED",
+    "configuredDataBytes": 2147483648,
+    "logicalBytes": 6442450944,
+    "allocatedBytes": 71041024,
+    "attributes": 544,
+    "sparse": true,
+    "source": "Original UTF8-fixed read-only measurement"
+  },
+  "cleanupAllTrue": true,
+  "nextDelta": {
+    "gpu": "swiftshader",
+    "disabledFeature": "Vulkan",
+    "softwareOnly": true,
+    "deadlineMilliseconds": 300000,
+    "metricsDisabled": true,
+    "kernelLogEnabled": true,
+    "proof": "Pinned installed emulator -help-gpu/-help-feature exit0, saved adjacent to this summary",
+    "resolutionProven": false
+  },
+  "installedAppVerified": false,
+  "releaseReady": false,
+  "sourceOrSdkWritten": false
+}

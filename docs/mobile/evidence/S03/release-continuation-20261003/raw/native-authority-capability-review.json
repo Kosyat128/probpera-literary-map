@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-authority-capability-review",
+  "observedAt": "2026-10-03 02:10:58 UTC",
+  "status": "DOCUMENTATION_REVIEW_ONLY",
+  "releaseReady": false,
+  "actualOsChecks": "NOT_RUN",
+  "productionFactoryAdmitted": false,
+  "sources": [
+    {
+      "url": "https://developer.android.com/privacy-and-security/keystore",
+      "fact": "Keystore can keep keys non-exportable; hardware placement and supported authorizations depend on the actual key/device. Secure hardware normally does not enforce calendar validity because an independent secure real-time clock is generally absent."
+    },
+    {
+      "url": "https://developer.android.com/reference/android/security/keystore/KeyGenParameterSpec.Builder#setMaxUsageCount(int)",
+      "fact": "API31 provides limited-use secret/private keys. Enforcement can be software or hardware; dedicated PackageManager features report hardware single/limited-use support."
+    },
+    {
+      "url": "https://source.android.com/docs/security/features/keystore/implementer-ref",
+      "fact": "KeyMint rollback resistance specifically prevents reuse of a deleted key even if an attacker restores an earlier keyblob; trusted metadata may be resource-limited."
+    }
+  ],
+  "inferences": [
+    {
+      "status": "NOT_ADMITTED",
+      "detail": "A hardware-backed key or limited-use feature alone is not evidence that the current full-record digest, native action consumption and signed epoch-anchor contract have been implemented and verified. A ratchet or checkpoint design would need an exact supported API guarantee, failure recovery and installed-device evidence before it could replace the null native factory."
+    }
+  ],
+  "remainingCodexWork": [
+    "Implement and validate an exact supported checkpoint/action provider and native coordinator; do not transfer programming to the owner.",
+    "Implement authenticated epoch-anchor provenance and restart handling; do not substitute Date.now or an ordinary stored checksum.",
+    "Keep child mode sealed until protected admission and lifecycle/route wiring are actually complete."
+  ],
+  "sdkUniversallyImpossibleClaim": false,
+  "remoteProjectActions": 0
+}

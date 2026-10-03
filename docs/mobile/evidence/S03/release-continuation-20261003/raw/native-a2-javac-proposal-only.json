@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-child-source-compile",
+  "sourceSha256": "ca69c70a8df4946d437704900441d587cb303f38354e76149409a2d34b60accf",
+  "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-index-repair-nativecandidatea2\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildDataStore.java",
+  "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+  "compiledProposalOnly": true,
+  "javaRelease": 21,
+  "androidApi": 36,
+  "exitCode": 0,
+  "pass": true,
+  "nativeRuntime": "NOT_RUN",
+  "testClassCompiled": false,
+  "iosCompiled": false,
+  "releaseReady": false,
+  "finishedAt": "2026-10-03T02:32:19.8540804Z"
+}

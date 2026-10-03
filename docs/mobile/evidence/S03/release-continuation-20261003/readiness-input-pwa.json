@@ -1,0 +1,131 @@
+{
+  "binding": {
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+    "platform": "pwa",
+    "channel": "web-direct",
+    "environment": "local",
+    "artifactSha256": "77a379d1a655ae9208e208898e3e53570c3ed76f56f9ac9315966a897980dcef"
+  },
+  "artifactPath": ".tmp/mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28/pwa-bundle/artifact.json",
+  "artifactMetadataPath": ".tmp/mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28/pwa-bundle/artifact.json",
+  "gates": [
+    {
+      "id": "local-tests",
+      "status": "NOT_RUN",
+      "reason": "Focused new child tests and exact current App TypeScript are recorded separately. Four old critical-source witnesses are absent; the broad local-test gate remains unverified."
+    },
+    {
+      "id": "content-preservation",
+      "status": "PASS",
+      "reason": "Exactly 6820 protected author/content bytes are unchanged in the actual final scoped freeze. This does not claim a new global historical-journal scan or recover four missing critical-source witnesses.",
+      "binding": {
+        "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+        "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "pwa",
+        "channel": "web-direct",
+        "environment": "local",
+        "artifactSha256": "77a379d1a655ae9208e208898e3e53570c3ed76f56f9ac9315966a897980dcef"
+      },
+      "finishedAt": "2026-10-03T02:48:36.798Z",
+      "facts": {
+        "completed": true,
+        "scope": "6820 protected author/content bytes only",
+        "checkedCount": 6820,
+        "changedCount": 0,
+        "missingCount": 0,
+        "globalHistoricalJournalScanExecuted": false,
+        "criticalSourceWitnessRecoveryClaimed": false
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-continuation-20261003/raw/source-checkpoint-6.json",
+          "sha256": "b2a7ec20db191d00e2967663c20f3b15c49ab959c72015171d7aad145f55cb85"
+        }
+      ]
+    },
+    {
+      "id": "ru-en-runtime",
+      "status": "NOT_RUN",
+      "reason": "Focused prior dossier and isolated child-media proofs do not complete the full current RU/EN product matrix."
+    },
+    {
+      "id": "auth-deletion-local",
+      "status": "NOT_RUN",
+      "reason": "Retained local Auth contracts remain scoped observations; four old critical-source raw witnesses are absent and the broad gate is not promoted."
+    },
+    {
+      "id": "auth-deletion-remote",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Real configured Auth, two ordinary users, revocation and durable deletion are not verified."
+    },
+    {
+      "id": "editorial-legal",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Five exact RU/EN material versions remain PENDING human review."
+    },
+    {
+      "id": "psp-commercial-decision",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "The owner explicitly has not selected a PSP; YooKassa remains a provisional sandbox candidate."
+    },
+    {
+      "id": "payment-sandbox",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No real selected-provider sandbox purchase, refund, restore or reconcile has run."
+    },
+    {
+      "id": "remote-authorization",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No separate exact-environment grant exists; remote operations remain zero."
+    },
+    {
+      "id": "package-integrity",
+      "status": "PASS",
+      "reason": "Actual current preparation audit, complete retained resource hashes and exact compiled raw source closure; local unreleased package only.",
+      "binding": {
+        "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+        "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "pwa",
+        "channel": "web-direct",
+        "environment": "local",
+        "artifactSha256": "77a379d1a655ae9208e208898e3e53570c3ed76f56f9ac9315966a897980dcef"
+      },
+      "finishedAt": "2026-10-03T02:52:49.859Z",
+      "facts": {
+        "completed": true,
+        "scope": "Local preparation audit and exact current-byte inventory",
+        "deviceTested": false
+      },
+      "files": [
+        {
+          "path": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-preparation-pwa.json",
+          "sha256": "ac661c03c9912778a9df5ee73eee5364adafc86217dabe735cc22bfb0c89753f"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28/pwa-bundle/artifact.json",
+          "sha256": "77a379d1a655ae9208e208898e3e53570c3ed76f56f9ac9315966a897980dcef"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-pwa-audit-stdout.txt",
+          "sha256": "878307435351e9402103c3e4c48446b6e4d35eafee266ae0ea1f5e578aa9bd8f"
+        },
+        {
+          "path": "docs/mobile/evidence/S03/release-continuation-20261003/raw/current-pwa-pwa-audit-stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "id": "pwa-install-offline-update",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    }
+  ]
+}

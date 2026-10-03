@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+  "previousHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "src/child/childMedia.test.ts",
+      "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+    },
+    {
+      "path": "src/child/childMedia.ts",
+      "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+    },
+    {
+      "path": "src/child/childMediaDecode.test.ts",
+      "sha256": "a5e437590a476eb8c83e807e993e1f99ad86aa951d30fcdcb8828fc07827eb1d"
+    },
+    {
+      "path": "src/child/childMediaDecode.ts",
+      "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+    },
+    {
+      "path": "tests/child/child-media-decode-web.mjs",
+      "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-02T23:26:43.618Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [
+    {
+      "path": "tests/child/child-media-decode-web.mjs",
+      "status": "PASS"
+    }
+  ],
+  "remoteOperations": 0
+}

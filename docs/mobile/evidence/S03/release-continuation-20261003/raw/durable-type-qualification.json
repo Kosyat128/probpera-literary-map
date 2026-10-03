@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "durable-type-only-runtime-qualification",
+  "checkedAt": "2026-10-02T23:10:01.767Z",
+  "sourceCommitBefore": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+  "path": "src/child/childDurableData.ts",
+  "beforeSha256": "dbf2954761cbdac38a82248d26b66ca2b87db1519d98f7431a509611606fd977",
+  "afterSha256": "310f2bc46887a8a6702457d877b26d63ea360f1cddc4945e9f7982989f880fa3",
+  "typescriptVersion": "5.9.3",
+  "compilerOptions": {
+    "module": 6,
+    "target": 7,
+    "strict": true
+  },
+  "beforeEmissionSha256": "20bb5afcc813fb7ae1e6b6c5dd4d3c57c1f726d1eb504c69cb564e2b58b87036",
+  "afterEmissionSha256": "20bb5afcc813fb7ae1e6b6c5dd4d3c57c1f726d1eb504c69cb564e2b58b87036",
+  "emittedBytesIdentical": true,
+  "retainedUnitCases": 43,
+  "retainedRealIndexedDbChecks": 44,
+  "appTypecheck": "REQUIRED_AFTER_REPAIR",
+  "releaseReady": false
+}

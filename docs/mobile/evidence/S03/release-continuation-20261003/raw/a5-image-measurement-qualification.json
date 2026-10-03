@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-owned-a5-image-encoding-qualification",
+  "status": "PASS_FOR_OWN_IMAGE_MEASUREMENT_ONLY",
+  "createdAt": "2026-10-03T02:05:15.2831994+03:00",
+  "originalResult": {
+    "path": ".tmp/mobile-owned-avd-c044f764cdc942d6bb212a0f329dcced/result.json",
+    "sha256": "5a3b413083e2d5db7951e917e636b67bd6fbf2e81a98ac325e98173b9e0ae1a2",
+    "status": "FAIL",
+    "failureCode": "OWN_SOFTWARE_EMULATOR_BOOT_TIMEOUT_300S",
+    "measurementStatus": "NOT_VERIFIED",
+    "measurementFailureCode": "OWN_IMAGE_MEASUREMENT_REPLY_DIFFERS",
+    "modified": false
+  },
+  "measurementRaw": {
+    "path": ".tmp/mobile-owned-avd-c044f764cdc942d6bb212a0f329dcced/logs/064.stdout.txt",
+    "bytes": 390,
+    "sha256": "c56acc6a1af33cbf8b61b154e2929da3a1a529dfc3c4b91f4e5fa42d72a73315",
+    "decoder": "Windows OEM code page 866",
+    "exactOwnPathValidated": true,
+    "utf8OriginalRejected": true,
+    "alternative1251ExactOwnPath": false
+  },
+  "actualOwnImage": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-owned-avd-c044f764cdc942d6bb212a0f329dcced\\avds\\LiteraryPlanet-V12-c044f764cdc942d6bb212a0f329dcced.avd\\userdata-qemu.img",
+    "logicalBytes": 6442450944,
+    "allocatedBytes": 74973184,
+    "attributes": 544,
+    "sparse": true,
+    "configuredDataBytes": 2147483648,
+    "source": "Exact original successful command064 Win32 read-only allocation reply, legacy-decoded and bound to the original nonce path"
+  },
+  "guestBootVerified": false,
+  "installedAppVerified": false,
+  "releaseReady": false,
+  "sourceOrSdkWritten": false
+}

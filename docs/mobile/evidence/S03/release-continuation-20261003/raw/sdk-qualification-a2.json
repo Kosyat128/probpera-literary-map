@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-pinned-emulator-installation-qualification",
+  "status": "PASS_WITH_SDK_METADATA_CHANGE",
+  "createdAt": "2026-10-02T22:23:49.742Z",
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+  "repositoryHead": "b9f351788ef415a5518c3c9e4b7e755809a8cff7",
+  "sourceStatus": "",
+  "originalInstallation": {
+    "path": ".tmp/mobile-owned-emulator-981f639bf0364057b8496ad17faee89d/installation.json",
+    "sha256": "947630593e084609c9faf0355e24b902e203509be673f51d53eefd87b73e5433",
+    "status": "FAIL",
+    "failureCode": "EXISTING_SDK_BYTES_CHANGED"
+  },
+  "baselineInventory": {
+    "path": ".tmp/mobile-owned-emulator-981f639bf0364057b8496ad17faee89d/sdk-before.json",
+    "sha256": "70f2b2c37b3df431deceda76609557726d8a101868912a8c1f3165db2c53f4ed",
+    "checkedFiles": 11841
+  },
+  "sdkChanged": true,
+  "changes": [
+    {
+      "path": ".knownPackages",
+      "beforeSha256": "027cc1e8e9984b0fe59119d401cfc244de0bc35182d73434f0f8592e2e67e8db",
+      "beforeBytes": 16,
+      "afterSha256": "181587190291d84fab7400ff8cec7f0d1709c745c6c1ded670d1872b3df6dcda",
+      "afterBytes": 16
+    }
+  ],
+  "unchangedOriginalFiles": 11840,
+  "license": {
+    "path": "licenses/android-sdk-license",
+    "sha256": "70fd2713ca385fd6b14c1d5577ce8349996699186a3a216e9643a09098c26dca",
+    "changed": false,
+    "acceptedHash": "24333f8a63b6825ea9c5514f83c2829b004d1fee"
+  },
+  "packages": [
+    {
+      "path": "emulator",
+      "revision": "37.2.12",
+      "verifiedFiles": 387,
+      "archiveSha1": "488ed747e82de7e9bb5247becd1ac043c7e5e85d",
+      "archiveSha256": "3b524b6e0f1f5506d3d81af62ec9ce15b2a6f80f467e99574e167514ca181401",
+      "sourcePropertiesSha256": "ba13085f647fb8389a4d06a1de0e4104ac4e841733e50f67223ac230e1ce685a",
+      "packageMetadataSha256": "272e002a9f35251619bb0884935c1377b978b76f1f9222d33b09b1122c11dac1"
+    },
+    {
+      "path": "system-images;android-36;default;x86_64",
+      "revision": "2",
+      "verifiedFiles": 21,
+      "archiveSha1": "829c076e8ff448a336097ae25a355b495ba36e2c",
+      "archiveSha256": "e1b9d9fb665001ef27b16e57d8762a2d54aec6bff617e17506edb8676667b9da",
+      "sourcePropertiesSha256": "1a6e7c0b326c24c28ba501aa5ada247dd9fb0f087b662865f7bc649991fe74d1",
+      "packageMetadataSha256": "154910d2395cc98f13a16ae4751968f80999017c9d01845e073c7e83472a0aaf"
+    }
+  ],
+  "qualificationScope": "Exact pinned tools/image installed and recognized; all previous SDK bytes retained except the one observed LocalRepoLoaderImpl .knownPackages marker. No APK/app/source/OS-runtime acceptance.",
+  "sdkRecognition": {
+    "exitCode": 0,
+    "stdoutSha256": "55d89c2cc399865ef310e0338c221150143ff2dbd1f96377c6683a2bf867b1d2",
+    "stderrSha256": "da5ed32bcab31d9c251e8386484f8346ed8309a3008fa73de8d5646c5c064142"
+  },
+  "licenseAcceptancePerformed": false,
+  "hostOsChangesPerformed": false,
+  "avdCreated": false,
+  "appInstalled": false,
+  "releaseReady": false
+}

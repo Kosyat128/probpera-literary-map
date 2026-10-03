@@ -1,0 +1,2232 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-local-release-packet",
+  "evidenceFamily": "docs/mobile/evidence/S03/release-preparation-20261002",
+  "assembledAt": "2026-10-02T22:13:26.498Z",
+  "status": "PARTIAL",
+  "assemblyIntegrity": "PASS",
+  "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "repositoryHead": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+  "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "toolVersions": {
+    "node": "v24.19.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.6",
+    "vitest": "4.1.10",
+    "@capacitor/core": "8.5.1",
+    "@capacitor/cli": "8.5.1",
+    "@capacitor/android": "8.5.1",
+    "@capacitor/ios": "8.5.1",
+    "@supabase/supabase-js": "2.112.3"
+  },
+  "preparations": [
+    {
+      "mode": "android",
+      "status": "PASS",
+      "scope": "local-dev-binary-preparation",
+      "report": "preparations/android/preparation.json",
+      "reportSha256": "a8dd881204472043970338a5ab9c4dacca33a690eb57014075ce1a29153af127",
+      "bundleArtifact": "bundles/android/artifact.json",
+      "bundleArtifactSha256": "b9e1a02d24431829f4e6cd517641e8574f9e447e34197dce8d96e124f707ca6b",
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+      "buildId": "46f82f7e1b49a759fb1ed1cb538889ae70cbb85ab34d6451aec937ec7b231dab",
+      "channel": "dev",
+      "deviceTested": false,
+      "storeArtifact": false,
+      "artifactSourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+      "currentCodeCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "preparationSourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2",
+      "retainedAncestorPreparation": true,
+      "compiledByteClosureCurrent": true,
+      "preparationReexecuted": false,
+      "changedGlobalPaths": [
+        "scripts/mobile/native-dossier-contrast.mjs",
+        "scripts/mobile/native-install-runtime.mjs",
+        "scripts/mobile/native-install-runtime.test.mjs"
+      ],
+      "retentionReason": "Original preparation/source/timestamps retained. Exact current mode-specific compiled inputs and all retained resource hashes match; only explicitly noncompiled operator or web-mode Android SDK inputs differ. No recompilation or new execution claim.",
+      "applicationId": "ru.probpera.literaryplanet.dev",
+      "versionCode": 1,
+      "versionName": "1.0-dev",
+      "artifactSha256": "85d613a9770b48bb17b7112a4134a0bae9c86e937d930213755141a709a11198",
+      "testArtifactSha256": "a76f649e4c68a637ac930fa8edc3515cf72c5bd67df57f5dfc282da9ce4727eb",
+      "certificateSha256": "6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9",
+      "signing": "existing-project-debug-key",
+      "instrumentationCompiled": true,
+      "installedRuntime": "NOT_RUN",
+      "osStorage": "NOT_RUN",
+      "updateRuntime": "NOT_RUN",
+      "updateSignatureCompatible": true,
+      "previousArtifactSha256": "d37536566878a53403872702fd1a3e54f16273ac9c94614dbc1c1da90aa84c28"
+    },
+    {
+      "mode": "pwa",
+      "status": "PASS",
+      "scope": "controlled-pwa-bundle-preparation",
+      "report": "preparations/pwa/preparation.json",
+      "reportSha256": "73a2508ac3ccae38b25b188fdbea11269d48c32cb6186f09cf335fa85e5ae4ff",
+      "bundleArtifact": "bundles/pwa/artifact.json",
+      "bundleArtifactSha256": "e6ae5160d5ffa089627be6040a64fefc55a46c3ff0af496d3f56523c1ebeb4ce",
+      "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+      "buildId": "f5b991c163ee8c842ddcc2cae3098a159ed090a4901385ae20ee19d5e0f2b978",
+      "channel": "web-direct",
+      "deviceTested": false,
+      "storeArtifact": false,
+      "artifactSourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+      "currentCodeCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "preparationSourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+      "retainedAncestorPreparation": true,
+      "compiledByteClosureCurrent": true,
+      "preparationReexecuted": false,
+      "changedGlobalPaths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "scripts/mobile/native-dossier-contrast.mjs",
+        "scripts/mobile/native-install-runtime.mjs",
+        "scripts/mobile/native-install-runtime.test.mjs"
+      ],
+      "retentionReason": "Original preparation/source/timestamps retained. Exact current mode-specific compiled inputs and all retained resource hashes match; only explicitly noncompiled operator or web-mode Android SDK inputs differ. No recompilation or new execution claim."
+    },
+    {
+      "mode": "ios-bundle",
+      "status": "PASS",
+      "scope": "ios-web-bundle-preparation-only",
+      "report": "preparations/ios-bundle/preparation.json",
+      "reportSha256": "07cfbae836ffd189d40e735f4a88027ce82a7d33d141c20c332034c54e45e130",
+      "bundleArtifact": "bundles/ios-bundle/artifact.json",
+      "bundleArtifactSha256": "ed250fe50a6bd72870ee88ea819aff1f5f3a954ff903095bd3fceb43737621b2",
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "buildId": "b7102adc23fdf50e67a6658704365b58e45a001fac4aca00d5d94fb0163f3f4d",
+      "channel": "dev",
+      "deviceTested": false,
+      "storeArtifact": false,
+      "artifactSourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "currentCodeCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "preparationSourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "retainedAncestorPreparation": false,
+      "compiledByteClosureCurrent": true,
+      "iosCompiled": false,
+      "simulatorRuntime": "NOT_RUN",
+      "keychainRuntime": "NOT_RUN"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "check-001",
+      "role": "historical-result",
+      "path": "evidence/check-001/execution.json",
+      "sha256": "cc365f4bbd6a0217c0694221c5963d18485ee9c9db54b870669f5031eb42daae",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-002",
+      "role": "historical-log",
+      "path": "evidence/check-002/stdout.txt",
+      "sha256": "650b67145cde8251d13bcf3b49037143f3a1cd11bd15b81ee5c9dfc915b0ec6b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-003",
+      "role": "historical-log",
+      "path": "evidence/check-003/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-004",
+      "role": "historical-result",
+      "path": "evidence/check-004/vitest.json",
+      "sha256": "80c75deff987b257967d8bf7e858daa4426343cad196ecab132d5abafecb87a4",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-005",
+      "role": "historical-result",
+      "path": "evidence/check-005/execution.json",
+      "sha256": "644021149bd15df1ccc5d1237706db01fa5e15eb99c985783cf2f940d057bb8d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-006",
+      "role": "historical-log",
+      "path": "evidence/check-006/stdout.txt",
+      "sha256": "5c2416cb85e40620ded39c8ace8a0f06fc5c211e56a222e9a51c7ad6ebea515e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-007",
+      "role": "historical-log",
+      "path": "evidence/check-007/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-008",
+      "role": "historical-result",
+      "path": "evidence/check-008/vitest.json",
+      "sha256": "23b292e2a2821a8082445d4790259671ff3bf426eb0a7b75d2cb99b6584c265d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-009",
+      "role": "historical-result",
+      "path": "evidence/check-009/execution.json",
+      "sha256": "0b8014d8b582dc74f32dc21d6a0f0930101e6abc6e371c3510dd60c2e1ff6990",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-010",
+      "role": "historical-log",
+      "path": "evidence/check-010/stdout.txt",
+      "sha256": "d95716cd7528adaa73b8307c44204fe1bcc65b1e0908d72edc6191ae203e9258",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-011",
+      "role": "historical-log",
+      "path": "evidence/check-011/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-012",
+      "role": "historical-result",
+      "path": "evidence/check-012/vitest.json",
+      "sha256": "2df8db937e4282ef89a42f0c242d94b63b499f68256c666cf03e18167e8ad431",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-013",
+      "role": "historical-result",
+      "path": "evidence/check-013/execution.json",
+      "sha256": "51464288704d9f35df1f5954c41b253855390d06ef1029745c2943dd27e0a69e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-014",
+      "role": "historical-log",
+      "path": "evidence/check-014/stdout.txt",
+      "sha256": "894ebfbab009c7f53298685d7175fe4cda29a972212f3b1735ccae4ebb230bda",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-015",
+      "role": "historical-log",
+      "path": "evidence/check-015/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-016",
+      "role": "historical-result",
+      "path": "evidence/check-016/execution.json",
+      "sha256": "af01328237cd6c1ab3c99cf8f781764e496f93a954f633263dd0c67ef160dd44",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-017",
+      "role": "historical-log",
+      "path": "evidence/check-017/stdout.txt",
+      "sha256": "18d1912adf0031d1adc1211c3088de600269b8152cd5c8834d1aaa49ec3c53cc",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-018",
+      "role": "historical-log",
+      "path": "evidence/check-018/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-019",
+      "role": "historical-result",
+      "path": "evidence/check-019/execution.json",
+      "sha256": "2c89df26fe33b673d6e77fe55171bf41543ef14940f4d400e91a26dcdd5def17",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-020",
+      "role": "historical-log",
+      "path": "evidence/check-020/stdout.txt",
+      "sha256": "492fa274278c15589d4d99ab1bd16a567faa73e525f83646fa7e939d1fc034fb",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-021",
+      "role": "historical-log",
+      "path": "evidence/check-021/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-022",
+      "role": "historical-result",
+      "path": "evidence/check-022/vitest.json",
+      "sha256": "e39af0b3f85472e3acd1bc08a963e01dbe399bd4f600c7eb34b76981d4992e4a",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-023",
+      "role": "historical-result",
+      "path": "evidence/check-023/execution.json",
+      "sha256": "787f3832e083a5031d23a061b391e3f49068c1138cbb2cf64d58dd861294be8b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-024",
+      "role": "historical-log",
+      "path": "evidence/check-024/stdout.txt",
+      "sha256": "23c5bce98b2955e4b2e4e282db71b5c2ede4e8b1fe390754cfe3cfce38ad75b7",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-025",
+      "role": "historical-log",
+      "path": "evidence/check-025/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-026",
+      "role": "historical-result",
+      "path": "evidence/check-026/vitest.json",
+      "sha256": "41bf1855e20bfb429e6eb8cf2ff4ae58517d6b4b0078866e309eb747cf298ad4",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-027",
+      "role": "historical-result",
+      "path": "evidence/check-027/execution.json",
+      "sha256": "fad628479b3b76b3559fb2d621dd7d7ed48192e81373adff4228ee9463ce8c03",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-028",
+      "role": "historical-log",
+      "path": "evidence/check-028/stdout.txt",
+      "sha256": "dcb8bba8ccd67f7234b2df920c5c9b44f202a66c8775d80d9bc9b0f56d89039b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-029",
+      "role": "historical-log",
+      "path": "evidence/check-029/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-030",
+      "role": "historical-result",
+      "path": "evidence/check-030/vitest.json",
+      "sha256": "2d12144cb34ffc2d752ad136c5ba6e60a849686f347bed46e41496ae1ee65dfa",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-031",
+      "role": "historical-result",
+      "path": "evidence/check-031/execution.json",
+      "sha256": "a60bf535656886f82650254a31eac0a9acec02d2b34b2f154cac0ff44dd569d6",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-032",
+      "role": "historical-log",
+      "path": "evidence/check-032/stdout.txt",
+      "sha256": "2365b2d891859234e85a346b663eee94604e2f36d9c4b936814d2e7b12456012",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-033",
+      "role": "historical-log",
+      "path": "evidence/check-033/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-034",
+      "role": "historical-result",
+      "path": "evidence/check-034/vitest.json",
+      "sha256": "50ed4c5e977187840d6134232e737cf32529dfc7f0aa0a9978b3cd55db037a5e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-035",
+      "role": "historical-result",
+      "path": "evidence/check-035/execution.json",
+      "sha256": "3ecd31b4c4691434d3368339d6cc9832fc5d3621d8fc9ef174413114f6b48435",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-036",
+      "role": "historical-log",
+      "path": "evidence/check-036/stdout.txt",
+      "sha256": "8efa8db1752c1a13b394521fd53a81b5a6b42287982693922cdda86021e03b51",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-037",
+      "role": "historical-log",
+      "path": "evidence/check-037/stderr.txt",
+      "sha256": "32816becf397f311567e597c31cd11ccb1bdf715bc38ce7913b9f54956862963",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-038",
+      "role": "historical-result",
+      "path": "evidence/check-038/execution.json",
+      "sha256": "3a0dc0a5defbc7383ee2e660d530437a56d1160c61edd4c262990ebf6ee31ebd",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-039",
+      "role": "historical-log",
+      "path": "evidence/check-039/stdout.txt",
+      "sha256": "a5d04c9777a37bff706d66b7dcc6f71d23ae6bd39c0a243f44f9c47ba5014cf1",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-040",
+      "role": "historical-log",
+      "path": "evidence/check-040/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-041",
+      "role": "historical-result",
+      "path": "evidence/check-041/execution.json",
+      "sha256": "8eef7b84458e5b02055586af95ba104dfcc2d902ace9b4d3e66de10fc1221c50",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-042",
+      "role": "historical-log",
+      "path": "evidence/check-042/stdout.txt",
+      "sha256": "66856ffe01687687711a75f4096768107eca55b928186c8eb3936cbf1082545c",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-043",
+      "role": "historical-log",
+      "path": "evidence/check-043/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-044",
+      "role": "historical-result",
+      "path": "evidence/check-044/execution.json",
+      "sha256": "441229b2376661c5cffb7f4b3e50188b0724d1a0cd9d93244587a8b2eec01c58",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-045",
+      "role": "historical-log",
+      "path": "evidence/check-045/stdout.txt",
+      "sha256": "cb1616fa37bcc1b3d501e5ed89ecbbb67ce2464c81dbcb2aa6096fb08eaa7ab1",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-046",
+      "role": "historical-log",
+      "path": "evidence/check-046/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-047",
+      "role": "historical-result",
+      "path": "evidence/check-047/execution.json",
+      "sha256": "d00bdef1f000717e80d98cbced968ffa163e3a4b43d146e8539842711eabdb41",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-048",
+      "role": "historical-log",
+      "path": "evidence/check-048/stdout.txt",
+      "sha256": "5e753b2d0e938f176e29256fec663dc2fa175972a64d2a93496286fa79d106d6",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-049",
+      "role": "historical-log",
+      "path": "evidence/check-049/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-050",
+      "role": "historical-result",
+      "path": "evidence/check-050/execution.json",
+      "sha256": "d7ff3edef876da8036563008354c0c8217bfe77f3cceeaa5663a80d0c840f6c6",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-051",
+      "role": "historical-log",
+      "path": "evidence/check-051/stdout.txt",
+      "sha256": "26afdb81b7eb9ea304df704a55653f4fd0f66fabebce8d32265733bdb3854924",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-052",
+      "role": "historical-log",
+      "path": "evidence/check-052/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-053",
+      "role": "historical-result",
+      "path": "evidence/check-053/execution.json",
+      "sha256": "1c5cb98e5126b53936de41b91ddf441ad0ce956ad360082990238f0c33c2f1ab",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-054",
+      "role": "historical-log",
+      "path": "evidence/check-054/stdout.txt",
+      "sha256": "e82fde4411fd15b05dfc0d8ec08693daefb7037aff302feb03297acf68f8b201",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-055",
+      "role": "historical-log",
+      "path": "evidence/check-055/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-056",
+      "role": "historical-result",
+      "path": "evidence/check-056/execution.json",
+      "sha256": "10044dd9931d36ef85c52172f55cdede6f322841558f1e1704c3faf446d281b0",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-057",
+      "role": "historical-log",
+      "path": "evidence/check-057/stdout.txt",
+      "sha256": "e82fde4411fd15b05dfc0d8ec08693daefb7037aff302feb03297acf68f8b201",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-058",
+      "role": "historical-log",
+      "path": "evidence/check-058/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-059",
+      "role": "historical-result",
+      "path": "evidence/check-059/execution.json",
+      "sha256": "74476ee7fc0953ab7435f398a882fedd1c494746be8b43486a573d210629dcba",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-060",
+      "role": "historical-log",
+      "path": "evidence/check-060/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-061",
+      "role": "historical-log",
+      "path": "evidence/check-061/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-062",
+      "role": "historical-result",
+      "path": "evidence/check-062/execution.json",
+      "sha256": "1a33bffb1149c1f3ba15d1e00a4ba2b3faf883ff01f6a7c36159887ff87ce89c",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-063",
+      "role": "historical-log",
+      "path": "evidence/check-063/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-064",
+      "role": "historical-log",
+      "path": "evidence/check-064/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-065",
+      "role": "historical-result",
+      "path": "evidence/check-065/execution.json",
+      "sha256": "ca6d7cff15061dcafe7febea187bb38fae762d0509baae710687960d06a011e3",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-066",
+      "role": "historical-log",
+      "path": "evidence/check-066/stdout.txt",
+      "sha256": "9e2e31f417970e730657c49e6d8b24474a714b6758b2f9f7895d7e33e94d331d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-067",
+      "role": "historical-log",
+      "path": "evidence/check-067/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-068",
+      "role": "historical-result",
+      "path": "evidence/check-068/execution.json",
+      "sha256": "51728320b84e6136bf13ab2d357aebe99d74e18f36db3a5916f05b4b3c5b74c2",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-069",
+      "role": "historical-log",
+      "path": "evidence/check-069/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-070",
+      "role": "historical-log",
+      "path": "evidence/check-070/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-071",
+      "role": "historical-result",
+      "path": "evidence/check-071/execution.json",
+      "sha256": "9c0302f3d56b7cf77b54762f728493277969554ceed9d37b5756e2ff32c1a87d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-072",
+      "role": "historical-log",
+      "path": "evidence/check-072/stdout.txt",
+      "sha256": "9eb1f39692de263a1934503dab90639da115c827b9e7fe15adeac9253c26649d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-073",
+      "role": "historical-log",
+      "path": "evidence/check-073/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-074",
+      "role": "historical-result",
+      "path": "evidence/check-074/execution.json",
+      "sha256": "9a3ef6fb9bf8b35ff800965778c1c54227e3236ae4cdea7fb78d467046ccb960",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-075",
+      "role": "historical-log",
+      "path": "evidence/check-075/stdout.txt",
+      "sha256": "67cdc1f17946874f60ab3f31d9dfe7d774e3d9d634899311f9a337bd153e00a1",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-076",
+      "role": "historical-log",
+      "path": "evidence/check-076/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-077",
+      "role": "historical-result",
+      "path": "evidence/check-077/execution.json",
+      "sha256": "5cf7845db7678031008338fd88d9eddb9e55b962f924e0c2aee357d1e1371f96",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-078",
+      "role": "historical-log",
+      "path": "evidence/check-078/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-079",
+      "role": "historical-log",
+      "path": "evidence/check-079/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-080",
+      "role": "historical-result",
+      "path": "evidence/check-080/execution.json",
+      "sha256": "644b7d6d9d6859dfb5cd2b77cc60f0dd4532b05f5fb9f122d1e4b92f236fec74",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-081",
+      "role": "historical-log",
+      "path": "evidence/check-081/stdout.txt",
+      "sha256": "bc705ab7576ff190c1f6e36304ec87e51bd35b27e80fc0d00527cf276aa5e7e4",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-082",
+      "role": "historical-log",
+      "path": "evidence/check-082/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-083",
+      "role": "historical-result",
+      "path": "evidence/check-083/execution.json",
+      "sha256": "a272a4c3c9c78cd3cd3c8460c5b9dab73353c5ca02f5003bd0f342c6ba5b4d79",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-084",
+      "role": "historical-log",
+      "path": "evidence/check-084/stdout.txt",
+      "sha256": "1aacf9b2023334a28ff6c9afa6820c81cfde5d777608f542c878ed99beec4dc9",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-085",
+      "role": "historical-log",
+      "path": "evidence/check-085/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-086",
+      "role": "historical-result",
+      "path": "evidence/check-086/execution.json",
+      "sha256": "6925bc86f4fcf91131e1339206cf53322ad48e9188394a4cf5a7af82b1fadf94",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-087",
+      "role": "historical-log",
+      "path": "evidence/check-087/stdout.txt",
+      "sha256": "9819d1ef937c9406aca8a6ba2947a6e50491ac2df16beeeaa3a6c7fc8f737a8b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-088",
+      "role": "historical-log",
+      "path": "evidence/check-088/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-089",
+      "role": "historical-result",
+      "path": "evidence/check-089/execution.json",
+      "sha256": "b87b8cb94f2abc2d8a70e73f4125e2bbff07d88002da7c759cef921f19b66abb",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-090",
+      "role": "historical-log",
+      "path": "evidence/check-090/stdout.txt",
+      "sha256": "f5b5e44beb8a98c93b8c5335deceb048c1dd2787692e44557f73d8e48e518856",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-091",
+      "role": "historical-log",
+      "path": "evidence/check-091/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-092",
+      "role": "historical-result",
+      "path": "evidence/check-092/execution.json",
+      "sha256": "04a10c4567396b2a0a32de56912c6e8742b5b0081325b9053b90ce08b1dd55f9",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-093",
+      "role": "historical-log",
+      "path": "evidence/check-093/stdout.txt",
+      "sha256": "7403d84ffd9deaed1df9285b8b9b0adbada3265e2ecc8fa1120f5f7e1edbbbce",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-094",
+      "role": "historical-log",
+      "path": "evidence/check-094/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-095",
+      "role": "historical-result",
+      "path": "evidence/check-095/execution.json",
+      "sha256": "857c8f58a8e939a7538ec45dcdd209fbd126e4d7e2a8eaed4560cab8ff8e7ad9",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-096",
+      "role": "historical-log",
+      "path": "evidence/check-096/stdout.txt",
+      "sha256": "238b4f2cb79526fbbe18ead4c42d72d684825a9c625cf5c63b7bdaa798068692",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-097",
+      "role": "historical-log",
+      "path": "evidence/check-097/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-098",
+      "role": "historical-result",
+      "path": "evidence/check-098/execution.json",
+      "sha256": "ba7b17072af66d1ccb56b58d4500012d32e0e8e8a506a3b23cc4728b3c2710c8",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-099",
+      "role": "historical-log",
+      "path": "evidence/check-099/stdout.txt",
+      "sha256": "f8acd285e6f41ce726128f0413a49ff490afb3bde99296fe8f53d44f05176594",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-100",
+      "role": "historical-log",
+      "path": "evidence/check-100/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-101",
+      "role": "historical-result",
+      "path": "evidence/check-101/execution.json",
+      "sha256": "e3cbfcfd0d8d8b1ff023cf35b73ad71c44d98337aba87fa1808df8ef29170a29",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-102",
+      "role": "historical-log",
+      "path": "evidence/check-102/stdout.txt",
+      "sha256": "38f3b8fc04118e5e852f09af18aa3f2e17b5b75e3d2da1dabfd182bee103363c",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-103",
+      "role": "historical-log",
+      "path": "evidence/check-103/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-104",
+      "role": "historical-result",
+      "path": "evidence/check-104/vitest.json",
+      "sha256": "4989b927f66b29117b11a64e7eac7dee08dbb33538227e5470a54957cd1394d0",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-105",
+      "role": "historical-result",
+      "path": "evidence/check-105/execution.json",
+      "sha256": "05747c86492aab9b6f66dd494e8abbddb07f6d8ad436ec520f39a324d36d8a91",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-106",
+      "role": "historical-log",
+      "path": "evidence/check-106/stdout.txt",
+      "sha256": "d40e2335ef28c9bced5bfb4085108ffa54ebdfc655e0b27c1c7986e40ee8ac79",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-107",
+      "role": "historical-log",
+      "path": "evidence/check-107/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-108",
+      "role": "historical-result",
+      "path": "evidence/check-108/execution.json",
+      "sha256": "fed2ea50b56c6aa328b11989265c3dfe1564a4fcf77ae79a5adc62e2a897586b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-109",
+      "role": "historical-log",
+      "path": "evidence/check-109/stdout.txt",
+      "sha256": "7c1a40584db174fd910a5a7e6a3cf161183ed6c9c800bc73ff11b49bd72638c9",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-110",
+      "role": "historical-log",
+      "path": "evidence/check-110/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-111",
+      "role": "historical-result",
+      "path": "evidence/check-111/execution.json",
+      "sha256": "898f19836333d296c5bca24ce909e195769f764fbcee61975acbc1d28972aaaa",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-112",
+      "role": "historical-log",
+      "path": "evidence/check-112/stdout.txt",
+      "sha256": "32542c2cdc15af6cef4aa89fb16bf07c3fbc595ab11059592797a0c8445a5bde",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-113",
+      "role": "historical-log",
+      "path": "evidence/check-113/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-114",
+      "role": "historical-result",
+      "path": "evidence/check-114/execution.json",
+      "sha256": "744ba04f0b7131edb11d373c90a5cdc70998abadb2e6df0d8af1b1085da85170",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-115",
+      "role": "historical-log",
+      "path": "evidence/check-115/stdout.txt",
+      "sha256": "ea7f773d6520f4c4651ca977988cf5bb6d493c3b13d5fe73c0cfd3be57a8becd",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-116",
+      "role": "historical-log",
+      "path": "evidence/check-116/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "check-117",
+      "role": "result",
+      "path": "evidence/check-117/check-history.json",
+      "sha256": "25120cfc653f56a88dfdd1e9bf76c5ba0956e31ff59e792e4eac05e0be9a489f",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "check-118",
+      "role": "result",
+      "path": "evidence/check-118/summary.json",
+      "sha256": "00218cb395be62db02743bb013495d5312bc00dc7c7c2d46929416474fdeda44",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "check-evidence-declarations",
+      "role": "result",
+      "path": "evidence/check-evidence-declarations/evidence-declarations.json",
+      "sha256": "c220511a7faa21a840bfcd7a437aab6efa47a186e81319edc74ce0ff6f1af7aa",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-001",
+      "role": "result",
+      "path": "evidence/family-001/check-history-summary.json",
+      "sha256": "00218cb395be62db02743bb013495d5312bc00dc7c7c2d46929416474fdeda44",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-002",
+      "role": "result",
+      "path": "evidence/family-002/protected-content-preservation.json",
+      "sha256": "f763f5afe380d2e2b222ab106744359f0c9771b0f63ebbe01777b67f458ca47d",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-003",
+      "role": "historical-result",
+      "path": "evidence/family-003/earlier-code-checkpoint.json",
+      "sha256": "8e9fb3f6ed1c38114e13b239bdd1d939f2d19481eb4c55cfb47b8647872a72ce",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "f2d851451b7bd3d30c4881f9bdbaafde45a5fa33"
+    },
+    {
+      "id": "family-004",
+      "role": "historical-result",
+      "path": "evidence/family-004/critical-source-retention.json",
+      "sha256": "85d5b8fc0ddc5131f797f8d4bc62f4e0ddaf2719cfd202f152398bce2aef908a",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-005",
+      "role": "result",
+      "path": "evidence/family-005/final-local-typecheck.json",
+      "sha256": "5e084bde86aed975f570c19afc9dd14e77c66af9bc06471b4614673517eb8ee0",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-006",
+      "role": "historical-log",
+      "path": "evidence/family-006/final-local-typecheck.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-007",
+      "role": "historical-log",
+      "path": "evidence/family-007/final-local-typecheck.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-008",
+      "role": "historical-result",
+      "path": "evidence/family-008/execution.json",
+      "sha256": "644021149bd15df1ccc5d1237706db01fa5e15eb99c985783cf2f940d057bb8d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-009",
+      "role": "historical-log",
+      "path": "evidence/family-009/stdout.txt",
+      "sha256": "5c2416cb85e40620ded39c8ace8a0f06fc5c211e56a222e9a51c7ad6ebea515e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-010",
+      "role": "historical-log",
+      "path": "evidence/family-010/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-011",
+      "role": "historical-result",
+      "path": "evidence/family-011/vitest.json",
+      "sha256": "23b292e2a2821a8082445d4790259671ff3bf426eb0a7b75d2cb99b6584c265d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-012",
+      "role": "historical-result",
+      "path": "evidence/family-012/execution.json",
+      "sha256": "2c89df26fe33b673d6e77fe55171bf41543ef14940f4d400e91a26dcdd5def17",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-013",
+      "role": "historical-log",
+      "path": "evidence/family-013/stdout.txt",
+      "sha256": "492fa274278c15589d4d99ab1bd16a567faa73e525f83646fa7e939d1fc034fb",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-014",
+      "role": "historical-log",
+      "path": "evidence/family-014/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-015",
+      "role": "historical-result",
+      "path": "evidence/family-015/vitest.json",
+      "sha256": "e39af0b3f85472e3acd1bc08a963e01dbe399bd4f600c7eb34b76981d4992e4a",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-016",
+      "role": "historical-result",
+      "path": "evidence/family-016/execution.json",
+      "sha256": "0b8014d8b582dc74f32dc21d6a0f0930101e6abc6e371c3510dd60c2e1ff6990",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-017",
+      "role": "historical-log",
+      "path": "evidence/family-017/stdout.txt",
+      "sha256": "d95716cd7528adaa73b8307c44204fe1bcc65b1e0908d72edc6191ae203e9258",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-018",
+      "role": "historical-log",
+      "path": "evidence/family-018/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-019",
+      "role": "historical-result",
+      "path": "evidence/family-019/vitest.json",
+      "sha256": "2df8db937e4282ef89a42f0c242d94b63b499f68256c666cf03e18167e8ad431",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-020",
+      "role": "historical-result",
+      "path": "evidence/family-020/execution.json",
+      "sha256": "787f3832e083a5031d23a061b391e3f49068c1138cbb2cf64d58dd861294be8b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-021",
+      "role": "historical-log",
+      "path": "evidence/family-021/stdout.txt",
+      "sha256": "23c5bce98b2955e4b2e4e282db71b5c2ede4e8b1fe390754cfe3cfce38ad75b7",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-022",
+      "role": "historical-log",
+      "path": "evidence/family-022/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-023",
+      "role": "historical-result",
+      "path": "evidence/family-023/vitest.json",
+      "sha256": "41bf1855e20bfb429e6eb8cf2ff4ae58517d6b4b0078866e309eb747cf298ad4",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-024",
+      "role": "historical-result",
+      "path": "evidence/family-024/execution.json",
+      "sha256": "5cf7845db7678031008338fd88d9eddb9e55b962f924e0c2aee357d1e1371f96",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-025",
+      "role": "historical-log",
+      "path": "evidence/family-025/stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-026",
+      "role": "historical-log",
+      "path": "evidence/family-026/stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-027",
+      "role": "result",
+      "path": "evidence/family-027/scoped-local-checks.json",
+      "sha256": "49eea2179b2d438fe4cc890bdf4ad16128d975169a49e2b0d5f818daa0830273",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-028",
+      "role": "historical-log",
+      "path": "evidence/family-028/native-audit.stdout.txt",
+      "sha256": "3809762e268a9ff3fd197643be0eb88492e039492a8133e65b0feef65e57d8fb",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-029",
+      "role": "historical-log",
+      "path": "evidence/family-029/native-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-030",
+      "role": "historical-log",
+      "path": "evidence/family-030/android-assemble.stdout.txt",
+      "sha256": "6cc09bc650f72b14e25f057a9a84d9248e31001c309ef0096ec2b77451d9f4a3",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-031",
+      "role": "historical-log",
+      "path": "evidence/family-031/android-assemble.stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-032",
+      "role": "historical-log",
+      "path": "evidence/family-032/android-instrumentation-assemble.stdout.txt",
+      "sha256": "bbab6b1b5446a8206b15be1305af6ad5f2f9e2b9aab2a8be52064f576c4c39e8",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-033",
+      "role": "historical-log",
+      "path": "evidence/family-033/android-instrumentation-assemble.stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-034",
+      "role": "historical-result",
+      "path": "evidence/family-034/preparation-android.json",
+      "sha256": "a8dd881204472043970338a5ab9c4dacca33a690eb57014075ce1a29153af127",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "family-035",
+      "role": "historical-log",
+      "path": "evidence/family-035/pwa-audit.stdout.txt",
+      "sha256": "f7d9ac29c7971d550a2c96888081182b1489ec37d6f7271cf52fae7a940bf92e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-036",
+      "role": "historical-log",
+      "path": "evidence/family-036/pwa-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-037",
+      "role": "historical-result",
+      "path": "evidence/family-037/preparation-pwa.json",
+      "sha256": "73a2508ac3ccae38b25b188fdbea11269d48c32cb6186f09cf335fa85e5ae4ff",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7"
+    },
+    {
+      "id": "family-038",
+      "role": "historical-log",
+      "path": "evidence/family-038/native-audit.stdout.txt",
+      "sha256": "194d7abadee0c63309332de3b3effb3dd408f688b9e6174c4850337388002fe4",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-039",
+      "role": "historical-log",
+      "path": "evidence/family-039/native-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-040",
+      "role": "historical-result",
+      "path": "evidence/family-040/preparation-ios-bundle.json",
+      "sha256": "07cfbae836ffd189d40e735f4a88027ce82a7d33d141c20c332034c54e45e130",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-041",
+      "role": "historical-result",
+      "path": "evidence/family-041/native-sdk-source-change.json",
+      "sha256": "14b1208eb1fbee404bd7cf1d396f3805c169d7926e07b28fc5bd988a7ecb7c8b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-042",
+      "role": "historical-result",
+      "path": "evidence/family-042/fresh-dossier-result.json",
+      "sha256": "dea125402280d1239911e6d18a4305123105374a74449b4c0acdbb0f658f959b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "family-043",
+      "role": "historical-result",
+      "path": "evidence/family-043/fresh-capture-review.json",
+      "sha256": "7aee1adae6d9b60b7c85079b65a77171fe6e6c98013c9e2c98b0241b2a70c7a6",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-044",
+      "role": "historical-result",
+      "path": "evidence/family-044/default-native-runtime.json",
+      "sha256": "6bad08c25fb9940e90a3a7e63cf6f611e36ac68e6f9f188d539a1ecc500f4bf7",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "family-045",
+      "role": "result",
+      "path": "evidence/family-045/four-original-conditions.json",
+      "sha256": "6377d7065c5d49d0ea5be46d220ded91bb7180215e4d2856c907ffa31c8b223e",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-046",
+      "role": "result",
+      "path": "evidence/family-046/channels.json",
+      "sha256": "ed48be68a53e914f89ef5c6c5133d465c570f6ddc96465ee70583f9827689b82",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-047",
+      "role": "result",
+      "path": "evidence/family-047/remaining-gates.json",
+      "sha256": "7e55db1d88261d704535f2f3acca5b64dd271c7712ef332b7f5336ce1a1eeba2",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-048",
+      "role": "historical-result",
+      "path": "evidence/family-048/readiness-input-android.json",
+      "sha256": "d1ad8605ed7f66a1d71284a396f4197ee8e6b20e0fc5cb88ce5f9c2a3fdf9210",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "family-049",
+      "role": "historical-result",
+      "path": "evidence/family-049/readiness-input-pwa.json",
+      "sha256": "0047f749bf9e1456212a8a07536bfa58e8a658b2b6f4bc6d560f070dd55de044",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7"
+    },
+    {
+      "id": "family-050",
+      "role": "result",
+      "path": "evidence/family-050/readiness-input-ios.json",
+      "sha256": "86ced8e8de261b5793778c7243c032c97ab99cdaa1801cc8bcf79bf5e800dc8b",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "family-051",
+      "role": "result",
+      "path": "evidence/family-051/focused-dossier-review.json",
+      "sha256": "8a88fbcef4764d1e73d40f8a85d5daf9bee5e970f815b11acf0d23f0b9c7d541",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "assembly-original-manifest",
+      "role": "result",
+      "path": "evidence/assembly-original-manifest/assembly-manifest.json",
+      "sha256": "8c59e54202fedb29b73c783aa49eb9b0d3433bae4eb42516d638534a812e5e07",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "qualified-001",
+      "role": "historical-result",
+      "path": "evidence/qualified-001/raw-critical-baseline-failed-preparation.json",
+      "sha256": "6fdde0e63a19b3af463e5b232f12f2c82591ee95a9a8bf6de179913f500dcf00",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "119bf70ef6a73245e906ba3b0e21854b02e73ac5"
+    },
+    {
+      "id": "qualified-002",
+      "role": "result",
+      "path": "evidence/qualified-002/raw-critical-retention-final.json",
+      "sha256": "0b2c200fd53d78ecdfd900d44ca310c14f2943947a884d53344063d904dc605a",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "qualified-003",
+      "role": "result",
+      "path": "evidence/qualified-003/scoped-local-checks-final.json",
+      "sha256": "9f0599faa3535ba56270dc900f7ee2f038b5e0db7ed4a771e815419304af5208",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "qualified-004",
+      "role": "historical-result",
+      "path": "evidence/qualified-004/readiness-input-android-final.json",
+      "sha256": "d1ad8605ed7f66a1d71284a396f4197ee8e6b20e0fc5cb88ce5f9c2a3fdf9210",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "qualified-005",
+      "role": "historical-result",
+      "path": "evidence/qualified-005/readiness-input-pwa-final.json",
+      "sha256": "0047f749bf9e1456212a8a07536bfa58e8a658b2b6f4bc6d560f070dd55de044",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7"
+    },
+    {
+      "id": "qualified-006",
+      "role": "result",
+      "path": "evidence/qualified-006/readiness-input-ios-final.json",
+      "sha256": "86ced8e8de261b5793778c7243c032c97ab99cdaa1801cc8bcf79bf5e800dc8b",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "assembly-qualified-manifest",
+      "role": "result",
+      "path": "evidence/assembly-qualified-manifest/assembly-qualified-manifest.json",
+      "sha256": "93459c08d29eea549a64b54d4b0c185b5d3696cb39ba34a2133392a301224c38",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "readiness-android",
+      "role": "historical-result",
+      "path": "evidence/readiness-android/readiness-android-final.json",
+      "sha256": "c40d82ef850b318464933e6cbf245a60d80e281c368ebd942a1a252b75d3539d",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "readiness-pwa",
+      "role": "historical-result",
+      "path": "evidence/readiness-pwa/readiness-pwa-final.json",
+      "sha256": "70432daaf176e3b6119bc6c3506f415d064cd22709ea1c5021f2e48f769c2fa4",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "cfd6647df5d6d3536c522a753de36094f5b32ef7"
+    },
+    {
+      "id": "readiness-ios",
+      "role": "result",
+      "path": "evidence/readiness-ios/readiness-ios-final.json",
+      "sha256": "52c734f739658a2d0e5b93f1e261e394d3bbc1acb48cfc875392cd868257a5d7",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "final-local-preview",
+      "role": "result",
+      "path": "evidence/final-local-preview/result.json",
+      "sha256": "4a105f0d1fe4c8755a329bc67a2e2c5885c2282f41758db6281c305d63ced0e8",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "final-source-import",
+      "role": "result",
+      "path": "evidence/final-source-import/result.json",
+      "sha256": "6a4185007b3d9f04b3a5e9bb908d9a895b796db6ed7017e49c604cd315211a39",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "old-source-import-fail",
+      "role": "historical-result",
+      "path": "evidence/old-source-import-fail/failure.json",
+      "sha256": "78de6c8dae41c4f468976aa7ac596222523a83d5effbdf8503c41cb453756a4f",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "old-preservation-fail",
+      "role": "historical-result",
+      "path": "evidence/old-preservation-fail/result.json",
+      "sha256": "57b03e0f52cb1ae80795bd0ba2b86893c78dbf97914a102624dcf2320fc4fde0",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "final-preservation",
+      "role": "result",
+      "path": "evidence/final-preservation/result.json",
+      "sha256": "f763f5afe380d2e2b222ab106744359f0c9771b0f63ebbe01777b67f458ca47d",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "native-browser-launch-fail",
+      "role": "historical-result",
+      "path": "evidence/native-browser-launch-fail/result.json",
+      "sha256": "4a2750a144a3b3cdb622422984ea2b150ba92b7a14d4e1f41bd9796ba2b861cc",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "native-browser-original",
+      "role": "historical-result",
+      "path": "evidence/native-browser-original/result.json",
+      "sha256": "150aac6fbf227ed50909a642f43249fffb943fb502a8a0f002416c4b5c973695",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "native-browser-visual-fail",
+      "role": "historical-result",
+      "path": "evidence/native-browser-visual-fail/native-browser-visual-fail.json",
+      "sha256": "99eebdf6fbacf9205f61874591e6d7124873e79025a64675aa7dfa2210a63f08",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "dossier-original-fail",
+      "role": "historical-result",
+      "path": "evidence/dossier-original-fail/result.json",
+      "sha256": "39942fab912150727d00b50e80cc02e2290781191748c210bfb396fb48f54031",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "cli-original-noops",
+      "role": "historical-result",
+      "path": "evidence/cli-original-noops/cli-original-noops.json",
+      "sha256": "e8076474ded0ea11eeec9ed7baa1dad7a335f4c07c6f4bf30f818bb9486de247",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "operator-parser-execution",
+      "role": "historical-result",
+      "path": "evidence/operator-parser-execution/operator-parser-execution.json",
+      "sha256": "eb8a1afcafe4c9a88a93a71d9297105e93855c33a4ea4f4fb20e2da636172d2e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "operator-parser-stdout",
+      "role": "historical-log",
+      "path": "evidence/operator-parser-stdout/operator-parser-stdout.txt",
+      "sha256": "91eb42cdb33ce60b651aaf0e7058dc7e32d9e010c9950d6d0a81395f9217b6a9",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "operator-parser-stderr",
+      "role": "historical-log",
+      "path": "evidence/operator-parser-stderr/operator-parser-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-export-final",
+      "role": "result",
+      "path": "evidence/source-export-final/source-export.json",
+      "sha256": "8dc1fcfc616daab6ac392587b2b94f02b451cbbec669be348e6ab7a1de467255",
+      "classification": "local-synthetic",
+      "historical": false,
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    },
+    {
+      "id": "readiness-original-android",
+      "role": "historical-result",
+      "path": "evidence/readiness-original-android/readiness-android.json",
+      "sha256": "ae2a7b004b523c97306b1539dd29efc66aa91ff8e3d04b3fdb90e73eefc4e80b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "readiness-original-pwa",
+      "role": "historical-result",
+      "path": "evidence/readiness-original-pwa/readiness-pwa.json",
+      "sha256": "25c30e1616ec11095d8e1aa127ff948beafd5bbeb2731186dc3acbda091bc21a",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "readiness-original-ios",
+      "role": "historical-result",
+      "path": "evidence/readiness-original-ios/readiness-ios.json",
+      "sha256": "48ee116f0ac677378f5c88d5b7f18ba26f7d0c9fe8bed3a6e62da8ddd6106fbc",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-init-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-init-stdout/init.stdout.txt",
+      "sha256": "c3f39643bfe6c2974779f011f61a204e334aa2a3233e16f5fc8cc8048d924623",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-init-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-init-stderr/init.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-baseline-ref-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-baseline-ref-stdout/baseline-ref.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-baseline-ref-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-baseline-ref-stderr/baseline-ref.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-unbundle-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-unbundle-stdout/unbundle.stdout.txt",
+      "sha256": "7c115576021c287a47571a2dab9a844342b45e5ed42d0961bd556d6964e65062",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-unbundle-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-unbundle-stderr/unbundle.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-incremental-objects-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-incremental-objects-stdout/incremental-objects.stdout.txt",
+      "sha256": "8ac3761066cd69255c484f93d7676d9e1b6adb3c7e5e8144e1feaea81676e743",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-incremental-objects-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-incremental-objects-stderr/incremental-objects.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-source-ref-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-source-ref-stdout/source-ref.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-source-ref-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-source-ref-stderr/source-ref.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-commit-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-commit-stdout/commit.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-commit-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-commit-stderr/commit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-connectivity-stdout",
+      "role": "historical-log",
+      "path": "evidence/source-import-connectivity-stdout/connectivity.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "source-import-connectivity-stderr",
+      "role": "historical-log",
+      "path": "evidence/source-import-connectivity-stderr/connectivity.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "dossier-original-result",
+      "role": "historical-result",
+      "path": "evidence/dossier-original-result/result.json",
+      "sha256": "dea125402280d1239911e6d18a4305123105374a74449b4c0acdbb0f658f959b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "dossier-original-review",
+      "role": "historical-result",
+      "path": "evidence/dossier-original-review/capture-review.json",
+      "sha256": "7aee1adae6d9b60b7c85079b65a77171fe6e6c98013c9e2c98b0241b2a70c7a6",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": null
+    },
+    {
+      "id": "dossier-shot-1",
+      "role": "historical-screenshot",
+      "path": "evidence/dossier-shot-1/dossier-disabled-ru.png",
+      "sha256": "4b527f1f71460f201857342d0902f7426f3ba4d24b8807e37a8a32f7d1b75496",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "dossier-shot-2",
+      "role": "historical-screenshot",
+      "path": "evidence/dossier-shot-2/dossier-hover-ru.png",
+      "sha256": "e98331202df0b82da2c10ab216cf9a0a9a1bf8d8ba9dbeb6f8499337c9cac0a3",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "dossier-shot-3",
+      "role": "historical-screenshot",
+      "path": "evidence/dossier-shot-3/dossier-focus-ru.png",
+      "sha256": "30b5161ad6fa5f17c6e62ee4b05dbba11fb0ada6be17e28151ac9b50a348e89b",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "dossier-shot-4",
+      "role": "historical-screenshot",
+      "path": "evidence/dossier-shot-4/dossier-disabled-en.png",
+      "sha256": "5ed4b5fe81454b5ffe292ac3f27f607a159d1d902d784cd30d341d8419e9ca4e",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "dossier-shot-5",
+      "role": "historical-screenshot",
+      "path": "evidence/dossier-shot-5/dossier-hover-en.png",
+      "sha256": "cfdb70a13bb6ea127421f6bf3ba739cc2b8da20a6576fef2aff164eea686e699",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    },
+    {
+      "id": "dossier-shot-6",
+      "role": "historical-screenshot",
+      "path": "evidence/dossier-shot-6/dossier-focus-en.png",
+      "sha256": "3b191cdbd02b3e7e663deaf2f177c8670f97c33b377873ad08fb1bd60399c498",
+      "classification": "local-synthetic",
+      "historical": true,
+      "sourceCommit": "5534ad4d1595d9419d17f93825eee160e32a97f2"
+    }
+  ],
+  "history": [
+    {
+      "report": "history/preparation-1/preparation.json",
+      "source": ".tmp/mobile-release-android-5f0d1bba-346f-4a7c-bcbe-1c182485fc5b/preparation.json",
+      "sha256": "6fdde0e63a19b3af463e5b232f12f2c82591ee95a9a8bf6de179913f500dcf00",
+      "status": "FAIL",
+      "immutable": true
+    },
+    {
+      "report": "history/preparation-2/preparation.json",
+      "source": ".tmp/mobile-release-android-be8b0a45-3ac7-46f7-be6b-43f2ea5e8328/preparation.json",
+      "sha256": "7cd0f27162ae46cc432884b12a61d1455eba8447ba2381cc54940b08eb351aab",
+      "status": "FAIL",
+      "immutable": true
+    },
+    {
+      "report": "history/preparation-3/preparation.json",
+      "source": ".tmp/mobile-release-android-c3c9862b-97ac-41fc-9aaf-7f41caddf130/preparation.json",
+      "sha256": "f0912e80fd176899accdbb84182c7a80f5c682da9a3c577951ca8b7b5033c19b",
+      "status": "FAIL",
+      "immutable": true
+    },
+    {
+      "report": "history/preparation-4/preparation.json",
+      "source": ".tmp/mobile-release-android-9b7c044d-511a-4887-ad2a-7ae90ee7d0a2/preparation.json",
+      "sha256": "0eba60f370386a9fefb41ddff5a426432e0abc24f9660add2be41e1320e785a8",
+      "status": "FAIL",
+      "immutable": true
+    }
+  ],
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "stageAccepted": false,
+    "releaseReady": false,
+    "productionActionsAuthorized": false,
+    "deviceTested": false,
+    "remoteActions": 0,
+    "installedAndroid": "NOT_RUN",
+    "macIosBuild": "NOT_RUN",
+    "installedIos": "NOT_RUN",
+    "realAuthDeletion": "NOT_RUN",
+    "realPspSandbox": "NOT_RUN",
+    "editorialLegalApproval": "PENDING",
+    "storeSigning": "NOT_RUN"
+  },
+  "limitations": [
+    "PASS in a preparation means only that exact local preparation scope. Debug APK and instrumentation APK are not store releases.",
+    "Windows ios-bundle is audited web payload for iOS, not an IPA or simulator binary.",
+    "Browser native plugin/Preferences boundaries may be synthetic; screenshots do not attest actual OS storage or complete Auth/payment acceptance.",
+    "Original failed reports/logs are copied without altering their bytes or status. Pending results templates provide no PASS evidence."
+  ],
+  "sourceExport": {
+    "bundle": {
+      "path": "source/source.bundle",
+      "sha256": "ce6cb8d50587dcf22077892827fadb456620359f9775ad9e6a87fea546793ce4",
+      "bytes": 269817,
+      "baselineCommit": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+      "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "ref": "refs/heads/codex/literary-planet-v12-bilingual-final-autopilot",
+      "format": "git-bundle-v2",
+      "packVersion": 2,
+      "packObjectCount": 214,
+      "packChecksum": "SHA1-trailer-matched",
+      "fullPackImport": "NOT_RUN",
+      "prerequisite": "Existing trusted baseline commit is required; this is an incremental source bundle.",
+      "verification": "Exact header/ref; Git prerequisite availability; bounded PACK header/count and trailing SHA1 integrity; independent local checkpoint commit paths/blob hashes. Full pack import/unpack is NOT_RUN."
+    },
+    "rawSnapshot": {
+      "path": "source/source-files.zip",
+      "sha256": "60e2647e8f84f2ce47c8dcb65d3f23f3579cce95d61641cdf8cf640b174113f2",
+      "bytes": 45478869,
+      "sourceFingerprint": "46a301b274dba59ed3713459128c7e745ef9d9763fe2e7a4a1b72a07e783c2c9",
+      "filesCount": 1755,
+      "format": "stored-zip",
+      "rawBytesPreserved": true,
+      "verification": "Exact captureReleaseInputs file set, bounded stored ZIP entries, every raw byte SHA256; no text/EOL conversion.",
+      "runtimeOrTestsClaimed": false
+    },
+    "checkpointCommits": [
+      "119bf70ef6a73245e906ba3b0e21854b02e73ac5",
+      "f2d851451b7bd3d30c4881f9bdbaafde45a5fa33",
+      "cfd6647df5d6d3536c522a753de36094f5b32ef7",
+      "5534ad4d1595d9419d17f93825eee160e32a97f2",
+      "6c6c8f8cb66bf1d102b8a10ce13088499c503d63"
+    ],
+    "runtimeOrTestsClaimed": false
+  },
+  "programmingContinuation": {
+    "stage": "S16",
+    "status": "IN_PROGRESS",
+    "implementationOwner": "Codex",
+    "sourceFoundation": [
+      "src/child/childPackage.ts",
+      "src/child/childIndex.ts",
+      "src/child/childMedia.ts",
+      "src/child/childProtectedState.ts"
+    ],
+    "protectedAdmission": "UNAVAILABLE",
+    "appActivation": false,
+    "approvedProductionChildContent": false,
+    "ownerInputsReference": "decisions/RELEASE_DECISIONS.json",
+    "nextIndependentAction": "Implement durable separate child data ports within the persisted S16 contract, retaining sealed admission and no App activation.",
+    "remainingInternalProgramming": [
+      {
+        "work": "Protected child admission",
+        "status": "OPEN",
+        "responsibility": "Replace the unavailable factory only with genuine verified native authority; tested synthetic ports do not grant admission."
+      },
+      {
+        "work": "Supported native authority and trusted time",
+        "status": "OPEN",
+        "responsibility": "Provide supported replay-resistant checkpoint/epoch and restart continuity; uncertain reboot or clock state stays denied without a trusted anchor."
+      },
+      {
+        "work": "Native PIN enrollment, verification and recovery",
+        "status": "OPEN",
+        "responsibility": "Integrate genuine protected input and durable attempt/CAS bookkeeping with revocable Parent Gate capabilities; no preference PIN or approval boolean."
+      },
+      {
+        "work": "Durable separate child data ports",
+        "status": "OPEN",
+        "responsibility": "Implement isolated per-profile/age/locale/policy/package stores and atomic scope retirement for child search, cache, history and offline data; never read the adult index and filter afterward."
+      },
+      {
+        "work": "Clear before render and lifecycle integration",
+        "status": "OPEN",
+        "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes."
+      },
+      {
+        "work": "Reviewed child media rendering",
+        "status": "OPEN",
+        "responsibility": "Implement actual codec validation, decoders/rendering and required media formats using independently reviewed exact-byte assets. Current container signature checks and synthetic fixtures do not complete rendering."
+      }
+    ],
+    "qualification": "These are remaining Codex programming tasks, separate from the seven owner input actions. Integrated source foundations do not establish production child activation, native authority, approved content or installed-device acceptance."
+  }
+}

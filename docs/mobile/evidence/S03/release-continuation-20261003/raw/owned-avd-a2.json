@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-owned-avd-lifecycle",
+  "runId": "e77776e7478b4688920d035721370e77",
+  "avdName": "LiteraryPlanet-V12-e77776e7478b4688920d035721370e77",
+  "mode": "--bootstrap",
+  "startedAt": "2026-10-02T22:32:58.829Z",
+  "status": "FAIL",
+  "expectedInputs": {
+    "sourceCommit": "6141029e20f955b8838032ba0da601bca80a46a7",
+    "sourceFingerprint": "e6dbebe478aaaf7da59f62896199e84330c5fa7633f91b79e1b8bae7bc83e6df",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "inputSha256": "d0052c7802e0b767b1e4fa49490419b11e92741fec79e90c3e3145ec2c55748e",
+  "pinnedPlanSha256": "b902d1fb977c929c605077f12ee435a7f6229349711db5e4e443024d69dbf1e0",
+  "stopScriptSha256": "48d5f4702663bbf662b2c37fca15e236e76c9f7b17a837dad807e1e0f3d8b162",
+  "binaryReceiptSha256": "b75a1bd80fbe860d22aece9b865a6d686f586c1a01df59f38e83c0ffb04c874f",
+  "sdkInstallationReportSha256": "947630593e084609c9faf0355e24b902e203509be673f51d53eefd87b73e5433",
+  "isolatedAdbServer": true,
+  "hardwareAcceleration": false,
+  "softwareGpu": true,
+  "hostOsChangesPerformed": false,
+  "licenceAcceptancePerformed": false,
+  "productionActionsAuthorized": false,
+  "releaseReady": false,
+  "bootstrap": {
+    "status": "NOT_RUN"
+  },
+  "runtime": {
+    "status": "NOT_RUN"
+  },
+  "commands": [
+    {
+      "number": 0,
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\emulator\\emulator.exe",
+      "args": [
+        "-help"
+      ],
+      "startedAt": "2026-10-02T22:32:58.846Z",
+      "timeoutMs": 30000,
+      "stdoutPath": "logs/000.stdout.txt",
+      "stdoutSha256": "48b04aa6d72577433335545bb6fbdc5efe0a687f24414f79322d3685f709042f",
+      "stderrPath": "logs/000.stderr.txt",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "finishedAt": "2026-10-02T22:32:59.020Z",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "outputOverflow": false
+    },
+    {
+      "number": 1,
+      "binary": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-owned-avd-e77776e7478b4688920d035721370e77\\command-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-owned-avd-e77776e7478b4688920d035721370e77\\command-temp",
+        "-classpath",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\cmdline-tools\\22.0\\lib\\avdmanager-classpath.jar",
+        "com.android.sdklib.tool.AvdManagerCli",
+        "create",
+        "avd",
+        "--name",
+        "LiteraryPlanet-V12-e77776e7478b4688920d035721370e77",
+        "--package",
+        "system-images;android-36;default;x86_64",
+        "--path",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-owned-avd-e77776e7478b4688920d035721370e77\\avds\\LiteraryPlanet-V12-e77776e7478b4688920d035721370e77.avd"
+      ],
+      "startedAt": "2026-10-02T22:32:59.020Z",
+      "timeoutMs": 60000,
+      "stdoutPath": "logs/001.stdout.txt",
+      "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderrPath": "logs/001.stderr.txt",
+      "stderrSha256": "2cdf96418b1440fd6befb7c4107f8da0aeb83bb78e170e7033013c44443b5fef",
+      "finishedAt": "2026-10-02T22:32:59.402Z",
+      "exitCode": 1,
+      "signal": null,
+      "timedOut": false,
+      "outputOverflow": false
+    }
+  ],
+  "processes": [],
+  "cleanup": {
+    "emulatorStopped": true,
+    "adbServerStopped": true,
+    "sourceAndLicencePreserved": true
+  },
+  "failureCode": "OWN_COMMAND_FAILED_1",
+  "serial": "emulator-5554",
+  "consolePort": 5554,
+  "adbServerPort": 38510,
+  "repositoryHeadAfter": "6141029e20f955b8838032ba0da601bca80a46a7",
+  "finishedAt": "2026-10-02T22:33:00.679Z"
+}

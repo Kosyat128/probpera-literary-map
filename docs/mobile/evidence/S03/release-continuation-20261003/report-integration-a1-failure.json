@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-report-integration-tooling-failure",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "originalInvocationExitCode": 1,
+  "originalReason": "Foreign report change; preserve",
+  "actualCause": "The two reviewed raw .log evidence files are ignored by Git. No foreign changes were observed. Copies completed, but no Git add/commit ran in the original invocation.",
+  "expectedFiles": 137,
+  "statusVisibleFiles": 135,
+  "ignoredOwnedEvidence": [
+    "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-install-a2-stderr.log",
+    "docs/mobile/evidence/S03/release-continuation-20261003/raw/sdk-install-a2-stdout.log"
+  ],
+  "originalFailurePreserved": true,
+  "applicationTestsRerun": false,
+  "releaseReady": false
+}
