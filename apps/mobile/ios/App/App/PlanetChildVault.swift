@@ -2,6 +2,7 @@ import Foundation
 import Security
 import CryptoKit
 import Darwin
+import CommonCrypto
 
 /** Native-only SPI. The sole factory below admits no implementation. Neither
  * Keychain, a JS flag nor a mock constructor witness proves this guarantee.
@@ -575,7 +576,7 @@ fileprivate struct PinKnownRefusal: Error {}
 fileprivate enum PinLockedResult<T> { case value(T), refusal }
 fileprivate enum PinSessionPhase { case reserved, beginning, begun, committing, committed, denied, cancelled, closing, sealed, closed }
 fileprivate enum PinReplyDelivery { case known, uncertain }
-fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, closed }
+fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, primitive, closed }
 fileprivate protocol PinSessionTransaction: AnyObject {
     func read() throws -> Data
     func write(_ next: Data, boundary: () throws -> Void) throws
@@ -624,6 +625,7 @@ fileprivate final class OwnedPinInspection {
     var phase: PinSessionPhase = .reserved, cancelled=false, sealed=false, retiring=false, retirementFenced=false
     var workers=0, transfers=0, threads: [ObjectIdentifier:Int] = [:], session: OwnedPinSession?
     var pendingReplies: [ObjectIdentifier:PinNativeReply] = [:], terminalReply: PinNativeReply?
+    var primitiveWorker: PinPrimitiveWork?, primitiveMaterial: PinPrimitiveMaterial?
     init(owner: NativePinSessions, wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64) {
         self.owner=owner; self.wireId=wireId; self.action=action; self.timeoutMs=timeoutMs
     }
@@ -727,7 +729,7 @@ fileprivate final class NativePinSessions {
     }
     private func claim(_ inspection: OwnedPinInspection,_ expected: PinSessionPhase,_ next: PinSessionPhase) throws {
         condition.lock(); defer { condition.unlock() }; try liveLocked(inspection)
-        try Self.require(!inspection.retiring && inspection.phase==expected); inspection.phase=next; workerLocked(inspection)
+        try Self.require(!inspection.retiring && inspection.phase==expected && inspection.workers==0); inspection.phase=next; workerLocked(inspection)
     }
     private func failed(_ inspection: OwnedPinInspection,_ error: Error,_ publicationEntered: Bool) {
         condition.lock(); defer { condition.unlock() }
@@ -905,6 +907,12 @@ fileprivate final class NativePinSessions {
             try Self.require(reply.inspection.terminalReply === reply && reply.inspection.retirementFenced
                 && reply.inspection.workers==0 && reply.inspection.transfers==1)
         }
+        if reply.kind == .primitive {
+            guard let material=reply.inspection.primitiveMaterial else { throw PlanetChildVault.Failure.unavailable }
+            try Self.require(material.owner === self && material.reply === reply && material.published && !material.settled
+                && material.context.session === reply.session && material.context.inspection === reply.inspection)
+            material.settled=true; reply.inspection.primitiveMaterial=nil
+        }
         reply.settled=true; reply.close(); reply.inspection.pendingReplies.removeValue(forKey:ObjectIdentifier(reply)); reply.inspection.transfers-=1
         if delivery == .uncertain || reply.kind != .closed && reply.inspection.cancelled {
             reply.inspection.sealed=true; reply.inspection.phase = .sealed
@@ -939,4 +947,452 @@ fileprivate final class NativePinSessions {
         inspection.terminalReply=reply; inspection.pendingReplies[ObjectIdentifier(reply)]=reply; inspection.transfers=1
         if !inspection.sealed { inspection.phase = .closing }; condition.broadcast(); return reply
     }
+}
+
+/** Native primitive work is part of the original request's actual worker set.
+ * Identity/byte checks below are mechanics. Only the existing genuine authority
+ * SPI authenticates boot, host and nonrollback state; its factory is still nil. */
+fileprivate final class PinPrimitiveWork {
+    let owner: NativePinSessions, session: OwnedPinSession
+    var finished = false
+    init(owner: NativePinSessions, session: OwnedPinSession) { self.owner=owner; self.session=session }
+}
+fileprivate extension NativePinSessions {
+    func startPrimitiveWork(_ session: OwnedPinSession) throws -> PinPrimitiveWork {
+        condition.lock()
+        let work: PinPrimitiveWork
+        do {
+            try liveLocked(session.inspection)
+            try Self.require(session.owner === self && session.inspection.session === session && !session.disposed
+                && !session.inspection.retiring && session.inspection.phase == .begun
+                && session.inspection.workers == 0 && session.inspection.transfers == 0
+                && session.inspection.primitiveWorker == nil && session.inspection.primitiveMaterial == nil)
+            work=PinPrimitiveWork(owner:self,session:session)
+            session.inspection.primitiveWorker=work; workerLocked(session.inspection)
+        } catch { condition.unlock(); throw error }
+        condition.unlock()
+        do { try sessionFence(session); return work }
+        catch { failed(session.inspection,error,false); _=finishPrimitiveWork(work); throw error }
+    }
+    func currentPrimitiveWork(_ work: PinPrimitiveWork) throws -> PinNativeCoordinates {
+        let session=work.session
+        condition.lock()
+        let owned=work.owner === self && session.inspection.primitiveWorker === work && !work.finished
+        condition.unlock(); try Self.require(owned)
+        do { return try io.locked { transaction in
+            try sessionFence(session)
+            var returned=try transaction.read(); defer { returned.resetBytes(in:0..<returned.count) }; try bounded(returned)
+            var bytes=Data(Array(returned)); defer { bytes.resetBytes(in:0..<bytes.count) }
+            var expected=try session.expected.copy(); defer { expected.resetBytes(in:0..<expected.count) }
+            try Self.require(bytes == expected); try byteFence(bytes,session.checksum)
+            let point=try current(session,bytes,session.checksum,session.revision)
+            try sessionFence(session); return point
+        } } catch { failed(session.inspection,error,false); throw error }
+    }
+    @discardableResult
+    func finishPrimitiveWork(_ work: PinPrimitiveWork) -> Bool {
+        condition.lock()
+        let inspection=work.session.inspection
+        let valid=work.owner === self && inspection.primitiveWorker === work && !work.finished
+        let publishable=valid && active === inspection && inspection.session === work.session
+            && !work.session.disposed && !inspection.cancelled && !inspection.sealed && !inspection.retiring
+        if valid { work.finished=true; inspection.primitiveWorker=nil }
+        else { inspection.sealed=true; inspection.phase = .sealed }
+        condition.unlock()
+        if valid { settleWorker(inspection) }; return publishable
+    }
+    func primitiveMaterial(_ work: PinPrimitiveWork, context: PinPrimitiveContext, bytes: Data,
+                           iterations: UInt32) throws -> PinPrimitiveMaterial {
+        condition.lock(); defer { condition.unlock() }
+        let session=work.session, inspection=session.inspection
+        try liveLocked(inspection)
+        try Self.require(work.owner === self && inspection.primitiveWorker === work && !work.finished
+            && context.owner === self && context.session === session && context.inspection === inspection
+            && !inspection.retiring && inspection.primitiveMaterial == nil && bytes.count==96
+            && UInt64(iterations)==session.policy.iterations)
+        let reply=PinNativeReply(owner:self,inspection:inspection,session:session,
+            kind:.primitive,bytes:bytes,checksum:session.checksum)
+        let material=PinPrimitiveMaterial(owner:self,context:context,iterations:iterations,reply:reply)
+        inspection.primitiveMaterial=material
+        inspection.pendingReplies[ObjectIdentifier(reply)]=reply; inspection.transfers+=1
+        return material
+    }
+    func publishPrimitiveMaterial(_ material: PinPrimitiveMaterial) throws {
+        condition.lock(); defer { condition.unlock() }; let inspection=material.context.inspection
+        try liveLocked(inspection)
+        try Self.require(material.owner === self && inspection.primitiveMaterial === material
+            && !material.published && !material.settled && inspection.primitiveWorker == nil
+            && !inspection.retiring && inspection.session === material.context.session
+            && inspection.pendingReplies[ObjectIdentifier(material.reply)] === material.reply)
+        material.published=true
+    }
+    /** Internal construction can be discarded only before actual host handoff.
+     * This is known non-delivery, not a reconstructed ACK or timeout release. */
+    func discardUnpublishedMaterial(_ material: PinPrimitiveMaterial) {
+        condition.lock(); defer { condition.unlock() }; let inspection=material.context.inspection
+        if material.owner === self && inspection.primitiveMaterial === material && !material.published
+            && !material.settled && inspection.pendingReplies[ObjectIdentifier(material.reply)] === material.reply
+            && inspection.transfers>0 {
+            material.settled=true; material.reply.settled=true; material.close()
+            inspection.pendingReplies.removeValue(forKey:ObjectIdentifier(material.reply)); inspection.transfers-=1
+            inspection.primitiveMaterial=nil; condition.broadcast()
+        } else { inspection.sealed=true; inspection.phase = .sealed; wipeSealedLocked(inspection) }
+    }
+    /** Private actual-host boundary, original material/reply identities only.
+     * close() only wipes. Lost/malformed delivery is .uncertain and seals.
+     * No bridge or genuine host delivery adapter is supplied here. */
+    func settleMaterial(_ material: PinPrimitiveMaterial, delivery: PinReplyDelivery) throws {
+        condition.lock(); let inspection=material.context.inspection
+        let valid=material.owner === self && inspection.primitiveMaterial === material && material.published
+            && !material.settled && material.reply.owner === self && material.reply.kind == .primitive
+            && material.reply.session === material.context.session
+        condition.unlock(); try Self.require(valid)
+        try settleReply(material.reply,delivery:delivery)
+    }
+
+}
+fileprivate enum PinPrimitiveFailure: Error { case unavailable, denied, cancelled, busy }
+fileprivate enum PinPrimitiveMeasurementSource { case applePlatform, synthetic }
+fileprivate protocol PinPrimitiveDisposable: AnyObject { func close() }
+/** Dedicated allocated native buffers avoid String/PIN copies and Swift Array
+ * copy-on-write aliases. Borrowed pointers never outlive their synchronous call.
+ * Clearing our buffers cannot promise erasure of OS/provider internal memory. */
+fileprivate final class PinPrimitiveBytes: PinPrimitiveDisposable {
+    private let lock=NSLock(), pointer: UnsafeMutableRawPointer
+    let count: Int
+    private var disposed=false
+    init(count: Int) throws {
+        guard count>0 && count<=128 else { throw PinPrimitiveFailure.unavailable }
+        self.count=count; pointer=UnsafeMutableRawPointer.allocate(byteCount:count,alignment:1)
+        pointer.initializeMemory(as:UInt8.self,repeating:0,count:count)
+    }
+    convenience init(_ input: Data) throws {
+        guard !input.isEmpty && input.count<=128 else { throw PinPrimitiveFailure.denied }
+        try self.init(count:input.count)
+        input.withUnsafeBytes { source in pointer.copyMemory(from:source.baseAddress!,byteCount:count) }
+    }
+    func read<T>(_ task: (UnsafeRawBufferPointer) throws -> T) throws -> T {
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed else { throw PinPrimitiveFailure.unavailable }
+        return try task(UnsafeRawBufferPointer(start:pointer,count:count))
+    }
+    func write<T>(_ task: (UnsafeMutableRawBufferPointer) throws -> T) throws -> T {
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed else { throw PinPrimitiveFailure.unavailable }
+        return try task(UnsafeMutableRawBufferPointer(start:pointer,count:count))
+    }
+    func copy() throws -> Data { try read { Data($0) } }
+    func independentCopy() throws -> PinPrimitiveBytes {
+        let result=try PinPrimitiveBytes(count:count)
+        do { try read { source in try result.write { target in
+            target.baseAddress!.copyMemory(from:source.baseAddress!,byteCount:count)
+        } }; return result } catch { result.close(); throw error }
+    }
+    func equals(_ other: PinPrimitiveBytes) throws -> Bool {
+        guard count==other.count && self !== other else { return false }
+        return try read { left in try other.read { right in
+            var difference: UInt8=0
+            for index in left.indices { difference |= left[index]^right[index] }; return difference==0
+        } }
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; _ = memset_s(pointer,count,0,count) }
+    deinit { _ = memset_s(pointer,count,0,count); pointer.deallocate() }
+}
+/** The future real native secure-input UI transfers each entry into a different
+ * owned object and clears its own OS/UI backing. No UI/JS input adapter is
+ * supplied here; creating a buffer does not authenticate a user's interaction. */
+fileprivate final class PinPrimitiveInput: PinPrimitiveDisposable {
+    private let lock=NSLock()
+    private var storage: PinPrimitiveBytes?
+    init(_ bytes: Data) throws { storage=try PinPrimitiveBytes(bytes) }
+    func take() throws -> PinPrimitiveBytes {
+        lock.lock(); defer { lock.unlock() }
+        guard let result=storage else { throw PinPrimitiveFailure.denied }
+        storage=nil; return result
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; storage?.close(); storage=nil }
+    deinit { close() }
+}
+fileprivate protocol PinPrimitiveEngine: AnyObject {
+    func random(_ output: UnsafeMutableRawBufferPointer) throws
+    func derive(pin: UnsafeRawBufferPointer, salt: UnsafeRawBufferPointer,
+                iterations: UInt32, output: UnsafeMutableRawBufferPointer) throws
+}
+fileprivate protocol PinPrimitiveClock: AnyObject { func nanoseconds() throws -> UInt64 }
+/** Fixed real Apple APIs. No Password String, JS secret, logging, persistent PIN
+ * or CCCalibratePBKDF estimate. CCKeyDerivationPBKDF uses the exact ASCII octets.
+ * Its synchronous call cannot be interrupted; cancellation discards and wipes
+ * the late output while retaining both primitive and native worker ownership. */
+fileprivate final class ApplePinPrimitiveEngine: PinPrimitiveEngine {
+    func random(_ output: UnsafeMutableRawBufferPointer) throws {
+        guard let pointer=output.baseAddress, !output.isEmpty, output.count<=128,
+              SecRandomCopyBytes(kSecRandomDefault,output.count,pointer)==errSecSuccess
+        else { throw PinPrimitiveFailure.unavailable }
+    }
+    func derive(pin: UnsafeRawBufferPointer, salt: UnsafeRawBufferPointer,
+                iterations: UInt32, output: UnsafeMutableRawBufferPointer) throws {
+        guard let password=pin.baseAddress, let saltPointer=salt.baseAddress, let key=output.baseAddress,
+              pin.count>=4 && pin.count<=128 && pin.allSatisfy({ $0>=48 && $0<=57 })
+              && salt.count==32 && output.count==32 && iterations>=600000 else { throw PinPrimitiveFailure.unavailable }
+        let status=CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2),
+            password.assumingMemoryBound(to:CChar.self),pin.count,
+            saltPointer.assumingMemoryBound(to:UInt8.self),salt.count,
+            CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256),iterations,
+            key.assumingMemoryBound(to:UInt8.self),output.count)
+        guard status==kCCSuccess else { throw PinPrimitiveFailure.unavailable }
+    }
+}
+fileprivate final class ApplePinPrimitiveClock: PinPrimitiveClock {
+    func nanoseconds() throws -> UInt64 {
+        // Apple documents MONOTONIC_RAW as the ns equivalent of continuous Mach
+        // time, including sleep. The genuine authority must use this domain.
+        let result=clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW)
+        guard result>0 else { throw PinPrimitiveFailure.unavailable }; return result
+    }
+}
+fileprivate final class PinPrimitiveContext {
+    let session: OwnedPinSession, inspection: OwnedPinInspection, owner: NativePinSessions
+    let checksum: String, revision: UInt64, epoch: String, bootId: String, hostGeneration: UInt64
+    let deadlineUptimeMs: UInt64, capturedUptimeMs: UInt64
+    init(_ session: OwnedPinSession) {
+        self.session=session; inspection=session.inspection; owner=session.owner
+        checksum=session.checksum; revision=session.revision; epoch=session.epoch; bootId=session.bootId
+        hostGeneration=session.hostGeneration; deadlineUptimeMs=session.deadlineUptimeMs
+        capturedUptimeMs=session.capturedUptimeMs
+    }
+    func matches(_ other: PinPrimitiveContext) -> Bool {
+        self === other && owner === other.owner && session === other.session && inspection === other.inspection
+            && checksum==other.checksum && revision==other.revision && epoch==other.epoch
+            && bootId==other.bootId && hostGeneration==other.hostGeneration
+            && deadlineUptimeMs==other.deadlineUptimeMs && capturedUptimeMs==other.capturedUptimeMs
+    }
+}
+/** An original measurement receipt is a one-use native-owned cost observation,
+ * not Parent Gate permission, platform installation proof or trusted identity.
+ * Synthetic engine/clock results remain explicitly synthetic. A future host
+ * must validate actual installed-device calibration before native commit. */
+fileprivate final class PinPrimitiveCalibration: PinPrimitiveDisposable {
+    private let lock=NSLock()
+    weak var owner: PinNativePrimitives?
+    let context: PinPrimitiveContext, iterations: UInt32, samplesNs: [UInt64]
+    let source: PinPrimitiveMeasurementSource, maximumDerivationMs: UInt64
+    private var consumed=false
+    init(owner: PinNativePrimitives, context: PinPrimitiveContext, iterations: UInt32,
+         samples: [UInt64], source: PinPrimitiveMeasurementSource, maximum: UInt64) {
+        self.owner=owner; self.context=context; self.iterations=iterations; samplesNs=samples
+        self.source=source; maximumDerivationMs=maximum
+    }
+    func consume(owner candidate: PinNativePrimitives, context candidateContext: PinPrimitiveContext,
+                 iterations count: UInt64, maximum: UInt64) -> Bool {
+        lock.lock(); defer { lock.unlock() }
+        let valid=owner === candidate && !consumed && context.matches(candidateContext)
+            && UInt64(iterations)==count && maximumDerivationMs==maximum && samplesNs.count==3
+        if valid { consumed=true }; return valid
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; consumed=true }
+}
+fileprivate final class PinPrimitiveMaterial: PinPrimitiveDisposable {
+    let owner: NativePinSessions, context: PinPrimitiveContext, iterations: UInt32, reply: PinNativeReply
+    // Only the core monitor reads/writes these ownership fields.
+    var published=false, settled=false
+    init(owner: NativePinSessions, context: PinPrimitiveContext, iterations: UInt32, reply: PinNativeReply) {
+        self.owner=owner; self.context=context; self.iterations=iterations; self.reply=reply
+    }
+    private func slice(_ range: Range<Int>) throws -> Data {
+        guard var bytes=try reply.copyBytes(), bytes.count==96 else { throw PinPrimitiveFailure.unavailable }
+        defer { bytes.resetBytes(in:0..<bytes.count) }
+        return bytes.withUnsafeBytes { raw in Data(UnsafeRawBufferPointer(rebasing:raw[range])) }
+    }
+    // Every returned copy is owned by the native caller and must be wiped.
+    func copySalt() throws -> Data { try slice(0..<32) }
+    func copyCredential() throws -> Data { try slice(32..<64) }
+    func copyVerifier() throws -> Data { try slice(64..<96) }
+    // Retains the original pending transfer and native capacity until actual
+    // private-host settlement; wiping is never a delivery/retirement ACK.
+    func close() { reply.close() }
+    deinit { close() }
+}
+
+fileprivate final class PinPrimitiveJob {
+    let context: PinPrimitiveContext
+    var cancelled=false, sealed=false, lastNs: UInt64?
+    init(_ context: PinPrimitiveContext) { self.context=context }
+}
+/** Private real primitives, unused by App/bridge and by the nil factory.
+ * Same original native session/expected record/epoch/boot/deadline throughout.
+ * Native worker accounting joins actual KDF, current checks and secret wiping.
+ * No timer, close request or cancellation receipt frees actual running work. */
+fileprivate final class PinNativePrimitives {
+    private let lock=NSLock(), owner: NativePinSessions, engine: PinPrimitiveEngine, clock: PinPrimitiveClock
+    private let source: PinPrimitiveMeasurementSource, minDigits: Int, maxDigits: Int, maximumDerivationMs: UInt64
+    private var active: PinPrimitiveJob?, calibration: PinPrimitiveCalibration?, disposed=false
+    init(owner: NativePinSessions, minDigits: Int, maxDigits: Int, maximumDerivationMs: UInt64) throws {
+        guard minDigits>=4 && maxDigits>=minDigits && maxDigits<=128
+            && maximumDerivationMs>=1 && maximumDerivationMs<=5000 else { throw PinPrimitiveFailure.unavailable }
+        self.owner=owner; self.minDigits=minDigits; self.maxDigits=maxDigits; self.maximumDerivationMs=maximumDerivationMs
+        engine=ApplePinPrimitiveEngine(); clock=ApplePinPrimitiveClock(); source = .applePlatform
+    }
+    // Separate same-file fixture seam. It is never selected by production.
+    private init(owner: NativePinSessions, engine: PinPrimitiveEngine, clock: PinPrimitiveClock,
+                 minDigits: Int, maxDigits: Int, maximumDerivationMs: UInt64) throws {
+        guard minDigits>=4 && maxDigits>=minDigits && maxDigits<=128
+            && maximumDerivationMs>=1 && maximumDerivationMs<=5000 else { throw PinPrimitiveFailure.unavailable }
+        self.owner=owner; self.engine=engine; self.clock=clock; self.minDigits=minDigits; self.maxDigits=maxDigits
+        self.maximumDerivationMs=maximumDerivationMs; source = .synthetic
+    }
+    fileprivate static func synthetic(owner: NativePinSessions, engine: PinPrimitiveEngine, clock: PinPrimitiveClock,
+                                      minDigits: Int=4, maxDigits: Int=128, maximumDerivationMs: UInt64=5000) throws -> PinNativePrimitives {
+        try PinNativePrimitives(owner:owner,engine:engine,clock:clock,minDigits:minDigits,maxDigits:maxDigits,maximumDerivationMs:maximumDerivationMs)
+    }
+    private func live(_ job: PinPrimitiveJob) throws {
+        lock.lock(); defer { lock.unlock() }
+        guard active === job && !disposed && !job.cancelled && !job.sealed else { throw PinPrimitiveFailure.cancelled }
+    }
+    private func sample(_ job: PinPrimitiveJob) throws -> UInt64 {
+        try live(job); let ns=try clock.nanoseconds()
+        lock.lock(); defer { lock.unlock() }
+        guard active === job && !disposed && !job.cancelled && !job.sealed else { throw PinPrimitiveFailure.cancelled }
+        let ms=ns/1000000
+        guard ns>0 && ms<=9007199254740991 && ms>=job.context.capturedUptimeMs
+            && ms<job.context.deadlineUptimeMs && (job.lastNs == nil || ns>=job.lastNs!)
+        else { throw PinPrimitiveFailure.unavailable }
+        job.lastNs=ns; return ns
+    }
+    private func current(_ job: PinPrimitiveJob,_ work: PinPrimitiveWork) throws {
+        try live(job)
+        let point=try owner.currentPrimitiveWork(work)
+        try live(job); let ns=try sample(job)
+        // Domain matching is an actual authority adapter requirement, never
+        // inferred from this numeric comparison or from monotonicity alone.
+        guard point.uptimeMs<=ns/1000000 else { throw PinPrimitiveFailure.unavailable }
+    }
+    private func perform<T: PinPrimitiveDisposable>(_ context: PinPrimitiveContext,
+                                                     _ task: (PinPrimitiveJob,PinPrimitiveWork) throws -> T) throws -> T {
+        lock.lock()
+        guard active==nil && !disposed && context.owner === owner else { lock.unlock(); throw PinPrimitiveFailure.busy }
+        let job=PinPrimitiveJob(context); active=job; lock.unlock() // Before every injected callback.
+        var work: PinPrimitiveWork?, result: T?
+        do {
+            let lease=try owner.startPrimitiveWork(context.session); work=lease
+            try current(job,lease); result=try task(job,lease); try current(job,lease)
+            _=try sample(job)
+            // All actual clock/current/engine callbacks have returned before
+            // native worker settlement. The local cancellation lock prevents
+            // a late primitive cancel from racing the internal handoff.
+            lock.lock()
+            let valid=active === job && !disposed && !job.cancelled && !job.sealed
+            let nativeValid=owner.finishPrimitiveWork(lease); work=nil
+            lock.unlock()
+            guard valid && nativeValid, let output=result else { throw PinPrimitiveFailure.cancelled }
+            if let material=output as? PinPrimitiveMaterial { try owner.publishPrimitiveMaterial(material) }
+            lock.lock()
+            let stillValid=active === job && !disposed && !job.cancelled && !job.sealed
+            if stillValid { active=nil }; lock.unlock()
+            guard stillValid else {
+                if let material=output as? PinPrimitiveMaterial {
+                    // Handoff is now uncertain: retain/seal original transfer.
+                    try? owner.sealUnknown(context.inspection)
+                }
+                throw PinPrimitiveFailure.cancelled
+            }
+            result=nil; return output
+        } catch {
+            result?.close()
+            if let material=result as? PinPrimitiveMaterial, !material.published { owner.discardUnpublishedMaterial(material) }
+            if let lease=work { _=owner.finishPrimitiveWork(lease); work=nil }
+            lock.lock()
+            // Native unknown failures have their own sticky sealed lane.
+            // Do not retain plaintext or a KDF result to hold capacity.
+            if active === job && !job.sealed { active=nil }
+            lock.unlock(); throw error
+        }
+    }
+    private func fill(_ buffer: PinPrimitiveBytes,_ job: PinPrimitiveJob,_ work: PinPrimitiveWork) throws {
+        try current(job,work); try buffer.write { try engine.random($0) }; try current(job,work)
+    }
+    private func pin(_ bytes: PinPrimitiveBytes) throws {
+        guard bytes.count>=minDigits && bytes.count<=maxDigits else { throw PinPrimitiveFailure.denied }
+        try bytes.read { data in
+            guard data.allSatisfy({ $0>=48 && $0<=57 }) else { throw PinPrimitiveFailure.denied }
+        }
+    }
+    private func measured(_ pin: PinPrimitiveBytes,_ salt: PinPrimitiveBytes,_ output: PinPrimitiveBytes,
+                          iterations: UInt32,_ job: PinPrimitiveJob,_ work: PinPrimitiveWork) throws -> UInt64 {
+        try current(job,work)
+        let originalPin=try pin.independentCopy(), originalSalt=try salt.independentCopy()
+        defer { originalPin.close(); originalSalt.close() }
+        let before=try sample(job)
+        try pin.read { password in try salt.read { saltBytes in
+            try output.write { key in try engine.derive(pin:password,salt:saltBytes,iterations:iterations,output:key) }
+        } }
+        let after=try sample(job); try current(job,work)
+        guard try pin.equals(originalPin), try salt.equals(originalSalt) else { throw PinPrimitiveFailure.unavailable }
+        guard after>before && after-before<=maximumDerivationMs*1000000 else { throw PinPrimitiveFailure.unavailable }
+        return after-before
+    }
+    func calibrate(_ context: PinPrimitiveContext) throws -> PinPrimitiveCalibration {
+        try perform(context) { job,work in
+            let iterations=context.session.policy.iterations
+            guard iterations>=600000 && iterations<=context.session.policy.maximumIterations
+                && iterations<=UInt64(UInt32.max) else { throw PinPrimitiveFailure.unavailable }
+            let dummy=try PinPrimitiveBytes(count:maxDigits); defer { dummy.close() }
+            try fill(dummy,job,work)
+            try dummy.write { bytes in for index in bytes.indices { bytes[index]=48+bytes[index]%10 } }
+            var samples: [UInt64]=[]
+            for _ in 0..<3 {
+                let salt=try PinPrimitiveBytes(count:32), output=try PinPrimitiveBytes(count:32)
+                defer { salt.close(); output.close() }
+                try fill(salt,job,work)
+                samples.append(try measured(dummy,salt,output,iterations:UInt32(iterations),job,work))
+            }
+            let receipt=PinPrimitiveCalibration(owner:self,context:context,iterations:UInt32(iterations),
+                samples:samples,source:source,maximum:maximumDerivationMs)
+            lock.lock(); calibration?.close(); calibration=receipt; lock.unlock(); return receipt
+        }
+    }
+    func prepare(_ context: PinPrimitiveContext, first: PinPrimitiveInput, confirmation: PinPrimitiveInput,
+                 calibration receipt: PinPrimitiveCalibration) throws -> PinPrimitiveMaterial {
+        defer { first.close(); confirmation.close() }
+        return try perform(context) { job,work in
+            lock.lock()
+            let valid=calibration === receipt && receipt.consume(owner:self,context:context,
+                iterations:context.session.policy.iterations,maximum:maximumDerivationMs)
+            if valid { calibration=nil }; lock.unlock()
+            guard valid && first !== confirmation else { throw PinPrimitiveFailure.denied }
+            let entered=try first.take(); defer { entered.close() }
+            let repeated=try confirmation.take(); defer { repeated.close() }
+            try pin(entered); try pin(repeated)
+            guard entered.count==repeated.count else { throw PinPrimitiveFailure.denied }
+            let difference=try entered.read { left in try repeated.read { right -> UInt8 in
+                var diff: UInt8=0; for index in left.indices { diff |= left[index]^right[index] }; return diff
+            } }
+            guard difference==0 else { throw PinPrimitiveFailure.denied }
+            repeated.close(); try current(job,work)
+            let salt=try PinPrimitiveBytes(count:32), credential=try PinPrimitiveBytes(count:32), output=try PinPrimitiveBytes(count:32)
+            defer { salt.close(); credential.close(); output.close() }
+            try fill(salt,job,work); try fill(credential,job,work)
+            _=try measured(entered,salt,output,iterations:receipt.iterations,job,work)
+            var bytes=Data(count:96); defer { bytes.resetBytes(in:0..<bytes.count) }
+            try bytes.withUnsafeMutableBytes { packed in
+                try salt.read { packed.baseAddress!.copyMemory(from:$0.baseAddress!,byteCount:32) }
+                try credential.read { packed.baseAddress!.advanced(by:32).copyMemory(from:$0.baseAddress!,byteCount:32) }
+                try output.read { packed.baseAddress!.advanced(by:64).copyMemory(from:$0.baseAddress!,byteCount:32) }
+            }
+            return try owner.primitiveMaterial(work,context:context,bytes:bytes,iterations:receipt.iterations)
+        }
+    }
+    func cancel(_ context: PinPrimitiveContext) throws {
+        lock.lock()
+        if let job=active, job.context.matches(context) { job.cancelled=true }
+        if let receipt=calibration, receipt.context.matches(context) { receipt.close(); calibration=nil }
+        lock.unlock()
+        // Existing core revokes immediately, before its actual cancel callback;
+        // both callbacks and KDF still count as actual workers until they settle.
+        try owner.cancel(context.inspection)
+    }
+    func close() {
+        lock.lock(); defer { lock.unlock() }; disposed=true; active?.cancelled=true
+        calibration?.close(); calibration=nil
+    }
+    deinit { close() }
 }

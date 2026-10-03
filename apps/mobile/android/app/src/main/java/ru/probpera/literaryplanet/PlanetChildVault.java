@@ -338,6 +338,7 @@ final class PlanetChildVault {
         final NativePinSessions owner; final String wireId; final PinLifecycleAction action; final long timeoutMs;
         PinSessionPhase phase=PinSessionPhase.reserved; boolean cancelled, sealed, retiring, retirementFenced;
         int workers, transfers; OwnedPinSession session; PinNativeReply terminalReply;
+        private PinPrimitiveContext primitiveContext;
         final java.util.IdentityHashMap<Thread,Integer> threads=new java.util.IdentityHashMap<>();
         final java.util.Set<PinNativeReply> pendingReplies=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<PinNativeReply,Boolean>());
         private OwnedPinInspection(NativePinSessions owner,String id,PinLifecycleAction action,long timeout) {
@@ -407,7 +408,7 @@ final class PlanetChildVault {
             if(remaining==0)inspection.threads.remove(thread);else inspection.threads.put(thread,remaining);wipeSealedLocked(inspection);notifyAll();
         }
         private synchronized void claim(OwnedPinInspection inspection,PinSessionPhase expected,PinSessionPhase next) throws Exception {
-            live(inspection); require(!inspection.retiring && inspection.phase==expected); inspection.phase=next; worker(inspection);
+            live(inspection); require(!inspection.retiring && inspection.workers==0 && inspection.phase==expected); inspection.phase=next; worker(inspection);
         }
         private synchronized void failed(OwnedPinInspection inspection,Exception error,boolean publicationEntered) {
             if(inspection.sealed || publicationEntered || !(error instanceof PinKnownRefusal)) { inspection.sealed=true; inspection.phase=PinSessionPhase.sealed; }
@@ -599,6 +600,272 @@ final class PlanetChildVault {
             if(refused[0]!=null)throw refused[0];return result;
         }};
     }
+    /** Scoped real cryptographic primitives, still no input UI, bridge,
+     * genuine checkpoint/parent authority, recovery or provider activation.
+     * PINs stay in owned native byte arrays. No PIN String/log/analytics path.
+     * SecretKeyFactory/SecureRandom/continuous clock are platform primitives; their
+     * internal allocations are not claimed to be fully zeroizable by Java. */
+    private interface PinPrimitiveCheck { void check() throws Exception; }
+    private interface PinPrimitiveMaterialTask<T> { T run(byte[] disposable) throws Exception; }
+    private interface PinPrimitivePlatform {
+        long continuousNanos() throws Exception;
+        void random(byte[] destination) throws Exception;
+        void derive(byte[] pin,byte[] salt,long iterations,byte[] output,PinPrimitiveCheck check) throws Exception;
+    }
+    private static final class RealPinPrimitivePlatform implements PinPrimitivePlatform {
+        private final java.security.SecureRandom random=new java.security.SecureRandom();
+        public long continuousNanos() throws Exception { long value=SystemClock.elapsedRealtimeNanos();require(value>=0);return value; }
+        public void random(byte[] destination) { random.nextBytes(destination); }
+        public void derive(byte[] pin,byte[] salt,long iterations,byte[] output,PinPrimitiveCheck check) throws Exception {
+            PinPlatformKdf.derive32(pin,salt,iterations,output,check);
+        }
+    }
+    /** Fixed platform PBKDF2 only. Android documents SHA256 support from API26;
+     * unavailable algorithms fail closed on API24/25, with no fallback/provider
+     * installation. minSdk24 stays unchanged. App-owned bytes/chars and the
+     * PBEKeySpec password are cleared; provider-internal heap erasure is not
+     * promised. The synchronous platform operation keeps its native worker
+     * until actual return; cancellation rejects and wipes a late output. */
+    private static final class PinPlatformKdf {
+        private static void derive32(byte[] pin,byte[] salt,long iterations,byte[] output,PinPrimitiveCheck check) throws Exception {
+            require(pin!=null&&pin.length>=4&&pin.length<=128&&salt!=null&&salt.length==32
+                &&iterations>=600000&&iterations<=Integer.MAX_VALUE&&output!=null&&output.length==32&&check!=null);
+            for(byte digit:pin)require(digit>=48&&digit<=57);
+            char[] password=new char[pin.length];byte[] ownedSalt=salt.clone(),encoded=null;
+            javax.crypto.spec.PBEKeySpec spec=null;javax.crypto.SecretKey generated=null;boolean completed=false;
+            try{for(int index=0;index<pin.length;index++)password[index]=(char)pin[index];
+                check.check();spec=new javax.crypto.spec.PBEKeySpec(password,ownedSalt,(int)iterations,256);
+                javax.crypto.SecretKeyFactory factory=javax.crypto.SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+                generated=factory.generateSecret(spec);encoded=generated.getEncoded();require(encoded!=null&&encoded.length==32);
+                check.check();System.arraycopy(encoded,0,output,0,32);completed=true;
+            }finally{Arrays.fill(password,'\0');Arrays.fill(ownedSalt,(byte)0);if(encoded!=null)Arrays.fill(encoded,(byte)0);
+                if(spec!=null)spec.clearPassword();if(!completed)Arrays.fill(output,(byte)0);
+                // Public best-effort key destruction only; do not mask failure
+                // or inspect a provider's private key copies.
+                if(generated!=null)try{generated.destroy();}catch(Exception|LinkageError unavailable){/* no heap-erasure claim */}
+            }
+        }
+    }
+    private enum PinPrimitiveEntry { fresh, confirmation }
+    private static final class PinPrimitiveContext implements AutoCloseable {
+        final PinNativePrimitives owner;final NativePinSessions core;final OwnedPinSession session;final OwnedPinInspection inspection;
+        final PinSessionPolicy policy;final PinLifecycleAction action;final String checksum,epoch,bootId;
+        final long revision,hostGeneration,deadlineUptimeMs,capturedUptimeMs,capturedLogicalMs,iterations;
+        private final byte[] expected,oldSalt,oldCredential;private boolean revoked,calibrationStarted,preparationStarted;
+        private int workers;private PinPrimitiveInput fresh,confirmation;private PinPrimitiveCalibration calibration;private PinPrimitiveMaterial material;
+        private PinPrimitiveContext(PinNativePrimitives owner,OwnedPinSession session,byte[] expected,byte[] oldSalt,byte[] oldCredential) {
+            this.owner=owner;core=owner.core;this.session=session;inspection=session.inspection;policy=session.policy;action=inspection.action;
+            checksum=session.checksum;epoch=session.epoch;bootId=session.bootId;revision=session.revision;hostGeneration=session.hostGeneration;
+            deadlineUptimeMs=session.deadlineUptimeMs;capturedUptimeMs=session.capturedUptimeMs;capturedLogicalMs=session.capturedLogicalMs;iterations=policy.iterations;
+            this.expected=expected.clone();this.oldSalt=oldSalt==null?null:oldSalt.clone();this.oldCredential=oldCredential==null?null:oldCredential.clone();
+        }
+        public void close() { owner.closeContext(this); }
+    }
+    private static final class PinPrimitiveInput implements AutoCloseable {
+        final PinPrimitiveContext context;final PinPrimitiveEntry entry;private final byte[] bytes;private boolean taken,closed;
+        private PinPrimitiveInput(PinPrimitiveContext context,PinPrimitiveEntry entry,byte[] bytes) { this.context=context;this.entry=entry;this.bytes=bytes.clone(); }
+        private synchronized byte[] take() throws Exception { require(!taken&&!closed);taken=true;byte[] copy=bytes.clone();close();return copy; }
+        public synchronized void close() { closed=true;Arrays.fill(bytes,(byte)0); }
+    }
+    private static final class PinPrimitiveCalibration implements AutoCloseable {
+        final PinPrimitiveContext context;final long iterations;private final long[] elapsedNanos;private boolean consumed,closed;
+        private PinPrimitiveCalibration(PinPrimitiveContext context,long[] measured) { this.context=context;iterations=context.iterations;elapsedNanos=measured.clone(); }
+        public void close() { synchronized(context.core){closed=true;} }
+    }
+    /** close wipes the original backing transfer, and never settles it. Only
+     * the missing genuine private host's original settlement event may release
+     * a transfer; no caller receipt/boolean or material wrapper grants that. */
+    private static final class PinPrimitiveMaterial implements AutoCloseable {
+        final PinPrimitiveContext context;final PinNativeReply backing;final long iterations;
+        private PinPrimitiveMaterial(PinPrimitiveContext context,PinNativeReply backing) { this.context=context;this.backing=backing;iterations=context.iterations; }
+        private <T>T withBytes(PinPrimitiveMaterialTask<T> task) throws Exception { return context.owner.withMaterial(this,task); }
+        public void close() { backing.close(); }
+    }
+    private static final class PinPrimitiveLease {
+        final PinNativePrimitives owner;final PinPrimitiveContext context;final Thread thread;
+        private boolean settled;private long lastNanos=-1,derivationStarted=-1;private PinPrimitiveCalibration calibration;
+        private PinPrimitiveLease(PinNativePrimitives owner,PinPrimitiveContext context) { this.owner=owner;this.context=context;thread=Thread.currentThread(); }
+    }
+    private static final class PinNativePrimitives {
+        private final NativePinSessions core;private final PinPrimitivePlatform platform;private final int minDigits,maxDigits;private final long maximumDerivationNanos;
+        private PinPrimitiveContext context;private PinPrimitiveLease lease;
+        private PinNativePrimitives(NativePinSessions core,int minDigits,int maxDigits,long maximumDerivationMs) throws Exception {
+            this(core,minDigits,maxDigits,maximumDerivationMs,new RealPinPrimitivePlatform());
+        }
+        private PinNativePrimitives(NativePinSessions core,int minDigits,int maxDigits,long maximumDerivationMs,PinPrimitivePlatform platform) throws Exception {
+            require(core!=null&&platform!=null&&minDigits>=4&&minDigits<=maxDigits&&maxDigits<=128
+                &&maximumDerivationMs>=1&&maximumDerivationMs<=5000&&core.policy.iterations>=600000
+                &&core.policy.iterations<=core.policy.maximumIterations&&core.policy.maximumIterations<=0xffffffffL
+                &&core.policy.iterations<=Integer.MAX_VALUE);
+            this.core=core;this.platform=platform;this.minDigits=minDigits;this.maxDigits=maxDigits;maximumDerivationNanos=maximumDerivationMs*1000000L;
+        }
+        /** Explicit B-only reflection fixture seam. Never selected by an App
+         * flag/default factory; injected clocks/entropy/KDF supply no OS proof. */
+        private static PinNativePrimitives syntheticFixture(NativePinSessions core,int minDigits,int maxDigits,long budget,PinPrimitivePlatform fixture) throws Exception {
+            return new PinNativePrimitives(core,minDigits,maxDigits,budget,fixture);
+        }
+        private static void refuse(boolean allowed) throws PinKnownRefusal { if(!allowed)throw new PinKnownRefusal(); }
+        private static boolean nonzero(byte[] bytes) { int any=0;for(byte value:bytes)any|=value;return any!=0; }
+        private static byte[] hexBytes(String value) throws Exception { require(ProtectedEnvelope.hash(value));byte[] bytes=new byte[32];
+            for(int index=0;index<32;index++)bytes[index]=(byte)((Character.digit(value.charAt(index*2),16)<<4)|Character.digit(value.charAt(index*2+1),16));return bytes; }
+        private PinPrimitiveContext context(OwnedPinSession session) throws Exception {
+            synchronized(core){require(session!=null&&session.owner==core&&session.inspection.session==session&&context==null
+                    &&session.inspection.primitiveContext==null);
+                core.sessionFence(session);require(!session.inspection.retiring&&session.inspection.phase==PinSessionPhase.begun
+                    &&session.inspection.workers==0&&session.inspection.transfers==0);
+                byte[] oldSalt=null,oldCredential=null;
+                try(ProtectedEnvelope envelope=ProtectedEnvelope.decode(session.expected,session.policy.version,session.policy.checksum,session.policy.maximumIterations)){
+                    require(envelope.checksum.equals(session.checksum)&&envelope.revision==session.revision);
+                    if(!envelope.unenrolled){ProtectedEnvelope.Cursor cursor=new ProtectedEnvelope.Cursor(new String(envelope.canonical,envelope.pinStart,envelope.pinEnd-envelope.pinStart,StandardCharsets.US_ASCII));
+                        ProtectedEnvelope.Pin old=ProtectedEnvelope.pin(cursor,session.policy.version,session.policy.maximumIterations);oldSalt=hexBytes(old.saltHex);oldCredential=hexBytes(old.credentialId);}
+                    context=new PinPrimitiveContext(this,session,session.expected,oldSalt,oldCredential);session.inspection.primitiveContext=context;return context;
+                }finally{if(oldSalt!=null)Arrays.fill(oldSalt,(byte)0);if(oldCredential!=null)Arrays.fill(oldCredential,(byte)0);}
+            }
+        }
+        private void identity(PinPrimitiveContext candidate) throws Exception {
+            require(candidate!=null&&candidate==context&&candidate.owner==this&&candidate.core==core
+                &&candidate.session.owner==core&&candidate.inspection.owner==core&&candidate.inspection.session==candidate.session
+                &&candidate.inspection.primitiveContext==candidate
+                &&candidate.policy==core.policy&&candidate.session.policy==candidate.policy&&candidate.action==candidate.inspection.action
+                &&candidate.checksum.equals(candidate.session.checksum)&&candidate.epoch.equals(candidate.session.epoch)
+                &&candidate.bootId.equals(candidate.session.bootId)&&candidate.revision==candidate.session.revision
+                &&candidate.hostGeneration==candidate.session.hostGeneration&&candidate.deadlineUptimeMs==candidate.session.deadlineUptimeMs
+                &&candidate.capturedUptimeMs==candidate.session.capturedUptimeMs&&candidate.capturedLogicalMs==candidate.session.capturedLogicalMs
+                &&candidate.iterations==core.policy.iterations);
+        }
+        /** Consumes bounded native bytes only. A future actual native UI must
+         * clear its own input even on rejection; this is not such an input UI. */
+        private PinPrimitiveInput entry(PinPrimitiveContext candidate,PinPrimitiveEntry entry,byte[] owned) throws Exception {
+            require(owned!=null&&owned.length<=128);
+            try{synchronized(core){identity(candidate);core.sessionFence(candidate.session);
+                    refuse(!candidate.revoked&&entry!=null&&candidate.workers==0&&!candidate.preparationStarted
+                        &&!candidate.inspection.retiring&&candidate.inspection.phase==PinSessionPhase.begun);
+                    require(owned.length>=minDigits&&owned.length<=maxDigits);for(byte value:owned)require(value>=48&&value<=57);
+                    require(entry==PinPrimitiveEntry.fresh?candidate.fresh==null:candidate.confirmation==null);
+                    PinPrimitiveInput result=new PinPrimitiveInput(candidate,entry,owned);
+                    if(entry==PinPrimitiveEntry.fresh)candidate.fresh=result;else candidate.confirmation=result;return result;
+                }}finally{Arrays.fill(owned,(byte)0);}
+        }
+        private PinPrimitiveLease start(PinPrimitiveContext candidate) throws Exception {
+            return start(candidate,null);
+        }
+        private PinPrimitiveLease start(PinPrimitiveContext candidate,PinPrimitiveMaterial retained) throws Exception {
+            synchronized(core){identity(candidate);core.live(candidate.inspection);
+                refuse(!candidate.revoked&&!candidate.inspection.retiring&&candidate.inspection.phase==PinSessionPhase.begun);
+                require(lease==null&&candidate.workers==0&&candidate.inspection.workers==0);
+                if(retained==null)require(candidate.inspection.transfers==0);
+                else {materialIdentity(retained);require(retained.context==candidate&&candidate.inspection.transfers==1);}
+                lease=new PinPrimitiveLease(this,candidate);candidate.workers++;core.worker(candidate.inspection);return lease;}
+        }
+        private void local(PinPrimitiveLease owned) throws Exception {
+            synchronized(core){identity(owned.context);require(owned.owner==this&&lease==owned&&!owned.settled&&owned.thread==Thread.currentThread()&&owned.context.workers==1);
+                core.live(owned.context.inspection);refuse(!owned.context.revoked&&!owned.context.inspection.retiring
+                    &&owned.context.inspection.phase==PinSessionPhase.begun&&!Thread.currentThread().isInterrupted());
+                if(owned.calibration!=null)require(owned.calibration==owned.context.calibration&&owned.calibration.context==owned.context
+                    &&owned.calibration.consumed&&!owned.calibration.closed);}
+        }
+        /** Local callback fence without decrypt/schema/full-record IO. Platform
+         * KDF is synchronous; all actual clock/engine callbacks finish before
+         * worker settlement, even after immediate cancellation revocation. */
+        private long poll(PinPrimitiveLease owned) throws Exception {
+            local(owned);long nanos=platform.continuousNanos();local(owned);
+            require(nanos>=0&&nanos>=owned.lastNanos);long ms=nanos/1000000L;
+            refuse(ms>=owned.context.capturedUptimeMs&&ms<owned.context.deadlineUptimeMs);
+            if(owned.derivationStarted>=0)refuse(nanos>=owned.derivationStarted&&nanos-owned.derivationStarted<=maximumDerivationNanos);
+            owned.lastNanos=nanos;return nanos;
+        }
+        private long current(PinPrimitiveLease owned) throws Exception {
+            long before=poll(owned);
+            PinNativeCoordinates point=core.io.locked(transaction->{local(owned);byte[] actual=transaction.read();
+                try{require(actual!=null&&actual.length>0&&actual.length<=MAX_BYTES&&MessageDigest.isEqual(actual,owned.context.expected)
+                        &&digest(actual).equals(owned.context.checksum));
+                    PinNativeCoordinates coordinate=core.current(owned.context.session,actual,owned.context.checksum,owned.context.revision);
+                    local(owned);require(MessageDigest.isEqual(actual,owned.context.expected)&&digest(actual).equals(owned.context.checksum));return coordinate;
+                }finally{if(actual!=null)Arrays.fill(actual,(byte)0);}});
+            long after=poll(owned);require(point.uptimeMs>=before/1000000L&&point.uptimeMs<=after/1000000L);return after;
+        }
+        private void random(PinPrimitiveLease owned,byte[] output) throws Exception {
+            require(output.length>=1&&output.length<=128);current(owned);platform.random(output);current(owned);require(nonzero(output));
+        }
+        private long derive(PinPrimitiveLease owned,byte[] pin,byte[] salt,byte[] output) throws Exception {
+            require(pin.length>=minDigits&&pin.length<=maxDigits&&salt.length==32&&output.length==32
+                &&owned.context.iterations>=600000&&owned.context.iterations<=core.policy.maximumIterations);
+            byte[] disposablePin=pin.clone(),disposableSalt=salt.clone();long before,after;
+            try{before=current(owned);owned.derivationStarted=before;
+                platform.derive(disposablePin,disposableSalt,owned.context.iterations,output,()->poll(owned));
+                require(MessageDigest.isEqual(disposablePin,pin)&&MessageDigest.isEqual(disposableSalt,salt));
+                after=poll(owned);current(owned);require(after>before&&after-before<=maximumDerivationNanos&&nonzero(output));return after-before;
+            }finally{owned.derivationStarted=-1;Arrays.fill(disposablePin,(byte)0);Arrays.fill(disposableSalt,(byte)0);}
+        }
+        private void wipeContext(PinPrimitiveContext candidate) {
+            if(!candidate.revoked)return;if(candidate.fresh!=null)candidate.fresh.close();if(candidate.confirmation!=null)candidate.confirmation.close();
+            if(candidate.calibration!=null)candidate.calibration.closed=true;if(candidate.material!=null)candidate.material.close();
+            if(candidate.workers==0){Arrays.fill(candidate.expected,(byte)0);if(candidate.oldSalt!=null)Arrays.fill(candidate.oldSalt,(byte)0);
+                if(candidate.oldCredential!=null)Arrays.fill(candidate.oldCredential,(byte)0);}
+        }
+        private void closeContext(PinPrimitiveContext candidate) { synchronized(core){if(candidate!=null&&candidate.owner==this&&candidate==context){candidate.revoked=true;wipeContext(candidate);}} }
+        private void finish(PinPrimitiveLease owned) throws Exception {
+            synchronized(core){require(owned.owner==this&&lease==owned&&!owned.settled&&owned.thread==Thread.currentThread()&&owned.context.workers==1);
+                owned.settled=true;owned.context.workers--;wipeContext(owned.context);lease=null;core.settleWorker(owned.context.inspection);}
+        }
+        private void failed(PinPrimitiveLease owned,Exception error) { synchronized(core){owned.context.revoked=true;wipeContext(owned.context);core.failed(owned.context.inspection,error,false);} }
+        private PinPrimitiveCalibration calibrate(PinPrimitiveContext candidate) throws Exception {
+            PinPrimitiveLease owned=start(candidate);byte[] dummy=new byte[maxDigits],salt=new byte[32],hash=new byte[32];long[] elapsed=new long[3];
+            try{current(owned);synchronized(core){require(!candidate.calibrationStarted);candidate.calibrationStarted=true;}
+                for(int sample=0;sample<3;sample++){random(owned,dummy);for(int index=0;index<dummy.length;index++)dummy[index]=(byte)(48+((dummy[index]&255)%10));
+                    random(owned,salt);elapsed[sample]=derive(owned,dummy,salt,hash);Arrays.fill(dummy,(byte)0);Arrays.fill(salt,(byte)0);Arrays.fill(hash,(byte)0);}
+                current(owned);synchronized(core){local(owned);candidate.calibration=new PinPrimitiveCalibration(candidate,elapsed);return candidate.calibration;}
+            }catch(Exception error){failed(owned,error);throw error;}finally{Arrays.fill(dummy,(byte)0);Arrays.fill(salt,(byte)0);Arrays.fill(hash,(byte)0);Arrays.fill(elapsed,0);finish(owned);}
+        }
+        private PinPrimitiveMaterial prepare(PinPrimitiveContext candidate,PinPrimitiveCalibration calibration,PinPrimitiveInput fresh,PinPrimitiveInput confirmation) throws Exception {
+            PinPrimitiveLease owned=start(candidate);byte[] first=null,second=null,salt=new byte[32],credential=new byte[32],hash=new byte[32],packed=new byte[96];
+            try{current(owned);synchronized(core){require(!candidate.preparationStarted&&calibration!=null&&calibration==candidate.calibration&&calibration.context==candidate
+                        &&calibration.iterations==candidate.iterations&&!calibration.closed&&!calibration.consumed
+                        &&fresh!=null&&fresh!=confirmation&&fresh==candidate.fresh&&confirmation==candidate.confirmation
+                        &&fresh.context==candidate&&confirmation.context==candidate&&fresh.entry==PinPrimitiveEntry.fresh&&confirmation.entry==PinPrimitiveEntry.confirmation);
+                    candidate.preparationStarted=true;calibration.consumed=true;owned.calibration=calibration;}
+                first=fresh.take();second=confirmation.take();refuse(MessageDigest.isEqual(first,second));
+                random(owned,salt);random(owned,credential);
+                require(!MessageDigest.isEqual(salt,credential)&&(candidate.oldSalt==null||!MessageDigest.isEqual(salt,candidate.oldSalt))
+                    &&(candidate.oldCredential==null||!MessageDigest.isEqual(credential,candidate.oldCredential)));
+                derive(owned,first,salt,hash);System.arraycopy(salt,0,packed,0,32);System.arraycopy(credential,0,packed,32,32);System.arraycopy(hash,0,packed,64,32);
+                current(owned);synchronized(core){local(owned);require(candidate.material==null);
+                    PinNativeReply reply=core.reply(candidate.session,packed,candidate.checksum,PinSessionPhase.begun);
+                    candidate.material=new PinPrimitiveMaterial(candidate,reply);return candidate.material;}
+            }catch(Exception error){failed(owned,error);throw error;}finally{if(first!=null)Arrays.fill(first,(byte)0);if(second!=null)Arrays.fill(second,(byte)0);
+                if(fresh!=null)fresh.close();if(confirmation!=null)confirmation.close();Arrays.fill(salt,(byte)0);Arrays.fill(credential,(byte)0);
+                Arrays.fill(hash,(byte)0);Arrays.fill(packed,(byte)0);finish(owned);}
+        }
+        private void materialIdentity(PinPrimitiveMaterial material) throws Exception {
+            identity(material.context);require(material==material.context.material&&material.backing.owner==core&&material.backing.session==material.context.session
+                &&material.backing.inspection==material.context.inspection&&material.backing.checksum.equals(material.context.checksum)
+                &&material.context.inspection.pendingReplies.contains(material.backing)&&!material.backing.settled);
+        }
+        /** Synchronous future-private-host consumption only. Caller sees a
+         * disposable verifier buffer which is wiped after actual callback
+         * return, with current whole-record/deadline fences on both sides.
+         * No native UI/transport/parent authorization is implemented here. */
+        private <T>T withMaterial(PinPrimitiveMaterial material,PinPrimitiveMaterialTask<T> task) throws Exception {
+            require(material!=null&&task!=null);PinPrimitiveLease owned=start(material.context,material);byte[] disposable=null,expected=null;
+            try{current(owned);synchronized(core){local(owned);materialIdentity(material);disposable=material.backing.copyBytes();}
+                require(disposable.length==96);expected=disposable.clone();T result=task.run(disposable);
+                require(MessageDigest.isEqual(disposable,expected));current(owned);synchronized(core){local(owned);materialIdentity(material);}return result;
+            }catch(Exception error){failed(owned,error);throw error;}finally{if(disposable!=null)Arrays.fill(disposable,(byte)0);
+                if(expected!=null)Arrays.fill(expected,(byte)0);finish(owned);}
+        }
+        /** Existing private host settlement seam only; no implementation of
+         * an authenticated native transport/ACK is supplied by this patch. */
+        private void settleMaterial(PinPrimitiveMaterial material,PinReplyDelivery delivery) throws Exception {
+            synchronized(core){materialIdentity(material);require(delivery!=null&&material.context.workers==0
+                    &&material.context.inspection.workers==0);core.settleReply(material.backing,delivery);closeContext(material.context);}
+        }
+        private void cancel(PinPrimitiveContext candidate) throws Exception {
+            synchronized(core){identity(candidate);closeContext(candidate);}core.cancel(candidate.inspection);
+        }
+    }
+    /** Real primitives do not supply the still-missing genuine checkpoint,
+     * original-host authority, UI input, calibration admission or recovery. */
+    private static PinNativePrimitives actualSdkPinPrimitives(PlanetChildVault vault) { return null; }
     static final int MAX_BYTES = 131072;
     private static final long MAX_SAFE = 9007199254740991L;
     private static final ReentrantLock PROCESS_LOCK = new ReentrantLock();
