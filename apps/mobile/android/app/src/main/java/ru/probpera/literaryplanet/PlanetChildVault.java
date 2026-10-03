@@ -1564,6 +1564,7 @@ final class PlanetChildVault {
     private static final class NativePinVerification {
         private final PinSessionIO io;private final PinVerificationAuthority authority;private final PinVerificationPolicy policy;
         private final PinVerificationEngine fixtureEngine;private PinVerificationTicket active;private final java.util.Set<String> usedIds=new java.util.HashSet<>();
+        private final java.util.Set<Object> usedHosts=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<>());
         private NativePinVerification(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy) throws Exception {this(io,authority,policy,null);}
         private NativePinVerification(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy,PinVerificationEngine fixture) throws Exception {
             require(io!=null&&authority!=null&&policy!=null);this.io=io;this.authority=authority;this.policy=policy;fixtureEngine=fixture;
@@ -1617,8 +1618,9 @@ final class PlanetChildVault {
         private synchronized PinVerificationTicket ticket(PinGateRequest gate) throws Exception {require(gate!=null&&active!=null&&active.gate==gate);own(active);return active;}
         private OwnedPinVerification begin(PinGateRequest gate) throws Exception {
             background();PinVerificationTicket original;
-            synchronized(this){require(gate!=null&&gate.context.policyVersion.equals(policy.version)&&usedIds.size()<2048&&!usedIds.contains(gate.id));
-                refuse(active==null,false);require(usedIds.add(gate.id));original=new PinVerificationTicket(this,gate);active=original;original.phase=PinVerificationPhase.beginning;worker(original);}
+            synchronized(this){require(gate!=null&&gate.context.policyVersion.equals(policy.version)&&usedIds.size()<2048&&usedHosts.size()<2048
+                &&!usedIds.contains(gate.id)&&!usedHosts.contains(gate.originalHostChallenge));
+                refuse(active==null,false);require(usedIds.add(gate.id)&&usedHosts.add(gate.originalHostChallenge));original=new PinVerificationTicket(this,gate);active=original;original.phase=PinVerificationPhase.beginning;worker(original);}
             try{return locked(transaction->{live(original);byte[] bytes=transaction.read();
                 try(ProtectedEnvelope record=ProtectedEnvelope.decode(bytes,policy.version,policy.checksum,policy.maximumIterations)){
                     refuse(!record.unenrolled,false);context(record,gate);PinVerificationCoordinates point=isolated(bytes,copy->authority.capture(gate,copy,record.checksum,record.revision));
