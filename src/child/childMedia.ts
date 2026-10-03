@@ -4,11 +4,12 @@ import type { createVerifiedChildIndex } from "./childIndex";
 import { childDataArray, childRecord, copyChildPackageChallenge, decodeChildEntityReference,
   type ChildEntityReference, type ChildIndexedEntity, type ChildPackageDigestPort } from "./childPackage";
 import type { ChildRouteChallenge } from "./childStartup";
+import { CHILD_SVG_MAX_BYTES, preflightChildStaticSvg } from "./childStaticSvg";
 
 export const CHILD_MEDIA_MAX_MANIFEST_BYTES = 512 * 1024;
 export const CHILD_MEDIA_MAX_ASSETS = 512;
 export const CHILD_MEDIA_MAX_ASSET_BYTES = 32 * 1024 * 1024;
-export const CHILD_MEDIA_MIMES = Object.freeze(["image/png", "image/jpeg", "image/webp", "audio/wav"] as const);
+export const CHILD_MEDIA_MIMES = Object.freeze(["image/png", "image/jpeg", "image/webp", "image/svg+xml", "audio/wav"] as const);
 export type ChildMediaMime = typeof CHILD_MEDIA_MIMES[number];
 export interface ChildMediaInventoryEntry {
   readonly inventoryKey: string; readonly sha256: string; readonly bytes: number; readonly mime: ChildMediaMime;
@@ -82,10 +83,10 @@ function copyBytes(input: unknown, maximum: number): Uint8Array | null {
 }
 function inventoryEntry(input: unknown): ChildMediaInventoryEntry | null {
   const row = childRecord(input, ["inventoryKey", "sha256", "bytes", "mime"]);
-  if (!row || typeof row.inventoryKey !== "string" || !/^[a-z0-9][a-z0-9_-]{0,63}\.(png|jpg|webp|wav)$/u.test(row.inventoryKey)
+  if (!row || typeof row.inventoryKey !== "string" || !/^[a-z0-9][a-z0-9_-]{0,63}\.(png|jpg|webp|svg|wav)$/u.test(row.inventoryKey)
     || !hex(row.sha256) || !positive(row.bytes) || row.bytes > CHILD_MEDIA_MAX_ASSET_BYTES
-    || !(CHILD_MEDIA_MIMES as readonly unknown[]).includes(row.mime)) return null;
-  const extensions: Record<ChildMediaMime, string> = { "image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp", "audio/wav": ".wav" };
+    || !(CHILD_MEDIA_MIMES as readonly unknown[]).includes(row.mime) || row.mime === "image/svg+xml" && row.bytes > CHILD_SVG_MAX_BYTES) return null;
+  const extensions: Record<ChildMediaMime, string> = { "image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp", "image/svg+xml": ".svg", "audio/wav": ".wav" };
   if (!row.inventoryKey.endsWith(extensions[row.mime as ChildMediaMime])) return null;
   return Object.freeze(row as unknown as ChildMediaInventoryEntry);
 }
@@ -126,6 +127,7 @@ export function decodeChildMediaManifest(input: unknown): ChildMediaManifest | n
 /** Self-contained supported container signatures, not a codec/renderer or
  * complete structural parser. Exact reviewed byte digests remain mandatory. */
 export function childMediaContainerMatches(bytes: Uint8Array, mime: ChildMediaMime): boolean {
+  if (mime === "image/svg+xml") return preflightChildStaticSvg(bytes) !== null;
   const ascii = (start: number, text: string) => [...text].every((char, index) => bytes[start + index] === char.charCodeAt(0));
   const little32 = (start: number) => new DataView(bytes.buffer, bytes.byteOffset, bytes.byteLength).getUint32(start, true);
   if (mime === "image/png") return bytes.length >= 45 && [137, 80, 78, 71, 13, 10, 26, 10].every((value, index) => bytes[index] === value)
@@ -146,7 +148,7 @@ type Operation = { generation: number; deadline: number; context: ChildRouteChal
  * URL/fetch, adult source, content activation or permanent metadata authority.
  * Retirement erases our buffers/references. A host must also retire visible
  * renderers/blob URLs; byte copies already handed to a caller cannot be erased.
- * SVG/GLTF/video/other codecs, actual reviewed media and App UI remain pending. */
+ * Full SVG, GLTF/video/other codecs, actual reviewed media and App UI remain pending. */
 export function createChildMediaLoader(options: ChildMediaOptions) {
   if (!options || !positive(options.timeoutMs) || options.timeoutMs > 2_147_483_647
     || typeof options.context !== "function" || typeof options.isCurrent !== "function" || typeof options.clock?.nowEpochMs !== "function"

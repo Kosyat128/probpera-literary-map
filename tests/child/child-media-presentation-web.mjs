@@ -9,7 +9,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 const CHECKOUT='C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work';
 const BRANCH='codex/literary-planet-v12-bilingual-final-autopilot';
-const MODULES=['childMediaPresentation','childMediaDecode','childMedia','childDataNamespace','childProfile','childAccessPolicy','childPackage'];
+const MODULES=['childMediaPresentation','childMediaDecode','childMedia','childDataNamespace','childProfile','childAccessPolicy','childPackage','childStaticSvg'];
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const insist=(yes,code)=>{if(yes!==true)throw new Error(code);};
 const inside=(root,file)=>{const rel=path.relative(root,file);return rel!==''&&rel!=='..'&&!rel.startsWith('..'+path.sep)&&!path.isAbsolute(rel);};
@@ -138,7 +138,7 @@ try{
   const compiled=ts.transpileModule(bytes.toString('utf8'),{fileName:name+'.ts',reportDiagnostics:true,
    compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.ES2020,strict:true}});
   insist(!compiled.diagnostics?.some(d=>d.category===ts.DiagnosticCategory.Error),'FOCUSED_TRANSPILE_DIAGNOSTIC');
-  const code=compiled.outputText.replace(/(from\s+["'])(\.\/(?:childMediaDecode|childMedia|childDataNamespace|childProfile|childAccessPolicy|childPackage))(["'])/gu,'$1$2.js$3');
+  const code=compiled.outputText.replace(/(from\s+["'])(\.\/(?:childMediaDecode|childMedia|childDataNamespace|childProfile|childAccessPolicy|childPackage|childStaticSvg))(["'])/gu,'$1$2.js$3');
   const ast=ts.createSourceFile(name+'.js',code,ts.ScriptTarget.ES2020,true,ts.ScriptKind.JS);
   for(const statement of ast.statements)if(ts.isImportDeclaration(statement))insist(MODULES.some(module=>statement.moduleSpecifier.text==='./'+module+'.js'),'NONLOCAL_MODULE_IMPORT');
   const javascript=Buffer.from(code);emitted.set('/modules/'+name+'.js',javascript);result.emittedModules.push({path:'modules/'+name+'.js',sha256:sha(javascript),bytes:javascript.length});

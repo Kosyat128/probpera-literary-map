@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createChildMediaLoader, childMediaContainerMatches, decodeChildMediaManifest,
   type ChildMediaDelivery, type ChildMediaManifest, type ChildMediaOptions, type ChildMediaReadRequest,
@@ -27,7 +28,7 @@ function deferred<T>() { let resolve!: (value: T) => void, reject!: (error: unkn
   const promise = new Promise<T>((done, fail) => { resolve = done; reject = fail; }); return { promise, resolve, reject }; }
 const settle = async () => { for (let index = 0; index < 96; index++) await Promise.resolve(); };
 
-function fixture(locale: "ru" | "en" = "ru", narration = false) {
+function fixture(locale: "ru" | "en" = "ru", narration = false, vector = false) {
   const startup: ChildPackageChallenge = { generation: 1, request: { locale, route: { kind: "home", entityId: null } },
     selection: { schemaVersion: 1, mode: "child", selectionRevision: 1, profileId: "synthetic-child", profileRevision: 1,
       profileChecksum: "a".repeat(64), policyVersion: "synthetic-policy-v1", policyChecksum: "b".repeat(64) },
@@ -61,10 +62,10 @@ function fixture(locale: "ru" | "en" = "ru", narration = false) {
   const scope: ChildDataScope = { schemaVersion: 1, namespace: "child", profileId: startup.profile.id, profileRevision: 1,
     exactAge: 9, locale, policyVersion: startup.selection.policyVersion, policyChecksum: startup.selection.policyChecksum,
     packageId: packageValue.packageId, packageVersion: 1, packageChecksum: hash(packageBytes()) };
-  const mediaBytes = narration ? wave() : png();
+  const mediaBytes = narration ? wave() : vector ? new Uint8Array(readFileSync(new URL("../../public/assets/country-flags/ru.svg", import.meta.url))) : png();
   const asset = { assetId: "synthetic-asset", owner: work.reference, entity: media.reference,
-    inventoryKey: narration ? "synthetic.wav" : "synthetic.png", sha256: hash(mediaBytes), bytes: mediaBytes.length,
-    mime: narration ? "audio/wav" as const : "image/png" as const };
+    inventoryKey: narration ? "synthetic.wav" : vector ? "synthetic.svg" : "synthetic.png", sha256: hash(mediaBytes), bytes: mediaBytes.length,
+    mime: narration ? "audio/wav" as const : vector ? "image/svg+xml" as const : "image/png" as const };
   const manifest: ChildMediaManifest = { schemaVersion: 1, namespace: "child", scope,
     validFromEpochMs: initialTime - 1000, validUntilEpochMs: initialTime + 60_000, assets: [asset] };
   const manifestBytes = () => new TextEncoder().encode(JSON.stringify(manifest));
@@ -90,6 +91,12 @@ function fixture(locale: "ru" | "en" = "ru", narration = false) {
 afterEach(() => vi.useRealTimers());
 
 describe("child media manifest and exact local inventory", () => {
+  it.each(["ru", "en"] as const)("delivers unchanged canonical static SVG bytes through exact synthetic %s policy/review/inventory", async locale => {
+    const f = fixture(locale, false, true); await f.admit(); const visitor = vi.fn(); expect(await f.visit(visitor)).toBe(true);
+    expect(visitor.mock.calls[0][0].asset.mime).toBe("image/svg+xml"); expect(visitor.mock.calls[0][0].bytes).toEqual(f.mediaBytes);
+    expect(f.review.verify).toHaveBeenCalledTimes(2); expect(f.inventory.read).toHaveBeenCalledTimes(1);
+    expect(decodeChildMediaManifest({ ...f.manifest, assets: [{ ...f.asset, bytes: 256 * 1024 + 1 }] })).toBeNull();
+  });
   it("reports the actual intersected media review expiry without extending the first bound", async () => {
     const f = fixture(); await f.admit();
     f.review.verify.mockImplementationOnce(async challenge => ({ status: "verified", challenge, validUntilEpochMs: initialTime + 20 }));
@@ -124,7 +131,7 @@ describe("child media manifest and exact local inventory", () => {
   it("rejects raw URLs, traversal, active/unsupported MIME and duplicate relationships", () => {
     const f = fixture();
     for (const entry of [{ inventoryKey: "https://remote.test/a.png" }, { inventoryKey: "../adult.png" },
-      { inventoryKey: "adult/child.png" }, { mime: "image/svg+xml" }, { mime: "text/html" }, { mime: "model/gltf-binary" },
+      { inventoryKey: "adult/child.png" }, { mime: "image/avif" }, { mime: "text/html" }, { mime: "model/gltf-binary" },
       { bytes: 32 * 1024 * 1024 + 1 }, { sha256: "A".repeat(64) }, { entity: { ...f.asset.entity, kind: "work" } }])
       expect(decodeChildMediaManifest({ ...f.manifest, assets: [{ ...f.asset, ...entry }] })).toBeNull();
     expect(decodeChildMediaManifest({ ...f.manifest, assets: [f.asset, { ...f.asset, assetId: "second" }] })).toBeNull();

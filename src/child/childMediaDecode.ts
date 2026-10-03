@@ -3,10 +3,12 @@ import { CHILD_MEDIA_MAX_ASSET_BYTES, childMediaContainerMatches, type ChildMedi
   type createChildMediaLoader } from "./childMedia";
 import { childRecord, copyChildPackageChallenge, decodeChildEntityReference } from "./childPackage";
 import type { ChildRouteChallenge } from "./childStartup";
+import { CHILD_SVG_MAX_BYTES, CHILD_SVG_MAX_DIMENSION, CHILD_SVG_MAX_PIXELS,
+  createChildStaticSvgRasterBytes, preflightChildStaticSvg } from "./childStaticSvg";
 
 // Technical capacity limits, not editorial approval or required narration length.
-export const CHILD_DECODE_MAX_DIMENSION = 2048;
-export const CHILD_DECODE_MAX_PIXELS = 4 * 1024 * 1024;
+export const CHILD_DECODE_MAX_DIMENSION = CHILD_SVG_MAX_DIMENSION;
+export const CHILD_DECODE_MAX_PIXELS = CHILD_SVG_MAX_PIXELS;
 export const CHILD_DECODE_MAX_AUDIO_SECONDS = 60;
 export const CHILD_DECODE_MAX_AUDIO_BYTES = 24 * 1024 * 1024;
 export type ChildImageHeader = Readonly<{ kind: "image"; width: number; height: number }>;
@@ -16,13 +18,13 @@ const epoch = (x: unknown): x is number => typeof x === "number" && Number.isSaf
 const dimension = (x: number) => Number.isSafeInteger(x) && x > 0 && x <= CHILD_DECODE_MAX_DIMENSION;
 const image = (width: number, height: number): ChildImageHeader | null => dimension(width) && dimension(height)
   && width * height <= CHILD_DECODE_MAX_PIXELS ? Object.freeze({ kind: "image", width, height }) : null;
-function copyBytes(input: unknown): Uint8Array | null {
+function copyBytes(input: unknown, maximum = CHILD_MEDIA_MAX_ASSET_BYTES): Uint8Array | null {
   if (!(input instanceof Uint8Array) || Object.getPrototypeOf(input) !== Uint8Array.prototype) return null;
   const p = Object.getPrototypeOf(Uint8Array.prototype);
   const length: number = Object.getOwnPropertyDescriptor(p, "byteLength")!.get!.call(input);
   const offset: number = Object.getOwnPropertyDescriptor(p, "byteOffset")!.get!.call(input);
   const buffer: ArrayBuffer = Object.getOwnPropertyDescriptor(p, "buffer")!.get!.call(input);
-  if (length < 1 || length > CHILD_MEDIA_MAX_ASSET_BYTES || !(buffer instanceof ArrayBuffer)) return null;
+  if (length < 1 || length > maximum || !(buffer instanceof ArrayBuffer)) return null;
   const result = new Uint8Array(length); result.set(new Uint8Array(buffer, offset, length)); return result;
 }
 
@@ -30,8 +32,11 @@ function copyBytes(input: unknown): Uint8Array | null {
  * reviewed bytes. Animation is deliberately unavailable in this static port:
  * createImageBitmap returns an animation's default/first frame, not its timeline. */
 export function preflightChildMedia(input: unknown, mime: ChildMediaMime): ChildMediaHeader | null {
+  let ownedBytes: Uint8Array | null = null;
   try {
-    const b = copyBytes(input); if (!b || !childMediaContainerMatches(b, mime)) return null;
+    const b = copyBytes(input, mime === "image/svg+xml" ? CHILD_SVG_MAX_BYTES : CHILD_MEDIA_MAX_ASSET_BYTES); ownedBytes = b; if (!b) return null;
+    if (mime === "image/svg+xml") return preflightChildStaticSvg(b);
+    if (!childMediaContainerMatches(b, mime)) return null;
     const v = new DataView(b.buffer), ascii = (at: number, s: string) => [...s].every((c, i) => b[at + i] === c.charCodeAt(0));
     if (mime === "image/png") {
       let at = 8, dimensions: ChildImageHeader | null = null, data = false, end = false, chunks = 0;
@@ -142,7 +147,7 @@ export function preflightChildMedia(input: unknown, mime: ChildMediaMime): Child
       return Object.freeze({ kind: "audio", channels: format.channels, sampleRate: format.sampleRate, bits: format.bits, frames, duration });
     }
     return null;
-  } catch { return null; }
+  } catch { return null; } finally { ownedBytes?.fill(0); }
 }
 
 export type ChildDecodedResource = Readonly<{ kind: "image"; bitmap: ImageBitmap; close(): void }>
@@ -193,11 +198,11 @@ function contextCopy(input: unknown, at: number): ChildRouteChallenge | null {
 function deliveryCopy(input: ChildMediaDelivery, context: ChildRouteChallenge): ChildMediaDelivery | null {
   const row = childRecord(input, ["scope", "asset", "bytes", "validUntilEpochMs"]), s = row && decodeChildDataScope(row.scope);
   const a = row && childRecord(row.asset, ["assetId", "owner", "entity", "inventoryKey", "sha256", "bytes", "mime"]);
-  const owner = a && decodeChildEntityReference(a.owner), entity = a && decodeChildEntityReference(a.entity), bytes = row && copyBytes(row.bytes);
+  const owner = a && decodeChildEntityReference(a.owner), entity = a && decodeChildEntityReference(a.entity), bytes = row && copyBytes(row.bytes, a?.mime === "image/svg+xml" ? CHILD_SVG_MAX_BYTES : CHILD_MEDIA_MAX_ASSET_BYTES);
   if (!row || !s || !sameChildDataScope(s, context.scope) || !a || !owner || !entity || !bytes || !epoch(row.validUntilEpochMs)
     || typeof a.assetId !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$/u.test(a.assetId)
     || typeof a.inventoryKey !== "string" || typeof a.sha256 !== "string" || !/^[a-f0-9]{64}$/u.test(a.sha256)
-    || a.bytes !== bytes.length || !["image/png", "image/jpeg", "image/webp", "audio/wav"].includes(a.mime as string)) return null;
+    || a.bytes !== bytes.length || !["image/png", "image/jpeg", "image/webp", "image/svg+xml", "audio/wav"].includes(a.mime as string)) { bytes?.fill(0); return null; }
   return Object.freeze({ scope: s, asset: Object.freeze({ ...a, owner, entity }) as unknown as ChildMediaDelivery["asset"], bytes,
     validUntilEpochMs: Math.min(row.validUntilEpochMs, context.validUntilEpochMs) });
 }
@@ -208,7 +213,7 @@ type Operation = { generation: number; context: ChildRouteChallenge; input: Read
 
 /** Static Web media foundation, intentionally unintegrated. At most one codec
  * job can remain unresolved; an unabortable browser job denies further decode
- * until settled. No URL, fetch, playback node, ambient time or adult fallback. */
+ * until settled. No supplied URL, fetch, playback node, ambient time or adult fallback. */
 export function createChildMediaDecoder(options: ChildMediaDecoderOptions) {
   const timeout = options.timeoutMs, validOptions = Number.isSafeInteger(timeout) && timeout > 0 && timeout <= 60_000;
   const load = options.loader.visitMedia.bind(options.loader), decode = options.codec.decode.bind(options.codec);
@@ -314,7 +319,10 @@ export function createChildMediaDecoder(options: ChildMediaDecoderOptions) {
   });
 }
 
-/** Actual browser codec; local Blob only. Audio creates no source/playback node,
+/** Actual browser codec; owned local Blob only. Static SVG additionally uses a
+ * codec-created Blob URL/owned Image, never a supplied URI or DOM insertion.
+ * The URL is revoked and image cleared after actual rasterization settles.
+ * Audio creates no source/playback node,
  * connects nothing, and closes its owned context at completion or cancellation.
  * Browser jobs themselves are not abortable; late bitmaps/buffers are destroyed. */
 export function createWebChildMediaCodec(): ChildMediaCodecPort {
@@ -323,7 +331,20 @@ export function createWebChildMediaCodec(): ChildMediaCodecPort {
     if (signal.aborted) throw new Error("child-codec-unavailable");
     if (header.kind === "image") {
       if (typeof globalThis.createImageBitmap !== "function") throw new Error("child-codec-unavailable");
-      const bitmap = await globalThis.createImageBitmap(new Blob([bytes.slice().buffer as ArrayBuffer], { type: mime }));
+      let bitmap: ImageBitmap;
+      if (mime === "image/svg+xml") {
+        if (typeof globalThis.Image !== "function" || typeof globalThis.URL?.createObjectURL !== "function") throw new Error("child-codec-unavailable");
+        const raster = createChildStaticSvgRasterBytes(bytes); if (!raster) throw new Error("child-codec-unavailable");
+        let url: string | null = null; const image = new globalThis.Image();
+        try {
+          const blob = new Blob([raster.buffer as ArrayBuffer], { type: mime }); raster.fill(0); url = globalThis.URL.createObjectURL(blob);
+          await new Promise<void>((resolve, reject) => { image.onload = () => resolve(); image.onerror = () => reject(new Error("child-codec-unavailable")); image.src = url!; });
+          if (signal.aborted) throw new Error("child-codec-unavailable"); bitmap = await globalThis.createImageBitmap(image);
+        } finally {
+          raster.fill(0); image.onload = null; image.onerror = null; image.src = "";
+          if (url !== null) globalThis.URL.revokeObjectURL(url);
+        }
+      } else bitmap = await globalThis.createImageBitmap(new Blob([bytes.slice().buffer as ArrayBuffer], { type: mime }));
       let closed = false;
       const close = () => { if (!closed) { closed = true; signal.removeEventListener("abort", close); bitmap.close(); } };
       signal.addEventListener("abort", close, { once: true });
@@ -354,7 +375,7 @@ export function createWebChildMediaCodec(): ChildMediaCodecPort {
   };
   return Object.freeze({ async decode(input: Uint8Array, mime: ChildMediaMime, header: ChildMediaHeader, signal: AbortSignal) {
     if (occupied || !(signal instanceof AbortSignal) || signal.aborted) throw new Error("child-codec-unavailable");
-    const bytes = copyBytes(input), parsed = bytes && preflightChildMedia(bytes, mime);
+    const bytes = copyBytes(input, mime === "image/svg+xml" ? CHILD_SVG_MAX_BYTES : CHILD_MEDIA_MAX_ASSET_BYTES), parsed = bytes && preflightChildMedia(bytes, mime);
     const fields = parsed?.kind === "image" ? ["kind", "width", "height"] : ["kind", "channels", "sampleRate", "bits", "frames", "duration"];
     const declared = childRecord(header, fields);
     if (!bytes || !parsed || !declared || Object.entries(parsed).some(([key, value]) => declared[key] !== value) || signal.aborted) {
