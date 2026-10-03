@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-input-checkpoint-content",
+  "finalized": true,
+  "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+  "previousAppSource": "c992fefb0b110cf5d010da87aad2d124eace16ce",
+  "previousReport": "8b128be307c43df3194bf1f2f48562776d111bcc",
+  "sourceFiles": 1781,
+  "binding": {
+    "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+    "sourceFingerprint": "cc4746cff5e39d7fff0cdf304d8c5d6a4e7270ce4a7df31ba49354c6604b8e8e",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "checkpoint": {
+    "path": "code-checkpoint-native-pin-input.json",
+    "sha256": "e73ef96cde914cd8108ddb0fc7295b0aa8eef54235d2129d21e1ec49c76756a8"
+  },
+  "facts": {
+    "ownedSourcePaths": 5,
+    "nativeInputUI": "IMPLEMENTED_PRIVATE_INACTIVE",
+    "factories": {
+      "android": "null",
+      "ios": "nil"
+    },
+    "androidNativeInputFixtures": {
+      "authoredMethods": 15,
+      "compilation": "PASS_CURRENT_ANDROID_PREPARATION",
+      "execution": "NOT_RUN"
+    },
+    "swiftUIKitTests": {
+      "authoredMethods": 10,
+      "registered": false,
+      "compilation": "NOT_COMPILED",
+      "execution": "NOT_RUN"
+    },
+    "genuineAuthorityTimeRecoveryHostSettlement": "NOT_IMPLEMENTED",
+    "AppAdmissionActivated": false,
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "actualSelectedProofs": {
+    "androidExecution": {
+      "path": "native-pin-preparation-android-cb6bc8e1-6e08-47d0-aacd-31d20740f7a9/execution.json",
+      "sha256": "07a0755e16c2aa24ff6ecb0881a69b53ff908bf03962149531a082677941e2bd"
+    },
+    "androidPreparation": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3d040ad9-2e54-43f6-811d-9d2df0213e8e\\preparation.json",
+      "sha256": "1bb58e664a03cc7df4d419677fd470957f712f2ec218b92b8be39dbb4655b0f2"
+    },
+    "affectedJvm": {
+      "path": "native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1/result.json",
+      "sha256": "d7af000fa795d654cb37e106d1510e37963f0e3e5bb274b5b8268c4872db02c5",
+      "status": "PASS_AFFECTED_JVM_PIN_SCOPES",
+      "primitiveCases": 24,
+      "primitiveAssertions": 436,
+      "sessionCases": 39,
+      "sessionAssertions": 2598,
+      "checksPassed": 5,
+      "failure": null,
+      "applicationCompilation": "REUSED_ACTUAL_SOURCE_BOUND_ANDROID_GRADLE_CLASSES",
+      "publicOracleRecomputed": false,
+      "nativeUIAndInstalledAndroid": "NOT_RUN"
+    },
+    "pwaPreparation": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-12a39bce-6104-4c69-8b00-b3b2721d65d4\\preparation.json",
+      "sha256": "2d2adf46fb5779ca1882c7cc15eb39c16c3b35eee4b837e3e6dd1d500d1bcc92"
+    },
+    "iosWebPreparation": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-0dda8f01-4209-458e-a88a-2f6b0a01e0dc\\preparation.json",
+      "sha256": "ff3674adafd00757e9b71f49ac258e3b13d9d7cea4ac71c09011e8d76d67ce58"
+    },
+    "pwaExecution": {
+      "path": "native-pin-preparation-pwa-aa66e7b7-abd7-4b7d-92ef-2361fdfeaa90/execution.json",
+      "sha256": "eb7e494d06212122083b6862423b86f166d537afcb9c4d581aaed4413ed7a85b"
+    },
+    "iosWebExecution": {
+      "path": "native-pin-preparation-ios-bundle-b42d5bbe-3982-4d15-898f-f098d9ce7e18/execution.json",
+      "sha256": "e6f3bff71ec2c690d685b13f7904245628ce57bf05e06b7ccbb75b20b25ad95a"
+    }
+  },
+  "pendingFinalization": [],
+  "preserved": {
+    "S03": {
+      "status": "IN_PROGRESS",
+      "open": 11
+    },
+    "S16": {
+      "status": "IN_PROGRESS",
+      "open": 36
+    },
+    "fourOriginalConditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL"
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING"
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN"
+      }
+    ],
+    "exactFourConditionObject": "Retain predecessor fourOriginalConditions bytes/object; the list above is only a draft synopsis and grants no approval.",
+    "ownerRegistry": {
+      "path": "docs/mobile/RELEASE_DECISIONS.json",
+      "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+    },
+    "ownerIds": [
+      "DEVICE-ANDROID",
+      "DEVICE-IOS",
+      "PSP-DECISION",
+      "EDITORIAL-LEGAL",
+      "AUTH-ENVIRONMENT",
+      "REMOTE-GRANT",
+      "STORE-SIGNING"
+    ],
+    "legalReviews": {
+      "count": 5,
+      "status": "PENDING",
+      "approved": false,
+      "versions": "EXACT_REGISTRY_VERSIONS_UNCHANGED"
+    },
+    "internalProgramming": {
+      "count": 6,
+      "status": "OPEN",
+      "owner": "Codex"
+    },
+    "historicalFailures": "UNCHANGED; no passed outcome substituted for initial FAIL/timeout/NOT_RUN",
+    "RUENBooky3DCanonicalGlobe": "PRESERVED",
+    "remoteOperations": 0
+  },
+  "historicalDeliveryReferenceOnly": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "archive": "literary-planet-native-pin-session-delivery-20261003-d7f0e2bc-a332-4596-a52c-126bb60adfff.zip",
+    "sha256": "9b14bd1ad6167da436ce5f1151c5e787cb40d183e317c1f435069a011952e01b",
+    "bytes": 239667043,
+    "containsCurrentSource": false,
+    "rehashOrCopyPerformed": false
+  },
+  "authorChecksExecuted": false,
+  "checkoutWrites": false,
+  "gitOperationsExecuted": false,
+  "newGenericFramework": false,
+  "old330ProofsCopied": false,
+  "currentArtifacts": {
+    "androidMain": {
+      "path": ".tmp/mobile-release-android-3d040ad9-2e54-43f6-811d-9d2df0213e8e/app-dev-debug.apk",
+      "bytes": 69745965,
+      "sha256": "a432380c71a6293141c44d801aaa5a27787198ac665b3bcc7fceb259bbb9d69e"
+    },
+    "androidTest": {
+      "path": ".tmp/mobile-release-android-3d040ad9-2e54-43f6-811d-9d2df0213e8e/app-dev-debug-androidTest.apk",
+      "bytes": 609083,
+      "sha256": "5184b1fe846669169f51935d815aaf63c87c8641c49ba6eedef9300e02918348"
+    },
+    "pwa": {
+      "status": "PASS",
+      "directory": ".tmp/mobile-release-pwa-12a39bce-6104-4c69-8b00-b3b2721d65d4/pwa-bundle",
+      "artifactManifest": ".tmp/mobile-release-pwa-12a39bce-6104-4c69-8b00-b3b2721d65d4/pwa-bundle/artifact.json",
+      "sha256": "114c949a26fbc99a259f5e3116f36628413a6479cdb99ea9da9dd14911ca953b",
+      "files": 1426
+    },
+    "iosWeb": {
+      "status": "PASS_WEB_PAYLOAD_ONLY",
+      "directory": ".tmp/mobile-release-ios-bundle-0dda8f01-4209-458e-a88a-2f6b0a01e0dc/native-bundle",
+      "artifactManifest": ".tmp/mobile-release-ios-bundle-0dda8f01-4209-458e-a88a-2f6b0a01e0dc/native-bundle/artifact.json",
+      "sha256": "b770727515c3cfcb0dd235abbccd2cd02c98ccab78f604ba7a20c7ba08b3a1ce",
+      "files": 1406
+    }
+  },
+  "currentExecutionLimits": {
+    "preparations": "PASS_ONCE_EACH_CURRENT_SOURCE",
+    "jvmCommands": 3,
+    "jvmCommandExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "jvmStderrBytes": [
+      0,
+      0,
+      0
+    ],
+    "copiedGradleVaultClasses": 50,
+    "newNativeAndroidInputCases": "NOT_RUN",
+    "swiftCompilation": "NOT_COMPILED",
+    "swiftUIKitCases": "NOT_RUN",
+    "installedOS": "NOT_RUN",
+    "currentBrowser": "NOT_RUN",
+    "currentReadinessChecker": "NOT_RUN",
+    "newIndependentNodeDerivations": 0,
+    "old330ProofsCopied": false
+  },
+  "nextAction": "Continue the private native charged attempt-journal planners already being implemented B-only on BOTH Android and Swift, then exact parity and bounded source/case checks. Reserve one charged native attempt before verification; bind the exact full record/revision/PIN state/current coordinates and burn the original one-use finalization before candidate byte/time comparison. Never refund or grant authority from unknown cancellation/write/ACK results. Finish genuine replay-resistant authority/trusted time and independent recovery, actual authenticated host/coordinator settlement, admitted durable data ports and clear-before-render App/account/profile/lifecycle wiring before factory or child activation. Six Codex-owned tasks remain OPEN; preserve S03/S16 acceptance11/36 OPEN and seven external owner inputs. Current source2ddf has actual Android/PWA/iOS-web preparations and affected24+39 JVM proofs, while native UI/Swift compiler/installed OS/new browser/new readiness remain NOT_RUN. Do not repeat passed scopes or create a D stage for reporting.",
+  "proposedHandoffPrefix": "Source2ddf integrates private native PIN input/lifecycle cleanup with15 Android and10 Swift authored native UI cases, both runtime scopes NOT_RUN. Current Android/PWA/iOS-web preparations passed once each; affected24/436 and39/2598 host-JVM regressions passed on current Gradle classes with the retained public oracle. Factories remain null/nil and genuine authority/admission is unavailable. Continue the private charged attempt-journal planners already in progress on BOTH platforms; authority/time/recovery remain Codex programming work. No new installed/native UI/browser/readiness outcome is inferred."
+}

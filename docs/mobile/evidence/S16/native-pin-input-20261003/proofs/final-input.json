@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-input-checkpoint-input",
+  "finalized": true,
+  "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-input.json",
+    "sha256": "e73ef96cde914cd8108ddb0fc7295b0aa8eef54235d2129d21e1ec49c76756a8"
+  },
+  "content": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-checkpoint-content.final.json",
+    "sha256": "5a10d8c9100e655fbef149d7cf29f564bf8220b60e444ca5ba0c26e36c0ab2a5"
+  },
+  "runbook": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\NATIVE_PIN_INPUT_RUNBOOK.a2.final.md",
+    "sha256": "9d477f0e7aa5511f4e8b323388c510be8a30c83e15ac5eb9ed59f31c704978a7"
+  },
+  "assembly": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97.assembly.json",
+    "sha256": "61f23f1ab6216c80a422aedc8b9a63f63c242454b02cf1f5f48f32715f476cef"
+  },
+  "packetResults": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97\\RESULTS.json",
+    "sha256": "fc5e4fe57f0e8c1124409ff0331d0787e6238c5390d21bc7cd1311e55c1b4e37"
+  },
+  "packetManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97\\PACKET_MANIFEST.json",
+    "sha256": "f02fa0c1e243972b190157b52335d4d45e1939ec5351bd2226ceff25baf7efa8"
+  },
+  "jvm": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\result.json",
+    "sha256": "d7af000fa795d654cb37e106d1510e37963f0e3e5bb274b5b8268c4872db02c5"
+  },
+  "preparations": [
+    {
+      "mode": "android",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3d040ad9-2e54-43f6-811d-9d2df0213e8e\\preparation.json",
+        "sha256": "1bb58e664a03cc7df4d419677fd470957f712f2ec218b92b8be39dbb4655b0f2"
+      },
+      "execution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-android-cb6bc8e1-6e08-47d0-aacd-31d20740f7a9\\execution.json",
+        "sha256": "07a0755e16c2aa24ff6ecb0881a69b53ff908bf03962149531a082677941e2bd"
+      }
+    },
+    {
+      "mode": "pwa",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-12a39bce-6104-4c69-8b00-b3b2721d65d4\\preparation.json",
+        "sha256": "2d2adf46fb5779ca1882c7cc15eb39c16c3b35eee4b837e3e6dd1d500d1bcc92"
+      },
+      "execution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-pwa-aa66e7b7-abd7-4b7d-92ef-2361fdfeaa90\\execution.json",
+        "sha256": "eb7e494d06212122083b6862423b86f166d537afcb9c4d581aaed4413ed7a85b"
+      }
+    },
+    {
+      "mode": "ios-bundle",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-0dda8f01-4209-458e-a88a-2f6b0a01e0dc\\preparation.json",
+        "sha256": "ff3674adafd00757e9b71f49ac258e3b13d9d7cea4ac71c09011e8d76d67ce58"
+      },
+      "execution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-ios-bundle-b42d5bbe-3982-4d15-898f-f098d9ce7e18\\execution.json",
+        "sha256": "e6f3bff71ec2c690d685b13f7904245628ce57bf05e06b7ccbb75b20b25ad95a"
+      }
+    }
+  ],
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "c0feb70c42c907343082464e6c0c37d03fe1c9a9961d056f3a4a893d19bcb6e0"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "beforeSha256": "51ba205166d0c5ed36114a4b89aeeaeedbaecde5c79f1decc9c77cb890762e80"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "beforeSha256": "557a6e587b5f107096253ee748ed077599041f9f3e07b5209370a726e3a94bcb"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "beforeSha256": "cf4898119cc91434ba6010194baf6f9c3df00d55f3d1ab5f6adbe9120c0a0567"
+    }
+  ],
+  "scope": {
+    "checkoutWrites": false,
+    "gitOperations": false,
+    "applicationChecksExecuted": false,
+    "archiveRehashed": false,
+    "rawStreamsCopiedAgain": false,
+    "priorProofsCopied": false
+  }
+}

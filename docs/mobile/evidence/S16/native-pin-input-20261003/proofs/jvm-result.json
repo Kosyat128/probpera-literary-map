@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-input-affected-jvm",
+  "status": "PASS_AFFECTED_JVM_PIN_SCOPES",
+  "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+  "binding": {
+    "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+    "sourceFingerprint": "cc4746cff5e39d7fff0cdf304d8c5d6a4e7270ce4a7df31ba49354c6604b8e8e",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-input.json",
+    "sha256": "e73ef96cde914cd8108ddb0fc7295b0aa8eef54235d2129d21e1ec49c76756a8"
+  },
+  "androidPreparation": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-android-cb6bc8e1-6e08-47d0-aacd-31d20740f7a9\\execution.json",
+    "sha256": "07a0755e16c2aa24ff6ecb0881a69b53ff908bf03962149531a082677941e2bd"
+  },
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-input.final.json",
+    "sha256": "2a50e5c814b8d64dc6e0e918adcc65d43849871b22e4be0752e6b4597ea4c485"
+  },
+  "applicationCompilation": "REUSED_ACTUAL_SOURCE_BOUND_ANDROID_GRADLE_CLASSES",
+  "primitive24": {
+    "status": "PASS",
+    "cases": 24,
+    "assertions": 436,
+    "caseNames": [
+      "platform-malformed-native-pin-rejected",
+      "independent-node-600000-oracle",
+      "platform-input-and-signed-iteration-bounds",
+      "platform-cancel-after-return-wipes-output",
+      "production-primitives-factory-unsupported",
+      "original-context-worker-before-first-callback",
+      "three-exact-measured-calibration-samples",
+      "production-policy-digit-budget-guards",
+      "native-ascii-entry-owned-wipe-and-confirmation",
+      "material-one-use-and-original-transfer",
+      "foreign-and-reconstructed-originals-denied",
+      "mutating-pin-and-salt-callbacks-denied",
+      "whole-record-change-during-kdf-denied",
+      "checkpoint-host-change-during-kdf-denied",
+      "exclusive-deadline-and-clock-regression-denied",
+      "measured-budget-and-zero-progress-denied",
+      "cancel-blocked-kdf-retains-worker-and-buffers",
+      "retire-blocked-clock-joins-actual-worker",
+      "commit-denied-while-primitive-worker-live",
+      "material-close-keeps-real-transfer-pending",
+      "material-original-identity-and-settlement-fence",
+      "production-platform-fixed-and-policy-floor",
+      "callback-fault-and-material-mutation-wipes",
+      "local-callback-fence-and-final-full-record-check"
+    ],
+    "stdout": {
+      "path": "02-java-primitives.stdout.bin",
+      "sha256": "bf38386c94a645e61c672f29e24902399d6b89b2ba106422df22915e83eb013a",
+      "bytes": 1864
+    }
+  },
+  "session39": {
+    "status": "PASS",
+    "cases": 39,
+    "assertions": 2598,
+    "caseNames": [
+      "production-factories-remain-unsupported",
+      "enroll-captured-reset-later-time",
+      "replace-captured-reset-later-time",
+      "recover-captured-reset-later-time",
+      "caller-epoch-denied",
+      "caller-host-denied",
+      "caller-boot-denied",
+      "caller-deadline-denied",
+      "whole-record-race-denied",
+      "actual-epoch-denied",
+      "actual-host-denied",
+      "actual-boot-denied",
+      "actual-deadline-denied",
+      "actual-regression-denied",
+      "known-refusal-retires-through-close",
+      "ordinary-reset-not-recovery",
+      "recovery-dependency-missing",
+      "null-reset-witness-seals",
+      "mutating-capture-denied",
+      "mutating-current-denied",
+      "mutating-authorizeMutation-denied",
+      "mutating-recovery-denied",
+      "mutating-write-denied",
+      "close-does-not-settle-transfer",
+      "unknown-close-sticky-capacity",
+      "unknown-data-transfer-sticky-capacity",
+      "lost-transfer-wipes-keeps-pending-identity",
+      "sealed-secret-wipe-waits-actual-worker",
+      "late-cancel-fenced-until-close",
+      "cancel-before-begin-terminal",
+      "cancel-during-capture-owned-settlement",
+      "cancel-after-advance-seals-no-repair",
+      "generic-dependency-fault-seals",
+      "readback-mismatch-seals",
+      "retirement-fault-retains-lane",
+      "original-inspection-and-session-only",
+      "constructor-lookalike-reply-not-pending",
+      "commit-original-session-one-use",
+      "no-eviction-capacity-and-replay"
+    ],
+    "stdout": {
+      "path": "03-java-session.stdout.bin",
+      "sha256": "15c57ea3dfffad02335c4b441209bf5907cdf3e8114a06106114fa331daf01c9",
+      "bytes": 2246
+    }
+  },
+  "checks": {
+    "preflight": "PASS",
+    "driverCompilation": "PASS",
+    "primitive24": "PASS",
+    "session39": "PASS",
+    "postflight": "PASS"
+  },
+  "failure": null,
+  "commands": [
+    {
+      "name": "javac-drivers",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\home",
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\temp",
+        "-J-Dfile.encoding=UTF-8",
+        "-encoding",
+        "UTF-8",
+        "--release",
+        "17",
+        "-proc:none",
+        "-sourcepath",
+        "",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "-d",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\classes",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildNativePinPrimitivesJvmDriver.java",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-android-a2\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildNativePinSessionsJvmDriver.java"
+      ],
+      "startedAt": "2026-10-03T16:24:26.222Z",
+      "finishedAt": "2026-10-03T16:24:27.778Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "01-javac-drivers.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "01-javac-drivers.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "java-primitives",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\home",
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\temp",
+        "-Dfile.encoding=UTF-8",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildNativePinPrimitivesJvmDriver",
+        "1a2310f85fc3b813a2bf714e9a614ec405ae1737795840c31da5915abbb5a44e"
+      ],
+      "startedAt": "2026-10-03T16:24:27.778Z",
+      "finishedAt": "2026-10-03T16:24:28.694Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "02-java-primitives.stdout.bin",
+        "sha256": "bf38386c94a645e61c672f29e24902399d6b89b2ba106422df22915e83eb013a",
+        "bytes": 1864
+      },
+      "stderr": {
+        "path": "02-java-primitives.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "java-session",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\home",
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\temp",
+        "-Dfile.encoding=UTF-8",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildNativePinSessionsJvmDriver"
+      ],
+      "startedAt": "2026-10-03T16:24:28.695Z",
+      "finishedAt": "2026-10-03T16:24:29.064Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "03-java-session.stdout.bin",
+        "sha256": "15c57ea3dfffad02335c4b441209bf5907cdf3e8114a06106114fa331daf01c9",
+        "bytes": 2246
+      },
+      "stderr": {
+        "path": "03-java-session.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "oracle": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\attempt-f2550e67-7aa8-4ff6-a254-f58c4bc3f9c1\\public-pbkdf2-oracle.json",
+    "sha256": "8d38b4954dd9edc235d2677d5fd8898c7a9cc23693678d61a53580ae365766d1",
+    "computedInThisRun": false,
+    "derivationsActuallyExecutedInThisRun": 0
+  },
+  "installedAndroid": "NOT_RUN",
+  "newNativeInputInstrumentation": "NOT_RUN",
+  "swiftCompilation": "NOT_COMPILED",
+  "newBrowser": "NOT_RUN",
+  "genuineProvider": "NOT_IMPLEMENTED",
+  "releaseReady": false,
+  "remoteOperations": 0
+}

@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-input-evidence-inventory",
+  "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/source-checkpoint.json",
+      "sha256": "e73ef96cde914cd8108ddb0fc7295b0aa8eef54235d2129d21e1ec49c76756a8",
+      "bytes": 277403
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/checkpoint-content.json",
+      "sha256": "5a10d8c9100e655fbef149d7cf29f564bf8220b60e444ca5ba0c26e36c0ab2a5",
+      "bytes": 9451
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/runbook.md",
+      "sha256": "9d477f0e7aa5511f4e8b323388c510be8a30c83e15ac5eb9ed59f31c704978a7",
+      "bytes": 11946
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/packet-assembly.json",
+      "sha256": "61f23f1ab6216c80a422aedc8b9a63f63c242454b02cf1f5f48f32715f476cef",
+      "bytes": 1346
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/packet-results.json",
+      "sha256": "fc5e4fe57f0e8c1124409ff0331d0787e6238c5390d21bc7cd1311e55c1b4e37",
+      "bytes": 18043
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/packet-manifest.json",
+      "sha256": "f02fa0c1e243972b190157b52335d4d45e1939ec5351bd2226ceff25baf7efa8",
+      "bytes": 1162485
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/jvm-result.json",
+      "sha256": "d7af000fa795d654cb37e106d1510e37963f0e3e5bb274b5b8268c4872db02c5",
+      "bytes": 11194
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/android-preparation.json",
+      "sha256": "1bb58e664a03cc7df4d419677fd470957f712f2ec218b92b8be39dbb4655b0f2",
+      "bytes": 303368
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/android-execution.json",
+      "sha256": "07a0755e16c2aa24ff6ecb0881a69b53ff908bf03962149531a082677941e2bd",
+      "bytes": 3298
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/pwa-preparation.json",
+      "sha256": "2d2adf46fb5779ca1882c7cc15eb39c16c3b35eee4b837e3e6dd1d500d1bcc92",
+      "bytes": 289289
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/pwa-execution.json",
+      "sha256": "eb7e494d06212122083b6862423b86f166d537afcb9c4d581aaed4413ed7a85b",
+      "bytes": 2733
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/ios-bundle-preparation.json",
+      "sha256": "ff3674adafd00757e9b71f49ac258e3b13d9d7cea4ac71c09011e8d76d67ce58",
+      "bytes": 289479
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/ios-bundle-execution.json",
+      "sha256": "e6f3bff71ec2c690d685b13f7904245628ce57bf05e06b7ccbb75b20b25ad95a",
+      "bytes": 2764
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/final-input.json",
+      "sha256": "f3237a07e9ca54926a1523c08ce780a7d91ef78d5fdf3b73751231582004f978",
+      "bytes": 5187
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/result.json",
+      "sha256": "438eea7e7115aa9c112ccf1de77af09948306eeb85d4e1d251857550286ffbdf",
+      "bytes": 26547
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/entry.json",
+      "sha256": "3b41922cb3a17252a33d1a005c97aabcc55bc8b76a93addf5b3f8a1675fe86db",
+      "bytes": 556
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "source-checkpoint",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/source-checkpoint.json",
+      "sha256": "e73ef96cde914cd8108ddb0fc7295b0aa8eef54235d2129d21e1ec49c76756a8",
+      "bytes": 277403,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-input.json"
+    },
+    {
+      "id": "checkpoint-content",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/checkpoint-content.json",
+      "sha256": "5a10d8c9100e655fbef149d7cf29f564bf8220b60e444ca5ba0c26e36c0ab2a5",
+      "bytes": 9451,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-checkpoint-content.final.json"
+    },
+    {
+      "id": "runbook",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/runbook.md",
+      "sha256": "9d477f0e7aa5511f4e8b323388c510be8a30c83e15ac5eb9ed59f31c704978a7",
+      "bytes": 11946,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\NATIVE_PIN_INPUT_RUNBOOK.a2.final.md"
+    },
+    {
+      "id": "packet-assembly",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/packet-assembly.json",
+      "sha256": "61f23f1ab6216c80a422aedc8b9a63f63c242454b02cf1f5f48f32715f476cef",
+      "bytes": 1346,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97.assembly.json"
+    },
+    {
+      "id": "packet-results",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/packet-results.json",
+      "sha256": "fc5e4fe57f0e8c1124409ff0331d0787e6238c5390d21bc7cd1311e55c1b4e37",
+      "bytes": 18043,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97\\RESULTS.json"
+    },
+    {
+      "id": "packet-manifest",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/packet-manifest.json",
+      "sha256": "f02fa0c1e243972b190157b52335d4d45e1939ec5351bd2226ceff25baf7efa8",
+      "bytes": 1162485,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97\\PACKET_MANIFEST.json"
+    },
+    {
+      "id": "jvm-result",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/jvm-result.json",
+      "sha256": "d7af000fa795d654cb37e106d1510e37963f0e3e5bb274b5b8268c4872db02c5",
+      "bytes": 11194,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-jvm-991c4dc3-fb4b-4811-9645-40aaf72594b1\\result.json"
+    },
+    {
+      "id": "android-preparation",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/android-preparation.json",
+      "sha256": "1bb58e664a03cc7df4d419677fd470957f712f2ec218b92b8be39dbb4655b0f2",
+      "bytes": 303368,
+      "originalPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-3d040ad9-2e54-43f6-811d-9d2df0213e8e\\preparation.json"
+    },
+    {
+      "id": "android-execution",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/android-execution.json",
+      "sha256": "07a0755e16c2aa24ff6ecb0881a69b53ff908bf03962149531a082677941e2bd",
+      "bytes": 3298,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-android-cb6bc8e1-6e08-47d0-aacd-31d20740f7a9\\execution.json"
+    },
+    {
+      "id": "pwa-preparation",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/pwa-preparation.json",
+      "sha256": "2d2adf46fb5779ca1882c7cc15eb39c16c3b35eee4b837e3e6dd1d500d1bcc92",
+      "bytes": 289289,
+      "originalPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-12a39bce-6104-4c69-8b00-b3b2721d65d4\\preparation.json"
+    },
+    {
+      "id": "pwa-execution",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/pwa-execution.json",
+      "sha256": "eb7e494d06212122083b6862423b86f166d537afcb9c4d581aaed4413ed7a85b",
+      "bytes": 2733,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-pwa-aa66e7b7-abd7-4b7d-92ef-2361fdfeaa90\\execution.json"
+    },
+    {
+      "id": "ios-bundle-preparation",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/ios-bundle-preparation.json",
+      "sha256": "ff3674adafd00757e9b71f49ac258e3b13d9d7cea4ac71c09011e8d76d67ce58",
+      "bytes": 289479,
+      "originalPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-0dda8f01-4209-458e-a88a-2f6b0a01e0dc\\preparation.json"
+    },
+    {
+      "id": "ios-bundle-execution",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/ios-bundle-execution.json",
+      "sha256": "e6f3bff71ec2c690d685b13f7904245628ce57bf05e06b7ccbb75b20b25ad95a",
+      "bytes": 2764,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-ios-bundle-b42d5bbe-3982-4d15-898f-f098d9ce7e18\\execution.json"
+    },
+    {
+      "id": "final-input",
+      "path": "docs/mobile/evidence/S16/native-pin-input-20261003/proofs/final-input.json",
+      "sha256": "f3237a07e9ca54926a1523c08ce780a7d91ef78d5fdf3b73751231582004f978",
+      "bytes": 5187,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-checkpoint-input-a2.final.json"
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}

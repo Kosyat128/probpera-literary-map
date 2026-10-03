@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-input-delivery-assembly",
+  "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+  "directory": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97",
+  "archive": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97.zip",
+    "sha256": "24473cd6c491a01765b01911e369863a82baac17c852aa839e26957bd1391f59",
+    "bytes": 228122506,
+    "compression": "stored",
+    "library": "fflate@0.8.3",
+    "archivedEntries": {
+      "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+      "centralDirectoryVerified": true,
+      "entrySha256Verified": true,
+      "filesVerified": 2921,
+      "rawBytesVerified": 227557174,
+      "zip64": false,
+      "crcVerification": "NOT_RUN"
+    }
+  },
+  "files": 2921,
+  "assemblyIntegrity": "PASS",
+  "productStatus": "PARTIAL",
+  "releaseReady": false,
+  "remoteOperations": 0,
+  "finishedAt": "2026-10-03T16:47:42.669Z"
+}
