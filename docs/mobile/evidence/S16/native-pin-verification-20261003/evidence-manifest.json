@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-evidence-inventory",
+  "sourceCommit": "9fe8fce001d56000eaba6ae8f5036b4111cc64c0",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/verification-source-checkpoint.json",
+      "sha256": "5c5666bce4348aa9541d91dc7e48cc133377b0904449aa5b2695bfe8a566ade6",
+      "bytes": 276958
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/journal-source-checkpoint.json",
+      "sha256": "2e20df1b0e9f7eeb29e4cacff60881e31951d8e53b1725c3f498469e334ca751",
+      "bytes": 277046
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/journal-jvm.json",
+      "sha256": "fd519ebfb024b52d572d2e3a0138f8ea906ae4233310a9ec74014a86cd3014aa",
+      "bytes": 9986
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/verification-jvm.json",
+      "sha256": "8bbe69f8ad63bacd2c4326f9fa787ec1d985fa970adac0b004c0627d5a5b03cc",
+      "bytes": 13297
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/final-input.json",
+      "sha256": "cc36e1e0a02897aef7f2b9c5e7ac5ff725dee27981eb2487c2b90b2718883322",
+      "bytes": 3837
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/result.json",
+      "sha256": "4a8005b165c0517a6a93a83bb0edd204a6c64d64182a0fda269d8d0ccff55fc0",
+      "bytes": 23665
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/entry.json",
+      "sha256": "cb8511b17a76d538d93f86ac5d606aa0b516f010b37aaa82611ca486d94af91f",
+      "bytes": 570
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "verification-source-checkpoint",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/verification-source-checkpoint.json",
+      "sha256": "5c5666bce4348aa9541d91dc7e48cc133377b0904449aa5b2695bfe8a566ade6",
+      "bytes": 276958,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-math.json"
+    },
+    {
+      "id": "journal-source-checkpoint",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/journal-source-checkpoint.json",
+      "sha256": "2e20df1b0e9f7eeb29e4cacff60881e31951d8e53b1725c3f498469e334ca751",
+      "bytes": 277046,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-attempt.json"
+    },
+    {
+      "id": "journal-jvm",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/journal-jvm.json",
+      "sha256": "fd519ebfb024b52d572d2e3a0138f8ea906ae4233310a9ec74014a86cd3014aa",
+      "bytes": 9986,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\result.json"
+    },
+    {
+      "id": "verification-jvm",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/verification-jvm.json",
+      "sha256": "8bbe69f8ad63bacd2c4326f9fa787ec1d985fa970adac0b004c0627d5a5b03cc",
+      "bytes": 13297,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\result.json"
+    },
+    {
+      "id": "final-input",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-20261003/proofs/final-input.json",
+      "sha256": "cc36e1e0a02897aef7f2b9c5e7ac5ff725dee27981eb2487c2b90b2718883322",
+      "bytes": 3837,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-checkpoint-input.final.json"
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}

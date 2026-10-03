@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-attempt-focused-jvm",
+  "sourceCommit": "77ad6a7fd39524ee8030b9439472e88ed80d8bf0",
+  "binding": {
+    "sourceCommit": "77ad6a7fd39524ee8030b9439472e88ed80d8bf0",
+    "sourceFingerprint": "e1e23ab477fab5585b110495b616634d97db64075f8705e5574315e79bfef25f",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "status": "PASS_PURE_JOURNAL_JVM",
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-attempt.json",
+    "sha256": "2e20df1b0e9f7eeb29e4cacff60881e31951d8e53b1725c3f498469e334ca751"
+  },
+  "driver": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-attempt-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinAttemptJournalJvmDriver.java",
+    "sha256": "a402486000f9926544676ac313c02a78df3d05be67d2f1d1f53898ff2091fbb6"
+  },
+  "tools": [
+    {
+      "name": "java",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+    },
+    {
+      "name": "javac",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+    },
+    {
+      "name": "androidJar",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+    },
+    {
+      "name": "wrapper",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    }
+  ],
+  "checks": {
+    "preflight": "PASS",
+    "androidCompilation": "PASS",
+    "driverCompilation": "PASS",
+    "journal22": "PASS",
+    "postflight": "PASS"
+  },
+  "caseCount": {
+    "status": "PASS",
+    "cases": 22,
+    "assertions": 118,
+    "caseNames": [
+      "production-factories-remain-unsupported",
+      "strict-explicit-policy-and-delay-bounds",
+      "canonical-reservation-preserves-all-other-bytes",
+      "matching-finalization-only-resets-attempts",
+      "mismatch-finalization-retains-charge-and-delay",
+      "increasing-delay-and-final-delay-saturation",
+      "blocked-reserve-burns-owner-without-output",
+      "reserve-rejects-observed-time-regression",
+      "reserve-safe-revision-count-and-delay-overflow",
+      "finalization-safe-revision-overflow",
+      "completion-clock-regression-and-failure-overflow",
+      "foreign-original-denied-without-burning-owned-reservation",
+      "entire-reservation-and-challenge-bytes-must-match",
+      "finalization-burns-before-invalid-current-time-or-outcome",
+      "reserve-burns-before-malformed-record-and-challenge",
+      "cancel-close-wipes-without-refunding-persisted-charge",
+      "caller-record-policy-and-copy-aliases-remain-isolated",
+      "owned-reservation-corruption-denied-and-wiped",
+      "final-output-close-and-owner-close-are-memory-only",
+      "strict-enrolled-canonical-input-only",
+      "concurrent-reserve-has-one-original-owner-slot",
+      "concurrent-finalization-is-exactly-once"
+    ],
+    "stdout": {
+      "path": "03-java-journal.stdout.bin",
+      "sha256": "1c9d535e359fc424cecd234a6e8329dd672f90b2cf5b08a7d1e961ffbb6ff9fe",
+      "bytes": 1794
+    }
+  },
+  "failure": null,
+  "commands": [
+    {
+      "name": "gradle-main-compile",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-Dorg.gradle.java.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8 -Duser.home=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user\" -Djava.io.tmpdir=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp\"",
+        "-classpath",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+        "org.gradle.wrapper.GradleWrapperMain",
+        "-p",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+        ":app:compileDevDebugJavaWithJavac",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=2"
+      ],
+      "startedAt": "2026-10-03T17:06:44.187Z",
+      "finishedAt": "2026-10-03T17:07:02.112Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "01-gradle-main-compile.stdout.bin",
+        "sha256": "f25404e01837e76893c03d6a074f7ba73a804726b559489b080fee39ad959d57",
+        "bytes": 8573
+      },
+      "stderr": {
+        "path": "01-gradle-main-compile.stderr.bin",
+        "sha256": "3268a0909960986074891ea58b52101eef63915871427b83f8e654bda2245916",
+        "bytes": 598
+      }
+    },
+    {
+      "name": "javac-new-driver",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\home",
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\temp",
+        "-J-Dfile.encoding=UTF-8",
+        "-encoding",
+        "UTF-8",
+        "--release",
+        "17",
+        "-proc:none",
+        "-sourcepath",
+        "",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "-d",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\classes",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-attempt-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinAttemptJournalJvmDriver.java"
+      ],
+      "startedAt": "2026-10-03T17:07:02.517Z",
+      "finishedAt": "2026-10-03T17:07:03.635Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "02-javac-new-driver.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "02-javac-new-driver.stderr.bin",
+        "sha256": "8e474876ea87f65d91eeb807b4fd86cc727499d4fe47bc3f8d215f0ac99f60e7",
+        "bytes": 56
+      }
+    },
+    {
+      "name": "java-journal",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\home",
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\temp",
+        "-Dfile.encoding=UTF-8",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildPinAttemptJournalJvmDriver"
+      ],
+      "startedAt": "2026-10-03T17:07:03.635Z",
+      "finishedAt": "2026-10-03T17:07:04.028Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "03-java-journal.stdout.bin",
+        "sha256": "1c9d535e359fc424cecd234a6e8329dd672f90b2cf5b08a7d1e961ffbb6ff9fe",
+        "bytes": 1794
+      },
+      "stderr": {
+        "path": "03-java-journal.stderr.bin",
+        "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+        "bytes": 92
+      }
+    }
+  ],
+  "compiledClasses": 54,
+  "androidTask": ":app:compileDevDebugJavaWithJavac",
+  "previous24And39Repeated": false,
+  "newWebBuild": false,
+  "newApk": false,
+  "swiftCompilation": "NOT_COMPILED",
+  "installedOS": "NOT_RUN",
+  "durableReservation": "NOT_IMPLEMENTED",
+  "genuineAuthority": "NOT_IMPLEMENTED",
+  "childAppActivation": false,
+  "releaseReady": false,
+  "remoteOperations": 0
+}

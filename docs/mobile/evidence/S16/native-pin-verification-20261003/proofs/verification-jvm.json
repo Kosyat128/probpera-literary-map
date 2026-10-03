@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-math-focused-jvm",
+  "sourceCommit": "9fe8fce001d56000eaba6ae8f5036b4111cc64c0",
+  "binding": {
+    "sourceCommit": "9fe8fce001d56000eaba6ae8f5036b4111cc64c0",
+    "sourceFingerprint": "5f3ac159d3a987fceb53f5c4813890840e7c1c17006c808f555efacecdfc5bb8",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "status": "PASS_VERIFICATION_MATH_JVM",
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-math.json",
+    "sha256": "5c5666bce4348aa9541d91dc7e48cc133377b0904449aa5b2695bfe8a566ade6"
+  },
+  "runner": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\run-native-pin-verification-jvm.mjs",
+    "sha256": "a889bc99e22f8399c1d54daa62cbfc9915bcefebc9525e96556900667d0f73f7"
+  },
+  "reusedCommon": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-checks-common.mjs",
+    "sha256": "64b2f2fc2ac5cb696edafbfb10dd8ba25fc05a084c16211d1caa6a92afe59f56"
+  },
+  "frozenManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-android\\manifest.json",
+    "sha256": "28e96227d7110fe7452ffe49d6d6cf2bfe8cbe00871f7862bfe18a8d9eaccc1a"
+  },
+  "frozenReady": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-android\\READY.json",
+    "sha256": "f6c9e2e2ac3a5a8261151b5b30e769595df0b8074fcd2f26c2caf560a0e9ee2e"
+  },
+  "driver": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationMathJvmDriver.java",
+    "sha256": "5c87f1c09f18c48f01fe3fb957a2535b37294c97edf53c3720b95579e857a2b7"
+  },
+  "publicOracles": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\public-one-digit-pin-oracle.json",
+      "sha256": "9efb3d5b2a07a1d073fcb6866f3a16854280f0798c1fa351fd2a8994ad9780eb",
+      "bytes": 678,
+      "expectedHashHex": "c026a3cdaa53585206e1cd6492ed354699e480997da65c1dcb7147fd7e06e664",
+      "passwordBytes": [
+        55
+      ],
+      "iterations": 600000,
+      "keyLength": 32,
+      "saltHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "algorithm": "PBKDF2-HMAC-SHA256",
+      "recomputed": false
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\attempt-f2550e67-7aa8-4ff6-a254-f58c4bc3f9c1\\public-pbkdf2-oracle.json",
+      "sha256": "8d38b4954dd9edc235d2677d5fd8898c7a9cc23693678d61a53580ae365766d1",
+      "bytes": 1059,
+      "expectedHashHex": "1a2310f85fc3b813a2bf714e9a614ec405ae1737795840c31da5915abbb5a44e",
+      "passwordBytes": [
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "iterations": 600000,
+      "keyLength": 32,
+      "saltHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "algorithm": "PBKDF2-HMAC-SHA256",
+      "recomputed": false
+    }
+  ],
+  "oracleDerivationsRepeated": 0,
+  "tools": [
+    {
+      "name": "java",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+    },
+    {
+      "name": "javac",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+    },
+    {
+      "name": "androidJar",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+    },
+    {
+      "name": "wrapper",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    }
+  ],
+  "checks": {
+    "preflight": "PASS",
+    "androidCompilation": "PASS",
+    "driverCompilation": "PASS",
+    "verificationMath22": "PASS",
+    "postflight": "PASS"
+  },
+  "caseCount": {
+    "status": "PASS",
+    "cases": 22,
+    "assertions": 164,
+    "caseNames": [
+      "strict-extractor-full-record-identity-and-owned-bytes",
+      "strict-extractor-seed-policy-grammar-and-verifier-denials",
+      "platform-one-digit-retained-public-oracle",
+      "platform-eight-digit-retained-public-oracle",
+      "short-two-three-and-maximum-length-synthetic-comparison",
+      "enrollment-minimum-four-remains-separate",
+      "empty-malformed-and-oversized-input-refused-owned-wipe",
+      "platform-floor-salt-digit-and-signed-int-bounds",
+      "exact-configured-iterations-preserved-no-clipping",
+      "mathematical-mismatch-does-not-emit-gate-result",
+      "original-material-owner-one-use-and-result-lifetime",
+      "foreign-material-denial-does-not-consume-original-input",
+      "pre-kdf-callback-failure-burns-and-wipes",
+      "post-kdf-current-or-deadline-refusal-discards-late-output",
+      "mutating-engine-and-final-callback-buffers-refused-and-cleared",
+      "owned-canonical-salt-and-hash-mutations-detected",
+      "cancel-before-start-revokes-without-consuming-caller-input",
+      "cancel-during-synchronous-engine-retains-busy-until-return",
+      "material-close-during-synchronous-engine-defers-secret-wipe",
+      "owner-close-during-current-callback-defers-settlement",
+      "concurrent-compare-denied-without-consuming-second-input",
+      "callbacks-original-identity-and-before-settlement-only"
+    ],
+    "stdout": {
+      "path": "03-java-verification-math.stdout.bin",
+      "sha256": "ab38778335a4be02a16e67db12d00ea3a49871cafbb517d63402bc9ffbc9f290",
+      "bytes": 2091
+    },
+    "platformKdfPublicOracleCases": 2,
+    "syntheticLifetimeChecks": true,
+    "nativeWorker": false,
+    "durableCharge": false,
+    "parentGateAdmission": false
+  },
+  "failure": null,
+  "commands": [
+    {
+      "name": "gradle-main-compile",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-Dorg.gradle.java.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8 -Duser.home=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user\" -Djava.io.tmpdir=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp\"",
+        "-classpath",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+        "org.gradle.wrapper.GradleWrapperMain",
+        "-p",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+        ":app:compileDevDebugJavaWithJavac",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=2"
+      ],
+      "startedAt": "2026-10-03T17:37:55.054Z",
+      "finishedAt": "2026-10-03T17:38:15.084Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "01-gradle-main-compile.stdout.bin",
+        "sha256": "e33d14626dcd8fd3ee67a08bf32bf2dde5ca4fdf1ed88f3cd3513d78b47b117f",
+        "bytes": 8573
+      },
+      "stderr": {
+        "path": "01-gradle-main-compile.stderr.bin",
+        "sha256": "3268a0909960986074891ea58b52101eef63915871427b83f8e654bda2245916",
+        "bytes": 598
+      }
+    },
+    {
+      "name": "javac-new-driver",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\home",
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\temp",
+        "-J-Dfile.encoding=UTF-8",
+        "-encoding",
+        "UTF-8",
+        "--release",
+        "17",
+        "-proc:none",
+        "-sourcepath",
+        "",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "-d",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\classes",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationMathJvmDriver.java"
+      ],
+      "startedAt": "2026-10-03T17:38:15.505Z",
+      "finishedAt": "2026-10-03T17:38:16.710Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "02-javac-new-driver.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "02-javac-new-driver.stderr.bin",
+        "sha256": "8e474876ea87f65d91eeb807b4fd86cc727499d4fe47bc3f8d215f0ac99f60e7",
+        "bytes": 56
+      }
+    },
+    {
+      "name": "java-verification-math",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\home",
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\temp",
+        "-Dfile.encoding=UTF-8",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildPinVerificationMathJvmDriver",
+        "c026a3cdaa53585206e1cd6492ed354699e480997da65c1dcb7147fd7e06e664",
+        "1a2310f85fc3b813a2bf714e9a614ec405ae1737795840c31da5915abbb5a44e"
+      ],
+      "startedAt": "2026-10-03T17:38:16.843Z",
+      "finishedAt": "2026-10-03T17:38:17.649Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "03-java-verification-math.stdout.bin",
+        "sha256": "ab38778335a4be02a16e67db12d00ea3a49871cafbb517d63402bc9ffbc9f290",
+        "bytes": 2091
+      },
+      "stderr": {
+        "path": "03-java-verification-math.stderr.bin",
+        "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+        "bytes": 92
+      }
+    }
+  ],
+  "compiledClasses": 63,
+  "compiledDriverClasses": 6,
+  "androidTask": ":app:compileDevDebugJavaWithJavac",
+  "previous22Repeated": false,
+  "previous24And39Repeated": false,
+  "previous69Repeated": false,
+  "newWebBuild": false,
+  "newApk": false,
+  "swiftCompilation": "NOT_COMPILED",
+  "installedOS": "NOT_RUN",
+  "durableAttemptCharge": "NOT_IMPLEMENTED",
+  "nativeVerificationWorker": "NOT_IMPLEMENTED",
+  "parentGateAdmission": "NOT_IMPLEMENTED",
+  "genuineAuthority": "NOT_IMPLEMENTED",
+  "childAppActivation": false,
+  "releaseReady": false,
+  "remoteOperations": 0
+}

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-checkpoint-input",
+  "finalized": true,
+  "sourceCommit": "9fe8fce001d56000eaba6ae8f5036b4111cc64c0",
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-math.json",
+    "sha256": "5c5666bce4348aa9541d91dc7e48cc133377b0904449aa5b2695bfe8a566ade6"
+  },
+  "journalCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-attempt.json",
+    "sha256": "2e20df1b0e9f7eeb29e4cacff60881e31951d8e53b1725c3f498469e334ca751"
+  },
+  "previousReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-input-report-checkpoint.json",
+    "sha256": "661695b54d06bb013e6836cb4cfc2fdbf0a2d50faf9011e2afc5b079921bb3e8"
+  },
+  "journalRun": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-attempt-jvm-dc054e0b-aff9-4dda-9d94-1a701c520132\\result.json",
+    "sha256": "fd519ebfb024b52d572d2e3a0138f8ea906ae4233310a9ec74014a86cd3014aa"
+  },
+  "verificationRun": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-jvm-317d248c-89e4-41ff-adc2-9dbcdc747f84\\result.json",
+    "sha256": "8bbe69f8ad63bacd2c4326f9fa787ec1d985fa970adac0b004c0627d5a5b03cc"
+  },
+  "historicalPacketAssembly": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97.assembly.json",
+    "sha256": "61f23f1ab6216c80a422aedc8b9a63f63c242454b02cf1f5f48f32715f476cef"
+  },
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "29900e54e637afe686eeb34e5e56aed6074d1ca05f604f8e1479425bf027522a"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "beforeSha256": "c14779744a5bb1a3ce55647c5adff2f1fd4a40236960d7bbb26fffe8894bc995"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "beforeSha256": "41ebfcad45b069e81b225770c1ddc83565f4f1530384da5b8f8965b6c2301921"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "beforeSha256": "ba44b04a3bdd54e05a1542d482978d4081dc8286023f59eb9db87388bf727fb4"
+    }
+  ],
+  "nextAction": "Continue the private authenticated native verification coordinator and native verification input/lifecycle: obtain bounded nonempty owned input first, then persist the exact charged reservation and read back before KDF. Empty or cancelled input exits before charge; malformed nonempty input remains charged. Bind original full-record/revision/PIN/policy, native host/current epoch/boot and absolute continuous deadline; join actual KDF, callbacks, cancellation and terminal settlement, then exact one-use finalization CAS/readback. Complete genuine replay-resistant authority/trusted time and separate recovery, admitted durable data ports and clear-before-render App/account/profile/lifecycle wiring before activation. Six Codex-owned tasks remain OPEN; preserve original four conditions, seven owner inputs and S03/S16 acceptance11/36 OPEN. Do not repeat valid journal22/verification22/older scopes or rebuild the current source2dd delivery for an intermediate private step.",
+  "scope": {
+    "checkoutWrites": false,
+    "gitOperations": false,
+    "productChecks": false,
+    "archiveReadOrRehash": false,
+    "oldProofFamiliesCopied": false,
+    "newBuilds": "NOT_RUN_FOR_THIS_SOURCE"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-working-evidence",
+  "sourceCommit": "9fe8fce001d56000eaba6ae8f5036b4111cc64c0",
+  "status": "PARTIAL",
+  "result": "docs/mobile/evidence/S16/native-pin-verification-20261003/result.json",
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "protectedAdmission": "NOT_RUN",
+    "appChildActivation": false,
+    "remoteOperations": 0
+  }
+}
