@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-coordinator-focused-jvm",
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "binding": {
+    "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+    "sourceFingerprint": "a2d1f9c8e4fa3eace786e33e4f459fc8fbd6d068d76f4e0fb3d4493618fbfe4a",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "status": "PASS_VERIFICATION_COORDINATOR_JVM",
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-coordinator.json",
+    "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d"
+  },
+  "runner": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\run-native-pin-verification-coordinator-jvm.mjs",
+    "sha256": "eb0484f0eeeab2381414ef94deeeef180e41d6910b6c085e5f281ec02613f6ca"
+  },
+  "reusedCommon": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-checks-common.mjs",
+    "sha256": "64b2f2fc2ac5cb696edafbfb10dd8ba25fc05a084c16211d1caa6a92afe59f56"
+  },
+  "frozenManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\manifest.json",
+    "sha256": "e211bd34c61d0ad6c0a51b52c1fd5e40837d8961158e0565a541c3a9d3d9c066"
+  },
+  "frozenReady": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\READY.json",
+    "sha256": "9fd6f8a3b849e502f6e7f0da04d43eb5b14f889ed285f7f0989587af1f6daf2a"
+  },
+  "driver": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationCoordinatorJvmDriver.java",
+    "sha256": "fa4cf4dc652514a9147f561a4e10cc283fb2bdcf819aa263d0434a8c6b7984b6"
+  },
+  "publicOracles": [],
+  "oracleDerivationsRepeated": 0,
+  "tools": [
+    {
+      "name": "java",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+    },
+    {
+      "name": "javac",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+    },
+    {
+      "name": "androidJar",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+    },
+    {
+      "name": "wrapper",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+      "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172"
+    }
+  ],
+  "checks": {
+    "preflight": "PASS",
+    "androidCompilation": "PASS",
+    "driverCompilation": "PASS",
+    "verificationCoordinator": "PASS",
+    "postflight": "PASS"
+  },
+  "caseCount": {
+    "status": "PASS",
+    "cases": 26,
+    "assertions": 1433,
+    "caseNames": [
+      "strict-policy-context-and-sixteen-action-domain",
+      "begin-original-host-profile-clock-and-input-gap-lane",
+      "blocked-before-input-no-charge-and-known-retirement",
+      "busy-second-original-is-not-burned-before-first-retirement",
+      "bound-input-foreign-and-replay-denied-before-consumption",
+      "charge-readback-before-math-and-known-finalization-delivery",
+      "mismatch-retains-count-increasing-delay-and-verifier-bytes",
+      "malformed-nonempty-charged-mismatch-without-kdf",
+      "empty-null-and-oversized-refused-before-charge",
+      "precharge-full-record-deadline-host-and-boot-races",
+      "changed-charged-record-never-finalizes-or-refunds",
+      "original-opaque-permission-reuse-denied-before-second-advance",
+      "reserve-before-persist-failure-seals-without-kdf-or-repair",
+      "reserve-after-persist-failure-retains-durable-charge",
+      "final-readback-failure-no-proof-no-compensating-reset",
+      "mutable-authority-callback-buffers-isolated-and-refused",
+      "capture-revocation-counts-null-lease-authority-cleanup",
+      "kdf-revocation-retains-worker-secrets-and-charged-penalty",
+      "retire-during-kdf-joins-actual-return-before-terminal-transfer",
+      "delivery-precheck-failure-is-not-completed-known-ack",
+      "throwing-recipient-single-handoff-uncertain-settlement",
+      "cancel-before-delivery-abandoned-original-can-drain-uncertain",
+      "retire-before-delivery-gap-drains-only-uncertain-original",
+      "blocked-recipient-premature-ack-and-close-do-not-settle-work",
+      "original-reply-identity-and-terminal-close-never-fake-ack",
+      "late-cancel-during-retirement-covered-without-new-unjoined-work"
+    ],
+    "stdout": {
+      "path": "03-java-verification-coordinator.stdout.bin",
+      "sha256": "f63a3276a7ceb206105a574bca5126acf68d3a9b57de30d7a3a821c7a554796a",
+      "bytes": 2829
+    },
+    "platformKdfPublicOracleCases": 0,
+    "syntheticConnectedIO": true,
+    "syntheticAuthority": true,
+    "syntheticKdf": true,
+    "nativeOSWorker": false,
+    "installedDurableCharge": false,
+    "parentGateAdmission": false
+  },
+  "failure": null,
+  "commands": [
+    {
+      "name": "gradle-main-compile",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-Dorg.gradle.java.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8 -Duser.home=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user\" -Djava.io.tmpdir=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp\"",
+        "-classpath",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+        "org.gradle.wrapper.GradleWrapperMain",
+        "-p",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+        ":app:compileDevDebugJavaWithJavac",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=2"
+      ],
+      "startedAt": "2026-10-03T18:45:10.913Z",
+      "finishedAt": "2026-10-03T18:45:26.014Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "01-gradle-main-compile.stdout.bin",
+        "sha256": "58d4a31adb6e6bd56089499388fee4136fc20e9dd5867db01bee2ddb3cc4b0bc",
+        "bytes": 8573
+      },
+      "stderr": {
+        "path": "01-gradle-main-compile.stderr.bin",
+        "sha256": "3268a0909960986074891ea58b52101eef63915871427b83f8e654bda2245916",
+        "bytes": 598
+      }
+    },
+    {
+      "name": "javac-new-driver",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\home",
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\temp",
+        "-J-Dfile.encoding=UTF-8",
+        "-encoding",
+        "UTF-8",
+        "--release",
+        "17",
+        "-proc:none",
+        "-sourcepath",
+        "",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "-d",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\classes",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationCoordinatorJvmDriver.java"
+      ],
+      "startedAt": "2026-10-03T18:45:26.525Z",
+      "finishedAt": "2026-10-03T18:45:27.580Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "02-javac-new-driver.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "02-javac-new-driver.stderr.bin",
+        "sha256": "8e474876ea87f65d91eeb807b4fd86cc727499d4fe47bc3f8d215f0ac99f60e7",
+        "bytes": 56
+      }
+    },
+    {
+      "name": "java-verification-coordinator",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\home",
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\temp",
+        "-Dfile.encoding=UTF-8",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildPinVerificationCoordinatorJvmDriver"
+      ],
+      "startedAt": "2026-10-03T18:45:27.704Z",
+      "finishedAt": "2026-10-03T18:45:28.266Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "03-java-verification-coordinator.stdout.bin",
+        "sha256": "f63a3276a7ceb206105a574bca5126acf68d3a9b57de30d7a3a821c7a554796a",
+        "bytes": 2829
+      },
+      "stderr": {
+        "path": "03-java-verification-coordinator.stderr.bin",
+        "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+        "bytes": 92
+      }
+    }
+  ],
+  "compiledClasses": 79,
+  "compiledDriverClasses": 4,
+  "androidTask": ":app:compileDevDebugJavaWithJavac",
+  "previousJournal22Repeated": false,
+  "previousMath22Repeated": false,
+  "previous24And39Repeated": false,
+  "previous69Repeated": false,
+  "newWebBuild": false,
+  "newApk": false,
+  "swiftCompilation": "NOT_COMPILED",
+  "installedOS": "NOT_RUN",
+  "durableAttemptCharge": "PRIVATE_IO_CONTRACT_SYNTHETIC_ONLY",
+  "nativeVerificationWorker": "CONNECTED_PRIVATE_CORE_OS_NOT_RUN",
+  "parentGateAdmission": "NOT_IMPLEMENTED",
+  "genuineAuthority": "NOT_IMPLEMENTED",
+  "childAppActivation": false,
+  "releaseReady": false,
+  "remoteOperations": 0
+}

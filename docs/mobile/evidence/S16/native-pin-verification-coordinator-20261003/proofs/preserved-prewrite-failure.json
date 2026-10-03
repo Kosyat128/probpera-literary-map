@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL_PREWRITE_GUARD",
+  "observedExitCode": 1,
+  "toolOutputChunk": "a3ba82",
+  "errorCode": "UNCHANGED_PREDECESSOR_SOURCE",
+  "failedHelper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\integrate-native-pin-verification-coordinator-source.mjs",
+    "sha256": "1cf7f3e43511f92172351640ae4a957e7a09ececf940aa2c3a99300c131c1330"
+  },
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-source-input.final.json",
+    "sha256": "2f29f9de0f75fc42e6310fe906fbc84c0abb57f972d21703c896d670ff0a0094"
+  },
+  "errorLocation": "integrate-native-pin-verification-coordinator-source.mjs:33; before first source write or attempt directory",
+  "cause": "Root adaptation compared capture.sourceCommit to report SHA. Existing captureReleaseInputs returns separate last source commit and repositoryHead.",
+  "observed": {
+    "sourceCommit": "9fe8fce001d56000eaba6ae8f5036b4111cc64c0",
+    "repositoryHead": "1afb6bd524036007b6c5f98c2da5c4e0d0d3f858",
+    "sourceFingerprint": "5f3ac159d3a987fceb53f5c4813890840e7c1c17006c808f555efacecdfc5bb8",
+    "sourceFiles": 1781,
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "sourceClosureUnchanged": true,
+  "workingTreeClean": true,
+  "projectWrites": 0,
+  "commits": 0,
+  "androidCompilation": "NOT_RUN",
+  "jvm": "NOT_RUN",
+  "correction": "A2 requires sourceCommit===original application SOURCE and repositoryHead===original report; all byte, source, tools, clean-tree and scoped-index guards are retained.",
+  "recordCreatedAt": "2026-10-03T18:43:05.908Z",
+  "rawProcessStreamsCaptured": false,
+  "originalFailureReclassified": false
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-coordinator-evidence-inventory",
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/coordinator-source-checkpoint.json",
+      "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d",
+      "bytes": 277418
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/preserved-prewrite-failure.json",
+      "sha256": "d1d165c7b47b06567dd0b8cd9570e94f9c1301b176d0d4c14e20bf262f3a38a0",
+      "bytes": 1942
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/coordinator-jvm.json",
+      "sha256": "f4664faa7b7ea89fd9bc91da6b1d593298f89fad50919eec14ce386badda951b",
+      "bytes": 12440
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/swift29-projection-preparation.json",
+      "sha256": "f934ac5b13b9639512d4b4d5a334337f31637ab15e771d900765fc10134d1f3e",
+      "bytes": 315756
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/final-input.json",
+      "sha256": "67f4f65ab1e92524d7d02dfc142de1c1269336107a36210be55a35082d11c8e4",
+      "bytes": 3707
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/result.json",
+      "sha256": "c14145467733941069e7b53c4e4e1f6df3325166c6ec1184066a841727c8c79a",
+      "bytes": 25088
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/entry.json",
+      "sha256": "cd09bcf19af8ea09133c57478f33f1bc0ac71ef73efe7d39327d8d224e221dd7",
+      "bytes": 594
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "coordinator-source-checkpoint",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/coordinator-source-checkpoint.json",
+      "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d",
+      "bytes": 277418,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-coordinator.json"
+    },
+    {
+      "id": "preserved-prewrite-failure",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/preserved-prewrite-failure.json",
+      "sha256": "d1d165c7b47b06567dd0b8cd9570e94f9c1301b176d0d4c14e20bf262f3a38a0",
+      "bytes": 1942,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-prewrite-failure.json"
+    },
+    {
+      "id": "coordinator-jvm",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/coordinator-jvm.json",
+      "sha256": "f4664faa7b7ea89fd9bc91da6b1d593298f89fad50919eec14ce386badda951b",
+      "bytes": 12440,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\result.json"
+    },
+    {
+      "id": "swift29-projection-preparation",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/swift29-projection-preparation.json",
+      "sha256": "f934ac5b13b9639512d4b4d5a334337f31637ab15e771d900765fc10134d1f3e",
+      "bytes": 315756,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-swift-projection-ecfbe668-9739-47db-87d4-303636a3f012\\preparation-manifest.json"
+    },
+    {
+      "id": "final-input",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-coordinator-20261003/proofs/final-input.json",
+      "sha256": "67f4f65ab1e92524d7d02dfc142de1c1269336107a36210be55a35082d11c8e4",
+      "bytes": 3707,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-checkpoint-input.final.json"
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}

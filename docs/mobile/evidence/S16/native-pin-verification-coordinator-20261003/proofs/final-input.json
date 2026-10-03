@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-coordinator-checkpoint-input",
+  "finalized": true,
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-coordinator.json",
+    "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d"
+  },
+  "previousReport": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-report-checkpoint.json",
+    "sha256": "5b51d45012c9d65e26d18a7413a7233ebc204e2d82216970132356775b6f4053"
+  },
+  "coordinatorRun": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-jvm-efb7daad-48f9-421b-a9bc-c9eb3acd1947\\result.json",
+    "sha256": "f4664faa7b7ea89fd9bc91da6b1d593298f89fad50919eec14ce386badda951b"
+  },
+  "swiftProjection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-swift-projection-ecfbe668-9739-47db-87d4-303636a3f012\\preparation-manifest.json",
+    "sha256": "f934ac5b13b9639512d4b4d5a334337f31637ab15e771d900765fc10134d1f3e"
+  },
+  "prewriteFailure": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-prewrite-failure.json",
+    "sha256": "d1d165c7b47b06567dd0b8cd9570e94f9c1301b176d0d4c14e20bf262f3a38a0"
+  },
+  "extraProofs": [],
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "eb9ae701b05d876e0501ea12e2a1dc262399686e409d91c7483d022064d92fb7"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "beforeSha256": "5b47faa21a6353f9ee673896e0226e3e8b92e28ef5c1c463cd2a8b6e9c8e749a"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "beforeSha256": "b8f551d7391296a5e63f179659029668439e34578fd9fc40b21cd95979c60ae4"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "beforeSha256": "3a3bcc52460f7972cd75b9fba5a525351c10baa4431a49d4c24ae16de8e97b6c"
+    }
+  ],
+  "nextAction": "Continue private native verification UI on both platforms using the original counted input lease: bind the exact parent-visible action/target/profile/policy/revisions/host generation and original absolute continuous deadline; clean up and join the actual UI/input worker before handing one nonempty owned buffer to the connected transaction core. Empty/cancelled input exits before charge; malformed nonempty input remains charged. Preserve exact authenticated reservation/readback before KDF and finalization/readback, counted recipients, cancellation and original terminal settlement. Complete genuine replay-resistant authority/trusted time, independent recovery, authenticated Gate host settlement, admitted data ports and clear-before-render App/lifecycle integration before activation. Six Codex tasks remain OPEN; original four conditions, seven owner inputs and S03/S16 acceptance11/36 OPEN stay unchanged. Do not repeat retained journal/math/24/39/69 scopes or rebuild the historical source2dd delivery for this private checkpoint.",
+  "scope": {
+    "checkoutWrites": false,
+    "gitOperations": false,
+    "productChecks": false,
+    "archiveReadOrRehash": false,
+    "oldProofFamiliesCopied": false,
+    "coordinatorRun": "ACTUAL_SCOPED_RECEIPT_SELECTED",
+    "newBuilds": "NOT_RUN_FOR_THIS_SOURCE"
+  }
+}
