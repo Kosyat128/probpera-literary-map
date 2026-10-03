@@ -1,0 +1,13 @@
+{
+  "startedAt": "2026-10-03T04:22:57.676Z",
+  "finishedAt": "2026-10-03T04:23:18.042Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/assemble-native-bridge-delivery-a3.mjs",
+    "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-bridge-delivery-input-a2.final.json"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "isolatedEnv": true
+}

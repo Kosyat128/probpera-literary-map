@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-three-channel-checks",
+  "binding": {
+    "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+    "sourceFingerprint": "10b74367e3597e3d8326caab47682b2d95dd4f292b0e7f7a676e7f0cc1956181",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8",
+  "runs": [
+    {
+      "platform": "android",
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-android.json",
+        "sha256": "5c2239b2b3c4809162a7add4a8a71379c330fb1011e31fb11e5def1bbb4c70ab"
+      },
+      "execution": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\android.execution.json",
+        "sha256": "878cb448d055f36180e7942130abae81b1b2c5d81b66017c4791b532e47e6fb5"
+      },
+      "selection": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-android.json",
+        "sha256": "a5fc90102c8f1a7212ac60eb8067df282276e5ccffe5f2a75558e776982b631d"
+      },
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\android.stdout.txt",
+        "sha256": "12c2498b38161d08f04eb43dae2a7ce92128b90bd1ca3700339e2176f5e66e7b"
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\android.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 2,
+      "gates": [
+        {
+          "id": "local-tests",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "content-preservation",
+          "status": "PASS"
+        },
+        {
+          "id": "ru-en-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-local",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-remote",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "editorial-legal",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "psp-commercial-decision",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "payment-sandbox",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "remote-authorization",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "package-integrity",
+          "status": "PASS"
+        },
+        {
+          "id": "native-binary",
+          "status": "PASS"
+        },
+        {
+          "id": "installed-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-preferences",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-secret-storage",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "lifecycle-update",
+          "status": "NOT_RUN"
+        }
+      ],
+      "errors": [
+        "local-tests:NOT_RUN",
+        "ru-en-runtime:NOT_RUN",
+        "auth-deletion-local:NOT_RUN",
+        "auth-deletion-remote:BLOCKED_EXTERNAL",
+        "editorial-legal:BLOCKED_EXTERNAL",
+        "psp-commercial-decision:BLOCKED_EXTERNAL",
+        "payment-sandbox:BLOCKED_EXTERNAL",
+        "remote-authorization:BLOCKED_EXTERNAL",
+        "installed-runtime:NOT_RUN",
+        "os-preferences:NOT_RUN",
+        "os-secret-storage:NOT_RUN",
+        "lifecycle-update:NOT_RUN"
+      ]
+    },
+    {
+      "platform": "pwa",
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-pwa.json",
+        "sha256": "20f6e6287908585647aa635127fe84a6517b3c79a560ad154c4466bc7ad4dc26"
+      },
+      "execution": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\pwa.execution.json",
+        "sha256": "33665b064b3e5935d26613ef8f36138f6c6bba650c70ac4590c91e7391d15370"
+      },
+      "selection": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-pwa.json",
+        "sha256": "a4ced40cb489a2b659b6901e4ada50ad4cdcfd97f1b736a5a3c6b985982cded5"
+      },
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\pwa.stdout.txt",
+        "sha256": "640d45f53ce24d2c51292095f2c59c50262f861b1a67fd82fe2fd3692a43caab"
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\pwa.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 2,
+      "gates": [
+        {
+          "id": "local-tests",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "content-preservation",
+          "status": "PASS"
+        },
+        {
+          "id": "ru-en-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-local",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-remote",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "editorial-legal",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "psp-commercial-decision",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "payment-sandbox",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "remote-authorization",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "package-integrity",
+          "status": "PASS"
+        },
+        {
+          "id": "pwa-install-offline-update",
+          "status": "NOT_RUN"
+        }
+      ],
+      "errors": [
+        "local-tests:NOT_RUN",
+        "ru-en-runtime:NOT_RUN",
+        "auth-deletion-local:NOT_RUN",
+        "auth-deletion-remote:BLOCKED_EXTERNAL",
+        "editorial-legal:BLOCKED_EXTERNAL",
+        "psp-commercial-decision:BLOCKED_EXTERNAL",
+        "payment-sandbox:BLOCKED_EXTERNAL",
+        "remote-authorization:BLOCKED_EXTERNAL",
+        "pwa-install-offline-update:NOT_RUN"
+      ]
+    },
+    {
+      "platform": "ios",
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-ios.json",
+        "sha256": "8c372d6136a8b156d5dfec2ebc7e8ab6d565e4c77797aaddf2881a13607d9f74"
+      },
+      "execution": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\ios.execution.json",
+        "sha256": "2b770f1b240ae5521ee805d270de7d18726088c47aa4b85a33c73047a3904c07"
+      },
+      "selection": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-ios.json",
+        "sha256": "ebe9ffec7492fd7d2e0eda1cb6706c74d30bceea53878ebd0d3e0a62af774ebb"
+      },
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\ios.stdout.txt",
+        "sha256": "8900c9ecb98f51ee2d182a0e8fc7f104d54ef981990f892d73581c29e8945ada"
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\ios.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "exitCode": 2,
+      "gates": [
+        {
+          "id": "local-tests",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "content-preservation",
+          "status": "PASS"
+        },
+        {
+          "id": "ru-en-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-local",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "auth-deletion-remote",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "editorial-legal",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "psp-commercial-decision",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "payment-sandbox",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "remote-authorization",
+          "status": "BLOCKED_EXTERNAL"
+        },
+        {
+          "id": "package-integrity",
+          "status": "PASS"
+        },
+        {
+          "id": "native-binary",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "installed-runtime",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-preferences",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "os-secret-storage",
+          "status": "NOT_RUN"
+        },
+        {
+          "id": "lifecycle-update",
+          "status": "NOT_RUN"
+        }
+      ],
+      "errors": [
+        "local-tests:NOT_RUN",
+        "ru-en-runtime:NOT_RUN",
+        "auth-deletion-local:NOT_RUN",
+        "auth-deletion-remote:BLOCKED_EXTERNAL",
+        "editorial-legal:BLOCKED_EXTERNAL",
+        "psp-commercial-decision:BLOCKED_EXTERNAL",
+        "payment-sandbox:BLOCKED_EXTERNAL",
+        "remote-authorization:BLOCKED_EXTERNAL",
+        "native-binary:NOT_RUN",
+        "installed-runtime:NOT_RUN",
+        "os-preferences:NOT_RUN",
+        "os-secret-storage:NOT_RUN",
+        "lifecycle-update:NOT_RUN"
+      ]
+    }
+  ],
+  "releaseReady": false,
+  "remoteActions": 0,
+  "checksActuallyExecuted": 3
+}

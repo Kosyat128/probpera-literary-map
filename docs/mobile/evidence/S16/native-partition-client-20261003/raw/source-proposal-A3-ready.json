@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "status": "READY",
+  "proposal": "child-native-repair-bridgea3",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "repositoryHead": "301f33d058b3c66afc029d510ca99ee4898c95be",
+  "manifestSha256": "26f175df3b6c545f3acbf79ffc02861489c6915d268673ec0f5f321d3e3b03b6",
+  "ownedPaths": 2,
+  "intendedUnitCases": {
+    "total": 21,
+    "ordinary": 17,
+    "purposeParameterized": 4
+  },
+  "testExecution": "NOT_RUN",
+  "typecheckExecution": "NOT_RUN",
+  "nativeRuntime": "NOT_RUN",
+  "sourceReview": {
+    "status": "PENDING_ROOT",
+    "scope": "Bounded author review of exact two staged files; no independent execution or review inferred"
+  },
+  "implemented": "Functional private four-purpose native partition protocol/codec/lifecycle adapter, structurally incompatible with admitted ChildScopedDataPort; constructor-owned actual native transport not supplied",
+  "transportImplementation": "UNAVAILABLE_NOT_SUPPLIED",
+  "callbackTransactionBackend": "NOT_IMPLEMENTED_CONTROL_KEY_AND_ATOMIC_CALLBACK_CONTRACT_DIFFER",
+  "capacity": {
+    "unresolvedNativeJobs": 1,
+    "queuedRetirements": 1,
+    "activeContexts": 1,
+    "nonceJournal": 4096,
+    "valueBytes": 8388608,
+    "timeoutMaximumMs": 60000
+  },
+  "boundaries": [
+    "openPartition issues only an opaque local partition capability; no parent/PIN/profile/package/current-rights admission",
+    "Private readPartition/comparePartition methods and partitionLease/mayPublish requests cannot structurally substitute for ChildScopedDataPort",
+    "mayPublish controls local results only; actual native commit may precede false publication or lost acknowledgement",
+    "A separately authenticated host-current binding under the native durable commit lock is still required for admitted index ports",
+    "Transport must map actual private native Lease/Cancellation/CAS/retirement under native lock; no default factory or public plugin exists",
+    "Abort/timeout settles caller promptly; pending native job holds capacity until its actual completion",
+    "Host must erase its views before lifecycle/account/profile/route changes; no frame or App wiring claim",
+    "Canonical UTF8 envelope budget is checked incrementally before whole-envelope stringify/encode",
+    "Transferred byte cleanup uses bounded own data-descriptors independently of decoder acceptance; 64 slots and 32MiB maximum; no arbitrary malformed object traversal"
+  ],
+  "appActivation": false,
+  "nativePinAuthority": "UNAVAILABLE",
+  "childContentApproval": "PENDING_EXTERNAL",
+  "releaseReady": false,
+  "commands": [
+    "node node_modules/vitest/vitest.mjs run src/child/childNativeData.test.ts"
+  ],
+  "preservedPacket": {
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "reportCommit": "301f33d058b3c66afc029d510ca99ee4898c95be",
+    "latestAdapterIncluded": false
+  },
+  "priorProposal": {
+    "proposal": "child-native-repair-bridgea2",
+    "manifestSha256": "2d827b32526cf6f29543ec456ca1c9d75259833f8f7c1ffb0c86afac398c9f73",
+    "preserved": true
+  },
+  "sourceReviewRepairs": [
+    "Distinct private partition-only API/types replace the incorrect ChildScopedDataPort claim and cast",
+    "Activation-issued capability revokes even never-used A-to-B-to-A requests",
+    "Unknown-field/malformed response denial still erases bounded transferred valid byte fields without getters",
+    "Request bindings are reread after mayPublish and the final clock sample to deny synchronous field mutation",
+    "Aggregate exact canonical UTF8 budget rejects oversized entry projections before full-envelope allocation",
+    "Focused tests retain all existing semantics, compile-time non-admission, malformed cleanup and final callback/clock mutation, plus one aggregate-budget case"
+  ],
+  "admittedIndexPort": "NOT_IMPLEMENTED_NATIVE_HOST_CURRENT_BINDING_UNAVAILABLE"
+}

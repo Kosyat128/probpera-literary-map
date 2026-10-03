@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-bridge-delivery-assembly",
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "directory": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-bridge-delivery-20261003-20488c73-26fa-4f64-a262-6bd8698f4907",
+  "archive": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-bridge-delivery-20261003-20488c73-26fa-4f64-a262-6bd8698f4907.zip",
+    "sha256": "1e56fdab62e9fe24e371301aa4d56da74ebe7abd5070c6ff8da31caf90fd4ff1",
+    "bytes": 444846269,
+    "compression": "stored",
+    "library": "fflate@0.8.3",
+    "archivedEntries": {
+      "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+      "centralDirectoryVerified": true,
+      "entrySha256Verified": true,
+      "filesVerified": 4414,
+      "rawBytesVerified": 443991369,
+      "zip64": false,
+      "crcVerification": "NOT_RUN"
+    }
+  },
+  "files": 4414,
+  "rawBytes": 443991369,
+  "productStatus": "PARTIAL",
+  "assemblyIntegrity": "PASS",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "priorArchiveCopied": false,
+  "finishedAt": "2026-10-03T04:23:18.003Z",
+  "scope": "Actual local delivery assembly only; original failures retained and no installed OS, Auth, PSP, human or release acceptance",
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-bridge.json",
+    "sha256": "2a7f593ea1e34e40b9f1b510cadda4dafcc771db2a6f647ae7eaedfcb5bb991f"
+  },
+  "packetInput": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-bridge-delivery-input-a2.final.json",
+    "sha256": "a630991a5fee4269752cde86ec5720558e6cbcfc1a28551316f5d6d09b0a951a"
+  }
+}

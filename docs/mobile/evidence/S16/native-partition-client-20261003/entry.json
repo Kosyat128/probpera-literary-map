@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-partition-client-working-evidence",
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "stage": "S16",
+  "status": "PARTIAL",
+  "result": "docs/mobile/evidence/S16/native-partition-client-20261003/result.json",
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "productionActionsAuthorized": false,
+    "appChildActivation": false,
+    "nativeProtectedAdmission": "UNAVAILABLE",
+    "nativeTransportImplementation": "UNAVAILABLE_NOT_SUPPLIED",
+    "admittedIndexPort": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "remoteOperations": 0
+  },
+  "generatedAt": "2026-10-03T04:18:27.427Z"
+}

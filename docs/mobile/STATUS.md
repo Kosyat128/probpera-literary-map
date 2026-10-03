@@ -1,3 +1,11 @@
+<!-- native-partition-client-20261003:begin -->
+Source checkpoint: a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d; prior source/report preserved: 3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647 / 301f33d058b3c66afc029d510ca99ee4898c95be.
+Evidence: docs/mobile/evidence/S16/native-partition-client-20261003/result.json. Actual focused21 synthetic protocol cases PASS; recorded execution301 +dirty2, later exact frozen source match.
+The private native partition client has no actual native transport/admitted host-current/PIN/App or installed-runtime authority. Current local preparations do not close release acceptance.
+S03 IN_PROGRESS11 OPEN; S16 IN_PROGRESS36 OPEN. releaseReady=false.
+Next: S03.acceptance remains IN_PROGRESS with 11 OPEN criteria; retain the four original external/installed-runtime conditions and seven unchanged owner inputs. Continue S16 programming with 36 OPEN criteria: implement the actual private native transport for the reviewed Java/Swift data stores and private partition client; then integrate a genuinely authenticated native host-current binding under the durable commit lock before adapting admitted child index ports. The private openPartition/readPartition/comparePartition API and its local mayPublish callback grant no protected admission, PIN, profile/package/review/rights authority. Complete supported replay-resistant native authority/trusted time, protected PIN enrollment/verification/recovery and clear-before-render route/account/profile/lifecycle App wiring. Finish required media formats and independently reviewed exact-byte RU/EN assets before activation. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passing scopes for reports, add D stages, relabel historical FAIL/NOT_RUN, invent approvals/trusted time or publish/deploy/push/merge.
+<!-- native-partition-client-20261003:end -->
+
 <!-- release-continuation-20261003:begin -->
 Source checkpoint: 3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647. Prior release packet/report preserved: 6c6c8f8cb66bf1d102b8a10ce13088499c503d63 / b9f351788ef415a5518c3c9e4b7e755809a8cff7.
 Evidence: docs/mobile/evidence/S03/release-continuation-20261003/result.json; docs/mobile/evidence/S03/release-continuation-20261003/remaining-internal-programming.json.

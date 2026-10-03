@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-staged-report-tooling-failure-observation",
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "observedAt": "2026-10-03T04:13:44.415Z",
+  "originalToolExitCode": 1,
+  "originalToolWallTimeSeconds": 0.2151028,
+  "originalOutput": {
+    "status": "PROPOSAL_FAILED",
+    "errorCode": "LOCAL_INPUT_OR_IO_FAILED",
+    "checkoutWrites": false,
+    "releaseReady": false
+  },
+  "helper": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\stage-native-partition-addendum.mjs",
+    "sha256": "5a90e538573882ce46f9029c3f3ea510589a783c4958151269f07b2c6d0c8a62"
+  },
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-partition-addendum-input.final.json",
+    "sha256": "f5745419290e231c1e022518ac6f961d8ce82b61fc568bdc03f7a5945291fb1f"
+  },
+  "readonlyFollowup": {
+    "physicalCheckoutGitStatusExitCode": 0,
+    "statusOutputEmpty": true,
+    "stageDirectoryExists": false
+  },
+  "applicationChecksRerun": 0,
+  "sourceChanges": 0,
+  "diagnosticCause": "UNKNOWN_PENDING_SAFE_EXCEPTION_LOCATIONS",
+  "releaseReady": false
+}

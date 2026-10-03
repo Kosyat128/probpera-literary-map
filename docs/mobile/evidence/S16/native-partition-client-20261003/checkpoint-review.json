@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-partition-checkpoint-review",
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "reviewedAt": "2026-10-03T04:28:30.931Z",
+  "integrationPaths": 86,
+  "sourceProposals": "A1-A4 remain original NOT_RUN metadata; actual 21-case source-qualified execution separate",
+  "fourDocumentTailsAndStateSixSpans": "PASS_BYTE_PRESERVATION",
+  "independentReview": {
+    "agent": "continuation_docs",
+    "status": "ACK",
+    "integrationPaths": 86,
+    "familyInventoryFiles": 81,
+    "rawProofs": 79
+  },
+  "ownerRegistrySha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922",
+  "acceptance": {
+    "S03Open": 11,
+    "S16Open": 36,
+    "releaseReady": false
+  },
+  "applicationChecksRerun": 0,
+  "remoteOperations": 0
+}

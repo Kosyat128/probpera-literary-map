@@ -1,0 +1,12 @@
+[
+  {
+    "path": "src/child/childNativeData.ts",
+    "beforeSha256": null,
+    "afterSha256": "229f2a9dd763e862e8d08b97cbf3114a9cf7d4313fbd5eb15990783e03edea06"
+  },
+  {
+    "path": "src/child/childNativeData.test.ts",
+    "beforeSha256": null,
+    "afterSha256": "a4ac3f540c2e97b2d4e2bdbdee85e9a27e843d31b6ab5018d9d0b8bd04c98c59"
+  }
+]

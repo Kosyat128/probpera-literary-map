@@ -1,0 +1,1641 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-additive-release-continuation",
+  "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+  "generatedAt": "2026-10-03T03:00:33.581Z",
+  "evidenceFamily": "docs/mobile/evidence/S03/release-continuation-20261003",
+  "status": "PARTIAL",
+  "priorPacket": {
+    "sourceCommit": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+    "reportCommit": "b9f351788ef415a5518c3c9e4b7e755809a8cff7",
+    "resultProofId": "prior-packet-result",
+    "manifestProofId": "prior-packet-manifest",
+    "archive": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-release-preparation-20261002.zip",
+      "sha256": "52bb0c3a597ca9dd934e0af4148b384c3ccbfdaf1f361eb6fb5e434b2e4d92b5",
+      "bytes": 425600254,
+      "copied": false
+    }
+  },
+  "sourceCheckpoints": [
+    {
+      "sourceCommit": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "previousHead": "b9f351788ef415a5518c3c9e4b7e755809a8cff7",
+      "proofId": "source-checkpoint-1",
+      "protectedChecked": 6820,
+      "files": [
+        {
+          "path": "scripts/mobile/native-install-runtime.mjs",
+          "sha256": "e47f3783ced0c4e8ccfb51d7ee0b9035941851761c0bc2929f218fd8dfb0f34e"
+        },
+        {
+          "path": "scripts/mobile/native-install-runtime.test.mjs",
+          "sha256": "05f3a1dbe6c585d6957673f45d0ded33eba33d62c0095b105649f286424d2a10"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "previousHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "proofId": "source-checkpoint-2",
+      "protectedChecked": 6820,
+      "files": [
+        {
+          "path": "src/child/childDurableData.test.ts",
+          "sha256": "927152f3bb27a5e0d007da45b24df5590d3cfaa45ece0e5b07491aa8b39f83f2"
+        },
+        {
+          "path": "src/child/childDurableData.ts",
+          "sha256": "dbf2954761cbdac38a82248d26b66ca2b87db1519d98f7431a509611606fd977"
+        },
+        {
+          "path": "tests/child/child-durable-indexeddb.mjs",
+          "sha256": "e502b245a9659d0f75ca7b80b96d9b6d5b42d1351ee2f5d5aa4c1b963f99ed99"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "previousHead": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "proofId": "source-checkpoint-3",
+      "protectedChecked": 6820,
+      "files": [
+        {
+          "path": "src/child/childDurableData.ts",
+          "sha256": "310f2bc46887a8a6702457d877b26d63ea360f1cddc4945e9f7982989f880fa3"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "previousHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "proofId": "source-checkpoint-4",
+      "protectedChecked": 6820,
+      "files": [
+        {
+          "path": "src/child/childMedia.test.ts",
+          "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+        },
+        {
+          "path": "src/child/childMedia.ts",
+          "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+        },
+        {
+          "path": "src/child/childMediaDecode.test.ts",
+          "sha256": "a5e437590a476eb8c83e807e993e1f99ad86aa951d30fcdcb8828fc07827eb1d"
+        },
+        {
+          "path": "src/child/childMediaDecode.ts",
+          "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+        },
+        {
+          "path": "tests/child/child-media-decode-web.mjs",
+          "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "previousHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "proofId": "source-checkpoint-5",
+      "protectedChecked": 6820,
+      "files": [
+        {
+          "path": "src/child/childMediaPresentation.test.ts",
+          "sha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+        },
+        {
+          "path": "src/child/childMediaPresentation.ts",
+          "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+        },
+        {
+          "path": "tests/child/child-media-presentation-web.mjs",
+          "sha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+        }
+      ]
+    },
+    {
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "previousHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "proofId": "source-checkpoint-6",
+      "protectedChecked": 6820,
+      "files": [
+        {
+          "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+          "sha256": "28bd8885c697c3300894e3754daff6dbc3c14c75640e387968a32391922994c0"
+        },
+        {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        },
+        {
+          "path": "scripts/mobile/native-install-runtime.mjs",
+          "sha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80"
+        },
+        {
+          "path": "scripts/mobile/native-install-runtime.test.mjs",
+          "sha256": "0c4bcc9c23178974cb9ff7b01bca7576841e35ee2e5a23013f11911cc1046893"
+        },
+        {
+          "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDataStoreRuntimeTest.java",
+          "sha256": "e93ec48d97e3a7e9ea0c243411a8786b38cc95e69be703de1e47a732dc088509"
+        },
+        {
+          "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+          "sha256": "485b71075b6eea02a3cd7de80d326f323b34414ae634e84437b84b9be0f4ea09"
+        },
+        {
+          "path": "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+          "sha256": "a57daa38522ca91222786016e8584d1e3bd8bbd797ec7b621f88a8715a317282"
+        },
+        {
+          "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataStoreRuntimeTests.swift",
+          "sha256": "29b981463ff41e821d1c3a5c1002ebeaf4b3c649bbcaeba03af94f23c0a72567"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "offline": {
+      "startedAt": "2026-10-02T22:28:24.554Z",
+      "finishedAt": "2026-10-02T22:28:26.636Z",
+      "exitCode": 0,
+      "commandRecorded": true,
+      "commandSha256": "011d9b80f63f89e5c9c80a41199e78ea5a7d7e7daef4927b3a5bb72423b7ea23",
+      "proofId": "offline-execution",
+      "tests": 75,
+      "pass": 28,
+      "fail": 0,
+      "skipped": 47,
+      "reporter": "Vitest JSON",
+      "vitestProofId": "offline-vitest",
+      "recordedRepositoryHead": "b9f351788ef415a5518c3c9e4b7e755809a8cff7",
+      "matchedCommittedSourceCommit": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "executionSourceBinding": "ROOT-recorded HEAD with dirty owned scope; subsequent exact committed SHAs",
+      "dirtyOwnedFiles": [
+        {
+          "path": "scripts/mobile/native-install-runtime.mjs",
+          "sha256": "e47f3783ced0c4e8ccfb51d7ee0b9035941851761c0bc2929f218fd8dfb0f34e"
+        },
+        {
+          "path": "scripts/mobile/native-install-runtime.test.mjs",
+          "sha256": "05f3a1dbe6c585d6957673f45d0ded33eba33d62c0095b105649f286424d2a10"
+        }
+      ],
+      "skippedAreNotPass": true
+    },
+    "durable": {
+      "startedAt": "2026-10-02T23:02:45.416Z",
+      "finishedAt": "2026-10-02T23:02:48.178Z",
+      "exitCode": 0,
+      "commandRecorded": true,
+      "commandSha256": "31c2bf51648c44668a5bfe9f05b46a8b834c0f29f89ccb0a70fa2315ff835af6",
+      "proofId": "durable-vitest",
+      "total": 43,
+      "passed": 43,
+      "failed": 0,
+      "assertionOccurrences": 43,
+      "distinctNames": 43,
+      "allObservedPassed": true,
+      "recordedRepositoryHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "matchedCommittedSourceCommit": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "executionSourceBinding": "ROOT-recorded HEAD with dirty owned scope; subsequent exact committed SHAs",
+      "dirtyOwnedFiles": [
+        {
+          "path": "src/child/childDurableData.test.ts",
+          "sha256": "927152f3bb27a5e0d007da45b24df5590d3cfaa45ece0e5b07491aa8b39f83f2"
+        },
+        {
+          "path": "src/child/childDurableData.ts",
+          "sha256": "dbf2954761cbdac38a82248d26b66ca2b87db1519d98f7431a509611606fd977"
+        },
+        {
+          "path": "tests/child/child-durable-indexeddb.mjs",
+          "sha256": "e502b245a9659d0f75ca7b80b96d9b6d5b42d1351ee2f5d5aa4c1b963f99ed99"
+        }
+      ]
+    },
+    "indexedDb": {
+      "proofId": "durable-indexeddb",
+      "executionSourceCommit": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "checks": 44,
+      "launches": 2,
+      "restarts": 1,
+      "storageBoundary": "actual-browser-indexeddb",
+      "admissionBoundary": "explicit-synthetic-host-and-index-request"
+    },
+    "typeRepair": {
+      "proofId": "durable-type-qualification",
+      "emittedBytesIdentical": true,
+      "executionRerunClaimed": false
+    },
+    "currentTypecheck": {
+      "startedAt": "2026-10-03T02:48:57.149Z",
+      "finishedAt": "2026-10-03T02:49:24.359Z",
+      "exitCode": 0,
+      "commandRecorded": true,
+      "commandSha256": "0ded3e5d3ddff3411d57738057df52ce2e4fb99f2938463f0c508552aaedc81b",
+      "proofId": "current-app-typecheck",
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "currentCodeCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "currentRawClosureMatches": true,
+      "sourceFiles": 1518,
+      "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+    },
+    "avdAttempt": {
+      "proofId": "owned-avd-final-attempt",
+      "status": "FAIL",
+      "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "bootstrap": "NOT_RUN",
+      "runtime": "NOT_RUN",
+      "cleanup": {
+        "emulatorStopped": true,
+        "adbServerStopped": true,
+        "avdDeleted": true,
+        "sourceAndLicencePreserved": true
+      },
+      "apkInstalled": false
+    },
+    "mediaReconciliation": {
+      "status": "RESOLVED",
+      "runs": [
+        {
+          "proofId": "child-media-decode-a1-vitest",
+          "total": 66,
+          "passed": 44,
+          "failed": 22,
+          "assertionOccurrences": 66,
+          "distinctNames": 66,
+          "allObservedPassed": false
+        },
+        {
+          "proofId": "child-media-decode-a2-vitest",
+          "total": 38,
+          "passed": 23,
+          "failed": 0,
+          "assertionOccurrences": 38,
+          "distinctNames": 38,
+          "allObservedPassed": false
+        }
+      ],
+      "actualDistinctExecutedNames": 67,
+      "latestObservedPassed": 67,
+      "initialFailedNames": 22,
+      "repairedFailedNames": 22,
+      "unresolvedFailures": 0,
+      "filteredCasesDoNotOverwriteEarlierResults": true,
+      "aggregateChronologicalTestTotalClaimed": false
+    },
+    "presentationReconciliation": {
+      "status": "RESOLVED",
+      "runs": [
+        {
+          "proofId": "child-media-presentation-a1-vitest",
+          "total": 27,
+          "passed": 27,
+          "failed": 0,
+          "assertionOccurrences": 27,
+          "distinctNames": 27,
+          "allObservedPassed": true
+        }
+      ],
+      "actualDistinctExecutedNames": 27,
+      "latestObservedPassed": 27,
+      "initialFailedNames": 0,
+      "repairedFailedNames": 0,
+      "unresolvedFailures": 0,
+      "filteredCasesDoNotOverwriteEarlierResults": true,
+      "aggregateChronologicalTestTotalClaimed": false
+    },
+    "nativeCommandReconciliation": {
+      "status": "RESOLVED",
+      "runs": [
+        {
+          "proofId": "native-child-command-a1-vitest",
+          "total": 78,
+          "passed": 3,
+          "failed": 0,
+          "assertionOccurrences": 78,
+          "distinctNames": 78,
+          "allObservedPassed": false
+        }
+      ],
+      "actualDistinctExecutedNames": 3,
+      "latestObservedPassed": 3,
+      "initialFailedNames": 0,
+      "repairedFailedNames": 0,
+      "unresolvedFailures": 0,
+      "filteredCasesDoNotOverwriteEarlierResults": true,
+      "aggregateChronologicalTestTotalClaimed": false
+    }
+  },
+  "additionalProofs": [
+    {
+      "id": "child-media-decode-a1-vitest",
+      "category": "media-unit",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": {
+        "proofId": "child-media-decode-a1-vitest-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "0607dde30f88496cd18f063fd64ff702d26c6c3155127b6da0bff19b8e3ef923"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "cases": {
+        "total": 66,
+        "passed": 44,
+        "failed": 22,
+        "assertionOccurrences": 66,
+        "distinctNames": 66,
+        "allObservedPassed": false,
+        "proofId": "child-media-decode-a1-vitest"
+      },
+      "proofId": "child-media-decode-a1-vitest"
+    },
+    {
+      "id": "child-media-decode-a1-execution",
+      "category": "other-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": {
+        "proofId": "child-media-decode-a1-execution-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "0607dde30f88496cd18f063fd64ff702d26c6c3155127b6da0bff19b8e3ef923"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "child-media-decode-a1-execution"
+    },
+    {
+      "id": "child-media-decode-a1-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": {
+        "proofId": "child-media-decode-a1-stdout-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "0607dde30f88496cd18f063fd64ff702d26c6c3155127b6da0bff19b8e3ef923"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "child-media-decode-a1-stdout"
+    },
+    {
+      "id": "child-media-decode-a1-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": {
+        "proofId": "child-media-decode-a1-stderr-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "0607dde30f88496cd18f063fd64ff702d26c6c3155127b6da0bff19b8e3ef923"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "child-media-decode-a1-stderr"
+    },
+    {
+      "id": "child-media-decode-a2-vitest",
+      "category": "media-unit",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "dirtyScope": {
+        "proofId": "child-media-decode-a2-vitest-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "a5e437590a476eb8c83e807e993e1f99ad86aa951d30fcdcb8828fc07827eb1d"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "cases": {
+        "total": 38,
+        "passed": 23,
+        "failed": 0,
+        "assertionOccurrences": 38,
+        "distinctNames": 38,
+        "allObservedPassed": false,
+        "proofId": "child-media-decode-a2-vitest"
+      },
+      "proofId": "child-media-decode-a2-vitest"
+    },
+    {
+      "id": "child-media-decode-a2-execution",
+      "category": "other-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "dirtyScope": {
+        "proofId": "child-media-decode-a2-execution-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "a5e437590a476eb8c83e807e993e1f99ad86aa951d30fcdcb8828fc07827eb1d"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "child-media-decode-a2-execution"
+    },
+    {
+      "id": "child-media-decode-a2-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "dirtyScope": {
+        "proofId": "child-media-decode-a2-stdout-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "a5e437590a476eb8c83e807e993e1f99ad86aa951d30fcdcb8828fc07827eb1d"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "child-media-decode-a2-stdout"
+    },
+    {
+      "id": "child-media-decode-a2-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "dirtyScope": {
+        "proofId": "child-media-decode-a2-stderr-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMedia.ts",
+            "sha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454"
+          },
+          {
+            "path": "src/child/childMedia.test.ts",
+            "sha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b"
+          },
+          {
+            "path": "src/child/childMediaDecode.ts",
+            "sha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f"
+          },
+          {
+            "path": "src/child/childMediaDecode.test.ts",
+            "sha256": "a5e437590a476eb8c83e807e993e1f99ad86aa951d30fcdcb8828fc07827eb1d"
+          },
+          {
+            "path": "tests/child/child-media-decode-web.mjs",
+            "sha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "child-media-decode-a2-stderr"
+    },
+    {
+      "id": "child-media-presentation-a1-vitest",
+      "category": "presentation-unit",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "dirtyScope": {
+        "proofId": "child-media-presentation-a1-vitest-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMediaPresentation.ts",
+            "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+          },
+          {
+            "path": "src/child/childMediaPresentation.test.ts",
+            "sha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+          },
+          {
+            "path": "tests/child/child-media-presentation-web.mjs",
+            "sha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "cases": {
+        "total": 27,
+        "passed": 27,
+        "failed": 0,
+        "assertionOccurrences": 27,
+        "distinctNames": 27,
+        "allObservedPassed": true,
+        "proofId": "child-media-presentation-a1-vitest"
+      },
+      "proofId": "child-media-presentation-a1-vitest"
+    },
+    {
+      "id": "child-media-presentation-a1-execution",
+      "category": "other-history",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "dirtyScope": {
+        "proofId": "child-media-presentation-a1-execution-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMediaPresentation.ts",
+            "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+          },
+          {
+            "path": "src/child/childMediaPresentation.test.ts",
+            "sha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+          },
+          {
+            "path": "tests/child/child-media-presentation-web.mjs",
+            "sha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "child-media-presentation-a1-execution"
+    },
+    {
+      "id": "child-media-presentation-a1-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "dirtyScope": {
+        "proofId": "child-media-presentation-a1-stdout-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMediaPresentation.ts",
+            "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+          },
+          {
+            "path": "src/child/childMediaPresentation.test.ts",
+            "sha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+          },
+          {
+            "path": "tests/child/child-media-presentation-web.mjs",
+            "sha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "child-media-presentation-a1-stdout"
+    },
+    {
+      "id": "child-media-presentation-a1-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "dirtyScope": {
+        "proofId": "child-media-presentation-a1-stderr-dirty-scope",
+        "files": [
+          {
+            "path": "src/child/childMediaPresentation.ts",
+            "sha256": "8a40642eba87edae6d6fa14f57a3525dc4615d3fb19d8fa41addacd3e1737c78"
+          },
+          {
+            "path": "src/child/childMediaPresentation.test.ts",
+            "sha256": "5fcc834eb09032cbe9fd4d52c32fddeb1559f5fc1d2122c1401aac19674c075e"
+          },
+          {
+            "path": "tests/child/child-media-presentation-web.mjs",
+            "sha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "child-media-presentation-a1-stderr"
+    },
+    {
+      "id": "actual-edge-codec",
+      "category": "media-browser",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS",
+      "kind": "literary-planet-child-media-web-codec-proof",
+      "actualScopedChecks": 28,
+      "proofId": "actual-edge-codec"
+    },
+    {
+      "id": "actual-edge-presentation",
+      "category": "media-browser",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS",
+      "kind": "literary-planet-child-media-web-presentation-proof",
+      "actualScopedChecks": 22,
+      "proofId": "actual-edge-presentation"
+    },
+    {
+      "id": "tsc-durable-original-fail",
+      "category": "typecheck-history",
+      "recordedRepositoryHead": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "tsc-durable-original-fail"
+    },
+    {
+      "id": "tsc-durable-original-fail-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "tsc-durable-original-fail-stdout"
+    },
+    {
+      "id": "tsc-durable-original-fail-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "005aff165ff0eefbc43d33d2e59edccedc43694c",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "tsc-durable-original-fail-stderr"
+    },
+    {
+      "id": "tsc-codec-original-pass",
+      "category": "typecheck-history",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS",
+      "proofId": "tsc-codec-original-pass"
+    },
+    {
+      "id": "tsc-codec-original-pass-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "tsc-codec-original-pass-stdout"
+    },
+    {
+      "id": "tsc-codec-original-pass-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "tsc-codec-original-pass-stderr"
+    },
+    {
+      "id": "owned-avd-a2",
+      "category": "android-history",
+      "recordedRepositoryHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "owned-avd-a2"
+    },
+    {
+      "id": "owned-avd-a3",
+      "category": "android-history",
+      "recordedRepositoryHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "owned-avd-a3"
+    },
+    {
+      "id": "owned-avd-a4",
+      "category": "android-history",
+      "recordedRepositoryHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "owned-avd-a4"
+    },
+    {
+      "id": "owned-avd-a5",
+      "category": "android-history",
+      "recordedRepositoryHead": "6141029e20f955b8838032ba0da601bca80a46a7",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "owned-avd-a5"
+    },
+    {
+      "id": "owned-avd-a6",
+      "category": "android-history",
+      "recordedRepositoryHead": "52202817e51892e14fc467677b40c613fffc3cd6",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "owned-avd-a6"
+    },
+    {
+      "id": "sdk-install-a2-execution",
+      "category": "android-history",
+      "recordedRepositoryHead": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "sdk-install-a2-execution"
+    },
+    {
+      "id": "sdk-install-a2-stdout",
+      "category": "android-history",
+      "recordedRepositoryHead": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "sdk-install-a2-stdout"
+    },
+    {
+      "id": "sdk-install-a2-stderr",
+      "category": "android-history",
+      "recordedRepositoryHead": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "sdk-install-a2-stderr"
+    },
+    {
+      "id": "sdk-install-a3",
+      "category": "android-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "FAIL",
+      "proofId": "sdk-install-a3"
+    },
+    {
+      "id": "sdk-qualification-a2",
+      "category": "sdk-qualification",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS_WITH_SDK_METADATA_CHANGE",
+      "proofId": "sdk-qualification-a2"
+    },
+    {
+      "id": "a5-image-measurement-qualification",
+      "category": "sdk-qualification",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS_FOR_OWN_IMAGE_MEASUREMENT_ONLY",
+      "proofId": "a5-image-measurement-qualification"
+    },
+    {
+      "id": "a6-forensic-summary",
+      "category": "android-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "BOOT_NOT_VERIFIED",
+      "proofId": "a6-forensic-summary"
+    },
+    {
+      "id": "a7-final-forensic-summary",
+      "category": "android-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "OWN_GUEST_BOOT_NOT_VERIFIED",
+      "proofId": "a7-final-forensic-summary"
+    },
+    {
+      "id": "a7-qemu-readonly-diagnostic",
+      "category": "android-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "a7-qemu-readonly-diagnostic"
+    },
+    {
+      "id": "owned-sdk-avd-raw-evidence-manifest",
+      "category": "android-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS_RAW_REFERENCES_ONLY",
+      "proofId": "owned-sdk-avd-raw-evidence-manifest"
+    },
+    {
+      "id": "native-child-authority-dependencies",
+      "category": "android-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "SOURCE_AUDIT_ONLY",
+      "proofId": "native-child-authority-dependencies"
+    },
+    {
+      "id": "native-authority-capability-review",
+      "category": "other-history",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "DOCUMENTATION_REVIEW_ONLY",
+      "proofId": "native-authority-capability-review"
+    },
+    {
+      "id": "native-child-command-a1-vitest",
+      "category": "native-command-unit",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "dirtyScope": {
+        "proofId": "native-child-command-a1-vitest-dirty-scope",
+        "files": [
+          {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.mjs",
+            "sha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.test.mjs",
+            "sha256": "0c4bcc9c23178974cb9ff7b01bca7576841e35ee2e5a23013f11911cc1046893"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "cases": {
+        "total": 78,
+        "passed": 3,
+        "failed": 0,
+        "assertionOccurrences": 78,
+        "distinctNames": 78,
+        "allObservedPassed": false,
+        "proofId": "native-child-command-a1-vitest"
+      },
+      "proofId": "native-child-command-a1-vitest"
+    },
+    {
+      "id": "native-child-command-a1-execution",
+      "category": "other-history",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "dirtyScope": {
+        "proofId": "native-child-command-a1-execution-dirty-scope",
+        "files": [
+          {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.mjs",
+            "sha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.test.mjs",
+            "sha256": "0c4bcc9c23178974cb9ff7b01bca7576841e35ee2e5a23013f11911cc1046893"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "native-child-command-a1-execution"
+    },
+    {
+      "id": "native-child-command-a1-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "dirtyScope": {
+        "proofId": "native-child-command-a1-stdout-dirty-scope",
+        "files": [
+          {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.mjs",
+            "sha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.test.mjs",
+            "sha256": "0c4bcc9c23178974cb9ff7b01bca7576841e35ee2e5a23013f11911cc1046893"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "native-child-command-a1-stdout"
+    },
+    {
+      "id": "native-child-command-a1-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "dirtyScope": {
+        "proofId": "native-child-command-a1-stderr-dirty-scope",
+        "files": [
+          {
+            "path": "docs/mobile/RELEASE_DECISIONS.json",
+            "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.mjs",
+            "sha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80"
+          },
+          {
+            "path": "scripts/mobile/native-install-runtime.test.mjs",
+            "sha256": "0c4bcc9c23178974cb9ff7b01bca7576841e35ee2e5a23013f11911cc1046893"
+          }
+        ]
+      },
+      "executionSourceBinding": "ROOT-recorded journal context plus exact frozen dirty-source manifest; execution JSON alone does not record HEAD",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "native-child-command-a1-stderr"
+    },
+    {
+      "id": "native-a2-javac-proposal-only",
+      "category": "other-history",
+      "recordedRepositoryHead": "d320b8e9bc1b12482ae84db533de50670f1bab24",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS",
+      "proofId": "native-a2-javac-proposal-only"
+    },
+    {
+      "id": "native-a3-source-ready",
+      "category": "other-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "READY",
+      "proofId": "native-a3-source-ready"
+    },
+    {
+      "id": "native-a3-source-manifest",
+      "category": "other-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "native-a3-source-manifest"
+    },
+    {
+      "id": "latest-protected-content",
+      "category": "other-history",
+      "recordedRepositoryHead": null,
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS",
+      "proofId": "latest-protected-content"
+    },
+    {
+      "id": "current-tsc-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "current-tsc-stdout"
+    },
+    {
+      "id": "current-tsc-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "current-tsc-stderr"
+    },
+    {
+      "id": "current-pwa-preview",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "PASS",
+      "proofId": "current-pwa-preview"
+    },
+    {
+      "id": "current-pwa-preview-stdout",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "current-pwa-preview-stdout"
+    },
+    {
+      "id": "current-pwa-preview-stderr",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_LOG_RETAINED",
+      "proofId": "current-pwa-preview-stderr"
+    },
+    {
+      "id": "current-native-preflight",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "NOT_RUN",
+      "proofId": "current-native-preflight"
+    },
+    {
+      "id": "continuation-proposal-a1-tooling-failure",
+      "category": "other-history",
+      "recordedRepositoryHead": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "matchedCommittedSourceCommit": null,
+      "dirtyScope": null,
+      "executionSourceBinding": "retained ROOT source declaration and original proof; no latest-commit execution inferred",
+      "reportedStatus": "RAW_METADATA_RETAINED",
+      "proofId": "continuation-proposal-a1-tooling-failure"
+    }
+  ],
+  "currentPreparations": [
+    {
+      "mode": "android",
+      "status": "PASS",
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "binding": {
+        "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+        "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+      },
+      "proofId": "current-preparation-android",
+      "outputs": [
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-6089ee95-5ac8-417e-a68f-45459bfa5b62\\native-artifact.json",
+          "sha256": "6484ec63f33c1c2d5003beb3533b3f774d36bdb27cf430235e22189208c48c65",
+          "bytes": 715466,
+          "copied": false
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-6089ee95-5ac8-417e-a68f-45459bfa5b62\\app-dev-debug.apk",
+          "sha256": "1162c3ef913df6f9b9d6cbc87b5d5757c7ec6950bcb39732c46db470430953e3",
+          "bytes": 69639184,
+          "copied": false
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-6089ee95-5ac8-417e-a68f-45459bfa5b62\\app-dev-debug-androidTest.apk",
+          "sha256": "e1aaf7b1489cf159b0b3d7779b5c5b17f256947ca81e96942cb669302b09cdd7",
+          "bytes": 584218,
+          "copied": false
+        }
+      ],
+      "deviceTested": false,
+      "iosCompiled": false,
+      "releaseReady": false,
+      "storeArtifact": false,
+      "installedRuntime": "NOT_RUN"
+    },
+    {
+      "mode": "pwa",
+      "status": "PASS",
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "binding": {
+        "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+        "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+      },
+      "proofId": "current-preparation-pwa",
+      "outputs": [
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-bb00e5a6-3c7a-439c-90ac-1bef39fecb28\\pwa-artifact.json",
+          "sha256": "77a379d1a655ae9208e208898e3e53570c3ed76f56f9ac9315966a897980dcef",
+          "bytes": 499574,
+          "copied": false
+        }
+      ],
+      "deviceTested": false,
+      "iosCompiled": false,
+      "releaseReady": false,
+      "storeArtifact": false,
+      "installedRuntime": "NOT_RUN"
+    },
+    {
+      "mode": "ios-bundle",
+      "status": "PASS",
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "binding": {
+        "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+        "sourceFingerprint": "b15fbb96c31ae9569dad1768e7b3f832ab628326e5c3104215136406b8ffaf04",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+      },
+      "proofId": "current-preparation-ios-bundle",
+      "outputs": [
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-4a5e6d31-78e2-49ab-b771-3550543b57d8\\native-artifact.json",
+          "sha256": "45158a4eebcb850c242657f9650d16f55406fa88c296c472ed64f1092a613b38",
+          "bytes": 715462,
+          "copied": false
+        }
+      ],
+      "deviceTested": false,
+      "iosCompiled": false,
+      "releaseReady": false,
+      "storeArtifact": false,
+      "installedRuntime": "NOT_RUN"
+    }
+  ],
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "generatedAt": "2026-10-03T03:00:33.581Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "releaseReadinessInputs": [
+    {
+      "platform": "android",
+      "path": "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-android.json",
+      "checkerExecuted": false
+    },
+    {
+      "platform": "pwa",
+      "path": "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-pwa.json",
+      "checkerExecuted": false
+    },
+    {
+      "platform": "ios",
+      "path": "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-ios.json",
+      "checkerExecuted": false
+    }
+  ],
+  "sourceReproduction": {
+    "originalBaseline": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "priorBundleTip": "6c6c8f8cb66bf1d102b8a10ce13088499c503d63",
+    "interleavedReportCommit": "b9f351788ef415a5518c3c9e4b7e755809a8cff7",
+    "currentCodeCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+    "newSourceExport": {
+      "proofId": "current-source-export",
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "sourceBundle": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source.bundle",
+        "sha256": "bd42f4e074693580d216b9e726c37cb9c1e3b45b42e17827d0d105cf55ba2ef1",
+        "bytes": 790720,
+        "copied": false
+      },
+      "sourceSnapshot": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source-files.zip",
+        "sha256": "4acc58ae8b8eea1ef2184052b766603c31b79f376b5a58689d0b5a7a5e77bd74",
+        "bytes": 52802176,
+        "copied": false
+      },
+      "cumulativePatch": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\reviewed-cumulative.patch",
+        "sha256": "865595573fd3057327024747a6be4e75b3112d3247ae09cb59972faf5ee9bb54",
+        "bytes": 6137537,
+        "copied": false
+      },
+      "sourceGraph": {
+        "proofId": "current-source-graph",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source-graph.json",
+        "sha256": "24211b025f126e07d0d1f7fcfd93322e7c79859193b0550386e99ce1e756edbb",
+        "bytes": 31577
+      },
+      "sourceFilesManifest": {
+        "proofId": "current-source-files-manifest",
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source-files-manifest.json",
+        "sha256": "2159d6afe7fdfe03d2d954f4578cb219d4b67bab331bbbc8c938b72685912309",
+        "bytes": 352049
+      },
+      "rawSourceFilesVerified": 1841,
+      "rawSnapshotRequired": true,
+      "baselinePrerequisite": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+      "fullStandaloneRepositoryClaimed": false,
+      "fullHistoryIntegrity": "NOT_RUN",
+      "remoteRequests": 0,
+      "refsChanged": false,
+      "reportPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-continuation-254b6332-1bf7-43ab-93a8-871b87c4682f\\source-export.json",
+      "reportSha256": "18b3736b0927a10d2f0b37ff9813b4982b78d406c7b1580e85c77d50c1b5cee5"
+    },
+    "newSourceImport": {
+      "proofId": "current-source-import",
+      "sourceCommit": "3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647",
+      "sourceBundleSha256": "bd42f4e074693580d216b9e726c37cb9c1e3b45b42e17827d0d105cf55ba2ef1",
+      "sourceGraphSha256": "24211b025f126e07d0d1f7fcfd93322e7c79859193b0550386e99ce1e756edbb",
+      "baselinePrerequisite": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+      "pass": true,
+      "fullHistoryIntegrity": "NOT_RUN",
+      "originalRefsChanged": false,
+      "originalCommitGraphChanged": false,
+      "remoteActions": 0
+    },
+    "priorBundleDoesNotContainContinuation": true
+  },
+  "protectedContent": {
+    "status": "PASS_RETAINED_FROM_LATEST_SCOPED_CHECKPOINT",
+    "checkedCount": 6820,
+    "proofId": "source-checkpoint-6",
+    "unchanged": true,
+    "checkedByThisBuilder": false
+  },
+  "installedApplicationRuntime": "NOT_RUN",
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "productionActionsAuthorized": false,
+    "appChildActivation": false,
+    "nativeProtectedAdmission": "UNAVAILABLE",
+    "remoteOperations": 0
+  },
+  "redaction": {
+    "jwtShapedOccurrences": 0,
+    "credentialShapedOccurrences": 0,
+    "rawProofsAltered": false
+  },
+  "programmingContinuation": {
+    "stage": "S16",
+    "status": "IN_PROGRESS",
+    "implementationOwner": "Codex",
+    "sourceFoundation": [
+      "src/child/childPackage.ts",
+      "src/child/childIndex.ts",
+      "src/child/childMedia.ts",
+      "src/child/childProtectedState.ts",
+      "src/child/childDurableData.ts",
+      "src/child/childMediaDecode.ts",
+      "src/child/childMediaPresentation.ts",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+      "apps/mobile/ios/App/App/PlanetChildDataStore.swift"
+    ],
+    "protectedAdmission": "UNAVAILABLE",
+    "appActivation": false,
+    "approvedProductionChildContent": false,
+    "ownerInputsReference": "decisions/RELEASE_DECISIONS.json",
+    "nextIndependentAction": "S03.acceptance remains IN_PROGRESS with 11 OPEN criteria; installed application/native OS evidence, a selected PSP and real transactions, reviewed RU/EN editorial/legal materials, configured real Auth/deletion and specifically authorized remote validation remain pending. Continue independent S16 programming with 36 OPEN criteria: integrate the private native atomic four-purpose storage candidates with native-owned scope/generation retirement and admitted host ports; verify their actual installed storage/lifecycle boundaries; implement genuine protected admission, supported native replay-resistant authority/trusted time, native PIN enrollment/verification/recovery and clear-before-render/route/lifecycle App wiring. Retain the actual isolated Web IndexedDB and static media decoder/presentation proofs as scoped local foundations; complete documented required media formats and independently reviewed exact-byte RU/EN content before activation. Native data partition activation grants no PIN, profile, package, review or rights authority. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passing scopes for reports, create D stages, invent approvals/trusted time, publish/deploy/push/merge or rewrite historical FAIL/NOT_RUN evidence.",
+    "remainingInternalProgramming": [
+      {
+        "work": "Protected child admission",
+        "status": "OPEN",
+        "responsibility": "Replace the unavailable factory only with genuine verified native authority; tested synthetic ports do not grant admission."
+      },
+      {
+        "work": "Supported native authority and trusted time",
+        "status": "OPEN",
+        "responsibility": "Provide supported replay-resistant checkpoint/epoch and restart continuity; uncertain reboot or clock state stays denied without a trusted anchor."
+      },
+      {
+        "work": "Native PIN enrollment, verification and recovery",
+        "status": "OPEN",
+        "responsibility": "Integrate genuine protected input and durable attempt/CAS bookkeeping with revocable Parent Gate capabilities; no preference PIN or approval boolean."
+      },
+      {
+        "work": "Durable separate child data ports",
+        "status": "OPEN",
+        "responsibility": "Retain isolated Web four-store atomic persistence. Implement or finish private native four-purpose atomic candidates with native-owned context/generation retirement and durable current-scope CAS; dispatch-only JS isCurrent checks and independent Preferences writes do not satisfy the transaction contract. Storage partitions grant no PIN/profile/package/review authority."
+      },
+      {
+        "work": "Clear before render and lifecycle integration",
+        "status": "OPEN",
+        "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes."
+      },
+      {
+        "work": "Reviewed child media rendering",
+        "status": "OPEN",
+        "responsibility": "The retained static PNG/JPEG/WebP/PCM-WAV codec and owned Web presentation foundations have scoped local proofs. Complete documented required media formats, independently reviewed exact-byte RU/EN production assets and native/App/lifecycle integration before activation; neither muted synthetic audio nor scoped browser fixtures grant content or native admission."
+      }
+    ],
+    "qualification": "These are remaining Codex programming tasks, separate from the seven owner input actions. Integrated source foundations do not establish production child activation, native authority, approved content or installed-device acceptance.",
+    "localContinuation": {
+      "isolatedWebStorage": "43 synthetic unit cases plus 44 actual Edge IndexedDB checks; no App/native ports admission",
+      "staticMediaDecoder": "retained actual distinct local cases in explicit raw proofs",
+      "ownedWebPresentation": "retained actual distinct local cases in explicit raw proofs",
+      "privateNativeDataCandidates": "Reviewed current source candidates only; no admitted JS transaction backend, PIN/profile/package authority, native plugin or App activation",
+      "nativeCandidateOsRuntime": "NOT_RUN",
+      "iosCandidateCompilation": "NOT_RUN",
+      "actualWebMediaProofs": [
+        {
+          "kind": "literary-planet-child-media-web-codec-proof",
+          "checks": 28,
+          "proofId": "actual-edge-codec",
+          "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+        },
+        {
+          "kind": "literary-planet-child-media-web-presentation-proof",
+          "checks": 22,
+          "proofId": "actual-edge-presentation",
+          "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24"
+        }
+      ],
+      "audibleAudioVerified": false,
+      "appActivation": false,
+      "nativeProtectedAdmission": "UNAVAILABLE"
+    }
+  }
+}

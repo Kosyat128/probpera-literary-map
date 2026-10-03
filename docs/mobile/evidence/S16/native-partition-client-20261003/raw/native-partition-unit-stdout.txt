@@ -1,0 +1,11 @@
+
+ RUN  v4.1.10 D:/CodexProjects/Работа по сайту/literary-planet-v12-work
+
+ ✓ src/child/childNativeData.test.ts (21 tests) 70ms
+
+ Test Files  1 passed (1)
+      Tests  21 passed (21)
+   Start at  06:50:44
+   Duration  504ms (transform 110ms, setup 0ms, import 195ms, tests 70ms, environment 0ms)
+
+JSON report written to D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-child-bridge-a1/vitest.json

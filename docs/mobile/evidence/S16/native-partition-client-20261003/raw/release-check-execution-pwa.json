@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-channel-check-execution",
+  "binding": {
+    "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+    "sourceFingerprint": "10b74367e3597e3d8326caab47682b2d95dd4f292b0e7f7a676e7f0cc1956181",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "platform": "pwa",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\release-readiness.mjs",
+    "--evidence",
+    ".tmp/mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8/readiness-input-pwa.json",
+    "--report",
+    ".tmp/mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8/readiness-pwa.json"
+  ],
+  "startedAt": "2026-10-03T03:57:24.138Z",
+  "finishedAt": "2026-10-03T03:57:26.553Z",
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "actualSelection": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-pwa.json",
+    "sha256": "a4ced40cb489a2b659b6901e4ada50ad4cdcfd97f1b736a5a3c6b985982cded5"
+  },
+  "priorGateStatusTemplate": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-pwa.json",
+    "sha256": "fd50b9f524738db2d97b3fd02484ce171feffe8e4ba4acb0e3b838d33caea6f7"
+  },
+  "currentPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-96b76b28-0ccc-4c8a-b622-60795bed9d22\\preparation.json",
+    "sha256": "63d5f69f3ebe1e3ad68a1dbfe02d0e0633c73d45743fd74be14511a92bb91cc3"
+  },
+  "currentProtection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-bridge.json",
+    "sha256": "d83f238d5e426c1497c57e36410f0ac9c0e2fb8e7281a057377af23232e2deaf"
+  },
+  "releaseReady": false
+}

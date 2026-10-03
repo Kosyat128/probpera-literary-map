@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "previousHead": "301f33d058b3c66afc029d510ca99ee4898c95be",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "files": [
+    {
+      "path": "src/child/childNativeData.ts",
+      "sha256": "7dc85c936b5a9084b5b4b2c64444e00c85e4b96c8957a8b0a22686003ed84b6c"
+    },
+    {
+      "path": "src/child/childNativeData.test.ts",
+      "sha256": "f885e50f3173604587acdef97ccf389d5c5e83d77286ec1c679a57ac5905e1e3"
+    }
+  ],
+  "protectedContent": {
+    "schemaVersion": 1,
+    "kind": "protected-content-preservation",
+    "checkedAt": "2026-10-03T03:51:00.754Z",
+    "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "checkedCount": 6820,
+    "changed": [],
+    "missing": [],
+    "changedCount": 0,
+    "missingCount": 0,
+    "pass": true
+  },
+  "scriptChecks": [],
+  "remoteOperations": 0,
+  "scopedUnits": {
+    "passed": 21,
+    "failed": 0,
+    "recordedRepositoryHead": "301f33d058b3c66afc029d510ca99ee4898c95be",
+    "dirtyManifestSha256": "53a4e67efd6c2fa00c639a5f8264ac4b265ae4973bc292243df488fdb319b2c0",
+    "executionAtLatestCommitClaimed": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "nativeAdmission": false
+  }
+}

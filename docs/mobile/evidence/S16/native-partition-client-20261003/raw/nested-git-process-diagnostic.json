@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-report-nested-git-diagnostic",
+  "observedAt": "2026-10-03T04:16:27.866Z",
+  "gitEnvironmentNames": [
+    "GIT_CONFIG_COUNT",
+    "GIT_CONFIG_KEY_0",
+    "GIT_CONFIG_KEY_1",
+    "GIT_CONFIG_VALUE_0",
+    "GIT_CONFIG_VALUE_1",
+    "GIT_PAGER"
+  ],
+  "rows": [
+    {
+      "label": "original-nested-context",
+      "exitCode": 128,
+      "signal": null,
+      "errorCode": null,
+      "stderrCategory": "DUBIOUS_OWNERSHIP",
+      "stderrSha256": "9b345ce1e87008cec3b62fb5475e05c88d03fb6d32c547e0a2afcff824ff54a1",
+      "sourceHeadMatches": false
+    },
+    {
+      "label": "explicit-safe-process-context",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "stderrCategory": "NONE",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sourceHeadMatches": true
+    }
+  ],
+  "projectWrites": 0,
+  "configurationWrites": 0,
+  "productChecks": 0,
+  "remoteRequests": 0
+}

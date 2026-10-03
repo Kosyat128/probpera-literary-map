@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-partition-staging-diagnostic",
+  "status": "VALIDATION_FAILED",
+  "errorCode": "LOCAL_INPUT_OR_IO_FAILED",
+  "errorName": "Error",
+  "nativeErrorCode": null,
+  "subprocessExitCode": 128,
+  "stackLocations": [
+    "node:internal/errors:985:15",
+    "node:internal/errors:539:14",
+    "node:child_process:942:11",
+    "node:child_process:978:15",
+    "file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/stage-native-partition-addendum-a2.mjs:31:17",
+    "file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/stage-native-partition-addendum-a2.mjs:32:24",
+    "file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/stage-native-partition-addendum-a2.mjs:48:339"
+  ],
+  "diagnosticOnly": true,
+  "stageWritten": false,
+  "checkoutWrites": false,
+  "productChecksExecuted": false,
+  "releaseReady": false
+}

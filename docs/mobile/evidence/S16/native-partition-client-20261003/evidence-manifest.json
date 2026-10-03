@@ -1,0 +1,971 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-partition-client-evidence-inventory",
+  "sourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "evidenceFamily": "docs/mobile/evidence/S16/native-partition-client-20261003",
+  "selfExcluded": true,
+  "originalsUnmodified": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/prior-continuation-result.json",
+      "sha256": "f29bac07c18e4fa2640bbab4d278c941390ea81d7b4b2383a6689d3b09f764a8",
+      "bytes": 70343
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-checkpoint.json",
+      "sha256": "2a7f593ea1e34e40b9f1b510cadda4dafcc771db2a6f647ae7eaedfcb5bb991f",
+      "bytes": 1247
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/protected-current.json",
+      "sha256": "d83f238d5e426c1497c57e36410f0ac9c0e2fb8e7281a057377af23232e2deaf",
+      "bytes": 290
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-execution.json",
+      "sha256": "a6fa93b1913af6f51b8c3169acff2af3c49eb8144c76f0330b821521abfcf9ad",
+      "bytes": 732
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-vitest.json",
+      "sha256": "a8d63cd8e433aa52a94373f943769c942adc0ce3988e026d3a33793b5e3f41c8",
+      "bytes": 8441
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-stdout.txt",
+      "sha256": "abc4d5683ded70388522872d6d19df44742468c8e481e2f06bfbdfb686fa04ce",
+      "bytes": 471
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-dirty-source.json",
+      "sha256": "53a4e67efd6c2fa00c639a5f8264ac4b265ae4973bc292243df488fdb319b2c0",
+      "bytes": 338
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-app-typecheck.json",
+      "sha256": "7513854398a6b3662a57fc023e155690d05f08ed4dc98884c5feff0c137c86a7",
+      "bytes": 230010
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preparation-android.json",
+      "sha256": "4897f965d1ea750b0241fbdf945d9cf52ebfe82724bcd589eb1ce28c9063e7a6",
+      "bytes": 300751
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-build-stdout.txt",
+      "sha256": "711717d1a0cb790100fe38739a272a67ab8b67bf988538d81e41ba2b97c7df47",
+      "bytes": 8595
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-build-stderr.txt",
+      "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0",
+      "bytes": 5133
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-audit-stdout.txt",
+      "sha256": "8dfdb65a7cafde2badcfbf0a1873c5436584e8baab2d3ac7850353dd9c0cf9d3",
+      "bytes": 1045
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-jdk-version-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-jdk-version-stderr.txt",
+      "sha256": "c069ba5b371b2674dc747c7a6b0c76d873e4d0f2586e5fa9d3e20f49c92d9948",
+      "bytes": 300
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-cap-sync-stdout.txt",
+      "sha256": "a8adb19af0c94945ad07c03f1a5a300a9c04aa53fa72b7a3edfd540d28a8ae26",
+      "bytes": 532
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-cap-sync-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-assemble-stdout.txt",
+      "sha256": "6360933bb403cb59dc25e16fea56c9859b747dddc18fb4d3c20b9113c9e99ab6",
+      "bytes": 13665
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-assemble-stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-instrumentation-assemble-stdout.txt",
+      "sha256": "f0c4dce7f8528a6ccbe723f05a58c826915ce07fa4153287b7e0689917539af1",
+      "bytes": 14930
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-instrumentation-assemble-stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-badging-stdout.txt",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73",
+      "bytes": 5374
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-badging-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-manifest-stdout.txt",
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec",
+      "bytes": 8836
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-manifest-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-signature-stdout.txt",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+      "bytes": 972
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-signature-stderr.txt",
+      "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+      "bytes": 92
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-alignment-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-alignment-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-badging-stdout.txt",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73",
+      "bytes": 5374
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-badging-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-signature-stdout.txt",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+      "bytes": 972
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-signature-stderr.txt",
+      "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+      "bytes": 92
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preparation-pwa.json",
+      "sha256": "63d5f69f3ebe1e3ad68a1dbfe02d0e0633c73d45743fd74be14511a92bb91cc3",
+      "bytes": 286672
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-build-stdout.txt",
+      "sha256": "02898a70d7057c719d89062ea187c54e605671a782237e9796c833b8a7a86d27",
+      "bytes": 8268
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-build-stderr.txt",
+      "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+      "bytes": 5424
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-audit-stdout.txt",
+      "sha256": "953ad2657e830d7353d693cad441e2e8c32e2b7e201f46e12ea108b1b74e1aac",
+      "bytes": 797
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preparation-ios-bundle.json",
+      "sha256": "b69e1e038c4efa6afabcbff1a408d7063db13e2bd3a35a50ec9ecb2e4d91c490",
+      "bytes": 286862
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-build-stdout.txt",
+      "sha256": "6ac7388c0c3ab4b6a910b2b5775b9b3048954e54dbc55fa40198c2e97791441c",
+      "bytes": 8591
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-build-stderr.txt",
+      "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0",
+      "bytes": 5133
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-audit-stdout.txt",
+      "sha256": "41ca1d639d5a99e2d0c9b8c4debf90a07cc3619bcf313d6ef71430a9a1d24005",
+      "bytes": 1041
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-source-export.json",
+      "sha256": "2c6eebafd5e190d95c2eb546830e03633bdcd4c684e04b19070079c906683ee0",
+      "bytes": 17899
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-source-import.json",
+      "sha256": "c2694d945d095c70ce7ebd0197995139f034ae21e1a9310c6495bd4d96afac39",
+      "bytes": 13611
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-selection-android.json",
+      "sha256": "a5fc90102c8f1a7212ac60eb8067df282276e5ccffe5f2a75558e776982b631d",
+      "bytes": 18998
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-android.json",
+      "sha256": "5c2239b2b3c4809162a7add4a8a71379c330fb1011e31fb11e5def1bbb4c70ab",
+      "bytes": 301888
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-execution-android.json",
+      "sha256": "878cb448d055f36180e7942130abae81b1b2c5d81b66017c4791b532e47e6fb5",
+      "bytes": 2305
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-selection-pwa.json",
+      "sha256": "a4ced40cb489a2b659b6901e4ada50ad4cdcfd97f1b736a5a3c6b985982cded5",
+      "bytes": 6614
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-pwa.json",
+      "sha256": "20f6e6287908585647aa635127fe84a6517b3c79a560ad154c4466bc7ad4dc26",
+      "bytes": 290090
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-execution-pwa.json",
+      "sha256": "33665b064b3e5935d26613ef8f36138f6c6bba650c70ac4590c91e7391d15370",
+      "bytes": 2281
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-selection-ios.json",
+      "sha256": "ebe9ffec7492fd7d2e0eda1cb6706c74d30bceea53878ebd0d3e0a62af774ebb",
+      "bytes": 7583
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-ios.json",
+      "sha256": "8c372d6136a8b156d5dfec2ebc7e8ab6d565e4c77797aaddf2881a13607d9f74",
+      "bytes": 291268
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-execution-ios.json",
+      "sha256": "2b770f1b240ae5521ee805d270de7d18726088c47aa4b85a33c73047a3904c07",
+      "bytes": 2288
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A1-manifest.json",
+      "sha256": "44ef8eb375ff93738139e884326b68a01710645f0e4fdb1e2d915e2bf6f5d633",
+      "bytes": 338
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A1-ready.json",
+      "sha256": "6c5fd39cc6fb9c92f9cfd77d1a02b38f71cb6d24152cc2a72f5979ae403cd12a",
+      "bytes": 2363
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A2-manifest.json",
+      "sha256": "2d827b32526cf6f29543ec456ca1c9d75259833f8f7c1ffb0c86afac398c9f73",
+      "bytes": 338
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A2-ready.json",
+      "sha256": "02052d2cc83f877492f9346b78286ee300f037ddd6cf8dd49517adf25ccaba93",
+      "bytes": 2794
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A3-manifest.json",
+      "sha256": "26f175df3b6c545f3acbf79ffc02861489c6915d268673ec0f5f321d3e3b03b6",
+      "bytes": 338
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A3-ready.json",
+      "sha256": "69a0be7f1c01599e04f2af276b7c4eea90d95438048a9b41f9f6fe254637842b",
+      "bytes": 3850
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A4-manifest.json",
+      "sha256": "53a4e67efd6c2fa00c639a5f8264ac4b265ae4973bc292243df488fdb319b2c0",
+      "bytes": 338
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A4-ready.json",
+      "sha256": "c6959838b22a435721beadd0495e2af354f88e8d02aa7eb54d65c947567300d5",
+      "bytes": 4082
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-three-channel-checks.json",
+      "sha256": "8eb673b398ec569d454777f94b6c1e4e07d81532bb8b011a640816e82b606ba1",
+      "bytes": 10798
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-android-stdout.txt",
+      "sha256": "12c2498b38161d08f04eb43dae2a7ce92128b90bd1ca3700339e2176f5e66e7b",
+      "bytes": 1253
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-android-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-pwa-stdout.txt",
+      "sha256": "640d45f53ce24d2c51292095f2c59c50262f861b1a67fd82fe2fd3692a43caab",
+      "bytes": 1014
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-pwa-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-ios-stdout.txt",
+      "sha256": "8900c9ecb98f51ee2d182a0e8fc7f104d54ef981990f892d73581c29e8945ada",
+      "bytes": 1276
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-ios-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/pwa-current-command-smoke.json",
+      "sha256": "22241ab5cfbcd4fb0cb0121e835403d0b5f582a571cf5801cf2bbafbb0cd50a4",
+      "bytes": 1834
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-runbook.md",
+      "sha256": "36166f61ffbf83a643dac578cd095bf45512033496ed6a7de14010a94548adc2",
+      "bytes": 21889
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-tsc-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-tsc-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preview-stdout.txt",
+      "sha256": "a66f4021b4e2d2ff5e5a92163df013e9b7975a95873c6accde167bc574b2b2f0",
+      "bytes": 46
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preview-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/original-stage-tool-failure.json",
+      "sha256": "1d2217d757bfdc1f1762374b4548b9949d8cd60dd4d0e82693d78609e666c405",
+      "bytes": 1246
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/stage-tool-safe-diagnostic.json",
+      "sha256": "08eebdfec2f182bf758daa817d73dc15b32bcc0840fd9c5cf0a6248f6a558a77",
+      "bytes": 1032
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/nested-git-process-diagnostic.json",
+      "sha256": "e14b91f3c3af8509dcc463f04c61fc978bd8b6cb55eaf15a7ec15b79cf82433a",
+      "bytes": 993
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/entry.json",
+      "sha256": "b8ed39c6915f8b14dbdb70e551452ba656aabca0c5142eebbb05b516395b6387",
+      "bytes": 782
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/result.json",
+      "sha256": "2a6e7b0953d020fbf8423def328ad97834271a1f47b9e265cebfdafbf22204ee",
+      "bytes": 38827
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "prior-continuation-result",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S03\\release-continuation-20261003\\result.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/prior-continuation-result.json",
+      "sha256": "f29bac07c18e4fa2640bbab4d278c941390ea81d7b4b2383a6689d3b09f764a8",
+      "bytes": 70343
+    },
+    {
+      "id": "source-checkpoint",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-bridge.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-checkpoint.json",
+      "sha256": "2a7f593ea1e34e40b9f1b510cadda4dafcc771db2a6f647ae7eaedfcb5bb991f",
+      "bytes": 1247
+    },
+    {
+      "id": "protected-current",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-bridge.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/protected-current.json",
+      "sha256": "d83f238d5e426c1497c57e36410f0ac9c0e2fb8e7281a057377af23232e2deaf",
+      "bytes": 290
+    },
+    {
+      "id": "native-partition-unit-execution",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-bridge-a1\\execution.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-execution.json",
+      "sha256": "a6fa93b1913af6f51b8c3169acff2af3c49eb8144c76f0330b821521abfcf9ad",
+      "bytes": 732
+    },
+    {
+      "id": "native-partition-unit-vitest",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-bridge-a1\\vitest.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-vitest.json",
+      "sha256": "a8d63cd8e433aa52a94373f943769c942adc0ce3988e026d3a33793b5e3f41c8",
+      "bytes": 8441
+    },
+    {
+      "id": "native-partition-unit-stdout",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-bridge-a1\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-stdout.txt",
+      "sha256": "abc4d5683ded70388522872d6d19df44742468c8e481e2f06bfbdfb686fa04ce",
+      "bytes": 471
+    },
+    {
+      "id": "native-partition-unit-stderr",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-bridge-a1\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "native-partition-unit-dirty-source",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea4\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/native-partition-unit-dirty-source.json",
+      "sha256": "53a4e67efd6c2fa00c639a5f8264ac4b265ae4973bc292243df488fdb319b2c0",
+      "bytes": 338
+    },
+    {
+      "id": "current-app-typecheck",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-local-typecheck-30e10d7e-f106-4e2a-a211-b3554df494b9\\result.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-app-typecheck.json",
+      "sha256": "7513854398a6b3662a57fc023e155690d05f08ed4dc98884c5feff0c137c86a7",
+      "bytes": 230010
+    },
+    {
+      "id": "current-preparation-android",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preparation-android.json",
+      "sha256": "4897f965d1ea750b0241fbdf945d9cf52ebfe82724bcd589eb1ce28c9063e7a6",
+      "bytes": 300751
+    },
+    {
+      "id": "build-android-native-build-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\native-build.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-build-stdout.txt",
+      "sha256": "711717d1a0cb790100fe38739a272a67ab8b67bf988538d81e41ba2b97c7df47",
+      "bytes": 8595
+    },
+    {
+      "id": "build-android-native-build-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\native-build.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-build-stderr.txt",
+      "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0",
+      "bytes": 5133
+    },
+    {
+      "id": "build-android-native-audit-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\native-audit.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-audit-stdout.txt",
+      "sha256": "8dfdb65a7cafde2badcfbf0a1873c5436584e8baab2d3ac7850353dd9c0cf9d3",
+      "bytes": 1045
+    },
+    {
+      "id": "build-android-native-audit-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\native-audit.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-native-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-jdk-version-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\jdk-version.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-jdk-version-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-jdk-version-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\jdk-version.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-jdk-version-stderr.txt",
+      "sha256": "c069ba5b371b2674dc747c7a6b0c76d873e4d0f2586e5fa9d3e20f49c92d9948",
+      "bytes": 300
+    },
+    {
+      "id": "build-android-cap-sync-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\cap-sync.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-cap-sync-stdout.txt",
+      "sha256": "a8adb19af0c94945ad07c03f1a5a300a9c04aa53fa72b7a3edfd540d28a8ae26",
+      "bytes": 532
+    },
+    {
+      "id": "build-android-cap-sync-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\cap-sync.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-cap-sync-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-android-assemble-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\android-assemble.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-assemble-stdout.txt",
+      "sha256": "6360933bb403cb59dc25e16fea56c9859b747dddc18fb4d3c20b9113c9e99ab6",
+      "bytes": 13665
+    },
+    {
+      "id": "build-android-android-assemble-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\android-assemble.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-assemble-stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "id": "build-android-android-instrumentation-assemble-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\android-instrumentation-assemble.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-instrumentation-assemble-stdout.txt",
+      "sha256": "f0c4dce7f8528a6ccbe723f05a58c826915ce07fa4153287b7e0689917539af1",
+      "bytes": 14930
+    },
+    {
+      "id": "build-android-android-instrumentation-assemble-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\android-instrumentation-assemble.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-android-instrumentation-assemble-stderr.txt",
+      "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d",
+      "bytes": 343
+    },
+    {
+      "id": "build-android-apk-badging-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-badging.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-badging-stdout.txt",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73",
+      "bytes": 5374
+    },
+    {
+      "id": "build-android-apk-badging-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-badging.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-badging-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-apk-manifest-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-manifest.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-manifest-stdout.txt",
+      "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec",
+      "bytes": 8836
+    },
+    {
+      "id": "build-android-apk-manifest-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-manifest.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-manifest-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-apk-signature-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-signature.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-signature-stdout.txt",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+      "bytes": 972
+    },
+    {
+      "id": "build-android-apk-signature-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-signature.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-signature-stderr.txt",
+      "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+      "bytes": 92
+    },
+    {
+      "id": "build-android-apk-alignment-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-alignment.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-alignment-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-apk-alignment-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\apk-alignment.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-apk-alignment-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-previous-apk-badging-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\previous-apk-badging.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-badging-stdout.txt",
+      "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73",
+      "bytes": 5374
+    },
+    {
+      "id": "build-android-previous-apk-badging-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\previous-apk-badging.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-badging-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-previous-apk-signature-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\previous-apk-signature.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-signature-stdout.txt",
+      "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+      "bytes": 972
+    },
+    {
+      "id": "build-android-previous-apk-signature-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-a76cf754-7fcf-4f4f-80b8-e1af569585e4\\previous-apk-signature.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-android-previous-apk-signature-stderr.txt",
+      "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+      "bytes": 92
+    },
+    {
+      "id": "current-preparation-pwa",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-96b76b28-0ccc-4c8a-b622-60795bed9d22\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preparation-pwa.json",
+      "sha256": "63d5f69f3ebe1e3ad68a1dbfe02d0e0633c73d45743fd74be14511a92bb91cc3",
+      "bytes": 286672
+    },
+    {
+      "id": "build-pwa-pwa-build-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-96b76b28-0ccc-4c8a-b622-60795bed9d22\\pwa-build.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-build-stdout.txt",
+      "sha256": "02898a70d7057c719d89062ea187c54e605671a782237e9796c833b8a7a86d27",
+      "bytes": 8268
+    },
+    {
+      "id": "build-pwa-pwa-build-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-96b76b28-0ccc-4c8a-b622-60795bed9d22\\pwa-build.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-build-stderr.txt",
+      "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+      "bytes": 5424
+    },
+    {
+      "id": "build-pwa-pwa-audit-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-96b76b28-0ccc-4c8a-b622-60795bed9d22\\pwa-audit.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-audit-stdout.txt",
+      "sha256": "953ad2657e830d7353d693cad441e2e8c32e2b7e201f46e12ea108b1b74e1aac",
+      "bytes": 797
+    },
+    {
+      "id": "build-pwa-pwa-audit-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-96b76b28-0ccc-4c8a-b622-60795bed9d22\\pwa-audit.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-pwa-pwa-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "current-preparation-ios-bundle",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-492d3f00-58f4-4b50-9afc-7d3f4b346391\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preparation-ios-bundle.json",
+      "sha256": "b69e1e038c4efa6afabcbff1a408d7063db13e2bd3a35a50ec9ecb2e4d91c490",
+      "bytes": 286862
+    },
+    {
+      "id": "build-ios-bundle-native-build-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-492d3f00-58f4-4b50-9afc-7d3f4b346391\\native-build.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-build-stdout.txt",
+      "sha256": "6ac7388c0c3ab4b6a910b2b5775b9b3048954e54dbc55fa40198c2e97791441c",
+      "bytes": 8591
+    },
+    {
+      "id": "build-ios-bundle-native-build-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-492d3f00-58f4-4b50-9afc-7d3f4b346391\\native-build.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-build-stderr.txt",
+      "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0",
+      "bytes": 5133
+    },
+    {
+      "id": "build-ios-bundle-native-audit-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-492d3f00-58f4-4b50-9afc-7d3f4b346391\\native-audit.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-audit-stdout.txt",
+      "sha256": "41ca1d639d5a99e2d0c9b8c4debf90a07cc3619bcf313d6ef71430a9a1d24005",
+      "bytes": 1041
+    },
+    {
+      "id": "build-ios-bundle-native-audit-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-492d3f00-58f4-4b50-9afc-7d3f4b346391\\native-audit.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/build-ios-bundle-native-audit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "current-source-export",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-native-bridge-4a8cbd29-76d7-499b-a823-b8c4bb214976\\source-export.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-source-export.json",
+      "sha256": "2c6eebafd5e190d95c2eb546830e03633bdcd4c684e04b19070079c906683ee0",
+      "bytes": 17899
+    },
+    {
+      "id": "current-source-import",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-native-bridge-import-5e87d461-6c38-47d0-81af-f9c1891eb7be\\result.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-source-import.json",
+      "sha256": "c2694d945d095c70ce7ebd0197995139f034ae21e1a9310c6495bd4d96afac39",
+      "bytes": 13611
+    },
+    {
+      "id": "release-selection-android",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-android.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-selection-android.json",
+      "sha256": "a5fc90102c8f1a7212ac60eb8067df282276e5ccffe5f2a75558e776982b631d",
+      "bytes": 18998
+    },
+    {
+      "id": "release-check-android",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-android.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-android.json",
+      "sha256": "5c2239b2b3c4809162a7add4a8a71379c330fb1011e31fb11e5def1bbb4c70ab",
+      "bytes": 301888
+    },
+    {
+      "id": "release-check-execution-android",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\android.execution.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-execution-android.json",
+      "sha256": "878cb448d055f36180e7942130abae81b1b2c5d81b66017c4791b532e47e6fb5",
+      "bytes": 2305
+    },
+    {
+      "id": "release-selection-pwa",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-pwa.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-selection-pwa.json",
+      "sha256": "a4ced40cb489a2b659b6901e4ada50ad4cdcfd97f1b736a5a3c6b985982cded5",
+      "bytes": 6614
+    },
+    {
+      "id": "release-check-pwa",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-pwa.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-pwa.json",
+      "sha256": "20f6e6287908585647aa635127fe84a6517b3c79a560ad154c4466bc7ad4dc26",
+      "bytes": 290090
+    },
+    {
+      "id": "release-check-execution-pwa",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\pwa.execution.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-execution-pwa.json",
+      "sha256": "33665b064b3e5935d26613ef8f36138f6c6bba650c70ac4590c91e7391d15370",
+      "bytes": 2281
+    },
+    {
+      "id": "release-selection-ios",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-input-ios.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-selection-ios.json",
+      "sha256": "ebe9ffec7492fd7d2e0eda1cb6706c74d30bceea53878ebd0d3e0a62af774ebb",
+      "bytes": 7583
+    },
+    {
+      "id": "release-check-ios",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\readiness-ios.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-ios.json",
+      "sha256": "8c372d6136a8b156d5dfec2ebc7e8ab6d565e4c77797aaddf2881a13607d9f74",
+      "bytes": 291268
+    },
+    {
+      "id": "release-check-execution-ios",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\ios.execution.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-execution-ios.json",
+      "sha256": "2b770f1b240ae5521ee805d270de7d18726088c47aa4b85a33c73047a3904c07",
+      "bytes": 2288
+    },
+    {
+      "id": "source-proposal-A1-manifest",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea1\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A1-manifest.json",
+      "sha256": "44ef8eb375ff93738139e884326b68a01710645f0e4fdb1e2d915e2bf6f5d633",
+      "bytes": 338
+    },
+    {
+      "id": "source-proposal-A1-ready",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea1\\READY.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A1-ready.json",
+      "sha256": "6c5fd39cc6fb9c92f9cfd77d1a02b38f71cb6d24152cc2a72f5979ae403cd12a",
+      "bytes": 2363
+    },
+    {
+      "id": "source-proposal-A2-manifest",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea2\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A2-manifest.json",
+      "sha256": "2d827b32526cf6f29543ec456ca1c9d75259833f8f7c1ffb0c86afac398c9f73",
+      "bytes": 338
+    },
+    {
+      "id": "source-proposal-A2-ready",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea2\\READY.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A2-ready.json",
+      "sha256": "02052d2cc83f877492f9346b78286ee300f037ddd6cf8dd49517adf25ccaba93",
+      "bytes": 2794
+    },
+    {
+      "id": "source-proposal-A3-manifest",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea3\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A3-manifest.json",
+      "sha256": "26f175df3b6c545f3acbf79ffc02861489c6915d268673ec0f5f321d3e3b03b6",
+      "bytes": 338
+    },
+    {
+      "id": "source-proposal-A3-ready",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea3\\READY.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A3-ready.json",
+      "sha256": "69a0be7f1c01599e04f2af276b7c4eea90d95438048a9b41f9f6fe254637842b",
+      "bytes": 3850
+    },
+    {
+      "id": "source-proposal-A4-manifest",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea4\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A4-manifest.json",
+      "sha256": "53a4e67efd6c2fa00c639a5f8264ac4b265ae4973bc292243df488fdb319b2c0",
+      "bytes": 338
+    },
+    {
+      "id": "source-proposal-A4-ready",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-repair-bridgea4\\READY.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/source-proposal-A4-ready.json",
+      "sha256": "c6959838b22a435721beadd0495e2af354f88e8d02aa7eb54d65c947567300d5",
+      "bytes": 4082
+    },
+    {
+      "id": "current-three-channel-checks",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\current-native-bridge-channel-checks.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-three-channel-checks.json",
+      "sha256": "8eb673b398ec569d454777f94b6c1e4e07d81532bb8b011a640816e82b606ba1",
+      "bytes": 10798
+    },
+    {
+      "id": "release-check-android-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\android.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-android-stdout.txt",
+      "sha256": "12c2498b38161d08f04eb43dae2a7ce92128b90bd1ca3700339e2176f5e66e7b",
+      "bytes": 1253
+    },
+    {
+      "id": "release-check-android-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\android.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-android-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "release-check-pwa-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\pwa.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-pwa-stdout.txt",
+      "sha256": "640d45f53ce24d2c51292095f2c59c50262f861b1a67fd82fe2fd3692a43caab",
+      "bytes": 1014
+    },
+    {
+      "id": "release-check-pwa-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\pwa.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-pwa-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "release-check-ios-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\ios.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-ios-stdout.txt",
+      "sha256": "8900c9ecb98f51ee2d182a0e8fc7f104d54ef981990f892d73581c29e8945ada",
+      "bytes": 1276
+    },
+    {
+      "id": "release-check-ios-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-bridge-check-5f4a28fd-447b-43e9-b1f1-780e1019f3b8\\ios.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/release-check-ios-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "pwa-current-command-smoke",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-preview-33f7f84e-3010-4b74-b4bb-fa34036846d0\\result.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/pwa-current-command-smoke.json",
+      "sha256": "22241ab5cfbcd4fb0cb0121e835403d0b5f582a571cf5801cf2bbafbb0cd50a4",
+      "bytes": 1834
+    },
+    {
+      "id": "current-runbook",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\NATIVE_PARTITION_RUNBOOK.final.md",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-runbook.md",
+      "sha256": "36166f61ffbf83a643dac578cd095bf45512033496ed6a7de14010a94548adc2",
+      "bytes": 21889
+    },
+    {
+      "id": "current-tsc-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-local-typecheck-30e10d7e-f106-4e2a-a211-b3554df494b9\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-tsc-stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "current-tsc-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-local-typecheck-30e10d7e-f106-4e2a-a211-b3554df494b9\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-tsc-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "current-preview-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-preview-33f7f84e-3010-4b74-b4bb-fa34036846d0\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preview-stdout.txt",
+      "sha256": "a66f4021b4e2d2ff5e5a92163df013e9b7975a95873c6accde167bc574b2b2f0",
+      "bytes": 46
+    },
+    {
+      "id": "current-preview-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-preview-33f7f84e-3010-4b74-b4bb-fa34036846d0\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/current-preview-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "original-stage-tool-failure",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-partition-stage-a1-failure.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/original-stage-tool-failure.json",
+      "sha256": "1d2217d757bfdc1f1762374b4548b9949d8cd60dd4d0e82693d78609e666c405",
+      "bytes": 1246
+    },
+    {
+      "id": "stage-tool-safe-diagnostic",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-partition-staging-diagnostic-e43bf896-a483-49e1-a171-852cd07f7a8f.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/stage-tool-safe-diagnostic.json",
+      "sha256": "08eebdfec2f182bf758daa817d73dc15b32bcc0840fd9c5cf0a6248f6a558a77",
+      "bytes": 1032
+    },
+    {
+      "id": "nested-git-process-diagnostic",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-report-nested-git-diagnostic.json",
+      "path": "docs/mobile/evidence/S16/native-partition-client-20261003/raw/nested-git-process-diagnostic.json",
+      "sha256": "e14b91f3c3af8509dcc463f04c61fc978bd8b6cb55eaf15a7ec15b79cf82433a",
+      "bytes": 993
+    }
+  ],
+  "releaseReady": false
+}

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-local-package-tooling-failure",
+  "status": "FAIL",
+  "declaredSourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "startedAt": "2026-10-03T04:19:46.717Z",
+  "finishedAt": "2026-10-03T04:19:47.749Z",
+  "exitCode": 1,
+  "signal": null,
+  "phase": "Current-source capture before packet writes",
+  "cause": "Git ownership check in the sandbox process rejected the physical project path. The actual product checks/builds are unchanged.",
+  "originalInput": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-bridge-delivery-input.final.json",
+    "sha256": "ce7166196cc6b091c4f99577d22f670e04d3873c016ff8d30209125fea323533"
+  },
+  "originalExecution": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-bridge-packet-assembly-a3\\execution.json",
+    "sha256": "4362936ff429de0af82da815b3ddab5b6e91240d8c301bf11f04531a79b8875b"
+  },
+  "originalStdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-bridge-packet-assembly-a3\\stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "originalStderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-bridge-packet-assembly-a3\\stderr.txt",
+    "sha256": "5ce979a9aad6175d4ad91028d106b261857cf748ae917352fe906a5a7ec8bbf6",
+    "packaged": false,
+    "reason": "System ownership diagnostic retained locally; copied proof contains only the classified cause."
+  },
+  "directoryCreated": false,
+  "projectWrites": 0,
+  "applicationChecks": 0,
+  "releaseReady": false,
+  "correctiveInvocation": "Same frozen helper in the authorized project-owner execution context; no global Git configuration or source changes"
+}
