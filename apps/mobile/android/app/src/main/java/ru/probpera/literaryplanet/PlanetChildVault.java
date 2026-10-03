@@ -1456,6 +1456,305 @@ final class PlanetChildVault {
         }
         public synchronized void close() { closed=true;cancel(); }
     }
+    /** Private connected verification mechanics only. Genuine checkpoint,
+     * host/action/time provenance and the verification UI adapter are absent.
+     * No metadata, test callback, math result or delivery enum admits a Gate.
+     * Production remains null; reuse is limited to existing locked IO, strict
+     * canonical journal and fixed platform mathematics, not enrollment actions. */
+    private static final class PinVerificationPolicy {
+        final String version,checksum;final long maximumIterations;private final long[] delays;
+        private PinVerificationPolicy(String version,String checksum,long maximum,long[] delays) throws Exception {
+            require(ProtectedEnvelope.identifier(version)&&ProtectedEnvelope.hash(checksum)&&maximum>=600000&&maximum<=0xffffffffL
+                &&delays!=null&&delays.length>=1&&delays.length<=64);long[] owned=delays.clone();
+            for(int i=0;i<owned.length;i++)require(owned[i]>0&&owned[i]<=MAX_SAFE&&(i==0||owned[i]>owned[i-1]));
+            this.version=version;this.checksum=checksum;maximumIterations=maximum;this.delays=owned;
+        }
+    }
+    private static final class PinGateContext {
+        final String profileId,policyVersion,mode,visibility;final long profileRevision,routeRevision;
+        private PinGateContext(String profile,String policy,long profileRevision,long routeRevision,String mode,String visibility) throws Exception {
+            require(ProtectedEnvelope.identifier(profile)&&ProtectedEnvelope.identifier(policy)&&profileRevision>=1&&profileRevision<=MAX_SAFE
+                &&routeRevision>=0&&routeRevision<=MAX_SAFE&&"child".equals(mode)&&"active".equals(visibility));
+            profileId=profile;policyVersion=policy;this.profileRevision=profileRevision;this.routeRevision=routeRevision;this.mode=mode;this.visibility=visibility;
+        }
+    }
+    private static final class PinGateRequest {
+        final Object originalHostChallenge;final String id,action,targetChecksum;final PinGateContext context;
+        final long generation,deadlineUptimeMs;
+        private PinGateRequest(Object original,String id,String action,String target,PinGateContext context,long generation,long deadline) throws Exception {
+            require(original!=null&&ProtectedEnvelope.hash(id)&&ProtectedEnvelope.hash(target)&&context!=null&&generation>=0&&generation<=MAX_SAFE
+                &&deadline>0&&deadline<=MAX_SAFE&&Arrays.asList("exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store",
+                    "initiate-purchase","restore-purchases","open-external","share","account-change","export-child-data","delete-child-data","diagnostics",
+                    "expand-access-settings","enable-licensed-pack","view-legal-commercial").contains(action));
+            originalHostChallenge=original;this.id=id;this.action=action;targetChecksum=target;this.context=context;this.generation=generation;deadlineUptimeMs=deadline;
+        }
+    }
+    private enum PinVerificationPhase { reserved,beginning,ready,verifying,finalized,blocked,denied,cancelled,sealed,closing,closed }
+    private enum PinVerificationTransition { reserve,finalize }
+    private enum PinVerificationDelivery { known,uncertain }
+    private static final class PinVerificationKnownRefusal extends Exception {
+        final boolean blocked;private PinVerificationKnownRefusal(boolean blocked){this.blocked=blocked;}
+    }
+    /** Required distinct genuine dependencies, deliberately unimplemented.
+     * advance must durably consume the exact original one-use journal permission
+     * BEFORE write. current(next) authenticates that selected checkpoint at
+     * publication boundaries; separate exact readback proves the record write.
+     * Cleanup also owns partially completed capture when lease is still null. */
+    private interface PinVerificationAuthority {
+        PinVerificationCoordinates capture(PinGateRequest gate,byte[] bytes,String checksum,long revision) throws Exception;
+        PinVerificationCoordinates current(OwnedPinVerification owned,byte[] bytes,String checksum,long revision) throws Exception;
+        Object authorizeTransition(OwnedPinVerification owned,PinVerificationTransition kind,byte[] expected,byte[] next,
+            String expectedChecksum,String nextChecksum,long expectedRevision,long nextRevision) throws Exception;
+        void advance(OwnedPinVerification owned,Object originalPermission,PinVerificationTransition kind,String checksum,long revision) throws Exception;
+        void cancel(PinGateRequest gate,OwnedPinVerification owned) throws Exception;
+        void retire(PinGateRequest gate,OwnedPinVerification owned) throws Exception;
+    }
+    private static final class PinVerificationCoordinates {
+        final PinVerificationAuthority owner;final String epoch,bootId,checksum;final long revision,hostGeneration,uptimeMs,logicalMs;
+        private PinVerificationCoordinates(PinVerificationAuthority owner,String epoch,String boot,String checksum,long revision,long host,long uptime,long logical) {
+            this.owner=owner;this.epoch=epoch;bootId=boot;this.checksum=checksum;this.revision=revision;hostGeneration=host;uptimeMs=uptime;logicalMs=logical;
+        }
+    }
+    private static final class PinVerificationTicket {
+        final NativePinVerification owner;final PinGateRequest gate;PinVerificationPhase phase=PinVerificationPhase.reserved;
+        boolean cancelled,sealed,retiring,retirementFenced,cancelCleanupStarted;int workers,transfers;OwnedPinVerification owned;PinVerificationReply terminal;
+        private PinVerificationMath math;
+        final java.util.Set<Object> permissions=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<Object,Boolean>());
+        final java.util.IdentityHashMap<Thread,Integer> threads=new java.util.IdentityHashMap<>();
+        final java.util.Set<PinVerificationReply> replies=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<PinVerificationReply,Boolean>());
+        private PinVerificationTicket(NativePinVerification owner,PinGateRequest gate){this.owner=owner;this.gate=gate;}
+    }
+    private static final class OwnedPinVerification {
+        final NativePinVerification owner;final PinVerificationTicket ticket;final PinGateRequest gate;final PinVerificationPolicy policy;
+        final String checksum,epoch,bootId;final long revision,pinRevision,hostGeneration,capturedUptimeMs,capturedLogicalMs,deadlineUptimeMs,clockUptimeMs,clockLogicalMs;
+        private final byte[] expected;private boolean closed;private long lastUptimeMs;private OwnedPinVerificationInput input;
+        private OwnedPinVerification(NativePinVerification owner,PinVerificationTicket ticket,byte[] bytes,ProtectedEnvelope record,PinVerificationCoordinates point,long clockUptime) {
+            this.owner=owner;this.ticket=ticket;gate=ticket.gate;policy=owner.policy;expected=bytes.clone();checksum=record.checksum;revision=record.revision;pinRevision=record.pinRevision;
+            epoch=point.epoch;bootId=point.bootId;hostGeneration=point.hostGeneration;capturedUptimeMs=point.uptimeMs;lastUptimeMs=point.uptimeMs;capturedLogicalMs=point.logicalMs;
+            deadlineUptimeMs=gate.deadlineUptimeMs;clockUptimeMs=clockUptime;clockLogicalMs=record.logicalAnchorMs;
+        }
+        private void wipe(){closed=true;Arrays.fill(expected,(byte)0);if(input!=null)input.close();}
+    }
+    /** Mechanical original-request binding only, not a genuine native UI. The
+     * missing UI must attach that request before accepting any entered byte. */
+    private static final class OwnedPinVerificationInput implements AutoCloseable {
+        final NativePinVerification owner;final OwnedPinVerification owned;private final PinVerificationInput input;private boolean taken,closed;
+        private OwnedPinVerificationInput(NativePinVerification owner,OwnedPinVerification owned,PinVerificationInput input){this.owner=owner;this.owned=owned;this.input=input;}
+        private byte[] take() throws Exception { synchronized(owner){require(!closed&&!taken&&owned.input==this);taken=true;return input.take();} }
+        public void close(){synchronized(owner){closed=true;input.close();}}
+    }
+    private static final class PinVerificationReply implements AutoCloseable {
+        final NativePinVerification owner;final PinVerificationTicket ticket;final OwnedPinVerification owned;final boolean terminal,platformMath;
+        final String checksum;private final PinVerificationOutcome comparison;private final byte[] bytes;private boolean closed,settled,deliveryStarted,deliveryCompleted;
+        private PinVerificationReply(NativePinVerification owner,PinVerificationTicket ticket,OwnedPinVerification owned,byte[] bytes,String checksum,
+            PinVerificationOutcome comparison,boolean terminal,boolean platform){this.owner=owner;this.ticket=ticket;this.owned=owned;this.bytes=bytes.clone();this.checksum=checksum;
+            this.comparison=comparison;this.terminal=terminal;platformMath=platform;}
+        private PinVerificationOutcome mathematicalOutcome() throws Exception { synchronized(owner){owner.replyFence(this);
+            require(!terminal&&!closed&&!ticket.cancelled&&!ticket.sealed&&!ticket.retiring);return comparison;} }
+        public void close(){synchronized(owner){closed=true;Arrays.fill(bytes,(byte)0);}}
+    }
+    private interface PinVerificationRecipient { void receive(PinVerificationReply original) throws Exception; }
+    private static final class PinVerificationMutation {
+        final NativePinVerification owner;final OwnedPinVerification owned;final PinVerificationTransition kind;final Object permission;
+        final String expectedChecksum,nextChecksum;final long expectedRevision,nextRevision;boolean consumed;
+        private PinVerificationMutation(NativePinVerification owner,OwnedPinVerification owned,PinVerificationTransition kind,Object permission,
+            String expected,String next,long before,long after){this.owner=owner;this.owned=owned;this.kind=kind;this.permission=permission;
+            expectedChecksum=expected;nextChecksum=next;expectedRevision=before;nextRevision=after;}
+    }
+    private static final class NativePinVerification {
+        private final PinSessionIO io;private final PinVerificationAuthority authority;private final PinVerificationPolicy policy;
+        private final PinVerificationEngine fixtureEngine;private PinVerificationTicket active;private final java.util.Set<String> usedIds=new java.util.HashSet<>();
+        private NativePinVerification(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy) throws Exception {this(io,authority,policy,null);}
+        private NativePinVerification(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy,PinVerificationEngine fixture) throws Exception {
+            require(io!=null&&authority!=null&&policy!=null);this.io=io;this.authority=authority;this.policy=policy;fixtureEngine=fixture;
+        }
+        /** Explicit B-only synthetic engine seam; no flag selects this in App. */
+        private static NativePinVerification syntheticFixture(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy,PinVerificationEngine engine) throws Exception {
+            require(engine!=null);return new NativePinVerification(io,authority,policy,engine);
+        }
+        private static void refuse(boolean allowed,boolean blocked) throws PinVerificationKnownRefusal {if(!allowed)throw new PinVerificationKnownRefusal(blocked);}
+        private static long add(long left,long right) throws Exception {require(left>=0&&right>=0&&left<=MAX_SAFE-right);return left+right;}
+        private synchronized void own(PinVerificationTicket ticket) throws Exception {require(ticket!=null&&ticket.owner==this&&active==ticket&&ticket.phase!=PinVerificationPhase.closed);}
+        private synchronized void live(PinVerificationTicket ticket) throws Exception {own(ticket);refuse(!ticket.cancelled&&!ticket.sealed&&!ticket.retiring,false);}
+        private synchronized void lease(OwnedPinVerification owned) throws Exception {require(owned!=null&&owned.owner==this&&owned.policy==policy&&owned.gate==owned.ticket.gate
+            &&owned.ticket.owned==owned&&!owned.closed&&digest(owned.expected).equals(owned.checksum));live(owned.ticket);}
+        private void worker(PinVerificationTicket ticket){ticket.workers++;Thread thread=Thread.currentThread();ticket.threads.put(thread,ticket.threads.getOrDefault(thread,0)+1);}
+        private synchronized void settledWorker(PinVerificationTicket ticket){ticket.workers--;Thread thread=Thread.currentThread();int left=ticket.threads.get(thread)-1;
+            if(left==0)ticket.threads.remove(thread);else ticket.threads.put(thread,left);wipeSealed(ticket);notifyAll();}
+        private void wipeSealed(PinVerificationTicket ticket){if(!ticket.sealed)return;for(PinVerificationReply reply:ticket.replies)reply.close();if(ticket.workers==0&&ticket.owned!=null)ticket.owned.wipe();}
+        private synchronized void failed(PinVerificationTicket ticket,Exception error,boolean publication){
+            if(ticket.sealed||publication||!(error instanceof PinVerificationKnownRefusal)){ticket.sealed=true;ticket.phase=PinVerificationPhase.sealed;}
+            else ticket.phase=((PinVerificationKnownRefusal)error).blocked?PinVerificationPhase.blocked:ticket.cancelled?PinVerificationPhase.cancelled:PinVerificationPhase.denied;
+            wipeSealed(ticket);notifyAll();
+        }
+        /** Preserve typed known refusal across the existing vault IO's generic
+         * error wrapper, without changing its storage/enrollment semantics. */
+        private <T>T locked(PinSessionTask<T> task) throws Exception {final PinVerificationKnownRefusal[] refusal={null};
+            T result=io.locked(transaction->{try{return task.run(transaction);}catch(PinVerificationKnownRefusal known){refusal[0]=known;return null;}});
+            if(refusal[0]!=null)throw refusal[0];return result;
+        }
+        private static <T>T isolated(byte[] original,PinBytesTask<T> callback) throws Exception {byte[] copy=original.clone();
+            try{T result=callback.run(copy);require(MessageDigest.isEqual(copy,original));return result;}finally{Arrays.fill(copy,(byte)0);}}
+        private void coordinates(PinVerificationCoordinates point,String checksum,long revision) throws Exception {require(point!=null&&point.owner==authority
+            &&ProtectedEnvelope.hash(point.epoch)&&validBoot(point.bootId)&&checksum.equals(point.checksum)&&point.revision==revision
+            &&point.hostGeneration>=0&&point.hostGeneration<=MAX_SAFE&&point.uptimeMs>=0&&point.uptimeMs<=MAX_SAFE&&point.logicalMs>=0&&point.logicalMs<=MAX_SAFE);}
+        private static long clockUptime(ProtectedEnvelope record) throws Exception {ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(record.canonical,record.pinEnd,record.canonical.length-record.pinEnd,StandardCharsets.US_ASCII));
+            p.field("clock",false);p.field("schemaVersion",true);p.number(1,1);p.field("bootId",false);p.string();p.field("uptimeAnchorMs",false);return p.number(0,MAX_SAFE);}
+        private static String clockBoot(ProtectedEnvelope record) throws Exception {ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(record.canonical,record.pinEnd,record.canonical.length-record.pinEnd,StandardCharsets.US_ASCII));
+            p.field("clock",false);p.field("schemaVersion",true);p.number(1,1);p.field("bootId",false);return p.string();}
+        private static void context(ProtectedEnvelope record,PinGateRequest gate) throws Exception {ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(record.canonical,StandardCharsets.UTF_8));
+            p.field("schemaVersion",true);p.number(1,1);p.field("revision",false);p.number(1,MAX_SAFE);p.field("mode",false);refuse(p.string().equals(gate.context.mode),false);
+            p.field("selectionRevision",false);p.number(1,MAX_SAFE);p.field("profileRevision",false);refuse(p.number(1,MAX_SAFE)==gate.context.profileRevision,false);
+            p.field("policyChecksum",false);p.string();p.field("registryChecksum",false);p.string();p.field("registry",false);p.field("schemaVersion",true);p.number(1,1);
+            p.field("policyVersion",false);refuse(p.string().equals(gate.context.policyVersion),false);p.field("activeProfileId",false);refuse(gate.context.profileId.equals(p.nullableString()),false);}
+        private PinVerificationCoordinates current(OwnedPinVerification owned,byte[] bytes,String checksum,long revision) throws Exception {
+            lease(owned);require(digest(bytes).equals(checksum));PinVerificationCoordinates point=isolated(bytes,copy->authority.current(owned,copy,checksum,revision));
+            lease(owned);coordinates(point,checksum,revision);require(digest(bytes).equals(checksum)&&point.epoch.equals(owned.epoch)&&point.bootId.equals(owned.bootId)
+                &&point.hostGeneration==owned.hostGeneration&&point.logicalMs==add(owned.clockLogicalMs,point.uptimeMs-owned.clockUptimeMs));
+            synchronized(this){lease(owned);refuse(point.uptimeMs>=owned.lastUptimeMs&&point.uptimeMs<owned.deadlineUptimeMs,false);owned.lastUptimeMs=point.uptimeMs;}return point;
+        }
+        private void background() throws Exception {if(fixtureEngine==null)require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());}
+        private synchronized PinVerificationTicket ticket(PinGateRequest gate) throws Exception {require(gate!=null&&active!=null&&active.gate==gate);own(active);return active;}
+        private OwnedPinVerification begin(PinGateRequest gate) throws Exception {
+            background();PinVerificationTicket original;
+            synchronized(this){require(gate!=null&&gate.context.policyVersion.equals(policy.version)&&usedIds.size()<2048&&!usedIds.contains(gate.id));
+                refuse(active==null,false);require(usedIds.add(gate.id));original=new PinVerificationTicket(this,gate);active=original;original.phase=PinVerificationPhase.beginning;worker(original);}
+            try{return locked(transaction->{live(original);byte[] bytes=transaction.read();
+                try(ProtectedEnvelope record=ProtectedEnvelope.decode(bytes,policy.version,policy.checksum,policy.maximumIterations)){
+                    refuse(!record.unenrolled,false);context(record,gate);PinVerificationCoordinates point=isolated(bytes,copy->authority.capture(gate,copy,record.checksum,record.revision));
+                    live(original);coordinates(point,record.checksum,record.revision);long clock=clockUptime(record);
+                    require(digest(bytes).equals(record.checksum)&&clockBoot(record).equals(point.bootId)&&point.uptimeMs>=clock
+                        &&point.logicalMs==add(record.logicalAnchorMs,point.uptimeMs-clock)&&point.logicalMs>=record.lastObservedMs);
+                    refuse(point.uptimeMs<gate.deadlineUptimeMs,false);refuse(point.logicalMs>=record.blockedUntilMs,true);
+                    OwnedPinVerification owned;synchronized(this){live(original);owned=new OwnedPinVerification(this,original,bytes,record,point,clock);original.owned=owned;}
+                    current(owned,bytes,record.checksum,record.revision);
+                    synchronized(this){lease(owned);original.phase=PinVerificationPhase.ready;}return owned;
+                }finally{PinVerifierMaterial.wipe(bytes);}
+            });}catch(Exception error){failed(original,error,false);throw error;}finally{settledWorker(original);}
+        }
+        private synchronized OwnedPinVerificationInput bindInput(OwnedPinVerification owned,PinVerificationInput raw) throws Exception {
+            lease(owned);require(raw!=null&&owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0&&owned.input==null);
+            OwnedPinVerificationInput original=new OwnedPinVerificationInput(this,owned,raw);owned.input=original;return original;
+        }
+        private void exactCurrent(PinSessionTransaction transaction,OwnedPinVerification owned,byte[] expected,String checksum,long revision) throws Exception {
+            lease(owned);byte[] actual=transaction.read();try{refuse(actual!=null&&MessageDigest.isEqual(actual,expected),false);
+                require(digest(expected).equals(checksum));current(owned,expected,checksum,revision);}finally{PinVerifierMaterial.wipe(actual);}
+        }
+        private void mutationFence(PinVerificationMutation mutation,byte[] expected,byte[] next) throws Exception {
+            lease(mutation.owned);require(mutation.owner==this&&mutation.permission!=null&&mutation.kind!=null
+                &&digest(expected).equals(mutation.expectedChecksum)&&digest(next).equals(mutation.nextChecksum)
+                &&mutation.expectedRevision<MAX_SAFE&&mutation.nextRevision==mutation.expectedRevision+1);
+        }
+        private void publish(PinSessionTransaction transaction,OwnedPinVerification owned,PinVerificationTransition kind,byte[] expected,byte[] next,
+            String oldChecksum,String nextChecksum,long oldRevision,long nextRevision,boolean[] publication) throws Exception {
+            exactCurrent(transaction,owned,expected,oldChecksum,oldRevision);
+            try(ProtectedEnvelope before=ProtectedEnvelope.decode(expected,policy.version,policy.checksum,policy.maximumIterations);
+                ProtectedEnvelope after=ProtectedEnvelope.decode(next,policy.version,policy.checksum,policy.maximumIterations)){
+                require(before.revision==oldRevision&&after.revision==nextRevision&&nextRevision==add(oldRevision,1)
+                    &&before.pinRevision<MAX_SAFE&&after.pinRevision==before.pinRevision+1);
+                Object permission=isolated(expected,oldCopy->isolated(next,nextCopy->authority.authorizeTransition(owned,kind,oldCopy,nextCopy,oldChecksum,nextChecksum,oldRevision,nextRevision)));
+                require(permission!=null);PinVerificationMutation mutation=new PinVerificationMutation(this,owned,kind,permission,oldChecksum,nextChecksum,oldRevision,nextRevision);
+                mutationFence(mutation,expected,next);exactCurrent(transaction,owned,expected,oldChecksum,oldRevision);
+                synchronized(this){lease(owned);require(!mutation.consumed&&owned.ticket.permissions.size()<2&&owned.ticket.permissions.add(permission));mutation.consumed=true;}
+                publication[0]=true;authority.advance(owned,mutation.permission,kind,nextChecksum,nextRevision);mutationFence(mutation,expected,next);
+                byte[] disposable=next.clone();try{CommitCheck boundary=()->{mutationFence(mutation,expected,next);
+                        require(MessageDigest.isEqual(disposable,next));current(owned,next,nextChecksum,nextRevision);mutationFence(mutation,expected,next);require(MessageDigest.isEqual(disposable,next));};
+                    // The selected checkpoint is next after advance. Do not
+                    // authenticate expected against an already advanced epoch.
+                    boundary.check();transaction.write(disposable,boundary);boundary.check();
+                    byte[] readback=transaction.read();try{require(readback!=null&&MessageDigest.isEqual(readback,next));}finally{PinVerifierMaterial.wipe(readback);}
+                    boundary.check();publication[0]=false;
+                }finally{Arrays.fill(disposable,(byte)0);}
+            }
+        }
+        private PinVerificationReply verify(OwnedPinVerification owned,OwnedPinVerificationInput input) throws Exception {
+            background();synchronized(this){lease(owned);require(input!=null&&input.owner==this&&input.owned==owned&&owned.input==input&&!input.closed&&!input.taken);
+                require(owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0);owned.ticket.phase=PinVerificationPhase.verifying;worker(owned.ticket);}
+            byte[] pin=null,expected=null,charged=null,finalBytes=null;PinAttemptJournal journal=null;PinVerifierMaterial material=null;
+            PinVerificationMath math=null;PinVerificationComparison comparison=null;final boolean[] publication={false};
+            try{pin=input.take();refuse(pin.length>=1&&pin.length<=128,false);expected=owned.expected.clone();journal=new PinAttemptJournal(policy.version,policy.checksum,policy.maximumIterations,policy.delays);
+                final byte[] before=expected;final PinAttemptJournal planner=journal;
+                PinAttemptReservation reservation=locked(transaction->{exactCurrent(transaction,owned,before,owned.checksum,owned.revision);
+                    PinVerificationCoordinates point=current(owned,before,owned.checksum,owned.revision);PinAttemptReservation original=planner.reserve(before,owned.gate.id,point.logicalMs);
+                    byte[] next=original.copyReservedBytes();try{publish(transaction,owned,PinVerificationTransition.reserve,before,next,owned.checksum,original.reservationChecksum,
+                        owned.revision,original.rootRevision,publication);return original;}finally{Arrays.fill(next,(byte)0);}});
+                charged=reservation.copyReservedBytes();final byte[] reserved=charged;PinVerificationOutcome outcome=PinVerificationOutcome.mismatch;boolean platform=false;
+                boolean digits=true;for(byte value:pin)digits&=value>=48&&value<=57;
+                // Even malformed bounded nonempty input has now been charged.
+                // Cancellation never resets that durable reservation.
+                lease(owned);
+                if(digits){material=PinVerifierMaterial.decode(charged,policy.version,policy.checksum,policy.maximumIterations);
+                    math=fixtureEngine==null?new PinVerificationMath(material):PinVerificationMath.syntheticFixture(material,fixtureEngine);
+                    synchronized(this){lease(owned);owned.ticket.math=math;}
+                    PinVerificationInput moved=new PinVerificationInput(pin.clone());
+                    try{comparison=math.compare(material,moved,identity->{lease(owned);require(identity.fullRecordChecksum.equals(reservation.reservationChecksum)
+                            &&identity.recordRevision==reservation.rootRevision&&identity.pinRevision==reservation.pinRevision);
+                        locked(transaction->{exactCurrent(transaction,owned,reserved,reservation.reservationChecksum,reservation.rootRevision);return null;});});}
+                    finally{moved.close();}lease(owned);outcome=comparison.mathematicalOutcome();platform=comparison.platformKdf;
+                }
+                Arrays.fill(pin,(byte)0);pin=null;final PinAttemptCompletion completion=outcome==PinVerificationOutcome.match?PinAttemptCompletion.match:PinAttemptCompletion.mismatch;
+                PinAttemptFinalization finalization=locked(transaction->{exactCurrent(transaction,owned,reserved,reservation.reservationChecksum,reservation.rootRevision);
+                    PinVerificationCoordinates point=current(owned,reserved,reservation.reservationChecksum,reservation.rootRevision);
+                    PinAttemptFinalization original=planner.finalizeAttempt(reservation,reserved,completion,point.logicalMs);byte[] next=original.copyCanonicalBytes();
+                    try(ProtectedEnvelope record=ProtectedEnvelope.decode(next,policy.version,policy.checksum,policy.maximumIterations)){
+                        publish(transaction,owned,PinVerificationTransition.finalize,reserved,next,reservation.reservationChecksum,original.checksum,reservation.rootRevision,record.revision,publication);
+                        return original;
+                    }finally{Arrays.fill(next,(byte)0);}});
+                finalBytes=finalization.copyCanonicalBytes();synchronized(this){lease(owned);PinVerificationReply reply=new PinVerificationReply(this,owned.ticket,owned,finalBytes,finalization.checksum,outcome,false,platform);
+                    owned.ticket.replies.add(reply);owned.ticket.transfers++;owned.ticket.phase=PinVerificationPhase.finalized;return reply;}
+            }catch(Exception error){failed(owned.ticket,error,publication[0]);throw error;}
+            finally{input.close();if(comparison!=null)comparison.close();if(math!=null)math.close();if(material!=null)material.close();if(journal!=null)journal.close();
+                PinVerifierMaterial.wipe(pin);PinVerifierMaterial.wipe(expected);PinVerifierMaterial.wipe(charged);PinVerifierMaterial.wipe(finalBytes);
+                synchronized(this){if(owned.ticket.math==math)owned.ticket.math=null;}settledWorker(owned.ticket);}
+        }
+        private synchronized void replyFence(PinVerificationReply reply) throws Exception {require(reply!=null&&reply.owner==this);own(reply.ticket);
+            require(!reply.settled&&reply.ticket.replies.contains(reply)&&reply.owned==reply.ticket.owned);}
+        private void deliver(PinVerificationReply reply,PinVerificationRecipient recipient) throws Exception {
+            background();byte[] finalRecord;synchronized(this){replyFence(reply);require(recipient!=null&&!reply.closed&&!reply.deliveryStarted&&reply.ticket.workers==0);
+                if(!reply.terminal)live(reply.ticket);finalRecord=reply.bytes.clone();reply.deliveryStarted=true;worker(reply.ticket);}
+            try{if(!reply.terminal)locked(transaction->{try(ProtectedEnvelope record=ProtectedEnvelope.decode(finalRecord,policy.version,policy.checksum,policy.maximumIterations)){
+                    exactCurrent(transaction,reply.owned,finalRecord,reply.checksum,record.revision);}return null;});
+                recipient.receive(reply);
+                synchronized(this){replyFence(reply);if(!reply.closed)require(MessageDigest.isEqual(reply.bytes,finalRecord));}
+                if(!reply.terminal)locked(transaction->{try(ProtectedEnvelope record=ProtectedEnvelope.decode(finalRecord,policy.version,policy.checksum,policy.maximumIterations)){
+                    exactCurrent(transaction,reply.owned,finalRecord,reply.checksum,record.revision);}return null;});
+                synchronized(this){replyFence(reply);if(!reply.terminal)live(reply.ticket);reply.deliveryCompleted=true;}
+            }catch(Exception error){failed(reply.ticket,error,true);throw error;}finally{Arrays.fill(finalRecord,(byte)0);settledWorker(reply.ticket);}
+        }
+        /** Immediate local revocation is safe on UI thread. Actual authority
+         * cleanup remains a counted background operation, not synthetic ACK. */
+        private synchronized void revoke(PinGateRequest gate) throws Exception {PinVerificationTicket original=ticket(gate);original.cancelled=true;
+            // Math caller fences observe this flag before any IO and after the
+            // real synchronous KDF; no generic math.cancel error is mistaken
+            // for an unknown journal/authority failure or refunded attempt.
+            if(original.workers==0&&original.owned!=null&&original.owned.input!=null)original.owned.input.close();notifyAll();}
+        private void cancel(PinGateRequest gate) throws Exception {background();PinVerificationTicket original;
+            synchronized(this){original=ticket(gate);revoke(gate);if(original.cancelCleanupStarted||original.retirementFenced)return;original.cancelCleanupStarted=true;worker(original);}
+            try{locked(transaction->{authority.cancel(gate,original.owned);return null;});}catch(Exception error){failed(original,error,false);throw error;}finally{settledWorker(original);}
+        }
+        private synchronized void settleReply(PinVerificationReply reply,PinVerificationDelivery delivery) throws Exception {replyFence(reply);require(delivery!=null&&reply.ticket.workers==0);
+            // Never-started abandonment may drain its original transfer only
+            // as uncertain; it sticky-seals and establishes no delivered ACK.
+            if(delivery==PinVerificationDelivery.known)require(reply.deliveryCompleted);
+            if(reply.terminal)require(reply.ticket.terminal==reply&&reply.ticket.retirementFenced&&reply.ticket.transfers==1);
+            reply.settled=true;reply.close();reply.ticket.replies.remove(reply);reply.ticket.transfers--;
+            if(delivery==PinVerificationDelivery.uncertain||!reply.terminal&&reply.ticket.cancelled){reply.ticket.sealed=true;reply.ticket.phase=PinVerificationPhase.sealed;}
+            wipeSealed(reply.ticket);if(reply.terminal&&!reply.ticket.sealed){reply.ticket.phase=PinVerificationPhase.closed;active=null;}notifyAll();
+        }
+        private synchronized void sealUnknown(PinGateRequest gate) throws Exception {PinVerificationTicket original=ticket(gate);original.sealed=true;original.phase=PinVerificationPhase.sealed;
+            wipeSealed(original);notifyAll();}
+        private PinVerificationReply retire(PinGateRequest gate) throws Exception {background();PinVerificationTicket original;
+            synchronized(this){original=ticket(gate);require(!original.retiring&&!original.threads.containsKey(Thread.currentThread()));original.retiring=true;
+                if(original.workers==0&&original.owned!=null&&original.owned.input!=null)original.owned.input.close();
+                try{while(original.workers!=0||original.transfers!=0)wait();original.retirementFenced=true;}
+                catch(InterruptedException interrupted){original.sealed=true;original.phase=PinVerificationPhase.sealed;wipeSealed(original);Thread.currentThread().interrupt();throw new Unavailable();}}
+            try{locked(transaction->{authority.retire(gate,original.owned);return null;});}
+            catch(Exception error){failed(original,error,true);throw error;}
+            synchronized(this){require(original.workers==0&&original.transfers==0);if(original.owned!=null)original.owned.wipe();
+                PinVerificationReply terminal=new PinVerificationReply(this,original,original.owned,new byte[0],null,null,true,false);
+                original.terminal=terminal;original.replies.add(terminal);original.transfers++;if(!original.sealed)original.phase=PinVerificationPhase.closing;notifyAll();return terminal;}
+        }
+    }
     static final int MAX_BYTES = 131072;
     private static final long MAX_SAFE = 9007199254740991L;
     private static final ReentrantLock PROCESS_LOCK = new ReentrantLock();

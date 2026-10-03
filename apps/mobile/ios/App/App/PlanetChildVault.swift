@@ -2314,3 +2314,512 @@ fileprivate final class PinVerificationMath: PinPrimitiveDisposable {
     func close() { lock.lock(); defer { lock.unlock() }; disposed=true; active?.cancelled=true }
     deinit { close() }
 }
+
+/** Private verification transaction mechanics; no factory/host/authority is
+ * activated. A constructor-injected fixture is not a replay-resistant ledger.
+ * All work/IO/recipient methods run off main; revoke is immediate and local. */
+fileprivate struct PinGateContext: Equatable {
+    let profileId: String, policyVersion: String, profileRevision: UInt64, routeRevision: UInt64
+    let mode: String, visibility: String
+}
+fileprivate final class PinGateRequest {
+    let originalHostChallenge: AnyObject, id: String, action: String, targetChecksum: String
+    let context: PinGateContext, generation: UInt64, deadlineUptimeMs: UInt64
+    init(originalHostChallenge: AnyObject, id: String, action: String, targetChecksum: String,
+         context: PinGateContext, generation: UInt64, deadlineUptimeMs: UInt64) {
+        self.originalHostChallenge=originalHostChallenge; self.id=id; self.action=action
+        self.targetChecksum=targetChecksum; self.context=context; self.generation=generation
+        self.deadlineUptimeMs=deadlineUptimeMs
+    }
+}
+fileprivate struct PinVerificationPolicy {
+    let version: String, checksum: String, maxIterations: UInt64, backoffDelaysMs: [UInt64]
+    init(version: String, checksum: String, maxIterations: UInt64, backoffDelaysMs: [UInt64]) throws {
+        let validator=try PinAttemptJournal(policyVersion:version,policyChecksum:checksum,
+            maxIterations:maxIterations,backoffDelaysMs:backoffDelaysMs); validator.close()
+        self.version=version; self.checksum=checksum; self.maxIterations=maxIterations
+        self.backoffDelaysMs=backoffDelaysMs
+    }
+}
+fileprivate enum PinVerificationTransition { case reserve, finalize }
+fileprivate enum PinVerificationPhase { case beginning, ready, verifying, finalized, blocked, denied, sealed, closing, closed }
+fileprivate enum PinVerificationReplyKind { case match, mismatch, closed }
+fileprivate enum PinVerificationDelivery { case known, uncertain }
+fileprivate struct PinVerificationRefusal: Error {
+    let blocked: Bool
+    init(blocked: Bool=false) { self.blocked=blocked }
+}
+fileprivate protocol PinVerificationAuthority: AnyObject {
+    // Genuine adapter must authenticate original host challenge/action/target/
+    // context and real supported epoch/boot/continuous time, not these JS fields.
+    func capture(_ original: PinGateRequest, bytes: Data, checksum: String, revision: UInt64) throws -> PinVerificationCoordinates
+    func current(_ original: OwnedPinVerification, bytes: Data, checksum: String, revision: UInt64) throws -> PinVerificationCoordinates
+    // Bind exact whole old/next bytes/digests/revisions, transition and every
+    // original lease coordinate. Permissions are real native one-use authority.
+    func authorizeTransition(_ original: OwnedPinVerification, kind: PinVerificationTransition,
+        expected: Data, next: Data, expectedChecksum: String, nextChecksum: String,
+        expectedRevision: UInt64, nextRevision: UInt64) throws -> AnyObject
+    // Durable checkpoint permission is consumed BEFORE storage publication.
+    // Subsequent current(next) authenticates it; exact storage readback is separate.
+    func advance(_ original: OwnedPinVerification, permission: AnyObject, kind: PinVerificationTransition,
+                 nextChecksum: String, nextRevision: UInt64) throws
+    // Original raw gate is available even while capture has not yielded a lease.
+    func cancel(_ original: PinGateRequest, owned: OwnedPinVerification?) throws
+    // Whole-request terminal retirement also covers later local revocations.
+    func retire(_ original: PinGateRequest, owned: OwnedPinVerification?) throws
+}
+fileprivate final class PinVerificationCoordinates {
+    let owner: PinVerificationAuthority, checksum: String, revision: UInt64
+    let epoch: String, bootId: String, hostGeneration: UInt64, uptimeMs: UInt64, logicalMs: UInt64
+    init(owner: PinVerificationAuthority, checksum: String, revision: UInt64, epoch: String,
+         bootId: String, hostGeneration: UInt64, uptimeMs: UInt64, logicalMs: UInt64) {
+        self.owner=owner; self.checksum=checksum; self.revision=revision; self.epoch=epoch
+        self.bootId=bootId; self.hostGeneration=hostGeneration; self.uptimeMs=uptimeMs; self.logicalMs=logicalMs
+    }
+}
+fileprivate struct PinVerificationRecordContext {
+    let mode: String, profileId: String?, profileRevision: UInt64, policyVersion: String
+}
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    func verificationContext() throws -> PinVerificationRecordContext {
+        lock.lock(); defer { lock.unlock() }; try Self.require(!disposed && pin != nil)
+        let cursor=Cursor(storage)
+        try cursor.field("schemaVersion",first:true); _=try cursor.number(1,1)
+        try cursor.field("revision"); _=try cursor.number(1,9007199254740991)
+        try cursor.field("mode"); let mode=try cursor.asciiString()
+        try cursor.field("selectionRevision"); _=try cursor.number(1,9007199254740991)
+        try cursor.field("profileRevision"); let profileRevision=try cursor.number(1,9007199254740991)
+        try cursor.field("policyChecksum"); try Self.require(cursor.asciiString()==policyChecksum)
+        try cursor.field("registryChecksum"); _=try cursor.hashRange()
+        try cursor.field("registry"); let active=try Self.registry(cursor,version:policyVersion)
+        return PinVerificationRecordContext(mode:mode,profileId:active,profileRevision:profileRevision,policyVersion:policyVersion)
+    }
+}
+fileprivate final class OwnedPinVerification {
+    let owner: NativePinVerification, original: PinGateRequest, policy: PinVerificationPolicy
+    let expected: PinOwnedBytes, checksum: String, revision: UInt64, pinRevision: UInt64
+    let epoch: String, bootId: String, hostGeneration: UInt64, capturedUptimeMs: UInt64, capturedLogicalMs: UInt64
+    let clockUptimeMs: UInt64, clockLogicalMs: UInt64, deadlineUptimeMs: UInt64
+    fileprivate init(owner: NativePinVerification, original: PinGateRequest, policy: PinVerificationPolicy,
+         bytes: Data, metadata: PinEnvelopeMetadata, point: PinVerificationCoordinates) {
+        self.owner=owner; self.original=original; self.policy=policy; expected=PinOwnedBytes(bytes)
+        checksum=point.checksum; revision=metadata.revision; pinRevision=metadata.pinRevision
+        epoch=point.epoch; bootId=point.bootId; hostGeneration=point.hostGeneration
+        capturedUptimeMs=point.uptimeMs; capturedLogicalMs=point.logicalMs
+        clockUptimeMs=metadata.uptimeAnchorMs; clockLogicalMs=metadata.logicalAnchorMs
+        deadlineUptimeMs=original.deadlineUptimeMs
+    }
+    fileprivate func close() { expected.close() }
+}
+fileprivate final class OwnedPinVerificationInput: PinPrimitiveDisposable {
+    let owner: NativePinVerification, request: OwnedPinVerification
+    private let lock=NSLock(), raw: PinPrimitiveInput
+    private var consumed=false, disposed=false
+    fileprivate init(owner: NativePinVerification, request: OwnedPinVerification, raw: PinPrimitiveInput) {
+        self.owner=owner; self.request=request; self.raw=raw
+    }
+    fileprivate func take() throws -> PinPrimitiveBytes {
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed && !consumed else { throw PinVerificationRefusal() }
+        consumed=true; return try raw.take()
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; raw.close() }
+    deinit { close() }
+}
+fileprivate final class PinVerificationReply {
+    let owner: NativePinVerification, request: OwnedPinVerification?, original: PinGateRequest
+    let kind: PinVerificationReplyKind, checksum: String?, revision: UInt64?
+    fileprivate var settled=false, deliveryStarted=false, delivered=false
+    fileprivate init(owner: NativePinVerification, request: OwnedPinVerification?, original: PinGateRequest,
+                     kind: PinVerificationReplyKind, checksum: String?, revision: UInt64?) {
+        self.owner=owner; self.request=request; self.original=original; self.kind=kind
+        self.checksum=checksum; self.revision=revision
+    }
+    // A reply holds no entered PIN. Closing never acknowledges host delivery.
+    func close() {}
+}
+fileprivate final class NativePinVerification {
+    private final class Ticket {
+        let gate: PinGateRequest
+        var owned: OwnedPinVerification?, phase: PinVerificationPhase = .beginning
+        var cancelled=false, sealed=false, retiring=false, retirementFenced=false, cancelStarted=false
+        var workers=0, threads=[ObjectIdentifier:Int](), replies=[ObjectIdentifier:PinVerificationReply]()
+        var terminal: PinVerificationReply?, entry: OwnedPinVerificationInput?, inputIssued=false
+        var math: PinVerificationMath?, finalBytes: PinOwnedBytes?
+        var lastUptime: UInt64=0, lastLogical: UInt64=0
+        init(_ gate: PinGateRequest) { self.gate=gate }
+    }
+    private enum LockedOutcome<T> { case value(T), refused(PinVerificationRefusal) }
+    private let condition=NSCondition(), io: PinSessionIO, authority: PinVerificationAuthority, policy: PinVerificationPolicy
+    private let fixtureEngine: PinVerificationEngine?
+    private var active: Ticket?, usedIds=Set<String>(), usedHosts=[ObjectIdentifier:AnyObject]()
+    private var permissions=[ObjectIdentifier:AnyObject]()
+    private static let safe: UInt64=9007199254740991
+    private static let actions=Set(["exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics",
+        "open-adult-store","initiate-purchase","restore-purchases","open-external","share","account-change",
+        "export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial"])
+    init(io: PinSessionIO, authority: PinVerificationAuthority, policy: PinVerificationPolicy) {
+        self.io=io; self.authority=authority; self.policy=policy; fixtureEngine=nil
+    }
+    private init(io: PinSessionIO, authority: PinVerificationAuthority, policy: PinVerificationPolicy,
+                 fixtureEngine: PinVerificationEngine) {
+        self.io=io; self.authority=authority; self.policy=policy; self.fixtureEngine=fixtureEngine
+    }
+    fileprivate static func syntheticFixture(io: PinSessionIO, authority: PinVerificationAuthority,
+         policy: PinVerificationPolicy, engine: PinVerificationEngine) -> NativePinVerification {
+        NativePinVerification(io:io,authority:authority,policy:policy,fixtureEngine:engine)
+    }
+
+    private static func require(_ valid: Bool) throws { if !valid { throw PlanetChildVault.Failure.unavailable } }
+    private static func deny(_ valid: Bool) throws { if !valid { throw PinVerificationRefusal() } }
+    private static func hex(_ value: String) -> Bool { value.range(of:"\\A[a-f0-9]{64}\\z",options:.regularExpression) != nil }
+    private static func identifier(_ value: String) -> Bool { value.range(of:"\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z",options:.regularExpression) != nil }
+    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+    private static func copy(_ bytes: Data) throws -> Data {
+        try require(!bytes.isEmpty && bytes.count<=131072); return Data(Array(bytes))
+    }
+    private static func fence(_ bytes: Data,_ checksum: String) throws {
+        try require(!bytes.isEmpty && bytes.count<=131072 && Self.hex(checksum) && digest(bytes)==checksum)
+    }
+    private func isolated<T>(_ bytes: Data,_ task: (Data) throws -> T) throws -> T {
+        var disposable=try Self.copy(bytes); defer { disposable.resetBytes(in:0..<disposable.count) }
+        let checksum=Self.digest(bytes), result=try task(disposable)
+        try Self.require(disposable==bytes); try Self.fence(disposable,checksum); return result
+    }
+    private func locked<T>(_ task: (PinSessionTransaction) throws -> T) throws -> T {
+        // Carry known prepublication refusals as values through existing IO's
+        // generic error wrapper; every unclassified exception stays uncertain.
+        let result: LockedOutcome<T> = try io.locked { transaction in
+            do { return .value(try task(transaction)) }
+            catch let refusal as PinVerificationRefusal { return .refused(refusal) }
+        }
+        switch result { case .value(let result): return result; case .refused(let error): throw error }
+    }
+    private func inspect(_ bytes: Data) throws -> (metadata: PinEnvelopeMetadata, context: PinVerificationRecordContext) {
+        let envelope=try PlanetChildVault.ProtectedEnvelope.decode(bytes,policyVersion:policy.version,
+            policyChecksum:policy.checksum,maxIterations:policy.maxIterations)
+        defer { envelope.close() }; return (try envelope.pinSessionMetadata(),try envelope.verificationContext())
+    }
+    private func ownLocked(_ gate: PinGateRequest) throws -> Ticket {
+        guard let ticket=active, ticket.gate === gate, ticket.phase != .closed else { throw PinVerificationRefusal() }
+        return ticket
+    }
+    private func live(_ ticket: Ticket) throws {
+        condition.lock(); defer { condition.unlock() }
+        try Self.deny(active === ticket && !ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced)
+    }
+    private func addWorkerLocked(_ ticket: Ticket) throws {
+        try Self.require(ticket.workers<4096)
+        ticket.workers+=1; let thread=ObjectIdentifier(Thread.current)
+        ticket.threads[thread]=(ticket.threads[thread] ?? 0)+1
+    }
+    private func wipeSealedLocked(_ ticket: Ticket) {
+        if ticket.sealed && ticket.workers==0 {
+            ticket.entry?.close(); ticket.math?.close(); ticket.owned?.close(); ticket.finalBytes?.close()
+        }
+    }
+    private func settleWorker(_ ticket: Ticket) {
+        condition.lock(); defer { condition.unlock() }; let thread=ObjectIdentifier(Thread.current)
+        let remaining=(ticket.threads[thread] ?? 0)-1
+        if ticket.workers<=0 || remaining<0 { ticket.sealed=true; ticket.phase = .sealed }
+        else { ticket.workers-=1; if remaining==0 { ticket.threads.removeValue(forKey:thread) } else { ticket.threads[thread]=remaining } }
+        wipeSealedLocked(ticket); condition.broadcast()
+    }
+    private func failed(_ ticket: Ticket,_ error: Error,publication: Bool) {
+        condition.lock(); defer { condition.unlock() }
+        if ticket.sealed || publication || !(error is PinVerificationRefusal) { ticket.sealed=true; ticket.phase = .sealed }
+        else if (error as? PinVerificationRefusal)?.blocked == true { ticket.phase = .blocked }
+        else { ticket.phase = .denied }
+        wipeSealedLocked(ticket); condition.broadcast()
+    }
+    private func validatePoint(_ ticket: Ticket,_ owned: OwnedPinVerification?,_ point: PinVerificationCoordinates,
+                               bytes: Data) throws {
+        try live(ticket); let record=try inspect(bytes), meta=record.metadata, context=record.context, gate=ticket.gate
+        try Self.require(point.owner === authority && Self.hex(point.epoch) && point.checksum==Self.digest(bytes)
+            && point.revision==meta.revision && meta.enrolled && point.hostGeneration<=Self.safe
+            && point.uptimeMs<=Self.safe && point.logicalMs<=Self.safe && point.bootId==meta.bootId
+            && point.uptimeMs>=meta.uptimeAnchorMs && point.logicalMs>=meta.lastObservedMs)
+        let delta=point.uptimeMs-meta.uptimeAnchorMs
+        try Self.require(delta<=Self.safe-meta.logicalAnchorMs && point.logicalMs==meta.logicalAnchorMs+delta)
+        try Self.deny(point.uptimeMs<gate.deadlineUptimeMs && context.mode=="child"
+            && context.profileId==gate.context.profileId && context.policyVersion==gate.context.policyVersion
+            && context.profileRevision==gate.context.profileRevision)
+        if let owned=owned {
+            try Self.require(owned.owner === self && owned.original === gate && point.epoch==owned.epoch
+                && point.bootId==owned.bootId && point.hostGeneration==owned.hostGeneration
+                && gate.deadlineUptimeMs==owned.deadlineUptimeMs
+                && meta.uptimeAnchorMs==owned.clockUptimeMs && meta.logicalAnchorMs==owned.clockLogicalMs)
+        }
+        condition.lock(); defer { condition.unlock() }
+        try Self.deny(active === ticket && !ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced)
+        try Self.require(point.uptimeMs>=ticket.lastUptime && point.logicalMs>=ticket.lastLogical)
+        ticket.lastUptime=point.uptimeMs; ticket.lastLogical=point.logicalMs
+    }
+    private func current(_ ticket: Ticket,_ owned: OwnedPinVerification,_ bytes: Data) throws -> PinVerificationCoordinates {
+        try live(ticket); let checksum=Self.digest(bytes), metadata=try inspect(bytes).metadata
+        let point=try isolated(bytes) { try authority.current(owned,bytes:$0,checksum:checksum,revision:metadata.revision) }
+        try Self.fence(bytes,checksum); try validatePoint(ticket,owned,point,bytes:bytes); return point
+    }
+    func begin(_ original: PinGateRequest) throws -> OwnedPinVerification {
+        try Self.deny(!Thread.isMainThread)
+        let context=original.context
+        try Self.deny(Self.hex(original.id) && Self.actions.contains(original.action) && Self.hex(original.targetChecksum)
+            && Self.identifier(context.profileId) && context.policyVersion==policy.version
+            && context.profileRevision>=1 && context.profileRevision<=Self.safe && context.routeRevision<=Self.safe
+            && context.mode=="child" && context.visibility=="active" && original.generation<=Self.safe
+            && original.deadlineUptimeMs>0 && original.deadlineUptimeMs<=Self.safe)
+        condition.lock()
+        let ticket: Ticket
+        do {
+            let host=ObjectIdentifier(original.originalHostChallenge)
+            try Self.deny(active==nil && usedIds.count<2048 && !usedIds.contains(original.id) && usedHosts[host]==nil)
+            usedIds.insert(original.id); usedHosts[host]=original.originalHostChallenge
+            ticket=Ticket(original); active=ticket; try addWorkerLocked(ticket); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        defer { settleWorker(ticket) }
+        do { return try locked { transaction in
+            try live(ticket); var returned=try transaction.read(); defer { returned.resetBytes(in:0..<returned.count) }
+            var bytes=try Self.copy(returned); defer { bytes.resetBytes(in:0..<bytes.count) }
+            let info=try inspect(bytes), checksum=Self.digest(bytes)
+            let point=try isolated(bytes) { try authority.capture(original,bytes:$0,checksum:checksum,revision:info.metadata.revision) }
+            try Self.fence(bytes,checksum); try validatePoint(ticket,nil,point,bytes:bytes)
+            if point.logicalMs<info.metadata.lastObservedMs { throw PlanetChildVault.Failure.unavailable }
+            // Charged pending records stay charged; begin never resets them.
+            let envelope=try PlanetChildVault.ProtectedEnvelope.decode(bytes,policyVersion:policy.version,
+                policyChecksum:policy.checksum,maxIterations:policy.maxIterations); defer { envelope.close() }
+            if point.logicalMs<(try envelope.attemptMetadata()).blockedUntilMs { throw PinVerificationRefusal(blocked:true) }
+            let owned=OwnedPinVerification(owner:self,original:original,policy:policy,bytes:bytes,metadata:info.metadata,point:point)
+            condition.lock(); defer { condition.unlock() }
+            try Self.deny(active === ticket && !ticket.cancelled && !ticket.sealed && !ticket.retiring)
+            ticket.owned=owned; ticket.phase = .ready; return owned
+        } } catch { failed(ticket,error,publication:false); throw error }
+    }
+    /** Mechanical one-use receipt only. The missing native UI/host must bind
+     * what the parent actually saw and transfer it after all UI cleanup. */
+    func bindInput(_ original: OwnedPinVerification, raw: PinPrimitiveInput) throws -> OwnedPinVerificationInput {
+        condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(original.original)
+        try Self.deny(original.owner === self && ticket.owned === original && ticket.phase == .ready
+            && !ticket.cancelled && !ticket.sealed && !ticket.retiring && ticket.workers==0 && !ticket.inputIssued)
+        ticket.inputIssued=true // Accepted slot is burned before owned buffer transfer.
+        let moved=try raw.take(), detached=PinPrimitiveInput(owned:moved)
+        let result=OwnedPinVerificationInput(owner:self,request:original,raw:detached)
+        ticket.entry=result; return result
+    }
+
+    private func readExact(_ transaction: PinSessionTransaction,_ expected: Data) throws {
+        var returned=try transaction.read(); defer { returned.resetBytes(in:0..<returned.count) }
+        var actual=try Self.copy(returned); defer { actual.resetBytes(in:0..<actual.count) }
+        try Self.deny(actual==expected); try Self.fence(actual,Self.digest(expected))
+    }
+    private func commit(_ ticket: Ticket,_ owned: OwnedPinVerification,_ transaction: PinSessionTransaction,
+                        kind: PinVerificationTransition, expected: Data, next: Data, publication: inout Bool) throws {
+        let oldChecksum=Self.digest(expected), nextChecksum=Self.digest(next)
+        let old=try inspect(expected).metadata, fresh=try inspect(next).metadata
+        try Self.require(old.revision<Self.safe && fresh.revision==old.revision+1
+            && old.pinRevision<Self.safe && fresh.pinRevision==old.pinRevision+1)
+        try readExact(transaction,expected); _=try current(ticket,owned,expected)
+        var oldCopy=try Self.copy(expected), nextCopy=try Self.copy(next)
+        defer { oldCopy.resetBytes(in:0..<oldCopy.count); nextCopy.resetBytes(in:0..<nextCopy.count) }
+        let permission=try authority.authorizeTransition(owned,kind:kind,expected:oldCopy,next:nextCopy,
+            expectedChecksum:oldChecksum,nextChecksum:nextChecksum,expectedRevision:old.revision,nextRevision:fresh.revision)
+        try Self.require(oldCopy==expected && nextCopy==next); try Self.fence(expected,oldChecksum); try Self.fence(next,nextChecksum)
+        try live(ticket); try readExact(transaction,expected); _=try current(ticket,owned,expected)
+        condition.lock()
+        let admitted=active === ticket && ticket.owned === owned && !ticket.cancelled && !ticket.sealed
+            && !ticket.retiring && !ticket.retirementFenced
+        let unique=permissions.count<4096 && permissions[ObjectIdentifier(permission)]==nil
+        if admitted && unique { permissions[ObjectIdentifier(permission)]=permission }; condition.unlock()
+        try Self.deny(admitted); try Self.require(unique)
+        publication=true
+        try authority.advance(owned,permission:permission,kind:kind,nextChecksum:nextChecksum,nextRevision:fresh.revision)
+        // After advance the authority checkpoint is NEXT, though storage is
+        // still EXPECTED until publication. Never call current(expected) here.
+        try Self.fence(expected,oldChecksum); try Self.fence(next,nextChecksum); try live(ticket)
+        try readExact(transaction,expected)
+        var writeBytes=try Self.copy(next); defer { writeBytes.resetBytes(in:0..<writeBytes.count) }
+        let boundary: () throws -> Void = {
+            try self.live(ticket); try Self.fence(expected,oldChecksum); try Self.fence(next,nextChecksum)
+            try Self.require(writeBytes==next); try Self.fence(writeBytes,nextChecksum)
+            _=try self.current(ticket,owned,next)
+            try self.live(ticket); try Self.require(writeBytes==next); try Self.fence(writeBytes,nextChecksum)
+        }
+        try boundary(); try transaction.write(writeBytes,boundary:boundary)
+        try readExact(transaction,next); try boundary()
+        publication=false // Known complete write+exact readback+current fence.
+    }
+    func verify(_ original: OwnedPinVerification, input: OwnedPinVerificationInput) throws -> PinVerificationReply {
+        try Self.deny(!Thread.isMainThread)
+        condition.lock()
+        let ticket: Ticket
+        do {
+            ticket=try ownLocked(original.original)
+            // Foreign/busy/replayed receipts are not consumed or wiped.
+            try Self.deny(original.owner === self && ticket.owned === original && input.owner === self
+                && input.request === original && ticket.entry === input && ticket.phase == .ready
+                && !ticket.cancelled && !ticket.sealed && !ticket.retiring && ticket.workers==0)
+            ticket.phase = .verifying; try addWorkerLocked(ticket); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        var pin: PinPrimitiveBytes?, expected=Data(), charged=Data(), final=Data(), publication=false
+        var journal: PinAttemptJournal?, material: PinVerifierMaterial?, math: PinVerificationMath?
+        defer {
+            pin?.close(); input.close(); material?.close(); math?.close(); journal?.close()
+            expected.resetBytes(in:0..<expected.count); charged.resetBytes(in:0..<charged.count); final.resetBytes(in:0..<final.count)
+            settleWorker(ticket)
+        }
+        do {
+            pin=try input.take(); try live(ticket)
+            expected=try original.expected.copy(); try Self.fence(expected,original.checksum)
+            let owner=try PinAttemptJournal(policyVersion:policy.version,policyChecksum:policy.checksum,
+                maxIterations:policy.maxIterations,backoffDelaysMs:policy.backoffDelaysMs); journal=owner
+            let reservation: PinAttemptReservation=try locked { transaction in
+                try readExact(transaction,expected); let point=try current(ticket,original,expected)
+                let reservation=try owner.reserve(expected,originalChallengeId:original.original.id,sampledLogicalMs:point.logicalMs)
+                var next=try reservation.copyReservedBytes(); defer { next.resetBytes(in:0..<next.count) }
+                try commit(ticket,original,transaction,kind:.reserve,expected:expected,next:next,publication:&publication)
+                return reservation
+            }
+            charged=try reservation.copyReservedBytes(); try live(ticket)
+            // Bounded malformed nonempty input was charged above, as TS requires.
+            let digits=try pin!.read { $0.count>=1 && $0.count<=128 && $0.allSatisfy { $0>=48 && $0<=57 } }
+            let comparison: PinAttemptComparison
+            if digits {
+                let verifier=try PinVerifierMaterial.extract(charged,policyVersion:policy.version,
+                    policyChecksum:policy.checksum,maxIterations:policy.maxIterations); material=verifier
+                let worker=fixtureEngine.map(PinVerificationMath.syntheticFixture) ?? PinVerificationMath(); math=worker
+                condition.lock()
+                let valid=active === ticket && !ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced
+                if valid { ticket.math=worker }; condition.unlock()
+                try Self.deny(valid)
+                let moved=PinPrimitiveInput(owned:pin!); pin=nil; defer { moved.close() }
+                let result=try worker.compare(verifier,input:moved) { identity in
+                    try Self.require(identity==verifier.identity && identity.recordChecksum==reservation.checksum
+                        && identity.recordRevision==reservation.rootRevision && identity.pinRevision==reservation.pinRevision)
+                    try self.live(ticket)
+                    try self.locked { transaction in
+                        try self.readExact(transaction,charged); _=try self.current(ticket,original,charged)
+                    }
+                }
+                comparison=result.comparison
+            } else { pin?.close(); pin=nil; comparison = .mismatch }
+            try live(ticket)
+            let finished: PinAttemptFinalization=try locked { transaction in
+                try readExact(transaction,charged); let point=try current(ticket,original,charged)
+                let finished=try owner.finalize(reservation,currentExactBytes:charged,comparison:comparison,sampledLogicalMs:point.logicalMs)
+                var next=try finished.copyNextBytes(); defer { next.resetBytes(in:0..<next.count) }
+                try commit(ticket,original,transaction,kind:.finalize,expected:charged,next:next,publication:&publication)
+                return finished
+            }
+            final=try finished.copyNextBytes(); try live(ticket)
+            let kind: PinVerificationReplyKind
+            switch comparison { case .match: kind = .match; case .mismatch: kind = .mismatch }
+            condition.lock(); defer { condition.unlock() }
+            try Self.deny(active === ticket && !ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced)
+            let reply=PinVerificationReply(owner:self,request:original,original:original.original,
+                kind:kind,checksum:finished.checksum,revision:finished.rootRevision)
+            ticket.finalBytes=PinOwnedBytes(final); ticket.phase = .finalized; ticket.math=nil
+            ticket.replies[ObjectIdentifier(reply)]=reply; condition.broadcast(); return reply
+        } catch { failed(ticket,error,publication:publication); throw error }
+    }
+    /** Any-thread local revocation. The host schedules actual cancel off main;
+     * this call never waits on IO/KDF/retirement or wipes active pointer reads. */
+    func revoke(_ original: PinGateRequest) throws {
+        condition.lock()
+        let ticket: Ticket, entry: OwnedPinVerificationInput?
+        do {
+            ticket=try ownLocked(original); ticket.cancelled=true; entry=ticket.entry
+            condition.broadcast(); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        entry?.close() // Mandatory math fences observe the revoked ticket after real return.
+    }
+    func cancel(_ original: PinGateRequest) throws {
+        try revoke(original); try Self.deny(!Thread.isMainThread)
+        condition.lock()
+        let ticket: Ticket, owned: OwnedPinVerification?
+        do {
+            ticket=try ownLocked(original)
+            if ticket.retirementFenced || ticket.cancelStarted { condition.unlock(); return }
+            try Self.deny(ticket.threads[ObjectIdentifier(Thread.current)]==nil)
+            ticket.cancelStarted=true; owned=ticket.owned; try addWorkerLocked(ticket); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        defer { settleWorker(ticket) }
+        do { try locked { _ in try authority.cancel(original,owned:owned) } }
+        catch { failed(ticket,error,publication:false); throw error }
+    }
+    /** Count the actual recipient callback; acknowledging inside it is denied.
+     * No callback result is translated into a ParentGate capability here. */
+    func deliver(_ original: PinVerificationReply, recipient: (PinVerificationReply) throws -> Void) throws {
+        try Self.deny(!Thread.isMainThread)
+        condition.lock(); let ticket: Ticket
+        do {
+            ticket=try ownLocked(original.original)
+            try Self.deny(original.owner === self && original.request === ticket.owned && !original.settled
+                && ticket.replies[ObjectIdentifier(original)] === original && !original.deliveryStarted && ticket.workers==0)
+            if original.kind != .closed { try Self.deny(!ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced) }
+            original.deliveryStarted=true; try addWorkerLocked(ticket); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        var final=Data(), recipientEntered=false
+        defer { final.resetBytes(in:0..<final.count); settleWorker(ticket) }
+        do {
+            if original.kind != .closed, let owned=ticket.owned, let bytes=ticket.finalBytes {
+                final=try bytes.copy()
+                try locked { transaction in try readExact(transaction,final); _=try current(ticket,owned,final) }
+            }
+            recipientEntered=true; try recipient(original)
+            if original.kind != .closed, let owned=ticket.owned {
+                try live(ticket)
+                try locked { transaction in try readExact(transaction,final); _=try current(ticket,owned,final) }
+            }
+            condition.lock(); defer { condition.unlock() }
+            try Self.deny(active === ticket && (original.kind == .closed || !ticket.cancelled && !ticket.sealed && !ticket.retiring))
+            original.delivered=true
+        } catch { failed(ticket,error,publication:recipientEntered); throw error }
+    }
+    /** Revocable mathematical data only. The missing genuine host must still
+     * authenticate and settle the exact original Gate challenge separately. */
+    func mathematicalOutcome(_ original: PinVerificationReply) throws -> PinAttemptComparison {
+        condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(original.original)
+        try Self.deny(original.owner === self && original.request === ticket.owned && !original.settled
+            && ticket.replies[ObjectIdentifier(original)] === original && original.deliveryStarted
+            && !ticket.cancelled && !ticket.sealed && !ticket.retiring && original.kind != .closed)
+        return original.kind == .match ? .match : .mismatch
+    }
+    func settleReply(_ original: PinVerificationReply, delivery: PinVerificationDelivery) throws {
+        condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(original.original)
+        try Self.deny(original.owner === self && original.request === ticket.owned && !original.settled
+            && ticket.replies[ObjectIdentifier(original)] === original && ticket.workers==0
+            && (delivery == .uncertain || original.delivered))
+        if original.kind == .closed {
+            try Self.deny(ticket.terminal === original && ticket.retirementFenced && ticket.replies.count==1)
+        }
+        original.settled=true; ticket.replies.removeValue(forKey:ObjectIdentifier(original)); original.close()
+        if delivery == .uncertain || original.kind != .closed && ticket.cancelled {
+            ticket.sealed=true; ticket.phase = .sealed
+        }
+        if original.kind == .closed && !ticket.sealed {
+            ticket.entry?.close(); ticket.owned?.close(); ticket.finalBytes?.close()
+            ticket.phase = .closed; active=nil
+        }
+        wipeSealedLocked(ticket); condition.broadcast()
+    }
+    func retire(_ original: PinGateRequest) throws -> PinVerificationReply {
+        try Self.deny(!Thread.isMainThread)
+        condition.lock(); let ticket: Ticket, owned: OwnedPinVerification?
+        do {
+            ticket=try ownLocked(original)
+            try Self.deny(!ticket.retiring && ticket.threads[ObjectIdentifier(Thread.current)]==nil)
+            ticket.retiring=true
+            // No timer frees real work or unknown host transfers. The input
+            // gap is closed atomically by retiring before any new verify claim.
+            while ticket.workers != 0 || !ticket.replies.isEmpty { condition.wait() }
+            ticket.retirementFenced=true; owned=ticket.owned; condition.unlock()
+        } catch { condition.unlock(); throw error }
+        do { try locked { _ in try authority.retire(original,owned:owned) } }
+        catch { failed(ticket,error,publication:true); throw error }
+        condition.lock(); defer { condition.unlock() }
+        try Self.require(ticket.workers==0 && ticket.replies.isEmpty)
+        ticket.entry?.close(); ticket.owned?.close(); ticket.finalBytes?.close()
+        let result=PinVerificationReply(owner:self,request:owned,original:original,kind:.closed,checksum:nil,revision:nil)
+        ticket.terminal=result; ticket.replies[ObjectIdentifier(result)]=result
+        if !ticket.sealed { ticket.phase = .closing }; condition.broadcast(); return result
+    }
+}
