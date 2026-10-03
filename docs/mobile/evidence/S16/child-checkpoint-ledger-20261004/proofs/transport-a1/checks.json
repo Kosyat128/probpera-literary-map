@@ -1,0 +1,59 @@
+{
+  "status": "FAIL",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "server/planet/childCheckpointLedgerSupabase.test.ts",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a1\\vitest.json"
+      ],
+      "startedAt": "2026-10-03T21:27:34.271Z",
+      "finishedAt": "2026-10-03T21:27:36.777Z",
+      "status": 1,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a1\\tsconfig.json"
+      ],
+      "startedAt": "2026-10-03T21:27:34.284Z",
+      "finishedAt": "2026-10-03T21:27:36.623Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "server/planet/tsconfig.json"
+      ],
+      "startedAt": "2026-10-03T21:27:34.301Z",
+      "finishedAt": "2026-10-03T21:27:37.315Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    }
+  ],
+  "passed": 40,
+  "failed": 1,
+  "pending": 0,
+  "sourceFingerprint": "4cbf89fad719ee4e6ec7f05a039f1c476513765518ae11cd4a63e10cc5e1216a",
+  "sourceUnchanged": true,
+  "otherBaselineRowsUnchanged": 1781,
+  "setupScope": "One isolated actual PGlite connection/fixtures; not authenticated remote Auth, native time/recovery, installation, contention or release acceptance."
+}

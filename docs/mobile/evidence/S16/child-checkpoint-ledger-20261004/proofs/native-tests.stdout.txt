@@ -1,0 +1,10 @@
+PRIVATE_PIN_HOST_REPLAY_CASE same-original-host-new-id-after-known-terminal-is-rejected
+PRIVATE_PIN_HOST_REPLAY_CASE same-host-active-and-busy-distinct-host-do-not-burn-unused-id-or-host
+PRIVATE_PIN_HOST_REPLAY_CASE equal-but-distinct-hosts-use-reference-identity
+PRIVATE_PIN_HOST_REPLAY_CASE spent-id-new-host-refusal-does-not-burn-the-new-host
+PRIVATE_PIN_HOST_REPLAY_CASE accepted-capture-failure-retains-spent-original-host-and-id
+PRIVATE_PIN_HOST_REPLAY_CASE accepted-read-failure-retains-spent-original-host-and-id
+PRIVATE_PIN_HOST_REPLAY_CASE original-host-registries-are-coordinator-local
+PRIVATE_PIN_HOST_REPLAY_CASE exact-2048-id-and-host-budget-rejects-2049-before-lane-or-io
+PRIVATE_PIN_HOST_REPLAY_OK cases=8 assertions=16488
+PRIVATE_PIN_HOST_REPLAY_SCOPE synthetic-connected=true platform-kdf=false durable-store-proof=false native-ui=false genuine-provider=false installed-os=false parent-gate=false

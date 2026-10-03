@@ -1,0 +1,20 @@
+PowerShell; cwd C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work
+
+PWA preview (not run):
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort --outDir ".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle"
+http://127.0.0.1:4173/
+
+Android dev APK:
+.tmp/mobile-release-android-d16fba49-0933-4b71-aab3-445e7ae931d3/app-dev-debug.apk
+SHA256 6c9ae3278ec42bab6e658bb212544102f0580d386c24bd6cbcf947a3951b4805
+
+Eligible owned Android target required before installed/native tests. No device attempt or store submission authorized.
+
+Source-bound local build commands:
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" scripts/mobile/prepare-local-release.mjs android
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" scripts/mobile/prepare-local-release.mjs pwa
+
+Focused verification commands:
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedger.integration.test.ts
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedgerSupabase.test.ts
+& "C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe" node_modules/typescript/bin/tsc --noEmit --project server/planet/tsconfig.json

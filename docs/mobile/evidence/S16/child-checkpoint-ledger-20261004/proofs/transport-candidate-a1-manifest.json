@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "state": "prepared_unrun",
+  "baseHead": "b0572cdf6561935f2c2f0ba3063fb09ea7fd6bc3",
+  "projectModifiedByThisAgent": false,
+  "checksRun": false,
+  "focusedCases": 37,
+  "files": [
+    {
+      "sourcePath": "server/planet/childCheckpointLedgerSupabase.ts",
+      "before": {
+        "exists": false
+      },
+      "after": {
+        "candidate": "childCheckpointLedgerSupabase.ts",
+        "sha256": "ba73247d395fe69574d5646fd083461e3f1f747f8063072c8cdb712afa1dd5a5",
+        "bytes": 15533,
+        "lines": 195,
+        "CRLF": 0,
+        "LFOnly": 195,
+        "trailingLF": true
+      }
+    },
+    {
+      "sourcePath": "server/planet/childCheckpointLedgerSupabase.test.ts",
+      "before": {
+        "exists": false
+      },
+      "after": {
+        "candidate": "childCheckpointLedgerSupabase.test.ts",
+        "sha256": "f26986c93c35e73f411eaf26322b1195402c11730f109a86c98218d9ea2c8a8f",
+        "bytes": 22052,
+        "lines": 265,
+        "CRLF": 0,
+        "LFOnly": 265,
+        "trailingLF": true
+      }
+    }
+  ],
+  "contractAndSdkInputs": [
+    {
+      "path": "server/planet/supabase.ts",
+      "sha256": "80782d90421472aa8c31bc2bb3336bd1afd086eb6a97953bfcd806610c4bb264",
+      "bytes": 12493
+    },
+    {
+      "path": "server/planet/licenseRateLimiterSupabase.ts",
+      "sha256": "4a14337495d98064197521c7d83a24f19ab78576ccf17810cf5e6c75947bc2a8",
+      "bytes": 3225
+    },
+    {
+      "path": "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
+      "sha256": "2d5efd71dc6afcfc307c20ebf1052a6fd48a462573c1863d484e13177061a06a",
+      "bytes": 31738
+    },
+    {
+      "path": "server/planet/childCheckpointLedger.integration.test.ts",
+      "sha256": "e94330780863c6346c16db466275ff598fad44fc38634dc76a39365fdaaf97ca",
+      "bytes": 29836
+    },
+    {
+      "path": "package.json",
+      "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8",
+      "bytes": 17160
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+      "bytes": 454352
+    },
+    {
+      "path": "node_modules/@supabase/postgrest-js/src/PostgrestBuilder.ts",
+      "sha256": "ff2d969d3d2fdf7b1d3a07d78e7152e5b7ec223c0cab5cad269a9be00ce5f8ef",
+      "bytes": 23209
+    },
+    {
+      "path": "node_modules/@supabase/postgrest-js/src/PostgrestTransformBuilder.ts",
+      "sha256": "01a57078ecf2c9d63d138d3b19c24753b608960b1d0bde75f942e74cee5350ec",
+      "bytes": 28739
+    }
+  ],
+  "scope": "Private actualSDK transport to already prepared online DB checkpoint ledger only",
+  "openContracts": [
+    "canonical authenticated backend and guardian/action/full-record validation",
+    "explicit installation/guardian provisioning",
+    "native issuer admission/factory wiring",
+    "clock-v2 cross-boot/time provenance",
+    "independent recovery proof",
+    "live network/Auth/multi-connection/device acceptance",
+    "DB nonrollback disaster recovery"
+  ],
+  "notes": [
+    "Exact canonical lowercase UUIDs before I/O",
+    "WeakMap capture identity and one-attempt transport consumption are process-local mechanics only",
+    "Bounded2048 spent registry has no evictions/reset",
+    "Original local host/policy deadlines retained; clocks authorize no native state",
+    "Decision server sample is persisted; completion sample is validity-only",
+    "SQL14 current PASS is prior separate root proof; these new37 cases remain unrun"
+  ]
+}

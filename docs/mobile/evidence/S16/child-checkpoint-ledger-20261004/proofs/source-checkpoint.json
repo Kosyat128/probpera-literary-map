@@ -1,0 +1,87 @@
+{
+  "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+  "previousHead": "b0572cdf6561935f2c2f0ba3063fb09ea7fd6bc3",
+  "previousSource": "6518998b68069b06416408d7ff3fc3a64d46bc1c",
+  "sourceFingerprint": "e250530f87d194207deed08d8c21b7f8bd9ef1e3f8ee329f1742a39ea7f134cb",
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "scope": [
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "server/planet/childCheckpointLedger.integration.test.ts",
+    "server/planet/childCheckpointLedgerSupabase.test.ts",
+    "server/planet/childCheckpointLedgerSupabase.ts",
+    "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql"
+  ],
+  "checks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a2\\checks.json",
+    "sha256": "51d277982cbb24b96e5546a8b6c69f1fb2e3a944a23d9246363773767a95444b"
+  },
+  "sqlChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\sql-a4\\checks.json",
+    "sha256": "93181d10bde7c1765785dd9e19f861f2c2ff0fc298aeed570d7f4ba563979256",
+    "executionFingerprint": "dd109c589b489cd043388f311a7b573fd0b5a5ec2555d2b6cbe316efa0ff6ed0",
+    "actualDependenciesUnchanged": true,
+    "setupInputs": [
+      {
+        "path": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+        "sha256": "06951b7418aab1fd9bbaef8f7e243bb957692e5c3832276f19cb926db515c9f9",
+        "bytes": 3531
+      },
+      {
+        "path": "supabase/schema.sql",
+        "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+        "bytes": 25068
+      },
+      {
+        "path": "supabase/migrations/20260802_reader_journey.sql",
+        "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+        "bytes": 5526
+      },
+      {
+        "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+        "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+        "bytes": 34356
+      },
+      {
+        "path": "supabase/migrations/20260728_cms_foundation.sql",
+        "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+        "bytes": 26357
+      },
+      {
+        "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+        "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+        "bytes": 19088
+      },
+      {
+        "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+        "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+        "bytes": 25064
+      },
+      {
+        "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+        "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+        "bytes": 24934
+      },
+      {
+        "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+        "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82",
+        "bytes": 15486
+      },
+      {
+        "path": "supabase/migrations/20261002172514_planet_yookassa_sandbox_orders.sql",
+        "sha256": "82b282c48441d79615082ca4b1771ece3f1bcc42245a85d426356f18ca9e9ee7",
+        "bytes": 28527
+      },
+      {
+        "path": "supabase/migrations/20261002173942_planet_reader_live_session_fence.sql",
+        "sha256": "cb3d13a692ea427d916d7ae504413d95b658ac8c0541124e25f7c6b6c5b26227",
+        "bytes": 6260
+      }
+    ]
+  },
+  "nativeChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\native-result.json",
+    "sha256": "43ac29817ea6550ecdb98ab2dfc11cb46dad776199505f691154f54001360457"
+  },
+  "testedInputsUnchanged": true
+}

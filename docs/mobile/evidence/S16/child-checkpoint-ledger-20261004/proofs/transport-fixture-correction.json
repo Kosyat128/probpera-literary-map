@@ -1,0 +1,6 @@
+{
+  "beforeSha256": "0f9e0d0d280c7132d4eca3967db8c0fab56704dfcf4a76e3cffc3a7b4258adad",
+  "afterSha256": "605a11abc6762f0e8e37ec4ea5d5b375df1be4dfed1d645757cee1288a69314e",
+  "scope": "Only hung-fetch test waits for actual provider start handshake before advancing fake timers; production code unchanged. The original 40PASS/1FAIL attempt remains intact.",
+  "preservedFailedAttempt": "transport-a1/checks.json"
+}

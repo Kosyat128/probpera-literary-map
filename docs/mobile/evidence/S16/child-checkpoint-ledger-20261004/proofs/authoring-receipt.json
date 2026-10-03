@@ -1,0 +1,9 @@
+{
+  "cliSha256": "971f439cc4b774f43181593551e0e34e29f399d5e82cbe3508e87537ec13e29f",
+  "version": "2.119.0",
+  "stdout": "{\"path\":\"D:\\\\CodexData\\\\.codex\\\\visualizations\\\\2026\\\\10\\\\02\\\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\\\release-completion\\\\child-checkpoint-ledger-work-20261003\\\\authoring\\\\supabase\\\\migrations\\\\20261003203842_planet_child_checkpoint_ledger.sql\",\"message\":\"Migration created\"}\n",
+  "createdName": "20261003203842_planet_child_checkpoint_ledger.sql",
+  "createdBytes": 0,
+  "databaseConnected": false,
+  "databaseApplied": false
+}

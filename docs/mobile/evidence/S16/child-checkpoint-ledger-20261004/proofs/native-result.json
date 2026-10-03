@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "cases": 8,
+  "sourceSha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+  "driverSha256": "0ad99d5924a3364c5020900195d30177bcf20a3f0c95bfa93f96244f437bc87e",
+  "tools": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\build\\intermediates\\compile_and_runtime_not_namespaced_r_class_jar\\devDebug\\processDevDebugResources\\R.jar",
+      "sha256": "3825148bde54ffe238a3c9977f5745b5425636ce06c810380b96af97b9e099f3"
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+    }
+  ],
+  "installedOs": false,
+  "genuineProvider": false,
+  "parentGateAdmission": false,
+  "scope": "Full actual Java source compilation; only eight new synthetic private coordinator host-replay cases."
+}

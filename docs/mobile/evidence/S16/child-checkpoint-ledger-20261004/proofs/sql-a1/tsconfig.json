@@ -1,0 +1,11 @@
+{
+  "extends": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\server\\planet\\tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false
+  },
+  "include": [
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\server\\planet\\childCheckpointLedger.integration.test.ts"
+  ],
+  "exclude": []
+}

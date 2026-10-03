@@ -1,0 +1,565 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-checkpoint-ledger-evidence",
+  "status": "IN_PROGRESS",
+  "generatedAt": "2026-10-03T21:45:31.407Z",
+  "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+  "binding": {
+    "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+    "sourceFingerprint": "e250530f87d194207deed08d8c21b7f8bd9ef1e3f8ee329f1742a39ea7f134cb",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "previousReport": "b0572cdf6561935f2c2f0ba3063fb09ea7fd6bc3",
+  "previousSource": "6518998b68069b06416408d7ff3fc3a64d46bc1c",
+  "changes": [
+    "Android original-host identity replay refusal, coordinator-local strong bounded registries.",
+    "Private canonical online checkpoint ledger: explicit preprovisioned installation/epoch/guardian/session, exact whole-state hash/revision, permanent operation tombstones, conditional next revision, locked session and post-write exclusive expiry rollback.",
+    "Strict server-only SDK transport: detached immutable tuples and original receipts, bounded original monotonic transport deadlines and aborts, same exact RPC origin/path and no retry or renewal after uncertainty.",
+    "Latest deletion classifier retains the already-reviewed budget identities alongside new owner-bound private ledger dependencies."
+  ],
+  "localChecks": {
+    "status": "PASS",
+    "native": {
+      "cases": 8,
+      "assertions": 16488,
+      "fullJavaCompilation": "PASS",
+      "installedOs": false,
+      "genuineAuthority": false
+    },
+    "sql": {
+      "passed": 14,
+      "failed": 0,
+      "pending": 0,
+      "executionFingerprint": "dd109c589b489cd043388f311a7b573fd0b5a5ec2555d2b6cbe316efa0ff6ed0",
+      "actualDependenciesUnchanged": true,
+      "multiConnectionConcurrency": "NOT_RUN",
+      "scope": "Actual isolated PGlite migrations, roles, delayed triggers, transaction rollback and canonical deletion processor."
+    },
+    "transport": {
+      "passed": 41,
+      "failed": 0,
+      "pending": 0,
+      "sourceFingerprint": "e250530f87d194207deed08d8c21b7f8bd9ef1e3f8ee329f1742a39ea7f134cb",
+      "scope": "Actual installed SDK with local mocked fetch/time; no real request or authenticated remote service."
+    },
+    "typeScript": "PASS"
+  },
+  "codeFiles": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "beforeSha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951",
+      "afterSha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602"
+    },
+    {
+      "path": "server/planet/childCheckpointLedger.integration.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "e94330780863c6346c16db466275ff598fad44fc38634dc76a39365fdaaf97ca"
+    },
+    {
+      "path": "server/planet/childCheckpointLedgerSupabase.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "605a11abc6762f0e8e37ec4ea5d5b375df1be4dfed1d645757cee1288a69314e"
+    },
+    {
+      "path": "server/planet/childCheckpointLedgerSupabase.ts",
+      "beforeSha256": null,
+      "afterSha256": "c14da3bfbdbd58abf6b024a3f73b7daa192189da071325ebb747922daa8879e5"
+    },
+    {
+      "path": "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
+      "beforeSha256": null,
+      "afterSha256": "2d5efd71dc6afcfc307c20ebf1052a6fd48a462573c1863d484e13177061a06a"
+    }
+  ],
+  "contentPreservation": {
+    "otherSourceRowsRawUnchanged": 1781,
+    "initialGitClean": true,
+    "currentSourceRows": 1786,
+    "lockAndToolsUnchanged": true,
+    "canonicalGlobeAndBookyUnchanged": true,
+    "authoredContentChanges": 0,
+    "oldDocumentTailsPreserved": true,
+    "stageObjectsUnchanged": true
+  },
+  "retainedEvidence": {
+    "path": "docs/mobile/evidence/S16/child-handoff-validity-20261003/result.json",
+    "sha256": "4e63d802efb75f879f1f7a945ecf6e021b902a225a4afd2f3f5bfe3b805e491b",
+    "qualification": "Original startup/index/media and native/package proofs retain their exact source bindings; not rerun or relabelled."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "pendingLegalReviews": 5,
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "programmingContinuation": {
+    "stage": "S16",
+    "status": "IN_PROGRESS",
+    "implementationOwner": "Codex",
+    "sourceFoundation": [
+      "src/child/childPackage.ts",
+      "src/child/childIndex.ts",
+      "src/child/childMedia.ts",
+      "src/child/childProtectedState.ts",
+      "src/child/childDurableData.ts",
+      "src/child/childMediaDecode.ts",
+      "src/child/childMediaPresentation.ts",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+      "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+      "src/child/childNativeData.ts",
+      "src/child/parentPinEnrollment.ts",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "src/child/childNativeTransport.ts",
+      "src/child/childStaticSvg.ts"
+    ],
+    "protectedAdmission": "UNAVAILABLE",
+    "appActivation": false,
+    "approvedProductionChildContent": false,
+    "ownerInputsReference": "decisions/RELEASE_DECISIONS.json",
+    "nextIndependentAction": "Continue S16 original plan with a concrete authenticated issuer/provisioning and independent guardian-recovery contract over the private canonical checkpoint ledger and server transport. Implement supported installation identity, full-record/action validation, signed exact original-operation witness and native clock/restart continuity behind the existing private SPI; then authenticated original-request Gate settlement, admitted durable child ports and clear-before-render lifecycle integration. The SQL ledger and its service adapter are completed local mechanics, not genuine authority admission. Keep factories null/nil and child App activation inactive until real dependencies pass. Retain byte-bound SQL14, transport and native8 proofs; do not repeat unchanged scopes. S03/S16 remain IN_PROGRESS with 11/36 OPEN, six Codex programming tasks, seven known owner inputs and five pending reviews. No remote action, push, merge, deploy, seventh AVD retry or report-only D stage.",
+    "remainingInternalProgramming": [
+      {
+        "work": "Protected child admission",
+        "status": "OPEN",
+        "responsibility": "Replace the unavailable factory only with genuine verified native authority; tested synthetic ports do not grant admission."
+      },
+      {
+        "work": "Supported native authority and trusted time",
+        "status": "OPEN",
+        "responsibility": "Provide supported replay-resistant checkpoint/epoch and restart continuity; uncertain reboot or clock state stays denied without a trusted anchor."
+      },
+      {
+        "work": "Native PIN enrollment, verification and recovery",
+        "status": "OPEN",
+        "responsibility": "Private platform KDF, enrollment and verification native input/session mechanics, strict charged-attempt planners, fixed verification mathematics and connected durable transaction contracts are implemented inactive. The UI binds one original action/context/deadline and joins real worker/UI/recipient/cancel cleanup; known transfer settlement waits actual completion. Genuine replay-resistant checkpoint/trusted-time authority, independent recovery, authenticated host/admitted ports and installed native acceptance remain incomplete. Synthetic IO/authority/host/KDF and copied-code tests establish no Parent Gate permission. Factories stay null/nil; Swift compilation/runtime remains NOT_RUN. Owner explicitly resumed; genuine authority/recovery and authenticated host integration remain Codex tasks."
+      },
+      {
+        "work": "Durable separate child data ports",
+        "status": "OPEN",
+        "responsibility": "The private TypeScript RPC transport and constructor-owned Java/Swift four-purpose dispatchers are implemented. Complete separately authenticated native host-current coordination under the durable commit lock, admitted child index-port integration and actual installed storage/lifecycle evidence. Private partition activation and local publication callbacks grant no protected admission, PIN, package/review or rights authority; actual App/plugin registration remains pending."
+      },
+      {
+        "work": "Clear before render and lifecycle integration",
+        "status": "OPEN",
+        "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes. Private synchronous startup/index/media handoff revocation and terminal expiry/deadline guards are now corrected and locally tested; no actual render/lifecycle admission established."
+      },
+      {
+        "work": "Reviewed child media rendering",
+        "status": "OPEN",
+        "responsibility": "The retained static PNG/JPEG/WebP/PCM-WAV codecs, closed static SVG validator and owned Web presentation foundations have separate scoped local proofs. Complete remaining documented formats, canonical production flag/assets coverage, independently reviewed exact-byte RU/EN production assets and native/App/lifecycle integration before activation. Existing SVG scopes were retained without repeat; muted synthetic audio, browser fixtures and structural validation grant no content rights or native admission."
+      }
+    ],
+    "qualification": "These are remaining Codex programming tasks, separate from the seven owner input actions. Integrated source foundations do not establish production child activation, native authority, approved content or installed-device acceptance.",
+    "localContinuation": {
+      "isolatedWebStorage": "43 synthetic unit cases plus 44 actual Edge IndexedDB checks; no App/native ports admission",
+      "staticMediaDecoder": "retained actual distinct local cases in explicit raw proofs",
+      "ownedWebPresentation": "retained actual distinct local cases in explicit raw proofs",
+      "privateNativeDataCandidates": "Reviewed current source candidates only; no admitted JS transaction backend, PIN/profile/package authority, native plugin or App activation",
+      "nativeCandidateOsRuntime": "NOT_RUN",
+      "iosCandidateCompilation": "NOT_RUN",
+      "actualWebMediaProofs": [
+        {
+          "kind": "literary-planet-child-media-web-codec-proof",
+          "checks": 28,
+          "proofId": "actual-edge-codec",
+          "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+        },
+        {
+          "kind": "literary-planet-child-media-web-presentation-proof",
+          "checks": 22,
+          "proofId": "actual-edge-presentation",
+          "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24"
+        }
+      ],
+      "audibleAudioVerified": false,
+      "appActivation": false,
+      "nativeProtectedAdmission": "UNAVAILABLE"
+    }
+  },
+  "availableCurrentArtifacts": {
+    "android": {
+      "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+      "main": {
+        "path": ".tmp/mobile-release-android-d16fba49-0933-4b71-aab3-445e7ae931d3/app-dev-debug.apk",
+        "sha256": "6c9ae3278ec42bab6e658bb212544102f0580d386c24bd6cbcf947a3951b4805",
+        "bytes": 69963597
+      },
+      "test": {
+        "path": ".tmp/mobile-release-android-d16fba49-0933-4b71-aab3-445e7ae931d3/app-dev-debug-androidTest.apk",
+        "sha256": "54f8228081a78f700a436be202fd1c5938ec78b4bcb1e7953fab875386af03ff",
+        "bytes": 622588
+      },
+      "binaryReceipt": ".tmp/mobile-release-android-d16fba49-0933-4b71-aab3-445e7ae931d3/binary.json",
+      "deviceTested": false,
+      "signing": "existing project dev/debug key",
+      "storeArtifact": false
+    },
+    "pwa": {
+      "sourceCommit": "7472f70d5967e250a7a62bb64ca6c9e7a0834ef9",
+      "path": ".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle",
+      "artifactPath": ".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle/artifact.json",
+      "sha256": "6cac74f2d91d879e772629d4dc3ce74d9c525871d93e1d3c85248cbb84783576",
+      "files": 1426,
+      "installOfflineUpdateScenario": "NOT_REPEATED"
+    },
+    "iosCompilation": "NOT_RUN",
+    "ipa": null
+  },
+  "historicalArtifacts": {
+    "android": [
+      {
+        "path": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/app-dev-debug.apk",
+        "sha256": "5042d51b0b02255983b3407296bb411f1cd4b937304172720cbeea2a6f85c962",
+        "bytes": 69754445,
+        "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+        "qualification": "Older source9a2 artifact; current install/readiness not checked."
+      },
+      {
+        "path": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/app-dev-debug-androidTest.apk",
+        "sha256": "54f8228081a78f700a436be202fd1c5938ec78b4bcb1e7953fab875386af03ff",
+        "bytes": 622588,
+        "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+        "qualification": "Older source9a2 artifact; current install/readiness not checked."
+      }
+    ],
+    "delivery": {
+      "sourceCommit": "2ddf4393ef55f085d6ce4865a1922f4d61f0b066",
+      "archiveReference": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-pin-input-delivery-20261003-140384e9-e5e6-4f1d-9c04-9a84002cab97.zip",
+        "sha256": "24473cd6c491a01765b01911e369863a82baac17c852aa839e26957bd1391f59",
+        "bytes": 228122506
+      },
+      "qualification": "Historical source2dd archive and PWA/iOS web bundles retained; not rebuilt, copied or rehashed. No current complete packet or IPA."
+    },
+    "qualification": "Historical bindings retained; no old archive rebuilt or rehashed."
+  },
+  "preservedFailedAttempts": [
+    {
+      "path": "proofs/native-result-parser-a1.json",
+      "scope": "Parser required a nonexistent per-case PASS suffix; actual compile/JVM processes exited0. Parser FAIL kept separately, result format corrected without rerun."
+    },
+    {
+      "path": "proofs/sql-a1/checks.json",
+      "scope": "Sandbox/Vitest startup and external-tsconfig setup failure; SQL tests NOT_RUN."
+    },
+    {
+      "path": "proofs/sql-a2/checks.json",
+      "scope": "Actual 1 PASS / 13 FAIL: revoked canonical deletion assertion invoked by invoker."
+    },
+    {
+      "path": "proofs/sql-a3/checks.json",
+      "scope": "Actual 12 PASS / 2 FAIL: test fixture attempted privileged classifier inspection as service role."
+    },
+    {
+      "path": "proofs/transport-a1/checks.json",
+      "status": "FAIL",
+      "passed": 40,
+      "failed": 1,
+      "pending": 0,
+      "correction": "proofs/transport-fixture-correction.json",
+      "scope": "Actual hung-fetch fixture-start timing failure: fixed microtask waits did not prove fetch had started. Test now awaits the actual start handshake; production transport unchanged. Original 40 PASS / 1 FAIL and raw streams remain intact; final transport-a2 41 PASS is a separate execution."
+    }
+  ],
+  "transportCandidateHistory": {
+    "a1": {
+      "path": "proofs/transport-candidate-a1-manifest.json",
+      "sha256": "5f721d882d3dfb6935391e1808bb71886f322a379e68e6c8224789ac9458709e",
+      "focusedCases": 37,
+      "status": "FROZEN_SOURCE_PROPOSAL_NOT_RUN"
+    },
+    "a2": {
+      "path": "proofs/transport-candidate-a2-manifest.json",
+      "sha256": "2fe40a2ccbacb9f810d23e05abf4266b9676807322fc4ce0a4af4e9908e0c84d",
+      "focusedCases": 41,
+      "status": "FROZEN_SOURCE_PROPOSAL_NOT_RUN"
+    },
+    "inheritedNew37Note": {
+      "status": "OBSOLETE_HISTORICAL_NOTE",
+      "scope": "Both frozen raw manifests are preserved without editing; the inherited new37 cases remain unrun note is not the A2 case count or its later actual execution outcome."
+    },
+    "fixtureCorrection": {
+      "path": "proofs/transport-fixture-correction.json",
+      "beforeSha256": "0f9e0d0d280c7132d4eca3967db8c0fab56704dfcf4a76e3cffc3a7b4258adad",
+      "afterSha256": "605a11abc6762f0e8e37ec4ea5d5b375df1be4dfed1d645757cee1288a69314e"
+    }
+  },
+  "admission": {
+    "nativeFactories": "null/nil",
+    "childAppActivation": false,
+    "issuerProvisioning": "OPEN_CODEX",
+    "signedOperationWitness": "OPEN_CODEX",
+    "trustedRestartContinuity": "OPEN_CODEX",
+    "independentRecovery": "OPEN_CODEX",
+    "authenticatedGateHost": "OPEN_CODEX",
+    "durableChildPorts": "OPEN_CODEX",
+    "livePGConcurrency": "NOT_RUN"
+  },
+  "commands": {
+    "workingDirectory": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+    "pwaPreview": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort --outDir \".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-bundle\"",
+    "previewUrl": "http://127.0.0.1:4173/",
+    "sqlTests": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedger.integration.test.ts",
+    "transportTests": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/vitest/vitest.mjs run server/planet/childCheckpointLedgerSupabase.test.ts",
+    "serverTypes": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" node_modules/typescript/bin/tsc --noEmit --project server/planet/tsconfig.json",
+    "androidPrepare": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" scripts/mobile/prepare-local-release.mjs android",
+    "pwaPrepare": "& \"C:/Users/User/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe\" scripts/mobile/prepare-local-release.mjs pwa",
+    "qualification": "Build commands executed once on final current source. Focused suites executed separately on their exact changed inputs, not combined/repeated. Preview command supplied for owner use; preview/browser/device scenarios not run."
+  },
+  "stageAccepted": false,
+  "releaseReady": false,
+  "productionActionsAuthorized": false,
+  "remoteOperations": 0
+}

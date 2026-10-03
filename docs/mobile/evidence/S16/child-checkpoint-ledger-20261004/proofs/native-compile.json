@@ -1,0 +1,16 @@
+{
+  "exe": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+  "args": [
+    "-encoding",
+    "UTF-8",
+    "-cp",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\build\\intermediates\\compile_and_runtime_not_namespaced_r_class_jar\\devDebug\\processDevDebugResources\\R.jar",
+    "-d",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\java-classes",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildVault.java",
+    "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-host-replay\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinHostReplayJvmDriver.java"
+  ],
+  "status": 0,
+  "signal": null,
+  "error": null
+}

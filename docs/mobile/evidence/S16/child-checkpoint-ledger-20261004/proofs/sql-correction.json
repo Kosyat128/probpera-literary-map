@@ -1,0 +1,6 @@
+{
+  "beforeSha256": "186c17ccae813acac21f8458b59be4f2437a5893c43b4f8d6c032e1b8e54c661",
+  "afterSha256": "2d5efd71dc6afcfc307c20ebf1052a6fd48a462573c1863d484e13177061a06a",
+  "reason": "Original actual SQL run failed because service_role cannot execute the canonical deletion assertion. Move the assertion into the existing narrowly privileged private session-lock definer, preserving helper-before-access checks and denying deletion without new grants.",
+  "preservedFailedAttempt": "sql-a2/checks.json"
+}

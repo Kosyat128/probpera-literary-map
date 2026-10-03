@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "server/planet/childCheckpointLedgerSupabase.test.ts",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a2\\vitest.json"
+      ],
+      "startedAt": "2026-10-03T21:30:48.095Z",
+      "finishedAt": "2026-10-03T21:30:49.632Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a2\\tsconfig.json"
+      ],
+      "startedAt": "2026-10-03T21:30:48.107Z",
+      "finishedAt": "2026-10-03T21:30:49.419Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    }
+  ],
+  "retainedServerTypes": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a1\\server-typescript.json",
+    "sha256": "27cbe89de3cf5674550f1d6caa16be96a98588f5718ae3c7df362b0cae5442cd",
+    "scope": "Server production inputs/lock/tools byte-identical; only the separate test fixture changed. Not rerun or rebound."
+  },
+  "passed": 41,
+  "failed": 0,
+  "pending": 0,
+  "sourceFingerprint": "e250530f87d194207deed08d8c21b7f8bd9ef1e3f8ee329f1742a39ea7f134cb",
+  "sourceUnchanged": true,
+  "otherBaselineRowsUnchanged": 1781,
+  "setupScope": "Actual installed SDK with mocked local fetch/time only; not authenticated remote service or native authority."
+}

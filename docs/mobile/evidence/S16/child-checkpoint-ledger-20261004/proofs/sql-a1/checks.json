@@ -1,0 +1,10 @@
+{
+  "status": "FAIL",
+  "units": "NOT_RUN",
+  "typeScript": "FAIL_CONFIGURATION",
+  "scope": "Original attempt retained unchanged; Vitest could not create its config cache through the C-to-D project junction in the default sandbox. The separate external tsconfig did not locate the existing project Node type declarations.",
+  "correction": "Use reviewed local sandbox escalation and explicitly point the external tsconfig at the existing project typeRoots. No application source changed for this correction; no dependency installation or global configuration change.",
+  "sourceFingerprint": "Recorded in this attempt's inputs.json",
+  "streams": ["unit.stdout.txt", "unit.stderr.txt", "unit.json", "typescript.stdout.txt", "typescript.stderr.txt", "typescript.json"],
+  "releaseReady": false
+}

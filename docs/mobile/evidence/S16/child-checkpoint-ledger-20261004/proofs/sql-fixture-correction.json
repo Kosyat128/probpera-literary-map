@@ -1,0 +1,6 @@
+{
+  "beforeSha256": "57d2d4ff790fa5f5db704652e1e2b789e479fd450b6eae80985f72f6dd2df73d",
+  "afterSha256": "e94330780863c6346c16db466275ff598fad44fc38634dc76a39365fdaaf97ca",
+  "scope": "Only the two metadata/classifier checks use test-owner inspection; actual claim/inspect/finish deletion and ledger calls remain service_role. No production SQL or role grant changed.",
+  "preservedFailedAttempt": "sql-a3/checks.json"
+}

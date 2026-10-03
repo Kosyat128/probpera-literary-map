@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "state": "prepared_unrun",
+  "baseHead": "b0572cdf6561935f2c2f0ba3063fb09ea7fd6bc3",
+  "projectModified": false,
+  "checksRun": false,
+  "focusedCases": 14,
+  "sourcePaths": [
+    "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
+    "server/planet/childCheckpointLedger.integration.test.ts"
+  ],
+  "files": [
+    {
+      "sourcePath": "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
+      "before": {
+        "exists": true,
+        "sha256": "186c17ccae813acac21f8458b59be4f2437a5893c43b4f8d6c032e1b8e54c661",
+        "bytes": 31642
+      },
+      "after": {
+        "candidate": "20261003203842_planet_child_checkpoint_ledger.sql",
+        "sha256": "2d5efd71dc6afcfc307c20ebf1052a6fd48a462573c1863d484e13177061a06a",
+        "bytes": 31738,
+        "lines": 433,
+        "CRLF": 0,
+        "LFOnly": 433,
+        "trailingLF": true
+      }
+    },
+    {
+      "sourcePath": "server/planet/childCheckpointLedger.integration.test.ts",
+      "before": {
+        "exists": true,
+        "sha256": "57d2d4ff790fa5f5db704652e1e2b789e479fd450b6eae80985f72f6dd2df73d",
+        "bytes": 29686
+      },
+      "after": {
+        "candidate": "childCheckpointLedger.integration.test.ts",
+        "sha256": "57d2d4ff790fa5f5db704652e1e2b789e479fd450b6eae80985f72f6dd2df73d",
+        "bytes": 29686,
+        "lines": 315,
+        "CRLF": 0,
+        "LFOnly": 315,
+        "trailingLF": true
+      }
+    }
+  ],
+  "setupInputs": [
+    {
+      "path": "scripts/database/fixtures/literary-planet-payment-retry-context.mjs",
+      "sha256": "06951b7418aab1fd9bbaef8f7e243bb957692e5c3832276f19cb926db515c9f9",
+      "bytes": 3531
+    },
+    {
+      "path": "supabase/schema.sql",
+      "sha256": "84ef3bca37e6d0cf5990d1bc0a263bf5bb19784cfdba3b4da8b6d04ba7924459",
+      "bytes": 25068
+    },
+    {
+      "path": "supabase/migrations/20260802_reader_journey.sql",
+      "sha256": "7c71e5a92d8c8d730b8ab3fe36a4628030bfe0eb19955b5193c2fd2dacc7b0e5",
+      "bytes": 5526
+    },
+    {
+      "path": "supabase/migrations/20260905_book_dossiers_v2.sql",
+      "sha256": "9cf24257e9154bf6fc418a029977021f7820a005824831f0b8d10c4e4e7d6418",
+      "bytes": 34356
+    },
+    {
+      "path": "supabase/migrations/20260728_cms_foundation.sql",
+      "sha256": "e40a9758696c472e210378ed4ec4de87eaa5ae91091478b217dfc8ef584c3f22",
+      "bytes": 26357
+    },
+    {
+      "path": "supabase/migrations/20260905_literary_planet_web_license.sql",
+      "sha256": "d4a4d9aa7eb9e7211f4ce2d0aa793bb5f5ac22d5c3fe0ebf7c667ea5a9189fe2",
+      "bytes": 19088
+    },
+    {
+      "path": "supabase/migrations/20260906_literary_planet_reader_deletion_processor.sql",
+      "sha256": "40d728d03fc1e202e892251bf9ca6dabe43b4b213f8c8b8bd541319902835276",
+      "bytes": 25064
+    },
+    {
+      "path": "supabase/migrations/20261001190736_planet_verified_payment_retry.sql",
+      "sha256": "21b0fd1d6734a0fd6f5c0df13c2baf9533e3dbd2c4bacf5c05fde4b430bf01ce",
+      "bytes": 24934
+    },
+    {
+      "path": "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
+      "sha256": "4d9ff9da155b9e1016c6c2b39f220bb1f36e61742d8c29fc99b90f0fdccdef82",
+      "bytes": 15486
+    },
+    {
+      "path": "supabase/migrations/20261002172514_planet_yookassa_sandbox_orders.sql",
+      "sha256": "82b282c48441d79615082ca4b1771ece3f1bcc42245a85d426356f18ca9e9ee7",
+      "bytes": 28527
+    },
+    {
+      "path": "supabase/migrations/20261002173942_planet_reader_live_session_fence.sql",
+      "sha256": "cb3d13a692ea427d916d7ae504413d95b658ac8c0541124e25f7c6b6c5b26227",
+      "bytes": 6260
+    }
+  ],
+  "cliAuthoringReceipt": "B/child-checkpoint-ledger-work-20261003/authoring-receipt.json",
+  "scope": "Private online DB checkpoint/one-use operation mechanics only",
+  "openContracts": [
+    "explicit installation/guardian provisioning",
+    "canonical authenticated backend/action/full-record validation",
+    "native issuer wiring",
+    "clock-v2 cross-boot reanchor",
+    "independent recovery proof",
+    "live multi-connection concurrency/device acceptance",
+    "DB disaster recovery/restore nonrollback authority"
+  ],
+  "previousCandidate": {
+    "path": "../next-child-checkpoint-ledger",
+    "sqlSha256": "186c17ccae813acac21f8458b59be4f2437a5893c43b4f8d6c032e1b8e54c661",
+    "testSha256": "57d2d4ff790fa5f5db704652e1e2b789e479fd450b6eae80985f72f6dd2df73d",
+    "actualRootRun": "1 PASS / 13 FAIL; permission denied for planet_assert_reader_not_deleting; preserved by root, not reclassified"
+  },
+  "correction": "Only SQL: canonical deletion assert executes inside existing private definer session-lock helper; invokers call it immediately after canonical subject/Auth guard, before accessBlocked/sessionEpoch, session/ledger/operation clocks. No global grants or Auth writes; test bytes unchanged."
+}

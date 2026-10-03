@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/vitest/vitest.mjs",
+        "run",
+        "server/planet/childCheckpointLedger.integration.test.ts",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\sql-a4\\vitest.json"
+      ],
+      "startedAt": "2026-10-03T21:05:30.789Z",
+      "finishedAt": "2026-10-03T21:05:35.228Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--project",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\sql-a4\\tsconfig.json"
+      ],
+      "startedAt": "2026-10-03T21:05:30.801Z",
+      "finishedAt": "2026-10-03T21:05:31.695Z",
+      "status": 0,
+      "signal": null,
+      "error": null,
+      "timedOut": false
+    }
+  ],
+  "passed": 14,
+  "failed": 0,
+  "pending": 0,
+  "sourceFingerprint": "dd109c589b489cd043388f311a7b573fd0b5a5ec2555d2b6cbe316efa0ff6ed0",
+  "sourceUnchanged": true,
+  "otherBaselineRowsUnchanged": 1781,
+  "setupScope": "One isolated actual PGlite connection/fixtures; not authenticated remote Auth, native time/recovery, installation, contention or release acceptance."
+}

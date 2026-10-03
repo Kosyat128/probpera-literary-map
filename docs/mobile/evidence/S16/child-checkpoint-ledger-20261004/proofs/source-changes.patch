@@ -1,0 +1,1294 @@
+diff --git a/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java b/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java
+index d2e0cc41..5585c080 100644
+--- a/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java
++++ b/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java
+@@ -1564,6 +1564,7 @@ final class PlanetChildVault {
+     private static final class NativePinVerification {
+         private final PinSessionIO io;private final PinVerificationAuthority authority;private final PinVerificationPolicy policy;
+         private final PinVerificationEngine fixtureEngine;private PinVerificationTicket active;private final java.util.Set<String> usedIds=new java.util.HashSet<>();
++        private final java.util.Set<Object> usedHosts=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<>());
+         private NativePinVerification(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy) throws Exception {this(io,authority,policy,null);}
+         private NativePinVerification(PinSessionIO io,PinVerificationAuthority authority,PinVerificationPolicy policy,PinVerificationEngine fixture) throws Exception {
+             require(io!=null&&authority!=null&&policy!=null);this.io=io;this.authority=authority;this.policy=policy;fixtureEngine=fixture;
+@@ -1617,8 +1618,9 @@ final class PlanetChildVault {
+         private synchronized PinVerificationTicket ticket(PinGateRequest gate) throws Exception {require(gate!=null&&active!=null&&active.gate==gate);own(active);return active;}
+         private OwnedPinVerification begin(PinGateRequest gate) throws Exception {
+             background();PinVerificationTicket original;
+-            synchronized(this){require(gate!=null&&gate.context.policyVersion.equals(policy.version)&&usedIds.size()<2048&&!usedIds.contains(gate.id));
+-                refuse(active==null,false);require(usedIds.add(gate.id));original=new PinVerificationTicket(this,gate);active=original;original.phase=PinVerificationPhase.beginning;worker(original);}
++            synchronized(this){require(gate!=null&&gate.context.policyVersion.equals(policy.version)&&usedIds.size()<2048&&usedHosts.size()<2048
++                &&!usedIds.contains(gate.id)&&!usedHosts.contains(gate.originalHostChallenge));
++                refuse(active==null,false);require(usedIds.add(gate.id)&&usedHosts.add(gate.originalHostChallenge));original=new PinVerificationTicket(this,gate);active=original;original.phase=PinVerificationPhase.beginning;worker(original);}
+             try{return locked(transaction->{live(original);byte[] bytes=transaction.read();
+                 try(ProtectedEnvelope record=ProtectedEnvelope.decode(bytes,policy.version,policy.checksum,policy.maximumIterations)){
+                     refuse(!record.unenrolled,false);context(record,gate);PinVerificationCoordinates point=isolated(bytes,copy->authority.capture(gate,copy,record.checksum,record.revision));
+diff --git a/server/planet/childCheckpointLedger.integration.test.ts b/server/planet/childCheckpointLedger.integration.test.ts
+new file mode 100644
+index 00000000..9ea84196
+--- /dev/null
++++ b/server/planet/childCheckpointLedger.integration.test.ts
+@@ -0,0 +1,317 @@
++import type { PGlite } from "@electric-sql/pglite";
++import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from "vitest";
++import { readFileSync } from "node:fs";
++import { createHash, randomUUID } from "node:crypto";
++import { createPaymentRetryTestDatabase, SETUP_INPUT_PATHS } from "../../scripts/database/fixtures/literary-planet-payment-retry-context.mjs";
++
++const migrationPaths = [
++  "supabase/migrations/20261001194458_planet_license_rate_limits.sql",
++  "supabase/migrations/20261002172514_planet_yookassa_sandbox_orders.sql",
++  "supabase/migrations/20261002173942_planet_reader_live_session_fence.sql",
++  "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
++] as const;
++export const CHILD_CHECKPOINT_SETUP_INPUT_PATHS = Object.freeze([...SETUP_INPUT_PATHS, ...migrationPaths]);
++const migrations = migrationPaths.map(path => readFileSync(new URL("../../" + path, import.meta.url), "utf8"));
++const hash = (value: string) => createHash("sha256").update(value).digest("hex");
++const captureSql = "select public.planet_capture_child_checkpoint($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::bigint,$6::bigint,$7,$8,$9,$10,$11::integer) as result";
++const advanceSql = "select public.planet_advance_child_checkpoint($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::bigint,$6::bigint,$7,$8,$9,$10) as result";
++interface Binding {
++  installation: string; epoch: string; subject: string; session: string; sessionEpoch: number;
++  revision: number; record: string; operation: string; context: string; next: string;
++}
++interface Receipt {
++  installation_id: string; authority_epoch: string; guardian_subject: string; guardian_session_id: string;
++  guardian_session_epoch: number; revision: number; record_sha256: string; operation_sha256: string;
++  context_sha256: string; next_record_sha256: string; captured_server_ms: number;
++  server_time_ms: number; completed_server_ms: number; expires_at_ms: number;
++}
++let db: PGlite | undefined;
++function database(): PGlite { if (!db) throw Error("Missing isolated checkpoint database"); return db; }
++async function scalar<T = unknown>(sql: string, parameters: unknown[] = []): Promise<T | undefined> {
++  return (await database().query<{ result: T }>(sql, parameters)).rows[0]?.result;
++}
++async function asRole<T>(role: "anon" | "authenticated" | "service_role", work: () => Promise<T>): Promise<T> {
++  await database().exec("savepoint role_operation");
++  try { await database().exec("set role " + role); return await work(); }
++  catch (error) { await database().exec("rollback to savepoint role_operation"); throw error; }
++  finally { await database().exec("reset role"); await database().exec("release savepoint role_operation"); }
++}
++const service = <T = unknown>(sql: string, parameters: unknown[] = []) => asRole("service_role", () => scalar<T>(sql, parameters));
++const args = (binding: Binding) => [binding.installation, binding.epoch, binding.subject, binding.session, binding.sessionEpoch,
++  binding.revision, binding.record, binding.operation, binding.context, binding.next];
++async function capture(binding: Binding, timeout = 60000): Promise<Receipt> {
++  const receipt = await service<Receipt>(captureSql, [...args(binding), timeout]);
++  if (!receipt) throw Error("Missing exact capture receipt"); return receipt;
++}
++async function advance(binding: Binding): Promise<Receipt> {
++  const receipt = await service<Receipt>(advanceSql, args(binding));
++  if (!receipt) throw Error("Missing exact advance receipt"); return receipt;
++}
++const checkpoint = (binding: Binding) => scalar<Record<string, unknown>>(
++  "select to_jsonb(c) as result from public.planet_child_checkpoints c where installation_id=$1::uuid", [binding.installation]);
++const operation = (binding: Binding) => scalar<Record<string, unknown>>(
++  "select to_jsonb(o) as result from public.planet_child_checkpoint_operations o where installation_id=$1::uuid and authority_epoch=$2::uuid and operation_sha256=$3",
++  [binding.installation, binding.epoch, binding.operation]);
++// Test-only owner inspection of the private classifier; production calls it
++// through the existing service-authorized deletion processor RPCs below.
++const blockers = (subject: string) => scalar<string[]>("select public.planet_reader_deletion_blockers($1::uuid) as result", [subject]);
++async function provisionFixture(): Promise<Binding> {
++  const binding: Binding = { installation: randomUUID(), epoch: randomUUID(), subject: randomUUID(), session: randomUUID(), sessionEpoch: 0,
++    revision: 0, record: hash("initial " + randomUUID()), operation: hash("original " + randomUUID()), context: hash("context " + randomUUID()), next: hash("next " + randomUUID()) };
++  await database().query("insert into auth.users(id) values($1::uuid)", [binding.subject]);
++  await database().query("insert into public.profiles(id,display_name,role) values($1::uuid,'Private checkpoint fixture','reader')", [binding.subject]);
++  await database().query("insert into auth.sessions(id,user_id) values($1::uuid,$2::uuid)", [binding.session, binding.subject]);
++  // Test-only superuser provisioning. The production service has no INSERT,
++  // identity-update, reset or installation/epoch enrolment privilege/API.
++  await database().query("insert into public.planet_child_checkpoints(installation_id,authority_epoch,user_id,revision,record_sha256,last_server_at) values($1::uuid,$2::uuid,$3::uuid,0,$4,clock_timestamp())",
++    [binding.installation, binding.epoch, binding.subject, binding.record]);
++  return binding;
++}
++function expectReceipt(receipt: Receipt, binding: Binding, revision: number, record: string) {
++  expect(Object.keys(receipt).sort()).toEqual(["authority_epoch", "captured_server_ms", "completed_server_ms", "context_sha256", "expires_at_ms", "guardian_session_epoch", "guardian_session_id", "guardian_subject", "installation_id", "next_record_sha256", "operation_sha256", "record_sha256", "revision", "server_time_ms"]);
++  expect(receipt).toMatchObject({ installation_id: binding.installation, authority_epoch: binding.epoch, guardian_subject: binding.subject,
++    guardian_session_id: binding.session, guardian_session_epoch: binding.sessionEpoch, revision, record_sha256: record,
++    operation_sha256: binding.operation, context_sha256: binding.context, next_record_sha256: binding.next });
++  for (const time of [receipt.captured_server_ms, receipt.server_time_ms, receipt.completed_server_ms, receipt.expires_at_ms]) expect(Number.isSafeInteger(time)).toBe(true);
++  expect(receipt.server_time_ms).toBeGreaterThanOrEqual(receipt.captured_server_ms);
++  expect(receipt.completed_server_ms).toBeGreaterThanOrEqual(receipt.server_time_ms);
++  expect(receipt.completed_server_ms).toBeLessThan(receipt.expires_at_ms);
++}
++
++// Actual canonical migrations/roles/constraints execute in one local PGlite
++// connection. This proves SQL transactions and receipt/expiry/ACL contracts,
++// not live Supabase Auth, simultaneous connections, signed/native authority,
++// system time provenance, provisioning, recovery proof or device acceptance.
++describe.sequential("private canonical child checkpoint ledger", () => {
++  beforeAll(async () => {
++    db = await createPaymentRetryTestDatabase();
++    // Exact Auth-session expiry field from canonical Supabase; other private
++    // fields make accidental broad server read grants observable in the fixture.
++    await database().exec("alter table auth.sessions add column not_after timestamptz, add column private_fixture_secret text");
++    for (const migration of migrations) await database().exec(migration);
++  }, 60000);
++  beforeEach(async () => { await database().exec("begin"); });
++  afterEach(async () => { await database().exec("rollback"); });
++  afterAll(async () => { if (db) { await db.close(); db = undefined; } });
++
++  it("captures an exact current tuple and commits one next revision with durable operation replay refusal", async () => {
++    const binding = await provisionFixture(), captured = await capture(binding);
++    expectReceipt(captured, binding, 0, binding.record);
++    expect(captured.expires_at_ms - captured.captured_server_ms).toBe(60000);
++    expect(await checkpoint(binding)).toMatchObject({ user_id: binding.subject, revision: 0, record_sha256: binding.record });
++    const advanced = await advance(binding);
++    expectReceipt(advanced, binding, 1, binding.next);
++    expect(advanced.expires_at_ms).toBe(captured.expires_at_ms);
++    expect(advanced.captured_server_ms).toBe(captured.captured_server_ms);
++    expect(await operation(binding)).toMatchObject({ consumed_server_ms: advanced.server_time_ms });
++    // Commit the actual SQL mutation, discard its result, and retry the exact
++    // original operation: uncertain delivery must not produce another success.
++    await database().exec("commit"); await database().exec("begin");
++    await expect(advance(binding)).rejects.toThrow("PLANET_CHILD_OPERATION_REPLAYED");
++    const next = { ...binding, revision: 1, record: binding.next, operation: hash("second original"), next: hash("second record") };
++    await expect(capture({ ...next, operation: binding.operation })).rejects.toThrow("PLANET_CHILD_OPERATION_REPLAYED");
++    expectReceipt(await capture(next), next, 1, next.record);
++    expectReceipt(await advance(next), next, 2, next.next);
++    expect(await checkpoint(binding)).toMatchObject({ revision: 2, record_sha256: next.next });
++  });
++
++  it("denies every null coordinate, malformed digest/counter/timeout and typed malformed identity without creating fallback state", async () => {
++    const binding = await provisionFixture(), before = await checkpoint(binding), original = args(binding);
++    for (let index = 0; index < 11; index++) {
++      const invalid: unknown[] = [...original, 60000]; invalid[index] = null;
++      await expect(service(captureSql, invalid)).rejects.toThrow("PLANET_INVALID_CHILD_CHECKPOINT_CONTEXT");
++    }
++    for (let index = 0; index < 10; index++) {
++      const invalid: unknown[] = [...original]; invalid[index] = null;
++      await expect(service(advanceSql, invalid)).rejects.toThrow("PLANET_INVALID_CHILD_CHECKPOINT_CONTEXT");
++    }
++    for (const [index, value] of [[4, -1], [4, 9007199254740991], [5, -1], [5, 9007199254740990],
++      [6, "A".repeat(64)], [7, "0".repeat(63)], [8, "{\"plainRecord\":true}"], [9, binding.record], [10, 0], [10, 60001]] as const) {
++      const invalid: unknown[] = [...original, 60000]; invalid[index] = value;
++      await expect(service(captureSql, invalid)).rejects.toThrow("PLANET_INVALID_CHILD_CHECKPOINT_CONTEXT");
++    }
++    await expect(service(captureSql, ["bundle.identifier", ...original.slice(1), 60000])).rejects.toThrow(/invalid input syntax for type uuid/u);
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toBeUndefined();
++  });
++
++  it("requires explicit installation, current epoch and bound owner, rejecting stale full-record coordinates", async () => {
++    const binding = await provisionFixture(), other = await provisionFixture(), before = await checkpoint(binding);
++    for (const mismatch of [{ installation: randomUUID() }, { epoch: randomUUID() }, { subject: other.subject, session: other.session }]) {
++      await expect(capture({ ...binding, ...mismatch })).rejects.toThrow("PLANET_CHILD_CHECKPOINT_NOT_PROVISIONED");
++      await expect(advance({ ...binding, ...mismatch })).rejects.toThrow("PLANET_CHILD_CHECKPOINT_NOT_PROVISIONED");
++    }
++    await expect(capture({ ...binding, subject: randomUUID() })).rejects.toThrow("PLANET_SUBJECT_NOT_FOUND");
++    await expect(capture({ ...binding, revision: 1 })).rejects.toThrow("PLANET_CHILD_CHECKPOINT_STALE");
++    await expect(capture({ ...binding, record: hash("partial or stale record") })).rejects.toThrow("PLANET_CHILD_CHECKPOINT_STALE");
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toBeUndefined();
++  });
++
++  it("binds original context, next full digest, expected record, session and revision without consuming a changed request", async () => {
++    const binding = await provisionFixture(), secondSession = randomUUID(); await capture(binding);
++    await database().query("insert into auth.sessions(id,user_id) values($1::uuid,$2::uuid)", [secondSession, binding.subject]);
++    const before = await checkpoint(binding), pending = await operation(binding);
++    for (const mismatch of [{ context: hash("changed context") }, { next: hash("changed next") }, { record: hash("changed expected") },
++      { revision: 1 }, { operation: hash("uncaptured operation") }, { session: secondSession }]) {
++      await expect(advance({ ...binding, ...mismatch })).rejects.toThrow("PLANET_CHILD_OPERATION_BINDING_DENIED");
++      expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toEqual(pending);
++    }
++    expectReceipt(await advance(binding), binding, 1, binding.next);
++  });
++
++  it("retains the original exclusive expiry when another operation captures and never recreates an expired permission", async () => {
++    const binding = await provisionFixture(), captured = await capture(binding, 1000);
++    const newer = { ...binding, operation: hash("newer original"), next: hash("newer proposed record") };
++    const fresh = await capture(newer);
++    expect(fresh.expires_at_ms).toBeGreaterThan(captured.expires_at_ms);
++    // Move fixture metadata to an already elapsed interval, never pass a client
++    // clock to the production RPC. The original timeout itself is unchanged.
++    await database().query("update public.planet_child_checkpoint_operations set captured_server_ms=floor(extract(epoch from clock_timestamp())*1000)::bigint-1000, expires_at_ms=floor(extract(epoch from clock_timestamp())*1000)::bigint where operation_sha256=$1", [binding.operation]);
++    const expired = await operation(binding), before = await checkpoint(binding);
++    await expect(advance(binding)).rejects.toThrow("PLANET_CHILD_OPERATION_EXPIRED");
++    await expect(capture(binding)).rejects.toThrow("PLANET_CHILD_OPERATION_REPLAYED");
++    expect(await operation(binding)).toEqual(expired); expect(await checkpoint(binding)).toEqual(before);
++    expectReceipt(await advance(newer), newer, 1, newer.next);
++  });
++
++  it("denies server clock rollback for both capture and advance without replacing the durable checkpoint", async () => {
++    const binding = await provisionFixture(); await capture(binding);
++    await database().query("update public.planet_child_checkpoints set last_server_at=clock_timestamp()+interval '1 day' where installation_id=$1::uuid", [binding.installation]);
++    const before = await checkpoint(binding), pending = await operation(binding);
++    await expect(capture({ ...binding, operation: hash("rollback capture") })).rejects.toThrow("PLANET_CHILD_SERVER_CLOCK_DENIED");
++    await expect(advance(binding)).rejects.toThrow("PLANET_CHILD_SERVER_CLOCK_DENIED");
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toEqual(pending);
++  });
++
++  it("denies missing, other-owner and expired Auth sessions at capture and after an original capture", async () => {
++    const binding = await provisionFixture(), other = await provisionFixture(), before = await checkpoint(binding);
++    await expect(capture({ ...binding, session: randomUUID() })).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    await expect(capture({ ...binding, session: other.session })).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    await database().query("update auth.sessions set not_after=clock_timestamp()-interval '1 second' where id=$1::uuid", [binding.session]);
++    await expect(capture(binding)).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toBeUndefined();
++    await database().query("update auth.sessions set not_after=clock_timestamp()+interval '1 minute' where id=$1::uuid", [binding.session]);
++    await capture(binding); const pending = await operation(binding), current = await checkpoint(binding);
++    await database().query("update auth.sessions set not_after=clock_timestamp()-interval '1 second' where id=$1::uuid", [binding.session]);
++    await expect(advance(binding)).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    await database().query("delete from auth.sessions where id=$1::uuid", [binding.session]);
++    await expect(advance(binding)).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    expect(await checkpoint(binding)).toEqual(current); expect(await operation(binding)).toEqual(pending);
++  });
++
++  it("preserves the captured guardian session epoch across canonical revocation and blocks denied subjects", async () => {
++    const binding = await provisionFixture(); await capture(binding);
++    const before = await checkpoint(binding), pending = await operation(binding);
++    expect(await service("select public.planet_revoke_web_sessions($1::uuid) as result", [binding.subject])).toEqual({ sessionEpoch: 1 });
++    await expect(advance(binding)).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    await expect(capture({ ...binding, operation: hash("old epoch") })).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    await expect(advance({ ...binding, sessionEpoch: 1 })).rejects.toThrow("PLANET_CHILD_OPERATION_BINDING_DENIED");
++    await database().query("update public.planet_access_state set access_blocked_at=clock_timestamp() where user_id=$1::uuid", [binding.subject]);
++    await expect(capture({ ...binding, sessionEpoch: 1, operation: hash("blocked epoch") })).rejects.toThrow("PLANET_CHILD_GUARDIAN_SESSION_DENIED");
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toEqual(pending);
++  });
++
++  it("keeps browser RPC/table/Auth-lock access private and service provisioning/immutable bindings unavailable", async () => {
++    const binding = await provisionFixture(), other = await provisionFixture(); await capture(binding);
++    for (const role of ["anon", "authenticated"] as const) {
++      for (const sql of [captureSql, advanceSql]) await expect(asRole(role, () => scalar(sql, sql === captureSql ? [...args(binding), 60000] : args(binding)))).rejects.toThrow(/permission denied/u);
++      for (const table of ["planet_child_checkpoints", "planet_child_checkpoint_operations"]) await expect(asRole(role, () => database().query("select * from public." + table))).rejects.toThrow(/permission denied/u);
++      await expect(asRole(role, () => scalar("select * from planet_private.lock_child_guardian_session($1::uuid,$2::uuid)", [binding.subject, binding.session]))).rejects.toThrow(/permission denied/u);
++    }
++    await expect(asRole("service_role", () => database().query("select private_fixture_secret from auth.sessions"))).rejects.toThrow(/permission denied/u);
++    await expect(asRole("service_role", () => database().query("update auth.sessions set not_after=null where id=$1::uuid", [binding.session]))).rejects.toThrow(/permission denied/u);
++    await expect(asRole("service_role", () => database().query("insert into public.planet_child_checkpoints(installation_id,authority_epoch,user_id,revision,record_sha256,last_server_at) values($1::uuid,$2::uuid,$3::uuid,0,$4,clock_timestamp())", [randomUUID(), randomUUID(), binding.subject, binding.record]))).rejects.toThrow(/permission denied/u);
++    await expect(asRole("service_role", () => database().query("delete from public.planet_child_checkpoints where installation_id=$1::uuid", [binding.installation]))).rejects.toThrow(/permission denied/u);
++    await expect(asRole("service_role", () => database().query("delete from public.planet_child_checkpoint_operations where operation_sha256=$1", [binding.operation]))).rejects.toThrow(/permission denied/u);
++    for (const [column, value, cast] of [["user_id", other.subject, "::uuid"], ["authority_epoch", randomUUID(), "::uuid"], ["context_sha256", hash("rewrite"), ""],
++      ["next_record_sha256", hash("rewrite next"), ""], ["guardian_session_id", other.session, "::uuid"], ["guardian_session_epoch", 1, "::bigint"], ["expires_at_ms", 1, "::bigint"]] as const) {
++      await expect(asRole("service_role", () => database().query("update public.planet_child_checkpoint_operations set " + column + "=$1" + cast + " where operation_sha256=$2", [value, binding.operation]))).rejects.toThrow(/permission denied/u);
++    }
++    const invalidOwner = [...args(binding)]; invalidOwner[2] = other.subject; invalidOwner[7] = hash("wrong-owner original");
++    await expect(asRole("service_role", () => database().query("insert into public.planet_child_checkpoint_operations(installation_id,authority_epoch,user_id,guardian_session_id,guardian_session_epoch,expected_revision,expected_record_sha256,operation_sha256,context_sha256,next_record_sha256,captured_server_ms,expires_at_ms) values($1::uuid,$2::uuid,$3::uuid,$4::uuid,$5::bigint,$6::bigint,$7,$8,$9,$10,1,2)", invalidOwner))).rejects.toThrow(/foreign key constraint/u);
++    const metadata = await scalar<{ rls: boolean; forced: boolean; policies: number; definer: boolean[] }>(`select jsonb_build_object(
++      'rls',bool_and(c.relrowsecurity),'forced',bool_and(c.relforcerowsecurity),
++      'policies',(select count(*) from pg_policies where tablename in ('planet_child_checkpoints','planet_child_checkpoint_operations')),
++      'definer',(select jsonb_agg(prosecdef order by proname) from pg_proc where proname in ('planet_capture_child_checkpoint','planet_advance_child_checkpoint'))) as result
++      from pg_class c where c.oid in ('public.planet_child_checkpoints'::regclass,'public.planet_child_checkpoint_operations'::regclass)`);
++    expect(metadata).toEqual({ rls: true, forced: true, policies: 0, definer: [false, false] });
++  });
++
++  it("rolls back an operation consumption if the checkpoint write loses its actual column privilege", async () => {
++    const binding = await provisionFixture(); await capture(binding);
++    const before = await checkpoint(binding), pending = await operation(binding);
++    await database().exec("revoke update(record_sha256) on public.planet_child_checkpoints from service_role");
++    await expect(advance(binding)).rejects.toThrow(/permission denied/u);
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toEqual(pending);
++    await database().exec("grant update(record_sha256) on public.planet_child_checkpoints to service_role");
++    expectReceipt(await advance(binding), binding, 1, binding.next);
++  });
++
++  it.each(["capture", "advance"] as const)("rolls back %s whose actual mutation finishes after its unchanged original deadline", async mode => {
++    const binding = await provisionFixture();
++    if (mode === "advance") await capture(binding, 1000);
++    const before = await checkpoint(binding), pending = await operation(binding);
++    // Sequence increments are not rolled back, proving the actual mutation
++    // trigger ran. An early pre-write expiry cannot make this test pass.
++    await database().exec(`create sequence public.checkpoint_delay_observed;
++      create function public.checkpoint_delay_fixture() returns trigger language plpgsql security definer set search_path='' as $$
++      declare delay_seconds double precision;
++      begin
++        perform pg_catalog.nextval('public.checkpoint_delay_observed'::regclass);
++        delay_seconds := greatest(0::double precision,(NEW.expires_at_ms - pg_catalog.floor(extract(epoch from pg_catalog.clock_timestamp())*1000))::double precision/1000)+0.05;
++        perform pg_catalog.pg_sleep(delay_seconds);
++        return NEW;
++      end; $$;`);
++    await database().exec(mode === "capture"
++      ? "create trigger checkpoint_delay after insert on public.planet_child_checkpoint_operations for each row execute function public.checkpoint_delay_fixture()"
++      : "create trigger checkpoint_delay after update of consumed_server_ms on public.planet_child_checkpoint_operations for each row when (NEW.consumed_server_ms is not null) execute function public.checkpoint_delay_fixture()");
++    await expect(mode === "capture" ? capture(binding, 200) : advance(binding)).rejects.toThrow("PLANET_CHILD_OPERATION_EXPIRED");
++    expect(await scalar("select is_called as result from public.checkpoint_delay_observed")).toBe(true);
++    expect(await scalar("select last_value::integer as result from public.checkpoint_delay_observed")).toBe(1);
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toEqual(pending);
++  });
++
++  it("restores already-reviewed budget deletion and preserves ledger, sandbox and financial deletion contracts together", async () => {
++    const binding = await provisionFixture(), other = await provisionFixture(); await capture(binding); await capture(other);
++    const budgetSql = "select public.planet_consume_license_grant_budget($1::uuid,'fixture-base',3,60) as result";
++    await service(budgetSql, [binding.subject]); await service(budgetSql, [other.subject]);
++    const order = randomUUID();
++    await service("select public.planet_reserve_sandbox_order($1::uuid,$2::uuid,$3::uuid,'sandbox.fixture','fixture-v1',100,'123','https://fixture.invalid/return',$4::uuid,$5::uuid) as result",
++      [order, randomUUID(), binding.subject, randomUUID(), randomUUID()]);
++    const event = randomUUID(), transaction = randomUUID(), payment = ["checkpoint-fixture", event, hash("payment fixture"), transaction, binding.subject, "fixture-base", "active", "2026-09-05T12:00:00Z"];
++    await service("select public.planet_enqueue_verified_payment_retry($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as result", payment);
++    await service("select public.planet_apply_verified_payment_event($1,$2,$3,$4,$5::uuid,$6,$7,$8::timestamptz) as result", payment);
++    const auditBefore = await scalar("select to_jsonb(e)-'user_id' as result from public.planet_payment_events e where provider='checkpoint-fixture' and event_id=$1", [event]);
++    expect(await blockers(binding.subject)).toEqual([]); expect(await blockers(other.subject)).toEqual([]);
++    const request = randomUUID(), lease = randomUUID(), before = await checkpoint(binding), pending = await operation(binding);
++    await service("select public.planet_request_account_deletion($1::uuid,$2::uuid) as result", [binding.subject, request]);
++    // The accepted request fences before any processor claim, not merely after.
++    await expect(capture({ ...binding, operation: hash("deletion pending") })).rejects.toThrow("PLANET_READER_DELETION_FENCED");
++    await expect(advance(binding)).rejects.toThrow("PLANET_READER_DELETION_FENCED");
++    await expect(service(budgetSql, [binding.subject])).rejects.toThrow("PLANET_READER_DELETION_FENCED");
++    expect(await checkpoint(binding)).toEqual(before); expect(await operation(binding)).toEqual(pending);
++    expect(await service("select public.planet_claim_reader_deletion($1::uuid,$2::uuid,$3,60) as result", [request, lease, hash("deletion policy")])).toEqual({ status: "claimed" });
++    expect(await service("select public.planet_inspect_reader_deletion($1::uuid,$2::uuid,true) as result", [request, lease])).toMatchObject({ phase: "auth-ready", blockers: [] });
++    await database().query("delete from auth.users where id=$1::uuid", [binding.subject]);
++    expect(await service("select public.planet_finish_reader_deletion($1::uuid,$2::uuid,'completed',$3,array[]::text[]) as result", [request, lease, hash("deletion evidence")])).toMatchObject({ status: "completed" });
++    expect(await checkpoint(binding)).toBeUndefined(); expect(await operation(binding)).toBeUndefined();
++    for (const table of ["planet_license_grant_budgets", "planet_sandbox_orders", "planet_verified_payment_retries"]) expect(await scalar("select count(*)::integer as result from public." + table + " where user_id=$1::uuid", [binding.subject])).toBe(0);
++    expect(await checkpoint(other)).toMatchObject({ revision: 0, record_sha256: other.record }); expect(await operation(other)).toMatchObject({ consumed_server_ms: null });
++    expect(await scalar("select count(*)::integer as result from public.planet_license_grant_budgets where user_id=$1::uuid", [other.subject])).toBe(1);
++    expect(await scalar("select user_id as result from public.planet_payment_events where provider='checkpoint-fixture' and event_id=$1", [event])).toBeNull();
++    expect(await scalar("select user_id as result from public.planet_purchase_receipts where provider='checkpoint-fixture' and transaction_id=$1", [transaction])).toBeNull();
++    expect(await scalar("select to_jsonb(e)-'user_id' as result from public.planet_payment_events e where provider='checkpoint-fixture' and event_id=$1", [event])).toEqual(auditBefore);
++  });
++
++  it("fails canonical deletion preflight when checkpoint ownership or a reviewed private dependency is removed or widened", async () => {
++    const binding = await provisionFixture(); await capture(binding);
++    const constraints = (await database().query<{ conname: string; parent: string }>("select conname,confrelid::regclass::text as parent from pg_constraint where contype='f' and conrelid='public.planet_child_checkpoint_operations'::regclass")).rows;
++    for (const constraint of constraints) {
++      await database().exec("savepoint schema_guard");
++      await database().exec('alter table public.planet_child_checkpoint_operations drop constraint "' + constraint.conname + '"');
++      expect(await blockers(binding.subject)).toContain(constraint.parent === "auth.users" ? "schema-required-identity-fk" : "schema-private-dependent");
++      await database().exec("rollback to savepoint schema_guard"); await database().exec("release savepoint schema_guard");
++    }
++    await database().exec("create table public.unreviewed_checkpoint_link(id uuid references public.planet_child_checkpoints(installation_id) on delete cascade)");
++    expect(await blockers(binding.subject)).toContain("schema-private-dependent");
++  });
++});
+diff --git a/server/planet/childCheckpointLedgerSupabase.test.ts b/server/planet/childCheckpointLedgerSupabase.test.ts
+new file mode 100644
+index 00000000..7c9eaf60
+--- /dev/null
++++ b/server/planet/childCheckpointLedgerSupabase.test.ts
+@@ -0,0 +1,290 @@
++import { afterEach, describe, expect, it, vi } from "vitest";
++import { createHash, randomUUID } from "node:crypto";
++import { createCanonicalChildCheckpointLedger, type ChildCheckpointCaptureRequest, type ChildCheckpointReceipt } from "./childCheckpointLedgerSupabase";
++import type { CanonicalSupabaseOptions } from "./supabase";
++
++type MutableReceipt = { -readonly [Key in keyof ChildCheckpointReceipt]: ChildCheckpointReceipt[Key] };
++
++const hash = (value: string) => createHash("sha256").update(value).digest("hex");
++const project = "https://child-checkpoint-fixture.supabase.invalid";
++const secret = "isolated-server-checkpoint-fixture", publishable = "isolated-publishable-checkpoint-fixture";
++function request(): ChildCheckpointCaptureRequest {
++  return { installationId: randomUUID(), authorityEpoch: randomUUID(), guardianSubject: randomUUID(), guardianSessionId: randomUUID(),
++    guardianSessionEpoch: 2, expectedRevision: 4, expectedRecordSha256: hash("original full record"), operationSha256: hash("original " + randomUUID()),
++    contextSha256: hash("original context"), nextRecordSha256: hash("next full record"), operationTimeoutMs: 5000 };
++}
++function captureReceipt(binding: ChildCheckpointCaptureRequest): ChildCheckpointReceipt {
++  return { installation_id: binding.installationId, authority_epoch: binding.authorityEpoch, guardian_subject: binding.guardianSubject,
++    guardian_session_id: binding.guardianSessionId, guardian_session_epoch: binding.guardianSessionEpoch, revision: binding.expectedRevision,
++    record_sha256: binding.expectedRecordSha256, operation_sha256: binding.operationSha256, context_sha256: binding.contextSha256,
++    next_record_sha256: binding.nextRecordSha256, captured_server_ms: 10000, server_time_ms: 10000, completed_server_ms: 10010,
++    expires_at_ms: 10000 + binding.operationTimeoutMs };
++}
++const advanceReceipt = (binding: ChildCheckpointCaptureRequest): ChildCheckpointReceipt => ({ ...captureReceipt(binding),
++  revision: binding.expectedRevision + 1, record_sha256: binding.nextRecordSha256, server_time_ms: 10005, completed_server_ms: 10006 });
++interface Observation { url: string; method: string | undefined; cache: RequestCache | undefined; redirect: RequestRedirect | undefined;
++  signal: AbortSignal | null | undefined; abortedAtSend: boolean | undefined; body: Record<string, unknown>; authorization: string | null; apiKey: string | null }
++function fixture(timeoutMs = 1000) {
++  let host = 0, local = 0;
++  vi.spyOn(performance, "now").mockImplementation(() => host);
++  const binding = request(), observations: Observation[] = [];
++  let respond: (name: string) => Response | Promise<Response> = name => Response.json(name === "planet_capture_child_checkpoint" ? captureReceipt(binding) : advanceReceipt(binding));
++  const fetcher = vi.fn<typeof fetch>(async (input, init) => {
++    const url = typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
++    const headers = new Headers(init?.headers);
++    observations.push({ url, method: init?.method, cache: init?.cache, redirect: init?.redirect, signal: init?.signal,
++      abortedAtSend: init?.signal?.aborted, body: JSON.parse(String(init?.body)) as Record<string, unknown>,
++      authorization: headers.get("authorization"), apiKey: headers.get("apikey") });
++    const pathParts = new URL(url).pathname.split("/"); return respond(pathParts[pathParts.length - 1]);
++  });
++  const options: CanonicalSupabaseOptions = { canonicalProjectUrl: project, publishableKey: publishable, serviceRoleKey: secret,
++    recentAuthenticationSeconds: 300, fetch: fetcher };
++  const policy = { timeoutMs, monotonicNow: () => local };
++  const ledger = createCanonicalChildCheckpointLedger(options, policy);
++  return { binding, ledger, options, policy, fetcher, observations,
++    host(value: number) { host = value; }, local(value: number) { local = value; }, response(provider: typeof respond) { respond = provider; } };
++}
++const expectedArgs = (binding: ChildCheckpointCaptureRequest, capture: boolean) => ({ p_installation_id: binding.installationId,
++  p_authority_epoch: binding.authorityEpoch, p_guardian_subject: binding.guardianSubject, p_guardian_session_id: binding.guardianSessionId,
++  p_guardian_session_epoch: binding.guardianSessionEpoch, p_expected_revision: binding.expectedRevision, p_expected_record_sha256: binding.expectedRecordSha256,
++  p_operation_sha256: binding.operationSha256, p_context_sha256: binding.contextSha256, p_next_record_sha256: binding.nextRecordSha256,
++  ...(capture ? { p_operation_timeout_ms: binding.operationTimeoutMs } : {}) });
++afterEach(() => { vi.restoreAllMocks(); vi.useRealTimers(); });
++
++// Installed Supabase/PostgREST SDK executes against injected local fetch only.
++// No real service key, network, database, Auth/action/guardian proof, native
++// clock, provisioning, device authority or recovery acceptance is represented.
++describe("private canonical child checkpoint SDK transport", () => {
++  it("constructs without I/O and sends only the exact canonical POST RPC tuples with fixed original server times", async () => {
++    const f = fixture(); expect(f.fetcher).not.toHaveBeenCalled(); expect(Object.isFrozen(f.ledger)).toBe(true);
++    const captured = await f.ledger.capture(f.binding), advanced = await f.ledger.advance(captured);
++    expect(captured).toEqual(captureReceipt(f.binding)); expect(advanced).toEqual(advanceReceipt(f.binding));
++    // Advance decision can precede the prior completion sample. The persisted
++    // decision is the high-water; completion is deliberately validity-only.
++    expect(advanced.server_time_ms).toBeLessThan(captured.completed_server_ms);
++    expect(Object.isFrozen(captured)).toBe(true); expect(Object.isFrozen(advanced)).toBe(true);
++    expect(f.observations).toHaveLength(2);
++    for (const [index, observed] of f.observations.entries()) {
++      expect(observed).toMatchObject({ url: project + "/rest/v1/rpc/planet_" + (index === 0 ? "capture" : "advance") + "_child_checkpoint",
++        method: "POST", redirect: "error", cache: "no-store", abortedAtSend: false, authorization: "Bearer " + secret, apiKey: secret });
++      expect(observed.body).toEqual(expectedArgs(f.binding, index === 0));
++      expect(observed.signal).toBeInstanceOf(AbortSignal);
++    }
++    await expect(f.ledger.advance(captured)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(2);
++  });
++
++  it("rejects configuration/policy accessors and unknown fields without invoking getters or constructor I/O", () => {
++    const f = fixture(); let reads = 0;
++    for (const field of ["canonicalProjectUrl", "fetch"] as const) {
++      const malicious = { ...f.options }; Object.defineProperty(malicious, field, { enumerable: true, get() { reads++; return f.options[field]; } });
++      expect(() => createCanonicalChildCheckpointLedger(malicious, f.policy)).toThrow("unavailable");
++    }
++    const badPolicy = { ...f.policy }; Object.defineProperty(badPolicy, "monotonicNow", { enumerable: true, get() { reads++; return f.policy.monotonicNow; } });
++    expect(() => createCanonicalChildCheckpointLedger(f.options, badPolicy)).toThrow("unavailable");
++    expect(() => createCanonicalChildCheckpointLedger({ ...f.options, guessedProvider: true } as CanonicalSupabaseOptions, f.policy)).toThrow("unavailable");
++    expect(() => createCanonicalChildCheckpointLedger({ ...f.options, canonicalProjectUrl: "https://other.invalid/path" }, f.policy)).toThrow();
++    expect(() => createCanonicalChildCheckpointLedger(f.options, { ...f.policy, timeoutMs: 10001 })).toThrow("unavailable");
++    expect(reads).toBe(0); expect(f.fetcher).not.toHaveBeenCalled();
++  });
++
++  it("denies descriptor/prototype/unknown/symbol request fields and malformed primitive coordinates before I/O", async () => {
++    const f = fixture(); let reads = 0;
++    const accessor = { ...f.binding }; Object.defineProperty(accessor, "contextSha256", { enumerable: true, get() { reads++; return f.binding.contextSha256; } });
++    const inherited = Object.assign(Object.create({ ambient: true }), f.binding);
++    const hidden = { ...f.binding }; Object.defineProperty(hidden, "operationSha256", { value: f.binding.operationSha256, enumerable: false });
++    const malformed = [accessor, inherited, hidden, { ...f.binding, unknown: true }, { ...f.binding, [Symbol("ambient")]: true },
++      ...["installationId", "authorityEpoch", "guardianSubject", "guardianSessionId"].map(field => ({ ...f.binding, [field]: "bundle.identity" })),
++      { ...f.binding, installationId: f.binding.installationId.toUpperCase() }, { ...f.binding, expectedRevision: -1 },
++      { ...f.binding, expectedRevision: 9007199254740990 }, { ...f.binding, guardianSessionEpoch: 1.5 },
++      { ...f.binding, operationTimeoutMs: 0 }, { ...f.binding, operationTimeoutMs: 60001 },
++      { ...f.binding, expectedRecordSha256: "A".repeat(64) }, { ...f.binding, operationSha256: "0".repeat(63) },
++      { ...f.binding, contextSha256: null }, { ...f.binding, nextRecordSha256: f.binding.expectedRecordSha256 }];
++    for (const value of malformed) await expect(f.ledger.capture(value as ChildCheckpointCaptureRequest)).rejects.toThrow("unavailable");
++    expect(reads).toBe(0); expect(f.fetcher).not.toHaveBeenCalled();
++    expect(await f.ledger.capture(f.binding)).toEqual(captureReceipt(f.binding));
++  });
++
++  it("detaches request/config/policy and provider output and freezes the exact primitive server tuple", async () => {
++    const f = fixture(), original = { ...f.binding }, providerOutput = captureReceipt(original) as MutableReceipt;
++    const parse = JSON.parse, sentinel = "detached-checkpoint-receipt";
++    vi.spyOn(JSON, "parse").mockImplementation((text: string, reviver?: Parameters<typeof JSON.parse>[1]) => text === sentinel ? providerOutput : parse(text, reviver));
++    f.response(() => new Response(sentinel));
++    const pending = f.ledger.capture(f.binding);
++    f.binding.contextSha256 = hash("mutated caller"); f.binding.nextRecordSha256 = hash("mutated caller next");
++    f.options.fetch = vi.fn<typeof fetch>(() => { throw Error("mutated fetch must remain detached"); });
++    f.policy.monotonicNow = () => { throw Error("mutated clock must remain detached"); }; f.policy.timeoutMs = 0;
++    const captured = await pending;
++    providerOutput.context_sha256 = hash("mutated provider"); providerOutput.expires_at_ms++;
++    expect(captured).toEqual(captureReceipt(original)); expect(f.observations[0].body).toEqual(expectedArgs(original, true));
++    expect(Object.isFrozen(captured)).toBe(true);
++    expect(() => { (captured as { revision: number }).revision++; }).toThrow();
++  });
++
++  it("rejects accessor SDK data without invoking it and rejects copied/fabricated receipt identities before advance I/O", async () => {
++    const f = fixture(); let reads = 0;
++    const malicious = captureReceipt(f.binding), parse = JSON.parse, sentinel = "accessor-checkpoint-receipt";
++    Object.defineProperty(malicious, "context_sha256", { enumerable: true, get() { reads++; return f.binding.contextSha256; } });
++    vi.spyOn(JSON, "parse").mockImplementation((text: string, reviver?: Parameters<typeof JSON.parse>[1]) => text === sentinel ? malicious : parse(text, reviver));
++    f.response(() => new Response(sentinel));
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable");
++    expect(reads).toBe(0); expect(f.fetcher).toHaveBeenCalledTimes(1);
++    const copied = captureReceipt(f.binding); Object.defineProperty(copied, "revision", { enumerable: true, get() { reads++; return f.binding.expectedRevision; } });
++    await expect(f.ledger.advance(copied)).rejects.toThrow("unavailable");
++    expect(reads).toBe(0); expect(f.fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it.each(["binding", "revision", "digest", "renewal", "captured", "ordering", "exclusive", "unknown", "null"] as const)("rejects malformed capture receipt %s and burns the original attempt", async mode => {
++    const f = fixture(), value = captureReceipt(f.binding) as unknown as Record<string, unknown>;
++    if (mode === "binding") value.guardian_session_id = randomUUID();
++    if (mode === "revision") value.revision = f.binding.expectedRevision + 1;
++    if (mode === "digest") value.record_sha256 = f.binding.nextRecordSha256;
++    if (mode === "renewal") value.expires_at_ms = Number(value.expires_at_ms) + 1;
++    if (mode === "captured") value.captured_server_ms = 9007199254680991;
++    if (mode === "ordering") value.server_time_ms = 10001;
++    if (mode === "exclusive") value.completed_server_ms = value.expires_at_ms;
++    if (mode === "unknown") value.signedAuthority = true;
++    f.response(() => Response.json(mode === "null" ? null : value));
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable");
++    f.response(() => Response.json(captureReceipt(f.binding)));
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it.each(["binding", "revision", "digest", "renewal", "captured", "rollback", "ordering", "exclusive", "null"] as const)("rejects malformed advance receipt %s without retry or optimistic success", async mode => {
++    const f = fixture(), captured = await f.ledger.capture(f.binding), value = advanceReceipt(f.binding) as unknown as Record<string, unknown>;
++    if (mode === "binding") value.context_sha256 = hash("changed context");
++    if (mode === "revision") value.revision = f.binding.expectedRevision + 2;
++    if (mode === "digest") value.record_sha256 = f.binding.expectedRecordSha256;
++    if (mode === "renewal") value.expires_at_ms = captured.expires_at_ms + 1;
++    if (mode === "captured") { value.captured_server_ms = captured.captured_server_ms + 1; value.expires_at_ms = captured.expires_at_ms + 1; }
++    if (mode === "rollback") value.server_time_ms = captured.server_time_ms - 1;
++    if (mode === "ordering") value.completed_server_ms = Number(value.server_time_ms) - 1;
++    if (mode === "exclusive") value.completed_server_ms = captured.expires_at_ms;
++    f.response(() => Response.json(mode === "null" ? null : value));
++    await expect(f.ledger.advance(captured)).rejects.toThrow("unavailable");
++    f.response(() => Response.json(advanceReceipt(f.binding)));
++    await expect(f.ledger.advance(captured)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(2);
++  });
++
++  it("allows only its original receipt once, including concurrent attempts and another adapter's structurally identical copy", async () => {
++    const f = fixture(), captured = await f.ledger.capture(f.binding);
++    await expect(f.ledger.advance({ ...captured })).rejects.toThrow("unavailable");
++    const other = createCanonicalChildCheckpointLedger(f.options, f.policy);
++    await expect(other.advance(captured)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(1);
++    const results = await Promise.allSettled([f.ledger.advance(captured), f.ledger.advance(captured)]);
++    expect(results.map(result => result.status)).toEqual(["fulfilled", "rejected"]); expect(f.fetcher).toHaveBeenCalledTimes(2);
++  });
++
++  it.each(["local", "host"] as const)("retains the original %s operation deadline after capture instead of granting a new advance budget", async clock => {
++    const f = fixture(), captured = await f.ledger.capture(f.binding);
++    if (clock === "local") f.local(f.binding.operationTimeoutMs); else f.host(f.binding.operationTimeoutMs);
++    await expect(f.ledger.advance(captured)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it("starts the host budget before the first external clock callback and refuses callbacks that consumed it", async () => {
++    let host = 0, clockCalls = 0; vi.spyOn(performance, "now").mockImplementation(() => host);
++    const fetcher = vi.fn<typeof fetch>(async () => Response.json(null)), binding = request();
++    const ledger = createCanonicalChildCheckpointLedger({ canonicalProjectUrl: project, publishableKey: publishable, serviceRoleKey: secret,
++      recentAuthenticationSeconds: 300, fetch: fetcher }, { timeoutMs: 100, monotonicNow() { clockCalls++; host = 100; return 0; } });
++    await expect(ledger.capture(binding)).rejects.toThrow("unavailable");
++    expect(clockCalls).toBeGreaterThan(0); expect(fetcher).not.toHaveBeenCalled();
++  });
++
++  it("denies pre-abort and abort during late provider resolution without installing a receipt or repeating I/O", async () => {
++    const f = fixture(), aborted = new AbortController(); aborted.abort();
++    await expect(f.ledger.capture(f.binding, aborted.signal)).rejects.toThrow("unavailable"); expect(f.fetcher).not.toHaveBeenCalled();
++    const pendingBinding = { ...f.binding, operationSha256: hash("pending abort") }, controller = new AbortController();
++    let resolve!: (response: Response) => void;
++    f.response(() => new Promise<Response>(finish => { resolve = finish; }));
++    const pending = f.ledger.capture(pendingBinding, controller.signal); const observed = pending.then(() => "accepted", () => "denied");
++    await vi.waitFor(() => expect(f.fetcher).toHaveBeenCalledTimes(1)); controller.abort();
++    expect(await observed).toBe("denied"); expect(f.observations[0].signal?.aborted).toBe(true);
++    resolve(Response.json(captureReceipt(pendingBinding))); await Promise.resolve(); await Promise.resolve();
++    await expect(f.ledger.capture(pendingBinding)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it("rejects abort in the last clock callback after SDK body decoding with observations outside callbacks", async () => {
++    let host = 0, decoded = false, observedAbort = false; const controller = new AbortController();
++    vi.spyOn(performance, "now").mockImplementation(() => host); const binding = request();
++    const fetcher = vi.fn<typeof fetch>(async () => {
++      const response = Response.json(captureReceipt(binding)), text = response.text.bind(response);
++      response.text = async () => { const value = await text(); decoded = true; return value; }; return response;
++    });
++    const ledger = createCanonicalChildCheckpointLedger({ canonicalProjectUrl: project, publishableKey: publishable, serviceRoleKey: secret,
++      recentAuthenticationSeconds: 300, fetch: fetcher }, { timeoutMs: 1000, monotonicNow() {
++      if (decoded) { observedAbort = true; controller.abort(); } return 0;
++    } });
++    await expect(ledger.capture(binding, controller.signal)).rejects.toThrow("unavailable");
++    expect(decoded).toBe(true); expect(observedAbort).toBe(true); expect(fetcher).toHaveBeenCalledTimes(1); host = 0;
++  });
++
++  it.each(["rollback", "invalid", "throw"] as const)("rejects late local clock %s and permanently fails that adapter clock", async mode => {
++    let decoded = false, observedFault = false; vi.spyOn(performance, "now").mockReturnValue(0); const binding = request();
++    const fetcher = vi.fn<typeof fetch>(async () => {
++      const response = Response.json(captureReceipt(binding)), text = response.text.bind(response);
++      response.text = async () => { const value = await text(); decoded = true; return value; }; return response;
++    });
++    const ledger = createCanonicalChildCheckpointLedger({ canonicalProjectUrl: project, publishableKey: publishable, serviceRoleKey: secret,
++      recentAuthenticationSeconds: 300, fetch: fetcher }, { timeoutMs: 1000, monotonicNow() {
++      if (decoded) { observedFault = true; if (mode === "throw") throw Error("fixture clock"); return mode === "rollback" ? 9 : NaN; } return 10;
++    } });
++    await expect(ledger.capture(binding)).rejects.toThrow("unavailable");
++    expect(decoded).toBe(true); expect(observedFault).toBe(true);
++    await expect(ledger.capture({ ...binding, operationSha256: hash("after clock fault") })).rejects.toThrow("unavailable"); expect(fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it("bounds a fetch that ignores cancellation and refuses a late response without retries", async () => {
++    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] }); const f = fixture(100);
++    let resolve!: (response: Response) => void, markStarted!: () => void;
++    const started = new Promise<void>(notify => { markStarted = notify; });
++    f.response(() => new Promise<Response>(finish => { resolve = finish; markStarted(); }));
++    const pending = f.ledger.capture(f.binding), observed = pending.then(() => "accepted", () => "denied");
++    await started;
++    expect(f.fetcher).toHaveBeenCalledTimes(1);
++    await vi.advanceTimersByTimeAsync(100);
++    expect(await observed).toBe("denied"); expect(f.observations[0].signal?.aborted).toBe(true);
++    resolve(Response.json(captureReceipt(f.binding))); await Promise.resolve(); await Promise.resolve();
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it.each([["capture", "owner"], ["capture", "clock"], ["advance", "owner"], ["advance", "clock"]] as const)(
++    "refuses %s after cleanup abort listener changed the %s, preserving the original call timeout", async (mode, action) => {
++      const f = fixture(), owner = new AbortController();
++      const captured = mode === "advance" ? await f.ledger.capture(f.binding) : undefined;
++      let cleanupActions = 0, observedClock = 0;
++      f.response(name => {
++        const transport = f.observations[f.observations.length - 1].signal;
++        transport?.addEventListener("abort", () => {
++          cleanupActions++;
++          if (action === "owner") owner.abort(); else { observedClock = 1000; f.local(observedClock); }
++        }, { once: true });
++        return Response.json(name === "planet_capture_child_checkpoint" ? captureReceipt(f.binding) : advanceReceipt(f.binding));
++      });
++      await expect(mode === "capture" ? f.ledger.capture(f.binding, owner.signal) : f.ledger.advance(captured!, owner.signal)).rejects.toThrow("unavailable");
++      expect(cleanupActions).toBe(1);
++      if (action === "owner") expect(owner.signal.aborted).toBe(true); else expect(observedClock).toBe(1000);
++      expect(f.fetcher).toHaveBeenCalledTimes(mode === "capture" ? 1 : 2);
++      // Spending survives cleanup refusal. Completion cannot mint a copy with
++      // a renewed transport deadline or make another request for this original.
++      if (mode === "capture") await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable");
++      else await expect(f.ledger.advance(captured!)).rejects.toThrow("unavailable");
++      expect(f.fetcher).toHaveBeenCalledTimes(mode === "capture" ? 1 : 2);
++    });
++
++  it.each(["http", "throw", "late"] as const)("denies %s transport failure and performs no automatic or repeated original operation request", async mode => {
++    const f = fixture();
++    f.response(() => { if (mode === "throw") throw Error("ambiguous transport"); if (mode === "late") f.local(1000);
++      return mode === "http" ? Response.json({ code: "P0001", message: "isolated refusal" }, { status: 503 }) : Response.json(captureReceipt(f.binding)); });
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable");
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable"); expect(f.fetcher).toHaveBeenCalledTimes(1);
++  });
++
++  it("keeps the spent registry bounded with no eviction or silent reset at its capacity", async () => {
++    const f = fixture(), controller = new AbortController(); controller.abort();
++    for (let index = 0; index < 2048; index++) {
++      await expect(f.ledger.capture({ ...f.binding, operationSha256: hash("spent " + index) }, controller.signal)).rejects.toThrow("unavailable");
++    }
++    await expect(f.ledger.capture(f.binding)).rejects.toThrow("unavailable");
++    await expect(f.ledger.capture({ ...f.binding, operationSha256: hash("spent 0") })).rejects.toThrow("unavailable");
++    expect(f.fetcher).not.toHaveBeenCalled();
++  });
++});
+diff --git a/server/planet/childCheckpointLedgerSupabase.ts b/server/planet/childCheckpointLedgerSupabase.ts
+new file mode 100644
+index 00000000..38dd48bd
+--- /dev/null
++++ b/server/planet/childCheckpointLedgerSupabase.ts
+@@ -0,0 +1,206 @@
++import { createClient } from "@supabase/supabase-js";
++import { createCanonicalSupabaseServices, type CanonicalSupabaseOptions } from "./supabase";
++
++export interface ChildCheckpointTransportPolicy { timeoutMs: number; monotonicNow: () => number }
++export interface ChildCheckpointCaptureRequest {
++  /** UUID coordinates use canonical lowercase, matching PostgreSQL receipts. */
++  installationId: string; authorityEpoch: string; guardianSubject: string; guardianSessionId: string;
++  guardianSessionEpoch: number; expectedRevision: number; expectedRecordSha256: string;
++  operationSha256: string; contextSha256: string; nextRecordSha256: string; operationTimeoutMs: number;
++}
++export interface ChildCheckpointReceipt {
++  readonly installation_id: string; readonly authority_epoch: string; readonly guardian_subject: string;
++  readonly guardian_session_id: string; readonly guardian_session_epoch: number; readonly revision: number;
++  readonly record_sha256: string; readonly operation_sha256: string; readonly context_sha256: string;
++  readonly next_record_sha256: string; readonly captured_server_ms: number; readonly server_time_ms: number;
++  readonly completed_server_ms: number; readonly expires_at_ms: number;
++}
++export type ChildCheckpointCaptureReceipt = Readonly<ChildCheckpointReceipt>;
++export type ChildCheckpointAdvanceReceipt = Readonly<ChildCheckpointReceipt>;
++const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u;
++const HASH = /^[0-9a-f]{64}$/u;
++const MAX_COUNTER = 9007199254740990, MAX_EXPECTED = MAX_COUNTER - 1, MAX_CAPTURE_TIME = MAX_COUNTER - 60000;
++const REQUEST_FIELDS = ["installationId", "authorityEpoch", "guardianSubject", "guardianSessionId", "guardianSessionEpoch", "expectedRevision", "expectedRecordSha256", "operationSha256", "contextSha256", "nextRecordSha256", "operationTimeoutMs"] as const;
++const RECEIPT_FIELDS = ["installation_id", "authority_epoch", "guardian_subject", "guardian_session_id", "guardian_session_epoch", "revision", "record_sha256", "operation_sha256", "context_sha256", "next_record_sha256", "captured_server_ms", "server_time_ms", "completed_server_ms", "expires_at_ms"] as const;
++const CONFIG_FIELDS = ["canonicalProjectUrl", "publishableKey", "serviceRoleKey", "recentAuthenticationSeconds"] as const;
++const unavailable = () => new Error("Canonical child checkpoint ledger unavailable");
++function data(value: unknown, required: readonly string[], optional: readonly string[] = []): Record<string, unknown> {
++  if (!value || typeof value !== "object" || Array.isArray(value)) throw unavailable();
++  const prototype = Object.getPrototypeOf(value);
++  if (prototype !== Object.prototype && prototype !== null) throw unavailable();
++  const descriptors = Object.getOwnPropertyDescriptors(value), names = Reflect.ownKeys(descriptors);
++  if (required.some(field => !Object.prototype.hasOwnProperty.call(descriptors, field)) || names.some(key => typeof key !== "string"
++    || !required.includes(key) && !optional.includes(key) || !descriptors[key].enumerable || !("value" in descriptors[key]))) throw unavailable();
++  const copy: Record<string, unknown> = Object.create(null);
++  for (const name of names as string[]) copy[name] = descriptors[name].value;
++  return copy;
++}
++const integer = (value: unknown, maximum: number): value is number => typeof value === "number" && Number.isSafeInteger(value) && value >= 0 && value <= maximum;
++const uuid = (value: unknown): value is string => typeof value === "string" && UUID.test(value);
++const hash = (value: unknown): value is string => typeof value === "string" && HASH.test(value);
++function request(value: unknown): Readonly<ChildCheckpointCaptureRequest> {
++  const copy = data(value, REQUEST_FIELDS);
++  if (![copy.installationId, copy.authorityEpoch, copy.guardianSubject, copy.guardianSessionId].every(uuid)
++    || ![copy.expectedRecordSha256, copy.operationSha256, copy.contextSha256, copy.nextRecordSha256].every(hash)
++    || !integer(copy.guardianSessionEpoch, MAX_COUNTER) || !integer(copy.expectedRevision, MAX_EXPECTED)
++    || !integer(copy.operationTimeoutMs, 60000) || copy.operationTimeoutMs < 1 || copy.nextRecordSha256 === copy.expectedRecordSha256) throw unavailable();
++  return Object.freeze(copy) as unknown as Readonly<ChildCheckpointCaptureRequest>;
++}
++function receipt(value: unknown, binding: Readonly<ChildCheckpointCaptureRequest>, original?: ChildCheckpointCaptureReceipt): ChildCheckpointReceipt {
++  const copy = data(value, RECEIPT_FIELDS);
++  if (copy.installation_id !== binding.installationId || copy.authority_epoch !== binding.authorityEpoch
++    || copy.guardian_subject !== binding.guardianSubject || copy.guardian_session_id !== binding.guardianSessionId
++    || copy.guardian_session_epoch !== binding.guardianSessionEpoch || copy.operation_sha256 !== binding.operationSha256
++    || copy.context_sha256 !== binding.contextSha256 || copy.next_record_sha256 !== binding.nextRecordSha256
++    || copy.revision !== binding.expectedRevision + (original ? 1 : 0)
++    || copy.record_sha256 !== (original ? binding.nextRecordSha256 : binding.expectedRecordSha256)
++    || !integer(copy.captured_server_ms, MAX_CAPTURE_TIME) || !integer(copy.server_time_ms, MAX_COUNTER)
++    || !integer(copy.completed_server_ms, MAX_COUNTER) || !integer(copy.expires_at_ms, MAX_COUNTER)
++    || copy.server_time_ms < copy.captured_server_ms || copy.completed_server_ms < copy.server_time_ms
++    || copy.completed_server_ms >= copy.expires_at_ms || copy.expires_at_ms !== copy.captured_server_ms + binding.operationTimeoutMs
++    || (original ? copy.captured_server_ms !== original.captured_server_ms || copy.expires_at_ms !== original.expires_at_ms
++      || copy.server_time_ms < original.server_time_ms : copy.server_time_ms !== copy.captured_server_ms)) throw unavailable();
++  return Object.freeze(copy) as unknown as ChildCheckpointReceipt;
++}
++function rpcArgs(binding: Readonly<ChildCheckpointCaptureRequest>, capture: boolean): Readonly<Record<string, unknown>> {
++  const copy: Record<string, unknown> = { p_installation_id: binding.installationId, p_authority_epoch: binding.authorityEpoch,
++    p_guardian_subject: binding.guardianSubject, p_guardian_session_id: binding.guardianSessionId, p_guardian_session_epoch: binding.guardianSessionEpoch,
++    p_expected_revision: binding.expectedRevision, p_expected_record_sha256: binding.expectedRecordSha256,
++    p_operation_sha256: binding.operationSha256, p_context_sha256: binding.contextSha256, p_next_record_sha256: binding.nextRecordSha256 };
++  if (capture) copy.p_operation_timeout_ms = binding.operationTimeoutMs;
++  return Object.freeze(copy);
++}
++
++/** Private server transport only. Receipts are DB mechanics, never signed/native
++ * authority, authenticated guardian/action proof, recovery or clock provenance.
++ * Ambiguous failures burn the local attempt; no retry, reset or fallback occurs.
++ * Caller Auth/action/provisioning validation and native absolute deadlines remain
++ * independent requirements. Neither local clock is a trusted child clock. */
++export function createCanonicalChildCheckpointLedger(options: CanonicalSupabaseOptions, policy: ChildCheckpointTransportPolicy) {
++  const configData = data(options, CONFIG_FIELDS, ["fetch", "now"]), policyData = data(policy, ["timeoutMs", "monotonicNow"]);
++  if (typeof configData.canonicalProjectUrl !== "string" || typeof configData.publishableKey !== "string" || typeof configData.serviceRoleKey !== "string"
++    || !integer(configData.recentAuthenticationSeconds, 900) || configData.recentAuthenticationSeconds < 1
++    || configData.fetch !== undefined && typeof configData.fetch !== "function" || configData.now !== undefined && typeof configData.now !== "function"
++    || !integer(policyData.timeoutMs, 10000) || policyData.timeoutMs < 1 || typeof policyData.monotonicNow !== "function") throw unavailable();
++  const config = Object.freeze(configData) as unknown as CanonicalSupabaseOptions;
++  // Reuse canonical configuration/key policy and installed SDK without I/O.
++  createCanonicalSupabaseServices(config);
++  const origin = new URL(config.canonicalProjectUrl).origin, fetcher = config.fetch ?? globalThis.fetch;
++  const timeoutMs = policyData.timeoutMs, localClock = policyData.monotonicNow as () => number;
++  if (!globalThis.performance || typeof globalThis.performance.now !== "function") throw unavailable();
++  const hostClock = globalThis.performance.now.bind(globalThis.performance);
++  const aborted = Object.getOwnPropertyDescriptor(AbortSignal.prototype, "aborted")?.get;
++  if (!aborted) throw unavailable();
++  let lastLocal = -1, lastHost = -1, failedClock = false, readingLocal = false, snapshotting = false;
++  const spent = new Set<string>();
++  type Original = { binding: Readonly<ChildCheckpointCaptureRequest>; localDeadline: number; hostDeadline: number; attempted: boolean };
++  const originals = new WeakMap<object, Original>();
++  function hostTime(): number {
++    if (failedClock) throw unavailable();
++    const value = hostClock();
++    if (!Number.isFinite(value) || value < 0 || value > Number.MAX_SAFE_INTEGER || value < lastHost) { failedClock = true; throw unavailable(); }
++    lastHost = value; return value;
++  }
++  function localTime(): number {
++    if (failedClock || readingLocal) { failedClock = true; throw unavailable(); }
++    readingLocal = true;
++    try {
++      const value = localClock();
++      if (failedClock || !Number.isFinite(value) || value < 0 || value > Number.MAX_SAFE_INTEGER || value < lastLocal) { failedClock = true; throw unavailable(); }
++      lastLocal = value; return value;
++    } catch { failedClock = true; throw unavailable(); }
++    finally { readingLocal = false; }
++  }
++  function isAborted(signal?: AbortSignal): boolean {
++    if (signal === undefined) return false;
++    try { return aborted!.call(signal) as boolean; } catch { throw unavailable(); }
++  }
++  async function rpc(binding: Readonly<ChildCheckpointCaptureRequest>, capture: boolean, original: Original,
++    startedHost: number, startedLocal: number, signal?: AbortSignal): Promise<ChildCheckpointReceipt> {
++    const hostDeadline = Math.min(startedHost + timeoutMs, original.hostDeadline), localDeadline = Math.min(startedLocal + timeoutMs, original.localDeadline);
++    if (!Number.isFinite(hostDeadline) || hostDeadline > Number.MAX_SAFE_INTEGER || !Number.isFinite(localDeadline) || localDeadline > Number.MAX_SAFE_INTEGER) throw unavailable();
++    const controller = new AbortController(); let timer: ReturnType<typeof setTimeout> | undefined, listener = false, settled = false;
++    let cancel!: () => void;
++    const cancelled = new Promise<never>((_, reject) => { cancel = () => { controller.abort(); reject(unavailable()); }; });
++    // Cancellation can occur in a synchronous host clock callback before the
++    // SDK promise is installed in the race. Keep that refusal observed too.
++    void cancelled.catch(() => {});
++    function current() {
++      if (settled || controller.signal.aborted || isAborted(signal)) throw unavailable();
++      const at = localTime(), hostAt = hostTime();
++      // Final state check follows the last external clock callback.
++      if (settled || controller.signal.aborted || isAborted(signal) || failedClock || at >= localDeadline || hostAt >= hostDeadline) throw unavailable();
++    }
++    try {
++      if (isAborted(signal)) throw unavailable();
++      if (signal) { EventTarget.prototype.addEventListener.call(signal, "abort", cancel, { once: true }); listener = true; }
++      current(); timer = setTimeout(cancel, Math.max(0, hostDeadline - hostTime()));
++      const name = capture ? "planet_capture_child_checkpoint" : "planet_advance_child_checkpoint";
++      const serverFetch: typeof fetch = async (input, init) => {
++        current();
++        const endpoint = new URL(typeof input === "string" ? input : input instanceof URL ? input.href : input.url);
++        const method = init?.method ?? (input instanceof Request ? input.method : "GET");
++        if (endpoint.origin !== origin || endpoint.username || endpoint.password || endpoint.search || endpoint.hash
++          || endpoint.pathname !== "/rest/v1/rpc/" + name || method !== "POST") throw unavailable();
++        const response = await fetcher(input, { ...init, signal: controller.signal, redirect: "error", cache: "no-store" });
++        current(); return response;
++      };
++      const service = createClient(config.canonicalProjectUrl, config.serviceRoleKey, {
++        auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }, global: { fetch: serverFetch },
++      });
++      const work = Promise.resolve(service.rpc(name, rpcArgs(binding, capture)).abortSignal(controller.signal).retry(false));
++      const result = await Promise.race([work, cancelled]);
++      current(); if (result.error) throw unavailable();
++      const validated = receipt(result.data, binding, capture ? undefined : originalReceipt(original));
++      current(); return validated;
++    } catch { throw unavailable(); }
++    finally {
++      settled = true; if (timer !== undefined) clearTimeout(timer);
++      if (listener && signal) EventTarget.prototype.removeEventListener.call(signal, "abort", cancel);
++      controller.abort();
++    }
++  }
++  // Capture identity is stored separately from immutable server fields. A copy
++  // or another adapter's receipt has no authority to consume this attempt.
++  const originalReceipts = new WeakMap<Original, ChildCheckpointCaptureReceipt>();
++  function originalReceipt(original: Original): ChildCheckpointCaptureReceipt {
++    const value = originalReceipts.get(original); if (!value) throw unavailable(); return value;
++  }
++  function completedCurrent(original: Original, startedHost: number, startedLocal: number, signal?: AbortSignal) {
++    // rpc cleanup aborts its transport signal. Provider listeners can change
++    // owner/clock synchronously there; publish only after their callbacks finish.
++    if (isAborted(signal) || failedClock) throw unavailable();
++    const at = localTime(), hostAt = hostTime();
++    if (isAborted(signal) || failedClock || at >= Math.min(startedLocal + timeoutMs, original.localDeadline)
++      || hostAt >= Math.min(startedHost + timeoutMs, original.hostDeadline)) throw unavailable();
++  }
++  return Object.freeze({
++    async capture(value: ChildCheckpointCaptureRequest, signal?: AbortSignal): Promise<ChildCheckpointCaptureReceipt> {
++      const startedHost = hostTime();
++      if (snapshotting) throw unavailable();
++      let binding: Readonly<ChildCheckpointCaptureRequest>;
++      snapshotting = true; try { binding = request(value); } finally { snapshotting = false; }
++      const key = [binding.installationId, binding.authorityEpoch, binding.guardianSubject, binding.operationSha256].join("/");
++      if (spent.has(key) || spent.size >= 2048) throw unavailable();
++      spent.add(key); if (isAborted(signal)) throw unavailable();
++      const startedLocal = localTime();
++      const original: Original = { binding, localDeadline: startedLocal + binding.operationTimeoutMs,
++        hostDeadline: startedHost + binding.operationTimeoutMs, attempted: false };
++      if (!Number.isFinite(original.localDeadline) || original.localDeadline > Number.MAX_SAFE_INTEGER || original.localDeadline <= startedLocal
++        || !Number.isFinite(original.hostDeadline) || original.hostDeadline > Number.MAX_SAFE_INTEGER || original.hostDeadline <= startedHost) throw unavailable();
++      const captured = await rpc(binding, true, original, startedHost, startedLocal, signal);
++      completedCurrent(original, startedHost, startedLocal, signal);
++      originals.set(captured, original); originalReceipts.set(original, captured); return captured;
++    },
++    async advance(captured: ChildCheckpointCaptureReceipt, signal?: AbortSignal): Promise<ChildCheckpointAdvanceReceipt> {
++      const startedHost = hostTime();
++      if (!captured || typeof captured !== "object") throw unavailable();
++      const original = originals.get(captured); if (!original || original.attempted) throw unavailable();
++      original.attempted = true; if (isAborted(signal)) throw unavailable();
++      const startedLocal = localTime();
++      const advanced = await rpc(original.binding, false, original, startedHost, startedLocal, signal);
++      completedCurrent(original, startedHost, startedLocal, signal);
++      return advanced;
++    },
++  });
++}
+diff --git a/supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql b/supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql
+new file mode 100644
+index 00000000..431bfc79
+--- /dev/null
++++ b/supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql
+@@ -0,0 +1,433 @@
++-- Local preparation only; no live apply, HTTP route or native issuer activation.
++-- This is a private online checkpoint ledger, not signed/device/time/recovery
++-- authority. A separately reviewed provisioner must bind a real installation,
++-- authority epoch and guardian/recovery-owner subject to the initial full-record
++-- digest. Missing provisioning denies; bundle/package identity is insufficient.
++-- The future trusted backend must independently verify canonical Auth claims and
++-- the original operation/context/full record before calling these service RPCs.
++-- Database rollback/disaster recovery, cross-boot clock reanchor and recovery
++-- proof are outside this slice. Ambiguous RPC results never authorize a retry.
++
++create table public.planet_child_checkpoints (
++  installation_id uuid not null,
++  authority_epoch uuid not null,
++  user_id uuid not null references auth.users(id) on delete cascade,
++  revision bigint not null check (revision between 0 and 9007199254740990),
++  record_sha256 text not null check (record_sha256 ~ '^[0-9a-f]{64}$'),
++  last_server_at timestamptz not null check (pg_catalog.isfinite(last_server_at)),
++  primary key (installation_id, authority_epoch, user_id),
++  unique (installation_id)
++);
++create table public.planet_child_checkpoint_operations (
++  installation_id uuid not null,
++  authority_epoch uuid not null,
++  user_id uuid not null references auth.users(id) on delete cascade,
++  operation_sha256 text not null check (operation_sha256 ~ '^[0-9a-f]{64}$'),
++  context_sha256 text not null check (context_sha256 ~ '^[0-9a-f]{64}$'),
++  expected_revision bigint not null check (expected_revision between 0 and 9007199254740989),
++  expected_record_sha256 text not null check (expected_record_sha256 ~ '^[0-9a-f]{64}$'),
++  next_record_sha256 text not null check (next_record_sha256 ~ '^[0-9a-f]{64}$'),
++  guardian_session_id uuid not null,
++  guardian_session_epoch bigint not null check (guardian_session_epoch between 0 and 9007199254740990),
++  captured_server_ms bigint not null check (captured_server_ms between 0 and 9007199254680990),
++  expires_at_ms bigint not null,
++  consumed_server_ms bigint,
++  primary key (installation_id, authority_epoch, operation_sha256),
++  foreign key (installation_id, authority_epoch, user_id)
++    references public.planet_child_checkpoints(installation_id, authority_epoch, user_id) on delete cascade,
++  check (next_record_sha256 <> expected_record_sha256),
++  check (expires_at_ms > captured_server_ms and expires_at_ms <= captured_server_ms + 60000),
++  check (consumed_server_ms is null or (consumed_server_ms >= captured_server_ms and consumed_server_ms < expires_at_ms))
++);
++create index planet_child_checkpoints_user_id_idx on public.planet_child_checkpoints(user_id);
++create index planet_child_checkpoint_operations_user_id_idx on public.planet_child_checkpoint_operations(user_id);
++create index planet_child_checkpoint_operations_owner_idx
++  on public.planet_child_checkpoint_operations(installation_id, authority_epoch, user_id);
++-- Permanent operation hashes survive expiry/consumption and later revisions.
++-- There is no prune, reset, installation enrolment or epoch replacement RPC.
++create trigger planet_reader_mutation_fence
++  before insert or update or delete on public.planet_child_checkpoints
++  for each row execute function public.planet_reader_mutation_fence();
++create trigger planet_reader_mutation_fence
++  before insert or update or delete on public.planet_child_checkpoint_operations
++  for each row execute function public.planet_reader_mutation_fence();
++alter table public.planet_child_checkpoints enable row level security;
++alter table public.planet_child_checkpoints force row level security;
++alter table public.planet_child_checkpoint_operations enable row level security;
++alter table public.planet_child_checkpoint_operations force row level security;
++revoke all on table public.planet_child_checkpoints, public.planet_child_checkpoint_operations
++  from public, anon, authenticated, service_role;
++-- SECURITY INVOKER uses the existing trusted BYPASSRLS server role. Its table
++-- rights are explicit and narrow; no browser role receives a policy or grant.
++grant select on table public.planet_child_checkpoints, public.planet_child_checkpoint_operations to service_role;
++grant update (revision, record_sha256, last_server_at) on public.planet_child_checkpoints to service_role;
++grant insert (installation_id, authority_epoch, user_id, operation_sha256, context_sha256,
++  expected_revision, expected_record_sha256, next_record_sha256, guardian_session_id,
++  guardian_session_epoch, captured_server_ms, expires_at_ms)
++  on public.planet_child_checkpoint_operations to service_role;
++grant update (consumed_server_ms) on public.planet_child_checkpoint_operations to service_role;
++-- Canonical Supabase auth.sessions.not_after is a deployment prerequisite.
++-- The private definer helper is needed because FOR SHARE requires an Auth
++-- table UPDATE privilege for an invoker. Do not grant service-role Auth writes.
++-- It exposes only the exact owned session's locked expiry, never other rows.
++grant usage on schema planet_private to service_role;
++create function planet_private.lock_child_guardian_session(p_subject uuid, p_session_id uuid)
++returns table(not_after timestamptz) language plpgsql volatile security definer set search_path = '' as $$
++begin
++  -- The canonical deletion assertion is private to its existing definer
++  -- callers. Keep it here; the public invokers receive no extra privilege.
++  perform public.planet_assert_reader_not_deleting(p_subject);
++  return query select s.not_after from auth.sessions s
++    where s.user_id=p_subject and s.id=p_session_id for share;
++end;
++$$;
++revoke all on function planet_private.lock_child_guardian_session(uuid,uuid) from public,anon,authenticated,service_role;
++grant execute on function planet_private.lock_child_guardian_session(uuid,uuid) to service_role;
++
++create function public.planet_capture_child_checkpoint(
++  p_installation_id uuid, p_authority_epoch uuid, p_guardian_subject uuid,
++  p_guardian_session_id uuid, p_guardian_session_epoch bigint,
++  p_expected_revision bigint, p_expected_record_sha256 text,
++  p_operation_sha256 text, p_context_sha256 text, p_next_record_sha256 text,
++  p_operation_timeout_ms integer
++)
++returns jsonb language plpgsql security invoker set search_path = '' as $$
++declare r public.planet_child_checkpoints%rowtype; access jsonb; session_not_after timestamptz;
++  server_now timestamptz; server_ms bigint; deadline_ms bigint; completed_at timestamptz; completed_ms bigint;
++begin
++  if p_installation_id is null or p_authority_epoch is null or p_guardian_subject is null
++    or p_guardian_session_id is null or p_guardian_session_epoch is null
++    or p_guardian_session_epoch not between 0 and 9007199254740990
++    or p_expected_revision is null or p_expected_revision not between 0 and 9007199254740989
++    or p_expected_record_sha256 is null or p_expected_record_sha256 !~ '^[0-9a-f]{64}$'
++    or p_operation_sha256 is null or p_operation_sha256 !~ '^[0-9a-f]{64}$'
++    or p_context_sha256 is null or p_context_sha256 !~ '^[0-9a-f]{64}$'
++    or p_next_record_sha256 is null or p_next_record_sha256 !~ '^[0-9a-f]{64}$'
++    or p_next_record_sha256 = p_expected_record_sha256
++    or p_operation_timeout_ms is null or p_operation_timeout_ms not between 1 and 60000 then
++    raise exception using errcode='22023', message='PLANET_INVALID_CHILD_CHECKPOINT_CONTEXT';
++  end if;
++  -- Match canonical subject -> Auth owner -> private row order. The existing
++  -- access RPC takes the subject advisory lock and Auth user key-share lock;
++  -- no purchase entitlement is inferred from its read-only product query.
++  access := public.planet_get_web_access(p_guardian_subject, 'planet-child-checkpoint');
++  select s.not_after into session_not_after from planet_private.lock_child_guardian_session(p_guardian_subject,p_guardian_session_id) s;
++  if not found then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  if access->>'accessBlocked' is distinct from 'false'
++    or (access->>'sessionEpoch')::bigint is distinct from p_guardian_session_epoch then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  select * into r from public.planet_child_checkpoints
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and user_id=p_guardian_subject for update;
++  if not found then
++    raise exception using errcode='P0001', message='PLANET_CHILD_CHECKPOINT_NOT_PROVISIONED';
++  end if;
++  server_now := pg_catalog.clock_timestamp();
++  if not pg_catalog.isfinite(server_now) or server_now < r.last_server_at then
++    raise exception using errcode='P0001', message='PLANET_CHILD_SERVER_CLOCK_DENIED';
++  end if;
++  server_ms := pg_catalog.floor(extract(epoch from server_now) * 1000)::bigint;
++  if server_ms not between 0 and 9007199254680990 then
++    raise exception using errcode='P0001', message='PLANET_CHILD_SERVER_CLOCK_DENIED';
++  end if;
++  if session_not_after is not null and (not pg_catalog.isfinite(session_not_after) or session_not_after <= server_now) then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  if r.revision <> p_expected_revision or r.record_sha256 <> p_expected_record_sha256 then
++    raise exception using errcode='P0001', message='PLANET_CHILD_CHECKPOINT_STALE';
++  end if;
++  if exists(select 1 from public.planet_child_checkpoint_operations
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and operation_sha256=p_operation_sha256) then
++    raise exception using errcode='P0001', message='PLANET_CHILD_OPERATION_REPLAYED';
++  end if;
++  deadline_ms := server_ms + p_operation_timeout_ms;
++  insert into public.planet_child_checkpoint_operations
++    (installation_id, authority_epoch, user_id, operation_sha256, context_sha256,
++      expected_revision, expected_record_sha256, next_record_sha256, guardian_session_id,
++      guardian_session_epoch, captured_server_ms, expires_at_ms)
++    values (p_installation_id, p_authority_epoch, p_guardian_subject, p_operation_sha256, p_context_sha256,
++      p_expected_revision, p_expected_record_sha256, p_next_record_sha256, p_guardian_session_id,
++      p_guardian_session_epoch, server_ms, deadline_ms);
++  update public.planet_child_checkpoints set last_server_at=server_now
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and user_id=p_guardian_subject;
++  -- The persisted server_now is the decision/linearization sample. This final
++  -- fence validates completed writes without another timestamp write/trigger
++  -- cycle. completed_server_ms is a validity sample, not a durable high-water.
++  completed_at := pg_catalog.clock_timestamp();
++  if not pg_catalog.isfinite(completed_at) or completed_at < server_now or completed_at < r.last_server_at then
++    raise exception using errcode='P0001', message='PLANET_CHILD_SERVER_CLOCK_DENIED';
++  end if;
++  completed_ms := pg_catalog.floor(extract(epoch from completed_at) * 1000)::bigint;
++  if completed_ms >= deadline_ms then
++    raise exception using errcode='P0001', message='PLANET_CHILD_OPERATION_EXPIRED';
++  end if;
++  if session_not_after is not null and session_not_after <= completed_at then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  return pg_catalog.jsonb_build_object('installation_id', p_installation_id, 'authority_epoch', p_authority_epoch,
++    'guardian_subject', p_guardian_subject, 'guardian_session_id', p_guardian_session_id,
++    'guardian_session_epoch', p_guardian_session_epoch, 'revision', r.revision,
++    'record_sha256', r.record_sha256, 'operation_sha256', p_operation_sha256,
++    'context_sha256', p_context_sha256, 'next_record_sha256', p_next_record_sha256,
++    'captured_server_ms', server_ms, 'server_time_ms', server_ms,
++    'completed_server_ms', completed_ms, 'expires_at_ms', deadline_ms);
++end;
++$$;
++
++create function public.planet_advance_child_checkpoint(
++  p_installation_id uuid, p_authority_epoch uuid, p_guardian_subject uuid,
++  p_guardian_session_id uuid, p_guardian_session_epoch bigint,
++  p_expected_revision bigint, p_expected_record_sha256 text,
++  p_operation_sha256 text, p_context_sha256 text, p_next_record_sha256 text
++)
++returns jsonb language plpgsql security invoker set search_path = '' as $$
++declare r public.planet_child_checkpoints%rowtype; operation public.planet_child_checkpoint_operations%rowtype;
++  access jsonb; session_not_after timestamptz; server_now timestamptz; server_ms bigint;
++  completed_at timestamptz; completed_ms bigint;
++begin
++  if p_installation_id is null or p_authority_epoch is null or p_guardian_subject is null
++    or p_guardian_session_id is null or p_guardian_session_epoch is null
++    or p_guardian_session_epoch not between 0 and 9007199254740990
++    or p_expected_revision is null or p_expected_revision not between 0 and 9007199254740989
++    or p_expected_record_sha256 is null or p_expected_record_sha256 !~ '^[0-9a-f]{64}$'
++    or p_operation_sha256 is null or p_operation_sha256 !~ '^[0-9a-f]{64}$'
++    or p_context_sha256 is null or p_context_sha256 !~ '^[0-9a-f]{64}$'
++    or p_next_record_sha256 is null or p_next_record_sha256 !~ '^[0-9a-f]{64}$'
++    or p_next_record_sha256 = p_expected_record_sha256 then
++    raise exception using errcode='22023', message='PLANET_INVALID_CHILD_CHECKPOINT_CONTEXT';
++  end if;
++  access := public.planet_get_web_access(p_guardian_subject, 'planet-child-checkpoint');
++  select s.not_after into session_not_after from planet_private.lock_child_guardian_session(p_guardian_subject,p_guardian_session_id) s;
++  if not found then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  if access->>'accessBlocked' is distinct from 'false'
++    or (access->>'sessionEpoch')::bigint is distinct from p_guardian_session_epoch then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  select * into r from public.planet_child_checkpoints
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and user_id=p_guardian_subject for update;
++  if not found then
++    raise exception using errcode='P0001', message='PLANET_CHILD_CHECKPOINT_NOT_PROVISIONED';
++  end if;
++  select * into operation from public.planet_child_checkpoint_operations
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and operation_sha256=p_operation_sha256 for update;
++  if not found or operation.user_id is distinct from p_guardian_subject
++    or operation.guardian_session_id is distinct from p_guardian_session_id
++    or operation.guardian_session_epoch is distinct from p_guardian_session_epoch
++    or operation.expected_revision is distinct from p_expected_revision
++    or operation.expected_record_sha256 is distinct from p_expected_record_sha256
++    or operation.context_sha256 is distinct from p_context_sha256
++    or operation.next_record_sha256 is distinct from p_next_record_sha256 then
++    raise exception using errcode='P0001', message='PLANET_CHILD_OPERATION_BINDING_DENIED';
++  end if;
++  if operation.consumed_server_ms is not null then
++    raise exception using errcode='P0001', message='PLANET_CHILD_OPERATION_REPLAYED';
++  end if;
++  -- Fresh time follows every lock/access guard; advance never refreshes capture.
++  server_now := pg_catalog.clock_timestamp();
++  if not pg_catalog.isfinite(server_now) or server_now < r.last_server_at then
++    raise exception using errcode='P0001', message='PLANET_CHILD_SERVER_CLOCK_DENIED';
++  end if;
++  server_ms := pg_catalog.floor(extract(epoch from server_now) * 1000)::bigint;
++  if server_ms not between 0 and 9007199254680990 or server_ms < operation.captured_server_ms then
++    raise exception using errcode='P0001', message='PLANET_CHILD_SERVER_CLOCK_DENIED';
++  end if;
++  if session_not_after is not null and (not pg_catalog.isfinite(session_not_after) or session_not_after <= server_now) then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  if server_ms >= operation.expires_at_ms then
++    raise exception using errcode='P0001', message='PLANET_CHILD_OPERATION_EXPIRED';
++  end if;
++  if r.revision <> p_expected_revision or r.record_sha256 <> p_expected_record_sha256 then
++    raise exception using errcode='P0001', message='PLANET_CHILD_CHECKPOINT_STALE';
++  end if;
++  update public.planet_child_checkpoint_operations set consumed_server_ms=server_ms
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and operation_sha256=p_operation_sha256;
++  update public.planet_child_checkpoints set revision=p_expected_revision+1,
++    record_sha256=p_next_record_sha256, last_server_at=server_now
++    where installation_id=p_installation_id and authority_epoch=p_authority_epoch and user_id=p_guardian_subject;
++  completed_at := pg_catalog.clock_timestamp();
++  if not pg_catalog.isfinite(completed_at) or completed_at < server_now or completed_at < r.last_server_at then
++    raise exception using errcode='P0001', message='PLANET_CHILD_SERVER_CLOCK_DENIED';
++  end if;
++  completed_ms := pg_catalog.floor(extract(epoch from completed_at) * 1000)::bigint;
++  if completed_ms >= operation.expires_at_ms then
++    raise exception using errcode='P0001', message='PLANET_CHILD_OPERATION_EXPIRED';
++  end if;
++  if session_not_after is not null and session_not_after <= completed_at then
++    raise exception using errcode='P0001', message='PLANET_CHILD_GUARDIAN_SESSION_DENIED';
++  end if;
++  return pg_catalog.jsonb_build_object('installation_id', p_installation_id, 'authority_epoch', p_authority_epoch,
++    'guardian_subject', p_guardian_subject, 'guardian_session_id', p_guardian_session_id,
++    'guardian_session_epoch', p_guardian_session_epoch, 'revision', p_expected_revision+1,
++    'record_sha256', p_next_record_sha256, 'operation_sha256', p_operation_sha256,
++    'context_sha256', p_context_sha256, 'next_record_sha256', p_next_record_sha256,
++    'captured_server_ms', operation.captured_server_ms, 'server_time_ms', server_ms,
++    'completed_server_ms', completed_ms, 'expires_at_ms', operation.expires_at_ms);
++end;
++$$;
++revoke all on function public.planet_capture_child_checkpoint(uuid,uuid,uuid,uuid,bigint,bigint,text,text,text,text,integer),
++  public.planet_advance_child_checkpoint(uuid,uuid,uuid,uuid,bigint,bigint,text,text,text,text)
++  from public, anon, authenticated, service_role;
++grant execute on function public.planet_capture_child_checkpoint(uuid,uuid,uuid,uuid,bigint,bigint,text,text,text,text,integer),
++  public.planet_advance_child_checkpoint(uuid,uuid,uuid,uuid,bigint,bigint,text,text,text,text) to service_role;
++-- Preserve the latest canonical deletion classifier, restore the already
++-- reviewed license-budget identity omitted by the later sandbox definition,
++-- and add only the two private checkpoint identities/exact owner dependency.
++-- Financial SET NULL, queue/sandbox CASCADE, storage and editorial gates stay.
++create or replace function public.planet_reader_deletion_blockers(p_subject uuid)
++returns text[] language plpgsql security definer set search_path = '' as $$
++declare item record; populated boolean; safe boolean; expected_delete "char"; codes text[] := '{}';
++  profile_role text; invalid_storage boolean; relation regclass;
++begin
++  if p_subject is null or not exists(select 1 from auth.users where id=p_subject) then return array['subject-missing']; end if;
++  if not exists(select 1 from pg_catalog.pg_attribute where attrelid='public.profiles'::regclass and attname='role' and not attisdropped) then
++    return array['schema-profile-role'];
++  end if;
++  execute 'select role::text from public.profiles where id=$1' into profile_role using p_subject;
++  if profile_role is distinct from 'reader' then codes:=array_append(codes,'staff-or-profile-role'); end if;
++  -- Missing FKs are as unsafe as changed ones: iterating only existing FKs would
++  -- otherwise silently leave private rows behind after a dropped constraint.
++  for item in select * from (values
++    ('profiles','id','auth.users','c'),
++    ('reader_favorites','user_id','public.profiles','c'),
++    ('reader_book_collections','user_id','public.profiles','c'),
++    ('reader_book_favorites','user_id','public.profiles','c'),
++    ('reader_progress','user_id','public.profiles','c'),
++    ('reader_subscriptions','user_id','public.profiles','c'),
++    ('reader_notifications','user_id','public.profiles','c'),
++    ('content_views','user_id','public.profiles','n'),
++    ('planet_access_state','user_id','auth.users','c'),
++    ('planet_verified_payment_retries','user_id','auth.users','c'),
++    ('planet_sandbox_orders','user_id','auth.users','c'),
++    ('planet_license_grant_budgets','user_id','auth.users','c'),
++    ('planet_child_checkpoints','user_id','auth.users','c'),
++    ('planet_child_checkpoint_operations','user_id','auth.users','c'),
++    ('planet_deletion_requests','user_id','auth.users','n'),
++    ('planet_payment_events','user_id','auth.users','n'),
++    ('planet_purchase_receipts','user_id','auth.users','n')
++  ) x(name,col,parent,action) loop
++    if not exists(select 1 from pg_catalog.pg_constraint c
++      join pg_catalog.pg_attribute a on a.attrelid=c.conrelid and a.attnum=c.conkey[1]
++      join pg_catalog.pg_attribute ra on ra.attrelid=c.confrelid and ra.attnum=c.confkey[1]
++      where c.contype='f' and c.conrelid=pg_catalog.to_regclass('public.'||item.name)
++        and c.confrelid=pg_catalog.to_regclass(item.parent) and c.convalidated and c.confdeltype::text=item.action
++        and cardinality(c.conkey)=1 and cardinality(c.confkey)=1 and a.attname=item.col and a.atttypid='uuid'::regtype and ra.attname='id'
++    ) then codes:=array_append(codes,'schema-required-identity-fk'); end if;
++  end loop;
++  if not exists(select 1 from pg_catalog.pg_constraint c where c.contype='f'
++    and c.conrelid=pg_catalog.to_regclass('public.reader_book_collection_items')
++    and c.confrelid=pg_catalog.to_regclass('public.reader_book_collections')) then
++    codes:=array_append(codes,'schema-private-dependent');
++  end if;
++  if not exists(select 1 from pg_catalog.pg_trigger where tgrelid='auth.users'::regclass
++    and tgname='planet_guard_reader_auth_deletion' and tgfoid='public.planet_guard_reader_auth_deletion()'::regprocedure and tgenabled='O' and tgtype=11) then
++    codes:=array_append(codes,'schema-auth-deletion-guard');
++  end if;
++  for item in select c.*,n.nspname,t.relname,a.attname,a.atttypid,ra.attname as referenced_column
++    from pg_catalog.pg_constraint c join pg_catalog.pg_class t on t.oid=c.conrelid
++    join pg_catalog.pg_namespace n on n.oid=t.relnamespace
++    left join pg_catalog.pg_attribute a on a.attrelid=c.conrelid and a.attnum=c.conkey[1]
++    left join pg_catalog.pg_attribute ra on ra.attrelid=c.confrelid and ra.attnum=c.confkey[1]
++    where c.contype='f' and c.confrelid in ('auth.users'::regclass,'public.profiles'::regclass)
++      and n.nspname not in ('auth','storage')
++  loop
++    if item.nspname<>'public' or cardinality(item.conkey)<>1 or cardinality(item.confkey)<>1
++      or item.atttypid<>'uuid'::regtype or item.referenced_column<>'id' or not item.convalidated then
++      codes:=array_append(codes,'schema-identity-reference'); continue;
++    end if;
++    if item.relname not in ('planet_deletion_requests','planet_access_state') and not exists(
++      select 1 from pg_catalog.pg_trigger where tgrelid=item.conrelid and tgname='planet_reader_mutation_fence'
++        and tgenabled='O' and tgfoid='public.planet_reader_mutation_fence()'::regprocedure and tgtype=31
++    ) then codes:=array_append(codes,'schema-mutation-fence'); continue; end if;
++    safe := (item.relname='profiles' and item.attname='id') or
++      (item.relname in ('reader_favorites','reader_book_collections','reader_book_favorites',
++      'reader_progress','reader_subscriptions','reader_notifications','planet_access_state',
++      'planet_verified_payment_retries','planet_sandbox_orders','planet_license_grant_budgets',
++      'planet_child_checkpoints','planet_child_checkpoint_operations',
++      'content_views','planet_deletion_requests','planet_payment_events','planet_purchase_receipts') and item.attname='user_id');
++    expected_delete := case when item.relname in ('content_views','planet_deletion_requests','planet_payment_events','planet_purchase_receipts') then 'n' else 'c' end;
++    if safe and item.confdeltype<>expected_delete then codes:=array_append(codes,'schema-private-cascade'); continue; end if;
++    execute format('select exists(select 1 from %I.%I where %I=$1)',item.nspname,item.relname,item.attname) into populated using p_subject;
++    if populated and not safe then
++      codes:=array_append(codes,case when item.relname='staff_memberships' then 'staff-membership'
++        when item.confdeltype='r' then 'editorial-reference'
++        when item.relname in ('article_comments','forum_topics','forum_replies','community_votes','ratings','comment_reports','forum_reports') then 'public-contributions'
++        else 'unsupported-linked-data' end);
++    end if;
++  end loop;
++  -- Require the exact owner-matching operation FK as well as its Auth identity
++  -- FK. A removed binding must not silently detach original operation metadata.
++  if not exists(select 1 from pg_catalog.pg_constraint c where c.contype='f'
++    and c.conrelid=pg_catalog.to_regclass('public.planet_child_checkpoint_operations')
++    and c.confrelid=pg_catalog.to_regclass('public.planet_child_checkpoints')
++    and c.confdeltype='c' and c.convalidated and cardinality(c.conkey)=3 and cardinality(c.confkey)=3
++    and (select array_agg(attname::text order by array_position(c.conkey,attnum)) from pg_catalog.pg_attribute
++      where attrelid=c.conrelid and attnum=any(c.conkey))=array['installation_id','authority_epoch','user_id']
++    and (select array_agg(attname::text order by array_position(c.confkey,attnum)) from pg_catalog.pg_attribute
++      where attrelid=c.confrelid and attnum=any(c.confkey))=array['installation_id','authority_epoch','user_id']
++  ) then codes:=array_append(codes,'schema-private-dependent'); end if;
++  -- New child cascades require exact reviewed owner bindings and fences. Keep
++  -- the collection contract, adding only this checkpoint-operation dependency.
++  for item in select c.*, t.relname, n.nspname, rt.relname as referenced_table
++    from pg_catalog.pg_constraint c join pg_catalog.pg_class t on t.oid=c.conrelid
++    join pg_catalog.pg_namespace n on n.oid=t.relnamespace join pg_catalog.pg_class rt on rt.oid=c.confrelid
++    join pg_catalog.pg_namespace rn on rn.oid=rt.relnamespace
++    where c.contype='f' and rn.nspname='public' and rt.relname in ('reader_favorites','reader_book_collections',
++      'reader_book_collection_items','reader_book_favorites','reader_progress','reader_subscriptions','reader_notifications','content_views',
++      'planet_child_checkpoints','planet_child_checkpoint_operations')
++  loop
++    if not (item.nspname='public' and item.relname='reader_book_collection_items' and item.referenced_table='reader_book_collections'
++      and item.confdeltype='c' and item.convalidated
++      and (select array_agg(attname::text order by array_position(item.conkey,attnum)) from pg_catalog.pg_attribute where attrelid=item.conrelid and attnum=any(item.conkey))=array['user_id','collection_id']
++      and (select array_agg(attname::text order by array_position(item.confkey,attnum)) from pg_catalog.pg_attribute where attrelid=item.confrelid and attnum=any(item.confkey))=array['user_id','id']
++      and exists(select 1 from pg_catalog.pg_trigger where tgrelid=item.conrelid and tgname='planet_reader_mutation_fence' and tgenabled='O' and tgtype=31)
++    ) and not (item.nspname='public' and item.relname='planet_child_checkpoint_operations'
++      and item.referenced_table='planet_child_checkpoints' and item.confdeltype='c' and item.convalidated
++      and cardinality(item.conkey)=3 and cardinality(item.confkey)=3
++      and (select array_agg(attname::text order by array_position(item.conkey,attnum)) from pg_catalog.pg_attribute
++        where attrelid=item.conrelid and attnum=any(item.conkey))=array['installation_id','authority_epoch','user_id']
++      and (select array_agg(attname::text order by array_position(item.confkey,attnum)) from pg_catalog.pg_attribute
++        where attrelid=item.confrelid and attnum=any(item.confkey))=array['installation_id','authority_epoch','user_id']
++      and exists(select 1 from pg_catalog.pg_trigger where tgrelid=item.conrelid and tgname='planet_reader_mutation_fence'
++        and tgenabled='O' and tgfoid='public.planet_reader_mutation_fence()'::regprocedure and tgtype=31)
++    ) then codes:=array_append(codes,'schema-private-dependent'); end if;
++  end loop;
++  -- Canonical view counters and admin reports derive counts directly by SELECT;
++  -- there are no stored totals to patch. New side-effect triggers or columns need
++  -- review before this exact private analytics deletion path can be reused.
++  if (select array_agg(attname::text order by attname) from pg_catalog.pg_attribute where attrelid='public.content_views'::regclass
++    and attnum>0 and not attisdropped) is distinct from
++    array['created_at','id','navigation_source','path','previous_path','referrer_host','session_id','user_id','utm_campaign','utm_medium','utm_source']
++    or exists(select 1 from pg_catalog.pg_trigger where tgrelid='public.content_views'::regclass and not tgisinternal
++      and (tgname<>'planet_reader_mutation_fence' or tgfoid<>'public.planet_reader_mutation_fence()'::regprocedure)) then
++    codes:=array_append(codes,'schema-private-analytics');
++  end if;
++  -- The reviewed policy's receipt scope is these exact existing fields. A newly
++  -- added email/address/payload column cannot be retained under this old policy.
++  for item in select * from (values
++    ('planet_payment_events',array['accepted_at','event_id','occurred_at','payload_sha256','product_id','provider','receipt_applied','status','transaction_id','user_id']),
++    ('planet_purchase_receipts',array['created_at','last_occurred_at','product_id','provider','status','transaction_id','updated_at','user_id'])
++  ) x(name,columns) loop
++    if (select array_agg(attname::text order by attname) from pg_catalog.pg_attribute
++      where attrelid=pg_catalog.to_regclass('public.'||item.name) and attnum>0 and not attisdropped) is distinct from item.columns then codes:=array_append(codes,'schema-payment-retention'); end if;
++  end loop;
++  relation:=pg_catalog.to_regclass('storage.objects');
++  if relation is null or not exists(select 1 from pg_catalog.pg_trigger where tgrelid=relation and tgname='planet_reader_storage_fence'
++    and tgenabled='O' and tgfoid='public.planet_reader_storage_fence()'::regprocedure and tgtype=23) then
++    codes:=array_append(codes,'schema-storage-fence');
++  else
++    execute $query$ select exists(select 1 from storage.objects o where
++      (lower(to_jsonb(o)->>'owner_id')=$1::text or lower(to_jsonb(o)->>'owner')=$1::text or (bucket_id='avatars' and lower(split_part(name,'/',1))=$1::text))
++      and (bucket_id<>'avatars' or name not in ($1::text||'/avatar.jpg',$1::text||'/avatar.png',$1::text||'/avatar.webp')
++        or coalesce(to_jsonb(o)->>'owner_id',to_jsonb(o)->>'owner') is distinct from $1::text
++        or (to_jsonb(o)->>'owner_id' is not null and to_jsonb(o)->>'owner_id'<>$1::text)
++        or (to_jsonb(o)->>'owner' is not null and to_jsonb(o)->>'owner'<>$1::text))) $query$ into invalid_storage using p_subject;
++    if invalid_storage then codes:=array_append(codes,'unsupported-storage-object'); end if;
++  end if;
++  return array(select distinct c from unnest(codes) c order by c limit 16);
++end;
++$$;

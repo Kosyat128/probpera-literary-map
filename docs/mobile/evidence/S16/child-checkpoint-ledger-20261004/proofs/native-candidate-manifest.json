@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHORED_NOT_RUN",
+  "sourceCommit": "6518998b68069b06416408d7ff3fc3a64d46bc1c",
+  "scope": "Android private verification coordinator exact original-host replay rejection; existing Swift parity is unchanged.",
+  "files": [
+    {
+      "target": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "before": {
+        "sha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951",
+        "bytes": 201811,
+        "lineEndings": {
+          "crlf": 0,
+          "lf": 2192,
+          "cr": 0
+        }
+      },
+      "after": {
+        "sha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+        "bytes": 202069,
+        "lineEndings": {
+          "crlf": 0,
+          "lf": 2194,
+          "cr": 0
+        }
+      },
+      "changes": [
+        {
+          "line": 1567,
+          "change": "Retain exact original host objects in a coordinator-local strong identity set."
+        },
+        {
+          "line": 1621,
+          "change": "Require both bounded budgets and unspent id/host before reserving a lane."
+        },
+        {
+          "line": 1623,
+          "change": "Reserve both identities under the existing coordinator monitor only after active-lane refusal, before ticket/IO."
+        }
+      ]
+    }
+  ],
+  "driver": {
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildPinHostReplayJvmDriver.java",
+    "class": "ru.probpera.literaryplanet.PlanetChildPinHostReplayJvmDriver",
+    "sha256": "0ad99d5924a3364c5020900195d30177bcf20a3f0c95bfa93f96244f437bc87e",
+    "bytes": 25457,
+    "arguments": [],
+    "expectedCases": 8,
+    "expectedStdoutLines": 10,
+    "caseMarker": "PRIVATE_PIN_HOST_REPLAY_CASE ",
+    "orderedCaseNames": [
+      "same-original-host-new-id-after-known-terminal-is-rejected",
+      "same-host-active-and-busy-distinct-host-do-not-burn-unused-id-or-host",
+      "equal-but-distinct-hosts-use-reference-identity",
+      "spent-id-new-host-refusal-does-not-burn-the-new-host",
+      "accepted-capture-failure-retains-spent-original-host-and-id",
+      "accepted-read-failure-retains-spent-original-host-and-id",
+      "original-host-registries-are-coordinator-local",
+      "exact-2048-id-and-host-budget-rejects-2049-before-lane-or-io"
+    ],
+    "scopeMarker": "PRIVATE_PIN_HOST_REPLAY_SCOPE synthetic-connected=true platform-kdf=false durable-store-proof=false native-ui=false genuine-provider=false installed-os=false parent-gate=false",
+    "reusedHelperFixture": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationCoordinatorJvmDriver.java",
+      "sha256": "fa4cf4dc652514a9147f561a4e10cc283fb2bdcf819aa263d0434a8c6b7984b6",
+      "through": "prefix before original main(); none of original 26 cases included",
+      "adaptations": [
+        "driver class/marker rename",
+        "mutable original fixture gate for sequential requests",
+        "capture/read call counters and explicit synthetic failures",
+        "begin(original) fixture helper",
+        "closed replay attempts reset expectedGate and lease reference so old-code regression fails outside callbacks"
+      ]
+    },
+    "platformKdfPublicOracleCases": 0,
+    "genuineProvider": false,
+    "parentGateAdmission": false,
+    "nativeUi": false,
+    "installedOs": false
+  },
+  "members": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+      "bytes": 202069
+    },
+    {
+      "path": "jvm/ru/probpera/literaryplanet/PlanetChildPinHostReplayJvmDriver.java",
+      "sha256": "0ad99d5924a3364c5020900195d30177bcf20a3f0c95bfa93f96244f437bc87e",
+      "bytes": 25457
+    }
+  ],
+  "unchanged": {
+    "swift": true,
+    "factoriesRemainNullNil": true,
+    "authenticatedAuthority": false,
+    "appActivation": false
+  },
+  "checks": {
+    "candidateAuthored": "PASS",
+    "sourceByteEdits": "three exact ASCII fragments; existing LF endings preserved",
+    "javac": "NOT_RUN",
+    "focusedJvmDriver": "NOT_RUN",
+    "old26Cases": "NOT_RUN",
+    "gradle": "NOT_RUN",
+    "apk": "NOT_RUN",
+    "swiftRuntime": "NOT_RUN"
+  },
+  "suggestedDirectCompile": {
+    "jdk": "<project>/.tmp/native-tools/java/jdk-21.0.12.1+1",
+    "androidJar": "<project>/.tmp/native-tools/android-sdk/platforms/android-36/android.jar",
+    "resourceJar": "<project>/apps/mobile/android/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/devDebug/processDevDebugResources/R.jar",
+    "notes": "Compile the candidate full source plus this new driver into an own B directory with -encoding UTF-8 --release 17 -proc:none -sourcepath empty. Do not reuse stale compiled vault classes or run Gradle/APK."
+  }
+}

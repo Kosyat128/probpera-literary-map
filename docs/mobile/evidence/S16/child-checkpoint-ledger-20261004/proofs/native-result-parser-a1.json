@@ -1,0 +1,5 @@
+{
+  "status": "FAIL",
+  "scope": "Result parser only, after actual Java compile and test processes both exited 0.",
+  "error": "A1 wrongly required PASS suffix on per-case markers. Driver emits case names and one explicit final OK marker. Original stdout/stderr/process receipts retained; no rerun or relabel."
+}

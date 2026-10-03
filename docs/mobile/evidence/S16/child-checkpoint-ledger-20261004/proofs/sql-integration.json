@@ -1,0 +1,11 @@
+{
+  "candidateHashes": [
+    "186c17ccae813acac21f8458b59be4f2437a5893c43b4f8d6c032e1b8e54c661",
+    "57d2d4ff790fa5f5db704652e1e2b789e479fd450b6eae80985f72f6dd2df73d"
+  ],
+  "targets": [
+    "supabase/migrations/20261003203842_planet_child_checkpoint_ledger.sql",
+    "server/planet/childCheckpointLedger.integration.test.ts"
+  ],
+  "migrationAuthoringReceiptSha256": "142a1e99ed5ca9148deead880c7fdc2bfac89c81e1be81e6686033b42e72e4bb"
+}

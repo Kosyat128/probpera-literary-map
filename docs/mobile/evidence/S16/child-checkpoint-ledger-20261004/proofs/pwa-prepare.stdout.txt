@@ -1,0 +1,1 @@
+{"output":".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520","pass":true,"outputs":[{"path":".tmp/mobile-release-pwa-dbf047b5-adc8-4da3-902d-d709428c0520/pwa-artifact.json","sha256":"6cac74f2d91d879e772629d4dc3ce74d9c525871d93e1d3c85248cbb84783576","bytes":500182}],"releaseReady":false,"deviceTested":false}

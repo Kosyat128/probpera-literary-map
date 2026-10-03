@@ -1,0 +1,17 @@
+{
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "node_modules/vitest/vitest.mjs",
+    "run",
+    "server/planet/childCheckpointLedgerSupabase.test.ts",
+    "--maxWorkers=1",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-checkpoint-ledger-work-20261003\\transport-a2\\vitest.json"
+  ],
+  "startedAt": "2026-10-03T21:30:48.095Z",
+  "finishedAt": "2026-10-03T21:30:49.632Z",
+  "status": 0,
+  "signal": null,
+  "error": null,
+  "timedOut": false
+}
