@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-input-affected-jvm",
+  "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+  "binding": {
+    "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+    "sourceFingerprint": "907017ce04e25c0455d0f5cba382e1f4a3097e0c5e0f9f8abc37cea991613ea3",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "status": "PASS_AFFECTED_VERIFICATION_COORDINATOR_JVM",
+  "checkpoint": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/code-checkpoint-native-pin-verification-input.json",
+    "sha256": "19e5ab510a040f3ac75c6a8a429e6fb3c590693a74f0d9a049345220bdca55b3"
+  },
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-input.final.json",
+    "sha256": "b11d179ac31353804c93e0861e763ea80f5351e4359dff15e920c1f3f0e200cf"
+  },
+  "androidPreparation": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-preparation-android-ae8c4039-1822-4c02-a75c-d0f5054d5395/execution.json",
+    "sha256": "b4d7ab300c38e2d82be0161e7d8d3e73070f4a97e2005d319d110cf593df1966"
+  },
+  "applicationCompilation": "REUSED_ACTUAL_SOURCE_BOUND_ANDROID_GRADLE_CLASSES",
+  "applicationCompileCommandsExecuted": 0,
+  "runner": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\run-native-pin-verification-input-jvm.mjs",
+    "sha256": "53a010696859bada0d32f289f589daad10c2e5b4cd18a1d1aabbb80a807a53b3"
+  },
+  "reusedCommon": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\parent-pin-checks-common.mjs",
+    "sha256": "64b2f2fc2ac5cb696edafbfb10dd8ba25fc05a084c16211d1caa6a92afe59f56"
+  },
+  "retainedCoordinatorCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-coordinator.json",
+    "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d"
+  },
+  "frozenManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\manifest.json",
+    "sha256": "e211bd34c61d0ad6c0a51b52c1fd5e40837d8961158e0565a541c3a9d3d9c066"
+  },
+  "frozenReady": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\READY.json",
+    "sha256": "9fd6f8a3b849e502f6e7f0da04d43eb5b14f889ed285f7f0989587af1f6daf2a"
+  },
+  "driver": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationCoordinatorJvmDriver.java",
+    "sha256": "fa4cf4dc652514a9147f561a4e10cc283fb2bdcf819aa263d0434a8c6b7984b6"
+  },
+  "tools": [
+    {
+      "name": "java",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55"
+    },
+    {
+      "name": "javac",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "sha256": "00f7c6f9ec89ebba4bb96cf8760403cccf1268df2eae8685900ba38e58a7aff9"
+    },
+    {
+      "name": "androidJar",
+      "filename": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+      "sha256": "d9eb9da824d9e247a352f570f01e1169e725b2954bca9e283a71786c59b59f9a"
+    }
+  ],
+  "checks": {
+    "preflight": "PASS",
+    "actualAndroidBuildClasses": "PASS",
+    "driverCompilation": "PASS",
+    "verificationCoordinator26": "PASS",
+    "postflight": "PASS"
+  },
+  "caseCount": {
+    "status": "PASS",
+    "cases": 26,
+    "assertions": 1433,
+    "caseNames": [
+      "strict-policy-context-and-sixteen-action-domain",
+      "begin-original-host-profile-clock-and-input-gap-lane",
+      "blocked-before-input-no-charge-and-known-retirement",
+      "busy-second-original-is-not-burned-before-first-retirement",
+      "bound-input-foreign-and-replay-denied-before-consumption",
+      "charge-readback-before-math-and-known-finalization-delivery",
+      "mismatch-retains-count-increasing-delay-and-verifier-bytes",
+      "malformed-nonempty-charged-mismatch-without-kdf",
+      "empty-null-and-oversized-refused-before-charge",
+      "precharge-full-record-deadline-host-and-boot-races",
+      "changed-charged-record-never-finalizes-or-refunds",
+      "original-opaque-permission-reuse-denied-before-second-advance",
+      "reserve-before-persist-failure-seals-without-kdf-or-repair",
+      "reserve-after-persist-failure-retains-durable-charge",
+      "final-readback-failure-no-proof-no-compensating-reset",
+      "mutable-authority-callback-buffers-isolated-and-refused",
+      "capture-revocation-counts-null-lease-authority-cleanup",
+      "kdf-revocation-retains-worker-secrets-and-charged-penalty",
+      "retire-during-kdf-joins-actual-return-before-terminal-transfer",
+      "delivery-precheck-failure-is-not-completed-known-ack",
+      "throwing-recipient-single-handoff-uncertain-settlement",
+      "cancel-before-delivery-abandoned-original-can-drain-uncertain",
+      "retire-before-delivery-gap-drains-only-uncertain-original",
+      "blocked-recipient-premature-ack-and-close-do-not-settle-work",
+      "original-reply-identity-and-terminal-close-never-fake-ack",
+      "late-cancel-during-retirement-covered-without-new-unjoined-work"
+    ],
+    "stdout": {
+      "path": "02-java-affected-verification-coordinator-26.stdout.bin",
+      "sha256": "f63a3276a7ceb206105a574bca5126acf68d3a9b57de30d7a3a821c7a554796a",
+      "bytes": 2829
+    },
+    "platformKdfPublicOracleCases": 0,
+    "syntheticConnectedIO": true,
+    "syntheticAuthority": true,
+    "syntheticKdf": true,
+    "nativeUI": false,
+    "nativeOSWorker": false,
+    "installedDurableCharge": false,
+    "parentGateAdmission": false
+  },
+  "failure": null,
+  "commands": [
+    {
+      "name": "javac-unchanged-26-driver",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\home",
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\temp",
+        "-J-Dfile.encoding=UTF-8",
+        "-encoding",
+        "UTF-8",
+        "--release",
+        "17",
+        "-proc:none",
+        "-sourcepath",
+        "",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "-d",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\classes",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationCoordinatorJvmDriver.java"
+      ],
+      "startedAt": "2026-10-03T19:26:18.437Z",
+      "finishedAt": "2026-10-03T19:26:19.614Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "01-javac-unchanged-26-driver.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "01-javac-unchanged-26-driver.stderr.bin",
+        "sha256": "8e474876ea87f65d91eeb807b4fd86cc727499d4fe47bc3f8d215f0ac99f60e7",
+        "bytes": 56
+      }
+    },
+    {
+      "name": "java-affected-verification-coordinator-26",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\home",
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\temp",
+        "-Dfile.encoding=UTF-8",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildPinVerificationCoordinatorJvmDriver"
+      ],
+      "startedAt": "2026-10-03T19:26:19.752Z",
+      "finishedAt": "2026-10-03T19:26:20.209Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "path": "02-java-affected-verification-coordinator-26.stdout.bin",
+        "sha256": "f63a3276a7ceb206105a574bca5126acf68d3a9b57de30d7a3a821c7a554796a",
+        "bytes": 2829
+      },
+      "stderr": {
+        "path": "02-java-affected-verification-coordinator-26.stderr.bin",
+        "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+        "bytes": 92
+      }
+    }
+  ],
+  "compiledClasses": 85,
+  "compiledDriverClasses": 4,
+  "publicOracles": [],
+  "oracleDerivationsRepeated": 0,
+  "previousJournal22Repeated": false,
+  "previousMath22Repeated": false,
+  "previous24And39Repeated": false,
+  "previous69Repeated": false,
+  "newWebBuild": false,
+  "newApk": false,
+  "newNativeInputInstrumentation": "NOT_RUN",
+  "swiftCompilation": "NOT_COMPILED",
+  "installedOS": "NOT_RUN",
+  "genuineAuthority": "NOT_IMPLEMENTED",
+  "childAppActivation": false,
+  "releaseReady": false,
+  "remoteOperations": 0
+}

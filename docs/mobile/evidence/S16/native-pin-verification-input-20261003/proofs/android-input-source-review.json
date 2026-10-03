@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK",
+  "kind": "native-pin-verification-input-android-independent-source-review",
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "reportHead": "2d408e7427e085c3699c11c12d3bf8a80d62f2ac",
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-verification-input-android/manifest.json",
+    "sha256": "08ea26d152bb7bc4c71f72e668c90d66e90299949f9ada43be50d6ea67e32963",
+    "bytes": 11410,
+    "readySha256": "af837c28bc758861464ede29623db65d5e836a6065967131442958492ec89c35"
+  },
+  "runtimeChecksExecuted": false,
+  "findings": [],
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951",
+      "bytes": 201811,
+      "beforeSha256": "815e80f063321a1755f50e4d5387988a61f6193770f0998a022533afdfcccf06"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e",
+      "bytes": 2292,
+      "beforeSha256": "f3c26bb0c25eecb99e150c786cfb4f87d6a1913682368788929b74451dfd8fa1"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "sha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e",
+      "bytes": 2730,
+      "beforeSha256": "cc4ad401b8fc5c0b3f282f19ae5ce54dc4b8fcae8d2f0cbc783503275cf35037"
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+      "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19",
+      "bytes": 25889,
+      "beforeSha256": null
+    }
+  ],
+  "verifiedMembers": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951",
+      "bytes": 201811,
+      "matched": true
+    },
+    {
+      "path": "before/PlanetChildVault.java",
+      "sha256": "815e80f063321a1755f50e4d5387988a61f6193770f0998a022533afdfcccf06",
+      "bytes": 177956,
+      "matched": true
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+      "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19",
+      "bytes": 25889,
+      "matched": true
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e",
+      "bytes": 2292,
+      "matched": true
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "sha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e",
+      "bytes": 2730,
+      "matched": true
+    },
+    {
+      "path": "before/strings-en.xml",
+      "sha256": "f3c26bb0c25eecb99e150c786cfb4f87d6a1913682368788929b74451dfd8fa1",
+      "bytes": 882,
+      "matched": true
+    },
+    {
+      "path": "before/strings-ru.xml",
+      "sha256": "cc4ad401b8fc5c0b3f282f19ae5ce54dc4b8fcae8d2f0cbc783503275cf35037",
+      "bytes": 879,
+      "matched": true
+    },
+    {
+      "path": "verification-input-insertion.java.inc",
+      "sha256": "86c1fa854afa5c0895acd8c19409b1d57e1688fb4e74a7c0b6687b3f14bc7e84",
+      "bytes": 23575,
+      "matched": true
+    },
+    {
+      "path": "authorized-old-spans.json",
+      "sha256": "0094e87b2c11050fb4cdc2a2f55e5b530a9060b8e811267c1c3c16dcb5d27f71",
+      "bytes": 1667,
+      "matched": true
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "e731c07e72d777fb494c9bb2670680883144e5bdaa27b54c3e0403d46a903493",
+      "bytes": 3739,
+      "matched": true
+    },
+    {
+      "path": "SCOPE.md",
+      "sha256": "0d39d928d93a2e73c954f4339ee434935de76f17304797dee1930d19b5397cc5",
+      "bytes": 5730,
+      "matched": true
+    },
+    {
+      "path": "source-preservation.json",
+      "sha256": "7bbed0d54b754b7fa16c6739343d825b0206dd717a9f9f30a46f9b49831cde24",
+      "bytes": 4423,
+      "matched": true
+    }
+  ],
+  "preservation": {
+    "authorizedOldSpans": 6,
+    "privateInsertionLines": {
+      "first": 1758,
+      "last": 1956,
+      "count": 199
+    },
+    "outsideAuthorizedSpansAndInsertionByteExact": true,
+    "reverseRestoredSha256": "815e80f063321a1755f50e4d5387988a61f6193770f0998a022533afdfcccf06",
+    "originalEofTwoLF": true,
+    "projectBeforeMatched": true,
+    "newFixtureAbsent": true
+  },
+  "sourceRead": [
+    "complete new199-line input block",
+    "all6 exact guarded coordinator spans",
+    "all13 focused instrumentation methods and fixture lifecycle/ownership",
+    "all12 frozen member hashes plus manifest/READY"
+  ],
+  "conclusions": [
+    "Original constructor-owned request/activity/token/context/ru-en fixed16 caption slot remains occupied through same actual Thread UI worker, verify, counted recipient and real final observer/cancel cleanup.",
+    "Main Android handlers perform no protected IO/KDF/authority retirement; background cancellation and actual pending UI handlers are counted/joined.",
+    "Original deadline/focus/lifecycle/obscured input revoke/wipe immediately; synchronous KDF and lost UI/recipient callbacks do not become timeout completion.",
+    "Original known ACK requires actual delivery completion, workers0 and finished UI slot; abandoned original reply may drain only uncertain without proving delivery.",
+    "No enrollment/math/storage crypto edits, public secret serialization, new factory, genuine authority, ParentGate capability or device acceptance is provided."
+  ],
+  "tests": {
+    "methods": 13,
+    "compiler": "NOT_COMPILED",
+    "installedRuntime": "NOT_RUN",
+    "authority": "EXPLICIT_SYNTHETIC",
+    "kdf": "EXPLICIT_SYNTHETIC"
+  },
+  "limits": "Read-only member hashes and exact inverse/source review only; no candidate command/compiler/runtime/installed-target execution, no new provider/admission claim."
+}

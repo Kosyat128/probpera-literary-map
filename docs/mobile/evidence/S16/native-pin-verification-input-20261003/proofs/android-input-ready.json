@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-verification-input-android-ready",
+  "status": "READY_FOR_SOURCE_REVIEW",
+  "immutable": true,
+  "manifest": {
+    "path": "manifest.json",
+    "bytes": 11410,
+    "sha256": "08ea26d152bb7bc4c71f72e668c90d66e90299949f9ada43be50d6ea67e32963"
+  },
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "reportHeadAtFreeze": "2d408e7427e085c3699c11c12d3bf8a80d62f2ac",
+  "projectPaths": [
+    {
+      "target": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "before": {
+        "path": "before/PlanetChildVault.java",
+        "bytes": 177956,
+        "sha256": "815e80f063321a1755f50e4d5387988a61f6193770f0998a022533afdfcccf06"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "bytes": 201811,
+        "sha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951"
+      }
+    },
+    {
+      "target": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "before": {
+        "path": "before/strings-en.xml",
+        "bytes": 882,
+        "sha256": "f3c26bb0c25eecb99e150c786cfb4f87d6a1913682368788929b74451dfd8fa1"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+        "bytes": 2292,
+        "sha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e"
+      }
+    },
+    {
+      "target": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "before": {
+        "path": "before/strings-ru.xml",
+        "bytes": 879,
+        "sha256": "cc4ad401b8fc5c0b3f282f19ae5ce54dc4b8fcae8d2f0cbc783503275cf35037"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+        "bytes": 2730,
+        "sha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e"
+      }
+    },
+    {
+      "target": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+      "before": null,
+      "after": {
+        "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+        "bytes": 25889,
+        "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19"
+      }
+    }
+  ],
+  "androidFixture": {
+    "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+    "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19",
+    "bytes": 25889,
+    "class": "ru.probpera.literaryplanet.PlanetChildNativePinVerificationInputRuntimeTest",
+    "expectedMethods": 13,
+    "orderedMethodNames": [
+      "oneDigitOriginalEnglishActionAndReply",
+      "explicitRussianLocaleAndAllSixteenFixedCaptions",
+      "emptyMaximumDeletionAndOwnedBufferWipe",
+      "backRevokesWithoutChargeOrAdmission",
+      "actualActivityPauseRevokesOriginalHost",
+      "obscuredTouchRejectsAndWipes",
+      "blockedCurrentRetainsActualInputWorkerUntilReturn",
+      "originalExpiryDuringSynchronousKdfNeverRefunds",
+      "throwingRecipientNeverReceivesSecondCompletion",
+      "completedRecipientStillCannotAckBeforeFinalObserverCleanup",
+      "retirementJoinsVisibleOriginalInputAndCleanup",
+      "foreignThreadCannotBindThroughOriginalVisibleSlot",
+      "failureBeforeRecipientRetainsOriginalUncertainTransfer"
+    ],
+    "instrumentationArguments": {
+      "literaryRunId": "exact lowercase hex32 own run ID",
+      "literaryPinVerificationInputPhase": "input"
+    },
+    "phase": "input",
+    "sourceOnly": true,
+    "runtime": "NOT_RUN",
+    "authority": "EXPLICIT_SYNTHETIC",
+    "kdf": "EXPLICIT_SYNTHETIC",
+    "vaultConstructed": false,
+    "parentGateAdmission": false
+  },
+  "oldEditedSpans": 6,
+  "privateInsertionLines": 199,
+  "rootExecutionRequirements": {
+    "compile": "One existing scoped Android preparation compiles actual main and new instrumentation test; root only",
+    "affectedRegression": "Unchanged frozen coordinator26 driver once against actual guarded compiled main classes, zero args, no R/MainActivity stubs",
+    "device": "Only new13 method class with literaryRunId=32 lowercase hex and literaryPinVerificationInputPhase=input, eligible owned Android target required",
+    "oldSuites": "No unchanged enrollment UI15/math22/journal22/primitives24/enrollment39/codec69 or public oracle/web pipeline repetition",
+    "authority": "Synthetic fixture and private UI convey no actual checkpoint/action/delivery/admission authority",
+    "authorExecution": false
+  },
+  "checksActuallyExecuted": 0,
+  "compile": "NOT_RUN",
+  "runtime": "NOT_RUN",
+  "swiftCompile": "NOT_RUN",
+  "installedOS": "NOT_RUN",
+  "genuineNativeAuthority": "NOT_IMPLEMENTED",
+  "genuineInputCaller": "NOT_IMPLEMENTED",
+  "verifiedParentGateOutput": false,
+  "productionFactories": "UNCHANGED_NULL",
+  "projectWritten": false,
+  "gitWrites": 0
+}

@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-local-preparation-execution",
+  "mode": "android",
+  "startedAt": "2026-10-03T19:24:22.378Z",
+  "finishedAt": "2026-10-03T19:25:34.368Z",
+  "pass": true,
+  "error": null,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "scripts/mobile/prepare-local-release.mjs",
+    "android"
+  ],
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "outcome": {
+    "exitCode": 0,
+    "signal": null,
+    "error": null
+  },
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-input.json",
+    "sha256": "19e5ab510a040f3ac75c6a8a429e6fb3c590693a74f0d9a049345220bdca55b3"
+  },
+  "recordedSourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+  "before": {
+    "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+    "repositoryHead": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+    "sourceFingerprint": "907017ce04e25c0455d0f5cba382e1f4a3097e0c5e0f9f8abc37cea991613ea3",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "after": {
+    "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+    "repositoryHead": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+    "sourceFingerprint": "907017ce04e25c0455d0f5cba382e1f4a3097e0c5e0f9f8abc37cea991613ea3",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "inputsUnchanged": true,
+  "preparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3\\preparation.json",
+    "sha256": "19f5aa6e6a4cf84ac78983b229327596c2290a0abb7dd7e5de4d133aac282aee",
+    "pass": true,
+    "outputs": [
+      {
+        "path": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/native-artifact.json",
+        "sha256": "a25767c0980c96d06e273b4fb39c7a106d3a7875a10a029747e769e5b2b4ef1e",
+        "bytes": 716074
+      },
+      {
+        "path": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/app-dev-debug.apk",
+        "sha256": "5042d51b0b02255983b3407296bb411f1cd4b937304172720cbeea2a6f85c962",
+        "bytes": 69754445
+      },
+      {
+        "path": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/app-dev-debug-androidTest.apk",
+        "sha256": "54f8228081a78f700a436be202fd1c5938ec78b4bcb1e7953fab875386af03ff",
+        "bytes": 622588
+      }
+    ],
+    "binaryReceipt": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/binary.json"
+  },
+  "raw": {
+    "stdout.txt": {
+      "sha256": "95b69e02e5523c13290d670bc952029e4a85ca0d4cd114a10d1b2666824951d9",
+      "bytes": 716
+    },
+    "stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "installedRuntime": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "releaseReady": false,
+  "remoteRequests": 0
+}

@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-input-checkpoint-input",
+  "finalized": true,
+  "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+  "checkpoint": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/code-checkpoint-native-pin-verification-input.json",
+    "sha256": "19e5ab510a040f3ac75c6a8a429e6fb3c590693a74f0d9a049345220bdca55b3"
+  },
+  "previousReport": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-verification-coordinator-report-checkpoint.json",
+    "sha256": "162e260b5b02dc2397b35f986249cc4ab876238546d4e41b3b9df976aef4b0d1"
+  },
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "5cefbd9b62330109d4154334404169b099f4ec2c7f2ba9a7424a8722d542b13a"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "beforeSha256": "c5cd9868a548e8fc55ea254de5add1722e8ccf0ce057c1cea7fb7098df562c34"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "beforeSha256": "15193079045837b4cef13a3eab8e58d97a9ebbedb1f0ac3250ad70d0945e4f59"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "beforeSha256": "7b89d55a43eee654ba23330dd836381f8a46cc941b5906f0dbe1cfca8e41ea4c"
+    }
+  ],
+  "runnerUnit": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-verification-input-unit-e5662f53-b47b-43d8-9fce-ae3114922c82/result.json",
+    "sha256": "bac1ccc6d8a71c1d9dc48216f30f4e9128def3898de222c7ce7d02f018649e9f"
+  },
+  "coordinatorRun": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c/result.json",
+    "sha256": "80b5ea7ac8467f4ebbb8a0a7389a6a82befd783f2695d2e1f26a31578bcf60ff"
+  },
+  "androidPreparation": {
+    "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/preparation.json",
+    "sha256": "19f5aa6e6a4cf84ac78983b229327596c2290a0abb7dd7e5de4d133aac282aee"
+  },
+  "androidExecution": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-preparation-android-ae8c4039-1822-4c02-a75c-d0f5054d5395/execution.json",
+    "sha256": "b4d7ab300c38e2d82be0161e7d8d3e73070f4a97e2005d319d110cf593df1966"
+  },
+  "extraProofs": [
+    {
+      "id": "swift-input-manifest",
+      "reference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-verification-input-swift/manifest.json",
+        "sha256": "17bc182e886a099c1213f5a74a76cf68e58540d36cef052947ae21b644b1cffa"
+      }
+    },
+    {
+      "id": "swift-input-ready",
+      "reference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-verification-input-swift/READY.json",
+        "sha256": "23461eac89d853c5288781a7240e52dd2923d762b6c0616019f4de9fdf3e7c4f"
+      }
+    },
+    {
+      "id": "swift-input-source-review",
+      "reference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-verification-input-swift-continuation-review.json",
+        "sha256": "fa1afb7adc3c49d2ed038df236c2fa02ebcddf760ba58610b523898c9e9672d5"
+      }
+    },
+    {
+      "id": "android-input-manifest",
+      "reference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-verification-input-android/manifest.json",
+        "sha256": "08ea26d152bb7bc4c71f72e668c90d66e90299949f9ada43be50d6ea67e32963"
+      }
+    },
+    {
+      "id": "android-input-ready",
+      "reference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-verification-input-android/READY.json",
+        "sha256": "af837c28bc758861464ede29623db65d5e836a6065967131442958492ec89c35"
+      }
+    },
+    {
+      "id": "android-input-source-review",
+      "reference": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-verification-input-android-core-review.json",
+        "sha256": "f6614d266183c1b55c771f2ee716baa89e46945a40e486bfc0ee9f30de58cbee"
+      }
+    }
+  ],
+  "nextAction": "PAUSED_BY_OWNER: finish this source9a2ee native verification-input checkpoint and stop; resume programming only after the owner explicitly resumes. The next independent coding step is the genuine native replay-resistant checkpoint/trusted-time authority and independent recovery behind the existing private SPI, followed by authenticated Gate host settlement and admitted data ports. Implement against a concrete genuine authority/recovery contract; ordinary encrypted storage, local clocks, JS brands, synthetic fixtures or platform biometrics cannot substitute for that authority. Preserve the original action/target/profile/policy/revisions/host generation and absolute deadline, charged whole-record CAS/readback, actual worker/UI/recipient/cancel joins and original one-use terminal settlement. Keep factories null/nil and clear-before-render App/lifecycle integration inactive until all real dependencies are completed. Six Codex tasks, original four conditions, seven owner inputs, five pending reviews and S03/S16 acceptance11/36 OPEN remain unchanged. Do not ask again for known missing owner/device/PSP inputs, repeat retained test scopes or rebuild historical delivery archives. No next implementation, tests, builds, install/preflight execution, remote action or new report-only D stage while paused."
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-input-runner-unit",
+  "status": "PASS",
+  "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+  "binding": {
+    "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+    "sourceFingerprint": "907017ce04e25c0455d0f5cba382e1f4a3097e0c5e0f9f8abc37cea991613ea3",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-input.json",
+    "sha256": "19e5ab510a040f3ac75c6a8a429e6fb3c590693a74f0d9a049345220bdca55b3"
+  },
+  "counts": {
+    "passed": 9,
+    "failed": 0,
+    "filtered": 26,
+    "names": [
+      "native verification input runner binds only one exact class/phase and fresh run metadata with no generic PIN fixture",
+      "native verification input runner requires the unique current fixture raw source hash rather than another PIN or storage class",
+      "native verification input runner accepts all thirteen original standard start/pass pairs with successful final minus-one code",
+      "native verification input runner refuses missing or mixed summaries, wrong totals and an unsuccessful or ambiguous final code",
+      "native verification input runner does not promote failed, skipped, crashed or malformed per-test statuses to the successful summary",
+      "native verification input runner requires every exact method once and its own started completion instead of foreign or duplicated identity",
+      "native verification input runner dispatches only after all three offline observations and copies the exact bounded instrumentation array",
+      "native verification input runner rejects cross-class phase, foreign runner, replay-shaped IDs and appended arguments before any device access",
+      "native verification input runner keeps connected-target denial ahead of the new UI fixture and records the actual failed offline observation"
+    ],
+    "report": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-unit-e5662f53-b47b-43d8-9fce-ae3114922c82\\vitest.json",
+      "sha256": "8fe9dc7e395282fc680fb08b423a0d5d39853ec75ac216d97ed64148caa953b3"
+    }
+  },
+  "command": {
+    "command": [
+      "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+      "node_modules/vitest/vitest.mjs",
+      "run",
+      "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "-t",
+      "^native verification input runner ",
+      "--reporter=json",
+      "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-unit-e5662f53-b47b-43d8-9fce-ae3114922c82\\vitest.json"
+    ],
+    "startedAt": "2026-10-03T19:23:57.994Z",
+    "finishedAt": "2026-10-03T19:23:59.808Z",
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "stdout": {
+      "path": "stdout.bin",
+      "bytes": 209,
+      "sha256": "a323da86d56b0011d0987d1085ef0d52a6ff78977b39a08c91636ab042f23a16"
+    },
+    "stderr": {
+      "path": "stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "failure": null,
+  "sourceUnchanged": true,
+  "actualDeviceCommands": 0,
+  "deviceRuntime": "NOT_RUN",
+  "installedStorage": "NOT_RUN",
+  "releaseReady": false,
+  "remoteOperations": 0
+}

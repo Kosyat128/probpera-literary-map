@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-verification-input-swift-continuation-source-review",
+  "status": "ACK",
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "reportCommit": "2d408e7427e085c3699c11c12d3bf8a80d62f2ac",
+  "reviewedAt": "2026-10-03T19:20:35.4154864Z",
+  "runtimeChecksExecuted": false,
+  "checksExecuted": false,
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "beforeSha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+      "sha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+      "bytes": 227573
+    }
+  ],
+  "candidate": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-swift\\manifest.json",
+    "sha256": "17bc182e886a099c1213f5a74a76cf68e58540d36cef052947ae21b644b1cffa",
+    "bytes": 12867
+  },
+  "ready": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-swift\\READY.json",
+    "sha256": "23461eac89d853c5288781a7240e52dd2923d762b6c0616019f4de9fdf3e7c4f",
+    "bytes": 1964
+  },
+  "sourcePreservation": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-swift\\source-preservation.json",
+    "sha256": "fe128e6092c3c6987c2693ded88a723112e4745bbaf539c5cd28dfef49ed87f3",
+    "bytes": 5658
+  },
+  "authoredTests": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-swift\\tests\\NativePinVerificationUIKitTests.swift.inc",
+    "sha256": "1e65defbfb380719a5ee6b1b2b19f8f9986a87960fcedc69583696e325748cbc",
+    "methods": 13,
+    "compiler": "NOT_COMPILED",
+    "runtime": "NOT_RUN",
+    "registered": false
+  },
+  "facts": [
+    "Nine frozen member hashes match; eleven authorized old spans and sole appended block reverse to the exact196867-byte predecessor.",
+    "Original native input slot/Thread remains reserved through actual callbacks, cancellation, observer cleanup and counted delivery; atomic ACK and retirement join that original slot.",
+    "Held presentation/dismissal expiry, blocked KDF/recipient, actual failure callback and direct ACK guard cases are authored only.",
+    "Existing enrollment/math/codec/journal/storage160940-byte prefix is preserved; factory/App/admission remains inactive."
+  ],
+  "findings": [],
+  "releaseReady": false,
+  "checkoutWrites": false
+}

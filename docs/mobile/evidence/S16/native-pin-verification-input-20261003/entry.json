@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-input-working-evidence",
+  "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+  "status": "PARTIAL_PAUSED_BY_OWNER",
+  "executionPausedByOwner": true,
+  "result": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/result.json",
+  "availableAndroidApks": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3\\app-dev-debug.apk",
+      "projectRelativePath": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/app-dev-debug.apk",
+      "sha256": "5042d51b0b02255983b3407296bb411f1cd4b937304172720cbeea2a6f85c962",
+      "bytes": 69754445
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3\\app-dev-debug-androidTest.apk",
+      "projectRelativePath": ".tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/app-dev-debug-androidTest.apk",
+      "sha256": "54f8228081a78f700a436be202fd1c5938ec78b4bcb1e7953fab875386af03ff",
+      "bytes": 622588
+    }
+  ],
+  "futureNonexecutingPreflight": {
+    "command": "node scripts/mobile/native-install-runtime.mjs --platform android --receipt .tmp/mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3/binary.json --pin-verification-input --run-id <32lowerhex> --out .tmp/mobile-native-preflight-<32lowerhex>",
+    "status": "NOT_RUN_FOR_THIS_SOURCE",
+    "executeAuthorized": false
+  },
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "protectedAdmission": "NOT_RUN",
+    "appChildActivation": false,
+    "remoteOperations": 0
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-input-android-candidate",
+  "finalized": true,
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "reportHeadAtFreeze": "2d408e7427e085c3699c11c12d3bf8a80d62f2ac",
+  "binding": {
+    "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+    "sourceFingerprint": "a2d1f9c8e4fa3eace786e33e4f459fc8fbd6d068d76f4e0fb3d4493618fbfe4a",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "baselineCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-coordinator.json",
+    "bytes": 277418,
+    "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d"
+  },
+  "reportCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-coordinator-report-checkpoint.json",
+    "bytes": 2569,
+    "sha256": "162e260b5b02dc2397b35f986249cc4ab876238546d4e41b3b9df976aef4b0d1"
+  },
+  "files": [
+    {
+      "target": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "before": {
+        "path": "before/PlanetChildVault.java",
+        "bytes": 177956,
+        "sha256": "815e80f063321a1755f50e4d5387988a61f6193770f0998a022533afdfcccf06"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "bytes": 201811,
+        "sha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951"
+      }
+    },
+    {
+      "target": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "before": {
+        "path": "before/strings-en.xml",
+        "bytes": 882,
+        "sha256": "f3c26bb0c25eecb99e150c786cfb4f87d6a1913682368788929b74451dfd8fa1"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+        "bytes": 2292,
+        "sha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e"
+      }
+    },
+    {
+      "target": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "before": {
+        "path": "before/strings-ru.xml",
+        "bytes": 879,
+        "sha256": "cc4ad401b8fc5c0b3f282f19ae5ce54dc4b8fcae8d2f0cbc783503275cf35037"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+        "bytes": 2730,
+        "sha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e"
+      }
+    },
+    {
+      "target": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+      "before": null,
+      "after": {
+        "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+        "bytes": 25889,
+        "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19"
+      }
+    }
+  ],
+  "members": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "bytes": 201811,
+      "sha256": "9696af517b940e81e657b2ba1969f2fad090cbd137ab414259be0b08329de951"
+    },
+    {
+      "path": "before/PlanetChildVault.java",
+      "bytes": 177956,
+      "sha256": "815e80f063321a1755f50e4d5387988a61f6193770f0998a022533afdfcccf06"
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+      "bytes": 25889,
+      "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "bytes": 2292,
+      "sha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e"
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "bytes": 2730,
+      "sha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e"
+    },
+    {
+      "path": "before/strings-en.xml",
+      "bytes": 882,
+      "sha256": "f3c26bb0c25eecb99e150c786cfb4f87d6a1913682368788929b74451dfd8fa1"
+    },
+    {
+      "path": "before/strings-ru.xml",
+      "bytes": 879,
+      "sha256": "cc4ad401b8fc5c0b3f282f19ae5ce54dc4b8fcae8d2f0cbc783503275cf35037"
+    },
+    {
+      "path": "verification-input-insertion.java.inc",
+      "bytes": 23575,
+      "sha256": "86c1fa854afa5c0895acd8c19409b1d57e1688fb4e74a7c0b6687b3f14bc7e84"
+    },
+    {
+      "path": "authorized-old-spans.json",
+      "bytes": 1667,
+      "sha256": "0094e87b2c11050fb4cdc2a2f55e5b530a9060b8e811267c1c3c16dcb5d27f71"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 3739,
+      "sha256": "e731c07e72d777fb494c9bb2670680883144e5bdaa27b54c3e0403d46a903493"
+    },
+    {
+      "path": "SCOPE.md",
+      "bytes": 5730,
+      "sha256": "0d39d928d93a2e73c954f4339ee434935de76f17304797dee1930d19b5397cc5"
+    },
+    {
+      "path": "source-preservation.json",
+      "bytes": 4423,
+      "sha256": "7bbed0d54b754b7fa16c6739343d825b0206dd717a9f9f30a46f9b49831cde24"
+    }
+  ],
+  "authorizedSpans": {
+    "oldEdits": 6,
+    "oldSpans": [
+      {
+        "name": "ticket original UI slot",
+        "beforeStartLine": 1521,
+        "beforeStartByte": 132422,
+        "beforeBytes": 33,
+        "beforeSha256": "2332217669d65ad4d060911b57264d75a221196bca69102d4ac7a2bb18faf13b",
+        "afterBytes": 94,
+        "afterSha256": "a04c701ff52bf4b30ee07f0055fa66cc2450f35aab1959fc2fd4f686faae79aa"
+      },
+      {
+        "name": "bindInput original UI worker",
+        "beforeStartLine": 1636,
+        "beforeStartByte": 146589,
+        "beforeBytes": 78,
+        "beforeSha256": "5b3244f21bc8ff3526f47d3647b88aa3d9d0aef91560bf2e1442f09eecef0778",
+        "afterBytes": 118,
+        "afterSha256": "81cd6c2273385c9e4bc38963b83318eea5a527b7146c1a3678719a07039fad48"
+      },
+      {
+        "name": "verify original UI worker",
+        "beforeStartLine": 1671,
+        "beforeStartByte": 150432,
+        "beforeBytes": 83,
+        "beforeSha256": "e205447c2cb92cff68828d750850193b79249c867508e2d40f963e2616f10f69",
+        "afterBytes": 123,
+        "afterSha256": "2c6e96baae09f3d96d4321f60dfbebf1728af36476a662fe1d57cb7fd7129331"
+      },
+      {
+        "name": "deliver original UI worker",
+        "beforeStartLine": 1714,
+        "beforeStartByte": 155999,
+        "beforeBytes": 70,
+        "beforeSha256": "bbb2167967598bccae366dedda1adff7aab1224eb28e22a048a6805b7806c16d",
+        "afterBytes": 118,
+        "afterSha256": "f15d807f956ce6afd8724b7ffa5504418029bebf88f29bfcf1eab1f642408985"
+      },
+      {
+        "name": "settlement actual UI cleanup",
+        "beforeStartLine": 1735,
+        "beforeStartByte": 158466,
+        "beforeBytes": 67,
+        "beforeSha256": "1ec869f405d49e45b90067b63f52d3aebd284becc4800905462b7292ad891bb0",
+        "afterBytes": 114,
+        "afterSha256": "60dfb2586619e04402362bb376361f6911a01a9cf7038e4051d70064ab0d39c2"
+      },
+      {
+        "name": "retirement joins original UI slot",
+        "beforeStartLine": 1749,
+        "beforeStartByte": 160017,
+        "beforeBytes": 87,
+        "beforeSha256": "7726eabb9c00a9034ccd115c8bd0d4b4469e02b016f6844f49cb3dcfa870ec1e",
+        "afterBytes": 131,
+        "afterSha256": "c00595c3796c7d2850ac7d3698420d30ea490c7150b63aef26d36301ed77ccd0"
+      }
+    ],
+    "oldSpanRaw": "authorized-old-spans.json",
+    "privateInsertions": 1,
+    "privateInsertion": {
+      "startLine": 1758,
+      "endLine": 1956,
+      "startByte": 161228,
+      "bytes": 23575,
+      "sha256": "86c1fa854afa5c0895acd8c19409b1d57e1688fb4e74a7c0b6687b3f14bc7e84"
+    },
+    "outsideAuthorizedSpansByteExact": true,
+    "resourceInsertions": [
+      {
+        "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+        "locale": "en",
+        "startByte": 869,
+        "bytes": 1410,
+        "sha256": "61a744768aa261fc4f922ca34e0b0937ef92664d5ef2b537bf6c7f2c4b5c87fc",
+        "addedStrings": 17,
+        "outsideInsertionByteExact": true,
+        "rootCandidateByteExact": true
+      },
+      {
+        "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+        "locale": "ru",
+        "startByte": 866,
+        "bytes": 1851,
+        "sha256": "e99f4bd4fb4b58839aca6f43cb7222f46ec758fece11465a8906e4840467bc3a",
+        "addedStrings": 17,
+        "outsideInsertionByteExact": true,
+        "rootCandidateByteExact": true
+      }
+    ],
+    "preservation": "source-preservation.json"
+  },
+  "androidFixture": {
+    "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativePinVerificationInputRuntimeTest.java",
+    "sha256": "ccc57f90b8fa60d53f1b70d2c311ad9f3baef67c5f44121b6b8e9ee60cafda19",
+    "bytes": 25889,
+    "class": "ru.probpera.literaryplanet.PlanetChildNativePinVerificationInputRuntimeTest",
+    "expectedMethods": 13,
+    "orderedMethodNames": [
+      "oneDigitOriginalEnglishActionAndReply",
+      "explicitRussianLocaleAndAllSixteenFixedCaptions",
+      "emptyMaximumDeletionAndOwnedBufferWipe",
+      "backRevokesWithoutChargeOrAdmission",
+      "actualActivityPauseRevokesOriginalHost",
+      "obscuredTouchRejectsAndWipes",
+      "blockedCurrentRetainsActualInputWorkerUntilReturn",
+      "originalExpiryDuringSynchronousKdfNeverRefunds",
+      "throwingRecipientNeverReceivesSecondCompletion",
+      "completedRecipientStillCannotAckBeforeFinalObserverCleanup",
+      "retirementJoinsVisibleOriginalInputAndCleanup",
+      "foreignThreadCannotBindThroughOriginalVisibleSlot",
+      "failureBeforeRecipientRetainsOriginalUncertainTransfer"
+    ],
+    "instrumentationArguments": {
+      "literaryRunId": "exact lowercase hex32 own run ID",
+      "literaryPinVerificationInputPhase": "input"
+    },
+    "phase": "input",
+    "sourceOnly": true,
+    "runtime": "NOT_RUN",
+    "authority": "EXPLICIT_SYNTHETIC",
+    "kdf": "EXPLICIT_SYNTHETIC",
+    "vaultConstructed": false,
+    "parentGateAdmission": false
+  },
+  "retainedAffectedCoordinatorDriver": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-coordinator-android\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildPinVerificationCoordinatorJvmDriver.java",
+    "sha256": "fa4cf4dc652514a9147f561a4e10cc283fb2bdcf819aa263d0434a8c6b7984b6",
+    "expectedCases": 26,
+    "reason": "Original input-slot guards and retirement/settlement claims changed",
+    "newSourceRegression": "NOT_RUN"
+  },
+  "checksActuallyExecuted": 0,
+  "compile": "NOT_RUN",
+  "jvm": "NOT_RUN",
+  "installedAndroid": "NOT_RUN",
+  "genuineNativeAuthority": "NOT_IMPLEMENTED",
+  "genuineInputCaller": "NOT_IMPLEMENTED",
+  "durableDeviceProof": false,
+  "parentGateAdmission": false,
+  "productionFactories": "UNCHANGED_NULL",
+  "projectWritten": false,
+  "gitWrites": 0
+}

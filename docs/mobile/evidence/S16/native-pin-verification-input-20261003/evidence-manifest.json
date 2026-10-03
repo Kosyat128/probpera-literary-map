@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-verification-input-evidence-inventory",
+  "sourceCommit": "9a2ee1ae7072e3814e00046a16d5ea00cc705ce2",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/verification-input-source-checkpoint.json",
+      "sha256": "19e5ab510a040f3ac75c6a8a429e6fb3c590693a74f0d9a049345220bdca55b3",
+      "bytes": 278637
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/verification-input-runner-unit.json",
+      "sha256": "bac1ccc6d8a71c1d9dc48216f30f4e9128def3898de222c7ce7d02f018649e9f",
+      "bytes": 3695
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/verification-input-runner-vitest.json",
+      "sha256": "8fe9dc7e395282fc680fb08b423a0d5d39853ec75ac216d97ed64148caa953b3",
+      "bytes": 13812
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/affected-coordinator-jvm.json",
+      "sha256": "80b5ea7ac8467f4ebbb8a0a7389a6a82befd783f2695d2e1f26a31578bcf60ff",
+      "bytes": 11118
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/current-android-preparation.json",
+      "sha256": "19f5aa6e6a4cf84ac78983b229327596c2290a0abb7dd7e5de4d133aac282aee",
+      "bytes": 303615
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/current-android-execution.json",
+      "sha256": "b4d7ab300c38e2d82be0161e7d8d3e73070f4a97e2005d319d110cf593df1966",
+      "bytes": 3311
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/swift-input-manifest.json",
+      "sha256": "17bc182e886a099c1213f5a74a76cf68e58540d36cef052947ae21b644b1cffa",
+      "bytes": 12867
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/swift-input-ready.json",
+      "sha256": "23461eac89d853c5288781a7240e52dd2923d762b6c0616019f4de9fdf3e7c4f",
+      "bytes": 1964
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/swift-input-source-review.json",
+      "sha256": "fa1afb7adc3c49d2ed038df236c2fa02ebcddf760ba58610b523898c9e9672d5",
+      "bytes": 2718
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/android-input-manifest.json",
+      "sha256": "08ea26d152bb7bc4c71f72e668c90d66e90299949f9ada43be50d6ea67e32963",
+      "bytes": 11410
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/android-input-ready.json",
+      "sha256": "af837c28bc758861464ede29623db65d5e836a6065967131442958492ec89c35",
+      "bytes": 5161
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/android-input-source-review.json",
+      "sha256": "f6614d266183c1b55c771f2ee716baa89e46945a40e486bfc0ee9f30de58cbee",
+      "bytes": 6160
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/final-input.json",
+      "sha256": "b7fad2b61c37d3695e56470cf034d5df41bb5cef2b3e215afd757b9f3f59626a",
+      "bytes": 5942
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/result.json",
+      "sha256": "4d800c544eefa7a69441212fbc796f6ca7175036dfb9707212d6b0b234c59e49",
+      "bytes": 31387
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/entry.json",
+      "sha256": "32f525c4e57f31cb5dbcfca906434ca339d5a2fbd7f6771f9c1f6b2c410bf7f0",
+      "bytes": 1890
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "verification-input-source-checkpoint",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/verification-input-source-checkpoint.json",
+      "sha256": "19e5ab510a040f3ac75c6a8a429e6fb3c590693a74f0d9a049345220bdca55b3",
+      "bytes": 278637,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-verification-input.json"
+    },
+    {
+      "id": "verification-input-runner-unit",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/verification-input-runner-unit.json",
+      "sha256": "bac1ccc6d8a71c1d9dc48216f30f4e9128def3898de222c7ce7d02f018649e9f",
+      "bytes": 3695,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-unit-e5662f53-b47b-43d8-9fce-ae3114922c82\\result.json"
+    },
+    {
+      "id": "verification-input-runner-vitest",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/verification-input-runner-vitest.json",
+      "sha256": "8fe9dc7e395282fc680fb08b423a0d5d39853ec75ac216d97ed64148caa953b3",
+      "bytes": 13812,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-unit-e5662f53-b47b-43d8-9fce-ae3114922c82\\vitest.json"
+    },
+    {
+      "id": "affected-coordinator-jvm",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/affected-coordinator-jvm.json",
+      "sha256": "80b5ea7ac8467f4ebbb8a0a7389a6a82befd783f2695d2e1f26a31578bcf60ff",
+      "bytes": 11118,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-jvm-c91ba54e-863d-4fe1-9797-c8a4acb8f49c\\result.json"
+    },
+    {
+      "id": "current-android-preparation",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/current-android-preparation.json",
+      "sha256": "19f5aa6e6a4cf84ac78983b229327596c2290a0abb7dd7e5de4d133aac282aee",
+      "bytes": 303615,
+      "originalPath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-0cfc9f82-9dfc-4140-8219-f16505e523f3\\preparation.json"
+    },
+    {
+      "id": "current-android-execution",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/current-android-execution.json",
+      "sha256": "b4d7ab300c38e2d82be0161e7d8d3e73070f4a97e2005d319d110cf593df1966",
+      "bytes": 3311,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-android-ae8c4039-1822-4c02-a75c-d0f5054d5395\\execution.json"
+    },
+    {
+      "id": "swift-input-manifest",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/swift-input-manifest.json",
+      "sha256": "17bc182e886a099c1213f5a74a76cf68e58540d36cef052947ae21b644b1cffa",
+      "bytes": 12867,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-swift\\manifest.json"
+    },
+    {
+      "id": "swift-input-ready",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/swift-input-ready.json",
+      "sha256": "23461eac89d853c5288781a7240e52dd2923d762b6c0616019f4de9fdf3e7c4f",
+      "bytes": 1964,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-swift\\READY.json"
+    },
+    {
+      "id": "swift-input-source-review",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/swift-input-source-review.json",
+      "sha256": "fa1afb7adc3c49d2ed038df236c2fa02ebcddf760ba58610b523898c9e9672d5",
+      "bytes": 2718,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-swift-continuation-review.json"
+    },
+    {
+      "id": "android-input-manifest",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/android-input-manifest.json",
+      "sha256": "08ea26d152bb7bc4c71f72e668c90d66e90299949f9ada43be50d6ea67e32963",
+      "bytes": 11410,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-android\\manifest.json"
+    },
+    {
+      "id": "android-input-ready",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/android-input-ready.json",
+      "sha256": "af837c28bc758861464ede29623db65d5e836a6065967131442958492ec89c35",
+      "bytes": 5161,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-verification-input-android\\READY.json"
+    },
+    {
+      "id": "android-input-source-review",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/android-input-source-review.json",
+      "sha256": "f6614d266183c1b55c771f2ee716baa89e46945a40e486bfc0ee9f30de58cbee",
+      "bytes": 6160,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-android-core-review.json"
+    },
+    {
+      "id": "final-input",
+      "path": "docs/mobile/evidence/S16/native-pin-verification-input-20261003/proofs/final-input.json",
+      "sha256": "b7fad2b61c37d3695e56470cf034d5df41bb5cef2b3e215afd757b9f3f59626a",
+      "bytes": 5942,
+      "originalPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-verification-input-checkpoint-input.final.json"
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}

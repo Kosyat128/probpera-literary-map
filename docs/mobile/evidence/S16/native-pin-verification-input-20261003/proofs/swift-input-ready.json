@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-verification-input-swift-ready",
+  "frozen": true,
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "reportHead": "2d408e7427e085c3699c11c12d3bf8a80d62f2ac",
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "17bc182e886a099c1213f5a74a76cf68e58540d36cef052947ae21b644b1cffa",
+    "bytes": 12867
+  },
+  "ownedSource": {
+    "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "beforeSha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+    "sha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+    "bytes": 227573
+  },
+  "sourcePreservation": {
+    "path": "source-preservation.json",
+    "sha256": "fe128e6092c3c6987c2693ded88a723112e4745bbaf539c5cd28dfef49ed87f3",
+    "bytes": 5658,
+    "authorizedOldSpans": 11,
+    "outsideAuthorizedSpansAndInsertionByteExact": true,
+    "appendedFirstLine": 2841,
+    "appendedLastLine": 3316,
+    "appendedLines": 476,
+    "includesLeadingSeparatorLF": true,
+    "reverseRestoredSha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+    "existingCodecStorageEnrollmentJournalMathPrefixByteExact": true
+  },
+  "tests": {
+    "path": "tests/NativePinVerificationUIKitTests.swift.inc",
+    "sha256": "1e65defbfb380719a5ee6b1b2b19f8f9986a87960fcedc69583696e325748cbc",
+    "bytes": 29521,
+    "methods": 13,
+    "registered": false,
+    "compiler": "NOT_COMPILED",
+    "runtime": "NOT_RUN"
+  },
+  "reviewedSource": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+  "reviewedTests": "1e65defbfb380719a5ee6b1b2b19f8f9986a87960fcedc69583696e325748cbc",
+  "runtimeChecksExecuted": false,
+  "projectWritten": false,
+  "appActivated": false,
+  "factoriesActivated": false,
+  "genuineAuthority": "NOT_IMPLEMENTED",
+  "genuineHost": "NOT_IMPLEMENTED",
+  "recovery": "NOT_IMPLEMENTED",
+  "ownerPause": "Finish current checkpoint then PAUSE; no next stage started"
+}

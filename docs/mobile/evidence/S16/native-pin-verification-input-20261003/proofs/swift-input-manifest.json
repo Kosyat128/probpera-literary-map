@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-verification-input-swift-candidate",
+  "finalized": true,
+  "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+  "reportHeadAtFreeze": "2d408e7427e085c3699c11c12d3bf8a80d62f2ac",
+  "binding": {
+    "sourceCommit": "9977ffdd8468ffc10e18e1c39af3e27f6070371e",
+    "sourceFingerprint": "a2d1f9c8e4fa3eace786e33e4f459fc8fbd6d068d76f4e0fb3d4493618fbfe4a",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "baselineCheckpoint": {
+    "path": "code-checkpoint-native-pin-verification-coordinator.json",
+    "sha256": "0d92d497eaa3748304dc0dfdfc4fd08f51dd6568d0903b6ba67145675f1cee0d",
+    "bytes": 277418
+  },
+  "reportCheckpoint": {
+    "path": "native-pin-verification-coordinator-report-checkpoint.json",
+    "sha256": "162e260b5b02dc2397b35f986249cc4ab876238546d4e41b3b9df976aef4b0d1",
+    "bytes": 2569
+  },
+  "ownedSource": {
+    "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "beforeSha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+    "sha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+    "bytes": 227573,
+    "authorizedOldSpans": 11,
+    "outsideAuthorizedSpansAndInsertionByteExact": true
+  },
+  "projectFiles": [
+    {
+      "target": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "before": {
+        "path": "before/PlanetChildVault.swift",
+        "sha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+        "bytes": 196867
+      },
+      "after": {
+        "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+        "sha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+        "bytes": 227573
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "before/PlanetChildVault.swift",
+      "sha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+      "bytes": 196867,
+      "role": "original-before-backup"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+      "bytes": 227573,
+      "role": "production-candidate"
+    },
+    {
+      "path": "tests/NativePinVerificationUIKitTests.swift.inc",
+      "sha256": "1e65defbfb380719a5ee6b1b2b19f8f9986a87960fcedc69583696e325748cbc",
+      "bytes": 29521,
+      "role": "unregistered-standalone-synthetic-XCTest-fragment"
+    },
+    {
+      "path": "authorized-old-spans.json",
+      "sha256": "4467192a31d03b7ae57199d33647583ae97f7f4e44ec799f745b19c1c764ccde",
+      "bytes": 4119,
+      "role": "exact-original-span-replacements"
+    },
+    {
+      "path": "verification-input-insertion.swift.inc",
+      "sha256": "151d1d285f419d4a64da25c855759bd8acd7bcb5411399df72bc0b788cecc4cc",
+      "bytes": 29759,
+      "role": "sole-private-UIKit-insertion"
+    },
+    {
+      "path": "source-preservation.json",
+      "sha256": "fe128e6092c3c6987c2693ded88a723112e4745bbaf539c5cd28dfef49ed87f3",
+      "bytes": 5658,
+      "role": "raw-inverse-preservation-proof"
+    },
+    {
+      "path": "source.diff",
+      "sha256": "0b4458659476531e8ba39ccf9f5b7abb938760ecf95ec6e054ef8be7c52dfe2b",
+      "bytes": 33743,
+      "role": "minimal-source-diff"
+    },
+    {
+      "path": "SCOPE.md",
+      "sha256": "d6b34740f2abd6a292c09b882c1322ac88efcf9bf83ff1513025f1baefda83f0",
+      "bytes": 5191,
+      "role": "scope-and-limits"
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "a250d3a314545ad9795bc5d27170a285995a68ef98bb8e4c13712bdeafe64c3e",
+      "bytes": 4368,
+      "role": "root-approved-design"
+    }
+  ],
+  "sourcePreservation": {
+    "authorizedOldSpans": 11,
+    "spans": [
+      {
+        "name": "original ticket UI slot",
+        "beforeLine": 2448,
+        "afterLine": 2448,
+        "beforeByte": 169611,
+        "afterByte": 169611,
+        "beforeBytes": 67,
+        "afterBytes": 211,
+        "beforeSha256": "a72424d3a1faa4273bdfbb4d3a83b50ada4f528d8e10718131045895fa7a0a2b",
+        "afterSha256": "2614e0de845f0b2eb577ffa7018a2bb4dfb1cb52b75705adf6f73916c47d2aaf"
+      },
+      {
+        "name": "bound input original UI handoff",
+        "beforeLine": 2599,
+        "afterLine": 2607,
+        "beforeByte": 180831,
+        "afterByte": 181299,
+        "beforeBytes": 115,
+        "afterBytes": 181,
+        "beforeSha256": "2e550960a32ae79e42ed68713455a9e47736c0348226396a6db851f8d1b612c6",
+        "afterSha256": "fdb924ec8ba5b8eec0063b649b7282b7932e17746390453456e6c56bfa0be0b0"
+      },
+      {
+        "name": "bound input slot exclusion",
+        "beforeLine": 2602,
+        "afterLine": 2611,
+        "beforeByte": 181147,
+        "afterByte": 181681,
+        "beforeBytes": 116,
+        "afterBytes": 171,
+        "beforeSha256": "b7ff37f57f43f1837d96ce4221f6c293bfd5eb4f0199d7b91ca7389c9c4f9948",
+        "afterSha256": "b902d2ff7d5cb93baba1fb9fe754fe740eb2bf4f4fcca6772f01d83b5a9e9328"
+      },
+      {
+        "name": "verification original UI handoff",
+        "beforeLine": 2650,
+        "afterLine": 2660,
+        "beforeByte": 184835,
+        "afterByte": 185424,
+        "beforeBytes": 117,
+        "afterBytes": 180,
+        "beforeSha256": "858ba91a46a8546a528c3399db3cb1f2bd8c37e2dfb5825e10031ec213550f78",
+        "afterSha256": "aa49c09b577adab5b63e7dea68606415952dbd54a07302a91cfd689a3002b551"
+      },
+      {
+        "name": "verification slot exclusion",
+        "beforeLine": 2659,
+        "afterLine": 2670,
+        "beforeByte": 185387,
+        "afterByte": 186039,
+        "beforeBytes": 97,
+        "afterBytes": 156,
+        "beforeSha256": "1a0d2311bf2438b3d4ff10521b1b1b4a1416566bb6ed1b588d655410afed53bd",
+        "afterSha256": "5f44ba9c426035a061ef7655294aaeb300bf40767995a997b900c0a440c37bc5"
+      },
+      {
+        "name": "delivery original UI handoff",
+        "beforeLine": 2750,
+        "afterLine": 2762,
+        "beforeByte": 191800,
+        "afterByte": 192511,
+        "beforeBytes": 110,
+        "afterBytes": 174,
+        "beforeSha256": "2c4de6f1bbb2f923092d425e1528ec2a848344dd3f42893409df870da3429fec",
+        "afterSha256": "96ede29ee3cd8c748140ec07b131e30b0ab5ad1022b9220f7299a0926cd15e72"
+      },
+      {
+        "name": "delivery slot exclusion",
+        "beforeLine": 2756,
+        "afterLine": 2769,
+        "beforeByte": 192172,
+        "afterByte": 192947,
+        "beforeBytes": 126,
+        "afterBytes": 185,
+        "beforeSha256": "c8a1c0ee514b0e14c6acdfa4bfffae4f1c8429f1d59a15413d319398bc2c0bb8",
+        "afterSha256": "ff60f52dd5f8af401c0ed4b9c4245388a0b239e50f8aa7d7927562c531bee571"
+      },
+      {
+        "name": "atomic original ACK waits actual UI cleanup",
+        "beforeLine": 2789,
+        "afterLine": 2803,
+        "beforeByte": 194615,
+        "afterByte": 195449,
+        "beforeBytes": 92,
+        "afterBytes": 119,
+        "beforeSha256": "3b87b53ebcc4bcbd10ae79272d55673b2fd93c18d279502c092818faf38cd122",
+        "afterSha256": "82a3172fb6ce17c4eb6e412ab271a11eb6a3580fca87606dfa37709aa21fa051"
+      },
+      {
+        "name": "retirement cannot join its UI Thread",
+        "beforeLine": 2809,
+        "afterLine": 2823,
+        "beforeByte": 195700,
+        "afterByte": 196561,
+        "beforeBytes": 101,
+        "afterBytes": 158,
+        "beforeSha256": "56ebfe13945cfd587669cf4600b527d9bd4ce09453bf2b50d5c50cfca775a30d",
+        "afterSha256": "9f3ea3b1432195504e81f0d10de8f50f80421ee30013fc43d4b256ee80608ea7"
+      },
+      {
+        "name": "retirement joins original UI slot",
+        "beforeLine": 2813,
+        "afterLine": 2828,
+        "beforeByte": 195992,
+        "afterByte": 196910,
+        "beforeBytes": 86,
+        "afterBytes": 115,
+        "beforeSha256": "85e72a8d9dca4d9befaf93970c414dc970d1b65d297bfd24704095b0fea4e5c5",
+        "afterSha256": "5e167d111dfb8c4cc6e0b545f3bf76e9e419c91c748c274fa64a50d888e5dc09"
+      },
+      {
+        "name": "closed slot permission helper",
+        "beforeLine": 2507,
+        "afterLine": 2509,
+        "beforeByte": 173924,
+        "afterByte": 174068,
+        "beforeBytes": 49,
+        "afterBytes": 373,
+        "beforeSha256": "b3ee5942ee5700b3d09a9e76cd2721e22d5f22837bc2c9edd9dd01827595ba30",
+        "afterSha256": "6f080e84069132f7b8b429ede9b9e409c0bb09e9a5b307c8d9e1dd949b1f8725"
+      }
+    ],
+    "appendedBlock": {
+      "afterLine": 2841,
+      "lastLine": 3316,
+      "lines": 476,
+      "beforeByte": 197814,
+      "bytes": 29759,
+      "sha256": "151d1d285f419d4a64da25c855759bd8acd7bcb5411399df72bc0b788cecc4cc",
+      "includesLeadingSeparatorLF": true
+    },
+    "outsideAuthorizedSpansAndInsertionByteExact": true,
+    "reverseRestoredSha256": "48a269b429135a762db50eb9e5b53d7ea46ce0f9926db7333d4f232a4cdca79b",
+    "existingCodecStorageEnrollmentJournalMathPrefix": {
+      "lines": 2316,
+      "bytes": 160940,
+      "sha256": "64c5f9e96bc0847a7dad14d0bf62475bad9287c49f8d90a901ae0d7d2317ffd4",
+      "byteExact": true
+    }
+  },
+  "publicCopy": {
+    "candidate": {
+      "path": "next-native-pin-verification-copy/candidate.json",
+      "sha256": "039a95f32aabb4b98ea0fdcf625197a32fab55243072bbea6d907d6a7f3c3006",
+      "bytes": 1091
+    },
+    "english": {
+      "path": "next-native-pin-verification-copy/apps/mobile/android/app/src/main/res/values/strings.xml",
+      "sha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e",
+      "bytes": 2292
+    },
+    "russian": {
+      "path": "next-native-pin-verification-copy/apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "sha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e",
+      "bytes": 2730
+    },
+    "actions": 16,
+    "sourceOnly": true
+  },
+  "contract": {
+    "input": "one1..128 ASCII digit entry; no enrollment confirmation/calibration",
+    "host": "exact original owned verification request/gate + explicitlocale + concrete UIKit presenter/window/scene/root",
+    "worker": "one original dedicated actual Thread; real main handlers/completions and background cancel joined before worker/slot release",
+    "handoff": "original UI slot persists across same-Thread input worker settlement, bindInput, verify, deliver and final cleanup; ordinary paths remain strict",
+    "deadline": "same exclusive original native continuous deadline; transition cannot skip expiry; no timer completion/join",
+    "reply": "exact existing coordinator original reply; actual callback counted once; no implicit ACK/second failure after throwing success recipient",
+    "retirement": "joins unfinished original UI slot; direct original reply ACK denies until actual cleanup releases it"
+  },
+  "testPlan": {
+    "path": "tests/NativePinVerificationUIKitTests.swift.inc",
+    "count": 13,
+    "methods": [
+      "testOneDigitKeypadDeliversExactOriginalReplyAndNoAckDuringCallback",
+      "testFixedSixteenActionCaptionsAndExplicitRussianAccessiblePanel",
+      "testEmptyAndOneHundredTwentyEightBoundsDeletionAndOriginalSlotExclusion",
+      "testCancelImmediatelyWipesDisplayedOwnedBytesAndChargesNothing",
+      "testActualApplicationAndOriginalSceneNotificationsRevokeAndJoin",
+      "testOriginalWindowRootLossCancelsWithoutRequiringPresenterTopmost",
+      "testHeldPresentationExpiryWipesBeforeActualCompletionAndKeepsLane",
+      "testHeldDismissalExpiryWipesTransferredEntryBeforeTrueDismissalReturn",
+      "testBlockedKDFBackgroundRevocationRetainsRealWorkerAndChargedAttempt",
+      "testBlockedRecipientKeepsActualWorkerAndRejectsKnownOrUncertainAck",
+      "testThrowingSuccessRecipientRunsOnceAndOnlyOriginalUncertainCanDrain",
+      "testHeldFinalMainCleanupRejectsAckEvenWithWorkersZeroAndCompletedDelivery",
+      "testRetireVisibleInputJoinsBlockedFailureCompletionAndOriginalSlot"
+    ],
+    "registered": false,
+    "compiler": "NOT_COMPILED",
+    "runtime": "NOT_RUN",
+    "scope": "standalone explicit synthetic IO/checkpoint/host/KDF with actual foreground UIKit window/event scenarios; no genuine/installed admission or KDF performance proof",
+    "affectedCoordinatorMethods": 18,
+    "affectedCoordinatorRuntime": "NOT_RUN",
+    "oldMathPrimitivesEnrollmentSuitesRepeated": false
+  },
+  "checksActuallyExecuted": 0,
+  "execution": {
+    "compiler": "NOT_COMPILED",
+    "tests": "NOT_RUN",
+    "installedOS": "NOT_RUN",
+    "projectWritten": false,
+    "gitCommandsExecuted": false,
+    "buildsExecuted": false,
+    "oldSuitesRepeated": false,
+    "appActivated": false,
+    "factoriesActivated": false
+  },
+  "dependencies": {
+    "genuineHost": "NOT_IMPLEMENTED",
+    "genuineCheckpointTimeAuthority": "NOT_IMPLEMENTED",
+    "recovery": "NOT_IMPLEMENTED",
+    "privateGateCaller": "NOT_IMPLEMENTED",
+    "parentGateAdmission": false
+  },
+  "ownerPause": "Finish current checkpoint then PAUSE; no next-stage programming"
+}
