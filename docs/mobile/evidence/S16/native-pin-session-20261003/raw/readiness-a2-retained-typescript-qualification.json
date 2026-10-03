@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "kind": "retained-typescript-input-qualification",
+  "qualifiedAt": "2026-10-03T13:34:53.041Z",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "binding": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "originalFrozenSource": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "originalReceipt": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\result.json",
+    "sha256": "786a6ec19f3d40e3e8333970bc6efe1c461e24025587d0e2e31bd8d6f8dc20e7"
+  },
+  "originalSourceFiles": 1778,
+  "currentCapturedSourceFiles": 1780,
+  "recordedRepositoryHead": "f14a6b1450016a4e0abed00d8a7f26a723aabe06",
+  "recordedLastCommittedAppSource": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+  "originalDirtySourceFiles": [
+    {
+      "path": "src/child/childProtectedState.ts",
+      "beforeSha256": "4446d7e2833ecd0648fc3e80cb940c0a31521901d87e399b93f9f9aafcb8e78d",
+      "afterSha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5"
+    },
+    {
+      "path": "src/child/parentPinEnrollment.ts",
+      "beforeSha256": null,
+      "afterSha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991"
+    },
+    {
+      "path": "src/child/parentPinEnrollment.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "26781fc0048b12fa674796356354bc9de3bba6a286ac98581eddf11708ae3bd7"
+    }
+  ],
+  "originalStartedAt": "2026-10-03T11:13:49.454Z",
+  "originalFinishedAt": "2026-10-03T11:14:15.878Z",
+  "unchangedCompilerInputCount": 1451,
+  "allTsConfigLockToolsUnchanged": true,
+  "originalPass": true,
+  "typecheckExecutedAtCurrentSource": false,
+  "typecheckChecksActuallyExecuted": 0,
+  "scope": "RETAINED_F2_TSC_INPUT_QUALIFICATION_ONLY_NOT_FRESH_FULL_1780_TSC"
+}

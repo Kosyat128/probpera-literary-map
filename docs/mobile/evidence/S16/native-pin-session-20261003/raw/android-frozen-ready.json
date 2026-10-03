@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_SOURCE_CANDIDATE_A2_NOT_RUN",
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "0783cc63b2426bc6be4f6bccb74b171fd3f16ac5b0d6316a2bfd8cd057d5cb27"
+  },
+  "sourceSha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+  "driverSha256": "211472613d2dd79c18366f247966fc95455d6edad8dd79bd892a0ae736565ca9",
+  "ownedProjectPaths": 1,
+  "hostJvmDriver": "B_ONLY_39_SYNTHETIC_CASES_NOT_RUN",
+  "outsideInsertion": "EXACT_470c_BEFORE_BYTES_VERIFIED",
+  "a1": "PRESERVED_IMMUTABLE_NOT_RUN",
+  "projectEdits": 0,
+  "executions": 0,
+  "genuineProvider": "NOT_IMPLEMENTED",
+  "actualSdkFactories": "NULL",
+  "review": "INDEPENDENT_FROZEN_SOURCE_REVIEW_PENDING"
+}

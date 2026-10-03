@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "scope": "EXACT_METADATA_NO_CLASS_BINARIES_FULL_SOURCE_ARRAYS_OLD_ARCHIVES_OR_BUILD_DUPLICATION",
+  "proofs": [
+    {
+      "id": "source-checkpoint",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-session.json",
+      "sha256": "512117cfc729bcb90d64574d2a329d2b4bd93839b3806cc5d5fb3a10059cddab",
+      "bytes": 276029,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "previous-codec-checkpoint",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-codec.json",
+      "sha256": "2da7d6fd98a95c9f499437bb4a3fd675afa02fe958a2a4a05b5c53d648a0ac2f",
+      "bytes": 275497,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "two-source-integration-input",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-session-source-input.final.json",
+      "sha256": "ef92f5049f5d11a135c1df5ae3b0f3e48ed8348754e0d7639a29add6576b3299",
+      "bytes": 3809,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "jvm-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\before.json",
+      "sha256": "994084bc84608324c4027ced5e87c5b3a91c75cfe9e959649b180cf7764a9bff",
+      "bytes": 330005,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "jvm-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\after.json",
+      "sha256": "33ca08bbd6a42219cc43e47d298c08a2dd68130b288c70f7be373ed5a38f93e3",
+      "bytes": 330001,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-pin-typecheck",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\result.json",
+      "sha256": "786a6ec19f3d40e3e8333970bc6efe1c461e24025587d0e2e31bd8d6f8dc20e7",
+      "bytes": 273895,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "preparation-android",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-1ae7ea27-74e4-4aac-a716-7e850abc0205\\preparation.json",
+      "sha256": "4f2348f17755b05bf49203a3f0f7285cad84d49f2d0d81fdfcbfc21791b6e3f6",
+      "bytes": 303133,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "android-binary-receipt",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-1ae7ea27-74e4-4aac-a716-7e850abc0205\\binary.json",
+      "sha256": "314ff714130ace5f348e0ba643a5ac2c020626d235ad432165ba42a0de7826fe",
+      "bytes": 197981,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "preparation-pwa",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6\\preparation.json",
+      "sha256": "ce7719eb0d9ac01af83afbd0ebbc2afc1c39b6723f561b9a9ff26a222bda8139",
+      "bytes": 289054,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "preparation-ios-bundle",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc\\preparation.json",
+      "sha256": "a7d6730e103552a5defd699aba39366c7ae5e6e4e7d10417c9505ca6be7d15eb",
+      "bytes": 289244,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "source-delta-export",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\export-attempt-50401fc9-0463-4d8e-a94d-0fcd0e692aa2\\source-export.json",
+      "sha256": "d7947a5a6f6822b516401f7f7d9f8b6ba76cfa8c4ff3596321aa5fa20f3eff96",
+      "bytes": 63601,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "source-delta-import",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-pin-delta-import-a2\\import-attempt-229f2384-d23a-48d5-867f-f91592771f81\\result.json",
+      "sha256": "ae9c092b4f4e375c43424c8b10d2a682815cc04fdbbfaf526b388940b333d701",
+      "bytes": 81023,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "source-delta-graph",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\export-attempt-50401fc9-0463-4d8e-a94d-0fcd0e692aa2\\source-graph.json",
+      "sha256": "5cc8a082bde633d535b1082f08168024e9046591c8ffae89c9423dac7e9d3c0b",
+      "bytes": 39294,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "source-delta-raw-manifest",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\export-attempt-50401fc9-0463-4d8e-a94d-0fcd0e692aa2\\source-delta-manifest.json",
+      "sha256": "7ae7c206c6d07c5c65e5496e4c76b96c46f6e1088cbfd644c8366ff2ea6c8bab",
+      "bytes": 9997,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    }
+  ]
+}

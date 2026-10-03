@@ -1,0 +1,53 @@
+
+/planet/fonts/editorial/onest-cyrillic-ext-variable.woff2 referenced in /planet/fonts/editorial/onest-cyrillic-ext-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/onest-cyrillic-variable.woff2 referenced in /planet/fonts/editorial/onest-cyrillic-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/onest-latin-ext-variable.woff2 referenced in /planet/fonts/editorial/onest-latin-ext-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/onest-latin-variable.woff2 referenced in /planet/fonts/editorial/onest-latin-variable.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-cyrillic-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-sans-3-latin-400-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-cyrillic-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-sans-3-latin-600-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-cyrillic-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-sans-3-latin-700-normal.woff2 referenced in /planet/fonts/editorial/source-sans-3-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-latin-400-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-400-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-400-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-latin-400-italic.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-400-italic.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-latin-600-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-600-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-cyrillic-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/fonts/editorial/source-serif-4-latin-700-normal.woff2 referenced in /planet/fonts/editorial/source-serif-4-latin-700-normal.woff2 didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/brand/library-archive-background-v1.webp referenced in /planet/brand/library-archive-background-v1.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/brand/library-archive-background-v1.avif referenced in /planet/brand/library-archive-background-v1.avif didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/brand/library-archive-background-mobile-v1.webp referenced in /planet/brand/library-archive-background-mobile-v1.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/brand/library-archive-background-mobile-v1.avif referenced in /planet/brand/library-archive-background-mobile-v1.avif didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/brand/atlas-side-brushes.webp referenced in /planet/brand/atlas-side-brushes.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/planet/brand/atlas-side-brushes-mobile.webp referenced in /planet/brand/atlas-side-brushes-mobile.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

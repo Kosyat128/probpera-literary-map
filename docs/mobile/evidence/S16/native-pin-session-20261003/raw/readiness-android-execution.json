@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-channel-check-execution",
+  "binding": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "platform": "android",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\release-readiness.mjs",
+    "--evidence",
+    ".tmp/mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321/readiness-input-android.json",
+    "--report",
+    ".tmp/mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321/readiness-android.json"
+  ],
+  "startedAt": "2026-10-03T13:47:16.628Z",
+  "finishedAt": "2026-10-03T13:47:20.032Z",
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "actualSelection": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321\\readiness-input-android.json",
+    "sha256": "f5975aec0e03e94e88fdc2188f3682e6c3459115ffcd170f4676e33656b9362b",
+    "bytes": 19359
+  },
+  "currentPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-1ae7ea27-74e4-4aac-a716-7e850abc0205\\preparation.json",
+    "sha256": "4f2348f17755b05bf49203a3f0f7285cad84d49f2d0d81fdfcbfc21791b6e3f6"
+  },
+  "preparationExecution": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-android-00482e17-7bbe-4716-bc74-00dc8335ebd8\\execution.json",
+    "sha256": "02ae442cd297ea40d72772b6f98373bd11afc279b5bf1b190c59f2f4b7c9b570"
+  },
+  "currentProtection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-pin-session.json",
+    "sha256": "65bdcb7cc38960fdffde1678423facd304a1ad8b97353849269019b81207c1b4",
+    "bytes": 1415
+  },
+  "retainedTypeScriptQualification": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321\\retained-typescript-qualification.json",
+    "sha256": "9b3598ca2d7ba7908ea496ef14bcc3471c3b8aa74de79dc17699d1aceb7c2306",
+    "bytes": 2128
+  },
+  "executionReason": "ONE_CORRECTED_INPUT_CALL_AFTER_PRESERVED_GATE_FILE_SIZE_FAILURE",
+  "priorAndroidFailedAttempt": {
+    "status": "FAIL_PRESERVED_ATTEMPT",
+    "platform": "android",
+    "checkerCalls": 1,
+    "failure": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\failure.json",
+      "sha256": "17af0f703b05666bdccaac2789f9492835390940016fdea30aa8faf9d03023fd",
+      "bytes": 297
+    },
+    "execution": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\android.execution.json",
+      "sha256": "10874c800c52fafdfb420e5998a5f1c1366f0b5e3b9e5f7ad68d261327ea229b",
+      "bytes": 2837
+    },
+    "report": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\readiness-android.json",
+      "sha256": "358eb778a0a9e6b1633be1759556f72221fdc2a927031a822c37f28f15ecbf14",
+      "bytes": 305572
+    },
+    "selection": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\readiness-input-android.json",
+      "sha256": "3ea7bb0b82287d2dd84a35fe12b8357efeb941ec975502f4847dfeb08eafe4f7",
+      "bytes": 19783
+    },
+    "stdout": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\android.stdout.txt",
+      "sha256": "eb4e02f8591b1e870f9e23b3171e090ecd5cfa901a1010ee3e5c345bcf01ef50",
+      "bytes": 1396
+    },
+    "stderr": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\android.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "reason": "69639405-byte APK exceeds the unchanged 32MiB gate-proof limit; independently accepted artifactPath has a 512MiB limit."
+  },
+  "protectedHashScansActuallyExecuted": 0,
+  "typechecksActuallyExecuted": 0,
+  "installedRuntime": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "genuineProvider": "NOT_IMPLEMENTED",
+  "releaseReady": false
+}

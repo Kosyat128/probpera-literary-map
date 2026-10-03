@@ -1,0 +1,8 @@
+{
+  "status": "FAIL_PRESERVED_ATTEMPT",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "checksActuallyExecuted": 0,
+  "finishedAt": "2026-10-03T13:20:59.772Z",
+  "message": "SAFE_FIXED_PROTECTED_BASELINE_ROW_REQUIRED",
+  "releaseReady": false
+}

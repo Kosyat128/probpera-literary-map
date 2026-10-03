@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 1,
+  "attemptId": "7f80fe70-1622-4882-8d31-b893ec74d462",
+  "finishedAt": "2026-10-03T12:51:22.090Z",
+  "status": "PASS_PURE_JVM_SYNTHETIC_PIN_SESSION_MECHANICS",
+  "checks": {
+    "preflight": "PASS",
+    "versions": "PASS",
+    "compilation": "PASS",
+    "driver": "PASS",
+    "marker": "PASS",
+    "postflight": "PASS",
+    "compiledBytesPreserved": "PASS"
+  },
+  "scope": {
+    "validation": "PURE_JVM_SYNTHETIC_PRIVATE_PIN_SESSION_MECHANICS_ONLY",
+    "newInstrumentation": "NOT_RUN",
+    "androidBuild": "NOT_RUN",
+    "installedAndroid": "NOT_RUN",
+    "vaultConstruction": "NOT_RUN",
+    "androidStorage": "NOT_RUN",
+    "nativeAuthority": "NOT_RUN",
+    "providerActivation": "NONE",
+    "appRegistration": "NONE",
+    "admission": "NONE",
+    "releaseAcceptance": "NONE"
+  },
+  "driverCount": 39,
+  "assertionCount": 2598,
+  "expectedSourceCommit": "245c86700e6acc01e8723f8656104c2371e03b4c",
+  "allowedHead": "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+  "before": {
+    "path": "before.json",
+    "sha256": "994084bc84608324c4027ced5e87c5b3a91c75cfe9e959649b180cf7764a9bff",
+    "size": 330005
+  },
+  "after": {
+    "path": "after.json",
+    "sha256": "33ca08bbd6a42219cc43e47d298c08a2dd68130b288c70f7be373ed5a38f93e3",
+    "size": 330001
+  },
+  "commands": [
+    {
+      "label": "before-git-root",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:16.775Z",
+      "finishedAt": "2026-10-03T12:51:16.837Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "01-before-git-root.stdout.bin",
+        "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+        "size": 71
+      },
+      "stderr": {
+        "path": "01-before-git-root.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-head",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:16.838Z",
+      "finishedAt": "2026-10-03T12:51:16.895Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "02-before-head.stdout.bin",
+        "sha256": "3b82c71db988fd2190ee490bced377f67771c6796bb8ae59aae1b27acf137d4f",
+        "size": 41
+      },
+      "stderr": {
+        "path": "02-before-head.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-source-commit",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "log",
+        "-1",
+        "--format=%H",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:16.896Z",
+      "finishedAt": "2026-10-03T12:51:16.958Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "03-before-source-commit.stdout.bin",
+        "sha256": "cb6c3810089877a8215c84dc36aa8af8dddd4355050639bede3ae768e5d9fc96",
+        "size": 41
+      },
+      "stderr": {
+        "path": "03-before-source-commit.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-status",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:16.959Z",
+      "finishedAt": "2026-10-03T12:51:17.338Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "04-before-status.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "04-before-status.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-source-status",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:17.339Z",
+      "finishedAt": "2026-10-03T12:51:17.439Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "05-before-source-status.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "05-before-source-status.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-source-paths",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "ls-files",
+        "-z",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:17.440Z",
+      "finishedAt": "2026-10-03T12:51:17.519Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "06-before-source-paths.stdout.bin",
+        "sha256": "4720cbf10899b508663dd835173aa47242f9567aaf0deeac98c875dcb1b1ec07",
+        "size": 70756
+      },
+      "stderr": {
+        "path": "06-before-source-paths.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "git-version",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--version"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:18.467Z",
+      "finishedAt": "2026-10-03T12:51:18.527Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "07-git-version.stdout.bin",
+        "sha256": "89afc1eb914736d10aa73f8c5002e779dbde9d247c5e17cdbcd229ce597a9719",
+        "size": 29
+      },
+      "stderr": {
+        "path": "07-git-version.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "javac-version",
+      "executable": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "args": [
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\tmp",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\home",
+        "-version"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:18.528Z",
+      "finishedAt": "2026-10-03T12:51:18.741Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "08-javac-version.stdout.bin",
+        "sha256": "1e2362c50d175bcb27f536900509d73d43aec73358800f197e8d94ae0ec2a24b",
+        "size": 17
+      },
+      "stderr": {
+        "path": "08-javac-version.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "java-version",
+      "executable": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\tmp",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\home",
+        "-version"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:18.742Z",
+      "finishedAt": "2026-10-03T12:51:18.832Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "09-java-version.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "09-java-version.stderr.bin",
+        "sha256": "c09b3f6e7993628681d0f0e0fdfa12ccbfef6d7798ad260ec13807486db8b267",
+        "size": 208
+      }
+    },
+    {
+      "label": "javac",
+      "executable": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+      "args": [
+        "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\tmp",
+        "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\home",
+        "-encoding",
+        "UTF-8",
+        "--release",
+        "17",
+        "-proc:none",
+        "-sourcepath",
+        "",
+        "-cp",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "-d",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\classes",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-android-a2\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildVault.java",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-android-a2\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildNativePinSessionsJvmDriver.java"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 120000,
+      "startedAt": "2026-10-03T12:51:18.833Z",
+      "finishedAt": "2026-10-03T12:51:20.068Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "10-javac.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "10-javac.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "java-driver",
+      "executable": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+      "args": [
+        "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\tmp",
+        "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\home",
+        "-cp",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462\\classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar",
+        "ru.probpera.literaryplanet.PlanetChildNativePinSessionsJvmDriver"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:20.159Z",
+      "finishedAt": "2026-10-03T12:51:20.502Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "11-java-driver.stdout.bin",
+        "sha256": "15c57ea3dfffad02335c4b441209bf5907cdf3e8114a06106114fa331daf01c9",
+        "size": 2246
+      },
+      "stderr": {
+        "path": "11-java-driver.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-git-root",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:20.529Z",
+      "finishedAt": "2026-10-03T12:51:20.584Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "12-after-git-root.stdout.bin",
+        "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+        "size": 71
+      },
+      "stderr": {
+        "path": "12-after-git-root.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-head",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:20.585Z",
+      "finishedAt": "2026-10-03T12:51:20.642Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "13-after-head.stdout.bin",
+        "sha256": "3b82c71db988fd2190ee490bced377f67771c6796bb8ae59aae1b27acf137d4f",
+        "size": 41
+      },
+      "stderr": {
+        "path": "13-after-head.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-source-commit",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "log",
+        "-1",
+        "--format=%H",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:20.643Z",
+      "finishedAt": "2026-10-03T12:51:20.703Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "14-after-source-commit.stdout.bin",
+        "sha256": "cb6c3810089877a8215c84dc36aa8af8dddd4355050639bede3ae768e5d9fc96",
+        "size": 41
+      },
+      "stderr": {
+        "path": "14-after-source-commit.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-status",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:20.703Z",
+      "finishedAt": "2026-10-03T12:51:21.041Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "15-after-status.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "15-after-status.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-source-status",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:21.041Z",
+      "finishedAt": "2026-10-03T12:51:21.138Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "16-after-source-status.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "16-after-source-status.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-source-paths",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "ls-files",
+        "-z",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-runner-a1\\attempt-7f80fe70-1622-4882-8d31-b893ec74d462",
+      "shell": false,
+      "timeoutMs": 60000,
+      "startedAt": "2026-10-03T12:51:21.139Z",
+      "finishedAt": "2026-10-03T12:51:21.216Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "17-after-source-paths.stdout.bin",
+        "sha256": "4720cbf10899b508663dd835173aa47242f9567aaf0deeac98c875dcb1b1ec07",
+        "size": 70756
+      },
+      "stderr": {
+        "path": "17-after-source-paths.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    }
+  ],
+  "failures": [],
+  "limitations": [
+    "No installed Android/instrumentation/storage/lifecycle/native authority/provider/admission claim.",
+    "No source/project/baseline/global environment writes; only this new B attempt is written.",
+    "Raw outputs and failed attempts are retained; this runner does not overwrite or delete prior attempts."
+  ]
+}

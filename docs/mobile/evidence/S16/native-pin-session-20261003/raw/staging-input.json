@@ -1,0 +1,253 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-session-final-report-input",
+  "finalized": true,
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "previousReport": "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+  "sourceCheckpoint": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/code-checkpoint-native-pin-session.json",
+    "sha256": "512117cfc729bcb90d64574d2a329d2b4bd93839b3806cc5d5fb3a10059cddab"
+  },
+  "previousCheckpoint": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/code-checkpoint-native-pin-codec.json",
+    "sha256": "2da7d6fd98a95c9f499437bb4a3fd675afa02fe958a2a4a05b5c53d648a0ac2f"
+  },
+  "reviews": {
+    "android": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-native-pin-session-android-a2-review.json",
+      "sha256": "dad86e68eb377889df5cdafbf28a4750913fe0bb7916a4dc8ab17af4980d7bc7"
+    },
+    "swift": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-native-pin-session-swift-a2-review.json",
+      "sha256": "268d1933502157316acceaccba7018a348ee63d6860101137d8a9b26fa0070c1"
+    }
+  },
+  "manifests": {
+    "android": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-session-android-a2/manifest.json",
+      "sha256": "0783cc63b2426bc6be4f6bccb74b171fd3f16ac5b0d6316a2bfd8cd057d5cb27"
+    },
+    "swift": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-session-swift-a2/manifest.json",
+      "sha256": "30ca55f758ee7f6f1a5564069bedd6c75d2f18f07b94b88be0421c58d1370ea3"
+    }
+  },
+  "jvm": {
+    "result": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-session-runner-a1/attempt-7f80fe70-1622-4882-8d31-b893ec74d462/result.json",
+      "sha256": "dca06411dd4f279502c70f830546e1093dc59398f1c660aa72bb8c956bd52733"
+    }
+  },
+  "retainedTypeScript": {
+    "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e/result.json",
+    "sha256": "786a6ec19f3d40e3e8333970bc6efe1c461e24025587d0e2e31bd8d6f8dc20e7"
+  },
+  "currentPreparations": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/native-pin-final-preparations.json",
+    "sha256": "287c71b4bdf86c09c31abb8a446ae063d09bbc2853790053f918ab5f0be2f9e5"
+  },
+  "preparations": {
+    "android": {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/mobile-release-android-1ae7ea27-74e4-4aac-a716-7e850abc0205/preparation.json",
+      "sha256": "4f2348f17755b05bf49203a3f0f7285cad84d49f2d0d81fdfcbfc21791b6e3f6"
+    },
+    "pwa": {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/preparation.json",
+      "sha256": "ce7719eb0d9ac01af83afbd0ebbc2afc1c39b6723f561b9a9ff26a222bda8139"
+    },
+    "ios-bundle": {
+      "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/.tmp/mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc/preparation.json",
+      "sha256": "a7d6730e103552a5defd699aba39366c7ae5e6e4e7d10417c9505ca6be7d15eb"
+    }
+  },
+  "sourceDelta": {
+    "export": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\export-attempt-50401fc9-0463-4d8e-a94d-0fcd0e692aa2\\source-export.json",
+      "sha256": "d7947a5a6f6822b516401f7f7d9f8b6ba76cfa8c4ff3596321aa5fa20f3eff96"
+    },
+    "import": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-pin-delta-import-a2\\import-attempt-229f2384-d23a-48d5-867f-f91592771f81\\result.json",
+      "sha256": "ae9c092b4f4e375c43424c8b10d2a682815cc04fdbbfaf526b388940b333d701"
+    }
+  },
+  "readiness": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\current-native-pin-session-channel-checks.json",
+    "sha256": "677fbc91b4ac0472cc65297460b9710c6461c4c4afdf86b17639cb981ad2c325"
+  },
+  "extraProofs": [
+    {
+      "id": "current-runbook",
+      "ref": {
+        "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/NATIVE_PIN_SESSION_RUNBOOK.final.md",
+        "sha256": "e5fc352c92feb968a1b93f75fbe0e5ab59c3ce0b265970336a87eb53fe35e9cf"
+      }
+    },
+    {
+      "id": "readiness-helper-a1-failure",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-dad9010f-8e77-4ac3-a193-d32974df193c\\failure.json",
+        "sha256": "113ca59af47c6c6b99a9fbfd4dc6b0bc0ec4eb8cf4f2bab9f8c5607a44e8ca66"
+      }
+    },
+    {
+      "id": "readiness-helper-a2-failure",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\failure.json",
+        "sha256": "17af0f703b05666bdccaac2789f9492835390940016fdea30aa8faf9d03023fd"
+      }
+    },
+    {
+      "id": "readiness-android-a2-failed-report",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\readiness-android.json",
+        "sha256": "358eb778a0a9e6b1633be1759556f72221fdc2a927031a822c37f28f15ecbf14"
+      }
+    },
+    {
+      "id": "readiness-android-a2-failed-input",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\readiness-input-android.json",
+        "sha256": "3ea7bb0b82287d2dd84a35fe12b8357efeb941ec975502f4847dfeb08eafe4f7"
+      }
+    },
+    {
+      "id": "readiness-android-a2-failed-execution",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\android.execution.json",
+        "sha256": "10874c800c52fafdfb420e5998a5f1c1366f0b5e3b9e5f7ad68d261327ea229b"
+      }
+    },
+    {
+      "id": "readiness-android-a2-failed-stdout",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\android.stdout.txt",
+        "sha256": "eb4e02f8591b1e870f9e23b3171e090ecd5cfa901a1010ee3e5c345bcf01ef50"
+      }
+    },
+    {
+      "id": "readiness-android-a2-failed-stderr",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\android.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "readiness-a2-completed-content-preservation",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\protected-content.json",
+        "sha256": "65bdcb7cc38960fdffde1678423facd304a1ad8b97353849269019b81207c1b4"
+      }
+    },
+    {
+      "id": "readiness-a2-retained-typescript-qualification",
+      "ref": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-53bdd77a-813c-49ec-bbf7-0d7df89f9ea0\\retained-typescript-qualification.json",
+        "sha256": "9b3598ca2d7ba7908ea496ef14bcc3471c3b8aa74de79dc17699d1aceb7c2306"
+      }
+    },
+    {
+      "id": "source-delta-import-a1-failure",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\failure.json",
+        "sha256": "3c775eb4d3c86df156cff7f042a2977145a364d7702265053bd7dd313cbb8e00"
+      }
+    },
+    {
+      "id": "source-delta-import-a1-source-ref-stdout",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\commands\\source-ref.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "id": "source-delta-import-a1-source-ref-stderr",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\commands\\source-ref.stderr.txt",
+        "sha256": "98d27ea714f9d0a960f90a53b19917fc4655313e7b247023e0f90358d1adc9f8"
+      }
+    },
+    {
+      "id": "delta-source-peer-review",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-source-delta-review.json",
+        "sha256": "6ae294fd0f2cb49ca3be98699b21b24429bff9209c4892e004d5aa837053d0c9"
+      }
+    },
+    {
+      "id": "delta-source-svg-peer-review",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-source-delta-svg-review.json",
+        "sha256": "6de6409399924cbe6659347e867279c3135cf51eae43db6ee841cf8b633cd179"
+      }
+    },
+    {
+      "id": "delivery-source-peer-review",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-session-delivery-source-review.json",
+        "sha256": "a390750f6d7bec84c8de4e982e2984f6b81c1f788ceeb6f3be2a9dcfcc2675cc"
+      }
+    },
+    {
+      "id": "delta-import-a2-source-peer-review",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-delta-import-a2-review.json",
+        "sha256": "5702ea97bb0e43947c54dff60f2ea55fa9d0f0735089f5a751fe3b7922e83159"
+      }
+    },
+    {
+      "id": "stager-argument-invocation-failure",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-session-stager-invocation-failure-a1.json",
+        "sha256": "c62bb6bd1379d201fa6ed5b44724d45a3423d834892aaca879948844570555a7"
+      }
+    },
+    {
+      "id": "stager-a2-partial-failure",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-session-final-staged-f0599436-8202-42ad-9de4-dc2daa734f21\\failure.json",
+        "sha256": "ecc2f6963a9851976aacec3cd19eba47aaca033103d47a8623fce0e2aac7ed80"
+      }
+    },
+    {
+      "id": "stager-a2-selected-input",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-session-final-report-input-a5.final.json",
+        "sha256": "36f73264ee746322ac299d33dfe23bd522396b0319e093519d212894c5a532c2"
+      }
+    }
+  ],
+  "pendingInputs": [],
+  "preservedFailedScopes": [
+    {
+      "id": "readiness-helper-a1-failure",
+      "status": "FAIL_PRESERVED_ATTEMPT",
+      "productChecksActuallyExecuted": 0,
+      "reason": "public baseline .env.example hash-only allowlist"
+    },
+    {
+      "id": "readiness-helper-a2-failure",
+      "status": "FAIL_PRESERVED_ATTEMPT",
+      "productChecksActuallyExecuted": 1,
+      "androidReadiness": "FAIL",
+      "completedProtection": "RETAINED_6820_SCOPE",
+      "reason": "main APK exceeds32MiB gate-proof reader; independent artifact hash bound512MiB remains separate"
+    },
+    {
+      "id": "source-delta-import-a1-failure",
+      "status": "FAIL_PRESERVED_ATTEMPT",
+      "errorCode": "GIT_COMMAND_FAILED",
+      "failedStep": "source-ref",
+      "exitCode": 128,
+      "reason": "Windows long private ref path",
+      "sourceExport": "PASS_SEPARATE"
+    },
+    {
+      "id": "stager-a2-partial-failure",
+      "status": "ACTUAL_STAGING_FAIL_RETAINED",
+      "productChecksActuallyExecuted": 0,
+      "checkoutWrites": false,
+      "outerRawCaptured": false,
+      "reason": "strict guard received existing task object rather than Boolean; partial B-only staged files retained"
+    }
+  ]
+}

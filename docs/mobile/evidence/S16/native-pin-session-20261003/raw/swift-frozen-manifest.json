@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_PRIVATE_NATIVE_PIN_SESSION_MECHANICS_A2_NOT_COMPILED_NOT_RUN",
+  "stage": "S16",
+  "baseline": {
+    "reportCommit": "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+    "sourceCommit": "245c86700e6acc01e8723f8656104c2371e03b4c",
+    "projectRoot": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+    "sourceRowsExpected": 1780
+  },
+  "ownedProjectPaths": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sourceBeforeSha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "sha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1",
+      "size": 71177
+    }
+  ],
+  "originalBeforeBackup": {
+    "path": "before/apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+    "size": 39175,
+    "scope": "EXACT_PROJECT_BEFORE_BYTES"
+  },
+  "syntheticXCTestFragment": {
+    "path": "tests/NativePinSessionSyntheticTests.swift.inc",
+    "sha256": "75f8a4cc0083ced08b5a105694aff246a90f2d4a2b538283ccbeebf04cf97fd4",
+    "size": 11449,
+    "plannedMethods": 8,
+    "scope": "B_ONLY_UNREGISTERED_SAME_FILE_FRAGMENT_FOR_FUTURE_OWNED_SOURCE_COPY",
+    "compile": "NOT_RUN",
+    "runtime": "NOT_RUN",
+    "futureUse": "Append to an owned COPY of this exact source for a separate reviewed Swift/XCTest action; never register or append in the App/project. Private fileprivate core remains unavailable from any production flag."
+  },
+  "specSources": [
+    {
+      "path": "../next-native-pin-provider-plan/PLAN.md",
+      "sha256": "145d7e190f0843c23ead5b1a65bb80b47400413694b5bb786c56476c037a4207"
+    },
+    {
+      "path": "../next-parent-pin-enrollment-a2/src/child/parentPinEnrollment.ts",
+      "sha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991"
+    },
+    {
+      "path": "../next-parent-pin-enrollment-a2/src/child/childProtectedState.ts",
+      "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5"
+    },
+    {
+      "path": "../next-native-pin-session-android-a2/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1"
+    }
+  ],
+  "scope": {
+    "sourceOutsideAdditions": "EXACT_03B84_BEFORE_TEXT_RECONSTRUCTED_AFTER_REMOVING_ONLY_METADATA_ACCESSOR_FIXED_IO_BLOCK_APPENDED_PRIVATE_CORE_RAW_BACKUP_SAME_SHA",
+    "existingCodecAndCandidateProtectedIO": "UNCHANGED_EXISTING_LINES_STRICT_READ_ONLY_METADATA_ACCESSOR_REUSES_CLOSED_CANONICAL_CLOCK_LEXER",
+    "ownedIdentity": "CONSTRUCTOR_OWNER_ORIGINAL_INSPECTION_SESSION_POLICY_RETAINED_EXPECTED_AND_PENDING_REPLY_IDENTITY_PLUS_EXACT_TERMINAL_REPLY",
+    "durableLockAdapter": "FIXED_PRIVATE_EXISTING_LOCKED_READ_EXACT_WRITE_EXACT_ADAPTER_STRONGLY_RETAINS_VAULT_NO_PUBLIC_GENERAL_WRITER",
+    "fullRecord": "BOUNDED_INDEPENDENT_COPIES_EXACT_CANONICAL_EXPECTED_NEXT_BYTES_DIGEST_REVISIONS_PIN_ONLY_PLUS_ONE_EXACT_CONFIGURED_ITERATIONS",
+    "resetLogicalMs": "BEGIN_CAPTURED_LOGICAL_MS_REUSED_FOR_ATTEMPT_RESET_LATER_REAL_CURRENT_SAMPLES_GUARD_PUBLICATION_AND_READBACK",
+    "time": "SAME_EPOCH_HEX64_HOST_GENERATION_BOOT_UUID_SAFE_INTEGER_CLOCK_AND_ONE_ORIGINAL_EXCLUSIVE_ABSOLUTE_DEADLINE_1_TO_60000",
+    "callbackBytes": "DISPOSABLE_DEEP_DATA_COPIES_EQUALITY_DIGEST_AFTER_CALLBACK_AND_SESSION_MUTATION_FENCES_BEFORE_EVERY_PUBLICATION_BOUNDARY_EXACT_READBACK",
+    "mutation": "PRIVATE_ONE_USE_BOUND_ENVELOPE_AROUND_OPAQUE_DEPENDENCY_WITNESS_PLUS_RETAINED_LOCAL_IDENTITY_REPLAY_FENCE_NEVER_GENUINE_AUTHORITY",
+    "recovery": "DISTINCT_GENUINE_NATIVE_SYSTEM_ACCOUNT_AUTHORITY_DEPENDENCY_REQUIRED_FOR_RECOVER_NO_DEFAULT_NO_SELF_BOOLEAN",
+    "cancelRetire": "CANCEL_TERMINAL_BEFORE_CALLBACK_ACTUAL_WORK_AND_TRANSFER_JOIN_RETIRE_FENCE_WHOLE_REQUEST_GENUINE_RETIREMENT_ORIGINAL_TERMINAL_REPLY_STILL_HOLDS_LANE",
+    "capacity": "NO_TIMER_RELEASE_UNKNOWN_OR_LOST_REPLY_CLEANUP_STICKY_SEAL_RETAINS_NATIVE_CAPACITY_IDS_2048_NO_EVICTION",
+    "sealedSecretCleanup": "WIPE_RETAINED_PENDING_REPLY_BYTES_WITHOUT_TRANSFER_RELEASE_EXPECTED_BYTES_ONLY_AFTER_ACTUAL_WORKERS_ZERO_LATE_CALLBACK_COPY_WIPES_ON_RETURN",
+    "productionSessionFactory": "NIL",
+    "productionCheckpointFactory": "NIL_UNCHANGED",
+    "genuineNativeProvider": "NOT_IMPLEMENTED",
+    "appBridgeActivation": "NONE",
+    "newPermanentOSFixtureOrRegistration": "NONE"
+  },
+  "checks": {
+    "sourceReview": "INDEPENDENT_FINAL_EXACT_ACK_PENDING",
+    "swiftCompilation": "NOT_RUN",
+    "xctest": "NOT_RUN",
+    "iosBuild": "NOT_RUN",
+    "installedOS": "NOT_RUN",
+    "genuineAuthority": "NOT_IMPLEMENTED",
+    "priorCodecJVM69": "PRIOR_ACTUAL_RECEIPT_RETAINED_NOT_REPEATED",
+    "fixturePlan26": "PRIOR_ACTUAL_RECEIPT_RETAINED_UNCHANGED_DISPATCH_NOT_REPEATED"
+  },
+  "limitations": [
+    "Local private lifecycle state/ownership mechanics only; no native enrollment provider or child admission is activated.",
+    "Genuine nonrollback owner/checkpoint epoch, original-host action/reset scope, authenticated seed provisioning, native input/KDF/calibration, system/account recovery and private bridge/transport adapter remain missing.",
+    "Swift source and the B-only synthetic XCTest fragment have not been compiled or executed; no native iOS or installed-device claim follows.",
+    "Synthetic in-memory IO/clock/witness tests do not implement durable storage, genuine authority, OS lifecycle or publication durability.",
+    "Retirement requires actual callback/transfer settlement without timeout promotion; missing settlement retains capacity.",
+    "Private brands, locally consumed wrappers, opaque fields, Keychain ciphertext or successful structural codec checks cannot authenticate the missing authority."
+  ],
+  "actions": "B-only staging/raw hashes/read-only source checks. No project mutations, Git execution, tests/compiler/build/OS/network/deploy/publish/stage promotion.",
+  "supersedes": {
+    "path": "../next-native-pin-session-swift/apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "status": "PRESERVED_UNFROZEN_REVIEW_DRAFT_NOT_RUN"
+  }
+}

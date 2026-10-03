@@ -1,0 +1,78 @@
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 1376 modules transformed.
+rendering chunks...
+computing gzip size...
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/native.html                                      1.56 kB │ gzip:   0.72 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/.vite/manifest.json                             18.32 kB │ gzip:   2.33 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/editorial-paper-DwbOovh5.webp            37.27 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/brush-orange-stage-B2wkl8IX.webp         46.57 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/brush-paper-split-zfVJ2vHM.webp          62.35 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/brush-violet-stage-WEaHRUQQ.webp         67.86 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/brush-paper-east-Dhu-9hco.webp           68.43 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/brush-paper-corners-ChpKv6VW.webp        75.40 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/countries-B1fL43Dn.geojson              305.05 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/section-prizes-DXUciBB7.webp            349.28 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/knizhulyk-green-v1-DiQNRUnt.png       1,895.60 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BrandHeartIcon-Df3ZTgSK.css               1.02 kB │ gzip:   0.49 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/ArticleBookReader-C3U9oGqS.css            6.31 kB │ gzip:   1.67 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookShelfProgressRail-CdOKAbrW.css       15.68 kB │ gzip:   3.17 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/LiteraryGlobe-BCsZtJ0d.css               17.50 kB │ gzip:   3.06 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/native-DnvjTMPh.css                     736.96 kB │ gzip: 119.02 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/supabase-vendor-l0sNRNKZ.js               0.00 kB │ gzip:   0.02 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BrandPlusIcon-Blp5STgK.js                 0.22 kB │ gzip:   0.20 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/web-CjD5tzPv.js                           0.31 kB │ gzip:   0.24 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/nobelArticles-BI0vjzhd.js                 0.48 kB │ gzip:   0.35 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/web-Clgx5E2o.js                           0.49 kB │ gzip:   0.32 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/web-leznoKmB.js                           0.96 kB │ gzip:   0.46 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/vite-preload-helper-BXl3LOEh.js           1.11 kB │ gzip:   0.65 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/web-Cn83NLQ7.js                           1.27 kB │ gzip:   0.62 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/web-A71kME8S.js                           1.36 kB │ gzip:   0.66 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/localization-BYpkHdxx.js                  1.95 kB │ gzip:   0.68 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/articleSeries-B2xQHYGP.js                 2.64 kB │ gzip:   1.21 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/NobelArchiveStrip-BfZ-ZMtK.js             3.93 kB │ gzip:   1.89 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/countryLocalization-CY1pCjcs.js           3.98 kB │ gzip:   1.60 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/SectionsDirectory-DzxI2nyz.js             5.04 kB │ gzip:   2.35 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/useSubscriptions-CrxS5EV0.js              6.70 kB │ gzip:   2.81 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/bookMentions-3G0KTAeh.js                  6.73 kB │ gzip:   2.84 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/GlobalSearch-DLDXLMxL.js                  8.04 kB │ gzip:   3.02 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/CmsHomepageContent-vUInqXbg.js            8.31 kB │ gzip:   2.43 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/globalSearchRuntime-Dcn_C24Z.js           9.19 kB │ gzip:   3.28 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/LiteraryCalendar-DoBfX-fY.js              9.58 kB │ gzip:   3.64 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookShelfSceneCanvas-EIfmvbnV.js         10.04 kB │ gzip:   3.73 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookShelfSceneCanvas-CGXYNiO-.js         10.04 kB │ gzip:   3.73 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/ArticleLibrarySection-BhKQ1hXL.js        11.04 kB │ gzip:   4.42 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/sanitizeArticleHtml-COSTGTYQ.js          12.89 kB │ gzip:   4.28 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BrandHeartIcon-BQ0WuxPv.js               13.28 kB │ gzip:   5.29 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookShelfScene-sDQ7pkI7.js               20.48 kB │ gzip:   7.63 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/bookyModel-bWBFx6SH.js                   21.40 kB │ gzip:   8.98 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/WriterPanel-DVhzfige.js                  30.10 kB │ gzip:   9.39 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/CommunityHub-CrJhrjL6.js                 37.89 kB │ gzip:  11.11 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/completeShelfRenderer-DxZRp7FF.js        57.78 kB │ gzip:  19.94 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookArchiveSection-C81zgwik.js          100.41 kB │ gzip:  30.71 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookArchiveSection-B-VsgUyz.js          100.41 kB │ gzip:  30.71 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/ArticleBookReader-BvEYZqhO.js           141.90 kB │ gzip:  47.61 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/react-vendor-B2HrM0dD.js                146.06 kB │ gzip:  47.22 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/BookShelfProgressRail-Dkgub9xL.js       191.50 kB │ gzip:  60.11 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/ArticleReader-qytvyr4v.js               253.08 kB │ gzip:  78.95 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/LiteraryGlobe-CogDmDwv.js               256.05 kB │ gzip:  90.25 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/writer-portraits-data-ZDd9rYw-.js       500.03 kB │ gzip:  76.33 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/country-data-n-z-B6kBB-fK.js            508.63 kB │ gzip: 105.27 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/catalog-B9LGpveS.js                     607.12 kB │ gzip:  84.01 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/catalog-DSGRt383.js                     769.98 kB │ gzip: 224.86 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/country-data-a-m-C_afZbhK.js            789.51 kB │ gzip: 159.38 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/three-vendor-kObHi1Y2.js              1,100.44 kB │ gzip: 331.84 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/writer-biography-reviews-BMVRO21A.js  1,227.68 kB │ gzip: 393.63 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/native-Denz6aiX.js                    1,554.72 kB │ gzip: 416.89 kB
+.tmp/native-build-3d1fb423-fb47-47e7-aebb-8f7f02deae5a/assets/book-catalog-CUS-317M.js              2,053.99 kB │ gzip: 187.59 kB
+✓ built in 9.02s
+{
+  "output": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\dist-native",
+  "previous": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-previous-221cf523-e35c-47bb-b5df-6ce5be7eeaf4",
+  "buildId": "8d9292e8e90eb49ed59a820ba098f365af04c055e66a3de21bc31263a83ef239",
+  "platform": "android",
+  "channel": "dev",
+  "files": 1406,
+  "releaseReady": false
+}
+

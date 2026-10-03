@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "kind": "protected-content-preservation",
+  "startedAt": "2026-10-03T13:34:53.042Z",
+  "checkedAt": "2026-10-03T13:35:08.603Z",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "binding": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "baselineHead": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+  "baseline": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\baseline.json",
+    "sha256": "ce96f2d569a043cb1aaffd91550e14393a844d4e58622cb80e58ea1745954457"
+  },
+  "checkedCount": 6820,
+  "checkedBytes": 749895319,
+  "changed": [],
+  "missing": [],
+  "changedCount": 0,
+  "missingCount": 0,
+  "pass": true,
+  "scope": "ONE_ACTUAL_CURRENT_RAW_6820_HASH_SCAN_NOT_RELABELED_PRIOR_RESULT",
+  "priorReportRetained": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-transport.json",
+    "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe",
+    "checkedAt": "2026-10-03T05:16:06.233Z"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "binding": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+    "platform": "pwa",
+    "channel": "web-direct",
+    "environment": "local",
+    "artifactSha256": "475f3146826605ce6cff4b889bc4af7a3dcafa1c9dbda897faa856edc82bba45"
+  },
+  "artifactPath": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-bundle/artifact.json",
+  "artifactMetadataPath": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-bundle/artifact.json",
+  "gates": [
+    {
+      "id": "local-tests",
+      "status": "NOT_RUN",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "content-preservation",
+      "status": "PASS",
+      "reason": "One fresh actual current 6820 raw-byte check against original baseline.",
+      "binding": {
+        "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+        "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "pwa",
+        "channel": "web-direct",
+        "environment": "local",
+        "artifactSha256": "475f3146826605ce6cff4b889bc4af7a3dcafa1c9dbda897faa856edc82bba45"
+      },
+      "finishedAt": "2026-10-03T13:35:08.603Z",
+      "files": [
+        {
+          "path": ".tmp/mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321/code-checkpoint.json",
+          "sha256": "512117cfc729bcb90d64574d2a329d2b4bd93839b3806cc5d5fb3a10059cddab"
+        },
+        {
+          "path": ".tmp/mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321/protected-content.json",
+          "sha256": "65bdcb7cc38960fdffde1678423facd304a1ad8b97353849269019b81207c1b4"
+        }
+      ],
+      "facts": {
+        "completed": true,
+        "checkedCount": 6820,
+        "changedCount": 0,
+        "missingCount": 0
+      }
+    },
+    {
+      "id": "ru-en-runtime",
+      "status": "NOT_RUN",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "auth-deletion-local",
+      "status": "NOT_RUN",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "auth-deletion-remote",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "editorial-legal",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "psp-commercial-decision",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "payment-sandbox",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "remote-authorization",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    },
+    {
+      "id": "package-integrity",
+      "status": "PASS",
+      "reason": "Exact new local preparation/artifact evidence only.",
+      "binding": {
+        "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+        "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "pwa",
+        "channel": "web-direct",
+        "environment": "local",
+        "artifactSha256": "475f3146826605ce6cff4b889bc4af7a3dcafa1c9dbda897faa856edc82bba45"
+      },
+      "finishedAt": "2026-10-03T13:03:59.118Z",
+      "files": [
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/preparation.json",
+          "sha256": "ce7719eb0d9ac01af83afbd0ebbc2afc1c39b6723f561b9a9ff26a222bda8139"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-build.stdout.txt",
+          "sha256": "357f8351f2caf9e910a87808a9bb52399493af0b3e98f9cf07d91994a60c6169"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-build.stderr.txt",
+          "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-audit.stdout.txt",
+          "sha256": "aa21290f77be11aac48c915315600a9c1f1e973b4054dddc24771d7b51a0b176"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-artifact.json",
+          "sha256": "475f3146826605ce6cff4b889bc4af7a3dcafa1c9dbda897faa856edc82bba45"
+        },
+        {
+          "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-bundle/artifact.json",
+          "sha256": "475f3146826605ce6cff4b889bc4af7a3dcafa1c9dbda897faa856edc82bba45"
+        }
+      ],
+      "facts": {
+        "completed": true
+      }
+    },
+    {
+      "id": "pwa-install-offline-update",
+      "status": "NOT_RUN",
+      "reason": "Required product/runtime/owner evidence remains unavailable; private inactive native mechanics and local bundles do not supply this gate."
+    }
+  ]
+}

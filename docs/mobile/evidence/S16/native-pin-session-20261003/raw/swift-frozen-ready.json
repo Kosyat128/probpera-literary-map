@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_FOR_ROOT_SOURCE_REVIEW_PRIVATE_CORE_ONLY_NO_EXECUTION",
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "30ca55f758ee7f6f1a5564069bedd6c75d2f18f07b94b88be0421c58d1370ea3"
+  },
+  "source": {
+    "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "sha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1",
+    "size": 71177
+  },
+  "before": {
+    "path": "before/apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+    "size": 39175
+  },
+  "outsideBytesProof": {
+    "path": "outside-bytes.json",
+    "sha256": "7f27c349fac272c71008440d145f616128b3fd1231e536087b2a87de265de764"
+  },
+  "unregisteredBOnlyFragment": {
+    "path": "tests/NativePinSessionSyntheticTests.swift.inc",
+    "sha256": "75f8a4cc0083ced08b5a105694aff246a90f2d4a2b538283ccbeebf04cf97fd4",
+    "size": 11449,
+    "methods": 8,
+    "compiled": "NOT_RUN",
+    "runtime": "NOT_RUN"
+  },
+  "projectMutations": "NONE",
+  "gitExecution": "NONE",
+  "builds": "NOT_RUN",
+  "nativeOS": "NOT_RUN",
+  "genuineAuthority": "NOT_IMPLEMENTED",
+  "productionFactory": "NIL",
+  "activation": "NONE",
+  "peerFinalExactAck": "SEPARATE_RECEIPT_PENDING",
+  "oldDraft": "../next-native-pin-session-swift PRESERVED_NOT_RUN"
+}

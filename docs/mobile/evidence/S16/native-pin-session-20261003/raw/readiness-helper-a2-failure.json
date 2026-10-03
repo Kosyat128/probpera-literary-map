@@ -1,0 +1,8 @@
+{
+  "status": "FAIL_PRESERVED_ATTEMPT",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "checksActuallyExecuted": 1,
+  "finishedAt": "2026-10-03T13:35:12.144Z",
+  "message": "EXPECTED_EXIT2_EXACT_CURRENT_SOURCE_ARTIFACT_AND_UNPROMOTED_GATE_SET_REQUIRED",
+  "releaseReady": false
+}

@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK",
+  "reviewScope": "READ_ONLY_FROZEN_PRIVATE_NATIVE_PIN_SESSION_MECHANICS_AND_UNREGISTERED_B_ONLY_XCTEST_FRAGMENT",
+  "sourceCommit": "245c86700e6acc01e8723f8656104c2371e03b4c",
+  "reportCommit": "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-session-swift-a2/manifest.json",
+    "sha256": "30ca55f758ee7f6f1a5564069bedd6c75d2f18f07b94b88be0421c58d1370ea3",
+    "bytes": 6165,
+    "readySha256": "439330fd55c910b86c5ed4ad93fdca6ef4cf84baa13f0cb753e5a1dc3d36dd6c"
+  },
+  "ownedSource": {
+    "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "beforeSha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+    "beforeBytes": 39175,
+    "sha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1",
+    "bytes": 71177,
+    "currentProjectMatchesBefore": true,
+    "authorizedInsertionSpans": 3,
+    "outsideAuthorizedInsertionSpansByteExact": true,
+    "restoredBeforeSha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+    "insertionSpans": ["pure read-only protected-envelope metadata accessor", "unavailable factory and fixed private IO adapter", "appended fileprivate session core"],
+    "lfAndTerminalLfPreserved": true
+  },
+  "syntheticFragment": {
+    "path": "tests/NativePinSessionSyntheticTests.swift.inc",
+    "sha256": "75f8a4cc0083ced08b5a105694aff246a90f2d4a2b538283ccbeebf04cf97fd4",
+    "bytes": 11449,
+    "authoredMethods": 8,
+    "compilation": "NOT_RUN",
+    "execution": "NOT_RUN",
+    "scope": "UNREGISTERED_B_ONLY_FRAGMENT_FOR_FUTURE_OWNED_SOURCE_COPY",
+    "appOrProjectRegistration": false
+  },
+  "verifiedSourceFacts": [
+    "The native-owned pending reply identity registry and exact terminal reply membership are checked before any transfer mutation; constructor lookalikes cannot release a lane.",
+    "Original owner/inspection/session, immutable policy and retained expected-byte digests are re-fenced after SPI callbacks and throughout exact full-record PIN-only CAS/readback.",
+    "Data counts are checked before independent input/IO copies. Callback Data uses separate owned backing, rejects mutation on return and wipes after actual settlement.",
+    "Fixed private PinVaultIO strongly retains its vault through owned work; the transaction is bounded by that locked IO lifetime. Existing vault/checkpoint IO lines remain unchanged.",
+    "One exclusive native deadline, boot/epoch/host coordinates and continuous logical time remain authenticated SPI prerequisites. Attempt reset uses the original captured begin logical time while later current samples guard publication.",
+    "The private one-use mutation envelope and bounded retained permission identities are local ownership fences; genuine durable permission validation remains the missing authority dependency.",
+    "Cancel and terminal retirement join actual workers and transfers and prevent late cancel work; known original terminal settlement is required before capacity release.",
+    "Sticky unknown outcomes keep sealed identity/capacity. Pending reply bytes wipe without decrementing transfers, and retained expected bytes wipe only when actual workers reach zero.",
+    "The wire ID registry is bounded at 2048 with no eviction; all original source bytes outside the three precisely bounded additions reconstruct the frozen current baseline."
+  ],
+  "productionBoundary": {
+    "actualSDKPinSessions": "NIL",
+    "actualSDKCheckpoint": "NIL_UNCHANGED",
+    "genuineProvider": "NOT_IMPLEMENTED",
+    "nativeInputKdfCalibrationRecoveryHostAdapter": "NOT_SUPPLIED",
+    "swiftCompilation": "NOT_RUN",
+    "xctest": "NOT_RUN",
+    "installedOsAcceptance": "NOT_RUN",
+    "appActivation": false,
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "historicalDraft": "PRESERVED_UNCHANGED_NOT_RUN",
+  "findings": [],
+  "checksExecuted": 0,
+  "checkoutWrites": false,
+  "gitActions": 0,
+  "remoteActions": 0,
+  "verificationMethod": "Direct frozen source/fragment review and independent raw SHA/three-span reconstruction; no Swift compiler, XCTest, SDK, vault or OS execution."
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-local-preparation-execution",
+  "mode": "pwa",
+  "startedAt": "2026-10-03T13:03:31.002Z",
+  "finishedAt": "2026-10-03T13:04:00.323Z",
+  "pass": true,
+  "error": null,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "scripts/mobile/prepare-local-release.mjs",
+    "pwa"
+  ],
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "outcome": {
+    "exitCode": 0,
+    "signal": null,
+    "error": null
+  },
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-session.json",
+    "sha256": "512117cfc729bcb90d64574d2a329d2b4bd93839b3806cc5d5fb3a10059cddab"
+  },
+  "recordedSourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "before": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "repositoryHead": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "after": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "repositoryHead": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "inputsUnchanged": true,
+  "preparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6\\preparation.json",
+    "sha256": "ce7719eb0d9ac01af83afbd0ebbc2afc1c39b6723f561b9a9ff26a222bda8139",
+    "pass": true,
+    "outputs": [
+      {
+        "path": ".tmp/mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6/pwa-artifact.json",
+        "sha256": "475f3146826605ce6cff4b889bc4af7a3dcafa1c9dbda897faa856edc82bba45",
+        "bytes": 500182
+      }
+    ],
+    "binaryReceipt": null
+  },
+  "raw": {
+    "stdout.txt": {
+      "sha256": "3ee5e048d8b8a001e44293818565d27b0ca9db0f93408cee0fe80c4ea9d2b61e",
+      "bytes": 321
+    },
+    "stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "installedRuntime": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "releaseReady": false,
+  "remoteRequests": 0
+}

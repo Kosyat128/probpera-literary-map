@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK",
+  "reviewScope": "READ_ONLY_FROZEN_PRIVATE_NATIVE_PIN_SESSION_MECHANICS_AND_B_ONLY_SYNTHETIC_DRIVER",
+  "sourceCommit": "245c86700e6acc01e8723f8656104c2371e03b4c",
+  "reportCommit": "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-session-android-a2/manifest.json",
+    "sha256": "0783cc63b2426bc6be4f6bccb74b171fd3f16ac5b0d6316a2bfd8cd057d5cb27",
+    "bytes": 6702,
+    "readySha256": "ef67e2c6ffd71d7bb3332069318eef7f290c89d5ce5dc395ddd88cc2483e7005"
+  },
+  "ownedSource": {
+    "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "beforeSha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+    "beforeBytes": 37394,
+    "sha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+    "bytes": 65427,
+    "currentProjectMatchesBefore": true,
+    "outsideSoleInsertionByteExact": true,
+    "restoredBeforeSha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+    "terminalLfPreserved": true
+  },
+  "syntheticDriver": {
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildNativePinSessionsJvmDriver.java",
+    "sha256": "211472613d2dd79c18366f247966fc95455d6edad8dd79bd892a0ae736565ca9",
+    "bytes": 27854,
+    "intendedCases": 39,
+    "execution": "NOT_RUN",
+    "scope": "EXPLICIT_B_ONLY_REFLECTION_AND_SYNTHETIC_DEPENDENCIES_NO_VAULT_CONSTRUCTION",
+    "concurrencyPredicatesReadUnderCoreMonitor": true,
+    "threadsAndLatchWaitsBounded": true
+  },
+  "verifiedSourceFacts": [
+    "Original constructor-owned inspection/session/policy and pending reply identities are checked; exact terminal reply membership is checked before any transfer decrement.",
+    "Canonical full expected/next records, exact digests/revision plus one and PIN-only transition are checked under the existing fixed vault lock adapter; supported epoch/boot/host and one original exclusive native deadline remain genuine SPI dependencies.",
+    "Attempt-reset logical time is the authenticated begin capture; current publication boundaries use later samples and the original deadline.",
+    "Callback byte arrays are separate disposable clones; mutation denies before using results; retained expected/next/publication bytes are re-fenced and disposable buffers wipe after actual callbacks settle.",
+    "The private single-use mutation envelope wraps a dependency witness and explicitly grants no genuine permission; advance precedes publication and divergence seals instead of repairing.",
+    "Cancel latches while actual work remains owned; retirement joins real workers and transfers, prevents new late cancel work, and retains the lane until an original terminal reply has known settlement.",
+    "Unknown work/publication/delivery/retirement seals capacity. Reply byte wiping does not remove pending identities or transfer counts; retained expected bytes wipe only after actual workers reach zero.",
+    "Inspection IDs are bounded at 2048 and never evicted. The existing codec, vault IO, checkpoint factory and every source byte outside the sole insertion are preserved."
+  ],
+  "productionBoundary": {
+    "actualSdkPinSessions": "NULL",
+    "actualSdkCheckpoint": "NULL_UNCHANGED",
+    "genuineProvider": "NOT_IMPLEMENTED",
+    "nativeInputKdfCalibrationRecoveryHostAdapter": "NOT_SUPPLIED",
+    "appActivation": false,
+    "installedOsAcceptance": "NOT_RUN",
+    "stageAccepted": false,
+    "releaseReady": false
+  },
+  "historicalA1": "PRESERVED_IMMUTABLE_NOT_RUN",
+  "findings": [],
+  "checksExecuted": 0,
+  "checkoutWrites": false,
+  "gitActions": 0,
+  "remoteActions": 0,
+  "verificationMethod": "Direct frozen source/driver review and read-only hash/byte-boundary comparison; no compiler, tests, SDK, vault or OS execution."
+}

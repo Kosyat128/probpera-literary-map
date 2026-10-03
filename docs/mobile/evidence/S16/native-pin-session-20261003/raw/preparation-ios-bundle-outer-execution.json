@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-local-preparation-execution",
+  "mode": "ios-bundle",
+  "startedAt": "2026-10-03T13:05:54.756Z",
+  "finishedAt": "2026-10-03T13:06:19.841Z",
+  "pass": true,
+  "error": null,
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "scripts/mobile/prepare-local-release.mjs",
+    "ios-bundle"
+  ],
+  "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "outcome": {
+    "exitCode": 0,
+    "signal": null,
+    "error": null
+  },
+  "checkpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-session.json",
+    "sha256": "512117cfc729bcb90d64574d2a329d2b4bd93839b3806cc5d5fb3a10059cddab"
+  },
+  "recordedSourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "before": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "repositoryHead": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "after": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "repositoryHead": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "inputsUnchanged": true,
+  "preparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc\\preparation.json",
+    "sha256": "a7d6730e103552a5defd699aba39366c7ae5e6e4e7d10417c9505ca6be7d15eb",
+    "pass": true,
+    "outputs": [
+      {
+        "path": ".tmp/mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc/native-artifact.json",
+        "sha256": "bcc4a66fb86f3d8ea6fa5a90d6cfbffd190ed4acac6d3e7bfe68adeff8b10fac",
+        "bytes": 716070
+      }
+    ],
+    "binaryReceipt": null
+  },
+  "raw": {
+    "stdout.txt": {
+      "sha256": "4c9173443ac6b1553042c867af39d72ef158d2d1df8d9f8baff288d2da4ac5f2",
+      "bytes": 338
+    },
+    "stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "installedRuntime": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "releaseReady": false,
+  "remoteRequests": 0
+}

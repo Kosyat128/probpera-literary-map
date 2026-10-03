@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_PRIVATE_NATIVE_PIN_SESSION_MECHANICS_A2_NOT_RUN",
+  "stage": "S16",
+  "baseline": {
+    "reportCommit": "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+    "sourceCommit": "245c86700e6acc01e8723f8656104c2371e03b4c",
+    "projectRoot": "C:/Users/User/Documents/ChatGPT/Работа по сайту/literary-planet-v12-work",
+    "sourceRowsExpected": 1780
+  },
+  "ownedProjectPaths": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sourceBeforeSha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "sha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+      "size": 65427
+    }
+  ],
+  "originalBeforeBackup": {
+    "path": "before/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+    "size": 37394,
+    "scope": "EXACT_PROJECT_BEFORE_BYTES"
+  },
+  "hostJvmDriver": {
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildNativePinSessionsJvmDriver.java",
+    "sha256": "211472613d2dd79c18366f247966fc95455d6edad8dd79bd892a0ae736565ca9",
+    "size": 27854,
+    "scope": "B_ONLY_EXPLICIT_REFLECTION_SYNTHETIC_PRIVATE_FACTORY_NO_VAULT_CONSTRUCTION",
+    "expectedCases": 39,
+    "expectedUniqueCaseNames": [
+      "production-factories-remain-unsupported",
+      "enroll-captured-reset-later-time",
+      "replace-captured-reset-later-time",
+      "recover-captured-reset-later-time",
+      "caller-epoch-denied",
+      "caller-host-denied",
+      "caller-boot-denied",
+      "caller-deadline-denied",
+      "whole-record-race-denied",
+      "actual-epoch-denied",
+      "actual-host-denied",
+      "actual-boot-denied",
+      "actual-deadline-denied",
+      "actual-regression-denied",
+      "known-refusal-retires-through-close",
+      "ordinary-reset-not-recovery",
+      "recovery-dependency-missing",
+      "null-reset-witness-seals",
+      "mutating-capture-denied",
+      "mutating-current-denied",
+      "mutating-authorizeMutation-denied",
+      "mutating-recovery-denied",
+      "mutating-write-denied",
+      "close-does-not-settle-transfer",
+      "unknown-close-sticky-capacity",
+      "unknown-data-transfer-sticky-capacity",
+      "lost-transfer-wipes-keeps-pending-identity",
+      "sealed-secret-wipe-waits-actual-worker",
+      "late-cancel-fenced-until-close",
+      "cancel-before-begin-terminal",
+      "cancel-during-capture-owned-settlement",
+      "cancel-after-advance-seals-no-repair",
+      "generic-dependency-fault-seals",
+      "readback-mismatch-seals",
+      "retirement-fault-retains-lane",
+      "original-inspection-and-session-only",
+      "constructor-lookalike-reply-not-pending",
+      "commit-original-session-one-use",
+      "no-eviction-capacity-and-replay"
+    ],
+    "requiredSuccessMarker": "PIN_SESSION_MECHANICS=PASS_PURE_JVM_SYNTHETIC",
+    "requiredLimitMarker": "GENUINE_NATIVE_PROVIDER=NOT_IMPLEMENTED;VAULT_CONSTRUCTION=NOT_RUN;INSTALLED_OS=NOT_RUN"
+  },
+  "specSources": [
+    {
+      "path": "../next-native-pin-provider-plan/PLAN.md",
+      "sha256": "145d7e190f0843c23ead5b1a65bb80b47400413694b5bb786c56476c037a4207"
+    },
+    {
+      "path": "../next-parent-pin-enrollment-a2/src/child/parentPinEnrollment.ts",
+      "sha256": "d7a1a456df59698dcb816ea9747f9f65f268a5b7677624acc4bf73d88d0da991"
+    },
+    {
+      "path": "../next-parent-pin-enrollment-a2/src/child/childProtectedState.ts",
+      "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5"
+    }
+  ],
+  "scope": {
+    "sourceOutsideInsertedBlock": "EXACT_BEFORE_BYTES_VERIFIED_INCLUDING_TERMINAL_LF",
+    "existingCodecAndCandidateProtectedIO": "UNCHANGED_OUTSIDE_INSERTION",
+    "ownedSessionIdentity": "PRIVATE_CONSTRUCTORS_ORIGINAL_OWNER_INSPECTION_SESSION_AND_PENDING_REPLY_IDENTITY",
+    "durableLockAdapter": "PRIVATE_FIXED_ADAPTER_USING_EXISTING_PROCESS_AND_FILE_LOCK_NO_NEW_PUBLIC_WRITER",
+    "fullRecord": "OWNED_EXPECTED_AND_NEXT_CANONICAL_BYTES_SHA_REVISION_PLUS_ONE_PIN_ONLY",
+    "resetLogicalMs": "BEGIN_CAPTURED_LOGICAL_MS_EXACT_WHILE_CURRENT_USES_LATER_CONTINUOUS_SAMPLE",
+    "time": "SAME_BOOT_HOST_GENERATION_EPOCH_ORIGINAL_EXCLUSIVE_ABSOLUTE_DEADLINE",
+    "callbackBytes": "DISPOSABLE_CLONE_MUTATION_DENIAL_ACTUAL_RETURN_WIPE_AND_LOCAL_BYTE_DIGEST_SESSION_FENCES",
+    "permission": "PRIVATE_ONE_USE_LOCAL_WRAPPER_AROUND_OPAQUE_DEPENDENCY_WITNESS_NOT_AUTHORITY",
+    "cancelRetire": "TERMINAL_CANCEL_ACTUAL_WORK_JOIN_NO_NEW_WORK_RETIRE_FENCE_TERMINAL_CLOSE_TRANSFER",
+    "capacity": "ACTIVE_RETAINED_UNTIL_ORIGINAL_TERMINAL_KNOWN_SETTLEMENT_UNKNOWN_STICKY_SEALED_IDS_NO_EVICTION_2048",
+    "productionSessionFactory": "NULL",
+    "productionCheckpointFactory": "NULL_UNCHANGED",
+    "genuineNativeProvider": "NOT_IMPLEMENTED",
+    "appBridgeActivation": "NONE",
+    "newPermanentOSFixtureOrRegistration": "NONE",
+    "sealedSecretCleanup": "WIPE_PENDING_REPLY_BYTES_WITHOUT_TRANSFER_OR_IDENTITY_RELEASE_EXPECTED_BYTES_WIPED_ONLY_AFTER_ACTUAL_WORKERS_ZERO"
+  },
+  "checks": {
+    "sourceReview": "FROZEN_INDEPENDENT_REVIEW_PENDING",
+    "javac": "NOT_RUN",
+    "hostJvmDriver": "NOT_RUN",
+    "androidBuild": "NOT_RUN",
+    "installedOS": "NOT_RUN",
+    "genuineAuthority": "NOT_IMPLEMENTED",
+    "priorCodecJVM69": "PRIOR_ACTUAL_RECEIPT_RETAINED_NOT_REPEATED",
+    "fixturePlan26": "PRIOR_ACTUAL_RECEIPT_RETAINED_UNCHANGED_DISPATCH_NOT_REPEATED"
+  },
+  "limitations": [
+    "Only local session ownership/state mechanics are implemented for a future genuinely admitted private factory.",
+    "No genuine nonrollback owner/checkpoint epoch, host/action/reset/recovery authority, seed provisioning, native PIN input/KDF/calibration or private bridge/transport adapter is supplied.",
+    "Explicit reflection/proxy synthetic driver supplies no Android OS, storage, genuine time, permission, publication durability or installed-device proof.",
+    "Retirement has no synthetic timeout release; missing actual callback/transfer settlement retains capacity.",
+    "Ordinary Keystore, successful structural codec/JVM execution or private opaque metadata cannot supply missing authority."
+  ],
+  "actions": "B staging/backup/read-only project source and hash checks only; no project mutation, Git, tests, build, SDK/OS, remote, publishing, profiles or stage promotion",
+  "supersedes": {
+    "path": "../next-native-pin-session-android/manifest.json",
+    "sha256": "26e438bb57f0b99aff8e4740834cb66255f2862c6b0c857e3219474f00de4699",
+    "readySha256": "7ee1a3352ab5dcc5f9afdf1545dde3e663cb19aff1f53061f106115de5f8795c",
+    "status": "IMMUTABLE_A1_NOT_RUN"
+  }
+}

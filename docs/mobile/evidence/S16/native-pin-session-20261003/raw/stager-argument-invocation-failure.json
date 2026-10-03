@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL_PRESERVED_INVOCATION",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "helper": "stage-native-pin-session-final-report-a2.mjs",
+  "helperSha256": "ca30b8def88d74cb05ca35eb05eab7be2684bb1aee4fedadc9437021b8d0deef",
+  "inputSha256": "5672dd260fe019f3d66930222bea85d4bf13497b8a3674a75ee456df6901b850",
+  "extraArgument": "5672dd260fe019f3d66930222bea85d4bf13497b8a3674a75ee456df6901b850",
+  "exitCode": 1,
+  "errorCode": "ONE_FINALIZED_INPUT_REQUIRED",
+  "failureRecordedAt": "2026-10-03T13:53:15.6336017Z",
+  "scope": "Observed root exec failure before input validation or staging output; helper requires exactly one input argument. CLI argument error only.",
+  "fullRawOuterStreamCaptured": false,
+  "trackedWrites": 0,
+  "gitCommands": 0,
+  "productChecks": 0,
+  "releaseReady": false
+}

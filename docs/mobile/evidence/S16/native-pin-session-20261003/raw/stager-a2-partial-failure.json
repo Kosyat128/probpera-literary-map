@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "status": "FAIL_PRESERVED_PARTIAL_STAGING",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "helper": "stage-native-pin-session-final-report-a2.mjs",
+  "helperSha256": "ca30b8def88d74cb05ca35eb05eab7be2684bb1aee4fedadc9437021b8d0deef",
+  "inputSha256": "36f73264ee746322ac299d33dfe23bd522396b0319e093519d212894c5a532c2",
+  "exitCode": 1,
+  "errorCode": "EXACT_PIN_TASK_REQUIRED",
+  "failureRecordedAt": "2026-10-03T13:54:59.2694053Z",
+  "scope": "Observed root invocation reached proof staging, then strict boolean check rejected the existing matching PIN task object. Partial owned files preserved; no document proposals/integration manifest emitted.",
+  "fullRawOuterStreamCaptured": false,
+  "trackedWrites": 0,
+  "gitCommands": 0,
+  "productChecks": 0,
+  "releaseReady": false
+}

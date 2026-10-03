@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-native-pin-final-preparations",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "binding": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "preparations": [
+    {
+      "mode": "android",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-1ae7ea27-74e4-4aac-a716-7e850abc0205\\preparation.json",
+        "sha256": "4f2348f17755b05bf49203a3f0f7285cad84d49f2d0d81fdfcbfc21791b6e3f6"
+      },
+      "execution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-android-00482e17-7bbe-4716-bc74-00dc8335ebd8\\execution.json",
+        "sha256": "02ae442cd297ea40d72772b6f98373bd11afc279b5bf1b190c59f2f4b7c9b570"
+      }
+    },
+    {
+      "mode": "pwa",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6\\preparation.json",
+        "sha256": "ce7719eb0d9ac01af83afbd0ebbc2afc1c39b6723f561b9a9ff26a222bda8139"
+      },
+      "execution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-pwa-9f0c60fa-a758-4515-aa22-94a044d24c23\\execution.json",
+        "sha256": "6b58323ace9136ee015998e207bd6332ce3f1ddff8f4eeeebe8658fbea8b59f9"
+      }
+    },
+    {
+      "mode": "ios-bundle",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc\\preparation.json",
+        "sha256": "a7d6730e103552a5defd699aba39366c7ae5e6e4e7d10417c9505ca6be7d15eb"
+      },
+      "execution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-ios-bundle-310e2736-36f0-413d-a8db-28592c984103\\execution.json",
+        "sha256": "bd396c08bb9029d1deaa1664ec3fe970f7027325b52ba385de1d0a3834f80713"
+      }
+    }
+  ],
+  "available": [
+    "Android dev/debug main and instrumentation APK",
+    "PWA bundle",
+    "iOS web payload"
+  ],
+  "installedRuntime": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "releaseReady": false,
+  "remoteActions": 0
+}

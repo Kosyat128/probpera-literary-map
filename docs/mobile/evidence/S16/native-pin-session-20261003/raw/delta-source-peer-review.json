@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-session-source-delta-source-review",
+  "status": "ACK",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "candidate": {
+    "path": "next-native-pin-source-delta/manifest.json",
+    "sha256": "aee73a9b3bb25515582250e74a02fff58acf5c5805652c0e1885c6da2122f032",
+    "readySha256": "b52b7a3d40c6e46ddc02391fdc1917b39d94f4475fd5b7dae9647c933edb9fa0",
+    "helperSha256": "7dedeca1e72fbce793b32b87ee4828cc88a426022e539f063e4798c81e3b5091",
+    "helperBytes": 31529,
+    "inputSha256": "44a91d5b5ea15baa9c45a60425edeccdb6760287038b696d2153f00ca459a7cf"
+  },
+  "reviewScope": "Bounded read-only source and sealed input review; all five manifest member hashes and twelve selected supplement hashes reread. No helper, Git, product checks, build or import/export executed by reviewer.",
+  "checksExecuted": 0,
+  "checkoutWrites": false,
+  "refsChanged": false,
+  "remoteActions": 0,
+  "findings": [],
+  "reviewedFacts": {
+    "exactCleanSourceAndBranchGuards": true,
+    "fourSourceFourReportParentAndChangedPathClosureGuards": true,
+    "rawDeltaRows": 18,
+    "inheritedCapturedClosureRows": 1780,
+    "uncapturedChildTests": 3,
+    "currentDocumentOverlays": 4,
+    "explicitMetadataSupplements": 12,
+    "rawBytesAndMixedEndingsPreserved": true,
+    "sourceBundlePrerequisite": "3c79db7c6d299032a357781861a919f454981daf",
+    "previousBundlePrerequisite": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+    "fullBaselinePrerequisite": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+    "priorArtifactsHashCheckedWithoutCopying": true,
+    "isolatedNewObjectMembershipBeforeReadOnlyInheritedConnectivity": true,
+    "originalRefsConfigAndCommitGraphBeforeAfterGuards": true,
+    "boundedRawCommandStreamsInNewOwnedUuidAttempts": true,
+    "processOnlyCleanGitEnvironmentAndPhysicalSafeDirectory": true,
+    "noShellNoLazyFetchNoOriginalRepositoryWrites": true,
+    "futureExportImportKindsAndFourBindingsCompatibleWithFinalReportStager": true
+  },
+  "qualification": {
+    "syntax": "NOT_RUN",
+    "export": "NOT_RUN_BY_REVIEWER",
+    "import": "NOT_RUN_BY_REVIEWER",
+    "fullHistoryIntegrity": "NOT_RUN",
+    "standaloneFreshClone": false,
+    "jvm39": "SELECTED_ACTUAL_PREINTEGRATION_SYNTHETIC_RECEIPT_ONLY",
+    "installedOS": "NOT_RUN",
+    "swiftCompilation": "NOT_RUN",
+    "genuineNativeAuthorityProvider": "NOT_IMPLEMENTED",
+    "releaseReady": false
+  }
+}

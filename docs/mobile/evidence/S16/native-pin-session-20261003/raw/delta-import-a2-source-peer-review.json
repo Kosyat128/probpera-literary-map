@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reviewScope": "Read-only bounded original-to-successor source comparison and exact frozen member hash review. No helper, Git, export/import, builds or product checks executed.",
+  "candidate": {
+    "path": "next-pin-delta-import-a2/manifest.json",
+    "sha256": "73b9a85e5adbaf43b8e4aeee2b05ee12c0b955df85c985343bdfca1d0dda3275",
+    "readySha256": "0c109028059d6fe75a703898959e93b8f366a352a9bb1d2cccc6ebd8f6f8db08",
+    "helperSha256": "685b328dde05af7a38d1fd1c6c741eed0f180af643bfef428a43fcee17be0cc9",
+    "helperBytes": 32158
+  },
+  "sourceChangesReviewed": [
+    "Import-only mode rejects export execution.",
+    "Pins the original successful export path and d7947a5a6f6822b516401f7f7d9f8b6ba76cfa8c4ff3596321aa5fa20f3eff96 hash.",
+    "Changes only the newly owned bare final reference to refs/heads/validated.",
+    "Requires that owned alias resolves exactly 17843151ab0624b2b17102440d0eeb464381bdcb.",
+    "Records ownedValidationRef separately from the unchanged exportedSourceRef."
+  ],
+  "facts": {
+    "allThreeFrozenMemberHashesMatch": true,
+    "originalBundleHeaderAndUnbundleSourceRefGuardsUnchanged": true,
+    "sourceGraphRaw18AndInherited1780GuardsUnchanged": true,
+    "isolatedPayloadMembershipAndReadOnlyInheritedConnectivityGuardsUnchanged": true,
+    "sourceCleanlinessAndOriginalGitMetadataGuardsUnchanged": true,
+    "actualSuccessfulExportReusedWithoutRepeat": true,
+    "originalFailedImportAndRawSourceRefStreamsPreserved": true,
+    "existingInputAndCurrentArtifactsNotRewritten": true,
+    "processOnlyGitConfiguration": true,
+    "globalLongpathsConfigurationChanged": false
+  },
+  "findings": [],
+  "checksExecuted": 0,
+  "gitExecutions": 0,
+  "checkoutWrites": false,
+  "remoteActions": 0,
+  "qualification": {
+    "syntax": "NOT_RUN",
+    "correctedImport": "NOT_RUN_BY_REVIEWER",
+    "fullHistoryIntegrity": "NOT_RUN",
+    "standaloneFreshClone": false,
+    "releaseReady": false
+  }
+}

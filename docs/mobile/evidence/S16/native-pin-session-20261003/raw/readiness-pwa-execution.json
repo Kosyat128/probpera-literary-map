@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-channel-check-execution",
+  "binding": {
+    "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+    "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "platform": "pwa",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\release-readiness.mjs",
+    "--evidence",
+    ".tmp/mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321/readiness-input-pwa.json",
+    "--report",
+    ".tmp/mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321/readiness-pwa.json"
+  ],
+  "startedAt": "2026-10-03T13:47:20.142Z",
+  "finishedAt": "2026-10-03T13:47:22.640Z",
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "actualSelection": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321\\readiness-input-pwa.json",
+    "sha256": "8c71a2835337a42d98e5421c31f461dc004f519dad2412d1dcb9a2266e68bd20",
+    "bytes": 6586
+  },
+  "currentPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-9fbfc487-9737-48cb-a847-5a27750a1ba6\\preparation.json",
+    "sha256": "ce7719eb0d9ac01af83afbd0ebbc2afc1c39b6723f561b9a9ff26a222bda8139"
+  },
+  "preparationExecution": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-preparation-pwa-9f0c60fa-a758-4515-aa22-94a044d24c23\\execution.json",
+    "sha256": "6b58323ace9136ee015998e207bd6332ce3f1ddff8f4eeeebe8658fbea8b59f9"
+  },
+  "currentProtection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-pin-session.json",
+    "sha256": "65bdcb7cc38960fdffde1678423facd304a1ad8b97353849269019b81207c1b4",
+    "bytes": 1415
+  },
+  "retainedTypeScriptQualification": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-pin-session-check-36d9c35e-3319-4439-860a-760944c5a321\\retained-typescript-qualification.json",
+    "sha256": "9b3598ca2d7ba7908ea496ef14bcc3471c3b8aa74de79dc17699d1aceb7c2306",
+    "bytes": 2128
+  },
+  "executionReason": "FIRST_CURRENT_PLATFORM_READINESS_CALL",
+  "priorAndroidFailedAttempt": null,
+  "protectedHashScansActuallyExecuted": 0,
+  "typechecksActuallyExecuted": 0,
+  "installedRuntime": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "genuineProvider": "NOT_IMPLEMENTED",
+  "releaseReady": false
+}

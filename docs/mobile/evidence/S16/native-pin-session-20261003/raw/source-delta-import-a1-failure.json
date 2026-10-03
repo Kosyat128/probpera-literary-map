@@ -1,0 +1,1121 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-source-native-pin-session-delta-import",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+  "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "pass": false,
+  "errorCode": "GIT_COMMAND_FAILED",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0001.stdout.txt",
+        "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+        "bytes": 71
+      },
+      "stderr": {
+        "path": "commands/guard-0001.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0002.stdout.txt",
+        "sha256": "9411166668854ccd622111cacd856d1f596221c6f92701120788b480742a0a6c",
+        "bytes": 41
+      },
+      "stderr": {
+        "path": "commands/guard-0002.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0003.stdout.txt",
+        "sha256": "a618b142063d9b6fce9e5a4bdeac55d9e3d1e1435d0b700131b3ea54fbe2245c",
+        "bytes": 52
+      },
+      "stderr": {
+        "path": "commands/guard-0003.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0004.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "commands/guard-0004.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0005.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "commands/guard-0005.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-parse",
+        "--git-common-dir"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0006.stdout.txt",
+        "sha256": "fd03f16fc5ad8be70d6e0491fa2e029bc4a31f5b0de6d4adf8e7dd709d23840f",
+        "bytes": 5
+      },
+      "stderr": {
+        "path": "commands/guard-0006.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "a0b94c62cb055a60c84cf350374cd001017c451c"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0007.stdout.txt",
+        "sha256": "c0fb5b7f4a6330e1d804f7534be1deb704c3e042bedf7d976a78bdf7b89fcce5",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0007.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "3c79db7c6d299032a357781861a919f454981daf",
+        "a0b94c62cb055a60c84cf350374cd001017c451c"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0008.stdout.txt",
+        "sha256": "f8b0fb4b572d790d3f22322dfcb87be69d548a9f18fea8c543d63adf9587e075",
+        "bytes": 5703
+      },
+      "stderr": {
+        "path": "commands/guard-0008.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "ddbc10c3d35c5d28823df901a44f1a932dd772e2"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0009.stdout.txt",
+        "sha256": "e21184ce45dc7b3c0c25280a6d9317714c9d78f2ec255a2cfa31053e49ee1734",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0009.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "a0b94c62cb055a60c84cf350374cd001017c451c",
+        "ddbc10c3d35c5d28823df901a44f1a932dd772e2"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0010.stdout.txt",
+        "sha256": "0fac668ae88bfb2616e8f8941c13a45222850c41ec3c878279d63169a933d959",
+        "bytes": 258
+      },
+      "stderr": {
+        "path": "commands/guard-0010.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "f14a6b1450016a4e0abed00d8a7f26a723aabe06"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0011.stdout.txt",
+        "sha256": "7b640ffef40026d3839e59dc1f514993c261840952094d16ea3348c7ae8c92d8",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0011.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+        "f14a6b1450016a4e0abed00d8a7f26a723aabe06"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0012.stdout.txt",
+        "sha256": "9135e6edb9551c5992f012f6b5faf27e4c6fa85498b1b46a9192e9c7781deb69",
+        "bytes": 1938
+      },
+      "stderr": {
+        "path": "commands/guard-0012.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "f2d8d8d2aefb6c040698972dca818b4223844b3a"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0013.stdout.txt",
+        "sha256": "fe9f594eb133cb1a53905c33e4d3d5250b6651b8f899ea3df45b36cba5927868",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0013.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "f14a6b1450016a4e0abed00d8a7f26a723aabe06",
+        "f2d8d8d2aefb6c040698972dca818b4223844b3a"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0014.stdout.txt",
+        "sha256": "b8c6008fe5e3435cb81b143f0f34b729b31c6d1e3cc969923879d78972d9bb53",
+        "bytes": 104
+      },
+      "stderr": {
+        "path": "commands/guard-0014.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "57e15019ed8f99ce3f307ce2b7913194d39f75d1"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0015.stdout.txt",
+        "sha256": "f341a6ce9eebf45077c0b8ef08667b174f295680ab12a7b040607b05794d133c",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0015.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+        "57e15019ed8f99ce3f307ce2b7913194d39f75d1"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0016.stdout.txt",
+        "sha256": "c00c5a750e4783663fb6ee0a3dc3c8366dc0bd0ae917fc7f571d75b8f1a86692",
+        "bytes": 2322
+      },
+      "stderr": {
+        "path": "commands/guard-0016.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "245c86700e6acc01e8723f8656104c2371e03b4c"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0017.stdout.txt",
+        "sha256": "eb56f145bf32632427577ae584992dde65c7ade1d5bf4a157cfe82f3285d2c71",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0017.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "57e15019ed8f99ce3f307ce2b7913194d39f75d1",
+        "245c86700e6acc01e8723f8656104c2371e03b4c"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0018.stdout.txt",
+        "sha256": "cbe8c537dd1266d909f645473446b81c97d3b799346740d61487e4f7a012e3d2",
+        "bytes": 482
+      },
+      "stderr": {
+        "path": "commands/guard-0018.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0019.stdout.txt",
+        "sha256": "fb53fceaf8f01f7566911c65e687be3b5fbbec82916faea9268c73f9392c745b",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0019.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "245c86700e6acc01e8723f8656104c2371e03b4c",
+        "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0020.stdout.txt",
+        "sha256": "683faba5f597e9a30ae9ca3294dcc43a5c343025e6b9bb0671e82e7b2a2a0b17",
+        "bytes": 4589
+      },
+      "stderr": {
+        "path": "commands/guard-0020.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "17843151ab0624b2b17102440d0eeb464381bdcb"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0021.stdout.txt",
+        "sha256": "eefe69fb8e1eabbec27793af7f555023fbea0206112354592c7a08588cfb698e",
+        "bytes": 82
+      },
+      "stderr": {
+        "path": "commands/guard-0021.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "9f45dc94b993a4ec5da4a5ebc2eacaff19d64363",
+        "17843151ab0624b2b17102440d0eeb464381bdcb"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0022.stdout.txt",
+        "sha256": "789487e987850ee6e4317387f50c5cb12c84ef60bae0f04d77ba2741ab8a0fed",
+        "bytes": 134
+      },
+      "stderr": {
+        "path": "commands/guard-0022.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--name-only",
+        "-z",
+        "3c79db7c6d299032a357781861a919f454981daf",
+        "17843151ab0624b2b17102440d0eeb464381bdcb"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0023.stdout.txt",
+        "sha256": "0537b3da98836b125847a64ada1d8559e220de0fece3cbea10fdeae2068cc93f",
+        "bytes": 15099
+      },
+      "stderr": {
+        "path": "commands/guard-0023.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-list",
+        "--objects",
+        "--no-object-names",
+        "17843151ab0624b2b17102440d0eeb464381bdcb",
+        "^3c79db7c6d299032a357781861a919f454981daf"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0024.stdout.txt",
+        "sha256": "e1d2196b72618b7b9336ffe86651187288b47cb3b2476f8f4a4e6a23bb02aba1",
+        "bytes": 10004
+      },
+      "stderr": {
+        "path": "commands/guard-0024.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "rev-parse",
+        "--git-path",
+        "objects"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/guard-0025.stdout.txt",
+        "sha256": "d47773290b580aae76650999a1e916227528f0075499b9dac795e6fe8b119532",
+        "bytes": 13
+      },
+      "stderr": {
+        "path": "commands/guard-0025.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "init",
+        "--bare",
+        "--template=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\empty-hooks",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/init.stdout.txt",
+        "sha256": "5e3d09a21d3b3a3c6e8447e23424fe3972168125a8152d6358162f67b6d1b03e",
+        "bytes": 231
+      },
+      "stderr": {
+        "path": "commands/init.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "--git-dir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "update-ref",
+        "refs/heads/prerequisite",
+        "3c79db7c6d299032a357781861a919f454981daf"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/prerequisite.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "commands/prerequisite.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "--git-dir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "bundle",
+        "unbundle",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\export-attempt-50401fc9-0463-4d8e-a94d-0fcd0e692aa2\\source.bundle"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/unbundle.stdout.txt",
+        "sha256": "f69623cfbd0962248589d7bf0be3007881d61b69e159c612fae9494e7a50f796",
+        "bytes": 104
+      },
+      "stderr": {
+        "path": "commands/unbundle.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "--git-dir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "cat-file",
+        "--batch-check"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+      "exitCode": 0,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/payload-membership.stdout.txt",
+        "sha256": "0636c52dd4ff4d640cf540e494cd80020733a51a6853c7ae2d2567f328bbfc7e",
+        "bytes": 12469
+      },
+      "stderr": {
+        "path": "commands/payload-membership.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "command": [
+        "git",
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.whitespace=cr-at-eol",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\empty-hooks",
+        "-c",
+        "safe.directory=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "-c",
+        "core.hooksPath=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\empty-hooks",
+        "-c",
+        "init.defaultBranch=source-verification",
+        "--git-dir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93\\owned-bare",
+        "update-ref",
+        "refs/heads/codex/literary-planet-v12-bilingual-final-autopilot",
+        "17843151ab0624b2b17102440d0eeb464381bdcb"
+      ],
+      "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-source-delta\\import-attempt-53e0f5da-77bd-4c31-a110-978dd2c5ae93",
+      "exitCode": 128,
+      "launchOrTimeoutError": null,
+      "stdout": {
+        "path": "commands/source-ref.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "commands/source-ref.stderr.txt",
+        "sha256": "98d27ea714f9d0a960f90a53b19917fc4655313e7b247023e0f90358d1adc9f8",
+        "bytes": 481
+      }
+    }
+  ],
+  "standaloneFreshClone": false,
+  "fullHistoryIntegrity": "NOT_RUN",
+  "remoteActions": 0,
+  "releaseReady": false,
+  "finishedAt": "2026-10-03T13:36:07.254Z"
+}

@@ -1,0 +1,1 @@
+{"output":".tmp/mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc","pass":true,"outputs":[{"path":".tmp/mobile-release-ios-bundle-18527a21-8acb-4f5a-b6ea-91d5e7f80adc/native-artifact.json","sha256":"bcc4a66fb86f3d8ea6fa5a90d6cfbffd190ed4acac6d3e7bfe68adeff8b10fac","bytes":716070}],"releaseReady":false,"deviceTested":false}
