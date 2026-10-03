@@ -250,7 +250,9 @@ function androidOfflineCommandArgs(value) {
   const instrument = copied.length === 15 && copied.slice(0, 7).join(',') === 'shell,am,instrument,-w,-r,-e,class'
     && (copied[7] === 'ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest'
       ? copied[12] === 'literaryChildDataPhase' && ['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'].includes(copied[13])
-      : ['PlanetSecureStoreRuntimeTest','PlanetPreferencesRuntimeTest','PlanetPreviousPreferencesRuntimeTest'].some(name => copied[7] === 'ru.probpera.literaryplanet.' + name)
+      : copied[7] === 'ru.probpera.literaryplanet.PlanetChildDataTransportRuntimeTest'
+        ? copied[12] === 'literaryChildTransportPhase' && copied[13] === 'wire'
+        : ['PlanetSecureStoreRuntimeTest','PlanetPreferencesRuntimeTest','PlanetPreviousPreferencesRuntimeTest'].some(name => copied[7] === 'ru.probpera.literaryplanet.' + name)
         && copied[12] === 'literaryPhase' && ['write','read','remove','clear','absent','parallel','corrupt','unsupported-language','unsupported-theme','plugin-failure','timeout'].includes(copied[13]))
     && copied[8] === '-e' && copied[9] === 'literaryRunId' && /^[a-f0-9]{32}$/u.test(copied[10])
     && copied[11] === '-e'
@@ -296,6 +298,23 @@ export function xctestPassed(text) {
   return typeof text === 'string' && /Executed 1 test, with 0 failures/u.test(text)
     && /\*\* TEST EXECUTE SUCCEEDED \*\*/u.test(text) && !/Test Case .* skipped|TEST EXECUTE FAILED|\b(?:failed|error):/iu.test(text);
 }
+const childDataPhases = Object.freeze(['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear']);
+/** Each destructive fixture uses a separate deterministic, run-owned namespace.
+ * These identifiers are isolation metadata, never native/PIN authority. */
+export function childDataScenarioRunId(runId, scenario) {
+  check(/^[a-f0-9]{32}$/u.test(runId) && ['primary','corrupt','missing-key','missing-cipher','private-transport'].includes(scenario), 'Exact own child-data scenario required.');
+  return sha('literary-child-data-fixture-v1/' + runId + '/' + scenario).slice(0,32);
+}
+export function childDataFixtureArguments(runId, phase) {
+  check(/^[a-f0-9]{32}$/u.test(runId) && childDataPhases.includes(phase), 'Exact own child-data phase required.');
+  return Object.freeze(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest',
+    '-e','literaryRunId',runId,'-e','literaryChildDataPhase',phase,'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+}
+export function childTransportFixtureArguments(runId) {
+  check(/^[a-f0-9]{32}$/u.test(runId), 'Exact own private transport fixture required.');
+  return Object.freeze(['shell','am','instrument','-w','-r','-e','class','ru.probpera.literaryplanet.PlanetChildDataTransportRuntimeTest',
+    '-e','literaryRunId',runId,'-e','literaryChildTransportPhase','wire','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+}
 export function bindXctestrun(input, { templateDir, binary, runId, phase }) {
   check(input?.__xctestrun_metadata__?.FormatVersion === 2 && Array.isArray(input.TestConfigurations) && input.TestConfigurations.length === 1,
     'Expected one version-2 XCTest configuration.');
@@ -327,13 +346,15 @@ export function bindXctestrun(input, { templateDir, binary, runId, phase }) {
     check(Array.isArray(target.DependentProductPaths) && target.DependentProductPaths.length <= 32, 'Malformed XCTest product paths.');
     target.DependentProductPaths = target.DependentProductPaths.map(host);
   }
-  const preference = phase.startsWith('preferences:'), selected = preference ? phase.slice('preferences:'.length) : phase;
-  check(/^[a-f0-9]{32}$/u.test(runId) && (preference ? ['write', 'read', 'parallel', 'corrupt', 'remove', 'absent', 'clear', 'unsupported-language', 'unsupported-theme', 'plugin-failure', 'timeout']
+  const preference = phase.startsWith('preferences:'), childData = phase.startsWith('child-data:'), childTransport = phase.startsWith('child-transport:');
+  const selected = preference ? phase.slice('preferences:'.length) : childData ? phase.slice('child-data:'.length) : childTransport ? phase.slice('child-transport:'.length) : phase;
+  check(/^[a-f0-9]{32}$/u.test(runId) && (childTransport ? ['wire'] : childData ? childDataPhases : preference ? ['write', 'read', 'parallel', 'corrupt', 'remove', 'absent', 'clear', 'unsupported-language', 'unsupported-theme', 'plugin-failure', 'timeout']
     : ['write', 'read', 'parallel', 'corrupt', 'remove', 'absent']).includes(selected), 'Wrong synthetic XCTest phase.');
-  target.EnvironmentVariables = { ...target.EnvironmentVariables, LITERARY_PLANET_SECURE_TEST_RUN_ID: runId };
-  delete target.EnvironmentVariables.LITERARY_PLANET_SECURE_TEST_PHASE; delete target.EnvironmentVariables.LITERARY_PLANET_PREFERENCE_TEST_PHASE;
-  target.EnvironmentVariables[preference ? 'LITERARY_PLANET_PREFERENCE_TEST_PHASE' : 'LITERARY_PLANET_SECURE_TEST_PHASE'] = selected;
-  target.OnlyTestIdentifiers = ['PlanetSecureStoreRuntimeTests/' + (preference ? 'testPreferencePhase' : 'testSecureStoragePhase')];
+  target.EnvironmentVariables = { ...target.EnvironmentVariables };
+  for (const key of ['LITERARY_PLANET_SECURE_TEST_RUN_ID','LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID','LITERARY_PLANET_SECURE_TEST_PHASE','LITERARY_PLANET_PREFERENCE_TEST_PHASE','LITERARY_PLANET_CHILD_DATA_TEST_PHASE','LITERARY_PLANET_CHILD_TRANSPORT_TEST_RUN_ID','LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE']) delete target.EnvironmentVariables[key];
+  target.EnvironmentVariables[childTransport ? 'LITERARY_PLANET_CHILD_TRANSPORT_TEST_RUN_ID' : childData ? 'LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID' : 'LITERARY_PLANET_SECURE_TEST_RUN_ID'] = runId;
+  target.EnvironmentVariables[childTransport ? 'LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE' : childData ? 'LITERARY_PLANET_CHILD_DATA_TEST_PHASE' : preference ? 'LITERARY_PLANET_PREFERENCE_TEST_PHASE' : 'LITERARY_PLANET_SECURE_TEST_PHASE'] = selected;
+  target.OnlyTestIdentifiers = [childTransport ? 'PlanetChildDataTransportRuntimeTests/testPrivateTransportPhase' : childData ? 'PlanetChildDataStoreRuntimeTests/testDurableDataPhase' : 'PlanetSecureStoreRuntimeTests/' + (preference ? 'testPreferencePhase' : 'testSecureStoragePhase')];
   target.SkipTestIdentifiers = []; target.ParallelizationEnabled = false;
   return result;
 }
@@ -377,6 +398,8 @@ export async function runNativeInstallRuntime(options = {}) {
   process.once('SIGINT', interrupt); process.once('SIGTERM', interrupt);
   let ownedAndroidInstall = false, ownedTestInstall = false, ownedSimulator = null, receipt, xctestrun;
   let previousAssessment = null, installedAndroidGeneration = null, legacyPreferenceSeeded = false;
+  const childFixtureIds = new Set(), primaryChildId = childDataScenarioRunId(runId,'primary');
+  let iosChildInstrument = null;
   const toolRoot = path.join(root, '.tmp', 'native-tools');
   const extension = process.platform === 'win32' ? '.exe' : '';
   const tools = { adb: path.join(toolRoot, 'android-sdk', 'platform-tools', 'adb' + extension),
@@ -419,6 +442,20 @@ export async function runNativeInstallRuntime(options = {}) {
   async function androidPreference(phase, label = phase) {
     await androidInstrument(phase, false, true);
     report.checks.push({ id: 'preferences-' + label, status: 'PASS', backend: phase === 'plugin-failure' || phase === 'timeout' ? 'synthetic-boundary' : 'native-os' });
+  }
+  async function androidChildData(phase, fixtureId = primaryChildId, label = phase, cleanup = false) {
+    if (phase === 'write') childFixtureIds.add(fixtureId);
+    const text = await offline.command('instrument-child-data-' + label, childDataFixtureArguments(fixtureId,phase),60_000,cleanup);
+    check(instrumentationPassed(text), 'Synthetic child-data instrumentation did not pass: ' + label);
+    report.checks.push({id:'child-data-' + label,status:'PASS',backend:'native-os',scope:'synthetic-partition-only',fixtureRunId:fixtureId});
+    if (phase === 'clear') childFixtureIds.delete(fixtureId);
+  }
+  async function finishChildDataFixtures(instrument) {
+    await instrument('atomic',primaryChildId); await instrument('retire',primaryChildId); await instrument('clear',primaryChildId);
+    for (const selected of ['corrupt','missing-key','missing-cipher']) {
+      const fixtureId = childDataScenarioRunId(runId,selected);
+      await instrument('write',fixtureId,selected + '-seed'); await instrument(selected,fixtureId); await instrument('clear',fixtureId,selected + '-clear');
+    }
   }
   async function androidPreviousPreference(phase, cleanup = false) {
     check(['write','read','remove'].includes(phase), 'Exact historical preference fixture phase required.');
@@ -537,12 +574,18 @@ export async function runNativeInstallRuntime(options = {}) {
       }
       await androidInstrument('write'); record('secure-storage-write-ciphertext-readback', 'PASS');
       await androidPreference('write');
+      await androidChildData('write');
+      const transportFixtureId = childDataScenarioRunId(runId,'private-transport'); childFixtureIds.add(transportFixtureId);
+      check(instrumentationPassed(await offline.command('instrument-child-transport-wire',childTransportFixtureArguments(transportFixtureId),60_000)), 'Actual private transport fixture did not pass.');
+      report.checks.push({id:'child-transport-wire',status:'PASS',backend:'native-os',scope:'synthetic-partition-only',fixtureRunId:transportFixtureId});
+      await androidChildData('clear',transportFixtureId,'private-transport-clear');
       const launch = async () => { await offline.command('application-launch',['shell', 'am', 'start', '-W', '-n', receipt.applicationId + '/ru.probpera.literaryplanet.MainActivity']);
         await delay(2500, undefined, { signal: abort.signal });
         check(/^[1-9][0-9]*(?: [1-9][0-9]*)*$/u.test((await adb(['shell', 'pidof', receipt.applicationId])).trim()), 'Native process is not alive.'); };
       await launch(); await capture('first-launch.png'); record('first-launch', 'PASS');
       await adb(['shell', 'am', 'force-stop', receipt.applicationId]); await launch(); await androidInstrument('read'); record('new-process-secure-readback', 'PASS');
       await androidPreference('read', 'read-after-process');
+      await androidChildData('read',primaryChildId,'read-after-process');
       await adb(['shell', 'input', 'keyevent', 'KEYCODE_HOME']); await launch(); record('background-return-liveness', 'PASS');
       if (options.reboot === true) {
         await offline.verify('owned-target-before-reboot');
@@ -555,13 +598,16 @@ export async function runNativeInstallRuntime(options = {}) {
         await offline.verify('owned-target-after-reboot');
         await androidInstrument('read'); await launch(); record('system-restart-secure-readback', 'PASS');
         await androidPreference('read', 'read-after-system-restart');
+        await androidChildData('read',primaryChildId,'read-after-system-restart');
       } else { record('system-restart-secure-readback', 'NOT_RUN', 'Use --reboot-owned-target for this own emulator only.');
-        record('preferences-read-after-system-restart', 'NOT_RUN', 'Use --reboot-owned-target for this own emulator only.'); }
+        record('preferences-read-after-system-restart', 'NOT_RUN', 'Use --reboot-owned-target for this own emulator only.');
+        record('child-data-read-after-system-restart','NOT_RUN','Use --reboot-owned-target for this own emulator only.'); }
       for (const phase of ['unsupported-language', 'unsupported-theme', 'parallel', 'plugin-failure', 'timeout', 'corrupt', 'remove']) await androidPreference(phase);
       await androidInstrument('parallel'); record('secure-store-parallel', 'PASS');
       await androidInstrument('corrupt'); record('secure-store-corrupt', 'PASS');
       await androidInstrument('remove'); record('secure-store-remove', 'PASS');
       await androidInstrument('absent');
+      await finishChildDataFixtures(androidChildData);
       await adb(['uninstall', receipt.applicationId]); ownedAndroidInstall = false;
       await offline.command('install-clean-current',['install', binary], 60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
       await offline.command('install-clean-fixture',['install', '-r', path.resolve(root, receipt.testArtifactPath)], 60_000); ownedTestInstall = true;
@@ -577,23 +623,34 @@ export async function runNativeInstallRuntime(options = {}) {
       const installed = (await sim(['get_app_container', id, receipt.applicationId, 'app'])).trim();
       check(path.isAbsolute(installed) && installed.split(path.sep).includes(id) && await appDigest(installed) === receipt.artifactSha256, 'Installed simulator bundle differs from the exact compiled application.');
       report.installed = true; record('installed-package-byte-equality', 'PASS');
-      const instrument = async (phase, label = phase) => {
-        const value = bindXctestrun(xctestrun, { templateDir: path.dirname(path.resolve(root, receipt.xctestrunPath)), binary, runId, phase });
+      const instrument = async (phase, label = phase, fixtureId = runId, cleanup = false) => {
+        const value = bindXctestrun(xctestrun, { templateDir: path.dirname(path.resolve(root, receipt.xctestrunPath)), binary, runId:fixtureId, phase });
         const own = path.join(output, 'secure-' + phase.replace(':', '-') + '-' + report.commands.length + '.xctestrun');
-        await writeFile(own, json(value), { flag: 'wx' }); await command('/usr/bin/plutil', ['-convert', 'xml1', own]);
-        const preference = phase.startsWith('preferences:'), method = preference ? 'testPreferencePhase' : 'testSecureStoragePhase';
+        await writeFile(own, json(value), { flag: 'wx' }); await command('/usr/bin/plutil', ['-convert', 'xml1', own],30_000,cleanup);
+        const preference = phase.startsWith('preferences:'), childData = phase.startsWith('child-data:'), childTransport = phase.startsWith('child-transport:');
+        const identifier = childTransport ? 'PlanetChildDataTransportRuntimeTests/testPrivateTransportPhase' : childData ? 'PlanetChildDataStoreRuntimeTests/testDurableDataPhase' : 'PlanetSecureStoreRuntimeTests/' + (preference ? 'testPreferencePhase' : 'testSecureStoragePhase');
         const result = await command('/usr/bin/xcodebuild', ['test-without-building', '-xctestrun', own,
-          '-destination', 'platform=iOS Simulator,id=' + id, '-only-testing:AppSecureStorageTests/PlanetSecureStoreRuntimeTests/' + method,
-          '-parallel-testing-enabled', 'NO', '-maximum-concurrent-test-simulator-destinations', '1'], 60_000);
+          '-destination', 'platform=iOS Simulator,id=' + id, '-only-testing:AppSecureStorageTests/' + identifier,
+          '-parallel-testing-enabled', 'NO', '-maximum-concurrent-test-simulator-destinations', '1'], 60_000,cleanup);
         check(xctestPassed(result), 'Synthetic Keychain XCTest did not pass: ' + phase);
         const installedPath = (await sim(['get_app_container', id, receipt.applicationId, 'app'])).trim();
         check(path.isAbsolute(installedPath) && installedPath.split(path.sep).includes(id) && await appDigest(installedPath) === receipt.artifactSha256,
           'XCTest changed the exact installed application.');
-        report.checks.push({ id: (preference ? 'preferences-' + label.replace('preferences:', '') : 'keychain-' + label), status: 'PASS',
+        report.checks.push({ id: (childTransport ? 'child-transport-' + label : childData ? 'child-data-' + label : preference ? 'preferences-' + label.replace('preferences:', '') : 'keychain-' + label), status: 'PASS',
+          ...(childData || childTransport ? {scope:'synthetic-partition-only',fixtureRunId:fixtureId} : {}),
           backend: phase === 'preferences:plugin-failure' || phase === 'preferences:timeout' ? 'synthetic-boundary' : 'native-os', xctestrunSha256: sha(await readFile(own)) });
+      };
+      iosChildInstrument = async (phase,fixtureId = primaryChildId,label = phase,cleanup = false) => {
+        if (phase === 'write') childFixtureIds.add(fixtureId);
+        await instrument('child-data:' + phase,label,fixtureId,cleanup);
+        if (phase === 'clear') childFixtureIds.delete(fixtureId);
       };
       await instrument('write');
       await instrument('preferences:write');
+      await iosChildInstrument('write');
+      const transportFixtureId = childDataScenarioRunId(runId,'private-transport'); childFixtureIds.add(transportFixtureId);
+      await instrument('child-transport:wire','wire',transportFixtureId);
+      await iosChildInstrument('clear',transportFixtureId,'private-transport-clear');
       const launch = async languageArgs => {
         const pid = simulatorLaunchPid(await sim(['launch', id, receipt.applicationId, ...languageArgs]));
         await delay(2500, undefined, { signal: abort.signal });
@@ -607,12 +664,15 @@ export async function runNativeInstallRuntime(options = {}) {
       record('first-launch-ru-en-captures', 'PASS'); record('new-process-launch', 'PASS');
       await instrument('read', 'read-after-process');
       await instrument('preferences:read', 'read-after-process');
+      await iosChildInstrument('read',primaryChildId,'read-after-process');
       await sim(['shutdown', id]); await sim(['boot', id], 60_000); await sim(['bootstatus', id, '-b'], 60_000);
       await launch([]); record('system-restart-launch', 'PASS');
       await sim(['terminate', id, receipt.applicationId]); await instrument('read', 'read-after-system-restart');
       await instrument('preferences:read', 'read-after-system-restart');
+      await iosChildInstrument('read',primaryChildId,'read-after-system-restart');
       for (const phase of ['unsupported-language', 'unsupported-theme', 'parallel', 'plugin-failure', 'timeout', 'corrupt', 'remove']) await instrument('preferences:' + phase);
       await instrument('parallel'); await instrument('corrupt'); await instrument('remove'); await instrument('absent');
+      await finishChildDataFixtures(iosChildInstrument);
       await sim(['uninstall', id, receipt.applicationId]); await sim(['install', id, binary], 60_000); await launch([]);
       record('clean-reinstall-launch', 'PASS');
       await sim(['terminate', id, receipt.applicationId]); await instrument('absent', 'absent-after-clean-reinstall');
@@ -627,6 +687,14 @@ export async function runNativeInstallRuntime(options = {}) {
     return report;
   } catch (error) { report.status = abort.signal.aborted ? 'NOT_RUN' : 'FAIL'; report.failure = error.message; return report; }
   finally {
+    for (const fixtureId of [...childFixtureIds]) {
+      try {
+        if (platform === 'android' && ownedTestInstall && installedAndroidGeneration === 'current') await androidChildData('clear',fixtureId,'cleanup-' + fixtureId,true);
+        else if (platform === 'ios' && ownedSimulator && iosChildInstrument) await iosChildInstrument('clear',fixtureId,'cleanup-' + fixtureId,true);
+        else throw new Error('Owned child-data fixture is no longer reachable.');
+        report.cleanup['childDataFixtureRemoved-' + fixtureId] = true;
+      } catch { report.cleanup['childDataFixtureRemoved-' + fixtureId] = false; }
+    }
     if (ownedAndroidInstall) {
       if (ownedTestInstall) { try { if (legacyPreferenceSeeded || installedAndroidGeneration === 'previous') await androidPreviousPreference('remove',true);
         else await androidInstrument('clear', true, true); report.cleanup.preferenceFixtureRemoved = true; } catch { report.cleanup.preferenceFixtureRemoved = false; } }

@@ -88,6 +88,9 @@ final class PlanetChildDataStore {
         private Lease(PlanetChildDataStore owner, Scope scope, long generation, String nonce) {
             this.owner = owner; this.scope = scope; this.generation = generation; this.nonce = nonce;
         }
+        // Partition metadata only; the opaque constructor and owner stay private.
+        long partitionGeneration() { return generation; }
+        String partitionNonce() { return nonce; }
     }
     static final class Cancellation {
         private final PlanetChildDataStore owner; private final Lease lease; private final long deadline;
@@ -296,6 +299,15 @@ final class PlanetChildDataStore {
     }
     Cancellation operation(Lease lease, long timeoutMs) throws Exception {
         require(timeoutMs>0 && timeoutMs<=60000); return locked(directory->{ try(State state=read(directory)) { live(lease,state); long now=SystemClock.elapsedRealtime(); require(now>=0 && now<=MAX_SAFE-timeoutMs); return new Cancellation(this,lease,now+timeoutMs); } });
+    }
+    // Native continuous operation budget only; never trusted review/PIN time.
+    Cancellation operationUntil(Lease lease, long deadlineMs) throws Exception {
+        require(deadlineMs > 0 && deadlineMs <= MAX_SAFE);
+        return locked(directory -> { try (State state = read(directory)) {
+            live(lease,state); long now = SystemClock.elapsedRealtime();
+            require(now >= 0 && now < deadlineMs && deadlineMs - now <= 60000);
+            return new Cancellation(this,lease,deadlineMs);
+        } });
     }
     void cancel(Cancellation cancellation) throws Exception { require(cancellation!=null && cancellation.owner==this); locked(directory->{ cancellation.cancelled=true; return null; }); }
     private void check(Cancellation cancellation, Lease lease, State state) throws Exception { live(lease,state); require(cancellation.owner==this && cancellation.lease==lease && cancellation.used && !cancellation.cancelled

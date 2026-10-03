@@ -24,6 +24,8 @@
 		9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9582B6822FE993A50072D4E8 /* SceneDelegate.swift */; };
         D4B120261003000000000040 /* PlanetChildDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000041 /* PlanetChildDataStore.swift */; };
         D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */; };
+        D4B120261003000000000050 /* PlanetChildDataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000051 /* PlanetChildDataTransport.swift */; };
+        D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		958DCC722DB07C7200EA8C5F /* debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = debug.xcconfig; path = ../debug.xcconfig; sourceTree = SOURCE_ROOT; };
         D4B120261003000000000041 /* PlanetChildDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildDataStore.swift; sourceTree = "<group>"; };
         D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildDataStoreRuntimeTests.swift; sourceTree = "<group>"; };
+        D4B120261003000000000051 /* PlanetChildDataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildDataTransport.swift; sourceTree = "<group>"; };
+        D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildDataTransportRuntimeTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +79,7 @@
 /* Begin PBXGroup section */
 		D4B120261002000000000012 /* AppSecureStorageTests */ = {
 			isa = PBXGroup;
-			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */,);
+			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */,);
 			path = AppSecureStorageTests;
 			sourceTree = "<group>";
 		};
@@ -108,6 +112,7 @@
                 D4B120261002000000000002 /* PlanetSecureStorePlugin.swift */,
                 D4B120261002000000000031 /* PlanetChildVault.swift */,
                 D4B120261003000000000041 /* PlanetChildDataStore.swift */,
+                D4B120261003000000000051 /* PlanetChildDataTransport.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -214,7 +219,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
 		504EC3001FED79650016851F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -224,6 +229,7 @@
                 D4B120261002000000000001 /* PlanetSecureStorePlugin.swift in Sources */,
                 D4B120261002000000000030 /* PlanetChildVault.swift in Sources */,
                 D4B120261003000000000040 /* PlanetChildDataStore.swift in Sources */,
+                D4B120261003000000000050 /* PlanetChildDataTransport.swift in Sources */,
 				9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

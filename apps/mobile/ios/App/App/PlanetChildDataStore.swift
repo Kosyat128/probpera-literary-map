@@ -48,6 +48,9 @@ final class PlanetChildDataStore {
     final class Lease {
         fileprivate weak var owner: PlanetChildDataStore?
         fileprivate let scope: Scope, generation: UInt64, nonce: String
+        // Partition metadata only; owner and constructor remain fileprivate.
+        var partitionGeneration: UInt64 { generation }
+        var partitionNonce: String { nonce }
         fileprivate init(owner: PlanetChildDataStore, scope: Scope, generation: UInt64, nonce: String) { self.owner = owner; self.scope = scope; self.generation = generation; self.nonce = nonce }
     }
     final class Cancellation {
@@ -286,6 +289,16 @@ final class PlanetChildDataStore {
     func operation(_ lease: Lease, timeoutMs: UInt64) throws -> Cancellation {
         try Self.require(timeoutMs > 0 && timeoutMs <= 60000); return try locked { directory in let state = try read(directory); defer { state.wipe() }; try live(lease,state:state)
             let now = try Self.now(); try Self.require(now <= Self.maxSafe-timeoutMs); return Cancellation(owner:self,lease:lease,deadline:now+timeoutMs) }
+    }
+    // Native continuous operation budget only; never trusted review/PIN time.
+    static func partitionNowMs() throws -> UInt64 { try now() }
+    func operationUntil(_ lease: Lease, deadlineMs: UInt64) throws -> Cancellation {
+        try Self.require(deadlineMs > 0 && deadlineMs <= Self.maxSafe)
+        return try locked { directory in
+            let state = try read(directory); defer { state.wipe() }; try live(lease,state:state)
+            let now = try Self.now(); try Self.require(now < deadlineMs && deadlineMs - now <= 60000)
+            return Cancellation(owner:self,lease:lease,deadline:deadlineMs)
+        }
     }
     func cancel(_ cancellation: Cancellation) throws { try Self.require(cancellation.owner === self); try locked { _ in cancellation.cancelled = true } }
     private func check(_ cancellation: Cancellation, lease: Lease, state: State) throws { try live(lease,state:state); try Self.require(try cancellation.owner === self && cancellation.lease === lease && cancellation.used && !cancellation.cancelled && !Thread.current.isCancelled && Self.now() < cancellation.deadline) }
