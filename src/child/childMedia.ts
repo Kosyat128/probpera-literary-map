@@ -195,10 +195,14 @@ export function createChildMediaLoader(options: ChildMediaOptions) {
       const host = hostCurrent(operation.context) === true;
       const ready = snapshot().phase === "ready", checkedAt = now();
       const finalContext = checkedAt === null ? null : copyContext(context(), checkedAt);
+      // The final context callback may consume validity or retire this request.
+      // Sample time last, then fence clock reentry without another host callback.
+      const completedAt = now();
       return !!latest && JSON.stringify(latest) === JSON.stringify(operation.context) && !!finalContext
         && JSON.stringify(finalContext) === JSON.stringify(operation.context) && host && ready
-        && checkedAt !== null && checkedAt < operation.deadline && checkedAt < operation.context.validUntilEpochMs && checkedAt < exclusiveLimit
-        && active === operation && operation.generation === generation && !operation.abort.signal.aborted && !operation.external.aborted;
+        && completedAt !== null && completedAt < operation.deadline && completedAt < operation.context.validUntilEpochMs && completedAt < exclusiveLimit
+        && active === operation && operation.generation === generation && !disposed && !brokenClock && visible
+        && !operation.abort.signal.aborted && !operation.external.aborted;
     } catch { return false; }
   }
   function policyCurrent(row: ChildIndexedEntity, captured: ChildRouteChallenge, at: number): boolean {

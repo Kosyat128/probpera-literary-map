@@ -230,21 +230,111 @@ describe("media lifecycle, exact context and delivery fencing", () => {
     expect(await pending).toBe(false); expect(visitor).not.toHaveBeenCalled();
   });
   it("rechecks context and review expiry after synchronous trusted-port callbacks", async () => {
-    const f = fixture(); await f.admit(); let change = false;
+    const f = fixture(); await f.admit(); let change = false, observedCurrent: boolean | undefined;
     const loader = createChildMediaLoader({ ...f.options, isCurrent: captured => {
       const admitted = f.options.isCurrent(captured);
       if (change) f.state.context = { ...f.state.context!, generation: 2 };
       return admitted;
     } });
-    f.inventory.read.mockImplementationOnce(async request => { change = true; expect(request.isCurrent()).toBe(false); return f.mediaBytes; });
+    f.inventory.read.mockImplementationOnce(async request => { change = true; observedCurrent = request.isCurrent(); return f.mediaBytes; });
     const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
-    expect(visitor).not.toHaveBeenCalled();
-    const g = fixture(); await g.admit(); g.state.reviewUntil = initialTime + 2;
+    expect(observedCurrent).toBe(false); expect(visitor).not.toHaveBeenCalled();
+    const g = fixture(); await g.admit(); g.state.reviewUntil = initialTime + 2; let observedExpiringCurrent: boolean | undefined;
     const expiring = createChildMediaLoader({ ...g.options, isCurrent: captured => {
       const admitted = g.options.isCurrent(captured); if (change) g.state.time = initialTime + 2; return admitted;
     } });
-    change = false; g.inventory.read.mockImplementationOnce(async request => { change = true; expect(request.isCurrent()).toBe(false); return g.mediaBytes; });
-    expect(await expiring.visitMedia(g.input, new AbortController().signal, visitor)).toBe(false); expect(visitor).not.toHaveBeenCalled();
+    change = false; g.inventory.read.mockImplementationOnce(async request => { change = true; observedExpiringCurrent = request.isCurrent(); return g.mediaBytes; });
+    expect(await expiring.visitMedia(g.input, new AbortController().signal, visitor)).toBe(false);
+    expect(observedExpiringCurrent).toBe(false); expect(visitor).not.toHaveBeenCalled();
+  });
+  it.each(["review", "manifest", "context", "deadline"] as const)("denies an inventory lease when the final context callback consumes its %s expiry", async bound => {
+    const f = fixture(); await f.admit(); let armed = false, observedCurrent: boolean | undefined, observedTime: number | undefined;
+    const limit = bound === "deadline" ? initialTime + 100 : bound === "context" ? initialTime + 60_000 : initialTime + 2;
+    if (bound === "review") f.state.reviewUntil = limit;
+    if (bound === "manifest") (f.manifest as { validUntilEpochMs: number }).validUntilEpochMs = limit;
+    const loader = createChildMediaLoader({ ...f.options, timeoutMs: bound === "context" ? 120_000 : 100, context() {
+      if (armed) f.state.time += (limit - initialTime) / 2;
+      return f.state.context;
+    } });
+    f.inventory.read.mockImplementationOnce(async request => {
+      armed = true; observedCurrent = request.isCurrent(); observedTime = f.state.time;
+      armed = false; return f.mediaBytes;
+    });
+    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
+    expect(observedCurrent).toBe(false); expect(observedTime).toBe(limit);
+    expect(f.inventory.read).toHaveBeenCalledTimes(1); expect(visitor).not.toHaveBeenCalled();
+    expect(loader.getSnapshot()).toEqual({ phase: "sealed" });
+  });
+  it.each(["rollback", "invalid", "throw"] as const)("denies an inventory lease when the final context callback causes a %s clock failure", async fault => {
+    const f = fixture(); await f.admit(); let armed = false, contextReads = 0, failClock = false;
+    let observedCurrent: boolean | undefined, observedTime: number | undefined, observedThrow: boolean | undefined;
+    const loader = createChildMediaLoader({ ...f.options, context() {
+      if (armed && ++contextReads === 2) {
+        armed = false;
+        if (fault === "rollback") f.state.time--;
+        else if (fault === "invalid") f.state.time = NaN;
+        else failClock = true;
+      }
+      return f.state.context;
+    }, clock: { nowEpochMs() {
+      if (failClock) throw new Error("synthetic-final-context-clock-detail");
+      return f.state.time;
+    } } });
+    f.inventory.read.mockImplementationOnce(async request => {
+      armed = true; observedCurrent = request.isCurrent(); observedTime = f.state.time; observedThrow = failClock;
+      return f.mediaBytes;
+    });
+    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
+    expect(observedCurrent).toBe(false);
+    if (fault === "invalid") expect(observedTime).toBeNaN();
+    else if (fault === "rollback") expect(observedTime).toBe(initialTime - 1);
+    else expect(observedThrow).toBe(true);
+    expect(visitor).not.toHaveBeenCalled(); expect(loader.getSnapshot()).toEqual({ phase: "sealed" });
+    f.state.time = initialTime; failClock = false;
+    expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
+    expect(f.inventory.read).toHaveBeenCalledTimes(1); expect(visitor).not.toHaveBeenCalled();
+  });
+  it.each(["retire", "start"] as const)("denies the old inventory lease after final-clock reentry into %s and preserves any replacement", async action => {
+    const f = fixture(); await f.admit(); let armed = false, contextReads = 0, reenter = false;
+    let observedCurrent: boolean | undefined, clockAction: typeof action | undefined, observedAction: typeof action | undefined;
+    let replacement: Promise<boolean> | undefined; const replacementVisitor = vi.fn();
+    const loader = createChildMediaLoader({ ...f.options, context() {
+      if (armed && ++contextReads === 2) { armed = false; reenter = true; }
+      return f.state.context;
+    }, clock: { nowEpochMs() {
+      if (reenter) {
+        reenter = false; clockAction = action;
+        if (action === "retire") loader.retire();
+        else replacement = loader.visitMedia(f.input, new AbortController().signal, replacementVisitor);
+      }
+      return f.state.time;
+    } } });
+    f.inventory.read.mockImplementationOnce(async request => {
+      armed = true; observedCurrent = request.isCurrent(); observedAction = clockAction; return f.mediaBytes;
+    });
+    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
+    expect(observedCurrent).toBe(false); expect(observedAction).toBe(action);
+    expect(visitor).not.toHaveBeenCalled();
+    if (action === "start") {
+      expect(await replacement).toBe(true); expect(replacementVisitor).toHaveBeenCalledTimes(1);
+      expect(replacementVisitor.mock.calls[0][0].bytes).toEqual(f.mediaBytes);
+      expect(f.inventory.read).toHaveBeenCalledTimes(2);
+    } else expect(replacementVisitor).not.toHaveBeenCalled();
+    expect(loader.getSnapshot()).toEqual({ phase: "sealed" });
+  });
+  it("keeps an inventory lease current when the final context callback consumes time within all original limits", async () => {
+    const f = fixture(); await f.admit(); f.state.reviewUntil = initialTime + 10; let armed = false;
+    const loader = createChildMediaLoader({ ...f.options, context() {
+      if (armed) f.state.time++;
+      return f.state.context;
+    } });
+    f.inventory.read.mockImplementationOnce(async request => {
+      armed = true; expect(request.isCurrent()).toBe(true); expect(f.state.time).toBe(initialTime + 2);
+      armed = false; return f.mediaBytes;
+    });
+    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(true);
+    expect(visitor).toHaveBeenCalledTimes(1); expect(visitor.mock.calls[0][0].validUntilEpochMs).toBe(initialTime + 10);
+    expect(visitor.mock.calls[0][0].bytes).toEqual(f.mediaBytes);
   });
   it("charges no admission from rollback, unknown clocks or expired review/manifest intervals", async () => {
     for (const time of [initialTime - 1, NaN, Infinity, initialTime + 60_000]) {

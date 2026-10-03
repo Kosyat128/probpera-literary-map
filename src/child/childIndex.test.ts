@@ -253,6 +253,161 @@ describe("actual verified child index and distinct scoped data ports", () => {
   });
 });
 
+describe("child index synchronous host-callback validity", () => {
+  it.each(["source", "review"] as const)("settles a hung %s at the original timer deadline after pre-scheduling host work", async phase => {
+    vi.useFakeTimers(); vi.setSystemTime(initialTime);
+    const f = fixture(), late = deferred<unknown>();
+    let outsideInspection = true, consume = true, outcome: unknown;
+    if (phase === "source") f.source.load.mockImplementationOnce(() => late.promise);
+    else f.review.verify.mockImplementationOnce(() => late.promise);
+    const index = createVerifiedChildIndex({ ...f.options, clock: { nowEpochMs: () => Date.now() }, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured);
+      // The first inspection precedes the bounded operation. Spend time in
+      // its subsequent pre-scheduling host inspection without restarting it.
+      if (outsideInspection) outsideInspection = false;
+      else if (consume) { consume = false; vi.advanceTimersByTime(40); }
+      return admitted;
+    } });
+    const pending = index.packagePort.verify(f.challenge, new AbortController().signal);
+    void pending.then(value => { outcome = value; });
+    await settle();
+    expect(Date.now()).toBe(initialTime + 40);
+    expect(f.source.load).toHaveBeenCalledTimes(1);
+    expect(f.review.verify).toHaveBeenCalledTimes(phase === "source" ? 0 : 1);
+    expect(outcome).toBeUndefined();
+    await vi.advanceTimersByTimeAsync(59);
+    expect(Date.now()).toBe(initialTime + 99); expect(outcome).toBeUndefined();
+    await vi.advanceTimersByTimeAsync(1);
+    expect(Date.now()).toBe(initialTime + 100);
+    expect(await pending).toEqual({ status: "unavailable", challenge: f.challenge });
+    expect(outcome).toEqual({ status: "unavailable", challenge: f.challenge });
+    late.reject(new Error("synthetic-late-original-deadline")); await settle();
+    expect(index.getSnapshot()).toEqual({ phase: "sealed" }); index.dispose();
+  });
+
+  it.each(["package", "review"] as const)("seals getSnapshot when host inspection consumes exclusive %s validity", async boundary => {
+    const f = fixture(); if (boundary === "review") f.state.reviewUntil = initialTime + 2;
+    let consume = false, limit = 0;
+    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured);
+      if (consume) { consume = false; f.state.time = limit; }
+      return admitted;
+    } });
+    const proof = await index.packagePort.verify(f.challenge, new AbortController().signal);
+    expect(proof).toMatchObject({ status: "verified" });
+    limit = (proof as { validUntilEpochMs: number }).validUntilEpochMs; consume = true;
+    expect(index.getSnapshot()).toEqual({ phase: "sealed" });
+    index.dispose();
+  });
+
+  it.each(["review", "operation"] as const)("denies scoped commit authority if its final host callback consumes %s validity", async boundary => {
+    const f = fixture(); let consume = false, observedCurrent: boolean | undefined;
+    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured);
+      if (consume) { consume = false; f.state.time = boundary === "review" ? f.state.reviewUntil : initialTime + 100; }
+      return admitted;
+    } });
+    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
+    f.ports.history.read.mockImplementationOnce(async request => {
+      consume = true; observedCurrent = request.isCurrent(); return { revision: 0, value: null };
+    });
+    const visitor = vi.fn();
+    expect(await index.visitHistory(visitor)).toBe(false);
+    expect(observedCurrent).toBe(false);
+    expect(visitor).not.toHaveBeenCalled();
+    expect(index.getSnapshot()).toEqual({ phase: "sealed" });
+    index.dispose();
+  });
+
+  it.each(["review", "operation"] as const)("never hands content to a visitor after synchronous host work exhausts %s validity", async boundary => {
+    let deliveries = 0;
+    // Sweep the available budget, without depending on a fixed host-call count.
+    for (let budget = 1; budget <= 16; budget++) {
+      const f = fixture(); if (boundary === "review") f.state.reviewUntil = initialTime + budget;
+      let consuming = false, firstObservedAt: number | null = null, observedAt: number | null = null;
+      const index = createVerifiedChildIndex({ ...f.options, timeoutMs: boundary === "operation" ? budget : 100,
+        isCurrent: captured => {
+          const admitted = f.options.isCurrent(captured);
+          if (consuming) { f.state.time++; if (firstObservedAt === null) firstObservedAt = f.state.time; }
+          return admitted;
+        } });
+      expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
+      consuming = true;
+      const visitor = vi.fn(() => { observedAt = f.state.time; });
+      await index.visitEntity(f.work, visitor);
+      if (visitor.mock.calls.length) {
+        deliveries++;
+        const limit = boundary === "review" ? f.state.reviewUntil : firstObservedAt! + budget;
+        expect(observedAt, boundary + " remaining budget " + budget).toBeLessThan(limit);
+      }
+      consuming = false; index.dispose();
+    }
+    expect(deliveries).toBeGreaterThan(0);
+  });
+
+  it.each(["rollback", "throw"] as const)("seals a clock that fails after host inspection by %s", async failure => {
+    const f = fixture(); let arm = false, failClock = false;
+    const index = createVerifiedChildIndex({ ...f.options, clock: { nowEpochMs() {
+      if (failClock) throw new Error("synthetic-post-host-clock-detail"); return f.state.time;
+    } }, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured);
+      if (arm) { arm = false; if (failure === "rollback") f.state.time--; else failClock = true; }
+      return admitted;
+    } });
+    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
+    arm = true; expect(index.getSnapshot()).toEqual({ phase: "sealed" });
+    failClock = false; f.state.time = initialTime;
+    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "unavailable" });
+    index.dispose();
+  });
+
+  it("preserves a newer admission reentered by the post-host clock", async () => {
+    const f = fixture(); let arm = false, reenter = false, replacement: Promise<unknown> | null = null;
+    const index = createVerifiedChildIndex({ ...f.options, clock: { nowEpochMs() {
+      if (reenter) {
+        reenter = false; f.state.current = { ...f.challenge, generation: 2 };
+        replacement = index.packagePort.verify(f.state.current, new AbortController().signal);
+      }
+      return f.state.time;
+    } }, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured);
+      if (arm) { arm = false; reenter = true; }
+      return admitted;
+    } });
+    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
+    arm = true; expect(index.getSnapshot()).toEqual({ phase: "loading" });
+    expect(replacement).not.toBeNull(); expect(await replacement).toMatchObject({ status: "verified" });
+    expect(index.getSnapshot()).toEqual({ phase: "ready" }); index.dispose();
+  });
+
+  it("preserves a newer admission reentered directly by host inspection", async () => {
+    const f = fixture(); let arm = false, replacement: Promise<unknown> | null = null;
+    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured);
+      if (arm) {
+        arm = false; f.state.current = { ...f.challenge, generation: 2 };
+        replacement = index.packagePort.verify(f.state.current, new AbortController().signal);
+      }
+      return admitted;
+    } });
+    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
+    arm = true; expect(index.getSnapshot()).toEqual({ phase: "loading" });
+    expect(await replacement).toMatchObject({ status: "verified" });
+    expect(index.getSnapshot()).toEqual({ phase: "ready" }); index.dispose();
+  });
+
+  it("retains readiness when synchronous host work stays within the original validity", async () => {
+    const f = fixture(); let consume = false;
+    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
+      const admitted = f.options.isCurrent(captured); if (consume) f.state.time++; return admitted;
+    } });
+    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
+    consume = true; expect(index.getSnapshot()).toEqual({ phase: "ready" });
+    const visitor = vi.fn(); expect(await index.visitEntity(f.work, visitor)).toBe(true);
+    expect(visitor).toHaveBeenCalledOnce(); index.dispose();
+  });
+});
+
 describe("child scope generation, cancellation, bounded time and CAS races", () => {
   it("latches background without source I/O and requires explicit foreground plus fresh admission", async () => {
     const f = fixture(); await f.admit(); f.index.background(); const loads = f.source.load.mock.calls.length;

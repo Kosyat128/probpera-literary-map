@@ -230,6 +230,12 @@ export function createChildStartup(options: ChildStartupOptions) {
       try {
         const completion: unknown = callback(Object.freeze({ profile: captured.profile, scope: captured.scope, route: captured.request.route }));
         if (completion !== undefined) { void Promise.resolve(completion).catch(() => {}); return false; }
+        // The host may revoke or replace this view while receiving it. Check
+        // again after the callback and after the potentially reentrant clock.
+        if (ready !== captured || generation !== visitGeneration || disposed || brokenClock || !visible) return false;
+        const completedAt = now();
+        if (completedAt === null || ready !== captured || generation !== visitGeneration || disposed || brokenClock || !visible) return false;
+        if (completedAt >= captured.validUntilEpochMs) { seal("expired"); return false; }
         return true;
       } catch { return false; }
     },

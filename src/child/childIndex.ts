@@ -111,22 +111,35 @@ export function createVerifiedChildIndex(options: ChildIndexOptions) {
       lastNow = at; return at;
     } catch { brokenClock = true; retire(); return null; }
   }
+  function leaseCurrent(captured: Lease, allowLoading = false): boolean {
+    return !disposed && !brokenClock && visible && lease === captured && captured.generation === generation
+      && !captured.abort.signal.aborted && !captured.external.aborted
+      && (snapshot.phase === "ready" || allowLoading && snapshot.phase === "loading");
+  }
   function trustedCurrent(captured: Lease, allowLoading = false): boolean {
-    if (disposed || brokenClock || !visible || lease !== captured || captured.generation !== generation || captured.abort.signal.aborted
-      || captured.external.aborted || snapshot.phase !== "ready" && !(allowLoading && snapshot.phase === "loading")) return false;
+    if (!leaseCurrent(captured, allowLoading)) return false;
     const at = now(); if (at === null || at >= captured.validUntilEpochMs) { if (lease === captured) retire(); return false; }
+    if (!leaseCurrent(captured, allowLoading)) return false;
     let current = false;
     try { current = hostCurrent(captured.startup) === true; } catch { /* Unknown host authority denies. */ }
-    if (!current && lease === captured) retire();
-    return current && lease === captured && captured.generation === generation && !captured.abort.signal.aborted;
+    if (!current) { if (lease === captured) retire(); return false; }
+    if (!leaseCurrent(captured, allowLoading)) return false;
+    // Host inspection may consume validity or reenter another admission.
+    const completedAt = now();
+    if (!leaseCurrent(captured, allowLoading)) return false;
+    if (completedAt === null || completedAt >= captured.validUntilEpochMs) { if (lease === captured) retire(); return false; }
+    return true;
   }
   function operationCurrent(signal: AbortSignal): boolean {
     const deadline = operationDeadlines.get(signal), at = now();
     return !signal.aborted && deadline !== undefined && at !== null && at < deadline;
   }
   async function bounded<T>(signal: AbortSignal, current: () => boolean, task: (childSignal: AbortSignal) => Promise<T>): Promise<T | null> {
-    const at = now(); if (at === null || signal.aborted || !current()) return null;
+    const operationGeneration = generation, at = now();
+    if (at === null || signal.aborted || !current() || generation !== operationGeneration) return null;
     const deadline = at + timeoutMs; if (!epoch(deadline)) { retire(); return null; }
+    const validatedAt = now();
+    if (validatedAt === null || validatedAt >= deadline || signal.aborted || generation !== operationGeneration) return null;
     const abort = new AbortController(); operations.add(abort); operationDeadlines.set(abort.signal, deadline);
     return new Promise(resolve => {
       let settled = false;
@@ -135,34 +148,36 @@ export function createVerifiedChildIndex(options: ChildIndexOptions) {
         abort.signal.removeEventListener("abort", cancel); operations.delete(abort); operationDeadlines.delete(abort.signal); resolve(value);
       };
       const cancel = () => { if (!abort.signal.aborted) abort.abort(); finish(null); };
-      const timer = setTimeout(() => { abort.abort(); finish(null); }, timeoutMs);
+      const timer = setTimeout(() => { abort.abort(); finish(null); }, deadline - validatedAt);
       signal.addEventListener("abort", cancel, { once: true }); abort.signal.addEventListener("abort", cancel, { once: true });
       // Both branches consume late replies/rejections after timeout or retirement.
-      Promise.resolve().then(() => !signal.aborted && operationCurrent(abort.signal) && current() ? task(abort.signal) : null).then(value => {
+      Promise.resolve().then(() => !signal.aborted && operationCurrent(abort.signal) && current() && operationCurrent(abort.signal) ? task(abort.signal) : null).then(value => {
         const completedAt = now();
-        finish(!abort.signal.aborted && !signal.aborted && completedAt !== null && completedAt < deadline && current() ? value : null);
+        finish(!abort.signal.aborted && !signal.aborted && completedAt !== null && completedAt < deadline && current() && operationCurrent(abort.signal) ? value : null);
       }, () => finish(null));
     });
   }
   async function freshReview(captured: Lease, signal: AbortSignal, allowLoading = false): Promise<boolean> {
-    const at = now(); if (at === null || !operationCurrent(signal) || !trustedCurrent(captured, allowLoading)) return false;
+    const at = now(); if (at === null || !operationCurrent(signal) || !trustedCurrent(captured, allowLoading) || !operationCurrent(signal)) return false;
     const challenge: ChildReviewChallenge = Object.freeze({ startup: captured.startup, scope: captured.compiled.scope, nowEpochMs: at });
     const result = childRecord(await review(challenge, signal), ["status", "challenge", "validUntilEpochMs"]);
     const completedAt = now();
     if (!result || result.status !== "verified" || result.challenge !== challenge || !epoch(result.validUntilEpochMs)
       || completedAt === null || result.validUntilEpochMs <= completedAt || !trustedCurrent(captured, allowLoading) || !operationCurrent(signal)) return false;
     captured.validUntilEpochMs = Math.min(captured.validUntilEpochMs, result.validUntilEpochMs);
-    return trustedCurrent(captured, allowLoading);
+    return trustedCurrent(captured, allowLoading) && operationCurrent(signal);
   }
   function request(captured: Lease, purpose: ChildIndexPurpose, signal: AbortSignal, reference: ChildEntityReference | null = null, allowLoading = false): ChildScopedDataRequest {
     const base = childDataNamespace(captured.compiled.scope, purpose)!;
     return Object.freeze({ purpose, scope: captured.compiled.scope,
       key: reference ? `${base}/item/${reference.kind}/${reference.id}` : base, lease: captured.authority,
-      isCurrent: () => operationCurrent(signal) && trustedCurrent(captured, allowLoading) });
+      isCurrent: () => operationCurrent(signal) && trustedCurrent(captured, allowLoading) && operationCurrent(signal) });
   }
   function entity(captured: Lease, reference: ChildEntityReference): ChildIndexedEntity | null {
-    const row = captured.compiled.entities.find(candidate => referenceEqual(candidate.reference, reference)), at = now();
-    if (!row || at === null || !trustedCurrent(captured) || !childEntityAllowed(row, captured.compiled,
+    const row = captured.compiled.entities.find(candidate => referenceEqual(candidate.reference, reference));
+    if (!row || !trustedCurrent(captured)) return null;
+    const at = now();
+    if (at === null || !leaseCurrent(captured) || !childEntityAllowed(row, captured.compiled,
       { challenge: captured.startup, platform, territory, nowEpochMs: at })) return null;
     for (const link of row.payload.references) {
       const target = captured.compiled.entities.find(candidate => referenceEqual(candidate.reference, link));
@@ -183,17 +198,17 @@ export function createVerifiedChildIndex(options: ChildIndexOptions) {
   /** Synchronous handoff only. Promise/thenable returns are observed and denied;
    * an async host executor needs its own cancellation seam instead of this API. */
   function deliver<T>(captured: Lease, signal: AbortSignal, visitor: (value: T) => void, value: T): boolean {
-    if (!operationCurrent(signal) || !trustedCurrent(captured)) return false;
+    if (!operationCurrent(signal) || !trustedCurrent(captured) || !operationCurrent(signal)) return false;
     try {
       const completion: unknown = visitor(value);
       if (completion !== undefined) { void Promise.resolve(completion).catch(() => {}); return false; }
-      return operationCurrent(signal) && trustedCurrent(captured);
+      return operationCurrent(signal) && trustedCurrent(captured) && operationCurrent(signal);
     } catch { return false; }
   }
   async function action(task: (captured: Lease, signal: AbortSignal) => Promise<boolean>): Promise<boolean> {
     const captured = lease; if (!captured || !trustedCurrent(captured)) return false;
     const result = await bounded(captured.abort.signal, () => trustedCurrent(captured), async signal => {
-      if (!await freshReview(captured, signal) || !trustedCurrent(captured)) return false;
+      if (!await freshReview(captured, signal) || !trustedCurrent(captured) || !operationCurrent(signal)) return false;
       return task(captured, signal);
     });
     if (result !== true && lease === captured) retire();

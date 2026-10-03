@@ -502,6 +502,106 @@ describe("sealed child-only startup boundary", () => {
     expect(await startup.visitReady(vi.fn())).toBe(false);
   });
 
+  it.each(["invalidate", "background", "dispose"] as const)("rejects a ready-view handoff revoked synchronously by %s", async operation => {
+    const f = fixture(), startup = createChildStartup(f.options);
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    const visit = vi.fn(() => { startup[operation](); });
+    expect(await startup.visitReady(visit)).toBe(false);
+    expect(visit).toHaveBeenCalledTimes(1);
+    expect(startup.getSnapshot()).toEqual({ phase: operation === "dispose" ? "disposed" : "sealed" });
+  });
+
+  it("rejects a ready-view handoff replaced synchronously while preserving the new route", async () => {
+    const f = fixture(), startup = createChildStartup(f.options);
+    const nextIntent: ChildStartupRequest = { locale: "ru", route: { kind: "country", entityId: "synthetic-next-country" } };
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    let replacement: Promise<unknown> | undefined;
+    expect(await startup.visitReady(() => { replacement = startup.start(nextIntent); })).toBe(false);
+    expect(await replacement).toEqual({ status: "ready" });
+    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
+    const nextVisit = vi.fn();
+    expect(await startup.visitReady(nextVisit)).toBe(true);
+    expect(nextVisit.mock.calls[0][0].route).toEqual(nextIntent.route);
+  });
+
+  it("rejects a ready-view handoff across synchronous A to B to A replacement", async () => {
+    const f = fixture(), startup = createChildStartup(f.options);
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    let intermediate: Promise<unknown> | undefined, replacement: Promise<unknown> | undefined, handedGeneration = -1;
+    expect(await startup.visitReady(() => {
+      handedGeneration = f.route.mock.calls[f.route.mock.calls.length - 1][0].generation;
+      intermediate = startup.start({ locale: "ru", route: { kind: "country", entityId: "synthetic-intermediate-country" } });
+      replacement = startup.start(intent());
+    })).toBe(false);
+    expect(await intermediate).toEqual({ status: "cancelled" });
+    expect(await replacement).toEqual({ status: "ready" });
+    const current = f.route.mock.calls[f.route.mock.calls.length - 1][0];
+    expect(current.request).toEqual(intent());
+    expect(current.generation).toBeGreaterThan(handedGeneration);
+    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
+  });
+
+  it("rejects a ready-view handoff that reaches package expiry inside the callback", async () => {
+    const f = fixture(), startup = createChildStartup(f.options);
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    expect(await startup.visitReady(() => { f.state.time = f.state.validUntil; })).toBe(false);
+    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+    const lateVisit = vi.fn();
+    expect(await startup.visitReady(lateVisit)).toBe(false);
+    expect(lateVisit).not.toHaveBeenCalled();
+  });
+
+  it("rejects a ready-view handoff after synchronous clock rollback and keeps the clock sealed", async () => {
+    const f = fixture(), startup = createChildStartup(f.options);
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    expect(await startup.visitReady(() => { f.state.time--; })).toBe(false);
+    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+    f.state.time = initialTime;
+    expect(await startup.start(intent())).toEqual({ status: "sealed" });
+  });
+
+  it("rejects a ready-view handoff if its post-callback clock throws", async () => {
+    const f = fixture(); let failClock = false;
+    const startup = createChildStartup({ ...f.options, clock: { nowEpochMs() {
+      if (failClock) throw new Error("synthetic-post-callback-clock-detail");
+      return f.state.time;
+    } } });
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    expect(await startup.visitReady(() => { failClock = true; })).toBe(false);
+    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+    failClock = false;
+    expect(await startup.start(intent())).toEqual({ status: "sealed" });
+  });
+
+  it.each(["invalidate", "start"] as const)("rejects a ready-view handoff when its post-callback clock reenters %s", async operation => {
+    const f = fixture(); let reenter = false, replacement: Promise<unknown> | undefined;
+    const nextIntent: ChildStartupRequest = { locale: "ru", route: { kind: "writer", entityId: "synthetic-clock-writer" } };
+    const startup = createChildStartup({ ...f.options, clock: { nowEpochMs() {
+      if (reenter) {
+        reenter = false;
+        if (operation === "invalidate") startup.invalidate(); else replacement = startup.start(nextIntent);
+      }
+      return f.state.time;
+    } } });
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    expect(await startup.visitReady(() => { reenter = true; })).toBe(false);
+    if (operation === "invalidate") expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+    else {
+      expect(await replacement).toEqual({ status: "ready" });
+      expect(startup.getSnapshot()).toEqual({ phase: "ready" });
+      expect(f.route.mock.calls[f.route.mock.calls.length - 1][0].request.route).toEqual(nextIntent.route);
+    }
+  });
+
+  it("accepts a ready-view handoff after a synchronous callback within the original package validity", async () => {
+    const f = fixture(), startup = createChildStartup(f.options);
+    expect(await startup.start(intent())).toEqual({ status: "ready" });
+    const visit = vi.fn(() => { f.state.time++; });
+    expect(await startup.visitReady(visit)).toBe(true);
+    expect(visit).toHaveBeenCalledTimes(1);
+    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
+  });
+
   it("sanitizes throwing or asynchronous view callbacks without claiming a synchronous handoff", async () => {
     const f = fixture(), startup = createChildStartup(f.options);
     expect(await startup.start(intent())).toEqual({ status: "ready" });
