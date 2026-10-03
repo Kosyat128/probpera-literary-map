@@ -68,6 +68,46 @@ function mediaAttribution(asset) {
     + "Обработка: ориентация, уменьшение при необходимости, JPEG и удаление метаданных; без кадрирования.";
 }
 
+/** Keep the complete rights record above; the caption links to its source.
+ * Only remove the discovery formatter's known wrapper. Unfamiliar notices are
+ * retained verbatim, including custom attribution and disclaimer requirements.
+ */
+function captionAttribution(asset) {
+  const cc = NEWS_MEDIA_CC_LICENSES[asset.license];
+  // A portrait can be a painting. Keep the owner's approved neutral label.
+  const label = "Изображение";
+  const url = httpsUrl(asset.materialUrl) ? asset.materialUrl : asset.licenseEvidenceUrl;
+  let text = label;
+  const entities = [{ type: "text_link", offset: 0, length: label.length, url }];
+  // The approved Aksakov post uses this concise attribution unchanged.
+  if (!cc) return { text: `${label}: ${asset.credit}`, entities };
+  const copyright = asset.copyrightNotice || `© ${asset.author}`;
+  text += `: ${copyright}${copyright.includes(asset.author) ? "" : ` · ${asset.author}`}`;
+  let notices = asset.credit;
+  const titleMarker = `«${asset.materialTitle}». `;
+  const titleAt = notices.indexOf(titleMarker);
+  const commonsSuffix = `Wikimedia Commons: ${asset.materialUrl}.`;
+  if (/^(Архивный портрет|Из материала|Изображение к новости): /u.test(notices)
+    && titleAt >= 0 && notices.endsWith(commonsSuffix)) {
+    notices = notices.slice(titleAt + titleMarker.length, -commonsSuffix.length).trim();
+    if (notices.startsWith(`${copyright}.`)) notices = notices.slice(copyright.length + 1).trim();
+    if (notices === asset.author || notices === `${asset.author}.`) notices = "";
+  }
+  if (notices && notices !== copyright && notices !== asset.author) text += ` · ${notices}`;
+  text += " · ";
+  entities.push({ type: "text_link", offset: text.length, length: cc.name.length, url: cc.url });
+  // All admitted derivatives are resized/reencoded. A short modification notice
+  // replaces the implementation details (JPEG, orientation and metadata).
+  text += `${cc.name} · адаптировано`;
+  return { text, entities };
+}
+
+function equalCaptionAttribution(left, right) {
+  return left?.text === right?.text && left?.entities?.length === right?.entities?.length
+    && left.entities.every((entity, index) => ["type", "offset", "length", "url"]
+      .every(key => entity[key] === right.entities[index]?.[key]));
+}
+
 
 const missingMediaBytes = async () => { throw new Error("media_cache_unavailable"); };
 
@@ -79,7 +119,8 @@ export async function selectNewsMedia(newsId, destination, { registry: assets = 
   for (const asset of candidates) try {
     checkedNewsMediaAsset(asset, destination, newsId, now);
     if (!deferBytes) await readBytes(asset.derivative);
-    return { media: { assetId: asset.id, ...asset.derivative, credit: mediaAttribution(asset), sourceUrl: asset.sourceUrl,
+    return { media: { assetId: asset.id, ...asset.derivative, credit: mediaAttribution(asset),
+      captionAttribution: captionAttribution(asset), sourceUrl: asset.sourceUrl,
       sourceSha256: asset.sourceSha256, license: asset.license, licenseEvidenceUrl: asset.licenseEvidenceUrl,
       licenseEvidenceSha256: asset.licenseEvidenceSha256, checkedAt: asset.checkedAt, validUntil: asset.validUntil,
       entityEvidence: asset.entityEvidence, destination: { platform: destination.platform, id: destination.id } }, reason: null };
@@ -93,6 +134,7 @@ export async function validatePreparedNewsMedia(prepared, destination, { registr
   const asset = assets.assets.find((row) => row.id === media?.assetId);
   checkedNewsMediaAsset(asset, destination, prepared.newsId, now);
   if (!equalDescriptor(asset.derivative, media) || mediaAttribution(asset) !== media.credit
+    || media.captionAttribution && !equalCaptionAttribution(captionAttribution(asset), media.captionAttribution)
     || asset.sourceSha256 !== media.sourceSha256 || asset.licenseEvidenceSha256 !== media.licenseEvidenceSha256
     || media.destination?.platform !== destination.platform || media.destination?.id !== destination.id)
     fail("media_prepared_revision_invalid");

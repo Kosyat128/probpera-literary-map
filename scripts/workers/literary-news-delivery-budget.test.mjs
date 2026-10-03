@@ -59,7 +59,7 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
   };
   const fetchImpl=vi.fn(async(input,options={})=>{
     const url=new URL(input instanceof URL?input.href:typeof input==='string'?input:input.url);
-    expect(options.redirect).toBe('error');requests.push({invocation,path:url.pathname,origin:url.origin});
+    expect(options.redirect).toBe('manual');requests.push({invocation,path:url.pathname,origin:url.origin});
     expect(requests.filter(row=>row.invocation===invocation).length).toBeLessThanOrEqual(50);
     if(url.href===NATIVE_NEWS_ADMISSION_FEED_URL){
       const response=Response.json(feed,{headers:{'x-probpera-news-release':release}});
@@ -189,6 +189,13 @@ describe('native capture and dispatch under the real SDK external-request budget
     await expect(budget.fetch('https://fixture.example/read')).rejects.toThrow('delivery_request_budget_exhausted');
     expect(network).toHaveBeenCalledTimes(48);budget.beginHeartbeat();
     await budget.fetch('https://fixture.example/heartbeat-read');await budget.fetch('https://fixture.example/heartbeat-cas');
-    expect(budget.requests).toBe(50);expect(network.mock.calls.every(([,options])=>options.redirect==='error')).toBe(true);
+    expect(budget.requests).toBe(50);expect(network.mock.calls.every(([,options])=>options.redirect==='manual')).toBe(true);
+  });
+  it.each([301,302,303,307,308])('rejects HTTP%s without following the Location or exposing its response body',async status=>{
+    const cancel=vi.fn(),network=vi.fn(async()=>new Response(new ReadableStream({cancel}),
+      {status,headers:{Location:'https://untrusted.example/redirect'}})),budget=createDeliveryRequestBudget(network);
+    await expect(budget.fetch('https://fixture.example/read',{redirect:'error'})).rejects.toThrow('delivery_network_rejected');
+    expect(network).toHaveBeenCalledOnce();expect(cancel).toHaveBeenCalledOnce();
+    expect(budget.requests).toBe(1);expect(budget.providerWrites).toBe(0);
   });
 });

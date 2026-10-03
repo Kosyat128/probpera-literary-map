@@ -55,14 +55,18 @@ export async function newsSemanticRevision(item) {
   const { id, title, summary, source, category, kind, eventDate, publishedAt, eventKey } = item;
   return newsSocialPayloadDigest({ id, title, summary, source, category, kind, eventDate, publishedAt, eventKey });
 }
-function telegramPostText({ title, summary, dateLine, source, credit }) {
+function telegramPostText({ title, summary, dateLine, source, attribution }) {
   let text = `${title}\n\n${summary}${dateLine ? `\n\n${dateLine}` : ""}`;
   const entities = [{ type: "bold", offset: 0, length: title.length }];
   const visibleUrl = url => {
     entities.push({ type: "url", offset: text.length, length: url.length });
     text += url;
   };
-  if (credit) text += `\n\nИзображение: ${credit}`;
+  if (attribution) {
+    text += "\n\n";
+    entities.push(...attribution.entities.map(entity => ({ ...entity, offset: text.length + entity.offset })));
+    text += attribution.text;
+  }
   text += `\n\nИсточник: ${source.name}\n`; visibleUrl(source.url);
   text += "\n\nЛитературная повестка «Пробы пера»\n"; visibleUrl(NEWS_SECTION_URL);
   return { text, entities };
@@ -88,7 +92,7 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   const mediaPending = !media && resolution && resolution.status !== "held";
   if (!media && resolution) fallbackReason = `media_discovery_${resolution.status}:${resolution.reason || "asset_unavailable"}`;
   if (media) {
-    const photo = platform === "telegram" ? telegramPostText({ title, summary, dateLine, source: item.source, credit: media.credit }) : null;
+    const photo = platform === "telegram" ? telegramPostText({ title, summary, dateLine, source: item.source, attribution: media.captionAttribution }) : null;
     const caption = platform === "telegram" ? photo.text : `${text}\n\nИзображение: ${media.credit}`;
     if (caption.length > (platform === "telegram" ? 1024 : 16000)) {
       media = null; fallbackReason = "required_credit_or_caption_exceeds_limit";
@@ -98,11 +102,12 @@ export async function prepareNewsPost(item, snapshot, platform, { destination, m
   }
   const textRevision = await newsSemanticRevision(item);
   // A template edit must update an already sent post at its existing remote ID.
-  const formatRevision = platform === "telegram" ? "source-then-site-visible-urls-footer-v3" : "source-then-site-visible-links-v2";
+  const formatRevision = platform === "telegram" ? (media ? "compact-photo-credit-visible-urls-footer-v4" : "source-then-site-visible-urls-footer-v3") : "source-then-site-visible-links-v2";
   const messageRevision = formatRevision ? await newsSocialPayloadDigest({ textRevision, formatRevision }) : textRevision;
   // The durable identity is unchanged. A new asset or credit creates an edit revision.
   const revision = media ? await newsSocialPayloadDigest({ textRevision: messageRevision, media: {
     assetId: media.assetId, sha256: media.sha256, profile: media.profile, credit: media.credit,
+    ...(platform === "telegram" ? { captionAttribution: media.captionAttribution } : {}),
     licenseEvidenceSha256: media.licenseEvidenceSha256, destination: media.destination,
   } }) : messageRevision;
   return { contentKind: "news", newsId: item.id, platform, locale: "ru", profile: media ? "literary-news-photo-v1" : "literary-news-text-v1",

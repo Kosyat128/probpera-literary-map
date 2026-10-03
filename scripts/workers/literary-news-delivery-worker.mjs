@@ -59,7 +59,14 @@ export function createDeliveryRequestBudget(fetchImpl=fetch) {
       requests++;
       const target=new URL(input instanceof URL?input.href:typeof input==='string'?input:input.url);
       if(target.origin==='https://api.telegram.org'&&/\/(?:sendMessage|sendPhoto|editMessageText|editMessageMedia)$/.test(target.pathname))providerWrites++;
-      const response=await fetchImpl(input,{...options,redirect:'error'});
+      // Workers implements only follow/manual; redirect:error throws before the
+      // first SDK request and leaves no durable heartbeat. Reject the response
+      // explicitly instead, without following it or spending another request.
+      const response=await fetchImpl(input,{...options,redirect:'manual'});
+      if(response.status>=300&&response.status<400){
+        await response.body?.cancel().catch(()=>{});
+        fail('delivery_network_rejected');
+      }
       if(response.status===402)quota=true;
       return response;
     },

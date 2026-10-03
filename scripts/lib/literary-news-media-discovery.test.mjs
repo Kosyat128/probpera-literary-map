@@ -180,7 +180,7 @@ describe("bounded actual-portrait discovery, no provider uploads",()=>{
     const f=await fixture({LicenseShortName:{value:license}}),r=await resolveNewsMediaBatch([item],[destination],f.options);
     expect(r.report.held).toBe(1);expect(r.report.requests).toBe(2);expect(r.mediaOptions.registry.assets).toHaveLength(0);
   });
-  it('admits exact CC BY-SA 4.0 with same-license derivative and full visible attribution',async()=>{
+  it('admits exact CC BY-SA 4.0 with same-license derivative and compact linked attribution',async()=>{
     const f=await fixture({LicenseShortName:{value:'CC BY-SA 4.0'},LicenseUrl:{value:'https://creativecommons.org/licenses/by-sa/4.0/'},
       UsageTerms:{value:'Creative Commons Attribution-Share Alike 4.0'},ObjectName:{value:'Virginia Woolf portrait'}});
     const result=await resolveNewsMediaBatch([item],[destination],f.options),asset=result.mediaOptions.registry.assets[0];
@@ -189,8 +189,9 @@ describe("bounded actual-portrait discovery, no provider uploads",()=>{
       materialTitle:'Virginia Woolf portrait',materialUrl:'https://commons.wikimedia.org/?curid=123'});
     const p=await prepareNewsPost(item,{id:'test',release:'a'.repeat(40)},'telegram',{destination,mediaOptions:result.mediaOptions});
     expect(p.media).not.toBeNull();expect(p.payload.caption).toContain('Fixture Author');
-    expect(p.payload.caption).toContain('https://creativecommons.org/licenses/by-sa/4.0/');
-    expect(p.payload.caption).toContain('дополнительных ограничений нет');
+    expect(p.payload.caption_entities).toContainEqual(expect.objectContaining({type:'text_link',url:'https://creativecommons.org/licenses/by-sa/4.0/'}));
+    expect(p.payload.caption).toContain('CC BY-SA 4.0 · адаптировано');expect(p.payload.caption).not.toContain('JPEG');
+    expect(p.media.credit).toContain('дополнительных ограничений нет');
     await validatePreparedNewsMedia(p,destination,result.mediaOptions);
     delete asset.derivativeLicense;
     await expect(validatePreparedNewsMedia(p,destination,result.mediaOptions)).rejects.toThrow('media_sharealike_terms_missing');

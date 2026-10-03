@@ -10,6 +10,7 @@ import { createNewsSocialTransport } from "./literary-news-social-transport.mjs"
 import { buildPublishedNewsFeed } from "./literary-news-publication.mjs";
 import { pendingNewsSourceState } from "./literary-news-state.mjs";
 import socialConfiguration from "../../data/news/social-destinations.json" with {type:"json"};
+import approvedTelegram433 from "../fixtures/literary-news-telegram-approved-433.json" with {type:"json"};
 
 const now=new Date("2026-09-26T12:00:00Z");
 const telegram={platform:"telegram",id:"-100123",mode:"on"},vk={platform:"vk",id:"-456",mode:"on"};
@@ -110,12 +111,14 @@ describe("bounded media and destination rights",()=>{
     f.asset.status="approved";await expect(validatePreparedNewsMedia(f.prepared,telegram,{...f.mediaOptions,readBytes:async()=>Buffer.from("changed")})).rejects.toThrow("media_cache_bytes_changed");
     expect((await selectNewsMedia(item.id,telegram,{...f.mediaOptions,readBytes:async()=>{throw Error("missing");}})).reason).toBe("media_cache_unavailable");
   });
-  it("CC BY includes the creator, license URL and modification notice in the actual native caption",async()=>{
+  it("CC BY includes the creator, linked license and brief modification notice in the actual native caption",async()=>{
     const f=await fixture();f.asset.license="CC-BY-4.0";f.asset.author="Exact Creator";f.asset.credit="Архивное изображение.";
     const p=await prepareNewsPost(item,snapshot,"telegram",{destination:telegram,mediaOptions:f.mediaOptions});
-    expect(p.payload.caption).toContain("Exact Creator");expect(p.payload.caption).toContain('https://creativecommons.org/licenses/by/4.0/');
+    expect(p.payload.caption).toContain("Exact Creator");
+    expect(p.payload.caption_entities).toContainEqual(expect.objectContaining({type:'text_link',url:'https://creativecommons.org/licenses/by/4.0/'}));
     expect(p.media.credit).toContain('https://creativecommons.org/licenses/by/4.0/');
-    expect(p.payload.caption).toContain("без кадрирования");await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
+    expect(p.payload.caption).toContain("адаптировано");expect(p.payload.caption).not.toMatch(/JPEG|метаданных|без кадрирования/u);
+    await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
   });
   it('keeps the complete visible attribution, URLs and punctuation before the source/site footer',async()=>{
     const f=await fixture();f.asset.credit='Фото 😀 автора. Wikimedia: https://commons.wikimedia.org/?curid=123. Материал (https://publisher.example/work_(book));';
@@ -127,31 +130,71 @@ describe("bounded media and destination rights",()=>{
     expect(p.payload.caption.endsWith(`Источник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news`)).toBe(true);
     await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
   });
+  it('compacts a Commons photo to linked credit, preserving custom notices and exact source/site URLs',async()=>{
+    const f=await fixture();Object.assign(f.asset,{subject:'portrait',license:'CC-BY-SA-4.0',author:'Автор 😀',
+      materialTitle:'Portrait_2020.jpeg',materialUrl:'https://commons.wikimedia.org/?curid=123',copyrightNotice:'© Автор 😀',
+      derivativeLicense:'CC-BY-SA-4.0',additionalRestrictions:false,
+      credit:'Архивный портрет: Писатель. «Portrait_2020.jpeg». © Автор 😀. Обязательное упоминание музея. Wikimedia Commons: https://commons.wikimedia.org/?curid=123.'});
+    const p=await prepareNewsPost(item,snapshot,'telegram',{destination:telegram,mediaOptions:f.mediaOptions});
+    expect(p.formatRevision).toBe('compact-photo-credit-visible-urls-footer-v4');
+    expect(p.payload.caption).toContain('Изображение: © Автор 😀 · Обязательное упоминание музея. · CC BY-SA 4.0 · адаптировано');
+    expect(p.payload.caption).not.toMatch(/JPEG|jpeg|Wikimedia|метаданных|ограничений нет/u);
+    expect(p.media.credit).toContain('JPEG');expect(p.media.credit).toContain(f.asset.materialTitle);
+    const linked=p.payload.caption_entities.filter(e=>e.type==='text_link');
+    expect(linked.map(e=>[p.payload.caption.slice(e.offset,e.offset+e.length),e.url])).toEqual([
+      ['Изображение',f.asset.materialUrl],['CC BY-SA 4.0','https://creativecommons.org/licenses/by-sa/4.0/']]);
+    expect(p.payload.caption_entities.filter(e=>e.type==='url').map(e=>p.payload.caption.slice(e.offset,e.offset+e.length)))
+      .toEqual([item.source.url,'https://probpera.ru/#literary-news']);
+    expect(p.payload.caption.length).toBeLessThan(1024);
+    const reordered={...p,media:{...p.media,captionAttribution:{entities:p.media.captionAttribution.entities.map(({type,offset,length,url})=>({url,length,offset,type})),text:p.media.captionAttribution.text}}};
+    await validatePreparedNewsMedia(reordered,telegram,f.mediaOptions);
+    reordered.media.captionAttribution.text+=' altered';
+    await expect(validatePreparedNewsMedia(reordered,telegram,f.mediaOptions)).rejects.toThrow('media_prepared_revision_invalid');
+  });
+  it.each(['public-domain','CC0'])('preserves the exact approved Aksakov 433 caption with %s and one discreet image link',async license=>{
+    const f=await fixture();Object.assign(f.asset,{license,subject:'portrait',author:approvedTelegram433.author,
+      credit:approvedTelegram433.credit,licenseEvidenceUrl:approvedTelegram433.imageEvidenceUrl});
+    const approvedItem={...item,title:{ru:approvedTelegram433.title,en:item.title.en},
+      summary:{ru:approvedTelegram433.summary,en:item.summary.en},source:approvedTelegram433.source};
+    const p=await prepareNewsPost(approvedItem,snapshot,'telegram',{destination:telegram,mediaOptions:f.mediaOptions});
+    expect(p.payload.caption).toBe(approvedTelegram433.caption);
+    expect(p.payload.caption.length).toBe(618);expect(p.payload.show_caption_above_media).toBe(false);
+    expect(p.payload.caption).not.toMatch(/JPEG|метаданных|адаптировано|Архивное фото/u);
+    expect(p.media.credit).toBe(f.asset.credit);
+    const imageLink=p.payload.caption_entities.filter(e=>e.type==='text_link');
+    expect(imageLink).toHaveLength(1);expect(imageLink[0].url).toBe(f.asset.licenseEvidenceUrl);
+    expect(p.payload.caption.slice(imageLink[0].offset,imageLink[0].offset+imageLink[0].length)).toBe('Изображение');
+    expect(p.payload.caption_entities.filter(e=>e.type==='url').map(e=>p.payload.caption.slice(e.offset,e.offset+e.length)))
+      .toEqual([approvedTelegram433.source.url,'https://probpera.ru/#literary-news']);
+    await validatePreparedNewsMedia(p,telegram,f.mediaOptions);
+  });
 });
 
 describe("native photo delivery without duplicate creates",()=>{
-  it('reconciles the legacy photo footer and edits remote 431 once through the guarded dispatch',async()=>{
+  it.each(['source-then-site-visible-links-v2','source-then-site-visible-urls-footer-v3'])('reconciles %s and edits remote 431 once through the guarded dispatch',async(formatRevision)=>{
     const f=await setup(),original=(await f.store.read(f.key)).state;
-    const formatRevision='source-then-site-visible-links-v2';
     const messageRevision=await newsSocialPayloadDigest({textRevision:original.prepared.textRevision,formatRevision});
-    const m=original.prepared.media;
+    const {captionAttribution,...m}=original.prepared.media;
     const revision=await newsSocialPayloadDigest({textRevision:messageRevision,media:{assetId:m.assetId,sha256:m.sha256,
       profile:m.profile,credit:m.credit,licenseEvidenceSha256:m.licenseEvidenceSha256,destination:m.destination}});
-    const payload={...original.prepared.payload,caption:`${item.title.ru}\n\n${item.summary.ru}\n\nИсточник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news\n\nИзображение: ${m.credit}`};
+    const body=`${item.title.ru}\n\n${item.summary.ru}`,footer=`Источник: ${item.source.name}\n${item.source.url}\n\nЛитературная повестка «Пробы пера»\nhttps://probpera.ru/#literary-news`;
+    const payload={...original.prepared.payload,caption:formatRevision.endsWith('v3')
+      ? `${body}\n\nИзображение: ${m.credit}\n\n${footer}` : `${body}\n\n${footer}\n\nИзображение: ${m.credit}`};
     const firstAcknowledgedAt='2026-09-25T12:00:00Z';
     await f.store.seed(f.key,{...original,status:'sent_current',remoteId:'431',remoteMediaKind:'photo',firstAcknowledgedAt,
-      desiredRevision:revision,acknowledgedRevision:revision,prepared:{...original.prepared,formatRevision,revision,payload,payloadSha256:await newsSocialPayloadDigest(payload)}});
+      desiredRevision:revision,acknowledgedRevision:revision,prepared:{...original.prepared,media:m,formatRevision,revision,payload,payloadSha256:await newsSocialPayloadDigest(payload)}});
     await reconcileNewsSnapshot(f.store,await feed(),[telegram],now,{mediaOptions:f.mediaOptions});
     const corrected=(await f.store.read(f.key)).state;
     expect(corrected).toMatchObject({status:'correction_pending',remoteId:'431',firstAcknowledgedAt});
-    expect(corrected.desiredRevision).not.toBe(revision);expect(corrected.prepared.media).toEqual(m);
+    expect(corrected.desiredRevision).not.toBe(revision);expect(corrected.prepared.media).toMatchObject(m);
+    expect(corrected.prepared.media.captionAttribution).toEqual(captionAttribution);
     const fetchImpl=vi.fn(async()=>Response.json({ok:true,result:{message_id:431,chat:{id:-100123},photo:[{file_id:'fixture-photo'}]}}));
     const native=createNewsSocialTransport({mode:'live',telegramToken:'fixture',fetchImpl,mediaOptions:f.mediaOptions});
     const transport={...native,preflight:async()=>({ok:true,providerAccountId:'42'})};
     expect(await dispatchNewsJob({store:f.store,key:f.key,transport,now:()=>now})).toMatchObject({status:'sent_current',remoteId:'431'});
     expect(fetchImpl).toHaveBeenCalledTimes(1);expect(fetchImpl.mock.calls[0][0]).toContain('/editMessageMedia');
-    const body=fetchImpl.mock.calls[0][1].body,media=JSON.parse(body.get('media'));
-    expect(body.get('message_id')).toBe('431');expect(media.caption).toBe(corrected.prepared.payload.caption);
+    const requestBody=fetchImpl.mock.calls[0][1].body,media=JSON.parse(requestBody.get('media'));
+    expect(requestBody.get('message_id')).toBe('431');expect(media.caption).toBe(corrected.prepared.payload.caption);
     expect(media.caption_entities).toEqual(corrected.prepared.payload.caption_entities);
     expect((await f.store.read(f.key)).state).toMatchObject({remoteId:'431',firstAcknowledgedAt,acknowledgedRevision:corrected.desiredRevision});
     await dispatchNewsJob({store:f.store,key:f.key,transport,now:()=>now});expect(fetchImpl).toHaveBeenCalledTimes(1);
