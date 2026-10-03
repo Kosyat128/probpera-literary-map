@@ -15,6 +15,8 @@ export interface ChildProtectedRecord {
   readonly registryChecksum: string; readonly registry: ChildProfileRegistry; readonly pin: ParentPinRecord;
   readonly clock: ChildProtectedClockAnchor;
 }
+/** Pure shape only; native authentication is a separate mandatory dependency. */
+export type ChildProtectedUnenrolledSeed = Omit<ChildProtectedRecord, "mode" | "pin"> & Readonly<{ mode: "adult"; pin: null }>;
 export interface ChildNativeClockSample { readonly bootId: string; readonly uptimeMs: number }
 export interface ChildRecordReadChallenge { readonly generation: number }
 export interface ChildRecordCASChallenge extends ChildRecordReadChallenge {
@@ -116,8 +118,7 @@ function pinRecord(value: unknown, policyVersion: string, maximumIterations: num
     verifier: Object.freeze(verifier), attempts: Object.freeze(attempts) }) as unknown as ParentPinRecord;
   } catch { return null; }
 }
-/** Structural projection, not enrollment, freshness or OS/parent authority. */
-export function decodeChildProtectedRecord(value: unknown, policy: ChildProtectedStateOptions["policy"]): ChildProtectedRecord | null {
+function decodeProtectedEnvelope(value: unknown, policy: ChildProtectedStateOptions["policy"], unenrolled: boolean): ChildProtectedRecord | ChildProtectedUnenrolledSeed | null {
   try {
     const root = childRecord(value, ["schemaVersion", "revision", "mode", "selectionRevision", "profileRevision", "policyChecksum",
       "registryChecksum", "registry", "pin", "clock"]);
@@ -126,11 +127,12 @@ export function decodeChildProtectedRecord(value: unknown, policy: ChildProtecte
     // Metadata parsing intentionally supplies no current epoch admission. The
     // existing startup later requires a independently trusted current clock.
     const registry = decodeChildProfiles(root.registry, { policyVersion: policy.version, now: maximumEpochMs }).registry;
-    const pin = pinRecord(root.pin, policy.version, policy.maxPinIterations);
+    const pin = unenrolled ? null : pinRecord(root.pin, policy.version, policy.maxPinIterations);
     const clock = childRecord(root.clock, ["schemaVersion", "bootId", "uptimeAnchorMs", "logicalAnchorMs", "epochAnchor"]);
-    if (!registry || !pin || !clock || clock.schemaVersion !== 1 || !boot(clock.bootId) || !safe(clock.uptimeAnchorMs)
+    if (!registry || !unenrolled && !pin || unenrolled && (root.pin !== null || root.mode !== "adult")
+      || !clock || clock.schemaVersion !== 1 || !boot(clock.bootId) || !safe(clock.uptimeAnchorMs)
       || !safe(clock.logicalAnchorMs) || root.mode === "child" && registry.activeProfileId === null
-      || pin.attempts.lastObservedMs < clock.logicalAnchorMs) return null;
+      || pin !== null && pin.attempts.lastObservedMs < clock.logicalAnchorMs) return null;
     let epochAnchor: ChildProtectedClockAnchor["epochAnchor"] = null;
     if (clock.epochAnchor !== null) {
       const anchor = childRecord(clock.epochAnchor, ["epochAnchorMs", "validUntilEpochMs", "proofChecksum"]);
@@ -141,10 +143,19 @@ export function decodeChildProtectedRecord(value: unknown, policy: ChildProtecte
     return Object.freeze({ schemaVersion: 1, revision: root.revision, mode: root.mode, selectionRevision: root.selectionRevision,
       profileRevision: root.profileRevision, policyChecksum: policy.checksum, registryChecksum: root.registryChecksum, registry, pin,
       clock: Object.freeze({ schemaVersion: 1, bootId: clock.bootId, uptimeAnchorMs: clock.uptimeAnchorMs,
-        logicalAnchorMs: clock.logicalAnchorMs, epochAnchor }) });
+        logicalAnchorMs: clock.logicalAnchorMs, epochAnchor }) }) as ChildProtectedRecord | ChildProtectedUnenrolledSeed;
   } catch { return null; }
 }
-export function childProtectedRecordBytes(record: ChildProtectedRecord): Uint8Array {
+/** Structural projection, not enrollment, freshness or OS/parent authority. */
+export function decodeChildProtectedRecord(value: unknown, policy: ChildProtectedStateOptions["policy"]): ChildProtectedRecord | null {
+  return decodeProtectedEnvelope(value, policy, false) as ChildProtectedRecord | null;
+}
+/** Only an explicit canonical adult null-PIN envelope can be a seed. Missing,
+ * corrupt or an enrolled record is never interpreted as first enrollment. */
+export function decodeChildProtectedUnenrolledSeed(value: unknown, policy: ChildProtectedStateOptions["policy"]): ChildProtectedUnenrolledSeed | null {
+  return decodeProtectedEnvelope(value, policy, true) as ChildProtectedUnenrolledSeed | null;
+}
+export function childProtectedRecordBytes(record: ChildProtectedRecord | ChildProtectedUnenrolledSeed): Uint8Array {
   return new TextEncoder().encode(JSON.stringify(record));
 }
 type NativeSnapshot = { record: ChildProtectedRecord; bytes: Uint8Array; checksum: string; sample: ChildNativeClockSample; logicalMs: number };
@@ -369,3 +380,4 @@ export function createChildProtectedState(options: ChildProtectedStateOptions) {
     },
   });
 }
+
