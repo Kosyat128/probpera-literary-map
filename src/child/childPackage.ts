@@ -102,7 +102,8 @@ export function copyChildPackageChallenge(value: unknown, nowEpochMs: number): C
       || (route.kind === "home" ? route.entityId !== null : !id(route.entityId))) return null;
     const profile = decodeChildProfiles({ schemaVersion: 1, policyVersion: selection.policyVersion,
       activeProfileId: selection.profileId, profiles: [root.profile] }, { now: nowEpochMs, policyVersion: selection.policyVersion });
-    if (!profile.registry) return null;
+    if (!profile.registry || profile.registry.profiles[0].localeLocked === true
+      && profile.registry.profiles[0].locale !== request.locale) return null;
     return Object.freeze({ generation: root.generation, request: Object.freeze({ locale: request.locale,
       route: Object.freeze(route) }), selection: Object.freeze(selection), profile: profile.registry.profiles[0] }) as unknown as ChildPackageChallenge;
   } catch { return null; }

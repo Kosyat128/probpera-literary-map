@@ -12,7 +12,7 @@ export interface ChildSecureSelection {
   readonly selectionRevision: number;
   readonly profileId: string;
   readonly profileRevision: number;
-  /** Digest of the authenticated profile registry, including parent topic rules. */
+  /** Digest of the authenticated profile registry, including parent topic/locale rules. */
   readonly profileChecksum: string;
   readonly policyVersion: string;
   readonly policyChecksum: string;
@@ -163,7 +163,10 @@ export function createChildStartup(options: ChildStartupOptions) {
       decodeChildProfiles(profileProof.registry, { policyVersion: restored.policyVersion, now: at }) : null;
     if (!current(operation)) return;
     const profile = decoded?.registry?.profiles.find(row => row.id === restored.profileId);
-    if (!profile || decoded?.registry?.activeProfileId !== restored.profileId) { stop(operation, "sealed"); return; }
+    // Enforce the authenticated parent's locale rule before any package or
+    // route reader. Every start and ready-view revalidation uses this pipeline.
+    if (!profile || decoded?.registry?.activeProfileId !== restored.profileId ||
+      profile.localeLocked === true && profile.locale !== intent.locale) { stop(operation, "sealed"); return; }
     const policyProof = data(await policy(scoped, signal), ["status", "challenge"]);
     if (!current(operation)) return;
     if (policyProof?.status !== "verified" || policyProof.challenge !== scoped) { stop(operation, "sealed"); return; }

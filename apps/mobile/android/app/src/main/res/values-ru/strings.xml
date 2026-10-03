@@ -27,4 +27,7 @@
     <string name="native_pin_verify_expand_access_settings">Расширить доступ</string>
     <string name="native_pin_verify_enable_licensed_pack">Включить набор материалов</string>
     <string name="native_pin_verify_view_legal_commercial">Открыть правовую и коммерческую информацию</string>
+    <string name="native_owner_enroll_title">Подтвердите создание родительского PIN</string>
+    <string name="native_owner_recover_title">Подтвердите восстановление родительского PIN</string>
+    <string name="native_owner_device_credential_reason">Подтвердите действие кодом блокировки устройства.</string>
 </resources>

@@ -609,4 +609,122 @@ describe("sealed child-only startup boundary", () => {
     expect(await startup.visitReady(async () => { throw new Error("synthetic-async-view-detail"); })).toBe(false);
     expect(startup.getSnapshot()).toEqual({ phase: "ready" });
   });
+
+  it.each(["ru", "en"] as const)("seals a locked %s profile before policy, package or route reads in the other locale", async locale => {
+    const f = fixture(locale), startup = createChildStartup(f.options), visit = vi.fn();
+    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
+    const other = locale === "ru" ? "en" : "ru";
+    f.state.scope = { ...f.state.scope, locale: other };
+    expect(await startup.start(intent(other))).toEqual({ status: "sealed" });
+    expect(f.calls).toEqual(["mode", "profile"]);
+    expect(f.policy).not.toHaveBeenCalled();
+    expect(f.pack).not.toHaveBeenCalled();
+    expect(f.route).not.toHaveBeenCalled();
+    expect(await startup.visitReady(visit)).toBe(false);
+    expect(visit).not.toHaveBeenCalled();
+  });
+
+  it.each(["ru", "en"] as const)("passes the whole immutable locked %s profile only to independently verified readers", async locale => {
+    const f = fixture(locale), startup = createChildStartup(f.options), visit = vi.fn();
+    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
+    expect(await startup.start(intent(locale))).toEqual({ status: "ready" });
+    expect(f.pack.mock.calls[0][0].profile.localeLocked).toBe(true);
+    expect(Object.isFrozen(f.pack.mock.calls[0][0].profile)).toBe(true);
+    expect(await startup.visitReady(visit)).toBe(true);
+    expect(visit.mock.calls[0][0]).toMatchObject({ profile: { locale, localeLocked: true }, scope: { locale } });
+    expect(f.pack).toHaveBeenCalledTimes(2);
+    expect(f.route).toHaveBeenCalledTimes(2);
+  });
+
+  it("permits an absent or false lock to choose another locale but still requires that locale's package approval", async () => {
+    for (const localeLocked of [undefined, false]) {
+      for (const approved of [true, false]) {
+        const f = fixture("ru"), startup = createChildStartup(f.options);
+        if (localeLocked !== undefined) Object.assign(f.state.registry.profiles[0], { localeLocked });
+        f.state.scope = { ...f.state.scope, locale: "en" };
+        if (!approved) replaceProof(f, "pack", proof => ({ ...proof, status: "denied" }));
+        expect(await startup.start(intent("en"))).toEqual({ status: approved ? "ready" : "sealed" });
+        expect(f.pack).toHaveBeenCalledTimes(1);
+        expect(f.pack.mock.calls[0][0].profile.locale).toBe("ru");
+        expect(f.route).toHaveBeenCalledTimes(approved ? 1 : 0);
+      }
+    }
+  });
+
+  it("rechecks the parent's lock before every ready-view callback even when a profile port supplies stale selection coordinates", async () => {
+    const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
+    f.state.scope = { ...f.state.scope, locale: "en" };
+    expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
+    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
+    f.calls.length = 0;
+    expect(await startup.visitReady(visit)).toBe(false);
+    expect(f.calls).toEqual(["mode", "profile"]);
+    expect(f.pack).toHaveBeenCalledTimes(1);
+    expect(f.route).toHaveBeenCalledTimes(1);
+    expect(visit).not.toHaveBeenCalled();
+    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+  });
+
+  it("rejects a parent locale-lock revision changed while an otherwise approved route is pending", async () => {
+    const f = fixture("ru"), startup = createChildStartup(f.options);
+    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
+    f.route.mockImplementationOnce(async challenge => {
+      f.state.registry.profiles[0].locale = "en";
+      f.state.selection = { ...f.state.selection, selectionRevision: 2, profileRevision: 2, profileChecksum: checksum("d") };
+      return { status: "verified", challenge };
+    });
+    expect(await startup.start(intent("ru"))).toEqual({ status: "sealed" });
+    expect(f.mode).toHaveBeenCalledTimes(2);
+    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+  });
+
+  it("restores the lock freshly after background and foreground instead of resuming an unlocked locale", async () => {
+    const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
+    f.state.scope = { ...f.state.scope, locale: "en" };
+    expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
+    startup.background();
+    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
+    f.state.selection = { ...f.state.selection, selectionRevision: 2, profileRevision: 2, profileChecksum: checksum("d") };
+    expect(await startup.start(intent("en"))).toEqual({ status: "sealed" });
+    startup.foreground(); f.calls.length = 0;
+    expect(await startup.visitReady(visit)).toBe(false);
+    expect(await startup.start(intent("en"))).toEqual({ status: "sealed" });
+    expect(f.calls).toEqual(["mode", "profile"]);
+    expect(f.pack).toHaveBeenCalledTimes(1);
+    expect(f.route).toHaveBeenCalledTimes(1);
+    expect(visit).not.toHaveBeenCalled();
+    f.state.scope = { ...f.state.scope, locale: "ru", profileRevision: 2 };
+    expect(await startup.start(intent("ru"))).toEqual({ status: "ready" });
+  });
+
+  it("does not publish an old unlocked locale after a new locked profile supersedes its pending restoration", async () => {
+    const f = fixture("ru"), startup = createChildStartup(f.options), entered = deferred<ChildSelectionChallenge>(), late = deferred<unknown>();
+    const oldRegistry = clone(f.state.registry);
+    f.state.scope = { ...f.state.scope, locale: "en" };
+    f.profile.mockImplementationOnce(challenge => { entered.resolve(challenge); return late.promise; });
+    const old = startup.start(intent("en")), oldChallenge = await entered.promise;
+    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
+    f.state.selection = { ...f.state.selection, selectionRevision: 2, profileRevision: 2, profileChecksum: checksum("d") };
+    f.state.scope = { ...f.state.scope, locale: "ru", profileRevision: 2 };
+    expect(await startup.start(intent("ru"))).toEqual({ status: "ready" });
+    expect(await old).toEqual({ status: "cancelled" });
+    late.resolve({ status: "restored", challenge: oldChallenge, registry: oldRegistry });
+    await Promise.resolve(); await Promise.resolve();
+    expect(f.pack).toHaveBeenCalledTimes(1);
+    expect(f.route.mock.calls[0][0].request.locale).toBe("ru");
+    expect(f.route.mock.calls[0][0].profile.localeLocked).toBe(true);
+    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
+  });
+
+  it("rejects a locale-lock accessor before all content readers without invoking it", async () => {
+    const f = fixture(), startup = createChildStartup(f.options), getter = vi.fn(() => true);
+    const registry = clone(f.state.registry);
+    Object.defineProperty(registry.profiles[0], "localeLocked", { enumerable: true, get: getter });
+    replaceProof(f, "profile", proof => ({ ...proof, registry }));
+    expect(await startup.start(intent())).toEqual({ status: "sealed" });
+    expect(getter).not.toHaveBeenCalled();
+    expect(f.policy).not.toHaveBeenCalled();
+    expect(f.pack).not.toHaveBeenCalled();
+    expect(f.route).not.toHaveBeenCalled();
+  });
 });

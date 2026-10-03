@@ -535,4 +535,62 @@ describe("child scope generation, cancellation, bounded time and CAS races", () 
     expect(f.index.getSnapshot()).toEqual({ phase: "disposed" }); expect(JSON.stringify(f.index.getSnapshot())).not.toContain("nickname");
     expect(await f.index.visitSearch("", vi.fn())).toBe(false);
   });
+
+  it("denies a locked profile's other locale at shared copying, direct compilation and package admission before any reader", async () => {
+    for (const locale of ["ru", "en"] as const) {
+      const f = fixture(locale), other = locale === "ru" ? "en" : "ru";
+      f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: other, localeLocked: true } };
+      expect(copyChildPackageChallenge(f.state.current, initialTime)).toBeNull();
+      expect(await f.compile()).toBeNull();
+      expect(f.digest.sha256).not.toHaveBeenCalled();
+      expect(await f.index.packagePort.verify(f.state.current, new AbortController().signal)).toMatchObject({ status: "unavailable" });
+      expect(f.source.load).not.toHaveBeenCalled();
+      expect(f.review.verify).not.toHaveBeenCalled();
+      for (const port of Object.values(f.ports)) {
+        expect(port.read).not.toHaveBeenCalled();
+        expect(port.compareAndSet).not.toHaveBeenCalled();
+      }
+      expect(f.index.getSnapshot()).toEqual({ phase: "sealed" });
+      f.index.dispose();
+    }
+  });
+
+  it("retires a previously approved unlocked locale before rejecting locked readmission or an old route/view", async () => {
+    const f = fixture("en"), visitor = vi.fn();
+    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false } };
+    const proof = await f.admit();
+    const oldRoute: ChildRouteChallenge = { ...f.state.current, scope: proof.scope, validUntilEpochMs: proof.validUntilEpochMs };
+    expect(await f.index.routePort.verify(oldRoute, new AbortController().signal)).toMatchObject({ status: "verified" });
+    const reads = Object.values(f.ports).map(port => port.read.mock.calls.length);
+    f.state.current = { ...f.state.current, profile: { ...f.state.current.profile, localeLocked: true } };
+    expect(await f.index.packagePort.verify(f.state.current, new AbortController().signal)).toMatchObject({ status: "unavailable" });
+    expect(f.source.load).toHaveBeenCalledTimes(1);
+    expect(f.index.getSnapshot()).toEqual({ phase: "sealed" });
+    expect(await f.index.routePort.verify(oldRoute, new AbortController().signal)).toMatchObject({ status: "unavailable" });
+    expect(await f.index.visitEntity(f.work, visitor)).toBe(false);
+    expect(await f.index.visitSearch("", visitor)).toBe(false);
+    expect(await f.index.visitHistory(visitor)).toBe(false);
+    expect(await f.index.visitCache(f.work, visitor)).toBe(false);
+    expect(await f.index.visitOffline(f.offline, visitor)).toBe(false);
+    expect(Object.values(f.ports).map(port => port.read.mock.calls.length)).toEqual(reads);
+    expect(visitor).not.toHaveBeenCalled();
+    f.index.dispose();
+  });
+
+  it("refuses a late source after lock mutation even if a synthetic host still reports current", async () => {
+    const f = fixture("en"), entered = deferred<void>(), late = deferred<unknown>();
+    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false } };
+    const index = createVerifiedChildIndex({ ...f.options, isCurrent: () => true });
+    f.source.load.mockImplementationOnce(() => { entered.resolve(); return late.promise; });
+    const pending = index.packagePort.verify(f.state.current, new AbortController().signal);
+    await entered.promise;
+    Object.assign(f.state.current.profile, { localeLocked: true });
+    late.resolve(f.bytes());
+    expect(await pending).toMatchObject({ status: "unavailable" });
+    expect(f.digest.sha256).not.toHaveBeenCalled();
+    expect(f.review.verify).not.toHaveBeenCalled();
+    expect(f.ports.search.compareAndSet).not.toHaveBeenCalled();
+    expect(index.getSnapshot()).toEqual({ phase: "sealed" });
+    index.dispose(); f.index.dispose();
+  });
 });

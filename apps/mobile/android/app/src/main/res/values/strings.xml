@@ -29,4 +29,7 @@
     <string name="native_pin_verify_expand_access_settings">Expand access</string>
     <string name="native_pin_verify_enable_licensed_pack">Enable a content pack</string>
     <string name="native_pin_verify_view_legal_commercial">View legal and commercial information</string>
+    <string name="native_owner_enroll_title">Confirm Parent PIN setup</string>
+    <string name="native_owner_recover_title">Confirm Parent PIN recovery</string>
+    <string name="native_owner_device_credential_reason">Use your device screen lock to confirm this action.</string>
 </resources>

@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { decodeChildProfiles } from "./childProfile";
+import { createParentGate } from "./parentGate";
 import { childProtectedRecordBytes, createChildProtectedState, decodeChildProtectedRecord,
   type ChildEpochAnchorChallenge, type ChildNativeRecordPort, type ChildProtectedRecord, type ChildRecordReadChallenge } from "./childProtectedState";
 import type { ChildSelectionChallenge, ChildStartupChallenge } from "./childStartup";
@@ -297,5 +298,106 @@ describe("conditional protected child record foundation", () => {
     f.state.operationMs = 10; const coordinator = f.make(); expect(await coordinator.pinStore.read()).not.toBeNull();
     f.state.operationMs = 9; expect(await coordinator.pinStore.read()).toBeNull(); f.state.operationMs = 11;
     expect(await coordinator.pinStore.read()).toBeNull();
+  });
+
+  it("binds a present true or false locale lock into exact protected record and registry bytes", () => {
+    const before = record(), originalBytes = childProtectedRecordBytes(before);
+    for (const localeLocked of [true, false]) {
+      const next = clone(before);
+      next.registry.profiles[0].localeLocked = localeLocked;
+      next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
+      const decoded = decodeChildProtectedRecord(next, policy)!;
+      expect(decoded.registry.profiles[0].localeLocked).toBe(localeLocked);
+      expect(decoded.registryChecksum).not.toBe(before.registryChecksum);
+      expect(sha(childProtectedRecordBytes(decoded))).not.toBe(sha(originalBytes));
+      expect(new TextDecoder().decode(childProtectedRecordBytes(decoded))).toBe(JSON.stringify(next));
+      expect(decoded.pin).toEqual(before.pin);
+      expect(decoded.clock).toEqual(before.clock);
+    }
+    expect(Object.prototype.hasOwnProperty.call(decodeChildProtectedRecord(before, policy)!.registry.profiles[0], "localeLocked")).toBe(false);
+    expect(childProtectedRecordBytes(before)).toEqual(originalBytes);
+  });
+
+  it("changes and removes a locale lock only through exact whole registry revisions and authenticated readback", async () => {
+    const f = fixture(), coordinator = f.make(), original = clone(f.state.record);
+    for (const localeLocked of [true, false, undefined]) {
+      const before = clone(f.state.record), next = clone(before);
+      if (localeLocked === undefined) delete next.registry.profiles[0].localeLocked;
+      else next.registry.profiles[0].localeLocked = localeLocked;
+      next.revision++; next.selectionRevision++; next.profileRevision++;
+      next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
+      expect(await coordinator.selectionStore.compareAndSwap(before, next)).toBe(true);
+      expect(f.state.record).toEqual(next);
+      expect(await coordinator.selectionStore.read()).toEqual(next);
+      expect(next.pin).toEqual(original.pin);
+      expect(next.clock).toEqual(original.clock);
+    }
+    expect(f.native.compareAndSwap).toHaveBeenCalledTimes(3);
+    const first = vi.mocked(f.native.compareAndSwap).mock.calls[0][0];
+    expect(first.expectedChecksum).toBe(sha(childProtectedRecordBytes(original)));
+    expect(JSON.parse(new TextDecoder().decode(first.nextBytes)).registry.profiles[0].localeLocked).toBe(true);
+  });
+
+  it("rejects lock mutation without new revisions or exact digest and never treats its Boolean as permission", async () => {
+    for (const flaw of ["profileRevision", "selectionRevision", "checksum", "pinJournal", "missingNative"] as const) {
+      const f = fixture(), before = clone(f.state.record), next = clone(before);
+      next.registry.profiles[0].localeLocked = true;
+      next.revision++; next.selectionRevision++; next.profileRevision++;
+      next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
+      if (flaw === "profileRevision") next.profileRevision = before.profileRevision;
+      if (flaw === "selectionRevision") next.selectionRevision = before.selectionRevision;
+      if (flaw === "checksum") next.registryChecksum = before.registryChecksum;
+      if (flaw === "pinJournal") next.pin.attempts.lastObservedMs++;
+      const coordinator = flaw === "missingNative" ? createChildProtectedState({ ...f.options, native: undefined }) : f.make();
+      expect(await coordinator.selectionStore.compareAndSwap(before, next)).toBe(false);
+      expect(f.native.compareAndSwap).not.toHaveBeenCalled();
+      expect(f.state.record).toEqual(before);
+    }
+  });
+
+  it("requires the original expand-access-settings Gate target and profile revision before a private lock mutation is started", async () => {
+    const f = fixture(), coordinator = f.make(), before = clone(f.state.record), next = clone(before);
+    next.registry.profiles[0].localeLocked = true;
+    next.revision++; next.selectionRevision++; next.profileRevision++;
+    next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
+    const target = { action: "expand-access-settings" as const, targetChecksum: sha(childProtectedRecordBytes(next)) };
+    const unlocked = clone(next); unlocked.registry.profiles[0].localeLocked = false;
+    unlocked.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(unlocked.registry)));
+    const otherTarget = { ...target, targetChecksum: sha(childProtectedRecordBytes(unlocked)) };
+    expect(otherTarget.targetChecksum).not.toBe(target.targetChecksum);
+    const context = { profileId: before.registry.activeProfileId!, policyVersion: policy.version,
+      profileRevision: before.profileRevision, routeRevision: 1, mode: "child" as const, visibility: "active" as const };
+    let nonce = 0, mutation: Promise<boolean> | undefined;
+    const options = { clock: { nowMonotonicMs: () => 1 }, policy: { capabilityLifetimeMs: 100, verificationTimeoutMs: 100 },
+      randomSource: { getRandomValues(bytes: Uint8Array) { bytes.fill(++nonce); return bytes; } },
+      verificationPort: { verify: async (challenge: import("./parentGate").ParentGateChallenge) => ({ status: "verified" as const, challenge }) } };
+    const gate = createParentGate(options);
+    gate.setContext(context);
+    const start = vi.fn(() => { mutation = coordinator.selectionStore.compareAndSwap(before, next); });
+    const wrong = await gate.request(target);
+    if (wrong.status !== "verified") throw new Error("Synthetic Gate did not verify");
+    expect(gate.consume(wrong.capability, otherTarget, start)).toBe(false);
+    expect(gate.consume(wrong.capability, target, start)).toBe(false);
+    const stale = await gate.request(target);
+    if (stale.status !== "verified") throw new Error("Synthetic Gate did not verify");
+    gate.setContext({ ...context, profileRevision: context.profileRevision + 1 });
+    expect(gate.consume(stale.capability, target, start)).toBe(false);
+    expect(gate.consume({ localeLocked: true, parentApproved: true }, target, start)).toBe(false);
+    expect(start).not.toHaveBeenCalled();
+    gate.setContext(context);
+    const exact = await gate.request(target);
+    if (exact.status !== "verified") throw new Error("Synthetic Gate did not verify");
+    // Gate consumes only the synchronous dispatch. The separate synthetic
+    // native CAS/readback below supplies no genuine native permission proof.
+    expect(gate.consume(exact.capability, target, start)).toBe(true);
+    expect(await mutation).toBe(true);
+    expect(gate.consume(exact.capability, target, start)).toBe(false);
+    expect(start).toHaveBeenCalledTimes(1);
+    const unavailable = createParentGate({ ...options, verificationPort: undefined });
+    unavailable.setContext(context);
+    expect(await unavailable.request(target)).toEqual({ status: "unavailable" });
+    expect(unavailable.consume(true, target, start)).toBe(false);
+    expect(start).toHaveBeenCalledTimes(1);
+    gate.dispose(); unavailable.dispose();
   });
 });

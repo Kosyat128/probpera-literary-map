@@ -110,4 +110,57 @@ describe("local child profile metadata foundation", () => {
     expect(decodeChildProfiles(registry(), { ...context, approved: true } as typeof context).registry).toBeNull();
     expect(decodeChildProfiles(" ".repeat(CHILD_PROFILE_MAX_LENGTH + 1), context).registry).toBeNull();
   });
+
+  it("keeps the exact canonical bytes of older profiles without a locale lock", () => {
+    const parsed = decodeChildProfiles(registry(), context).registry!;
+    const original = '{"schemaVersion":1,"policyVersion":"synthetic-policy-v1","activeProfileId":"synthetic-child-1","profiles":[{"id":"synthetic-child-1","label":"Reader One","exactAge":9,"ageBand":"9-11","locale":"ru","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":["violence"],"soundEnabled":false,"motion":"calm","narrationEnabled":false}]}';
+    expect(JSON.stringify(parsed)).toBe(original);
+    expect(Object.prototype.hasOwnProperty.call(parsed.profiles[0], "localeLocked")).toBe(false);
+    expect(JSON.stringify(decodeChildProfiles(original, context).registry)).toBe(original);
+  });
+
+  it("preserves explicit true and false locks last in an immutable whole profile", () => {
+    for (const localeLocked of [true, false]) {
+      for (const withAgeBand of [true, false]) {
+        const input = { ...record(), ...(withAgeBand ? { ageBand: "9-11" } : {}), localeLocked };
+        const parsed = decodeChildProfiles(registry([input]), context).registry!.profiles[0];
+        const canonical = JSON.stringify(parsed);
+        input.localeLocked = !localeLocked;
+        input.blockedTopics.push("new-topic");
+        expect(parsed.localeLocked).toBe(localeLocked);
+        expect(parsed.blockedTopics).toEqual(["violence"]);
+        expect(Object.keys(parsed).slice(-2)).toEqual(["narrationEnabled", "localeLocked"]);
+        expect(canonical.endsWith(',"narrationEnabled":false,"localeLocked":' + localeLocked + '}')).toBe(true);
+        expect(Object.isFrozen(parsed)).toBe(true);
+        expect(JSON.stringify(decodeChildProfiles(registry([JSON.parse(canonical)]), context).registry!.profiles[0])).toBe(canonical);
+      }
+    }
+  });
+
+  it("rejects uncertain and hidden locale locks without calling accessors or coercion", () => {
+    const getter = vi.fn(() => true), coercion = vi.fn(() => true);
+    for (const localeLocked of [null, undefined, 0, 1, "true", "false", { valueOf: coercion }]) {
+      const row = { ...record(), localeLocked };
+      expect(decodeChildProfiles(registry([row]), context)).toEqual({ registry: null, error: "invalid" });
+    }
+    const accessor = Object.defineProperty({ ...record() }, "localeLocked", { get: getter, enumerable: true });
+    const hidden = Object.defineProperty({ ...record() }, "localeLocked", { value: true, enumerable: false });
+    const inherited = Object.assign(Object.create({ localeLocked: true }), record());
+    for (const row of [accessor, hidden, inherited, { ...record(), localeLocked: true, parentApproved: true },
+      { ...record(), localeLocked: true, [Symbol("localeLockAuthority")]: true }])
+      expect(decodeChildProfiles(registry([row]), context)).toEqual({ registry: null, error: "invalid" });
+    expect(getter).not.toHaveBeenCalled();
+    expect(coercion).not.toHaveBeenCalled();
+  });
+
+  it("does not spread one parent's locale lock across other restored profiles", () => {
+    const rows = [{ ...record("locked-child"), localeLocked: true }, record("old-child"),
+      { ...record("explicitly-unlocked-child"), localeLocked: false }];
+    const source = registry(rows, "locked-child");
+    const restored = decodeChildProfiles(JSON.stringify(source), context).registry!;
+    expect(restored.profiles[0].localeLocked).toBe(true);
+    expect(Object.prototype.hasOwnProperty.call(restored.profiles[1], "localeLocked")).toBe(false);
+    expect(restored.profiles[2].localeLocked).toBe(false);
+    expect(Object.prototype.hasOwnProperty.call(restored.profiles[2], "localeLocked")).toBe(true);
+  });
 });

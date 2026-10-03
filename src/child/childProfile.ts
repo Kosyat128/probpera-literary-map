@@ -18,6 +18,8 @@ export type LocalChildProfile = Readonly<{
   soundEnabled: boolean;
   motion: "calm" | "system";
   narrationEnabled: boolean;
+  /** Parent-controlled registry setting; absent/false permits a reviewed locale change. */
+  localeLocked?: boolean;
 }>;
 export type ChildProfileRegistry = Readonly<{
   schemaVersion: 1;
@@ -82,7 +84,11 @@ const profileFields = ["id", "label", "exactAge", "locale", "ageConfirmedAt", "r
   "blockedTopics", "soundEnabled", "motion", "narrationEnabled"];
 function profile(value: unknown, now: number): LocalChildProfile | null {
   const data = dataObject(value);
-  if (!data || !(exact(data, profileFields) || exact(data, [...profileFields, "ageBand"])) || !identifier(data.id)
+  if (!data) return null;
+  const hasLocaleLock = Object.prototype.hasOwnProperty.call(data, "localeLocked");
+  const fields = [...profileFields, ...(Object.prototype.hasOwnProperty.call(data, "ageBand") ? ["ageBand"] : []),
+    ...(hasLocaleLock ? ["localeLocked"] : [])];
+  if (!exact(data, fields) || !identifier(data.id)
     || typeof data.label !== "string" || data.label.length < 1 || data.label.length > 80
     || data.label.trim() !== data.label || /[\u0000-\u001f\u007f]/u.test(data.label)
     || !isChildExactAge(data.exactAge)
@@ -93,13 +99,15 @@ function profile(value: unknown, now: number): LocalChildProfile | null {
     || Date.parse(data.ageConfirmedAt) > now
     || data.readingLevel !== null && data.readingLevel !== "plain" && data.readingLevel !== "developing" && data.readingLevel !== "fluent"
     || typeof data.soundEnabled !== "boolean" || typeof data.narrationEnabled !== "boolean"
+    || hasLocaleLock && typeof data.localeLocked !== "boolean"
     || data.motion !== "calm" && data.motion !== "system") return null;
   const blockedTopics = topics(data.blockedTopics);
   const allowedTopics = data.allowedTopics === null ? null : topics(data.allowedTopics);
   if (!blockedTopics || data.allowedTopics !== null && !allowedTopics) return null;
   return Object.freeze({ id: data.id, label: data.label, exactAge: data.exactAge, ageBand: childAgeBand(data.exactAge)!,
     locale: data.locale, ageConfirmedAt: data.ageConfirmedAt, readingLevel: data.readingLevel, allowedTopics, blockedTopics,
-    soundEnabled: data.soundEnabled, motion: data.motion, narrationEnabled: data.narrationEnabled });
+    soundEnabled: data.soundEnabled, motion: data.motion, narrationEnabled: data.narrationEnabled,
+    ...(hasLocaleLock ? { localeLocked: data.localeLocked as boolean } : {}) });
 }
 
 /** Strict restoration seam for future local adapters. Invalid/missing/newer

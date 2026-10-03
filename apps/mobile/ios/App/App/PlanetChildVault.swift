@@ -4,6 +4,7 @@ import CryptoKit
 import Darwin
 import CommonCrypto
 import UIKit
+import LocalAuthentication
 
 /** Native-only SPI. The sole factory below admits no implementation. Neither
  * Keychain, a JS flag nor a mock constructor witness proves this guarantee.
@@ -169,7 +170,7 @@ final class PlanetChildVault {
             try p.field("blockedTopics"); try topics(p)
             try p.field("soundEnabled"); _ = try p.bool()
             try p.field("motion"); let motion = try p.asciiString(); try require(motion == "calm" || motion == "system")
-            try p.field("narrationEnabled"); _ = try p.bool(); try p.token("}"); return id
+            try p.field("narrationEnabled"); _ = try p.bool(); if p.take(",\"localeLocked\":") { _ = try p.bool() }; try p.token("}"); return id
         }
         private static func ecmaSpace(_ value: UInt16) -> Bool {
             return [9, 10, 11, 12, 13, 32, 160, 0x1680, 0x2028, 0x2029, 0x202f, 0x205f, 0x3000, 0xfeff].contains(value)
@@ -577,7 +578,7 @@ fileprivate struct PinKnownRefusal: Error {}
 fileprivate enum PinLockedResult<T> { case value(T), refusal }
 fileprivate enum PinSessionPhase { case reserved, beginning, begun, committing, committed, denied, cancelled, closing, sealed, closed }
 fileprivate enum PinReplyDelivery { case known, uncertain }
-fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, primitive, closed }
+fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, primitive, ownerPermission, closed }
 fileprivate protocol PinSessionTransaction: AnyObject {
     func read() throws -> Data
     func write(_ next: Data, boundary: () throws -> Void) throws
@@ -628,6 +629,7 @@ fileprivate final class OwnedPinInspection {
     var pendingReplies: [ObjectIdentifier:PinNativeReply] = [:], terminalReply: PinNativeReply?
     var primitiveWorker: PinPrimitiveWork?, primitiveMaterial: PinPrimitiveMaterial?
     var nativeInput: PinNativeInputSession?, nativeInputHandoff=false
+    var ownerAuthorization: PinNativeOwnerRequest?
     init(owner: NativePinSessions, wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64) {
         self.owner=owner; self.wireId=wireId; self.action=action; self.timeoutMs=timeoutMs
     }
@@ -915,6 +917,11 @@ fileprivate final class NativePinSessions {
                 && reply.inspection.workers==0 && reply.inspection.nativeInput==nil
                 && material.context.session === reply.session && material.context.inspection === reply.inspection)
             material.settled=true; reply.inspection.primitiveMaterial=nil
+        }
+        if reply.kind == .ownerPermission {
+            guard let request=reply.inspection.ownerAuthorization else { throw PlanetChildVault.Failure.unavailable }
+            try Self.require(reply.inspection.workers==0 && request.owner.transferFence(request,reply:reply,delivery:delivery))
+            request.owner.transferSettled(request,delivery:delivery)
         }
         reply.settled=true; reply.close(); reply.inspection.pendingReplies.removeValue(forKey:ObjectIdentifier(reply)); reply.inspection.transfers-=1
         if delivery == .uncertain || reply.kind != .closed && reply.inspection.cancelled {
@@ -3314,3 +3321,651 @@ fileprivate final class PinVerificationPinViewController: UIViewController {
     @objc private func cancelTap() { owner?.cancel() }
 }
 // App/scene/plugin registration and genuine private Gate settlement remain absent.
+
+/** Local OS-owner permission prerequisite only. No checkpoint, antirollback,
+ * trusted-time, initial seed, legal-guardian or App admission is minted here.
+ * Actual factories remain nil. The private host must retain original objects,
+ * settle the exact transfer, and invoke consume inside the existing commit lock. */
+fileprivate enum PinOwnerKeySource { case secureEnclave, synthetic }
+fileprivate final class PinOwnerKey {
+    let privateKey: SecKey, publicKey: SecKey, publicBytes: Data, source: PinOwnerKeySource
+    init(privateKey: SecKey, publicKey: SecKey, publicBytes: Data, source: PinOwnerKeySource) {
+        self.privateKey=privateKey; self.publicKey=publicKey; self.publicBytes=Data(Array(publicBytes)); self.source=source
+    }
+}
+fileprivate protocol PinOwnerKeys: AnyObject {
+    var source: PinOwnerKeySource { get }
+    func acquire(enroll: Bool, context: LAContext, prompt: String) throws -> PinOwnerKey
+    func current(_ original: PinOwnerKey) throws
+    func sign(_ original: PinOwnerKey, message: Data) throws -> Data
+}
+fileprivate final class ApplePinOwnerKeys: PinOwnerKeys {
+    let source: PinOwnerKeySource = .secureEnclave
+    private let tag=Data("ru.probpera.literaryplanet.child.pin.owner.passcode.v1".utf8)
+    private func access() throws -> SecAccessControl {
+        var error: Unmanaged<CFError>?
+        guard let control=SecAccessControlCreateWithFlags(nil,kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
+            [.privateKeyUsage,.devicePasscode],&error) else { throw PlanetChildVault.Failure.unavailable }
+        return control
+    }
+    private func load(context: LAContext?, prompt: String?) throws -> PinOwnerKey? {
+        var query: [CFString:Any]=[kSecClass:kSecClassKey,kSecAttrApplicationTag:tag,kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,
+            kSecAttrKeyClass:kSecAttrKeyClassPrivate,kSecReturnRef:true,kSecReturnAttributes:true,kSecMatchLimit:kSecMatchLimitOne]
+        if let context { query[kSecUseAuthenticationContext]=context }
+        if let prompt { query[kSecUseOperationPrompt]=prompt }
+        if context == nil { query[kSecUseAuthenticationUI]=kSecUseAuthenticationUIFail }
+        var result: CFTypeRef?
+        let status=SecItemCopyMatching(query as CFDictionary,&result)
+        if status == errSecItemNotFound { return nil }
+        guard status == errSecSuccess, let item=result as? [String:Any], let ref=item[kSecValueRef as String],
+            CFGetTypeID(ref as CFTypeRef)==SecKeyGetTypeID(), let acl=item[kSecAttrAccessControl as String],
+            CFGetTypeID(acl as CFTypeRef)==SecAccessControlGetTypeID(), CFEqual(acl as CFTypeRef,try access()),
+            (item[kSecAttrAccessible as String] as? String)==(kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly as String)
+        else { throw PlanetChildVault.Failure.unavailable }
+        let key=ref as! SecKey
+        guard let attributes=SecKeyCopyAttributes(key) as? [String:Any],
+            (attributes[kSecAttrTokenID as String] as? String)==(kSecAttrTokenIDSecureEnclave as String),
+            (attributes[kSecAttrKeyType as String] as? String)==(kSecAttrKeyTypeECSECPrimeRandom as String),
+            (attributes[kSecAttrKeySizeInBits as String] as? NSNumber)?.intValue==256,
+            let publicKey=SecKeyCopyPublicKey(key), SecKeyIsAlgorithmSupported(key,.sign,.ecdsaSignatureMessageX962SHA256),
+            SecKeyIsAlgorithmSupported(publicKey,.verify,.ecdsaSignatureMessageX962SHA256)
+        else { throw PlanetChildVault.Failure.unavailable }
+        var error: Unmanaged<CFError>?
+        guard let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data?, bytes.count==65 else {
+            throw PlanetChildVault.Failure.unavailable
+        }
+        return PinOwnerKey(privateKey:key,publicKey:publicKey,publicBytes:bytes,source:source)
+    }
+    func acquire(enroll: Bool, context: LAContext, prompt: String) throws -> PinOwnerKey {
+        if let existing=try load(context:context,prompt:prompt) { return existing }
+        // Recover never repairs a missing/invalidated key. Other lookup failures
+        // also deny; no delete/recreate, ambiguous-create retry or fallback.
+        guard enroll else { throw PinKnownRefusal() }
+        var error: Unmanaged<CFError>?
+        let attributes: [CFString:Any]=[kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256,
+            kSecAttrTokenID:kSecAttrTokenIDSecureEnclave,kSecPrivateKeyAttrs:[
+                kSecAttrIsPermanent:true,kSecAttrApplicationTag:tag,kSecAttrAccessControl:try access(),kSecAttrIsExtractable:false]]
+        guard let created=SecKeyCreateRandomKey(attributes as CFDictionary,&error), let createdPublic=SecKeyCopyPublicKey(created),
+            let createdBytes=SecKeyCopyExternalRepresentation(createdPublic,&error) as Data?,
+            let loaded=try load(context:context,prompt:prompt), loaded.publicBytes==createdBytes
+        else { throw PlanetChildVault.Failure.unavailable }
+        return loaded
+    }
+    func current(_ original: PinOwnerKey) throws {
+        guard original.source == source, let persisted=try load(context:nil,prompt:nil),
+            persisted.publicBytes==original.publicBytes else { throw PinKnownRefusal() }
+    }
+    func sign(_ original: PinOwnerKey, message: Data) throws -> Data {
+        try current(original); var error: Unmanaged<CFError>?
+        // The original fresh authentication context was attached to this exact
+        // key reference. Successful LA callbacks/availability never grant proof.
+        guard let signature=SecKeyCreateSignature(original.privateKey,.ecdsaSignatureMessageX962SHA256,message as CFData,&error) as Data?,
+            !signature.isEmpty, signature.count<=144 else { throw PinKnownRefusal() }
+        try current(original); return Data(Array(signature))
+    }
+}
+fileprivate final class PinOwnerOriginalHost {
+    private weak var host: UIViewController?, window: UIWindow?, scene: UIWindowScene?, root: UIViewController?
+    init(_ host: UIViewController) throws {
+        guard Thread.isMainThread, let window=host.viewIfLoaded?.window, let scene=window.windowScene,
+            let root=window.rootViewController, scene.activationState == .foregroundActive,
+            UIApplication.shared.applicationState == .active, !window.isHidden, !host.isBeingDismissed,
+            host.presentedViewController==nil else { throw PinKnownRefusal() }
+        self.host=host; self.window=window; self.scene=scene; self.root=root
+    }
+    func current() throws {
+        // Dedicated signing/consume workers join the actual main-thread check.
+        // Never block main waiting for signing/cancel/retire.
+        let check: () -> Bool = { [self] in
+            guard let host,let window,let scene,let root else { return false }
+            return host.viewIfLoaded?.window === window && window.windowScene === scene && window.rootViewController === root
+                && !window.isHidden && !host.isBeingDismissed && host.presentedViewController==nil
+                && scene.activationState == .foregroundActive && UIApplication.shared.applicationState == .active
+        }
+        let valid=Thread.isMainThread ? check():DispatchQueue.main.sync(execute:check)
+        guard valid else { throw PinKnownRefusal() }
+    }
+    func disconnected(_ note: Notification) -> Bool { (note.object as? UIWindowScene) === scene }
+}
+fileprivate final class PinNativeOwnerRequest {
+    let owner: NativePinOwnerPermissionProvider, session: OwnedPinSession, old: PinOwnedBytes, next: PinOwnedBytes
+    let nextChecksum: String, nextRevision: UInt64, locale: PinNativeInputLocale, host: PinOwnerOriginalHost?, nonce: Data
+    // All mutable fields are protected by owner.condition. Counts are actual
+    // unsettled invocations, not timeout or reconstructed callback receipts.
+    var started=false, cancelled=false, finished=false, cleanupFenced=false, retirementFenced=false, worker=0, watcher=0, cancelling=0, consuming=0
+    var context: LAContext?, workerThread: ObjectIdentifier?, consumeThread: ObjectIdentifier?, permission: PinNativeOwnerPermission?
+    var deliveryCompleted=false, deliverySettled=false, deliveryKnown=false, lastNs: UInt64?
+    var observers=[NSObjectProtocol](), events=0
+    init(owner: NativePinOwnerPermissionProvider, session: OwnedPinSession, expected: Data, next: Data, checksum: String, revision: UInt64,
+         locale: PinNativeInputLocale, host: PinOwnerOriginalHost?, nonce: Data) throws {
+        self.owner=owner; self.session=session; old=PinOwnedBytes(expected); self.next=PinOwnedBytes(next)
+        nextChecksum=checksum; nextRevision=revision; self.locale=locale; self.host=host; self.nonce=Data(Array(nonce))
+    }
+    func close() { old.close(); next.close(); permission?.close() }
+    deinit { close() }
+}
+fileprivate final class PinNativeOwnerPermission {
+    let owner: NativePinOwnerPermissionProvider, request: PinNativeOwnerRequest, key: PinOwnerKey, reply: PinNativeReply
+    let message: PinOwnedBytes, signature: PinOwnedBytes
+    var consumed=false
+    init(owner: NativePinOwnerPermissionProvider,request: PinNativeOwnerRequest,key: PinOwnerKey,reply: PinNativeReply,message: Data,signature: Data) {
+        self.owner=owner; self.request=request; self.key=key; self.reply=reply; self.message=PinOwnedBytes(message); self.signature=PinOwnedBytes(signature)
+    }
+    func close() { message.close(); signature.close() }
+    deinit { close() }
+}
+fileprivate extension NativePinSessions {
+    func reserveOwnerRequest(_ request: PinNativeOwnerRequest) throws {
+        condition.lock(); defer { condition.unlock() }; let session=request.session,inspection=session.inspection
+        try liveLocked(inspection)
+        try Self.require(session.owner === self && inspection.session === session && !session.disposed && !inspection.retiring
+            && inspection.phase == .begun && inspection.workers==0 && inspection.transfers==0 && inspection.nativeInput==nil
+            && inspection.primitiveWorker==nil && inspection.primitiveMaterial==nil && inspection.ownerAuthorization==nil)
+        inspection.ownerAuthorization=request
+    }
+    func ownerPermissionReply(_ request: PinNativeOwnerRequest,work: PinPrimitiveWork) throws -> PinNativeReply {
+        condition.lock(); defer { condition.unlock() }; let inspection=request.session.inspection
+        try liveLocked(inspection)
+        try Self.require(inspection.ownerAuthorization === request && work.owner === self && work.session === request.session
+            && inspection.primitiveWorker === work && !work.finished && !inspection.retiring && inspection.transfers==0)
+        let reply=PinNativeReply(owner:self,inspection:inspection,session:request.session,kind:.ownerPermission,bytes:nil,checksum:request.session.checksum)
+        inspection.pendingReplies[ObjectIdentifier(reply)]=reply; inspection.transfers+=1; return reply
+    }
+    func ownerMutationFence(_ request: PinNativeOwnerRequest,next: Data,checksum: String,revision: UInt64) throws {
+        let session=request.session,inspection=session.inspection
+        condition.lock()
+        let thread=ObjectIdentifier(Thread.current)
+        let valid=inspection.ownerAuthorization === request && inspection.phase == .committing && inspection.workers==1
+            && inspection.threads[thread]==1 && inspection.transfers==0 && inspection.primitiveWorker==nil
+        condition.unlock(); try Self.require(valid)
+        var old=try request.old.copy(), retainedNext=try request.next.copy()
+        defer { old.resetBytes(in:0..<old.count); retainedNext.resetBytes(in:0..<retainedNext.count) }
+        try Self.require(next==retainedNext && checksum==request.nextChecksum && revision==request.nextRevision)
+        try mutationFence(session,old,next,checksum,revision)
+        // Caller already holds the original durable IO/publication lock and
+        // exact-read old record; reacquiring nonrecursive IO here would deadlock.
+        _=try current(session,old,session.checksum,session.revision)
+        try mutationFence(session,old,next,checksum,revision)
+    }
+    func ownerFinalStateFence(_ request: PinNativeOwnerRequest) throws {
+        condition.lock();defer { condition.unlock() };let session=request.session,inspection=session.inspection
+        try liveLocked(inspection)
+        try Self.require(inspection.ownerAuthorization === request && inspection.session === session && session.owner === self
+            && !session.disposed && !inspection.retiring && inspection.phase == .committing && inspection.workers==1
+            && inspection.threads[ObjectIdentifier(Thread.current)]==1 && inspection.transfers==0 && inspection.primitiveWorker==nil)
+    }
+}
+fileprivate final class NativePinOwnerPermissionProvider: PinRecoveryAuthority {
+    fileprivate let condition=NSCondition()
+    private let core: NativePinSessions, keys: PinOwnerKeys, clock: PinPrimitiveClock
+    private let synthetic: Bool
+    private var active: PinNativeOwnerRequest?
+    init(core: NativePinSessions) {
+        self.core=core; keys=ApplePinOwnerKeys(); clock=ApplePinPrimitiveClock(); synthetic=false
+    }
+    #if DEBUG
+    fileprivate init(syntheticCore core: NativePinSessions,keys: PinOwnerKeys,clock: PinPrimitiveClock) throws {
+        guard keys.source == .synthetic else { throw PlanetChildVault.Failure.unavailable }
+        self.core=core; self.keys=keys; self.clock=clock; synthetic=true
+    }
+    #endif
+    private func copy(_ request: PinNativeOwnerRequest) -> (String,String) {
+        let ru=request.locale == .ru
+        let title=request.session.inspection.action == .enroll
+            ? (ru ? "Подтвердите создание родительского PIN":"Confirm Parent PIN setup")
+            : (ru ? "Подтвердите восстановление родительского PIN":"Confirm Parent PIN recovery")
+        return (title,ru ? "Подтвердите действие кодом блокировки устройства.":"Use your device screen lock to confirm this action.")
+    }
+    func request(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,host: UIViewController,locale: PinNativeInputLocale) throws -> PinNativeOwnerRequest {
+        guard !synthetic else { throw PlanetChildVault.Failure.unavailable }
+        return try makeRequest(session,next:next,checksum:checksum,revision:revision,host:PinOwnerOriginalHost(host),locale:locale)
+    }
+    private func makeRequest(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,host: PinOwnerOriginalHost?,locale: PinNativeInputLocale) throws -> PinNativeOwnerRequest {
+        guard session.owner === core, session.inspection.action == .enroll || session.inspection.action == .recover,
+            !next.isEmpty, next.count<=PlanetChildVault.maxBytes, NativePinSessions.hash(checksum),
+            session.revision<9007199254740991,revision==session.revision+1 else { throw PinKnownRefusal() }
+        var ownedNext=Data(Array(next)),old=try session.expected.copy(); defer { ownedNext.resetBytes(in:0..<ownedNext.count);old.resetBytes(in:0..<old.count) }
+        guard Self.digest(ownedNext)==checksum else { throw PinKnownRefusal() }
+        let before=try PlanetChildVault.ProtectedEnvelope.decode(old,policyVersion:session.policy.version,policyChecksum:session.policy.checksum,maxIterations:session.policy.maximumIterations)
+        let after=try PlanetChildVault.ProtectedEnvelope.decode(ownedNext,policyVersion:session.policy.version,policyChecksum:session.policy.checksum,maxIterations:session.policy.maximumIterations)
+        defer { before.close();after.close() }
+        try PlanetChildVault.ProtectedEnvelope.validateTransition(before,after,action:session.inspection.action,sampledLogicalMs:session.capturedLogicalMs)
+        try NativePinSessions.require((try after.pinSessionMetadata()).iterations==session.policy.iterations)
+        var nonce=Data(count:32)
+        let status=nonce.withUnsafeMutableBytes { SecRandomCopyBytes(kSecRandomDefault,$0.count,$0.baseAddress!) }
+        guard status==errSecSuccess else { throw PlanetChildVault.Failure.unavailable }
+        let request=try PinNativeOwnerRequest(owner:self,session:session,expected:old,next:ownedNext,checksum:checksum,revision:revision,locale:locale,host:host,nonce:nonce)
+        condition.lock(); let free=active==nil; if free { active=request };condition.unlock()
+        guard free else { request.close();throw PinKnownRefusal() }
+        do {
+            try core.reserveOwnerRequest(request)
+            if host != nil {
+                let center=NotificationCenter.default
+                for name in [UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
+                    let observer=center.addObserver(forName:name,object:nil,queue:.main) { [weak self,weak request] note in
+                        guard let self,let request else { return }
+                        self.hostEvent(request,note:note)
+                    }
+                    condition.lock();request.observers.append(observer);condition.unlock()
+                }
+            }
+            return request
+        }
+        catch { condition.lock();if active === request { active=nil };condition.unlock();request.close();throw error }
+    }
+    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+    private func hostEvent(_ request: PinNativeOwnerRequest,note: Notification) {
+        condition.lock();let admitted=active === request && !request.retirementFenced
+        if admitted { request.events+=1 };condition.unlock()
+        guard admitted else { return }
+        defer { condition.lock();request.events-=1;condition.broadcast();condition.unlock() }
+        if note.name == UIApplication.didEnterBackgroundNotification || request.host?.disconnected(note)==true { cancel(request) }
+    }
+    private func local(_ request: PinNativeOwnerRequest) throws {
+        let ns=try clock.nanoseconds()
+        condition.lock();defer { condition.unlock() }
+        guard active === request,!request.cancelled,!request.finished,ns>0,
+            ns/1000000>=request.session.capturedUptimeMs,ns/1000000<request.session.deadlineUptimeMs,
+            request.lastNs==nil || ns>=request.lastNs! else { throw PinKnownRefusal() }
+        request.lastNs=ns
+    }
+    private func fence(_ request: PinNativeOwnerRequest,_ work: PinPrimitiveWork) throws {
+        try local(request);try request.host?.current();_=try core.currentPrimitiveWork(work)
+        var old=try request.old.copy(),next=try request.next.copy(),expected=try request.session.expected.copy()
+        defer { old.resetBytes(in:0..<old.count);next.resetBytes(in:0..<next.count);expected.resetBytes(in:0..<expected.count) }
+        guard old==expected,Self.digest(old)==request.session.checksum,Self.digest(next)==request.nextChecksum else { throw PinKnownRefusal() }
+        try local(request)
+    }
+    private func message(_ request: PinNativeOwnerRequest,key: PinOwnerKey) throws -> Data {
+        let s=request.session
+        let fields=["literary-planet/local-os-owner-pin/v1",s.inspection.wireId,s.inspection.action.rawValue,
+            s.checksum,String(s.revision),request.nextChecksum,String(request.nextRevision),s.policy.version,s.policy.checksum,
+            String(s.policy.iterations),s.epoch,String(s.hostGeneration),s.bootId,String(s.capturedUptimeMs),String(s.capturedLogicalMs),
+            String(s.clockUptimeMs),String(s.clockLogicalMs),String(s.deadlineUptimeMs),request.locale == .ru ? "ru":"en",
+            request.nonce.map { String(format:"%02x",$0) }.joined(),Self.digest(key.publicBytes),synthetic ? "synthetic":"secure-enclave"]
+        // Length-prefix exact immutable fields, with an explicit local domain.
+        // No full record, PIN, cloud, action reinterpretation or new deadline.
+        let bytes=Data(fields.map { "\($0.utf8.count):\($0)" }.joined().utf8)
+        guard bytes.count<=4096 else { throw PlanetChildVault.Failure.unavailable };return bytes
+    }
+    private func verified(_ permission: PinNativeOwnerPermission) throws {
+        var bytes=try permission.message.copy(),signature=try permission.signature.copy()
+        defer { bytes.resetBytes(in:0..<bytes.count);signature.resetBytes(in:0..<signature.count) }
+        guard bytes == (try message(permission.request,key:permission.key)),permission.key.source==keys.source else { throw PinKnownRefusal() }
+        var error: Unmanaged<CFError>?
+        guard SecKeyVerifySignature(permission.key.publicKey,.ecdsaSignatureMessageX962SHA256,bytes as CFData,signature as CFData,&error) else { throw PinKnownRefusal() }
+    }
+    func authorize(_ request: PinNativeOwnerRequest,recipient: @escaping (Result<PinNativeOwnerPermission,Error>) throws -> Void) throws {
+        condition.lock()
+        guard request.owner === self,active === request,!request.started,!request.cancelled else { condition.unlock();throw PinKnownRefusal() }
+        request.started=true;request.worker=1;condition.unlock()
+        Thread { [self] in run(request,recipient:recipient) }.start()
+    }
+    private func watch(_ request: PinNativeOwnerRequest) {
+        condition.lock();request.watcher+=1;condition.unlock()
+        Thread { [self] in
+            defer { condition.lock();request.watcher-=1;condition.broadcast();condition.unlock() }
+            while true {
+                condition.lock()
+                let stop=request.finished || request.cancelled || request.cleanupFenced
+                if !stop { _=condition.wait(until:Date(timeIntervalSinceNow:0.05)) }
+                condition.unlock();if stop { return }
+                do { try local(request) } catch { cancel(request);return }
+            }
+        }.start()
+    }
+    private func run(_ request: PinNativeOwnerRequest,recipient: (Result<PinNativeOwnerPermission,Error>) throws -> Void) {
+        condition.lock();request.workerThread=ObjectIdentifier(Thread.current);condition.unlock()
+        var work: PinPrimitiveWork?,permission: PinNativeOwnerPermission?,failure: Error?,recipientCalled=false,successEntered=false
+        do {
+            let counted=try core.startPrimitiveWork(request.session);work=counted;try fence(request,counted)
+            let context=LAContext();context.touchIDAuthenticationAllowableReuseDuration=0
+            let text=copy(request),prompt=text.0+"\n"+text.1
+            condition.lock()
+            guard !request.cancelled else { condition.unlock();context.invalidate();throw PinKnownRefusal() }
+            request.context=context;condition.unlock();watch(request)
+            let key=try keys.acquire(enroll:request.session.inspection.action == .enroll,context:context,prompt:prompt)
+            try fence(request,counted);let bytes=try message(request,key:key)
+            let signature=try keys.sign(key,message:bytes);try fence(request,counted);try keys.current(key)
+            var signatureError: Unmanaged<CFError>?
+            guard SecKeyVerifySignature(key.publicKey,.ecdsaSignatureMessageX962SHA256,bytes as CFData,signature as CFData,&signatureError)
+            else { throw PinKnownRefusal() }
+            let reply=try core.ownerPermissionReply(request,work:counted)
+            let proof=PinNativeOwnerPermission(owner:self,request:request,key:key,reply:reply,message:bytes,signature:signature)
+            permission=proof;condition.lock();request.permission=proof;condition.unlock()
+            try verified(proof);try fence(request,counted)
+            recipientCalled=true;successEntered=true;try recipient(.success(proof));try fence(request,counted);try keys.current(key)
+        } catch { failure=error;if permission != nil && recipientCalled { try? core.sealUnknown(request.session.inspection) } }
+        if !recipientCalled {
+            recipientCalled=true
+            do { try recipient(.failure(failure ?? PinKnownRefusal())) }
+            catch { failure=error;try? core.sealUnknown(request.session.inspection) }
+        }
+        // Join context and deadline-watch cleanup before handoff. Background and
+        // original-scene observers remain live for the entire unused grant, so
+        // foreground return cannot resurrect an old owner permission.
+        condition.lock();request.cleanupFenced=true;let context=request.context;condition.broadcast();condition.unlock()
+        context?.invalidate()
+        condition.lock();while request.watcher != 0 || request.cancelling != 0 || request.events != 0 { condition.wait() };condition.unlock()
+        if failure == nil,let counted=work {
+            do { try request.host?.current();_=try core.currentPrimitiveWork(counted)
+                let ns=try clock.nanoseconds();condition.lock()
+                let valid=active === request && !request.cancelled && ns>0 && ns/1000000>=request.session.capturedUptimeMs
+                    && ns/1000000<request.session.deadlineUptimeMs && (request.lastNs==nil || ns>=request.lastNs!)
+                if valid { request.lastNs=ns };condition.unlock();guard valid else { throw PinKnownRefusal() }
+            } catch { failure=error }
+        }
+        if let counted=work,!core.finishPrimitiveWork(counted) { failure=PinKnownRefusal() }
+        condition.lock()
+        if failure != nil { request.cancelled=true;permission?.consumed=true;permission?.close() }
+        request.context=nil;request.worker=0;request.finished=true;condition.broadcast();condition.unlock()
+        if let permission,!successEntered {
+            // Never exposed to a success recipient: actual known non-delivery,
+            // after all native work has settled. This is not a fabricated ACK.
+            try? core.settleReply(permission.reply,delivery:.uncertain)
+        }
+        // A minted but uncertain delivery retains its original transfer until
+        // actual host settlement. No exception/timer frees that pending reply.
+    }
+    func cancel(_ request: PinNativeOwnerRequest) {
+        condition.lock()
+        guard request.owner === self,active === request,!request.cancelled else { condition.unlock();return }
+        request.cancelled=true;request.permission?.consumed=true;request.cancelling+=1;let context=request.context;condition.broadcast();condition.unlock()
+        Thread { [self] in
+            context?.invalidate();try? core.cancel(request.session.inspection)
+            condition.lock();request.cancelling-=1;condition.broadcast();condition.unlock()
+        }.start()
+    }
+    func settle(_ permission: PinNativeOwnerPermission,delivery: PinReplyDelivery) throws {
+        condition.lock();let request=permission.request
+        let exact=permission.owner === self && active === request && request.permission === permission && request.finished
+            && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.consuming==0 && request.cleanupFenced
+            && !request.deliverySettled
+        if exact && delivery == .known { request.deliveryCompleted=true };condition.unlock()
+        guard exact else { throw PinKnownRefusal() };try core.settleReply(permission.reply,delivery:delivery)
+    }
+    func transferFence(_ request: PinNativeOwnerRequest,reply: PinNativeReply,delivery: PinReplyDelivery) -> Bool {
+        condition.lock();defer { condition.unlock() }
+        return active === request && request.owner === self && request.permission?.reply === reply && request.finished && request.cleanupFenced
+            && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.consuming==0
+            && !request.deliverySettled && (delivery == .uncertain || request.deliveryCompleted)
+    }
+    func transferSettled(_ request: PinNativeOwnerRequest,delivery: PinReplyDelivery) {
+        condition.lock();defer { condition.unlock() };request.deliverySettled=true
+        request.deliveryKnown=delivery == .known && !request.cancelled
+        if !request.deliveryKnown { request.cancelled=true;request.permission?.consumed=true;request.permission?.close() };condition.broadcast()
+    }
+    func consume(_ permission: PinNativeOwnerPermission,session: OwnedPinSession,next: Data,checksum: String,revision: UInt64) throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() }
+        condition.lock();let request=permission.request
+        let exact=permission.owner === self && request.owner === self && active === request && request.permission === permission
+            && request.session === session && !permission.consumed && request.finished && request.cleanupFenced && request.deliveryKnown
+            && request.deliverySettled && !request.cancelled && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.consuming==0
+        // Burn the original permission before any current/host/key/crypto call.
+        if permission.owner === self && request.permission === permission { permission.consumed=true }
+        if exact { request.consuming+=1;request.consumeThread=ObjectIdentifier(Thread.current) };condition.unlock()
+        guard exact else { throw PinKnownRefusal() }
+        defer { condition.lock();request.consuming-=1;request.consumeThread=nil;condition.broadcast();condition.unlock() }
+        guard !next.isEmpty,next.count<=PlanetChildVault.maxBytes,NativePinSessions.hash(checksum),revision==request.nextRevision else { throw PinKnownRefusal() }
+        var ownedNext=Data(Array(next));defer { ownedNext.resetBytes(in:0..<ownedNext.count) }
+        try core.ownerMutationFence(request,next:ownedNext,checksum:checksum,revision:revision)
+        try request.host?.current();try keys.current(permission.key);try verified(permission)
+        try core.ownerMutationFence(request,next:ownedNext,checksum:checksum,revision:revision)
+        let ns=try clock.nanoseconds();try core.ownerFinalStateFence(request);condition.lock();defer { condition.unlock() }
+        guard active === request,!request.cancelled,request.deliveryKnown,request.events==0,ns>0,ns/1000000>=session.capturedUptimeMs,
+            ns/1000000<session.deadlineUptimeMs,request.lastNs==nil || ns>=request.lastNs! else { throw PinKnownRefusal() }
+        request.lastNs=ns
+    }
+    func verify(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,permission: AnyObject) throws {
+        guard let original=permission as? PinNativeOwnerPermission else { throw PinKnownRefusal() }
+        try consume(original,session:session,next:next,checksum:checksum,revision:revision)
+    }
+    func retire(_ request: PinNativeOwnerRequest) throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() }
+        condition.lock();let exact=request.owner === self && active === request && request.workerThread != ObjectIdentifier(Thread.current)
+            && request.consumeThread != ObjectIdentifier(Thread.current);condition.unlock()
+        guard exact else { throw PinKnownRefusal() }
+        condition.lock();request.retirementFenced=true;let observers=request.observers;request.observers.removeAll();condition.unlock()
+        cancel(request)
+        for observer in observers { NotificationCenter.default.removeObserver(observer) }
+        condition.lock()
+        while request.worker != 0 || request.watcher != 0 || request.cancelling != 0 || request.events != 0 || request.consuming != 0
+            || request.permission != nil && !request.deliverySettled { condition.wait() }
+        request.close();active=nil;condition.broadcast();condition.unlock()
+        // Core's original ownerAuthorization remains an identity tombstone for
+        // this inspection. Only its original host closes the whole core request.
+    }
+}
+
+#if DEBUG
+/** Explicitly synthetic DEBUG-only fixture. Software SecKey signatures exercise
+ * mechanics, never Secure Enclave/passcode/device or genuine authority acceptance.
+ * It exposes scalar observations only; no original session/permission/key escapes. */
+enum PlanetChildOwnerPermissionRuntimeScenario: String {
+    case enroll, recover, malformedDigest, unsupportedReplace, ownedNext, replayAuthorize, earlyTransfer, directCoreTransfer
+    case earlyConsume, expiryAfterSign, rollbackAfterSign, expiryAfterRecipient, cancellationDuringSign, missingRecoveryKey
+    case signatureMismatch, persistedKeyChanged, recipientThrows, uncertainDelivery, consumeReplay, expiryAtConsume
+    case changedStoredRecord, hostGenerationChanged, retireWaitsForActualSign, backgroundBeforeACK, backgroundAfterACK, foregroundCannotResurrect
+}
+struct PlanetChildOwnerPermissionRuntimeObservation {
+    var registrationDenied=false, completionDenied=false, committed=false, earlyDenied=false, replayDenied=false
+    var retireWaited=false, retired=false, signatureVerified=false, backgroundLatched=false, cleanupJoined=false
+    var recipientCalls=0, signCalls=0, acquireCalls=0, transferCount=0
+}
+fileprivate extension NativePinOwnerPermissionProvider {
+    func syntheticRequest(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64) throws -> PinNativeOwnerRequest {
+        guard synthetic,keys.source == .synthetic else { throw PlanetChildVault.Failure.unavailable }
+        return try makeRequest(session,next:next,checksum:checksum,revision:revision,host:nil,locale:.en)
+    }
+    func fixtureJoin(_ request: PinNativeOwnerRequest) throws {
+        condition.lock();defer { condition.unlock() };let bound=Date(timeIntervalSinceNow:5)
+        while !request.finished || request.worker != 0 || request.watcher != 0 || request.cancelling != 0 {
+            guard condition.wait(until:bound) else { throw PlanetChildVault.Failure.unavailable }
+        }
+    }
+    func fixtureBackground(_ request: PinNativeOwnerRequest,foregroundReturn: Bool) {
+        guard synthetic else { return }
+        hostEvent(request,note:Notification(name:UIApplication.didEnterBackgroundNotification))
+        if foregroundReturn { hostEvent(request,note:Notification(name:UIApplication.didBecomeActiveNotification)) }
+    }
+}
+fileprivate extension NativePinSessions {
+    func fixtureTransfers(_ inspection: OwnedPinInspection) -> Int { condition.lock();defer { condition.unlock() };return inspection.transfers }
+}
+enum PlanetChildOwnerPermissionRuntimeFixture {
+    private final class Clock: PinPrimitiveClock {
+        private let lock=NSLock();private var value: UInt64=110000000
+        func nanoseconds() throws -> UInt64 { lock.lock();defer { lock.unlock() };return value }
+        func set(_ value: UInt64) { lock.lock();self.value=value;lock.unlock() }
+    }
+    private final class IO: PinSessionIO,PinSessionTransaction {
+        private let lock=NSLock();var bytes: Data
+        init(_ bytes: Data) { self.bytes=Data(Array(bytes)) }
+        func locked<T>(_ task: (PinSessionTransaction) throws -> T) throws -> T { lock.lock();defer { lock.unlock() };return try task(self) }
+        func read() throws -> Data { Data(Array(bytes)) }
+        func write(_ next: Data,boundary: () throws -> Void) throws { try boundary();bytes=Data(Array(next));try boundary() }
+        func corrupt() { lock.lock();bytes=Data("changed stored record".utf8);lock.unlock() }
+        func close() { lock.lock();bytes.resetBytes(in:0..<bytes.count);lock.unlock() }
+    }
+    private final class Authority: PinSessionAuthority,PinRecoveryAuthority {
+        let clock: Clock;var generation: UInt64=1,provider: NativePinOwnerPermissionProvider?,permission: PinNativeOwnerPermission?
+        var consumedOnce=false,replayDenied=false,askReplay=false
+        init(_ clock: Clock) { self.clock=clock }
+        func point(_ checksum: String,_ revision: UInt64) throws -> PinNativeCoordinates {
+            let uptime=try clock.nanoseconds()/1000000
+            guard uptime>=100 else { throw PinKnownRefusal() }
+            return PinNativeCoordinates(owner:self,epoch:String(repeating:"b",count:64),bootId:"00000000-0000-4000-8000-000000000001",
+                checksum:checksum,revision:revision,hostGeneration:generation,uptimeMs:uptime,logicalMs:1000+uptime-100)
+        }
+        func capture(_ inspection: OwnedPinInspection,bytes: Data,checksum: String,revision: UInt64) throws -> PinNativeCoordinates { try point(checksum,revision) }
+        func current(_ session: OwnedPinSession,bytes: Data,checksum: String,revision: UInt64) throws -> PinNativeCoordinates { try point(checksum,revision) }
+        func authorizeMutation(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64) throws -> AnyObject {
+            if session.inspection.action == .enroll {
+                guard let provider,let permission else { throw PinKnownRefusal() }
+                try provider.consume(permission,session:session,next:next,checksum:checksum,revision:revision);consumedOnce=true
+                if askReplay { do { try provider.consume(permission,session:session,next:next,checksum:checksum,revision:revision) }
+                    catch { replayDenied=true };guard replayDenied else { throw PlanetChildVault.Failure.unavailable } }
+            }
+            return NSObject()
+        }
+        func advance(_ session: OwnedPinSession,resetPermission: AnyObject,recoveryPermission: AnyObject?,nextChecksum: String,nextRevision: UInt64) throws {}
+        func cancel(_ inspection: OwnedPinInspection) throws {}
+        func retire(_ inspection: OwnedPinInspection) throws {}
+        func verify(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,permission: AnyObject) throws {
+            guard let provider else { throw PinKnownRefusal() };try provider.verify(session,next:next,checksum:checksum,revision:revision,permission:permission);consumedOnce=true
+        }
+    }
+    private final class Keys: PinOwnerKeys {
+        let source: PinOwnerKeySource = .synthetic
+        let key: PinOwnerKey;var present=true,changed=false,badSignature=false,acquired=0,signed=0,onSign: (() -> Void)?
+        init() throws {
+            var error: Unmanaged<CFError>?
+            guard let privateKey=SecKeyCreateRandomKey([kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256] as CFDictionary,&error),
+                let publicKey=SecKeyCopyPublicKey(privateKey),let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data?
+            else { throw PlanetChildVault.Failure.unavailable }
+            key=PinOwnerKey(privateKey:privateKey,publicKey:publicKey,publicBytes:bytes,source:.synthetic)
+        }
+        func acquire(enroll: Bool,context: LAContext,prompt: String) throws -> PinOwnerKey {
+            acquired+=1;guard present || enroll else { throw PinKnownRefusal() };present=true;return key
+        }
+        func current(_ original: PinOwnerKey) throws { guard present,!changed,original === key else { throw PinKnownRefusal() } }
+        func sign(_ original: PinOwnerKey,message: Data) throws -> Data {
+            signed+=1;onSign?();var error: Unmanaged<CFError>?
+            if badSignature { return Data(repeating:0,count:72) }
+            guard let signature=SecKeyCreateSignature(original.privateKey,.ecdsaSignatureMessageX962SHA256,message as CFData,&error) as Data?
+            else { throw PlanetChildVault.Failure.unavailable };return signature
+        }
+    }
+    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+    private static func record(enrolled: Bool,next: Bool) -> Data {
+        let version="synthetic-codec-v1",policy=String(repeating:"a",count:64)
+        let registry=#"{"schemaVersion":1,"policyVersion":"\#(version)","activeProfileId":"synthetic-child","profiles":[{"id":"synthetic-child","label":"Synthetic Reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":["violence"],"soundEnabled":false,"motion":"calm","narrationEnabled":false}]}"#
+        let pin: String
+        if !enrolled && !next { pin="null" }
+        else {
+            let revision=next ? (enrolled ? 6:1):5,credential=String(repeating:next ? "e":"b",count:64),salt=String(repeating:next ? "f":"c",count:64)
+            pin=#"{"schemaVersion":1,"policyVersion":"\#(version)","revision":\#(revision),"credentialId":"\#(credential)","verifier":{"algorithm":"PBKDF2-HMAC-SHA256","iterations":600000,"saltHex":"\#(salt)","hashHex":"\#(String(repeating:"d",count:64))"},"attempts":{"count":\#(next ? 0:2),"blockedUntilMs":\#(next ? 0:1050),"lastObservedMs":\#(next ? 1010:1000),"pendingAttemptId":null}}"#
+        }
+        return Data(#"{"schemaVersion":1,"revision":\#(next ? 8:7),"mode":"adult","selectionRevision":3,"profileRevision":2,"policyChecksum":"\#(policy)","registryChecksum":"\#(digest(Data(registry.utf8)))","registry":\#(registry),"pin":\#(pin),"clock":{"schemaVersion":1,"bootId":"00000000-0000-4000-8000-000000000001","uptimeAnchorMs":100,"logicalAnchorMs":1000,"epochAnchor":null}}"#.utf8)
+    }
+    static func run(_ scenario: PlanetChildOwnerPermissionRuntimeScenario) throws -> PlanetChildOwnerPermissionRuntimeObservation {
+        var observed=PlanetChildOwnerPermissionRuntimeObservation()
+        let recover=scenario == .recover || scenario == .missingRecoveryKey
+        let action: PlanetChildVault.PinLifecycleAction=scenario == .unsupportedReplace ? .replace:(recover ? .recover:.enroll)
+        let clock=Clock(),old=record(enrolled:recover || action == .replace,next:false),next=record(enrolled:recover || action == .replace,next:true)
+        let io=IO(old),authority=Authority(clock),keys=try Keys()
+        let policy=try PinSessionPolicy(version:"synthetic-codec-v1",checksum:String(repeating:"a",count:64),maximumIterations:600000,iterations:600000)
+        let core=NativePinSessions(io:io,authority:authority,recovery:authority,policy:policy)
+        let inspection=try core.inspection(wireId:String(repeating:"c",count:64),action:action,timeoutMs:60000)
+        let opened=try core.begin(inspection);guard let session=opened.session else { throw PlanetChildVault.Failure.unavailable }
+        try core.settleReply(opened,delivery:.known)
+        let provider=try NativePinOwnerPermissionProvider(syntheticCore:core,keys:keys,clock:clock);authority.provider=provider
+        var originalRequest: PinNativeOwnerRequest?
+        func cleanup() throws {
+            let cleaned=DispatchSemaphore(value:0),cleanupLock=NSLock();var cleanupFailed=false
+            Thread {
+                do {
+                    if let originalRequest,scenario != .retireWaitsForActualSign { try provider.retire(originalRequest) }
+                    let terminal=try core.retire(inspection);try core.settleReply(terminal,delivery:.known)
+                } catch { cleanupLock.lock();cleanupFailed=true;cleanupLock.unlock() }
+                authority.provider=nil;authority.permission=nil;io.close();cleaned.signal()
+            }.start()
+            guard cleaned.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
+            cleanupLock.lock();let failed=cleanupFailed;cleanupLock.unlock()
+            guard !failed else { throw PlanetChildVault.Failure.unavailable };observed.cleanupJoined=true
+        }
+        var supplied=Data(Array(next));let pointer=UnsafeMutableRawPointer.allocate(byteCount:next.count,alignment:1)
+        defer { pointer.initializeMemory(as:UInt8.self,repeating:0,count:next.count);pointer.deallocate() }
+        next.copyBytes(to:pointer.assumingMemoryBound(to:UInt8.self),count:next.count)
+        if scenario == .ownedNext { supplied=Data(bytesNoCopy:pointer,count:next.count,deallocator:.none) }
+        let request: PinNativeOwnerRequest
+        do { request=try provider.syntheticRequest(session,next:supplied,checksum:scenario == .malformedDigest ? String(repeating:"0",count:64):digest(next),revision:8) }
+        catch { observed.registrationDenied=true;observed.acquireCalls=keys.acquired;observed.signCalls=keys.signed;try cleanup();return observed }
+        originalRequest=request
+        if scenario == .ownedNext { pointer.initializeMemory(as:UInt8.self,repeating:0,count:next.count) }
+        if scenario == .missingRecoveryKey { keys.present=false }
+        keys.badSignature=scenario == .signatureMismatch
+        let signingStarted=DispatchSemaphore(value:0),releaseSign=DispatchSemaphore(value:0),retireStarted=DispatchSemaphore(value:0),retireFinished=DispatchSemaphore(value:0)
+        let resultLock=NSLock();var proof: PinNativeOwnerPermission?,callbackFailure=false,callbackCalls=0,earlyDenied=false
+        keys.onSign={
+            if scenario == .expiryAfterSign { clock.set(session.deadlineUptimeMs*1000000) }
+            if scenario == .rollbackAfterSign { clock.set(109000000) }
+            if scenario == .hostGenerationChanged { authority.generation+=1 }
+            if scenario == .persistedKeyChanged { keys.changed=true }
+            if scenario == .cancellationDuringSign || scenario == .retireWaitsForActualSign {
+                signingStarted.signal();_=releaseSign.wait(timeout:.now()+5)
+            }
+        }
+        try provider.authorize(request) { result in
+            resultLock.lock();callbackCalls+=1;resultLock.unlock()
+            switch result {
+            case .failure: resultLock.lock();callbackFailure=true;resultLock.unlock()
+            case .success(let permission):
+                resultLock.lock();proof=permission;resultLock.unlock()
+                if scenario == .earlyTransfer || scenario == .directCoreTransfer {
+                    do { if scenario == .directCoreTransfer { try core.settleReply(permission.reply,delivery:.known) }
+                        else { try provider.settle(permission,delivery:.known) } }
+                    catch { resultLock.lock();earlyDenied=true;resultLock.unlock() }
+                }
+                if scenario == .earlyConsume {
+                    do { try provider.consume(permission,session:session,next:next,checksum:digest(next),revision:8) }
+                    catch { resultLock.lock();earlyDenied=true;resultLock.unlock() }
+                }
+                if scenario == .expiryAfterRecipient { clock.set(session.deadlineUptimeMs*1000000) }
+                if scenario == .recipientThrows { throw PinKnownRefusal() }
+            }
+        }
+        if scenario == .replayAuthorize {
+            do { try provider.authorize(request) { _ in } } catch { observed.replayDenied=true }
+        }
+        if scenario == .cancellationDuringSign || scenario == .retireWaitsForActualSign {
+            guard signingStarted.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
+            if scenario == .cancellationDuringSign { provider.cancel(request) }
+            else {
+                Thread {
+                    retireStarted.signal();do { try provider.retire(request) } catch {}
+                    retireFinished.signal()
+                }.start()
+                guard retireStarted.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
+                // Sign is genuinely still blocked. Refusal must not release its
+                // lane; observation is made outside the provider's callbacks.
+                observed.retireWaited=retireFinished.wait(timeout:.now()+0.05) == .timedOut
+            }
+            releaseSign.signal()
+        }
+        try provider.fixtureJoin(request)
+        resultLock.lock();let returnedProof=proof;observed.recipientCalls=callbackCalls;observed.earlyDenied=earlyDenied;observed.completionDenied=callbackFailure;resultLock.unlock()
+        provider.condition.lock();observed.completionDenied=observed.completionDenied || request.cancelled;provider.condition.unlock()
+        observed.signCalls=keys.signed;observed.acquireCalls=keys.acquired
+        if scenario == .retireWaitsForActualSign {
+            observed.retired=retireFinished.wait(timeout:.now()+5) == .success;observed.transferCount=core.fixtureTransfers(inspection);try cleanup();return observed
+        }
+        if let returnedProof {
+            if scenario == .backgroundBeforeACK { provider.fixtureBackground(request,foregroundReturn:false);try provider.fixtureJoin(request) }
+            try provider.settle(returnedProof,delivery:scenario == .uncertainDelivery ? .uncertain:.known)
+            observed.signatureVerified = !observed.completionDenied && scenario != .signatureMismatch
+            authority.permission=returnedProof;authority.askReplay=scenario == .consumeReplay
+            if scenario == .backgroundAfterACK || scenario == .foregroundCannotResurrect {
+                provider.fixtureBackground(request,foregroundReturn:scenario == .foregroundCannotResurrect);try provider.fixtureJoin(request)
+            }
+            provider.condition.lock();observed.backgroundLatched=request.cancelled;provider.condition.unlock()
+            if scenario == .expiryAtConsume { clock.set(session.deadlineUptimeMs*1000000) }
+            if scenario == .changedStoredRecord { io.corrupt() }
+            let committed=DispatchSemaphore(value:0);var didCommit=false
+            Thread {
+                defer { committed.signal() }
+                do {
+                    let reply=try core.commit(inspection,session:session,expected:old,next:next,expectedChecksum:digest(old),nextChecksum:digest(next),
+                        expectedRevision:7,nextRevision:8,nativeEpoch:session.epoch,hostGeneration:session.hostGeneration,bootId:session.bootId,
+                        deadlineUptimeMs:session.deadlineUptimeMs,recoveryPermission:recover ? returnedProof:nil)
+                    try core.settleReply(reply,delivery:.known);resultLock.lock();didCommit=true;resultLock.unlock()
+                } catch {}
+            }.start()
+            guard committed.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
+            resultLock.lock();observed.committed=didCommit;resultLock.unlock();observed.replayDenied=observed.replayDenied || authority.replayDenied
+        }
+        observed.transferCount=core.fixtureTransfers(inspection)
+        try cleanup();return observed
+    }
+}
+#endif

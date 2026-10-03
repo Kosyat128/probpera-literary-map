@@ -148,7 +148,7 @@ final class PlanetChildVault {
             p.field("blockedTopics", false); topics(p);
             p.field("soundEnabled", false); p.bool();
             p.field("motion", false); String motion = p.string(); require(motion.equals("calm") || motion.equals("system"));
-            p.field("narrationEnabled", false); p.bool(); p.token("}"); return id;
+            p.field("narrationEnabled", false); p.bool(); if (p.take(",\"localeLocked\":")) p.bool(); p.token("}"); return id;
         }
         private static boolean ecmaSpace(char value) {
             return value == 9 || value == 10 || value == 11 || value == 12 || value == 13 || value == 32 || value == 160
@@ -339,6 +339,7 @@ final class PlanetChildVault {
         PinSessionPhase phase=PinSessionPhase.reserved; boolean cancelled, sealed, retiring, retirementFenced;
         int workers, transfers; OwnedPinSession session; PinNativeReply terminalReply;
         private PinPrimitiveContext primitiveContext;
+        private OwnedPinOwnerRequest ownerAuthorization;
         final java.util.IdentityHashMap<Thread,Integer> threads=new java.util.IdentityHashMap<>();
         final java.util.Set<PinNativeReply> pendingReplies=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<PinNativeReply,Boolean>());
         private OwnedPinInspection(NativePinSessions owner,String id,PinLifecycleAction action,long timeout) {
@@ -382,6 +383,363 @@ final class PlanetChildVault {
         }
         private synchronized byte[] copyBytes() throws Exception { require(!disposed); return bytes.clone(); }
         public synchronized void close() { disposed=true; Arrays.fill(bytes,(byte)0); }
+    }
+    /** Local OS-owner authorization only. No cloud bytes, Parent Gate proof,
+     * checkpoint, trusted cross-boot clock, or factory admission is supplied.
+     * API30+ device credential unlocks the ORIGINAL auth-per-use Signature;
+     * a callback flag cannot substitute for its actual verified signature. */
+    private interface PinOwnerRecipient { void completed(PinOwnerPermission permission) throws Exception; }
+    private static final class OwnedPinOwnerRequest implements AutoCloseable {
+        final PinNativeOwnerAuthority owner; final OwnedPinSession session;
+        final android.app.Activity activity; final android.os.IBinder windowToken;
+        final String locale,nextChecksum; final long nextRevision;
+        private final byte[] next,nonce,payload;
+        private Thread worker,watcher; private boolean started,revoked,finished,disposed,cleanupFenced,stopWatch,retired,detached;
+        private boolean promptOutstanding,credentialReturned,deliveryCompleted,deliveryEntered,sealed,cancelIssued;
+        private int mainCalls,cancelCalls,consumeCalls,eventCalls,cleanupCalls; private Exception promptError,mainError;
+        private android.os.CancellationSignal cancellation;
+        private android.hardware.biometrics.BiometricPrompt.CryptoObject originalCrypto;
+        private java.security.Signature originalSignature; private java.security.PublicKey publicKey;
+        private byte[] keyEncoding; private PinOwnerPermission permission;
+        private OwnedPinOwnerRequest(PinNativeOwnerAuthority owner,OwnedPinSession session,byte[] next,
+            String checksum,long revision,android.app.Activity activity,String locale,android.os.IBinder token) throws Exception {
+            this.owner=owner;this.session=session;this.next=next.clone();nextChecksum=checksum;nextRevision=revision;
+            this.activity=activity;this.locale=locale;windowToken=token;nonce=new byte[32];
+            new java.security.SecureRandom().nextBytes(nonce);payload=PinNativeOwnerAuthority.operation(this);
+        }
+        public void close() { synchronized(owner.core){revoked=true;disposed=true;if(finished && consumeCalls==0)wipe();}owner.cancel(this); }
+        private void wipe(){Arrays.fill(next,(byte)0);Arrays.fill(nonce,(byte)0);Arrays.fill(payload,(byte)0);
+            if(keyEncoding!=null)Arrays.fill(keyEncoding,(byte)0);if(permission!=null)permission.wipe();}
+    }
+    /** The local signature authenticates device-credential use for this exact
+     * original request. It is never a durable checkpoint or legal guardian proof.
+     * close revokes/wipes; only original host settlement drains the reply. */
+    private static final class PinOwnerPermission implements AutoCloseable {
+        final PinNativeOwnerAuthority owner; final OwnedPinOwnerRequest request; final PinNativeReply backing;
+        private final byte[] signature; private boolean consumed,disposed,settled,knownDelivery;
+        private PinOwnerPermission(PinNativeOwnerAuthority owner,OwnedPinOwnerRequest request,byte[] signature,PinNativeReply backing) {
+            this.owner=owner;this.request=request;this.signature=signature.clone();this.backing=backing;
+        }
+        private void wipe(){disposed=true;Arrays.fill(signature,(byte)0);}
+        public void close(){synchronized(owner.core){request.revoked=true;disposed=true;if(request.consumeCalls==0)wipe();}owner.cancel(request);}
+    }
+    private static final class PinNativeOwnerAuthority {
+        private final NativePinSessions core; private OwnedPinOwnerRequest original;
+        private PinNativeOwnerAuthority(NativePinSessions core) throws Exception {require(core!=null);this.core=core;}
+        /** Only a native-owned enrolled session can request recovery. Initial
+         * enrollment alone may create the fixed private key; never replace it. */
+        private OwnedPinOwnerRequest request(OwnedPinSession session,byte[] next,String checksum,long revision,
+            android.app.Activity activity,String locale) throws Exception {
+            require(android.os.Build.VERSION.SDK_INT>=30 && android.os.Looper.myLooper()==android.os.Looper.getMainLooper()
+                && activity!=null && activity.getClass()==MainActivity.class && !activity.isFinishing() && !activity.isDestroyed()
+                && activity.hasWindowFocus() && ("ru".equals(locale)||"en".equals(locale))
+                && next!=null && next.length>0 && next.length<=MAX_BYTES && ProtectedEnvelope.hash(checksum));
+            android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
+            synchronized(core){require(original==null && session!=null && session.owner==core
+                && session.inspection.session==session && !session.disposed
+                && (session.inspection.action==PinLifecycleAction.enroll || session.inspection.action==PinLifecycleAction.recover));
+                core.sessionFence(session);require(session.inspection.ownerAuthorization==null && !session.inspection.retiring && session.inspection.workers==0
+                    && nativeInputRetirementReady(session.inspection) && session.inspection.phase==PinSessionPhase.begun);
+                byte[] owned=next.clone();try{core.mutationFence(session,session.expected,owned,checksum,revision);
+                    try(ProtectedEnvelope before=ProtectedEnvelope.decode(session.expected,core.policy.version,core.policy.checksum,core.policy.maximumIterations);
+                        ProtectedEnvelope after=ProtectedEnvelope.decode(owned,core.policy.version,core.policy.checksum,core.policy.maximumIterations)) {
+                        ProtectedEnvelope.validateTransition(before,after,session.inspection.action,session.capturedLogicalMs);
+                        require(after.iterations==core.policy.iterations);
+                    }
+                    original=new OwnedPinOwnerRequest(this,session,owned,checksum,revision,activity,locale,token);
+                    session.inspection.ownerAuthorization=original;return original;
+                }finally{Arrays.fill(owned,(byte)0);}}
+        }
+        /** Binary, local-only domain separation; no profile labels/ages/topics
+         * leave the vault. Native host object identity remains an original-object
+         * comparison, not a serialized number or a signed assertion from JS. */
+        private static byte[] operation(OwnedPinOwnerRequest request) throws Exception {
+            java.io.ByteArrayOutputStream bytes=new java.io.ByteArrayOutputStream(512);
+            java.io.DataOutputStream out=new java.io.DataOutputStream(bytes);OwnedPinSession s=request.session;
+            out.write("LP-LOCAL-DEVICE-OWNER-PERMISSION\0v1\0".getBytes(StandardCharsets.US_ASCII));
+            out.writeByte(s.inspection.action==PinLifecycleAction.enroll?1:2);
+            out.writeByte("ru".equals(request.locale)?1:2);
+            byte[] scope=(alias(request.activity)+"\0"+s.policy.version).getBytes(StandardCharsets.US_ASCII);
+            try{out.writeShort(scope.length);out.write(scope);}finally{Arrays.fill(scope,(byte)0);}
+            for(String value:new String[]{s.inspection.wireId,s.checksum,request.nextChecksum,s.epoch,s.bootId,s.policy.checksum})out.write(value.getBytes(StandardCharsets.US_ASCII));
+            for(long value:new long[]{s.revision,request.nextRevision,s.hostGeneration,s.capturedUptimeMs,s.capturedLogicalMs,s.deadlineUptimeMs})out.writeLong(value);
+            out.write(request.nonce);out.flush();return bytes.toByteArray();
+        }
+        private void own(OwnedPinOwnerRequest request) throws Exception {require(request!=null && request.owner==this && original==request);}
+        private void live(OwnedPinOwnerRequest request) throws Exception {
+            synchronized(core){own(request);require(request.session.inspection.ownerAuthorization==request);core.sessionFence(request.session);
+                if(request.revoked || request.disposed || request.sealed || request.session.inspection.retiring
+                    || SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs)throw new PinKnownRefusal();
+                core.mutationFence(request.session,request.session.expected,request.next,request.nextChecksum,request.nextRevision);
+                byte[] payload=operation(request);try{require(MessageDigest.isEqual(payload,request.payload));}finally{Arrays.fill(payload,(byte)0);}}
+        }
+        /** Actual durable read/current/whole-byte fence on a background worker;
+         * existing authority authenticates boot/epoch/host, never this key alone. */
+        private void current(OwnedPinOwnerRequest request) throws Exception {
+            host(request);live(request);core.io.locked(transaction->{byte[] actual=transaction.read();try{
+                live(request);require(MessageDigest.isEqual(actual,request.session.expected));
+                core.current(request.session,actual,request.session.checksum,request.session.revision);live(request);return null;
+            }finally{Arrays.fill(actual,(byte)0);}});host(request);live(request);
+        }
+        private static String alias(android.app.Activity activity) throws Exception {
+            String name=activity.getPackageName();require(name.matches("ru\\.probpera\\.literaryplanet(?:\\.dev|\\.rustore)?"));
+            return name+".literary-planet-child-device-owner-sign-v1";
+        }
+        private void key(OwnedPinOwnerRequest request) throws Exception {
+            core.io.locked(transaction->{byte[] actual=transaction.read();try{
+                live(request);require(MessageDigest.isEqual(actual,request.session.expected));
+                core.current(request.session,actual,request.session.checksum,request.session.revision);keyLocked(request);
+                core.current(request.session,actual,request.session.checksum,request.session.revision);live(request);return null;
+            }finally{Arrays.fill(actual,(byte)0);}});
+        }
+        private void keyLocked(OwnedPinOwnerRequest request) throws Exception {
+            live(request);KeyguardManager guard=(KeyguardManager)request.activity.getSystemService(Context.KEYGUARD_SERVICE);
+            require(guard!=null && guard.isDeviceSecure());String alias=alias(request.activity);
+            KeyStore store=KeyStore.getInstance("AndroidKeyStore");store.load(null);
+            if(!store.containsAlias(alias)) {
+                if(request.session.inspection.action!=PinLifecycleAction.enroll)throw new PinKnownRefusal();
+                live(request);java.security.KeyPairGenerator generator=java.security.KeyPairGenerator.getInstance("EC","AndroidKeyStore");
+                generator.initialize(new android.security.keystore.KeyGenParameterSpec.Builder(alias,android.security.keystore.KeyProperties.PURPOSE_SIGN)
+                    .setAlgorithmParameterSpec(new java.security.spec.ECGenParameterSpec("secp256r1"))
+                    .setDigests(android.security.keystore.KeyProperties.DIGEST_SHA256).setUserAuthenticationRequired(true)
+                    .setUserAuthenticationParameters(0,android.security.keystore.KeyProperties.AUTH_DEVICE_CREDENTIAL).build());
+                generator.generateKeyPair();
+            }
+            // Existing invalidated/missing/wrong keys deny. No deleteEntry or
+            // catch-and-regenerate path exists, including owner recovery.
+            live(request);java.security.Key value=store.getKey(alias,null);require(value instanceof java.security.PrivateKey);
+            android.security.keystore.KeyInfo info=java.security.KeyFactory.getInstance("EC","AndroidKeyStore")
+                .getKeySpec(value,android.security.keystore.KeyInfo.class);
+            require(alias.equals(info.getKeystoreAlias()) && info.getKeySize()==256
+                && info.getOrigin()==android.security.keystore.KeyProperties.ORIGIN_GENERATED
+                && info.getPurposes()==android.security.keystore.KeyProperties.PURPOSE_SIGN
+                && info.isUserAuthenticationRequired() && info.getUserAuthenticationValidityDurationSeconds()==-1
+                && info.getUserAuthenticationType()==android.security.keystore.KeyProperties.AUTH_DEVICE_CREDENTIAL
+                && info.isInsideSecureHardware() && info.isUserAuthenticationRequirementEnforcedBySecureHardware()
+                && info.getDigests().length==1 && android.security.keystore.KeyProperties.DIGEST_SHA256.equals(info.getDigests()[0]));
+            java.security.cert.Certificate certificate=store.getCertificate(alias);require(certificate!=null);
+            java.security.PublicKey publicKey=certificate.getPublicKey();require(publicKey instanceof java.security.interfaces.ECPublicKey);
+            java.security.AlgorithmParameters parameters=java.security.AlgorithmParameters.getInstance("EC");
+            parameters.init(new java.security.spec.ECGenParameterSpec("secp256r1"));java.security.spec.ECParameterSpec expected=parameters.getParameterSpec(java.security.spec.ECParameterSpec.class);
+            java.security.spec.ECParameterSpec actual=((java.security.interfaces.ECPublicKey)publicKey).getParams();
+            require(actual.getCurve().equals(expected.getCurve()) && actual.getGenerator().equals(expected.getGenerator())
+                && actual.getOrder().equals(expected.getOrder()) && actual.getCofactor()==expected.getCofactor());
+            java.security.Signature signature=java.security.Signature.getInstance("SHA256withECDSA");signature.initSign((java.security.PrivateKey)value);
+            synchronized(core){live(request);request.publicKey=publicKey;request.keyEncoding=publicKey.getEncoded().clone();
+                request.originalSignature=signature;request.originalCrypto=new android.hardware.biometrics.BiometricPrompt.CryptoObject(signature);
+                request.cancellation=new android.os.CancellationSignal();}
+        }
+        private void authenticate(OwnedPinOwnerRequest request,PinOwnerRecipient recipient) throws Exception {
+            require(recipient!=null);synchronized(core){own(request);require(!request.started && !request.finished && !request.disposed);
+                live(request);require(request.session.inspection.workers==0 && !request.session.inspection.retiring);
+                request.started=true;Thread worker=new Thread(()->run(request,recipient),"planet-child-device-owner");request.worker=worker;
+                request.session.inspection.workers++;request.session.inspection.threads.put(worker,1);
+                try{worker.start();}catch(RuntimeException error){request.session.inspection.threads.remove(worker);
+                    request.session.inspection.workers--;request.finished=true;request.sealed=true;request.wipe();core.sealUnknown(request.session.inspection);core.notifyAll();throw error;}}
+        }
+        private void main(OwnedPinOwnerRequest request,Runnable task) throws Exception {
+            synchronized(core){own(request);require(!request.cleanupFenced || request.consumeCalls>0 || request.cleanupCalls>0);request.mainCalls++;}
+            boolean accepted=new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{
+                try{task.run();}catch(RuntimeException error){synchronized(core){request.mainError=error;request.sealed=true;request.revoked=true;}}
+                finally{synchronized(core){request.mainCalls--;core.notifyAll();}}
+            });
+            if(!accepted){synchronized(core){request.mainCalls--;request.sealed=true;core.notifyAll();}throw new Unavailable();}
+        }
+        private void callback(OwnedPinOwnerRequest request,Runnable task) {
+            synchronized(core){if(request.cleanupFenced){request.sealed=true;request.revoked=true;
+                try{core.sealUnknown(request.session.inspection);}catch(Exception ignored){request.session.inspection.sealed=true;}core.notifyAll();return;}}
+            try{main(request,task);}catch(Exception error){synchronized(core){request.sealed=true;request.revoked=true;core.notifyAll();}}
+        }
+        private void host(OwnedPinOwnerRequest request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            for(;;){boolean[] valid={false},lost={false};main(request,()->{lost[0]=request.activity.isFinishing() || request.activity.isDestroyed()
+                    || request.activity.getWindow().getDecorView().getWindowToken()!=request.windowToken;
+                valid[0]=!lost[0] && request.activity.hasWindowFocus();});
+                synchronized(core){while(request.mainCalls!=0)core.wait();live(request);
+                    if(request.mainError!=null || lost[0])throw new PinKnownRefusal();if(valid[0])return;
+                    // Wait for the OWNED system credential UI to return focus;
+                    // never renew the original deadline or accept background.
+                    if(!request.credentialReturned)throw new PinKnownRefusal();core.wait(50);}}
+        }
+        private static String label(OwnedPinOwnerRequest request,int id) {
+            android.content.res.Configuration configuration=new android.content.res.Configuration(request.activity.getResources().getConfiguration());
+            configuration.setLocale(new java.util.Locale(request.locale));return request.activity.createConfigurationContext(configuration).getString(id);
+        }
+        private void terminal(OwnedPinOwnerRequest request,android.hardware.biometrics.BiometricPrompt.AuthenticationResult result,Exception error) {
+            synchronized(core){if(!request.promptOutstanding){request.sealed=true;request.revoked=true;core.notifyAll();return;}
+                request.promptOutstanding=false;request.promptError=error;
+                request.credentialReturned=result!=null && result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL
+                    && result.getCryptoObject()==request.originalCrypto && result.getCryptoObject().getSignature()==request.originalSignature;
+                if(error!=null || !request.credentialReturned)request.revoked=true;core.notifyAll();}
+        }
+        private void present(OwnedPinOwnerRequest request) throws Exception {
+            main(request,()->{try{
+                live(request);require(request.activity.getWindow().getDecorView().getWindowToken()==request.windowToken
+                    && request.activity.hasWindowFocus() && !request.activity.isFinishing() && !request.activity.isDestroyed());
+                request.activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);observerRegistered=true;
+                android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
+                request.activity.registerReceiver(screenOff,filter);screenRegistered=true;
+                require(deadlineHandler.postDelayed(deadlineCheck,50));
+                android.hardware.biometrics.BiometricPrompt prompt=new android.hardware.biometrics.BiometricPrompt.Builder(request.activity)
+                    .setTitle(label(request,request.session.inspection.action==PinLifecycleAction.enroll
+                        ?R.string.native_owner_enroll_title:R.string.native_owner_recover_title))
+                    .setSubtitle(label(request,R.string.native_owner_device_credential_reason))
+                    .setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build();
+                synchronized(core){live(request);request.promptOutstanding=true;}
+                prompt.authenticate(request.originalCrypto,request.cancellation,task->callback(request,task),new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
+                    @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(request,result,null);}
+                    @Override public void onAuthenticationError(int error,CharSequence message){terminal(request,null,new PinKnownRefusal());}
+                });
+            }catch(Exception error){synchronized(core){request.promptError=error;request.revoked=true;
+                if(request.promptOutstanding)request.sealed=true;core.notifyAll();}cancel(request);}});
+        }
+        private boolean observerRegistered,screenRegistered;
+        private final android.os.Handler deadlineHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+        private final Runnable deadlineCheck=new Runnable(){public void run(){OwnedPinOwnerRequest r=original;
+            if(r==null)return;event(r,()->{if(SystemClock.elapsedRealtime()>=r.session.deadlineUptimeMs)cancel(r);
+                synchronized(core){if(!r.detached && !r.retired && !deadlineHandler.postDelayed(this,50)){r.sealed=true;r.revoked=true;}}});}};
+        private void event(OwnedPinOwnerRequest request,Runnable task) {
+            synchronized(core){if(request!=original || request.retired || request.detached)return;
+                try{core.own(request.session.inspection);}catch(Exception error){request.sealed=true;request.revoked=true;return;}
+                request.eventCalls++;core.worker(request.session.inspection);}
+            try{task.run();}finally{synchronized(core){request.eventCalls--;core.settleWorker(request.session.inspection);core.notifyAll();}}
+        }
+        private final android.content.BroadcastReceiver screenOff=new android.content.BroadcastReceiver(){
+            @Override public void onReceive(Context context,android.content.Intent intent){OwnedPinOwnerRequest r=original;if(r!=null)event(r,()->cancel(r));}
+        };
+        private final android.app.Application.ActivityLifecycleCallbacks lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
+            public void onActivityCreated(android.app.Activity a,android.os.Bundle b){} public void onActivityStarted(android.app.Activity a){}
+            public void onActivityResumed(android.app.Activity a){} public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}
+            public void onActivityPaused(android.app.Activity a){lifecycleLoss(a);} public void onActivityStopped(android.app.Activity a){lifecycleLoss(a);}
+            public void onActivityDestroyed(android.app.Activity a){if(original!=null && a==original.activity)event(original,()->cancel(original));}
+        };
+        private void lifecycleLoss(android.app.Activity activity){OwnedPinOwnerRequest r=original;
+            // Strict fail-closed: even a system credential implementation which
+            // pauses its presenter is unsupported until a genuine original-host
+            // transition authority is supplied. Home/background never unlatches.
+            if(r!=null && activity==r.activity)event(r,()->cancel(r));}
+        private void cancel(OwnedPinOwnerRequest request) {
+            android.os.CancellationSignal signal; synchronized(core){if(request==null || request.owner!=this || original!=request)return;
+                request.revoked=true;signal=request.cancellation;if(request.finished && request.consumeCalls==0)request.wipe();
+                if(request.retired){core.notifyAll();return;}
+                if(request.cancelIssued){core.notifyAll();return;}request.cancelIssued=true;
+                request.cancelCalls++;}
+            Thread cancel=new Thread(()->{try{if(signal!=null)signal.cancel();core.cancel(request.session.inspection);}
+                catch(Exception error){synchronized(core){request.sealed=true;}}
+                finally{synchronized(core){request.cancelCalls--;core.notifyAll();}}},"planet-child-device-owner-cancel");
+            try{cancel.start();}catch(RuntimeException error){synchronized(core){request.cancelCalls--;request.sealed=true;core.notifyAll();}}
+        }
+        private void waitPrompt(OwnedPinOwnerRequest request) throws Exception {
+            for(;;){boolean expire=false;synchronized(core){if(!request.promptOutstanding && request.mainCalls==0)break;
+                if(SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs && !request.revoked)expire=true;
+                if(!expire)core.wait(50);}
+                if(expire)cancel(request);}
+            synchronized(core){if(request.promptError!=null)throw request.promptError;require(request.credentialReturned);}
+        }
+        private void watch(OwnedPinOwnerRequest request) {
+            Thread watcher=new Thread(()->{try{for(;;){boolean expired;synchronized(core){if(request.stopWatch)return;
+                    expired=!request.revoked && SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs;
+                    if(!expired){core.wait(50);continue;}}cancel(request);}}
+                catch(InterruptedException error){synchronized(core){request.sealed=true;request.revoked=true;core.notifyAll();}cancel(request);Thread.currentThread().interrupt();}
+            },"planet-child-device-owner-deadline");
+            synchronized(core){request.watcher=watcher;}watcher.start();
+        }
+        private void verifySignature(OwnedPinOwnerRequest request,byte[] signature) throws Exception {
+            require(signature!=null && signature.length>=8 && signature.length<=80 && request.publicKey!=null);
+            byte[] actual=request.publicKey.getEncoded();try{require(MessageDigest.isEqual(actual,request.keyEncoding));}finally{Arrays.fill(actual,(byte)0);}
+            java.security.Signature verify=java.security.Signature.getInstance("SHA256withECDSA");verify.initVerify(request.publicKey);
+            verify.update(request.payload);require(verify.verify(signature));
+        }
+        private void joinAuth(OwnedPinOwnerRequest request) throws Exception {
+            Thread watcher;synchronized(core){request.stopWatch=true;watcher=request.watcher;core.notifyAll();}
+            boolean interrupted=false;
+            if(watcher!=null)for(;;)try{watcher.join();break;}catch(InterruptedException error){interrupted=true;
+                synchronized(core){request.revoked=true;request.sealed=true;}cancel(request);}
+            synchronized(core){while(request.mainCalls!=0 || request.cancelCalls!=0 || request.promptOutstanding || request.eventCalls!=0)
+                try{core.wait();}catch(InterruptedException error){interrupted=true;request.revoked=true;request.sealed=true;}
+                request.cleanupFenced=true;if(interrupted)Thread.currentThread().interrupt();if(request.mainError!=null)throw request.mainError;}
+        }
+        /** Main-loop removal is an actual callback fence. While the caller holds
+         * the vault mutation lock this MUST NOT wait for authority.cancel IO;
+         * its independently counted worker remains until that IO actually returns. */
+        private void detach(OwnedPinOwnerRequest request) throws Exception {
+            boolean interrupted=false;synchronized(core){request.cleanupCalls++;}
+            try{main(request,()->{deadlineHandler.removeCallbacks(deadlineCheck);
+                if(screenRegistered){request.activity.unregisterReceiver(screenOff);screenRegistered=false;}
+                if(observerRegistered){request.activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);observerRegistered=false;}
+                synchronized(core){request.detached=true;}});
+                synchronized(core){while(request.mainCalls!=0 || request.eventCalls!=0)
+                    try{core.wait();}catch(InterruptedException error){interrupted=true;request.revoked=true;request.sealed=true;}
+                    if(request.mainError!=null)throw request.mainError;}
+                if(interrupted)throw new InterruptedException("owner cleanup interrupted after actual callback join");
+            }finally{synchronized(core){request.cleanupCalls--;core.notifyAll();}if(interrupted)Thread.currentThread().interrupt();}
+        }
+        private void run(OwnedPinOwnerRequest request,PinOwnerRecipient recipient) {
+            byte[] signature=null;boolean delivered=false;
+            try{watch(request);current(request);key(request);current(request);present(request);waitPrompt(request);current(request);
+                request.originalSignature.update(request.payload);signature=request.originalSignature.sign();current(request);verifySignature(request,signature);current(request);
+                synchronized(core){live(request);PinNativeReply backing=core.reply(request.session,new byte[0],request.session.checksum,PinSessionPhase.begun);
+                    request.permission=new PinOwnerPermission(this,request,signature,backing);request.deliveryEntered=true;}
+                recipient.completed(request.permission);current(request);delivered=true;
+            }catch(Throwable error){boolean failureDelivery;synchronized(core){request.revoked=true;
+                    if(request.deliveryEntered || !(error instanceof PinKnownRefusal))request.sealed=true;
+                    if(request.permission!=null)request.permission.wipe();failureDelivery=!request.deliveryEntered;request.deliveryEntered=true;}
+                cancel(request);if(failureDelivery)try{recipient.completed(null);}catch(Throwable ignored){synchronized(core){request.sealed=true;}}}
+            finally{if(signature!=null)Arrays.fill(signature,(byte)0);
+                try{joinAuth(request);}catch(Exception error){synchronized(core){request.sealed=true;request.revoked=true;}}
+                synchronized(core){if(SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs)request.revoked=true;
+                    request.deliveryCompleted=delivered&&!request.revoked&&!request.sealed;
+                    if(request.sealed)try{core.sealUnknown(request.session.inspection);}catch(Exception ignored){request.session.inspection.sealed=true;}
+                    if(request.revoked || request.disposed)request.wipe();core.settleWorker(request.session.inspection);
+                    request.finished=true;core.notifyAll();}}
+        }
+        /** Called only by the existing original native mutation worker, usually
+         * under the same vault lock. One-use burn precedes external callbacks.
+         * No checkpoint write, retry promotion or cached control rollback occurs. */
+        private void consume(PinOwnerPermission permission,OwnedPinSession session,byte[] next,String checksum,long revision) throws Exception {
+            OwnedPinOwnerRequest request;byte[] signature; synchronized(core){require(permission!=null && permission.owner==this && original!=null
+                && permission==original.permission && permission.request==original && !permission.disposed && !permission.consumed
+                && permission.settled && permission.knownDelivery && permission.backing.settled);
+                request=original;require(request.finished && request.deliveryCompleted
+                    && request.session.inspection.phase==PinSessionPhase.committing && request.session.inspection.threads.containsKey(Thread.currentThread())
+                    && request.session.inspection.workers==request.session.inspection.threads.get(Thread.currentThread()));permission.consumed=true;
+                request.consumeCalls++;signature=permission.signature.clone();}
+            try{require(request.session==session && next!=null && next.length==request.next.length && MessageDigest.isEqual(next,request.next)
+                    && request.nextChecksum.equals(checksum) && revision==request.nextRevision);
+                host(request);live(request);core.current(session,session.expected,session.checksum,session.revision);
+                live(request);verifySignature(request,signature);live(request);
+                core.current(session,session.expected,session.checksum,session.revision);host(request);live(request);
+                detach(request);live(request);}
+            finally{Arrays.fill(signature,(byte)0);synchronized(core){request.consumeCalls--;request.wipe();
+                    if(request.detached && request.mainCalls==0 && request.eventCalls==0 && request.cancelCalls==0 && request.cleanupCalls==0)request.retired=true;core.notifyAll();}}
+        }
+        private void settle(PinOwnerPermission permission,PinReplyDelivery delivery) throws Exception {
+            synchronized(core){require(permission!=null && permission.owner==this && original!=null && permission==original.permission
+                && permission.request==original && !permission.settled && delivery!=null && original.finished
+                && original.mainCalls==0 && original.cancelCalls==0 && original.consumeCalls==0 && original.eventCalls==0 && original.cleanupCalls==0
+                && original.cleanupFenced && core.active==original.session.inspection
+                && original.session.inspection.workers==0 && (delivery==PinReplyDelivery.uncertain || original.deliveryCompleted));
+                core.settleReply(permission.backing,delivery);permission.settled=true;permission.knownDelivery=delivery==PinReplyDelivery.known;
+                if(delivery==PinReplyDelivery.uncertain){original.sealed=true;permission.wipe();original.wipe();}core.notifyAll();}
+        }
+        private void retire(OwnedPinOwnerRequest request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            synchronized(core){own(request);require(Thread.currentThread()!=request.worker && !request.session.inspection.threads.containsKey(Thread.currentThread()));}cancel(request);
+            synchronized(core){if(!request.started){request.finished=true;request.cleanupFenced=true;}
+                while(!request.finished || request.consumeCalls!=0 || request.permission!=null && !request.permission.settled)core.wait();
+                if(request.retired){request.disposed=true;request.wipe();return;}core.own(request.session.inspection);core.worker(request.session.inspection);}
+            boolean interrupted=false;Exception failure=null;
+            try{detach(request);}catch(Exception error){failure=error;interrupted=Thread.interrupted();synchronized(core){request.sealed=true;request.revoked=true;}}
+            synchronized(core){while(request.mainCalls!=0 || request.cancelCalls!=0 || request.eventCalls!=0 || request.cleanupCalls!=0)
+                try{core.wait();}catch(InterruptedException error){interrupted=true;request.sealed=true;request.revoked=true;if(failure==null)failure=error;}
+                if(failure==null && request.detached){request.retired=true;request.disposed=true;request.wipe();}
+                else{request.sealed=true;core.sealUnknown(request.session.inspection);}
+                core.settleWorker(request.session.inspection);core.notifyAll();}
+            if(interrupted)Thread.currentThread().interrupt();if(failure!=null)throw failure;
+        }
+    }
+    private static boolean nativeOwnerRetirementReady(OwnedPinInspection inspection) {
+        OwnedPinOwnerRequest owner=inspection.ownerAuthorization;return owner==null || owner.retired;
     }
     private static final class NativePinSessions {
         private final PinSessionIO io; private final PinSessionAuthority authority;
@@ -562,6 +920,11 @@ final class PlanetChildVault {
         private synchronized void settleReply(PinNativeReply reply,PinReplyDelivery delivery) throws Exception {
             require(reply!=null && reply.owner==this && delivery!=null);own(reply.inspection);
             require(!reply.settled && reply.session==reply.inspection.session && reply.inspection.pendingReplies.contains(reply));
+            OwnedPinOwnerRequest owner=reply.inspection.ownerAuthorization;
+            if(owner!=null && owner.permission!=null && owner.permission.backing==reply)
+                require(owner.finished && owner.cleanupFenced && owner.mainCalls==0 && owner.cancelCalls==0 && owner.consumeCalls==0
+                    && owner.eventCalls==0 && owner.cleanupCalls==0
+                    && reply.inspection.workers==0 && (delivery==PinReplyDelivery.uncertain || owner.deliveryCompleted));
             PinPrimitiveContext primitive=reply.inspection.primitiveContext;
             if(primitive!=null&&primitive.material!=null&&primitive.material.backing==reply)
                 require(primitive.workers==0&&reply.inspection.workers==0&&nativeInputRetirementReady(reply.inspection));
@@ -576,7 +939,7 @@ final class PlanetChildVault {
         private synchronized void sealUnknown(OwnedPinInspection inspection) throws Exception { own(inspection);inspection.sealed=true;inspection.phase=PinSessionPhase.sealed;wipeSealedLocked(inspection);notifyAll(); }
         private PinNativeReply retire(OwnedPinInspection inspection) throws Exception {
             synchronized(this){own(inspection);require(!inspection.retiring && !inspection.threads.containsKey(Thread.currentThread()));inspection.retiring=true;
-                try{while(inspection.workers!=0 || inspection.transfers!=0 || !nativeInputRetirementReady(inspection))wait();inspection.retirementFenced=true;}
+                try{while(inspection.workers!=0 || inspection.transfers!=0 || !nativeInputRetirementReady(inspection) || !nativeOwnerRetirementReady(inspection))wait();inspection.retirementFenced=true;}
                 catch(InterruptedException interrupted){inspection.sealed=true;inspection.phase=PinSessionPhase.sealed;wipeSealedLocked(inspection);Thread.currentThread().interrupt();throw new Unavailable();}
             }
             try{io.locked(transaction->{authority.retire(inspection);return null;});}
