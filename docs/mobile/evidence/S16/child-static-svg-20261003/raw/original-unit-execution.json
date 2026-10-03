@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-03T10:26:23.931Z",
+  "finishedAt": "2026-10-03T10:26:25.583Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "src/child/childStaticSvg.test.ts",
+    "src/child/childMedia.test.ts",
+    "src/child/childMediaDecode.test.ts",
+    "--testNamePattern=SVG|child static codec preflight",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a1\\vitest.json"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "errorCode": null,
+  "recordedRepositoryHead": "a0b94c62cb055a60c84cf350374cd001017c451c",
+  "dirtySourceFiles": [
+    {
+      "path": "src/child/childMedia.ts",
+      "beforeSha256": "dee747cd3909e595aed96e8e6632151b6f11df11b4fa2b5fe3435bc6a2292454",
+      "afterSha256": "2702b1f78efb83a110d74c62bcc1f251e7217d9ab883ae356b7b2448bd28d94a"
+    },
+    {
+      "path": "src/child/childMediaDecode.ts",
+      "beforeSha256": "0a51d929f2a5b8e11467d58fc69b7a66a411d3173d6c4f2ba19e02a5ee87b30f",
+      "afterSha256": "d9a517da6a33014cd974c9e4c91a8bcb31eb748bbff123d5a0e53457fcacc299"
+    },
+    {
+      "path": "src/child/childMedia.test.ts",
+      "beforeSha256": "d1f028ed3827eba259e791b1393a0bba0cbd5f79f4c8f03b4fd186458f6f689b",
+      "afterSha256": "9fd4bfcf7149fe7fd16bafad33cdca0c918cd0fa45695d516401314a26044278"
+    },
+    {
+      "path": "src/child/childStaticSvg.ts",
+      "beforeSha256": null,
+      "afterSha256": "b7eb5d21fc6c8d25481f0746db840af7680e0d86f5653ee15f7525c31fa7409f"
+    },
+    {
+      "path": "src/child/childStaticSvg.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "ae861f3a63a02fb90e02f221a3cc6533876764dbc130f4e342d761d1c4c4a6a0"
+    },
+    {
+      "path": "tests/child/child-svg-web.mjs",
+      "beforeSha256": null,
+      "afterSha256": "c33c1cccdec79055bd5493c4d319fc81ee14e177867839fb4ecfbd3fb82daf73"
+    },
+    {
+      "path": "tests/child/child-media-decode-web.mjs",
+      "beforeSha256": "7e6ba6e12a27346ab953c0bb14a7c0aa17196c9cf5259c680a1d8f3e86ec8af7",
+      "afterSha256": "562467f3e0e929b2ac6a40f9a1b41f1a47ed8d6e3b1140d5cd2a59fcdd504458"
+    },
+    {
+      "path": "tests/child/child-media-presentation-web.mjs",
+      "beforeSha256": "48759999874a2d99b8fbfc5c79c4bffff6173e0a83c0c4abaaf9180716f9ef9d",
+      "afterSha256": "e3e3db04b62770cec866382ae709873bfd2ae7c91f3293c146380afc50150e78"
+    }
+  ],
+  "inputsUnchanged": true,
+  "isolatedEnv": true,
+  "installedNativeRuntime": "NOT_RUN",
+  "remoteRequests": 0
+}

@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-static-svg-evidence-inventory",
+  "sourceCommit": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/source-checkpoint.json",
+      "sha256": "d25b70f6283d9a24c1aceac6378da874b1561b5434feb251fc7759d23f6670f3",
+      "bytes": 274072
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/original-unit-failure.json",
+      "sha256": "12bad6e763c8e5f517b5171aa41e568d112f90446fe13b05c99754d17fd963bd",
+      "bytes": 44899
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/original-unit-execution.json",
+      "sha256": "090a22826580ad233dd98b88ec151f5bc6effcbe261be6330103b3d18ea2af86",
+      "bytes": 2757
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-result.json",
+      "sha256": "4b38bc12097028bab78799d0cf5d0267cb8074e487323cfae9226b702463eefd",
+      "bytes": 42657
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-execution.json",
+      "sha256": "7de1463c3bb505565779cc2408e3d73c4807c87559bb533c80d02e2460d4f2b8",
+      "bytes": 2686
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-stdout.txt",
+      "sha256": "b80ea653506f607f9e443d94038171b0932a5488c654a6d5bf3df80c4d38d9ed",
+      "bytes": 163
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/source-review-a1.json",
+      "sha256": "045871d0f4e3e9dd87c4a0516fbd8e49f1d9bcec59259f89dc80ba883351c36c",
+      "bytes": 4520
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/corrective-marker-manifest.json",
+      "sha256": "5fda7afffd4ad7ee47fa88ee3315807295001ddbf21b57ed3a9fa0c9fc4cefd6",
+      "bytes": 688
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/corrective-marker-scope.json",
+      "sha256": "8c4a96cc9bd293754085bd8fb13ef335a403a840b743fd280abbb5cb453e2953",
+      "bytes": 4138
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/helper-preparation-attempts.json",
+      "sha256": "a107f739a64ad28a44153546c142a2a11ec03d8afaeaea498e8ee668f8b30ac4",
+      "bytes": 1140
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-typecheck.json",
+      "sha256": "b591eabfce8740a59d5237365ecd4f886c8cc25866f6941b4f91e92268ba4b6a",
+      "bytes": 274175
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/actual-browser.json",
+      "sha256": "b3e51a15add02b84c6ac70988b2a40c8591e6cc9e7e772336f16b236d310a084",
+      "bytes": 7409
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childMediaDecode.js",
+      "sha256": "452a3f780b6d93f6c9c58a1f1cbb541a72986aa9f7e515220b170f12e0531d37",
+      "bytes": 30713
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childMedia.js",
+      "sha256": "452fedff76ad9ad9bb76aa665ece11710a48c49d1c94c551c842a1946c9f4c6f",
+      "bytes": 21557
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childDataNamespace.js",
+      "sha256": "e854c4e7e4cc16ab5bff0329498145f306939e63170e841ad0d63f6da455b0b4",
+      "bytes": 4082
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childProfile.js",
+      "sha256": "059be384b83101ab71d59b5ec228352e444fc57669797a74d453c6bb197ea704",
+      "bytes": 7175
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childAccessPolicy.js",
+      "sha256": "f563f1b1f5adcb3b7c750f8427b87f900e265b06ef929f1141b01aa146f49b0d",
+      "bytes": 10654
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childPackage.js",
+      "sha256": "d1d9179fbf5f11778958e751ab7bc98b4269d7b731628747e5465020405314be",
+      "bytes": 13700
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/browser-modules/childStaticSvg.js",
+      "sha256": "6ad2da37879796d991bae77893e4f5f0b17bc6aefafcd0ad7727286fc50299ef",
+      "bytes": 26538
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/result.json",
+      "sha256": "3e9e35ddf1bab160589ff586922db44f59554364c6d528e515160855035408de",
+      "bytes": 29546
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/entry.json",
+      "sha256": "c518df921e5f6b36728c8476a94b0f1e7aaf606cee16e4cc99be78603567793a",
+      "bytes": 556
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "source-checkpoint",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/source-checkpoint.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-child-static-svg.json",
+      "sha256": "d25b70f6283d9a24c1aceac6378da874b1561b5434feb251fc7759d23f6670f3",
+      "bytes": 274072
+    },
+    {
+      "id": "original-unit-failure",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/original-unit-failure.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a1\\vitest.json",
+      "sha256": "12bad6e763c8e5f517b5171aa41e568d112f90446fe13b05c99754d17fd963bd",
+      "bytes": 44899
+    },
+    {
+      "id": "original-unit-execution",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/original-unit-execution.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a1\\execution.json",
+      "sha256": "090a22826580ad233dd98b88ec151f5bc6effcbe261be6330103b3d18ea2af86",
+      "bytes": 2757
+    },
+    {
+      "id": "final-unit-result",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\vitest.json",
+      "sha256": "4b38bc12097028bab78799d0cf5d0267cb8074e487323cfae9226b702463eefd",
+      "bytes": 42657
+    },
+    {
+      "id": "final-unit-execution",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-execution.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\execution.json",
+      "sha256": "7de1463c3bb505565779cc2408e3d73c4807c87559bb533c80d02e2460d4f2b8",
+      "bytes": 2686
+    },
+    {
+      "id": "final-unit-stdout",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-stdout.txt",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\stdout.txt",
+      "sha256": "b80ea653506f607f9e443d94038171b0932a5488c654a6d5bf3df80c4d38d9ed",
+      "bytes": 163
+    },
+    {
+      "id": "final-unit-stderr",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-stderr.txt",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "source-review-a1",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/source-review-a1.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-review.json",
+      "sha256": "045871d0f4e3e9dd87c4a0516fbd8e49f1d9bcec59259f89dc80ba883351c36c",
+      "bytes": 4520
+    },
+    {
+      "id": "corrective-marker-manifest",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/corrective-marker-manifest.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-svg-markers-a2\\integration-manifest.json",
+      "sha256": "5fda7afffd4ad7ee47fa88ee3315807295001ddbf21b57ed3a9fa0c9fc4cefd6",
+      "bytes": 688
+    },
+    {
+      "id": "corrective-marker-scope",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/corrective-marker-scope.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-svg-markers-a2\\READY.json",
+      "sha256": "8c4a96cc9bd293754085bd8fb13ef335a403a840b743fd280abbb5cb453e2953",
+      "bytes": 4138
+    },
+    {
+      "id": "helper-preparation-attempts",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/helper-preparation-attempts.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-svg-helper-preparation-attempts.json",
+      "sha256": "a107f739a64ad28a44153546c142a2a11ec03d8afaeaea498e8ee668f8b30ac4",
+      "bytes": 1140
+    },
+    {
+      "id": "final-typecheck",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-typecheck.json",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-static-svg-typecheck-eccd2201-6c86-49f1-8f11-c5d6dc424277\\result.json",
+      "sha256": "b591eabfce8740a59d5237365ecd4f886c8cc25866f6941b4f91e92268ba4b6a",
+      "bytes": 274175
+    },
+    {
+      "id": "actual-browser",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/actual-browser.json",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-svg-fd8662e2-55c0-4041-8a13-4a2135b7134a\\result.json",
+      "sha256": "b3e51a15add02b84c6ac70988b2a40c8591e6cc9e7e772336f16b236d310a084",
+      "bytes": 7409
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}

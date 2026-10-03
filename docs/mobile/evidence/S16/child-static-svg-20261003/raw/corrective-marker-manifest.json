@@ -1,0 +1,17 @@
+[
+  {
+    "path": "src/child/childStaticSvg.ts",
+    "beforeSha256": "b7eb5d21fc6c8d25481f0746db840af7680e0d86f5653ee15f7525c31fa7409f",
+    "afterSha256": "7bfdce63e63c1b20c5aa5a7d68d58ee49fba98de73cb2f59b48a6470065c7059"
+  },
+  {
+    "path": "src/child/childStaticSvg.test.ts",
+    "beforeSha256": "ae861f3a63a02fb90e02f221a3cc6533876764dbc130f4e342d761d1c4c4a6a0",
+    "afterSha256": "39ae89c0866e67c797cd31dd27aa0d539701275c1b402e8fdf1a185791c31b13"
+  },
+  {
+    "path": "tests/child/child-svg-web.mjs",
+    "beforeSha256": "c33c1cccdec79055bd5493c4d319fc81ee14e177867839fb4ecfbd3fb82daf73",
+    "afterSha256": "cba73cc91bb93d1387d8d71fc3d13f10c2e41f7b4c96566d4e949c5470528c1e"
+  }
+]

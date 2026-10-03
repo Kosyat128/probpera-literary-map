@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-svg-local-helper-preparation-attempts",
+  "applicationChecksExecuted": 0,
+  "attempts": [
+    {
+      "helper": "prepare-child-static-svg-checks.mjs",
+      "status": "NO_COMPLETION_RECEIPT",
+      "toolSession": 82093,
+      "retainedPartialFile": "run-child-static-svg-units.mjs",
+      "observedBytes": 0,
+      "causeVerified": false
+    },
+    {
+      "helper": "prepare-child-static-svg-checks-a2.mjs",
+      "status": "FAIL",
+      "exitCode": 1,
+      "error": "EXACT_CHECK_HELPER_CHANGED",
+      "sourceLine": 9,
+      "cause": "The exact sourceFiles:11 guard exists in the unit-helper template but not in the TypeScript-helper template",
+      "completedUnitHelper": "run-child-static-svg-units-a2.mjs",
+      "completedUnitHelperBytes": 3151,
+      "productTestsExecuted": 0
+    }
+  ],
+  "correction": "TypeScript helper was authored separately as typecheck-child-static-svg-a3.mjs; both final helpers passed node --check. Application execution remains separate.",
+  "originalFilesPreserved": true,
+  "projectWrites": 0,
+  "remoteOperations": 0,
+  "releaseReady": false
+}

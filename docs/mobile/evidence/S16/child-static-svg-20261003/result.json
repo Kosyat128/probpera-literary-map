@@ -1,0 +1,593 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-static-svg-resource-evidence",
+  "status": "PARTIAL",
+  "sourceCommit": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+  "previousSourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "previousReportCommit": "a0b94c62cb055a60c84cf350374cd001017c451c",
+  "generatedAt": "2026-10-03T11:06:13.159Z",
+  "evidenceFamily": "docs/mobile/evidence/S16/child-static-svg-20261003",
+  "binding": {
+    "sourceCommit": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+    "sourceFingerprint": "01cc8775e36871de519b5babf2f6793ceb7037ba307801a40c0340da06880690",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "sourceFiles": [
+    {
+      "path": "src/child/childMedia.ts",
+      "sha256": "2702b1f78efb83a110d74c62bcc1f251e7217d9ab883ae356b7b2448bd28d94a"
+    },
+    {
+      "path": "src/child/childMediaDecode.ts",
+      "sha256": "d9a517da6a33014cd974c9e4c91a8bcb31eb748bbff123d5a0e53457fcacc299"
+    },
+    {
+      "path": "src/child/childMedia.test.ts",
+      "sha256": "9fd4bfcf7149fe7fd16bafad33cdca0c918cd0fa45695d516401314a26044278"
+    },
+    {
+      "path": "src/child/childStaticSvg.ts",
+      "sha256": "7bfdce63e63c1b20c5aa5a7d68d58ee49fba98de73cb2f59b48a6470065c7059"
+    },
+    {
+      "path": "src/child/childStaticSvg.test.ts",
+      "sha256": "39ae89c0866e67c797cd31dd27aa0d539701275c1b402e8fdf1a185791c31b13"
+    },
+    {
+      "path": "tests/child/child-svg-web.mjs",
+      "sha256": "cba73cc91bb93d1387d8d71fc3d13f10c2e41f7b4c96566d4e949c5470528c1e"
+    },
+    {
+      "path": "tests/child/child-media-decode-web.mjs",
+      "sha256": "562467f3e0e929b2ac6a40f9a1b41f1a47ed8d6e3b1140d5cd2a59fcdd504458"
+    },
+    {
+      "path": "tests/child/child-media-presentation-web.mjs",
+      "sha256": "e3e3db04b62770cec866382ae709873bfd2ae7c91f3293c146380afc50150e78"
+    }
+  ],
+  "implementation": {
+    "closedStaticGrammar": true,
+    "boundedMarkerSubset": true,
+    "markerAggregateLocalAndTransformedViewportPixels": 4194304,
+    "maximumBytes": 262144,
+    "maximumDimensions": 2048,
+    "maximumPixels": 4194304,
+    "maximumDepth": 64,
+    "expandedNodes": 16384,
+    "expandedNumbers": 131072,
+    "ownedBlobUrlImageAndBitmap": true,
+    "occupiedCapacityUntilActualSettlement": true,
+    "lateBitmapClosed": true,
+    "canonicalAssetsUnchanged": true,
+    "fullCanonicalFlagInventory": "NOT_VERIFIED",
+    "nativeAllocationOrCpuGuarantee": false
+  },
+  "finalUnits": {
+    "passed": 67,
+    "failed": 0,
+    "filtered": 29,
+    "helperPassed": 65,
+    "exactSvgLoaderPassed": 2,
+    "recordedRepositoryHead": "a0b94c62cb055a60c84cf350374cd001017c451c",
+    "dirtySourceFiles": 8,
+    "sourceBytesExactlyMatchFrozenCommit": true,
+    "executedAtFrozenCommit": false
+  },
+  "preservedInitialUnits": {
+    "passed": 53,
+    "failed": 1,
+    "filtered": 54,
+    "retained": true,
+    "failure": "Canonical US uses the marker grammar missing from A1; original test and asset retained; bounded A2 marker support corrected the implementation"
+  },
+  "retainedNonSvgPreflight": {
+    "passed": 13,
+    "receipt": "original-unit-failure",
+    "qualification": "Actual A1 nonSVG preflight cases; childMediaDecode bytes and nonSVG branch unchanged by marker-only correction; not rerun or counted as new final cases",
+    "assertions": [
+      "child static codec preflight rejects the legacy misaligned IDAT fixture despite matching PNG signature and IEND",
+      "child static codec preflight admits bounded png structural dimensions",
+      "child static codec preflight admits bounded jpeg structural dimensions",
+      "child static codec preflight admits bounded webp structural dimensions",
+      "child static codec preflight rejects oversized PNG before codec allocation and malformed chunk lengths",
+      "child static codec preflight rejects APNG timeline chunks on the static port",
+      "child static codec preflight rejects conflicting WebP canvas and coded frame dimensions, and animation flag",
+      "child static codec preflight rejects unsupported/malformed JPEG frame precision and oversized dimensions",
+      "child static codec preflight scans entropy to deny a later larger SOF/DNL while allowing stuffed/restart bytes and progressive scans",
+      "child static codec preflight admits bounded 8-bit mono/stereo PCM WAV",
+      "child static codec preflight admits bounded 16-bit mono/stereo PCM WAV",
+      "child static codec preflight rejects float/24-bit/multichannel WAV, inconsistent block/byte rates and long narration",
+      "child static codec preflight denies byte getters, shared buffers, unsupported MIME and truncated containers"
+    ]
+  },
+  "finalTypeScript": {
+    "pass": true,
+    "recordedRepositoryHead": "a0b94c62cb055a60c84cf350374cd001017c451c",
+    "dirtySourceFiles": 8,
+    "capturedSourceFiles": 1776,
+    "sourceBytesExactlyMatchFrozenCommit": true,
+    "executedAtFrozenCommit": false
+  },
+  "actualBrowser": {
+    "pass": true,
+    "sourceCommit": "ddbc10c3d35c5d28823df901a44f1a932dd772e2",
+    "checks": 35,
+    "launches": 1,
+    "externalRequests": 0,
+    "profileRemoved": true,
+    "toolVersions": {
+      "node": "v24.19.0",
+      "typescript": "5.9.3",
+      "playwright": "1.62.1",
+      "edge": "154.0.4258.53"
+    },
+    "canonicalAssets": [
+      {
+        "path": "public/assets/country-flags/ru.svg",
+        "sha256": "375a1fd45c4d0c0b0cd5e05a5322da90f30714b979b41771de847d92a8536fc9",
+        "bytes": 238,
+        "contentOrRightsApproval": false
+      },
+      {
+        "path": "public/assets/country-flags/us.svg",
+        "sha256": "43a00def4fa058cc317d79aba935eaf1622f2d215442bb35a6f8fbc6a01a4d5f",
+        "bytes": 659,
+        "contentOrRightsApproval": false
+      }
+    ],
+    "checksReceipt": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/actual-browser.json",
+    "boundary": "Owned resource codec and private canvas proof; no App, native OS, admission, rights or child content activation"
+  },
+  "builds": {
+    "currentSvgSource": "NOT_RUN",
+    "olderPreparationSource": "3c79db7c6d299032a357781861a919f454981daf",
+    "olderEvidence": "docs/mobile/evidence/S16/native-private-transport-20261003/result.json",
+    "containsSvgChange": false
+  },
+  "sourcePacket": {
+    "status": "NOT_PREPARED",
+    "qualification": "Small incremental source/proof addendum may follow separately; older build artifacts remain bound to3c79"
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "programmingContinuation": {
+    "stage": "S16",
+    "status": "IN_PROGRESS",
+    "implementationOwner": "Codex",
+    "sourceFoundation": [
+      "src/child/childPackage.ts",
+      "src/child/childIndex.ts",
+      "src/child/childMedia.ts",
+      "src/child/childProtectedState.ts",
+      "src/child/childDurableData.ts",
+      "src/child/childMediaDecode.ts",
+      "src/child/childMediaPresentation.ts",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+      "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+      "src/child/childNativeData.ts"
+    ],
+    "protectedAdmission": "UNAVAILABLE",
+    "appActivation": false,
+    "approvedProductionChildContent": false,
+    "ownerInputsReference": "decisions/RELEASE_DECISIONS.json",
+    "nextIndependentAction": "Continue independent S16 programming with protected native PIN enrollment/verification/recovery and authenticated native host-current binding under the durable commit lock before admitted child index ports; then complete replay-resistant authority/trusted time and clear-before-render lifecycle/route App wiring. The static SVG codec proves resource handling only and grants no protected admission, PIN, profile/package review, rights or App activation. Remaining documented media formats and independently reviewed exact-byte RU/EN child assets remain required. S03.acceptance remains IN_PROGRESS with11 OPEN criteria and S16 with36 OPEN; preserve the four original conditions and seven owner inputs. Preserve existing RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passed scopes for reporting, create D stages, invent approvals/trusted time, rewrite historical FAIL/NOT_RUN or deploy/push/merge/publish.",
+    "remainingInternalProgramming": [
+      {
+        "work": "Protected child admission",
+        "status": "OPEN",
+        "responsibility": "Replace the unavailable factory only with genuine verified native authority; tested synthetic ports do not grant admission."
+      },
+      {
+        "work": "Supported native authority and trusted time",
+        "status": "OPEN",
+        "responsibility": "Provide supported replay-resistant checkpoint/epoch and restart continuity; uncertain reboot or clock state stays denied without a trusted anchor."
+      },
+      {
+        "work": "Native PIN enrollment, verification and recovery",
+        "status": "OPEN",
+        "responsibility": "Integrate genuine protected input and durable attempt/CAS bookkeeping with revocable Parent Gate capabilities; no preference PIN or approval boolean."
+      },
+      {
+        "work": "Durable separate child data ports",
+        "status": "OPEN",
+        "responsibility": "The private TypeScript RPC transport and constructor-owned Java/Swift four-purpose dispatchers are implemented. Complete separately authenticated native host-current coordination under the durable commit lock, admitted child index-port integration and actual installed storage/lifecycle evidence. Private partition activation and local publication callbacks grant no protected admission, PIN, package/review or rights authority; actual App/plugin registration remains pending."
+      },
+      {
+        "work": "Clear before render and lifecycle integration",
+        "status": "OPEN",
+        "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes."
+      },
+      {
+        "work": "Reviewed child media rendering",
+        "status": "OPEN",
+        "responsibility": "The retained static PNG/JPEG/WebP/PCM-WAV codec and owned Web presentation foundations have scoped local proofs. Complete documented required media formats, independently reviewed exact-byte RU/EN production assets and native/App/lifecycle integration before activation; neither muted synthetic audio nor scoped browser fixtures grant content or native admission."
+      }
+    ],
+    "qualification": "These are remaining Codex programming tasks, separate from the seven owner input actions. Integrated source foundations do not establish production child activation, native authority, approved content or installed-device acceptance.",
+    "localContinuation": {
+      "isolatedWebStorage": "43 synthetic unit cases plus 44 actual Edge IndexedDB checks; no App/native ports admission",
+      "staticMediaDecoder": "retained actual distinct local cases in explicit raw proofs",
+      "ownedWebPresentation": "retained actual distinct local cases in explicit raw proofs",
+      "privateNativeDataCandidates": "Reviewed current source candidates only; no admitted JS transaction backend, PIN/profile/package authority, native plugin or App activation",
+      "nativeCandidateOsRuntime": "NOT_RUN",
+      "iosCandidateCompilation": "NOT_RUN",
+      "actualWebMediaProofs": [
+        {
+          "kind": "literary-planet-child-media-web-codec-proof",
+          "checks": 28,
+          "proofId": "actual-edge-codec",
+          "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+        },
+        {
+          "kind": "literary-planet-child-media-web-presentation-proof",
+          "checks": 22,
+          "proofId": "actual-edge-presentation",
+          "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24"
+        }
+      ],
+      "audibleAudioVerified": false,
+      "appActivation": false,
+      "nativeProtectedAdmission": "UNAVAILABLE"
+    }
+  },
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "protectedAdmission": "NOT_RUN",
+    "appChildActivation": false,
+    "remoteOperations": 0
+  },
+  "proofs": [
+    {
+      "id": "source-checkpoint",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/source-checkpoint.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-child-static-svg.json",
+      "sha256": "d25b70f6283d9a24c1aceac6378da874b1561b5434feb251fc7759d23f6670f3",
+      "bytes": 274072
+    },
+    {
+      "id": "original-unit-failure",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/original-unit-failure.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a1\\vitest.json",
+      "sha256": "12bad6e763c8e5f517b5171aa41e568d112f90446fe13b05c99754d17fd963bd",
+      "bytes": 44899
+    },
+    {
+      "id": "original-unit-execution",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/original-unit-execution.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a1\\execution.json",
+      "sha256": "090a22826580ad233dd98b88ec151f5bc6effcbe261be6330103b3d18ea2af86",
+      "bytes": 2757
+    },
+    {
+      "id": "final-unit-result",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\vitest.json",
+      "sha256": "4b38bc12097028bab78799d0cf5d0267cb8074e487323cfae9226b702463eefd",
+      "bytes": 42657
+    },
+    {
+      "id": "final-unit-execution",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-execution.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\execution.json",
+      "sha256": "7de1463c3bb505565779cc2408e3d73c4807c87559bb533c80d02e2460d4f2b8",
+      "bytes": 2686
+    },
+    {
+      "id": "final-unit-stdout",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-stdout.txt",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\stdout.txt",
+      "sha256": "b80ea653506f607f9e443d94038171b0932a5488c654a6d5bf3df80c4d38d9ed",
+      "bytes": 163
+    },
+    {
+      "id": "final-unit-stderr",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-unit-stderr.txt",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-units-a2\\stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "source-review-a1",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/source-review-a1.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-static-svg-review.json",
+      "sha256": "045871d0f4e3e9dd87c4a0516fbd8e49f1d9bcec59259f89dc80ba883351c36c",
+      "bytes": 4520
+    },
+    {
+      "id": "corrective-marker-manifest",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/corrective-marker-manifest.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-svg-markers-a2\\integration-manifest.json",
+      "sha256": "5fda7afffd4ad7ee47fa88ee3315807295001ddbf21b57ed3a9fa0c9fc4cefd6",
+      "bytes": 688
+    },
+    {
+      "id": "corrective-marker-scope",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/corrective-marker-scope.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-svg-markers-a2\\READY.json",
+      "sha256": "8c4a96cc9bd293754085bd8fb13ef335a403a840b743fd280abbb5cb453e2953",
+      "bytes": 4138
+    },
+    {
+      "id": "helper-preparation-attempts",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/helper-preparation-attempts.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-svg-helper-preparation-attempts.json",
+      "sha256": "a107f739a64ad28a44153546c142a2a11ec03d8afaeaea498e8ee668f8b30ac4",
+      "bytes": 1140
+    },
+    {
+      "id": "final-typecheck",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/final-typecheck.json",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-static-svg-typecheck-eccd2201-6c86-49f1-8f11-c5d6dc424277\\result.json",
+      "sha256": "b591eabfce8740a59d5237365ecd4f886c8cc25866f6941b4f91e92268ba4b6a",
+      "bytes": 274175
+    },
+    {
+      "id": "actual-browser",
+      "path": "docs/mobile/evidence/S16/child-static-svg-20261003/raw/actual-browser.json",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-svg-fd8662e2-55c0-4041-8a13-4a2135b7134a\\result.json",
+      "sha256": "b3e51a15add02b84c6ac70988b2a40c8591e6cc9e7e772336f16b236d310a084",
+      "bytes": 7409
+    }
+  ]
+}
