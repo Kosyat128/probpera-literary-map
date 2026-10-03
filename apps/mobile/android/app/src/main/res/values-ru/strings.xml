@@ -10,4 +10,21 @@
     <string name="native_pin_delete">Удалить</string>
     <string name="native_pin_cancel">Отмена</string>
     <string name="native_pin_continue">Продолжить</string>
+    <string name="native_pin_verify_prompt">Введите PIN, чтобы подтвердить действие.</string>
+    <string name="native_pin_verify_exit_child_mode">Выйти из детского режима</string>
+    <string name="native_pin_verify_switch_adult_profile">Переключиться на взрослый профиль</string>
+    <string name="native_pin_verify_change_exact_age">Изменить возраст</string>
+    <string name="native_pin_verify_change_blocked_topics">Изменить заблокированные темы</string>
+    <string name="native_pin_verify_open_adult_store">Открыть магазин</string>
+    <string name="native_pin_verify_initiate_purchase">Начать покупку</string>
+    <string name="native_pin_verify_restore_purchases">Восстановить покупки</string>
+    <string name="native_pin_verify_open_external">Открыть внешнюю ссылку</string>
+    <string name="native_pin_verify_share">Поделиться материалом</string>
+    <string name="native_pin_verify_account_change">Сменить аккаунт</string>
+    <string name="native_pin_verify_export_child_data">Экспортировать данные ребёнка</string>
+    <string name="native_pin_verify_delete_child_data">Удалить данные ребёнка</string>
+    <string name="native_pin_verify_diagnostics">Открыть диагностику</string>
+    <string name="native_pin_verify_expand_access_settings">Расширить доступ</string>
+    <string name="native_pin_verify_enable_licensed_pack">Включить набор материалов</string>
+    <string name="native_pin_verify_view_legal_commercial">Открыть правовую и коммерческую информацию</string>
 </resources>

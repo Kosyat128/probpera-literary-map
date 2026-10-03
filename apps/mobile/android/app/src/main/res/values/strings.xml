@@ -12,4 +12,21 @@
     <string name="native_pin_delete">Delete</string>
     <string name="native_pin_cancel">Cancel</string>
     <string name="native_pin_continue">Continue</string>
+    <string name="native_pin_verify_prompt">Enter your PIN to confirm this action.</string>
+    <string name="native_pin_verify_exit_child_mode">Exit child mode</string>
+    <string name="native_pin_verify_switch_adult_profile">Switch to an adult profile</string>
+    <string name="native_pin_verify_change_exact_age">Change age</string>
+    <string name="native_pin_verify_change_blocked_topics">Change blocked topics</string>
+    <string name="native_pin_verify_open_adult_store">Open the store</string>
+    <string name="native_pin_verify_initiate_purchase">Start a purchase</string>
+    <string name="native_pin_verify_restore_purchases">Restore purchases</string>
+    <string name="native_pin_verify_open_external">Open an external link</string>
+    <string name="native_pin_verify_share">Share content</string>
+    <string name="native_pin_verify_account_change">Change account</string>
+    <string name="native_pin_verify_export_child_data">Export child data</string>
+    <string name="native_pin_verify_delete_child_data">Delete child data</string>
+    <string name="native_pin_verify_diagnostics">Open diagnostics</string>
+    <string name="native_pin_verify_expand_access_settings">Expand access</string>
+    <string name="native_pin_verify_enable_licensed_pack">Enable a content pack</string>
+    <string name="native_pin_verify_view_legal_commercial">View legal and commercial information</string>
 </resources>

@@ -1518,7 +1518,7 @@ final class PlanetChildVault {
     private static final class PinVerificationTicket {
         final NativePinVerification owner;final PinGateRequest gate;PinVerificationPhase phase=PinVerificationPhase.reserved;
         boolean cancelled,sealed,retiring,retirementFenced,cancelCleanupStarted;int workers,transfers;OwnedPinVerification owned;PinVerificationReply terminal;
-        private PinVerificationMath math;
+        private PinVerificationMath math;private PinVerificationNativeInputRequest nativeInputRequest;
         final java.util.Set<Object> permissions=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<Object,Boolean>());
         final java.util.IdentityHashMap<Thread,Integer> threads=new java.util.IdentityHashMap<>();
         final java.util.Set<PinVerificationReply> replies=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<PinVerificationReply,Boolean>());
@@ -1633,7 +1633,7 @@ final class PlanetChildVault {
             });}catch(Exception error){failed(original,error,false);throw error;}finally{settledWorker(original);}
         }
         private synchronized OwnedPinVerificationInput bindInput(OwnedPinVerification owned,PinVerificationInput raw) throws Exception {
-            lease(owned);require(raw!=null&&owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0&&owned.input==null);
+            lease(owned);verificationNativeInputOperation(owned);require(raw!=null&&owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0&&owned.input==null);
             OwnedPinVerificationInput original=new OwnedPinVerificationInput(this,owned,raw);owned.input=original;return original;
         }
         private void exactCurrent(PinSessionTransaction transaction,OwnedPinVerification owned,byte[] expected,String checksum,long revision) throws Exception {
@@ -1668,7 +1668,7 @@ final class PlanetChildVault {
             }
         }
         private PinVerificationReply verify(OwnedPinVerification owned,OwnedPinVerificationInput input) throws Exception {
-            background();synchronized(this){lease(owned);require(input!=null&&input.owner==this&&input.owned==owned&&owned.input==input&&!input.closed&&!input.taken);
+            background();synchronized(this){lease(owned);verificationNativeInputOperation(owned);require(input!=null&&input.owner==this&&input.owned==owned&&owned.input==input&&!input.closed&&!input.taken);
                 require(owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0);owned.ticket.phase=PinVerificationPhase.verifying;worker(owned.ticket);}
             byte[] pin=null,expected=null,charged=null,finalBytes=null;PinAttemptJournal journal=null;PinVerifierMaterial material=null;
             PinVerificationMath math=null;PinVerificationComparison comparison=null;final boolean[] publication={false};
@@ -1711,7 +1711,7 @@ final class PlanetChildVault {
             require(!reply.settled&&reply.ticket.replies.contains(reply)&&reply.owned==reply.ticket.owned);}
         private void deliver(PinVerificationReply reply,PinVerificationRecipient recipient) throws Exception {
             background();byte[] finalRecord;synchronized(this){replyFence(reply);require(recipient!=null&&!reply.closed&&!reply.deliveryStarted&&reply.ticket.workers==0);
-                if(!reply.terminal)live(reply.ticket);finalRecord=reply.bytes.clone();reply.deliveryStarted=true;worker(reply.ticket);}
+                if(!reply.terminal){verificationNativeInputOperation(reply.owned);live(reply.ticket);}finalRecord=reply.bytes.clone();reply.deliveryStarted=true;worker(reply.ticket);}
             try{if(!reply.terminal)locked(transaction->{try(ProtectedEnvelope record=ProtectedEnvelope.decode(finalRecord,policy.version,policy.checksum,policy.maximumIterations)){
                     exactCurrent(transaction,reply.owned,finalRecord,reply.checksum,record.revision);}return null;});
                 recipient.receive(reply);
@@ -1732,7 +1732,7 @@ final class PlanetChildVault {
             synchronized(this){original=ticket(gate);revoke(gate);if(original.cancelCleanupStarted||original.retirementFenced)return;original.cancelCleanupStarted=true;worker(original);}
             try{locked(transaction->{authority.cancel(gate,original.owned);return null;});}catch(Exception error){failed(original,error,false);throw error;}finally{settledWorker(original);}
         }
-        private synchronized void settleReply(PinVerificationReply reply,PinVerificationDelivery delivery) throws Exception {replyFence(reply);require(delivery!=null&&reply.ticket.workers==0);
+        private synchronized void settleReply(PinVerificationReply reply,PinVerificationDelivery delivery) throws Exception {replyFence(reply);require(delivery!=null&&reply.ticket.workers==0&&verificationNativeInputFinished(reply.ticket));
             // Never-started abandonment may drain its original transfer only
             // as uncertain; it sticky-seals and establishes no delivered ACK.
             if(delivery==PinVerificationDelivery.known)require(reply.deliveryCompleted);
@@ -1746,13 +1746,212 @@ final class PlanetChildVault {
         private PinVerificationReply retire(PinGateRequest gate) throws Exception {background();PinVerificationTicket original;
             synchronized(this){original=ticket(gate);require(!original.retiring&&!original.threads.containsKey(Thread.currentThread()));original.retiring=true;
                 if(original.workers==0&&original.owned!=null&&original.owned.input!=null)original.owned.input.close();
-                try{while(original.workers!=0||original.transfers!=0)wait();original.retirementFenced=true;}
+                try{while(original.workers!=0||original.transfers!=0||!verificationNativeInputFinished(original))wait();original.retirementFenced=true;}
                 catch(InterruptedException interrupted){original.sealed=true;original.phase=PinVerificationPhase.sealed;wipeSealed(original);Thread.currentThread().interrupt();throw new Unavailable();}}
             try{locked(transaction->{authority.retire(gate,original.owned);return null;});}
             catch(Exception error){failed(original,error,true);throw error;}
             synchronized(this){require(original.workers==0&&original.transfers==0);if(original.owned!=null)original.owned.wipe();
                 PinVerificationReply terminal=new PinVerificationReply(this,original,original.owned,new byte[0],null,null,true,false);
                 original.terminal=terminal;original.replies.add(terminal);original.transfers++;if(!original.sealed)original.phase=PinVerificationPhase.closing;notifyAll();return terminal;}
+        }
+    }
+    /** Actual private keypad ownership, not genuine input/host admission.
+     * The future admitted caller must supply the original verification lease.
+     * All existing factories remain unsupported; no bridge is installed. */
+    private static final class PinVerificationNativeInputRequest {
+        final OwnedPinVerification owned;final PinGateRequest gate;final String locale;
+        private PinVerificationNativeInput owner;private boolean started;private volatile boolean cancelled;
+        private PinVerificationNativeInputRequest(OwnedPinVerification owned,String locale) throws Exception {
+            require(owned!=null&&("ru".equals(locale)||"en".equals(locale)));
+            synchronized(owned.owner){owned.owner.lease(owned);require(owned.ticket.phase==PinVerificationPhase.ready
+                &&owned.ticket.workers==0&&owned.ticket.transfers==0&&owned.input==null&&owned.ticket.nativeInputRequest==null);
+                this.owned=owned;gate=owned.gate;this.locale=locale;}
+        }
+    }
+    private interface PinVerificationNativeInputCompletion { void finished(PinVerificationReply originalOrNull) throws Exception; }
+    private static void verificationNativeInputOperation(OwnedPinVerification owned) throws Exception {
+        PinVerificationNativeInputRequest request=owned.ticket.nativeInputRequest;if(request==null)return;require(request.owner!=null);if(request.owner.finished)return;
+        require(request.owned==owned&&request.gate==owned.gate&&request.started&&!request.cancelled
+            &&request.owner.worker==Thread.currentThread()&&request.owner.inputLeaseFinished);
+    }
+    private static boolean verificationNativeInputFinished(PinVerificationTicket ticket) {
+        return ticket.nativeInputRequest==null||ticket.nativeInputRequest.owner!=null&&ticket.nativeInputRequest.owner.finished;
+    }
+    private static final class PinVerificationNativeInput {
+        private final PinVerificationNativeInputRequest request;private final OwnedPinVerification owned;private final NativePinVerification core;
+        private final android.app.Activity activity;private final android.app.Application application;
+        private final PinVerificationNativeInputCompletion completion;private final android.os.Handler main;
+        private final byte[] edit=new byte[128];private byte[] entered;private int length,uiHandlers,pendingUi;
+        private boolean accepting,ready,cleanupQueued,uiEnded,shown,everFocused,observerRegistered,hostActive;
+        private boolean cancelStarted,cancelInFlight,inputLeaseFinished,finished,completionEntered,delivered,timerArmed;
+        private Thread worker,cancelWorker;private PinVerificationReply reply;private android.os.IBinder activityToken;
+        private android.app.Dialog dialog;private android.widget.TextView title,actionCaption,prompt,mask,count;private android.widget.Button next;
+        private android.widget.LinearLayout keypad;private android.view.ViewTreeObserver.OnWindowFocusChangeListener focusObserver;
+        private final Runnable deadlineTask=()->uiEvent(()->{timerArmed=false;cancel();},true);
+        private final android.app.Application.ActivityLifecycleCallbacks lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
+            public void onActivityCreated(android.app.Activity a,android.os.Bundle state){}
+            public void onActivityStarted(android.app.Activity a){}
+            public void onActivityResumed(android.app.Activity a){}
+            public void onActivityPaused(android.app.Activity a){if(a==activity)uiEvent(thisInput()::cancel,true);}
+            public void onActivityStopped(android.app.Activity a){if(a==activity)uiEvent(thisInput()::cancel,true);}
+            public void onActivityDestroyed(android.app.Activity a){if(a==activity)uiEvent(thisInput()::cancel,true);}
+            public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle state){if(a==activity)uiEvent(thisInput()::cancel,true);}
+        };
+        private PinVerificationNativeInput thisInput(){return this;}
+        private PinVerificationNativeInput(PinVerificationNativeInputRequest request,android.app.Activity activity,
+            PinVerificationNativeInputCompletion completion) throws Exception {
+            require(request!=null&&activity!=null&&completion!=null
+                &&activity.getClass().getName().equals("ru.probpera.literaryplanet.MainActivity"));
+            this.request=request;owned=request.owned;core=owned.owner;this.activity=activity;application=activity.getApplication();this.completion=completion;
+            main=new android.os.Handler(android.os.Looper.getMainLooper());
+            synchronized(core){core.lease(owned);require(request.owner==null&&!request.started&&owned.ticket.nativeInputRequest==null
+                    &&owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0&&owned.ticket.transfers==0&&owned.input==null);
+                request.owner=this;owned.ticket.nativeInputRequest=request;request.started=true;
+                worker=new Thread(this::work,"LiteraryPlanet-private-verification-input");worker.setDaemon(true);worker.start();}
+        }
+        private void identity() throws Exception {require(request.owner==this&&request.owned==owned&&request.gate==owned.gate
+            &&owned.ticket.nativeInputRequest==request&&request.started&&("ru".equals(request.locale)||"en".equals(request.locale)));core.own(owned.ticket);}
+        private void currentInput() throws Exception {synchronized(core){identity();core.lease(owned);require(worker==Thread.currentThread()&&!inputLeaseFinished);}
+            core.locked(transaction->{core.exactCurrent(transaction,owned,owned.expected,owned.checksum,owned.revision);return null;});}
+        private void uiEvent(Runnable body,boolean terminal) {
+            synchronized(core){if(finished)return;uiHandlers++;core.worker(owned.ticket);}
+            try{if(terminal)body.run();else{uiCheck();body.run();}}
+            catch(Exception failure){cancel();}
+            finally{synchronized(core){uiHandlers--;core.settledWorker(owned.ticket);core.notifyAll();}}
+        }
+        private void uiCheck() throws Exception {
+            requireMain();synchronized(core){identity();core.live(owned.ticket);require(!request.cancelled&&!owned.closed&&(activityToken==null||hostActive));}
+            long now=SystemClock.elapsedRealtime();require(now>=owned.capturedUptimeMs&&now<owned.deadlineUptimeMs);
+            require(!activity.isFinishing()&&!activity.isDestroyed());
+            if(activityToken!=null)require(activity.getWindow()!=null&&activity.getWindow().getDecorView().getWindowToken()==activityToken);
+            // The owned Dialog legitimately takes focus from the Activity.
+            if(shown)require(dialog!=null&&dialog.isShowing()&&dialog.getWindow()!=null&&dialog.getWindow().getAttributes().token==activityToken
+                &&dialog.getWindow().getDecorView().getWindowToken()!=null&&dialog.getWindow().getDecorView().hasWindowFocus());
+        }
+        private void postUi(Runnable body) {
+            synchronized(core){if(finished)return;pendingUi++;}
+            if(!main.post(()->{try{uiEvent(body,true);}finally{synchronized(core){pendingUi--;core.notifyAll();}}})){
+                synchronized(core){pendingUi--;request.cancelled=true;try{core.sealUnknown(request.gate);}catch(Exception ignored){}core.notifyAll();}
+                // A rejected cleanup dispatch is never invented as joined UI.
+                scheduleCancel();
+            }
+        }
+        private void cancel() {
+            synchronized(core){if(finished)return;request.cancelled=true;hostActive=false;accepting=false;Arrays.fill(edit,(byte)0);length=0;
+                PinVerifierMaterial.wipe(entered);try{core.revoke(request.gate);}catch(Exception ignored){}core.notifyAll();}
+            queueCleanup();scheduleCancel();
+        }
+        private void scheduleCancel() {
+            synchronized(core){if(cancelStarted||finished)return;cancelStarted=true;cancelInFlight=true;
+                cancelWorker=new Thread(()->{try{core.cancel(request.gate);}catch(Exception failure){core.failed(owned.ticket,failure,false);}
+                    finally{synchronized(core){cancelInFlight=false;core.notifyAll();}}},"LiteraryPlanet-private-verification-cancel");
+                cancelWorker.setDaemon(true);cancelWorker.start();}
+        }
+        private void queueCleanup() {synchronized(core){if(cleanupQueued||uiEnded||finished)return;cleanupQueued=true;}postUi(this::cleanupGui);}
+        private void cleanupGui() {
+            requireMain();synchronized(core){accepting=false;Arrays.fill(edit,(byte)0);length=0;}
+            // Original expiry remains armed through KDF and recipient delivery.
+            if(mask!=null)mask.setText("");if(count!=null)count.setText("");if(next!=null)next.setEnabled(false);if(keypad!=null)clearButtons(keypad);
+            android.app.Dialog original=dialog;if(original==null||!shown){synchronized(core){uiEnded=true;core.notifyAll();}return;}
+            original.setOnKeyListener(null);
+            if(focusObserver!=null&&original.getWindow()!=null){android.view.ViewTreeObserver observer=original.getWindow().getDecorView().getViewTreeObserver();
+                if(observer.isAlive())observer.removeOnWindowFocusChangeListener(focusObserver);focusObserver=null;}
+            original.dismiss(); // Actual OnDismiss completion owns uiEnded.
+        }
+        private void dismissed() {synchronized(core){if(!ready&&!request.cancelled)cancel();uiEnded=true;shown=false;core.notifyAll();}}
+        private static void requireMain(){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper())throw new IllegalStateException("verification-pin-ui-thread");}
+        private static void clearButtons(android.view.View view){view.setSaveEnabled(false);view.setOnClickListener(null);view.setEnabled(false);
+            if(view instanceof android.view.ViewGroup){android.view.ViewGroup group=(android.view.ViewGroup)view;for(int i=0;i<group.getChildCount();i++)clearButtons(group.getChildAt(i));}}
+        private int dp(int value){return Math.round(value*activity.getResources().getDisplayMetrics().density);}
+        private android.content.Context localeContext(){android.content.res.Configuration config=new android.content.res.Configuration(activity.getResources().getConfiguration());
+            config.setLocales(new android.os.LocaleList(java.util.Locale.forLanguageTag(request.locale)));return activity.createConfigurationContext(config);}
+        private String label(int resource){return localeContext().getString(resource);}
+        private static int actionResource(String action) throws Exception {
+            switch(action){case "exit-child-mode":return R.string.native_pin_verify_exit_child_mode;case "switch-adult-profile":return R.string.native_pin_verify_switch_adult_profile;
+                case "change-exact-age":return R.string.native_pin_verify_change_exact_age;case "change-blocked-topics":return R.string.native_pin_verify_change_blocked_topics;
+                case "open-adult-store":return R.string.native_pin_verify_open_adult_store;case "initiate-purchase":return R.string.native_pin_verify_initiate_purchase;
+                case "restore-purchases":return R.string.native_pin_verify_restore_purchases;case "open-external":return R.string.native_pin_verify_open_external;
+                case "share":return R.string.native_pin_verify_share;case "account-change":return R.string.native_pin_verify_account_change;
+                case "export-child-data":return R.string.native_pin_verify_export_child_data;case "delete-child-data":return R.string.native_pin_verify_delete_child_data;
+                case "diagnostics":return R.string.native_pin_verify_diagnostics;case "expand-access-settings":return R.string.native_pin_verify_expand_access_settings;
+                case "enable-licensed-pack":return R.string.native_pin_verify_enable_licensed_pack;case "view-legal-commercial":return R.string.native_pin_verify_view_legal_commercial;
+                default:throw new Unavailable();}
+        }
+        private android.widget.TextView text(android.content.Context ui,int sp,int color){android.widget.TextView view=new android.widget.TextView(ui);
+            view.setTextSize(sp);view.setTextColor(color);view.setSaveEnabled(false);view.setGravity(android.view.Gravity.CENTER);view.setPadding(0,dp(6),0,dp(6));return view;}
+        private android.widget.Button button(android.content.Context ui,String publicLabel,Runnable press){android.widget.Button view=new android.widget.Button(ui){
+                @Override public boolean onFilterTouchEventForSecurity(android.view.MotionEvent event){if(obscured(event)){uiEvent(thisInput()::cancel,true);return false;}return super.onFilterTouchEventForSecurity(event);}};
+            view.setText(publicLabel);view.setContentDescription(publicLabel);view.setTextSize(20);view.setTextColor(0xfff7edda);view.setMinWidth(dp(64));view.setMinHeight(dp(64));
+            view.setSaveEnabled(false);view.setFilterTouchesWhenObscured(true);android.graphics.drawable.GradientDrawable bg=new android.graphics.drawable.GradientDrawable();
+            bg.setColor(0xff1d2940);bg.setCornerRadius(dp(14));bg.setStroke(dp(1),0xff46536b);view.setBackground(bg);
+            view.setOnTouchListener((v,event)->{if(obscured(event)){uiEvent(this::cancel,true);return true;}return false;});view.setOnClickListener(v->uiEvent(press,false));return view;}
+        private static boolean obscured(android.view.MotionEvent event){return(event.getFlags()&(android.view.MotionEvent.FLAG_WINDOW_IS_OBSCURED|android.view.MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED))!=0;}
+        private void present() {
+            try{application.registerActivityLifecycleCallbacks(lifecycle);observerRegistered=true;
+                require(activity.getWindow()!=null&&activity.hasWindowFocus()&&!activity.isFinishing()&&!activity.isDestroyed());
+                activityToken=activity.getWindow().getDecorView().getWindowToken();require(activityToken!=null);hostActive=true;uiCheck();
+                android.content.Context ui=new android.view.ContextThemeWrapper(activity,android.R.style.Theme_Material_Dialog_NoActionBar);
+                android.app.Dialog original=new android.app.Dialog(ui);dialog=original;original.setOwnerActivity(activity);original.setCancelable(true);original.setCanceledOnTouchOutside(false);
+                android.widget.LinearLayout content=new android.widget.LinearLayout(ui);content.setOrientation(android.widget.LinearLayout.VERTICAL);content.setPadding(dp(20),dp(18),dp(20),dp(18));
+                content.setSaveEnabled(false);content.setFilterTouchesWhenObscured(true);if(android.os.Build.VERSION.SDK_INT>=26)content.setImportantForAutofill(android.view.View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS);
+                android.graphics.drawable.GradientDrawable panel=new android.graphics.drawable.GradientDrawable();panel.setColor(0xff101827);panel.setCornerRadius(dp(22));content.setBackground(panel);
+                title=text(ui,22,0xfff3d69c);title.setText(label(R.string.native_pin_title));content.addView(title);
+                actionCaption=text(ui,17,0xfff3d69c);actionCaption.setText(label(actionResource(request.gate.action)));content.addView(actionCaption);
+                prompt=text(ui,15,0xffcad3e2);prompt.setText(label(R.string.native_pin_verify_prompt));content.addView(prompt);
+                mask=text(ui,24,0xfff7edda);mask.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO);content.addView(mask);
+                count=text(ui,14,0xffb6c4d9);content.addView(count);keypad=new android.widget.LinearLayout(ui);keypad.setOrientation(android.widget.LinearLayout.VERTICAL);keypad.setSaveEnabled(false);content.addView(keypad);
+                int[][] digits={{1,2,3},{4,5,6},{7,8,9}};for(int[] row:digits){android.widget.LinearLayout line=new android.widget.LinearLayout(ui);
+                    for(int digit:row){android.widget.Button key=button(ui,Integer.toString(digit),()->digit(digit));android.widget.LinearLayout.LayoutParams cell=new android.widget.LinearLayout.LayoutParams(0,dp(64),1);
+                        cell.setMargins(dp(3),dp(3),dp(3),dp(3));line.addView(key,cell);}keypad.addView(line);}
+                android.widget.LinearLayout bottom=new android.widget.LinearLayout(ui);for(android.widget.Button key:new android.widget.Button[]{button(ui,label(R.string.native_pin_delete),this::backspace),
+                    button(ui,"0",()->digit(0)),button(ui,label(R.string.native_pin_cancel),this::cancel)}){android.widget.LinearLayout.LayoutParams cell=new android.widget.LinearLayout.LayoutParams(0,dp(64),1);
+                    cell.setMargins(dp(3),dp(3),dp(3),dp(3));bottom.addView(key,cell);}keypad.addView(bottom);
+                next=button(ui,label(R.string.native_pin_continue),this::continueInput);content.addView(next,new android.widget.LinearLayout.LayoutParams(-1,dp(64)));
+                android.widget.ScrollView scroll=new android.widget.ScrollView(ui){@Override public boolean onFilterTouchEventForSecurity(android.view.MotionEvent event){
+                    if(obscured(event)){uiEvent(thisInput()::cancel,true);return false;}return super.onFilterTouchEventForSecurity(event);}};
+                scroll.setSaveEnabled(false);scroll.setFilterTouchesWhenObscured(true);scroll.addView(content);original.setContentView(scroll);require(original.getWindow()!=null);
+                original.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);original.getWindow().getAttributes().token=activityToken;
+                original.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                original.setOnCancelListener(d->uiEvent(this::cancel,true));original.setOnDismissListener(d->uiEvent(this::dismissed,true));
+                original.setOnKeyListener((d,key,event)->{if(key==android.view.KeyEvent.KEYCODE_BACK){if(event.getAction()==android.view.KeyEvent.ACTION_UP)uiEvent(this::cancel,true);return true;}return false;});
+                synchronized(core){require(!request.cancelled);accepting=true;}render();original.show();shown=true;
+                original.getWindow().setLayout(Math.min(dp(360),activity.getResources().getDisplayMetrics().widthPixels-dp(32)),Math.min(dp(700),activity.getResources().getDisplayMetrics().heightPixels-dp(64)));
+                focusObserver=focused->{if(focused)everFocused=true;else if(everFocused&&shown)uiEvent(this::cancel,true);};
+                original.getWindow().getDecorView().getViewTreeObserver().addOnWindowFocusChangeListener(focusObserver);everFocused=original.getWindow().getDecorView().hasWindowFocus();
+                long remaining=owned.deadlineUptimeMs-SystemClock.elapsedRealtime();require(remaining>0);timerArmed=true;require(main.postDelayed(deadlineTask,remaining));
+            }catch(Exception failure){cancel();}
+        }
+        private void digit(int digit){requireMain();synchronized(core){if(!accepting||request.cancelled||length>=128||digit<0||digit>9)return;edit[length++]=(byte)(48+digit);}render();}
+        private void backspace(){requireMain();synchronized(core){if(!accepting||request.cancelled||length==0)return;edit[--length]=0;}render();}
+        private void render(){requireMain();int amount;synchronized(core){amount=length;}char[] bullets=new char[Math.min(amount,12)];Arrays.fill(bullets,'\u2022');
+            mask.setText(new String(bullets));Arrays.fill(bullets,'\0');count.setText(localeContext().getString(R.string.native_pin_count,amount));next.setEnabled(amount>=1&&amount<=128);}
+        private void continueInput(){requireMain();synchronized(core){if(!accepting||request.cancelled||length<1||length>128)return;
+                entered=Arrays.copyOf(edit,length);Arrays.fill(edit,(byte)0);length=0;ready=true;accepting=false;core.notifyAll();}queueCleanup();}
+        private void awaitUi() throws Exception {for(;;){synchronized(core){if(uiEnded&&pendingUi==0&&uiHandlers==0)return;core.wait(100);if(!request.cancelled)core.live(owned.ticket);}
+                if(!request.cancelled){long now=SystemClock.elapsedRealtime();require(now>=owned.capturedUptimeMs);core.refuse(now<owned.deadlineUptimeMs,false);}}}
+        private void joinActualUiAndCancel(){boolean interrupted=false;synchronized(core){while(!uiEnded||pendingUi!=0||uiHandlers!=0||cancelInFlight){
+                    try{core.wait();}catch(InterruptedException ignored){interrupted=true;}}}if(interrupted)Thread.currentThread().interrupt();}
+        private void detachObserver(){postUi(()->{if(timerArmed){main.removeCallbacks(deadlineTask);timerArmed=false;}if(observerRegistered){application.unregisterActivityLifecycleCallbacks(lifecycle);observerRegistered=false;}
+                if(dialog!=null){dialog.setOnCancelListener(null);dialog.setOnDismissListener(null);}dialog=null;title=null;actionCaption=null;prompt=null;mask=null;count=null;next=null;keypad=null;});joinActualUiAndCancel();}
+        private void deliverFailure(){synchronized(core){if(completionEntered)return;completionEntered=true;core.worker(owned.ticket);}
+            try{completion.finished(null);}catch(Exception failure){core.failed(owned.ticket,failure,false);}finally{synchronized(core){core.settledWorker(owned.ticket);}}}
+        /** The original abandoned transfer is retained for the missing private
+         * caller's uncertain settlement; this method never ACKs or frees it. */
+        private PinVerificationReply abandonedOriginalReply() throws Exception {synchronized(core){identity();require(finished&&!delivered&&reply!=null);return reply;}}
+        private void work(){boolean claimed=false,captured=false;byte[] moved=null;PinVerificationInput raw=null;
+            try{synchronized(core){identity();core.lease(owned);require(!request.cancelled&&owned.ticket.phase==PinVerificationPhase.ready&&owned.ticket.workers==0);core.worker(owned.ticket);claimed=true;}
+                currentInput();postUi(this::present);awaitUi();synchronized(core){require(ready&&!request.cancelled&&entered!=null);}currentInput();captured=true;
+            }catch(Exception failure){core.failed(owned.ticket,failure,false);cancel();}
+            finally{queueCleanup();joinActualUiAndCancel();synchronized(core){if(claimed)core.settledWorker(owned.ticket);inputLeaseFinished=true;core.notifyAll();}}
+            try{if(captured&&!request.cancelled){synchronized(core){identity();core.lease(owned);require(ready&&entered!=null);moved=entered;entered=null;}
+                    raw=new PinVerificationInput(moved);moved=null;OwnedPinVerificationInput original=core.bindInput(owned,raw);raw=null;reply=core.verify(owned,original);
+                    core.deliver(reply,originalReply->{synchronized(core){require(!completionEntered&&originalReply==reply);completionEntered=true;}
+                        completion.finished(originalReply);});synchronized(core){delivered=true;}
+                }else deliverFailure();
+            }catch(Exception failure){cancel();if(reply!=null)try{core.sealUnknown(request.gate);}catch(Exception ignored){}
+                if(!completionEntered)deliverFailure();}
+            finally{PinVerifierMaterial.wipe(moved);if(raw!=null)raw.close();synchronized(core){Arrays.fill(edit,(byte)0);PinVerifierMaterial.wipe(entered);entered=null;}
+                detachObserver();synchronized(core){finished=true;core.notifyAll();}}
         }
     }
     static final int MAX_BYTES = 131072;

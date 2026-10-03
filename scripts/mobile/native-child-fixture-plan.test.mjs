@@ -1,6 +1,7 @@
 import {describe,expect,it} from 'vitest';
 import path from 'node:path';
-import {bindXctestrun,childDataScenarioRunId,childDataFixtureArguments,childTransportFixtureArguments,childProtectedFixtureArguments,protectedEnvelopeFixturePassed,nativeProtectedFixtureSourcePaths,verifyNativeProtectedFixtureSources,createAndroidOfflineGate} from './native-install-runtime.mjs';
+import {bindXctestrun,childDataScenarioRunId,childDataFixtureArguments,childTransportFixtureArguments,childProtectedFixtureArguments,protectedEnvelopeFixturePassed,nativeProtectedFixtureSourcePaths,verifyNativeProtectedFixtureSources,createAndroidOfflineGate,
+  nativePinVerificationInputFixtureSourcePath,verifyNativePinVerificationInputFixtureSource,pinVerificationInputFixtureArguments,pinVerificationInputFixturePassed,pinVerificationInputTestMethods} from './native-install-runtime.mjs';
 
 const runId='a'.repeat(32), binary=path.resolve('/synthetic/build/App.app'), templateDir=path.dirname(binary);
 const phases=['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'];
@@ -117,5 +118,78 @@ describe('owned native structural envelope fixture dispatch',()=>{
       expect(target.OnlyTestIdentifiers).toEqual([identifier]);expect(target.EnvironmentVariables[key]).toBe(value);
     }
     expect(structural.TestConfigurations[0].TestTargets[0].OnlyTestIdentifiers).toEqual(['PlanetChildProtectedEnvelopeRuntimeTests']);
+  });
+});
+
+describe('native verification input runner', () => {
+  const runId='7'.repeat(32), fixtureClass='ru.probpera.literaryplanet.PlanetChildNativePinVerificationInputRuntimeTest';
+  const methods=[
+    'oneDigitOriginalEnglishActionAndReply','explicitRussianLocaleAndAllSixteenFixedCaptions','emptyMaximumDeletionAndOwnedBufferWipe',
+    'backRevokesWithoutChargeOrAdmission','actualActivityPauseRevokesOriginalHost','obscuredTouchRejectsAndWipes',
+    'blockedCurrentRetainsActualInputWorkerUntilReturn','originalExpiryDuringSynchronousKdfNeverRefunds',
+    'throwingRecipientNeverReceivesSecondCompletion','completedRecipientStillCannotAckBeforeFinalObserverCleanup',
+    'retirementJoinsVisibleOriginalInputAndCleanup','foreignThreadCannotBindThroughOriginalVisibleSlot',
+    'failureBeforeRecipientRetainsOriginalUncertainTransfer',
+  ];
+  const status=(name,code,owner=fixtureClass)=>`INSTRUMENTATION_STATUS: class=${owner}\nINSTRUMENTATION_STATUS: numtests=13\nINSTRUMENTATION_STATUS: test=${name}\nINSTRUMENTATION_STATUS_CODE: ${code}\n`;
+  const success=(names=methods)=>names.map(name=>status(name,1)+status(name,0)).join('')+'\nOK (13 tests)\nINSTRUMENTATION_CODE: -1\n';
+  const readArgs=[['shell','settings','get','global','airplane_mode_on'],['shell','settings','get','global','mobile_data'],['shell','cmd','wifi','status']];
+  function gateFixture(connected=false){
+    const calls=[],records=[];const replies=['1\n',connected?'1\n':'0\n','Wifi is disabled\nWifi scanning is only available when wifi is enabled\n'];
+    return {calls,records,gate:createAndroidOfflineGate(async(args)=>{
+      calls.push([...args]);const index=readArgs.findIndex(row=>row.join(',')===args.join(','));return index>=0?replies[index]:'synthetic fixture not executed';
+    },value=>records.push(value))};
+  }
+  it('binds only one exact class/phase and fresh run metadata with no generic PIN fixture',()=>{
+    expect(pinVerificationInputTestMethods).toEqual(methods);expect(Object.isFrozen(pinVerificationInputTestMethods)).toBe(true);
+    const args=pinVerificationInputFixtureArguments(runId);expect(Object.isFrozen(args)).toBe(true);
+    expect(args).toEqual(['shell','am','instrument','-w','-r','-e','class',fixtureClass,'-e','literaryRunId',runId,'-e','literaryPinVerificationInputPhase','input','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+    for(const id of [undefined,null,{},'',runId.toUpperCase().replace('7','A'),'7'.repeat(31),runId+';',runId+'\n'])expect(()=>pinVerificationInputFixtureArguments(id)).toThrow();
+  });
+  it('requires the unique current fixture raw source hash rather than another PIN or storage class',()=>{
+    const row={path:nativePinVerificationInputFixtureSourcePath,sha256:'a'.repeat(64)};
+    expect(verifyNativePinVerificationInputFixtureSource([row,{path:'src/synthetic.ts',sha256:'b'.repeat(64)}])).toBe(true);
+    for(const rows of [null,[],[{...row,path:row.path.replace('VerificationInput','Input')}],[{...row,sha256:'bad'}],[row,row]])expect(()=>verifyNativePinVerificationInputFixtureSource(rows)).toThrow();
+  });
+  it('accepts all thirteen original standard start/pass pairs with successful final minus-one code',()=>{
+    expect(pinVerificationInputFixturePassed(success())).toBe(true);
+    expect(pinVerificationInputFixturePassed(success([...methods].reverse()).replaceAll('\n','\r\n'))).toBe(true);
+  });
+  it('refuses missing or mixed summaries, wrong totals and an unsuccessful or ambiguous final code',()=>{
+    for(const text of [success().replace('OK (13 tests)\n',''),success()+'OK (13 tests)\n',success()+'OK (12 tests)\n',
+      success().replace('13 tests','12 tests'),success().replace('13 tests','14 tests'),success().replace('INSTRUMENTATION_CODE: -1','INSTRUMENTATION_CODE: 0'),
+      success().replace('INSTRUMENTATION_CODE: -1\n',''),success()+'INSTRUMENTATION_CODE: -1\n',
+      'OK (13 tests)\nINSTRUMENTATION_CODE: -1\n'+methods.map(name=>status(name,1)+status(name,0)).join(''),
+      success().replace('\nOK (13 tests)\nINSTRUMENTATION_CODE: -1\n','\nINSTRUMENTATION_CODE: -1\nOK (13 tests)\n'),
+      status(methods[0],1)+status(methods[0],0)+'OK (13 tests)\n'+success(methods.slice(1)),
+      success().replace('INSTRUMENTATION_CODE: -1','INSTRUMENTATION_STATUS: stream=late\nINSTRUMENTATION_CODE: -1'),
+      success()+'INSTRUMENTATION_STATUS: id=late\n'])expect(pinVerificationInputFixturePassed(text)).toBe(false);
+  });
+  it('does not promote failed, skipped, crashed or malformed per-test statuses to the successful summary',()=>{
+    for(const suffix of ['FAILURES!!!','INSTRUMENTATION_FAILED: unavailable','INSTRUMENTATION_ABORTED','Process crashed','shortMsg=error','skipped','error: unavailable'])expect(pinVerificationInputFixturePassed(success()+suffix)).toBe(false);
+    for(const code of [-1,-2,-3,-4,2,'00','unknown'])expect(pinVerificationInputFixturePassed(success().replace('INSTRUMENTATION_STATUS_CODE: 0',`INSTRUMENTATION_STATUS_CODE: ${code}`))).toBe(false);
+    expect(pinVerificationInputFixturePassed(null)).toBe(false);expect(pinVerificationInputFixturePassed('x'.repeat(4*1024*1024+1))).toBe(false);
+  });
+  it('requires every exact method once and its own started completion instead of foreign or duplicated identity',()=>{
+    for(const text of [success([...methods.slice(0,-1),methods[0]]),success().replace(methods[0],'foreignMethod'),
+      success().replace(fixtureClass,fixtureClass+'Foreign'),success().replace(status(methods[0],1),''),
+      success().replace('INSTRUMENTATION_STATUS: numtests=13','INSTRUMENTATION_STATUS: numtests=12'),
+      success().replace('INSTRUMENTATION_STATUS: test='+methods[0],'INSTRUMENTATION_STATUS: test='+methods[0]+'\nINSTRUMENTATION_STATUS: test='+methods[0]),
+      success()+status(methods[0],1)])expect(pinVerificationInputFixturePassed(text)).toBe(false);
+  });
+  it('dispatches only after all three offline observations and copies the exact bounded instrumentation array',async()=>{
+    const f=gateFixture(),args=[...pinVerificationInputFixtureArguments(runId)],expected=[...args];
+    const pending=f.gate.command('pin-verification-input',args,180000);args[7]='foreign.class';await pending;
+    expect(f.calls).toEqual([...readArgs,expected]);expect(f.records).toMatchObject([{checkpoint:'pin-verification-input',status:'PASS'}]);
+  });
+  it('rejects cross-class phase, foreign runner, replay-shaped IDs and appended arguments before any device access',async()=>{
+    const patches=[[7,'ru.probpera.literaryplanet.PlanetChildNativePinInputRuntimeTest'],[7,'ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest'],
+      [12,'literaryPhase'],[13,'codec'],[13,'input;'],[10,'7'.repeat(31)],[10,'A'.repeat(32)],[14,'foreign.test/androidx.test.runner.AndroidJUnitRunner']];
+    for(const [index,value] of patches){const f=gateFixture(),args=[...pinVerificationInputFixtureArguments(runId)];args[index]=value;await expect(f.gate.command('pin-ui-denied',args)).rejects.toThrow();expect(f.calls).toEqual([]);expect(f.records).toEqual([]);}
+    const f=gateFixture();await expect(f.gate.command('pin-ui-denied',[...pinVerificationInputFixtureArguments(runId),'-e','extra','value'])).rejects.toThrow();expect(f.calls).toEqual([]);
+  });
+  it('keeps connected-target denial ahead of the new UI fixture and records the actual failed offline observation',async()=>{
+    const f=gateFixture(true);await expect(f.gate.command('pin-verification-input',pinVerificationInputFixtureArguments(runId),180000)).rejects.toThrow(/not verifiably offline/u);
+    expect(f.calls).toEqual(readArgs);expect(f.records).toMatchObject([{status:'FAIL',reason:'android-offline-state-unavailable'}]);
   });
 });

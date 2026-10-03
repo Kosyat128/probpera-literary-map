@@ -2446,6 +2446,8 @@ fileprivate final class NativePinVerification {
         var workers=0, threads=[ObjectIdentifier:Int](), replies=[ObjectIdentifier:PinVerificationReply]()
         var terminal: PinVerificationReply?, entry: OwnedPinVerificationInput?, inputIssued=false
         var math: PinVerificationMath?, finalBytes: PinOwnedBytes?
+        var nativeInput: PinVerificationNativeInput?, inputWork: PinVerificationInputWork?, inputThread: Thread?
+        var inputHandoff=false
         var lastUptime: UInt64=0, lastLogical: UInt64=0
         init(_ gate: PinGateRequest) { self.gate=gate }
     }
@@ -2503,6 +2505,12 @@ fileprivate final class NativePinVerification {
     private func ownLocked(_ gate: PinGateRequest) throws -> Ticket {
         guard let ticket=active, ticket.gate === gate, ticket.phase != .closed else { throw PinVerificationRefusal() }
         return ticket
+    }
+    private func inputAllowedLocked(_ ticket: Ticket,_ supplied: PinVerificationNativeInput?) -> Bool {
+        if let original=ticket.nativeInput {
+            return supplied === original && ticket.inputThread === Thread.current && ticket.inputWork==nil && ticket.inputHandoff
+        }
+        return supplied==nil
     }
     private func live(_ ticket: Ticket) throws {
         condition.lock(); defer { condition.unlock() }
@@ -2596,10 +2604,12 @@ fileprivate final class NativePinVerification {
     }
     /** Mechanical one-use receipt only. The missing native UI/host must bind
      * what the parent actually saw and transfer it after all UI cleanup. */
-    func bindInput(_ original: OwnedPinVerification, raw: PinPrimitiveInput) throws -> OwnedPinVerificationInput {
+    func bindInput(_ original: OwnedPinVerification, raw: PinPrimitiveInput,
+                   inputHandoff: PinVerificationNativeInput?=nil) throws -> OwnedPinVerificationInput {
         condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(original.original)
         try Self.deny(original.owner === self && ticket.owned === original && ticket.phase == .ready
-            && !ticket.cancelled && !ticket.sealed && !ticket.retiring && ticket.workers==0 && !ticket.inputIssued)
+            && !ticket.cancelled && !ticket.sealed && !ticket.retiring && ticket.workers==0 && !ticket.inputIssued
+            && inputAllowedLocked(ticket,inputHandoff))
         ticket.inputIssued=true // Accepted slot is burned before owned buffer transfer.
         let moved=try raw.take(), detached=PinPrimitiveInput(owned:moved)
         let result=OwnedPinVerificationInput(owner:self,request:original,raw:detached)
@@ -2647,7 +2657,8 @@ fileprivate final class NativePinVerification {
         try readExact(transaction,next); try boundary()
         publication=false // Known complete write+exact readback+current fence.
     }
-    func verify(_ original: OwnedPinVerification, input: OwnedPinVerificationInput) throws -> PinVerificationReply {
+    func verify(_ original: OwnedPinVerification, input: OwnedPinVerificationInput,
+                inputHandoff: PinVerificationNativeInput?=nil) throws -> PinVerificationReply {
         try Self.deny(!Thread.isMainThread)
         condition.lock()
         let ticket: Ticket
@@ -2656,7 +2667,8 @@ fileprivate final class NativePinVerification {
             // Foreign/busy/replayed receipts are not consumed or wiped.
             try Self.deny(original.owner === self && ticket.owned === original && input.owner === self
                 && input.request === original && ticket.entry === input && ticket.phase == .ready
-                && !ticket.cancelled && !ticket.sealed && !ticket.retiring && ticket.workers==0)
+                && !ticket.cancelled && !ticket.sealed && !ticket.retiring && ticket.workers==0
+                && inputAllowedLocked(ticket,inputHandoff))
             ticket.phase = .verifying; try addWorkerLocked(ticket); condition.unlock()
         } catch { condition.unlock(); throw error }
         var pin: PinPrimitiveBytes?, expected=Data(), charged=Data(), final=Data(), publication=false
@@ -2747,13 +2759,15 @@ fileprivate final class NativePinVerification {
     }
     /** Count the actual recipient callback; acknowledging inside it is denied.
      * No callback result is translated into a ParentGate capability here. */
-    func deliver(_ original: PinVerificationReply, recipient: (PinVerificationReply) throws -> Void) throws {
+    func deliver(_ original: PinVerificationReply, inputHandoff: PinVerificationNativeInput?=nil,
+                 recipient: (PinVerificationReply) throws -> Void) throws {
         try Self.deny(!Thread.isMainThread)
         condition.lock(); let ticket: Ticket
         do {
             ticket=try ownLocked(original.original)
             try Self.deny(original.owner === self && original.request === ticket.owned && !original.settled
-                && ticket.replies[ObjectIdentifier(original)] === original && !original.deliveryStarted && ticket.workers==0)
+                && ticket.replies[ObjectIdentifier(original)] === original && !original.deliveryStarted && ticket.workers==0
+                && inputAllowedLocked(ticket,inputHandoff))
             if original.kind != .closed { try Self.deny(!ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced) }
             original.deliveryStarted=true; try addWorkerLocked(ticket); condition.unlock()
         } catch { condition.unlock(); throw error }
@@ -2786,7 +2800,7 @@ fileprivate final class NativePinVerification {
     func settleReply(_ original: PinVerificationReply, delivery: PinVerificationDelivery) throws {
         condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(original.original)
         try Self.deny(original.owner === self && original.request === ticket.owned && !original.settled
-            && ticket.replies[ObjectIdentifier(original)] === original && ticket.workers==0
+            && ticket.replies[ObjectIdentifier(original)] === original && ticket.workers==0 && ticket.nativeInput==nil
             && (delivery == .uncertain || original.delivered))
         if original.kind == .closed {
             try Self.deny(ticket.terminal === original && ticket.retirementFenced && ticket.replies.count==1)
@@ -2806,11 +2820,12 @@ fileprivate final class NativePinVerification {
         condition.lock(); let ticket: Ticket, owned: OwnedPinVerification?
         do {
             ticket=try ownLocked(original)
-            try Self.deny(!ticket.retiring && ticket.threads[ObjectIdentifier(Thread.current)]==nil)
+            try Self.deny(!ticket.retiring && ticket.threads[ObjectIdentifier(Thread.current)]==nil
+                && ticket.inputThread !== Thread.current)
             ticket.retiring=true
             // No timer frees real work or unknown host transfers. The input
             // gap is closed atomically by retiring before any new verify claim.
-            while ticket.workers != 0 || !ticket.replies.isEmpty { condition.wait() }
+            while ticket.workers != 0 || !ticket.replies.isEmpty || ticket.nativeInput != nil { condition.wait() }
             ticket.retirementFenced=true; owned=ticket.owned; condition.unlock()
         } catch { condition.unlock(); throw error }
         do { try locked { _ in try authority.retire(original,owned:owned) } }
@@ -2823,3 +2838,479 @@ fileprivate final class NativePinVerification {
         if !ticket.sealed { ticket.phase = .closing }; condition.broadcast(); return result
     }
 }
+
+/** Original UI work identity. Only the core-registering actual Thread can settle
+ * its worker or use the retained slot; fields are not host/action authority. */
+fileprivate final class PinVerificationInputWork {
+    let owner: NativePinVerification, request: OwnedPinVerification, input: PinVerificationNativeInput, thread: Thread
+    fileprivate var finished=false
+    fileprivate init(owner: NativePinVerification, request: OwnedPinVerification, input: PinVerificationNativeInput) {
+        self.owner=owner; self.request=request; self.input=input; thread=Thread.current
+    }
+}
+fileprivate extension NativePinVerification {
+    func inputStillLive(_ request: OwnedPinVerification,input: PinVerificationNativeInput) -> Bool {
+        condition.lock(); defer { condition.unlock() }
+        guard let ticket=active else { return false }
+        return request.owner === self && ticket.owned === request && ticket.gate === request.original
+            && ticket.nativeInput === input && !ticket.cancelled && !ticket.sealed
+            && !ticket.retiring && !ticket.retirementFenced
+    }
+    func reserveInput(_ request: OwnedPinVerification,input: PinVerificationNativeInput,thread: Thread) throws {
+        try Self.deny(Thread.isMainThread && input.workerThread === thread)
+        condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(request.original)
+        try Self.deny(request.owner === self && ticket.owned === request && ticket.phase == .ready
+            && !ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced
+            && ticket.workers==0 && ticket.replies.isEmpty && !ticket.inputIssued && ticket.nativeInput==nil)
+        ticket.nativeInput=input; ticket.inputThread=thread; ticket.inputHandoff=false
+    }
+    func startInputWork(_ request: OwnedPinVerification,input: PinVerificationNativeInput) throws -> PinVerificationInputWork {
+        try Self.deny(!Thread.isMainThread)
+        condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(request.original)
+        // A reserved actual Thread must still register/join cleanup after a
+        // local revoke/retire; mandatory current checks deny any useful work.
+        try Self.deny(request.owner === self && ticket.owned === request && ticket.nativeInput === input
+            && ticket.inputThread === Thread.current && ticket.inputWork==nil && !ticket.inputHandoff
+            && !ticket.retirementFenced)
+        let work=PinVerificationInputWork(owner:self,request:request,input:input)
+        ticket.inputWork=work
+        try addWorkerLocked(ticket); return work
+    }
+    func currentInputWork(_ work: PinVerificationInputWork) throws {
+        try Self.deny(!Thread.isMainThread && work.thread === Thread.current)
+        condition.lock()
+        let ticket: Ticket
+        do {
+            ticket=try ownLocked(work.request.original)
+            try Self.deny(work.owner === self && ticket.owned === work.request && ticket.inputWork === work
+                && ticket.nativeInput === work.input && ticket.inputThread === Thread.current && !work.finished)
+            condition.unlock()
+        } catch { condition.unlock(); throw error }
+        var expected=try work.request.expected.copy(); defer { expected.resetBytes(in:0..<expected.count) }
+        do {
+            try Self.fence(expected,work.request.checksum)
+            try locked { transaction in try readExact(transaction,expected); _=try current(ticket,work.request,expected) }
+        } catch { failed(ticket,error,publication:false); throw error }
+    }
+    @discardableResult
+    func finishInputWork(_ work: PinVerificationInputWork) -> Bool {
+        condition.lock()
+        guard let ticket=active, work.owner === self, ticket.owned === work.request,
+            ticket.nativeInput === work.input, ticket.inputWork === work,
+            ticket.inputThread === Thread.current, work.thread === Thread.current, !work.finished
+        else { condition.unlock(); return false }
+        work.finished=true; ticket.inputWork=nil; ticket.inputHandoff=true
+        let valid = !ticket.cancelled && !ticket.sealed && !ticket.retiring && !ticket.retirementFenced
+        condition.unlock(); settleWorker(ticket); return valid
+    }
+    func deliverInputFailure(_ request: OwnedPinVerification,input: PinVerificationNativeInput,
+                             recipient: () throws -> Void) throws {
+        try Self.deny(!Thread.isMainThread)
+        condition.lock(); let ticket: Ticket
+        do {
+            ticket=try ownLocked(request.original)
+            // Denial completion carries no comparison/permission. It still
+            // joins actual host code and cannot start after whole retirement.
+            try Self.deny(request.owner === self && ticket.owned === request && ticket.nativeInput === input
+                && ticket.inputThread === Thread.current && ticket.inputWork==nil && ticket.workers==0
+                && !ticket.retirementFenced)
+            try addWorkerLocked(ticket); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        defer { settleWorker(ticket) }
+        do { try recipient() } catch { failed(ticket,error,publication:true); throw error }
+    }
+    func sealInputUnknown(_ request: OwnedPinVerification,input: PinVerificationNativeInput) {
+        condition.lock(); defer { condition.unlock() }
+        guard let ticket=active, ticket.owned === request, ticket.nativeInput === input else { return }
+        ticket.sealed=true; ticket.phase = .sealed; wipeSealedLocked(ticket); condition.broadcast()
+    }
+    func releaseInput(_ request: OwnedPinVerification,input: PinVerificationNativeInput) throws {
+        try Self.deny(!Thread.isMainThread && input.cleanupReturned)
+        condition.lock(); defer { condition.unlock() }; let ticket=try ownLocked(request.original)
+        try Self.deny(request.owner === self && ticket.owned === request && ticket.nativeInput === input
+            && ticket.inputThread === Thread.current && ticket.inputWork==nil && ticket.workers==0)
+        ticket.nativeInput=nil; ticket.inputThread=nil; ticket.inputHandoff=false; condition.broadcast()
+    }
+}
+
+/** Concrete private UIKit input. It owns public keypad labels and bounded digit
+ * bytes only; genuine host/checkpoint authority and App wiring are unavailable. */
+fileprivate final class PinVerificationNativeInput {
+    private let condition=NSCondition(), owner: NativePinVerification, request: OwnedPinVerification
+    private let locale: PinNativeInputLocale, clock: PinPrimitiveClock, digits: PinNativeDigitBuffer
+    private let delivered: (Result<PinVerificationReply,PinNativeInputFailure>) throws -> Void
+    private weak var host: UIViewController?
+    private weak var window: UIWindow?
+    private weak var scene: UIWindowScene?
+    private weak var originalRoot: UIViewController?
+    private var controller: PinVerificationPinViewController?, timer: Timer?, observers=[NSObjectProtocol]()
+    private var started=false, terminal=false, cancelled=false, submitted=false, uiClean=false
+    private var eventsClosed=false, cleaned=false, finished=false
+    private var queuedUI=0, executingUI=0, completions=0, cancellationPending=0
+    private var presentationRequested=false, presentationReturned=false, dismissRequested=false, cancellationStarted=false
+    private var lastNs: UInt64?, entered: PinPrimitiveInput?, originalReply: PinVerificationReply?
+    private weak var thread: Thread?
+    init(owner: NativePinVerification, request: OwnedPinVerification, host: UIViewController, locale: PinNativeInputLocale,
+         delivered: @escaping (Result<PinVerificationReply,PinNativeInputFailure>) throws -> Void) throws {
+        guard Thread.isMainThread, request.owner === owner,
+            PinVerificationActionCopy.caption(request.original.action,locale:locale) != nil,
+            let window=host.viewIfLoaded?.window, let scene=window.windowScene,
+            scene.activationState == .foregroundActive, UIApplication.shared.applicationState == .active,
+            !window.isHidden, !host.isBeingDismissed, host.presentedViewController==nil,
+            let root=window.rootViewController else { throw PinNativeInputFailure.unavailable }
+        self.owner=owner; self.request=request; self.host=host; self.window=window; self.scene=scene
+        originalRoot=root; self.locale=locale; self.delivered=delivered
+        clock=ApplePinPrimitiveClock(); digits=try PinNativeDigitBuffer(maximum:128)
+    }
+    fileprivate var workerThread: Thread? { condition.lock(); defer { condition.unlock() }; return thread }
+    fileprivate var cleanupReturned: Bool {
+        condition.lock(); defer { condition.unlock() }
+        return cleaned && uiClean && eventsClosed && queuedUI==0 && executingUI==0 && completions==0 && cancellationPending==0
+    }
+    // The missing private host may retrieve only this original after cleanup.
+    // Its known/uncertain ACK still passes the core's existing identity guards.
+    func replyAfterCleanup() throws -> PinVerificationReply? {
+        condition.lock(); defer { condition.unlock() }
+        guard finished else { throw PinNativeInputFailure.unavailable }; return originalReply
+    }
+    func start() throws {
+        guard Thread.isMainThread else { throw PinNativeInputFailure.unavailable }
+        condition.lock()
+        guard !started else { condition.unlock(); throw PinNativeInputFailure.unavailable }
+        started=true; let worker=Thread { [self] in run() }; thread=worker; condition.unlock()
+        // Reservation and actual Thread start are one owned call. A UI object
+        // that was merely constructed never reserves or strands the core lane.
+        try owner.reserveInput(request,input:self,thread:worker); worker.start()
+    }
+    private func postUI(_ task: @escaping () -> Void) {
+        condition.lock(); queuedUI+=1; condition.unlock()
+        DispatchQueue.main.async { [self] in
+            condition.lock(); queuedUI-=1; executingUI+=1; condition.unlock()
+            defer { condition.lock(); executingUI-=1; condition.broadcast(); condition.unlock() }
+            task()
+        }
+    }
+    private func event(_ task: () -> Void) {
+        precondition(Thread.isMainThread)
+        condition.lock()
+        guard !eventsClosed else { condition.unlock(); return }
+        executingUI+=1; condition.unlock()
+        defer { condition.lock(); executingUI-=1; condition.broadcast(); condition.unlock() }; task()
+    }
+    private func localDeadline() throws {
+        let ns=try clock.nanoseconds()
+        guard owner.inputStillLive(request,input:self) else { throw PinNativeInputFailure.cancelled }
+        condition.lock(); defer { condition.unlock() }
+        guard ns>0, ns/1000000>=request.capturedUptimeMs, ns/1000000<request.deadlineUptimeMs,
+            lastNs==nil || ns>=lastNs! else { throw PinNativeInputFailure.unavailable }
+        lastNs=ns
+    }
+    private func hostCurrent(showing: Bool) -> Bool {
+        guard Thread.isMainThread, let host=host, let window=window, let scene=scene,
+            window.windowScene === scene, window.rootViewController === originalRoot, !window.isHidden,
+            scene.activationState == .foregroundActive, UIApplication.shared.applicationState == .active,
+            !host.isBeingDismissed else { return false }
+        if !showing { return host.viewIfLoaded?.window === window && host.presentedViewController==nil }
+        guard let controller=controller, host.presentedViewController === controller,
+            controller.presentingViewController === host else { return false }
+        condition.lock(); let returned=presentationReturned; condition.unlock()
+        return !returned || controller.viewIfLoaded?.window === window
+    }
+    private func installLifecycle() {
+        precondition(Thread.isMainThread)
+        let center=NotificationCenter.default
+        for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification] {
+            observers.append(center.addObserver(forName:name,object:nil,queue:.main) { [weak self] _ in self?.cancel() })
+        }
+        if let scene=scene {
+            for name in [UIScene.willDeactivateNotification,UIScene.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
+                observers.append(center.addObserver(forName:name,object:scene,queue:.main) { [weak self] _ in self?.cancel() })
+            }
+        }
+        timer=Timer.scheduledTimer(withTimeInterval:0.05,repeats:true) { [weak self] _ in
+            guard let input=self else { return }
+            input.event {
+                input.condition.lock()
+                let stopped=input.cancelled || input.finished, cleaned=input.uiClean
+                let transitioning=input.terminal && !cleaned
+                input.condition.unlock()
+                if stopped { return }
+                do {
+                    try input.localDeadline() // Also during held presentation/dismissal.
+                    if transitioning { return }
+                    guard input.hostCurrent(showing:!cleaned) else { input.cancel(); return }
+                } catch { input.cancel() }
+            }
+        }
+        if let timer=timer { RunLoop.main.add(timer,forMode:.common) }
+    }
+    private func show() {
+        precondition(Thread.isMainThread)
+        condition.lock(); let stopped=terminal; condition.unlock()
+        if stopped { clearUI(); return }
+        do {
+            try localDeadline()
+            guard hostCurrent(showing:false),let host=host else { cancel(); return }
+            let view=PinVerificationPinViewController(owner:self,locale:locale,action:request.original.action)
+            controller=view; view.modalPresentationStyle = .overFullScreen; view.isModalInPresentation=true
+            installLifecycle()
+            condition.lock(); presentationRequested=true; completions+=1; condition.unlock()
+            host.present(view,animated:false) { [self] in event {
+                condition.lock(); presentationReturned=true; completions-=1; let stopped=terminal
+                condition.broadcast(); condition.unlock()
+                if stopped { requestDismiss() } else if !hostCurrent(showing:true) { cancel() }
+            } }
+        } catch { cancel() }
+    }
+    private func clearUI() {
+        precondition(Thread.isMainThread); digits.clear(); controller?.disableAndClear(); requestDismiss()
+    }
+    private func requestDismiss() {
+        precondition(Thread.isMainThread); condition.lock()
+        if dismissRequested { condition.unlock(); return }
+        if presentationRequested && !presentationReturned { condition.unlock(); return }
+        guard let view=controller else { uiClean=true; condition.broadcast(); condition.unlock(); return }
+        dismissRequested=true
+        let presented=view.presentingViewController != nil
+        if presented { completions+=1 }; condition.unlock()
+        if presented {
+            let presenter=view.presentingViewController!
+            presenter.dismiss(animated:false) { [self] in event {
+                condition.lock(); completions-=1; uiClean=true; condition.broadcast(); condition.unlock()
+            } }
+        } else {
+            // Actual presentation completion returned and UIKit owns no modal.
+            condition.lock(); uiClean=true; condition.broadcast(); condition.unlock()
+        }
+    }
+    private func removeLifecycle() {
+        precondition(Thread.isMainThread)
+        timer?.invalidate(); timer=nil
+        observers.forEach { NotificationCenter.default.removeObserver($0) }; observers.removeAll()
+        controller?.detach(); controller=nil
+        condition.lock(); eventsClosed=true; condition.broadcast(); condition.unlock()
+    }
+    func cancel() {
+        precondition(Thread.isMainThread)
+        event {
+            condition.lock(); let already=cancelled; terminal=true; cancelled=true
+            entered?.close(); entered=nil; condition.broadcast(); condition.unlock()
+            if !already {
+                clearUI(); try? owner.revoke(request.original); beginCancellation()
+            }
+        }
+    }
+    private func beginCancellation() {
+        condition.lock()
+        if cancellationStarted { condition.unlock(); return }
+        cancellationStarted=true; cancellationPending+=1; condition.unlock()
+        Thread { [self] in
+            do { try owner.cancel(request.original) }
+            catch { owner.sealInputUnknown(request,input:self) }
+            condition.lock(); cancellationPending-=1; condition.broadcast(); condition.unlock()
+        }.start()
+    }
+    func disappeared() {
+        event {
+            condition.lock(); let expected=terminal && dismissRequested; condition.unlock()
+            if !expected { cancel() }
+        }
+    }
+    func tapDigit(_ digit: UInt8) {
+        event {
+            condition.lock(); let stopped=terminal; condition.unlock(); guard !stopped else { return }
+            do {
+                try localDeadline(); guard hostCurrent(showing:true) else { cancel(); return }
+                if digits.count>=128 { return }
+                try digits.append(digit); controller?.update(count:digits.count)
+            } catch { cancel() }
+        }
+    }
+    func deleteDigit() {
+        event {
+            condition.lock(); let stopped=terminal; condition.unlock(); guard !stopped else { return }
+            do {
+                try localDeadline(); guard hostCurrent(showing:true) else { cancel(); return }
+                try digits.removeLast(); controller?.update(count:digits.count)
+            } catch { cancel() }
+        }
+    }
+    func submit() {
+        event {
+            condition.lock(); let stopped=terminal; condition.unlock(); guard !stopped else { return }
+            do {
+                try localDeadline(); guard hostCurrent(showing:true) else { cancel(); return }
+                let input=try digits.move(minimum:1)
+                condition.lock()
+                if terminal { condition.unlock(); input.close(); return }
+                entered=input; terminal=true; submitted=true; condition.broadcast(); condition.unlock(); clearUI()
+            } catch { cancel() }
+        }
+    }
+    private func waitForUI() {
+        condition.lock(); defer { condition.unlock() }
+        while !uiClean || queuedUI != 0 || executingUI != 0 || completions != 0 || cancellationPending != 0 { condition.wait() }
+    }
+    private func run() {
+        var work: PinVerificationInputWork?, deliveryEntered=false
+        do {
+            work=try owner.startInputWork(request,input:self)
+            try owner.currentInputWork(work!)
+            postUI { [self] in show() }
+            condition.lock()
+            while !terminal || !uiClean || queuedUI != 0 || executingUI != 0 || completions != 0 || cancellationPending != 0 {
+                condition.wait()
+            }
+            let accepted=submitted && !cancelled
+            let raw=entered; entered=nil; condition.unlock()
+            defer { raw?.close() }
+            guard accepted,let raw=raw else { throw PinNativeInputFailure.cancelled }
+            try owner.currentInputWork(work!)
+            let nativeValid=owner.finishInputWork(work!); work=nil
+            guard nativeValid else { throw PinNativeInputFailure.cancelled }
+            // The visible UI and its callbacks truly joined. The exact original
+            // slot/Thread remains reserved while ordinary workers0 rules hold.
+            let entry=try owner.bindInput(request,raw:raw,inputHandoff:self)
+            let reply=try owner.verify(request,input:entry,inputHandoff:self)
+            condition.lock(); originalReply=reply; condition.unlock()
+            try owner.deliver(reply,inputHandoff:self) { [self] original in
+                condition.lock(); let accepted = !cancelled; condition.unlock()
+                guard accepted else { throw PinVerificationRefusal() }
+                deliveryEntered=true; try delivered(.success(original))
+            }
+        } catch {
+            postUI { [self] in cancel() }; waitForUI()
+            condition.lock(); entered?.close(); entered=nil; condition.unlock()
+            if let original=work { _=owner.finishInputWork(original); work=nil }
+            if !deliveryEntered {
+                try? owner.deliverInputFailure(request,input:self) {
+                    try delivered(.failure(error is PinNativeInputFailure || error is PinVerificationRefusal ? .cancelled:.unavailable))
+                }
+            }
+        }
+        postUI { [self] in removeLifecycle() }
+        condition.lock()
+        while queuedUI != 0 || executingUI != 0 || completions != 0 || cancellationPending != 0 { condition.wait() }
+        entered?.close(); entered=nil; cleaned=true; condition.unlock()
+        do {
+            try owner.releaseInput(request,input:self)
+            condition.lock(); finished=true; condition.broadcast(); condition.unlock()
+        } catch { owner.sealInputUnknown(request,input:self) } // Never invent cleanup/ACK or release unknown capacity.
+    }
+    deinit { digits.clear(); entered?.close() }
+}
+
+/** Fixed root-authored public action copy, never a caller-supplied caption. */
+fileprivate enum PinVerificationActionCopy {
+    private static let captions: [String:(String,String)] = [
+        "exit-child-mode":("Выйти из детского режима","Exit child mode"),
+        "switch-adult-profile":("Переключиться на взрослый профиль","Switch to an adult profile"),
+        "change-exact-age":("Изменить возраст","Change age"),
+        "change-blocked-topics":("Изменить заблокированные темы","Change blocked topics"),
+        "open-adult-store":("Открыть магазин","Open the store"),
+        "initiate-purchase":("Начать покупку","Start a purchase"),
+        "restore-purchases":("Восстановить покупки","Restore purchases"),
+        "open-external":("Открыть внешнюю ссылку","Open an external link"),
+        "share":("Поделиться материалом","Share content"),
+        "account-change":("Сменить аккаунт","Change account"),
+        "export-child-data":("Экспортировать данные ребёнка","Export child data"),
+        "delete-child-data":("Удалить данные ребёнка","Delete child data"),
+        "diagnostics":("Открыть диагностику","Open diagnostics"),
+        "expand-access-settings":("Расширить доступ","Expand access"),
+        "enable-licensed-pack":("Включить набор материалов","Enable a content pack"),
+        "view-legal-commercial":("Открыть правовую и коммерческую информацию","View legal and commercial information")
+    ]
+    static func caption(_ action: String,locale: PinNativeInputLocale) -> String? {
+        guard let pair=captions[action] else { return nil }; return locale == .ru ? pair.0:pair.1
+    }
+}
+
+/** Premium accessible single-entry keypad. Render public labels/length only;
+ * no UITextField, entered-PIN String, clipboard, JS or restoration payload. */
+fileprivate final class PinVerificationPinViewController: UIViewController {
+    private weak var owner: PinVerificationNativeInput?
+    private let locale: PinNativeInputLocale, action: String
+    private let titleLabel=UILabel(), actionLabel=UILabel(), countLabel=UILabel(), hintLabel=UILabel()
+    private let continueButton=UIButton(type:.system)
+    private var inputButtons=[UIButton]()
+    init(owner: PinVerificationNativeInput,locale: PinNativeInputLocale,action: String) {
+        self.owner=owner; self.locale=locale; self.action=action; super.init(nibName:nil,bundle:nil)
+    }
+    required init?(coder: NSCoder) { return nil }
+    private func text(_ ru: String,_ en: String) -> String { locale == .ru ? ru:en }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let navy=UIColor(red:0.025,green:0.06,blue:0.12,alpha:1), gold=UIColor(red:0.84,green:0.72,blue:0.46,alpha:1)
+        view.backgroundColor=navy; view.tintColor=gold; view.accessibilityViewIsModal=true
+        let scroll=UIScrollView(), stack=UIStackView(); scroll.translatesAutoresizingMaskIntoConstraints=false
+        stack.translatesAutoresizingMaskIntoConstraints=false; stack.axis = .vertical; stack.spacing=16
+        view.addSubview(scroll); scroll.addSubview(stack)
+        NSLayoutConstraint.activate([
+            scroll.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor),
+            stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor,constant:24),
+            stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor,constant:-24),
+            stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor,constant:24),
+            stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor,constant:-24),
+            stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor,constant:-48)
+        ])
+        for label in [titleLabel,actionLabel,countLabel,hintLabel] {
+            label.numberOfLines=0; label.textAlignment = .center; label.adjustsFontForContentSizeCategory=true
+            label.textColor = .white; stack.addArrangedSubview(label)
+        }
+        titleLabel.textColor=gold; titleLabel.font = .preferredFont(forTextStyle:.title2)
+        titleLabel.accessibilityTraits.insert(.header); titleLabel.text=text("Родительский PIN","Parent PIN")
+        actionLabel.font = .preferredFont(forTextStyle:.headline)
+        actionLabel.text=PinVerificationActionCopy.caption(action,locale:locale)
+        hintLabel.font = .preferredFont(forTextStyle:.body)
+        hintLabel.text=text("Введите PIN, чтобы подтвердить действие.","Enter your PIN to confirm this action.")
+        countLabel.font = .preferredFont(forTextStyle:.title1)
+        let labels=[["1","2","3"],["4","5","6"],["7","8","9"],["⌫","0",""]]
+        for row in labels {
+            let line=UIStackView(); line.axis = .horizontal; line.spacing=12; line.distribution = .fillEqually
+            for label in row {
+                let button=UIButton(type:.system); button.setTitle(label,for:.normal)
+                button.titleLabel?.font = .preferredFont(forTextStyle:.title1)
+                button.titleLabel?.adjustsFontForContentSizeCategory=true; button.setTitleColor(.white,for:.normal)
+                button.tintColor=gold; button.backgroundColor=UIColor(red:0.065,green:0.12,blue:0.20,alpha:1)
+                button.layer.cornerRadius=12; button.heightAnchor.constraint(greaterThanOrEqualToConstant:56).isActive=true
+                if let digit=Int(label) { button.tag=digit; button.addTarget(self,action:#selector(digitTap(_:)),for:.touchUpInside) }
+                else if label=="⌫" {
+                    button.accessibilityLabel=text("Удалить последнюю цифру","Delete last digit")
+                    button.addTarget(self,action:#selector(deleteTap),for:.touchUpInside)
+                } else { button.isEnabled=false; button.isHidden=true }
+                line.addArrangedSubview(button); inputButtons.append(button)
+            }
+            stack.addArrangedSubview(line)
+        }
+        continueButton.setTitle(text("Продолжить","Continue"),for:.normal)
+        continueButton.backgroundColor=gold; continueButton.setTitleColor(navy,for:.normal); continueButton.layer.cornerRadius=12
+        continueButton.titleLabel?.font = .preferredFont(forTextStyle:.headline)
+        continueButton.titleLabel?.adjustsFontForContentSizeCategory=true
+        continueButton.heightAnchor.constraint(greaterThanOrEqualToConstant:48).isActive=true
+        continueButton.addTarget(self,action:#selector(submitTap),for:.touchUpInside); stack.addArrangedSubview(continueButton)
+        let cancel=UIButton(type:.system); cancel.setTitle(text("Отмена","Cancel"),for:.normal)
+        cancel.titleLabel?.font = .preferredFont(forTextStyle:.body); cancel.titleLabel?.adjustsFontForContentSizeCategory=true
+        cancel.heightAnchor.constraint(greaterThanOrEqualToConstant:48).isActive=true
+        cancel.addTarget(self,action:#selector(cancelTap),for:.touchUpInside); stack.addArrangedSubview(cancel)
+        update(count:0)
+    }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); owner?.disappeared() }
+    func update(count: Int) {
+        countLabel.text=String(repeating:"•",count:min(count,12))
+        countLabel.accessibilityLabel=text("Введено цифр: \(count)","Digits entered: \(count)")
+        continueButton.isEnabled=count>=1 && count<=128
+    }
+    func disableAndClear() {
+        inputButtons.forEach { $0.isEnabled=false }; continueButton.isEnabled=false
+        countLabel.text=""; countLabel.accessibilityLabel=text("Ввод закрыт","Input closed")
+    }
+    func detach() { disableAndClear(); owner=nil }
+    @objc private func digitTap(_ sender: UIButton) { guard sender.tag>=0 && sender.tag<=9 else { return }; owner?.tapDigit(UInt8(sender.tag)+48) }
+    @objc private func deleteTap() { owner?.deleteDigit() }
+    @objc private func submitTap() { owner?.submit() }
+    @objc private func cancelTap() { owner?.cancel() }
+}
+// App/scene/plugin registration and genuine private Gate settlement remain absent.
