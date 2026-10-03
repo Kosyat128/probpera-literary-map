@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "headSha": "245c86700e6acc01e8723f8656104c2371e03b4c",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-03T11:29:59.120Z",
+  "updatedAt": "2026-10-03T12:10:12.171Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1566,7 +1566,10 @@
         "docs/mobile/evidence/S16/child-static-svg-20261003/evidence-manifest.json",
         "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/entry.json",
         "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/result.json",
-        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/native-pin-codec-20261003/entry.json",
+        "docs/mobile/evidence/S16/native-pin-codec-20261003/result.json",
+        "docs/mobile/evidence/S16/native-pin-codec-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -5214,7 +5217,10 @@
         "docs/mobile/evidence/S16/child-static-svg-20261003/evidence-manifest.json",
         "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/entry.json",
         "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/result.json",
-        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/parent-pin-enrollment-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/native-pin-codec-20261003/entry.json",
+        "docs/mobile/evidence/S16/native-pin-codec-20261003/result.json",
+        "docs/mobile/evidence/S16/native-pin-codec-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -13279,7 +13285,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Complete the staged pure Android/Swift canonical protected-envelope validators and exact PIN-only transitions, then implement a genuine constructor-owned native PIN lifecycle, calibration, input and independent recovery provider with one-use permission, full durable CAS/readback and authenticated native host-current binding. Continue supported replay-resistant authority/trusted continuous time, admitted child index ports and clear-before-render route/account/profile/lifecycle App wiring. The private TypeScript enrollment/replacement/recovery coordinator and strict seed decoder now have scoped local proofs; they supply no native provider, protected admission, trusted clock, child content review, rights or App activation. S03.acceptance remains IN_PROGRESS with11 OPEN criteria and S16 with36 OPEN; preserve the four original conditions and seven owner inputs. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passed scopes for reporting, create D stages, invent approvals, rewrite historical FAIL/NOT_RUN or deploy/push/merge/publish.",
+    "nextAction": "Implement the genuine constructor-owned native PIN lifecycle/input/calibration and independent recovery provider against the now implemented Android/Swift canonical protected-envelope validators: authenticate the full expected seed/enrolled record, native epoch/boot and one absolute continuous deadline; permit exactly one durable whole-record PIN-only CAS/readback and cancellation/close. Complete authenticated host-current binding, supported replay-resistant authority/trusted time, admitted child index ports and clear-before-render route/account/profile/lifecycle App wiring. These remain Codex-owned programming tasks. Pure codecs, synthetic JVM/fixture-plan checks and build compilation supply no provider, protected admission, content review, rights or installed App proof. Preserve S03.acceptance IN_PROGRESS11 OPEN, S16 IN_PROGRESS36 OPEN, four original conditions, seven owner inputs, five pending legal reviews, RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. No new D stage, repeated passed scopes for reporting, fabricated approvals, historical FAIL/NOT_RUN rewriting, deployment, push, merge or publication.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13660,7 +13666,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
-    "headShaMeaning": "PIN source f2d8d8d2aefb6c040698972dca818b4223844b3a follows SVG source ddbc10c3d35c5d28823df901a44f1a932dd772e2 and report f14a6b1450016a4e0abed00d8a7f26a723aabe06. Actual72 full new PIN cases and6 selected protected parser/CAS cases ran on the original reportHEADdirty3, with21 other protected cases filtered. Their two production files match current source exactly; the new test differs only by type annotations, qualified by the retained root actual emitted-JavaScript-byte-identical proof. Final TSC ran on corrected reportHEADdirty3 and all1778 captured bytes match this frozen source. Original test-typing TSC FAIL remains original, and source-commit whitespace preparation is separate tooling evidence. No unit rerun, new build/browser/installedOS, genuine native provider, calibration, admission, App, content approval, stage or release acceptance.",
+    "headShaMeaning": "Native codec source 245c86700e6acc01e8723f8656104c2371e03b4c follows PIN source f2d8d8d2aefb6c040698972dca818b4223844b3a and report 57e15019ed8f99ce3f307ce2b7913194d39f75d1. The root actual JVM69 structural synthetic checks compiled frozen B candidate bytes before integration on clean report57/sourcef2; those bytes match the current Java codec, but execution was not at the current commit. Actual26 cases in the one affected fixture-plan file passed on reportHEADdirty7: five new structural dispatch/parser cases and21 existing regressions covering the changed shared runner; none filtered. The complete checked raw source bytes match the frozen source after normalizing path/SHA rows, without conflating the size-bearing checker fingerprint with the standard release fingerprint. No fresh build is claimed for this source. Available Android main/instrumentation APKs, PWA and iOSweb bundles remain exact historical3c79 preparations and omit the later SVG, PIN coordinator and native codec changes; fresh final-source preparation will run once after the next programming work. Swift compilation and both installed native fixture classes remain NOT_RUN. Prior PIN72+parser6 and type-only-qualified TSC are retained; all previous TypeScript inputs are unchanged by this seven-path native/script change, and those scopes were not repeated. No genuine provider, calibration, protected admission, App activation or release acceptance.",
     "requirementCount": 342,
     "bilingualRequirementCount": 107,
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",

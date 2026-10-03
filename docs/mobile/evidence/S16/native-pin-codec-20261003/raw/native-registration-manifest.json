@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_NATIVE_STRUCTURAL_FIXTURE_REGISTRATION_SOURCE_NOT_RUN",
+  "stage": "S16",
+  "attempt": "A2",
+  "previousAttempt": {
+    "manifest": "../next-native-pin-codec-registration/manifest.json",
+    "manifestSha256": "7d1c07056bd28fb4e5b57f64926657ed9803d2d4bc19143aeb2453275a1ee85f",
+    "status": "PRESERVED_SOURCE_ONLY_NOT_RUN_ANDROID_STATUS_ERROR_FAILURE_DENIAL_GAP"
+  },
+  "ownedProjectPaths": [
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sourceBeforeSha256": "3cd9e4eb43fc7538d8d562e5763f1c030d2c8b069faee04af80c8b4c283b9352",
+      "sha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "size": 25225
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "sourceBeforeSha256": "682341aefc453c4511e469d8ab779dcbb8da0dcd65475c164fa224d81930c0d7",
+      "sha256": "5d03d119165e8e27fea82e138e54333248dd6de9cc0f4e4e3ae327f2095bd2d5",
+      "size": 70791
+    },
+    {
+      "path": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "sourceBeforeSha256": "8e2503c3b2ea7cdec0cbc46ebd3d1f8cbec72bdb222cbf0e8fbfeddc4d44d05b",
+      "sha256": "d89446bea3eb585596d3659dce81f42d8a49beb526d18365cc8783e3e4c5086a",
+      "size": 12256
+    }
+  ],
+  "facts": {
+    "pbxNewBuildId": "D4B120261003000000000060",
+    "pbxNewFileId": "D4B120261003000000000061",
+    "pbxNewIdsPreviouslyAbsent": true,
+    "pbxObjectDefinitionIdsUnique": true,
+    "pbxTarget": "EXISTING_AppSecureStorageTests_GROUP_AND_SOURCES_ONLY",
+    "androidClass": "ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest",
+    "androidCommand": "EXISTING_FIXED_15_ARG_OFFLINE_GATE_WITH_EXACT_CLASS_RUN_ID_AND_literaryProtectedEnvelopePhase_codec",
+    "iosClass": "PlanetChildProtectedEnvelopeRuntimeTests",
+    "iosPhase": "child-protected:codec",
+    "iosFixtureState": "OLD_FIXTURE_ENVIRONMENT_FIELDS_CLEARED_NO_NEW_ENVIRONMENT_PERMISSION_OR_NAMESPACE",
+    "requiredSourceBindings": [
+      "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift"
+    ],
+    "sourceCapture": "BOTH_NATIVE_TREES_ALREADY_CAPTURED_NEW_EXACT_TWO_PATH_GUARD_REQUIRES_THEIR_HASHED_ROWS",
+    "expectedStructuralTestCountPerPlatform": 9,
+    "resultParser": "EXACT_NINE_TEST_SUCCESS_SUMMARY_WITH_SKIP_FAILURE_CRASH_IGNORED_AND_MIXED_COUNT_DENIAL",
+    "androidPerTestStatus": "NEGATIVE_STATUS_CODES_1_2_3_4_DENIED_INDEPENDENT_OF_OK9",
+    "androidSuccessfulFinalCode": "INSTRUMENTATION_CODE_MINUS1_ALLOWED_DISTINCT_FROM_PER_TEST_STATUS",
+    "receiptBackend": "synthetic-boundary",
+    "receiptScope": "synthetic-structural-only",
+    "newFocusedPlanTests": 5,
+    "historical21PlanAssertionSource": "UNCHANGED_EXCEPT_IMPORT_ADDITIONS_NOT_REEXECUTED"
+  },
+  "scope": {
+    "ownedDeviceEligibility": "UNCHANGED",
+    "privateAdbServerBinding": "UNCHANGED",
+    "executeOptInAndFreshOwnedTargetGuards": "UNCHANGED",
+    "protectedFactoryActivation": "NONE",
+    "fourFrozenNativeCodecSourceFiles": "UNTOUCHED",
+    "projectMutations": 0,
+    "xcodeTargetOrBuildSettingCreation": "NONE"
+  },
+  "checks": {
+    "sourceReview": "AUTHOR_SOURCE_ONLY_FROZEN_PEER_REVIEW_PENDING",
+    "fixturePlanTests": "NOT_RUN",
+    "swiftCompiler": "NOT_RUN",
+    "androidCompiler": "NOT_RUN_BY_THIS_STAGE",
+    "installedNativeFixtures": "NOT_RUN",
+    "build": "NOT_RUN",
+    "checksExecuted": 0
+  },
+  "suggestedFocusedValidation": {
+    "file": "scripts/mobile/native-child-fixture-plan.test.mjs",
+    "testNamePattern": "owned native structural envelope fixture dispatch",
+    "selectedTests": 5,
+    "scope": "NEW_AND_AFFECTED_SELECTION_SOURCE_ONLY_NO_DEVICE_ACCESS"
+  },
+  "limitations": [
+    "PBX registration and class dispatch do not attest compilation or actual execution; both require independently recorded native evidence.",
+    "Even future native execution of these fixed synthetic vectors proves structural codec checks only, never OS storage, PIN input, permission, nonrollback checkpoint, trusted time, recovery or child admission.",
+    "No project, codec-source, Git, test/build, native-device or remote operation was performed while staging."
+  ]
+}

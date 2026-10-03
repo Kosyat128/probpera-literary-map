@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-codec-source-review",
+  "platform": "ios",
+  "status": "ACK",
+  "scope": "FROZEN_SOURCE_REVIEW_ONLY",
+  "reviewedAt": "2026-10-03",
+  "sourceCommit": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "reportHeadSuppliedByParent": "57e15019ed8f99ce3f307ce2b7913194d39f75d1",
+  "manifest": {
+    "path": "next-native-pin-codec-swift/manifest.json",
+    "sha256": "209a0c8824f47059b4237bb6f028d3f2478ca30c6946f08ad673cb21a307e40f",
+    "bytes": 3556
+  },
+  "ready": {
+    "path": "next-native-pin-codec-swift/READY.json",
+    "sha256": "2232f30c901f9cceb43c3af1f99a7bb19c357467194cc93b9725de8b534acba7",
+    "bytes": 453
+  },
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "bytes": 39175,
+      "beforeSha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395",
+      "currentBeforeBytesVerified": true
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "sha256": "7a60d74c2785ac4e84b12ecd100454baabc3eb891a2665f4a27394bd8877a7d6",
+      "bytes": 17443,
+      "beforeSha256": null,
+      "currentPathAbsentVerified": true
+    }
+  ],
+  "specificationRefs": {
+    "childProtectedStateSha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5",
+    "childProfileSha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+  },
+  "preservation": {
+    "outsideInsertedCodecBytesExactlyPreserved": true,
+    "reconstructedOriginalSha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395",
+    "existingStorageAndNilFactoryCodePreserved": true,
+    "appOrPluginRegistrationAdded": false,
+    "nativeAuthorityProviderImplemented": false,
+    "newXCTestTargetRegistration": "PENDING_PARENT_INTEGRATION"
+  },
+  "reviewedContracts": [
+    "Private independently copied bounded byte storage; owned buffers wiped on failure, close and destruction.",
+    "Strict ordered byte cursor validates raw UTF8, safe numeric bounds and exact ECMAScript UTF16 quoting without Unicode repair or normalization.",
+    "Full registry SHA, RU/EN profiles, Gregorian UTC timestamps including year zero, profile/topic limits and active membership.",
+    "Adult pin:null seed only; enrolled decoder invariants remain strict; missing or corrupt input is not reset.",
+    "Exact non-PIN raw-byte transition spans preserve the entire remaining record; PIN revisions, freshness and reset fields are independently checked.",
+    "Pure structural validation does not provide trusted time, recovery authorization, durable native admission or actual protected CAS.",
+    "Nine source-only XCTest methods cover UTF8 and canonical surrogate forms, byte ownership, seed/enrolled parity, record-preserving transitions and field bounds."
+  ],
+  "findings": [],
+  "checksExecuted": 0,
+  "productTestsExecuted": false,
+  "swiftCompilation": "NOT_RUN",
+  "xctestExecution": "NOT_RUN",
+  "installedNativeRuntime": "NOT_RUN",
+  "checkoutWrites": false,
+  "gitCommandsExecuted": false,
+  "releaseReady": false
+}

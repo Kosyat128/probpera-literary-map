@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK",
+  "scope": "BOUNDED_READ_ONLY_SEVEN_SOURCE_INTEGRATION_AND_SYNTHETIC_DISPATCH_HELPER_REVIEW",
+  "manifest": "next-native-pin-codec-integration-a2/manifest.json",
+  "manifestSha256": "661d0648a5bc70b202188b683fe1dc11ef2fb621e88ef18e1b6355a3f36085cb",
+  "ready": "next-native-pin-codec-integration-a2/READY.md",
+  "readySha256": "59b101f8babe05711e9723a688a660c43d84a16652ce62f2d54d8318dd0a51f7",
+  "helpers": [
+    {"path":"common.mjs","sha256":"da19b15dc4259a833a040eb3591dd8a07e0bdccf06508abad1d2ec3e454276b3"},
+    {"path":"integrate.mjs","sha256":"54cf84410e11df2d7e6ffe6fe610f72d1b17671b158812e4510eb8a1086a5c15"},
+    {"path":"check.mjs","sha256":"26fb2a1d36c0a5307e3553e158b70704bf228265f49cd687132fcdbe4d183260"}
+  ],
+  "facts": {
+    "sourcePaths": "CLOSED_EXACT_SEVEN_ANDROID2_SWIFT2_REGISTRATION_A2_3",
+    "originalBeforeBytesOrAbsence": "GUARDED_BEFORE_PREPARATION_AND_IMMEDIATELY_BEFORE_EACH_WRITE",
+    "backups": "ALL_OWNED_EXISTING_BACKUPS_AND_CANDIDATE_BYTE_GUARDS_PRECEDE_FIRST_PROJECT_WRITE",
+    "afterIntegration": "EXACT_SEVEN_UNSTAGED_PATHS_EXACT_CANDIDATE_BYTES_AND_UNAFFECTED_APPLICATION_SOURCE_PRESERVED",
+    "actualJvmReceipt": "PINNED_EXISTING_ROOT_JVM69_PASS_B40E_NO_REEXECUTION",
+    "actualJvmSourceShape": "SOURCE_ROOTS_AND_PATH_SHA_SIZE_ROWS_VERIFIED_CONSISTENT_WITH_HELPER_CAPTURE",
+    "actualJvmIdentityClosure": "BEFORE_AFTER_HEAD_SOURCE_FULL_CLEAN_STATUS_AND_RESOLVED_PHYSICAL_ROOT_BOUND",
+    "fixtureCheck": "ONE_EXACT_FILE_26_EXACT_TITLES_5_NEW_PLUS_21_AFFECTED_DISPATCH_ASSERTIONS_ROOT_SELECTED",
+    "rawVitestReport": "ABSOLUTE_PATH_SHA256_SIZE_INCLUDED_IN_FINAL_RECEIPT",
+    "checkOutputs": "OWNED_B_UUID_CONFIG_CACHE_LOGS_HOME_TEMP_REPORT",
+    "partialFailure": "NO_AUTOMATIC_RESTORE_OR_SUCCESS_PROMOTION_ACTUAL_WRITE_INTENTS_PRESERVED",
+    "projectGitMutationByHelpers": "SEVEN_PROJECT_SOURCE_WRITES_ONLY_IN_ROOT_INTEGRATE_GIT_READ_ONLY",
+    "genuineProviderActivation": "NONE"
+  },
+  "findings": [],
+  "checksExecuted": 0,
+  "helperExecution": "NOT_RUN_BY_REVIEWER",
+  "unitTests": "NOT_RUN_BY_REVIEWER",
+  "compilerBuildNativeRuntime": "NOT_RUN_BY_REVIEWER",
+  "projectMutationsByReviewer": 0,
+  "limitations": "Source ACK is not actual integration, fixture execution, native OS evidence or acceptance. Existing JVM receipt was inspected as frozen evidence only."
+}

@@ -1,0 +1,884 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-codec-seven-source-integration",
+  "pass": true,
+  "previousHead": "57e15019ed8f99ce3f307ce2b7913194d39f75d1",
+  "previousSource": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "finishedAt": "2026-10-03T12:04:56.220Z",
+  "commands": [
+    {
+      "label": "before-root",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:51.894Z",
+      "finishedAt": "2026-10-03T12:04:51.953Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "01-before-root.stdout.bin",
+        "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+        "size": 71
+      },
+      "stderr": {
+        "path": "01-before-root.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-head",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:51.956Z",
+      "finishedAt": "2026-10-03T12:04:52.013Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "02-before-head.stdout.bin",
+        "sha256": "3bfe786f41b6c707a842fdf834cb74757b566b3e2fa5a7168546f66f8d57bc4f",
+        "size": 41
+      },
+      "stderr": {
+        "path": "02-before-head.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-source",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "log",
+        "-1",
+        "--format=%H",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:52.015Z",
+      "finishedAt": "2026-10-03T12:04:52.075Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "03-before-source.stdout.bin",
+        "sha256": "732e0ed4ed0044939ff7ab6dc908d129e340cfee3c444a1d013df2975e8c7108",
+        "size": 41
+      },
+      "stderr": {
+        "path": "03-before-source.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-status",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:52.077Z",
+      "finishedAt": "2026-10-03T12:04:52.462Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "04-before-status.stdout.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      },
+      "stderr": {
+        "path": "04-before-status.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "before-paths",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "ls-files",
+        "-z",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:52.465Z",
+      "finishedAt": "2026-10-03T12:04:52.545Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "05-before-paths.stdout.bin",
+        "sha256": "fb350a15da2449b4de1b5c5fcf47c612d4a40a253913d9ba12fd823da5aa9fb4",
+        "size": 70550
+      },
+      "stderr": {
+        "path": "05-before-paths.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-root",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:54.118Z",
+      "finishedAt": "2026-10-03T12:04:54.175Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "06-after-root.stdout.bin",
+        "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+        "size": 71
+      },
+      "stderr": {
+        "path": "06-after-root.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-head",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:54.177Z",
+      "finishedAt": "2026-10-03T12:04:54.236Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "07-after-head.stdout.bin",
+        "sha256": "3bfe786f41b6c707a842fdf834cb74757b566b3e2fa5a7168546f66f8d57bc4f",
+        "size": 41
+      },
+      "stderr": {
+        "path": "07-after-head.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-source",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "log",
+        "-1",
+        "--format=%H",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:54.238Z",
+      "finishedAt": "2026-10-03T12:04:54.298Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "08-after-source.stdout.bin",
+        "sha256": "732e0ed4ed0044939ff7ab6dc908d129e340cfee3c444a1d013df2975e8c7108",
+        "size": 41
+      },
+      "stderr": {
+        "path": "08-after-source.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-status",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:54.300Z",
+      "finishedAt": "2026-10-03T12:04:54.635Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "09-after-status.stdout.bin",
+        "sha256": "448e52a2a04d79c6d75fcd5dc452ded0535c31fae9a5a0d62872c3f2280802c2",
+        "size": 503
+      },
+      "stderr": {
+        "path": "09-after-status.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    },
+    {
+      "label": "after-paths",
+      "executable": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "args": [
+        "--no-replace-objects",
+        "-c",
+        "safe.directory=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "-c",
+        "core.autocrlf=false",
+        "-c",
+        "core.fsmonitor=false",
+        "-c",
+        "core.commitGraph=false",
+        "-c",
+        "core.untrackedCache=false",
+        "-C",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "ls-files",
+        "-z",
+        "--cached",
+        "--others",
+        "--exclude-standard",
+        "--",
+        "src",
+        "server/planet",
+        "apps/mobile",
+        "scripts/mobile",
+        "supabase/migrations",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "native.html",
+        "capacitor.config.json",
+        "vite.config.ts",
+        "vite.native.config.ts",
+        "vite.pwa.config.ts"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "shell": false,
+      "timeout": 60000,
+      "startedAt": "2026-10-03T12:04:54.637Z",
+      "finishedAt": "2026-10-03T12:04:54.718Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "status": "PASS",
+      "stdout": {
+        "path": "10-after-paths.stdout.bin",
+        "sha256": "521842a26ddd3d32336a51c67e37d275bac492778fdda19e0bc48fa7da290903",
+        "size": 70756
+      },
+      "stderr": {
+        "path": "10-after-paths.stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size": 0
+      }
+    }
+  ],
+  "scope": "STRUCTURAL_SOURCE_AND_SYNTHETIC_DISPATCH_ONLY",
+  "typescript": "NOT_RUN_NOT_CHANGED",
+  "installedNativeRuntime": "NOT_RUN",
+  "genuineNativeProvider": "NOT_SUPPLIED",
+  "appActivation": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteRequests": 0,
+  "files": [
+    {
+      "folder": "next-native-pin-codec-android",
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "before": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882",
+      "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "size": 37394
+    },
+    {
+      "folder": "next-native-pin-codec-android",
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "before": null,
+      "sha256": "53aedae249dcbbcca1f50b090d192b6fe69a421d6a7d0d0a1ff80bb615ec1d51",
+      "size": 15217
+    },
+    {
+      "folder": "next-native-pin-codec-swift",
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "before": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395",
+      "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "size": 39175
+    },
+    {
+      "folder": "next-native-pin-codec-swift",
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "before": null,
+      "sha256": "7a60d74c2785ac4e84b12ecd100454baabc3eb891a2665f4a27394bd8877a7d6",
+      "size": 17443
+    },
+    {
+      "folder": "next-native-pin-codec-registration-a2",
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "before": "3cd9e4eb43fc7538d8d562e5763f1c030d2c8b069faee04af80c8b4c283b9352",
+      "sha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "size": 25225
+    },
+    {
+      "folder": "next-native-pin-codec-registration-a2",
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "before": "682341aefc453c4511e469d8ab779dcbb8da0dcd65475c164fa224d81930c0d7",
+      "sha256": "5d03d119165e8e27fea82e138e54333248dd6de9cc0f4e4e3ae327f2095bd2d5",
+      "size": 70791
+    },
+    {
+      "folder": "next-native-pin-codec-registration-a2",
+      "path": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "before": "8e2503c3b2ea7cdec0cbc46ebd3d1f8cbec72bdb222cbf0e8fbfeddc4d44d05b",
+      "sha256": "d89446bea3eb585596d3659dce81f42d8a49beb526d18365cc8783e3e4c5086a",
+      "size": 12256
+    }
+  ],
+  "backups": [
+    {
+      "sourcePath": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "existed": true,
+      "backup": {
+        "path": "before/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "sha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882",
+        "size": 18301
+      }
+    },
+    {
+      "sourcePath": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "existed": false,
+      "backup": null
+    },
+    {
+      "sourcePath": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "existed": true,
+      "backup": {
+        "path": "before/apps/mobile/ios/App/App/PlanetChildVault.swift",
+        "sha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395",
+        "size": 16405
+      }
+    },
+    {
+      "sourcePath": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "existed": false,
+      "backup": null
+    },
+    {
+      "sourcePath": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "existed": true,
+      "backup": {
+        "path": "before/apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+        "sha256": "3cd9e4eb43fc7538d8d562e5763f1c030d2c8b069faee04af80c8b4c283b9352",
+        "size": 24611
+      }
+    },
+    {
+      "sourcePath": "scripts/mobile/native-install-runtime.mjs",
+      "existed": true,
+      "backup": {
+        "path": "before/scripts/mobile/native-install-runtime.mjs",
+        "sha256": "682341aefc453c4511e469d8ab779dcbb8da0dcd65475c164fa224d81930c0d7",
+        "size": 67807
+      }
+    },
+    {
+      "sourcePath": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "existed": true,
+      "backup": {
+        "path": "before/scripts/mobile/native-child-fixture-plan.test.mjs",
+        "sha256": "8e2503c3b2ea7cdec0cbc46ebd3d1f8cbec72bdb222cbf0e8fbfeddc4d44d05b",
+        "size": 5895
+      }
+    }
+  ],
+  "written": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "size": 37394
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "sha256": "53aedae249dcbbcca1f50b090d192b6fe69a421d6a7d0d0a1ff80bb615ec1d51",
+      "size": 15217
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "size": 39175
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "sha256": "7a60d74c2785ac4e84b12ecd100454baabc3eb891a2665f4a27394bd8877a7d6",
+      "size": 17443
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "size": 25225
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "sha256": "5d03d119165e8e27fea82e138e54333248dd6de9cc0f4e4e3ae327f2095bd2d5",
+      "size": 70791
+    },
+    {
+      "path": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "sha256": "d89446bea3eb585596d3659dce81f42d8a49beb526d18365cc8783e3e4c5086a",
+      "size": 12256
+    }
+  ],
+  "attemptedWrites": [
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+    "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift",
+    "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "scripts/mobile/native-install-runtime.mjs",
+    "scripts/mobile/native-child-fixture-plan.test.mjs"
+  ],
+  "before": {
+    "path": "before.json",
+    "sha256": "09d74a1797b8d75487cd2f57cbbec6049325035d3d9c4b0a3494d47ed2cd6367",
+    "size": 308398
+  },
+  "after": {
+    "path": "after.json",
+    "sha256": "c299dafea3d0051989bf16b37bb6cf7500ba38015db481293d0f1a5d951a637f",
+    "size": 309410
+  },
+  "jvm": {
+    "reference": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\result.json",
+      "sha256": "b40e10ea3477a3571e82da4fb76c6bbe2c0d442a55eb7154edffbfbe157c7572",
+      "size": 28773
+    },
+    "count": 69,
+    "scope": "PURE_JVM_STRUCTURAL_ONLY"
+  },
+  "frozenBefore": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\manifest.json",
+      "sha256": "fa3edc0f4e7546bb7560c6d2417181aaceaf5a668c1afe4c3029dc1a27df36da",
+      "size": 3115
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\READY.md",
+      "sha256": "54d526829122ff17a957b362900018d94c207d1858994fc9d30337e7ccd4dfc2",
+      "size": 2383
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\manifest.json",
+      "sha256": "209a0c8824f47059b4237bb6f028d3f2478ca30c6946f08ad673cb21a307e40f",
+      "size": 3556
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\READY.json",
+      "sha256": "2232f30c901f9cceb43c3af1f99a7bb19c357467194cc93b9725de8b534acba7",
+      "size": 453
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\manifest.json",
+      "sha256": "3ec8320a369aba93e20106ce9fdba0bececde706d4beeddbd749b16d59b25aeb",
+      "size": 4297
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\READY.json",
+      "sha256": "fd154986d9b8e51e853497b836efcdd58ead0a0c003e03e1a04cfdc6c3b929c5",
+      "size": 568
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-android-review.json",
+      "sha256": "75575269733da457db7369790aebaf61929d828999016ac95db7c5437b8175d0",
+      "size": 3864
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-swift-review.json",
+      "sha256": "6d13aa7505cac314c90b7b4c19e3c5b82ed7364228c98fe44f1d474066086cd5",
+      "size": 3185
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-registration-a2-review.json",
+      "sha256": "78170307b98e496594e4d37f11bb2200aec94b060143665c1a1b8d810155d680",
+      "size": 3447
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-jvm-runner-review.json",
+      "sha256": "9d360bad723a12feafc676cad7f58b32221af56c6807272722d540cb0eafacec",
+      "size": 2874
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildVault.java",
+      "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "size": 37394
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\apps\\mobile\\android\\app\\src\\androidTest\\java\\ru\\probpera\\literaryplanet\\PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "sha256": "53aedae249dcbbcca1f50b090d192b6fe69a421d6a7d0d0a1ff80bb615ec1d51",
+      "size": 15217
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\apps\\mobile\\ios\\App\\App\\PlanetChildVault.swift",
+      "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "size": 39175
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\apps\\mobile\\ios\\App\\AppSecureStorageTests\\PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "sha256": "7a60d74c2785ac4e84b12ecd100454baabc3eb891a2665f4a27394bd8877a7d6",
+      "size": 17443
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\apps\\mobile\\ios\\App\\App.xcodeproj\\project.pbxproj",
+      "sha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "size": 25225
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\scripts\\mobile\\native-install-runtime.mjs",
+      "sha256": "5d03d119165e8e27fea82e138e54333248dd6de9cc0f4e4e3ae327f2095bd2d5",
+      "size": 70791
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\scripts\\mobile\\native-child-fixture-plan.test.mjs",
+      "sha256": "d89446bea3eb585596d3659dce81f42d8a49beb526d18365cc8783e3e4c5086a",
+      "size": 12256
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\common.mjs",
+      "sha256": "da19b15dc4259a833a040eb3591dd8a07e0bdccf06508abad1d2ec3e454276b3",
+      "size": 16378
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integrate.mjs",
+      "sha256": "54cf84410e11df2d7e6ffe6fe610f72d1b17671b158812e4510eb8a1086a5c15",
+      "size": 4208
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check.mjs",
+      "sha256": "26fb2a1d36c0a5307e3553e158b70704bf228265f49cd687132fcdbe4d183260",
+      "size": 4654
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\manifest.json",
+      "sha256": "661d0648a5bc70b202188b683fe1dc11ef2fb621e88ef18e1b6355a3f36085cb",
+      "size": 4381
+    }
+  ],
+  "frozenAfter": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\manifest.json",
+      "sha256": "fa3edc0f4e7546bb7560c6d2417181aaceaf5a668c1afe4c3029dc1a27df36da",
+      "size": 3115
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\READY.md",
+      "sha256": "54d526829122ff17a957b362900018d94c207d1858994fc9d30337e7ccd4dfc2",
+      "size": 2383
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\manifest.json",
+      "sha256": "209a0c8824f47059b4237bb6f028d3f2478ca30c6946f08ad673cb21a307e40f",
+      "size": 3556
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\READY.json",
+      "sha256": "2232f30c901f9cceb43c3af1f99a7bb19c357467194cc93b9725de8b534acba7",
+      "size": 453
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\manifest.json",
+      "sha256": "3ec8320a369aba93e20106ce9fdba0bececde706d4beeddbd749b16d59b25aeb",
+      "size": 4297
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\READY.json",
+      "sha256": "fd154986d9b8e51e853497b836efcdd58ead0a0c003e03e1a04cfdc6c3b929c5",
+      "size": 568
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-android-review.json",
+      "sha256": "75575269733da457db7369790aebaf61929d828999016ac95db7c5437b8175d0",
+      "size": 3864
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-swift-review.json",
+      "sha256": "6d13aa7505cac314c90b7b4c19e3c5b82ed7364228c98fe44f1d474066086cd5",
+      "size": 3185
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-registration-a2-review.json",
+      "sha256": "78170307b98e496594e4d37f11bb2200aec94b060143665c1a1b8d810155d680",
+      "size": 3447
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-jvm-runner-review.json",
+      "sha256": "9d360bad723a12feafc676cad7f58b32221af56c6807272722d540cb0eafacec",
+      "size": 2874
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildVault.java",
+      "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "size": 37394
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\apps\\mobile\\android\\app\\src\\androidTest\\java\\ru\\probpera\\literaryplanet\\PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "sha256": "53aedae249dcbbcca1f50b090d192b6fe69a421d6a7d0d0a1ff80bb615ec1d51",
+      "size": 15217
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\apps\\mobile\\ios\\App\\App\\PlanetChildVault.swift",
+      "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "size": 39175
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\apps\\mobile\\ios\\App\\AppSecureStorageTests\\PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "sha256": "7a60d74c2785ac4e84b12ecd100454baabc3eb891a2665f4a27394bd8877a7d6",
+      "size": 17443
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\apps\\mobile\\ios\\App\\App.xcodeproj\\project.pbxproj",
+      "sha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "size": 25225
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\scripts\\mobile\\native-install-runtime.mjs",
+      "sha256": "5d03d119165e8e27fea82e138e54333248dd6de9cc0f4e4e3ae327f2095bd2d5",
+      "size": 70791
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\scripts\\mobile\\native-child-fixture-plan.test.mjs",
+      "sha256": "d89446bea3eb585596d3659dce81f42d8a49beb526d18365cc8783e3e4c5086a",
+      "size": 12256
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\common.mjs",
+      "sha256": "da19b15dc4259a833a040eb3591dd8a07e0bdccf06508abad1d2ec3e454276b3",
+      "size": 16378
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integrate.mjs",
+      "sha256": "54cf84410e11df2d7e6ffe6fe610f72d1b17671b158812e4510eb8a1086a5c15",
+      "size": 4208
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check.mjs",
+      "sha256": "26fb2a1d36c0a5307e3553e158b70704bf228265f49cd687132fcdbe4d183260",
+      "size": 4654
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\manifest.json",
+      "sha256": "661d0648a5bc70b202188b683fe1dc11ef2fb621e88ef18e1b6355a3f36085cb",
+      "size": 4381
+    }
+  ],
+  "error": null,
+  "unaffectedSourcePreserved": true,
+  "projectWriteAttempts": 7,
+  "verifiedProjectWrites": 7,
+  "gitWrites": 0,
+  "rollback": "NO_AUTOMATIC_RESTORE_OR_PARTIAL_FAILURE_PROMOTION",
+  "sourceIdentity": {
+    "source": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+    "head": "57e15019ed8f99ce3f307ce2b7913194d39f75d1"
+  },
+  "jvmSha256": "b40e10ea3477a3571e82da4fb76c6bbe2c0d442a55eb7154edffbfbe157c7572"
+}

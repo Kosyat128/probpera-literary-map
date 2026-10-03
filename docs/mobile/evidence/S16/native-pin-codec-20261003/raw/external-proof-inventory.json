@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "scope": "EXACT_IN_PLACE_PROOF_METADATA_NO_CLASS_BINARIES_OR_FULL_SOURCE_ARRAY_DUPLICATION",
+  "proofs": [
+    {
+      "id": "source-checkpoint",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-codec.json",
+      "sha256": "2da7d6fd98a95c9f499437bb4a3fd675afa02fe958a2a4a05b5c53d648a0ac2f",
+      "bytes": 275497,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "integration-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integration-fd9f1394-46bd-45d4-945e-55b15ce37043\\before.json",
+      "sha256": "09d74a1797b8d75487cd2f57cbbec6049325035d3d9c4b0a3494d47ed2cd6367",
+      "bytes": 308398,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "integration-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integration-fd9f1394-46bd-45d4-945e-55b15ce37043\\after.json",
+      "sha256": "c299dafea3d0051989bf16b37bb6cf7500ba38015db481293d0f1a5d951a637f",
+      "bytes": 309410,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "jvm-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\before.json",
+      "sha256": "2ab461ae351b820e4036c9633b96b98dde7772fbfb1838cbabddc5a583fe4609",
+      "bytes": 329771,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "jvm-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\after.json",
+      "sha256": "17801361b42759093bff61cc9caced7e1841a676737e1a65d99be7728dab10d6",
+      "bytes": 329767,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "prior-pin-source-checkpoint",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-parent-pin-enrollment.json",
+      "sha256": "f973793e921e1500af1ff4cc000e24f7d46c0b90affa29707d9e3e3ac600cfd1",
+      "bytes": 276197,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-pin-typecheck",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\result.json",
+      "sha256": "786a6ec19f3d40e3e8333970bc6efe1c461e24025587d0e2e31bd8d6f8dc20e7",
+      "bytes": 273895,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "fixture-plan-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\before.json",
+      "sha256": "a452a34a80d8c2a178b0716724d21c276ce2dfa6381e5cc3000a80b8c35d2102",
+      "bytes": 309411,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "fixture-plan-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\after.json",
+      "sha256": "c6e1bc3ef41c78c0bdfe2365c4e59a71a525bb2c4c63236ff7e7868df4a08a63",
+      "bytes": 309410,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-preparation-android",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333\\preparation.json",
+      "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461",
+      "bytes": 302069,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-preparation-pwa",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-c06bdfa5-7949-41da-ab41-96dc35e3eaba\\preparation.json",
+      "sha256": "9442abe805e1af9b4f5504e3a14951247554114a83b168ed185d3e188089d5d1",
+      "bytes": 287990,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-preparation-ios-bundle",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6\\preparation.json",
+      "sha256": "470149da8f796c19efc70339119f826657126137e1e337c2ca77a1827320fce0",
+      "bytes": 288180,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    }
+  ]
+}

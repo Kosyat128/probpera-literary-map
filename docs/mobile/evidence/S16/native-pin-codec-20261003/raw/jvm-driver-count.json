@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "count": 69,
+  "markersFound": 1,
+  "stdoutRawSha256": "a05827119b220f4cd30c66c5646a563834bd8f99a8de7a40a748c65c1c146ee8",
+  "scope": "PURE_JVM_SYNTHETIC_STRUCTURAL_CODEC_ONLY"
+}

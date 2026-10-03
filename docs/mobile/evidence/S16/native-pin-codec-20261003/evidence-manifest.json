@@ -1,0 +1,771 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-codec-evidence-inventory",
+  "sourceCommit": "245c86700e6acc01e8723f8656104c2371e03b4c",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/source-integration.json",
+      "sha256": "e858e15f3ffc555e5792ce5a8b34eddb4962058e56bf7675a1fc6edb920fa6ca",
+      "bytes": 35576
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/android-codec-review.json",
+      "sha256": "75575269733da457db7369790aebaf61929d828999016ac95db7c5437b8175d0",
+      "bytes": 3864
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/swift-codec-review.json",
+      "sha256": "6d13aa7505cac314c90b7b4c19e3c5b82ed7364228c98fe44f1d474066086cd5",
+      "bytes": 3185
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/native-registration-review.json",
+      "sha256": "78170307b98e496594e4d37f11bb2200aec94b060143665c1a1b8d810155d680",
+      "bytes": 3447
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-runner-review.json",
+      "sha256": "9d360bad723a12feafc676cad7f58b32221af56c6807272722d540cb0eafacec",
+      "bytes": 2874
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/android-frozen-manifest.json",
+      "sha256": "fa3edc0f4e7546bb7560c6d2417181aaceaf5a668c1afe4c3029dc1a27df36da",
+      "bytes": 3115
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/swift-frozen-manifest.json",
+      "sha256": "209a0c8824f47059b4237bb6f028d3f2478ca30c6946f08ad673cb21a307e40f",
+      "bytes": 3556
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/native-registration-manifest.json",
+      "sha256": "3ec8320a369aba93e20106ce9fdba0bececde706d4beeddbd749b16d59b25aeb",
+      "bytes": 4297
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-result.json",
+      "sha256": "b40e10ea3477a3571e82da4fb76c6bbe2c0d442a55eb7154edffbfbe157c7572",
+      "bytes": 28773
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-1-stdout.bin",
+      "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+      "bytes": 71
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-1-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-2-stdout.bin",
+      "sha256": "3bfe786f41b6c707a842fdf834cb74757b566b3e2fa5a7168546f66f8d57bc4f",
+      "bytes": 41
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-2-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-3-stdout.bin",
+      "sha256": "732e0ed4ed0044939ff7ab6dc908d129e340cfee3c444a1d013df2975e8c7108",
+      "bytes": 41
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-3-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-4-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-4-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-5-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-5-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-6-stdout.bin",
+      "sha256": "fb350a15da2449b4de1b5c5fcf47c612d4a40a253913d9ba12fd823da5aa9fb4",
+      "bytes": 70550
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-6-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-7-stdout.bin",
+      "sha256": "89afc1eb914736d10aa73f8c5002e779dbde9d247c5e17cdbcd229ce597a9719",
+      "bytes": 29
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-7-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-8-stdout.bin",
+      "sha256": "1e2362c50d175bcb27f536900509d73d43aec73358800f197e8d94ae0ec2a24b",
+      "bytes": 17
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-8-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-9-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-9-stderr.bin",
+      "sha256": "c09b3f6e7993628681d0f0e0fdfa12ccbfef6d7798ad260ec13807486db8b267",
+      "bytes": 208
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-10-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-10-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-11-stdout.bin",
+      "sha256": "a05827119b220f4cd30c66c5646a563834bd8f99a8de7a40a748c65c1c146ee8",
+      "bytes": 42
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-11-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-12-stdout.bin",
+      "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+      "bytes": 71
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-12-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-13-stdout.bin",
+      "sha256": "3bfe786f41b6c707a842fdf834cb74757b566b3e2fa5a7168546f66f8d57bc4f",
+      "bytes": 41
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-13-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-14-stdout.bin",
+      "sha256": "732e0ed4ed0044939ff7ab6dc908d129e340cfee3c444a1d013df2975e8c7108",
+      "bytes": 41
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-14-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-15-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-15-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-16-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-16-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-17-stdout.bin",
+      "sha256": "fb350a15da2449b4de1b5c5fcf47c612d4a40a253913d9ba12fd823da5aa9fb4",
+      "bytes": 70550
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-17-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-class-inventory-before.json",
+      "sha256": "fdce27707e5a77288bb6795f00e30175ce6fedfe3361df552b0a2407820171aa",
+      "bytes": 2642
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-class-inventory-after.json",
+      "sha256": "fdce27707e5a77288bb6795f00e30175ce6fedfe3361df552b0a2407820171aa",
+      "bytes": 2642
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-driver-count.json",
+      "sha256": "437eeeeeae076bfe55e6548202b20b85c14bc7c4202be3ad83cfea0e8710b312",
+      "bytes": 203
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-execution.json",
+      "sha256": "9338e18f21fa51d9f42b462ff5930ea6d4fc173ed630071eaa48c67f0ddf01a4",
+      "bytes": 37511
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-vitest.json",
+      "sha256": "95f19e408fe86406edb68aa146c7b11395c114c430de54f3ab51c965a94db740",
+      "bytes": 10989
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/node-check-runner-stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/node-check-runner-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-vitest-stdout.bin",
+      "sha256": "5ed41b960d70dec0f798d92f4737c3a0593b394a98fd3159487ca18ef3965b63",
+      "bytes": 217
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-vitest-stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/seven-path-integration-helper-peer-review.json",
+      "sha256": "70779d7f95e936f7ccc833090c7f1ffd8ca4046015809bc3d434d8114805fc76",
+      "bytes": 2363
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/external-proof-inventory.json",
+      "sha256": "f05e364435d08102bfc851c0856de603d47772989e57afa970168f8fafdb3a33",
+      "bytes": 5299
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/staging-input.json",
+      "sha256": "1c2e9441f783e87c2048915361cc6f4dd52da5121f9bd06c0f6b59874dbc0a4a",
+      "bytes": 5881
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/predecessor-pin-result.json",
+      "sha256": "ec872a56849ecc3c50d539f22d322b8514668a4a251a5e95e36aed26b79a0efe",
+      "bytes": 36998
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/result.json",
+      "sha256": "62352dd57aab1a4085ce67fedb201cc34fe08a45c92393f31286ceff74f511c9",
+      "bytes": 58798
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/entry.json",
+      "sha256": "249840e81de9f0ddc519349a4597af9c231f225be384fc6ac06e6eae21656dc6",
+      "bytes": 556
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "source-integration",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/source-integration.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integration-fd9f1394-46bd-45d4-945e-55b15ce37043\\result.json",
+      "sha256": "e858e15f3ffc555e5792ce5a8b34eddb4962058e56bf7675a1fc6edb920fa6ca",
+      "bytes": 35576
+    },
+    {
+      "id": "android-codec-review",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/android-codec-review.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-android-review.json",
+      "sha256": "75575269733da457db7369790aebaf61929d828999016ac95db7c5437b8175d0",
+      "bytes": 3864
+    },
+    {
+      "id": "swift-codec-review",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/swift-codec-review.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-swift-review.json",
+      "sha256": "6d13aa7505cac314c90b7b4c19e3c5b82ed7364228c98fe44f1d474066086cd5",
+      "bytes": 3185
+    },
+    {
+      "id": "native-registration-review",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/native-registration-review.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-registration-a2-review.json",
+      "sha256": "78170307b98e496594e4d37f11bb2200aec94b060143665c1a1b8d810155d680",
+      "bytes": 3447
+    },
+    {
+      "id": "jvm-runner-review",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-runner-review.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-jvm-runner-review.json",
+      "sha256": "9d360bad723a12feafc676cad7f58b32221af56c6807272722d540cb0eafacec",
+      "bytes": 2874
+    },
+    {
+      "id": "android-frozen-manifest",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/android-frozen-manifest.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android\\manifest.json",
+      "sha256": "fa3edc0f4e7546bb7560c6d2417181aaceaf5a668c1afe4c3029dc1a27df36da",
+      "bytes": 3115
+    },
+    {
+      "id": "swift-frozen-manifest",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/swift-frozen-manifest.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-swift\\manifest.json",
+      "sha256": "209a0c8824f47059b4237bb6f028d3f2478ca30c6946f08ad673cb21a307e40f",
+      "bytes": 3556
+    },
+    {
+      "id": "native-registration-manifest",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/native-registration-manifest.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-registration-a2\\manifest.json",
+      "sha256": "3ec8320a369aba93e20106ce9fdba0bececde706d4beeddbd749b16d59b25aeb",
+      "bytes": 4297
+    },
+    {
+      "id": "jvm-result",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-result.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\result.json",
+      "sha256": "b40e10ea3477a3571e82da4fb76c6bbe2c0d442a55eb7154edffbfbe157c7572",
+      "bytes": 28773
+    },
+    {
+      "id": "jvm-1-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-1-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\01-before-git-root.stdout.bin",
+      "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+      "bytes": 71
+    },
+    {
+      "id": "jvm-1-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-1-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\01-before-git-root.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-2-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-2-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\02-before-head.stdout.bin",
+      "sha256": "3bfe786f41b6c707a842fdf834cb74757b566b3e2fa5a7168546f66f8d57bc4f",
+      "bytes": 41
+    },
+    {
+      "id": "jvm-2-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-2-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\02-before-head.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-3-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-3-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\03-before-source-commit.stdout.bin",
+      "sha256": "732e0ed4ed0044939ff7ab6dc908d129e340cfee3c444a1d013df2975e8c7108",
+      "bytes": 41
+    },
+    {
+      "id": "jvm-3-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-3-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\03-before-source-commit.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-4-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-4-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\04-before-status.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-4-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-4-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\04-before-status.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-5-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-5-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\05-before-source-status.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-5-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-5-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\05-before-source-status.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-6-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-6-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\06-before-source-paths.stdout.bin",
+      "sha256": "fb350a15da2449b4de1b5c5fcf47c612d4a40a253913d9ba12fd823da5aa9fb4",
+      "bytes": 70550
+    },
+    {
+      "id": "jvm-6-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-6-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\06-before-source-paths.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-7-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-7-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\07-git-version.stdout.bin",
+      "sha256": "89afc1eb914736d10aa73f8c5002e779dbde9d247c5e17cdbcd229ce597a9719",
+      "bytes": 29
+    },
+    {
+      "id": "jvm-7-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-7-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\07-git-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-8-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-8-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\08-javac-version.stdout.bin",
+      "sha256": "1e2362c50d175bcb27f536900509d73d43aec73358800f197e8d94ae0ec2a24b",
+      "bytes": 17
+    },
+    {
+      "id": "jvm-8-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-8-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\08-javac-version.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-9-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-9-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\09-java-version.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-9-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-9-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\09-java-version.stderr.bin",
+      "sha256": "c09b3f6e7993628681d0f0e0fdfa12ccbfef6d7798ad260ec13807486db8b267",
+      "bytes": 208
+    },
+    {
+      "id": "jvm-10-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-10-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\10-javac.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-10-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-10-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\10-javac.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-11-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-11-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\11-java-driver.stdout.bin",
+      "sha256": "a05827119b220f4cd30c66c5646a563834bd8f99a8de7a40a748c65c1c146ee8",
+      "bytes": 42
+    },
+    {
+      "id": "jvm-11-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-11-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\11-java-driver.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-12-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-12-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\12-after-git-root.stdout.bin",
+      "sha256": "ce358141e0e872546189210a97e21ed769c0a5a7144f8a34ac21ff1a6f98ed88",
+      "bytes": 71
+    },
+    {
+      "id": "jvm-12-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-12-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\12-after-git-root.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-13-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-13-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\13-after-head.stdout.bin",
+      "sha256": "3bfe786f41b6c707a842fdf834cb74757b566b3e2fa5a7168546f66f8d57bc4f",
+      "bytes": 41
+    },
+    {
+      "id": "jvm-13-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-13-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\13-after-head.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-14-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-14-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\14-after-source-commit.stdout.bin",
+      "sha256": "732e0ed4ed0044939ff7ab6dc908d129e340cfee3c444a1d013df2975e8c7108",
+      "bytes": 41
+    },
+    {
+      "id": "jvm-14-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-14-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\14-after-source-commit.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-15-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-15-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\15-after-status.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-15-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-15-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\15-after-status.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-16-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-16-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\16-after-source-status.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-16-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-16-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\16-after-source-status.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-17-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-17-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\17-after-source-paths.stdout.bin",
+      "sha256": "fb350a15da2449b4de1b5c5fcf47c612d4a40a253913d9ba12fd823da5aa9fb4",
+      "bytes": 70550
+    },
+    {
+      "id": "jvm-17-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-17-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\17-after-source-paths.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "jvm-class-inventory-before",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-class-inventory-before.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\classes-before-driver.json",
+      "sha256": "fdce27707e5a77288bb6795f00e30175ce6fedfe3361df552b0a2407820171aa",
+      "bytes": 2642
+    },
+    {
+      "id": "jvm-class-inventory-after",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-class-inventory-after.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\classes-after-driver.json",
+      "sha256": "fdce27707e5a77288bb6795f00e30175ce6fedfe3361df552b0a2407820171aa",
+      "bytes": 2642
+    },
+    {
+      "id": "jvm-driver-count",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/jvm-driver-count.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\driver-count.json",
+      "sha256": "437eeeeeae076bfe55e6548202b20b85c14bc7c4202be3ad83cfea0e8710b312",
+      "bytes": 203
+    },
+    {
+      "id": "fixture-plan-execution",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-execution.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\result.json",
+      "sha256": "9338e18f21fa51d9f42b462ff5930ea6d4fc173ed630071eaa48c67f0ddf01a4",
+      "bytes": 37511
+    },
+    {
+      "id": "fixture-plan-vitest",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-vitest.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\vitest.json",
+      "sha256": "95f19e408fe86406edb68aa146c7b11395c114c430de54f3ab51c965a94db740",
+      "bytes": 10989
+    },
+    {
+      "id": "node-check-runner-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/node-check-runner-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\06-node-check-runner.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "node-check-runner-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/node-check-runner-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\06-node-check-runner.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "fixture-plan-vitest-stdout",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-vitest-stdout.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\07-fixture-plan-vitest.stdout.bin",
+      "sha256": "5ed41b960d70dec0f798d92f4737c3a0593b394a98fd3159487ca18ef3965b63",
+      "bytes": 217
+    },
+    {
+      "id": "fixture-plan-vitest-stderr",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/fixture-plan-vitest-stderr.bin",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\07-fixture-plan-vitest.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "seven-path-integration-helper-peer-review",
+      "path": "docs/mobile/evidence/S16/native-pin-codec-20261003/raw/seven-path-integration-helper-peer-review.json",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-codec-integration-a2-review.json",
+      "sha256": "70779d7f95e936f7ccc833090c7f1ffd8ca4046015809bc3d434d8114805fc76",
+      "bytes": 2363
+    }
+  ],
+  "externalProofs": [
+    {
+      "id": "source-checkpoint",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-codec.json",
+      "sha256": "2da7d6fd98a95c9f499437bb4a3fd675afa02fe958a2a4a05b5c53d648a0ac2f",
+      "bytes": 275497,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "integration-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integration-fd9f1394-46bd-45d4-945e-55b15ce37043\\before.json",
+      "sha256": "09d74a1797b8d75487cd2f57cbbec6049325035d3d9c4b0a3494d47ed2cd6367",
+      "bytes": 308398,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "integration-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\integration-fd9f1394-46bd-45d4-945e-55b15ce37043\\after.json",
+      "sha256": "c299dafea3d0051989bf16b37bb6cf7500ba38015db481293d0f1a5d951a637f",
+      "bytes": 309410,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "jvm-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\before.json",
+      "sha256": "2ab461ae351b820e4036c9633b96b98dde7772fbfb1838cbabddc5a583fe4609",
+      "bytes": 329771,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "jvm-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-android-runner-a2\\attempt-af4fb9b9-dfe7-4736-a9ea-f0a4fcdf93c3\\after.json",
+      "sha256": "17801361b42759093bff61cc9caced7e1841a676737e1a65d99be7728dab10d6",
+      "bytes": 329767,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "prior-pin-source-checkpoint",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-parent-pin-enrollment.json",
+      "sha256": "f973793e921e1500af1ff4cc000e24f7d46c0b90affa29707d9e3e3ac600cfd1",
+      "bytes": 276197,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-pin-typecheck",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\parent-pin-enrollment-typecheck-c841bd58-e129-44b2-bc34-6799e1e68c6e\\result.json",
+      "sha256": "786a6ec19f3d40e3e8333970bc6efe1c461e24025587d0e2e31bd8d6f8dc20e7",
+      "bytes": 273895,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "fixture-plan-before-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\before.json",
+      "sha256": "a452a34a80d8c2a178b0716724d21c276ce2dfa6381e5cc3000a80b8c35d2102",
+      "bytes": 309411,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "fixture-plan-after-snapshot",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-codec-integration-a2\\check-5364de71-ab87-405f-913b-4cc2881feb8a\\after.json",
+      "sha256": "c6e1bc3ef41c78c0bdfe2365c4e59a71a525bb2c4c63236ff7e7868df4a08a63",
+      "bytes": 309410,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-preparation-android",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333\\preparation.json",
+      "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461",
+      "bytes": 302069,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-preparation-pwa",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-c06bdfa5-7949-41da-ab41-96dc35e3eaba\\preparation.json",
+      "sha256": "9442abe805e1af9b4f5504e3a14951247554114a83b168ed185d3e188089d5d1",
+      "bytes": 287990,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    },
+    {
+      "id": "retained-preparation-ios-bundle",
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6\\preparation.json",
+      "sha256": "470149da8f796c19efc70339119f826657126137e1e337c2ca77a1827320fce0",
+      "bytes": 288180,
+      "verifiedInPlace": true,
+      "copiedIntoDocumentation": false
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}

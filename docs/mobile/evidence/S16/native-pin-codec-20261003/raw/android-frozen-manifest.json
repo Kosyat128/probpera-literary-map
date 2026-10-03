@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_NATIVE_STRUCTURAL_CODEC_SOURCE_NOT_RUN",
+  "stage": "S16",
+  "ownedProjectPaths": [
+    {
+      "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "size": 37394,
+      "sourceBeforeSha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882"
+    },
+    {
+      "sha256": "53aedae249dcbbcca1f50b090d192b6fe69a421d6a7d0d0a1ff80bb615ec1d51",
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "size": 15217,
+      "sourceBeforeSha256": null
+    }
+  ],
+  "hostJvmDriver": {
+    "sha256": "2f8d0bf34e1de342c3f790e20622ed6bd83269ef3339ca928a7ba40851709094",
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildProtectedCodecJvmDriver.java",
+    "size": 9714,
+    "scope": "B_ONLY_NEW_SYNTHETIC_STRUCTURAL_VECTORS_NOT_PROJECT_RUNNER"
+  },
+  "originalBeforeBackup": {
+    "sha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882",
+    "path": "before/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "size": 18301,
+    "scope": "EXACT_BYTE_COPY_OF_UNCHANGED_PROJECT_BEFORE"
+  },
+  "specSources": [
+    {
+      "path": "../next-parent-pin-enrollment-a2/src/child/childProtectedState.ts",
+      "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    }
+  ],
+  "api": [
+    "ProtectedEnvelope.decode(byte[],policyVersion,policyChecksum,maxIterations)",
+    "ProtectedEnvelope.validateTransition(before,after,PinLifecycleAction,sampledLogicalMs)",
+    "ProtectedEnvelope.copyCanonicalBytes()/isUnenrolled()/close()/derived checksum"
+  ],
+  "scope": {
+    "pureStdlib": "YES",
+    "existingStorageSourceTextPreserved": "VERIFIED_BY_REMOVING_ONLY_NEW_NESTED_CODEC",
+    "existingCandidateProtectedBehavior": "UNCHANGED_NOT_REEXECUTED",
+    "actualSdkCheckpointFactory": "NULL_UNCHANGED",
+    "provider": "NOT_IMPLEMENTED",
+    "activation": "NONE"
+  },
+  "checks": {
+    "sourceReview": "NO_MISMATCH_FOUND_SO_FAR_FINAL_FROZEN_REVIEW_PENDING",
+    "javac": "NOT_RUN",
+    "hostJvmDriver": "NOT_RUN",
+    "instrumentation": "NOT_RUN",
+    "build": "NOT_RUN",
+    "installedAuthorityDurabilityLifecycle": "NOT_RUN"
+  },
+  "limitations": [
+    "Structural validation and derived SHA are not authentication, nonrollback checkpoint, native permission, trusted time, calibrated exact iterations or admission.",
+    "Codec deliberately unused by current candidate/protected IO; real private provider and genuine authority factories remain missing.",
+    "JVM synthetic vectors do not invoke Android OS storage and cannot establish installed OS/Keystore/PIN/lifecycle behavior."
+  ],
+  "actions": "B staging/backup/read-only project checks only; no project mutation, fixture rerun, build, OS, Git, remote or publishing"
+}
+

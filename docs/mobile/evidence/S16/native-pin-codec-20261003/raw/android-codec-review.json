@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-codec-source-review",
+  "platform": "android",
+  "status": "ACK",
+  "scope": "FROZEN_SOURCE_REVIEW_ONLY",
+  "reviewedAt": "2026-10-03",
+  "sourceCommit": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "reportHeadSuppliedByParent": "57e15019ed8f99ce3f307ce2b7913194d39f75d1",
+  "manifest": {
+    "path": "next-native-pin-codec-android/manifest.json",
+    "sha256": "fa3edc0f4e7546bb7560c6d2417181aaceaf5a668c1afe4c3029dc1a27df36da",
+    "bytes": 3115
+  },
+  "ready": {
+    "path": "next-native-pin-codec-android/READY.md",
+    "sha256": "54d526829122ff17a957b362900018d94c207d1858994fc9d30337e7ccd4dfc2",
+    "bytes": 2383
+  },
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "470c238d1aae52c446b27e74f18efcbf94c9562c887142ef3eb7c02d3486c3b7",
+      "bytes": 37394,
+      "beforeSha256": "f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882",
+      "currentBeforeBytesVerified": true
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+      "sha256": "53aedae249dcbbcca1f50b090d192b6fe69a421d6a7d0d0a1ff80bb615ec1d51",
+      "bytes": 15217,
+      "beforeSha256": null,
+      "currentPathAbsentVerified": true
+    }
+  ],
+  "reviewedBOnlyDriver": {
+    "path": "next-native-pin-codec-android/jvm/ru/probpera/literaryplanet/PlanetChildProtectedCodecJvmDriver.java",
+    "sha256": "2f8d0bf34e1de342c3f790e20622ed6bd83269ef3339ca928a7ba40851709094",
+    "bytes": 9714,
+    "scope": "SYNTHETIC_PURE_CODEC_DRIVER_SOURCE_ONLY"
+  },
+  "specificationRefs": {
+    "childProtectedStateSha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5",
+    "childProfileSha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+  },
+  "preservation": {
+    "originalBackupSha256Verified": true,
+    "existingStorageAndNullFactoryCodePreserved": true,
+    "outsideCodecInsertionQualification": "Removing the inserted codec and its leading separator LF leaves the original source plus one additional terminal LF. Removing that terminal LF restores the exact original bytes and SHA256 f9f5b1b21901cd6fd9f6f53f0020aa8fea7913237e14fad6a223529b4fb51882.",
+    "outsideInsertionBeforeTerminalLFRemovalSha256": "05cf38cc2bd2d8ef2e9a1b3259b621ccf9a03a24014530e9a08eb4523e84036d",
+    "appOrPluginRegistrationAdded": false,
+    "nativeAuthorityProviderImplemented": false
+  },
+  "reviewedContracts": [
+    "Owned input clone bounded to 131072 bytes; malformed UTF8 rejected without replacement.",
+    "Exact ordered canonical schema; duplicate, unknown, noncanonical strings and unsafe numeric spellings rejected.",
+    "ECMAScript-compatible UTF16 string quoting including canonical lone-surrogate escapes and supplementary characters.",
+    "Full profile registry SHA, RU/EN, age bands, UTC Gregorian dates, bounded unique topics and active-profile membership.",
+    "Adult pin:null seed only; missing or corrupt records remain unavailable; enrolled PIN and clock journal constraints retained.",
+    "PIN-only transition requires exact full-record non-PIN byte preservation, revision increments, fresh salt and credential, and exact attempt reset.",
+    "Pure structural validation does not grant native permission, calibrated time, recovery authorization, durable CAS or admission authority.",
+    "Synthetic instrumentation and B-only JVM fixtures cover canonical and malformed records, ownership, bounds and transition denial."
+  ],
+  "findings": [],
+  "checksExecuted": 0,
+  "productTestsExecuted": false,
+  "compilation": "NOT_RUN",
+  "jvmDriverExecution": "NOT_RUN",
+  "installedNativeRuntime": "NOT_RUN",
+  "checkoutWrites": false,
+  "gitCommandsExecuted": false,
+  "releaseReady": false
+}

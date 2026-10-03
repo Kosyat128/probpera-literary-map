@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "status": "FROZEN_NATIVE_STRUCTURAL_CODEC_SOURCE_NOT_RUN",
+  "stage": "S16",
+  "ownedProjectPaths": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sourceBeforeSha256": "954cfa7d42922d74c9a36188ef89525fdf205774167f9f96bc25658389411395",
+      "sha256": "03b84ae3e6eae914640a405c1cf26c4e13916719cf64251b9d556d7d1ab41d8f",
+      "size": 39175
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildProtectedEnvelopeRuntimeTests.swift",
+      "sourceBeforeSha256": null,
+      "sha256": "7a60d74c2785ac4e84b12ecd100454baabc3eb891a2665f4a27394bd8877a7d6",
+      "size": 17443,
+      "registration": "PENDING_ROOT_TARGET_RESOURCE_WIRING_DECISION"
+    }
+  ],
+  "specSources": [
+    {
+      "path": "../next-parent-pin-enrollment-a2/src/child/childProtectedState.ts",
+      "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5"
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "sha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148"
+    }
+  ],
+  "sharedFixtureSource": "../next-native-pin-codec-android/apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildProtectedEnvelopeRuntimeTest.java",
+  "api": [
+    "ProtectedEnvelope.decode(Data,policyVersion:policyChecksum:maxIterations:)",
+    "ProtectedEnvelope.validateTransition(before,after,action:PinLifecycleAction,sampledLogicalMs:)",
+    "ProtectedEnvelope.copyCanonicalBytes()/isUnenrolled()/close()/derived checksum"
+  ],
+  "facts": {
+    "inputByteLimit": 131072,
+    "profileLimit": 4,
+    "topicLimitPerList": 64,
+    "labelUtf16UnitLimit": 80,
+    "genericSchemaStringUtf16UnitLimit": 96,
+    "maximumSafeInteger": 9007199254740991,
+    "maximumEpochMs": 8640000000000000,
+    "orderedSchemaGrammar": "EXACT_CANONICAL_TS_JSON_STRINGIFY_BYTES",
+    "stringGrammar": "STRICT_RAW_UTF8_PLUS_ECMASCRIPT_UTF16_QUOTING_WITH_LOWERCASE_LONE_SURROGATE_ESCAPES",
+    "registrySha": "EXACT_RAW_REGISTRY_UTF8_BYTES",
+    "nonPinTransitionFields": "EXACT_RAW_BYTE_RANGES_AFTER_ROOT_REVISION_TO_PIN_AND_AFTER_PIN_TO_EOF",
+    "ownership": "PRIVATE_ARRAY_COPY_EVEN_FOR_DATA_BYTES_NO_COPY_INPUT_WIPED_ON_CLOSE_OR_DECODE_FAILURE",
+    "focusedXCTestMethods": 9
+  },
+  "scope": {
+    "existingStorageSourceBytesPreserved": "VERIFIED_BY_REMOVING_ONLY_NEW_NESTED_CODEC",
+    "existingCandidateProtectedBehavior": "UNCHANGED_NOT_REEXECUTED",
+    "actualSdkCheckpointFactory": "NIL_UNCHANGED",
+    "provider": "NOT_IMPLEMENTED",
+    "activation": "NONE",
+    "projectAndPbxMutations": 0
+  },
+  "checks": {
+    "authorSourceReview": "NO_MISMATCH_FOUND_FROZEN_PEER_REVIEW_PENDING",
+    "swiftCompiler": "NOT_RUN",
+    "xctest": "NOT_RUN_UNREGISTERED_SOURCE_ONLY",
+    "build": "NOT_RUN",
+    "installedAuthorityDurabilityLifecycle": "NOT_RUN",
+    "checksExecuted": 0
+  },
+  "limitations": [
+    "Structural parsing, action enum, sampled logical time and derived digest confer no authentication, nonrollback checkpoint, native permission, trusted time, calibrated exact KDF policy or admission.",
+    "Codec is unused by candidate/protected IO. Genuine provider, authority factories, target registration and installed native execution remain pending.",
+    "Owned canonical input bytes are wiped; no claim is made about every compiler/runtime temporary, caller-owned copy or OS memory erasure."
+  ],
+  "actions": "B staging and read-only source/hash checks only; no project edit, Swift compilation, test/build execution, OS checks, Git or remote operation"
+}

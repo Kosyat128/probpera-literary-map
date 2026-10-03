@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-codec-jvm-runner-source-review",
+  "status": "ACK",
+  "scope": "FROZEN_HELPER_SOURCE_REVIEW_ONLY",
+  "runner": {
+    "path": "next-native-pin-codec-android-runner-a2/run-jvm.mjs",
+    "sha256": "402847c0b5c7792709bc8a1d74c63d986558e93f525743386598844450d9e743",
+    "bytes": 20019
+  },
+  "manifest": {
+    "path": "next-native-pin-codec-android-runner-a2/manifest.json",
+    "sha256": "d3b90a20117abde00cd9d81aa13a52a5742ed8fd77306e4eb8d58c8467d54c42",
+    "bytes": 3785
+  },
+  "ready": {
+    "path": "next-native-pin-codec-android-runner-a2/READY.md",
+    "sha256": "16862077d0d5aa826c6b63cb898d04a86a4d7dabf4546e3239869a724e3bd2b9",
+    "bytes": 1234
+  },
+  "readme": {
+    "path": "next-native-pin-codec-android-runner-a2/README.md",
+    "sha256": "768a1a7039812ba2be66ac7ca295104648dde1cb410a514fdcf3a59bfd8eaadb",
+    "bytes": 4154
+  },
+  "predecessor": {
+    "path": "next-native-pin-codec-android-runner/run-jvm.mjs",
+    "sha256": "a3457b6ecb72c815e78ab65b68b964bd276aea3c26546624be5a32a1a064f350",
+    "execution": "NOT_RUN",
+    "sourceDiff": "Exactly two lines: successor owned directory and process-only Git --no-replace-objects/safe.directory guards."
+  },
+  "reviewedFacts": [
+    "Execution must precede codec integration: exact source f2d8d8d2aefb6c040698972dca818b4223844b3a, supplied exact clean report HEAD, before-vault f9f5 and absent new instrumentation are required.",
+    "Frozen candidate manifest/main/driver/test/READY and supplied JDK/Android-jar bytes are pinned before any compiler call and rechecked afterward.",
+    "Fresh UUID B attempt is reserved before assigning ownership; no reuse, overwrite or deletion of older attempts.",
+    "Only owned attempt classes/temp/home/evidence are written; Git source operations remain read-only with optional locks disabled, explicit physical safe.directory, replacement objects disabled and no lazy fetch or prompts.",
+    "Subprocesses use absolute executables, no shell, bounded time/output, an environment allowlist and owned Java temporary/home directories.",
+    "UTF8 --release17 compilation disables annotation processors and implicit source lookup; only exact frozen vault and synthetic driver are compiled against the pinned Android jar.",
+    "Raw command stdout/stderr/exit/time receipts, exact single positive driver marker, class-byte inventories and before/after source/tool/candidate inventories qualify the synthetic JVM outcome.",
+    "No vault construction, instrumentation, installed Android, storage lifecycle, native authority, admission, provider activation or App registration is inferred."
+  ],
+  "findings": [],
+  "checksExecuted": 0,
+  "runnerExecution": "NOT_RUN",
+  "compilation": "NOT_RUN",
+  "jvmDriverExecution": "NOT_RUN",
+  "checkoutWrites": false,
+  "gitCommandsExecuted": false,
+  "releaseReady": false
+}

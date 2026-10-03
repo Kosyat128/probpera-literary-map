@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-codec-registration-source-review",
+  "status": "ACK",
+  "scope": "FROZEN_SOURCE_REVIEW_ONLY",
+  "sourceCommit": "f2d8d8d2aefb6c040698972dca818b4223844b3a",
+  "manifest": {
+    "path": "next-native-pin-codec-registration-a2/manifest.json",
+    "sha256": "3ec8320a369aba93e20106ce9fdba0bececde706d4beeddbd749b16d59b25aeb",
+    "bytes": 4297
+  },
+  "ready": {
+    "path": "next-native-pin-codec-registration-a2/READY.json",
+    "sha256": "fd154986d9b8e51e853497b836efcdd58ead0a0c003e03e1a04cfdc6c3b929c5",
+    "bytes": 568
+  },
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "beforeSha256": "3cd9e4eb43fc7538d8d562e5763f1c030d2c8b069faee04af80c8b4c283b9352",
+      "sha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "bytes": 25225
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "beforeSha256": "682341aefc453c4511e469d8ab779dcbb8da0dcd65475c164fa224d81930c0d7",
+      "sha256": "5d03d119165e8e27fea82e138e54333248dd6de9cc0f4e4e3ae327f2095bd2d5",
+      "bytes": 70791
+    },
+    {
+      "path": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "beforeSha256": "8e2503c3b2ea7cdec0cbc46ebd3d1f8cbec72bdb222cbf0e8fbfeddc4d44d05b",
+      "sha256": "d89446bea3eb585596d3659dce81f42d8a49beb526d18365cc8783e3e4c5086a",
+      "bytes": 12256
+    }
+  ],
+  "currentBeforeThreeHashesVerified": true,
+  "reviewedFacts": [
+    "PBX adds unique build/file IDs60/61 to the existing AppSecureStorageTests group and Sources phase; no new target or App registration.",
+    "Both frozen structural fixture classes contain exactly nine test methods; Android uses the existing fixed15-argument owned offline gate with its exact separate class and codec phase.",
+    "XCTest selects the whole structural class, clears unrelated fixture environment and preserves the original template; old secure/preferences/data/wire selections remain explicit.",
+    "Both new native fixture paths must be present with valid SHA256 rows in the native binary source fingerprint.",
+    "The structural parser requires exact nine-test success, denies short/mixed summaries, skip/crash/failure output and per-test Android STATUS -1/-2/-3/-4.",
+    "Android final INSTRUMENTATION_CODE:-1 remains a successful terminal framework code; its spelling is distinguished from per-test STATUS codes.",
+    "A2 production diff from frozen A1 is exactly the added -1/-2 per-test denial; one existing new parser test adds those negatives and the terminal-code positive. A1 remains NOT_RUN.",
+    "Five new focused plan cases are authored; historical21 assertion source is unchanged except import additions and the appended separator.",
+    "A future fixture success is labeled synthetic-boundary/structural-only and supplies no storage, PIN input, permission, checkpoint, trusted time, recovery or protected admission proof."
+  ],
+  "resolvedSourceFinding": "A1 accepted a nine-test success prefix followed by per-test error/failure status -1/-2; immutable A2 rejects those statuses and adds explicit vectors.",
+  "findings": [],
+  "checksExecuted": 0,
+  "fixturePlanTests": "NOT_RUN",
+  "androidCompilation": "NOT_RUN",
+  "swiftCompilation": "NOT_RUN",
+  "installedNativeFixtures": "NOT_RUN",
+  "checkoutWrites": false,
+  "gitCommandsExecuted": false,
+  "nativeAuthorityProviderActivated": false,
+  "releaseReady": false
+}
