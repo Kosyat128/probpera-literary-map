@@ -88,6 +88,21 @@ final class PlanetChildVault {
                 maximum: maximum, checksum: PlanetChildVault.digest(fullBytes))
             accepted = true; return result
         }
+        /** Read-only coordinates from this already strict canonical envelope.
+         * These scalars are structural metadata, never trusted time/authority. */
+        fileprivate func pinSessionMetadata() throws -> PinEnvelopeMetadata {
+            lock.lock(); defer { lock.unlock() }; try Self.require(!disposed)
+            var suffix = storage.copy(pinEnd..<storage.count)
+            defer { suffix.resetBytes(in: 0..<suffix.count) }
+            let owned = Storage(suffix); defer { owned.wipe() }; let p = Cursor(owned)
+            try p.field("clock"); try p.field("schemaVersion", first: true); _ = try p.number(1, 1)
+            try p.field("bootId"); let boot = try p.asciiString()
+            try p.field("uptimeAnchorMs"); let uptime = try p.number(0, PlanetChildVault.maximumSafe)
+            return PinEnvelopeMetadata(revision: revision, pinRevision: pin?.revision ?? 0,
+                iterations: pin?.iterations ?? 0, enrolled: pin != nil,
+                bootId: boot, uptimeAnchorMs: uptime, logicalAnchorMs: logicalAnchorMs,
+                lastObservedMs: pin?.lastObservedMs ?? logicalAnchorMs)
+        }
         func isUnenrolled() throws -> Bool { lock.lock(); defer { lock.unlock() }; try Self.require(!disposed); return pin == nil }
         func copyCanonicalBytes() throws -> Data { lock.lock(); defer { lock.unlock() }; try Self.require(!disposed); return storage.copy() }
         func close() { lock.lock(); defer { lock.unlock() }; disposed = true; storage.wipe() }
@@ -301,6 +316,31 @@ final class PlanetChildVault {
         }
     }
     static let maxBytes = 131072
+    /** No genuine checkpoint/host/action/time/input/calibration/recovery factory
+     * has been supplied. Private session mechanics do not fill those dependencies. */
+    private static func actualSDKPinSessions(_ vault: PlanetChildVault) -> NativePinSessions? { nil }
+    private final class PinVaultTransaction: PinSessionTransaction {
+        private unowned let vault: PlanetChildVault
+        init(_ vault: PlanetChildVault) { self.vault = vault }
+        func read() throws -> Data { try vault.readExact() }
+        func write(_ next: Data, boundary: () throws -> Void) throws {
+            try vault.writeExact(next, checkAtCommit: boundary)
+        }
+    }
+    private final class PinVaultIO: PinSessionIO {
+        private let vault: PlanetChildVault
+        init(_ vault: PlanetChildVault) { self.vault = vault }
+        func locked<T>(_ task: (PinSessionTransaction) throws -> T) throws -> T {
+            // Existing locked() erases errors. Carry only a typed known refusal
+            // as an owned value through that wrapper; every other error seals.
+            let result: PinLockedResult<T> = try vault.locked {
+                do { return .value(try task(PinVaultTransaction(vault))) }
+                catch is PinKnownRefusal { return .refusal }
+            }
+            switch result { case .value(let value): return value; case .refusal: throw PinKnownRefusal() }
+        }
+    }
+    private func ownedPinSessionIO() -> PinSessionIO { PinVaultIO(self) }
     private static let maximumSafe: UInt64 = 9007199254740991
     private static let processLock = NSLock()
     enum Failure: Error { case unavailable }
@@ -507,5 +547,396 @@ final class PlanetChildVault {
             try checkpoint.verifyCurrent(vaultIdentity: vaultIdentity, digest: owned.nextChecksum)
             try permission.requireLive(); try Self.requireDeadline(owned); return owned.nextChecksum
         }
+    }
+}
+
+/** Private full-record credential lifecycle mechanics, intentionally unavailable
+ * from production. No public SPI constructor, caller flag, JS brand, generic
+ * key/value writer or synthetic factory may replace the actual nil factory.
+ * A future admitted private host must retain original coordinator identity and
+ * authenticate capture/current/action/reset/recovery under this same IO lock. */
+fileprivate struct PinEnvelopeMetadata {
+    let revision: UInt64, pinRevision: UInt64, iterations: UInt64
+    let enrolled: Bool, bootId: String
+    let uptimeAnchorMs: UInt64, logicalAnchorMs: UInt64, lastObservedMs: UInt64
+}
+fileprivate struct PinSessionPolicy {
+    let version: String, checksum: String
+    let maximumIterations: UInt64, iterations: UInt64
+    init(version: String, checksum: String, maximumIterations: UInt64, iterations: UInt64) throws {
+        try NativePinSessions.require(version.range(of: "\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z", options: .regularExpression) != nil
+            && NativePinSessions.hash(checksum) && maximumIterations >= 600000 && maximumIterations <= 0xffffffff
+            && iterations >= 600000 && iterations <= maximumIterations)
+        self.version = version; self.checksum = checksum
+        self.maximumIterations = maximumIterations; self.iterations = iterations
+    }
+}
+fileprivate struct PinKnownRefusal: Error {}
+fileprivate enum PinLockedResult<T> { case value(T), refusal }
+fileprivate enum PinSessionPhase { case reserved, beginning, begun, committing, committed, denied, cancelled, closing, sealed, closed }
+fileprivate enum PinReplyDelivery { case known, uncertain }
+fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, closed }
+fileprivate protocol PinSessionTransaction: AnyObject {
+    func read() throws -> Data
+    func write(_ next: Data, boundary: () throws -> Void) throws
+}
+fileprivate protocol PinSessionIO: AnyObject {
+    func locked<T>(_ task: (PinSessionTransaction) throws -> T) throws -> T
+}
+/** Actual native authority SPI, never implemented by a production flag here.
+ * capture/current authenticate complete bytes/revision, epoch, host/account/
+ * profile/lifecycle scope and supported continuous time. The original native
+ * inspection must come from the real original-coordinator identity registry.
+ * authorizeMutation binds exact whole old/new bytes+digests/revisions, action,
+ * session, epoch/host/boot/original deadline and captured attempt-reset time,
+ * and authenticates real input/calibration prerequisites. advance validates and
+ * durably consumes that exact one-use permission before checkpoint publication.
+ * Its current() after advance authenticates the authorized next checkpoint;
+ * no in-memory consumed flag or Keychain ciphertext supplies that guarantee.
+ * cancel/retire join their actual work. retire is whole-request terminal
+ * permission retirement, covering cancellation after retirementFenced.
+ * Callbacks receive disposable copies; retaining native secrets requires their
+ * own owned wiping and actual retirement. No adapter is supplied. */
+fileprivate protocol PinSessionAuthority: AnyObject {
+    func capture(_ inspection: OwnedPinInspection, bytes: Data, checksum: String, revision: UInt64) throws -> PinNativeCoordinates
+    func current(_ session: OwnedPinSession, bytes: Data, checksum: String, revision: UInt64) throws -> PinNativeCoordinates
+    func authorizeMutation(_ session: OwnedPinSession, next: Data, checksum: String, revision: UInt64) throws -> AnyObject
+    func advance(_ session: OwnedPinSession, resetPermission: AnyObject, recoveryPermission: AnyObject?, nextChecksum: String, nextRevision: UInt64) throws
+    func cancel(_ inspection: OwnedPinInspection) throws
+    func retire(_ inspection: OwnedPinInspection) throws
+}
+fileprivate protocol PinRecoveryAuthority: AnyObject {
+    // Distinct genuine native/system/account recovery proof. Authenticate this
+    // exact session and all old/new coordinates under the publication lock.
+    func verify(_ session: OwnedPinSession, next: Data, checksum: String, revision: UInt64, permission: AnyObject) throws
+}
+fileprivate final class PinNativeCoordinates {
+    let owner: PinSessionAuthority, epoch: String, bootId: String, checksum: String
+    let revision: UInt64, hostGeneration: UInt64, uptimeMs: UInt64, logicalMs: UInt64
+    init(owner: PinSessionAuthority, epoch: String, bootId: String, checksum: String, revision: UInt64,
+         hostGeneration: UInt64, uptimeMs: UInt64, logicalMs: UInt64) {
+        self.owner=owner; self.epoch=epoch; self.bootId=bootId; self.checksum=checksum
+        self.revision=revision; self.hostGeneration=hostGeneration; self.uptimeMs=uptimeMs; self.logicalMs=logicalMs
+    }
+}
+fileprivate final class OwnedPinInspection {
+    let owner: NativePinSessions, wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64
+    var phase: PinSessionPhase = .reserved, cancelled=false, sealed=false, retiring=false, retirementFenced=false
+    var workers=0, transfers=0, threads: [ObjectIdentifier:Int] = [:], session: OwnedPinSession?
+    var pendingReplies: [ObjectIdentifier:PinNativeReply] = [:], terminalReply: PinNativeReply?
+    init(owner: NativePinSessions, wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64) {
+        self.owner=owner; self.wireId=wireId; self.action=action; self.timeoutMs=timeoutMs
+    }
+}
+fileprivate final class PinOwnedBytes {
+    private let lock=NSLock()
+    private var bytes: [UInt8], disposed=false
+    init(_ input: Data) { bytes=Array(input) } // Own bytesNoCopy inputs too.
+    func copy() throws -> Data {
+        lock.lock(); defer { lock.unlock() }; try NativePinSessions.require(!disposed)
+        return Data(bytes)
+    }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; bytes.withUnsafeMutableBytes { _=$0.initializeMemory(as: UInt8.self,repeating:0) } }
+    deinit { close() }
+}
+fileprivate final class OwnedPinSession {
+    let owner: NativePinSessions, inspection: OwnedPinInspection, policy: PinSessionPolicy
+    let expected: PinOwnedBytes, checksum: String, revision: UInt64, pinRevision: UInt64
+    let epoch: String, hostGeneration: UInt64, bootId: String, capturedUptimeMs: UInt64, capturedLogicalMs: UInt64
+    let clockUptimeMs: UInt64, clockLogicalMs: UInt64, deadlineUptimeMs: UInt64
+    var disposed=false
+    init(owner: NativePinSessions, inspection: OwnedPinInspection, policy: PinSessionPolicy, bytes: Data,
+         checksum: String, metadata: PinEnvelopeMetadata, point: PinNativeCoordinates, deadline: UInt64) {
+        self.owner=owner; self.inspection=inspection; self.policy=policy; expected=PinOwnedBytes(bytes)
+        self.checksum=checksum; revision=metadata.revision; pinRevision=metadata.pinRevision
+        epoch=point.epoch; hostGeneration=point.hostGeneration; bootId=point.bootId
+        capturedUptimeMs=point.uptimeMs; capturedLogicalMs=point.logicalMs
+        clockUptimeMs=metadata.uptimeAnchorMs; clockLogicalMs=metadata.logicalAnchorMs; deadlineUptimeMs=deadline
+    }
+    func close() { disposed=true; expected.close() }
+}
+/** Native-owned one-use envelope. Its opaque witness still requires genuine
+ * locked native authentication; constructing this envelope grants none. */
+fileprivate final class OwnedPinMutation {
+    let owner: NativePinSessions, session: OwnedPinSession
+    let reset: AnyObject, recovery: AnyObject?, checksum: String, revision: UInt64, capturedResetLogicalMs: UInt64
+    var consumed=false
+    init(owner: NativePinSessions, session: OwnedPinSession, reset: AnyObject, recovery: AnyObject?, checksum: String, revision: UInt64) {
+        self.owner=owner; self.session=session; self.reset=reset; self.recovery=recovery
+        self.checksum=checksum; self.revision=revision; capturedResetLogicalMs=session.capturedLogicalMs
+    }
+}
+fileprivate final class PinNativeReply {
+    let owner: NativePinSessions, inspection: OwnedPinInspection, session: OwnedPinSession?
+    let kind: PinNativeReplyKind, checksum: String?
+    private let bytes: PinOwnedBytes?
+    var settled=false
+    init(owner: NativePinSessions, inspection: OwnedPinInspection, session: OwnedPinSession?,
+         kind: PinNativeReplyKind, bytes: Data?, checksum: String?) {
+        self.owner=owner; self.inspection=inspection; self.session=session; self.kind=kind
+        self.bytes=bytes.map(PinOwnedBytes.init); self.checksum=checksum
+    }
+    func copyBytes() throws -> Data? { try bytes?.copy() }
+    // Wiping a transfer never proves delivery/work settlement or frees a lane.
+    func close() { bytes?.close() }
+    deinit { close() }
+}
+fileprivate final class NativePinSessions {
+    private static let maximumSafe: UInt64=9007199254740991
+    private let condition=NSCondition(), io: PinSessionIO, authority: PinSessionAuthority
+    private let recovery: PinRecoveryAuthority?, policy: PinSessionPolicy
+    private var usedWireIds=Set<String>(), usedPermissions: [ObjectIdentifier:AnyObject]=[:]
+    private var active: OwnedPinInspection?
+    fileprivate init(io: PinSessionIO, authority: PinSessionAuthority, recovery: PinRecoveryAuthority?, policy: PinSessionPolicy) {
+        self.io=io; self.authority=authority; self.recovery=recovery; self.policy=policy
+    }
+    static func require(_ value: Bool) throws { if !value { throw PlanetChildVault.Failure.unavailable } }
+    static func hash(_ value: String) -> Bool { value.range(of:"\\A[a-f0-9]{64}\\z",options:.regularExpression) != nil }
+    private static func boot(_ value: String) -> Bool { value.range(of:"\\A[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}\\z",options:.regularExpression) != nil }
+    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+    private static func add(_ left: UInt64,_ right: UInt64) throws -> UInt64 {
+        try require(left<=maximumSafe && right<=maximumSafe-left); return left+right
+    }
+    /** Private trusted-host registration only, before the first SPI callback.
+     * No JSON/UI/JS structural object can call or replace the missing factory.
+     * Wire IDs are unique for this owner, bounded2048 and never evicted. */
+    func inspection(wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64) throws -> OwnedPinInspection {
+        condition.lock(); defer { condition.unlock() }
+        try Self.require(Self.hash(wireId) && timeoutMs>=1 && timeoutMs<=60000 && usedWireIds.count<2048 && usedWireIds.insert(wireId).inserted)
+        try Self.require(active==nil)
+        let result=OwnedPinInspection(owner:self,wireId:wireId,action:action,timeoutMs:timeoutMs); active=result; return result
+    }
+    private func ownLocked(_ inspection: OwnedPinInspection) throws {
+        try Self.require(inspection.owner === self && active === inspection && inspection.phase != .closed)
+    }
+    private func liveLocked(_ inspection: OwnedPinInspection) throws {
+        try ownLocked(inspection); if inspection.cancelled || inspection.sealed { throw PinKnownRefusal() }
+    }
+    private func live(_ inspection: OwnedPinInspection) throws {
+        condition.lock(); defer { condition.unlock() }; try liveLocked(inspection)
+    }
+    private func workerLocked(_ inspection: OwnedPinInspection) {
+        inspection.workers+=1; let thread=ObjectIdentifier(Thread.current); inspection.threads[thread]=(inspection.threads[thread] ?? 0)+1
+    }
+    private func settleWorker(_ inspection: OwnedPinInspection) {
+        condition.lock(); defer { condition.unlock() }
+        let thread=ObjectIdentifier(Thread.current), remaining=(inspection.threads[thread] ?? 0)-1
+        if inspection.workers<=0 || remaining<0 { inspection.sealed=true; inspection.phase = .sealed }
+        else { inspection.workers-=1; if remaining==0 { inspection.threads.removeValue(forKey:thread) } else { inspection.threads[thread]=remaining } }
+        wipeSealedLocked(inspection); condition.broadcast()
+    }
+    private func claim(_ inspection: OwnedPinInspection,_ expected: PinSessionPhase,_ next: PinSessionPhase) throws {
+        condition.lock(); defer { condition.unlock() }; try liveLocked(inspection)
+        try Self.require(!inspection.retiring && inspection.phase==expected); inspection.phase=next; workerLocked(inspection)
+    }
+    private func failed(_ inspection: OwnedPinInspection,_ error: Error,_ publicationEntered: Bool) {
+        condition.lock(); defer { condition.unlock() }
+        if inspection.sealed || publicationEntered || !(error is PinKnownRefusal) { inspection.sealed=true; inspection.phase = .sealed }
+        else { inspection.phase=inspection.cancelled ? .cancelled:.denied }
+        wipeSealedLocked(inspection); condition.broadcast()
+    }
+    private func coordinates(_ point: PinNativeCoordinates,_ checksum: String,_ revision: UInt64) throws {
+        try Self.require(point.owner === authority && Self.hash(point.epoch) && Self.boot(point.bootId)
+            && point.checksum==checksum && point.revision==revision && point.hostGeneration<=Self.maximumSafe
+            && point.uptimeMs<=Self.maximumSafe && point.logicalMs<=Self.maximumSafe)
+    }
+    private func byteFence(_ bytes: Data,_ checksum: String) throws {
+        try Self.require(!bytes.isEmpty && bytes.count<=PlanetChildVault.maxBytes && Self.hash(checksum) && Self.digest(bytes)==checksum)
+    }
+    private func bounded(_ bytes: Data) throws { try Self.require(!bytes.isEmpty && bytes.count<=PlanetChildVault.maxBytes) }
+    /** Separate owned callback allocation, even for bytesNoCopy input. Reject
+     * changes before using callback results and wipe after actual settlement. */
+    private func isolated<T>(_ bytes: Data,_ task: (Data) throws -> T) throws -> T {
+        try bounded(bytes); var disposable=Data(Array(bytes)); defer { disposable.resetBytes(in:0..<disposable.count) }
+        let result=try task(disposable)
+        try Self.require(disposable==bytes && Self.digest(disposable)==Self.digest(bytes)); return result
+    }
+    private func sessionFence(_ session: OwnedPinSession) throws {
+        condition.lock()
+        let valid=session.owner === self && active === session.inspection && session.inspection.session === session && !session.disposed
+            && session.policy.version==policy.version && session.policy.checksum==policy.checksum
+            && session.policy.maximumIterations==policy.maximumIterations && session.policy.iterations==policy.iterations
+        condition.unlock(); try Self.require(valid); try live(session.inspection)
+        var retained=try session.expected.copy(); defer { retained.resetBytes(in:0..<retained.count) }; try byteFence(retained,session.checksum)
+        try live(session.inspection)
+    }
+    private func mutationFence(_ session: OwnedPinSession,_ before: Data,_ after: Data,_ checksum: String,_ revision: UInt64) throws {
+        try sessionFence(session); var retained=try session.expected.copy(); defer { retained.resetBytes(in:0..<retained.count) }
+        try Self.require(before==retained && session.revision<Self.maximumSafe && revision==session.revision+1)
+        try byteFence(before,session.checksum); try byteFence(after,checksum)
+    }
+    private func advanceMutation(_ mutation: OwnedPinMutation) throws {
+        try sessionFence(mutation.session)
+        try Self.require(mutation.owner === self && !mutation.consumed && mutation.capturedResetLogicalMs==mutation.session.capturedLogicalMs
+            && mutation.revision==mutation.session.revision+1 && Self.hash(mutation.checksum))
+        mutation.consumed=true
+        try authority.advance(mutation.session,resetPermission:mutation.reset,recoveryPermission:mutation.recovery,
+            nextChecksum:mutation.checksum,nextRevision:mutation.revision)
+    }
+    /** Wiping owns no delivery/cleanup authority. An unknown outcome retains
+     * the lane and transfer counts; late worker buffers wipe on actual return. */
+    private func wipeSealedLocked(_ inspection: OwnedPinInspection) {
+        guard inspection.sealed else { return }
+        for reply in inspection.pendingReplies.values { reply.close() }
+        if inspection.workers==0 { inspection.session?.close() }
+    }
+    private func current(_ session: OwnedPinSession,_ bytes: Data,_ checksum: String,_ revision: UInt64) throws -> PinNativeCoordinates {
+        try sessionFence(session); try byteFence(bytes,checksum)
+        let point=try isolated(bytes) { try authority.current(session,bytes:$0,checksum:checksum,revision:revision) }
+        try sessionFence(session); try byteFence(bytes,checksum); try coordinates(point,checksum,revision)
+        try Self.require(point.epoch==session.epoch && point.hostGeneration==session.hostGeneration && point.bootId==session.bootId
+            && point.uptimeMs>=session.capturedUptimeMs && point.uptimeMs<session.deadlineUptimeMs
+            && point.uptimeMs>=session.clockUptimeMs
+            && point.logicalMs == (try Self.add(session.clockLogicalMs,point.uptimeMs-session.clockUptimeMs)))
+        try live(session.inspection); return point
+    }
+    private func reply(_ session: OwnedPinSession,_ bytes: Data,_ checksum: String,_ kind: PinNativeReplyKind,_ phase: PinSessionPhase) throws -> PinNativeReply {
+        condition.lock(); defer { condition.unlock() }; try liveLocked(session.inspection)
+        let result=PinNativeReply(owner:self,inspection:session.inspection,session:session,kind:kind,bytes:bytes,checksum:checksum)
+        session.inspection.pendingReplies[ObjectIdentifier(result)]=result
+        session.inspection.transfers+=1; session.inspection.phase=phase; return result
+    }
+    func begin(_ inspection: OwnedPinInspection) throws -> PinNativeReply {
+        try claim(inspection,.reserved,.beginning); defer { settleWorker(inspection) }
+        do { return try io.locked { transaction in
+            try live(inspection)
+            var delivered=try transaction.read(); defer { delivered.resetBytes(in:0..<delivered.count) }
+            try bounded(delivered); var bytes=Data(Array(delivered)); defer { bytes.resetBytes(in:0..<bytes.count) }
+            let before=try PlanetChildVault.ProtectedEnvelope.decode(bytes,policyVersion:policy.version,policyChecksum:policy.checksum,maxIterations:policy.maximumIterations); defer { before.close() }
+            let metadata=try before.pinSessionMetadata()
+            if (inspection.action == .enroll) == metadata.enrolled || inspection.action == .recover && recovery==nil { throw PinKnownRefusal() }
+            let point=try isolated(bytes) { try authority.capture(inspection,bytes:$0,checksum:before.checksum,revision:metadata.revision) }
+            try live(inspection); try byteFence(bytes,before.checksum); try coordinates(point,before.checksum,metadata.revision)
+            try Self.require(point.bootId==metadata.bootId && point.uptimeMs>=metadata.uptimeAnchorMs
+                && point.logicalMs == (try Self.add(metadata.logicalAnchorMs,point.uptimeMs-metadata.uptimeAnchorMs))
+                && point.logicalMs>=metadata.lastObservedMs)
+            let deadline=try Self.add(point.uptimeMs,inspection.timeoutMs)
+            condition.lock()
+            let session: OwnedPinSession
+            do { try liveLocked(inspection); session=OwnedPinSession(owner:self,inspection:inspection,policy:policy,bytes:bytes,
+                checksum:before.checksum,metadata:metadata,point:point,deadline:deadline); inspection.session=session; condition.unlock() }
+            catch { condition.unlock(); throw error }
+            _=try current(session,bytes,before.checksum,metadata.revision)
+            return try reply(session,bytes,before.checksum,metadata.enrolled ? .enrolled:.unenrolled,.begun)
+        } } catch { failed(inspection,error,false); throw error }
+    }
+    private func reservePermission(_ permission: AnyObject) throws {
+        condition.lock(); defer { condition.unlock() }; let id=ObjectIdentifier(permission)
+        try Self.require(usedPermissions[id]==nil && usedPermissions.count<4096); usedPermissions[id]=permission
+        // Local identity replay fence only. Genuine durable one-use validation
+        // belongs to authority.advance/recovery under the IO transaction lock.
+    }
+    func commit(_ inspection: OwnedPinInspection, session: OwnedPinSession, expected: Data, next: Data,
+                expectedChecksum: String, nextChecksum: String, expectedRevision: UInt64, nextRevision: UInt64,
+                nativeEpoch: String, hostGeneration: UInt64, bootId: String, deadlineUptimeMs: UInt64,
+                recoveryPermission: AnyObject?) throws -> PinNativeReply {
+        try claim(inspection,.begun,.committing); defer { settleWorker(inspection) }
+        var old=Data(),fresh=Data(),publicationEntered=false
+        defer { old.resetBytes(in:0..<old.count); fresh.resetBytes(in:0..<fresh.count) }
+        do {
+            try bounded(expected); try bounded(next); old=Data(Array(expected)); fresh=Data(Array(next))
+            try Self.require(session.owner === self && session.inspection === inspection && inspection.session === session && !session.disposed
+                && !old.isEmpty && old.count<=PlanetChildVault.maxBytes && !fresh.isEmpty && fresh.count<=PlanetChildVault.maxBytes
+                && expectedChecksum==session.checksum && expectedRevision==session.revision && expectedRevision<Self.maximumSafe
+                && nextRevision==expectedRevision+1 && nativeEpoch==session.epoch && hostGeneration==session.hostGeneration
+                && bootId==session.bootId && deadlineUptimeMs==session.deadlineUptimeMs)
+            try byteFence(old,expectedChecksum); try byteFence(fresh,nextChecksum)
+            var retained=try session.expected.copy(); defer { retained.resetBytes(in:0..<retained.count) }; try Self.require(old==retained)
+            return try io.locked { transaction in
+                try live(inspection); var delivered=try transaction.read(); defer { delivered.resetBytes(in:0..<delivered.count) }
+                try bounded(delivered); var actual=Data(Array(delivered)); defer { actual.resetBytes(in:0..<actual.count) }; try Self.require(actual==old)
+                let before=try PlanetChildVault.ProtectedEnvelope.decode(old,policyVersion:policy.version,policyChecksum:policy.checksum,maxIterations:policy.maximumIterations); defer { before.close() }
+                let after=try PlanetChildVault.ProtectedEnvelope.decode(fresh,policyVersion:policy.version,policyChecksum:policy.checksum,maxIterations:policy.maximumIterations); defer { after.close() }
+                _=try current(session,old,expectedChecksum,expectedRevision)
+                try PlanetChildVault.ProtectedEnvelope.validateTransition(before,after,action:inspection.action,sampledLogicalMs:session.capturedLogicalMs)
+                try Self.require((try after.pinSessionMetadata()).iterations==policy.iterations)
+                if inspection.action == .recover {
+                    guard let recovery,let recoveryPermission else { throw PinKnownRefusal() }
+                    try reservePermission(recoveryPermission)
+                    try isolated(fresh) { try recovery.verify(session,next:$0,checksum:nextChecksum,revision:nextRevision,permission:recoveryPermission) }
+                    try mutationFence(session,old,fresh,nextChecksum,nextRevision)
+                } else if recoveryPermission != nil { throw PinKnownRefusal() }
+                let permission=try isolated(fresh) { try authority.authorizeMutation(session,next:$0,checksum:nextChecksum,revision:nextRevision) }
+                try reservePermission(permission); try mutationFence(session,old,fresh,nextChecksum,nextRevision)
+                _=try current(session,old,expectedChecksum,expectedRevision)
+                try mutationFence(session,old,fresh,nextChecksum,nextRevision)
+                let mutation=OwnedPinMutation(owner:self,session:session,reset:permission,recovery:recoveryPermission,checksum:nextChecksum,revision:nextRevision)
+                publicationEntered=true; try advanceMutation(mutation)
+                try mutationFence(session,old,fresh,nextChecksum,nextRevision)
+                var writeBytes=Data(Array(fresh)); defer { writeBytes.resetBytes(in:0..<writeBytes.count) }
+                let boundary: () throws -> Void = {
+                    try self.mutationFence(session,old,fresh,nextChecksum,nextRevision); try self.byteFence(writeBytes,nextChecksum)
+                    try Self.require(writeBytes==fresh)
+                    _=try self.current(session,fresh,nextChecksum,nextRevision)
+                    try self.mutationFence(session,old,fresh,nextChecksum,nextRevision); try self.byteFence(writeBytes,nextChecksum)
+                    try Self.require(writeBytes==fresh); try self.live(inspection)
+                }
+                try boundary(); try transaction.write(writeBytes,boundary:boundary)
+                var readbackDelivered=try transaction.read(); defer { readbackDelivered.resetBytes(in:0..<readbackDelivered.count) }
+                try bounded(readbackDelivered); var readback=Data(Array(readbackDelivered)); defer { readback.resetBytes(in:0..<readback.count) }
+                try Self.require(readback==fresh); try boundary()
+                return try reply(session,fresh,nextChecksum,.committed,.committed)
+            }
+        } catch { failed(inspection,error,publicationEntered); throw error }
+    }
+    func cancel(_ inspection: OwnedPinInspection) throws {
+        condition.lock()
+        do {
+            try ownLocked(inspection)
+            if inspection.cancelled { condition.unlock(); return }
+            inspection.cancelled=true
+            // Whole-request genuine retirement atomically covers later cancels;
+            // after this fence cancellation creates no new unjoined callback.
+            if inspection.retirementFenced { condition.unlock(); return }
+            workerLocked(inspection); condition.unlock()
+        } catch { condition.unlock(); throw error }
+        defer { settleWorker(inspection) }
+        do { try io.locked { _ in try authority.cancel(inspection) } }
+        catch { failed(inspection,error,false); throw error }
+    }
+    /** Only the missing genuine private host can settle the actual transfer.
+     * Original object identity, not a serialized bool/ACK, is required. */
+    func settleReply(_ reply: PinNativeReply, delivery: PinReplyDelivery) throws {
+        condition.lock(); defer { condition.unlock() }
+        try Self.require(reply.owner === self); try ownLocked(reply.inspection)
+        try Self.require(!reply.settled && reply.session === reply.inspection.session
+            && reply.inspection.pendingReplies[ObjectIdentifier(reply)] === reply && reply.inspection.transfers>0)
+        if reply.kind == .closed {
+            try Self.require(reply.inspection.terminalReply === reply && reply.inspection.retirementFenced
+                && reply.inspection.workers==0 && reply.inspection.transfers==1)
+        }
+        reply.settled=true; reply.close(); reply.inspection.pendingReplies.removeValue(forKey:ObjectIdentifier(reply)); reply.inspection.transfers-=1
+        if delivery == .uncertain || reply.kind != .closed && reply.inspection.cancelled {
+            reply.inspection.sealed=true; reply.inspection.phase = .sealed
+        }
+        if reply.kind == .closed && !reply.inspection.sealed {
+            reply.inspection.session?.close(); reply.inspection.session=nil; reply.inspection.terminalReply=nil
+            reply.inspection.phase = .closed; active=nil
+        }
+        wipeSealedLocked(reply.inspection); condition.broadcast()
+    }
+    func sealUnknown(_ inspection: OwnedPinInspection) throws {
+        condition.lock(); defer { condition.unlock() }; try ownLocked(inspection)
+        inspection.sealed=true; inspection.phase = .sealed; wipeSealedLocked(inspection); condition.broadcast()
+    }
+    /** Join actual work and reply transfers, then genuine whole-request
+     * permission retirement. A terminal close transfer still holds capacity
+     * until the private host's real known delivery; unknown ACK retains/seals. */
+    func retire(_ inspection: OwnedPinInspection) throws -> PinNativeReply {
+        condition.lock()
+        do {
+            try ownLocked(inspection)
+            try Self.require(!inspection.retiring && inspection.threads[ObjectIdentifier(Thread.current)]==nil)
+            inspection.retiring=true
+            while inspection.workers != 0 || inspection.transfers != 0 { condition.wait() }
+            inspection.retirementFenced=true; condition.unlock()
+        } catch { condition.unlock(); throw error }
+        do { try io.locked { _ in try authority.retire(inspection) } }
+        catch { condition.lock(); inspection.sealed=true; inspection.phase = .sealed; wipeSealedLocked(inspection); condition.broadcast(); condition.unlock(); throw error }
+        condition.lock(); defer { condition.unlock() }
+        try Self.require(inspection.workers==0 && inspection.transfers==0); inspection.session?.close()
+        let reply=PinNativeReply(owner:self,inspection:inspection,session:inspection.session,kind:.closed,bytes:nil,checksum:nil)
+        inspection.terminalReply=reply; inspection.pendingReplies[ObjectIdentifier(reply)]=reply; inspection.transfers=1
+        if !inspection.sealed { inspection.phase = .closing }; condition.broadcast(); return reply
     }
 }
