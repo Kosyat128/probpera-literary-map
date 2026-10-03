@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-swift-metadata-scope-ready",
+  "finalized": true,
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "2cdbbc2a1730d12e0333415fbbcf48b28cd1580f71dbc4db541aaa67ddd7b32d"
+  },
+  "originalCandidate": {
+    "manifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/manifest.json",
+      "sha256": "df09f0b7bf14a3278dfeaeb3fa04712de96c8246bf66ddcc9a0660c17bbfd1fb"
+    },
+    "ready": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/READY.json",
+      "sha256": "b541b1e9a02418bbc89f186dc8c608cbfbc77a3f5ab050159e9119f027ca53c5"
+    }
+  },
+  "status": "SOURCE_UNCHANGED_METADATA_SCOPE_CORRECTED",
+  "execution": "NOT_RUN",
+  "compiler": "NOT_COMPILED"
+}

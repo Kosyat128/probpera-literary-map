@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-primitives-android-ready",
+  "status": "READY_FOR_SOURCE_REVIEW",
+  "immutable": true,
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "eac76d83d09f57c96dc455bf7bcd3bec710fc7582720e289654d04acb6b5ac5f",
+    "bytes": 5499
+  },
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "source": {
+    "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "bytes": 91155,
+    "sha256": "2bd6d4f14131d3c2db85b03c4226c78b2f0c37662673343071539f7fda1da7c0"
+  },
+  "baseline": {
+    "path": "before/PlanetChildVault.java",
+    "bytes": 65427,
+    "sha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1"
+  },
+  "driver": {
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildNativePinPrimitivesJvmDriver.java",
+    "bytes": 28311,
+    "sha256": "26664f82d1bfa47f496e80324cab9b1703a5b671ac11fafcc788e124cb5a6402"
+  },
+  "expectedNewCases": 24,
+  "expectedAffectedCases": 39,
+  "checksActuallyExecuted": 0,
+  "compile": "NOT_RUN",
+  "runtime": "NOT_RUN",
+  "installedOs": "NOT_RUN",
+  "genuineNativeProvider": "NOT_IMPLEMENTED",
+  "nativeFactories": "NULL",
+  "projectWritten": false
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "attemptId": "f2550e67-7aa8-4ff6-a254-f58c4bc3f9c1",
+  "startedAt": "2026-10-03T15:03:35.833Z",
+  "scriptPath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\run-jvm.mjs",
+  "args": [],
+  "nodeVersion": "v24.19.0",
+  "nodeExecutable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "nodeExecArgv": [],
+  "expectedSourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "allowedHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "compilerRelease": 17,
+  "encoding": "UTF-8",
+  "environmentPolicy": "SUBPROCESS_ALLOWLIST_AND_OWNED_TEMP_HOME_NO_GLOBAL_ENV_MUTATION",
+  "scope": {
+    "validation": "PURE_JVM_PLATFORM_CRYPTO_WITH_SYNTHETIC_PRIVATE_PIN_SESSION_MECHANICS_ONLY",
+    "platformCrypto": "HOST_JVM_JCA_PBKDF2_NOT_ANDROID_OS",
+    "nativeInputUI": "NOT_RUN",
+    "primitiveCases": "NEW24_SYNTHETIC_EXCEPT_PUBLIC_PLATFORM_CRYPTO_ORACLE",
+    "coreCases": "AFFECTED39_SYNTHETIC_ORIGINAL_DRIVER",
+    "newInstrumentation": "NOT_RUN",
+    "androidBuild": "NOT_RUN",
+    "installedAndroid": "NOT_RUN",
+    "vaultConstruction": "NOT_RUN",
+    "androidStorage": "NOT_RUN",
+    "nativeAuthority": "NOT_RUN",
+    "providerActivation": "NONE",
+    "appRegistration": "NONE",
+    "admission": "NONE",
+    "releaseAcceptance": "NONE"
+  }
+}

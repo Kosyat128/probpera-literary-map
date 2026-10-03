@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-jvm-runner-ready",
+  "status": "FROZEN_NOT_RUN",
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "85db88095359ae6e534c2d62b34cab2ced0c11c230b5161c19d548cded14f124"
+  },
+  "runner": {
+    "path": "run-jvm.mjs",
+    "sha256": "280c6a1500a6152dce5501553cd7bcd76d40a4f1278d0da1adbb27584aa30686"
+  },
+  "readme": {
+    "path": "README.md",
+    "sha256": "b7f1fdab95526325740ee8c971ab6e1aa12c4744fa2cc33fdbf5aa6bf8a48904"
+  },
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "authorExecutions": 0,
+  "projectWrites": 0,
+  "compiler": "NOT_RUN",
+  "nodeOracle": "NOT_RUN",
+  "new24": "NOT_RUN",
+  "affected39": "NOT_RUN",
+  "installedOS": "NOT_RUN"
+}

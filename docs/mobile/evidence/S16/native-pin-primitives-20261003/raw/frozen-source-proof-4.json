@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-swift-candidate",
+  "finalized": true,
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+  "lockfileSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolVersionsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "files": [
+    {
+      "target": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "before": {
+        "path": "before/PlanetChildVault.swift",
+        "bytes": 71177,
+        "sha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1"
+      },
+      "after": {
+        "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+        "bytes": 100146,
+        "sha256": "b0b18cadd68765491e7336308c719a1bf1447ecc5fc6c7062087e2f765f8949c"
+      }
+    }
+  ],
+  "members": [
+    {
+      "path": "native-pin-primitives.swift.patch",
+      "bytes": 30611,
+      "sha256": "154ce385c69b3d3edb05824cc98d7184b8150de84770be3ef77ffbdef5f74c23"
+    },
+    {
+      "path": "SCOPE.md",
+      "bytes": 6847,
+      "sha256": "2e3e2c8fc8dbb4a1ca41b6425c868c80bc015064493b4ae49682b980f4f1906c"
+    },
+    {
+      "path": "source-preservation.json",
+      "bytes": 1912,
+      "sha256": "4616d41773b6ada30b4e280c21f1d9b4055c262b455702174d66d0ba8bdc3c5a"
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "bytes": 100146,
+      "sha256": "b0b18cadd68765491e7336308c719a1bf1447ecc5fc6c7062087e2f765f8949c"
+    },
+    {
+      "path": "before/PlanetChildVault.swift",
+      "bytes": 71177,
+      "sha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1"
+    },
+    {
+      "path": "tests/NativePinPrimitiveSyntheticTests.swift.inc",
+      "bytes": 13797,
+      "sha256": "4b270b25e999c189d846feff4382ecef5ddb0aca2e676a0f19a05bd465d0f6a2"
+    }
+  ],
+  "oldSpans": [
+    {
+      "label": "CommonCrypto import",
+      "beforeLine": 4,
+      "beforeLines": 1,
+      "afterLine": 4,
+      "afterLines": 2
+    },
+    {
+      "label": "Private primitive reply kind",
+      "beforeLine": 578,
+      "beforeLines": 1,
+      "afterLine": 579,
+      "afterLines": 1
+    },
+    {
+      "label": "Owned primitive worker and material slots",
+      "beforeLine": 626,
+      "beforeLines": 1,
+      "afterLine": 627,
+      "afterLines": 2
+    },
+    {
+      "label": "Claim denies overlapping actual primitive work",
+      "beforeLine": 730,
+      "beforeLines": 1,
+      "afterLine": 732,
+      "afterLines": 1
+    },
+    {
+      "label": "Original primitive material settlement",
+      "beforeLine": 908,
+      "beforeLines": 1,
+      "afterLine": 910,
+      "afterLines": 7
+    }
+  ],
+  "appendedBlock": {
+    "afterLine": 952,
+    "lines": 448,
+    "characters": 28349
+  },
+  "outsideAllowedSpansAndAppendedBlockUnchanged": true,
+  "testFragment": {
+    "path": "tests/NativePinPrimitiveSyntheticTests.swift.inc",
+    "bytes": 13797,
+    "sha256": "4b270b25e999c189d846feff4382ecef5ddb0aca2e676a0f19a05bd465d0f6a2"
+  },
+  "testDependency": {
+    "path": "../next-native-pin-session-swift-a2/tests/NativePinSessionSyntheticTests.swift.inc",
+    "sha256": "75f8a4cc0083ced08b5a105694aff246a90f2d4a2b538283ccbeebf04cf97fd4",
+    "registered": false
+  },
+  "plannedNewMethods": 10,
+  "plannedSyntheticMethods": 9,
+  "plannedActualCommonCrypto600kMethods": 1,
+  "calibration": {
+    "samples": 3,
+    "iterations": "exact configured, floor600000",
+    "eachDerivationBudgetMs": "explicit1..5000",
+    "overallDeadline": "original native absolute, exclusive, <=60000ms; no reset",
+    "installedDeviceEvidence": "NOT_RUN"
+  },
+  "status": {
+    "compiler": "NOT_COMPILED",
+    "newTests": "NOT_RUN",
+    "affectedExistingSessionRegression": "NOT_RUN_REQUIRED_BY_ROOT",
+    "projectWrites": 0,
+    "gitExecution": 0,
+    "builds": 0,
+    "installedRuntime": "NOT_RUN",
+    "factoryActivation": "NONE",
+    "nativeAuthority": "NOT_IMPLEMENTED",
+    "nativeInputUI": "NOT_IMPLEMENTED",
+    "recovery": "NOT_IMPLEMENTED",
+    "parentAdmission": false
+  },
+  "selfExcluded": true
+}

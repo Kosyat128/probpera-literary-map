@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-android-source-review",
+  "status": "ACK",
+  "reviewer": "pin_enrollment_core",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportCommit": "d82b5219604689102c31f8e6206929975bb0153c",
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-android-a2/manifest.json",
+    "sha256": "eac76d83d09f57c96dc455bf7bcd3bec710fc7582720e289654d04acb6b5ac5f",
+    "readySha256": "c8d3662587bf71bc97ce2ec13f18512800103a869e881b6a884608e76518e32b",
+    "allSixMembersMatch": true
+  },
+  "ownedSource": {
+    "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "beforeSha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+    "sha256": "2bd6d4f14131d3c2db85b03c4226c78b2f0c37662673343071539f7fda1da7c0",
+    "bytes": 91155,
+    "currentProjectBeforeMatches": true,
+    "authorizedOldSpans": 2,
+    "outsideAuthorizedSpansAndInsertionByteExact": true,
+    "reconstructedSha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+    "oldSpans": [
+      "OwnedPinInspection adds its private original primitiveContext slot at after line341",
+      "NativePinSessions.claim adds workers==0 at after line411"
+    ],
+    "privateInsertion": { "firstLine": 603, "lastLineInclusive": 868, "lines": 266 },
+    "finalBaselineLfPreserved": true,
+    "factoriesRemainNull": true
+  },
+  "driver": {
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildNativePinPrimitivesJvmDriver.java",
+    "sha256": "26664f82d1bfa47f496e80324cab9b1703a5b671ac11fafcc788e124cb5a6402",
+    "bytes": 28311,
+    "authoredCases": 24,
+    "allOrderedCaseNamesMatchManifest": true,
+    "sourceOnly": true,
+    "productionSourceUnchangedFromPreservedA1": true,
+    "successorDelta": "Only alternate primitive variable declaration/reference renamed second to otherPrimitives, resolving the duplicate local declaration in the foreign-originals case.",
+    "preservedA1Driver": {
+      "sha256": "77ec0578b579378bdd70046e8ebb94aebf52261c15aee3735b875563e0b90128",
+      "execution": "NOT_RUN",
+      "finding": "Duplicate second local declaration in one Java scope; corrected by immutable A2."
+    },
+    "affectedOld39CaseCoreRegression": "REQUIRED_ROOT_EXECUTION",
+    "old69CodecRerun": false,
+    "compiler": "NOT_RUN",
+    "execution": "NOT_RUN"
+  },
+  "reviewedProperties": [
+    "Fixed platform SecretKeyFactory PBKDF2WithHmacSHA256/PBEKeySpec only; no custom PBKDF2, fallback, injected production algorithm, or low-count production helper.",
+    "Native ASCII PIN4..128, salt32, output32, exact configured iterations at least600000 and at most signed Integer.MAX_VALUE; no clipping or wrap.",
+    "Original context/inspection/session and receipt ownership, shared actual worker exclusion, unchanged full-record/current coordinates and original absolute deadline.",
+    "Three actual exact-iteration samples, each positive and bounded by explicit maximum1..5000ms within the original session deadline; no installed-device calibration claim.",
+    "Synchronous KDF retains actual worker until return; cancellation rejects late output, app-owned chars/bytes/PBEKeySpec password cleared before worker settlement.",
+    "Original pending material reply identity retains native capacity through close, uncertain delivery and actual callback work; disposable consumer mutation rejects and wipes.",
+    "Before/after durable-lock full-record authority fences; cheap callback-local clock/lease checks do not perform repeated vault decrypt/schema IO.",
+    "All prior codec/storage/factory bytes preserved outside the two exact old edits and private insertion."
+  ],
+  "primaryReferences": [
+    { "url": "https://developer.android.com/reference/javax/crypto/SecretKeyFactory", "claim": "PBKDF2withHmacSHA256 documented supported API26+; absent algorithm fails closed with no fallback." },
+    { "url": "https://developer.android.com/reference/javax/crypto/spec/PBEKeySpec", "claim": "Constructor clones password/salt; clearPassword clears internal password copy. Provider/internal salt heap erasure is not promised." }
+  ],
+  "findings": [],
+  "checksExecuted": 0,
+  "projectWrites": 0,
+  "gitExecution": 0,
+  "builds": 0,
+  "qualification": "Independent source and raw-hash/span review only; no compiler, driver, Android vault, installed runtime or calibration execution.",
+  "limitations": {
+    "installedOs": "NOT_RUN",
+    "genuineNativeAuthority": "NOT_IMPLEMENTED",
+    "nativeInputUi": "NOT_IMPLEMENTED",
+    "genuineRecovery": "NOT_IMPLEMENTED",
+    "privateHostSettlementAdapter": "NOT_IMPLEMENTED",
+    "providerInternalHeapErasure": "NOT_CLAIMED",
+    "childAppActivation": false,
+    "releaseReady": false
+  }
+}

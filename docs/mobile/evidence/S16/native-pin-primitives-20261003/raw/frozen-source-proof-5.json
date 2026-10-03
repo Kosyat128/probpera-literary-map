@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-swift-ready",
+  "finalized": true,
+  "manifest": {
+    "path": "manifest.json",
+    "sha256": "df09f0b7bf14a3278dfeaeb3fa04712de96c8246bf66ddcc9a0660c17bbfd1fb"
+  },
+  "files": 1,
+  "bOnlyMembers": 6,
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "status": "SOURCE_ONLY_READY_FOR_REVIEW",
+  "execution": "NOT_RUN",
+  "compiler": "NOT_COMPILED",
+  "projectWrites": 0,
+  "factoryActivation": "NONE"
+}

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "finalized": true,
+  "previousHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "previousSource": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "candidate": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildVault.java",
+      "beforeBackup": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\before\\PlanetChildVault.java",
+      "beforeSha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+      "sha256": "2bd6d4f14131d3c2db85b03c4226c78b2f0c37662673343071539f7fda1da7c0",
+      "size": 91155
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "candidate": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift\\apps\\mobile\\ios\\App\\App\\PlanetChildVault.swift",
+      "beforeBackup": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift\\before\\PlanetChildVault.swift",
+      "beforeSha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1",
+      "sha256": "b0b18cadd68765491e7336308c719a1bf1447ecc5fc6c7062087e2f765f8949c",
+      "size": 100146
+    }
+  ],
+  "frozenProofs": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\manifest.json",
+      "sha256": "eac76d83d09f57c96dc455bf7bcd3bec710fc7582720e289654d04acb6b5ac5f"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\READY.json",
+      "sha256": "c8d3662587bf71bc97ce2ec13f18512800103a869e881b6a884608e76518e32b"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\source-preservation.json",
+      "sha256": "0af9e0c9f71d5927d5479b3d7d7fb375573ea85c0f8ac56f23827cf4fff7cb0c"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift\\manifest.json",
+      "sha256": "df09f0b7bf14a3278dfeaeb3fa04712de96c8246bf66ddcc9a0660c17bbfd1fb"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift\\READY.json",
+      "sha256": "b541b1e9a02418bbc89f186dc8c608cbfbc77a3f5ab050159e9119f027ca53c5"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift-scope-a2\\manifest.json",
+      "sha256": "2cdbbc2a1730d12e0333415fbbcf48b28cd1580f71dbc4db541aaa67ddd7b32d"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift-scope-a2\\READY.json",
+      "sha256": "7a81b35b7ba2ab2cbab988db2d6590bae3b88829166ba9e6eac3bc3008d7e21d"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift-scope-a2\\source-preservation.json",
+      "sha256": "c867863752b3c89bab0ef5e152c15969645e6021b511737bde0fb50710023261"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\manifest.json",
+      "sha256": "85db88095359ae6e534c2d62b34cab2ced0c11c230b5161c19d548cded14f124"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\READY.json",
+      "sha256": "211bf8f54fd6e643951dbfae13e6dc536ea024926826f68b37e65ed9bae3b51e"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-primitives-integrator-core-review.json",
+      "sha256": "6ac8b7f42cadf12c097891341e121ce82ce80d3bfd048a56ccfdf7bdb27dc2eb"
+    }
+  ],
+  "peerReviews": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-primitives-android-core-review.json",
+      "sha256": "0845c7082e4e1403ee6dd2b66b84199eb9e2a34a7d760b96dec01ce80e3faeda"
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-native-pin-primitives-swift-review.json",
+      "sha256": "5a768c5895bd52492247d1bb7077d36cbc5da7736e4eb9cf4937153fbcfa14ed"
+    }
+  ],
+  "jvm": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\attempt-f2550e67-7aa8-4ff6-a254-f58c4bc3f9c1\\result.json",
+    "sha256": "ca2982ebdfb0422960d99c5b3b6355de4998bc71bb173a9ae41980e07c005129"
+  }
+}

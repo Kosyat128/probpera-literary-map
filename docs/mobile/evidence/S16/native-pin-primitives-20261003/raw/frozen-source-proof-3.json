@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "kind": "native-pin-primitives-android-source-preservation",
+  "baselineSha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+  "baselineBytes": 65427,
+  "candidateSha256": "2bd6d4f14131d3c2db85b03c4226c78b2f0c37662673343071539f7fda1da7c0",
+  "candidateBytes": 91155,
+  "authorizedInsertionSpans": 3,
+  "oldSpans": [
+    {
+      "label": "Original inspection owns unique primitive context",
+      "beforeLine": 340,
+      "beforeLines": 1,
+      "afterLine": 340,
+      "afterLines": 2
+    },
+    {
+      "label": "Claim refuses an existing actual worker",
+      "beforeLine": 410,
+      "beforeLines": 1,
+      "afterLine": 411,
+      "afterLines": 1
+    }
+  ],
+  "insertion": {
+    "beforeLine": 602,
+    "afterStartLine": 603,
+    "afterEndLine": 868,
+    "lines": 266,
+    "beforeMarker": "    static final int MAX_BYTES = 131072;"
+  },
+  "outsideAuthorizedSpansByteExact": true,
+  "reconstructedSha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1",
+  "finalBaselineLfPreserved": true,
+  "checksActuallyExecuted": 0,
+  "runtime": "NOT_RUN"
+}

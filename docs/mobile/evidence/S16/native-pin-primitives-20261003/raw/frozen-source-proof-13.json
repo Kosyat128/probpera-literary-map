@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-swift-source-review",
+  "status": "ACK",
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportCommit": "d82b5219604689102c31f8e6206929975bb0153c",
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/manifest.json",
+    "sha256": "df09f0b7bf14a3278dfeaeb3fa04712de96c8246bf66ddcc9a0660c17bbfd1fb",
+    "readySha256": "b541b1e9a02418bbc89f186dc8c608cbfbc77a3f5ab050159e9119f027ca53c5",
+    "allSixMembersMatch": true
+  },
+  "ownedSource": {
+    "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "beforeSha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1",
+    "sha256": "b0b18cadd68765491e7336308c719a1bf1447ecc5fc6c7062087e2f765f8949c",
+    "bytes": 100146,
+    "currentProjectBeforeMatches": true,
+    "authorizedOldSpans": 5,
+    "outsideAuthorizedSpansIncludingAppendSeparatorByteExact": true,
+    "appendBoundaryQualification": {
+      "metadataFirstCommentLine": 952,
+      "authorizedAppendFirstLineIncludingSeparator": 951,
+      "authorizedAppendLastLine": 1398,
+      "leadingSeparator": "ONE_LF",
+      "literalAfterLine952ExcludesSeparator": true,
+      "description": "The five unchanged old segments and old EOF through candidate line950 match exactly. The authorized appended block includes its new separator LF at line951; manifest.afterLine952 locates the first comment, while its448-line count includes that separator. No production-byte correction is required."
+    }
+  },
+  "sourceScopeSupplement": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift-scope-a2/manifest.json",
+    "sha256": "2cdbbc2a1730d12e0333415fbbcf48b28cd1580f71dbc4db541aaa67ddd7b32d",
+    "readySha256": "7a81b35b7ba2ab2cbab988db2d6590bae3b88829166ba9e6eac3bc3008d7e21d",
+    "correctedProofSha256": "c867863752b3c89bab0ef5e152c15969645e6021b511737bde0fb50710023261",
+    "metadataOnly": true,
+    "originalSixMembersBoundUnchanged": true,
+    "authorizedAppendLines": "951..1398 inclusive",
+    "firstCommentLine": 952,
+    "compiler": "NOT_COMPILED",
+    "tests": "NOT_RUN"
+  },
+  "reviewed": [
+    "Real private constructor selects CommonCrypto PBKDF2-HMAC-SHA256, SecRandomCopyBytes and sleep-inclusive Darwin monotonic clock; a separate explicit synthetic constructor is not App-selected.",
+    "Technical ASCII4..128 input bounds, independent owned confirmation buffers, exact600000 iteration floor and32-byte salt/credential/verifier; dedicated buffers wipe after actual callback return.",
+    "Three configured-iteration calibration samples each have an explicit1..5000ms budget within the original exclusive native session deadline. Receipt consumption requires the original context identity and is one-use.",
+    "Reservation precedes callbacks; monotonic-ns regression/deadline/reentry checks fence the original session, full expected record and original native worker. Old commit claim now requires workers==0.",
+    "Original96-byte material and pending reply identities retain transfer ownership. Wiping is not settlement; uncertain delivery seals capacity, and unpublished internal construction is discarded only by its original identity.",
+    "Swift CommonCrypto/count syntax, raw buffer bounds, memset_s replacement and private settlement modifications were source-reviewed; actual SDK compiler/link and runtime verification remain unperformed."
+  ],
+  "authoredTests": {
+    "path": "tests/NativePinPrimitiveSyntheticTests.swift.inc",
+    "sha256": "4b270b25e999c189d846feff4382ecef5ddb0aca2e676a0f19a05bd465d0f6a2",
+    "bytes": 13797,
+    "methods": 10,
+    "syntheticMethods": 9,
+    "futureActualCommonCryptoOracleMethods": 1,
+    "registered": false,
+    "compiler": "NOT_COMPILED",
+    "execution": "NOT_RUN",
+    "affectedOld39CaseCoreRegression": "REQUIRED_ROOT_EXECUTION"
+  },
+  "findings": [],
+  "checksExecuted": 0,
+  "projectWrites": 0,
+  "gitExecution": 0,
+  "buildsExecuted": 0,
+  "limitations": {
+    "installedRuntime": "NOT_RUN",
+    "nativeAuthority": "NOT_IMPLEMENTED",
+    "nativeInputUI": "NOT_IMPLEMENTED",
+    "privateHostSettlementAdapter": "NOT_IMPLEMENTED",
+    "genuineRecovery": "NOT_IMPLEMENTED",
+    "factoryActivation": "NONE",
+    "parentAdmission": false,
+    "releaseReady": false
+  }
+}

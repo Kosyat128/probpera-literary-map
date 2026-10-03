@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "count": 24,
+  "assertionCount": 436,
+  "caseNames": [
+    "platform-malformed-native-pin-rejected",
+    "independent-node-600000-oracle",
+    "platform-input-and-signed-iteration-bounds",
+    "platform-cancel-after-return-wipes-output",
+    "production-primitives-factory-unsupported",
+    "original-context-worker-before-first-callback",
+    "three-exact-measured-calibration-samples",
+    "production-policy-digit-budget-guards",
+    "native-ascii-entry-owned-wipe-and-confirmation",
+    "material-one-use-and-original-transfer",
+    "foreign-and-reconstructed-originals-denied",
+    "mutating-pin-and-salt-callbacks-denied",
+    "whole-record-change-during-kdf-denied",
+    "checkpoint-host-change-during-kdf-denied",
+    "exclusive-deadline-and-clock-regression-denied",
+    "measured-budget-and-zero-progress-denied",
+    "cancel-blocked-kdf-retains-worker-and-buffers",
+    "retire-blocked-clock-joins-actual-worker",
+    "commit-denied-while-primitive-worker-live",
+    "material-close-keeps-real-transfer-pending",
+    "material-original-identity-and-settlement-fence",
+    "production-platform-fixed-and-policy-floor",
+    "callback-fault-and-material-mutation-wipes",
+    "local-callback-fence-and-final-full-record-check"
+  ],
+  "stdoutRawSha256": "bf38386c94a645e61c672f29e24902399d6b89b2ba106422df22915e83eb013a",
+  "scope": "NEW24_SYNTHETIC_EXCEPT_PUBLIC_PLATFORM_CRYPTO_ORACLE"
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-checkpoint-input",
+  "finalized": true,
+  "sourceCommit": "c992fefb0b110cf5d010da87aad2d124eace16ce",
+  "previousSource": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "previousReport": "d82b5219604689102c31f8e6206929975bb0153c",
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-primitives.json",
+    "sha256": "f42f2c9905d6b29c7d497e73c2eca67075f59ebf767e4a8c8dca829c47d7d11e"
+  },
+  "previousCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-pin-session.json",
+    "sha256": "512117cfc729bcb90d64574d2a329d2b4bd93839b3806cc5d5fb3a10059cddab"
+  },
+  "jvmResult": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\attempt-f2550e67-7aa8-4ff6-a254-f58c4bc3f9c1\\result.json",
+    "sha256": "ca2982ebdfb0422960d99c5b3b6355de4998bc71bb173a9ae41980e07c005129"
+  },
+  "previousReportCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-pin-session-report-checkpoint.json",
+    "sha256": "1886d4d8eaa389feb09ad07bd839891d644da3c92a905774dcee9d378f05d39f"
+  },
+  "previousEvidence": {
+    "path": "docs/mobile/evidence/S16/native-pin-session-20261003/result.json",
+    "sha256": "bed37ec4d2c44c157a64699157821405e6685e95e55500ee954ddb3afa888215"
+  },
+  "documents": [
+    {
+      "path": "AGENTS.md",
+      "beforeSha256": "c6ad7ca348c523c6521ef6c3e0350fbc7aca3f34218c406bacca346d5e4935ba"
+    },
+    {
+      "path": "docs/mobile/AUTOPILOT_STATE.json",
+      "beforeSha256": "3bcaedf4412b9e6805adb098df908cb8e8b5acb177c03e13757c664eb33c5d7f"
+    },
+    {
+      "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+      "beforeSha256": "6572c0bf507e843f2b1bfc4def00a59e86a2f066c212ce1ae75b6e0bfaf008e8"
+    },
+    {
+      "path": "docs/mobile/STATUS.md",
+      "beforeSha256": "ad2e58d9cd786229748033d934a9e55662d2c018d957fa0243cec88bfa5c48d8"
+    }
+  ],
+  "extraProofs": [
+    {
+      "id": "runner-source",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\run-jvm.mjs",
+        "sha256": "280c6a1500a6152dce5501553cd7bcd76d40a4f1278d0da1adbb27584aa30686"
+      }
+    },
+    {
+      "id": "runner-readme",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-runner-a1\\README.md",
+        "sha256": "b7f1fdab95526325740ee8c971ab6e1aa12c4744fa2cc33fdbf5aa6bf8a48904"
+      }
+    },
+    {
+      "id": "new24-driver-source",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildNativePinPrimitivesJvmDriver.java",
+        "sha256": "26664f82d1bfa47f496e80324cab9b1703a5b671ac11fafcc788e124cb5a6402"
+      }
+    },
+    {
+      "id": "affected39-driver-source",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-android-a2\\jvm\\ru\\probpera\\literaryplanet\\PlanetChildNativePinSessionsJvmDriver.java",
+        "sha256": "211472613d2dd79c18366f247966fc95455d6edad8dd79bd892a0ae736565ca9"
+      }
+    },
+    {
+      "id": "swift-new10-test-source",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift\\tests\\NativePinPrimitiveSyntheticTests.swift.inc",
+        "sha256": "4b270b25e999c189d846feff4382ecef5ddb0aca2e676a0f19a05bd465d0f6a2"
+      }
+    },
+    {
+      "id": "swift-session-test-dependency",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-session-swift-a2\\tests\\NativePinSessionSyntheticTests.swift.inc",
+        "sha256": "75f8a4cc0083ced08b5a105694aff246a90f2d4a2b538283ccbeebf04cf97fd4"
+      }
+    },
+    {
+      "id": "android-public-oracle-request",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\oracle-request.json",
+        "sha256": "d66f7e6ca1f3654c8d407b67d0f12a54e682aceec1523ba8bf46ee47db595f96"
+      }
+    },
+    {
+      "id": "android-scope",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android-a2\\SCOPE.md",
+        "sha256": "a238fd8739fdff7cd1ecf538ec802fa44ef1c0cce2db0e48a91852017ce3574b"
+      }
+    },
+    {
+      "id": "swift-scope",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-swift\\SCOPE.md",
+        "sha256": "2e3e2c8fc8dbb4a1ca41b6425c868c80bc015064493b4ae49682b980f4f1906c"
+      }
+    },
+    {
+      "id": "android-a1-source-proposal-manifest",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android\\manifest.json",
+        "sha256": "f46e3b59d45c69285b5f9fdacf1ebee4e60c93618791575d08a0a975b5d74ee0"
+      }
+    },
+    {
+      "id": "android-a1-source-proposal-ready",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-primitives-android\\READY.json",
+        "sha256": "e6540cc22fd797b022835fca8b7e4de18ccabb06872d7c6ce5a86920ce02774e"
+      }
+    },
+    {
+      "id": "staging-helper-source",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\stage-native-pin-primitives-checkpoint.mjs",
+        "sha256": "7e5711ed002690c3b33bf2a163653bace2b5cbcd13150563aef093acd6d0e0b1"
+      }
+    }
+  ]
+}

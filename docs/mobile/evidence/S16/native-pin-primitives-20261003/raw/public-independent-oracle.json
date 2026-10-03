@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-public-independent-pbkdf2-oracle",
+  "status": "PASS",
+  "algorithm": "PBKDF2-HMAC-SHA256",
+  "iterations": 600000,
+  "keyLength": 32,
+  "passwordBytes": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+  ],
+  "saltHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "expectedHashHex": "1a2310f85fc3b813a2bf714e9a614ec405ae1737795840c31da5915abbb5a44e",
+  "derivationsActuallyExecuted": 1,
+  "startedAt": "2026-10-03T15:03:39.868Z",
+  "finishedAt": "2026-10-03T15:03:39.959Z",
+  "elapsedNs": "90934000",
+  "nodeVersion": "v24.19.0",
+  "nodeExecutable": "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+  "nodeExecutableSha256": "3602f2bb1a10f2cbab4c36886218a33c1ab3db87290e73b033c46c77147d0237",
+  "purpose": "Independent fixed public vector for host JVM comparison and a future separately executed Swift test.",
+  "installedDeviceCalibration": "NOT_RUN",
+  "nativeInput": "NOT_RUN",
+  "privateSecretsRead": false
+}

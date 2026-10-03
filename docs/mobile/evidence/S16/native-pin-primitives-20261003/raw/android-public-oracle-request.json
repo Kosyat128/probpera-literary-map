@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "private-pin-pbkdf2-independent-oracle-request",
+  "algorithm": "PBKDF2-HMAC-SHA256",
+  "derivedBytes": 32,
+  "iterations": 600000,
+  "pinBytes": [
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56
+  ],
+  "saltHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+  "expectedHashHex": null,
+  "execution": "NOT_RUN",
+  "expectedEngine": "node:crypto.pbkdf2Sync",
+  "scope": "Public synthetic vector only; never native-entered PIN or installed-device calibration proof."
+}

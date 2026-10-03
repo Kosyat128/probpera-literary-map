@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-swift-source-preservation",
+  "metadataCorrectionOnly": true,
+  "sourceAndTestsUnchanged": true,
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "target": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+  "originalCandidate": {
+    "manifest": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/manifest.json",
+      "sha256": "df09f0b7bf14a3278dfeaeb3fa04712de96c8246bf66ddcc9a0660c17bbfd1fb"
+    },
+    "ready": {
+      "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/READY.json",
+      "sha256": "b541b1e9a02418bbc89f186dc8c608cbfbc77a3f5ab050159e9119f027ca53c5"
+    }
+  },
+  "before": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/before/PlanetChildVault.swift",
+    "sha256": "b50614fadd84e1e2e8a18c9fd4d8bf3b19fe9fb90951cadb4e9f9d6b6e2c68f1",
+    "bytes": 71177
+  },
+  "after": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-primitives-swift/apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "sha256": "b0b18cadd68765491e7336308c719a1bf1447ecc5fc6c7062087e2f765f8949c",
+    "bytes": 100146
+  },
+  "allowedOldSpans": [
+    {
+      "label": "CommonCrypto import",
+      "beforeLine": 4,
+      "beforeLines": 1,
+      "afterLine": 4,
+      "afterLines": 2
+    },
+    {
+      "label": "Private primitive reply kind",
+      "beforeLine": 578,
+      "beforeLines": 1,
+      "afterLine": 579,
+      "afterLines": 1
+    },
+    {
+      "label": "Owned primitive worker and material slots",
+      "beforeLine": 626,
+      "beforeLines": 1,
+      "afterLine": 627,
+      "afterLines": 2
+    },
+    {
+      "label": "Claim denies overlapping actual primitive work",
+      "beforeLine": 730,
+      "beforeLines": 1,
+      "afterLine": 732,
+      "afterLines": 1
+    },
+    {
+      "label": "Original primitive material settlement",
+      "beforeLine": 908,
+      "beforeLines": 1,
+      "afterLine": 910,
+      "afterLines": 7
+    }
+  ],
+  "appendedBlock": {
+    "afterLine": 951,
+    "firstCommentLine": 952,
+    "lastLineInclusive": 1398,
+    "lines": 448,
+    "characters": 28349,
+    "leadingSeparatorLFIncluded": true
+  },
+  "authorizedAppendIncludesLeadingSeparatorLFAtLine951": true,
+  "originalMetadataQualification": "Original afterLine952 identifies the first comment. Literal authorized append includes preceding separator LF951; production/test bytes are unchanged.",
+  "outsideAllowedSpansAndAppendedBlockUnchanged": true,
+  "beforeBackupExact": true,
+  "sourceInspectionOnly": true,
+  "compiler": "NOT_COMPILED",
+  "tests": "NOT_RUN",
+  "projectWrites": 0,
+  "factoryActivation": "NONE"
+}

@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "headSha": "c992fefb0b110cf5d010da87aad2d124eace16ce",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-03T13:59:06.772Z",
+  "updatedAt": "2026-10-03T15:45:16.274Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1572,7 +1572,10 @@
         "docs/mobile/evidence/S16/native-pin-codec-20261003/evidence-manifest.json",
         "docs/mobile/evidence/S16/native-pin-session-20261003/entry.json",
         "docs/mobile/evidence/S16/native-pin-session-20261003/result.json",
-        "docs/mobile/evidence/S16/native-pin-session-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/native-pin-session-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/native-pin-primitives-20261003/entry.json",
+        "docs/mobile/evidence/S16/native-pin-primitives-20261003/result.json",
+        "docs/mobile/evidence/S16/native-pin-primitives-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -5226,7 +5229,10 @@
         "docs/mobile/evidence/S16/native-pin-codec-20261003/evidence-manifest.json",
         "docs/mobile/evidence/S16/native-pin-session-20261003/entry.json",
         "docs/mobile/evidence/S16/native-pin-session-20261003/result.json",
-        "docs/mobile/evidence/S16/native-pin-session-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/native-pin-session-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/native-pin-primitives-20261003/entry.json",
+        "docs/mobile/evidence/S16/native-pin-primitives-20261003/result.json",
+        "docs/mobile/evidence/S16/native-pin-primitives-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -13291,7 +13297,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Complete the genuine constructor-owned native authority/input/calibration and independent recovery provider against the implemented private Android/Swift PIN session core and strict canonical envelope validators. Authenticate original host/coordinator identity, full expected seed/enrolled record, replay-resistant epoch/checkpoint, trusted same-boot/restart continuity, exact action and one absolute native deadline; grant and retire one durable PIN-only whole-record CAS/readback permission. Supply actual native-to-private-host reply settlement and Parent Gate verification, separately authenticated host-current coordination, admitted child index ports and clear-before-render route/account/profile/lifecycle App wiring. These six remaining tasks are Codex-owned programming. Mechanical session state, synthetic JVM39, codec proofs and build compilation establish no genuine authority or App admission. Keep S03.acceptance IN_PROGRESS11 OPEN, S16 IN_PROGRESS36 OPEN, four original conditions, seven owner inputs, five pending legal reviews, RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. No new D stage, repeated passed scopes for reporting, historical FAIL/NOT_RUN rewriting, deployment, push, merge or publication.",
+    "nextAction": "Continue the private native Android Dialog/keypad and Swift UIKit input work already in progress: exact original host/context/calibration/deadline, lifecycle cancellation and owned native PIN-buffer cleanup. Then complete genuine replay-resistant authority/trusted same-boot continuity, independent recovery, actual private host/coordinator reply settlement, Parent Gate verification and authenticated host-current mapping, admitted child data ports and clear-before-render App/account/profile/lifecycle wiring. These six tasks remain Codex-owned programming. Real private platform KDF/entropy and measured calibration mechanics are implemented inactive; host-JVM24 plus affected39 checks do not establish installed-device calibration, genuine authority, native input or admission. Keep S03 IN_PROGRESS11 OPEN and S16 IN_PROGRESS36 OPEN, four original conditions, seven owner actions, five pending legal reviews, RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Prepare new builds once after the connected input/UI change is integrated; current c992 builds are NOT_RUN and the1784 delivery remains a separate historical checkpoint. No extra D stage, repeated passed scopes for reporting, historical FAIL/NOT_RUN rewriting or unapproved deployment/push/merge/publication.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13672,7 +13678,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
-    "headShaMeaning": "Private native PIN session source 17843151ab0624b2b17102440d0eeb464381bdcb follows source 245c86700e6acc01e8723f8656104c2371e03b4c and report 9f45dc94b993a4ec5da4a5ebc2eacaff19d64363. Actual JVM39 synthetic cases/2598 observed assertions ran once before integration on clean9f45/source245 using the frozen Java bytes that match this source; no literal execution at the later source is claimed. Current Android main/instrumentation, PWA and iOSweb preparations bind all1780 source rows and all4 release bindings. Retained final PIN TypeScript compile inputs are byte-identical; no repeat. Swift/XCTest and installed-native execution remain NOT_RUN; actual genuine provider/input/calibration/recovery/private host ACK and protected App admission remain absent. Current source delta requires prior3c79/a42/full6cf baseline prerequisites and supplies no full standalone clone/full-history integrity.",
+    "headShaMeaning": "Private inactive native PIN primitives source c992fefb0b110cf5d010da87aad2d124eace16ce follows source178431/reportd82b. Actual root host-JVM24 cases/436 assertions and affected original39 cases/2598 assertions ran once at clean reportd82b/source178431 on the exact frozen Java bytes now integrated. One independent public Node600000 PBKDF2 oracle was computed. No literal execution at this later commit, installed Android calibration/provider/input or App admission is claimed. Swift source and10 authored methods remain NOT_COMPILED/NOT_RUN. No new builds, TSC, browser, native OS or release-readiness runs for this source; prior178431 builds/package remain valid for their historical checkpoint. All original acceptance/approval criteria and failures remain preserved.",
     "requirementCount": 342,
     "bilingualRequirementCount": 107,
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",

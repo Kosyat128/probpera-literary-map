@@ -1,0 +1,26 @@
+PRIVATE_PIN_PRIMITIVE_CASE platform-malformed-native-pin-rejected
+PRIVATE_PIN_PRIMITIVE_CASE independent-node-600000-oracle
+PRIVATE_PIN_PRIMITIVE_CASE platform-input-and-signed-iteration-bounds
+PRIVATE_PIN_PRIMITIVE_CASE platform-cancel-after-return-wipes-output
+PRIVATE_PIN_PRIMITIVE_CASE production-primitives-factory-unsupported
+PRIVATE_PIN_PRIMITIVE_CASE original-context-worker-before-first-callback
+PRIVATE_PIN_PRIMITIVE_CASE three-exact-measured-calibration-samples
+PRIVATE_PIN_PRIMITIVE_CASE production-policy-digit-budget-guards
+PRIVATE_PIN_PRIMITIVE_CASE native-ascii-entry-owned-wipe-and-confirmation
+PRIVATE_PIN_PRIMITIVE_CASE material-one-use-and-original-transfer
+PRIVATE_PIN_PRIMITIVE_CASE foreign-and-reconstructed-originals-denied
+PRIVATE_PIN_PRIMITIVE_CASE mutating-pin-and-salt-callbacks-denied
+PRIVATE_PIN_PRIMITIVE_CASE whole-record-change-during-kdf-denied
+PRIVATE_PIN_PRIMITIVE_CASE checkpoint-host-change-during-kdf-denied
+PRIVATE_PIN_PRIMITIVE_CASE exclusive-deadline-and-clock-regression-denied
+PRIVATE_PIN_PRIMITIVE_CASE measured-budget-and-zero-progress-denied
+PRIVATE_PIN_PRIMITIVE_CASE cancel-blocked-kdf-retains-worker-and-buffers
+PRIVATE_PIN_PRIMITIVE_CASE retire-blocked-clock-joins-actual-worker
+PRIVATE_PIN_PRIMITIVE_CASE commit-denied-while-primitive-worker-live
+PRIVATE_PIN_PRIMITIVE_CASE material-close-keeps-real-transfer-pending
+PRIVATE_PIN_PRIMITIVE_CASE material-original-identity-and-settlement-fence
+PRIVATE_PIN_PRIMITIVE_CASE production-platform-fixed-and-policy-floor
+PRIVATE_PIN_PRIMITIVE_CASE callback-fault-and-material-mutation-wipes
+PRIVATE_PIN_PRIMITIVE_CASE local-callback-fence-and-final-full-record-check
+PRIVATE_PIN_PRIMITIVES_OK cases=24 assertions=436
+PRIVATE_PIN_PRIMITIVES_SCOPE synthetic-core=true platform-kdf=true native-input=false genuine-provider=false installed-os=false

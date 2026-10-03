@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-pin-primitives-android-candidate",
+  "finalized": true,
+  "sourceCommit": "17843151ab0624b2b17102440d0eeb464381bdcb",
+  "reportHead": "d82b5219604689102c31f8e6206929975bb0153c",
+  "sourceFingerprint": "1c4bead7fae5cb3b3d9695c12520cb94865c9e91ec0831a2aef8d08677c99afe",
+  "lockfileSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+  "toolVersionsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+  "files": [
+    {
+      "target": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "before": {
+        "path": "before/PlanetChildVault.java",
+        "bytes": 65427,
+        "sha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1"
+      },
+      "after": {
+        "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "bytes": 91155,
+        "sha256": "2bd6d4f14131d3c2db85b03c4226c78b2f0c37662673343071539f7fda1da7c0"
+      }
+    }
+  ],
+  "members": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "bytes": 91155,
+      "sha256": "2bd6d4f14131d3c2db85b03c4226c78b2f0c37662673343071539f7fda1da7c0"
+    },
+    {
+      "path": "before/PlanetChildVault.java",
+      "bytes": 65427,
+      "sha256": "20d2514f5cc1be146bf86538dca1205ae26ef4bf280a743f39d987721ad266b1"
+    },
+    {
+      "path": "jvm/ru/probpera/literaryplanet/PlanetChildNativePinPrimitivesJvmDriver.java",
+      "bytes": 28311,
+      "sha256": "26664f82d1bfa47f496e80324cab9b1703a5b671ac11fafcc788e124cb5a6402"
+    },
+    {
+      "path": "oracle-request.json",
+      "bytes": 539,
+      "sha256": "d66f7e6ca1f3654c8d407b67d0f12a54e682aceec1523ba8bf46ee47db595f96"
+    },
+    {
+      "path": "SCOPE.md",
+      "bytes": 3777,
+      "sha256": "a238fd8739fdff7cd1ecf538ec802fa44ef1c0cce2db0e48a91852017ce3574b"
+    },
+    {
+      "path": "source-preservation.json",
+      "bytes": 1118,
+      "sha256": "0af9e0c9f71d5927d5479b3d7d7fb375573ea85c0f8ac56f23827cf4fff7cb0c"
+    }
+  ],
+  "authorizedSpans": {
+    "oldEdits": 2,
+    "privateInsertion": {
+      "startLine": 603,
+      "endLine": 868
+    },
+    "outsideAuthorizedSpansByteExact": true,
+    "preservation": "source-preservation.json"
+  },
+  "driver": {
+    "path": "jvm/ru/probpera/literaryplanet/PlanetChildNativePinPrimitivesJvmDriver.java",
+    "sha256": "26664f82d1bfa47f496e80324cab9b1703a5b671ac11fafcc788e124cb5a6402",
+    "bytes": 28311,
+    "integration": "B_ONLY_NOT_A_PROJECT_TEST",
+    "class": "ru.probpera.literaryplanet.PlanetChildNativePinPrimitivesJvmDriver",
+    "arguments": [
+      "one_lowercase_64hex_root_independent_public_oracle"
+    ],
+    "expectedCases": 24,
+    "orderedCaseNames": [
+      "platform-malformed-native-pin-rejected",
+      "independent-node-600000-oracle",
+      "platform-input-and-signed-iteration-bounds",
+      "platform-cancel-after-return-wipes-output",
+      "production-primitives-factory-unsupported",
+      "original-context-worker-before-first-callback",
+      "three-exact-measured-calibration-samples",
+      "production-policy-digit-budget-guards",
+      "native-ascii-entry-owned-wipe-and-confirmation",
+      "material-one-use-and-original-transfer",
+      "foreign-and-reconstructed-originals-denied",
+      "mutating-pin-and-salt-callbacks-denied",
+      "whole-record-change-during-kdf-denied",
+      "checkpoint-host-change-during-kdf-denied",
+      "exclusive-deadline-and-clock-regression-denied",
+      "measured-budget-and-zero-progress-denied",
+      "cancel-blocked-kdf-retains-worker-and-buffers",
+      "retire-blocked-clock-joins-actual-worker",
+      "commit-denied-while-primitive-worker-live",
+      "material-close-keeps-real-transfer-pending",
+      "material-original-identity-and-settlement-fence",
+      "production-platform-fixed-and-policy-floor",
+      "callback-fault-and-material-mutation-wipes",
+      "local-callback-fence-and-final-full-record-check"
+    ],
+    "caseMarker": "PRIVATE_PIN_PRIMITIVE_CASE ",
+    "successMarker": "PRIVATE_PIN_PRIMITIVES_OK cases=24 assertions=<actual AtomicInteger count>",
+    "scopeMarker": "PRIVATE_PIN_PRIMITIVES_SCOPE synthetic-core=true platform-kdf=true native-input=false genuine-provider=false installed-os=false",
+    "retainedAffectedDriver": {
+      "path": "../next-native-pin-session-android-a2/jvm/ru/probpera/literaryplanet/PlanetChildNativePinSessionsJvmDriver.java",
+      "sha256": "211472613d2dd79c18366f247966fc95455d6edad8dd79bd892a0ae736565ca9",
+      "bytes": 27854,
+      "expectedCases": 39,
+      "execution": "ROOT_FRESH_AFFECTED_SCOPE_REQUIRED",
+      "codec69Rerun": false
+    }
+  },
+  "platform": {
+    "kdf": "fixed SecretKeyFactory PBKDF2WithHmacSHA256/PBEKeySpec",
+    "androidDocumentedMinimumApi": 26,
+    "clientMinSdk": 24,
+    "unavailableBehavior": "FAIL_CLOSED_NO_FALLBACK",
+    "iterations": {
+      "minimum": 600000,
+      "maximum": 2147483647,
+      "configuredUint32AboveSignedInt": "REFUSE_WITHOUT_CAST_OR_REDUCTION"
+    },
+    "customCrypto": false,
+    "nativeFactory": "NULL",
+    "providerHeapErasureClaim": false
+  },
+  "checksActuallyExecuted": 0,
+  "compile": "NOT_RUN",
+  "newDriverExecution": "NOT_RUN",
+  "installedOs": "NOT_RUN",
+  "genuineNativeProvider": "NOT_IMPLEMENTED",
+  "nativeInputUi": "NOT_IMPLEMENTED",
+  "genuineRecovery": "NOT_IMPLEMENTED",
+  "genuineHostAdapter": "NOT_IMPLEMENTED"
+}
