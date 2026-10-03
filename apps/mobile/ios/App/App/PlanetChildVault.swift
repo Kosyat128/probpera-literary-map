@@ -3,6 +3,7 @@ import Security
 import CryptoKit
 import Darwin
 import CommonCrypto
+import UIKit
 
 /** Native-only SPI. The sole factory below admits no implementation. Neither
  * Keychain, a JS flag nor a mock constructor witness proves this guarantee.
@@ -626,6 +627,7 @@ fileprivate final class OwnedPinInspection {
     var workers=0, transfers=0, threads: [ObjectIdentifier:Int] = [:], session: OwnedPinSession?
     var pendingReplies: [ObjectIdentifier:PinNativeReply] = [:], terminalReply: PinNativeReply?
     var primitiveWorker: PinPrimitiveWork?, primitiveMaterial: PinPrimitiveMaterial?
+    var nativeInput: PinNativeInputSession?, nativeInputHandoff=false
     init(owner: NativePinSessions, wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64) {
         self.owner=owner; self.wireId=wireId; self.action=action; self.timeoutMs=timeoutMs
     }
@@ -729,7 +731,7 @@ fileprivate final class NativePinSessions {
     }
     private func claim(_ inspection: OwnedPinInspection,_ expected: PinSessionPhase,_ next: PinSessionPhase) throws {
         condition.lock(); defer { condition.unlock() }; try liveLocked(inspection)
-        try Self.require(!inspection.retiring && inspection.phase==expected && inspection.workers==0); inspection.phase=next; workerLocked(inspection)
+        try Self.require(!inspection.retiring && inspection.phase==expected && inspection.workers==0 && inspection.nativeInput==nil); inspection.phase=next; workerLocked(inspection)
     }
     private func failed(_ inspection: OwnedPinInspection,_ error: Error,_ publicationEntered: Bool) {
         condition.lock(); defer { condition.unlock() }
@@ -910,6 +912,7 @@ fileprivate final class NativePinSessions {
         if reply.kind == .primitive {
             guard let material=reply.inspection.primitiveMaterial else { throw PlanetChildVault.Failure.unavailable }
             try Self.require(material.owner === self && material.reply === reply && material.published && !material.settled
+                && reply.inspection.workers==0 && reply.inspection.nativeInput==nil
                 && material.context.session === reply.session && material.context.inspection === reply.inspection)
             material.settled=true; reply.inspection.primitiveMaterial=nil
         }
@@ -936,7 +939,7 @@ fileprivate final class NativePinSessions {
             try ownLocked(inspection)
             try Self.require(!inspection.retiring && inspection.threads[ObjectIdentifier(Thread.current)]==nil)
             inspection.retiring=true
-            while inspection.workers != 0 || inspection.transfers != 0 { condition.wait() }
+            while inspection.workers != 0 || inspection.transfers != 0 || inspection.nativeInput != nil { condition.wait() }
             inspection.retirementFenced=true; condition.unlock()
         } catch { condition.unlock(); throw error }
         do { try io.locked { _ in try authority.retire(inspection) } }
@@ -958,7 +961,7 @@ fileprivate final class PinPrimitiveWork {
     init(owner: NativePinSessions, session: OwnedPinSession) { self.owner=owner; self.session=session }
 }
 fileprivate extension NativePinSessions {
-    func startPrimitiveWork(_ session: OwnedPinSession) throws -> PinPrimitiveWork {
+    func startPrimitiveWork(_ session: OwnedPinSession, inputHandoff: PinNativeInputSession?=nil) throws -> PinPrimitiveWork {
         condition.lock()
         let work: PinPrimitiveWork
         do {
@@ -966,7 +969,10 @@ fileprivate extension NativePinSessions {
             try Self.require(session.owner === self && session.inspection.session === session && !session.disposed
                 && !session.inspection.retiring && session.inspection.phase == .begun
                 && session.inspection.workers == 0 && session.inspection.transfers == 0
-                && session.inspection.primitiveWorker == nil && session.inspection.primitiveMaterial == nil)
+                && session.inspection.primitiveWorker == nil && session.inspection.primitiveMaterial == nil
+                && ((session.inspection.nativeInput == nil && inputHandoff == nil)
+                    || (session.inspection.nativeInput === inputHandoff && session.inspection.nativeInputHandoff
+                        && inputHandoff?.matchesSession(session) == true)))
             work=PinPrimitiveWork(owner:self,session:session)
             session.inspection.primitiveWorker=work; workerLocked(session.inspection)
         } catch { condition.unlock(); throw error }
@@ -1045,7 +1051,7 @@ fileprivate extension NativePinSessions {
         condition.lock(); let inspection=material.context.inspection
         let valid=material.owner === self && inspection.primitiveMaterial === material && material.published
             && !material.settled && material.reply.owner === self && material.reply.kind == .primitive
-            && material.reply.session === material.context.session
+            && material.reply.session === material.context.session && inspection.workers==0
         condition.unlock(); try Self.require(valid)
         try settleReply(material.reply,delivery:delivery)
     }
@@ -1105,6 +1111,7 @@ fileprivate final class PinPrimitiveInput: PinPrimitiveDisposable {
     private let lock=NSLock()
     private var storage: PinPrimitiveBytes?
     init(_ bytes: Data) throws { storage=try PinPrimitiveBytes(bytes) }
+    init(owned: PinPrimitiveBytes) { storage=owned }
     func take() throws -> PinPrimitiveBytes {
         lock.lock(); defer { lock.unlock() }
         guard let result=storage else { throw PinPrimitiveFailure.denied }
@@ -1266,14 +1273,14 @@ fileprivate final class PinNativePrimitives {
         // inferred from this numeric comparison or from monotonicity alone.
         guard point.uptimeMs<=ns/1000000 else { throw PinPrimitiveFailure.unavailable }
     }
-    private func perform<T: PinPrimitiveDisposable>(_ context: PinPrimitiveContext,
+    private func perform<T: PinPrimitiveDisposable>(_ context: PinPrimitiveContext, inputHandoff: PinNativeInputSession?=nil,
                                                      _ task: (PinPrimitiveJob,PinPrimitiveWork) throws -> T) throws -> T {
         lock.lock()
         guard active==nil && !disposed && context.owner === owner else { lock.unlock(); throw PinPrimitiveFailure.busy }
         let job=PinPrimitiveJob(context); active=job; lock.unlock() // Before every injected callback.
         var work: PinPrimitiveWork?, result: T?
         do {
-            let lease=try owner.startPrimitiveWork(context.session); work=lease
+            let lease=try owner.startPrimitiveWork(context.session,inputHandoff:inputHandoff); work=lease
             try current(job,lease); result=try task(job,lease); try current(job,lease)
             _=try sample(job)
             // All actual clock/current/engine callbacks have returned before
@@ -1352,8 +1359,20 @@ fileprivate final class PinNativePrimitives {
     }
     func prepare(_ context: PinPrimitiveContext, first: PinPrimitiveInput, confirmation: PinPrimitiveInput,
                  calibration receipt: PinPrimitiveCalibration) throws -> PinPrimitiveMaterial {
+        try prepareOwned(context,first:first,confirmation:confirmation,calibration:receipt,inputHandoff:nil)
+    }
+    func prepareFromInput(_ input: PinNativeInputSession, context: PinPrimitiveContext,
+                          first: PinPrimitiveInput, confirmation: PinPrimitiveInput,
+                          calibration receipt: PinPrimitiveCalibration) throws -> PinPrimitiveMaterial {
+        guard input.matchesPreparation(self,context:context,receipt:receipt) else {
+            first.close(); confirmation.close(); throw PinPrimitiveFailure.denied
+        }
+        return try prepareOwned(context,first:first,confirmation:confirmation,calibration:receipt,inputHandoff:input)
+    }
+    private func prepareOwned(_ context: PinPrimitiveContext, first: PinPrimitiveInput, confirmation: PinPrimitiveInput,
+                              calibration receipt: PinPrimitiveCalibration,inputHandoff: PinNativeInputSession?) throws -> PinPrimitiveMaterial {
         defer { first.close(); confirmation.close() }
-        return try perform(context) { job,work in
+        return try perform(context,inputHandoff:inputHandoff) { job,work in
             lock.lock()
             let valid=calibration === receipt && receipt.consume(owner:self,context:context,
                 iterations:context.session.policy.iterations,maximum:maximumDerivationMs)
@@ -1381,11 +1400,14 @@ fileprivate final class PinNativePrimitives {
             return try owner.primitiveMaterial(work,context:context,bytes:bytes,iterations:receipt.iterations)
         }
     }
-    func cancel(_ context: PinPrimitiveContext) throws {
+    func revokeInput(_ context: PinPrimitiveContext) {
         lock.lock()
         if let job=active, job.context.matches(context) { job.cancelled=true }
         if let receipt=calibration, receipt.context.matches(context) { receipt.close(); calibration=nil }
         lock.unlock()
+    }
+    func cancel(_ context: PinPrimitiveContext) throws {
+        revokeInput(context)
         // Existing core revokes immediately, before its actual cancel callback;
         // both callbacks and KDF still count as actual workers until they settle.
         try owner.cancel(context.inspection)
@@ -1396,3 +1418,524 @@ fileprivate final class PinNativePrimitives {
     }
     deinit { close() }
 }
+
+
+/** Native UIKit PIN entry mechanics only. No App/bridge/factory caller is wired.
+ * The original genuine host/session/action/current/recovery admission is still
+ * unavailable. A keypad tap is an input event, never Parent Gate permission.
+ * Owned raw digit buffers are ephemeral; UIKit receives only public keypad
+ * labels and masked length. UIKit/accessibility/OS memory erasure is not claimed. */
+fileprivate enum PinNativeInputLocale { case ru, en }
+fileprivate enum PinNativeInputFailure: Error { case cancelled, unavailable }
+fileprivate final class PinNativeDigitBuffer {
+    private let lock=NSLock(), storage: PinPrimitiveBytes
+    private(set) var count=0
+    let maximum: Int
+    init(maximum: Int) throws {
+        guard maximum>=4 && maximum<=128 else { throw PinNativeInputFailure.unavailable }
+        self.maximum=maximum; storage=try PinPrimitiveBytes(count:128)
+    }
+    func append(_ digit: UInt8) throws {
+        lock.lock(); defer { lock.unlock() }
+        guard digit>=48 && digit<=57 && count<maximum else { throw PinNativeInputFailure.unavailable }
+        try storage.write { $0[count]=digit }; count+=1
+    }
+    func removeLast() throws {
+        lock.lock(); defer { lock.unlock() }
+        guard count>0 else { return }; count-=1; try storage.write { $0[count]=0 }
+    }
+    func clear() {
+        lock.lock(); defer { lock.unlock() }; count=0
+        try? storage.write { _=memset_s($0.baseAddress!,128,0,128) }
+    }
+    func move(minimum: Int) throws -> PinPrimitiveInput {
+        lock.lock(); defer { lock.unlock() }
+        guard count>=minimum && count<=maximum else { throw PinNativeInputFailure.unavailable }
+        let owned=try PinPrimitiveBytes(count:count)
+        do {
+            try storage.read { source in try owned.write { destination in
+                destination.baseAddress!.copyMemory(from:source.baseAddress!,byteCount:count)
+            } }
+            try storage.write { _=memset_s($0.baseAddress!,128,0,128) }; count=0
+            return PinPrimitiveInput(owned:owned)
+        } catch { owned.close(); throw error }
+    }
+    deinit { storage.close() }
+}
+fileprivate extension PinPrimitiveCalibration {
+    func validatesInput(owner candidate: PinNativePrimitives, context candidateContext: PinPrimitiveContext,
+                        iterations count: UInt64, maximum: UInt64) -> Bool {
+        lock.lock(); defer { lock.unlock() }
+        return owner === candidate && !consumed && context.matches(candidateContext)
+            && UInt64(iterations)==count && maximumDerivationMs==maximum && samplesNs.count==3
+    }
+}
+fileprivate extension PinNativePrimitives {
+    func inputLimits() -> (Int,Int) { (minDigits,maxDigits) }
+    // Original receipt identity is checked without consuming it; prepare owns
+    // the actual one-use consume. UI input creates no calibration authority.
+    func validateInputOriginals(_ context: PinPrimitiveContext,_ receipt: PinPrimitiveCalibration) throws {
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed && active==nil && context.owner === owner && calibration === receipt
+            && receipt.validatesInput(owner:self,context:context,iterations:context.session.policy.iterations,maximum:maximumDerivationMs)
+        else { throw PinNativeInputFailure.unavailable }
+    }
+}
+fileprivate extension NativePinSessions {
+    // Denial-only local observation. It neither authenticates host-current nor
+    // grants permission; actual IO/current authority fences remain mandatory.
+    func inputStillLive(_ session: OwnedPinSession,input: PinNativeInputSession) -> Bool {
+        condition.lock(); defer { condition.unlock() }
+        let inspection=session.inspection
+        return session.owner === self && active === inspection && inspection.session === session
+            && !session.disposed && !inspection.cancelled && !inspection.sealed && !inspection.retiring
+            && inspection.phase == .begun && inspection.nativeInput === input
+    }
+    func startInputWork(_ session: OwnedPinSession, input: PinNativeInputSession) throws -> PinPrimitiveWork {
+        condition.lock()
+        let work: PinPrimitiveWork
+        do {
+            try liveLocked(session.inspection)
+            try Self.require(session.owner === self && session.inspection.session === session && !session.disposed
+                && !session.inspection.retiring && session.inspection.phase == .begun
+                && session.inspection.workers==0 && session.inspection.transfers==0
+                && session.inspection.primitiveWorker==nil && session.inspection.primitiveMaterial==nil
+                && session.inspection.nativeInput==nil)
+            work=PinPrimitiveWork(owner:self,session:session)
+            session.inspection.nativeInput=input; session.inspection.primitiveWorker=work; workerLocked(session.inspection)
+        } catch { condition.unlock(); throw error }
+        condition.unlock()
+        do { try sessionFence(session); return work }
+        catch { failed(session.inspection,error,false); _=finishInputWork(work,input:input); throw error }
+    }
+    func deliverInputMaterial(_ material: PinPrimitiveMaterial,_ task: () throws -> Void) throws {
+        let session=material.context.session, inspection=session.inspection
+        condition.lock()
+        do {
+            try liveLocked(inspection)
+            try Self.require(material.owner === self && inspection.primitiveMaterial === material
+                && material.published && !material.settled && inspection.pendingReplies[ObjectIdentifier(material.reply)] === material.reply
+                && inspection.workers==0 && inspection.nativeInput?.matchesContext(material.context) == true && inspection.nativeInputHandoff && inspection.primitiveWorker==nil)
+            workerLocked(inspection)
+        } catch { condition.unlock(); throw error }
+        condition.unlock()
+        defer { settleWorker(inspection) } // The same actual delivery executor.
+        func fence() throws {
+            try io.locked { transaction in
+                try sessionFence(session)
+                var returned=try transaction.read(); defer { returned.resetBytes(in:0..<returned.count) }; try bounded(returned)
+                var expected=try session.expected.copy(); defer { expected.resetBytes(in:0..<expected.count) }
+                try Self.require(returned==expected); try byteFence(returned,session.checksum)
+                _=try current(session,returned,session.checksum,session.revision); try sessionFence(session)
+            }
+        }
+        do { try fence(); try task(); try fence() }
+        catch { failed(inspection,error,false); material.close(); throw error }
+    }
+    func deliverInputFailure(_ session: OwnedPinSession,_ task: () throws -> Void) throws {
+        let inspection=session.inspection
+        condition.lock()
+        do {
+            try ownLocked(inspection)
+            // A denial callback has no PIN/material/permission payload. It still
+            // joins actual native work; no callback starts past retirement fence.
+            try Self.require(session.owner === self && inspection.session === session && !inspection.retirementFenced)
+            workerLocked(inspection)
+        } catch { condition.unlock(); throw error }
+        condition.unlock(); defer { settleWorker(inspection) }
+        do { try task() } catch { failed(inspection,error,false); throw error }
+    }
+    func releaseInput(_ session: OwnedPinSession,input: PinNativeInputSession) {
+        condition.lock(); defer { condition.unlock() }
+        let inspection=session.inspection
+        if inspection.nativeInput === input { inspection.nativeInput=nil; inspection.nativeInputHandoff=false; condition.broadcast() }
+    }
+    @discardableResult
+    func finishInputWork(_ work: PinPrimitiveWork,input: PinNativeInputSession) -> Bool {
+        condition.lock()
+        let inspection=work.session.inspection
+        let valid=work.owner === self && inspection.nativeInput === input && inspection.primitiveWorker === work
+        if valid { inspection.nativeInputHandoff=true }
+        condition.unlock()
+        if !valid { try? sealUnknown(inspection); return false }
+        return finishPrimitiveWork(work) // The same dedicated executor thread.
+    }
+}
+/** One native input request owns one dedicated executor and one original core
+ * worker. That executor performs IO/cancel and joins all main UI callbacks.
+ * Main does no protected IO, KDF, worker settlement or native retirement.
+ * Completion may hand off original material to a future private native host;
+ * no implementation or successful transport ACK is supplied here. */
+fileprivate final class PinNativeInputSession {
+    private let condition=NSCondition()
+    private let primitives: PinNativePrimitives, context: PinPrimitiveContext, receipt: PinPrimitiveCalibration
+    private let locale: PinNativeInputLocale, minimum: Int, maximum: Int, clock: PinPrimitiveClock
+    private let delivered: (Result<PinPrimitiveMaterial,PinNativeInputFailure>) throws -> Void
+    private weak var host: UIViewController?
+    private weak var window: UIWindow?
+    private weak var scene: UIWindowScene?
+    private weak var originalRoot: UIViewController?
+    private let digits: PinNativeDigitBuffer
+    private var controller: PinNativePinViewController?
+    private var timer: Timer?, observers=[NSObjectProtocol]()
+    // Every state field below is read/written under condition; only UIKit
+    // objects, digits and observer/timer registrations are main-thread owned.
+    private var started=false, terminal=false, cancelled=false, submitted=false, uiClean=false, finished=false
+    private var queuedUI=0, executingUI=0, completions=0, presentationRequested=false, presentationReturned=false
+    private var dismissRequested=false, cancellationStarted=false, cancellationPending=0, lastNs: UInt64?
+    private var first: PinPrimitiveInput?, confirmation: PinPrimitiveInput?
+    init(primitives: PinNativePrimitives, context: PinPrimitiveContext, calibration: PinPrimitiveCalibration,
+         host: UIViewController, locale: PinNativeInputLocale, minimum: Int, maximum: Int,
+         delivered: @escaping (Result<PinPrimitiveMaterial,PinNativeInputFailure>) throws -> Void) throws {
+        guard Thread.isMainThread, minimum>=4, maximum>=minimum, maximum<=128,
+            let window=host.viewIfLoaded?.window, let scene=window.windowScene,
+            scene.activationState == .foregroundActive, UIApplication.shared.applicationState == .active,
+            !window.isHidden, !host.isBeingDismissed, host.presentedViewController==nil,
+            let root=window.rootViewController else { throw PinNativeInputFailure.unavailable }
+        let limits=primitives.inputLimits()
+        guard minimum==limits.0 && maximum==limits.1 else { throw PinNativeInputFailure.unavailable }
+        try primitives.validateInputOriginals(context,calibration)
+        self.primitives=primitives; self.context=context; receipt=calibration; self.host=host
+        self.window=window; self.scene=scene; originalRoot=root; self.locale=locale
+        self.minimum=minimum; self.maximum=maximum; self.delivered=delivered
+        clock=ApplePinPrimitiveClock(); digits=try PinNativeDigitBuffer(maximum:maximum)
+    }
+    func matchesContext(_ candidate: PinPrimitiveContext) -> Bool { context.matches(candidate) }
+    func matchesSession(_ session: OwnedPinSession) -> Bool { context.session === session && context.owner === session.owner }
+    func matchesPreparation(_ candidate: PinNativePrimitives,context candidateContext: PinPrimitiveContext,
+                            receipt candidateReceipt: PinPrimitiveCalibration) -> Bool {
+        primitives === candidate && context.matches(candidateContext) && receipt === candidateReceipt
+    }
+    func start() throws {
+        guard Thread.isMainThread else { throw PinNativeInputFailure.unavailable }
+        condition.lock()
+        guard !started else { condition.unlock(); throw PinNativeInputFailure.unavailable }
+        started=true; condition.unlock()
+        // No injected executor, new deadline, stored PIN or JS callback.
+        Thread { [self] in run() }.start()
+    }
+    private func postUI(_ task: @escaping () -> Void) {
+        condition.lock(); queuedUI+=1; condition.unlock()
+        DispatchQueue.main.async { [self] in
+            condition.lock(); queuedUI-=1; executingUI+=1; condition.unlock()
+            defer { condition.lock(); executingUI-=1; condition.broadcast(); condition.unlock() }
+            task()
+        }
+    }
+    private func event(_ task: () -> Void) {
+        precondition(Thread.isMainThread)
+        condition.lock(); executingUI+=1; condition.unlock()
+        defer { condition.lock(); executingUI-=1; condition.broadcast(); condition.unlock() }; task()
+    }
+    private func localDeadline() throws {
+        let ns=try clock.nanoseconds()
+        guard context.owner.inputStillLive(context.session,input:self) else {
+            throw PinNativeInputFailure.cancelled
+        }
+        condition.lock(); defer { condition.unlock() }
+        guard ns>0, ns/1000000>=context.capturedUptimeMs, ns/1000000<context.deadlineUptimeMs,
+            lastNs==nil || ns>=lastNs! else { throw PinNativeInputFailure.unavailable }
+        lastNs=ns
+    }
+    private func hostCurrent(showing: Bool) -> Bool {
+        guard Thread.isMainThread, let host=host, let window=window, let scene=scene,
+            window.windowScene === scene, window.rootViewController === originalRoot, !window.isHidden,
+            scene.activationState == .foregroundActive, UIApplication.shared.applicationState == .active,
+            !host.isBeingDismissed else { return false }
+        if !showing { return host.viewIfLoaded?.window === window && host.presentedViewController==nil }
+        // A modal legitimately changes host focus/topmost visibility. Bind its
+        // exact original presentation chain/window/scene, not host viewDidAppear.
+        guard let controller=controller, host.presentedViewController === controller,
+            controller.presentingViewController === host else { return false }
+        condition.lock(); let returned=presentationReturned; condition.unlock()
+        return !returned || controller.viewIfLoaded?.window === window
+    }
+    private func installLifecycle() {
+        let center=NotificationCenter.default
+        for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification] {
+            observers.append(center.addObserver(forName:name,object:nil,queue:.main) { [weak self] _ in self?.cancel() })
+        }
+        if let scene=scene {
+            for name in [UIScene.willDeactivateNotification,UIScene.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
+                observers.append(center.addObserver(forName:name,object:scene,queue:.main) { [weak self] _ in self?.cancel() })
+            }
+        }
+        timer=Timer.scheduledTimer(withTimeInterval:0.05,repeats:true) { [weak self] _ in
+            guard let input=self else { return }
+            input.event {
+                input.condition.lock()
+                let stopped=input.cancelled || input.finished
+                let cleaned=input.uiClean
+                let transitioning=input.terminal && !cleaned
+                input.condition.unlock()
+                if stopped { return }
+                do { try input.localDeadline()
+                    if transitioning { return } // Deadline still revokes/wipes during an owned transition.
+                    guard input.hostCurrent(showing:!cleaned) else { input.cancel(); return }
+                } catch { input.cancel() }
+            }
+        }
+        if let timer=timer { RunLoop.main.add(timer,forMode:.common) }
+    }
+    private func show() {
+        precondition(Thread.isMainThread)
+        condition.lock(); let stopped=terminal; condition.unlock()
+        if stopped { clearUI(); return }
+        do { try localDeadline(); guard hostCurrent(showing:false),let host=host else { cancel(); return }
+            let view=PinNativePinViewController(owner:self,locale:locale,minimum:minimum,maximum:maximum)
+            controller=view; view.modalPresentationStyle = .overFullScreen; view.isModalInPresentation=true
+            installLifecycle()
+            condition.lock(); presentationRequested=true; completions+=1; condition.unlock()
+            host.present(view,animated:false) { [self] in event {
+                condition.lock(); presentationReturned=true; completions-=1; let stopped=terminal; condition.broadcast(); condition.unlock()
+                if stopped { requestDismiss() }
+                else if !hostCurrent(showing:true) { cancel() }
+            } }
+        } catch { cancel() }
+    }
+    private func clearUI() {
+        precondition(Thread.isMainThread)
+        digits.clear(); controller?.disableAndClear()
+        requestDismiss()
+    }
+    private func removeLifecycle() {
+        precondition(Thread.isMainThread)
+        timer?.invalidate(); timer=nil
+        let center=NotificationCenter.default; observers.forEach { center.removeObserver($0) }; observers.removeAll()
+    }
+    private func requestDismiss() {
+        precondition(Thread.isMainThread)
+        condition.lock()
+        if dismissRequested { condition.unlock(); return }
+        if presentationRequested && !presentationReturned { condition.unlock(); return } // Join actual presentation completion.
+        guard let view=controller else { uiClean=true; condition.broadcast(); condition.unlock(); return }
+        dismissRequested=true
+        let presented=view.presentingViewController != nil
+        if presented { completions+=1 }; condition.unlock()
+        if presented {
+            // UIKit's concrete original presenter owns this dismissal. A lost
+            // completion remains pending even if the visible modal disappears.
+            let presenter=view.presentingViewController!
+            presenter.dismiss(animated:false) { [self] in event {
+                condition.lock(); completions-=1; uiClean=true; condition.broadcast(); condition.unlock()
+            } }
+        } else {
+            // Actual presentation completion returned and UIKit owns no modal.
+            condition.lock(); uiClean=true; condition.broadcast(); condition.unlock()
+        }
+    }
+    func cancel() {
+        precondition(Thread.isMainThread)
+        event {
+            condition.lock()
+            let already=cancelled; terminal=true; cancelled=true
+            first?.close(); first=nil; confirmation?.close(); confirmation=nil
+            condition.broadcast(); condition.unlock()
+            if !already {
+                clearUI()
+                // Pure immediate revocation on main; protected cancellation IO
+                // runs on its own actual counted native worker, never main.
+                primitives.revokeInput(context)
+                beginCancellation()
+            }
+        }
+    }
+    private func beginCancellation() {
+        condition.lock()
+        if cancellationStarted { condition.unlock(); return }
+        cancellationStarted=true; cancellationPending+=1; condition.unlock()
+        Thread { [self] in
+            do { try primitives.cancel(context) } catch { try? context.owner.sealUnknown(context.inspection) }
+            condition.lock(); cancellationPending-=1; condition.broadcast(); condition.unlock()
+        }.start()
+    }
+    func disappeared() {
+        precondition(Thread.isMainThread)
+        condition.lock(); let expected=terminal && dismissRequested; condition.unlock()
+        if !expected { cancel() }
+    }
+    func tapDigit(_ digit: UInt8) {
+        event {
+            condition.lock(); let stopped=terminal; condition.unlock(); guard !stopped else { return }
+            do { try localDeadline(); guard hostCurrent(showing:true) else { cancel(); return }
+                if digits.count>=maximum { return }
+                try digits.append(digit); controller?.update(count:digits.count)
+            } catch { cancel() }
+        }
+    }
+    func deleteDigit() {
+        event {
+            condition.lock(); let stopped=terminal; condition.unlock(); guard !stopped else { return }
+            do { try localDeadline(); guard hostCurrent(showing:true) else { cancel(); return }
+                try digits.removeLast(); controller?.update(count:digits.count)
+            } catch { cancel() }
+        }
+    }
+    func next() {
+        event {
+            condition.lock(); let stopped=terminal; let confirming=first != nil; condition.unlock(); guard !stopped else { return }
+            do {
+                try localDeadline(); guard hostCurrent(showing:true) else { cancel(); return }
+                let input=try digits.move(minimum:minimum)
+                condition.lock()
+                if terminal { condition.unlock(); input.close(); return }
+                if !confirming { first=input; condition.unlock(); controller?.confirm(); controller?.update(count:0) }
+                else {
+                    let previous=first; first=nil; condition.unlock()
+                    guard let previous=previous else { input.close(); throw PinNativeInputFailure.unavailable }
+                    var left: PinPrimitiveBytes?, right: PinPrimitiveBytes?
+                    do {
+                        left=try previous.take(); right=try input.take()
+                        guard try left!.equals(right!) else {
+                            left?.close(); right?.close(); controller?.restartAfterMismatch(); controller?.update(count:0); return
+                        }
+                        condition.lock()
+                        if terminal { condition.unlock(); left?.close(); right?.close(); return }
+                        first=PinPrimitiveInput(owned:left!); confirmation=PinPrimitiveInput(owned:right!)
+                        left=nil; right=nil; terminal=true; submitted=true; condition.broadcast(); condition.unlock(); clearUI()
+                    } catch { left?.close(); right?.close(); throw error }
+                }
+            } catch { cancel() }
+        }
+    }
+    private func run() {
+        var work: PinPrimitiveWork?, output: PinPrimitiveMaterial?
+        var deliveryEntered=false
+        do {
+            try primitives.validateInputOriginals(context,receipt)
+            work=try context.owner.startInputWork(context.session,input:self) // Same executor settles it.
+            _=try context.owner.currentPrimitiveWork(work!)
+            postUI { [self] in show() }
+            condition.lock()
+            while true {
+                if terminal && uiClean && queuedUI==0 && executingUI==0 && completions==0 && cancellationPending==0 { break }
+                condition.wait()
+            }
+            let accepted=submitted && !cancelled
+            let ownedFirst=first, ownedConfirmation=confirmation; first=nil; confirmation=nil
+            condition.unlock()
+            let nativeValid=context.owner.finishInputWork(work!,input:self); work=nil
+            defer { ownedFirst?.close(); ownedConfirmation?.close() }
+            guard accepted && nativeValid,let first=ownedFirst,let confirmation=ownedConfirmation else { throw PinNativeInputFailure.cancelled }
+            // Actual UIKit work has settled. Existing prepare registers its own
+            // synchronous worker; late cancel/retire/host-current/deadline denies.
+            output=try primitives.prepareFromInput(self,context:context,first:first,confirmation:confirmation,calibration:receipt)
+            try context.owner.deliverInputMaterial(output!) {
+                condition.lock(); let accepted = !cancelled; condition.unlock()
+                guard accepted else { throw PinNativeInputFailure.cancelled }
+                deliveryEntered=true; try delivered(.success(output!))
+            }
+            output=nil
+        } catch {
+            output?.close()
+            if output != nil { try? context.owner.sealUnknown(context.inspection) } // Unknown original material handoff.
+            if let owned=work {
+                postUI { [self] in cancel() }
+                condition.lock()
+                while !uiClean || queuedUI != 0 || executingUI != 0 || completions != 0 || cancellationPending != 0 { condition.wait() }
+                first?.close(); first=nil; confirmation?.close(); confirmation=nil; condition.unlock()
+                _=context.owner.finishInputWork(owned,input:self); work=nil
+            }
+            if !deliveryEntered {
+                try? context.owner.deliverInputFailure(context.session) {
+                    try delivered(.failure(error is PinNativeInputFailure ? .cancelled:.unavailable))
+                }
+            }
+        }
+        postUI { [self] in removeLifecycle(); controller=nil }
+        condition.lock()
+        while queuedUI != 0 || executingUI != 0 || completions != 0 || cancellationPending != 0 { condition.wait() }
+        condition.unlock()
+        context.owner.releaseInput(context.session,input:self)
+        condition.lock(); finished=true; condition.broadcast(); condition.unlock()
+    }
+    deinit { timer?.invalidate(); observers.forEach { NotificationCenter.default.removeObserver($0) }; first?.close(); confirmation?.close() }
+}
+/** Actual UIKit digit keypad; no UITextField, keyboard, paste, String PIN,
+ * restoration identifier, screenshot cache or native/JS serialization path.
+ * Public digit button labels are not entered PIN values. VoiceOver exposes
+ * action names and masked length; system-managed speech memory is out of scope. */
+fileprivate final class PinNativePinViewController: UIViewController {
+    private weak var owner: PinNativeInputSession?
+    private let locale: PinNativeInputLocale, minimum: Int, maximum: Int
+    private let titleLabel=UILabel(), countLabel=UILabel(), hintLabel=UILabel(), continueButton=UIButton(type:.system)
+    private var inputButtons=[UIButton]()
+    init(owner: PinNativeInputSession,locale: PinNativeInputLocale,minimum: Int,maximum: Int) {
+        self.owner=owner; self.locale=locale; self.minimum=minimum; self.maximum=maximum; super.init(nibName:nil,bundle:nil)
+    }
+    required init?(coder: NSCoder) { return nil }
+    private func text(_ ru: String,_ en: String) -> String { locale == .ru ? ru:en }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let navy=UIColor(red:0.025,green:0.06,blue:0.12,alpha:1), gold=UIColor(red:0.84,green:0.72,blue:0.46,alpha:1)
+        view.backgroundColor=navy; view.tintColor=gold; view.accessibilityViewIsModal=true
+        let scroll=UIScrollView(), stack=UIStackView(); scroll.translatesAutoresizingMaskIntoConstraints=false
+        stack.translatesAutoresizingMaskIntoConstraints=false; stack.axis = .vertical; stack.spacing=16
+        view.addSubview(scroll); scroll.addSubview(stack)
+        NSLayoutConstraint.activate([
+            scroll.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor),
+            stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor,constant:24),
+            stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor,constant:-24),
+            stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor,constant:24),
+            stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor,constant:-24),
+            stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor,constant:-48)
+        ])
+        for label in [titleLabel,countLabel,hintLabel] { label.numberOfLines=0; label.textAlignment = .center; label.adjustsFontForContentSizeCategory=true; label.textColor = .white; stack.addArrangedSubview(label) }
+        titleLabel.textColor=gold; titleLabel.font = .preferredFont(forTextStyle:.title2); titleLabel.accessibilityTraits.insert(.header)
+        titleLabel.text=text("Создайте PIN","Create PIN")
+        countLabel.font = .preferredFont(forTextStyle:.title1)
+        hintLabel.font = .preferredFont(forTextStyle:.body)
+        hintLabel.text=text("От \(minimum) до \(maximum) цифр","\(minimum) to \(maximum) digits")
+        let labels=[["1","2","3"],["4","5","6"],["7","8","9"],["⌫","0",""]]
+        for row in labels {
+            let line=UIStackView(); line.axis = .horizontal; line.spacing=12; line.distribution = .fillEqually
+            for label in row {
+                let button=UIButton(type:.system); button.setTitle(label,for:.normal)
+                button.titleLabel?.font = .preferredFont(forTextStyle:.title1); button.titleLabel?.adjustsFontForContentSizeCategory=true
+                button.setTitleColor(.white,for:.normal); button.tintColor=gold
+                button.backgroundColor=UIColor(red:0.065,green:0.12,blue:0.20,alpha:1); button.layer.cornerRadius=12
+                button.heightAnchor.constraint(greaterThanOrEqualToConstant:56).isActive=true
+                if let digit=Int(label) { button.tag=digit; button.addTarget(self,action:#selector(digitTap(_:)),for:.touchUpInside) }
+                else if label=="⌫" { button.accessibilityLabel=text("Удалить последнюю цифру","Delete last digit"); button.addTarget(self,action:#selector(deleteTap),for:.touchUpInside) }
+                else { button.isEnabled=false; button.isHidden=true }
+                line.addArrangedSubview(button); inputButtons.append(button)
+            }
+            stack.addArrangedSubview(line)
+        }
+        continueButton.setTitle(text("Продолжить","Continue"),for:.normal)
+        continueButton.backgroundColor=gold; continueButton.setTitleColor(navy,for:.normal); continueButton.layer.cornerRadius=12
+        continueButton.titleLabel?.font = .preferredFont(forTextStyle:.headline); continueButton.titleLabel?.adjustsFontForContentSizeCategory=true
+        continueButton.heightAnchor.constraint(greaterThanOrEqualToConstant:48).isActive=true
+        continueButton.addTarget(self,action:#selector(nextTap),for:.touchUpInside); stack.addArrangedSubview(continueButton)
+        let cancel=UIButton(type:.system); cancel.setTitle(text("Отмена","Cancel"),for:.normal)
+        cancel.titleLabel?.font = .preferredFont(forTextStyle:.body); cancel.titleLabel?.adjustsFontForContentSizeCategory=true
+        cancel.heightAnchor.constraint(greaterThanOrEqualToConstant:48).isActive=true
+        cancel.addTarget(self,action:#selector(cancelTap),for:.touchUpInside); stack.addArrangedSubview(cancel); update(count:0)
+    }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); owner?.disappeared() }
+    func confirm() { titleLabel.text=text("Повторите PIN","Confirm PIN"); UIAccessibility.post(notification:.screenChanged,argument:titleLabel) }
+    func restartAfterMismatch() {
+        titleLabel.text=text("Создайте PIN","Create PIN")
+        hintLabel.text=text("PIN не совпали. Введите заново.","PINs did not match. Enter again.")
+        UIAccessibility.post(notification:.screenChanged,argument:titleLabel)
+    }
+    func update(count: Int) {
+        // Only length is rendered/announced; never format entered digit bytes.
+        countLabel.text=String(repeating:"•",count:min(count,12))
+        countLabel.accessibilityLabel=text("Введено цифр: \(count)","Digits entered: \(count)")
+        continueButton.isEnabled=count>=minimum && count<=maximum
+    }
+    func disableAndClear() {
+        inputButtons.forEach { $0.isEnabled=false }; continueButton.isEnabled=false
+        countLabel.text=""; countLabel.accessibilityLabel=text("Ввод закрыт","Input closed")
+    }
+    @objc private func digitTap(_ sender: UIButton) { guard sender.tag>=0 && sender.tag<=9 else { return }; owner?.tapDigit(UInt8(sender.tag)+48) }
+    @objc private func deleteTap() { owner?.deleteDigit() }
+    @objc private func nextTap() { owner?.next() }
+    @objc private func cancelTap() { owner?.cancel() }
+}
+// Genuine host construction/admission and native recovery remain unavailable.
+// This UI has no bridge/plugin registration and is never selected by App flags.

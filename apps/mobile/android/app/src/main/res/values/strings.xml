@@ -4,4 +4,12 @@
     <string name="title_activity_main">Literary Planet</string>
     <string name="package_name" translatable="false">ru.probpera.literaryplanet</string>
     <string name="custom_url_scheme" translatable="false">ru.probpera.literaryplanet</string>
+    <string name="native_pin_title">Parent PIN</string>
+    <string name="native_pin_fresh">Create a new PIN</string>
+    <string name="native_pin_confirmation">Enter the PIN again</string>
+    <string name="native_pin_mismatch">PINs do not match. Create a new PIN and try again.</string>
+    <string name="native_pin_count">Digits entered: %1$d</string>
+    <string name="native_pin_delete">Delete</string>
+    <string name="native_pin_cancel">Cancel</string>
+    <string name="native_pin_continue">Continue</string>
 </resources>

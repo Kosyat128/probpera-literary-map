@@ -2,4 +2,12 @@
 <resources>
     <string name="app_name">Литературная планета</string>
     <string name="title_activity_main">Литературная планета</string>
+    <string name="native_pin_title">Родительский PIN</string>
+    <string name="native_pin_fresh">Создайте новый PIN</string>
+    <string name="native_pin_confirmation">Введите PIN ещё раз</string>
+    <string name="native_pin_mismatch">PIN-коды не совпадают. Создайте новый PIN и повторите ввод.</string>
+    <string name="native_pin_count">Введено цифр: %1$d</string>
+    <string name="native_pin_delete">Удалить</string>
+    <string name="native_pin_cancel">Отмена</string>
+    <string name="native_pin_continue">Продолжить</string>
 </resources>
