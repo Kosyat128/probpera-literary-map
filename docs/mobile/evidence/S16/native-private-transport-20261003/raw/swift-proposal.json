@@ -1,0 +1,78 @@
+{
+  "kind": "literary-planet-private-native-transport-ios-staged-manifest",
+  "version": 3,
+  "stagedAt": "2026-10-03T05:06:46.2129807Z",
+  "logicalRoot": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work",
+  "recordedApplicationSourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "recordedReportCommit": "da9b1b4a30ff029470bfa1371de71e10ab66b531",
+  "sourceReferencesFromParent": true,
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+      "beforeSha256": null,
+      "afterSha256": "a60bb11c50076704ab856d745e994e698cfe3dafa5800e84660cedd25e55c5c9",
+      "bytes": 24453
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataTransportRuntimeTests.swift",
+      "beforeSha256": null,
+      "afterSha256": "21841f2c4ba0f71ba0060377b1aaf39a48b6e246473a4b4cff229fe34690063a",
+      "bytes": 13979
+    }
+  ],
+  "requiredRootOwnedStoreMembers": [
+    "Lease.partitionGeneration: UInt64",
+    "Lease.partitionNonce: String",
+    "operationUntil(_ lease: Lease, deadlineMs: UInt64) throws -> Cancellation",
+    "static partitionNowMs() throws -> UInt64"
+  ],
+  "nativeTest": {
+    "method": "testPrivateTransportPhase",
+    "phase": "wire",
+    "runIdEnvironment": "LITERARY_PLANET_CHILD_TRANSPORT_TEST_RUN_ID",
+    "status": "NOT_RUN",
+    "phaseEnvironment": "LITERARY_PLANET_CHILD_TRANSPORT_TEST_PHASE",
+    "class": "PlanetChildDataTransportRuntimeTests",
+    "requiresFreshOwnedFixture": true,
+    "runIdPattern": "^[a-f0-9]{32}$"
+  },
+  "scope": {
+    "combinedBatchSlots": 64,
+    "rawWrapperJsonSupported": false,
+    "dataCasAbsoluteDeadlineUnderNativeStoreLock": true,
+    "maxDataJobs": 2048,
+    "admittedChildDataPort": false,
+    "lateControlRollbackClaimed": false,
+    "privateNativeDispatcher": true,
+    "pinAuthority": false,
+    "typedDtos": true,
+    "singleDecodedValueBytes": 8388608,
+    "oneDataWorker": true,
+    "terminalCloseSeparateSlot": true,
+    "aggregateDecodedBytes": 33554432,
+    "controlCommitDeadlineGuaranteed": false,
+    "oneQueuedTerminalClose": true,
+    "oneActualCancelSideCallPerJob": true,
+    "maxCancelTargetTombstones": 2048,
+    "protectedAdmission": false,
+    "publicPluginRegistration": false,
+    "maxOrdinaryRequestIds": 4096,
+    "ownedDataBuffersDisposed": true,
+    "immutableBase64StringSecureEraseClaimed": false,
+    "hostCurrentAuthority": false,
+    "tombstoneEviction": false,
+    "lateClosedAckIsCleanupOnly": true,
+    "appRegistration": false
+  },
+  "actions": {
+    "iosCompilation": "NOT_RUN",
+    "buildExecutions": 0,
+    "testExecutions": 0,
+    "releaseReady": false,
+    "gitWrites": 0,
+    "remoteActions": 0,
+    "installedNativeRuntime": "NOT_RUN",
+    "projectWrites": 0
+  },
+  "preservedPriorCandidate": "next-native-transport-ios-a2"
+}

@@ -1,0 +1,68 @@
+{
+  "assembly": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-native-transport-addendum-assembly",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "directory": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-transport-addendum-20261003-88cb0f56-acae-4e4e-b6f1-fce702292cbf",
+    "archive": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-transport-addendum-20261003-88cb0f56-acae-4e4e-b6f1-fce702292cbf.zip",
+      "sha256": "d1595d7c506833677a77b1c0a9ebc830294d6efb7b344a13c6dbb70364a452c6",
+      "bytes": 376601123,
+      "compression": "stored",
+      "library": "fflate@0.8.3",
+      "archivedEntries": {
+        "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+        "centralDirectoryVerified": true,
+        "entrySha256Verified": true,
+        "filesVerified": 4386,
+        "rawBytesVerified": 375752375,
+        "zip64": false,
+        "crcVerification": "NOT_RUN"
+      }
+    },
+    "assemblyIntegrity": "PASS",
+    "productStatus": "PARTIAL",
+    "files": 4386,
+    "priorArchiveCopied": false,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "remoteActions": 0,
+    "finishedAt": "2026-10-03T05:45:03.972Z"
+  },
+  "correction": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-transport-correction-20261003-9048546d-17b9-4dd8-9d5e-c80dc4b2dfb7.zip",
+    "sha256": "6a268092ccf8d67ba423c5c3a41aa0328e6ff1fd3fc6043e121255f0f81f5508",
+    "bytes": 1023475,
+    "compression": "stored",
+    "library": "fflate@0.8.3",
+    "archivedEntries": {
+      "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+      "centralDirectoryVerified": true,
+      "entrySha256Verified": true,
+      "filesVerified": 4,
+      "rawBytesVerified": 1022881,
+      "zip64": false,
+      "crcVerification": "NOT_RUN"
+    }
+  },
+  "reportWordingCorrectionRequired": true,
+  "overlay": [
+    {
+      "path": "checks/result.json",
+      "beforeSha256": "2a6da3886b60af9166cb041b28ebd8cdad2e4d011a499c74377612508f4f7efc",
+      "afterSha256": "2ec0cdb7c019de8142680d21b7f0819a78ae2cdb62126807ed723d60f506b883"
+    },
+    {
+      "path": "checks/evidence-manifest.json",
+      "beforeSha256": "45f9011f561730964243828634a8e3477bf4341a7bd30f4d9859bdc4f3132af3",
+      "afterSha256": "ca7da07c4893db04c07e5266a71b78679627c516b4f8463ac63a674348f745b1"
+    },
+    {
+      "path": "checkpoint-proposal/proposal-result.json",
+      "beforeSha256": "ff5631ffa451e48fc4c53a9b65230d5ba8a4a12cfa6b1737d3526a1b75251260",
+      "afterSha256": "1ed6a850ef80ce8834da8ce171a69bb3ebd128ebd67b10bebb8b09dece40b16f"
+    }
+  ],
+  "restoreScope": "Verify the frozen base archive and its original inventory before applying the three explicitly hashed report replacements in a separate extraction. Base PACKET_MANIFEST and RESULTS.currentAddendum describe the original A1 bytes and remain immutable historical inventory, not a post-overlay inventory. The correction receipt and these three hashes govern the replacements; application/source/bundle/raw proof entries are unchanged. The prior a42 foundation remains required.",
+  "releaseReady": false
+}

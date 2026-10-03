@@ -1,3 +1,10 @@
+<!-- native-private-transport-20261003:begin -->
+Source checkpoint: 3c79db7c6d299032a357781861a919f454981daf; previous source/report a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d / da9b1b4a30ff029470bfa1371de71e10ab66b531.
+Evidence: docs/mobile/evidence/S16/native-private-transport-20261003/result.json. Private TS/Java/Swift transport and owned native fixture runner implemented. Actual51 scoped cases PASS with preserved source qualification; final TSC and current Android/PWA/iOSweb preparations PASS.
+Initial TSC FAIL and concurrent native-bundle copy FAIL remain original; installed OS/Swift compile/protected admission/App activation NOT_RUN. S03 IN_PROGRESS11 OPEN; S16 IN_PROGRESS36 OPEN; releaseReady=false.
+Next: Continue independent S16 programming with strict bounded static SVG support for canonical flag assets and one focused real-browser rasterization check, then authenticated native host-current binding under the durable commit lock before admitted child index ports; complete protected replay-resistant authority/trusted time, PIN enrollment/verification/recovery and clear-before-render lifecycle/route App wiring. Current private TS/Java/Swift transport supplies partition I/O only and grants no protected admission, PIN, profile, reviewed package or rights authority. S03.acceptance remains IN_PROGRESS with11 OPEN criteria and S16 with36 OPEN; the four original conditions and seven owner inputs remain pending. Preserve existing RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passed scopes for reporting, add D stages, invent approvals, rewrite historical FAIL/NOT_RUN or deploy/push/merge/publish.
+<!-- native-private-transport-20261003:end -->
+
 <!-- native-partition-client-20261003:begin -->
 Source checkpoint: a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d; prior source/report preserved: 3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647 / 301f33d058b3c66afc029d510ca99ee4898c95be.
 Evidence: docs/mobile/evidence/S16/native-partition-client-20261003/result.json. Actual focused21 synthetic protocol cases PASS; recorded execution301 +dirty2, later exact frozen source match.

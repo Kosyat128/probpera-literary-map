@@ -1,0 +1,374 @@
+{
+  "binding": {
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+    "platform": "android",
+    "channel": "dev",
+    "environment": "local",
+    "artifactSha256": "457e01d003b00783634993cb33d45cb18c1a40518f6db66bbdfc66463854a38d"
+  },
+  "artifactPath": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/app-dev-debug.apk",
+  "artifactMetadataPath": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/binary.json",
+  "gates": [
+    {
+      "id": "local-tests",
+      "status": "NOT_RUN",
+      "reason": "Focused new child tests and exact current App TypeScript are recorded separately. Four old critical-source witnesses are absent; the broad local-test gate remains unverified."
+    },
+    {
+      "id": "content-preservation",
+      "status": "PASS",
+      "reason": "Exactly 6820 protected author/content bytes are unchanged in the actual final scoped freeze. This does not claim a new global historical-journal scan or recover four missing critical-source witnesses.",
+      "binding": {
+        "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+        "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "android",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "457e01d003b00783634993cb33d45cb18c1a40518f6db66bbdfc66463854a38d"
+      },
+      "finishedAt": "2026-10-03T05:16:06.233Z",
+      "facts": {
+        "completed": true,
+        "scope": "6820 protected author/content bytes only",
+        "checkedCount": 6820,
+        "changedCount": 0,
+        "missingCount": 0,
+        "globalHistoricalJournalScanExecuted": false,
+        "criticalSourceWitnessRecoveryClaimed": false
+      },
+      "files": [
+        {
+          "path": ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/code-checkpoint.json",
+          "sha256": "ee3d534adfedef30eedee4ba18a2f8ebeee46deeed915c15d0c3b8182ecfd6cd"
+        },
+        {
+          "path": ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/protected-content.json",
+          "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe"
+        }
+      ]
+    },
+    {
+      "id": "ru-en-runtime",
+      "status": "NOT_RUN",
+      "reason": "Focused prior dossier and isolated child-media proofs do not complete the full current RU/EN product matrix."
+    },
+    {
+      "id": "auth-deletion-local",
+      "status": "NOT_RUN",
+      "reason": "Retained local Auth contracts remain scoped observations; four old critical-source raw witnesses are absent and the broad gate is not promoted."
+    },
+    {
+      "id": "auth-deletion-remote",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Real configured Auth, two ordinary users, revocation and durable deletion are not verified."
+    },
+    {
+      "id": "editorial-legal",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Five exact RU/EN material versions remain PENDING human review."
+    },
+    {
+      "id": "psp-commercial-decision",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "The owner explicitly has not selected a PSP; YooKassa remains a provisional sandbox candidate."
+    },
+    {
+      "id": "payment-sandbox",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No real selected-provider sandbox purchase, refund, restore or reconcile has run."
+    },
+    {
+      "id": "remote-authorization",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No separate exact-environment grant exists; remote operations remain zero."
+    },
+    {
+      "id": "package-integrity",
+      "status": "PASS",
+      "reason": "Actual current preparation audit, complete retained resource hashes and exact compiled raw source closure; local unreleased package only.",
+      "binding": {
+        "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+        "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "android",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "457e01d003b00783634993cb33d45cb18c1a40518f6db66bbdfc66463854a38d"
+      },
+      "finishedAt": "2026-10-03T05:22:13.660Z",
+      "facts": {
+        "completed": true,
+        "scope": "Local preparation audit and exact current-byte inventory",
+        "deviceTested": false
+      },
+      "files": [
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/preparation.json",
+          "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-bundle/artifact.json",
+          "sha256": "bf9973aeea8910b717881acdc3a3abecc4d99e16b553719973928a97ba6b84ed"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-build.stdout.txt",
+          "sha256": "e796d97567fe79e5c13c04a8c78d22b01314bb9b15a43b5086bcd77f4e3d6387"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-build.stderr.txt",
+          "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-audit.stdout.txt",
+          "sha256": "27fb809642a4d8e9eb6cbbf50ed640b0214af2a7f43648068ec5d58d1655e87f"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/jdk-version.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/jdk-version.stderr.txt",
+          "sha256": "c069ba5b371b2674dc747c7a6b0c76d873e4d0f2586e5fa9d3e20f49c92d9948"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/cap-sync.stdout.txt",
+          "sha256": "457e789f43962d5dab7feb6b21ea83f26746891213088a2ca49aae6a73675bf5"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/cap-sync.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-assemble.stdout.txt",
+          "sha256": "9921e60d8bd517a88413e946dfa9bdb87bba1104e957c81451f2714ae2282116"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-assemble.stderr.txt",
+          "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-instrumentation-assemble.stdout.txt",
+          "sha256": "0e211e080b9989e60d3d8b85675bad5e9e35c60fc5ee0ca8f336aa24bd406d5c"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-instrumentation-assemble.stderr.txt",
+          "sha256": "80379119a536e662d92a733f06fe0baa870bc38bcf7f9eea01ace3d58ca15ea8"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-badging.stdout.txt",
+          "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-badging.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-manifest.stdout.txt",
+          "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-manifest.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-signature.stdout.txt",
+          "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-signature.stderr.txt",
+          "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-alignment.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-alignment.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-badging.stdout.txt",
+          "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-badging.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-signature.stdout.txt",
+          "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-signature.stderr.txt",
+          "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/binary.json",
+          "sha256": "7174fab1417e02b07794644aa484d22983c5384323cd1998c4bb79265a90aa15"
+        }
+      ]
+    },
+    {
+      "id": "native-binary",
+      "status": "PASS",
+      "reason": "Actual dev main and instrumentation APK compilation plus exact current binary/source/certificate receipts; installed OS runtime has not run.",
+      "binding": {
+        "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+        "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "android",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "457e01d003b00783634993cb33d45cb18c1a40518f6db66bbdfc66463854a38d"
+      },
+      "finishedAt": "2026-10-03T05:22:13.660Z",
+      "facts": {
+        "completed": true,
+        "scope": "Android dev main and instrumentation compilation",
+        "installed": false,
+        "storeArtifact": false
+      },
+      "files": [
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/preparation.json",
+          "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-bundle/artifact.json",
+          "sha256": "bf9973aeea8910b717881acdc3a3abecc4d99e16b553719973928a97ba6b84ed"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-build.stdout.txt",
+          "sha256": "e796d97567fe79e5c13c04a8c78d22b01314bb9b15a43b5086bcd77f4e3d6387"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-build.stderr.txt",
+          "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-audit.stdout.txt",
+          "sha256": "27fb809642a4d8e9eb6cbbf50ed640b0214af2a7f43648068ec5d58d1655e87f"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/native-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/jdk-version.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/jdk-version.stderr.txt",
+          "sha256": "c069ba5b371b2674dc747c7a6b0c76d873e4d0f2586e5fa9d3e20f49c92d9948"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/cap-sync.stdout.txt",
+          "sha256": "457e789f43962d5dab7feb6b21ea83f26746891213088a2ca49aae6a73675bf5"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/cap-sync.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-assemble.stdout.txt",
+          "sha256": "9921e60d8bd517a88413e946dfa9bdb87bba1104e957c81451f2714ae2282116"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-assemble.stderr.txt",
+          "sha256": "e2ddd770b212247c708448f3910ab6e7286f0cf3847ad15981756216146c207d"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-instrumentation-assemble.stdout.txt",
+          "sha256": "0e211e080b9989e60d3d8b85675bad5e9e35c60fc5ee0ca8f336aa24bd406d5c"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/android-instrumentation-assemble.stderr.txt",
+          "sha256": "80379119a536e662d92a733f06fe0baa870bc38bcf7f9eea01ace3d58ca15ea8"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-badging.stdout.txt",
+          "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-badging.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-manifest.stdout.txt",
+          "sha256": "4903cac6b08900e6b96f58e832f9a2a50c88643ee0d0c37625628c9018afa4ec"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-manifest.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-signature.stdout.txt",
+          "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-signature.stderr.txt",
+          "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-alignment.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/apk-alignment.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-badging.stdout.txt",
+          "sha256": "71d3971e95e33d7023aa682bdc475572397866ef1ec75ecaf4f31cb9794fac73"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-badging.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-signature.stdout.txt",
+          "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/previous-apk-signature.stderr.txt",
+          "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3"
+        },
+        {
+          "path": ".tmp/mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333/binary.json",
+          "sha256": "7174fab1417e02b07794644aa484d22983c5384323cd1998c4bb79265a90aa15"
+        }
+      ]
+    },
+    {
+      "id": "installed-runtime",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    },
+    {
+      "id": "os-preferences",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    },
+    {
+      "id": "os-secret-storage",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    },
+    {
+      "id": "lifecycle-update",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    }
+  ]
+}

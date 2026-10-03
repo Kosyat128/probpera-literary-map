@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "baseHead": "da9b1b4a30ff029470bfa1371de71e10ab66b531",
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+      "beforeSha256": "485b71075b6eea02a3cd7de80d326f323b34414ae634e84437b84b9be0f4ea09",
+      "afterSha256": "ade4c88b205d4926a453db3ba18948943d178b72d6c1de82a20756896256f740",
+      "bytes": 36523
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+      "beforeSha256": "a57daa38522ca91222786016e8584d1e3bd8bbd797ec7b621f88a8715a317282",
+      "afterSha256": "8747880d31d0e90381432bd4e00493fbd3b0f7bf97ac57656ae869e940ce2a6b",
+      "bytes": 41662
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "beforeSha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80",
+      "afterSha256": "682341aefc453c4511e469d8ab779dcbb8da0dcd65475c164fa224d81930c0d7",
+      "bytes": 67807
+    },
+    {
+      "path": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "beforeSha256": null,
+      "afterSha256": "8e2503c3b2ea7cdec0cbc46ebd3d1f8cbec72bdb222cbf0e8fbfeddc4d44d05b",
+      "bytes": 5895
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "beforeSha256": "28bd8885c697c3300894e3754daff6dbc3c14c75640e387968a32391922994c0",
+      "afterSha256": "3cd9e4eb43fc7538d8d562e5763f1c030d2c8b069faee04af80c8b4c283b9352",
+      "bytes": 24611
+    }
+  ]
+}

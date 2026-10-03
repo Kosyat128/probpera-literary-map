@@ -1,0 +1,163 @@
+{
+  "binding": {
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+    "platform": "ios",
+    "channel": "dev",
+    "environment": "local",
+    "artifactSha256": "12d4e7fa25f04e07a891d36d04c79bf5f4b563ca9d01689f29852ad101f24624"
+  },
+  "artifactPath": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-bundle/artifact.json",
+  "artifactMetadataPath": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-bundle/artifact.json",
+  "gates": [
+    {
+      "id": "local-tests",
+      "status": "NOT_RUN",
+      "reason": "Focused new child tests and exact current App TypeScript are recorded separately. Four old critical-source witnesses are absent; the broad local-test gate remains unverified."
+    },
+    {
+      "id": "content-preservation",
+      "status": "PASS",
+      "reason": "Exactly 6820 protected author/content bytes are unchanged in the actual final scoped freeze. This does not claim a new global historical-journal scan or recover four missing critical-source witnesses.",
+      "binding": {
+        "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+        "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "ios",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "12d4e7fa25f04e07a891d36d04c79bf5f4b563ca9d01689f29852ad101f24624"
+      },
+      "finishedAt": "2026-10-03T05:16:06.233Z",
+      "facts": {
+        "completed": true,
+        "scope": "6820 protected author/content bytes only",
+        "checkedCount": 6820,
+        "changedCount": 0,
+        "missingCount": 0,
+        "globalHistoricalJournalScanExecuted": false,
+        "criticalSourceWitnessRecoveryClaimed": false
+      },
+      "files": [
+        {
+          "path": ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/code-checkpoint.json",
+          "sha256": "ee3d534adfedef30eedee4ba18a2f8ebeee46deeed915c15d0c3b8182ecfd6cd"
+        },
+        {
+          "path": ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/protected-content.json",
+          "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe"
+        }
+      ]
+    },
+    {
+      "id": "ru-en-runtime",
+      "status": "NOT_RUN",
+      "reason": "Focused prior dossier and isolated child-media proofs do not complete the full current RU/EN product matrix."
+    },
+    {
+      "id": "auth-deletion-local",
+      "status": "NOT_RUN",
+      "reason": "Retained local Auth contracts remain scoped observations; four old critical-source raw witnesses are absent and the broad gate is not promoted."
+    },
+    {
+      "id": "auth-deletion-remote",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Real configured Auth, two ordinary users, revocation and durable deletion are not verified."
+    },
+    {
+      "id": "editorial-legal",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "Five exact RU/EN material versions remain PENDING human review."
+    },
+    {
+      "id": "psp-commercial-decision",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "The owner explicitly has not selected a PSP; YooKassa remains a provisional sandbox candidate."
+    },
+    {
+      "id": "payment-sandbox",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No real selected-provider sandbox purchase, refund, restore or reconcile has run."
+    },
+    {
+      "id": "remote-authorization",
+      "status": "BLOCKED_EXTERNAL",
+      "reason": "No separate exact-environment grant exists; remote operations remain zero."
+    },
+    {
+      "id": "package-integrity",
+      "status": "PASS",
+      "reason": "Actual current preparation audit, complete retained resource hashes and exact compiled raw source closure; local unreleased package only.",
+      "binding": {
+        "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+        "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+        "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4",
+        "platform": "ios",
+        "channel": "dev",
+        "environment": "local",
+        "artifactSha256": "12d4e7fa25f04e07a891d36d04c79bf5f4b563ca9d01689f29852ad101f24624"
+      },
+      "finishedAt": "2026-10-03T05:18:42.343Z",
+      "facts": {
+        "completed": true,
+        "scope": "Local preparation audit and exact current-byte inventory",
+        "deviceTested": false
+      },
+      "files": [
+        {
+          "path": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/preparation.json",
+          "sha256": "470149da8f796c19efc70339119f826657126137e1e337c2ca77a1827320fce0"
+        },
+        {
+          "path": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-bundle/artifact.json",
+          "sha256": "12d4e7fa25f04e07a891d36d04c79bf5f4b563ca9d01689f29852ad101f24624"
+        },
+        {
+          "path": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-build.stdout.txt",
+          "sha256": "f2f79344a3eb101a9e7a4ec32564901fc63b6d783a94de0b13ba010063338f2c"
+        },
+        {
+          "path": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-build.stderr.txt",
+          "sha256": "2876a0104ad3c0728bf7acbc9dc884a35e850333fa554b28d0fde3c00d1840a0"
+        },
+        {
+          "path": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-audit.stdout.txt",
+          "sha256": "6b5f6d38b7a8e4eb3befd6cf0e03bd963e8becc2bfb555e31ebeab9ef62796e7"
+        },
+        {
+          "path": ".tmp/mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6/native-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "id": "native-binary",
+      "status": "NOT_RUN",
+      "reason": "Windows preparation produced an iOS Web bundle; no Mac native compilation or IPA exists."
+    },
+    {
+      "id": "installed-runtime",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    },
+    {
+      "id": "os-preferences",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    },
+    {
+      "id": "os-secret-storage",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    },
+    {
+      "id": "lifecycle-update",
+      "status": "NOT_RUN",
+      "reason": "Installed application OS, lifecycle or installed PWA evidence has not run. Local bundles, synthetic ports and emulator boot attempts do not satisfy this gate."
+    }
+  ]
+}

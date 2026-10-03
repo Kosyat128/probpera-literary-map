@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-private-native-transport-root-source-review",
+  "status": "SOURCE_REVIEW_ACK",
+  "stagedRoot": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-root-a7",
+  "manifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-root-a7\\manifest.json",
+    "sha256": "ff24679ec6f322fb86e40717fc04876ed4f782d2dad0f42db2295477951b92f2"
+  },
+  "baseHead": "da9b1b4a30ff029470bfa1371de71e10ab66b531",
+  "previousReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-root-review.json",
+    "sha256": "18313a68c9cea2f77bf829b45c53c34f2c9652ccc2433bde7ee61ff6066d278f"
+  },
+  "allFiveBeforeAfterBindingsMatched": true,
+  "fourProductionFilesUnchangedFromA6": true,
+  "testDiffExact": "Only replace authored Wifi reply with production-accepted exact string and seed both stale child-transport environment keys. No other test/source byte changes.",
+  "findings": [],
+  "priorFindingResolution": "Authored offline happy-path reply now exactly matches the unchanged production classifier. The input seeds all seven secure/preference/data/transport selection keys, while binder deletes those keys and assigns only the exact selected fixture.",
+  "retainedSourceReview": "Read-only lease metadata/private constructors; actual absolute-deadline Cancellation under native lock; eight store phases/separate wire DTO fixture; isolated destructive namespaces/cleanup; pinned app-hosted XCTest class/environment; PBX source/test registration remain as reviewed in immutable A6 receipt.",
+  "testExecution": "NOT_RUN",
+  "typecheckExecution": "NOT_RUN",
+  "nativeCompilation": "NOT_RUN",
+  "nativeRuntime": "NOT_RUN",
+  "checkoutWrites": 0,
+  "gitOperations": 0,
+  "productChecksExecuted": 0,
+  "remoteOperations": 0,
+  "releaseReady": false
+}

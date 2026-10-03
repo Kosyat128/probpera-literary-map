@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-transport-report-wording-correction",
+  "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "baseArchive": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-transport-addendum-20261003-88cb0f56-acae-4e4e-b6f1-fce702292cbf.zip",
+    "sha256": "d1595d7c506833677a77b1c0a9ebc830294d6efb7b344a13c6dbb70364a452c6",
+    "bytes": 376601123,
+    "compression": "stored",
+    "library": "fflate@0.8.3",
+    "archivedEntries": {
+      "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+      "centralDirectoryVerified": true,
+      "entrySha256Verified": true,
+      "filesVerified": 4386,
+      "rawBytesVerified": 375752375,
+      "zip64": false,
+      "crcVerification": "NOT_RUN"
+    }
+  },
+  "baseResultSha256": "2a6da3886b60af9166cb041b28ebd8cdad2e4d011a499c74377612508f4f7efc",
+  "correctedResultSha256": "2ec0cdb7c019de8142680d21b7f0819a78ae2cdb62126807ed723d60f506b883",
+  "change": {
+    "path": "programmingContinuation.remainingInternalProgramming[Durable separate child data ports].responsibility",
+    "before": "Private Java/Swift four-purpose candidates and a bounded, structurally non-admitted partition client exist. Implement the actual native transport, separately authenticated host-current coordination under the native durable commit lock, admitted index-port integration and installed storage/lifecycle evidence. Local mayPublish only fences publication; it cannot authorize a durable commit. No ChildDataTransactionPort callback/control-key backend or PIN/package/review authority is supplied.",
+    "after": "The private TypeScript RPC transport and constructor-owned Java/Swift four-purpose dispatchers are implemented. Complete separately authenticated native host-current coordination under the durable commit lock, admitted child index-port integration and actual installed storage/lifecycle evidence. Private partition activation and local publication callbacks grant no protected admission, PIN, package/review or rights authority; actual App/plugin registration remains pending."
+  },
+  "applicationSourceChanged": false,
+  "applicationChecksRerun": 0,
+  "baseArchiveRewritten": false,
+  "baseArchiveRehashed": false,
+  "restore": "Apply these three reviewed report files over their matching entries of the named base archive in a separate extraction. The prior foundation remains required; application bundles and raw proofs are unchanged.",
+  "releaseReady": false,
+  "archive": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-native-transport-correction-20261003-9048546d-17b9-4dd8-9d5e-c80dc4b2dfb7.zip",
+    "sha256": "6a268092ccf8d67ba423c5c3a41aa0328e6ff1fd3fc6043e121255f0f81f5508",
+    "bytes": 1023475,
+    "compression": "stored",
+    "library": "fflate@0.8.3",
+    "archivedEntries": {
+      "scope": "Exact ordinary stored ZIP central/local names, byte sizes and SHA256 of every archived entry against the reviewed packet inventory; no extraction to disk.",
+      "centralDirectoryVerified": true,
+      "entrySha256Verified": true,
+      "filesVerified": 4,
+      "rawBytesVerified": 1022881,
+      "zip64": false,
+      "crcVerification": "NOT_RUN"
+    }
+  },
+  "correctedStage": {
+    "schemaVersion": 1,
+    "output": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-c8a92e86-eba7-40a2-a616-a2d724535fd3",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "family": "docs/mobile/evidence/S16/native-private-transport-20261003",
+    "proposal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-c8a92e86-eba7-40a2-a616-a2d724535fd3\\proposal-result.json",
+      "sha256": "1ed6a850ef80ce8834da8ce171a69bb3ebd128ebd67b10bebb8b09dece40b16f"
+    },
+    "result": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-c8a92e86-eba7-40a2-a616-a2d724535fd3\\docs\\mobile\\evidence\\S16\\native-private-transport-20261003\\result.json",
+      "sha256": "2ec0cdb7c019de8142680d21b7f0819a78ae2cdb62126807ed723d60f506b883"
+    },
+    "manifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-c8a92e86-eba7-40a2-a616-a2d724535fd3\\docs\\mobile\\evidence\\S16\\native-private-transport-20261003\\evidence-manifest.json",
+      "sha256": "ca7da07c4893db04c07e5266a71b78679627c516b4f8463ac63a674348f745b1"
+    },
+    "integration": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-c8a92e86-eba7-40a2-a616-a2d724535fd3\\integration-manifest.json",
+      "sha256": "f4217512dd8fa8c551399784093dd8e4d8456b8eb50d416166349573e0678767"
+    },
+    "previousFrozenStage": {
+      "schemaVersion": 1,
+      "output": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-4bd252c0-7410-49aa-b468-2ce0bf00aabc",
+      "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+      "family": "docs/mobile/evidence/S16/native-private-transport-20261003",
+      "proposal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-4bd252c0-7410-49aa-b468-2ce0bf00aabc\\proposal-result.json",
+        "sha256": "ff5631ffa451e48fc4c53a9b65230d5ba8a4a12cfa6b1737d3526a1b75251260"
+      },
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-4bd252c0-7410-49aa-b468-2ce0bf00aabc\\docs\\mobile\\evidence\\S16\\native-private-transport-20261003\\result.json",
+        "sha256": "2a6da3886b60af9166cb041b28ebd8cdad2e4d011a499c74377612508f4f7efc"
+      },
+      "manifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-4bd252c0-7410-49aa-b468-2ce0bf00aabc\\docs\\mobile\\evidence\\S16\\native-private-transport-20261003\\evidence-manifest.json",
+        "sha256": "45f9011f561730964243828634a8e3477bf4341a7bd30f4d9859bdc4f3132af3"
+      },
+      "integration": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-staged-4bd252c0-7410-49aa-b468-2ce0bf00aabc\\integration-manifest.json",
+        "sha256": "21d5d227aa22d1a5326c6f29a57eb9778fc2e353cce9832a9b81bf268bf19912"
+      }
+    }
+  },
+  "assemblyIntegrity": "PASS",
+  "remoteOperations": 0
+}

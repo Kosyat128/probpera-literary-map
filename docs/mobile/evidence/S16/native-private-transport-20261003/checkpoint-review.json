@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-transport-report-independent-review",
+  "status": "ACK",
+  "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "integrationSha256": "f4217512dd8fa8c551399784093dd8e4d8456b8eb50d416166349573e0678767",
+  "proposalSha256": "1ed6a850ef80ce8834da8ce171a69bb3ebd128ebd67b10bebb8b09dece40b16f",
+  "resultSha256": "2ec0cdb7c019de8142680d21b7f0819a78ae2cdb62126807ed723d60f506b883",
+  "manifestSha256": "ca7da07c4893db04c07e5266a71b78679627c516b4f8463ac63a674348f745b1",
+  "reviewedAt": "2026-10-03T05:51:18.550Z",
+  "priorReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-report-review-a1.json",
+    "sha256": "8fe7dc7881e826ac62b85698909c5fec37786987dddcf84c1beff69d1cd9c870"
+  },
+  "facts": {
+    "integrationPaths": 64,
+    "fourDocCurrentBeforeHashesVerified": true,
+    "threeFullOldDocTailsByteUnchanged": true,
+    "stateOutsideSixAllowedValueSpansByteUnchanged": true,
+    "stateOldArtifactPrefixesPreserved": true,
+    "fourOriginalConditionsUnchangedExceptSourceAndTimestamp": true,
+    "rawProofsExactOriginalBytes": 57,
+    "inventoryFilesHashVerified": 59,
+    "S03Open": 11,
+    "S16Open": 36,
+    "sevenOwnerActionsExactRegistry": true,
+    "fiveLegalVersionsPendingExactRegistry": true,
+    "sixProgrammingTasksCodexOpen": true,
+    "originalTscFailAndAndroidFailPreserved": true,
+    "actual51UnitSourceQualificationRetained": true,
+    "current1774TscQualificationRetained": true,
+    "currentThreePreparationsAndReadinessRefs": true,
+    "incrementalImportObjectCount": 106,
+    "fullHistoryIntegrity": "NOT_RUN",
+    "standaloneFreshClone": false,
+    "releaseReady": false,
+    "onlyOneResponsibilityStringChanged": true,
+    "correctedPrivateTransportImplementedBoundary": true,
+    "allFourDocsEntryAnd57RawProofsByteUnchangedFromReviewedA1": true,
+    "currentBeforeDocHashesStillMatch": true,
+    "onlyTwoFamilyDescriptorsUpdated": true,
+    "correctedThreeOverlayCopiesShaVerified": true,
+    "sourceAndApplicationChecksUnchanged": true
+  },
+  "resolvedFindings": [
+    "STALE_NATIVE_TRANSPORT_PENDING_WORDING"
+  ],
+  "findings": [],
+  "correction": {
+    "receipt": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-report-correction.json",
+      "sha256": "784c05ce6bec30ca9b7ac1d9e28699b40ead0edfffd29d6bed91fe1ab117ffa8"
+    },
+    "baseArchiveSha256": "d1595d7c506833677a77b1c0a9ebc830294d6efb7b344a13c6dbb70364a452c6",
+    "baseArchiveBytes": 376601123,
+    "correctionArchiveSha256": "6a268092ccf8d67ba423c5c3a41aa0328e6ff1fd3fc6043e121255f0f81f5508",
+    "correctionArchiveBytes": 1023475,
+    "actualArchiveEntryVerificationReceipt": true,
+    "scope": "Base PACKET_MANIFEST and RESULTS describe immutable preliminary A1 and are verified before overlay. The separate correction supplement/receipt and exact three before/after file digests govern the replacement report view; base manifests do not describe a post-overlay inventory.",
+    "archivesRehashedByReviewer": false
+  },
+  "execution": {
+    "gitCommands": 0,
+    "tests": 0,
+    "builds": 0,
+    "productChecks": 0,
+    "checkoutWrites": false,
+    "originalGitWrites": false,
+    "remoteActions": 0
+  }
+}

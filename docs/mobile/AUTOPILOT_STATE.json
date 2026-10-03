@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "headSha": "3c79db7c6d299032a357781861a919f454981daf",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-03T04:18:27.427Z",
+  "updatedAt": "2026-10-03T05:43:14.065Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -1557,7 +1557,10 @@
         "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-ios.json",
         "docs/mobile/evidence/S16/native-partition-client-20261003/entry.json",
         "docs/mobile/evidence/S16/native-partition-client-20261003/result.json",
-        "docs/mobile/evidence/S16/native-partition-client-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/native-partition-client-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/native-private-transport-20261003/entry.json",
+        "docs/mobile/evidence/S16/native-private-transport-20261003/result.json",
+        "docs/mobile/evidence/S16/native-private-transport-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -5196,7 +5199,10 @@
         "docs/mobile/evidence/S03/release-continuation-20261003/readiness-input-ios.json",
         "docs/mobile/evidence/S16/native-partition-client-20261003/entry.json",
         "docs/mobile/evidence/S16/native-partition-client-20261003/result.json",
-        "docs/mobile/evidence/S16/native-partition-client-20261003/evidence-manifest.json"
+        "docs/mobile/evidence/S16/native-partition-client-20261003/evidence-manifest.json",
+        "docs/mobile/evidence/S16/native-private-transport-20261003/entry.json",
+        "docs/mobile/evidence/S16/native-private-transport-20261003/result.json",
+        "docs/mobile/evidence/S16/native-private-transport-20261003/evidence-manifest.json"
       ],
       "externalBlockers": []
     },
@@ -13261,7 +13267,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "S03.acceptance remains IN_PROGRESS with 11 OPEN criteria; retain the four original external/installed-runtime conditions and seven unchanged owner inputs. Continue S16 programming with 36 OPEN criteria: implement the actual private native transport for the reviewed Java/Swift data stores and private partition client; then integrate a genuinely authenticated native host-current binding under the durable commit lock before adapting admitted child index ports. The private openPartition/readPartition/comparePartition API and its local mayPublish callback grant no protected admission, PIN, profile/package/review/rights authority. Complete supported replay-resistant native authority/trusted time, protected PIN enrollment/verification/recovery and clear-before-render route/account/profile/lifecycle App wiring. Finish required media formats and independently reviewed exact-byte RU/EN assets before activation. Preserve RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passing scopes for reports, add D stages, relabel historical FAIL/NOT_RUN, invent approvals/trusted time or publish/deploy/push/merge.",
+    "nextAction": "Continue independent S16 programming with strict bounded static SVG support for canonical flag assets and one focused real-browser rasterization check, then authenticated native host-current binding under the durable commit lock before admitted child index ports; complete protected replay-resistant authority/trusted time, PIN enrollment/verification/recovery and clear-before-render lifecycle/route App wiring. Current private TS/Java/Swift transport supplies partition I/O only and grants no protected admission, PIN, profile, reviewed package or rights authority. S03.acceptance remains IN_PROGRESS with11 OPEN criteria and S16 with36 OPEN; the four original conditions and seven owner inputs remain pending. Preserve existing RU/EN, Книжулик / Mr. Booky, 3D controls and one canonical globe. Do not repeat passed scopes for reporting, add D stages, invent approvals, rewrite historical FAIL/NOT_RUN or deploy/push/merge/publish.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13642,7 +13648,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
-    "headShaMeaning": "Latest code checkpoint is a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d, direct child of report 301f33d058b3c66afc029d510ca99ee4898c95be for previous source 3b0e0f83fbeb1eee514f4ddbd305a6897ca7c647. The 21 synthetic native partition protocol cases actually ran at ROOT-recorded HEAD 301f33d058b3c66afc029d510ca99ee4898c95be with exactly two dirty source files, subsequently byte-matched to this code commit; no execution at the latest commit is inferred. Current TypeScript, three local preparations and actual partial release-checker/export/import reports bind this source and exact raw closure. No actual native driver, admitted atomic host-current port, PIN/App activation or installed native runtime is supplied.",
+    "headShaMeaning": "Actual code3c79 follows reportda9 for sourcea42. New51 tests ran atda9dirty11; ten source files match and one removed unused type import emits identical JS. Final TSC ran atda9dirty11 and all1774 captured bytes match3c79. New Android main+instrumentation compile, PWA/iOS web preparations, readiness and incremental2072raw export/import bind3c79. First TSC FAIL and parallel-native copy FAIL are preserved. No installed OS/Swift compile/admission/App activation/release acceptance.",
     "requirementCount": 342,
     "bilingualRequirementCount": 107,
     "sourceMain": "0a348bd4202e3fa1558d88183549f7576a361c4b",

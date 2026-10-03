@@ -1,0 +1,13 @@
+{
+  "startedAt": "2026-10-03T05:17:34.062Z",
+  "finishedAt": "2026-10-03T05:18:32.367Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "scripts/mobile/prepare-local-release.mjs",
+    "android"
+  ],
+  "exitCode": 1,
+  "signal": null,
+  "errorCode": null,
+  "isolatedEnv": true
+}

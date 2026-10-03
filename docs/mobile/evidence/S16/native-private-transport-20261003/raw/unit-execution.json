@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-03T05:10:59.832Z",
+  "finishedAt": "2026-10-03T05:11:01.915Z",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+    "run",
+    "src/child/childNativeTransport.test.ts",
+    "scripts/mobile/native-child-fixture-plan.test.mjs",
+    "--maxWorkers=2",
+    "--reporter=json",
+    "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-units-a1\\vitest.json"
+  ],
+  "exitCode": 0,
+  "signal": null,
+  "errorCode": null,
+  "recordedRepositoryHead": "da9b1b4a30ff029470bfa1371de71e10ab66b531",
+  "dirtySourceFiles": [
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDataTransportRuntimeTest.java",
+      "beforeSha256": null,
+      "afterSha256": "149675b4096b0ae701df078c6d4efef3b8508ef0a05ac70ed186cf3cc3a260e9",
+      "bytes": 13126
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+      "beforeSha256": "485b71075b6eea02a3cd7de80d326f323b34414ae634e84437b84b9be0f4ea09",
+      "afterSha256": "ade4c88b205d4926a453db3ba18948943d178b72d6c1de82a20756896256f740",
+      "bytes": 36523
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataTransport.java",
+      "beforeSha256": null,
+      "afterSha256": "6fa630f4a8947513e06a486e2d04293dea9786b03e932ebb6ff6bf1c7082ef6a",
+      "bytes": 21556
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "beforeSha256": "28bd8885c697c3300894e3754daff6dbc3c14c75640e387968a32391922994c0",
+      "afterSha256": "3cd9e4eb43fc7538d8d562e5763f1c030d2c8b069faee04af80c8b4c283b9352",
+      "bytes": 24611
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+      "beforeSha256": "a57daa38522ca91222786016e8584d1e3bd8bbd797ec7b621f88a8715a317282",
+      "afterSha256": "8747880d31d0e90381432bd4e00493fbd3b0f7bf97ac57656ae869e940ce2a6b",
+      "bytes": 41662
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+      "beforeSha256": null,
+      "afterSha256": "a60bb11c50076704ab856d745e994e698cfe3dafa5800e84660cedd25e55c5c9",
+      "bytes": 24453
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataTransportRuntimeTests.swift",
+      "beforeSha256": null,
+      "afterSha256": "21841f2c4ba0f71ba0060377b1aaf39a48b6e246473a4b4cff229fe34690063a",
+      "bytes": 13979
+    },
+    {
+      "path": "scripts/mobile/native-child-fixture-plan.test.mjs",
+      "beforeSha256": null,
+      "afterSha256": "8e2503c3b2ea7cdec0cbc46ebd3d1f8cbec72bdb222cbf0e8fbfeddc4d44d05b",
+      "bytes": 5895
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "beforeSha256": "509d4ed35836279baaa33dfa0ebee42dca54db9d536d3d5379b18bb81e58ff80",
+      "afterSha256": "682341aefc453c4511e469d8ab779dcbb8da0dcd65475c164fa224d81930c0d7",
+      "bytes": 67807
+    },
+    {
+      "path": "src/child/childNativeTransport.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "d2bd1329af0ffcbad7229fcd2f9e02548e519da658b776b1eff44396ae7db8f7",
+      "bytes": 26637
+    },
+    {
+      "path": "src/child/childNativeTransport.ts",
+      "beforeSha256": null,
+      "afterSha256": "1729d576a250ef3b13989408759b3d019cd9be51d12fb1033867c66c9f786342",
+      "bytes": 25649
+    }
+  ],
+  "inputsUnchanged": true,
+  "isolatedEnv": true,
+  "installedNativeRuntime": "NOT_RUN",
+  "remoteRequests": 0
+}

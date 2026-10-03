@@ -1,0 +1,53 @@
+{
+  "kind": "literary-planet-source-native-transport-tooling-ready",
+  "schemaVersion": 4,
+  "status": "READY_FOR_SOURCE_REVIEW_ONLY",
+  "files": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\source-native-transport-common-a4.mjs",
+      "sha256": "24c360fd50bae9edc8f42f7919ec659d95bcf8394313a602a8b7ae5742aa0de3",
+      "bytes": 11769
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\export-source-native-transport-a4.mjs",
+      "sha256": "ced2d174a6da3afaae9c1972e6d53307f5978693011f62d0b0b48deb1dd3e251",
+      "bytes": 12926
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\import-source-native-transport-a4.mjs",
+      "sha256": "31dd4e9a03c13f7784f46695c52bd2c65217ba3d6f245d19edf6c8c79d1da287",
+      "bytes": 11999
+    }
+  ],
+  "preservedPreviousReadySha256": "d04fe981e8287861433f9988a2bc4a71533cf9cd1a1e66becc312fed73330375",
+  "actualCheckpointFields": [
+    "previousReport",
+    "previousAppSource",
+    "binding",
+    "sourceFiles"
+  ],
+  "draftExport": "source-native-transport-input.draft.json",
+  "draftImport": "source-native-transport-import-input.draft.json",
+  "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "prerequisiteSourceCommit": "a42c36b35fafc0d83bb18ed0d1b66f94ace9f42d",
+  "prerequisiteReportCommit": "da9b1b4a30ff029470bfa1371de71e10ab66b531",
+  "baselinePrerequisite": "6cf30bff556be65eeaa64b46bb1f52218b9084ed",
+  "reportPaths": 92,
+  "sourcePaths": 11,
+  "newSourcePaths": 7,
+  "currentCapturedFilesExpected": 1774,
+  "latestRawClosureExpected": 2072,
+  "sourceCommitCount": 1,
+  "reportCommitCount": 1,
+  "standaloneFreshClone": false,
+  "fullHistoryIntegrity": "NOT_RUN",
+  "executionClaimed": false,
+  "testsExecuted": 0,
+  "buildsExecuted": 0,
+  "originalGitWrites": 0,
+  "checkoutWrites": 0,
+  "remoteActions": 0,
+  "releaseReady": false,
+  "processLocalGitOptionalLocks": "0",
+  "allGitCaptureEnvironmentScoped": true
+}

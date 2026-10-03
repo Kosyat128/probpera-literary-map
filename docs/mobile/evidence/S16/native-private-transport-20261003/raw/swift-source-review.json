@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK_SOURCE_ONLY",
+  "reviewer": "/root/presentation_review",
+  "proposal": "next-native-transport-ios-a3",
+  "manifestSha256": "07f82f1989561ccb501241e015790851c2f41fdf4b0073a1a86ee593388ea89b",
+  "readySha256": "0cc5b460ccba48a766528bb41481240c7b6dbd9876bc69ad7075a27f2713bdc6",
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+      "sha256": "a60bb11c50076704ab856d745e994e698cfe3dafa5800e84660cedd25e55c5c9",
+      "bytes": 24453
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataTransportRuntimeTests.swift",
+      "sha256": "21841f2c4ba0f71ba0060377b1aaf39a48b6e246473a4b4cff229fe34690063a",
+      "bytes": 13979
+    }
+  ],
+  "reviewScope": [
+    "Exact agreed typed DTO field sets and full scope/native Lease binding",
+    "Same-owner activation replacement; own null-close lost first ACK recovery",
+    "Bounded pre-arrival/completed-target cancellation ACK/tombstones; no rollback or prompt-cancel claim",
+    "Actual shared native continuous clock and operationUntil absolute data-CAS deadline, final actual Lease reread after reply encoding",
+    "Nonempty combined batch64 and strict canonical base64/pervalue8MiB/aggregate32MiB before decoded allocation",
+    "Ordinary completed unavailable retains partition; late/cancelled cleanup closes real owner before original callback",
+    "bodyDone suppresses new late cancellation side-call; actual pending cancellation awaited and capacity/ownerRevealed published before callback",
+    "Finite2048 data jobs/4096 ordinary IDs/2048 cancellation targets; no eviction; exhaustion seals+drains real owner and reserves terminalclose",
+    "First actual durable close failure retained; late closed ACK only after factual cleanup",
+    "Explicit owned fresh run/phase XCTest source and scoped containment cleanup, no default execution"
+  ],
+  "finalA2ToA3": "Source-only bounded successor adds native exhaustion cancellation/seal/drain on both submit and cancel guards. XCTest bytes unchanged.",
+  "blockers": [],
+  "limitations": [
+    "Private native partition endpoint only; supplying host-current/admission/PIN/review/rights transport is unavailable",
+    "Raw outer wrapper JSON is unsupported; host must marshal owned typed data dictionaries",
+    "Control activation/retirement can publish before unavailable/cancellation, no control commit deadline or rollback guarantee",
+    "iOS source reviewed on Windows; Swift/Xcode compilation and installed OS tests NOT_RUN"
+  ],
+  "actions": {
+    "projectWrites": 0,
+    "gitWrites": 0,
+    "remoteActions": 0,
+    "buildExecutions": 0,
+    "testExecutions": 0,
+    "iosCompilation": "NOT_RUN",
+    "installedNativeRuntime": "NOT_RUN"
+  },
+  "releaseReady": false,
+  "frozenAt": "2026-10-03T05:08:35.131Z"
+}

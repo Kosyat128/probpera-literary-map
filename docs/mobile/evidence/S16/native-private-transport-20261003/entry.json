@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-private-transport-working-evidence",
+  "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "status": "PARTIAL",
+  "result": "docs/mobile/evidence/S16/native-private-transport-20261003/result.json",
+  "acceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "stageAccepted": false,
+    "releaseReady": false,
+    "installedNativeRuntime": "NOT_RUN",
+    "remoteOperations": 0
+  }
+}

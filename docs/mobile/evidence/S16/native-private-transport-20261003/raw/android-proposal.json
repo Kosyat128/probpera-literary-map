@@ -1,0 +1,12 @@
+[
+  {
+    "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataTransport.java",
+    "beforeSha256": null,
+    "afterSha256": "6fa630f4a8947513e06a486e2d04293dea9786b03e932ebb6ff6bf1c7082ef6a"
+  },
+  {
+    "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDataTransportRuntimeTest.java",
+    "beforeSha256": null,
+    "afterSha256": "149675b4096b0ae701df078c6d4efef3b8508ef0a05ac70ed186cf3cc3a260e9"
+  }
+]

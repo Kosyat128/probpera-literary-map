@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-channel-check-execution",
+  "binding": {
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "platform": "android",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\release-readiness.mjs",
+    "--evidence",
+    ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/readiness-input-android.json",
+    "--report",
+    ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/readiness-android.json"
+  ],
+  "startedAt": "2026-10-03T05:34:48.313Z",
+  "finishedAt": "2026-10-03T05:34:52.023Z",
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "actualSelection": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-input-android.json",
+    "sha256": "6a9a392ef823a5db2587141774fe2b25f01c7574ef170c2fabaadaa36986269b"
+  },
+  "priorGateStatusTemplate": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-android.json",
+    "sha256": "2d64bc62c2957e32c95b1a0fc312ef34a2144fb3f1cefd86dd6146658eca889f"
+  },
+  "currentPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333\\preparation.json",
+    "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461"
+  },
+  "currentProtection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-transport.json",
+    "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe"
+  },
+  "releaseReady": false
+}

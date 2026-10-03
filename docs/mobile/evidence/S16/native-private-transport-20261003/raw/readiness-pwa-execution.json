@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-current-channel-check-execution",
+  "binding": {
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "sourceFingerprint": "50c293a35914eba783212b992d9350ae6b4ee16581b27cc9a987ac78c2648948",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "platform": "pwa",
+  "command": [
+    "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\scripts\\mobile\\release-readiness.mjs",
+    "--evidence",
+    ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/readiness-input-pwa.json",
+    "--report",
+    ".tmp/mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54/readiness-pwa.json"
+  ],
+  "startedAt": "2026-10-03T05:34:52.046Z",
+  "finishedAt": "2026-10-03T05:34:54.355Z",
+  "exitCode": 2,
+  "signal": null,
+  "errorCode": null,
+  "actualSelection": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-input-pwa.json",
+    "sha256": "baf409831018c9b459d491ca88d09ea090e1387b828396a86a0abc7d91438af9"
+  },
+  "priorGateStatusTemplate": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-continuation-check-5c351bcd-fa47-4e75-9d94-4e14edea1a30\\readiness-input-pwa.json",
+    "sha256": "fd50b9f524738db2d97b3fd02484ce171feffe8e4ba4acb0e3b838d33caea6f7"
+  },
+  "currentPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-c06bdfa5-7949-41da-ab41-96dc35e3eaba\\preparation.json",
+    "sha256": "9442abe805e1af9b4f5504e3a14951247554114a83b168ed185d3e188089d5d1"
+  },
+  "currentProtection": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-transport.json",
+    "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe"
+  },
+  "releaseReady": false
+}

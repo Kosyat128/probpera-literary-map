@@ -1,0 +1,706 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-native-private-transport-evidence-inventory",
+  "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+  "selfExcluded": true,
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-checkpoint.json",
+      "sha256": "ee3d534adfedef30eedee4ba18a2f8ebeee46deeed915c15d0c3b8182ecfd6cd",
+      "bytes": 280696
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/protected-content.json",
+      "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe",
+      "bytes": 290
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/actual-units.json",
+      "sha256": "7b834ca2558d2610b6e8326dd36e10dca1ae04814e011832c7e2208cf8457479",
+      "bytes": 20784
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/unit-execution.json",
+      "sha256": "d4c05533cf70cb2ac3751230ebb30c9d5ed10f46f5753690d5976e70ebbe6b20",
+      "bytes": 3748
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/unit-stdout.txt",
+      "sha256": "0e0928607108c0c4eea028b7c3db427bfd1355fe8a070e53f88bf745cf3fe7fe",
+      "bytes": 163
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/unit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/type-only-correction.json",
+      "sha256": "1eb42931ca32fdbacb90e3f4bcae2eda4a7802ff8a0c20de6cbf9c143ef677de",
+      "bytes": 4145
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/original-integration.json",
+      "sha256": "46e323e4c2aaf1c29284ad349db735683775d4d1ef518cb8c5daf8125eb7c628",
+      "bytes": 3087
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/corrected-integration.json",
+      "sha256": "558fe4199de429ff04965dd53570a6d806eaa0c5f1e9cc62aaa3e981f1164050",
+      "bytes": 3464
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/initial-typecheck-pointer.json",
+      "sha256": "e8e79044a5606af1fb0a99d5556369685cc38379debee0c9019fd5b4e24819ce",
+      "bytes": 283
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/final-typecheck-pointer.json",
+      "sha256": "0f562d2b2ffb74faa8c4d709da1182ef2240ae23828c0cd8fd1f8473110ee841",
+      "bytes": 282
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-review-a4.json",
+      "sha256": "616b65f269562cf0f361fd01d9e73e7396f57caf9c4d424f3012272b3c7b6b23",
+      "bytes": 3352
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-tooling-a4.json",
+      "sha256": "0c4a0c45a30a7002d388ba905f6e7be724666c8d6b4e468ddfc37239e2d3164d",
+      "bytes": 2198
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/prerequisite-report-scope.json",
+      "sha256": "e8377c9e78f43376986c6a785ce296819c8ea51d47912163abb2f1f8a3119ece",
+      "bytes": 19203
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/current-channels.json",
+      "sha256": "4415811b6fce7254f26c2b9342b3cc92e11ecece52409bd8631d86d8696575fe",
+      "bytes": 10846
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/root-source-review.json",
+      "sha256": "ae703099b5542e0afd4dc724a5df0e15df4828f08a973b5e9e52869d2b4e5680",
+      "bytes": 2051
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/swift-source-review.json",
+      "sha256": "5c66bc677adcddac47a89fc986c187ed5b136250119346e1e42d642e4029f0c5",
+      "bytes": 2825
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/root-proposal.json",
+      "sha256": "ff24679ec6f322fb86e40717fc04876ed4f782d2dad0f42db2295477951b92f2",
+      "bytes": 1471
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/ts-proposal.json",
+      "sha256": "3ea6a10db1b35dbeef178abc7c846ff6071134d3e242b0827964b2ebf51dd20a",
+      "bytes": 348
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/android-proposal.json",
+      "sha256": "ed7b95151d20138d37ba0c547e20b49eef3681e897e588db3de6f22eafffd5c9",
+      "bytes": 483
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/swift-proposal.json",
+      "sha256": "07f82f1989561ccb501241e015790851c2f41fdf4b0073a1a86ee593388ea89b",
+      "bytes": 2916
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/initial-typecheck.json",
+      "sha256": "9537851f5bc6b6600ee318651db6e3188d32f118418d6f93dc0f88f0f6216b1d",
+      "bytes": 274922
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/final-typecheck.json",
+      "sha256": "d0ce5ae991cdd8e80b2ebf7b396c9b8c4936dd641a2196cc81cba9c0363b77e6",
+      "bytes": 274921
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-export.json",
+      "sha256": "b32a18e310cbdf1797077038b1acf4cb6b3b7b6d202ba39d4cdb73b2d3a00904",
+      "bytes": 14503
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-import.json",
+      "sha256": "775d69c41a29c93c096106310074ebdc6edfa4831a318e875952b58170e0309f",
+      "bytes": 13688
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/preparation-android.json",
+      "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461",
+      "bytes": 302069
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-report.json",
+      "sha256": "9d9a86a643ba877d38300dac2caefeba4b68d09bec9cabdd26ff29f281047aa1",
+      "bytes": 303212
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-execution.json",
+      "sha256": "0f2ac478b38f60180f196189969f136de069f4c4ad08db3631d130fdf9f1d9fe",
+      "bytes": 2317
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-selection.json",
+      "sha256": "6a9a392ef823a5db2587141774fe2b25f01c7574ef170c2fabaadaa36986269b",
+      "bytes": 19004
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-stdout.txt",
+      "sha256": "861223f0afcc400476b01da0d6c2694e030928a17f23caf627fbb01047b51528",
+      "bytes": 1256
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/preparation-pwa.json",
+      "sha256": "9442abe805e1af9b4f5504e3a14951247554114a83b168ed185d3e188089d5d1",
+      "bytes": 287990
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-report.json",
+      "sha256": "343f45d409be7360d8988a8b3d35385d4e79e65da9eff35bfbb0f8bdffbc5996",
+      "bytes": 291414
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-execution.json",
+      "sha256": "fe33ceee57e18d96609683075659f356a9611dc62e6fa83027270368154ec28c",
+      "bytes": 2293
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-selection.json",
+      "sha256": "baf409831018c9b459d491ca88d09ea090e1387b828396a86a0abc7d91438af9",
+      "bytes": 6620
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-stdout.txt",
+      "sha256": "429da978670ec69f78344a2e7ee9c08e3aebc0bb69c161a6e444484ab06fd84a",
+      "bytes": 1017
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/preparation-ios.json",
+      "sha256": "470149da8f796c19efc70339119f826657126137e1e337c2ca77a1827320fce0",
+      "bytes": 288180
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-report.json",
+      "sha256": "e2045ace453bcb3d1e13c8be2229cdae97187aee72eec216930a23eae505ec76",
+      "bytes": 292592
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-execution.json",
+      "sha256": "92bfb7e27fcfaeef204dc4708f5764ba7e4b9d9c3a63565906f0a32f27e02a43",
+      "bytes": 2300
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-selection.json",
+      "sha256": "fb57ce53ef10edbb002dcd9008a22ba606a616c0a3490100c3c43f36e19dced9",
+      "bytes": 7589
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-stdout.txt",
+      "sha256": "f1c07c28e050b0bccc5729892059895d7d3e6ba554fd88e4d03323aa3d2a66c7",
+      "bytes": 1279
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/android-original-build-fail.json",
+      "sha256": "7b74ce6dfc600d70a97a671f96e9863b547eb3c5b9d61529450754a094fc22ec",
+      "bytes": 288135
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a1-execution.json",
+      "sha256": "c3d2a897466e4f09db145cf77446fa109df82dec0d3bc4fffe6d9a9d9c99d4d6",
+      "bytes": 356
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a1-stdout.txt",
+      "sha256": "85df044ac444bd842aca411e19f938fb0523f3eb038921c1ac3501bd24da27a9",
+      "bytes": 506
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a2-execution.json",
+      "sha256": "52d75203151adc99351987cc6467b586dcb9dab1834c2efec344906a5279474f",
+      "bytes": 356
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a2-stdout.txt",
+      "sha256": "91203c52026fa4e56681fa560fe9a7f8d3abcff5fbd35de391bdcc0c5cbd3eda",
+      "bytes": 716
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a2-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-pwa-a1-execution.json",
+      "sha256": "3e511a74714c5c0ddc8b1d891f90e177bdb2d0f81118c1c40d5fb6287aa72da5",
+      "bytes": 352
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-pwa-a1-stdout.txt",
+      "sha256": "516b6a7402a91b521d0137c091d5d99b60470fd6628e2eb025d2ad6f1167f9dd",
+      "bytes": 321
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-pwa-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-ios-bundle-a1-execution.json",
+      "sha256": "ceaeba92e86c873353142e58df163834459a3e187015a184a082d426a526a70e",
+      "bytes": 359
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-ios-bundle-a1-stdout.txt",
+      "sha256": "8243384815dfc99fc2ed839eab1607d1afd017e1170c4a368311e5f1361a59a4",
+      "bytes": 338
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-ios-bundle-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/current-runbook.md",
+      "sha256": "3294077d923a4473fdbb71f2d217f688969e0f128fbebc47b68fbdc18447b578",
+      "bytes": 17305
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/result.json",
+      "sha256": "2ec0cdb7c019de8142680d21b7f0819a78ae2cdb62126807ed723d60f506b883",
+      "bytes": 979601
+    },
+    {
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/entry.json",
+      "sha256": "fe9529e0c4084abb48ab9c8bd8f83c1aae3aa1f8c3ee1e938c3e9b44bc657cb3",
+      "bytes": 502
+    }
+  ],
+  "rawProofs": [
+    {
+      "id": "source-checkpoint",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\code-checkpoint-native-transport.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-checkpoint.json",
+      "sha256": "ee3d534adfedef30eedee4ba18a2f8ebeee46deeed915c15d0c3b8182ecfd6cd",
+      "bytes": 280696
+    },
+    {
+      "id": "protected-content",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\protected-native-transport.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/protected-content.json",
+      "sha256": "e9752ee820a7caea8331d6767be68647ca2c6705dc88312d38c094676a2805fe",
+      "bytes": 290
+    },
+    {
+      "id": "actual-units",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-units-a1\\vitest.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/actual-units.json",
+      "sha256": "7b834ca2558d2610b6e8326dd36e10dca1ae04814e011832c7e2208cf8457479",
+      "bytes": 20784
+    },
+    {
+      "id": "unit-execution",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-units-a1\\execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/unit-execution.json",
+      "sha256": "d4c05533cf70cb2ac3751230ebb30c9d5ed10f46f5753690d5976e70ebbe6b20",
+      "bytes": 3748
+    },
+    {
+      "id": "unit-stdout",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-units-a1\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/unit-stdout.txt",
+      "sha256": "0e0928607108c0c4eea028b7c3db427bfd1355fe8a070e53f88bf745cf3fe7fe",
+      "bytes": 163
+    },
+    {
+      "id": "unit-stderr",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-units-a1\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/unit-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "type-only-correction",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-type-import-correction.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/type-only-correction.json",
+      "sha256": "1eb42931ca32fdbacb90e3f4bcae2eda4a7802ff8a0c20de6cbf9c143ef677de",
+      "bytes": 4145
+    },
+    {
+      "id": "original-integration",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-integration.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/original-integration.json",
+      "sha256": "46e323e4c2aaf1c29284ad349db735683775d4d1ef518cb8c5daf8125eb7c628",
+      "bytes": 3087
+    },
+    {
+      "id": "corrected-integration",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-integration-corrected.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/corrected-integration.json",
+      "sha256": "558fe4199de429ff04965dd53570a6d806eaa0c5f1e9cc62aaa3e981f1164050",
+      "bytes": 3464
+    },
+    {
+      "id": "initial-typecheck-pointer",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-typecheck-pointer.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/initial-typecheck-pointer.json",
+      "sha256": "e8e79044a5606af1fb0a99d5556369685cc38379debee0c9019fd5b4e24819ce",
+      "bytes": 283
+    },
+    {
+      "id": "final-typecheck-pointer",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-typecheck-pointer-a2.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/final-typecheck-pointer.json",
+      "sha256": "0f562d2b2ffb74faa8c4d709da1182ef2240ae23828c0cd8fd1f8473110ee841",
+      "bytes": 282
+    },
+    {
+      "id": "source-review-a4",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\source-native-transport-review-a4.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-review-a4.json",
+      "sha256": "616b65f269562cf0f361fd01d9e73e7396f57caf9c4d424f3012272b3c7b6b23",
+      "bytes": 3352
+    },
+    {
+      "id": "source-tooling-a4",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\READY-source-native-transport-tooling-a4.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-tooling-a4.json",
+      "sha256": "0c4a0c45a30a7002d388ba905f6e7be724666c8d6b4e468ddfc37239e2d3164d",
+      "bytes": 2198
+    },
+    {
+      "id": "prerequisite-report-scope",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-report-scope.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/prerequisite-report-scope.json",
+      "sha256": "e8377c9e78f43376986c6a785ce296819c8ea51d47912163abb2f1f8a3119ece",
+      "bytes": 19203
+    },
+    {
+      "id": "current-channels",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\current-native-transport-channel-checks.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/current-channels.json",
+      "sha256": "4415811b6fce7254f26c2b9342b3cc92e11ecece52409bd8631d86d8696575fe",
+      "bytes": 10846
+    },
+    {
+      "id": "root-source-review",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-root-review-a7.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/root-source-review.json",
+      "sha256": "ae703099b5542e0afd4dc724a5df0e15df4828f08a973b5e9e52869d2b4e5680",
+      "bytes": 2051
+    },
+    {
+      "id": "swift-source-review",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-swift-review.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/swift-source-review.json",
+      "sha256": "5c66bc677adcddac47a89fc986c187ed5b136250119346e1e42d642e4029f0c5",
+      "bytes": 2825
+    },
+    {
+      "id": "root-proposal",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-root-a7\\manifest.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/root-proposal.json",
+      "sha256": "ff24679ec6f322fb86e40717fc04876ed4f782d2dad0f42db2295477951b92f2",
+      "bytes": 1471
+    },
+    {
+      "id": "ts-proposal",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-typescripta2\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/ts-proposal.json",
+      "sha256": "3ea6a10db1b35dbeef178abc7c846ff6071134d3e242b0827964b2ebf51dd20a",
+      "bytes": 348
+    },
+    {
+      "id": "android-proposal",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-androida3\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/android-proposal.json",
+      "sha256": "ed7b95151d20138d37ba0c547e20b49eef3681e897e588db3de6f22eafffd5c9",
+      "bytes": 483
+    },
+    {
+      "id": "swift-proposal",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-transport-ios-a3\\integration-manifest.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/swift-proposal.json",
+      "sha256": "07f82f1989561ccb501241e015790851c2f41fdf4b0073a1a86ee593388ea89b",
+      "bytes": 2916
+    },
+    {
+      "id": "initial-typecheck",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-transport-typecheck-97ec1975-4d82-4729-bcdb-11aaa5beab8f\\result.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/initial-typecheck.json",
+      "sha256": "9537851f5bc6b6600ee318651db6e3188d32f118418d6f93dc0f88f0f6216b1d",
+      "bytes": 274922
+    },
+    {
+      "id": "final-typecheck",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-transport-typecheck-46f8f2cd-0463-4330-a865-33251b09df81\\result.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/final-typecheck.json",
+      "sha256": "d0ce5ae991cdd8e80b2ebf7b396c9b8c4936dd641a2196cc81cba9c0363b77e6",
+      "bytes": 274921
+    },
+    {
+      "id": "source-export",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-native-transport-cca2cca9-4f37-46cc-91e2-516c08617138\\source-export.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-export.json",
+      "sha256": "b32a18e310cbdf1797077038b1acf4cb6b3b7b6d202ba39d4cdb73b2d3a00904",
+      "bytes": 14503
+    },
+    {
+      "id": "source-import",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-source-native-transport-import-1daf869e-8c78-46aa-8787-2f4c00379bdc\\result.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/source-import.json",
+      "sha256": "775d69c41a29c93c096106310074ebdc6edfa4831a318e875952b58170e0309f",
+      "bytes": 13688
+    },
+    {
+      "id": "preparation-android",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-fc0d5289-08cb-4502-903f-b4204b1c1333\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/preparation-android.json",
+      "sha256": "f60fb94279c13a7a2a6beb02a351fdd1755ef1aff9b5c58c8b09f6286874e461",
+      "bytes": 302069
+    },
+    {
+      "id": "readiness-android-report",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-android.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-report.json",
+      "sha256": "9d9a86a643ba877d38300dac2caefeba4b68d09bec9cabdd26ff29f281047aa1",
+      "bytes": 303212
+    },
+    {
+      "id": "readiness-android-execution",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\android.execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-execution.json",
+      "sha256": "0f2ac478b38f60180f196189969f136de069f4c4ad08db3631d130fdf9f1d9fe",
+      "bytes": 2317
+    },
+    {
+      "id": "readiness-android-selection",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-input-android.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-selection.json",
+      "sha256": "6a9a392ef823a5db2587141774fe2b25f01c7574ef170c2fabaadaa36986269b",
+      "bytes": 19004
+    },
+    {
+      "id": "readiness-android-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\android.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-stdout.txt",
+      "sha256": "861223f0afcc400476b01da0d6c2694e030928a17f23caf627fbb01047b51528",
+      "bytes": 1256
+    },
+    {
+      "id": "readiness-android-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\android.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-android-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "preparation-pwa",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-c06bdfa5-7949-41da-ab41-96dc35e3eaba\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/preparation-pwa.json",
+      "sha256": "9442abe805e1af9b4f5504e3a14951247554114a83b168ed185d3e188089d5d1",
+      "bytes": 287990
+    },
+    {
+      "id": "readiness-pwa-report",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-pwa.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-report.json",
+      "sha256": "343f45d409be7360d8988a8b3d35385d4e79e65da9eff35bfbb0f8bdffbc5996",
+      "bytes": 291414
+    },
+    {
+      "id": "readiness-pwa-execution",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\pwa.execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-execution.json",
+      "sha256": "fe33ceee57e18d96609683075659f356a9611dc62e6fa83027270368154ec28c",
+      "bytes": 2293
+    },
+    {
+      "id": "readiness-pwa-selection",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-input-pwa.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-selection.json",
+      "sha256": "baf409831018c9b459d491ca88d09ea090e1387b828396a86a0abc7d91438af9",
+      "bytes": 6620
+    },
+    {
+      "id": "readiness-pwa-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\pwa.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-stdout.txt",
+      "sha256": "429da978670ec69f78344a2e7ee9c08e3aebc0bb69c161a6e444484ab06fd84a",
+      "bytes": 1017
+    },
+    {
+      "id": "readiness-pwa-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\pwa.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-pwa-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "preparation-ios",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-ios-bundle-5bc9731e-3410-4eac-9203-3134624a07c6\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/preparation-ios.json",
+      "sha256": "470149da8f796c19efc70339119f826657126137e1e337c2ca77a1827320fce0",
+      "bytes": 288180
+    },
+    {
+      "id": "readiness-ios-report",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-ios.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-report.json",
+      "sha256": "e2045ace453bcb3d1e13c8be2229cdae97187aee72eec216930a23eae505ec76",
+      "bytes": 292592
+    },
+    {
+      "id": "readiness-ios-execution",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\ios.execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-execution.json",
+      "sha256": "92bfb7e27fcfaeef204dc4708f5764ba7e4b9d9c3a63565906f0a32f27e02a43",
+      "bytes": 2300
+    },
+    {
+      "id": "readiness-ios-selection",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\readiness-input-ios.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-selection.json",
+      "sha256": "fb57ce53ef10edbb002dcd9008a22ba606a616c0a3490100c3c43f36e19dced9",
+      "bytes": 7589
+    },
+    {
+      "id": "readiness-ios-stdout",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\ios.stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-stdout.txt",
+      "sha256": "f1c07c28e050b0bccc5729892059895d7d3e6ba554fd88e4d03323aa3d2a66c7",
+      "bytes": 1279
+    },
+    {
+      "id": "readiness-ios-stderr",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-native-transport-check-e2fbf7ba-7d89-4192-bc8a-dba9527b3b54\\ios.stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/readiness-ios-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "android-original-build-fail",
+      "sourcePath": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-6620cf7c-86d7-4ddf-955d-57dc3f6f0524\\preparation.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/android-original-build-fail.json",
+      "sha256": "7b74ce6dfc600d70a97a671f96e9863b547eb3c5b9d61529450754a094fc22ec",
+      "bytes": 288135
+    },
+    {
+      "id": "build-android-a1-execution",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-android-a1\\execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a1-execution.json",
+      "sha256": "c3d2a897466e4f09db145cf77446fa109df82dec0d3bc4fffe6d9a9d9c99d4d6",
+      "bytes": 356
+    },
+    {
+      "id": "build-android-a1-stdout",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-android-a1\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a1-stdout.txt",
+      "sha256": "85df044ac444bd842aca411e19f938fb0523f3eb038921c1ac3501bd24da27a9",
+      "bytes": 506
+    },
+    {
+      "id": "build-android-a1-stderr",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-android-a1\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-android-a2-execution",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-android-a2\\execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a2-execution.json",
+      "sha256": "52d75203151adc99351987cc6467b586dcb9dab1834c2efec344906a5279474f",
+      "bytes": 356
+    },
+    {
+      "id": "build-android-a2-stdout",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-android-a2\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a2-stdout.txt",
+      "sha256": "91203c52026fa4e56681fa560fe9a7f8d3abcff5fbd35de391bdcc0c5cbd3eda",
+      "bytes": 716
+    },
+    {
+      "id": "build-android-a2-stderr",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-android-a2\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-android-a2-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-pwa-a1-execution",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-pwa-a1\\execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-pwa-a1-execution.json",
+      "sha256": "3e511a74714c5c0ddc8b1d891f90e177bdb2d0f81118c1c40d5fb6287aa72da5",
+      "bytes": 352
+    },
+    {
+      "id": "build-pwa-a1-stdout",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-pwa-a1\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-pwa-a1-stdout.txt",
+      "sha256": "516b6a7402a91b521d0137c091d5d99b60470fd6628e2eb025d2ad6f1167f9dd",
+      "bytes": 321
+    },
+    {
+      "id": "build-pwa-a1-stderr",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-pwa-a1\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-pwa-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "build-ios-bundle-a1-execution",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-ios-bundle-a1\\execution.json",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-ios-bundle-a1-execution.json",
+      "sha256": "ceaeba92e86c873353142e58df163834459a3e187015a184a082d426a526a70e",
+      "bytes": 359
+    },
+    {
+      "id": "build-ios-bundle-a1-stdout",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-ios-bundle-a1\\stdout.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-ios-bundle-a1-stdout.txt",
+      "sha256": "8243384815dfc99fc2ed839eab1607d1afd017e1170c4a368311e5f1361a59a4",
+      "bytes": 338
+    },
+    {
+      "id": "build-ios-bundle-a1-stderr",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-transport-build-ios-bundle-a1\\stderr.txt",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/build-ios-bundle-a1-stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "id": "current-runbook",
+      "sourcePath": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\NATIVE_TRANSPORT_RUNBOOK.final.md",
+      "path": "docs/mobile/evidence/S16/native-private-transport-20261003/raw/current-runbook.md",
+      "sha256": "3294077d923a4473fdbb71f2d217f688969e0f128fbebc47b68fbdc18447b578",
+      "bytes": 17305
+    }
+  ],
+  "originalsUnmodified": true,
+  "releaseReady": false
+}
