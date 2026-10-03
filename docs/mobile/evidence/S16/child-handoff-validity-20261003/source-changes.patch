@@ -1,0 +1,548 @@
+diff --git a/src/child/childIndex.test.ts b/src/child/childIndex.test.ts
+index fa188148..3604ac58 100644
+--- a/src/child/childIndex.test.ts
++++ b/src/child/childIndex.test.ts
+@@ -253,6 +253,161 @@ describe("actual verified child index and distinct scoped data ports", () => {
+   });
+ });
+ 
++describe("child index synchronous host-callback validity", () => {
++  it.each(["source", "review"] as const)("settles a hung %s at the original timer deadline after pre-scheduling host work", async phase => {
++    vi.useFakeTimers(); vi.setSystemTime(initialTime);
++    const f = fixture(), late = deferred<unknown>();
++    let outsideInspection = true, consume = true, outcome: unknown;
++    if (phase === "source") f.source.load.mockImplementationOnce(() => late.promise);
++    else f.review.verify.mockImplementationOnce(() => late.promise);
++    const index = createVerifiedChildIndex({ ...f.options, clock: { nowEpochMs: () => Date.now() }, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured);
++      // The first inspection precedes the bounded operation. Spend time in
++      // its subsequent pre-scheduling host inspection without restarting it.
++      if (outsideInspection) outsideInspection = false;
++      else if (consume) { consume = false; vi.advanceTimersByTime(40); }
++      return admitted;
++    } });
++    const pending = index.packagePort.verify(f.challenge, new AbortController().signal);
++    void pending.then(value => { outcome = value; });
++    await settle();
++    expect(Date.now()).toBe(initialTime + 40);
++    expect(f.source.load).toHaveBeenCalledTimes(1);
++    expect(f.review.verify).toHaveBeenCalledTimes(phase === "source" ? 0 : 1);
++    expect(outcome).toBeUndefined();
++    await vi.advanceTimersByTimeAsync(59);
++    expect(Date.now()).toBe(initialTime + 99); expect(outcome).toBeUndefined();
++    await vi.advanceTimersByTimeAsync(1);
++    expect(Date.now()).toBe(initialTime + 100);
++    expect(await pending).toEqual({ status: "unavailable", challenge: f.challenge });
++    expect(outcome).toEqual({ status: "unavailable", challenge: f.challenge });
++    late.reject(new Error("synthetic-late-original-deadline")); await settle();
++    expect(index.getSnapshot()).toEqual({ phase: "sealed" }); index.dispose();
++  });
++
++  it.each(["package", "review"] as const)("seals getSnapshot when host inspection consumes exclusive %s validity", async boundary => {
++    const f = fixture(); if (boundary === "review") f.state.reviewUntil = initialTime + 2;
++    let consume = false, limit = 0;
++    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured);
++      if (consume) { consume = false; f.state.time = limit; }
++      return admitted;
++    } });
++    const proof = await index.packagePort.verify(f.challenge, new AbortController().signal);
++    expect(proof).toMatchObject({ status: "verified" });
++    limit = (proof as { validUntilEpochMs: number }).validUntilEpochMs; consume = true;
++    expect(index.getSnapshot()).toEqual({ phase: "sealed" });
++    index.dispose();
++  });
++
++  it.each(["review", "operation"] as const)("denies scoped commit authority if its final host callback consumes %s validity", async boundary => {
++    const f = fixture(); let consume = false, observedCurrent: boolean | undefined;
++    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured);
++      if (consume) { consume = false; f.state.time = boundary === "review" ? f.state.reviewUntil : initialTime + 100; }
++      return admitted;
++    } });
++    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
++    f.ports.history.read.mockImplementationOnce(async request => {
++      consume = true; observedCurrent = request.isCurrent(); return { revision: 0, value: null };
++    });
++    const visitor = vi.fn();
++    expect(await index.visitHistory(visitor)).toBe(false);
++    expect(observedCurrent).toBe(false);
++    expect(visitor).not.toHaveBeenCalled();
++    expect(index.getSnapshot()).toEqual({ phase: "sealed" });
++    index.dispose();
++  });
++
++  it.each(["review", "operation"] as const)("never hands content to a visitor after synchronous host work exhausts %s validity", async boundary => {
++    let deliveries = 0;
++    // Sweep the available budget, without depending on a fixed host-call count.
++    for (let budget = 1; budget <= 16; budget++) {
++      const f = fixture(); if (boundary === "review") f.state.reviewUntil = initialTime + budget;
++      let consuming = false, firstObservedAt: number | null = null, observedAt: number | null = null;
++      const index = createVerifiedChildIndex({ ...f.options, timeoutMs: boundary === "operation" ? budget : 100,
++        isCurrent: captured => {
++          const admitted = f.options.isCurrent(captured);
++          if (consuming) { f.state.time++; if (firstObservedAt === null) firstObservedAt = f.state.time; }
++          return admitted;
++        } });
++      expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
++      consuming = true;
++      const visitor = vi.fn(() => { observedAt = f.state.time; });
++      await index.visitEntity(f.work, visitor);
++      if (visitor.mock.calls.length) {
++        deliveries++;
++        const limit = boundary === "review" ? f.state.reviewUntil : firstObservedAt! + budget;
++        expect(observedAt, boundary + " remaining budget " + budget).toBeLessThan(limit);
++      }
++      consuming = false; index.dispose();
++    }
++    expect(deliveries).toBeGreaterThan(0);
++  });
++
++  it.each(["rollback", "throw"] as const)("seals a clock that fails after host inspection by %s", async failure => {
++    const f = fixture(); let arm = false, failClock = false;
++    const index = createVerifiedChildIndex({ ...f.options, clock: { nowEpochMs() {
++      if (failClock) throw new Error("synthetic-post-host-clock-detail"); return f.state.time;
++    } }, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured);
++      if (arm) { arm = false; if (failure === "rollback") f.state.time--; else failClock = true; }
++      return admitted;
++    } });
++    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
++    arm = true; expect(index.getSnapshot()).toEqual({ phase: "sealed" });
++    failClock = false; f.state.time = initialTime;
++    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "unavailable" });
++    index.dispose();
++  });
++
++  it("preserves a newer admission reentered by the post-host clock", async () => {
++    const f = fixture(); let arm = false, reenter = false, replacement: Promise<unknown> | null = null;
++    const index = createVerifiedChildIndex({ ...f.options, clock: { nowEpochMs() {
++      if (reenter) {
++        reenter = false; f.state.current = { ...f.challenge, generation: 2 };
++        replacement = index.packagePort.verify(f.state.current, new AbortController().signal);
++      }
++      return f.state.time;
++    } }, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured);
++      if (arm) { arm = false; reenter = true; }
++      return admitted;
++    } });
++    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
++    arm = true; expect(index.getSnapshot()).toEqual({ phase: "loading" });
++    expect(replacement).not.toBeNull(); expect(await replacement).toMatchObject({ status: "verified" });
++    expect(index.getSnapshot()).toEqual({ phase: "ready" }); index.dispose();
++  });
++
++  it("preserves a newer admission reentered directly by host inspection", async () => {
++    const f = fixture(); let arm = false, replacement: Promise<unknown> | null = null;
++    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured);
++      if (arm) {
++        arm = false; f.state.current = { ...f.challenge, generation: 2 };
++        replacement = index.packagePort.verify(f.state.current, new AbortController().signal);
++      }
++      return admitted;
++    } });
++    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
++    arm = true; expect(index.getSnapshot()).toEqual({ phase: "loading" });
++    expect(await replacement).toMatchObject({ status: "verified" });
++    expect(index.getSnapshot()).toEqual({ phase: "ready" }); index.dispose();
++  });
++
++  it("retains readiness when synchronous host work stays within the original validity", async () => {
++    const f = fixture(); let consume = false;
++    const index = createVerifiedChildIndex({ ...f.options, isCurrent: captured => {
++      const admitted = f.options.isCurrent(captured); if (consume) f.state.time++; return admitted;
++    } });
++    expect(await index.packagePort.verify(f.challenge, new AbortController().signal)).toMatchObject({ status: "verified" });
++    consume = true; expect(index.getSnapshot()).toEqual({ phase: "ready" });
++    const visitor = vi.fn(); expect(await index.visitEntity(f.work, visitor)).toBe(true);
++    expect(visitor).toHaveBeenCalledOnce(); index.dispose();
++  });
++});
++
+ describe("child scope generation, cancellation, bounded time and CAS races", () => {
+   it("latches background without source I/O and requires explicit foreground plus fresh admission", async () => {
+     const f = fixture(); await f.admit(); f.index.background(); const loads = f.source.load.mock.calls.length;
+diff --git a/src/child/childIndex.ts b/src/child/childIndex.ts
+index 6b0d73c5..8c30a033 100644
+--- a/src/child/childIndex.ts
++++ b/src/child/childIndex.ts
+@@ -111,22 +111,35 @@ export function createVerifiedChildIndex(options: ChildIndexOptions) {
+       lastNow = at; return at;
+     } catch { brokenClock = true; retire(); return null; }
+   }
++  function leaseCurrent(captured: Lease, allowLoading = false): boolean {
++    return !disposed && !brokenClock && visible && lease === captured && captured.generation === generation
++      && !captured.abort.signal.aborted && !captured.external.aborted
++      && (snapshot.phase === "ready" || allowLoading && snapshot.phase === "loading");
++  }
+   function trustedCurrent(captured: Lease, allowLoading = false): boolean {
+-    if (disposed || brokenClock || !visible || lease !== captured || captured.generation !== generation || captured.abort.signal.aborted
+-      || captured.external.aborted || snapshot.phase !== "ready" && !(allowLoading && snapshot.phase === "loading")) return false;
++    if (!leaseCurrent(captured, allowLoading)) return false;
+     const at = now(); if (at === null || at >= captured.validUntilEpochMs) { if (lease === captured) retire(); return false; }
++    if (!leaseCurrent(captured, allowLoading)) return false;
+     let current = false;
+     try { current = hostCurrent(captured.startup) === true; } catch { /* Unknown host authority denies. */ }
+-    if (!current && lease === captured) retire();
+-    return current && lease === captured && captured.generation === generation && !captured.abort.signal.aborted;
++    if (!current) { if (lease === captured) retire(); return false; }
++    if (!leaseCurrent(captured, allowLoading)) return false;
++    // Host inspection may consume validity or reenter another admission.
++    const completedAt = now();
++    if (!leaseCurrent(captured, allowLoading)) return false;
++    if (completedAt === null || completedAt >= captured.validUntilEpochMs) { if (lease === captured) retire(); return false; }
++    return true;
+   }
+   function operationCurrent(signal: AbortSignal): boolean {
+     const deadline = operationDeadlines.get(signal), at = now();
+     return !signal.aborted && deadline !== undefined && at !== null && at < deadline;
+   }
+   async function bounded<T>(signal: AbortSignal, current: () => boolean, task: (childSignal: AbortSignal) => Promise<T>): Promise<T | null> {
+-    const at = now(); if (at === null || signal.aborted || !current()) return null;
++    const operationGeneration = generation, at = now();
++    if (at === null || signal.aborted || !current() || generation !== operationGeneration) return null;
+     const deadline = at + timeoutMs; if (!epoch(deadline)) { retire(); return null; }
++    const validatedAt = now();
++    if (validatedAt === null || validatedAt >= deadline || signal.aborted || generation !== operationGeneration) return null;
+     const abort = new AbortController(); operations.add(abort); operationDeadlines.set(abort.signal, deadline);
+     return new Promise(resolve => {
+       let settled = false;
+@@ -135,34 +148,36 @@ export function createVerifiedChildIndex(options: ChildIndexOptions) {
+         abort.signal.removeEventListener("abort", cancel); operations.delete(abort); operationDeadlines.delete(abort.signal); resolve(value);
+       };
+       const cancel = () => { if (!abort.signal.aborted) abort.abort(); finish(null); };
+-      const timer = setTimeout(() => { abort.abort(); finish(null); }, timeoutMs);
++      const timer = setTimeout(() => { abort.abort(); finish(null); }, deadline - validatedAt);
+       signal.addEventListener("abort", cancel, { once: true }); abort.signal.addEventListener("abort", cancel, { once: true });
+       // Both branches consume late replies/rejections after timeout or retirement.
+-      Promise.resolve().then(() => !signal.aborted && operationCurrent(abort.signal) && current() ? task(abort.signal) : null).then(value => {
++      Promise.resolve().then(() => !signal.aborted && operationCurrent(abort.signal) && current() && operationCurrent(abort.signal) ? task(abort.signal) : null).then(value => {
+         const completedAt = now();
+-        finish(!abort.signal.aborted && !signal.aborted && completedAt !== null && completedAt < deadline && current() ? value : null);
++        finish(!abort.signal.aborted && !signal.aborted && completedAt !== null && completedAt < deadline && current() && operationCurrent(abort.signal) ? value : null);
+       }, () => finish(null));
+     });
+   }
+   async function freshReview(captured: Lease, signal: AbortSignal, allowLoading = false): Promise<boolean> {
+-    const at = now(); if (at === null || !operationCurrent(signal) || !trustedCurrent(captured, allowLoading)) return false;
++    const at = now(); if (at === null || !operationCurrent(signal) || !trustedCurrent(captured, allowLoading) || !operationCurrent(signal)) return false;
+     const challenge: ChildReviewChallenge = Object.freeze({ startup: captured.startup, scope: captured.compiled.scope, nowEpochMs: at });
+     const result = childRecord(await review(challenge, signal), ["status", "challenge", "validUntilEpochMs"]);
+     const completedAt = now();
+     if (!result || result.status !== "verified" || result.challenge !== challenge || !epoch(result.validUntilEpochMs)
+       || completedAt === null || result.validUntilEpochMs <= completedAt || !trustedCurrent(captured, allowLoading) || !operationCurrent(signal)) return false;
+     captured.validUntilEpochMs = Math.min(captured.validUntilEpochMs, result.validUntilEpochMs);
+-    return trustedCurrent(captured, allowLoading);
++    return trustedCurrent(captured, allowLoading) && operationCurrent(signal);
+   }
+   function request(captured: Lease, purpose: ChildIndexPurpose, signal: AbortSignal, reference: ChildEntityReference | null = null, allowLoading = false): ChildScopedDataRequest {
+     const base = childDataNamespace(captured.compiled.scope, purpose)!;
+     return Object.freeze({ purpose, scope: captured.compiled.scope,
+       key: reference ? `${base}/item/${reference.kind}/${reference.id}` : base, lease: captured.authority,
+-      isCurrent: () => operationCurrent(signal) && trustedCurrent(captured, allowLoading) });
++      isCurrent: () => operationCurrent(signal) && trustedCurrent(captured, allowLoading) && operationCurrent(signal) });
+   }
+   function entity(captured: Lease, reference: ChildEntityReference): ChildIndexedEntity | null {
+-    const row = captured.compiled.entities.find(candidate => referenceEqual(candidate.reference, reference)), at = now();
+-    if (!row || at === null || !trustedCurrent(captured) || !childEntityAllowed(row, captured.compiled,
++    const row = captured.compiled.entities.find(candidate => referenceEqual(candidate.reference, reference));
++    if (!row || !trustedCurrent(captured)) return null;
++    const at = now();
++    if (at === null || !leaseCurrent(captured) || !childEntityAllowed(row, captured.compiled,
+       { challenge: captured.startup, platform, territory, nowEpochMs: at })) return null;
+     for (const link of row.payload.references) {
+       const target = captured.compiled.entities.find(candidate => referenceEqual(candidate.reference, link));
+@@ -183,17 +198,17 @@ export function createVerifiedChildIndex(options: ChildIndexOptions) {
+   /** Synchronous handoff only. Promise/thenable returns are observed and denied;
+    * an async host executor needs its own cancellation seam instead of this API. */
+   function deliver<T>(captured: Lease, signal: AbortSignal, visitor: (value: T) => void, value: T): boolean {
+-    if (!operationCurrent(signal) || !trustedCurrent(captured)) return false;
++    if (!operationCurrent(signal) || !trustedCurrent(captured) || !operationCurrent(signal)) return false;
+     try {
+       const completion: unknown = visitor(value);
+       if (completion !== undefined) { void Promise.resolve(completion).catch(() => {}); return false; }
+-      return operationCurrent(signal) && trustedCurrent(captured);
++      return operationCurrent(signal) && trustedCurrent(captured) && operationCurrent(signal);
+     } catch { return false; }
+   }
+   async function action(task: (captured: Lease, signal: AbortSignal) => Promise<boolean>): Promise<boolean> {
+     const captured = lease; if (!captured || !trustedCurrent(captured)) return false;
+     const result = await bounded(captured.abort.signal, () => trustedCurrent(captured), async signal => {
+-      if (!await freshReview(captured, signal) || !trustedCurrent(captured)) return false;
++      if (!await freshReview(captured, signal) || !trustedCurrent(captured) || !operationCurrent(signal)) return false;
+       return task(captured, signal);
+     });
+     if (result !== true && lease === captured) retire();
+diff --git a/src/child/childMedia.test.ts b/src/child/childMedia.test.ts
+index e27a1a5d..7ed0594d 100644
+--- a/src/child/childMedia.test.ts
++++ b/src/child/childMedia.test.ts
+@@ -230,21 +230,111 @@ describe("media lifecycle, exact context and delivery fencing", () => {
+     expect(await pending).toBe(false); expect(visitor).not.toHaveBeenCalled();
+   });
+   it("rechecks context and review expiry after synchronous trusted-port callbacks", async () => {
+-    const f = fixture(); await f.admit(); let change = false;
++    const f = fixture(); await f.admit(); let change = false, observedCurrent: boolean | undefined;
+     const loader = createChildMediaLoader({ ...f.options, isCurrent: captured => {
+       const admitted = f.options.isCurrent(captured);
+       if (change) f.state.context = { ...f.state.context!, generation: 2 };
+       return admitted;
+     } });
+-    f.inventory.read.mockImplementationOnce(async request => { change = true; expect(request.isCurrent()).toBe(false); return f.mediaBytes; });
++    f.inventory.read.mockImplementationOnce(async request => { change = true; observedCurrent = request.isCurrent(); return f.mediaBytes; });
+     const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
+-    expect(visitor).not.toHaveBeenCalled();
+-    const g = fixture(); await g.admit(); g.state.reviewUntil = initialTime + 2;
++    expect(observedCurrent).toBe(false); expect(visitor).not.toHaveBeenCalled();
++    const g = fixture(); await g.admit(); g.state.reviewUntil = initialTime + 2; let observedExpiringCurrent: boolean | undefined;
+     const expiring = createChildMediaLoader({ ...g.options, isCurrent: captured => {
+       const admitted = g.options.isCurrent(captured); if (change) g.state.time = initialTime + 2; return admitted;
+     } });
+-    change = false; g.inventory.read.mockImplementationOnce(async request => { change = true; expect(request.isCurrent()).toBe(false); return g.mediaBytes; });
+-    expect(await expiring.visitMedia(g.input, new AbortController().signal, visitor)).toBe(false); expect(visitor).not.toHaveBeenCalled();
++    change = false; g.inventory.read.mockImplementationOnce(async request => { change = true; observedExpiringCurrent = request.isCurrent(); return g.mediaBytes; });
++    expect(await expiring.visitMedia(g.input, new AbortController().signal, visitor)).toBe(false);
++    expect(observedExpiringCurrent).toBe(false); expect(visitor).not.toHaveBeenCalled();
++  });
++  it.each(["review", "manifest", "context", "deadline"] as const)("denies an inventory lease when the final context callback consumes its %s expiry", async bound => {
++    const f = fixture(); await f.admit(); let armed = false, observedCurrent: boolean | undefined, observedTime: number | undefined;
++    const limit = bound === "deadline" ? initialTime + 100 : bound === "context" ? initialTime + 60_000 : initialTime + 2;
++    if (bound === "review") f.state.reviewUntil = limit;
++    if (bound === "manifest") (f.manifest as { validUntilEpochMs: number }).validUntilEpochMs = limit;
++    const loader = createChildMediaLoader({ ...f.options, timeoutMs: bound === "context" ? 120_000 : 100, context() {
++      if (armed) f.state.time += (limit - initialTime) / 2;
++      return f.state.context;
++    } });
++    f.inventory.read.mockImplementationOnce(async request => {
++      armed = true; observedCurrent = request.isCurrent(); observedTime = f.state.time;
++      armed = false; return f.mediaBytes;
++    });
++    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
++    expect(observedCurrent).toBe(false); expect(observedTime).toBe(limit);
++    expect(f.inventory.read).toHaveBeenCalledTimes(1); expect(visitor).not.toHaveBeenCalled();
++    expect(loader.getSnapshot()).toEqual({ phase: "sealed" });
++  });
++  it.each(["rollback", "invalid", "throw"] as const)("denies an inventory lease when the final context callback causes a %s clock failure", async fault => {
++    const f = fixture(); await f.admit(); let armed = false, contextReads = 0, failClock = false;
++    let observedCurrent: boolean | undefined, observedTime: number | undefined, observedThrow: boolean | undefined;
++    const loader = createChildMediaLoader({ ...f.options, context() {
++      if (armed && ++contextReads === 2) {
++        armed = false;
++        if (fault === "rollback") f.state.time--;
++        else if (fault === "invalid") f.state.time = NaN;
++        else failClock = true;
++      }
++      return f.state.context;
++    }, clock: { nowEpochMs() {
++      if (failClock) throw new Error("synthetic-final-context-clock-detail");
++      return f.state.time;
++    } } });
++    f.inventory.read.mockImplementationOnce(async request => {
++      armed = true; observedCurrent = request.isCurrent(); observedTime = f.state.time; observedThrow = failClock;
++      return f.mediaBytes;
++    });
++    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
++    expect(observedCurrent).toBe(false);
++    if (fault === "invalid") expect(observedTime).toBeNaN();
++    else if (fault === "rollback") expect(observedTime).toBe(initialTime - 1);
++    else expect(observedThrow).toBe(true);
++    expect(visitor).not.toHaveBeenCalled(); expect(loader.getSnapshot()).toEqual({ phase: "sealed" });
++    f.state.time = initialTime; failClock = false;
++    expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
++    expect(f.inventory.read).toHaveBeenCalledTimes(1); expect(visitor).not.toHaveBeenCalled();
++  });
++  it.each(["retire", "start"] as const)("denies the old inventory lease after final-clock reentry into %s and preserves any replacement", async action => {
++    const f = fixture(); await f.admit(); let armed = false, contextReads = 0, reenter = false;
++    let observedCurrent: boolean | undefined, clockAction: typeof action | undefined, observedAction: typeof action | undefined;
++    let replacement: Promise<boolean> | undefined; const replacementVisitor = vi.fn();
++    const loader = createChildMediaLoader({ ...f.options, context() {
++      if (armed && ++contextReads === 2) { armed = false; reenter = true; }
++      return f.state.context;
++    }, clock: { nowEpochMs() {
++      if (reenter) {
++        reenter = false; clockAction = action;
++        if (action === "retire") loader.retire();
++        else replacement = loader.visitMedia(f.input, new AbortController().signal, replacementVisitor);
++      }
++      return f.state.time;
++    } } });
++    f.inventory.read.mockImplementationOnce(async request => {
++      armed = true; observedCurrent = request.isCurrent(); observedAction = clockAction; return f.mediaBytes;
++    });
++    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(false);
++    expect(observedCurrent).toBe(false); expect(observedAction).toBe(action);
++    expect(visitor).not.toHaveBeenCalled();
++    if (action === "start") {
++      expect(await replacement).toBe(true); expect(replacementVisitor).toHaveBeenCalledTimes(1);
++      expect(replacementVisitor.mock.calls[0][0].bytes).toEqual(f.mediaBytes);
++      expect(f.inventory.read).toHaveBeenCalledTimes(2);
++    } else expect(replacementVisitor).not.toHaveBeenCalled();
++    expect(loader.getSnapshot()).toEqual({ phase: "sealed" });
++  });
++  it("keeps an inventory lease current when the final context callback consumes time within all original limits", async () => {
++    const f = fixture(); await f.admit(); f.state.reviewUntil = initialTime + 10; let armed = false;
++    const loader = createChildMediaLoader({ ...f.options, context() {
++      if (armed) f.state.time++;
++      return f.state.context;
++    } });
++    f.inventory.read.mockImplementationOnce(async request => {
++      armed = true; expect(request.isCurrent()).toBe(true); expect(f.state.time).toBe(initialTime + 2);
++      armed = false; return f.mediaBytes;
++    });
++    const visitor = vi.fn(); expect(await loader.visitMedia(f.input, new AbortController().signal, visitor)).toBe(true);
++    expect(visitor).toHaveBeenCalledTimes(1); expect(visitor.mock.calls[0][0].validUntilEpochMs).toBe(initialTime + 10);
++    expect(visitor.mock.calls[0][0].bytes).toEqual(f.mediaBytes);
+   });
+   it("charges no admission from rollback, unknown clocks or expired review/manifest intervals", async () => {
+     for (const time of [initialTime - 1, NaN, Infinity, initialTime + 60_000]) {
+diff --git a/src/child/childMedia.ts b/src/child/childMedia.ts
+index cbd97b30..a61f124e 100644
+--- a/src/child/childMedia.ts
++++ b/src/child/childMedia.ts
+@@ -195,10 +195,14 @@ export function createChildMediaLoader(options: ChildMediaOptions) {
+       const host = hostCurrent(operation.context) === true;
+       const ready = snapshot().phase === "ready", checkedAt = now();
+       const finalContext = checkedAt === null ? null : copyContext(context(), checkedAt);
++      // The final context callback may consume validity or retire this request.
++      // Sample time last, then fence clock reentry without another host callback.
++      const completedAt = now();
+       return !!latest && JSON.stringify(latest) === JSON.stringify(operation.context) && !!finalContext
+         && JSON.stringify(finalContext) === JSON.stringify(operation.context) && host && ready
+-        && checkedAt !== null && checkedAt < operation.deadline && checkedAt < operation.context.validUntilEpochMs && checkedAt < exclusiveLimit
+-        && active === operation && operation.generation === generation && !operation.abort.signal.aborted && !operation.external.aborted;
++        && completedAt !== null && completedAt < operation.deadline && completedAt < operation.context.validUntilEpochMs && completedAt < exclusiveLimit
++        && active === operation && operation.generation === generation && !disposed && !brokenClock && visible
++        && !operation.abort.signal.aborted && !operation.external.aborted;
+     } catch { return false; }
+   }
+   function policyCurrent(row: ChildIndexedEntity, captured: ChildRouteChallenge, at: number): boolean {
+diff --git a/src/child/childStartup.test.ts b/src/child/childStartup.test.ts
+index c6d22904..fbf68925 100644
+--- a/src/child/childStartup.test.ts
++++ b/src/child/childStartup.test.ts
+@@ -502,6 +502,106 @@ describe("sealed child-only startup boundary", () => {
+     expect(await startup.visitReady(vi.fn())).toBe(false);
+   });
+ 
++  it.each(["invalidate", "background", "dispose"] as const)("rejects a ready-view handoff revoked synchronously by %s", async operation => {
++    const f = fixture(), startup = createChildStartup(f.options);
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    const visit = vi.fn(() => { startup[operation](); });
++    expect(await startup.visitReady(visit)).toBe(false);
++    expect(visit).toHaveBeenCalledTimes(1);
++    expect(startup.getSnapshot()).toEqual({ phase: operation === "dispose" ? "disposed" : "sealed" });
++  });
++
++  it("rejects a ready-view handoff replaced synchronously while preserving the new route", async () => {
++    const f = fixture(), startup = createChildStartup(f.options);
++    const nextIntent: ChildStartupRequest = { locale: "ru", route: { kind: "country", entityId: "synthetic-next-country" } };
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    let replacement: Promise<unknown> | undefined;
++    expect(await startup.visitReady(() => { replacement = startup.start(nextIntent); })).toBe(false);
++    expect(await replacement).toEqual({ status: "ready" });
++    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
++    const nextVisit = vi.fn();
++    expect(await startup.visitReady(nextVisit)).toBe(true);
++    expect(nextVisit.mock.calls[0][0].route).toEqual(nextIntent.route);
++  });
++
++  it("rejects a ready-view handoff across synchronous A to B to A replacement", async () => {
++    const f = fixture(), startup = createChildStartup(f.options);
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    let intermediate: Promise<unknown> | undefined, replacement: Promise<unknown> | undefined, handedGeneration = -1;
++    expect(await startup.visitReady(() => {
++      handedGeneration = f.route.mock.calls[f.route.mock.calls.length - 1][0].generation;
++      intermediate = startup.start({ locale: "ru", route: { kind: "country", entityId: "synthetic-intermediate-country" } });
++      replacement = startup.start(intent());
++    })).toBe(false);
++    expect(await intermediate).toEqual({ status: "cancelled" });
++    expect(await replacement).toEqual({ status: "ready" });
++    const current = f.route.mock.calls[f.route.mock.calls.length - 1][0];
++    expect(current.request).toEqual(intent());
++    expect(current.generation).toBeGreaterThan(handedGeneration);
++    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
++  });
++
++  it("rejects a ready-view handoff that reaches package expiry inside the callback", async () => {
++    const f = fixture(), startup = createChildStartup(f.options);
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    expect(await startup.visitReady(() => { f.state.time = f.state.validUntil; })).toBe(false);
++    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
++    const lateVisit = vi.fn();
++    expect(await startup.visitReady(lateVisit)).toBe(false);
++    expect(lateVisit).not.toHaveBeenCalled();
++  });
++
++  it("rejects a ready-view handoff after synchronous clock rollback and keeps the clock sealed", async () => {
++    const f = fixture(), startup = createChildStartup(f.options);
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    expect(await startup.visitReady(() => { f.state.time--; })).toBe(false);
++    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
++    f.state.time = initialTime;
++    expect(await startup.start(intent())).toEqual({ status: "sealed" });
++  });
++
++  it("rejects a ready-view handoff if its post-callback clock throws", async () => {
++    const f = fixture(); let failClock = false;
++    const startup = createChildStartup({ ...f.options, clock: { nowEpochMs() {
++      if (failClock) throw new Error("synthetic-post-callback-clock-detail");
++      return f.state.time;
++    } } });
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    expect(await startup.visitReady(() => { failClock = true; })).toBe(false);
++    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
++    failClock = false;
++    expect(await startup.start(intent())).toEqual({ status: "sealed" });
++  });
++
++  it.each(["invalidate", "start"] as const)("rejects a ready-view handoff when its post-callback clock reenters %s", async operation => {
++    const f = fixture(); let reenter = false, replacement: Promise<unknown> | undefined;
++    const nextIntent: ChildStartupRequest = { locale: "ru", route: { kind: "writer", entityId: "synthetic-clock-writer" } };
++    const startup = createChildStartup({ ...f.options, clock: { nowEpochMs() {
++      if (reenter) {
++        reenter = false;
++        if (operation === "invalidate") startup.invalidate(); else replacement = startup.start(nextIntent);
++      }
++      return f.state.time;
++    } } });
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    expect(await startup.visitReady(() => { reenter = true; })).toBe(false);
++    if (operation === "invalidate") expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
++    else {
++      expect(await replacement).toEqual({ status: "ready" });
++      expect(startup.getSnapshot()).toEqual({ phase: "ready" });
++      expect(f.route.mock.calls[f.route.mock.calls.length - 1][0].request.route).toEqual(nextIntent.route);
++    }
++  });
++
++  it("accepts a ready-view handoff after a synchronous callback within the original package validity", async () => {
++    const f = fixture(), startup = createChildStartup(f.options);
++    expect(await startup.start(intent())).toEqual({ status: "ready" });
++    const visit = vi.fn(() => { f.state.time++; });
++    expect(await startup.visitReady(visit)).toBe(true);
++    expect(visit).toHaveBeenCalledTimes(1);
++    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
++  });
++
+   it("sanitizes throwing or asynchronous view callbacks without claiming a synchronous handoff", async () => {
+     const f = fixture(), startup = createChildStartup(f.options);
+     expect(await startup.start(intent())).toEqual({ status: "ready" });
+diff --git a/src/child/childStartup.ts b/src/child/childStartup.ts
+index 4240af75..dc35ce84 100644
+--- a/src/child/childStartup.ts
++++ b/src/child/childStartup.ts
+@@ -230,6 +230,12 @@ export function createChildStartup(options: ChildStartupOptions) {
+       try {
+         const completion: unknown = callback(Object.freeze({ profile: captured.profile, scope: captured.scope, route: captured.request.route }));
+         if (completion !== undefined) { void Promise.resolve(completion).catch(() => {}); return false; }
++        // The host may revoke or replace this view while receiving it. Check
++        // again after the callback and after the potentially reentrant clock.
++        if (ready !== captured || generation !== visitGeneration || disposed || brokenClock || !visible) return false;
++        const completedAt = now();
++        if (completedAt === null || ready !== captured || generation !== visitGeneration || disposed || brokenClock || !visible) return false;
++        if (completedAt >= captured.validUntilEpochMs) { seal("expired"); return false; }
+         return true;
+       } catch { return false; }
+     },

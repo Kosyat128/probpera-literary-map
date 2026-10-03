@@ -1,0 +1,82 @@
+{
+  "generatedAt": "2026-10-03T20:17:12.894Z",
+  "sourceCommit": "6518998b68069b06416408d7ff3fc3a64d46bc1c",
+  "files": [
+    {
+      "path": "checks.json",
+      "bytes": 301032,
+      "sha256": "8247e0a42c54f4647d20b0402df8a05c903412f3489a799033aa090428426c0b"
+    },
+    {
+      "path": "siblings-checks.json",
+      "bytes": 309816,
+      "sha256": "8899aa7106b8ad603f7fdc8827d53e7bae5de9642e742ef69320bbfa9591debd"
+    },
+    {
+      "path": "vitest.json",
+      "bytes": 22132,
+      "sha256": "eab28d9153e64d1d4c4f2e5d7aadaad2e0fc39fb8ccc35c715cc613348b8463d"
+    },
+    {
+      "path": "siblings-vitest.json",
+      "bytes": 37842,
+      "sha256": "c2cd892a9412835baa431eb84f2675e878e89513e9028166446186d14b12edff"
+    },
+    {
+      "path": "source-checkpoint.json",
+      "bytes": 1424,
+      "sha256": "b34d9b59d596ad3ebf2f1728ec0ba7bb33a53e6ec0cd9374b17a57244f505524"
+    },
+    {
+      "path": "source-changes.patch",
+      "bytes": 36242,
+      "sha256": "2e5baa37a6987b70aee35df92ebdd6fb36d781d1401dc5d785c58ca5069e59bf"
+    },
+    {
+      "path": "startup-unit-stdout.bin",
+      "bytes": 168,
+      "sha256": "76accc72f1c46aac5b58a179ba03663d29714654c83223ef0ab8e683f50cacb5"
+    },
+    {
+      "path": "startup-unit-stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "typescript-stdout.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "typescript-stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "siblings-unit-stdout.bin",
+      "bytes": 177,
+      "sha256": "808abb1be83ff241794d1d49ecee7d636b543c78471357f79741d0819ba064e5"
+    },
+    {
+      "path": "siblings-unit-stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "siblings-typescript-stdout.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "siblings-typescript-stderr.bin",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "result.json",
+      "bytes": 23711,
+      "sha256": "4e63d802efb75f879f1f7a945ecf6e021b902a225a4afd2f3f5bfe3b805e491b"
+    }
+  ],
+  "releaseReady": false
+}
