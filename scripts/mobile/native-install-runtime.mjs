@@ -248,10 +248,12 @@ function androidOfflineCommandArgs(value) {
   const launch = copied.length === 6 && copied.slice(0, 5).join(',') === 'shell,am,start,-W,-n'
     && copied[5] === 'ru.probpera.literaryplanet.dev/ru.probpera.literaryplanet.MainActivity';
   const instrument = copied.length === 15 && copied.slice(0, 7).join(',') === 'shell,am,instrument,-w,-r,-e,class'
-    && ['PlanetSecureStoreRuntimeTest','PlanetPreferencesRuntimeTest','PlanetPreviousPreferencesRuntimeTest'].some(name => copied[7] === 'ru.probpera.literaryplanet.' + name)
+    && (copied[7] === 'ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest'
+      ? copied[12] === 'literaryChildDataPhase' && ['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'].includes(copied[13])
+      : ['PlanetSecureStoreRuntimeTest','PlanetPreferencesRuntimeTest','PlanetPreviousPreferencesRuntimeTest'].some(name => copied[7] === 'ru.probpera.literaryplanet.' + name)
+        && copied[12] === 'literaryPhase' && ['write','read','remove','clear','absent','parallel','corrupt','unsupported-language','unsupported-theme','plugin-failure','timeout'].includes(copied[13]))
     && copied[8] === '-e' && copied[9] === 'literaryRunId' && /^[a-f0-9]{32}$/u.test(copied[10])
-    && copied[11] === '-e' && copied[12] === 'literaryPhase'
-    && ['write','read','remove','clear','absent','parallel','corrupt','unsupported-language','unsupported-theme','plugin-failure','timeout'].includes(copied[13])
+    && copied[11] === '-e'
     && copied[14] === 'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner';
   check(install || launch || instrument, 'Only the existing exact Android install, launch or fixture command may cross this offline gate.');
   return Object.freeze(copied);

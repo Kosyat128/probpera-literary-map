@@ -1586,8 +1586,8 @@
       "id": "DEVICE-ANDROID",
       "type": "infrastructure",
       "object": "Owned isolated Android emulator or test device",
-      "done": "Real secure-store plugin, APK preparation and bounded runtime runner",
-      "required": "Provide an owned eligible target and exact runner binding; emulator SDK/AVD unavailable in checked project paths",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
       "where": "Project-local Android SDK / own device",
       "secretNames": [],
       "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"

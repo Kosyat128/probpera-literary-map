@@ -120,6 +120,31 @@ describe('strict owned Android offline gates', () => {
     expect(f.state.calls.every(value => value.cleanup === true)).toBe(true);
     expect(f.state.records[0]).toMatchObject({ checkpoint:'owned-target-after-reboot',status:'PASS' });
   });
+  it('native child data command gates bind each exact candidate phase and fresh run before dispatch', async () => {
+    for (const phase of ['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear']) {
+      const f = fixture(), args = [...instrument]; args[7] = 'ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest'; args[12] = 'literaryChildDataPhase'; args[13] = phase;
+      await f.gate.command('child-data-' + phase,args,60_000);
+      expect(f.state.calls.map(call => call.args)).toEqual([...readArgs,args]);
+      expect(f.state.records[0]).toMatchObject({ checkpoint:'child-data-' + phase,status:'PASS' });
+    }
+  });
+  it('native child data command gates reject cross-class phase fields and unknown cases before any device access', async () => {
+    const candidate = [...instrument]; candidate[7] = 'ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest'; candidate[12] = 'literaryChildDataPhase'; candidate[13] = 'atomic';
+    const variants = [
+      {index:12,value:'literaryPhase'}, {index:13,value:'parallel'}, {index:13,value:'unreviewed'},
+      {index:7,value:'ru.probpera.literaryplanet.PlanetPreferencesRuntimeTest'}, {index:10,value:'a'.repeat(31)},
+      {index:14,value:'foreign.test/androidx.test.runner.AndroidJUnitRunner'},
+    ];
+    for (const patch of variants) { const f = fixture(), args = [...candidate]; args[patch.index] = patch.value;
+      await expect(f.gate.command('child-data-denied',args)).rejects.toThrow(); expect(f.state.calls).toEqual([]); expect(f.state.records).toEqual([]);
+    }
+  });
+  it('native child data command gates still deny a connected target before candidate instrumentation', async () => {
+    const f = fixture(), args = [...instrument]; args[7] = 'ru.probpera.literaryplanet.PlanetChildDataStoreRuntimeTest'; args[12] = 'literaryChildDataPhase'; args[13] = 'read';
+    f.state.replies.mobileData = '1\n';
+    await expect(f.gate.command('child-data-connected',args)).rejects.toThrow(/not verifiably offline/u);
+    expect(f.state.calls.map(call => call.args)).toEqual(readArgs); expect(f.state.records[0].status).toBe('FAIL');
+  });
 });
 
 describe('exact-package local native runner gates', () => {
