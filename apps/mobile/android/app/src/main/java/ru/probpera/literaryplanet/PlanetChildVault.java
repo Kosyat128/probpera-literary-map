@@ -1313,6 +1313,149 @@ final class PlanetChildVault {
         }
         public synchronized void close() { closed=true;if(reservation!=null)reservation.wipe();if(finalization!=null)finalization.wipe();Arrays.fill(delays,0); }
     }
+    /** Private verification mathematics only. No durable attempt charge,
+     * trusted deadline/record readback, Parent Gate result or native authority
+     * is supplied. A future verifier must reserve durably BEFORE calling this
+     * one-use operation and retain its real native worker through all callbacks
+     * and the synchronous KDF. Enrollment/UI/KDF factories remain unchanged. */
+    private static final class PinVerifierIdentity {
+        final String fullRecordChecksum,policyVersion,policyChecksum;
+        final long recordRevision,pinRevision,exactIterations;
+        private PinVerifierIdentity(ProtectedEnvelope record) {
+            fullRecordChecksum=record.checksum;policyVersion=record.policyVersion;policyChecksum=record.policyChecksum;
+            recordRevision=record.revision;pinRevision=record.pinRevision;exactIterations=record.iterations;
+        }
+    }
+    private static final class PinVerifierMaterial implements AutoCloseable {
+        final PinVerifierIdentity identity;private final byte[] canonical,salt,hash;
+        private final String saltChecksum,hashChecksum;private PinVerificationMath owner;private boolean closed;
+        private PinVerifierMaterial(PinVerifierIdentity identity,byte[] canonical,byte[] salt,byte[] hash) throws Exception {
+            this.identity=identity;this.canonical=canonical;this.salt=salt;this.hash=hash;
+            saltChecksum=digest(salt);hashChecksum=digest(hash);
+        }
+        /** Entire ordered envelope is validated before the narrowly bounded
+         * verifier slice is read. No JSON reserialization or profile key search. */
+        private static PinVerifierMaterial decode(byte[] bytes,String version,String checksum,long maximum) throws Exception {
+            byte[] canonical=null,salt=null,hash=null;
+            try(ProtectedEnvelope record=ProtectedEnvelope.decode(bytes,version,checksum,maximum)){
+                require(!record.unenrolled);canonical=record.copyCanonicalBytes();
+                ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(canonical,record.pinStart,record.pinEnd-record.pinStart,StandardCharsets.US_ASCII));
+                p.field("schemaVersion",true);p.number(1,1);p.field("policyVersion",false);require(p.string().equals(version));
+                p.field("revision",false);require(p.number(1,MAX_SAFE)==record.pinRevision);p.field("credentialId",false);p.string();
+                p.field("verifier",false);p.field("algorithm",true);require(p.string().equals("PBKDF2-HMAC-SHA256"));
+                p.field("iterations",false);require(p.number(600000,maximum)==record.iterations);
+                p.field("saltHex",false);salt=hex(p.string());p.field("hashHex",false);hash=hex(p.string());p.token("}");
+                PinVerifierMaterial original=new PinVerifierMaterial(new PinVerifierIdentity(record),canonical,salt,hash);
+                canonical=null;salt=null;hash=null;return original;
+            }finally{wipe(canonical);wipe(salt);wipe(hash);}
+        }
+        private static byte[] hex(String value) throws Exception {
+            require(ProtectedEnvelope.hash(value));byte[] result=new byte[32];
+            for(int i=0;i<32;i++)result[i]=(byte)((Character.digit(value.charAt(i*2),16)<<4)|Character.digit(value.charAt(i*2+1),16));return result;
+        }
+        private void fence() throws Exception {
+            require(!closed&&identity!=null&&salt.length==32&&hash.length==32
+                &&digest(canonical).equals(identity.fullRecordChecksum)&&digest(salt).equals(saltChecksum)&&digest(hash).equals(hashChecksum));
+        }
+        private static void wipe(byte[] bytes) { if(bytes!=null)Arrays.fill(bytes,(byte)0); }
+        private void wipe() { closed=true;wipe(canonical);wipe(salt);wipe(hash); }
+        public void close() { PinVerificationMath bound;synchronized(this){bound=owner;if(bound==null){wipe();return;}}bound.closeMaterial(this); }
+    }
+    /** Ownership helper for verification, deliberately separate from enrolled
+     * fresh/confirmation inputs. Empty/non-ASCII values can be consumed and
+     * refused here; this math layer cannot prove they were durably charged. */
+    private static final class PinVerificationInput implements AutoCloseable {
+        private final byte[] bytes;private boolean taken,closed;
+        private PinVerificationInput(byte[] owned) throws Exception {
+            require(owned!=null);try{require(owned.length<=128);bytes=owned.clone();}finally{Arrays.fill(owned,(byte)0);}
+        }
+        private synchronized byte[] take() throws Exception { require(!taken&&!closed);taken=true;byte[] moved=bytes.clone();close();return moved; }
+        public synchronized void close() { closed=true;Arrays.fill(bytes,(byte)0); }
+    }
+    private interface PinVerificationCheck { void check(PinVerifierIdentity originalIdentity) throws Exception; }
+    private interface PinVerificationEngine { void derive(byte[] pin,byte[] salt,long iterations,byte[] output,PinPrimitiveCheck check) throws Exception; }
+    /** Fixed platform algorithm and exact configured count; no custom crypto,
+     * SHA1 fallback, provider installation or API24/25 availability assertion.
+     * Unlike enrollment, verification must accept every nonempty ASCII PIN
+     * length1..128 so a short incorrect entry follows the charged-attempt flow.
+     * Only app-owned arrays/spec password are claimed cleared, not provider heap. */
+    private static final class PinVerificationPlatformKdf implements PinVerificationEngine {
+        public void derive(byte[] pin,byte[] salt,long iterations,byte[] output,PinPrimitiveCheck check) throws Exception {
+            require(pin!=null&&pin.length>=1&&pin.length<=128&&salt!=null&&salt.length==32
+                &&iterations>=600000&&iterations<=Integer.MAX_VALUE&&output!=null&&output.length==32&&check!=null);
+            for(byte digit:pin)require(digit>=48&&digit<=57);
+            char[] password=new char[pin.length];byte[] ownedSalt=salt.clone(),encoded=null;
+            javax.crypto.spec.PBEKeySpec spec=null;javax.crypto.SecretKey generated=null;boolean completed=false;
+            try{for(int i=0;i<pin.length;i++)password[i]=(char)pin[i];check.check();
+                spec=new javax.crypto.spec.PBEKeySpec(password,ownedSalt,(int)iterations,256);
+                javax.crypto.SecretKeyFactory factory=javax.crypto.SecretKeyFactory.getInstance("PBKDF2WithHmacSHA256");
+                generated=factory.generateSecret(spec);encoded=generated.getEncoded();require(encoded!=null&&encoded.length==32);
+                check.check();System.arraycopy(encoded,0,output,0,32);completed=true;
+            }finally{Arrays.fill(password,'\0');Arrays.fill(ownedSalt,(byte)0);PinVerifierMaterial.wipe(encoded);
+                if(spec!=null)spec.clearPassword();if(!completed)Arrays.fill(output,(byte)0);
+                if(generated!=null)try{generated.destroy();}catch(Exception|LinkageError unavailable){/* best effort, no heap-erasure claim */}
+            }
+        }
+    }
+    private enum PinVerificationOutcome { match, mismatch }
+    private static final class PinVerificationComparison implements AutoCloseable {
+        final PinVerifierIdentity identity;final boolean platformKdf;private final PinVerificationMath owner;
+        private final PinVerificationOutcome outcome;private boolean closed;
+        private PinVerificationComparison(PinVerificationMath owner,PinVerificationOutcome outcome) {
+            this.owner=owner;identity=owner.material.identity;platformKdf=owner.platformKdf;this.outcome=outcome;
+        }
+        private PinVerificationOutcome mathematicalOutcome() throws Exception { synchronized(owner){
+            require(!closed&&!owner.closed&&!owner.cancelled&&!owner.busy&&owner.result==this);return outcome;} }
+        public void close() { synchronized(owner){closed=true;} }
+    }
+    /** Pure local exclusive lifetime, not a durable/native-session worker.
+     * Caller check must authenticate the exact identity/current record and
+     * original continuous deadline. It confers no authority on this class.
+     * Cancel/close revoke immediately, but busy remains held until every actual
+     * check and synchronous KDF returns and app-owned late buffers are wiped. */
+    private static final class PinVerificationMath implements AutoCloseable {
+        private final PinVerifierMaterial material;private final PinVerificationEngine engine;private final boolean platformKdf;
+        private boolean started,busy,cancelled,closed;private PinVerificationComparison result;
+        private PinVerificationMath(PinVerifierMaterial original) throws Exception { this(original,new PinVerificationPlatformKdf(),true); }
+        private PinVerificationMath(PinVerifierMaterial original,PinVerificationEngine engine,boolean platform) throws Exception {
+            require(original!=null&&engine!=null);material=original;this.engine=engine;platformKdf=platform;
+            synchronized(original){original.fence();require(original.owner==null);original.owner=this;}
+        }
+        /** Explicit synthetic fixture seam, never a production selector. */
+        private static PinVerificationMath syntheticFixture(PinVerifierMaterial original,PinVerificationEngine fixture) throws Exception {
+            return new PinVerificationMath(original,fixture,false);
+        }
+        private synchronized void live() throws Exception { require(!cancelled&&!closed&&busy&&material.owner==this);material.fence(); }
+        private void checked(PinVerificationCheck check) throws Exception {
+            live();check.check(material.identity);live();
+        }
+        private PinVerificationComparison compare(PinVerifierMaterial original,PinVerificationInput input,PinVerificationCheck check) throws Exception {
+            synchronized(this){require(original==material&&material.owner==this&&!closed&&!cancelled&&!started&&!busy);
+                require(input!=null&&check!=null);started=true;busy=true;}
+            byte[] pin=null,salt=null,expectedHash=null,pinFence=null,saltFence=null,derived=null;boolean completed=false;
+            try{pin=input.take();require(pin.length>=1&&pin.length<=128);for(byte digit:pin)require(digit>=48&&digit<=57);
+                synchronized(this){live();salt=material.salt.clone();expectedHash=material.hash.clone();}
+                pinFence=pin.clone();saltFence=salt.clone();derived=new byte[32];checked(check);
+                final byte[] borrowedPin=pin,borrowedSalt=salt,originalPin=pinFence,originalSalt=saltFence;
+                PinPrimitiveCheck boundary=()->{require(MessageDigest.isEqual(borrowedPin,originalPin)&&MessageDigest.isEqual(borrowedSalt,originalSalt));checked(check);
+                    require(MessageDigest.isEqual(borrowedPin,originalPin)&&MessageDigest.isEqual(borrowedSalt,originalSalt));};
+                boundary.check();engine.derive(pin,salt,material.identity.exactIterations,derived,boundary);boundary.check();
+                PinVerificationOutcome outcome=MessageDigest.isEqual(derived,expectedHash)?PinVerificationOutcome.match:PinVerificationOutcome.mismatch;
+                // This is the last potentially injected callback. No callback
+                // or synchronous engine is allowed after local busy settles.
+                boundary.check();
+                synchronized(this){live();result=new PinVerificationComparison(this,outcome);completed=true;return result;}
+            }finally{input.close();PinVerifierMaterial.wipe(pin);PinVerifierMaterial.wipe(salt);PinVerifierMaterial.wipe(expectedHash);
+                PinVerifierMaterial.wipe(pinFence);PinVerifierMaterial.wipe(saltFence);PinVerifierMaterial.wipe(derived);
+                synchronized(this){material.wipe();if(!completed&&result!=null)result.close();busy=false;notifyAll();}
+            }
+        }
+        private synchronized void cancel() { cancelled=true;if(result!=null)result.close();if(!busy)material.wipe();notifyAll(); }
+        private synchronized void closeMaterial(PinVerifierMaterial original) {
+            if(original!=material)return;cancelled=true;material.closed=true;if(result!=null)result.close();if(!busy)material.wipe();notifyAll();
+        }
+        public synchronized void close() { closed=true;cancel(); }
+    }
     static final int MAX_BYTES = 131072;
     private static final long MAX_SAFE = 9007199254740991L;
     private static final ReentrantLock PROCESS_LOCK = new ReentrantLock();

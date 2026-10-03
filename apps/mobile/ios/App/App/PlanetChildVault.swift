@@ -2144,3 +2144,173 @@ fileprivate final class PinAttemptJournal {
     func close() { lock.lock(); defer { lock.unlock() }; disposed=true; active?.close(); finalization?.close() }
     deinit { close() }
 }
+
+/** Closed verification math only. A future genuine verifier must durably charge
+ * the original challenge BEFORE this work, hold its actual native worker until
+ * return, and authenticate current full-record/deadline coordinates at both
+ * caller fences. No extractor, callback, match or fixture grants that authority,
+ * refunds a malformed/cancelled attempt, writes state or creates Parent Gate. */
+fileprivate struct PinVerifierIdentity: Equatable {
+    let recordChecksum: String, recordRevision: UInt64, pinRevision: UInt64
+    let iterations: UInt32, policyVersion: String, policyChecksum: String
+}
+fileprivate final class PinVerifierMaterial: PinPrimitiveDisposable {
+    let identity: PinVerifierIdentity
+    private let lock=NSLock()
+    private var salt: PinPrimitiveBytes?, hash: PinPrimitiveBytes?, consumed=false, disposed=false
+    fileprivate init(identity: PinVerifierIdentity, salt: PinPrimitiveBytes, hash: PinPrimitiveBytes) {
+        self.identity=identity; self.salt=salt; self.hash=hash
+    }
+    static func extract(_ canonical: Data, policyVersion: String, policyChecksum: String,
+                        maxIterations: UInt64) throws -> PinVerifierMaterial {
+        // The existing strict decoder owns a bounded copy, rejects seeds/corrupt
+        // or noncanonical records, and checks the registry and complete schema.
+        let envelope=try PlanetChildVault.ProtectedEnvelope.decode(canonical,policyVersion:policyVersion,
+            policyChecksum:policyChecksum,maxIterations:maxIterations)
+        defer { envelope.close() }; return try envelope.verificationMaterial()
+    }
+    fileprivate func take() throws -> (salt: PinPrimitiveBytes, hash: PinPrimitiveBytes) {
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed && !consumed, let salt=salt, let hash=hash else { throw PinPrimitiveFailure.denied }
+        consumed=true; self.salt=nil; self.hash=nil; return (salt,hash)
+    }
+    fileprivate func isOpen() -> Bool { lock.lock(); defer { lock.unlock() }; return !disposed }
+    func close() {
+        lock.lock(); defer { lock.unlock() }; disposed=true
+        // Moved storage belongs to the live job and is wiped only after its
+        // synchronous crypto and actual callbacks settle, never under its reads.
+        salt?.close(); hash?.close(); salt=nil; hash=nil
+    }
+    deinit { close() }
+}
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    func verificationMaterial() throws -> PinVerifierMaterial {
+        lock.lock(); defer { lock.unlock() }; try Self.require(!disposed && pin != nil)
+        var raw=storage.copy(pinStart..<pinEnd); defer { raw.resetBytes(in:0..<raw.count) }
+        let owned=Storage(raw); defer { owned.wipe() }; let cursor=Cursor(owned)
+        try cursor.field("schemaVersion",first:true); _=try cursor.number(1,1)
+        try cursor.field("policyVersion"); try Self.require(cursor.asciiString()==policyVersion)
+        try cursor.field("revision"); let pinRevision=try cursor.number(1,9007199254740991)
+        try cursor.field("credentialId"); _=try cursor.hashRange()
+        try cursor.field("verifier"); try cursor.field("algorithm",first:true)
+        try Self.require(cursor.asciiString()=="PBKDF2-HMAC-SHA256")
+        try cursor.field("iterations"); let iterations=try cursor.number(600000,maxIterations)
+        try cursor.field("saltHex"); let saltRange=try cursor.hashRange()
+        try cursor.field("hashHex"); let hashRange=try cursor.hashRange(); try cursor.token("}")
+        try Self.require(pinRevision==pin?.revision && iterations==pin?.iterations && iterations<=UInt64(UInt32.max))
+        let salt=try PinPrimitiveBytes(count:32); var hash: PinPrimitiveBytes?
+        var accepted=false; defer { if !accepted { salt.close(); hash?.close() } }
+        hash=try PinPrimitiveBytes(count:32)
+        // Lowercase hex was validated by the strict cursor. Decode octets in
+        // owned pointers; no entered PIN or verifier is converted to String.
+        func decode(_ range: Range<Int>, into output: PinPrimitiveBytes) throws {
+            try Self.require(range.count==66)
+            func nibble(_ byte: UInt8) -> UInt8 { byte<=57 ? byte-48 : byte-87 }
+            try output.write { target in
+                for index in 0..<32 {
+                    let offset=range.lowerBound+1+index*2
+                    target[index]=(nibble(owned.byte(offset))<<4)|nibble(owned.byte(offset+1))
+                }
+            }
+        }
+        try decode(saltRange,into:salt); try decode(hashRange,into:hash!)
+        let identity=PinVerifierIdentity(recordChecksum:checksum,recordRevision:revision,pinRevision:pinRevision,
+            iterations:UInt32(iterations),policyVersion:policyVersion,policyChecksum:policyChecksum)
+        let result=PinVerifierMaterial(identity:identity,salt:salt,hash:hash!); accepted=true; return result
+    }
+}
+fileprivate protocol PinVerificationEngine: AnyObject {
+    func derive(pin: UnsafeRawBufferPointer, salt: UnsafeRawBufferPointer,
+                iterations: UInt32, output: UnsafeMutableRawBufferPointer) throws
+}
+/** Verification has its own 1-digit technical floor. Enrollment's existing
+ * ApplePinPrimitiveEngine remains byte-exact with its 4-digit creation floor.
+ * Only the fixed platform PBKDF2-HMAC-SHA256 implementation is used. */
+fileprivate final class ApplePinVerificationEngine: PinVerificationEngine {
+    func derive(pin: UnsafeRawBufferPointer, salt: UnsafeRawBufferPointer,
+                iterations: UInt32, output: UnsafeMutableRawBufferPointer) throws {
+        guard let password=pin.baseAddress, let saltPointer=salt.baseAddress, let key=output.baseAddress,
+              pin.count>=1 && pin.count<=128 && pin.allSatisfy({ $0>=48 && $0<=57 })
+              && salt.count==32 && output.count==32 && iterations>=600000 else { throw PinPrimitiveFailure.denied }
+        let status=CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2),
+            password.assumingMemoryBound(to:CChar.self),pin.count,
+            saltPointer.assumingMemoryBound(to:UInt8.self),salt.count,
+            CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA256),iterations,
+            key.assumingMemoryBound(to:UInt8.self),output.count)
+        guard status==kCCSuccess else { throw PinPrimitiveFailure.unavailable }
+    }
+}
+fileprivate enum PinVerificationMathSource { case platform, synthetic }
+fileprivate struct PinVerificationMathResult {
+    let identity: PinVerifierIdentity, comparison: PinAttemptComparison, source: PinVerificationMathSource
+}
+fileprivate final class PinVerificationMath: PinPrimitiveDisposable {
+    private final class Job {
+        let material: PinVerifierMaterial
+        var cancelled=false
+        var pin: PinPrimitiveBytes?, salt: PinPrimitiveBytes?, hash: PinPrimitiveBytes?, derived: PinPrimitiveBytes?
+        var pinSnapshot: PinPrimitiveBytes?, saltSnapshot: PinPrimitiveBytes?
+        init(_ material: PinVerifierMaterial) { self.material=material }
+        func wipe() {
+            pin?.close(); salt?.close(); hash?.close(); derived?.close(); pinSnapshot?.close(); saltSnapshot?.close()
+        }
+    }
+    private let lock=NSLock(), engine: PinVerificationEngine, source: PinVerificationMathSource
+    private var active: Job?, disposed=false, used=false, cancelled=false
+    init() { engine=ApplePinVerificationEngine(); source = .platform }
+    private init(synthetic engine: PinVerificationEngine) { self.engine=engine; source = .synthetic }
+    // Explicit source-only fixture seam. No production flag/factory selects it.
+    fileprivate static func syntheticFixture(_ engine: PinVerificationEngine) -> PinVerificationMath {
+        PinVerificationMath(synthetic:engine)
+    }
+    private func live(_ original: Job) throws {
+        lock.lock(); defer { lock.unlock() }
+        guard !disposed && !cancelled && active === original && !original.cancelled && original.material.isOpen()
+        else { throw PinPrimitiveFailure.denied }
+    }
+    /** The accepted job consumes original material and input once. Busy calls
+     * leave caller-owned objects untouched. check is mandatory, before and after
+     * actual KDF: the caller must enforce its original cancellation/deadline and
+     * exact authenticated record identity; this local closure is no authority. */
+    func compare(_ original: PinVerifierMaterial, input: PinPrimitiveInput,
+                 check: (PinVerifierIdentity) throws -> Void) throws -> PinVerificationMathResult {
+        lock.lock()
+        guard !disposed && !cancelled && !used && active==nil else { lock.unlock(); throw PinPrimitiveFailure.denied }
+        used=true; let job=Job(original); active=job; lock.unlock() // Burn/reserve before any callback.
+        do {
+            job.pin=try input.take(); let verifier=try original.take()
+            job.salt=verifier.salt; job.hash=verifier.hash; job.derived=try PinPrimitiveBytes(count:32)
+            job.pinSnapshot=try job.pin!.independentCopy(); job.saltSnapshot=try job.salt!.independentCopy()
+            try live(job); try check(original.identity); try live(job)
+            guard try job.pin!.equals(job.pinSnapshot!) && job.salt!.equals(job.saltSnapshot!)
+            else { throw PinPrimitiveFailure.denied }
+            let valid=try job.pin!.read { $0.count>=1 && $0.count<=128 && $0.allSatisfy { $0>=48 && $0<=57 } }
+            guard valid else { throw PinPrimitiveFailure.denied }
+            try job.pin!.read { pin in try job.salt!.read { salt in try job.derived!.write { output in
+                try engine.derive(pin:pin,salt:salt,iterations:original.identity.iterations,output:output)
+            } } }
+            // No cancellation/preemption promise while CCKeyDerivationPBKDF is
+            // synchronous. Late output is denied and wiped when it really returns.
+            try live(job)
+            guard try job.pin!.equals(job.pinSnapshot!) && job.salt!.equals(job.saltSnapshot!)
+            else { throw PinPrimitiveFailure.denied }
+            try check(original.identity); try live(job)
+            guard try job.pin!.equals(job.pinSnapshot!) && job.salt!.equals(job.saltSnapshot!)
+            else { throw PinPrimitiveFailure.denied }
+            let comparison: PinAttemptComparison=try job.derived!.equals(job.hash!) ? .match : .mismatch
+            job.wipe() // Actual crypto/callbacks settled; capacity still held.
+            lock.lock(); defer { lock.unlock() }
+            guard !disposed && !cancelled && active === job && !job.cancelled && original.isOpen()
+            else { throw PinPrimitiveFailure.denied }
+            active=nil
+            return PinVerificationMathResult(identity:original.identity,comparison:comparison,source:source)
+        } catch {
+            job.wipe()
+            lock.lock(); if active === job { active=nil }; lock.unlock()
+            throw error
+        }
+    }
+    func cancel() { lock.lock(); defer { lock.unlock() }; cancelled=true; active?.cancelled=true }
+    func close() { lock.lock(); defer { lock.unlock() }; disposed=true; active?.cancelled=true }
+    deinit { close() }
+}
