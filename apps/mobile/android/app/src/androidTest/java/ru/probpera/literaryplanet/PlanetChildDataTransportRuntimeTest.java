@@ -112,4 +112,25 @@ public class PlanetChildDataTransportRuntimeTest {
             assertEquals("unavailable",invoke(transport,"transact",batch(partition,reads(),Collections.emptyList())).get("status"));
         }finally{if(!closed){Map<String,Object> close=header();close.put("ownerToken",partition==null?null:partition.get("ownerToken"));invoke(transport,"close",close);}}
     }
+
+    private interface SDKChecked {void run()throws Exception;}
+    private static void sdkDenied(SDKChecked body)throws Exception{boolean refused=false;try{body.run();}catch(Exception expected){refused=true;}assertTrue("strict native wire refusal",refused);}
+    @Test public void localV2AppWireRejectsV1AndCallerAuthorityFields()throws Exception{
+        Map<String,Object> row=fields("version",2L,"requestId",id());assertEquals("bootstrap",PlanetChildDataTransport.decodeV2("bootstrap",row).method);
+        for(String authority:Arrays.asList("receipt","committed","retired","scope","policy","publicKey","ownerToken","deadlineMs","trustedEpochMs","adultFallback")){Map<String,Object> forged=new LinkedHashMap<>(row);forged.put(authority,true);sdkDenied(()->PlanetChildDataTransport.decodeV2("bootstrap",forged));}
+        row.put("version",1);sdkDenied(()->PlanetChildDataTransport.decodeV2("bootstrap",row));row.put("version",2L);row.put("requestId","A".repeat(32));sdkDenied(()->PlanetChildDataTransport.decodeV2("bootstrap",row));
+    }
+    @Test public void localV2AppWireRejectsMediaReferencesAndUnsafeCollections()throws Exception{
+        for(String kind:Arrays.asList("image","audio","video","external","licensed-pack","url")){Map<String,Object> row=fields("version",2L,"requestId",id(),"contextToken",id(),"reference",fields("kind",kind,"id","test","contentChecksum",HASH));sdkDenied(()->PlanetChildDataTransport.decodeV2("readEntity",row));}
+        Map<String,Object> row=fields("version",2L,"requestId",id(),"contextToken",id(),"collection","favorites","expectedRevision",0L,"references",Collections.singletonList(fields("kind","favorite","id","wrapper","contentChecksum",HASH)));
+        assertEquals(1,PlanetChildDataTransport.decodeV2("writeCollection",row).references.size());row.put("collection","recent");sdkDenied(()->PlanetChildDataTransport.decodeV2("writeCollection",row));row.put("collection","favorites");row.put("expectedRevision",-0.0d);sdkDenied(()->PlanetChildDataTransport.decodeV2("writeCollection",row));row.put("expectedRevision",0L);
+        List<Object> refs=new ArrayList<>((List<?>)row.get("references"));refs.add(refs.get(0));row.put("references",refs);sdkDenied(()->PlanetChildDataTransport.decodeV2("writeCollection",row));
+    }
+    @Test public void localV2AppWireCorrelatesRetirementWithoutCallerAcknowledgement()throws Exception{
+        String original=id();Map<String,Object> row=fields("version",2L,"requestId",original,"contextToken",null);PlanetChildDataTransport.V2Request parsed=PlanetChildDataTransport.decodeV2("retire",row);assertEquals(original,parsed.id);assertNull(parsed.contextToken);
+        row.put("contextToken",id());assertEquals(row.get("contextToken"),PlanetChildDataTransport.decodeV2("retire",row).contextToken);
+        for(String ack:Arrays.asList("ack","cancelled","joined","cleanupKnown","nativeSuccess")){row.put(ack,true);sdkDenied(()->PlanetChildDataTransport.decodeV2("retire",row));row.remove(ack);}
+        sdkDenied(()->PlanetChildDataTransport.decodeV2("readContext",fields("version",2L,"requestId",id(),"contextToken",null)));
+    }
+
 }

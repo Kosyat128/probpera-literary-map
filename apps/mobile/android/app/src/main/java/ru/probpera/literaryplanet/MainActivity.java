@@ -7,6 +7,7 @@ public class MainActivity extends BridgeActivity {
     @Override public void onCreate(Bundle savedInstanceState) {
         registerPlugin(PlanetContentStorePlugin.class);
         registerPlugin(PlanetSecureStorePlugin.class);
+        registerPlugin(PlanetChildPlugin.class);
         super.onCreate(savedInstanceState);
     }
 }

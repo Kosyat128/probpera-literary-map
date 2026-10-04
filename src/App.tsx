@@ -586,7 +586,7 @@ function safeHomepageHref(value: string, fallback: string) {
   return safePublicHref(value, fallback);
 }
 
-export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
+export default function App({ productHelp, nativeProfileControls }: { productHelp?: ReactNode; nativeProfileControls?: ReactNode } = {}) {
   const { user } = useAuth();
   const { record: recordRecent } = useRecentHistory();
   const { language, setLanguage, t, countryName, number } = useInterfaceLanguage();
@@ -657,8 +657,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
   const composition = usePlanetComposition({
     preferences: platformServices.preferences,
     enabled: isPlanetApplication,
-    // This application shell currently has no child profile. Child integration
-    // must supply a separately reviewed access decision instead of this adult path.
+    // Native mount admits this adult tree only after LOCAL V2 bootstrap. Child
+    // presentation owns a separate sealed context and never mounts these effects.
     access: isPlanetApplication ? "adult" : "blocked",
     getEnvironment: getCompositionEnvironment,
     readLegacyEdition: platformServices.kind !== "web" ? readLegacyWebViewGlobeEdition : undefined,
@@ -2267,8 +2267,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     readiness: {
       bootstrap: archiveDataStatus === "error" || bookRuntimeStatus === "error" ? "failed"
         : archiveDataStatus === "ready" && bookRuntimeStatus === "ready" ? "ready" : "pending",
-      // This shell has no child profile yet; this permits only the publication-
-      // checked routes above and does not grant a purchase or child-mode approval.
+      // Native bootstrap admits only the adult context here. Child routes never
+      // enter this navigation resolver; publications still use the checks above.
       policy: "allowed",
     },
     resolve: resolveNativeNavigation,
@@ -2362,8 +2362,8 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
     && !atlasSearchOpen && !atlasExperience.state.filtersOpen && composition.snapshot.editor === null
     && inspectionSnapshot.mode === "closed" && standInspectionSnapshot.phase === "closed";
   useLayoutEffect(() => {
-    // The existing shell has no child profile. Its later child adapter must
-    // provide its own reviewed routes and access decision, never an age guess.
+    // This native adult tree is mounted only after genuine LOCAL V2 admission.
+    // The child presentation uses native compiled routes and its own Booky context.
     mascot.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
       active: planetLaunchComplete && platformVisibility === "active" && !globalSearchOpen && !communityOpen,
       screen: nativeCollectionOpen ? "collection" : "globe", readerEntry: nativeCollectionOpen ? mascotReaderEntry : null,
@@ -3532,6 +3532,7 @@ export default function App({ productHelp }: { productHelp?: ReactNode } = {}) {
           <h2 id="native-collection-tools-title">{language === "ru" ? "Настройки и помощь" : "Settings and help"}</h2>
           <PlanetGraphicsSettings value={graphics.qualityTier} onChange={graphics.selectQuality} saveState={graphics.saveState} />
           {platformServices.downloads && <PlanetDownloadsPanel downloads={platformServices.downloads} />}
+          {nativeProfileControls}
           {productHelp}
         </section>
       </NativePlanetPanel>

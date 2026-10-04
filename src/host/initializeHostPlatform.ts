@@ -2,6 +2,7 @@ import type { PlatformBackEvent, PlatformServices } from "../platform/ports";
 import type { HostAppBridge, HostAppState, HostListenerHandle, HostNetworkBridge, HostPreferenceBridge, HostPlatformServicesOptions } from "./HostPlatformServices";
 import type { NativeNavigationBridgeFailure } from "./NativeNavigationBridge";
 import type { NativeContentStoreBridge } from "./nativeContentStorage";
+import type { ChildNativeAppPlugin } from "../child/childNativeAppBridge";
 import type { NativeSecureStoreBridge } from "./nativeSecureStorage";
 
 export interface NativeHostAppBridge extends HostAppBridge {
@@ -25,6 +26,7 @@ export interface NativeHostBindings {
   readonly appLauncher: { openUrl(options: { url: string }): Promise<{ completed: boolean }> };
   readonly contentStore?: NativeContentStoreBridge;
   readonly secureStore?: NativeSecureStoreBridge;
+  readonly child?: ChildNativeAppPlugin;
 }
 export interface NativeHostAdapterOptions {
   /** Explicit injection for native bootstrap tests; omitted uses real SDK bindings. */
@@ -37,6 +39,9 @@ export interface NativeHostAdapterOptions {
 export interface InitializedHostPlatform {
   readonly services: PlatformServices;
   readonly initialization: HostPlatformInitialization;
+  /** Invoked only after a real native adult/unenrolled context is admitted.
+   * Every invocation creates a fresh adult history/download recipient lifetime. */
+  readonly createAdultServices: () => Promise<PlatformServices>;
 }
 
 /** Public SDK availability guards; no invocation of a plugin or Web fallback. */

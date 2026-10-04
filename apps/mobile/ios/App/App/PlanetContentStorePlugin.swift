@@ -223,8 +223,11 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
 
 @objc(PlanetBridgeViewController)
 class PlanetBridgeViewController: CAPBridgeViewController {
+    private let planetChild=PlanetChildPlugin()
     override func capacitorDidLoad() {
         bridge?.registerPluginInstance(PlanetContentStorePlugin())
         bridge?.registerPluginInstance(PlanetSecureStorePlugin())
+        bridge?.registerPluginInstance(planetChild)
     }
+    override func viewWillDisappear(_ animated: Bool) { planetChild.nativeViewWillDisappear();super.viewWillDisappear(animated) }
 }

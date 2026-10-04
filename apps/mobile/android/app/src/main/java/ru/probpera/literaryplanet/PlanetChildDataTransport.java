@@ -215,4 +215,99 @@ final class PlanetChildDataTransport {
             if(close!=null)deliverClose(close);
         },"LiteraryPlanet-child-close").start();
     }
+
+    /** Separately typed LOCAL2 App input. Parsing cannot manufacture native
+     * admission, PIN proof, clock samples, package pins, UID or write receipts. */
+    static final class V2Request {
+        final String method,id,contextToken,action,collection,query;
+        final Map<String,Object> target,reference;
+        final List<Map<String,Object>> references;
+        final long expectedRevision;
+        private V2Request(String method,String id,String token,String action,Map<String,Object> target,
+            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs) {
+            this.method=method;this.id=id;contextToken=token;this.action=action;this.target=target;this.reference=reference;
+            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;
+        }
+    }
+    private static long v2Integer(Object value,long min,long max) throws Exception {
+        require(value instanceof Integer||value instanceof Long||value instanceof Double);
+        double n=((Number)value).doubleValue();
+        require(Double.isFinite(n)&&n==Math.rint(n)&&n>=min&&n<=max&&Double.doubleToRawLongBits(n)!=Double.doubleToRawLongBits(-0.0d));
+        return ((Number)value).longValue();
+    }
+    private static final Set<String> V2_TEXT_KINDS=Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
+        "country","writer","biography","work","character","storyworld","fact","quote","activity","quiz",
+        "search-result","recommendation","favorite","recent","offline-package","deep-link")));
+    private static final Set<String> V2_ACTIONS=Collections.unmodifiableSet(new HashSet<>(Arrays.asList(
+        "first-install","enroll-pin","replace-pin","recover-pin","create-profile","enter-child",
+        "exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store","initiate-purchase","restore-purchases",
+        "open-external","share","account-change","export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial")));
+    private static Map<String,Object> v2Reference(Object value) throws Exception {
+        Map<String,Object> ref=record(value,"kind","id","contentChecksum");
+        String kind=string(ref.get("kind"),32),id=string(ref.get("id"),96),sum=string(ref.get("contentChecksum"),64);
+        require(V2_TEXT_KINDS.contains(kind)&&id.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}")&&sum.matches("[a-f0-9]{64}"));
+        return immutable(ref);
+    }
+    private static Object v2Copy(Object value,int depth,int[] nodes) throws Exception {
+        require(depth<=12&&++nodes[0]<=4096);
+        if(value==null||value instanceof Boolean)return value;
+        if(value instanceof String){String text=(String)value;require(text.length()<=32768&&!text.matches("(?s).*[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f].*"));return text;}
+        if(value instanceof Number)return v2Integer(value,0,MAX_SAFE-1);
+        if(value instanceof List){List<?> values=(List<?>)value;require(values.size()<=64);List<Object> out=new ArrayList<>();for(Object item:values)out.add(v2Copy(item,depth+1,nodes));return Collections.unmodifiableList(out);}
+        require(value instanceof Map);Map<?,?> values=(Map<?,?>)value;require(values.size()<=64);Map<String,Object> out=new LinkedHashMap<>();
+        for(Map.Entry<?,?> item:values.entrySet()){require(item.getKey() instanceof String);String key=(String)item.getKey();require(key.matches("[A-Za-z][A-Za-z0-9]{0,63}")&&!out.containsKey(key));out.put(key,v2Copy(item.getValue(),depth+1,nodes));}
+        return immutable(out);
+    }
+    @SuppressWarnings("unchecked")
+    static V2Request decodeV2(String method,Map<String,?> value) throws Exception {
+        String id=correlation(value==null?null:value.get("requestId")),token=null,action=null,collection=null,query=null;
+        Map<String,Object> target=null,reference=null;List<Map<String,Object>> references=null;long revision=0;
+        Map<String,Object> row;
+        if("bootstrap".equals(method))row=record(value,"version","requestId");
+        else if("retire".equals(method)||"readContext".equals(method))row=record(value,"version","requestId","contextToken");
+        else if("perform".equals(method))row=record(value,"version","requestId","contextToken","action","target");
+        else if("readEntity".equals(method))row=record(value,"version","requestId","contextToken","reference");
+        else if("search".equals(method))row=record(value,"version","requestId","contextToken","query");
+        else if("readCollection".equals(method))row=record(value,"version","requestId","contextToken","collection");
+        else if("writeCollection".equals(method))row=record(value,"version","requestId","contextToken","collection","expectedRevision","references");
+        else throw new PlanetChildDataStore.Unavailable();
+        require(v2Integer(row.get("version"),2,2)==2);
+        if(!"bootstrap".equals(method)){
+            Object raw=row.get("contextToken");require(raw!=null||"perform".equals(method)||"retire".equals(method));if(raw!=null)token=correlation(raw);
+        }
+        if("perform".equals(method)){
+            action=string(row.get("action"),32);require(V2_ACTIONS.contains(action));Object raw=row.get("target");
+            require(raw==null||raw instanceof Map);if(raw!=null)target=(Map<String,Object>)v2Copy(raw,0,new int[]{0});
+            if(target!=null){byte[] bytes=new org.json.JSONObject(target).toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);try{require(bytes.length<=65536);}finally{Arrays.fill(bytes,(byte)0);}}
+            require(!"first-install".equals(action)||token==null);if(Arrays.asList("first-install","enroll-pin","replace-pin","recover-pin").contains(action))require(target==null);
+        }else if("readEntity".equals(method))reference=v2Reference(row.get("reference"));
+        else if("search".equals(method)){query=string(row.get("query"),240);require(!query.matches("(?s).*[\\x00-\\x1f\\x7f].*"));}
+        else if("readCollection".equals(method)||"writeCollection".equals(method)){
+            collection=string(row.get("collection"),9);require(Arrays.asList("favorites","recent","offline").contains(collection));
+            if("writeCollection".equals(method)){
+                revision=v2Integer(row.get("expectedRevision"),0,MAX_SAFE-1);Object raw=row.get("references");require(raw instanceof List&&((List<?>)raw).size()<=64);
+                List<Map<String,Object>> copied=new ArrayList<>();Set<String> ids=new HashSet<>();
+                String expected="favorites".equals(collection)?"favorite":"recent".equals(collection)?"recent":"offline-package";
+                for(Object item:(List<?>)raw){Map<String,Object> ref=v2Reference(item);require(expected.equals(ref.get("kind"))&&ids.add(expected+"/"+ref.get("id")));copied.add(ref);}
+                references=Collections.unmodifiableList(copied);
+            }
+        }
+        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references);
+    }
+    /** Capacitor's already-decoded own dictionaries are copied before enqueue.
+     * No JSONObject getter/coercion may run during the actual native operation. */
+    static Map<String,Object> ownV2DTO(org.json.JSONObject object) throws Exception {
+        require(object!=null&&object.length()<=64);return immutable(v2JsonObject(object,0,new int[]{0}));
+    }
+    private static Map<String,Object> v2JsonObject(org.json.JSONObject object,int depth,int[] nodes) throws Exception {
+        require(depth<=12&&object.length()<=64);Map<String,Object> out=new LinkedHashMap<>();Iterator<String> keys=object.keys();
+        while(keys.hasNext()){String key=keys.next();require(key.matches("[A-Za-z][A-Za-z0-9]{0,63}")&&!out.containsKey(key));out.put(key,v2JsonValue(object.get(key),depth+1,nodes));}return out;
+    }
+    private static Object v2JsonValue(Object value,int depth,int[] nodes) throws Exception {
+        require(depth<=12&&++nodes[0]<=16384);if(value==org.json.JSONObject.NULL)return null;
+        if(value instanceof org.json.JSONObject)return immutable(v2JsonObject((org.json.JSONObject)value,depth,nodes));
+        if(value instanceof org.json.JSONArray){org.json.JSONArray array=(org.json.JSONArray)value;require(array.length()<=4096);List<Object> out=new ArrayList<>();for(int i=0;i<array.length();i++)out.add(v2JsonValue(array.get(i),depth+1,nodes));return Collections.unmodifiableList(out);}
+        require(value instanceof String||value instanceof Number||value instanceof Boolean);return value;
+    }
+
 }

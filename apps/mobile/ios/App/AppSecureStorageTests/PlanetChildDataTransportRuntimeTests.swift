@@ -148,3 +148,28 @@ final class PlanetChildDataTransportRuntimeTests: XCTestCase {
         XCTAssertEqual(final["status"] as? String, "closed"); cleanupAllowed = final["status"] as? String == "closed"
     }
 }
+
+
+/** AUTHORED_NOT_RUN. Strict V2 wire refuses caller authority; DTO acceptance
+ * alone cannot retire the actual native request or mint admitted content. */
+final class PlanetChildLocalV2AppTransportTests: XCTestCase {
+    private let id=String(repeating:"a",count:32),token=String(repeating:"b",count:32),hash=String(repeating:"c",count:64)
+    func testLocalV2AppWireRejectsV1AndCallerAuthorityFields() throws {
+        let good: [String:Any]=["version":2,"requestId":id];XCTAssertEqual(try PlanetChildLocalV2Wire.decode("bootstrap",good).id,id)
+        for version in [1,true] as [Any] { var bad=good;bad["version"]=version;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("bootstrap",bad)) }
+        for key in ["pin","known","ownerToken","scope","trustedEpochMs","timeoutMs","releasePins"] { var bad=good;bad[key]=true;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("bootstrap",bad)) }
+        XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("activate",good))
+    }
+    func testLocalV2AppWireRejectsMediaReferencesAndUnsafeCollections() throws {
+        var request: [String:Any]=["version":2,"requestId":id,"contextToken":token,"reference":["kind":"activity","id":"one","contentChecksum":hash]];_ = try PlanetChildLocalV2Wire.decode("readEntity",request)
+        for kind in ["audio","video","image","url","adult-work"] { request["reference"]=["kind":kind,"id":"one","contentChecksum":hash];XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("readEntity",request)) }
+        let good: [String:Any]=["version":2,"requestId":id,"contextToken":token,"collection":"favorites","expectedRevision":0,"references":[]];_ = try PlanetChildLocalV2Wire.decode("writeCollection",good)
+        for revision in [-1,true,NSNumber(value:-0.0),9007199254740992] as [Any] { var bad=good;bad["expectedRevision"]=revision;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("writeCollection",bad)) }
+        var bad=good;bad["collection"]="adult-history";XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("writeCollection",bad));bad=good;let ref: [String:Any]=["kind":"favorite","id":"one","contentChecksum":hash];bad["references"]=[ref,ref];XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("writeCollection",bad))
+    }
+    func testLocalV2AppWireCorrelatesRetirementWithoutCallerAcknowledgement() throws {
+        let request: [String:Any]=["version":2,"requestId":id,"contextToken":NSNull()];let captured=try PlanetChildLocalV2Wire.decode("retire",request);XCTAssertNil(captured.token);XCTAssertEqual(captured.id,id)
+        for key in ["ack","known","retired","workersJoined","uiClosed"] { var bad=request;bad[key]=true;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("retire",bad)) }
+        let reply=PlanetChildLocalV2Wire.refusal("retire",request,reason:"pending");XCTAssertEqual(Set(reply.keys),Set(["version","requestId","status","contextToken"]));XCTAssertEqual(reply["status"] as? String,"unavailable")
+    }
+}

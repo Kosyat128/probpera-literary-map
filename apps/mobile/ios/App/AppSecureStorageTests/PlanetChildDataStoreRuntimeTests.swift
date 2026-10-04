@@ -148,3 +148,15 @@ extension PlanetChildDataStoreRuntimeTests {
         XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2KnownExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:pending),bytes);XCTAssertEqual(try Data(contentsOf:files.record),original)
     }
 }
+
+
+/** AUTHORED_NOT_RUN. LPC2 codec and isolated native file refusal mechanics;
+ * no synthetic fixture provides a production birth receipt or admission. */
+extension PlanetChildDataStoreRuntimeTests {
+    func testLocalV2AppCollectionTrailerKeepsLegacyBytesAndInactiveProfiles() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureSDKCollections("trailer")) }
+    func testLocalV2AppCollectionTombstonesAdvanceRemovalAndReAddCAS() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureSDKCollections("tombstone")) }
+    func testLocalV2AppCollectionPendingDeniesUnknownReopen() throws {
+        let id=try bootstrapRunId("c1"),files=try bootstrapFiles(id),store=try PlanetChildDataStore.synthetic(runId:id);try store.close();let original=try Data(contentsOf:files.record),pending=files.directory.appendingPathComponent("local-v2-collection.pending"),bytes=Data("unknown-original-command-retirement-retained".utf8);try bytes.write(to:pending,options:.withoutOverwriting)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2ExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:pending),bytes);XCTAssertEqual(try Data(contentsOf:files.record),original)
+    }
+}

@@ -46,6 +46,8 @@ const GLOBE_HASH_TARGETS = ["atlas"] as const;
 
 interface Props {
   countries: Country[];
+  /** Native compiled child text scope; reuse the canonical scene with sealed adult sources. */
+  childPresentation?: boolean;
   atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: WriterProfile | null;
@@ -86,6 +88,7 @@ interface Props {
 
 export default function LiteraryWorldMap({
   countries,
+  childPresentation = false,
   atlasCountries,
   selectedCountry,
   selectedWriter,
@@ -211,6 +214,7 @@ export default function LiteraryWorldMap({
       {(globeReady || retainScene) && LiteraryGlobe ? (
         <LiteraryGlobe
           countries={countries}
+          childPresentation={childPresentation}
           atlasCountries={atlasCountries}
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}

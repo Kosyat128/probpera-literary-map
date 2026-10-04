@@ -498,3 +498,22 @@ final class PlanetChildNativeProfileEntryTests: XCTestCase {
         XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.withoutPackage(saved,action:"expand-access-settings",target:target.bytes))
     }
 }
+
+
+/** AUTHORED_NOT_RUN. SDK parser/codec/native construction mechanics only;
+ * these tests confer no hardware acceptance or authenticated child readiness. */
+final class PlanetChildLocalV2AppFirstInstallTests: XCTestCase {
+    private func draft() -> Data { Data(#"{"label":"Native Reader","exactAge":9,"locale":"en","readingLevel":null,"allowedTopics":["nature"],"blockedTopics":["horror"],"soundEnabled":false,"motion":"calm","narrationEnabled":false}"#.utf8) }
+    func testLocalV2AppPolicyIsFixedAndFactorySelectsNativeOwner() throws { XCTAssertEqual(PlanetChildLocalV2SDKPolicy.checksum,"2a9fb86861697ae053d0af87b40bdd53e2454700520a96d36a456414b9014d8c");XCTAssertFalse(PlanetChildLocalV2SDKPolicy.canonical.hasSuffix("\n"));XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.factorySelected()) }
+    func testLocalV2AppBootstrapRejectsUnknownSeedWithoutSignedInstallTerminal() throws {
+        let seed=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:"child-local-v2.1",policyChecksum:PlanetChildLocalV2SDKPolicy.checksum);XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.rejectsUnknownTerminal(seed))
+        XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.rejectsUnknownTerminal(Data(#"{"schemaVersion":2,"kind":"LP-LOCAL-V2-FIRST-INSTALL-KNOWN","seed":"YQ==","payload":"YQ==","signature":"YQ==","publicKey":"YQ==","known":true}"#.utf8)))
+    }
+    func testLocalV2AppWireKeepsOriginalV2ClockAndActionVocabulary() throws { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.originalDeadline());XCTAssertEqual(PlanetChildLocalV2Wire.gateActions.count,16);XCTAssertFalse(PlanetChildLocalV2Wire.gateActions.contains("enter-child"));XCTAssertTrue(PlanetChildLocalV2Wire.actions.contains("first-install"));XCTAssertFalse(PlanetChildLocalV2Wire.actions.contains("initial-install")) }
+    func testLocalV2AppProfileDraftOwnsBirthFieldsAndRejectsCallerId() throws {
+        let original=draft(),profile=try PlanetChildLocalV2SDKRuntimeFixture.profile(original),row=try XCTUnwrap(JSONSerialization.jsonObject(with:profile) as? [String:Any]);XCTAssertEqual(row["id"] as? String,"native-pending");XCTAssertEqual(row["ageBand"] as? String,"9-11");XCTAssertNotNil(row["ageConfirmedAt"] as? String)
+        for key in ["id","ageConfirmedAt","ageBand","known","ownerToken"] { var bad=try XCTUnwrap(JSONSerialization.jsonObject(with:original) as? [String:Any]);bad[key]="caller-owned";XCTAssertThrowsError(try PlanetChildLocalV2SDKRuntimeFixture.profile(JSONSerialization.data(withJSONObject:bad))) }
+    }
+    func testLocalV2AppPinSuccessorKeepsSavedDebtAndNonPinBytes() throws { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.pinSuccessor()) }
+    func testLocalV2AppKnownUnboundBirthExitRequiresExactSignedEmptyOrigin() throws { for scenario in ["known-shape","foreign-uid","foreign-content","foreign-nonce","foreign-empty","extra-profile","already-bound","advanced"] { XCTAssertTrue(try PlanetChildDataStore.fixtureSDKUnboundOrigin(scenario),scenario) } }
+}

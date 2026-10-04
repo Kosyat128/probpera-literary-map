@@ -1,3 +1,4 @@
+import { childLocalV2AppBridgeTestMethods, childLocalV2AppBridgeFixtureSources, childLocalV2AppBridgeFixtureArguments, childLocalV2AppBridgeFixturePassed, verifyNativeChildLocalV2AppBridgeFixtureSources } from './native-install-runtime.mjs';
 import { afterEach, describe, expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
 import { mkdtemp, readFile, rm } from 'node:fs/promises';
@@ -380,5 +381,82 @@ describe('native Local V2 profile entry selector', () => {
     expect(result.fixture.parentGateAdmission).toBe(false); expect(result.fixture.installedStorageAcceptance).toBe(false);
     const persisted = JSON.parse(await readFile(path.join(root,'.tmp/profile-entry/result.json'),'utf8'));
     expect(persisted.kind).toBe(result.kind); expect(persisted.fixture).toEqual(result.fixture); expect(persisted.commands).toEqual([]);
+  });
+});
+
+
+describe('native App bridge selector', () => {
+  const runId='d'.repeat(32);
+  function observation() {
+    const args=childLocalV2AppBridgeFixtureArguments(runId), pairs=args[7].split(',');
+    return pairs.map((pair,index) => {const [klass,method]=pair.split('#');
+      const fields='INSTRUMENTATION_STATUS: class='+klass+'\nINSTRUMENTATION_STATUS: test='+method+'\nINSTRUMENTATION_STATUS: numtests=12\nINSTRUMENTATION_STATUS: current='+(index+1)+'\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\n';
+      return fields+'INSTRUMENTATION_STATUS_CODE: 1\n'+fields+'INSTRUMENTATION_STATUS_CODE: 0\n';
+    }).join('')+'INSTRUMENTATION_RESULT: stream=\nOK (12 tests)\nINSTRUMENTATION_CODE: -1\n';
+  }
+  it('selects the twelve exact App methods across three real classes', () => {
+    const args=childLocalV2AppBridgeFixtureArguments(runId);
+    expect(args).toHaveLength(18);expect(args[7].split(',').map(value=>value.split('#')[1])).toEqual(childLocalV2AppBridgeTestMethods);
+    expect(new Set(args[7].split(',').map(value=>value.split('#')[0])).size).toBe(3);expect(Object.isFrozen(args)).toBe(true);
+    expect(args.slice(11,17)).toEqual(['-e','literaryFirstInstallPhase','first-install-v2','-e','literaryChildDataPhase','local-v2-bootstrap']);
+    for(const value of ['',runId+'\n','A'.repeat(32),new String(runId),null])expect(()=>childLocalV2AppBridgeFixtureArguments(value)).toThrow();
+  });
+  it('requires all three unique original fixture raw bindings', () => {
+    const rows=childLocalV2AppBridgeFixtureSources.map(path=>({path,sha256:'a'.repeat(64)}));
+    expect(verifyNativeChildLocalV2AppBridgeFixtureSources(rows)).toBe(true);
+    for(const bad of [rows.slice(1),[...rows,rows[0]],rows.map((row,index)=>index===2?{...row,sha256:'unknown'}:row),null])
+      expect(()=>verifyNativeChildLocalV2AppBridgeFixtureSources(bad)).toThrow();
+  });
+  it('admits only all serial class and method starts and passes with a complete terminal', () => {
+    expect(childLocalV2AppBridgeFixturePassed(observation())).toBe(true);
+    expect(childLocalV2AppBridgeFixturePassed(observation().replaceAll('\n','\r\n'))).toBe(true);
+    expect(childLocalV2ProfileEntryFixturePassed(observation())).toBe(false);expect(childLocalV2PinOperationsFixturePassed(observation())).toBe(false);
+  });
+  it('refuses substituted class identity even when a method name and totals match', () => {
+    const good=observation();expect(childLocalV2AppBridgeFixturePassed(good.replace('PlanetChildDataTransportRuntimeTest','PlanetChildFirstInstallRuntimeTest'))).toBe(false);
+    expect(childLocalV2AppBridgeFixturePassed(good.replaceAll(childLocalV2AppBridgeTestMethods[0],childLocalV2AppBridgeTestMethods[1]))).toBe(false);
+  });
+  it('refuses incomplete duplicate and overlapping native command result packets', () => {
+    const good=observation();
+    for(const bad of [good.replace('INSTRUMENTATION_STATUS_CODE: 0','INSTRUMENTATION_STATUS_CODE: 1'),good.replaceAll('current=12','current=1'),
+      good.replace('test='+childLocalV2AppBridgeTestMethods[0],'test=foreign'),good.replace('INSTRUMENTATION_STATUS: current=1\n',''),
+      good.replaceAll('numtests=12','numtests=13'),good+'\0'])expect(childLocalV2AppBridgeFixturePassed(bad)).toBe(false);
+  });
+  it('keeps skipped failed process and malformed observations closed', () => {
+    for(const suffix of ['FAILURES!!!','INSTRUMENTATION_ABORTED','AssumptionViolatedException','skipped','Process crashed','INSTRUMENTATION_STATUS: unknown=1'])
+      expect(childLocalV2AppBridgeFixturePassed(observation()+suffix+'\n')).toBe(false);
+    expect(childLocalV2AppBridgeFixturePassed(observation().replace('INSTRUMENTATION_STATUS: id=AndroidJUnitRunner','INSTRUMENTATION_STATUS: id=OtherRunner'))).toBe(false);
+  });
+  it('refuses summary-only or missing and repeated terminal acknowledgements', () => {
+    expect(childLocalV2AppBridgeFixturePassed('OK (12 tests)\nINSTRUMENTATION_CODE: -1\n')).toBe(false);
+    for(const bad of [observation().replace('INSTRUMENTATION_RESULT: stream=\n',''),observation().replace('INSTRUMENTATION_CODE: -1',''),
+      observation()+'INSTRUMENTATION_CODE: -1\n',observation().replace('OK (12 tests)','OK (11 tests)')])expect(childLocalV2AppBridgeFixturePassed(bad)).toBe(false);
+  });
+  it('allows only exact App argv after fresh offline evidence and refuses added private methods', async () => {
+    const calls=[], records=[],expected=childLocalV2AppBridgeFixtureArguments(runId);
+    const port=async args=>{calls.push(args);if(args.join(' ')==='shell settings get global airplane_mode_on')return '1\n';
+      if(args.join(' ')==='shell settings get global mobile_data')return '0\n';if(args.join(' ')==='shell cmd wifi status')return 'Wifi is disabled\nWifi scanning is only available when wifi is enabled\n';
+      expect(args).toEqual(expected);return observation();};
+    const gate=createAndroidOfflineGate(port,value=>records.push(value));expect(childLocalV2AppBridgeFixturePassed(await gate.command('app-bridge',expected,180_000))).toBe(true);
+    expect(calls).toHaveLength(4);const forged=[...expected];forged[7]+=','+expected[7].split(',')[0];await expect(gate.command('app-bridge',forged,180_000)).rejects.toThrow();expect(calls).toHaveLength(4);
+  });
+  it('rejects mixed selector options before output creation or native device access', async () => {
+    const root=await mkdtemp(path.join(path.resolve(os.tmpdir()),'literary-native-runtime-test-'));temporary.push(root);
+    for(const prior of [{pinVerificationInput:true},{childLocalV2PinOperations:true},{childLocalV2ProfileEntry:true}])
+      await expect(runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2AppBridge:true,...prior})).rejects.toThrow(/cannot be mixed/u);
+  });
+  it('refuses nonboolean selection another platform and target reboot before evidence writes', async () => {
+    const root=await mkdtemp(path.join(path.resolve(os.tmpdir()),'literary-native-runtime-test-'));temporary.push(root);
+    await expect(runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2AppBridge:'true'})).rejects.toThrow(/Explicit/u);
+    for(const options of [{platform:'ios'},{platform:'android',reboot:true}])
+      await expect(runNativeInstallRuntime({rootDir:root,childLocalV2AppBridge:true,...options})).rejects.toThrow(/Android-only/u);
+  });
+  it('keeps App preflight device silent and reports bounded mechanics without installed authority', async () => {
+    const root=await mkdtemp(path.join(path.resolve(os.tmpdir()),'literary-native-runtime-test-'));temporary.push(root);
+    const result=await runNativeInstallRuntime({rootDir:root,platform:'android',runId,outDir:'.tmp/app-bridge',childLocalV2AppBridge:true});
+    expect(result.kind).toBe('literary-planet-child-local-v2-app-bridge-runtime');expect(result.status).toBe('BLOCKED_EXTERNAL');expect(result.commands).toEqual([]);
+    expect(result.fixture.tests).toBe(12);expect(result.fixture.methods).toEqual(childLocalV2AppBridgeTestMethods);expect(result.fixture.sources).toEqual(childLocalV2AppBridgeFixtureSources);
+    expect(result.installed).toBe(false);expect(result.releaseReady).toBe(false);expect(result.fixture.parentGateAdmission).toBe(false);expect(result.fixture.installedStorageAcceptance).toBe(false);
+    const persisted=JSON.parse(await readFile(path.join(root,'.tmp/app-bridge/result.json'),'utf8'));expect(persisted.fixture).toEqual(result.fixture);
   });
 });

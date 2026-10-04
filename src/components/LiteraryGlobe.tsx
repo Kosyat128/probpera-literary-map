@@ -161,6 +161,8 @@ export type GlobeCameraViewReceipt = Readonly<{
 
 interface Props {
   countries: Country[];
+  /** Native admitted text presentation; geometry and original controls remain canonical. */
+  childPresentation?: boolean;
   atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
@@ -2004,6 +2006,7 @@ function GlobeScene({
 
 export default function LiteraryGlobe({
   countries,
+  childPresentation = false,
   atlasCountries,
   selectedCountry,
   selectedWriter,
@@ -2054,8 +2057,8 @@ export default function LiteraryGlobe({
   }, [backgroundCustomization, isPlanetApplication]);
   const editionPreference = usePlanetEditionPreference({
     preferences: platformServices.preferences,
-    enabled: isPlanetApplication && !composition,
-    readLegacyPreference: platformServices.kind !== "web" ? legacyWebViewEditionPreference : undefined,
+    enabled: isPlanetApplication && !composition && !childPresentation,
+    readLegacyPreference: !childPresentation && platformServices.kind !== "web" ? legacyWebViewEditionPreference : undefined,
   });
   const [initialEdition] = useState(() => isPlanetApplication
     ? DEFAULT_GLOBE_EDITION_ID
@@ -2085,10 +2088,10 @@ export default function LiteraryGlobe({
     onCommit: (editionId) => {
       if (compositionRef.current) {
         // Composition persistence follows the combined actual scene frame.
-      } else if (isPlanetApplication) {
+      } else if (isPlanetApplication && !childPresentation) {
         initialEditionId.current = editionId;
         editionPreference.renderedEdition(editionId);
-      } else window.localStorage.setItem(GLOBE_EDITION_STORAGE_KEY, editionId);
+      } else if (!childPresentation) window.localStorage.setItem(GLOBE_EDITION_STORAGE_KEY, editionId);
     },
   });
   const renderedEditionId = globeStyle.renderedStyle;
@@ -2451,16 +2454,17 @@ export default function LiteraryGlobe({
   const sourceEdition = renderedEdition;
   const handledSourceRequest = useRef(0);
   const openSourceDialog = () => {
+    if (childPresentation) return;
     const dialog = sourceDialogRef.current;
     if (dialog && !dialog.open) dialog.showModal();
   };
   useEffect(() => {
-    if (!isPlanetApplication || !sourceDialogRequestId || sourceDialogRequestId === handledSourceRequest.current) return;
+    if (childPresentation || !isPlanetApplication || !sourceDialogRequestId || sourceDialogRequestId === handledSourceRequest.current) return;
     const dialog = sourceDialogRef.current;
     if (!dialog) return;
     handledSourceRequest.current = sourceDialogRequestId;
     if (!dialog.open) dialog.showModal();
-  }, [isPlanetApplication, sourceDialogRequestId, atlas]);
+  }, [childPresentation, isPlanetApplication, sourceDialogRequestId, atlas]);
   const clearEditionRailHideTimer = useCallback(() => {
     if (editionRailHideTimerRef.current === null) return;
     window.clearTimeout(editionRailHideTimerRef.current);
@@ -2505,6 +2509,7 @@ export default function LiteraryGlobe({
   }, [renderedEditionId, revealEditionRail]);
   const requestEdition = useCallback(
     async (editionId: GlobeEditionId) => {
+      if (childPresentation) return;
       if (compositionRef.current) {
         compositionRef.current.controller.requestEdition(editionId);
         revealEditionRail();
@@ -2527,7 +2532,7 @@ export default function LiteraryGlobe({
         editionRailRestoreFocusRef.current = false;
       }
     },
-    [editionPreference.renderedEdition, editionPreference.requestEdition, globeStyle.requestStyle, isPlanetApplication, revealEditionRail, scheduleEditionRailHide]
+    [childPresentation, editionPreference.renderedEdition, editionPreference.requestEdition, globeStyle.requestStyle, isPlanetApplication, revealEditionRail, scheduleEditionRailHide]
   );
   const clearEditionPreload = useCallback(() => {
     if (editionPreloadTimerRef.current === null) return;
@@ -2537,7 +2542,7 @@ export default function LiteraryGlobe({
   const preloadEdition = useCallback(
     (editionId: GlobeEditionId, delayMs = 0) => {
       clearEditionPreload();
-      if (!atlas || editionId === renderedEditionId) return;
+      if (childPresentation || !atlas || editionId === renderedEditionId) return;
       const start = () => {
         editionPreloadTimerRef.current = null;
         void atlas.preloadEdition(editionId, language).catch(() => undefined);
@@ -2548,7 +2553,7 @@ export default function LiteraryGlobe({
         start();
       }
     },
-    [atlas, clearEditionPreload, language, renderedEditionId]
+    [childPresentation, atlas, clearEditionPreload, language, renderedEditionId]
   );
 
   useEffect(() => clearEditionPreload, [clearEditionPreload]);
@@ -3293,7 +3298,7 @@ export default function LiteraryGlobe({
           controlRequest={controlRequest}
           onInteractionStart={handleInteractionStart}
           onInteractionEnd={handleInteractionEnd}
-          showNobelLaureates={showNobelLaureates}
+          showNobelLaureates={!childPresentation && showNobelLaureates}
           nobelCountryId={nobelCountryId}
           onWriterSelect={handleSceneWriterSelect}
           onLaureateHover={handleLaureateHover}
@@ -3417,6 +3422,7 @@ export default function LiteraryGlobe({
         >
           <small>{t("Сброс")}</small>
         </Button>
+        {!childPresentation && (
         <Button
           surface="dark"
           variant="text"
@@ -3427,6 +3433,7 @@ export default function LiteraryGlobe({
         >
           <small>{t("Источник")}</small>
         </Button>
+        )}
         <span className="globe-navigation-label" aria-hidden="true">
           {t("Интерактивный глобус · ручная навигация")}
         </span>
@@ -3439,6 +3446,7 @@ export default function LiteraryGlobe({
 
       {standControls}
 
+      {!childPresentation && <>
       <IconButton
         ref={editionRailToggleRef}
         className="globe-style-switch-toggle"
@@ -3637,6 +3645,7 @@ export default function LiteraryGlobe({
           </form>
         </article>
       </dialog>
+      </>}
 
       {renderedVisualStyle === "modern" && (
         <div
@@ -3654,7 +3663,7 @@ export default function LiteraryGlobe({
       <div className="globe-vignette" aria-hidden="true" />
       <div className="globe-shadow" aria-hidden="true" />
 
-      {showNobelLaureates && visibleNobelCount > 0 && (
+      {!childPresentation && showNobelLaureates && visibleNobelCount > 0 && (
         <details className="globe-nobel-status">
           <summary>
             <img
@@ -3715,7 +3724,7 @@ export default function LiteraryGlobe({
         </details>
       )}
 
-      {hoveredLaureate?.kind === "writer" ? (
+      {!childPresentation && hoveredLaureate?.kind === "writer" ? (
         <div className="globe-country-label globe-laureate-label" role="tooltip">
           <WriterPortrait
             writer={hoveredLaureate.writer}
@@ -3745,7 +3754,7 @@ export default function LiteraryGlobe({
             </em>
           </div>
         </div>
-      ) : hoveredLaureate?.kind === "cluster" ? (
+      ) : !childPresentation && hoveredLaureate?.kind === "cluster" ? (
         <div className="globe-country-label globe-laureate-label" role="tooltip">
           <img
             src={`${import.meta.env.BASE_URL}brand/alfred-nobel-medallion.png`}
@@ -3788,6 +3797,7 @@ export default function LiteraryGlobe({
           data-country-code={contextualCountry.code}
           data-country-label-source={hoveredCountry ? "hover" : "selection"}
         >
+          {!childPresentation && (
           <CountryFlagIcon
             code={contextualCountry.code}
             countryName={contextualCountry.name}
@@ -3796,11 +3806,12 @@ export default function LiteraryGlobe({
             decorative
             priority
           />
+          )}
           <div>
             <span>
               {countryName(contextualCountry.code, contextualCountry.name)}
             </span>
-            <small>
+            {!childPresentation && <small>
               {number(contextualCountry.writers.length)}{" "}
               {t(
                 selectInterfacePlural(contextualCountry.writers.length, language, [
@@ -3809,10 +3820,11 @@ export default function LiteraryGlobe({
                   "авторов в архиве",
                 ])
               )}
-            </small>
+            </small>}
             <em>
-              {hoveredCountry
-                ? t("Нажмите, чтобы открыть архив страны")
+              {childPresentation
+                ? language === "ru" ? "Выберите страну" : "Choose a country"
+                : hoveredCountry ? t("Нажмите, чтобы открыть архив страны")
                 : t("Страна выбрана · карточка архива открыта")}
             </em>
           </div>

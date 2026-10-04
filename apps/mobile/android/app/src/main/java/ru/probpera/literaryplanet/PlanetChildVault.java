@@ -3146,7 +3146,7 @@ final class PlanetChildVault {
      * production writer selects its one native fixed namespace and real clock;
      * isolated synthetic instances below are usable only as mechanical tests. */
     private interface LocalV2ElapsedClock { long now() throws Exception; }
-    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize, profile, canonical }
+    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize, profile, canonical, rotate }
     private static final class LocalV2ClockLease {
         final LocalV2ProcessClock owner;final Object original;final long began,deadline;
         private boolean closed;private LocalV2ClockSample sample;
@@ -3255,7 +3255,8 @@ final class PlanetChildVault {
                     if(action==LocalV2ClockAction.enroll){require(known.seed);try(LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
                         LocalSnapshotV2.validateEnrollment(before,value,sample.logicalMs);}expected=after.clone();}
                     else{require(!known.seed);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy);LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
-                        if(action==LocalV2ClockAction.canonical){require(lease.original instanceof LocalV2GateMutation);LocalV2GateMutation mutation=(LocalV2GateMutation)lease.original;mutation.boundary();LocalV2CanonicalTransition.validate(old,value,mutation.original.action,mutation.target);expected=after.clone();}
+                        if(action==LocalV2ClockAction.rotate){require(lease.original instanceof LocalV2Request);LocalV2Request original=(LocalV2Request)lease.original;require(original.sdkRotation!=null&&original.sdkRotation.request==original);original.sdkRotation.verifyOwner(true);require(MessageDigest.isEqual(before,original.sdkRotation.original)&&MessageDigest.isEqual(after,original.sdkRotation.nextBytes));LocalV2PinVerifier verifier=LocalV2PinOperation.verifier(value);expected=sdkRotate(old,verifier.saltHex,value.credentialId,verifier.hashHex);}
+                        else if(action==LocalV2ClockAction.canonical){require(lease.original instanceof LocalV2GateMutation);LocalV2GateMutation mutation=(LocalV2GateMutation)lease.original;mutation.boundary();LocalV2CanonicalTransition.validate(old,value,mutation.original.action,mutation.target);expected=after.clone();}
                         else if(action==LocalV2ClockAction.profile){LocalV2InitialProfile.validate(old,value);expected=after.clone();}
                         else if(action==LocalV2ClockAction.charge)expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);
                         else{require(action==LocalV2ClockAction.finalize&&value.lastObservedMs==sample.logicalMs);
@@ -3307,7 +3308,7 @@ final class PlanetChildVault {
         boolean anchored,cancelled,sealed,retiring,retired,detached,charged,mutationStarted,enrollmentStarted;
         int workers,mainCalls,events,settleCalls,pinWorkers,pinCancelCalls;boolean unacknowledgedMutation;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
         private LocalV2PinOperation pinOperation;
-        private LocalV2ProfileOperation profileOperation;
+        private LocalV2ProfileOperation profileOperation; private LocalV2SDKPinRotation sdkRotation; private LocalV2NativePackageLoader sdkPackageLoader;
         private byte[] currentBytes;private String currentChecksum;
         private LocalV2EnrollmentSample enrollmentSample;
         android.app.Application.ActivityLifecycleCallbacks lifecycle;android.content.BroadcastReceiver screen;Runnable expiry;
@@ -3322,7 +3323,7 @@ final class PlanetChildVault {
             processLease=deadline==0?processClock.claim(this,timeout):processClock.claimUntil(this,deadline);began=processLease.began;this.deadline=processLease.deadline;
         }
     }
-    /** Actual existing-AES/AtomicFile/flock leaf, inaccessible from production:
+    /** Actual existing-AES/AtomicFile/flock owner, with SDK entry kept private:
      * V2 native owner/input/KDF is connected privately below. It never
      * consumes FirstInstallReceipt or a v1 PIN result as mutation permission.
      * Genuine Gate/admitted-data/App mapping remains unavailable. */
@@ -3375,13 +3376,13 @@ final class PlanetChildVault {
             }finally{synchronized(this){reserving=false;}}
         }
         private void event(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;request.events++;request.cancelled=true;
-                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);if(request.pinOperation!=null)request.pinOperation.revoke();if(request.profileOperation!=null)request.profileOperation.revoke();}
+                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);if(request.pinOperation!=null)request.pinOperation.revoke();if(request.profileOperation!=null)request.profileOperation.revoke();if(request.sdkRotation!=null)request.sdkRotation.revoke();}
             synchronized(this){request.events--;wipeIdle(request);notifyAll();}}
         private void wipeIdle(LocalV2Request request){if((request.cancelled||request.sealed)&&request.workers==0&&request.pinWorkers==0&&request.pinCancelCalls==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0){
             LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();
             if(request.enrollmentSample!=null)request.enrollmentSample.wipe();}}
         private void paused(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;
-            if(request.pinOperation!=null&&request.pinOperation.ownedOwnerPause()||request.profileOperation!=null&&request.profileOperation.ownedOwnerPause())return;}event(request);}
+            if(request.pinOperation!=null&&request.pinOperation.ownedOwnerPause()||request.profileOperation!=null&&request.profileOperation.ownedOwnerPause()||request.sdkRotation!=null&&request.sdkRotation.ownedPrompt())return;}event(request);}
         private void attach(LocalV2Request request) throws Exception {
             android.app.Application application=(android.app.Application)vault.context;
             request.lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
@@ -3413,7 +3414,7 @@ final class PlanetChildVault {
             if(current[0]){vault.unlocked();live(request);return;}
             LocalV2PinOperation operation=request.pinOperation;
             LocalV2ProfileOperation profile=request.profileOperation;
-            if(lost[0]||!(operation!=null&&(operation.ownerReturned||operation.uiJoined)||profile!=null&&(profile.ownerReturned||profile.uiJoined))){event(request);throw new PinKnownRefusal();}
+            if(lost[0]||!(operation!=null&&(operation.ownerReturned||operation.uiJoined)||profile!=null&&(profile.ownerReturned||profile.uiJoined)||request.sdkRotation!=null&&(request.sdkRotation.ownerReturned||request.sdkRotation.uiJoined))){event(request);throw new PinKnownRefusal();}
             // Only an actual owned system/keypad return may wait for focus;
             // lifecycle cancellation and the original deadline remain latched.
             synchronized(this){live(request);wait(10);}
@@ -3441,7 +3442,7 @@ final class PlanetChildVault {
                 &&MessageDigest.isEqual(expected,request.currentBytes));}
             completeRecord(directory);byte[] current=vault.readExact(directory);try{require(MessageDigest.isEqual(expected,current));}finally{LocalSnapshotV2.wipe(current);}
             if(action==LocalV2ClockAction.profile){require(request.profileOperation!=null);request.profileOperation.profileWriteBoundary(expected,next);}
-            synchronized(this){request.mutationStarted=true;request.unacknowledgedMutation=true;}vault.writeExact(directory,next,()->{live(request);if(action==LocalV2ClockAction.profile)request.profileOperation.profileWriteBoundary(expected,next);});
+            synchronized(this){request.mutationStarted=true;request.unacknowledgedMutation=true;}vault.writeExact(directory,next,()->{live(request);if(action==LocalV2ClockAction.rotate)request.sdkRotation.verifyOwner(true);if(action==LocalV2ClockAction.profile)request.profileOperation.profileWriteBoundary(expected,next);});
             completeRecord(directory);byte[] readback=vault.readExact(directory),retained=null;LocalV2StorageReceipt receipt=null;boolean adopted=false;
             try{require(MessageDigest.isEqual(next,readback));live(request);if(action==LocalV2ClockAction.profile)request.profileOperation.profileWriteBoundary(expected,next);retained=readback.clone();
                 receipt=new LocalV2StorageReceipt(this,request,readback);
@@ -3534,7 +3535,7 @@ final class PlanetChildVault {
                 &&operation.ownerNextChecksum.equals(digest(next))&&MessageDigest.isEqual(operation.original,sample.seed));
             operation.verifyOwner();operation.ownerPermitSpent=true;
         }
-        private void chargeProducer(LocalV2Request request) throws Exception {
+        private void chargeProducer(LocalV2Request request) throws Exception { if(request.sdkRotation!=null){request.sdkRotation.chargeBoundary();return;}
             LocalV2PinOperation operation=request.pinOperation;require(operation!=null&&operation.writer==this&&operation.request==request
                 &&operation.kind==LocalV2PinKind.verify&&operation.started&&operation.worker==Thread.currentThread()
                 &&operation.phase==LocalV2PinPhase.charging&&operation.uiJoined&&operation.entered!=null
@@ -3576,13 +3577,14 @@ final class PlanetChildVault {
         }
         private synchronized void cancel(LocalV2Request request) throws Exception {own(request);request.cancelled=true;
             if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);
-            if(request.pinOperation!=null)request.pinOperation.revoke();if(request.profileOperation!=null)request.profileOperation.revoke();wipeIdle(request);notifyAll();}
+            if(request.pinOperation!=null)request.pinOperation.revoke();if(request.profileOperation!=null)request.profileOperation.revoke();if(request.sdkRotation!=null)request.sdkRotation.revoke();wipeIdle(request);notifyAll();}
         private void retire(LocalV2Request request) throws Exception {retireJoined(request,null);}
         private void retireProfile(LocalV2ProfileOperation original) throws Exception {require(original!=null&&original.writer==this&&original.settler==Thread.currentThread()&&original.finished&&!original.worker.isAlive()
             &&original.delivered&&original.uiJoined&&original.phase==LocalV2ProfilePhase.profileKnown&&original.request.receipt==null&&!original.request.unacknowledgedMutation);retireJoined(original.request,original);}
         private void releaseProfileRetirement(LocalV2ProfileOperation original) throws Exception {synchronized(this){LocalV2Request request=original.request;require(original.writer==this&&original.settler==Thread.currentThread());if(active==request&&request.retired&&!request.processLease.closed){
             if(original.completion==null){request.processClock.invalidate(request.processLease);return;}request.processClock.release(request.processLease);active=null;}}}
-        private void retireJoined(LocalV2Request request,LocalV2ProfileOperation retainedProfile) throws Exception {
+        private void retireJoined(LocalV2Request request,LocalV2ProfileOperation retainedProfile) throws Exception {retireJoined(request,retainedProfile,null);}
+        private void retireJoined(LocalV2Request request,LocalV2ProfileOperation retainedProfile,CommitCheck terminal) throws Exception {
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());LocalV2PinOperation operation;
             synchronized(this){own(request);require(!request.retiring);operation=request.pinOperation;
                 require(operation==null||operation.worker!=Thread.currentThread());LocalV2ProfileOperation profile=request.profileOperation;
@@ -3597,7 +3599,7 @@ final class PlanetChildVault {
                     // throws; a timer must not retain the retired Activity.
                     try{if(request.lifecycle!=null)((android.app.Application)vault.context).unregisterActivityLifecycleCallbacks(request.lifecycle);}
                     finally{try{if(request.screen!=null)vault.context.unregisterReceiver(request.screen);}
-                        finally{if(request.expiry!=null)main.removeCallbacks(request.expiry);}}cleaned[0]=true;},true);
+                        finally{if(request.expiry!=null)main.removeCallbacks(request.expiry);}}cleaned[0]=true;},true);                if(terminal!=null){synchronized(this){require(cleaned[0]&&!sealed&&!request.sealed&&request.receipt==null&&!request.unacknowledgedMutation&&request.workers==0&&request.pinWorkers==0&&request.mainCalls==0&&request.events==0);request.detached=true;}terminal.check();}
                 synchronized(this){own(request);require(request.retiring&&request.workers==0&&request.pinWorkers==0&&request.pinCancelCalls==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0);
                     if(request.receipt!=null||request.unacknowledgedMutation){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;}
                     if(!cleaned[0]||sealed||request.sealed){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;}
@@ -3611,6 +3613,66 @@ final class PlanetChildVault {
                     request.retired=true;if(operation!=null)operation.wipeOriginal();if(sealed||request.sealed)throw new Unavailable();}
             }catch(Throwable failure){unknown(request);synchronized(this){if(request.workers==0&&request.settleCalls==0){if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();}}throw failed(request,failure);}
         }
+
+        /** Classify only fully validated existing records; malformed bytes are never a seed. */
+        private static boolean sdkIsSeed(byte[] raw,LocalSnapshotV2Policy policy) throws Exception {
+            try(LocalEmptySeedV2 checked=LocalEmptySeedV2.decode(raw,policy.version,policy.checksum)){return true;}
+            catch(Exception notSeed){try(LocalSnapshotV2 checked=LocalSnapshotV2.decode(raw,policy)){return false;}}
+        }
+        private byte[] sdkOpen(LocalV2Request request) throws Exception {
+            host(request);byte[] raw=vault.locked(directory->{live(request);SDKInstallTerminal.known(vault,directory,request.policy);completeRecord(directory);return vault.readExact(directory);});
+            boolean seed;try{seed=sdkIsSeed(raw,request.policy);}finally{LocalSnapshotV2.wipe(raw);}
+            if(seed){begin(request);try{host(request);vault.locked(directory->{live(request);completeRecord(directory);byte[] current=vault.readExact(directory);try(LocalEmptySeedV2 checked=LocalEmptySeedV2.decode(current,request.policy.version,request.policy.checksum)){request.processClock.sampleSeed(request.processLease,current);synchronized(this){live(request);require(!request.anchored&&request.currentBytes==null);request.currentBytes=current.clone();request.currentChecksum=checked.checksum;request.anchored=true;}return null;}finally{LocalSnapshotV2.wipe(current);}});}finally{finish(request);}}
+            else{LocalV2StorageReceipt receipt=reanchor(request);if(receipt!=null)acknowledge(receipt);}
+            return sdkRead(request);
+        }
+        private byte[] sdkRead(LocalV2Request request) throws Exception {
+            begin(request);byte[] out=null;try{host(request);out=vault.locked(directory->{live(request);SDKInstallTerminal.known(vault,directory,request.policy);completeRecord(directory);byte[] current=vault.readExact(directory);boolean handed=false;try{require(request.anchored&&request.currentBytes!=null&&MessageDigest.isEqual(request.currentBytes,current));request.processClock.sample(request.processLease,current);handed=true;return current;}finally{if(!handed)LocalSnapshotV2.wipe(current);}});host(request);byte[] value=out;out=null;return value;}catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(out);finish(request);}
+        }
+        private void sdkInspectData(LocalV2Request request,byte[] original) throws Exception {
+            begin(request);try{host(request);vault.locked(directory->{live(request);require(MessageDigest.isEqual(original,request.currentBytes));LocalV2SDKReadPermit permit=new LocalV2SDKReadPermit(this,request,directory,original);try{PlanetChildDataStore.sdkInspectOriginal(permit);permit.check();return null;}finally{permit.close();}});host(request);}catch(Throwable failure){throw failed(request,failure);}finally{finish(request);}
+        }
+        private LocalV2SDKPackageHandoff sdkPackageHandoff(LocalV2Request request,byte[] captured) throws Exception {
+            begin(request);try{host(request);return vault.locked(directory->{
+                live(request);completeRecord(directory);require(request.anchored&&request.receipt==null&&!request.unacknowledgedMutation&&request.sdkPackageLoader==null);
+                byte[] current=vault.readExact(directory);try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(current,request.policy)){
+                    request.processClock.sample(request.processLease,current);require(MessageDigest.isEqual(captured,current)&&MessageDigest.isEqual(current,request.currentBytes));
+                    LocalV2PackageProfile profile=new LocalV2PackageProfile(saved);
+                    return new LocalV2SDKPackageHandoff(this,request,current,profile.recordChecksum);
+                }finally{LocalSnapshotV2.wipe(current);}
+            });}catch(Throwable failure){throw failed(request,failure);}finally{finish(request);}
+        }
+        private boolean sdkCatalogMissingPins(LocalV2Request request) throws Exception {
+            byte[] before=sdkRead(request),catalog=null,artifact=null,after=null;try{
+                catalog=sdkAsset(request,"child-native/catalog-v1.json",65536);artifact=sdkAsset(request,"artifact.json",2097152);LocalV2PackageCatalog c=new LocalV2PackageCatalog(catalog,artifact,"android");after=sdkRead(request);require(MessageDigest.isEqual(before,after));return c.keys.isEmpty()&&c.pins.isEmpty();
+            }finally{LocalSnapshotV2.wipe(before);LocalSnapshotV2.wipe(catalog);LocalSnapshotV2.wipe(artifact);LocalSnapshotV2.wipe(after);}
+        }
+        private byte[] sdkAsset(LocalV2Request request,String fixed,int bound) throws Exception {
+            live(request);require("artifact.json".equals(fixed)||"child-native/catalog-v1.json".equals(fixed));byte[] buffer=new byte[bound];int at=0;
+            try(java.io.InputStream in=vault.context.getAssets().open("public/"+fixed,android.content.res.AssetManager.ACCESS_STREAMING)){for(;;){live(request);if(at==bound){require(in.read()==-1);break;}int n=in.read(buffer,at,Math.min(8192,bound-at));if(n<0)break;require(n>0);at+=n;}live(request);require(at>0);return Arrays.copyOf(buffer,at);}finally{LocalSnapshotV2.wipe(buffer);}
+        }
+
+
+        private LocalV2StorageReceipt sdkFinalizeRotation(LocalV2SDKPinRotation original) throws Exception {
+            LocalV2Request request=original.request;synchronized(this){live(request);require(request.sdkRotation==original&&!original.recover&&original.worker==Thread.currentThread()&&original.phase==LocalV2PinPhase.finalizing&&original.compared&&original.outcome!=null&&original.uiJoined&&request.reservation!=null&&request.receipt==null&&!request.unacknowledgedMutation);}
+            original.exactCharged();begin(request);byte[] expected=request.reservation.charged.clone();
+            try{host(request);LocalV2StorageReceipt receipt=vault.locked(directory->{live(request);completeRecord(directory);byte[] actual=vault.readExact(directory),next=null;
+                try{require(MessageDigest.isEqual(actual,expected));LocalV2ClockSample sample=request.processClock.sample(request.processLease,actual);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(actual,request.policy)){next=LocalSnapshotV2.attempt(old,original.outcome==PinVerificationOutcome.match?0:old.count,null,sample.logicalMs);return publish(request,actual,next,directory,sample,LocalV2ClockAction.finalize);}}
+                finally{LocalSnapshotV2.wipe(actual);LocalSnapshotV2.wipe(next);}});host(request);return receipt;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(expected);finish(request);}
+        }
+        private LocalV2StorageReceipt sdkCommitRotation(LocalV2SDKPinRotation original) throws Exception {
+            LocalV2Request request=original.request;synchronized(this){live(request);require(request.sdkRotation==original&&original.worker==Thread.currentThread()&&original.phase==LocalV2PinPhase.finalizing&&original.uiJoined&&original.dialog==null&&original.ownerReturned&&!original.promptOutstanding&&request.receipt==null&&!request.unacknowledgedMutation);}begin(request);
+            try{host(request);LocalV2StorageReceipt receipt=vault.locked(directory->{live(request);original.verifyOwner(true);completeRecord(directory);byte[] actual=vault.readExact(directory);
+                try{require(MessageDigest.isEqual(actual,original.original));original.pending(directory);LocalV2ClockSample sample=request.processClock.sample(request.processLease,actual);return publish(request,actual,original.nextBytes,directory,sample,LocalV2ClockAction.rotate);}
+                finally{LocalSnapshotV2.wipe(actual);}});host(request);return receipt;
+            }catch(Throwable failure){throw failed(request,failure);}finally{finish(request);}
+        }
+        private void sdkRetireRotation(LocalV2SDKPinRotation original) throws Exception {
+            require(original.request.sdkRotation==original&&original.settler==Thread.currentThread()&&original.finished&&original.known&&original.worker!=null&&!original.worker.isAlive()&&original.cancelWorker==null&&original.dialog==null&&original.uiJoined);
+            retireJoined(original.request,null,original::complete);
+        }
+
     }
     /** One original native operation. Device-owner enrollment, input, slow
      * derivation and verification never import a v1/P1 authority receipt. The
@@ -4063,12 +4125,17 @@ final class PlanetChildVault {
         private final byte[] target;private final android.view.ViewParent[] ancestry;
         private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
         private volatile LocalV2GateInvocation invocation;private volatile LocalV2Request request;private volatile LocalV2PinOperation operation;
-        private volatile boolean closed,revoked;private long generation;private Thread worker;private volatile LocalV2GateMutation mutation;private Thread retirement;
+        private volatile boolean closed,revoked;private long generation;private Thread worker;private long sdkDeadline;private volatile Throwable sdkFailure;private volatile LocalV2GateMutation mutation;private Thread retirement;
         private android.app.Application.ActivityLifecycleCallbacks lifecycle;private android.content.BroadcastReceiver screen;
         private androidx.activity.OnBackPressedCallback back;private android.view.View.OnAttachStateChangeListener attachment;
         private android.view.ViewTreeObserver.OnWindowFocusChangeListener focus;private android.view.ViewTreeObserver.OnGlobalLayoutListener layout;private Runnable expiry;
         private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android.view.ViewGroup route,android.widget.Button control,
             LocalSnapshotV2Policy policy,String action,byte[] target,long verificationMs,long capabilityMs,LocalV2NativeProtectedAction dispatch) throws Exception {
+            this(vault,host,route,control,policy,action,target,verificationMs,capabilityMs,0,dispatch);
+        }
+private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android.view.ViewGroup route,android.widget.Button control,
+            LocalSnapshotV2Policy policy,String action,byte[] target,long verificationMs,long capabilityMs,long sdkDeadline,LocalV2NativeProtectedAction dispatch) throws Exception {
+            this.sdkDeadline=sdkDeadline;
             require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&vault!=null&&host!=null&&host.getClass()==MainActivity.class
                 &&host.getApplicationContext()==vault.context&&route!=null&&control!=null&&dispatch!=null&&policy!=null&&target!=null
                 &&target.length<=MAX_BYTES&&verificationMs>0&&verificationMs<=60000&&capabilityMs>0&&capabilityMs<=2147483647L
@@ -4102,7 +4169,7 @@ final class PlanetChildVault {
             ((android.app.Application)writer.vault.context).registerActivityLifecycleCallbacks(lifecycle);
             screen=new android.content.BroadcastReceiver(){public void onReceive(Context c,android.content.Intent i){revoke();}};
             android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
-            if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(screen,filter,Context.RECEIVER_NOT_EXPORTED);else writer.vault.context.registerReceiver(screen,filter);
+            if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(screen,filter,android.content.Context.RECEIVER_NOT_EXPORTED);else writer.vault.context.registerReceiver(screen,filter);
             back=new androidx.activity.OnBackPressedCallback(true){public void handleOnBackPressed(){revoke();setEnabled(false);((MainActivity)activity).getOnBackPressedDispatcher().onBackPressed();}};
             ((MainActivity)activity).getOnBackPressedDispatcher().addCallback((MainActivity)activity,back);
             attachment=new android.view.View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(android.view.View v){}public void onViewDetachedFromWindow(android.view.View v){revoke();}};
@@ -4121,7 +4188,7 @@ final class PlanetChildVault {
             finally{if(interrupted)Thread.currentThread().interrupt();}
         }
         private void begin(){try{current(false);require(invocation==null&&worker==null&&generation<MAX_SAFE);generation++;
-                LocalV2GateInvocation original=new LocalV2GateInvocation(action,target,generation,SystemClock.elapsedRealtime(),verificationMs,capabilityMs);invocation=original;
+                long began=SystemClock.elapsedRealtime();long duration=sdkDeadline==0?verificationMs:sdkDeadline-began;require(duration>0&&duration<=60000);LocalV2GateInvocation original=new LocalV2GateInvocation(action,target,generation,began,duration,sdkDeadline==0?capabilityMs:duration);invocation=original;
                 expiry=this::revoke;require(main.postDelayed(expiry,Math.max(1,original.deadline-SystemClock.elapsedRealtime())));
                 worker=new Thread(()->run(original),"planet-local-v2-native-gate");try{worker.start();}catch(Throwable failure){if(worker.getState()==Thread.State.NEW)worker=null;throw failure;}
             }catch(Throwable failure){revoke();if(worker==null){try{detach();}catch(Throwable ignored){}closed=true;LocalSnapshotV2.wipe(target);}}}
@@ -4147,7 +4214,7 @@ final class PlanetChildVault {
                     try{if(LocalV2CanonicalTransition.handles(original.action))mutation=new LocalV2GateMutation(this,original,reply,payload);else dispatch.perform(original.action,payload);}
                     finally{LocalSnapshotV2.wipe(payload);}return null;});
                 if(mutation!=null)mutation.perform();
-            }catch(Throwable failure){revoke();}
+            }catch(Throwable failure){sdkFailure=failure;revoke();}
             finally{if(request!=null&&!retired&&!request.retired){try{writer.cancel(request);if(operation!=null&&operation.worker!=null){operation.worker.join();operation.joinCancel();}
                         LocalV2PinReply reply=delivered[0];if(reply!=null&&!reply.settled)operation.settle(reply,PinReplyDelivery.uncertain);else writer.retire(request);
                     }catch(Throwable ignored){writer.unknown(request);}}
@@ -4173,7 +4240,9 @@ final class PlanetChildVault {
             // Active original joins keep the binding retained; close cannot
             // manufacture retirement or expose capacity to a new invocation.
             if(worker==null){detach();closed=true;LocalSnapshotV2.wipe(target);}}
-    }
+        private void sdkAwait(long deadline) throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());while(worker==null&&!closed&&!revoked){require(SystemClock.elapsedRealtime()<deadline);Thread.sleep(10);}require(worker!=null);}
+        private void sdkCleanupJoined() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());if(worker!=null)worker.join();if(retirement!=null)retirement.join();require(closed&&(request==null||request.retired&&!request.sealed&&!request.processClock.invalid)&&writer.active==null);if(mutation!=null)require(mutation.retired&&mutation.known);}
+        private void sdkJoin() throws Exception {sdkCleanupJoined();if(sdkFailure!=null){if(sdkFailure instanceof Exception)throw(Exception)sdkFailure;throw new Unavailable();}}    }
     /** A prepared byte transition is data, never admission or permission. The
      * original Gate below is the only consumer allowed to write its adult exit.
      * Profile/access changes retain the previous safe record until an actual
@@ -4464,9 +4533,11 @@ final class PlanetChildVault {
             locale=new org.json.JSONObject(new String(profile,StandardCharsets.UTF_8)).getString("locale");permit=new LocalV2ProfileBirthPermit(this);
             synchronized(writer){writer.live(request);request.profileOperation=this;request.processClock.claimPin(request.processLease,id,this);}
         }
-        private static LocalV2ProfileOperation start(PlanetChildVault vault,android.app.Activity host,LocalSnapshotV2Policy policy,byte[] proposal,long timeout,LocalV2ProfileRecipient recipient) throws Exception {
+        private static LocalV2ProfileOperation start(PlanetChildVault vault,android.app.Activity host,LocalSnapshotV2Policy policy,byte[] proposal,long timeout,LocalV2ProfileRecipient recipient) throws Exception {return startWithDeadline(vault,host,policy,proposal,timeout,0,recipient);}
+        private static LocalV2ProfileOperation startAt(PlanetChildVault vault,android.app.Activity host,LocalSnapshotV2Policy policy,byte[] proposal,long deadline,LocalV2ProfileRecipient recipient) throws Exception {return startWithDeadline(vault,host,policy,proposal,1,deadline,recipient);}
+        private static LocalV2ProfileOperation startWithDeadline(PlanetChildVault vault,android.app.Activity host,LocalSnapshotV2Policy policy,byte[] proposal,long timeout,long deadline,LocalV2ProfileRecipient recipient) throws Exception {
             require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&recipient!=null&&proposal!=null);byte[] owned=proposal.clone();LocalV2Writer writer=new LocalV2Writer(vault);
-            LocalV2Request request=writer.request(host,policy,timeout);LocalV2ProfileOperation operation;
+            LocalV2Request request=writer.requestAt(host,policy,timeout,deadline);LocalV2ProfileOperation operation;
             try{operation=new LocalV2ProfileOperation(writer,request,owned);}catch(Throwable failure){writer.unknown(request);new Thread(()->{try{writer.retire(request);}catch(Exception ignored){}},"planet-profile-capture-cleanup").start();throw failure;}
             finally{LocalSnapshotV2.wipe(owned);}synchronized(writer){request.pinWorkers++;operation.worker=new Thread(()->operation.run(recipient),"planet-local-v2-profile");operation.worker.start();}
             operation.settler=new Thread(operation::settle,"planet-local-v2-profile-settle");operation.settler.start();return operation;
@@ -4577,7 +4648,7 @@ final class PlanetChildVault {
                     public void onActivityDestroyed(android.app.Activity a){if(a==request.activity)cancelled=true;}};app.registerActivityLifecycleCallbacks(closingLifecycle);
                     closingScreen=new android.content.BroadcastReceiver(){public void onReceive(Context c,android.content.Intent i){cancelled=true;}};
                     android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
-                    if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(closingScreen,filter,Context.RECEIVER_NOT_EXPORTED);else writer.vault.context.registerReceiver(closingScreen,filter);
+                    if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(closingScreen,filter,android.content.Context.RECEIVER_NOT_EXPORTED);else writer.vault.context.registerReceiver(closingScreen,filter);
                     closingExpiry=()->cancelled=true;require(writer.main.postDelayed(closingExpiry,Math.max(1,request.deadline-SystemClock.elapsedRealtime())));
                 }else{try{if(closingLifecycle!=null)app.unregisterActivityLifecycleCallbacks(closingLifecycle);}finally{try{if(closingScreen!=null)writer.vault.context.unregisterReceiver(closingScreen);}
                     finally{if(closingExpiry!=null)writer.main.removeCallbacks(closingExpiry);closingLifecycle=null;closingScreen=null;closingExpiry=null;}}}return null;
@@ -4596,7 +4667,8 @@ final class PlanetChildVault {
         private LocalV2ProfileCompletion completion() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()&&Thread.currentThread()!=worker&&Thread.currentThread()!=settler);settler.join();
             synchronized(writer){boolean available=!completionConsumed;completionConsumed=true;require(available&&completion!=null&&!cancelled&&!request.sealed);
                 request.processClock.closedReadback(request.processLease,completion.snapshotChecksum);return completion;}}
-    }
+        private void sdkCleanupJoined() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()&&settler!=null);settler.join();require(request.retired&&!request.sealed&&!request.processClock.invalid&&finished&&worker!=null&&!worker.isAlive()&&cancelWorker==null);}
+        private void sdkJoin() throws Exception {sdkCleanupJoined();require(completion!=null&&delivered&&!cancelled);}    }
     /** Strict data parser shared by the package/review/catalog leaves. No
      * Android JSON stubs, coerced numbers, duplicate escaped fields or URLs. */
     private static final class LocalV2PackageJson {
@@ -4754,12 +4826,12 @@ final class PlanetChildVault {
         private LocalV2PackageCatalog(byte[] catalogBytes,byte[] artifactBytes,String expectedPlatform) throws Exception {
             java.util.Map<String,Object> artifact=LocalV2PackageJson.object(LocalV2PackageJson.read(artifactBytes,2097152));require(Long.valueOf(1).equals(artifact.get("schemaVersion"))&&"literary-planet-bundled-native-preparation".equals(artifact.get("kind"))&&expectedPlatform.equals(artifact.get("platform")));
             String channel=LocalV2PackageJson.text(artifact.get("channel"));platform=expectedPlatform.equals("android")?(channel.equals("googlePlay")?"android-google":channel.equals("ruStore")?"android-rustore":null):(channel.equals("appStore")?"ios-ipados":null);
-            require(platform!=null);java.util.Map<String,Object> catalog=LocalV2PackageJson.object(LocalV2PackageJson.read(catalogBytes,65536),"schemaVersion","kind","platform","pinSourceChecksum","reviewKeys","packages");
-            require(Long.valueOf(1).equals(catalog.get("schemaVersion"))&&"literary-planet-child-native-assets-v1".equals(catalog.get("kind"))&&platform.equals(catalog.get("platform")));
+            boolean emptyDev=platform==null&&channel.equals("dev");require(platform!=null||emptyDev);java.util.Map<String,Object> catalog=LocalV2PackageJson.object(LocalV2PackageJson.read(catalogBytes,65536),"schemaVersion","kind","platform","pinSourceChecksum","reviewKeys","packages");
+            require(Long.valueOf(1).equals(catalog.get("schemaVersion"))&&"literary-planet-child-native-assets-v1".equals(catalog.get("kind"))&&(platform==null?catalog.get("platform")==null:platform.equals(catalog.get("platform"))));
             String sourceHash=LocalV2PackageJson.hash(catalog.get("pinSourceChecksum"));int sources=0;java.util.Map<String,Object> inputs=LocalV2PackageJson.object(artifact.get("sourceInputs"));for(Object row:LocalV2PackageJson.array(inputs.get("files"),20000)){
                 java.util.Map<String,Object> file=LocalV2PackageJson.object(row,"path","sha256");if("src/child/childNativeReleasePins.json".equals(file.get("path"))){require(sourceHash.equals(file.get("sha256")));sources++;}}require(sources==1);
             for(Object row:LocalV2PackageJson.array(artifact.get("inventory"),20000)){java.util.Map<String,Object> file=LocalV2PackageJson.object(row,"path","bytes","sha256");String name=LocalV2PackageJson.text(file.get("path"));LocalV2PackageJson.number(file.get("bytes"),1,MAX_SAFE);LocalV2PackageJson.hash(file.get("sha256"));require(inventory.put(name,file)==null);}
-            verify("child-native/catalog-v1.json",catalogBytes,65536);keys=LocalV2PackageJson.array(catalog.get("reviewKeys"),16);pins=LocalV2PackageJson.array(catalog.get("packages"),32);
+            verify("child-native/catalog-v1.json",catalogBytes,65536);keys=LocalV2PackageJson.array(catalog.get("reviewKeys"),16);pins=LocalV2PackageJson.array(catalog.get("packages"),32);require(!emptyDev||keys.isEmpty()&&pins.isEmpty());
             java.util.HashSet<String> keyIds=new java.util.HashSet<>(),points=new java.util.HashSet<>(),ids=new java.util.HashSet<>(),checksums=new java.util.HashSet<>();
             for(Object row:keys){java.util.Map<String,Object> key=LocalV2PackageJson.object(row,"keyId","reviewerId","publicKeyX963Hex");String id=LocalV2PackageJson.text(key.get("keyId")),point=LocalV2PackageJson.text(key.get("publicKeyX963Hex"));require(id.matches("child-release-review-[A-Za-z0-9_-]{1,48}")&&LocalV2PackageJson.identifier(key.get("reviewerId"))!=null&&point.matches("04[a-f0-9]{128}")&&keyIds.add(id)&&points.add(point));}
             for(Object row:pins){java.util.Map<String,Object> pin=LocalV2PackageJson.object(row,"packageId","packageVersion","packageChecksum","reviewChecksum");String id=LocalV2PackageJson.identifier(pin.get("packageId"));long version=LocalV2PackageJson.number(pin.get("packageVersion"),1,MAX_SAFE);String sum=LocalV2PackageJson.hash(pin.get("packageChecksum")),review=LocalV2PackageJson.hash(pin.get("reviewChecksum"));require(ids.add(id+"/"+version)&&checksums.add(sum));
@@ -4786,7 +4858,7 @@ final class PlanetChildVault {
      * with that operation; retaining this object cannot renew its lifetime. */
     private static final class LocalV2OwnedPackageDelivery {
         final LocalV2NativePackageLoader owner;final LocalV2CompiledPackage compiled;private final LocalV2PackageCopies copies;private LocalV2DataAdmission data;
-        private LocalV2OwnedPackageDelivery(LocalV2NativePackageLoader owner,LocalV2CompiledPackage compiled){this.owner=owner;this.compiled=compiled;copies=new LocalV2PackageCopies(compiled);}
+        private LocalV2SDKChannel.Command sdkCommand; private LocalV2OwnedPackageDelivery(LocalV2NativePackageLoader owner,LocalV2CompiledPackage compiled){this.owner=owner;this.compiled=compiled;copies=new LocalV2PackageCopies(compiled);}
         private void fence() throws Exception {try{require(owner.delivery==this&&owner.worker==Thread.currentThread());owner.fresh(compiled.profile);owner.live();}catch(Exception failure){owner.revoke();throw failure;}}
         private byte[] copyHome() throws Exception {try{return copies.copy(compiled.home,owner::wall,this::fence);}catch(Exception failure){owner.revoke();throw failure;}}
         private byte[] copyEntity(String kind,String id) throws Exception {require(LocalV2PackageCompiler.KINDS.contains(kind)&&id!=null&&id.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));try{return copies.copy(kind+"/"+id,owner::wall,this::fence);}catch(Exception failure){owner.revoke();throw failure;}}
@@ -4796,18 +4868,41 @@ final class PlanetChildVault {
     /** Concrete fixed AssetManager producer on the original native route.
      * Vault -> bundled bytes is the only lock order; no main join/file-lock
      * recursion, transport, caller filenames, account or QA trust fallback. */
+    /** Private native continuation of the original ACKed LOCAL2 read lane.
+     * Only sdkPackageHandoff under its original Vault transaction can mint it.
+     * It transfers the actual request graph; it cannot renew or reanchor time. */
+    private static final class LocalV2SDKPackageHandoff {
+        final LocalV2Writer writer;final LocalV2Request request;final String checksum;private byte[] captured;private LocalV2NativePackageLoader owner;
+        private LocalV2SDKPackageHandoff(LocalV2Writer writer,LocalV2Request request,byte[] captured,String checksum){
+            this.writer=writer;this.request=request;this.captured=captured.clone();this.checksum=checksum;
+        }
+        private void claim(LocalV2NativePackageLoader loader,android.app.Activity activity,LocalSnapshotV2Policy policy,long deadline) throws Exception {
+            synchronized(writer){writer.live(request);require(owner==null&&writer.active==request&&request.owner==writer&&request.activity==activity&&request.deadline==deadline
+                &&request.policy.version.equals(policy.version)&&request.policy.checksum.equals(policy.checksum)&&request.anchored&&request.workers==0
+                &&request.receipt==null&&!request.unacknowledgedMutation&&request.sdkPackageLoader==null&&MessageDigest.isEqual(captured,request.currentBytes));
+                owner=loader;request.sdkPackageLoader=loader;}
+        }
+        private void check(LocalV2NativePackageLoader loader) throws Exception {
+            synchronized(writer){writer.live(request);require(owner==loader&&request.sdkPackageLoader==loader&&writer.active==request&&request.anchored
+                &&request.receipt==null&&!request.unacknowledgedMutation&&captured!=null&&MessageDigest.isEqual(captured,request.currentBytes)&&digest(captured).equals(checksum));}
+        }
+        private void close(){LocalSnapshotV2.wipe(captured);captured=null;}
+    }
     private static final class LocalV2NativePackageLoader implements AutoCloseable {
         final LocalV2Writer writer;final LocalV2Request request;final android.app.Activity activity;final android.view.ViewGroup route;final android.os.IBinder window;
-        private final android.view.ViewParent[] ancestry;private final LocalV2PackageRecipient recipient;private final String territory;
+        private final android.view.ViewParent[] ancestry;private final LocalV2PackageRecipient recipient;private final String territory;private final LocalV2SDKPackageHandoff sdkHandoff;
         private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());private volatile boolean revoked,closed;
-        private volatile Thread worker,retirement;private volatile LocalV2OwnedPackageDelivery delivery;private android.view.View.OnAttachStateChangeListener attachment;
+        private volatile Thread worker,retirement;private volatile LocalV2OwnedPackageDelivery delivery;private java.util.function.Consumer<Throwable> sdkFailure;private volatile Throwable failure;private android.view.View.OnAttachStateChangeListener attachment;
         private androidx.activity.OnBackPressedCallback back;private android.view.ViewTreeObserver.OnGlobalLayoutListener layout;private android.view.ViewTreeObserver.OnWindowFocusChangeListener focus;
         private long wallLast=-1;private boolean sent;private final Runnable watch=()->watchOriginal();
-        private LocalV2NativePackageLoader(PlanetChildVault vault,android.app.Activity activity,android.view.ViewGroup route,LocalSnapshotV2Policy policy,long timeoutMs,LocalV2PackageRecipient recipient) throws Exception {
+        private LocalV2NativePackageLoader(PlanetChildVault vault,android.app.Activity activity,android.view.ViewGroup route,LocalSnapshotV2Policy policy,long timeoutMs,LocalV2PackageRecipient recipient) throws Exception {this(vault,activity,route,policy,timeoutMs,0,recipient,null);}
+        private LocalV2NativePackageLoader(PlanetChildVault vault,android.app.Activity activity,android.view.ViewGroup route,LocalSnapshotV2Policy policy,long timeoutMs,long deadline,LocalV2PackageRecipient recipient,java.util.function.Consumer<Throwable> sdkFailure) throws Exception {this(vault,activity,route,policy,timeoutMs,deadline,recipient,sdkFailure,null);}
+        private LocalV2NativePackageLoader(PlanetChildVault vault,android.app.Activity activity,android.view.ViewGroup route,LocalSnapshotV2Policy policy,long timeoutMs,long deadline,LocalV2PackageRecipient recipient,java.util.function.Consumer<Throwable> sdkFailure,LocalV2SDKPackageHandoff handoff) throws Exception {
+            this.sdkFailure=sdkFailure;this.sdkHandoff=handoff;
             require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&activity!=null&&activity.getClass()==MainActivity.class&&route!=null&&!(route instanceof android.webkit.WebView)&&route!=activity.getWindow().getDecorView()&&recipient!=null);
             this.activity=activity;this.route=route;this.recipient=recipient;window=activity.getWindow().getDecorView().getWindowToken();territory=java.util.Locale.getDefault().getCountry();require(window!=null&&territory.matches("[A-Z]{2}"));
             java.util.ArrayList<android.view.ViewParent> parents=new java.util.ArrayList<>();android.view.ViewParent parent=route.getParent();while(parent!=null){require(!(parent instanceof android.webkit.WebView));parents.add(parent);parent=parent.getParent();}require(!parents.isEmpty());ancestry=parents.toArray(new android.view.ViewParent[0]);
-            writer=new LocalV2Writer(vault);request=writer.request(activity,policy,timeoutMs);try{current();attach();}catch(Throwable failure){revoke();startRetirement();throw failure;}
+            writer=handoff==null?new LocalV2Writer(vault):handoff.writer;request=handoff==null?writer.requestAt(activity,policy,timeoutMs,deadline):handoff.request;try{if(handoff!=null){require(writer.vault==vault);handoff.claim(this,activity,policy,deadline);}current();attach();}catch(Throwable failure){revoke();startRetirement();throw failure;}
         }
         private void current() throws Exception {require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&!closed&&!revoked&&!activity.isFinishing()&&!activity.isDestroyed()&&activity.hasWindowFocus()
             &&activity.getWindow().getDecorView().getWindowToken()==window&&route.getWindowToken()==window&&route.getRootView()==activity.getWindow().getDecorView()&&route.isShown()&&territory.equals(java.util.Locale.getDefault().getCountry()));
@@ -4828,7 +4923,7 @@ final class PlanetChildVault {
         private void start(){requireMain();try{current();require(worker==null&&!sent);worker=new Thread(this::run,"planet-child-native-package");worker.start();}catch(Throwable failure){revoke();startRetirement();}}
         private void requireMain(){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper())throw new IllegalStateException("Original native main required");}
         private <T> T withData(LocalV2DataAdmission admission,LocalV2DataWork<T> work) throws Exception {live();mainCurrent();writer.begin(request);try{writer.host(request);return writer.vault.locked(directory->{live();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{request.processClock.sample(request.processLease,actual);require(request.currentBytes!=null&&MessageDigest.isEqual(request.currentBytes,actual));try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,request.policy)){admission.compiled.profile.same(saved);}admission.enter(directory,actual);try{T result=work.run();try{admission.check();return result;}catch(Exception failure){if(result instanceof PlanetChildDataStore.Result)((PlanetChildDataStore.Result)result).close();else if(result instanceof byte[])LocalSnapshotV2.wipe((byte[])result);throw failure;}}finally{admission.leave();}}finally{LocalSnapshotV2.wipe(actual);}});}catch(Throwable failure){throw writer.failed(request,failure);}finally{writer.finish(request);}}
-        private void run(){LocalV2CompiledPackage result=null;try{live();mainCurrent();LocalV2StorageReceipt anchor=writer.reanchor(request);if(anchor!=null)writer.acknowledge(anchor);LocalV2PackageProfile profile=fresh(null);result=new LocalV2FixedPackageProducer(this,profile).compile();fresh(profile);mainCurrent();live();synchronized(this){require(!revoked&&!closed&&!sent&&delivery==null);sent=true;delivery=new LocalV2OwnedPackageDelivery(this,result);result=null;delivery.data=new LocalV2DataAdmission(this,delivery.compiled);}delivery.data.admit();recipient.receive(delivery);live();fresh(profile);require(wall()<delivery.compiled.until);}catch(Throwable failure){revoke();}finally{if(delivery!=null)delivery.close();if(result!=null)result.close();startRetirement();}}
+        private void run(){LocalV2CompiledPackage result=null;try{live();mainCurrent();if(sdkHandoff==null){LocalV2StorageReceipt anchor=writer.reanchor(request);if(anchor!=null)writer.acknowledge(anchor);}else sdkHandoff.check(this);LocalV2PackageProfile profile=fresh(null);if(sdkHandoff!=null)require(profile.recordChecksum.equals(sdkHandoff.checksum));result=new LocalV2FixedPackageProducer(this,profile).compile();fresh(profile);mainCurrent();live();synchronized(this){require(!revoked&&!closed&&!sent&&delivery==null);sent=true;delivery=new LocalV2OwnedPackageDelivery(this,result);result=null;delivery.data=new LocalV2DataAdmission(this,delivery.compiled);}delivery.data.admit();recipient.receive(delivery);live();fresh(profile);require(wall()<delivery.compiled.until);}catch(Throwable failure){this.failure=failure;if(sdkFailure!=null)sdkFailure.accept(failure);revoke();}finally{if(delivery!=null)delivery.close();if(result!=null)result.close();if(sdkHandoff!=null)sdkHandoff.close();startRetirement();}}
         /** Native route owner calls before same-view reuse; Back/detachment
          * and all real background events independently latch revocation. */
         private void routeWillChange(){revoke();}
@@ -4836,7 +4931,7 @@ final class PlanetChildVault {
         private synchronized void startRetirement(){if(retirement!=null)return;Thread original=worker;retirement=new Thread(()->{boolean interrupted=false;try{if(original!=null)for(;;)try{original.join();break;}catch(InterruptedException ignored){interrupted=true;}
                     Throwable drainFailure=null;try{if(delivery!=null&&delivery.data!=null)delivery.data.drain();}catch(Throwable failure){drainFailure=failure;}
                     java.util.concurrent.FutureTask<Void> cleanup=new java.util.concurrent.FutureTask<>(()->{detach();return null;});require(main.post(cleanup));for(;;)try{cleanup.get();break;}catch(InterruptedException ignored){interrupted=true;}
-                    if(drainFailure!=null)throw drainFailure;writer.retire(request);closed=true;
+                    if(drainFailure!=null)throw drainFailure;if(sdkHandoff!=null)sdkHandoff.close();writer.retire(request);closed=true;
                 }catch(Throwable failure){writer.unknown(request);}finally{if(interrupted)Thread.currentThread().interrupt();}},"planet-child-native-package-retire");retirement.start();}
         private void detach() throws Exception {Throwable failure=null;main.removeCallbacks(watch);
             try{if(back!=null)back.remove();}catch(Throwable error){failure=error;}
@@ -4845,6 +4940,7 @@ final class PlanetChildVault {
             try{if(focus!=null&&route.getViewTreeObserver().isAlive())route.getViewTreeObserver().removeOnWindowFocusChangeListener(focus);}catch(Throwable error){if(failure==null)failure=error;else failure.addSuppressed(error);}
             if(failure instanceof Error)throw(Error)failure;if(failure!=null)throw failure instanceof Exception?(Exception)failure:new Unavailable();}
         public void close(){requireMain();revoke();startRetirement();}
+        private void sdkJoin() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());Thread original=retirement;if(original!=null)original.join();require(closed&&request.retired&&!request.sealed&&!request.processClock.invalid&&writer.active==null);}
     }
 
     /** Actual compiled payloads, not claimed checksums, authorize envelopes.
@@ -4925,6 +5021,28 @@ final class PlanetChildVault {
         private void failed(){revoke();if(loader!=null)loader.revoke();}
         private synchronized void revoke(){revoked=true;for(LocalV2AdmittedResult result:results)result.close();results.clear();}
         private void drain() throws Exception {revoke();if(store!=null){vault().locked(d->{store.close();return null;});store=null;lease=null;}}
+
+        private LocalV2SDKChannel.Command sdkCollectionCommand;
+        void collectionCommandKnown(String commandId) throws Exception {check();LocalV2SDKChannel.Command command=loader.delivery.sdkCommand;require(command!=null&&command==sdkCollectionCommand&&command.id.equals(commandId)&&command.running&&!command.returned&&!command.collectionKnown&&loader.worker==Thread.currentThread());command.collectionKnown=true;}
+        void collectionCommandReady(String commandId) throws Exception {check();LocalV2SDKChannel.Command command=loader.delivery.sdkCommand;require(command!=null&&command==sdkCollectionCommand&&command.id.equals(commandId)&&command.collectionKnown&&!command.returned&&command.running&&loader.worker==Thread.currentThread());}
+        void collectionCommandJoined(String commandId) throws Exception {check();LocalV2SDKChannel.Command command=loader.delivery.sdkCommand;require(command!=null&&command==sdkCollectionCommand&&command.id.equals(commandId)&&command.collectionKnown&&command.returned&&command.resultClosed&&command.running&&loader.worker==Thread.currentThread());command.collectionJoined=true;}
+        void collectionUnknown() throws Exception {check();loader.writer.unknown(loader.request);failed();}
+        private java.util.Map<String,Object> sdkCollection(PlanetChildDataStore.Purpose purpose,Long revision,java.util.Map<String,byte[]> replacement) throws Exception {
+            require(loader!=null&&loader.worker==Thread.currentThread()&&loader.delivery.sdkCommand!=null);LocalV2SDKChannel.Command command=loader.delivery.sdkCommand;
+            require(command.running&&!command.returned&&(!command.collectionKnown||revision==null));if(revision!=null){require(sdkCollectionCommand==null);sdkCollectionCommand=command;}
+            PlanetChildDataStore.CollectionResult result=loader.withData(this,()->store.admittedCollection(this,lease,purpose,revision,replacement,command.id));java.util.Map<String,byte[]> values=null;
+            try{values=result.ownedValues();java.util.ArrayList<Object> refs=new java.util.ArrayList<>();
+                for(java.util.Map.Entry<String,byte[]> entry:values.entrySet()){LocalV2AdmittedEnvelope.validate(compiled,purpose,entry.getKey(),entry.getValue(),wall());java.util.Map<String,Object> value=LocalV2PackageJson.object(LocalV2PackageJson.read(entry.getValue(),PlanetChildDataStore.MAX_VALUE_BYTES));
+                    if(purpose==PlanetChildDataStore.Purpose.history)refs.addAll(LocalV2PackageJson.array(value.get("references"),100));
+                    else{java.util.List<Object> rows=LocalV2PackageJson.array(value.get("entries"),4096);require(!rows.isEmpty());refs.add(LocalV2PackageJson.object(rows.get(0),"reference","payload").get("reference"));}}
+                require(refs.size()<=(purpose==PlanetChildDataStore.Purpose.history?100:64));publication();java.util.Map<String,Object> response=LocalV2AppOwner.map("revision",result.revision,"references",refs);return publish(()->response);
+            }catch(Exception error){failed();throw error;}finally{if(values!=null)for(byte[] bytes:values.values())LocalSnapshotV2.wipe(bytes);result.close();if(revision!=null){require(result.closedForSDK());command.resultClosed=true;}}
+        }
+        private void sdkCompleteCommand(LocalV2SDKChannel.Command command) throws Exception {
+            if(sdkCollectionCommand==null)return;require(command==sdkCollectionCommand&&command.collectionKnown&&command.resultClosed&&command.returned);
+            publication();loader.withData(this,()->{store.collectionComplete(this,lease,command.id);return null;});require(command.collectionJoined);sdkCollectionCommand=null;
+        }
+
     }
     /** Final publication checks run after fresh canonical/UI IO. This leaf
      * grants no admission and never runs a main join under an ownership lock. */
@@ -4959,5 +5077,911 @@ final class PlanetChildVault {
         }finally{LocalSnapshotV2.wipe(catalogBytes);LocalSnapshotV2.wipe(artifactBytes);if(!handed&&result!=null)result.close();}}
     }
 
-    private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
+    private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault) throws Exception {return new LocalV2Writer(vault);}
+
+    /** Compiler-owned LOCAL2 operational policy; release review pins remain a
+     * separate authenticated, deny-default input. No JS policy is consumed. */
+    static final class LocalV2AppPolicy {
+        static final String CANONICAL="{\"schemaVersion\":2,\"kind\":\"literary-planet-child-local-policy-v2\",\"version\":\"child-local-v2.1\",\"pinIterations\":600000,\"maxPinIterations\":1200000,\"backoffDelaysMs\":[1000,5000,15000,60000,300000]}";
+        static String checksum() throws Exception {return digest(CANONICAL.getBytes(StandardCharsets.UTF_8));}
+        private static LocalSnapshotV2Policy policy() throws Exception {return new LocalSnapshotV2Policy("child-local-v2.1",checksum(),1200000,new long[]{1000,5000,15000,60000,300000});}
+    }
+    private static final class LocalV2MissingPins extends Exception {}
+
+    /** Native fixes the full target from the ORIGINAL securely read registry.
+     * Web forms supply bounded deltas only; IDs, confirmation dates, age band
+     * and complete protected profile bytes are never imported as permissions. */
+    static final class LocalV2AppProfileDraft {
+        private static final String[] DRAFT={"label","exactAge","locale","readingLevel","allowedTopics","blockedTopics","soundEnabled","motion","narrationEnabled"};
+        private static String ageBand(long age) throws Exception {require(age>=3&&age<=17);return age<=5?"3-5":age<=8?"6-8":age<=11?"9-11":age<=14?"12-14":"15-17";}
+        private static String confirmedAt() throws Exception {
+            long wall=System.currentTimeMillis();require(wall>=0&&wall<=8640000000000000L);
+            java.text.SimpleDateFormat format=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",java.util.Locale.ROOT);
+            format.setLenient(false);format.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));return format.format(new java.util.Date(wall));
+        }
+        private static java.util.Map<String,Object> exact(java.util.Map<String,Object> value,String... names) throws Exception {
+            require(value!=null&&value.size()==names.length&&value.keySet().equals(new java.util.HashSet<>(Arrays.asList(names))));return value;
+        }
+        private static java.util.List<Object> topics(Object raw) throws Exception {
+            java.util.List<Object> values=LocalV2PackageJson.array(raw,64);java.util.HashSet<String> seen=new java.util.HashSet<>();
+            for(Object value:values){String topic=LocalV2PackageJson.text(value);require(topic.matches("[a-z0-9][a-z0-9._-]{0,63}")&&seen.add(topic));}return new java.util.ArrayList<>(values);
+        }
+        private static java.util.LinkedHashMap<String,Object> nativeProfile(java.util.Map<String,Object> proposal,String placeholder) throws Exception {
+            exact(proposal,DRAFT);String label=LocalV2PackageJson.text(proposal.get("label")),locale=LocalV2PackageJson.text(proposal.get("locale"));
+            long age=LocalV2PackageJson.number(proposal.get("exactAge"),3,17);
+            require(label.length()>0&&label.length()<=80&&label.trim().equals(label)&&!label.matches("(?s).*[\\x00-\\x1f\\x7f].*")&&("ru".equals(locale)||"en".equals(locale)));
+            Object reading=proposal.get("readingLevel");require(reading==null||Arrays.asList("plain","developing","fluent").contains(reading));
+            Object allowed=proposal.get("allowedTopics");if(allowed!=null)allowed=topics(allowed);
+            Object sound=proposal.get("soundEnabled"),narration=proposal.get("narrationEnabled"),motion=proposal.get("motion");
+            require(sound instanceof Boolean&&narration instanceof Boolean&&Arrays.asList("system","calm").contains(motion));
+            java.util.LinkedHashMap<String,Object> profile=new java.util.LinkedHashMap<>();
+            profile.put("id",placeholder);profile.put("label",label);profile.put("exactAge",age);profile.put("ageBand",ageBand(age));
+            profile.put("locale",locale);profile.put("ageConfirmedAt",confirmedAt());profile.put("readingLevel",reading);
+            profile.put("allowedTopics",allowed);profile.put("blockedTopics",topics(proposal.get("blockedTopics")));
+            profile.put("soundEnabled",sound);profile.put("motion",motion);profile.put("narrationEnabled",narration);
+            // Child locale changes already require the original native Gate.
+            profile.put("localeLocked",true);return profile;
+        }
+        static byte[] initial(java.util.Map<String,Object> proposal) throws Exception {
+            byte[] bytes=LocalV2PackageJson.bytes(nativeProfile(proposal,"native-pending"),false);try{LocalV2InitialProfile.profileId(bytes);return bytes;}
+            catch(Exception failure){LocalSnapshotV2.wipe(bytes);throw failure;}
+        }
+        static byte[] additional(java.util.Map<String,Object> proposal) throws Exception {
+            java.util.Map<String,Object> profile=nativeProfile(proposal,"native-pending");profile.remove("id");
+            java.util.LinkedHashMap<String,Object> wrapper=new java.util.LinkedHashMap<>();wrapper.put("createProfile",profile);
+            return LocalV2PackageJson.bytes(wrapper,false);
+        }
+        private static java.util.Map<String,Object> selected(LocalSnapshotV2 current,String id) throws Exception {
+            byte[] bytes=current.copy();try{
+                java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,MAX_BYTES)),
+                    record=LocalV2PackageJson.object(root.get("protectedRecord")),registry=LocalV2PackageJson.object(record.get("registry"));
+                require(id!=null&&id.equals(registry.get("activeProfileId")));java.util.Map<String,Object> selected=null;
+                for(Object raw:LocalV2PackageJson.array(registry.get("profiles"),4)){java.util.Map<String,Object> profile=LocalV2PackageJson.object(raw);if(id.equals(profile.get("id"))){require(selected==null);selected=new java.util.LinkedHashMap<>(profile);}}
+                require(selected!=null);return selected;
+            }finally{LocalSnapshotV2.wipe(bytes);}
+        }
+        static byte[] settings(LocalSnapshotV2 current,String action,java.util.Map<String,Object> target) throws Exception {
+            if("change-exact-age".equals(action))exact(target,"profileId","exactAge");
+            else if("change-blocked-topics".equals(action))exact(target,"profileId","blockedTopics");
+            else exact(target,"profileId","changes");
+            String id=LocalV2PackageJson.identifier(target.get("profileId"));java.util.Map<String,Object> profile=selected(current,id);
+            if("change-exact-age".equals(action)){
+                long age=LocalV2PackageJson.number(target.get("exactAge"),3,17);profile.put("exactAge",age);profile.put("ageBand",ageBand(age));profile.put("ageConfirmedAt",confirmedAt());
+            }else if("change-blocked-topics".equals(action))profile.put("blockedTopics",topics(target.get("blockedTopics")));
+            else{
+                java.util.Map<String,Object> changes=LocalV2PackageJson.object(target.get("changes"));require(!changes.isEmpty()&&changes.size()<=6);
+                for(java.util.Map.Entry<String,Object> change:changes.entrySet()){
+                    String key=change.getKey();Object value=change.getValue();
+                    if("readingLevel".equals(key))require(value==null||Arrays.asList("plain","developing","fluent").contains(value));
+                    else if("allowedTopics".equals(key)){if(value!=null)value=topics(value);}
+                    else if("locale".equals(key))require(Arrays.asList("ru","en").contains(value));
+                    else if("soundEnabled".equals(key)||"narrationEnabled".equals(key))require(value instanceof Boolean);
+                    else if("motion".equals(key))require(Arrays.asList("system","calm").contains(value));
+                    else throw new PinKnownRefusal();profile.put(key,value);
+                }
+            }
+            byte[] bytes=LocalV2PackageJson.bytes(profile,false);try{require(id.equals(LocalV2InitialProfile.profileId(bytes)));return bytes;}
+            catch(Exception failure){LocalSnapshotV2.wipe(bytes);throw failure;}
+        }
+    }
+
+    private interface SDKFirstInstallRecipient { void completed(SDKFirstInstallReceipt receipt) throws Exception; }
+    /** A local storage completion, never a Parent Gate/action permission. Closing
+     * only wipes; only settlement of the ORIGINAL receipt drains this owner. */
+    private static final class SDKFirstInstallReceipt implements AutoCloseable {
+        final SDKNativeChildFirstInstall owner; final SDKFirstInstallRequest request; final String checksum;
+        private byte[] seed; private boolean disposed,settled;
+        private SDKFirstInstallReceipt(SDKNativeChildFirstInstall owner,SDKFirstInstallRequest request) throws Exception {
+            this.owner=owner;this.request=request;checksum=request.seed.checksum;seed=request.seed.copy();
+        }
+        private synchronized byte[] copySeed() throws Exception {require(!disposed);return seed.clone();}
+        private synchronized void wipe(){disposed=true;Arrays.fill(seed,(byte)0);}
+        public void close(){boolean original;synchronized(owner){original=owner.active==request && request.receipt==this;}
+            if(original)owner.cancel(request);wipe();}
+    }
+    private static final class SDKFirstInstallRequest implements AutoCloseable {
+        final SDKNativeChildFirstInstall owner; final android.app.Activity activity; final android.os.IBinder windowToken;
+        final String locale; final LocalEmptySeedV2 seed; final long beganUptimeMs,deadlineUptimeMs;
+        private final byte[] nonce,payload; final LocalV2ProcessClock processClock; final LocalV2ClockLease processLease; private byte[] keyEncoding,signature;
+        private java.security.Signature originalSignature; private java.security.PublicKey publicKey;
+        private android.hardware.biometrics.BiometricPrompt.CryptoObject originalCrypto;
+        private android.os.CancellationSignal cancellation;
+        private Thread worker; private SDKFirstInstallReceipt receipt;
+        private boolean started,cancelled,sealed,finished,disposed,detached,promptOutstanding,credentialReturned,knownRefusal;
+        private boolean mutationStarted,permissionConsumed,deliveryEntered,deliveryCompleted,cancelIssued;
+        private boolean retirementClaimed,retired;
+        private int mainCalls,eventCalls,cancelCalls,readCalls,settleCalls,cleanupCalls; private Exception failure;
+        private SDKFirstInstallRequest(SDKNativeChildFirstInstall owner,android.app.Activity activity,String locale,
+            String version,String policyChecksum,long timeout,android.os.IBinder token) throws Exception {
+            this.owner=owner;this.activity=activity;this.locale=locale;windowToken=token;
+            LocalSnapshotV2Policy policy=LocalV2AppPolicy.policy();require(version.equals(policy.version)&&policyChecksum.equals(policy.checksum));
+            processClock=new LocalV2Writer(owner.vault).processClock(policy);processLease=processClock.claimUntil(this,owner.originalDeadline);
+            beganUptimeMs=processLease.began;deadlineUptimeMs=processLease.deadline;
+            seed=new LocalEmptySeedV2(version,policyChecksum);nonce=new byte[32];
+            try{new java.security.SecureRandom().nextBytes(nonce);payload=SDKNativeChildFirstInstall.operation(this);}
+            catch(Exception failure){seed.close();Arrays.fill(nonce,(byte)0);throw failure;}
+        }
+        private void wipe(){seed.close();Arrays.fill(nonce,(byte)0);Arrays.fill(payload,(byte)0);
+            if(signature!=null)Arrays.fill(signature,(byte)0);if(keyEncoding!=null)Arrays.fill(keyEncoding,(byte)0);if(receipt!=null)receipt.wipe();}
+        public void close(){owner.cancel(this);synchronized(owner){disposed=true;owner.wipeIfIdle(this);}}
+    }
+    /** Constructor-owned explicit provisioning; never called by a read/error
+     * fallback or App/plugin factory. Fixed signing key may survive a cancelled
+     * pre-mutation setup and is re-used only after its exact policy is checked.
+     * After the durable pending marker ANY failure leaves the installation
+     * sealed; no deleteEntry, regeneration, reset or partial repair is offered.
+     * Raw encrypted storage reuses the existing fixed v1 file/AAD identity;
+     * schema2 does not become readable/admitted through ANY v1 codec/port. */
+    private static final class SDKNativeChildFirstInstall {
+        private final PlanetChildVault vault; private volatile SDKFirstInstallRequest active; private boolean reserving,sealed; private final long originalDeadline;
+        private final android.os.Handler mainHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+        private SDKNativeChildFirstInstall(PlanetChildVault vault,long deadline) throws Exception {require(vault!=null);this.vault=vault;originalDeadline=deadline;}
+        private SDKFirstInstallRequest request(android.app.Activity activity,String locale,String version,String policyChecksum,long timeout) throws Exception {
+            synchronized(this){require(active==null && !reserving && !sealed);reserving=true;}
+            try{require(android.os.Build.VERSION.SDK_INT>=30 && android.os.Looper.myLooper()==android.os.Looper.getMainLooper()
+                && activity!=null && activity.getClass()==MainActivity.class && activity.getApplicationContext()==vault.context
+                && !activity.isFinishing() && !activity.isDestroyed() && activity.hasWindowFocus()
+                && ("ru".equals(locale)||"en".equals(locale)) && timeout>0 && timeout<=60000);
+                android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
+                SDKFirstInstallRequest value=new SDKFirstInstallRequest(this,activity,locale,version,policyChecksum,timeout,token);
+                synchronized(this){require(reserving && active==null && !sealed);active=value;reserving=false;}
+                try{attach(value);}catch(Exception failure){synchronized(this){value.cancelled=true;value.sealed=true;sealed=true;}
+                    try{removeObservers(value);}catch(Exception unknown){synchronized(this){value.sealed=true;}}
+                    synchronized(this){value.finished=true;wipeIfIdle(value);notifyAll();}throw failure;}
+                return value;
+            }finally{synchronized(this){reserving=false;}}
+        }
+        private static byte[] operation(SDKFirstInstallRequest request) throws Exception {
+            java.io.ByteArrayOutputStream buffer=new java.io.ByteArrayOutputStream(512);java.io.DataOutputStream out=new java.io.DataOutputStream(buffer);
+            out.write("LP-LOCAL-FIRST-INSTALL\0v2\0".getBytes(StandardCharsets.US_ASCII));out.writeByte("ru".equals(request.locale)?1:2);
+            for(String text:new String[]{request.owner.vault.vaultIdentity,request.seed.version,request.seed.policyChecksum,request.seed.checksum}) {
+                byte[] raw=text.getBytes(StandardCharsets.US_ASCII);try{out.writeShort(raw.length);out.write(raw);}finally{Arrays.fill(raw,(byte)0);}}
+            out.writeLong(request.beganUptimeMs);out.writeLong(request.deadlineUptimeMs);out.write(request.nonce);out.flush();return buffer.toByteArray();
+        }
+        private void own(SDKFirstInstallRequest request) throws Exception {require(request!=null && request.owner==this && active==request);}
+        private void wipeIfIdle(SDKFirstInstallRequest request){if(request.finished && request.readCalls==0 && request.settleCalls==0
+            && request.cleanupCalls==0 && request.eventCalls==0 && request.mainCalls==0 && request.cancelCalls==0
+            && (request.cancelled || request.disposed || request.sealed))request.wipe();}
+        private void live(SDKFirstInstallRequest request) throws Exception {
+            synchronized(this){own(request);long now=request.processClock.current(request.processLease);if(sealed || request.cancelled || request.sealed || request.disposed || request.retirementClaimed || request.retired
+                || now<request.beganUptimeMs || now>=request.deadlineUptimeMs)throw new PinKnownRefusal();
+                byte[] actual=operation(request);try{require(MessageDigest.isEqual(actual,request.payload));}finally{Arrays.fill(actual,(byte)0);}}
+        }
+        private void main(SDKFirstInstallRequest request,Runnable body) throws Exception {
+            synchronized(this){own(request);require(!request.detached || request.readCalls>0 || request.cleanupCalls>0);request.mainCalls++;}
+            boolean accepted;try{accepted=mainHandler.post(()->{try{body.run();}catch(Throwable error){synchronized(this){request.sealed=true;request.cancelled=true;
+                    request.failure=error instanceof Exception?(Exception)error:new Unavailable();notifyAll();}}
+                finally{synchronized(this){request.mainCalls--;wipeIfIdle(request);notifyAll();}}});}
+            catch(RuntimeException failure){synchronized(this){request.mainCalls--;request.sealed=true;notifyAll();}throw failure;}
+            if(!accepted) {
+                synchronized(this){request.mainCalls--;request.sealed=true;notifyAll();}throw new Unavailable();}
+        }
+        private void host(SDKFirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            for(;;){live(request);boolean[] valid={false},lost={false};
+                main(request,()->{lost[0]=request.activity.isFinishing() || request.activity.isDestroyed()
+                    || request.activity.getWindow().getDecorView().getWindowToken()!=request.windowToken;
+                    valid[0]=!lost[0] && request.activity.hasWindowFocus();});
+                synchronized(this){while(request.mainCalls!=0)wait();if(request.failure!=null)throw request.failure;live(request);
+                    if(lost[0])throw new PinKnownRefusal();if(valid[0])return;
+                    if(!request.credentialReturned)throw new PinKnownRefusal();wait(50);}}
+        }
+        private String signingAlias(SDKFirstInstallRequest request) throws Exception {return PinNativeOwnerAuthority.alias(request.activity);}
+        /** No child file is opened as a candidate seed. All known v1/v2 and
+         * child-data footprints are denied, including orphan backup/new files. */
+        private void empty(File directory,KeyStore keys) throws Exception {
+            require(!keys.containsAlias(vault.vaultIdentity+".aes"));noChildData(keys);
+            for(String name:new String[]{"full-record-v1","full-record-v1.bak","full-record-v1.new","first-install-v2","first-install-v2.bak","first-install-v2.new","sdk-install-terminal-v2","sdk-install-terminal-v2.bak","sdk-install-terminal-v2.new"})
+                absent(new File(directory,name));
+            String[] names=directory.list();require(names!=null);for(String name:names)require("transaction.lock".equals(name));
+        }
+        private void noChildData(KeyStore keys) throws Exception {
+            require(!keys.containsAlias(vault.context.getPackageName()+".literary-planet-child-data-v1.aes"));
+            File parent=vault.context.getNoBackupFilesDir().getCanonicalFile(),childData=new File(parent,"literary-planet-child-data-v1");
+            require(childData.getAbsoluteFile().equals(childData.getCanonicalFile()));absent(childData);
+        }
+        private static void absent(File file) throws Exception {
+            try{Os.lstat(file.getPath());throw new Unavailable();}
+            catch(android.system.ErrnoException failure){require(failure.errno==OsConstants.ENOENT);}
+        }
+        private void prepareKey(SDKFirstInstallRequest request) throws Exception {
+            host(request);vault.locked(directory->{live(request);vault.unlocked();KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);empty(directory,keys);
+                String alias=signingAlias(request);KeyguardManager guard=(KeyguardManager)vault.context.getSystemService(Context.KEYGUARD_SERVICE);
+                require(guard!=null && guard.isDeviceSecure());if(!keys.containsAlias(alias)) {
+                    live(request);java.security.KeyPairGenerator generator=java.security.KeyPairGenerator.getInstance("EC","AndroidKeyStore");
+                    generator.initialize(new android.security.keystore.KeyGenParameterSpec.Builder(alias,android.security.keystore.KeyProperties.PURPOSE_SIGN)
+                        .setAlgorithmParameterSpec(new java.security.spec.ECGenParameterSpec("secp256r1"))
+                        .setDigests(android.security.keystore.KeyProperties.DIGEST_SHA256).setUserAuthenticationRequired(true)
+                        .setUserAuthenticationParameters(0,android.security.keystore.KeyProperties.AUTH_DEVICE_CREDENTIAL).build());
+                    generator.generateKeyPair();}
+                live(request);PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,alias);
+                boolean adopted=false;try{android.os.CancellationSignal cancellation=new android.os.CancellationSignal();
+                    synchronized(this){live(request);request.publicKey=material.publicKey;request.keyEncoding=material.encoding;
+                        request.originalSignature=material.signature;request.originalCrypto=material.crypto;request.cancellation=cancellation;adopted=true;}
+                }finally{if(!adopted)Arrays.fill(material.encoding,(byte)0);}
+                empty(directory,keys);return null;});host(request);live(request);
+        }
+        private void authenticate(SDKFirstInstallRequest request,SDKFirstInstallRecipient recipient) throws Exception {
+            require(recipient!=null);synchronized(this){own(request);live(request);require(!request.started && !request.finished);
+                request.started=true;request.worker=new Thread(()->run(request,recipient),"planet-child-first-install");
+                try{request.worker.start();}catch(RuntimeException error){request.sealed=true;sealed=true;request.finished=true;request.wipe();notifyAll();throw error;}}
+        }
+        private void terminal(SDKFirstInstallRequest request,android.hardware.biometrics.BiometricPrompt.AuthenticationResult result,Exception error) {
+            synchronized(this){if(active!=request || request.detached || !request.promptOutstanding){request.sealed=true;request.cancelled=true;sealed=true;notifyAll();return;}
+                request.promptOutstanding=false;request.credentialReturned=error==null && result!=null
+                    && result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL
+                    && result.getCryptoObject()==request.originalCrypto && result.getCryptoObject().getSignature()==request.originalSignature;
+                if(!request.credentialReturned){request.cancelled=true;request.knownRefusal=true;}notifyAll();}
+        }
+        private void present(SDKFirstInstallRequest request) throws Exception {
+            main(request,()->{try{live(request);require(request.activity.hasWindowFocus()
+                    && request.activity.getWindow().getDecorView().getWindowToken()==request.windowToken && observerRegistered && screenRegistered);
+                android.hardware.biometrics.BiometricPrompt prompt=new android.hardware.biometrics.BiometricPrompt.Builder(request.activity)
+                    .setTitle("ru".equals(request.locale)?"Подтвердите настройку родительского контроля":"Confirm parental controls setup")
+                    .setSubtitle("ru".equals(request.locale)?"Подтвердите действие кодом блокировки устройства.":"Use your device screen lock to confirm this action.")
+                    .setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build();
+                synchronized(this){live(request);request.promptOutstanding=true;}
+                prompt.authenticate(request.originalCrypto,request.cancellation,task->{try{main(request,task);}catch(Exception failure){synchronized(this){request.sealed=true;request.cancelled=true;notifyAll();}}},
+                    new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
+                        @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(request,result,null);}
+                        @Override public void onAuthenticationError(int code,CharSequence text){terminal(request,null,new PinKnownRefusal());}
+                    });
+            }catch(Exception failure){synchronized(this){request.failure=failure;request.cancelled=true;request.knownRefusal=failure instanceof PinKnownRefusal;
+                if(request.promptOutstanding)request.sealed=true;notifyAll();}cancel(request);}});
+        }
+        private boolean observerRegistered,screenRegistered;
+        private void attach(SDKFirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());synchronized(this){own(request);require(!observerRegistered && !screenRegistered);}
+            request.activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);observerRegistered=true;
+            request.activity.registerReceiver(screenOff,new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF));screenRegistered=true;
+            require(mainHandler.postDelayed(deadlineCheck,50));
+        }
+        private void removeObservers(SDKFirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());mainHandler.removeCallbacks(deadlineCheck);
+            if(screenRegistered){request.activity.unregisterReceiver(screenOff);screenRegistered=false;}
+            if(observerRegistered){request.activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);observerRegistered=false;}
+            synchronized(this){request.detached=true;}
+        }
+        private void event(SDKFirstInstallRequest request,Runnable body){synchronized(this){if(active!=request || request.detached)return;request.eventCalls++;}
+            try{body.run();}finally{synchronized(this){request.eventCalls--;wipeIfIdle(request);notifyAll();}}}
+        private final Runnable deadlineCheck=new Runnable(){public void run(){SDKFirstInstallRequest request; synchronized(SDKNativeChildFirstInstall.this){request=active;}
+            if(request==null)return;event(request,()->{if(SystemClock.elapsedRealtime()>=request.deadlineUptimeMs)cancel(request);
+                synchronized(SDKNativeChildFirstInstall.this){if(!request.detached && !mainHandler.postDelayed(this,50)){request.sealed=true;request.cancelled=true;}}});}};
+        private final android.content.BroadcastReceiver screenOff=new android.content.BroadcastReceiver(){
+            public void onReceive(Context context,android.content.Intent intent){SDKFirstInstallRequest request=active;if(request!=null)event(request,()->cancel(request));}
+        };
+        private final android.app.Application.ActivityLifecycleCallbacks lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
+            public void onActivityCreated(android.app.Activity activity,android.os.Bundle state){}public void onActivityStarted(android.app.Activity activity){}
+            public void onActivityResumed(android.app.Activity activity){}public void onActivitySaveInstanceState(android.app.Activity activity,android.os.Bundle state){}
+            public void onActivityPaused(android.app.Activity activity){SDKFirstInstallRequest request=active;if(request!=null && request.activity==activity && request.promptOutstanding && !request.credentialReturned)return;lost(activity);}public void onActivityStopped(android.app.Activity activity){lost(activity);}
+            public void onActivityDestroyed(android.app.Activity activity){lost(activity);}
+        };
+        private void lost(android.app.Activity activity){SDKFirstInstallRequest request=active;if(request!=null && request.activity==activity)event(request,()->cancel(request));}
+        private void cancel(SDKFirstInstallRequest request){android.os.CancellationSignal signal;synchronized(this){if(request==null || active!=request || request.owner!=this)return;
+                request.cancelled=true;request.knownRefusal=true;signal=request.cancellation;if(request.finished){wipeIfIdle(request);notifyAll();return;}
+                if(request.cancelIssued){notifyAll();return;}request.cancelIssued=true;request.cancelCalls++;}
+            Thread worker=new Thread(()->{try{if(signal!=null)signal.cancel();}catch(Throwable failure){synchronized(this){request.sealed=true;}}
+                finally{synchronized(this){request.cancelCalls--;wipeIfIdle(request);notifyAll();}}},"planet-child-first-install-cancel");
+            try{worker.start();}catch(RuntimeException failure){synchronized(this){request.cancelCalls--;request.sealed=true;notifyAll();}}}
+        private void waitPrompt(SDKFirstInstallRequest request) throws Exception {
+            for(;;){boolean expire;synchronized(this){if(!request.promptOutstanding && request.mainCalls==0)break;
+                expire=!request.cancelled && SystemClock.elapsedRealtime()>=request.deadlineUptimeMs;if(!expire)wait(50);}if(expire)cancel(request);}
+            synchronized(this){if(request.failure!=null)throw request.failure;live(request);require(request.credentialReturned);}
+        }
+        private void verify(SDKFirstInstallRequest request) throws Exception {
+            live(request);require(request.signature!=null && request.signature.length>=8 && request.signature.length<=80 && request.publicKey!=null);
+            byte[] encoded=request.publicKey.getEncoded();try{require(MessageDigest.isEqual(encoded,request.keyEncoding));}finally{Arrays.fill(encoded,(byte)0);}
+            java.security.Signature check=java.security.Signature.getInstance("SHA256withECDSA");check.initVerify(request.publicKey);check.update(request.payload);require(check.verify(request.signature));live(request);
+        }
+        private static byte[] marker(SDKFirstInstallRequest request,boolean complete) throws Exception {
+            byte[] value=new byte[1+request.payload.length];value[0]=(byte)(complete?2:1);System.arraycopy(request.payload,0,value,1,request.payload.length);return value;
+        }
+        private static void syncDirectory(File directory) throws Exception {
+            FileDescriptor descriptor=Os.open(directory.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+            try{require(OsConstants.S_ISDIR(Os.fstat(descriptor).st_mode));Os.fsync(descriptor);}finally{Os.close(descriptor);}
+        }
+        /** A failed terminal directory sync must retain a cold-start refusal marker. */
+        private static void removeMarkerLast(File directory,File file,byte[] pending) throws Exception {
+            try{Os.remove(file.getPath());syncDirectory(directory);}
+            catch(Exception failure){
+                try{boolean absent=false;try{Os.lstat(file.getPath());}catch(android.system.ErrnoException missing){require(missing.errno==OsConstants.ENOENT);absent=true;}
+                    if(absent){FileDescriptor fd=Os.open(file.getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+                        try(FileOutputStream stream=new FileOutputStream(fd)){stream.write(pending);stream.getFD().sync();}syncDirectory(directory);markerReadback(file,pending);}
+                }catch(Exception sticky){failure.addSuppressed(sticky);}throw failure;
+            }
+        }
+        private static void markerReadback(File file,byte[] expected) throws Exception {
+            require(file.getAbsoluteFile().equals(file.getCanonicalFile()));FileDescriptor descriptor=Os.open(file.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+            byte[] actual=new byte[expected.length];try(FileInputStream input=new FileInputStream(descriptor)){StructStat opened=Os.fstat(descriptor),named=Os.lstat(file.getPath());
+                require(OsConstants.S_ISREG(opened.st_mode) && opened.st_size==expected.length && opened.st_ino==named.st_ino && opened.st_dev==named.st_dev);int offset=0;
+                while(offset<actual.length){int count=input.read(actual,offset,actual.length-offset);require(count>0);offset+=count;}require(input.read()==-1);require(MessageDigest.isEqual(actual,expected));
+            }finally{Arrays.fill(actual,(byte)0);}
+        }
+        private void pending(File directory,SDKFirstInstallRequest request) throws Exception {
+            File file=new File(directory,"first-install-v2");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));byte[] value=marker(request,false);
+            try{FileDescriptor descriptor=Os.open(file.getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+                synchronized(this){request.mutationStarted=true;}try(FileOutputStream output=new FileOutputStream(descriptor)){output.write(value);output.getFD().sync();}
+                syncDirectory(directory);markerReadback(file,value);
+            }finally{Arrays.fill(value,(byte)0);}
+        }
+        private void aes(KeyStore keys,SDKFirstInstallRequest request) throws Exception {
+            live(request);String alias=vault.vaultIdentity+".aes";require(!keys.containsAlias(alias));
+            javax.crypto.KeyGenerator generator=javax.crypto.KeyGenerator.getInstance("AES","AndroidKeyStore");
+            generator.init(new android.security.keystore.KeyGenParameterSpec.Builder(alias,android.security.keystore.KeyProperties.PURPOSE_ENCRYPT|android.security.keystore.KeyProperties.PURPOSE_DECRYPT)
+                .setKeySize(256).setBlockModes(android.security.keystore.KeyProperties.BLOCK_MODE_GCM)
+                .setEncryptionPaddings(android.security.keystore.KeyProperties.ENCRYPTION_PADDING_NONE).setRandomizedEncryptionRequired(true)
+                .setUnlockedDeviceRequired(true).build());generator.generateKey();live(request);
+            java.security.Key key=keys.getKey(alias,null);require(key instanceof SecretKey);
+            android.security.keystore.KeyInfo info=(android.security.keystore.KeyInfo)javax.crypto.SecretKeyFactory.getInstance("AES","AndroidKeyStore").getKeySpec((SecretKey)key,android.security.keystore.KeyInfo.class);
+            require(alias.equals(info.getKeystoreAlias()) && info.getKeySize()==256 && info.getOrigin()==android.security.keystore.KeyProperties.ORIGIN_GENERATED
+                && info.getPurposes()==(android.security.keystore.KeyProperties.PURPOSE_ENCRYPT|android.security.keystore.KeyProperties.PURPOSE_DECRYPT)
+                && info.isInsideSecureHardware() && info.getBlockModes().length==1 && android.security.keystore.KeyProperties.BLOCK_MODE_GCM.equals(info.getBlockModes()[0])
+                && info.getEncryptionPaddings().length==1 && android.security.keystore.KeyProperties.ENCRYPTION_PADDING_NONE.equals(info.getEncryptionPaddings()[0]));
+        }
+        /** Every main/recipient/cancel wait is OUTSIDE this IO lock. The lock
+         * contains only local nonblocking identity/deadline checks and actual
+         * native key/file operations; their uncertain results seal permanently. */
+        private void commit(SDKFirstInstallRequest request) throws Exception {
+            host(request);verify(request);vault.locked(directory->{live(request);vault.unlocked();KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);
+                empty(directory,keys);PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,signingAlias(request));
+                try{require(MessageDigest.isEqual(material.encoding,request.keyEncoding));}finally{Arrays.fill(material.encoding,(byte)0);}
+                verify(request);pending(directory,request);live(request);aes(keys,request);byte[] seed=request.seed.copy();
+                try{vault.writeExact(directory,seed,()->live(request));byte[] actual=vault.readExact(directory);
+                    try{require(MessageDigest.isEqual(actual,seed));try(LocalEmptySeedV2 parsed=LocalEmptySeedV2.decode(actual,request.seed.version,request.seed.policyChecksum)){
+                        require(parsed.checksum.equals(request.seed.checksum));}}
+                    finally{Arrays.fill(actual,(byte)0);}
+                    live(request);verify(request);byte[] complete=marker(request,true);try{AtomicFile marker=new AtomicFile(new File(directory,"first-install-v2"));FileOutputStream stream=null;
+                        try{stream=marker.startWrite();stream.write(complete);live(request);stream.getFD().sync();live(request);marker.finishWrite(stream);stream=null;}
+                        finally{if(stream!=null)marker.failWrite(stream);}syncDirectory(directory);markerReadback(marker.getBaseFile(),complete);noChildData(keys);live(request);
+                        synchronized(this){own(request);require(!request.permissionConsumed);request.permissionConsumed=true;}
+                    }finally{Arrays.fill(complete,(byte)0);}
+                }finally{Arrays.fill(seed,(byte)0);}return null;});host(request);live(request);
+        }
+        private void detach(SDKFirstInstallRequest request) throws Exception {
+            main(request,()->{try{removeObservers(request);}catch(Exception failure){synchronized(this){request.sealed=true;request.failure=failure;notifyAll();}}});
+            synchronized(this){while(request.mainCalls!=0 || request.eventCalls!=0 || request.cancelCalls!=0)wait();if(request.failure!=null)throw request.failure;}
+        }
+        private void run(SDKFirstInstallRequest request,SDKFirstInstallRecipient recipient) {
+            try{prepareKey(request);present(request);waitPrompt(request);host(request);live(request);request.originalSignature.update(request.payload);
+                request.signature=request.originalSignature.sign();verify(request);host(request);commit(request);
+                synchronized(this){live(request);require(request.permissionConsumed);request.receipt=new SDKFirstInstallReceipt(this,request);request.deliveryEntered=true;}
+                recipient.completed(request.receipt);host(request);live(request);synchronized(this){request.deliveryCompleted=true;}
+            }catch(Throwable error){synchronized(this){request.cancelled=true;request.knownRefusal=error instanceof PinKnownRefusal;
+                    if(request.mutationStarted || request.deliveryEntered || !request.knownRefusal)request.sealed=true;request.failure=error instanceof Exception?(Exception)error:new Unavailable();}
+                cancel(request);boolean failureDelivery;synchronized(this){failureDelivery=!request.deliveryEntered;request.deliveryEntered=true;}
+                if(failureDelivery)try{recipient.completed(null);}catch(Throwable ignored){synchronized(this){request.sealed=true;}}}
+            finally{try{for(;;){synchronized(this){if(!request.promptOutstanding && request.mainCalls==0 && request.cancelCalls==0 && request.eventCalls==0)break;wait(50);}}
+                    // Successful or uncertain original receipt keeps the native
+                    // lifecycle/deadline latch until explicit actual retirement.
+                    if(request.receipt==null)detach(request);}
+                catch(Exception error){synchronized(this){request.sealed=true;request.cancelled=true;}}
+                synchronized(this){if(SystemClock.elapsedRealtime()>=request.deadlineUptimeMs)request.cancelled=true;
+                    request.finished=true;if(request.sealed || request.mutationStarted && !request.deliveryCompleted){sealed=true;request.sealed=true;}
+                    wipeIfIdle(request);notifyAll();}}
+        }
+        private void settle(SDKFirstInstallReceipt receipt,PinReplyDelivery delivery) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());SDKFirstInstallRequest request;
+            synchronized(this){require(receipt!=null && active!=null && receipt==active.receipt && receipt.owner==this && receipt.request==active
+                && !receipt.settled && delivery!=null && active.finished && active.mainCalls==0 && active.eventCalls==0 && active.cancelCalls==0
+                && active.readCalls==0 && active.settleCalls==0 && active.cleanupCalls==0 && !active.retirementClaimed && !active.retired);request=active;request.settleCalls++;}
+            try{if(delivery==PinReplyDelivery.known){host(request);live(request);}
+                synchronized(this){own(request);require(!receipt.settled);
+                    require(delivery==PinReplyDelivery.uncertain || !receipt.disposed && request.deliveryCompleted && !request.cancelled
+                        && !request.sealed && request.permissionConsumed && request.mainCalls==0 && request.eventCalls==0 && request.cancelCalls==0);
+                    if(delivery==PinReplyDelivery.known)live(request);receipt.settled=true;receipt.wipe();
+                    if(delivery==PinReplyDelivery.uncertain){sealed=true;request.sealed=true;request.cancelled=true;}}
+            }finally{synchronized(this){request.settleCalls--;wipeIfIdle(request);notifyAll();}}
+        }
+        /** Original setup readback only, not an authenticated general record
+         * port. In particular it does not call v1 readCandidate/bootSample. */
+        private byte[] readInstalledSeed(SDKFirstInstallReceipt receipt) throws Exception {
+            SDKFirstInstallRequest request;synchronized(this){require(receipt!=null && active!=null && receipt==active.receipt && receipt.owner==this
+                && receipt.request==active && !receipt.disposed && active.finished && active.deliveryCompleted && active.permissionConsumed && active.readCalls==0);request=active;live(request);request.readCalls++;}
+            byte[] result=null;try{host(request);result=vault.locked(directory->{live(request);byte[] raw=vault.readExact(directory);
+                try{try(LocalEmptySeedV2 decoded=LocalEmptySeedV2.decode(raw,request.seed.version,request.seed.policyChecksum)){
+                        require(decoded.checksum.equals(request.seed.checksum));}live(request);byte[] owned=raw;raw=null;return owned;
+                }finally{if(raw!=null)Arrays.fill(raw,(byte)0);}});
+                host(request);live(request);byte[] owned=result;result=null;return owned;
+            }finally{if(result!=null)Arrays.fill(result,(byte)0);synchronized(this){request.readCalls--;wipeIfIdle(request);notifyAll();}}
+        }
+        /** Explicit pre-mutation retry only after genuine prompt cancellation,
+         * callback/worker joins and known failure delivery. Storage is inspected
+         * again on the next explicit request; this never repairs/reset state. */
+        /** The original successful worker, native input, callbacks, observer
+         * removals and receipt settlement all join before signed encrypted
+         * terminal publication. The external pending marker is removed LAST;
+         * the original PROCESS lease remains occupied across that fence. */
+        private void retire(SDKFirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            synchronized(this){own(request);require(!request.retirementClaimed&&!request.retired&&Thread.currentThread()!=request.worker);request.retirementClaimed=true;}
+            if(request.worker!=null)request.worker.join();
+            boolean known;synchronized(this){known=request.receipt!=null&&request.receipt.settled&&request.deliveryCompleted&&request.permissionConsumed&&!request.cancelled&&!request.sealed&&request.failure==null;}
+            if(!known)cancel(request);
+            try{
+                synchronized(this){while(request.mainCalls!=0||request.eventCalls!=0||request.cancelCalls!=0||request.readCalls!=0||request.settleCalls!=0)wait(10);}
+                if(!request.detached)detach(request);
+                synchronized(this){require(request.detached&&request.mainCalls==0&&request.eventCalls==0&&request.cancelCalls==0&&request.cleanupCalls==0);}
+                if(known){
+                    java.util.concurrent.FutureTask<Boolean> host=new java.util.concurrent.FutureTask<>(()->!request.activity.isDestroyed()&&!request.activity.isFinishing()&&request.activity.hasWindowFocus()&&request.activity.getWindow().getDecorView().getWindowToken()==request.windowToken);
+                    require(mainHandler.post(host));require(host.get());
+                    vault.locked(directory->{request.processClock.current(request.processLease);verifyClosed(request);
+                        byte[] seed=vault.readExact(directory),expected=request.seed.copy();
+                        try{require(MessageDigest.isEqual(seed,expected));SDKInstallTerminal.complete(vault,directory,request,()->{request.processClock.current(request.processLease);verifyClosed(request);});}
+                        finally{LocalSnapshotV2.wipe(seed);LocalSnapshotV2.wipe(expected);}return null;});
+                }else if(request.mutationStarted||request.sealed)throw new Unavailable();
+                request.processClock.release(request.processLease);
+                synchronized(this){request.retired=true;request.finished=true;request.wipe();active=null;notifyAll();}
+            }catch(Throwable failure){request.processClock.invalidate(request.processLease);synchronized(this){sealed=true;request.sealed=true;request.cancelled=true;request.wipe();notifyAll();}if(failure instanceof Error)throw(Error)failure;throw failure instanceof Exception?(Exception)failure:new Unavailable();}
+        }
+        private void verifyClosed(SDKFirstInstallRequest request) throws Exception {
+            require(request.permissionConsumed&&request.deliveryCompleted&&request.receipt!=null&&request.receipt.settled&&request.detached&&!request.cancelled&&!request.sealed&&request.signature!=null);
+            java.security.Signature verifier=java.security.Signature.getInstance("SHA256withECDSA");verifier.initVerify(request.publicKey);verifier.update(request.payload);require(verifier.verify(request.signature));
+        }
+    }
+
+
+    /** Fixed encrypted terminal belongs to the native install key, namespace
+     * and seed. Its authenticated bytes are never accepted from a bridge DTO. */
+    private static final class SDKInstallTerminal {
+        private static final String NAME="sdk-install-terminal-v2";
+        private static void absent(File directory) throws Exception {
+            for(String name:new String[]{NAME,NAME+".bak",NAME+".new"})SDKNativeChildFirstInstall.absent(new File(directory,name));
+        }
+        private static byte[] aad(PlanetChildVault vault){return(vault.vaultIdentity+"|LOCAL2|"+NAME).getBytes(StandardCharsets.UTF_8);}
+        private static byte[] fileRead(File file,int max) throws Exception {
+            require(file.getAbsoluteFile().equals(file.getCanonicalFile()));FileDescriptor fd=Os.open(file.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+            try(FileInputStream in=new FileInputStream(fd)){StructStat named=Os.lstat(file.getPath()),opened=Os.fstat(fd);require(OsConstants.S_ISREG(opened.st_mode)&&opened.st_size>0&&opened.st_size<=max&&named.st_ino==opened.st_ino&&named.st_dev==opened.st_dev);
+                byte[] bytes=new byte[(int)opened.st_size];boolean handed=false;try{int at=0;while(at<bytes.length){int count=in.read(bytes,at,bytes.length-at);require(count>0);at+=count;}require(in.read()==-1);handed=true;return bytes;}finally{if(!handed)LocalSnapshotV2.wipe(bytes);}}
+        }
+        private static byte[] decrypt(PlanetChildVault vault,File directory) throws Exception {
+            for(String suffix:new String[]{".bak",".new"})SDKNativeChildFirstInstall.absent(new File(directory,NAME+suffix));
+            byte[] encoded=fileRead(new File(directory,NAME),4096),plain=null,associated=aad(vault);
+            try{require(encoded.length>=30&&encoded[0]==2);Cipher c=Cipher.getInstance("AES/GCM/NoPadding");c.init(Cipher.DECRYPT_MODE,vault.existingKey(),new GCMParameterSpec(128,Arrays.copyOfRange(encoded,1,13)));c.updateAAD(associated);plain=c.doFinal(encoded,13,encoded.length-13);require(plain.length>0&&plain.length<=2048);byte[] out=plain;plain=null;return out;}
+            finally{LocalSnapshotV2.wipe(encoded);LocalSnapshotV2.wipe(plain);LocalSnapshotV2.wipe(associated);}
+        }
+        private static byte[] terminal(SDKFirstInstallRequest request) throws Exception {
+            java.io.ByteArrayOutputStream bytes=new java.io.ByteArrayOutputStream();java.io.DataOutputStream out=new java.io.DataOutputStream(bytes);
+            out.writeInt(0x4c504932);out.writeShort(request.payload.length);out.write(request.payload);out.writeShort(request.keyEncoding.length);out.write(request.keyEncoding);out.writeShort(request.signature.length);out.write(request.signature);out.flush();return bytes.toByteArray();
+        }
+        private static void validate(PlanetChildVault vault,byte[] raw,LocalSnapshotV2Policy policy) throws Exception {
+            byte[] payload=null,keyBytes=null,sig=null,seed=null;
+            try(java.io.DataInputStream in=new java.io.DataInputStream(new java.io.ByteArrayInputStream(raw))){
+                require(raw.length>0&&raw.length<=2048&&in.readInt()==0x4c504932);int n=in.readUnsignedShort();require(n>=100&&n<=1024);payload=new byte[n];in.readFully(payload);
+                n=in.readUnsignedShort();require(n>0&&n<=512);keyBytes=new byte[n];in.readFully(keyBytes);n=in.readUnsignedShort();require(n>=8&&n<=80);sig=new byte[n];in.readFully(sig);require(in.read()==-1);
+                KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,vault.context.getPackageName()+".literary-planet-child-device-owner-sign-v1");
+                try{require(MessageDigest.isEqual(keyBytes,material.encoding));java.security.Signature verify=java.security.Signature.getInstance("SHA256withECDSA");verify.initVerify(material.publicKey);verify.update(payload);require(verify.verify(sig));}finally{LocalSnapshotV2.wipe(material.encoding);}
+                try(java.io.DataInputStream p=new java.io.DataInputStream(new java.io.ByteArrayInputStream(payload))){
+                    byte[] prefix=new byte["LP-LOCAL-FIRST-INSTALL\0v2\0".getBytes(StandardCharsets.US_ASCII).length];p.readFully(prefix);require(Arrays.equals(prefix,"LP-LOCAL-FIRST-INSTALL\0v2\0".getBytes(StandardCharsets.US_ASCII)));int locale=p.readUnsignedByte();require(locale==1||locale==2);
+                    seed=LocalEmptySeedV2.canonical(policy.version,policy.checksum);
+                    for(String expected:new String[]{vault.vaultIdentity,policy.version,policy.checksum,digest(seed)}){int count=p.readUnsignedShort();require(count==expected.length());byte[] value=new byte[count];try{p.readFully(value);require(expected.equals(new String(value,StandardCharsets.US_ASCII)));}finally{LocalSnapshotV2.wipe(value);}}
+                    long began=p.readLong(),deadline=p.readLong();require(began>=0&&deadline>began&&deadline-began<=60000);byte[] nonce=new byte[32];try{p.readFully(nonce);require(p.read()==-1);}finally{LocalSnapshotV2.wipe(nonce);}
+                }
+            }finally{LocalSnapshotV2.wipe(payload);LocalSnapshotV2.wipe(keyBytes);LocalSnapshotV2.wipe(sig);LocalSnapshotV2.wipe(seed);}
+        }
+        private static void known(PlanetChildVault vault,File directory,LocalSnapshotV2Policy policy) throws Exception {
+            for(String name:new String[]{"first-install-v2","first-install-v2.bak","first-install-v2.new","sdk-pin-pending-v2","sdk-pin-pending-v2.bak","sdk-pin-pending-v2.new"})SDKNativeChildFirstInstall.absent(new File(directory,name));
+            byte[] value=decrypt(vault,directory);try{validate(vault,value,policy);}finally{LocalSnapshotV2.wipe(value);}
+        }
+        private static void complete(PlanetChildVault vault,File directory,SDKFirstInstallRequest request,CommitCheck boundary) throws Exception {
+            absent(directory);byte[] pending=SDKNativeChildFirstInstall.marker(request,true),plain=terminal(request),encoded=null,associated=aad(vault),actual=null;
+            try{boundary.check();SDKNativeChildFirstInstall.markerReadback(new File(directory,"first-install-v2"),pending);validate(vault,plain,LocalV2AppPolicy.policy());
+                Cipher c=Cipher.getInstance("AES/GCM/NoPadding");c.init(Cipher.ENCRYPT_MODE,vault.existingKey());require(c.getIV().length==12);c.updateAAD(associated);byte[] crypt=c.doFinal(plain);
+                try{encoded=ByteBuffer.allocate(13+crypt.length).put((byte)2).put(c.getIV()).put(crypt).array();}finally{LocalSnapshotV2.wipe(crypt);}
+                FileDescriptor fd=Os.open(new File(directory,NAME).getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+                try(FileOutputStream stream=new FileOutputStream(fd)){stream.write(encoded);stream.getFD().sync();}
+                SDKNativeChildFirstInstall.syncDirectory(directory);actual=decrypt(vault,directory);require(MessageDigest.isEqual(actual,plain));boundary.check();
+                SDKNativeChildFirstInstall.markerReadback(new File(directory,"first-install-v2"),pending);boundary.check();
+                SDKNativeChildFirstInstall.removeMarkerLast(directory,new File(directory,"first-install-v2"),pending);
+                // No fallible native grant follows marker removal.
+            }finally{LocalSnapshotV2.wipe(pending);LocalSnapshotV2.wipe(plain);LocalSnapshotV2.wipe(encoded);LocalSnapshotV2.wipe(associated);LocalSnapshotV2.wipe(actual);}
+        }
+    }
+
+
+
+    /** Original SDK read permit stays inside its already-held Vault lock.
+     * Structural DTOs, empty seeds and public factories cannot construct it. */
+    static final class LocalV2SDKReadPermit {
+        private final LocalV2Writer writer;private final LocalV2Request request;private final File directory;private final Thread thread;private final byte[] expected;private final LocalV2DataContext context;private final boolean empty;
+        private LocalV2SDKReadPermit(LocalV2Writer writer,LocalV2Request request,File directory,byte[] actual) throws Exception {
+            this.writer=writer;this.request=request;this.directory=directory;thread=Thread.currentThread();expected=actual.clone();
+            java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(actual,MAX_BYTES)),p=root.containsKey("protectedRecord")?LocalV2PackageJson.object(root.get("protectedRecord")):root;
+            empty=LocalV2PackageJson.array(LocalV2PackageJson.object(p.get("registry")).get("profiles"),4).isEmpty();
+            if(empty)context=null;else try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,request.policy)){context=new LocalV2DataContext(saved);}check();
+        }
+        void check() throws Exception {require(thread==Thread.currentThread()&&writer.active==request&&request.workers==1);writer.live(request);writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{require(MessageDigest.isEqual(expected,actual)&&request.currentBytes!=null&&MessageDigest.isEqual(actual,request.currentBytes));request.processClock.sample(request.processLease,actual);}finally{LocalSnapshotV2.wipe(actual);}}
+        android.content.Context context() throws Exception {check();return writer.vault.context;}
+        boolean emptyProfiles() throws Exception {check();return empty;}
+        String binding() throws Exception {check();require(context!=null);return context.binding;}
+        java.util.Map<String,String> profiles() throws Exception {check();return context==null?java.util.Collections.emptyMap():context.profiles;}
+        String policyVersion() throws Exception {check();return request.policy.version;}String policyChecksum() throws Exception {check();return request.policy.checksum;}
+        LocalV2KnownBirth knownBirth(String identity,byte[] plain) throws Exception {check();LocalV2KnownBirth birth=LocalV2KnownBirth.verify(writer.vault.context,identity,plain);require(request.policy.version.equals(birth.policyVersion)&&request.policy.checksum.equals(birth.policyChecksum)&&context!=null&&context.profiles.containsKey(birth.profileId));check();return birth;}
+        private void close(){LocalSnapshotV2.wipe(expected);}
+    }
+
+
+
+    private static byte[] sdkRotate(LocalSnapshotV2 old,String salt,String credential,String hash) throws Exception {
+        require(ProtectedEnvelope.hash(salt)&&ProtectedEnvelope.hash(credential)&&ProtectedEnvelope.hash(hash)&&!credential.equals(old.credentialId));
+        byte[] bytes=old.copy(),p=null,pin=null;try{
+            long revision=LocalSnapshotV2.increment(old.revision),pinRevision=LocalSnapshotV2.increment(old.pinRevision);
+            String text="{\"schemaVersion\":1,\"policyVersion\":"+LocalSnapshotV2.quoted(old.policy.version)+",\"revision\":"+pinRevision+",\"credentialId\":"+LocalSnapshotV2.quoted(credential)+",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":600000,\"saltHex\":"+LocalSnapshotV2.quoted(salt)+",\"hashHex\":"+LocalSnapshotV2.quoted(hash)+"},\"attempts\":{\"count\":"+old.count+",\"blockedUntilMs\":"+old.blockedUntilMs+",\"lastObservedMs\":"+old.lastObservedMs+",\"pendingAttemptId\":"+(old.pendingAttemptId==null?"null":LocalSnapshotV2.quoted(old.pendingAttemptId))+"}}";
+            pin=text.getBytes(StandardCharsets.UTF_8);java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream();
+            out.write(bytes,old.protectedStart,old.revisionStart-old.protectedStart);out.write(Long.toString(revision).getBytes(StandardCharsets.US_ASCII));
+            out.write(bytes,old.revisionEnd,old.pinStart-old.revisionEnd);out.write(pin);out.write(bytes,old.pinEnd,old.protectedEnd-old.pinEnd);p=out.toByteArray();
+            return LocalSnapshotV2.wire(p,old.policy,LocalSnapshotV2.increment(old.journalRevision),revision,pinRevision,credential,old.count,old.pendingAttemptId,old.savedCooldownMs,old.lastObservedMs);
+        }finally{LocalSnapshotV2.wipe(bytes);LocalSnapshotV2.wipe(p);LocalSnapshotV2.wipe(pin);}
+    }
+
+
+    /** LOCAL-only successor: fixed native identity, genuine old PIN charge/math
+     * for replacement, double new native input, existing OS owner-key signature
+     * and full Root/J CAS/readback on one original PROCESS deadline. */
+    private static final class LocalV2SDKPinRotation {
+        final LocalV2Writer writer;final LocalV2Request request;final boolean recover;final String locale,id;private LocalV2PinKind kind;
+        private final LocalV2GateRequest gate=null;private final long iterations=600000;
+        private volatile Thread worker,settler,cancelWorker;private volatile boolean cancelled,finished,known,ownerReturned,promptOutstanding;
+        private LocalV2PinPhase phase=LocalV2PinPhase.captured;private Exception failure;private boolean compared;private PinVerificationOutcome outcome;
+        private byte[] original,nextBytes,payload,signature,keyEncoding;private java.security.Signature signing;private java.security.PublicKey publicKey;
+        private android.hardware.biometrics.BiometricPrompt.CryptoObject crypto;private android.os.CancellationSignal signal;private Exception promptError;
+        private android.app.Dialog dialog;private android.view.ViewTreeObserver.OnWindowFocusChangeListener focusObserver;
+        private android.widget.TextView subtitle,mask,count;private android.widget.Button next;private android.widget.LinearLayout keypad;
+        private final byte[] edit=new byte[128];private byte[] first,entered;private int length,stage;private boolean ready,uiJoined,shown,accepting,everFocused;
+        private File pendingDirectory;private byte[] pendingBytes;
+        private LocalV2SDKPinRotation(PlanetChildVault vault,android.app.Activity activity,LocalSnapshotV2Policy policy,long deadline,boolean recover,String locale) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&("ru".equals(locale)||"en".equals(locale)));this.recover=recover;this.locale=locale;writer=new LocalV2Writer(vault);request=writer.requestAt(activity,policy,0,deadline);kind=LocalV2PinKind.verify;
+            byte[] nonce=new byte[32];try{new java.security.SecureRandom().nextBytes(nonce);id=hex(nonce);}finally{LocalSnapshotV2.wipe(nonce);}
+            synchronized(writer){writer.live(request);require(request.sdkRotation==null&&request.pinOperation==null);request.sdkRotation=this;request.processClock.claimPin(request.processLease,id,this);}
+        }
+        private void live() throws Exception {synchronized(writer){writer.live(request);require(request.sdkRotation==this&&!cancelled&&!Thread.currentThread().isInterrupted());}}
+        private void originalReadback() throws Exception {live();writer.host(request);writer.vault.locked(directory->{live();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{require(original!=null&&MessageDigest.isEqual(original,actual)&&MessageDigest.isEqual(request.currentBytes,actual));request.processClock.sample(request.processLease,actual);return null;}finally{LocalSnapshotV2.wipe(actual);}});}
+        private boolean ownedPrompt(){return phase==LocalV2PinPhase.owner&&promptOutstanding&&!ownerReturned&&!cancelled&&!finished&&crypto!=null&&crypto.getSignature()==signing;}
+        private void revoke(){synchronized(writer){cancelled=true;accepting=false;LocalSnapshotV2.wipe(edit);length=0;if(signal!=null&&cancelWorker==null){request.pinCancelCalls++;cancelWorker=new Thread(()->{try{signal.cancel();}catch(Throwable error){writer.unknown(request);}finally{synchronized(writer){request.pinCancelCalls--;writer.notifyAll();}}},"planet-sdk-pin-cancel");cancelWorker.start();}writer.notifyAll();}}
+        private void runJoined() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()&&worker==null);worker=new Thread(this::run,"planet-sdk-pin-successor");settler=new Thread(this::retire,"planet-sdk-pin-successor-retire");synchronized(writer){request.pinWorkers++;}worker.start();settler.start();join();}
+        private void join() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());if(settler!=null)settler.join();require(request.retired&&!request.sealed&&!request.processClock.invalid);if(failure!=null)throw failure;require(known);}
+        private void joinedCleanup() throws Exception {if(settler!=null)settler.join();require(request.retired&&!request.sealed&&!request.processClock.invalid);}
+        private void chargeBoundary() throws Exception {live();require(!recover&&worker==Thread.currentThread()&&phase==LocalV2PinPhase.charging&&uiJoined&&dialog==null&&entered!=null&&entered.length>0&&entered.length<=128);require(MessageDigest.isEqual(original,request.currentBytes));}
+        private void exactCharged() throws Exception {live();LocalV2ChargedReservation reservation=request.reservation;require(reservation!=null&&!reservation.closed&&request.receipt==null&&!request.unacknowledgedMutation&&MessageDigest.isEqual(reservation.charged,request.currentBytes));writer.vault.locked(directory->{live();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{require(MessageDigest.isEqual(actual,reservation.charged));return null;}finally{LocalSnapshotV2.wipe(actual);}});}
+        private void run(){try{
+            LocalV2StorageReceipt anchor=writer.reanchor(request);if(anchor!=null)writer.acknowledge(anchor);original=writer.sdkRead(request);
+            if(!recover){input();phase=LocalV2PinPhase.charging;LocalV2StorageReceipt charge=writer.charge(request);writer.acknowledge(charge);LocalV2ChargedReservation reservation=request.reservation;require(reservation!=null);byte[] charged=reservation.charged.clone();
+                try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(charged,request.policy)){phase=LocalV2PinPhase.comparing;exactCharged();outcome=LocalV2PinOperation.verifier(saved).compare(entered.clone(),this::exactCharged);compared=true;phase=LocalV2PinPhase.finalizing;LocalV2StorageReceipt finalized=writer.sdkFinalizeRotation(this);writer.acknowledge(finalized);if(outcome!=PinVerificationOutcome.match)throw new PinKnownRefusal();}
+                finally{LocalSnapshotV2.wipe(charged);LocalSnapshotV2.wipe(entered);entered=null;LocalSnapshotV2.wipe(original);original=writer.sdkRead(request);}
+            }
+            kind=LocalV2PinKind.enroll;stage=0;ready=false;uiJoined=false;everFocused=false;LocalSnapshotV2.wipe(first);first=null;input();phase=LocalV2PinPhase.deriving;
+            byte[] salt=new byte[32],credential=new byte[32],hash=new byte[32];
+            try{RealPinPrimitivePlatform platform=new RealPinPrimitivePlatform();platform.random(salt);platform.random(credential);require(PinNativePrimitives.nonzero(salt)&&PinNativePrimitives.nonzero(credential));originalReadback();writer.begin(request);try{platform.derive(entered,salt,iterations,hash,this::live);}finally{writer.finish(request);}require(PinNativePrimitives.nonzero(hash));try(LocalSnapshotV2 old=LocalSnapshotV2.decode(original,request.policy)){nextBytes=sdkRotate(old,hex(salt),hex(credential),hex(hash));}}
+            finally{LocalSnapshotV2.wipe(salt);LocalSnapshotV2.wipe(credential);LocalSnapshotV2.wipe(hash);}
+            owner();verifyOwner(false);phase=LocalV2PinPhase.finalizing;LocalV2StorageReceipt receipt=writer.sdkCommitRotation(this);writer.acknowledge(receipt);live();known=true;
+        }catch(Throwable error){failure=error instanceof Exception?(Exception)error:new Unavailable();if(request.unacknowledgedMutation||pendingBytes!=null)writer.unknown(request);revoke();}
+        finally{try{cleanupInput();}catch(Throwable e){writer.unknown(request);failure=new Unavailable();}if(signal!=null&&cancelled)revoke();
+            try{if(cancelWorker!=null){cancelWorker.join();cancelWorker=null;}synchronized(writer){while(promptOutstanding||request.events>0)writer.wait(10);}}catch(Exception e){writer.unknown(request);failure=e;}
+            LocalSnapshotV2.wipe(edit);LocalSnapshotV2.wipe(first);LocalSnapshotV2.wipe(entered);synchronized(writer){finished=true;request.pinWorkers--;writer.notifyAll();}}}
+        private void owner() throws Exception {
+            originalReadback();require(android.os.Build.VERSION.SDK_INT>=30);phase=LocalV2PinPhase.owner;KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);String alias=PinNativeOwnerAuthority.alias(request.activity);require(keys.containsAlias(alias));PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,alias);
+            signing=material.signature;publicKey=material.publicKey;keyEncoding=material.encoding;crypto=material.crypto;signal=new android.os.CancellationSignal();
+            payload=message();writer.onMain(request,()->{try{live();android.hardware.biometrics.BiometricPrompt prompt=new android.hardware.biometrics.BiometricPrompt.Builder(request.activity)
+                .setTitle("ru".equals(locale)?"Подтвердите новый родительский PIN":"Confirm the new Parent PIN").setSubtitle(label(R.string.native_owner_device_credential_reason))
+                .setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build();synchronized(writer){promptOutstanding=true;}
+                prompt.authenticate(crypto,signal,task->{synchronized(writer){request.events++;}if(!writer.main.post(()->{try{task.run();}finally{synchronized(writer){request.events--;writer.notifyAll();}}}))synchronized(writer){request.events--;writer.unknown(request);}},
+                    new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(result,null);}public void onAuthenticationError(int code,CharSequence reason){terminal(null,new PinKnownRefusal());}});
+            }catch(Exception error){promptError=error;cancelled=true;revoke();}},false);
+            for(;;){synchronized(writer){if(!promptOutstanding&&request.events==0)break;writer.wait(10);}try{live();}catch(Exception e){revoke();}}
+            if(cancelWorker!=null){cancelWorker.join();cancelWorker=null;}live();require(ownerReturned&&promptError==null);writer.host(request);signing.update(payload);signature=signing.sign();verifyOwner(false);
+        }
+        private void terminal(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result,Exception error){synchronized(writer){if(request.detached||writer.active!=request||!promptOutstanding){writer.unknown(request);return;}promptOutstanding=false;promptError=error;ownerReturned=result!=null&&result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL&&result.getCryptoObject()==crypto&&result.getCryptoObject().getSignature()==signing;if(!ownerReturned)cancelled=true;writer.notifyAll();}}
+        private byte[] message() throws Exception {require(original!=null&&nextBytes!=null&&keyEncoding!=null);String[] fields={"LP-LOCAL-V2-SDK-PIN-ROTATE",id,recover?"recover":"replace",writer.vault.vaultIdentity,digest(original),digest(nextBytes),request.policy.version,request.policy.checksum,Long.toString(request.policy.maximumIterations),Arrays.toString(request.policy.delays),locale,Long.toString(request.began),Long.toString(request.deadline),digest(keyEncoding)};
+            StringBuilder text=new StringBuilder();for(String field:fields)text.append(field.length()).append(':').append(field);return text.toString().getBytes(StandardCharsets.UTF_8);}
+        private void verifyOwner(boolean storageLocked) throws Exception {
+            if(storageLocked){writer.live(request);require(request.sdkRotation==this&&!cancelled);}else live();require(ownerReturned&&signature!=null&&signature.length>=8&&signature.length<=80&&uiJoined&&dialog==null&&worker==Thread.currentThread());
+            byte[] actual=message(),encoding=publicKey.getEncoded();try{require(MessageDigest.isEqual(actual,payload)&&MessageDigest.isEqual(encoding,keyEncoding));java.security.Signature verify=java.security.Signature.getInstance("SHA256withECDSA");verify.initVerify(publicKey);verify.update(payload);require(verify.verify(signature));}finally{LocalSnapshotV2.wipe(actual);LocalSnapshotV2.wipe(encoding);}
+        }
+        private void pending(File directory) throws Exception {
+            require(pendingBytes==null);verifyOwner(true);java.io.ByteArrayOutputStream bytes=new java.io.ByteArrayOutputStream();java.io.DataOutputStream out=new java.io.DataOutputStream(bytes);out.writeInt(0x4c505332);out.writeUTF(id);out.writeUTF(digest(original));out.writeUTF(digest(nextBytes));out.writeShort(payload.length);out.write(payload);out.writeShort(signature.length);out.write(signature);out.flush();pendingBytes=bytes.toByteArray();pendingDirectory=directory;
+            File file=new File(directory,"sdk-pin-pending-v2");SDKNativeChildFirstInstall.absent(file);FileDescriptor fd=Os.open(file.getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);try(FileOutputStream stream=new FileOutputStream(fd)){stream.write(pendingBytes);stream.getFD().sync();}SDKNativeChildFirstInstall.syncDirectory(directory);SDKNativeChildFirstInstall.markerReadback(file,pendingBytes);verifyOwner(true);
+        }
+        private void complete() throws Exception {
+            require(known&&finished&&worker!=null&&!worker.isAlive()&&settler==Thread.currentThread()&&cancelWorker==null&&uiJoined&&dialog==null&&ownerReturned&&!promptOutstanding&&!cancelled&&request.detached&&request.retiring&&!request.sealed&&request.receipt==null&&!request.unacknowledgedMutation&&request.pinWorkers==0&&request.workers==0&&request.mainCalls==0&&request.events==0);
+            writer.vault.locked(directory->{request.processClock.current(request.processLease);require(pendingDirectory.equals(directory)&&pendingBytes!=null);writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{require(MessageDigest.isEqual(actual,nextBytes));request.processClock.inspect(request.processLease,actual);SDKNativeChildFirstInstall.markerReadback(new File(directory,"sdk-pin-pending-v2"),pendingBytes);request.processClock.current(request.processLease);SDKNativeChildFirstInstall.removeMarkerLast(directory,new File(directory,"sdk-pin-pending-v2"),pendingBytes);return null;}finally{LocalSnapshotV2.wipe(actual);}});
+        }
+        private void retire(){try{worker.join();if(cancelWorker!=null){cancelWorker.join();cancelWorker=null;}if(known)writer.sdkRetireRotation(this);else writer.retire(request);}catch(Throwable error){failure=error instanceof Exception?(Exception)error:new Unavailable();writer.unknown(request);}
+            finally{LocalSnapshotV2.wipe(original);LocalSnapshotV2.wipe(nextBytes);LocalSnapshotV2.wipe(payload);LocalSnapshotV2.wipe(signature);LocalSnapshotV2.wipe(keyEncoding);LocalSnapshotV2.wipe(pendingBytes);synchronized(writer){request.sdkRotation=null;writer.notifyAll();}}}
+        private android.content.Context localeContext(){android.content.res.Configuration configuration=new android.content.res.Configuration(request.activity.getResources().getConfiguration());
+            configuration.setLocales(new android.os.LocaleList(java.util.Locale.forLanguageTag(locale)));return request.activity.createConfigurationContext(configuration);}
+        private String label(int resource){return localeContext().getString(resource);}
+        private int dp(int value){return Math.round(value*request.activity.getResources().getDisplayMetrics().density);}
+        private static void clear(android.view.View view){view.setSaveEnabled(false);view.setOnClickListener(null);view.setEnabled(false);
+            if(view instanceof android.view.ViewGroup){android.view.ViewGroup group=(android.view.ViewGroup)view;for(int i=0;i<group.getChildCount();i++)clear(group.getChildAt(i));}}
+        private android.widget.TextView text(android.content.Context context,int size){android.widget.TextView view=new android.widget.TextView(context);view.setSaveEnabled(false);view.setTextSize(size);view.setTextColor(0xffedf2fa);return view;}
+        private android.widget.Button button(android.content.Context context,String label,Runnable body){android.widget.Button button=new android.widget.Button(context);button.setText(label);button.setSaveEnabled(false);
+            button.setFilterTouchesWhenObscured(true);button.setOnTouchListener((v,event)->{if((event.getFlags()&(android.view.MotionEvent.FLAG_WINDOW_IS_OBSCURED|android.view.MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED))!=0){inputCancel();return true;}return false;});
+            button.setOnClickListener(view->{try{live();require(dialog!=null&&shown&&dialog.isShowing()&&dialog.getWindow()!=null
+                    &&dialog.getWindow().getAttributes().token==request.token&&dialog.getWindow().getDecorView().hasWindowFocus()
+                    &&request.activity.getWindow().getDecorView().getWindowToken()==request.token);body.run();}catch(Exception denied){inputCancel();}});return button;}
+        private void input() throws Exception {
+            originalReadback();phase=LocalV2PinPhase.input;writer.onMain(request,this::presentInput,false);
+            for(;;){synchronized(writer){if(ready||cancelled||request.cancelled)break;writer.wait(25);}try{live();}catch(Exception failure){inputCancel();}}
+            cleanupInput();live();require(ready&&entered!=null&&entered.length>0&&uiJoined);
+        }
+        private void showNativeProfileTarget(android.content.Context ui,android.widget.LinearLayout content) throws Exception {
+            if(gate==null||!"expand-access-settings".equals(gate.action)||!(gate.originalHostChallenge instanceof LocalV2GateInvocation))return;
+            LocalV2GateInvocation invocation=(LocalV2GateInvocation)gate.originalHostChallenge;require(invocation.original==gate&&invocation.scope!=null&&digest(invocation.target).equals(gate.targetChecksum));
+            java.util.Map<String,Object> value=LocalV2PackageJson.object(LocalV2PackageJson.read(invocation.target,65536));org.json.JSONObject profile=null;boolean creation=value.containsKey("createProfile"),ru="ru".equals(locale);
+            if(creation){LocalV2PackageJson.object(value,"createProfile");require(invocation.generatedProfileId!=null);profile=new org.json.JSONObject(LocalV2PackageJson.json(value.get("createProfile"),false));require(profile.getString("id").equals(invocation.generatedProfileId));}
+            else if(value.containsKey("profileId")){LocalV2PackageJson.object(value,"profileId");String id=LocalV2PackageJson.identifier(value.get("profileId"));org.json.JSONArray profiles=new org.json.JSONObject(new String(original,StandardCharsets.UTF_8)).getJSONObject("protectedRecord").getJSONObject("registry").getJSONArray("profiles");
+                for(int i=0;i<profiles.length();i++){org.json.JSONObject candidate=profiles.getJSONObject(i);if(id.equals(candidate.getString("id"))){require(profile==null);profile=candidate;}}require(profile!=null);}
+            else return;
+            android.widget.TextView purpose=text(ui,16);purpose.setText(creation?(ru?"Подтвердите дополнительный локальный профиль и детский режим":"Confirm the additional local profile and child mode"):(ru?"Подтвердите выбранный детский профиль":"Confirm the selected child profile"));content.addView(purpose);
+            String[][] fields={{"label","Имя","Label"},{"exactAge","Точный возраст","Exact age"},{"ageBand","Возрастная группа","Age band"},{"locale","Язык","Language"},{"ageConfirmedAt","Подтверждение возраста","Age confirmation"},
+                {"readingLevel","Уровень чтения","Reading level"},{"allowedTopics","Разрешённые темы","Allowed topics"},{"blockedTopics","Закрытые темы","Blocked topics"},{"soundEnabled","Звук","Sound"},{"motion","Движение","Motion"},{"narrationEnabled","Озвучивание","Narration"},{"localeLocked","Фиксация языка","Language lock"}};
+            for(String[] field:fields){android.widget.TextView row=text(ui,14);row.setText(field[ru?1:2]+": "+LocalV2ProfileOperation.confirmationValue(profile,field[0],ru));content.addView(row);}
+        }
+        private void presentInput(){try{live();android.content.Context ui=localeContext();dialog=new android.app.Dialog(request.activity);dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(false);
+                android.widget.LinearLayout content=new android.widget.LinearLayout(ui);content.setOrientation(android.widget.LinearLayout.VERTICAL);content.setPadding(dp(16),dp(16),dp(16),dp(16));content.setSaveEnabled(false);
+                dialog.setOwnerActivity(request.activity);content.setFilterTouchesWhenObscured(true);if(android.os.Build.VERSION.SDK_INT>=26)content.setImportantForAutofill(android.view.View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS);
+                android.graphics.drawable.GradientDrawable panel=new android.graphics.drawable.GradientDrawable();panel.setColor(0xff101827);panel.setCornerRadius(dp(22));content.setBackground(panel);
+                android.widget.TextView title=text(ui,22);title.setText(label(R.string.native_pin_title));content.addView(title);
+                if(gate!=null){android.widget.TextView actionLabel=text(ui,14);actionLabel.setText(label(PinVerificationNativeInput.actionResource(gate.action)));content.addView(actionLabel);showNativeProfileTarget(ui,content);}
+                subtitle=text(ui,16);content.addView(subtitle);mask=text(ui,26);mask.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO);content.addView(mask);count=text(ui,14);content.addView(count);
+                keypad=new android.widget.LinearLayout(ui);keypad.setOrientation(android.widget.LinearLayout.VERTICAL);content.addView(keypad);
+                for(int[] row:new int[][]{{1,2,3},{4,5,6},{7,8,9}}){android.widget.LinearLayout line=new android.widget.LinearLayout(ui);for(int digit:row)line.addView(button(ui,Integer.toString(digit),()->digit(digit)),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));keypad.addView(line);}
+                android.widget.LinearLayout bottom=new android.widget.LinearLayout(ui);bottom.addView(button(ui,label(R.string.native_pin_delete),this::backspace),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));
+                bottom.addView(button(ui,"0",()->digit(0)),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));bottom.addView(button(ui,label(R.string.native_pin_cancel),this::inputCancel),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));keypad.addView(bottom);
+                next=button(ui,label(R.string.native_pin_continue),this::acceptInput);content.addView(next);android.widget.ScrollView scroll=new android.widget.ScrollView(ui){public boolean onFilterTouchEventForSecurity(android.view.MotionEvent event){
+                    if((event.getFlags()&(android.view.MotionEvent.FLAG_WINDOW_IS_OBSCURED|android.view.MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED))!=0){inputCancel();return false;}return super.onFilterTouchEventForSecurity(event);}};
+                scroll.setSaveEnabled(false);scroll.setFilterTouchesWhenObscured(true);scroll.addView(content);dialog.setContentView(scroll);require(dialog.getWindow()!=null);
+                dialog.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);dialog.getWindow().getAttributes().token=request.token;
+                dialog.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);dialog.setOnCancelListener(d->inputCancel());
+                dialog.setOnDismissListener(d->{synchronized(writer){request.events++;}try{synchronized(writer){if(!ready)cancelled=true;shown=false;uiJoined=true;}}
+                    finally{synchronized(writer){request.events--;writer.notifyAll();}}});
+                accepting=true;render();dialog.show();shown=true;dialog.getWindow().setLayout(Math.min(dp(360),request.activity.getResources().getDisplayMetrics().widthPixels-dp(32)),Math.min(dp(680),request.activity.getResources().getDisplayMetrics().heightPixels-dp(64)));
+                focusObserver=focused->{if(focused)everFocused=true;else if(everFocused&&shown)inputCancel();};dialog.getWindow().getDecorView().getViewTreeObserver().addOnWindowFocusChangeListener(focusObserver);
+                everFocused=dialog.getWindow().getDecorView().hasWindowFocus();
+            }catch(Exception failure){inputCancel();}}
+        private void digit(int value){synchronized(writer){if(!accepting||cancelled||length>=128||value<0||value>9)return;edit[length++]=(byte)(48+value);}render();}
+        private void backspace(){synchronized(writer){if(!accepting||cancelled||length==0)return;edit[--length]=0;}render();}
+        private void render(){int amount,current;synchronized(writer){amount=length;current=stage;}subtitle.setText(kind==LocalV2PinKind.verify ? ("ru".equals(locale)?"Текущий родительский PIN":"Current Parent PIN") : label(current==0?R.string.native_pin_fresh:R.string.native_pin_confirmation));
+            char[] bullets=new char[Math.min(amount,12)];Arrays.fill(bullets,'\u2022');mask.setText(new String(bullets));Arrays.fill(bullets,'\0');count.setText(localeContext().getString(R.string.native_pin_count,amount));next.setEnabled(amount>=(kind==LocalV2PinKind.enroll?4:1)&&amount<=128);}
+        private void acceptInput(){synchronized(writer){if(!accepting||cancelled||length<(kind==LocalV2PinKind.enroll?4:1))return;
+                if(kind==LocalV2PinKind.enroll&&stage==0){first=Arrays.copyOf(edit,length);LocalSnapshotV2.wipe(edit);length=0;stage=1;}
+                else{byte[] candidate=Arrays.copyOf(edit,length);LocalSnapshotV2.wipe(edit);length=0;if(kind==LocalV2PinKind.enroll&&!MessageDigest.isEqual(first,candidate)){
+                        LocalSnapshotV2.wipe(first);LocalSnapshotV2.wipe(candidate);first=null;stage=0;subtitle.announceForAccessibility(label(R.string.native_pin_mismatch));}
+                    else{entered=candidate;ready=true;accepting=false;writer.notifyAll();}}}if(!ready)render();}
+        private void inputCancel(){synchronized(writer){if(finished||request.detached||writer.active!=request)return;cancelled=true;accepting=false;LocalSnapshotV2.wipe(edit);length=0;writer.notifyAll();}revoke();}
+        private void cleanupInput() throws Exception {
+            writer.onMain(request,()->{accepting=false;LocalSnapshotV2.wipe(edit);length=0;if(mask!=null)mask.setText("");if(count!=null)count.setText("");if(keypad!=null)clear(keypad);if(next!=null)clear(next);
+                if(dialog!=null){dialog.setOnCancelListener(null);if(focusObserver!=null&&dialog.getWindow()!=null){android.view.ViewTreeObserver observer=dialog.getWindow().getDecorView().getViewTreeObserver();
+                        if(observer.isAlive())observer.removeOnWindowFocusChangeListener(focusObserver);focusObserver=null;}if(shown)dialog.dismiss();else uiJoined=true;}
+                else uiJoined=true;},true);
+            synchronized(writer){while(!uiJoined||request.mainCalls>0||request.events>0)writer.wait(10);}
+            // OnDismiss can be an accepted queued main callback. Only detach
+            // references after that original callback actually returned.
+            writer.onMain(request,()->{if(dialog!=null)dialog.setOnDismissListener(null);dialog=null;subtitle=null;mask=null;count=null;next=null;keypad=null;},true);
+        }
+        private static String hex(byte[] bytes){StringBuilder out=new StringBuilder(bytes.length*2);for(byte b:bytes){out.append("0123456789abcdef".charAt((b>>>4)&15));out.append("0123456789abcdef".charAt(b&15));}return out.toString();}
+    }
+
+
+    private interface LocalV2SDKCommand {Object run(LocalV2OwnedPackageDelivery original) throws Exception;}
+    /** Commands execute on the ORIGINAL loader worker, whose original delivery
+     * remains retained. Queue admission is correlation data, not a capability. */
+    private static final class LocalV2SDKChannel {
+        private static final class Command {final LocalV2SDKCommand body;final String id=LocalV2AppOwner.random(16);Object value;Exception failure;boolean done,running,returned,collectionKnown,resultClosed,collectionJoined;Command(LocalV2SDKCommand body){this.body=body;}}
+        private final java.util.ArrayDeque<Command> commands=new java.util.ArrayDeque<>();private LocalV2OwnedPackageDelivery delivery;private boolean closing,ended;private Exception failure;
+        private synchronized void failed(Throwable error){failure=error instanceof Exception?(Exception)error:new Unavailable();closing=true;ended=true;for(Command c:commands){c.failure=failure;c.done=true;}commands.clear();notifyAll();}
+        private void serve(LocalV2OwnedPackageDelivery original) throws Exception {
+            synchronized(this){require(delivery==null&&!closing);original.fence();delivery=original;notifyAll();}
+            try{for(;;){Command command;synchronized(this){while(commands.isEmpty()&&!closing){long remaining=original.owner.request.deadline-SystemClock.elapsedRealtime();if(remaining<=0)throw new PinKnownRefusal();wait(Math.min(10,remaining));}if(closing)break;command=commands.removeFirst();}
+                try{original.fence();require(original.sdkCommand==null);original.sdkCommand=command;command.running=true;Object value=command.body.run(original);command.returned=true;original.fence();original.data.sdkCompleteCommand(command);original.fence();command.running=false;original.sdkCommand=null;synchronized(this){require(!closing);command.value=value;command.done=true;notifyAll();}}
+                catch(Throwable error){synchronized(this){command.failure=error instanceof Exception?(Exception)error:new Unavailable();command.done=true;notifyAll();}throw error;}}
+            }finally{synchronized(this){ended=true;for(Command c:commands){c.failure=new PinKnownRefusal();c.done=true;}commands.clear();notifyAll();}}
+        }
+        private synchronized LocalV2OwnedPackageDelivery ready(long deadline) throws Exception {while(delivery==null&&!ended&&!closing){long left=deadline-SystemClock.elapsedRealtime();if(left<=0)throw new PinKnownRefusal();wait(Math.min(10,left));}if(failure!=null)throw failure;require(delivery!=null&&!closing&&!ended);return delivery;}
+        private Object invoke(LocalV2SDKCommand body) throws Exception {Command c=new Command(body);synchronized(this){require(delivery!=null&&!closing&&!ended&&commands.size()<64);commands.addLast(c);notifyAll();while(!c.done&&!ended)wait(10);if(c.failure!=null)throw c.failure;if(failure!=null)throw failure;require(c.done&&!closing);return c.value;}}
+        private synchronized void close(){closing=true;notifyAll();}
+    }
+    /** Native sibling of WebView owns an opaque cover and genuine action
+     * controls. Route/control identity and original lifecycle are native facts. */
+    static final class LocalV2AppOwner {
+        interface Reply {void complete(java.util.Map<String,Object> value);}
+        interface Invalidated {void receive(java.util.Map<String,Object> value);}
+        final PlanetChildVault vault;final android.app.Activity activity;final LocalSnapshotV2Policy policy;
+        private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
+        private final java.util.concurrent.ExecutorService io=java.util.concurrent.Executors.newSingleThreadExecutor(r->new Thread(r,"planet-child-local-sdk"));
+        private final Invalidated invalidated;private final java.util.HashSet<String> seen=new java.util.HashSet<>();
+        private android.widget.FrameLayout surface;private android.view.View cover;private android.widget.LinearLayout controls;private android.os.IBinder window;
+        private android.app.Application.ActivityLifecycleCallbacks lifecycle;private android.content.BroadcastReceiver screen;
+        private android.view.View.OnAttachStateChangeListener attachment;private androidx.activity.OnBackPressedCallback back;private Runnable expiry;
+        private volatile boolean sealed,busy,disposed;private long generation;private Context context;
+        private LocalV2Writer reader;private LocalV2Request readRequest;private LocalV2NativePackageLoader loader;private LocalV2SDKChannel channel;
+        private LocalV2GateHost gate;private LocalV2ProfileOperation profile;private LocalV2PinOperation enrollment;private LocalV2SDKPinRotation rotation;
+        private SDKNativeChildFirstInstall install;private SDKFirstInstallRequest installRequest;
+        private static final class Context {
+            final String token,checksum,status;final long generation,deadline;final java.util.Map<String,Object> metadata;final java.util.List<Object> profiles;
+            Context(String token,String checksum,String status,long generation,long deadline,java.util.Map<String,Object> metadata,java.util.List<Object> profiles){this.token=token;this.checksum=checksum;this.status=status;this.generation=generation;this.deadline=deadline;this.metadata=metadata;this.profiles=profiles;}
+        }
+        private LocalV2AppOwner(android.app.Activity activity,Invalidated invalidated) throws Exception {require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&activity!=null&&activity.getClass()==MainActivity.class&&invalidated!=null);this.activity=activity;this.invalidated=invalidated;vault=new PlanetChildVault(activity);policy=LocalV2AppPolicy.policy();}
+        private static java.util.Map<String,Object> map(Object... pairs){java.util.LinkedHashMap<String,Object> row=new java.util.LinkedHashMap<>();for(int i=0;i<pairs.length;i+=2)row.put((String)pairs[i],pairs[i+1]);return row;}
+        private static String random(int bytes){byte[] value=new byte[bytes];try{new java.security.SecureRandom().nextBytes(value);return LocalV2PinOperation.hex(value);}finally{LocalSnapshotV2.wipe(value);}}
+        private <T>T main(java.util.concurrent.Callable<T> body) throws Exception {if(android.os.Looper.myLooper()==android.os.Looper.getMainLooper())return body.call();java.util.concurrent.FutureTask<T> task=new java.util.concurrent.FutureTask<>(body);require(main.post(task));boolean interrupted=false;try{for(;;)try{return task.get();}catch(InterruptedException e){interrupted=true;}}finally{if(interrupted)Thread.currentThread().interrupt();}}
+        private void attach() throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&!disposed&&!activity.isFinishing()&&!activity.isDestroyed()&&activity.hasWindowFocus());
+            android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
+            if(surface!=null){require(window==token&&surface.getWindowToken()==token&&surface.getRootView()==activity.getWindow().getDecorView());return;}
+            window=token;android.view.View parent=activity.findViewById(android.R.id.content);require(parent instanceof android.view.ViewGroup&&!(parent instanceof android.webkit.WebView));
+            surface=new android.widget.FrameLayout(activity);surface.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO);surface.setClickable(false);
+            cover=new android.view.View(activity);cover.setBackgroundColor(android.graphics.Color.rgb(6,15,30));cover.setClickable(true);
+            surface.addView(cover,new android.widget.FrameLayout.LayoutParams(-1,-1));
+            controls=new android.widget.LinearLayout(activity);controls.setOrientation(android.widget.LinearLayout.VERTICAL);controls.setPadding(28,28,28,28);controls.setBackgroundColor(android.graphics.Color.rgb(6,15,30));
+            android.widget.FrameLayout.LayoutParams cp=new android.widget.FrameLayout.LayoutParams(-1,-2,android.view.Gravity.CENTER);surface.addView(controls,cp);controls.setVisibility(android.view.View.GONE);
+            ((android.view.ViewGroup)parent).addView(surface,new android.view.ViewGroup.LayoutParams(-1,-1));
+            lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}public void onActivityStarted(android.app.Activity a){}public void onActivityResumed(android.app.Activity a){}
+                public void onActivityPaused(android.app.Activity a){if(a==activity&&!ownedPrompt())invalidate("cancelled");}public void onActivityStopped(android.app.Activity a){if(a==activity)invalidate("cancelled");}
+                public void onActivityDestroyed(android.app.Activity a){if(a==activity)dispose();}public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}};
+            activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);
+            screen=new android.content.BroadcastReceiver(){public void onReceive(android.content.Context c,android.content.Intent i){invalidate("cancelled");}};android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
+            if(android.os.Build.VERSION.SDK_INT>=33)activity.registerReceiver(screen,filter,android.content.Context.RECEIVER_NOT_EXPORTED);else activity.registerReceiver(screen,filter);
+            attachment=new android.view.View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(android.view.View v){}public void onViewDetachedFromWindow(android.view.View v){invalidate("cancelled");}};surface.addOnAttachStateChangeListener(attachment);
+            back=new androidx.activity.OnBackPressedCallback(true){public void handleOnBackPressed(){invalidate("cancelled");}};((MainActivity)activity).getOnBackPressedDispatcher().addCallback((MainActivity)activity,back);
+        }
+        private boolean ownedPrompt(){return installRequest!=null&&installRequest.promptOutstanding&&!installRequest.credentialReturned&&!installRequest.cancelled
+            ||enrollment!=null&&enrollment.ownedOwnerPause()||profile!=null&&profile.ownedOwnerPause()||rotation!=null&&rotation.ownedPrompt();}
+        private void cover() throws Exception {main(()->{if(surface!=null){cover.setVisibility(android.view.View.VISIBLE);controls.setVisibility(android.view.View.GONE);surface.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);}if(expiry!=null)main.removeCallbacks(expiry);return null;});}
+        private void reveal() throws Exception {main(()->{require(surface!=null&&!disposed&&!sealed);controls.removeAllViews();controls.setVisibility(android.view.View.GONE);cover.setVisibility(android.view.View.GONE);surface.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO);return null;});}
+        private android.widget.Button arm(String caption,Runnable action) throws Exception {require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());cover.setVisibility(android.view.View.VISIBLE);controls.removeAllViews();controls.setVisibility(android.view.View.VISIBLE);surface.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_AUTO);
+            android.widget.TextView label=new android.widget.TextView(activity);label.setText(caption);label.setTextColor(android.graphics.Color.WHITE);label.setTextSize(20);controls.addView(label);
+            android.widget.Button button=new android.widget.Button(activity);button.setText(caption);button.setMinHeight(48);controls.addView(button);if(action!=null)button.setOnClickListener(v->action.run());return button;}
+        private void live(long deadline) throws Exception {require(!sealed&&!disposed&&SystemClock.elapsedRealtime()<deadline&&deadline-SystemClock.elapsedRealtime()<=60000);}
+        private synchronized Context current(String token) throws Exception {require(!sealed&&!disposed&&context!=null&&context.token.equals(token));live(context.deadline);return context;}
+        private static java.util.Map<String,Object> unavailable(String id,String reason){return map("version",2L,"requestId",id,"status","unavailable","reason",reason,"context",null,"profiles",java.util.Collections.emptyList());}
+        private java.util.Map<String,Object> refusal(PlanetChildDataTransport.V2Request request,String reason){
+            if("retire".equals(request.method))return map("version",2L,"requestId",request.id,"status","unavailable","contextToken",request.contextToken);
+            if(java.util.Arrays.asList("readEntity","search","readCollection","writeCollection").contains(request.method)){
+                Context active;synchronized(this){active=context;}
+                return map("version",2L,"requestId",request.id,"status","unavailable","contextToken",request.contextToken,"generation",active==null?generation:active.generation,"value",null);
+            }
+            return unavailable(request.id,reason);
+        }
+        void execute(PlanetChildDataTransport.V2Request request,Reply reply){
+            boolean accepted;synchronized(this){accepted=!disposed&&!busy&&!sealed&&seen.size()<2048&&seen.add(request.id);if(accepted)busy=true;}
+            if(!accepted){reply.complete(refusal(request,"pending"));return;}
+            io.execute(()->{try{reply.complete(dispatch(request));}
+                catch(Throwable failure){try{cover();synchronized(this){context=null;}joinOwners();if(failure instanceof PinKnownRefusal&&"perform".equals(request.method)&&!sealed)reply.complete(bootstrap(request.id,0,"cancelled"));else reply.complete(refusal(request,sealed?"pending":failure instanceof PinKnownRefusal?"expired":"unavailable"));}
+                    catch(Throwable cleanup){sealed=true;reply.complete(refusal(request,"pending"));}}
+                finally{synchronized(this){busy=false;}}});
+        }
+        private java.util.Map<String,Object> dispatch(PlanetChildDataTransport.V2Request r) throws Exception {
+            main(()->{attach();return null;});
+            if("bootstrap".equals(r.method)){synchronized(this){require(context==null);}return bootstrap(r.id,0,null);}
+            if("retire".equals(r.method)){Context old;synchronized(this){old=context;if(r.contextToken!=null)require(old!=null&&old.token.equals(r.contextToken));context=null;}cover();joinOwners();return map("version",2L,"requestId",r.id,"status","retired","contextToken",r.contextToken);}
+            if("readContext".equals(r.method)){Context c=current(r.contextToken);fresh(c);return response(r.id,c,null);}
+            if("perform".equals(r.method))return perform(r);
+            Context c=current(r.contextToken);require("child".equals(c.status)&&channel!=null);Object value=channel.invoke(delivery->{original(c,delivery);Object out=LocalV2SDKData.perform(r,delivery);original(c,delivery);return out;});
+            fresh(c);return map("version",2L,"requestId",r.id,"status","ok","contextToken",c.token,"generation",c.generation,"value",value);
+        }
+        private void original(Context c,LocalV2OwnedPackageDelivery delivery) throws Exception {current(c.token);require(loader==delivery.owner&&delivery.owner.request.deadline==c.deadline&&delivery.compiled.profile.recordChecksum.equals(c.checksum));delivery.fence();}
+        private void fresh(Context c) throws Exception {live(c.deadline);if(channel!=null)channel.invoke(delivery->{original(c,delivery);return null;});else{require(reader!=null&&readRequest!=null);byte[] actual=reader.sdkRead(readRequest);try{require(digest(actual).equals(c.checksum));}finally{LocalSnapshotV2.wipe(actual);}}}
+        private java.util.Map<String,Object> response(String id,Context c,String reason) throws Exception {live(c.deadline);java.util.Map<String,Object> m=new java.util.LinkedHashMap<>(c.metadata);m.put("remainingLifetimeMs",Math.max(1,c.deadline-SystemClock.elapsedRealtime()));return map("version",2L,"requestId",id,"status",c.status,"reason",reason==null&&"blocked-child".equals(c.status)?"missing-pins":reason,"context",m,"profiles",c.profiles);}
+        private java.util.Map<String,Object> bootstrap(String id,long deadline,String reason) throws Exception {
+            cover();joinOwners();main(()->{attach();return null;});
+            boolean absence=vault.locked(directory->{KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);try{new SDKNativeChildFirstInstall(vault,SystemClock.elapsedRealtime()+30000).empty(directory,keys);return true;}catch(Exception present){return false;}});
+            if(absence){synchronized(this){context=null;}reveal();return map("version",2L,"requestId",id,"status","first-install-required","reason",null,"context",null,"profiles",java.util.Collections.emptyList());}
+            vault.locked(directory->{SDKInstallTerminal.known(vault,directory,policy);return null;});
+            reader=new LocalV2Writer(vault);readRequest=main(()->reader.requestAt(activity,policy,deadline==0?30000:0,deadline));long originalDeadline=readRequest.deadline;
+            byte[] actual=reader.sdkOpen(readRequest);try{
+                java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(actual,MAX_BYTES)),record;boolean seed;
+                try(LocalEmptySeedV2 s=LocalEmptySeedV2.decode(actual,policy.version,policy.checksum)){seed=true;record=root;}catch(Exception enrolled){seed=false;try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,policy)){record=LocalV2PackageJson.object(root.get("protectedRecord"));}}
+                java.util.Map<String,Object> registry=LocalV2PackageJson.object(record.get("registry"));java.util.List<Object> profiles=new java.util.ArrayList<>();String locale=java.util.Locale.getDefault().getLanguage().equals("ru")?"ru":"en";String selected=registry.get("activeProfileId")==null?null:LocalV2PackageJson.identifier(registry.get("activeProfileId"));
+                for(Object row:LocalV2PackageJson.array(registry.get("profiles"),4)){java.util.Map<String,Object> p=LocalV2PackageJson.object(row);String uid=LocalV2PackageJson.identifier(p.get("id"));profiles.add(map("id",uid,"label",LocalV2PackageJson.text(p.get("label")),"exactAge",LocalV2PackageJson.number(p.get("exactAge"),3,17),"locale",p.get("locale")));if(uid.equals(selected))locale=LocalV2PackageJson.text(p.get("locale"));}
+                String mode=LocalV2PackageJson.text(record.get("mode")),status=seed?"unenrolled":mode;require("adult".equals(mode)||"child".equals(mode)&&selected!=null);
+                reader.sdkInspectData(readRequest,actual);
+                LocalV2CompiledPackage compiled=null;
+                if("child".equals(status)){
+                    boolean missing=reader.sdkCatalogMissingPins(readRequest);
+                    if(missing)status="blocked-child";
+                    else{
+                        LocalV2SDKPackageHandoff handoff=reader.sdkPackageHandoff(readRequest,actual);channel=new LocalV2SDKChannel();LocalV2SDKChannel originalChannel=channel;
+                        loader=main(()->new LocalV2NativePackageLoader(vault,activity,surface,policy,0,originalDeadline,originalChannel::serve,error->{originalChannel.failed(error);invalidate(error instanceof PinKnownRefusal?"expired":"unavailable");},handoff));
+                        reader=null;readRequest=null;
+                        main(()->{loader.start();return null;});LocalV2OwnedPackageDelivery delivery=channel.ready(originalDeadline);compiled=delivery.compiled;require(compiled.profile.recordChecksum.equals(digest(actual)));
+                    }
+                }
+                String token=random(16);long sequence;synchronized(this){require(generation<MAX_SAFE&&!sealed);sequence=++generation;}
+                java.util.Map<String,Object> metadata=map("token",token,"generation",sequence,"revision",LocalV2PackageJson.number(record.get("revision"),1,MAX_SAFE),"selectionRevision",LocalV2PackageJson.number(record.get("selectionRevision"),1,MAX_SAFE),"profileRevision",LocalV2PackageJson.number(record.get("profileRevision"),1,MAX_SAFE),"policyVersion",policy.version,"policyChecksum",policy.checksum,"mode",mode,"profileId",selected,"locale",locale,"package",compiled==null?null:map("id",compiled.packageId,"version",compiled.version,"checksum",compiled.checksum),"home",compiled==null?null:LocalV2AdmittedEnvelope.reference(compiled,compiled.home,System.currentTimeMillis()));
+                Context c=new Context(token,digest(actual),status,sequence,originalDeadline,metadata,profiles);synchronized(this){context=c;}reveal();main(()->{expiry=()->invalidate("expired");require(main.postDelayed(expiry,Math.max(1,c.deadline-SystemClock.elapsedRealtime())));return null;});return response(id,c,reason);
+            }finally{LocalSnapshotV2.wipe(actual);}
+        }
+        private java.util.Map<String,Object> perform(PlanetChildDataTransport.V2Request r) throws Exception {
+            String action=r.action;Context prior="first-install".equals(action)?null:current(r.contextToken);if(prior!=null)fresh(prior);
+            long deadline=prior==null?SystemClock.elapsedRealtime()+30000:prior.deadline;cover();synchronized(this){context=null;}joinOwners();live(deadline);
+            if("first-install".equals(action)){require(r.contextToken==null);firstInstall(deadline,r.target);}
+            else if("enroll-pin".equals(action)){require("unenrolled".equals(prior.status));enroll(deadline,(String)prior.metadata.get("locale"));}
+            else if("replace-pin".equals(action)||"recover-pin".equals(action)){require(!"unenrolled".equals(prior.status));rotation=main(()->new LocalV2SDKPinRotation(vault,activity,policy,deadline,"recover-pin".equals(action),(String)prior.metadata.get("locale")));rotation.runJoined();rotation=null;}
+            else if("create-profile".equals(action)&&prior.profiles.isEmpty()){require("adult".equals(prior.status));byte[] proposal=LocalV2AppProfileDraft.initial(r.target);try{profile=main(()->LocalV2ProfileOperation.startAt(vault,activity,policy,proposal,deadline,original->{}));profile.sdkJoin();profile=null;}finally{LocalSnapshotV2.wipe(proposal);}}
+            else{
+                String name=action;byte[] target=r.target==null?new byte[0]:LocalV2PackageJson.bytes(r.target,false);
+                try{
+                    if("create-profile".equals(action)){LocalSnapshotV2.wipe(target);target=LocalV2AppProfileDraft.additional(r.target);name="expand-access-settings";}
+                    else if("enter-child".equals(action)){LocalV2AppProfileDraft.exact(r.target,"profileId");name="expand-access-settings";}
+                    else if("change-exact-age".equals(action)||"change-blocked-topics".equals(action)||"expand-access-settings".equals(action)&&r.target!=null&&r.target.containsKey("changes")){byte[] before=vault.locked(directory->vault.readExact(directory));try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(before,policy)){LocalSnapshotV2.wipe(target);target=LocalV2AppProfileDraft.settings(saved,action,r.target);}finally{LocalSnapshotV2.wipe(before);}}
+                    final String originalAction=name;final byte[] originalTarget=target;java.util.concurrent.atomic.AtomicBoolean unsupported=new java.util.concurrent.atomic.AtomicBoolean();
+                    gate=main(()->{android.widget.Button control=arm(actionCaption(originalAction,(String)prior.metadata.get("locale")),null);return new LocalV2GateHost(vault,activity,surface,control,policy,originalAction,originalTarget,1,1,deadline,(a,b)->{if(!LocalV2CanonicalTransition.handles(a)){unsupported.set(true);throw new PinKnownRefusal();}/* Preserve the original native control until sdkJoin has detached every Gate observer. */});});
+                    gate.sdkAwait(deadline);gate.sdkJoin();gate=null;if(unsupported.get())return bootstrap(r.id,deadline,"unsupported");
+                }finally{LocalSnapshotV2.wipe(target);}
+            }
+            return bootstrap(r.id,deadline,null);
+        }
+        private void firstInstall(long deadline,java.util.Map<String,Object> target) throws Exception {
+            require(target==null);String locale="ru".equals(java.util.Locale.getDefault().getLanguage())?"ru":"en";install=new SDKNativeChildFirstInstall(vault,deadline);
+            java.util.concurrent.CountDownLatch pressed=new java.util.concurrent.CountDownLatch(1);java.util.concurrent.atomic.AtomicReference<Exception> failure=new java.util.concurrent.atomic.AtomicReference<>();
+            main(()->{arm("ru".equals(locale)?"Создать локальный профиль родителя":"Set up local parent access",()->{try{installRequest=install.request(activity,locale,policy.version,policy.checksum,Math.max(1,deadline-SystemClock.elapsedRealtime()));}catch(Exception e){failure.set(e);}finally{pressed.countDown();}});return null;});
+            while(!pressed.await(10,java.util.concurrent.TimeUnit.MILLISECONDS))live(deadline);if(failure.get()!=null)throw failure.get();require(installRequest!=null);SDKFirstInstallReceipt[] receipt={null};
+            install.authenticate(installRequest,value->{require(value!=null&&value.request==installRequest);receipt[0]=value;});installRequest.worker.join();require(receipt[0]!=null);install.settle(receipt[0],PinReplyDelivery.known);install.retire(installRequest);install=null;installRequest=null;
+        }
+        private void enroll(long deadline,String locale) throws Exception {
+            LocalV2Writer writer=new LocalV2Writer(vault);LocalV2Request request=main(()->writer.requestAt(activity,policy,0,deadline));enrollment=writer.enrollmentOperation(request,new Object(),random(32),generation+1,locale,600000);
+            LocalV2PinReply[] result={null};enrollment.start(reply->{require(reply!=null);result[0]=reply;});enrollment.worker.join();enrollment.joinCancel();require(result[0]!=null);enrollment.settle(result[0],PinReplyDelivery.known);require(enrollment.knownSettlement&&enrollment.request.retired&&!enrollment.request.sealed);enrollment=null;
+        }
+        private void joinOwners() throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            if(reader!=null&&readRequest!=null&&readRequest.sdkPackageLoader!=null){loader=readRequest.sdkPackageLoader;reader=null;readRequest=null;}if(channel!=null)channel.close();if(loader!=null){LocalV2NativePackageLoader old=loader;main(()->{old.close();return null;});old.sdkJoin();loader=null;channel=null;}
+            if(reader!=null){reader.retire(readRequest);reader=null;readRequest=null;}
+            if(gate!=null){LocalV2GateHost old=gate;main(()->{old.close();return null;});old.sdkCleanupJoined();gate=null;}
+            if(profile!=null){profile.revoke();profile.sdkCleanupJoined();profile=null;}
+            if(rotation!=null){rotation.revoke();rotation.joinedCleanup();rotation=null;}
+            if(enrollment!=null){LocalV2PinOperation old=enrollment;old.revoke();if(old.worker!=null)old.worker.join();old.joinCancel();if(old.reply!=null&&!old.reply.settled)old.settle(old.reply,PinReplyDelivery.uncertain);else if(!old.request.retired)old.writer.retire(old.request);require(!old.request.sealed);enrollment=null;}
+            if(installRequest!=null&&!installRequest.retired){install.cancel(installRequest);if(installRequest.worker!=null)installRequest.worker.join();if(installRequest.receipt!=null&&!installRequest.receipt.settled)install.settle(installRequest.receipt,PinReplyDelivery.uncertain);install.retire(installRequest);install=null;installRequest=null;}
+        }
+        void invalidate(String reason){if(!java.util.Arrays.asList("cancelled","expired","unavailable","pending","corrupt").contains(reason))reason="unavailable";
+            Context old;synchronized(this){old=context;context=null;sealed=true;}try{cover();}catch(Exception failure){sealed=true;}
+            if(channel!=null)channel.close();if(loader!=null)loader.revoke();if(gate!=null)gate.revoke();if(profile!=null)profile.revoke();if(rotation!=null)rotation.revoke();if(enrollment!=null)enrollment.revoke();if(installRequest!=null)install.cancel(installRequest);if(reader!=null)try{reader.cancel(readRequest);}catch(Exception failure){reader.unknown(readRequest);}
+            invalidated.receive(map("version",2L,"contextToken",old==null?null:old.token,"generation",old==null?generation:old.generation,"reason",reason));
+            io.execute(()->{try{joinOwners();synchronized(this){if(!disposed)sealed=false;}}catch(Throwable failure){sealed=true;}});
+        }
+        private String actionCaption(String action,String locale) throws Exception {android.content.res.Configuration config=new android.content.res.Configuration(activity.getResources().getConfiguration());config.setLocales(new android.os.LocaleList(java.util.Locale.forLanguageTag(locale)));return activity.createConfigurationContext(config).getString(PinVerificationNativeInput.actionResource(action));}
+        void hostPaused(){if(!ownedPrompt())invalidate("cancelled");}void hostStopped(){invalidate("cancelled");}void nativeRouteInput(){invalidate("cancelled");}void destroy(){dispose();}
+        void dispose(){synchronized(this){if(disposed)return;disposed=true;}invalidate("cancelled");io.execute(()->{try{joinOwners();main(()->{if(expiry!=null)main.removeCallbacks(expiry);if(back!=null)back.remove();if(screen!=null)activity.unregisterReceiver(screen);if(lifecycle!=null)activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);if(surface!=null){surface.removeOnAttachStateChangeListener(attachment);android.view.ViewParent p=surface.getParent();if(p instanceof android.view.ViewGroup)((android.view.ViewGroup)p).removeView(surface);}return null;});}catch(Throwable failure){sealed=true;}finally{io.shutdown();}});}
+    }
+    static LocalV2AppOwner nativeAppOwner(android.app.Activity activity,LocalV2AppOwner.Invalidated invalidated) throws Exception {return new LocalV2AppOwner(activity,invalidated);}
+
+
+
+    /** Native text DTO producer reads ONLY the authenticated compiled index,
+     * and derives collection envelopes itself inside the original admission. */
+    private static final class LocalV2SDKData {
+        private static String reference(LocalV2OwnedPackageDelivery d,java.util.Map<String,Object> ref) throws Exception {d.fence();return LocalV2AdmittedEnvelope.checkedRef(d.compiled,ref,d.owner.wall());}
+        private static java.util.Map<String,Object> payload(LocalV2OwnedPackageDelivery d,String key) throws Exception {
+            d.fence();java.util.Map<String,Object> value=LocalV2AdmittedEnvelope.payload(d.compiled,key,d.owner.wall());LocalV2PackageJson.object(value,"title","text","terms","references");d.fence();return value;
+        }
+        private static PlanetChildDataStore.Purpose purpose(String collection) throws Exception {if("favorites".equals(collection))return PlanetChildDataStore.Purpose.cache;if("offline".equals(collection))return PlanetChildDataStore.Purpose.offline;require("recent".equals(collection));return PlanetChildDataStore.Purpose.history;}
+        private static java.util.Map<String,byte[]> replacement(LocalV2OwnedPackageDelivery d,String collection,java.util.List<java.util.Map<String,Object>> refs) throws Exception {
+            PlanetChildDataStore.Purpose purpose=purpose(collection);java.util.LinkedHashMap<String,byte[]> values=new java.util.LinkedHashMap<>();
+            try{
+                if(purpose==PlanetChildDataStore.Purpose.history){require(refs.size()<=100);java.util.ArrayList<Object> checked=new java.util.ArrayList<>();java.util.HashSet<String> unique=new java.util.HashSet<>();for(java.util.Map<String,Object> ref:refs){String key=reference(d,ref);require(key.startsWith("recent/")&&unique.add(key));checked.add(ref);}java.util.Map<String,Object> value=LocalV2AppOwner.map("schemaVersion",1L,"scope",LocalV2AdmittedEnvelope.scope(d.compiled),"references",checked);byte[] bytes=LocalV2PackageJson.bytes(value,false);String key=LocalV2AdmittedEnvelope.key(d.compiled,purpose,null);LocalV2AdmittedEnvelope.validate(d.compiled,purpose,key,bytes,d.owner.wall());values.put(key,bytes);}
+                else for(java.util.Map<String,Object> ref:refs){String root=reference(d,ref);require(root.startsWith(("favorites".equals(collection)?"favorite":"offline-package")+"/"));String key=LocalV2AdmittedEnvelope.key(d.compiled,purpose,root);require(!values.containsKey(key));java.util.Map<String,Object> value=LocalV2AppOwner.map("schemaVersion",1L,"scope",LocalV2AdmittedEnvelope.scope(d.compiled),"entries",LocalV2AdmittedEnvelope.closure(d.compiled,root,d.owner.wall()));byte[] bytes=LocalV2PackageJson.bytes(value,false);try{LocalV2AdmittedEnvelope.validate(d.compiled,purpose,key,bytes,d.owner.wall());values.put(key,bytes);bytes=null;}finally{LocalSnapshotV2.wipe(bytes);}}
+                return values;
+            }catch(Exception error){for(byte[] bytes:values.values())LocalSnapshotV2.wipe(bytes);throw error;}
+        }
+        private static java.util.Map<String,Object> collection(LocalV2OwnedPackageDelivery d,String collection,Long expected,java.util.List<java.util.Map<String,Object>> refs) throws Exception {
+            d.fence();java.util.Map<String,byte[]> values=expected==null?null:replacement(d,collection,refs);try{return d.data.sdkCollection(purpose(collection),expected,values);}finally{if(values!=null)for(byte[] bytes:values.values())LocalSnapshotV2.wipe(bytes);}
+        }
+        private static java.util.List<java.util.Map<String,Object>> checkedRefs(Object value,int maximum) throws Exception {
+            java.util.ArrayList<java.util.Map<String,Object>> out=new java.util.ArrayList<>();for(Object raw:LocalV2PackageJson.array(value,maximum))out.add(LocalV2PackageJson.object(raw,"kind","id","contentChecksum"));return out;
+        }
+        private static void remember(LocalV2OwnedPackageDelivery d,String viewed) throws Exception {
+            String recent=null;for(String key:d.compiled.payloads.keySet())if(key.startsWith("recent/")){java.util.Map<String,Object> wrapper=payload(d,key);boolean linked=false;for(Object raw:LocalV2PackageJson.array(wrapper.get("references"),64))if(viewed.equals(LocalV2AdmittedEnvelope.checkedRef(d.compiled,raw,d.owner.wall())))linked=true;if(linked){require(recent==null);recent=key;}}
+            if(recent==null)return;java.util.Map<String,Object> current=collection(d,"recent",null,null);java.util.List<java.util.Map<String,Object>> old=checkedRefs(current.get("references"),100),next=new java.util.ArrayList<>();java.util.Map<String,Object> latest=LocalV2AdmittedEnvelope.reference(d.compiled,recent,d.owner.wall());next.add(latest);for(java.util.Map<String,Object> row:old)if(!row.equals(latest)&&next.size()<100)next.add(row);
+            if(!next.equals(old))collection(d,"recent",LocalV2PackageJson.number(current.get("revision"),0,MAX_SAFE),next);
+        }
+        static Object perform(PlanetChildDataTransport.V2Request request,LocalV2OwnedPackageDelivery d) throws Exception {
+            d.fence();switch(request.method){
+            case "readEntity":String key=reference(d,request.reference);java.util.Map<String,Object> value=payload(d,key);remember(d,key);d.fence();return LocalV2AppOwner.map("reference",request.reference,"payload",value);
+            case "search":java.util.ArrayList<Object> matches=new java.util.ArrayList<>();String query=request.query.trim().toLowerCase(java.util.Locale.forLanguageTag(d.compiled.profile.locale));for(Object ref:LocalV2AdmittedEnvelope.search(d.compiled,d.owner.wall())){String id=LocalV2AdmittedEnvelope.checkedRef(d.compiled,ref,d.owner.wall());java.util.Map<String,Object> row=payload(d,id);String title=LocalV2PackageJson.text(row.get("title")).toLowerCase(java.util.Locale.forLanguageTag(d.compiled.profile.locale));boolean match=title.contains(query)||LocalV2PackageJson.text(row.get("text")).toLowerCase(java.util.Locale.forLanguageTag(d.compiled.profile.locale)).contains(query);for(Object term:LocalV2PackageJson.array(row.get("terms"),64))match|=LocalV2PackageJson.text(term).toLowerCase(java.util.Locale.forLanguageTag(d.compiled.profile.locale)).contains(query);if(match){if(matches.size()==64)break;matches.add(LocalV2AppOwner.map("reference",ref,"payload",row));}}d.fence();return matches;
+            case "readCollection":return collection(d,request.collection,null,null);
+            case "writeCollection":return collection(d,request.collection,request.expectedRevision,request.references);
+            default:throw new PinKnownRefusal();
+            }
+        }
+    }
+
 }

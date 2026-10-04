@@ -92,6 +92,7 @@ final class PlanetChildDataStore {
     private final class State {
         var generation: UInt64 = 0, nonce = "", scope: Scope?, admissionBinding: String?,pendingMigration: String?;var seals=[String:Seal]()
         var entries: [String: Stored] = [:]
+        var sdkCollections=false,collectionRevisions=[String:UInt64](),tombstones=[String:UInt64](),sdkUnboundBirth: String?,sdkUnboundContent: String?
         func wipe() { for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } } }
         deinit { wipe() }
     }
@@ -228,7 +229,7 @@ final class PlanetChildDataStore {
         mutating func data(_ count: Int) throws -> Data { try PlanetChildDataStore.require(count >= 0 && count <= bytes.count-position); defer { position += count }; return Data(Array(bytes[position..<position+count])) }
         mutating func text(_ max: Int) throws -> String { let count = try number(4); try PlanetChildDataStore.require(count <= UInt64(max)); var data = try self.data(Int(count)); defer { data.resetBytes(in:0..<data.count) }; guard let value = String(data:data,encoding:.utf8) else { throw Failure.unavailable }; return value }
     }
-    private static func validateSeals(_ state: State) throws {if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.pendingMigration==nil);return };try Self.require((state.pendingMigration==nil || Self.checksum(state.pendingMigration!)) && Self.checksum(state.admissionBinding!) && !state.seals.isEmpty && state.seals.count<=4);for (id,seal) in state.seals { try Self.require(id==seal.scope.profileId && Self.checksum(seal.contentBinding)) };if let scope=state.scope { try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) };for id in state.entries.keys { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let scope=try Self.keyScope(purpose,key:pair[1]);try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) } }
+    private static func validateSeals(_ state: State) throws {if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.pendingMigration==nil);return };try Self.require((state.pendingMigration==nil || Self.checksum(state.pendingMigration!)) && Self.checksum(state.admissionBinding!) && (!state.seals.isEmpty || state.sdkUnboundBirth != nil) && state.seals.count<=4);for (id,seal) in state.seals { try Self.require(id==seal.scope.profileId && Self.checksum(seal.contentBinding)) };if let scope=state.scope { try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) };for id in state.entries.keys { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let scope=try Self.keyScope(purpose,key:pair[1]);try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) } }
     private static func encode(_ state: State) throws -> Data {try validateSeals(state);
         let writer = Writer(); try writer.number(0x4c504431,bytes:4); try writer.number(state.generation,bytes:8); try writer.text(state.nonce); try writer.byte(state.scope == nil ? 0 : 1)
         if let scope = state.scope { try writer.text(scope.tuple) }; try PlanetChildDataStore.require(state.entries.count <= PlanetChildDataStore.maxSlots); try writer.number(UInt64(state.entries.count),bytes:4)
@@ -236,7 +237,7 @@ final class PlanetChildDataStore {
             let scope = try PlanetChildDataStore.keyScope(purpose,key:pieces[1]); try PlanetChildDataStore.envelope(purpose,key:pieces[1],scope:scope,bytes:slot.value); try PlanetChildDataStore.require(PlanetChildDataStore.positive(slot.revision) && slot.revision < PlanetChildDataStore.maxSafe)
             try writer.text(purpose.rawValue); try writer.text(pieces[1]); try writer.number(slot.revision,bytes:8); try writer.text(PlanetChildDataStore.digest(slot.value)); try writer.number(UInt64(slot.value.count),bytes:4); try writer.data(slot.value) }
         if let binding=state.admissionBinding { try writer.number(0x4c504133,bytes:4);try writer.text(binding);try writer.byte(state.pendingMigration==nil ? 0:1);if let pending=state.pendingMigration { try writer.text(pending) };try writer.number(UInt64(state.seals.count),bytes:4);for id in state.seals.keys.sorted() { let seal=state.seals[id]!;try writer.text(seal.scope.tuple);try writer.text(seal.contentBinding) } }
-        return writer.result()
+        try encodeCollections(state,writer);return writer.result()
     }
     private static func decode(_ bytes: Data) throws -> State {
         let state = State(); var success = false; defer { if !success { state.wipe() } }; var reader = Reader(bytes:bytes)
@@ -247,7 +248,7 @@ final class PlanetChildDataStore {
             let revision = try reader.number(8), hash = try reader.text(64), length = try reader.number(4); try PlanetChildDataStore.require(PlanetChildDataStore.positive(revision) && revision < PlanetChildDataStore.maxSafe && PlanetChildDataStore.checksum(hash) && length > 0 && length <= UInt64(PlanetChildDataStore.maxValueBytes))
             var value = try reader.data(Int(length)); defer { value.resetBytes(in:0..<value.count) }; try PlanetChildDataStore.require(PlanetChildDataStore.digest(value) == hash); try PlanetChildDataStore.envelope(purpose,key:key,scope:scope,bytes:value)
             let id = purpose.rawValue + "\n" + key; try PlanetChildDataStore.require(state.entries[id] == nil); state.entries[id] = Stored(revision:revision,value:Data(Array(value)))
-        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count>0 && count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };try validateSeals(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
+        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };if reader.position<bytes.count { try decodeCollections(state,&reader) };try validateSeals(state);try validateCollections(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
     }
     private func read(_ directory: URL) throws -> State {
         let file = try record(directory), fd = Darwin.open(file.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC); try Self.require(fd >= 0); defer { Darwin.close(fd) }
@@ -334,12 +335,13 @@ final class PlanetChildDataStore {
      * These methods acquire only DataStore. check() never joins main or opens
      * another Vault transaction; all byte and readback fences keep this order. */
     private static func knownProfiles(_ state: State,_ profiles: [String:String]) throws {
+        if let id=state.sdkUnboundBirth { try require(state.sdkCollections && state.seals.isEmpty && profiles.count==1 && profiles[id]==state.sdkUnboundContent);return }
         try require(state.admissionBinding != nil && Set(state.seals.keys)==Set(profiles.keys))
         for (id,seal) in state.seals { try require(profiles[id]==seal.contentBinding && id==seal.scope.profileId) }
     }
     private static func targetSeal(_ state: State,id: String,creating: Bool,previous: [String:String]) throws {
-        if creating { try require(previous[id]==nil && state.seals[id]==nil && state.seals.count<4) }
-        else { guard let seal=state.seals[id] else { throw Failure.unavailable };try require(previous[id]==seal.contentBinding) }
+        if creating { try require(state.sdkUnboundBirth==nil && previous[id]==nil && state.seals[id]==nil && state.seals.count<4) }
+        else { if state.sdkUnboundBirth==id { try require(previous[id]==state.sdkUnboundContent && previous.count==1 && state.seals.isEmpty);return };guard let seal=state.seals[id] else { throw Failure.unavailable };try require(previous[id]==seal.contentBinding) }
     }
     private static func retainedEntries(_ state: State) -> [String:Stored] {
         var result=[String:Stored]();for (id,stored) in state.entries { result[id]=Stored(revision:stored.revision,value:Data(Array(stored.value))) };return result
@@ -360,20 +362,21 @@ final class PlanetChildDataStore {
             try Self.require(state.nonce==birth.nonce);try birth.emptyState(Self.encode(state));state.admissionBinding=try admission.binding();state.seals[current.profileId]=Seal(scope:current,contentBinding:try admission.contentBinding())
         } else {
             try Self.require(try state.admissionBinding==admission.binding());try Self.knownProfiles(state,admission.futureProfiles());try Self.targetSeal(state,id:current.profileId,creating:false,previous:admission.futureProfiles())
+            if state.sdkUnboundBirth==current.profileId { try Self.require(try birth.profileId==current.profileId && birth.profileContentBinding==admission.contentBinding() && state.sdkUnboundContent==birth.profileContentBinding);state.seals[current.profileId]=Seal(scope:current,contentBinding:try admission.contentBinding());state.sdkUnboundBirth=nil;state.sdkUnboundContent=nil }
         }
         try admittedState(admission,state)
         for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==current.profileId { try admission.validate(purpose,pair[1],stored.value) } }
         try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.scope=current;try write(directory,state:state,check:admission.check);try admittedState(admission,state);let lease=Lease(owner:self,scope:current,generation:state.generation,nonce:state.nonce,admission:admission);active=lease;return lease
     } }
     func admittedOperation(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease) throws -> Cancellation { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);let now=try Self.now(),deadline=try admission.deadlineMs();try Self.require(now<deadline && deadline-now<=60000);return Cancellation(owner:self,lease:lease,deadline:deadline) } }
-    func admittedQuery(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ original: Result,_ purpose: Purpose,_ key: String) throws -> Slot { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.require(try Self.keyScope(purpose,key:key).tuple==lease.scope.tuple);guard let captured=original.get(purpose,key:key) else { throw Failure.unavailable };let saved=state.entries[purpose.rawValue+"\n"+key];try Self.require(captured.revision==(saved?.revision ?? 0) && captured.checksum==saved.map { Self.digest($0.value) });if let saved { try admission.validate(purpose,key,saved.value) };let copied=Slot(revision:saved?.revision ?? 0,value:saved?.value);do { try admission.check();return copied } catch { copied.dispose();throw error } } }
+    func admittedQuery(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ original: Result,_ purpose: Purpose,_ key: String) throws -> Slot { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.require(try Self.keyScope(purpose,key:key).tuple==lease.scope.tuple);guard let captured=original.get(purpose,key:key) else { throw Failure.unavailable };let saved=state.entries[purpose.rawValue+"\n"+key];try Self.require(captured.revision==(saved?.revision ?? state.tombstones[purpose.rawValue+"\n"+key] ?? 0) && captured.checksum==saved.map { Self.digest($0.value) });if let saved { try admission.validate(purpose,key,saved.value) };let copied=Slot(revision:saved?.revision ?? state.tombstones[purpose.rawValue+"\n"+key] ?? 0,value:saved?.value);do { try admission.check();return copied } catch { copied.dispose();throw error } } }
     private func admittedCheck(_ admission: PlanetChildLocalV2DataAdmission,_ cancellation: Cancellation,_ lease: Lease,_ state: State) throws { try admittedLive(admission,lease,state);try Self.require(try cancellation.owner === self && cancellation.lease === lease && cancellation.used && !cancellation.cancelled && !Thread.current.isCancelled && Self.now()<cancellation.deadline && cancellation.deadline==admission.deadlineMs()) }
     func admittedTransact(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,reads: [ReadKey],writes: [Mutation],cancellation: Cancellation) throws -> Result { try Self.require(reads.count<=Self.maxBatch && writes.count<=Self.maxBatch);var values=[Data]();defer { while !values.isEmpty { var value=values.removeLast();value.resetBytes(in:0..<value.count) } };var size=0;for write in writes { let value=try write.copy(remainingBytes:Self.maxSnapshotBytes-size);values.append(value);size+=value.count }
         return try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try Self.require(!cancellation.used);cancellation.used=true;try admittedCheck(admission,cancellation,lease,state);var readIds=Set<String>(),writeIds=Set<String>(),result=[String:Slot](),handed=false;defer { if !handed { for slot in result.values { slot.dispose() } } }
             for read in reads { let id=read.purpose.rawValue+"\n"+read.key;try Self.require(try Self.keyScope(read.purpose,key:read.key).tuple==lease.scope.tuple && readIds.insert(id).inserted);if let saved=state.entries[id] { try admission.validate(read.purpose,read.key,saved.value) } }
-            for (i,write) in writes.enumerated() { let id=write.purpose.rawValue+"\n"+write.key;try Self.require(try Self.keyScope(write.purpose,key:write.key).tuple==lease.scope.tuple && writeIds.insert(id).inserted && (state.entries[id]?.revision ?? 0)==write.expectedRevision);try Self.envelope(write.purpose,key:write.key,scope:lease.scope,bytes:values[i]);try admission.validate(write.purpose,write.key,values[i]) }
-            for read in reads { let id=read.purpose.rawValue+"\n"+read.key;result[id]=Slot(revision:state.entries[id]?.revision ?? 0,value:state.entries[id]?.value) }
-            for (i,write) in writes.enumerated() { let id=write.purpose.rawValue+"\n"+write.key;if var old=state.entries.removeValue(forKey:id) { old.value.resetBytes(in:0..<old.value.count) };state.entries[id]=Stored(revision:write.expectedRevision+1,value:Data(Array(values[i]))) }
+            for (i,write) in writes.enumerated() { let id=write.purpose.rawValue+"\n"+write.key;try Self.require(try Self.keyScope(write.purpose,key:write.key).tuple==lease.scope.tuple && writeIds.insert(id).inserted && (state.entries[id]?.revision ?? state.tombstones[id] ?? 0)==write.expectedRevision);try Self.envelope(write.purpose,key:write.key,scope:lease.scope,bytes:values[i]);try admission.validate(write.purpose,write.key,values[i]) }
+            for read in reads { let id=read.purpose.rawValue+"\n"+read.key;result[id]=Slot(revision:state.entries[id]?.revision ?? state.tombstones[id] ?? 0,value:state.entries[id]?.value) }
+            for (i,write) in writes.enumerated() { let id=write.purpose.rawValue+"\n"+write.key;if var old=state.entries.removeValue(forKey:id) { old.value.resetBytes(in:0..<old.value.count) };state.tombstones.removeValue(forKey:id);state.entries[id]=Stored(revision:write.expectedRevision+1,value:Data(Array(values[i]))) }
             try admittedCheck(admission,cancellation,lease,state);if !writes.isEmpty { try write(directory,state:state) { try self.admittedCheck(admission,cancellation,lease,state) } };try admittedCheck(admission,cancellation,lease,state)
             let actual=try read(directory);defer { actual.wipe() };try admittedLive(admission,lease,actual);for (i,write) in writes.enumerated() { guard let saved=actual.entries[write.purpose.rawValue+"\n"+write.key] else { throw Failure.unavailable };try Self.require(saved.revision==write.expectedRevision+1 && saved.value==values[i]);try admission.validate(write.purpose,write.key,saved.value) }
             try admittedCheck(admission,cancellation,lease,state);handed=true;return Result(reads:result)
@@ -385,7 +388,9 @@ final class PlanetChildDataStore {
     func migrate(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
         try admission.check();try existingOnly(directory);let birth=try knownBirth(directory);try admission.knownBirth(birth)
         try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
-        try Self.require(try state.admissionBinding != nil && state.admissionBinding==admission.previousBinding());let previous=try admission.previousProfiles();try Self.knownProfiles(state,previous)
+        let previous=try admission.previousProfiles()
+        if state.admissionBinding==nil { try Self.require(try admission.migrationScope()==nil && admission.creatingProfileId()==nil);try Self.knownUnboundOrigin(state,id:birth.profileId,nonce:birth.nonce,content:birth.profileContentBinding,empty:birth.emptyChecksum,profiles:previous);try birth.emptyState(Self.encode(state));state.sdkCollections=true;state.sdkUnboundBirth=birth.profileId;state.sdkUnboundContent=birth.profileContentBinding;state.admissionBinding=try admission.previousBinding() }
+        try Self.require(try state.admissionBinding != nil && state.admissionBinding==admission.previousBinding());try Self.knownProfiles(state,previous)
         let future=try admission.migrationScope(),created=try admission.creatingProfileId()
         if let future { try Self.targetSeal(state,id:future.profileId,creating:created != nil,previous:previous);if let created { try Self.require(created==future.profileId) } }
         else { try Self.require(created==nil) }
@@ -398,10 +403,10 @@ final class PlanetChildDataStore {
                 try Self.envelope(purpose,key:value.key,scope:value.changed ? future:oldScope,bytes:value.bytes);if value.changed { try admission.validate(purpose,value.key,value.bytes) }
                 let compound=purpose.rawValue+"\n"+value.key;try Self.require((!value.changed || stored.revision<Self.maxSafe-1) && next[compound]==nil);next[compound]=Stored(revision:stored.revision+(value.changed ? 1:0),value:Data(Array(value.bytes)))
             }
-            state.seals[future.profileId]=Seal(scope:future,contentBinding:try admission.contentBinding())
+            state.seals[future.profileId]=Seal(scope:future,contentBinding:try admission.contentBinding());state.sdkUnboundBirth=nil;state.sdkUnboundContent=nil
         } else { next=Self.retainedEntries(state) }
         try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.admissionBinding=try admission.binding();state.pendingMigration=try admission.migrationIdentity()
-        state.wipe();state.entries=next;adopted=true;try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try admission.commitCanonical();try admittedState(admission,state)
+        try Self.migrateTombstones(state,future);state.wipe();state.entries=next;adopted=true;try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try admission.commitCanonical();try admittedState(admission,state)
     } }
     func migrationReadback(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
         try admission.check();try existingOnly(directory,migration:admission);let birth=try knownBirth(directory);try admission.knownBirth(birth)
@@ -607,6 +612,7 @@ final class PlanetChildDataStore {
         name="literary-planet-child-data-v1"+(runId.map { "-synthetic-"+$0 } ?? "");identity=bundle+"."+name
     }
     private func existingOnly(_ directory: URL,migration: PlanetChildLocalV2DataAdmission?=nil) throws {
+        try Self.require(!FileManager.default.fileExists(atPath:try collectionMarker(directory).path))
         let pending=try migrationMarker(directory)
         if FileManager.default.fileExists(atPath:pending.path) { guard let migration else { throw Failure.unavailable };try exactMigrationMarker(directory,migration) } else { try Self.require(migration==nil) }
         let base=try record(directory),staged=try record(directory,suffix:".new")
@@ -651,6 +657,156 @@ final class PlanetChildDataStore {
                 try store.exactBirth(directory,plan:original,marker:marker);try permit.dataBirthKnown(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
                 return LocalV2BirthReceipt(original,marker)
             } catch { store.closed=true;permit.dataBirthUnknown();throw error }
+        }
+    }
+}
+
+
+/** Closed LOCAL SDK collection extension. It appends LPC2 only after a real
+ * admitted collection CAS; older LPD1/LPA3 snapshots are never upgraded on read. */
+extension PlanetChildDataStore {
+    final class LocalV2Collection {
+        let revision: UInt64
+        private let lock=NSLock();private var closed=false
+        fileprivate var values: [String:Data]
+        fileprivate init(_ revision: UInt64,_ values: [String:Data]) { self.revision=revision;self.values=values }
+        func ownedValues() throws -> [String:Data] { lock.lock();defer { lock.unlock() };try PlanetChildDataStore.require(!closed);return values.mapValues { Data(Array($0)) } }
+        var closedForSDK: Bool { lock.lock();defer { lock.unlock() };return closed }
+        func close() { lock.lock();defer { lock.unlock() };closed=true;for key in Array(values.keys) { if var value=values.removeValue(forKey:key) { value.resetBytes(in:0..<value.count) } } }
+        deinit { close() }
+    }
+    fileprivate static func collectionId(_ scope: Scope,_ purpose: Purpose) -> String { scope.profileId+"\n"+purpose.rawValue }
+    fileprivate static func collectionMember(_ purpose: Purpose,_ key: String,_ scope: Scope) throws -> Bool {
+        let saved=try keyScope(purpose,key:key);guard saved.tuple==scope.tuple else { return false }
+        if purpose == .history { return key==scope.key(.history) }
+        guard purpose == .cache || purpose == .offline else { throw Failure.unavailable }
+        return key.hasPrefix(scope.key(purpose)+"/item/"+(purpose == .cache ? "favorite/":"offline-package/"))
+    }
+    private static func validateCollections(_ state: State) throws {
+        try require(state.collectionRevisions.count<=12 && state.tombstones.count<=maxSlots && (!state.sdkCollections || state.admissionBinding != nil));if let id=state.sdkUnboundBirth { try require(state.sdkCollections && state.seals.isEmpty && identifier(id) && state.sdkUnboundContent.map(checksum)==true && state.scope==nil && state.entries.isEmpty && state.collectionRevisions.isEmpty && state.tombstones.isEmpty) } else { try require(state.sdkUnboundContent==nil) }
+        if !state.sdkCollections { try require(state.collectionRevisions.isEmpty && state.tombstones.isEmpty);return }
+        for (id,revision) in state.collectionRevisions { let pair=id.components(separatedBy:"\n");try require(pair.count==2 && state.seals[pair[0]] != nil && [.history,.cache,.offline].contains(Purpose(rawValue:pair[1]) ?? .search) && positive(revision) && revision<maxSafe) }
+        for (id,revision) in state.tombstones { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]),purpose == .cache || purpose == .offline else { throw Failure.unavailable };let scope=try keyScope(purpose,key:pair[1]);try require(state.entries[id]==nil && state.seals[scope.profileId]?.scope.tuple==scope.tuple && positive(revision) && revision<maxSafe && collectionMember(purpose,pair[1],scope)) }
+    }
+    private static func encodeCollections(_ state: State,_ writer: Writer) throws {
+        try validateCollections(state);guard state.sdkCollections else { return }
+        try writer.number(0x4c504332,bytes:4);try writer.byte(state.sdkUnboundBirth==nil ? 0:1);if let id=state.sdkUnboundBirth { try writer.text(id);try writer.text(state.sdkUnboundContent!) };try writer.number(UInt64(state.collectionRevisions.count),bytes:4)
+        for id in state.collectionRevisions.keys.sorted() { try writer.text(id);try writer.number(state.collectionRevisions[id]!,bytes:8) }
+        try writer.number(UInt64(state.tombstones.count),bytes:4);for id in state.tombstones.keys.sorted() { try writer.text(id);try writer.number(state.tombstones[id]!,bytes:8) }
+    }
+    private static func decodeCollections(_ state: State,_ reader: inout Reader) throws {
+        try require(try reader.number(4)==0x4c504332 && state.admissionBinding != nil);state.sdkCollections=true;let flag=try reader.number(1);try require(flag<=1);if flag==1 { state.sdkUnboundBirth=try reader.text(96);state.sdkUnboundContent=try reader.text(64) }
+        let counters=try reader.number(4);try require(counters<=12);for _ in 0..<counters { let id=try reader.text(128),revision=try reader.number(8);try require(state.collectionRevisions[id]==nil);state.collectionRevisions[id]=revision }
+        let tombs=try reader.number(4);try require(tombs<=UInt64(maxSlots));for _ in 0..<tombs { let id=try reader.text(4120),revision=try reader.number(8);try require(state.tombstones[id]==nil);state.tombstones[id]=revision };try validateCollections(state)
+    }
+    private func collectionMarker(_ directory: URL) throws -> URL { let file=directory.appendingPathComponent("local-v2-collection.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file }
+    /** Native admission owns every byte in replacement. No public scope, raw
+     * JSON delete, rebirth or caller success flag can reach this primitive. */
+    func admittedCollection(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ purpose: Purpose,
+        expectedRevision: UInt64?,replacement: [String:Data]?,commandId: String) throws -> LocalV2Collection {
+        try Self.require([.history,.cache,.offline].contains(purpose) && (replacement==nil)==(expectedRevision==nil) && commandId.range(of:"\\A[a-f0-9]{32}\\z",options:.regularExpression) != nil)
+        return try locked { directory in
+            try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state)
+            let id=Self.collectionId(lease.scope,purpose),revision=state.collectionRevisions[id] ?? 0
+            var old=[String:Stored]();for (compound,stored) in state.entries { let pair=compound.components(separatedBy:"\n");guard pair.count==2 else { throw Failure.unavailable };if pair[0]==purpose.rawValue && (try Self.collectionMember(purpose,pair[1],lease.scope)) { try admission.validate(purpose,pair[1],stored.value);old[pair[1]]=stored } }
+            try Self.require(old.count<=64)
+            guard let replacement,let expectedRevision else { let copied=LocalV2Collection(revision,old.mapValues { Data(Array($0.value)) });do { try admission.check();return copied } catch { copied.close();throw error } }
+            try Self.require(revision==expectedRevision && revision<Self.maxSafe-1 && replacement.count<=64)
+            for (key,value) in replacement { try Self.require(try Self.collectionMember(purpose,key,lease.scope));try Self.envelope(purpose,key:key,scope:lease.scope,bytes:value);try admission.validate(purpose,key,value) }
+            let marker=try collectionMarker(directory),markerBytes=Data(("LP-LOCAL-V2-COLLECTION\n"+identity+"\n"+commandId+"\n"+(try admission.binding())+"\n"+id+"\n"+String(revision+1)+"\n").utf8)
+            // Exclusive pending survives any uncertain write/readback/recipient.
+            var markerAttempted=false
+            do {
+                markerAttempted=true;try exclusiveReceiptFile(marker,markerBytes,admission.check);try syncDirectory(directory)
+                state.sdkCollections=true;state.collectionRevisions[id]=revision+1
+                for key in Set(old.keys).union(replacement.keys) {
+                    let compound=purpose.rawValue+"\n"+key,prior=state.entries[compound]?.revision ?? state.tombstones[compound] ?? 0
+                    let nextRevision=try Self.collectionNext(prior)
+                    if var removed=state.entries.removeValue(forKey:compound) { removed.value.resetBytes(in:0..<removed.value.count) }
+                    if let value=replacement[key] { state.tombstones.removeValue(forKey:compound);state.entries[compound]=Stored(revision:nextRevision,value:Data(Array(value))) }
+                    else { try Self.require(purpose != .history);state.tombstones[compound]=nextRevision }
+                }
+                try Self.validateCollections(state);try write(directory,state:state,check:admission.check)
+                let actual=try read(directory);defer { actual.wipe() };try admittedLive(admission,lease,actual);try Self.require(actual.collectionRevisions[id]==revision+1)
+                for key in Set(old.keys).union(replacement.keys) { let compound=purpose.rawValue+"\n"+key;if let value=replacement[key] { try Self.require(actual.entries[compound]?.value==value && actual.tombstones[compound]==nil);try admission.validate(purpose,key,value) } else { try Self.require(actual.entries[compound]==nil && actual.tombstones[compound]==state.tombstones[compound]) } }
+                var pending=try boundedFile(marker,4096);defer { pending.resetBytes(in:0..<pending.count) };try Self.require(pending==markerBytes);try admission.collectionCommandKnown(commandId)
+                // Only preparation is ready here. The actual original SDK body
+                // must return and close its result before the terminal marker clears.
+                let result=LocalV2Collection(revision+1,replacement.mapValues { Data(Array($0)) });do { try admission.collectionCommandReady(commandId);return result } catch { result.close();throw error }
+            } catch { if markerAttempted { admission.collectionUnknown() };throw error }
+        }
+    }
+    func collectionComplete(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ commandId: String) throws {
+        try locked { directory in
+            try admission.check();let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try admission.collectionCommandJoined(commandId)
+            let marker=try collectionMarker(directory);var bytes=try boundedFile(marker,4096);defer { bytes.resetBytes(in:0..<bytes.count) };let fields=String(decoding:bytes,as:UTF8.self).components(separatedBy:"\n")
+            try Self.require(fields.count==8 && fields[0]=="LP-LOCAL-V2-COLLECTION" && fields[1]==identity && fields[2]==commandId && fields[3]==(try admission.binding()) && fields[4]==lease.scope.profileId && ["history","cache","offline"].contains(fields[5]) && fields[7].isEmpty);guard let revision=UInt64(fields[6]),revision>0,revision<Self.maxSafe,String(revision)==fields[6],state.collectionRevisions[fields[4]+"\n"+fields[5]]==revision else { throw Failure.unavailable }
+            var clearing=false;do { try admission.check();clearing=true;try Self.require(Darwin.unlink(marker.path)==0);try syncDirectory(directory) }
+            catch { if clearing && !FileManager.default.fileExists(atPath:marker.path) { try? exclusiveReceiptFile(marker,bytes) {};try? syncDirectory(directory) };admission.collectionUnknown();throw error }
+        }
+    }
+    fileprivate static func migrateTombstones(_ state: State,_ future: Scope?) throws {
+        guard let future else { return };var next=[String:UInt64]()
+        for (compound,revision) in state.tombstones { let pair=compound.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let old=try keyScope(purpose,key:pair[1]);if old.profileId != future.profileId { next[compound]=revision;continue }
+            let segments=pair[1].components(separatedBy:"/");try require(segments.count>=4 && revision<maxSafe-1);let key=try future.itemKey(purpose,kind:segments[segments.count-2],id:segments.last!);let id=purpose.rawValue+"\n"+key;try require(next[id]==nil);next[id]=revision+1
+        };state.tombstones=next
+    }
+}
+
+extension PlanetChildDataStore {
+    static func localV2ValidateCanonicalBirth(ids: Set<String>,policyVersion: String,policyChecksum: String,maximum: UInt64,delays: [UInt64]) throws {
+        let store=try localV2ExistingOnly();try store.locked { directory in let birth=try store.knownBirth(directory);try Self.require(ids.contains(birth.profileId) && birth.policyVersion==policyVersion && birth.policyChecksum==policyChecksum && birth.maximum==maximum && birth.delays==delays) }
+    }
+}
+
+
+extension PlanetChildDataStore {
+    fileprivate static func collectionNext(_ previous: UInt64) throws -> UInt64 { try require(previous<maxSafe-1);return previous+1 }
+}
+
+
+extension PlanetChildDataStore {
+    private static func knownUnboundOrigin(_ state: State,id: String,nonce: String,content: String,empty: String,profiles: [String:String]) throws {
+        try require(state.admissionBinding==nil && state.scope==nil && state.pendingMigration==nil && profiles.count==1 && profiles[id]==content && state.generation==0 && state.nonce==nonce && state.entries.isEmpty && state.seals.isEmpty && !state.sdkCollections && state.tombstones.isEmpty && state.collectionRevisions.isEmpty && digest(encode(state))==empty)
+    }
+    #if DEBUG
+    static func fixtureSDKUnboundOrigin(_ scenario: String) throws -> Bool {
+        let state=State();state.nonce=String(repeating:"c",count:32);defer { state.wipe() };let id="child-"+state.nonce,content=String(repeating:"a",count:64);var bytes=try encode(state);defer { bytes.resetBytes(in:0..<bytes.count) };let empty=digest(bytes)
+        if scenario=="known-shape" { try knownUnboundOrigin(state,id:id,nonce:state.nonce,content:content,empty:empty,profiles:[id:content]);return try encode(state)==bytes }
+        var ids=[id:content],nonce=state.nonce,checksum=empty
+        switch scenario { case "foreign-uid":ids=["foreign":content];case "foreign-content":ids[id]=String(repeating:"b",count:64);case "foreign-nonce":nonce=String(repeating:"b",count:32);case "foreign-empty":checksum=String(repeating:"b",count:64);case "extra-profile":ids["sibling"]=content;case "already-bound":state.admissionBinding=content;case "advanced":state.generation=1;default:throw Failure.unavailable }
+        do { try knownUnboundOrigin(state,id:id,nonce:nonce,content:content,empty:checksum,profiles:ids);return false } catch { return true }
+    }
+    static func fixtureSDKCollections(_ scenario: String) throws -> Bool {
+        let hash=String(repeating:"a",count:64),other=String(repeating:"b",count:64)
+        func scope(_ id: String) throws -> Scope { try Scope(profileId:id,profileRevision:2,exactAge:9,locale:"en",policyVersion:"first-profile-fixture-v2",policyChecksum:hash,packageId:"isolated-package",packageVersion:1,packageChecksum:hash) }
+        let a=try scope("reader"),b=try scope("sibling"),state=State();defer { state.wipe() };state.nonce=String(repeating:"c",count:32);state.admissionBinding=hash;state.seals[a.profileId]=Seal(scope:a,contentBinding:hash);state.seals[b.profileId]=Seal(scope:b,contentBinding:other)
+        let scopeRow: [String:Any]=["schemaVersion":1,"namespace":"child","profileId":b.profileId,"profileRevision":b.profileRevision,"exactAge":b.exactAge,"locale":b.locale,"policyVersion":b.policyVersion,"policyChecksum":b.policyChecksum,"packageId":b.packageId,"packageVersion":b.packageVersion,"packageChecksum":b.packageChecksum]
+        let untouched=try JSONSerialization.data(withJSONObject:["schemaVersion":1,"scope":scopeRow,"references":[]] as [String:Any],options:.sortedKeys),sibling=Purpose.history.rawValue+"\n"+b.key(.history),deleted=Purpose.cache.rawValue+"\n"+(try a.itemKey(.cache,kind:"favorite",id:"one"))
+        state.entries[sibling]=Stored(revision:7,value:untouched);var legacy=try encode(state);defer { legacy.resetBytes(in:0..<legacy.count) };let old=try decode(legacy);defer { old.wipe() };try require(!old.sdkCollections && old.collectionRevisions.isEmpty && old.tombstones.isEmpty && encode(old)==legacy)
+        state.sdkCollections=true;state.collectionRevisions[collectionId(a,.cache)]=2;state.collectionRevisions[collectionId(b,.history)]=9;state.tombstones[deleted]=2
+        var extended=try encode(state);defer { extended.resetBytes(in:0..<extended.count) };try require(extended.prefix(legacy.count)==legacy)
+        let copy=try decode(extended);defer { copy.wipe() };try require(copy.entries[sibling]?.revision==7 && copy.entries[sibling]?.value==untouched && copy.seals[b.profileId]?.contentBinding==other && copy.collectionRevisions[collectionId(b,.history)]==9 && copy.tombstones[deleted]==2)
+        if scenario=="trailer" { try require(encode(copy)==extended);for count in [1,8,32] { do { let bad=try decode(Data(extended.dropLast(count)));bad.wipe();return false } catch {} };return true }
+        if scenario=="tombstone" { let removed=try collectionNext(1),again=try collectionNext(removed);try require(removed==2 && again==3 && copy.entries[deleted]==nil && copy.tombstones[deleted]==removed && (copy.entries[deleted]?.revision ?? copy.tombstones[deleted] ?? 0)==2);do { _=try collectionNext(maxSafe-1);return false } catch {};return true }
+        throw Failure.unavailable
+    }
+    #endif
+}
+
+
+extension PlanetChildDataStore {
+    /** No namespace creation for an empty parent registry; read inspection
+     * neither mints a lease nor adopts a missing/orphan/partially born store. */
+    static func sdkInspectOriginal(_ permit: PlanetChildLocalV2SDKReadPermit) throws {
+        try permit.check()
+        if try permit.emptyProfiles() {
+            guard let bundle=Bundle.main.bundleIdentifier,bundle=="ru.probpera.literaryplanet" else { throw Failure.unavailable };let parent=try FileManager.default.url(for:.applicationSupportDirectory,in:.userDomainMask,appropriateFor:nil,create:false).resolvingSymlinksInPath().standardizedFileURL,name="literary-planet-child-data-v1",directory=parent.appendingPathComponent(name,isDirectory:true);var state=stat();try require(Darwin.lstat(directory.path,&state) != 0 && errno==ENOENT)
+            let query: [String:Any]=[kSecClass as String:kSecClassGenericPassword,kSecAttrService as String:bundle+"."+name,kSecAttrAccount as String:"child-data-aes-v1",kSecAttrSynchronizable as String:kSecAttrSynchronizableAny,kSecUseAuthenticationUI as String:kSecUseAuthenticationUIFail];try require(SecItemCopyMatching(query as CFDictionary,nil)==errSecItemNotFound);try permit.check();return
+        }
+        let store=try localV2ExistingOnly();try store.locked { directory in try permit.check();try store.existingOnly(directory);let birth=try store.knownBirth(directory);try permit.retainedBirth(birth);let state=try store.read(directory);defer { state.wipe() };try require(state.scope==nil && state.pendingMigration==nil)
+            let profiles=try permit.profiles();if state.admissionBinding==nil { try knownUnboundOrigin(state,id:birth.profileId,nonce:birth.nonce,content:birth.profileContentBinding,empty:birth.emptyChecksum,profiles:profiles) }
+            else { try require(try state.admissionBinding==permit.binding());try knownProfiles(state,profiles) };try permit.check()
         }
     }
 }

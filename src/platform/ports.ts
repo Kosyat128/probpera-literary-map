@@ -1,5 +1,6 @@
 import type { RecentHistoryStore } from "../planet/RecentHistory";
 import type { ContentDownloads } from "../planet/ContentDownloads";
+import type { ChildNativeAppController } from "../child/childNativeAppBridge";
 import type { NativeSecretStore } from "../host/nativeSecureStorage";
 
 /** Platform capabilities; canonical selection, locale and scene state live elsewhere. */
@@ -42,6 +43,8 @@ export interface PlatformServices {
   readonly preferences: PreferenceStore;
   /** Native OS session storage only. Absent in Web; never child authority/CAS. */
   readonly secureStorage?: NativeSecretStore;
+  /** Real LOCAL V2 native bootstrap owner. Omission never permits a native adult fallback. */
+  readonly childApp?: ChildNativeAppController;
   /** Local adult references only; never a catalog, child store or entitlement. */
   readonly recentHistory?: RecentHistoryStore;
   /** Platform-lifetime transfers; never an entitlement or catalog activation. */

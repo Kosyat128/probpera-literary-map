@@ -107,4 +107,21 @@ describe("iOS Capacitor bindings", () => {
     expect(await services.openExternalLink("mailto:probperasite@yandex.ru")).toBe("blocked");
     expect(bindings.appLauncher.openUrl).not.toHaveBeenCalled();
   });
-});
+
+  it("native child bootstrap keeps adult download and private recipients out of initial services", async () => {
+    const bindings = native(); const result = await createIosPlatformAdapter({ bindings });
+    expect(result.services.childApp).toBeDefined(); expect(result.services.downloads).toBeUndefined(); expect(typeof result.createAdultServices).toBe("function");
+    expect(bindings.app.getState).not.toHaveBeenCalled(); expect(bindings.network.getStatus).not.toHaveBeenCalled();
+    const first = await result.createAdultServices(), second = await result.createAdultServices();
+    expect(first).not.toBe(second); expect(first.recentHistory).not.toBe(second.recentHistory); expect(first.downloads).not.toBe(second.downloads);
+    expect(first.childApp).toBe(result.services.childApp); expect(second.childApp).toBe(result.services.childApp);
+    first.downloads?.dispose(); second.downloads?.dispose(); first.recentHistory?.dispose?.(); second.recentHistory?.dispose?.();
+  });
+  it("native child bootstrap missing actual PlanetChild stays closed before adult data listeners", async () => {
+    const bindings = native(); bindings.core.isPluginAvailable.mockImplementation(name => name !== "PlanetChild");
+    const result = await createIosPlatformAdapter({ bindings }); const controller = result.services.childApp!; const clear = vi.fn();
+    controller.attachPresentationBarrier(clear); await controller.start();
+    expect(controller.getSnapshot().context).toBeNull(); expect(controller.getSnapshot().status).toBe("unavailable"); expect(clear).toHaveBeenCalled();
+    expect(bindings.app.addListener).not.toHaveBeenCalled(); expect(bindings.network.getStatus).not.toHaveBeenCalled(); expect(bindings.browser.open).not.toHaveBeenCalled();
+    expect(result.services.downloads).toBeUndefined(); await controller.dispose();
+  });});

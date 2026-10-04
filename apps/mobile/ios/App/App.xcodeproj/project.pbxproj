@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+        D4B120261004000000000080 /* PlanetChildPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261004000000000081 /* PlanetChildPlugin.swift */; };
         D4B120261002000000000030 /* PlanetChildVault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261002000000000031 /* PlanetChildVault.swift */; };
 		D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */; };
         D4B120261002000000000001 /* PlanetSecureStorePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261002000000000002 /* PlanetSecureStorePlugin.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+        D4B120261004000000000081 /* PlanetChildPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildPlugin.swift; sourceTree = "<group>"; };
         D4B120261002000000000031 /* PlanetChildVault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildVault.swift; sourceTree = "<group>"; };
 		D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSecureStoreRuntimeTests.swift; sourceTree = "<group>"; };
 		D4B120261002000000000013 /* AppSecureStorageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppSecureStorageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
                 D4B120261002000000000031 /* PlanetChildVault.swift */,
                 D4B120261003000000000041 /* PlanetChildDataStore.swift */,
                 D4B120261003000000000051 /* PlanetChildDataTransport.swift */,
+                D4B120261004000000000081 /* PlanetChildPlugin.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -236,6 +239,7 @@
                 D4B120261002000000000030 /* PlanetChildVault.swift in Sources */,
                 D4B120261003000000000040 /* PlanetChildDataStore.swift in Sources */,
                 D4B120261003000000000050 /* PlanetChildDataTransport.swift in Sources */,
+                D4B120261004000000000080 /* PlanetChildPlugin.swift in Sources */,
 				9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

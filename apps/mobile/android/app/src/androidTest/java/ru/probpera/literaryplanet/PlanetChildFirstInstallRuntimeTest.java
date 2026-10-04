@@ -314,7 +314,7 @@ public final class PlanetChildFirstInstallRuntimeTest {
                 call(forged,"wipe");assertFalse((Boolean)field(sample,"consumed"));}finally{call(next,"close");}
             call(localOwner,"cancel",original);assertTrue(zero(raw));assertTrue(zero(seedBytes));denied(()->call(sample,"copySeed"));
             denied(()->call(receipt,"copy"));denied(()->call(localOwner,"acknowledge",receipt));assertSame(original,field(localOwner,"active"));assertFalse((Boolean)field(original,"mutationStarted"));
-            Method factory=PlanetChildVault.class.getDeclaredMethod("actualSdkLocalV2Writer",PlanetChildVault.class);factory.setAccessible(true);assertNull(factory.invoke(null,new PlanetChildVault(activity.getApplicationContext())));
+            Method factory=PlanetChildVault.class.getDeclaredMethod("actualSdkLocalV2Writer",PlanetChildVault.class);factory.setAccessible(true);assertNotNull(factory.invoke(null,new PlanetChildVault(activity.getApplicationContext())));
             denied(()->call(localOwner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertSame(original,field(localOwner,"active"));assertSame(field(original,"processLease"),field(field(original,"processClock"),"active"));
         }finally{localRetire(localOwner,original);}}
 
@@ -818,5 +818,53 @@ public final class PlanetChildFirstInstallRuntimeTest {
         try{Object request=call(invocation,"capture",create("LocalV2GateScope",saved),1100L);assertSame(invocation,field(request,"originalHostChallenge"));assertEquals("adult",field(field(request,"context"),"mode"));assertEquals(2500L,field(request,"deadlineUptimeMs"));assertEquals(sha((byte[])field(invocation,"target")),field(request,"targetChecksum"));
             denied(()->call(invocation,"live",2500L));denied(()->call(invocation,"live",1200L));assertEquals(2500L,field(invocation,"deadline"));
         }finally{call(invocation,"close");call(saved,"close");Arrays.fill(before,(byte)0);Arrays.fill(record,(byte)0);}}
+
+
+    /** AUTHORED_NOT_RUN. These SDK leaves never approve a production review
+     * pin, answer an OS dialog or fabricate an installed owner signature. */
+    @Test public void localV2AppPolicyIsFixedAndFactorySelectsNativeOwner()throws Exception{
+        Object policy=call(type("LocalV2AppPolicy"),"policy");assertEquals("child-local-v2.1",field(policy,"version"));assertEquals("2a9fb86861697ae053d0af87b40bdd53e2454700520a96d36a456414b9014d8c",field(policy,"checksum"));
+        assertEquals(1200000L,field(policy,"maximumIterations"));assertArrayEquals(new long[]{1000,5000,15000,60000,300000},(long[])field(policy,"delays"));
+        activity();AtomicReference<Object> actual=new AtomicReference<>();AtomicReference<Throwable> error=new AtomicReference<>();Class<?> observer=Class.forName("ru.probpera.literaryplanet.PlanetChildVault$LocalV2AppOwner$Invalidated");
+        Object callback=Proxy.newProxyInstance(observer.getClassLoader(),new Class<?>[]{observer},(proxy,method,args)->null);
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{actual.set(call(PlanetChildVault.class,"nativeAppOwner",activity,callback));}catch(Throwable failure){error.set(failure);}});
+        if(error.get()!=null)throw new AssertionError(error.get());assertNotNull(actual.get());assertEquals(type("LocalV2AppOwner"),actual.get().getClass());assertNull(field(actual.get(),"context"));assertNull(field(actual.get(),"surface"));call(actual.get(),"destroy");
+    }
+    @Test public void localV2AppBootstrapRejectsUnknownSeedWithoutSignedInstallTerminal()throws Exception{
+        byte[] raw=seed();Object policy=call(type("LocalV2AppPolicy"),"policy");PlanetChildVault vault=new PlanetChildVault(InstrumentationRegistry.getInstrumentation().getTargetContext());
+        try{denied(()->call(type("SDKInstallTerminal"),"validate",vault,raw,policy));assertArrayEquals(seed(),raw);
+            denied(()->create("LocalV2SDKReadPermit",null,null,null,raw));assertTrue(Modifier.isPrivate(type("LocalV2SDKReadPermit").getDeclaredConstructors()[0].getModifiers()));
+        }finally{Arrays.fill(raw,(byte)0);}
+    }
+    @Test public void localV2AppWireKeepsOriginalV2ClockAndActionVocabulary()throws Exception{
+        Object original=create("LocalV2GateInvocation","exit-child-mode",new byte[0],1L,1000L,1250L,60000L);try{assertEquals(2250L,field(original,"deadline"));call(original,"live",2249L);denied(()->call(original,"live",2250L));}finally{call(original,"close");}
+        Field actions=PlanetChildDataTransport.class.getDeclaredField("V2_ACTIONS");actions.setAccessible(true);Set<?> names=(Set<?>)actions.get(null);assertEquals(22,names.size());
+        for(String lifecycle:Arrays.asList("first-install","enroll-pin","replace-pin","recover-pin","create-profile","enter-child"))assertTrue(names.contains(lifecycle));
+        for(String lifecycle:Arrays.asList("replace-pin","recover-pin"))denied(()->create("LocalV2GateRequest",new Object(),repeat('a'),lifecycle,sha(new byte[0]),create("LocalV2GateContext","native-validation",VERSION,1L,0L,"child","active"),0L,2500L));
+        Map<String,Object> request=packageMap("version",2L,"requestId",repeat('a').substring(0,32));assertEquals("bootstrap",PlanetChildDataTransport.decodeV2("bootstrap",request).method);request.put("version",1L);denied(()->PlanetChildDataTransport.decodeV2("bootstrap",request));
+    }
+    @Test public void localV2AppProfileDraftOwnsBirthFieldsAndRejectsCallerId()throws Exception{
+        Map<String,Object> draft=packageMap("label","Reader","exactAge",9L,"locale","en","readingLevel",null,"allowedTopics",null,"blockedTopics",Arrays.asList("horror"),"soundEnabled",true,"motion","system","narrationEnabled",false);
+        byte[] bytes=(byte[])call(type("LocalV2AppProfileDraft"),"initial",draft);try{Map<String,Object> row=(Map<String,Object>)call(type("LocalV2PackageJson"),"read",bytes,65536);assertEquals("native-pending",row.get("id"));assertEquals("9-11",row.get("ageBand"));assertEquals(true,row.get("localeLocked"));assertTrue(((String)row.get("ageConfirmedAt")).matches("[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z"));assertEquals(13,row.size());}
+        finally{Arrays.fill(bytes,(byte)0);}for(String reserved:Arrays.asList("id","ageBand","ageConfirmedAt","localeLocked")){draft.put(reserved,reserved);denied(()->call(type("LocalV2AppProfileDraft"),"initial",draft));draft.remove(reserved);}
+    }
+    @Test public void localV2AppPinSuccessorKeepsSavedDebtAndNonPinBytes()throws Exception{
+        Object policy=snapshotPolicy(100L,250L);byte[] raw=localWrapper(4,3,4,2,17,250,repeat('f'));Object before=localDecode(raw,policy);byte[] next=null;
+        try{next=(byte[])call(PlanetChildVault.class,"sdkRotate",before,repeat('1'),repeat('2'),repeat('3'));Object after=localDecode(next,policy);try{
+            for(String key:Arrays.asList("count","blockedUntilMs","lastObservedMs","pendingAttemptId","clockMs","savedCooldownMs"))assertEquals(field(before,key),field(after,key));
+            assertEquals((Long)field(before,"revision")+1,field(after,"revision"));assertEquals((Long)field(before,"pinRevision")+1,field(after,"pinRevision"));assertEquals((Long)field(before,"journalRevision")+1,field(after,"journalRevision"));assertNotEquals(field(before,"credentialId"),field(after,"credentialId"));
+            Map<String,Object> a=(Map<String,Object>)call(type("LocalV2PackageJson"),"read",raw,131072),b=(Map<String,Object>)call(type("LocalV2PackageJson"),"read",next,131072),ap=(Map<String,Object>)a.get("protectedRecord"),bp=(Map<String,Object>)b.get("protectedRecord");
+            for(String key:ap.keySet())if(!key.equals("pin")&&!key.equals("revision"))assertEquals(ap.get(key),bp.get(key));Map<?,?> aj=(Map<?,?>)a.get("restartJournal"),bj=(Map<?,?>)b.get("restartJournal");assertEquals(aj.get("attempts"),bj.get("attempts"));assertEquals(aj.get("anchor"),bj.get("anchor"));
+        }finally{call(after,"close");}}finally{call(before,"close");Arrays.fill(raw,(byte)0);if(next!=null)Arrays.fill(next,(byte)0);}
+    }
+    @Test public void localV2AppKnownUnboundBirthExitRequiresExactSignedEmptyOrigin()throws Exception{
+        Object state=dataCreate("State");admittedSet(state,"nonce",repeat('a').substring(0,32));Class<?> store=PlanetChildDataStore.class;byte[] empty=(byte[])call(store,"encode",state);Map<String,String> profiles=Collections.singletonMap("native-child",repeat('b'));
+        try{call(store,"knownUnboundOrigin",state,"native-child",repeat('a').substring(0,32),repeat('b'),sha(empty),profiles);
+            denied(()->call(store,"knownUnboundOrigin",state,"native-child",repeat('c').substring(0,32),repeat('b'),sha(empty),profiles));denied(()->call(store,"knownUnboundOrigin",state,"native-child",repeat('a').substring(0,32),repeat('b'),repeat('d'),profiles));
+            Map<String,String> edited=new LinkedHashMap<>(profiles);edited.put("native-child",repeat('c'));denied(()->call(store,"knownUnboundOrigin",state,"native-child",repeat('a').substring(0,32),repeat('b'),sha(empty),edited));
+            Map<String,String> siblings=new LinkedHashMap<>(profiles);siblings.put("sibling",repeat('c'));denied(()->call(store,"knownUnboundOrigin",state,"native-child",repeat('a').substring(0,32),repeat('b'),sha(empty),siblings));
+            admittedSet(state,"generation",1L);denied(()->call(store,"knownUnboundOrigin",state,"native-child",repeat('a').substring(0,32),repeat('b'),sha(empty),profiles));denied(()->call(store,"sdkInspectOriginal",new Object[]{null}));
+        }finally{Arrays.fill(empty,(byte)0);call(state,"close");}
+    }
 
 }

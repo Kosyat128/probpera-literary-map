@@ -327,3 +327,69 @@ final class PlanetChildDataTransport {
         }.start()
     }
 }
+
+
+/** Version 2 bridge data only. Opaque tokens correlate a retained native owner;
+ * parsed dictionaries never supply PIN, clock, profile UID or package authority. */
+enum PlanetChildLocalV2Wire {
+    enum Failure: Error { case invalid }
+    static let methods = Set(["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection"])
+    static let gateActions = Set(["exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store","initiate-purchase","restore-purchases","open-external","share","account-change","export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial"])
+    static let actions = gateActions.union(["first-install","enroll-pin","replace-pin","recover-pin","create-profile","enter-child"])
+    static let collections = Set(["favorites","recent","offline"])
+    struct Request {
+        let method: String, id: String, token: String?, action: String?, target: Data?
+        let reference: [String:Any]?, query: String?, collection: String?, expectedRevision: UInt64?, references: [[String:Any]]?
+    }
+    static func require(_ condition: Bool) throws { if !condition { throw Failure.invalid } }
+    static func hex(_ value: Any?, count: Int) throws -> String { guard let value=value as? String,value.utf8.count==count,value.range(of:"\\A[a-f0-9]+\\z",options:.regularExpression) != nil else { throw Failure.invalid };return value }
+    static func integer(_ value: Any?, minimum: UInt64=0, maximum: UInt64=9007199254740991) throws -> UInt64 {
+        guard let n=value as? NSNumber,CFGetTypeID(n) != CFBooleanGetTypeID(),n.doubleValue.isFinite,!(n.doubleValue==0 && n.doubleValue.sign == .minus),n.doubleValue.rounded(.towardZero)==n.doubleValue,n.doubleValue>=Double(minimum),n.doubleValue<=Double(maximum) else { throw Failure.invalid };return n.uint64Value
+    }
+    static func ref(_ value: Any?) throws -> [String:Any] {
+        guard let row=value as? [String:Any],Set(row.keys)==Set(["kind","id","contentChecksum"]),let kind=row["kind"] as? String,let id=row["id"] as? String,
+            ["country","writer","biography","work","character","storyworld","fact","quote","activity","quiz","search-result","recommendation","favorite","recent","offline-package","deep-link"].contains(kind),id.range(of:"\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z",options:.regularExpression) != nil else { throw Failure.invalid }
+        _ = try hex(row["contentChecksum"],count:64);return row
+    }
+    static func decode(_ method: String,_ input: [String:Any]) throws -> Request {
+        try require(methods.contains(method));var keys=Set(["version","requestId"])
+        if method != "bootstrap" { keys.insert("contextToken") }
+        switch method { case "perform":keys.formUnion(["action","target"]);case "readEntity":keys.insert("reference");case "search":keys.insert("query");case "readCollection":keys.insert("collection");case "writeCollection":keys.formUnion(["collection","expectedRevision","references"]);default:break }
+        try require(Set(input.keys)==keys);_ = try integer(input["version"],minimum:2,maximum:2);let id=try hex(input["requestId"],count:32)
+        let token: String?;if method=="bootstrap" || (method=="perform" || method=="retire") && input["contextToken"] is NSNull { token=nil } else { token=try hex(input["contextToken"],count:32) }
+        var action: String?,target: Data?,reference: [String:Any]?,query: String?,collection: String?,revision: UInt64?,references: [[String:Any]]?
+        if method=="perform" {
+            guard let name=input["action"] as? String,actions.contains(name) else { throw Failure.invalid };action=name
+            if !(input["target"] is NSNull) { guard let draft=input["target"],JSONSerialization.isValidJSONObject(draft) else { throw Failure.invalid };let bytes=try JSONSerialization.data(withJSONObject:draft,options:[.sortedKeys,.withoutEscapingSlashes]);try require(bytes.count<=65536);target=Data(Array(bytes)) }
+            if name=="first-install" { try require(token==nil && target==nil) } else { try require(token != nil) }
+            if ["enroll-pin","replace-pin","recover-pin"].contains(name) { try require(target==nil) }
+        }
+        if method=="readEntity" { reference=try ref(input["reference"]) }
+        if method=="search" { guard let text=input["query"] as? String,text.utf16.count<=120,text.range(of:"[\\x00-\\x1f\\x7f]",options:.regularExpression)==nil else { throw Failure.invalid };query=text }
+        if method=="readCollection" || method=="writeCollection" { guard let name=input["collection"] as? String,collections.contains(name) else { throw Failure.invalid };collection=name }
+        if method=="writeCollection" { revision=try integer(input["expectedRevision"]);guard let values=input["references"] as? [Any],values.count<=64 else { throw Failure.invalid };references=try values.map(ref);let identities=references!.map { ($0["kind"] as! String)+"/"+($0["id"] as! String) };try require(Set(identities).count==identities.count) }
+        return Request(method:method,id:id,token:token,action:action,target:target,reference:reference,query:query,collection:collection,expectedRevision:revision,references:references)
+    }
+}
+
+/** Actual V2 dispatcher retains the SDK owner; the v1 structural data endpoint
+ * above remains separate and supplies no authority to this endpoint. */
+final class PlanetChildLocalV2DataTransport {
+    typealias Reply = ([String:Any]) -> Void
+    private let owner: PlanetChildLocalV2SDKOwner
+    init(owner: PlanetChildLocalV2SDKOwner) { self.owner=owner }
+    func invoke(_ method: String,_ input: [String:Any],reply: @escaping Reply) {
+        do { let captured=try PlanetChildLocalV2Wire.decode(method,input);owner.execute(captured,reply:reply) }
+        catch { owner.malformed(method,input,reply:reply) }
+    }
+    func routeWillChange() { owner.routeWillChange() }
+}
+
+extension PlanetChildLocalV2Wire {
+    static func refusal(_ method: String,_ input: [String:Any],reason: String,generation: UInt64=0) -> [String:Any] {
+        let id=(try? hex(input["requestId"],count:32)) ?? String(repeating:"0",count:32),token=(try? hex(input["contextToken"],count:32))
+        if method=="retire" { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token as Any? ?? NSNull()] }
+        if ["readEntity","search","readCollection","writeCollection"].contains(method) { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token ?? String(repeating:"0",count:32),"generation":generation,"value":NSNull()] }
+        return ["version":2,"requestId":id,"status":"unavailable","reason":reason,"context":NSNull(),"profiles":[]]
+    }
+}

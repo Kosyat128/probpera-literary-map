@@ -1,0 +1,1 @@
+{"schemaVersion":2,"kind":"literary-planet-child-local-policy-v2","version":"child-local-v2.1","pinIterations":600000,"maxPinIterations":1200000,"backoffDelaysMs":[1000,5000,15000,60000,300000]}

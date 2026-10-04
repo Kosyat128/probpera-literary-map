@@ -172,4 +172,19 @@ public class PlanetChildDataStoreRuntimeTest {
             assertFalse(directory.exists());KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);assertFalse(keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));
         }}
 
+
+    /** AUTHORED_NOT_RUN. Codec leaves use synthetic bytes, not admitted authority. */
+    @Test public void localV2AppCollectionTrailerKeepsLegacyBytesAndInactiveProfiles()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();assertTrue(PlanetChildDataStore.fixtureSDKCollections(context,"trailer"));
+    }
+    @Test public void localV2AppCollectionTombstonesAdvanceRemovalAndReAddCAS()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();assertTrue(PlanetChildDataStore.fixtureSDKCollections(context,"tombstones"));
+    }
+    @Test public void localV2AppCollectionPendingDeniesUnknownReopen()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("c1");File directory=bootstrapDirectory(context,runId);assertFalse(directory.exists());
+        PlanetChildDataStore fixture=PlanetChildDataStore.synthetic(context,runId);fixture.close();File record=new File(directory,"snapshot-v1"),marker=new File(directory,"local-v2-collection.pending");byte[] cipher=boundedFile(record),pending=("LP-LOCAL-V2-COLLECTION\nunknown-native-command-not-joined\n"+runId+"\n"+HASH+"\n").getBytes(StandardCharsets.US_ASCII);
+        try{try(FileOutputStream out=new FileOutputStream(marker)){out.write(pending);out.getFD().sync();}denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));assertArrayEquals(cipher,boundedFile(record));assertArrayEquals(pending,boundedFile(marker));
+            KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);assertTrue(keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));
+        }finally{Arrays.fill(cipher,(byte)0);Arrays.fill(pending,(byte)0);}
+    }
 }
