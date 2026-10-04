@@ -572,10 +572,10 @@ export async function runNativeInstallRuntime(options = {}) {
   if (pinVerificationInputOnly) { report.fixture = { class: pinVerificationInputClass, tests: 13, phase: 'input', scope: 'native-ui-with-synthetic-authority-storage-kdf', runMetadataOnly: true, installedStorageAcceptance: false, parentGateAdmission: false };
     report.limits.push('Selected thirteen-case native UI fixture uses synthetic authority/storage/KDF; no ParentGate, installed-storage, genuine-provider or release acceptance.'); }
   if (childLocalV2PinOperationsOnly) {
-    report.fixture = { class: childLocalV2PinOperationsClass, selection: childLocalV2PinOperationsSelection, methods: [...childLocalV2PinOperationsTestMethods], tests: 9, enclosingClassCompiledTests: 48,
+    report.fixture = { class: childLocalV2PinOperationsClass, selection: childLocalV2PinOperationsSelection, methods: [...childLocalV2PinOperationsTestMethods], tests: 9,
       phase: 'first-install-v2', scope: 'private-native-local-v2-boundary-mechanics', noninteractive: true, runMetadataOnly: true,
       wholeFixtureAcceptance: false, realOsOwnerUiAcceptance: false, nativeKeyspacePersistenceAcceptance: false, installedStorageAcceptance: false, parentGateAdmission: false };
-    report.limits.push('Selected nine noninteractive Local V2 methods prove private native boundary mechanics only; no real OS-owner UI, native keyspace persistence, ParentGate/admission, installed-storage or release acceptance. All 48 compiled instrumentation methods remain a separate scope.');
+    report.limits.push('Selected nine noninteractive Local V2 methods prove private native boundary mechanics only; no real OS-owner UI, native keyspace persistence, ParentGate/admission, installed-storage or release acceptance. Unselected instrumentation methods remain a separate scope.');
   }
   const abort = new AbortController(), interrupt = () => abort.abort();
   process.once('SIGINT', interrupt); process.once('SIGTERM', interrupt);

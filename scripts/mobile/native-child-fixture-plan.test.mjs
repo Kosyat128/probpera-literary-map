@@ -290,7 +290,7 @@ describe('native Local V2 PIN operations runner',()=>{
     const root=await mkdtemp(path.join(tmpdir(),'literary-local-v2-pin-preflight-'));
     try{const report=await runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2PinOperations:true,runId,outDir:'.tmp/local-v2-preflight'});
       expect(report.kind).toBe('literary-planet-child-local-v2-pin-operations-runtime');expect(report.commands).toEqual([]);expect(report.installed).toBe(false);expect(report.releaseReady).toBe(false);
-      expect(report.fixture).toMatchObject({tests:9,phase:'first-install-v2',noninteractive:true,wholeFixtureAcceptance:false,realOsOwnerUiAcceptance:false,nativeKeyspacePersistenceAcceptance:false,installedStorageAcceptance:false,parentGateAdmission:false});
+      expect(report.fixture).toMatchObject({tests:9,phase:'first-install-v2',noninteractive:true,wholeFixtureAcceptance:false,realOsOwnerUiAcceptance:false,nativeKeyspacePersistenceAcceptance:false,installedStorageAcceptance:false,parentGateAdmission:false});expect(report.fixture).not.toHaveProperty('enclosingClassCompiledTests');
       expect(report.fixture.methods).toEqual(methods);expect(report.fixture.selection).toBe(selection);expect(report.status).toBe('BLOCKED_EXTERNAL');
       const saved=JSON.parse(await readFile(path.join(root,'.tmp','local-v2-preflight','result.json'),'utf8'));expect(saved.commands).toEqual([]);expect(saved.fixture.wholeFixtureAcceptance).toBe(false);
     }finally{await rm(root,{recursive:true,force:true});}
