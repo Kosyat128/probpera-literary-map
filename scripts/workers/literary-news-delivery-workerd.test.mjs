@@ -77,7 +77,7 @@ async function runWorkerd({redirect=false,photo=false}={}){
       }
       if(url.pathname.endsWith('/literary_news_delivery_day_status')){
         const count=[...rows.values()].filter(row=>row.state.firstAcknowledgedAt===current.toISOString()).length;
-        return Response.json({editorialDay:'2026-10-03',timeZone:'Europe/Moscow',minimum:10,maximum:15,
+        return Response.json({editorialDay:'2026-10-03',timeZone:'Europe/Moscow',minimum:10,maximum:20,
           acknowledgedCreates:count,acknowledgedPhotoCreates:count,freshCreates:count,freshPhotoCreates:count,
           legacyReceiptsWithUnknownFirstDate:0,deficitToMinimum:10-count});
       }
@@ -129,6 +129,39 @@ describe('native delivery under the actual Workers fetch implementation',()=>{
       .toEqual(expect.arrayContaining(['https://publisher.example/books/new','https://probpera.ru/#literary-news']));
     expect(rows.get(newsPostKey('isolated-photo-news',destination)).state).toMatchObject({status:'sent_current',remoteId:'901',
       remoteMediaKind:'photo',firstAcknowledgedAt:current.toISOString(),acknowledgedAt:current.toISOString(),dispatchStartedAt:null});
+    const pacing=rows.get(`history:pacing:telegram:${destination.id}`).state;
+    expect(pacing).toMatchObject({schemaVersion:4,minIntervalSeconds:2700,maxIntervalSeconds:3300,dailyLimit:20,scheduleToleranceSeconds:0});
+    expect(pacing.intervalSeconds).toBeGreaterThanOrEqual(2700);expect(pacing.intervalSeconds).toBeLessThanOrEqual(3300);
+    expect(Date.parse(pacing.nextDueAt)-Date.parse(pacing.reservedAt)).toBe(pacing.intervalSeconds*1000);
     expect(heartbeats).toHaveLength(1);expect(heartbeats[0].p_state.acknowledgedCreatesThisRun).toBe(1);
+  },15000);
+  it('persists the hourly capture gate in real Durable Object storage between five-minute polls',async()=>{
+    const result=await build({stdin:{contents:`
+      import { captureNativeNewsOncePerHour } from './literary-news-delivery-worker.mjs';
+      export class CaptureFixture {
+        constructor(state){this.storage=state.storage;}
+        async fetch(request){
+          const current=new Date(new URL(request.url).searchParams.get('now'));
+          const summary=await captureNativeNewsOncePerHour({storage:this.storage,current,capture:async()=>{
+            const count=(await this.storage.get('captures')||0)+1;
+            await this.storage.put('captures',count);
+            return {status:'admissions_captured',captures:count};
+          }});
+          return Response.json({...summary,captures:await this.storage.get('captures')});
+        }
+      }
+      export default { fetch(request,env){return env.CAPTURE.get(env.CAPTURE.idFromName('isolated-capture')).fetch(request);} };
+    `,resolveDir:fileURLToPath(new URL('.',import.meta.url))},bundle:true,write:false,format:'esm',platform:'browser',target:'es2022',external:['node:*'],logLevel:'silent'});
+    const runtime=new Miniflare(convertV4MiniflareOptions({name:'isolated-capture-gate',modules:true,script:result.outputFiles[0].text,
+      compatibilityDate:'2026-08-18',compatibilityFlags:['nodejs_compat'],cf:false,log:new Log(LogLevel.NONE),logRequests:false,
+      durableObjects:{CAPTURE:{className:'CaptureFixture',useSQLite:true}},
+      outboundService:async()=>{throw Error('unexpected_network_request');}}));
+    try{
+      const poll=async time=>(await runtime.dispatchFetch('https://fixture.internal/capture?now='+encodeURIComponent(time))).json();
+      expect(await poll('2026-10-04T07:05:00Z')).toMatchObject({status:'admissions_captured',captures:1});
+      expect(await poll('2026-10-04T07:10:00Z')).toMatchObject({status:'capture_not_due',captures:1});
+      expect(await poll('2026-10-04T07:55:00Z')).toMatchObject({status:'capture_not_due',captures:1});
+      expect(await poll('2026-10-04T08:05:00Z')).toMatchObject({status:'admissions_captured',captures:2});
+    }finally{await runtime.dispose();}
   },15000);
 });

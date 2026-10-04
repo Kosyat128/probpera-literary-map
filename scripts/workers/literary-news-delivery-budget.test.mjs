@@ -53,7 +53,7 @@ async function sdkFixture({corrections=0,creates=0,photo=true,receiptConflicts=0
   const status=()=>{
     const acknowledged=[...rows.values()].map(row=>row.state).filter(job=>job.firstAcknowledgedAt===current.toISOString());
     const photos=acknowledged.filter(job=>job.remoteMediaKind==='photo').length;
-    return {editorialDay:'2026-10-02',timeZone:'Europe/Moscow',minimum:10,maximum:15,
+    return {editorialDay:'2026-10-02',timeZone:'Europe/Moscow',minimum:10,maximum:20,
       acknowledgedCreates:acknowledged.length,acknowledgedPhotoCreates:photos,freshCreates:acknowledged.length,freshPhotoCreates:photos,
       legacyReceiptsWithUnknownFirstDate:0,deficitToMinimum:Math.max(0,10-acknowledged.length)};
   };

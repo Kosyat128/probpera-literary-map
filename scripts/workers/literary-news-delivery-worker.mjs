@@ -6,7 +6,7 @@ import { createNewsRuntimeStore, dispatchNewsJob, newsPostKey,reconcileNewsSnaps
 import { currentNativeNewsDueRows, fetchNativeNewsAdmissionFeed, selectNativeNewsAdmissionIds } from '../lib/literary-news-native-admissions.mjs';
 import { fallbackUnsentNewsPhoto } from '../lib/literary-news-text-fallback.mjs';
 import { createNewsSocialTransport } from '../lib/literary-news-social-transport-core.mjs';
-import { newsDeliveryPacingKey, newsDeliveryPublicationWindow } from '../lib/literary-news-pacing.mjs';
+import { NEWS_DAILY_TARGET, newsDeliveryPacingKey, newsDeliveryPublicationWindow } from '../lib/literary-news-pacing.mjs';
 import { newsAnnouncementEligible } from '../lib/literary-news-reviewed.mjs';
 import { DAILY_NEWS_WINDOW, dailyPublicationEpoch } from '../lib/literary-news-daily-profile.mjs';
 import { trustedSupabaseOrigin } from '../lib/trusted-server-url.mjs';
@@ -83,7 +83,7 @@ export function rotatingNativeNewsCaptureIds(feed,current) {
   return ids.slice(group*DELIVERY_CAPTURE_LIMIT,(group+1)*DELIVERY_CAPTURE_LIMIT);
 }
 
-/** Preserve each group's existing photo/age order, while giving a new create
+/** Preserve each group's existing admission-age order, while giving a new create
  * and a durable correction one slot each when both are available. */
 export function mixedNativeNewsJobs(jobs) {
   const ordered=scheduleNewsJobs(jobs),creates=ordered.filter(job=>!job.remoteId),corrections=ordered.filter(job=>job.remoteId);
@@ -124,7 +124,9 @@ async function requiredRpc(client,name,args) {
 }
 
 export function checkedDeliveryDayStatus(value,current) {
-  if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||value.minimum!==10||value.maximum!==15
+  // Accept the prior lower reporting ceiling during the worker-first rollout;
+  // the durable pacing reservation independently enforces the active cap.
+  if(!value||value.editorialDay!==dayOf(current)||value.timeZone!=='Europe/Moscow'||value.minimum!==10||![15,NEWS_DAILY_TARGET.maximum].includes(value.maximum)
     || ['acknowledgedCreates','acknowledgedPhotoCreates','freshCreates','freshPhotoCreates','legacyReceiptsWithUnknownFirstDate','deficitToMinimum']
       .some(key=>!Number.isSafeInteger(value[key])||value[key]<0)
     ||value.freshPhotoCreates>value.freshCreates||value.freshCreates>value.acknowledgedCreates
@@ -309,6 +311,17 @@ export async function runDeliveryTick({env,now=()=>new Date(),fetchImpl=fetch,cr
 
 export const runDeliveryCaptureTick=options=>runDeliveryTick({...options,invocation:'capture'});
 
+/** Five-minute polling must not re-download/reconcile the same four admissions
+ * twelve times an hour. Persist only successful capture, so a missed :00 tick,
+ * restart or temporary failure is recovered by the next poll. */
+export async function captureNativeNewsOncePerHour({storage,current=new Date(),capture}) {
+  const hour=Math.floor(current.getTime()/3600000),key='literary-news:capture-hour';
+  if(await storage.get(key)===hour)return {runner:'native-cron',invocation:'capture',status:'capture_not_due',deliveredThisRun:0};
+  const summary=await capture();
+  if(summary.status==='admissions_captured')await storage.put(key,hour);
+  return summary;
+}
+
 /** The shared job path rechecks control/lease/pacing and the atomic SQL guard.
  * Avoid a redundant batch-control read for each of the two explicit jobs. */
 async function dispatchNativeNewsJob({store,jobs,transport,now}){
@@ -323,12 +336,17 @@ async function dispatchNativeNewsJob({store,jobs,transport,now}){
 /** SDK, JSON/hash validation and dispatch run under the Durable Object CPU budget.
  * Existing Supabase CAS and shared provider pacing remain the dispatch fence. */
 export class LiteraryNewsDeliveryCoordinator {
-  constructor(state,env){this.env=env;}
+  constructor(state,env){this.env=env;this.storage=state.storage;this.captureInFlight=null;}
   async fetch(request){
     const path=new URL(request.url).pathname;
     if(request.method!=='POST'||!['/capture','/dispatch'].includes(path))
       return new Response(null,{status:404});
-    const summary=await runDeliveryTick({env:this.env,invocation:path==='/capture'?'capture':'dispatch'});
+    let summary;
+    if(path==='/capture'&&this.env.NEWS_DELIVERY_ENABLED==='true'){
+      this.captureInFlight??=captureNativeNewsOncePerHour({storage:this.storage,
+        capture:()=>runDeliveryCaptureTick({env:this.env})});
+      try{summary=await this.captureInFlight;}finally{this.captureInFlight=null;}
+    } else summary=await runDeliveryTick({env:this.env,invocation:path==='/capture'?'capture':'dispatch'});
     return Response.json(summary,{status:summary.status==='blocked'?503:200});
   }
 }

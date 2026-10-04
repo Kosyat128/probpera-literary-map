@@ -23,7 +23,7 @@ function providerFixture(expected = "enabled", override = () => null) {
     { bindings: preparationBindings(expected) },
     { schedules: [{ cron: "17 */2 * * *" }] },
     { bindings: [{ name: "NEWS_DELIVERY_ENABLED", type: "plain_text", text: ["enabled", "delivery-only"].includes(expected) ? "true" : "false" }] },
-    { schedules: [{ cron: "0 5-19 * * *" }] },
+    { schedules: [{ cron: "*/5 5-19 * * *" }] },
   ];
   const fetchImpl = vi.fn(async (url, options) => {
     const index = calls.length;
@@ -55,7 +55,7 @@ describe("native worker activation read-only postflight", () => {
     expect(result).toMatchObject({ readonly: true, externalWrites: 0, providerRequests: 4, expected, deliveryConfirmed: false });
     expect(result.workers).toEqual([
       { worker: "probpera-literary-news-preparation", flags: { NEWS_AUTOMATION_ENABLED: String(expected === "enabled"), NEWS_AUTOMATION_BOOTSTRAP: String(expected === "enabled"), NEWS_AUTOMATION_WRITER: "native" }, cronUtc: "17 */2 * * *" },
-      { worker: "probpera-literary-news-delivery", flags: { NEWS_DELIVERY_ENABLED: String(["enabled", "delivery-only"].includes(expected)) }, cronUtc: "0 5-19 * * *" },
+      { worker: "probpera-literary-news-delivery", flags: { NEWS_DELIVERY_ENABLED: String(["enabled", "delivery-only"].includes(expected)) }, cronUtc: "*/5 5-19 * * *" },
     ]);
     expect(Number.isFinite(Date.parse(result.checkedAt))).toBe(true);
     expect(JSON.stringify(result)).not.toMatch(/provider_private|SUPABASE_SERVICE_ROLE_KEY|TELEGRAM_BOT_TOKEN|UNRELATED_PRIVATE_SETTING|test_only_private_token_marker/);
@@ -158,7 +158,7 @@ describe("native worker activation read-only postflight", () => {
     expect(result.workers[0].flags).toEqual({ NEWS_AUTOMATION_ENABLED: String(actual === "enabled"),
       NEWS_AUTOMATION_BOOTSTRAP: String(actual === "enabled"), NEWS_AUTOMATION_WRITER: "native" });
     expect(result.workers[1].flags).toEqual({ NEWS_DELIVERY_ENABLED: "true" });
-    expect(result.workers.map(row => row.cronUtc)).toEqual(["17 */2 * * *", "0 5-19 * * *"]);
+    expect(result.workers.map(row => row.cronUtc)).toEqual(["17 */2 * * *", "*/5 5-19 * * *"]);
     for (const { url, options } of fixture.calls) {
       expect(options.method).toBe("GET"); expect(options.redirect).toBe("error"); expect(options.body).toBeUndefined();
       expect(url.origin).toBe("https://api.cloudflare.com");

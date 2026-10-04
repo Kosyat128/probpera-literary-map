@@ -40,7 +40,7 @@ try {
   const base = { destination, status: 'pending', nextDueAt: now, prepared: { media: { assetId: 'fixture' },
     temporal: { kind: 'news', publishedAt: '2026-09-29' } } };
   const insert = async (id, change = {}) => db.query("insert into public.admin_audit_log(entity_type,entity_id,metadata) values('literary_news_runtime',$1,$2)",
-    ['post:news:' + id + ':telegram:' + destination.id, { ...base, ...change }]);
+    ['post:news:' + id + ':telegram:' + (change.destination || destination).id, { ...base, ...change }]);
   await insert('fresh'); await insert('already-sent', { status: 'pending' });
   await insert('already-sent', { status: 'sent_current', remoteId: '1', remoteMediaKind: 'photo', firstAcknowledgedAt: now });
   await insert('old', { prepared: { ...base.prepared, temporal: { kind: 'news', publishedAt: '2025-01-01' } } });
@@ -65,12 +65,13 @@ try {
   const eligible = (await due()).rows;
   assert.deepEqual(eligible.map(row => row.entity_id.split(':')[2]).sort(), ['correction', 'expired-inflight', 'fresh', 'text-only']);
   assert.equal(eligible[0].metadata.remoteId, '3');
-  assert.equal(eligible.at(-1).entity_id.split(':')[2], 'text-only');
-  checks.push('due-only bounded photo priority and timely text fallback, corrections, leases and corrupt timestamps');
+  assert.equal(eligible.some(row => row.entity_id.split(':')[2] === 'text-only'), true);
+  checks.push('due-only mixed-format queue, corrections, leases and corrupt timestamps');
   const status = () => db.query('select public.literary_news_delivery_day_status($1,$2) as value', [destination.id, now]);
   const day = (await status()).rows[0].value;
   assert.equal(day.editorialDay, '2026-09-29'); assert.equal(day.freshPhotoCreates, 2);
   assert.equal(day.freshCreates, 3); assert.equal(day.deficitToMinimum, 7);
+  assert.equal(day.minimum, 10); assert.equal(day.maximum, 20);
   assert.equal(day.legacyReceiptsWithUnknownFirstDate, 3);
   checks.push('Moscow-day fresh first receipts in both formats, old edits excluded, legacy dates unknown');
   await db.exec('reset role');
@@ -100,14 +101,52 @@ try {
     metadata: { ...row.metadata, key: row.entity_id, newsId: row.entity_id.split(':')[2] } }));
   assert.equal(checkedDeliveryDueRows(runtimeAnnouncements, destination, new Date(now)).length, announcements.length);
   checks.push('twenty expired announcements cannot starve fresh news; future and Moscow-verified today survive before LIMIT, corrections retained');
+  await db.exec('reset role');
+  const crowdedDestination = { ...destination, id: '-100456' };
+  const insertCrowded = async (id, change = {}) => insert(id, { ...change, destination: crowdedDestination });
+  // Put the earliest text admission behind twenty-five newer photos by article
+  // publication date. The bounded page must follow arrival age, not media type
+  // or publication date, and must leave space even with many corrections due.
+  await insertCrowded('oldest-text', { originalAdmission: '2026-09-28T00:00:00.000Z',
+    prepared: { media: null, temporal: { kind: 'news', publishedAt: '2026-09-29T11:59:00Z' } } });
+  for (let index = 0; index < 25; index++) {
+    const admission = `2026-09-29T10:${String(index).padStart(2, '0')}:00.000Z`;
+    await insertCrowded('photo-' + index, { originalAdmission: admission,
+      prepared: { ...base.prepared, temporal: { kind: 'news', publishedAt: '2026-09-28' } } });
+    await insertCrowded('edit-' + index, { status: 'correction_pending', remoteId: String(100 + index),
+      originalAdmission: admission });
+  }
+  await insertCrowded('newest-text', { originalAdmission: '2026-09-29T11:00:00.000Z',
+    prepared: { ...base.prepared, media: null } });
+  await db.exec('set role service_role');
+  const crowded = (await db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,20)',
+    [crowdedDestination.id, now])).rows;
+  const creates = crowded.filter(row => !row.metadata.remoteId);
+  assert.equal(crowded.length, 20); assert.equal(creates.length, 10);
+  assert.equal(new Set(crowded.map(row => row.entity_id)).size, 20);
+  assert.deepEqual(creates.slice(0, 2).map(row => row.entity_id.split(':')[2]), ['oldest-text', 'newest-text']);
+  assert.equal(creates.some(row => row.metadata.prepared.media?.assetId), true);
+  const firstPair = (await db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,2)',
+    [crowdedDestination.id, now])).rows;
+  assert.equal(firstPair.length, 2); assert.equal(firstPair.filter(row => row.metadata.remoteId).length, 1);
+  const { scheduleNewsJobs } = await import('./lib/literary-news-social.mjs');
+  const scheduled = scheduleNewsJobs(crowded.map(row => ({ ...row.metadata, key: row.entity_id })));
+  assert.equal(scheduled.find(row => !row.remoteId).key.split(':')[2], 'oldest-text');
+  assert.deepEqual((await db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,20)',
+    [crowdedDestination.id, now])).rows.map(row => row.entity_id), crowded.map(row => row.entity_id));
+  checks.push('bounded page shares corrections and creates, keeps oldest and newest arrivals regardless of image, and schedules oldest text before twenty-five photos');
   await assert.rejects(db.query('select * from public.read_due_literary_news_runtime_posts($1,$2,21)', [destination.id, now]));
   for (const role of ['anon', 'authenticated']) {
     await db.exec('reset role; set role ' + role); await assert.rejects(due()); await assert.rejects(status());
   }
   checks.push('due and day stats denied to public authenticated clients');
   await db.exec('reset role');
-  const definitions = (await db.query("select prosecdef from pg_proc where proname in ('read_due_literary_news_runtime_posts','literary_news_delivery_day_status')")).rows;
+  const definitions = (await db.query("select prosecdef,proconfig from pg_proc where proname in ('read_due_literary_news_runtime_posts','literary_news_delivery_day_status')")).rows;
   assert.equal(definitions.length, 2); assert.equal(definitions.every(row => row.prosecdef === false), true);
+  assert.equal(definitions.every(row => row.proconfig.includes('search_path=""')), true);
+  const rowsBeforeReapply = (await db.query('select count(*)::int as count from public.admin_audit_log')).rows[0].count;
+  await db.exec(await readFile(new URL('./database/literary-news-runtime-latest-query.sql', import.meta.url), 'utf8'));
+  assert.equal((await db.query('select count(*)::int as count from public.admin_audit_log')).rows[0].count, rowsBeforeReapply);
   checks.push('all new RPCs preserve invoker RLS and immutable journal');
   console.log(JSON.stringify({ status: "passed", checks, remoteDatabaseWrites: 0 }, null, 2));
 } finally { await db.close(); }

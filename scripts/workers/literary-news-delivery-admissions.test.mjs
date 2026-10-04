@@ -41,7 +41,7 @@ function memoryStore() {
   };
   store.seed(controlKey, { mode: 'on', paused: false, historyReconciled: true }); return store;
 }
-const dayStatus = creates => ({ editorialDay: '2026-10-02', timeZone: 'Europe/Moscow', minimum: 10, maximum: 15,
+const dayStatus = creates => ({ editorialDay: '2026-10-02', timeZone: 'Europe/Moscow', minimum: 10, maximum: 20,
   acknowledgedCreates: creates, acknowledgedPhotoCreates: 0, freshCreates: creates, freshPhotoCreates: 0,
   legacyReceiptsWithUnknownFirstDate: 0, deficitToMinimum: Math.max(0, 10 - creates) });
 async function tickFixture(feed, { store = memoryStore(), response = () => publicResponse(feed), missingIndex = false } = {}) {
