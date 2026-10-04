@@ -3969,3 +3969,663 @@ enum PlanetChildOwnerPermissionRuntimeFixture {
     }
 }
 #endif
+
+// Explicit local first-install V2 prerequisite. V1 factories/clock/storage stay
+// unchanged and unavailable. This add-only seed is not nonrollback authority,
+// trusted epoch/boot time, guardian status, AES-data provisioning or App admission.
+extension PlanetChildVault {
+    struct LocalEmptySeedV2 {
+        static func canonicalBytes(policyVersion: String, policyChecksum: String) throws -> Data {
+            guard policyVersion.range(of:"\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z",options:.regularExpression) != nil,
+                NativePinSessions.hash(policyChecksum) else { throw Failure.unavailable }
+            let registry=Data("{\"schemaVersion\":1,\"policyVersion\":\"\(policyVersion)\",\"activeProfileId\":null,\"profiles\":[]}".utf8)
+            let registryHash=PlanetChildVault.digest(registry)
+            return Data(("{\"schemaVersion\":2,\"revision\":1,\"mode\":\"adult\",\"selectionRevision\":1,\"profileRevision\":1,\"policyChecksum\":\"\(policyChecksum)\",\"registryChecksum\":\"\(registryHash)\",\"registry\":"
+                + String(decoding:registry,as:UTF8.self) + ",\"pin\":null,\"clock\":{\"schemaVersion\":2,\"logicalMs\":0}}").utf8)
+        }
+        static func validate(_ input: Data, policyVersion: String, policyChecksum: String) throws -> String {
+            guard !input.isEmpty,input.count<=PlanetChildVault.maxBytes else { throw Failure.unavailable }
+            var owned=Data(Array(input)),canonical=try canonicalBytes(policyVersion:policyVersion,policyChecksum:policyChecksum)
+            defer { owned.resetBytes(in:0..<owned.count);canonical.resetBytes(in:0..<canonical.count) }
+            guard owned==canonical else { throw Failure.unavailable };return PlanetChildVault.digest(owned)
+        }
+    }
+    fileprivate final class FirstInstallStoreV2: PinFirstInstallStoreV2, PinFirstInstallTransactionV2 {
+        private let vault: PlanetChildVault
+        init(_ vault: PlanetChildVault) { self.vault=vault }
+        private func query() -> [String:Any] {
+            [kSecClass as String:kSecClassGenericPassword,kSecAttrService as String:"ru.probpera.literaryplanet.literary-planet-child-vault-v2",
+             kSecAttrAccount as String:"child-full-record-v2",kSecAttrSynchronizable as String:false]
+        }
+        private func absent(_ query: [String:Any]) throws {
+            var all=query;all[kSecAttrSynchronizable as String]=kSecAttrSynchronizableAny
+            all[kSecUseAuthenticationUI as String]=kSecUseAuthenticationUIFail
+            guard SecItemCopyMatching(all as CFDictionary,nil)==errSecItemNotFound else { throw Failure.unavailable }
+        }
+        func requireAbsent() throws {
+            try absent(vault.query());try absent(query())
+            try absent([kSecClass as String:kSecClassGenericPassword,
+                kSecAttrService as String:"ru.probpera.literaryplanet.literary-planet-child-data-v1",kSecAttrAccount as String:"child-data-aes-v1"])
+            // lstat distinguishes genuine absence from locked/unreadable state;
+            // the entire old data directory is a footprint, even an empty one.
+            let parent=try FileManager.default.url(for:.applicationSupportDirectory,in:.userDomainMask,appropriateFor:nil,create:false).resolvingSymlinksInPath().standardizedFileURL
+            let data=parent.appendingPathComponent("literary-planet-child-data-v1",isDirectory:true)
+            guard parent.resolvingSymlinksInPath().standardizedFileURL==parent.standardizedFileURL else { throw Failure.unavailable }
+            var named=stat();guard lstat(data.path,&named) != 0,errno==ENOENT else { throw Failure.unavailable }
+        }
+        func locked<T>(_ work: (PinFirstInstallTransactionV2) throws -> T) throws -> T { try vault.locked { try work(self) } }
+        func create(_ seed: Data,boundary: () throws -> Void) throws {
+            try requireAbsent();try boundary()
+            var item=query();item[kSecValueData as String]=seed;item[kSecAttrAccessible as String]=kSecAttrAccessibleWhenUnlockedThisDeviceOnly
+            // No update/delete/reset/retry. Any ambiguous/late add leaves its item
+            // sealed; the next explicit request observes that footprint and denies.
+            guard SecItemAdd(item as CFDictionary,nil)==errSecSuccess else { throw Failure.unavailable }
+            var read=query();read[kSecReturnData as String]=true;read[kSecReturnAttributes as String]=true;read[kSecMatchLimit as String]=kSecMatchLimitOne
+            var result: CFTypeRef?
+            guard SecItemCopyMatching(read as CFDictionary,&result)==errSecSuccess,let actual=result as? [String:Any],
+                var bytes=actual[kSecValueData as String] as? Data,
+                actual[kSecAttrAccessible as String] as? String == kSecAttrAccessibleWhenUnlockedThisDeviceOnly as String
+                else { throw Failure.unavailable }
+            defer { bytes.resetBytes(in:0..<bytes.count) };guard bytes==seed else { throw Failure.unavailable };try boundary()
+            // OS add acknowledgement + exact readback only, not a power-loss or
+            // nonrollback checkpoint guarantee. Durable receipt has this scope.
+        }
+    }
+}
+fileprivate protocol PinFirstInstallTransactionV2: AnyObject {
+    func requireAbsent() throws
+    func create(_ seed: Data,boundary: () throws -> Void) throws
+}
+fileprivate protocol PinFirstInstallStoreV2: AnyObject {
+    func locked<T>(_ work: (PinFirstInstallTransactionV2) throws -> T) throws -> T
+}
+fileprivate extension ApplePinOwnerKeys {
+    func firstInstallAcquire(context: LAContext,prompt: String) throws -> PinOwnerKey {
+        func loadWithoutPrompt() throws -> PinOwnerKey? {
+            // Attaching the fresh context preserves the actual subsequent sign
+            // prompt. Key lookup under the native IO lock itself must never show UI.
+            let query: [CFString:Any]=[kSecClass:kSecClassKey,kSecAttrApplicationTag:tag,kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,
+                kSecAttrKeyClass:kSecAttrKeyClassPrivate,kSecReturnRef:true,kSecReturnAttributes:true,kSecMatchLimit:kSecMatchLimitOne,
+                kSecUseAuthenticationContext:context,kSecUseOperationPrompt:prompt]
+            var result: CFTypeRef?;let status=SecItemCopyMatching(query as CFDictionary,&result)
+            if status==errSecItemNotFound { return nil }
+            guard status==errSecSuccess,let item=result as? [String:Any],let ref=item[kSecValueRef as String],
+                CFGetTypeID(ref as CFTypeRef)==SecKeyGetTypeID(),let acl=item[kSecAttrAccessControl as String],
+                CFGetTypeID(acl as CFTypeRef)==SecAccessControlGetTypeID(),CFEqual(acl as CFTypeRef,try access()),
+                item[kSecAttrAccessible as String] as? String == kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly as String
+                else { throw PlanetChildVault.Failure.unavailable }
+            let key=ref as! SecKey
+            guard let attributes=SecKeyCopyAttributes(key) as? [String:Any],
+                attributes[kSecAttrTokenID as String] as? String == kSecAttrTokenIDSecureEnclave as String,
+                attributes[kSecAttrKeyType as String] as? String == kSecAttrKeyTypeECSECPrimeRandom as String,
+                (attributes[kSecAttrKeySizeInBits as String] as? NSNumber)?.intValue==256,
+                let publicKey=SecKeyCopyPublicKey(key),SecKeyIsAlgorithmSupported(key,.sign,.ecdsaSignatureMessageX962SHA256),
+                SecKeyIsAlgorithmSupported(publicKey,.verify,.ecdsaSignatureMessageX962SHA256) else { throw PlanetChildVault.Failure.unavailable }
+            var error: Unmanaged<CFError>?
+            guard let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data?,bytes.count==65 else { throw PlanetChildVault.Failure.unavailable }
+            return PinOwnerKey(privateKey:key,publicKey:publicKey,publicBytes:bytes,source:source)
+        }
+        if let key=try loadWithoutPrompt() { return key }
+        var error: Unmanaged<CFError>?
+        let attributes: [CFString:Any]=[kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256,
+            kSecAttrTokenID:kSecAttrTokenIDSecureEnclave,kSecPrivateKeyAttrs:[kSecAttrIsPermanent:true,kSecAttrApplicationTag:tag,
+                kSecAttrAccessControl:try access(),kSecAttrIsExtractable:false]]
+        guard let created=SecKeyCreateRandomKey(attributes as CFDictionary,&error),let publicKey=SecKeyCopyPublicKey(created),
+            let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data?,let key=try loadWithoutPrompt(),key.publicBytes==bytes
+            else { throw PlanetChildVault.Failure.unavailable };return key
+    }
+}
+fileprivate final class AppleFirstInstallOwnerKeysV2: PinOwnerKeys {
+    let source: PinOwnerKeySource = .secureEnclave
+    private let keys=ApplePinOwnerKeys()
+    private func alias() throws {
+        // The alias probe deliberately does not narrow algorithm/key class. A
+        // conflicting public/RSA/duplicate item must not look like missing P256.
+        let query: [CFString:Any]=[kSecClass:kSecClassKey,kSecAttrApplicationTag:Data("ru.probpera.literaryplanet.child.pin.owner.passcode.v1".utf8),
+            kSecReturnAttributes:true,kSecMatchLimit:kSecMatchLimitAll,kSecAttrSynchronizable:kSecAttrSynchronizableAny,kSecUseAuthenticationUI:kSecUseAuthenticationUIFail]
+        var result: CFTypeRef?;let status=SecItemCopyMatching(query as CFDictionary,&result)
+        if status==errSecItemNotFound { return }
+        guard status==errSecSuccess,let rows=result as? [[String:Any]],rows.count==1,
+            rows[0][kSecAttrKeyType as String] as? String == kSecAttrKeyTypeECSECPrimeRandom as String,
+            rows[0][kSecAttrKeyClass as String] as? String == kSecAttrKeyClassPrivate as String else { throw PlanetChildVault.Failure.unavailable }
+    }
+    func acquire(enroll: Bool,context: LAContext,prompt: String) throws -> PinOwnerKey {
+        guard enroll else { throw PinKnownRefusal() };try alias();let original=try keys.firstInstallAcquire(context:context,prompt:prompt)
+        try alias();try keys.current(original);return original
+    }
+    func current(_ original: PinOwnerKey) throws { try alias();try keys.current(original) }
+    func sign(_ original: PinOwnerKey,message: Data) throws -> Data { try alias();return try keys.sign(original,message:message) }
+}
+fileprivate final class OriginalFirstInstallV2 {
+    let owner: NativeChildFirstInstallV2,wireId: String,seed: PinOwnedBytes,checksum: String,policy: PinSessionPolicy
+    let host: PinOwnerOriginalHost?,hostScope: String,generation: UInt64,locale: PinNativeInputLocale,nonce: Data
+    let capturedNs: UInt64,deadlineNs: UInt64
+    var started=false,cancelled=false,finished=false,cleanupFenced=false,retirementFenced=false,retired=false,spent=false,prompting=false
+    var worker=0,watcher=0,cancelling=0,events=0,provisioning=0,settling=0,cleanup=0,stopWatch=false
+    var workerThread: ObjectIdentifier?,provisionThread: ObjectIdentifier?,settleThread: ObjectIdentifier?,context: LAContext?,lastNs: UInt64
+    var proof: FirstInstallOwnerProofV2?,receipt: FirstInstallSeedReceiptV2?,observers=[NSObjectProtocol]()
+    var proofSettled=false,proofKnown=false,receiptSettled=false,receiptKnown=false
+    #if DEBUG
+    var syntheticCleanup: (() -> Void)?
+    #endif
+    init(owner: NativeChildFirstInstallV2,wireId: String,seed: Data,checksum: String,policy: PinSessionPolicy,host: PinOwnerOriginalHost?,hostScope: String,
+         generation: UInt64,locale: PinNativeInputLocale,nonce: Data,capturedNs: UInt64,deadlineNs: UInt64) {
+        self.owner=owner;self.wireId=wireId;self.seed=PinOwnedBytes(seed);self.checksum=checksum;self.policy=policy;self.host=host;self.hostScope=hostScope
+        self.generation=generation;self.locale=locale;self.nonce=Data(Array(nonce));self.capturedNs=capturedNs;self.deadlineNs=deadlineNs;lastNs=capturedNs
+    }
+    func close() { seed.close();proof?.close();proof=nil;receipt=nil } // After actual joins; break owned backing cycles.
+    deinit { close() }
+}
+fileprivate final class FirstInstallOwnerProofV2 {
+    let owner: NativeChildFirstInstallV2,request: OriginalFirstInstallV2,key: PinOwnerKey,message: PinOwnedBytes,signature: PinOwnedBytes
+    init(owner: NativeChildFirstInstallV2,request: OriginalFirstInstallV2,key: PinOwnerKey,message: Data,signature: Data) {
+        self.owner=owner;self.request=request;self.key=key;self.message=PinOwnedBytes(message);self.signature=PinOwnedBytes(signature)
+    }
+    func close() { message.close();signature.close() }
+    deinit { close() }
+}
+fileprivate final class FirstInstallSeedReceiptV2 {
+    let owner: NativeChildFirstInstallV2,request: OriginalFirstInstallV2,checksum: String
+    init(owner: NativeChildFirstInstallV2,request: OriginalFirstInstallV2) { self.owner=owner;self.request=request;checksum=request.checksum }
+}
+/** No public constructor/wire/factory. Only the actual original native host can
+ * settle the exact backing objects. Callback return, LA success or a JS boolean
+ * cannot mark delivery known. A timeout revokes; it never releases actual work. */
+fileprivate final class NativeChildFirstInstallV2 {
+    private let condition=NSCondition(),store: PinFirstInstallStoreV2,keys: PinOwnerKeys,clock: PinPrimitiveClock,policy: PinSessionPolicy,synthetic: Bool
+    private var active: OriginalFirstInstallV2?,usedIds=Set<String>(),generation: UInt64=0
+    init(vault: PlanetChildVault,policy: PinSessionPolicy) {
+        store=PlanetChildVault.FirstInstallStoreV2(vault);keys=AppleFirstInstallOwnerKeysV2();clock=ApplePinPrimitiveClock();self.policy=policy;synthetic=false
+    }
+    #if DEBUG
+    fileprivate init(store: PinFirstInstallStoreV2,keys: PinOwnerKeys,clock: PinPrimitiveClock,policy: PinSessionPolicy) throws {
+        guard keys.source == .synthetic else { throw PlanetChildVault.Failure.unavailable };self.store=store;self.keys=keys;self.clock=clock;self.policy=policy;synthetic=true
+    }
+    #endif
+    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+    func request(wireId: String,host: UIViewController,locale: PinNativeInputLocale,timeoutMs: UInt64) throws -> OriginalFirstInstallV2 {
+        guard !synthetic else { throw PinKnownRefusal() }
+        let captured=try clock.nanoseconds() // Before any external host/storage call.
+        return try makeRequest(wireId:wireId,host:PinOwnerOriginalHost(host),hostScope:String(describing:ObjectIdentifier(host)),locale:locale,timeoutMs:timeoutMs,captured:captured)
+    }
+    private func makeRequest(wireId: String,host: PinOwnerOriginalHost?,hostScope: String,locale: PinNativeInputLocale,timeoutMs: UInt64,captured: UInt64) throws -> OriginalFirstInstallV2 {
+        guard NativePinSessions.hash(wireId),timeoutMs>=1,timeoutMs<=60000,captured>0,
+            captured<=UInt64.max-timeoutMs*1000000 else { throw PinKnownRefusal() }
+        var seed=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:policy.version,policyChecksum:policy.checksum)
+        defer { seed.resetBytes(in:0..<seed.count) }
+        let checksum=try PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)
+        var nonce=Data(count:32);defer { nonce.resetBytes(in:0..<nonce.count) }
+        guard nonce.withUnsafeMutableBytes({ SecRandomCopyBytes(kSecRandomDefault,$0.count,$0.baseAddress!) })==errSecSuccess else { throw PlanetChildVault.Failure.unavailable }
+        condition.lock()
+        guard active==nil,usedIds.count<2048,generation<9007199254740991,usedIds.insert(wireId).inserted else { condition.unlock();throw PinKnownRefusal() }
+        generation+=1;let request=OriginalFirstInstallV2(owner:self,wireId:wireId,seed:seed,checksum:checksum,policy:policy,host:host,hostScope:hostScope,
+            generation:generation,locale:locale,nonce:nonce,capturedNs:captured,deadlineNs:captured+timeoutMs*1000000)
+        active=request;condition.unlock()
+        do {
+            if host != nil {
+                for name in [UIApplication.didEnterBackgroundNotification,UIApplication.willResignActiveNotification,UIScene.didDisconnectNotification] {
+                    let observer=NotificationCenter.default.addObserver(forName:name,object:nil,queue:.main) { [weak self,weak request] note in
+                        guard let self,let request else { return };self.hostEvent(request,note:note)
+                    };condition.lock();request.observers.append(observer);condition.unlock()
+                }
+            }
+            try fence(request);try store.locked { try $0.requireAbsent();try localFence(request) };try fence(request);return request
+        } catch { discardUnstarted(request);throw error }
+    }
+    private func discardUnstarted(_ request: OriginalFirstInstallV2) {
+        // Failed registration started no SDK/worker/transfer. Main can remove its
+        // own observers directly; it must never wait for a main-bound worker.
+        condition.lock();request.cancelled=true;request.retirementFenced=true;request.cleanup=1
+        let observers=request.observers;request.observers=[];condition.unlock()
+        let remove={ for observer in observers { NotificationCenter.default.removeObserver(observer) } }
+        if Thread.isMainThread { remove() } else if !observers.isEmpty { DispatchQueue.main.sync(execute:remove) }
+        condition.lock();while request.events != 0 || request.cancelling != 0 { condition.wait() }
+        request.cleanup=0;request.retired=true;request.close();if active === request { active=nil };condition.broadcast();condition.unlock()
+    }
+    private func fence(_ request: OriginalFirstInstallV2,allowSpent: Bool=false) throws {
+        try request.host?.current();try localFence(request,allowSpent:allowSpent)
+    }
+    private func localFence(_ request: OriginalFirstInstallV2,allowSpent: Bool=false) throws {
+        // Safe under durable IO lock: no UIKit/main dispatch, recipient or prompt.
+        // The last clock callback is followed only by owned-state comparisons.
+        let now=try clock.nanoseconds()
+        condition.lock();defer { condition.unlock() }
+        guard active === request,request.owner === self,!request.cancelled,!request.retirementFenced,!request.retired,
+            allowSpent || !request.spent,now>=request.capturedNs,now>=request.lastNs,now<request.deadlineNs else { throw PinKnownRefusal() }
+        request.lastNs=now // Final clock callback followed by callback-free identity fence.
+    }
+    private func hostEvent(_ request: OriginalFirstInstallV2,note: Notification) {
+        condition.lock();let live=active === request && !request.retired,ownedPrompt=request.prompting;if live { request.events+=1 };condition.unlock();guard live else { return }
+        defer { condition.lock();request.events-=1;condition.broadcast();condition.unlock() }
+        if note.name == UIApplication.didEnterBackgroundNotification || request.host?.disconnected(note)==true
+            || note.name == UIApplication.willResignActiveNotification && !ownedPrompt { cancel(request) }
+    }
+    private func message(_ request: OriginalFirstInstallV2,key: PinOwnerKey) -> Data {
+        let fields=["literary-planet/local-first-install/v2","first-install-v2",request.wireId,request.checksum,"2","1","adult","1","1",
+            request.policy.version,request.policy.checksum,request.hostScope,String(request.generation),String(request.capturedNs),String(request.deadlineNs),
+            request.locale == .ru ? "ru":"en",request.nonce.map { String(format:"%02x",$0) }.joined(),Self.digest(key.publicBytes),synthetic ? "synthetic":"secure-enclave"]
+        return Data(fields.map { "\($0.utf8.count):\($0)" }.joined().utf8)
+    }
+    private func verify(_ proof: FirstInstallOwnerProofV2) throws {
+        var bytes=try proof.message.copy(),signature=try proof.signature.copy();defer { bytes.resetBytes(in:0..<bytes.count);signature.resetBytes(in:0..<signature.count) }
+        guard bytes.count<=4096,bytes==message(proof.request,key:proof.key),proof.key.source==keys.source else { throw PinKnownRefusal() }
+        var error: Unmanaged<CFError>?
+        guard SecKeyVerifySignature(proof.key.publicKey,.ecdsaSignatureMessageX962SHA256,bytes as CFData,signature as CFData,&error) else { throw PinKnownRefusal() }
+    }
+    func authorize(_ request: OriginalFirstInstallV2,recipient: @escaping (Result<FirstInstallOwnerProofV2,Error>) throws -> Void) throws {
+        condition.lock();guard active === request,request.owner === self,!request.started,!request.cancelled,!request.retirementFenced,!request.retired else { condition.unlock();throw PinKnownRefusal() }
+        request.started=true;request.worker=1;condition.unlock();Thread { [self] in run(request,recipient:recipient) }.start()
+    }
+    private func watch(_ request: OriginalFirstInstallV2) {
+        condition.lock();request.watcher=1;condition.unlock()
+        Thread { [self] in
+            defer { condition.lock();request.watcher=0;condition.broadcast();condition.unlock() }
+            while true {
+                condition.lock();let stop=request.stopWatch || request.cancelled
+                if !stop { _=condition.wait(until:Date(timeIntervalSinceNow:0.05)) };condition.unlock();if stop { return }
+                do { try localFence(request) } catch { cancel(request);return }
+            }
+        }.start()
+    }
+    private func run(_ request: OriginalFirstInstallV2,recipient: (Result<FirstInstallOwnerProofV2,Error>) throws -> Void) {
+        condition.lock();request.workerThread=ObjectIdentifier(Thread.current);condition.unlock()
+        var failure: Error?,delivered=false,successEntered=false
+        do {
+            try fence(request);let context=LAContext();context.touchIDAuthenticationAllowableReuseDuration=0;context.interactionNotAllowed=true
+            let ru=request.locale == .ru,prompt=(ru ? "Подтвердите создание родительского PIN":"Confirm Parent PIN setup")+"\n"
+                +(ru ? "Подтвердите действие кодом блокировки устройства.":"Use your device screen lock to confirm this action.")
+            condition.lock();request.context=context;condition.unlock();watch(request)
+            let key=try store.locked { transaction in
+                try transaction.requireAbsent();try localFence(request)
+                let original=try keys.acquire(enroll:true,context:context,prompt:prompt)
+                try transaction.requireAbsent();try localFence(request);return original
+            }
+            // The same fresh context permits its first real passcode interaction
+            // only after the IO lock is released; no cached owner boolean exists.
+            context.interactionNotAllowed=false
+            try fence(request);let bytes=message(request,key:key);guard bytes.count<=4096 else { throw PinKnownRefusal() }
+            let signature=try sign(request,key:key,bytes:bytes);try keys.current(key);try fence(request)
+            let proof=FirstInstallOwnerProofV2(owner:self,request:request,key:key,message:bytes,signature:signature);try verify(proof)
+            condition.lock();request.proof=proof;condition.unlock();try fence(request)
+            delivered=true;successEntered=true;try recipient(.success(proof));try keys.current(key);try fence(request)
+        } catch { failure=error }
+        if !delivered { do { delivered=true;try recipient(.failure(failure ?? PinKnownRefusal())) } catch { failure=error } }
+        condition.lock();request.stopWatch=true;let context=request.context;condition.broadcast();condition.unlock();context?.invalidate()
+        condition.lock();while request.watcher != 0 || request.cancelling != 0 || request.events != 0 { condition.wait() };condition.unlock()
+        if failure==nil { do { try fence(request) } catch { failure=error } }
+        condition.lock();request.context=nil;request.cleanupFenced=true;request.worker=0;request.finished=true
+        if failure != nil { request.cancelled=true;request.proof?.close() }
+        if request.proof != nil && !successEntered { request.proofSettled=true;request.proofKnown=false }
+        condition.broadcast();condition.unlock()
+    }
+    private func sign(_ request: OriginalFirstInstallV2,key: PinOwnerKey,bytes: Data) throws -> Data {
+        condition.lock();guard active === request,!request.cancelled,!request.retirementFenced else { condition.unlock();throw PinKnownRefusal() }
+        request.prompting=true;condition.unlock()
+        defer { condition.lock();request.prompting=false;condition.broadcast();condition.unlock() }
+        // Only the actual original SecKey private operation owns this temporary
+        // inactive window. Background/disconnect always revoke. No SDK callback
+        // boolean or prompt-availability test can substitute for its signature.
+        return try keys.sign(key,message:bytes)
+    }
+    func settle(_ proof: FirstInstallOwnerProofV2,delivery: PinReplyDelivery) throws {
+        let request=proof.request
+        condition.lock();let exact=proof.owner === self && active === request && request.proof === proof && request.finished && request.cleanupFenced
+            && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.provisioning==0 && request.settling==0 && !request.proofSettled
+        if exact { request.settling=1;request.settleThread=ObjectIdentifier(Thread.current) }
+        condition.unlock();guard exact else { throw PinKnownRefusal() }
+        defer { condition.lock();request.settling=0;request.settleThread=nil;condition.broadcast();condition.unlock() }
+        if delivery == .known { do { try verify(proof);try keys.current(proof.key);try fence(request) } catch { cancel(request);throw error } }
+        condition.lock();defer { condition.unlock() }
+        guard active === request,!request.proofSettled,request.proof === proof,request.worker==0,request.cancelling==0,request.events==0,request.provisioning==0,
+            request.settling==1,request.settleThread==ObjectIdentifier(Thread.current),
+            delivery != .known || !request.cancelled && !request.retirementFenced && !request.spent else { throw PinKnownRefusal() }
+        request.proofSettled=true;request.proofKnown=delivery == .known && !request.cancelled
+        if !request.proofKnown { request.cancelled=true;proof.close() };condition.broadcast()
+    }
+    func provision(_ proof: FirstInstallOwnerProofV2) throws -> FirstInstallSeedReceiptV2 {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() };let request=proof.request
+        condition.lock();let exact=proof.owner === self && active === request && request.proof === proof && request.proofKnown && request.proofSettled
+            && request.finished && request.cleanupFenced && !request.spent && !request.cancelled && request.provisioning==0 && request.settling==0
+        if exact { request.spent=true;request.provisioning=1;request.provisionThread=ObjectIdentifier(Thread.current) };condition.unlock()
+        guard exact else { throw PinKnownRefusal() }
+        defer { condition.lock();request.provisioning=0;request.provisionThread=nil;condition.broadcast();condition.unlock() }
+        do {
+            try verify(proof);try keys.current(proof.key);try fence(request,allowSpent:true)
+            var seed=try request.seed.copy();defer { seed.resetBytes(in:0..<seed.count) }
+            guard try PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)==request.checksum else { throw PinKnownRefusal() }
+            try store.locked { transaction in
+                try transaction.requireAbsent();try localFence(request,allowSpent:true)
+                try transaction.create(seed) { try verify(proof);try keys.current(proof.key);try localFence(request,allowSpent:true) }
+                try localFence(request,allowSpent:true)
+            }
+            try keys.current(proof.key);try fence(request,allowSpent:true)
+            condition.lock();defer { condition.unlock() };guard active === request,!request.cancelled,!request.retirementFenced else { throw PinKnownRefusal() }
+            let receipt=FirstInstallSeedReceiptV2(owner:self,request:request);request.receipt=receipt;return receipt
+        } catch { cancel(request);throw error }
+    }
+    func settle(_ receipt: FirstInstallSeedReceiptV2,delivery: PinReplyDelivery) throws {
+        let request=receipt.request
+        condition.lock();let exact=receipt.owner === self && active === request && request.receipt === receipt && request.provisioning==0
+            && request.worker==0 && request.cancelling==0 && request.events==0 && request.settling==0 && !request.receiptSettled
+        if exact { request.settling=1;request.settleThread=ObjectIdentifier(Thread.current) };condition.unlock();guard exact else { throw PinKnownRefusal() }
+        defer { condition.lock();request.settling=0;request.settleThread=nil;condition.broadcast();condition.unlock() }
+        if delivery == .known { do { try fence(request,allowSpent:true) } catch { cancel(request);throw error } }
+        condition.lock();defer { condition.unlock() };guard active === request,!request.receiptSettled,request.receipt === receipt,
+            request.provisioning==0,request.cancelling==0,request.events==0,
+            request.settling==1,request.settleThread==ObjectIdentifier(Thread.current),
+            delivery != .known || !request.cancelled && !request.retirementFenced else { throw PinKnownRefusal() }
+        request.receiptSettled=true;request.receiptKnown=delivery == .known && !request.cancelled;condition.broadcast()
+    }
+    func cancel(_ request: OriginalFirstInstallV2) {
+        condition.lock();guard active === request,request.owner === self,!request.cancelled else { condition.unlock();return }
+        request.cancelled=true;request.cancelling+=1;let context=request.context;condition.broadcast();condition.unlock()
+        Thread { [self] in context?.invalidate();condition.lock();request.cancelling-=1;condition.broadcast();condition.unlock() }.start()
+    }
+    func retire(_ request: OriginalFirstInstallV2) throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() }
+        condition.lock();guard active === request,request.owner === self,!request.retirementFenced,!request.retired,
+            (request.worker==0 || request.workerThread != ObjectIdentifier(Thread.current)),
+            (request.provisioning==0 || request.provisionThread != ObjectIdentifier(Thread.current)),
+            (request.settling==0 || request.settleThread != ObjectIdentifier(Thread.current))
+            else { condition.unlock();throw PinKnownRefusal() }
+        request.retirementFenced=true;condition.broadcast();condition.unlock();cancel(request)
+        condition.lock()
+        while request.worker != 0 || request.watcher != 0 || request.cancelling != 0 || request.events != 0 || request.provisioning != 0 || request.settling != 0
+            || request.proof != nil && !request.proofSettled || request.receipt != nil && !request.receiptSettled { condition.wait() }
+        request.cleanup=1;let observers=request.observers;request.observers=[];condition.unlock()
+        #if DEBUG
+        condition.lock();let heldCleanup=request.syntheticCleanup;request.syntheticCleanup=nil;condition.unlock()
+        heldCleanup?() // Actual counted invocation; no synthetic authority/admission.
+        #endif
+        let remove={ for observer in observers { NotificationCenter.default.removeObserver(observer) } }
+        if !observers.isEmpty { DispatchQueue.main.sync(execute:remove) }
+        condition.lock();while request.events != 0 || request.cancelling != 0 { condition.wait() }
+        request.cleanup=0;request.retired=true;request.close();if active === request { active=nil };condition.broadcast();condition.unlock()
+    }
+    #if DEBUG
+    fileprivate func syntheticRequest(wireId: String,timeoutMs: UInt64=1000) throws -> OriginalFirstInstallV2 {
+        guard synthetic else { throw PinKnownRefusal() };return try makeRequest(wireId:wireId,host:nil,hostScope:"synthetic",locale:.en,timeoutMs:timeoutMs,captured:clock.nanoseconds())
+    }
+    fileprivate func awaitFinished(_ request: OriginalFirstInstallV2) { condition.lock();while request.worker != 0 || request.cancelling != 0 { condition.wait() };condition.unlock() }
+    fileprivate func syntheticBackground(_ request: OriginalFirstInstallV2) { guard synthetic else { return };hostEvent(request,note:Notification(name:UIApplication.didEnterBackgroundNotification)) }
+    fileprivate func syntheticInactive(_ request: OriginalFirstInstallV2) { guard synthetic else { return };hostEvent(request,note:Notification(name:UIApplication.willResignActiveNotification)) }
+    fileprivate func syntheticCleanup(_ request: OriginalFirstInstallV2,_ work: @escaping () -> Void) throws {
+        condition.lock();defer { condition.unlock() }
+        guard synthetic,active === request,!request.started,!request.retirementFenced,!request.retired else { throw PinKnownRefusal() }
+        request.syntheticCleanup=work
+    }
+    fileprivate func awaitRetirementFence(_ request: OriginalFirstInstallV2) -> Bool {
+        condition.lock();defer { condition.unlock() };let until=Date(timeIntervalSinceNow:2)
+        while !request.retirementFenced && !request.retired { if !condition.wait(until:until) { return false } };return request.retirementFenced
+    }
+    fileprivate func fixtureState(_ request: OriginalFirstInstallV2?) -> (joined:Bool,retired:Bool,proofPending:Bool,receiptPending:Bool,workers:Int) {
+        condition.lock();defer { condition.unlock() };guard let request else { return (active==nil,true,false,false,0) }
+        return (request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.provisioning==0 && request.settling==0 && request.cleanup==0,
+            request.retired,request.proof != nil && !request.proofSettled,request.receipt != nil && !request.receiptSettled,request.worker+request.provisioning+request.settling)
+    }
+    #endif
+}
+
+#if DEBUG
+/** Only synthetic scalar observations escape. Actual software SecKey signing
+ * exercises original-object/cleanup mechanics; it is NOT Secure Enclave, LA,
+ * Keychain durability, native host admission or installed-device acceptance. */
+enum PlanetChildFirstInstallV2RuntimeScenario: String {
+    case firstInstall, existingV1, existingV2, existingAES, existingSnapshot, unreadableFootprint
+    case earlyProofACK, earlyProvision, duplicateWire, badSignature, changedSigningKey
+    case expireAfterSign, rollbackAfterSign, expireAfterRecipient, recipientThrows, cancelDuringSign
+    case unknownProofDelivery, backgroundAfterACK, foregroundCannotResurrect, ambiguousAdd, readbackMismatch
+    case expireAfterAdd, expireAfterStoreReturn, clockReentryAfterStoreReturn, provisionReplay, receiptReplay, wrongProofObject, retryBeforeSeed
+    case ownedPromptInactive, inactiveAfterACK, backgroundDuringSign
+    case expireBeforeReceiptACK, backgroundBeforeReceiptACK, retirementWaitsForActualSign, retirementWaitsForReceiptACK, retirementWaitsForActualProvision, retirementWaitsForActualSettlement
+    case concurrentRetireDuringActualCleanup
+}
+struct PlanetChildFirstInstallV2RuntimeObservation {
+    var registrationDenied=false,proofDenied=false,provisionDenied=false,earlyDenied=false,replayDenied=false
+    var committed=false,receiptKnown=false,signatureVerified=false,cleanupJoined=false,retired=false,retireWaited=false
+    var seedBeforeProof=false,seedExists=false,seedExact=false,signCalls=0,acquireCalls=0,createCalls=0,recipientCalls=0
+    var clockReentryObserved=false,secondRequestDenied=false,sameSigningKey=false,originalSpent=false,preProofObservations=0,receiptDenied=false
+    var duplicateRetireDenied=false,authorizeAfterRetireDenied=false,newerRequestPreserved=false
+}
+enum PlanetChildFirstInstallV2RuntimeFixture {
+    private final class Clock: PinPrimitiveClock {
+        private let lock=NSLock();private var now: UInt64=1000000,hook: (() -> Void)?
+        func nanoseconds() throws -> UInt64 { lock.lock();let value=now,callback=hook;hook=nil;lock.unlock();callback?();return value }
+        func set(_ value: UInt64) { lock.lock();now=value;lock.unlock() }
+        func arm(_ callback: @escaping () -> Void) { lock.lock();hook=callback;lock.unlock() }
+    }
+    private final class Store: PinFirstInstallStoreV2,PinFirstInstallTransactionV2 {
+        private let lock=NSRecursiveLock();var seed: Data?,footprint=false,unreadable=false,ambiguous=false,badReadback=false
+        var createCalls=0,onAdd: (() -> Void)?,onReturn: (() -> Void)?
+        func locked<T>(_ work: (PinFirstInstallTransactionV2) throws -> T) throws -> T { lock.lock();defer { lock.unlock() };return try work(self) }
+        func requireAbsent() throws { guard !footprint,!unreadable,seed==nil else { throw PlanetChildVault.Failure.unavailable } }
+        func create(_ seed: Data,boundary: () throws -> Void) throws {
+            try requireAbsent();try boundary();createCalls+=1;self.seed=Data(Array(seed));onAdd?()
+            if ambiguous { throw PlanetChildVault.Failure.unavailable }
+            if badReadback { throw PlanetChildVault.Failure.unavailable }
+            guard self.seed==seed else { throw PlanetChildVault.Failure.unavailable };try boundary();onReturn?()
+        }
+    }
+    private final class Keys: PinOwnerKeys {
+        let source: PinOwnerKeySource = .synthetic,key: PinOwnerKey
+        var acquireCalls=0,signCalls=0,changed=false,badSignature=false,onSign: (() -> Void)?
+        init() throws {
+            var error: Unmanaged<CFError>?
+            guard let privateKey=SecKeyCreateRandomKey([kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256] as CFDictionary,&error),
+                let publicKey=SecKeyCopyPublicKey(privateKey),let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data? else { throw PlanetChildVault.Failure.unavailable }
+            key=PinOwnerKey(privateKey:privateKey,publicKey:publicKey,publicBytes:bytes,source:.synthetic)
+        }
+        func acquire(enroll: Bool,context: LAContext,prompt: String) throws -> PinOwnerKey { guard enroll else { throw PinKnownRefusal() };acquireCalls+=1;return key }
+        func current(_ original: PinOwnerKey) throws { guard original === key,!changed else { throw PinKnownRefusal() } }
+        func sign(_ original: PinOwnerKey,message: Data) throws -> Data {
+            try current(original);signCalls+=1;var error: Unmanaged<CFError>?
+            guard let signature=SecKeyCreateSignature(key.privateKey,.ecdsaSignatureMessageX962SHA256,message as CFData,&error) as Data? else { throw PinKnownRefusal() }
+            onSign?();return badSignature ? Data(repeating:0,count:signature.count):signature
+        }
+    }
+    static func run(_ scenario: PlanetChildFirstInstallV2RuntimeScenario) throws -> PlanetChildFirstInstallV2RuntimeObservation {
+        // The synthetic host is nil. Waiting here never blocks a genuine main-
+        // thread host/LA worker. Production request/provision/retire stay private.
+        let joined=NSCondition();var completed=false,result: Result<PlanetChildFirstInstallV2RuntimeObservation,Error>?
+        Thread {
+            let value=Result { try runOffMain(scenario) };joined.lock();result=value;completed=true;joined.broadcast();joined.unlock()
+        }.start()
+        joined.lock();while !completed { joined.wait() };let value=result;joined.unlock()
+        guard let value else { throw PlanetChildVault.Failure.unavailable };return try value.get()
+    }
+    private static func runOffMain(_ scenario: PlanetChildFirstInstallV2RuntimeScenario) throws -> PlanetChildFirstInstallV2RuntimeObservation {
+        let store=Store(),keys=try Keys(),clock=Clock(),policy=try PinSessionPolicy(version:"synthetic-local-v2",checksum:String(repeating:"a",count:64),maximumIterations:600000,iterations:600000)
+        if scenario == .retryBeforeSeed || scenario == .duplicateWire { return try cancelledRetry(policy:policy,testReplay:scenario == .duplicateWire) }
+        if scenario == .retirementWaitsForActualProvision { return try provisionRetirement(policy:policy) }
+        if scenario == .retirementWaitsForActualSettlement { return try settlementRetirement(policy:policy) }
+        if scenario == .concurrentRetireDuringActualCleanup { return try cleanupRetirement(policy:policy) }
+        let provider=try NativeChildFirstInstallV2(store:store,keys:keys,clock:clock,policy:policy)
+        var observation=PlanetChildFirstInstallV2RuntimeObservation(),request: OriginalFirstInstallV2?,proof: FirstInstallOwnerProofV2?,receipt: FirstInstallSeedReceiptV2?
+        let wire=String(repeating:"c",count:64),signEntered=DispatchSemaphore(value:0),signRelease=DispatchSemaphore(value:0)
+        if [.existingV1,.existingAES,.existingSnapshot].contains(scenario) { store.footprint=true }
+        if scenario == .existingV2 { store.seed=Data([0]) };if scenario == .unreadableFootprint { store.unreadable=true }
+        do { request=try provider.syntheticRequest(wireId:wire) } catch { observation.registrationDenied=true }
+        guard let original=request else {
+            observation.cleanupJoined=provider.fixtureState(nil).joined;observation.retired=true;observation.seedExists=store.seed != nil
+            observation.acquireCalls=keys.acquireCalls;observation.signCalls=keys.signCalls;observation.createCalls=store.createCalls;return observation
+        }
+        func discardPending() throws {
+            provider.awaitFinished(original)
+            if provider.fixtureState(original).proofPending,let proof { try provider.settle(proof,delivery:.uncertain) }
+            if provider.fixtureState(original).receiptPending,let receipt { try provider.settle(receipt,delivery:.uncertain) }
+            if !provider.fixtureState(original).retired { try provider.retire(original) }
+        }
+        keys.badSignature=scenario == .badSignature
+        if scenario == .retirementWaitsForActualSign {
+            keys.onSign={ observation.preProofObservations+=1;observation.seedBeforeProof=store.seed != nil;signEntered.signal();signRelease.wait() }
+        } else {
+            keys.onSign={
+                observation.preProofObservations+=1
+                observation.seedBeforeProof=store.seed != nil
+                if scenario == .expireAfterSign { clock.set(original.deadlineNs) }
+                if scenario == .rollbackAfterSign { clock.set(original.capturedNs-1) }
+                if scenario == .changedSigningKey { keys.changed=true }
+                if scenario == .cancelDuringSign { provider.cancel(original) }
+                if scenario == .ownedPromptInactive { provider.syntheticInactive(original) }
+                if scenario == .backgroundDuringSign { provider.syntheticBackground(original) }
+            }
+        }
+        try provider.authorize(original) { value in
+            observation.recipientCalls+=1
+            switch value {
+            case .failure: observation.proofDenied=true
+            case .success(let received):
+                proof=received;observation.signatureVerified=true;observation.seedBeforeProof=store.seed != nil
+                if scenario == .earlyProofACK { do { try provider.settle(received,delivery:.known) } catch { observation.earlyDenied=true } }
+                if scenario == .earlyProvision { do { _=try provider.provision(received) } catch { observation.earlyDenied=true } }
+                if scenario == .expireAfterRecipient { clock.set(original.deadlineNs) }
+                if scenario == .recipientThrows { throw PinKnownRefusal() }
+            }
+        }
+        if scenario == .retirementWaitsForActualSign {
+            signEntered.wait();let done=DispatchSemaphore(value:0);var retirementError: Error?
+            Thread { do { try provider.retire(original) } catch { retirementError=error };done.signal() }.start()
+            let fenced=provider.awaitRetirementFence(original),state=provider.fixtureState(original)
+            observation.retireWaited=fenced && state.workers==1 && !state.retired
+            signRelease.signal();done.wait();if let retirementError { throw retirementError }
+        } else {
+            provider.awaitFinished(original)
+            if let received=proof {
+                if scenario == .unknownProofDelivery {
+                    try provider.settle(received,delivery:.uncertain)
+                    do { receipt=try provider.provision(received);observation.committed=true } catch { observation.provisionDenied=true }
+                } else {
+                    do { try provider.settle(received,delivery:.known) } catch { observation.proofDenied=true }
+                    if !observation.proofDenied {
+                        if scenario == .backgroundAfterACK || scenario == .foregroundCannotResurrect { provider.syntheticBackground(original);provider.awaitFinished(original) }
+                        if scenario == .inactiveAfterACK { provider.syntheticInactive(original);provider.awaitFinished(original) }
+                        if scenario == .wrongProofObject {
+                            var bytes=try received.message.copy(),signature=try received.signature.copy()
+                            let other=FirstInstallOwnerProofV2(owner:provider,request:original,key:received.key,message:bytes,signature:signature)
+                            bytes.resetBytes(in:0..<bytes.count);signature.resetBytes(in:0..<signature.count)
+                            do { _=try provider.provision(other) } catch { observation.earlyDenied=true };other.close()
+                        }
+                        store.ambiguous=scenario == .ambiguousAdd;store.badReadback=scenario == .readbackMismatch
+                        if scenario == .expireAfterAdd { store.onAdd={ clock.set(original.deadlineNs) } }
+                        if scenario == .expireAfterStoreReturn { store.onReturn={ clock.set(original.deadlineNs) } }
+                        if scenario == .clockReentryAfterStoreReturn { store.onReturn={ clock.arm { observation.clockReentryObserved=true;provider.cancel(original) } } }
+                        do { receipt=try provider.provision(received);observation.committed=true } catch { observation.provisionDenied=true }
+                        if let receipt {
+                            if scenario == .retirementWaitsForReceiptACK {
+                                let done=DispatchSemaphore(value:0);var retirementError: Error?
+                                Thread { do { try provider.retire(original) } catch { retirementError=error };done.signal() }.start()
+                                let fenced=provider.awaitRetirementFence(original),state=provider.fixtureState(original)
+                                observation.retireWaited=fenced && state.receiptPending && state.workers==0 && !state.retired
+                                provider.awaitFinished(original);try provider.settle(receipt,delivery:.uncertain);done.wait();if let retirementError { throw retirementError }
+                            } else {
+                                if scenario == .expireBeforeReceiptACK { clock.set(original.deadlineNs) }
+                                if scenario == .backgroundBeforeReceiptACK { provider.syntheticBackground(original);provider.awaitFinished(original) }
+                                do { try provider.settle(receipt,delivery:.known);observation.receiptKnown=true } catch { observation.receiptDenied=true }
+                                if scenario == .receiptReplay { do { try provider.settle(receipt,delivery:.known) } catch { observation.replayDenied=true } }
+                                if scenario == .provisionReplay { do { _=try provider.provision(received) } catch { observation.replayDenied=true } }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        try discardPending()
+        if [.ambiguousAdd,.readbackMismatch,.expireAfterAdd,.expireAfterStoreReturn,.clockReentryAfterStoreReturn].contains(scenario) {
+            var unexpected: OriginalFirstInstallV2?
+            do { unexpected=try provider.syntheticRequest(wireId:String(repeating:"f",count:64)) } catch { observation.secondRequestDenied=true }
+            if let unexpected { try provider.retire(unexpected) }
+        }
+        let state=provider.fixtureState(original)
+        observation.cleanupJoined=state.joined && provider.fixtureState(nil).joined;observation.retired=state.retired
+        observation.signCalls=keys.signCalls;observation.acquireCalls=keys.acquireCalls;observation.createCalls=store.createCalls
+        observation.seedExists=store.seed != nil
+        observation.originalSpent=original.spent
+        if let seed=store.seed { observation.seedExact=(try? PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)) != nil }
+        return observation
+    }
+    private static func cancelledRetry(policy: PinSessionPolicy,testReplay: Bool) throws -> PlanetChildFirstInstallV2RuntimeObservation {
+        let store=Store(),keys=try Keys(),clock=Clock(),provider=try NativeChildFirstInstallV2(store:store,keys:keys,clock:clock,policy:policy)
+        var preProof=[Bool](),replayDenied=false;keys.onSign={ preProof.append(store.seed==nil) }
+        let original=try provider.syntheticRequest(wireId:String(repeating:"d",count:64));var first: FirstInstallOwnerProofV2?
+        try provider.authorize(original) { if case .success(let value)=$0 { first=value } };provider.awaitFinished(original)
+        guard let first else { throw PinKnownRefusal() };try provider.settle(first,delivery:.uncertain);try provider.retire(original)
+        guard store.seed==nil else { throw PinKnownRefusal() }
+        if testReplay { do { _=try provider.syntheticRequest(wireId:String(repeating:"d",count:64)) } catch { replayDenied=true } }
+        let next=try provider.syntheticRequest(wireId:String(repeating:"e",count:64));var second: FirstInstallOwnerProofV2?
+        try provider.authorize(next) { if case .success(let value)=$0 { second=value } };provider.awaitFinished(next)
+        guard let second else { throw PinKnownRefusal() };try provider.settle(second,delivery:.known)
+        let receipt=try provider.provision(second);try provider.settle(receipt,delivery:.known);try provider.retire(next)
+        var observation=PlanetChildFirstInstallV2RuntimeObservation();observation.committed=true;observation.receiptKnown=true;observation.signatureVerified=true
+        observation.signCalls=keys.signCalls;observation.acquireCalls=keys.acquireCalls;observation.createCalls=store.createCalls;observation.recipientCalls=2
+        observation.sameSigningKey=first.key.publicBytes==second.key.publicBytes
+        observation.preProofObservations=preProof.count;observation.seedBeforeProof=preProof.contains(false);observation.replayDenied=replayDenied;observation.originalSpent=next.spent
+        observation.seedExists=store.seed != nil
+        if let seed=store.seed { observation.seedExact=(try? PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)) != nil }
+        let state=provider.fixtureState(next)
+        observation.cleanupJoined=state.joined;observation.retired=state.retired;return observation
+    }
+    private static func provisionRetirement(policy: PinSessionPolicy) throws -> PlanetChildFirstInstallV2RuntimeObservation {
+        let store=Store(),keys=try Keys(),clock=Clock(),provider=try NativeChildFirstInstallV2(store:store,keys:keys,clock:clock,policy:policy)
+        let original=try provider.syntheticRequest(wireId:String(repeating:"b",count:64));var proof: FirstInstallOwnerProofV2?
+        var observation=PlanetChildFirstInstallV2RuntimeObservation();keys.onSign={ observation.seedBeforeProof=store.seed != nil;observation.preProofObservations+=1 }
+        try provider.authorize(original) { observation.recipientCalls+=1;if case .success(let value)=$0 { proof=value;observation.signatureVerified=true } }
+        provider.awaitFinished(original);guard let proof else { throw PinKnownRefusal() };try provider.settle(proof,delivery:.known)
+        let entered=DispatchSemaphore(value:0),release=DispatchSemaphore(value:0),provisionDone=DispatchSemaphore(value:0),retireDone=DispatchSemaphore(value:0)
+        store.onAdd={ entered.signal();release.wait() };var provisionError: Error?,retireError: Error?
+        Thread { do { _=try provider.provision(proof);observation.committed=true } catch { provisionError=error };provisionDone.signal() }.start()
+        entered.wait()
+        Thread { do { try provider.retire(original) } catch { retireError=error };retireDone.signal() }.start()
+        let fenced=provider.awaitRetirementFence(original),during=provider.fixtureState(original)
+        observation.retireWaited=fenced && during.workers==1 && !during.retired
+        clock.set(original.deadlineNs);release.signal();provisionDone.wait();retireDone.wait();if let retireError { throw retireError }
+        observation.provisionDenied=provisionError != nil;observation.originalSpent=original.spent
+        observation.signCalls=keys.signCalls;observation.acquireCalls=keys.acquireCalls;observation.createCalls=store.createCalls
+        observation.seedExists=store.seed != nil
+        if let seed=store.seed { observation.seedExact=(try? PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)) != nil }
+        let state=provider.fixtureState(original)
+        observation.cleanupJoined=state.joined && provider.fixtureState(nil).joined;observation.retired=state.retired;return observation
+    }
+    private static func cleanupRetirement(policy: PinSessionPolicy) throws -> PlanetChildFirstInstallV2RuntimeObservation {
+        let store=Store(),keys=try Keys(),clock=Clock(),provider=try NativeChildFirstInstallV2(store:store,keys:keys,clock:clock,policy:policy)
+        let original=try provider.syntheticRequest(wireId:String(repeating:"1",count:64))
+        let entered=DispatchSemaphore(value:0),release=DispatchSemaphore(value:0),done=DispatchSemaphore(value:0)
+        try provider.syntheticCleanup(original) { entered.signal();release.wait() }
+        var retirementError: Error?,observation=PlanetChildFirstInstallV2RuntimeObservation()
+        Thread { do { try provider.retire(original) } catch { retirementError=error };done.signal() }.start();entered.wait()
+        do { try provider.retire(original) } catch { observation.duplicateRetireDenied=true }
+        do { try provider.authorize(original) { _ in } } catch { observation.authorizeAfterRetireDenied=true }
+        let during=provider.fixtureState(original)
+        observation.retireWaited = !during.joined && !during.retired
+        var premature: OriginalFirstInstallV2?
+        do { premature=try provider.syntheticRequest(wireId:String(repeating:"2",count:64)) } catch { observation.secondRequestDenied=true }
+        release.signal();done.wait();if let retirementError { throw retirementError }
+        if let premature { try provider.retire(premature) }
+        let next=try provider.syntheticRequest(wireId:String(repeating:"3",count:64))
+        do { try provider.retire(original) } catch { observation.replayDenied=true }
+        var retained=try next.seed.copy();observation.newerRequestPreserved = !provider.fixtureState(nil).joined && !retained.isEmpty
+        retained.resetBytes(in:0..<retained.count);try provider.retire(next)
+        let state=provider.fixtureState(original)
+        observation.cleanupJoined=state.joined && provider.fixtureState(nil).joined;observation.retired=state.retired
+        observation.signCalls=keys.signCalls;observation.acquireCalls=keys.acquireCalls;observation.createCalls=store.createCalls
+        observation.seedExists=store.seed != nil;return observation
+    }
+    private static func settlementRetirement(policy: PinSessionPolicy) throws -> PlanetChildFirstInstallV2RuntimeObservation {
+        let store=Store(),keys=try Keys(),clock=Clock(),provider=try NativeChildFirstInstallV2(store:store,keys:keys,clock:clock,policy:policy)
+        let original=try provider.syntheticRequest(wireId:String(repeating:"a",count:64));var proof: FirstInstallOwnerProofV2?
+        var observation=PlanetChildFirstInstallV2RuntimeObservation()
+        try provider.authorize(original) { observation.recipientCalls+=1;if case .success(let value)=$0 { proof=value;observation.signatureVerified=true } }
+        provider.awaitFinished(original);guard let proof else { throw PinKnownRefusal() }
+        let entered=DispatchSemaphore(value:0),release=DispatchSemaphore(value:0),settleDone=DispatchSemaphore(value:0),retireDone=DispatchSemaphore(value:0)
+        clock.arm { entered.signal();release.wait() };var settleError: Error?,retireError: Error?
+        Thread { do { try provider.settle(proof,delivery:.known) } catch { settleError=error };settleDone.signal() }.start();entered.wait()
+        Thread { do { try provider.retire(original) } catch { retireError=error };retireDone.signal() }.start()
+        let fenced=provider.awaitRetirementFence(original),during=provider.fixtureState(original)
+        observation.retireWaited=fenced && during.workers==1 && during.proofPending && !during.retired
+        release.signal();settleDone.wait();provider.awaitFinished(original)
+        try provider.settle(proof,delivery:.uncertain);retireDone.wait();if let retireError { throw retireError }
+        observation.proofDenied=settleError != nil;observation.signCalls=keys.signCalls;observation.acquireCalls=keys.acquireCalls
+        observation.createCalls=store.createCalls;observation.seedExists=store.seed != nil;let state=provider.fixtureState(original)
+        observation.cleanupJoined=state.joined && provider.fixtureState(nil).joined;observation.retired=state.retired;return observation
+    }
+}
+#endif

@@ -507,7 +507,16 @@ final class PlanetChildVault {
             }
             // Existing invalidated/missing/wrong keys deny. No deleteEntry or
             // catch-and-regenerate path exists, including owner recovery.
-            live(request);java.security.Key value=store.getKey(alias,null);require(value instanceof java.security.PrivateKey);
+            live(request);PinOwnerSigningMaterial material=signingMaterial(store,alias);
+            boolean adopted=false;try{android.os.CancellationSignal cancellation=new android.os.CancellationSignal();
+                synchronized(core){live(request);request.publicKey=material.publicKey;request.keyEncoding=material.encoding;
+                    request.originalSignature=material.signature;request.originalCrypto=material.crypto;request.cancellation=cancellation;adopted=true;}
+            }finally{if(!adopted)Arrays.fill(material.encoding,(byte)0);}
+        }
+        /** Shared actual Keystore policy/curve verification. No generation,
+         * boolean authorization or original host/session permission is minted. */
+        private static PinOwnerSigningMaterial signingMaterial(KeyStore store,String alias) throws Exception {
+            java.security.Key value=store.getKey(alias,null);require(value instanceof java.security.PrivateKey);
             android.security.keystore.KeyInfo info=java.security.KeyFactory.getInstance("EC","AndroidKeyStore")
                 .getKeySpec(value,android.security.keystore.KeyInfo.class);
             require(alias.equals(info.getKeystoreAlias()) && info.getKeySize()==256
@@ -525,9 +534,8 @@ final class PlanetChildVault {
             require(actual.getCurve().equals(expected.getCurve()) && actual.getGenerator().equals(expected.getGenerator())
                 && actual.getOrder().equals(expected.getOrder()) && actual.getCofactor()==expected.getCofactor());
             java.security.Signature signature=java.security.Signature.getInstance("SHA256withECDSA");signature.initSign((java.security.PrivateKey)value);
-            synchronized(core){live(request);request.publicKey=publicKey;request.keyEncoding=publicKey.getEncoded().clone();
-                request.originalSignature=signature;request.originalCrypto=new android.hardware.biometrics.BiometricPrompt.CryptoObject(signature);
-                request.cancellation=new android.os.CancellationSignal();}
+
+            return new PinOwnerSigningMaterial(publicKey,signature);
         }
         private void authenticate(OwnedPinOwnerRequest request,PinOwnerRecipient recipient) throws Exception {
             require(recipient!=null);synchronized(core){own(request);require(!request.started && !request.finished && !request.disposed);
@@ -2553,5 +2561,369 @@ final class PlanetChildVault {
             } finally { Arrays.fill(actual, (byte) 0); }
         }); } finally { owned.dispose(); }
     }
+    private static final class PinOwnerSigningMaterial {
+        final java.security.PublicKey publicKey; final byte[] encoding; final java.security.Signature signature;
+        final android.hardware.biometrics.BiometricPrompt.CryptoObject crypto;
+        private PinOwnerSigningMaterial(java.security.PublicKey publicKey,java.security.Signature signature) throws Exception {
+            this.publicKey=publicKey;this.signature=signature;byte[] value=publicKey.getEncoded(),owned=null;
+            try{require(value!=null && value.length>0 && value.length<=512);owned=value.clone();
+                android.hardware.biometrics.BiometricPrompt.CryptoObject original=new android.hardware.biometrics.BiometricPrompt.CryptoObject(signature);
+                encoding=owned;crypto=original;owned=null;
+            }finally{if(value!=null)Arrays.fill(value,(byte)0);if(owned!=null)Arrays.fill(owned,(byte)0);}
+        }
+    }
+
+    /** Explicit LOCAL first-install v2 only. The unchanged v1 checkpoint remains
+     * unavailable and its ProtectedEnvelope rejects this seed. No trusted boot,
+     * cross-process clock, PIN, Parent Gate, recovery or child-mode admission. */
+    private static final class LocalEmptySeedV2 implements AutoCloseable {
+        private byte[] bytes; final String checksum, version, policyChecksum;
+        private LocalEmptySeedV2(String version,String policyChecksum) throws Exception {
+            require(ProtectedEnvelope.identifier(version) && ProtectedEnvelope.hash(policyChecksum));
+            this.version=version;this.policyChecksum=policyChecksum;bytes=canonical(version,policyChecksum);checksum=digest(bytes);
+        }
+        private static byte[] canonical(String version,String policyChecksum) throws Exception {
+            require(ProtectedEnvelope.identifier(version) && ProtectedEnvelope.hash(policyChecksum));
+            String registry="{\"schemaVersion\":1,\"policyVersion\":\""+version+"\",\"activeProfileId\":null,\"profiles\":[]}";
+            byte[] registryBytes=registry.getBytes(StandardCharsets.US_ASCII);
+            try{return ("{\"schemaVersion\":2,\"revision\":1,\"mode\":\"adult\",\"selectionRevision\":1,\"profileRevision\":1,\"policyChecksum\":\""
+                +policyChecksum+"\",\"registryChecksum\":\""+digest(registryBytes)+"\",\"registry\":"+registry
+                +",\"pin\":null,\"clock\":{\"schemaVersion\":2,\"logicalMs\":0}}").getBytes(StandardCharsets.US_ASCII);
+            }finally{Arrays.fill(registryBytes,(byte)0);}
+        }
+        private static LocalEmptySeedV2 decode(byte[] raw,String version,String policyChecksum) throws Exception {
+            require(raw!=null && raw.length>0 && raw.length<=MAX_BYTES);LocalEmptySeedV2 value=new LocalEmptySeedV2(version,policyChecksum);
+            try{require(MessageDigest.isEqual(raw,value.bytes));return value;}catch(Exception failure){value.close();throw failure;}
+        }
+        private synchronized byte[] copy() throws Exception {require(bytes!=null);return bytes.clone();}
+        public synchronized void close(){if(bytes!=null){Arrays.fill(bytes,(byte)0);bytes=null;}}
+    }
+
+    private interface FirstInstallRecipient { void completed(FirstInstallReceipt receipt) throws Exception; }
+    /** A local storage completion, never a Parent Gate/action permission. Closing
+     * only wipes; only settlement of the ORIGINAL receipt drains this owner. */
+    private static final class FirstInstallReceipt implements AutoCloseable {
+        final NativeChildFirstInstall owner; final FirstInstallRequest request; final String checksum;
+        private byte[] seed; private boolean disposed,settled;
+        private FirstInstallReceipt(NativeChildFirstInstall owner,FirstInstallRequest request) throws Exception {
+            this.owner=owner;this.request=request;checksum=request.seed.checksum;seed=request.seed.copy();
+        }
+        private synchronized byte[] copySeed() throws Exception {require(!disposed);return seed.clone();}
+        private synchronized void wipe(){disposed=true;Arrays.fill(seed,(byte)0);}
+        public void close(){boolean original;synchronized(owner){original=owner.active==request && request.receipt==this;}
+            if(original)owner.cancel(request);wipe();}
+    }
+    private static final class FirstInstallRequest implements AutoCloseable {
+        final NativeChildFirstInstall owner; final android.app.Activity activity; final android.os.IBinder windowToken;
+        final String locale; final LocalEmptySeedV2 seed; final long beganUptimeMs,deadlineUptimeMs;
+        private final byte[] nonce,payload; private byte[] keyEncoding,signature;
+        private java.security.Signature originalSignature; private java.security.PublicKey publicKey;
+        private android.hardware.biometrics.BiometricPrompt.CryptoObject originalCrypto;
+        private android.os.CancellationSignal cancellation;
+        private Thread worker; private FirstInstallReceipt receipt;
+        private boolean started,cancelled,sealed,finished,disposed,detached,promptOutstanding,credentialReturned,knownRefusal;
+        private boolean mutationStarted,permissionConsumed,deliveryEntered,deliveryCompleted,cancelIssued;
+        private boolean retirementClaimed,retired;
+        private int mainCalls,eventCalls,cancelCalls,readCalls,settleCalls,cleanupCalls; private Exception failure;
+        private FirstInstallRequest(NativeChildFirstInstall owner,android.app.Activity activity,String locale,
+            String version,String policyChecksum,long timeout,android.os.IBinder token) throws Exception {
+            this.owner=owner;this.activity=activity;this.locale=locale;windowToken=token;
+            long now=SystemClock.elapsedRealtime();require(now>=0 && now<=MAX_SAFE-timeout);beganUptimeMs=now;deadlineUptimeMs=now+timeout;
+            seed=new LocalEmptySeedV2(version,policyChecksum);nonce=new byte[32];
+            try{new java.security.SecureRandom().nextBytes(nonce);payload=NativeChildFirstInstall.operation(this);}
+            catch(Exception failure){seed.close();Arrays.fill(nonce,(byte)0);throw failure;}
+        }
+        private void wipe(){seed.close();Arrays.fill(nonce,(byte)0);Arrays.fill(payload,(byte)0);
+            if(signature!=null)Arrays.fill(signature,(byte)0);if(keyEncoding!=null)Arrays.fill(keyEncoding,(byte)0);if(receipt!=null)receipt.wipe();}
+        public void close(){owner.cancel(this);synchronized(owner){disposed=true;owner.wipeIfIdle(this);}}
+    }
+    /** Constructor-owned explicit provisioning; never called by a read/error
+     * fallback or App/plugin factory. Fixed signing key may survive a cancelled
+     * pre-mutation setup and is re-used only after its exact policy is checked.
+     * After the durable pending marker ANY failure leaves the installation
+     * sealed; no deleteEntry, regeneration, reset or partial repair is offered.
+     * Raw encrypted storage reuses the existing fixed v1 file/AAD identity;
+     * schema2 does not become readable/admitted through ANY v1 codec/port. */
+    private static final class NativeChildFirstInstall {
+        private final PlanetChildVault vault; private volatile FirstInstallRequest active; private boolean reserving,sealed;
+        private final android.os.Handler mainHandler=new android.os.Handler(android.os.Looper.getMainLooper());
+        private NativeChildFirstInstall(PlanetChildVault vault) throws Exception {require(vault!=null);this.vault=vault;}
+        private FirstInstallRequest request(android.app.Activity activity,String locale,String version,String policyChecksum,long timeout) throws Exception {
+            synchronized(this){require(active==null && !reserving && !sealed);reserving=true;}
+            try{require(android.os.Build.VERSION.SDK_INT>=30 && android.os.Looper.myLooper()==android.os.Looper.getMainLooper()
+                && activity!=null && activity.getClass()==MainActivity.class && activity.getApplicationContext()==vault.context
+                && !activity.isFinishing() && !activity.isDestroyed() && activity.hasWindowFocus()
+                && ("ru".equals(locale)||"en".equals(locale)) && timeout>0 && timeout<=60000);
+                android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
+                FirstInstallRequest value=new FirstInstallRequest(this,activity,locale,version,policyChecksum,timeout,token);
+                synchronized(this){require(reserving && active==null && !sealed);active=value;reserving=false;}
+                try{attach(value);}catch(Exception failure){synchronized(this){value.cancelled=true;value.sealed=true;sealed=true;}
+                    try{removeObservers(value);}catch(Exception unknown){synchronized(this){value.sealed=true;}}
+                    synchronized(this){value.finished=true;wipeIfIdle(value);notifyAll();}throw failure;}
+                return value;
+            }finally{synchronized(this){reserving=false;}}
+        }
+        private static byte[] operation(FirstInstallRequest request) throws Exception {
+            java.io.ByteArrayOutputStream buffer=new java.io.ByteArrayOutputStream(512);java.io.DataOutputStream out=new java.io.DataOutputStream(buffer);
+            out.write("LP-LOCAL-FIRST-INSTALL\0v2\0".getBytes(StandardCharsets.US_ASCII));out.writeByte("ru".equals(request.locale)?1:2);
+            for(String text:new String[]{request.owner.vault.vaultIdentity,request.seed.version,request.seed.policyChecksum,request.seed.checksum}) {
+                byte[] raw=text.getBytes(StandardCharsets.US_ASCII);try{out.writeShort(raw.length);out.write(raw);}finally{Arrays.fill(raw,(byte)0);}}
+            out.writeLong(request.beganUptimeMs);out.writeLong(request.deadlineUptimeMs);out.write(request.nonce);out.flush();return buffer.toByteArray();
+        }
+        private void own(FirstInstallRequest request) throws Exception {require(request!=null && request.owner==this && active==request);}
+        private void wipeIfIdle(FirstInstallRequest request){if(request.finished && request.readCalls==0 && request.settleCalls==0
+            && request.cleanupCalls==0 && request.eventCalls==0 && request.mainCalls==0 && request.cancelCalls==0
+            && (request.cancelled || request.disposed || request.sealed))request.wipe();}
+        private void live(FirstInstallRequest request) throws Exception {
+            synchronized(this){own(request);long now=SystemClock.elapsedRealtime();if(sealed || request.cancelled || request.sealed || request.disposed || request.retirementClaimed || request.retired
+                || now<request.beganUptimeMs || now>=request.deadlineUptimeMs)throw new PinKnownRefusal();
+                byte[] actual=operation(request);try{require(MessageDigest.isEqual(actual,request.payload));}finally{Arrays.fill(actual,(byte)0);}}
+        }
+        private void main(FirstInstallRequest request,Runnable body) throws Exception {
+            synchronized(this){own(request);require(!request.detached || request.readCalls>0 || request.cleanupCalls>0);request.mainCalls++;}
+            boolean accepted;try{accepted=mainHandler.post(()->{try{body.run();}catch(Throwable error){synchronized(this){request.sealed=true;request.cancelled=true;
+                    request.failure=error instanceof Exception?(Exception)error:new Unavailable();notifyAll();}}
+                finally{synchronized(this){request.mainCalls--;wipeIfIdle(request);notifyAll();}}});}
+            catch(RuntimeException failure){synchronized(this){request.mainCalls--;request.sealed=true;notifyAll();}throw failure;}
+            if(!accepted) {
+                synchronized(this){request.mainCalls--;request.sealed=true;notifyAll();}throw new Unavailable();}
+        }
+        private void host(FirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            for(;;){live(request);boolean[] valid={false},lost={false};
+                main(request,()->{lost[0]=request.activity.isFinishing() || request.activity.isDestroyed()
+                    || request.activity.getWindow().getDecorView().getWindowToken()!=request.windowToken;
+                    valid[0]=!lost[0] && request.activity.hasWindowFocus();});
+                synchronized(this){while(request.mainCalls!=0)wait();if(request.failure!=null)throw request.failure;live(request);
+                    if(lost[0])throw new PinKnownRefusal();if(valid[0])return;
+                    if(!request.credentialReturned)throw new PinKnownRefusal();wait(50);}}
+        }
+        private String signingAlias(FirstInstallRequest request) throws Exception {return PinNativeOwnerAuthority.alias(request.activity);}
+        /** No child file is opened as a candidate seed. All known v1/v2 and
+         * child-data footprints are denied, including orphan backup/new files. */
+        private void empty(File directory,KeyStore keys) throws Exception {
+            require(!keys.containsAlias(vault.vaultIdentity+".aes"));noChildData(keys);
+            for(String name:new String[]{"full-record-v1","full-record-v1.bak","full-record-v1.new","first-install-v2","first-install-v2.bak","first-install-v2.new"})
+                absent(new File(directory,name));
+            String[] names=directory.list();require(names!=null);for(String name:names)require("transaction.lock".equals(name));
+        }
+        private void noChildData(KeyStore keys) throws Exception {
+            require(!keys.containsAlias(vault.context.getPackageName()+".literary-planet-child-data-v1.aes"));
+            File parent=vault.context.getNoBackupFilesDir().getCanonicalFile(),childData=new File(parent,"literary-planet-child-data-v1");
+            require(childData.getAbsoluteFile().equals(childData.getCanonicalFile()));absent(childData);
+        }
+        private static void absent(File file) throws Exception {
+            try{Os.lstat(file.getPath());throw new Unavailable();}
+            catch(android.system.ErrnoException failure){require(failure.errno==OsConstants.ENOENT);}
+        }
+        private void prepareKey(FirstInstallRequest request) throws Exception {
+            host(request);vault.locked(directory->{live(request);vault.unlocked();KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);empty(directory,keys);
+                String alias=signingAlias(request);KeyguardManager guard=(KeyguardManager)vault.context.getSystemService(Context.KEYGUARD_SERVICE);
+                require(guard!=null && guard.isDeviceSecure());if(!keys.containsAlias(alias)) {
+                    live(request);java.security.KeyPairGenerator generator=java.security.KeyPairGenerator.getInstance("EC","AndroidKeyStore");
+                    generator.initialize(new android.security.keystore.KeyGenParameterSpec.Builder(alias,android.security.keystore.KeyProperties.PURPOSE_SIGN)
+                        .setAlgorithmParameterSpec(new java.security.spec.ECGenParameterSpec("secp256r1"))
+                        .setDigests(android.security.keystore.KeyProperties.DIGEST_SHA256).setUserAuthenticationRequired(true)
+                        .setUserAuthenticationParameters(0,android.security.keystore.KeyProperties.AUTH_DEVICE_CREDENTIAL).build());
+                    generator.generateKeyPair();}
+                live(request);PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,alias);
+                boolean adopted=false;try{android.os.CancellationSignal cancellation=new android.os.CancellationSignal();
+                    synchronized(this){live(request);request.publicKey=material.publicKey;request.keyEncoding=material.encoding;
+                        request.originalSignature=material.signature;request.originalCrypto=material.crypto;request.cancellation=cancellation;adopted=true;}
+                }finally{if(!adopted)Arrays.fill(material.encoding,(byte)0);}
+                empty(directory,keys);return null;});host(request);live(request);
+        }
+        private void authenticate(FirstInstallRequest request,FirstInstallRecipient recipient) throws Exception {
+            require(recipient!=null);synchronized(this){own(request);live(request);require(!request.started && !request.finished);
+                request.started=true;request.worker=new Thread(()->run(request,recipient),"planet-child-first-install");
+                try{request.worker.start();}catch(RuntimeException error){request.sealed=true;sealed=true;request.finished=true;request.wipe();notifyAll();throw error;}}
+        }
+        private void terminal(FirstInstallRequest request,android.hardware.biometrics.BiometricPrompt.AuthenticationResult result,Exception error) {
+            synchronized(this){if(active!=request || request.detached || !request.promptOutstanding){request.sealed=true;request.cancelled=true;sealed=true;notifyAll();return;}
+                request.promptOutstanding=false;request.credentialReturned=error==null && result!=null
+                    && result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL
+                    && result.getCryptoObject()==request.originalCrypto && result.getCryptoObject().getSignature()==request.originalSignature;
+                if(!request.credentialReturned){request.cancelled=true;request.knownRefusal=true;}notifyAll();}
+        }
+        private void present(FirstInstallRequest request) throws Exception {
+            main(request,()->{try{live(request);require(request.activity.hasWindowFocus()
+                    && request.activity.getWindow().getDecorView().getWindowToken()==request.windowToken && observerRegistered && screenRegistered);
+                android.hardware.biometrics.BiometricPrompt prompt=new android.hardware.biometrics.BiometricPrompt.Builder(request.activity)
+                    .setTitle("ru".equals(request.locale)?"Подтвердите настройку родительского контроля":"Confirm parental controls setup")
+                    .setSubtitle("ru".equals(request.locale)?"Подтвердите действие кодом блокировки устройства.":"Use your device screen lock to confirm this action.")
+                    .setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build();
+                synchronized(this){live(request);request.promptOutstanding=true;}
+                prompt.authenticate(request.originalCrypto,request.cancellation,task->{try{main(request,task);}catch(Exception failure){synchronized(this){request.sealed=true;request.cancelled=true;notifyAll();}}},
+                    new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
+                        @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(request,result,null);}
+                        @Override public void onAuthenticationError(int code,CharSequence text){terminal(request,null,new PinKnownRefusal());}
+                    });
+            }catch(Exception failure){synchronized(this){request.failure=failure;request.cancelled=true;request.knownRefusal=failure instanceof PinKnownRefusal;
+                if(request.promptOutstanding)request.sealed=true;notifyAll();}cancel(request);}});
+        }
+        private boolean observerRegistered,screenRegistered;
+        private void attach(FirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());synchronized(this){own(request);require(!observerRegistered && !screenRegistered);}
+            request.activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);observerRegistered=true;
+            request.activity.registerReceiver(screenOff,new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF));screenRegistered=true;
+            require(mainHandler.postDelayed(deadlineCheck,50));
+        }
+        private void removeObservers(FirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());mainHandler.removeCallbacks(deadlineCheck);
+            if(screenRegistered){request.activity.unregisterReceiver(screenOff);screenRegistered=false;}
+            if(observerRegistered){request.activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);observerRegistered=false;}
+            synchronized(this){request.detached=true;}
+        }
+        private void event(FirstInstallRequest request,Runnable body){synchronized(this){if(active!=request || request.detached)return;request.eventCalls++;}
+            try{body.run();}finally{synchronized(this){request.eventCalls--;wipeIfIdle(request);notifyAll();}}}
+        private final Runnable deadlineCheck=new Runnable(){public void run(){FirstInstallRequest request; synchronized(NativeChildFirstInstall.this){request=active;}
+            if(request==null)return;event(request,()->{if(SystemClock.elapsedRealtime()>=request.deadlineUptimeMs)cancel(request);
+                synchronized(NativeChildFirstInstall.this){if(!request.detached && !mainHandler.postDelayed(this,50)){request.sealed=true;request.cancelled=true;}}});}};
+        private final android.content.BroadcastReceiver screenOff=new android.content.BroadcastReceiver(){
+            public void onReceive(Context context,android.content.Intent intent){FirstInstallRequest request=active;if(request!=null)event(request,()->cancel(request));}
+        };
+        private final android.app.Application.ActivityLifecycleCallbacks lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
+            public void onActivityCreated(android.app.Activity activity,android.os.Bundle state){}public void onActivityStarted(android.app.Activity activity){}
+            public void onActivityResumed(android.app.Activity activity){}public void onActivitySaveInstanceState(android.app.Activity activity,android.os.Bundle state){}
+            public void onActivityPaused(android.app.Activity activity){lost(activity);}public void onActivityStopped(android.app.Activity activity){lost(activity);}
+            public void onActivityDestroyed(android.app.Activity activity){lost(activity);}
+        };
+        private void lost(android.app.Activity activity){FirstInstallRequest request=active;if(request!=null && request.activity==activity)event(request,()->cancel(request));}
+        private void cancel(FirstInstallRequest request){android.os.CancellationSignal signal;synchronized(this){if(request==null || active!=request || request.owner!=this)return;
+                request.cancelled=true;request.knownRefusal=true;signal=request.cancellation;if(request.finished){wipeIfIdle(request);notifyAll();return;}
+                if(request.cancelIssued){notifyAll();return;}request.cancelIssued=true;request.cancelCalls++;}
+            Thread worker=new Thread(()->{try{if(signal!=null)signal.cancel();}catch(Throwable failure){synchronized(this){request.sealed=true;}}
+                finally{synchronized(this){request.cancelCalls--;wipeIfIdle(request);notifyAll();}}},"planet-child-first-install-cancel");
+            try{worker.start();}catch(RuntimeException failure){synchronized(this){request.cancelCalls--;request.sealed=true;notifyAll();}}}
+        private void waitPrompt(FirstInstallRequest request) throws Exception {
+            for(;;){boolean expire;synchronized(this){if(!request.promptOutstanding && request.mainCalls==0)break;
+                expire=!request.cancelled && SystemClock.elapsedRealtime()>=request.deadlineUptimeMs;if(!expire)wait(50);}if(expire)cancel(request);}
+            synchronized(this){if(request.failure!=null)throw request.failure;live(request);require(request.credentialReturned);}
+        }
+        private void verify(FirstInstallRequest request) throws Exception {
+            live(request);require(request.signature!=null && request.signature.length>=8 && request.signature.length<=80 && request.publicKey!=null);
+            byte[] encoded=request.publicKey.getEncoded();try{require(MessageDigest.isEqual(encoded,request.keyEncoding));}finally{Arrays.fill(encoded,(byte)0);}
+            java.security.Signature check=java.security.Signature.getInstance("SHA256withECDSA");check.initVerify(request.publicKey);check.update(request.payload);require(check.verify(request.signature));live(request);
+        }
+        private static byte[] marker(FirstInstallRequest request,boolean complete) throws Exception {
+            byte[] value=new byte[1+request.payload.length];value[0]=(byte)(complete?2:1);System.arraycopy(request.payload,0,value,1,request.payload.length);return value;
+        }
+        private static void syncDirectory(File directory) throws Exception {
+            FileDescriptor descriptor=Os.open(directory.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+            try{require(OsConstants.S_ISDIR(Os.fstat(descriptor).st_mode));Os.fsync(descriptor);}finally{Os.close(descriptor);}
+        }
+        private static void markerReadback(File file,byte[] expected) throws Exception {
+            require(file.getAbsoluteFile().equals(file.getCanonicalFile()));FileDescriptor descriptor=Os.open(file.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+            byte[] actual=new byte[expected.length];try(FileInputStream input=new FileInputStream(descriptor)){StructStat opened=Os.fstat(descriptor),named=Os.lstat(file.getPath());
+                require(OsConstants.S_ISREG(opened.st_mode) && opened.st_size==expected.length && opened.st_ino==named.st_ino && opened.st_dev==named.st_dev);int offset=0;
+                while(offset<actual.length){int count=input.read(actual,offset,actual.length-offset);require(count>0);offset+=count;}require(input.read()==-1);require(MessageDigest.isEqual(actual,expected));
+            }finally{Arrays.fill(actual,(byte)0);}
+        }
+        private void pending(File directory,FirstInstallRequest request) throws Exception {
+            File file=new File(directory,"first-install-v2");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));byte[] value=marker(request,false);
+            try{FileDescriptor descriptor=Os.open(file.getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+                synchronized(this){request.mutationStarted=true;}try(FileOutputStream output=new FileOutputStream(descriptor)){output.write(value);output.getFD().sync();}
+                syncDirectory(directory);markerReadback(file,value);
+            }finally{Arrays.fill(value,(byte)0);}
+        }
+        private void aes(KeyStore keys,FirstInstallRequest request) throws Exception {
+            live(request);String alias=vault.vaultIdentity+".aes";require(!keys.containsAlias(alias));
+            javax.crypto.KeyGenerator generator=javax.crypto.KeyGenerator.getInstance("AES","AndroidKeyStore");
+            generator.init(new android.security.keystore.KeyGenParameterSpec.Builder(alias,android.security.keystore.KeyProperties.PURPOSE_ENCRYPT|android.security.keystore.KeyProperties.PURPOSE_DECRYPT)
+                .setKeySize(256).setBlockModes(android.security.keystore.KeyProperties.BLOCK_MODE_GCM)
+                .setEncryptionPaddings(android.security.keystore.KeyProperties.ENCRYPTION_PADDING_NONE).setRandomizedEncryptionRequired(true)
+                .setUnlockedDeviceRequired(true).build());generator.generateKey();live(request);
+            java.security.Key key=keys.getKey(alias,null);require(key instanceof SecretKey);
+            android.security.keystore.KeyInfo info=(android.security.keystore.KeyInfo)javax.crypto.SecretKeyFactory.getInstance("AES","AndroidKeyStore").getKeySpec((SecretKey)key,android.security.keystore.KeyInfo.class);
+            require(alias.equals(info.getKeystoreAlias()) && info.getKeySize()==256 && info.getOrigin()==android.security.keystore.KeyProperties.ORIGIN_GENERATED
+                && info.getPurposes()==(android.security.keystore.KeyProperties.PURPOSE_ENCRYPT|android.security.keystore.KeyProperties.PURPOSE_DECRYPT)
+                && info.isInsideSecureHardware() && info.getBlockModes().length==1 && android.security.keystore.KeyProperties.BLOCK_MODE_GCM.equals(info.getBlockModes()[0])
+                && info.getEncryptionPaddings().length==1 && android.security.keystore.KeyProperties.ENCRYPTION_PADDING_NONE.equals(info.getEncryptionPaddings()[0]));
+        }
+        /** Every main/recipient/cancel wait is OUTSIDE this IO lock. The lock
+         * contains only local nonblocking identity/deadline checks and actual
+         * native key/file operations; their uncertain results seal permanently. */
+        private void commit(FirstInstallRequest request) throws Exception {
+            host(request);verify(request);vault.locked(directory->{live(request);vault.unlocked();KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);
+                empty(directory,keys);PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,signingAlias(request));
+                try{require(MessageDigest.isEqual(material.encoding,request.keyEncoding));}finally{Arrays.fill(material.encoding,(byte)0);}
+                verify(request);pending(directory,request);live(request);aes(keys,request);byte[] seed=request.seed.copy();
+                try{vault.writeExact(directory,seed,()->live(request));byte[] actual=vault.readExact(directory);
+                    try{require(MessageDigest.isEqual(actual,seed));try(LocalEmptySeedV2 parsed=LocalEmptySeedV2.decode(actual,request.seed.version,request.seed.policyChecksum)){
+                        require(parsed.checksum.equals(request.seed.checksum));}}
+                    finally{Arrays.fill(actual,(byte)0);}
+                    live(request);verify(request);byte[] complete=marker(request,true);try{AtomicFile marker=new AtomicFile(new File(directory,"first-install-v2"));FileOutputStream stream=null;
+                        try{stream=marker.startWrite();stream.write(complete);live(request);stream.getFD().sync();live(request);marker.finishWrite(stream);stream=null;}
+                        finally{if(stream!=null)marker.failWrite(stream);}syncDirectory(directory);markerReadback(marker.getBaseFile(),complete);noChildData(keys);live(request);
+                        synchronized(this){own(request);require(!request.permissionConsumed);request.permissionConsumed=true;}
+                    }finally{Arrays.fill(complete,(byte)0);}
+                }finally{Arrays.fill(seed,(byte)0);}return null;});host(request);live(request);
+        }
+        private void detach(FirstInstallRequest request) throws Exception {
+            main(request,()->{try{removeObservers(request);}catch(Exception failure){synchronized(this){request.sealed=true;request.failure=failure;notifyAll();}}});
+            synchronized(this){while(request.mainCalls!=0 || request.eventCalls!=0 || request.cancelCalls!=0)wait();if(request.failure!=null)throw request.failure;}
+        }
+        private void run(FirstInstallRequest request,FirstInstallRecipient recipient) {
+            try{prepareKey(request);present(request);waitPrompt(request);host(request);live(request);request.originalSignature.update(request.payload);
+                request.signature=request.originalSignature.sign();verify(request);host(request);commit(request);
+                synchronized(this){live(request);require(request.permissionConsumed);request.receipt=new FirstInstallReceipt(this,request);request.deliveryEntered=true;}
+                recipient.completed(request.receipt);host(request);live(request);synchronized(this){request.deliveryCompleted=true;}
+            }catch(Throwable error){synchronized(this){request.cancelled=true;request.knownRefusal=error instanceof PinKnownRefusal;
+                    if(request.mutationStarted || request.deliveryEntered || !request.knownRefusal)request.sealed=true;request.failure=error instanceof Exception?(Exception)error:new Unavailable();}
+                cancel(request);boolean failureDelivery;synchronized(this){failureDelivery=!request.deliveryEntered;request.deliveryEntered=true;}
+                if(failureDelivery)try{recipient.completed(null);}catch(Throwable ignored){synchronized(this){request.sealed=true;}}}
+            finally{try{for(;;){synchronized(this){if(!request.promptOutstanding && request.mainCalls==0 && request.cancelCalls==0 && request.eventCalls==0)break;wait(50);}}
+                    // Successful or uncertain original receipt keeps the native
+                    // lifecycle/deadline latch until explicit actual retirement.
+                    if(request.receipt==null)detach(request);}
+                catch(Exception error){synchronized(this){request.sealed=true;request.cancelled=true;}}
+                synchronized(this){if(SystemClock.elapsedRealtime()>=request.deadlineUptimeMs)request.cancelled=true;
+                    request.finished=true;if(request.sealed || request.mutationStarted && !request.deliveryCompleted){sealed=true;request.sealed=true;}
+                    wipeIfIdle(request);notifyAll();}}
+        }
+        private void settle(FirstInstallReceipt receipt,PinReplyDelivery delivery) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());FirstInstallRequest request;
+            synchronized(this){require(receipt!=null && active!=null && receipt==active.receipt && receipt.owner==this && receipt.request==active
+                && !receipt.settled && delivery!=null && active.finished && active.mainCalls==0 && active.eventCalls==0 && active.cancelCalls==0
+                && active.readCalls==0 && active.settleCalls==0 && active.cleanupCalls==0 && !active.retirementClaimed && !active.retired);request=active;request.settleCalls++;}
+            try{if(delivery==PinReplyDelivery.known){host(request);live(request);}
+                synchronized(this){own(request);require(!receipt.settled);
+                    require(delivery==PinReplyDelivery.uncertain || !receipt.disposed && request.deliveryCompleted && !request.cancelled
+                        && !request.sealed && request.permissionConsumed && request.mainCalls==0 && request.eventCalls==0 && request.cancelCalls==0);
+                    if(delivery==PinReplyDelivery.known)live(request);receipt.settled=true;receipt.wipe();
+                    if(delivery==PinReplyDelivery.uncertain){sealed=true;request.sealed=true;request.cancelled=true;}}
+            }finally{synchronized(this){request.settleCalls--;wipeIfIdle(request);notifyAll();}}
+        }
+        /** Original setup readback only, not an authenticated general record
+         * port. In particular it does not call v1 readCandidate/bootSample. */
+        private byte[] readInstalledSeed(FirstInstallReceipt receipt) throws Exception {
+            FirstInstallRequest request;synchronized(this){require(receipt!=null && active!=null && receipt==active.receipt && receipt.owner==this
+                && receipt.request==active && !receipt.disposed && active.finished && active.deliveryCompleted && active.permissionConsumed && active.readCalls==0);request=active;live(request);request.readCalls++;}
+            byte[] result=null;try{host(request);result=vault.locked(directory->{live(request);byte[] raw=vault.readExact(directory);
+                try{try(LocalEmptySeedV2 decoded=LocalEmptySeedV2.decode(raw,request.seed.version,request.seed.policyChecksum)){
+                        require(decoded.checksum.equals(request.seed.checksum));}live(request);byte[] owned=raw;raw=null;return owned;
+                }finally{if(raw!=null)Arrays.fill(raw,(byte)0);}});
+                host(request);live(request);byte[] owned=result;result=null;return owned;
+            }finally{if(result!=null)Arrays.fill(result,(byte)0);synchronized(this){request.readCalls--;wipeIfIdle(request);notifyAll();}}
+        }
+        /** Explicit pre-mutation retry only after genuine prompt cancellation,
+         * callback/worker joins and known failure delivery. Storage is inspected
+         * again on the next explicit request; this never repairs/reset state. */
+        private void retire(FirstInstallRequest request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){own(request);require(Thread.currentThread()!=request.worker
+                    && !request.retirementClaimed && !request.retired && (request.receipt==null || request.receipt.settled));request.retirementClaimed=true;}cancel(request);
+            synchronized(this){if(!request.started){request.finished=true;request.knownRefusal=true;}
+                while(!request.finished || request.mainCalls!=0 || request.eventCalls!=0 || request.cancelCalls!=0 || request.readCalls!=0 || request.settleCalls!=0)wait();
+                require(request.receipt==null || request.receipt.settled);request.cleanupCalls++;}
+            try{if(!request.detached)detach(request);}catch(Exception failure){synchronized(this){request.sealed=true;sealed=true;}throw failure;}
+            finally{synchronized(this){request.cleanupCalls--;wipeIfIdle(request);notifyAll();}}
+            synchronized(this){own(request);require(request.retirementClaimed && !request.retired && request.detached && request.mainCalls==0 && request.eventCalls==0 && request.cancelCalls==0
+                    && request.readCalls==0 && request.settleCalls==0 && request.cleanupCalls==0);request.wipe();
+                request.retired=true;
+                if(!request.mutationStarted && !request.sealed && request.knownRefusal){active=null;}
+                else{sealed=true;request.sealed=true;}notifyAll();}
+        }
+    }
+
 }
 
