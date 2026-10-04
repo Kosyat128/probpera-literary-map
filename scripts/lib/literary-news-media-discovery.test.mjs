@@ -28,6 +28,37 @@ async function fixture(overrides={},fileName="Fixture.png"){
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
 }
 describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it.each(['cached', 'manual', 'archived'])('reuses %s Telegram-only rights with VK also configured, without licensing VK or fetching again',async mode=>{
+    const f=await fixture(),store=storeFixture();
+    const initial=await resolveNewsMediaBatch([item],[destination],{...f.options,store});
+    const asset=initial.mediaOptions.registry.assets[0],permissions=structuredClone(asset.permissions);
+    const vk={platform:'vk',id:'-100456',mode:'off'},fetchImpl=vi.fn();
+    for (const destinations of [[vk,destination],[destination,vk]]) {
+      const result=await resolveNewsMediaBatch(mode==='archived'?[]:[item],destinations,{
+        ...f.options,store:mode==='manual'?null:store,fetchImpl,maxNews:0,
+        registry:mode==='manual'?initial.mediaOptions.registry:registry,
+      });
+      expect(result.mediaOptions.registry.assets).toEqual([asset]);
+      expect(result.mediaOptions.registry.assets[0].permissions).toEqual(permissions);
+      expect(fetchImpl).not.toHaveBeenCalled();
+      expect((await selectNewsMedia(item.id,destination,result.mediaOptions)).media?.assetId).toBe(asset.id);
+      expect((await selectNewsMedia(item.id,vk,result.mediaOptions)).media).toBeNull();
+      const telegramPost=await prepareNewsPost(item,{id:'snapshot',release:'a'.repeat(40)},'telegram',{destination,mediaOptions:result.mediaOptions});
+      const vkPost=await prepareNewsPost(item,{id:'snapshot',release:'a'.repeat(40)},'vk',{destination:vk,mediaOptions:result.mediaOptions});
+      expect(telegramPost.media?.assetId).toBe(asset.id);expect(vkPost.media).toBeNull();
+    }
+  });
+  it('does not admit cached or archived media when none of the requested destinations has permission',async()=>{
+    const f=await fixture(),store=storeFixture();
+    await resolveNewsMediaBatch([item],[destination],{...f.options,store});
+    for (const destinations of [[],[{platform:'vk',id:'-100456',mode:'off'}]]) {
+      for (const items of [[item],[]]) {
+        const fetchImpl=vi.fn();
+        const result=await resolveNewsMediaBatch(items,destinations,{...f.options,store,fetchImpl,maxNews:0});
+        expect(result.mediaOptions.registry.assets).toEqual([]);expect(fetchImpl).not.toHaveBeenCalled();
+      }
+    }
+  });
   it('chooses a licensed named library image before a writer portrait and keeps approved caption formatting',async()=>{
     const f=await fixture(),photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
     const fetchImpl=vi.fn(async(url,options)=>{
@@ -46,12 +77,39 @@ describe("bounded actual-portrait discovery, no provider uploads",()=>{
     expect(prepared.payload.caption).toContain('CC BY 4.0 · адаптировано');
     expect(prepared.payload.caption).not.toMatch(/JPEG|Архивный портрет|Wikimedia Commons/);
   });
+  it('keeps a cached Telegram-only illustration ahead of an older manual portrait when discovery has no budget',async()=>{
+    const f=await fixture(),store=storeFixture();
+    const manual=(await resolveNewsMediaBatch([item],[destination],f.options)).mediaOptions.registry.assets[0];
+    const photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
+    const illustrationFetch=async(url,options)=>{
+      if(new URL(url).hostname==='www.wikidata.org')return Response.json({entities:{Q23308:{id:'Q23308',labels:{en:{value:'British Library'}},claims:{
+        P31:[{mainsnak:{snaktype:'value',datavalue:{value:{id:'Q22806'}}}}],
+        P18:[{mainsnak:{snaktype:'value',datavalue:{value:'Fixture.png'}}}]}}}});
+      return f.fetchImpl(url,options);
+    };
+    const initial=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl:illustrationFetch});
+    const illustration=initial.mediaOptions.registry.assets[0],fetchImpl=vi.fn();
+    expect(illustration.mediaRole).toBe('subject-illustration');
+    const vk={platform:'vk',id:'-100456',mode:'off'};
+    const result=await resolveNewsMediaBatch([photoItem],[vk,destination],{...f.options,store,fetchImpl,maxNews:0,
+      registry:{...registry,assets:[manual]}});
+    expect(result.report.cached).toBe(1);expect(result.report.requests).toBe(0);expect(fetchImpl).not.toHaveBeenCalled();
+    expect(result.mediaOptions.registry.assets).toEqual([illustration,manual]);
+    expect((await selectNewsMedia(item.id,destination,result.mediaOptions)).media?.assetId).toBe(illustration.id);
+    expect((await selectNewsMedia(item.id,vk,result.mediaOptions)).media).toBeNull();
+    // A missing cache still keeps the approved manual portrait without research.
+    const uncached=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,fetchImpl,maxNews:0,
+      registry:{...registry,assets:[manual]}});
+    expect((await selectNewsMedia(item.id,destination,uncached.mediaOptions)).media?.assetId).toBe(manual.id);
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
   it('upgrades old cached portraits once while retaining valid assets during transient illustration failures',async()=>{
     const f=await fixture(),store=storeFixture(),photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
     await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store});
     const cached=[...store.rows.values()][0];delete cached.state.illustrationPolicy;
     const oldId=cached.state.asset.id;
-    const failed=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl:async()=>{throw Error('offline');}});
+    const failed=await resolveNewsMediaBatch([photoItem],[{platform:'vk',id:'-100456',mode:'off'},destination],
+      {...f.options,store,fetchImpl:async()=>{throw Error('offline');}});
     expect(failed.report.approved).toBe(1);
     expect(failed.mediaOptions.registry.assets[0].id).toBe(oldId);
     expect([...store.rows.values()][0].state.illustration).toMatchObject({status:'pending'});

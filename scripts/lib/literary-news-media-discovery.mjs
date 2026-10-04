@@ -54,6 +54,12 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     if (row.state?.semanticRevision) cached.set(row.state.semanticRevision, row);
   }
   const dynamic = [], resolutions = {}, report = { inspected: 0, requests: 0, cached: 0, approved: 0, held: 0, pending: 0, outcomes: [] };
+  // Discovery can be shared by independently licensed destinations. Keep an
+  // existing asset if any requested destination can use it; selection and
+  // dispatch still check the exact destination and never extend permissions.
+  const licensedForAnyDestination = (asset, newsId) => destinations.some(destination => {
+    try { checkedNewsMediaAsset(asset, destination, newsId, now); return true; } catch { return false; }
+  });
   const request = async (input, max, hosts) => {
     const url = fixedUrl(input, hosts);
     if (report.requests >= NEWS_MEDIA_DISCOVERY_LIMITS.requests) fail("media_discovery_request_budget");
@@ -159,7 +165,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
       || !Number.isFinite(Date.parse(state.nextCheckAt)) || Date.parse(state.nextCheckAt) <= now.getTime()) return false;
     if (state.status === "approved") {
       try {
-        if (!destinations.length || !destinations.every(d => checkedNewsMediaAsset(state.asset, d, item.id, now))) return false;
+        if (!licensedForAnyDestination(state.asset, item.id)) return false;
         if (state.asset.mediaRole === 'source-image' && (sourceImage.status !== 'candidate'
           || state.sourceImageRevision !== sourceImage.revision || state.asset.sourceUrl !== sourceImage.candidate.originalUrl
           || state.asset.sourceImageEvidence?.imageUrl !== sourceImage.candidate.imageUrl
@@ -182,17 +188,23 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
       || (Date.parse(left?.checkedAt)||0)-(Date.parse(right?.checkedAt)||0) || a.index-b.index;
   });
   for (const {item,semanticRevision,sourceImage,illustrationHints} of ordered) {
-    const manual = registry.assets.find(asset => destinations.length && destinations.every(destination => {
+    const manual = registry.assets.find(asset => {
       if (asset.mediaRole === 'source-image' && (sourceImage.status !== 'candidate'
         || asset.sourceUrl !== sourceImage.candidate.originalUrl || asset.sourceImageEvidence?.imageUrl !== sourceImage.candidate.imageUrl
         || asset.sourceImageEvidence?.sourceUrl !== item.source.url)) return false;
-      try { checkedNewsMediaAsset(asset, destination, item.id, now); return true; } catch { return false; }
-    }));
-    if (manual && ((sourceImage.status !== 'candidate' || manual.sourceUrl === sourceImage.candidate.originalUrl)
-      && (!illustrationHints.length || manual.subject !== 'portrait')
-      || report.inspected >= maxNews)) { resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue; }
+      return licensedForAnyDestination(asset, item.id);
+    });
+    if (manual && (sourceImage.status !== 'candidate' || manual.sourceUrl === sourceImage.candidate.originalUrl)
+      && (!illustrationHints.length || manual.subject !== 'portrait')) {
+      resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue;
+    }
     const key = `history:media:${semanticRevision}`, previous = cached.get(semanticRevision);
     if (admitCached(previous?.state, item, sourceImage, illustrationHints)) continue;
+    // Exhausting discovery only prevents new research; it must not replace a
+    // cached approved illustration with an older manual portrait.
+    if (manual && report.inspected >= maxNews) {
+      resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue;
+    }
     if (!destinations.length || report.inspected >= maxNews) {
       resolutions[item.id] = { status: "pending", reason: "media_discovery_budget" }; report.pending++; continue;
     }
@@ -201,7 +213,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     // portrait when the lookup is unavailable or uses up this batch's budget.
     if (!fallback && previous?.state?.status === 'approved' && previous.state.newsId === item.id
       && previous.state.asset?.subject === 'portrait') try {
-      if (destinations.every(d => checkedNewsMediaAsset(previous.state.asset, d, item.id, now))) {
+      if (licensedForAnyDestination(previous.state.asset, item.id)) {
         fixedUrl(previous.state.asset.sourceUrl, ['upload.wikimedia.org']); fallback = previous.state.asset;
       }
     } catch { /* Expired or unverifiable rights are not carried forward. */ }
@@ -284,7 +296,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
   const suppliedAssetIds = new Set([...registry.assets, ...dynamic].map(asset => asset.id));
   for (const { state } of cached.values()) if (state?.status === "approved" && !currentIds.has(state.newsId)) {
     if (suppliedAssetIds.has(state.asset?.id)) continue;
-    try { if (destinations.every(d => checkedNewsMediaAsset(state.asset,d,state.newsId,now))) {
+    try { if (licensedForAnyDestination(state.asset, state.newsId)) {
       fixedUrl(state.asset.sourceUrl,["upload.wikimedia.org"]); archived.push(state.asset);
     } } catch { /* Expired rights remain held; a missing JPEG never changes an approved post into text. */ }
   }
