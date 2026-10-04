@@ -4629,3 +4629,716 @@ enum PlanetChildFirstInstallV2RuntimeFixture {
     }
 }
 #endif
+
+/** Separately versioned LOCAL v2 wire/storage mechanics. These private types do
+ * not implement a v1 checkpoint, owner authorization, PIN proof or Gate. No
+ * production constructor/bridge selects the writer until a genuine V2 native
+ * host/input/owner adapter is implemented; existing factories remain unchanged. */
+fileprivate struct LocalSnapshotV2Policy {
+    let version: String,checksum: String,maximum: UInt64,delays: [UInt64]
+    init(version: String,checksum: String,maximum: UInt64,delays: [UInt64]) throws {
+        let id=Array(version.utf8),hex=Array(checksum.utf8)
+        let alnum: (UInt8) -> Bool={ $0>=48 && $0<=57 || $0>=65 && $0<=90 || $0>=97 && $0<=122 }
+        guard !id.isEmpty,id.count<=96,alnum(id[0]),id.allSatisfy({ alnum($0) || $0==46 || $0==95 || $0==45 }),
+            hex.count==64,hex.allSatisfy({ $0>=48 && $0<=57 || $0>=97 && $0<=102 }),
+            maximum>=600000,maximum<=0xffffffff,!delays.isEmpty,delays.count<=64,
+            delays.enumerated().allSatisfy({ $0.element>0 && $0.element<=9007199254740991 && ($0.offset==0 || $0.element>delays[$0.offset-1]) })
+            else { throw PlanetChildVault.Failure.unavailable }
+        self.version=version;self.checksum=checksum;self.maximum=maximum;self.delays=delays
+    }
+    func delay(_ count: UInt64) -> UInt64 { count==0 ? 0:delays[Int(min(count-1,UInt64(delays.count-1)))] }
+}
+
+/** The only production storage adapter updates the existing explicit V2 item.
+ * No add/delete, reset, v1 lookup or data-AES claim. Keychain success and exact
+ * readback are local publication semantics, not rollback/power-loss authority. */
+fileprivate protocol LocalV2Transaction: AnyObject {
+    func read() throws -> Data
+    func update(_ expected: Data,_ next: Data,boundary: () throws -> Void) throws
+}
+fileprivate protocol LocalV2Storage: AnyObject {
+    func locked<T>(_ work: (LocalV2Transaction) throws -> T) throws -> T
+}
+fileprivate extension PlanetChildVault {
+    final class LocalV2KeychainStorage: LocalV2Storage,LocalV2Transaction {
+        private let vault: PlanetChildVault
+        init(_ vault: PlanetChildVault) { self.vault=vault }
+        private func query() -> [String:Any] {
+            [kSecClass as String:kSecClassGenericPassword,kSecAttrService as String:"ru.probpera.literaryplanet.literary-planet-child-vault-v2",
+             kSecAttrAccount as String:"child-full-record-v2",kSecAttrSynchronizable as String:kSecAttrSynchronizableAny,
+             kSecUseAuthenticationUI as String:kSecUseAuthenticationUIFail]
+        }
+        func read() throws -> Data {
+            var q=query();q[kSecReturnData as String]=true;q[kSecReturnAttributes as String]=true;q[kSecMatchLimit as String]=kSecMatchLimitAll
+            var value: CFTypeRef?
+            guard SecItemCopyMatching(q as CFDictionary,&value)==errSecSuccess,let rows=value as? [[String:Any]],rows.count==1,
+                let row=rows.first,var bytes=row[kSecValueData as String] as? Data,
+                row[kSecAttrSynchronizable as String] as? Bool == false,
+                row[kSecAttrAccessible as String] as? String == kSecAttrAccessibleWhenUnlockedThisDeviceOnly as String
+                else { throw PlanetChildVault.Failure.unavailable }
+            defer { bytes.resetBytes(in:0..<bytes.count) }
+            guard !bytes.isEmpty,bytes.count<=131072 else { throw PlanetChildVault.Failure.unavailable };return Data(Array(bytes))
+        }
+        func update(_ expected: Data,_ next: Data,boundary: () throws -> Void) throws {
+            guard !expected.isEmpty,expected.count<=131072,!next.isEmpty,next.count<=131072 else { throw PinKnownRefusal() }
+            var current=try read();defer { current.resetBytes(in:0..<current.count) }
+            guard current==expected else { throw PinKnownRefusal() };try boundary()
+            // Read above denies cloud/duplicate/wrong-accessibility items. The
+            // update itself addresses ONLY the original non-synchronizable item.
+            var q=query();q[kSecAttrSynchronizable as String]=false
+            guard SecItemUpdate(q as CFDictionary,[kSecValueData as String:next] as CFDictionary)==errSecSuccess
+                else { throw PlanetChildVault.Failure.unavailable }
+            var actual=try read();defer { actual.resetBytes(in:0..<actual.count) }
+            guard actual==next else { throw PlanetChildVault.Failure.unavailable };try boundary()
+        }
+        func locked<T>(_ work: (LocalV2Transaction) throws -> T) throws -> T {
+            // Preserve a typed known refusal across the unchanged v1 flock's
+            // generic catch, without changing any existing lock behavior.
+            let result: Result<T,Error> = try vault.locked { Result { try work(self) } }
+            return try result.get()
+        }
+    }
+}
+fileprivate final class LocalV2EnrollmentSample {
+    fileprivate weak var request: LocalV2Request?
+    fileprivate let owner: LocalV2Writer
+    let continuousNs: UInt64,logicalMs: UInt64,checksum: String
+    fileprivate let seed: PinOwnedBytes
+    fileprivate var consumed=false,closed=false
+    fileprivate init(_ request: LocalV2Request,_ bytes: Data,_ ns: UInt64,_ logical: UInt64) {
+        self.request=request;owner=request.owner;seed=PinOwnedBytes(bytes);continuousNs=ns;logicalMs=logical;checksum=LocalSnapshotV2.hash(bytes)
+    }
+    func close() { owner.condition.lock();defer { owner.condition.unlock() };closed=true;seed.close() }
+}
+fileprivate final class LocalV2StorageReceipt {
+    fileprivate weak var request: LocalV2Request?
+    fileprivate let owner: LocalV2Writer
+    let checksum: String,revision: UInt64,charged: Bool
+    fileprivate let bytes: PinOwnedBytes
+    fileprivate var completed=false,settled=false,known=false,closed=false
+    fileprivate init(_ request: LocalV2Request,_ next: Data,_ snapshot: LocalSnapshotV2,_ charged: Bool) {
+        self.request=request;owner=request.owner;bytes=PinOwnedBytes(next);checksum=snapshot.checksum;revision=snapshot.fields.revision;self.charged=charged
+    }
+    func copyCanonicalBytes() throws -> Data {
+        guard let request else { throw PinKnownRefusal() }
+        owner.condition.lock();guard !closed,owner.active === request,request.receipt === self,completed,settled,known,request.workers==0,
+            !request.cancelled,!request.sealed,!request.retiring,!request.retired
+            else { owner.condition.unlock();throw PinKnownRefusal() }
+        request.workers=1;request.workerThread=ObjectIdentifier(Thread.current);owner.condition.unlock();defer { owner.finish(request) }
+        _ = try owner.current(request)
+        var copy=try bytes.copy();var adopted=false
+        defer { if !adopted { copy.resetBytes(in:0..<copy.count) } };_ = try owner.current(request)
+        owner.condition.lock();defer { owner.condition.unlock() }
+        guard owner.active === request,request.receipt === self,!closed,completed,settled,known,
+            !request.cancelled,!request.sealed,!request.retiring,!request.retired else { throw PinKnownRefusal() }
+        adopted=true;return copy
+    }
+    func close() { owner.condition.lock();defer { owner.condition.unlock() };closed=true;bytes.close() }
+}
+fileprivate final class LocalV2ChargedReservation {
+    let attemptId: String,logicalMs: UInt64,checksum: String
+    fileprivate let before: PinOwnedBytes,charged: PinOwnedBytes
+    init(_ before: Data,_ after: Data,_ id: String,_ logical: UInt64) {
+        self.before=PinOwnedBytes(before);charged=PinOwnedBytes(after);attemptId=id;logicalMs=logical;checksum=LocalSnapshotV2.hash(after)
+    }
+    func close() { before.close();charged.close() }
+    deinit { close() }
+}
+fileprivate final class LocalV2Request {
+    fileprivate let owner: LocalV2Writer
+    fileprivate let host: PinOwnerOriginalHost?,process: pid_t,began: UInt64,deadline: UInt64
+    fileprivate var last: UInt64,baseline: UInt64,anchor: UInt64=0
+    fileprivate var expected: PinOwnedBytes?,sample: LocalV2EnrollmentSample?,receipt: LocalV2StorageReceipt?
+    fileprivate var chargeStarted=false,reservation: LocalV2ChargedReservation?
+    fileprivate var opened=false,cancelled=false,sealed=false,retiring=false,retired=false,workers=0,events=0,cleanup=0
+    fileprivate var workerThread: ObjectIdentifier?
+    fileprivate var observers=[NSObjectProtocol]()
+    fileprivate init(_ owner: LocalV2Writer,_ host: PinOwnerOriginalHost?,_ ns: UInt64,_ deadline: UInt64) {
+        self.owner=owner;self.host=host;process=getpid();began=ns;last=ns;baseline=ns;self.deadline=deadline
+    }
+    fileprivate func wipe() { expected?.close();sample?.seed.close();receipt?.bytes.close();reservation?.close() }
+}
+/** Private mechanical writer. There is no production-selected constructor or
+ * V2 owner/input/Gate bridge. Request/sample/receipt identities are bookkeeping,
+ * never authorization. Finalize is deliberately absent until a genuine V2
+ * comparison producer can bind an original charged reservation. */
+fileprivate final class LocalV2Writer {
+    fileprivate let condition=NSCondition()
+    fileprivate var active: LocalV2Request?
+    private let storage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock
+    private var preparing=false
+    private init(vault: PlanetChildVault,policy: LocalSnapshotV2Policy) {
+        storage=PlanetChildVault.LocalV2KeychainStorage(vault);self.policy=policy;clock=ApplePinPrimitiveClock()
+    }
+    #if DEBUG
+    fileprivate init(fixtureStorage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock) {
+        storage=fixtureStorage;self.policy=policy;self.clock=clock
+    }
+    #endif
+    /** Private future native adapter only; no public App/JS call selects this. */
+    func request(host: UIViewController,timeoutMs: UInt64) throws -> LocalV2Request {
+        guard Thread.isMainThread,timeoutMs>0,timeoutMs<=60000 else { throw PinKnownRefusal() }
+        condition.lock();guard active==nil,!preparing else { condition.unlock();throw PinKnownRefusal() };preparing=true;condition.unlock()
+        var accepted=false;defer { if !accepted { condition.lock();preparing=false;condition.unlock() } }
+        let original=try PinOwnerOriginalHost(host),now=try clock.nanoseconds()
+        guard now<=UInt64.max-timeoutMs*1000000 else { throw PinKnownRefusal() }
+        let request=LocalV2Request(self,original,now,now+timeoutMs*1000000)
+        condition.lock();guard active==nil,preparing else { condition.unlock();throw PinKnownRefusal() }
+        active=request;preparing=false;condition.unlock()
+        // Original lifecycle latch remains installed through known ACK until
+        // actual exclusive retire; a later return cannot resurrect this request.
+        let center=NotificationCenter.default
+        for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
+            let observer=center.addObserver(forName:name,object:nil,queue:nil) { [weak self,weak request] note in
+                guard let self,let request else { return }
+                if name==UIScene.didDisconnectNotification,!original.disconnected(note) { return }
+                self.condition.lock();guard self.active === request,!request.retired,!request.retiring else { self.condition.unlock();return }
+                request.events+=1;request.cancelled=true;self.condition.broadcast();self.condition.unlock()
+                self.condition.lock();request.events-=1;if request.workers==0 { request.wipe() };self.condition.broadcast();self.condition.unlock()
+            }
+            request.observers.append(observer)
+        }
+        accepted=true;return request
+    }
+    private func local(_ request: LocalV2Request) throws -> UInt64 {
+        let now=try clock.nanoseconds();condition.lock();defer { condition.unlock() }
+        guard active === request,request.process==getpid(),!request.cancelled,!request.sealed,!request.retiring,!request.retired,
+            now>=request.last,now>=request.began,now<request.deadline else { throw PinKnownRefusal() }
+        request.last=now;return now
+    }
+    fileprivate func current(_ request: LocalV2Request) throws -> UInt64 {
+        _ = try local(request);try request.host?.current();return try local(request)
+    }
+    private func start(_ request: LocalV2Request,opened: Bool) throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() }
+        condition.lock();defer { condition.unlock() }
+        guard active === request,!request.cancelled,!request.sealed,!request.retiring,!request.retired,request.workers==0,
+            request.opened==opened,request.receipt==nil || request.receipt!.settled && request.receipt!.known else { throw PinKnownRefusal() }
+        request.workers=1;request.workerThread=ObjectIdentifier(Thread.current)
+    }
+    fileprivate func finish(_ request: LocalV2Request) {
+        condition.lock();defer { condition.unlock() };request.workers-=1;request.workerThread=nil
+        if request.cancelled || request.sealed { request.wipe() };condition.broadcast()
+    }
+    private func fail(_ request: LocalV2Request,_ error: Error,publication: Bool) {
+        condition.lock();defer { condition.unlock() }
+        if publication || !(error is PinKnownRefusal) { request.sealed=true }
+        if request.workers==0 { request.wipe() };condition.broadcast()
+    }
+    private func exact(_ transaction: LocalV2Transaction,_ request: LocalV2Request) throws -> Data {
+        var read=try transaction.read();var adopted=false
+        defer { if !adopted { read.resetBytes(in:0..<read.count) } }
+        guard !read.isEmpty,read.count<=131072,let expected=request.expected else { throw PinKnownRefusal() }
+        var original=try expected.copy();defer { original.resetBytes(in:0..<original.count) }
+        guard read==original else { throw PinKnownRefusal() };adopted=true;return read
+    }
+    private func write(_ transaction: LocalV2Transaction,_ request: LocalV2Request,_ expected: Data,_ next: Data) throws {
+        let old=PinOwnedBytes(expected),new=PinOwnedBytes(next);defer { old.close();new.close() }
+        var borrowedOld=try old.copy(),borrowedNext=try new.copy()
+        defer { borrowedOld.resetBytes(in:0..<borrowedOld.count);borrowedNext.resetBytes(in:0..<borrowedNext.count) }
+        func fence() throws {
+            var a=try old.copy(),b=try new.copy();defer { a.resetBytes(in:0..<a.count);b.resetBytes(in:0..<b.count) }
+            guard borrowedOld==a,borrowedNext==b else { throw PlanetChildVault.Failure.unavailable }
+            _ = try local(request)
+            guard borrowedOld==a,borrowedNext==b else { throw PlanetChildVault.Failure.unavailable }
+        }
+        try fence();try transaction.update(borrowedOld,borrowedNext,boundary:fence);try fence()
+        var actual=try transaction.read(),canonical=try new.copy()
+        defer { actual.resetBytes(in:0..<actual.count);canonical.resetBytes(in:0..<canonical.count) }
+        guard actual.count<=131072,actual==canonical else { throw PlanetChildVault.Failure.unavailable }
+        try fence();guard actual==canonical else { throw PlanetChildVault.Failure.unavailable }
+    }
+    func open(_ request: LocalV2Request) throws {
+        try start(request,opened:false);defer { finish(request) };var publication=false
+        do {
+            _ = try current(request)
+            try storage.locked { transaction in
+                _ = try local(request);var bytes=try transaction.read();defer { bytes.resetBytes(in:0..<bytes.count) }
+                guard !bytes.isEmpty,bytes.count<=131072 else { throw PinKnownRefusal() }
+                if bytes.count<=4096,(try? PlanetChildVault.LocalEmptySeedV2.validate(bytes,policyVersion:policy.version,policyChecksum:policy.checksum)) != nil {
+                    condition.lock();request.expected=PinOwnedBytes(bytes);condition.unlock()
+                } else {
+                    let old=try LocalSnapshotV2.decode(bytes,policy:policy);defer { old.close() }
+                    let next=try old.reanchorCandidate();defer { next.close() }
+                    var after=try next.copyCanonicalBytes();defer { after.resetBytes(in:0..<after.count) }
+                    _ = try local(request);publication=true
+                    try write(transaction,request,bytes,after)
+                    condition.lock();request.expected=PinOwnedBytes(after);request.anchor=next.journal.logical;condition.unlock();publication=false
+                }
+                let now=try local(request);condition.lock();request.baseline=now;condition.unlock()
+            }
+            _ = try current(request);condition.lock();request.opened=true;condition.unlock()
+        } catch { fail(request,error,publication:publication);throw error }
+    }
+    func sampleEnrollment(_ request: LocalV2Request) throws -> LocalV2EnrollmentSample {
+        try start(request,opened:true);defer { finish(request) }
+        do {
+            condition.lock();let fresh=request.sample==nil;condition.unlock();guard fresh else { throw PinKnownRefusal() }
+            _ = try current(request)
+            let sample=try storage.locked { transaction -> LocalV2EnrollmentSample in
+                var seed=try exact(transaction,request);defer { seed.resetBytes(in:0..<seed.count) }
+                _ = try PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)
+                let now=try local(request),logical=(now-request.began)/1000000
+                guard logical<=LocalSnapshotV2.maximum else { throw PinKnownRefusal() }
+                return LocalV2EnrollmentSample(request,seed,now,logical)
+            }
+            _ = try current(request);condition.lock();request.sample=sample;condition.unlock();return sample
+        } catch { fail(request,error,publication:false);throw error }
+    }
+    func enroll(_ request: LocalV2Request,sample: LocalV2EnrollmentSample,next input: Data,
+                recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        // Foreign/busy refusal leaves the other owner's sample untouched.
+        condition.lock();guard active === request,request.sample === sample,sample.request === request,!sample.consumed,!sample.closed,
+            request.workers==0,!request.cancelled,!request.sealed,!request.retiring else { condition.unlock();throw PinKnownRefusal() }
+        guard !Thread.isMainThread else { condition.unlock();throw PinKnownRefusal() }
+        request.workers=1;request.workerThread=ObjectIdentifier(Thread.current);sample.consumed=true;condition.unlock();defer { finish(request) }
+        var publication=false
+        do {
+            guard !input.isEmpty,input.count<=131072 else { throw PinKnownRefusal() }
+            var nextBytes=Data(Array(input));defer { nextBytes.resetBytes(in:0..<nextBytes.count) }
+            let next=try LocalSnapshotV2.decode(nextBytes,policy:policy);defer { next.close() }
+            var seed=try sample.seed.copy();defer { seed.resetBytes(in:0..<seed.count) }
+            try LocalSnapshotV2.validateEnrollment(seed:seed,next:next,logical:sample.logicalMs,policy:policy)
+            _ = try current(request)
+            try storage.locked { transaction in
+                var actual=try exact(transaction,request);defer { actual.resetBytes(in:0..<actual.count) }
+                guard actual==seed,LocalSnapshotV2.hash(actual)==sample.checksum,try local(request)>=sample.continuousNs else { throw PinKnownRefusal() }
+                publication=true;try write(transaction,request,actual,nextBytes)
+                condition.lock();request.expected?.close();request.expected=PinOwnedBytes(nextBytes)
+                request.baseline=sample.continuousNs;request.anchor=sample.logicalMs;condition.unlock();publication=false
+            }
+            _ = try current(request);try publish(request,next,nextBytes,false,recipient)
+        } catch { fail(request,error,publication:publication);throw error }
+    }
+    func charge(_ request: LocalV2Request,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        try start(request,opened:true);defer { finish(request) };var publication=false
+        do {
+            condition.lock();guard !request.chargeStarted else { condition.unlock();throw PinKnownRefusal() }
+            request.chargeStarted=true;condition.unlock()
+            _ = try current(request)
+            var random=Data(count:32);defer { random.resetBytes(in:0..<random.count) }
+            let status=random.withUnsafeMutableBytes { SecRandomCopyBytes(kSecRandomDefault,32,$0.baseAddress!) }
+            guard status==errSecSuccess else { throw PlanetChildVault.Failure.unavailable }
+            let id=random.map { String(format:"%02x",$0) }.joined()
+            try storage.locked { transaction in
+                var before=try exact(transaction,request);defer { before.resetBytes(in:0..<before.count) }
+                let old=try LocalSnapshotV2.decode(before,policy:policy);defer { old.close() }
+                let now=try local(request);condition.lock();let baseline=request.baseline,anchor=request.anchor;condition.unlock()
+                guard now>=baseline,(now-baseline)/1000000<=LocalSnapshotV2.maximum-anchor else { throw PinKnownRefusal() }
+                let logical=anchor+(now-baseline)/1000000
+                let next=try old.chargeCandidate(id:id,logical:logical);defer { next.close() }
+                var after=try next.copyCanonicalBytes();defer { after.resetBytes(in:0..<after.count) }
+                publication=true;try write(transaction,request,before,after)
+                condition.lock();request.expected?.close();request.expected=PinOwnedBytes(after)
+                request.reservation=LocalV2ChargedReservation(before,after,id,logical);condition.unlock();publication=false
+                // Recipient is invoked after releasing the durable flock below.
+            }
+            _ = try current(request);var after=try request.expected!.copy();defer { after.resetBytes(in:0..<after.count) }
+            let next=try LocalSnapshotV2.decode(after,policy:policy);defer { next.close() };try publish(request,next,after,true,recipient)
+        } catch { fail(request,error,publication:publication);throw error }
+    }
+    private func publish(_ request: LocalV2Request,_ next: LocalSnapshotV2,_ bytes: Data,_ charged: Bool,
+                         _ recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        _ = try current(request);let receipt=LocalV2StorageReceipt(request,bytes,next,charged)
+        condition.lock();guard active === request,!request.cancelled,!request.retiring,!request.sealed else { condition.unlock();receipt.bytes.close();throw PinKnownRefusal() }
+        request.receipt=receipt;condition.unlock()
+        do { try recipient(receipt);_ = try current(request)
+            try storage.locked { transaction in var read=try exact(transaction,request);defer { read.resetBytes(in:0..<read.count) };_ = try local(request) }
+            _ = try current(request);condition.lock();guard !request.cancelled,!request.retiring,!request.sealed else { condition.unlock();throw PinKnownRefusal() }
+            receipt.completed=true;condition.unlock()
+        } catch { condition.lock();request.sealed=true;condition.unlock();throw error }
+    }
+    func settle(_ receipt: LocalV2StorageReceipt,known: Bool) throws {
+        guard let request=receipt.request,receipt.owner === self else { throw PinKnownRefusal() }
+        condition.lock()
+        guard active === request,request.receipt === receipt,!receipt.settled,request.workers==0,
+            !known || !receipt.closed && receipt.completed && !request.cancelled && !request.retiring && !request.retired && !request.sealed
+            else { condition.unlock();throw PinKnownRefusal() }
+        if !known { receipt.settled=true;request.sealed=true;request.wipe();condition.broadcast();condition.unlock();return }
+        request.workers=1;request.workerThread=ObjectIdentifier(Thread.current);condition.unlock();defer { finish(request) }
+        _ = try current(request)
+        condition.lock();defer { condition.unlock() }
+        guard active === request,request.receipt === receipt,!receipt.settled,!receipt.closed,receipt.completed,
+            !request.cancelled,!request.sealed,!request.retiring,!request.retired else { throw PinKnownRefusal() }
+        receipt.settled=true;receipt.known=true;condition.broadcast()
+    }
+    func cancel(_ request: LocalV2Request) {
+        condition.lock();defer { condition.unlock() };guard active === request,!request.retired else { return }
+        request.cancelled=true;if request.workers==0 { request.wipe() };condition.broadcast()
+    }
+    func retire(_ request: LocalV2Request) throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() }
+        condition.lock();guard active === request,!request.retiring,!request.retired,
+            request.workerThread != ObjectIdentifier(Thread.current) else { condition.unlock();throw PinKnownRefusal() }
+        request.retiring=true;request.cancelled=true;condition.broadcast()
+        while request.workers>0 || request.events>0 || request.receipt != nil && !request.receipt!.settled { condition.wait() }
+        request.cleanup=1;condition.unlock()
+        // Real main cleanup returns before capacity is reconsidered. No timer
+        // substitutes for observer removal, callback/worker or delivery ACK.
+        DispatchQueue.main.sync { for observer in request.observers { NotificationCenter.default.removeObserver(observer) };request.observers.removeAll() }
+        condition.lock();request.cleanup=0;request.wipe();request.retired=true;condition.broadcast()
+        guard active === request,request.workers==0,request.events==0,!request.sealed else { condition.unlock();throw PlanetChildVault.Failure.unavailable }
+        active=nil;condition.unlock()
+    }
+}
+fileprivate struct LocalV2PinFields {
+    let revision: UInt64,credential: String,count: UInt64,blocked: UInt64,observed: UInt64,pending: String?
+    let revisionStart: Int,revisionEnd: Int,attemptsStart: Int
+}
+fileprivate struct LocalV2RecordFields {
+    let revision: UInt64,clock: UInt64,pin: LocalV2PinFields
+    let revisionStart: Int,revisionEnd: Int,pinStart: Int,pinEnd: Int
+}
+fileprivate struct LocalV2JournalFields {
+    let revision: UInt64,protectedChecksum: String,protectedRevision: UInt64,pinRevision: UInt64,credential: String
+    let count: UInt64,pending: String?,cooldown: UInt64,logical: UInt64
+}
+fileprivate struct LocalV2Decoded {
+    let fields: LocalV2RecordFields,journal: LocalV2JournalFields
+    var protectedBytes: Data
+}
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    static func localV2Decode(_ input: Data,policy: LocalSnapshotV2Policy) throws -> LocalV2Decoded {
+        try require(!input.isEmpty && input.count<=131072)
+        let storage=Storage(input);defer { storage.wipe() };let p=Cursor(storage)
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2)
+        try p.field("protectedRecord");let begin=p.index
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2)
+        try p.field("revision");let revisionStart=p.index-begin,revision=try p.number(1,9007199254740991),revisionEnd=p.index-begin
+        try p.field("mode");let mode=try p.asciiString();try require(mode=="adult" || mode=="child")
+        try p.field("selectionRevision");_ = try p.number(1,9007199254740991)
+        try p.field("profileRevision");_ = try p.number(1,9007199254740991)
+        try p.field("policyChecksum");try require(p.asciiString()==policy.checksum)
+        try p.field("registryChecksum");let registryChecksum=try p.asciiString();try require(hash(registryChecksum))
+        try p.field("registry");let registryStart=p.index,active=try registry(p,version:policy.version),registryEnd=p.index
+        var registryBytes=storage.copy(registryStart..<registryEnd);defer { registryBytes.resetBytes(in:0..<registryBytes.count) }
+        try require(localV2Hash(registryBytes)==registryChecksum)
+        try p.field("pin");let pinStart=p.index-begin
+        _ = try readPin(p,version:policy.version,maximum:policy.maximum) // Reuse the strict enrolled PIN grammar.
+        let pinEnd=p.index-begin
+        var pinBytes=storage.copy((begin+pinStart)..<(begin+pinEnd));defer { pinBytes.resetBytes(in:0..<pinBytes.count) }
+        let pinStorage=Storage(pinBytes);defer { pinStorage.wipe() };let q=Cursor(pinStorage)
+        try q.field("schemaVersion",first:true);_ = try q.number(1,1)
+        try q.field("policyVersion");try require(q.asciiString()==policy.version)
+        try q.field("revision");let pinRevisionStart=q.index,pinRevision=try q.number(1,9007199254740991),pinRevisionEnd=q.index
+        try q.field("credentialId");let credential=try q.asciiString()
+        try q.field("verifier");try q.field("algorithm",first:true);try require(q.asciiString()=="PBKDF2-HMAC-SHA256")
+        try q.field("iterations");_ = try q.number(600000,policy.maximum)
+        try q.field("saltHex");_ = try q.hashRange();try q.field("hashHex");_ = try q.hashRange();try q.token("}")
+        try q.field("attempts");let attemptsStart=q.index
+        try q.field("count",first:true);let count=try q.number(0,9007199254740991)
+        try q.field("blockedUntilMs");let blocked=try q.number(0,9007199254740991)
+        try q.field("lastObservedMs");let observed=try q.number(0,9007199254740991)
+        try q.field("pendingAttemptId");let pending=try q.nullableString();try q.token("}");try q.token("}")
+        try require(q.index==pinStorage.count && hash(credential) && (pending==nil || hash(pending!)))
+        try p.field("clock");try p.field("schemaVersion",first:true);_ = try p.number(2,2)
+        try p.field("logicalMs");let clock=try p.number(0,9007199254740991);try p.token("}");try p.token("}")
+        let end=p.index;try require(clock<=observed && (mode != "child" || active != nil))
+        var protectedBytes=storage.copy(begin..<end);var adopted=false
+        defer { if !adopted { protectedBytes.resetBytes(in:0..<protectedBytes.count) } }
+        let checksum=localV2Hash(protectedBytes)
+        try p.field("restartJournal");let journalStart=p.index
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2)
+        try p.field("policyVersion");try require(p.asciiString()==policy.version)
+        try p.field("policyChecksum");try require(p.asciiString()==policy.checksum)
+        try p.field("revision");let journalRevision=try p.number(1,9007199254740991)
+        try p.field("protected");try p.field("checksum",first:true);let boundChecksum=try p.asciiString()
+        try p.field("revision");let boundRevision=try p.number(1,9007199254740991)
+        try p.field("pinRevision");let boundPin=try p.number(1,9007199254740991)
+        try p.field("credentialId");let boundCredential=try p.asciiString();try p.token("}")
+        try p.field("attempts");try p.field("count",first:true);let boundCount=try p.number(0,9007199254740991)
+        try p.field("pendingAttemptId");let boundPending=try p.nullableString()
+        try p.field("savedCooldownMs");let cooldown=try p.number(0,9007199254740991);try p.token("}")
+        try p.field("anchor");try p.field("logicalMs",first:true);let logical=try p.number(0,9007199254740991)
+        try p.token("}");try p.token("}");let journalEnd=p.index;try p.token("}")
+        try require(p.index==storage.count && journalEnd-journalStart<=4096 && boundChecksum==checksum
+            && boundRevision==revision && boundPin==pinRevision && boundCredential==credential
+            && boundCount==count && boundPending==pending && logical==observed && cooldown==policy.delay(count)
+            && logical<=9007199254740991-cooldown && (count==0 ? blocked==0 && pending==nil:blocked==logical+cooldown))
+        let pin=LocalV2PinFields(revision:pinRevision,credential:credential,count:count,blocked:blocked,observed:observed,pending:pending,
+            revisionStart:pinRevisionStart,revisionEnd:pinRevisionEnd,attemptsStart:attemptsStart)
+        let fields=LocalV2RecordFields(revision:revision,clock:clock,pin:pin,revisionStart:revisionStart,revisionEnd:revisionEnd,pinStart:pinStart,pinEnd:pinEnd)
+        let journal=LocalV2JournalFields(revision:journalRevision,protectedChecksum:checksum,protectedRevision:revision,pinRevision:pinRevision,
+            credential:credential,count:count,pending:pending,cooldown:cooldown,logical:logical)
+        adopted=true;return LocalV2Decoded(fields:fields,journal:journal,protectedBytes:protectedBytes)
+    }
+    private static func localV2Hash(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+}
+fileprivate final class LocalSnapshotV2 {
+    static let maximum: UInt64=9007199254740991
+    let policy: LocalSnapshotV2Policy,fields: LocalV2RecordFields,journal: LocalV2JournalFields,checksum: String
+    private let lock=NSLock(),bytes: PinOwnedBytes,protectedBytes: PinOwnedBytes
+    private var disposed=false
+    private init(_ input: Data,_ decoded: LocalV2Decoded,_ policy: LocalSnapshotV2Policy) {
+        self.policy=policy;fields=decoded.fields;journal=decoded.journal;bytes=PinOwnedBytes(input);protectedBytes=PinOwnedBytes(decoded.protectedBytes)
+        checksum=Self.hash(input)
+    }
+    static func hash(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
+    static func decode(_ input: Data,policy: LocalSnapshotV2Policy) throws -> LocalSnapshotV2 {
+        guard !input.isEmpty,input.count<=131072 else { throw PlanetChildVault.Failure.unavailable }
+        var owned=Data(Array(input));defer { owned.resetBytes(in:0..<owned.count) }
+        var decoded=try PlanetChildVault.ProtectedEnvelope.localV2Decode(owned,policy:policy)
+        defer { decoded.protectedBytes.resetBytes(in:0..<decoded.protectedBytes.count) }
+        return LocalSnapshotV2(owned,decoded,policy)
+    }
+    func copyCanonicalBytes() throws -> Data { lock.lock();defer { lock.unlock() };guard !disposed else { throw PinKnownRefusal() };return try bytes.copy() }
+    func copyProtectedBytes() throws -> Data { lock.lock();defer { lock.unlock() };guard !disposed else { throw PinKnownRefusal() };return try protectedBytes.copy() }
+    func close() { lock.lock();defer { lock.unlock() };disposed=true;bytes.close();protectedBytes.close() }
+    deinit { close() }
+    static func samePolicy(_ a: LocalSnapshotV2,_ b: LocalSnapshotV2) -> Bool {
+        a.policy.version==b.policy.version && a.policy.checksum==b.policy.checksum && a.policy.maximum==b.policy.maximum && a.policy.delays==b.policy.delays
+    }
+    static func wrapper(_ protectedBytes: Data,policy: LocalSnapshotV2Policy,rootRevision: UInt64,journalRevision: UInt64,pin: LocalV2PinFields) throws -> LocalSnapshotV2 {
+        guard !protectedBytes.isEmpty,protectedBytes.count<=131072,rootRevision>0,rootRevision<=maximum,
+            journalRevision>0,journalRevision<=maximum else { throw PinKnownRefusal() }
+        let cooldown=policy.delay(pin.count),pending=pin.pending.map { "\"\($0)\"" } ?? "null"
+        let journal="{\"schemaVersion\":2,\"policyVersion\":\"\(policy.version)\",\"policyChecksum\":\"\(policy.checksum)\",\"revision\":\(journalRevision),\"protected\":{\"checksum\":\"\(hash(protectedBytes))\",\"revision\":\(rootRevision),\"pinRevision\":\(pin.revision),\"credentialId\":\"\(pin.credential)\"},\"attempts\":{\"count\":\(pin.count),\"pendingAttemptId\":\(pending),\"savedCooldownMs\":\(cooldown)},\"anchor\":{\"logicalMs\":\(pin.observed)}}"
+        var j=Data(journal.utf8);defer { j.resetBytes(in:0..<j.count) }
+        guard j.count<=4096,protectedBytes.count<=131072-j.count-57 else { throw PinKnownRefusal() }
+        var full=Data("{\"schemaVersion\":2,\"protectedRecord\":".utf8);full.append(protectedBytes)
+        full.append(Data(",\"restartJournal\":".utf8));full.append(j);full.append(125);defer { full.resetBytes(in:0..<full.count) }
+        return try decode(full,policy:policy)
+    }
+    func reanchorCandidate() throws -> LocalSnapshotV2 {
+        guard journal.revision<Self.maximum else { throw PinKnownRefusal() }
+        var p=try copyProtectedBytes();defer { p.resetBytes(in:0..<p.count) }
+        return try Self.wrapper(p,policy:policy,rootRevision:fields.revision,journalRevision:journal.revision+1,pin:fields.pin)
+    }
+    func chargeCandidate(id: String,logical: UInt64) throws -> LocalSnapshotV2 {
+        guard fields.revision<Self.maximum,fields.pin.revision<Self.maximum,journal.revision<Self.maximum,fields.pin.count<Self.maximum,
+            logical>=fields.pin.observed,logical>=fields.pin.blocked,logical<=Self.maximum else { throw PinKnownRefusal() }
+        let count=fields.pin.count+1,delay=policy.delay(count)
+        guard logical<=Self.maximum-delay else { throw PinKnownRefusal() }
+        var p=try copyProtectedBytes();defer { p.resetBytes(in:0..<p.count) }
+        let f=fields.pin;var raw=p.subdata(in:fields.pinStart..<fields.pinEnd);defer { raw.resetBytes(in:0..<raw.count) }
+        var pin=Data(raw.prefix(f.revisionStart));pin.append(Data(String(f.revision+1).utf8))
+        pin.append(raw.subdata(in:f.revisionEnd..<f.attemptsStart))
+        pin.append(Data("{\"count\":\(count),\"blockedUntilMs\":\(logical+delay),\"lastObservedMs\":\(logical),\"pendingAttemptId\":\"\(id)\"}}".utf8))
+        defer { pin.resetBytes(in:0..<pin.count) }
+        var next=Data(p.prefix(fields.revisionStart));next.append(Data(String(fields.revision+1).utf8))
+        next.append(p.subdata(in:fields.revisionEnd..<fields.pinStart));next.append(pin);next.append(p.suffix(from:fields.pinEnd))
+        defer { next.resetBytes(in:0..<next.count) }
+        let changed=LocalV2PinFields(revision:f.revision+1,credential:f.credential,count:count,blocked:logical+delay,observed:logical,pending:id,
+            revisionStart:0,revisionEnd:0,attemptsStart:0)
+        return try Self.wrapper(next,policy:policy,rootRevision:fields.revision+1,journalRevision:journal.revision+1,pin:changed)
+    }
+    static func validateEnrollment(seed input: Data,next: LocalSnapshotV2,logical: UInt64,policy: LocalSnapshotV2Policy) throws {
+        guard !input.isEmpty,input.count<=4096 else { throw PinKnownRefusal() }
+        var seed=Data(Array(input));defer { seed.resetBytes(in:0..<seed.count) }
+        _ = try PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)
+        guard logical<=maximum,next.fields.revision==2,next.fields.pin.revision==1,next.journal.revision==1,
+            next.fields.pin.count==0,next.fields.pin.blocked==0,next.fields.pin.pending==nil,next.fields.pin.observed==logical,
+            next.policy.version==policy.version,next.policy.checksum==policy.checksum,next.policy.maximum==policy.maximum,next.policy.delays==policy.delays
+            else { throw PinKnownRefusal() }
+        var p=try next.copyProtectedBytes();defer { p.resetBytes(in:0..<p.count) }
+        let pinMarker=Data("\"pin\":null".utf8)
+        guard let range=seed.range(of:pinMarker),p.starts(with:Data("{\"schemaVersion\":2,\"revision\":2".utf8)) else { throw PinKnownRefusal() }
+        var expected=Data("{\"schemaVersion\":2,\"revision\":2".utf8)
+        let rootPrefix=Data("{\"schemaVersion\":2,\"revision\":1".utf8).count
+        expected.append(seed.subdata(in:rootPrefix..<range.lowerBound));expected.append(Data("\"pin\":".utf8))
+        expected.append(p.subdata(in:next.fields.pinStart..<next.fields.pinEnd));expected.append(seed.suffix(from:range.upperBound))
+        defer { expected.resetBytes(in:0..<expected.count) };guard expected==p else { throw PinKnownRefusal() }
+    }
+    /** Structural classification only, NEVER a mathematical outcome/permission.
+     * The writer has no finalize entry until original V2 input/KDF receipts exist. */
+    static func validateFinalization(charged: LocalSnapshotV2,next: LocalSnapshotV2) throws {
+        guard samePolicy(charged,next),charged.fields.pin.pending != nil,charged.fields.revision<maximum,
+            charged.fields.pin.revision<maximum,charged.journal.revision<maximum,next.fields.revision==charged.fields.revision+1,
+            next.fields.pin.revision==charged.fields.pin.revision+1,next.journal.revision==charged.journal.revision+1,
+            next.fields.pin.pending==nil,next.fields.pin.observed>=charged.fields.pin.observed,
+            next.fields.pin.count==0 || next.fields.pin.count==charged.fields.pin.count else { throw PinKnownRefusal() }
+        var old=try charged.copyProtectedBytes(),after=try next.copyProtectedBytes()
+        defer { old.resetBytes(in:0..<old.count);after.resetBytes(in:0..<after.count) }
+        let a=charged.fields,b=next.fields
+        guard old.subdata(in:a.revisionEnd..<a.pinStart)==after.subdata(in:b.revisionEnd..<b.pinStart),
+            old.suffix(from:a.pinEnd)==after.suffix(from:b.pinEnd) else { throw PinKnownRefusal() }
+        var oldPin=old.subdata(in:a.pinStart..<a.pinEnd),newPin=after.subdata(in:b.pinStart..<b.pinEnd)
+        defer { oldPin.resetBytes(in:0..<oldPin.count);newPin.resetBytes(in:0..<newPin.count) }
+        guard oldPin.prefix(a.pin.revisionStart)==newPin.prefix(b.pin.revisionStart),
+            oldPin.subdata(in:a.pin.revisionEnd..<a.pin.attemptsStart)==newPin.subdata(in:b.pin.revisionEnd..<b.pin.attemptsStart)
+            else { throw PinKnownRefusal() }
+        // decode already checked new count/blocked/pending/full-delay binding.
+    }
+}
+
+#if DEBUG
+/** Explicit synthetic closed-wire/storage observations only. No Keychain/OS
+ * owner, admission, nonrollback, genuine host or installed-device acceptance. */
+fileprivate final class LocalV2FixtureClock: PinPrimitiveClock {
+    var now: UInt64=1000000000
+    var callback: (() -> Void)?
+    func nanoseconds() throws -> UInt64 { callback?();return now }
+}
+fileprivate final class LocalV2FixtureStorage: LocalV2Storage,LocalV2Transaction {
+    private let lock=NSRecursiveLock()
+    var value: Data,updates=0,corruptReadback=false
+    var duringUpdate: (() -> Void)?
+    init(_ bytes: Data) { value=Data(Array(bytes)) }
+    func locked<T>(_ work: (LocalV2Transaction) throws -> T) throws -> T { lock.lock();defer { lock.unlock() };return try work(self) }
+    func read() throws -> Data { Data(Array(value)) }
+    func update(_ expected: Data,_ next: Data,boundary: () throws -> Void) throws {
+        guard expected==value else { throw PinKnownRefusal() };try boundary();updates+=1;value=Data(Array(next))
+        if corruptReadback { value.append(32) };duringUpdate?();try boundary()
+    }
+}
+fileprivate extension LocalV2Writer {
+    func fixtureRequest(timeoutMs: UInt64=1000) throws -> LocalV2Request {
+        condition.lock();defer { condition.unlock() };guard active==nil,!preparing,timeoutMs>0,timeoutMs<=60000 else { throw PinKnownRefusal() }
+        preparing=true;defer { preparing=false };let now=try clock.nanoseconds()
+        guard now<=UInt64.max-timeoutMs*1000000 else { throw PinKnownRefusal() }
+        let request=LocalV2Request(self,nil,now,now+timeoutMs*1000000);active=request;return request
+    }
+}
+enum PlanetChildLocalSnapshotV2Scenario: String {
+    case enrollment,crossBinding,canonicalBounds,lowerBound,separateSeed,charge,reanchor,finalization,overflow
+    case originalSample,earlyAck,cancelAndCAS,unknownReadback,copyJoinsRetire
+}
+struct PlanetChildLocalSnapshotV2Observation { let pass: Bool,operations: Int,qualification: String }
+enum PlanetChildLocalSnapshotV2RuntimeFixture {
+    private static let safe: UInt64=9007199254740991
+    private static func policy() throws -> LocalSnapshotV2Policy {
+        try LocalSnapshotV2Policy(version:"synthetic-local-v2",checksum:String(repeating:"a",count:64),maximum:600000,delays:[100,200,400])
+    }
+    private static func build(_ policy: LocalSnapshotV2Policy,count: UInt64=0,logical: UInt64=0,clock: UInt64=0,
+                              root: UInt64=2,pinRevision: UInt64=1,journal: UInt64=1,pending: String?=nil,
+                              credential: String=String(repeating:"b",count:64)) throws -> LocalSnapshotV2 {
+        let seed=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:policy.version,policyChecksum:policy.checksum)
+        let pin="{\"schemaVersion\":1,\"policyVersion\":\"\(policy.version)\",\"revision\":\(pinRevision),\"credentialId\":\"\(credential)\",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":600000,\"saltHex\":\"\(String(repeating:"c",count:64))\",\"hashHex\":\"\(String(repeating:"d",count:64))\"},\"attempts\":{\"count\":\(count),\"blockedUntilMs\":\(count==0 ? 0:logical+policy.delay(count)),\"lastObservedMs\":\(logical),\"pendingAttemptId\":\(pending.map { "\"\($0)\"" } ?? "null")}}"
+        let text=String(decoding:seed,as:UTF8.self).replacingOccurrences(of:"\"revision\":1",with:"\"revision\":\(root)")
+            .replacingOccurrences(of:"\"pin\":null",with:"\"pin\":\(pin)").replacingOccurrences(of:"\"logicalMs\":0",with:"\"logicalMs\":\(clock)")
+        let fields=LocalV2PinFields(revision:pinRevision,credential:credential,count:count,blocked:count==0 ? 0:logical+policy.delay(count),observed:logical,pending:pending,
+            revisionStart:0,revisionEnd:0,attemptsStart:0)
+        return try LocalSnapshotV2.wrapper(Data(text.utf8),policy:policy,rootRevision:root,journalRevision:journal,pin:fields)
+    }
+    private static func denied(_ body: () throws -> Void) -> Bool { do { try body();return false } catch { return true } }
+    static func run(_ scenario: PlanetChildLocalSnapshotV2Scenario) throws -> PlanetChildLocalSnapshotV2Observation {
+        guard !Thread.isMainThread else { throw PlanetChildVault.Failure.unavailable }
+        let p=try policy();var pass=false,operations=0
+        switch scenario {
+        case .enrollment:
+            var seed=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:p.version,policyChecksum:p.checksum)
+            defer { seed.resetBytes(in:0..<seed.count) };let next=try build(p,logical:17);defer { next.close() }
+            try LocalSnapshotV2.validateEnrollment(seed:seed,next:next,logical:17,policy:p)
+            var bytes=try next.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) };let copy=try LocalSnapshotV2.decode(bytes,policy:p);defer { copy.close() }
+            pass=copy.fields.clock==0 && copy.journal.logical==17 && copy.fields.revision==2 && copy.fields.pin.count==0
+        case .crossBinding:
+            let original=try build(p,count:1,logical:17,pending:String(repeating:"e",count:64));defer { original.close() }
+            var bytes=try original.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+            let text=String(decoding:bytes,as:UTF8.self)
+            let bad=text.replacingOccurrences(of:original.journal.protectedChecksum,with:String(repeating:"0",count:64))
+            let wrongCount=text.replacingOccurrences(of:"\"savedCooldownMs\":100",with:"\"savedCooldownMs\":200")
+            pass=denied { let x=try LocalSnapshotV2.decode(Data(bad.utf8),policy:p);x.close() }
+                && denied { let x=try LocalSnapshotV2.decode(Data(wrongCount.utf8),policy:p);x.close() }
+        case .canonicalBounds:
+            let original=try build(p);defer { original.close() };var bytes=try original.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+            pass=denied { let x=try LocalSnapshotV2.decode(Data([0xff]),policy:p);x.close() }
+                && denied { let x=try LocalSnapshotV2.decode(bytes+Data([32]),policy:p);x.close() }
+                && denied { let x=try LocalSnapshotV2.decode(Data(repeating:32,count:131073),policy:p);x.close() }
+                && denied { let x=try LocalSnapshotV2.decode(Data(String(decoding:bytes,as:UTF8.self).replacingOccurrences(of:"\"algorithm\":\"PBKDF2-HMAC-SHA256\"",with:"\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"extra\":0").utf8),policy:p);x.close() }
+        case .lowerBound:
+            let okay=try build(p,logical:19,clock:18);defer { okay.close() }
+            pass=okay.fields.clock<okay.fields.pin.observed && denied { let x=try build(p,logical:19,clock:20);x.close() }
+        case .separateSeed:
+            var seed=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:p.version,policyChecksum:p.checksum);defer { seed.resetBytes(in:0..<seed.count) }
+            pass=denied { let x=try LocalSnapshotV2.decode(seed,policy:p);x.close() }
+                && denied { let x=try LocalSnapshotV2.decode(Data(("{\"schemaVersion\":2,\"protectedRecord\":"+String(decoding:seed,as:UTF8.self)+",\"restartJournal\":null}").utf8),policy:p);x.close() }
+        case .charge:
+            let old=try build(p,count:1,logical:10,pending:String(repeating:"e",count:64));defer { old.close() }
+            let refused=denied { let x=try old.chargeCandidate(id:String(repeating:"f",count:64),logical:109);x.close() }
+            let next=try old.chargeCandidate(id:String(repeating:"f",count:64),logical:110);defer { next.close() }
+            var before=try old.copyProtectedBytes(),after=try next.copyProtectedBytes();defer { before.resetBytes(in:0..<before.count);after.resetBytes(in:0..<after.count) }
+            pass=refused && next.fields.pin.count==2 && next.fields.pin.blocked==310 && next.fields.pin.pending==String(repeating:"f",count:64)
+                && before.suffix(from:old.fields.pinEnd)==after.suffix(from:next.fields.pinEnd) && next.fields.pin.credential==old.fields.pin.credential
+        case .reanchor:
+            let old=try build(p,count:2,logical:20,pending:String(repeating:"e",count:64));defer { old.close() }
+            let next=try old.reanchorCandidate();defer { next.close() }
+            var a=try old.copyProtectedBytes(),b=try next.copyProtectedBytes();defer { a.resetBytes(in:0..<a.count);b.resetBytes(in:0..<b.count) }
+            pass=a==b && next.journal.revision==old.journal.revision+1 && next.journal.cooldown==200 && next.journal.pending==old.journal.pending
+        case .finalization:
+            let old=try build(p,count:1,logical:10,root:3,pinRevision:2,journal:2,pending:String(repeating:"e",count:64));defer { old.close() }
+            let reset=try build(p,logical:11,root:4,pinRevision:3,journal:3);defer { reset.close() }
+            let mismatch=try build(p,count:1,logical:11,root:4,pinRevision:3,journal:3);defer { mismatch.close() }
+            let foreign=try build(p,logical:11,root:4,pinRevision:3,journal:3,credential:String(repeating:"f",count:64));defer { foreign.close() }
+            try LocalSnapshotV2.validateFinalization(charged:old,next:reset);try LocalSnapshotV2.validateFinalization(charged:old,next:mismatch)
+            pass=denied { try LocalSnapshotV2.validateFinalization(charged:old,next:foreign) } && mismatch.fields.pin.count==1 && reset.fields.pin.count==0
+        case .overflow:
+            let old=try build(p,root:safe,pinRevision:safe,journal:safe);defer { old.close() }
+            pass=denied { let x=try old.reanchorCandidate();x.close() }
+                && denied { let x=try old.chargeCandidate(id:String(repeating:"f",count:64),logical:0);x.close() }
+                && denied { _ = try LocalSnapshotV2Policy(version:p.version,checksum:p.checksum,maximum:599999,delays:[100]) }
+        case .originalSample,.earlyAck,.cancelAndCAS,.unknownReadback,.copyJoinsRetire:
+            var seed=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:p.version,policyChecksum:p.checksum);defer { seed.resetBytes(in:0..<seed.count) }
+            let io=LocalV2FixtureStorage(seed),clock=LocalV2FixtureClock(),writer=LocalV2Writer(fixtureStorage:io,policy:p,clock:clock)
+            let request=try writer.fixtureRequest();try writer.open(request);clock.now+=10000000
+            let sample=try writer.sampleEnrollment(request),next=try build(p,logical:sample.logicalMs);defer { next.close() }
+            var bytes=try next.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+            var receipt: LocalV2StorageReceipt?,early=false,earlyCopy=false,selfRetire=false
+            if scenario == .unknownReadback { io.corruptReadback=true }
+            if scenario == .cancelAndCAS { io.duringUpdate={ writer.cancel(request) } }
+            clock.now+=70000000
+            let enrollmentDenied=denied {
+                try writer.enroll(request,sample:sample,next:bytes) { value in
+                    receipt=value
+                    early=denied { try writer.settle(value,known:true) }
+                    earlyCopy=denied { _ = try value.copyCanonicalBytes() }
+                    selfRetire=denied { try writer.retire(request) }
+                }
+            }
+            operations=io.updates
+            if scenario == .originalSample {
+                guard let first=receipt else { throw PlanetChildVault.Failure.unavailable };try writer.settle(first,known:true)
+                var charged: LocalV2StorageReceipt?;try writer.charge(request) { charged=$0 }
+                guard let second=charged else { throw PlanetChildVault.Failure.unavailable };try writer.settle(second,known:true)
+                clock.now+=200000000;let repeated=denied { try writer.charge(request) { _ in } }
+                pass = !enrollmentDenied && sample.logicalMs==10 && repeated && io.updates==2 && request.reservation?.attemptId.count==64
+                    && request.reservation?.logicalMs==80 && request.reservation?.checksum==second.checksum
+                try writer.retire(request);first.close();second.close();sample.close();operations=io.updates
+            } else if scenario == .earlyAck {
+                guard let receipt else { throw PlanetChildVault.Failure.unavailable };receipt.close()
+                let closed=denied { try writer.settle(receipt,known:true) };try writer.settle(receipt,known:false)
+                let retired=denied { try writer.retire(request) }
+                pass=early && earlyCopy && selfRetire && closed && retired && writer.active === request && request.sealed && denied { _ = try receipt.copyCanonicalBytes() }
+                sample.close();receipt.close()
+            } else if scenario == .cancelAndCAS {
+                let stored=try LocalSnapshotV2.decode(io.value,policy:p);defer { stored.close() }
+                pass=enrollmentDenied && request.cancelled && stored.fields.revision==2 && io.updates==1
+                // Independent stale full-record refusal before any update.
+                let otherIO=LocalV2FixtureStorage(seed),other=LocalV2Writer(fixtureStorage:otherIO,policy:p,clock:LocalV2FixtureClock())
+                let owned=try other.fixtureRequest();try other.open(owned);let original=try other.sampleEnrollment(owned)
+                let staleNext=try build(p,logical:original.logicalMs);defer { staleNext.close() }
+                var staleBytes=try staleNext.copyCanonicalBytes();defer { staleBytes.resetBytes(in:0..<staleBytes.count) }
+                otherIO.value=io.value
+                let stale=denied { try other.enroll(owned,sample:original,next:staleBytes) { _ in } }
+                pass=pass && stale && otherIO.updates==0;try other.retire(owned);original.close()
+                let sealedRetirement=denied { try writer.retire(request) }
+                pass=pass && sealedRetirement && writer.active === request && request.sealed;sample.close()
+            } else if scenario == .copyJoinsRetire {
+                guard let receipt else { throw PlanetChildVault.Failure.unavailable };try writer.settle(receipt,known:true)
+                let entered=DispatchSemaphore(value:0),release=DispatchSemaphore(value:0),copied=DispatchSemaphore(value:0),retired=DispatchSemaphore(value:0)
+                defer { release.signal() }
+                let results=NSLock();var copyDenied=false,retireReturned=false,called=false
+                clock.callback={
+                    results.lock();let first = !called;called=true;results.unlock()
+                    if first { entered.signal();_ = release.wait(timeout:.now()+3) }
+                }
+                Thread { let refused=denied { var data=try receipt.copyCanonicalBytes();data.resetBytes(in:0..<data.count) }
+                    results.lock();copyDenied=refused;results.unlock();copied.signal() }.start()
+                guard entered.wait(timeout:.now()+2) == .success else { throw PlanetChildVault.Failure.unavailable }
+                Thread { do { try writer.retire(request);results.lock();retireReturned=true;results.unlock() } catch {};retired.signal() }.start()
+                writer.condition.lock()
+                while !request.retiring { if !writer.condition.wait(until:Date(timeIntervalSinceNow:2)) { writer.condition.unlock();throw PlanetChildVault.Failure.unavailable } }
+                let held=writer.active === request && request.workers==1 && !request.retired;writer.condition.unlock()
+                release.signal();guard copied.wait(timeout:.now()+2) == .success,retired.wait(timeout:.now()+2) == .success else { throw PlanetChildVault.Failure.unavailable }
+                results.lock();let joined=copyDenied && retireReturned;results.unlock();clock.callback=nil
+                pass=held && joined && writer.active==nil && earlyCopy;receipt.close();sample.close()
+            } else {
+                pass=enrollmentDenied && request.sealed && io.updates==1 && denied { _ = try writer.fixtureRequest() }
+                    && denied { try writer.retire(request) } && writer.active === request
+                sample.close()
+            }
+        }
+        return PlanetChildLocalSnapshotV2Observation(pass:pass,operations:operations,
+            qualification:"Synthetic local V2 codec/closed storage mechanics only; Keychain, Swift compilation, genuine host/owner/input/Gate and installed device acceptance NOT_RUN.")
+    }
+}
+#endif

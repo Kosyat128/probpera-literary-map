@@ -164,3 +164,45 @@ final class PlanetChildFirstInstallV2RuntimeTests: XCTestCase {
         XCTAssertFalse(value.seedExists);XCTAssertEqual(value.signCalls,0);XCTAssertEqual(value.acquireCalls,0);XCTAssertEqual(value.createCalls,0)
     }
 }
+
+/** Authored synthetic LOCAL v2 codec/closed storage observations. These cases
+ * are not installed Keychain/owner, trusted clock, input/KDF or Gate acceptance.
+ * The existing forty first-install case bodies remain byte-exact above. */
+final class PlanetChildLocalSnapshotV2RuntimeTests: XCTestCase {
+    private final class Box {
+        private let lock=NSLock()
+        private var value: Result<PlanetChildLocalSnapshotV2Observation,Error>?
+        func put(_ result: Result<PlanetChildLocalSnapshotV2Observation,Error>) { lock.lock();value=result;lock.unlock() }
+        func get() throws -> PlanetChildLocalSnapshotV2Observation {
+            lock.lock();defer { lock.unlock() }
+            guard let value else { throw NSError(domain:"LocalSnapshotV2Fixture",code:1) };return try value.get()
+        }
+    }
+    private func observe(_ scenario: PlanetChildLocalSnapshotV2Scenario) throws -> PlanetChildLocalSnapshotV2Observation {
+        let done=expectation(description:scenario.rawValue),box=Box()
+        Thread { box.put(Result { try PlanetChildLocalSnapshotV2RuntimeFixture.run(scenario) });done.fulfill() }.start()
+        wait(for:[done],timeout:10);return try box.get()
+    }
+    func testV2PositiveLogicalEnrollmentRetainsSeedClockLowerBound() throws { XCTAssertTrue(try observe(.enrollment).pass) }
+    func testV2IndependentProtectedDigestAndSavedDebtCrossBinding() throws { XCTAssertTrue(try observe(.crossBinding).pass) }
+    func testV2MalformedUTF8ExtraFieldNoncanonicalAndWholeLimitDeny() throws { XCTAssertTrue(try observe(.canonicalBounds).pass) }
+    func testV2ClockIsLowerBoundAndMayNotExceedPINAnchor() throws { XCTAssertTrue(try observe(.lowerBound).pass) }
+    func testBareUnjournalledNullPINSeedNeverDecodesAsEnrolledWrapper() throws { XCTAssertTrue(try observe(.separateSeed).pass) }
+    func testV2ChargeRequiresCooldownBoundaryAndPreservesNonPINBytes() throws { XCTAssertTrue(try observe(.charge).pass) }
+    func testV2ReanchorKeepsProtectedBytesPendingAndFullSavedDebt() throws { XCTAssertTrue(try observe(.reanchor).pass) }
+    func testV2FinalizationClassificationCannotChangeCredentialOrGrantMatch() throws { XCTAssertTrue(try observe(.finalization).pass) }
+    func testV2RevisionOverflowAndWeakKDFPolicyDeny() throws { XCTAssertTrue(try observe(.overflow).pass) }
+    func testWriterOriginalEnrollmentSampleAndOneChargedReservation() throws {
+        let result=try observe(.originalSample);XCTAssertTrue(result.pass);XCTAssertEqual(result.operations,2)
+    }
+    func testWriterEarlyACKCopyAndSameWorkerRetirementDenyClosedUnknownSeals() throws {
+        let result=try observe(.earlyAck);XCTAssertTrue(result.pass);XCTAssertEqual(result.operations,1)
+    }
+    func testWriterCancelledPublishedRecordPersistsAndStaleWholeCASDoesNotWrite() throws {
+        let result=try observe(.cancelAndCAS);XCTAssertTrue(result.pass);XCTAssertEqual(result.operations,1)
+    }
+    func testWriterUnknownReadbackRetainsSealedCapacity() throws {
+        let result=try observe(.unknownReadback);XCTAssertTrue(result.pass);XCTAssertEqual(result.operations,1)
+    }
+    func testOriginalKnownReceiptCopyJoinsActualCallbackBeforeRetirement() throws { XCTAssertTrue(try observe(.copyJoinsRetire).pass) }
+}

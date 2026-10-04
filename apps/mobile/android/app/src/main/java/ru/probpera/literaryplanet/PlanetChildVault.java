@@ -2925,5 +2925,373 @@ final class PlanetChildVault {
         }
     }
 
+
+    /** LOCAL v2 structural bytes and fixed encrypted snapshot publication only.
+     * No v1 clock is invented, and no codec/plan/storage receipt grants PIN,
+     * OS-owner, recovery, time provenance or Parent Gate permission. The real
+     * v2 owner/input/KDF adapter is still missing; its factory remains null. */
+    private static final class LocalSnapshotV2Policy {
+        final String version, checksum; final long maximumIterations; private final long[] delays;
+        private LocalSnapshotV2Policy(String version,String checksum,long maximum,long[] delays) throws Exception {
+            require(ProtectedEnvelope.identifier(version)&&ProtectedEnvelope.hash(checksum)&&maximum>=600000
+                &&maximum<=0xffffffffL&&delays!=null&&delays.length>0&&delays.length<=64);
+            long[] owned=delays.clone();for(int i=0;i<owned.length;i++)require(owned[i]>0&&owned[i]<=MAX_SAFE&&(i==0||owned[i]>owned[i-1]));
+            this.version=version;this.checksum=checksum;maximumIterations=maximum;this.delays=owned;
+        }
+        private long delay(long count) throws Exception {require(count>=0&&count<=MAX_SAFE);return count==0?0:delays[(int)Math.min(count-1,delays.length-1)];}
+    }
+    private static final class LocalSnapshotV2 implements AutoCloseable {
+        private static final int JOURNAL_MAX=4096;
+        final LocalSnapshotV2Policy policy; final String checksum,protectedChecksum,credentialId,pendingAttemptId;
+        final long revision,pinRevision,count,blockedUntilMs,lastObservedMs,clockMs,journalRevision,savedCooldownMs;
+        private final byte[] canonical; private final int protectedStart,protectedEnd,journalStart,journalEnd,revisionStart,revisionEnd,pinStart,pinEnd;
+        private boolean closed;
+        private LocalSnapshotV2(LocalSnapshotV2Policy policy,byte[] owned,String protectedChecksum,ProtectedEnvelope.Pin pin,
+            long revision,long clock,long journalRevision,long delay,int[] offsets) throws Exception {
+            this.policy=policy;canonical=owned;checksum=digest(owned);this.protectedChecksum=protectedChecksum;
+            this.revision=revision;pinRevision=pin.revision;count=pin.count;blockedUntilMs=pin.blockedUntilMs;
+            lastObservedMs=pin.lastObservedMs;clockMs=clock;this.journalRevision=journalRevision;savedCooldownMs=delay;
+            credentialId=pin.credentialId;pendingAttemptId=pin.pendingAttemptId;
+            protectedStart=offsets[0];protectedEnd=offsets[1];journalStart=offsets[2];journalEnd=offsets[3];
+            revisionStart=offsets[4];revisionEnd=offsets[5];pinStart=offsets[6];pinEnd=offsets[7];
+        }
+        /** Reuses only the existing strict schema-1 registry/PIN lexer. Root,
+         * clock and journal are independently schema2; no fake v1 boot fields. */
+        private static LocalSnapshotV2 decode(byte[] input,LocalSnapshotV2Policy policy) throws Exception {
+            require(policy!=null&&input!=null&&input.length>0&&input.length<=MAX_BYTES);byte[] owned=input.clone();
+            byte[] registryBytes=null,protectedBytes=null;
+            try{String text=StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT)
+                    .onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(owned)).toString();
+                ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(text);
+                p.field("schemaVersion",true);p.number(2,2);p.field("protectedRecord",false);int ps=p.byteOffset(p.index);
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);int rs=p.byteOffset(p.index);
+                long revision=p.number(1,MAX_SAFE);int re=p.byteOffset(p.index);
+                p.field("mode",false);String mode=p.string();require(mode.equals("adult")||mode.equals("child"));
+                p.field("selectionRevision",false);p.number(1,MAX_SAFE);p.field("profileRevision",false);p.number(1,MAX_SAFE);
+                p.field("policyChecksum",false);require(p.string().equals(policy.checksum));
+                p.field("registryChecksum",false);String registryChecksum=p.string();require(ProtectedEnvelope.hash(registryChecksum));
+                p.field("registry",false);int registryStart=p.byteOffset(p.index);String active=ProtectedEnvelope.registry(p,policy.version);
+                int registryEnd=p.byteOffset(p.index);registryBytes=Arrays.copyOfRange(owned,registryStart,registryEnd);
+                require(digest(registryBytes).equals(registryChecksum)&&(!mode.equals("child")||active!=null));
+                p.field("pin",false);int pinStart=p.byteOffset(p.index);ProtectedEnvelope.Pin pin=ProtectedEnvelope.pin(p,policy.version,policy.maximumIterations);
+                int pinEnd=p.byteOffset(p.index);p.field("clock",false);p.field("schemaVersion",true);p.number(2,2);
+                p.field("logicalMs",false);long clock=p.number(0,MAX_SAFE);p.token("}");p.token("}");int pe=p.byteOffset(p.index);
+                require(clock<=pin.lastObservedMs);protectedBytes=Arrays.copyOfRange(owned,ps,pe);String protectedChecksum=digest(protectedBytes);
+                p.field("restartJournal",false);int js=p.byteOffset(p.index);
+                p.field("schemaVersion",true);p.number(2,2);p.field("policyVersion",false);require(p.string().equals(policy.version));
+                p.field("policyChecksum",false);require(p.string().equals(policy.checksum));p.field("revision",false);long jr=p.number(1,MAX_SAFE);
+                p.field("protected",false);p.field("checksum",true);require(p.string().equals(protectedChecksum));
+                p.field("revision",false);require(p.number(1,MAX_SAFE)==revision);p.field("pinRevision",false);require(p.number(1,MAX_SAFE)==pin.revision);
+                p.field("credentialId",false);require(p.string().equals(pin.credentialId));p.token("}");
+                p.field("attempts",false);p.field("count",true);require(p.number(0,MAX_SAFE)==pin.count);
+                p.field("pendingAttemptId",false);require(java.util.Objects.equals(p.nullableString(),pin.pendingAttemptId));
+                p.field("savedCooldownMs",false);long delay=p.number(0,MAX_SAFE);require(delay==policy.delay(pin.count));p.token("}");
+                p.field("anchor",false);p.field("logicalMs",true);require(p.number(0,MAX_SAFE)==pin.lastObservedMs);p.token("}");p.token("}");
+                int je=p.byteOffset(p.index);p.token("}");require(p.index==text.length()&&je-js<=JOURNAL_MAX&&delay<=MAX_SAFE-pin.lastObservedMs
+                    &&(pin.count==0?pin.pendingAttemptId==null&&pin.blockedUntilMs==0:pin.blockedUntilMs==pin.lastObservedMs+delay));
+                LocalSnapshotV2 result=new LocalSnapshotV2(policy,owned,protectedChecksum,pin,revision,clock,jr,delay,
+                    new int[]{ps,pe,js,je,rs,re,pinStart,pinEnd});owned=null;return result;
+            }finally{wipe(owned);wipe(registryBytes);wipe(protectedBytes);}
+        }
+        private static void wipe(byte[] value){if(value!=null)Arrays.fill(value,(byte)0);}
+        private synchronized void live() throws Exception {require(!closed&&digest(canonical).equals(checksum));}
+        private synchronized byte[] copy() throws Exception {live();return canonical.clone();}
+        public synchronized void close(){closed=true;wipe(canonical);}
+        private static long increment(long value) throws Exception {require(value>=0&&value<MAX_SAFE);return value+1;}
+        private static long add(long at,long delay) throws Exception {require(at>=0&&at<=MAX_SAFE&&delay>=0&&delay<=MAX_SAFE-at);return at+delay;}
+        private static String quoted(String value){return ProtectedEnvelope.Cursor.quote(value);}
+        private static byte[] wire(byte[] protectedBytes,LocalSnapshotV2Policy policy,long jr,long root,long pin,String credential,
+            long count,String pending,long delay,long at) throws Exception {
+            require(protectedBytes!=null&&protectedBytes.length>0&&protectedBytes.length<=MAX_BYTES&&jr>0&&jr<=MAX_SAFE
+                &&root>0&&root<=MAX_SAFE&&pin>0&&pin<=MAX_SAFE&&ProtectedEnvelope.hash(credential)
+                &&(pending==null||ProtectedEnvelope.hash(pending))&&count>=0&&count<=MAX_SAFE&&delay==policy.delay(count));add(at,delay);
+            byte[] journal=("{\"schemaVersion\":2,\"policyVersion\":"+quoted(policy.version)+",\"policyChecksum\":"+quoted(policy.checksum)
+                +",\"revision\":"+jr+",\"protected\":{\"checksum\":"+quoted(digest(protectedBytes))+",\"revision\":"+root
+                +",\"pinRevision\":"+pin+",\"credentialId\":"+quoted(credential)+"},\"attempts\":{\"count\":"+count
+                +",\"pendingAttemptId\":"+(pending==null?"null":quoted(pending))+",\"savedCooldownMs\":"+delay
+                +"},\"anchor\":{\"logicalMs\":"+at+"}}").getBytes(StandardCharsets.UTF_8);
+            byte[] prefix="{\"schemaVersion\":2,\"protectedRecord\":".getBytes(StandardCharsets.US_ASCII);
+            byte[] middle=",\"restartJournal\":".getBytes(StandardCharsets.US_ASCII);byte[] result=null;
+            try{require(journal.length<=JOURNAL_MAX&&prefix.length+protectedBytes.length+middle.length+journal.length+1<=MAX_BYTES);
+                result=new byte[prefix.length+protectedBytes.length+middle.length+journal.length+1];int position=0;
+                for(byte[] part:new byte[][]{prefix,protectedBytes,middle,journal}){System.arraycopy(part,0,result,position,part.length);position+=part.length;}
+                result[position]='}';try(LocalSnapshotV2 checked=decode(result,policy)){require(checked.revision==root&&checked.pinRevision==pin);}
+                byte[] out=result;result=null;return out;
+            }finally{wipe(journal);wipe(prefix);wipe(middle);wipe(result);}
+        }
+        /** Data-only enrollment check: same exact empty seed/non-PIN/clock;
+         * supplied logical is comparison data here, not an eligibility signal. */
+        private static void validateEnrollment(byte[] seed,LocalSnapshotV2 after,long logical) throws Exception {
+            require(after!=null&&logical>=0&&logical<=MAX_SAFE);byte[] old=null,next=null;
+            try(LocalEmptySeedV2 before=LocalEmptySeedV2.decode(seed,after.policy.version,after.policy.checksum)){
+                old=before.copy();next=after.copy();ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(old,StandardCharsets.UTF_8));
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);int rs=p.byteOffset(p.index);p.number(1,1);int re=p.byteOffset(p.index);
+                p.field("mode",false);p.string();p.field("selectionRevision",false);p.number(1,1);p.field("profileRevision",false);p.number(1,1);
+                p.field("policyChecksum",false);p.string();p.field("registryChecksum",false);p.string();p.field("registry",false);ProtectedEnvelope.registry(p,after.policy.version);
+                p.field("pin",false);int pinStart=p.byteOffset(p.index);p.token("null");int pinEnd=p.byteOffset(p.index);
+                require(after.revision==2&&after.pinRevision==1&&after.journalRevision==1&&after.count==0&&after.pendingAttemptId==null
+                    &&after.blockedUntilMs==0&&after.lastObservedMs==logical&&after.clockMs==0
+                    &&ProtectedEnvelope.equalRange(old,0,rs,next,after.protectedStart,after.revisionStart)
+                    &&ProtectedEnvelope.equalRange(old,re,pinStart,next,after.revisionEnd,after.pinStart)
+                    &&ProtectedEnvelope.equalRange(old,pinEnd,old.length,next,after.pinEnd,after.protectedEnd));
+            }finally{wipe(old);wipe(next);}
+        }
+        /** Reanchor only increments J. It grants zero time credit: P and the
+         * anchor/saved debt remain exact; the native session starts a NEW clock. */
+        private static byte[] reanchor(LocalSnapshotV2 before) throws Exception {
+            byte[] old=before.copy(),record=null;try{record=Arrays.copyOfRange(old,before.protectedStart,before.protectedEnd);
+                return wire(record,before.policy,increment(before.journalRevision),before.revision,before.pinRevision,before.credentialId,
+                    before.count,before.pendingAttemptId,before.savedCooldownMs,before.lastObservedMs);
+            }finally{wipe(old);wipe(record);}
+        }
+        /** Exact PIN-only replacement; all verifier/non-PIN/clock bytes persist. */
+        private static byte[] attempt(LocalSnapshotV2 before,long count,String pending,long logical) throws Exception {
+            require(logical>=before.lastObservedMs&&logical>=before.clockMs&&count>=0&&count<=MAX_SAFE
+                &&(pending==null||ProtectedEnvelope.hash(pending)));byte[] old=before.copy(),record=null;
+            try{String pinText=new String(old,before.pinStart,before.pinEnd-before.pinStart,StandardCharsets.UTF_8);
+                ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(pinText);p.field("schemaVersion",true);p.number(1,1);
+                p.field("policyVersion",false);p.string();p.field("revision",false);int prs=p.byteOffset(p.index);p.number(1,MAX_SAFE);int pre=p.byteOffset(p.index);
+                p.field("credentialId",false);p.string();p.field("verifier",false);p.field("algorithm",true);p.string();p.field("iterations",false);p.number(600000,before.policy.maximumIterations);
+                p.field("saltHex",false);p.string();p.field("hashHex",false);p.string();p.token("}");p.field("attempts",false);int aps=p.byteOffset(p.index);
+                long delay=before.policy.delay(count),root=increment(before.revision),pin=increment(before.pinRevision);
+                String attempts="{\"count\":"+count+",\"blockedUntilMs\":"+(count==0?0:add(logical,delay))+",\"lastObservedMs\":"+logical
+                    +",\"pendingAttemptId\":"+(pending==null?"null":quoted(pending))+"}}";
+                String rebuiltPin=pinText.substring(0,prs)+pin+pinText.substring(pre,aps)+attempts;
+                byte[] newPin=rebuiltPin.getBytes(StandardCharsets.UTF_8),rootNumber=Long.toString(root).getBytes(StandardCharsets.US_ASCII);
+                try{int length=before.revisionStart-before.protectedStart+rootNumber.length+before.pinStart-before.revisionEnd+newPin.length+before.protectedEnd-before.pinEnd;
+                    require(length<=MAX_BYTES);record=new byte[length];int pos=0;
+                    int[] starts={before.protectedStart,before.revisionEnd,before.pinEnd};int[] ends={before.revisionStart,before.pinStart,before.protectedEnd};
+                    for(int i=0;i<3;i++){int n=ends[i]-starts[i];System.arraycopy(old,starts[i],record,pos,n);pos+=n;
+                        if(i<2){byte[] insert=i==0?rootNumber:newPin;System.arraycopy(insert,0,record,pos,insert.length);pos+=insert.length;}}
+                    return wire(record,before.policy,increment(before.journalRevision),root,pin,before.credentialId,count,pending,delay,logical);
+                }finally{wipe(newPin);wipe(rootNumber);}
+            }finally{wipe(old);wipe(record);}
+        }
+        private static byte[] charge(LocalSnapshotV2 before,String originalAttemptId,long logical) throws Exception {
+            require(ProtectedEnvelope.hash(originalAttemptId)&&logical>=before.blockedUntilMs);
+            return attempt(before,increment(before.count),originalAttemptId,logical);
+        }
+        /** A validator is mathematical data, not a finalize permission. The
+         * writer deliberately has no finalize entry until a genuine v2 native
+         * KDF/comparison is bound to its ORIGINAL charged reservation. */
+        private static void validateFinalization(LocalSnapshotV2 charged,LocalSnapshotV2 after) throws Exception {
+            require(charged!=null&&after!=null&&charged.pendingAttemptId!=null&&after.pendingAttemptId==null
+                &&after.lastObservedMs>=charged.lastObservedMs&&(after.count==0||after.count==charged.count));
+            byte[] expected=attempt(charged,after.count,null,after.lastObservedMs),actual=null;
+            try{actual=after.copy();require(MessageDigest.isEqual(expected,actual));}finally{wipe(expected);wipe(actual);}
+        }
+    }
+
+    /** Storage-only original receipt. A known ACK means exact raw encrypted
+     * record/readback, never PIN correctness, OS-owner or Gate admission. */
+    private static final class LocalV2StorageReceipt implements AutoCloseable {
+        final LocalV2Writer owner;final LocalV2Request request;final String checksum;private final byte[] bytes;private boolean closed;
+        private LocalV2StorageReceipt(LocalV2Writer owner,LocalV2Request request,byte[] owned) throws Exception {
+            this.owner=owner;this.request=request;bytes=owned;checksum=digest(owned);
+        }
+        private byte[] copy() throws Exception {synchronized(owner){owner.own(request);require(!closed&&request.receipt==this
+            &&!request.cancelled&&!request.sealed&&!request.retiring&&request.workers==0&&request.settleCalls==0);
+            owner.live(request);require(digest(bytes).equals(checksum));return bytes.clone();}}
+        private void wipe(){closed=true;LocalSnapshotV2.wipe(bytes);}
+        public void close(){synchronized(owner){wipe();}}
+    }
+    private static final class LocalV2ChargedReservation implements AutoCloseable {
+        final LocalV2Writer owner;final LocalV2Request request;final String attemptId,checksum;private final byte[] charged;private boolean closed;
+        private LocalV2ChargedReservation(LocalV2Writer owner,LocalV2Request request,String id,byte[] owned) throws Exception {
+            this.owner=owner;this.request=request;attemptId=id;charged=owned;checksum=digest(owned);
+        }
+        private void wipe(){closed=true;LocalSnapshotV2.wipe(charged);}
+        public void close(){synchronized(owner){wipe();}}
+    }
+    /** Original retained native sample/data, not PIN or OS-owner permission.
+     * Issued only after the exact already-existing seed was read under lock.
+     * No caller time is accepted and no serialized uptime/process proof exists. */
+    private static final class LocalV2EnrollmentSample {
+        final LocalV2Writer owner;final LocalV2Request request;final long continuousMs,logicalMs;final String seedChecksum;
+        private final byte[] seed;private boolean consumed,closed;
+        private LocalV2EnrollmentSample(LocalV2Writer owner,LocalV2Request request,byte[] owned) throws Exception {
+            this.owner=owner;this.request=request;continuousMs=SystemClock.elapsedRealtime();require(continuousMs>=request.began
+                &&continuousMs<request.deadline&&continuousMs-request.began<=MAX_SAFE);logicalMs=continuousMs-request.began;
+            seed=owned;seedChecksum=digest(owned);
+        }
+        private byte[] copySeed() throws Exception {synchronized(owner){owner.live(request);require(request.enrollmentSample==this
+            &&!closed&&!consumed&&request.workers==0&&digest(seed).equals(seedChecksum));return seed.clone();}}
+        private void wipe(){closed=true;LocalSnapshotV2.wipe(seed);}
+    }
+    private static final class LocalV2Request {
+        final LocalV2Writer owner;final android.app.Activity activity;final android.os.IBinder token;
+        final long began,deadline;final Object processIdentity;final LocalSnapshotV2Policy policy;
+        long baselineContinuous,baselineLogical,lastContinuous;boolean anchored,cancelled,sealed,retiring,retired,detached,charged,mutationStarted,enrollmentStarted;
+        int workers,mainCalls,events,settleCalls;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
+        private byte[] currentBytes;private String currentChecksum;
+        private LocalV2EnrollmentSample enrollmentSample;
+        android.app.Application.ActivityLifecycleCallbacks lifecycle;android.content.BroadcastReceiver screen;Runnable expiry;
+        LocalV2Request(LocalV2Writer owner,android.app.Activity activity,android.os.IBinder token,LocalSnapshotV2Policy policy,long timeout) throws Exception {
+            this.owner=owner;this.activity=activity;this.token=token;this.policy=policy;processIdentity=LocalV2Writer.PROCESS_IDENTITY;
+            began=SystemClock.elapsedRealtime();require(began>=0&&timeout>0&&timeout<=60000&&began<=Long.MAX_VALUE-timeout);deadline=began+timeout;
+        }
+    }
+    /** Actual existing-AES/AtomicFile/flock leaf, inaccessible from production:
+     * V2 owner/input/KDF/process host mapping is not yet implemented. It never
+     * consumes FirstInstallReceipt or a v1 PIN result as mutation permission.
+     * The current private mechanical boundary is not an authorization SPI. */
+    private static final class LocalV2Writer {
+        private static final Object PROCESS_IDENTITY=new Object();
+        final PlanetChildVault vault;private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
+        private LocalV2Request active;private boolean reserving,sealed;
+        private LocalV2Writer(PlanetChildVault vault) throws Exception {require(vault!=null);this.vault=vault;}
+        private synchronized void own(LocalV2Request request) throws Exception {require(request!=null&&request.owner==this&&active==request
+            &&request.processIdentity==PROCESS_IDENTITY&&!request.retired);}
+        private synchronized void live(LocalV2Request request) throws Exception {own(request);long now=SystemClock.elapsedRealtime();
+            if(sealed||request.sealed||request.cancelled||request.retiring||now<request.began||now>=request.deadline)throw new PinKnownRefusal();}
+        private LocalV2Request request(android.app.Activity activity,LocalSnapshotV2Policy policy,long timeout) throws Exception {
+            synchronized(this){require(!reserving&&active==null&&!sealed);reserving=true;}
+            try{require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&activity!=null&&activity.getClass()==MainActivity.class
+                &&activity.getApplicationContext()==vault.context&&!activity.isFinishing()&&!activity.isDestroyed()&&activity.hasWindowFocus()&&policy!=null);
+                android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
+                LocalV2Request value=new LocalV2Request(this,activity,token,policy,timeout);synchronized(this){require(active==null&&!sealed);active=value;}
+                try{attach(value);}catch(Throwable failure){throw failed(value,failure);}return value;
+            }finally{synchronized(this){reserving=false;}}
+        }
+        private void event(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;request.events++;request.cancelled=true;}
+            synchronized(this){request.events--;wipeIdle(request);notifyAll();}}
+        private void wipeIdle(LocalV2Request request){if((request.cancelled||request.sealed)&&request.workers==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0){
+            LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();
+            if(request.enrollmentSample!=null)request.enrollmentSample.wipe();}}
+        private void attach(LocalV2Request request) throws Exception {
+            android.app.Application application=(android.app.Application)vault.context;
+            request.lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
+                public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}public void onActivityStarted(android.app.Activity a){}
+                public void onActivityResumed(android.app.Activity a){}public void onActivityPaused(android.app.Activity a){if(a==request.activity)event(request);}
+                public void onActivityStopped(android.app.Activity a){if(a==request.activity)event(request);}public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}
+                public void onActivityDestroyed(android.app.Activity a){if(a==request.activity)event(request);}};
+            application.registerActivityLifecycleCallbacks(request.lifecycle);
+            request.screen=new android.content.BroadcastReceiver(){public void onReceive(android.content.Context c,android.content.Intent i){event(request);}};
+            android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
+            if(android.os.Build.VERSION.SDK_INT>=33)vault.context.registerReceiver(request.screen,filter,android.content.Context.RECEIVER_NOT_EXPORTED);
+            else vault.context.registerReceiver(request.screen,filter);
+            request.expiry=()->event(request);require(main.postDelayed(request.expiry,Math.max(1,request.deadline-SystemClock.elapsedRealtime())));
+        }
+        /** Main callbacks are joined outside IO. During IO, lifecycle/deadline
+         * latches and native clock are checked without waiting for the UI. */
+        private void onMain(LocalV2Request request,Runnable body,boolean cleanup) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){own(request);require(!request.detached);request.mainCalls++;}
+            boolean accepted=false;try{accepted=main.post(()->{try{body.run();}catch(Throwable failure){synchronized(this){request.sealed=true;sealed=true;}}
+                finally{synchronized(this){request.mainCalls--;wipeIdle(request);notifyAll();}}});}
+            finally{if(!accepted)synchronized(this){request.mainCalls--;request.sealed=true;sealed=true;wipeIdle(request);notifyAll();}}
+            // Cancellation/deadline suppress publication but never reconstruct
+            // completion while the ORIGINAL accepted main call is still live.
+            require(accepted);synchronized(this){while(request.mainCalls>0)wait(10);if(!cleanup)live(request);}
+        }
+        private void host(LocalV2Request request) throws Exception {live(request);final boolean[] current={false};
+            onMain(request,()->{current[0]=!request.activity.isFinishing()&&!request.activity.isDestroyed()&&request.activity.hasWindowFocus()
+                &&request.activity.getWindow().getDecorView().getWindowToken()==request.token;},false);
+            if(!current[0]){event(request);throw new PinKnownRefusal();}vault.unlocked();live(request);
+        }
+        private synchronized void begin(LocalV2Request request) throws Exception {live(request);require(request.workers==0&&request.settleCalls==0&&request.receipt==null);request.workers++;}
+        private synchronized void finish(LocalV2Request request){request.workers--;wipeIdle(request);notifyAll();}
+        private synchronized long logical(LocalV2Request request) throws Exception {live(request);require(request.anchored);long now=SystemClock.elapsedRealtime();
+            require(now>=request.baselineContinuous&&now>=request.lastContinuous);long elapsed=now-request.baselineContinuous;
+            require(request.baselineLogical<=MAX_SAFE-elapsed);request.lastContinuous=now;return request.baselineLogical+elapsed;}
+        private synchronized void unknown(LocalV2Request request){request.sealed=true;sealed=true;request.cancelled=true;wipeIdle(request);notifyAll();}
+        private Exception failed(LocalV2Request request,Throwable failure){unknown(request);if(failure instanceof Error)throw(Error)failure;
+            return failure instanceof Exception?(Exception)failure:new Unavailable();}
+        /** V2 never asks AtomicFile to restore a backup or overwrite an orphan.
+         * Exact ENOENT is the only accepted absence of temporary suffixes. */
+        private void completeRecord(File directory) throws Exception {
+            for(String suffix:new String[]{"",".bak",".new"}){File file=new File(directory,"full-record-v1"+suffix);
+                try{StructStat stat=Os.lstat(file.getAbsolutePath());require(suffix.isEmpty()&&OsConstants.S_ISREG(stat.st_mode)
+                    &&stat.st_size>=30&&stat.st_size<=MAX_BYTES+29);}
+                catch(android.system.ErrnoException absent){require(!suffix.isEmpty()&&absent.errno==OsConstants.ENOENT);}}
+        }
+        private LocalV2StorageReceipt publish(LocalV2Request request,byte[] expected,byte[] next,File directory) throws Exception {
+            live(request);synchronized(this){if(request.currentBytes!=null)require(digest(request.currentBytes).equals(request.currentChecksum)
+                &&MessageDigest.isEqual(expected,request.currentBytes));}
+            completeRecord(directory);byte[] current=vault.readExact(directory);try{require(MessageDigest.isEqual(expected,current));}finally{LocalSnapshotV2.wipe(current);}
+            synchronized(this){request.mutationStarted=true;}vault.writeExact(directory,next,()->live(request));
+            completeRecord(directory);byte[] readback=vault.readExact(directory),retained=null;LocalV2StorageReceipt receipt=null;boolean adopted=false;
+            try{require(MessageDigest.isEqual(next,readback));live(request);retained=readback.clone();
+                receipt=new LocalV2StorageReceipt(this,request,readback);
+                synchronized(this){live(request);require(request.receipt==null);LocalSnapshotV2.wipe(request.currentBytes);
+                    request.currentBytes=retained;retained=null;request.currentChecksum=receipt.checksum;request.receipt=receipt;adopted=true;readback=null;}return receipt;
+            }finally{if(!adopted&&receipt!=null)receipt.wipe();LocalSnapshotV2.wipe(readback);LocalSnapshotV2.wipe(retained);}
+        }
+        private LocalV2StorageReceipt reanchor(LocalV2Request request) throws Exception {
+            begin(request);byte[][] owned={null,null};try{host(request);synchronized(this){live(request);require(!request.anchored);}
+                LocalV2StorageReceipt result=vault.locked(directory->{live(request);
+                completeRecord(directory);owned[0]=vault.readExact(directory);try(LocalSnapshotV2 before=LocalSnapshotV2.decode(owned[0],request.policy)){
+                    owned[1]=LocalSnapshotV2.reanchor(before);LocalV2StorageReceipt receipt=publish(request,owned[0],owned[1],directory);
+                    synchronized(this){live(request);long now=SystemClock.elapsedRealtime();request.baselineContinuous=now;request.lastContinuous=now;
+                        request.baselineLogical=before.lastObservedMs;request.anchored=true;}return receipt;}});
+                host(request);return result;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(owned[0]);LocalSnapshotV2.wipe(owned[1]);finish(request);}
+        }
+        /** Future genuine producer builds next from this ORIGINAL retained
+         * native sample. Sampling alone authorizes neither KDF nor mutation. */
+        private LocalV2EnrollmentSample sampleEnrollment(LocalV2Request request) throws Exception {
+            begin(request);LocalV2EnrollmentSample sample=null;boolean adopted=false;
+            try{host(request);synchronized(this){live(request);require(!request.anchored&&!request.enrollmentStarted&&request.enrollmentSample==null);request.enrollmentStarted=true;}
+                sample=vault.locked(directory->{live(request);completeRecord(directory);byte[] current=vault.readExact(directory);
+                    try(LocalEmptySeedV2 checked=LocalEmptySeedV2.decode(current,request.policy.version,request.policy.checksum)){
+                        byte[] retained=current.clone();try{LocalV2EnrollmentSample original=new LocalV2EnrollmentSample(this,request,retained);retained=null;return original;}
+                        finally{LocalSnapshotV2.wipe(retained);}}
+                    finally{LocalSnapshotV2.wipe(current);}});
+                host(request);synchronized(this){live(request);require(request.enrollmentSample==null);request.enrollmentSample=sample;adopted=true;}return sample;
+            }catch(Throwable failure){throw failed(request,failure);}finally{if(!adopted&&sample!=null)sample.wipe();finish(request);}
+        }
+        private LocalV2StorageReceipt enroll(LocalV2Request request,LocalV2EnrollmentSample original,byte[] next) throws Exception {
+            synchronized(this){live(request);require(original!=null&&original.owner==this&&original.request==request&&request.enrollmentSample==original
+                &&!original.closed&&!original.consumed&&!request.anchored);begin(request);original.consumed=true;}
+            byte[] expected=null,replacement=null;
+            try{require(next!=null&&next.length>0&&next.length<=MAX_BYTES);replacement=next.clone();host(request);
+                synchronized(this){live(request);require(!original.closed&&digest(original.seed).equals(original.seedChecksum));expected=original.seed.clone();}
+                final byte[] seed=expected,afterBytes=replacement;LocalV2StorageReceipt result=vault.locked(directory->{live(request);
+                    long now=SystemClock.elapsedRealtime();require(now>=original.continuousMs);
+                    try(LocalSnapshotV2 after=LocalSnapshotV2.decode(afterBytes,request.policy)){LocalSnapshotV2.validateEnrollment(seed,after,original.logicalMs);
+                        LocalV2StorageReceipt receipt=publish(request,seed,afterBytes,directory);synchronized(this){live(request);
+                            request.baselineContinuous=original.continuousMs;request.lastContinuous=now;request.baselineLogical=original.logicalMs;request.anchored=true;}return receipt;}});
+                host(request);return result;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(expected);LocalSnapshotV2.wipe(replacement);original.wipe();finish(request);}
+        }
+        private LocalV2StorageReceipt charge(LocalV2Request request) throws Exception {
+            begin(request);byte[][] owned={null,null};byte[] random=null;
+            try{host(request);synchronized(this){live(request);require(request.anchored&&!request.charged&&request.reservation==null);request.charged=true;}
+                random=new byte[32];new java.security.SecureRandom().nextBytes(random);StringBuilder id=new StringBuilder(64);
+                for(byte value:random){id.append("0123456789abcdef".charAt((value>>>4)&15));id.append("0123456789abcdef".charAt(value&15));}
+                final String attempt=id.toString();LocalV2StorageReceipt result=vault.locked(directory->{live(request);completeRecord(directory);owned[0]=vault.readExact(directory);
+                    try(LocalSnapshotV2 before=LocalSnapshotV2.decode(owned[0],request.policy)){
+                        long at=logical(request);require(at>=before.blockedUntilMs);owned[1]=LocalSnapshotV2.charge(before,attempt,at);
+                        LocalV2StorageReceipt receipt=publish(request,owned[0],owned[1],directory);byte[] reservationBytes=owned[1].clone();
+                        try{LocalV2ChargedReservation reservation=new LocalV2ChargedReservation(this,request,attempt,reservationBytes);
+                            synchronized(this){live(request);require(request.reservation==null);request.reservation=reservation;reservationBytes=null;}
+                        }finally{LocalSnapshotV2.wipe(reservationBytes);}return receipt;}});
+                host(request);return result;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(random);LocalSnapshotV2.wipe(owned[0]);LocalSnapshotV2.wipe(owned[1]);finish(request);}
+        }
+        /** Intentionally no finalize mutation method: old v1 mathematical
+         * receipts bind P1. The genuine P2 original-input/KDF/charged-attempt
+         * mapping must be implemented before any caller can reset this debt. */
+        private void acknowledge(LocalV2StorageReceipt receipt) throws Exception {
+            require(receipt!=null&&receipt.owner==this);LocalV2Request request=receipt.request;
+            synchronized(this){live(request);require(request.receipt==receipt&&!receipt.closed&&request.workers==0&&request.settleCalls==0);request.settleCalls++;}
+            byte[] current=null;try{host(request);current=vault.locked(directory->{live(request);completeRecord(directory);return vault.readExact(directory);});
+                require(digest(current).equals(receipt.checksum)&&MessageDigest.isEqual(current,receipt.bytes));host(request);
+                synchronized(this){live(request);require(request.receipt==receipt&&!receipt.closed);receipt.wipe();request.receipt=null;}
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(current);synchronized(this){request.settleCalls--;wipeIdle(request);notifyAll();}}
+        }
+        private synchronized void cancel(LocalV2Request request) throws Exception {own(request);request.cancelled=true;wipeIdle(request);notifyAll();}
+        private void retire(LocalV2Request request) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){own(request);require(!request.retiring);request.retiring=true;request.cancelled=true;
+                while(request.workers>0||request.settleCalls>0||request.mainCalls>0||request.events>0)wait(10);}
+            try{onMain(request,()->{if(request.lifecycle!=null)((android.app.Application)vault.context).unregisterActivityLifecycleCallbacks(request.lifecycle);
+                    if(request.screen!=null)vault.context.unregisterReceiver(request.screen);if(request.expiry!=null)main.removeCallbacks(request.expiry);},true);
+                synchronized(this){own(request);require(request.retiring&&request.workers==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0);
+                    request.detached=true;LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null){request.receipt.wipe();request.receipt=null;}if(request.reservation!=null)request.reservation.wipe();
+                    if(request.enrollmentSample!=null)request.enrollmentSample.wipe();
+                    if(sealed||request.sealed)throw new Unavailable();request.retired=true;active=null;}
+            }catch(Throwable failure){unknown(request);synchronized(this){if(request.workers==0&&request.settleCalls==0){if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();}}throw failed(request,failure);}
+        }
+    }
+    private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
 }
 

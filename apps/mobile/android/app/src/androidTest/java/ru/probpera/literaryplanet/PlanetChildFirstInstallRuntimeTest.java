@@ -189,4 +189,115 @@ public final class PlanetChildFirstInstallRuntimeTest {
         assertTrue("sticky original host cancellation",(Boolean)field(request,"cancelled"));denied(()->call(owner,"settle",receipt,kind("PinReplyDelivery","known")));
         assertFalse((Boolean)field(receipt,"settled"));assertTrue((Boolean)field(request,"mutationStarted"));
         call(owner,"settle",receipt,kind("PinReplyDelivery","uncertain"));}
+
+    /** New LOCAL v2 cases only. Scalar comparisons do not grant permission;
+     * lifecycle cases use a real original Activity but never open/write vault IO.
+     * All are authored NOT_RUN; existing nineteen methods stay byte-exact. */
+    private static Object snapshotPolicy(long... delays)throws Exception{return create("LocalSnapshotV2Policy",VERSION,POLICY,1200000L,delays);}
+    private static String localPin(long revision,long count,long blocked,long at,String pending){return "{\"schemaVersion\":1,\"policyVersion\":\""+VERSION
+        +"\",\"revision\":"+revision+",\"credentialId\":\""+repeat('c')+"\",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":600000,\"saltHex\":\""
+        +repeat('d')+"\",\"hashHex\":\""+repeat('e')+"\"},\"attempts\":{\"count\":"+count+",\"blockedUntilMs\":"+blocked+",\"lastObservedMs\":"+at
+        +",\"pendingAttemptId\":"+(pending==null?"null":"\""+pending+"\"")+"}}";}
+    private static byte[] localWrapper(long root,long pin,long jr,long count,long at,long delay,String pending)throws Exception{
+        String protectedRecord=canonical().replace("\"schemaVersion\":2,\"revision\":1","\"schemaVersion\":2,\"revision\":"+root)
+            .replace("\"pin\":null","\"pin\":"+localPin(pin,count,count==0?0:at+delay,at,pending));
+        String journal="{\"schemaVersion\":2,\"policyVersion\":\""+VERSION+"\",\"policyChecksum\":\""+POLICY+"\",\"revision\":"+jr
+            +",\"protected\":{\"checksum\":\""+sha(protectedRecord.getBytes(StandardCharsets.UTF_8))+"\",\"revision\":"+root+",\"pinRevision\":"+pin
+            +",\"credentialId\":\""+repeat('c')+"\"},\"attempts\":{\"count\":"+count+",\"pendingAttemptId\":"+(pending==null?"null":"\""+pending+"\"")
+            +",\"savedCooldownMs\":"+delay+"},\"anchor\":{\"logicalMs\":"+at+"}}";
+        return ("{\"schemaVersion\":2,\"protectedRecord\":"+protectedRecord+",\"restartJournal\":"+journal+"}").getBytes(StandardCharsets.UTF_8);}
+    private static Object localDecode(byte[] bytes,Object policy)throws Exception{return call(type("LocalSnapshotV2"),"decode",bytes,policy);}
+    private static void localSet(Object target,String name,Object value)throws Exception{Field field=target.getClass().getDeclaredField(name);field.setAccessible(true);field.set(target,value);}
+    private static String localProtected(byte[] wrapper){String text=new String(wrapper,StandardCharsets.UTF_8);int start=text.indexOf("\"protectedRecord\":")+18;
+        return text.substring(start,text.indexOf(",\"restartJournal\":"));}
+    private Object localRequest(Object localOwner,long timeout)throws Exception{AtomicReference<Object> original=new AtomicReference<>();AtomicReference<Exception> error=new AtomicReference<>();
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{original.set(call(localOwner,"request",activity,snapshotPolicy(100L,250L),timeout));}catch(Exception failure){error.set(failure);}});
+        if(error.get()!=null)throw error.get();return original.get();}
+    private static void localRetire(Object localOwner,Object original)throws Exception{if(original!=null&&!(Boolean)field(original,"retired"))call(localOwner,"retire",original);}
+
+    @Test public void localV2IndependentWholeProtectedAndRegistryChecksums()throws Exception{Object policy=snapshotPolicy(100L,250L);byte[] bytes=localWrapper(2,1,1,0,17,0,null);
+        Object value=localDecode(bytes,policy);try{assertEquals(sha(bytes),field(value,"checksum"));assertEquals(sha(localProtected(bytes).getBytes(StandardCharsets.UTF_8)),field(value,"protectedChecksum"));
+            assertEquals(0L,field(value,"clockMs"));assertEquals(17L,field(value,"lastObservedMs"));call(type("LocalSnapshotV2"),"validateEnrollment",seed(),value,17L);
+            denied(()->call(type("LocalSnapshotV2"),"validateEnrollment",seed(),value,0L));}finally{call(value,"close");Arrays.fill(bytes,(byte)0);}}
+    @Test public void localV2BareSeedAndAllJournalCrossCoordinateSubstitutionsDeny()throws Exception{Object policy=snapshotPolicy(100L,250L);denied(()->localDecode(seed(),policy));
+        String raw=new String(localWrapper(3,2,2,1,17,100,repeat('f')),StandardCharsets.UTF_8);
+        for(String altered:new String[]{raw.replace("\"anchor\":{\"logicalMs\":17}","\"anchor\":{\"logicalMs\":18}"),raw.replace("\"savedCooldownMs\":100","\"savedCooldownMs\":99"),
+            raw.replace("\"pinRevision\":2","\"pinRevision\":3"),raw.replace("\"credentialId\":\""+repeat('c')+"\"},\"attempts\"","\"credentialId\":\""+repeat('b')+"\"},\"attempts\""),
+            raw.replace("\"clock\":{\"schemaVersion\":2,\"logicalMs\":0}","\"clock\":{\"schemaVersion\":2,\"logicalMs\":18}")})denied(()->localDecode(altered.getBytes(StandardCharsets.UTF_8),policy));}
+    @Test public void localV2CanonicalOrderDuplicateUnknownAndInvalidUtf8Deny()throws Exception{Object policy=snapshotPolicy(100L);String raw=new String(localWrapper(2,1,1,0,0,0,null),StandardCharsets.UTF_8);
+        for(String altered:new String[]{" "+raw,raw+"\n",raw.replace("\"schemaVersion\":2,\"protectedRecord\":","\"protectedRecord\":{} ,\"schemaVersion\":2,\"protectedRecord\":"),
+            raw.replace("\"logicalMs\":0","\"logicalMs\":0,\"bootId\":\"fake\""),raw.replace("\"logicalMs\":0","\"logicalMs\":0.0"),raw.replace("\"revision\":2","\"revision\":2,\"revision\":2")})
+            denied(()->localDecode(altered.getBytes(StandardCharsets.UTF_8),policy));byte[] malformed=raw.getBytes(StandardCharsets.UTF_8);malformed[0]=(byte)0xff;denied(()->localDecode(malformed,policy));}
+    @Test public void localV2ReanchorPreservesProtectedAndReappliesWholeSavedDebt()throws Exception{Object policy=snapshotPolicy(100L,250L);byte[] initial=localWrapper(3,2,2,1,17,100,repeat('f'));
+        Object before=localDecode(initial,policy),after=null;byte[] next=null;try{next=(byte[])call(type("LocalSnapshotV2"),"reanchor",before);after=localDecode(next,policy);
+            assertEquals(localProtected(initial),localProtected(next));assertEquals(3L,field(after,"journalRevision"));assertEquals(17L,field(after,"lastObservedMs"));
+            assertEquals(100L,field(after,"savedCooldownMs"));assertEquals(117L,field(after,"blockedUntilMs"));assertEquals(repeat('f'),field(after,"pendingAttemptId"));
+        }finally{call(before,"close");if(after!=null)call(after,"close");if(next!=null)Arrays.fill(next,(byte)0);Arrays.fill(initial,(byte)0);}}
+    @Test public void localV2ChargeChangesOnlyPinDebtAndOriginalCoordinates()throws Exception{Object policy=snapshotPolicy(100L,250L);Object before=localDecode(localWrapper(2,1,1,0,17,0,null),policy),after=null;
+        byte[] charged=null;try{charged=(byte[])call(type("LocalSnapshotV2"),"charge",before,repeat('f'),18L);after=localDecode(charged,policy);
+            assertEquals(3L,field(after,"revision"));assertEquals(2L,field(after,"pinRevision"));assertEquals(2L,field(after,"journalRevision"));assertEquals(1L,field(after,"count"));
+            assertEquals(118L,field(after,"blockedUntilMs"));assertEquals(18L,field(after,"lastObservedMs"));assertEquals(0L,field(after,"clockMs"));
+            assertEquals(repeat('f'),field(after,"pendingAttemptId"));assertTrue(localProtected(charged).contains("\"saltHex\":\""+repeat('d')+"\",\"hashHex\":\""+repeat('e')+"\""));
+        }finally{call(before,"close");if(after!=null)call(after,"close");if(charged!=null)Arrays.fill(charged,(byte)0);}}
+    @Test public void localV2ChargeRejectsEarlyTimeInvalidAttemptAndRevisionOverflow()throws Exception{Object policy=snapshotPolicy(100L);Object charged=localDecode(localWrapper(3,2,2,1,17,100,repeat('f')),policy);
+        try{denied(()->call(type("LocalSnapshotV2"),"charge",charged,repeat('b'),116L));denied(()->call(type("LocalSnapshotV2"),"charge",charged,"not-an-original-id",117L));}
+        finally{call(charged,"close");}Object exhausted=localDecode(localWrapper(9007199254740991L,1,1,0,0,0,null),policy);
+        try{denied(()->call(type("LocalSnapshotV2"),"charge",exhausted,repeat('f'),0L));}finally{call(exhausted,"close");}
+        denied(()->localDecode(localWrapper(3,2,2,1,9007199254740991L,100,repeat('f')),policy));}
+    @Test public void localV2FinalizeDataClearsPendingWithExactMatchOrMismatchShape()throws Exception{Object policy=snapshotPolicy(100L,250L);Object charged=localDecode(localWrapper(3,2,2,1,17,100,repeat('f')),policy);
+        Object match=localDecode(localWrapper(4,3,3,0,18,0,null),policy),mismatch=localDecode(localWrapper(4,3,3,1,18,100,null),policy);
+        try{call(type("LocalSnapshotV2"),"validateFinalization",charged,match);call(type("LocalSnapshotV2"),"validateFinalization",charged,mismatch);
+            assertEquals(0L,field(match,"blockedUntilMs"));assertEquals(118L,field(mismatch,"blockedUntilMs"));assertEquals(0L,field(mismatch,"clockMs"));
+        }finally{call(charged,"close");call(match,"close");call(mismatch,"close");}}
+    @Test public void localV2FinalizeRejectsUnchargedRollbackForeignVerifierAndWrongCount()throws Exception{Object policy=snapshotPolicy(100L,250L);Object charged=localDecode(localWrapper(3,2,2,1,17,100,repeat('f')),policy);
+        Object uncharged=localDecode(localWrapper(2,1,1,0,17,0,null),policy),rollback=localDecode(localWrapper(4,3,3,0,16,0,null),policy),wrongCount=localDecode(localWrapper(4,3,3,2,18,250,null),policy);
+        try{denied(()->call(type("LocalSnapshotV2"),"validateFinalization",uncharged,rollback));denied(()->call(type("LocalSnapshotV2"),"validateFinalization",charged,rollback));
+            denied(()->call(type("LocalSnapshotV2"),"validateFinalization",charged,wrongCount));byte[] foreign=localWrapper(4,3,3,0,18,0,null);
+            String record=localProtected(foreign).replace(repeat('d'),repeat('b')),raw=new String(foreign,StandardCharsets.UTF_8);
+            String oldHash=sha(localProtected(foreign).getBytes(StandardCharsets.UTF_8));raw=raw.replace(localProtected(foreign),record).replace(oldHash,sha(record.getBytes(StandardCharsets.UTF_8)));
+            Object altered=localDecode(raw.getBytes(StandardCharsets.UTF_8),policy);try{denied(()->call(type("LocalSnapshotV2"),"validateFinalization",charged,altered));}finally{call(altered,"close");}
+        }finally{call(charged,"close");call(uncharged,"close");call(rollback,"close");call(wrongCount,"close");}}
+    @Test public void localV2OwnedCanonicalCopiesAndCloseWipeOnlyOriginalOwnedBuffer()throws Exception{Object policy=snapshotPolicy(100L);byte[] input=localWrapper(2,1,1,0,0,0,null),expected=input.clone();
+        Object original=localDecode(input,policy);byte[] retained=(byte[])field(original,"canonical"),copy=(byte[])call(original,"copy");
+        try{Arrays.fill(input,(byte)7);assertArrayEquals(expected,copy);copy[0]^=1;assertArrayEquals(expected,(byte[])call(original,"copy"));call(original,"close");
+            assertTrue(zero(retained));denied(()->call(original,"copy"));assertFalse("caller-owned input is untouched by close",zero(input));
+        }finally{call(original,"close");Arrays.fill(input,(byte)0);Arrays.fill(expected,(byte)0);Arrays.fill(copy,(byte)0);}}
+    @Test public void localV2BackgroundAndExclusiveDeadlineNeverReviveOriginalHost()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext()));Object original=localRequest(localOwner,5000);
+        try{scenario.moveToState(Lifecycle.State.CREATED);scenario.moveToState(Lifecycle.State.RESUMED);assertTrue((Boolean)field(original,"cancelled"));denied(()->call(localOwner,"live",original));}
+        finally{localRetire(localOwner,original);}Object next=localRequest(localOwner,30);try{long deadline=(Long)field(next,"deadline");while(SystemClock.elapsedRealtime()<deadline)Thread.sleep(5);
+            denied(()->call(localOwner,"live",next));assertTrue((Boolean)field(next,"cancelled")||SystemClock.elapsedRealtime()>=deadline);}finally{localRetire(localOwner,next);}}
+    @Test public void localV2HeldMainRetirementIsExclusiveAndCannotClearFreshOriginal()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext())),original=localRequest(localOwner,5000);
+        CountDownLatch entered=new CountDownLatch(1),release=new CountDownLatch(1);ExecutorService workers=Executors.newFixedThreadPool(2);Future<?> first=null;
+        try{new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{entered.countDown();try{if(!release.await(5,TimeUnit.SECONDS))throw new AssertionError("bounded owned hold");}
+                catch(InterruptedException failure){Thread.currentThread().interrupt();throw new AssertionError(failure);}});assertTrue(entered.await(2,TimeUnit.SECONDS));
+            first=workers.submit(()->{try{call(localOwner,"retire",original);}catch(Exception failure){throw new RuntimeException(failure);}});
+            long limit=SystemClock.elapsedRealtime()+2000;boolean held=false;while(SystemClock.elapsedRealtime()<limit){synchronized(localOwner){held=(Boolean)field(original,"retiring")&&(Integer)field(original,"mainCalls")>0;}if(held)break;Thread.sleep(5);}
+            assertTrue(held);assertFalse(first.isDone());denied(()->call(localOwner,"retire",original));assertSame(original,field(localOwner,"active"));release.countDown();first.get(5,TimeUnit.SECONDS);
+            assertTrue((Boolean)field(original,"retired"));Object fresh=localRequest(localOwner,5000);try{denied(()->call(localOwner,"retire",original));assertSame(fresh,field(localOwner,"active"));}
+            finally{localRetire(localOwner,fresh);}
+        }finally{release.countDown();try{if(first!=null)first.get(10,TimeUnit.SECONDS);else localRetire(localOwner,original);}finally{workers.shutdown();}}}
+    @Test public void localV2CancelKeepsActualHostWorkerUntilReturnThenWipesOwnedBytes()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext())),original=localRequest(localOwner,5000);
+        byte[] owned={1,2,3};localSet(original,"currentBytes",owned);localSet(original,"currentChecksum",sha(owned));CountDownLatch entered=new CountDownLatch(1),release=new CountDownLatch(1);
+        ExecutorService worker=Executors.newSingleThreadExecutor();Future<Boolean> actual=null;boolean begun=false;
+        try{call(localOwner,"begin",original);begun=true;new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{entered.countDown();try{if(!release.await(5,TimeUnit.SECONDS))throw new AssertionError("bounded original host hold");}
+                catch(InterruptedException failure){Thread.currentThread().interrupt();throw new AssertionError(failure);}});assertTrue(entered.await(2,TimeUnit.SECONDS));
+            actual=worker.submit(()->{try{call(localOwner,"host",original);return false;}catch(Exception expected){return true;}finally{try{call(localOwner,"finish",original);}catch(Exception failure){throw new RuntimeException(failure);}}});
+            long limit=SystemClock.elapsedRealtime()+2000;boolean held=false;while(SystemClock.elapsedRealtime()<limit){synchronized(localOwner){held=(Integer)field(original,"mainCalls")>0;}if(held)break;Thread.sleep(5);}
+            assertTrue(held);call(localOwner,"cancel",original);assertFalse("worker data cannot wipe before actual main return",zero(owned));assertEquals(1,field(original,"workers"));release.countDown();
+            assertTrue(actual.get(5,TimeUnit.SECONDS));assertEquals(0,field(original,"workers"));assertTrue("actual owned return permits wiping",zero(owned));
+        }finally{release.countDown();try{if(actual!=null)actual.get(10,TimeUnit.SECONDS);else if(begun)call(localOwner,"finish",original);localRetire(localOwner,original);}finally{worker.shutdown();}}}
+    @Test public void localV2StorageReceiptIsOriginalDataOnlyAndCancellationWipesWithoutAck()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext())),original=localRequest(localOwner,5000);
+        byte[] raw={1,2,3};Object receipt=create("LocalV2StorageReceipt",localOwner,original,raw);localSet(original,"receipt",receipt);
+        try{assertArrayEquals(raw,(byte[])call(receipt,"copy"));Object foreign=create("LocalV2StorageReceipt",localOwner,original,new byte[]{1,2,3});
+            try{denied(()->call(localOwner,"acknowledge",foreign));}finally{call(foreign,"close");}
+            byte[] seedBytes=seed();Object sample=create("LocalV2EnrollmentSample",localOwner,original,seedBytes);localSet(original,"enrollmentSample",sample);
+            long retained=(Long)field(sample,"logicalMs"),sampled=(Long)field(sample,"continuousMs");Thread.sleep(5);assertTrue(SystemClock.elapsedRealtime()>=sampled);
+            Object next=localDecode(localWrapper(2,1,1,0,retained,0,null),snapshotPolicy(100L,250L));
+            try{call(type("LocalSnapshotV2"),"validateEnrollment",seedBytes,next,retained);assertArrayEquals(seedBytes,(byte[])call(sample,"copySeed"));
+                Object forged=create("LocalV2EnrollmentSample",localOwner,original,seed());denied(()->call(localOwner,"enroll",original,forged,(byte[])call(next,"copy")));
+                call(forged,"wipe");assertFalse((Boolean)field(sample,"consumed"));}finally{call(next,"close");}
+            call(localOwner,"cancel",original);assertTrue(zero(raw));assertTrue(zero(seedBytes));denied(()->call(sample,"copySeed"));
+            denied(()->call(receipt,"copy"));denied(()->call(localOwner,"acknowledge",receipt));assertSame(original,field(localOwner,"active"));assertFalse((Boolean)field(original,"mutationStarted"));
+            Method factory=PlanetChildVault.class.getDeclaredMethod("actualSdkLocalV2Writer",PlanetChildVault.class);factory.setAccessible(true);assertNull(factory.invoke(null,new PlanetChildVault(activity.getApplicationContext())));
+        }finally{localRetire(localOwner,original);}}
 }
