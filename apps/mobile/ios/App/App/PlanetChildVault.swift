@@ -4751,6 +4751,7 @@ fileprivate final class LocalV2Request {
     fileprivate var expected: PinOwnedBytes?,sample: LocalV2EnrollmentSample?,receipt: LocalV2StorageReceipt?
     fileprivate var chargeStarted=false,reservation: LocalV2ChargedReservation?
     fileprivate var pinOperation: LocalV2PinOperation?
+    fileprivate var profileOperation: LocalV2ProfileOperation?
     fileprivate var mutationUnacknowledged=false
     fileprivate var opened=false,cancelled=false,sealed=false,retiring=false,retired=false,workers=0,events=0,cleanup=0
     fileprivate var workerThread: ObjectIdentifier?
@@ -4804,7 +4805,7 @@ fileprivate final class LocalV2Writer {
                 if name==UIScene.didDisconnectNotification,!original.disconnected(note) { return }
                 self.condition.lock();guard self.active === request,!request.retired,!request.retiring else { self.condition.unlock();return }
                 if !self.pinLifecycleWillRevokeLocked(request,name:name) { self.condition.unlock();return }
-                request.events+=1;request.cancelled=true;request.pinOperation?.revokeLocked()
+                request.events+=1;request.cancelled=true;request.pinOperation?.revokeLocked();request.profileOperation?.revokeLocked()
                 if request.mutationUnacknowledged { self.processClock.invalidate(request);request.sealed=true }
                 self.condition.broadcast();self.condition.unlock()
                 self.condition.lock();request.events-=1;if request.workers==0 { request.wipe() };self.condition.broadcast();self.condition.unlock()
@@ -4830,7 +4831,7 @@ fileprivate final class LocalV2Writer {
         request.last=now;return now
     }
     fileprivate func current(_ request: LocalV2Request) throws -> UInt64 {
-        _ = try local(request);condition.lock();let ui=request.pinOperation?.input?.controller,prompt=request.pinOperation?.ownedPrompt ?? false;condition.unlock()
+        _ = try local(request);condition.lock();let ui=request.pinOperation?.input?.controller ?? request.profileOperation?.controller,prompt=(request.pinOperation?.ownedPrompt ?? false) || (request.profileOperation?.ownedPrompt ?? false);condition.unlock()
         try request.host?.localV2Current(ownedInput:ui,ownedPrompt:prompt);return try local(request)
     }
     private func start(_ request: LocalV2Request,opened: Bool) throws {
@@ -5032,22 +5033,22 @@ fileprivate final class LocalV2Writer {
     func cancel(_ request: LocalV2Request) {
         condition.lock();defer { condition.unlock() };guard active === request,request.owner === self,!request.retired else { return }
         if request.mutationUnacknowledged { processClock.invalidate(request);request.sealed=true }
-        request.cancelled=true;request.pinOperation?.revokeLocked();if request.workers==0 { request.wipe() };condition.broadcast()
+        request.cancelled=true;request.pinOperation?.revokeLocked();request.profileOperation?.revokeLocked();if request.workers==0 { request.wipe() };condition.broadcast()
     }
     func retire(_ request: LocalV2Request) throws {
         guard !Thread.isMainThread else { throw PinKnownRefusal() }
         condition.lock();guard active === request,request.owner === self,!request.retiring,!request.retired,
             request.workerThread != ObjectIdentifier(Thread.current),request.pinOperation?.workerThread != ObjectIdentifier(Thread.current),
-            request.pinOperation?.deliveryThread != ObjectIdentifier(Thread.current) else { condition.unlock();throw PinKnownRefusal() }
+            request.pinOperation?.deliveryThread != ObjectIdentifier(Thread.current),request.profileOperation?.worker.map(ObjectIdentifier.init) != ObjectIdentifier(Thread.current) else { condition.unlock();throw PinKnownRefusal() }
         if let operation=request.pinOperation {
             operation.closedKnownCandidate=operation.reply?.known==true && operation.reply?.settled==true && !operation.cancelled
                 && !request.cancelled && !request.sealed && !operation.closedRevoked
         }
-        request.retiring=true;request.cancelled=true;request.pinOperation?.revokeLocked()
+        request.retiring=true;request.cancelled=true;request.pinOperation?.revokeLocked();request.profileOperation?.revokeLocked()
         if request.mutationUnacknowledged { processClock.invalidate(request);request.sealed=true }
         condition.broadcast()
         while request.workers>0 || request.events>0 || request.receipt != nil && !request.receipt!.settled
-            || request.pinOperation?.busy == true || request.pinOperation?.reply != nil && request.pinOperation!.reply!.settled == false { condition.wait() }
+            || request.pinOperation?.busy == true || request.profileOperation?.busy == true || request.pinOperation?.reply != nil && request.pinOperation!.reply!.settled == false { condition.wait() }
         request.cleanup=1;condition.unlock()
         // Real main cleanup returns before capacity is reconsidered. No timer
         // substitutes for observer removal, callback/worker or delivery ACK.
@@ -5819,7 +5820,7 @@ fileprivate extension LocalSnapshotV2 {
 fileprivate extension LocalV2Writer {
     static func pinRuntime(vault: PlanetChildVault,policy: LocalSnapshotV2Policy) throws -> LocalV2Writer { try LocalV2Writer(vault:vault,policy:policy) }
     func pinLifecycleWillRevokeLocked(_ request: LocalV2Request,name: Notification.Name) -> Bool {
-        !(name==UIApplication.willResignActiveNotification && request.pinOperation?.ownedPrompt == true)
+        !(name==UIApplication.willResignActiveNotification && (request.pinOperation?.ownedPrompt == true || request.profileOperation?.ownedPrompt == true))
     }
     func closedPinReadback(_ operation: LocalV2PinOperation,reply: LocalV2PinReply) throws {
         let request=operation.request
@@ -6888,5 +6889,357 @@ enum PlanetChildLocalGateRuntimeFixture {
         guard Thread.isMainThread else { throw PinKnownRefusal() };let host=UIViewController();host.loadViewIfNeeded();let control=UIButton(type:.system);host.view.addSubview(control)
         return denied { _ = try LocalV2GateHost.originalWindow(host:host,control:control) }
     }
+}
+#endif
+
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    static func localV2ProfileId(_ bytes: Data) throws -> String {
+        try require(!bytes.isEmpty && bytes.count<=65536);let storage=Storage(bytes);defer { storage.wipe() };let p=Cursor(storage)
+        let id=try profile(p);try require(p.index==bytes.count);return id
+    }
+    static func localV2NativeProfile(_ proposal: Data,id: String) throws -> Data {
+        _ = try localV2ProfileId(proposal);let storage=Storage(proposal);defer { storage.wipe() };let p=Cursor(storage)
+        try p.field("id",first:true);let start=p.index;_ = try p.asciiString();let end=p.index
+        var result=Data(proposal.prefix(start));result.append(Data("\"\(id)\"".utf8));result.append(proposal.suffix(from:end));_ = try localV2ProfileId(result);return result
+    }
+    static func localV2FirstProfile(_ before: LocalSnapshotV2,profile bytes: Data) throws -> LocalSnapshotV2 {
+        let id=try localV2ProfileId(bytes);var raw=try before.copyProtectedBytes();defer { raw.resetBytes(in:0..<raw.count) }
+        let storage=Storage(raw);defer { storage.wipe() };let p=Cursor(storage),max=UInt64(9007199254740991)
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2);try p.field("revision");try require(p.number(1,max)==before.fields.revision && before.fields.revision<max)
+        try p.field("mode");try require(p.asciiString()=="adult");try p.field("selectionRevision");try require(p.number(1,max)==1)
+        try p.field("profileRevision");try require(p.number(1,max)==1);try p.field("policyChecksum");try require(p.asciiString()==before.policy.checksum)
+        try p.field("registryChecksum");_ = try p.hashRange();try p.field("registry");let start=p.index;try require(registry(p,version:before.policy.version)==nil)
+        let empty=Data("{\"schemaVersion\":1,\"policyVersion\":\"\(before.policy.version)\",\"activeProfileId\":null,\"profiles\":[]}".utf8)
+        try require(raw.subdata(in:start..<p.index)==empty && before.journal.revision<max)
+        var registry=Data("{\"schemaVersion\":1,\"policyVersion\":\"\(before.policy.version)\",\"activeProfileId\":\"\(id)\",\"profiles\":[".utf8)
+        registry.append(bytes);registry.append(Data("]}".utf8));defer { registry.resetBytes(in:0..<registry.count) }
+        var next=Data("{\"schemaVersion\":2,\"revision\":\(before.fields.revision+1),\"mode\":\"child\",\"selectionRevision\":2,\"profileRevision\":2,\"policyChecksum\":\"\(before.policy.checksum)\",\"registryChecksum\":\"\(LocalSnapshotV2.hash(registry))\",\"registry\":".utf8)
+        next.append(registry);next.append(Data(",\"pin\":".utf8));next.append(raw.suffix(from:before.fields.pinStart));defer { next.resetBytes(in:0..<next.count) }
+        // Exact original verifier/count/pending/debt/clock bytes survive. The
+        // shared process origin is never reconstructed from this new journal.
+        return try LocalSnapshotV2.wrapper(next,policy:before.policy,rootRevision:before.fields.revision+1,journalRevision:before.journal.revision+1,pin:before.fields.pin)
+    }
+    static func localV2ValidateFirstProfile(_ before: LocalSnapshotV2,_ after: LocalSnapshotV2) throws {
+        try require(LocalSnapshotV2.samePolicy(before,after))
+        var raw=try after.copyProtectedBytes();defer { raw.resetBytes(in:0..<raw.count) };let storage=Storage(raw);defer { storage.wipe() };let p=Cursor(storage)
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2);try p.field("revision");_ = try p.number(1,9007199254740991);try p.field("mode");try require(p.asciiString()=="child")
+        try p.field("selectionRevision");_ = try p.number(1,9007199254740991);try p.field("profileRevision");_ = try p.number(1,9007199254740991)
+        try p.field("policyChecksum");_ = try p.asciiString();try p.field("registryChecksum");_ = try p.hashRange();try p.field("registry")
+        try p.field("schemaVersion",first:true);_ = try p.number(1,1);try p.field("policyVersion");try require(p.asciiString()==before.policy.version)
+        try p.field("activeProfileId");let id=try p.asciiString();try p.field("profiles");try p.token("[");let start=p.index;try require(profile(p)==id);let end=p.index;try p.token("]");try p.token("}")
+        let expected=try localV2FirstProfile(before,profile:raw.subdata(in:start..<end));defer { expected.close() }
+        var a=try expected.copyCanonicalBytes(),b=try after.copyCanonicalBytes();defer { a.resetBytes(in:0..<a.count);b.resetBytes(in:0..<b.count) };try require(a==b)
+    }
+}
+fileprivate enum LocalV2ProfilePhase: Equatable { case captured,confirming,owner,signed,dataPublishing,dataKnown,profilePublishing,profileKnown,closed,failed }
+/** This concrete permit is created only by the original fresh Secure Enclave
+ * signing operation. The separate store cannot construct or reconstruct it. */
+final class LocalV2ProfileDataBirthPermit {
+    fileprivate let original: LocalV2ProfileOperation
+    fileprivate init(_ original: LocalV2ProfileOperation) { self.original=original }
+    private func exact(identity: String,nonce: String,checksum: String) throws {
+        try original.boundary();guard let plan=original.dataPlan,plan.identity==identity,plan.nonce==nonce,plan.checksum==checksum else { throw PinKnownRefusal() }
+    }
+    func consumeDataBirth(identity: String,nonce: String,checksum: String) throws {
+        try exact(identity:identity,nonce:nonce,checksum:checksum)
+        guard original.phase == .signed,!original.dataSpent else { throw PinKnownRefusal() };original.dataSpent=true;original.phase = .dataPublishing
+    }
+    func dataMarker(identity: String,nonce: String,checksum: String) throws -> Data {
+        try exact(identity:identity,nonce:nonce,checksum:checksum);guard original.phase == .dataPublishing else { throw PinKnownRefusal() }
+        return Data("LP-LOCAL-V2-DATA-BIRTH\n\(identity)\n\(nonce)\n\(checksum)\n\(LocalSnapshotV2.hash(original.payload))\n".utf8)
+    }
+    func dataBoundary(identity: String,nonce: String,checksum: String) throws {
+        try exact(identity:identity,nonce:nonce,checksum:checksum);guard original.phase == .dataPublishing else { throw PinKnownRefusal() }
+    }
+    func dataBirthKnown(identity: String,nonce: String,checksum: String) throws {
+        try dataBoundary(identity:identity,nonce:nonce,checksum:checksum);original.phase = .dataKnown
+    }
+    func dataReadback(identity: String,nonce: String,checksum: String) throws {
+        try exact(identity:identity,nonce:nonce,checksum:checksum)
+        guard [.dataKnown,.profilePublishing,.profileKnown,.closed].contains(original.phase) else { throw PinKnownRefusal() }
+    }
+    func dataBirthUnknown() { original.phase = .failed;original.writer.profileUnknown(original.request) }
+}
+/** Mutation metadata only. This result cannot grant ParentGate or child-data
+ * admission. Its producer has joined UI, signing, recipient, cancel and retire. */
+fileprivate final class LocalV2ProfileCompletion {
+    let profileId: String,snapshotChecksum: String,dataChecksum: String,revision: UInt64
+    fileprivate init(_ original: LocalV2ProfileOperation) throws {
+        guard original.phase == .closed,original.delivered,original.request.retired,!original.request.sealed,!original.cancelled,
+            original.worker?.isFinished==true,original.cancelThread==nil,let snapshot=original.nextSnapshot,let data=original.dataPlan else { throw PinKnownRefusal() }
+        profileId=original.profileId;snapshotChecksum=snapshot.checksum;dataChecksum=data.checksum;revision=snapshot.fields.revision
+    }
+}
+fileprivate final class LocalV2ProfileConfirmation: UIViewController {
+    weak var original: LocalV2ProfileOperation?
+    private let profile: Data
+    fileprivate var closing=false
+    init(_ original: LocalV2ProfileOperation,_ profile: Data) { self.original=original;self.profile=Data(Array(profile));super.init(nibName:nil,bundle:nil);modalPresentationStyle = .fullScreen;isModalInPresentation=true }
+    required init?(coder: NSCoder) { nil }
+    override func viewDidLoad() {
+        super.viewDidLoad();view.backgroundColor = .systemBackground
+        let stack=UIStackView();stack.axis = .vertical;stack.spacing=18;stack.translatesAutoresizingMaskIntoConstraints=false
+        let scroll=UIScrollView();scroll.translatesAutoresizingMaskIntoConstraints=false;view.addSubview(scroll);scroll.addSubview(stack)
+        let heading=UILabel();heading.numberOfLines=0;heading.text=original?.locale=="ru" ? "Подтвердите первый локальный профиль и детский режим":"Confirm first local profile and child mode";stack.addArrangedSubview(heading)
+        // Render the exact proposed decisions without exposing transport fields.
+        let ru=original?.locale=="ru"
+        guard let values=(try? JSONSerialization.jsonObject(with:profile)) as? [String:Any] else { original?.revoke();return }
+        let fields=[("label","Имя","Label"),("exactAge","Точный возраст","Exact age"),("ageBand","Возрастная группа","Age band"),("locale","Язык","Language"),("ageConfirmedAt","Подтверждение возраста","Age confirmation"),("readingLevel","Уровень чтения","Reading level"),("allowedTopics","Разрешённые темы","Allowed topics"),("blockedTopics","Закрытые темы","Blocked topics"),("soundEnabled","Звук","Sound"),("motion","Движение","Motion"),("narrationEnabled","Озвучивание","Narration"),("localeLocked","Фиксация языка","Language lock")]
+        do { for field in fields { let label=UILabel();label.numberOfLines=0;label.text=(ru ? field.1:field.2)+": "+(try Self.confirmationValue(values[field.0],field:field.0,ru:ru));stack.addArrangedSubview(label) } }
+        catch { original?.revoke();return }
+        let accept=UIButton(type:.system);accept.setTitle(original?.locale=="ru" ? "Подтвердить":"Confirm",for:.normal);accept.addTarget(self,action:#selector(confirm),for:.touchUpInside);stack.addArrangedSubview(accept)
+        let cancel=UIButton(type:.system);cancel.setTitle(original?.locale=="ru" ? "Отмена":"Cancel",for:.normal);cancel.addTarget(self,action:#selector(cancelled),for:.touchUpInside);stack.addArrangedSubview(cancel)
+        NSLayoutConstraint.activate([scroll.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor,constant:20),scroll.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor,constant:-20),scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),scroll.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor),stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor),stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor),stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor,constant:20),stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor,constant:-20),stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor)])
+    }
+    private static func confirmationValue(_ value: Any?,field: String,ru: Bool) throws -> String {
+        guard let value else { return ru ? "не задано":"not set" }
+        if value is NSNull { return field=="allowedTopics" ? (ru ? "Все темы, кроме запрещённых":"All topics except blocked topics"):(ru ? "не задано":"not set") }
+        if let number=value as? NSNumber,CFGetTypeID(number)==CFBooleanGetTypeID() { return number.boolValue ? (ru ? "Включено":"On"):(ru ? "Выключено":"Off") }
+        if let topics=value as? [String] { if topics.isEmpty { return ru ? "Нет":"None" };return try topics.map { try topicText($0,ru:ru) }.joined(separator:", ") }
+        let raw=String(describing:value)
+        if field=="locale" { return raw=="ru" ? (ru ? "Русский":"Russian"):(ru ? "Английский":"English") }
+        if field=="readingLevel" { if raw=="plain" { return ru ? "Простой текст":"Simple text" };if raw=="developing" { return ru ? "Учится читать":"Developing reader" };return ru ? "Свободно читает":"Fluent reader" }
+        if field=="motion" { return raw=="calm" ? (ru ? "Спокойное движение":"Calm motion"):(ru ? "Как в настройках устройства":"Use device settings") }
+        if field=="ageConfirmedAt" { return raw.replacingOccurrences(of:"T",with:" ").replacingOccurrences(of:"Z",with:" UTC") };return raw
+    }
+    private static func topicText(_ topic: String,ru: Bool) throws -> String {
+        let names=[("nature","Природа","Nature"),("horror","Ужасы","Horror"),("adventure","Приключения","Adventure"),("violence","Насилие","Violence")]
+        if let item=names.first(where:{ $0.0==topic }) { return ru ? item.1:item.2 };throw PinKnownRefusal()
+    }
+    @objc private func confirm() { guard Thread.isMainThread,view.window?.isKeyWindow==true else { original?.revoke();return };original?.confirmed(self) }
+    @objc private func cancelled() { original?.revoke() }
+    override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated);if !closing { original?.revoke() } }
+}
+fileprivate final class LocalV2ProfileRouteWitness: UIViewController {
+    weak var original: LocalV2ProfileOperation?
+    override func loadView() { let view=UIView(frame:.zero);view.isUserInteractionEnabled=false;self.view=view }
+    override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated);original?.routeDisappearing() }
+    override func didMove(toParent parent: UIViewController?) { super.didMove(toParent:parent);if parent==nil { original?.revoke() } }
+}
+/** Private, usable native first-profile operation. Enrollment must already
+ * exist; P1 receipts, caller booleans and raw partitions never authorize it. */
+fileprivate final class LocalV2ProfileOperation {
+    let writer: LocalV2Writer,request: LocalV2Request,host: UIViewController,window: UIWindow,scene: UIWindowScene,root: UIViewController,profileId: String,locale: String
+    let keys=ApplePinOwnerKeys(),context=LAContext(),nonce: Data
+    var profile: Data,before=Data(),next=Data(),payload=Data(),signature=Data()
+    private var beforeChecksum=""
+    var key: PinOwnerKey?,nextSnapshot: LocalSnapshotV2?,dataPlan: PlanetChildDataStore.LocalV2BirthPlan?,dataReceipt: PlanetChildDataStore.LocalV2BirthReceipt?
+    private let stateLock=NSRecursiveLock()
+    private var nativePhase: LocalV2ProfilePhase = .captured,nativeCancelled=false,nativeOwnerPending=false,nativeOwnerReturned=false,nativeConfirmed=false,nativeFinished=false,nativeDelivered=false,nativeUIJoined=false,nativeClosedCandidate=false
+    private var nativeController: LocalV2ProfileConfirmation?
+    var phase: LocalV2ProfilePhase { get { stateLock.lock();defer { stateLock.unlock() };return nativePhase } set { stateLock.lock();nativePhase=newValue;stateLock.unlock() } }
+    var cancelled: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeCancelled } set { stateLock.lock();nativeCancelled=newValue;stateLock.unlock() } }
+    var ownerPending: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeOwnerPending } set { stateLock.lock();nativeOwnerPending=newValue;stateLock.unlock() } }
+    var ownerReturned: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeOwnerReturned } set { stateLock.lock();nativeOwnerReturned=newValue;stateLock.unlock() } }
+    var confirmedValue: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeConfirmed } set { stateLock.lock();nativeConfirmed=newValue;stateLock.unlock() } }
+    var finished: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeFinished } set { stateLock.lock();nativeFinished=newValue;stateLock.unlock() } }
+    var delivered: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeDelivered } set { stateLock.lock();nativeDelivered=newValue;stateLock.unlock() } }
+    var uiJoined: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeUIJoined } set { stateLock.lock();nativeUIJoined=newValue;stateLock.unlock() } }
+    var closedKnownCandidate: Bool { get { stateLock.lock();defer { stateLock.unlock() };return nativeClosedCandidate } set { stateLock.lock();nativeClosedCandidate=newValue;stateLock.unlock() } }
+    var controller: LocalV2ProfileConfirmation? { get { stateLock.lock();defer { stateLock.unlock() };return nativeController } set { stateLock.lock();nativeController=newValue;stateLock.unlock() } }
+    var dataSpent=false,completionConsumed=false
+    var worker: Thread?,settler: Thread?,cancelThread: Thread?,publicationThread: ObjectIdentifier?
+    private let routeWitness=LocalV2ProfileRouteWitness(),recipient: (LocalV2ProfileOperation) throws -> Void
+    private var closingTokens=[NSObjectProtocol](),keyObserver: NSObjectProtocol?,closedResult: LocalV2ProfileCompletion?
+    var ownedPrompt: Bool { phase == .owner && ownerPending && !ownerReturned && !cancelled && !finished }
+    var busy: Bool { !finished || controller != nil || cancelThread != nil }
+    private init(_ writer: LocalV2Writer,_ request: LocalV2Request,_ host: UIViewController,_ proposal: Data,_ recipient: @escaping (LocalV2ProfileOperation) throws -> Void) throws {
+        self.writer=writer;self.request=request;self.host=host;self.recipient=recipient
+        guard Thread.isMainThread,let window=host.viewIfLoaded?.window,let scene=window.windowScene,let root=window.rootViewController,window.isKeyWindow else { throw PinKnownRefusal() };self.window=window;self.scene=scene;self.root=root
+        var random=Data(count:32);guard random.withUnsafeMutableBytes({ SecRandomCopyBytes(kSecRandomDefault,32,$0.baseAddress!) })==errSecSuccess else { throw PlanetChildVault.Failure.unavailable }
+        nonce=random;profileId="child-"+random.prefix(16).map { String(format:"%02x",$0) }.joined();profile=try PlanetChildVault.ProtectedEnvelope.localV2NativeProfile(proposal,id:profileId)
+        guard let value=try JSONSerialization.jsonObject(with:profile) as? [String:Any],let locale=value["locale"] as? String else { throw PinKnownRefusal() };self.locale=locale
+        writer.condition.lock();defer { writer.condition.unlock() }
+        let id=random.map { String(format:"%02x",$0) }.joined(),identity=ObjectIdentifier(self)
+        guard writer.active === request,request.profileOperation==nil,request.pinOperation==nil,writer.processClock.pinUsedIds.count<2048,!writer.processClock.pinUsedIds.contains(id),writer.processClock.pinUsedChallenges[identity]==nil else { throw PinKnownRefusal() }
+        writer.processClock.pinUsedIds.insert(id);writer.processClock.pinUsedChallenges[identity]=self;request.profileOperation=self
+    }
+    static func begin(vault: PlanetChildVault,policy: LocalSnapshotV2Policy,host: UIViewController,proposal: Data,timeoutMs: UInt64,recipient: @escaping (LocalV2ProfileOperation) throws -> Void) throws -> LocalV2ProfileOperation {
+        guard Thread.isMainThread else { throw PinKnownRefusal() };let writer=try LocalV2Writer.pinRuntime(vault:vault,policy:policy),request=try writer.request(host:host,timeoutMs:timeoutMs)
+        do {
+            let original=try LocalV2ProfileOperation(writer,request,host,Data(Array(proposal)),recipient)
+            original.keyObserver=NotificationCenter.default.addObserver(forName:UIWindow.didResignKeyNotification,object:original.window,queue:nil) { [weak original] _ in guard let original,!original.ownedPrompt else { return };original.revoke() }
+            original.routeWitness.original=original;host.addChild(original.routeWitness);host.view.addSubview(original.routeWitness.view);original.routeWitness.didMove(toParent:host)
+            let worker=Thread { original.run() };original.worker=worker;worker.start()
+            let settler=Thread { original.closeAfterJoin() };original.settler=settler;settler.start();return original
+        } catch { writer.cancel(request);Thread { try? writer.retire(request) }.start();throw error }
+    }
+    func revokeLocked() {
+        if closedKnownCandidate { return } // retire is mechanical; closing observers remain live.
+        cancelled=true
+        guard !finished,ownerPending else { writer.condition.broadcast();return }
+        if cancelThread==nil { let thread=Thread { [self] in context.invalidate();writer.condition.lock();writer.condition.broadcast();writer.condition.unlock() };cancelThread=thread;thread.start() }
+        writer.condition.broadcast()
+    }
+    func revoke() { writer.condition.lock();closedKnownCandidate=false;revokeLocked();writer.condition.unlock();writer.cancel(request) }
+    func routeDisappearing() { guard Thread.isMainThread else { revoke();return };if host.presentedViewController !== controller || controller==nil { revoke() } }
+    func confirmed(_ native: LocalV2ProfileConfirmation) {
+        writer.condition.lock();defer { writer.condition.unlock() }
+        guard Thread.isMainThread,controller === native,phase == .confirming,!cancelled,!confirmedValue else { revokeLocked();return };confirmedValue=true;writer.condition.broadcast()
+    }
+    fileprivate func currentWindow() throws {
+        let valid=DispatchQueue.main.sync { self.window.isKeyWindow && self.window.windowScene === self.scene && self.window.rootViewController === self.root && !self.window.isHidden };guard valid else { throw PinKnownRefusal() }
+    }
+    private func currentHost() throws { _ = try writer.current(request);try currentWindow() }
+    private func confirm() throws {
+        try currentHost();phase = .confirming
+        try DispatchQueue.main.sync { guard host.presentedViewController==nil else { throw PinKnownRefusal() };let native=LocalV2ProfileConfirmation(self,profile);controller=native;host.present(native,animated:false) }
+        while true { try currentHost();writer.condition.lock();let ready=confirmedValue,denied=cancelled;writer.condition.unlock();if denied { throw PinKnownRefusal() };if ready { break };Thread.sleep(forTimeInterval:0.01) }
+        try dismissConfirmation();try currentHost()
+    }
+    private func dismissConfirmation() throws {
+        let joined=DispatchSemaphore(value:0)
+        DispatchQueue.main.sync { if let native=controller { native.closing=true;native.dismiss(animated:false) { joined.signal() } } else { joined.signal() } }
+        joined.wait() // actual UIKit completion joins, never a timeout substitution.
+        DispatchQueue.main.sync { controller?.original=nil;controller=nil };uiJoined=true
+    }
+    private func message() throws -> Data {
+        guard let key,let plan=dataPlan else { throw PinKnownRefusal() };let policy=writer.policy
+        return Data(["LP-LOCAL-V2-FIRST-PROFILE-v2","create-initial-local-profile",nonce.map { String(format:"%02x",$0) }.joined(),LocalSnapshotV2.hash(before),LocalSnapshotV2.hash(next),LocalSnapshotV2.hash(profile),plan.identity,plan.nonce,plan.checksum,policy.version,policy.checksum,String(policy.maximum),policy.delays.map(String.init).joined(separator:","),String(request.began),String(request.deadline),String(describing:ObjectIdentifier(host)),String(describing:ObjectIdentifier(window)),String(describing:ObjectIdentifier(scene)),String(describing:ObjectIdentifier(root)),"ru.probpera.literaryplanet.child.pin.owner.passcode.v1",LocalSnapshotV2.hash(key.publicBytes)].joined(separator:"\n").utf8)
+    }
+    private func owner() throws {
+        guard uiJoined,keys.source == .secureEnclave else { throw PinKnownRefusal() };try currentHost()
+        context.touchIDAuthenticationAllowableReuseDuration=0;context.localizedCancelTitle=locale=="ru" ? "Отмена":"Cancel"
+        writer.condition.lock();phase = .owner;ownerPending=true;ownerReturned=false;writer.condition.unlock()
+        defer { writer.condition.lock();ownerPending=false;ownerReturned=true;writer.condition.broadcast();writer.condition.unlock() }
+        key=try keys.acquire(enroll:false,context:context,prompt:locale=="ru" ? "Подтвердите первый локальный профиль":"Confirm first local profile")
+        payload=try message();signature=try keys.sign(key!,message:payload)
+        writer.condition.lock();ownerPending=false;ownerReturned=true;writer.condition.unlock()
+        try currentHost();phase = .signed;try verifyOwner()
+    }
+    private func verifyOwner() throws {
+        guard let key,key.source == .secureEnclave,!signature.isEmpty,signature.count<=144 else { throw PinKnownRefusal() }
+        try keys.current(key);var expected=try message();defer { expected.resetBytes(in:0..<expected.count) };guard expected==payload else { throw PinKnownRefusal() }
+        var error: Unmanaged<CFError>?;guard SecKeyVerifySignature(key.publicKey,.ecdsaSignatureMessageX962SHA256,payload as CFData,signature as CFData,&error) else { throw PinKnownRefusal() }
+    }
+    func boundary() throws {
+        guard publicationThread==ObjectIdentifier(Thread.current),!cancelled,!request.sealed,request.profileOperation === self else { throw PinKnownRefusal() }
+        if phase == .closed { try writer.closedProfileFence(self) } else { _ = try writer.profileLocal(request) }
+        try verifyOwner();guard LocalSnapshotV2.hash(before)==beforeChecksum else { throw PinKnownRefusal() }
+    }
+    private func run() {
+        do {
+            if let receipt=try writer.open(request) { try writer.settle(receipt,known:true) }
+            guard let expected=request.expected else { throw PinKnownRefusal() };before=try expected.copy();beforeChecksum=LocalSnapshotV2.hash(before)
+            let snapshot=try LocalSnapshotV2.decode(before,policy:writer.policy);defer { snapshot.close() };nextSnapshot=try PlanetChildVault.ProtectedEnvelope.localV2FirstProfile(snapshot,profile:profile);next=try nextSnapshot!.copyCanonicalBytes()
+            dataPlan=try PlanetChildDataStore.localV2BirthPlan(nonce:nonce.prefix(16).map { String(format:"%02x",$0) }.joined())
+            try confirm();try owner();try currentHost();publicationThread=ObjectIdentifier(Thread.current)
+            let receipt=try writer.profileCommit(self);try writer.settle(receipt,known:true);phase = .profileKnown
+            guard let dataReceipt else { throw PinKnownRefusal() };try dataReceipt.readback(LocalV2ProfileDataBirthPermit(self));try currentHost()
+            try recipient(self);try currentHost();delivered=true
+        } catch { if dataSpent || request.mutationUnacknowledged { writer.profileUnknown(request) };phase = .failed;revoke() }
+        // These joins are part of the operation, not merely state flags.
+        try? dismissConfirmation();joinCancel();writer.condition.lock();finished=true;writer.condition.broadcast();writer.condition.unlock()
+    }
+    private func joinCancel() {
+        while true { writer.condition.lock();let thread=cancelThread;writer.condition.unlock();guard let thread else { return };while !thread.isFinished { Thread.sleep(forTimeInterval:0.001) }
+            writer.condition.lock();if cancelThread === thread { cancelThread=nil };writer.condition.broadcast();writer.condition.unlock() }
+    }
+    private func closingObservers(_ install: Bool) {
+        DispatchQueue.main.sync {
+            if install {
+                for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
+                    closingTokens.append(NotificationCenter.default.addObserver(forName:name,object:nil,queue:nil) { [weak self] note in
+                        guard let self else { return };if name==UIScene.didDisconnectNotification,self.request.host?.disconnected(note) != true { return };self.revoke()
+                    })
+                }
+            } else { for token in closingTokens { NotificationCenter.default.removeObserver(token) };closingTokens.removeAll() }
+        }
+    }
+    private func closeAfterJoin() {
+        guard let worker else { return };while !worker.isFinished { Thread.sleep(forTimeInterval:0.001) };joinCancel()
+        do {
+            guard delivered,phase == .profileKnown,!cancelled,request.receipt?.known==true,request.receipt?.settled==true,!request.mutationUnacknowledged else { throw PinKnownRefusal() }
+            try currentHost();publicationThread=ObjectIdentifier(Thread.current);try dataReceipt!.readback(LocalV2ProfileDataBirthPermit(self));closingObservers(true)
+            writer.condition.lock();closedKnownCandidate=true;writer.condition.unlock();try writer.retire(request)
+            phase = .closed;try writer.closedProfileReadback(self);closedResult=try LocalV2ProfileCompletion(self)
+        } catch { closedResult=nil;revoke();if !request.retired { try? writer.retire(request) } else { writer.poisonClosedProfile(self) } }
+        closingObservers(false)
+        DispatchQueue.main.sync { if let keyObserver { NotificationCenter.default.removeObserver(keyObserver);self.keyObserver=nil };routeWitness.original=nil;routeWitness.willMove(toParent:nil);routeWitness.view.removeFromSuperview();routeWitness.removeFromParent() }
+        dataPlan?.close();nextSnapshot?.close();profile.resetBytes(in:0..<profile.count);before.resetBytes(in:0..<before.count);next.resetBytes(in:0..<next.count);payload.resetBytes(in:0..<payload.count);signature.resetBytes(in:0..<signature.count)
+    }
+    func completion() throws -> LocalV2ProfileCompletion {
+        guard !Thread.isMainThread,let settler,ObjectIdentifier(Thread.current) != ObjectIdentifier(settler),ObjectIdentifier(Thread.current) != worker.map(ObjectIdentifier.init) else { throw PinKnownRefusal() }
+        while !settler.isFinished { Thread.sleep(forTimeInterval:0.001) };writer.condition.lock();defer { writer.condition.unlock() }
+        let available = !completionConsumed;completionConsumed=true
+        guard available,!cancelled,!request.sealed,writer.active==nil,writer.processClock.preparingOwner==nil,let result=closedResult,
+            writer.processClock.known?.checksum==result.snapshotChecksum else { throw PinKnownRefusal() }
+        let now: UInt64;do { now=try writer.clock.nanoseconds() } catch { writer.processClock.poisonProfileClosed();throw error };try writer.processClock.observe(now)
+        guard now>=request.last,now<request.deadline else { throw PinKnownRefusal() };return result
+    }
+}
+fileprivate extension LocalV2Writer {
+    func profileLocal(_ request: LocalV2Request) throws -> UInt64 { try local(request) }
+    func profileUnknown(_ request: LocalV2Request) { fail(request,PlanetChildVault.Failure.unavailable,publication:true) }
+    func profileCommit(_ original: LocalV2ProfileOperation) throws -> LocalV2StorageReceipt {
+        let request=original.request;guard request.profileOperation === original,original.phase == .signed,original.uiJoined else { throw PinKnownRefusal() }
+        _ = try current(request);try start(request,opened:true);defer { finish(request) };var publication=false,captured: LocalV2StorageReceipt?
+        do {
+            try storage.locked { transaction in
+                var before=try exact(transaction,request);defer { before.resetBytes(in:0..<before.count) };guard before==original.before,let next=original.nextSnapshot,let plan=original.dataPlan else { throw PinKnownRefusal() }
+                let old=try LocalSnapshotV2.decode(before,policy:policy);defer { old.close() };try PlanetChildVault.ProtectedEnvelope.localV2ValidateFirstProfile(old,next)
+                try original.boundary();let permit=LocalV2ProfileDataBirthPermit(original);publication=true
+                // Fixed lock order: Vault process/flock -> DataStore process/flock.
+                // Permit fences perform no recursive Vault IO or main UI wait.
+                original.dataReceipt=try PlanetChildDataStore.localV2Birth(plan,permit:permit);try original.dataReceipt!.readback(permit)
+                original.phase = .profilePublishing;condition.lock();request.mutationUnacknowledged=true;condition.unlock()
+                try write(transaction,request,before,original.next,permission:{ try original.boundary() })
+                condition.lock();defer { condition.unlock() };try processClock.stage(request,original.next,next);request.expected?.close();request.expected=PinOwnedBytes(original.next)
+            }
+            guard let next=original.nextSnapshot else { throw PlanetChildVault.Failure.unavailable };try publish(request,next,original.next,false) { captured=$0 }
+            guard let captured else { throw PlanetChildVault.Failure.unavailable };return captured
+        } catch { fail(request,error,publication:publication || request.mutationUnacknowledged);throw error }
+    }
+    func closedProfileFence(_ original: LocalV2ProfileOperation) throws {
+        let request=original.request,now=try clock.nanoseconds();condition.lock();defer { condition.unlock() }
+        guard active==nil,processClock.preparingOwner==nil,request.retired,!request.sealed,!original.cancelled,original.closedKnownCandidate,
+            request.profileOperation === original,processClock.matches(policy),!processClock.invalidated,let next=original.nextSnapshot,
+            processClock.known?.checksum==next.checksum,processClock.known?.rootRevision==next.fields.revision,request.process==getpid() else { throw PinKnownRefusal() }
+        try processClock.observe(now);guard now>=request.last,now>=request.began,now<request.deadline else { throw PinKnownRefusal() };request.last=now
+    }
+    func poisonClosedProfile(_ original: LocalV2ProfileOperation) {
+        condition.lock();defer { condition.unlock() };guard active==nil,processClock.preparingOwner==nil,original.request.retired,
+            original.nextSnapshot?.checksum==processClock.known?.checksum else { return };processClock.poisonProfileClosed()
+    }
+    func closedProfileReadback(_ original: LocalV2ProfileOperation) throws {
+        try closedProfileFence(original);try original.request.host?.current();try original.currentWindow()
+        try storage.locked { transaction in
+            try original.boundary();var actual=try transaction.read();defer { actual.resetBytes(in:0..<actual.count) };guard actual==original.next else { throw PlanetChildVault.Failure.unavailable }
+            try original.dataReceipt!.readback(LocalV2ProfileDataBirthPermit(original));try original.boundary()
+        }
+        try original.request.host?.current();try original.currentWindow();try closedProfileFence(original)
+    }
+}
+fileprivate extension LocalV2ProcessClock { func poisonProfileClosed() { poison() } }
+#if DEBUG
+/** Structural production-leaf fixtures only; no fabricated owner permit. */
+enum PlanetChildLocalProfileRuntimeFixture {
+    static let version="first-profile-fixture-v2",checksum=String(repeating:"a",count:64)
+    private static func policy() throws -> LocalSnapshotV2Policy { try LocalSnapshotV2Policy(version:version,checksum:checksum,maximum:1200000,delays:[100,250]) }
+    static func seed() throws -> Data { try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:version,policyChecksum:checksum) }
+    static func enrolled(root: UInt64=5,journal: UInt64=4,count: UInt64=2,observed: UInt64=17,pending: String?=String(repeating:"f",count:64)) throws -> Data {
+        let p=try policy(),delay=p.delay(count),credential=String(repeating:"c",count:64)
+        var source=try seed();defer { source.resetBytes(in:0..<source.count) }
+        let pin="{\"schemaVersion\":1,\"policyVersion\":\"\(version)\",\"revision\":4,\"credentialId\":\"\(credential)\",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":600000,\"saltHex\":\"\(String(repeating:"d",count:64))\",\"hashHex\":\"\(String(repeating:"e",count:64))\"},\"attempts\":{\"count\":\(count),\"blockedUntilMs\":\(count==0 ? 0:observed+delay),\"lastObservedMs\":\(observed),\"pendingAttemptId\":\(pending.map { "\"\($0)\"" } ?? "null")}}"
+        let text=String(decoding:source,as:UTF8.self).replacingOccurrences(of:"\"schemaVersion\":2,\"revision\":1",with:"\"schemaVersion\":2,\"revision\":\(root)").replacingOccurrences(of:"\"pin\":null",with:"\"pin\":"+pin)
+        var protectedBytes=Data(text.utf8);defer { protectedBytes.resetBytes(in:0..<protectedBytes.count) }
+        let fields=LocalV2PinFields(revision:4,credential:credential,count:count,blocked:count==0 ? 0:observed+delay,observed:observed,pending:pending,revisionStart:0,revisionEnd:0,attemptsStart:0)
+        let record=try LocalSnapshotV2.wrapper(protectedBytes,policy:p,rootRevision:root,journalRevision:journal,pin:fields);defer { record.close() };return try record.copyCanonicalBytes()
+    }
+    static func transition(_ before: Data,profile: Data) throws -> Data {
+        let old=try LocalSnapshotV2.decode(before,policy:policy());defer { old.close() };let next=try PlanetChildVault.ProtectedEnvelope.localV2FirstProfile(old,profile:profile);defer { next.close() }
+        try PlanetChildVault.ProtectedEnvelope.localV2ValidateFirstProfile(old,next);return try next.copyCanonicalBytes()
+    }
+    static func validate(_ before: Data,_ after: Data) throws {
+        let old=try LocalSnapshotV2.decode(before,policy:policy()),next=try LocalSnapshotV2.decode(after,policy:policy());defer { old.close();next.close() };try PlanetChildVault.ProtectedEnvelope.localV2ValidateFirstProfile(old,next)
+    }
+    static func profileId(_ profile: Data) throws -> String { try PlanetChildVault.ProtectedEnvelope.localV2ProfileId(profile) }
+    static func nativeProfile(_ proposal: Data,id: String) throws -> Data { try PlanetChildVault.ProtectedEnvelope.localV2NativeProfile(proposal,id:id) }
+    static func pinTail(_ bytes: Data) throws -> Data { let record=try LocalSnapshotV2.decode(bytes,policy:policy());defer { record.close() };var raw=try record.copyProtectedBytes();defer { raw.resetBytes(in:0..<raw.count) };return raw.suffix(from:record.fields.pinStart) }
+    static func inspect(_ bytes: Data) throws -> (root: UInt64,pin: UInt64,journal: UInt64,count: UInt64,debt: UInt64,observed: UInt64,pending: String?,profile: String?,locale: String) {
+        let record=try LocalSnapshotV2.decode(bytes,policy:policy());defer { record.close() };let scope=try LocalV2GateScope(record)
+        return (record.fields.revision,record.fields.pin.revision,record.journal.revision,record.fields.pin.count,record.journal.cooldown,record.fields.pin.observed,record.fields.pin.pending,scope.context.profileId,scope.locale == .ru ? "ru":"en")
+    }
+    static func refunded(_ after: Data) throws -> Data { let record=try LocalSnapshotV2.decode(after,policy:policy());defer { record.close() };let next=try record.finalizeComparedCandidate(.match,17);defer { next.close() };return try next.copyCanonicalBytes() }
 }
 #endif

@@ -122,4 +122,29 @@ public class PlanetChildDataStoreRuntimeTest {
             if(!Arrays.asList("corrupt","missing-key","missing-cipher").contains(phase)) throw unavailable;
         } }
     }
+    private static String bootstrapRunId(String suffix){String original=InstrumentationRegistry.getArguments().getString("literaryRunId","");
+        assertTrue("explicit isolated data bootstrap phase","local-v2-bootstrap".equals(InstrumentationRegistry.getArguments().getString("literaryChildDataPhase"))&&original.matches("[a-f0-9]{32}"));return original.substring(0,30)+suffix;}
+    private static File bootstrapDirectory(Context context,String runId)throws Exception{return new File(context.getNoBackupFilesDir().getCanonicalFile(),"literary-planet-child-data-v1-synthetic-"+runId);}
+    @Test public void localV2DataBirthWithoutOriginalOwnerPermitHasNoKeyOrRecordFootprint()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b1");File directory=bootstrapDirectory(context,runId);KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);
+        assertFalse(directory.exists());String alias=context.getPackageName()+"."+directory.getName()+".aes";assertFalse(keys.containsAlias(alias));
+        try(PlanetChildDataStore.LocalV2BirthPlan plan=PlanetChildDataStore.fixtureLocalV2BirthPlan(context,runId,runId)){denied(()->PlanetChildDataStore.localV2Birth(plan,null));assertFalse(directory.exists());assertFalse(keys.containsAlias(alias));}
+    }
+    @Test public void localV2ExistingOnlyMissingStoreCannotCreateAnAesKeyOrSnapshot()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b2");File directory=bootstrapDirectory(context,runId);KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);
+        assertFalse(directory.exists());String alias=context.getPackageName()+"."+directory.getName()+".aes";assertFalse(keys.containsAlias(alias));
+        denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));assertFalse(new File(directory,"snapshot-v1").exists());assertFalse(keys.containsAlias(alias));
+    }
+    @Test public void localV2ExistingOnlyOrphanBirthClaimRemainsFailClosedAndUnmodified()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b3");File directory=bootstrapDirectory(context,runId);assertFalse(directory.exists());assertTrue(directory.mkdir());
+        File marker=new File(directory,"local-v2-birth.claim");byte[] original="unknown-original-key-birth-claim-retained".getBytes(StandardCharsets.US_ASCII);try(FileOutputStream output=new FileOutputStream(marker)){output.write(original);output.getFD().sync();}
+        denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));assertArrayEquals(original,boundedFile(marker));assertFalse(new File(directory,"snapshot-v1").exists());
+        KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);assertFalse(keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));
+    }
+    @Test public void localV2ExistingOnlyMissingAesDoesNotRebirthOrReplaceOriginalCipher()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b4");File directory=bootstrapDirectory(context,runId);assertFalse(directory.exists());
+        PlanetChildDataStore fixture=PlanetChildDataStore.synthetic(context,runId);fixture.close();File record=new File(directory,"snapshot-v1");byte[] original=boundedFile(record);
+        KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);String alias=context.getPackageName()+"."+directory.getName()+".aes";assertTrue(keys.containsAlias(alias));keys.deleteEntry(alias);
+        denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));assertFalse(keys.containsAlias(alias));assertArrayEquals(original,boundedFile(record));Arrays.fill(original,(byte)0);
+    }
 }

@@ -3108,7 +3108,7 @@ final class PlanetChildVault {
      * production writer selects its one native fixed namespace and real clock;
      * isolated synthetic instances below are usable only as mechanical tests. */
     private interface LocalV2ElapsedClock { long now() throws Exception; }
-    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize }
+    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize, profile }
     private static final class LocalV2ClockLease {
         final LocalV2ProcessClock owner;final Object original;final long began,deadline;
         private boolean closed;private LocalV2ClockSample sample;
@@ -3217,7 +3217,8 @@ final class PlanetChildVault {
                     if(action==LocalV2ClockAction.enroll){require(known.seed);try(LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
                         LocalSnapshotV2.validateEnrollment(before,value,sample.logicalMs);}expected=after.clone();}
                     else{require(!known.seed);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy);LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
-                        if(action==LocalV2ClockAction.charge)expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);
+                        if(action==LocalV2ClockAction.profile){LocalV2InitialProfile.validate(old,value);expected=after.clone();}
+                        else if(action==LocalV2ClockAction.charge)expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);
                         else{require(action==LocalV2ClockAction.finalize&&value.lastObservedMs==sample.logicalMs);
                             LocalSnapshotV2.validateFinalization(old,value);expected=LocalSnapshotV2.attempt(old,value.count,null,sample.logicalMs);}}}
                 }
@@ -3267,6 +3268,7 @@ final class PlanetChildVault {
         boolean anchored,cancelled,sealed,retiring,retired,detached,charged,mutationStarted,enrollmentStarted;
         int workers,mainCalls,events,settleCalls,pinWorkers,pinCancelCalls;boolean unacknowledgedMutation;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
         private LocalV2PinOperation pinOperation;
+        private LocalV2ProfileOperation profileOperation;
         private byte[] currentBytes;private String currentChecksum;
         private LocalV2EnrollmentSample enrollmentSample;
         android.app.Application.ActivityLifecycleCallbacks lifecycle;android.content.BroadcastReceiver screen;Runnable expiry;
@@ -3334,13 +3336,13 @@ final class PlanetChildVault {
             }finally{synchronized(this){reserving=false;}}
         }
         private void event(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;request.events++;request.cancelled=true;
-                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);if(request.pinOperation!=null)request.pinOperation.revoke();}
+                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);if(request.pinOperation!=null)request.pinOperation.revoke();if(request.profileOperation!=null)request.profileOperation.revoke();}
             synchronized(this){request.events--;wipeIdle(request);notifyAll();}}
         private void wipeIdle(LocalV2Request request){if((request.cancelled||request.sealed)&&request.workers==0&&request.pinWorkers==0&&request.pinCancelCalls==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0){
             LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();
             if(request.enrollmentSample!=null)request.enrollmentSample.wipe();}}
         private void paused(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;
-            if(request.pinOperation!=null&&request.pinOperation.ownedOwnerPause())return;}event(request);}
+            if(request.pinOperation!=null&&request.pinOperation.ownedOwnerPause()||request.profileOperation!=null&&request.profileOperation.ownedOwnerPause())return;}event(request);}
         private void attach(LocalV2Request request) throws Exception {
             android.app.Application application=(android.app.Application)vault.context;
             request.lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
@@ -3371,7 +3373,8 @@ final class PlanetChildVault {
                 current[0]=!lost[0]&&request.activity.hasWindowFocus();},false);
             if(current[0]){vault.unlocked();live(request);return;}
             LocalV2PinOperation operation=request.pinOperation;
-            if(lost[0]||operation==null||!(operation.ownerReturned||operation.uiJoined)){event(request);throw new PinKnownRefusal();}
+            LocalV2ProfileOperation profile=request.profileOperation;
+            if(lost[0]||!(operation!=null&&(operation.ownerReturned||operation.uiJoined)||profile!=null&&(profile.ownerReturned||profile.uiJoined))){event(request);throw new PinKnownRefusal();}
             // Only an actual owned system/keypad return may wait for focus;
             // lifecycle cancellation and the original deadline remain latched.
             synchronized(this){live(request);wait(10);}
@@ -3398,9 +3401,10 @@ final class PlanetChildVault {
             live(request);synchronized(this){if(request.currentBytes!=null)require(digest(request.currentBytes).equals(request.currentChecksum)
                 &&MessageDigest.isEqual(expected,request.currentBytes));}
             completeRecord(directory);byte[] current=vault.readExact(directory);try{require(MessageDigest.isEqual(expected,current));}finally{LocalSnapshotV2.wipe(current);}
-            synchronized(this){request.mutationStarted=true;request.unacknowledgedMutation=true;}vault.writeExact(directory,next,()->live(request));
+            if(action==LocalV2ClockAction.profile){require(request.profileOperation!=null);request.profileOperation.profileWriteBoundary(expected,next);}
+            synchronized(this){request.mutationStarted=true;request.unacknowledgedMutation=true;}vault.writeExact(directory,next,()->{live(request);if(action==LocalV2ClockAction.profile)request.profileOperation.profileWriteBoundary(expected,next);});
             completeRecord(directory);byte[] readback=vault.readExact(directory),retained=null;LocalV2StorageReceipt receipt=null;boolean adopted=false;
-            try{require(MessageDigest.isEqual(next,readback));live(request);retained=readback.clone();
+            try{require(MessageDigest.isEqual(next,readback));live(request);if(action==LocalV2ClockAction.profile)request.profileOperation.profileWriteBoundary(expected,next);retained=readback.clone();
                 receipt=new LocalV2StorageReceipt(this,request,readback);
                 request.processClock.stage(request.processLease,receipt,expected,next,sample,action);
                 synchronized(this){live(request);require(request.receipt==null);LocalSnapshotV2.wipe(request.currentBytes);
@@ -3532,14 +3536,17 @@ final class PlanetChildVault {
         }
         private synchronized void cancel(LocalV2Request request) throws Exception {own(request);request.cancelled=true;
             if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);
-            if(request.pinOperation!=null)request.pinOperation.revoke();wipeIdle(request);notifyAll();}
+            if(request.pinOperation!=null)request.pinOperation.revoke();if(request.profileOperation!=null)request.profileOperation.revoke();wipeIdle(request);notifyAll();}
         private void retire(LocalV2Request request) throws Exception {
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());LocalV2PinOperation operation;
             synchronized(this){own(request);require(!request.retiring);operation=request.pinOperation;
-                require(operation==null||operation.worker!=Thread.currentThread());request.retiring=true;request.cancelled=true;
+                require(operation==null||operation.worker!=Thread.currentThread());LocalV2ProfileOperation profile=request.profileOperation;
+                require(profile==null||profile.worker!=Thread.currentThread());request.retiring=true;request.cancelled=true;
+                if(profile!=null&&!profile.finished)profile.revoke();
                 if(operation!=null&&!operation.finished)operation.revoke();
                 while(request.workers>0||request.pinWorkers>0||request.pinCancelCalls>0||request.settleCalls>0||request.mainCalls>0||request.events>0)wait(10);}
             if(operation!=null&&operation.worker!=null){operation.worker.join();operation.joinCancel();}
+            if(request.profileOperation!=null&&request.profileOperation.worker!=null){request.profileOperation.worker.join();request.profileOperation.joinCancel();}
             final boolean[] cleaned={false};try{onMain(request,()->{
                     // Attempt every observer removal even if an earlier one
                     // throws; a timer must not retain the retired Activity.
@@ -4093,6 +4100,232 @@ final class PlanetChildVault {
             // Active original joins keep the binding retained; close cannot
             // manufacture retirement or expose capacity to a new invocation.
             if(worker==null){detach();closed=true;LocalSnapshotV2.wipe(target);}}
+    }
+    /** Structural first-profile transition only. Its output never grants a
+     * mutation: the fresh native owner producer below must sign/consume it. */
+    private static final class LocalV2InitialProfile {
+        private static String profileId(byte[] profile) throws Exception {
+            require(profile!=null&&profile.length>0&&profile.length<=65536);
+            String text=StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(profile)).toString();
+            ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(text);String id=ProtectedEnvelope.profile(p);require(p.index==text.length());return id;
+        }
+        private static byte[] create(LocalSnapshotV2 before,byte[] profile) throws Exception {
+            String id=profileId(profile);byte[] raw=before.copy(),registry=null,protectedBytes=null;
+            try{ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(raw,before.protectedStart,before.protectedEnd-before.protectedStart,StandardCharsets.UTF_8));
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);require(p.number(1,MAX_SAFE)==before.revision&&before.revision<MAX_SAFE);
+                p.field("mode",false);require("adult".equals(p.string()));p.field("selectionRevision",false);long selection=p.number(1,MAX_SAFE);
+                p.field("profileRevision",false);long revision=p.number(1,MAX_SAFE);require(selection==1&&revision==1);
+                p.field("policyChecksum",false);require(p.string().equals(before.policy.checksum));p.field("registryChecksum",false);p.string();p.field("registry",false);int start=p.index;
+                require(ProtectedEnvelope.registry(p,before.policy.version)==null);String empty="{\"schemaVersion\":1,\"policyVersion\":"+LocalSnapshotV2.quoted(before.policy.version)+",\"activeProfileId\":null,\"profiles\":[]}";
+                require(p.text.substring(start,p.index).equals(empty)&&before.journalRevision<MAX_SAFE);
+                registry=("{\"schemaVersion\":1,\"policyVersion\":"+LocalSnapshotV2.quoted(before.policy.version)+",\"activeProfileId\":"+LocalSnapshotV2.quoted(id)+",\"profiles\":["+new String(profile,StandardCharsets.UTF_8)+"]}").getBytes(StandardCharsets.UTF_8);
+                String prefix="{\"schemaVersion\":2,\"revision\":"+(before.revision+1)+",\"mode\":\"child\",\"selectionRevision\":2,\"profileRevision\":2,\"policyChecksum\":"+LocalSnapshotV2.quoted(before.policy.checksum)
+                    +",\"registryChecksum\":"+LocalSnapshotV2.quoted(digest(registry))+",\"registry\":"+new String(registry,StandardCharsets.UTF_8);
+                // Exact original PIN and clock bytes, including pending count,
+                // full debt and observed anchor, survive without any refund.
+                protectedBytes=(prefix+",\"pin\":"+new String(raw,before.pinStart,before.protectedEnd-before.pinStart,StandardCharsets.UTF_8)).getBytes(StandardCharsets.UTF_8);
+                byte[] result=LocalSnapshotV2.wire(protectedBytes,before.policy,before.journalRevision+1,before.revision+1,before.pinRevision,before.credentialId,
+                    before.count,before.pendingAttemptId,before.savedCooldownMs,before.lastObservedMs);
+                try(LocalSnapshotV2 checked=LocalSnapshotV2.decode(result,before.policy)){}catch(Throwable failure){LocalSnapshotV2.wipe(result);throw failure;}return result;
+            }finally{LocalSnapshotV2.wipe(raw);LocalSnapshotV2.wipe(registry);LocalSnapshotV2.wipe(protectedBytes);}
+        }
+        private static void validate(LocalSnapshotV2 before,LocalSnapshotV2 after) throws Exception {
+            byte[] raw=after.copy(),profile=null,expected=null;
+            try{ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(raw,after.protectedStart,after.protectedEnd-after.protectedStart,StandardCharsets.UTF_8));
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);p.number(1,MAX_SAFE);p.field("mode",false);require("child".equals(p.string()));
+                p.field("selectionRevision",false);p.number(1,MAX_SAFE);p.field("profileRevision",false);p.number(1,MAX_SAFE);p.field("policyChecksum",false);p.string();p.field("registryChecksum",false);p.string();
+                p.field("registry",false);p.field("schemaVersion",true);p.number(1,1);p.field("policyVersion",false);require(p.string().equals(before.policy.version));
+                p.field("activeProfileId",false);String id=p.string();p.field("profiles",false);p.token("[");int start=p.index;require(ProtectedEnvelope.profile(p).equals(id));
+                profile=p.text.substring(start,p.index).getBytes(StandardCharsets.UTF_8);p.token("]");p.token("}");expected=create(before,profile);
+                require(before.policy.version.equals(after.policy.version)&&before.policy.checksum.equals(after.policy.checksum)&&before.policy.maximumIterations==after.policy.maximumIterations
+                    &&Arrays.equals(before.policy.delays,after.policy.delays)&&MessageDigest.isEqual(expected,raw));
+            }finally{LocalSnapshotV2.wipe(raw);LocalSnapshotV2.wipe(profile);LocalSnapshotV2.wipe(expected);}
+        }
+    }
+    private enum LocalV2ProfilePhase { captured,confirming,owner,signed,dataPublishing,dataKnown,profilePublishing,profileKnown,closed,failed }
+    /** Cross-file concrete birth permission. Only the actual fresh owner
+     * operation below constructs it; neither P1 nor a caller boolean enters. */
+    static final class LocalV2ProfileBirthPermit {
+        private final LocalV2ProfileOperation original;
+        private LocalV2ProfileBirthPermit(LocalV2ProfileOperation original){this.original=original;}
+        private void exact(String identity,String nonce,String checksum) throws Exception {
+            require(identity.equals(original.data.identity)&&nonce.equals(original.data.nonce)&&checksum.equals(original.data.checksum));original.boundary();
+        }
+        void consumeDataBirth(String identity,String nonce,String checksum) throws Exception {synchronized(original.writer){exact(identity,nonce,checksum);
+            require(original.phase==LocalV2ProfilePhase.signed&&!original.dataSpent&&original.publicationThread==Thread.currentThread());original.dataSpent=true;original.phase=LocalV2ProfilePhase.dataPublishing;}}
+        byte[] dataMarker(String identity,String nonce,String checksum) throws Exception {exact(identity,nonce,checksum);
+            return ("LP-LOCAL-V2-DATA-BIRTH\n"+identity+"\n"+nonce+"\n"+checksum+"\n"+digest(original.payload)+"\n").getBytes(StandardCharsets.US_ASCII);}
+        void dataBoundary(String identity,String nonce,String checksum) throws Exception {exact(identity,nonce,checksum);require(original.phase==LocalV2ProfilePhase.dataPublishing&&original.dataSpent);}
+        void dataBirthKnown(String identity,String nonce,String checksum) throws Exception {exact(identity,nonce,checksum);synchronized(original.writer){require(original.phase==LocalV2ProfilePhase.dataPublishing);original.phase=LocalV2ProfilePhase.dataKnown;}}
+        void dataReadback(String identity,String nonce,String checksum) throws Exception {exact(identity,nonce,checksum);
+            require(original.phase==LocalV2ProfilePhase.dataKnown||original.phase==LocalV2ProfilePhase.profilePublishing||original.phase==LocalV2ProfilePhase.profileKnown||original.phase==LocalV2ProfilePhase.closed);}
+        void dataBirthUnknown(){synchronized(original.writer){original.phase=LocalV2ProfilePhase.failed;original.writer.unknown(original.request);}}
+    }
+    /** Mutation result only, never child/content/package/Gate admission. */
+    private static final class LocalV2ProfileCompletion {
+        final String profileId,snapshotChecksum,dataChecksum;final long revision;
+        private LocalV2ProfileCompletion(LocalV2ProfileOperation operation) throws Exception {
+            require(operation.phase==LocalV2ProfilePhase.closed&&operation.delivered&&operation.request.retired&&operation.request.detached
+                &&!operation.cancelled&&!operation.request.sealed&&!operation.worker.isAlive()&&operation.cancelWorker==null);
+            profileId=LocalV2InitialProfile.profileId(operation.profile);snapshotChecksum=digest(operation.next);dataChecksum=operation.data.checksum;
+            try(LocalSnapshotV2 record=LocalSnapshotV2.decode(operation.next,operation.request.policy)){revision=record.revision;}
+        }
+    }
+    private interface LocalV2ProfileRecipient {void published(LocalV2ProfileOperation original) throws Exception;}
+    /** Fresh original setup operation. Explicit complete profile proposals are
+     * data only: native-generated ID, actual native confirmation and fresh
+     * auth-per-use device-owner signature authorize the exact P2 transition. */
+    private static final class LocalV2ProfileOperation {
+        final LocalV2Writer writer;final LocalV2Request request;final String id,locale;private final byte[] profile,nonce;
+        private byte[] before,next,payload,signature,keyEncoding;private String beforeChecksum;
+        private java.security.Signature signing;private java.security.PublicKey publicKey;private android.hardware.biometrics.BiometricPrompt.CryptoObject crypto;
+        private android.os.CancellationSignal signal;private volatile LocalV2ProfilePhase phase=LocalV2ProfilePhase.captured;
+        private volatile boolean confirmed,uiJoined,promptOutstanding,ownerReturned,delivered,dataSpent,cancelled,cancelIssued,finished,completionConsumed;
+        private Thread worker,settler,cancelWorker,publicationThread;private LocalV2ProfileCompletion completion;
+        private PlanetChildDataStore.LocalV2BirthPlan data;private PlanetChildDataStore.LocalV2BirthReceipt birth;
+        private final LocalV2ProfileBirthPermit permit;private android.app.Dialog dialog;
+        private android.view.ViewTreeObserver.OnWindowFocusChangeListener focusObserver;private volatile boolean focusSeen,dismissing;
+        private android.app.Application.ActivityLifecycleCallbacks closingLifecycle;private android.content.BroadcastReceiver closingScreen;private Runnable closingExpiry;
+        private LocalV2ProfileOperation(LocalV2Writer writer,LocalV2Request request,byte[] proposal) throws Exception {
+            require(writer!=null&&request!=null&&proposal!=null&&proposal.length>0&&proposal.length<=65536&&request.pinOperation==null&&request.profileOperation==null);
+            this.writer=writer;this.request=request;LocalV2InitialProfile.profileId(proposal);String text=new String(proposal,StandardCharsets.UTF_8);
+            nonce=new byte[32];new java.security.SecureRandom().nextBytes(nonce);id=LocalV2PinOperation.hex(nonce);
+            ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(text);p.field("id",true);int from=p.index;p.string();int to=p.index;
+            profile=(text.substring(0,from)+LocalSnapshotV2.quoted("child-"+id.substring(0,32))+text.substring(to)).getBytes(StandardCharsets.UTF_8);LocalV2InitialProfile.profileId(profile);
+            locale=new org.json.JSONObject(new String(profile,StandardCharsets.UTF_8)).getString("locale");permit=new LocalV2ProfileBirthPermit(this);
+            synchronized(writer){writer.live(request);request.profileOperation=this;request.processClock.claimPin(request.processLease,id,this);}
+        }
+        private static LocalV2ProfileOperation start(PlanetChildVault vault,android.app.Activity host,LocalSnapshotV2Policy policy,byte[] proposal,long timeout,LocalV2ProfileRecipient recipient) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&recipient!=null&&proposal!=null);byte[] owned=proposal.clone();LocalV2Writer writer=new LocalV2Writer(vault);
+            LocalV2Request request=writer.request(host,policy,timeout);LocalV2ProfileOperation operation;
+            try{operation=new LocalV2ProfileOperation(writer,request,owned);}catch(Throwable failure){writer.unknown(request);new Thread(()->{try{writer.retire(request);}catch(Exception ignored){}},"planet-profile-capture-cleanup").start();throw failure;}
+            finally{LocalSnapshotV2.wipe(owned);}synchronized(writer){request.pinWorkers++;operation.worker=new Thread(()->operation.run(recipient),"planet-local-v2-profile");operation.worker.start();}
+            operation.settler=new Thread(operation::settle,"planet-local-v2-profile-settle");operation.settler.start();return operation;
+        }
+        private void live() throws Exception {synchronized(writer){writer.live(request);require(request.profileOperation==this&&!cancelled&&!Thread.currentThread().isInterrupted());}}
+        private void revoke(){synchronized(writer){cancelled=true;if(signal==null||cancelIssued||finished&&!promptOutstanding)return;cancelIssued=true;request.pinCancelCalls++;
+            cancelWorker=new Thread(()->{try{signal.cancel();}catch(Throwable failure){writer.unknown(request);}finally{synchronized(writer){request.pinCancelCalls--;writer.notifyAll();}}},"planet-profile-owner-cancel");cancelWorker.start();writer.notifyAll();}}
+        private boolean ownedOwnerPause(){return phase==LocalV2ProfilePhase.owner&&promptOutstanding&&!ownerReturned&&!cancelled&&!finished&&signal!=null&&crypto!=null&&crypto.getSignature()==signing;}
+        private void joinCancel() throws Exception {Thread original;synchronized(writer){original=cancelWorker;}if(original!=null){original.join();synchronized(writer){require(request.pinCancelCalls==0);cancelWorker=null;}}}
+        private static String confirmationValue(org.json.JSONObject profile,String field,boolean ru) throws Exception {
+            if(!profile.has(field))return ru?"не задано":"not set";
+            Object value=profile.get(field);
+            if(value==org.json.JSONObject.NULL)return field.equals("allowedTopics")?(ru?"Все темы, кроме запрещённых":"All topics except blocked topics"):(ru?"не задано":"not set");
+            if(value instanceof Boolean)return ((Boolean)value)?(ru?"Включено":"On"):(ru?"Выключено":"Off");
+            if(value instanceof org.json.JSONArray){org.json.JSONArray topics=(org.json.JSONArray)value;if(topics.length()==0)return ru?"Нет":"None";
+                java.util.ArrayList<String> names=new java.util.ArrayList<>();for(int i=0;i<topics.length();i++)names.add(topicText(topics.getString(i),ru));return android.text.TextUtils.join(", ",names);}
+            String raw=String.valueOf(value);
+            if(field.equals("locale"))return raw.equals("ru")?(ru?"Русский":"Russian"):(ru?"Английский":"English");
+            if(field.equals("readingLevel")){if(raw.equals("plain"))return ru?"Простой текст":"Simple text";if(raw.equals("developing"))return ru?"Учится читать":"Developing reader";return ru?"Свободно читает":"Fluent reader";}
+            if(field.equals("motion"))return raw.equals("calm")?(ru?"Спокойное движение":"Calm motion"):(ru?"Как в настройках устройства":"Use device settings");
+            if(field.equals("ageConfirmedAt"))return raw.replace('T',' ').replace("Z"," UTC");
+            return raw;
+        }
+        private static String topicText(String topic,boolean ru) throws Exception {
+            String[][] names={{"nature","Природа","Nature"},{"horror","Ужасы","Horror"},{"adventure","Приключения","Adventure"},{"violence","Насилие","Violence"}};
+            for(String[] item:names)if(item[0].equals(topic))return item[ru?1:2];
+            throw new PinKnownRefusal(); // No inferred label may authorize an unknown topic.
+        }
+        private void confirm() throws Exception {
+            phase=LocalV2ProfilePhase.confirming;writer.onMain(request,()->{try{live();dialog=new android.app.Dialog(request.activity);dialog.setCancelable(true);
+                android.widget.LinearLayout content=new android.widget.LinearLayout(request.activity);content.setOrientation(1);content.setPadding(24,24,24,24);
+                org.json.JSONObject p=new org.json.JSONObject(new String(profile,StandardCharsets.UTF_8));android.widget.TextView title=new android.widget.TextView(request.activity);
+                title.setText("ru".equals(locale)?"Подтвердите первый локальный профиль и детский режим":"Confirm the first local profile and child mode");content.addView(title);
+                String[][] fields={{"label","Имя","Label"},{"exactAge","Точный возраст","Exact age"},{"ageBand","Возрастная группа","Age band"},{"locale","Язык","Language"},{"ageConfirmedAt","Подтверждение возраста","Age confirmation"},
+                    {"readingLevel","Уровень чтения","Reading level"},{"allowedTopics","Разрешённые темы","Allowed topics"},{"blockedTopics","Закрытые темы","Blocked topics"},{"soundEnabled","Звук","Sound"},{"motion","Движение","Motion"},{"narrationEnabled","Озвучивание","Narration"},{"localeLocked","Фиксация языка","Language lock"}};
+                for(String[] field:fields){android.widget.TextView row=new android.widget.TextView(request.activity);row.setText(field["ru".equals(locale)?1:2]+": "+confirmationValue(p,field[0],"ru".equals(locale)));content.addView(row);}
+                android.widget.Button accept=new android.widget.Button(request.activity);accept.setText("ru".equals(locale)?"Подтвердить профиль":"Confirm profile");accept.setFilterTouchesWhenObscured(true);
+                accept.setOnClickListener(v->{synchronized(writer){try{live();require(phase==LocalV2ProfilePhase.confirming&&!confirmed&&dialog!=null&&dialog.isShowing()&&dialog.getWindow().getDecorView().hasWindowFocus());confirmed=true;writer.notifyAll();}catch(Exception failure){revoke();}}});content.addView(accept);android.widget.ScrollView scroll=new android.widget.ScrollView(request.activity){public boolean onFilterTouchEventForSecurity(android.view.MotionEvent e){
+                    if((e.getFlags()&(android.view.MotionEvent.FLAG_WINDOW_IS_OBSCURED|android.view.MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED))!=0){revoke();return false;}return super.onFilterTouchEventForSecurity(e);}};
+                scroll.addView(content);dialog.setContentView(scroll);dialog.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);dialog.setOnCancelListener(v->revoke());
+                dialog.setOnDismissListener(v->{synchronized(writer){uiJoined=true;if(!confirmed)cancelled=true;writer.notifyAll();}});dialog.show();
+                focusSeen=dialog.getWindow().getDecorView().hasWindowFocus();focusObserver=focused->{if(focused)focusSeen=true;else if(focusSeen&&!dismissing&&phase==LocalV2ProfilePhase.confirming)revoke();};
+                dialog.getWindow().getDecorView().getViewTreeObserver().addOnWindowFocusChangeListener(focusObserver);
+            }catch(Exception failure){revoke();}},false);
+            try{synchronized(writer){while(!confirmed&&!cancelled){writer.wait(25);live();}}}
+            finally{writer.onMain(request,()->{if(dialog!=null){dismissing=true;boolean shown=dialog.isShowing();dialog.setOnCancelListener(null);dialog.dismiss();if(!shown)uiJoined=true;}else uiJoined=true;},true);synchronized(writer){while(!uiJoined)writer.wait(10);}
+                writer.onMain(request,()->{if(dialog!=null){if(focusObserver!=null)dialog.getWindow().getDecorView().getViewTreeObserver().removeOnWindowFocusChangeListener(focusObserver);dialog.setOnDismissListener(null);dialog=null;}focusObserver=null;},true);}live();writer.host(request);
+        }
+        private byte[] message() throws Exception {StringBuilder value=new StringBuilder("LP-LOCAL-V2-FIRST-PROFILE\0v2\0");
+            for(String field:new String[]{id,"create-initial-local-profile",digest(before),digest(next),digest(profile),data.identity,data.nonce,data.checksum,
+                request.policy.version,request.policy.checksum,String.valueOf(request.policy.maximumIterations),Arrays.toString(request.policy.delays),
+                String.valueOf(request.began),String.valueOf(request.deadline),String.valueOf(System.identityHashCode(request.activity)),String.valueOf(System.identityHashCode(request.token)),
+                PinNativeOwnerAuthority.alias(request.activity),digest(keyEncoding),LocalV2PinOperation.hex(nonce)})value.append(field.length()).append(':').append(field);
+            return value.toString().getBytes(StandardCharsets.UTF_8);}
+        private void owner() throws Exception {
+            live();require(android.os.Build.VERSION.SDK_INT>=30);KeyguardManager guard=(KeyguardManager)request.activity.getSystemService(Context.KEYGUARD_SERVICE);require(guard!=null&&guard.isDeviceSecure());
+            KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);String alias=PinNativeOwnerAuthority.alias(request.activity);require(keys.containsAlias(alias));
+            PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,alias);signing=material.signature;publicKey=material.publicKey;keyEncoding=material.encoding;crypto=material.crypto;payload=message();signal=new android.os.CancellationSignal();phase=LocalV2ProfilePhase.owner;
+            writer.onMain(request,()->{try{live();promptOutstanding=true;new android.hardware.biometrics.BiometricPrompt.Builder(request.activity)
+                    .setTitle("ru".equals(locale)?"Подтвердите создание профиля":"Confirm profile creation").setSubtitle("ru".equals(locale)?"Используйте код блокировки устройства":"Use your device screen lock")
+                    .setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build().authenticate(crypto,signal,task->{synchronized(writer){request.events++;}
+                        if(!writer.main.post(()->{try{task.run();}finally{synchronized(writer){request.events--;writer.notifyAll();}}})){synchronized(writer){request.events--;writer.unknown(request);}}},
+                    new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(result);}
+                        public void onAuthenticationError(int error,CharSequence description){terminal(null);}});
+            }catch(Exception failure){promptOutstanding=false;revoke();}},false);
+            for(;;){synchronized(writer){if(!promptOutstanding&&request.events==0)break;writer.wait(25);}try{live();}catch(Exception failure){revoke();}}
+            joinCancel();live();require(ownerReturned);writer.host(request);signing.update(payload);signature=signing.sign();phase=LocalV2ProfilePhase.signed;verifyOwner();
+        }
+        private void terminal(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){synchronized(writer){if(writer.active!=request||request.detached)return;
+            if(!promptOutstanding){writer.unknown(request);return;}ownerReturned=result!=null&&result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL
+                &&result.getCryptoObject()==crypto&&crypto.getSignature()==signing;promptOutstanding=false;if(!ownerReturned)cancelled=true;writer.notifyAll();}}
+        private void verifyOwner() throws Exception {
+            require(ownerReturned&&signature!=null&&signature.length>=8&&signature.length<=80&&publicKey!=null&&keyEncoding!=null);
+            KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);String alias=PinNativeOwnerAuthority.alias(request.activity);require(keys.containsAlias(alias)&&keys.getKey(alias,null) instanceof java.security.PrivateKey);
+            java.security.cert.Certificate certificate=keys.getCertificate(alias);require(certificate!=null);byte[] current=certificate.getPublicKey().getEncoded();
+            byte[] expected=message();try{require(MessageDigest.isEqual(current,keyEncoding)&&MessageDigest.isEqual(expected,payload));java.security.Signature check=java.security.Signature.getInstance("SHA256withECDSA");
+                check.initVerify(publicKey);check.update(payload);require(check.verify(signature));}finally{LocalSnapshotV2.wipe(expected);LocalSnapshotV2.wipe(current);}
+        }
+        private void boundary() throws Exception {require(publicationThread==Thread.currentThread());if(phase==LocalV2ProfilePhase.closed){request.processClock.closedReadback(request.processLease,digest(next));require(!cancelled&&!request.sealed);}
+            else live();verifyOwner();require(beforeChecksum.equals(digest(before))&&request.profileOperation==this);}
+        private void profileWriteBoundary(byte[] expected,byte[] proposed) throws Exception {
+            require(phase==LocalV2ProfilePhase.profilePublishing&&dataSpent&&birth!=null&&worker==Thread.currentThread()&&uiJoined&&ownerReturned
+                &&beforeChecksum.equals(digest(expected))&&MessageDigest.isEqual(before,expected)&&MessageDigest.isEqual(next,proposed));boundary();birth.readback(permit);
+        }
+        private void run(LocalV2ProfileRecipient recipient){try{LocalV2StorageReceipt anchor=writer.reanchor(request);if(anchor!=null)writer.acknowledge(anchor);
+                synchronized(writer){live();before=request.currentBytes.clone();beforeChecksum=digest(before);}try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,request.policy)){next=LocalV2InitialProfile.create(old,profile);}
+                data=PlanetChildDataStore.localV2BirthPlan(writer.vault.context,id.substring(32));confirm();owner();writer.host(request);publicationThread=Thread.currentThread();writer.begin(request);
+                try{LocalV2StorageReceipt receipt=writer.vault.locked(directory->{boundary();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);
+                    try{require(MessageDigest.isEqual(actual,before));LocalV2ClockSample sample=request.processClock.sample(request.processLease,actual);
+                        // Fixed lock order: Vault native/file lock -> DataStore
+                        // native/file lock. Permit fences perform no Vault IO,
+                        // no recursive flock and no main-thread wait here.
+                        birth=PlanetChildDataStore.localV2Birth(data,permit);birth.readback(permit);phase=LocalV2ProfilePhase.profilePublishing;
+                        try(LocalSnapshotV2 old=LocalSnapshotV2.decode(actual,request.policy);LocalSnapshotV2 after=LocalSnapshotV2.decode(next,request.policy)){LocalV2InitialProfile.validate(old,after);}
+                        verifyOwner();return writer.publish(request,actual,next,directory,sample,LocalV2ClockAction.profile);
+                    }finally{LocalSnapshotV2.wipe(actual);}});writer.acknowledge(receipt);phase=LocalV2ProfilePhase.profileKnown;birth.readback(permit);
+                }finally{writer.finish(request);}writer.host(request);live();recipient.published(this);live();delivered=true;
+            }catch(Throwable failure){if(dataSpent||request.mutationStarted)writer.unknown(request);else try{writer.cancel(request);}catch(Exception ignored){}phase=LocalV2ProfilePhase.failed;revoke();}
+            finally{if(promptOutstanding)revoke();synchronized(writer){while(promptOutstanding||request.events>0)try{writer.wait(10);}catch(InterruptedException interrupted){revoke();}}
+                try{joinCancel();}catch(Exception failure){writer.unknown(request);}synchronized(writer){finished=true;request.pinWorkers--;writer.notifyAll();}}
+        }
+        private void closingObservers(boolean install) throws Exception {
+            java.util.concurrent.FutureTask<Void> task=new java.util.concurrent.FutureTask<>(()->{
+                android.app.Application app=(android.app.Application)writer.vault.context;
+                if(install){closingLifecycle=new android.app.Application.ActivityLifecycleCallbacks(){public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}
+                    public void onActivityStarted(android.app.Activity a){}public void onActivityResumed(android.app.Activity a){}public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}
+                    public void onActivityPaused(android.app.Activity a){if(a==request.activity)cancelled=true;}public void onActivityStopped(android.app.Activity a){if(a==request.activity)cancelled=true;}
+                    public void onActivityDestroyed(android.app.Activity a){if(a==request.activity)cancelled=true;}};app.registerActivityLifecycleCallbacks(closingLifecycle);
+                    closingScreen=new android.content.BroadcastReceiver(){public void onReceive(Context c,android.content.Intent i){cancelled=true;}};
+                    android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
+                    if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(closingScreen,filter,Context.RECEIVER_NOT_EXPORTED);else writer.vault.context.registerReceiver(closingScreen,filter);
+                    closingExpiry=()->cancelled=true;require(writer.main.postDelayed(closingExpiry,Math.max(1,request.deadline-SystemClock.elapsedRealtime())));
+                }else{try{if(closingLifecycle!=null)app.unregisterActivityLifecycleCallbacks(closingLifecycle);}finally{try{if(closingScreen!=null)writer.vault.context.unregisterReceiver(closingScreen);}
+                    finally{if(closingExpiry!=null)writer.main.removeCallbacks(closingExpiry);closingLifecycle=null;closingScreen=null;closingExpiry=null;}}}return null;
+            });require(writer.main.post(task));boolean interrupted=false;for(;;)try{task.get();break;}catch(InterruptedException ignored){interrupted=true;}
+            if(interrupted){Thread.currentThread().interrupt();throw new PinKnownRefusal();}
+        }
+        private void settle(){try{worker.join();joinCancel();live();require(delivered&&phase==LocalV2ProfilePhase.profileKnown&&request.receipt==null&&!request.unacknowledgedMutation);
+                writer.host(request);publicationThread=Thread.currentThread();birth.readback(permit);closingObservers(true);writer.retire(request);phase=LocalV2ProfilePhase.closed;
+                java.util.concurrent.FutureTask<Boolean> current=new java.util.concurrent.FutureTask<>(()->!cancelled&&!request.activity.isFinishing()&&!request.activity.isDestroyed()&&request.activity.hasWindowFocus()
+                    &&request.activity.getWindow().getDecorView().getWindowToken()==request.token);require(writer.main.post(current));require(current.get());
+                writer.vault.locked(directory->{boundary();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{require(MessageDigest.isEqual(actual,next));birth.readback(permit);boundary();return null;}finally{LocalSnapshotV2.wipe(actual);}});
+                completion=new LocalV2ProfileCompletion(this);
+            }catch(Throwable failure){revoke();if(!request.retired)try{writer.cancel(request);writer.retire(request);}catch(Throwable ignored){writer.unknown(request);}}
+            finally{try{closingObservers(false);}catch(Throwable failure){completion=null;cancelled=true;}if(data!=null)data.close();LocalSnapshotV2.wipe(before);LocalSnapshotV2.wipe(next);LocalSnapshotV2.wipe(payload);LocalSnapshotV2.wipe(signature);LocalSnapshotV2.wipe(keyEncoding);LocalSnapshotV2.wipe(profile);LocalSnapshotV2.wipe(nonce);}}
+        private LocalV2ProfileCompletion completion() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()&&Thread.currentThread()!=worker&&Thread.currentThread()!=settler);settler.join();
+            synchronized(writer){boolean available=!completionConsumed;completionConsumed=true;require(available&&completion!=null&&!cancelled&&!request.sealed);
+                request.processClock.closedReadback(request.processLease,completion.snapshotChecksum);return completion;}}
     }
     private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
 }

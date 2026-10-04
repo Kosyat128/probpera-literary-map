@@ -326,3 +326,34 @@ final class PlanetChildLocalGateHostRuntimeTests: XCTestCase {
         XCTAssertTrue(value)
     }
 }
+
+/** First-profile transition leaves. Authored NOT_COMPILED/NOT_RUN; these
+ * canonical data cases establish no OS owner or child-data admission. */
+final class PlanetChildLocalProfileBootstrapRuntimeTests: XCTestCase {
+    private func profile(_ locale: String="en") -> Data { Data("{\"id\":\"reader\",\"label\":\"Native Reader\",\"exactAge\":9,\"ageBand\":\"9-11\",\"locale\":\"\(locale)\",\"ageConfirmedAt\":\"2026-10-01T12:00:00.000Z\",\"readingLevel\":null,\"allowedTopics\":[\"nature\"],\"blockedTopics\":[\"horror\"],\"soundEnabled\":false,\"motion\":\"calm\",\"narrationEnabled\":false,\"localeLocked\":true}".utf8) }
+    func testFirstProfilePreservesOriginalVerifierPendingCountWholeDebtAndClock() throws {
+        let old=try PlanetChildLocalProfileRuntimeFixture.enrolled(),next=try PlanetChildLocalProfileRuntimeFixture.transition(old,profile:profile("ru"))
+        XCTAssertEqual(try PlanetChildLocalProfileRuntimeFixture.pinTail(old),try PlanetChildLocalProfileRuntimeFixture.pinTail(next))
+        let value=try PlanetChildLocalProfileRuntimeFixture.inspect(next);XCTAssertEqual(value.root,6);XCTAssertEqual(value.pin,4);XCTAssertEqual(value.journal,5)
+        XCTAssertEqual(value.count,2);XCTAssertEqual(value.debt,250);XCTAssertEqual(value.observed,17);XCTAssertEqual(value.pending,String(repeating:"f",count:64));XCTAssertEqual(value.profile,"reader");XCTAssertEqual(value.locale,"ru")
+    }
+    func testUnenrolledSeedAndAlreadySelectedRegistryCannotCreateFirstProfile() throws {
+        let seed=try PlanetChildLocalProfileRuntimeFixture.seed();XCTAssertThrowsError(try PlanetChildLocalProfileRuntimeFixture.transition(seed,profile:profile()))
+        let first=try PlanetChildLocalProfileRuntimeFixture.transition(PlanetChildLocalProfileRuntimeFixture.enrolled(),profile:profile());XCTAssertThrowsError(try PlanetChildLocalProfileRuntimeFixture.transition(first,profile:profile()))
+    }
+    func testMismatchedAgeUnknownDuplicateAndInvalidUtf8CannotEnterProfileTransition() throws {
+        let text=String(decoding:profile(),as:UTF8.self)
+        for invalid in [text.replacingOccurrences(of:"\"9-11\"",with:"\"6-8\""),text.replacingOccurrences(of:"\"locale\":\"en\"",with:"\"locale\":\"de\""),text.replacingOccurrences(of:"\"label\":",with:"\"extra\":true,\"label\":"),text.replacingOccurrences(of:"\"exactAge\":9",with:"\"exactAge\":9,\"exactAge\":9")] { XCTAssertThrowsError(try PlanetChildLocalProfileRuntimeFixture.profileId(Data(invalid.utf8))) }
+        XCTAssertThrowsError(try PlanetChildLocalProfileRuntimeFixture.profileId(Data([0xc3,0x28])))
+    }
+    func testRevisionOverflowAndOtherwiseValidRefundedPinSnapshotCannotPublish() throws {
+        let edge=try PlanetChildLocalProfileRuntimeFixture.enrolled(root:9007199254740991);XCTAssertThrowsError(try PlanetChildLocalProfileRuntimeFixture.transition(edge,profile:profile()))
+        let old=try PlanetChildLocalProfileRuntimeFixture.enrolled(),next=try PlanetChildLocalProfileRuntimeFixture.transition(old,profile:profile()),refund=try PlanetChildLocalProfileRuntimeFixture.refunded(next)
+        XCTAssertThrowsError(try PlanetChildLocalProfileRuntimeFixture.validate(old,refund));XCTAssertEqual(try PlanetChildLocalProfileRuntimeFixture.inspect(next).count,2)
+    }
+    func testNativeGeneratedIdReplacesProposalIdWithoutChangingParentConfirmedSettings() throws {
+        let original=profile("ru"),id="child-0123456789abcdef0123456789abcdef",native=try PlanetChildLocalProfileRuntimeFixture.nativeProfile(original,id:id)
+        XCTAssertEqual(try PlanetChildLocalProfileRuntimeFixture.profileId(native),id)
+        XCTAssertEqual(String(decoding:native,as:UTF8.self),String(decoding:original,as:UTF8.self).replacingOccurrences(of:"\"id\":\"reader\"",with:"\"id\":\"\(id)\""))
+    }
+}

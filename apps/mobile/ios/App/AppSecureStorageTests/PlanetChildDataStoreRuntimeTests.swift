@@ -94,4 +94,33 @@ final class PlanetChildDataStoreRuntimeTests: XCTestCase {
         }
         if !["corrupt","missing-key","missing-cipher"].contains(phase) { try store.close(); XCTAssertThrowsError(try store.operation(lease,timeoutMs:15000)) }
     }
+    private func bootstrapRunId(_ suffix: String) throws -> String {
+        let environment=ProcessInfo.processInfo.environment,runId=try XCTUnwrap(environment["LITERARY_PLANET_CHILD_DATA_TEST_RUN_ID"])
+        guard environment["LITERARY_PLANET_CHILD_DATA_TEST_PHASE"]=="local-v2-bootstrap",runId.range(of:"\\A[a-f0-9]{32}\\z",options:.regularExpression) != nil else { throw PlanetChildDataStore.Failure.unavailable };return String(runId.prefix(30))+suffix
+    }
+    private func bootstrapFiles(_ runId: String) throws -> (directory: URL,record: URL,query: [String:Any]) {
+        let parent=try FileManager.default.url(for:.applicationSupportDirectory,in:.userDomainMask,appropriateFor:nil,create:true).resolvingSymlinksInPath().standardizedFileURL
+        let name="literary-planet-child-data-v1-synthetic-"+runId,directory=parent.appendingPathComponent(name,isDirectory:true),bundle=try XCTUnwrap(Bundle.main.bundleIdentifier);XCTAssertEqual(bundle,"ru.probpera.literaryplanet")
+        return (directory,directory.appendingPathComponent("snapshot-v1"),[kSecClass as String:kSecClassGenericPassword,kSecAttrService as String:bundle+"."+name,kSecAttrAccount as String:"child-data-aes-v1",kSecAttrSynchronizable as String:kSecAttrSynchronizableAny])
+    }
+    func testLocalV2DataBirthWithoutOriginalOwnerPermitHasNoKeyOrRecordFootprint() throws {
+        let id=try bootstrapRunId("b1"),files=try bootstrapFiles(id);XCTAssertFalse(FileManager.default.fileExists(atPath:files.directory.path));XCTAssertEqual(SecItemCopyMatching(files.query as CFDictionary,nil),errSecItemNotFound)
+        let plan=try PlanetChildDataStore.fixtureLocalV2BirthPlan(runId:id,nonce:id);defer { plan.close() };XCTAssertThrowsError(try PlanetChildDataStore.localV2Birth(plan,permit:nil))
+        XCTAssertFalse(FileManager.default.fileExists(atPath:files.directory.path));XCTAssertEqual(SecItemCopyMatching(files.query as CFDictionary,nil),errSecItemNotFound)
+    }
+    func testLocalV2ExistingOnlyMissingStoreCannotCreateAesKeyOrSnapshot() throws {
+        let id=try bootstrapRunId("b2"),files=try bootstrapFiles(id);XCTAssertFalse(FileManager.default.fileExists(atPath:files.directory.path));XCTAssertEqual(SecItemCopyMatching(files.query as CFDictionary,nil),errSecItemNotFound)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2ExistingOnly(runId:id));XCTAssertFalse(FileManager.default.fileExists(atPath:files.record.path));XCTAssertEqual(SecItemCopyMatching(files.query as CFDictionary,nil),errSecItemNotFound)
+    }
+    func testLocalV2ExistingOnlyOrphanBirthClaimRemainsFailClosedAndUnmodified() throws {
+        let id=try bootstrapRunId("b3"),files=try bootstrapFiles(id);XCTAssertFalse(FileManager.default.fileExists(atPath:files.directory.path));try FileManager.default.createDirectory(at:files.directory,withIntermediateDirectories:false)
+        let claim=files.directory.appendingPathComponent("local-v2-birth.claim"),original=Data("unknown-original-key-birth-claim-retained".utf8);try original.write(to:claim,options:.withoutOverwriting)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2ExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:claim),original);XCTAssertFalse(FileManager.default.fileExists(atPath:files.record.path));XCTAssertEqual(SecItemCopyMatching(files.query as CFDictionary,nil),errSecItemNotFound)
+    }
+    func testLocalV2ExistingOnlyMissingAesDoesNotRebirthOrReplaceOriginalCipher() throws {
+        let id=try bootstrapRunId("b4"),files=try bootstrapFiles(id);XCTAssertFalse(FileManager.default.fileExists(atPath:files.directory.path));let fixture=try PlanetChildDataStore.synthetic(runId:id);try fixture.close()
+        let original=try Data(contentsOf:files.record);XCTAssertEqual(SecItemDelete(files.query as CFDictionary),errSecSuccess)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2ExistingOnly(runId:id));XCTAssertEqual(SecItemCopyMatching(files.query as CFDictionary,nil),errSecItemNotFound);XCTAssertEqual(try Data(contentsOf:files.record),original)
+    }
+
 }

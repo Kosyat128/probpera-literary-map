@@ -106,7 +106,7 @@ final class PlanetChildDataStore {
     private init(runId: String?) throws {
         guard let bundle = Bundle.main.bundleIdentifier, bundle == "ru.probpera.literaryplanet" else { throw Failure.unavailable }
         name = "literary-planet-child-data-v1" + (runId.map { "-synthetic-" + $0 } ?? ""); identity = bundle + "." + name
-        try locked { try initialize($0) }
+        try locked { if runId==nil { try existingOnly($0) } else { try initialize($0) } }
     }
     private static func require(_ value: Bool) throws { guard value else { throw Failure.unavailable } }
     private static func identifier(_ value: String) -> Bool { value.range(of: "\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z", options: .regularExpression) != nil }
@@ -172,10 +172,10 @@ final class PlanetChildDataStore {
     }
     private func query() -> [String: Any] { [kSecClass as String:kSecClassGenericPassword, kSecAttrService as String:identity, kSecAttrAccount as String:"child-data-aes-v1", kSecAttrSynchronizable as String:false] }
     private func key(create: Bool, directory: URL) throws -> SymmetricKey {
-        var request = query(); request[kSecReturnData as String] = true; request[kSecReturnAttributes as String] = true; request[kSecMatchLimit as String] = kSecMatchLimitOne
+        var request = query(); request[kSecAttrSynchronizable as String] = kSecAttrSynchronizableAny; request[kSecReturnData as String] = true; request[kSecReturnAttributes as String] = true; request[kSecMatchLimit as String] = kSecMatchLimitAll
         var result: CFTypeRef?; let status = SecItemCopyMatching(request as CFDictionary, &result)
         if status == errSecSuccess {
-            guard let item = result as? [String:Any], var bytes = item[kSecValueData as String] as? Data, bytes.count == 32,
+            guard !create, let rows = result as? [[String:Any]], rows.count == 1, let item=rows.first, (item[kSecAttrSynchronizable as String] as? Bool) != true, var bytes = item[kSecValueData as String] as? Data, bytes.count == 32,
                   item[kSecAttrAccessible as String] as? String == kSecAttrAccessibleWhenUnlockedThisDeviceOnly as String else { throw Failure.unavailable }
             defer { bytes.resetBytes(in: 0..<bytes.count) }; return SymmetricKey(data: bytes)
         }
@@ -197,6 +197,7 @@ final class PlanetChildDataStore {
         else { try Self.require(errno == ENOENT) }; return file
     }
     private func initialize(_ directory: URL) throws {
+        try Self.require(!FileManager.default.fileExists(atPath:birthMarker(directory).path))
         let file = try record(directory), staged = try record(directory, suffix: ".new"), hasFile = FileManager.default.fileExists(atPath:file.path), hasStaged = FileManager.default.fileExists(atPath:staged.path)
         var request = query(); request[kSecReturnData as String] = false; let status = SecItemCopyMatching(request as CFDictionary, nil)
         if hasFile || hasStaged || status != errSecItemNotFound {
@@ -350,6 +351,94 @@ final class PlanetChildDataStore {
                     else { try PlanetChildDataStore.require(Array("\"\\/bfnrt".utf8).contains(escape)) } } }
             var encoded = Data(bytes[start..<position]); defer { encoded.resetBytes(in:0..<encoded.count) }
             guard let text = try JSONSerialization.jsonObject(with:encoded,options:.fragmentsAllowed) as? String else { throw Failure.unavailable }; return text
+        }
+    }
+    /** Concrete native separate-key birth metadata, never a partition or
+     * content/package admission. Only the fresh owner permit can consume it. */
+    final class LocalV2BirthPlan {
+        let identity: String,nonce: String,checksum: String
+        fileprivate let store: PlanetChildDataStore
+        fileprivate var plain: Data
+        fileprivate var used=false,closed=false
+        fileprivate init(_ store: PlanetChildDataStore,_ nonce: String) throws {
+            try PlanetChildDataStore.require(nonce.range(of:"\\A[a-f0-9]{32}\\z",options:.regularExpression) != nil);self.store=store;identity=store.identity;self.nonce=nonce
+            let state=State();state.nonce=nonce;defer { state.wipe() };plain=try PlanetChildDataStore.encode(state);checksum=PlanetChildDataStore.digest(plain)
+        }
+        func close() { closed=true;plain.resetBytes(in:0..<plain.count) }
+    }
+    final class LocalV2BirthReceipt {
+        private let original: LocalV2BirthPlan,marker: Data
+        fileprivate init(_ original: LocalV2BirthPlan,_ marker: Data) { self.original=original;self.marker=Data(Array(marker)) }
+        func readback(_ permit: LocalV2ProfileDataBirthPermit) throws {
+            try original.store.locked { directory in try permit.dataReadback(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
+                try original.store.exactBirth(directory,plan:original,marker:marker) }
+        }
+    }
+    static func localV2BirthPlan(nonce: String) throws -> LocalV2BirthPlan { try LocalV2BirthPlan(PlanetChildDataStore(runId:nil,deferredBirth:true),nonce) }
+    static func fixtureLocalV2BirthPlan(runId: String,nonce: String) throws -> LocalV2BirthPlan {
+        #if DEBUG
+        try require(runId.range(of:"\\A[a-f0-9]{32}\\z",options:.regularExpression) != nil);return try LocalV2BirthPlan(PlanetChildDataStore(runId:runId,deferredBirth:true),nonce)
+        #else
+        throw Failure.unavailable
+        #endif
+    }
+    static func fixtureLocalV2ExistingOnly(runId: String) throws -> PlanetChildDataStore {
+        let plan=try fixtureLocalV2BirthPlan(runId:runId,nonce:runId);defer { plan.close() };try plan.store.locked { try plan.store.existingOnly($0) };return plan.store
+    }
+    private init(runId: String?,deferredBirth: Bool) throws {
+        guard deferredBirth,let bundle=Bundle.main.bundleIdentifier,bundle=="ru.probpera.literaryplanet" else { throw Failure.unavailable }
+        if runId != nil {
+            #if DEBUG
+            try Self.require(runId!.range(of:"\\A[a-f0-9]{32}\\z",options:.regularExpression) != nil)
+            #else
+            throw Failure.unavailable
+            #endif
+        }
+        name="literary-planet-child-data-v1"+(runId.map { "-synthetic-"+$0 } ?? "");identity=bundle+"."+name
+    }
+    private func existingOnly(_ directory: URL) throws {
+        let base=try record(directory),staged=try record(directory,suffix:".new")
+        try Self.require(FileManager.default.fileExists(atPath:base.path) && !FileManager.default.fileExists(atPath:staged.path))
+        _ = try key(create:false,directory:directory);let state=try read(directory);defer { state.wipe() }
+    }
+    private func birthMarker(_ directory: URL) throws -> URL {
+        let file=directory.appendingPathComponent("local-v2-birth.claim");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file
+    }
+    private func exactBirth(_ directory: URL,plan: LocalV2BirthPlan,marker: Data) throws {
+        try existingOnly(directory);let file=try birthMarker(directory),fd=Darwin.open(file.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC);try Self.require(fd>=0);defer { Darwin.close(fd) }
+        var opened=stat(),named=stat();try Self.require(fstat(fd,&opened)==0 && lstat(file.path,&named)==0 && opened.st_mode & mode_t(S_IFMT)==mode_t(S_IFREG)
+            && opened.st_ino==named.st_ino && opened.st_dev==named.st_dev && opened.st_size==off_t(marker.count) && marker.count<=4096)
+        var actual=Data(count:marker.count);defer { actual.resetBytes(in:0..<actual.count) }
+        try actual.withUnsafeMutableBytes { raw in var at=0;while at<raw.count { let count=Darwin.read(fd,raw.baseAddress!.advanced(by:at),raw.count-at);try Self.require(count>0);at+=count } }
+        try Self.require(actual==marker);let state=try read(directory);defer { state.wipe() };var bytes=try Self.encode(state);defer { bytes.resetBytes(in:0..<bytes.count) }
+        try Self.require(state.generation==0 && state.scope==nil && state.entries.isEmpty && state.nonce==plan.nonce && bytes==plan.plain && Self.digest(bytes)==plan.checksum)
+    }
+    static func localV2Birth(_ original: LocalV2BirthPlan,permit: LocalV2ProfileDataBirthPermit?) throws -> LocalV2BirthReceipt {
+        guard let permit else { throw Failure.unavailable }
+        let store=original.store
+        return try store.locked { directory in
+            try Self.require(!original.closed && !original.used && Self.digest(original.plain)==original.checksum);original.used=true
+            try permit.consumeDataBirth(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
+            var marker=try permit.dataMarker(identity:original.identity,nonce:original.nonce,checksum:original.checksum);defer { marker.resetBytes(in:0..<marker.count) }
+            do {
+                var query=store.query();query[kSecAttrSynchronizable as String]=kSecAttrSynchronizableAny
+                let status=SecItemCopyMatching(query as CFDictionary,nil),base=try store.record(directory),staged=try store.record(directory,suffix:".new"),claim=try store.birthMarker(directory)
+                try Self.require(status==errSecItemNotFound && !FileManager.default.fileExists(atPath:base.path) && !FileManager.default.fileExists(atPath:staged.path) && !FileManager.default.fileExists(atPath:claim.path))
+                // Durable exclusive claim precedes SecItemAdd. Any unknown add,
+                // key/readback/file outcome remains spent without repair.
+                let fd=Darwin.open(claim.path,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC,mode_t(S_IRUSR|S_IWUSR));try Self.require(fd>=0)
+                do { try FileManager.default.setAttributes([.protectionKey:FileProtectionType.complete],ofItemAtPath:claim.path)
+                    try marker.withUnsafeBytes { raw in var at=0;while at<raw.count { try permit.dataBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
+                        let count=Darwin.write(fd,raw.baseAddress!.advanced(by:at),raw.count-at);try Self.require(count>0);at+=count } };try Self.require(Darwin.fsync(fd)==0);Darwin.close(fd)
+                } catch { Darwin.close(fd);throw error }
+                let parent=Darwin.open(directory.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC);try Self.require(parent>=0)
+                let sync=Darwin.fsync(parent);Darwin.close(parent);try Self.require(sync==0)
+                try permit.dataBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum);_ = try store.key(create:true,directory:directory)
+                try permit.dataBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
+                let state=try Self.decode(original.plain);defer { state.wipe() };try store.write(directory,state:state) { try permit.dataBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum) }
+                try store.exactBirth(directory,plan:original,marker:marker);try permit.dataBirthKnown(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
+                return LocalV2BirthReceipt(original,marker)
+            } catch { store.closed=true;permit.dataBirthUnknown();throw error }
         }
     }
 }

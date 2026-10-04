@@ -141,7 +141,7 @@ final class PlanetChildDataStore {
             && context.getPackageName().matches("ru\\.probpera\\.literaryplanet(?:\\.dev|\\.rustore)?"));
         name = "literary-planet-child-data-v1" + (runId == null ? "" : "-synthetic-" + runId);
         identity = context.getPackageName() + "." + name;
-        locked(directory -> { initialize(directory); return null; });
+        locked(directory -> { if(runId==null)existingOnly(directory);else initialize(directory); return null; });
     }
     private static void require(boolean condition) throws Unavailable { if (!condition) throw new Unavailable(); }
     private static boolean identifier(String value) { return value != null && value.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"); }
@@ -218,14 +218,18 @@ final class PlanetChildDataStore {
     }
     private SecretKey key(boolean create, File directory) throws Exception {
         KeyStore store=KeyStore.getInstance("AndroidKeyStore"); store.load(null); String alias=identity+".aes";
-        if(store.containsAlias(alias)) { java.security.Key key=store.getKey(alias,null); require(key instanceof SecretKey); return (SecretKey) key; }
+        if(store.containsAlias(alias)) { require(!create); java.security.Key key=store.getKey(alias,null); require(key instanceof SecretKey && "AES".equals(key.getAlgorithm()) && key.getEncoded()==null);
+            android.security.keystore.KeyInfo info=(android.security.keystore.KeyInfo)javax.crypto.SecretKeyFactory.getInstance("AES","AndroidKeyStore").getKeySpec((SecretKey)key,android.security.keystore.KeyInfo.class);
+            require(info.getKeySize()==256 && info.getPurposes()==(KeyProperties.PURPOSE_ENCRYPT|KeyProperties.PURPOSE_DECRYPT)
+                && info.getKeystoreAlias().equals(alias) && Arrays.equals(info.getBlockModes(),new String[]{KeyProperties.BLOCK_MODE_GCM})
+                && Arrays.equals(info.getEncryptionPaddings(),new String[]{KeyProperties.ENCRYPTION_PADDING_NONE}));return (SecretKey)key; }
         AtomicFile record=record(directory); require(create && !record.getBaseFile().exists() && !new File(record.getBaseFile().getPath()+".bak").exists() && !new File(record.getBaseFile().getPath()+".new").exists());
         KeyGenerator generator=KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,"AndroidKeyStore");
         KeyGenParameterSpec.Builder builder=new KeyGenParameterSpec.Builder(alias,KeyProperties.PURPOSE_ENCRYPT|KeyProperties.PURPOSE_DECRYPT).setKeySize(256).setBlockModes(KeyProperties.BLOCK_MODE_GCM).setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_NONE).setRandomizedEncryptionRequired(true);
         if(Build.VERSION.SDK_INT>=28) builder.setUnlockedDeviceRequired(true); generator.init(builder.build()); return generator.generateKey();
     }
     private void initialize(File directory) throws Exception {
-        unlocked(); AtomicFile file=record(directory); KeyStore keys=KeyStore.getInstance("AndroidKeyStore"); keys.load(null);
+        unlocked(); require(!birthMarker(directory).exists()); AtomicFile file=record(directory); KeyStore keys=KeyStore.getInstance("AndroidKeyStore"); keys.load(null);
         boolean exists=file.getBaseFile().exists() || new File(file.getBaseFile().getPath()+".bak").exists() || new File(file.getBaseFile().getPath()+".new").exists();
         if(exists || keys.containsAlias(identity+".aes")) { require(exists && keys.containsAlias(identity+".aes")); try(State ignored=read(directory)) {} return; }
         key(true,directory); State state=new State(); state.generation=0; state.nonce=nonce();
@@ -360,5 +364,70 @@ final class PlanetChildDataStore {
             for(int i=0;i<text.length();i++) { char ch=text.charAt(i); if(Character.isHighSurrogate(ch)) { require(i+1<text.length() && Character.isLowSurrogate(text.charAt(++i))); } else require(!Character.isLowSurrogate(ch)); }
             return text.toString();
         }
+    }
+    /** Explicit separate-key birth plan; metadata alone grants no admission. */
+    static final class LocalV2BirthPlan implements AutoCloseable {
+        final String identity,nonce,checksum;private final PlanetChildDataStore store;private final byte[] plain;
+        private boolean used,closed;
+        private LocalV2BirthPlan(PlanetChildDataStore store,String nonce) throws Exception {
+            require(store!=null&&nonce!=null&&nonce.matches("[a-f0-9]{32}"));this.store=store;identity=store.identity;this.nonce=nonce;
+            State state=new State();state.nonce=nonce;try{plain=encode(state);checksum=digest(plain);}finally{state.close();}
+        }
+        public synchronized void close(){closed=true;Arrays.fill(plain,(byte)0);}
+    }
+    static final class LocalV2BirthReceipt {
+        private final LocalV2BirthPlan original;private final byte[] marker;private final String checksum;
+        private LocalV2BirthReceipt(LocalV2BirthPlan original,byte[] marker){this.original=original;this.marker=marker.clone();checksum=original.checksum;}
+        void readback(PlanetChildVault.LocalV2ProfileBirthPermit permit) throws Exception {
+            require(permit!=null);original.store.locked(directory->{permit.dataReadback(original.identity,original.nonce,checksum);original.store.exactBirth(directory,original,marker);return null;});
+        }
+    }
+    static LocalV2BirthPlan localV2BirthPlan(Context context,String nonce) throws Exception {
+        return new LocalV2BirthPlan(new PlanetChildDataStore(context,null,true),nonce);
+    }
+    static LocalV2BirthPlan fixtureLocalV2BirthPlan(Context context,String runId,String nonce) throws Exception {
+        require(context!=null&&"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&ApplicationInfo.FLAG_DEBUGGABLE)!=0
+            &&runId!=null&&runId.matches("[a-f0-9]{32}"));return new LocalV2BirthPlan(new PlanetChildDataStore(context,runId,true),nonce);
+    }
+    static PlanetChildDataStore fixtureLocalV2ExistingOnly(Context context,String runId) throws Exception {
+        try(LocalV2BirthPlan plan=fixtureLocalV2BirthPlan(context,runId,runId)){plan.store.locked(directory->{plan.store.existingOnly(directory);return null;});return plan.store;}
+    }
+    private PlanetChildDataStore(Context input,String runId,boolean deferredBirth) throws Exception {
+        require(deferredBirth&&input!=null);context=input.getApplicationContext();require(context!=null&&context.getPackageName().matches("ru\\.probpera\\.literaryplanet(?:\\.dev|\\.rustore)?"));
+        require(runId==null||"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&ApplicationInfo.FLAG_DEBUGGABLE)!=0&&runId.matches("[a-f0-9]{32}"));
+        name="literary-planet-child-data-v1"+(runId==null?"":"-synthetic-"+runId);identity=context.getPackageName()+"."+name;
+    }
+    private void existingOnly(File directory) throws Exception {
+        unlocked();AtomicFile file=record(directory);require(file.getBaseFile().isFile()&&!new File(file.getBaseFile().getPath()+".bak").exists()&&!new File(file.getBaseFile().getPath()+".new").exists());
+        key(false,directory);try(State ignored=read(directory)){}
+    }
+    private File birthMarker(File directory) throws Exception {
+        File file=new File(directory,"local-v2-birth.claim");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));return file;
+    }
+    private void exactBirth(File directory,LocalV2BirthPlan plan,byte[] marker) throws Exception {
+        existingOnly(directory);File claim=birthMarker(directory);FileDescriptor fd=Os.open(claim.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+        try{StructStat opened=Os.fstat(fd),named=Os.lstat(claim.getPath());require(OsConstants.S_ISREG(opened.st_mode)&&opened.st_dev==named.st_dev&&opened.st_ino==named.st_ino&&opened.st_size==marker.length&&marker.length<=4096);
+            byte[] actual=new byte[marker.length];try{int at=0;while(at<actual.length){int count=Os.read(fd,actual,at,actual.length-at);require(count>0);at+=count;}require(MessageDigest.isEqual(actual,marker));}finally{Arrays.fill(actual,(byte)0);}
+        }finally{Os.close(fd);}
+        try(State actual=read(directory)){byte[] readback=encode(actual);try{require(actual.generation==0&&actual.scope==null&&actual.entries.isEmpty()&&actual.nonce.equals(plan.nonce)
+                &&digest(readback).equals(plan.checksum)&&MessageDigest.isEqual(readback,plan.plain));}finally{Arrays.fill(readback,(byte)0);}}
+    }
+    static LocalV2BirthReceipt localV2Birth(LocalV2BirthPlan original,PlanetChildVault.LocalV2ProfileBirthPermit permit) throws Exception {
+        require(original!=null&&permit!=null);PlanetChildDataStore store=original.store;
+        return store.locked(directory->{synchronized(original){require(!original.closed&&!original.used&&digest(original.plain).equals(original.checksum));original.used=true;}
+            permit.consumeDataBirth(original.identity,original.nonce,original.checksum);byte[] marker=permit.dataMarker(original.identity,original.nonce,original.checksum);
+            try{AtomicFile record=store.record(directory);KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);
+                require(!keys.containsAlias(store.identity+".aes")&&!record.getBaseFile().exists()&&!new File(record.getBaseFile().getPath()+".bak").exists()
+                    &&!new File(record.getBaseFile().getPath()+".new").exists()&&!store.birthMarker(directory).exists());
+                // Persist the claim BEFORE key birth. Unknown generation/add
+                // outcomes retain it and can never become a fresh-key retry.
+                FileDescriptor fd=Os.open(store.birthMarker(directory).getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+                try{int at=0;while(at<marker.length){permit.dataBoundary(original.identity,original.nonce,original.checksum);int wrote=Os.write(fd,marker,at,marker.length-at);require(wrote>0);at+=wrote;}Os.fsync(fd);}finally{Os.close(fd);}
+                FileDescriptor parent=Os.open(directory.getPath(),OsConstants.O_RDONLY|OsConstants.O_CLOEXEC,0);try{Os.fsync(parent);}finally{Os.close(parent);}
+                permit.dataBoundary(original.identity,original.nonce,original.checksum);store.key(true,directory);permit.dataBoundary(original.identity,original.nonce,original.checksum);
+                try(State state=decode(original.plain)){store.write(directory,state,()->permit.dataBoundary(original.identity,original.nonce,original.checksum));}
+                store.exactBirth(directory,original,marker);permit.dataBirthKnown(original.identity,original.nonce,original.checksum);
+                return new LocalV2BirthReceipt(original,marker);
+            }catch(Throwable failure){store.closed=true;permit.dataBirthUnknown();throw failure;}finally{Arrays.fill(marker,(byte)0);}});
     }
 }

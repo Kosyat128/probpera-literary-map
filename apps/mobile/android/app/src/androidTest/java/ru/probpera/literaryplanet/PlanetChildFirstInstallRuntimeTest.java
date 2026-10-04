@@ -521,4 +521,38 @@ public final class PlanetChildFirstInstallRuntimeTest {
         assertTrue((Boolean)field(host,"closed"));assertNull(field(host,"lifecycle"));
     }
 
+    private static byte[] firstProfile(String locale){return ("{\"id\":\"reader\",\"label\":\"Native Reader\",\"exactAge\":9,\"ageBand\":\"9-11\",\"locale\":\""+locale
+        +"\",\"ageConfirmedAt\":\"2026-10-01T12:00:00.000Z\",\"readingLevel\":null,\"allowedTopics\":[\"nature\"],\"blockedTopics\":[\"horror\"],\"soundEnabled\":false,\"motion\":\"calm\",\"narrationEnabled\":false,\"localeLocked\":true}").getBytes(StandardCharsets.UTF_8);}
+    @Test public void localV2FirstProfilePreservesOriginalVerifierPendingCountWholeDebtAndClock()throws Exception{
+        Object policy=snapshotPolicy(100L,250L),old=localDecode(localWrapper(5,4,4,2,17,250,repeat('f')),policy);byte[] before=(byte[])call(old,"copy"),next=null;
+        try{next=(byte[])call(type("LocalV2InitialProfile"),"create",old,firstProfile("ru"));Object after=localDecode(next,policy);
+            try{call(type("LocalV2InitialProfile"),"validate",old,after);String a=localProtected(before),b=localProtected(next);assertEquals(a.substring(a.indexOf(",\"pin\":")),b.substring(b.indexOf(",\"pin\":")));
+                assertEquals(6L,field(after,"revision"));assertEquals(4L,field(after,"pinRevision"));assertEquals(5L,field(after,"journalRevision"));assertEquals(2L,field(after,"count"));
+                assertEquals(250L,field(after,"savedCooldownMs"));assertEquals(17L,field(after,"lastObservedMs"));assertEquals(repeat('f'),field(after,"pendingAttemptId"));
+                Object scope=create("LocalV2GateScope",after);assertEquals("reader",field(field(scope,"context"),"profileId"));assertEquals("ru",field(scope,"locale"));
+            }finally{call(after,"close");}
+        }finally{call(old,"close");Arrays.fill(before,(byte)0);if(next!=null)Arrays.fill(next,(byte)0);}}
+    @Test public void localV2FirstProfileRejectsUnenrolledSeedAndExistingRegistry()throws Exception{
+        Object policy=snapshotPolicy(100L,250L);denied(()->localDecode(seed(),policy));Object already=localDecode(gateRecord(2,2,"en"),policy);
+        try{denied(()->call(type("LocalV2InitialProfile"),"create",already,firstProfile("en")));}finally{call(already,"close");}}
+    @Test public void localV2FirstProfileRejectsMismatchedAgeUnknownDuplicateAndInvalidUtf8()throws Exception{
+        String profile=new String(firstProfile("en"),StandardCharsets.UTF_8);
+        for(String wrong:new String[]{profile.replace("\"9-11\"","\"6-8\""),profile.replace("\"locale\":\"en\"","\"locale\":\"de\""),profile.replace("\"label\":","\"extra\":true,\"label\":"),profile.replace("\"exactAge\":9","\"exactAge\":9,\"exactAge\":9")})
+            denied(()->call(type("LocalV2InitialProfile"),"profileId",wrong.getBytes(StandardCharsets.UTF_8)));
+        denied(()->call(type("LocalV2InitialProfile"),"profileId",new byte[]{(byte)0xc3,0x28}));}
+    @Test public void localV2FirstProfileRejectsRevisionOverflowAndRefundedValidSnapshot()throws Exception{
+        Object policy=snapshotPolicy(100L,250L),edge=localDecode(localWrapper(9007199254740991L,1,1,0,0,0,null),policy),old=localDecode(localWrapper(5,4,4,2,17,250,repeat('f')),policy);
+        try{denied(()->call(type("LocalV2InitialProfile"),"create",edge,firstProfile("en")));byte[] valid=(byte[])call(type("LocalV2InitialProfile"),"create",old,firstProfile("en"));Object after=localDecode(valid,policy),refund=null;
+            try{byte[] lowered=(byte[])call(type("LocalSnapshotV2"),"attempt",after,0L,null,17L);try{refund=localDecode(lowered,policy);Object substituted=refund;
+                denied(()->call(type("LocalV2InitialProfile"),"validate",old,substituted));assertEquals(2L,field(old,"count"));assertEquals(250L,field(old,"savedCooldownMs"));}finally{Arrays.fill(lowered,(byte)0);}}
+            finally{call(after,"close");if(refund!=null)call(refund,"close");Arrays.fill(valid,(byte)0);}
+        }finally{call(edge,"close");call(old,"close");}}
+    @Test public void localV2FirstProfileClockPublicationRetainsOriginalContinuousOriginAndPendingAck()throws Exception{
+        Object policy=snapshotPolicy(100L,250L);AtomicLong now=new AtomicLong(1000);Object clock=localClock(policy,now::get);
+        byte[] before=localCold(clock,policy,localWrapper(5,4,4,2,17,250,repeat('f'))),next=null;Object lease=localLease(clock,30000),old=localDecode(before,policy);
+        try{now.set(1070);Object sample=call(clock,"sample",lease,before),receipt=new Object();long origin=(Long)field(clock,"originContinuous");next=(byte[])call(type("LocalV2InitialProfile"),"create",old,firstProfile("en"));
+            call(clock,"stage",lease,receipt,before,next,sample,kind("LocalV2ClockAction","profile"));assertEquals(origin,field(clock,"originContinuous"));assertSame(receipt,field(clock,"pendingReceipt"));
+            byte[] selected=next;denied(()->call(clock,"acknowledge",lease,new Object(),selected));call(clock,"acknowledge",lease,receipt,next);assertNull(field(clock,"pendingReceipt"));assertEquals(origin,field(clock,"originContinuous"));
+            assertEquals(87L,call(clock,"logical",lease,next));
+        }finally{call(old,"close");call(clock,"release",lease);Arrays.fill(before,(byte)0);if(next!=null)Arrays.fill(next,(byte)0);}}
 }
