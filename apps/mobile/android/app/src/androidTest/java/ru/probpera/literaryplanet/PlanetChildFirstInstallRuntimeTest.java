@@ -555,4 +555,75 @@ public final class PlanetChildFirstInstallRuntimeTest {
             byte[] selected=next;denied(()->call(clock,"acknowledge",lease,new Object(),selected));call(clock,"acknowledge",lease,receipt,next);assertNull(field(clock,"pendingReceipt"));assertEquals(origin,field(clock,"originContinuous"));
             assertEquals(87L,call(clock,"logical",lease,next));
         }finally{call(old,"close");call(clock,"release",lease);Arrays.fill(before,(byte)0);if(next!=null)Arrays.fill(next,(byte)0);}}
+    /** New canonical production-leaf mechanics. No prepared bytes, synthetic
+     * clock or raw encrypted record observation certifies an OS PIN/Gate. */
+    private static byte[] canonicalChild()throws Exception{Object old=localDecode(localWrapper(5,4,4,2,17,250,repeat('f')),snapshotPolicy(100L,250L));
+        try{return(byte[])call(type("LocalV2InitialProfile"),"create",old,firstProfile("en"));}finally{call(old,"close");}}
+    private static Object canonicalPrepare(byte[] before,String action,byte[] target)throws Exception{Object record=localDecode(before,snapshotPolicy(100L,250L));
+        try{return call(type("LocalV2CanonicalTransition"),"prepare",record,action,target);}finally{call(record,"close");}}
+    private static byte[] canonicalRepack(byte[] before,String protectedBytes)throws Exception{Object old=localDecode(before,snapshotPolicy(100L,250L));
+        try{return(byte[])call(type("LocalSnapshotV2"),"wire",protectedBytes.getBytes(StandardCharsets.UTF_8),snapshotPolicy(100L,250L),field(old,"journalRevision"),field(old,"revision"),field(old,"pinRevision"),field(old,"credentialId"),field(old,"count"),field(old,"pendingAttemptId"),field(old,"savedCooldownMs"),field(old,"lastObservedMs"));}finally{call(old,"close");}}
+    @Test public void localV2CanonicalAdultExitPreservesSelectedRegistryPinDebtAndClock()throws Exception{
+        byte[] before=canonicalChild();Object prepared=canonicalPrepare(before,"exit-child-mode",new byte[0]);byte[] next=(byte[])field(prepared,"bytes");Object record=localDecode(next,snapshotPolicy(100L,250L));
+        try{call(prepared,"requireAdultExit");assertFalse((Boolean)field(prepared,"requiresPackage"));String a=localProtected(before),b=localProtected(next);
+            assertTrue(b.contains("\"mode\":\"adult\",\"selectionRevision\":3,\"profileRevision\":2"));assertTrue(b.contains("\"activeProfileId\":\"reader\""));
+            assertEquals(a.substring(a.indexOf(",\"pin\":")),b.substring(b.indexOf(",\"pin\":")));assertEquals(7L,field(record,"revision"));assertEquals(6L,field(record,"journalRevision"));
+            assertEquals(4L,field(record,"pinRevision"));assertEquals(2L,field(record,"count"));assertEquals(250L,field(record,"savedCooldownMs"));assertEquals(17L,field(record,"lastObservedMs"));assertEquals(repeat('f'),field(record,"pendingAttemptId"));
+        }finally{call(record,"close");Arrays.fill(before,(byte)0);Arrays.fill(next,(byte)0);}}
+    @Test public void localV2CanonicalSwitchAdultIsExactActionAndTargetCannotSelectChild()throws Exception{
+        byte[] before=canonicalChild();Object prepared=canonicalPrepare(before,"switch-adult-profile",new byte[0]);try{call(prepared,"requireAdultExit");assertEquals("switch-adult-profile",field(prepared,"action"));
+            denied(()->canonicalPrepare(before,"exit-child-mode","{\"profileId\":\"reader\"}".getBytes(StandardCharsets.UTF_8)));denied(()->canonicalPrepare(before,"switch-adult-profile",new byte[]{1}));
+            denied(()->canonicalPrepare(before,"enter-child-mode",new byte[0]));denied(()->canonicalPrepare(before,"share",new byte[0]));
+        }finally{Arrays.fill(before,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
+    @Test public void localV2CanonicalAgePreparationCannotActivateWithoutCompatibleReviewedPackage()throws Exception{
+        byte[] before=canonicalChild(),saved=before.clone();String profile=new String(firstProfile("en"),StandardCharsets.UTF_8);
+        byte[] target=profile.replace("\"exactAge\":9,\"ageBand\":\"9-11\"","\"exactAge\":8,\"ageBand\":\"6-8\"").getBytes(StandardCharsets.UTF_8);Object prepared=canonicalPrepare(before,"change-exact-age",target);
+        try{assertTrue((Boolean)field(prepared,"requiresPackage"));denied(()->call(prepared,"requireAdultExit"));assertArrayEquals(saved,before);
+            assertTrue(localProtected((byte[])field(prepared,"bytes")).contains("\"selectionRevision\":3,\"profileRevision\":3"));
+            denied(()->canonicalPrepare(before,"change-exact-age",new String(target,StandardCharsets.UTF_8).replace("\"soundEnabled\":false","\"soundEnabled\":true").getBytes(StandardCharsets.UTF_8)));
+            denied(()->canonicalPrepare(before,"change-exact-age",profile.replace("\"exactAge\":9","\"exactAge\":8").getBytes(StandardCharsets.UTF_8)));
+        }finally{Arrays.fill(before,(byte)0);Arrays.fill(saved,(byte)0);Arrays.fill(target,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
+    @Test public void localV2CanonicalTopicAndSettingsActionsCannotSmuggleAgeIdOrOtherFields()throws Exception{
+        byte[] before=canonicalChild();String profile=new String(firstProfile("en"),StandardCharsets.UTF_8);
+        Object topics=canonicalPrepare(before,"change-blocked-topics",profile.replace("[\"horror\"]","[\"horror\",\"violence\"]").getBytes(StandardCharsets.UTF_8));
+        Object settings=canonicalPrepare(before,"expand-access-settings",profile.replace("\"soundEnabled\":false","\"soundEnabled\":true").getBytes(StandardCharsets.UTF_8));
+        try{denied(()->call(topics,"requireAdultExit"));denied(()->call(settings,"requireAdultExit"));denied(()->canonicalPrepare(before,"change-blocked-topics",profile.replace("\"soundEnabled\":false","\"soundEnabled\":true").getBytes(StandardCharsets.UTF_8)));
+            denied(()->canonicalPrepare(before,"expand-access-settings",profile.replace("\"id\":\"reader\"","\"id\":\"other\"").getBytes(StandardCharsets.UTF_8)));
+            denied(()->canonicalPrepare(before,"expand-access-settings",profile.replace("\"exactAge\":9,\"ageBand\":\"9-11\"","\"exactAge\":8,\"ageBand\":\"6-8\"").getBytes(StandardCharsets.UTF_8)));
+            denied(()->canonicalPrepare(before,"expand-access-settings",firstProfile("en")));
+        }finally{Arrays.fill(before,(byte)0);Arrays.fill((byte[])field(topics,"bytes"),(byte)0);Arrays.fill((byte[])field(settings,"bytes"),(byte)0);}}
+    @Test public void localV2CanonicalProfileSelectionRequiresExistingExactProfileAndAdmission()throws Exception{
+        byte[] before=canonicalChild();String protectedBytes=localProtected(before),profile=new String(firstProfile("en"),StandardCharsets.UTF_8),second=profile.replace("\"id\":\"reader\"","\"id\":\"second\"").replace("\"locale\":\"en\"","\"locale\":\"ru\"");
+        String registry="{\"schemaVersion\":1,\"policyVersion\":\""+VERSION+"\",\"activeProfileId\":\"reader\",\"profiles\":["+profile+"]}",nextRegistry=registry.replace(profile,profile+","+second);
+        byte[] two=canonicalRepack(before,protectedBytes.replace(registry,nextRegistry).replace(sha(registry.getBytes(StandardCharsets.UTF_8)),sha(nextRegistry.getBytes(StandardCharsets.UTF_8))));
+        Object prepared=canonicalPrepare(two,"expand-access-settings","{\"profileId\":\"second\"}".getBytes(StandardCharsets.UTF_8));
+        try{String next=localProtected((byte[])field(prepared,"bytes"));assertTrue(next.contains("\"activeProfileId\":\"second\""));assertTrue(next.contains("\"selectionRevision\":3,\"profileRevision\":3"));
+            denied(()->call(prepared,"requireAdultExit"));denied(()->canonicalPrepare(two,"expand-access-settings","{\"profileId\":\"missing\"}".getBytes(StandardCharsets.UTF_8)));
+            denied(()->canonicalPrepare(two,"expand-access-settings","{\"profileId\":\"second\",\"mode\":\"adult\"}".getBytes(StandardCharsets.UTF_8)));
+        }finally{Arrays.fill(before,(byte)0);Arrays.fill(two,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
+    @Test public void localV2CanonicalValidationRejectsValidRefundAndUncoupledRevision()throws Exception{
+        byte[] before=canonicalChild();Object prepared=canonicalPrepare(before,"exit-child-mode",new byte[0]),old=localDecode(before,snapshotPolicy(100L,250L)),after=localDecode((byte[])field(prepared,"bytes"),snapshotPolicy(100L,250L));
+        byte[] refunded=(byte[])call(type("LocalSnapshotV2"),"attempt",after,0L,null,17L),uncoupled=canonicalRepack((byte[])field(prepared,"bytes"),localProtected((byte[])field(prepared,"bytes")).replace("\"profileRevision\":2","\"profileRevision\":3"));
+        Object refund=localDecode(refunded,snapshotPolicy(100L,250L)),badRevision=localDecode(uncoupled,snapshotPolicy(100L,250L));
+        try{call(type("LocalV2CanonicalTransition"),"validate",old,after,"exit-child-mode",new byte[0]);denied(()->call(type("LocalV2CanonicalTransition"),"validate",old,refund,"exit-child-mode",new byte[0]));
+            denied(()->call(type("LocalV2CanonicalTransition"),"validate",old,badRevision,"exit-child-mode",new byte[0]));assertEquals(2L,field(old,"count"));assertEquals(250L,field(old,"savedCooldownMs"));
+        }finally{call(old,"close");call(after,"close");call(refund,"close");call(badRevision,"close");Arrays.fill(before,(byte)0);Arrays.fill(refunded,(byte)0);Arrays.fill(uncoupled,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
+    @Test public void localV2CanonicalExclusiveOriginalExecutionCannotBeMintedFromSpentOrBoolean()throws Exception{
+        Object original=create("LocalV2GateInvocation","exit-child-mode",new byte[0],1L,100L,1000L,1000L);call(original,"capture",gateScope(gateRecord(2,3,"en")),101L);
+        denied(()->call(original,"execution",null,102L));denied(()->call(original,"transfer",null,103L));denied(()->call(original,"execution",null,104L));
+        denied(()->call(original,"execution",Boolean.TRUE,104L));assertTrue((Boolean)field(original,"spent"));call(original,"close");
+        Object fresh=create("LocalV2GateInvocation","exit-child-mode",new byte[0],1L,100L,1000L,1000L);call(fresh,"capture",gateScope(gateRecord(2,3,"en")),101L);
+        try{denied(()->call(fresh,"transfer",null,102L));denied(()->call(fresh,"execution",null,103L));assertTrue((Boolean)field(fresh,"revoked"));}finally{call(fresh,"close");}}
+    @Test public void localV2CanonicalOverflowAndAdultRecordCannotMintReentry()throws Exception{
+        byte[] before=canonicalChild(),edge=canonicalRepack(before,localProtected(before).replace("\"selectionRevision\":2","\"selectionRevision\":9007199254740991"));
+        Object prepared=canonicalPrepare(before,"exit-child-mode",new byte[0]);try{denied(()->canonicalPrepare(edge,"exit-child-mode",new byte[0]));denied(()->canonicalPrepare((byte[])field(prepared,"bytes"),"expand-access-settings",firstProfile("en")));
+            denied(()->canonicalPrepare(before,"change-exact-age",new byte[]{(byte)0xc3,0x28}));
+        }finally{Arrays.fill(before,(byte)0);Arrays.fill(edge,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
+    @Test public void localV2CanonicalClockCannotStageBareBytesOrAckForeignOriginal()throws Exception{
+        Object policy=snapshotPolicy(100L,250L);AtomicLong now=new AtomicLong(1000);Object clock=localClock(policy,now::get);byte[] before=localCold(clock,policy,canonicalChild());Object lease=localLease(clock,30000);
+        Object prepared=canonicalPrepare(before,"exit-child-mode",new byte[0]);try{Object sample=call(clock,"sample",lease,before);Object receipt=new Object();
+            denied(()->call(clock,"stage",lease,receipt,before,field(prepared,"bytes"),sample,kind("LocalV2ClockAction","canonical")));assertTrue((Boolean)field(clock,"invalid"));
+            denied(()->call(clock,"acknowledge",lease,new Object(),field(prepared,"bytes")));call(clock,"release",lease);denied(()->localLease(clock,30000));
+            Object saved=localDecode(before,policy);try{assertEquals(2L,field(saved,"count"));assertEquals(250L,field(saved,"savedCooldownMs"));}finally{call(saved,"close");}
+        }finally{Arrays.fill(before,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
 }

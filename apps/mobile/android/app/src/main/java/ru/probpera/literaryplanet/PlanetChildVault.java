@@ -3108,7 +3108,7 @@ final class PlanetChildVault {
      * production writer selects its one native fixed namespace and real clock;
      * isolated synthetic instances below are usable only as mechanical tests. */
     private interface LocalV2ElapsedClock { long now() throws Exception; }
-    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize, profile }
+    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize, profile, canonical }
     private static final class LocalV2ClockLease {
         final LocalV2ProcessClock owner;final Object original;final long began,deadline;
         private boolean closed;private LocalV2ClockSample sample;
@@ -3217,7 +3217,8 @@ final class PlanetChildVault {
                     if(action==LocalV2ClockAction.enroll){require(known.seed);try(LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
                         LocalSnapshotV2.validateEnrollment(before,value,sample.logicalMs);}expected=after.clone();}
                     else{require(!known.seed);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy);LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
-                        if(action==LocalV2ClockAction.profile){LocalV2InitialProfile.validate(old,value);expected=after.clone();}
+                        if(action==LocalV2ClockAction.canonical){require(lease.original instanceof LocalV2GateMutation);LocalV2GateMutation mutation=(LocalV2GateMutation)lease.original;mutation.boundary();LocalV2CanonicalTransition.validate(old,value,mutation.original.action,mutation.target);expected=after.clone();}
+                        else if(action==LocalV2ClockAction.profile){LocalV2InitialProfile.validate(old,value);expected=after.clone();}
                         else if(action==LocalV2ClockAction.charge)expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);
                         else{require(action==LocalV2ClockAction.finalize&&value.lastObservedMs==sample.logicalMs);
                             LocalSnapshotV2.validateFinalization(old,value);expected=LocalSnapshotV2.attempt(old,value.count,null,sample.logicalMs);}}}
@@ -3983,10 +3984,13 @@ final class PlanetChildVault {
                 &&reply.settled&&reply.consumed&&!reply.disposed&&!reply.operation.closedRevoked
                 &&reply.outcome==PinVerificationOutcome.match&&reply.operation.request.retired&&reply.operation.request.detached
                 &&reply.operation.finalAcknowledged&&reply.operation.platformCompared&&digest(target).equals(targetChecksum));
-            return target.clone();
+            transferred=reply;return target.clone();
         }
+        private LocalV2PinReply transferred;
+        private synchronized void execution(LocalV2PinReply reply,long now) throws Exception {if(!spent||reply==null||transferred==null||transferred!=reply||revoked||now<last||now>=deadline){revoked=true;throw new PinKnownRefusal();}last=now;}
+        private synchronized void hostCurrent(long now) throws Exception {if(transferred==null)live(now);else execution(transferred,now);}
         private synchronized void revoke(){revoked=true;}
-        private synchronized void close(){spent=true;LocalSnapshotV2.wipe(target);}
+        private synchronized void close(){spent=true;transferred=null;LocalSnapshotV2.wipe(target);}
     }
     private interface LocalV2NativeProtectedAction {void perform(String originalAction,byte[] originalTarget) throws Exception;}
     /** Private usable native-control host. Native route ownership is the
@@ -3999,7 +4003,7 @@ final class PlanetChildVault {
         private final byte[] target;private final android.view.ViewParent[] ancestry;
         private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
         private volatile LocalV2GateInvocation invocation;private volatile LocalV2Request request;private volatile LocalV2PinOperation operation;
-        private volatile boolean closed,revoked;private long generation;private Thread worker;
+        private volatile boolean closed,revoked;private long generation;private Thread worker;private volatile LocalV2GateMutation mutation;private Thread retirement;
         private android.app.Application.ActivityLifecycleCallbacks lifecycle;private android.content.BroadcastReceiver screen;
         private androidx.activity.OnBackPressedCallback back;private android.view.View.OnAttachStateChangeListener attachment;
         private android.view.ViewTreeObserver.OnWindowFocusChangeListener focus;private android.view.ViewTreeObserver.OnGlobalLayoutListener layout;private Runnable expiry;
@@ -4028,7 +4032,7 @@ final class PlanetChildVault {
                 ||activity.getWindow().getDecorView().getWindowToken()!=window||route.getRootView()!=activity.getWindow().getDecorView()
                 ||route.getWindowToken()!=window||!route.isShown()||!control.isShown())throw new PinKnownRefusal();
             android.view.ViewParent parent=control.getParent();for(android.view.ViewParent exact:ancestry){require(parent==exact);parent=parent.getParent();}
-            require(activity.hasWindowFocus()||allowInput&&ownedInput());LocalV2GateInvocation original=invocation;if(original!=null)original.live(SystemClock.elapsedRealtime());
+            require(activity.hasWindowFocus()||allowInput&&ownedInput());LocalV2GateInvocation original=invocation;if(original!=null)original.hostCurrent(SystemClock.elapsedRealtime());
         }
         private void attach() throws Exception {
             lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}
@@ -4079,13 +4083,21 @@ final class PlanetChildVault {
                     throw failure;}
                 onMain(()->{current(false);require(invocation==original&&operation.gate==gate);request.processClock.closedReadback(request.processLease,reply.checksum);
                     byte[] payload=original.transfer(reply,SystemClock.elapsedRealtime());
-                    try{dispatch.perform(original.action,payload);}finally{LocalSnapshotV2.wipe(payload);}return null;});
+                    try{if(LocalV2CanonicalTransition.handles(original.action))mutation=new LocalV2GateMutation(this,original,reply,payload);else dispatch.perform(original.action,payload);}
+                    finally{LocalSnapshotV2.wipe(payload);}return null;});
+                if(mutation!=null)mutation.perform();
             }catch(Throwable failure){revoke();}
             finally{if(request!=null&&!retired&&!request.retired){try{writer.cancel(request);if(operation!=null&&operation.worker!=null){operation.worker.join();operation.joinCancel();}
                         LocalV2PinReply reply=delivered[0];if(reply!=null&&!reply.settled)operation.settle(reply,PinReplyDelivery.uncertain);else writer.retire(request);
                     }catch(Throwable ignored){writer.unknown(request);}}
-                if(operation!=null&&operation.closedLifecycle!=null)try{operation.closedObservers(false);}catch(Throwable ignored){revoke();}
-                try{onMain(()->{detach();closed=true;original.close();LocalSnapshotV2.wipe(target);return null;});}catch(Throwable ignored){revoke();original.close();LocalSnapshotV2.wipe(target);}}
+                if(mutation!=null){retirement=new Thread(()->{try{boolean interrupted=false;for(;;)try{worker.join();break;}catch(InterruptedException ignored){interrupted=true;}
+                            if(operation!=null&&operation.closedLifecycle!=null)operation.closedObservers(false);
+                            try{mutation.publishRetired();}catch(Throwable failure){revoke();if(mutation.lease!=null)request.processClock.invalidate(mutation.lease);}
+                            onMain(()->{detach();closed=true;return null;});mutation.retirement();original.close();LocalSnapshotV2.wipe(target);if(interrupted)Thread.currentThread().interrupt();}
+                        catch(Throwable failure){revoke();if(mutation.lease!=null)request.processClock.invalidate(mutation.lease);}},"planet-local-v2-gate-retirement");
+                    try{retirement.start();}catch(Throwable failure){revoke();if(mutation.lease!=null)request.processClock.invalidate(mutation.lease);}}
+                else{if(operation!=null&&operation.closedLifecycle!=null)try{operation.closedObservers(false);}catch(Throwable ignored){revoke();}
+                    try{onMain(()->{detach();closed=true;original.close();LocalSnapshotV2.wipe(target);return null;});}catch(Throwable ignored){revoke();original.close();LocalSnapshotV2.wipe(target);}}}
         }
         private void detach() throws Exception {
             require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());control.setOnClickListener(null);
@@ -4101,6 +4113,133 @@ final class PlanetChildVault {
             // manufacture retirement or expose capacity to a new invocation.
             if(worker==null){detach();closed=true;LocalSnapshotV2.wipe(target);}}
     }
+    /** A prepared byte transition is data, never admission or permission. The
+     * original Gate below is the only consumer allowed to write its adult exit.
+     * Profile/access changes retain the previous safe record until an actual
+     * independently reviewed compatible package can be admitted. */
+    private static final class LocalV2CanonicalTransition {
+        final String action;final byte[] bytes;final boolean requiresPackage;
+        private LocalV2CanonicalTransition(String action,byte[] bytes,boolean requiresPackage){this.action=action;this.bytes=bytes;this.requiresPackage=requiresPackage;}
+        private static boolean handles(String action){return "exit-child-mode".equals(action)||"switch-adult-profile".equals(action)
+            ||"change-exact-age".equals(action)||"change-blocked-topics".equals(action)||"expand-access-settings".equals(action);}
+        private void requireAdultExit() throws Exception {if(requiresPackage||!("exit-child-mode".equals(action)||"switch-adult-profile".equals(action)))throw new PinKnownRefusal();}
+        private static java.util.LinkedHashMap<String,String> profileFields(String text) throws Exception {
+            LocalV2InitialProfile.profileId(text.getBytes(StandardCharsets.UTF_8));java.util.LinkedHashMap<String,String> fields=new java.util.LinkedHashMap<>();
+            ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(text);p.token("{");
+            do{String key=p.string();p.token(":");int start=p.index,depth=0;boolean quoted=false,escaped=false;
+                while(p.index<text.length()){char c=text.charAt(p.index);if(quoted){p.index++;if(escaped)escaped=false;else if(c=='\\')escaped=true;else if(c=='\"')quoted=false;continue;}
+                    if(c=='\"')quoted=true;else if(c=='[')depth++;else if(c==']')depth--;else if(depth==0&&(c==','||c=='}'))break;p.index++;}
+                require(p.index>start&&depth==0&&!quoted&&fields.put(key,text.substring(start,p.index))==null);
+            }while(p.take(","));p.token("}");require(p.index==text.length());return fields;
+        }
+        private static LocalV2CanonicalTransition prepare(LocalSnapshotV2 before,String action,byte[] target) throws Exception {
+            require(handles(action)&&target!=null&&target.length<=65536&&before.revision<MAX_SAFE&&before.journalRevision<MAX_SAFE);
+            byte[] raw=before.copy(),registry=null,protectedBytes=null,result=null;boolean adopted=false;
+            try{ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(raw,before.protectedStart,before.protectedEnd-before.protectedStart,StandardCharsets.UTF_8));
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);require(p.number(1,MAX_SAFE)==before.revision);
+                p.field("mode",false);require("child".equals(p.string()));p.field("selectionRevision",false);long selection=p.number(1,MAX_SAFE);
+                p.field("profileRevision",false);long revision=p.number(1,MAX_SAFE);require(selection<MAX_SAFE);
+                p.field("policyChecksum",false);require(p.string().equals(before.policy.checksum));p.field("registryChecksum",false);String oldSum=p.string();
+                p.field("registry",false);int start=p.index;String active=ProtectedEnvelope.registry(p,before.policy.version);require(active!=null);
+                String oldRegistry=p.text.substring(start,p.index);ProtectedEnvelope.Cursor r=new ProtectedEnvelope.Cursor(oldRegistry);
+                r.field("schemaVersion",true);r.number(1,1);r.field("policyVersion",false);r.string();r.field("activeProfileId",false);r.string();r.field("profiles",false);r.token("[");
+                java.util.ArrayList<String> profiles=new java.util.ArrayList<>(),ids=new java.util.ArrayList<>();int selected=-1;
+                do{int from=r.index;String id=ProtectedEnvelope.profile(r);if(active.equals(id))selected=profiles.size();ids.add(id);profiles.add(r.text.substring(from,r.index));}while(r.take(","));
+                r.token("]");r.token("}");require(selected>=0);boolean adult="exit-child-mode".equals(action)||"switch-adult-profile".equals(action),registryChanged=false;
+                if(adult)require(target.length==0);
+                else{String proposal=StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(target)).toString();
+                    if("expand-access-settings".equals(action)&&proposal.startsWith("{\"profileId\":")){
+                        ProtectedEnvelope.Cursor t=new ProtectedEnvelope.Cursor(proposal);t.field("profileId",true);String id=t.string();t.token("}");require(t.index==proposal.length()&&ids.contains(id)&&!active.equals(id));active=id;registryChanged=true;
+                    }else{require(LocalV2InitialProfile.profileId(target).equals(active));java.util.Map<String,String> oldFields=profileFields(profiles.get(selected)),nextFields=profileFields(proposal);
+                        java.util.HashSet<String> permitted=new java.util.HashSet<>();
+                        if("change-exact-age".equals(action))permitted.addAll(Arrays.asList("exactAge","ageBand","ageConfirmedAt"));
+                        else if("change-blocked-topics".equals(action))permitted.add("blockedTopics");
+                        else permitted.addAll(Arrays.asList("readingLevel","allowedTopics","locale","soundEnabled","motion","narrationEnabled","localeLocked"));
+                        java.util.HashSet<String> keys=new java.util.HashSet<>(oldFields.keySet());keys.addAll(nextFields.keySet());
+                        for(String key:keys)if(!java.util.Objects.equals(oldFields.get(key),nextFields.get(key))){require(permitted.contains(key));registryChanged=true;}
+                        require(registryChanged);profiles.set(selected,proposal);
+                    }
+                }
+                String nextRegistry=oldRegistry;
+                if(registryChanged){require(revision<MAX_SAFE);StringBuilder value=new StringBuilder("{\"schemaVersion\":1,\"policyVersion\":").append(LocalSnapshotV2.quoted(before.policy.version))
+                        .append(",\"activeProfileId\":").append(LocalSnapshotV2.quoted(active)).append(",\"profiles\":[");
+                    for(int i=0;i<profiles.size();i++){if(i>0)value.append(',');value.append(profiles.get(i));}nextRegistry=value.append("]}").toString();}
+                registry=nextRegistry.getBytes(StandardCharsets.UTF_8);String sum=digest(registry);require(registryChanged||sum.equals(oldSum));
+                String prefix="{\"schemaVersion\":2,\"revision\":"+(before.revision+1)+",\"mode\":"+LocalSnapshotV2.quoted(adult?"adult":"child")
+                    +",\"selectionRevision\":"+(selection+1)+",\"profileRevision\":"+(revision+(registryChanged?1:0))+",\"policyChecksum\":"+LocalSnapshotV2.quoted(before.policy.checksum)
+                    +",\"registryChecksum\":"+LocalSnapshotV2.quoted(sum)+",\"registry\":"+nextRegistry+",\"pin\":";
+                protectedBytes=(prefix+new String(raw,before.pinStart,before.protectedEnd-before.pinStart,StandardCharsets.UTF_8)).getBytes(StandardCharsets.UTF_8);
+                result=LocalSnapshotV2.wire(protectedBytes,before.policy,before.journalRevision+1,before.revision+1,before.pinRevision,before.credentialId,
+                    before.count,before.pendingAttemptId,before.savedCooldownMs,before.lastObservedMs);
+                try(LocalSnapshotV2 checked=LocalSnapshotV2.decode(result,before.policy)){}adopted=true;return new LocalV2CanonicalTransition(action,result,!adult);
+            }finally{LocalSnapshotV2.wipe(raw);LocalSnapshotV2.wipe(registry);LocalSnapshotV2.wipe(protectedBytes);if(!adopted)LocalSnapshotV2.wipe(result);}
+        }
+        private static void validate(LocalSnapshotV2 before,LocalSnapshotV2 after,String action,byte[] target) throws Exception {
+            LocalV2CanonicalTransition exact=prepare(before,action,target);byte[] actual=null;
+            try{require(before.policy.version.equals(after.policy.version)&&before.policy.checksum.equals(after.policy.checksum)&&before.policy.maximumIterations==after.policy.maximumIterations
+                    &&Arrays.equals(before.policy.delays,after.policy.delays));actual=after.copy();require(MessageDigest.isEqual(exact.bytes,actual));}
+            finally{LocalSnapshotV2.wipe(exact.bytes);LocalSnapshotV2.wipe(actual);}
+        }
+    }
+
+    /** Closed original PIN/Gate handoff into one concrete canonical mutation.
+     * The same process clock/deadline stays occupied through actual canonical
+     * write/readback/ACK, native action recipient and Gate worker retirement. */
+    private static final class LocalV2GateMutation {
+        final LocalV2GateHost host;final LocalV2GateInvocation original;final LocalV2PinReply reply;final byte[] target;
+        private LocalV2ClockLease lease;private final Object ack=new Object();private byte[] next;private boolean wrote,known,recipientJoined,retired;
+        private LocalV2GateMutation(LocalV2GateHost host,LocalV2GateInvocation original,LocalV2PinReply reply,byte[] target) throws Exception {
+            require(host!=null&&original!=null&&reply!=null&&target!=null);
+            this.host=host;this.original=original;this.reply=reply;this.target=target.clone();proof();
+        }
+        private void proof() throws Exception {require(host.invocation==original&&host.operation==reply.operation&&reply.operation.request==host.request
+            &&reply.gate==original.original&&reply.operation.originalChallenge==original&&reply.kind==LocalV2PinKind.verify
+            &&reply.settled&&reply.consumed&&!reply.disposed&&reply.operation.knownSettlement&&reply.operation.finalAcknowledged&&reply.operation.platformCompared
+            &&reply.outcome==PinVerificationOutcome.match&&!reply.operation.closedRevoked&&reply.operation.request.retired&&reply.operation.request.detached
+            &&LocalV2CanonicalTransition.handles(original.action)&&digest(target).equals(original.targetChecksum));
+            original.execution(reply,SystemClock.elapsedRealtime());if(host.closed||host.revoked||retired)throw new PinKnownRefusal();}
+        private void boundary() throws Exception {proof();require(lease!=null&&(Thread.currentThread()==host.worker
+            ||Thread.currentThread()==host.retirement&&host.worker!=null&&!host.worker.isAlive()&&known));host.request.processClock.current(lease);}
+        private void perform() throws Exception {
+            require(Thread.currentThread()==host.worker);proof();LocalV2ProcessClock clock=host.request.processClock;
+            synchronized(clock){clock.closedReadback(host.request.processLease,reply.checksum);require(host.request.processLease.deadline==original.deadline);
+                lease=clock.claimUntil(this,original.deadline);}
+            try{host.onMain(()->{host.current(false);return null;});host.writer.vault.locked(directory->{boundary();host.writer.completeRecord(directory);byte[] before=host.writer.vault.readExact(directory);
+                    try{clock.inspect(lease,before);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,host.policy)){require(old.checksum.equals(reply.checksum));original.scope.same(old);
+                        LocalV2CanonicalTransition prepared=LocalV2CanonicalTransition.prepare(old,original.action,target);
+                        try{prepared.requireAdultExit();next=prepared.bytes.clone();}finally{LocalSnapshotV2.wipe(prepared.bytes);}
+                        LocalV2ClockSample sample=clock.sample(lease,before);boundary();wrote=true;host.writer.vault.writeExact(directory,next,this::boundary);
+                        host.writer.completeRecord(directory);byte[] actual=host.writer.vault.readExact(directory);try{boundary();require(MessageDigest.isEqual(next,actual));
+                            try(LocalSnapshotV2 after=LocalSnapshotV2.decode(actual,host.policy)){LocalV2CanonicalTransition.validate(old,after,original.action,target);}
+                            clock.stage(lease,ack,before,actual,sample,LocalV2ClockAction.canonical);
+                        }finally{LocalSnapshotV2.wipe(actual);}return null;
+                    }}finally{LocalSnapshotV2.wipe(before);}});
+                // A second real canonical read supplies the ORIGINAL known ACK.
+                // Main/UI checks stay outside flock; observed revocation remains
+                // latched at every write/ACK boundary under the original lease.
+                host.onMain(()->{host.current(false);return null;});host.writer.vault.locked(directory->{boundary();host.writer.completeRecord(directory);byte[] actual=host.writer.vault.readExact(directory);
+                    try{require(MessageDigest.isEqual(next,actual));clock.acknowledge(lease,ack,actual);known=true;boundary();return null;}finally{LocalSnapshotV2.wipe(actual);}});
+            }catch(Throwable failure){if(wrote)clock.invalidate(lease);if(failure instanceof Error)throw(Error)failure;throw failure instanceof Exception?(Exception)failure:new Unavailable();}
+        }
+        private void publishRetired() throws Exception {
+            require(Thread.currentThread()==host.retirement&&host.worker!=null&&!host.worker.isAlive());if(!known)return;
+            try{host.onMain(()->{host.current(false);return null;});host.writer.vault.locked(directory->{boundary();host.writer.completeRecord(directory);byte[] actual=host.writer.vault.readExact(directory);
+                    try{require(MessageDigest.isEqual(next,actual));host.request.processClock.inspect(lease,actual);return null;}finally{LocalSnapshotV2.wipe(actual);}});
+                // The canonical worker has ACTUALLY returned before the exact
+                // original action recipient may observe the known mutation.
+                host.onMain(()->{host.current(false);proof();host.request.processClock.current(lease);try{host.dispatch.perform(original.action,target);}finally{recipientJoined=true;}return null;});
+                host.writer.vault.locked(directory->{boundary();host.writer.completeRecord(directory);byte[] actual=host.writer.vault.readExact(directory);
+                    try{require(recipientJoined&&MessageDigest.isEqual(next,actual));host.request.processClock.inspect(lease,actual);return null;}finally{LocalSnapshotV2.wipe(actual);}});
+            }catch(Throwable failure){host.request.processClock.invalidate(lease);if(failure instanceof Error)throw(Error)failure;throw failure instanceof Exception?(Exception)failure:new Unavailable();}
+        }
+        private void retirement() throws Exception {require(Thread.currentThread()==host.retirement&&host.worker!=null&&!host.worker.isAlive());
+            boolean valid=true;if(known)try{require(recipientJoined&&!host.revoked);original.execution(reply,SystemClock.elapsedRealtime());host.request.processClock.current(lease);
+                    host.writer.vault.locked(directory->{host.request.processClock.current(lease);host.writer.completeRecord(directory);byte[] actual=host.writer.vault.readExact(directory);
+                        try{require(MessageDigest.isEqual(next,actual));host.request.processClock.inspect(lease,actual);original.execution(reply,SystemClock.elapsedRealtime());return null;}finally{LocalSnapshotV2.wipe(actual);}});}
+                catch(Throwable failure){host.request.processClock.invalidate(lease);valid=false;}
+            if(lease!=null){if(!known&&wrote)host.request.processClock.invalidate(lease);host.request.processClock.release(lease);}retired=true;LocalSnapshotV2.wipe(next);LocalSnapshotV2.wipe(target);if(!valid)throw new PinKnownRefusal();}
+    }
+
     /** Structural first-profile transition only. Its output never grants a
      * mutation: the fresh native owner producer below must sign/consume it. */
     private static final class LocalV2InitialProfile {
