@@ -3,8 +3,8 @@
  * existing atomic destination guard must still run after this reservation. */
 import { randomInt } from 'node:crypto';
 
-// Reserve 45–55 minutes once, then the five-minute Cron delivers at the first
-// eligible tick. The expected publication interval is therefore 45–60 minutes.
+// Reserve 45-55 minutes once, then the five-minute Cron delivers at the first
+// eligible tick. The expected publication interval is therefore 45-60 minutes.
 // A delayed runner may be later, but never accumulates catch-up credits.
 export const NEWS_DELIVERY_MAX_INTERVAL_SECONDS = 3600;
 export const NEWS_DELIVERY_MIN_INTERVAL_SECONDS = 2700;

@@ -123,7 +123,7 @@ describe("durable per-destination create pacing", () => {
       expect(store.journal.rows).toHaveLength(0);
     }
   });
-  it('persists each chosen interval, never draws while blocked and stays within 45–60 minutes with five-minute polling', async () => {
+  it('persists each chosen interval, never draws while blocked and stays within 45-60 minutes with five-minute polling', async () => {
     const store = client(), minutes = [45, 50, 55, 47, 53], random = vi.fn();
     for (const value of minutes) random.mockReturnValueOnce(value);
     let current = new Date('2026-09-27T05:00:42Z');
