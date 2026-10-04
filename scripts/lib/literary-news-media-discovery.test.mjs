@@ -28,6 +28,38 @@ async function fixture(overrides={},fileName="Fixture.png"){
   return{bytes,info,fetchImpl,options:{registry,now,fetchImpl,matchSubjects:()=>[subject],searchCandidates:()=>[]}};
 }
 describe("bounded actual-portrait discovery, no provider uploads",()=>{
+  it('chooses a licensed named library image before a writer portrait and keeps approved caption formatting',async()=>{
+    const f=await fixture(),photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
+    const fetchImpl=vi.fn(async(url,options)=>{
+      if(new URL(url).hostname==='www.wikidata.org')return Response.json({entities:{Q23308:{id:'Q23308',labels:{en:{value:'British Library'}},claims:{
+        P31:[{mainsnak:{snaktype:'value',datavalue:{value:{id:'Q22806'}}}}],
+        P18:[{mainsnak:{snaktype:'value',datavalue:{value:'Fixture.png'}}}]}}}});
+      return f.fetchImpl(url,options);
+    });
+    const actual=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,fetchImpl});
+    expect(actual.report.requests).toBe(3);expect(actual.report.approved).toBe(1);
+    const asset=actual.mediaOptions.registry.assets[0];
+    expect(asset).toMatchObject({subject:'editorial',mediaRole:'subject-illustration'});
+    expect(asset.entityEvidence).toContain('not evidence of the current event or announced edition');
+    const prepared=await prepareNewsPost(photoItem,{id:'snapshot',release:'a'.repeat(40)},'telegram',{destination,mediaOptions:actual.mediaOptions});
+    expect(prepared.media.assetId).toBe(asset.id);
+    expect(prepared.payload.caption).toContain('CC BY 4.0 · адаптировано');
+    expect(prepared.payload.caption).not.toMatch(/JPEG|Архивный портрет|Wikimedia Commons/);
+  });
+  it('upgrades old cached portraits once while retaining valid assets during transient illustration failures',async()=>{
+    const f=await fixture(),store=storeFixture(),photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
+    await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store});
+    const cached=[...store.rows.values()][0];delete cached.state.illustrationPolicy;
+    const oldId=cached.state.asset.id;
+    const failed=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl:async()=>{throw Error('offline');}});
+    expect(failed.report.approved).toBe(1);
+    expect(failed.mediaOptions.registry.assets[0].id).toBe(oldId);
+    expect([...store.rows.values()][0].state.illustration).toMatchObject({status:'pending'});
+    expect([...store.rows.values()][0].state.nextCheckAt).toBe(new Date(now.getTime()+3600000).toISOString());
+    const fetchImpl=vi.fn();
+    const cachedAgain=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl});
+    expect(cachedAgain.report.cached).toBe(1);expect(fetchImpl).not.toHaveBeenCalled();
+  });
   it('preserves current rights metadata when an archived admission caches the same manual image identity',async()=>{
     const f=await fixture(),store=storeFixture();
     const first=await resolveNewsMediaBatch([item],[destination],{...f.options,store});

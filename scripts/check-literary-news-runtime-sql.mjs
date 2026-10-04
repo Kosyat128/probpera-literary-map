@@ -146,7 +146,7 @@ try {
       assert.equal(calls.filter(method=>["sendPhoto","wall.post"].includes(method)).length,0);
       const nextSlot=new Date(current.getTime()+3600000);
       assert.equal((await dispatchNewsJob({store,key,transport:runtimeTransport,now:()=>nextSlot})).status,"sent_current");
-      checks.push(`JSONB ${destination.platform} durable pacing blocks a second create until the next hourly slot`);
+      checks.push(`JSONB ${destination.platform} durable pacing blocks a second create until the reserved slot`);
       assert.equal((await store.read(key)).state.remoteMediaKind,"photo");
       assert.equal((await store.read(key)).state.mediaCache.providerAccountId,"42");
       assert.equal((await store.read(key)).state.mediaCache.sha256,normalized.descriptor.sha256);

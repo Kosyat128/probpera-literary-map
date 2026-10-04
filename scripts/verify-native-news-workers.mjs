@@ -3,7 +3,7 @@ import { pathToFileURL } from 'node:url';
 const workers = Object.freeze([
   Object.freeze({ name: 'probpera-literary-news-preparation', cron: '17 */2 * * *',
     flags: Object.freeze({ NEWS_AUTOMATION_ENABLED: 'enabled', NEWS_AUTOMATION_BOOTSTRAP: 'enabled', NEWS_AUTOMATION_WRITER: 'native' }) }),
-  Object.freeze({ name: 'probpera-literary-news-delivery', cron: '0 5-19 * * *',
+  Object.freeze({ name: 'probpera-literary-news-delivery', cron: '*/5 5-19 * * *',
     flags: Object.freeze({ NEWS_DELIVERY_ENABLED: 'enabled' }) }),
 ]);
 const fail = code => { throw new Error(code); };

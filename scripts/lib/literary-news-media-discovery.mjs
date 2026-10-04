@@ -3,6 +3,8 @@ import manualRegistry from "../../data/news/social-media-assets.json" with { typ
 import newsLimits from "../../data/news/contract.json" with { type: "json" };
 import { fetchPinnedNewsSource } from "./literary-news-safe-fetch.mjs";
 import { matchNewsMediaSubjects, extractNewsMediaSubjectSearchCandidates } from "./literary-news-media-subjects.mjs";
+import { extractNewsMediaIllustrationCandidates, resolveNewsMediaIllustrationSubject,
+  NEWS_MEDIA_ILLUSTRATION_POLICY } from './literary-news-media-illustrations.mjs';
 import { newsSemanticRevision } from "./literary-news-social.mjs";
 import { checkedNewsMediaAsset, normalizeNewsMedia, cacheNormalizedNewsMedia, mediaByteHash, NEWS_MEDIA_LIMITS, NEWS_MEDIA_DISCOVERY_POLICY, NEWS_MEDIA_CC_LICENSES } from "./literary-news-media.mjs";
 import { inspectNewsSourceCommonsImage, discoverNewsSourceCommonsImage,
@@ -37,7 +39,7 @@ const claimValues = (claims, property) => {
   return [...new Set((preferred.length ? preferred : all).map(row => row.mainsnak.datavalue?.value))];
 };
 
-/** Independently licensed exact Commons source images precede writer portraits.
+/** Licensed exact source images and named works/venues precede writer portraits.
  * P18 remains a portrait, never evidence of a photograph of the reported event.
  */
 export async function resolveNewsMediaBatch(items, destinations, { store = null, registry = manualRegistry,
@@ -60,6 +62,56 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
       signal: AbortSignal.timeout(12000), headers: { Accept: "application/json,image/jpeg,image/png,image/webp",
         "User-Agent": "ProbperaLiteraryNewsMedia/1.0 (+https://probpera.ru)" } });
     return { bytes: await responseBytes(response, max), mime: response.headers.get("content-type") };
+  };
+  const discoverSubjectImage = async ({ item, semanticRevision, subject, entity, entityUrl, entityResponse }) => {
+      const images = claimValues(entity.claims, "P18");
+      if (images.length !== 1 || typeof images[0] !== "string" || images[0].length > 240) fail(subject.mediaSubject ? "media_illustration_missing_or_ambiguous" : "media_portrait_missing_or_ambiguous");
+      const fileTitle = `File:${images[0]}`, commonsUrl = new URL("https://commons.wikimedia.org/w/api.php");
+      commonsUrl.search = new URLSearchParams({ action: "query", prop: "imageinfo", titles: fileTitle,
+        iiprop: "url|extmetadata|mime|size|sha1", formatversion: "2", format: "json" });
+      const commonsResponse = await request(commonsUrl.href, NEWS_MEDIA_DISCOVERY_LIMITS.metadataBytes, ["commons.wikimedia.org"]);
+      const pages = JSON.parse(commonsResponse.bytes).query?.pages;
+      if (!Array.isArray(pages) || pages.length !== 1 || pages[0].title?.replaceAll("_", " ") !== fileTitle.replaceAll("_", " ")
+        || pages[0].missing || pages[0].imageinfo?.length !== 1) fail("media_commons_identity_invalid");
+      const info = pages[0].imageinfo[0], meta = info.extmetadata || {}, license = acceptedLicense(meta);
+      const author = plain(meta.Artist?.value);
+      if (!author || author.length > 400 || !["image/jpeg", "image/png", "image/webp"].includes(info.mime)
+        || !Number.isSafeInteger(info.size) || info.size < 1 || info.size > NEWS_MEDIA_LIMITS.sourceBytes) fail("media_commons_metadata_incomplete");
+      const sourceUrl = fixedUrl(info.url, ["upload.wikimedia.org"]).href;
+      const image = await request(sourceUrl, NEWS_MEDIA_LIMITS.sourceBytes, ["upload.wikimedia.org"]);
+      const sha1 = createHash("sha1").update(image.bytes).digest("hex");
+      if (![sha1,BigInt(`0x${sha1}`).toString(36).padStart(31,"0")].includes(info.sha1)
+        || image.mime?.split(";")[0].trim().toLowerCase() !== info.mime) fail("media_commons_bytes_changed");
+      const normalized = await normalizeNewsMedia(image.bytes, image.mime);
+      const evidenceUrl = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(images[0])}`;
+      const materialTitle = plain(meta.ObjectName?.value || images[0]);
+      const materialUrl = Number.isSafeInteger(pages[0].pageid) && pages[0].pageid > 0
+        ? `https://commons.wikimedia.org/?curid=${pages[0].pageid}` : evidenceUrl;
+      const copyrightNotice = plain(meta.Copyright?.value || `© ${author}`);
+      const licenseNotices = [plain(meta.Attribution?.value), plain(meta.Disclaimer?.value)].filter(Boolean).join(' ');
+      const validUntil = new Date(now.getTime() + 30 * 86400000).toISOString();
+      const asset = { id: `${subject.mediaSubject ? "illustration" : "auto"}-${semanticRevision.slice(0,32)}`, status: "approved", newsIds: [item.id], sourceUrl,
+        sourceSha256: mediaByteHash(image.bytes), subject: subject.mediaSubject || "portrait",
+        ...(subject.mediaSubject ? { mediaRole: "subject-illustration" } : {}),
+        entityEvidence: subject.mediaSubject
+          ? `Illustration of ${subject.name} (${subject.qid}), exact literary entity in ${subject.matchedField}; Wikidata P18 ${fileTitle}. Archival illustration only: not evidence of the current event or announced edition. Exact entity type${subject.mediaSubject === "book" ? " and author relationship were" : " was"} checked before image rights.`
+          : `Portrait of ${subject.name} (${subject.qid}), exact reviewed name in ${subject.matchedField}; Wikidata P18 ${fileTitle}. This is a portrait, not a photograph of the news event.`,
+        author, rightsholder: author, credit: NEWS_MEDIA_CC_LICENSES[license]
+          ? `${subject.mediaSubject ? "Изображение к новости" : "Архивный портрет"}: ${subject.name}. «${materialTitle}». ${copyrightNotice}. ${licenseNotices} Wikimedia Commons: ${materialUrl}.`
+          : `${subject.mediaSubject ? "Иллюстрация" : "Портрет"}: ${subject.name}. ${author}. Wikimedia Commons.`, license,
+        ...(NEWS_MEDIA_CC_LICENSES[license] ? { materialTitle, materialUrl, copyrightNotice,
+          derivativeLicense: license, additionalRestrictions: false } : {}),
+        licenseEvidenceUrl: evidenceUrl, licenseEvidenceSha256: mediaByteHash(commonsResponse.bytes), checkMethod: "license-page",
+        checkedAt: now.toISOString(), validUntil, transformations: { resize: true, metadataRemoval: true, reencode: true, crop: false },
+        permissions: destinations.map(d => ({ platform: d.platform, destinationId: d.id, publish: true, providerProcessing: true, evidenceUrl })),
+        derivative: normalized.descriptor };
+      for (const destination of destinations) checkedNewsMediaAsset(asset, destination, item.id, now);
+      await cacheNormalizedNewsMedia(normalized);
+      return { status: "approved", reason: subject.mediaSubject ? "exact_headline_literary_entity_p18" : "exact_reviewed_writer_p18", nextCheckAt: validUntil, asset,
+        evidence: { subject, entityUrl: entityUrl.href, entitySha256: mediaByteHash(entityResponse.bytes),
+          commonsApiUrl: commonsUrl.href, commonsSha256: mediaByteHash(commonsResponse.bytes), fileTitle,
+          metadata: { Artist: author, LicenseShortName: plain(meta.LicenseShortName?.value), UsageTerms: plain(meta.UsageTerms?.value).slice(0,2000),
+            Copyrighted: plain(meta.Copyrighted?.value), LicenseUrl: plain(meta.LicenseUrl?.value) } } };
   };
   const freshSubject = async item => {
     const hints = searchCandidates(item);
@@ -95,10 +147,12 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     if(qualified.length!==1)fail("media_subject_search_ambiguous");
     return{...qualified[0],entityUrl:url,entityResponse:response};
   };
-  const admitCached = (state, item, sourceImage) => {
+  const admitCached = (state, item, sourceImage, illustrationHints) => {
     // The thumbnail is outside the message identity. A newly available exact
     // source image must receive its own rights check before a cached portrait.
     if (sourceImage.status === 'candidate' && state?.sourceImageRevision !== sourceImage.revision && maxNews > 0) return false;
+    if (illustrationHints.length && state?.illustrationPolicy !== NEWS_MEDIA_ILLUSTRATION_POLICY
+      && state?.asset?.mediaRole !== 'source-image' && report.inspected < maxNews) return false;
     if (state?.reason === 'media_discovery_license_unsupported' && state.discoveryPolicy !== NEWS_MEDIA_DISCOVERY_POLICY) return false;
     if (state?.schemaVersion !== 1 || state.newsId !== item.id || !["approved", "held", "pending"].includes(state.status)
       || !Number.isFinite(Date.parse(state.checkedAt)) || Date.parse(state.checkedAt) > now.getTime()
@@ -118,6 +172,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     report.cached++; if (state.status === "pending") report.pending++; return true;
   };
   const ordered = await Promise.all(items.map(async(item,index)=>({item,index,sourceImage:inspectNewsSourceCommonsImage(item),
+    illustrationHints: extractNewsMediaIllustrationCandidates(item),
     semanticRevision:await newsSemanticRevision(item)})));
   // Transient failures expire sooner than a large feed can be inspected. Give
   // never-checked items first turn, then the least recently checked identities.
@@ -126,22 +181,33 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     return Number(Boolean(left))-Number(Boolean(right))
       || (Date.parse(left?.checkedAt)||0)-(Date.parse(right?.checkedAt)||0) || a.index-b.index;
   });
-  for (const {item,semanticRevision,sourceImage} of ordered) {
+  for (const {item,semanticRevision,sourceImage,illustrationHints} of ordered) {
     const manual = registry.assets.find(asset => destinations.length && destinations.every(destination => {
       if (asset.mediaRole === 'source-image' && (sourceImage.status !== 'candidate'
         || asset.sourceUrl !== sourceImage.candidate.originalUrl || asset.sourceImageEvidence?.imageUrl !== sourceImage.candidate.imageUrl
         || asset.sourceImageEvidence?.sourceUrl !== item.source.url)) return false;
       try { checkedNewsMediaAsset(asset, destination, item.id, now); return true; } catch { return false; }
     }));
-    if (manual && (sourceImage.status !== 'candidate' || manual.sourceUrl === sourceImage.candidate.originalUrl
+    if (manual && ((sourceImage.status !== 'candidate' || manual.sourceUrl === sourceImage.candidate.originalUrl)
+      && (!illustrationHints.length || manual.subject !== 'portrait')
       || report.inspected >= maxNews)) { resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue; }
     const key = `history:media:${semanticRevision}`, previous = cached.get(semanticRevision);
-    if (admitCached(previous?.state, item, sourceImage)) continue;
+    if (admitCached(previous?.state, item, sourceImage, illustrationHints)) continue;
     if (!destinations.length || report.inspected >= maxNews) {
       resolutions[item.id] = { status: "pending", reason: "media_discovery_budget" }; report.pending++; continue;
     }
+    let fallback = manual;
+    // A newly enabled illustration lookup must not remove an existing licensed
+    // portrait when the lookup is unavailable or uses up this batch's budget.
+    if (!fallback && previous?.state?.status === 'approved' && previous.state.newsId === item.id
+      && previous.state.asset?.subject === 'portrait') try {
+      if (destinations.every(d => checkedNewsMediaAsset(previous.state.asset, d, item.id, now))) {
+        fixedUrl(previous.state.asset.sourceUrl, ['upload.wikimedia.org']); fallback = previous.state.asset;
+      }
+    } catch { /* Expired or unverifiable rights are not carried forward. */ }
     report.inspected++;
-    let state = { schemaVersion: 1, discoveryPolicy: NEWS_MEDIA_DISCOVERY_POLICY, newsId: item.id, semanticRevision, status: "held", checkedAt: now.toISOString(),
+    let state = { schemaVersion: 1, discoveryPolicy: NEWS_MEDIA_DISCOVERY_POLICY, illustrationPolicy: NEWS_MEDIA_ILLUSTRATION_POLICY,
+      newsId: item.id, semanticRevision, status: "held", checkedAt: now.toISOString(),
       nextCheckAt: new Date(now.getTime() + 14 * 86400000).toISOString(), reason: null,
       sourceImageRevision: sourceImage.revision || null, sourceImage: { status: 'held', reason: sourceImage.reason || null } };
     try {
@@ -153,11 +219,23 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
         } catch (error) {
           const reason = discoveryReason(error);
           state.sourceImage = { status: discoveryPending(reason) ? 'pending' : 'held', reason };
-          if (reason === 'media_discovery_request_budget' && !manual) throw error;
+          if (reason === 'media_discovery_request_budget' && !fallback) throw error;
         }
       }
-      if (state.status !== 'approved' && manual) state = { ...state, status: 'approved', reason: 'manual_registry',
-        asset: manual, nextCheckAt: manual.validUntil };
+      if (state.status !== 'approved' && illustrationHints.length) {
+        try {
+          const illustration = await resolveNewsMediaIllustrationSubject(item, illustrationHints, { request, matchSubjects });
+          if (illustration) state = { ...state, ...await discoverSubjectImage({ item, semanticRevision, ...illustration }),
+            illustration: { status: 'approved', reason: 'exact_headline_literary_entity_p18' } };
+          else state.illustration = { status: 'held', reason: 'media_illustration_subject_unmatched' };
+        } catch (error) {
+          const reason = discoveryReason(error);
+          state.illustration = { status: discoveryPending(reason) ? 'pending' : 'held', reason };
+          if (reason === 'media_discovery_request_budget' && !fallback) throw error;
+        }
+      }
+      if (state.status !== 'approved' && fallback) state = { ...state, status: 'approved',
+        reason: manual ? 'manual_registry' : 'retained_licensed_portrait', asset: fallback, nextCheckAt: fallback.validUntil };
       if (state.status !== 'approved') {
       const subjects = matchSubjects(item);
       if (!Array.isArray(subjects) || subjects.length > 1) fail("media_subject_ambiguous");
@@ -175,51 +253,7 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
           ...Object.values(entity.aliases||{}).flatMap(values=>Array.isArray(values)?values.map(value=>value.value):[])].map(normalizedName);
         if (searchCandidates(item).some(hint=>!aliases.includes(normalizedName(hint.query)))) fail("media_subject_ambiguous");
       }
-      const images = claimValues(entity.claims, "P18");
-      if (images.length !== 1 || typeof images[0] !== "string" || images[0].length > 240) fail("media_portrait_missing_or_ambiguous");
-      const fileTitle = `File:${images[0]}`, commonsUrl = new URL("https://commons.wikimedia.org/w/api.php");
-      commonsUrl.search = new URLSearchParams({ action: "query", prop: "imageinfo", titles: fileTitle,
-        iiprop: "url|extmetadata|mime|size|sha1", formatversion: "2", format: "json" });
-      const commonsResponse = await request(commonsUrl.href, NEWS_MEDIA_DISCOVERY_LIMITS.metadataBytes, ["commons.wikimedia.org"]);
-      const pages = JSON.parse(commonsResponse.bytes).query?.pages;
-      if (!Array.isArray(pages) || pages.length !== 1 || pages[0].title?.replaceAll("_", " ") !== fileTitle.replaceAll("_", " ")
-        || pages[0].missing || pages[0].imageinfo?.length !== 1) fail("media_commons_identity_invalid");
-      const info = pages[0].imageinfo[0], meta = info.extmetadata || {}, license = acceptedLicense(meta);
-      const author = plain(meta.Artist?.value);
-      if (!author || author.length > 400 || !["image/jpeg", "image/png", "image/webp"].includes(info.mime)
-        || !Number.isSafeInteger(info.size) || info.size < 1 || info.size > NEWS_MEDIA_LIMITS.sourceBytes) fail("media_commons_metadata_incomplete");
-      const sourceUrl = fixedUrl(info.url, ["upload.wikimedia.org"]).href;
-      const image = await request(sourceUrl, NEWS_MEDIA_LIMITS.sourceBytes, ["upload.wikimedia.org"]);
-      const sha1 = createHash("sha1").update(image.bytes).digest("hex");
-      if (![sha1,BigInt(`0x${sha1}`).toString(36).padStart(31,"0")].includes(info.sha1)
-        || image.mime?.split(";")[0].trim().toLowerCase() !== info.mime) fail("media_commons_bytes_changed");
-      const normalized = await normalizeNewsMedia(image.bytes, image.mime);
-      const evidenceUrl = `https://commons.wikimedia.org/wiki/File:${encodeURIComponent(images[0])}`;
-      const materialTitle = plain(meta.ObjectName?.value || images[0]);
-      const materialUrl = Number.isSafeInteger(pages[0].pageid) && pages[0].pageid > 0
-        ? `https://commons.wikimedia.org/?curid=${pages[0].pageid}` : evidenceUrl;
-      const copyrightNotice = plain(meta.Copyright?.value || `© ${author}`);
-      const licenseNotices = [plain(meta.Attribution?.value), plain(meta.Disclaimer?.value)].filter(Boolean).join(' ');
-      const validUntil = new Date(now.getTime() + 30 * 86400000).toISOString();
-      const asset = { id: `auto-${semanticRevision.slice(0,32)}`, status: "approved", newsIds: [item.id], sourceUrl,
-        sourceSha256: mediaByteHash(image.bytes), subject: "portrait",
-        entityEvidence: `Portrait of ${subject.name} (${subject.qid}), exact reviewed name in ${subject.matchedField}; Wikidata P18 ${fileTitle}. This is a portrait, not a photograph of the news event.`,
-        author, rightsholder: author, credit: NEWS_MEDIA_CC_LICENSES[license]
-          ? `Архивный портрет: ${subject.name}. «${materialTitle}». ${copyrightNotice}. ${licenseNotices} Wikimedia Commons: ${materialUrl}.`
-          : `Портрет: ${subject.name}. ${author}. Wikimedia Commons.`, license,
-        ...(NEWS_MEDIA_CC_LICENSES[license] ? { materialTitle, materialUrl, copyrightNotice,
-          derivativeLicense: license, additionalRestrictions: false } : {}),
-        licenseEvidenceUrl: evidenceUrl, licenseEvidenceSha256: mediaByteHash(commonsResponse.bytes), checkMethod: "license-page",
-        checkedAt: now.toISOString(), validUntil, transformations: { resize: true, metadataRemoval: true, reencode: true, crop: false },
-        permissions: destinations.map(d => ({ platform: d.platform, destinationId: d.id, publish: true, providerProcessing: true, evidenceUrl })),
-        derivative: normalized.descriptor };
-      for (const destination of destinations) checkedNewsMediaAsset(asset, destination, item.id, now);
-      await cacheNormalizedNewsMedia(normalized);
-      state = { ...state, status: "approved", reason: "exact_reviewed_writer_p18", nextCheckAt: validUntil, asset,
-        evidence: { subject, entityUrl: entityUrl.href, entitySha256: mediaByteHash(entityResponse.bytes),
-          commonsApiUrl: commonsUrl.href, commonsSha256: mediaByteHash(commonsResponse.bytes), fileTitle,
-          metadata: { Artist: author, LicenseShortName: plain(meta.LicenseShortName?.value), UsageTerms: plain(meta.UsageTerms?.value).slice(0,2000),
-            Copyrighted: plain(meta.Copyrighted?.value), LicenseUrl: plain(meta.LicenseUrl?.value) } } };
+      state = { ...state, ...await discoverSubjectImage({ item, semanticRevision, subject, entity, entityUrl, entityResponse }) };
       }
     } catch (error) {
       state.reason = discoveryReason(error);
@@ -230,6 +264,8 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
     // A usable portrait is a fallback, not a month-long negative decision about
     // the article's own photo. Retry transient source-image failures in one hour.
     if (state.status === 'approved' && state.asset.mediaRole !== 'source-image' && state.sourceImage.status === 'pending')
+      state.nextCheckAt = new Date(Math.min(Date.parse(state.nextCheckAt), now.getTime() + 3600000)).toISOString();
+    if (state.illustration?.status === 'pending')
       state.nextCheckAt = new Date(Math.min(Date.parse(state.nextCheckAt), now.getTime() + 3600000)).toISOString();
     if (store) {
       const result = await store.compareAppend(key, previous?.id || null, state);
@@ -252,8 +288,9 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
       fixedUrl(state.asset.sourceUrl,["upload.wikimedia.org"]); archived.push(state.asset);
     } } catch { /* Expired rights remain held; a missing JPEG never changes an approved post into text. */ }
   }
-  const assets = [...dynamic.filter(asset => asset.mediaRole === 'source-image'), ...registry.assets,
-    ...dynamic.filter(asset => asset.mediaRole !== 'source-image'), ...archived];
+  const assets = [...dynamic.filter(asset => asset.mediaRole === 'source-image'),
+    ...dynamic.filter(asset => asset.mediaRole === 'subject-illustration'), ...registry.assets,
+    ...dynamic.filter(asset => !['source-image', 'subject-illustration'].includes(asset.mediaRole)), ...archived];
   if (assets.length > NEWS_MEDIA_LIMITS.registryAssets) fail("media_registry_capacity");
   return { mediaOptions: { registry: { ...registry, assets, downloadHosts: [...new Set([...(registry.downloadHosts || []), "upload.wikimedia.org"])] },
     now, deferBytes: true, resolutions }, report };

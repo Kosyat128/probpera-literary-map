@@ -36,7 +36,7 @@ grant execute on function public.read_latest_literary_news_runtime(text,text,int
 comment on function public.read_latest_literary_news_runtime(text,text,integer) is
   'Service-only read of latest complete CAS states; invoker permissions/RLS, keyset pagination, no journal mutation or retention change.';
 
--- The hourly sender returns only due jobs, never the whole historical payload journal.
+-- The paced sender returns only due jobs, never the whole historical payload journal.
 create or replace function public.read_due_literary_news_runtime_posts(
   p_destination_id text, p_now timestamptz default now(), p_limit integer default 20
 ) returns table(id bigint, entity_id text, metadata jsonb)
@@ -56,8 +56,12 @@ begin
       order by a.entity_id collate "C", a.id desc
     ), latest as (
       select a.id, a.entity_id, a.metadata from latest_ids l join public.admin_audit_log a on a.id = l.id
-    )
-    select a.id, a.entity_id, a.metadata from latest a
+    ), eligible as (
+    select a.id, a.entity_id, a.metadata,
+      (nullif(a.metadata->>'remoteId','') is not null) as is_correction,
+      coalesce(nullif(a.metadata->>'originalAdmission',''),
+        a.metadata->'prepared'->'temporal'->>'publishedAt',a.entity_id) as admission_order
+    from latest a
     where a.metadata->'destination'->>'platform' = 'telegram'
       and a.metadata->'destination'->>'id' = p_destination_id
       and (a.metadata->>'status' in ('pending','correction_pending')
@@ -86,9 +90,21 @@ begin
                 or ((a.metadata->'prepared'->'temporal'->>'eventDate')::date = (p_now at time zone 'Europe/Moscow')::date
                   and ((a.metadata->'prepared'->'temporal'->>'verifiedAt')::timestamptz at time zone 'Europe/Moscow')::date >= (p_now at time zone 'Europe/Moscow')::date)
               else false end)))
-    order by (nullif(a.metadata->>'remoteId','') is not null) desc,
-      (a.metadata->'prepared'->'media'->>'assetId' is not null) desc,
-      a.metadata->'prepared'->'temporal'->>'publishedAt' desc nulls last, a.entity_id collate "C"
+    ), ranked as (
+      select e.*,
+        row_number() over (partition by e.is_correction order by e.admission_order collate "C",e.entity_id collate "C") as oldest_rank,
+        row_number() over (partition by e.is_correction order by e.admission_order collate "C" desc,e.entity_id collate "C" desc) as newest_rank
+      from eligible e
+    ), lanes as (
+      select r.*,row_number() over (partition by r.is_correction
+        order by least(r.oldest_rank,r.newest_rank),r.oldest_rank,r.entity_id collate "C") as lane_rank
+      from ranked r
+    )
+    select r.id,r.entity_id,r.metadata from lanes r
+    -- A large correction backlog cannot fill the whole page. Both arrival ends
+    -- remain available to the sender, with the oldest admitted story first;
+    -- an image never raises a job above an equally eligible text-only story.
+    order by r.lane_rank,r.is_correction desc,r.entity_id collate "C"
     limit p_limit;
 end;
 $$;
@@ -131,7 +147,7 @@ begin
   into creates, photos, fresh, fresh_photos, unknown_first from receipt;
   return pg_catalog.jsonb_build_object('editorialDay',p_day::text,'timeZone','Europe/Moscow',
     'acknowledgedCreates',creates,'acknowledgedPhotoCreates',photos,'freshCreates',fresh,'freshPhotoCreates',fresh_photos,
-    'legacyReceiptsWithUnknownFirstDate',unknown_first,'minimum',10,'maximum',15,'deficitToMinimum',greatest(0,10-fresh));
+    'legacyReceiptsWithUnknownFirstDate',unknown_first,'minimum',10,'maximum',20,'deficitToMinimum',greatest(0,10-fresh));
 end;
 $$;
 revoke all on function public.literary_news_delivery_day_status(text,timestamptz) from public, anon, authenticated;

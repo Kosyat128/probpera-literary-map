@@ -20,7 +20,7 @@ async function input(at = current) {
     preparationReport: { schemaVersion: 1, checkedAt: at.toISOString(), publicationConfirmed: true,
       held: [{ text: privateMarker }], native: { sourceCounts: { approvedActiveSources: 151, checkedSources: 32, totalFinds: 300, verifiedDetails: 10 } } },
     control: { mode: 'on', paused: false, historyReconciled: true, secret: privateMarker },
-    dayStatus: { editorialDay: '2026-10-01', timeZone: 'Europe/Moscow', minimum: 10, maximum: 15,
+    dayStatus: { editorialDay: '2026-10-01', timeZone: 'Europe/Moscow', minimum: 10, maximum: 20,
       acknowledgedCreates: 4, acknowledgedPhotoCreates: 2, freshCreates: 3, freshPhotoCreates: 2,
       legacyReceiptsWithUnknownFirstDate: 1, deficitToMinimum: 7 },
     dueRows: [], deliveryHeartbeat: { finishedAt: at.toISOString(), status: 'daily_target_deficit', raw: privateMarker } };
@@ -199,7 +199,7 @@ describe('read-only operations report network boundaries', () => {
             : [{ name: 'NEWS_DELIVERY_ENABLED', type: 'plain_text', text: 'true' }] } });
         }
         if (url.pathname.endsWith('/schedules')) return Response.json({ success: true, result: { schedules: [{
-          cron: url.pathname.includes('/probpera-literary-news-preparation/') ? '17 */2 * * *' : '0 5-19 * * *' }] } });
+          cron: url.pathname.includes('/probpera-literary-news-preparation/') ? '17 */2 * * *' : '*/5 5-19 * * *' }] } });
         if (scenario.actualPreparation && url.pathname.includes('/storage/kv/')) {
           const documents = new Map([[DAILY_NEWS_PROFILE_KEY, value.profile], [DAILY_NEWS_LEDGER_KEY, value.ledger],
             [DAILY_NEWS_OWNER_KEY, value.owner], ['literary-news:v1:daily-automation:native-report', value.preparationReport]]);

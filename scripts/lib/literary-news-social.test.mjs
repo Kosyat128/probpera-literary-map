@@ -346,11 +346,11 @@ describe("durable agenda delivery state machine (isolated, no live writes)", () 
     const rows = [1, 2, 3, 4].map((n) => ({ key: `${n}`, originalAdmission: `${n}`, status: "pending" }));
     expect(scheduleNewsJobs(rows).map((row) => row.key)).toEqual(["1", "4", "2", "3"]);
   });
-  it('puts fresh photo candidates ahead of text while keeping corrections first',()=>{
+  it('lets an older text story precede a photo while keeping corrections first',()=>{
     const rows=[{key:'text',status:'pending',originalAdmission:'1',prepared:{media:null}},
       {key:'photo',status:'pending',originalAdmission:'2',prepared:{media:{assetId:'verified'}}},
       {key:'edit',status:'correction_pending',remoteId:'7',originalAdmission:'3',prepared:{media:null}}];
-    expect(scheduleNewsJobs(rows).map(row=>row.key)).toEqual(['edit','photo','text']);
+    expect(scheduleNewsJobs(rows).map(row=>row.key)).toEqual(['edit','text','photo']);
   });
 });
 
