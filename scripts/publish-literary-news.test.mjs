@@ -37,13 +37,13 @@ describe("bounded byte preparation makes durable progress without duplicate writ
       prepared:{media:{assetId:`asset-${n}`},temporal:{kind:'news',publishedAt:now.toISOString()}}}}));
     expect(selectDueNewsMediaJobs(rows,controls,now).map(job=>job.newsId).sort()).toEqual(["news-8","news-9"]);
   });
-  it('prioritizes fresh native photos and permits fresh text while excluding stale new stories',()=>{
+  it('orders fresh text and photos by admission while excluding stale new stories',()=>{
     const now=new Date('2026-09-30T12:00:00Z'),destination={platform:'telegram',id:'-1001'},
       controls=new Map([['telegram:-1001',{mode:'on',paused:false,historyReconciled:true}]]);
     const job=(key,photo,publishedAt)=>({state:{key,newsId:key,status:'pending',originalAdmission:key,destination,
       prepared:{media:photo?{assetId:key}:null,temporal:{kind:'news',publishedAt}}}});
     const rows=[job('1-text',false,'2026-09-30'),job('2-photo',true,'2026-09-29'),job('3-stale',true,'2026-09-10'),job('4-undated',true,null)];
-    expect(selectDueNewsMediaJobs(rows,controls,now).map(row=>row.newsId)).toEqual(['2-photo','1-text']);
+    expect(selectDueNewsMediaJobs(rows,controls,now).map(row=>row.newsId)).toEqual(['1-text','2-photo']);
   });
   it("backs off eight unavailable portraits so later due photos are selected next, preserving concurrent remote receipts",async()=>{
     const now=new Date("2026-09-27T00:00:00Z"),states=new Map();
