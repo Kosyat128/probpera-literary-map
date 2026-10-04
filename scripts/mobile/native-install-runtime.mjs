@@ -262,6 +262,8 @@ function androidOfflineCommandArgs(value) {
       ? copied[12] === 'literaryChildDataPhase' && ['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'].includes(copied[13])
       : copied[7] === 'ru.probpera.literaryplanet.PlanetChildDataTransportRuntimeTest'
         ? copied[12] === 'literaryChildTransportPhase' && copied[13] === 'wire'
+        : copied[7] === childLocalV2PinOperationsSelection
+          ? copied[12] === 'literaryFirstInstallPhase' && copied[13] === 'first-install-v2'
         : copied[7] === pinVerificationInputClass
           ? copied[12] === 'literaryPinVerificationInputPhase' && copied[13] === 'input'
         : copied[7] === 'ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest'
@@ -405,6 +407,79 @@ export function pinVerificationInputFixturePassed(text) {
   return summarySeen && terminalSeen && fields.size === 0 && started.size === 13 && completed.size === 13;
 }
 
+/** Fixed NONINTERACTIVE V2 boundary methods only. Run metadata is a test
+ * selector, never owner/PIN, durable keyspace or ParentGate admission proof. */
+export const nativeChildLocalV2PinOperationsFixtureSourcePath = 'apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildFirstInstallRuntimeTest.java';
+const childLocalV2PinOperationsClass = 'ru.probpera.literaryplanet.PlanetChildFirstInstallRuntimeTest';
+export const childLocalV2PinOperationsTestMethods = Object.freeze([
+  'localV2RawEnrollmentCannotUseEvenOriginalSampleWithoutNativeOwnerKdf',
+  'localV2RawChargeCannotMutateFromAnchoredBooleanOrP1Receipt',
+  'localV2SyntheticOutcomeFlagsCannotAuthorizeEnrollmentMutation',
+  'localV2CanonicalAdultSnapshotCannotMasqueradeAsOriginalChildGate',
+  'localV2OriginalOwnerTargetLocaleAndIterationSubstitutionAreRefused',
+  'localV2RetirementJoinsActualPinWorkerAfterCounterDrain',
+  'localV2StaleNativeOperationCannotTouchFreshLeaseAfterRetirement',
+  'localV2OwnedPromptPauseIsNarrowAndActualBackgroundStillLatches',
+  'localV2ClosedResultLatchesBackgroundUntilActualObserverCleanup',
+]);
+const childLocalV2PinOperationsSelection = childLocalV2PinOperationsTestMethods.map(method => childLocalV2PinOperationsClass + '#' + method).join(',');
+export function verifyNativeChildLocalV2PinOperationsFixtureSource(files) {
+  check(Array.isArray(files) && files.filter(row => row?.path === nativeChildLocalV2PinOperationsFixtureSourcePath).length === 1
+    && files.some(row => row?.path === nativeChildLocalV2PinOperationsFixtureSourcePath && hash(row.sha256)),
+    'Missing unique exact Local V2 PIN operations fixture raw source binding.');
+  return true;
+}
+export function childLocalV2PinOperationsFixtureArguments(runId) {
+  check(typeof runId === 'string' && /^[a-f0-9]{32}$/u.test(runId), 'Exact own Local V2 PIN operations run required.');
+  return Object.freeze(['shell','am','instrument','-w','-r','-e','class',childLocalV2PinOperationsSelection,
+    '-e','literaryRunId',runId,'-e','literaryFirstInstallPhase','first-install-v2','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+}
+/** Nine exact matching serial start/pass pairs, one exact summary and terminal.
+ * Standard AndroidJUnitRunner id/current/stream metadata is permitted inside
+ * its original packet; unknown/duplicate fields and extra statuses fail closed.
+ * This reduced fixture can never certify all 48 compiled methods. */
+export function childLocalV2PinOperationsFixturePassed(text) {
+  if (typeof text !== 'string' || text.length > 4 * 1024 * 1024 || text.includes('\0')
+    || /FAILURES!!!|INSTRUMENTATION_FAILED|INSTRUMENTATION_ABORTED|Process crashed|shortMsg=|AssumptionViolatedException|\bskipped\b|\b(?:failed|error):/iu.test(text)) return false;
+  const expected = new Set(childLocalV2PinOperationsTestMethods), started = new Set(), completed = new Set(), ordinals = new Set();
+  let fields = new Map(), active = null, summarySeen = false, terminalSeen = false, resultStreamSeen = false;
+  for (const line of text.split(/\r?\n/u)) {
+    if (/^OK \([0-9]+ tests?\)[ \t]*$/u.test(line)) {
+      if (!/^OK \(9 tests\)[ \t]*$/u.test(line) || summarySeen || terminalSeen || active || fields.size !== 0 || completed.size !== 9 || started.size !== 9) return false;
+      summarySeen = true; continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_CODE:')) {
+      if (!/^INSTRUMENTATION_CODE:[ \t]*-1[ \t]*$/u.test(line) || !summarySeen || terminalSeen || active || fields.size !== 0) return false;
+      terminalSeen = true; continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_RESULT:')) {
+      if (!line.startsWith('INSTRUMENTATION_RESULT: stream=') || resultStreamSeen || summarySeen || terminalSeen || active || fields.size !== 0 || completed.size !== 9) return false;
+      resultStreamSeen = true; continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_STATUS:')) {
+      if (summarySeen || terminalSeen) return false;
+      const field = /^INSTRUMENTATION_STATUS: (class|test|numtests|current|id|stream)=(.*)$/u.exec(line);
+      if (!field || fields.has(field[1])) return false;
+      fields.set(field[1],field[2]); continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_STATUS_CODE:')) {
+      const status = /^INSTRUMENTATION_STATUS_CODE:[ \t]*([01])[ \t]*$/u.exec(line), method = fields.get('test');
+      if (!status || summarySeen || terminalSeen || fields.get('class') !== childLocalV2PinOperationsClass || fields.get('numtests') !== '9' || !expected.has(method)
+        || fields.has('id') && fields.get('id') !== 'AndroidJUnitRunner' || fields.has('current') && !/^[1-9]$/u.test(fields.get('current'))) return false;
+      const ordinal = fields.get('current');
+      if (status[1] === '1') {
+        if (active || started.has(method) || ordinal !== undefined && ordinals.has(ordinal)) return false;
+        active = { method, ordinal, id: fields.get('id') }; started.add(method); if (ordinal !== undefined) ordinals.add(ordinal);
+      } else {
+        if (!active || active.method !== method || active.ordinal !== ordinal || active.id !== fields.get('id') || completed.has(method)) return false;
+        completed.add(method); active = null;
+      }
+      fields = new Map(); continue;
+    }
+    if (/^\s*INSTRUMENTATION_(?:STATUS|STATUS_CODE|CODE|RESULT)/u.test(line)) return false;
+  }
+  return summarySeen && terminalSeen && active === null && fields.size === 0 && started.size === 9 && completed.size === 9;
+}
 export function bindXctestrun(input, { templateDir, binary, runId, phase }) {
   check(input?.__xctestrun_metadata__?.FormatVersion === 2 && Array.isArray(input.TestConfigurations) && input.TestConfigurations.length === 1,
     'Expected one version-2 XCTest configuration.');
@@ -469,6 +544,11 @@ export async function runNativeInstallRuntime(options = {}) {
   const platform = options.platform; check(platform === 'android' || platform === 'ios', 'Use android or ios.');
   check(options.pinVerificationInput === undefined || typeof options.pinVerificationInput === 'boolean', 'Explicit verification-input selector required.');
   const pinVerificationInputOnly = options.pinVerificationInput === true;
+  check(options.childLocalV2PinOperations === undefined || typeof options.childLocalV2PinOperations === 'boolean', 'Explicit Local V2 PIN operations selector required.');
+  const childLocalV2PinOperationsOnly = options.childLocalV2PinOperations === true;
+  check(!(pinVerificationInputOnly && childLocalV2PinOperationsOnly), 'Native PIN fixture selectors cannot be mixed.');
+  check(!childLocalV2PinOperationsOnly || platform === 'android' && options.reboot !== true, 'Local V2 PIN operations selection is Android-only and does not reboot a target.');
+  const privatePinFixtureOnly = pinVerificationInputOnly || childLocalV2PinOperationsOnly;
   check(!pinVerificationInputOnly || platform === 'android' && options.reboot !== true, 'Verification-input selection is Android-only and does not reboot a target.');
   check(platform === 'android' || options.adbServerPort === undefined, 'An ADB server port applies only to Android.');
   const adbServerArgs = androidAdbServerArguments(options.adbServerPort);
@@ -483,7 +563,7 @@ export async function runNativeInstallRuntime(options = {}) {
     catch (error) { if (error.code !== 'ENOENT') throw error; await mkdir(parent); }
   }
   await mkdir(output); check(await realpath(output) === output, 'Linked evidence output.');
-  const report = { schemaVersion: 1, kind: pinVerificationInputOnly ? 'literary-planet-native-pin-verification-input-runtime' : 'literary-planet-native-install-runtime', platform, channel: 'dev', runId,
+  const report = { schemaVersion: 1, kind: childLocalV2PinOperationsOnly ? 'literary-planet-child-local-v2-pin-operations-runtime' : pinVerificationInputOnly ? 'literary-planet-native-pin-verification-input-runtime' : 'literary-planet-native-install-runtime', platform, channel: 'dev', runId,
     startedAt: new Date().toISOString(), status: 'NOT_RUN', releaseReady: false, installed: false, hardwareProtectionTested: false,
     checks: [], dependencies: [], commands: [], captures: [], cleanup: {},
     ...(adbServerArgs.length === 0 ? {} : { adbServer: { host: adbServerArgs[1], port: Number(adbServerArgs[3]) } }),
@@ -491,6 +571,12 @@ export async function runNativeInstallRuntime(options = {}) {
       'Screenshots and process liveness require UI review; neither proves full product/native acceptance.'] };
   if (pinVerificationInputOnly) { report.fixture = { class: pinVerificationInputClass, tests: 13, phase: 'input', scope: 'native-ui-with-synthetic-authority-storage-kdf', runMetadataOnly: true, installedStorageAcceptance: false, parentGateAdmission: false };
     report.limits.push('Selected thirteen-case native UI fixture uses synthetic authority/storage/KDF; no ParentGate, installed-storage, genuine-provider or release acceptance.'); }
+  if (childLocalV2PinOperationsOnly) {
+    report.fixture = { class: childLocalV2PinOperationsClass, selection: childLocalV2PinOperationsSelection, methods: [...childLocalV2PinOperationsTestMethods], tests: 9, enclosingClassCompiledTests: 48,
+      phase: 'first-install-v2', scope: 'private-native-local-v2-boundary-mechanics', noninteractive: true, runMetadataOnly: true,
+      wholeFixtureAcceptance: false, realOsOwnerUiAcceptance: false, nativeKeyspacePersistenceAcceptance: false, installedStorageAcceptance: false, parentGateAdmission: false };
+    report.limits.push('Selected nine noninteractive Local V2 methods prove private native boundary mechanics only; no real OS-owner UI, native keyspace persistence, ParentGate/admission, installed-storage or release acceptance. All 48 compiled instrumentation methods remain a separate scope.');
+  }
   const abort = new AbortController(), interrupt = () => abort.abort();
   process.once('SIGINT', interrupt); process.once('SIGTERM', interrupt);
   let ownedAndroidInstall = false, ownedTestInstall = false, ownedSimulator = null, receipt, xctestrun;
@@ -592,6 +678,7 @@ export async function runNativeInstallRuntime(options = {}) {
       webArtifactSha256: receipt.webArtifactSha256, applicationId: receipt.applicationId, versionName: receipt.versionName, versionCode: receipt.versionCode };
     check(JSON.stringify(await nativeRuntimeSources(root)) === JSON.stringify(receipt.sourceInputs), 'The binary source/configuration fingerprint is stale.');
     if (pinVerificationInputOnly) verifyNativePinVerificationInputFixtureSource(receipt.sourceInputs.files);
+    if (childLocalV2PinOperationsOnly) verifyNativeChildLocalV2PinOperationsFixtureSource(receipt.sourceInputs.files);
     const webArtifactPath=receipt.webArtifactPath??'dist-native/artifact.json',webArtifactDir=path.posix.dirname(webArtifactPath);
     const audit = await verifyNativeArtifact({ rootDir: root,artifactDir:webArtifactDir }); check(audit.pass && audit.identity?.platform === platform && audit.identity.channel === 'dev'
       && audit.identity.sourceCommit === receipt.sourceCommit, 'Current exact native web preparation audit/source failed.');
@@ -609,7 +696,7 @@ export async function runNativeInstallRuntime(options = {}) {
       check(certificate === parseAndroidCertificate(await command(tools.java, [...commandContext.javaArgs, '-jar', tools.signer, 'verify', '--verbose', '--print-certs', test])), 'Instrumentation signing identity does not match the main APK.');
       report.signing = { certificateSha256: certificate, productionSigning: false };
       if (receipt.certificateSha256 !== undefined) check(receipt.certificateSha256 === certificate, 'Current certificate differs from the receipt.');
-      if (!pinVerificationInputOnly && receipt.previousArtifact !== undefined && receipt.previousArtifact !== null) {
+      if (!privatePinFixtureOnly && receipt.previousArtifact !== undefined && receipt.previousArtifact !== null) {
         previousAssessment = validatePreviousAndroidArtifact(receipt.previousArtifact,receipt,options.receiptPath);
         const previous = previousAssessment.previous, bytes = await regular(root,previous.artifactPath);
         check(bytes.length === previous.artifactBytes && sha(bytes) === previous.artifactSha256, 'Preserved predecessor bytes changed.');
@@ -648,6 +735,20 @@ export async function runNativeInstallRuntime(options = {}) {
       check((await adb(['shell', 'pm', 'list', 'packages', receipt.applicationId])).trim() === '', 'Refuse an already installed application; use a fresh own emulator.');
       check(Number((await adb(['shell', 'getprop', 'ro.build.version.sdk'])).trim()) >= 28, 'Synthetic instrumentation requires API 28 or newer.');
       await offline.verify('owned-target-before-install');
+      if (childLocalV2PinOperationsOnly) {
+        await offline.command('install-child-local-v2-pin-operations',['install',binary],60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
+        await offline.command('install-child-local-v2-pin-operations-fixture',['install',path.resolve(root,receipt.testArtifactPath)],60_000); ownedTestInstall = true;
+        await installedAndroidBytes(receipt.artifactSha256,'child-local-v2-pin-operations-installed-base.apk');
+        report.installed = true; record('installed-package-byte-equality','PASS');
+        const observed = await offline.command('instrument-child-local-v2-pin-operations',childLocalV2PinOperationsFixtureArguments(runId),180_000);
+        check(childLocalV2PinOperationsFixturePassed(observed),'Exact nine-method noninteractive Local V2 PIN operations fixture did not pass.');
+        report.checks.push({id:'child-local-v2-pin-operations',status:'PASS',backend:'synthetic-boundary',scope:'private-native-local-v2-boundary-mechanics',tests:9,wholeFixtureAcceptance:false,fixtureRunId:runId});
+        await offline.verify('child-local-v2-pin-operations-after-fixture');
+        await installedAndroidBytes(receipt.artifactSha256,'child-local-v2-pin-operations-after-base.apk');
+        check(JSON.stringify(await nativeRuntimeSources(root)) === JSON.stringify(receipt.sourceInputs),'Source/configuration changed during Local V2 PIN operations fixture.');
+        record('source-fingerprint-after-child-local-v2-pin-operations','PASS');
+        report.status = 'PASS'; return report;
+      }
       if (pinVerificationInputOnly) {
         await offline.command('install-pin-verification-input',['install',binary],60_000); ownedAndroidInstall = true; installedAndroidGeneration = 'current';
         await offline.command('install-pin-verification-input-fixture',['install',path.resolve(root,receipt.testArtifactPath)],60_000); ownedTestInstall = true;
@@ -812,9 +913,9 @@ export async function runNativeInstallRuntime(options = {}) {
       } catch { report.cleanup['childDataFixtureRemoved-' + fixtureId] = false; }
     }
     if (ownedAndroidInstall) {
-      if (ownedTestInstall && !pinVerificationInputOnly) { try { if (legacyPreferenceSeeded || installedAndroidGeneration === 'previous') await androidPreviousPreference('remove',true);
+      if (ownedTestInstall && !privatePinFixtureOnly) { try { if (legacyPreferenceSeeded || installedAndroidGeneration === 'previous') await androidPreviousPreference('remove',true);
         else await androidInstrument('clear', true, true); report.cleanup.preferenceFixtureRemoved = true; } catch { report.cleanup.preferenceFixtureRemoved = false; } }
-      if (ownedTestInstall && installedAndroidGeneration === 'current' && !pinVerificationInputOnly) {
+      if (ownedTestInstall && installedAndroidGeneration === 'current' && !privatePinFixtureOnly) {
         try { await androidInstrument('clear', true); report.cleanup.secureFixtureRemoved = true; }
         catch { report.cleanup.secureFixtureRemoved = false; }
       }
@@ -838,12 +939,13 @@ if (isLocalCliEntry(import.meta.url)) {
     const name = args[index];
     if (name === '--execute') values.execute = true;
     else if (name === '--pin-verification-input') values.pinVerificationInput = true;
+    else if (name === '--child-local-v2-pin-operations') values.childLocalV2PinOperations = true;
     else if (name === '--reboot-owned-target') values.reboot = true;
     else if (['--platform', '--receipt', '--out', '--run-id', '--serial', '--avd-name', '--adb-server-port'].includes(name) && typeof args[index + 1] === 'string' && !args[index + 1].startsWith('--')) values[name.slice(2)] = args[++index];
-    else throw new Error('Use --platform android|ios --receipt relative.json --out .tmp/... [--run-id 32hex --serial emulator-N --avd-name LiteraryPlanet-V12-32hex --adb-server-port EVENPORT --execute --reboot-owned-target --pin-verification-input].');
+    else throw new Error('Use --platform android|ios --receipt relative.json --out .tmp/... [--run-id 32hex --serial emulator-N --avd-name LiteraryPlanet-V12-32hex --adb-server-port EVENPORT --execute --reboot-owned-target --pin-verification-input|--child-local-v2-pin-operations].');
   }
   const report = await runNativeInstallRuntime({ platform: values.platform, receiptPath: values.receipt, outDir: values.out,
-    runId: values['run-id'], serial: values.serial, avdName: values['avd-name'], adbServerPort: values['adb-server-port'] === undefined ? undefined : parseOwnedAdbServerPort(values['adb-server-port']), execute: values.execute, reboot: values.reboot, pinVerificationInput: values.pinVerificationInput });
+    runId: values['run-id'], serial: values.serial, avdName: values['avd-name'], adbServerPort: values['adb-server-port'] === undefined ? undefined : parseOwnedAdbServerPort(values['adb-server-port']), execute: values.execute, reboot: values.reboot, pinVerificationInput: values.pinVerificationInput, childLocalV2PinOperations: values.childLocalV2PinOperations });
   process.stdout.write(json({ status: report.status, platform: report.platform, runId: report.runId, releaseReady: false }));
   process.exitCode = report.status === 'PASS' ? 0 : 2;
 }

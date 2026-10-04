@@ -3,6 +3,10 @@ import path from 'node:path';
 import {bindXctestrun,childDataScenarioRunId,childDataFixtureArguments,childTransportFixtureArguments,childProtectedFixtureArguments,protectedEnvelopeFixturePassed,nativeProtectedFixtureSourcePaths,verifyNativeProtectedFixtureSources,createAndroidOfflineGate,
   nativePinVerificationInputFixtureSourcePath,verifyNativePinVerificationInputFixtureSource,pinVerificationInputFixtureArguments,pinVerificationInputFixturePassed,pinVerificationInputTestMethods} from './native-install-runtime.mjs';
 
+import {mkdtemp,readFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import {nativeChildLocalV2PinOperationsFixtureSourcePath,childLocalV2PinOperationsTestMethods,verifyNativeChildLocalV2PinOperationsFixtureSource,childLocalV2PinOperationsFixtureArguments,childLocalV2PinOperationsFixturePassed,runNativeInstallRuntime} from './native-install-runtime.mjs';
+
 const runId='a'.repeat(32), binary=path.resolve('/synthetic/build/App.app'), templateDir=path.dirname(binary);
 const phases=['write','read','atomic','retire','corrupt','missing-key','missing-cipher','clear'];
 function input(){return {__xctestrun_metadata__:{FormatVersion:2},TestConfigurations:[{TestTargets:[{
@@ -191,5 +195,104 @@ describe('native verification input runner', () => {
   it('keeps connected-target denial ahead of the new UI fixture and records the actual failed offline observation',async()=>{
     const f=gateFixture(true);await expect(f.gate.command('pin-verification-input',pinVerificationInputFixtureArguments(runId),180000)).rejects.toThrow(/not verifiably offline/u);
     expect(f.calls).toEqual(readArgs);expect(f.records).toMatchObject([{status:'FAIL',reason:'android-offline-state-unavailable'}]);
+  });
+});
+
+describe('native Local V2 PIN operations runner',()=>{
+  const runId='8'.repeat(32),fixtureClass='ru.probpera.literaryplanet.PlanetChildFirstInstallRuntimeTest';
+  const methods=[
+    'localV2RawEnrollmentCannotUseEvenOriginalSampleWithoutNativeOwnerKdf',
+    'localV2RawChargeCannotMutateFromAnchoredBooleanOrP1Receipt',
+    'localV2SyntheticOutcomeFlagsCannotAuthorizeEnrollmentMutation',
+    'localV2CanonicalAdultSnapshotCannotMasqueradeAsOriginalChildGate',
+    'localV2OriginalOwnerTargetLocaleAndIterationSubstitutionAreRefused',
+    'localV2RetirementJoinsActualPinWorkerAfterCounterDrain',
+    'localV2StaleNativeOperationCannotTouchFreshLeaseAfterRetirement',
+    'localV2OwnedPromptPauseIsNarrowAndActualBackgroundStillLatches',
+    'localV2ClosedResultLatchesBackgroundUntilActualObserverCleanup',
+  ];
+  const selection=methods.map(method=>fixtureClass+'#'+method).join(',');
+  const packet=(name,code,ordinal,owner=fixtureClass)=>`INSTRUMENTATION_STATUS: class=${owner}\nINSTRUMENTATION_STATUS: numtests=9\nINSTRUMENTATION_STATUS: test=${name}\n`
+    +(ordinal===undefined?'':`INSTRUMENTATION_STATUS: current=${ordinal}\nINSTRUMENTATION_STATUS: id=AndroidJUnitRunner\nINSTRUMENTATION_STATUS: stream=${code===1?'':'.'}\n`)
+    +`INSTRUMENTATION_STATUS_CODE: ${code}\n`;
+  const success=(names=methods,standard=false)=>names.map((name,index)=>packet(name,1,standard?index+1:undefined)+packet(name,0,standard?index+1:undefined)).join('')
+    +(standard?'INSTRUMENTATION_RESULT: stream=\n\nTime: 0.123\n':'')+'\nOK (9 tests)\nINSTRUMENTATION_CODE: -1\n';
+  const readArgs=[['shell','settings','get','global','airplane_mode_on'],['shell','settings','get','global','mobile_data'],['shell','cmd','wifi','status']];
+  function gateFixture(connected=false){const calls=[],records=[],replies=['1\n',connected?'1\n':'0\n','Wifi is disabled\nWifi scanning is only available when wifi is enabled\n'];
+    return {calls,records,gate:createAndroidOfflineGate(async args=>{calls.push([...args]);const i=readArgs.findIndex(row=>row.join(',')===args.join(','));return i>=0?replies[i]:'synthetic selector only; no target exists';},value=>records.push(value))};}
+  it('selects exactly nine fully qualified noninteractive methods and original first-install metadata',()=>{
+    expect(childLocalV2PinOperationsTestMethods).toEqual(methods);expect(Object.isFrozen(childLocalV2PinOperationsTestMethods)).toBe(true);
+    const args=childLocalV2PinOperationsFixtureArguments(runId);expect(Object.isFrozen(args)).toBe(true);
+    expect(args).toEqual(['shell','am','instrument','-w','-r','-e','class',selection,'-e','literaryRunId',runId,'-e','literaryFirstInstallPhase','first-install-v2','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+    expect(args[7].split(',')).toHaveLength(9);expect(args[7]).not.toBe(fixtureClass);
+    for(const id of [undefined,null,{},'',runId.slice(1),'A'.repeat(32),runId+';',runId+'\n'])expect(()=>childLocalV2PinOperationsFixtureArguments(id)).toThrow();
+  });
+  it('requires the unique first-install raw source hash rather than another PIN fixture',()=>{
+    const row={path:nativeChildLocalV2PinOperationsFixtureSourcePath,sha256:'c'.repeat(64)};
+    expect(row.path).toBe('apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildFirstInstallRuntimeTest.java');
+    expect(verifyNativeChildLocalV2PinOperationsFixtureSource([row,{path:'src/fixture.ts',sha256:'b'.repeat(64)}])).toBe(true);
+    for(const rows of [null,[],[row,row],[{...row,sha256:'bad'}],[{...row,path:nativePinVerificationInputFixtureSourcePath}]])expect(()=>verifyNativeChildLocalV2PinOperationsFixtureSource(rows)).toThrow();
+  });
+  it('accepts original matching serial packets and standard AndroidJUnitRunner metadata in either locale line ending',()=>{
+    expect(childLocalV2PinOperationsFixturePassed(success())).toBe(true);
+    expect(childLocalV2PinOperationsFixturePassed(success([...methods].reverse(),true).replaceAll('\n','\r\n'))).toBe(true);
+  });
+  it('rejects missing starts or completions, foreign methods and reused original identity even with OK nine',()=>{
+    for(const text of [success(methods.slice(1)),success().replace(packet(methods[0],1),''),success().replace(packet(methods[0],0),''),
+      success([...methods.slice(0,-1),methods[0]]),success().replace(methods[0],'interactiveFirstInstall'),success().replace(fixtureClass,fixtureClass+'Foreign'),
+      success().replace('INSTRUMENTATION_STATUS: numtests=9','INSTRUMENTATION_STATUS: numtests=48'),success()+packet(methods[0],1)])expect(childLocalV2PinOperationsFixturePassed(text)).toBe(false);
+  });
+  it('rejects crossed original packets and inconsistent runner ordinal or identity metadata',()=>{
+    const crossed=packet(methods[0],1)+packet(methods[1],1)+packet(methods[0],0)+packet(methods[1],0)+success(methods.slice(2));
+    for(const text of [crossed,success().replace(packet(methods[0],0),packet(methods[1],0)),success(methods,true).replace('current=1','current=0'),
+      success(methods,true).replace('current=1','current=2'),success(methods,true).replace('id=AndroidJUnitRunner','id=ForeignRunner'),
+      success(methods,true).replace('INSTRUMENTATION_STATUS: current=1\n','')])expect(childLocalV2PinOperationsFixturePassed(text)).toBe(false);
+  });
+  it('rejects extra or duplicate status fields instead of ignoring them as passing stream text',()=>{
+    for(const field of ['INSTRUMENTATION_STATUS: extra=value\n','INSTRUMENTATION_STATUS: stack=ignored\n','INSTRUMENTATION_STATUS: current=1\nINSTRUMENTATION_STATUS: current=1\n',
+      'INSTRUMENTATION_STATUS: test='+methods[0]+'\n','INSTRUMENTATION_STATUS: stream=x\nINSTRUMENTATION_STATUS: stream=y\n'])
+      expect(childLocalV2PinOperationsFixturePassed(success().replace('INSTRUMENTATION_STATUS_CODE: 1',field+'INSTRUMENTATION_STATUS_CODE: 1'))).toBe(false);
+    for(const suffix of ['INSTRUMENTATION_STATUS: id=late\n','INSTRUMENTATION_STATUS_CODE: 0\n','INSTRUMENTATION_RESULT: stream=late\n','INSTRUMENTATION_RESULT: extra=late\n'])
+      expect(childLocalV2PinOperationsFixturePassed(success()+suffix)).toBe(false);
+  });
+  it('rejects skips, assumptions, failure codes, crashes and malformed or unbounded output',()=>{
+    for(const code of [-1,-2,-3,-4,2,'00','+0','unknown'])expect(childLocalV2PinOperationsFixturePassed(success().replace('INSTRUMENTATION_STATUS_CODE: 0',`INSTRUMENTATION_STATUS_CODE: ${code}`))).toBe(false);
+    for(const suffix of ['FAILURES!!!','INSTRUMENTATION_FAILED: unavailable','INSTRUMENTATION_ABORTED','Process crashed','shortMsg=error','skipped','AssumptionViolatedException','error: unavailable'])expect(childLocalV2PinOperationsFixturePassed(success()+suffix)).toBe(false);
+    for(const value of [null,{},'x'.repeat(4*1024*1024+1),success()+'\0'])expect(childLocalV2PinOperationsFixturePassed(value)).toBe(false);
+  });
+  it('requires exact counts and complete original terminal order rather than partial or whole-fixture summaries',()=>{
+    for(const text of [success().replace('OK (9 tests)\n',''),success().replace('9 tests','8 tests'),success().replace('9 tests','48 tests'),success().replace('9 tests','09 tests'),
+      success()+'OK (9 tests)\n',success().replace('INSTRUMENTATION_CODE: -1','INSTRUMENTATION_CODE: 0'),success().replace('INSTRUMENTATION_CODE: -1\n',''),
+      success()+'INSTRUMENTATION_CODE: -1\n',success().slice(0,-2),'OK (9 tests)\nINSTRUMENTATION_CODE: -1\n'+success(),
+      success().replace('OK (9 tests)\nINSTRUMENTATION_CODE: -1','INSTRUMENTATION_CODE: -1\nOK (9 tests)'),
+      success().replace('OK (9 tests)','INSTRUMENTATION_STATUS: class='+fixtureClass+'\nOK (9 tests)')])expect(childLocalV2PinOperationsFixturePassed(text)).toBe(false);
+  });
+  it('copies the exact selection before offline observations and dispatches only after all three pass',async()=>{
+    const f=gateFixture(),args=[...childLocalV2PinOperationsFixtureArguments(runId)],expected=[...args];const pending=f.gate.command('child-local-v2-pin-operations',args,180000);args[7]=fixtureClass;await pending;
+    expect(f.calls).toEqual([...readArgs,expected]);expect(f.records).toMatchObject([{checkpoint:'child-local-v2-pin-operations',status:'PASS'}]);
+  });
+  it('refuses whole class, interactive extras, changed method order and foreign metadata before any device access',async()=>{
+    const patches=[[7,fixtureClass],[7,selection+','+fixtureClass+'#explicitFirstInstall'],[7,methods.map(name=>fixtureClass+'#'+name).reverse().join(',')],
+      [7,selection.replace(methods[0],'foreignMethod')],[12,'literaryPinVerificationInputPhase'],[13,'input'],[13,'first-install-v2;'],[10,'A'.repeat(32)],[14,'foreign.test/androidx.test.runner.AndroidJUnitRunner']];
+    for(const [index,value]of patches){const f=gateFixture(),args=[...childLocalV2PinOperationsFixtureArguments(runId)];args[index]=value;await expect(f.gate.command('local-v2-denied',args)).rejects.toThrow();expect(f.calls).toEqual([]);expect(f.records).toEqual([]);}
+    const f=gateFixture();await expect(f.gate.command('local-v2-denied',[...childLocalV2PinOperationsFixtureArguments(runId),'-e','literaryFirstInstallInteractive','true'])).rejects.toThrow();expect(f.calls).toEqual([]);
+  });
+  it('leaves a connected target untouched and records only the failed offline observation',async()=>{
+    const f=gateFixture(true);await expect(f.gate.command('child-local-v2-pin-operations',childLocalV2PinOperationsFixtureArguments(runId),180000)).rejects.toThrow(/not verifiably offline/u);
+    expect(f.calls).toEqual(readArgs);expect(f.records).toMatchObject([{status:'FAIL',reason:'android-offline-state-unavailable'}]);
+  });
+  it('rejects mixed, non-Android, reboot and nonboolean selectors before command or output creation',async()=>{
+    for(const options of [{platform:'android',pinVerificationInput:true,childLocalV2PinOperations:true},{platform:'ios',childLocalV2PinOperations:true},
+      {platform:'android',childLocalV2PinOperations:true,reboot:true},{platform:'android',childLocalV2PinOperations:'true'}])
+      await expect(runNativeInstallRuntime({rootDir:process.cwd(),...options})).rejects.toThrow(/selector|selection/u);
+  });
+  it('imports and performs selected default preflight without device commands or invented whole-fixture acceptance',async()=>{
+    const root=await mkdtemp(path.join(tmpdir(),'literary-local-v2-pin-preflight-'));
+    try{const report=await runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2PinOperations:true,runId,outDir:'.tmp/local-v2-preflight'});
+      expect(report.kind).toBe('literary-planet-child-local-v2-pin-operations-runtime');expect(report.commands).toEqual([]);expect(report.installed).toBe(false);expect(report.releaseReady).toBe(false);
+      expect(report.fixture).toMatchObject({tests:9,phase:'first-install-v2',noninteractive:true,wholeFixtureAcceptance:false,realOsOwnerUiAcceptance:false,nativeKeyspacePersistenceAcceptance:false,installedStorageAcceptance:false,parentGateAdmission:false});
+      expect(report.fixture.methods).toEqual(methods);expect(report.fixture.selection).toBe(selection);expect(report.status).toBe('BLOCKED_EXTERNAL');
+      const saved=JSON.parse(await readFile(path.join(root,'.tmp','local-v2-preflight','result.json'),'utf8'));expect(saved.commands).toEqual([]);expect(saved.fixture.wholeFixtureAcceptance).toBe(false);
+    }finally{await rm(root,{recursive:true,force:true});}
   });
 });
