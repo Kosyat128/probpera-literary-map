@@ -1,0 +1,1794 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-native-app-bridge-evidence",
+  "status": "IN_PROGRESS",
+  "generatedAt": "2026-10-04T22:33:48.646Z",
+  "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+  "sourceFingerprint": "789b2ed2df7f11413aaa4f3a307b4c8307ee46376bdafa869421cbadceed059e",
+  "sourceRows": 1809,
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\source-fix-visual-a2\\checkpoint.json",
+    "sha256": "9acc9db6f97733d20034d7179c1e41d8ed605f0fe4f05df46ad230b4832e1dc2",
+    "bytes": 295324
+  },
+  "sourceCommitChain": [
+    "793279af389264ff9c2630d0d8908acb0b84eeea",
+    "932807adb75a18970bc74eb315fb59635c886cc6",
+    "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+    "c3af9d8b4ab2feba92bc365e8c8210f2616cbe32",
+    "584e4a96593b81771344c78281e22295fdfda0b3"
+  ],
+  "validation": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-final-validation-a2.json",
+    "sha256": "46e126ac1075eb2c9c81596acd8ba27bcfc5d667d2b9c23c435f0f8b1688ea22",
+    "bytes": 149713
+  },
+  "originalAuthorFreeze": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-app-bridge\\author-freeze-manifest.json",
+    "sha256": "c1a5b1929a3750627301c0b56b530cdeb6763b54bef08494445545c942d32fa7",
+    "bytes": 42911
+  },
+  "originalAuthorInput": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-app-bridge\\integration-input.json",
+    "sha256": "f8c6cc93655156f9678872db288e465111d7c802db597e6cfb3d798c98f33838",
+    "bytes": 19042
+  },
+  "sourcePaths": [
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDataStoreRuntimeTest.java",
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDataTransportRuntimeTest.java",
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildFirstInstallRuntimeTest.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataTransport.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPlugin.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+    "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+    "apps/mobile/ios/App/App/PlanetChildPlugin.swift",
+    "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataStoreRuntimeTests.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildDataTransportRuntimeTests.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildFirstInstallV2RuntimeTests.swift",
+    "scripts/mobile/native-install-runtime.mjs",
+    "scripts/mobile/native-install-runtime.test.mjs",
+    "src/App.tsx",
+    "src/child/ChildNativeBoundary.css",
+    "src/child/ChildNativeBoundary.test.tsx",
+    "src/child/ChildNativeBoundary.tsx",
+    "src/child/childNativeAppBridge.test.ts",
+    "src/child/childNativeAppBridge.ts",
+    "src/child/childNativeLocalV2Policy.json",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/host/initializeHostPlatform.ts",
+    "src/host/mountHostApp.tsx",
+    "src/platform/adapters/android/AndroidPlatformAdapter.test.ts",
+    "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+    "src/platform/adapters/ios/IosPlatformAdapter.test.ts",
+    "src/platform/adapters/ios/IosPlatformAdapter.ts",
+    "src/platform/ports.ts"
+  ],
+  "changes": [
+    "Genuine separately versioned native LOCAL2 Vault/DataStore/clock/PIN/profile operations are connected through Android/iOS Capacitor plugins and App bootstrap; original V1 authority and empty authentic release pins remain preserved.",
+    "Child bootstrap and transitions use closed UI and owned state retirement before the next context, preserve inactive encrypted child namespaces and retain the canonical globe, existing Booky controls and RU/EN.",
+    "Astra repaired SDK/Swift/TypeScript and real host-language persistence defects; corrected child scene geometry keeps Booky and globe controls visible with reading content below the scene."
+  ],
+  "review": {
+    "wholeStageReviewed": true,
+    "independentAndroidReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-android\\review.json",
+      "sha256": "d41e6407b04c83d44707e896fdabfe5d1ea78d7a0edb7845877107cb3cb8a580",
+      "bytes": 14666
+    },
+    "independentAndroidFollowup": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-android-a2\\review.json",
+      "sha256": "3eb1dc10b61c5a832a43e1ddc918a42e561317578abe6a5db6b3cf875a391e70",
+      "bytes": 3794
+    },
+    "mainReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-source-review-main.json",
+      "sha256": "279b70bc40d67442333216a3bddffd529c7cf05ef56bfa8528449cc5b6ca429d",
+      "bytes": 11333
+    },
+    "runtimeFixes": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-runtime-fix-review-a3.json",
+      "sha256": "bf506ae0a52e369aa6e957ee4fe529103c13b031c2047c585a12ac3be74a5fa3",
+      "bytes": 3453
+    },
+    "visualFixes": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-visual-fix-review-a4.json",
+        "sha256": "5af6788861fafe4cd2883ef336a0de5c9154b51500345d193415bcf54c81cb10",
+        "bytes": 922
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-visual-fix-review-a5.json",
+        "sha256": "19bda34c9f37666b1586980d7ce15d635e8bc1956cbc69d24c69d1e1724aecf9",
+        "bytes": 932
+      }
+    ],
+    "sourceCommitChain": [
+      "793279af389264ff9c2630d0d8908acb0b84eeea",
+      "932807adb75a18970bc74eb315fb59635c886cc6",
+      "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+      "c3af9d8b4ab2feba92bc365e8c8210f2616cbe32",
+      "584e4a96593b81771344c78281e22295fdfda0b3"
+    ],
+    "protectedDocumentsRegistryLockToolsAndOutsideScopeUnchanged": true,
+    "v1Prefix": {
+      "java": {
+        "bytes": 275948,
+        "sha256": "c6e6bea931311e6f0087b8ed6cd245925c35ada48ff34ac3eba1f28705213368"
+      },
+      "swift": {
+        "bytes": 278183,
+        "sha256": "ffe806d785319d5ba07b30cceb7d43b1e150c955e7b41710da8e76cda6e467f2"
+      }
+    },
+    "integratorCorrection": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-integrator-correction.json",
+      "sha256": "70ddf27e9c21da3549d2331f09cbdf448d9c82108c5e3b2fddacf47c83f14a05",
+      "bytes": 2263
+    }
+  },
+  "localChecks": {
+    "newUnitCasesPassed": 42,
+    "groups": [
+      27,
+      4,
+      11
+    ],
+    "unitSourceOrigin": "793279af389264ff9c2630d0d8908acb0b84eeea",
+    "typescript": "PASS on c2ab; final changes CSS only",
+    "retainedInputBindings": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-retained-check-bindings.json",
+      "sha256": "50ab640363c2531b77c018803b1a8d9c51ba8a814cb535964ce33f37126d2422",
+      "bytes": 7149
+    },
+    "attempts": [
+      {
+        "name": "unit27-a1",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\unit27-a1\\result.json",
+          "sha256": "b1061a3c388c60f89a95b26cc1dd345d7fa59936395fbe7fd9354130614267ac",
+          "bytes": 2151
+        },
+        "status": "PASS",
+        "sourceCommit": "793279af389264ff9c2630d0d8908acb0b84eeea",
+        "sourceFingerprint": "7028ba6967c2a3f9b67ca7d25b137ca136ec61f8c1c2d0df43856e8528fdd750",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "src/child/childNativeAppBridge.test.ts",
+            "src/child/ChildNativeBoundary.test.tsx",
+            "--reporter=json"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:45:18.968Z",
+          "finishedAt": "2026-10-04T21:45:23.011Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\unit27-a1\\stdout.bin",
+          "sha256": "bef1b07658d1f4ba5f820a7582dc723c3528ac761d150ab284eb1a10c97e5588",
+          "bytes": 11349
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\unit27-a1\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "adapters4-a1",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\adapters4-a1\\result.json",
+          "sha256": "01ed2432ed833ad29484fe46617704d530b0ccbbc80bcb7be3b91c7a5b10fa63",
+          "bytes": 2240
+        },
+        "status": "PASS",
+        "sourceCommit": "793279af389264ff9c2630d0d8908acb0b84eeea",
+        "sourceFingerprint": "7028ba6967c2a3f9b67ca7d25b137ca136ec61f8c1c2d0df43856e8528fdd750",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "src/platform/adapters/android/AndroidPlatformAdapter.test.ts",
+            "src/platform/adapters/ios/IosPlatformAdapter.test.ts",
+            "-t",
+            "native child bootstrap",
+            "--reporter=json"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:45:50.950Z",
+          "finishedAt": "2026-10-04T21:45:54.850Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\adapters4-a1\\stdout.bin",
+          "sha256": "48056baec8f5b2620b8c15267628a335dab8088d322ab9c8891f59b7542aad23",
+          "bytes": 14049
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\adapters4-a1\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "selector11-a1",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\selector11-a1\\result.json",
+          "sha256": "6f5f3e130f29a2d3e3728a93019df24ba523e54cb8efa6c01e757f659204b6e0",
+          "bytes": 2171
+        },
+        "status": "PASS",
+        "sourceCommit": "793279af389264ff9c2630d0d8908acb0b84eeea",
+        "sourceFingerprint": "7028ba6967c2a3f9b67ca7d25b137ca136ec61f8c1c2d0df43856e8528fdd750",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "scripts/mobile/native-install-runtime.test.mjs",
+            "-t",
+            "native App bridge selector",
+            "--reporter=json"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:45:48.659Z",
+          "finishedAt": "2026-10-04T21:45:53.559Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\selector11-a1\\stdout.bin",
+          "sha256": "89aa88bd1635c0fc3835a86c5e5c57f179bee4ea7811b870faa4851eaa21afd7",
+          "bytes": 37202
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\selector11-a1\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "tsc-a1",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a1\\result.json",
+          "sha256": "3673dbda6436549781b839a29bd070e1d96827b72f2f42f51d3f7433fd1236df",
+          "bytes": 2118
+        },
+        "status": "FAIL_PRESERVED_ATTEMPT",
+        "sourceCommit": "793279af389264ff9c2630d0d8908acb0b84eeea",
+        "sourceFingerprint": "7028ba6967c2a3f9b67ca7d25b137ca136ec61f8c1c2d0df43856e8528fdd750",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/typescript/bin/tsc",
+            "--noEmit"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:45:22.739Z",
+          "finishedAt": "2026-10-04T21:45:43.581Z",
+          "exitCode": 2,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a1\\stdout.bin",
+          "sha256": "947ba2285983eaf575d4208e9b5fc9d99547704cfb6dea3ea2a6722570f73ff1",
+          "bytes": 574
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a1\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "tsc-a2",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a2\\result.json",
+          "sha256": "c6078fb78212ab0d9b90bce395acfe70df53e28e07f9fd8b746762d82beca49b",
+          "bytes": 2024
+        },
+        "status": "PASS",
+        "sourceCommit": "932807adb75a18970bc74eb315fb59635c886cc6",
+        "sourceFingerprint": "99f0c921ea1b9979d12b72231962709496418bc41016595b1785d005de00ce39",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/typescript/bin/tsc",
+            "--noEmit"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:48:14.867Z",
+          "finishedAt": "2026-10-04T21:48:37.534Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a2\\stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a2\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "tsc-a3",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a3\\result.json",
+          "sha256": "06101e89b3c5d6c0629413eca998814f437ee85c7ff1378a4768b76334563b5a",
+          "bytes": 2028
+        },
+        "status": "PASS",
+        "sourceCommit": "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+        "sourceFingerprint": "04b44f0a79634035d3d41001df583af014c74b4bb99c3aeec4c2d9ef333873e9",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/typescript/bin/tsc",
+            "--noEmit"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:59:43.705Z",
+          "finishedAt": "2026-10-04T22:00:11.939Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a3\\stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\tsc-a3\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "android-prepare-a1",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a1\\result.json",
+          "sha256": "233937462a6be983fac0198f2de22cea0cb91bdbbd71ecea8df95a83076fc5f2",
+          "bytes": 2163
+        },
+        "status": "FAIL_PRESERVED_ATTEMPT",
+        "sourceCommit": "932807adb75a18970bc74eb315fb59635c886cc6",
+        "sourceFingerprint": "99f0c921ea1b9979d12b72231962709496418bc41016595b1785d005de00ce39",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "scripts/mobile/prepare-local-release.mjs",
+            "android"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:48:17.437Z",
+          "finishedAt": "2026-10-04T21:49:01.210Z",
+          "exitCode": 1,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a1\\stdout.bin",
+          "sha256": "742df6d9f067aef49fc5ed2bac3126a7e20f99c98d702f7ce58dd8da7df9029a",
+          "bytes": 400
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a1\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "android-prepare-a2",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a2\\result.json",
+          "sha256": "4a979bfac428b6c20dd4687415f948837887b6cd13f3f7f7e60d4ded1d0c43b1",
+          "bytes": 2074
+        },
+        "status": "PASS",
+        "sourceCommit": "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+        "sourceFingerprint": "04b44f0a79634035d3d41001df583af014c74b4bb99c3aeec4c2d9ef333873e9",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "scripts/mobile/prepare-local-release.mjs",
+            "android"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:59:43.021Z",
+          "finishedAt": "2026-10-04T22:01:08.622Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a2\\stdout.bin",
+          "sha256": "d2d65966e9560c3c86b8080b67ead7628a1fd55a055559bc5604b717dbde8277",
+          "bytes": 716
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a2\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "android-prepare-a3",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a3\\result.json",
+          "sha256": "d57375e261f5e5843e7ee7e581a85d9a551454d5c8b289037d2a5fc136b9d487",
+          "bytes": 2076
+        },
+        "status": "PASS",
+        "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+        "sourceFingerprint": "789b2ed2df7f11413aaa4f3a307b4c8307ee46376bdafa869421cbadceed059e",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "scripts/mobile/prepare-local-release.mjs",
+            "android"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T22:09:58.440Z",
+          "finishedAt": "2026-10-04T22:10:54.813Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a3\\stdout.bin",
+          "sha256": "c5b9fbaf35c1b19b8d0c7865d3881fc150f85cafa3dd982cac623cfcc4e300e9",
+          "bytes": 716
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\android-prepare-a3\\stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "browser3-a1",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a1\\result.json",
+          "sha256": "2812ff1995df634fba1c91781013ff3daf43df723aa10da886d2235bccb7ddcc",
+          "bytes": 2350
+        },
+        "status": "FAIL_PRESERVED_ATTEMPT",
+        "sourceCommit": "932807adb75a18970bc74eb315fb59635c886cc6",
+        "sourceFingerprint": "99f0c921ea1b9979d12b72231962709496418bc41016595b1785d005de00ce39",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/@playwright/test/cli.js",
+            "test",
+            "--config",
+            "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-app-bridge\\drivers\\native-app-bootstrap.config.mjs"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:50:02.472Z",
+          "finishedAt": "2026-10-04T21:50:30.319Z",
+          "exitCode": 1,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a1\\stdout.bin",
+          "sha256": "aa0331ae07800482b6a94741cb8d69b58729394168ae3f6afa3bd96b73a26e33",
+          "bytes": 8770
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a1\\stderr.bin",
+          "sha256": "689f8cad1f0ed0cc36a3e9e0cf67cf2e057c9b4454f532d6c3166ebe56a60de2",
+          "bytes": 492
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "browser3-a2",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a2\\result.json",
+          "sha256": "8c5fcf23cfebdb07d69543fdc4d583e3fb4d1a53b9fbc61bd79eb275c904d9fa",
+          "bytes": 2384
+        },
+        "status": "FAIL_PRESERVED_ATTEMPT",
+        "sourceCommit": "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+        "sourceFingerprint": "04b44f0a79634035d3d41001df583af014c74b4bb99c3aeec4c2d9ef333873e9",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/@playwright/test/cli.js",
+            "test",
+            "--config",
+            "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-browser-a2\\native-app-bootstrap.config.mjs"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T21:59:43.558Z",
+          "finishedAt": "2026-10-04T22:00:04.490Z",
+          "exitCode": 1,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a2\\stdout.bin",
+          "sha256": "34099b0d026ac0b416b0d39248589519ccb1f91ca0b2f57a305db80d07121b6b",
+          "bytes": 4005
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a2\\stderr.bin",
+          "sha256": "22230e7351feb7d4b1ad7ed3dbc1f031fe3bd439fecf2ac5a365a3934ee234b7",
+          "bytes": 163
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "browser3-a3",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a3\\result.json",
+          "sha256": "01fe12a125c50308aa4dd715f51c1f05493c2f441b337b16f2fd847e5e99cc15",
+          "bytes": 2335
+        },
+        "status": "PASS",
+        "sourceCommit": "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+        "sourceFingerprint": "04b44f0a79634035d3d41001df583af014c74b4bb99c3aeec4c2d9ef333873e9",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/@playwright/test/cli.js",
+            "test",
+            "--config",
+            "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-browser-a3\\native-app-bootstrap.config.mjs",
+            "--grep",
+            "actual child switch"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T22:02:32.009Z",
+          "finishedAt": "2026-10-04T22:02:42.477Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a3\\stdout.bin",
+          "sha256": "2842d244bfc1fe9fde7ac5dbdfbbe2311d4db0abfb9c3fbf8b68983283e96348",
+          "bytes": 372
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a3\\stderr.bin",
+          "sha256": "b515239d70a4b6f1e2a5f2f11b40d11c923b231d6c0292bf28301de954283f41",
+          "bytes": 164
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "browser3-a4",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a4\\result.json",
+          "sha256": "5ae5bde3a28e2c880c0d410e8dd6accce64bd60a324c439f1f5eacdc38f38642",
+          "bytes": 2334
+        },
+        "status": "PASS",
+        "sourceCommit": "c3af9d8b4ab2feba92bc365e8c8210f2616cbe32",
+        "sourceFingerprint": "2fc6684afbd15216e07bb73ff915513d33ea10e70cca2f61b067c909b71d1f81",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/@playwright/test/cli.js",
+            "test",
+            "--config",
+            "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-browser-a4\\native-app-bootstrap.config.mjs",
+            "--grep",
+            "actual child switch"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T22:06:45.757Z",
+          "finishedAt": "2026-10-04T22:06:56.972Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a4\\stdout.bin",
+          "sha256": "8b6633fc3b94545f5e6caf1973a3f35987e013063b3f2bbc29623f518795867e",
+          "bytes": 372
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a4\\stderr.bin",
+          "sha256": "1a4b79145367578280b50bf8f24c43086e4df2c859a53b6f793cf929a8f9615b",
+          "bytes": 163
+        },
+        "inputsUnchanged": true
+      },
+      {
+        "name": "browser3-a5",
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a5\\result.json",
+          "sha256": "1adbdf2f0eadfd9f5ce7d595c15da91a0266ce17e401d462704e72fba7bedbe9",
+          "bytes": 2337
+        },
+        "status": "PASS",
+        "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+        "sourceFingerprint": "789b2ed2df7f11413aaa4f3a307b4c8307ee46376bdafa869421cbadceed059e",
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/@playwright/test/cli.js",
+            "test",
+            "--config",
+            "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-browser-a5\\native-app-bootstrap.config.mjs",
+            "--grep",
+            "actual child switch"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "startedAt": "2026-10-04T22:09:12.762Z",
+          "finishedAt": "2026-10-04T22:09:24.258Z",
+          "exitCode": 0,
+          "signal": null,
+          "error": null
+        },
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a5\\stdout.bin",
+          "sha256": "e28bfddd83682e0ad46a484146cf8f06000829d9b2024f1b2a7be3951f579144",
+          "bytes": 372
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a5\\stderr.bin",
+          "sha256": "56bc52ab103e2b2a3fd48983a2bf5e604d06f442ebdd34f10eacdcf6b079a470",
+          "bytes": 164
+        },
+        "inputsUnchanged": true
+      }
+    ],
+    "browser": {
+      "uniqueCasesPassed": 3,
+      "caseBindings": [
+        {
+          "cases": [
+            1,
+            2
+          ],
+          "sourceCommit": "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+          "report": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a2\\browser-output\\browser-report.json",
+            "sha256": "b1e3fdee286f47f7647afd659ad9785882f13fff07412923a2e421568774b63d",
+            "bytes": 20766
+          }
+        },
+        {
+          "cases": [
+            3
+          ],
+          "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+          "report": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a5\\browser-output\\browser-report.json",
+            "sha256": "546d82d579152499feb6264c046d2e5864a7025374b6b9cac4e6d5eef654d10b",
+            "bytes": 25353
+          }
+        }
+      ],
+      "finalDriver": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-browser-a5\\native-app-bootstrap.spec.mjs",
+        "sha256": "2b791deeb83abfd13e56da86ef27e8f6aaec3d0a4eae51583c5a9888845d8c68",
+        "bytes": 24191
+      },
+      "finalConfig": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-reviewed-browser-a5\\native-app-bootstrap.config.mjs",
+        "sha256": "6b66e69a3a6b7ea37a33b1730801c556ef396f15c0bc2cb5abc3bad02dba411d",
+        "bytes": 615
+      },
+      "captures": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a5\\browser-output\\native-app-bootstrap-actua-db022-RU-EN-canonical-globe-frame\\native-child-ru-390.png",
+          "sha256": "10d6303bb92a150a1c1d7904901b2d83f85a2dad7c9e6f64e80d40c526d90525",
+          "bytes": 208310,
+          "language": "ru",
+          "viewportWidth": 390,
+          "fullPage": true,
+          "manuallyReviewed": true
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-validation\\browser3-a5\\browser-output\\native-app-bootstrap-actua-db022-RU-EN-canonical-globe-frame\\native-child-en-390.png",
+          "sha256": "ac22ec2daaf2dbcefe346cb8fccdfb83f578e35737e3bbbc36abf01c9a5dd5ac",
+          "bytes": 169224,
+          "language": "en",
+          "viewportWidth": 390,
+          "fullPage": true,
+          "manuallyReviewed": true
+        }
+      ],
+      "observations": [
+        {
+          "name": "source-and-fixture-scope-ru",
+          "geometry": {
+            "header": {
+              "x": 0,
+              "y": 0,
+              "right": 390,
+              "bottom": 117.875,
+              "width": 390,
+              "height": 117.875
+            },
+            "globe": {
+              "x": 0,
+              "y": 117.875,
+              "right": 390,
+              "bottom": 624.265625,
+              "width": 390,
+              "height": 506.390625
+            },
+            "scene": {
+              "x": 1,
+              "y": 118.875,
+              "right": 389,
+              "bottom": 623.265625,
+              "width": 388,
+              "height": 504.390625
+            },
+            "controls": {
+              "x": 15,
+              "y": 517.265625,
+              "right": 375,
+              "bottom": 571.265625,
+              "width": 360,
+              "height": 54
+            },
+            "booky": {
+              "x": 246,
+              "y": 125.875,
+              "right": 382,
+              "bottom": 285.0625,
+              "width": 136,
+              "height": 159.1875
+            },
+            "panel": {
+              "x": 0,
+              "y": 624.265625,
+              "right": 390,
+              "bottom": 1048.328125,
+              "width": 390,
+              "height": 424.0625
+            },
+            "viewport": 390,
+            "scrollWidth": 390
+          },
+          "frames": {
+            "adult": 0,
+            "child": 46,
+            "maxCanvas": 2,
+            "maxGlobeCanvas": 1,
+            "maxBookyCanvas": 1,
+            "oldAfterSeal": 0
+          },
+          "preferences": [
+            {
+              "operation": "get",
+              "key": "probpera-interface-language"
+            },
+            {
+              "operation": "get",
+              "key": "probpera-booky-size-v1"
+            },
+            {
+              "operation": "get",
+              "key": "probpera-booky-size-v1"
+            }
+          ]
+        },
+        {
+          "name": "source-and-fixture-scope-en",
+          "geometry": {
+            "header": {
+              "x": 0,
+              "y": 0,
+              "right": 390,
+              "bottom": 76.375,
+              "width": 390,
+              "height": 76.375
+            },
+            "globe": {
+              "x": 0,
+              "y": 76.375,
+              "right": 390,
+              "bottom": 582.765625,
+              "width": 390,
+              "height": 506.390625
+            },
+            "scene": {
+              "x": 1,
+              "y": 77.375,
+              "right": 389,
+              "bottom": 581.765625,
+              "width": 388,
+              "height": 504.390625
+            },
+            "controls": {
+              "x": 15,
+              "y": 475.765625,
+              "right": 375,
+              "bottom": 529.765625,
+              "width": 360,
+              "height": 54
+            },
+            "booky": {
+              "x": 246,
+              "y": 84.375,
+              "right": 382,
+              "bottom": 243.5625,
+              "width": 136,
+              "height": 159.1875
+            },
+            "panel": {
+              "x": 0,
+              "y": 582.765625,
+              "right": 390,
+              "bottom": 1006.828125,
+              "width": 390,
+              "height": 424.0625
+            },
+            "viewport": 390,
+            "scrollWidth": 390
+          },
+          "frames": {
+            "adult": 0,
+            "child": 43,
+            "maxCanvas": 2,
+            "maxGlobeCanvas": 1,
+            "maxBookyCanvas": 1,
+            "oldAfterSeal": 0
+          },
+          "preferences": [
+            {
+              "operation": "get",
+              "key": "probpera-interface-language"
+            },
+            {
+              "operation": "get",
+              "key": "probpera-booky-size-v1"
+            },
+            {
+              "operation": "get",
+              "key": "probpera-booky-size-v1"
+            }
+          ]
+        }
+      ],
+      "qualification": "Actual mount/App/adapter/Boundary/styles/canonical globe and Booky imports; synthetic OS/PlanetChild DTO ports. Frontend lifecycle order only, no native UI/worker join or OS acceptance. Visual final captures show one globe R3F scene, one separate existing live Booky136 canvas, contained actionable controls, content below map, equal RU/EN controls; fixture entity text New child is synthetic.",
+      "visualIterations": [
+        "browser3-a3 functional PASS before visual discovery",
+        "browser3-a4 geometry PASS before inherited min-height clipping discovered",
+        "browser3-a5 final geometry, actionable reset and manual capture review complete"
+      ]
+    },
+    "jvm": {
+      "cases": 8,
+      "assertions": 80,
+      "qualification": "HOST_JVM_MECHANICS_ONLY",
+      "attempts": [
+        {
+          "result": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\result.json",
+            "sha256": "4ba324cb982dc38c3901ea82659471a827e3e177e5037c64634d4f670a9ff733",
+            "bytes": 33229
+          },
+          "status": "FAIL",
+          "cases": 0,
+          "assertions": 0,
+          "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+          "helper": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\run-native-app-bridge-jvm8.mjs",
+            "sha256": "565ccb2b83b1d741b84e85eb03290cc66c8a325210499a332e8409d4049206c1",
+            "bytes": 22058,
+            "mtimeUtc": "2026-10-04T22:14:36.269Z"
+          },
+          "guardsPassed": true,
+          "commands": [
+            {
+              "name": "javac",
+              "command": [
+                "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+                "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\tool-user",
+                "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\tool-temp",
+                "-J-Dfile.encoding=UTF-8",
+                "@D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\javac.args"
+              ],
+              "expandedArguments": [
+                "-proc:none",
+                "-implicit:none",
+                "-encoding",
+                "UTF-8",
+                "--release",
+                "21",
+                "-classpath",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\production-classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@capacitor\\android\\capacitor\\build\\intermediates\\runtime_library_classes_jar\\debug\\bundleLibRuntimeToJarDebug\\classes.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.2.0\\fdfc65fbc42fda253a26f61dac3c0aca335fae96\\kotlin-stdlib-2.2.0.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\02973011bffec3199874515fe423a69d\\transformed\\savedstate-1.2.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0771af66f6edef3a46fbef265e5a6df7\\transformed\\tracing-1.2.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\077536260bb8e3cc91d0812d4ad86748\\transformed\\customview-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0a1b7e87a21f842fb81083c8d7edca9d\\transformed\\activity-1.11.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0d4a2fcd7bd366a0391e81adb440b7f7\\transformed\\espresso-core-3.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0ecb86ecdc80ddb8d1540423ff731abf\\transformed\\lifecycle-livedata-core-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\24b8f4b025f2f413eefc96fec1f2d2f0\\transformed\\appcompat-resources-1.7.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\29cfca4e4b997f06aa30882acfae74f6\\transformed\\drawerlayout-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\2a9016b87949addf5b80506ac45cfa07\\transformed\\startup-runtime-1.1.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\2e28e90dac84d238c4636142af095765\\transformed\\appcompat-1.7.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\2ecdacf0d44384dbd9c685b770d29f41\\transformed\\core-splashscreen-1.2.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\344ee34436613904252303870e04585a\\transformed\\junit-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\3578426ae3e792dce346cf17980d20a4\\transformed\\runner-1.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\401002e9d70413340a289b2d2cb50358\\transformed\\annotation-experimental-1.4.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\4265f70ee39adbf37314206c0b7e2c04\\transformed\\vectordrawable-animated-1.1.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\4c21b013b5d110700a2bdc45142c3b06\\transformed\\core-viewtree-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\4ca7d7d132752f828f96cb96724a2c80\\transformed\\vectordrawable-1.1.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\61361207ce6c4df5de5e02228a3c0ddc\\transformed\\webkit-1.14.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\649385879bb2e489e7ee727b81faed81\\transformed\\browser-1.9.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\7e62daffb6e531dce596dee67251ef1e\\transformed\\core-1.17.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\7f96c9e0633e6f710f1a0c9d037f6a00\\transformed\\cursoradapter-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\8420a180eaa5b24c9f51957db4b32814\\transformed\\emoji2-views-helper-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\889099f886b1bffbbf23cefe2294daac\\transformed\\espresso-idling-resource-3.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\88c5762b79e3408e02c025f6bf89ee26\\transformed\\core-1.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\8c08a8af4961af4e1879e5353fa2d67e\\transformed\\interpolator-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\8c1382058cdb062dd9e90469d84ce511\\transformed\\profileinstaller-1.4.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\913187e30d86b4c2529df22f80c4575d\\transformed\\loader-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\9bf4d614e3f9c19a870a8d645190b79e\\transformed\\core-ktx-1.17.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\a4443d445a92a0905104d0aea742b0b8\\transformed\\lifecycle-viewmodel-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\a4a6439d64bb131cf4e160787ada7fe5\\transformed\\framework-14.0.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\af1d59afd28de3234ccd8c0a91ac8cc5\\transformed\\viewpager-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\b4111541186c857600a24e4990c40ec0\\transformed\\versionedparcelable-1.1.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\b4e432ec12c210771fc4af1f6fa893bc\\transformed\\core-runtime-2.2.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\cb377319feb8928ecd84ba1a6c84021a\\transformed\\lifecycle-process-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\cc53eefbe5ee512f05ca2976c920adab\\transformed\\lifecycle-runtime-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\d16835a02461795383d12735dc0de0c6\\transformed\\fragment-1.8.9-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\e3d878a1514c9346cb1a0cbc8043347b\\transformed\\coordinatorlayout-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\e8f930c093016495857ede77b699b9a3\\transformed\\lifecycle-livedata-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\eb295b024b52478f0868c9bb612963fa\\transformed\\storage-1.6.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\f9118fb133d2ee3f7259f0238c2806dc\\transformed\\emoji2-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\faf5674fbcf7a90497d15375a0a47ef5\\transformed\\lifecycle-viewmodel-savedstate-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\feff6983f4ac2f501fc086087567b2c6\\transformed\\monitor-1.8.0-runtime.jar",
+                "-d",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\driver-classes",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\source\\NativeAppBridgeLeafDriver.java"
+              ],
+              "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c",
+              "startedAt": "2026-10-04T22:16:03.958Z",
+              "finishedAt": "2026-10-04T22:16:05.241Z",
+              "exitCode": 0,
+              "signal": null,
+              "errorCode": null,
+              "deadline": false,
+              "stdout": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\javac.stdout.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:16:03.959Z"
+              },
+              "stderr": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\javac.stderr.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:16:03.961Z"
+              }
+            },
+            {
+              "name": "java",
+              "command": [
+                "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+                "@D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\java.args"
+              ],
+              "expandedArguments": [
+                "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\tool-user",
+                "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\tool-temp",
+                "-Dfile.encoding=UTF-8",
+                "-ea",
+                "-cp",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\driver-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\production-classes;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\platforms\\android-36\\android.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\@capacitor\\android\\capacitor\\build\\intermediates\\runtime_library_classes_jar\\debug\\bundleLibRuntimeToJarDebug\\classes.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\modules-2\\files-2.1\\org.jetbrains.kotlin\\kotlin-stdlib\\2.2.0\\fdfc65fbc42fda253a26f61dac3c0aca335fae96\\kotlin-stdlib-2.2.0.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\02973011bffec3199874515fe423a69d\\transformed\\savedstate-1.2.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0771af66f6edef3a46fbef265e5a6df7\\transformed\\tracing-1.2.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\077536260bb8e3cc91d0812d4ad86748\\transformed\\customview-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0a1b7e87a21f842fb81083c8d7edca9d\\transformed\\activity-1.11.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0d4a2fcd7bd366a0391e81adb440b7f7\\transformed\\espresso-core-3.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\0ecb86ecdc80ddb8d1540423ff731abf\\transformed\\lifecycle-livedata-core-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\24b8f4b025f2f413eefc96fec1f2d2f0\\transformed\\appcompat-resources-1.7.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\29cfca4e4b997f06aa30882acfae74f6\\transformed\\drawerlayout-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\2a9016b87949addf5b80506ac45cfa07\\transformed\\startup-runtime-1.1.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\2e28e90dac84d238c4636142af095765\\transformed\\appcompat-1.7.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\2ecdacf0d44384dbd9c685b770d29f41\\transformed\\core-splashscreen-1.2.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\344ee34436613904252303870e04585a\\transformed\\junit-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\3578426ae3e792dce346cf17980d20a4\\transformed\\runner-1.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\401002e9d70413340a289b2d2cb50358\\transformed\\annotation-experimental-1.4.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\4265f70ee39adbf37314206c0b7e2c04\\transformed\\vectordrawable-animated-1.1.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\4c21b013b5d110700a2bdc45142c3b06\\transformed\\core-viewtree-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\4ca7d7d132752f828f96cb96724a2c80\\transformed\\vectordrawable-1.1.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\61361207ce6c4df5de5e02228a3c0ddc\\transformed\\webkit-1.14.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\649385879bb2e489e7ee727b81faed81\\transformed\\browser-1.9.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\7e62daffb6e531dce596dee67251ef1e\\transformed\\core-1.17.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\7f96c9e0633e6f710f1a0c9d037f6a00\\transformed\\cursoradapter-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\8420a180eaa5b24c9f51957db4b32814\\transformed\\emoji2-views-helper-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\889099f886b1bffbbf23cefe2294daac\\transformed\\espresso-idling-resource-3.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\88c5762b79e3408e02c025f6bf89ee26\\transformed\\core-1.7.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\8c08a8af4961af4e1879e5353fa2d67e\\transformed\\interpolator-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\8c1382058cdb062dd9e90469d84ce511\\transformed\\profileinstaller-1.4.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\913187e30d86b4c2529df22f80c4575d\\transformed\\loader-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\9bf4d614e3f9c19a870a8d645190b79e\\transformed\\core-ktx-1.17.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\a4443d445a92a0905104d0aea742b0b8\\transformed\\lifecycle-viewmodel-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\a4a6439d64bb131cf4e160787ada7fe5\\transformed\\framework-14.0.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\af1d59afd28de3234ccd8c0a91ac8cc5\\transformed\\viewpager-1.0.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\b4111541186c857600a24e4990c40ec0\\transformed\\versionedparcelable-1.1.1-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\b4e432ec12c210771fc4af1f6fa893bc\\transformed\\core-runtime-2.2.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\cb377319feb8928ecd84ba1a6c84021a\\transformed\\lifecycle-process-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\cc53eefbe5ee512f05ca2976c920adab\\transformed\\lifecycle-runtime-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\d16835a02461795383d12735dc0de0c6\\transformed\\fragment-1.8.9-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\e3d878a1514c9346cb1a0cbc8043347b\\transformed\\coordinatorlayout-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\e8f930c093016495857ede77b699b9a3\\transformed\\lifecycle-livedata-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\eb295b024b52478f0868c9bb612963fa\\transformed\\storage-1.6.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\f9118fb133d2ee3f7259f0238c2806dc\\transformed\\emoji2-1.3.0-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\faf5674fbcf7a90497d15375a0a47ef5\\transformed\\lifecycle-viewmodel-savedstate-2.6.2-runtime.jar;D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\caches\\8.14.3\\transforms\\feff6983f4ac2f501fc086087567b2c6\\transformed\\monitor-1.8.0-runtime.jar",
+                "ru.probpera.literaryplanet.NativeAppBridgeLeafDriver"
+              ],
+              "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c",
+              "startedAt": "2026-10-04T22:16:05.248Z",
+              "finishedAt": "2026-10-04T22:16:05.489Z",
+              "exitCode": 1,
+              "signal": null,
+              "errorCode": null,
+              "deadline": false,
+              "stdout": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\java.stdout.txt",
+                "sha256": "f089f17b2e3d26b6578dc136f735a28875cdb44cc4a37cca0a919aafca520420",
+                "bytes": 289,
+                "mtimeUtc": "2026-10-04T22:16:05.459Z"
+              },
+              "stderr": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-ac7409cb-1cf3-436d-b332-5bc6c386099c\\java.stderr.txt",
+                "sha256": "c3875bc4d701801823b21d15927f6b86b01e5bf1e23dc5bb6c32025b097e7b6d",
+                "bytes": 1048,
+                "mtimeUtc": "2026-10-04T22:16:05.479Z"
+              }
+            }
+          ],
+          "errors": [
+            {
+              "message": "Host driver java failed; inspect exact raw output",
+              "stack": "Error: Host driver java failed; inspect exact raw output\n    at assert (file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-local-native-app-bridge-work-20261004/astra-jvm8/run-native-app-bridge-jvm8.mjs:32:63)\n    at main (file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-local-native-app-bridge-work-20261004/astra-jvm8/run-native-app-bridge-jvm8.mjs:203:3)\n    at async file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-local-native-app-bridge-work-20261004/astra-jvm8/run-native-app-bridge-jvm8.mjs:213:7"
+            }
+          ],
+          "qualification": "FAIL: javac0/java1 after six raw named PASS lines; SDK jar contained missing class; ASCII exact-byte dependency staging corrected host path resolution."
+        },
+        {
+          "result": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\result.json",
+            "sha256": "163c3a23ffeb2d65392174e85ae9276850acfa57094f45d81cef5769b374a843",
+            "bytes": 57785
+          },
+          "status": "FAIL",
+          "cases": 0,
+          "assertions": 0,
+          "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+          "helper": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\run-native-app-bridge-jvm8-a2.mjs",
+            "sha256": "a03eabeefa657390be348aadb82625aa5aa61260c05b9d6949e4371c6d62eb04",
+            "bytes": 22778,
+            "mtimeUtc": "2026-10-04T22:18:08.150Z"
+          },
+          "guardsPassed": true,
+          "commands": [
+            {
+              "name": "javac",
+              "command": [
+                "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+                "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\tool-user",
+                "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\tool-temp",
+                "-J-Dfile.encoding=UTF-8",
+                "@D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\javac.args"
+              ],
+              "expandedArguments": [
+                "-proc:none",
+                "-implicit:none",
+                "-encoding",
+                "UTF-8",
+                "--release",
+                "21",
+                "-classpath",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\production-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\00-android.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\01-classes.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\02-kotlin-stdlib-2.2.0.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\03-savedstate-1.2.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\04-tracing-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\05-customview-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\06-activity-1.11.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\07-espresso-core-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\08-lifecycle-livedata-core-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\09-appcompat-resources-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\10-drawerlayout-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\11-startup-runtime-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\12-appcompat-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\13-core-splashscreen-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\14-junit-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\15-runner-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\16-annotation-experimental-1.4.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\17-vectordrawable-animated-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\18-core-viewtree-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\19-vectordrawable-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\20-webkit-1.14.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\21-browser-1.9.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\22-core-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\23-cursoradapter-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\24-emoji2-views-helper-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\25-espresso-idling-resource-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\26-core-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\27-interpolator-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\28-profileinstaller-1.4.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\29-loader-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\30-core-ktx-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\31-lifecycle-viewmodel-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\32-framework-14.0.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\33-viewpager-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\34-versionedparcelable-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\35-core-runtime-2.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\36-lifecycle-process-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\37-lifecycle-runtime-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\38-fragment-1.8.9-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\39-coordinatorlayout-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\40-lifecycle-livedata-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\41-storage-1.6.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\42-emoji2-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\43-lifecycle-viewmodel-savedstate-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\44-monitor-1.8.0-runtime.jar",
+                "-d",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\driver-classes",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\source\\NativeAppBridgeLeafDriver.java"
+              ],
+              "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228",
+              "startedAt": "2026-10-04T22:18:11.780Z",
+              "finishedAt": "2026-10-04T22:18:13.814Z",
+              "exitCode": 0,
+              "signal": null,
+              "errorCode": null,
+              "deadline": false,
+              "stdout": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\javac.stdout.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:18:11.783Z"
+              },
+              "stderr": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\javac.stderr.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:18:11.783Z"
+              }
+            },
+            {
+              "name": "java",
+              "command": [
+                "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+                "@D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\java.args"
+              ],
+              "expandedArguments": [
+                "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\tool-user",
+                "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\tool-temp",
+                "-Dfile.encoding=UTF-8",
+                "-ea",
+                "-cp",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\driver-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\production-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\00-android.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\01-classes.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\02-kotlin-stdlib-2.2.0.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\03-savedstate-1.2.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\04-tracing-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\05-customview-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\06-activity-1.11.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\07-espresso-core-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\08-lifecycle-livedata-core-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\09-appcompat-resources-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\10-drawerlayout-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\11-startup-runtime-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\12-appcompat-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\13-core-splashscreen-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\14-junit-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\15-runner-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\16-annotation-experimental-1.4.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\17-vectordrawable-animated-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\18-core-viewtree-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\19-vectordrawable-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\20-webkit-1.14.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\21-browser-1.9.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\22-core-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\23-cursoradapter-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\24-emoji2-views-helper-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\25-espresso-idling-resource-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\26-core-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\27-interpolator-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\28-profileinstaller-1.4.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\29-loader-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\30-core-ktx-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\31-lifecycle-viewmodel-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\32-framework-14.0.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\33-viewpager-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\34-versionedparcelable-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\35-core-runtime-2.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\36-lifecycle-process-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\37-lifecycle-runtime-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\38-fragment-1.8.9-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\39-coordinatorlayout-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\40-lifecycle-livedata-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\41-storage-1.6.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\42-emoji2-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\43-lifecycle-viewmodel-savedstate-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\dependencies\\44-monitor-1.8.0-runtime.jar",
+                "ru.probpera.literaryplanet.NativeAppBridgeLeafDriver"
+              ],
+              "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228",
+              "startedAt": "2026-10-04T22:18:13.827Z",
+              "finishedAt": "2026-10-04T22:18:14.153Z",
+              "exitCode": 1,
+              "signal": null,
+              "errorCode": null,
+              "deadline": false,
+              "stdout": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\java.stdout.txt",
+                "sha256": "54f16879ffd06a40de4a4fc5d7bccc40a410c3b505bb3d27e40226987d507d28",
+                "bytes": 339,
+                "mtimeUtc": "2026-10-04T22:18:14.122Z"
+              },
+              "stderr": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-0f964cc8-bd97-468b-a134-0d74aabd5228\\java.stderr.txt",
+                "sha256": "24da17ff13001df0546bc9335f0a79255e961fe5ec3172aa315e1c0962fa3724",
+                "bytes": 1014,
+                "mtimeUtc": "2026-10-04T22:18:14.142Z"
+              }
+            }
+          ],
+          "errors": [
+            {
+              "message": "Host driver java failed; inspect exact raw output",
+              "stack": "Error: Host driver java failed; inspect exact raw output\n    at assert (file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-local-native-app-bridge-work-20261004/astra-jvm8/run-native-app-bridge-jvm8-a2.mjs:32:63)\n    at main (file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-local-native-app-bridge-work-20261004/astra-jvm8/run-native-app-bridge-jvm8-a2.mjs:211:3)\n    at async file:///D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/child-local-native-app-bridge-work-20261004/astra-jvm8/run-native-app-bridge-jvm8-a2.mjs:222:7"
+            }
+          ],
+          "qualification": "FAIL: javac0/java1 after seven raw named PASS lines; missing cached plain lifecycle-common module in helper classpath."
+        },
+        {
+          "result": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\result.json",
+            "sha256": "70452bbd7e1595b2d37382400a2a0d977965d65b5218120eb579736225672079",
+            "bytes": 64396
+          },
+          "status": "PASS",
+          "cases": 8,
+          "assertions": 80,
+          "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+          "helper": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\run-native-app-bridge-jvm8-a3.mjs",
+            "sha256": "e8ea076717851b80f8e0910ce789b2e21cad8f4b4dce0f27e1de75f99721e05e",
+            "bytes": 23126,
+            "mtimeUtc": "2026-10-04T22:20:00.503Z"
+          },
+          "guardsPassed": true,
+          "commands": [
+            {
+              "name": "javac",
+              "command": [
+                "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\javac.exe",
+                "-J-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\tool-user",
+                "-J-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\tool-temp",
+                "-J-Dfile.encoding=UTF-8",
+                "@D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\javac.args"
+              ],
+              "expandedArguments": [
+                "-proc:none",
+                "-implicit:none",
+                "-encoding",
+                "UTF-8",
+                "--release",
+                "21",
+                "-classpath",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\production-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\00-android.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\01-classes.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\02-kotlin-stdlib-2.2.0.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\03-savedstate-1.2.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\04-tracing-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\05-customview-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\06-activity-1.11.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\07-espresso-core-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\08-lifecycle-livedata-core-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\09-appcompat-resources-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\10-drawerlayout-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\11-startup-runtime-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\12-appcompat-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\13-core-splashscreen-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\14-junit-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\15-runner-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\16-annotation-experimental-1.4.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\17-vectordrawable-animated-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\18-core-viewtree-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\19-vectordrawable-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\20-webkit-1.14.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\21-browser-1.9.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\22-core-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\23-cursoradapter-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\24-emoji2-views-helper-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\25-espresso-idling-resource-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\26-core-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\27-interpolator-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\28-profileinstaller-1.4.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\29-loader-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\30-core-ktx-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\31-lifecycle-viewmodel-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\32-framework-14.0.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\33-viewpager-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\34-versionedparcelable-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\35-core-runtime-2.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\36-lifecycle-process-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\37-lifecycle-runtime-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\38-fragment-1.8.9-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\39-coordinatorlayout-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\40-lifecycle-livedata-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\41-storage-1.6.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\42-emoji2-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\43-lifecycle-viewmodel-savedstate-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\44-monitor-1.8.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\45-lifecycle-common-2.6.2.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\46-core-common-2.2.0.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\47-annotation-jvm-1.8.1.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\48-kotlinx-coroutines-core-jvm-1.8.1.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\49-kotlinx-coroutines-android-1.8.1.jar",
+                "-d",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\driver-classes",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\source\\NativeAppBridgeLeafDriver.java"
+              ],
+              "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0",
+              "startedAt": "2026-10-04T22:20:04.223Z",
+              "finishedAt": "2026-10-04T22:20:06.632Z",
+              "exitCode": 0,
+              "signal": null,
+              "errorCode": null,
+              "deadline": false,
+              "stdout": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\javac.stdout.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:20:04.217Z"
+              },
+              "stderr": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\javac.stderr.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:20:04.217Z"
+              }
+            },
+            {
+              "name": "java",
+              "command": [
+                "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+                "@D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\java.args"
+              ],
+              "expandedArguments": [
+                "-Duser.home=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\tool-user",
+                "-Djava.io.tmpdir=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\tool-temp",
+                "-Dfile.encoding=UTF-8",
+                "-ea",
+                "-cp",
+                "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\driver-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\production-classes;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\00-android.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\01-classes.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\02-kotlin-stdlib-2.2.0.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\03-savedstate-1.2.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\04-tracing-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\05-customview-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\06-activity-1.11.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\07-espresso-core-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\08-lifecycle-livedata-core-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\09-appcompat-resources-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\10-drawerlayout-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\11-startup-runtime-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\12-appcompat-1.7.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\13-core-splashscreen-1.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\14-junit-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\15-runner-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\16-annotation-experimental-1.4.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\17-vectordrawable-animated-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\18-core-viewtree-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\19-vectordrawable-1.1.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\20-webkit-1.14.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\21-browser-1.9.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\22-core-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\23-cursoradapter-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\24-emoji2-views-helper-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\25-espresso-idling-resource-3.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\26-core-1.7.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\27-interpolator-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\28-profileinstaller-1.4.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\29-loader-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\30-core-ktx-1.17.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\31-lifecycle-viewmodel-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\32-framework-14.0.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\33-viewpager-1.0.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\34-versionedparcelable-1.1.1-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\35-core-runtime-2.2.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\36-lifecycle-process-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\37-lifecycle-runtime-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\38-fragment-1.8.9-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\39-coordinatorlayout-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\40-lifecycle-livedata-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\41-storage-1.6.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\42-emoji2-1.3.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\43-lifecycle-viewmodel-savedstate-2.6.2-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\44-monitor-1.8.0-runtime.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\45-lifecycle-common-2.6.2.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\46-core-common-2.2.0.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\47-annotation-jvm-1.8.1.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\48-kotlinx-coroutines-core-jvm-1.8.1.jar;D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\dependencies\\49-kotlinx-coroutines-android-1.8.1.jar",
+                "ru.probpera.literaryplanet.NativeAppBridgeLeafDriver"
+              ],
+              "cwd": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0",
+              "startedAt": "2026-10-04T22:20:06.647Z",
+              "finishedAt": "2026-10-04T22:20:07.017Z",
+              "exitCode": 0,
+              "signal": null,
+              "errorCode": null,
+              "deadline": false,
+              "stdout": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\java.stdout.txt",
+                "sha256": "57a02831b2a89ffe69bff9c6a6480937060e7f62c2804a033374f943a0e5835f",
+                "bytes": 490,
+                "mtimeUtc": "2026-10-04T22:20:06.993Z"
+              },
+              "stderr": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\runs\\run-482806eb-3022-4720-9af1-b7309ddf55a0\\java.stderr.txt",
+                "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "bytes": 0,
+                "mtimeUtc": "2026-10-04T22:20:06.648Z"
+              }
+            }
+          ],
+          "errors": [],
+          "qualification": "HOST_JVM_MECHANICS_ONLY: javac0/java0, eight named cases and actual80 assertions, 230 actual compiled production classes plus 50 verified cached dependency copies."
+        }
+      ],
+      "compileOrigin": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\compile-origin.json",
+        "sha256": "a518dc27b29a112b2ea1ee685ea793b736859ac88481049c496c3d80da19f3fa",
+        "bytes": 298215
+      },
+      "additionalDependencies": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-jvm8\\additional-cached-dependencies-a3.json",
+        "sha256": "007fbcbef815ae98a52b7e3acacb182a6fa38458b04bb079a8c46d848411962a",
+        "bytes": 2686
+      }
+    }
+  },
+  "native": {
+    "finalPreparation": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a\\preparation.json",
+      "sha256": "94b59981c00948d7fd73ccbcd4c45a3c0dfa6f054d5c07d4f7b546bf83371f87",
+      "bytes": 308237
+    },
+    "binaryReceipt": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a\\binary.json",
+      "sha256": "d9f4ab9b5c9d2ca6839bec1cd8ff034e6acf08bccd747d7f3bd69b7533a7a6d3",
+      "bytes": 201147
+    },
+    "nativeBundle": {
+      "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/native-bundle",
+      "artifactPath": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/native-bundle/artifact.json",
+      "sha256": "c469b6f470e2c5f1e61c657d69f614c337d53a591ce0838228b2e82ea8875a93",
+      "files": 1416
+    },
+    "outputs": [
+      {
+        "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/native-artifact.json",
+        "sha256": "c469b6f470e2c5f1e61c657d69f614c337d53a591ce0838228b2e82ea8875a93",
+        "bytes": 719763
+      },
+      {
+        "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/app-dev-debug.apk",
+        "sha256": "3c5b5d1e01d50b2e38e422ec5789a525346d9910eb374eb869ea45d0991e575f",
+        "bytes": 70143964
+      },
+      {
+        "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/app-dev-debug-androidTest.apk",
+        "sha256": "d63e944fdb9684453eaffb5e6c7abf31a887c6acc5dc46aaf817de0776ae229f",
+        "bytes": 723259
+      }
+    ],
+    "packageIdentity": {
+      "applicationId": "ru.probpera.literaryplanet.dev",
+      "versionCode": 1,
+      "versionName": "1.0-dev",
+      "sourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+      "preparationSourceCommit": "584e4a96593b81771344c78281e22295fdfda0b3",
+      "sourceFingerprint": "789b2ed2df7f11413aaa4f3a307b4c8307ee46376bdafa869421cbadceed059e",
+      "buildId": "16b2847a31348ff4c04303393245b854330f675200a1578dc7eca382df5304b7",
+      "artifactSha256": "3c5b5d1e01d50b2e38e422ec5789a525346d9910eb374eb869ea45d0991e575f",
+      "channel": "dev",
+      "signing": "existing-project-debug-key",
+      "certificateSha256": "6bfe3a9c59ce2b28eeb7c4d0d7d085beff790b87295ccbadeb2a5c8ee9d6d9d9",
+      "storeArtifact": false
+    },
+    "allBuildCommandExitCodes": [
+      {
+        "name": "native-build",
+        "exitCode": 0
+      },
+      {
+        "name": "native-audit",
+        "exitCode": 0
+      },
+      {
+        "name": "jdk-version",
+        "exitCode": 0
+      },
+      {
+        "name": "cap-sync",
+        "exitCode": 0
+      },
+      {
+        "name": "android-assemble",
+        "exitCode": 0
+      },
+      {
+        "name": "android-instrumentation-assemble",
+        "exitCode": 0
+      },
+      {
+        "name": "apk-badging",
+        "exitCode": 0
+      },
+      {
+        "name": "apk-manifest",
+        "exitCode": 0
+      },
+      {
+        "name": "apk-signature",
+        "exitCode": 0
+      },
+      {
+        "name": "apk-alignment",
+        "exitCode": 0
+      },
+      {
+        "name": "previous-apk-badging",
+        "exitCode": 0
+      },
+      {
+        "name": "previous-apk-signature",
+        "exitCode": 0
+      }
+    ],
+    "compiledClassInventory": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-native-class-inventory.json",
+      "sha256": "f8179b9f149a1621295750faa9ab509e3a17d70b3d400fb2e2ae204f8f6efbae",
+      "bytes": 112094
+    },
+    "productionClasses": 235,
+    "freshProductionClassesUsedByJvm": 230,
+    "selectedInstrumentationClassFiles": 9,
+    "totalAppInstrumentationClassFiles": 22,
+    "androidNewAppMethods": 12,
+    "androidStatus": "COMPILED_ONLY_NOT_RUN",
+    "swiftNewAppMethods": 12,
+    "swiftStatus": "NOT_COMPILED_NOT_RUN",
+    "nativeCompileSourceOrigin": "c2ab8b718883f05e064f5db4a7e95361f0197b46",
+    "nativeInputBytesEqualFinal": true,
+    "affectedOldFixture": "localV2StorageReceiptIsOriginalDataOnlyAndCancellationWipesWithoutAck: concrete actualSdkLocalV2Writer assertion reviewed and compiled; no installed execution",
+    "installedRuntime": false
+  },
+  "preservedFailedAttempts": {
+    "author": [
+      {
+        "kind": "author-metadata-helper",
+        "name": "Unanchored title regex also matched split calls",
+        "helperSha256": "2b220016ba6cb3e481f621c10566fd2de1e8229e2d0903fc250b4beced7e9d99",
+        "failedToolChunk": "4ed308",
+        "exitCode": 1,
+        "beforeFreezeOutputs": true,
+        "projectWrites": 0,
+        "productFailure": false,
+        "correction": "Separate a3 metadata collector anchors it declarations to source line start; original helper/failure retained."
+      },
+      {
+        "kind": "author-metadata-helper",
+        "name": "Peer Java DataStore notes use afterBytes rather than bytes",
+        "helperSha256": "75894d18109c7be5f3b4538f43b9ad427a66e52d5fc2207a1b08b1c247773a29",
+        "failedToolChunk": "85ef74",
+        "exitCode": 1,
+        "beforeFreezeOutputs": true,
+        "projectWrites": 0,
+        "productFailure": false,
+        "correction": "Separate a2 metadata collector reads actual peer afterBytes when present; original helper and failure retained. An orchestration SyntaxError before this corrected call did not launch a process or change files."
+      },
+      {
+        "kind": "root-metadata-helper",
+        "name": "a3 scope capture NARROW_SOURCE_SCOPE_ONLY",
+        "helperSha256": "2210348cc987742cde94a08c7f0a6b72558b514fcdce95f989549f3ddc8e765c",
+        "exitCode": 1,
+        "projectWrites": 0,
+        "rawReferences": "Authoritative baseline scopeCaptureCorrection",
+        "correctedHelperSha256": "b6aaa61e38e3a4fcf3ab988183769a0b1170b2ee469a627eacf7888a731488c5",
+        "correctedExitCode": 0,
+        "productFailure": false
+      },
+      {
+        "kind": "root-metadata-helper",
+        "name": "TS culture-sort path order mismatch after raw metadata",
+        "failedToolChunk": "0c1e3d",
+        "exitCode": 1,
+        "correctedExactCaseSetToolChunk": "de7c05",
+        "correctedExitCode": 0,
+        "productFailure": false,
+        "projectWrites": 0
+      },
+      {
+        "kind": "peer-metadata-finding",
+        "name": "Swift A3 bytes fields stale while afterBytes and SHA were current",
+        "rawManifestSha256": "f3c16a03303dda1a95e72ec3ecf8c36db75df1cd8d9984904b3e3a81b6ef6aa9",
+        "correctedA4Sha256": "11d7874d7dfef4145aa6f9ba025cca81acd5b90c7e9e8a5b952c63b166accc6a",
+        "productFailure": false
+      },
+      {
+        "kind": "prior-native-actual-failures-retained",
+        "name": "Compile Os.unlink and host lifecycle owner failures; prior owned reference required failure; six owned AVD attempts",
+        "qualification": "Original raw FAIL/NOT_RUN evidence remains unchanged. No author rerun or acceptance rebinding."
+      }
+    ],
+    "integrationGuard": {
+      "tool": "f6d0a1",
+      "exitCode": 1,
+      "beforeProjectWrites": true,
+      "raw": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-checks\\integration.command.json",
+          "sha256": "62bbce5cafff633ccc4cf832ba8d2917dae93c8de38a7d7cc197e81fc383cb90",
+          "bytes": 664
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-checks\\integration.stdout.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-checks\\integration.stderr.log",
+          "sha256": "02190a58bf86a21ecd0172b57c9217e7011663202e2ec781efdebfe43544bb55",
+          "bytes": 1014
+        }
+      ],
+      "correction": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-integrator-correction.json",
+        "sha256": "70ddf27e9c21da3549d2331f09cbdf448d9c82108c5e3b2fddacf47c83f14a05",
+        "bytes": 2263
+      }
+    },
+    "actualFailedChecks": [
+      "tsc-a1",
+      "android-prepare-a1",
+      "browser3-a1",
+      "browser3-a2"
+    ],
+    "jvmFailedRunIds": [
+      "run-ac7409cb-1cf3-436d-b332-5bc6c386099c",
+      "run-0f964cc8-bd97-468b-a134-0d74aabd5228"
+    ],
+    "helperAuthoring": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-visual-driver-authoring-failure.json",
+        "sha256": "41c9be42bd7b6b08277f95258dbcec1d73c85e81fb2dd64e9a75bff47f63507e",
+        "bytes": 471
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-runtime-fix-review-a3.json",
+        "sha256": "bf506ae0a52e369aa6e957ee4fe529103c13b031c2047c585a12ac3be74a5fa3",
+        "bytes": 3453
+      }
+    ],
+    "originalEarlierFailuresNotRelabeled": true
+  },
+  "cleanup": {
+    "processCheck": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-app-bridge-work-20261004\\astra-owned-process-check.json",
+      "sha256": "2bdcc914454025450121d4100b2cec9d270b49845e91259d94c91f0ff3739613",
+      "bytes": 340
+    },
+    "ownedLiveProcesses": 0,
+    "allOwnedExecSessionsCompleted": true,
+    "noUserProcessesStopped": true
+  },
+  "localReview": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "scope": "Whole-stage source review/fixes and affected new local checks; browser uses synthetic OS DTOs and JVM uses actual production classes without installed OS acceptance."
+  },
+  "checkQualification": "42 new unit cases retain793 source origin and exact reviewed bindings; TypeScript last PASS on c2ab, subsequent source changes CSS only; browser cases1/2 retain c2ab, final case3/visual captures and dev APK bind584. No claim that all42 were rerun at current HEAD.",
+  "notRun": [
+    "Installed Android application, twelve new instrumentation methods, actual native OS storage/clock/PIN/AES/worker retirement and first-install/profile transitions",
+    "Swift compilation and twelve new Swift fixtures; actual iOS application and native OS storage",
+    "Human/editorial/rights admission and authentic media/paid protected URL transactions",
+    "Real PSP purchases/refunds/restore/reconciliation, configured Auth/delete and separately authorized remote validation",
+    "Store signing/publication and complete release acceptance"
+  ],
+  "retainedEvidence": {
+    "path": "docs/mobile/evidence/S16/child-local-native-profile-entry-20261004/result.json",
+    "sha256": "e5363c38b7cf71ee2c07b93a82f3be1e0908fb078ecf17b0cb5c48d8d94f0f2e",
+    "qualification": "All prior package/PIN/clock/profile/Booky/PWA results and original failures retain their source/timestamps; NOT_RECHECKED."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Original four owner conditions copied verbatim from their original source/timestamp; NOT_RECHECKED.",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "nextAction": "Continue original LOCAL S16 with genuine LOCAL2 fixed bundled-media manifests, exact current native review pins, binary inventory verification, native admission and owned bounded reads, then actual child App media presentation and protected URL flows. Bind genuine native profile/policy/package/original continuous deadline and worker/recipient retirement; expired/unknown/extra binary/orphan/missing review/rights/empty authentic pins deny. Preserve original V1 authority, every inactive encrypted child namespace, original PIN/count/pending/debt/journal/coupled revisions, one canonical globe, existing Booky and equal RU/EN. Free LOCAL remains accountless and never uploads full child records. No forged editorial/rights approval or JS URL authority. GPT-6.1 SOL Ultra authors whole stage, GPT-6 Astra Ultra reviews/checks/fixes whole stage, then SOL next. S03/S16 IN_PROGRESS with11/36 criteria OPEN, owner7/reviews5, releaseReady=false. No unchanged passing checks/build repeats, seventh AVD attempt, report-only D stage or remote/push/merge/deploy.",
+  "appBridgeImplemented": true,
+  "originalV1Factories": "null/nil; unchanged",
+  "genuineLocalV2Activation": "Native SDK bridge implemented; production material admission denies when authentic pins are empty.",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "availablePriorDelivery": {
+    "sourceCommit": "b94dcc48ccae7dc97d070cada65c06e1cf1ff745",
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-child-local-snapshot-delivery-20261004-1a360ccc-e112-4c08-a3f6-f656273748be.zip",
+    "sha256": "18d8eb3e0ca4a6eae00c0cb84b7b6c644547e3f85bf8bca2175ff300bb86acd5",
+    "qualification": "Historical delta package; not rebuilt or rebound to this runner source."
+  },
+  "availableCurrentBuilds": [
+    {
+      "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/native-artifact.json",
+      "sha256": "c469b6f470e2c5f1e61c657d69f614c337d53a591ce0838228b2e82ea8875a93",
+      "bytes": 719763
+    },
+    {
+      "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/app-dev-debug.apk",
+      "sha256": "3c5b5d1e01d50b2e38e422ec5789a525346d9910eb374eb869ea45d0991e575f",
+      "bytes": 70143964
+    },
+    {
+      "path": ".tmp/mobile-release-android-bf568291-db5c-4e35-a298-d9ff42e3147a/app-dev-debug-androidTest.apk",
+      "sha256": "d63e944fdb9684453eaffb5e6c7abf31a887c6acc5dc46aaf817de0776ae229f",
+      "bytes": 723259
+    }
+  ],
+  "runCommands": {
+    "preview": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--host",
+        "127.0.0.1"
+      ]
+    },
+    "affectedPreparation": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "args": [
+        "scripts/mobile/prepare-local-release.mjs",
+        "android"
+      ],
+      "qualification": "Existing current packet already built; run again only after a new source change. Device installation requires the stated owner/device conditions."
+    }
+  }
+}
