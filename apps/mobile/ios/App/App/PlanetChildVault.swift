@@ -5698,6 +5698,7 @@ fileprivate final class LocalV2PinOperation {
     var opened=false,used=false,cancelled=false,inputJoined=false,uiWorkers=0,watchers=0,cancels=0,recipients=0,settlements=0,ownerWorkers=0
     var input: LocalV2PinNativeInput?,entry: LocalV2PinEntry?,reply: LocalV2PinReply?,comparison: LocalV2PinComparison?
     var context: LAContext?,workerThread: ObjectIdentifier?,deliveryThread: ObjectIdentifier?,receipt: LocalV2StorageReceipt?
+    var nativeInputThread: Thread?
     var closedKnown=false,closedKnownCandidate=false,closedRevoked=false,closedObservers=[NSObjectProtocol]()
     var busy: Bool { uiWorkers>0 || watchers>0 || cancels>0 || recipients>0 || settlements>0 || ownerWorkers>0 }
     var ownedPrompt: Bool { ownerWorkers==1 && context != nil && request.workers==1 && challenge.kind == .enroll
@@ -5914,7 +5915,7 @@ fileprivate final class LocalV2PinOperations {
     fileprivate var mathSource: PinVerificationMathSource { synthetic ? .synthetic:.platform }
 
     // Private construction only. Nothing selects this from the bridge/App.
-    private init(vault: PlanetChildVault,policy: LocalSnapshotV2Policy,iterations: UInt32) throws {
+    fileprivate init(vault: PlanetChildVault,policy: LocalSnapshotV2Policy,iterations: UInt32) throws {
         guard iterations>=600000,UInt64(iterations)<=policy.maximum else { throw PinKnownRefusal() }
         writer=try LocalV2Writer.pinRuntime(vault:vault,policy:policy);keys=ApplePinOwnerKeys();engine=ApplePinPrimitiveEngine();verificationEngine=nil
         self.iterations=iterations;synthetic=false
@@ -6211,14 +6212,15 @@ fileprivate final class LocalV2PinNativeInput {
             operation.owner.writer.condition.lock()
             guard !closing,!operation.cancelled else { operation.owner.writer.condition.unlock();entry.close();throw PinKnownRefusal() }
             closing=true;operation.owner.writer.condition.broadcast();operation.owner.writer.condition.unlock();controller?.disableAndClear()
-            Thread { [self] in run(entry) }.start()
+            let nativeWorker=Thread { [self] in run(entry) };let condition=operation.owner.writer.condition
+            condition.lock();operation.nativeInputThread=nativeWorker;condition.unlock();nativeWorker.start()
         } catch { cancel() }
     }
     func disappeared() { if !closing { cancel() } }
     func cancel() { operation.owner.writer.cancel(operation.request) }
     fileprivate func revokeLocked() {
         guard !closing else { return };closing=true;operation.owner.writer.condition.broadcast()
-        Thread { [self] in run(nil) }.start()
+        let nativeWorker=Thread { [self] in run(nil) };operation.nativeInputThread=nativeWorker;nativeWorker.start()
     }
     private func run(_ entry: LocalV2PinEntry?) {
         let writer=operation.owner.writer
@@ -6574,6 +6576,317 @@ enum PlanetChildLocalPinOperationRuntimeFixture {
         release.signal();finished.wait();if let reply { try operations.settle(reply,known:false) };retired.wait()
         var result=PlanetChildLocalPinOperationObservation();result.retirementJoined=joined && request.retired;result.passed=result.retirementJoined
         result.updates=io.updates;result.deriveCalls=engine.deriveCalls;return result
+    }
+}
+#endif
+
+/** Native-only LOCAL v2 scope extracted after the strict canonical decoder.
+ * JSON here reads only the already authenticated selected registry profile;
+ * no caller dictionary supplies profile, locale, revisions or child mode. */
+fileprivate final class LocalV2GateScope {
+    let context: PinGateContext,locale: PinNativeInputLocale,registryChecksum: String,protectedChecksum: String,credential: String
+    let rootRevision: UInt64,pinRevision: UInt64,selectionRevision: UInt64
+    init(_ snapshot: LocalSnapshotV2) throws {
+        let exact=try PlanetChildVault.ProtectedEnvelope.localV2Context(snapshot)
+        var bytes=try snapshot.copyProtectedBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+        guard exact.mode=="child",let active=exact.profile,
+            let record=try JSONSerialization.jsonObject(with:bytes) as? [String:Any],let registry=record["registry"] as? [String:Any],
+            let checksum=record["registryChecksum"] as? String,let profiles=registry["profiles"] as? [[String:Any]],
+            let selected=profiles.first(where:{ $0["id"] as? String == active }),let language=selected["locale"] as? String,
+            language=="ru" || language=="en" else { throw PinKnownRefusal() }
+        context=PinGateContext(profileId:active,policyVersion:snapshot.policy.version,profileRevision:exact.profileRevision,
+            routeRevision:exact.selectionRevision,mode:"child",visibility:"active")
+        locale=language=="ru" ? .ru:.en;registryChecksum=checksum;protectedChecksum=LocalSnapshotV2.hash(bytes)
+        rootRevision=snapshot.fields.revision;pinRevision=snapshot.fields.pin.revision;credential=snapshot.fields.pin.credential;selectionRevision=exact.selectionRevision
+    }
+    func initial(_ current: LocalSnapshotV2) throws {
+        var bytes=try current.copyProtectedBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+        guard current.fields.revision==rootRevision,current.fields.pin.revision==pinRevision,LocalSnapshotV2.hash(bytes)==protectedChecksum else { throw PinKnownRefusal() }
+        try same(current)
+    }
+    func same(_ current: LocalSnapshotV2) throws {
+        let actual=try LocalV2GateScope(current)
+        guard context==actual.context,registryChecksum==actual.registryChecksum,locale==actual.locale,credential==actual.credential else { throw PinKnownRefusal() }
+    }
+}
+/** Internally minted exact original challenge and owned target. Its single
+ * exclusive deadline starts at the native control event, including capture,
+ * PIN, every real join and dispatch. Completion never renews that deadline. */
+fileprivate final class LocalV2GateInvocation {
+    let id: String,action: String,targetChecksum: String,generation: UInt64,began: UInt64,deadline: UInt64
+    private let target: PinOwnedBytes,lock=NSLock()
+    private(set) var original: LocalV2PinChallenge?,scope: LocalV2GateScope?
+    private var spent=false,revoked=false
+    private var last: UInt64
+    init(action: String,target: Data,generation: UInt64,beganNs: UInt64,verificationMs: UInt64,capabilityMs: UInt64) throws {
+        guard target.count<=131072,generation<=9007199254740991,verificationMs>0,verificationMs<=60000,capabilityMs>0,capabilityMs<=2147483647,
+            PinVerificationActionCopy.caption(action,locale:.en) != nil else { throw PinKnownRefusal() }
+        let duration=min(verificationMs,capabilityMs),base=beganNs/1000000
+        guard base<=9007199254740991-duration,base+duration<=UInt64.max/1000000 else { throw PinKnownRefusal() }
+        let deadline=(base+duration)*1000000;guard deadline>beganNs else { throw PinKnownRefusal() }
+        var nonce=[UInt8](repeating:0,count:32);defer { nonce.withUnsafeMutableBytes { $0.initializeMemory(as:UInt8.self,repeating:0) } }
+        guard SecRandomCopyBytes(kSecRandomDefault,nonce.count,&nonce)==errSecSuccess else { throw PlanetChildVault.Failure.unavailable }
+        id=nonce.map { String(format:"%02x",$0) }.joined();self.action=action;self.target=PinOwnedBytes(target);targetChecksum=LocalSnapshotV2.hash(target)
+        self.generation=generation;began=beganNs;last=beganNs;self.deadline=deadline
+    }
+    private func current(_ ns: UInt64) throws {
+        guard !spent,!revoked,ns>=last,ns<deadline else { revoked=true;throw PinKnownRefusal() };last=ns
+    }
+    func live(_ ns: UInt64) throws { lock.lock();defer { lock.unlock() };try current(ns) }
+    func capture(_ exact: LocalV2GateScope,_ ns: UInt64) throws -> LocalV2PinChallenge {
+        lock.lock();defer { lock.unlock() };try current(ns);guard scope==nil,original==nil else { throw PinKnownRefusal() };scope=exact
+        let gate=PinGateRequest(originalHostChallenge:self,id:id,action:action,targetChecksum:targetChecksum,context:exact.context,generation:generation,deadlineUptimeMs:deadline/1000000)
+        let challenge=LocalV2PinChallenge(verificationOriginal:gate,rootRevision:exact.rootRevision,selectionRevision:exact.selectionRevision,deadlineNs:deadline)
+        original=challenge;return challenge
+    }
+    func transfer(_ completion: LocalV2PinCompletion?,reply: LocalV2PinReply?,now: UInt64) throws -> Data {
+        lock.lock();defer { lock.unlock() };let available = !spent && !revoked && now>=last && now<deadline;spent=true;if available { last=now }
+        guard available,let original,let completion,let reply,completion.original === original,original.original === self,
+            reply.operation.challenge === original,original.kind == .verify,reply.kind == .match,reply.completed,reply.settled,reply.known,reply.consumed,
+            reply.operation.closedKnown,!reply.operation.closedRevoked,reply.operation.request.retired,!reply.operation.request.sealed,
+            completion.receiptChecksum==reply.receipt.checksum,completion.receiptRevision==reply.receipt.revision else { throw PinKnownRefusal() }
+        var bytes=try target.copy();guard LocalSnapshotV2.hash(bytes)==targetChecksum else { bytes.resetBytes(in:0..<bytes.count);throw PinKnownRefusal() };return bytes
+    }
+    func revoke() { lock.lock();revoked=true;lock.unlock() }
+    func close() { lock.lock();spent=true;target.close();lock.unlock() }
+}
+/** Real child VC observes original parent route disappearance/Back/pop and
+ * reparenting. Only this operation's exact native PIN presentation may hide
+ * the original route temporarily. No lifecycle boolean is supplied by JS. */
+fileprivate final class LocalV2GateRouteWitness: UIViewController {
+    weak var owner: LocalV2GateHost?
+    override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated);owner?.routeDisappearing() }
+    override func didMove(toParent parent: UIViewController?) { super.didMove(toParent:parent);owner?.witnessMoved(parent) }
+    override func loadView() { let view=UIView(frame:.zero);view.isUserInteractionEnabled=false;self.view=view }
+}
+/** Concrete private native-control host. The exact existing VC/window/scene
+ * and UIButton are retained through final canonical readback and native
+ * action delivery. Production App/admitted AES factories remain nil. */
+fileprivate final class LocalV2GateHost: NSObject {
+    private let operations: LocalV2PinOperations,host: UIViewController,route: UIView,control: UIButton,window: UIWindow,scene: UIWindowScene,root: UIViewController
+    private let policy: LocalSnapshotV2Policy,action: String,target: PinOwnedBytes,verificationMs: UInt64,capabilityMs: UInt64
+    private let dispatch: (String,Data) throws -> Void,ancestry: [UIView],controllers: [UIViewController],presenter: UIViewController?
+    private let lock=NSLock(),witness=LocalV2GateRouteWitness()
+    private var invocation: LocalV2GateInvocation?,operation: LocalV2PinOperation?,input: LocalV2PinNativeInput?,worker: Thread?,generation: UInt64=0
+    private var revoked=false,closed=false,observers=[NSObjectProtocol](),expiry: DispatchWorkItem?
+    fileprivate static func originalWindow(host: UIViewController,control: UIButton) throws -> UIWindow {
+        guard Thread.isMainThread,let route=host.viewIfLoaded,let window=route.window,let scene=window.windowScene,
+            window.rootViewController != nil,control.isDescendant(of:route),control.allTargets.isEmpty,control.allControlEvents.isEmpty,
+            window.isKeyWindow,!window.isHidden,scene.activationState == .foregroundActive,UIApplication.shared.applicationState == .active,
+            host.presentedViewController==nil,!host.isBeingDismissed,!host.isMovingFromParent,!control.isHidden,!route.isHidden else { throw PinKnownRefusal() }
+        return window
+    }
+    init(vault: PlanetChildVault,host: UIViewController,control: UIButton,policy: LocalSnapshotV2Policy,iterations: UInt32,
+        action: String,target: Data,verificationMs: UInt64,capabilityMs: UInt64,dispatch: @escaping (String,Data) throws -> Void) throws {
+        let originalWindow=try Self.originalWindow(host:host,control:control)
+        guard Thread.isMainThread,let route=host.viewIfLoaded,let window=route.window,let scene=window.windowScene,let root=window.rootViewController,
+            control.isDescendant(of:route),control.allTargets.isEmpty,!control.isHidden,!route.isHidden,window.isKeyWindow,!window.isHidden,
+            scene.activationState == .foregroundActive,UIApplication.shared.applicationState == .active,host.presentedViewController==nil,
+            !host.isBeingDismissed,!host.isMovingFromParent,verificationMs>0,verificationMs<=60000,
+            capabilityMs>0,capabilityMs<=2147483647,target.count<=131072,window === originalWindow,
+            PinVerificationActionCopy.caption(action,locale:.en) != nil else { throw PinKnownRefusal() }
+        self.host=host;self.route=route;self.control=control;self.window=window;self.scene=scene;self.root=root;self.policy=policy
+        self.action=action;self.target=PinOwnedBytes(target);self.verificationMs=verificationMs;self.capabilityMs=capabilityMs;self.dispatch=dispatch
+        operations=try LocalV2PinOperations(vault:vault,policy:policy,iterations:iterations)
+        var parents=[UIView](),parent=control.superview;while let value=parent { parents.append(value);if value === route { break };parent=value.superview }
+        guard parents.last === route else { throw PinKnownRefusal() };ancestry=parents
+        var controllers=[UIViewController](),controller=host.parent;while let value=controller { controllers.append(value);controller=value.parent }
+        self.controllers=controllers;presenter=host.presentingViewController;super.init()
+        witness.owner=self;host.addChild(witness);route.addSubview(witness.view);witness.didMove(toParent:host)
+        let center=NotificationCenter.default
+        for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification,UIWindow.didResignKeyNotification] {
+            observers.append(center.addObserver(forName:name,object:nil,queue:.main) { [weak self] note in
+                guard let self else { return }
+                if name==UIScene.didDisconnectNotification,(note.object as? UIWindowScene) !== self.scene { return }
+                if name==UIWindow.didResignKeyNotification,(note.object as? UIWindow) !== self.window { return };self.revoke()
+            })
+        }
+        control.addTarget(self,action:#selector(begin),for:.touchUpInside)
+    }
+    private func sample() throws -> UInt64 { try operations.writer.clock.nanoseconds() }
+    private func ownedInput() -> UIViewController? {
+        guard let operation,let input,operation.owner === operations,operation.input === input,let view=input.controller,
+            operation.challenge.kind == .verify,view.presentingViewController === host,host.presentedViewController === view,
+            view.viewIfLoaded?.window === window else { return nil };return view
+    }
+    private func current(allowInput: Bool) throws {
+        guard Thread.isMainThread else { throw PinKnownRefusal() };lock.lock();let denied=revoked || closed,original=invocation;lock.unlock()
+        let owned=allowInput ? ownedInput():nil
+        guard !denied,host.viewIfLoaded === route,window.rootViewController === root,window.windowScene === scene,window.isKeyWindow,!window.isHidden,
+            scene.activationState == .foregroundActive,UIApplication.shared.applicationState == .active,!host.isBeingDismissed,!host.isMovingFromParent,
+            route.window === window || owned != nil,host.presentedViewController==nil || host.presentedViewController === owned,
+            witness.parent === host,!control.isHidden,!route.isHidden else { throw PinKnownRefusal() }
+        var parent=control.superview;for exact in ancestry { guard parent === exact else { throw PinKnownRefusal() };parent=parent?.superview }
+        var controller=host;for exact in controllers {
+            guard controller.parent === exact else { throw PinKnownRefusal() }
+            if let navigation=exact as? UINavigationController, navigation.topViewController !== controller { throw PinKnownRefusal() }
+            if let tabs=exact as? UITabBarController,tabs.selectedViewController !== controller { throw PinKnownRefusal() };controller=exact
+        }
+        guard controller.parent==nil,host.presentingViewController === presenter else { throw PinKnownRefusal() }
+        if let original { try original.live(sample()) }
+    }
+    fileprivate func routeDisappearing() {
+        // Presentation may call disappearance before its completion; accept
+        // only the exact input controller already owned by the same request.
+        if let operation,let controller=operation.input?.controller,operation.challenge.kind == .verify,
+            host.presentedViewController === controller,controller.presentingViewController === host { return };revoke()
+    }
+    fileprivate func witnessMoved(_ parent: UIViewController?) { if parent !== host { revoke() } }
+    /** Native router must call before reusing the original route view. */
+    func routeWillChange() { revoke() }
+    private func revoke() {
+        lock.lock();revoked=true;let original=invocation,native=operation;lock.unlock();original?.revoke()
+        if let native,!native.request.retired { operations.writer.cancel(native.request) }
+    }
+    @objc private func begin() {
+        do { try current(allowInput:false);lock.lock();let ready=invocation==nil && worker==nil && generation<9007199254740991
+            if ready { generation+=1 };let sequence=generation;lock.unlock();guard ready else { throw PinKnownRefusal() }
+            var bytes=try target.copy();defer { bytes.resetBytes(in:0..<bytes.count) }
+            let original=try LocalV2GateInvocation(action:action,target:bytes,generation:sequence,beganNs:sample(),verificationMs:verificationMs,capabilityMs:capabilityMs)
+            lock.lock();invocation=original;lock.unlock()
+            let expiry=DispatchWorkItem { [weak self] in self?.revoke() };self.expiry=expiry
+            let now=try sample();guard now<original.deadline,original.deadline-now<=UInt64(Int.max) else { throw PinKnownRefusal() }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .nanoseconds(Int(original.deadline-now)),execute:expiry)
+            let worker=Thread { [self] in run(original) };lock.lock();self.worker=worker;lock.unlock();worker.start()
+        } catch { revoke();if worker==nil { detach();target.close() } }
+    }
+    private func run(_ original: LocalV2GateInvocation) {
+        var native: LocalV2PinOperation?,reply: LocalV2PinReply?,retired=false
+        defer {
+            if let native,!retired,!native.request.retired { operations.writer.cancel(native.request);joinInput(native)
+                if let terminal=native.reply,!terminal.settled { try? operations.settle(terminal,known:false) };try? operations.retire(native)
+            }
+            DispatchQueue.main.sync { [self] in detach();original.close();target.close() }
+        }
+        do {
+            try DispatchQueue.main.sync { try current(allowInput:false) }
+            let scope=try operations.writer.storage.locked { transaction -> LocalV2GateScope in
+                try original.live(sample());var bytes=try transaction.read();defer { bytes.resetBytes(in:0..<bytes.count) }
+                let record=try LocalSnapshotV2.decode(bytes,policy:policy);defer { record.close() };return try LocalV2GateScope(record)
+            }
+            let challenge=try original.capture(scope,sample())
+            native=try DispatchQueue.main.sync { try current(allowInput:false);let value=try operations.begin(challenge,host:host,locale:scope.locale)
+                lock.lock();operation=value;lock.unlock();return value }
+            guard let native else { throw PinKnownRefusal() };try operations.open(native)
+            var expected=try native.request.expected!.copy();defer { expected.resetBytes(in:0..<expected.count) }
+            let captured=try LocalSnapshotV2.decode(expected,policy:policy);defer { captured.close() };try scope.initial(captured)
+            let terminalLock=NSLock(),terminalReady=DispatchSemaphore(value:0)
+            try DispatchQueue.main.sync { try current(allowInput:false)
+                let value=try operations.input(native,host:host) { result in
+                    try original.live(self.sample());let delivered=try result.get()
+                    guard delivered.operation === native,delivered.operation.challenge === challenge else { throw PinKnownRefusal() }
+                    terminalLock.lock();reply=delivered;terminalLock.unlock();terminalReady.signal()
+                };input=value
+            }
+            // A watchdog observes actual scope until a real terminal recipient
+            // returns. Timeout cancels, but never substitutes for native joins.
+            while terminalReady.wait(timeout:.now()) == .timedOut {
+                do { try original.live(sample());try DispatchQueue.main.sync { try current(allowInput:true) } }
+                catch { revoke() }
+                operations.writer.condition.lock();let done=native.inputJoined && native.uiWorkers==0 && native.recipients==0
+                if !done { _ = operations.writer.condition.wait(until:Date(timeIntervalSinceNow:0.05)) };operations.writer.condition.unlock()
+                if done { break }
+            }
+            joinInput(native);terminalLock.lock();let terminal=reply;terminalLock.unlock();guard let terminal else { throw PinKnownRefusal() }
+            try original.live(sample());try operations.settle(terminal,known:true);try operations.retire(native);retired=true
+            let completion=try operations.consumeMatch(terminal,original:challenge);try original.live(sample())
+            do { try operations.writer.storage.locked { transaction in
+                var actual=try transaction.read();defer { actual.resetBytes(in:0..<actual.count) }
+                let record=try LocalSnapshotV2.decode(actual,policy:policy);defer { record.close() }
+                guard record.checksum==completion.receiptChecksum,record.fields.revision==completion.receiptRevision else { throw PlanetChildVault.Failure.unavailable }
+                try scope.same(record);try original.live(sample())
+            } } catch { if !(error is PinKnownRefusal) { let writer=operations.writer;writer.condition.lock();writer.processClock.poisonClosed(native);writer.condition.unlock() };throw error }
+            try DispatchQueue.main.sync { try current(allowInput:false);guard invocation === original,operation === native else { throw PinKnownRefusal() }
+                let writer=operations.writer,now=try sample();writer.condition.lock()
+                do { guard writer.active==nil,writer.processClock.preparingOwner==nil,!writer.processClock.invalidated,
+                        writer.processClock.matches(policy),writer.processClock.known?.checksum==completion.receiptChecksum else { throw PinKnownRefusal() }
+                    try writer.processClock.observe(now);writer.condition.unlock()
+                } catch { writer.condition.unlock();throw error }
+                var payload=try original.transfer(completion,reply:terminal,now:now);defer { payload.resetBytes(in:0..<payload.count) }
+                try dispatch(original.action,payload)
+            }
+        } catch { revoke() }
+    }
+    private func joinInput(_ original: LocalV2PinOperation) {
+        let condition=operations.writer.condition
+        condition.lock();while original.busy || original.request.workers>0 { condition.wait() };condition.unlock()
+        // Thread.isFinished is the actual owned input/recipient invocation,
+        // beyond the final counted callback; no synthetic join is inferred.
+        condition.lock();let worker=original.nativeInputThread;condition.unlock()
+        while let worker,!worker.isFinished { condition.lock();_ = condition.wait(until:Date(timeIntervalSinceNow:0.01));condition.unlock() }
+    }
+    private func detach() {
+        guard Thread.isMainThread else { return };control.removeTarget(self,action:#selector(begin),for:.touchUpInside)
+        expiry?.cancel();expiry=nil;for observer in observers { NotificationCenter.default.removeObserver(observer) };observers.removeAll()
+        witness.owner=nil;witness.willMove(toParent:nil);witness.view.removeFromSuperview();witness.removeFromParent()
+        lock.lock();closed=true;lock.unlock()
+    }
+    func close() { guard Thread.isMainThread else { return };revoke();if worker==nil { detach();target.close() } }
+}
+#if DEBUG
+/** Explicit fixture-only canonical/control refusal observations. No synthetic
+ * completion is constructed and no fixture can activate the native Gate. */
+enum PlanetChildLocalGateScenario: String,CaseIterable {
+    case selectedContext,contextSubstitution,targetOwnership,exclusiveDeadline,failedTransfer,actions,adultContext,initialRevision
+}
+struct PlanetChildLocalGateObservation { var passed=false,deadline: UInt64=0,profileRevision: UInt64=0,selectionRevision: UInt64=0,actionCount=0 }
+enum PlanetChildLocalGateRuntimeFixture {
+    private static func policy() throws -> LocalSnapshotV2Policy {
+        try LocalSnapshotV2Policy(version:"synthetic-local-gate-v2",checksum:String(repeating:"a",count:64),maximum:600000,delays:[100,250])
+    }
+    private static func record(_ p: LocalSnapshotV2Policy,profile: UInt64=2,selection: UInt64=3,locale: String="en",mode: String="child",root: UInt64=2) throws -> LocalSnapshotV2 {
+        let registry=#"{"schemaVersion":1,"policyVersion":"\#(p.version)","activeProfileId":"reader","profiles":[{"id":"reader","label":"Native Reader","exactAge":9,"ageBand":"9-11","locale":"\#(locale)","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":[],"soundEnabled":false,"motion":"calm","narrationEnabled":false}]}"#
+        let pin=#"{"schemaVersion":1,"policyVersion":"\#(p.version)","revision":1,"credentialId":"\#(String(repeating:"b",count:64))","verifier":{"algorithm":"PBKDF2-HMAC-SHA256","iterations":600000,"saltHex":"\#(String(repeating:"c",count:64))","hashHex":"\#(String(repeating:"d",count:64))"},"attempts":{"count":0,"blockedUntilMs":0,"lastObservedMs":0,"pendingAttemptId":null}}"#
+        var bytes=Data(#"{"schemaVersion":2,"revision":\#(root),"mode":"\#(mode)","selectionRevision":\#(selection),"profileRevision":\#(profile),"policyChecksum":"\#(p.checksum)","registryChecksum":"\#(LocalSnapshotV2.hash(Data(registry.utf8)))","registry":\#(registry),"pin":\#(pin),"clock":{"schemaVersion":2,"logicalMs":0}}"#.utf8)
+        defer { bytes.resetBytes(in:0..<bytes.count) }
+        let fields=LocalV2PinFields(revision:1,credential:String(repeating:"b",count:64),count:0,blocked:0,observed:0,pending:nil,revisionStart:0,revisionEnd:0,attemptsStart:0)
+        return try LocalSnapshotV2.wrapper(bytes,policy:p,rootRevision:root,journalRevision:1,pin:fields)
+    }
+    private static func denied(_ work: () throws -> Void) -> Bool { do { try work();return false } catch { return true } }
+    static func run(_ scenario: PlanetChildLocalGateScenario) throws -> PlanetChildLocalGateObservation {
+        let p=try policy(),snapshot=try record(p);defer { snapshot.close() };let scope=try LocalV2GateScope(snapshot)
+        var result=PlanetChildLocalGateObservation()
+        switch scenario {
+        case .selectedContext:
+            let selected=try record(p,profile:4,selection:7,locale:"ru");defer { selected.close() };let exact=try LocalV2GateScope(selected)
+            result.profileRevision=exact.context.profileRevision;result.selectionRevision=exact.selectionRevision
+            result.passed=exact.context.profileId=="reader" && exact.context.policyVersion==p.version && exact.locale == .ru && result.profileRevision==4 && result.selectionRevision==7
+        case .contextSubstitution:
+            let changed=[try record(p,profile:3),try record(p,selection:4),try record(p,locale:"ru")];defer { for item in changed { item.close() } }
+            result.passed=changed.allSatisfy { current in denied { try scope.same(current) } }
+        case .targetOwnership:
+            var caller=Data([1,2,3]);let expected=LocalSnapshotV2.hash(caller)
+            let original=try LocalV2GateInvocation(action:"share",target:caller,generation:4,beganNs:100000001,verificationMs:5000,capabilityMs:3000);defer { original.close() }
+            caller.resetBytes(in:0..<caller.count);let challenge=try original.capture(scope,101000000);result.deadline=original.deadline
+            result.passed=challenge.original === original && challenge.target==expected && challenge.gate?.context==scope.context && result.deadline==3100000000
+                && denied { _ = try original.capture(scope,102000000) }
+        case .exclusiveDeadline:
+            let original=try LocalV2GateInvocation(action:"diagnostics",target:Data(),generation:1,beganNs:100000001,verificationMs:100,capabilityMs:200);defer { original.close() }
+            try original.live(199999999);result.passed=denied { try original.live(200000000) } && denied { try original.live(101000000) }
+            let revoked=try LocalV2GateInvocation(action:"share",target:Data(),generation:2,beganNs:100000001,verificationMs:100,capabilityMs:100);defer { revoked.close() };revoked.revoke()
+            result.passed = result.passed && denied { try revoked.live(101000000) }
+            let regressed=try LocalV2GateInvocation(action:"share",target:Data(),generation:3,beganNs:100000000,verificationMs:100,capabilityMs:100);defer { regressed.close() }
+            try regressed.live(150000000);result.passed = result.passed && denied { try regressed.live(149000000) } && denied { try regressed.live(151000000) }
+        case .failedTransfer:
+            let original=try LocalV2GateInvocation(action:"share",target:Data([1]),generation:1,beganNs:100000000,verificationMs:1000,capabilityMs:1000);defer { original.close() }
+            _ = try original.capture(scope,101000000)
+            result.passed=denied { _ = try original.transfer(nil,reply:nil,now:102000000) } && denied { try original.live(103000000) }
+                && denied { _ = try original.transfer(nil,reply:nil,now:103000000) }
+        case .actions:
+            let actions=["exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store","initiate-purchase","restore-purchases","open-external","share","account-change","export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial"]
+            for action in actions { let original=try LocalV2GateInvocation(action:action,target:Data([1]),generation:1,beganNs:100000000,verificationMs:1000,capabilityMs:1000)
+                let challenge=try original.capture(scope,101000000);if challenge.action==action { result.actionCount+=1 };original.close() }
+            result.passed=result.actionCount==16 && denied { _ = try LocalV2GateInvocation(action:"unlock-anything",target:Data(),generation:1,beganNs:100000000,verificationMs:1000,capabilityMs:1000) }
+        case .adultContext:
+            let adult=try record(p,mode:"adult");defer { adult.close() };result.passed=denied { _ = try LocalV2GateScope(adult) }
+        case .initialRevision:
+            let newer=try record(p,root:3);defer { newer.close() };try scope.same(newer);result.passed=denied { try scope.initial(newer) }
+        }
+        return result
+    }
+    static func unattachedUIKitHostIsRefused() throws -> Bool {
+        guard Thread.isMainThread else { throw PinKnownRefusal() };let host=UIViewController();host.loadViewIfNeeded();let control=UIButton(type:.system);host.view.addSubview(control)
+        return denied { _ = try LocalV2GateHost.originalWindow(host:host,control:control) }
     }
 }
 #endif

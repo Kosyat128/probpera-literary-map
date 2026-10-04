@@ -304,3 +304,25 @@ final class PlanetChildLocalPinOperationRuntimeTests: XCTestCase {
     func testRealBackgroundDuringOwnedPromptAlwaysRevokesOriginal() throws { let value=try observe(.backgroundDuringOwner);XCTAssertTrue(value.denied);XCTAssertEqual(value.updates,0) }
     func testOwnedPromptCannotBypassOriginalExclusiveDeadline() throws { let value=try observe(.expireDuringOwner);XCTAssertTrue(value.denied);XCTAssertEqual(value.updates,0) }
 }
+
+/** New LOCAL Gate provenance/refusal mechanics, authored NOT_COMPILED/NOT_RUN.
+ * Canonical fixtures authenticate no parent and admit no child data. */
+final class PlanetChildLocalGateHostRuntimeTests: XCTestCase {
+    private func observe(_ scenario: PlanetChildLocalGateScenario,file: StaticString=#filePath,line: UInt=#line) throws -> PlanetChildLocalGateObservation {
+        let value=try PlanetChildLocalGateRuntimeFixture.run(scenario);XCTAssertTrue(value.passed,file:file,line:line);return value
+    }
+    func testGateDerivesExactSelectedProfileLocaleAndRevisionsFromCanonicalRecord() throws {
+        let value=try observe(.selectedContext);XCTAssertEqual(value.profileRevision,4);XCTAssertEqual(value.selectionRevision,7)
+    }
+    func testGateRejectsProfileRouteAndSelectedRegistrySubstitution() throws { _ = try observe(.contextSubstitution) }
+    func testGateOwnsOriginalTargetAndCannotReconstructOriginalChallenge() throws { XCTAssertEqual(try observe(.targetOwnership).deadline,3100000000) }
+    func testGatePreservesOriginalExclusiveDeadlineAndStickyRevocation() throws { _ = try observe(.exclusiveDeadline) }
+    func testMissingOriginalCompletionSpendsTransferWithoutAnyRetry() throws { _ = try observe(.failedTransfer) }
+    func testAllSixteenExistingActionsRemainExactAndUnknownActionIsRefused() throws { XCTAssertEqual(try observe(.actions).actionCount,16) }
+    func testAdultRecordCannotProduceChildGateContext() throws { _ = try observe(.adultContext) }
+    func testChangedInitialCanonicalRevisionCannotStartOriginalGate() throws { _ = try observe(.initialRevision) }
+    func testActualUIKitControllerWithoutOriginalWindowCannotCreateGateHost() throws {
+        let value=try (Thread.isMainThread ? PlanetChildLocalGateRuntimeFixture.unattachedUIKitHostIsRefused():DispatchQueue.main.sync { try PlanetChildLocalGateRuntimeFixture.unattachedUIKitHostIsRefused() })
+        XCTAssertTrue(value)
+    }
+}

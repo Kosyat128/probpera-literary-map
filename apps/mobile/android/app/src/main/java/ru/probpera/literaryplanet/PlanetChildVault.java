@@ -3915,5 +3915,184 @@ final class PlanetChildVault {
         private void wipeOriginal(){LocalSnapshotV2.wipe(original);LocalSnapshotV2.wipe(nonce);LocalSnapshotV2.wipe(payload);}
     }
 
+    /** Saved canonical LOCAL v2 context. No caller supplies child identity,
+     * route/profile revisions, language, policy or a comparison result. */
+    private static final class LocalV2GateScope {
+        final PinGateContext context;final String locale,registryChecksum,protectedChecksum,credential;
+        final long rootRevision,pinRevision;
+        private LocalV2GateScope(LocalSnapshotV2 snapshot) throws Exception {
+            byte[] raw=snapshot.copy();try{
+                ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(raw,snapshot.protectedStart,snapshot.protectedEnd-snapshot.protectedStart,StandardCharsets.UTF_8));
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);rootRevision=p.number(1,MAX_SAFE);
+                p.field("mode",false);require("child".equals(p.string()));p.field("selectionRevision",false);long selection=p.number(1,MAX_SAFE);
+                p.field("profileRevision",false);long revision=p.number(1,MAX_SAFE);p.field("policyChecksum",false);require(p.string().equals(snapshot.policy.checksum));
+                p.field("registryChecksum",false);registryChecksum=p.string();p.field("registry",false);int registryStart=p.index;
+                String active=ProtectedEnvelope.registry(p,snapshot.policy.version);require(active!=null);
+                ProtectedEnvelope.Cursor r=new ProtectedEnvelope.Cursor(p.text.substring(registryStart,p.index));
+                r.field("schemaVersion",true);r.number(1,1);r.field("policyVersion",false);require(r.string().equals(snapshot.policy.version));
+                r.field("activeProfileId",false);require(active.equals(r.string()));r.field("profiles",false);r.token("[");String selectedLocale=null;
+                do {int start=r.index;String profile=ProtectedEnvelope.profile(r);if(profile.equals(active)){
+                    ProtectedEnvelope.Cursor selected=new ProtectedEnvelope.Cursor(r.text.substring(start,r.index));selected.field("id",true);selected.string();
+                    selected.field("label",false);selected.string();selected.field("exactAge",false);selected.number(3,17);selected.field("ageBand",false);selected.string();
+                    selected.field("locale",false);selectedLocale=selected.string();}}
+                while(r.take(","));r.token("]");r.token("}");require("ru".equals(selectedLocale)||"en".equals(selectedLocale));
+                locale=selectedLocale;context=new PinGateContext(active,snapshot.policy.version,revision,selection,"child","active");
+                protectedChecksum=snapshot.protectedChecksum;credential=snapshot.credentialId;pinRevision=snapshot.pinRevision;
+            }finally{LocalSnapshotV2.wipe(raw);}
+        }
+        private void initial(LocalSnapshotV2 current) throws Exception {
+            require(current.revision==rootRevision&&current.pinRevision==pinRevision&&current.protectedChecksum.equals(protectedChecksum));same(current);
+        }
+        private void same(LocalSnapshotV2 current) throws Exception {
+            LocalV2GateScope actual=new LocalV2GateScope(current);require(context.profileId.equals(actual.context.profileId)
+                &&context.policyVersion.equals(actual.context.policyVersion)&&context.profileRevision==actual.context.profileRevision
+                &&context.routeRevision==actual.context.routeRevision&&registryChecksum.equals(actual.registryChecksum)
+                &&locale.equals(actual.locale)&&credential.equals(actual.credential));
+        }
+    }
+    /** One native button invocation. The request token is this exact object;
+     * target bytes are owned before native capture. No public capability is
+     * exposed and no bare boolean can enter the transfer boundary. */
+    private static final class LocalV2GateInvocation {
+        final String id,action,targetChecksum;final long generation,began,deadline;private final byte[] target;
+        private PinGateRequest original;private LocalV2GateScope scope;private boolean spent,revoked;private long last;
+        private LocalV2GateInvocation(String action,byte[] target,long generation,long began,long verificationMs,long capabilityMs) throws Exception {
+            require(target!=null&&target.length<=MAX_BYTES&&generation>=0&&generation<=MAX_SAFE&&began>=0&&began<=MAX_SAFE
+                &&verificationMs>0&&verificationMs<=60000&&capabilityMs>0&&capabilityMs<=2147483647L);
+            long duration=Math.min(verificationMs,capabilityMs);require(began<=MAX_SAFE-duration);
+            this.action=action;this.target=target.clone();targetChecksum=digest(this.target);this.generation=generation;this.began=began;last=began;deadline=began+duration;
+            byte[] nonce=new byte[32];try{new java.security.SecureRandom().nextBytes(nonce);id=LocalV2PinOperation.hex(nonce);}finally{LocalSnapshotV2.wipe(nonce);}
+        }
+        private synchronized void live(long now) throws Exception {if(spent||revoked||now<last||now>=deadline){revoked=true;throw new PinKnownRefusal();}last=now;}
+        private synchronized PinGateRequest capture(LocalV2GateScope exact,long now) throws Exception {
+            live(now);require(scope==null&&original==null&&exact!=null);scope=exact;original=new PinGateRequest(this,id,action,targetChecksum,exact.context,generation,deadline);return original;
+        }
+        private synchronized byte[] transfer(LocalV2PinReply reply,long now) throws Exception {
+            // All attempts spend before inspecting proof; an invalid or late
+            // transfer cannot be retried using a subsequently repaired fact.
+            boolean available=!spent&&!revoked&&now>=last&&now<deadline;spent=true;if(available)last=now;
+            require(available&&original!=null&&reply!=null&&reply.gate==original&&reply.kind==LocalV2PinKind.verify
+                &&reply.operation.originalChallenge==this&&reply.operation.gate==original&&reply.operation.knownSettlement
+                &&reply.settled&&reply.consumed&&!reply.disposed&&!reply.operation.closedRevoked
+                &&reply.outcome==PinVerificationOutcome.match&&reply.operation.request.retired&&reply.operation.request.detached
+                &&reply.operation.finalAcknowledged&&reply.operation.platformCompared&&digest(target).equals(targetChecksum));
+            return target.clone();
+        }
+        private synchronized void revoke(){revoked=true;}
+        private synchronized void close(){spent=true;LocalSnapshotV2.wipe(target);}
+    }
+    private interface LocalV2NativeProtectedAction {void perform(String originalAction,byte[] originalTarget) throws Exception;}
+    /** Private usable native-control host. Native route ownership is the
+     * original non-WebView route root and Button ancestry, not JS route claims.
+     * App/admitted AES integration must still select no production factory. */
+    private static final class LocalV2GateHost implements AutoCloseable {
+        final LocalV2Writer writer;final LocalSnapshotV2Policy policy;final android.app.Activity activity;
+        final android.view.ViewGroup route;final android.widget.Button control;final android.os.IBinder window;
+        final String action;final long verificationMs,capabilityMs;final LocalV2NativeProtectedAction dispatch;
+        private final byte[] target;private final android.view.ViewParent[] ancestry;
+        private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
+        private volatile LocalV2GateInvocation invocation;private volatile LocalV2Request request;private volatile LocalV2PinOperation operation;
+        private volatile boolean closed,revoked;private long generation;private Thread worker;
+        private android.app.Application.ActivityLifecycleCallbacks lifecycle;private android.content.BroadcastReceiver screen;
+        private androidx.activity.OnBackPressedCallback back;private android.view.View.OnAttachStateChangeListener attachment;
+        private android.view.ViewTreeObserver.OnWindowFocusChangeListener focus;private android.view.ViewTreeObserver.OnGlobalLayoutListener layout;private Runnable expiry;
+        private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android.view.ViewGroup route,android.widget.Button control,
+            LocalSnapshotV2Policy policy,String action,byte[] target,long verificationMs,long capabilityMs,LocalV2NativeProtectedAction dispatch) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&vault!=null&&host!=null&&host.getClass()==MainActivity.class
+                &&host.getApplicationContext()==vault.context&&route!=null&&control!=null&&dispatch!=null&&policy!=null&&target!=null
+                &&target.length<=MAX_BYTES&&verificationMs>0&&verificationMs<=60000&&capabilityMs>0&&capabilityMs<=2147483647L
+                &&!(route instanceof android.webkit.WebView)&&route!=host.getWindow().getDecorView()&&!control.hasOnClickListeners());
+            activity=host;this.route=route;this.control=control;this.policy=new LocalSnapshotV2Policy(policy.version,policy.checksum,policy.maximumIterations,policy.delays);
+            this.action=action;this.target=target.clone();this.verificationMs=verificationMs;this.capabilityMs=capabilityMs;this.dispatch=dispatch;
+            window=host.getWindow().getDecorView().getWindowToken();require(window!=null&&host.hasWindowFocus());writer=new LocalV2Writer(vault);
+            java.util.ArrayList<android.view.ViewParent> parents=new java.util.ArrayList<>();android.view.ViewParent parent=control.getParent();
+            while(parent!=null){parents.add(parent);if(parent==route)break;parent=parent.getParent();}require(!parents.isEmpty()&&parents.get(parents.size()-1)==route);
+            ancestry=parents.toArray(new android.view.ViewParent[0]);current(false);
+            // Validate the fixed existing sixteen-action vocabulary now, before
+            // a button is hooked. This temporary value never authorizes work.
+            new PinGateRequest(new Object(),LocalV2PinOperation.hex(new byte[32]),action,digest(this.target),new PinGateContext("native-validation",policy.version,1,0,"child","active"),0,1);
+            try{attach();control.setOnClickListener(v->begin());}catch(Throwable failure){revoke();detach();LocalSnapshotV2.wipe(this.target);throw failure;}
+        }
+        private boolean ownedInput(){LocalV2PinOperation original=operation;return original!=null&&original.request==request&&original.kind==LocalV2PinKind.verify
+            &&original.dialog!=null&&original.dialog.isShowing()&&original.dialog.getWindow()!=null
+            &&original.dialog.getWindow().getAttributes().token==window&&original.dialog.getWindow().getDecorView().hasWindowFocus();}
+        private void current(boolean allowInput) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());if(closed||revoked||activity.isFinishing()||activity.isDestroyed()
+                ||activity.getWindow().getDecorView().getWindowToken()!=window||route.getRootView()!=activity.getWindow().getDecorView()
+                ||route.getWindowToken()!=window||!route.isShown()||!control.isShown())throw new PinKnownRefusal();
+            android.view.ViewParent parent=control.getParent();for(android.view.ViewParent exact:ancestry){require(parent==exact);parent=parent.getParent();}
+            require(activity.hasWindowFocus()||allowInput&&ownedInput());LocalV2GateInvocation original=invocation;if(original!=null)original.live(SystemClock.elapsedRealtime());
+        }
+        private void attach() throws Exception {
+            lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}
+                public void onActivityStarted(android.app.Activity a){}public void onActivityResumed(android.app.Activity a){}
+                public void onActivityPaused(android.app.Activity a){if(a==activity)revoke();}public void onActivityStopped(android.app.Activity a){if(a==activity)revoke();}
+                public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}public void onActivityDestroyed(android.app.Activity a){if(a==activity)revoke();}};
+            ((android.app.Application)writer.vault.context).registerActivityLifecycleCallbacks(lifecycle);
+            screen=new android.content.BroadcastReceiver(){public void onReceive(Context c,android.content.Intent i){revoke();}};
+            android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
+            if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(screen,filter,Context.RECEIVER_NOT_EXPORTED);else writer.vault.context.registerReceiver(screen,filter);
+            back=new androidx.activity.OnBackPressedCallback(true){public void handleOnBackPressed(){revoke();setEnabled(false);((MainActivity)activity).getOnBackPressedDispatcher().onBackPressed();}};
+            ((MainActivity)activity).getOnBackPressedDispatcher().addCallback((MainActivity)activity,back);
+            attachment=new android.view.View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(android.view.View v){}public void onViewDetachedFromWindow(android.view.View v){revoke();}};
+            route.addOnAttachStateChangeListener(attachment);control.addOnAttachStateChangeListener(attachment);
+            focus=focused->{if(!focused)main.post(()->{try{current(true);}catch(Exception failure){revoke();}});};
+            layout=()->{try{current(true);}catch(Exception failure){revoke();}};
+            route.getViewTreeObserver().addOnWindowFocusChangeListener(focus);route.getViewTreeObserver().addOnGlobalLayoutListener(layout);
+        }
+        /** Called by the owning native router BEFORE reusing this route view. */
+        private void routeWillChange(){revoke();}
+        private void revoke(){revoked=true;LocalV2GateInvocation original=invocation;if(original!=null)original.revoke();
+            LocalV2Request nativeRequest=request;if(nativeRequest!=null&&!nativeRequest.retired)try{writer.cancel(nativeRequest);}catch(Exception failure){writer.unknown(nativeRequest);}}
+        private void onMain(java.util.concurrent.Callable<Void> body) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());java.util.concurrent.FutureTask<Void> task=new java.util.concurrent.FutureTask<>(body);
+            require(main.post(task));boolean interrupted=false;try{for(;;)try{task.get();break;}catch(InterruptedException ignored){interrupted=true;}}
+            finally{if(interrupted)Thread.currentThread().interrupt();}
+        }
+        private void begin(){try{current(false);require(invocation==null&&worker==null&&generation<MAX_SAFE);generation++;
+                LocalV2GateInvocation original=new LocalV2GateInvocation(action,target,generation,SystemClock.elapsedRealtime(),verificationMs,capabilityMs);invocation=original;
+                expiry=this::revoke;require(main.postDelayed(expiry,Math.max(1,original.deadline-SystemClock.elapsedRealtime())));
+                worker=new Thread(()->run(original),"planet-local-v2-native-gate");try{worker.start();}catch(Throwable failure){if(worker.getState()==Thread.State.NEW)worker=null;throw failure;}
+            }catch(Throwable failure){revoke();if(worker==null){try{detach();}catch(Throwable ignored){}closed=true;LocalSnapshotV2.wipe(target);}}}
+        private void run(LocalV2GateInvocation original){LocalV2PinReply[] delivered={null};boolean retired=false;
+            try{onMain(()->{current(false);return null;});LocalV2GateScope scope=writer.vault.locked(directory->{original.live(SystemClock.elapsedRealtime());writer.completeRecord(directory);
+                    byte[] bytes=writer.vault.readExact(directory);try(LocalSnapshotV2 snapshot=LocalSnapshotV2.decode(bytes,policy)){return new LocalV2GateScope(snapshot);}finally{LocalSnapshotV2.wipe(bytes);}});
+                PinGateRequest gate=original.capture(scope,SystemClock.elapsedRealtime());onMain(()->{current(false);request=writer.gateRequest(activity,policy,gate);return null;});
+                operation=writer.verificationOperation(request,gate,scope.locale);try(LocalSnapshotV2 snapshot=LocalSnapshotV2.decode(operation.original,policy)){scope.initial(snapshot);}
+                onMain(()->{current(false);return null;});operation.start(reply->{original.live(SystemClock.elapsedRealtime());require(reply!=null&&reply.operation==operation&&reply.gate==gate);delivered[0]=reply;});
+                operation.worker.join();operation.joinCancel();LocalV2PinReply reply=delivered[0];require(reply!=null);original.live(SystemClock.elapsedRealtime());
+                operation.settle(reply,PinReplyDelivery.known);retired=true;original.live(SystemClock.elapsedRealtime());require(reply.consume(gate)==PinVerificationOutcome.match);
+                // The final exact canonical read remains scoped to the same
+                // native operation after all original workers/recipients join.
+                try{writer.vault.locked(directory->{original.live(SystemClock.elapsedRealtime());writer.completeRecord(directory);byte[] bytes=writer.vault.readExact(directory);
+                    try(LocalSnapshotV2 snapshot=LocalSnapshotV2.decode(bytes,policy)){require(snapshot.checksum.equals(reply.checksum));scope.same(snapshot);
+                        request.processClock.closedReadback(request.processLease,reply.checksum);return null;}finally{LocalSnapshotV2.wipe(bytes);}});}
+                catch(Throwable failure){if(!(failure instanceof PinKnownRefusal))synchronized(request.processClock){
+                        if(request.processClock.active==null&&request.processClock.pending==null&&request.processClock.known!=null&&request.processClock.known.checksum.equals(reply.checksum))request.processClock.invalidateLocked();}
+                    throw failure;}
+                onMain(()->{current(false);require(invocation==original&&operation.gate==gate);request.processClock.closedReadback(request.processLease,reply.checksum);
+                    byte[] payload=original.transfer(reply,SystemClock.elapsedRealtime());
+                    try{dispatch.perform(original.action,payload);}finally{LocalSnapshotV2.wipe(payload);}return null;});
+            }catch(Throwable failure){revoke();}
+            finally{if(request!=null&&!retired&&!request.retired){try{writer.cancel(request);if(operation!=null&&operation.worker!=null){operation.worker.join();operation.joinCancel();}
+                        LocalV2PinReply reply=delivered[0];if(reply!=null&&!reply.settled)operation.settle(reply,PinReplyDelivery.uncertain);else writer.retire(request);
+                    }catch(Throwable ignored){writer.unknown(request);}}
+                if(operation!=null&&operation.closedLifecycle!=null)try{operation.closedObservers(false);}catch(Throwable ignored){revoke();}
+                try{onMain(()->{detach();closed=true;original.close();LocalSnapshotV2.wipe(target);return null;});}catch(Throwable ignored){revoke();original.close();LocalSnapshotV2.wipe(target);}}
+        }
+        private void detach() throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());control.setOnClickListener(null);
+            try{if(lifecycle!=null)((android.app.Application)writer.vault.context).unregisterActivityLifecycleCallbacks(lifecycle);}
+            finally{try{if(screen!=null)writer.vault.context.unregisterReceiver(screen);}
+                finally{try{if(back!=null)back.remove();if(attachment!=null){route.removeOnAttachStateChangeListener(attachment);control.removeOnAttachStateChangeListener(attachment);}}
+                    finally{android.view.ViewTreeObserver observer=route.getViewTreeObserver();if(observer.isAlive()){if(focus!=null)observer.removeOnWindowFocusChangeListener(focus);if(layout!=null)observer.removeOnGlobalLayoutListener(layout);}
+                        if(expiry!=null)main.removeCallbacks(expiry);}}}
+            lifecycle=null;screen=null;back=null;attachment=null;focus=null;layout=null;expiry=null;
+        }
+        public void close() throws Exception {require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper());revoke();
+            // Active original joins keep the binding retained; close cannot
+            // manufacture retirement or expose capacity to a new invocation.
+            if(worker==null){detach();closed=true;LocalSnapshotV2.wipe(target);}}
+    }
     private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
 }

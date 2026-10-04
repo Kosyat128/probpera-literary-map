@@ -457,4 +457,68 @@ public final class PlanetChildFirstInstallRuntimeTest {
         assertNull(field(operation,"closedLifecycle"));assertNull(field(operation,"closedScreen"));assertNull(field(operation,"closedExpiry"));
     }
 
+    /** New private Gate boundary mechanics; no automatic PIN/owner input or
+     * installed storage/child admission is implied by these fixtures. */
+    private static byte[] gateRecord(long profileRevision,long selection,String locale)throws Exception{
+        byte[] base=localWrapper(2,1,1,0,0,0,null);String raw=new String(base,StandardCharsets.UTF_8),before=localProtected(base);
+        String oldRegistry="{\"schemaVersion\":1,\"policyVersion\":\""+VERSION+"\",\"activeProfileId\":null,\"profiles\":[]}";
+        String registry="{\"schemaVersion\":1,\"policyVersion\":\""+VERSION+"\",\"activeProfileId\":\"reader\",\"profiles\":[{\"id\":\"reader\",\"label\":\"Native Reader\",\"exactAge\":9,\"ageBand\":\"9-11\",\"locale\":\""+locale
+            +"\",\"ageConfirmedAt\":\"2026-10-01T12:00:00.000Z\",\"readingLevel\":null,\"allowedTopics\":null,\"blockedTopics\":[],\"soundEnabled\":false,\"motion\":\"calm\",\"narrationEnabled\":false}]}";
+        String after=before.replace("\"mode\":\"adult\"","\"mode\":\"child\"").replace("\"profileRevision\":1","\"profileRevision\":"+profileRevision)
+            .replace("\"selectionRevision\":1","\"selectionRevision\":"+selection).replace(oldRegistry,registry)
+            .replace(sha(oldRegistry.getBytes(StandardCharsets.UTF_8)),sha(registry.getBytes(StandardCharsets.UTF_8)));
+        Arrays.fill(base,(byte)0);return raw.replace(before,after).replace(sha(before.getBytes(StandardCharsets.UTF_8)),sha(after.getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.UTF_8);
+    }
+    private static Object gateScope(byte[] bytes)throws Exception{Object record=localDecode(bytes,snapshotPolicy(100L,250L));try{return create("LocalV2GateScope",record);}finally{call(record,"close");}}
+    @Test public void localV2GateCanonicalSelectedProfileLocaleAndRevisionsComeFromRecord()throws Exception{
+        byte[] bytes=gateRecord(4,7,"ru");try{Object scope=gateScope(bytes),context=field(scope,"context");assertEquals("reader",field(context,"profileId"));
+            assertEquals(VERSION,field(context,"policyVersion"));assertEquals(4L,field(context,"profileRevision"));assertEquals(7L,field(context,"routeRevision"));
+            assertEquals("ru",field(scope,"locale"));assertEquals(2L,field(scope,"rootRevision"));Object adult=localDecode(localWrapper(2,1,1,0,0,0,null),snapshotPolicy(100L));
+            try{denied(()->create("LocalV2GateScope",adult));}finally{call(adult,"close");}}finally{Arrays.fill(bytes,(byte)0);}}
+    @Test public void localV2GateCapturedContextRejectsProfileRouteAndSelectedRegistrySubstitution()throws Exception{
+        Object scope=gateScope(gateRecord(2,3,"en"));for(byte[] bytes:new byte[][]{gateRecord(3,3,"en"),gateRecord(2,4,"en"),gateRecord(2,3,"ru")}){
+            Object current=localDecode(bytes,snapshotPolicy(100L,250L));try{denied(()->call(scope,"same",current));}finally{call(current,"close");Arrays.fill(bytes,(byte)0);}}}
+    @Test public void localV2GateTargetIsOwnedAndOriginalChallengeCannotBeReconstructed()throws Exception{
+        byte[] caller={1,2,3};Object invocation=create("LocalV2GateInvocation","share",caller,4L,100L,5000L,3000L);String checksum=sha(caller);Arrays.fill(caller,(byte)9);
+        Object original=call(invocation,"capture",gateScope(gateRecord(2,3,"en")),101L);assertEquals(checksum,field(original,"targetChecksum"));
+        assertSame(invocation,field(original,"originalHostChallenge"));assertEquals(3100L,field(original,"deadlineUptimeMs"));
+        denied(()->call(invocation,"capture",gateScope(gateRecord(2,3,"en")),102L));call(invocation,"close");assertTrue(zero((byte[])field(invocation,"target")));}
+    @Test public void localV2GateExclusiveDeadlineAndRevocationStaySpentAfterTimeReturns()throws Exception{
+        Object invocation=create("LocalV2GateInvocation","diagnostics",new byte[0],1L,100L,100L,200L);call(invocation,"live",199L);
+        denied(()->call(invocation,"live",200L));denied(()->call(invocation,"live",101L));Object next=create("LocalV2GateInvocation","diagnostics",new byte[0],2L,100L,100L,200L);
+        call(next,"revoke");denied(()->call(next,"live",101L));denied(()->create("LocalV2GateInvocation","share",new byte[0],1L,9007199254740990L,2L,2L));}
+    @Test public void localV2GateNullOrBooleanProofCannotTransferAndFailedAttemptIsOneUse()throws Exception{
+        Object invocation=create("LocalV2GateInvocation","share",new byte[]{1},1L,100L,1000L,1000L);call(invocation,"capture",gateScope(gateRecord(2,3,"en")),101L);
+        denied(()->call(invocation,"transfer",null,102L));assertTrue((Boolean)field(invocation,"spent"));denied(()->call(invocation,"transfer",Boolean.TRUE,103L));
+        denied(()->call(invocation,"live",103L));call(invocation,"close");}
+    private Object actualGateHost(AtomicInteger callbacks)throws Exception{
+        AtomicReference<Object> result=new AtomicReference<>();AtomicReference<Exception> failure=new AtomicReference<>();
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{android.widget.LinearLayout root=new android.widget.LinearLayout(activity);
+            android.widget.Button button=new android.widget.Button(activity);button.setText("Private native Gate fixture");root.addView(button);activity.setContentView(root);
+            Class<?> actionType=type("LocalV2NativeProtectedAction");Object nativeAction=Proxy.newProxyInstance(actionType.getClassLoader(),new Class<?>[]{actionType},(proxy,method,args)->{callbacks.incrementAndGet();return null;});
+            result.set(create("LocalV2GateHost",new PlanetChildVault(activity.getApplicationContext()),activity,root,button,snapshotPolicy(100L,250L),"share",new byte[]{1},5000L,3000L,nativeAction));
+        }catch(Exception error){failure.set(error);}});if(failure.get()!=null)throw failure.get();return result.get();}
+    private void closeGate(Object host)throws Exception{AtomicReference<Exception> failure=new AtomicReference<>();InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{
+        try{call(host,"close");}catch(Exception error){failure.set(error);}});if(failure.get()!=null)throw failure.get();}
+    @Test public void localV2GateActualOwnedBackDispatcherRevokesWithoutDeliveringAction()throws Exception{activity();AtomicInteger calls=new AtomicInteger();Object host=actualGateHost(calls);
+        try{InstrumentationRegistry.getInstrumentation().runOnMainSync(()->activity.getOnBackPressedDispatcher().onBackPressed());assertTrue((Boolean)field(host,"revoked"));assertEquals(0,calls.get());}
+        finally{closeGate(host);}}
+    @Test public void localV2GateActualNativeRouteRootReplacementRevokesOriginalControl()throws Exception{activity();AtomicInteger calls=new AtomicInteger();Object host=actualGateHost(calls);
+        try{InstrumentationRegistry.getInstrumentation().runOnMainSync(()->activity.setContentView(new android.widget.LinearLayout(activity)));
+            assertTrue((Boolean)field(host,"revoked"));assertEquals(0,calls.get());}finally{closeGate(host);}}
+    @Test public void localV2GateActualBackgroundCannotReviveOriginalNativeControl()throws Exception{activity();AtomicInteger calls=new AtomicInteger();Object host=actualGateHost(calls);
+        try{scenario.moveToState(Lifecycle.State.CREATED);scenario.moveToState(Lifecycle.State.RESUMED);assertTrue((Boolean)field(host,"revoked"));assertEquals(0,calls.get());}
+        finally{closeGate(host);}}
+
+    @Test public void localV2GateReentryKeepsOriginalControlUntilOwnedWorkerReturns()throws Exception{
+        activity();AtomicInteger calls=new AtomicInteger();Object host=actualGateHost(calls);CountDownLatch released=new CountDownLatch(1),started=new CountDownLatch(1);
+        Thread held=new Thread(()->{started.countDown();try{released.await();}catch(InterruptedException failure){Thread.currentThread().interrupt();}},"explicit-synthetic-owned-gate-worker");
+        held.start();assertTrue(started.await(5,TimeUnit.SECONDS));localSet(host,"worker",held);
+        try{InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{call(host,"begin");}catch(Exception failure){throw new RuntimeException(failure);}});
+            assertTrue((Boolean)field(host,"revoked"));assertFalse((Boolean)field(host,"closed"));assertNotNull(field(host,"lifecycle"));
+            assertTrue(((android.widget.Button)field(host,"control")).hasOnClickListeners());assertEquals(0,calls.get());
+        }finally{released.countDown();held.join(6000);assertFalse(held.isAlive());localSet(host,"worker",null);closeGate(host);}
+        assertTrue((Boolean)field(host,"closed"));assertNull(field(host,"lifecycle"));
+    }
+
 }
