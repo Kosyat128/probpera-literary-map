@@ -48,10 +48,11 @@ final class PlanetChildDataStore {
     final class Lease {
         fileprivate weak var owner: PlanetChildDataStore?
         fileprivate let scope: Scope, generation: UInt64, nonce: String
+        fileprivate let admission: PlanetChildLocalV2DataAdmission?
         // Partition metadata only; owner and constructor remain fileprivate.
         var partitionGeneration: UInt64 { generation }
         var partitionNonce: String { nonce }
-        fileprivate init(owner: PlanetChildDataStore, scope: Scope, generation: UInt64, nonce: String) { self.owner = owner; self.scope = scope; self.generation = generation; self.nonce = nonce }
+        fileprivate init(owner: PlanetChildDataStore, scope: Scope, generation: UInt64, nonce: String, admission: PlanetChildLocalV2DataAdmission?=nil) { self.owner = owner; self.scope = scope; self.generation = generation; self.nonce = nonce;self.admission=admission }
     }
     final class Cancellation {
         fileprivate weak var owner: PlanetChildDataStore?
@@ -87,8 +88,9 @@ final class PlanetChildDataStore {
         deinit { dispose() }
     }
     private struct Stored { let revision: UInt64; var value: Data }
+    private struct Seal {let scope: Scope,contentBinding: String}
     private final class State {
-        var generation: UInt64 = 0, nonce = "", scope: Scope?
+        var generation: UInt64 = 0, nonce = "", scope: Scope?, admissionBinding: String?,pendingMigration: String?;var seals=[String:Seal]()
         var entries: [String: Stored] = [:]
         func wipe() { for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } } }
         deinit { wipe() }
@@ -226,12 +228,14 @@ final class PlanetChildDataStore {
         mutating func data(_ count: Int) throws -> Data { try PlanetChildDataStore.require(count >= 0 && count <= bytes.count-position); defer { position += count }; return Data(Array(bytes[position..<position+count])) }
         mutating func text(_ max: Int) throws -> String { let count = try number(4); try PlanetChildDataStore.require(count <= UInt64(max)); var data = try self.data(Int(count)); defer { data.resetBytes(in:0..<data.count) }; guard let value = String(data:data,encoding:.utf8) else { throw Failure.unavailable }; return value }
     }
-    private static func encode(_ state: State) throws -> Data {
+    private static func validateSeals(_ state: State) throws {if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.pendingMigration==nil);return };try Self.require((state.pendingMigration==nil || Self.checksum(state.pendingMigration!)) && Self.checksum(state.admissionBinding!) && !state.seals.isEmpty && state.seals.count<=4);for (id,seal) in state.seals { try Self.require(id==seal.scope.profileId && Self.checksum(seal.contentBinding)) };if let scope=state.scope { try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) };for id in state.entries.keys { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let scope=try Self.keyScope(purpose,key:pair[1]);try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) } }
+    private static func encode(_ state: State) throws -> Data {try validateSeals(state);
         let writer = Writer(); try writer.number(0x4c504431,bytes:4); try writer.number(state.generation,bytes:8); try writer.text(state.nonce); try writer.byte(state.scope == nil ? 0 : 1)
         if let scope = state.scope { try writer.text(scope.tuple) }; try PlanetChildDataStore.require(state.entries.count <= PlanetChildDataStore.maxSlots); try writer.number(UInt64(state.entries.count),bytes:4)
         for id in state.entries.keys.sorted() { let pieces = id.components(separatedBy:"\n"); try PlanetChildDataStore.require(pieces.count == 2); guard let purpose = Purpose(rawValue:pieces[0]), let slot = state.entries[id] else { throw Failure.unavailable }
             let scope = try PlanetChildDataStore.keyScope(purpose,key:pieces[1]); try PlanetChildDataStore.envelope(purpose,key:pieces[1],scope:scope,bytes:slot.value); try PlanetChildDataStore.require(PlanetChildDataStore.positive(slot.revision) && slot.revision < PlanetChildDataStore.maxSafe)
             try writer.text(purpose.rawValue); try writer.text(pieces[1]); try writer.number(slot.revision,bytes:8); try writer.text(PlanetChildDataStore.digest(slot.value)); try writer.number(UInt64(slot.value.count),bytes:4); try writer.data(slot.value) }
+        if let binding=state.admissionBinding { try writer.number(0x4c504133,bytes:4);try writer.text(binding);try writer.byte(state.pendingMigration==nil ? 0:1);if let pending=state.pendingMigration { try writer.text(pending) };try writer.number(UInt64(state.seals.count),bytes:4);for id in state.seals.keys.sorted() { let seal=state.seals[id]!;try writer.text(seal.scope.tuple);try writer.text(seal.contentBinding) } }
         return writer.result()
     }
     private static func decode(_ bytes: Data) throws -> State {
@@ -243,7 +247,7 @@ final class PlanetChildDataStore {
             let revision = try reader.number(8), hash = try reader.text(64), length = try reader.number(4); try PlanetChildDataStore.require(PlanetChildDataStore.positive(revision) && revision < PlanetChildDataStore.maxSafe && PlanetChildDataStore.checksum(hash) && length > 0 && length <= UInt64(PlanetChildDataStore.maxValueBytes))
             var value = try reader.data(Int(length)); defer { value.resetBytes(in:0..<value.count) }; try PlanetChildDataStore.require(PlanetChildDataStore.digest(value) == hash); try PlanetChildDataStore.envelope(purpose,key:key,scope:scope,bytes:value)
             let id = purpose.rawValue + "\n" + key; try PlanetChildDataStore.require(state.entries[id] == nil); state.entries[id] = Stored(revision:revision,value:Data(Array(value)))
-        }; try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
+        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count>0 && count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };try validateSeals(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
     }
     private func read(_ directory: URL) throws -> State {
         let file = try record(directory), fd = Darwin.open(file.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC); try Self.require(fd >= 0); defer { Darwin.close(fd) }
@@ -281,9 +285,9 @@ final class PlanetChildDataStore {
             return try work(directory)
         } catch { throw Failure.unavailable }
     }
-    private func live(_ lease: Lease, state: State) throws { try Self.require(!closed && active === lease && lease.owner === self && state.generation == lease.generation && state.nonce == lease.nonce && state.scope?.tuple == lease.scope.tuple) }
+    private func live(_ lease: Lease, state: State) throws { try Self.require(!closed && active === lease && lease.admission==nil && lease.owner === self && state.generation == lease.generation && state.nonce == lease.nonce && state.scope?.tuple == lease.scope.tuple) }
     func activate(_ scope: Scope) throws -> Lease {
-        try locked { directory in try Self.require(!closed); active = nil; let state = try read(directory); defer { state.wipe() }; try Self.require(state.generation < Self.maxSafe-1)
+        try locked { directory in try Self.require(!closed); active = nil; let state = try read(directory); defer { state.wipe() }; try Self.require(state.admissionBinding==nil && state.seals.isEmpty && state.generation < Self.maxSafe-1)
             state.generation += 1; state.nonce = try Self.nonce(); state.scope = scope; try write(directory,state:state) { try Self.require(!self.closed) }
             let lease = Lease(owner:self,scope:scope,generation:state.generation,nonce:state.nonce); active = lease; return lease }
     }
@@ -323,8 +327,53 @@ final class PlanetChildDataStore {
     func retire(_ lease: Lease) throws { try locked { directory in let state = try read(directory); defer { state.wipe() }; try live(lease,state:state); active = nil
         try Self.require(state.generation < Self.maxSafe-1); state.generation += 1; state.nonce = try Self.nonce(); state.scope = nil; try write(directory,state:state) { try Self.require(!self.closed) } } }
     func close() throws { try locked { directory in let lease = active; active = nil; closed = true; if let lease {
-        let state = try read(directory); defer { state.wipe() }; if state.scope != nil && state.generation == lease.generation && state.nonce == lease.nonce {
+        if lease.admission != nil { try existingOnly(directory) };let state = try read(directory); defer { state.wipe() }; if state.scope != nil && state.generation == lease.generation && state.nonce == lease.nonce {
             try Self.require(state.generation < Self.maxSafe-1); state.generation += 1; state.nonce = try Self.nonce(); state.scope = nil; try write(directory,state:state) {} } } } }
+
+    /** Caller is the opaque Vault producer holding the actual canonical lock.
+     * These methods acquire only DataStore. check() never joins main or opens
+     * another Vault transaction; all byte and readback fences keep this order. */
+    private func admittedState(_ admission: PlanetChildLocalV2DataAdmission,_ state: State) throws { try admission.check();let scope=try admission.scope();guard let seal=state.seals[scope.profileId] else { throw Failure.unavailable };try Self.require(try state.admissionBinding==admission.binding() && seal.contentBinding==admission.contentBinding() && seal.scope.tuple==scope.tuple);if let pending=state.pendingMigration { try Self.require(try pending==admission.migrationIdentity()) } }
+    private func admittedLive(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ state: State) throws { try admittedState(admission,state);try Self.require(state.pendingMigration==nil && !closed && active === lease && lease.owner === self && lease.admission === admission && state.scope != nil && state.generation==lease.generation && state.nonce==lease.nonce && state.scope?.tuple==lease.scope.tuple) }
+    func admit(_ admission: PlanetChildLocalV2DataAdmission) throws -> Lease { try locked { directory in try admission.check();try existingOnly(directory);try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
+        if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.generation==0 && state.entries.isEmpty);state.admissionBinding=try admission.binding() } else { try Self.require(try state.admissionBinding==admission.binding()) };let current=try admission.scope();if state.seals[current.profileId]==nil { try Self.require(state.seals.count<4);state.seals[current.profileId]=Seal(scope:current,contentBinding:try admission.contentBinding()) };try admittedState(admission,state)
+        for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==current.profileId { try admission.validate(purpose,pair[1],stored.value) } }
+        try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.scope=current;try write(directory,state:state,check:admission.check);try admittedState(admission,state);let lease=Lease(owner:self,scope:state.scope!,generation:state.generation,nonce:state.nonce,admission:admission);active=lease;return lease
+    } }
+    func admittedOperation(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease) throws -> Cancellation { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);let now=try Self.now(),deadline=try admission.deadlineMs();try Self.require(now<deadline && deadline-now<=60000);return Cancellation(owner:self,lease:lease,deadline:deadline) } }
+    func admittedQuery(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ original: Result,_ purpose: Purpose,_ key: String) throws -> Slot { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.require(try Self.keyScope(purpose,key:key).tuple==lease.scope.tuple);guard let captured=original.get(purpose,key:key) else { throw Failure.unavailable };let saved=state.entries[purpose.rawValue+"\n"+key];try Self.require(captured.revision==(saved?.revision ?? 0) && captured.checksum==saved.map { Self.digest($0.value) });if let saved { try admission.validate(purpose,key,saved.value) };let copied=Slot(revision:saved?.revision ?? 0,value:saved?.value);do { try admission.check();return copied } catch { copied.dispose();throw error } } }
+    private func admittedCheck(_ admission: PlanetChildLocalV2DataAdmission,_ cancellation: Cancellation,_ lease: Lease,_ state: State) throws { try admittedLive(admission,lease,state);try Self.require(try cancellation.owner === self && cancellation.lease === lease && cancellation.used && !cancellation.cancelled && !Thread.current.isCancelled && Self.now()<cancellation.deadline && cancellation.deadline==admission.deadlineMs()) }
+    func admittedTransact(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,reads: [ReadKey],writes: [Mutation],cancellation: Cancellation) throws -> Result { try Self.require(reads.count<=Self.maxBatch && writes.count<=Self.maxBatch);var values=[Data]();defer { while !values.isEmpty { var value=values.removeLast();value.resetBytes(in:0..<value.count) } };var size=0;for write in writes { let value=try write.copy(remainingBytes:Self.maxSnapshotBytes-size);values.append(value);size+=value.count }
+        return try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try Self.require(!cancellation.used);cancellation.used=true;try admittedCheck(admission,cancellation,lease,state);var readIds=Set<String>(),writeIds=Set<String>(),result=[String:Slot](),handed=false;defer { if !handed { for slot in result.values { slot.dispose() } } }
+            for read in reads { let id=read.purpose.rawValue+"\n"+read.key;try Self.require(try Self.keyScope(read.purpose,key:read.key).tuple==lease.scope.tuple && readIds.insert(id).inserted);if let saved=state.entries[id] { try admission.validate(read.purpose,read.key,saved.value) } }
+            for (i,write) in writes.enumerated() { let id=write.purpose.rawValue+"\n"+write.key;try Self.require(try Self.keyScope(write.purpose,key:write.key).tuple==lease.scope.tuple && writeIds.insert(id).inserted && (state.entries[id]?.revision ?? 0)==write.expectedRevision);try Self.envelope(write.purpose,key:write.key,scope:lease.scope,bytes:values[i]);try admission.validate(write.purpose,write.key,values[i]) }
+            for read in reads { let id=read.purpose.rawValue+"\n"+read.key;result[id]=Slot(revision:state.entries[id]?.revision ?? 0,value:state.entries[id]?.value) }
+            for (i,write) in writes.enumerated() { let id=write.purpose.rawValue+"\n"+write.key;if var old=state.entries.removeValue(forKey:id) { old.value.resetBytes(in:0..<old.value.count) };state.entries[id]=Stored(revision:write.expectedRevision+1,value:Data(Array(values[i]))) }
+            try admittedCheck(admission,cancellation,lease,state);if !writes.isEmpty { try write(directory,state:state) { try self.admittedCheck(admission,cancellation,lease,state) } };try admittedCheck(admission,cancellation,lease,state)
+            let actual=try read(directory);defer { actual.wipe() };try admittedLive(admission,lease,actual);for (i,write) in writes.enumerated() { guard let saved=actual.entries[write.purpose.rawValue+"\n"+write.key] else { throw Failure.unavailable };try Self.require(saved.revision==write.expectedRevision+1 && saved.value==values[i]);try admission.validate(write.purpose,write.key,saved.value) }
+            try admittedCheck(admission,cancellation,lease,state);handed=true;return Result(reads:result)
+        }
+    }
+    /** Actual previous namespace has retired; future data is sealed before
+     * the canonical CAS. Unknown partial publication cannot match old binding
+     * and is never repaired, reopened or adopted into a fresh namespace. */
+    func migrate(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in try admission.check();try existingOnly(directory);try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
+        if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.generation==0 && state.entries.isEmpty) } else { try Self.require(try state.admissionBinding==admission.previousBinding()) };let future=try admission.scope();if let previous=state.seals[future.profileId] { try Self.require(try previous.contentBinding==admission.previousContentBinding()) }
+        var next=[String:Stored](),adopted=false;defer { if !adopted { for id in Array(next.keys) { if var stored=next.removeValue(forKey:id) { stored.value.resetBytes(in:0..<stored.value.count) } } } }
+        for (id,stored) in state.entries { try admission.check();let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let oldScope=try Self.keyScope(purpose,key:pair[1]);guard let oldSeal=state.seals[oldScope.profileId] else { throw Failure.unavailable };try Self.require(oldScope.tuple==oldSeal.scope.tuple)
+            guard let value=try admission.partition(purpose,pair[1],stored.value) else { continue };defer { value.close() };try Self.envelope(purpose,key:value.key,scope:value.changed ? future:oldScope,bytes:value.bytes);if value.changed { try admission.validate(purpose,value.key,value.bytes) };let compound=purpose.rawValue+"\n"+value.key;try Self.require((!value.changed || stored.revision<Self.maxSafe-1) && next[compound]==nil);next[compound]=Stored(revision:stored.revision+(value.changed ? 1:0),value:Data(Array(value.bytes)))
+        }
+        try Self.require(state.seals[future.profileId] != nil || state.seals.count<4);state.seals[future.profileId]=Seal(scope:future,contentBinding:try admission.contentBinding());try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.admissionBinding=try admission.binding();state.pendingMigration=try admission.migrationIdentity();state.wipe();state.entries=next;adopted=true;try admission.markDataWrite();try write(directory,state:state,check:admission.check);try admission.commitCanonical();try admittedState(admission,state)
+    } }
+    func migrationReadback(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try Self.require(try !closed && active==nil && state.scope==nil && state.pendingMigration==admission.migrationIdentity());try admittedState(admission,state);for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==admission.scope().profileId { try admission.validate(purpose,pair[1],stored.value) } };try admission.acknowledgeCanonical();state.pendingMigration=nil;try write(directory,state:state,check:admission.check);try admittedState(admission,state) } }
+
+    #if DEBUG
+    /** Codec-only fixtures cannot mint opaque admission or provision AES. */
+    static func fixtureAdmittedSealCodec() throws -> Bool { let hash=String(repeating:"a",count:64),scope=try Scope(profileId:"reader",profileRevision:2,exactAge:9,locale:"en",policyVersion:"first-install-fixture-v2",policyChecksum:hash,packageId:"isolated-package",packageVersion:1,packageChecksum:hash),state=State();defer { state.wipe() };state.nonce=String(repeating:"b",count:32);state.admissionBinding=hash;state.pendingMigration=String(repeating:"c",count:64);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:hash);var bytes=try encode(state);defer { bytes.resetBytes(in:0..<bytes.count) };let actual=try decode(bytes);defer { actual.wipe() };var copy=try encode(actual);defer { copy.resetBytes(in:0..<copy.count) };try require(bytes==copy && actual.seals.count==1 && actual.pendingMigration==String(repeating:"c",count:64))
+        for missing in [1,32,64,100] { var truncated=Data(bytes.dropLast(missing));defer { truncated.resetBytes(in:0..<truncated.count) };var denied=false;do { let bad=try decode(truncated);bad.wipe() } catch { denied=true };try require(denied) };var extra=bytes;extra.append(0);var denied=false;do { let bad=try decode(extra);bad.wipe() } catch { denied=true };extra.resetBytes(in:0..<extra.count);try require(denied)
+        state.scope=try Scope(profileId:"sibling",profileRevision:2,exactAge:9,locale:"en",policyVersion:"first-install-fixture-v2",policyChecksum:hash,packageId:"isolated-package",packageVersion:1,packageChecksum:hash);denied=false;do { var bad=try encode(state);bad.resetBytes(in:0..<bad.count) } catch { denied=true };try require(denied);return true
+    }
+    #endif
 
     /** Syntax validator with decoded-key duplicate detection, bounded depth and
      * node count. Foundation JSON alone is not the duplicate-key boundary. */

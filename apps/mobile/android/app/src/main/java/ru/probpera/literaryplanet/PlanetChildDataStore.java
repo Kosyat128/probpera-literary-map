@@ -84,13 +84,14 @@ final class PlanetChildDataStore {
     }
     /** Native-created opaque object, never constructible from JS or JSON. */
     static final class Lease {
-        private final PlanetChildDataStore owner; private final Scope scope; private final long generation; private final String nonce;
+        private final PlanetChildDataStore owner; private final Scope scope; private final long generation; private final String nonce; private final PlanetChildVault.LocalV2DataAdmission admission;
         private Lease(PlanetChildDataStore owner, Scope scope, long generation, String nonce) {
-            this.owner = owner; this.scope = scope; this.generation = generation; this.nonce = nonce;
+            this.owner = owner; this.scope = scope; this.generation = generation; this.nonce = nonce; admission=null;
         }
         // Partition metadata only; the opaque constructor and owner stay private.
         long partitionGeneration() { return generation; }
         String partitionNonce() { return nonce; }
+        private Lease(PlanetChildDataStore owner,Scope scope,long generation,String nonce,PlanetChildVault.LocalV2DataAdmission admission){this.owner=owner;this.scope=scope;this.generation=generation;this.nonce=nonce;this.admission=admission;}
     }
     static final class Cancellation {
         private final PlanetChildDataStore owner; private final Lease lease; private final long deadline;
@@ -126,8 +127,9 @@ final class PlanetChildDataStore {
         public void close() { for (Slot slot : reads.values()) slot.close(); }
     }
     private static final class Stored { final long revision; final byte[] value; Stored(long revision, byte[] value) { this.revision = revision; this.value = value; } }
+    private static final class Seal {final Scope scope;final String contentBinding;private Seal(Scope scope,String contentBinding){this.scope=scope;this.contentBinding=contentBinding;}}
     private static final class State implements AutoCloseable {
-        long generation; String nonce; Scope scope; final TreeMap<String, Stored> entries = new TreeMap<>();
+        long generation; String nonce; Scope scope; String admissionBinding,pendingMigration; final TreeMap<String,Seal> seals=new TreeMap<>(); final TreeMap<String, Stored> entries = new TreeMap<>();
         public void close() { for (Stored slot : entries.values()) Arrays.fill(slot.value, (byte) 0); }
     }
     PlanetChildDataStore(Context context) throws Exception { this(context, null); }
@@ -242,7 +244,8 @@ final class PlanetChildDataStore {
         @Override public synchronized void write(byte[] value,int offset,int length) { capacity(length); System.arraycopy(value,offset,buf,count,length); count+=length; }
         @Override public void close() { Arrays.fill(buf,(byte)0); reset(); }
     }
-    private static byte[] encode(State state) throws Exception {
+    private static void validateSeals(State state) throws Exception {if(state.admissionBinding==null){require(state.seals.isEmpty()&&state.pendingMigration==null);return;}require((state.pendingMigration==null||checksum(state.pendingMigration))&&checksum(state.admissionBinding)&&!state.seals.isEmpty()&&state.seals.size()<=4);for(Map.Entry<String,Seal> item:state.seals.entrySet())require(item.getKey().equals(item.getValue().scope.profileId)&&checksum(item.getValue().contentBinding));if(state.scope!=null){Seal selected=state.seals.get(state.scope.profileId);require(selected!=null&&state.scope.tuple.equals(selected.scope.tuple));}for(String compound:state.entries.keySet()){int split=compound.indexOf('\n');Scope saved=keyScope(Purpose.valueOf(compound.substring(0,split)),compound.substring(split+1));Seal seal=state.seals.get(saved.profileId);require(seal!=null&&saved.tuple.equals(seal.scope.tuple));}}
+    private static byte[] encode(State state) throws Exception {validateSeals(state);
         try(WipingBytes bytes=new WipingBytes()) { DataOutputStream out=new DataOutputStream(bytes);
         out.writeInt(0x4c504431); out.writeLong(state.generation); out.writeUTF(state.nonce); out.writeBoolean(state.scope!=null); if(state.scope!=null) out.writeUTF(state.scope.tuple);
         require(state.entries.size()<=MAX_SLOTS); out.writeInt(state.entries.size());
@@ -250,6 +253,7 @@ final class PlanetChildDataStore {
             Stored stored=entry.getValue(); Scope scope=keyScope(purpose,key); envelope(purpose,key,scope,stored.value); require(positive(stored.revision) && stored.revision < MAX_SAFE);
             out.writeByte(purpose.ordinal()); out.writeUTF(key); out.writeLong(stored.revision); out.writeUTF(digest(stored.value)); out.writeInt(stored.value.length); out.write(stored.value);
             require(bytes.size()<=MAX_SNAPSHOT_BYTES); }
+        if(state.admissionBinding!=null){out.writeInt(0x4c504133);out.writeUTF(state.admissionBinding);out.writeBoolean(state.pendingMigration!=null);if(state.pendingMigration!=null)out.writeUTF(state.pendingMigration);out.writeInt(state.seals.size());for(Seal seal:state.seals.values()){out.writeUTF(seal.scope.tuple);out.writeUTF(seal.contentBinding);}}
         out.flush(); byte[] result=bytes.toByteArray(); require(result.length<=MAX_SNAPSHOT_BYTES); return result; }
     }
     private static State decode(byte[] bytes) throws Exception {
@@ -260,6 +264,7 @@ final class PlanetChildDataStore {
                 long revision=in.readLong(); require(positive(revision) && revision < MAX_SAFE); String hash=in.readUTF(); require(checksum(hash)); int length=in.readInt(); require(length>0 && length<=MAX_VALUE_BYTES && length<=in.available());
                 byte[] value=new byte[length]; boolean owned=false; try { in.readFully(value); require(digest(value).equals(hash)); envelope(purpose,key,scope,value);
                     require(!state.entries.containsKey(purpose.name()+"\n"+key)); state.entries.put(purpose.name()+"\n"+key,new Stored(revision,value)); owned=true; } finally { if(!owned) Arrays.fill(value,(byte)0); } }
+            if(in.available()>0){require(in.readInt()==0x4c504133);state.admissionBinding=in.readUTF();require(checksum(state.admissionBinding));int pending=in.readUnsignedByte();require(pending==0||pending==1);if(pending==1){state.pendingMigration=in.readUTF();require(checksum(state.pendingMigration));}int seals=in.readInt();require(seals>0&&seals<=4);for(int i=0;i<seals;i++){Scope saved=Scope.decode(in.readUTF());String content=in.readUTF();require(checksum(content)&&!state.seals.containsKey(saved.profileId));state.seals.put(saved.profileId,new Seal(saved,content));}}validateSeals(state);
             require(in.available()==0); successful=true; return state;
         } finally { if(!successful) state.close(); }
     }
@@ -279,6 +284,7 @@ final class PlanetChildDataStore {
                 output.getFD().sync(); check.check(); file.finishWrite(output); output=null; }
             finally { if(output!=null) file.failWrite(output); }
             FileDescriptor descriptor=Os.open(directory.getPath(),OsConstants.O_RDONLY|OsConstants.O_CLOEXEC,0); try { require(OsConstants.S_ISDIR(Os.fstat(descriptor).st_mode)); Os.fsync(descriptor); } finally { Os.close(descriptor); }
+            require(!new File(file.getBaseFile().getPath()+".bak").exists()&&!new File(file.getBaseFile().getPath()+".new").exists());
             try(State actual=read(directory)) { byte[] readback=encode(actual); try { require(MessageDigest.isEqual(plain,readback)); } finally { Arrays.fill(readback,(byte)0); } }
             check.check(); // Post-publication failure is unknown ack, never rollback.
         } finally { Arrays.fill(plain,(byte)0); if(encoded!=null) Arrays.fill(encoded,(byte)0); if(ciphertext!=null) Arrays.fill(ciphertext,(byte)0); }
@@ -294,11 +300,11 @@ final class PlanetChildDataStore {
             } finally { if(lock!=null) lock.release(); } }
         } catch(InterruptedException failure) { Thread.currentThread().interrupt(); throw new Unavailable(); } catch(Exception failure) { throw new Unavailable(); } finally { if(acquired) PROCESS_LOCK.unlock(); }
     }
-    private void live(Lease lease, State state) throws Exception { require(!closed && active==lease && lease!=null && lease.owner==this && state.scope!=null
+    private void live(Lease lease, State state) throws Exception { require(!closed && active==lease && lease!=null && lease.admission==null && lease.owner==this && state.scope!=null
         && state.generation==lease.generation && state.nonce.equals(lease.nonce) && state.scope.tuple.equals(lease.scope.tuple)); }
     Lease activate(Scope scope) throws Exception {
         require(scope!=null); return locked(directory->{ require(!closed); active=null; try(State state=read(directory)) {
-            require(state.generation<MAX_SAFE-1); state.generation++; state.nonce=nonce(); state.scope=scope;
+            require(state.admissionBinding==null&&state.seals.isEmpty());require(state.generation<MAX_SAFE-1); state.generation++; state.nonce=nonce(); state.scope=scope;
             write(directory,state,()->require(!closed)); Lease lease=new Lease(this,scope,state.generation,state.nonce); active=lease; return lease; } });
     }
     Cancellation operation(Lease lease, long timeoutMs) throws Exception {
@@ -337,8 +343,58 @@ final class PlanetChildDataStore {
         } finally { for(byte[] value:values) Arrays.fill(value,(byte)0); }
     }
     void retire(Lease lease) throws Exception { locked(directory->{ try(State state=read(directory)) { live(lease,state); active=null; require(state.generation<MAX_SAFE-1); state.generation++; state.nonce=nonce(); state.scope=null; write(directory,state,()->require(!closed)); return null; } }); }
-    void close() throws Exception { locked(directory->{ Lease lease=active; active=null; closed=true; if(lease!=null) try(State state=read(directory)) {
+    void close() throws Exception { locked(directory->{ Lease lease=active; active=null; closed=true; if(lease!=null&&lease.admission!=null)existingOnly(directory); if(lease!=null) try(State state=read(directory)) {
         if(state.scope!=null && state.generation==lease.generation && state.nonce.equals(lease.nonce)) { require(state.generation<MAX_SAFE-1); state.generation++; state.nonce=nonce(); state.scope=null; write(directory,state,()->{}); } } return null; }); }
+
+    /** Vault flock is already held. Admission.check rereads that same opened
+     * canonical record without reacquiring it; this fixed Vault -> DataStore
+     * order is also used for migration/readback. No main/UI joins occur here. */
+    private void admittedState(PlanetChildVault.LocalV2DataAdmission admission,State state) throws Exception {
+        admission.check();Scope scope=admission.scope();Seal seal=state.seals.get(scope.profileId);require(seal!=null&&state.admissionBinding!=null&&state.admissionBinding.equals(admission.binding())&&seal.contentBinding.equals(admission.contentBinding())&&seal.scope.tuple.equals(scope.tuple));if(state.pendingMigration!=null)require(state.pendingMigration.equals(admission.migrationIdentity()));
+    }
+    private void admittedLive(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,State state) throws Exception {
+        admittedState(admission,state);require(state.pendingMigration==null&&!closed&&active==lease&&lease!=null&&lease.owner==this&&lease.admission==admission&&state.scope!=null
+            &&state.generation==lease.generation&&state.nonce.equals(lease.nonce)&&state.scope.tuple.equals(lease.scope.tuple));
+    }
+    Lease admit(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {require(admission!=null);return locked(directory->{admission.check();existingOnly(directory);require(!closed&&active==null);try(State state=read(directory)){
+        require(state.scope==null&&state.pendingMigration==null);if(state.admissionBinding==null){require(state.seals.isEmpty()&&state.generation==0&&state.entries.isEmpty());state.admissionBinding=admission.binding();}else require(state.admissionBinding.equals(admission.binding()));Scope current=admission.scope();if(!state.seals.containsKey(current.profileId)){require(state.seals.size()<4);state.seals.put(current.profileId,new Seal(current,admission.contentBinding()));}admittedState(admission,state);
+        for(Map.Entry<String,Stored> entry:state.entries.entrySet()){int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String key=entry.getKey().substring(split+1);if(keyScope(purpose,key).profileId.equals(current.profileId))admission.validate(purpose,key,entry.getValue().value);}
+        require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.scope=current;write(directory,state,admission::check);admittedState(admission,state);
+        Lease lease=new Lease(this,state.scope,state.generation,state.nonce,admission);active=lease;return lease;
+    }});}
+    Cancellation admittedOperation(PlanetChildVault.LocalV2DataAdmission admission,Lease lease) throws Exception {return locked(directory->{admission.check();existingOnly(directory);try(State state=read(directory)){
+        admittedLive(admission,lease,state);long now=SystemClock.elapsedRealtime(),deadline=admission.deadline();require(now>=0&&now<deadline&&deadline-now<=60000);return new Cancellation(this,lease,deadline);
+    }});}
+    Slot admittedQuery(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,Result original,Purpose purpose,String key) throws Exception {return locked(directory->{admission.check();existingOnly(directory);try(State state=read(directory)){admittedLive(admission,lease,state);require(keyScope(purpose,key).tuple.equals(lease.scope.tuple));Slot captured=original.get(purpose,key);require(captured!=null);Stored saved=state.entries.get(purpose.name()+"\n"+key);require(captured.revision==(saved==null?0:saved.revision)&&Objects.equals(captured.checksum,saved==null?null:digest(saved.value)));if(saved!=null)admission.validate(purpose,key,saved.value);Slot copied=new Slot(saved==null?0:saved.revision,saved==null?null:saved.value);try{admission.check();return copied;}catch(Exception failure){copied.close();throw failure;}}});}
+    private void admittedCheck(PlanetChildVault.LocalV2DataAdmission admission,Cancellation cancellation,Lease lease,State state) throws Exception {admittedLive(admission,lease,state);require(cancellation.owner==this&&cancellation.lease==lease&&cancellation.used&&!cancellation.cancelled&&!Thread.currentThread().isInterrupted()&&SystemClock.elapsedRealtime()<cancellation.deadline&&cancellation.deadline==admission.deadline());unlocked();}
+    Result admittedTransact(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,List<ReadKey> reads,List<Mutation> writes,Cancellation cancellation) throws Exception {
+        require(admission!=null&&reads!=null&&writes!=null&&reads.size()<=MAX_BATCH&&writes.size()<=MAX_BATCH&&cancellation!=null);List<ReadKey> ownedReads=new ArrayList<>(reads);List<Mutation> ownedWrites=new ArrayList<>(writes);List<byte[]> values=new ArrayList<>();
+        try{int size=0;for(Mutation write:ownedWrites){require(write!=null);byte[] bytes=write.copy(MAX_SNAPSHOT_BYTES-size);values.add(bytes);size+=bytes.length;}
+            return locked(directory->{admission.check();existingOnly(directory);try(State state=read(directory)){require(!cancellation.used);cancellation.used=true;admittedCheck(admission,cancellation,lease,state);Set<String> readIds=new HashSet<>(),writeIds=new HashSet<>();Map<String,Slot> result=new LinkedHashMap<>();boolean handed=false;
+                try{for(ReadKey read:ownedReads){require(read!=null&&keyScope(read.purpose,read.key).tuple.equals(lease.scope.tuple));String id=read.purpose.name()+"\n"+read.key;require(readIds.add(id));Stored saved=state.entries.get(id);if(saved!=null)admission.validate(read.purpose,read.key,saved.value);}
+                    for(int i=0;i<ownedWrites.size();i++){Mutation write=ownedWrites.get(i);require(keyScope(write.purpose,write.key).tuple.equals(lease.scope.tuple));String id=write.purpose.name()+"\n"+write.key;require(writeIds.add(id));Stored old=state.entries.get(id);require((old==null?0:old.revision)==write.expectedRevision);envelope(write.purpose,write.key,lease.scope,values.get(i));admission.validate(write.purpose,write.key,values.get(i));}
+                    for(ReadKey read:ownedReads){String id=read.purpose.name()+"\n"+read.key;Stored saved=state.entries.get(id);result.put(id,new Slot(saved==null?0:saved.revision,saved==null?null:saved.value));}
+                    for(int i=0;i<ownedWrites.size();i++){Mutation write=ownedWrites.get(i);String id=write.purpose.name()+"\n"+write.key;Stored replaced=state.entries.put(id,new Stored(write.expectedRevision+1,values.get(i).clone()));if(replaced!=null)Arrays.fill(replaced.value,(byte)0);}
+                    admittedCheck(admission,cancellation,lease,state);if(!ownedWrites.isEmpty())write(directory,state,()->admittedCheck(admission,cancellation,lease,state));admittedCheck(admission,cancellation,lease,state);
+                    // Actual decrypted readback, including every newly committed
+                    // purpose, remains under both original locks and deadline.
+                    try(State actual=read(directory)){admittedLive(admission,lease,actual);for(int i=0;i<ownedWrites.size();i++){Mutation write=ownedWrites.get(i);Stored saved=actual.entries.get(write.purpose.name()+"\n"+write.key);require(saved!=null&&saved.revision==write.expectedRevision+1&&MessageDigest.isEqual(saved.value,values.get(i)));admission.validate(write.purpose,write.key,saved.value);}}
+                    admittedCheck(admission,cancellation,lease,state);Result answer=new Result(result);handed=true;return answer;
+                }finally{if(!handed)for(Slot slot:result.values())slot.close();}
+            }});
+        }finally{for(byte[] value:values)Arrays.fill(value,(byte)0);}
+    }
+    /** Actual old active namespace must have been durably retired. A partial
+     * future data publication carries a different persistent binding and
+     * cannot be reopened/adopted by the old profile. No repair/reset exists. */
+    void migrate(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.check();existingOnly(directory);require(!closed&&active==null);try(State state=read(directory)){
+        require(state.scope==null&&state.pendingMigration==null);if(state.admissionBinding==null)require(state.seals.isEmpty()&&state.generation==0&&state.entries.isEmpty());else require(state.admissionBinding.equals(admission.previousBinding()));Scope future=admission.scope();Seal previous=state.seals.get(future.profileId);if(previous!=null)require(previous.contentBinding.equals(admission.previousContentBinding()));
+        TreeMap<String,Stored> next=new TreeMap<>();boolean adopted=false;try{for(Map.Entry<String,Stored> entry:state.entries.entrySet()){admission.check();int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String oldKey=entry.getKey().substring(split+1);Scope oldScope=keyScope(purpose,oldKey);Seal oldSeal=state.seals.get(oldScope.profileId);require(oldSeal!=null&&oldScope.tuple.equals(oldSeal.scope.tuple));try(PlanetChildVault.LocalV2MigrationValue value=admission.partition(purpose,oldKey,entry.getValue().value)){if(value==null)continue;Scope nextScope=value.changed?future:oldScope;envelope(purpose,value.key,nextScope,value.bytes);if(value.changed)admission.validate(purpose,value.key,value.bytes);long revision=entry.getValue().revision;require(!value.changed||revision<MAX_SAFE-1);String id=purpose.name()+"\n"+value.key;require(!next.containsKey(id));next.put(id,new Stored(revision+(value.changed?1:0),value.bytes.clone()));}}
+            require(state.seals.containsKey(future.profileId)||state.seals.size()<4);state.seals.put(future.profileId,new Seal(future,admission.contentBinding()));require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.admissionBinding=admission.binding();state.pendingMigration=admission.migrationIdentity();state.close();state.entries.clear();state.entries.putAll(next);adopted=true;
+            admission.markDataWrite();write(directory,state,admission::check);admission.commitCanonical();admittedState(admission,state);return null;
+        }finally{if(!adopted)for(Stored slot:next.values())Arrays.fill(slot.value,(byte)0);}
+    }});}
+    void migrationReadback(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.check();existingOnly(directory);try(State state=read(directory)){require(!closed&&active==null&&state.scope==null&&admission.migrationIdentity().equals(state.pendingMigration));admittedState(admission,state);for(Map.Entry<String,Stored> entry:state.entries.entrySet()){int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String key=entry.getKey().substring(split+1);if(keyScope(purpose,key).profileId.equals(admission.scope().profileId))admission.validate(purpose,key,entry.getValue().value);}admission.acknowledgeCanonical();state.pendingMigration=null;write(directory,state,admission::check);admittedState(admission,state);return null;}});}
 
     /** Bounded strict JSON syntax with decoded-key duplicate detection. Android
      * JSONObject alone may silently overwrite duplicates; never use that as the

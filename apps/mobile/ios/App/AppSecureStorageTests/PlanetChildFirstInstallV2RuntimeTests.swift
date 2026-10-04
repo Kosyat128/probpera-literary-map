@@ -432,3 +432,17 @@ final class PlanetChildNativePackageCompilerTests: XCTestCase {
     func testDeliveryCopiesRecheckAfterCloneAndRetireEveryBorrowedValue() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("delivery")) }
     func testCatalogRequiresExactOriginalPinSourceInventoryAndNativeChannel() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("catalog")) }
 }
+
+
+/** Authored native production-leaf mechanics; no OS storage/host acceptance. */
+final class PlanetChildNativeAdmittedDataTests: XCTestCase {
+    func testOwnedPayloadClosureSupportsOriginalFourDurablePurposes() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedOwned")) }
+    func testEveryScopeCoordinateRejectsSubstitution() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedScope")) }
+    func testStructuralChecksumsCannotAuthorizeForgedPayloadOrClosure() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedPayload")) }
+    func testHistoryAndSearchRequireCurrentReviewedWrapperReferences() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedRefs")) }
+    func testPreparedMigrationUsesFutureScopeAndPreservesPinJournalDebt() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedMigration")) }
+    func testExpiryAndRetiredIndexRefuseValidationAndMigration() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedExpiry")) }
+    func testSelectionKeepsOtherChildHistoryAndFavoritesWithOverlappingEntities() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedIsolation")) }
+    func testDurableSealRefusesTruncationUnknownTrailerAndForeignActiveScope() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureAdmittedSealCodec()) }
+    func testPublicationRechecksExpiryAfterFreshAndClosedIndex() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedPublication")) }
+}
