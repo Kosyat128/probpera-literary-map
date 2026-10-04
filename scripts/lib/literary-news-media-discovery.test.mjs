@@ -77,6 +77,32 @@ describe("bounded actual-portrait discovery, no provider uploads",()=>{
     expect(prepared.payload.caption).toContain('CC BY 4.0 · адаптировано');
     expect(prepared.payload.caption).not.toMatch(/JPEG|Архивный портрет|Wikimedia Commons/);
   });
+  it('keeps a cached Telegram-only illustration ahead of an older manual portrait when discovery has no budget',async()=>{
+    const f=await fixture(),store=storeFixture();
+    const manual=(await resolveNewsMediaBatch([item],[destination],f.options)).mediaOptions.registry.assets[0];
+    const photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
+    const illustrationFetch=async(url,options)=>{
+      if(new URL(url).hostname==='www.wikidata.org')return Response.json({entities:{Q23308:{id:'Q23308',labels:{en:{value:'British Library'}},claims:{
+        P31:[{mainsnak:{snaktype:'value',datavalue:{value:{id:'Q22806'}}}}],
+        P18:[{mainsnak:{snaktype:'value',datavalue:{value:'Fixture.png'}}}]}}}});
+      return f.fetchImpl(url,options);
+    };
+    const initial=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store,fetchImpl:illustrationFetch});
+    const illustration=initial.mediaOptions.registry.assets[0],fetchImpl=vi.fn();
+    expect(illustration.mediaRole).toBe('subject-illustration');
+    const vk={platform:'vk',id:'-100456',mode:'off'};
+    const result=await resolveNewsMediaBatch([photoItem],[vk,destination],{...f.options,store,fetchImpl,maxNews:0,
+      registry:{...registry,assets:[manual]}});
+    expect(result.report.cached).toBe(1);expect(result.report.requests).toBe(0);expect(fetchImpl).not.toHaveBeenCalled();
+    expect(result.mediaOptions.registry.assets).toEqual([illustration,manual]);
+    expect((await selectNewsMedia(item.id,destination,result.mediaOptions)).media?.assetId).toBe(illustration.id);
+    expect((await selectNewsMedia(item.id,vk,result.mediaOptions)).media).toBeNull();
+    // A missing cache still keeps the approved manual portrait without research.
+    const uncached=await resolveNewsMediaBatch([photoItem],[destination],{...f.options,fetchImpl,maxNews:0,
+      registry:{...registry,assets:[manual]}});
+    expect((await selectNewsMedia(item.id,destination,uncached.mediaOptions)).media?.assetId).toBe(manual.id);
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
   it('upgrades old cached portraits once while retaining valid assets during transient illustration failures',async()=>{
     const f=await fixture(),store=storeFixture(),photoItem={...item,title:{...item.title,en:'British Library displays Virginia Woolf papers'}};
     await resolveNewsMediaBatch([photoItem],[destination],{...f.options,store});

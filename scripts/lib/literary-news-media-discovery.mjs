@@ -194,11 +194,17 @@ export async function resolveNewsMediaBatch(items, destinations, { store = null,
         || asset.sourceImageEvidence?.sourceUrl !== item.source.url)) return false;
       return licensedForAnyDestination(asset, item.id);
     });
-    if (manual && ((sourceImage.status !== 'candidate' || manual.sourceUrl === sourceImage.candidate.originalUrl)
-      && (!illustrationHints.length || manual.subject !== 'portrait')
-      || report.inspected >= maxNews)) { resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue; }
+    if (manual && (sourceImage.status !== 'candidate' || manual.sourceUrl === sourceImage.candidate.originalUrl)
+      && (!illustrationHints.length || manual.subject !== 'portrait')) {
+      resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue;
+    }
     const key = `history:media:${semanticRevision}`, previous = cached.get(semanticRevision);
     if (admitCached(previous?.state, item, sourceImage, illustrationHints)) continue;
+    // Exhausting discovery only prevents new research; it must not replace a
+    // cached approved illustration with an older manual portrait.
+    if (manual && report.inspected >= maxNews) {
+      resolutions[item.id] = { status: "approved", reason: "manual_registry" }; continue;
+    }
     if (!destinations.length || report.inspected >= maxNews) {
       resolutions[item.id] = { status: "pending", reason: "media_discovery_budget" }; report.pending++; continue;
     }
