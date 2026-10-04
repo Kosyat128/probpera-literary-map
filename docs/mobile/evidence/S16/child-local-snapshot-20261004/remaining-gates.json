@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-snapshot-remaining-gates",
+  "sourceCommit": "b94dcc48ccae7dc97d070cada65c06e1cf1ff745",
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "remainingInternalProgramming": [
+    {
+      "work": "Protected child admission",
+      "status": "OPEN",
+      "responsibility": "Implement genuine native original Gate/host ownership and an explicitly versioned local supported contract behind admitted durable child ports. Seed/AES provisioning and App clear-before-render remain Codex work. No mandatory guardian backend sign-in or child-record cloud upload is a prerequisite; local brands, callback flags and synthetic ports cannot grant admission. Factories remain null/nil until the actual chosen contract and installed host guarantees are supported."
+    },
+    {
+      "work": "Supported native authority and trusted time",
+      "status": "OPEN",
+      "responsibility": "Implement a separately versioned local conservative restart/re-anchor contract: persist charged attempt count and pending debt, grant zero cooldown credit for time outside the process, and deny unknown anchors. Existing v1 stronger nonrollback and boot-UUID guarantees remain UNCHANGED and unavailable; do not weaken v1 or relabel ordinary encrypted storage/local booleans as that authority. Supported local host/time binding remains Codex work."
+    },
+    {
+      "work": "Native PIN enrollment, verification and recovery",
+      "status": "OPEN",
+      "responsibility": "Private genuine OS-owner per-use signing/public verification prerequisites for enroll/recover and parent locale locks are implemented inactive at source 32e3250063e1e6284470af2761ad765983e68781. Android13 owner scenarios are COMPILED_ONLY, installed owner proof NOT_RUN; Swift26 NOT_COMPILED/NOT_RUN. Existing PIN input/KDF, charged journals and connected durable transaction foundations retain their original separate scopes. Explicit local initial seed/AES provisioning, the separately versioned restart contract, genuine native Gate/host and admitted durable child ports remain OPEN Codex tasks; no complete bootstrap, legal guardian proof, recovery/checkpoint or production admission is claimed. Factories remain null/nil and App inactive."
+    },
+    {
+      "work": "Durable separate child data ports",
+      "status": "OPEN",
+      "responsibility": "The private TypeScript RPC transport and constructor-owned Java/Swift four-purpose dispatchers are implemented. Complete separately authenticated native host-current coordination under the durable commit lock, admitted child index-port integration and actual installed storage/lifecycle evidence. Private partition activation and local publication callbacks grant no protected admission, PIN, package/review or rights authority; actual App/plugin registration remains pending."
+    },
+    {
+      "work": "Clear before render and lifecycle integration",
+      "status": "OPEN",
+      "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes. Private synchronous startup/index/media handoff revocation and terminal expiry/deadline guards are now corrected and locally tested; no actual render/lifecycle admission established."
+    },
+    {
+      "work": "Reviewed child media rendering",
+      "status": "OPEN",
+      "responsibility": "The retained static PNG/JPEG/WebP/PCM-WAV codecs, closed static SVG validator and owned Web presentation foundations have separate scoped local proofs. Complete remaining documented formats, canonical production flag/assets coverage, independently reviewed exact-byte RU/EN production assets and native/App/lifecycle integration before activation. Existing SVG scopes were retained without repeat; muted synthetic audio, browser fixtures and structural validation grant no content rights or native admission."
+    }
+  ],
+  "nextIndependentAction": "Continue original S16 accountless/local coding: implement the actual native PROCESS-owned V2 anchor/continuous-clock adapter across requests, including cooldowns longer than the <=60s operation deadline. Bind original V2 native owner/input/KDF and charged-reservation comparison to closed finalization; existing P1 receipts/FirstInstallReceipt or boolean results do not authorize P2 mutation. Complete actual GateHost, separate secure child-data AES provisioning/admitted ports and App clear-before-render/lifecycle integration before activation. The private canonical snapshot/data writer and scalar results supply no owner, PIN, rollback or Gate authority; factories remain null/nil. These are Codex programming tasks, not additional owner inputs. Backend/account/full-profile upload is optional for LOCAL child mode and never its prerequisite; no new D stage, old-suite/build rerun, seventh AVD or remote action.",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "nativeFactories": "null/nil",
+  "appActivation": false,
+  "releaseReady": false,
+  "remoteActions": 0
+}

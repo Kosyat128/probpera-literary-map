@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "b94dcc48ccae7dc97d070cada65c06e1cf1ff745",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/child-local-snapshot-20261004/result.json",
+      "sha256": "97d87970830ce13e54f502f4e9d7e168818ce0e4f088230b3e82823501dc129b",
+      "bytes": 39030
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-local-snapshot-20261004/verification-final.json",
+      "sha256": "6bed412e616b7bbd2db48c87a0bbc11217e420441e672807d21e33372d27cf5d",
+      "bytes": 8872
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-local-snapshot-20261004/remaining-gates.json",
+      "sha256": "cd1614fd1e92770f696ba4189dc1a491e734e94813a8c987607bbd7e5deaa495",
+      "bytes": 10780
+    }
+  ],
+  "selfExcluded": true,
+  "rawProofsCopiedIntoGit": false,
+  "rawProofReferences": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\report-input.json",
+      "sha256": "3e63bff551a09d7bbdbe0c0f5baa73aa5e3e7a28ddc506e6021e6e6ed6f6f45c",
+      "bytes": 2958
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\source-commit\\checkpoint.json",
+      "sha256": "b8258961bc380e9be96f07cf4653d9422fa1270a0ab5361408cbac51bca4b25a",
+      "bytes": 292335
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\baseline.json",
+      "sha256": "af209467f35aaed6498b8b3ef8afa311cb51a2f026fb5e5d0b077db255e843ae",
+      "bytes": 276537
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\result.json",
+      "sha256": "610b42fcf56964d46b94882b3173bb915588b685d0733e963496db91ccda9fa4",
+      "bytes": 13809
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\inputs-before.json",
+      "sha256": "1eab83871e557c3f43373a6903aa276a1b3d960ec3f5a001cc08aacaa8a534e2",
+      "bytes": 276268
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\inputs-after.json",
+      "sha256": "1eab83871e557c3f43373a6903aa276a1b3d960ec3f5a001cc08aacaa8a534e2",
+      "bytes": 276268
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\source-commit\\inputs-before.json",
+      "sha256": "1eab83871e557c3f43373a6903aa276a1b3d960ec3f5a001cc08aacaa8a534e2",
+      "bytes": 276268
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\affected.vitest.json",
+      "sha256": "9e7ac08388b80943fab1c69df1e8aaed98f0721fedce0b1775f8359990ec5ab0",
+      "bytes": 19136
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-android-f73b3e64-7e75-42a5-a3c5-ff01fd35336c\\execution.json",
+      "sha256": "2039d687add4d552163d91506b5bebf5c89327758067af37d97b5d0fced86fbe",
+      "bytes": 4795
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-jvm-a4e342b8-d218-485c-9657-e3670253a64a\\result.json",
+      "sha256": "42ddec2f1fe39032c1a39c3f4a153f69c03fc1bb04bbfb6ab1a45b0151c06a4f",
+      "bytes": 9619
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-local-bootstrap-20261004\\result.json",
+      "sha256": "603bbb7cd53a7eb8d15aec835a33c93af09959c5353578d960454b3df4501c33",
+      "bytes": 37910
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\affected.vitest.json",
+      "sha256": "4333cd682f3add4236bf170319f84630f95f61139110d31f1635f582f87483d6",
+      "bytes": 765
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\result.json",
+      "sha256": "28082f1ec4d47780a1e6064bdcf88b47f8f8967a071f6388c6d8cd334e0c936f",
+      "bytes": 6443
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\new-snapshot-units.stdout.bin",
+      "sha256": "45aa63e583707449ed5788e5e19cb3b69f5589faede818d00e58db8889eef4c1",
+      "bytes": 191
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\new-snapshot-units.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\application-typescript.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\application-typescript.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a2\\vitest.config.mjs",
+      "sha256": "3e7be174b95d847b9dae1b761fde8c99a6391a9d37304f10c57d41661ebd72dd",
+      "bytes": 254
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-android-f73b3e64-7e75-42a5-a3c5-ff01fd35336c\\stdout.bin",
+      "sha256": "003dfc16683f933c7c6450fa1aa29f66598e9ebd6cbeb4c958bce991d94ce9ec",
+      "bytes": 716
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-android-f73b3e64-7e75-42a5-a3c5-ff01fd35336c\\stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-android-f73b3e64-7e75-42a5-a3c5-ff01fd35336c\\compiled-vault.json",
+      "sha256": "736e54cff08d64e9172ff045225275bcb2ebe8d20d7ddea4001e6000d7710dc4",
+      "bytes": 18739
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-jvm-a4e342b8-d218-485c-9657-e3670253a64a\\compile-new-scalar-harness.stdout.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-jvm-a4e342b8-d218-485c-9657-e3670253a64a\\compile-new-scalar-harness.stderr.bin",
+      "sha256": "8e474876ea87f65d91eeb807b4fd86cc727499d4fe47bc3f8d215f0ac99f60e7",
+      "bytes": 56
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-jvm-a4e342b8-d218-485c-9657-e3670253a64a\\run-new-scalar-codec.stdout.bin",
+      "sha256": "755dea16fbbb6665fc5012d0f154d96fac192c951aaebe1ab8ff1d65536a824e",
+      "bytes": 1058
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-local-snapshot-v2-jvm-a4e342b8-d218-485c-9657-e3670253a64a\\run-new-scalar-codec.stderr.bin",
+      "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+      "bytes": 92
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\new-snapshot-units.stdout.bin",
+      "sha256": "5982b2d9cf78740d82c034b624c5837715f444aa22445cfb47e281793d6b9cfc",
+      "bytes": 191
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\new-snapshot-units.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\application-typescript.stdout.bin",
+      "sha256": "e1c3b74467c9a7f298728d5a56b92c93c204e84e6676ccfaa2137e7ab9f62f08",
+      "bytes": 122
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\application-typescript.stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-snapshot-work-20261004\\checks-a1\\vitest.config.mjs",
+      "sha256": "3e7be174b95d847b9dae1b761fde8c99a6391a9d37304f10c57d41661ebd72dd",
+      "bytes": 254
+    }
+  ],
+  "releaseReady": false
+}
