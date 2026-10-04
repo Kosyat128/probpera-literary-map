@@ -8,6 +8,7 @@ import { load } from "cheerio";
 import ts from "typescript";
 import { bookDossierStaticIssues } from "../audit-book-dossier-delivery.mjs";
 import { CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
+import { normalizeChildNativePins, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_CATALOG } from "./native-child-package-assets.mjs";
 
 const SHA = /^[a-f0-9]{64}$/u;
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -20,7 +21,7 @@ const packages = Object.freeze({
   "@capacitor/core": "8.5.1", "@capacitor/cli": "8.5.1", "@capacitor/android": "8.5.1", "@capacitor/ios": "8.5.1",
   "@capacitor/app": "8.1.1", "@capacitor/network": "8.0.1", "@capacitor/preferences": "8.0.1", "@capacitor/browser": "8.0.4", "@capacitor/app-launcher": "8.0.1",
 });
-const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY];
+const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE];
 const attributionFiles = new Set(["assets/country-flags/ATTRIBUTION.md", "fonts/editorial/LICENSE.source-sans-3.md", "fonts/editorial/LICENSE.source-serif-4.md"]);
 const within = (root, file) => { const relative = path.relative(root, file); return relative && relative !== ".." && !relative.startsWith(".." + path.sep) && !path.isAbsolute(relative); };
 function relativePath(value) {
@@ -142,7 +143,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
   }
   // Historical artifacts predating this import retain their existing snapshot.
   // Any artifact that claims the registry module must still bind its exact input.
-  for (const required of sourceRoots.filter(name => name !== "src" && (checkSourceFreshness || name !== CANONICAL_BOOK_SOURCE_REGISTRY))) if (!inputMap.has(required)) add("SOURCE_INPUT_SET", required, "Required native build/configuration input is missing.");
+  for (const required of sourceRoots.filter(name => name !== "src" && (checkSourceFreshness || ![CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE].includes(name)))) if (!inputMap.has(required)) add("SOURCE_INPUT_SET", required, "Required native build/configuration input is missing.");
   if (sha(json({ sourceCommit: artifact.sourceCommit, sourceInputsSha256: inputs?.sha256, platform: artifact.platform, channel: artifact.channel, inventory: artifact.inventory })) !== artifact.buildId) add("BUILD_ID", "artifact.json", "Build identity does not bind the exact source, platform/channel and inventory.");
   try {
     const config = await readJson(root, "capacitor.config.json");
@@ -166,6 +167,42 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
     publicOutputs.add(output); counts.publicSources++;
     if (sha(await regular(root, source)) !== record.sourceSha256 || actual.get(output).sha256 !== record.sourceSha256) throw new Error();
   } catch { add("ASSET_PROVENANCE", record?.output, "Every public asset must be an unchanged copy of the exact current contained source."); }
+  // New generated child bytes need exact source-owned provenance. A prefix
+  // allowlist or artifact-supplied output digest alone cannot authorize them.
+  const childOutputs = new Set();
+  const claimsChild = inputMap.has(CHILD_NATIVE_ASSET_MODULE) || Object.hasOwn(artifact, "childNativeAssets")
+    || [...actual.keys()].some(name => name.startsWith("child-native/"));
+  if (claimsChild) try {
+    const metadata = artifact.childNativeAssets;
+    if (!inputMap.has(CHILD_NATIVE_ASSET_MODULE) || !fields(metadata, ["pinSource", "outputs"])
+      || !fields(metadata.pinSource, ["path", "sha256"]) || metadata.pinSource.path !== CHILD_NATIVE_PIN_SOURCE
+      || !SHA.test(metadata.pinSource.sha256) || inputMap.get(CHILD_NATIVE_PIN_SOURCE) !== metadata.pinSource.sha256
+      || !Array.isArray(metadata.outputs) || metadata.outputs.length > 65) throw new Error();
+    const pinBytes = await regular(root, CHILD_NATIVE_PIN_SOURCE, 65536), pins = normalizeChildNativePins(pinBytes);
+    if (sha(pinBytes) !== metadata.pinSource.sha256) throw new Error();
+    const selected = artifact.platform === "ios" && artifact.channel === "appStore" ? "ios-ipados"
+      : artifact.platform === "android" && artifact.channel === "googlePlay" ? "android-google"
+      : artifact.platform === "android" && artifact.channel === "ruStore" ? "android-rustore" : null;
+    const catalog = Buffer.from(JSON.stringify({ schemaVersion: 1, kind: "literary-planet-child-native-assets-v1", platform: selected,
+      pinSourceChecksum: sha(pinBytes), reviewKeys: pins.reviewKeys, packages: pins.packages }) + "\n");
+    const expected = new Map([[CHILD_NATIVE_CATALOG, { source: CHILD_NATIVE_PIN_SOURCE, sourceSha256: sha(pinBytes), transformation: "fixed-native-pin-projection-v1", bytes: catalog }]]);
+    for (const pin of pins.packages) for (const [directory, checksum, name, maximum] of [["packages", pin.packageChecksum, "package.json", 8388608], ["reviews", pin.reviewChecksum, "review.json", 524288]]) {
+      const source = "src/child/release-material/" + checksum + "/" + name, output = "child-native/" + directory + "/" + checksum + ".json";
+      if (expected.has(output) || inputMap.get(source) !== checksum) throw new Error();
+      const bytes = await regular(root, source, maximum);if (!bytes.length || sha(bytes) !== checksum) throw new Error();
+      expected.set(output, { source, sourceSha256: checksum, transformation: "none", bytes });
+    }
+    if (metadata.outputs.length !== expected.size) throw new Error();
+    for (const row of metadata.outputs) {
+      if (!fields(row, ["output", "source", "sourceSha256", "transformation", "outputSha256"]) || childOutputs.has(row.output)) throw new Error();
+      const original = expected.get(row.output);
+      if (!original || row.source !== original.source || row.sourceSha256 !== original.sourceSha256 || row.transformation !== original.transformation
+        || row.outputSha256 !== sha(original.bytes) || actual.get(row.output)?.sha256 !== row.outputSha256
+        || actual.get(row.output)?.bytes !== original.bytes.length || !inventory.has(row.output)) throw new Error();
+      childOutputs.add(row.output);
+    }
+    if ([...actual.keys()].some(name => name.startsWith("child-native/") && !childOutputs.has(name))) throw new Error();
+  } catch { childOutputs.clear();add("CHILD_NATIVE_PROVENANCE", "child-native/", "Child outputs require the exact pinned source bytes, fixed catalog projection, exporter input and complete bounded inventory."); }
   const resource = (value, owner, javascript = false) => {
     try {
       if (typeof value !== "string" || !value || /[\\%\u0000-\u0020\u007f]/u.test(value) || value.startsWith("//")) throw new Error();
@@ -264,7 +301,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
     scan(tree);
   }
   const generated = new Set(["artifact.json", "index.html", ".vite/manifest.json", "module-ownership.json"]);
-  for (const filename of actual.keys()) if (!generated.has(filename) && !emitted.has(filename) && !publicOutputs.has(filename)) add("OUTPUT_PROVENANCE", filename, "Output must be a Vite asset, generated shell/metadata or traced canonical public copy.");
+  for (const filename of actual.keys()) if (!generated.has(filename) && !emitted.has(filename) && !publicOutputs.has(filename) && !childOutputs.has(filename)) add("OUTPUT_PROVENANCE", filename, "Output must be a Vite asset, generated shell/metadata or traced canonical public copy.");
   return report();
 }
 
