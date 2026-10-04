@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-owner-codec-merge",
+  "status": "ACK",
+  "sourceCommit": "e1fbf1e47ed78cc76ec8d78abf3c3a7631fa527c",
+  "producerManifestSha256": "e913ab16f11bf8622752c8e8e0b409345878f7d1c8bcc9cd556977352f371649",
+  "runtimeChecksExecuted": false,
+  "files": [
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "providerSha256": "f920f71738a1432ee55674fa0b97d75e266f7c388c873d4ade2cc52fed8742bd",
+      "beforeSha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+      "afterSha256": "d8dfa781d8f88710b775cc6f2593ac8e439734bce852240c8b0ce8ffa62561c3"
+    }
+  ],
+  "edit": "One optional Boolean localeLocked canonical tail after narrationEnabled; unknown/nonBoolean/order still rejected",
+  "providerOutsideCodecSpanByteExact": true,
+  "legacyAbsenceBytesUnchanged": true,
+  "installedOS": "NOT_RUN",
+  "releaseReady": false
+}

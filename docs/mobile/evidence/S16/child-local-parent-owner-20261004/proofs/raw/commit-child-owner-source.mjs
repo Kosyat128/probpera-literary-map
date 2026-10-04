@@ -1,0 +1,30 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { B,sha,json,requireFact as check,equal,capture,rawFile,readB } from './parent-pin-checks-common.mjs';
+import { loadFinalInput,guard,preserve,OWNED,reference } from './integrate-child-local-parent-owner.mjs';
+const checked=readB(process.argv[2],process.argv[3]);const result=checked.value;
+check(result.kind==='literary-planet-child-local-parent-owner-focused-checks'&&result.status==='PASS'&&result.pass===true&&result.typeScript===true,'ACTUAL_FOCUSED_PASS_REQUIRED');
+check(result.affected?.failed===0&&result.affected?.pendingOrFiltered===0&&result.serverPin?.passed===56&&result.serverPin?.failed===0&&result.commands?.length===5&&result.commands.every(x=>x.exitCode===0&&!x.errorCode&&!x.signal&&!x.timedOut&&!x.overflow),'ACTUAL_FIVE_SUCCESSFUL_COMMANDS_REQUIRED');
+const integration=readB(result.integration.path,result.integration.sha256);const data=loadFinalInput(integration.value.input.path,integration.value.input.sha256);
+guard(data,true);const before=await capture(data.root);preserve(data,before,true);
+const checkedInputs=readB(result.after.path,result.after.sha256).value;check(equal(before,checkedInputs),'CHECKED_FINAL_BYTES_CHANGED');
+const out=path.join(B,'child-local-parent-owner-work-20261004','source-commit');fs.mkdirSync(out);
+fs.writeFileSync(path.join(out,'inputs-before.json'),json(before),{flag:'wx'});
+const commands=[];
+const run=(name,args)=>{let text;try{text=data.git(args);}catch(error){fs.writeFileSync(path.join(out,name+'.stdout.bin'),error.stdout??Buffer.alloc(0),{flag:'wx'});fs.writeFileSync(path.join(out,name+'.stderr.bin'),error.stderr??Buffer.alloc(0),{flag:'wx'});throw error;}const bytes=Buffer.from(text,'utf8');const file=path.join(out,name+'.stdout.bin');fs.writeFileSync(file,bytes,{flag:'wx'});commands.push({name,args,exitCode:0,stdout:reference(file)});return text;};
+try{
+ run('diff-check',['-c','core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol','diff','--check','--',...OWNED]);
+ guard(data,true);
+ run('add',['add','--',...OWNED]);
+ check(equal(data.git(['diff','--cached','--name-only']).split('\n').filter(Boolean).sort(),OWNED),'EXACT_STAGED_FIFTEEN_REQUIRED');
+ for(const row of data.input.files)check(sha(rawFile(path.join(data.root,row.path)))===row.after.sha256,'STAGED_SOURCE_BYTES_CHANGED');
+ run('staged-diff-check',['-c','core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol','diff','--cached','--check']);
+ run('commit',['commit','-m','feat(child): bind local device-owner permission and locale locks']);
+ const sourceCommit=data.git(['rev-parse','HEAD']);check(/^[a-f0-9]{40}$/u.test(sourceCommit)&&sourceCommit!==data.baseline.repositoryHead,'NEW_LOCAL_SOURCE_COMMIT_REQUIRED');
+ const after=await capture(data.root);check(after.sourceCommit===sourceCommit&&after.repositoryHead===sourceCommit&&after.sourceStatus===''&&equal(after.sourceFiles,data.expectedFiles)&&after.sourceFingerprint===before.sourceFingerprint&&after.lockSha256===before.lockSha256&&after.toolsFingerprint===before.toolsFingerprint,'CLEAN_COMMITTED_BYTES_MUST_MATCH_CHECKED_INPUTS');
+ for(const row of data.baseline.documentRows)check(sha(rawFile(path.join(data.root,row.path)))===row.sha256,'HANDOFF_DOCS_CHANGED');
+ fs.writeFileSync(path.join(out,'inputs-after.json'),json(after),{flag:'wx'});
+ const patch=Buffer.from(data.git(['diff','--binary',data.baseline.repositoryHead,sourceCommit,'--',...OWNED])+'\n','utf8');fs.writeFileSync(path.join(out,'source.patch'),patch,{flag:'wx'});
+ const checkpoint={schemaVersion:1,kind:'literary-planet-child-local-parent-owner-source-checkpoint',status:'SOURCE_COMMITTED',sourceCommit,repositoryHead:sourceCommit,branch:data.input.branch,sourceFingerprint:after.sourceFingerprint,sourceFiles:after.sourceFiles,lockSha256:after.lockSha256,toolsFingerprint:after.toolsFingerprint,focusedChecks:{path:checked.path,sha256:checked.sha256},integration:result.integration,checkedDirtyInputsCorrelatedByteExact:true,sourceRows:1790,sourcePaths:OWNED,commands,before:reference(path.join(out,'inputs-before.json')),after:reference(path.join(out,'inputs-after.json')),patch:reference(path.join(out,'source.patch')),installedOS:'NOT_RUN',swiftCompilation:'NOT_RUN',remoteActions:0,releaseReady:false};
+ fs.writeFileSync(path.join(out,'checkpoint.json'),json(checkpoint),{flag:'wx'});console.log(json({status:checkpoint.status,sourceCommit,sourceFingerprint:checkpoint.sourceFingerprint,sourceRows:1790,checkpoint:reference(path.join(out,'checkpoint.json'))}));
+}catch(error){fs.writeFileSync(path.join(out,'failure.json'),json({status:'FAIL',errorCode:error.code??'SOURCE_COMMIT_OR_GUARD_FAILED',commands,indexRollbackPerformed:false,worktreeRollbackPerformed:false,releaseReady:false}),{flag:'wx'});throw error;}

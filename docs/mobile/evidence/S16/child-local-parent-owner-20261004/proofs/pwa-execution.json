@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-parent-owner-build-execution",
+  "status": "PASS",
+  "mode": "pwa",
+  "attempt": "a1",
+  "startedAt": "2026-10-03T23:48:57.565Z",
+  "finishedAt": "2026-10-03T23:49:29.689Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "parseError": null,
+  "binding": {
+    "sourceCommit": "32e3250063e1e6284470af2761ad765983e68781",
+    "repositoryHead": "32e3250063e1e6284470af2761ad765983e68781",
+    "sourceFingerprint": "49d5123f4b48eedde45b36140c7e3488954b0e644270bf47c9212454b38a1cd3",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\pwa-a1\\stdout.bin",
+    "sha256": "043d6154be20ef4afc9aec9a2460dfa817c5e45ed7b5c8ab067419754a450f5a",
+    "bytes": 321
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\pwa-a1\\stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "receipt": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-69aba0b1-825c-497b-b8bf-8aa42c24eeb0\\preparation.json",
+    "sha256": "fbbfe72c0de6886e65d3a300acc4908edd14031bd98d08305ff0ff954775e82b",
+    "bytes": 291034,
+    "relativePath": ".tmp/mobile-release-pwa-69aba0b1-825c-497b-b8bf-8aa42c24eeb0/preparation.json",
+    "pass": true,
+    "mode": "pwa"
+  },
+  "inputsUnchanged": true,
+  "sourceRows": 1790,
+  "deviceTested": false,
+  "iosCompiled": false,
+  "releaseReady": false,
+  "remoteActions": 0
+}

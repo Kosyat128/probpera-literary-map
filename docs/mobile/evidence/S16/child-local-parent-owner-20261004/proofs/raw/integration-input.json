@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-parent-owner-integration-input",
+  "finalized": true,
+  "rootDir": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "expectedSource": "e1fbf1e47ed78cc76ec8d78abf3c3a7631fa527c",
+  "expectedHead": "f79987ac3f3a0434ec23fdbe446bf2c20683385f",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "baseline": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\baseline.json",
+    "sha256": "20ee324a342549780d0247c67a2e1f333b31208d420f9fe3fd707b7c695af22a",
+    "bytes": 276010
+  },
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativeOwnerPermissionRuntimeTest.java",
+      "beforeSha256": null,
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-android\\apps\\mobile\\android\\app\\src\\androidTest\\java\\ru\\probpera\\literaryplanet\\PlanetChildNativeOwnerPermissionRuntimeTest.java",
+        "sha256": "07c15f228eb1cb3116772c96f57641ff1f035515da15400e64a87e2e749acaa6",
+        "bytes": 20567
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-android\\manifest.json",
+        "sha256": "50e48d0e478c2792dcee33513c19c7fc4e2b99cc8397ff55f6ecb346d361474c",
+        "bytes": 3033
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-android-peer-review.json",
+        "sha256": "11f3ddfa453bb3123d7ba0014ddd1e890d12fda5ff59b43fae2636343a4b499a",
+        "bytes": 4840
+      }
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/AndroidManifest.xml",
+      "beforeSha256": "d45bf5a64a8e771105b5b1a2184b196aee46e0d7c2935d79d6b71bebc6c20caf",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\apps\\mobile\\android\\app\\src\\main\\AndroidManifest.xml",
+        "sha256": "f82f3bb536ff9dc8d008f2a576d75198de627e22da1a031b20b155079143b007",
+        "bytes": 1706
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\manifest.json",
+        "sha256": "7f92e75d3556e85e0f977d5850b132ecc38a370d85aa26f086c088576b786b3b",
+        "bytes": 1352
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-native-owner-resources-20261004-root-review.json",
+        "sha256": "5fc8a9c6695c93dafafb2d4bb605e230930d675084e04fd8652615da0074f17d",
+        "bytes": 901
+      }
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "beforeSha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\PlanetChildVault.final.java",
+        "sha256": "f9ca14272b0ba3e8e912750112e81338e5f87bede9387a56cfc293ce3e6f0e4d",
+        "bytes": 237639
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-android\\manifest.json",
+        "sha256": "50e48d0e478c2792dcee33513c19c7fc4e2b99cc8397ff55f6ecb346d361474c",
+        "bytes": 3033
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-android-peer-review.json",
+        "sha256": "11f3ddfa453bb3123d7ba0014ddd1e890d12fda5ff59b43fae2636343a4b499a",
+        "bytes": 4840
+      },
+      "codecMerge": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\android-codec-merge.json",
+        "sha256": "b496068e18b5f7a71b3a229ad188495bc82de67f33a77cc021ee4531cfe1123f",
+        "bytes": 956
+      }
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values-ru/strings.xml",
+      "beforeSha256": "c5c6f5318e6cdb14c824cc2d850eeeccc6af637083a38ac426939d7cc0860b1e",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\apps\\mobile\\android\\app\\src\\main\\res\\values-ru\\strings.xml",
+        "sha256": "0ff0ff709ea31a1ae4d9d497ebb381a8b765599c96712366601249eea84ab83c",
+        "bytes": 3153
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\manifest.json",
+        "sha256": "7f92e75d3556e85e0f977d5850b132ecc38a370d85aa26f086c088576b786b3b",
+        "bytes": 1352
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-native-owner-resources-20261004-root-review.json",
+        "sha256": "5fc8a9c6695c93dafafb2d4bb605e230930d675084e04fd8652615da0074f17d",
+        "bytes": 901
+      }
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/res/values/strings.xml",
+      "beforeSha256": "235e5e5995487f7ea5e7e8691c6f277abae724344c2cc19b703e6ca898d95a4e",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\apps\\mobile\\android\\app\\src\\main\\res\\values\\strings.xml",
+        "sha256": "c46c9221f9618d42491b3dbae79a69040c20177c0627c0bd477507c811e455e5",
+        "bytes": 2572
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\manifest.json",
+        "sha256": "7f92e75d3556e85e0f977d5850b132ecc38a370d85aa26f086c088576b786b3b",
+        "bytes": 1352
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-native-owner-resources-20261004-root-review.json",
+        "sha256": "5fc8a9c6695c93dafafb2d4bb605e230930d675084e04fd8652615da0074f17d",
+        "bytes": 901
+      }
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "beforeSha256": "081c46c134d77926c6481288f68ffe03f4f0ee697ad72f690c3b5370c1f92c53",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-xcode-20261004\\apps\\mobile\\ios\\App\\App.xcodeproj\\project.pbxproj",
+        "sha256": "67b7ba62ef855e1c23cfed71d9492edd14ed83f90e4a719b507d8080eab7700b",
+        "bytes": 25827
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-xcode-20261004\\manifest.json",
+        "sha256": "a48eaf45dc02f65d4cdae67ecffcc070f2369a56aa959f4619f07a80ba5eabbf",
+        "bytes": 818
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-native-owner-xcode-20261004-root-review.json",
+        "sha256": "5d7650782a6067298922e52f6bb1bb41addb2a4fa1616f43b7004371d29dc899",
+        "bytes": 898
+      }
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "beforeSha256": "dad1a9842da6293babbad826fa3ed14c472388f776907869b91a2e6e3b53715d",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\PlanetChildVault.final.swift",
+        "sha256": "d8dfa781d8f88710b775cc6f2593ac8e439734bce852240c8b0ce8ffa62561c3",
+        "bytes": 278182
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-swift\\manifest.json",
+        "sha256": "e913ab16f11bf8622752c8e8e0b409345878f7d1c8bcc9cd556977352f371649",
+        "bytes": 3994
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-native-pin-owner-swift-root-review.json",
+        "sha256": "735a66a7cd6e927590386a8c1b55482021c5e14ee5611cd455ebd9b987b0b599",
+        "bytes": 1137
+      },
+      "codecMerge": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\swift-codec-merge.json",
+        "sha256": "a690835233acee677007f910dba8fb38a3117d2d7b635b32c3a4ccee563b8376",
+        "bytes": 916
+      }
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildOwnerPermissionRuntimeTests.swift",
+      "beforeSha256": null,
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-swift\\PlanetChildOwnerPermissionRuntimeTests.swift",
+        "sha256": "27c2434fe4da7c6d55f8074f1bb763d8d237303555ff0073641736cf6786d61e",
+        "bytes": 7376
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-pin-owner-swift\\manifest.json",
+        "sha256": "e913ab16f11bf8622752c8e8e0b409345878f7d1c8bcc9cd556977352f371649",
+        "bytes": 3994
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-native-pin-owner-swift-root-review.json",
+        "sha256": "735a66a7cd6e927590386a8c1b55482021c5e14ee5611cd455ebd9b987b0b599",
+        "bytes": 1137
+      }
+    },
+    {
+      "path": "src/child/childIndex.test.ts",
+      "beforeSha256": "d7767d5a9f249b18feae3844016de679b44cd5e4e5f3fa7cf85d2503a89db598",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childIndex.test.ts",
+        "sha256": "7d1b5067a87310444f613230351199729fb2959561a34a43c5432ce199380758",
+        "bytes": 46240
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    },
+    {
+      "path": "src/child/childPackage.ts",
+      "beforeSha256": "e7ebba5afcf9bc1d7b6c6fc545f5ad47518d5b7cfc24482b4d4f8b8c7c3c2326",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childPackage.ts",
+        "sha256": "b2e1083052288859aa877b562a348d8975531ceee58299bbfd7ff68fe002ec2a",
+        "bytes": 15002
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    },
+    {
+      "path": "src/child/childProfile.test.ts",
+      "beforeSha256": "3b8e976c23388da198eea5f86f840cfe572c2861c3d30474febbed0c40ef223f",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childProfile.test.ts",
+        "sha256": "835b12d6f526abccf09416cc1fe6dcedd68f110a255acd92871c406056cbfb73",
+        "bytes": 12507
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    },
+    {
+      "path": "src/child/childProfile.ts",
+      "beforeSha256": "df5eabd34687832e666775e09e49ec978df075cbe3cf95b94e0259d64506f148",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childProfile.ts",
+        "sha256": "e938dae0e1601f50a2e102d0481fa7b23f9b635c433e2f0429e706e270c976d4",
+        "bytes": 8515
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    },
+    {
+      "path": "src/child/childProtectedState.test.ts",
+      "beforeSha256": "03c40f46eeb31f2ad22e9f9f2b94d01827f522d77b818380401c4c87a42ba144",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childProtectedState.test.ts",
+        "sha256": "f59e794b73ae07fd08f19b0f46b30eadf44c92314a07d56b20de325a24dc0436",
+        "bytes": 30772
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    },
+    {
+      "path": "src/child/childStartup.test.ts",
+      "beforeSha256": "7de900ea7851b58d78972c88ddc83c7b041d9bb04504f32950efa919a9c5d56a",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childStartup.test.ts",
+        "sha256": "e7c8c1e8a9ce369f97090393f52ada1a1ab9382c190bd1c8ce744e5e65aa1358",
+        "bytes": 42730
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    },
+    {
+      "path": "src/child/childStartup.ts",
+      "beforeSha256": "b4a14185df88814b675b218dc4774e9be35356d5cdb5bc7eba02e95a11374f76",
+      "after": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\src\\child\\childStartup.ts",
+        "sha256": "f1a40712f1e39b759e3e09ee4d75000da1620c09ebdf77ad4eacf973be4c14c4",
+        "bytes": 17658
+      },
+      "producerManifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-child-locale-lock\\manifest.json",
+        "sha256": "68824b4f0de01fb1bcb4110c4cde35a02f4f366f61481896dc0bfc769c796ea7",
+        "bytes": 8813
+      },
+      "peerReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\next-child-locale-lock-root-review.json",
+        "sha256": "388004ec89879c89afe334ff7ba26ebbc33426ce18ef602b7e17d05e8933166e",
+        "bytes": 961
+      }
+    }
+  ]
+}

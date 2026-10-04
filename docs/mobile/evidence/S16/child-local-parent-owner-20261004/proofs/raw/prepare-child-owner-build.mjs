@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawn} from 'node:child_process';
+import {B,sha,json,requireFact as check,equal,repositoryRoot,processContext,capture,rawFile} from './parent-pin-checks-common.mjs';
+const root=repositoryRoot(process.argv[2]),mode=process.argv[3],expectedSource=process.argv[4],attempt=process.argv[5];
+check(['android','pwa'].includes(mode)&&/^[0-9a-f]{40}$/u.test(expectedSource)&&/^a[1-9][0-9]*$/u.test(attempt),'EXPLICIT_BUILD_INPUTS_REQUIRED');
+const {env}=processContext(root),before=await capture(root);
+check(before.sourceCommit===expectedSource&&before.sourceStatus==='','CLEAN_SOURCE_REQUIRED');
+const dir=path.join(B,'child-local-parent-owner-work-20261004',mode+'-'+attempt);fs.mkdirSync(dir);
+const stdoutFile=path.join(dir,'stdout.bin'),stderrFile=path.join(dir,'stderr.bin');
+const startedAt=new Date().toISOString(),stdout=[],stderr=[];
+const execution=await new Promise(resolve=>{const child=spawn(process.execPath,['scripts/mobile/prepare-local-release.mjs',mode],{cwd:root,env,windowsHide:true});let error=null;child.stdout.on('data',x=>stdout.push(x));child.stderr.on('data',x=>stderr.push(x));child.on('error',x=>{error=x.code??'SPAWN_FAILED';});child.on('close',(exitCode,signal)=>resolve({exitCode,signal,error}));});
+const outBytes=Buffer.concat(stdout),errorBytes=Buffer.concat(stderr);fs.writeFileSync(stdoutFile,outBytes,{flag:'wx'});fs.writeFileSync(stderrFile,errorBytes,{flag:'wx'});
+const reference=filename=>{const bytes=rawFile(filename,8*1024*1024);return {path:filename,sha256:sha(bytes),bytes:bytes.length};};
+let receipt=null,parseError=null;
+try{const data=JSON.parse(outBytes.toString('utf8').trim());check(typeof data.output==='string'&&new RegExp('^\\.tmp/mobile-release-'+mode+'-[a-f0-9-]{36}$','u').test(data.output),'EXACT_PREPARATION_DIRECTORY_REQUIRED');const filename=path.join(root,data.output,'preparation.json'),bytes=fs.readFileSync(filename);const value=JSON.parse(bytes);check(value.kind==='literary-planet-local-release-preparation'&&value.mode===mode&&value.inputs?.sourceCommit===expectedSource&&value.inputs?.sourceFingerprint===before.sourceFingerprint,'PREPARATION_SOURCE_BINDING_REQUIRED');receipt={path:filename,sha256:sha(bytes),bytes:bytes.length,relativePath:data.output+'/preparation.json',pass:value.pass===true,mode};}catch(error){parseError=error.code??error.message;}
+const after=await capture(root);const inputsUnchanged=equal(before,after);
+const pass=execution.exitCode===0&&execution.signal===null&&execution.error===null&&parseError===null&&receipt?.pass===true&&inputsUnchanged;
+const result={schemaVersion:1,kind:'literary-planet-child-local-parent-owner-build-execution',status:pass?'PASS':'FAIL',mode,attempt,startedAt,finishedAt:new Date().toISOString(),...execution,parseError,binding:Object.fromEntries(['sourceCommit','repositoryHead','sourceFingerprint','lockSha256','toolsFingerprint'].map(key=>[key,before[key]])),stdout:reference(stdoutFile),stderr:reference(stderrFile),receipt,inputsUnchanged,sourceRows:before.sourceFiles.length,deviceTested:false,iosCompiled:false,releaseReady:false,remoteActions:0};
+const filename=path.join(dir,'execution.json');fs.writeFileSync(filename,json(result),{flag:'wx'});console.log(json({status:result.status,mode,execution:reference(filename),receipt,parseError,exitCode:execution.exitCode,inputsUnchanged}));if(!pass)process.exitCode=1;

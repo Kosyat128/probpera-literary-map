@@ -1,0 +1,10 @@
+PowerShell; cwd D:\CodexProjects\Работа по сайту\literary-planet-v12-work
+
+node: C:\Users\User\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe
+preview: & "C:\Users\User\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe" node_modules/vite/bin/vite.js preview --config vite.pwa.config.ts --configLoader runner --host 127.0.0.1 --port 4173 --strictPort --outDir ".tmp/mobile-release-pwa-69aba0b1-825c-497b-b8bf-8aa42c24eeb0/pwa-bundle"
+previewURL: http://127.0.0.1:4173/planet/
+androidMain: .tmp/mobile-release-android-94a5659a-555e-47e3-8ef4-b5ebcc443fc6/app-dev-debug.apk
+androidTest: .tmp/mobile-release-android-94a5659a-555e-47e3-8ef4-b5ebcc443fc6/app-dev-debug-androidTest.apk
+qualification: Current local dev APK and PWA candidates; preview command supplied, not executed in this slice. Native installation/owner proof, browser/offline/update and Swift compile/runtime NOT_RUN. No deploy/push/merge.
+
+Commands are exact supplied local receipts/runbook; no command is executed by this stager. Installed owner proof, browser/offline/update and Swift acceptance NOT_RUN.

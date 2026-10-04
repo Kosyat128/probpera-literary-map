@@ -1,0 +1,7 @@
+PASS ru canonical absent/false/true remain exact-owned bytes
+PASS en canonical absent/false/true remain exact-owned bytes
+PASS nonBoolean duplicate unknown tail denied
+PASS noncanonical field order denied
+PASS ru PIN-only preserves exact locale lock; simultaneous change denied
+PASS en PIN-only preserves exact locale lock; simultaneous change denied
+RESULT cases=6 assertions=29 platform=pure-JVM codecOnly=true installedOS=false

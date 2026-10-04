@@ -1,0 +1,12 @@
+√ Copying web assets from dist-native to apps\mobile\android\app\src\main\assets\public in 658.87ms
+√ Creating capacitor.config.json in apps\mobile\android\app\src\main\assets in 908.10μs
+√ copy android in 694.71ms
+√ Updating Android plugins in 8.10ms
+[info] Found 5 Capacitor plugins for android:
+       @capacitor/app@8.1.1
+       @capacitor/app-launcher@8.0.1
+       @capacitor/browser@8.0.4
+       @capacitor/network@8.0.1
+       @capacitor/preferences@8.0.1
+√ update android in 104.28ms
+[info] Sync finished in 0.856s

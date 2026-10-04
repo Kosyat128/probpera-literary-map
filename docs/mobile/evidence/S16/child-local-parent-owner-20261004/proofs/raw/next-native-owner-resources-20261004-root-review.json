@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-owner-root-source-review",
+  "status": "ACK",
+  "candidate": {
+    "manifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-resources-20261004\\manifest.json",
+      "sha256": "7f92e75d3556e85e0f977d5850b132ecc38a370d85aa26f086c088576b786b3b",
+      "bytes": 1352
+    }
+  },
+  "reviewedScopes": [
+    "Exactly three captured-locale service strings in default EN and RU",
+    "Only normal USE_BIOMETRIC manifest permission added; existing backup/network settings preserved"
+  ],
+  "reviewer": "root",
+  "reviewBasis": "Actual manually inspected final source and original-byte preservation, supplemented by root-owned exact input guards; no runtime claim",
+  "runtimeChecksExecuted": false,
+  "installedOS": "NOT_RUN",
+  "releaseReady": false
+}

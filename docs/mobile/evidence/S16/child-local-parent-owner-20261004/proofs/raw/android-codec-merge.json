@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-owner-codec-merge",
+  "status": "ACK",
+  "sourceCommit": "e1fbf1e47ed78cc76ec8d78abf3c3a7631fa527c",
+  "producerManifestSha256": "50e48d0e478c2792dcee33513c19c7fc4e2b99cc8397ff55f6ecb346d361474c",
+  "runtimeChecksExecuted": false,
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "providerSha256": "0b0faf927e861f708dcbad4f7afdd6f0ac7f9f1dd8420093ac66bd24c80d9c29",
+      "beforeSha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+      "afterSha256": "f9ca14272b0ba3e8e912750112e81338e5f87bede9387a56cfc293ce3e6f0e4d"
+    }
+  ],
+  "edit": "One optional Boolean localeLocked canonical tail after narrationEnabled; unknown/nonBoolean/order still rejected",
+  "providerOutsideCodecSpanByteExact": true,
+  "legacyAbsenceBytesUnchanged": true,
+  "installedOS": "NOT_RUN",
+  "releaseReady": false
+}

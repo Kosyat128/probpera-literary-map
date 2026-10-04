@@ -1,0 +1,1939 @@
+diff --git a/apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativeOwnerPermissionRuntimeTest.java b/apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativeOwnerPermissionRuntimeTest.java
+new file mode 100644
+index 00000000..2453e3cc
+--- /dev/null
++++ b/apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativeOwnerPermissionRuntimeTest.java
+@@ -0,0 +1,189 @@
++package ru.probpera.literaryplanet;
++
++import android.os.Build;
++import android.os.SystemClock;
++import androidx.lifecycle.Lifecycle;
++import androidx.test.core.app.ActivityScenario;
++import androidx.test.ext.junit.runners.AndroidJUnit4;
++import androidx.test.platform.app.InstrumentationRegistry;
++import java.lang.reflect.*;
++import java.nio.charset.StandardCharsets;
++import java.security.KeyStore;
++import java.security.MessageDigest;
++import java.util.*;
++import java.util.concurrent.*;
++import java.util.concurrent.atomic.*;
++import java.util.concurrent.locks.ReentrantLock;
++import org.junit.*;
++import org.junit.runner.RunWith;
++import static org.junit.Assert.*;
++
++/** AUTHORED, NOT_COMPILED / NOT_RUN. Actual platform keys/prompts are not mocked.
++ * Host/checkpoint/full-record storage is explicitly SYNTHETIC and never opens a
++ * vault. Device credential success is an interactive owned DEV-target condition,
++ * not automated PIN entry, JS data, guardian status, checkpoint or App admission.
++ * No key/alias deletion, replacement, App data clearing or factory activation.
++ * Opt-in: literaryOwnerPermissionPhase=owner-proof; literaryRunId=32lowerhex.
++ * Interactive cases additionally require literaryOwnerInteractive=true and a
++ * real owner answering the OS prompt. Missing input records SKIP, never PASS.
++ * Run only on an explicitly owned isolated .dev installation. A first successful
++ * enroll leaves its genuine fixed key; tests never replace it to obtain coverage.
++ */
++@RunWith(AndroidJUnit4.class)
++public final class PlanetChildNativeOwnerPermissionRuntimeTest {
++    private ActivityScenario<MainActivity> scenario;private MainActivity activity;private Fixture fixture;
++    @Before public void isolatedOwnedActivity() throws Exception {
++        android.os.Bundle arguments=InstrumentationRegistry.getArguments();
++        Assume.assumeTrue("explicit owned owner-proof phase", "owner-proof".equals(arguments.getString("literaryOwnerPermissionPhase"))
++            && arguments.getString("literaryRunId","").matches("[a-f0-9]{32}"));
++        Assume.assumeTrue("isolated dev application only",InstrumentationRegistry.getInstrumentation().getTargetContext().getPackageName().endsWith(".dev"));
++        scenario=ActivityScenario.launch(MainActivity.class);scenario.onActivity(a->activity=a);
++        long end=SystemClock.elapsedRealtime()+5000;while(!activity.hasWindowFocus()&&SystemClock.elapsedRealtime()<end)Thread.sleep(20);
++        assertTrue("actual resumed native Activity",activity.hasWindowFocus());
++    }
++    @After public void joinOnlyOwnedWork() throws Exception {
++        if(fixture!=null){fixture.releaseRecipient.countDown();fixture.close();}
++        if(scenario!=null)scenario.close();
++    }
++    private interface Checked {void run() throws Exception;}
++    private static Class<?> type(String name)throws Exception{return Class.forName("ru.probpera.literaryplanet.PlanetChildVault$"+name);}
++    private static Object create(String name,Object...args)throws Exception{
++        for(Constructor<?> c:type(name).getDeclaredConstructors())if(c.getParameterCount()==args.length){c.setAccessible(true);
++            try{return c.newInstance(args);}catch(InvocationTargetException e){throw cause(e);}}
++        throw new AssertionError("private fixture constructor "+name);
++    }
++    private static Exception cause(InvocationTargetException e){Throwable value=e.getCause();if(value instanceof Error)throw(Error)value;
++        return value instanceof Exception?(Exception)value:new Exception(value);}
++    private static Object call(Object owner,String name,Object...args)throws Exception{
++        Class<?> c=owner instanceof Class<?>?(Class<?>)owner:owner.getClass();
++        for(Method m:c.getDeclaredMethods())if(m.getName().equals(name)&&m.getParameterCount()==args.length){m.setAccessible(true);
++            try{return m.invoke(owner instanceof Class<?>?null:owner,args);}catch(InvocationTargetException e){throw cause(e);}}
++        throw new AssertionError("private fixture method "+name);
++    }
++    private static Object field(Object owner,String name)throws Exception{Field f=owner.getClass().getDeclaredField(name);f.setAccessible(true);return f.get(owner);}
++    @SuppressWarnings({"unchecked","rawtypes"})private static Object kind(String name,String value)throws Exception{return Enum.valueOf((Class)type(name),value);}
++    private static void denied(Checked body)throws Exception{boolean refused=false;try{body.run();}catch(Exception expected){refused=true;}assertTrue("refusal observed outside callback",refused);}
++    private static String repeated(char c){char[] value=new char[64];Arrays.fill(value,c);return new String(value);}
++    private static String sha(byte[] bytes)throws Exception{byte[] digest=MessageDigest.getInstance("SHA-256").digest(bytes);StringBuilder result=new StringBuilder();
++        try{for(byte value:digest)result.append(String.format(Locale.ROOT,"%02x",value&255));return result.toString();}finally{Arrays.fill(digest,(byte)0);}}
++    private static boolean zero(byte[] value){for(byte b:value)if(b!=0)return false;return true;}
++    private static Object objectMethod(Object p,Method m,Object[] a){switch(m.getName()){case"equals":return p==a[0];case"hashCode":return System.identityHashCode(p);
++        case"toString":return "EXPLICIT_SYNTHETIC_HOST_CHECKPOINT_ONLY";default:throw new AssertionError(m);}}
++    private static String pin(long revision,long observed,char credential,char salt){return "{\"schemaVersion\":1,\"revision\":"+revision+",\"credentialId\":\""+repeated(credential)
++        +"\",\"verifier\":{\"algorithm\":\"pbkdf2-sha256\",\"saltHex\":\""+repeated(salt)+"\",\"iterations\":600000,\"hashHex\":\""+repeated('c')
++        +"\"},\"attempts\":{\"count\":0,\"blockedUntilMs\":0,\"lastObservedMs\":"+observed+",\"pendingAttemptId\":null}}";}
++    private static byte[] record(boolean enrolled)throws Exception{
++        String registry="{\"schemaVersion\":1,\"policyVersion\":\"synthetic-native-owner-v1\",\"activeProfileId\":null,\"profiles\":[]}";
++        return ("{\"schemaVersion\":1,\"revision\":7,\"mode\":\"adult\",\"selectionRevision\":3,\"profileRevision\":2,\"policyChecksum\":\""+repeated('a')
++            +"\",\"registryChecksum\":\""+sha(registry.getBytes(StandardCharsets.UTF_8))+"\",\"registry\":"+registry+",\"pin\":"+(enrolled?pin(1,1000,'d','e'):"null")
++            +",\"clock\":{\"schemaVersion\":1,\"bootId\":\"00000000-0000-4000-8000-000000000001\",\"uptimeAnchorMs\":100,\"logicalAnchorMs\":1000,\"epochAnchorMs\":null}}")
++            .getBytes(StandardCharsets.UTF_8);
++    }
++    private final class Fixture implements AutoCloseable {
++        final Object core,inspection,session,owner;final byte[] before,next;final String nextHash;
++        final AtomicInteger recipients=new AtomicInteger();final AtomicReference<Object> delivered=new AtomicReference<>();
++        final CountDownLatch recipientEntered=new CountDownLatch(1),releaseRecipient=new CountDownLatch(1);
++        volatile Object request;volatile boolean holdRecipient,throwRecipient;volatile int reads,writes;
++        Fixture(String action,long timeout)throws Exception{
++            before=record(!"enroll".equals(action));String checksum=sha(before);ReentrantLock lock=new ReentrantLock();
++            Class<?> authority=type("PinSessionAuthority");Object actualHostFixture=Proxy.newProxyInstance(authority.getClassLoader(),new Class<?>[]{authority},(p,m,a)->{
++                if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);
++                if(m.getName().equals("capture")||m.getName().equals("current")){
++                    assertEquals(checksum,a[2]);assertArrayEquals(before,(byte[])a[1]);long now=SystemClock.elapsedRealtime();
++                    return create("PinNativeCoordinates",p,repeated('1'),"00000000-0000-4000-8000-000000000001",checksum,7L,4L,now,900L+now);}
++                if(m.getName().equals("cancel")||m.getName().equals("retire"))return null;
++                throw new AssertionError("OS-owner proof cannot publish/checkpoint "+m.getName());
++            });
++            Class<?> recovery=type("PinRecoveryAuthority");Object recoveryFixture=Proxy.newProxyInstance(recovery.getClassLoader(),new Class<?>[]{recovery},(p,m,a)->{
++                if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);throw new AssertionError("synthetic recovery not admitted");});
++            Class<?> io=type("PinSessionIO");Object storageFixture=Proxy.newProxyInstance(io.getClassLoader(),new Class<?>[]{io},(p,m,a)->{
++                if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);lock.lock();try{Class<?> tx=type("PinSessionTransaction");
++                    Object transaction=Proxy.newProxyInstance(tx.getClassLoader(),new Class<?>[]{tx},(t,n,b)->{
++                        if(n.getDeclaringClass()==Object.class)return objectMethod(t,n,b);if(n.getName().equals("read")){reads++;return before.clone();}
++                        writes++;throw new AssertionError("OS proof alone cannot write full record");});return call(a[0],"run",transaction);
++                }finally{lock.unlock();}});
++            Object policy=create("PinSessionPolicy","synthetic-native-owner-v1",repeated('a'),600000L,600000L);
++            core=create("NativePinSessions",storageFixture,actualHostFixture,recoveryFixture,policy);
++            inspection=call(core,"inspection",repeated('7'),kind("PinLifecycleAction",action),timeout);
++            Object reply=call(core,"begin",inspection);session=field(reply,"session");call(core,"settleReply",reply,kind("PinReplyDelivery","known"));
++            owner=create("PinNativeOwnerAuthority",core);long logical=(Long)field(session,"capturedLogicalMs");
++            String raw=new String(before,StandardCharsets.UTF_8).replace("\"revision\":7,\"mode\"","\"revision\":8,\"mode\"");
++            raw=raw.replace("\"pin\":"+("enroll".equals(action)?"null":pin(1,1000,'d','e')),
++                "\"pin\":"+pin("enroll".equals(action)?1:2,logical,'f','b'));
++            next=raw.getBytes(StandardCharsets.UTF_8);nextHash=sha(next);
++        }
++        Object request(String locale)throws Exception{
++            AtomicReference<Object> value=new AtomicReference<>();AtomicReference<Exception> error=new AtomicReference<>();
++            InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{value.set(call(owner,"request",session,next,nextHash,8L,activity,locale));}catch(Exception e){error.set(e);}});
++            if(error.get()!=null)throw error.get();request=value.get();return request;
++        }
++        void authenticate()throws Exception{Class<?> recipient=type("PinOwnerRecipient");Object consumer=Proxy.newProxyInstance(recipient.getClassLoader(),new Class<?>[]{recipient},(p,m,a)->{
++            if(m.getDeclaringClass()==Object.class)return objectMethod(p,m,a);recipients.incrementAndGet();delivered.set(a[0]);recipientEntered.countDown();
++            if(holdRecipient)assertTrue("bounded original recipient",releaseRecipient.await(20,TimeUnit.SECONDS));if(throwRecipient)throw new Exception("synthetic lost original recipient");return null;});
++            call(owner,"authenticate",request,consumer);}
++        void finished()throws Exception{long end=SystemClock.elapsedRealtime()+12000;boolean done;
++            for(;;){synchronized(core){done=(Boolean)field(request,"finished");}if(done||SystemClock.elapsedRealtime()>=end)break;Thread.sleep(20);}
++            assertTrue("actual handlers/worker/cancel cleanup completed",done);synchronized(core){assertEquals(0,field(inspection,"workers"));}}
++        void consume(Object permission)throws Exception{call(core,"claim",inspection,kind("PinSessionPhase","begun"),kind("PinSessionPhase","committing"));
++            try{call(owner,"consume",permission,session,next,nextHash,8L);}finally{call(core,"settleWorker",inspection);}}
++        String alias(){return activity.getPackageName()+".literary-planet-child-device-owner-sign-v1";}
++        boolean keyPresent()throws Exception{KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);return keys.containsAlias(alias());}
++        public void close()throws Exception{
++            if(request==null){call(session,"close");Arrays.fill(before,(byte)0);Arrays.fill(next,(byte)0);return;}
++            call(owner,"cancel",request);if((Boolean)field(request,"started"))finished();
++            Object permission=field(request,"permission");if(permission!=null&&!(Boolean)field(permission,"settled"))call(owner,"settle",permission,kind("PinReplyDelivery","uncertain"));
++            ExecutorService executor=Executors.newSingleThreadExecutor();try{Future<?> joined=executor.submit(()->{try{call(owner,"retire",request);}catch(Exception e){throw new RuntimeException(e);}});
++                joined.get(5,TimeUnit.SECONDS);}finally{executor.shutdown();Arrays.fill(before,(byte)0);Arrays.fill(next,(byte)0);}
++        }
++    }
++    private void supported(){Assume.assumeTrue("API30 credential CryptoObject",Build.VERSION.SDK_INT>=30);}
++    private void interactive(){supported();Assume.assumeTrue("actual OS credential supplied by owned target", "true".equals(InstrumentationRegistry.getArguments().getString("literaryOwnerInteractive")));}
++    private Object realPermission()throws Exception{interactive();fixture=new Fixture("enroll",60000);fixture.request("en");fixture.authenticate();
++        assertTrue("answer owned system credential prompt",fixture.recipientEntered.await(45,TimeUnit.SECONDS));fixture.finished();Object value=fixture.delivered.get();
++        assertNotNull("only actual keystore Signature success yields original proof",value);assertTrue((Boolean)field(fixture.request,"deliveryCompleted"));return value;}
++
++    @Test public void apiBelow30DeniesBeforeOwnedKeyOrPrompt()throws Exception{Assume.assumeTrue(Build.VERSION.SDK_INT<30);fixture=new Fixture("enroll",60000);
++        boolean key=fixture.keyPresent();denied(()->fixture.request("en"));assertEquals(key,fixture.keyPresent());assertEquals(0,fixture.recipients.get());}
++    @Test public void ordinaryRotationCannotRequestOwnerProof()throws Exception{supported();fixture=new Fixture("replace",60000);boolean key=fixture.keyPresent();
++        denied(()->fixture.request("en"));assertEquals(key,fixture.keyPresent());assertEquals(0,fixture.writes);}
++    @Test public void invalidLocaleDeniesBeforePlatformIO()throws Exception{supported();fixture=new Fixture("enroll",60000);boolean key=fixture.keyPresent();
++        denied(()->fixture.request("de"));assertEquals(key,fixture.keyPresent());assertEquals(0,fixture.recipients.get());}
++    @Test public void secondOwnerCannotMintRequestForSameInspection()throws Exception{supported();fixture=new Fixture("enroll",60000);Object original=fixture.request("ru");Object second=create("PinNativeOwnerAuthority",fixture.core);
++        AtomicBoolean refused=new AtomicBoolean();InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{call(second,"request",fixture.session,fixture.next,fixture.nextHash,8L,activity,"ru");}catch(Exception expected){refused.set(true);}});
++        assertTrue("second original denied outside main callback",refused.get());assertSame(original,field(fixture.inspection,"ownerAuthorization"));}
++    @Test public void cancellationBeforeStartNeverCreatesKey()throws Exception{supported();fixture=new Fixture("enroll",60000);fixture.request("en");boolean key=fixture.keyPresent();
++        call(fixture.owner,"cancel",fixture.request);denied(()->fixture.authenticate());assertEquals(key,fixture.keyPresent());assertEquals(0,fixture.recipients.get());}
++    @Test public void originalDeadlineIsNotRenewedByAuthenticate()throws Exception{supported();fixture=new Fixture("enroll",100);fixture.request("en");long deadline=(Long)field(fixture.session,"deadlineUptimeMs");
++        while(SystemClock.elapsedRealtime()<deadline)Thread.sleep(10);boolean key=fixture.keyPresent();denied(()->fixture.authenticate());assertEquals(deadline,field(fixture.session,"deadlineUptimeMs"));assertEquals(key,fixture.keyPresent());}
++    @Test public void recoveryMissingFixedKeyNeverCreatesIt()throws Exception{supported();fixture=new Fixture("recover",60000);Assume.assumeFalse("fresh isolated existing-key absence",fixture.keyPresent());
++        fixture.request("ru");fixture.authenticate();assertTrue(fixture.recipientEntered.await(10,TimeUnit.SECONDS));fixture.finished();assertNull(fixture.delivered.get());assertFalse(fixture.keyPresent());assertEquals(0,fixture.writes);}
++    @Test public void actualOwnerSignatureIsNotUsableBeforeKnownOriginalACK()throws Exception{Object permission=realPermission();assertFalse((Boolean)field(permission,"settled"));
++        denied(()->fixture.consume(permission));assertFalse("premature consume did not burn original",(Boolean)field(permission,"consumed"));assertEquals(0,fixture.writes);}
++    @Test public void originalKnownACKThenConsumeVerifiesAndBurnsOnce()throws Exception{Object permission=realPermission();byte[] originalSignature=(byte[])field(permission,"signature");assertFalse(zero(originalSignature));
++        call(fixture.owner,"settle",permission,kind("PinReplyDelivery","known"));assertTrue((Boolean)field(permission,"knownDelivery"));assertFalse("known ACK retains proof",zero(originalSignature));
++        fixture.consume(permission);assertTrue((Boolean)field(permission,"consumed"));assertTrue("actual consume wipes owned signature",zero(originalSignature));
++        denied(()->call(fixture.owner,"consume",permission,fixture.session,fixture.next,fixture.nextHash,8L));assertEquals(0,fixture.writes);}
++    @Test public void directBackingACKDeniedWhileActualRecipientIsExecuting()throws Exception{interactive();fixture=new Fixture("enroll",60000);fixture.request("en");fixture.holdRecipient=true;
++        try{fixture.authenticate();assertTrue("answer actual device credential prompt",fixture.recipientEntered.await(45,TimeUnit.SECONDS));Object permission=fixture.delivered.get();assertNotNull(permission);Object backing=field(permission,"backing");
++            denied(()->call(fixture.core,"settleReply",backing,kind("PinReplyDelivery","known")));assertFalse((Boolean)field(backing,"settled"));
++            assertFalse((Boolean)field(fixture.request,"finished"));synchronized(fixture.core){assertTrue((Integer)field(fixture.inspection,"workers")>0);}
++        }finally{fixture.releaseRecipient.countDown();}}
++    @Test public void nativeActivityPauseAfterKnownACKPermanentlyRevokesOriginalPermission()throws Exception{Object permission=realPermission();
++        call(fixture.owner,"settle",permission,kind("PinReplyDelivery","known"));
++        assertTrue("original lifecycle latch survives auth worker and known ACK",(Boolean)field(fixture.owner,"observerRegistered"));
++        assertFalse((Boolean)field(fixture.request,"retired"));
++        scenario.moveToState(Lifecycle.State.CREATED);synchronized(fixture.core){assertTrue("actual Activity pause/stop latches revoke",(Boolean)field(fixture.request,"revoked"));}
++        scenario.moveToState(Lifecycle.State.RESUMED);denied(()->fixture.consume(permission));
++        assertTrue("resume cannot restore original permission",(Boolean)field(fixture.request,"revoked"));assertTrue(zero((byte[])field(permission,"signature")));assertEquals(0,fixture.writes);}
++    @Test public void uncertainOriginalACKSealsAndWipesNeverGrantsConsume()throws Exception{Object permission=realPermission();byte[] signature=(byte[])field(permission,"signature");
++        call(fixture.owner,"settle",permission,kind("PinReplyDelivery","uncertain"));assertTrue(zero(signature));assertTrue((Boolean)field(fixture.inspection,"sealed"));
++        denied(()->fixture.consume(permission));assertFalse((Boolean)field(permission,"consumed"));assertEquals(0,fixture.writes);}
++    @Test public void acceptedOriginalWrongTupleBurnsBeforeValidationAndCannotRetry()throws Exception{Object permission=realPermission();
++        call(fixture.owner,"settle",permission,kind("PinReplyDelivery","known"));byte[] signature=(byte[])field(permission,"signature");
++        call(fixture.core,"claim",fixture.inspection,kind("PinSessionPhase","begun"),kind("PinSessionPhase","committing"));
++        try{denied(()->call(fixture.owner,"consume",permission,fixture.session,fixture.next,fixture.nextHash,9L));
++            assertTrue("wrong original tuple is permanently spent",(Boolean)field(permission,"consumed"));assertTrue(zero(signature));
++            denied(()->call(fixture.owner,"consume",permission,fixture.session,fixture.next,fixture.nextHash,8L));
++            assertEquals(0,fixture.writes);
++        }finally{call(fixture.core,"settleWorker",fixture.inspection);}}
++}
+diff --git a/apps/mobile/android/app/src/main/AndroidManifest.xml b/apps/mobile/android/app/src/main/AndroidManifest.xml
+index afd2d5ba..2004e658 100644
+--- a/apps/mobile/android/app/src/main/AndroidManifest.xml
++++ b/apps/mobile/android/app/src/main/AndroidManifest.xml
+@@ -40,4 +40,5 @@
+     <!-- Permissions -->
+ 
+     <uses-permission android:name="android.permission.INTERNET" />
++    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+ </manifest>
+diff --git a/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java b/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java
+index 5585c080..ae45473b 100644
+--- a/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java
++++ b/apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java
+@@ -148,7 +148,7 @@ final class PlanetChildVault {
+             p.field("blockedTopics", false); topics(p);
+             p.field("soundEnabled", false); p.bool();
+             p.field("motion", false); String motion = p.string(); require(motion.equals("calm") || motion.equals("system"));
+-            p.field("narrationEnabled", false); p.bool(); p.token("}"); return id;
++            p.field("narrationEnabled", false); p.bool(); if (p.take(",\"localeLocked\":")) p.bool(); p.token("}"); return id;
+         }
+         private static boolean ecmaSpace(char value) {
+             return value == 9 || value == 10 || value == 11 || value == 12 || value == 13 || value == 32 || value == 160
+@@ -339,6 +339,7 @@ final class PlanetChildVault {
+         PinSessionPhase phase=PinSessionPhase.reserved; boolean cancelled, sealed, retiring, retirementFenced;
+         int workers, transfers; OwnedPinSession session; PinNativeReply terminalReply;
+         private PinPrimitiveContext primitiveContext;
++        private OwnedPinOwnerRequest ownerAuthorization;
+         final java.util.IdentityHashMap<Thread,Integer> threads=new java.util.IdentityHashMap<>();
+         final java.util.Set<PinNativeReply> pendingReplies=java.util.Collections.newSetFromMap(new java.util.IdentityHashMap<PinNativeReply,Boolean>());
+         private OwnedPinInspection(NativePinSessions owner,String id,PinLifecycleAction action,long timeout) {
+@@ -383,6 +384,363 @@ final class PlanetChildVault {
+         private synchronized byte[] copyBytes() throws Exception { require(!disposed); return bytes.clone(); }
+         public synchronized void close() { disposed=true; Arrays.fill(bytes,(byte)0); }
+     }
++    /** Local OS-owner authorization only. No cloud bytes, Parent Gate proof,
++     * checkpoint, trusted cross-boot clock, or factory admission is supplied.
++     * API30+ device credential unlocks the ORIGINAL auth-per-use Signature;
++     * a callback flag cannot substitute for its actual verified signature. */
++    private interface PinOwnerRecipient { void completed(PinOwnerPermission permission) throws Exception; }
++    private static final class OwnedPinOwnerRequest implements AutoCloseable {
++        final PinNativeOwnerAuthority owner; final OwnedPinSession session;
++        final android.app.Activity activity; final android.os.IBinder windowToken;
++        final String locale,nextChecksum; final long nextRevision;
++        private final byte[] next,nonce,payload;
++        private Thread worker,watcher; private boolean started,revoked,finished,disposed,cleanupFenced,stopWatch,retired,detached;
++        private boolean promptOutstanding,credentialReturned,deliveryCompleted,deliveryEntered,sealed,cancelIssued;
++        private int mainCalls,cancelCalls,consumeCalls,eventCalls,cleanupCalls; private Exception promptError,mainError;
++        private android.os.CancellationSignal cancellation;
++        private android.hardware.biometrics.BiometricPrompt.CryptoObject originalCrypto;
++        private java.security.Signature originalSignature; private java.security.PublicKey publicKey;
++        private byte[] keyEncoding; private PinOwnerPermission permission;
++        private OwnedPinOwnerRequest(PinNativeOwnerAuthority owner,OwnedPinSession session,byte[] next,
++            String checksum,long revision,android.app.Activity activity,String locale,android.os.IBinder token) throws Exception {
++            this.owner=owner;this.session=session;this.next=next.clone();nextChecksum=checksum;nextRevision=revision;
++            this.activity=activity;this.locale=locale;windowToken=token;nonce=new byte[32];
++            new java.security.SecureRandom().nextBytes(nonce);payload=PinNativeOwnerAuthority.operation(this);
++        }
++        public void close() { synchronized(owner.core){revoked=true;disposed=true;if(finished && consumeCalls==0)wipe();}owner.cancel(this); }
++        private void wipe(){Arrays.fill(next,(byte)0);Arrays.fill(nonce,(byte)0);Arrays.fill(payload,(byte)0);
++            if(keyEncoding!=null)Arrays.fill(keyEncoding,(byte)0);if(permission!=null)permission.wipe();}
++    }
++    /** The local signature authenticates device-credential use for this exact
++     * original request. It is never a durable checkpoint or legal guardian proof.
++     * close revokes/wipes; only original host settlement drains the reply. */
++    private static final class PinOwnerPermission implements AutoCloseable {
++        final PinNativeOwnerAuthority owner; final OwnedPinOwnerRequest request; final PinNativeReply backing;
++        private final byte[] signature; private boolean consumed,disposed,settled,knownDelivery;
++        private PinOwnerPermission(PinNativeOwnerAuthority owner,OwnedPinOwnerRequest request,byte[] signature,PinNativeReply backing) {
++            this.owner=owner;this.request=request;this.signature=signature.clone();this.backing=backing;
++        }
++        private void wipe(){disposed=true;Arrays.fill(signature,(byte)0);}
++        public void close(){synchronized(owner.core){request.revoked=true;disposed=true;if(request.consumeCalls==0)wipe();}owner.cancel(request);}
++    }
++    private static final class PinNativeOwnerAuthority {
++        private final NativePinSessions core; private OwnedPinOwnerRequest original;
++        private PinNativeOwnerAuthority(NativePinSessions core) throws Exception {require(core!=null);this.core=core;}
++        /** Only a native-owned enrolled session can request recovery. Initial
++         * enrollment alone may create the fixed private key; never replace it. */
++        private OwnedPinOwnerRequest request(OwnedPinSession session,byte[] next,String checksum,long revision,
++            android.app.Activity activity,String locale) throws Exception {
++            require(android.os.Build.VERSION.SDK_INT>=30 && android.os.Looper.myLooper()==android.os.Looper.getMainLooper()
++                && activity!=null && activity.getClass()==MainActivity.class && !activity.isFinishing() && !activity.isDestroyed()
++                && activity.hasWindowFocus() && ("ru".equals(locale)||"en".equals(locale))
++                && next!=null && next.length>0 && next.length<=MAX_BYTES && ProtectedEnvelope.hash(checksum));
++            android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
++            synchronized(core){require(original==null && session!=null && session.owner==core
++                && session.inspection.session==session && !session.disposed
++                && (session.inspection.action==PinLifecycleAction.enroll || session.inspection.action==PinLifecycleAction.recover));
++                core.sessionFence(session);require(session.inspection.ownerAuthorization==null && !session.inspection.retiring && session.inspection.workers==0
++                    && nativeInputRetirementReady(session.inspection) && session.inspection.phase==PinSessionPhase.begun);
++                byte[] owned=next.clone();try{core.mutationFence(session,session.expected,owned,checksum,revision);
++                    try(ProtectedEnvelope before=ProtectedEnvelope.decode(session.expected,core.policy.version,core.policy.checksum,core.policy.maximumIterations);
++                        ProtectedEnvelope after=ProtectedEnvelope.decode(owned,core.policy.version,core.policy.checksum,core.policy.maximumIterations)) {
++                        ProtectedEnvelope.validateTransition(before,after,session.inspection.action,session.capturedLogicalMs);
++                        require(after.iterations==core.policy.iterations);
++                    }
++                    original=new OwnedPinOwnerRequest(this,session,owned,checksum,revision,activity,locale,token);
++                    session.inspection.ownerAuthorization=original;return original;
++                }finally{Arrays.fill(owned,(byte)0);}}
++        }
++        /** Binary, local-only domain separation; no profile labels/ages/topics
++         * leave the vault. Native host object identity remains an original-object
++         * comparison, not a serialized number or a signed assertion from JS. */
++        private static byte[] operation(OwnedPinOwnerRequest request) throws Exception {
++            java.io.ByteArrayOutputStream bytes=new java.io.ByteArrayOutputStream(512);
++            java.io.DataOutputStream out=new java.io.DataOutputStream(bytes);OwnedPinSession s=request.session;
++            out.write("LP-LOCAL-DEVICE-OWNER-PERMISSION\0v1\0".getBytes(StandardCharsets.US_ASCII));
++            out.writeByte(s.inspection.action==PinLifecycleAction.enroll?1:2);
++            out.writeByte("ru".equals(request.locale)?1:2);
++            byte[] scope=(alias(request.activity)+"\0"+s.policy.version).getBytes(StandardCharsets.US_ASCII);
++            try{out.writeShort(scope.length);out.write(scope);}finally{Arrays.fill(scope,(byte)0);}
++            for(String value:new String[]{s.inspection.wireId,s.checksum,request.nextChecksum,s.epoch,s.bootId,s.policy.checksum})out.write(value.getBytes(StandardCharsets.US_ASCII));
++            for(long value:new long[]{s.revision,request.nextRevision,s.hostGeneration,s.capturedUptimeMs,s.capturedLogicalMs,s.deadlineUptimeMs})out.writeLong(value);
++            out.write(request.nonce);out.flush();return bytes.toByteArray();
++        }
++        private void own(OwnedPinOwnerRequest request) throws Exception {require(request!=null && request.owner==this && original==request);}
++        private void live(OwnedPinOwnerRequest request) throws Exception {
++            synchronized(core){own(request);require(request.session.inspection.ownerAuthorization==request);core.sessionFence(request.session);
++                if(request.revoked || request.disposed || request.sealed || request.session.inspection.retiring
++                    || SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs)throw new PinKnownRefusal();
++                core.mutationFence(request.session,request.session.expected,request.next,request.nextChecksum,request.nextRevision);
++                byte[] payload=operation(request);try{require(MessageDigest.isEqual(payload,request.payload));}finally{Arrays.fill(payload,(byte)0);}}
++        }
++        /** Actual durable read/current/whole-byte fence on a background worker;
++         * existing authority authenticates boot/epoch/host, never this key alone. */
++        private void current(OwnedPinOwnerRequest request) throws Exception {
++            host(request);live(request);core.io.locked(transaction->{byte[] actual=transaction.read();try{
++                live(request);require(MessageDigest.isEqual(actual,request.session.expected));
++                core.current(request.session,actual,request.session.checksum,request.session.revision);live(request);return null;
++            }finally{Arrays.fill(actual,(byte)0);}});host(request);live(request);
++        }
++        private static String alias(android.app.Activity activity) throws Exception {
++            String name=activity.getPackageName();require(name.matches("ru\\.probpera\\.literaryplanet(?:\\.dev|\\.rustore)?"));
++            return name+".literary-planet-child-device-owner-sign-v1";
++        }
++        private void key(OwnedPinOwnerRequest request) throws Exception {
++            core.io.locked(transaction->{byte[] actual=transaction.read();try{
++                live(request);require(MessageDigest.isEqual(actual,request.session.expected));
++                core.current(request.session,actual,request.session.checksum,request.session.revision);keyLocked(request);
++                core.current(request.session,actual,request.session.checksum,request.session.revision);live(request);return null;
++            }finally{Arrays.fill(actual,(byte)0);}});
++        }
++        private void keyLocked(OwnedPinOwnerRequest request) throws Exception {
++            live(request);KeyguardManager guard=(KeyguardManager)request.activity.getSystemService(Context.KEYGUARD_SERVICE);
++            require(guard!=null && guard.isDeviceSecure());String alias=alias(request.activity);
++            KeyStore store=KeyStore.getInstance("AndroidKeyStore");store.load(null);
++            if(!store.containsAlias(alias)) {
++                if(request.session.inspection.action!=PinLifecycleAction.enroll)throw new PinKnownRefusal();
++                live(request);java.security.KeyPairGenerator generator=java.security.KeyPairGenerator.getInstance("EC","AndroidKeyStore");
++                generator.initialize(new android.security.keystore.KeyGenParameterSpec.Builder(alias,android.security.keystore.KeyProperties.PURPOSE_SIGN)
++                    .setAlgorithmParameterSpec(new java.security.spec.ECGenParameterSpec("secp256r1"))
++                    .setDigests(android.security.keystore.KeyProperties.DIGEST_SHA256).setUserAuthenticationRequired(true)
++                    .setUserAuthenticationParameters(0,android.security.keystore.KeyProperties.AUTH_DEVICE_CREDENTIAL).build());
++                generator.generateKeyPair();
++            }
++            // Existing invalidated/missing/wrong keys deny. No deleteEntry or
++            // catch-and-regenerate path exists, including owner recovery.
++            live(request);java.security.Key value=store.getKey(alias,null);require(value instanceof java.security.PrivateKey);
++            android.security.keystore.KeyInfo info=java.security.KeyFactory.getInstance("EC","AndroidKeyStore")
++                .getKeySpec(value,android.security.keystore.KeyInfo.class);
++            require(alias.equals(info.getKeystoreAlias()) && info.getKeySize()==256
++                && info.getOrigin()==android.security.keystore.KeyProperties.ORIGIN_GENERATED
++                && info.getPurposes()==android.security.keystore.KeyProperties.PURPOSE_SIGN
++                && info.isUserAuthenticationRequired() && info.getUserAuthenticationValidityDurationSeconds()==-1
++                && info.getUserAuthenticationType()==android.security.keystore.KeyProperties.AUTH_DEVICE_CREDENTIAL
++                && info.isInsideSecureHardware() && info.isUserAuthenticationRequirementEnforcedBySecureHardware()
++                && info.getDigests().length==1 && android.security.keystore.KeyProperties.DIGEST_SHA256.equals(info.getDigests()[0]));
++            java.security.cert.Certificate certificate=store.getCertificate(alias);require(certificate!=null);
++            java.security.PublicKey publicKey=certificate.getPublicKey();require(publicKey instanceof java.security.interfaces.ECPublicKey);
++            java.security.AlgorithmParameters parameters=java.security.AlgorithmParameters.getInstance("EC");
++            parameters.init(new java.security.spec.ECGenParameterSpec("secp256r1"));java.security.spec.ECParameterSpec expected=parameters.getParameterSpec(java.security.spec.ECParameterSpec.class);
++            java.security.spec.ECParameterSpec actual=((java.security.interfaces.ECPublicKey)publicKey).getParams();
++            require(actual.getCurve().equals(expected.getCurve()) && actual.getGenerator().equals(expected.getGenerator())
++                && actual.getOrder().equals(expected.getOrder()) && actual.getCofactor()==expected.getCofactor());
++            java.security.Signature signature=java.security.Signature.getInstance("SHA256withECDSA");signature.initSign((java.security.PrivateKey)value);
++            synchronized(core){live(request);request.publicKey=publicKey;request.keyEncoding=publicKey.getEncoded().clone();
++                request.originalSignature=signature;request.originalCrypto=new android.hardware.biometrics.BiometricPrompt.CryptoObject(signature);
++                request.cancellation=new android.os.CancellationSignal();}
++        }
++        private void authenticate(OwnedPinOwnerRequest request,PinOwnerRecipient recipient) throws Exception {
++            require(recipient!=null);synchronized(core){own(request);require(!request.started && !request.finished && !request.disposed);
++                live(request);require(request.session.inspection.workers==0 && !request.session.inspection.retiring);
++                request.started=true;Thread worker=new Thread(()->run(request,recipient),"planet-child-device-owner");request.worker=worker;
++                request.session.inspection.workers++;request.session.inspection.threads.put(worker,1);
++                try{worker.start();}catch(RuntimeException error){request.session.inspection.threads.remove(worker);
++                    request.session.inspection.workers--;request.finished=true;request.sealed=true;request.wipe();core.sealUnknown(request.session.inspection);core.notifyAll();throw error;}}
++        }
++        private void main(OwnedPinOwnerRequest request,Runnable task) throws Exception {
++            synchronized(core){own(request);require(!request.cleanupFenced || request.consumeCalls>0 || request.cleanupCalls>0);request.mainCalls++;}
++            boolean accepted=new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{
++                try{task.run();}catch(RuntimeException error){synchronized(core){request.mainError=error;request.sealed=true;request.revoked=true;}}
++                finally{synchronized(core){request.mainCalls--;core.notifyAll();}}
++            });
++            if(!accepted){synchronized(core){request.mainCalls--;request.sealed=true;core.notifyAll();}throw new Unavailable();}
++        }
++        private void callback(OwnedPinOwnerRequest request,Runnable task) {
++            synchronized(core){if(request.cleanupFenced){request.sealed=true;request.revoked=true;
++                try{core.sealUnknown(request.session.inspection);}catch(Exception ignored){request.session.inspection.sealed=true;}core.notifyAll();return;}}
++            try{main(request,task);}catch(Exception error){synchronized(core){request.sealed=true;request.revoked=true;core.notifyAll();}}
++        }
++        private void host(OwnedPinOwnerRequest request) throws Exception {
++            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
++            for(;;){boolean[] valid={false},lost={false};main(request,()->{lost[0]=request.activity.isFinishing() || request.activity.isDestroyed()
++                    || request.activity.getWindow().getDecorView().getWindowToken()!=request.windowToken;
++                valid[0]=!lost[0] && request.activity.hasWindowFocus();});
++                synchronized(core){while(request.mainCalls!=0)core.wait();live(request);
++                    if(request.mainError!=null || lost[0])throw new PinKnownRefusal();if(valid[0])return;
++                    // Wait for the OWNED system credential UI to return focus;
++                    // never renew the original deadline or accept background.
++                    if(!request.credentialReturned)throw new PinKnownRefusal();core.wait(50);}}
++        }
++        private static String label(OwnedPinOwnerRequest request,int id) {
++            android.content.res.Configuration configuration=new android.content.res.Configuration(request.activity.getResources().getConfiguration());
++            configuration.setLocale(new java.util.Locale(request.locale));return request.activity.createConfigurationContext(configuration).getString(id);
++        }
++        private void terminal(OwnedPinOwnerRequest request,android.hardware.biometrics.BiometricPrompt.AuthenticationResult result,Exception error) {
++            synchronized(core){if(!request.promptOutstanding){request.sealed=true;request.revoked=true;core.notifyAll();return;}
++                request.promptOutstanding=false;request.promptError=error;
++                request.credentialReturned=result!=null && result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL
++                    && result.getCryptoObject()==request.originalCrypto && result.getCryptoObject().getSignature()==request.originalSignature;
++                if(error!=null || !request.credentialReturned)request.revoked=true;core.notifyAll();}
++        }
++        private void present(OwnedPinOwnerRequest request) throws Exception {
++            main(request,()->{try{
++                live(request);require(request.activity.getWindow().getDecorView().getWindowToken()==request.windowToken
++                    && request.activity.hasWindowFocus() && !request.activity.isFinishing() && !request.activity.isDestroyed());
++                request.activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);observerRegistered=true;
++                android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
++                request.activity.registerReceiver(screenOff,filter);screenRegistered=true;
++                require(deadlineHandler.postDelayed(deadlineCheck,50));
++                android.hardware.biometrics.BiometricPrompt prompt=new android.hardware.biometrics.BiometricPrompt.Builder(request.activity)
++                    .setTitle(label(request,request.session.inspection.action==PinLifecycleAction.enroll
++                        ?R.string.native_owner_enroll_title:R.string.native_owner_recover_title))
++                    .setSubtitle(label(request,R.string.native_owner_device_credential_reason))
++                    .setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build();
++                synchronized(core){live(request);request.promptOutstanding=true;}
++                prompt.authenticate(request.originalCrypto,request.cancellation,task->callback(request,task),new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
++                    @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(request,result,null);}
++                    @Override public void onAuthenticationError(int error,CharSequence message){terminal(request,null,new PinKnownRefusal());}
++                });
++            }catch(Exception error){synchronized(core){request.promptError=error;request.revoked=true;
++                if(request.promptOutstanding)request.sealed=true;core.notifyAll();}cancel(request);}});
++        }
++        private boolean observerRegistered,screenRegistered;
++        private final android.os.Handler deadlineHandler=new android.os.Handler(android.os.Looper.getMainLooper());
++        private final Runnable deadlineCheck=new Runnable(){public void run(){OwnedPinOwnerRequest r=original;
++            if(r==null)return;event(r,()->{if(SystemClock.elapsedRealtime()>=r.session.deadlineUptimeMs)cancel(r);
++                synchronized(core){if(!r.detached && !r.retired && !deadlineHandler.postDelayed(this,50)){r.sealed=true;r.revoked=true;}}});}};
++        private void event(OwnedPinOwnerRequest request,Runnable task) {
++            synchronized(core){if(request!=original || request.retired || request.detached)return;
++                try{core.own(request.session.inspection);}catch(Exception error){request.sealed=true;request.revoked=true;return;}
++                request.eventCalls++;core.worker(request.session.inspection);}
++            try{task.run();}finally{synchronized(core){request.eventCalls--;core.settleWorker(request.session.inspection);core.notifyAll();}}
++        }
++        private final android.content.BroadcastReceiver screenOff=new android.content.BroadcastReceiver(){
++            @Override public void onReceive(Context context,android.content.Intent intent){OwnedPinOwnerRequest r=original;if(r!=null)event(r,()->cancel(r));}
++        };
++        private final android.app.Application.ActivityLifecycleCallbacks lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
++            public void onActivityCreated(android.app.Activity a,android.os.Bundle b){} public void onActivityStarted(android.app.Activity a){}
++            public void onActivityResumed(android.app.Activity a){} public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}
++            public void onActivityPaused(android.app.Activity a){lifecycleLoss(a);} public void onActivityStopped(android.app.Activity a){lifecycleLoss(a);}
++            public void onActivityDestroyed(android.app.Activity a){if(original!=null && a==original.activity)event(original,()->cancel(original));}
++        };
++        private void lifecycleLoss(android.app.Activity activity){OwnedPinOwnerRequest r=original;
++            // Strict fail-closed: even a system credential implementation which
++            // pauses its presenter is unsupported until a genuine original-host
++            // transition authority is supplied. Home/background never unlatches.
++            if(r!=null && activity==r.activity)event(r,()->cancel(r));}
++        private void cancel(OwnedPinOwnerRequest request) {
++            android.os.CancellationSignal signal; synchronized(core){if(request==null || request.owner!=this || original!=request)return;
++                request.revoked=true;signal=request.cancellation;if(request.finished && request.consumeCalls==0)request.wipe();
++                if(request.retired){core.notifyAll();return;}
++                if(request.cancelIssued){core.notifyAll();return;}request.cancelIssued=true;
++                request.cancelCalls++;}
++            Thread cancel=new Thread(()->{try{if(signal!=null)signal.cancel();core.cancel(request.session.inspection);}
++                catch(Exception error){synchronized(core){request.sealed=true;}}
++                finally{synchronized(core){request.cancelCalls--;core.notifyAll();}}},"planet-child-device-owner-cancel");
++            try{cancel.start();}catch(RuntimeException error){synchronized(core){request.cancelCalls--;request.sealed=true;core.notifyAll();}}
++        }
++        private void waitPrompt(OwnedPinOwnerRequest request) throws Exception {
++            for(;;){boolean expire=false;synchronized(core){if(!request.promptOutstanding && request.mainCalls==0)break;
++                if(SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs && !request.revoked)expire=true;
++                if(!expire)core.wait(50);}
++                if(expire)cancel(request);}
++            synchronized(core){if(request.promptError!=null)throw request.promptError;require(request.credentialReturned);}
++        }
++        private void watch(OwnedPinOwnerRequest request) {
++            Thread watcher=new Thread(()->{try{for(;;){boolean expired;synchronized(core){if(request.stopWatch)return;
++                    expired=!request.revoked && SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs;
++                    if(!expired){core.wait(50);continue;}}cancel(request);}}
++                catch(InterruptedException error){synchronized(core){request.sealed=true;request.revoked=true;core.notifyAll();}cancel(request);Thread.currentThread().interrupt();}
++            },"planet-child-device-owner-deadline");
++            synchronized(core){request.watcher=watcher;}watcher.start();
++        }
++        private void verifySignature(OwnedPinOwnerRequest request,byte[] signature) throws Exception {
++            require(signature!=null && signature.length>=8 && signature.length<=80 && request.publicKey!=null);
++            byte[] actual=request.publicKey.getEncoded();try{require(MessageDigest.isEqual(actual,request.keyEncoding));}finally{Arrays.fill(actual,(byte)0);}
++            java.security.Signature verify=java.security.Signature.getInstance("SHA256withECDSA");verify.initVerify(request.publicKey);
++            verify.update(request.payload);require(verify.verify(signature));
++        }
++        private void joinAuth(OwnedPinOwnerRequest request) throws Exception {
++            Thread watcher;synchronized(core){request.stopWatch=true;watcher=request.watcher;core.notifyAll();}
++            boolean interrupted=false;
++            if(watcher!=null)for(;;)try{watcher.join();break;}catch(InterruptedException error){interrupted=true;
++                synchronized(core){request.revoked=true;request.sealed=true;}cancel(request);}
++            synchronized(core){while(request.mainCalls!=0 || request.cancelCalls!=0 || request.promptOutstanding || request.eventCalls!=0)
++                try{core.wait();}catch(InterruptedException error){interrupted=true;request.revoked=true;request.sealed=true;}
++                request.cleanupFenced=true;if(interrupted)Thread.currentThread().interrupt();if(request.mainError!=null)throw request.mainError;}
++        }
++        /** Main-loop removal is an actual callback fence. While the caller holds
++         * the vault mutation lock this MUST NOT wait for authority.cancel IO;
++         * its independently counted worker remains until that IO actually returns. */
++        private void detach(OwnedPinOwnerRequest request) throws Exception {
++            boolean interrupted=false;synchronized(core){request.cleanupCalls++;}
++            try{main(request,()->{deadlineHandler.removeCallbacks(deadlineCheck);
++                if(screenRegistered){request.activity.unregisterReceiver(screenOff);screenRegistered=false;}
++                if(observerRegistered){request.activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);observerRegistered=false;}
++                synchronized(core){request.detached=true;}});
++                synchronized(core){while(request.mainCalls!=0 || request.eventCalls!=0)
++                    try{core.wait();}catch(InterruptedException error){interrupted=true;request.revoked=true;request.sealed=true;}
++                    if(request.mainError!=null)throw request.mainError;}
++                if(interrupted)throw new InterruptedException("owner cleanup interrupted after actual callback join");
++            }finally{synchronized(core){request.cleanupCalls--;core.notifyAll();}if(interrupted)Thread.currentThread().interrupt();}
++        }
++        private void run(OwnedPinOwnerRequest request,PinOwnerRecipient recipient) {
++            byte[] signature=null;boolean delivered=false;
++            try{watch(request);current(request);key(request);current(request);present(request);waitPrompt(request);current(request);
++                request.originalSignature.update(request.payload);signature=request.originalSignature.sign();current(request);verifySignature(request,signature);current(request);
++                synchronized(core){live(request);PinNativeReply backing=core.reply(request.session,new byte[0],request.session.checksum,PinSessionPhase.begun);
++                    request.permission=new PinOwnerPermission(this,request,signature,backing);request.deliveryEntered=true;}
++                recipient.completed(request.permission);current(request);delivered=true;
++            }catch(Throwable error){boolean failureDelivery;synchronized(core){request.revoked=true;
++                    if(request.deliveryEntered || !(error instanceof PinKnownRefusal))request.sealed=true;
++                    if(request.permission!=null)request.permission.wipe();failureDelivery=!request.deliveryEntered;request.deliveryEntered=true;}
++                cancel(request);if(failureDelivery)try{recipient.completed(null);}catch(Throwable ignored){synchronized(core){request.sealed=true;}}}
++            finally{if(signature!=null)Arrays.fill(signature,(byte)0);
++                try{joinAuth(request);}catch(Exception error){synchronized(core){request.sealed=true;request.revoked=true;}}
++                synchronized(core){if(SystemClock.elapsedRealtime()>=request.session.deadlineUptimeMs)request.revoked=true;
++                    request.deliveryCompleted=delivered&&!request.revoked&&!request.sealed;
++                    if(request.sealed)try{core.sealUnknown(request.session.inspection);}catch(Exception ignored){request.session.inspection.sealed=true;}
++                    if(request.revoked || request.disposed)request.wipe();core.settleWorker(request.session.inspection);
++                    request.finished=true;core.notifyAll();}}
++        }
++        /** Called only by the existing original native mutation worker, usually
++         * under the same vault lock. One-use burn precedes external callbacks.
++         * No checkpoint write, retry promotion or cached control rollback occurs. */
++        private void consume(PinOwnerPermission permission,OwnedPinSession session,byte[] next,String checksum,long revision) throws Exception {
++            OwnedPinOwnerRequest request;byte[] signature; synchronized(core){require(permission!=null && permission.owner==this && original!=null
++                && permission==original.permission && permission.request==original && !permission.disposed && !permission.consumed
++                && permission.settled && permission.knownDelivery && permission.backing.settled);
++                request=original;require(request.finished && request.deliveryCompleted
++                    && request.session.inspection.phase==PinSessionPhase.committing && request.session.inspection.threads.containsKey(Thread.currentThread())
++                    && request.session.inspection.workers==request.session.inspection.threads.get(Thread.currentThread()));permission.consumed=true;
++                request.consumeCalls++;signature=permission.signature.clone();}
++            try{require(request.session==session && next!=null && next.length==request.next.length && MessageDigest.isEqual(next,request.next)
++                    && request.nextChecksum.equals(checksum) && revision==request.nextRevision);
++                host(request);live(request);core.current(session,session.expected,session.checksum,session.revision);
++                live(request);verifySignature(request,signature);live(request);
++                core.current(session,session.expected,session.checksum,session.revision);host(request);live(request);
++                detach(request);live(request);}
++            finally{Arrays.fill(signature,(byte)0);synchronized(core){request.consumeCalls--;request.wipe();
++                    if(request.detached && request.mainCalls==0 && request.eventCalls==0 && request.cancelCalls==0 && request.cleanupCalls==0)request.retired=true;core.notifyAll();}}
++        }
++        private void settle(PinOwnerPermission permission,PinReplyDelivery delivery) throws Exception {
++            synchronized(core){require(permission!=null && permission.owner==this && original!=null && permission==original.permission
++                && permission.request==original && !permission.settled && delivery!=null && original.finished
++                && original.mainCalls==0 && original.cancelCalls==0 && original.consumeCalls==0 && original.eventCalls==0 && original.cleanupCalls==0
++                && original.cleanupFenced && core.active==original.session.inspection
++                && original.session.inspection.workers==0 && (delivery==PinReplyDelivery.uncertain || original.deliveryCompleted));
++                core.settleReply(permission.backing,delivery);permission.settled=true;permission.knownDelivery=delivery==PinReplyDelivery.known;
++                if(delivery==PinReplyDelivery.uncertain){original.sealed=true;permission.wipe();original.wipe();}core.notifyAll();}
++        }
++        private void retire(OwnedPinOwnerRequest request) throws Exception {
++            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
++            synchronized(core){own(request);require(Thread.currentThread()!=request.worker && !request.session.inspection.threads.containsKey(Thread.currentThread()));}cancel(request);
++            synchronized(core){if(!request.started){request.finished=true;request.cleanupFenced=true;}
++                while(!request.finished || request.consumeCalls!=0 || request.permission!=null && !request.permission.settled)core.wait();
++                if(request.retired){request.disposed=true;request.wipe();return;}core.own(request.session.inspection);core.worker(request.session.inspection);}
++            boolean interrupted=false;Exception failure=null;
++            try{detach(request);}catch(Exception error){failure=error;interrupted=Thread.interrupted();synchronized(core){request.sealed=true;request.revoked=true;}}
++            synchronized(core){while(request.mainCalls!=0 || request.cancelCalls!=0 || request.eventCalls!=0 || request.cleanupCalls!=0)
++                try{core.wait();}catch(InterruptedException error){interrupted=true;request.sealed=true;request.revoked=true;if(failure==null)failure=error;}
++                if(failure==null && request.detached){request.retired=true;request.disposed=true;request.wipe();}
++                else{request.sealed=true;core.sealUnknown(request.session.inspection);}
++                core.settleWorker(request.session.inspection);core.notifyAll();}
++            if(interrupted)Thread.currentThread().interrupt();if(failure!=null)throw failure;
++        }
++    }
++    private static boolean nativeOwnerRetirementReady(OwnedPinInspection inspection) {
++        OwnedPinOwnerRequest owner=inspection.ownerAuthorization;return owner==null || owner.retired;
++    }
+     private static final class NativePinSessions {
+         private final PinSessionIO io; private final PinSessionAuthority authority;
+         private final PinRecoveryAuthority recovery; private final PinSessionPolicy policy;
+@@ -562,6 +920,11 @@ final class PlanetChildVault {
+         private synchronized void settleReply(PinNativeReply reply,PinReplyDelivery delivery) throws Exception {
+             require(reply!=null && reply.owner==this && delivery!=null);own(reply.inspection);
+             require(!reply.settled && reply.session==reply.inspection.session && reply.inspection.pendingReplies.contains(reply));
++            OwnedPinOwnerRequest owner=reply.inspection.ownerAuthorization;
++            if(owner!=null && owner.permission!=null && owner.permission.backing==reply)
++                require(owner.finished && owner.cleanupFenced && owner.mainCalls==0 && owner.cancelCalls==0 && owner.consumeCalls==0
++                    && owner.eventCalls==0 && owner.cleanupCalls==0
++                    && reply.inspection.workers==0 && (delivery==PinReplyDelivery.uncertain || owner.deliveryCompleted));
+             PinPrimitiveContext primitive=reply.inspection.primitiveContext;
+             if(primitive!=null&&primitive.material!=null&&primitive.material.backing==reply)
+                 require(primitive.workers==0&&reply.inspection.workers==0&&nativeInputRetirementReady(reply.inspection));
+@@ -576,7 +939,7 @@ final class PlanetChildVault {
+         private synchronized void sealUnknown(OwnedPinInspection inspection) throws Exception { own(inspection);inspection.sealed=true;inspection.phase=PinSessionPhase.sealed;wipeSealedLocked(inspection);notifyAll(); }
+         private PinNativeReply retire(OwnedPinInspection inspection) throws Exception {
+             synchronized(this){own(inspection);require(!inspection.retiring && !inspection.threads.containsKey(Thread.currentThread()));inspection.retiring=true;
+-                try{while(inspection.workers!=0 || inspection.transfers!=0 || !nativeInputRetirementReady(inspection))wait();inspection.retirementFenced=true;}
++                try{while(inspection.workers!=0 || inspection.transfers!=0 || !nativeInputRetirementReady(inspection) || !nativeOwnerRetirementReady(inspection))wait();inspection.retirementFenced=true;}
+                 catch(InterruptedException interrupted){inspection.sealed=true;inspection.phase=PinSessionPhase.sealed;wipeSealedLocked(inspection);Thread.currentThread().interrupt();throw new Unavailable();}
+             }
+             try{io.locked(transaction->{authority.retire(inspection);return null;});}
+diff --git a/apps/mobile/android/app/src/main/res/values-ru/strings.xml b/apps/mobile/android/app/src/main/res/values-ru/strings.xml
+index 66b0bee0..d1e9415c 100644
+--- a/apps/mobile/android/app/src/main/res/values-ru/strings.xml
++++ b/apps/mobile/android/app/src/main/res/values-ru/strings.xml
+@@ -27,4 +27,7 @@
+     <string name="native_pin_verify_expand_access_settings">Расширить доступ</string>
+     <string name="native_pin_verify_enable_licensed_pack">Включить набор материалов</string>
+     <string name="native_pin_verify_view_legal_commercial">Открыть правовую и коммерческую информацию</string>
++    <string name="native_owner_enroll_title">Подтвердите создание родительского PIN</string>
++    <string name="native_owner_recover_title">Подтвердите восстановление родительского PIN</string>
++    <string name="native_owner_device_credential_reason">Подтвердите действие кодом блокировки устройства.</string>
+ </resources>
+diff --git a/apps/mobile/android/app/src/main/res/values/strings.xml b/apps/mobile/android/app/src/main/res/values/strings.xml
+index ebc815ff..6dd27a51 100644
+--- a/apps/mobile/android/app/src/main/res/values/strings.xml
++++ b/apps/mobile/android/app/src/main/res/values/strings.xml
+@@ -29,4 +29,7 @@
+     <string name="native_pin_verify_expand_access_settings">Expand access</string>
+     <string name="native_pin_verify_enable_licensed_pack">Enable a content pack</string>
+     <string name="native_pin_verify_view_legal_commercial">View legal and commercial information</string>
++    <string name="native_owner_enroll_title">Confirm Parent PIN setup</string>
++    <string name="native_owner_recover_title">Confirm Parent PIN recovery</string>
++    <string name="native_owner_device_credential_reason">Use your device screen lock to confirm this action.</string>
+ </resources>
+diff --git a/apps/mobile/ios/App/App.xcodeproj/project.pbxproj b/apps/mobile/ios/App/App.xcodeproj/project.pbxproj
+index cc9a5b92..a80b5145 100644
+--- a/apps/mobile/ios/App/App.xcodeproj/project.pbxproj
++++ b/apps/mobile/ios/App/App.xcodeproj/project.pbxproj
+@@ -27,6 +27,7 @@
+         D4B120261003000000000050 /* PlanetChildDataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000051 /* PlanetChildDataTransport.swift */; };
+         D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */; };
+         D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */; };
++        B01A3235360B48736AF4A7E5 /* PlanetChildOwnerPermissionRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */; };
+ /* End PBXBuildFile section */
+ 
+ /* Begin PBXContainerItemProxy section */
+@@ -64,6 +65,7 @@
+         D4B120261003000000000051 /* PlanetChildDataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildDataTransport.swift; sourceTree = "<group>"; };
+         D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildDataTransportRuntimeTests.swift; sourceTree = "<group>"; };
+         D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildProtectedEnvelopeRuntimeTests.swift; sourceTree = "<group>"; };
++        C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildOwnerPermissionRuntimeTests.swift; sourceTree = "<group>"; };
+ /* End PBXFileReference section */
+ 
+ /* Begin PBXFrameworksBuildPhase section */
+@@ -81,7 +83,7 @@
+ /* Begin PBXGroup section */
+ 		D4B120261002000000000012 /* AppSecureStorageTests */ = {
+ 			isa = PBXGroup;
+-			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */, D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */,);
++			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */, D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */, C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */,);
+ 			path = AppSecureStorageTests;
+ 			sourceTree = "<group>";
+ 		};
+@@ -221,7 +223,7 @@
+ /* End PBXResourcesBuildPhase section */
+ 
+ /* Begin PBXSourcesBuildPhase section */
+-		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */, D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
++		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */, D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */, B01A3235360B48736AF4A7E5 /* PlanetChildOwnerPermissionRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+ 		504EC3001FED79650016851F /* Sources */ = {
+ 			isa = PBXSourcesBuildPhase;
+ 			buildActionMask = 2147483647;
+diff --git a/apps/mobile/ios/App/App/PlanetChildVault.swift b/apps/mobile/ios/App/App/PlanetChildVault.swift
+index e3e7a81f..97a28224 100644
+--- a/apps/mobile/ios/App/App/PlanetChildVault.swift
++++ b/apps/mobile/ios/App/App/PlanetChildVault.swift
+@@ -4,6 +4,7 @@ import CryptoKit
+ import Darwin
+ import CommonCrypto
+ import UIKit
++import LocalAuthentication
+ 
+ /** Native-only SPI. The sole factory below admits no implementation. Neither
+  * Keychain, a JS flag nor a mock constructor witness proves this guarantee.
+@@ -169,7 +170,7 @@ final class PlanetChildVault {
+             try p.field("blockedTopics"); try topics(p)
+             try p.field("soundEnabled"); _ = try p.bool()
+             try p.field("motion"); let motion = try p.asciiString(); try require(motion == "calm" || motion == "system")
+-            try p.field("narrationEnabled"); _ = try p.bool(); try p.token("}"); return id
++            try p.field("narrationEnabled"); _ = try p.bool(); if p.take(",\"localeLocked\":") { _ = try p.bool() }; try p.token("}"); return id
+         }
+         private static func ecmaSpace(_ value: UInt16) -> Bool {
+             return [9, 10, 11, 12, 13, 32, 160, 0x1680, 0x2028, 0x2029, 0x202f, 0x205f, 0x3000, 0xfeff].contains(value)
+@@ -577,7 +578,7 @@ fileprivate struct PinKnownRefusal: Error {}
+ fileprivate enum PinLockedResult<T> { case value(T), refusal }
+ fileprivate enum PinSessionPhase { case reserved, beginning, begun, committing, committed, denied, cancelled, closing, sealed, closed }
+ fileprivate enum PinReplyDelivery { case known, uncertain }
+-fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, primitive, closed }
++fileprivate enum PinNativeReplyKind { case unenrolled, enrolled, committed, primitive, ownerPermission, closed }
+ fileprivate protocol PinSessionTransaction: AnyObject {
+     func read() throws -> Data
+     func write(_ next: Data, boundary: () throws -> Void) throws
+@@ -628,6 +629,7 @@ fileprivate final class OwnedPinInspection {
+     var pendingReplies: [ObjectIdentifier:PinNativeReply] = [:], terminalReply: PinNativeReply?
+     var primitiveWorker: PinPrimitiveWork?, primitiveMaterial: PinPrimitiveMaterial?
+     var nativeInput: PinNativeInputSession?, nativeInputHandoff=false
++    var ownerAuthorization: PinNativeOwnerRequest?
+     init(owner: NativePinSessions, wireId: String, action: PlanetChildVault.PinLifecycleAction, timeoutMs: UInt64) {
+         self.owner=owner; self.wireId=wireId; self.action=action; self.timeoutMs=timeoutMs
+     }
+@@ -916,6 +918,11 @@ fileprivate final class NativePinSessions {
+                 && material.context.session === reply.session && material.context.inspection === reply.inspection)
+             material.settled=true; reply.inspection.primitiveMaterial=nil
+         }
++        if reply.kind == .ownerPermission {
++            guard let request=reply.inspection.ownerAuthorization else { throw PlanetChildVault.Failure.unavailable }
++            try Self.require(reply.inspection.workers==0 && request.owner.transferFence(request,reply:reply,delivery:delivery))
++            request.owner.transferSettled(request,delivery:delivery)
++        }
+         reply.settled=true; reply.close(); reply.inspection.pendingReplies.removeValue(forKey:ObjectIdentifier(reply)); reply.inspection.transfers-=1
+         if delivery == .uncertain || reply.kind != .closed && reply.inspection.cancelled {
+             reply.inspection.sealed=true; reply.inspection.phase = .sealed
+@@ -3314,3 +3321,651 @@ fileprivate final class PinVerificationPinViewController: UIViewController {
+     @objc private func cancelTap() { owner?.cancel() }
+ }
+ // App/scene/plugin registration and genuine private Gate settlement remain absent.
++
++/** Local OS-owner permission prerequisite only. No checkpoint, antirollback,
++ * trusted-time, initial seed, legal-guardian or App admission is minted here.
++ * Actual factories remain nil. The private host must retain original objects,
++ * settle the exact transfer, and invoke consume inside the existing commit lock. */
++fileprivate enum PinOwnerKeySource { case secureEnclave, synthetic }
++fileprivate final class PinOwnerKey {
++    let privateKey: SecKey, publicKey: SecKey, publicBytes: Data, source: PinOwnerKeySource
++    init(privateKey: SecKey, publicKey: SecKey, publicBytes: Data, source: PinOwnerKeySource) {
++        self.privateKey=privateKey; self.publicKey=publicKey; self.publicBytes=Data(Array(publicBytes)); self.source=source
++    }
++}
++fileprivate protocol PinOwnerKeys: AnyObject {
++    var source: PinOwnerKeySource { get }
++    func acquire(enroll: Bool, context: LAContext, prompt: String) throws -> PinOwnerKey
++    func current(_ original: PinOwnerKey) throws
++    func sign(_ original: PinOwnerKey, message: Data) throws -> Data
++}
++fileprivate final class ApplePinOwnerKeys: PinOwnerKeys {
++    let source: PinOwnerKeySource = .secureEnclave
++    private let tag=Data("ru.probpera.literaryplanet.child.pin.owner.passcode.v1".utf8)
++    private func access() throws -> SecAccessControl {
++        var error: Unmanaged<CFError>?
++        guard let control=SecAccessControlCreateWithFlags(nil,kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
++            [.privateKeyUsage,.devicePasscode],&error) else { throw PlanetChildVault.Failure.unavailable }
++        return control
++    }
++    private func load(context: LAContext?, prompt: String?) throws -> PinOwnerKey? {
++        var query: [CFString:Any]=[kSecClass:kSecClassKey,kSecAttrApplicationTag:tag,kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,
++            kSecAttrKeyClass:kSecAttrKeyClassPrivate,kSecReturnRef:true,kSecReturnAttributes:true,kSecMatchLimit:kSecMatchLimitOne]
++        if let context { query[kSecUseAuthenticationContext]=context }
++        if let prompt { query[kSecUseOperationPrompt]=prompt }
++        if context == nil { query[kSecUseAuthenticationUI]=kSecUseAuthenticationUIFail }
++        var result: CFTypeRef?
++        let status=SecItemCopyMatching(query as CFDictionary,&result)
++        if status == errSecItemNotFound { return nil }
++        guard status == errSecSuccess, let item=result as? [String:Any], let ref=item[kSecValueRef as String],
++            CFGetTypeID(ref as CFTypeRef)==SecKeyGetTypeID(), let acl=item[kSecAttrAccessControl as String],
++            CFGetTypeID(acl as CFTypeRef)==SecAccessControlGetTypeID(), CFEqual(acl as CFTypeRef,try access()),
++            (item[kSecAttrAccessible as String] as? String)==(kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly as String)
++        else { throw PlanetChildVault.Failure.unavailable }
++        let key=ref as! SecKey
++        guard let attributes=SecKeyCopyAttributes(key) as? [String:Any],
++            (attributes[kSecAttrTokenID as String] as? String)==(kSecAttrTokenIDSecureEnclave as String),
++            (attributes[kSecAttrKeyType as String] as? String)==(kSecAttrKeyTypeECSECPrimeRandom as String),
++            (attributes[kSecAttrKeySizeInBits as String] as? NSNumber)?.intValue==256,
++            let publicKey=SecKeyCopyPublicKey(key), SecKeyIsAlgorithmSupported(key,.sign,.ecdsaSignatureMessageX962SHA256),
++            SecKeyIsAlgorithmSupported(publicKey,.verify,.ecdsaSignatureMessageX962SHA256)
++        else { throw PlanetChildVault.Failure.unavailable }
++        var error: Unmanaged<CFError>?
++        guard let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data?, bytes.count==65 else {
++            throw PlanetChildVault.Failure.unavailable
++        }
++        return PinOwnerKey(privateKey:key,publicKey:publicKey,publicBytes:bytes,source:source)
++    }
++    func acquire(enroll: Bool, context: LAContext, prompt: String) throws -> PinOwnerKey {
++        if let existing=try load(context:context,prompt:prompt) { return existing }
++        // Recover never repairs a missing/invalidated key. Other lookup failures
++        // also deny; no delete/recreate, ambiguous-create retry or fallback.
++        guard enroll else { throw PinKnownRefusal() }
++        var error: Unmanaged<CFError>?
++        let attributes: [CFString:Any]=[kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256,
++            kSecAttrTokenID:kSecAttrTokenIDSecureEnclave,kSecPrivateKeyAttrs:[
++                kSecAttrIsPermanent:true,kSecAttrApplicationTag:tag,kSecAttrAccessControl:try access(),kSecAttrIsExtractable:false]]
++        guard let created=SecKeyCreateRandomKey(attributes as CFDictionary,&error), let createdPublic=SecKeyCopyPublicKey(created),
++            let createdBytes=SecKeyCopyExternalRepresentation(createdPublic,&error) as Data?,
++            let loaded=try load(context:context,prompt:prompt), loaded.publicBytes==createdBytes
++        else { throw PlanetChildVault.Failure.unavailable }
++        return loaded
++    }
++    func current(_ original: PinOwnerKey) throws {
++        guard original.source == source, let persisted=try load(context:nil,prompt:nil),
++            persisted.publicBytes==original.publicBytes else { throw PinKnownRefusal() }
++    }
++    func sign(_ original: PinOwnerKey, message: Data) throws -> Data {
++        try current(original); var error: Unmanaged<CFError>?
++        // The original fresh authentication context was attached to this exact
++        // key reference. Successful LA callbacks/availability never grant proof.
++        guard let signature=SecKeyCreateSignature(original.privateKey,.ecdsaSignatureMessageX962SHA256,message as CFData,&error) as Data?,
++            !signature.isEmpty, signature.count<=144 else { throw PinKnownRefusal() }
++        try current(original); return Data(Array(signature))
++    }
++}
++fileprivate final class PinOwnerOriginalHost {
++    private weak var host: UIViewController?, window: UIWindow?, scene: UIWindowScene?, root: UIViewController?
++    init(_ host: UIViewController) throws {
++        guard Thread.isMainThread, let window=host.viewIfLoaded?.window, let scene=window.windowScene,
++            let root=window.rootViewController, scene.activationState == .foregroundActive,
++            UIApplication.shared.applicationState == .active, !window.isHidden, !host.isBeingDismissed,
++            host.presentedViewController==nil else { throw PinKnownRefusal() }
++        self.host=host; self.window=window; self.scene=scene; self.root=root
++    }
++    func current() throws {
++        // Dedicated signing/consume workers join the actual main-thread check.
++        // Never block main waiting for signing/cancel/retire.
++        let check: () -> Bool = { [self] in
++            guard let host,let window,let scene,let root else { return false }
++            return host.viewIfLoaded?.window === window && window.windowScene === scene && window.rootViewController === root
++                && !window.isHidden && !host.isBeingDismissed && host.presentedViewController==nil
++                && scene.activationState == .foregroundActive && UIApplication.shared.applicationState == .active
++        }
++        let valid=Thread.isMainThread ? check():DispatchQueue.main.sync(execute:check)
++        guard valid else { throw PinKnownRefusal() }
++    }
++    func disconnected(_ note: Notification) -> Bool { (note.object as? UIWindowScene) === scene }
++}
++fileprivate final class PinNativeOwnerRequest {
++    let owner: NativePinOwnerPermissionProvider, session: OwnedPinSession, old: PinOwnedBytes, next: PinOwnedBytes
++    let nextChecksum: String, nextRevision: UInt64, locale: PinNativeInputLocale, host: PinOwnerOriginalHost?, nonce: Data
++    // All mutable fields are protected by owner.condition. Counts are actual
++    // unsettled invocations, not timeout or reconstructed callback receipts.
++    var started=false, cancelled=false, finished=false, cleanupFenced=false, retirementFenced=false, worker=0, watcher=0, cancelling=0, consuming=0
++    var context: LAContext?, workerThread: ObjectIdentifier?, consumeThread: ObjectIdentifier?, permission: PinNativeOwnerPermission?
++    var deliveryCompleted=false, deliverySettled=false, deliveryKnown=false, lastNs: UInt64?
++    var observers=[NSObjectProtocol](), events=0
++    init(owner: NativePinOwnerPermissionProvider, session: OwnedPinSession, expected: Data, next: Data, checksum: String, revision: UInt64,
++         locale: PinNativeInputLocale, host: PinOwnerOriginalHost?, nonce: Data) throws {
++        self.owner=owner; self.session=session; old=PinOwnedBytes(expected); self.next=PinOwnedBytes(next)
++        nextChecksum=checksum; nextRevision=revision; self.locale=locale; self.host=host; self.nonce=Data(Array(nonce))
++    }
++    func close() { old.close(); next.close(); permission?.close() }
++    deinit { close() }
++}
++fileprivate final class PinNativeOwnerPermission {
++    let owner: NativePinOwnerPermissionProvider, request: PinNativeOwnerRequest, key: PinOwnerKey, reply: PinNativeReply
++    let message: PinOwnedBytes, signature: PinOwnedBytes
++    var consumed=false
++    init(owner: NativePinOwnerPermissionProvider,request: PinNativeOwnerRequest,key: PinOwnerKey,reply: PinNativeReply,message: Data,signature: Data) {
++        self.owner=owner; self.request=request; self.key=key; self.reply=reply; self.message=PinOwnedBytes(message); self.signature=PinOwnedBytes(signature)
++    }
++    func close() { message.close(); signature.close() }
++    deinit { close() }
++}
++fileprivate extension NativePinSessions {
++    func reserveOwnerRequest(_ request: PinNativeOwnerRequest) throws {
++        condition.lock(); defer { condition.unlock() }; let session=request.session,inspection=session.inspection
++        try liveLocked(inspection)
++        try Self.require(session.owner === self && inspection.session === session && !session.disposed && !inspection.retiring
++            && inspection.phase == .begun && inspection.workers==0 && inspection.transfers==0 && inspection.nativeInput==nil
++            && inspection.primitiveWorker==nil && inspection.primitiveMaterial==nil && inspection.ownerAuthorization==nil)
++        inspection.ownerAuthorization=request
++    }
++    func ownerPermissionReply(_ request: PinNativeOwnerRequest,work: PinPrimitiveWork) throws -> PinNativeReply {
++        condition.lock(); defer { condition.unlock() }; let inspection=request.session.inspection
++        try liveLocked(inspection)
++        try Self.require(inspection.ownerAuthorization === request && work.owner === self && work.session === request.session
++            && inspection.primitiveWorker === work && !work.finished && !inspection.retiring && inspection.transfers==0)
++        let reply=PinNativeReply(owner:self,inspection:inspection,session:request.session,kind:.ownerPermission,bytes:nil,checksum:request.session.checksum)
++        inspection.pendingReplies[ObjectIdentifier(reply)]=reply; inspection.transfers+=1; return reply
++    }
++    func ownerMutationFence(_ request: PinNativeOwnerRequest,next: Data,checksum: String,revision: UInt64) throws {
++        let session=request.session,inspection=session.inspection
++        condition.lock()
++        let thread=ObjectIdentifier(Thread.current)
++        let valid=inspection.ownerAuthorization === request && inspection.phase == .committing && inspection.workers==1
++            && inspection.threads[thread]==1 && inspection.transfers==0 && inspection.primitiveWorker==nil
++        condition.unlock(); try Self.require(valid)
++        var old=try request.old.copy(), retainedNext=try request.next.copy()
++        defer { old.resetBytes(in:0..<old.count); retainedNext.resetBytes(in:0..<retainedNext.count) }
++        try Self.require(next==retainedNext && checksum==request.nextChecksum && revision==request.nextRevision)
++        try mutationFence(session,old,next,checksum,revision)
++        // Caller already holds the original durable IO/publication lock and
++        // exact-read old record; reacquiring nonrecursive IO here would deadlock.
++        _=try current(session,old,session.checksum,session.revision)
++        try mutationFence(session,old,next,checksum,revision)
++    }
++    func ownerFinalStateFence(_ request: PinNativeOwnerRequest) throws {
++        condition.lock();defer { condition.unlock() };let session=request.session,inspection=session.inspection
++        try liveLocked(inspection)
++        try Self.require(inspection.ownerAuthorization === request && inspection.session === session && session.owner === self
++            && !session.disposed && !inspection.retiring && inspection.phase == .committing && inspection.workers==1
++            && inspection.threads[ObjectIdentifier(Thread.current)]==1 && inspection.transfers==0 && inspection.primitiveWorker==nil)
++    }
++}
++fileprivate final class NativePinOwnerPermissionProvider: PinRecoveryAuthority {
++    fileprivate let condition=NSCondition()
++    private let core: NativePinSessions, keys: PinOwnerKeys, clock: PinPrimitiveClock
++    private let synthetic: Bool
++    private var active: PinNativeOwnerRequest?
++    init(core: NativePinSessions) {
++        self.core=core; keys=ApplePinOwnerKeys(); clock=ApplePinPrimitiveClock(); synthetic=false
++    }
++    #if DEBUG
++    fileprivate init(syntheticCore core: NativePinSessions,keys: PinOwnerKeys,clock: PinPrimitiveClock) throws {
++        guard keys.source == .synthetic else { throw PlanetChildVault.Failure.unavailable }
++        self.core=core; self.keys=keys; self.clock=clock; synthetic=true
++    }
++    #endif
++    private func copy(_ request: PinNativeOwnerRequest) -> (String,String) {
++        let ru=request.locale == .ru
++        let title=request.session.inspection.action == .enroll
++            ? (ru ? "Подтвердите создание родительского PIN":"Confirm Parent PIN setup")
++            : (ru ? "Подтвердите восстановление родительского PIN":"Confirm Parent PIN recovery")
++        return (title,ru ? "Подтвердите действие кодом блокировки устройства.":"Use your device screen lock to confirm this action.")
++    }
++    func request(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,host: UIViewController,locale: PinNativeInputLocale) throws -> PinNativeOwnerRequest {
++        guard !synthetic else { throw PlanetChildVault.Failure.unavailable }
++        return try makeRequest(session,next:next,checksum:checksum,revision:revision,host:PinOwnerOriginalHost(host),locale:locale)
++    }
++    private func makeRequest(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,host: PinOwnerOriginalHost?,locale: PinNativeInputLocale) throws -> PinNativeOwnerRequest {
++        guard session.owner === core, session.inspection.action == .enroll || session.inspection.action == .recover,
++            !next.isEmpty, next.count<=PlanetChildVault.maxBytes, NativePinSessions.hash(checksum),
++            session.revision<9007199254740991,revision==session.revision+1 else { throw PinKnownRefusal() }
++        var ownedNext=Data(Array(next)),old=try session.expected.copy(); defer { ownedNext.resetBytes(in:0..<ownedNext.count);old.resetBytes(in:0..<old.count) }
++        guard Self.digest(ownedNext)==checksum else { throw PinKnownRefusal() }
++        let before=try PlanetChildVault.ProtectedEnvelope.decode(old,policyVersion:session.policy.version,policyChecksum:session.policy.checksum,maxIterations:session.policy.maximumIterations)
++        let after=try PlanetChildVault.ProtectedEnvelope.decode(ownedNext,policyVersion:session.policy.version,policyChecksum:session.policy.checksum,maxIterations:session.policy.maximumIterations)
++        defer { before.close();after.close() }
++        try PlanetChildVault.ProtectedEnvelope.validateTransition(before,after,action:session.inspection.action,sampledLogicalMs:session.capturedLogicalMs)
++        try NativePinSessions.require((try after.pinSessionMetadata()).iterations==session.policy.iterations)
++        var nonce=Data(count:32)
++        let status=nonce.withUnsafeMutableBytes { SecRandomCopyBytes(kSecRandomDefault,$0.count,$0.baseAddress!) }
++        guard status==errSecSuccess else { throw PlanetChildVault.Failure.unavailable }
++        let request=try PinNativeOwnerRequest(owner:self,session:session,expected:old,next:ownedNext,checksum:checksum,revision:revision,locale:locale,host:host,nonce:nonce)
++        condition.lock(); let free=active==nil; if free { active=request };condition.unlock()
++        guard free else { request.close();throw PinKnownRefusal() }
++        do {
++            try core.reserveOwnerRequest(request)
++            if host != nil {
++                let center=NotificationCenter.default
++                for name in [UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
++                    let observer=center.addObserver(forName:name,object:nil,queue:.main) { [weak self,weak request] note in
++                        guard let self,let request else { return }
++                        self.hostEvent(request,note:note)
++                    }
++                    condition.lock();request.observers.append(observer);condition.unlock()
++                }
++            }
++            return request
++        }
++        catch { condition.lock();if active === request { active=nil };condition.unlock();request.close();throw error }
++    }
++    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
++    private func hostEvent(_ request: PinNativeOwnerRequest,note: Notification) {
++        condition.lock();let admitted=active === request && !request.retirementFenced
++        if admitted { request.events+=1 };condition.unlock()
++        guard admitted else { return }
++        defer { condition.lock();request.events-=1;condition.broadcast();condition.unlock() }
++        if note.name == UIApplication.didEnterBackgroundNotification || request.host?.disconnected(note)==true { cancel(request) }
++    }
++    private func local(_ request: PinNativeOwnerRequest) throws {
++        let ns=try clock.nanoseconds()
++        condition.lock();defer { condition.unlock() }
++        guard active === request,!request.cancelled,!request.finished,ns>0,
++            ns/1000000>=request.session.capturedUptimeMs,ns/1000000<request.session.deadlineUptimeMs,
++            request.lastNs==nil || ns>=request.lastNs! else { throw PinKnownRefusal() }
++        request.lastNs=ns
++    }
++    private func fence(_ request: PinNativeOwnerRequest,_ work: PinPrimitiveWork) throws {
++        try local(request);try request.host?.current();_=try core.currentPrimitiveWork(work)
++        var old=try request.old.copy(),next=try request.next.copy(),expected=try request.session.expected.copy()
++        defer { old.resetBytes(in:0..<old.count);next.resetBytes(in:0..<next.count);expected.resetBytes(in:0..<expected.count) }
++        guard old==expected,Self.digest(old)==request.session.checksum,Self.digest(next)==request.nextChecksum else { throw PinKnownRefusal() }
++        try local(request)
++    }
++    private func message(_ request: PinNativeOwnerRequest,key: PinOwnerKey) throws -> Data {
++        let s=request.session
++        let fields=["literary-planet/local-os-owner-pin/v1",s.inspection.wireId,s.inspection.action.rawValue,
++            s.checksum,String(s.revision),request.nextChecksum,String(request.nextRevision),s.policy.version,s.policy.checksum,
++            String(s.policy.iterations),s.epoch,String(s.hostGeneration),s.bootId,String(s.capturedUptimeMs),String(s.capturedLogicalMs),
++            String(s.clockUptimeMs),String(s.clockLogicalMs),String(s.deadlineUptimeMs),request.locale == .ru ? "ru":"en",
++            request.nonce.map { String(format:"%02x",$0) }.joined(),Self.digest(key.publicBytes),synthetic ? "synthetic":"secure-enclave"]
++        // Length-prefix exact immutable fields, with an explicit local domain.
++        // No full record, PIN, cloud, action reinterpretation or new deadline.
++        let bytes=Data(fields.map { "\($0.utf8.count):\($0)" }.joined().utf8)
++        guard bytes.count<=4096 else { throw PlanetChildVault.Failure.unavailable };return bytes
++    }
++    private func verified(_ permission: PinNativeOwnerPermission) throws {
++        var bytes=try permission.message.copy(),signature=try permission.signature.copy()
++        defer { bytes.resetBytes(in:0..<bytes.count);signature.resetBytes(in:0..<signature.count) }
++        guard bytes == (try message(permission.request,key:permission.key)),permission.key.source==keys.source else { throw PinKnownRefusal() }
++        var error: Unmanaged<CFError>?
++        guard SecKeyVerifySignature(permission.key.publicKey,.ecdsaSignatureMessageX962SHA256,bytes as CFData,signature as CFData,&error) else { throw PinKnownRefusal() }
++    }
++    func authorize(_ request: PinNativeOwnerRequest,recipient: @escaping (Result<PinNativeOwnerPermission,Error>) throws -> Void) throws {
++        condition.lock()
++        guard request.owner === self,active === request,!request.started,!request.cancelled else { condition.unlock();throw PinKnownRefusal() }
++        request.started=true;request.worker=1;condition.unlock()
++        Thread { [self] in run(request,recipient:recipient) }.start()
++    }
++    private func watch(_ request: PinNativeOwnerRequest) {
++        condition.lock();request.watcher+=1;condition.unlock()
++        Thread { [self] in
++            defer { condition.lock();request.watcher-=1;condition.broadcast();condition.unlock() }
++            while true {
++                condition.lock()
++                let stop=request.finished || request.cancelled || request.cleanupFenced
++                if !stop { _=condition.wait(until:Date(timeIntervalSinceNow:0.05)) }
++                condition.unlock();if stop { return }
++                do { try local(request) } catch { cancel(request);return }
++            }
++        }.start()
++    }
++    private func run(_ request: PinNativeOwnerRequest,recipient: (Result<PinNativeOwnerPermission,Error>) throws -> Void) {
++        condition.lock();request.workerThread=ObjectIdentifier(Thread.current);condition.unlock()
++        var work: PinPrimitiveWork?,permission: PinNativeOwnerPermission?,failure: Error?,recipientCalled=false,successEntered=false
++        do {
++            let counted=try core.startPrimitiveWork(request.session);work=counted;try fence(request,counted)
++            let context=LAContext();context.touchIDAuthenticationAllowableReuseDuration=0
++            let text=copy(request),prompt=text.0+"\n"+text.1
++            condition.lock()
++            guard !request.cancelled else { condition.unlock();context.invalidate();throw PinKnownRefusal() }
++            request.context=context;condition.unlock();watch(request)
++            let key=try keys.acquire(enroll:request.session.inspection.action == .enroll,context:context,prompt:prompt)
++            try fence(request,counted);let bytes=try message(request,key:key)
++            let signature=try keys.sign(key,message:bytes);try fence(request,counted);try keys.current(key)
++            var signatureError: Unmanaged<CFError>?
++            guard SecKeyVerifySignature(key.publicKey,.ecdsaSignatureMessageX962SHA256,bytes as CFData,signature as CFData,&signatureError)
++            else { throw PinKnownRefusal() }
++            let reply=try core.ownerPermissionReply(request,work:counted)
++            let proof=PinNativeOwnerPermission(owner:self,request:request,key:key,reply:reply,message:bytes,signature:signature)
++            permission=proof;condition.lock();request.permission=proof;condition.unlock()
++            try verified(proof);try fence(request,counted)
++            recipientCalled=true;successEntered=true;try recipient(.success(proof));try fence(request,counted);try keys.current(key)
++        } catch { failure=error;if permission != nil && recipientCalled { try? core.sealUnknown(request.session.inspection) } }
++        if !recipientCalled {
++            recipientCalled=true
++            do { try recipient(.failure(failure ?? PinKnownRefusal())) }
++            catch { failure=error;try? core.sealUnknown(request.session.inspection) }
++        }
++        // Join context and deadline-watch cleanup before handoff. Background and
++        // original-scene observers remain live for the entire unused grant, so
++        // foreground return cannot resurrect an old owner permission.
++        condition.lock();request.cleanupFenced=true;let context=request.context;condition.broadcast();condition.unlock()
++        context?.invalidate()
++        condition.lock();while request.watcher != 0 || request.cancelling != 0 || request.events != 0 { condition.wait() };condition.unlock()
++        if failure == nil,let counted=work {
++            do { try request.host?.current();_=try core.currentPrimitiveWork(counted)
++                let ns=try clock.nanoseconds();condition.lock()
++                let valid=active === request && !request.cancelled && ns>0 && ns/1000000>=request.session.capturedUptimeMs
++                    && ns/1000000<request.session.deadlineUptimeMs && (request.lastNs==nil || ns>=request.lastNs!)
++                if valid { request.lastNs=ns };condition.unlock();guard valid else { throw PinKnownRefusal() }
++            } catch { failure=error }
++        }
++        if let counted=work,!core.finishPrimitiveWork(counted) { failure=PinKnownRefusal() }
++        condition.lock()
++        if failure != nil { request.cancelled=true;permission?.consumed=true;permission?.close() }
++        request.context=nil;request.worker=0;request.finished=true;condition.broadcast();condition.unlock()
++        if let permission,!successEntered {
++            // Never exposed to a success recipient: actual known non-delivery,
++            // after all native work has settled. This is not a fabricated ACK.
++            try? core.settleReply(permission.reply,delivery:.uncertain)
++        }
++        // A minted but uncertain delivery retains its original transfer until
++        // actual host settlement. No exception/timer frees that pending reply.
++    }
++    func cancel(_ request: PinNativeOwnerRequest) {
++        condition.lock()
++        guard request.owner === self,active === request,!request.cancelled else { condition.unlock();return }
++        request.cancelled=true;request.permission?.consumed=true;request.cancelling+=1;let context=request.context;condition.broadcast();condition.unlock()
++        Thread { [self] in
++            context?.invalidate();try? core.cancel(request.session.inspection)
++            condition.lock();request.cancelling-=1;condition.broadcast();condition.unlock()
++        }.start()
++    }
++    func settle(_ permission: PinNativeOwnerPermission,delivery: PinReplyDelivery) throws {
++        condition.lock();let request=permission.request
++        let exact=permission.owner === self && active === request && request.permission === permission && request.finished
++            && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.consuming==0 && request.cleanupFenced
++            && !request.deliverySettled
++        if exact && delivery == .known { request.deliveryCompleted=true };condition.unlock()
++        guard exact else { throw PinKnownRefusal() };try core.settleReply(permission.reply,delivery:delivery)
++    }
++    func transferFence(_ request: PinNativeOwnerRequest,reply: PinNativeReply,delivery: PinReplyDelivery) -> Bool {
++        condition.lock();defer { condition.unlock() }
++        return active === request && request.owner === self && request.permission?.reply === reply && request.finished && request.cleanupFenced
++            && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.consuming==0
++            && !request.deliverySettled && (delivery == .uncertain || request.deliveryCompleted)
++    }
++    func transferSettled(_ request: PinNativeOwnerRequest,delivery: PinReplyDelivery) {
++        condition.lock();defer { condition.unlock() };request.deliverySettled=true
++        request.deliveryKnown=delivery == .known && !request.cancelled
++        if !request.deliveryKnown { request.cancelled=true;request.permission?.consumed=true;request.permission?.close() };condition.broadcast()
++    }
++    func consume(_ permission: PinNativeOwnerPermission,session: OwnedPinSession,next: Data,checksum: String,revision: UInt64) throws {
++        guard !Thread.isMainThread else { throw PinKnownRefusal() }
++        condition.lock();let request=permission.request
++        let exact=permission.owner === self && request.owner === self && active === request && request.permission === permission
++            && request.session === session && !permission.consumed && request.finished && request.cleanupFenced && request.deliveryKnown
++            && request.deliverySettled && !request.cancelled && request.worker==0 && request.watcher==0 && request.cancelling==0 && request.events==0 && request.consuming==0
++        // Burn the original permission before any current/host/key/crypto call.
++        if permission.owner === self && request.permission === permission { permission.consumed=true }
++        if exact { request.consuming+=1;request.consumeThread=ObjectIdentifier(Thread.current) };condition.unlock()
++        guard exact else { throw PinKnownRefusal() }
++        defer { condition.lock();request.consuming-=1;request.consumeThread=nil;condition.broadcast();condition.unlock() }
++        guard !next.isEmpty,next.count<=PlanetChildVault.maxBytes,NativePinSessions.hash(checksum),revision==request.nextRevision else { throw PinKnownRefusal() }
++        var ownedNext=Data(Array(next));defer { ownedNext.resetBytes(in:0..<ownedNext.count) }
++        try core.ownerMutationFence(request,next:ownedNext,checksum:checksum,revision:revision)
++        try request.host?.current();try keys.current(permission.key);try verified(permission)
++        try core.ownerMutationFence(request,next:ownedNext,checksum:checksum,revision:revision)
++        let ns=try clock.nanoseconds();try core.ownerFinalStateFence(request);condition.lock();defer { condition.unlock() }
++        guard active === request,!request.cancelled,request.deliveryKnown,request.events==0,ns>0,ns/1000000>=session.capturedUptimeMs,
++            ns/1000000<session.deadlineUptimeMs,request.lastNs==nil || ns>=request.lastNs! else { throw PinKnownRefusal() }
++        request.lastNs=ns
++    }
++    func verify(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,permission: AnyObject) throws {
++        guard let original=permission as? PinNativeOwnerPermission else { throw PinKnownRefusal() }
++        try consume(original,session:session,next:next,checksum:checksum,revision:revision)
++    }
++    func retire(_ request: PinNativeOwnerRequest) throws {
++        guard !Thread.isMainThread else { throw PinKnownRefusal() }
++        condition.lock();let exact=request.owner === self && active === request && request.workerThread != ObjectIdentifier(Thread.current)
++            && request.consumeThread != ObjectIdentifier(Thread.current);condition.unlock()
++        guard exact else { throw PinKnownRefusal() }
++        condition.lock();request.retirementFenced=true;let observers=request.observers;request.observers.removeAll();condition.unlock()
++        cancel(request)
++        for observer in observers { NotificationCenter.default.removeObserver(observer) }
++        condition.lock()
++        while request.worker != 0 || request.watcher != 0 || request.cancelling != 0 || request.events != 0 || request.consuming != 0
++            || request.permission != nil && !request.deliverySettled { condition.wait() }
++        request.close();active=nil;condition.broadcast();condition.unlock()
++        // Core's original ownerAuthorization remains an identity tombstone for
++        // this inspection. Only its original host closes the whole core request.
++    }
++}
++
++#if DEBUG
++/** Explicitly synthetic DEBUG-only fixture. Software SecKey signatures exercise
++ * mechanics, never Secure Enclave/passcode/device or genuine authority acceptance.
++ * It exposes scalar observations only; no original session/permission/key escapes. */
++enum PlanetChildOwnerPermissionRuntimeScenario: String {
++    case enroll, recover, malformedDigest, unsupportedReplace, ownedNext, replayAuthorize, earlyTransfer, directCoreTransfer
++    case earlyConsume, expiryAfterSign, rollbackAfterSign, expiryAfterRecipient, cancellationDuringSign, missingRecoveryKey
++    case signatureMismatch, persistedKeyChanged, recipientThrows, uncertainDelivery, consumeReplay, expiryAtConsume
++    case changedStoredRecord, hostGenerationChanged, retireWaitsForActualSign, backgroundBeforeACK, backgroundAfterACK, foregroundCannotResurrect
++}
++struct PlanetChildOwnerPermissionRuntimeObservation {
++    var registrationDenied=false, completionDenied=false, committed=false, earlyDenied=false, replayDenied=false
++    var retireWaited=false, retired=false, signatureVerified=false, backgroundLatched=false, cleanupJoined=false
++    var recipientCalls=0, signCalls=0, acquireCalls=0, transferCount=0
++}
++fileprivate extension NativePinOwnerPermissionProvider {
++    func syntheticRequest(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64) throws -> PinNativeOwnerRequest {
++        guard synthetic,keys.source == .synthetic else { throw PlanetChildVault.Failure.unavailable }
++        return try makeRequest(session,next:next,checksum:checksum,revision:revision,host:nil,locale:.en)
++    }
++    func fixtureJoin(_ request: PinNativeOwnerRequest) throws {
++        condition.lock();defer { condition.unlock() };let bound=Date(timeIntervalSinceNow:5)
++        while !request.finished || request.worker != 0 || request.watcher != 0 || request.cancelling != 0 {
++            guard condition.wait(until:bound) else { throw PlanetChildVault.Failure.unavailable }
++        }
++    }
++    func fixtureBackground(_ request: PinNativeOwnerRequest,foregroundReturn: Bool) {
++        guard synthetic else { return }
++        hostEvent(request,note:Notification(name:UIApplication.didEnterBackgroundNotification))
++        if foregroundReturn { hostEvent(request,note:Notification(name:UIApplication.didBecomeActiveNotification)) }
++    }
++}
++fileprivate extension NativePinSessions {
++    func fixtureTransfers(_ inspection: OwnedPinInspection) -> Int { condition.lock();defer { condition.unlock() };return inspection.transfers }
++}
++enum PlanetChildOwnerPermissionRuntimeFixture {
++    private final class Clock: PinPrimitiveClock {
++        private let lock=NSLock();private var value: UInt64=110000000
++        func nanoseconds() throws -> UInt64 { lock.lock();defer { lock.unlock() };return value }
++        func set(_ value: UInt64) { lock.lock();self.value=value;lock.unlock() }
++    }
++    private final class IO: PinSessionIO,PinSessionTransaction {
++        private let lock=NSLock();var bytes: Data
++        init(_ bytes: Data) { self.bytes=Data(Array(bytes)) }
++        func locked<T>(_ task: (PinSessionTransaction) throws -> T) throws -> T { lock.lock();defer { lock.unlock() };return try task(self) }
++        func read() throws -> Data { Data(Array(bytes)) }
++        func write(_ next: Data,boundary: () throws -> Void) throws { try boundary();bytes=Data(Array(next));try boundary() }
++        func corrupt() { lock.lock();bytes=Data("changed stored record".utf8);lock.unlock() }
++        func close() { lock.lock();bytes.resetBytes(in:0..<bytes.count);lock.unlock() }
++    }
++    private final class Authority: PinSessionAuthority,PinRecoveryAuthority {
++        let clock: Clock;var generation: UInt64=1,provider: NativePinOwnerPermissionProvider?,permission: PinNativeOwnerPermission?
++        var consumedOnce=false,replayDenied=false,askReplay=false
++        init(_ clock: Clock) { self.clock=clock }
++        func point(_ checksum: String,_ revision: UInt64) throws -> PinNativeCoordinates {
++            let uptime=try clock.nanoseconds()/1000000
++            guard uptime>=100 else { throw PinKnownRefusal() }
++            return PinNativeCoordinates(owner:self,epoch:String(repeating:"b",count:64),bootId:"00000000-0000-4000-8000-000000000001",
++                checksum:checksum,revision:revision,hostGeneration:generation,uptimeMs:uptime,logicalMs:1000+uptime-100)
++        }
++        func capture(_ inspection: OwnedPinInspection,bytes: Data,checksum: String,revision: UInt64) throws -> PinNativeCoordinates { try point(checksum,revision) }
++        func current(_ session: OwnedPinSession,bytes: Data,checksum: String,revision: UInt64) throws -> PinNativeCoordinates { try point(checksum,revision) }
++        func authorizeMutation(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64) throws -> AnyObject {
++            if session.inspection.action == .enroll {
++                guard let provider,let permission else { throw PinKnownRefusal() }
++                try provider.consume(permission,session:session,next:next,checksum:checksum,revision:revision);consumedOnce=true
++                if askReplay { do { try provider.consume(permission,session:session,next:next,checksum:checksum,revision:revision) }
++                    catch { replayDenied=true };guard replayDenied else { throw PlanetChildVault.Failure.unavailable } }
++            }
++            return NSObject()
++        }
++        func advance(_ session: OwnedPinSession,resetPermission: AnyObject,recoveryPermission: AnyObject?,nextChecksum: String,nextRevision: UInt64) throws {}
++        func cancel(_ inspection: OwnedPinInspection) throws {}
++        func retire(_ inspection: OwnedPinInspection) throws {}
++        func verify(_ session: OwnedPinSession,next: Data,checksum: String,revision: UInt64,permission: AnyObject) throws {
++            guard let provider else { throw PinKnownRefusal() };try provider.verify(session,next:next,checksum:checksum,revision:revision,permission:permission);consumedOnce=true
++        }
++    }
++    private final class Keys: PinOwnerKeys {
++        let source: PinOwnerKeySource = .synthetic
++        let key: PinOwnerKey;var present=true,changed=false,badSignature=false,acquired=0,signed=0,onSign: (() -> Void)?
++        init() throws {
++            var error: Unmanaged<CFError>?
++            guard let privateKey=SecKeyCreateRandomKey([kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256] as CFDictionary,&error),
++                let publicKey=SecKeyCopyPublicKey(privateKey),let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data?
++            else { throw PlanetChildVault.Failure.unavailable }
++            key=PinOwnerKey(privateKey:privateKey,publicKey:publicKey,publicBytes:bytes,source:.synthetic)
++        }
++        func acquire(enroll: Bool,context: LAContext,prompt: String) throws -> PinOwnerKey {
++            acquired+=1;guard present || enroll else { throw PinKnownRefusal() };present=true;return key
++        }
++        func current(_ original: PinOwnerKey) throws { guard present,!changed,original === key else { throw PinKnownRefusal() } }
++        func sign(_ original: PinOwnerKey,message: Data) throws -> Data {
++            signed+=1;onSign?();var error: Unmanaged<CFError>?
++            if badSignature { return Data(repeating:0,count:72) }
++            guard let signature=SecKeyCreateSignature(original.privateKey,.ecdsaSignatureMessageX962SHA256,message as CFData,&error) as Data?
++            else { throw PlanetChildVault.Failure.unavailable };return signature
++        }
++    }
++    private static func digest(_ bytes: Data) -> String { SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined() }
++    private static func record(enrolled: Bool,next: Bool) -> Data {
++        let version="synthetic-codec-v1",policy=String(repeating:"a",count:64)
++        let registry=#"{"schemaVersion":1,"policyVersion":"\#(version)","activeProfileId":"synthetic-child","profiles":[{"id":"synthetic-child","label":"Synthetic Reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":["violence"],"soundEnabled":false,"motion":"calm","narrationEnabled":false}]}"#
++        let pin: String
++        if !enrolled && !next { pin="null" }
++        else {
++            let revision=next ? (enrolled ? 6:1):5,credential=String(repeating:next ? "e":"b",count:64),salt=String(repeating:next ? "f":"c",count:64)
++            pin=#"{"schemaVersion":1,"policyVersion":"\#(version)","revision":\#(revision),"credentialId":"\#(credential)","verifier":{"algorithm":"PBKDF2-HMAC-SHA256","iterations":600000,"saltHex":"\#(salt)","hashHex":"\#(String(repeating:"d",count:64))"},"attempts":{"count":\#(next ? 0:2),"blockedUntilMs":\#(next ? 0:1050),"lastObservedMs":\#(next ? 1010:1000),"pendingAttemptId":null}}"#
++        }
++        return Data(#"{"schemaVersion":1,"revision":\#(next ? 8:7),"mode":"adult","selectionRevision":3,"profileRevision":2,"policyChecksum":"\#(policy)","registryChecksum":"\#(digest(Data(registry.utf8)))","registry":\#(registry),"pin":\#(pin),"clock":{"schemaVersion":1,"bootId":"00000000-0000-4000-8000-000000000001","uptimeAnchorMs":100,"logicalAnchorMs":1000,"epochAnchor":null}}"#.utf8)
++    }
++    static func run(_ scenario: PlanetChildOwnerPermissionRuntimeScenario) throws -> PlanetChildOwnerPermissionRuntimeObservation {
++        var observed=PlanetChildOwnerPermissionRuntimeObservation()
++        let recover=scenario == .recover || scenario == .missingRecoveryKey
++        let action: PlanetChildVault.PinLifecycleAction=scenario == .unsupportedReplace ? .replace:(recover ? .recover:.enroll)
++        let clock=Clock(),old=record(enrolled:recover || action == .replace,next:false),next=record(enrolled:recover || action == .replace,next:true)
++        let io=IO(old),authority=Authority(clock),keys=try Keys()
++        let policy=try PinSessionPolicy(version:"synthetic-codec-v1",checksum:String(repeating:"a",count:64),maximumIterations:600000,iterations:600000)
++        let core=NativePinSessions(io:io,authority:authority,recovery:authority,policy:policy)
++        let inspection=try core.inspection(wireId:String(repeating:"c",count:64),action:action,timeoutMs:60000)
++        let opened=try core.begin(inspection);guard let session=opened.session else { throw PlanetChildVault.Failure.unavailable }
++        try core.settleReply(opened,delivery:.known)
++        let provider=try NativePinOwnerPermissionProvider(syntheticCore:core,keys:keys,clock:clock);authority.provider=provider
++        var originalRequest: PinNativeOwnerRequest?
++        func cleanup() throws {
++            let cleaned=DispatchSemaphore(value:0),cleanupLock=NSLock();var cleanupFailed=false
++            Thread {
++                do {
++                    if let originalRequest,scenario != .retireWaitsForActualSign { try provider.retire(originalRequest) }
++                    let terminal=try core.retire(inspection);try core.settleReply(terminal,delivery:.known)
++                } catch { cleanupLock.lock();cleanupFailed=true;cleanupLock.unlock() }
++                authority.provider=nil;authority.permission=nil;io.close();cleaned.signal()
++            }.start()
++            guard cleaned.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
++            cleanupLock.lock();let failed=cleanupFailed;cleanupLock.unlock()
++            guard !failed else { throw PlanetChildVault.Failure.unavailable };observed.cleanupJoined=true
++        }
++        var supplied=Data(Array(next));let pointer=UnsafeMutableRawPointer.allocate(byteCount:next.count,alignment:1)
++        defer { pointer.initializeMemory(as:UInt8.self,repeating:0,count:next.count);pointer.deallocate() }
++        next.copyBytes(to:pointer.assumingMemoryBound(to:UInt8.self),count:next.count)
++        if scenario == .ownedNext { supplied=Data(bytesNoCopy:pointer,count:next.count,deallocator:.none) }
++        let request: PinNativeOwnerRequest
++        do { request=try provider.syntheticRequest(session,next:supplied,checksum:scenario == .malformedDigest ? String(repeating:"0",count:64):digest(next),revision:8) }
++        catch { observed.registrationDenied=true;observed.acquireCalls=keys.acquired;observed.signCalls=keys.signed;try cleanup();return observed }
++        originalRequest=request
++        if scenario == .ownedNext { pointer.initializeMemory(as:UInt8.self,repeating:0,count:next.count) }
++        if scenario == .missingRecoveryKey { keys.present=false }
++        keys.badSignature=scenario == .signatureMismatch
++        let signingStarted=DispatchSemaphore(value:0),releaseSign=DispatchSemaphore(value:0),retireStarted=DispatchSemaphore(value:0),retireFinished=DispatchSemaphore(value:0)
++        let resultLock=NSLock();var proof: PinNativeOwnerPermission?,callbackFailure=false,callbackCalls=0,earlyDenied=false
++        keys.onSign={
++            if scenario == .expiryAfterSign { clock.set(session.deadlineUptimeMs*1000000) }
++            if scenario == .rollbackAfterSign { clock.set(109000000) }
++            if scenario == .hostGenerationChanged { authority.generation+=1 }
++            if scenario == .persistedKeyChanged { keys.changed=true }
++            if scenario == .cancellationDuringSign || scenario == .retireWaitsForActualSign {
++                signingStarted.signal();_=releaseSign.wait(timeout:.now()+5)
++            }
++        }
++        try provider.authorize(request) { result in
++            resultLock.lock();callbackCalls+=1;resultLock.unlock()
++            switch result {
++            case .failure: resultLock.lock();callbackFailure=true;resultLock.unlock()
++            case .success(let permission):
++                resultLock.lock();proof=permission;resultLock.unlock()
++                if scenario == .earlyTransfer || scenario == .directCoreTransfer {
++                    do { if scenario == .directCoreTransfer { try core.settleReply(permission.reply,delivery:.known) }
++                        else { try provider.settle(permission,delivery:.known) } }
++                    catch { resultLock.lock();earlyDenied=true;resultLock.unlock() }
++                }
++                if scenario == .earlyConsume {
++                    do { try provider.consume(permission,session:session,next:next,checksum:digest(next),revision:8) }
++                    catch { resultLock.lock();earlyDenied=true;resultLock.unlock() }
++                }
++                if scenario == .expiryAfterRecipient { clock.set(session.deadlineUptimeMs*1000000) }
++                if scenario == .recipientThrows { throw PinKnownRefusal() }
++            }
++        }
++        if scenario == .replayAuthorize {
++            do { try provider.authorize(request) { _ in } } catch { observed.replayDenied=true }
++        }
++        if scenario == .cancellationDuringSign || scenario == .retireWaitsForActualSign {
++            guard signingStarted.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
++            if scenario == .cancellationDuringSign { provider.cancel(request) }
++            else {
++                Thread {
++                    retireStarted.signal();do { try provider.retire(request) } catch {}
++                    retireFinished.signal()
++                }.start()
++                guard retireStarted.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
++                // Sign is genuinely still blocked. Refusal must not release its
++                // lane; observation is made outside the provider's callbacks.
++                observed.retireWaited=retireFinished.wait(timeout:.now()+0.05) == .timedOut
++            }
++            releaseSign.signal()
++        }
++        try provider.fixtureJoin(request)
++        resultLock.lock();let returnedProof=proof;observed.recipientCalls=callbackCalls;observed.earlyDenied=earlyDenied;observed.completionDenied=callbackFailure;resultLock.unlock()
++        provider.condition.lock();observed.completionDenied=observed.completionDenied || request.cancelled;provider.condition.unlock()
++        observed.signCalls=keys.signed;observed.acquireCalls=keys.acquired
++        if scenario == .retireWaitsForActualSign {
++            observed.retired=retireFinished.wait(timeout:.now()+5) == .success;observed.transferCount=core.fixtureTransfers(inspection);try cleanup();return observed
++        }
++        if let returnedProof {
++            if scenario == .backgroundBeforeACK { provider.fixtureBackground(request,foregroundReturn:false);try provider.fixtureJoin(request) }
++            try provider.settle(returnedProof,delivery:scenario == .uncertainDelivery ? .uncertain:.known)
++            observed.signatureVerified = !observed.completionDenied && scenario != .signatureMismatch
++            authority.permission=returnedProof;authority.askReplay=scenario == .consumeReplay
++            if scenario == .backgroundAfterACK || scenario == .foregroundCannotResurrect {
++                provider.fixtureBackground(request,foregroundReturn:scenario == .foregroundCannotResurrect);try provider.fixtureJoin(request)
++            }
++            provider.condition.lock();observed.backgroundLatched=request.cancelled;provider.condition.unlock()
++            if scenario == .expiryAtConsume { clock.set(session.deadlineUptimeMs*1000000) }
++            if scenario == .changedStoredRecord { io.corrupt() }
++            let committed=DispatchSemaphore(value:0);var didCommit=false
++            Thread {
++                defer { committed.signal() }
++                do {
++                    let reply=try core.commit(inspection,session:session,expected:old,next:next,expectedChecksum:digest(old),nextChecksum:digest(next),
++                        expectedRevision:7,nextRevision:8,nativeEpoch:session.epoch,hostGeneration:session.hostGeneration,bootId:session.bootId,
++                        deadlineUptimeMs:session.deadlineUptimeMs,recoveryPermission:recover ? returnedProof:nil)
++                    try core.settleReply(reply,delivery:.known);resultLock.lock();didCommit=true;resultLock.unlock()
++                } catch {}
++            }.start()
++            guard committed.wait(timeout:.now()+5) == .success else { throw PlanetChildVault.Failure.unavailable }
++            resultLock.lock();observed.committed=didCommit;resultLock.unlock();observed.replayDenied=observed.replayDenied || authority.replayDenied
++        }
++        observed.transferCount=core.fixtureTransfers(inspection)
++        try cleanup();return observed
++    }
++}
++#endif
+diff --git a/apps/mobile/ios/App/AppSecureStorageTests/PlanetChildOwnerPermissionRuntimeTests.swift b/apps/mobile/ios/App/AppSecureStorageTests/PlanetChildOwnerPermissionRuntimeTests.swift
+new file mode 100644
+index 00000000..f398c75d
+--- /dev/null
++++ b/apps/mobile/ios/App/AppSecureStorageTests/PlanetChildOwnerPermissionRuntimeTests.swift
+@@ -0,0 +1,102 @@
++import Foundation
++import XCTest
++@testable import App
++
++/** Authored synthetic runtime cases, NOT_COMPILED/NOT_RUN on Windows.
++ * DEBUG-only fixture uses actual software SecKey signatures and original core
++ * mechanics. It cannot mint Secure Enclave/passcode/device/guardian acceptance.
++ * All assertions occur outside native, recipient and SPI callbacks. */
++final class PlanetChildOwnerPermissionRuntimeTests: XCTestCase {
++    private func outcome(_ scenario: PlanetChildOwnerPermissionRuntimeScenario) throws -> PlanetChildOwnerPermissionRuntimeObservation {
++        let value=try PlanetChildOwnerPermissionRuntimeFixture.run(scenario)
++        XCTAssertTrue(value.cleanupJoined,"Actual synthetic workers/transfers/retirement must settle")
++        return value
++    }
++    private func signedControl(_ value: PlanetChildOwnerPermissionRuntimeObservation,file: StaticString=#filePath,line: UInt=#line) {
++        XCTAssertFalse(value.registrationDenied,file:file,line:line)
++        XCTAssertFalse(value.completionDenied,file:file,line:line)
++        XCTAssertTrue(value.committed,file:file,line:line)
++        XCTAssertEqual(value.recipientCalls,1,file:file,line:line)
++        XCTAssertEqual(value.signCalls,1,file:file,line:line)
++        XCTAssertEqual(value.acquireCalls,1,file:file,line:line)
++        XCTAssertEqual(value.transferCount,0,file:file,line:line)
++    }
++    private func refusedAfterRealSign(_ value: PlanetChildOwnerPermissionRuntimeObservation,file: StaticString=#filePath,line: UInt=#line) {
++        XCTAssertFalse(value.registrationDenied,file:file,line:line)
++        XCTAssertTrue(value.completionDenied,file:file,line:line)
++        XCTAssertFalse(value.committed,file:file,line:line)
++        XCTAssertEqual(value.recipientCalls,1,file:file,line:line)
++        XCTAssertEqual(value.signCalls,1,file:file,line:line)
++        XCTAssertEqual(value.acquireCalls,1,file:file,line:line)
++        XCTAssertEqual(value.transferCount,0,file:file,line:line)
++    }
++    func testEnrollmentOriginalFullRecordAndActualSignatureControl() throws { signedControl(try outcome(.enroll)) }
++    func testRecoveryOriginalFullRecordAndActualSignatureControl() throws { signedControl(try outcome(.recover)) }
++    func testMalformedDigestDeniedBeforeKeyAcquisitionOrSigning() throws {
++        let value=try outcome(.malformedDigest)
++        XCTAssertTrue(value.registrationDenied);XCTAssertFalse(value.committed);XCTAssertEqual(value.acquireCalls,0);XCTAssertEqual(value.signCalls,0)
++    }
++    func testReplaceActionCannotAcquireOwnerRecoveryPermission() throws {
++        let value=try outcome(.unsupportedReplace)
++        XCTAssertTrue(value.registrationDenied);XCTAssertEqual(value.acquireCalls,0);XCTAssertEqual(value.signCalls,0)
++    }
++    func testNextBytesOwnBytesNoCopyInputBeforeAnyCallback() throws { signedControl(try outcome(.ownedNext)) }
++    func testAuthorizeOriginalRequestExactlyOnce() throws {
++        let value=try outcome(.replayAuthorize);signedControl(value);XCTAssertTrue(value.replayDenied)
++    }
++    func testReceiverCannotSettleTransferWhileActualWorkerIsRunning() throws {
++        let value=try outcome(.earlyTransfer);signedControl(value);XCTAssertTrue(value.earlyDenied)
++    }
++    func testDirectCoreReplyCannotBypassOwnerTransferGuard() throws {
++        let value=try outcome(.directCoreTransfer);signedControl(value);XCTAssertTrue(value.earlyDenied)
++    }
++    func testConsumeBeforeOriginalCommitBurnsPermission() throws {
++        let value=try outcome(.earlyConsume)
++        XCTAssertTrue(value.earlyDenied);XCTAssertFalse(value.committed);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testExpiryAfterActualSignatureDeniesOriginalDeadline() throws { refusedAfterRealSign(try outcome(.expiryAfterSign)) }
++    func testContinuousClockRollbackAfterSignatureDenies() throws { refusedAfterRealSign(try outcome(.rollbackAfterSign)) }
++    func testRecipientCrossingExclusiveDeadlineCannotPublishPermission() throws { refusedAfterRealSign(try outcome(.expiryAfterRecipient)) }
++    func testCancelDuringActualSigningRetainsWorkerUntilReturn() throws { refusedAfterRealSign(try outcome(.cancellationDuringSign)) }
++    func testRecoveryMissingFixedKeyNeverCreatesOrSigns() throws {
++        let value=try outcome(.missingRecoveryKey)
++        XCTAssertFalse(value.registrationDenied);XCTAssertTrue(value.completionDenied);XCTAssertFalse(value.committed)
++        XCTAssertEqual(value.acquireCalls,1);XCTAssertEqual(value.signCalls,0);XCTAssertEqual(value.recipientCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testSuccessfulSignerCallbackWithInvalidSignatureNeverGrants() throws { refusedAfterRealSign(try outcome(.signatureMismatch)) }
++    func testPersistedKeyIdentityChangeAfterSignatureDenies() throws { refusedAfterRealSign(try outcome(.persistedKeyChanged)) }
++    func testThrownReceiverLeavesPermissionUnusableAndOriginalTransferSettles() throws { refusedAfterRealSign(try outcome(.recipientThrows)) }
++    func testUncertainOriginalDeliverySealsAndCannotConsume() throws {
++        let value=try outcome(.uncertainDelivery)
++        XCTAssertFalse(value.committed);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.recipientCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testPermissionIsBurnedBeforeReplayFromSameOriginalCommit() throws {
++        let value=try outcome(.consumeReplay);signedControl(value);XCTAssertTrue(value.replayDenied)
++    }
++    func testOriginalDeadlineCannotRenewAtConsume() throws {
++        let value=try outcome(.expiryAtConsume)
++        XCTAssertFalse(value.committed);XCTAssertFalse(value.completionDenied);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testWholeStoredRecordChangeAfterAuthorizationDeniesCommit() throws {
++        let value=try outcome(.changedStoredRecord)
++        XCTAssertFalse(value.committed);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.recipientCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testOriginalHostGenerationChangeAfterSignatureDenies() throws { refusedAfterRealSign(try outcome(.hostGenerationChanged)) }
++    func testRetirementDoesNotReleaseCapacityWhileActualSignIsBlocked() throws {
++        let value=try outcome(.retireWaitsForActualSign)
++        XCTAssertTrue(value.retireWaited);XCTAssertTrue(value.retired);XCTAssertTrue(value.completionDenied)
++        XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.recipientCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testBackgroundAfterSignatureBeforeACKPermanentlyRevokesOriginalGrant() throws {
++        let value=try outcome(.backgroundBeforeACK)
++        XCTAssertTrue(value.backgroundLatched);XCTAssertFalse(value.committed);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testBackgroundAfterKnownACKStillRevokesUnusedOriginalGrant() throws {
++        let value=try outcome(.backgroundAfterACK)
++        XCTAssertTrue(value.backgroundLatched);XCTAssertFalse(value.committed);XCTAssertEqual(value.recipientCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++    func testForegroundReturnAfterKnownACKCannotResurrectOriginalGrant() throws {
++        let value=try outcome(.foregroundCannotResurrect)
++        XCTAssertTrue(value.backgroundLatched);XCTAssertFalse(value.committed);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.transferCount,0)
++    }
++}
+diff --git a/src/child/childIndex.test.ts b/src/child/childIndex.test.ts
+index 3604ac58..28dad35d 100644
+--- a/src/child/childIndex.test.ts
++++ b/src/child/childIndex.test.ts
+@@ -535,4 +535,62 @@ describe("child scope generation, cancellation, bounded time and CAS races", ()
+     expect(f.index.getSnapshot()).toEqual({ phase: "disposed" }); expect(JSON.stringify(f.index.getSnapshot())).not.toContain("nickname");
+     expect(await f.index.visitSearch("", vi.fn())).toBe(false);
+   });
++
++  it("denies a locked profile's other locale at shared copying, direct compilation and package admission before any reader", async () => {
++    for (const locale of ["ru", "en"] as const) {
++      const f = fixture(locale), other = locale === "ru" ? "en" : "ru";
++      f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: other, localeLocked: true } };
++      expect(copyChildPackageChallenge(f.state.current, initialTime)).toBeNull();
++      expect(await f.compile()).toBeNull();
++      expect(f.digest.sha256).not.toHaveBeenCalled();
++      expect(await f.index.packagePort.verify(f.state.current, new AbortController().signal)).toMatchObject({ status: "unavailable" });
++      expect(f.source.load).not.toHaveBeenCalled();
++      expect(f.review.verify).not.toHaveBeenCalled();
++      for (const port of Object.values(f.ports)) {
++        expect(port.read).not.toHaveBeenCalled();
++        expect(port.compareAndSet).not.toHaveBeenCalled();
++      }
++      expect(f.index.getSnapshot()).toEqual({ phase: "sealed" });
++      f.index.dispose();
++    }
++  });
++
++  it("retires a previously approved unlocked locale before rejecting locked readmission or an old route/view", async () => {
++    const f = fixture("en"), visitor = vi.fn();
++    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false } };
++    const proof = await f.admit();
++    const oldRoute: ChildRouteChallenge = { ...f.state.current, scope: proof.scope, validUntilEpochMs: proof.validUntilEpochMs };
++    expect(await f.index.routePort.verify(oldRoute, new AbortController().signal)).toMatchObject({ status: "verified" });
++    const reads = Object.values(f.ports).map(port => port.read.mock.calls.length);
++    f.state.current = { ...f.state.current, profile: { ...f.state.current.profile, localeLocked: true } };
++    expect(await f.index.packagePort.verify(f.state.current, new AbortController().signal)).toMatchObject({ status: "unavailable" });
++    expect(f.source.load).toHaveBeenCalledTimes(1);
++    expect(f.index.getSnapshot()).toEqual({ phase: "sealed" });
++    expect(await f.index.routePort.verify(oldRoute, new AbortController().signal)).toMatchObject({ status: "unavailable" });
++    expect(await f.index.visitEntity(f.work, visitor)).toBe(false);
++    expect(await f.index.visitSearch("", visitor)).toBe(false);
++    expect(await f.index.visitHistory(visitor)).toBe(false);
++    expect(await f.index.visitCache(f.work, visitor)).toBe(false);
++    expect(await f.index.visitOffline(f.offline, visitor)).toBe(false);
++    expect(Object.values(f.ports).map(port => port.read.mock.calls.length)).toEqual(reads);
++    expect(visitor).not.toHaveBeenCalled();
++    f.index.dispose();
++  });
++
++  it("refuses a late source after lock mutation even if a synthetic host still reports current", async () => {
++    const f = fixture("en"), entered = deferred<void>(), late = deferred<unknown>();
++    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false } };
++    const index = createVerifiedChildIndex({ ...f.options, isCurrent: () => true });
++    f.source.load.mockImplementationOnce(() => { entered.resolve(); return late.promise; });
++    const pending = index.packagePort.verify(f.state.current, new AbortController().signal);
++    await entered.promise;
++    Object.assign(f.state.current.profile, { localeLocked: true });
++    late.resolve(f.bytes());
++    expect(await pending).toMatchObject({ status: "unavailable" });
++    expect(f.digest.sha256).not.toHaveBeenCalled();
++    expect(f.review.verify).not.toHaveBeenCalled();
++    expect(f.ports.search.compareAndSet).not.toHaveBeenCalled();
++    expect(index.getSnapshot()).toEqual({ phase: "sealed" });
++    index.dispose(); f.index.dispose();
++  });
+ });
+diff --git a/src/child/childPackage.ts b/src/child/childPackage.ts
+index 7a3987d2..5eba3b94 100644
+--- a/src/child/childPackage.ts
++++ b/src/child/childPackage.ts
+@@ -102,7 +102,8 @@ export function copyChildPackageChallenge(value: unknown, nowEpochMs: number): C
+       || (route.kind === "home" ? route.entityId !== null : !id(route.entityId))) return null;
+     const profile = decodeChildProfiles({ schemaVersion: 1, policyVersion: selection.policyVersion,
+       activeProfileId: selection.profileId, profiles: [root.profile] }, { now: nowEpochMs, policyVersion: selection.policyVersion });
+-    if (!profile.registry) return null;
++    if (!profile.registry || profile.registry.profiles[0].localeLocked === true
++      && profile.registry.profiles[0].locale !== request.locale) return null;
+     return Object.freeze({ generation: root.generation, request: Object.freeze({ locale: request.locale,
+       route: Object.freeze(route) }), selection: Object.freeze(selection), profile: profile.registry.profiles[0] }) as unknown as ChildPackageChallenge;
+   } catch { return null; }
+diff --git a/src/child/childProfile.test.ts b/src/child/childProfile.test.ts
+index 74d2f83c..2f3ed1c9 100644
+--- a/src/child/childProfile.test.ts
++++ b/src/child/childProfile.test.ts
+@@ -110,4 +110,57 @@ describe("local child profile metadata foundation", () => {
+     expect(decodeChildProfiles(registry(), { ...context, approved: true } as typeof context).registry).toBeNull();
+     expect(decodeChildProfiles(" ".repeat(CHILD_PROFILE_MAX_LENGTH + 1), context).registry).toBeNull();
+   });
++
++  it("keeps the exact canonical bytes of older profiles without a locale lock", () => {
++    const parsed = decodeChildProfiles(registry(), context).registry!;
++    const original = '{"schemaVersion":1,"policyVersion":"synthetic-policy-v1","activeProfileId":"synthetic-child-1","profiles":[{"id":"synthetic-child-1","label":"Reader One","exactAge":9,"ageBand":"9-11","locale":"ru","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":["violence"],"soundEnabled":false,"motion":"calm","narrationEnabled":false}]}';
++    expect(JSON.stringify(parsed)).toBe(original);
++    expect(Object.prototype.hasOwnProperty.call(parsed.profiles[0], "localeLocked")).toBe(false);
++    expect(JSON.stringify(decodeChildProfiles(original, context).registry)).toBe(original);
++  });
++
++  it("preserves explicit true and false locks last in an immutable whole profile", () => {
++    for (const localeLocked of [true, false]) {
++      for (const withAgeBand of [true, false]) {
++        const input = { ...record(), ...(withAgeBand ? { ageBand: "9-11" } : {}), localeLocked };
++        const parsed = decodeChildProfiles(registry([input]), context).registry!.profiles[0];
++        const canonical = JSON.stringify(parsed);
++        input.localeLocked = !localeLocked;
++        input.blockedTopics.push("new-topic");
++        expect(parsed.localeLocked).toBe(localeLocked);
++        expect(parsed.blockedTopics).toEqual(["violence"]);
++        expect(Object.keys(parsed).slice(-2)).toEqual(["narrationEnabled", "localeLocked"]);
++        expect(canonical.endsWith(',"narrationEnabled":false,"localeLocked":' + localeLocked + '}')).toBe(true);
++        expect(Object.isFrozen(parsed)).toBe(true);
++        expect(JSON.stringify(decodeChildProfiles(registry([JSON.parse(canonical)]), context).registry!.profiles[0])).toBe(canonical);
++      }
++    }
++  });
++
++  it("rejects uncertain and hidden locale locks without calling accessors or coercion", () => {
++    const getter = vi.fn(() => true), coercion = vi.fn(() => true);
++    for (const localeLocked of [null, undefined, 0, 1, "true", "false", { valueOf: coercion }]) {
++      const row = { ...record(), localeLocked };
++      expect(decodeChildProfiles(registry([row]), context)).toEqual({ registry: null, error: "invalid" });
++    }
++    const accessor = Object.defineProperty({ ...record() }, "localeLocked", { get: getter, enumerable: true });
++    const hidden = Object.defineProperty({ ...record() }, "localeLocked", { value: true, enumerable: false });
++    const inherited = Object.assign(Object.create({ localeLocked: true }), record());
++    for (const row of [accessor, hidden, inherited, { ...record(), localeLocked: true, parentApproved: true },
++      { ...record(), localeLocked: true, [Symbol("localeLockAuthority")]: true }])
++      expect(decodeChildProfiles(registry([row]), context)).toEqual({ registry: null, error: "invalid" });
++    expect(getter).not.toHaveBeenCalled();
++    expect(coercion).not.toHaveBeenCalled();
++  });
++
++  it("does not spread one parent's locale lock across other restored profiles", () => {
++    const rows = [{ ...record("locked-child"), localeLocked: true }, record("old-child"),
++      { ...record("explicitly-unlocked-child"), localeLocked: false }];
++    const source = registry(rows, "locked-child");
++    const restored = decodeChildProfiles(JSON.stringify(source), context).registry!;
++    expect(restored.profiles[0].localeLocked).toBe(true);
++    expect(Object.prototype.hasOwnProperty.call(restored.profiles[1], "localeLocked")).toBe(false);
++    expect(restored.profiles[2].localeLocked).toBe(false);
++    expect(Object.prototype.hasOwnProperty.call(restored.profiles[2], "localeLocked")).toBe(true);
++  });
+ });
+diff --git a/src/child/childProfile.ts b/src/child/childProfile.ts
+index 588a2a05..c09b9a42 100644
+--- a/src/child/childProfile.ts
++++ b/src/child/childProfile.ts
+@@ -18,6 +18,8 @@ export type LocalChildProfile = Readonly<{
+   soundEnabled: boolean;
+   motion: "calm" | "system";
+   narrationEnabled: boolean;
++  /** Parent-controlled registry setting; absent/false permits a reviewed locale change. */
++  localeLocked?: boolean;
+ }>;
+ export type ChildProfileRegistry = Readonly<{
+   schemaVersion: 1;
+@@ -82,7 +84,11 @@ const profileFields = ["id", "label", "exactAge", "locale", "ageConfirmedAt", "r
+   "blockedTopics", "soundEnabled", "motion", "narrationEnabled"];
+ function profile(value: unknown, now: number): LocalChildProfile | null {
+   const data = dataObject(value);
+-  if (!data || !(exact(data, profileFields) || exact(data, [...profileFields, "ageBand"])) || !identifier(data.id)
++  if (!data) return null;
++  const hasLocaleLock = Object.prototype.hasOwnProperty.call(data, "localeLocked");
++  const fields = [...profileFields, ...(Object.prototype.hasOwnProperty.call(data, "ageBand") ? ["ageBand"] : []),
++    ...(hasLocaleLock ? ["localeLocked"] : [])];
++  if (!exact(data, fields) || !identifier(data.id)
+     || typeof data.label !== "string" || data.label.length < 1 || data.label.length > 80
+     || data.label.trim() !== data.label || /[\u0000-\u001f\u007f]/u.test(data.label)
+     || !isChildExactAge(data.exactAge)
+@@ -93,13 +99,15 @@ function profile(value: unknown, now: number): LocalChildProfile | null {
+     || Date.parse(data.ageConfirmedAt) > now
+     || data.readingLevel !== null && data.readingLevel !== "plain" && data.readingLevel !== "developing" && data.readingLevel !== "fluent"
+     || typeof data.soundEnabled !== "boolean" || typeof data.narrationEnabled !== "boolean"
++    || hasLocaleLock && typeof data.localeLocked !== "boolean"
+     || data.motion !== "calm" && data.motion !== "system") return null;
+   const blockedTopics = topics(data.blockedTopics);
+   const allowedTopics = data.allowedTopics === null ? null : topics(data.allowedTopics);
+   if (!blockedTopics || data.allowedTopics !== null && !allowedTopics) return null;
+   return Object.freeze({ id: data.id, label: data.label, exactAge: data.exactAge, ageBand: childAgeBand(data.exactAge)!,
+     locale: data.locale, ageConfirmedAt: data.ageConfirmedAt, readingLevel: data.readingLevel, allowedTopics, blockedTopics,
+-    soundEnabled: data.soundEnabled, motion: data.motion, narrationEnabled: data.narrationEnabled });
++    soundEnabled: data.soundEnabled, motion: data.motion, narrationEnabled: data.narrationEnabled,
++    ...(hasLocaleLock ? { localeLocked: data.localeLocked as boolean } : {}) });
+ }
+ 
+ /** Strict restoration seam for future local adapters. Invalid/missing/newer
+diff --git a/src/child/childProtectedState.test.ts b/src/child/childProtectedState.test.ts
+index 070e6d04..1d9a6734 100644
+--- a/src/child/childProtectedState.test.ts
++++ b/src/child/childProtectedState.test.ts
+@@ -1,6 +1,7 @@
+ import { createHash } from "node:crypto";
+ import { afterEach, describe, expect, it, vi } from "vitest";
+ import { decodeChildProfiles } from "./childProfile";
++import { createParentGate } from "./parentGate";
+ import { childProtectedRecordBytes, createChildProtectedState, decodeChildProtectedRecord,
+   type ChildEpochAnchorChallenge, type ChildNativeRecordPort, type ChildProtectedRecord, type ChildRecordReadChallenge } from "./childProtectedState";
+ import type { ChildSelectionChallenge, ChildStartupChallenge } from "./childStartup";
+@@ -298,4 +299,105 @@ describe("conditional protected child record foundation", () => {
+     f.state.operationMs = 9; expect(await coordinator.pinStore.read()).toBeNull(); f.state.operationMs = 11;
+     expect(await coordinator.pinStore.read()).toBeNull();
+   });
++
++  it("binds a present true or false locale lock into exact protected record and registry bytes", () => {
++    const before = record(), originalBytes = childProtectedRecordBytes(before);
++    for (const localeLocked of [true, false]) {
++      const next = clone(before);
++      next.registry.profiles[0].localeLocked = localeLocked;
++      next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
++      const decoded = decodeChildProtectedRecord(next, policy)!;
++      expect(decoded.registry.profiles[0].localeLocked).toBe(localeLocked);
++      expect(decoded.registryChecksum).not.toBe(before.registryChecksum);
++      expect(sha(childProtectedRecordBytes(decoded))).not.toBe(sha(originalBytes));
++      expect(new TextDecoder().decode(childProtectedRecordBytes(decoded))).toBe(JSON.stringify(next));
++      expect(decoded.pin).toEqual(before.pin);
++      expect(decoded.clock).toEqual(before.clock);
++    }
++    expect(Object.prototype.hasOwnProperty.call(decodeChildProtectedRecord(before, policy)!.registry.profiles[0], "localeLocked")).toBe(false);
++    expect(childProtectedRecordBytes(before)).toEqual(originalBytes);
++  });
++
++  it("changes and removes a locale lock only through exact whole registry revisions and authenticated readback", async () => {
++    const f = fixture(), coordinator = f.make(), original = clone(f.state.record);
++    for (const localeLocked of [true, false, undefined]) {
++      const before = clone(f.state.record), next = clone(before);
++      if (localeLocked === undefined) delete next.registry.profiles[0].localeLocked;
++      else next.registry.profiles[0].localeLocked = localeLocked;
++      next.revision++; next.selectionRevision++; next.profileRevision++;
++      next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
++      expect(await coordinator.selectionStore.compareAndSwap(before, next)).toBe(true);
++      expect(f.state.record).toEqual(next);
++      expect(await coordinator.selectionStore.read()).toEqual(next);
++      expect(next.pin).toEqual(original.pin);
++      expect(next.clock).toEqual(original.clock);
++    }
++    expect(f.native.compareAndSwap).toHaveBeenCalledTimes(3);
++    const first = vi.mocked(f.native.compareAndSwap).mock.calls[0][0];
++    expect(first.expectedChecksum).toBe(sha(childProtectedRecordBytes(original)));
++    expect(JSON.parse(new TextDecoder().decode(first.nextBytes)).registry.profiles[0].localeLocked).toBe(true);
++  });
++
++  it("rejects lock mutation without new revisions or exact digest and never treats its Boolean as permission", async () => {
++    for (const flaw of ["profileRevision", "selectionRevision", "checksum", "pinJournal", "missingNative"] as const) {
++      const f = fixture(), before = clone(f.state.record), next = clone(before);
++      next.registry.profiles[0].localeLocked = true;
++      next.revision++; next.selectionRevision++; next.profileRevision++;
++      next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
++      if (flaw === "profileRevision") next.profileRevision = before.profileRevision;
++      if (flaw === "selectionRevision") next.selectionRevision = before.selectionRevision;
++      if (flaw === "checksum") next.registryChecksum = before.registryChecksum;
++      if (flaw === "pinJournal") next.pin.attempts.lastObservedMs++;
++      const coordinator = flaw === "missingNative" ? createChildProtectedState({ ...f.options, native: undefined }) : f.make();
++      expect(await coordinator.selectionStore.compareAndSwap(before, next)).toBe(false);
++      expect(f.native.compareAndSwap).not.toHaveBeenCalled();
++      expect(f.state.record).toEqual(before);
++    }
++  });
++
++  it("requires the original expand-access-settings Gate target and profile revision before a private lock mutation is started", async () => {
++    const f = fixture(), coordinator = f.make(), before = clone(f.state.record), next = clone(before);
++    next.registry.profiles[0].localeLocked = true;
++    next.revision++; next.selectionRevision++; next.profileRevision++;
++    next.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(next.registry)));
++    const target = { action: "expand-access-settings" as const, targetChecksum: sha(childProtectedRecordBytes(next)) };
++    const unlocked = clone(next); unlocked.registry.profiles[0].localeLocked = false;
++    unlocked.registryChecksum = sha(new TextEncoder().encode(JSON.stringify(unlocked.registry)));
++    const otherTarget = { ...target, targetChecksum: sha(childProtectedRecordBytes(unlocked)) };
++    expect(otherTarget.targetChecksum).not.toBe(target.targetChecksum);
++    const context = { profileId: before.registry.activeProfileId!, policyVersion: policy.version,
++      profileRevision: before.profileRevision, routeRevision: 1, mode: "child" as const, visibility: "active" as const };
++    let nonce = 0, mutation: Promise<boolean> | undefined;
++    const options = { clock: { nowMonotonicMs: () => 1 }, policy: { capabilityLifetimeMs: 100, verificationTimeoutMs: 100 },
++      randomSource: { getRandomValues(bytes: Uint8Array) { bytes.fill(++nonce); return bytes; } },
++      verificationPort: { verify: async (challenge: import("./parentGate").ParentGateChallenge) => ({ status: "verified" as const, challenge }) } };
++    const gate = createParentGate(options);
++    gate.setContext(context);
++    const start = vi.fn(() => { mutation = coordinator.selectionStore.compareAndSwap(before, next); });
++    const wrong = await gate.request(target);
++    if (wrong.status !== "verified") throw new Error("Synthetic Gate did not verify");
++    expect(gate.consume(wrong.capability, otherTarget, start)).toBe(false);
++    expect(gate.consume(wrong.capability, target, start)).toBe(false);
++    const stale = await gate.request(target);
++    if (stale.status !== "verified") throw new Error("Synthetic Gate did not verify");
++    gate.setContext({ ...context, profileRevision: context.profileRevision + 1 });
++    expect(gate.consume(stale.capability, target, start)).toBe(false);
++    expect(gate.consume({ localeLocked: true, parentApproved: true }, target, start)).toBe(false);
++    expect(start).not.toHaveBeenCalled();
++    gate.setContext(context);
++    const exact = await gate.request(target);
++    if (exact.status !== "verified") throw new Error("Synthetic Gate did not verify");
++    // Gate consumes only the synchronous dispatch. The separate synthetic
++    // native CAS/readback below supplies no genuine native permission proof.
++    expect(gate.consume(exact.capability, target, start)).toBe(true);
++    expect(await mutation).toBe(true);
++    expect(gate.consume(exact.capability, target, start)).toBe(false);
++    expect(start).toHaveBeenCalledTimes(1);
++    const unavailable = createParentGate({ ...options, verificationPort: undefined });
++    unavailable.setContext(context);
++    expect(await unavailable.request(target)).toEqual({ status: "unavailable" });
++    expect(unavailable.consume(true, target, start)).toBe(false);
++    expect(start).toHaveBeenCalledTimes(1);
++    gate.dispose(); unavailable.dispose();
++  });
+ });
+diff --git a/src/child/childStartup.test.ts b/src/child/childStartup.test.ts
+index fbf68925..10ac6056 100644
+--- a/src/child/childStartup.test.ts
++++ b/src/child/childStartup.test.ts
+@@ -609,4 +609,122 @@ describe("sealed child-only startup boundary", () => {
+     expect(await startup.visitReady(async () => { throw new Error("synthetic-async-view-detail"); })).toBe(false);
+     expect(startup.getSnapshot()).toEqual({ phase: "ready" });
+   });
++
++  it.each(["ru", "en"] as const)("seals a locked %s profile before policy, package or route reads in the other locale", async locale => {
++    const f = fixture(locale), startup = createChildStartup(f.options), visit = vi.fn();
++    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
++    const other = locale === "ru" ? "en" : "ru";
++    f.state.scope = { ...f.state.scope, locale: other };
++    expect(await startup.start(intent(other))).toEqual({ status: "sealed" });
++    expect(f.calls).toEqual(["mode", "profile"]);
++    expect(f.policy).not.toHaveBeenCalled();
++    expect(f.pack).not.toHaveBeenCalled();
++    expect(f.route).not.toHaveBeenCalled();
++    expect(await startup.visitReady(visit)).toBe(false);
++    expect(visit).not.toHaveBeenCalled();
++  });
++
++  it.each(["ru", "en"] as const)("passes the whole immutable locked %s profile only to independently verified readers", async locale => {
++    const f = fixture(locale), startup = createChildStartup(f.options), visit = vi.fn();
++    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
++    expect(await startup.start(intent(locale))).toEqual({ status: "ready" });
++    expect(f.pack.mock.calls[0][0].profile.localeLocked).toBe(true);
++    expect(Object.isFrozen(f.pack.mock.calls[0][0].profile)).toBe(true);
++    expect(await startup.visitReady(visit)).toBe(true);
++    expect(visit.mock.calls[0][0]).toMatchObject({ profile: { locale, localeLocked: true }, scope: { locale } });
++    expect(f.pack).toHaveBeenCalledTimes(2);
++    expect(f.route).toHaveBeenCalledTimes(2);
++  });
++
++  it("permits an absent or false lock to choose another locale but still requires that locale's package approval", async () => {
++    for (const localeLocked of [undefined, false]) {
++      for (const approved of [true, false]) {
++        const f = fixture("ru"), startup = createChildStartup(f.options);
++        if (localeLocked !== undefined) Object.assign(f.state.registry.profiles[0], { localeLocked });
++        f.state.scope = { ...f.state.scope, locale: "en" };
++        if (!approved) replaceProof(f, "pack", proof => ({ ...proof, status: "denied" }));
++        expect(await startup.start(intent("en"))).toEqual({ status: approved ? "ready" : "sealed" });
++        expect(f.pack).toHaveBeenCalledTimes(1);
++        expect(f.pack.mock.calls[0][0].profile.locale).toBe("ru");
++        expect(f.route).toHaveBeenCalledTimes(approved ? 1 : 0);
++      }
++    }
++  });
++
++  it("rechecks the parent's lock before every ready-view callback even when a profile port supplies stale selection coordinates", async () => {
++    const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
++    f.state.scope = { ...f.state.scope, locale: "en" };
++    expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
++    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
++    f.calls.length = 0;
++    expect(await startup.visitReady(visit)).toBe(false);
++    expect(f.calls).toEqual(["mode", "profile"]);
++    expect(f.pack).toHaveBeenCalledTimes(1);
++    expect(f.route).toHaveBeenCalledTimes(1);
++    expect(visit).not.toHaveBeenCalled();
++    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
++  });
++
++  it("rejects a parent locale-lock revision changed while an otherwise approved route is pending", async () => {
++    const f = fixture("ru"), startup = createChildStartup(f.options);
++    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
++    f.route.mockImplementationOnce(async challenge => {
++      f.state.registry.profiles[0].locale = "en";
++      f.state.selection = { ...f.state.selection, selectionRevision: 2, profileRevision: 2, profileChecksum: checksum("d") };
++      return { status: "verified", challenge };
++    });
++    expect(await startup.start(intent("ru"))).toEqual({ status: "sealed" });
++    expect(f.mode).toHaveBeenCalledTimes(2);
++    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
++  });
++
++  it("restores the lock freshly after background and foreground instead of resuming an unlocked locale", async () => {
++    const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
++    f.state.scope = { ...f.state.scope, locale: "en" };
++    expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
++    startup.background();
++    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
++    f.state.selection = { ...f.state.selection, selectionRevision: 2, profileRevision: 2, profileChecksum: checksum("d") };
++    expect(await startup.start(intent("en"))).toEqual({ status: "sealed" });
++    startup.foreground(); f.calls.length = 0;
++    expect(await startup.visitReady(visit)).toBe(false);
++    expect(await startup.start(intent("en"))).toEqual({ status: "sealed" });
++    expect(f.calls).toEqual(["mode", "profile"]);
++    expect(f.pack).toHaveBeenCalledTimes(1);
++    expect(f.route).toHaveBeenCalledTimes(1);
++    expect(visit).not.toHaveBeenCalled();
++    f.state.scope = { ...f.state.scope, locale: "ru", profileRevision: 2 };
++    expect(await startup.start(intent("ru"))).toEqual({ status: "ready" });
++  });
++
++  it("does not publish an old unlocked locale after a new locked profile supersedes its pending restoration", async () => {
++    const f = fixture("ru"), startup = createChildStartup(f.options), entered = deferred<ChildSelectionChallenge>(), late = deferred<unknown>();
++    const oldRegistry = clone(f.state.registry);
++    f.state.scope = { ...f.state.scope, locale: "en" };
++    f.profile.mockImplementationOnce(challenge => { entered.resolve(challenge); return late.promise; });
++    const old = startup.start(intent("en")), oldChallenge = await entered.promise;
++    Object.assign(f.state.registry.profiles[0], { localeLocked: true });
++    f.state.selection = { ...f.state.selection, selectionRevision: 2, profileRevision: 2, profileChecksum: checksum("d") };
++    f.state.scope = { ...f.state.scope, locale: "ru", profileRevision: 2 };
++    expect(await startup.start(intent("ru"))).toEqual({ status: "ready" });
++    expect(await old).toEqual({ status: "cancelled" });
++    late.resolve({ status: "restored", challenge: oldChallenge, registry: oldRegistry });
++    await Promise.resolve(); await Promise.resolve();
++    expect(f.pack).toHaveBeenCalledTimes(1);
++    expect(f.route.mock.calls[0][0].request.locale).toBe("ru");
++    expect(f.route.mock.calls[0][0].profile.localeLocked).toBe(true);
++    expect(startup.getSnapshot()).toEqual({ phase: "ready" });
++  });
++
++  it("rejects a locale-lock accessor before all content readers without invoking it", async () => {
++    const f = fixture(), startup = createChildStartup(f.options), getter = vi.fn(() => true);
++    const registry = clone(f.state.registry);
++    Object.defineProperty(registry.profiles[0], "localeLocked", { enumerable: true, get: getter });
++    replaceProof(f, "profile", proof => ({ ...proof, registry }));
++    expect(await startup.start(intent())).toEqual({ status: "sealed" });
++    expect(getter).not.toHaveBeenCalled();
++    expect(f.policy).not.toHaveBeenCalled();
++    expect(f.pack).not.toHaveBeenCalled();
++    expect(f.route).not.toHaveBeenCalled();
++  });
+ });
+diff --git a/src/child/childStartup.ts b/src/child/childStartup.ts
+index dc35ce84..fe27198d 100644
+--- a/src/child/childStartup.ts
++++ b/src/child/childStartup.ts
+@@ -12,7 +12,7 @@ export interface ChildSecureSelection {
+   readonly selectionRevision: number;
+   readonly profileId: string;
+   readonly profileRevision: number;
+-  /** Digest of the authenticated profile registry, including parent topic rules. */
++  /** Digest of the authenticated profile registry, including parent topic/locale rules. */
+   readonly profileChecksum: string;
+   readonly policyVersion: string;
+   readonly policyChecksum: string;
+@@ -163,7 +163,10 @@ export function createChildStartup(options: ChildStartupOptions) {
+       decodeChildProfiles(profileProof.registry, { policyVersion: restored.policyVersion, now: at }) : null;
+     if (!current(operation)) return;
+     const profile = decoded?.registry?.profiles.find(row => row.id === restored.profileId);
+-    if (!profile || decoded?.registry?.activeProfileId !== restored.profileId) { stop(operation, "sealed"); return; }
++    // Enforce the authenticated parent's locale rule before any package or
++    // route reader. Every start and ready-view revalidation uses this pipeline.
++    if (!profile || decoded?.registry?.activeProfileId !== restored.profileId ||
++      profile.localeLocked === true && profile.locale !== intent.locale) { stop(operation, "sealed"); return; }
+     const policyProof = data(await policy(scoped, signal), ["status", "challenge"]);
+     if (!current(operation)) return;
+     if (policyProof?.status !== "verified" || policyProof.challenge !== scoped) { stop(operation, "sealed"); return; }

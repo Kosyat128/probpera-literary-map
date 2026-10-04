@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-owner-root-source-review",
+  "status": "ACK",
+  "candidate": {
+    "manifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-native-owner-xcode-20261004\\manifest.json",
+      "sha256": "a48eaf45dc02f65d4cdae67ecffcc070f2369a56aa959f4619f07a80ba5eabbf",
+      "bytes": 818
+    }
+  },
+  "reviewedScopes": [
+    "Exactly four new PBX reference/build/group/Sources spans; existing entries retained",
+    "Correct AppSecureStorageTests target/new filename; Swift compilation unavailable"
+  ],
+  "reviewer": "root",
+  "reviewBasis": "Actual manually inspected final source and original-byte preservation, supplemented by root-owned exact input guards; no runtime claim",
+  "runtimeChecksExecuted": false,
+  "installedOS": "NOT_RUN",
+  "releaseReady": false
+}

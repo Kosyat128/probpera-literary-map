@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-parent-owner-build-execution",
+  "status": "PASS",
+  "mode": "android",
+  "attempt": "a1",
+  "startedAt": "2026-10-03T23:46:13.690Z",
+  "finishedAt": "2026-10-03T23:47:29.534Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "parseError": null,
+  "binding": {
+    "sourceCommit": "32e3250063e1e6284470af2761ad765983e68781",
+    "repositoryHead": "32e3250063e1e6284470af2761ad765983e68781",
+    "sourceFingerprint": "49d5123f4b48eedde45b36140c7e3488954b0e644270bf47c9212454b38a1cd3",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "stdout": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\android-a1\\stdout.bin",
+    "sha256": "8300630f34108997f46080d8f379d10e343b8a644a9009c960e2dcaf4b261964",
+    "bytes": 716
+  },
+  "stderr": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-parent-owner-work-20261004\\android-a1\\stderr.bin",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "receipt": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-94a5659a-555e-47e3-8ef4-b5ebcc443fc6\\preparation.json",
+    "sha256": "097b3a68fa37cbef6ac56142c31b546a66c23207b74e8cb0580feaf833954615",
+    "bytes": 305113,
+    "relativePath": ".tmp/mobile-release-android-94a5659a-555e-47e3-8ef4-b5ebcc443fc6/preparation.json",
+    "pass": true,
+    "mode": "android"
+  },
+  "inputsUnchanged": true,
+  "sourceRows": 1790,
+  "deviceTested": false,
+  "iosCompiled": false,
+  "releaseReady": false,
+  "remoteActions": 0
+}

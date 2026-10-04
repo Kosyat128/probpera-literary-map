@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "status": "ACK",
+  "reviewer": "authority_contract_audit",
+  "sourceOnly": true,
+  "sourceCommit": "e1fbf1e47ed78cc76ec8d78abf3c3a7631fa527c",
+  "runtime": "NOT_RUN",
+  "compilation": "NOT_COMPILED_BY_REVIEWER",
+  "runtimeChecksExecuted": false,
+  "testsExecuted": false,
+  "projectWrites": false,
+  "gitOperations": false,
+  "candidate": {
+    "path": "D:/CodexData/.codex/visualizations/2026/10/02/01a0fd35-3865-7973-8f4c-0c7a0148df47/release-completion/next-native-pin-owner-android/manifest.json",
+    "sha256": "50e48d0e478c2792dcee33513c19c7fc4e2b99cc8397ff55f6ecb346d361474c"
+  },
+  "files": [
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "beforeSha256": "55d01a83361bdfc8c5dcb562cf9362041e8a6c91bb99af5fe297c623791cf602",
+      "sha256": "0b0faf927e861f708dcbad4f7afdd6f0ac7f9f1dd8420093ac66bd24c80d9c29",
+      "bytes": 237595
+    },
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildNativeOwnerPermissionRuntimeTest.java",
+      "beforeSha256": null,
+      "sha256": "07c15f228eb1cb3116772c96f57641ff1f035515da15400e64a87e2e749acaa6",
+      "bytes": 20567,
+      "authoredMethods": 13
+    }
+  ],
+  "reviewedScopes": [
+    {
+      "scope": "Original full-record/session/action/locale and original key-signature binding",
+      "lines": "387-531,647-652",
+      "result": "ACK: owned next snapshot plus immutable original session, fixed action, original deadline and domain-separated payload; API30 device-credential CryptoObject must carry the original Signature; actual public signature verification; recovery absent alias never creates a replacement."
+    },
+    {
+      "scope": "Original receiver delivery and direct core backing settlement",
+      "lines": "677-694,716-723,920-937",
+      "result": "ACK: recipient return alone supplies no ACK; original wrapper settlement and core backing guard require actual finished/cleanup/callback/worker settlement, and known delivery requires original deliveryCompleted. Known ACK retains signature until consume; uncertain delivery seals and wipes."
+    },
+    {
+      "scope": "Lifecycle and original continuous deadline through known ACK",
+      "lines": "575-620,639-660,665-675,699-714",
+      "result": "ACK: original Activity/window guards and retained lifecycle/screen/deadline callbacks persist after auth and known ACK; pause/stop/destroy/screen-off permanently revoke; resume has no restoration. Deadline is never renewed."
+    },
+    {
+      "scope": "Consume under original committing executor and existing durable lock",
+      "lines": "699-714,860-906",
+      "result": "ACK: eligible known-ACK original burns before tuple/native callbacks; exact old/new tuple and signature/current/deadline repeat fences. Existing commit holds outer IO lock. Consume does not reacquire IO and detach joins main/event handlers while deliberately leaving actual cancellation IO counted for later retire."
+    },
+    {
+      "scope": "Actual cancellation, observer detach and whole-core retirement",
+      "lines": "601-605,621-660,665-675,725-743,940-950",
+      "result": "ACK: immediate revoke precedes actual cancellation; original callback/watcher/worker/event/consume counts settle only on actual return; provider retire joins actual work and exposed transfer; core retire also waits owner.retired. Timers do not release the lane."
+    },
+    {
+      "scope": "Authored runtime source and exact source preservation",
+      "lines": "test source 1-189; declared original spans plus inserted component",
+      "result": "ACK: all13 authored methods read; prompt/signature acceptance requires explicitly opted-in owned .dev/API/interactive conditions, missing conditions SKIP; after-ACK pause/resume and accepted wrong-tuple burn observations occur outside callbacks. All7 manifest member SHA/bytes match. Removing only declared3 spans and inserted component reconstructs exact existing project baseline55d01."
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "Read-only source review and metadata verification only; no compiler, tests, device, SDK prompt or multi-thread runtime acceptance was executed.",
+    "The consume outer-lock/deadlock conclusion is source-only; existing commit provides that lock. The instrumentation fixture does not prove real concurrent cancellation IO serialization.",
+    "Strict Activity pause/stop revocation makes pausing credential implementations unsupported until genuine original-host transition authority exists; no blanket prompt exception is accepted.",
+    "This is a local OS-owner prerequisite. Existing checkpoint/time/initial seed/original-host SPI and factory activation remain unavailable; no legal-guardian, nonrollback, complete recovery or child/App admission is claimed."
+  ]
+}

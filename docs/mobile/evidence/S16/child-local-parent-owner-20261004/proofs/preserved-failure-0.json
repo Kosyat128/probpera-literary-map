@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-owner-metadata-preparation",
+  "status": "FAIL",
+  "attempt": "a1",
+  "exitCode": 1,
+  "errorCode": "FINAL_ANDROID_PEER_ACK_REQUIRED",
+  "reason": "Actual peer review uses candidate.sha256; the first helper lacked this valid descriptor branch.",
+  "repositoryWrites": 0,
+  "productChecksExecuted": false,
+  "originalToolOutput": "Retained in conversation; this record is a structured summary, not a captured raw stream.",
+  "priorPartialBPreparationsPreserved": true,
+  "releaseReady": false
+}
