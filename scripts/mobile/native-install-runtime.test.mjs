@@ -4,7 +4,10 @@ import { mkdtemp, readFile, rm } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { bindXctestrun, xctestPassed, instrumentationPassed, nativeRuntimeCommandContext, parseAndroidCertificate, parseAndroidPackage, parseAndroidInstrumentationPackage, runNativeInstallRuntime,
-  androidAdbServerArguments, parseOwnedAdbServerPort, createAndroidOfflineGate, parseAndroidOfflineState, validateOwnedAndroidTarget, validateRuntimeReceipt } from './native-install-runtime.mjs';
+  androidAdbServerArguments, parseOwnedAdbServerPort, createAndroidOfflineGate, parseAndroidOfflineState, validateOwnedAndroidTarget, validateRuntimeReceipt,
+  nativeChildLocalV2ProfileEntryFixtureSourcePath, childLocalV2ProfileEntryTestMethods, childLocalV2ProfileEntryFixtureArguments,
+  childLocalV2ProfileEntryFixturePassed, verifyNativeChildLocalV2ProfileEntryFixtureSource,
+  childLocalV2PinOperationsFixtureArguments, childLocalV2PinOperationsFixturePassed } from './native-install-runtime.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
 function receipt(platform = 'android') {
@@ -269,5 +272,113 @@ describe('exact-package local native runner gates', () => {
     const persisted = JSON.parse(await readFile(path.join(root, '.tmp/own-evidence/result.json'), 'utf8'));
     expect(persisted.status).toBe('BLOCKED_EXTERNAL'); expect(persisted.dependencies.some(item => !item.present)).toBe(true);
     expect(persisted.checks.some(item => item.status === 'BLOCKED_EXTERNAL')).toBe(true);
+  });
+});
+
+describe('native Local V2 profile entry selector', () => {
+  const runId = 'a'.repeat(32), className = 'ru.probpera.literaryplanet.PlanetChildFirstInstallRuntimeTest';
+  const fixture = (names = childLocalV2ProfileEntryTestMethods) => {
+    const lines = [];
+    for (const [index, name] of names.entries()) for (const status of [1,0]) lines.push(
+      'INSTRUMENTATION_STATUS: class=' + className,
+      'INSTRUMENTATION_STATUS: test=' + name,
+      'INSTRUMENTATION_STATUS: numtests=8',
+      'INSTRUMENTATION_STATUS: current=' + (index + 1),
+      'INSTRUMENTATION_STATUS: id=AndroidJUnitRunner',
+      'INSTRUMENTATION_STATUS_CODE: ' + status);
+    return lines.join('\n') + '\nINSTRUMENTATION_RESULT: stream=\nOK (8 tests)\nINSTRUMENTATION_CODE: -1\n';
+  };
+  it('freezes exactly the new eight methods, original class, owned run and fixed phase', () => {
+    const args = childLocalV2ProfileEntryFixtureArguments(runId);
+    expect(Object.isFrozen(args)).toBe(true); expect(Object.isFrozen(childLocalV2ProfileEntryTestMethods)).toBe(true);
+    expect(childLocalV2ProfileEntryTestMethods).toHaveLength(8); expect(new Set(childLocalV2ProfileEntryTestMethods).size).toBe(8);
+    expect(args).toEqual(['shell','am','instrument','-w','-r','-e','class',
+      childLocalV2ProfileEntryTestMethods.map(method => className + '#' + method).join(','),
+      '-e','literaryRunId',runId,'-e','literaryFirstInstallPhase','first-install-v2',
+      'ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+  });
+  it('rejects unowned or nonprimitive run identifiers before returning arguments', () => {
+    for (const value of [null,undefined,0,'A'.repeat(32),'a'.repeat(31),runId + '\n',new String(runId)])
+      expect(() => childLocalV2ProfileEntryFixtureArguments(value)).toThrow();
+  });
+  it('requires one exact raw fixture source and a complete source hash', () => {
+    const row = { path: nativeChildLocalV2ProfileEntryFixtureSourcePath, sha256: 'b'.repeat(64) };
+    expect(verifyNativeChildLocalV2ProfileEntryFixtureSource([{ path: 'src/other.ts', sha256: 'c'.repeat(64) },row])).toBe(true);
+    for (const value of [[],[row,row],[{ ...row,sha256:'not-sha256' }],[{ ...row,path:row.path + '.old' }],null])
+      expect(() => verifyNativeChildLocalV2ProfileEntryFixtureSource(value)).toThrow();
+  });
+  it('accepts only complete serial start and pass pairs with the exact terminal', () => {
+    expect(childLocalV2ProfileEntryFixturePassed(fixture())).toBe(true);
+    expect(childLocalV2ProfileEntryFixturePassed(fixture().replaceAll('\n','\r\n'))).toBe(true);
+  });
+  it('rejects omitted, duplicate and foreign method observations', () => {
+    const methods = [...childLocalV2ProfileEntryTestMethods];
+    for (const names of [methods.slice(1),[...methods,methods[0]],[...methods.slice(0,7),methods[0]],
+      [...methods.slice(0,7),'localV2AdmittedOwnedPayloadClosureSupportsOriginalFourPurposes']])
+      expect(childLocalV2ProfileEntryFixturePassed(fixture(names))).toBe(false);
+  });
+  it('rejects substituted class, totals, ordinal identity, summary and terminal', () => {
+    const good = fixture();
+    for (const changed of [good.replaceAll(className,'ru.probpera.literaryplanet.OtherFixture'),
+      good.replaceAll('numtests=8','numtests=9'),good.replaceAll('current=8','current=1'),
+      good.replace('current=1','current=0'),good.replace('OK (8 tests)','OK (9 tests)'),
+      good.replace('INSTRUMENTATION_CODE: -1','INSTRUMENTATION_CODE: 0'),
+      good.replace('INSTRUMENTATION_CODE: -1',''),good + 'INSTRUMENTATION_CODE: -1\n'])
+      expect(childLocalV2ProfileEntryFixturePassed(changed)).toBe(false);
+  });
+  it('retains failed, skipped, aborted and unknown packet observations as refusal', () => {
+    for (const suffix of ['FAILURES!!!','INSTRUMENTATION_FAILED: failed','INSTRUMENTATION_ABORTED',
+      'Process crashed','AssumptionViolatedException','skipped','INSTRUMENTATION_STATUS: unknown=1','INSTRUMENTATION_STATUS_CODE: -3'])
+      expect(childLocalV2ProfileEntryFixturePassed(fixture() + suffix + '\n')).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(fixture().replace('test=','unknown='))).toBe(false);
+  });
+  it('refuses summary-only, incomplete or overlapping operation packets', () => {
+    expect(childLocalV2ProfileEntryFixturePassed('OK (8 tests)\nINSTRUMENTATION_CODE: -1\n')).toBe(false);
+    const good = fixture();
+    expect(childLocalV2ProfileEntryFixturePassed(good.replace('INSTRUMENTATION_STATUS_CODE: 0','INSTRUMENTATION_STATUS_CODE: 1'))).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(good.replace('INSTRUMENTATION_STATUS: current=1\n',''))).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(good + '\0')).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(good.replaceAll('INSTRUMENTATION_STATUS: current=1\n',''))).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(good.replaceAll('INSTRUMENTATION_STATUS: id=AndroidJUnitRunner\n',''))).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(good.replace('INSTRUMENTATION_RESULT: stream=\n',''))).toBe(false);
+  });
+  it('keeps the prior nine-method PIN selector separate from the new reduced proof', () => {
+    expect(childLocalV2ProfileEntryFixtureArguments(runId)[7]).not.toBe(childLocalV2PinOperationsFixtureArguments(runId)[7]);
+    expect(childLocalV2PinOperationsFixturePassed(fixture())).toBe(false);
+    expect(childLocalV2ProfileEntryFixturePassed(fixture().replaceAll('numtests=8','numtests=9').replace('OK (8 tests)','OK (9 tests)'))).toBe(false);
+  });
+  it('allows only exact new selector argv after fresh read-only offline observations', async () => {
+    const calls = [], records = [], expected = childLocalV2ProfileEntryFixtureArguments(runId);
+    const port = async args => { calls.push(args); if (args.join(' ') === 'shell settings get global airplane_mode_on') return '1\n';
+      if (args.join(' ') === 'shell settings get global mobile_data') return '0\n';
+      if (args.join(' ') === 'shell cmd wifi status') return 'Wifi is disabled\nWifi scanning is only available when wifi is enabled\n';
+      expect(args).toEqual(expected); return fixture(); };
+    const gate = createAndroidOfflineGate(port,value => records.push(value));
+    expect(childLocalV2ProfileEntryFixturePassed(await gate.command('profile-entry',expected,180_000))).toBe(true);
+    expect(calls).toHaveLength(4); expect(records).toHaveLength(1); expect(records[0].status).toBe('PASS');
+    const unknown = [...expected]; unknown[7] += ',' + className + '#unselectedMethod';
+    await expect(gate.command('profile-entry',unknown,180_000)).rejects.toThrow();
+    expect(calls).toHaveLength(4); expect(records).toHaveLength(1);
+  });
+  it('rejects mixed selectors before evidence creation or device commands', async () => {
+    const root = await mkdtemp(path.join(path.resolve(os.tmpdir()), 'literary-native-runtime-test-')); temporary.push(root);
+    for (const selector of [{ pinVerificationInput:true },{ childLocalV2PinOperations:true }])
+      await expect(runNativeInstallRuntime({ rootDir:root,platform:'android',childLocalV2ProfileEntry:true,...selector })).rejects.toThrow(/cannot be mixed/u);
+  });
+  it('refuses nonboolean selection, another platform or a reboot request', async () => {
+    const root = await mkdtemp(path.join(path.resolve(os.tmpdir()), 'literary-native-runtime-test-')); temporary.push(root);
+    await expect(runNativeInstallRuntime({ rootDir:root,platform:'android',childLocalV2ProfileEntry:'true' })).rejects.toThrow(/Explicit/u);
+    for (const options of [{ platform:'ios' },{ platform:'android',reboot:true }])
+      await expect(runNativeInstallRuntime({ rootDir:root,childLocalV2ProfileEntry:true,...options })).rejects.toThrow(/Android-only/u);
+  });
+  it('keeps default preflight silent toward devices and records the actual reduced scope', async () => {
+    const root = await mkdtemp(path.join(path.resolve(os.tmpdir()), 'literary-native-runtime-test-')); temporary.push(root);
+    const result = await runNativeInstallRuntime({ rootDir:root,platform:'android',runId,outDir:'.tmp/profile-entry',childLocalV2ProfileEntry:true });
+    expect(result.kind).toBe('literary-planet-child-local-v2-profile-entry-runtime'); expect(result.status).toBe('BLOCKED_EXTERNAL');
+    expect(result.commands).toEqual([]); expect(result.installed).toBe(false); expect(result.releaseReady).toBe(false);
+    expect(result.fixture.methods).toEqual(childLocalV2ProfileEntryTestMethods); expect(result.fixture.tests).toBe(8);
+    expect(result.fixture.parentGateAdmission).toBe(false); expect(result.fixture.installedStorageAcceptance).toBe(false);
+    const persisted = JSON.parse(await readFile(path.join(root,'.tmp/profile-entry/result.json'),'utf8'));
+    expect(persisted.kind).toBe(result.kind); expect(persisted.fixture).toEqual(result.fixture); expect(persisted.commands).toEqual([]);
   });
 });

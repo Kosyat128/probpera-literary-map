@@ -315,7 +315,7 @@ public final class PlanetChildFirstInstallRuntimeTest {
             call(localOwner,"cancel",original);assertTrue(zero(raw));assertTrue(zero(seedBytes));denied(()->call(sample,"copySeed"));
             denied(()->call(receipt,"copy"));denied(()->call(localOwner,"acknowledge",receipt));assertSame(original,field(localOwner,"active"));assertFalse((Boolean)field(original,"mutationStarted"));
             Method factory=PlanetChildVault.class.getDeclaredMethod("actualSdkLocalV2Writer",PlanetChildVault.class);factory.setAccessible(true);assertNull(factory.invoke(null,new PlanetChildVault(activity.getApplicationContext())));
-            denied(()->call(localOwner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertNull(field(localOwner,"active"));
+            denied(()->call(localOwner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertSame(original,field(localOwner,"active"));assertSame(field(original,"processLease"),field(field(original,"processClock"),"active"));
         }finally{localRetire(localOwner,original);}}
 
     /** New mechanical process-coordinator cases use isolated synthetic clocks.
@@ -372,13 +372,13 @@ public final class PlanetChildFirstInstallRuntimeTest {
             assertTrue((Boolean)field(clock,"invalid"));release.countDown();assertTrue(returned.await(2,TimeUnit.SECONDS));
             try{cleanup.get(5,TimeUnit.SECONDS);fail("sealed retirement must remain unavailable");}catch(ExecutionException expected){assertNotNull(expected.getCause());}
             cleanupWorker.join(5000);assertFalse(cleanupWorker.isAlive());assertTrue((Boolean)field(original,"retired"));assertTrue((Boolean)field(original,"detached"));
-            assertNull(field(owner,"active"));assertNull(field(clock,"active"));assertTrue((Boolean)field(clock,"invalid"));denied(()->localLease(clock,5000));
+            assertSame(original,field(owner,"active"));assertSame(field(original,"processLease"),field(clock,"active"));assertTrue((Boolean)field(clock,"invalid"));denied(()->localLease(clock,5000));
         }finally{release.countDown();assertTrue(returned.await(5,TimeUnit.SECONDS));if(cleanupWorker!=null){cleanupWorker.join(5000);assertFalse(cleanupWorker.isAlive());}}}
     @Test public void localV2FailedActualCleanupInvalidatesBeforeOriginalLaneRelease()throws Exception{activity();Object clock=localClock(snapshotPolicy(100L,250L),SystemClock::elapsedRealtime),owner=localOwner(clock),original=localRequest(owner,5000);
         android.content.BroadcastReceiver registered=(android.content.BroadcastReceiver)field(original,"screen");InstrumentationRegistry.getInstrumentation().runOnMainSync(()->activity.getApplicationContext().unregisterReceiver(registered));
         localSet(original,"screen",new android.content.BroadcastReceiver(){public void onReceive(android.content.Context context,android.content.Intent intent){}});
-        try{denied(()->call(owner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertFalse((Boolean)field(original,"detached"));assertNull(field(owner,"active"));
-            assertTrue((Boolean)field(clock,"invalid"));assertNull(field(clock,"active"));assertFalse(((android.os.Handler)field(owner,"main")).hasCallbacks((Runnable)field(original,"expiry")));
+        try{denied(()->call(owner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertFalse((Boolean)field(original,"detached"));assertSame(original,field(owner,"active"));
+            assertTrue((Boolean)field(clock,"invalid"));assertSame(field(original,"processLease"),field(clock,"active"));assertFalse(((android.os.Handler)field(owner,"main")).hasCallbacks((Runnable)field(original,"expiry")));
             Object nextOwner=localOwner(clock);denied(()->localRequest(nextOwner,5000));}
         finally{android.os.Handler handler=(android.os.Handler)field(owner,"main");Runnable expiry=(Runnable)field(original,"expiry");
             InstrumentationRegistry.getInstrumentation().runOnMainSync(()->handler.removeCallbacks(expiry));localRetire(owner,original);}}
@@ -408,8 +408,8 @@ public final class PlanetChildFirstInstallRuntimeTest {
             denied(()->call(localOwner,"enroll",original,sample,candidate));assertFalse((Boolean)field(sample,"consumed"));assertFalse((Boolean)field(original,"mutationStarted"));assertEquals(footprint,childFootprint());
         }finally{localSet(operation,"worker",null);localSet(operation,"finished",true);localRetire(localOwner,original);Arrays.fill(candidate,(byte)0);}}
     @Test public void localV2CanonicalAdultSnapshotCannotMasqueradeAsOriginalChildGate()throws Exception{
-        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),context=create("PinGateContext","profile-fixture",VERSION,1L,1L,"child","active");
-        Object gate=create("PinGateRequest",new Object(),repeat('f'),"exit-child-mode",repeat('b'),context,0L,field(original,"deadline"));byte[] bytes=localWrapper(2,1,1,0,17,0,null);
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),context=create("LocalV2GateContext","profile-fixture",VERSION,1L,1L,"child","active");
+        Object gate=create("LocalV2GateRequest",new Object(),repeat('f'),"exit-child-mode",repeat('b'),context,0L,field(original,"deadline"));byte[] bytes=localWrapper(2,1,1,0,17,0,null);
         try{denied(()->create("LocalV2PinOperation",localOwner,original,kind("LocalV2PinKind","verify"),gate,field(gate,"originalHostChallenge"),repeat('f'),"exit-child-mode",repeat('b'),0L,"en",600000L,bytes,null));
             assertNull(field(original,"pinOperation"));assertFalse((Boolean)field(original,"mutationStarted"));}
         finally{localRetire(localOwner,original);Arrays.fill(bytes,(byte)0);}}
@@ -753,5 +753,70 @@ public final class PlanetChildFirstInstallRuntimeTest {
     }finally{call(state,"close");call(index,"close");f.close();}}
 
     @Test public void localV2AdmittedPublicationRechecksExpiryAfterFreshAndClosedIndex()throws Exception{PackageFixture f=new PackageFixture();Object index=f.compile();try{AtomicLong wall=new AtomicLong(f.now);AtomicInteger fresh=new AtomicInteger();Class<?> fence=Class.forName("ru.probpera.literaryplanet.PlanetChildVault$LocalV2PackageCompiler$Fence");Object original=java.lang.reflect.Proxy.newProxyInstance(fence.getClassLoader(),new Class<?>[]{fence},(proxy,method,args)->{fresh.incrementAndGet();return null;});java.util.concurrent.Callable<Long> clock=wall::get;call(type("LocalV2AdmittedPublication"),"check",index,clock,original);assertEquals(1,fresh.get());Object expiry=java.lang.reflect.Proxy.newProxyInstance(fence.getClassLoader(),new Class<?>[]{fence},(proxy,method,args)->{wall.set((Long)field(index,"until"));return null;});denied(()->call(type("LocalV2AdmittedPublication"),"check",index,clock,expiry));wall.set(f.now);Object cancellation=java.lang.reflect.Proxy.newProxyInstance(fence.getClassLoader(),new Class<?>[]{fence},(proxy,method,args)->{throw new Exception("original route cancelled");});denied(()->call(type("LocalV2AdmittedPublication"),"check",index,clock,cancellation));call(index,"close");denied(()->call(type("LocalV2AdmittedPublication"),"check",index,clock,original));}finally{call(index,"close");f.close();}}
+
+    /** AUTHORED_NOT_RUN native profile-entry leaves. Synthetic records/clock
+     * values test preparation and refusal only; no fixture admits a PIN/Gate. */
+    private static byte[] nativeCreationProposal(){String profile=new String(firstProfile("en"),StandardCharsets.UTF_8);return ("{\"createProfile\":"+profile.replace("\"id\":\"reader\",","")+"}").getBytes(StandardCharsets.UTF_8);}
+    private static Object nativeInvocation(String action,byte[] raw)throws Exception{return create("LocalV2GateInvocation",action,raw,1L,1000L,30000L,30000L);}
+    private static Object nativeDataContext(byte[] raw)throws Exception{Object saved=localDecode(raw,snapshotPolicy(100L,250L));try{return create("LocalV2DataContext",saved);}finally{call(saved,"close");}}
+    private static byte[] nativeAdult(byte[] child)throws Exception{Object prepared=canonicalPrepare(child,"exit-child-mode",new byte[0]);try{return((byte[])field(prepared,"bytes")).clone();}finally{Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}}
+    @Test public void localV2NativeAdultReentryUsesActualModeAndPreservesPinDebt()throws Exception{
+        byte[] child=canonicalChild(),adult=nativeAdult(child),target="{\"profileId\":\"reader\"}".getBytes(StandardCharsets.UTF_8);Object prepared=null,saved=null,next=null;
+        try{saved=localDecode(adult,snapshotPolicy(100L,250L));Object scope=create("LocalV2GateScope",saved);assertEquals("adult",field(field(scope,"context"),"mode"));
+            prepared=canonicalPrepare(adult,"expand-access-settings",target);byte[] bytes=(byte[])field(prepared,"bytes");next=localDecode(bytes,snapshotPolicy(100L,250L));assertTrue((Boolean)field(prepared,"requiresPackage"));
+            String a=localProtected(adult),b=localProtected(bytes);assertTrue(b.contains("\"mode\":\"child\""));assertTrue(b.contains("\"selectionRevision\":4"));assertTrue(b.contains("\"profileRevision\":2"));
+            assertEquals(a.substring(a.indexOf(",\"pin\":")),b.substring(b.indexOf(",\"pin\":")));assertEquals(field(saved,"pinRevision"),field(next,"pinRevision"));assertEquals(field(saved,"count"),field(next,"count"));assertEquals(field(saved,"pendingAttemptId"),field(next,"pendingAttemptId"));
+            assertEquals(field(saved,"savedCooldownMs"),field(next,"savedCooldownMs"));assertEquals(field(saved,"lastObservedMs"),field(next,"lastObservedMs"));Object active=next;denied(()->call(scope,"same",active));call(type("LocalV2CanonicalTransition"),"validate",saved,next,"expand-access-settings",target);
+        }finally{if(saved!=null)call(saved,"close");if(next!=null)call(next,"close");if(prepared!=null)Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);Arrays.fill(child,(byte)0);Arrays.fill(adult,(byte)0);Arrays.fill(target,(byte)0);}}
+    @Test public void localV2NativeCreationOwnsGeneratedUidBeforeOriginalChecksum()throws Exception{
+        byte[] raw=nativeCreationProposal(),copy=raw.clone();Object one=nativeInvocation("expand-access-settings",raw),two=nativeInvocation("expand-access-settings",raw);byte[] effective=(byte[])field(one,"target");
+        try{String id=(String)field(one,"generatedProfileId");assertTrue(id.matches("profile-[a-f0-9]{32}"));assertFalse(id.equals(field(two,"generatedProfileId")));assertEquals(sha(effective),field(one,"targetChecksum"));assertFalse(sha(raw).equals(sha(effective)));
+            Arrays.fill(raw,(byte)7);assertTrue(new String(effective,StandardCharsets.UTF_8).startsWith("{\"createProfile\":{\"id\":\""+id+"\""));assertTrue(new String(copy,StandardCharsets.UTF_8).startsWith("{\"createProfile\":{\"label\":"));
+            byte[] child=canonicalChild();Object prepared=canonicalPrepare(child,"expand-access-settings",effective);try{assertTrue(localProtected((byte[])field(prepared,"bytes")).contains("\"activeProfileId\":\""+id+"\""));}finally{Arrays.fill(child,(byte)0);Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);}
+        }finally{call(one,"close");call(two,"close");Arrays.fill(raw,(byte)0);Arrays.fill(copy,(byte)0);}assertTrue(zero(effective));}
+    @Test public void localV2NativeCreationRejectsCallerUidMalformedProfileAndUnknownAction()throws Exception{
+        String raw=new String(nativeCreationProposal(),StandardCharsets.UTF_8);for(String value:new String[]{raw.replace("{\"label\":","{\"id\":\"caller-chosen\",\"label\":"),raw.replace("\"exactAge\":9","\"exactAge\":8"),raw.replace("\"label\":","\"approved\":true,\"label\":"),raw.replace("\"exactAge\":9","\"exactAge\":9,\"exactAge\":9"),raw.replace("\"locale\":\"en\"","\"locale\":\"de\"")})
+            denied(()->nativeInvocation("expand-access-settings",value.getBytes(StandardCharsets.UTF_8)));
+        denied(()->nativeInvocation("expand-access-settings",new byte[]{(byte)0xc3,0x28}));Object context=create("LocalV2GateContext","reader",VERSION,2L,2L,"child","active");
+        denied(()->create("LocalV2GateRequest",new Object(),repeat('a'),"enter-child-mode",repeat('b'),context,1L,3000L));}
+    @Test public void localV2NativeCreationAppendsAtMostFourAndNeverReusesUid()throws Exception{
+        byte[] saved=canonicalChild();Object original=nativeInvocation("expand-access-settings",nativeCreationProposal());byte[] reused=((byte[])field(original,"target")).clone();
+        try{for(int count=2;count<=4;count++){Object invocation=count==2?original:nativeInvocation("expand-access-settings",nativeCreationProposal()),prepared=canonicalPrepare(saved,"expand-access-settings",(byte[])field(invocation,"target"));byte[] next=((byte[])field(prepared,"bytes")).clone();
+                try{Object context=nativeDataContext(next);assertEquals(count,((java.util.Map<?,?>)field(context,"profiles")).size());assertEquals(field(invocation,"generatedProfileId"),field(context,"active"));if(count==2){byte[] existing=next;denied(()->canonicalPrepare(existing,"expand-access-settings",reused));}}
+                finally{Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);if(invocation!=original)call(invocation,"close");}Arrays.fill(saved,(byte)0);saved=next;}
+            Object fifth=nativeInvocation("expand-access-settings",nativeCreationProposal());byte[] full=saved;try{denied(()->canonicalPrepare(full,"expand-access-settings",(byte[])field(fifth,"target")));}finally{call(fifth,"close");}
+        }finally{call(original,"close");Arrays.fill(reused,(byte)0);Arrays.fill(saved,(byte)0);}}
+    @Test public void localV2NativeAdultReentryRequiresRetainedKnownProfile()throws Exception{
+        byte[] child=canonicalChild(),adult=nativeAdult(child),empty=localWrapper(5,4,4,2,17,250,repeat('f'));Object record=null;
+        try{denied(()->canonicalPrepare(child,"expand-access-settings","{\"profileId\":\"reader\"}".getBytes(StandardCharsets.UTF_8)));denied(()->canonicalPrepare(adult,"expand-access-settings","{\"profileId\":\"unknown\"}".getBytes(StandardCharsets.UTF_8)));
+            denied(()->canonicalPrepare(adult,"exit-child-mode",new byte[0]));record=localDecode(empty,snapshotPolicy(100L,250L));Object noProfile=record;denied(()->create("LocalV2GateScope",noProfile));denied(()->create("LocalV2DataContext",noProfile));
+            Object context=nativeDataContext(adult);java.util.Map<String,String> known=(java.util.Map<String,String>)field(context,"profiles");call(context,"seals",new java.util.LinkedHashMap<>(known));
+            denied(()->call(context,"seals",new java.util.LinkedHashMap<String,String>()));java.util.Map<String,String> orphan=new java.util.LinkedHashMap<>(known);orphan.put("unregistered",repeat('c'));denied(()->call(context,"seals",orphan));
+            java.util.Map<String,String> forged=new java.util.LinkedHashMap<>(known);forged.put("reader",repeat('b'));denied(()->call(context,"seals",forged));
+        }finally{if(record!=null)call(record,"close");Arrays.fill(child,(byte)0);Arrays.fill(adult,(byte)0);Arrays.fill(empty,(byte)0);}}
+    @Test public void localV2NativeContextBindingTracksAdultSelectionAndWholeRegistry()throws Exception{
+        byte[] child=canonicalChild(),adult=nativeAdult(child);Object saved=null,entered=null;
+        try{Object a=nativeDataContext(child),b=nativeDataContext(adult);assertEquals(field(packageProfile(child),"contextBinding"),field(a,"binding"));assertFalse(field(a,"binding").equals(field(b,"binding")));
+            entered=canonicalPrepare(adult,"expand-access-settings","{\"profileId\":\"reader\"}".getBytes(StandardCharsets.UTF_8));Object c=nativeDataContext((byte[])field(entered,"bytes"));assertFalse(field(b,"binding").equals(field(c,"binding")));assertFalse(field(a,"binding").equals(field(c,"binding")));
+            saved=localDecode(child,snapshotPolicy(100L,250L));byte[] pinChange=(byte[])call(type("LocalSnapshotV2"),"attempt",saved,3L,null,18L);try{assertEquals(field(a,"binding"),field(nativeDataContext(pinChange),"binding"));}finally{Arrays.fill(pinChange,(byte)0);}
+            Object missing=a;java.util.Map<String,String> original=(java.util.Map<String,String>)field(a,"profiles");java.util.Map<String,String> renamed=new java.util.LinkedHashMap<>();renamed.put("other",original.get("reader"));denied(()->call(missing,"seals",renamed));
+        }finally{if(saved!=null)call(saved,"close");if(entered!=null)Arrays.fill((byte[])field(entered,"bytes"),(byte)0);Arrays.fill(child,(byte)0);Arrays.fill(adult,(byte)0);}}
+    @Test public void localV2NativeReentryAndCreationCannotRefundOrRetargetCanonicalJournal()throws Exception{
+        byte[] child=canonicalChild(),adult=nativeAdult(child);Object one=nativeInvocation("expand-access-settings",nativeCreationProposal()),two=nativeInvocation("expand-access-settings",nativeCreationProposal()),prepared=null,old=null,next=null,refund=null;
+        try{prepared=canonicalPrepare(adult,"expand-access-settings",(byte[])field(one,"target"));byte[] bytes=(byte[])field(prepared,"bytes");old=localDecode(adult,snapshotPolicy(100L,250L));next=localDecode(bytes,snapshotPolicy(100L,250L));
+            Object before=old,after=next;denied(()->call(type("LocalV2CanonicalTransition"),"validate",before,after,"expand-access-settings",(byte[])field(two,"target")));
+            byte[] lower=(byte[])call(type("LocalSnapshotV2"),"attempt",next,0L,null,17L);try{refund=localDecode(lower,snapshotPolicy(100L,250L));Object forged=refund;denied(()->call(type("LocalV2CanonicalTransition"),"validate",before,forged,"expand-access-settings",(byte[])field(one,"target")));}finally{Arrays.fill(lower,(byte)0);}
+            java.util.Map<String,Object> a=(java.util.Map<String,Object>)call(type("LocalV2PackageJson"),"read",adult,131072),b=(java.util.Map<String,Object>)call(type("LocalV2PackageJson"),"read",bytes,131072);
+            java.util.Map<String,Object> aj=(java.util.Map<String,Object>)a.get("restartJournal"),bj=(java.util.Map<String,Object>)b.get("restartJournal");assertEquals(aj.get("attempts"),bj.get("attempts"));assertEquals(aj.get("anchor"),bj.get("anchor"));assertFalse(aj.get("protected").equals(bj.get("protected")));
+            assertEquals((Long)field(old,"revision")+1L,field(next,"revision"));assertEquals((Long)field(old,"journalRevision")+1L,field(next,"journalRevision"));assertEquals(field(old,"pinRevision"),field(next,"pinRevision"));
+        }finally{if(old!=null)call(old,"close");if(next!=null)call(next,"close");if(refund!=null)call(refund,"close");if(prepared!=null)Arrays.fill((byte[])field(prepared,"bytes"),(byte)0);call(one,"close");call(two,"close");Arrays.fill(child,(byte)0);Arrays.fill(adult,(byte)0);}}
+    @Test public void localV2NativeAdultOriginalRequestKeepsSixteenActionsAndDeadline()throws Exception{
+        String[] actions={"exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store","initiate-purchase","restore-purchases","open-external","share","account-change","export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial"};
+        Object child=create("LocalV2GateContext","reader",VERSION,2L,2L,"child","active"),adult=create("LocalV2GateContext","reader",VERSION,2L,3L,"adult","active");assertEquals(16,actions.length);
+        for(String action:actions){assertNotNull(create("LocalV2GateRequest",new Object(),repeat('a'),action,repeat('b'),child,1L,2500L));if(!action.equals("expand-access-settings"))denied(()->create("LocalV2GateRequest",new Object(),repeat('a'),action,repeat('b'),adult,1L,2500L));}
+        byte[] before=canonicalChild(),record=nativeAdult(before);Object saved=localDecode(record,snapshotPolicy(100L,250L)),invocation=create("LocalV2GateInvocation","expand-access-settings","{\"profileId\":\"reader\"}".getBytes(StandardCharsets.UTF_8),1L,1000L,60000L,1500L);
+        try{Object request=call(invocation,"capture",create("LocalV2GateScope",saved),1100L);assertSame(invocation,field(request,"originalHostChallenge"));assertEquals("adult",field(field(request,"context"),"mode"));assertEquals(2500L,field(request,"deadlineUptimeMs"));assertEquals(sha((byte[])field(invocation,"target")),field(request,"targetChecksum"));
+            denied(()->call(invocation,"live",2500L));denied(()->call(invocation,"live",1200L));assertEquals(2500L,field(invocation,"deadline"));
+        }finally{call(invocation,"close");call(saved,"close");Arrays.fill(before,(byte)0);Arrays.fill(record,(byte)0);}}
 
 }

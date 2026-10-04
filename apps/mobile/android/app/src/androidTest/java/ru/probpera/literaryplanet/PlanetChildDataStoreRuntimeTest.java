@@ -147,4 +147,29 @@ public class PlanetChildDataStoreRuntimeTest {
         KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);String alias=context.getPackageName()+"."+directory.getName()+".aes";assertTrue(keys.containsAlias(alias));keys.deleteEntry(alias);
         denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));assertFalse(keys.containsAlias(alias));assertArrayEquals(original,boundedFile(record));Arrays.fill(original,(byte)0);
     }
+    /** AUTHORED_NOT_RUN. These refusal cases never manufacture a native owner
+     * signature/receipt and never delete protected keys or reset saved data. */
+    @Test public void localV2UnknownBirthClaimWithExistingCipherCannotBeAdopted()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b5");File directory=bootstrapDirectory(context,runId);assertFalse(directory.exists());
+        PlanetChildDataStore fixture=PlanetChildDataStore.synthetic(context,runId);fixture.close();File record=new File(directory,"snapshot-v1");byte[] cipher=boundedFile(record);
+        File claim=new File(directory,"local-v2-birth.claim");byte[] raw=("LP-LOCAL-V2-DATA-BIRTH\n"+context.getPackageName()+"."+directory.getName()+"\n"+runId+"\n"+HASH+"\n"+HASH+"\n").getBytes(StandardCharsets.US_ASCII);
+        try{try(FileOutputStream out=new FileOutputStream(claim)){out.write(raw);out.getFD().sync();}denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));
+            assertArrayEquals(cipher,boundedFile(record));assertArrayEquals(raw,boundedFile(claim));assertFalse(new File(directory,"local-v2-birth.known").exists());
+            KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);assertTrue(keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));
+        }finally{Arrays.fill(cipher,(byte)0);Arrays.fill(raw,(byte)0);}}
+    @Test public void localV2PartialKnownBirthPendingCannotAdoptAnEncryptedSnapshotAsReceipt()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b6");File directory=bootstrapDirectory(context,runId);assertFalse(directory.exists());
+        PlanetChildDataStore fixture=PlanetChildDataStore.synthetic(context,runId);fixture.close();File record=new File(directory,"snapshot-v1");byte[] cipher=boundedFile(record),pending=HASH.getBytes(StandardCharsets.US_ASCII);
+        File marker=new File(directory,"local-v2-birth.known.pending"),known=new File(directory,"local-v2-birth.known");
+        try{try(FileOutputStream out=new FileOutputStream(marker)){out.write(pending);out.getFD().sync();}try(FileOutputStream out=new FileOutputStream(known)){out.write(cipher);out.getFD().sync();}
+            denied(()->PlanetChildDataStore.fixtureLocalV2ExistingOnly(context,runId));assertArrayEquals(cipher,boundedFile(record));assertArrayEquals(cipher,boundedFile(known));assertArrayEquals(pending,boundedFile(marker));
+        }finally{Arrays.fill(cipher,(byte)0);Arrays.fill(pending,(byte)0);}}
+    @Test public void localV2BirthCompletionWithoutOriginalRetiredPermitCannotCreateKnownReceipt()throws Exception{
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();String runId=bootstrapRunId("b7");File directory=bootstrapDirectory(context,runId);assertFalse(directory.exists());
+        try(PlanetChildDataStore.LocalV2BirthPlan plan=PlanetChildDataStore.fixtureLocalV2BirthPlan(context,runId,runId)){
+            java.lang.reflect.Constructor<?> constructor=PlanetChildDataStore.LocalV2BirthReceipt.class.getDeclaredConstructors()[0];constructor.setAccessible(true);
+            PlanetChildDataStore.LocalV2BirthReceipt receipt=(PlanetChildDataStore.LocalV2BirthReceipt)constructor.newInstance(plan,new byte[0]);denied(()->receipt.complete(null));
+            assertFalse(directory.exists());KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);assertFalse(keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));
+        }}
+
 }

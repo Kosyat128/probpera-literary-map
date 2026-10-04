@@ -350,14 +350,18 @@ final class PlanetChildDataStore {
      * canonical record without reacquiring it; this fixed Vault -> DataStore
      * order is also used for migration/readback. No main/UI joins occur here. */
     private void admittedState(PlanetChildVault.LocalV2DataAdmission admission,State state) throws Exception {
-        admission.check();Scope scope=admission.scope();Seal seal=state.seals.get(scope.profileId);require(seal!=null&&state.admissionBinding!=null&&state.admissionBinding.equals(admission.binding())&&seal.contentBinding.equals(admission.contentBinding())&&seal.scope.tuple.equals(scope.tuple));if(state.pendingMigration!=null)require(state.pendingMigration.equals(admission.migrationIdentity()));
+        admission.check();require(state.admissionBinding!=null&&state.admissionBinding.equals(admission.binding()));admission.futureSeals(sealBindings(state));Scope scope=admission.scope();
+        if(scope==null)require(state.scope==null);else{Seal seal=state.seals.get(scope.profileId);require(seal!=null&&seal.contentBinding.equals(admission.contentBinding())&&seal.scope.tuple.equals(scope.tuple));}if(state.pendingMigration!=null)require(state.pendingMigration.equals(admission.migrationIdentity()));
     }
+    private static Map<String,String> sealBindings(State state){Map<String,String> result=new TreeMap<>();for(Map.Entry<String,Seal> entry:state.seals.entrySet())result.put(entry.getKey(),entry.getValue().contentBinding);return result;}
     private void admittedLive(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,State state) throws Exception {
         admittedState(admission,state);require(state.pendingMigration==null&&!closed&&active==lease&&lease!=null&&lease.owner==this&&lease.admission==admission&&state.scope!=null
             &&state.generation==lease.generation&&state.nonce.equals(lease.nonce)&&state.scope.tuple.equals(lease.scope.tuple));
     }
     Lease admit(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {require(admission!=null);return locked(directory->{admission.check();existingOnly(directory);require(!closed&&active==null);try(State state=read(directory)){
-        require(state.scope==null&&state.pendingMigration==null);if(state.admissionBinding==null){require(state.seals.isEmpty()&&state.generation==0&&state.entries.isEmpty());state.admissionBinding=admission.binding();}else require(state.admissionBinding.equals(admission.binding()));Scope current=admission.scope();if(!state.seals.containsKey(current.profileId)){require(state.seals.size()<4);state.seals.put(current.profileId,new Seal(current,admission.contentBinding()));}admittedState(admission,state);
+        require(state.scope==null&&state.pendingMigration==null);PlanetChildVault.LocalV2KnownBirth birth=knownBirth(directory);admission.retainedBirth(birth);Scope current=admission.scope();require(current!=null);
+        if(state.admissionBinding==null){require(admission.initialProfile()&&state.seals.isEmpty()&&state.generation==0&&state.entries.isEmpty()&&state.nonce.equals(birth.nonce));byte[] empty=encode(state);try{require(digest(empty).equals(birth.emptyChecksum));}finally{Arrays.fill(empty,(byte)0);}state.admissionBinding=admission.binding();state.seals.put(current.profileId,new Seal(current,admission.contentBinding()));}
+        else require(state.admissionBinding.equals(admission.binding())&&state.seals.containsKey(current.profileId));admittedState(admission,state);
         for(Map.Entry<String,Stored> entry:state.entries.entrySet()){int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String key=entry.getKey().substring(split+1);if(keyScope(purpose,key).profileId.equals(current.profileId))admission.validate(purpose,key,entry.getValue().value);}
         require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.scope=current;write(directory,state,admission::check);admittedState(admission,state);
         Lease lease=new Lease(this,state.scope,state.generation,state.nonce,admission);active=lease;return lease;
@@ -388,13 +392,24 @@ final class PlanetChildDataStore {
      * future data publication carries a different persistent binding and
      * cannot be reopened/adopted by the old profile. No repair/reset exists. */
     void migrate(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.check();existingOnly(directory);require(!closed&&active==null);try(State state=read(directory)){
-        require(state.scope==null&&state.pendingMigration==null);if(state.admissionBinding==null)require(state.seals.isEmpty()&&state.generation==0&&state.entries.isEmpty());else require(state.admissionBinding.equals(admission.previousBinding()));Scope future=admission.scope();Seal previous=state.seals.get(future.profileId);if(previous!=null)require(previous.contentBinding.equals(admission.previousContentBinding()));
-        TreeMap<String,Stored> next=new TreeMap<>();boolean adopted=false;try{for(Map.Entry<String,Stored> entry:state.entries.entrySet()){admission.check();int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String oldKey=entry.getKey().substring(split+1);Scope oldScope=keyScope(purpose,oldKey);Seal oldSeal=state.seals.get(oldScope.profileId);require(oldSeal!=null&&oldScope.tuple.equals(oldSeal.scope.tuple));try(PlanetChildVault.LocalV2MigrationValue value=admission.partition(purpose,oldKey,entry.getValue().value)){if(value==null)continue;Scope nextScope=value.changed?future:oldScope;envelope(purpose,value.key,nextScope,value.bytes);if(value.changed)admission.validate(purpose,value.key,value.bytes);long revision=entry.getValue().revision;require(!value.changed||revision<MAX_SAFE-1);String id=purpose.name()+"\n"+value.key;require(!next.containsKey(id));next.put(id,new Stored(revision+(value.changed?1:0),value.bytes.clone()));}}
-            require(state.seals.containsKey(future.profileId)||state.seals.size()<4);state.seals.put(future.profileId,new Seal(future,admission.contentBinding()));require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.admissionBinding=admission.binding();state.pendingMigration=admission.migrationIdentity();state.close();state.entries.clear();state.entries.putAll(next);adopted=true;
-            admission.markDataWrite();write(directory,state,admission::check);admission.commitCanonical();admittedState(admission,state);return null;
+        require(state.scope==null&&state.pendingMigration==null&&state.admissionBinding!=null&&state.admissionBinding.equals(admission.previousBinding()));admission.retainedBirth(knownBirth(directory));admission.previousSeals(sealBindings(state));Scope future=admission.scope();
+        if(future!=null){Seal previous=state.seals.get(future.profileId);if(admission.createsProfile())require(previous==null&&state.seals.size()<4);else require(previous!=null&&previous.contentBinding.equals(admission.previousContentBinding()));}
+        TreeMap<String,Stored> next=new TreeMap<>();boolean adopted=false;try{for(Map.Entry<String,Stored> entry:state.entries.entrySet()){admission.check();int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String oldKey=entry.getKey().substring(split+1);Scope oldScope=keyScope(purpose,oldKey);Seal oldSeal=state.seals.get(oldScope.profileId);require(oldSeal!=null&&oldScope.tuple.equals(oldSeal.scope.tuple));try(PlanetChildVault.LocalV2MigrationValue value=future==null?null:admission.partition(purpose,oldKey,entry.getValue().value)){if(future==null){require(!next.containsKey(entry.getKey()));next.put(entry.getKey(),new Stored(entry.getValue().revision,entry.getValue().value.clone()));continue;}if(value==null)continue;Scope nextScope=value.changed?future:oldScope;envelope(purpose,value.key,nextScope,value.bytes);if(value.changed)admission.validate(purpose,value.key,value.bytes);long revision=entry.getValue().revision;require(!value.changed||revision<MAX_SAFE-1);String id=purpose.name()+"\n"+value.key;require(!next.containsKey(id));next.put(id,new Stored(revision+(value.changed?1:0),value.bytes.clone()));}}
+            if(future!=null)state.seals.put(future.profileId,new Seal(future,admission.contentBinding()));require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.admissionBinding=admission.binding();state.pendingMigration=admission.migrationIdentity();state.close();state.entries.clear();state.entries.putAll(next);adopted=true;
+            admission.markDataWrite();pendingMigrationFile(directory,state.pendingMigration);write(directory,state,admission::check);admission.commitCanonical();admittedState(admission,state);return null;
         }finally{if(!adopted)for(Stored slot:next.values())Arrays.fill(slot.value,(byte)0);}
     }});}
-    void migrationReadback(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.check();existingOnly(directory);try(State state=read(directory)){require(!closed&&active==null&&state.scope==null&&admission.migrationIdentity().equals(state.pendingMigration));admittedState(admission,state);for(Map.Entry<String,Stored> entry:state.entries.entrySet()){int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String key=entry.getKey().substring(split+1);if(keyScope(purpose,key).profileId.equals(admission.scope().profileId))admission.validate(purpose,key,entry.getValue().value);}admission.acknowledgeCanonical();state.pendingMigration=null;write(directory,state,admission::check);admittedState(admission,state);return null;}});}
+    void migrationReadback(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.check();existingMigration(directory,admission);try(State state=read(directory)){
+        require(!closed&&active==null&&state.scope==null&&admission.migrationIdentity().equals(state.pendingMigration));admittedState(admission,state);
+        for(Map.Entry<String,Stored> entry:state.entries.entrySet()){int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String key=entry.getKey().substring(split+1);Scope future=admission.scope();if(future!=null&&keyScope(purpose,key).profileId.equals(future.profileId))admission.validate(purpose,key,entry.getValue().value);}
+        admission.acknowledgeCanonical();admission.check();return null;}});}
+    /** The deny marker covers terminal publication and readback after joins. */
+    void migrationComplete(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.completionBoundary();existingMigration(directory,admission);String pending=admission.migrationIdentity();
+        try(State state=read(directory)){require(!closed&&active==null&&state.scope==null&&pending.equals(state.pendingMigration));admittedState(admission,state);
+            try{state.pendingMigration=null;write(directory,state,admission::completionBoundary);admittedState(admission,state);admission.completionBoundary();
+                Os.unlink(migrationPending(directory).getPath());syncBirthDirectory(directory);closed=true;return null;
+            }catch(Throwable failure){try{pendingMigrationFile(directory,pending);}catch(Throwable sticky){failure.addSuppressed(sticky);}throw failure;}}
+    });}
 
     /** Bounded strict JSON syntax with decoded-key duplicate detection. Android
      * JSONObject alone may silently overwrite duplicates; never use that as the
@@ -434,6 +449,8 @@ final class PlanetChildDataStore {
     static final class LocalV2BirthReceipt {
         private final LocalV2BirthPlan original;private final byte[] marker;private final String checksum;
         private LocalV2BirthReceipt(LocalV2BirthPlan original,byte[] marker){this.original=original;this.marker=marker.clone();checksum=original.checksum;}
+        void retainUnknownCompletion() throws Exception {original.store.locked(directory->{File file=original.store.knownPending(directory);if(!file.exists())original.store.pendingBirth(directory,original.checksum.getBytes(StandardCharsets.US_ASCII));return null;});}
+        void complete(PlanetChildVault.LocalV2ProfileBirthPermit permit) throws Exception {require(permit!=null);original.store.locked(directory->{byte[] plain=permit.dataKnownReceipt();try{original.store.exactBirth(directory,original,marker);original.store.completeBirth(directory,plain,permit);return null;}catch(Throwable failure){permit.dataBirthUnknown();throw failure;}finally{Arrays.fill(plain,(byte)0);}});}
         void readback(PlanetChildVault.LocalV2ProfileBirthPermit permit) throws Exception {
             require(permit!=null);original.store.locked(directory->{permit.dataReadback(original.identity,original.nonce,checksum);original.store.exactBirth(directory,original,marker);return null;});
         }
@@ -453,15 +470,66 @@ final class PlanetChildDataStore {
         require(runId==null||"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&ApplicationInfo.FLAG_DEBUGGABLE)!=0&&runId.matches("[a-f0-9]{32}"));
         name="literary-planet-child-data-v1"+(runId==null?"":"-synthetic-"+runId);identity=context.getPackageName()+"."+name;
     }
-    private void existingOnly(File directory) throws Exception {
+    private void existingOnly(File directory) throws Exception {existingRecord(directory);require(!knownPending(directory).exists()&&!migrationPending(directory).exists());knownBirth(directory);}
+    private File migrationPending(File directory) throws Exception {File file=new File(directory,"local-v2-migration.pending");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));return file;}
+    private void pendingMigrationFile(File directory,String identity) throws Exception {
+        require(identity!=null&&identity.matches("[a-f0-9]{64}"));File file=migrationPending(directory);byte[] marker=identity.getBytes(StandardCharsets.US_ASCII);
+        try{if(file.exists()){byte[] actual=boundedRegular(file,64);try{require(MessageDigest.isEqual(actual,marker));}finally{Arrays.fill(actual,(byte)0);}return;}
+            FileDescriptor fd=Os.open(file.getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+            try{int at=0;while(at<marker.length){int n=Os.write(fd,marker,at,marker.length-at);require(n>0);at+=n;}Os.fsync(fd);}finally{Os.close(fd);}syncBirthDirectory(directory);
+        }finally{Arrays.fill(marker,(byte)0);}
+    }
+    private void existingMigration(File directory,PlanetChildVault.LocalV2DataAdmission admission) throws Exception {
+        existingRecord(directory);require(!knownPending(directory).exists());knownBirth(directory);byte[] actual=boundedRegular(migrationPending(directory),64);
+        try{require(new String(actual,StandardCharsets.US_ASCII).equals(admission.migrationIdentity()));}finally{Arrays.fill(actual,(byte)0);}
+    }
+    private void existingRecord(File directory) throws Exception {
         unlocked();AtomicFile file=record(directory);require(file.getBaseFile().isFile()&&!new File(file.getBaseFile().getPath()+".bak").exists()&&!new File(file.getBaseFile().getPath()+".new").exists());
         key(false,directory);try(State ignored=read(directory)){}
+    }
+    /** Known terminal is an independently encrypted receipt. An earlier claim
+     * alone is never existing state; no optional ignore/bypass path exists. */
+    private File knownPending(File directory) throws Exception {File file=new File(directory,"local-v2-birth.known.pending");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));return file;}
+    private void pendingBirth(File directory,byte[] identity) throws Exception {File file=knownPending(directory);if(file.exists()){byte[] actual=boundedRegular(file,4096);try{require(MessageDigest.isEqual(actual,identity));}finally{Arrays.fill(actual,(byte)0);}return;}
+        FileDescriptor fd=Os.open(file.getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);try{int at=0;while(at<identity.length){int n=Os.write(fd,identity,at,identity.length-at);require(n>0);at+=n;}Os.fsync(fd);}finally{Os.close(fd);}syncBirthDirectory(directory);}
+    private void syncBirthDirectory(File directory) throws Exception {FileDescriptor fd=Os.open(directory.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);try{Os.fsync(fd);}finally{Os.close(fd);}}
+    private AtomicFile knownRecord(File directory) throws Exception {
+        File file=new File(directory,"local-v2-birth.known");for(String suffix:new String[]{"",".bak",".new"}){File named=new File(file.getPath()+suffix);require(named.getAbsoluteFile().equals(named.getCanonicalFile()));if(named.exists()){StructStat stat=Os.lstat(named.getPath());require(suffix.isEmpty()&&OsConstants.S_ISREG(stat.st_mode)&&stat.st_size>=30&&stat.st_size<=262144+29);}}return new AtomicFile(file);
+    }
+    private byte[] boundedRegular(File file,int max) throws Exception {
+        require(file.getAbsoluteFile().equals(file.getCanonicalFile()));FileDescriptor fd=Os.open(file.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);byte[] bytes=null;boolean handed=false;
+        try{StructStat opened=Os.fstat(fd),named=Os.lstat(file.getPath());require(OsConstants.S_ISREG(opened.st_mode)&&opened.st_dev==named.st_dev&&opened.st_ino==named.st_ino&&opened.st_size>0&&opened.st_size<=max);bytes=new byte[(int)opened.st_size];
+            int at=0;while(at<bytes.length){int n=Os.read(fd,bytes,at,bytes.length-at);require(n>0);at+=n;}byte[] extra=new byte[1];require(Os.read(fd,extra,0,1)==0);handed=true;return bytes;
+        }finally{Os.close(fd);if(!handed&&bytes!=null)Arrays.fill(bytes,(byte)0);}
+    }
+    private byte[] knownPlain(File directory) throws Exception {
+        AtomicFile file=knownRecord(directory);require(file.getBaseFile().isFile());byte[] encoded=boundedRegular(file.getBaseFile(),262144+29),plain=null;
+        try{require(encoded.length>=30&&encoded[0]==1);Cipher cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.DECRYPT_MODE,key(false,directory),new GCMParameterSpec(128,Arrays.copyOfRange(encoded,1,13)));
+            cipher.updateAAD((identity+"\nLP-LOCAL-V2-KNOWN-BIRTH-v1").getBytes(StandardCharsets.US_ASCII));plain=cipher.doFinal(encoded,13,encoded.length-13);require(plain.length>0&&plain.length<=262144);byte[] answer=plain;plain=null;return answer;
+        }finally{Arrays.fill(encoded,(byte)0);if(plain!=null)Arrays.fill(plain,(byte)0);}
+    }
+    private PlanetChildVault.LocalV2KnownBirth knownBirth(File directory) throws Exception {
+        byte[] plain=knownPlain(directory),claim=null;try{PlanetChildVault.LocalV2KnownBirth proof=PlanetChildVault.LocalV2KnownBirth.verify(context,identity,plain);claim=boundedRegular(birthMarker(directory),4096);require(digest(claim).equals(proof.claimChecksum));return proof;}
+        finally{Arrays.fill(plain,(byte)0);if(claim!=null)Arrays.fill(claim,(byte)0);}
+    }
+    private void completeBirth(File directory,byte[] plain,PlanetChildVault.LocalV2ProfileBirthPermit permit) throws Exception {
+        permit.dataCompletionBoundary();AtomicFile file=knownRecord(directory);require(!file.getBaseFile().exists()&&!knownPending(directory).exists());byte[] pending=digest(plain).getBytes(StandardCharsets.US_ASCII),encoded=null,ciphertext=null;FileOutputStream output=null;boolean began=false;
+        try{PlanetChildVault.LocalV2KnownBirth.verify(context,identity,plain);pendingBirth(directory,pending);began=true;permit.dataCompletionBoundary();Cipher cipher=Cipher.getInstance("AES/GCM/NoPadding");cipher.init(Cipher.ENCRYPT_MODE,key(false,directory));byte[] iv=cipher.getIV();require(iv!=null&&iv.length==12);
+            cipher.updateAAD((identity+"\nLP-LOCAL-V2-KNOWN-BIRTH-v1").getBytes(StandardCharsets.US_ASCII));ciphertext=cipher.doFinal(plain);encoded=ByteBuffer.allocate(13+ciphertext.length).put((byte)1).put(iv).put(ciphertext).array();permit.dataCompletionBoundary();
+            output=file.startWrite();for(int at=0;at<encoded.length;at+=65536){permit.dataCompletionBoundary();output.write(encoded,at,Math.min(65536,encoded.length-at));}output.getFD().sync();permit.dataCompletionBoundary();file.finishWrite(output);output=null;
+            FileDescriptor fd=Os.open(directory.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);try{Os.fsync(fd);}finally{Os.close(fd);}permit.dataCompletionBoundary();
+            byte[] actual=knownPlain(directory);try{require(MessageDigest.isEqual(actual,plain));knownBirth(directory);permit.dataCompletionBoundary();}finally{Arrays.fill(actual,(byte)0);}
+            // Terminal proof/readback/ACK is still in the occupied original
+            // native lane. Pending is removed last; failure restores the deny.
+            permit.dataCompletionBoundary();Os.unlink(knownPending(directory).getPath());syncBirthDirectory(directory);
+        }catch(Throwable failure){if(began)try{pendingBirth(directory,pending);}catch(Throwable sticky){failure.addSuppressed(sticky);}throw failure;}
+        finally{if(output!=null)file.failWrite(output);Arrays.fill(pending,(byte)0);if(encoded!=null)Arrays.fill(encoded,(byte)0);if(ciphertext!=null)Arrays.fill(ciphertext,(byte)0);}
     }
     private File birthMarker(File directory) throws Exception {
         File file=new File(directory,"local-v2-birth.claim");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));return file;
     }
     private void exactBirth(File directory,LocalV2BirthPlan plan,byte[] marker) throws Exception {
-        existingOnly(directory);File claim=birthMarker(directory);FileDescriptor fd=Os.open(claim.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
+        existingRecord(directory);File claim=birthMarker(directory);FileDescriptor fd=Os.open(claim.getPath(),OsConstants.O_RDONLY|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0);
         try{StructStat opened=Os.fstat(fd),named=Os.lstat(claim.getPath());require(OsConstants.S_ISREG(opened.st_mode)&&opened.st_dev==named.st_dev&&opened.st_ino==named.st_ino&&opened.st_size==marker.length&&marker.length<=4096);
             byte[] actual=new byte[marker.length];try{int at=0;while(at<actual.length){int count=Os.read(fd,actual,at,actual.length-at);require(count>0);at+=count;}require(MessageDigest.isEqual(actual,marker));}finally{Arrays.fill(actual,(byte)0);}
         }finally{Os.close(fd);}
@@ -474,7 +542,7 @@ final class PlanetChildDataStore {
             permit.consumeDataBirth(original.identity,original.nonce,original.checksum);byte[] marker=permit.dataMarker(original.identity,original.nonce,original.checksum);
             try{AtomicFile record=store.record(directory);KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);
                 require(!keys.containsAlias(store.identity+".aes")&&!record.getBaseFile().exists()&&!new File(record.getBaseFile().getPath()+".bak").exists()
-                    &&!new File(record.getBaseFile().getPath()+".new").exists()&&!store.birthMarker(directory).exists());
+                    &&!new File(record.getBaseFile().getPath()+".new").exists()&&!store.birthMarker(directory).exists()&&!store.knownRecord(directory).getBaseFile().exists());
                 // Persist the claim BEFORE key birth. Unknown generation/add
                 // outcomes retain it and can never become a fresh-key retry.
                 FileDescriptor fd=Os.open(store.birthMarker(directory).getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);

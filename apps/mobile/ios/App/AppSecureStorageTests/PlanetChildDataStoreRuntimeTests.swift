@@ -124,3 +124,27 @@ final class PlanetChildDataStoreRuntimeTests: XCTestCase {
     }
 
 }
+
+/** AUTHORED_NOT_RUN. These codec/ownership refusals do not manufacture opaque
+ * admission, original native PIN transfer, hardware key or durable known birth. */
+extension PlanetChildDataStoreRuntimeTests {
+    func testProfileEntryPreservesOtherProfileKeyValueRevisionAndSealBytes() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureProfileEntrySeals("retained")) }
+    func testProfileEntryRejectsOrphanSealContentSubstitutionAndUnsealedRegistryProfile() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureProfileEntrySeals("orphan")) }
+    func testProfileEntryRequiresOwnExistingSealAndNeverReusesItForCreation() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureProfileEntrySeals("nonreuse")) }
+    func testProfileEntryPendingMigrationSurvivesCodecWithoutDeletingOriginalData() throws {
+        XCTAssertTrue(try PlanetChildDataStore.fixtureProfileEntrySeals("pending"))
+        let id=try bootstrapRunId("b7"),files=try bootstrapFiles(id),store=try PlanetChildDataStore.synthetic(runId:id);try store.close()
+        let original=try Data(contentsOf:files.record),pending=files.directory.appendingPathComponent("local-v2-migration.pending"),bytes=Data("unknown-migration-cannot-be-adopted".utf8);try bytes.write(to:pending,options:.withoutOverwriting)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2ExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:pending),bytes);XCTAssertEqual(try Data(contentsOf:files.record),original)
+    }
+    func testLocalV2ClaimOnlyCannotReopenOrAdoptExistingEncryptedDataStore() throws {
+        let id=try bootstrapRunId("b5"),files=try bootstrapFiles(id),store=try PlanetChildDataStore.synthetic(runId:id);try store.close()
+        let original=try Data(contentsOf:files.record),claim=files.directory.appendingPathComponent("local-v2-birth.claim"),marker=Data("unknown-birth-claim-does-not-prove-original-terminal".utf8);try marker.write(to:claim,options:.withoutOverwriting)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2KnownExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:claim),marker);XCTAssertEqual(try Data(contentsOf:files.record),original)
+    }
+    func testLocalV2PendingKnownReceiptRemainsFailClosedAndBytePreserved() throws {
+        let id=try bootstrapRunId("b6"),files=try bootstrapFiles(id),store=try PlanetChildDataStore.synthetic(runId:id);try store.close()
+        let original=try Data(contentsOf:files.record),pending=files.directory.appendingPathComponent("local-v2-birth.receipt.new"),bytes=Data("pending-original-known-terminal-must-not-be-adopted".utf8);try bytes.write(to:pending,options:.withoutOverwriting)
+        XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2KnownExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:pending),bytes);XCTAssertEqual(try Data(contentsOf:files.record),original)
+    }
+}

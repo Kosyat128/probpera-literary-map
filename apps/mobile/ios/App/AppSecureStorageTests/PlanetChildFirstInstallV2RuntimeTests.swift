@@ -446,3 +446,55 @@ final class PlanetChildNativeAdmittedDataTests: XCTestCase {
     func testDurableSealRefusesTruncationUnknownTrailerAndForeignActiveScope() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureAdmittedSealCodec()) }
     func testPublicationRechecksExpiryAfterFreshAndClosedIndex() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("admittedPublication")) }
 }
+
+/** AUTHORED_NOT_RUN. Production structural/native ownership leaves only.
+ * No fabricated native terminal, owner key, package admission or App activation. */
+final class PlanetChildNativeProfileEntryTests: XCTestCase {
+    private func profile() -> Data { Data(#"{"id":"reader","label":"Native Reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":["nature"],"blockedTopics":["horror"],"soundEnabled":false,"motion":"calm","narrationEnabled":false,"localeLocked":true}"#.utf8) }
+    private func child() throws -> Data { try PlanetChildLocalCanonicalRuntimeFixture.child(profile()) }
+    private func adult() throws -> Data { try PlanetChildLocalCanonicalRuntimeFixture.prepare(child(),action:"exit-child-mode",target:Data()) }
+    private func draft() -> Data { Data(("{\"createProfile\":"+String(decoding:profile(),as:UTF8.self).replacingOccurrences(of:"\"id\":\"reader\",",with:"")+"}").utf8) }
+    func testAdultReentryKeepsExistingUidAndExactPinDebtJournalCoordinates() throws {
+        let before=try adult(),target=Data(#"{"profileId":"reader"}"#.utf8),next=try PlanetChildLocalCanonicalRuntimeFixture.prepare(before,action:"expand-access-settings",target:target)
+        try PlanetChildLocalCanonicalRuntimeFixture.validate(before,next,action:"expand-access-settings",target:target)
+        let a=try PlanetChildLocalCanonicalRuntimeFixture.inspect(before),b=try PlanetChildLocalCanonicalRuntimeFixture.inspect(next)
+        XCTAssertEqual(b.mode,"child");XCTAssertEqual(b.root,a.root+1);XCTAssertEqual(b.journal,a.journal+1);XCTAssertEqual(b.selection,a.selection+1);XCTAssertEqual(b.profile,a.profile)
+        XCTAssertEqual(try PlanetChildLocalProfileRuntimeFixture.pinTail(before),try PlanetChildLocalProfileRuntimeFixture.pinTail(next));XCTAssertEqual(b.count,a.count);XCTAssertEqual(b.debt,a.debt);XCTAssertEqual(b.pending,a.pending)
+        XCTAssertEqual(try PlanetChildLocalCanonicalRuntimeFixture.retainedProfileJson(before,id:"reader"),try PlanetChildLocalCanonicalRuntimeFixture.retainedProfileJson(next,id:"reader"))
+    }
+    func testAdultExitAndReentryHaveDistinctFullCanonicalBindings() throws {
+        let before=try child(),exit=try adult(),reentry=try PlanetChildLocalCanonicalRuntimeFixture.prepare(exit,action:"expand-access-settings",target:Data(#"{"profileId":"reader"}"#.utf8))
+        XCTAssertNotEqual(try PlanetChildLocalCanonicalRuntimeFixture.contextBinding(before),try PlanetChildLocalCanonicalRuntimeFixture.contextBinding(exit));XCTAssertNotEqual(try PlanetChildLocalCanonicalRuntimeFixture.contextBinding(exit),try PlanetChildLocalCanonicalRuntimeFixture.contextBinding(reentry))
+    }
+    func testRawNativeCreationMintsUidAndRejectsCallerIdBeforeChecksum() throws {
+        let a=try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(draft()),b=try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(draft())
+        XCTAssertNotEqual(a.id,b.id);XCTAssertNotNil(a.id.range(of:"\\Aprofile-[a-f0-9]{32}\\z",options:.regularExpression));XCTAssertTrue(String(decoding:a.bytes,as:UTF8.self).contains("\"id\":\""+a.id+"\""))
+        XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(Data(("{\"createProfile\":"+String(decoding:profile(),as:UTF8.self)+"}").utf8)))
+        XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(Data(#"{"createProfile":{"label":"Incomplete"}}"#.utf8)))
+    }
+    func testOriginalNativeCreationOwnsEffectiveTargetAndCannotTransferAbsentPinTerminal() throws { XCTAssertTrue(try PlanetChildLocalCanonicalRuntimeFixture.nativeInvocationOwnsCreation(draft(),adult())) }
+    func testAdditionalCreationPreservesAAndOriginalPinWhileAddingOnlyNewProfile() throws {
+        let before=try adult(),target=try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(draft()),next=try PlanetChildLocalCanonicalRuntimeFixture.prepare(before,action:"expand-access-settings",target:target.bytes)
+        try PlanetChildLocalCanonicalRuntimeFixture.validate(before,next,action:"expand-access-settings",target:target.bytes)
+        XCTAssertEqual(try PlanetChildLocalCanonicalRuntimeFixture.retainedProfileJson(before,id:"reader"),try PlanetChildLocalCanonicalRuntimeFixture.retainedProfileJson(next,id:"reader"));XCTAssertEqual(try PlanetChildLocalProfileRuntimeFixture.pinTail(before),try PlanetChildLocalProfileRuntimeFixture.pinTail(next))
+        XCTAssertTrue(try PlanetChildLocalCanonicalRuntimeFixture.protectedText(next).contains("\"activeProfileId\":\""+target.id+"\""));XCTAssertEqual(try PlanetChildLocalCanonicalRuntimeFixture.inspect(next).profile,3)
+    }
+    func testCreationBoundedFourAndEffectiveUidCannotReuseExistingProfile() throws {
+        var current=try adult(),last=Data()
+        for _ in 0..<3 { let target=try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(draft());last=target.bytes;current=try PlanetChildLocalCanonicalRuntimeFixture.prepare(current,action:"expand-access-settings",target:target.bytes) }
+        XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.prepare(current,action:"expand-access-settings",target:last))
+        let fifth=try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(draft());XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.prepare(current,action:"expand-access-settings",target:fifth.bytes))
+        XCTAssertNotNil(try PlanetChildLocalCanonicalRuntimeFixture.retainedProfileJson(current,id:"reader"))
+    }
+    func testAdultScopeAllowsOnlyOriginalExpansionAndUnknownReentryNeverAdopts() throws {
+        let saved=try adult();try PlanetChildLocalCanonicalRuntimeFixture.adultGateAction(saved,action:"expand-access-settings")
+        for action in ["exit-child-mode","switch-adult-profile","change-exact-age","share","enter-child-mode"] { XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.adultGateAction(saved,action:action)) }
+        for target in [#"{"profileId":"unknown"}"#,#"{"profileId":"reader","mode":"child"}"#] { XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.prepare(saved,action:"expand-access-settings",target:Data(target.utf8))) }
+        XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.prepare(child(),action:"expand-access-settings",target:Data(#"{"profileId":"reader"}"#.utf8)))
+    }
+    func testPreparedReentryAndCreationCannotSubstituteForRealReviewedPackageAdmission() throws {
+        let saved=try adult(),target=try PlanetChildLocalCanonicalRuntimeFixture.nativeCreationTarget(draft())
+        XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.withoutPackage(saved,action:"expand-access-settings",target:Data(#"{"profileId":"reader"}"#.utf8)))
+        XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.withoutPackage(saved,action:"expand-access-settings",target:target.bytes))
+    }
+}

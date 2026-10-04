@@ -333,12 +333,37 @@ final class PlanetChildDataStore {
     /** Caller is the opaque Vault producer holding the actual canonical lock.
      * These methods acquire only DataStore. check() never joins main or opens
      * another Vault transaction; all byte and readback fences keep this order. */
-    private func admittedState(_ admission: PlanetChildLocalV2DataAdmission,_ state: State) throws { try admission.check();let scope=try admission.scope();guard let seal=state.seals[scope.profileId] else { throw Failure.unavailable };try Self.require(try state.admissionBinding==admission.binding() && seal.contentBinding==admission.contentBinding() && seal.scope.tuple==scope.tuple);if let pending=state.pendingMigration { try Self.require(try pending==admission.migrationIdentity()) } }
+    private static func knownProfiles(_ state: State,_ profiles: [String:String]) throws {
+        try require(state.admissionBinding != nil && Set(state.seals.keys)==Set(profiles.keys))
+        for (id,seal) in state.seals { try require(profiles[id]==seal.contentBinding && id==seal.scope.profileId) }
+    }
+    private static func targetSeal(_ state: State,id: String,creating: Bool,previous: [String:String]) throws {
+        if creating { try require(previous[id]==nil && state.seals[id]==nil && state.seals.count<4) }
+        else { guard let seal=state.seals[id] else { throw Failure.unavailable };try require(previous[id]==seal.contentBinding) }
+    }
+    private static func retainedEntries(_ state: State) -> [String:Stored] {
+        var result=[String:Stored]();for (id,stored) in state.entries { result[id]=Stored(revision:stored.revision,value:Data(Array(stored.value))) };return result
+    }
+    private func admittedState(_ admission: PlanetChildLocalV2DataAdmission,_ state: State) throws {
+        try admission.check();try Self.require(try state.admissionBinding==admission.binding());try Self.knownProfiles(state,admission.futureProfiles())
+        if let scope=try admission.migrationScope() { guard let seal=state.seals[scope.profileId] else { throw Failure.unavailable };try Self.require(try seal.contentBinding==admission.contentBinding() && seal.scope.tuple==scope.tuple) }
+        else { try Self.require(state.scope==nil) }
+        if let pending=state.pendingMigration { try Self.require(try pending==admission.migrationIdentity()) }
+    }
     private func admittedLive(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ state: State) throws { try admittedState(admission,state);try Self.require(state.pendingMigration==nil && !closed && active === lease && lease.owner === self && lease.admission === admission && state.scope != nil && state.generation==lease.generation && state.nonce==lease.nonce && state.scope?.tuple==lease.scope.tuple) }
-    func admit(_ admission: PlanetChildLocalV2DataAdmission) throws -> Lease { try locked { directory in try admission.check();try existingOnly(directory);try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
-        if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.generation==0 && state.entries.isEmpty);state.admissionBinding=try admission.binding() } else { try Self.require(try state.admissionBinding==admission.binding()) };let current=try admission.scope();if state.seals[current.profileId]==nil { try Self.require(state.seals.count<4);state.seals[current.profileId]=Seal(scope:current,contentBinding:try admission.contentBinding()) };try admittedState(admission,state)
+    func admit(_ admission: PlanetChildLocalV2DataAdmission) throws -> Lease { try locked { directory in
+        try admission.check();try existingOnly(directory);let birth=try knownBirth(directory);try admission.knownBirth(birth)
+        try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
+        let current=try admission.scope()
+        if state.admissionBinding==nil {
+            try Self.require(try state.seals.isEmpty && state.generation==0 && state.entries.isEmpty && admission.initialProfileId()==birth.profileId && current.profileId==birth.profileId && admission.contentBinding()==birth.profileContentBinding)
+            try Self.require(state.nonce==birth.nonce);try birth.emptyState(Self.encode(state));state.admissionBinding=try admission.binding();state.seals[current.profileId]=Seal(scope:current,contentBinding:try admission.contentBinding())
+        } else {
+            try Self.require(try state.admissionBinding==admission.binding());try Self.knownProfiles(state,admission.futureProfiles());try Self.targetSeal(state,id:current.profileId,creating:false,previous:admission.futureProfiles())
+        }
+        try admittedState(admission,state)
         for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==current.profileId { try admission.validate(purpose,pair[1],stored.value) } }
-        try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.scope=current;try write(directory,state:state,check:admission.check);try admittedState(admission,state);let lease=Lease(owner:self,scope:state.scope!,generation:state.generation,nonce:state.nonce,admission:admission);active=lease;return lease
+        try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.scope=current;try write(directory,state:state,check:admission.check);try admittedState(admission,state);let lease=Lease(owner:self,scope:current,generation:state.generation,nonce:state.nonce,admission:admission);active=lease;return lease
     } }
     func admittedOperation(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease) throws -> Cancellation { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);let now=try Self.now(),deadline=try admission.deadlineMs();try Self.require(now<deadline && deadline-now<=60000);return Cancellation(owner:self,lease:lease,deadline:deadline) } }
     func admittedQuery(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ original: Result,_ purpose: Purpose,_ key: String) throws -> Slot { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.require(try Self.keyScope(purpose,key:key).tuple==lease.scope.tuple);guard let captured=original.get(purpose,key:key) else { throw Failure.unavailable };let saved=state.entries[purpose.rawValue+"\n"+key];try Self.require(captured.revision==(saved?.revision ?? 0) && captured.checksum==saved.map { Self.digest($0.value) });if let saved { try admission.validate(purpose,key,saved.value) };let copied=Slot(revision:saved?.revision ?? 0,value:saved?.value);do { try admission.check();return copied } catch { copied.dispose();throw error } } }
@@ -357,16 +382,133 @@ final class PlanetChildDataStore {
     /** Actual previous namespace has retired; future data is sealed before
      * the canonical CAS. Unknown partial publication cannot match old binding
      * and is never repaired, reopened or adopted into a fresh namespace. */
-    func migrate(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in try admission.check();try existingOnly(directory);try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
-        if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.generation==0 && state.entries.isEmpty) } else { try Self.require(try state.admissionBinding==admission.previousBinding()) };let future=try admission.scope();if let previous=state.seals[future.profileId] { try Self.require(try previous.contentBinding==admission.previousContentBinding()) }
+    func migrate(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
+        try admission.check();try existingOnly(directory);let birth=try knownBirth(directory);try admission.knownBirth(birth)
+        try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
+        try Self.require(try state.admissionBinding != nil && state.admissionBinding==admission.previousBinding());let previous=try admission.previousProfiles();try Self.knownProfiles(state,previous)
+        let future=try admission.migrationScope(),created=try admission.creatingProfileId()
+        if let future { try Self.targetSeal(state,id:future.profileId,creating:created != nil,previous:previous);if let created { try Self.require(created==future.profileId) } }
+        else { try Self.require(created==nil) }
         var next=[String:Stored](),adopted=false;defer { if !adopted { for id in Array(next.keys) { if var stored=next.removeValue(forKey:id) { stored.value.resetBytes(in:0..<stored.value.count) } } } }
-        for (id,stored) in state.entries { try admission.check();let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let oldScope=try Self.keyScope(purpose,key:pair[1]);guard let oldSeal=state.seals[oldScope.profileId] else { throw Failure.unavailable };try Self.require(oldScope.tuple==oldSeal.scope.tuple)
-            guard let value=try admission.partition(purpose,pair[1],stored.value) else { continue };defer { value.close() };try Self.envelope(purpose,key:value.key,scope:value.changed ? future:oldScope,bytes:value.bytes);if value.changed { try admission.validate(purpose,value.key,value.bytes) };let compound=purpose.rawValue+"\n"+value.key;try Self.require((!value.changed || stored.revision<Self.maxSafe-1) && next[compound]==nil);next[compound]=Stored(revision:stored.revision+(value.changed ? 1:0),value:Data(Array(value.bytes)))
-        }
-        try Self.require(state.seals[future.profileId] != nil || state.seals.count<4);state.seals[future.profileId]=Seal(scope:future,contentBinding:try admission.contentBinding());try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.admissionBinding=try admission.binding();state.pendingMigration=try admission.migrationIdentity();state.wipe();state.entries=next;adopted=true;try admission.markDataWrite();try write(directory,state:state,check:admission.check);try admission.commitCanonical();try admittedState(admission,state)
+        if let future {
+            for (id,stored) in state.entries {
+                try admission.check();let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable }
+                let oldScope=try Self.keyScope(purpose,key:pair[1]);guard let oldSeal=state.seals[oldScope.profileId] else { throw Failure.unavailable };try Self.require(oldScope.tuple==oldSeal.scope.tuple)
+                guard let value=try admission.partition(purpose,pair[1],stored.value) else { continue };defer { value.close() }
+                try Self.envelope(purpose,key:value.key,scope:value.changed ? future:oldScope,bytes:value.bytes);if value.changed { try admission.validate(purpose,value.key,value.bytes) }
+                let compound=purpose.rawValue+"\n"+value.key;try Self.require((!value.changed || stored.revision<Self.maxSafe-1) && next[compound]==nil);next[compound]=Stored(revision:stored.revision+(value.changed ? 1:0),value:Data(Array(value.bytes)))
+            }
+            state.seals[future.profileId]=Seal(scope:future,contentBinding:try admission.contentBinding())
+        } else { next=Self.retainedEntries(state) }
+        try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.admissionBinding=try admission.binding();state.pendingMigration=try admission.migrationIdentity()
+        state.wipe();state.entries=next;adopted=true;try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try admission.commitCanonical();try admittedState(admission,state)
     } }
-    func migrationReadback(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try Self.require(try !closed && active==nil && state.scope==nil && state.pendingMigration==admission.migrationIdentity());try admittedState(admission,state);for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==admission.scope().profileId { try admission.validate(purpose,pair[1],stored.value) } };try admission.acknowledgeCanonical();state.pendingMigration=nil;try write(directory,state:state,check:admission.check);try admittedState(admission,state) } }
+    func migrationReadback(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
+        try admission.check();try existingOnly(directory,migration:admission);let birth=try knownBirth(directory);try admission.knownBirth(birth)
+        let state=try read(directory);defer { state.wipe() };try Self.require(try !closed && active==nil && state.scope==nil && state.pendingMigration==admission.migrationIdentity());try admittedState(admission,state)
+        if let future=try admission.migrationScope() { for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==future.profileId { try admission.validate(purpose,pair[1],stored.value) } } }
+        try admission.acknowledgeCanonical() // Durable pending remains until the original native retirement joins.
+    } }
 
+    /** The external deny marker stays through final ciphertext/readback and
+     * actual original retirement. Unknown migration cannot be adopted. */
+    func migrationComplete(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
+        try admission.check();try existingOnly(directory,migration:admission);let birth=try knownBirth(directory);try admission.knownBirth(birth)
+        let state=try read(directory);defer { state.wipe() };try Self.require(try !closed && active==nil && state.scope==nil && state.pendingMigration==admission.migrationIdentity());try admittedState(admission,state)
+        try admission.requireMigrationRetirement();try admission.acknowledgeCanonical()
+        if let future=try admission.migrationScope() { for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==future.profileId { try admission.validate(purpose,pair[1],stored.value) } } }
+        let marker=try migrationMarker(directory);var bytes=try migrationMarkerBytes(admission);defer { bytes.resetBytes(in:0..<bytes.count) };var clearing=false
+        do {
+            state.pendingMigration=nil;try write(directory,state:state,check:admission.check);try admittedState(admission,state);try exactMigrationMarker(directory,admission)
+            try admission.acknowledgeCanonical();try admission.prepareMigrationRelease();closed=true
+            // Native observers/UI/worker/recipient and original retirement have
+            // completed. Removal is the last fallible publication operation.
+            clearing=true;try Self.require(Darwin.unlink(marker.path)==0);try syncDirectory(directory)
+        } catch {
+            if clearing && !FileManager.default.fileExists(atPath:marker.path) { try? exclusiveReceiptFile(marker,bytes) {};try? syncDirectory(directory) }
+            closed=true;admission.migrationUnknown();throw error
+        }
+    } }
+    private func migrationMarker(_ directory: URL) throws -> URL {
+        let file=directory.appendingPathComponent("local-v2-migration.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file
+    }
+    private func migrationMarkerBytes(_ admission: PlanetChildLocalV2DataAdmission) throws -> Data { Data(("LP-LOCAL-V2-DATA-MIGRATION\n"+identity+"\n"+(try admission.migrationIdentity())+"\n").utf8) }
+    private func exactMigrationMarker(_ directory: URL,_ admission: PlanetChildLocalV2DataAdmission) throws {
+        var actual=try boundedFile(migrationMarker(directory),4096),expected=try migrationMarkerBytes(admission);defer { actual.resetBytes(in:0..<actual.count);expected.resetBytes(in:0..<expected.count) };try Self.require(actual==expected)
+    }
+    private func stageMigrationMarker(_ directory: URL,_ admission: PlanetChildLocalV2DataAdmission) throws {
+        var bytes=try migrationMarkerBytes(admission);defer { bytes.resetBytes(in:0..<bytes.count) };try exclusiveReceiptFile(migrationMarker(directory),bytes,admission.check);try syncDirectory(directory);try exactMigrationMarker(directory,admission)
+    }
+
+    /** LOCAL-only reopen validates the durable native terminal before any
+     * new admission. It never calls initialize or provisions a missing key. */
+    static func localV2ExistingOnly() throws -> PlanetChildDataStore {
+        let store=try PlanetChildDataStore(runId:nil,deferredBirth:true);try store.locked { directory in try store.existingOnly(directory);_ = try store.knownBirth(directory) };return store
+    }
+    static func fixtureLocalV2KnownExistingOnly(runId: String) throws -> PlanetChildDataStore {
+        #if DEBUG
+        let store=try PlanetChildDataStore(runId:runId,deferredBirth:true);try store.locked { directory in try store.existingOnly(directory);_ = try store.knownBirth(directory) };return store
+        #else
+        throw Failure.unavailable
+        #endif
+    }
+    private func knownBirthFile(_ directory: URL,staged: Bool=false) throws -> URL {
+        let file=directory.appendingPathComponent("local-v2-birth.receipt"+(staged ? ".new":""));try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file
+    }
+    private func boundedFile(_ file: URL,_ limit: Int) throws -> Data {
+        let fd=Darwin.open(file.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC);try Self.require(fd>=0);defer { Darwin.close(fd) };var opened=stat(),named=stat()
+        try Self.require(fstat(fd,&opened)==0 && lstat(file.path,&named)==0 && opened.st_mode & mode_t(S_IFMT)==mode_t(S_IFREG) && opened.st_ino==named.st_ino && opened.st_dev==named.st_dev && opened.st_size>0 && opened.st_size<=off_t(limit))
+        var bytes=Data(count:Int(opened.st_size)),handed=false;defer { if !handed { bytes.resetBytes(in:0..<bytes.count) } }
+        try bytes.withUnsafeMutableBytes { raw in var at=0;while at<raw.count { let count=Darwin.read(fd,raw.baseAddress!.advanced(by:at),raw.count-at);try Self.require(count>0);at+=count } };var extra: UInt8=0;try Self.require(Darwin.read(fd,&extra,1)==0);handed=true;return bytes
+    }
+    private func knownBirth(_ directory: URL,staged: Bool=false,allowPending: Bool=false) throws -> PlanetChildLocalV2KnownBirth {
+        if !staged && !allowPending { try Self.require(!FileManager.default.fileExists(atPath:try knownBirthFile(directory,staged:true).path)) }
+        var encrypted=try boundedFile(knownBirthFile(directory,staged:staged),262144),claim=try boundedFile(birthMarker(directory),4096);defer { encrypted.resetBytes(in:0..<encrypted.count);claim.resetBytes(in:0..<claim.count) }
+        try Self.require(encrypted.first==1);var plain=try AES.GCM.open(AES.GCM.SealedBox(combined:Data(encrypted.dropFirst())),using:key(create:false,directory:directory),authenticating:Data((identity+"\nLP-LOCAL-V2-KNOWN-BIRTH-v1").utf8));defer { plain.resetBytes(in:0..<plain.count) }
+        return try PlanetChildLocalV2KnownBirth.verify(plain,identity:identity,claim:claim)
+    }
+    private func stageBirth(_ original: LocalV2BirthPlan,_ marker: Data,_ permit: LocalV2ProfileDataBirthPermit) throws {
+        try locked { directory in
+            try exactBirth(directory,plan:original,marker:marker);var plain=try permit.knownBirthReceipt(identity:original.identity,nonce:original.nonce,checksum:original.checksum);defer { plain.resetBytes(in:0..<plain.count) }
+            _ = try PlanetChildLocalV2KnownBirth.verify(plain,identity:identity,claim:marker)
+            let file=try knownBirthFile(directory,staged:true);try Self.require(!FileManager.default.fileExists(atPath:file.path) && !FileManager.default.fileExists(atPath:try knownBirthFile(directory).path))
+            let box=try AES.GCM.seal(plain,using:key(create:false,directory:directory),authenticating:Data((identity+"\nLP-LOCAL-V2-KNOWN-BIRTH-v1").utf8));guard let combined=box.combined else { throw Failure.unavailable }
+            var encrypted=Data([1]);encrypted.append(combined);defer { encrypted.resetBytes(in:0..<encrypted.count) }
+            let fd=Darwin.open(file.path,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC,mode_t(S_IRUSR|S_IWUSR));try Self.require(fd>=0)
+            do { try FileManager.default.setAttributes([.protectionKey:FileProtectionType.complete],ofItemAtPath:file.path)
+                try encrypted.withUnsafeBytes { raw in var at=0;while at<raw.count { try permit.knownBirthBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum);let count=Darwin.write(fd,raw.baseAddress!.advanced(by:at),raw.count-at);try Self.require(count>0);at+=count } };try Self.require(Darwin.fsync(fd)==0);Darwin.close(fd)
+            } catch { Darwin.close(fd);permit.dataBirthUnknown();closed=true;throw error }
+            let parent=Darwin.open(directory.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC);try Self.require(parent>=0);let sync=Darwin.fsync(parent);Darwin.close(parent);try Self.require(sync==0)
+            try permit.knownBirthBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum);let known=try knownBirth(directory,staged:true);try Self.require(try known.profileId==permit.knownBirthProfileId());try exactBirth(directory,plan:original,marker:marker)
+        }
+    }
+    private func exclusiveReceiptFile(_ file: URL,_ bytes: Data,_ check: () throws -> Void) throws {
+        let fd=Darwin.open(file.path,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC,mode_t(S_IRUSR|S_IWUSR));try Self.require(fd>=0)
+        do { try FileManager.default.setAttributes([.protectionKey:FileProtectionType.complete],ofItemAtPath:file.path)
+            try bytes.withUnsafeBytes { raw in var at=0;while at<raw.count { try check();let count=Darwin.write(fd,raw.baseAddress!.advanced(by:at),raw.count-at);try Self.require(count>0);at+=count } };try Self.require(Darwin.fsync(fd)==0);Darwin.close(fd)
+        } catch { Darwin.close(fd);throw error }
+    }
+    private func syncDirectory(_ directory: URL) throws { let parent=Darwin.open(directory.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC);try Self.require(parent>=0);let result=Darwin.fsync(parent);Darwin.close(parent);try Self.require(result==0) }
+    private func completeBirth(_ original: LocalV2BirthPlan,_ marker: Data,_ permit: LocalV2ProfileDataBirthPermit) throws {
+        try locked { directory in
+            try permit.knownBirthPublishBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum);try exactBirth(directory,plan:original,marker:marker)
+            let staged=try knownBirthFile(directory,staged:true),final=try knownBirthFile(directory);try Self.require(!FileManager.default.fileExists(atPath:final.path))
+            var pending=try boundedFile(staged,262144);defer { pending.resetBytes(in:0..<pending.count) };var clearing=false
+            do {
+                let known=try knownBirth(directory,staged:true);try Self.require(try known.profileId==permit.knownBirthProfileId())
+                // The pending marker remains durable until final ciphertext,
+                // original canonical record and native terminal ACK are known.
+                try exclusiveReceiptFile(final,pending) { try permit.knownBirthPublishBoundary(identity:original.identity,nonce:original.nonce,checksum:original.checksum) };try syncDirectory(directory)
+                _ = try knownBirth(directory,allowPending:true);try exactBirth(directory,plan:original,marker:marker);try permit.acknowledgeKnownBirth(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
+                try permit.prepareKnownBirthRelease(identity:original.identity,nonce:original.nonce,checksum:original.checksum);clearing=true;try Self.require(Darwin.unlink(staged.path)==0);try syncDirectory(directory)
+            } catch {
+                // Restoring this original pending marker only preserves deny.
+                // It never repairs/adopts a receipt or creates another key.
+                if clearing && !FileManager.default.fileExists(atPath:staged.path) { try? exclusiveReceiptFile(staged,pending) {};try? syncDirectory(directory) }
+                closed=true;permit.dataBirthUnknown();throw error
+            }
+        }
+    }
     #if DEBUG
     /** Codec-only fixtures cannot mint opaque admission or provision AES. */
     static func fixtureAdmittedSealCodec() throws -> Bool { let hash=String(repeating:"a",count:64),scope=try Scope(profileId:"reader",profileRevision:2,exactAge:9,locale:"en",policyVersion:"first-install-fixture-v2",policyChecksum:hash,packageId:"isolated-package",packageVersion:1,packageChecksum:hash),state=State();defer { state.wipe() };state.nonce=String(repeating:"b",count:32);state.admissionBinding=hash;state.pendingMigration=String(repeating:"c",count:64);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:hash);var bytes=try encode(state);defer { bytes.resetBytes(in:0..<bytes.count) };let actual=try decode(bytes);defer { actual.wipe() };var copy=try encode(actual);defer { copy.resetBytes(in:0..<copy.count) };try require(bytes==copy && actual.seals.count==1 && actual.pendingMigration==String(repeating:"c",count:64))
@@ -375,6 +517,23 @@ final class PlanetChildDataStore {
     }
     #endif
 
+    #if DEBUG
+    static func fixtureProfileEntrySeals(_ scenario: String) throws -> Bool {
+        let hash=String(repeating:"a",count:64),other=String(repeating:"b",count:64)
+        let a=try Scope(profileId:"reader",profileRevision:2,exactAge:9,locale:"en",policyVersion:"first-profile-fixture-v2",policyChecksum:hash,packageId:"isolated-package",packageVersion:1,packageChecksum:hash)
+        let state=State();defer { state.wipe() };state.nonce=String(repeating:"c",count:32);state.admissionBinding=hash;state.seals[a.profileId]=Seal(scope:a,contentBinding:hash)
+        let key=Purpose.history.rawValue+"\n"+a.key(.history),scope: [String:Any]=["schemaVersion":1,"namespace":"child","profileId":a.profileId,"profileRevision":a.profileRevision,"exactAge":a.exactAge,"locale":a.locale,"policyVersion":a.policyVersion,"policyChecksum":a.policyChecksum,"packageId":a.packageId,"packageVersion":a.packageVersion,"packageChecksum":a.packageChecksum]
+        let original=try JSONSerialization.data(withJSONObject:["schemaVersion":1,"scope":scope,"references":[]] as [String:Any],options:.sortedKeys);state.entries[key]=Stored(revision:7,value:original)
+        func refused(_ work: () throws -> Void) -> Bool { do { try work();return false } catch { return true } }
+        switch scenario {
+        case "retained":try knownProfiles(state,["reader":hash]);let retained=retainedEntries(state);try require(retained.count==1 && retained[key]?.revision==7 && retained[key]?.value==original && state.seals["reader"]?.scope.tuple==a.tuple);return true
+        case "orphan":try require(refused { try knownProfiles(state,["other":hash]) } && refused { try knownProfiles(state,["reader":other]) } && refused { try knownProfiles(state,["reader":hash,"unknown":other]) });return true
+        case "nonreuse":try targetSeal(state,id:"reader",creating:false,previous:["reader":hash]);try require(refused { try targetSeal(state,id:"reader",creating:true,previous:["reader":hash]) } && refused { try targetSeal(state,id:"missing",creating:false,previous:["reader":hash]) });try targetSeal(state,id:"fresh",creating:true,previous:["reader":hash]);return true
+        case "pending":state.pendingMigration=other;var bytes=try encode(state);defer { bytes.resetBytes(in:0..<bytes.count) };let decoded=try decode(bytes);defer { decoded.wipe() };try require(decoded.pendingMigration==other && decoded.entries[key]?.revision==7 && decoded.entries[key]?.value==original && decoded.seals["reader"]?.contentBinding==hash);return true
+        default:throw Failure.unavailable
+        }
+    }
+    #endif
     /** Syntax validator with decoded-key duplicate detection, bounded depth and
      * node count. Foundation JSON alone is not the duplicate-key boundary. */
     private final class StrictJSON {
@@ -418,6 +577,8 @@ final class PlanetChildDataStore {
     final class LocalV2BirthReceipt {
         private let original: LocalV2BirthPlan,marker: Data
         fileprivate init(_ original: LocalV2BirthPlan,_ marker: Data) { self.original=original;self.marker=Data(Array(marker)) }
+        func stage(_ permit: LocalV2ProfileDataBirthPermit) throws { try original.store.stageBirth(original,marker,permit) }
+        func complete(_ permit: LocalV2ProfileDataBirthPermit) throws { try original.store.completeBirth(original,marker,permit) }
         func readback(_ permit: LocalV2ProfileDataBirthPermit) throws {
             try original.store.locked { directory in try permit.dataReadback(identity:original.identity,nonce:original.nonce,checksum:original.checksum)
                 try original.store.exactBirth(directory,plan:original,marker:marker) }
@@ -445,7 +606,9 @@ final class PlanetChildDataStore {
         }
         name="literary-planet-child-data-v1"+(runId.map { "-synthetic-"+$0 } ?? "");identity=bundle+"."+name
     }
-    private func existingOnly(_ directory: URL) throws {
+    private func existingOnly(_ directory: URL,migration: PlanetChildLocalV2DataAdmission?=nil) throws {
+        let pending=try migrationMarker(directory)
+        if FileManager.default.fileExists(atPath:pending.path) { guard let migration else { throw Failure.unavailable };try exactMigrationMarker(directory,migration) } else { try Self.require(migration==nil) }
         let base=try record(directory),staged=try record(directory,suffix:".new")
         try Self.require(FileManager.default.fileExists(atPath:base.path) && !FileManager.default.fileExists(atPath:staged.path))
         _ = try key(create:false,directory:directory);let state=try read(directory);defer { state.wipe() }
