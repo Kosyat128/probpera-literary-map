@@ -277,9 +277,9 @@ final class PlanetChildDataTransport {
         }
         if("perform".equals(method)){
             action=string(row.get("action"),32);require(V2_ACTIONS.contains(action));Object raw=row.get("target");
+            require(!"first-install".equals(action)||token==null);if(Arrays.asList("first-install","enroll-pin","replace-pin","recover-pin").contains(action))require(raw==null);
             require(raw==null||raw instanceof Map);if(raw!=null)target=(Map<String,Object>)v2Copy(raw,0,new int[]{0});
             if(target!=null){byte[] bytes=new org.json.JSONObject(target).toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);try{require(bytes.length<=65536);}finally{Arrays.fill(bytes,(byte)0);}}
-            require(!"first-install".equals(action)||token==null);if(Arrays.asList("first-install","enroll-pin","replace-pin","recover-pin").contains(action))require(target==null);
         }else if("readEntity".equals(method))reference=v2Reference(row.get("reference"));
         else if("search".equals(method)){query=string(row.get("query"),240);require(!query.matches("(?s).*[\\x00-\\x1f\\x7f].*"));}
         else if("readCollection".equals(method)||"writeCollection".equals(method)){

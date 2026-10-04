@@ -62,11 +62,16 @@ export function mountHostApp({ services, initialization, createAdultServices }: 
   function locale(value: "ru" | "en") {
     document.documentElement.lang = value; document.title = value === "ru" ? "Литературная планета" : "Literary Planet";
   }
+  let closedOwner: { key: string; persistence: HostLanguagePersistence } | null = null;
   function closed(snapshot: ChildNativeAppSnapshot, key: number) {
     const language = snapshot.context?.locale ?? adultLanguage;
-    const persistence: HostLanguagePersistence = Object.freeze({ initialLanguage: language, persist: async () => false });
+    const ownerKey = "sealed-" + key + "-" + language;
+    if (closedOwner?.key !== ownerKey) {
+      closedOwner = { key: ownerKey, persistence: Object.freeze({ initialLanguage: language, persist: async () => false }) };
+    }
+    const persistence = closedOwner.persistence;
     locale(language);
-    return <BootstrapErrorBoundary key={"sealed-" + key}>
+    return <BootstrapErrorBoundary key={ownerKey}>
       <PlatformServicesProvider services={publicServices}>
         <InterfaceLanguageProvider hostLanguage={persistence}>
           <ChildNativeClosedView snapshot={snapshot} controller={controller} />
