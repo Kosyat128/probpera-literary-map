@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "cbefa868b2ff06d9ada349c1c8056af43f85dba1",
+  "headSha": "2c2dc37ce5abbc1cafa63b7a2e6e34010fcc9026",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-04T16:56:22.312Z",
+  "updatedAt": "2026-10-04T18:33:28.241Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue original LOCAL S16: implement genuine adult-to-child re-entry and multi-profile creation over the concrete native admitted text/reference data and compatible profile mutations. Preserve isolated per-child encrypted namespaces/seals and every inactive child record; selection never transfers another child history/favorites/cache. Then connect actual native bridge and App bootstrap/routes with clear-before-render and complete worker/UI/recipient/index/byte retirement. Native media manifest/inventory/review/loaders and protected URL flows remain separate Codex programming; text-only admission does not authorize media or paid rights. Empty/ambiguous real pins, unknown or expired review/rights and unknown partial state deny; do not invent approval/keys/callerBoolean authority or stronger v1 cross-boot/trusted-time guarantees from LOCAL v2. Preserve exact existing PIN/count/pending/debt/logical journal, coupled revisions, first-profile CHILD semantics and original16 actions. Free LOCAL remains accountless with no full-record upload. Factories stay closed while genuine remaining programming prerequisites exist, not merely because device QA is unavailable. GPT-6.1 SOL Ultra develops; GPT-6 Astra Ultra reviews/checks/fixes; then SOL next. S03/S16 IN_PROGRESS11/36 OPEN, owner7/reviews5, releaseReady=false. No unchanged test/build repeats, seventh AVD attempt, report-only D stage, remote action, push, merge or deploy.",
+    "nextAction": "Continue original LOCAL S16: connect the genuine native Vault/DataStore/clock/PIN/profile entry operations to the Capacitor bridge and App bootstrap/routes. Clear all old child UI/state/index/worker/recipient/bytes before rendering the next context; preserve every inactive child namespace and the canonical globe/Booky/RU-EN state. Native factories remain closed only for genuine remaining programming or missing authentic pins, not merely unavailable device QA. Native media manifest/inventory/review/loaders and protected URL flows are subsequent Codex work; text-only package admission authorizes no media or paid rights. Empty/ambiguous real pins, unknown review/rights, expired contexts and unknown partial operations deny; no caller boolean, fixture key or forged receipt authority. Preserve original PIN/count/pending/debt/logical journal, coupled revisions, first-profile CHILD and original16 actions. Free LOCAL remains accountless and never uploads full child records. GPT-6.1 SOL Ultra develops; GPT-6 Astra Ultra reviews/checks/fixes; then SOL next. S03/S16 IN_PROGRESS11/36 OPEN, owner7/reviews5, releaseReady=false. No unchanged passing checks/build repeats, seventh AVD attempt, report-only D stage or remote/push/merge/deploy.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
