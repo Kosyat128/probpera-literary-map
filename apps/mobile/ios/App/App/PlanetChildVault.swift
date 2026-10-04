@@ -4747,14 +4747,15 @@ fileprivate final class LocalV2ChargedReservation {
 fileprivate final class LocalV2Request {
     fileprivate let owner: LocalV2Writer
     fileprivate let host: PinOwnerOriginalHost?,process: pid_t,began: UInt64,deadline: UInt64
-    fileprivate var last: UInt64,baseline: UInt64,anchor: UInt64=0
+    fileprivate var last: UInt64
     fileprivate var expected: PinOwnedBytes?,sample: LocalV2EnrollmentSample?,receipt: LocalV2StorageReceipt?
     fileprivate var chargeStarted=false,reservation: LocalV2ChargedReservation?
+    fileprivate var mutationUnacknowledged=false
     fileprivate var opened=false,cancelled=false,sealed=false,retiring=false,retired=false,workers=0,events=0,cleanup=0
     fileprivate var workerThread: ObjectIdentifier?
     fileprivate var observers=[NSObjectProtocol]()
     fileprivate init(_ owner: LocalV2Writer,_ host: PinOwnerOriginalHost?,_ ns: UInt64,_ deadline: UInt64) {
-        self.owner=owner;self.host=host;process=getpid();began=ns;last=ns;baseline=ns;self.deadline=deadline
+        self.owner=owner;self.host=host;process=getpid();began=ns;last=ns;self.deadline=deadline
     }
     fileprivate func wipe() { expected?.close();sample?.seed.close();receipt?.bytes.close();reservation?.close() }
 }
@@ -4763,27 +4764,33 @@ fileprivate final class LocalV2Request {
  * never authorization. Finalize is deliberately absent until a genuine V2
  * comparison producer can bind an original charged reservation. */
 fileprivate final class LocalV2Writer {
-    fileprivate let condition=NSCondition()
-    fileprivate var active: LocalV2Request?
+    fileprivate let processClock: LocalV2ProcessClock
+    fileprivate var condition: NSCondition { processClock.condition }
+    fileprivate var active: LocalV2Request? { get { processClock.active } set { processClock.active=newValue } }
     private let storage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock
-    private var preparing=false
-    private init(vault: PlanetChildVault,policy: LocalSnapshotV2Policy) {
-        storage=PlanetChildVault.LocalV2KeychainStorage(vault);self.policy=policy;clock=ApplePinPrimitiveClock()
+    private var preparing: Bool {
+        get { processClock.preparingOwner != nil }
+        set { if newValue { processClock.preparingOwner=self } else if processClock.preparingOwner === self { processClock.preparingOwner=nil } }
+    }
+    private init(vault: PlanetChildVault,policy: LocalSnapshotV2Policy) throws {
+        let scope=try LocalV2ProcessClock.production(policy)
+        storage=PlanetChildVault.LocalV2KeychainStorage(vault);self.policy=policy;processClock=scope;clock=scope.clock
     }
     #if DEBUG
-    fileprivate init(fixtureStorage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock) {
-        storage=fixtureStorage;self.policy=policy;self.clock=clock
+    fileprivate init(fixtureStorage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock,processClock: LocalV2ProcessClock?=nil) {
+        storage=fixtureStorage;self.policy=policy;self.processClock=processClock ?? LocalV2ProcessClock(fixturePolicy:policy,clock:clock);self.clock=self.processClock.clock
     }
     #endif
     /** Private future native adapter only; no public App/JS call selects this. */
     func request(host: UIViewController,timeoutMs: UInt64) throws -> LocalV2Request {
         guard Thread.isMainThread,timeoutMs>0,timeoutMs<=60000 else { throw PinKnownRefusal() }
-        condition.lock();guard active==nil,!preparing else { condition.unlock();throw PinKnownRefusal() };preparing=true;condition.unlock()
+        condition.lock();guard active==nil,!preparing,!processClock.invalidated,processClock.matches(policy) else { condition.unlock();throw PinKnownRefusal() };preparing=true;condition.unlock()
         var accepted=false;defer { if !accepted { condition.lock();preparing=false;condition.unlock() } }
-        let original=try PinOwnerOriginalHost(host),now=try clock.nanoseconds()
+        let original=try PinOwnerOriginalHost(host),now=try preparationSample()
         guard now<=UInt64.max-timeoutMs*1000000 else { throw PinKnownRefusal() }
         let request=LocalV2Request(self,original,now,now+timeoutMs*1000000)
-        condition.lock();guard active==nil,preparing else { condition.unlock();throw PinKnownRefusal() }
+        condition.lock();guard active==nil,processClock.preparingOwner === self,!processClock.invalidated else { condition.unlock();throw PinKnownRefusal() }
+        do { try processClock.observe(now) } catch { condition.unlock();throw error }
         active=request;preparing=false;condition.unlock()
         // Original lifecycle latch remains installed through known ACK until
         // actual exclusive retire; a later return cannot resurrect this request.
@@ -4793,17 +4800,29 @@ fileprivate final class LocalV2Writer {
                 guard let self,let request else { return }
                 if name==UIScene.didDisconnectNotification,!original.disconnected(note) { return }
                 self.condition.lock();guard self.active === request,!request.retired,!request.retiring else { self.condition.unlock();return }
-                request.events+=1;request.cancelled=true;self.condition.broadcast();self.condition.unlock()
+                request.events+=1;request.cancelled=true
+                if request.mutationUnacknowledged { self.processClock.invalidate(request);request.sealed=true }
+                self.condition.broadcast();self.condition.unlock()
                 self.condition.lock();request.events-=1;if request.workers==0 { request.wipe() };self.condition.broadcast();self.condition.unlock()
             }
             request.observers.append(observer)
         }
         accepted=true;return request
     }
+    private func preparationSample() throws -> UInt64 {
+        do { return try clock.nanoseconds() } catch {
+            condition.lock();processClock.invalidatePreparing(self);condition.unlock();throw error
+        }
+    }
     private func local(_ request: LocalV2Request) throws -> UInt64 {
-        let now=try clock.nanoseconds();condition.lock();defer { condition.unlock() }
-        guard active === request,request.process==getpid(),!request.cancelled,!request.sealed,!request.retiring,!request.retired,
-            now>=request.last,now>=request.began,now<request.deadline else { throw PinKnownRefusal() }
+        let now: UInt64
+        do { now=try clock.nanoseconds() } catch {
+            condition.lock();if active === request,request.owner === self { processClock.invalidate(request);request.sealed=true };condition.unlock();throw error
+        }
+        condition.lock();defer { condition.unlock() }
+        guard active === request,request.owner === self,request.process==getpid(),!processClock.invalidated else { throw PinKnownRefusal() }
+        do { try processClock.observe(now) } catch { request.sealed=true;throw error }
+        guard !request.cancelled,!request.sealed,!request.retiring,!request.retired,now>=request.last,now>=request.began,now<request.deadline else { throw PinKnownRefusal() }
         request.last=now;return now
     }
     fileprivate func current(_ request: LocalV2Request) throws -> UInt64 {
@@ -4812,7 +4831,7 @@ fileprivate final class LocalV2Writer {
     private func start(_ request: LocalV2Request,opened: Bool) throws {
         guard !Thread.isMainThread else { throw PinKnownRefusal() }
         condition.lock();defer { condition.unlock() }
-        guard active === request,!request.cancelled,!request.sealed,!request.retiring,!request.retired,request.workers==0,
+        guard active === request,request.owner === self,!processClock.invalidated,processClock.matches(policy),!request.cancelled,!request.sealed,!request.retiring,!request.retired,request.workers==0,
             request.opened==opened,request.receipt==nil || request.receipt!.settled && request.receipt!.known else { throw PinKnownRefusal() }
         request.workers=1;request.workerThread=ObjectIdentifier(Thread.current)
     }
@@ -4822,15 +4841,22 @@ fileprivate final class LocalV2Writer {
     }
     private func fail(_ request: LocalV2Request,_ error: Error,publication: Bool) {
         condition.lock();defer { condition.unlock() }
-        if publication || !(error is PinKnownRefusal) { request.sealed=true }
+        guard active === request,request.owner === self else { return }
+        if publication || request.mutationUnacknowledged || !(error is PinKnownRefusal) {
+            request.sealed=true;processClock.invalidate(request)
+        }
         if request.workers==0 { request.wipe() };condition.broadcast()
     }
     private func exact(_ transaction: LocalV2Transaction,_ request: LocalV2Request) throws -> Data {
         var read=try transaction.read();var adopted=false
         defer { if !adopted { read.resetBytes(in:0..<read.count) } }
-        guard !read.isEmpty,read.count<=131072,let expected=request.expected else { throw PinKnownRefusal() }
+        guard !read.isEmpty,read.count<=131072,let expected=request.expected else { throw PlanetChildVault.Failure.unavailable }
         var original=try expected.copy();defer { original.resetBytes(in:0..<original.count) }
-        guard read==original else { throw PinKnownRefusal() };adopted=true;return read
+        guard read==original else {
+            condition.lock();processClock.invalidate(request);request.sealed=true;condition.unlock();throw PlanetChildVault.Failure.unavailable
+        }
+        condition.lock();defer { condition.unlock() }
+        try processClock.requireBound(request,read);adopted=true;return read
     }
     private func write(_ transaction: LocalV2Transaction,_ request: LocalV2Request,_ expected: Data,_ next: Data) throws {
         let old=PinOwnedBytes(expected),new=PinOwnedBytes(next);defer { old.close();new.close() }
@@ -4848,26 +4874,42 @@ fileprivate final class LocalV2Writer {
         guard actual.count<=131072,actual==canonical else { throw PlanetChildVault.Failure.unavailable }
         try fence();guard actual==canonical else { throw PlanetChildVault.Failure.unavailable }
     }
-    func open(_ request: LocalV2Request) throws {
+    @discardableResult func open(_ request: LocalV2Request) throws -> LocalV2StorageReceipt? {
         try start(request,opened:false);defer { finish(request) };var publication=false
+        var originalReceipt: LocalV2StorageReceipt?
         do {
             _ = try current(request)
             try storage.locked { transaction in
                 _ = try local(request);var bytes=try transaction.read();defer { bytes.resetBytes(in:0..<bytes.count) }
-                guard !bytes.isEmpty,bytes.count<=131072 else { throw PinKnownRefusal() }
-                if bytes.count<=4096,(try? PlanetChildVault.LocalEmptySeedV2.validate(bytes,policyVersion:policy.version,policyChecksum:policy.checksum)) != nil {
-                    condition.lock();request.expected=PinOwnedBytes(bytes);condition.unlock()
+                guard !bytes.isEmpty,bytes.count<=131072 else { throw PlanetChildVault.Failure.unavailable }
+                condition.lock();let bound=processClock.known != nil;condition.unlock()
+                if bound {
+                    condition.lock()
+                    do { try processClock.requireBound(request,bytes);request.expected=PinOwnedBytes(bytes);condition.unlock() }
+                    catch { condition.unlock();throw error }
+                    // Exact known bytes/policy retain the original process ns
+                    // origin and fractional remainder; no J rewrite or credit reset.
+                } else if bytes.count<=4096,(try? PlanetChildVault.LocalEmptySeedV2.validate(bytes,policyVersion:policy.version,policyChecksum:policy.checksum)) != nil {
+                    let now=try local(request);condition.lock()
+                    do { try processClock.adoptFirst(request,bytes,nil,now);request.expected=PinOwnedBytes(bytes);condition.unlock() }
+                    catch { condition.unlock();throw error }
                 } else {
                     let old=try LocalSnapshotV2.decode(bytes,policy:policy);defer { old.close() }
                     let next=try old.reanchorCandidate();defer { next.close() }
                     var after=try next.copyCanonicalBytes();defer { after.resetBytes(in:0..<after.count) }
-                    _ = try local(request);publication=true
+                    _ = try local(request);publication=true;condition.lock();request.mutationUnacknowledged=true;condition.unlock()
                     try write(transaction,request,bytes,after)
-                    condition.lock();request.expected=PinOwnedBytes(after);request.anchor=next.journal.logical;condition.unlock();publication=false
+                    let now=try local(request);condition.lock()
+                    do { try processClock.adoptFirst(request,after,next,now,pendingDelivery:true);request.expected=PinOwnedBytes(after)
+                        let receipt=LocalV2StorageReceipt(request,after,next,false);request.receipt=receipt;originalReceipt=receipt;condition.unlock() }
+                    catch { condition.unlock();throw error };publication=false
                 }
-                let now=try local(request);condition.lock();request.baseline=now;condition.unlock()
+                _ = try local(request)
             }
-            _ = try current(request);condition.lock();request.opened=true;condition.unlock()
+            _ = try current(request);condition.lock()
+            guard active === request,!request.cancelled,!request.retiring,!request.sealed,!processClock.invalidated else { condition.unlock();throw PinKnownRefusal() }
+            request.opened=true;originalReceipt?.completed=true
+            if originalReceipt==nil { request.mutationUnacknowledged=false };condition.unlock();return originalReceipt
         } catch { fail(request,error,publication:publication);throw error }
     }
     func sampleEnrollment(_ request: LocalV2Request) throws -> LocalV2EnrollmentSample {
@@ -4878,8 +4920,8 @@ fileprivate final class LocalV2Writer {
             let sample=try storage.locked { transaction -> LocalV2EnrollmentSample in
                 var seed=try exact(transaction,request);defer { seed.resetBytes(in:0..<seed.count) }
                 _ = try PlanetChildVault.LocalEmptySeedV2.validate(seed,policyVersion:policy.version,policyChecksum:policy.checksum)
-                let now=try local(request),logical=(now-request.began)/1000000
-                guard logical<=LocalSnapshotV2.maximum else { throw PinKnownRefusal() }
+                let now=try local(request);condition.lock();let logical: UInt64
+                do { logical=try processClock.logical(now);condition.unlock() } catch { condition.unlock();throw error }
                 return LocalV2EnrollmentSample(request,seed,now,logical)
             }
             _ = try current(request);condition.lock();request.sample=sample;condition.unlock();return sample
@@ -4903,9 +4945,11 @@ fileprivate final class LocalV2Writer {
             try storage.locked { transaction in
                 var actual=try exact(transaction,request);defer { actual.resetBytes(in:0..<actual.count) }
                 guard actual==seed,LocalSnapshotV2.hash(actual)==sample.checksum,try local(request)>=sample.continuousNs else { throw PinKnownRefusal() }
-                publication=true;try write(transaction,request,actual,nextBytes)
-                condition.lock();request.expected?.close();request.expected=PinOwnedBytes(nextBytes)
-                request.baseline=sample.continuousNs;request.anchor=sample.logicalMs;condition.unlock();publication=false
+                publication=true;condition.lock();request.mutationUnacknowledged=true;condition.unlock()
+                try write(transaction,request,actual,nextBytes)
+                condition.lock()
+                do { try processClock.stage(request,nextBytes,next);request.expected?.close();request.expected=PinOwnedBytes(nextBytes);condition.unlock() }
+                catch { condition.unlock();throw error };publication=false
             }
             _ = try current(request);try publish(request,next,nextBytes,false,recipient)
         } catch { fail(request,error,publication:publication);throw error }
@@ -4923,14 +4967,16 @@ fileprivate final class LocalV2Writer {
             try storage.locked { transaction in
                 var before=try exact(transaction,request);defer { before.resetBytes(in:0..<before.count) }
                 let old=try LocalSnapshotV2.decode(before,policy:policy);defer { old.close() }
-                let now=try local(request);condition.lock();let baseline=request.baseline,anchor=request.anchor;condition.unlock()
-                guard now>=baseline,(now-baseline)/1000000<=LocalSnapshotV2.maximum-anchor else { throw PinKnownRefusal() }
-                let logical=anchor+(now-baseline)/1000000
+                let now=try local(request);condition.lock();let logical: UInt64
+                do { logical=try processClock.logical(now);condition.unlock() } catch { condition.unlock();throw error }
                 let next=try old.chargeCandidate(id:id,logical:logical);defer { next.close() }
                 var after=try next.copyCanonicalBytes();defer { after.resetBytes(in:0..<after.count) }
-                publication=true;try write(transaction,request,before,after)
-                condition.lock();request.expected?.close();request.expected=PinOwnedBytes(after)
-                request.reservation=LocalV2ChargedReservation(before,after,id,logical);condition.unlock();publication=false
+                publication=true;condition.lock();request.mutationUnacknowledged=true;condition.unlock()
+                try write(transaction,request,before,after)
+                condition.lock()
+                do { try processClock.stage(request,after,next);request.expected?.close();request.expected=PinOwnedBytes(after)
+                    request.reservation=LocalV2ChargedReservation(before,after,id,logical);condition.unlock() }
+                catch { condition.unlock();throw error };publication=false
                 // Recipient is invoked after releasing the durable flock below.
             }
             _ = try current(request);var after=try request.expected!.copy();defer { after.resetBytes(in:0..<after.count) }
@@ -4950,36 +4996,142 @@ fileprivate final class LocalV2Writer {
     }
     func settle(_ receipt: LocalV2StorageReceipt,known: Bool) throws {
         guard let request=receipt.request,receipt.owner === self else { throw PinKnownRefusal() }
+        guard !known || !Thread.isMainThread else { throw PinKnownRefusal() }
         condition.lock()
         guard active === request,request.receipt === receipt,!receipt.settled,request.workers==0,
             !known || !receipt.closed && receipt.completed && !request.cancelled && !request.retiring && !request.retired && !request.sealed
             else { condition.unlock();throw PinKnownRefusal() }
-        if !known { receipt.settled=true;request.sealed=true;request.wipe();condition.broadcast();condition.unlock();return }
+        if !known { receipt.settled=true;request.sealed=true;processClock.invalidate(request);request.wipe();condition.broadcast();condition.unlock();return }
         request.workers=1;request.workerThread=ObjectIdentifier(Thread.current);condition.unlock();defer { finish(request) }
-        _ = try current(request)
-        condition.lock();defer { condition.unlock() }
-        guard active === request,request.receipt === receipt,!receipt.settled,!receipt.closed,receipt.completed,
-            !request.cancelled,!request.sealed,!request.retiring,!request.retired else { throw PinKnownRefusal() }
-        receipt.settled=true;receipt.known=true;condition.broadcast()
+        do {
+            _ = try current(request)
+            try storage.locked { transaction in
+                var exactRead=try exact(transaction,request);defer { exactRead.resetBytes(in:0..<exactRead.count) };_ = try local(request)
+            }
+            _ = try current(request)
+            condition.lock()
+            guard active === request,request.receipt === receipt,!receipt.settled,!receipt.closed,receipt.completed,
+                !request.cancelled,!request.sealed,!request.retiring,!request.retired else { condition.unlock();throw PinKnownRefusal() }
+            do { try processClock.commitPending(request);receipt.settled=true;receipt.known=true;request.mutationUnacknowledged=false
+                condition.broadcast();condition.unlock() } catch { condition.unlock();throw error }
+        } catch { fail(request,error,publication:request.mutationUnacknowledged);throw error }
     }
     func cancel(_ request: LocalV2Request) {
-        condition.lock();defer { condition.unlock() };guard active === request,!request.retired else { return }
+        condition.lock();defer { condition.unlock() };guard active === request,request.owner === self,!request.retired else { return }
+        if request.mutationUnacknowledged { processClock.invalidate(request);request.sealed=true }
         request.cancelled=true;if request.workers==0 { request.wipe() };condition.broadcast()
     }
     func retire(_ request: LocalV2Request) throws {
         guard !Thread.isMainThread else { throw PinKnownRefusal() }
-        condition.lock();guard active === request,!request.retiring,!request.retired,
+        condition.lock();guard active === request,request.owner === self,!request.retiring,!request.retired,
             request.workerThread != ObjectIdentifier(Thread.current) else { condition.unlock();throw PinKnownRefusal() }
-        request.retiring=true;request.cancelled=true;condition.broadcast()
+        request.retiring=true;request.cancelled=true
+        if request.mutationUnacknowledged { processClock.invalidate(request);request.sealed=true }
+        condition.broadcast()
         while request.workers>0 || request.events>0 || request.receipt != nil && !request.receipt!.settled { condition.wait() }
         request.cleanup=1;condition.unlock()
         // Real main cleanup returns before capacity is reconsidered. No timer
         // substitutes for observer removal, callback/worker or delivery ACK.
         DispatchQueue.main.sync { for observer in request.observers { NotificationCenter.default.removeObserver(observer) };request.observers.removeAll() }
         condition.lock();request.cleanup=0;request.wipe();request.retired=true;condition.broadcast()
-        guard active === request,request.workers==0,request.events==0,!request.sealed else { condition.unlock();throw PlanetChildVault.Failure.unavailable }
-        active=nil;condition.unlock()
+        guard active === request,request.owner === self,request.workers==0,request.events==0 else { condition.unlock();throw PlanetChildVault.Failure.unavailable }
+        let unavailable=request.sealed || processClock.invalidated
+        do { try processClock.detachRetired(request);request.expected=nil;request.sample=nil;request.receipt=nil;request.reservation=nil;condition.unlock() }
+        catch { condition.unlock();throw error }
+        if unavailable { throw PlanetChildVault.Failure.unavailable }
     }
+}
+/** One fixed production V2 Keychain/flock namespace owns this RAM-only clock
+ * for the actual process. No caller namespace, wall time, serialized process
+ * nonce/boot or v1 checkpoint is accepted. Policy is bound in full by value.
+ * All mutable methods below run under condition; no external callbacks occur
+ * under it. Continuous ns origin/remainder survives request/ACK/mutation. */
+fileprivate final class LocalV2ProcessClock {
+    private static let registryLock=NSLock()
+    private static var productionScope: LocalV2ProcessClock?
+    fileprivate let condition=NSCondition(),clock: PinPrimitiveClock,policy: LocalSnapshotV2Policy
+    fileprivate var active: LocalV2Request?,preparingOwner: LocalV2Writer?
+    fileprivate private(set) var invalidated=false,known: LocalV2ProcessBinding?
+    private var pending: LocalV2ProcessBinding?,pendingOwner: LocalV2Request?
+    private let process: pid_t
+    private var originNs: UInt64?,originLogical: UInt64=0,lastNs: UInt64=0
+    private init(_ policy: LocalSnapshotV2Policy,_ clock: PinPrimitiveClock) { self.policy=policy;self.clock=clock;process=getpid() }
+    fileprivate static func production(_ policy: LocalSnapshotV2Policy) throws -> LocalV2ProcessClock {
+        registryLock.lock();defer { registryLock.unlock() }
+        if let original=productionScope { guard original.matches(policy) else { throw PinKnownRefusal() };return original }
+        // Namespace is the fixed LocalV2KeychainStorage service/account and the
+        // existing application flock; every vault/writer instance shares it.
+        let original=LocalV2ProcessClock(policy,ApplePinPrimitiveClock());productionScope=original;return original
+    }
+    #if DEBUG
+    fileprivate convenience init(fixturePolicy: LocalSnapshotV2Policy,clock: PinPrimitiveClock) { self.init(fixturePolicy,clock) }
+    #endif
+    fileprivate func matches(_ other: LocalSnapshotV2Policy) -> Bool {
+        policy.version==other.version && policy.checksum==other.checksum && policy.maximum==other.maximum && policy.delays==other.delays
+    }
+    private func poison() { invalidated=true;known?.close();pending?.close();condition.broadcast() }
+    fileprivate func invalidate(_ request: LocalV2Request) {
+        // A stale owner's late cancellation/cleanup cannot poison a new lease.
+        guard active === request,request.owner.processClock === self else { return };poison()
+    }
+    fileprivate func invalidatePreparing(_ owner: LocalV2Writer) {
+        guard active==nil,preparingOwner === owner else { return };poison()
+    }
+    fileprivate func observe(_ ns: UInt64) throws {
+        guard !invalidated else { throw PinKnownRefusal() }
+        guard process==getpid(),ns>0,ns>=lastNs else { poison();throw PlanetChildVault.Failure.unavailable }
+        lastNs=ns
+        if originNs != nil { _ = try logical(ns) }
+    }
+    fileprivate func logical(_ ns: UInt64) throws -> UInt64 {
+        guard !invalidated,let origin=originNs else { throw PinKnownRefusal() }
+        guard ns>=origin,(ns-origin)/1000000<=LocalSnapshotV2.maximum-originLogical else {
+            poison();throw PlanetChildVault.Failure.unavailable
+        }
+        return originLogical+(ns-origin)/1000000
+    }
+    fileprivate func requireBound(_ request: LocalV2Request,_ bytes: Data) throws {
+        guard active === request,request.owner.processClock === self,!invalidated else { throw PinKnownRefusal() }
+        let binding=pendingOwner === request ? pending:known
+        guard let binding else { throw PinKnownRefusal() }
+        var original=try binding.bytes.copy();defer { original.resetBytes(in:0..<original.count) }
+        guard bytes==original,LocalSnapshotV2.hash(bytes)==binding.checksum else { poison();request.sealed=true;throw PlanetChildVault.Failure.unavailable }
+    }
+    fileprivate func adoptFirst(_ request: LocalV2Request,_ bytes: Data,_ snapshot: LocalSnapshotV2?,_ ns: UInt64,pendingDelivery: Bool=false) throws {
+        guard active === request,request.owner.processClock === self,!invalidated,known==nil,pending==nil,originNs==nil else { throw PinKnownRefusal() }
+        try observe(ns);let binding=LocalV2ProcessBinding(bytes,snapshot)
+        if pendingDelivery { pending=binding;pendingOwner=request } else { known=binding }
+        originNs=ns;originLogical=snapshot?.journal.logical ?? 0
+        _ = try logical(ns)
+    }
+    fileprivate func stage(_ request: LocalV2Request,_ bytes: Data,_ snapshot: LocalSnapshotV2) throws {
+        guard active === request,request.owner.processClock === self,!invalidated,known != nil,pending==nil,matches(snapshot.policy),
+            snapshot.fields.pin.observed<=(try logical(lastNs)) else { throw PinKnownRefusal() }
+        pending=LocalV2ProcessBinding(bytes,snapshot);pendingOwner=request
+        // Record anchor fields are independent of process ns origin: never
+        // rebase on charge, enrollment, request reopen or later ACK time.
+    }
+    fileprivate func commitPending(_ request: LocalV2Request) throws {
+        guard active === request,request.owner.processClock === self,!invalidated,pendingOwner === request,let pending else { throw PinKnownRefusal() }
+        known?.close();known=pending;self.pending=nil;pendingOwner=nil
+    }
+    fileprivate func detachRetired(_ request: LocalV2Request) throws {
+        guard active === request,request.owner.processClock === self,request.retired,request.workers==0,request.events==0,request.cleanup==0,
+            request.receipt==nil || request.receipt!.settled else { throw PinKnownRefusal() }
+        if pendingOwner === request { pending?.close();pending=nil;pendingOwner=nil }
+        if invalidated { known?.close();known=nil }
+        active=nil // invalidated stays true: releasing the graph never revives a lane.
+    }
+}
+fileprivate final class LocalV2ProcessBinding {
+    let checksum: String,rootRevision: UInt64,pinRevision: UInt64?,journalRevision: UInt64?,credential: String?
+    let bytes: PinOwnedBytes
+    init(_ bytes: Data,_ snapshot: LocalSnapshotV2?) {
+        self.bytes=PinOwnedBytes(bytes);checksum=LocalSnapshotV2.hash(bytes);rootRevision=snapshot?.fields.revision ?? 1
+        pinRevision=snapshot?.fields.pin.revision;journalRevision=snapshot?.journal.revision;credential=snapshot?.fields.pin.credential
+    }
+    func close() { bytes.close() }
+    deinit { close() }
 }
 fileprivate struct LocalV2PinFields {
     let revision: UInt64,credential: String,count: UInt64,blocked: UInt64,observed: UInt64,pending: String?
@@ -5183,10 +5335,13 @@ fileprivate final class LocalV2FixtureStorage: LocalV2Storage,LocalV2Transaction
 }
 fileprivate extension LocalV2Writer {
     func fixtureRequest(timeoutMs: UInt64=1000) throws -> LocalV2Request {
-        condition.lock();defer { condition.unlock() };guard active==nil,!preparing,timeoutMs>0,timeoutMs<=60000 else { throw PinKnownRefusal() }
-        preparing=true;defer { preparing=false };let now=try clock.nanoseconds()
+        condition.lock();guard active==nil,!preparing,!processClock.invalidated,processClock.matches(policy),timeoutMs>0,timeoutMs<=60000 else { condition.unlock();throw PinKnownRefusal() }
+        preparing=true;condition.unlock();var accepted=false
+        defer { if !accepted { condition.lock();preparing=false;condition.unlock() } };let now=try preparationSample()
         guard now<=UInt64.max-timeoutMs*1000000 else { throw PinKnownRefusal() }
-        let request=LocalV2Request(self,nil,now,now+timeoutMs*1000000);active=request;return request
+        condition.lock();defer { condition.unlock() }
+        guard active==nil,processClock.preparingOwner === self,!processClock.invalidated else { throw PinKnownRefusal() };try processClock.observe(now)
+        let request=LocalV2Request(self,nil,now,now+timeoutMs*1000000);active=request;preparing=false;accepted=true;return request
     }
 }
 enum PlanetChildLocalSnapshotV2Scenario: String {
@@ -5297,7 +5452,7 @@ enum PlanetChildLocalSnapshotV2RuntimeFixture {
                 guard let receipt else { throw PlanetChildVault.Failure.unavailable };receipt.close()
                 let closed=denied { try writer.settle(receipt,known:true) };try writer.settle(receipt,known:false)
                 let retired=denied { try writer.retire(request) }
-                pass=early && earlyCopy && selfRetire && closed && retired && writer.active === request && request.sealed && denied { _ = try receipt.copyCanonicalBytes() }
+                pass=early && earlyCopy && selfRetire && closed && retired && writer.active==nil && writer.processClock.invalidated && request.sealed && denied { _ = try receipt.copyCanonicalBytes() }
                 sample.close();receipt.close()
             } else if scenario == .cancelAndCAS {
                 let stored=try LocalSnapshotV2.decode(io.value,policy:p);defer { stored.close() }
@@ -5311,7 +5466,7 @@ enum PlanetChildLocalSnapshotV2RuntimeFixture {
                 let stale=denied { try other.enroll(owned,sample:original,next:staleBytes) { _ in } }
                 pass=pass && stale && otherIO.updates==0;try other.retire(owned);original.close()
                 let sealedRetirement=denied { try writer.retire(request) }
-                pass=pass && sealedRetirement && writer.active === request && request.sealed;sample.close()
+                pass=pass && sealedRetirement && writer.active==nil && writer.processClock.invalidated && request.sealed;sample.close()
             } else if scenario == .copyJoinsRetire {
                 guard let receipt else { throw PlanetChildVault.Failure.unavailable };try writer.settle(receipt,known:true)
                 let entered=DispatchSemaphore(value:0),release=DispatchSemaphore(value:0),copied=DispatchSemaphore(value:0),retired=DispatchSemaphore(value:0)
@@ -5333,12 +5488,163 @@ enum PlanetChildLocalSnapshotV2RuntimeFixture {
                 pass=held && joined && writer.active==nil && earlyCopy;receipt.close();sample.close()
             } else {
                 pass=enrollmentDenied && request.sealed && io.updates==1 && denied { _ = try writer.fixtureRequest() }
-                    && denied { try writer.retire(request) } && writer.active === request
+                    && denied { try writer.retire(request) } && writer.active==nil && writer.processClock.invalidated
                 sample.close()
             }
         }
         return PlanetChildLocalSnapshotV2Observation(pass:pass,operations:operations,
             qualification:"Synthetic local V2 codec/closed storage mechanics only; Keychain, Swift compilation, genuine host/owner/input/Gate and installed device acceptance NOT_RUN.")
+    }
+}
+#endif
+
+#if DEBUG
+fileprivate extension PlanetChildLocalSnapshotV2RuntimeFixture {
+    static func processPolicy(_ delays: [UInt64]) throws -> LocalSnapshotV2Policy {
+        let original=try policy()
+        return try LocalSnapshotV2Policy(version:original.version,checksum:original.checksum,maximum:original.maximum,delays:delays)
+    }
+    static func processRecord(_ policy: LocalSnapshotV2Policy,count: UInt64=1,logical: UInt64=5) throws -> LocalSnapshotV2 {
+        try build(policy,count:count,logical:logical,pending:count>0 ? String(repeating:"e",count:64):nil)
+    }
+}
+enum PlanetChildLocalProcessClockScenario: String {
+    case longCooldown,competingWriters,fractionalOrigin,processReplacement,unknownReadback,unexpectedBytes
+    case regression,overflow,prewriteCancel,policyMismatch,lostColdACK,ACKReadbackMismatch
+}
+struct PlanetChildLocalProcessClockObservation { let pass: Bool,updates: Int,qualification: String }
+enum PlanetChildLocalProcessClockRuntimeFixture {
+    private static func denied(_ body: () throws -> Void) -> Bool { do { try body();return false } catch { return true } }
+    private static func open(_ writer: LocalV2Writer) throws -> LocalV2Request {
+        let request=try writer.fixtureRequest()
+        if let receipt=try writer.open(request) { try writer.settle(receipt,known:true) }
+        return request
+    }
+    private static func charge(_ writer: LocalV2Writer,_ request: LocalV2Request) throws {
+        var receipt: LocalV2StorageReceipt?
+        try writer.charge(request) { receipt=$0 }
+        guard let receipt else { throw PlanetChildVault.Failure.unavailable };try writer.settle(receipt,known:true)
+    }
+    static func run(_ scenario: PlanetChildLocalProcessClockScenario) throws -> PlanetChildLocalProcessClockObservation {
+        guard !Thread.isMainThread else { throw PlanetChildVault.Failure.unavailable }
+        let small=scenario == .fractionalOrigin
+        let policy=try PlanetChildLocalSnapshotV2RuntimeFixture.processPolicy(small ? [100,200]:[70000,140000])
+        let limit: UInt64=9007199254740991
+        let initial=try PlanetChildLocalSnapshotV2RuntimeFixture.processRecord(policy,count:small || scenario == .overflow ? 0:1,
+            logical:scenario == .overflow ? limit:(small ? 0:5));defer { initial.close() }
+        var bytes=try initial.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+        let io=LocalV2FixtureStorage(bytes),clock=LocalV2FixtureClock()
+        let scope=LocalV2ProcessClock(fixturePolicy:policy,clock:clock)
+        func writer(_ p: LocalSnapshotV2Policy?=nil) -> LocalV2Writer {
+            LocalV2Writer(fixtureStorage:io,policy:p ?? policy,clock:clock,processClock:scope)
+        }
+        var pass=false
+        switch scenario {
+        case .longCooldown:
+            let first=writer(),one=try open(first);try first.retire(one)
+            clock.now+=60000000000
+            let second=writer(),two=try open(second)
+            let early=denied { try charge(second,two) };try second.retire(two)
+            clock.now+=10000000000
+            let third=writer(),three=try open(third);try charge(third,three)
+            let stored=try LocalSnapshotV2.decode(io.value,policy:policy);defer { stored.close() }
+            pass=early && io.updates==2 && stored.fields.pin.observed==70005 && stored.fields.pin.count==2
+                && stored.fields.pin.blocked==210005
+            try third.retire(three)
+        case .competingWriters:
+            let first=writer(),one=try open(first),second=writer()
+            var other: LocalV2Request?
+            let refused=denied { other=try second.fixtureRequest() }
+            scope.condition.lock();let original=scope.active === one;scope.condition.unlock()
+            pass=refused && original && io.updates==1
+            try first.retire(one);if let other { try second.retire(other) }
+            let fresh=try open(second);try second.retire(fresh)
+        case .fractionalOrigin:
+            let first=writer(),one=try open(first);clock.now+=600000;try first.retire(one)
+            let second=writer(),two=try open(second);clock.now+=600000;try charge(second,two);try second.retire(two)
+            // 101ms from the ORIGINAL origin, including the 0.2ms remainder
+            // present at first charge; a charge/ACK-time rebase would give 100ms.
+            clock.now=1101000000
+            let third=writer(),three=try open(third);try charge(third,three)
+            let stored=try LocalSnapshotV2.decode(io.value,policy:policy);defer { stored.close() }
+            pass=io.updates==3 && stored.fields.pin.count==2 && stored.fields.pin.observed==101
+            try third.retire(three)
+        case .processReplacement:
+            let first=writer(),one=try open(first);try first.retire(one);clock.now+=120000000000
+            // Explicit synthetic replacement models empty RAM after process loss;
+            // it never selects/resets the fixed production singleton.
+            let replacement=LocalV2ProcessClock(fixturePolicy:policy,clock:clock)
+            let second=LocalV2Writer(fixtureStorage:io,policy:policy,clock:clock,processClock:replacement),two=try open(second)
+            let noOutsideCredit=denied { try charge(second,two) };try second.retire(two)
+            clock.now+=70000000000
+            let third=LocalV2Writer(fixtureStorage:io,policy:policy,clock:clock,processClock:replacement),three=try open(third)
+            try charge(third,three)
+            let stored=try LocalSnapshotV2.decode(io.value,policy:policy);defer { stored.close() }
+            pass=noOutsideCredit && io.updates==3 && stored.fields.pin.count==2 && stored.fields.pin.observed==70005
+            try third.retire(three)
+        case .unknownReadback:
+            let first=writer(),one=try open(first);try first.retire(one);clock.now+=70000000000
+            let second=writer(),two=try open(second);io.corruptReadback=true
+            let unknown=denied { try charge(second,two) },retired=denied { try second.retire(two) }
+            let fresh=writer(),refused=denied { _ = try fresh.fixtureRequest() }
+            scope.condition.lock();let detached=scope.active==nil && scope.invalidated;scope.condition.unlock()
+            pass=unknown && retired && refused && detached && io.updates==2
+        case .unexpectedBytes:
+            let first=writer(),one=try open(first);try first.retire(one)
+            let foreign=try PlanetChildLocalSnapshotV2RuntimeFixture.processRecord(policy,count:2,logical:8);defer { foreign.close() }
+            var changed=try foreign.copyCanonicalBytes();defer { changed.resetBytes(in:0..<changed.count) };io.value=changed
+            let second=writer(),two=try second.fixtureRequest(),refused=denied { _ = try second.open(two) }
+            let retired=denied { try second.retire(two) };io.value=bytes
+            pass=refused && retired && io.updates==1 && denied { _ = try writer().fixtureRequest() }
+        case .regression:
+            let first=writer(),one=try open(first);clock.now+=1;_ = try first.current(one);try first.retire(one)
+            clock.now-=1
+            pass=denied { _ = try writer().fixtureRequest() } && scope.invalidated && io.updates==1
+        case .overflow:
+            let first=writer(),one=try open(first);try first.retire(one);clock.now+=500000
+            let second=writer(),two=try open(second);try second.retire(two);clock.now+=500000
+            pass=denied { _ = try writer().fixtureRequest() } && scope.invalidated && io.updates==1
+        case .prewriteCancel:
+            let first=writer(),one=try open(first);try first.retire(one);clock.now+=60000000000
+            let second=writer(),two=try open(second);second.cancel(two);try second.retire(two);clock.now+=10000000000
+            let third=writer(),three=try open(third)
+            // A stale original cannot cancel/retire the newer lease or its clock.
+            second.cancel(two);let stale=denied { try second.retire(two) };try charge(third,three)
+            let stored=try LocalSnapshotV2.decode(io.value,policy:policy);defer { stored.close() }
+            pass=stale && !scope.invalidated && stored.fields.pin.observed==70005 && io.updates==2
+            try third.retire(three)
+        case .policyMismatch:
+            let first=writer(),one=try open(first);try first.retire(one)
+            let other=try PlanetChildLocalSnapshotV2RuntimeFixture.processPolicy([70001,140000])
+            let refused=denied { _ = try writer(other).fixtureRequest() };clock.now+=70000000000
+            let second=writer(),two=try open(second);try charge(second,two)
+            pass=refused && !scope.invalidated && io.updates==2;try second.retire(two)
+        case .lostColdACK,.ACKReadbackMismatch:
+            let first=writer(),one=try first.fixtureRequest()
+            guard let receipt=try first.open(one) else { throw PlanetChildVault.Failure.unavailable }
+            defer { try? first.settle(receipt,known:false) }
+            if scenario == .ACKReadbackMismatch {
+                io.value=bytes
+                let refused=denied { try first.settle(receipt,known:true) };try first.settle(receipt,known:false)
+                pass=refused && denied { try first.retire(one) } && scope.invalidated && scope.active==nil
+                    && denied { _ = try writer().fixtureRequest() } && io.updates==1
+            } else {
+                let started=DispatchSemaphore(value:0),done=DispatchSemaphore(value:0),lock=NSLock();var refused=false
+                Thread { started.signal();let deniedRetire=denied { try first.retire(one) };lock.lock();refused=deniedRetire;lock.unlock();done.signal() }.start()
+                guard started.wait(timeout:.now()+2) == .success else { throw PlanetChildVault.Failure.unavailable }
+                scope.condition.lock()
+                while !one.retiring { if !scope.condition.wait(until:Date(timeIntervalSinceNow:2)) { scope.condition.unlock();throw PlanetChildVault.Failure.unavailable } }
+                let held=scope.active === one && scope.invalidated && !one.retired;scope.condition.unlock()
+                let otherDenied=denied { _ = try writer().fixtureRequest() }
+                try first.settle(receipt,known:false)
+                guard done.wait(timeout:.now()+2) == .success else { throw PlanetChildVault.Failure.unavailable }
+                lock.lock();let finished=refused;lock.unlock()
+                pass=held && otherDenied && finished && scope.active==nil && scope.invalidated && io.updates==1
+            }
+            receipt.close()
+        }
+        return PlanetChildLocalProcessClockObservation(pass:pass,updates:io.updates,
+            qualification:"Connected private writer with explicit synthetic process scope/storage/clock; Swift compilation, real Keychain/UIKit/OS restart/owner/input/KDF/Gate acceptance NOT_RUN. Production clock source remains fixed Apple continuous time.")
     }
 }
 #endif

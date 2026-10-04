@@ -3103,15 +3103,140 @@ final class PlanetChildVault {
         private void wipe(){closed=true;LocalSnapshotV2.wipe(charged);}
         public void close(){synchronized(owner){wipe();}}
     }
+    /** Process-local elapsed credit only. No serialized uptime/process token,
+     * wall clock, reboot credit, nonrollback, input or Gate authority. The
+     * production writer selects its one native fixed namespace and real clock;
+     * isolated synthetic instances below are usable only as mechanical tests. */
+    private interface LocalV2ElapsedClock { long now() throws Exception; }
+    private enum LocalV2ClockAction { reanchor, enroll, charge }
+    private static final class LocalV2ClockLease {
+        final LocalV2ProcessClock owner;final Object original;final long began,deadline;
+        private boolean closed;private LocalV2ClockSample sample;
+        private LocalV2ClockLease(LocalV2ProcessClock owner,Object original,long at,long deadline){
+            this.owner=owner;this.original=original;began=at;this.deadline=deadline;}
+    }
+    private static final class LocalV2ClockSample {
+        final LocalV2ProcessClock owner;final LocalV2ClockLease lease;final String checksum;
+        final long continuousMs,logicalMs;private boolean consumed;
+        private LocalV2ClockSample(LocalV2ProcessClock owner,LocalV2ClockLease lease,String sum,long at,long logical){
+            this.owner=owner;this.lease=lease;checksum=sum;continuousMs=at;logicalMs=logical;}
+    }
+    private static final class LocalV2ClockBinding {
+        final byte[] bytes;final String checksum,credentialId,protectedChecksum;final boolean seed;
+        final long revision,pinRevision,journalRevision,count,blockedUntilMs,lastObservedMs;
+        private LocalV2ClockBinding(byte[] raw,LocalSnapshotV2Policy policy,boolean seed) throws Exception {
+            this.seed=seed;byte[] owned=raw.clone();boolean adopted=false;
+            try{checksum=digest(owned);
+                if(seed){try(LocalEmptySeedV2 checked=LocalEmptySeedV2.decode(owned,policy.version,policy.checksum)){}
+                    credentialId=null;protectedChecksum=null;revision=1;pinRevision=0;journalRevision=0;count=0;blockedUntilMs=0;lastObservedMs=0;
+                }else try(LocalSnapshotV2 checked=LocalSnapshotV2.decode(owned,policy)){
+                    credentialId=checked.credentialId;protectedChecksum=checked.protectedChecksum;revision=checked.revision;pinRevision=checked.pinRevision;
+                    journalRevision=checked.journalRevision;count=checked.count;blockedUntilMs=checked.blockedUntilMs;lastObservedMs=checked.lastObservedMs;}
+                bytes=owned;adopted=true;
+            }finally{if(!adopted)LocalSnapshotV2.wipe(owned);}
+        }
+        private boolean matches(byte[] raw) throws Exception {return raw!=null&&checksum.equals(digest(bytes))
+            &&checksum.equals(digest(raw))&&MessageDigest.isEqual(bytes,raw);}
+        private void wipe(){LocalSnapshotV2.wipe(bytes);}
+    }
+    private static final class LocalV2ProcessClock {
+        final String storageIdentity;private final LocalSnapshotV2Policy policy;private final LocalV2ElapsedClock clock;
+        private LocalV2ClockLease active;private LocalV2ClockBinding known,pending;
+        private Object pendingReceipt;private long originContinuous,originLogical,lastContinuous=-1,pendingOriginContinuous,pendingOriginLogical;
+        private boolean invalid,originKnown;
+        private LocalV2ProcessClock(String identity,LocalSnapshotV2Policy policy,LocalV2ElapsedClock clock) throws Exception {
+            require(identity!=null&&!identity.isEmpty()&&policy!=null&&clock!=null);storageIdentity=identity;
+            this.policy=new LocalSnapshotV2Policy(policy.version,policy.checksum,policy.maximumIterations,policy.delays);this.clock=clock;
+        }
+        private boolean samePolicy(LocalSnapshotV2Policy other){return other!=null&&policy.version.equals(other.version)&&policy.checksum.equals(other.checksum)
+            &&policy.maximumIterations==other.maximumIterations&&Arrays.equals(policy.delays,other.delays);}
+        private void invalidateLocked(){invalid=true;if(known!=null)known.wipe();if(pending!=null)pending.wipe();known=null;pending=null;pendingReceipt=null;}
+        private synchronized void invalidate(LocalV2ClockLease lease){if(lease!=null&&active==lease&&!lease.closed)invalidateLocked();}
+        private long nativeNow() throws Exception {
+            long at;try{at=clock.now();}catch(Throwable error){invalidateLocked();if(error instanceof Error)throw(Error)error;
+                throw error instanceof Exception?(Exception)error:new Unavailable();}
+            if(invalid||at<0||at<lastContinuous){invalidateLocked();throw new Unavailable();}lastContinuous=at;return at;
+        }
+        private void own(LocalV2ClockLease lease) throws Exception {require(!invalid&&lease!=null&&lease.owner==this&&active==lease&&!lease.closed);}
+        private synchronized LocalV2ClockLease claim(Object original,long timeout) throws Exception {
+            if(invalid)throw new Unavailable();if(active!=null||original==null||timeout<=0||timeout>60000)throw new PinKnownRefusal();
+            long at=nativeNow();if(originKnown)logicalAt(at);if(at>Long.MAX_VALUE-timeout){invalidateLocked();throw new Unavailable();}require(active==null&&!invalid);
+            active=new LocalV2ClockLease(this,original,at,at+timeout);return active;
+        }
+        private synchronized long current(LocalV2ClockLease lease) throws Exception {
+            own(lease);long at=nativeNow();own(lease);if(originKnown)logicalAt(at);if(at<lease.began||at>=lease.deadline)throw new PinKnownRefusal();return at;
+        }
+        private long logicalAt(long at) throws Exception {
+            if(!originKnown||at<originContinuous||at-originContinuous>MAX_SAFE-originLogical){invalidateLocked();throw new Unavailable();}
+            return originLogical+(at-originContinuous);
+        }
+        /** Called only after actual native locked read. A foreign full snapshot
+         * can never inherit credit merely by matching credential/revisions. */
+        private synchronized boolean inspect(LocalV2ClockLease lease,byte[] actual) throws Exception {
+            current(lease);require(pending==null);if(known==null)return false;
+            if(!known.matches(actual)){invalidateLocked();throw new Unavailable();}logicalAt(lastContinuous);return true;
+        }
+        private synchronized LocalV2ClockSample sampleSeed(LocalV2ClockLease lease,byte[] actual) throws Exception {
+            long at=current(lease);require(pending==null);
+            if(known==null){LocalV2ClockBinding first=new LocalV2ClockBinding(actual,policy,true);known=first;originContinuous=at;originLogical=0;originKnown=true;}
+            else if(!known.seed||!known.matches(actual)){invalidateLocked();throw new Unavailable();}
+            lease.sample=new LocalV2ClockSample(this,lease,known.checksum,at,logicalAt(at));return lease.sample;
+        }
+        private synchronized LocalV2ClockSample sample(LocalV2ClockLease lease,byte[] actual) throws Exception {
+            long at=current(lease);require(pending==null&&known!=null);
+            if(!known.matches(actual)){invalidateLocked();throw new Unavailable();}
+            lease.sample=new LocalV2ClockSample(this,lease,known.checksum,at,logicalAt(at));return lease.sample;
+        }
+        private synchronized LocalV2ClockSample sampleReanchor(LocalV2ClockLease lease,byte[] actual) throws Exception {
+            long at=current(lease);require(known==null&&pending==null);
+            try(LocalSnapshotV2 old=LocalSnapshotV2.decode(actual,policy)){
+                lease.sample=new LocalV2ClockSample(this,lease,old.checksum,at,old.lastObservedMs);return lease.sample;}
+        }
+        private synchronized long logical(LocalV2ClockLease lease,byte[] actual) throws Exception {return sample(lease,actual).logicalMs;}
+        /** Publication remains pending until the ORIGINAL known ACK rereads it.
+         * Origin is never replaced by ACK time or another UI request. */
+        private synchronized void stage(LocalV2ClockLease lease,Object receipt,byte[] before,byte[] after,LocalV2ClockSample sample,LocalV2ClockAction action) throws Exception {
+            long at=current(lease);require(pending==null&&receipt!=null&&sample!=null&&sample.owner==this&&sample.lease==lease&&lease.sample==sample
+                &&!sample.consumed&&sample.continuousMs<=at&&sample.checksum.equals(digest(before)));sample.consumed=true;
+            LocalV2ClockBinding next=null;byte[] expected=null;
+            try{
+                if(known==null){require(action==LocalV2ClockAction.reanchor&&!originKnown);
+                    try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy)){expected=LocalSnapshotV2.reanchor(old);require(sample.logicalMs==old.lastObservedMs);}
+                }else{require(known.matches(before)&&originKnown&&sample.logicalMs<=logicalAt(at));
+                    if(action==LocalV2ClockAction.enroll){require(known.seed);try(LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
+                        LocalSnapshotV2.validateEnrollment(before,value,sample.logicalMs);}expected=after.clone();}
+                    else{require(action==LocalV2ClockAction.charge&&!known.seed);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy);LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
+                        expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);}}
+                }
+                require(MessageDigest.isEqual(expected,after));next=new LocalV2ClockBinding(after,policy,false);
+                pendingOriginContinuous=originKnown?originContinuous:at;pendingOriginLogical=originKnown?originLogical:sample.logicalMs;
+                require(next.lastObservedMs<=pendingOriginLogical+(at-pendingOriginContinuous));
+                pending=next;next=null;pendingReceipt=receipt;
+            }catch(Throwable error){invalidateLocked();if(error instanceof Error)throw(Error)error;throw error instanceof Exception?(Exception)error:new Unavailable();}
+            finally{LocalSnapshotV2.wipe(expected);if(next!=null)next.wipe();}
+        }
+        private synchronized void acknowledge(LocalV2ClockLease lease,Object receipt,byte[] actual) throws Exception {
+            long at=current(lease);require(pending!=null&&pendingReceipt==receipt);
+            if(!pending.matches(actual)||at<pendingOriginContinuous||at-pendingOriginContinuous>MAX_SAFE-pendingOriginLogical){invalidateLocked();throw new Unavailable();}
+            if(known!=null)known.wipe();known=pending;pending=null;pendingReceipt=null;
+            originContinuous=pendingOriginContinuous;originLogical=pendingOriginLogical;originKnown=true;
+        }
+        private synchronized boolean pending(LocalV2ClockLease lease){return active==lease&&!lease.closed&&pendingReceipt!=null;}
+        private synchronized void release(LocalV2ClockLease lease) throws Exception {
+            require(lease!=null&&lease.owner==this&&active==lease&&!lease.closed);
+            if(pendingReceipt!=null)invalidateLocked();lease.closed=true;lease.sample=null;active=null;
+        }
+    }
+
     /** Original retained native sample/data, not PIN or OS-owner permission.
      * Issued only after the exact already-existing seed was read under lock.
      * No caller time is accepted and no serialized uptime/process proof exists. */
     private static final class LocalV2EnrollmentSample {
         final LocalV2Writer owner;final LocalV2Request request;final long continuousMs,logicalMs;final String seedChecksum;
-        private final byte[] seed;private boolean consumed,closed;
+        private final byte[] seed;private final LocalV2ClockSample clockSample;private boolean consumed,closed;
         private LocalV2EnrollmentSample(LocalV2Writer owner,LocalV2Request request,byte[] owned) throws Exception {
-            this.owner=owner;this.request=request;continuousMs=SystemClock.elapsedRealtime();require(continuousMs>=request.began
-                &&continuousMs<request.deadline&&continuousMs-request.began<=MAX_SAFE);logicalMs=continuousMs-request.began;
+            this.owner=owner;this.request=request;clockSample=request.processClock.sampleSeed(request.processLease,owned);
+            continuousMs=clockSample.continuousMs;logicalMs=clockSample.logicalMs;
             seed=owned;seedChecksum=digest(owned);
         }
         private byte[] copySeed() throws Exception {synchronized(owner){owner.live(request);require(request.enrollmentSample==this
@@ -3121,14 +3246,18 @@ final class PlanetChildVault {
     private static final class LocalV2Request {
         final LocalV2Writer owner;final android.app.Activity activity;final android.os.IBinder token;
         final long began,deadline;final Object processIdentity;final LocalSnapshotV2Policy policy;
-        long baselineContinuous,baselineLogical,lastContinuous;boolean anchored,cancelled,sealed,retiring,retired,detached,charged,mutationStarted,enrollmentStarted;
-        int workers,mainCalls,events,settleCalls;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
+        final LocalV2ProcessClock processClock;final LocalV2ClockLease processLease;
+        boolean anchored,cancelled,sealed,retiring,retired,detached,charged,mutationStarted,enrollmentStarted;
+        int workers,mainCalls,events,settleCalls;boolean unacknowledgedMutation;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
         private byte[] currentBytes;private String currentChecksum;
         private LocalV2EnrollmentSample enrollmentSample;
         android.app.Application.ActivityLifecycleCallbacks lifecycle;android.content.BroadcastReceiver screen;Runnable expiry;
         LocalV2Request(LocalV2Writer owner,android.app.Activity activity,android.os.IBinder token,LocalSnapshotV2Policy policy,long timeout) throws Exception {
-            this.owner=owner;this.activity=activity;this.token=token;this.policy=policy;processIdentity=LocalV2Writer.PROCESS_IDENTITY;
-            began=SystemClock.elapsedRealtime();require(began>=0&&timeout>0&&timeout<=60000&&began<=Long.MAX_VALUE-timeout);deadline=began+timeout;
+            this.owner=owner;this.activity=activity;this.token=token;processIdentity=LocalV2Writer.PROCESS_IDENTITY;
+            processClock=owner.processClock(policy);this.policy=new LocalSnapshotV2Policy(processClock.policy.version,processClock.policy.checksum,
+                processClock.policy.maximumIterations,processClock.policy.delays);
+            if(!processClock.samePolicy(this.policy))throw new PinKnownRefusal();
+            processLease=processClock.claim(this,timeout);began=processLease.began;deadline=processLease.deadline;
         }
     }
     /** Actual existing-AES/AtomicFile/flock leaf, inaccessible from production:
@@ -3137,23 +3266,47 @@ final class PlanetChildVault {
      * The current private mechanical boundary is not an authorization SPI. */
     private static final class LocalV2Writer {
         private static final Object PROCESS_IDENTITY=new Object();
+        private static final Object CLOCK_SELECTION=new Object();private static LocalV2ProcessClock nativeProcessClock;
         final PlanetChildVault vault;private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
+        private final LocalV2ProcessClock fixtureClock;
         private LocalV2Request active;private boolean reserving,sealed;
-        private LocalV2Writer(PlanetChildVault vault) throws Exception {require(vault!=null);this.vault=vault;}
+        private java.util.concurrent.FutureTask<Void> attachCleanup;private Thread attachCleanupWorker;
+        private LocalV2Writer(PlanetChildVault vault) throws Exception {require(vault!=null);this.vault=vault;fixtureClock=null;}
+        /** Isolated .dev instrumentation owner; never selected by the null
+         * production factory. No synthetic clock enters the native singleton. */
+        private LocalV2Writer(PlanetChildVault vault,LocalV2ProcessClock fixture) throws Exception {
+            require(vault!=null&&fixture!=null&&BuildConfig.DEBUG&&vault.context.getPackageName().endsWith(".dev"));this.vault=vault;fixtureClock=fixture;}
+        private LocalV2ProcessClock processClock(LocalSnapshotV2Policy policy) throws Exception {
+            if(fixtureClock!=null){if(!fixtureClock.samePolicy(policy))throw new PinKnownRefusal();return fixtureClock;}
+            File parent=vault.context.getNoBackupFilesDir().getCanonicalFile(),record=new File(new File(parent,"literary-planet-child-vault-v1"),"full-record-v1");
+            require(record.getAbsoluteFile().equals(record.getCanonicalFile()));String identity=vault.vaultIdentity+"|"+record.getCanonicalPath()+"|"+vault.vaultIdentity+".aes";
+            synchronized(CLOCK_SELECTION){if(nativeProcessClock==null)nativeProcessClock=new LocalV2ProcessClock(identity,policy,SystemClock::elapsedRealtime);
+                if(!nativeProcessClock.storageIdentity.equals(identity)||!nativeProcessClock.samePolicy(policy))throw new PinKnownRefusal();return nativeProcessClock;}
+        }
         private synchronized void own(LocalV2Request request) throws Exception {require(request!=null&&request.owner==this&&active==request
             &&request.processIdentity==PROCESS_IDENTITY&&!request.retired);}
-        private synchronized void live(LocalV2Request request) throws Exception {own(request);long now=SystemClock.elapsedRealtime();
-            if(sealed||request.sealed||request.cancelled||request.retiring||now<request.began||now>=request.deadline)throw new PinKnownRefusal();}
+        private synchronized void live(LocalV2Request request) throws Exception {own(request);request.processClock.current(request.processLease);
+            if(!request.processClock.samePolicy(request.policy))throw new PinKnownRefusal();
+            if(sealed||request.sealed||request.cancelled||request.retiring)throw new PinKnownRefusal();}
         private LocalV2Request request(android.app.Activity activity,LocalSnapshotV2Policy policy,long timeout) throws Exception {
             synchronized(this){require(!reserving&&active==null&&!sealed);reserving=true;}
             try{require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&activity!=null&&activity.getClass()==MainActivity.class
                 &&activity.getApplicationContext()==vault.context&&!activity.isFinishing()&&!activity.isDestroyed()&&activity.hasWindowFocus()&&policy!=null);
                 android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
                 LocalV2Request value=new LocalV2Request(this,activity,token,policy,timeout);synchronized(this){require(active==null&&!sealed);active=value;}
-                try{attach(value);}catch(Throwable failure){throw failed(value,failure);}return value;
+                try{attach(value);}catch(Throwable failure){
+                    // The handle has not escaped. Retain one owned retirement
+                    // task while main unwinds; never release its lease merely
+                    // because registration or a cleanup dispatch failed.
+                    unknown(value);java.util.concurrent.FutureTask<Void> cleanup=new java.util.concurrent.FutureTask<>(()->{retire(value);return null;});
+                    Thread worker=new Thread(cleanup,"planet-local-v2-attach-cleanup");
+                    synchronized(this){require(attachCleanup==null&&attachCleanupWorker==null);attachCleanup=cleanup;attachCleanupWorker=worker;}
+                    worker.start();throw failed(value,failure);
+                }return value;
             }finally{synchronized(this){reserving=false;}}
         }
-        private void event(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;request.events++;request.cancelled=true;}
+        private void event(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;request.events++;request.cancelled=true;
+                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);}
             synchronized(this){request.events--;wipeIdle(request);notifyAll();}}
         private void wipeIdle(LocalV2Request request){if((request.cancelled||request.sealed)&&request.workers==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0){
             LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();
@@ -3176,9 +3329,9 @@ final class PlanetChildVault {
          * latches and native clock are checked without waiting for the UI. */
         private void onMain(LocalV2Request request,Runnable body,boolean cleanup) throws Exception {
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){own(request);require(!request.detached);request.mainCalls++;}
-            boolean accepted=false;try{accepted=main.post(()->{try{body.run();}catch(Throwable failure){synchronized(this){request.sealed=true;sealed=true;}}
+            boolean accepted=false;try{accepted=main.post(()->{try{body.run();}catch(Throwable failure){unknown(request);}
                 finally{synchronized(this){request.mainCalls--;wipeIdle(request);notifyAll();}}});}
-            finally{if(!accepted)synchronized(this){request.mainCalls--;request.sealed=true;sealed=true;wipeIdle(request);notifyAll();}}
+            finally{if(!accepted)synchronized(this){request.mainCalls--;unknown(request);wipeIdle(request);notifyAll();}}
             // Cancellation/deadline suppress publication but never reconstruct
             // completion while the ORIGINAL accepted main call is still live.
             require(accepted);synchronized(this){while(request.mainCalls>0)wait(10);if(!cleanup)live(request);}
@@ -3190,11 +3343,12 @@ final class PlanetChildVault {
         }
         private synchronized void begin(LocalV2Request request) throws Exception {live(request);require(request.workers==0&&request.settleCalls==0&&request.receipt==null);request.workers++;}
         private synchronized void finish(LocalV2Request request){request.workers--;wipeIdle(request);notifyAll();}
-        private synchronized long logical(LocalV2Request request) throws Exception {live(request);require(request.anchored);long now=SystemClock.elapsedRealtime();
-            require(now>=request.baselineContinuous&&now>=request.lastContinuous);long elapsed=now-request.baselineContinuous;
-            require(request.baselineLogical<=MAX_SAFE-elapsed);request.lastContinuous=now;return request.baselineLogical+elapsed;}
-        private synchronized void unknown(LocalV2Request request){request.sealed=true;sealed=true;request.cancelled=true;wipeIdle(request);notifyAll();}
-        private Exception failed(LocalV2Request request,Throwable failure){unknown(request);if(failure instanceof Error)throw(Error)failure;
+        private synchronized long logical(LocalV2Request request) throws Exception {live(request);require(request.anchored&&request.currentBytes!=null);
+            return request.processClock.logical(request.processLease,request.currentBytes);}
+        private synchronized void unknown(LocalV2Request request){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;request.cancelled=true;wipeIdle(request);notifyAll();}
+        private Exception failed(LocalV2Request request,Throwable failure){synchronized(this){if(failure instanceof PinKnownRefusal&&!request.unacknowledgedMutation
+                &&request.receipt==null&&!request.processClock.pending(request.processLease))return(Exception)failure;}
+            unknown(request);if(failure instanceof Error)throw(Error)failure;
             return failure instanceof Exception?(Exception)failure:new Unavailable();}
         /** V2 never asks AtomicFile to restore a backup or overwrite an orphan.
          * Exact ENOENT is the only accepted absence of temporary suffixes. */
@@ -3204,14 +3358,16 @@ final class PlanetChildVault {
                     &&stat.st_size>=30&&stat.st_size<=MAX_BYTES+29);}
                 catch(android.system.ErrnoException absent){require(!suffix.isEmpty()&&absent.errno==OsConstants.ENOENT);}}
         }
-        private LocalV2StorageReceipt publish(LocalV2Request request,byte[] expected,byte[] next,File directory) throws Exception {
+        private LocalV2StorageReceipt publish(LocalV2Request request,byte[] expected,byte[] next,File directory,
+            LocalV2ClockSample sample,LocalV2ClockAction action) throws Exception {
             live(request);synchronized(this){if(request.currentBytes!=null)require(digest(request.currentBytes).equals(request.currentChecksum)
                 &&MessageDigest.isEqual(expected,request.currentBytes));}
             completeRecord(directory);byte[] current=vault.readExact(directory);try{require(MessageDigest.isEqual(expected,current));}finally{LocalSnapshotV2.wipe(current);}
-            synchronized(this){request.mutationStarted=true;}vault.writeExact(directory,next,()->live(request));
+            synchronized(this){request.mutationStarted=true;request.unacknowledgedMutation=true;}vault.writeExact(directory,next,()->live(request));
             completeRecord(directory);byte[] readback=vault.readExact(directory),retained=null;LocalV2StorageReceipt receipt=null;boolean adopted=false;
             try{require(MessageDigest.isEqual(next,readback));live(request);retained=readback.clone();
                 receipt=new LocalV2StorageReceipt(this,request,readback);
+                request.processClock.stage(request.processLease,receipt,expected,next,sample,action);
                 synchronized(this){live(request);require(request.receipt==null);LocalSnapshotV2.wipe(request.currentBytes);
                     request.currentBytes=retained;retained=null;request.currentChecksum=receipt.checksum;request.receipt=receipt;adopted=true;readback=null;}return receipt;
             }finally{if(!adopted&&receipt!=null)receipt.wipe();LocalSnapshotV2.wipe(readback);LocalSnapshotV2.wipe(retained);}
@@ -3220,9 +3376,12 @@ final class PlanetChildVault {
             begin(request);byte[][] owned={null,null};try{host(request);synchronized(this){live(request);require(!request.anchored);}
                 LocalV2StorageReceipt result=vault.locked(directory->{live(request);
                 completeRecord(directory);owned[0]=vault.readExact(directory);try(LocalSnapshotV2 before=LocalSnapshotV2.decode(owned[0],request.policy)){
-                    owned[1]=LocalSnapshotV2.reanchor(before);LocalV2StorageReceipt receipt=publish(request,owned[0],owned[1],directory);
-                    synchronized(this){live(request);long now=SystemClock.elapsedRealtime();request.baselineContinuous=now;request.lastContinuous=now;
-                        request.baselineLogical=before.lastObservedMs;request.anchored=true;}return receipt;}});
+                    boolean warm=request.processClock.inspect(request.processLease,owned[0]);
+                    if(warm){request.processClock.sample(request.processLease,owned[0]);synchronized(this){live(request);
+                        LocalSnapshotV2.wipe(request.currentBytes);request.currentBytes=owned[0].clone();request.currentChecksum=before.checksum;request.anchored=true;}return null;}
+                    LocalV2ClockSample sample=request.processClock.sampleReanchor(request.processLease,owned[0]);owned[1]=LocalSnapshotV2.reanchor(before);
+                    LocalV2StorageReceipt receipt=publish(request,owned[0],owned[1],directory,sample,LocalV2ClockAction.reanchor);
+                    synchronized(this){live(request);request.anchored=true;}return receipt;}});
                 host(request);return result;
             }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(owned[0]);LocalSnapshotV2.wipe(owned[1]);finish(request);}
         }
@@ -3246,22 +3405,24 @@ final class PlanetChildVault {
             try{require(next!=null&&next.length>0&&next.length<=MAX_BYTES);replacement=next.clone();host(request);
                 synchronized(this){live(request);require(!original.closed&&digest(original.seed).equals(original.seedChecksum));expected=original.seed.clone();}
                 final byte[] seed=expected,afterBytes=replacement;LocalV2StorageReceipt result=vault.locked(directory->{live(request);
-                    long now=SystemClock.elapsedRealtime();require(now>=original.continuousMs);
+                    long now=request.processClock.current(request.processLease);require(now>=original.continuousMs);
                     try(LocalSnapshotV2 after=LocalSnapshotV2.decode(afterBytes,request.policy)){LocalSnapshotV2.validateEnrollment(seed,after,original.logicalMs);
-                        LocalV2StorageReceipt receipt=publish(request,seed,afterBytes,directory);synchronized(this){live(request);
-                            request.baselineContinuous=original.continuousMs;request.lastContinuous=now;request.baselineLogical=original.logicalMs;request.anchored=true;}return receipt;}});
+                        LocalV2StorageReceipt receipt=publish(request,seed,afterBytes,directory,original.clockSample,LocalV2ClockAction.enroll);
+                        synchronized(this){live(request);request.anchored=true;}return receipt;}});
                 host(request);return result;
             }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(expected);LocalSnapshotV2.wipe(replacement);original.wipe();finish(request);}
         }
         private LocalV2StorageReceipt charge(LocalV2Request request) throws Exception {
             begin(request);byte[][] owned={null,null};byte[] random=null;
-            try{host(request);synchronized(this){live(request);require(request.anchored&&!request.charged&&request.reservation==null);request.charged=true;}
+            try{host(request);synchronized(this){live(request);require(request.anchored&&!request.charged&&request.reservation==null);}
                 random=new byte[32];new java.security.SecureRandom().nextBytes(random);StringBuilder id=new StringBuilder(64);
                 for(byte value:random){id.append("0123456789abcdef".charAt((value>>>4)&15));id.append("0123456789abcdef".charAt(value&15));}
                 final String attempt=id.toString();LocalV2StorageReceipt result=vault.locked(directory->{live(request);completeRecord(directory);owned[0]=vault.readExact(directory);
                     try(LocalSnapshotV2 before=LocalSnapshotV2.decode(owned[0],request.policy)){
-                        long at=logical(request);require(at>=before.blockedUntilMs);owned[1]=LocalSnapshotV2.charge(before,attempt,at);
-                        LocalV2StorageReceipt receipt=publish(request,owned[0],owned[1],directory);byte[] reservationBytes=owned[1].clone();
+                        LocalV2ClockSample sample=request.processClock.sample(request.processLease,owned[0]);long at=sample.logicalMs;
+                        if(at<before.blockedUntilMs)throw new PinKnownRefusal();synchronized(this){live(request);request.charged=true;}
+                        owned[1]=LocalSnapshotV2.charge(before,attempt,at);
+                        LocalV2StorageReceipt receipt=publish(request,owned[0],owned[1],directory,sample,LocalV2ClockAction.charge);byte[] reservationBytes=owned[1].clone();
                         try{LocalV2ChargedReservation reservation=new LocalV2ChargedReservation(this,request,attempt,reservationBytes);
                             synchronized(this){live(request);require(request.reservation==null);request.reservation=reservation;reservationBytes=null;}
                         }finally{LocalSnapshotV2.wipe(reservationBytes);}return receipt;}});
@@ -3276,22 +3437,31 @@ final class PlanetChildVault {
             synchronized(this){live(request);require(request.receipt==receipt&&!receipt.closed&&request.workers==0&&request.settleCalls==0);request.settleCalls++;}
             byte[] current=null;try{host(request);current=vault.locked(directory->{live(request);completeRecord(directory);return vault.readExact(directory);});
                 require(digest(current).equals(receipt.checksum)&&MessageDigest.isEqual(current,receipt.bytes));host(request);
-                synchronized(this){live(request);require(request.receipt==receipt&&!receipt.closed);receipt.wipe();request.receipt=null;}
+                synchronized(this){live(request);require(request.receipt==receipt&&!receipt.closed);
+                    request.processClock.acknowledge(request.processLease,receipt,current);receipt.wipe();request.receipt=null;request.unacknowledgedMutation=false;}
             }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(current);synchronized(this){request.settleCalls--;wipeIdle(request);notifyAll();}}
         }
-        private synchronized void cancel(LocalV2Request request) throws Exception {own(request);request.cancelled=true;wipeIdle(request);notifyAll();}
+        private synchronized void cancel(LocalV2Request request) throws Exception {own(request);request.cancelled=true;
+            if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);wipeIdle(request);notifyAll();}
         private void retire(LocalV2Request request) throws Exception {
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){own(request);require(!request.retiring);request.retiring=true;request.cancelled=true;
                 while(request.workers>0||request.settleCalls>0||request.mainCalls>0||request.events>0)wait(10);}
-            try{onMain(request,()->{if(request.lifecycle!=null)((android.app.Application)vault.context).unregisterActivityLifecycleCallbacks(request.lifecycle);
-                    if(request.screen!=null)vault.context.unregisterReceiver(request.screen);if(request.expiry!=null)main.removeCallbacks(request.expiry);},true);
+            final boolean[] cleaned={false};try{onMain(request,()->{
+                    // Attempt every observer removal even if an earlier one
+                    // throws; a timer must not retain the retired Activity.
+                    try{if(request.lifecycle!=null)((android.app.Application)vault.context).unregisterActivityLifecycleCallbacks(request.lifecycle);}
+                    finally{try{if(request.screen!=null)vault.context.unregisterReceiver(request.screen);}
+                        finally{if(request.expiry!=null)main.removeCallbacks(request.expiry);}}cleaned[0]=true;},true);
                 synchronized(this){own(request);require(request.retiring&&request.workers==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0);
-                    request.detached=true;LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null){request.receipt.wipe();request.receipt=null;}if(request.reservation!=null)request.reservation.wipe();
+                    if(request.receipt!=null||request.unacknowledgedMutation){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;}
+                    if(!cleaned[0]||sealed||request.sealed){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;}
+                    request.detached=cleaned[0];LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null){request.receipt.wipe();request.receipt=null;}if(request.reservation!=null)request.reservation.wipe();
                     if(request.enrollmentSample!=null)request.enrollmentSample.wipe();
-                    if(sealed||request.sealed)throw new Unavailable();request.retired=true;active=null;}
+                    // Only after every real callback and cleanup returned can
+                    // the static slot drop the original Activity/request graph.
+                    request.processClock.release(request.processLease);request.retired=true;active=null;if(sealed||request.sealed)throw new Unavailable();}
             }catch(Throwable failure){unknown(request);synchronized(this){if(request.workers==0&&request.settleCalls==0){if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();}}throw failed(request,failure);}
         }
     }
     private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
 }
-

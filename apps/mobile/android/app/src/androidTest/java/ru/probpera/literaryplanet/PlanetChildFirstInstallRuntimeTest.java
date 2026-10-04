@@ -215,6 +215,22 @@ public final class PlanetChildFirstInstallRuntimeTest {
         if(error.get()!=null)throw error.get();return original.get();}
     private static void localRetire(Object localOwner,Object original)throws Exception{if(original!=null&&!(Boolean)field(original,"retired"))call(localOwner,"retire",original);}
 
+    // Every historical host fixture owns an isolated coordinator. A sealed
+    // case cannot poison another JUnit method or reset the production singleton.
+    private static Object localClock(Object policy,java.util.function.LongSupplier now)throws Exception{Class<?> elapsed=type("LocalV2ElapsedClock");
+        Object source=Proxy.newProxyInstance(elapsed.getClassLoader(),new Class<?>[]{elapsed},(proxy,method,args)->{
+            if(method.getName().equals("now"))return now.getAsLong();throw new UnsupportedOperationException(method.getName());});
+        return create("LocalV2ProcessClock","isolated-dev-fixture-"+UUID.randomUUID(),policy,source);}
+    private Object localOwner()throws Exception{return localOwner(localClock(snapshotPolicy(100L,250L),SystemClock::elapsedRealtime));}
+    private Object localOwner(Object clock)throws Exception{return create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext()),clock);}
+    private Object localRequest(Object owner,Object policy,long timeout)throws Exception{AtomicReference<Object> result=new AtomicReference<>();AtomicReference<Exception> error=new AtomicReference<>();
+        InstrumentationRegistry.getInstrumentation().runOnMainSync(()->{try{result.set(call(owner,"request",activity,policy,timeout));}catch(Exception failure){error.set(failure);}});
+        if(error.get()!=null)throw error.get();return result.get();}
+    private static Object localLease(Object clock,long timeout)throws Exception{return call(clock,"claim",new Object(),timeout);}
+    private static byte[] localCold(Object clock,Object policy,byte[] before)throws Exception{Object lease=localLease(clock,50000),sample=call(clock,"sampleReanchor",lease,before),receipt=new Object();
+        Object record=localDecode(before,policy);byte[] after;try{after=(byte[])call(type("LocalSnapshotV2"),"reanchor",record);}finally{call(record,"close");}
+        call(clock,"stage",lease,receipt,before,after,sample,kind("LocalV2ClockAction","reanchor"));call(clock,"acknowledge",lease,receipt,after);call(clock,"release",lease);return after;}
+
     @Test public void localV2IndependentWholeProtectedAndRegistryChecksums()throws Exception{Object policy=snapshotPolicy(100L,250L);byte[] bytes=localWrapper(2,1,1,0,17,0,null);
         Object value=localDecode(bytes,policy);try{assertEquals(sha(bytes),field(value,"checksum"));assertEquals(sha(localProtected(bytes).getBytes(StandardCharsets.UTF_8)),field(value,"protectedChecksum"));
             assertEquals(0L,field(value,"clockMs"));assertEquals(17L,field(value,"lastObservedMs"));call(type("LocalSnapshotV2"),"validateEnrollment",seed(),value,17L);
@@ -262,11 +278,11 @@ public final class PlanetChildFirstInstallRuntimeTest {
         try{Arrays.fill(input,(byte)7);assertArrayEquals(expected,copy);copy[0]^=1;assertArrayEquals(expected,(byte[])call(original,"copy"));call(original,"close");
             assertTrue(zero(retained));denied(()->call(original,"copy"));assertFalse("caller-owned input is untouched by close",zero(input));
         }finally{call(original,"close");Arrays.fill(input,(byte)0);Arrays.fill(expected,(byte)0);Arrays.fill(copy,(byte)0);}}
-    @Test public void localV2BackgroundAndExclusiveDeadlineNeverReviveOriginalHost()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext()));Object original=localRequest(localOwner,5000);
+    @Test public void localV2BackgroundAndExclusiveDeadlineNeverReviveOriginalHost()throws Exception{activity();Object localOwner=localOwner();Object original=localRequest(localOwner,5000);
         try{scenario.moveToState(Lifecycle.State.CREATED);scenario.moveToState(Lifecycle.State.RESUMED);assertTrue((Boolean)field(original,"cancelled"));denied(()->call(localOwner,"live",original));}
         finally{localRetire(localOwner,original);}Object next=localRequest(localOwner,30);try{long deadline=(Long)field(next,"deadline");while(SystemClock.elapsedRealtime()<deadline)Thread.sleep(5);
             denied(()->call(localOwner,"live",next));assertTrue((Boolean)field(next,"cancelled")||SystemClock.elapsedRealtime()>=deadline);}finally{localRetire(localOwner,next);}}
-    @Test public void localV2HeldMainRetirementIsExclusiveAndCannotClearFreshOriginal()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext())),original=localRequest(localOwner,5000);
+    @Test public void localV2HeldMainRetirementIsExclusiveAndCannotClearFreshOriginal()throws Exception{activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000);
         CountDownLatch entered=new CountDownLatch(1),release=new CountDownLatch(1);ExecutorService workers=Executors.newFixedThreadPool(2);Future<?> first=null;
         try{new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{entered.countDown();try{if(!release.await(5,TimeUnit.SECONDS))throw new AssertionError("bounded owned hold");}
                 catch(InterruptedException failure){Thread.currentThread().interrupt();throw new AssertionError(failure);}});assertTrue(entered.await(2,TimeUnit.SECONDS));
@@ -276,7 +292,7 @@ public final class PlanetChildFirstInstallRuntimeTest {
             assertTrue((Boolean)field(original,"retired"));Object fresh=localRequest(localOwner,5000);try{denied(()->call(localOwner,"retire",original));assertSame(fresh,field(localOwner,"active"));}
             finally{localRetire(localOwner,fresh);}
         }finally{release.countDown();try{if(first!=null)first.get(10,TimeUnit.SECONDS);else localRetire(localOwner,original);}finally{workers.shutdown();}}}
-    @Test public void localV2CancelKeepsActualHostWorkerUntilReturnThenWipesOwnedBytes()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext())),original=localRequest(localOwner,5000);
+    @Test public void localV2CancelKeepsActualHostWorkerUntilReturnThenWipesOwnedBytes()throws Exception{activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000);
         byte[] owned={1,2,3};localSet(original,"currentBytes",owned);localSet(original,"currentChecksum",sha(owned));CountDownLatch entered=new CountDownLatch(1),release=new CountDownLatch(1);
         ExecutorService worker=Executors.newSingleThreadExecutor();Future<Boolean> actual=null;boolean begun=false;
         try{call(localOwner,"begin",original);begun=true;new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{entered.countDown();try{if(!release.await(5,TimeUnit.SECONDS))throw new AssertionError("bounded original host hold");}
@@ -286,7 +302,7 @@ public final class PlanetChildFirstInstallRuntimeTest {
             assertTrue(held);call(localOwner,"cancel",original);assertFalse("worker data cannot wipe before actual main return",zero(owned));assertEquals(1,field(original,"workers"));release.countDown();
             assertTrue(actual.get(5,TimeUnit.SECONDS));assertEquals(0,field(original,"workers"));assertTrue("actual owned return permits wiping",zero(owned));
         }finally{release.countDown();try{if(actual!=null)actual.get(10,TimeUnit.SECONDS);else if(begun)call(localOwner,"finish",original);localRetire(localOwner,original);}finally{worker.shutdown();}}}
-    @Test public void localV2StorageReceiptIsOriginalDataOnlyAndCancellationWipesWithoutAck()throws Exception{activity();Object localOwner=create("LocalV2Writer",new PlanetChildVault(activity.getApplicationContext())),original=localRequest(localOwner,5000);
+    @Test public void localV2StorageReceiptIsOriginalDataOnlyAndCancellationWipesWithoutAck()throws Exception{activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000);
         byte[] raw={1,2,3};Object receipt=create("LocalV2StorageReceipt",localOwner,original,raw);localSet(original,"receipt",receipt);
         try{assertArrayEquals(raw,(byte[])call(receipt,"copy"));Object foreign=create("LocalV2StorageReceipt",localOwner,original,new byte[]{1,2,3});
             try{denied(()->call(localOwner,"acknowledge",foreign));}finally{call(foreign,"close");}
@@ -299,5 +315,71 @@ public final class PlanetChildFirstInstallRuntimeTest {
             call(localOwner,"cancel",original);assertTrue(zero(raw));assertTrue(zero(seedBytes));denied(()->call(sample,"copySeed"));
             denied(()->call(receipt,"copy"));denied(()->call(localOwner,"acknowledge",receipt));assertSame(original,field(localOwner,"active"));assertFalse((Boolean)field(original,"mutationStarted"));
             Method factory=PlanetChildVault.class.getDeclaredMethod("actualSdkLocalV2Writer",PlanetChildVault.class);factory.setAccessible(true);assertNull(factory.invoke(null,new PlanetChildVault(activity.getApplicationContext())));
+            denied(()->call(localOwner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertNull(field(localOwner,"active"));
         }finally{localRetire(localOwner,original);}}
+
+    /** New mechanical process-coordinator cases use isolated synthetic clocks.
+     * Real-host cases exercise actual Activity/handler joins without vault IO.
+     * No case installs a synthetic clock into the production singleton. NOT_RUN. */
+    @Test public void localV2ProcessClockAccrues120SecondsAcrossShortOriginals()throws Exception{AtomicLong now=new AtomicLong(1000);Object policy=snapshotPolicy(120000L),clock=localClock(policy,now::get);
+        byte[] raw=localCold(clock,policy,localWrapper(3,2,2,1,17,120000,repeat('f')));try{now.set(31000);Object a=localLease(clock,30000);
+            assertTrue((Boolean)call(clock,"inspect",a,raw));assertEquals(30017L,call(clock,"logical",a,raw));long deadline=(Long)field(a,"deadline");call(clock,"release",a);
+            now.set(61000);Object b=localLease(clock,30000);assertEquals(60017L,call(clock,"logical",b,raw));call(clock,"release",b);
+            now.set(121000);Object c=localLease(clock,30000);assertEquals(120017L,call(clock,"logical",c,raw));assertEquals(deadline,field(a,"deadline"));
+            denied(()->call(clock,"current",a));call(clock,"release",c);}finally{Arrays.fill(raw,(byte)0);}}
+    @Test public void localV2FreshSimulatedProcessReappliesFullDebtWithoutOutsideCredit()throws Exception{Object policy=snapshotPolicy(120000L);AtomicLong firstTime=new AtomicLong(1000),newTime=new AtomicLong(900000);
+        Object first=localClock(policy,firstTime::get),fresh=localClock(policy,newTime::get);byte[] before=localCold(first,policy,localWrapper(3,2,2,1,17,120000,repeat('f'))),after=localCold(fresh,policy,before);
+        try{Object lease=localLease(fresh,30000),record=localDecode(after,policy);try{assertEquals(17L,call(fresh,"logical",lease,after));assertEquals(120000L,field(record,"savedCooldownMs"));
+            assertEquals(120017L,field(record,"blockedUntilMs"));assertEquals(4L,field(record,"journalRevision"));assertEquals(localProtected(before),localProtected(after));}
+            finally{call(record,"close");call(fresh,"release",lease);}}finally{Arrays.fill(before,(byte)0);Arrays.fill(after,(byte)0);}}
+    @Test public void localV2LostAckAndForeignFullBytesSealOriginalSharedClock()throws Exception{Object policy=snapshotPolicy(100L);AtomicLong now=new AtomicLong(1000);Object clock=localClock(policy,now::get),lease=localLease(clock,30000);
+        byte[] before=localWrapper(2,1,1,0,17,0,null);Object sample=call(clock,"sampleReanchor",lease,before),record=localDecode(before,policy);byte[] after;
+        try{after=(byte[])call(type("LocalSnapshotV2"),"reanchor",record);}finally{call(record,"close");}call(clock,"stage",lease,new Object(),before,after,sample,kind("LocalV2ClockAction","reanchor"));
+        call(clock,"release",lease);assertTrue((Boolean)field(clock,"invalid"));assertNull(field(clock,"active"));assertNull(field(clock,"pendingReceipt"));denied(()->localLease(clock,30000));
+        Object other=localClock(policy,now::get);byte[] known=localCold(other,policy,before);String protectedBytes=localProtected(known),foreignProtected=protectedBytes.replace(repeat('d'),repeat('b'));
+        byte[] foreign=new String(known,StandardCharsets.UTF_8).replace(protectedBytes,foreignProtected).replace(sha(protectedBytes.getBytes(StandardCharsets.UTF_8)),sha(foreignProtected.getBytes(StandardCharsets.UTF_8))).getBytes(StandardCharsets.UTF_8);
+        Object checked=localDecode(foreign,policy);call(checked,"close");Object original=localLease(other,30000);denied(()->call(other,"inspect",original,foreign));assertTrue((Boolean)field(other,"invalid"));
+        call(other,"release",original);denied(()->localLease(other,30000));for(byte[] owned:new byte[][]{before,after,known,foreign})Arrays.fill(owned,(byte)0);}
+    @Test public void localV2GlobalBackwardAndSafeIntegerOverflowNeverResetCredit()throws Exception{AtomicLong now=new AtomicLong(1000);Object policy=snapshotPolicy(100L),clock=localClock(policy,now::get);
+        byte[] raw=localCold(clock,policy,localWrapper(2,1,1,0,17,0,null));now.set(1100);Object lease=localLease(clock,30000);call(clock,"logical",lease,raw);call(clock,"release",lease);
+        now.set(1099);denied(()->localLease(clock,30000));assertTrue((Boolean)field(clock,"invalid"));now.set(2000);denied(()->localLease(clock,30000));
+        AtomicLong edge=new AtomicLong(1000);Object full=localClock(policy,edge::get);byte[] maximum=localCold(full,policy,localWrapper(2,1,1,0,9007199254740991L,0,null));
+        edge.set(1001);denied(()->localLease(full,30000));assertTrue((Boolean)field(full,"invalid"));Arrays.fill(raw,(byte)0);Arrays.fill(maximum,(byte)0);}
+    @Test public void localV2SharedWritersCleanCancelAndOriginalPolicyMutationPreserveClock()throws Exception{activity();Object supplied=snapshotPolicy(100L,250L),clock=localClock(supplied,SystemClock::elapsedRealtime),a=localOwner(clock),b=localOwner(clock);
+        Object original=localRequest(a,supplied,5000);byte[] raw=seed();try{call(clock,"sampleSeed",field(original,"processLease"),raw);long origin=(Long)field(clock,"originContinuous");
+            ((long[])field(supplied,"delays"))[0]=1;Object retained=field(original,"policy");assertArrayEquals(new long[]{100L,250L},(long[])field(retained,"delays"));
+            call(a,"live",original);Object record=localDecode(localWrapper(2,1,1,0,0,0,null),retained),charged=null;byte[] derived=null;
+            try{derived=(byte[])call(type("LocalSnapshotV2"),"charge",record,repeat('f'),0L);charged=localDecode(derived,retained);assertEquals(100L,field(charged,"savedCooldownMs"));}
+            finally{call(record,"close");if(charged!=null)call(charged,"close");if(derived!=null)Arrays.fill(derived,(byte)0);}
+            denied(()->localRequest(b,5000));call(a,"cancel",original);localRetire(a,original);assertFalse((Boolean)field(clock,"invalid"));assertNull(field(clock,"active"));
+            Object next=localRequest(b,5000);try{assertEquals(origin,field(clock,"originContinuous"));assertTrue((Boolean)call(clock,"inspect",field(next,"processLease"),raw));
+                call(clock,"invalidate",field(original,"processLease"));call(b,"live",next);assertFalse((Boolean)field(clock,"invalid"));}
+            finally{localRetire(b,next);}}finally{localRetire(a,original);Arrays.fill(raw,(byte)0);}}
+    @Test public void localV2AttachFailureOwnsCleanupUntilActualMainReturn()throws Exception{activity();Object clock=localClock(snapshotPolicy(100L,250L),SystemClock::elapsedRealtime),owner=localOwner(clock);
+        AtomicBoolean rejectFirst=new AtomicBoolean(true);android.os.Handler injected=new android.os.Handler(android.os.Looper.getMainLooper()){
+            @Override public boolean sendMessageAtTime(android.os.Message message,long uptime){if(rejectFirst.compareAndSet(true,false))return false;return super.sendMessageAtTime(message,uptime);}};
+        localSet(owner,"main",injected);CountDownLatch threw=new CountDownLatch(1),release=new CountDownLatch(1),returned=new CountDownLatch(1);
+        AtomicReference<Throwable> observed=new AtomicReference<>();Thread cleanupWorker=null;
+        assertTrue(new android.os.Handler(android.os.Looper.getMainLooper()).post(()->{
+            try{call(owner,"request",activity,snapshotPolicy(100L,250L),5000L);}catch(Throwable failure){observed.set(failure);}
+            finally{threw.countDown();try{if(!release.await(5,TimeUnit.SECONDS))throw new AssertionError("bounded attach-failure main hold");}
+                catch(InterruptedException failure){Thread.currentThread().interrupt();throw new AssertionError(failure);}finally{returned.countDown();}}}));
+        try{assertTrue(threw.await(2,TimeUnit.SECONDS));assertNotNull("original request failed before returning a handle",observed.get());
+            Object original=field(owner,"active");assertNotNull(original);Future<?> cleanup=(Future<?>)field(owner,"attachCleanup");cleanupWorker=(Thread)field(owner,"attachCleanupWorker");
+            assertNotNull(cleanup);assertNotNull(cleanupWorker);long limit=SystemClock.elapsedRealtime()+2000;boolean held=false;
+            while(SystemClock.elapsedRealtime()<limit){synchronized(owner){held=(Boolean)field(original,"retiring")&&(Integer)field(original,"mainCalls")>0;}if(held)break;Thread.sleep(5);}
+            assertTrue("owned cleanup waits for actual main",held);assertFalse(cleanup.isDone());assertSame(field(original,"processLease"),field(clock,"active"));
+            assertTrue((Boolean)field(clock,"invalid"));release.countDown();assertTrue(returned.await(2,TimeUnit.SECONDS));
+            try{cleanup.get(5,TimeUnit.SECONDS);fail("sealed retirement must remain unavailable");}catch(ExecutionException expected){assertNotNull(expected.getCause());}
+            cleanupWorker.join(5000);assertFalse(cleanupWorker.isAlive());assertTrue((Boolean)field(original,"retired"));assertTrue((Boolean)field(original,"detached"));
+            assertNull(field(owner,"active"));assertNull(field(clock,"active"));assertTrue((Boolean)field(clock,"invalid"));denied(()->localLease(clock,5000));
+        }finally{release.countDown();assertTrue(returned.await(5,TimeUnit.SECONDS));if(cleanupWorker!=null){cleanupWorker.join(5000);assertFalse(cleanupWorker.isAlive());}}}
+    @Test public void localV2FailedActualCleanupInvalidatesBeforeOriginalLaneRelease()throws Exception{activity();Object clock=localClock(snapshotPolicy(100L,250L),SystemClock::elapsedRealtime),owner=localOwner(clock),original=localRequest(owner,5000);
+        android.content.BroadcastReceiver registered=(android.content.BroadcastReceiver)field(original,"screen");InstrumentationRegistry.getInstrumentation().runOnMainSync(()->activity.getApplicationContext().unregisterReceiver(registered));
+        localSet(original,"screen",new android.content.BroadcastReceiver(){public void onReceive(android.content.Context context,android.content.Intent intent){}});
+        try{denied(()->call(owner,"retire",original));assertTrue((Boolean)field(original,"retired"));assertFalse((Boolean)field(original,"detached"));assertNull(field(owner,"active"));
+            assertTrue((Boolean)field(clock,"invalid"));assertNull(field(clock,"active"));assertFalse(((android.os.Handler)field(owner,"main")).hasCallbacks((Runnable)field(original,"expiry")));
+            Object nextOwner=localOwner(clock);denied(()->localRequest(nextOwner,5000));}
+        finally{android.os.Handler handler=(android.os.Handler)field(owner,"main");Runnable expiry=(Runnable)field(original,"expiry");
+            InstrumentationRegistry.getInstrumentation().runOnMainSync(()->handler.removeCallbacks(expiry));localRetire(owner,original);}}
 }

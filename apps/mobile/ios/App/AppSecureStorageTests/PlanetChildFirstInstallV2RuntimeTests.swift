@@ -206,3 +206,40 @@ final class PlanetChildLocalSnapshotV2RuntimeTests: XCTestCase {
     }
     func testOriginalKnownReceiptCopyJoinsActualCallbackBeforeRetirement() throws { XCTAssertTrue(try observe(.copyJoinsRetire).pass) }
 }
+
+/** Connected process clock fixtures use explicit synthetic scopes. They do not
+ * establish real Keychain/OS restart, owner, input/KDF or Parent Gate acceptance. */
+final class PlanetChildLocalProcessClockRuntimeTests: XCTestCase {
+    private final class Box {
+        private let lock=NSLock()
+        private var value: Result<PlanetChildLocalProcessClockObservation,Error>?
+        func put(_ result: Result<PlanetChildLocalProcessClockObservation,Error>) { lock.lock();value=result;lock.unlock() }
+        func get() throws -> PlanetChildLocalProcessClockObservation {
+            lock.lock();defer { lock.unlock() }
+            guard let value else { throw NSError(domain:"LocalProcessClockFixture",code:1) };return try value.get()
+        }
+    }
+    private func observe(_ scenario: PlanetChildLocalProcessClockScenario) throws -> PlanetChildLocalProcessClockObservation {
+        let done=expectation(description:scenario.rawValue),box=Box()
+        Thread { box.put(Result { try PlanetChildLocalProcessClockRuntimeFixture.run(scenario) });done.fulfill() }.start()
+        wait(for:[done],timeout:15);return try box.get()
+    }
+    func testCooldownLongerThanSixtySecondsAccruesAcrossOriginalRequests() throws {
+        let result=try observe(.longCooldown);XCTAssertTrue(result.pass);XCTAssertEqual(result.updates,2)
+    }
+    func testTwoWritersShareOneOriginalProcessLane() throws { XCTAssertTrue(try observe(.competingWriters).pass) }
+    func testOriginalNanosecondRemainderSurvivesChargeACKAndReopen() throws {
+        let result=try observe(.fractionalOrigin);XCTAssertTrue(result.pass);XCTAssertEqual(result.updates,3)
+    }
+    func testReplacementProcessReappliesFullDebtWithoutOutsideTimeCredit() throws {
+        let result=try observe(.processReplacement);XCTAssertTrue(result.pass);XCTAssertEqual(result.updates,3)
+    }
+    func testUnknownReadbackPoisonsFreshWriterAndReleasesOnlyJoinedGraph() throws { XCTAssertTrue(try observe(.unknownReadback).pass) }
+    func testDifferentDurableBytesCannotBeWarmAdoptedOrRestoredToRecoverCredit() throws { XCTAssertTrue(try observe(.unexpectedBytes).pass) }
+    func testNativeContinuousRegressionAcrossRequestsInvalidatesProcessScope() throws { XCTAssertTrue(try observe(.regression).pass) }
+    func testSafeLogicalOverflowKeepsFractionAndDeniesFutureRequests() throws { XCTAssertTrue(try observe(.overflow).pass) }
+    func testKnownPrewriteCancelKeepsCreditAndStaleCleanupCannotPoisonNewLease() throws { XCTAssertTrue(try observe(.prewriteCancel).pass) }
+    func testSamePolicyChecksumWithDifferentDelayTupleCannotCreateParallelClock() throws { XCTAssertTrue(try observe(.policyMismatch).pass) }
+    func testLostColdReanchorACKInvalidatesBeforeActualOriginalRetirementJoins() throws { XCTAssertTrue(try observe(.lostColdACK).pass) }
+    func testKnownACKRequiresFreshFullReadbackAndMismatchIsSticky() throws { XCTAssertTrue(try observe(.ACKReadbackMismatch).pass) }
+}
