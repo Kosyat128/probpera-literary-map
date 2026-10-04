@@ -1,3 +1,11 @@
+<!-- child-local-process-clock-20261004:begin -->
+Source 4c0069592b812fe48812dabb80d85c788a6775f0; evidence docs/mobile/evidence/S16/child-local-process-clock-20261004/result.json.
+Implemented native process-owned Local V2 cooldown across short requests, conservative cold reanchor, original ACK/readback binding and joined Android failed-attach cleanup. Factories null/nil; child activation inactive.
+Astra Ultra scoped review/fixes and current Android preparation PASS; 12 new synthetic JVM cases/46 assertions PASS. Android instrumentation compiled only; Swift 12 new +54 retained NOT_COMPILED/NOT_RUN. No installed OS, browser/PWA or old-suite repetition; no S16 acceptance inferred.
+Four original conditions NOT_RECHECKED; seven owner inputs/five legal reviews and S03/S16 IN_PROGRESS11/36 OPEN remain unchanged; releaseReady=false.
+Next: Continue original S16 accountless/local implementation: bind genuine original V2 native owner, PIN input, KDF and charged-reservation comparison to closed finalization. P1 receipts/FirstInstallReceipt and booleans cannot authorize P2 mutation. Complete actual GateHost, separate secure child-data AES provisioning/admitted ports and App clear-before-render/lifecycle integration before activation. Reuse the process-owned native clock; the future TS restart adapter must have process scope, not be recreated for every <=60s request. Factories remain null/nil until genuine dependencies pass. LOCAL child mode does not require backend sign-in or full-profile upload. User model workflow: GPT-6.1 SOL Ultra develops each coding slice; GPT-6 Astra Ultra reviews, runs affected checks and fixes it; after its scoped local close return to SOL Ultra. Retain unchanged tests and historical source bindings; no seventh AVD, new D stage or remote/push/merge/deploy action.
+<!-- child-local-process-clock-20261004:end -->
+
 <!-- child-local-snapshot-20261004:begin -->
 Current app source b94dcc48ccae7dc97d070cada65c06e1cf1ff745; compact evidence docs/mobile/evidence/S16/child-local-snapshot-20261004/result.json.
 Private canonical LOCAL v2 P/J snapshot and fixed complete encrypted data IO implemented. Lower-bound clock/PIN/J coordinates and independent hashes are checked; bare seed is not an enrolled wrapper. No generic CAS, sidecar, missing/corrupt reset or refund is introduced; production factories stay null/nil.
