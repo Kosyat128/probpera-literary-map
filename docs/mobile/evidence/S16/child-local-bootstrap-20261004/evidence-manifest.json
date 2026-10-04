@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "ef8d8f231111ce6d76354195ab991dd653ef78fe",
+  "files": [
+    {
+      "path": "docs/mobile/evidence/S16/child-local-bootstrap-20261004/result.json",
+      "sha256": "603bbb7cd53a7eb8d15aec835a33c93af09959c5353578d960454b3df4501c33",
+      "bytes": 37910
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-local-bootstrap-20261004/verification-final.json",
+      "sha256": "44896f9a4ab15fb65ac4520e71cf64682c6dcbf5dee3b2a0587aac125c19408c",
+      "bytes": 10681
+    },
+    {
+      "path": "docs/mobile/evidence/S16/child-local-bootstrap-20261004/remaining-gates.json",
+      "sha256": "8f43fcc432c8ac1623312e0db57a0c1657f1585358a472c0a6634ef36d863409",
+      "bytes": 10875
+    }
+  ],
+  "selfExcluded": true,
+  "rawProofsCopiedIntoGit": false,
+  "rawProofReferences": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-report-input.final.json",
+      "sha256": "0da37559915de42a2092fbb458105fdb2bd2f35e6f2cf957cf4dd493cc74d1b7",
+      "bytes": 3027
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\source-commit\\checkpoint.json",
+      "sha256": "4c08ab755404d66868bebf7494c4b558ce96384d59b58e8fc57bb96abf73731d",
+      "bytes": 288436
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\baseline.json",
+      "sha256": "b7afb0c0d498e272effd0d9711042d98341a47fdccd5560e698c91f53355a6aa",
+      "bytes": 275253
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\result.json",
+      "sha256": "558ef32b6176210402c3b2d03aa8c4de676ef8ccea9aafc2a4349293c8fb8265",
+      "bytes": 19036
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\type-correction.json",
+      "sha256": "a8dc331c0c1f1f5be9300708651a5a104097afaeaee1aa745c6ef74a5961444e",
+      "bytes": 3238
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\result.json",
+      "sha256": "e65db061a8f1b5e64e0b189d0f9beb4093fcd70be80ca38a2ed05cb882cf7975",
+      "bytes": 16271
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\inputs-before.json",
+      "sha256": "c921904e713d6efa41092f161e75c9840c97a52c931a14fb6a3e8079fa352079",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\inputs-after.json",
+      "sha256": "c921904e713d6efa41092f161e75c9840c97a52c931a14fb6a3e8079fa352079",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\inputs-before.json",
+      "sha256": "6119f907b44dcf6ca0d90ece12887e3e2dddb6c844fd5f96241ac16ed2c93bf1",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\inputs-after.json",
+      "sha256": "6119f907b44dcf6ca0d90ece12887e3e2dddb6c844fd5f96241ac16ed2c93bf1",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-seed-android-409580a4-7cae-4fba-b12a-43fe43472d15\\execution.json",
+      "sha256": "2f280b757656f507fda338ceb6461631368c1be3317d6fe40f6d0adc6bdbfa5d",
+      "bytes": 4549
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-seed-v2-jvm-53d31c69-7291-4f13-a024-53d6da605f58\\result.json",
+      "sha256": "f5588956b3a12ae0cf46541a5e767b2738fc466863f7038dcefcd06de8eb73de",
+      "bytes": 8907
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\xcode-structure.json",
+      "sha256": "13404e08427f863b01fb258a2ae12b443d24692b4c4a9ddc680a522d619fc5cc",
+      "bytes": 290873
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-local-parent-owner-20261004\\result.json",
+      "sha256": "5207bccd79c59573874d24093fe75de0fcd8674711e7fe90bb8f893599d2a30e",
+      "bytes": 102381
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-69aba0b1-825c-497b-b8bf-8aa42c24eeb0\\preparation.json",
+      "sha256": "fbbfe72c0de6886e65d3a300acc4908edd14031bd98d08305ff0ff954775e82b",
+      "bytes": 291034
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\typescript.before.js",
+      "sha256": "fbbe4c8e0db4fe79f2196257376660b3f99989708c1f352fcb5e53382c5cdd2d",
+      "bytes": 16475
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\typescript.after.js",
+      "sha256": "fbbe4c8e0db4fe79f2196257376660b3f99989708c1f352fcb5e53382c5cdd2d",
+      "bytes": 16475
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\esbuild.before.js",
+      "sha256": "60d0d8c68ba93271d84af8623576f4e687a53148841bea96a6be9bafeb994eda",
+      "bytes": 13605
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\esbuild.after.js",
+      "sha256": "60d0d8c68ba93271d84af8623576f4e687a53148841bea96a6be9bafeb994eda",
+      "bytes": 13605
+    }
+  ],
+  "releaseReady": false
+}

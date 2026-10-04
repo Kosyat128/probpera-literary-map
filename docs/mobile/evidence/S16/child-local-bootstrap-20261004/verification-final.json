@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-bootstrap-verification-final",
+  "sourceCommit": "ef8d8f231111ce6d76354195ab991dd653ef78fe",
+  "status": "SCOPED_LOCAL_ONLY",
+  "localUnits": {
+    "passed": 60,
+    "failed": 0,
+    "pendingOrFiltered": 0,
+    "suites": [
+      {
+        "path": "src/child/childLocalBootstrap.test.ts",
+        "passed": 25,
+        "failed": 0
+      },
+      {
+        "path": "src/child/childLocalRestartV2.test.ts",
+        "passed": 35,
+        "failed": 0
+      }
+    ],
+    "qualification": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\type-correction.json",
+      "sha256": "a8dc331c0c1f1f5be9300708651a5a104097afaeaee1aa745c6ef74a5961444e",
+      "bytes": 3238
+    },
+    "unitReuse": {
+      "executedAtOriginalAttempt": true,
+      "originalExecution": {
+        "command": [
+          "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "src/child/childLocalBootstrap.test.ts",
+          "src/child/childLocalRestartV2.test.ts",
+          "--config",
+          "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\vitest.config.mjs",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\affected.vitest.json"
+        ],
+        "startedAt": "2026-10-04T01:34:45.015Z",
+        "finishedAt": "2026-10-04T01:34:46.637Z",
+        "exitCode": 0,
+        "signal": null,
+        "errorCode": null,
+        "timedOut": false,
+        "overflow": false,
+        "observedStdoutBytes": 192,
+        "observedStderrBytes": 0,
+        "rawStreamsComplete": true,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\affected-units.stdout.txt",
+          "sha256": "b99c8f8c6d107355ee9b81b3c2b68d14501a30cdc25e531ffe4f6da818cb3105",
+          "bytes": 192
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\affected-units.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "executedOriginalRawSourceSha256": "01983d463dfe5e2b8bf6f1e48761ddf16bcb5acd89f1695322c09d96a40b8e9c",
+      "finalRawSourceSha256": "5969a013aaa51398f5d07e33f4b5d519c55ee48b42792f50cd7894e46e694748",
+      "executableEmissionByteEqual": true,
+      "allOtherSourceRowsByteExact": true,
+      "testSourceBytesUnchanged": true,
+      "repeatedUnitCommands": 0
+    },
+    "originalRecordedRepositoryHead": "c34ba854c5ae8d1f5a1e764dd9fd2105cd436781",
+    "originalRecordedAppSource": "32e3250063e1e6284470af2761ad765983e68781",
+    "originalFailure": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\result.json",
+      "sha256": "e65db061a8f1b5e64e0b189d0f9beb4093fcd70be80ca38a2ed05cb882cf7975",
+      "bytes": 16271
+    },
+    "scope": "Only two new suites; original precommit units preserve original raw inputs. A separate one-file type-assertion correction has byte-identical TypeScript and esbuild emissions; final TSC inputs exactly match current source. No later-tip unit execution claimed."
+  },
+  "applicationTypeScript": "PASS",
+  "android": "MAIN_TEST_COMPILE_ONLY",
+  "scalarCodec": {
+    "cases": 6,
+    "assertions": 85,
+    "scope": "PURE_V2_SCALAR_ONLY"
+  },
+  "ios": "PBX_PARSE_ONLY",
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "executionNotRun": {
+    "installedAndroidOwnerAndFirstInstall": "NOT_RUN",
+    "android19NativeMethods": "COMPILED_ONLY_NOT_RUN",
+    "swift40Methods": "NOT_COMPILED_NOT_RUN",
+    "nativeLifecycleAndStorage": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "offlineMatrix": "NOT_RUN",
+    "currentPwaBuild": "NOT_RUN",
+    "currentReadinessCheckers": "NOT_RUN",
+    "productionAdmission": "NOT_RUN"
+  },
+  "stageAccepted": false,
+  "releaseReady": false
+}

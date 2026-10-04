@@ -1,0 +1,703 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-bootstrap-evidence",
+  "status": "IN_PROGRESS",
+  "generatedAt": "2026-10-04T02:00:12.486Z",
+  "sourceCommit": "ef8d8f231111ce6d76354195ab991dd653ef78fe",
+  "binding": {
+    "sourceCommit": "ef8d8f231111ce6d76354195ab991dd653ef78fe",
+    "repositoryHead": "ef8d8f231111ce6d76354195ab991dd653ef78fe",
+    "sourceFingerprint": "6529415e49f5e0d94ef616381f59fc85ac277359cb59638abe54df5715dbdf4d",
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "fcc3d67e5be269a2253447842fc0c2b54e336954278adf3dab30726b502377a4"
+  },
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\source-commit\\checkpoint.json",
+    "sha256": "4c08ab755404d66868bebf7494c4b558ce96384d59b58e8fc57bb96abf73731d",
+    "bytes": 288436
+  },
+  "focusedChecks": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\result.json",
+    "sha256": "558ef32b6176210402c3b2d03aa8c4de676ef8ccea9aafc2a4349293c8fb8265",
+    "bytes": 19036
+  },
+  "changes": {
+    "sourcePaths": [
+      "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildFirstInstallRuntimeTest.java",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildFirstInstallV2RuntimeTests.swift",
+      "src/child/childLocalBootstrap.test.ts",
+      "src/child/childLocalBootstrap.ts",
+      "src/child/childLocalRestartV2.test.ts",
+      "src/child/childLocalRestartV2.ts"
+    ],
+    "sourceRows": 1796,
+    "localAccountlessOnly": true,
+    "backendAndProfileUploadRequired": false,
+    "qualification": "Distinct strict empty schema2 local seed, original genuine OS-owner first-install provisioning and conservative restart arithmetic; existing v1 contracts/factories stay unchanged and unavailable."
+  },
+  "localChecks": {
+    "status": "PASS",
+    "units": {
+      "passed": 60,
+      "failed": 0,
+      "pendingOrFiltered": 0,
+      "suites": [
+        {
+          "path": "src/child/childLocalBootstrap.test.ts",
+          "passed": 25,
+          "failed": 0
+        },
+        {
+          "path": "src/child/childLocalRestartV2.test.ts",
+          "passed": 35,
+          "failed": 0
+        }
+      ],
+      "qualification": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\type-correction.json",
+        "sha256": "a8dc331c0c1f1f5be9300708651a5a104097afaeaee1aa745c6ef74a5961444e",
+        "bytes": 3238
+      },
+      "unitReuse": {
+        "executedAtOriginalAttempt": true,
+        "originalExecution": {
+          "command": [
+            "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "src/child/childLocalBootstrap.test.ts",
+            "src/child/childLocalRestartV2.test.ts",
+            "--config",
+            "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\vitest.config.mjs",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\affected.vitest.json"
+          ],
+          "startedAt": "2026-10-04T01:34:45.015Z",
+          "finishedAt": "2026-10-04T01:34:46.637Z",
+          "exitCode": 0,
+          "signal": null,
+          "errorCode": null,
+          "timedOut": false,
+          "overflow": false,
+          "observedStdoutBytes": 192,
+          "observedStderrBytes": 0,
+          "rawStreamsComplete": true,
+          "stdout": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\affected-units.stdout.txt",
+            "sha256": "b99c8f8c6d107355ee9b81b3c2b68d14501a30cdc25e531ffe4f6da818cb3105",
+            "bytes": 192
+          },
+          "stderr": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\affected-units.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        "executedOriginalRawSourceSha256": "01983d463dfe5e2b8bf6f1e48761ddf16bcb5acd89f1695322c09d96a40b8e9c",
+        "finalRawSourceSha256": "5969a013aaa51398f5d07e33f4b5d519c55ee48b42792f50cd7894e46e694748",
+        "executableEmissionByteEqual": true,
+        "allOtherSourceRowsByteExact": true,
+        "testSourceBytesUnchanged": true,
+        "repeatedUnitCommands": 0
+      },
+      "originalRecordedRepositoryHead": "c34ba854c5ae8d1f5a1e764dd9fd2105cd436781",
+      "originalRecordedAppSource": "32e3250063e1e6284470af2761ad765983e68781",
+      "originalFailure": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\result.json",
+        "sha256": "e65db061a8f1b5e64e0b189d0f9beb4093fcd70be80ca38a2ed05cb882cf7975",
+        "bytes": 16271
+      },
+      "scope": "Only two new suites; original precommit units preserve original raw inputs. A separate one-file type-assertion correction has byte-identical TypeScript and esbuild emissions; final TSC inputs exactly match current source. No later-tip unit execution claimed."
+    },
+    "applicationTypeScript": "PASS",
+    "typeScriptRunCount": 2,
+    "typeScriptExecutions": [
+      {
+        "exitCode": 2,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\application-typescript.stdout.txt",
+          "sha256": "1db9e9dfdae36737f6c99bbce3deaa1a02275b9b7dd97a2319056553a8cafb7c",
+          "bytes": 285
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\application-typescript.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      {
+        "exitCode": 0,
+        "stdout": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\application-typescript.stdout.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        "stderr": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\application-typescript.stderr.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      }
+    ],
+    "qualification": "First actual application TSC FAIL retained; final corrected TSC PASS. Units not repeated."
+  },
+  "androidPreparation": {
+    "status": "PASS",
+    "execution": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-seed-android-409580a4-7cae-4fba-b12a-43fe43472d15\\execution.json",
+      "sha256": "2f280b757656f507fda338ceb6461631368c1be3317d6fe40f6d0adc6bdbfa5d",
+      "bytes": 4549
+    },
+    "receipt": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-bf00f65a-29b6-4c58-a9cf-871c107bf3cb\\preparation.json",
+      "sha256": "804f30332fe584dea8791277debef3771210b86585286d34f78a8cdc7ef638e5",
+      "bytes": 306179
+    },
+    "binaryReceipt": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-bf00f65a-29b6-4c58-a9cf-871c107bf3cb\\binary.json",
+      "sha256": "7d4fc6d7267f85d32552f88977e7ee5f360df392e9742161a554eecc58f38e39",
+      "bytes": 199661
+    },
+    "outputs": [
+      {
+        "path": ".tmp/mobile-release-android-bf00f65a-29b6-4c58-a9cf-871c107bf3cb/native-artifact.json",
+        "sha256": "498255b5fd87deac5f68dcfe7212c41871d1fb61af92a00f3adb35baa4411c6e",
+        "bytes": 716382
+      },
+      {
+        "path": ".tmp/mobile-release-android-bf00f65a-29b6-4c58-a9cf-871c107bf3cb/app-dev-debug.apk",
+        "sha256": "870ffda2e6974b14f7ce0caefea966469a10af782adfc35f707684a0fb0eafb4",
+        "bytes": 69965348
+      },
+      {
+        "path": ".tmp/mobile-release-android-bf00f65a-29b6-4c58-a9cf-871c107bf3cb/app-dev-debug-androidTest.apk",
+        "sha256": "f9180bff78da7fb4b88cbb15b54dfe7101ad6681acd113ee396a91762627f6e1",
+        "bytes": 645103
+      }
+    ],
+    "instrumentationCompiled": true,
+    "authoredNewNativeMethods": 19,
+    "nativeRuntime": "NOT_RUN"
+  },
+  "scalarV2Codec": {
+    "status": "PASS_SCALAR_ONLY",
+    "result": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-seed-v2-jvm-53d31c69-7291-4f13-a024-53d6da605f58\\result.json",
+      "sha256": "f5588956b3a12ae0cf46541a5e767b2738fc466863f7038dcefcd06de8eb73de",
+      "bytes": 8907
+    },
+    "cases": 6,
+    "assertions": 85
+  },
+  "iosProject": {
+    "status": "PBX_PARSE_ONLY",
+    "result": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\xcode-structure.json",
+      "sha256": "13404e08427f863b01fb258a2ae12b443d24692b4c4a9ddc680a522d619fc5cc",
+      "bytes": 290873
+    },
+    "authoredNativeMethods": 40,
+    "swiftCompilation": "NOT_RUN"
+  },
+  "retainedPwa": {
+    "sourceCommit": "32e3250063e1e6284470af2761ad765983e68781",
+    "receipt": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-69aba0b1-825c-497b-b8bf-8aa42c24eeb0\\preparation.json",
+      "sha256": "fbbfe72c0de6886e65d3a300acc4908edd14031bd98d08305ff0ff954775e82b",
+      "bytes": 291034
+    },
+    "originalBindingPreserved": true,
+    "rebuilt": false,
+    "qualification": "Source32e artifact remains source32e. New TS bootstrap/restart modules are private and unimported by App; no current-source PWA build or acceptance is claimed."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Exact prior object retained verbatim; NOT_RECHECKED, with original source/timestamp/results.",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "programmingContinuation": {
+    "stage": "S16",
+    "status": "IN_PROGRESS",
+    "implementationOwner": "Codex",
+    "sourceFoundation": [
+      "src/child/childPackage.ts",
+      "src/child/childIndex.ts",
+      "src/child/childMedia.ts",
+      "src/child/childProtectedState.ts",
+      "src/child/childDurableData.ts",
+      "src/child/childMediaDecode.ts",
+      "src/child/childMediaPresentation.ts",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+      "apps/mobile/ios/App/App/PlanetChildDataStore.swift",
+      "src/child/childNativeData.ts",
+      "src/child/parentPinEnrollment.ts",
+      "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "src/child/childNativeTransport.ts",
+      "src/child/childStaticSvg.ts"
+    ],
+    "protectedAdmission": "UNAVAILABLE",
+    "appActivation": false,
+    "approvedProductionChildContent": false,
+    "ownerInputsReference": "docs/mobile/RELEASE_DECISIONS.json",
+    "nextIndependentAction": "Continue original S16 accountless/local implementation: complete full Local V2 enrolled protected-record and PIN-attempt codecs plus a serialized native exact expected/next canonical record+journal writer bound to the original operation, process, host and continuous deadline. Complete separate child-data AES provisioning, genuine GateHost/admitted data ports and App clear-before-render/lifecycle wiring before child activation. Private first-install seed storage and conservative restart foundations do not supply full V2 PIN mutation, admission, nonrollback or trusted cross-boot authority. Keep stronger v1 factories null/nil and unavailable. Labels, ages, topics and complete child records remain local; backend sign-in/profile upload are not prerequisites. These six OPEN tasks remain Codex-owned; S03/S16 IN_PROGRESS11/36 OPEN and seven owner inputs/five reviews unchanged. Retain source32e PWA with its original binding; no old suite/build rerun, seventh AVD, remote/push/merge/deploy or new D stage.",
+    "remainingInternalProgramming": [
+      {
+        "work": "Protected child admission",
+        "status": "OPEN",
+        "responsibility": "Implement genuine native original Gate/host ownership and an explicitly versioned local supported contract behind admitted durable child ports. Seed/AES provisioning and App clear-before-render remain Codex work. No mandatory guardian backend sign-in or child-record cloud upload is a prerequisite; local brands, callback flags and synthetic ports cannot grant admission. Factories remain null/nil until the actual chosen contract and installed host guarantees are supported."
+      },
+      {
+        "work": "Supported native authority and trusted time",
+        "status": "OPEN",
+        "responsibility": "Implement a separately versioned local conservative restart/re-anchor contract: persist charged attempt count and pending debt, grant zero cooldown credit for time outside the process, and deny unknown anchors. Existing v1 stronger nonrollback and boot-UUID guarantees remain UNCHANGED and unavailable; do not weaken v1 or relabel ordinary encrypted storage/local booleans as that authority. Supported local host/time binding remains Codex work."
+      },
+      {
+        "work": "Native PIN enrollment, verification and recovery",
+        "status": "OPEN",
+        "responsibility": "Private genuine OS-owner per-use signing/public verification prerequisites for enroll/recover and parent locale locks are implemented inactive at source 32e3250063e1e6284470af2761ad765983e68781. Android13 owner scenarios are COMPILED_ONLY, installed owner proof NOT_RUN; Swift26 NOT_COMPILED/NOT_RUN. Existing PIN input/KDF, charged journals and connected durable transaction foundations retain their original separate scopes. Explicit local initial seed/AES provisioning, the separately versioned restart contract, genuine native Gate/host and admitted durable child ports remain OPEN Codex tasks; no complete bootstrap, legal guardian proof, recovery/checkpoint or production admission is claimed. Factories remain null/nil and App inactive."
+      },
+      {
+        "work": "Durable separate child data ports",
+        "status": "OPEN",
+        "responsibility": "The private TypeScript RPC transport and constructor-owned Java/Swift four-purpose dispatchers are implemented. Complete separately authenticated native host-current coordination under the durable commit lock, admitted child index-port integration and actual installed storage/lifecycle evidence. Private partition activation and local publication callbacks grant no protected admission, PIN, package/review or rights authority; actual App/plugin registration remains pending."
+      },
+      {
+        "work": "Clear before render and lifecycle integration",
+        "status": "OPEN",
+        "responsibility": "Wire sealed startup, context/route revocation and reference clearing before child rendering across Back, background, restart and account/profile changes. Private synchronous startup/index/media handoff revocation and terminal expiry/deadline guards are now corrected and locally tested; no actual render/lifecycle admission established."
+      },
+      {
+        "work": "Reviewed child media rendering",
+        "status": "OPEN",
+        "responsibility": "The retained static PNG/JPEG/WebP/PCM-WAV codecs, closed static SVG validator and owned Web presentation foundations have separate scoped local proofs. Complete remaining documented formats, canonical production flag/assets coverage, independently reviewed exact-byte RU/EN production assets and native/App/lifecycle integration before activation. Existing SVG scopes were retained without repeat; muted synthetic audio, browser fixtures and structural validation grant no content rights or native admission."
+      }
+    ],
+    "qualification": "These are remaining Codex programming tasks, separate from the seven owner input actions. Integrated source foundations do not establish production child activation, native authority, approved content or installed-device acceptance.",
+    "localContinuation": {
+      "isolatedWebStorage": "43 synthetic unit cases plus 44 actual Edge IndexedDB checks; no App/native ports admission",
+      "staticMediaDecoder": "retained actual distinct local cases in explicit raw proofs",
+      "ownedWebPresentation": "retained actual distinct local cases in explicit raw proofs",
+      "privateNativeDataCandidates": "Reviewed current source candidates only; no admitted JS transaction backend, PIN/profile/package authority, native plugin or App activation",
+      "nativeCandidateOsRuntime": "NOT_RUN",
+      "iosCandidateCompilation": "NOT_RUN",
+      "actualWebMediaProofs": [
+        {
+          "kind": "literary-planet-child-media-web-codec-proof",
+          "checks": 28,
+          "proofId": "actual-edge-codec",
+          "sourceCommit": "709d36279abf269a75e530cbf3cd4b95ff9aa0ca"
+        },
+        {
+          "kind": "literary-planet-child-media-web-presentation-proof",
+          "checks": 22,
+          "proofId": "actual-edge-presentation",
+          "sourceCommit": "d320b8e9bc1b12482ae84db533de50670f1bab24"
+        }
+      ],
+      "audibleAudioVerified": false,
+      "appActivation": false,
+      "nativeProtectedAdmission": "UNAVAILABLE"
+    },
+    "accountlessFirst": true,
+    "childProfilesLocalOnly": true,
+    "optionalBackend": "INACTIVE_NOT_A_LOCAL_CHILD_PREREQUISITE"
+  },
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "executionNotRun": {
+    "installedAndroidOwnerAndFirstInstall": "NOT_RUN",
+    "android19NativeMethods": "COMPILED_ONLY_NOT_RUN",
+    "swift40Methods": "NOT_COMPILED_NOT_RUN",
+    "nativeLifecycleAndStorage": "NOT_RUN",
+    "browser": "NOT_RUN",
+    "offlineMatrix": "NOT_RUN",
+    "currentPwaBuild": "NOT_RUN",
+    "currentReadinessCheckers": "NOT_RUN",
+    "productionAdmission": "NOT_RUN"
+  },
+  "rawProofReferences": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-report-input.final.json",
+      "sha256": "0da37559915de42a2092fbb458105fdb2bd2f35e6f2cf957cf4dd493cc74d1b7",
+      "bytes": 3027
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\source-commit\\checkpoint.json",
+      "sha256": "4c08ab755404d66868bebf7494c4b558ce96384d59b58e8fc57bb96abf73731d",
+      "bytes": 288436
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\baseline.json",
+      "sha256": "b7afb0c0d498e272effd0d9711042d98341a47fdccd5560e698c91f53355a6aa",
+      "bytes": 275253
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\result.json",
+      "sha256": "558ef32b6176210402c3b2d03aa8c4de676ef8ccea9aafc2a4349293c8fb8265",
+      "bytes": 19036
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\type-correction.json",
+      "sha256": "a8dc331c0c1f1f5be9300708651a5a104097afaeaee1aa745c6ef74a5961444e",
+      "bytes": 3238
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\result.json",
+      "sha256": "e65db061a8f1b5e64e0b189d0f9beb4093fcd70be80ca38a2ed05cb882cf7975",
+      "bytes": 16271
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\inputs-before.json",
+      "sha256": "c921904e713d6efa41092f161e75c9840c97a52c931a14fb6a3e8079fa352079",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\inputs-after.json",
+      "sha256": "c921904e713d6efa41092f161e75c9840c97a52c931a14fb6a3e8079fa352079",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\inputs-before.json",
+      "sha256": "6119f907b44dcf6ca0d90ece12887e3e2dddb6c844fd5f96241ac16ed2c93bf1",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\inputs-after.json",
+      "sha256": "6119f907b44dcf6ca0d90ece12887e3e2dddb6c844fd5f96241ac16ed2c93bf1",
+      "bytes": 276100
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-seed-android-409580a4-7cae-4fba-b12a-43fe43472d15\\execution.json",
+      "sha256": "2f280b757656f507fda338ceb6461631368c1be3317d6fe40f6d0adc6bdbfa5d",
+      "bytes": 4549
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\native-child-seed-v2-jvm-53d31c69-7291-4f13-a024-53d6da605f58\\result.json",
+      "sha256": "f5588956b3a12ae0cf46541a5e767b2738fc466863f7038dcefcd06de8eb73de",
+      "bytes": 8907
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\xcode-structure.json",
+      "sha256": "13404e08427f863b01fb258a2ae12b443d24692b4c4a9ddc680a522d619fc5cc",
+      "bytes": 290873
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-local-parent-owner-20261004\\result.json",
+      "sha256": "5207bccd79c59573874d24093fe75de0fcd8674711e7fe90bb8f893599d2a30e",
+      "bytes": 102381
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-69aba0b1-825c-497b-b8bf-8aa42c24eeb0\\preparation.json",
+      "sha256": "fbbfe72c0de6886e65d3a300acc4908edd14031bd98d08305ff0ff954775e82b",
+      "bytes": 291034
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\typescript.before.js",
+      "sha256": "fbbe4c8e0db4fe79f2196257376660b3f99989708c1f352fcb5e53382c5cdd2d",
+      "bytes": 16475
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\typescript.after.js",
+      "sha256": "fbbe4c8e0db4fe79f2196257376660b3f99989708c1f352fcb5e53382c5cdd2d",
+      "bytes": 16475
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\esbuild.before.js",
+      "sha256": "60d0d8c68ba93271d84af8623576f4e687a53148841bea96a6be9bafeb994eda",
+      "bytes": 13605
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a2\\esbuild.after.js",
+      "sha256": "60d0d8c68ba93271d84af8623576f4e687a53148841bea96a6be9bafeb994eda",
+      "bytes": 13605
+    }
+  ],
+  "originalFailedAttempts": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-bootstrap-work-20261004\\checks-a1\\result.json",
+      "sha256": "e65db061a8f1b5e64e0b189d0f9beb4093fcd70be80ca38a2ed05cb882cf7975",
+      "bytes": 16271
+    }
+  ],
+  "preservation": {
+    "oldDocumentTailsPreserved": true,
+    "stateValueSpans": 3,
+    "allOtherStateBytesPreserved": true,
+    "stageCriteriaAndVerificationCacheUnchanged": true,
+    "ownerRegistrySha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922",
+    "otherSourceBytesAndLockToolsUnchanged": true
+  },
+  "nativeFactories": "null/nil",
+  "appActivation": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0
+}
