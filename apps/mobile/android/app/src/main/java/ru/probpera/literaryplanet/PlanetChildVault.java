@@ -3275,7 +3275,8 @@ final class PlanetChildVault {
         /** Isolated .dev instrumentation owner; never selected by the null
          * production factory. No synthetic clock enters the native singleton. */
         private LocalV2Writer(PlanetChildVault vault,LocalV2ProcessClock fixture) throws Exception {
-            require(vault!=null&&fixture!=null&&BuildConfig.DEBUG&&vault.context.getPackageName().endsWith(".dev"));this.vault=vault;fixtureClock=fixture;}
+            require(vault!=null&&fixture!=null&&(vault.context.getApplicationInfo().flags&android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE)!=0
+                &&vault.context.getPackageName().endsWith(".dev"));this.vault=vault;fixtureClock=fixture;}
         private LocalV2ProcessClock processClock(LocalSnapshotV2Policy policy) throws Exception {
             if(fixtureClock!=null){if(!fixtureClock.samePolicy(policy))throw new PinKnownRefusal();return fixtureClock;}
             File parent=vault.context.getNoBackupFilesDir().getCanonicalFile(),record=new File(new File(parent,"literary-planet-child-vault-v1"),"full-record-v1");
