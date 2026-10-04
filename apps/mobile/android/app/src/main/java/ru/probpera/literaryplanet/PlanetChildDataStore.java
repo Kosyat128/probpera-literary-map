@@ -407,7 +407,7 @@ final class PlanetChildDataStore {
     void migrationComplete(PlanetChildVault.LocalV2DataAdmission admission) throws Exception {locked(directory->{admission.completionBoundary();existingMigration(directory,admission);String pending=admission.migrationIdentity();
         try(State state=read(directory)){require(!closed&&active==null&&state.scope==null&&pending.equals(state.pendingMigration));admittedState(admission,state);
             try{state.pendingMigration=null;write(directory,state,admission::completionBoundary);admittedState(admission,state);admission.completionBoundary();
-                Os.unlink(migrationPending(directory).getPath());syncBirthDirectory(directory);closed=true;return null;
+                Os.remove(migrationPending(directory).getPath());syncBirthDirectory(directory);closed=true;return null;
             }catch(Throwable failure){try{pendingMigrationFile(directory,pending);}catch(Throwable sticky){failure.addSuppressed(sticky);}throw failure;}}
     });}
 
@@ -521,7 +521,7 @@ final class PlanetChildDataStore {
             byte[] actual=knownPlain(directory);try{require(MessageDigest.isEqual(actual,plain));knownBirth(directory);permit.dataCompletionBoundary();}finally{Arrays.fill(actual,(byte)0);}
             // Terminal proof/readback/ACK is still in the occupied original
             // native lane. Pending is removed last; failure restores the deny.
-            permit.dataCompletionBoundary();Os.unlink(knownPending(directory).getPath());syncBirthDirectory(directory);
+            permit.dataCompletionBoundary();Os.remove(knownPending(directory).getPath());syncBirthDirectory(directory);
         }catch(Throwable failure){if(began)try{pendingBirth(directory,pending);}catch(Throwable sticky){failure.addSuppressed(sticky);}throw failure;}
         finally{if(output!=null)file.failWrite(output);Arrays.fill(pending,(byte)0);if(encoded!=null)Arrays.fill(encoded,(byte)0);if(ciphertext!=null)Arrays.fill(ciphertext,(byte)0);}
     }
