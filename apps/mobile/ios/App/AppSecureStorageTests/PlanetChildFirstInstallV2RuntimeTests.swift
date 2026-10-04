@@ -243,3 +243,64 @@ final class PlanetChildLocalProcessClockRuntimeTests: XCTestCase {
     func testLostColdReanchorACKInvalidatesBeforeActualOriginalRetirementJoins() throws { XCTAssertTrue(try observe(.lostColdACK).pass) }
     func testKnownACKRequiresFreshFullReadbackAndMismatchIsSticky() throws { XCTAssertTrue(try observe(.ACKReadbackMismatch).pass) }
 }
+
+/** New connected LOCAL v2 mechanics. Synthetic owned input/storage/key/clock
+ * seams are explicit; these are authored tests, not installed native evidence. */
+final class PlanetChildLocalPinOperationRuntimeTests: XCTestCase {
+    private final class Box {
+        private let lock=NSLock()
+        private var result: Result<PlanetChildLocalPinOperationObservation,Error>?
+        func put(_ value: Result<PlanetChildLocalPinOperationObservation,Error>) { lock.lock();result=value;lock.unlock() }
+        func get() throws -> PlanetChildLocalPinOperationObservation {
+            lock.lock();defer { lock.unlock() };guard let result else { throw NSError(domain:"LocalPinOperationFixture",code:1) };return try result.get()
+        }
+    }
+    private func observe(_ scenario: PlanetChildLocalPinOperationScenario,file: StaticString=#filePath,line: UInt=#line) throws -> PlanetChildLocalPinOperationObservation {
+        let done=expectation(description:scenario.rawValue),box=Box()
+        Thread { box.put(Result { try PlanetChildLocalPinOperationRuntimeFixture.run(scenario) });done.fulfill() }.start()
+        wait(for:[done],timeout:15);let value=try box.get();XCTAssertTrue(value.passed,file:file,line:line);return value
+    }
+    func testEnrollmentNeedsConfirmedOwnedInputActualKDFAndExactSignedOwnerOperation() throws {
+        let value=try observe(.enrollment);XCTAssertEqual(value.updates,1);XCTAssertEqual(value.deriveCalls,1);XCTAssertEqual(value.signCalls,1);XCTAssertTrue(value.replyKnown)
+    }
+    func testChargeOriginalJournalAndKnownReadbackPrecedeKDF() throws {
+        let value=try observe(.chargedBeforeKDF);XCTAssertTrue(value.chargedBeforeKDF);XCTAssertEqual(value.updates,2);XCTAssertTrue(value.matched)
+    }
+    func testOnlyMatchedOriginalReservationMayResetCountAfterFinalizationACKAndRetirement() throws {
+        let value=try observe(.match);XCTAssertEqual(value.count,0);XCTAssertFalse(value.pending);XCTAssertTrue(value.matched);XCTAssertTrue(value.earlyDenied)
+    }
+    func testWrongOneDigitInputStaysChargedAndReceivesNoMatchCompletion() throws {
+        let value=try observe(.mismatch);XCTAssertEqual(value.count,1);XCTAssertFalse(value.pending);XCTAssertFalse(value.matched)
+    }
+    func testMalformedNonemptyInputKeepsPersistentPendingDebtWithoutKDF() throws {
+        let value=try observe(.malformed);XCTAssertEqual(value.count,1);XCTAssertTrue(value.pending);XCTAssertEqual(value.deriveCalls,0);XCTAssertEqual(value.updates,1)
+    }
+    func testEmptyInputCannotReserveAttempt() throws { let value=try observe(.empty);XCTAssertEqual(value.updates,0);XCTAssertEqual(value.deriveCalls,0) }
+    func testDifferentConfirmationRefusesOwnerSignatureAndStorage() throws { let value=try observe(.confirmationMismatch);XCTAssertEqual(value.signCalls,0);XCTAssertEqual(value.updates,0) }
+    func testBadActualOwnerSignatureCannotEnroll() throws { let value=try observe(.badOwnerSignature);XCTAssertEqual(value.signCalls,1);XCTAssertEqual(value.updates,0) }
+    func testChangedPersistedOwnerKeyCannotEnroll() throws { let value=try observe(.ownerChanged);XCTAssertEqual(value.updates,0) }
+    func testCancellationDuringOwnerSigningCannotEnroll() throws { let value=try observe(.ownerCancelled);XCTAssertEqual(value.updates,0) }
+    func testOwnerKeyStillCheckedInsideActualPublicationBoundary() throws { let value=try observe(.changedKeyAtWrite);XCTAssertTrue(value.sealed);XCTAssertFalse(value.replyKnown) }
+    func testUnknownChargeReadbackNeverEntersKDFAndPoisonsScope() throws { let value=try observe(.chargeReadbackMismatch);XCTAssertEqual(value.deriveCalls,0);XCTAssertTrue(value.sealed) }
+    func testKDFErrorDoesNotRefundOriginalPendingAttempt() throws { let value=try observe(.kdfFailure);XCTAssertEqual(value.count,1);XCTAssertTrue(value.pending) }
+    func testCancellationDuringActualKDFDoesNotRefund() throws { let value=try observe(.cancelDuringKDF);XCTAssertEqual(value.updates,1);XCTAssertTrue(value.pending) }
+    func testOriginalExclusiveDeadlineDuringKDFDoesNotRefund() throws { let value=try observe(.expireDuringKDF);XCTAssertEqual(value.count,1);XCTAssertTrue(value.pending) }
+    func testDifferentDurableBytesDuringKDFCannotFinalizeOrGrantMatch() throws { let value=try observe(.mutationDuringKDF);XCTAssertTrue(value.sealed);XCTAssertFalse(value.replyKnown) }
+    func testUnknownFinalReadbackSealsDespiteCompletedKDF() throws { let value=try observe(.finalizationReadbackMismatch);XCTAssertTrue(value.sealed);XCTAssertFalse(value.replyKnown) }
+    func testReplyACKInsideActualRecipientCannotBypassItsJoin() throws { XCTAssertTrue(try observe(.earlyReplyACK).earlyDenied) }
+    func testUnknownTerminalACKNeverGrantsMatch() throws { XCTAssertFalse(try observe(.unknownReplyACK).matched) }
+    func testOriginalReplyAndMatchedCompletionAreBothOneUse() throws { XCTAssertTrue(try observe(.replyReplay).earlyDenied) }
+    func testEqualFieldForeignChallengeCannotTakeOriginalCompletion() throws { XCTAssertTrue(try observe(.foreignChallenge).earlyDenied) }
+    func testWrongOriginalProfileScopeRefusesBeforeCharge() throws { let value=try observe(.scopeMismatch);XCTAssertEqual(value.updates,0);XCTAssertTrue(value.denied) }
+    func testOriginalOperationIdentityCannotBeReusedByLaterLease() throws { XCTAssertTrue(try observe(.replayOperation).earlyDenied) }
+    func testManufacturedComparisonCannotConsumeOriginalFinalization() throws { XCTAssertTrue(try observe(.forgedComparison).earlyDenied) }
+    func testThrowingActualTerminalRecipientRetainsUnknownACKAndNoMatch() throws { let value=try observe(.recipientThrows);XCTAssertTrue(value.denied);XCTAssertFalse(value.matched) }
+    func testRetirementWaitsForBlockedActualKDFInvocation() throws { let value=try observe(.retirementWaitsForKDF);XCTAssertTrue(value.retirementJoined);XCTAssertEqual(value.updates,1) }
+    func testRetirementWaitsForBlockedActualTerminalRecipientAndOriginalACK() throws { XCTAssertTrue(try observe(.retirementWaitsForRecipient).retirementJoined) }
+    func testRetiredKnownCompletionCannotRenewOriginalDeadline() throws { let value=try observe(.expiredAfterRetirement);XCTAssertTrue(value.denied);XCTAssertFalse(value.matched) }
+    func testRetiredKnownCompletionRequiresFreshExactFullReadback() throws { let value=try observe(.changedAfterRetirement);XCTAssertTrue(value.denied);XCTAssertFalse(value.matched) }
+    func testClosedLifecycleLatchCannotBeResurrectedByForegroundReturn() throws { let value=try observe(.lifecycleAfterRetirement);XCTAssertTrue(value.denied);XCTAssertFalse(value.matched) }
+    func testOnlyOriginalPendingNativeOwnerPromptMayTemporarilyResignActive() throws { let value=try observe(.ownedPromptInactive);XCTAssertTrue(value.replyKnown);XCTAssertEqual(value.signCalls,1) }
+    func testRealBackgroundDuringOwnedPromptAlwaysRevokesOriginal() throws { let value=try observe(.backgroundDuringOwner);XCTAssertTrue(value.denied);XCTAssertEqual(value.updates,0) }
+    func testOwnedPromptCannotBypassOriginalExclusiveDeadline() throws { let value=try observe(.expireDuringOwner);XCTAssertTrue(value.denied);XCTAssertEqual(value.updates,0) }
+}

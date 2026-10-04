@@ -4750,6 +4750,7 @@ fileprivate final class LocalV2Request {
     fileprivate var last: UInt64
     fileprivate var expected: PinOwnedBytes?,sample: LocalV2EnrollmentSample?,receipt: LocalV2StorageReceipt?
     fileprivate var chargeStarted=false,reservation: LocalV2ChargedReservation?
+    fileprivate var pinOperation: LocalV2PinOperation?
     fileprivate var mutationUnacknowledged=false
     fileprivate var opened=false,cancelled=false,sealed=false,retiring=false,retired=false,workers=0,events=0,cleanup=0
     fileprivate var workerThread: ObjectIdentifier?
@@ -4761,13 +4762,13 @@ fileprivate final class LocalV2Request {
 }
 /** Private mechanical writer. There is no production-selected constructor or
  * V2 owner/input/Gate bridge. Request/sample/receipt identities are bookkeeping,
- * never authorization. Finalize is deliberately absent until a genuine V2
- * comparison producer can bind an original charged reservation. */
+ * never authorization. P2 mutation requires the connected V2 owner/input/KDF
+ * producer below; plain storage receipts grant no permission. */
 fileprivate final class LocalV2Writer {
     fileprivate let processClock: LocalV2ProcessClock
     fileprivate var condition: NSCondition { processClock.condition }
     fileprivate var active: LocalV2Request? { get { processClock.active } set { processClock.active=newValue } }
-    private let storage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock
+    fileprivate let storage: LocalV2Storage,policy: LocalSnapshotV2Policy,clock: PinPrimitiveClock
     private var preparing: Bool {
         get { processClock.preparingOwner != nil }
         set { if newValue { processClock.preparingOwner=self } else if processClock.preparingOwner === self { processClock.preparingOwner=nil } }
@@ -4782,13 +4783,15 @@ fileprivate final class LocalV2Writer {
     }
     #endif
     /** Private future native adapter only; no public App/JS call selects this. */
-    func request(host: UIViewController,timeoutMs: UInt64) throws -> LocalV2Request {
+    func request(host: UIViewController,timeoutMs: UInt64,originalDeadlineNs: UInt64?=nil) throws -> LocalV2Request {
         guard Thread.isMainThread,timeoutMs>0,timeoutMs<=60000 else { throw PinKnownRefusal() }
         condition.lock();guard active==nil,!preparing,!processClock.invalidated,processClock.matches(policy) else { condition.unlock();throw PinKnownRefusal() };preparing=true;condition.unlock()
         var accepted=false;defer { if !accepted { condition.lock();preparing=false;condition.unlock() } }
         let original=try PinOwnerOriginalHost(host),now=try preparationSample()
         guard now<=UInt64.max-timeoutMs*1000000 else { throw PinKnownRefusal() }
-        let request=LocalV2Request(self,original,now,now+timeoutMs*1000000)
+        let deadline=originalDeadlineNs ?? now+timeoutMs*1000000
+        guard deadline>now,deadline-now<=60000000000 else { throw PinKnownRefusal() }
+        let request=LocalV2Request(self,original,now,deadline)
         condition.lock();guard active==nil,processClock.preparingOwner === self,!processClock.invalidated else { condition.unlock();throw PinKnownRefusal() }
         do { try processClock.observe(now) } catch { condition.unlock();throw error }
         active=request;preparing=false;condition.unlock()
@@ -4800,7 +4803,8 @@ fileprivate final class LocalV2Writer {
                 guard let self,let request else { return }
                 if name==UIScene.didDisconnectNotification,!original.disconnected(note) { return }
                 self.condition.lock();guard self.active === request,!request.retired,!request.retiring else { self.condition.unlock();return }
-                request.events+=1;request.cancelled=true
+                if !self.pinLifecycleWillRevokeLocked(request,name:name) { self.condition.unlock();return }
+                request.events+=1;request.cancelled=true;request.pinOperation?.revokeLocked()
                 if request.mutationUnacknowledged { self.processClock.invalidate(request);request.sealed=true }
                 self.condition.broadcast();self.condition.unlock()
                 self.condition.lock();request.events-=1;if request.workers==0 { request.wipe() };self.condition.broadcast();self.condition.unlock()
@@ -4826,7 +4830,8 @@ fileprivate final class LocalV2Writer {
         request.last=now;return now
     }
     fileprivate func current(_ request: LocalV2Request) throws -> UInt64 {
-        _ = try local(request);try request.host?.current();return try local(request)
+        _ = try local(request);condition.lock();let ui=request.pinOperation?.input?.controller,prompt=request.pinOperation?.ownedPrompt ?? false;condition.unlock()
+        try request.host?.localV2Current(ownedInput:ui,ownedPrompt:prompt);return try local(request)
     }
     private func start(_ request: LocalV2Request,opened: Bool) throws {
         guard !Thread.isMainThread else { throw PinKnownRefusal() }
@@ -4858,14 +4863,14 @@ fileprivate final class LocalV2Writer {
         condition.lock();defer { condition.unlock() }
         try processClock.requireBound(request,read);adopted=true;return read
     }
-    private func write(_ transaction: LocalV2Transaction,_ request: LocalV2Request,_ expected: Data,_ next: Data) throws {
+    private func write(_ transaction: LocalV2Transaction,_ request: LocalV2Request,_ expected: Data,_ next: Data,permission: (() throws -> Void)?=nil) throws {
         let old=PinOwnedBytes(expected),new=PinOwnedBytes(next);defer { old.close();new.close() }
         var borrowedOld=try old.copy(),borrowedNext=try new.copy()
         defer { borrowedOld.resetBytes(in:0..<borrowedOld.count);borrowedNext.resetBytes(in:0..<borrowedNext.count) }
         func fence() throws {
             var a=try old.copy(),b=try new.copy();defer { a.resetBytes(in:0..<a.count);b.resetBytes(in:0..<b.count) }
             guard borrowedOld==a,borrowedNext==b else { throw PlanetChildVault.Failure.unavailable }
-            _ = try local(request)
+            _ = try local(request);try permission?()
             guard borrowedOld==a,borrowedNext==b else { throw PlanetChildVault.Failure.unavailable }
         }
         try fence();try transaction.update(borrowedOld,borrowedNext,boundary:fence);try fence()
@@ -4927,8 +4932,8 @@ fileprivate final class LocalV2Writer {
             _ = try current(request);condition.lock();request.sample=sample;condition.unlock();return sample
         } catch { fail(request,error,publication:false);throw error }
     }
-    func enroll(_ request: LocalV2Request,sample: LocalV2EnrollmentSample,next input: Data,
-                recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+    private func commitEnrollment(_ request: LocalV2Request,sample: LocalV2EnrollmentSample,next input: Data,
+                permission: (() throws -> Void)?=nil,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
         // Foreign/busy refusal leaves the other owner's sample untouched.
         condition.lock();guard active === request,request.sample === sample,sample.request === request,!sample.consumed,!sample.closed,
             request.workers==0,!request.cancelled,!request.sealed,!request.retiring else { condition.unlock();throw PinKnownRefusal() }
@@ -4946,7 +4951,7 @@ fileprivate final class LocalV2Writer {
                 var actual=try exact(transaction,request);defer { actual.resetBytes(in:0..<actual.count) }
                 guard actual==seed,LocalSnapshotV2.hash(actual)==sample.checksum,try local(request)>=sample.continuousNs else { throw PinKnownRefusal() }
                 publication=true;condition.lock();request.mutationUnacknowledged=true;condition.unlock()
-                try write(transaction,request,actual,nextBytes)
+                try write(transaction,request,actual,nextBytes,permission:permission)
                 condition.lock()
                 do { try processClock.stage(request,nextBytes,next);request.expected?.close();request.expected=PinOwnedBytes(nextBytes);condition.unlock() }
                 catch { condition.unlock();throw error };publication=false
@@ -4955,6 +4960,14 @@ fileprivate final class LocalV2Writer {
         } catch { fail(request,error,publication:publication);throw error }
     }
     func charge(_ request: LocalV2Request,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        condition.lock()
+        guard let operation=request.pinOperation,operation.owner.writer === self,operation.challenge.kind == .verify,
+            operation.opened,operation.used,operation.inputJoined,!operation.cancelled,
+            operation.workerThread==ObjectIdentifier(Thread.current),let entry=operation.entry,entry.operation === operation,
+            entry.consumed else { condition.unlock();throw PinKnownRefusal() }
+        condition.unlock();try pinFence(operation,readback:true);try commitCharge(request,recipient:recipient)
+    }
+    private func commitCharge(_ request: LocalV2Request,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
         try start(request,opened:true);defer { finish(request) };var publication=false
         do {
             condition.lock();guard !request.chargeStarted else { condition.unlock();throw PinKnownRefusal() }
@@ -5019,16 +5032,22 @@ fileprivate final class LocalV2Writer {
     func cancel(_ request: LocalV2Request) {
         condition.lock();defer { condition.unlock() };guard active === request,request.owner === self,!request.retired else { return }
         if request.mutationUnacknowledged { processClock.invalidate(request);request.sealed=true }
-        request.cancelled=true;if request.workers==0 { request.wipe() };condition.broadcast()
+        request.cancelled=true;request.pinOperation?.revokeLocked();if request.workers==0 { request.wipe() };condition.broadcast()
     }
     func retire(_ request: LocalV2Request) throws {
         guard !Thread.isMainThread else { throw PinKnownRefusal() }
         condition.lock();guard active === request,request.owner === self,!request.retiring,!request.retired,
-            request.workerThread != ObjectIdentifier(Thread.current) else { condition.unlock();throw PinKnownRefusal() }
-        request.retiring=true;request.cancelled=true
+            request.workerThread != ObjectIdentifier(Thread.current),request.pinOperation?.workerThread != ObjectIdentifier(Thread.current),
+            request.pinOperation?.deliveryThread != ObjectIdentifier(Thread.current) else { condition.unlock();throw PinKnownRefusal() }
+        if let operation=request.pinOperation {
+            operation.closedKnownCandidate=operation.reply?.known==true && operation.reply?.settled==true && !operation.cancelled
+                && !request.cancelled && !request.sealed && !operation.closedRevoked
+        }
+        request.retiring=true;request.cancelled=true;request.pinOperation?.revokeLocked()
         if request.mutationUnacknowledged { processClock.invalidate(request);request.sealed=true }
         condition.broadcast()
-        while request.workers>0 || request.events>0 || request.receipt != nil && !request.receipt!.settled { condition.wait() }
+        while request.workers>0 || request.events>0 || request.receipt != nil && !request.receipt!.settled
+            || request.pinOperation?.busy == true || request.pinOperation?.reply != nil && request.pinOperation!.reply!.settled == false { condition.wait() }
         request.cleanup=1;condition.unlock()
         // Real main cleanup returns before capacity is reconsidered. No timer
         // substitutes for observer removal, callback/worker or delivery ACK.
@@ -5051,6 +5070,7 @@ fileprivate final class LocalV2ProcessClock {
     private static var productionScope: LocalV2ProcessClock?
     fileprivate let condition=NSCondition(),clock: PinPrimitiveClock,policy: LocalSnapshotV2Policy
     fileprivate var active: LocalV2Request?,preparingOwner: LocalV2Writer?
+    fileprivate var pinUsedIds=Set<String>(),pinUsedChallenges=[ObjectIdentifier:AnyObject]()
     fileprivate private(set) var invalidated=false,known: LocalV2ProcessBinding?
     private var pending: LocalV2ProcessBinding?,pendingOwner: LocalV2Request?
     private let process: pid_t
@@ -5292,7 +5312,7 @@ fileprivate final class LocalSnapshotV2 {
         defer { expected.resetBytes(in:0..<expected.count) };guard expected==p else { throw PinKnownRefusal() }
     }
     /** Structural classification only, NEVER a mathematical outcome/permission.
-     * The writer has no finalize entry until original V2 input/KDF receipts exist. */
+     * The connected producer alone supplies its owned comparison to finalize. */
     static func validateFinalization(charged: LocalSnapshotV2,next: LocalSnapshotV2) throws {
         guard samePolicy(charged,next),charged.fields.pin.pending != nil,charged.fields.revision<maximum,
             charged.fields.pin.revision<maximum,charged.journal.revision<maximum,next.fields.revision==charged.fields.revision+1,
@@ -5334,6 +5354,12 @@ fileprivate final class LocalV2FixtureStorage: LocalV2Storage,LocalV2Transaction
     }
 }
 fileprivate extension LocalV2Writer {
+    func fixtureCharge(_ request: LocalV2Request,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        guard request.pinOperation==nil,request.host==nil else { throw PinKnownRefusal() };try commitCharge(request,recipient:recipient)
+    }
+    func fixtureEnroll(_ request: LocalV2Request,sample: LocalV2EnrollmentSample,next: Data,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        guard request.pinOperation==nil else { throw PinKnownRefusal() };try commitEnrollment(request,sample:sample,next:next,recipient:recipient)
+    }
     func fixtureRequest(timeoutMs: UInt64=1000) throws -> LocalV2Request {
         condition.lock();guard active==nil,!preparing,!processClock.invalidated,processClock.matches(policy),timeoutMs>0,timeoutMs<=60000 else { condition.unlock();throw PinKnownRefusal() }
         preparing=true;condition.unlock();var accepted=false
@@ -5432,7 +5458,7 @@ enum PlanetChildLocalSnapshotV2RuntimeFixture {
             if scenario == .cancelAndCAS { io.duringUpdate={ writer.cancel(request) } }
             clock.now+=70000000
             let enrollmentDenied=denied {
-                try writer.enroll(request,sample:sample,next:bytes) { value in
+                try writer.fixtureEnroll(request,sample:sample,next:bytes) { value in
                     receipt=value
                     early=denied { try writer.settle(value,known:true) }
                     earlyCopy=denied { _ = try value.copyCanonicalBytes() }
@@ -5442,9 +5468,9 @@ enum PlanetChildLocalSnapshotV2RuntimeFixture {
             operations=io.updates
             if scenario == .originalSample {
                 guard let first=receipt else { throw PlanetChildVault.Failure.unavailable };try writer.settle(first,known:true)
-                var charged: LocalV2StorageReceipt?;try writer.charge(request) { charged=$0 }
+                var charged: LocalV2StorageReceipt?;try writer.fixtureCharge(request) { charged=$0 }
                 guard let second=charged else { throw PlanetChildVault.Failure.unavailable };try writer.settle(second,known:true)
-                clock.now+=200000000;let repeated=denied { try writer.charge(request) { _ in } }
+                clock.now+=200000000;let repeated=denied { try writer.fixtureCharge(request) { _ in } }
                 pass = !enrollmentDenied && sample.logicalMs==10 && repeated && io.updates==2 && request.reservation?.attemptId.count==64
                     && request.reservation?.logicalMs==80 && request.reservation?.checksum==second.checksum
                 try writer.retire(request);first.close();second.close();sample.close();operations=io.updates
@@ -5463,7 +5489,7 @@ enum PlanetChildLocalSnapshotV2RuntimeFixture {
                 let staleNext=try build(p,logical:original.logicalMs);defer { staleNext.close() }
                 var staleBytes=try staleNext.copyCanonicalBytes();defer { staleBytes.resetBytes(in:0..<staleBytes.count) }
                 otherIO.value=io.value
-                let stale=denied { try other.enroll(owned,sample:original,next:staleBytes) { _ in } }
+                let stale=denied { try other.fixtureEnroll(owned,sample:original,next:staleBytes) { _ in } }
                 pass=pass && stale && otherIO.updates==0;try other.retire(owned);original.close()
                 let sealedRetirement=denied { try writer.retire(request) }
                 pass=pass && sealedRetirement && writer.active==nil && writer.processClock.invalidated && request.sealed;sample.close()
@@ -5522,7 +5548,7 @@ enum PlanetChildLocalProcessClockRuntimeFixture {
     }
     private static func charge(_ writer: LocalV2Writer,_ request: LocalV2Request) throws {
         var receipt: LocalV2StorageReceipt?
-        try writer.charge(request) { receipt=$0 }
+        try writer.fixtureCharge(request) { receipt=$0 }
         guard let receipt else { throw PlanetChildVault.Failure.unavailable };try writer.settle(receipt,known:true)
     }
     static func run(_ scenario: PlanetChildLocalProcessClockScenario) throws -> PlanetChildLocalProcessClockObservation {
@@ -5645,6 +5671,909 @@ enum PlanetChildLocalProcessClockRuntimeFixture {
         }
         return PlanetChildLocalProcessClockObservation(pass:pass,updates:io.updates,
             qualification:"Connected private writer with explicit synthetic process scope/storage/clock; Swift compilation, real Keychain/UIKit/OS restart/owner/input/KDF/Gate acceptance NOT_RUN. Production clock source remains fixed Apple continuous time.")
+    }
+}
+#endif
+
+/** Connected LOCAL v2 only. No backend account, boot UUID, rollback witness or
+ * v1 authority is assumed. This private coordinator is still unselected by all
+ * factories; the genuine GateHost and App admission remain separate work. */
+fileprivate enum LocalV2PinKind { case enroll,verify }
+fileprivate enum LocalV2PinReplyKind { case enrolled,match,mismatch }
+fileprivate final class LocalV2PinChallenge {
+    let original: AnyObject,id: String,kind: LocalV2PinKind,action: String,target: String,generation: UInt64,deadlineNs: UInt64
+    let gate: PinGateRequest?,rootRevision: UInt64,profileRevision: UInt64,selectionRevision: UInt64
+    init(enrollmentOriginal: AnyObject,id: String,seedChecksum: String,generation: UInt64,deadlineNs: UInt64) {
+        original=enrollmentOriginal;self.id=id;kind = .enroll;action="enroll-local-pin";target=seedChecksum
+        self.generation=generation;self.deadlineNs=deadlineNs;gate=nil;rootRevision=1;profileRevision=1;selectionRevision=1
+    }
+    init(verificationOriginal: PinGateRequest,rootRevision: UInt64,selectionRevision: UInt64,deadlineNs: UInt64) {
+        let gate=verificationOriginal;original=gate.originalHostChallenge;id=gate.id;kind = .verify;action=gate.action;target=gate.targetChecksum
+        generation=gate.generation;self.deadlineNs=deadlineNs;self.gate=gate;self.rootRevision=rootRevision
+        profileRevision=gate.context.profileRevision;self.selectionRevision=selectionRevision
+    }
+}
+fileprivate final class LocalV2PinOperation {
+    let owner: LocalV2PinOperations,request: LocalV2Request,challenge: LocalV2PinChallenge,locale: PinNativeInputLocale,iterations: UInt32
+    var opened=false,used=false,cancelled=false,inputJoined=false,uiWorkers=0,watchers=0,cancels=0,recipients=0,settlements=0,ownerWorkers=0
+    var input: LocalV2PinNativeInput?,entry: LocalV2PinEntry?,reply: LocalV2PinReply?,comparison: LocalV2PinComparison?
+    var context: LAContext?,workerThread: ObjectIdentifier?,deliveryThread: ObjectIdentifier?,receipt: LocalV2StorageReceipt?
+    var closedKnown=false,closedKnownCandidate=false,closedRevoked=false,closedObservers=[NSObjectProtocol]()
+    var busy: Bool { uiWorkers>0 || watchers>0 || cancels>0 || recipients>0 || settlements>0 || ownerWorkers>0 }
+    var ownedPrompt: Bool { ownerWorkers==1 && context != nil && request.workers==1 && challenge.kind == .enroll
+        && used && inputJoined && !cancelled && !request.cancelled && !request.retiring }
+    init(_ owner: LocalV2PinOperations,_ request: LocalV2Request,_ challenge: LocalV2PinChallenge,_ locale: PinNativeInputLocale,_ iterations: UInt32) {
+        self.owner=owner;self.request=request;self.challenge=challenge;self.locale=locale;self.iterations=iterations
+    }
+    // Called only under the original process monitor. Native cleanup callbacks
+    // retain counted ownership and return before retirement releases capacity.
+    func revokeLocked() {
+        guard !cancelled else { return };cancelled=true;input?.revokeLocked()
+        if let context { cancels+=1;Thread { [self] in
+            context.invalidate();owner.writer.condition.lock();cancels-=1;owner.writer.condition.broadcast();owner.writer.condition.unlock()
+        }.start() }
+    }
+}
+fileprivate final class LocalV2PinEntry {
+    let operation: LocalV2PinOperation,producer: LocalV2PinNativeInput?,first: PinPrimitiveInput,confirmation: PinPrimitiveInput?
+    var consumed=false
+    fileprivate init(_ operation: LocalV2PinOperation,_ producer: LocalV2PinNativeInput?,_ first: PinPrimitiveInput,_ confirmation: PinPrimitiveInput?) {
+        self.operation=operation;self.producer=producer;self.first=first;self.confirmation=confirmation
+    }
+    func close() { first.close();confirmation?.close() }
+    deinit { close() }
+}
+fileprivate final class LocalV2PinComparison {
+    let operation: LocalV2PinOperation,reservation: LocalV2ChargedReservation,identity: PinVerifierIdentity,comparison: PinAttemptComparison
+    let source: PinVerificationMathSource
+    let charged: PinOwnedBytes
+    var consumed=false
+    fileprivate init(_ operation: LocalV2PinOperation,_ reservation: LocalV2ChargedReservation,_ result: PinVerificationMathResult,_ bytes: Data) {
+        self.operation=operation;self.reservation=reservation;identity=result.identity;comparison=result.comparison;source=result.source;charged=PinOwnedBytes(bytes)
+    }
+    deinit { charged.close() }
+}
+fileprivate final class LocalV2PinEnrollment {
+    let operation: LocalV2PinOperation,sample: LocalV2EnrollmentSample,key: PinOwnerKey,next: PinOwnedBytes,message: PinOwnedBytes,signature: PinOwnedBytes
+    var consumed=false
+    fileprivate init(_ operation: LocalV2PinOperation,_ sample: LocalV2EnrollmentSample,_ key: PinOwnerKey,_ next: Data,_ message: Data,_ signature: Data) {
+        self.operation=operation;self.sample=sample;self.key=key;self.next=PinOwnedBytes(next);self.message=PinOwnedBytes(message);self.signature=PinOwnedBytes(signature)
+    }
+    func close() { next.close();message.close();signature.close() }
+    deinit { close() }
+}
+fileprivate final class LocalV2PinReply {
+    let operation: LocalV2PinOperation,receipt: LocalV2StorageReceipt,kind: LocalV2PinReplyKind
+    var completed=false,settled=false,known=false,consumed=false
+    fileprivate init(_ operation: LocalV2PinOperation,_ receipt: LocalV2StorageReceipt,_ kind: LocalV2PinReplyKind) {
+        self.operation=operation;self.receipt=receipt;self.kind=kind
+    }
+}
+/** A one-use exact original native completion, not a public boolean or Gate
+ * capability. Enrollment completion cannot be consumed as a PIN match. */
+fileprivate final class LocalV2PinCompletion {
+    let original: LocalV2PinChallenge,receiptChecksum: String,receiptRevision: UInt64
+    fileprivate init(_ reply: LocalV2PinReply) {
+        original=reply.operation.challenge;receiptChecksum=reply.receipt.checksum;receiptRevision=reply.receipt.revision
+    }
+}
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    static func localV2Verifier(_ snapshot: LocalSnapshotV2) throws -> PinVerifierMaterial {
+        var p=try snapshot.copyProtectedBytes();defer { p.resetBytes(in:0..<p.count) }
+        var raw=p.subdata(in:snapshot.fields.pinStart..<snapshot.fields.pinEnd);defer { raw.resetBytes(in:0..<raw.count) }
+        let storage=Storage(raw);defer { storage.wipe() };let cursor=Cursor(storage)
+        try cursor.field("schemaVersion",first:true);_ = try cursor.number(1,1)
+        try cursor.field("policyVersion");try require(cursor.asciiString()==snapshot.policy.version)
+        try cursor.field("revision");try require(cursor.number(1,9007199254740991)==snapshot.fields.pin.revision)
+        try cursor.field("credentialId");try require(cursor.asciiString()==snapshot.fields.pin.credential)
+        try cursor.field("verifier");try cursor.field("algorithm",first:true);try require(cursor.asciiString()=="PBKDF2-HMAC-SHA256")
+        try cursor.field("iterations");let iterations=try cursor.number(600000,snapshot.policy.maximum)
+        try require(iterations<=UInt64(UInt32.max));try cursor.field("saltHex");let saltRange=try cursor.hashRange()
+        try cursor.field("hashHex");let hashRange=try cursor.hashRange();try cursor.token("}")
+        let salt=try PinPrimitiveBytes(count:32),hash=try PinPrimitiveBytes(count:32);var accepted=false
+        defer { if !accepted { salt.close();hash.close() } }
+        func decode(_ range: Range<Int>,_ output: PinPrimitiveBytes) throws {
+            try require(range.count==66)
+            func nibble(_ byte: UInt8) -> UInt8 { byte<=57 ? byte-48:byte-87 }
+            try output.write { target in for index in 0..<32 {
+                let start=range.lowerBound+1+index*2;target[index]=(nibble(storage.byte(start))<<4)|nibble(storage.byte(start+1))
+            } }
+        }
+        try decode(saltRange,salt);try decode(hashRange,hash)
+        let identity=PinVerifierIdentity(recordChecksum:snapshot.checksum,recordRevision:snapshot.fields.revision,pinRevision:snapshot.fields.pin.revision,
+            iterations:UInt32(iterations),policyVersion:snapshot.policy.version,policyChecksum:snapshot.policy.checksum)
+        accepted=true;return PinVerifierMaterial(identity:identity,salt:salt,hash:hash)
+    }
+    static func localV2Context(_ snapshot: LocalSnapshotV2) throws -> (mode: String,profile: String?,profileRevision: UInt64,selectionRevision: UInt64) {
+        var bytes=try snapshot.copyProtectedBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+        let storage=Storage(bytes);defer { storage.wipe() };let p=Cursor(storage)
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2);try p.field("revision");_ = try p.number(1,9007199254740991)
+        try p.field("mode");let mode=try p.asciiString();try p.field("selectionRevision");let selection=try p.number(1,9007199254740991)
+        try p.field("profileRevision");let revision=try p.number(1,9007199254740991)
+        try p.field("policyChecksum");try require(p.asciiString()==snapshot.policy.checksum)
+        try p.field("registryChecksum");_ = try p.hashRange();try p.field("registry");let profile=try registry(p,version:snapshot.policy.version)
+        return (mode,profile,revision,selection)
+    }
+}
+fileprivate extension LocalSnapshotV2 {
+    func finalizeComparedCandidate(_ comparison: PinAttemptComparison,_ logical: UInt64) throws -> LocalSnapshotV2 {
+        let f=fields.pin
+        guard f.pending != nil,fields.revision<Self.maximum,f.revision<Self.maximum,journal.revision<Self.maximum,
+            logical>=f.observed,logical<=Self.maximum else { throw PinKnownRefusal() }
+        let count=comparison == .match ? 0:f.count,delay=policy.delay(count)
+        guard logical<=Self.maximum-delay else { throw PinKnownRefusal() }
+        var p=try copyProtectedBytes();defer { p.resetBytes(in:0..<p.count) }
+        var raw=p.subdata(in:fields.pinStart..<fields.pinEnd);defer { raw.resetBytes(in:0..<raw.count) }
+        var pin=Data(raw.prefix(f.revisionStart));pin.append(Data(String(f.revision+1).utf8));pin.append(raw.subdata(in:f.revisionEnd..<f.attemptsStart))
+        pin.append(Data("{\"count\":\(count),\"blockedUntilMs\":\(count==0 ? 0:logical+delay),\"lastObservedMs\":\(logical),\"pendingAttemptId\":null}}".utf8))
+        defer { pin.resetBytes(in:0..<pin.count) }
+        var next=Data(p.prefix(fields.revisionStart));next.append(Data(String(fields.revision+1).utf8));next.append(p.subdata(in:fields.revisionEnd..<fields.pinStart))
+        next.append(pin);next.append(p.suffix(from:fields.pinEnd));defer { next.resetBytes(in:0..<next.count) }
+        let changed=LocalV2PinFields(revision:f.revision+1,credential:f.credential,count:count,blocked:count==0 ? 0:logical+delay,observed:logical,pending:nil,
+            revisionStart:0,revisionEnd:0,attemptsStart:0)
+        let result=try Self.wrapper(next,policy:policy,rootRevision:fields.revision+1,journalRevision:journal.revision+1,pin:changed)
+        do { try Self.validateFinalization(charged:self,next:result);return result } catch { result.close();throw error }
+    }
+}
+fileprivate extension LocalV2Writer {
+    static func pinRuntime(vault: PlanetChildVault,policy: LocalSnapshotV2Policy) throws -> LocalV2Writer { try LocalV2Writer(vault:vault,policy:policy) }
+    func pinLifecycleWillRevokeLocked(_ request: LocalV2Request,name: Notification.Name) -> Bool {
+        !(name==UIApplication.willResignActiveNotification && request.pinOperation?.ownedPrompt == true)
+    }
+    func closedPinReadback(_ operation: LocalV2PinOperation,reply: LocalV2PinReply) throws {
+        let request=operation.request
+        func fence(_ ns: UInt64) throws {
+            condition.lock();defer { condition.unlock() }
+            guard active==nil,request.owner === self,request.pinOperation === operation,request.retired,request.workers==0,!request.sealed,
+                operation.closedKnown,!operation.closedRevoked,operation.reply === reply,reply.known,reply.settled,
+                processClock.matches(policy),!processClock.invalidated,request.process==getpid(),
+                let binding=processClock.known,binding.checksum==reply.receipt.checksum,binding.rootRevision==reply.receipt.revision else { throw PinKnownRefusal() }
+            try processClock.observe(ns)
+            guard ns>=request.last,ns>=request.began,ns<request.deadline else { throw PinKnownRefusal() };request.last=ns
+        }
+        func sample() throws -> UInt64 {
+            do { return try clock.nanoseconds() } catch { condition.lock();processClock.poisonClosed(operation);condition.unlock();throw error }
+        }
+        try fence(sample());try request.host?.localV2Current(ownedInput:nil,ownedPrompt:false)
+        do { try storage.locked { transaction in
+            var actual=try transaction.read();defer { actual.resetBytes(in:0..<actual.count) }
+            condition.lock();let binding=processClock.known;condition.unlock()
+            guard let binding else { throw PinKnownRefusal() };var expected=try binding.bytes.copy();defer { expected.resetBytes(in:0..<expected.count) }
+            guard actual==expected,LocalSnapshotV2.hash(actual)==reply.receipt.checksum else { throw PlanetChildVault.Failure.unavailable }
+            try fence(sample())
+        } } catch {
+            condition.lock();operation.closedKnown=false;operation.closedRevoked=true
+            processClock.poisonClosed(operation);condition.unlock();throw error
+        }
+        try request.host?.localV2Current(ownedInput:nil,ownedPrompt:false);try fence(sample())
+    }
+    func pinFence(_ operation: LocalV2PinOperation,readback: Bool=false) throws {
+        let request=operation.request;_ = try current(request)
+        condition.lock();let valid=active === request && request.pinOperation === operation && operation.owner.writer === self
+            && !operation.cancelled && operation.challenge.deadlineNs==request.deadline && operation.challenge.kind == (operation.challenge.gate==nil ? .enroll:.verify)
+        condition.unlock();guard valid else { throw PinKnownRefusal() }
+        if readback { try storage.locked { transaction in
+            var bytes=try exact(transaction,request);defer { bytes.resetBytes(in:0..<bytes.count) };_ = try local(request)
+        } }
+        _ = try current(request)
+    }
+    func pinWorker(_ operation: LocalV2PinOperation) throws {
+        try start(operation.request,opened:true)
+        do { try pinFence(operation,readback:true) } catch { finish(operation.request);throw error }
+    }
+    func finalize(_ operation: LocalV2PinOperation,comparison: LocalV2PinComparison,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        let request=operation.request
+        condition.lock()
+        guard request.pinOperation === operation,operation.comparison === comparison,comparison.operation === operation,!comparison.consumed,
+            comparison.source==operation.owner.mathSource,
+            request.reservation === comparison.reservation,request.receipt?.known==true,request.receipt?.settled==true,request.receipt?.charged==true,
+            request.workers==0,!operation.cancelled else { condition.unlock();throw PinKnownRefusal() }
+        comparison.consumed=true;condition.unlock();try start(request,opened:true);defer { finish(request) };var publication=false
+        do {
+            try pinFence(operation,readback:true)
+            var result: LocalSnapshotV2?,after=Data();defer { result?.close();after.resetBytes(in:0..<after.count) }
+            try storage.locked { transaction in
+                var actual=try exact(transaction,request),charged=try comparison.charged.copy(),reserved=try comparison.reservation.charged.copy()
+                defer { actual.resetBytes(in:0..<actual.count);charged.resetBytes(in:0..<charged.count);reserved.resetBytes(in:0..<reserved.count) }
+                guard actual==charged,actual==reserved,LocalSnapshotV2.hash(actual)==comparison.identity.recordChecksum,
+                    comparison.reservation.attemptId==request.reservation?.attemptId else { throw PinKnownRefusal() }
+                let old=try LocalSnapshotV2.decode(actual,policy:policy);defer { old.close() }
+                guard old.fields.revision==comparison.identity.recordRevision,old.fields.pin.revision==comparison.identity.pinRevision,
+                    old.fields.pin.pending==comparison.reservation.attemptId,comparison.identity.policyVersion==policy.version,
+                    comparison.identity.policyChecksum==policy.checksum else { throw PinKnownRefusal() }
+                let now=try local(request);condition.lock();let logical: UInt64
+                do { logical=try processClock.logical(now);condition.unlock() } catch { condition.unlock();throw error }
+                let next=try old.finalizeComparedCandidate(comparison.comparison,logical);result=next;after=try next.copyCanonicalBytes()
+                publication=true;condition.lock();request.mutationUnacknowledged=true;condition.unlock();try write(transaction,request,actual,after)
+                condition.lock()
+                do { try processClock.stage(request,after,next);request.expected?.close();request.expected=PinOwnedBytes(after);condition.unlock() }
+                catch { condition.unlock();throw error };publication=false
+            }
+            guard let result else { throw PlanetChildVault.Failure.unavailable };try pinFence(operation);try publish(request,result,after,true,recipient)
+        } catch { fail(request,error,publication:publication);throw error }
+    }
+    func enroll(_ operation: LocalV2PinOperation,material: LocalV2PinEnrollment,recipient: (LocalV2StorageReceipt) throws -> Void) throws {
+        let request=operation.request
+        condition.lock();let valid=request.pinOperation === operation && material.operation === operation && operation.challenge.kind == .enroll
+            && request.sample === material.sample && !material.consumed && operation.inputJoined && !operation.cancelled && operation.ownerWorkers==0
+        if valid { material.consumed=true };condition.unlock();guard valid else { throw PinKnownRefusal() }
+        try pinFence(operation,readback:true);try operation.owner.verifyEnrollment(material)
+        var bytes=try material.next.copy();defer { bytes.resetBytes(in:0..<bytes.count) }
+        try commitEnrollment(request,sample:material.sample,next:bytes,permission:{ try operation.owner.verifyEnrollment(material,storageLocked:true) },recipient:recipient)
+    }
+}
+fileprivate extension LocalV2ProcessClock {
+    func poisonClosed(_ operation: LocalV2PinOperation) {
+        guard operation.request.retired,operation.request.owner.processClock === self,active==nil,preparingOwner==nil,
+            known?.checksum==operation.receipt?.checksum else { return };poison()
+    }
+}
+fileprivate final class LocalV2PinOperations {
+    let writer: LocalV2Writer
+    private let keys: PinOwnerKeys,engine: PinPrimitiveEngine,verificationEngine: PinVerificationEngine?,iterations: UInt32,synthetic: Bool
+    fileprivate var mathSource: PinVerificationMathSource { synthetic ? .synthetic:.platform }
+
+    // Private construction only. Nothing selects this from the bridge/App.
+    private init(vault: PlanetChildVault,policy: LocalSnapshotV2Policy,iterations: UInt32) throws {
+        guard iterations>=600000,UInt64(iterations)<=policy.maximum else { throw PinKnownRefusal() }
+        writer=try LocalV2Writer.pinRuntime(vault:vault,policy:policy);keys=ApplePinOwnerKeys();engine=ApplePinPrimitiveEngine();verificationEngine=nil
+        self.iterations=iterations;synthetic=false
+    }
+    #if DEBUG
+    fileprivate init(fixtureWriter: LocalV2Writer,keys: PinOwnerKeys,engine: PinPrimitiveEngine,verificationEngine: PinVerificationEngine,iterations: UInt32=600000) throws {
+        guard keys.source == .synthetic,iterations>=600000,UInt64(iterations)<=fixtureWriter.policy.maximum else { throw PinKnownRefusal() }
+        writer=fixtureWriter;self.keys=keys;self.engine=engine;self.verificationEngine=verificationEngine;self.iterations=iterations;synthetic=true
+    }
+    #endif
+    private static func hex(_ value: String) -> Bool { value.utf8.count==64 && value.utf8.allSatisfy { $0>=48 && $0<=57 || $0>=97 && $0<=102 } }
+    private func bind(_ request: LocalV2Request,_ challenge: LocalV2PinChallenge,_ locale: PinNativeInputLocale) throws -> LocalV2PinOperation {
+        guard Self.hex(challenge.id),Self.hex(challenge.target),challenge.generation<=9007199254740991,challenge.deadlineNs==request.deadline,
+            challenge.kind == .enroll ? challenge.gate==nil && challenge.action=="enroll-local-pin":challenge.gate != nil && PinVerificationActionCopy.caption(challenge.action,locale:locale) != nil
+            else { throw PinKnownRefusal() }
+        if let gate=challenge.gate {
+            guard gate.originalHostChallenge === challenge.original,gate.id==challenge.id,gate.action==challenge.action,gate.targetChecksum==challenge.target,
+                gate.generation==challenge.generation,gate.context.visibility=="active",gate.context.mode=="child",gate.context.policyVersion==writer.policy.version,
+                gate.deadlineUptimeMs<=UInt64.max/1000000,gate.deadlineUptimeMs*1000000==request.deadline else { throw PinKnownRefusal() }
+        }
+        writer.condition.lock();defer { writer.condition.unlock() }
+        let identity=ObjectIdentifier(challenge.original)
+        guard writer.active === request,request.pinOperation==nil,writer.processClock.pinUsedIds.count<2048,!writer.processClock.pinUsedIds.contains(challenge.id),writer.processClock.pinUsedChallenges[identity]==nil else { throw PinKnownRefusal() }
+        writer.processClock.pinUsedIds.insert(challenge.id);writer.processClock.pinUsedChallenges[identity]=challenge.original
+        let operation=LocalV2PinOperation(self,request,challenge,locale,iterations);request.pinOperation=operation;return operation
+    }
+    func begin(_ challenge: LocalV2PinChallenge,host: UIViewController,locale: PinNativeInputLocale) throws -> LocalV2PinOperation {
+        guard !synthetic,Thread.isMainThread else { throw PinKnownRefusal() }
+        let request=try writer.request(host:host,timeoutMs:60000,originalDeadlineNs:challenge.deadlineNs)
+        do { return try bind(request,challenge,locale) } catch {
+            writer.cancel(request);Thread { [writer] in try? writer.retire(request) }.start();throw error
+        }
+    }
+    func open(_ operation: LocalV2PinOperation) throws {
+        let request=operation.request;guard operation.owner === self else { throw PinKnownRefusal() }
+        if let receipt=try writer.open(request) { try writer.settle(receipt,known:true) }
+        try writer.pinWorker(operation);defer { writer.finish(request) }
+        var bytes=try request.expected!.copy();defer { bytes.resetBytes(in:0..<bytes.count) }
+        let c=operation.challenge
+        if c.kind == .enroll {
+            _ = try PlanetChildVault.LocalEmptySeedV2.validate(bytes,policyVersion:writer.policy.version,policyChecksum:writer.policy.checksum)
+            guard c.target==LocalSnapshotV2.hash(bytes),c.rootRevision==1,c.profileRevision==1,c.selectionRevision==1 else { throw PinKnownRefusal() }
+        } else {
+            let snapshot=try LocalSnapshotV2.decode(bytes,policy:writer.policy);defer { snapshot.close() }
+            let scope=try PlanetChildVault.ProtectedEnvelope.localV2Context(snapshot)
+            guard let gate=c.gate,snapshot.fields.revision==c.rootRevision,scope.mode==gate.context.mode,scope.profile==gate.context.profileId,
+                scope.profileRevision==c.profileRevision,scope.selectionRevision==c.selectionRevision else { throw PinKnownRefusal() }
+            // A currently blocked attempt is refused before opening its keypad.
+            let now=try writer.current(request);writer.condition.lock();let logical: UInt64
+            do { logical=try writer.processClock.logical(now);writer.condition.unlock() } catch { writer.condition.unlock();throw error }
+            guard logical>=snapshot.fields.pin.blocked else { throw PinVerificationRefusal(blocked:true) }
+        }
+        try writer.pinFence(operation,readback:true);writer.condition.lock();operation.opened=true;writer.condition.unlock()
+    }
+    func input(_ operation: LocalV2PinOperation,host: UIViewController,recipient: @escaping (Result<LocalV2PinReply,Error>) throws -> Void) throws -> LocalV2PinNativeInput {
+        guard !synthetic,Thread.isMainThread,operation.owner === self else { throw PinKnownRefusal() }
+        try writer.pinFence(operation);let input=try LocalV2PinNativeInput(operation,host,recipient)
+        writer.condition.lock()
+        guard operation.opened,operation.input==nil,!operation.used,!operation.cancelled,operation.request.workers==0 else { writer.condition.unlock();throw PinKnownRefusal() }
+        operation.input=input;operation.uiWorkers=1;writer.condition.unlock()
+        do { try input.start();return input } catch { writer.cancel(operation.request);throw error }
+    }
+    fileprivate func process(_ operation: LocalV2PinOperation,entry: LocalV2PinEntry) throws -> LocalV2PinReply {
+        guard !Thread.isMainThread,operation.owner === self else { throw PinKnownRefusal() }
+        writer.condition.lock()
+        guard operation.opened,!operation.used,operation.entry === entry,entry.operation === operation,!entry.consumed,operation.inputJoined,
+            !operation.cancelled,(synthetic && entry.producer==nil || entry.producer === operation.input) else { writer.condition.unlock();throw PinKnownRefusal() }
+        operation.used=true;entry.consumed=true;operation.workerThread=ObjectIdentifier(Thread.current);writer.condition.unlock()
+        defer { entry.close();writer.condition.lock();operation.workerThread=nil;writer.condition.broadcast();writer.condition.unlock() }
+        try writer.pinFence(operation,readback:true)
+        let receipt: LocalV2StorageReceipt,kind: LocalV2PinReplyKind
+        if operation.challenge.kind == .enroll {
+            let sample=try writer.sampleEnrollment(operation.request)
+            let material=try produceEnrollment(operation,sample,entry);defer { material.close() };var captured: LocalV2StorageReceipt?
+            try writer.enroll(operation,material:material) { captured=$0 };guard let captured else { throw PlanetChildVault.Failure.unavailable }
+            receipt=captured;kind = .enrolled
+        } else {
+            // Nonempty input was obtained before charge; no grammar/KDF occurs
+            // before this exact full-record durable write and original ACK.
+            var charged: LocalV2StorageReceipt?
+            try writer.charge(operation.request) { charged=$0 };guard let charged else { throw PlanetChildVault.Failure.unavailable }
+            try writer.settle(charged,known:true)
+            let comparison=try produceComparison(operation,entry)
+            writer.condition.lock();operation.comparison=comparison;writer.condition.unlock();var captured: LocalV2StorageReceipt?
+            try writer.finalize(operation,comparison:comparison) { captured=$0 };guard let captured else { throw PlanetChildVault.Failure.unavailable }
+            receipt=captured;kind=comparison.comparison == .match ? .match:.mismatch
+        }
+        try writer.settle(receipt,known:true);try writer.pinFence(operation,readback:true)
+        let reply=LocalV2PinReply(operation,receipt,kind);writer.condition.lock()
+        guard !operation.cancelled,operation.reply==nil else { writer.condition.unlock();throw PinKnownRefusal() }
+        operation.receipt=receipt;operation.reply=reply;writer.condition.unlock();return reply
+    }
+    private func produceComparison(_ operation: LocalV2PinOperation,_ entry: LocalV2PinEntry) throws -> LocalV2PinComparison {
+        try writer.pinWorker(operation);defer { writer.finish(operation.request) }
+        guard let reservation=operation.request.reservation else { throw PinKnownRefusal() }
+        var charged=try reservation.charged.copy();defer { charged.resetBytes(in:0..<charged.count) }
+        let snapshot=try LocalSnapshotV2.decode(charged,policy:writer.policy);defer { snapshot.close() }
+        let verifier=try PlanetChildVault.ProtectedEnvelope.localV2Verifier(snapshot);defer { verifier.close() }
+        let math=verificationEngine.map { PinVerificationMath.syntheticFixture($0) } ?? PinVerificationMath();defer { math.close() }
+        let result=try math.compare(verifier,input:entry.first) { identity in
+            guard identity.recordChecksum==snapshot.checksum,identity.recordRevision==snapshot.fields.revision,
+                identity.pinRevision==snapshot.fields.pin.revision,operation.request.reservation === reservation,
+                operation.request.receipt?.known==true,operation.request.receipt?.settled==true else { throw PinKnownRefusal() }
+            try self.writer.pinFence(operation,readback:true)
+        }
+        guard result.source == (synthetic ? .synthetic:.platform) else { throw PinKnownRefusal() }
+        try writer.pinFence(operation,readback:true);return LocalV2PinComparison(operation,reservation,result,charged)
+    }
+    private func hex(_ bytes: PinPrimitiveBytes) throws -> String { try bytes.read { $0.map { String(format:"%02x",$0) }.joined() } }
+    private func enrollmentBytes(_ sample: LocalV2EnrollmentSample,_ salt: PinPrimitiveBytes,_ credential: PinPrimitiveBytes,_ hash: PinPrimitiveBytes,_ iterations: UInt32) throws -> Data {
+        let policy=writer.policy,logical=sample.logicalMs,id=try hex(credential)
+        let pin="{\"schemaVersion\":1,\"policyVersion\":\"\(policy.version)\",\"revision\":1,\"credentialId\":\"\(id)\",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":\(iterations),\"saltHex\":\"\(try hex(salt))\",\"hashHex\":\"\(try hex(hash))\"},\"attempts\":{\"count\":0,\"blockedUntilMs\":0,\"lastObservedMs\":\(logical),\"pendingAttemptId\":null}}"
+        var seed=try sample.seed.copy();defer { seed.resetBytes(in:0..<seed.count) }
+        let marker=Data("\"pin\":null".utf8),prefix=Data("{\"schemaVersion\":2,\"revision\":1".utf8)
+        guard seed.starts(with:prefix),let range=seed.range(of:marker) else { throw PinKnownRefusal() }
+        var p=Data("{\"schemaVersion\":2,\"revision\":2".utf8);p.append(seed.subdata(in:prefix.count..<range.lowerBound));p.append(Data("\"pin\":\(pin)".utf8));p.append(seed.suffix(from:range.upperBound))
+        defer { p.resetBytes(in:0..<p.count) }
+        let fields=LocalV2PinFields(revision:1,credential:id,count:0,blocked:0,observed:logical,pending:nil,revisionStart:0,revisionEnd:0,attemptsStart:0)
+        let next=try LocalSnapshotV2.wrapper(p,policy:policy,rootRevision:2,journalRevision:1,pin:fields);defer { next.close() }
+        try LocalSnapshotV2.validateEnrollment(seed:seed,next:next,logical:logical,policy:policy);return try next.copyCanonicalBytes()
+    }
+    private func ownerMessage(_ operation: LocalV2PinOperation,_ sample: LocalV2EnrollmentSample,_ next: Data,_ key: PinOwnerKey) -> Data {
+        let c=operation.challenge,p=writer.policy
+        let fields=["literary-planet/local-pin-operation/v2",c.id,c.action,c.target,String(ObjectIdentifier(c.original).hashValue),String(operation.request.process),String(c.generation),String(c.deadlineNs),String(operation.request.began),
+            String(c.rootRevision),String(c.profileRevision),String(c.selectionRevision),sample.checksum,String(sample.logicalMs),LocalSnapshotV2.hash(next),
+            p.version,p.checksum,String(p.maximum),p.delays.map(String.init).joined(separator:","),String(operation.iterations),operation.locale == .ru ? "ru":"en",LocalSnapshotV2.hash(key.publicBytes)]
+        return Data(fields.map { "\($0.utf8.count):\($0)" }.joined().utf8)
+    }
+    private func produceEnrollment(_ operation: LocalV2PinOperation,_ sample: LocalV2EnrollmentSample,_ entry: LocalV2PinEntry) throws -> LocalV2PinEnrollment {
+        try writer.pinWorker(operation);defer { writer.finish(operation.request) }
+        guard let confirmation=entry.confirmation else { throw PinKnownRefusal() }
+        let first=try entry.first.take(),second=try confirmation.take();defer { first.close();second.close() }
+        let valid=try first.read { $0.count>=4 && $0.count<=128 && $0.allSatisfy { $0>=48 && $0<=57 } }
+        guard valid,try first.equals(second) else { throw PinKnownRefusal() }
+        let frozen=try first.independentCopy(),salt=try PinPrimitiveBytes(count:32),credential=try PinPrimitiveBytes(count:32),hash=try PinPrimitiveBytes(count:32)
+        defer { frozen.close();salt.close();credential.close();hash.close() }
+        try salt.write { try engine.random($0) };try credential.write { try engine.random($0) };try writer.pinFence(operation,readback:true)
+        let frozenSalt=try salt.independentCopy(),frozenCredential=try credential.independentCopy();defer { frozenSalt.close();frozenCredential.close() }
+        let began=try writer.current(operation.request)
+        try first.read { pin in try salt.read { salt in try hash.write { output in try engine.derive(pin:pin,salt:salt,iterations:operation.iterations,output:output) } } }
+        let ended=try writer.current(operation.request)
+        guard ended>=began,ended-began<=5000000000,try first.equals(frozen),try salt.equals(frozenSalt),try credential.equals(frozenCredential) else { throw PinKnownRefusal() }
+        var next=try enrollmentBytes(sample,salt,credential,hash,operation.iterations);defer { next.resetBytes(in:0..<next.count) }
+        let context=LAContext();context.touchIDAuthenticationAllowableReuseDuration=0
+        writer.condition.lock();guard !operation.cancelled else { writer.condition.unlock();context.invalidate();throw PinKnownRefusal() }
+        operation.context=context;operation.ownerWorkers=1;writer.condition.unlock()
+        defer { context.invalidate();writer.condition.lock();operation.context=nil;operation.ownerWorkers=0;writer.condition.broadcast();writer.condition.unlock() }
+        let prompt=operation.locale == .ru ? "Подтвердите создание родительского PIN кодом блокировки устройства.":"Confirm Parent PIN setup using your device screen lock."
+        let key=try keys.acquire(enroll:true,context:context,prompt:prompt);try writer.pinFence(operation,readback:true)
+        var message=ownerMessage(operation,sample,next,key),signature=try keys.sign(key,message:message)
+        defer { message.resetBytes(in:0..<message.count);signature.resetBytes(in:0..<signature.count) }
+        try writer.pinFence(operation,readback:true);try keys.current(key)
+        var error: Unmanaged<CFError>?
+        guard key.source==keys.source,SecKeyVerifySignature(key.publicKey,.ecdsaSignatureMessageX962SHA256,message as CFData,signature as CFData,&error) else { throw PinKnownRefusal() }
+        return LocalV2PinEnrollment(operation,sample,key,next,message,signature)
+    }
+    fileprivate func verifyEnrollment(_ material: LocalV2PinEnrollment,storageLocked: Bool=false) throws {
+        let operation=material.operation;try keys.current(material.key);try writer.pinFence(operation,readback:!storageLocked)
+        var next=try material.next.copy(),message=try material.message.copy(),signature=try material.signature.copy()
+        defer { next.resetBytes(in:0..<next.count);message.resetBytes(in:0..<message.count);signature.resetBytes(in:0..<signature.count) }
+        var error: Unmanaged<CFError>?
+        guard operation.owner === self,material.key.source==keys.source,message==ownerMessage(operation,material.sample,next,material.key),
+            SecKeyVerifySignature(material.key.publicKey,.ecdsaSignatureMessageX962SHA256,message as CFData,signature as CFData,&error) else { throw PinKnownRefusal() }
+        try writer.pinFence(operation,readback:!storageLocked)
+    }
+    fileprivate func deliver(_ operation: LocalV2PinOperation,_ reply: LocalV2PinReply,recipient: (Result<LocalV2PinReply,Error>) throws -> Void) throws {
+        writer.condition.lock();guard operation.reply === reply,!reply.completed,!reply.settled else { writer.condition.unlock();throw PinKnownRefusal() }
+        operation.recipients+=1;operation.deliveryThread=ObjectIdentifier(Thread.current);writer.condition.unlock()
+        defer { writer.condition.lock();operation.recipients-=1;operation.deliveryThread=nil;writer.condition.broadcast();writer.condition.unlock() }
+        do { try writer.pinFence(operation,readback:true);try recipient(.success(reply));try writer.pinFence(operation,readback:true)
+            writer.condition.lock();reply.completed=true;writer.condition.unlock()
+        } catch { writer.cancel(operation.request);throw error }
+    }
+    func settle(_ reply: LocalV2PinReply,known: Bool) throws {
+        let operation=reply.operation,request=operation.request
+        guard !Thread.isMainThread,operation.owner === self else { throw PinKnownRefusal() }
+        writer.condition.lock()
+        guard request.pinOperation === operation,operation.reply === reply,!reply.settled,!operation.busy,request.workers==0,
+            !known || reply.completed && !operation.cancelled && operation.inputJoined && operation.receipt === reply.receipt && reply.receipt.known && reply.receipt.settled
+            else { writer.condition.unlock();throw PinKnownRefusal() }
+        if !known { reply.settled=true;reply.consumed=true;operation.cancelled=true;writer.condition.broadcast();writer.condition.unlock();writer.cancel(request);return }
+        operation.settlements=1;writer.condition.unlock()
+        defer { writer.condition.lock();operation.settlements=0;writer.condition.broadcast();writer.condition.unlock() }
+        try writer.pinWorker(operation);defer { writer.finish(request) };try writer.pinFence(operation,readback:true)
+        writer.condition.lock();defer { writer.condition.unlock() }
+        guard !operation.cancelled,request.pinOperation === operation,!reply.settled,!request.retiring else { throw PinKnownRefusal() }
+        reply.settled=true;reply.known=true;writer.condition.broadcast()
+    }
+    func consumeMatch(_ reply: LocalV2PinReply,original: LocalV2PinChallenge) throws -> LocalV2PinCompletion {
+        let operation=reply.operation
+        guard !Thread.isMainThread,operation.owner === self else { throw PinKnownRefusal() }
+        writer.condition.lock()
+        guard operation.reply === reply,operation.challenge === original,reply.kind == .match,original.kind == .verify,
+            reply.completed,reply.settled,reply.known,!reply.consumed,!operation.busy,operation.request.workers==0,
+            operation.request.retired,operation.closedKnown,!operation.closedRevoked,!operation.request.sealed
+            else { writer.condition.unlock();throw PinKnownRefusal() }
+        reply.consumed=true;operation.settlements=1;writer.condition.unlock()
+        defer {
+            writer.condition.lock();operation.settlements=0;operation.entry=nil;operation.comparison=nil;operation.input=nil
+            operation.reply=nil;operation.request.pinOperation=nil;writer.condition.broadcast();writer.condition.unlock();removeClosedObservers(operation)
+        }
+        try writer.closedPinReadback(operation,reply:reply)
+        writer.condition.lock();defer { writer.condition.unlock() }
+        guard operation.closedKnown,!operation.closedRevoked,!writer.processClock.invalidated,operation.request.retired else { throw PinKnownRefusal() }
+        return LocalV2PinCompletion(reply)
+    }
+    func retire(_ operation: LocalV2PinOperation) throws {
+        guard !Thread.isMainThread,operation.owner === self,operation.workerThread != ObjectIdentifier(Thread.current),operation.deliveryThread != ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() }
+        writer.condition.lock();let known=operation.reply?.known==true && operation.reply?.settled==true && !operation.cancelled;writer.condition.unlock()
+        if known,!synthetic {
+            DispatchQueue.main.sync { [self] in
+                let center=NotificationCenter.default
+                for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification] {
+                    let observer=center.addObserver(forName:name,object:nil,queue:nil) { [weak operation] note in
+                        guard let operation,name != UIScene.didDisconnectNotification || operation.request.host?.disconnected(note)==true else { return }
+                        self.writer.condition.lock();operation.closedRevoked=true;operation.closedKnown=false;self.writer.condition.broadcast();self.writer.condition.unlock()
+                    }
+                    writer.condition.lock();operation.closedObservers.append(observer);writer.condition.unlock()
+                }
+            }
+        }
+        do { try writer.retire(operation.request)
+            writer.condition.lock();operation.closedKnown=operation.closedKnownCandidate && !operation.closedRevoked && !writer.processClock.invalidated
+            operation.entry=nil;operation.comparison=nil;operation.input=nil
+            let retain=operation.closedKnown && operation.reply?.kind == .match
+            if !retain { operation.reply=nil;operation.request.pinOperation=nil };writer.condition.unlock()
+            if !retain { removeClosedObservers(operation) }
+        } catch {
+            writer.condition.lock();if operation.request.retired { operation.entry=nil;operation.comparison=nil;operation.input=nil;operation.reply=nil;operation.request.pinOperation=nil };writer.condition.unlock()
+            removeClosedObservers(operation);throw error
+        }
+        if !known { removeClosedObservers(operation) }
+    }
+    private func removeClosedObservers(_ operation: LocalV2PinOperation) {
+        writer.condition.lock();let observers=operation.closedObservers;operation.closedObservers.removeAll();writer.condition.unlock()
+        DispatchQueue.main.sync { for observer in observers { NotificationCenter.default.removeObserver(observer) } }
+    }
+    fileprivate func closeInternalUnknown(_ operation: LocalV2PinOperation) {
+        // These storage receipts were delivered only to the synchronous private
+        // coordinator. On its joined failure, actual uncertain ACK closes them.
+        // An externally exposed terminal reply still needs its original ACK.
+        writer.condition.lock();let receipt=operation.reply==nil ? operation.request.receipt:nil;writer.condition.unlock()
+        if let receipt,!receipt.settled { try? writer.settle(receipt,known:false) }
+    }
+}
+
+/** Same native keypad/digit-buffer implementation as v1. Input ownership,
+ * dismiss/clear, actual watchdog, callback, cancel and synchronous KDF joins
+ * all belong to the original V2 operation and absolute deadline. */
+fileprivate final class LocalV2PinNativeInput {
+    let operation: LocalV2PinOperation
+    private weak var host: UIViewController?
+    fileprivate var controller: LocalV2PinViewController?
+    private let digits: PinNativeDigitBuffer,recipient: (Result<LocalV2PinReply,Error>) throws -> Void
+    private var first: PinPrimitiveInput?,started=false,closing=false,finished=false,confirming=false
+    init(_ operation: LocalV2PinOperation,_ host: UIViewController,_ recipient: @escaping (Result<LocalV2PinReply,Error>) throws -> Void) throws {
+        self.operation=operation;self.host=host;self.recipient=recipient;digits=try PinNativeDigitBuffer(maximum:128)
+    }
+    func start() throws {
+        guard Thread.isMainThread,let host,!started else { throw PinKnownRefusal() };started=true
+        let writer=operation.owner.writer;writer.condition.lock();operation.watchers=1;writer.condition.unlock()
+        let view=LocalV2PinViewController(owner:self,locale:operation.locale,action:operation.challenge.action,minimum:operation.challenge.kind == .enroll ? 4:1)
+        view.modalPresentationStyle = .fullScreen;view.isModalInPresentation=true;controller=view
+        host.present(view,animated:false) { [self] in
+            do { try operation.owner.writer.pinFence(operation) } catch { cancel() }
+        }
+        Thread { [self] in
+            defer { writer.condition.lock();operation.watchers=0;writer.condition.broadcast();writer.condition.unlock() }
+            while true {
+                writer.condition.lock();let stop=closing || finished || operation.cancelled
+                if !stop { _ = writer.condition.wait(until:Date(timeIntervalSinceNow:0.05)) };writer.condition.unlock()
+                if stop { return }
+                do { try writer.pinFence(operation) } catch { writer.cancel(operation.request);return }
+            }
+        }.start()
+    }
+    func tapDigit(_ digit: UInt8) {
+        guard Thread.isMainThread,!closing else { return }
+        do { try operation.owner.writer.pinFence(operation);try digits.append(digit);controller?.update(count:digits.count) } catch { cancel() }
+    }
+    func deleteDigit() {
+        guard Thread.isMainThread,!closing else { return }
+        do { try operation.owner.writer.pinFence(operation);try digits.removeLast();controller?.update(count:digits.count) } catch { cancel() }
+    }
+    func submit() {
+        guard Thread.isMainThread,!closing else { return }
+        do {
+            try operation.owner.writer.pinFence(operation)
+            let input=try digits.move(minimum:operation.challenge.kind == .enroll ? 4:1)
+            if operation.challenge.kind == .enroll,!confirming { first=input;confirming=true;controller?.confirmEntry();return }
+            let original=operation.challenge.kind == .enroll ? first:input
+            guard let original else { input.close();throw PinKnownRefusal() };first=nil
+            let entry=LocalV2PinEntry(operation,self,original,operation.challenge.kind == .enroll ? input:nil)
+            operation.owner.writer.condition.lock()
+            guard !closing,!operation.cancelled else { operation.owner.writer.condition.unlock();entry.close();throw PinKnownRefusal() }
+            closing=true;operation.owner.writer.condition.broadcast();operation.owner.writer.condition.unlock();controller?.disableAndClear()
+            Thread { [self] in run(entry) }.start()
+        } catch { cancel() }
+    }
+    func disappeared() { if !closing { cancel() } }
+    func cancel() { operation.owner.writer.cancel(operation.request) }
+    fileprivate func revokeLocked() {
+        guard !closing else { return };closing=true;operation.owner.writer.condition.broadcast()
+        Thread { [self] in run(nil) }.start()
+    }
+    private func run(_ entry: LocalV2PinEntry?) {
+        let writer=operation.owner.writer
+        writer.condition.lock();while operation.watchers>0 { writer.condition.wait() };writer.condition.unlock()
+        // A real UIKit dismissal completion, not async scheduling or a timeout,
+        // is the input boundary. The retained uiWorker joins through callbacks.
+        let dismissed=DispatchSemaphore(value:0)
+        DispatchQueue.main.async { [self] in
+            digits.clear();first?.close();first=nil
+            if let view=controller { view.detach();view.dismiss(animated:false) { [self] in controller=nil;dismissed.signal() } }
+            else { dismissed.signal() }
+        }
+        dismissed.wait()
+        writer.condition.lock()
+        operation.inputJoined=true;if let entry { operation.entry=entry };writer.condition.unlock()
+        var success=false
+        do {
+            guard let entry else { throw PinNativeInputFailure.cancelled }
+            let reply=try operation.owner.process(operation,entry:entry)
+            try operation.owner.deliver(operation,reply,recipient:recipient);success=true
+        } catch {
+            entry?.close()
+            operation.owner.closeInternalUnknown(operation)
+            if operation.reply==nil {
+                writer.condition.lock();operation.recipients+=1;operation.deliveryThread=ObjectIdentifier(Thread.current);writer.condition.unlock()
+                do { try recipient(.failure(error)) } catch { writer.cancel(operation.request) }
+                writer.condition.lock();operation.recipients-=1;operation.deliveryThread=nil;writer.condition.broadcast();writer.condition.unlock()
+            }
+            writer.cancel(operation.request)
+        }
+        writer.condition.lock();finished=true;operation.uiWorkers=0;operation.entry=nil;operation.input=nil
+        if !success { operation.cancelled=true };writer.condition.broadcast();writer.condition.unlock()
+    }
+}
+
+fileprivate extension PinOwnerOriginalHost {
+    func localV2Current(ownedInput: UIViewController?,ownedPrompt: Bool) throws {
+        let check: () -> Bool = { [self] in
+            guard let host,let window,let scene,let root else { return false }
+            let originalWindow=host.viewIfLoaded?.window === window
+            let ownedWindow=ownedInput?.presentingViewController === host && ownedInput?.viewIfLoaded?.window === window
+            return (originalWindow || ownedWindow) && window.windowScene === scene && window.rootViewController === root
+                && !window.isHidden && !host.isBeingDismissed
+                && (ownedInput == nil ? host.presentedViewController==nil:host.presentedViewController === ownedInput)
+                && (scene.activationState == .foregroundActive || ownedPrompt && scene.activationState == .foregroundInactive)
+                && (UIApplication.shared.applicationState == .active || ownedPrompt && UIApplication.shared.applicationState == .inactive)
+        }
+        guard (Thread.isMainThread ? check():DispatchQueue.main.sync(execute:check)) else { throw PinKnownRefusal() }
+    }
+}
+
+fileprivate final class LocalV2PinViewController: UIViewController {
+    private weak var owner: LocalV2PinNativeInput?
+    private let locale: PinNativeInputLocale, action: String
+    private let minimum: Int
+    private let titleLabel=UILabel(), actionLabel=UILabel(), countLabel=UILabel(), hintLabel=UILabel()
+    private let continueButton=UIButton(type:.system)
+    private var inputButtons=[UIButton]()
+    init(owner: LocalV2PinNativeInput,locale: PinNativeInputLocale,action: String,minimum: Int=1) {
+        self.owner=owner; self.locale=locale; self.action=action;self.minimum=minimum; super.init(nibName:nil,bundle:nil)
+    }
+    required init?(coder: NSCoder) { return nil }
+    private func text(_ ru: String,_ en: String) -> String { locale == .ru ? ru:en }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let navy=UIColor(red:0.025,green:0.06,blue:0.12,alpha:1), gold=UIColor(red:0.84,green:0.72,blue:0.46,alpha:1)
+        view.backgroundColor=navy; view.tintColor=gold; view.accessibilityViewIsModal=true
+        let scroll=UIScrollView(), stack=UIStackView(); scroll.translatesAutoresizingMaskIntoConstraints=false
+        stack.translatesAutoresizingMaskIntoConstraints=false; stack.axis = .vertical; stack.spacing=16
+        view.addSubview(scroll); scroll.addSubview(stack)
+        NSLayoutConstraint.activate([
+            scroll.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor),
+            scroll.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor),
+            scroll.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor),
+            scroll.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor),
+            stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor,constant:24),
+            stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor,constant:-24),
+            stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor,constant:24),
+            stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor,constant:-24),
+            stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor,constant:-48)
+        ])
+        for label in [titleLabel,actionLabel,countLabel,hintLabel] {
+            label.numberOfLines=0; label.textAlignment = .center; label.adjustsFontForContentSizeCategory=true
+            label.textColor = .white; stack.addArrangedSubview(label)
+        }
+        titleLabel.textColor=gold; titleLabel.font = .preferredFont(forTextStyle:.title2)
+        titleLabel.accessibilityTraits.insert(.header); titleLabel.text=text("Родительский PIN","Parent PIN")
+        actionLabel.font = .preferredFont(forTextStyle:.headline)
+        actionLabel.text=action=="enroll-local-pin" ? text("Создать родительский PIN","Create Parent PIN"):PinVerificationActionCopy.caption(action,locale:locale)
+        hintLabel.font = .preferredFont(forTextStyle:.body)
+        hintLabel.text=text("Введите PIN, чтобы подтвердить действие.","Enter your PIN to confirm this action.")
+        countLabel.font = .preferredFont(forTextStyle:.title1)
+        let labels=[["1","2","3"],["4","5","6"],["7","8","9"],["⌫","0",""]]
+        for row in labels {
+            let line=UIStackView(); line.axis = .horizontal; line.spacing=12; line.distribution = .fillEqually
+            for label in row {
+                let button=UIButton(type:.system); button.setTitle(label,for:.normal)
+                button.titleLabel?.font = .preferredFont(forTextStyle:.title1)
+                button.titleLabel?.adjustsFontForContentSizeCategory=true; button.setTitleColor(.white,for:.normal)
+                button.tintColor=gold; button.backgroundColor=UIColor(red:0.065,green:0.12,blue:0.20,alpha:1)
+                button.layer.cornerRadius=12; button.heightAnchor.constraint(greaterThanOrEqualToConstant:56).isActive=true
+                if let digit=Int(label) { button.tag=digit; button.addTarget(self,action:#selector(digitTap(_:)),for:.touchUpInside) }
+                else if label=="⌫" {
+                    button.accessibilityLabel=text("Удалить последнюю цифру","Delete last digit")
+                    button.addTarget(self,action:#selector(deleteTap),for:.touchUpInside)
+                } else { button.isEnabled=false; button.isHidden=true }
+                line.addArrangedSubview(button); inputButtons.append(button)
+            }
+            stack.addArrangedSubview(line)
+        }
+        continueButton.setTitle(text("Продолжить","Continue"),for:.normal)
+        continueButton.backgroundColor=gold; continueButton.setTitleColor(navy,for:.normal); continueButton.layer.cornerRadius=12
+        continueButton.titleLabel?.font = .preferredFont(forTextStyle:.headline)
+        continueButton.titleLabel?.adjustsFontForContentSizeCategory=true
+        continueButton.heightAnchor.constraint(greaterThanOrEqualToConstant:48).isActive=true
+        continueButton.addTarget(self,action:#selector(submitTap),for:.touchUpInside); stack.addArrangedSubview(continueButton)
+        let cancel=UIButton(type:.system); cancel.setTitle(text("Отмена","Cancel"),for:.normal)
+        cancel.titleLabel?.font = .preferredFont(forTextStyle:.body); cancel.titleLabel?.adjustsFontForContentSizeCategory=true
+        cancel.heightAnchor.constraint(greaterThanOrEqualToConstant:48).isActive=true
+        cancel.addTarget(self,action:#selector(cancelTap),for:.touchUpInside); stack.addArrangedSubview(cancel)
+        update(count:0)
+    }
+    override func viewDidDisappear(_ animated: Bool) { super.viewDidDisappear(animated); owner?.disappeared() }
+    func update(count: Int) {
+        countLabel.text=String(repeating:"•",count:min(count,12))
+        countLabel.accessibilityLabel=text("Введено цифр: \(count)","Digits entered: \(count)")
+        continueButton.isEnabled=count>=minimum && count<=128
+    }
+    func confirmEntry() { hintLabel.text=text("Повторите новый PIN.","Enter the new PIN again.");update(count:0) }
+    func disableAndClear() {
+        inputButtons.forEach { $0.isEnabled=false }; continueButton.isEnabled=false
+        countLabel.text=""; countLabel.accessibilityLabel=text("Ввод закрыт","Input closed")
+    }
+    func detach() { disableAndClear(); owner=nil }
+    @objc private func digitTap(_ sender: UIButton) { guard sender.tag>=0 && sender.tag<=9 else { return }; owner?.tapDigit(UInt8(sender.tag)+48) }
+    @objc private func deleteTap() { owner?.deleteDigit() }
+    @objc private func submitTap() { owner?.submit() }
+    @objc private func cancelTap() { owner?.cancel() }
+}
+
+#if DEBUG
+fileprivate extension LocalV2PinOperations {
+    func fixtureOperation(_ challenge: LocalV2PinChallenge,_ request: LocalV2Request) throws -> LocalV2PinOperation {
+        guard synthetic else { throw PinKnownRefusal() };return try bind(request,challenge,.en)
+    }
+    func fixtureEntry(_ operation: LocalV2PinOperation,_ bytes: Data,_ confirmation: Data?=nil) throws -> LocalV2PinEntry {
+        guard synthetic,operation.owner === self else { throw PinKnownRefusal() }
+        let input=try PinPrimitiveInput(bytes),confirm=try confirmation.map { try PinPrimitiveInput($0) }
+        let entry=LocalV2PinEntry(operation,nil,input,confirm)
+        writer.condition.lock();operation.entry=entry;operation.inputJoined=true;writer.condition.unlock();return entry
+    }
+    func fixtureLifecycleEvent(_ operation: LocalV2PinOperation,_ name: Notification.Name) throws {
+        guard synthetic else { throw PinKnownRefusal() }
+        writer.condition.lock();let revoke=writer.pinLifecycleWillRevokeLocked(operation.request,name:name);writer.condition.unlock()
+        if revoke { writer.cancel(operation.request) }
+    }
+}
+enum PlanetChildLocalPinOperationScenario: String {
+    case enrollment,match,mismatch,malformed,empty,confirmationMismatch,badOwnerSignature,ownerChanged,ownerCancelled
+    case chargeReadbackMismatch,chargedBeforeKDF,kdfFailure,cancelDuringKDF,expireDuringKDF,mutationDuringKDF
+    case finalizationReadbackMismatch,earlyReplyACK,unknownReplyACK,replyReplay,foreignChallenge,scopeMismatch,replayOperation
+    case forgedComparison,recipientThrows,retirementWaitsForKDF,retirementWaitsForRecipient,changedKeyAtWrite
+    case expiredAfterRetirement,changedAfterRetirement,lifecycleAfterRetirement
+    case ownedPromptInactive,backgroundDuringOwner,expireDuringOwner
+}
+struct PlanetChildLocalPinOperationObservation {
+    var passed=false,updates=0,deriveCalls=0,signCalls=0,chargedBeforeKDF=false,count: UInt64=0,pending=false,replyKnown=false
+    var denied=false,earlyDenied=false,matched=false,retirementJoined=false,sealed=false
+    let qualification="synthetic native storage/input/owner scope; no installed Keychain, Secure Enclave, UIKit or Gate acceptance"
+}
+enum PlanetChildLocalPinOperationRuntimeFixture {
+    private final class Engine: PinPrimitiveEngine,PinVerificationEngine {
+        var randomCalls=0,deriveCalls=0,beforeDerive: (() throws -> Void)?,failure=false
+        func random(_ output: UnsafeMutableRawBufferPointer) throws {
+            randomCalls+=1;for i in output.indices { output[i]=randomCalls==1 ? 0xcc:0xbb }
+        }
+        func derive(pin: UnsafeRawBufferPointer,salt: UnsafeRawBufferPointer,iterations: UInt32,output: UnsafeMutableRawBufferPointer) throws {
+            deriveCalls+=1;try beforeDerive?();if failure { throw PinPrimitiveFailure.unavailable }
+            let match=pin.count==4 && pin[0]==49 && pin[1]==50 && pin[2]==51 && pin[3]==52
+            for i in output.indices { output[i]=match ? 0xdd:0xee }
+        }
+    }
+    private final class Keys: PinOwnerKeys {
+        let source: PinOwnerKeySource = .synthetic,key: PinOwnerKey
+        var signCalls=0,bad=false,changed=false,onSign: (() -> Void)?
+        init() throws {
+            var error: Unmanaged<CFError>?
+            guard let key=SecKeyCreateRandomKey([kSecAttrKeyType:kSecAttrKeyTypeECSECPrimeRandom,kSecAttrKeySizeInBits:256] as CFDictionary,&error),
+                let publicKey=SecKeyCopyPublicKey(key),let bytes=SecKeyCopyExternalRepresentation(publicKey,&error) as Data? else { throw PinKnownRefusal() }
+            self.key=PinOwnerKey(privateKey:key,publicKey:publicKey,publicBytes:bytes,source:.synthetic)
+        }
+        func acquire(enroll: Bool,context: LAContext,prompt: String) throws -> PinOwnerKey { guard enroll else { throw PinKnownRefusal() };return key }
+        func current(_ original: PinOwnerKey) throws { guard original === key,!changed else { throw PinKnownRefusal() } }
+        func sign(_ original: PinOwnerKey,message: Data) throws -> Data {
+            signCalls+=1;onSign?();if bad { return Data(repeating:0,count:72) };var error: Unmanaged<CFError>?
+            guard let signature=SecKeyCreateSignature(original.privateKey,.ecdsaSignatureMessageX962SHA256,message as CFData,&error) as Data? else { throw PinKnownRefusal() }
+            return signature
+        }
+    }
+    private static func policy() throws -> LocalSnapshotV2Policy {
+        try LocalSnapshotV2Policy(version:"synthetic-local-pin-v2",checksum:String(repeating:"a",count:64),maximum:600000,delays:[100,200,400])
+    }
+    private static func record(_ p: LocalSnapshotV2Policy) throws -> Data {
+        let registry=#"{"schemaVersion":1,"policyVersion":"\#(p.version)","activeProfileId":"reader","profiles":[{"id":"reader","label":"Synthetic Reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":["violence"],"soundEnabled":false,"motion":"calm","narrationEnabled":false}]}"#
+        let pin=#"{"schemaVersion":1,"policyVersion":"\#(p.version)","revision":1,"credentialId":"\#(String(repeating:"b",count:64))","verifier":{"algorithm":"PBKDF2-HMAC-SHA256","iterations":600000,"saltHex":"\#(String(repeating:"c",count:64))","hashHex":"\#(String(repeating:"d",count:64))"},"attempts":{"count":0,"blockedUntilMs":0,"lastObservedMs":0,"pendingAttemptId":null}}"#
+        let bytes=Data(#"{"schemaVersion":2,"revision":2,"mode":"child","selectionRevision":3,"profileRevision":2,"policyChecksum":"\#(p.checksum)","registryChecksum":"\#(LocalSnapshotV2.hash(Data(registry.utf8)))","registry":\#(registry),"pin":\#(pin),"clock":{"schemaVersion":2,"logicalMs":0}}"#.utf8)
+        let fields=LocalV2PinFields(revision:1,credential:String(repeating:"b",count:64),count:0,blocked:0,observed:0,pending:nil,revisionStart:0,revisionEnd:0,attemptsStart:0)
+        let snapshot=try LocalSnapshotV2.wrapper(bytes,policy:p,rootRevision:2,journalRevision:1,pin:fields);defer { snapshot.close() };return try snapshot.copyCanonicalBytes()
+    }
+    private static func denied(_ task: () throws -> Void) -> Bool { do { try task();return false } catch { return true } }
+    static func run(_ scenario: PlanetChildLocalPinOperationScenario) throws -> PlanetChildLocalPinOperationObservation {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() }
+        if scenario == .retirementWaitsForKDF || scenario == .retirementWaitsForRecipient { return try held(scenario) }
+        let p=try policy(),enrollment=[PlanetChildLocalPinOperationScenario.enrollment,.confirmationMismatch,.badOwnerSignature,.ownerChanged,.ownerCancelled,.changedKeyAtWrite,
+            .ownedPromptInactive,.backgroundDuringOwner,.expireDuringOwner].contains(scenario)
+        let bytes: Data
+        if enrollment { bytes=try PlanetChildVault.LocalEmptySeedV2.canonicalBytes(policyVersion:p.version,policyChecksum:p.checksum) }
+        else { bytes=try record(p) }
+        let io=LocalV2FixtureStorage(bytes),clock=LocalV2FixtureClock(),engine=Engine(),keys=try Keys()
+        let scope=LocalV2ProcessClock(fixturePolicy:p,clock:clock),writer=LocalV2Writer(fixtureStorage:io,policy:p,clock:clock,processClock:scope)
+        let operations=try LocalV2PinOperations(fixtureWriter:writer,keys:keys,engine:engine,verificationEngine:engine)
+        let request=try writer.fixtureRequest(timeoutMs:1000)
+        // Explicit warm fixture binding avoids re-testing the retained cold
+        // reanchor family; production always opens via actual durable readback.
+        let snapshot: LocalSnapshotV2?=enrollment ? nil:(try LocalSnapshotV2.decode(bytes,policy:p));defer { snapshot?.close() }
+        writer.condition.lock()
+        do { try scope.adoptFirst(request,bytes,snapshot,clock.now);writer.condition.unlock() } catch { writer.condition.unlock();throw error }
+        let original=NSObject(),gate=PinGateRequest(originalHostChallenge:original,id:String(repeating:"1",count:64),action:"exit-child",
+            targetChecksum:String(repeating:"2",count:64),context:PinGateContext(profileId:scenario == .scopeMismatch ? "wrong":"reader",policyVersion:p.version,
+                profileRevision:2,routeRevision:7,mode:"child",visibility:"active"),generation:4,deadlineUptimeMs:request.deadline/1000000)
+        let challenge=enrollment ? LocalV2PinChallenge(enrollmentOriginal:original,id:String(repeating:"1",count:64),seedChecksum:LocalSnapshotV2.hash(bytes),generation:4,deadlineNs:request.deadline)
+            :LocalV2PinChallenge(verificationOriginal:gate,rootRevision:2,selectionRevision:3,deadlineNs:request.deadline)
+        let operation=try operations.fixtureOperation(challenge,request);var observation=PlanetChildLocalPinOperationObservation()
+        if scenario == .scopeMismatch {
+            observation.denied=denied { try operations.open(operation) };observation.passed=observation.denied && io.updates==0 && engine.deriveCalls==0
+            writer.cancel(request);try? operations.retire(operation);return observation
+        }
+        try operations.open(operation)
+        var input=Data("1234".utf8)
+        if scenario == .mismatch || scenario == .forgedComparison { input=Data("9".utf8) }
+        if scenario == .malformed { input=Data([0xc3,0xa9]) }
+        if scenario == .empty { input=Data() }
+        if scenario == .badOwnerSignature { keys.bad=true }
+        if scenario == .ownerChanged { keys.onSign={ keys.changed=true } }
+        if scenario == .ownerCancelled { keys.onSign={ writer.cancel(request) } }
+        if scenario == .ownedPromptInactive { keys.onSign={ try? operations.fixtureLifecycleEvent(operation,UIApplication.willResignActiveNotification) } }
+        if scenario == .backgroundDuringOwner { keys.onSign={ try? operations.fixtureLifecycleEvent(operation,UIApplication.didEnterBackgroundNotification) } }
+        if scenario == .expireDuringOwner { keys.onSign={ clock.now=request.deadline } }
+        if scenario == .changedKeyAtWrite { io.duringUpdate={ keys.changed=true } }
+        if scenario == .chargeReadbackMismatch { io.corruptReadback=true }
+        if scenario == .finalizationReadbackMismatch { io.duringUpdate={ if io.updates==2 { io.value.append(32) } } }
+        engine.beforeDerive={
+            if !enrollment {
+                let durable=try LocalSnapshotV2.decode(io.value,policy:p);defer { durable.close() }
+                observation.chargedBeforeKDF=io.updates==1 && durable.fields.pin.count==1 && durable.fields.pin.pending==request.reservation?.attemptId
+                    && request.receipt?.known==true && request.receipt?.settled==true
+            }
+            if scenario == .kdfFailure { engine.failure=true }
+            if scenario == .cancelDuringKDF { writer.cancel(request) }
+            if scenario == .expireDuringKDF { clock.now=request.deadline }
+            if scenario == .mutationDuringKDF { io.value.append(32) }
+        }
+        var reply: LocalV2PinReply?
+        observation.denied=denied {
+            let confirmation=enrollment ? Data(scenario == .confirmationMismatch ? "4321".utf8:"1234".utf8):nil
+            let entry=try operations.fixtureEntry(operation,input,confirmation)
+            reply=try operations.process(operation,entry:entry)
+        }
+        if let reply {
+            if scenario == .forgedComparison,let actual=operation.comparison {
+                let falseResult=PinVerificationMathResult(identity:actual.identity,comparison:.match,source:.synthetic)
+                var charged=try actual.charged.copy();defer { charged.resetBytes(in:0..<charged.count) }
+                let forged=LocalV2PinComparison(operation,actual.reservation,falseResult,charged)
+                observation.earlyDenied=denied { try writer.finalize(operation,comparison:forged) { _ in } }
+            }
+            observation.denied=denied {
+                try operations.deliver(operation,reply) { _ in
+                    if scenario == .earlyReplyACK { observation.earlyDenied=denied { try operations.settle(reply,known:true) } }
+                    if scenario == .recipientThrows { throw PinKnownRefusal() }
+                }
+            }
+            if scenario == .recipientThrows { try operations.settle(reply,known:false) }
+            else if scenario == .unknownReplyACK { try operations.settle(reply,known:false) }
+            else {
+                try operations.settle(reply,known:true);observation.replyKnown=reply.known
+                if scenario == .foreignChallenge {
+                    let foreign=LocalV2PinChallenge(verificationOriginal:gate,rootRevision:2,selectionRevision:3,deadlineNs:request.deadline)
+                    observation.earlyDenied=denied { _ = try operations.consumeMatch(reply,original:foreign) }
+                }
+                let beforeRetirement=denied { _ = try operations.consumeMatch(reply,original:challenge) }
+                if scenario == .match { observation.earlyDenied=beforeRetirement }
+                try operations.retire(operation)
+                if scenario == .expiredAfterRetirement { clock.now=request.deadline }
+                if scenario == .changedAfterRetirement { io.value.append(32) }
+                if scenario == .lifecycleAfterRetirement { writer.condition.lock();operation.closedRevoked=true;operation.closedKnown=false;writer.condition.unlock() }
+                if scenario == .expiredAfterRetirement || scenario == .changedAfterRetirement || scenario == .lifecycleAfterRetirement {
+                    observation.denied=denied { _ = try operations.consumeMatch(reply,original:challenge) }
+                } else if reply.kind == .match { observation.matched=(try operations.consumeMatch(reply,original:challenge)).original === challenge }
+                if scenario == .replyReplay { observation.earlyDenied=denied { try operations.settle(reply,known:true) }
+                    && denied { _ = try operations.consumeMatch(reply,original:challenge) } }
+            }
+        } else { operations.closeInternalUnknown(operation) }
+        observation.updates=io.updates;observation.deriveCalls=engine.deriveCalls;observation.signCalls=keys.signCalls;observation.sealed=request.sealed || scope.invalidated
+        if let durable=try? LocalSnapshotV2.decode(io.value,policy:p) { observation.count=durable.fields.pin.count;observation.pending=durable.fields.pin.pending != nil;durable.close() }
+        writer.cancel(request);try? operations.retire(operation)
+        if scenario == .replayOperation {
+            let next=try writer.fixtureRequest();observation.earlyDenied=denied { _ = try operations.fixtureOperation(challenge,next) };writer.cancel(next);try? writer.retire(next)
+        }
+        switch scenario {
+        case .enrollment,.ownedPromptInactive: observation.passed = !observation.denied && observation.updates==1 && observation.deriveCalls==1 && observation.signCalls==1 && observation.replyKnown && observation.count==0
+        case .match,.chargedBeforeKDF: observation.passed=observation.matched && observation.chargedBeforeKDF && observation.updates==2 && observation.count==0 && !observation.pending
+        case .mismatch: observation.passed = !observation.denied && !observation.matched && observation.replyKnown && observation.updates==2 && observation.count==1 && !observation.pending
+        case .malformed: observation.passed=observation.denied && observation.updates==1 && observation.deriveCalls==0 && observation.count==1 && observation.pending
+        case .empty,.confirmationMismatch: observation.passed=observation.denied && observation.updates==0 && observation.deriveCalls==0 && observation.signCalls==0
+        case .badOwnerSignature,.ownerChanged,.ownerCancelled,.backgroundDuringOwner,.expireDuringOwner: observation.passed=observation.denied && observation.updates==0 && observation.signCalls==1
+        case .changedKeyAtWrite: observation.passed=observation.denied && observation.updates==1 && observation.sealed && !observation.replyKnown
+        case .chargeReadbackMismatch: observation.passed=observation.denied && observation.updates==1 && observation.deriveCalls==0 && observation.sealed
+        case .kdfFailure,.cancelDuringKDF,.expireDuringKDF: observation.passed=observation.denied && observation.updates==1 && observation.count==1 && observation.pending && observation.chargedBeforeKDF
+        case .mutationDuringKDF: observation.passed=observation.denied && observation.updates==1 && observation.sealed && !observation.replyKnown
+        case .finalizationReadbackMismatch: observation.passed=observation.denied && observation.updates==2 && observation.sealed && !observation.replyKnown
+        case .earlyReplyACK,.replyReplay,.foreignChallenge,.replayOperation: observation.passed=observation.earlyDenied && observation.matched && observation.replyKnown && observation.updates==2
+        case .forgedComparison: observation.passed=observation.earlyDenied && !observation.matched && observation.count==1 && observation.replyKnown && observation.updates==2
+        case .unknownReplyACK: observation.passed = !observation.replyKnown && !observation.matched && observation.updates==2
+        case .recipientThrows: observation.passed=observation.denied && !observation.replyKnown && !observation.matched && observation.updates==2
+        case .expiredAfterRetirement,.changedAfterRetirement,.lifecycleAfterRetirement: observation.passed=observation.denied && !observation.matched && observation.replyKnown && observation.updates==2
+        case .scopeMismatch: break
+        case .retirementWaitsForKDF,.retirementWaitsForRecipient: return try held(scenario)
+        }
+        return observation
+    }
+    private static func held(_ scenario: PlanetChildLocalPinOperationScenario) throws -> PlanetChildLocalPinOperationObservation {
+        // The blocked callbacks retain the actual original native work, so the
+        // test releases them only after seeing the retirement fence installed.
+        let p=try policy(),bytes=try record(p),io=LocalV2FixtureStorage(bytes),clock=LocalV2FixtureClock(),engine=Engine(),keys=try Keys()
+        let writer=LocalV2Writer(fixtureStorage:io,policy:p,clock:clock),operations=try LocalV2PinOperations(fixtureWriter:writer,keys:keys,engine:engine,verificationEngine:engine)
+        let request=try writer.fixtureRequest(),snapshot=try LocalSnapshotV2.decode(bytes,policy:p);defer { snapshot.close() }
+        writer.condition.lock();do { try writer.processClock.adoptFirst(request,bytes,snapshot,clock.now);writer.condition.unlock() } catch { writer.condition.unlock();throw error }
+        let gate=PinGateRequest(originalHostChallenge:NSObject(),id:String(repeating:"3",count:64),action:"exit-child",targetChecksum:String(repeating:"4",count:64),
+            context:PinGateContext(profileId:"reader",policyVersion:p.version,profileRevision:2,routeRevision:7,mode:"child",visibility:"active"),generation:4,deadlineUptimeMs:request.deadline/1000000)
+        let challenge=LocalV2PinChallenge(verificationOriginal:gate,rootRevision:2,selectionRevision:3,deadlineNs:request.deadline),op=try operations.fixtureOperation(challenge,request)
+        try operations.open(op);let entry=try operations.fixtureEntry(op,Data("1234".utf8))
+        let entered=DispatchSemaphore(value:0),release=DispatchSemaphore(value:0),finished=DispatchSemaphore(value:0),retired=DispatchSemaphore(value:0)
+        var reply: LocalV2PinReply?,retireReturned=false
+        if scenario == .retirementWaitsForKDF { engine.beforeDerive={ entered.signal();release.wait() } }
+        Thread {
+            do { let value=try operations.process(op,entry:entry);reply=value
+                try operations.deliver(op,value) { _ in if scenario == .retirementWaitsForRecipient { entered.signal();release.wait() } }
+            } catch { operations.closeInternalUnknown(op) };finished.signal()
+        }.start();entered.wait()
+        Thread { try? operations.retire(op);writer.condition.lock();retireReturned=true;writer.condition.unlock();retired.signal() }.start()
+        writer.condition.lock();while !request.retiring { writer.condition.wait() }
+        let joined = !retireReturned && (scenario == .retirementWaitsForKDF ? request.workers==1:op.recipients==1);writer.condition.unlock()
+        release.signal();finished.wait();if let reply { try operations.settle(reply,known:false) };retired.wait()
+        var result=PlanetChildLocalPinOperationObservation();result.retirementJoined=joined && request.retired;result.passed=result.retirementJoined
+        result.updates=io.updates;result.deriveCalls=engine.deriveCalls;return result
     }
 }
 #endif

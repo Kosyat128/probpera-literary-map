@@ -2928,8 +2928,8 @@ final class PlanetChildVault {
 
     /** LOCAL v2 structural bytes and fixed encrypted snapshot publication only.
      * No v1 clock is invented, and no codec/plan/storage receipt grants PIN,
-     * OS-owner, recovery, time provenance or Parent Gate permission. The real
-     * v2 owner/input/KDF adapter is still missing; its factory remains null. */
+     * OS-owner, recovery, time provenance or Parent Gate permission. The private
+     * v2 owner/input/KDF adapter is connected below; its factory remains null. */
     private static final class LocalSnapshotV2Policy {
         final String version, checksum; final long maximumIterations; private final long[] delays;
         private LocalSnapshotV2Policy(String version,String checksum,long maximum,long[] delays) throws Exception {
@@ -3072,8 +3072,8 @@ final class PlanetChildVault {
             return attempt(before,increment(before.count),originalAttemptId,logical);
         }
         /** A validator is mathematical data, not a finalize permission. The
-         * writer deliberately has no finalize entry until a genuine v2 native
-         * KDF/comparison is bound to its ORIGINAL charged reservation. */
+         * writer finalize entry separately requires its genuine v2 native
+         * KDF/comparison bound to the ORIGINAL charged reservation. */
         private static void validateFinalization(LocalSnapshotV2 charged,LocalSnapshotV2 after) throws Exception {
             require(charged!=null&&after!=null&&charged.pendingAttemptId!=null&&after.pendingAttemptId==null
                 &&after.lastObservedMs>=charged.lastObservedMs&&(after.count==0||after.count==charged.count));
@@ -3108,7 +3108,7 @@ final class PlanetChildVault {
      * production writer selects its one native fixed namespace and real clock;
      * isolated synthetic instances below are usable only as mechanical tests. */
     private interface LocalV2ElapsedClock { long now() throws Exception; }
-    private enum LocalV2ClockAction { reanchor, enroll, charge }
+    private enum LocalV2ClockAction { reanchor, enroll, charge, finalize }
     private static final class LocalV2ClockLease {
         final LocalV2ProcessClock owner;final Object original;final long began,deadline;
         private boolean closed;private LocalV2ClockSample sample;
@@ -3142,6 +3142,12 @@ final class PlanetChildVault {
     private static final class LocalV2ProcessClock {
         final String storageIdentity;private final LocalSnapshotV2Policy policy;private final LocalV2ElapsedClock clock;
         private LocalV2ClockLease active;private LocalV2ClockBinding known,pending;
+        private final java.util.HashSet<String> pinUsedIds=new java.util.HashSet<>();
+        private final java.util.IdentityHashMap<Object,Boolean> pinUsedChallenges=new java.util.IdentityHashMap<>();
+        private synchronized void claimPin(LocalV2ClockLease lease,String id,Object challenge) throws Exception {
+            current(lease);if(!ProtectedEnvelope.hash(id)||challenge==null||pinUsedIds.size()>=2048||pinUsedIds.contains(id)||pinUsedChallenges.containsKey(challenge))throw new PinKnownRefusal();
+            pinUsedIds.add(id);pinUsedChallenges.put(challenge,Boolean.TRUE);
+        }
         private Object pendingReceipt;private long originContinuous,originLogical,lastContinuous=-1,pendingOriginContinuous,pendingOriginLogical;
         private boolean invalid,originKnown;
         private LocalV2ProcessClock(String identity,LocalSnapshotV2Policy policy,LocalV2ElapsedClock clock) throws Exception {
@@ -3162,6 +3168,11 @@ final class PlanetChildVault {
             if(invalid)throw new Unavailable();if(active!=null||original==null||timeout<=0||timeout>60000)throw new PinKnownRefusal();
             long at=nativeNow();if(originKnown)logicalAt(at);if(at>Long.MAX_VALUE-timeout){invalidateLocked();throw new Unavailable();}require(active==null&&!invalid);
             active=new LocalV2ClockLease(this,original,at,at+timeout);return active;
+        }
+        private synchronized LocalV2ClockLease claimUntil(Object original,long deadline) throws Exception {
+            if(invalid)throw new Unavailable();if(active!=null||original==null)throw new PinKnownRefusal();
+            long at=nativeNow();if(originKnown)logicalAt(at);if(deadline<=at||deadline-at>60000)throw new PinKnownRefusal();
+            active=new LocalV2ClockLease(this,original,at,deadline);return active;
         }
         private synchronized long current(LocalV2ClockLease lease) throws Exception {
             own(lease);long at=nativeNow();own(lease);if(originKnown)logicalAt(at);if(at<lease.began||at>=lease.deadline)throw new PinKnownRefusal();return at;
@@ -3205,8 +3216,10 @@ final class PlanetChildVault {
                 }else{require(known.matches(before)&&originKnown&&sample.logicalMs<=logicalAt(at));
                     if(action==LocalV2ClockAction.enroll){require(known.seed);try(LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
                         LocalSnapshotV2.validateEnrollment(before,value,sample.logicalMs);}expected=after.clone();}
-                    else{require(action==LocalV2ClockAction.charge&&!known.seed);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy);LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
-                        expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);}}
+                    else{require(!known.seed);try(LocalSnapshotV2 old=LocalSnapshotV2.decode(before,policy);LocalSnapshotV2 value=LocalSnapshotV2.decode(after,policy)){
+                        if(action==LocalV2ClockAction.charge)expected=LocalSnapshotV2.charge(old,value.pendingAttemptId,sample.logicalMs);
+                        else{require(action==LocalV2ClockAction.finalize&&value.lastObservedMs==sample.logicalMs);
+                            LocalSnapshotV2.validateFinalization(old,value);expected=LocalSnapshotV2.attempt(old,value.count,null,sample.logicalMs);}}}
                 }
                 require(MessageDigest.isEqual(expected,after));next=new LocalV2ClockBinding(after,policy,false);
                 pendingOriginContinuous=originKnown?originContinuous:at;pendingOriginLogical=originKnown?originLogical:sample.logicalMs;
@@ -3220,6 +3233,10 @@ final class PlanetChildVault {
             if(!pending.matches(actual)||at<pendingOriginContinuous||at-pendingOriginContinuous>MAX_SAFE-pendingOriginLogical){invalidateLocked();throw new Unavailable();}
             if(known!=null)known.wipe();known=pending;pending=null;pendingReceipt=null;
             originContinuous=pendingOriginContinuous;originLogical=pendingOriginLogical;originKnown=true;
+        }
+        private synchronized void closedReadback(LocalV2ClockLease original,String checksum) throws Exception {
+            require(!invalid&&original!=null&&original.owner==this&&original.closed&&active==null&&known!=null&&pending==null&&known.checksum.equals(checksum));
+            long at=nativeNow();if(originKnown)logicalAt(at);if(at<original.began||at>=original.deadline)throw new PinKnownRefusal();
         }
         private synchronized boolean pending(LocalV2ClockLease lease){return active==lease&&!lease.closed&&pendingReceipt!=null;}
         private synchronized void release(LocalV2ClockLease lease) throws Exception {
@@ -3248,22 +3265,26 @@ final class PlanetChildVault {
         final long began,deadline;final Object processIdentity;final LocalSnapshotV2Policy policy;
         final LocalV2ProcessClock processClock;final LocalV2ClockLease processLease;
         boolean anchored,cancelled,sealed,retiring,retired,detached,charged,mutationStarted,enrollmentStarted;
-        int workers,mainCalls,events,settleCalls;boolean unacknowledgedMutation;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
+        int workers,mainCalls,events,settleCalls,pinWorkers,pinCancelCalls;boolean unacknowledgedMutation;LocalV2StorageReceipt receipt;LocalV2ChargedReservation reservation;
+        private LocalV2PinOperation pinOperation;
         private byte[] currentBytes;private String currentChecksum;
         private LocalV2EnrollmentSample enrollmentSample;
         android.app.Application.ActivityLifecycleCallbacks lifecycle;android.content.BroadcastReceiver screen;Runnable expiry;
         LocalV2Request(LocalV2Writer owner,android.app.Activity activity,android.os.IBinder token,LocalSnapshotV2Policy policy,long timeout) throws Exception {
+            this(owner,activity,token,policy,timeout,0);
+        }
+        private LocalV2Request(LocalV2Writer owner,android.app.Activity activity,android.os.IBinder token,LocalSnapshotV2Policy policy,long timeout,long deadline) throws Exception {
             this.owner=owner;this.activity=activity;this.token=token;processIdentity=LocalV2Writer.PROCESS_IDENTITY;
             processClock=owner.processClock(policy);this.policy=new LocalSnapshotV2Policy(processClock.policy.version,processClock.policy.checksum,
                 processClock.policy.maximumIterations,processClock.policy.delays);
             if(!processClock.samePolicy(this.policy))throw new PinKnownRefusal();
-            processLease=processClock.claim(this,timeout);began=processLease.began;deadline=processLease.deadline;
+            processLease=deadline==0?processClock.claim(this,timeout):processClock.claimUntil(this,deadline);began=processLease.began;this.deadline=processLease.deadline;
         }
     }
     /** Actual existing-AES/AtomicFile/flock leaf, inaccessible from production:
-     * V2 owner/input/KDF/process host mapping is not yet implemented. It never
+     * V2 native owner/input/KDF is connected privately below. It never
      * consumes FirstInstallReceipt or a v1 PIN result as mutation permission.
-     * The current private mechanical boundary is not an authorization SPI. */
+     * Genuine Gate/admitted-data/App mapping remains unavailable. */
     private static final class LocalV2Writer {
         private static final Object PROCESS_IDENTITY=new Object();
         private static final Object CLOCK_SELECTION=new Object();private static LocalV2ProcessClock nativeProcessClock;
@@ -3290,11 +3311,17 @@ final class PlanetChildVault {
             if(!request.processClock.samePolicy(request.policy))throw new PinKnownRefusal();
             if(sealed||request.sealed||request.cancelled||request.retiring)throw new PinKnownRefusal();}
         private LocalV2Request request(android.app.Activity activity,LocalSnapshotV2Policy policy,long timeout) throws Exception {
+            return requestAt(activity,policy,timeout,0);
+        }
+        private LocalV2Request gateRequest(android.app.Activity activity,LocalSnapshotV2Policy policy,PinGateRequest original) throws Exception {
+            require(original!=null);return requestAt(activity,policy,0,original.deadlineUptimeMs);
+        }
+        private LocalV2Request requestAt(android.app.Activity activity,LocalSnapshotV2Policy policy,long timeout,long deadline) throws Exception {
             synchronized(this){require(!reserving&&active==null&&!sealed);reserving=true;}
             try{require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&activity!=null&&activity.getClass()==MainActivity.class
                 &&activity.getApplicationContext()==vault.context&&!activity.isFinishing()&&!activity.isDestroyed()&&activity.hasWindowFocus()&&policy!=null);
                 android.os.IBinder token=activity.getWindow().getDecorView().getWindowToken();require(token!=null);
-                LocalV2Request value=new LocalV2Request(this,activity,token,policy,timeout);synchronized(this){require(active==null&&!sealed);active=value;}
+                LocalV2Request value=new LocalV2Request(this,activity,token,policy,timeout,deadline);synchronized(this){require(active==null&&!sealed);active=value;}
                 try{attach(value);}catch(Throwable failure){
                     // The handle has not escaped. Retain one owned retirement
                     // task while main unwinds; never release its lease merely
@@ -3307,16 +3334,18 @@ final class PlanetChildVault {
             }finally{synchronized(this){reserving=false;}}
         }
         private void event(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;request.events++;request.cancelled=true;
-                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);}
+                if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);if(request.pinOperation!=null)request.pinOperation.revoke();}
             synchronized(this){request.events--;wipeIdle(request);notifyAll();}}
-        private void wipeIdle(LocalV2Request request){if((request.cancelled||request.sealed)&&request.workers==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0){
+        private void wipeIdle(LocalV2Request request){if((request.cancelled||request.sealed)&&request.workers==0&&request.pinWorkers==0&&request.pinCancelCalls==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0){
             LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();
             if(request.enrollmentSample!=null)request.enrollmentSample.wipe();}}
+        private void paused(LocalV2Request request){synchronized(this){if(active!=request||request.detached)return;
+            if(request.pinOperation!=null&&request.pinOperation.ownedOwnerPause())return;}event(request);}
         private void attach(LocalV2Request request) throws Exception {
             android.app.Application application=(android.app.Application)vault.context;
             request.lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
                 public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}public void onActivityStarted(android.app.Activity a){}
-                public void onActivityResumed(android.app.Activity a){}public void onActivityPaused(android.app.Activity a){if(a==request.activity)event(request);}
+                public void onActivityResumed(android.app.Activity a){}public void onActivityPaused(android.app.Activity a){if(a==request.activity)paused(request);}
                 public void onActivityStopped(android.app.Activity a){if(a==request.activity)event(request);}public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}
                 public void onActivityDestroyed(android.app.Activity a){if(a==request.activity)event(request);}};
             application.registerActivityLifecycleCallbacks(request.lifecycle);
@@ -3337,11 +3366,16 @@ final class PlanetChildVault {
             // completion while the ORIGINAL accepted main call is still live.
             require(accepted);synchronized(this){while(request.mainCalls>0)wait(10);if(!cleanup)live(request);}
         }
-        private void host(LocalV2Request request) throws Exception {live(request);final boolean[] current={false};
-            onMain(request,()->{current[0]=!request.activity.isFinishing()&&!request.activity.isDestroyed()&&request.activity.hasWindowFocus()
-                &&request.activity.getWindow().getDecorView().getWindowToken()==request.token;},false);
-            if(!current[0]){event(request);throw new PinKnownRefusal();}vault.unlocked();live(request);
-        }
+        private void host(LocalV2Request request) throws Exception {for(;;){live(request);final boolean[] current={false},lost={false};
+            onMain(request,()->{lost[0]=request.activity.isFinishing()||request.activity.isDestroyed()||request.activity.getWindow().getDecorView().getWindowToken()!=request.token;
+                current[0]=!lost[0]&&request.activity.hasWindowFocus();},false);
+            if(current[0]){vault.unlocked();live(request);return;}
+            LocalV2PinOperation operation=request.pinOperation;
+            if(lost[0]||operation==null||!(operation.ownerReturned||operation.uiJoined)){event(request);throw new PinKnownRefusal();}
+            // Only an actual owned system/keypad return may wait for focus;
+            // lifecycle cancellation and the original deadline remain latched.
+            synchronized(this){live(request);wait(10);}
+        }}
         private synchronized void begin(LocalV2Request request) throws Exception {live(request);require(request.workers==0&&request.settleCalls==0&&request.receipt==null);request.workers++;}
         private synchronized void finish(LocalV2Request request){request.workers--;wipeIdle(request);notifyAll();}
         private synchronized long logical(LocalV2Request request) throws Exception {live(request);require(request.anchored&&request.currentBytes!=null);
@@ -3400,7 +3434,7 @@ final class PlanetChildVault {
             }catch(Throwable failure){throw failed(request,failure);}finally{if(!adopted&&sample!=null)sample.wipe();finish(request);}
         }
         private LocalV2StorageReceipt enroll(LocalV2Request request,LocalV2EnrollmentSample original,byte[] next) throws Exception {
-            synchronized(this){live(request);require(original!=null&&original.owner==this&&original.request==request&&request.enrollmentSample==original
+            synchronized(this){live(request);enrollmentProducer(request,original,next);require(original!=null&&original.owner==this&&original.request==request&&request.enrollmentSample==original
                 &&!original.closed&&!original.consumed&&!request.anchored);begin(request);original.consumed=true;}
             byte[] expected=null,replacement=null;
             try{require(next!=null&&next.length>0&&next.length<=MAX_BYTES);replacement=next.clone();host(request);
@@ -3414,6 +3448,7 @@ final class PlanetChildVault {
             }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(expected);LocalSnapshotV2.wipe(replacement);original.wipe();finish(request);}
         }
         private LocalV2StorageReceipt charge(LocalV2Request request) throws Exception {
+            synchronized(this){live(request);chargeProducer(request);}
             begin(request);byte[][] owned={null,null};byte[] random=null;
             try{host(request);synchronized(this){live(request);require(request.anchored&&!request.charged&&request.reservation==null);}
                 random=new byte[32];new java.security.SecureRandom().nextBytes(random);StringBuilder id=new StringBuilder(64);
@@ -3430,9 +3465,62 @@ final class PlanetChildVault {
                 host(request);return result;
             }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(random);LocalSnapshotV2.wipe(owned[0]);LocalSnapshotV2.wipe(owned[1]);finish(request);}
         }
-        /** Intentionally no finalize mutation method: old v1 mathematical
-         * receipts bind P1. The genuine P2 original-input/KDF/charged-attempt
-         * mapping must be implemented before any caller can reset this debt. */
+        private LocalV2PinOperation enrollmentOperation(LocalV2Request request,Object originalChallenge,String id,long generation,String locale,long iterations) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){live(request);require(request.pinOperation==null&&!request.anchored);}
+            LocalV2EnrollmentSample sample=sampleEnrollment(request);byte[] seed=sample.copySeed();
+            try{LocalV2PinOperation operation=new LocalV2PinOperation(this,request,LocalV2PinKind.enroll,null,originalChallenge,id,"enroll-local-pin",digest(seed),generation,locale,iterations,seed,sample);
+                synchronized(this){live(request);require(request.pinOperation==null);request.pinOperation=operation;}return operation;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(seed);}
+        }
+        private LocalV2PinOperation verificationOperation(LocalV2Request request,PinGateRequest original,String locale) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){live(request);require(request.pinOperation==null&&original!=null&&original.deadlineUptimeMs==request.deadline);}
+            LocalV2StorageReceipt anchor=reanchor(request);if(anchor!=null)acknowledge(anchor);byte[] bytes;
+            synchronized(this){live(request);require(request.anchored&&request.receipt==null&&request.currentBytes!=null);bytes=request.currentBytes.clone();}
+            try(LocalSnapshotV2 record=LocalSnapshotV2.decode(bytes,request.policy)){
+                LocalV2PinOperation operation=new LocalV2PinOperation(this,request,LocalV2PinKind.verify,original,original.originalHostChallenge,original.id,original.action,original.targetChecksum,original.generation,locale,
+                    LocalV2PinOperation.verifier(record).iterations,bytes,null);
+                synchronized(this){live(request);require(request.pinOperation==null);request.pinOperation=operation;}return operation;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(bytes);}
+        }
+        private void enrollmentProducer(LocalV2Request request,LocalV2EnrollmentSample sample,byte[] next) throws Exception {
+            LocalV2PinOperation operation=request.pinOperation;require(operation!=null&&operation.writer==this&&operation.request==request
+                &&operation.kind==LocalV2PinKind.enroll&&operation.started&&operation.worker==Thread.currentThread()
+                &&operation.phase==LocalV2PinPhase.finalizing&&operation.enrollment==sample&&operation.uiJoined&&operation.ownerConsumed
+                &&!operation.ownerPermitSpent&&operation.platformEnrolled&&operation.enrollmentCandidate==next&&next!=null
+                &&operation.ownerNextChecksum.equals(digest(next))&&MessageDigest.isEqual(operation.original,sample.seed));
+            operation.verifyOwner();operation.ownerPermitSpent=true;
+        }
+        private void chargeProducer(LocalV2Request request) throws Exception {
+            LocalV2PinOperation operation=request.pinOperation;require(operation!=null&&operation.writer==this&&operation.request==request
+                &&operation.kind==LocalV2PinKind.verify&&operation.started&&operation.worker==Thread.currentThread()
+                &&operation.phase==LocalV2PinPhase.charging&&operation.uiJoined&&operation.entered!=null
+                &&operation.entered.length>0&&operation.entered.length<=128&&!operation.cancelled);
+            operation.live();require(MessageDigest.isEqual(operation.original,request.currentBytes));
+        }
+        private void exactCharged(LocalV2PinOperation operation,LocalV2ChargedReservation reservation) throws Exception {
+            require(operation!=null&&operation.writer==this&&reservation!=null&&reservation.owner==this&&reservation.request==operation.request);
+            LocalV2Request request=operation.request;synchronized(this){operation.live();require(request.pinOperation==operation&&request.reservation==reservation&&!reservation.closed
+                &&request.receipt==null&&!request.unacknowledgedMutation&&request.currentBytes!=null&&request.currentChecksum.equals(reservation.checksum)
+                &&digest(reservation.charged).equals(reservation.checksum)&&MessageDigest.isEqual(request.currentBytes,reservation.charged));}
+            vault.locked(directory->{operation.live();completeRecord(directory);byte[] actual=vault.readExact(directory);
+                try{require(digest(actual).equals(reservation.checksum)&&MessageDigest.isEqual(actual,reservation.charged));operation.live();return null;}
+                finally{LocalSnapshotV2.wipe(actual);}});
+        }
+        private LocalV2StorageReceipt finalizeAttempt(LocalV2PinOperation operation,LocalV2PinComparison original) throws Exception {
+            require(operation!=null&&operation.writer==this);LocalV2Request request=operation.request;
+            synchronized(this){operation.live();require(request.pinOperation==operation&&operation.kind==LocalV2PinKind.verify&&operation.worker==Thread.currentThread()
+                &&operation.phase==LocalV2PinPhase.finalizing&&operation.comparison==original&&original!=null&&original.operation==operation
+                &&original.reservation==request.reservation&&operation.platformCompared&&operation.uiJoined&&request.receipt==null&&!request.unacknowledgedMutation);}
+            exactCharged(operation,original.reservation);begin(request);byte[] before=null,next=null;
+            try{host(request);synchronized(this){live(request);before=request.reservation.charged.clone();}
+                final byte[] expected=before;final byte[][] output={null};LocalV2StorageReceipt receipt=vault.locked(directory->{operation.live();completeRecord(directory);
+                    byte[] actual=vault.readExact(directory);try{require(MessageDigest.isEqual(actual,expected));}finally{LocalSnapshotV2.wipe(actual);}
+                    LocalV2ClockSample sample=request.processClock.sample(request.processLease,expected);output[0]=original.finalizeBytes(request.policy,sample.logicalMs);
+                    try{return publish(request,expected,output[0],directory,sample,LocalV2ClockAction.finalize);}
+                    finally{LocalSnapshotV2.wipe(output[0]);}});host(request);return receipt;
+            }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(before);LocalSnapshotV2.wipe(next);finish(request);}
+        }
+
         private void acknowledge(LocalV2StorageReceipt receipt) throws Exception {
             require(receipt!=null&&receipt.owner==this);LocalV2Request request=receipt.request;
             synchronized(this){live(request);require(request.receipt==receipt&&!receipt.closed&&request.workers==0&&request.settleCalls==0);request.settleCalls++;}
@@ -3443,26 +3531,389 @@ final class PlanetChildVault {
             }catch(Throwable failure){throw failed(request,failure);}finally{LocalSnapshotV2.wipe(current);synchronized(this){request.settleCalls--;wipeIdle(request);notifyAll();}}
         }
         private synchronized void cancel(LocalV2Request request) throws Exception {own(request);request.cancelled=true;
-            if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);wipeIdle(request);notifyAll();}
+            if(request.unacknowledgedMutation||request.receipt!=null)request.processClock.invalidate(request.processLease);
+            if(request.pinOperation!=null)request.pinOperation.revoke();wipeIdle(request);notifyAll();}
         private void retire(LocalV2Request request) throws Exception {
-            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());synchronized(this){own(request);require(!request.retiring);request.retiring=true;request.cancelled=true;
-                while(request.workers>0||request.settleCalls>0||request.mainCalls>0||request.events>0)wait(10);}
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());LocalV2PinOperation operation;
+            synchronized(this){own(request);require(!request.retiring);operation=request.pinOperation;
+                require(operation==null||operation.worker!=Thread.currentThread());request.retiring=true;request.cancelled=true;
+                if(operation!=null&&!operation.finished)operation.revoke();
+                while(request.workers>0||request.pinWorkers>0||request.pinCancelCalls>0||request.settleCalls>0||request.mainCalls>0||request.events>0)wait(10);}
+            if(operation!=null&&operation.worker!=null){operation.worker.join();operation.joinCancel();}
             final boolean[] cleaned={false};try{onMain(request,()->{
                     // Attempt every observer removal even if an earlier one
                     // throws; a timer must not retain the retired Activity.
                     try{if(request.lifecycle!=null)((android.app.Application)vault.context).unregisterActivityLifecycleCallbacks(request.lifecycle);}
                     finally{try{if(request.screen!=null)vault.context.unregisterReceiver(request.screen);}
                         finally{if(request.expiry!=null)main.removeCallbacks(request.expiry);}}cleaned[0]=true;},true);
-                synchronized(this){own(request);require(request.retiring&&request.workers==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0);
+                synchronized(this){own(request);require(request.retiring&&request.workers==0&&request.pinWorkers==0&&request.pinCancelCalls==0&&request.settleCalls==0&&request.mainCalls==0&&request.events==0);
                     if(request.receipt!=null||request.unacknowledgedMutation){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;}
                     if(!cleaned[0]||sealed||request.sealed){request.processClock.invalidate(request.processLease);request.sealed=true;sealed=true;}
                     request.detached=cleaned[0];LocalSnapshotV2.wipe(request.currentBytes);if(request.receipt!=null){request.receipt.wipe();request.receipt=null;}if(request.reservation!=null)request.reservation.wipe();
                     if(request.enrollmentSample!=null)request.enrollmentSample.wipe();
                     // Only after every real callback and cleanup returned can
                     // the static slot drop the original Activity/request graph.
-                    request.processClock.release(request.processLease);request.retired=true;active=null;if(sealed||request.sealed)throw new Unavailable();}
+                    request.processClock.release(request.processLease);request.retired=true;active=null;if(operation!=null)operation.wipeOriginal();if(sealed||request.sealed)throw new Unavailable();}
             }catch(Throwable failure){unknown(request);synchronized(this){if(request.workers==0&&request.settleCalls==0){if(request.receipt!=null)request.receipt.wipe();if(request.reservation!=null)request.reservation.wipe();}}throw failed(request,failure);}
         }
     }
+    /** One original native operation. Device-owner enrollment, input, slow
+     * derivation and verification never import a v1/P1 authority receipt. The
+     * original lease remains held through actual UI/worker/recipient joins. */
+    private enum LocalV2PinKind { enroll, verify }
+    private enum LocalV2PinPhase { captured, owner, input, deriving, charging, comparing, finalizing, delivering, finished, closed }
+    private interface LocalV2PinRecipient { void completed(LocalV2PinReply originalOrNull) throws Exception; }
+    /** Strict V2 extraction and existing real platform math only. A result of
+     * this leaf has no write permission; the writer requires its original
+     * durably charged/ACKed reservation and operation-owned comparison. */
+    private static final class LocalV2PinVerifier {
+        final long iterations;final String saltHex,hashHex;
+        private LocalV2PinVerifier(long iterations,String salt,String hash){this.iterations=iterations;saltHex=salt;hashHex=hash;}
+        private PinVerificationOutcome compare(byte[] owned,PinPrimitiveCheck chargedFence) throws Exception {
+            require(owned!=null);byte[] pin=null,salt=null,expected=null,derived=new byte[32];
+            try{require(owned.length>0&&owned.length<=128&&chargedFence!=null);pin=owned.clone();chargedFence.check();
+                boolean digits=true;for(byte digit:pin)digits&=digit>=48&&digit<=57;
+                if(!digits){chargedFence.check();return PinVerificationOutcome.mismatch;}
+                salt=PinNativePrimitives.hexBytes(saltHex);expected=PinNativePrimitives.hexBytes(hashHex);
+                new PinVerificationPlatformKdf().derive(pin,salt,iterations,derived,chargedFence);chargedFence.check();
+                return MessageDigest.isEqual(expected,derived)?PinVerificationOutcome.match:PinVerificationOutcome.mismatch;
+            }finally{LocalSnapshotV2.wipe(owned);LocalSnapshotV2.wipe(pin);LocalSnapshotV2.wipe(salt);LocalSnapshotV2.wipe(expected);LocalSnapshotV2.wipe(derived);}
+        }
+    }
+    private static final class LocalV2PinComparison implements AutoCloseable {
+        final LocalV2PinOperation operation;final LocalV2ChargedReservation reservation;final String checksum;
+        private final PinVerificationOutcome outcome;private final byte[] charged;private boolean consumed,closed;
+        private LocalV2PinComparison(LocalV2PinOperation operation,LocalV2ChargedReservation reservation,
+            PinVerificationOutcome outcome,byte[] bytes) throws Exception {
+            require(operation!=null&&reservation!=null&&reservation.request==operation.request&&outcome!=null
+                &&operation.platformCompared&&operation.phase==LocalV2PinPhase.comparing
+                &&operation.request.reservation==reservation&&!reservation.closed&&reservation.checksum.equals(digest(bytes))
+                &&MessageDigest.isEqual(reservation.charged,bytes));
+            this.operation=operation;this.reservation=reservation;this.outcome=outcome;charged=bytes.clone();checksum=digest(bytes);
+        }
+        private byte[] finalizeBytes(LocalSnapshotV2Policy policy,long logical) throws Exception {
+            synchronized(operation.writer){require(!closed&&!consumed&&operation.comparison==this
+                &&operation.phase==LocalV2PinPhase.finalizing&&operation.platformCompared&&operation.worker==Thread.currentThread()
+                &&operation.request.reservation==reservation&&!reservation.closed&&checksum.equals(digest(charged))
+                &&MessageDigest.isEqual(charged,reservation.charged));consumed=true;}
+            try(LocalSnapshotV2 original=LocalSnapshotV2.decode(charged,policy)){
+                require(original.pendingAttemptId.equals(reservation.attemptId));
+                return LocalSnapshotV2.attempt(original,outcome==PinVerificationOutcome.match?0:original.count,null,logical);
+            }
+        }
+        public void close(){synchronized(operation.writer){closed=true;LocalSnapshotV2.wipe(charged);}}
+    }
+    /** Opaque until original native delivery returns, worker/cancel joins and
+     * known settlement retire the real lifecycle/clock lease. It is not a
+     * Parent Gate capability; the genuine Gate host is still unavailable. */
+    private static final class LocalV2PinReply implements AutoCloseable {
+        final LocalV2PinOperation operation;final PinGateRequest gate;final String checksum;final LocalV2PinKind kind;
+        private final PinVerificationOutcome outcome;private boolean disposed,settled,consumed;
+        private LocalV2PinReply(LocalV2PinOperation operation,PinVerificationOutcome outcome,String checksum) throws Exception {
+            require(operation!=null&&ProtectedEnvelope.hash(checksum)&&operation.finalAcknowledged
+                &&(operation.kind==LocalV2PinKind.enroll?operation.ownerConsumed&&operation.platformEnrolled:operation.platformCompared));
+            synchronized(operation.writer){operation.live();require(operation.started&&operation.worker==Thread.currentThread()&&operation.phase==LocalV2PinPhase.finalizing
+                &&operation.request.receipt==null&&!operation.request.unacknowledgedMutation&&operation.request.currentChecksum.equals(checksum)
+                &&operation.request.processClock.inspect(operation.request.processLease,operation.request.currentBytes));
+                if(operation.kind==LocalV2PinKind.enroll){require(operation.ownerPermitSpent);operation.verifyOwner();}
+                else require(operation.comparison!=null&&operation.comparison.consumed&&!operation.comparison.closed&&operation.comparison.outcome==outcome);}
+            this.operation=operation;gate=operation.gate;kind=operation.kind;this.outcome=outcome;this.checksum=checksum;
+        }
+        private PinVerificationOutcome consume(PinGateRequest original) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            synchronized(operation.writer){require(!disposed&&!consumed&&settled&&operation.reply==this&&operation.finished
+                &&operation.knownSettlement&&!operation.closedRevoked&&operation.request.retired&&operation.request.detached&&!operation.request.sealed
+                &&operation.worker!=null&&!operation.worker.isAlive()&&operation.cancelWorker==null
+                &&operation.kind==LocalV2PinKind.verify&&gate==original&&original!=null&&operation.originalChallenge==original.originalHostChallenge
+                &&operation.finalAcknowledged&&operation.platformCompared&&outcome==PinVerificationOutcome.match);
+                operation.request.processClock.closedReadback(operation.request.processLease,checksum);
+                consumed=true;}
+            // Spend before any fresh read; failure/uncertainty cannot retry the
+            // original transfer or recover a fresh permission from this fact.
+            try{operation.closedHost();operation.writer.vault.locked(directory->{operation.writer.completeRecord(directory);byte[] actual=operation.writer.vault.readExact(directory);
+                try{require(digest(actual).equals(checksum));operation.request.processClock.closedReadback(operation.request.processLease,checksum);return null;}
+                finally{LocalSnapshotV2.wipe(actual);}});
+            operation.closedHost();synchronized(operation.writer){require(!disposed&&operation.knownSettlement&&!operation.closedRevoked&&!operation.request.sealed);
+                operation.request.processClock.closedReadback(operation.request.processLease,checksum);return outcome;}}
+            finally{operation.closedObservers(false);}
+        }
+        public void close(){synchronized(operation.writer){disposed=true;}}
+    }
+    private static final class LocalV2PinOperation {
+        final LocalV2Writer writer;final LocalV2Request request;final LocalV2PinKind kind;final PinGateRequest gate;
+        final Object originalChallenge;final String id,action,targetChecksum,locale,originalChecksum;
+        final long generation,iterations,originalRevision,originalPinRevision,originalJournalRevision;
+        private final byte[] original,nonce,payload;private LocalV2EnrollmentSample enrollment;
+        private volatile Thread worker,cancelWorker;private LocalV2PinPhase phase=LocalV2PinPhase.captured;
+        private boolean started,cancelled,finished,delivered,deliveryEntered,knownSettlement,ownerConsumed,ownerPermitSpent,platformEnrolled,platformCompared,finalAcknowledged;
+        private volatile boolean closedRevoked;private android.app.Application.ActivityLifecycleCallbacks closedLifecycle;
+        private android.content.BroadcastReceiver closedScreen;private Runnable closedExpiry;
+        private void closedObservers(boolean install) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            java.util.concurrent.FutureTask<Void> task=new java.util.concurrent.FutureTask<>(()->{
+                android.app.Application app=(android.app.Application)writer.vault.context;
+                if(install){
+                    closedLifecycle=new android.app.Application.ActivityLifecycleCallbacks(){
+                        public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}public void onActivityStarted(android.app.Activity a){}
+                        public void onActivityResumed(android.app.Activity a){}public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}
+                        public void onActivityPaused(android.app.Activity a){if(a==request.activity)closedRevoked=true;}
+                        public void onActivityStopped(android.app.Activity a){if(a==request.activity)closedRevoked=true;}
+                        public void onActivityDestroyed(android.app.Activity a){if(a==request.activity)closedRevoked=true;}};
+                    app.registerActivityLifecycleCallbacks(closedLifecycle);
+                    closedScreen=new android.content.BroadcastReceiver(){public void onReceive(android.content.Context c,android.content.Intent i){closedRevoked=true;}};
+                    android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
+                    if(android.os.Build.VERSION.SDK_INT>=33)writer.vault.context.registerReceiver(closedScreen,filter,android.content.Context.RECEIVER_NOT_EXPORTED);
+                    else writer.vault.context.registerReceiver(closedScreen,filter);
+                    closedExpiry=()->{closedRevoked=true;try{removeClosedOnMain();}catch(Throwable failure){closedRevoked=true;}};
+                    require(writer.main.postDelayed(closedExpiry,Math.max(1,request.deadline-SystemClock.elapsedRealtime())));
+                }else removeClosedOnMain();return null;
+            });
+            require(writer.main.post(task));boolean interrupted=false;
+            for(;;)try{task.get();break;}catch(InterruptedException ignored){interrupted=true;}
+            if(interrupted){Thread.currentThread().interrupt();throw new PinKnownRefusal();}
+        }
+        private void removeClosedOnMain(){
+            try{if(closedLifecycle!=null)((android.app.Application)writer.vault.context).unregisterActivityLifecycleCallbacks(closedLifecycle);}
+            finally{try{if(closedScreen!=null)writer.vault.context.unregisterReceiver(closedScreen);}
+                finally{if(closedExpiry!=null)writer.main.removeCallbacks(closedExpiry);closedLifecycle=null;closedScreen=null;closedExpiry=null;}}
+        }
+        private void closedHost() throws Exception {
+            java.util.concurrent.FutureTask<Boolean> task=new java.util.concurrent.FutureTask<>(()->!closedRevoked&&!request.activity.isFinishing()
+                &&!request.activity.isDestroyed()&&request.activity.hasWindowFocus()&&request.activity.getWindow().getDecorView().getWindowToken()==request.token);
+            require(writer.main.post(task));boolean interrupted=false,current=false;
+            for(;;)try{current=task.get();break;}catch(InterruptedException ignored){interrupted=true;}
+            if(interrupted){Thread.currentThread().interrupt();throw new PinKnownRefusal();}
+            require(current);writer.vault.unlocked();require(!closedRevoked);
+        }
+        private int recipients,cancelCalls;private LocalV2PinComparison comparison;private LocalV2PinReply reply;
+        private byte[] enrollmentCandidate;private String ownerNextChecksum;
+        private java.security.Signature signing;private java.security.PublicKey publicKey;private byte[] keyEncoding,signature;
+        private android.hardware.biometrics.BiometricPrompt.CryptoObject crypto;private android.os.CancellationSignal signal;
+        private boolean promptOutstanding,ownerReturned,cancelIssued;private Exception promptError;
+        private android.app.Dialog dialog;private android.view.ViewTreeObserver.OnWindowFocusChangeListener focusObserver;
+        private android.widget.TextView subtitle,mask,count;private android.widget.Button next;private android.widget.LinearLayout keypad;
+        private final byte[] edit=new byte[128];private byte[] first,entered;private int length,stage;private boolean ready,uiJoined,shown,accepting,everFocused;
+        private LocalV2PinOperation(LocalV2Writer writer,LocalV2Request request,LocalV2PinKind kind,PinGateRequest gate,
+            Object challenge,String id,String action,String target,long generation,String locale,long iterations,
+            byte[] bytes,LocalV2EnrollmentSample enrollment) throws Exception {
+            require(writer!=null&&request!=null&&kind!=null&&challenge!=null&&ProtectedEnvelope.hash(id)&&ProtectedEnvelope.hash(target)
+                &&generation>=0&&generation<=MAX_SAFE&&("ru".equals(locale)||"en".equals(locale))&&iterations>=600000
+                &&iterations<=request.policy.maximumIterations&&iterations<=Integer.MAX_VALUE&&bytes!=null);
+            this.writer=writer;this.request=request;this.kind=kind;this.gate=gate;originalChallenge=challenge;this.id=id;this.action=action;
+            targetChecksum=target;this.generation=generation;this.locale=locale;this.iterations=iterations;this.enrollment=enrollment;
+            original=bytes.clone();originalChecksum=digest(original);
+            if(kind==LocalV2PinKind.enroll){require(gate==null&&"enroll-local-pin".equals(action)&&enrollment!=null&&enrollment.request==request
+                    &&target.equals(originalChecksum)&&request.enrollmentSample==enrollment);
+                try(LocalEmptySeedV2 seed=LocalEmptySeedV2.decode(original,request.policy.version,request.policy.checksum)){}
+                originalRevision=1;originalPinRevision=0;originalJournalRevision=0;
+            }else{require(gate!=null&&gate.originalHostChallenge==challenge&&gate.id.equals(id)&&gate.action.equals(action)
+                    &&gate.targetChecksum.equals(target)&&gate.generation==generation&&gate.deadlineUptimeMs==request.deadline&&enrollment==null);
+                try(LocalSnapshotV2 record=LocalSnapshotV2.decode(original,request.policy)){
+                    originalRevision=record.revision;originalPinRevision=record.pinRevision;originalJournalRevision=record.journalRevision;
+                    context(record,gate);require(verifier(record).iterations==iterations);
+                }
+            }
+            nonce=new byte[32];new java.security.SecureRandom().nextBytes(nonce);payload=payload();
+            request.processClock.claimPin(request.processLease,id,originalChallenge);
+        }
+        private static LocalV2PinVerifier verifier(LocalSnapshotV2 record) throws Exception {
+            byte[] raw=record.copy();try{ProtectedEnvelope.Cursor cursor=new ProtectedEnvelope.Cursor(new String(raw,record.pinStart,record.pinEnd-record.pinStart,StandardCharsets.US_ASCII));
+                cursor.field("schemaVersion",true);cursor.number(1,1);cursor.field("policyVersion",false);require(cursor.string().equals(record.policy.version));
+                cursor.field("revision",false);require(cursor.number(1,MAX_SAFE)==record.pinRevision);cursor.field("credentialId",false);require(cursor.string().equals(record.credentialId));
+                cursor.field("verifier",false);cursor.field("algorithm",true);require(cursor.string().equals("PBKDF2-HMAC-SHA256"));cursor.field("iterations",false);long iterations=cursor.number(600000,record.policy.maximumIterations);
+                cursor.field("saltHex",false);String salt=cursor.string();cursor.field("hashHex",false);String hash=cursor.string();require(ProtectedEnvelope.hash(salt)&&ProtectedEnvelope.hash(hash));
+                return new LocalV2PinVerifier(iterations,salt,hash);
+            }finally{LocalSnapshotV2.wipe(raw);}
+        }
+        private static void context(LocalSnapshotV2 record,PinGateRequest gate) throws Exception {
+            byte[] raw=record.copy();try{ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(new String(raw,record.protectedStart,record.protectedEnd-record.protectedStart,StandardCharsets.UTF_8));
+                p.field("schemaVersion",true);p.number(2,2);p.field("revision",false);p.number(1,MAX_SAFE);p.field("mode",false);require(p.string().equals(gate.context.mode));
+                p.field("selectionRevision",false);require(p.number(1,MAX_SAFE)==gate.context.routeRevision);p.field("profileRevision",false);require(p.number(1,MAX_SAFE)==gate.context.profileRevision);
+                p.field("policyChecksum",false);require(p.string().equals(record.policy.checksum));p.field("registryChecksum",false);p.string();p.field("registry",false);
+                require(ProtectedEnvelope.registry(p,record.policy.version).equals(gate.context.profileId)&&record.policy.version.equals(gate.context.policyVersion));
+            }finally{LocalSnapshotV2.wipe(raw);}
+        }
+        private byte[] payload() throws Exception {
+            java.io.ByteArrayOutputStream bytes=new java.io.ByteArrayOutputStream();java.io.DataOutputStream out=new java.io.DataOutputStream(bytes);
+            out.write("LP-LOCAL-V2-PIN-OPERATION\0v2\0".getBytes(StandardCharsets.US_ASCII));out.writeByte(kind==LocalV2PinKind.enroll?1:2);
+            for(String value:new String[]{id,action,targetChecksum,locale,originalChecksum,request.policy.version,request.policy.checksum,PinNativeOwnerAuthority.alias(request.activity)}){
+                byte[] field=value.getBytes(StandardCharsets.UTF_8);try{out.writeInt(field.length);out.write(field);}finally{LocalSnapshotV2.wipe(field);}}
+            for(long value:new long[]{generation,iterations,originalRevision,originalPinRevision,originalJournalRevision,request.began,request.deadline})out.writeLong(value);
+            if(gate!=null){for(String value:new String[]{gate.context.profileId,gate.context.policyVersion,gate.context.mode,gate.context.visibility})out.writeUTF(value);
+                out.writeLong(gate.context.profileRevision);out.writeLong(gate.context.routeRevision);}
+            out.write(nonce);out.flush();return bytes.toByteArray();
+        }
+        private void identity() throws Exception {writer.own(request);require(request.pinOperation==this&&writer==request.owner&&originalChecksum.equals(digest(original))
+                &&(kind!=LocalV2PinKind.verify||gate.originalHostChallenge==originalChallenge&&gate.id.equals(id)&&gate.action.equals(action)
+                    &&gate.targetChecksum.equals(targetChecksum)&&gate.generation==generation&&gate.deadlineUptimeMs==request.deadline));
+            byte[] checked=payload();try{require(MessageDigest.isEqual(payload,checked));}finally{LocalSnapshotV2.wipe(checked);}}
+        private void live() throws Exception {synchronized(writer){identity();writer.live(request);if(cancelled||Thread.currentThread().isInterrupted())throw new PinKnownRefusal();}}
+        private void originalReadback() throws Exception {live();writer.host(request);writer.vault.locked(directory->{live();writer.completeRecord(directory);
+                byte[] raw=writer.vault.readExact(directory);try{require(MessageDigest.isEqual(raw,original));live();return null;}finally{LocalSnapshotV2.wipe(raw);}});live();}
+        private void start(LocalV2PinRecipient recipient) throws Exception {require(recipient!=null);synchronized(writer){live();require(!started&&request.workers==0&&request.receipt==null);
+                started=true;request.pinWorkers++;worker=new Thread(()->run(recipient),"planet-local-v2-pin-operation");try{worker.start();}
+                catch(Throwable failure){request.pinWorkers--;finished=true;writer.unknown(request);throw failure;}}}
+        private void revoke(){android.os.CancellationSignal cancellation;synchronized(writer){cancelled=true;accepting=false;LocalSnapshotV2.wipe(edit);length=0;cancellation=signal;
+                if(cancellation==null||cancelWorker!=null||cancelIssued)return;cancelIssued=true;cancelCalls++;request.pinCancelCalls++;
+                cancelWorker=new Thread(()->{try{cancellation.cancel();}catch(Throwable failure){writer.unknown(request);}
+                    finally{synchronized(writer){cancelCalls--;request.pinCancelCalls--;writer.notifyAll();}}},"planet-local-v2-pin-cancel");cancelWorker.start();writer.notifyAll();}}
+        private void joinCancel() throws Exception {Thread originalCancel;synchronized(writer){originalCancel=cancelWorker;}if(originalCancel!=null){boolean interrupted=false;
+                for(;;)try{originalCancel.join();break;}catch(InterruptedException ignored){interrupted=true;}
+                synchronized(writer){require(cancelCalls==0);cancelWorker=null;}if(interrupted)Thread.currentThread().interrupt();}}
+        private void joinPrompt(){boolean interrupted=false;synchronized(writer){while(promptOutstanding||request.events!=0){try{writer.wait();}catch(InterruptedException ignored){interrupted=true;}}}
+            if(interrupted)Thread.currentThread().interrupt();}
+        private void owner() throws Exception {
+            require(android.os.Build.VERSION.SDK_INT>=30);originalReadback();phase=LocalV2PinPhase.owner;
+            KeyguardManager guard=(KeyguardManager)request.activity.getSystemService(Context.KEYGUARD_SERVICE);require(guard!=null&&guard.isDeviceSecure());
+            KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);String alias=PinNativeOwnerAuthority.alias(request.activity);
+            // The real setup owns key provisioning. Missing/invalidation never
+            // triggers generation, deletion, re-enrollment or PIN reset here.
+            require(keys.containsAlias(alias));PinOwnerSigningMaterial material=PinNativeOwnerAuthority.signingMaterial(keys,alias);
+            signing=material.signature;publicKey=material.publicKey;keyEncoding=material.encoding;crypto=material.crypto;signal=new android.os.CancellationSignal();
+            writer.onMain(request,()->{try{live();require(request.activity.hasWindowFocus());android.hardware.biometrics.BiometricPrompt prompt=
+                    new android.hardware.biometrics.BiometricPrompt.Builder(request.activity).setTitle(label(R.string.native_owner_enroll_title))
+                    .setSubtitle(label(R.string.native_owner_device_credential_reason)).setAllowedAuthenticators(android.hardware.biometrics.BiometricManager.Authenticators.DEVICE_CREDENTIAL).build();
+                    synchronized(writer){live();promptOutstanding=true;}
+                    prompt.authenticate(crypto,signal,task->{synchronized(writer){request.events++;}boolean accepted=writer.main.post(()->{try{task.run();}
+                        finally{synchronized(writer){request.events--;writer.notifyAll();}}});if(!accepted){synchronized(writer){request.events--;writer.unknown(request);}}},
+                        new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
+                            public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){terminal(result,null);}
+                            public void onAuthenticationError(int error,CharSequence message){terminal(null,new PinKnownRefusal());}});
+                }catch(Exception failure){synchronized(writer){promptError=failure;cancelled=true;writer.notifyAll();}revoke();}},false);
+            for(;;){synchronized(writer){if(!promptOutstanding&&request.events==0)break;writer.wait(25);}try{live();}catch(Exception failure){revoke();}}
+            joinCancel();live();require(promptError==null&&ownerReturned);originalReadback();
+        }
+        private void terminal(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result,Exception error){synchronized(writer){if(request.detached||writer.active!=request)return;
+                if(!promptOutstanding){writer.unknown(request);return;}promptOutstanding=false;promptError=error;
+                ownerReturned=result!=null&&result.getAuthenticationType()==android.hardware.biometrics.BiometricPrompt.AUTHENTICATION_RESULT_TYPE_DEVICE_CREDENTIAL
+                    &&result.getCryptoObject()==crypto&&result.getCryptoObject().getSignature()==signing;if(!ownerReturned)cancelled=true;writer.notifyAll();}}
+        private boolean ownedOwnerPause(){return kind==LocalV2PinKind.enroll&&phase==LocalV2PinPhase.owner&&promptOutstanding&&!ownerReturned
+            &&!finished&&!cancelled&&signal!=null&&crypto!=null&&signing!=null&&crypto.getSignature()==signing;}
+        private void verifyOwner() throws Exception {live();require(ownerReturned&&signature!=null&&signature.length>=8&&signature.length<=80&&publicKey!=null);
+            byte[] encoding=publicKey.getEncoded();try{require(MessageDigest.isEqual(encoding,keyEncoding));java.security.Signature check=java.security.Signature.getInstance("SHA256withECDSA");
+                check.initVerify(publicKey);check.update(payload);require(ProtectedEnvelope.hash(ownerNextChecksum));check.update(ownerNextChecksum.getBytes(StandardCharsets.US_ASCII));require(check.verify(signature));}finally{LocalSnapshotV2.wipe(encoding);}}
+        private android.content.Context localeContext(){android.content.res.Configuration configuration=new android.content.res.Configuration(request.activity.getResources().getConfiguration());
+            configuration.setLocales(new android.os.LocaleList(java.util.Locale.forLanguageTag(locale)));return request.activity.createConfigurationContext(configuration);}
+        private String label(int resource){return localeContext().getString(resource);}
+        private int dp(int value){return Math.round(value*request.activity.getResources().getDisplayMetrics().density);}
+        private static void clear(android.view.View view){view.setSaveEnabled(false);view.setOnClickListener(null);view.setEnabled(false);
+            if(view instanceof android.view.ViewGroup){android.view.ViewGroup group=(android.view.ViewGroup)view;for(int i=0;i<group.getChildCount();i++)clear(group.getChildAt(i));}}
+        private android.widget.TextView text(android.content.Context context,int size){android.widget.TextView view=new android.widget.TextView(context);view.setSaveEnabled(false);view.setTextSize(size);view.setTextColor(0xffedf2fa);return view;}
+        private android.widget.Button button(android.content.Context context,String label,Runnable body){android.widget.Button button=new android.widget.Button(context);button.setText(label);button.setSaveEnabled(false);
+            button.setFilterTouchesWhenObscured(true);button.setOnTouchListener((v,event)->{if((event.getFlags()&(android.view.MotionEvent.FLAG_WINDOW_IS_OBSCURED|android.view.MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED))!=0){inputCancel();return true;}return false;});
+            button.setOnClickListener(view->{try{live();require(dialog!=null&&shown&&dialog.isShowing()&&dialog.getWindow()!=null
+                    &&dialog.getWindow().getAttributes().token==request.token&&dialog.getWindow().getDecorView().hasWindowFocus()
+                    &&request.activity.getWindow().getDecorView().getWindowToken()==request.token);body.run();}catch(Exception denied){inputCancel();}});return button;}
+        private void input() throws Exception {
+            originalReadback();phase=LocalV2PinPhase.input;writer.onMain(request,this::presentInput,false);
+            for(;;){synchronized(writer){if(ready||cancelled||request.cancelled)break;writer.wait(25);}try{live();}catch(Exception failure){inputCancel();}}
+            cleanupInput();live();require(ready&&entered!=null&&entered.length>0&&uiJoined);
+        }
+        private void presentInput(){try{live();android.content.Context ui=localeContext();dialog=new android.app.Dialog(request.activity);dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(false);
+                android.widget.LinearLayout content=new android.widget.LinearLayout(ui);content.setOrientation(android.widget.LinearLayout.VERTICAL);content.setPadding(dp(16),dp(16),dp(16),dp(16));content.setSaveEnabled(false);
+                dialog.setOwnerActivity(request.activity);content.setFilterTouchesWhenObscured(true);if(android.os.Build.VERSION.SDK_INT>=26)content.setImportantForAutofill(android.view.View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS);
+                android.graphics.drawable.GradientDrawable panel=new android.graphics.drawable.GradientDrawable();panel.setColor(0xff101827);panel.setCornerRadius(dp(22));content.setBackground(panel);
+                android.widget.TextView title=text(ui,22);title.setText(label(R.string.native_pin_title));content.addView(title);
+                if(gate!=null){android.widget.TextView actionLabel=text(ui,14);actionLabel.setText(label(PinVerificationNativeInput.actionResource(gate.action)));content.addView(actionLabel);}
+                subtitle=text(ui,16);content.addView(subtitle);mask=text(ui,26);mask.setImportantForAccessibility(android.view.View.IMPORTANT_FOR_ACCESSIBILITY_NO);content.addView(mask);count=text(ui,14);content.addView(count);
+                keypad=new android.widget.LinearLayout(ui);keypad.setOrientation(android.widget.LinearLayout.VERTICAL);content.addView(keypad);
+                for(int[] row:new int[][]{{1,2,3},{4,5,6},{7,8,9}}){android.widget.LinearLayout line=new android.widget.LinearLayout(ui);for(int digit:row)line.addView(button(ui,Integer.toString(digit),()->digit(digit)),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));keypad.addView(line);}
+                android.widget.LinearLayout bottom=new android.widget.LinearLayout(ui);bottom.addView(button(ui,label(R.string.native_pin_delete),this::backspace),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));
+                bottom.addView(button(ui,"0",()->digit(0)),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));bottom.addView(button(ui,label(R.string.native_pin_cancel),this::inputCancel),new android.widget.LinearLayout.LayoutParams(0,dp(56),1));keypad.addView(bottom);
+                next=button(ui,label(R.string.native_pin_continue),this::acceptInput);content.addView(next);android.widget.ScrollView scroll=new android.widget.ScrollView(ui){public boolean onFilterTouchEventForSecurity(android.view.MotionEvent event){
+                    if((event.getFlags()&(android.view.MotionEvent.FLAG_WINDOW_IS_OBSCURED|android.view.MotionEvent.FLAG_WINDOW_IS_PARTIALLY_OBSCURED))!=0){inputCancel();return false;}return super.onFilterTouchEventForSecurity(event);}};
+                scroll.setSaveEnabled(false);scroll.setFilterTouchesWhenObscured(true);scroll.addView(content);dialog.setContentView(scroll);require(dialog.getWindow()!=null);
+                dialog.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);dialog.getWindow().getAttributes().token=request.token;
+                dialog.getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);dialog.setOnCancelListener(d->inputCancel());
+                dialog.setOnDismissListener(d->{synchronized(writer){request.events++;}try{synchronized(writer){if(!ready)cancelled=true;shown=false;uiJoined=true;}}
+                    finally{synchronized(writer){request.events--;writer.notifyAll();}}});
+                accepting=true;render();dialog.show();shown=true;dialog.getWindow().setLayout(Math.min(dp(360),request.activity.getResources().getDisplayMetrics().widthPixels-dp(32)),Math.min(dp(680),request.activity.getResources().getDisplayMetrics().heightPixels-dp(64)));
+                focusObserver=focused->{if(focused)everFocused=true;else if(everFocused&&shown)inputCancel();};dialog.getWindow().getDecorView().getViewTreeObserver().addOnWindowFocusChangeListener(focusObserver);
+                everFocused=dialog.getWindow().getDecorView().hasWindowFocus();
+            }catch(Exception failure){inputCancel();}}
+        private void digit(int value){synchronized(writer){if(!accepting||cancelled||length>=128||value<0||value>9)return;edit[length++]=(byte)(48+value);}render();}
+        private void backspace(){synchronized(writer){if(!accepting||cancelled||length==0)return;edit[--length]=0;}render();}
+        private void render(){int amount,current;synchronized(writer){amount=length;current=stage;}subtitle.setText(label(kind==LocalV2PinKind.verify?R.string.native_pin_verify_prompt:current==0?R.string.native_pin_fresh:R.string.native_pin_confirmation));
+            char[] bullets=new char[Math.min(amount,12)];Arrays.fill(bullets,'\u2022');mask.setText(new String(bullets));Arrays.fill(bullets,'\0');count.setText(localeContext().getString(R.string.native_pin_count,amount));next.setEnabled(amount>=(kind==LocalV2PinKind.enroll?4:1)&&amount<=128);}
+        private void acceptInput(){synchronized(writer){if(!accepting||cancelled||length<(kind==LocalV2PinKind.enroll?4:1))return;
+                if(kind==LocalV2PinKind.enroll&&stage==0){first=Arrays.copyOf(edit,length);LocalSnapshotV2.wipe(edit);length=0;stage=1;}
+                else{byte[] candidate=Arrays.copyOf(edit,length);LocalSnapshotV2.wipe(edit);length=0;if(kind==LocalV2PinKind.enroll&&!MessageDigest.isEqual(first,candidate)){
+                        LocalSnapshotV2.wipe(first);LocalSnapshotV2.wipe(candidate);first=null;stage=0;subtitle.announceForAccessibility(label(R.string.native_pin_mismatch));}
+                    else{entered=candidate;ready=true;accepting=false;writer.notifyAll();}}}if(!ready)render();}
+        private void inputCancel(){synchronized(writer){if(finished||request.detached||writer.active!=request)return;cancelled=true;accepting=false;LocalSnapshotV2.wipe(edit);length=0;writer.notifyAll();}revoke();}
+        private void cleanupInput() throws Exception {
+            writer.onMain(request,()->{accepting=false;LocalSnapshotV2.wipe(edit);length=0;if(mask!=null)mask.setText("");if(count!=null)count.setText("");if(keypad!=null)clear(keypad);if(next!=null)clear(next);
+                if(dialog!=null){dialog.setOnCancelListener(null);if(focusObserver!=null&&dialog.getWindow()!=null){android.view.ViewTreeObserver observer=dialog.getWindow().getDecorView().getViewTreeObserver();
+                        if(observer.isAlive())observer.removeOnWindowFocusChangeListener(focusObserver);focusObserver=null;}if(shown)dialog.dismiss();else uiJoined=true;}
+                else uiJoined=true;},true);
+            synchronized(writer){while(!uiJoined||request.mainCalls>0||request.events>0)writer.wait(10);}
+            // OnDismiss can be an accepted queued main callback. Only detach
+            // references after that original callback actually returned.
+            writer.onMain(request,()->{if(dialog!=null)dialog.setOnDismissListener(null);dialog=null;subtitle=null;mask=null;count=null;next=null;keypad=null;},true);
+        }
+        private static String hex(byte[] bytes){StringBuilder out=new StringBuilder(bytes.length*2);for(byte b:bytes){out.append("0123456789abcdef".charAt((b>>>4)&15));out.append("0123456789abcdef".charAt(b&15));}return out.toString();}
+        private byte[] enrolled(byte[] salt,byte[] credential,byte[] hash) throws Exception {
+            byte[] seed=enrollment.copySeed();try{String old=new String(seed,StandardCharsets.UTF_8);String pin="{\"schemaVersion\":1,\"policyVersion\":"+LocalSnapshotV2.quoted(request.policy.version)
+                    +",\"revision\":1,\"credentialId\":"+LocalSnapshotV2.quoted(hex(credential))+",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":"+iterations
+                    +",\"saltHex\":"+LocalSnapshotV2.quoted(hex(salt))+",\"hashHex\":"+LocalSnapshotV2.quoted(hex(hash))+"},\"attempts\":{\"count\":0,\"blockedUntilMs\":0,\"lastObservedMs\":"+enrollment.logicalMs+",\"pendingAttemptId\":null}}";
+                byte[] protectedBytes=old.replaceFirst("\\\"revision\\\":1","\"revision\":2").replace("\"pin\":null","\"pin\":"+pin).getBytes(StandardCharsets.UTF_8);
+                try{return LocalSnapshotV2.wire(protectedBytes,request.policy,1,2,1,hex(credential),0,null,0,enrollment.logicalMs);}finally{LocalSnapshotV2.wipe(protectedBytes);}
+            }finally{LocalSnapshotV2.wipe(seed);}
+        }
+        private void calibration(RealPinPrimitivePlatform platform) throws Exception {
+            byte[] dummy=new byte[128],salt=new byte[32],hash=new byte[32];long previous=-1;
+            try{for(int sample=0;sample<3;sample++){originalReadback();platform.random(dummy);for(int i=0;i<dummy.length;i++)dummy[i]=(byte)(48+((dummy[i]&255)%10));platform.random(salt);
+                    long before=platform.continuousNanos();require(before>=0&&before>=previous);platform.derive(dummy,salt,iterations,hash,this::live);
+                    long after=platform.continuousNanos();require(after>before&&after-before<=5000000000L);previous=after;live();LocalSnapshotV2.wipe(dummy);LocalSnapshotV2.wipe(salt);LocalSnapshotV2.wipe(hash);}}
+            finally{LocalSnapshotV2.wipe(dummy);LocalSnapshotV2.wipe(salt);LocalSnapshotV2.wipe(hash);}
+        }
+        private void enroll() throws Exception {
+            owner();RealPinPrimitivePlatform platform=new RealPinPrimitivePlatform();calibration(platform);input();phase=LocalV2PinPhase.deriving;byte[] salt=new byte[32],credential=new byte[32],hash=new byte[32],nextBytes=null;
+            try{platform.random(salt);platform.random(credential);require(PinNativePrimitives.nonzero(salt)&&PinNativePrimitives.nonzero(credential));
+                originalReadback();platform.derive(entered,salt,iterations,hash,this::live);live();require(PinNativePrimitives.nonzero(hash));platformEnrolled=true;nextBytes=enrolled(salt,credential,hash);
+                ownerNextChecksum=digest(nextBytes);signing.update(payload);signing.update(ownerNextChecksum.getBytes(StandardCharsets.US_ASCII));signature=signing.sign();verifyOwner();ownerConsumed=true;enrollmentCandidate=nextBytes;
+                phase=LocalV2PinPhase.finalizing;LocalV2StorageReceipt receipt=writer.enroll(request,enrollment,nextBytes);String finalChecksum=receipt.checksum;writer.acknowledge(receipt);finalAcknowledged=true;
+                reply=new LocalV2PinReply(this,null,finalChecksum);
+            }finally{LocalSnapshotV2.wipe(salt);LocalSnapshotV2.wipe(credential);LocalSnapshotV2.wipe(hash);LocalSnapshotV2.wipe(nextBytes);enrollmentCandidate=null;}
+        }
+        private void verify() throws Exception {
+            input();live();require(entered.length>0&&entered.length<=128);phase=LocalV2PinPhase.charging;LocalV2StorageReceipt charge=writer.charge(request);writer.acknowledge(charge);
+            LocalV2ChargedReservation reservation=request.reservation;require(reservation!=null&&!reservation.closed);byte[] charged=reservation.charged.clone();
+            PinVerificationOutcome result=PinVerificationOutcome.mismatch;
+            try(LocalSnapshotV2 record=LocalSnapshotV2.decode(charged,request.policy)){
+                require(record.pendingAttemptId.equals(reservation.attemptId));LocalV2PinVerifier pin=verifier(record);phase=LocalV2PinPhase.comparing;
+                writer.exactCharged(this,reservation);result=pin.compare(entered.clone(),()->{live();writer.exactCharged(this,reservation);});live();
+                // Malformed NONEMPTY native bytes are an actual mismatch only
+                // after durable original charge/ACK. They retain count/debt.
+                platformCompared=true;comparison=new LocalV2PinComparison(this,reservation,result,charged);phase=LocalV2PinPhase.finalizing;
+                LocalV2StorageReceipt finalization=writer.finalizeAttempt(this,comparison);String finalChecksum=finalization.checksum;writer.acknowledge(finalization);finalAcknowledged=true;
+                reply=new LocalV2PinReply(this,result,finalChecksum);
+            }finally{LocalSnapshotV2.wipe(charged);if(comparison!=null)comparison.close();}
+        }
+        private void run(LocalV2PinRecipient recipient){try{live();if(kind==LocalV2PinKind.enroll)enroll();else verify();live();phase=LocalV2PinPhase.delivering;
+                synchronized(writer){deliveryEntered=true;recipients++;}try{recipient.completed(reply);live();delivered=true;}finally{synchronized(writer){recipients--;writer.notifyAll();}}
+            }catch(Throwable failure){synchronized(writer){cancelled=true;if(reply!=null)reply.close();}if(!(failure instanceof PinKnownRefusal)||request.unacknowledgedMutation||deliveryEntered)writer.unknown(request);
+                revoke();if(!deliveryEntered){synchronized(writer){deliveryEntered=true;recipients++;}try{recipient.completed(null);}catch(Throwable uncertain){writer.unknown(request);}
+                    finally{synchronized(writer){recipients--;writer.notifyAll();}}}}
+            finally{try{revokeIfCancelled();}catch(Throwable failure){writer.unknown(request);}try{cleanupInput();}catch(Throwable failure){writer.unknown(request);}
+                try{joinCancel();}catch(Throwable failure){writer.unknown(request);}joinPrompt();
+                boolean interrupted=false;synchronized(writer){while(!uiJoined||request.mainCalls>0){try{writer.wait();}catch(InterruptedException ignored){interrupted=true;}}}if(interrupted)Thread.currentThread().interrupt();
+                LocalSnapshotV2.wipe(edit);LocalSnapshotV2.wipe(first);LocalSnapshotV2.wipe(entered);
+                LocalSnapshotV2.wipe(signature);LocalSnapshotV2.wipe(keyEncoding);synchronized(writer){phase=LocalV2PinPhase.finished;finished=true;request.pinWorkers--;writer.wipeIdle(request);writer.notifyAll();}}
+        }
+        private void revokeIfCancelled(){if(cancelled||request.cancelled)revoke();}
+        private void settle(LocalV2PinReply original,PinReplyDelivery delivery) throws Exception {
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper()&&worker!=Thread.currentThread()&&original!=null&&original.operation==this&&delivery!=null);
+            worker.join();joinCancel();synchronized(writer){writer.own(request);require(reply==original&&!original.settled&&finished&&recipients==0&&request.pinWorkers==0&&request.pinCancelCalls==0
+                &&request.workers==0&&request.mainCalls==0&&request.events==0&&request.settleCalls==0&&request.receipt==null&&!request.unacknowledgedMutation);
+                if(delivery==PinReplyDelivery.known){live();require(delivered&&!original.disposed&&finalAcknowledged&&uiJoined&&(kind==LocalV2PinKind.enroll?ownerConsumed&&platformEnrolled:platformCompared));}
+                else{writer.unknown(request);original.close();}original.settled=true;}
+            boolean retain=delivery==PinReplyDelivery.known&&kind==LocalV2PinKind.verify&&original.outcome==PinVerificationOutcome.match;
+            try{if(retain)closedObservers(true);writer.retire(request);synchronized(writer){knownSettlement=delivery==PinReplyDelivery.known&&!closedRevoked;phase=LocalV2PinPhase.closed;wipeOriginal();}}
+            catch(Throwable failure){closedRevoked=true;try{closedObservers(false);}catch(Throwable cleanup){failure.addSuppressed(cleanup);}throw failure;}
+        }
+        private void wipeOriginal(){LocalSnapshotV2.wipe(original);LocalSnapshotV2.wipe(nonce);LocalSnapshotV2.wipe(payload);}
+    }
+
     private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
 }

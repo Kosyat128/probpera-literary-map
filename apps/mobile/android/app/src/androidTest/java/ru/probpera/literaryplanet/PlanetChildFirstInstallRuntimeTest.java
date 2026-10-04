@@ -382,4 +382,79 @@ public final class PlanetChildFirstInstallRuntimeTest {
             Object nextOwner=localOwner(clock);denied(()->localRequest(nextOwner,5000));}
         finally{android.os.Handler handler=(android.os.Handler)field(owner,"main");Runnable expiry=(Runnable)field(original,"expiry");
             InstrumentationRegistry.getInstrumentation().runOnMainSync(()->handler.removeCallbacks(expiry));localRetire(owner,original);}}
+
+    /** New V2 operations source fixtures. Explicit reflection-built synthetic
+     * owners below have NO native signature/KDF/write authority. Positive
+     * installed owner/keypad/KDF/recipient scenarios remain NOT_RUN. */
+    private Object localEnrollmentFixture(Object localOwner,Object original)throws Exception{
+        byte[] seedBytes=seed();Object sample=create("LocalV2EnrollmentSample",localOwner,original,seedBytes);localSet(original,"enrollmentSample",sample);
+        Object operation=create("LocalV2PinOperation",localOwner,original,kind("LocalV2PinKind","enroll"),null,new Object(),repeat('f'),"enroll-local-pin",sha(seedBytes),0L,"en",600000L,seedBytes,sample);
+        localSet(original,"pinOperation",operation);return operation;
+    }
+    @Test public void localV2RawEnrollmentCannotUseEvenOriginalSampleWithoutNativeOwnerKdf()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000);byte[] seedBytes=seed();Object sample=create("LocalV2EnrollmentSample",localOwner,original,seedBytes);localSet(original,"enrollmentSample",sample);
+        Object next=localDecode(localWrapper(2,1,1,0,(Long)field(sample,"logicalMs"),0,null),snapshotPolicy(100L,250L));boolean footprint=childFootprint();
+        try{byte[] candidate=(byte[])call(next,"copy");try{denied(()->call(localOwner,"enroll",original,sample,candidate));assertFalse((Boolean)field(sample,"consumed"));assertFalse((Boolean)field(original,"mutationStarted"));assertEquals(footprint,childFootprint());}
+            finally{Arrays.fill(candidate,(byte)0);}}finally{call(next,"close");localRetire(localOwner,original);Arrays.fill(seedBytes,(byte)0);}}
+    @Test public void localV2RawChargeCannotMutateFromAnchoredBooleanOrP1Receipt()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000);byte[] raw=localWrapper(2,1,1,0,17,0,null);localSet(original,"anchored",true);localSet(original,"currentBytes",raw);localSet(original,"currentChecksum",sha(raw));boolean footprint=childFootprint();
+        try{denied(()->call(localOwner,"charge",original));assertFalse((Boolean)field(original,"charged"));assertFalse((Boolean)field(original,"mutationStarted"));assertNull(field(original,"reservation"));assertEquals(footprint,childFootprint());}
+        finally{localRetire(localOwner,original);Arrays.fill(raw,(byte)0);}}
+    @Test public void localV2SyntheticOutcomeFlagsCannotAuthorizeEnrollmentMutation()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),operation=localEnrollmentFixture(localOwner,original),sample=field(operation,"enrollment");
+        byte[] candidate=localWrapper(2,1,1,0,(Long)field(sample,"logicalMs"),0,null);boolean footprint=childFootprint();
+        try{localSet(operation,"started",true);localSet(operation,"worker",Thread.currentThread());localSet(operation,"phase",kind("LocalV2PinPhase","finalizing"));localSet(operation,"uiJoined",true);
+            localSet(operation,"ownerConsumed",true);localSet(operation,"platformEnrolled",true);localSet(operation,"enrollmentCandidate",candidate);localSet(operation,"ownerNextChecksum",sha(candidate));
+            denied(()->call(localOwner,"enroll",original,sample,candidate));assertFalse((Boolean)field(sample,"consumed"));assertFalse((Boolean)field(original,"mutationStarted"));assertEquals(footprint,childFootprint());
+        }finally{localSet(operation,"worker",null);localSet(operation,"finished",true);localRetire(localOwner,original);Arrays.fill(candidate,(byte)0);}}
+    @Test public void localV2CanonicalAdultSnapshotCannotMasqueradeAsOriginalChildGate()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),context=create("PinGateContext","profile-fixture",VERSION,1L,1L,"child","active");
+        Object gate=create("PinGateRequest",new Object(),repeat('f'),"exit-child-mode",repeat('b'),context,0L,field(original,"deadline"));byte[] bytes=localWrapper(2,1,1,0,17,0,null);
+        try{denied(()->create("LocalV2PinOperation",localOwner,original,kind("LocalV2PinKind","verify"),gate,field(gate,"originalHostChallenge"),repeat('f'),"exit-child-mode",repeat('b'),0L,"en",600000L,bytes,null));
+            assertNull(field(original,"pinOperation"));assertFalse((Boolean)field(original,"mutationStarted"));}
+        finally{localRetire(localOwner,original);Arrays.fill(bytes,(byte)0);}}
+    @Test public void localV2OriginalOwnerTargetLocaleAndIterationSubstitutionAreRefused()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000);byte[] bytes=seed();Object sample=create("LocalV2EnrollmentSample",localOwner,original,bytes);localSet(original,"enrollmentSample",sample);
+        try{for(String locale:new String[]{"ru-RU","fr"})denied(()->create("LocalV2PinOperation",localOwner,original,kind("LocalV2PinKind","enroll"),null,new Object(),repeat('f'),"enroll-local-pin",sha(bytes),0L,locale,600000L,bytes,sample));
+            denied(()->create("LocalV2PinOperation",localOwner,original,kind("LocalV2PinKind","enroll"),null,new Object(),repeat('f'),"enroll-local-pin",repeat('b'),0L,"en",600000L,bytes,sample));
+            denied(()->create("LocalV2PinOperation",localOwner,original,kind("LocalV2PinKind","enroll"),null,new Object(),repeat('f'),"enroll-local-pin",sha(bytes),0L,"en",599999L,bytes,sample));assertFalse((Boolean)field(original,"mutationStarted"));}
+        finally{localRetire(localOwner,original);Arrays.fill(bytes,(byte)0);}}
+    @Test public void localV2RetirementJoinsActualPinWorkerAfterCounterDrain()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),operation=localEnrollmentFixture(localOwner,original);
+        CountDownLatch first=new CountDownLatch(1),drain=new CountDownLatch(1),returnWorker=new CountDownLatch(1);AtomicReference<Throwable> error=new AtomicReference<>();
+        Thread actual=new Thread(()->{first.countDown();try{assertTrue(drain.await(5,TimeUnit.SECONDS));synchronized(localOwner){try{localSet(original,"pinWorkers",0);}catch(Exception failure){throw new RuntimeException(failure);}localOwner.notifyAll();}
+                assertTrue(returnWorker.await(5,TimeUnit.SECONDS));}catch(Throwable failure){error.set(failure);}},"explicit-synthetic-held-v2-pin-worker");
+        localSet(original,"pinWorkers",1);localSet(operation,"worker",actual);localSet(operation,"started",true);actual.start();assertTrue(first.await(5,TimeUnit.SECONDS));ExecutorService retiring=Executors.newSingleThreadExecutor();Future<?> closed=null;
+        try{closed=retiring.submit(()->{try{call(localOwner,"retire",original);}catch(Exception failure){throw new RuntimeException(failure);}});long limit=SystemClock.elapsedRealtime()+2000;
+            while(!(Boolean)field(original,"retiring")&&SystemClock.elapsedRealtime()<limit)Thread.sleep(5);assertTrue((Boolean)field(original,"retiring"));assertFalse(closed.isDone());drain.countDown();
+            limit=SystemClock.elapsedRealtime()+2000;while((Integer)field(original,"pinWorkers")!=0&&SystemClock.elapsedRealtime()<limit)Thread.sleep(5);assertEquals(0,field(original,"pinWorkers"));
+            assertFalse("counter drain cannot fake actual worker return",closed.isDone());assertSame(field(original,"processLease"),field(field(original,"processClock"),"active"));returnWorker.countDown();closed.get(5,TimeUnit.SECONDS);
+            assertTrue((Boolean)field(original,"retired"));assertFalse(actual.isAlive());assertNull(field(field(original,"processClock"),"active"));assertNull(error.get());
+        }finally{drain.countDown();returnWorker.countDown();actual.join(6000);try{if(closed!=null)closed.get(10,TimeUnit.SECONDS);else localRetire(localOwner,original);}finally{retiring.shutdown();}}}
+    @Test public void localV2StaleNativeOperationCannotTouchFreshLeaseAfterRetirement()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),operation=localEnrollmentFixture(localOwner,original);localSet(operation,"finished",true);localRetire(localOwner,original);
+        Object fresh=localRequest(localOwner,5000);try{denied(()->call(operation,"live"));call(operation,"inputCancel");assertSame(fresh,field(localOwner,"active"));assertFalse((Boolean)field(fresh,"cancelled"));assertFalse((Boolean)field(field(fresh,"processClock"),"invalid"));}
+        finally{localRetire(localOwner,fresh);}}
+    @Test public void localV2OwnedPromptPauseIsNarrowAndActualBackgroundStillLatches()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),operation=localEnrollmentFixture(localOwner,original);java.security.Signature signing=java.security.Signature.getInstance("SHA256withECDSA");
+        // Explicit synthetic UI ownership coordinates ONLY; software Signature
+        // and flags cannot authorize a write or replace AndroidKeyStore proof.
+        localSet(operation,"phase",kind("LocalV2PinPhase","owner"));localSet(operation,"promptOutstanding",true);localSet(operation,"signing",signing);
+        localSet(operation,"crypto",new android.hardware.biometrics.BiometricPrompt.CryptoObject(signing));localSet(operation,"signal",new android.os.CancellationSignal());
+        try{call(localOwner,"paused",original);assertFalse((Boolean)field(original,"cancelled"));assertFalse((Boolean)field(original,"mutationStarted"));
+            localSet(operation,"crypto",new android.hardware.biometrics.BiometricPrompt.CryptoObject(java.security.Signature.getInstance("SHA256withECDSA")));
+            assertFalse((Boolean)call(operation,"ownedOwnerPause"));localSet(operation,"crypto",new android.hardware.biometrics.BiometricPrompt.CryptoObject(signing));
+            scenario.moveToState(Lifecycle.State.CREATED);assertTrue((Boolean)field(original,"cancelled"));scenario.moveToState(Lifecycle.State.RESUMED);denied(()->call(operation,"live"));
+            assertFalse((Boolean)field(original,"mutationStarted"));
+        }finally{localSet(operation,"promptOutstanding",false);localSet(operation,"finished",true);call(operation,"joinCancel");localRetire(localOwner,original);}}
+
+    @Test public void localV2ClosedResultLatchesBackgroundUntilActualObserverCleanup()throws Exception{
+        activity();Object localOwner=localOwner(),original=localRequest(localOwner,5000),operation=localEnrollmentFixture(localOwner,original);
+        try{call(operation,"closedObservers",true);assertFalse((Boolean)field(operation,"closedRevoked"));
+            localSet(operation,"finished",true);localRetire(localOwner,original);scenario.moveToState(Lifecycle.State.CREATED);
+            assertTrue((Boolean)field(operation,"closedRevoked"));scenario.moveToState(Lifecycle.State.RESUMED);denied(()->call(operation,"closedHost"));
+        }finally{call(operation,"closedObservers",false);localSet(operation,"finished",true);localRetire(localOwner,original);}
+        assertNull(field(operation,"closedLifecycle"));assertNull(field(operation,"closedScreen"));assertNull(field(operation,"closedExpiry"));
+    }
+
 }
