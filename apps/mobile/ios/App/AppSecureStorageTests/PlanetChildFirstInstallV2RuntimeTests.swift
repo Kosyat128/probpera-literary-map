@@ -416,3 +416,19 @@ final class PlanetChildLocalCanonicalMutationTests: XCTestCase {
         XCTAssertThrowsError(try PlanetChildLocalCanonicalRuntimeFixture.prepare(before,action:"change-exact-age",target:Data([0xc3,0x28])))
     }
 }
+
+/** AUTHORED NOT_COMPILED/NOT_RUN. Software key/time mechanics only, no actual
+ * window/Back/Bundle, human editorial approval, storage or release acceptance. */
+final class PlanetChildNativePackageCompilerTests: XCTestCase {
+    func testStrictJsonRefusesDuplicateEscapesUtf8DepthAndUnsafeNumbers() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("json")) }
+    func testIndependentReviewCompilesExactOwnedPayloadAndRetiresIndex() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("valid")) }
+    func testSavedCanonicalProfilePreservesPinJournalAndRefusesAdultMode() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("binding")) }
+    func testSignedAudienceCannotSubstituteReadingAgeLocalePlatformTerritory() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("audience")) }
+    func testFlagsCannotReplaceIndependentPinnedReviewerAndExactReviewBytes() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("trust")) }
+    func testMissingDuplicateOrUnreviewedReferencePolicyClosureFails() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("closure")) }
+    func testPaidUnreviewedFutureAndExpiredRightsFail() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("rights")) }
+    func testUnknownAssetsMediaUrlsAndPayloadQuotasCannotEscalate() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("escalation")) }
+    func testOriginalCancellationAndExclusiveExpiryCannotPublishPayload() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("expiry")) }
+    func testDeliveryCopiesRecheckAfterCloneAndRetireEveryBorrowedValue() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("delivery")) }
+    func testCatalogRequiresExactOriginalPinSourceInventoryAndNativeChannel() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.run("catalog")) }
+}

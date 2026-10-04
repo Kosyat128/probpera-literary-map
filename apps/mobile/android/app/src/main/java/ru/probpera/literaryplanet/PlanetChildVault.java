@@ -4466,5 +4466,241 @@ final class PlanetChildVault {
             synchronized(writer){boolean available=!completionConsumed;completionConsumed=true;require(available&&completion!=null&&!cancelled&&!request.sealed);
                 request.processClock.closedReadback(request.processLease,completion.snapshotChecksum);return completion;}}
     }
+    /** Strict data parser shared by the package/review/catalog leaves. No
+     * Android JSON stubs, coerced numbers, duplicate escaped fields or URLs. */
+    private static final class LocalV2PackageJson {
+        final String source;int offset,nodes;
+        private LocalV2PackageJson(byte[] bytes,int limit) throws Exception {require(bytes!=null&&bytes.length>0&&bytes.length<=limit);
+            source=StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(bytes)).toString();}
+        static Object read(byte[] bytes,int limit) throws Exception {LocalV2PackageJson p=new LocalV2PackageJson(bytes,limit);Object result=p.value(0);p.white();require(p.offset==p.source.length());return result;}
+        void white(){while(offset<source.length()&&" \t\r\n".indexOf(source.charAt(offset))>=0)offset++;}
+        boolean take(char c){white();if(offset<source.length()&&source.charAt(offset)==c){offset++;return true;}return false;}
+        Object value(int depth) throws Exception {require(depth<=16&&++nodes<=600000);white();require(offset<source.length());char c=source.charAt(offset);
+            if(c=='"')return string();if(c=='{'){offset++;java.util.LinkedHashMap<String,Object> m=new java.util.LinkedHashMap<>();if(take('}'))return m;
+                do{white();require(offset<source.length()&&source.charAt(offset)=='"');String key=string();require(!m.containsKey(key)&&take(':'));m.put(key,value(depth+1));}while(take(','));require(take('}'));return m;}
+            if(c=='['){offset++;java.util.ArrayList<Object> a=new java.util.ArrayList<>();if(take(']'))return a;do{a.add(value(depth+1));}while(take(','));require(take(']'));return a;}
+            for(String word:new String[]{"true","false","null"})if(source.startsWith(word,offset)){offset+=word.length();return word.equals("null")?null:Boolean.valueOf(word);}
+            int start=offset;if(c=='-')offset++;require(offset<source.length());if(source.charAt(offset)=='0')offset++;else{require(source.charAt(offset)>='1'&&source.charAt(offset)<='9');while(offset<source.length()&&source.charAt(offset)>='0'&&source.charAt(offset)<='9')offset++;}
+            String number=source.substring(start,offset);require(!number.equals("-0"));long result=Long.parseLong(number);require(result>=-MAX_SAFE&&result<=MAX_SAFE);return Long.valueOf(result);
+        }
+        String string() throws Exception {require(source.charAt(offset++)=='"');StringBuilder b=new StringBuilder();boolean ended=false;
+            while(offset<source.length()){char c=source.charAt(offset++);if(c=='"'){ended=true;break;}require(c>=32);
+                if(c=='\\'){require(offset<source.length());c=source.charAt(offset++);switch(c){case '"':case '\\':case '/':break;case 'b':c='\b';break;case 'f':c='\f';break;case 'n':c='\n';break;case 'r':c='\r';break;case 't':c='\t';break;
+                    case 'u':require(offset+4<=source.length());int n=0;for(int i=0;i<4;i++){char digit=source.charAt(offset++);require(digit>='0'&&digit<='9'||digit>='a'&&digit<='f'||digit>='A'&&digit<='F');int h=Character.digit(digit,16);n=n*16+h;}c=(char)n;break;default:throw new PinKnownRefusal();}}
+                b.append(c);}
+            require(ended);String result=b.toString();for(int i=0;i<result.length();i++){char c=result.charAt(i);if(Character.isHighSurrogate(c)){require(i+1<result.length()&&Character.isLowSurrogate(result.charAt(++i)));}else require(!Character.isLowSurrogate(c));}return result;
+        }
+        @SuppressWarnings("unchecked") static java.util.Map<String,Object> object(Object v,String...keys) throws Exception {require(v instanceof java.util.Map);java.util.Map<String,Object> m=(java.util.Map<String,Object>)v;
+            if(keys.length>0){require(m.size()==keys.length);for(String k:keys)require(m.containsKey(k));}return m;}
+        @SuppressWarnings("unchecked") static java.util.List<Object> array(Object v,int max) throws Exception {require(v instanceof java.util.List&&((java.util.List<?>)v).size()<=max);return(java.util.List<Object>)v;}
+        static String text(Object v) throws Exception {require(v instanceof String);return(String)v;}
+        static long number(Object v,long min,long max) throws Exception {require(v instanceof Long);long n=(Long)v;require(n>=min&&n<=max);return n;}
+        static boolean bool(Object v) throws Exception {require(v instanceof Boolean);return(Boolean)v;}
+        static String identifier(Object v) throws Exception {String s=text(v);require(s.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));return s;}
+        static String hash(Object v) throws Exception {String s=text(v);require(s.matches("[a-f0-9]{64}"));return s;}
+        static String json(Object v,boolean sorted) throws Exception {if(v==null)return"null";if(v instanceof String)return quote((String)v);if(v instanceof Long||v instanceof Boolean)return v.toString();
+            if(v instanceof java.util.List){StringBuilder b=new StringBuilder("[");for(Object x:(java.util.List<?>)v){if(b.length()>1)b.append(',');b.append(json(x,sorted));}return b.append(']').toString();}
+            java.util.Map<String,Object> m=object(v);java.util.ArrayList<String> keys=new java.util.ArrayList<>(m.keySet());if(sorted)java.util.Collections.sort(keys);StringBuilder b=new StringBuilder("{");for(String k:keys){if(b.length()>1)b.append(',');b.append(quote(k)).append(':').append(json(m.get(k),sorted));}return b.append('}').toString();}
+        static String quote(String s){StringBuilder b=new StringBuilder("\"");for(int i=0;i<s.length();i++){char c=s.charAt(i);switch(c){case '"':b.append("\\\"");break;case '\\':b.append("\\\\");break;case '\b':b.append("\\b");break;case '\f':b.append("\\f");break;case '\n':b.append("\\n");break;case '\r':b.append("\\r");break;case '\t':b.append("\\t");break;default:if(c<32)b.append(String.format(java.util.Locale.ROOT,"\\u%04x",(int)c));else b.append(c);}}return b.append('"').toString();}
+        static byte[] bytes(Object v,boolean sorted) throws Exception {return json(v,sorted).getBytes(StandardCharsets.UTF_8);}
+        static java.util.Set<String> strings(Object v,int max,String expression) throws Exception {java.util.HashSet<String> result=new java.util.HashSet<>();for(Object x:array(v,max)){String s=text(x);require(s.matches(expression)&&result.add(s));}return result;}
+    }
+    /** This scope is extracted only after the existing strict canonical V2
+     * decoder verifies every coupled PIN/J/clock/registry checksum. */
+    private static final class LocalV2PackageProfile {
+        final String recordChecksum,id,locale,policyVersion,policyChecksum,reading;final long revision,selectionRevision,exactAge;
+        final java.util.Set<String> allowed,blocked;final java.util.Map<String,Object> profile;
+        private LocalV2PackageProfile(LocalSnapshotV2 saved) throws Exception {byte[] bytes=saved.copy();try{
+            java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,MAX_BYTES)),p=LocalV2PackageJson.object(root.get("protectedRecord"));
+            require("child".equals(p.get("mode")));recordChecksum=saved.checksum;policyVersion=saved.policy.version;policyChecksum=saved.policy.checksum;
+            revision=LocalV2PackageJson.number(p.get("profileRevision"),1,MAX_SAFE);selectionRevision=LocalV2PackageJson.number(p.get("selectionRevision"),1,MAX_SAFE);
+            java.util.Map<String,Object> r=LocalV2PackageJson.object(p.get("registry"));id=LocalV2PackageJson.identifier(r.get("activeProfileId"));java.util.Map<String,Object> selected=null;
+            for(Object x:LocalV2PackageJson.array(r.get("profiles"),4)){java.util.Map<String,Object> item=LocalV2PackageJson.object(x);if(id.equals(item.get("id"))){require(selected==null);selected=item;}}
+            require(selected!=null);profile=selected;exactAge=LocalV2PackageJson.number(selected.get("exactAge"),3,17);locale=LocalV2PackageJson.text(selected.get("locale"));require(locale.equals("ru")||locale.equals("en"));
+            Object level=selected.get("readingLevel");reading=level==null?null:LocalV2PackageJson.text(level);require(reading==null||java.util.Arrays.asList("plain","developing","fluent").contains(reading));
+            allowed=selected.get("allowedTopics")==null?null:LocalV2PackageJson.strings(selected.get("allowedTopics"),64,"[a-z0-9][a-z0-9._-]{0,63}");blocked=LocalV2PackageJson.strings(selected.get("blockedTopics"),64,"[a-z0-9][a-z0-9._-]{0,63}");
+        }finally{LocalSnapshotV2.wipe(bytes);}}
+        void same(LocalSnapshotV2 current) throws Exception {require(recordChecksum.equals(current.checksum));}
+    }
+    /** Owned text/reference index. It cannot grant storage admission. Each
+     * payload is copied and exact hash-checked; close wipes all owned arrays. */
+    private static final class LocalV2CompiledPackage implements AutoCloseable {
+        final LocalV2PackageProfile profile;final String packageId,checksum,reviewChecksum,platform,territory,home;final long version,until;
+        private final java.util.LinkedHashMap<String,byte[]> payloads;private boolean closed;
+        private LocalV2CompiledPackage(LocalV2PackageProfile profile,String id,long version,String checksum,String review,String platform,String territory,String home,long until,java.util.LinkedHashMap<String,byte[]> payloads){
+            this.profile=profile;packageId=id;this.version=version;this.checksum=checksum;reviewChecksum=review;this.platform=platform;this.territory=territory;this.home=home;this.until=until;this.payloads=payloads;}
+        private synchronized byte[] copy(String key,long now) throws Exception {require(!closed&&now>=0&&now<until);byte[] value=payloads.get(key);require(value!=null);return value.clone();}
+        public synchronized void close(){closed=true;for(byte[] value:payloads.values())LocalSnapshotV2.wipe(value);payloads.clear();}
+    }
+    private static final class LocalV2PackageCompiler {
+        private interface Fence {void check() throws Exception;}
+        private static final String[] ROOT={"schemaVersion","namespace","packageId","packageVersion","locale","exactAge","policyVersion","policyChecksum","validFromEpochMs","validUntilEpochMs","home","entities"};
+        private static final String[] POLICY={"id","kind","sourceVersion","policyVersion","minAge","maxAge","reviewStatus","localizedContent","topics","topicTagsComplete","commercialAvailability","rights"};
+        private static final String[] REVIEW={"schemaVersion","kind","keyId","reviewerId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","readingLevels","platforms","territories","reviewedAtEpochMs","validFromEpochMs","validUntilEpochMs","entityPolicyChecksums","signatureHex"};
+        private static final java.util.Set<String> KINDS=new java.util.HashSet<>(java.util.Arrays.asList("country","writer","biography","work","character","storyworld","fact","quote","activity","quiz","search-result","recommendation","favorite","recent","offline-package","deep-link"));
+        private static final java.util.Set<String> PLATFORMS=new java.util.HashSet<>(java.util.Arrays.asList("android-google","android-rustore","ios-ipados"));
+        private static String ref(Object value) throws Exception {java.util.Map<String,Object> m=LocalV2PackageJson.object(value,"kind","id","contentChecksum");String k=LocalV2PackageJson.text(m.get("kind"));require(KINDS.contains(k));return k+"/"+LocalV2PackageJson.identifier(m.get("id"));}
+        private static long epoch(Object value) throws Exception{return LocalV2PackageJson.number(value,0,8640000000000000L);}
+        private static boolean jsWhite(char c){return c>=9&&c<=13||c==32||c==160||c==5760||c>=8192&&c<=8202||c==8232||c==8233||c==8239||c==8287||c==12288||c==65279;}
+        private static String trim(String s){int a=0,b=s.length();while(a<b&&jsWhite(s.charAt(a)))a++;while(b>a&&jsWhite(s.charAt(b-1)))b--;return s.substring(a,b);}
+        private static void window(java.util.Map<String,Object> m,String from,String until,long now) throws Exception {long a=epoch(m.get(from)),b=epoch(m.get(until));require(a<b&&a<=now&&now<b);}
+        private static byte[] payload(Object value) throws Exception {java.util.Map<String,Object> m=LocalV2PackageJson.object(value,"title","text","terms","references");String title=LocalV2PackageJson.text(m.get("title")),text=LocalV2PackageJson.text(m.get("text"));
+            require(title.length()<=240&&!title.isEmpty()&&title.equals(trim(title))&&!title.matches("(?s).*[\\x00-\\x1f\\x7f].*"));require(text.length()<=32768&&!text.matches("(?s).*[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f].*"));
+            java.util.HashSet<String> terms=new java.util.HashSet<>();for(Object term:LocalV2PackageJson.array(m.get("terms"),64)){String t=LocalV2PackageJson.text(term);require(t.length()>0&&t.length()<=80&&t.equals(trim(t))&&!t.matches("(?s).*[\\x00-\\x1f\\x7f].*")&&terms.add(t));}
+            java.util.LinkedHashMap<String,Object> out=new java.util.LinkedHashMap<>();out.put("title",title);out.put("text",text);out.put("terms",m.get("terms"));java.util.ArrayList<Object> refs=new java.util.ArrayList<>();java.util.HashSet<String> seen=new java.util.HashSet<>();
+            for(Object entry:LocalV2PackageJson.array(m.get("references"),64)){String key=ref(entry);require(seen.add(key));java.util.Map<String,Object> r=LocalV2PackageJson.object(entry);java.util.LinkedHashMap<String,Object> canonical=new java.util.LinkedHashMap<>();canonical.put("kind",r.get("kind"));canonical.put("id",r.get("id"));canonical.put("contentChecksum",LocalV2PackageJson.hash(r.get("contentChecksum")));refs.add(canonical);}out.put("references",refs);return LocalV2PackageJson.bytes(out,false);
+        }
+        private static void policy(java.util.Map<String,Object> m,LocalV2PackageProfile profile,String platform,String territory,long now,String payloadHash) throws Exception {
+            LocalV2PackageJson.object(m,POLICY);require(KINDS.contains(LocalV2PackageJson.text(m.get("kind")))&&LocalV2PackageJson.identifier(m.get("id"))!=null&&LocalV2PackageJson.identifier(m.get("sourceVersion"))!=null
+                &&profile.policyVersion.equals(m.get("policyVersion"))&&"approved".equals(m.get("reviewStatus"))&&LocalV2PackageJson.bool(m.get("topicTagsComplete"))&&"included-in-base".equals(m.get("commercialAvailability")));
+            long min=LocalV2PackageJson.number(m.get("minAge"),3,17),max=LocalV2PackageJson.number(m.get("maxAge"),3,17);require(min<=max&&min<=profile.exactAge&&profile.exactAge<=max);
+            java.util.Set<String> topics=LocalV2PackageJson.strings(m.get("topics"),64,"[a-z0-9][a-z0-9._-]{0,63}");for(String topic:topics)require(!profile.blocked.contains(topic)&&(profile.allowed==null||profile.allowed.contains(topic)));
+            java.util.List<Object> localized=LocalV2PackageJson.array(m.get("localizedContent"),1);require(localized.size()==1);java.util.Map<String,Object> locale=LocalV2PackageJson.object(localized.get(0),"locale","contentChecksum","reviewStatus","available","reviewerId","reviewedAt");
+            require(profile.locale.equals(locale.get("locale"))&&payloadHash.equals(LocalV2PackageJson.hash(locale.get("contentChecksum")))&&"approved".equals(locale.get("reviewStatus"))&&LocalV2PackageJson.bool(locale.get("available"))&&LocalV2PackageJson.identifier(locale.get("reviewerId"))!=null);
+            long reviewTime=epoch(locale.get("reviewedAt"));require(reviewTime<=now);
+            java.util.Map<String,Object> rights=LocalV2PackageJson.object(m.get("rights"),"status","basis","platforms","territories","validFrom","expiresAt");require("approved".equals(rights.get("status"))&&java.util.Arrays.asList("original","public-domain").contains(rights.get("basis")));
+            java.util.Set<String> audience=LocalV2PackageJson.strings(rights.get("platforms"),4,"web-pwa|android-google|android-rustore|ios-ipados"),countries=LocalV2PackageJson.strings(rights.get("territories"),676,"[A-Z]{2}");require(audience.contains(platform)&&countries.contains(territory));
+            long start=epoch(rights.get("validFrom"));require(start<=now);if(rights.get("expiresAt")!=null){long end=epoch(rights.get("expiresAt"));require(start<end&&now<end);}
+        }
+        private static long iso(String value) throws Exception {require(value.matches("[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z"));java.text.SimpleDateFormat format=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",java.util.Locale.ROOT);format.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));format.setLenient(false);java.util.Date date=format.parse(value);require(format.format(date).equals(value)&&date.getTime()>=0);return date.getTime();}
+        private static byte[] unhex(String value,int count) throws Exception {require(value!=null&&value.matches("[a-f0-9]{"+(count*2)+"}"));byte[] bytes=new byte[count];for(int i=0;i<count;i++)bytes[i]=(byte)Integer.parseInt(value.substring(i*2,i*2+2),16);return bytes;}
+        private static byte[] derSignature(byte[] raw) throws Exception {require(raw.length==64);java.io.ByteArrayOutputStream body=new java.io.ByteArrayOutputStream();for(int part=0;part<2;part++){int from=part*32,to=from+32;while(from<to&&raw[from]==0)from++;require(from<to);boolean pad=(raw[from]&128)!=0;body.write(2);body.write(to-from+(pad?1:0));if(pad)body.write(0);body.write(raw,from,to-from);}byte[] pair=body.toByteArray();byte[] out=new byte[pair.length+2];out[0]=48;out[1]=(byte)pair.length;System.arraycopy(pair,0,out,2,pair.length);LocalSnapshotV2.wipe(pair);return out;}
+        private static void signature(java.util.Map<String,Object> review,java.util.List<Object> keys) throws Exception {java.util.Map<String,Object> selected=null;for(Object item:keys){java.util.Map<String,Object> key=LocalV2PackageJson.object(item,"keyId","reviewerId","publicKeyX963Hex");if(key.get("keyId").equals(review.get("keyId"))&&key.get("reviewerId").equals(review.get("reviewerId"))){require(selected==null);selected=key;}}
+            require(selected!=null);byte[] point=unhex(LocalV2PackageJson.text(selected.get("publicKeyX963Hex")),65),prefix=unhex("3059301306072a8648ce3d020106082a8648ce3d030107034200",26),encoded=new byte[prefix.length+point.length],raw=null,der=null,message=null;
+            try{require(point[0]==4);System.arraycopy(prefix,0,encoded,0,prefix.length);System.arraycopy(point,0,encoded,prefix.length,point.length);java.security.PublicKey key=java.security.KeyFactory.getInstance("EC").generatePublic(new java.security.spec.X509EncodedKeySpec(encoded));require(MessageDigest.isEqual(encoded,key.getEncoded()));
+                raw=unhex(LocalV2PackageJson.text(review.get("signatureHex")),64);der=derSignature(raw);java.util.LinkedHashMap<String,Object> unsigned=new java.util.LinkedHashMap<>(review);unsigned.remove("signatureHex");message=("LP-CHILD-RELEASE-REVIEW\0v1\0"+LocalV2PackageJson.json(unsigned,true)).getBytes(StandardCharsets.UTF_8);
+                java.security.Signature verifier=java.security.Signature.getInstance("SHA256withECDSA");verifier.initVerify(key);verifier.update(message);require(verifier.verify(der));
+            }finally{LocalSnapshotV2.wipe(point);LocalSnapshotV2.wipe(prefix);LocalSnapshotV2.wipe(encoded);LocalSnapshotV2.wipe(raw);LocalSnapshotV2.wipe(der);LocalSnapshotV2.wipe(message);}}
+        private static LocalV2CompiledPackage compile(byte[] bytes,byte[] reviewBytes,java.util.Map<String,Object> pin,java.util.List<Object> keys,LocalV2PackageProfile profile,String platform,String territory,long now,Fence fence) throws Exception {
+            require(PLATFORMS.contains(platform)&&territory!=null&&territory.matches("[A-Z]{2}")&&now>=0&&now<=8640000000000000L&&fence!=null);fence.check();LocalV2PackageJson.object(pin,"packageId","packageVersion","packageChecksum","reviewChecksum");
+            require(iso(LocalV2PackageJson.text(profile.profile.get("ageConfirmedAt")))<=now);
+            String checksum=LocalV2PackageJson.hash(pin.get("packageChecksum")),reviewChecksum=LocalV2PackageJson.hash(pin.get("reviewChecksum"));require(checksum.equals(digest(bytes))&&reviewChecksum.equals(digest(reviewBytes)));
+            java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,8388608),ROOT),review=LocalV2PackageJson.object(LocalV2PackageJson.read(reviewBytes,524288),REVIEW);
+            String packageId=LocalV2PackageJson.identifier(root.get("packageId"));long version=LocalV2PackageJson.number(root.get("packageVersion"),1,MAX_SAFE);require(LocalV2PackageJson.number(root.get("schemaVersion"),1,1)==1&&"child".equals(root.get("namespace"))&&packageId.equals(pin.get("packageId"))&&version==LocalV2PackageJson.number(pin.get("packageVersion"),1,MAX_SAFE)
+                &&profile.locale.equals(root.get("locale"))&&profile.exactAge==LocalV2PackageJson.number(root.get("exactAge"),3,17)&&profile.policyVersion.equals(root.get("policyVersion"))&&profile.policyChecksum.equals(root.get("policyChecksum")));window(root,"validFromEpochMs","validUntilEpochMs",now);
+            require(LocalV2PackageJson.number(review.get("schemaVersion"),1,1)==1&&"literary-planet-child-release-review-v1".equals(review.get("kind"))&&packageId.equals(review.get("packageId"))&&version==LocalV2PackageJson.number(review.get("packageVersion"),1,MAX_SAFE)&&checksum.equals(review.get("packageChecksum"))
+                &&profile.policyVersion.equals(review.get("policyVersion"))&&profile.policyChecksum.equals(review.get("policyChecksum"))&&profile.locale.equals(review.get("locale"))&&profile.exactAge==LocalV2PackageJson.number(review.get("exactAge"),3,17)&&epoch(review.get("reviewedAtEpochMs"))<=now);
+            require(LocalV2PackageJson.text(review.get("keyId")).matches("child-release-review-[A-Za-z0-9_-]{1,48}")&&LocalV2PackageJson.identifier(review.get("reviewerId"))!=null);window(review,"validFromEpochMs","validUntilEpochMs",now);
+            java.util.HashSet<Object> readings=new java.util.HashSet<>();for(Object reading:LocalV2PackageJson.array(review.get("readingLevels"),4)){require((reading==null||java.util.Arrays.asList("plain","developing","fluent").contains(reading))&&readings.add(reading));}require(readings.contains(profile.reading));
+            require(LocalV2PackageJson.strings(review.get("platforms"),3,"android-google|android-rustore|ios-ipados").contains(platform)&&LocalV2PackageJson.strings(review.get("territories"),676,"[A-Z]{2}").contains(territory));signature(review,keys);fence.check();
+            java.util.HashMap<String,java.util.Map<String,Object>> approved=new java.util.HashMap<>();for(Object row:LocalV2PackageJson.array(review.get("entityPolicyChecksums"),4096)){java.util.Map<String,Object> entry=LocalV2PackageJson.object(row,"kind","id","payloadChecksum","policyChecksum");String kind=LocalV2PackageJson.text(entry.get("kind"));require(KINDS.contains(kind));String key=kind+"/"+LocalV2PackageJson.identifier(entry.get("id"));LocalV2PackageJson.hash(entry.get("payloadChecksum"));LocalV2PackageJson.hash(entry.get("policyChecksum"));require(approved.put(key,entry)==null);}
+            java.util.LinkedHashMap<String,byte[]> owned=new java.util.LinkedHashMap<>();java.util.HashMap<String,String> hashes=new java.util.HashMap<>();java.util.HashMap<String,java.util.List<Object>> references=new java.util.HashMap<>();boolean adopted=false;
+            try{java.util.List<Object> entities=LocalV2PackageJson.array(root.get("entities"),4096);require(!entities.isEmpty()&&entities.size()==approved.size());long until=Math.min(epoch(root.get("validUntilEpochMs")),epoch(review.get("validUntilEpochMs")));
+                for(Object entity:entities){fence.check();java.util.Map<String,Object> row=LocalV2PackageJson.object(entity,"policy","payload"),policy=LocalV2PackageJson.object(row.get("policy"));String key=LocalV2PackageJson.text(policy.get("kind"))+"/"+LocalV2PackageJson.identifier(policy.get("id"));require(!owned.containsKey(key));byte[] data=payload(row.get("payload"));boolean retained=false;
+                    try{String payloadHash=digest(data);policy(policy,profile,platform,territory,now,payloadHash);java.util.Map<String,Object> entry=approved.get(key);require(entry!=null&&payloadHash.equals(entry.get("payloadChecksum")));byte[] policyBytes=LocalV2PackageJson.bytes(policy,true);try{require(digest(policyBytes).equals(entry.get("policyChecksum")));}finally{LocalSnapshotV2.wipe(policyBytes);}
+                        java.util.Map<String,Object> rights=LocalV2PackageJson.object(policy.get("rights"));if(rights.get("expiresAt")!=null)until=Math.min(until,epoch(rights.get("expiresAt")));java.util.List<Object> refs=LocalV2PackageJson.array(LocalV2PackageJson.object(row.get("payload")).get("references"),64);String kind=LocalV2PackageJson.text(policy.get("kind"));
+                        if(java.util.Arrays.asList("search-result","recommendation","favorite","recent","deep-link").contains(kind))require(refs.size()==1);if(kind.equals("offline-package"))require(!refs.isEmpty());owned.put(key,data);hashes.put(key,payloadHash);references.put(key,refs);retained=true;
+                    }finally{if(!retained)LocalSnapshotV2.wipe(data);}}
+                for(java.util.List<Object> refs:references.values())for(Object entry:refs){fence.check();String key=ref(entry);require(LocalV2PackageJson.object(entry).get("contentChecksum").equals(hashes.get(key)));}
+                String home=ref(root.get("home"));require(home.startsWith("activity/")&&LocalV2PackageJson.object(root.get("home")).get("contentChecksum").equals(hashes.get(home)));fence.check();require(now<until);
+                LocalV2CompiledPackage result=new LocalV2CompiledPackage(profile,packageId,version,checksum,reviewChecksum,platform,territory,home,until,owned);adopted=true;return result;
+            }finally{if(!adopted)for(byte[] data:owned.values())LocalSnapshotV2.wipe(data);references.clear();hashes.clear();approved.clear();}
+        }
+    }
+    /** Catalog trust is read only from the signed app's fixed bundled assets.
+     * The separately pinned review is never supplied by a package or JS. */
+    private static final class LocalV2PackageCatalog {
+        final String platform;final java.util.List<Object> keys,pins;final java.util.Map<String,java.util.Map<String,Object>> inventory=new java.util.HashMap<>();
+        private LocalV2PackageCatalog(byte[] catalogBytes,byte[] artifactBytes,String expectedPlatform) throws Exception {
+            java.util.Map<String,Object> artifact=LocalV2PackageJson.object(LocalV2PackageJson.read(artifactBytes,2097152));require(Long.valueOf(1).equals(artifact.get("schemaVersion"))&&"literary-planet-bundled-native-preparation".equals(artifact.get("kind"))&&expectedPlatform.equals(artifact.get("platform")));
+            String channel=LocalV2PackageJson.text(artifact.get("channel"));platform=expectedPlatform.equals("android")?(channel.equals("googlePlay")?"android-google":channel.equals("ruStore")?"android-rustore":null):(channel.equals("appStore")?"ios-ipados":null);
+            require(platform!=null);java.util.Map<String,Object> catalog=LocalV2PackageJson.object(LocalV2PackageJson.read(catalogBytes,65536),"schemaVersion","kind","platform","pinSourceChecksum","reviewKeys","packages");
+            require(Long.valueOf(1).equals(catalog.get("schemaVersion"))&&"literary-planet-child-native-assets-v1".equals(catalog.get("kind"))&&platform.equals(catalog.get("platform")));
+            String sourceHash=LocalV2PackageJson.hash(catalog.get("pinSourceChecksum"));int sources=0;java.util.Map<String,Object> inputs=LocalV2PackageJson.object(artifact.get("sourceInputs"));for(Object row:LocalV2PackageJson.array(inputs.get("files"),20000)){
+                java.util.Map<String,Object> file=LocalV2PackageJson.object(row,"path","sha256");if("src/child/childNativeReleasePins.json".equals(file.get("path"))){require(sourceHash.equals(file.get("sha256")));sources++;}}require(sources==1);
+            for(Object row:LocalV2PackageJson.array(artifact.get("inventory"),20000)){java.util.Map<String,Object> file=LocalV2PackageJson.object(row,"path","bytes","sha256");String name=LocalV2PackageJson.text(file.get("path"));LocalV2PackageJson.number(file.get("bytes"),1,MAX_SAFE);LocalV2PackageJson.hash(file.get("sha256"));require(inventory.put(name,file)==null);}
+            verify("child-native/catalog-v1.json",catalogBytes,65536);keys=LocalV2PackageJson.array(catalog.get("reviewKeys"),16);pins=LocalV2PackageJson.array(catalog.get("packages"),32);
+            java.util.HashSet<String> keyIds=new java.util.HashSet<>(),points=new java.util.HashSet<>(),ids=new java.util.HashSet<>(),checksums=new java.util.HashSet<>();
+            for(Object row:keys){java.util.Map<String,Object> key=LocalV2PackageJson.object(row,"keyId","reviewerId","publicKeyX963Hex");String id=LocalV2PackageJson.text(key.get("keyId")),point=LocalV2PackageJson.text(key.get("publicKeyX963Hex"));require(id.matches("child-release-review-[A-Za-z0-9_-]{1,48}")&&LocalV2PackageJson.identifier(key.get("reviewerId"))!=null&&point.matches("04[a-f0-9]{128}")&&keyIds.add(id)&&points.add(point));}
+            for(Object row:pins){java.util.Map<String,Object> pin=LocalV2PackageJson.object(row,"packageId","packageVersion","packageChecksum","reviewChecksum");String id=LocalV2PackageJson.identifier(pin.get("packageId"));long version=LocalV2PackageJson.number(pin.get("packageVersion"),1,MAX_SAFE);String sum=LocalV2PackageJson.hash(pin.get("packageChecksum")),review=LocalV2PackageJson.hash(pin.get("reviewChecksum"));require(ids.add(id+"/"+version)&&checksums.add(sum));
+                require(inventory.containsKey("child-native/packages/"+sum+".json")&&inventory.containsKey("child-native/reviews/"+review+".json"));}
+        }
+        private void verify(String fixedPath,byte[] bytes,int bound) throws Exception {java.util.Map<String,Object> row=inventory.get(fixedPath);require(row!=null&&bytes!=null&&bytes.length>0&&bytes.length<=bound&&bytes.length==LocalV2PackageJson.number(row.get("bytes"),1,bound)&&digest(bytes).equals(row.get("sha256")));}
+    }
+    /** Every outgoing copy joins the original final fence. Cancellation can
+     * wipe returned arrays without waiting for a host/main-thread callback. */
+    private static final class LocalV2PackageCopies {
+        private final LocalV2CompiledPackage compiled;private boolean closed;private final java.util.ArrayList<byte[]> borrowed=new java.util.ArrayList<>();
+        private LocalV2PackageCopies(LocalV2CompiledPackage compiled){this.compiled=compiled;}
+        private byte[] copy(String key,java.util.concurrent.Callable<Long> clock,LocalV2PackageCompiler.Fence fence) throws Exception {
+            synchronized(this){require(!closed&&borrowed.size()<64);}fence.check();byte[] bytes=compiled.copy(key,clock.call());boolean published=false;
+            try{fence.check();long now=clock.call();require(now>=0&&now<compiled.until);
+                synchronized(this){require(!closed&&borrowed.size()<64);borrowed.add(bytes);published=true;return bytes;}
+            }finally{if(!published)LocalSnapshotV2.wipe(bytes);}
+        }
+        private synchronized void close(){closed=true;for(byte[] copy:borrowed)LocalSnapshotV2.wipe(copy);borrowed.clear();compiled.close();}
+    }
+    private interface LocalV2PackageRecipient {void receive(LocalV2OwnedPackageDelivery original) throws Exception;}
+    /** A one-use original delivery of data, not an admitted AES capability.
+     * Reads stay inside the original worker/host/canonical lease and expire
+     * with that operation; retaining this object cannot renew its lifetime. */
+    private static final class LocalV2OwnedPackageDelivery {
+        final LocalV2NativePackageLoader owner;final LocalV2CompiledPackage compiled;private final LocalV2PackageCopies copies;
+        private LocalV2OwnedPackageDelivery(LocalV2NativePackageLoader owner,LocalV2CompiledPackage compiled){this.owner=owner;this.compiled=compiled;copies=new LocalV2PackageCopies(compiled);}
+        private void fence() throws Exception {try{require(owner.delivery==this&&owner.worker==Thread.currentThread());owner.fresh(compiled.profile);owner.live();}catch(Exception failure){owner.revoke();throw failure;}}
+        private byte[] copyHome() throws Exception {try{return copies.copy(compiled.home,owner::wall,this::fence);}catch(Exception failure){owner.revoke();throw failure;}}
+        private byte[] copyEntity(String kind,String id) throws Exception {require(LocalV2PackageCompiler.KINDS.contains(kind)&&id!=null&&id.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));try{return copies.copy(kind+"/"+id,owner::wall,this::fence);}catch(Exception failure){owner.revoke();throw failure;}}
+        private void close(){copies.close();}
+    }
+    /** Concrete fixed AssetManager producer on the original native route.
+     * Vault -> bundled bytes is the only lock order; no main join/file-lock
+     * recursion, transport, caller filenames, account or QA trust fallback. */
+    private static final class LocalV2NativePackageLoader implements AutoCloseable {
+        final LocalV2Writer writer;final LocalV2Request request;final android.app.Activity activity;final android.view.ViewGroup route;final android.os.IBinder window;
+        private final android.view.ViewParent[] ancestry;private final LocalV2PackageRecipient recipient;private final String territory;
+        private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());private volatile boolean revoked,closed;
+        private volatile Thread worker,retirement;private volatile LocalV2OwnedPackageDelivery delivery;private android.view.View.OnAttachStateChangeListener attachment;
+        private androidx.activity.OnBackPressedCallback back;private android.view.ViewTreeObserver.OnGlobalLayoutListener layout;private android.view.ViewTreeObserver.OnWindowFocusChangeListener focus;
+        private long wallLast=-1;private boolean sent;private final Runnable watch=()->watchOriginal();
+        private LocalV2NativePackageLoader(PlanetChildVault vault,android.app.Activity activity,android.view.ViewGroup route,LocalSnapshotV2Policy policy,long timeoutMs,LocalV2PackageRecipient recipient) throws Exception {
+            require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&activity!=null&&activity.getClass()==MainActivity.class&&route!=null&&!(route instanceof android.webkit.WebView)&&route!=activity.getWindow().getDecorView()&&recipient!=null);
+            this.activity=activity;this.route=route;this.recipient=recipient;window=activity.getWindow().getDecorView().getWindowToken();territory=java.util.Locale.getDefault().getCountry();require(window!=null&&territory.matches("[A-Z]{2}"));
+            java.util.ArrayList<android.view.ViewParent> parents=new java.util.ArrayList<>();android.view.ViewParent parent=route.getParent();while(parent!=null){require(!(parent instanceof android.webkit.WebView));parents.add(parent);parent=parent.getParent();}require(!parents.isEmpty());ancestry=parents.toArray(new android.view.ViewParent[0]);
+            writer=new LocalV2Writer(vault);request=writer.request(activity,policy,timeoutMs);try{current();attach();}catch(Throwable failure){revoke();startRetirement();throw failure;}
+        }
+        private void current() throws Exception {require(android.os.Looper.myLooper()==android.os.Looper.getMainLooper()&&!closed&&!revoked&&!activity.isFinishing()&&!activity.isDestroyed()&&activity.hasWindowFocus()
+            &&activity.getWindow().getDecorView().getWindowToken()==window&&route.getWindowToken()==window&&route.getRootView()==activity.getWindow().getDecorView()&&route.isShown()&&territory.equals(java.util.Locale.getDefault().getCountry()));
+            android.view.ViewParent parent=route.getParent();for(android.view.ViewParent original:ancestry){require(parent==original);parent=parent.getParent();}require(parent==null);writer.live(request);}
+        private void watchOriginal(){if(closed||revoked)return;try{current();LocalV2OwnedPackageDelivery original=delivery;if(original!=null)require(wall()<original.compiled.until);require(main.postDelayed(watch,10));}catch(Exception failure){revoke();}}
+        private void attach(){requireWatch();attachment=new android.view.View.OnAttachStateChangeListener(){public void onViewAttachedToWindow(android.view.View view){}public void onViewDetachedFromWindow(android.view.View view){revoke();}};route.addOnAttachStateChangeListener(attachment);
+            back=new androidx.activity.OnBackPressedCallback(true){public void handleOnBackPressed(){revoke();setEnabled(false);((MainActivity)activity).getOnBackPressedDispatcher().onBackPressed();}};((MainActivity)activity).getOnBackPressedDispatcher().addCallback((MainActivity)activity,back);
+            layout=()->{try{current();}catch(Exception failure){revoke();}};focus=focused->{if(!focused)revoke();};route.getViewTreeObserver().addOnGlobalLayoutListener(layout);route.getViewTreeObserver().addOnWindowFocusChangeListener(focus);}
+        private void requireWatch(){if(!main.post(watch))throw new IllegalStateException("Original loader watch unavailable");}
+        private void live() throws Exception {require(!revoked&&!closed&&worker==Thread.currentThread());writer.live(request);}
+        private synchronized long wall() throws Exception {long now=System.currentTimeMillis();if(now<0||now>8640000000000000L||now<wallLast){revoke();throw new PinKnownRefusal();}wallLast=now;return now;}
+        private void mainCurrent() throws Exception {java.util.concurrent.FutureTask<Void> task=new java.util.concurrent.FutureTask<>(()->{current();return null;});require(main.post(task));boolean interrupted=false;try{for(;;)try{task.get();break;}catch(InterruptedException ignored){interrupted=true;}}finally{if(interrupted)Thread.currentThread().interrupt();}}
+        private byte[] fixedAsset(String fixed,int bound) throws Exception {live();require(fixed.equals("artifact.json")||fixed.equals("child-native/catalog-v1.json")||fixed.matches("child-native/(packages|reviews)/[a-f0-9]{64}\\.json"));
+            byte[] owned=new byte[bound];int used=0;try(java.io.InputStream input=writer.vault.context.getAssets().open("public/"+fixed,android.content.res.AssetManager.ACCESS_STREAMING)){
+                for(;;){live();if(used==bound){require(input.read()==-1);break;}int count=input.read(owned,used,Math.min(8192,bound-used));if(count==-1)break;require(count>0);used+=count;}live();require(used>0);return java.util.Arrays.copyOf(owned,used);}finally{LocalSnapshotV2.wipe(owned);}}
+        private LocalV2PackageProfile fresh(LocalV2PackageProfile original) throws Exception {live();mainCurrent();writer.begin(request);try{writer.host(request);return writer.vault.locked(directory->{live();writer.completeRecord(directory);byte[] current=writer.vault.readExact(directory);try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(current,request.policy)){
+                    request.processClock.sample(request.processLease,current);require(request.currentBytes!=null&&MessageDigest.isEqual(request.currentBytes,current));if(original!=null)original.same(saved);return new LocalV2PackageProfile(saved);}finally{LocalSnapshotV2.wipe(current);}});}catch(Throwable failure){throw writer.failed(request,failure);}finally{writer.finish(request);}}
+        private void start(){requireMain();try{current();require(worker==null&&!sent);worker=new Thread(this::run,"planet-child-native-package");worker.start();}catch(Throwable failure){revoke();startRetirement();}}
+        private void requireMain(){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper())throw new IllegalStateException("Original native main required");}
+        private void run(){byte[] catalogBytes=null,artifactBytes=null;LocalV2CompiledPackage result=null;try{live();mainCurrent();LocalV2StorageReceipt anchor=writer.reanchor(request);if(anchor!=null)writer.acknowledge(anchor);LocalV2PackageProfile profile=fresh(null);
+                catalogBytes=fixedAsset("child-native/catalog-v1.json",65536);artifactBytes=fixedAsset("artifact.json",2097152);LocalV2PackageCatalog catalog=new LocalV2PackageCatalog(catalogBytes,artifactBytes,"android");require(!catalog.pins.isEmpty());
+                for(Object row:catalog.pins){live();fresh(profile);byte[] bytes=null,review=null;LocalV2CompiledPackage candidate=null;try{java.util.Map<String,Object> pin=LocalV2PackageJson.object(row);String sum=LocalV2PackageJson.hash(pin.get("packageChecksum")),reviewSum=LocalV2PackageJson.hash(pin.get("reviewChecksum"));bytes=fixedAsset("child-native/packages/"+sum+".json",8388608);review=fixedAsset("child-native/reviews/"+reviewSum+".json",524288);catalog.verify("child-native/packages/"+sum+".json",bytes,8388608);catalog.verify("child-native/reviews/"+reviewSum+".json",review,524288);
+                        java.util.Map<String,Object> audience=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,8388608));if(!profile.locale.equals(audience.get("locale"))||!Long.valueOf(profile.exactAge).equals(audience.get("exactAge"))||!profile.policyVersion.equals(audience.get("policyVersion"))||!profile.policyChecksum.equals(audience.get("policyChecksum")))continue;
+                        fresh(profile);candidate=LocalV2PackageCompiler.compile(bytes,review,pin,catalog.keys,profile,catalog.platform,territory,wall(),this::live);require(result==null);result=candidate;candidate=null;
+                    }finally{if(candidate!=null)candidate.close();LocalSnapshotV2.wipe(bytes);LocalSnapshotV2.wipe(review);}}
+                require(result!=null);fresh(profile);require(wall()<result.until);mainCurrent();live();synchronized(this){require(!revoked&&!closed&&!sent&&delivery==null);sent=true;delivery=new LocalV2OwnedPackageDelivery(this,result);result=null;}
+                recipient.receive(delivery);live();fresh(profile);require(wall()<delivery.compiled.until);
+            }catch(Throwable failure){revoke();}finally{if(delivery!=null)delivery.close();if(result!=null)result.close();LocalSnapshotV2.wipe(catalogBytes);LocalSnapshotV2.wipe(artifactBytes);startRetirement();}}
+        /** Native route owner calls before same-view reuse; Back/detachment
+         * and all real background events independently latch revocation. */
+        private void routeWillChange(){revoke();}
+        private void revoke(){LocalV2OwnedPackageDelivery original;synchronized(this){revoked=true;original=delivery;}if(original!=null)original.close();try{writer.cancel(request);}catch(Exception failure){writer.unknown(request);}startRetirement();}
+        private synchronized void startRetirement(){if(retirement!=null)return;Thread original=worker;retirement=new Thread(()->{boolean interrupted=false;try{if(original!=null)for(;;)try{original.join();break;}catch(InterruptedException ignored){interrupted=true;}
+                    java.util.concurrent.FutureTask<Void> cleanup=new java.util.concurrent.FutureTask<>(()->{detach();return null;});require(main.post(cleanup));for(;;)try{cleanup.get();break;}catch(InterruptedException ignored){interrupted=true;}
+                    writer.retire(request);closed=true;
+                }catch(Throwable failure){writer.unknown(request);}finally{if(interrupted)Thread.currentThread().interrupt();}},"planet-child-native-package-retire");retirement.start();}
+        private void detach() throws Exception {Throwable failure=null;main.removeCallbacks(watch);
+            try{if(back!=null)back.remove();}catch(Throwable error){failure=error;}
+            try{if(attachment!=null)route.removeOnAttachStateChangeListener(attachment);}catch(Throwable error){if(failure==null)failure=error;else failure.addSuppressed(error);}
+            try{if(layout!=null&&route.getViewTreeObserver().isAlive())route.getViewTreeObserver().removeOnGlobalLayoutListener(layout);}catch(Throwable error){if(failure==null)failure=error;else failure.addSuppressed(error);}
+            try{if(focus!=null&&route.getViewTreeObserver().isAlive())route.getViewTreeObserver().removeOnWindowFocusChangeListener(focus);}catch(Throwable error){if(failure==null)failure=error;else failure.addSuppressed(error);}
+            if(failure instanceof Error)throw(Error)failure;if(failure!=null)throw failure instanceof Exception?(Exception)failure:new Unavailable();}
+        public void close(){requireMain();revoke();startRetirement();}
+    }
+
     private static LocalV2Writer actualSdkLocalV2Writer(PlanetChildVault vault){return null;}
 }

@@ -178,7 +178,7 @@ export function verifyNativeProtectedFixtureSources(files) {
 export async function nativeRuntimeSources(rootDir) {
   const root = await realpath(rootDir);
   const roots = ['src', 'apps/mobile/android', 'apps/mobile/ios', 'native.html', 'vite.native.config.ts', 'vite.config.ts',
-    'tsconfig.json', 'package.json', 'package-lock.json', 'capacitor.config.json', 'scripts/mobile/build-native.mjs', 'scripts/mobile/native-base-assets.json', 'scripts/mobile/pwa-artifact.mjs'];
+    'tsconfig.json', 'package.json', 'package-lock.json', 'capacitor.config.json', 'scripts/mobile/build-native.mjs', 'scripts/mobile/native-base-assets.json', 'scripts/mobile/pwa-artifact.mjs', 'scripts/mobile/native-child-package-assets.mjs'];
   const names = execFileSync('git', ['-c', 'safe.directory=' + root, 'ls-files', '-z', '--cached', '--others', '--exclude-standard', '--', ...roots],
     { cwd: root, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] }).split('\0');
   const files = [];

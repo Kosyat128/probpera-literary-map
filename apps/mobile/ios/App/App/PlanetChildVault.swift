@@ -7463,3 +7463,353 @@ enum PlanetChildLocalCanonicalRuntimeFixture {
     }
 }
 #endif
+
+/** Bounded strict data, independent of UI/OS authority. Tuple objects retain
+ * payload order; duplicate decoded spellings are refused before interpretation. */
+fileprivate indirect enum LocalV2PackageValue {
+    case null,bool(Bool),integer(Int64),string(String),array([LocalV2PackageValue]),object([(String,LocalV2PackageValue)])
+    var isNull: Bool { if case .null=self { return true };return false }
+    func json(sorted: Bool) throws -> String {
+        switch self { case .null:return "null";case .bool(let v):return v ? "true":"false";case .integer(let v):return String(v);case .string(let v):return Self.quote(v)
+        case .array(let a):return "[" + (try a.map { try $0.json(sorted:sorted) }).joined(separator:",") + "]"
+        case .object(let a):let rows=sorted ? a.sorted { $0.0.utf16.lexicographicallyPrecedes($1.0.utf16) }:a
+            return "{" + (try rows.map { Self.quote($0.0) + ":" + (try $0.1.json(sorted:sorted)) }).joined(separator:",") + "}"
+        }
+    }
+    static func quote(_ value: String) -> String { var result="\"";for scalar in value.unicodeScalars { switch scalar.value {
+        case 34:result+="\\\"";case 92:result+="\\\\";case 8:result+="\\b";case 12:result+="\\f";case 10:result+="\\n";case 13:result+="\\r";case 9:result+="\\t"
+        case 0..<32:result+=String(format:"\\u%04x",scalar.value);default:result+=String(scalar) } };return result + "\"" }
+    static func object(_ value: Self?,_ keys: [String]=[]) throws -> [String:Self] { guard case .object(let rows)?=value else { throw PinKnownRefusal() };var result=[String:Self]()
+        for (key,value) in rows { guard result[key]==nil else { throw PinKnownRefusal() };result[key]=value };if !keys.isEmpty { guard result.count==keys.count,keys.allSatisfy({ result[$0] != nil }) else { throw PinKnownRefusal() } };return result }
+    static func array(_ value: Self?,_ maximum: Int) throws -> [Self] { guard case .array(let a)?=value,a.count<=maximum else { throw PinKnownRefusal() };return a }
+    static func text(_ value: Self?) throws -> String { guard case .string(let s)?=value else { throw PinKnownRefusal() };return s }
+    static func number(_ value: Self?,_ minimum: Int64,_ maximum: Int64) throws -> Int64 { guard case .integer(let n)?=value,n>=minimum,n<=maximum else { throw PinKnownRefusal() };return n }
+    static func bool(_ value: Self?) throws -> Bool { guard case .bool(let b)?=value else { throw PinKnownRefusal() };return b }
+    static func matches(_ value: String,_ pattern: String) -> Bool { guard let range=value.range(of:"^(?:"+pattern+")$",options:.regularExpression) else { return false };return range==value.startIndex..<value.endIndex }
+    static func identifier(_ value: Self?) throws -> String { let s=try text(value);guard matches(s,"[A-Za-z0-9][A-Za-z0-9._-]{0,95}") else { throw PinKnownRefusal() };return s }
+    static func hash(_ value: Self?) throws -> String { let s=try text(value);guard matches(s,"[a-f0-9]{64}") else { throw PinKnownRefusal() };return s }
+    static func strings(_ value: Self?,_ maximum: Int,_ pattern: String) throws -> Set<String> { var result=Set<String>();for v in try array(value,maximum) { let s=try text(v);guard matches(s,pattern),result.insert(s).inserted else { throw PinKnownRefusal() } };return result }
+}
+fileprivate final class LocalV2PackageJson {
+    private var bytes: [UInt8],offset=0,nodes=0
+    private init(_ input: Data,_ limit: Int) throws { guard !input.isEmpty,input.count<=limit,String(data:input,encoding:.utf8) != nil else { throw PinKnownRefusal() };bytes=Array(input) }
+    deinit { bytes.withUnsafeMutableBytes { $0.initializeMemory(as:UInt8.self,repeating:0) } }
+    static func read(_ input: Data,_ limit: Int) throws -> LocalV2PackageValue { let p=try Self(input,limit),value=try p.value(0);p.white();guard p.offset==p.bytes.count else { throw PinKnownRefusal() };return value }
+    private func white() { while offset<bytes.count,[9,10,13,32].contains(bytes[offset]) { offset+=1 } }
+    private func take(_ byte: UInt8) -> Bool { white();if offset<bytes.count,bytes[offset]==byte { offset+=1;return true };return false }
+    private func value(_ depth: Int) throws -> LocalV2PackageValue { nodes+=1;white();guard depth<=16,nodes<=600000,offset<bytes.count else { throw PinKnownRefusal() }
+        if bytes[offset]==34 { return .string(try string()) }
+        if take(123) { var rows=[(String,LocalV2PackageValue)](),keys=Set<String>();if take(125) { return .object(rows) }
+            repeat { white();let key=try string();guard keys.insert(key).inserted,take(58) else { throw PinKnownRefusal() };rows.append((key,try value(depth+1))) } while take(44);guard take(125) else { throw PinKnownRefusal() };return .object(rows) }
+        if take(91) { var rows=[LocalV2PackageValue]();if take(93) { return .array(rows) };repeat { rows.append(try value(depth+1)) } while take(44);guard take(93) else { throw PinKnownRefusal() };return .array(rows) }
+        for (word,result) in [("true",LocalV2PackageValue.bool(true)),("false",.bool(false)),("null",.null)] { let wordBytes=Array(word.utf8);if offset+wordBytes.count<=bytes.count,Array(bytes[offset..<offset+wordBytes.count])==wordBytes { offset+=wordBytes.count;return result } }
+        let start=offset;if bytes[offset]==45 { offset+=1 };guard offset<bytes.count else { throw PinKnownRefusal() };if bytes[offset]==48 { offset+=1 } else { guard bytes[offset]>=49,bytes[offset]<=57 else { throw PinKnownRefusal() };while offset<bytes.count,bytes[offset]>=48,bytes[offset]<=57 { offset+=1 } }
+        let source=String(decoding:bytes[start..<offset],as:UTF8.self);guard source != "-0",let n=Int64(source),n>=(-9007199254740991),n<=9007199254740991 else { throw PinKnownRefusal() };return .integer(n)
+    }
+    private func string() throws -> String { guard offset<bytes.count,bytes[offset]==34 else { throw PinKnownRefusal() };let start=offset;offset+=1;var end=false
+        while offset<bytes.count { let byte=bytes[offset];offset+=1;if byte==34 { end=true;break };guard byte>=32 else { throw PinKnownRefusal() };if byte==92 { guard offset<bytes.count else { throw PinKnownRefusal() };offset+=1 } }
+        guard end else { throw PinKnownRefusal() };var at=start+1
+        func hex(_ from: Int) throws -> UInt16 { guard from+4<=offset-1 else { throw PinKnownRefusal() };var result: UInt16=0;for i in from..<from+4 { let byte=bytes[i],digit: UInt16;if byte>=48,byte<=57 { digit=UInt16(byte-48) } else if byte>=65,byte<=70 { digit=UInt16(byte-55) } else if byte>=97,byte<=102 { digit=UInt16(byte-87) } else { throw PinKnownRefusal() };result=result*16+digit };return result }
+        while at<offset-1 { if bytes[at] != 92 { at+=1;continue };at+=1;guard at<offset-1,[34,92,47,98,102,110,114,116,117].contains(bytes[at]) else { throw PinKnownRefusal() }
+            if bytes[at]==117 { let scalar=try hex(at+1);at+=5;if scalar>=0xd800,scalar<=0xdbff { guard at+6<=offset-1,bytes[at]==92,bytes[at+1]==117 else { throw PinKnownRefusal() };let low=try hex(at+2);guard low>=0xdc00,low<=0xdfff else { throw PinKnownRefusal() };at+=6 } else if scalar>=0xdc00,scalar<=0xdfff { throw PinKnownRefusal() } } else { at+=1 }
+        }
+        guard let result=try JSONSerialization.jsonObject(with:Data(bytes[start..<offset]),options:.fragmentsAllowed) as? String else { throw PinKnownRefusal() };return result
+    }
+}
+fileprivate final class LocalV2PackageProfile {
+    let recordChecksum: String,id: String,locale: String,policyVersion: String,policyChecksum: String,reading: String?
+    let revision: Int64,selectionRevision: Int64,exactAge: Int64,allowed: Set<String>?,blocked: Set<String>,profile: [String:LocalV2PackageValue]
+    init(_ saved: LocalSnapshotV2) throws { var bytes=try saved.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) }
+        let root=try LocalV2PackageValue.object(LocalV2PackageJson.read(bytes,131072)),p=try LocalV2PackageValue.object(root["protectedRecord"])
+        guard try LocalV2PackageValue.text(p["mode"])=="child" else { throw PinKnownRefusal() };recordChecksum=LocalSnapshotV2.hash(bytes);policyVersion=saved.policy.version;policyChecksum=saved.policy.checksum
+        revision=try LocalV2PackageValue.number(p["profileRevision"],1,9007199254740991);selectionRevision=try LocalV2PackageValue.number(p["selectionRevision"],1,9007199254740991)
+        let registry=try LocalV2PackageValue.object(p["registry"]);id=try LocalV2PackageValue.identifier(registry["activeProfileId"]);var selected: [String:LocalV2PackageValue]?
+        for value in try LocalV2PackageValue.array(registry["profiles"],4) { let row=try LocalV2PackageValue.object(value);if try LocalV2PackageValue.text(row["id"])==id { guard selected==nil else { throw PinKnownRefusal() };selected=row } }
+        guard let selected else { throw PinKnownRefusal() };profile=selected;exactAge=try LocalV2PackageValue.number(selected["exactAge"],3,17);locale=try LocalV2PackageValue.text(selected["locale"]);guard locale=="ru" || locale=="en" else { throw PinKnownRefusal() }
+        reading=selected["readingLevel"]?.isNull == true ? nil:try LocalV2PackageValue.text(selected["readingLevel"]);guard reading==nil || ["plain","developing","fluent"].contains(reading!) else { throw PinKnownRefusal() }
+        allowed=selected["allowedTopics"]?.isNull == true ? nil:try LocalV2PackageValue.strings(selected["allowedTopics"],64,"[a-z0-9][a-z0-9._-]{0,63}");blocked=try LocalV2PackageValue.strings(selected["blockedTopics"],64,"[a-z0-9][a-z0-9._-]{0,63}")
+    }
+    func same(_ current: LocalSnapshotV2) throws { var bytes=try current.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) };guard recordChecksum==LocalSnapshotV2.hash(bytes) else { throw PinKnownRefusal() } }
+}
+/** Private owned data only; admission/transport/JS cannot construct this index. */
+fileprivate final class LocalV2CompiledPackage {
+    let profile: LocalV2PackageProfile,packageId: String,version: Int64,checksum: String,reviewChecksum: String,platform: String,territory: String,home: String,until: Int64
+    private var payloads: [String:PinOwnedBytes],closed=false;private let lock=NSLock()
+    init(_ profile: LocalV2PackageProfile,_ id: String,_ version: Int64,_ checksum: String,_ review: String,_ platform: String,_ territory: String,_ home: String,_ until: Int64,_ payloads: [String:PinOwnedBytes]) {
+        self.profile=profile;packageId=id;self.version=version;self.checksum=checksum;reviewChecksum=review;self.platform=platform;self.territory=territory;self.home=home;self.until=until;self.payloads=payloads
+    }
+    func copy(_ key: String,_ now: Int64) throws -> Data { lock.lock();defer { lock.unlock() };guard !closed,now>=0,now<until,let payload=payloads[key] else { throw PinKnownRefusal() };return try payload.copy() }
+    func close() { lock.lock();closed=true;for payload in payloads.values { payload.close() };payloads.removeAll();lock.unlock() }
+    deinit { close() }
+}
+fileprivate enum LocalV2PackageCompiler {
+    typealias V=LocalV2PackageValue
+    static let kinds=Set(["country","writer","biography","work","character","storyworld","fact","quote","activity","quiz","search-result","recommendation","favorite","recent","offline-package","deep-link"])
+    private static let rootFields=["schemaVersion","namespace","packageId","packageVersion","locale","exactAge","policyVersion","policyChecksum","validFromEpochMs","validUntilEpochMs","home","entities"]
+    private static let policyFields=["id","kind","sourceVersion","policyVersion","minAge","maxAge","reviewStatus","localizedContent","topics","topicTagsComplete","commercialAvailability","rights"]
+    private static let reviewFields=["schemaVersion","kind","keyId","reviewerId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","readingLevels","platforms","territories","reviewedAtEpochMs","validFromEpochMs","validUntilEpochMs","entityPolicyChecksums","signatureHex"]
+    private static func epoch(_ value: V?) throws -> Int64 { try V.number(value,0,8640000000000000) }
+    private static func window(_ row: [String:V],_ from: String,_ until: String,_ now: Int64) throws { let a=try epoch(row[from]),b=try epoch(row[until]);guard a<b,a<=now,now<b else { throw PinKnownRefusal() } }
+    private static func ref(_ value: V?) throws -> String { let row=try V.object(value,["kind","id","contentChecksum"]),kind=try V.text(row["kind"]);guard kinds.contains(kind) else { throw PinKnownRefusal() };_ = try V.hash(row["contentChecksum"]);return kind+"/"+(try V.identifier(row["id"])) }
+    private static func clean(_ value: String,_ maximum: Int,_ multiline: Bool,_ nonempty: Bool) -> Bool { guard value.utf16.count<=maximum,(!nonempty || !value.isEmpty) else { return false }
+        let whitespace=CharacterSet(charactersIn:"\u{0009}\u{000a}\u{000b}\u{000c}\u{000d}\u{0020}\u{00a0}\u{1680}\u{2000}\u{2001}\u{2002}\u{2003}\u{2004}\u{2005}\u{2006}\u{2007}\u{2008}\u{2009}\u{200a}\u{2028}\u{2029}\u{202f}\u{205f}\u{3000}\u{feff}")
+        if !multiline,value.trimmingCharacters(in:whitespace) != value { return false };return value.unicodeScalars.allSatisfy { $0.value>=32 && $0.value != 127 || multiline && [9,10,13].contains($0.value) } }
+    private static func payload(_ value: V?) throws -> Data { let row=try V.object(value,["title","text","terms","references"]),title=try V.text(row["title"]),text=try V.text(row["text"])
+        guard clean(title,240,false,true),clean(text,32768,true,false) else { throw PinKnownRefusal() };var terms=Set<String>();for value in try V.array(row["terms"],64) { let term=try V.text(value);guard clean(term,80,false,true),terms.insert(term).inserted else { throw PinKnownRefusal() } }
+        var refs=[V](),seen=Set<String>();for value in try V.array(row["references"],64) { let key=try ref(value),entry=try V.object(value);guard seen.insert(key).inserted else { throw PinKnownRefusal() };refs.append(.object([("kind",entry["kind"]!),("id",entry["id"]!),("contentChecksum",entry["contentChecksum"]!)])) }
+        return Data(try V.object([("title",.string(title)),("text",.string(text)),("terms",row["terms"]!),("references",.array(refs))]).json(sorted:false).utf8)
+    }
+    private static func policy(_ value: V?,_ profile: LocalV2PackageProfile,_ platform: String,_ territory: String,_ now: Int64,_ checksum: String) throws -> Int64? {
+        let row=try V.object(value,policyFields),kind=try V.text(row["kind"]);_ = try V.identifier(row["id"]);_ = try V.identifier(row["sourceVersion"])
+        guard kinds.contains(kind),try V.text(row["policyVersion"])==profile.policyVersion,try V.text(row["reviewStatus"])=="approved",try V.bool(row["topicTagsComplete"]),try V.text(row["commercialAvailability"])=="included-in-base" else { throw PinKnownRefusal() }
+        let min=try V.number(row["minAge"],3,17),max=try V.number(row["maxAge"],3,17);guard min<=max,min<=profile.exactAge,profile.exactAge<=max else { throw PinKnownRefusal() }
+        for topic in try V.strings(row["topics"],64,"[a-z0-9][a-z0-9._-]{0,63}") { guard !profile.blocked.contains(topic),profile.allowed==nil || profile.allowed!.contains(topic) else { throw PinKnownRefusal() } }
+        let localized=try V.array(row["localizedContent"],1);guard localized.count==1 else { throw PinKnownRefusal() };let language=try V.object(localized[0],["locale","contentChecksum","reviewStatus","available","reviewerId","reviewedAt"])
+        _ = try V.identifier(language["reviewerId"]);guard try V.text(language["locale"])==profile.locale,try V.hash(language["contentChecksum"])==checksum,try V.text(language["reviewStatus"])=="approved",try V.bool(language["available"]),try epoch(language["reviewedAt"])<=now else { throw PinKnownRefusal() }
+        let rights=try V.object(row["rights"],["status","basis","platforms","territories","validFrom","expiresAt"]);guard try V.text(rights["status"])=="approved",["original","public-domain"].contains(try V.text(rights["basis"])),try V.strings(rights["platforms"],4,"web-pwa|android-google|android-rustore|ios-ipados").contains(platform),try V.strings(rights["territories"],676,"[A-Z]{2}").contains(territory) else { throw PinKnownRefusal() }
+        let start=try epoch(rights["validFrom"]);guard start<=now else { throw PinKnownRefusal() };if rights["expiresAt"]?.isNull == true { return nil };let end=try epoch(rights["expiresAt"]);guard start<end,now<end else { throw PinKnownRefusal() };return end
+    }
+    private static func iso(_ value: String) throws -> Int64 { guard V.matches(value,"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.[0-9]{3}Z") else { throw PinKnownRefusal() };let f=DateFormatter();f.locale=Locale(identifier:"en_US_POSIX");f.timeZone=TimeZone(secondsFromGMT:0);f.dateFormat="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";f.isLenient=false
+        guard let date=f.date(from:value),f.string(from:date)==value,date.timeIntervalSince1970>=0 else { throw PinKnownRefusal() };return Int64((date.timeIntervalSince1970*1000).rounded()) }
+    private static func unhex(_ value: String,_ count: Int) throws -> Data { guard V.matches(value,"[a-f0-9]{\(count*2)}") else { throw PinKnownRefusal() };var bytes=[UInt8](),index=value.startIndex;for _ in 0..<count { let end=value.index(index,offsetBy:2);guard let byte=UInt8(value[index..<end],radix:16) else { throw PinKnownRefusal() };bytes.append(byte);index=end };return Data(bytes) }
+    private static func signature(_ review: V,_ keys: [V]) throws { let row=try V.object(review);var selected: [String:V]?
+        for value in keys { let key=try V.object(value,["keyId","reviewerId","publicKeyX963Hex"]);if try V.text(key["keyId"])==V.text(row["keyId"]),try V.text(key["reviewerId"])==V.text(row["reviewerId"]) { guard selected==nil else { throw PinKnownRefusal() };selected=key } }
+        guard let selected,case .object(let fields)=review else { throw PinKnownRefusal() };var point=try unhex(V.text(selected["publicKeyX963Hex"]),65),raw=try unhex(V.text(row["signatureHex"]),64)
+        defer { point.resetBytes(in:0..<point.count);raw.resetBytes(in:0..<raw.count) };guard point.first==4 else { throw PinKnownRefusal() };let key=try P256.Signing.PublicKey(x963Representation:point),signature=try P256.Signing.ECDSASignature(rawRepresentation:raw)
+        var message=Data(("LP-CHILD-RELEASE-REVIEW\0v1\0"+(try V.object(fields.filter { $0.0 != "signatureHex" }).json(sorted:true))).utf8);defer { message.resetBytes(in:0..<message.count) }
+        guard key.x963Representation==point,key.isValidSignature(signature,for:message) else { throw PinKnownRefusal() }
+    }
+    static func compile(_ bytes: Data,_ reviewBytes: Data,_ pinValue: V,_ keys: [V],_ profile: LocalV2PackageProfile,_ platform: String,_ territory: String,_ now: Int64,_ fence: () throws -> Void) throws -> LocalV2CompiledPackage {
+        guard ["android-google","android-rustore","ios-ipados"].contains(platform),V.matches(territory,"[A-Z]{2}"),now>=0,now<=8640000000000000,try iso(V.text(profile.profile["ageConfirmedAt"]))<=now else { throw PinKnownRefusal() };try fence()
+        let pin=try V.object(pinValue,["packageId","packageVersion","packageChecksum","reviewChecksum"]),checksum=try V.hash(pin["packageChecksum"]),reviewChecksum=try V.hash(pin["reviewChecksum"])
+        guard checksum==LocalSnapshotV2.hash(bytes),reviewChecksum==LocalSnapshotV2.hash(reviewBytes) else { throw PinKnownRefusal() };let package=try LocalV2PackageJson.read(bytes,8388608),root=try V.object(package,rootFields),review=try LocalV2PackageJson.read(reviewBytes,524288),approval=try V.object(review,reviewFields)
+        let id=try V.identifier(root["packageId"]),version=try V.number(root["packageVersion"],1,9007199254740991)
+        guard try V.number(root["schemaVersion"],1,1)==1,try V.text(root["namespace"])=="child",try V.text(pin["packageId"])==id,try V.number(pin["packageVersion"],1,9007199254740991)==version,try V.text(root["locale"])==profile.locale,try V.number(root["exactAge"],3,17)==profile.exactAge,try V.text(root["policyVersion"])==profile.policyVersion,try V.hash(root["policyChecksum"])==profile.policyChecksum else { throw PinKnownRefusal() };try window(root,"validFromEpochMs","validUntilEpochMs",now)
+        guard try V.number(approval["schemaVersion"],1,1)==1,try V.text(approval["kind"])=="literary-planet-child-release-review-v1",try V.text(approval["packageId"])==id,try V.number(approval["packageVersion"],1,9007199254740991)==version,try V.hash(approval["packageChecksum"])==checksum,try V.text(approval["policyVersion"])==profile.policyVersion,try V.hash(approval["policyChecksum"])==profile.policyChecksum,try V.text(approval["locale"])==profile.locale,try V.number(approval["exactAge"],3,17)==profile.exactAge,try epoch(approval["reviewedAtEpochMs"])<=now,V.matches(try V.text(approval["keyId"]),"child-release-review-[A-Za-z0-9_-]{1,48}") else { throw PinKnownRefusal() };_ = try V.identifier(approval["reviewerId"]);try window(approval,"validFromEpochMs","validUntilEpochMs",now)
+        var readings=Set<String>();for value in try V.array(approval["readingLevels"],4) { let reading=value.isNull ? "<null>":try V.text(value);guard ["<null>","plain","developing","fluent"].contains(reading),readings.insert(reading).inserted else { throw PinKnownRefusal() } }
+        guard readings.contains(profile.reading ?? "<null>"),try V.strings(approval["platforms"],3,"android-google|android-rustore|ios-ipados").contains(platform),try V.strings(approval["territories"],676,"[A-Z]{2}").contains(territory) else { throw PinKnownRefusal() };try signature(review,keys);try fence()
+        var approved=[String:[String:V]]();for value in try V.array(approval["entityPolicyChecksums"],4096) { let row=try V.object(value,["kind","id","payloadChecksum","policyChecksum"]),kind=try V.text(row["kind"]),key=kind+"/"+(try V.identifier(row["id"]));guard kinds.contains(kind),approved[key]==nil else { throw PinKnownRefusal() };_ = try V.hash(row["payloadChecksum"]);_ = try V.hash(row["policyChecksum"]);approved[key]=row }
+        var owned=[String:PinOwnedBytes](),hashes=[String:String](),references=[String:[V]](),adopted=false;defer { if !adopted { for payload in owned.values { payload.close() } };references.removeAll();hashes.removeAll();approved.removeAll() }
+        let entities=try V.array(root["entities"],4096);guard !entities.isEmpty,entities.count==approved.count else { throw PinKnownRefusal() };var until=min(try epoch(root["validUntilEpochMs"]),try epoch(approval["validUntilEpochMs"]))
+        for value in entities { try fence();let row=try V.object(value,["policy","payload"]),entityPolicy=try V.object(row["policy"]),kind=try V.text(entityPolicy["kind"]),key=kind+"/"+(try V.identifier(entityPolicy["id"]));guard owned[key]==nil else { throw PinKnownRefusal() }
+            var data=try payload(row["payload"]);defer { data.resetBytes(in:0..<data.count) };let payloadHash=LocalSnapshotV2.hash(data);if let expiry=try policy(row["policy"],profile,platform,territory,now,payloadHash) { until=min(until,expiry) }
+            guard let entry=approved[key],try V.hash(entry["payloadChecksum"])==payloadHash,let policyValue=row["policy"] else { throw PinKnownRefusal() };var policyBytes=Data(try policyValue.json(sorted:true).utf8);defer { policyBytes.resetBytes(in:0..<policyBytes.count) };guard try V.hash(entry["policyChecksum"])==LocalSnapshotV2.hash(policyBytes) else { throw PinKnownRefusal() }
+            let refs=try V.array(V.object(row["payload"])["references"],64);if ["search-result","recommendation","favorite","recent","deep-link"].contains(kind),refs.count != 1 { throw PinKnownRefusal() };if kind=="offline-package",refs.isEmpty { throw PinKnownRefusal() }
+            owned[key]=PinOwnedBytes(data);hashes[key]=payloadHash;references[key]=refs
+        }
+        for refs in references.values { for value in refs { try fence();let key=try ref(value),row=try V.object(value);guard try V.hash(row["contentChecksum"])==hashes[key] else { throw PinKnownRefusal() } } }
+        let home=try ref(root["home"]),homeRow=try V.object(root["home"]);guard home.hasPrefix("activity/"),try V.hash(homeRow["contentChecksum"])==hashes[home],now<until else { throw PinKnownRefusal() };try fence()
+        let result=LocalV2CompiledPackage(profile,id,version,checksum,reviewChecksum,platform,territory,home,until,owned);adopted=true;return result
+    }
+}
+fileprivate final class LocalV2PackageCatalog {
+    typealias V=LocalV2PackageValue
+    let platform: String,keys: [V],pins: [V];private var inventory=[String:[String:V]]()
+    init(_ catalogBytes: Data,_ artifactBytes: Data,_ expectedPlatform: String) throws {
+        let artifact=try V.object(LocalV2PackageJson.read(artifactBytes,2097152));guard try V.number(artifact["schemaVersion"],1,1)==1,try V.text(artifact["kind"])=="literary-planet-bundled-native-preparation",try V.text(artifact["platform"])==expectedPlatform else { throw PinKnownRefusal() }
+        let channel=try V.text(artifact["channel"]);if expectedPlatform=="ios",channel=="appStore" { platform="ios-ipados" } else if expectedPlatform=="android",channel=="googlePlay" { platform="android-google" } else if expectedPlatform=="android",channel=="ruStore" { platform="android-rustore" } else { throw PinKnownRefusal() }
+        let catalog=try V.object(LocalV2PackageJson.read(catalogBytes,65536),["schemaVersion","kind","platform","pinSourceChecksum","reviewKeys","packages"])
+        guard try V.number(catalog["schemaVersion"],1,1)==1,try V.text(catalog["kind"])=="literary-planet-child-native-assets-v1",try V.text(catalog["platform"])==platform else { throw PinKnownRefusal() }
+        let sourceHash=try V.hash(catalog["pinSourceChecksum"]),inputs=try V.object(artifact["sourceInputs"]);var sources=0
+        for value in try V.array(inputs["files"],20000) { let row=try V.object(value,["path","sha256"]);if try V.text(row["path"])=="src/child/childNativeReleasePins.json" { guard try V.hash(row["sha256"])==sourceHash else { throw PinKnownRefusal() };sources+=1 } };guard sources==1 else { throw PinKnownRefusal() }
+        for value in try V.array(artifact["inventory"],20000) { let row=try V.object(value,["path","bytes","sha256"]),name=try V.text(row["path"]);_ = try V.number(row["bytes"],1,9007199254740991);_ = try V.hash(row["sha256"]);guard inventory[name]==nil else { throw PinKnownRefusal() };inventory[name]=row }
+        keys=try V.array(catalog["reviewKeys"],16);pins=try V.array(catalog["packages"],32);try verify("child-native/catalog-v1.json",catalogBytes,65536)
+        var keyIds=Set<String>(),points=Set<String>(),ids=Set<String>(),checksums=Set<String>()
+        for value in keys { let row=try V.object(value,["keyId","reviewerId","publicKeyX963Hex"]),id=try V.text(row["keyId"]),point=try V.text(row["publicKeyX963Hex"]);_ = try V.identifier(row["reviewerId"])
+            guard V.matches(id,"child-release-review-[A-Za-z0-9_-]{1,48}"),V.matches(point,"04[a-f0-9]{128}"),keyIds.insert(id).inserted,points.insert(point).inserted else { throw PinKnownRefusal() } }
+        for value in pins { let row=try V.object(value,["packageId","packageVersion","packageChecksum","reviewChecksum"]),id=try V.identifier(row["packageId"]),version=try V.number(row["packageVersion"],1,9007199254740991),sum=try V.hash(row["packageChecksum"]),review=try V.hash(row["reviewChecksum"])
+            guard ids.insert(id+"/"+String(version)).inserted,checksums.insert(sum).inserted,inventory["child-native/packages/"+sum+".json"] != nil,inventory["child-native/reviews/"+review+".json"] != nil else { throw PinKnownRefusal() } }
+    }
+    func verify(_ fixedPath: String,_ bytes: Data,_ maximum: Int) throws { guard let row=inventory[fixedPath],!bytes.isEmpty,bytes.count<=maximum,try V.number(row["bytes"],1,Int64(maximum))==Int64(bytes.count),try V.hash(row["sha256"])==LocalSnapshotV2.hash(bytes) else { throw PinKnownRefusal() } }
+}
+/** Fresh canonical record stays on the real original process-owned lease.
+ * Main checks occur outside the native file lock; no recursive lock acquisition. */
+fileprivate extension LocalV2Writer {
+    func packageLocal(_ request: LocalV2Request) throws -> UInt64 { try local(request) }
+    func packageFresh(_ request: LocalV2Request,_ original: LocalV2PackageProfile?) throws -> LocalV2PackageProfile {
+        try start(request,opened:true);defer { finish(request) };_ = try current(request)
+        do { return try storage.locked { transaction in var actual=try exact(transaction,request);defer { actual.resetBytes(in:0..<actual.count) };_ = try local(request)
+            let saved=try LocalSnapshotV2.decode(actual,policy:policy);defer { saved.close() };try original?.same(saved);return try LocalV2PackageProfile(saved) } }
+        catch { fail(request,error,publication:false);throw error }
+    }
+}
+/** One original delivery of data. It grants no AES admission, and every copy
+ * rereads the full canonical record and current actual native host. */
+/** The outgoing-copy registry never holds its lock across a main/UI join. */
+fileprivate final class LocalV2PackageCopies {
+    private let compiled: LocalV2CompiledPackage,lock=NSLock();private var closed=false,borrowed=[PinOwnedBytes]()
+    init(_ compiled: LocalV2CompiledPackage) { self.compiled=compiled }
+    func copy(_ key: String,_ clock: () throws -> Int64,_ fence: () throws -> Void) throws -> PinOwnedBytes {
+        lock.lock();let available = !closed && borrowed.count<64;lock.unlock();guard available else { throw PinKnownRefusal() }
+        try fence();var bytes=try compiled.copy(key,clock());defer { bytes.resetBytes(in:0..<bytes.count) };let result=PinOwnedBytes(bytes);var published=false;defer { if !published { result.close() } }
+        try fence();let now=try clock();guard now>=0,now<compiled.until else { throw PinKnownRefusal() }
+        lock.lock();defer { lock.unlock() };guard !closed,borrowed.count<64 else { throw PinKnownRefusal() };borrowed.append(result);published=true;return result
+    }
+    func close() { lock.lock();closed=true;for copy in borrowed { copy.close() };borrowed.removeAll();compiled.close();lock.unlock() }
+    deinit { close() }
+}
+fileprivate final class LocalV2OwnedPackageDelivery {
+    let owner: LocalV2NativePackageLoader,compiled: LocalV2CompiledPackage;private let copies: LocalV2PackageCopies
+    init(_ owner: LocalV2NativePackageLoader,_ compiled: LocalV2CompiledPackage) { self.owner=owner;self.compiled=compiled;copies=LocalV2PackageCopies(compiled) }
+    private func fence() throws { do { guard owner.delivery === self,ObjectIdentifier(Thread.current)==owner.worker.map(ObjectIdentifier.init) else { throw PinKnownRefusal() };try owner.fresh(compiled.profile);try owner.live() } catch { owner.revoke();throw error } }
+    func copyHome() throws -> PinOwnedBytes { do { return try copies.copy(compiled.home,owner.wall,fence) } catch { owner.revoke();throw error } }
+    func copyEntity(kind: String,id: String) throws -> PinOwnedBytes { guard LocalV2PackageCompiler.kinds.contains(kind),LocalV2PackageValue.matches(id,"[A-Za-z0-9][A-Za-z0-9._-]{0,95}") else { throw PinKnownRefusal() };do { return try copies.copy(kind+"/"+id,owner.wall,fence) } catch { owner.revoke();throw error } }
+    func close() { copies.close() }
+}
+/** Actual child VC receives native disappearance/pop/reparent callbacks. A
+ * simulated callback is not acceptance of this OS Back/lifecycle mechanism. */
+fileprivate final class LocalV2PackageRouteWitness: UIViewController {
+    weak var owner: LocalV2NativePackageLoader?
+    override func viewWillDisappear(_ animated: Bool) { super.viewWillDisappear(animated);owner?.revoke() }
+    override func didMove(toParent parent: UIViewController?) { super.didMove(toParent:parent);if parent !== owner?.host { owner?.revoke() } }
+    override func loadView() { let view=UIView(frame:.zero);view.isUserInteractionEnabled=false;self.view=view }
+}
+/** Fixed Bundle producer over the original actual VC/window/scene. Empty
+ * production pins deny; there is no JS scope, account, URL or QA-key fallback. */
+fileprivate final class LocalV2NativePackageLoader {
+    let writer: LocalV2Writer,request: LocalV2Request,host: UIViewController,route: UIView,window: UIWindow,scene: UIWindowScene,root: UIViewController,territory: String
+    private let parents: [UIViewController],presenter: UIViewController?,ancestry: [UIView],recipient: (LocalV2OwnedPackageDelivery) throws -> Void
+    private let lock=NSLock(),witness=LocalV2PackageRouteWitness();private var revoked=false,closed=false,sent=false,wallLast: Int64 = -1
+    fileprivate var worker: Thread?,retirement: Thread?,delivery: LocalV2OwnedPackageDelivery?;private var observers=[NSObjectProtocol](),expiry: DispatchWorkItem?,watch: DispatchWorkItem?
+    private static func isWebView(_ view: UIView) -> Bool { guard let type=NSClassFromString("WKWebView") else { return false };return view.isKind(of:type) }
+    init(vault: PlanetChildVault,host: UIViewController,policy: LocalSnapshotV2Policy,timeoutMs: UInt64,recipient: @escaping (LocalV2OwnedPackageDelivery) throws -> Void) throws {
+        guard Thread.isMainThread,let route=host.viewIfLoaded,let window=route.window,let scene=window.windowScene,let root=window.rootViewController,let territory=Locale.current.regionCode,
+            LocalV2PackageValue.matches(territory,"[A-Z]{2}"),window.isKeyWindow,!window.isHidden,scene.activationState == .foregroundActive,UIApplication.shared.applicationState == .active,
+            host.presentedViewController==nil,!host.isBeingDismissed,!host.isMovingFromParent,!route.isHidden,!Self.isWebView(route) else { throw PinKnownRefusal() }
+        self.host=host;self.route=route;self.window=window;self.scene=scene;self.root=root;self.territory=territory;self.recipient=recipient;presenter=host.presentingViewController
+        var controllers=[UIViewController](),controller=host.parent;while let value=controller { controllers.append(value);controller=value.parent };parents=controllers
+        var views=[UIView](),view=route.superview;while let value=view { guard !Self.isWebView(value) else { throw PinKnownRefusal() };views.append(value);view=value.superview };ancestry=views
+        writer=try LocalV2Writer.pinRuntime(vault:vault,policy:policy);request=try writer.request(host:host,timeoutMs:timeoutMs)
+        witness.owner=self;host.addChild(witness);route.addSubview(witness.view);witness.didMove(toParent:host)
+        let center=NotificationCenter.default;for name in [UIApplication.willResignActiveNotification,UIApplication.didEnterBackgroundNotification,UIScene.didDisconnectNotification,UIWindow.didResignKeyNotification] {
+            observers.append(center.addObserver(forName:name,object:nil,queue:.main) { [weak self] note in guard let self else { return };if name==UIScene.didDisconnectNotification,(note.object as? UIWindowScene) !== self.scene { return };if name==UIWindow.didResignKeyNotification,(note.object as? UIWindow) !== self.window { return };self.revoke() })
+        }
+        let expiry=DispatchWorkItem { [weak self] in self?.revoke() };self.expiry=expiry
+        do { try current();let now=try writer.clock.nanoseconds();guard request.deadline>now,request.deadline-now<=UInt64(Int.max) else { throw PinKnownRefusal() };DispatchQueue.main.asyncAfter(deadline:.now()+.nanoseconds(Int(request.deadline-now)),execute:expiry);watchOriginal() }
+        catch { revoke();startRetirement();throw error }
+    }
+    private func watchOriginal() { lock.lock();let done=closed || revoked;lock.unlock();if done { return };do { try current();_ = try writer.packageLocal(request);if let original=delivery { guard try wall()<original.compiled.until else { throw PinKnownRefusal() } };let next=DispatchWorkItem { [weak self] in self?.watchOriginal() };watch=next;DispatchQueue.main.asyncAfter(deadline:.now()+.milliseconds(10),execute:next) } catch { revoke() } }
+    private func current() throws { guard Thread.isMainThread else { throw PinKnownRefusal() };lock.lock();let denied=revoked || closed;lock.unlock()
+        guard !denied,host.viewIfLoaded === route,route.window === window,window.rootViewController === root,window.windowScene === scene,window.isKeyWindow,!window.isHidden,scene.activationState == .foregroundActive,
+            UIApplication.shared.applicationState == .active,host.presentedViewController==nil,!host.isBeingDismissed,!host.isMovingFromParent,!route.isHidden,route.alpha>0,witness.parent === host,Locale.current.regionCode==territory,host.presentingViewController === presenter else { throw PinKnownRefusal() }
+        var view=route.superview;for exact in ancestry { guard view === exact,!exact.isHidden,exact.alpha>0,exact.window === window else { throw PinKnownRefusal() };view=view?.superview };guard view==nil else { throw PinKnownRefusal() }
+        var controller=host;for exact in parents { guard controller.parent === exact else { throw PinKnownRefusal() };if let navigation=exact as? UINavigationController,navigation.topViewController !== controller { throw PinKnownRefusal() };if let tabs=exact as? UITabBarController,tabs.selectedViewController !== controller { throw PinKnownRefusal() };controller=exact };guard controller.parent==nil else { throw PinKnownRefusal() }
+    }
+    fileprivate func live() throws { lock.lock();let denied=revoked || closed,original=worker;lock.unlock();guard !denied,ObjectIdentifier(Thread.current)==original.map(ObjectIdentifier.init) else { throw PinKnownRefusal() };_ = try writer.packageLocal(request) }
+    fileprivate func wall() throws -> Int64 { let seconds=Date().timeIntervalSince1970;guard seconds.isFinite,seconds>=0,seconds*1000<=8640000000000000 else { throw PinKnownRefusal() };let now=Int64((seconds*1000).rounded(.down));lock.lock();defer { lock.unlock() };guard now>=wallLast else { revoked=true;throw PinKnownRefusal() };wallLast=now;return now }
+    private func mainCurrent() throws { guard !Thread.isMainThread else { throw PinKnownRefusal() };var failure: Error?;DispatchQueue.main.sync { do { try current() } catch { failure=error } };if let failure { throw failure };try live() }
+    fileprivate func fresh(_ original: LocalV2PackageProfile?) throws { try live();try mainCurrent();_ = try writer.packageFresh(request,original) }
+    private func fixedAsset(_ fixed: String,_ limit: Int) throws -> Data { try live();guard fixed=="artifact.json" || fixed=="child-native/catalog-v1.json" || LocalV2PackageValue.matches(fixed,"child-native/(packages|reviews)/[a-f0-9]{64}\\.json"),let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
+        let manager=FileManager.default;var current=resources;for part in (["public"]+fixed.split(separator:"/").map(String.init)) { current.appendPathComponent(part);let values=try current.resourceValues(forKeys:[.isSymbolicLinkKey]);guard values.isSymbolicLink != true,current.resolvingSymlinksInPath().standardizedFileURL==current.standardizedFileURL else { throw PinKnownRefusal() } }
+        let values=try current.resourceValues(forKeys:[.isRegularFileKey,.fileSizeKey]);guard values.isRegularFile==true,let size=values.fileSize,size>0,size<=limit,let stream=InputStream(url:current) else { throw PinKnownRefusal() }
+        var owned=[UInt8](repeating:0,count:limit),used=0;stream.open();defer { stream.close();owned.withUnsafeMutableBytes { $0.initializeMemory(as:UInt8.self,repeating:0) } }
+        while used<limit { try live();let n=owned.withUnsafeMutableBufferPointer { stream.read($0.baseAddress!.advanced(by:used),maxLength:min(8192,limit-used)) };guard n>=0 else { throw PinKnownRefusal() };if n==0 { break };used+=n }
+        if used==limit { var extra: UInt8=0;guard stream.read(&extra,maxLength:1)==0 else { throw PinKnownRefusal() } };try live();guard used==size else { throw PinKnownRefusal() };return Data(owned[0..<used])
+    }
+    func start() throws { guard Thread.isMainThread else { throw PinKnownRefusal() };try current();lock.lock();guard worker==nil,!sent,!closed,!revoked else { lock.unlock();throw PinKnownRefusal() };let thread=Thread { [self] in run() };worker=thread;lock.unlock();thread.start() }
+    private func run() { var catalogBytes=Data(),artifactBytes=Data(),result: LocalV2CompiledPackage?
+        defer { delivery?.close();result?.close();catalogBytes.resetBytes(in:0..<catalogBytes.count);artifactBytes.resetBytes(in:0..<artifactBytes.count);startRetirement() }
+        do { try live();try mainCurrent();if let receipt=try writer.open(request) { try writer.settle(receipt,known:true) };let profile=try writer.packageFresh(request,nil);try mainCurrent()
+            catalogBytes=try fixedAsset("child-native/catalog-v1.json",65536);artifactBytes=try fixedAsset("artifact.json",2097152);let catalog=try LocalV2PackageCatalog(catalogBytes,artifactBytes,"ios");guard !catalog.pins.isEmpty else { throw PinKnownRefusal() }
+            for pinValue in catalog.pins { try live();try fresh(profile);let pin=try LocalV2PackageValue.object(pinValue),sum=try LocalV2PackageValue.hash(pin["packageChecksum"]),reviewSum=try LocalV2PackageValue.hash(pin["reviewChecksum"]);var bytes=try fixedAsset("child-native/packages/"+sum+".json",8388608),review=Data();var candidate: LocalV2CompiledPackage?
+                defer { candidate?.close();bytes.resetBytes(in:0..<bytes.count);review.resetBytes(in:0..<review.count) };review=try fixedAsset("child-native/reviews/"+reviewSum+".json",524288);try catalog.verify("child-native/packages/"+sum+".json",bytes,8388608);try catalog.verify("child-native/reviews/"+reviewSum+".json",review,524288)
+                let audience=try LocalV2PackageValue.object(LocalV2PackageJson.read(bytes,8388608));if try LocalV2PackageValue.text(audience["locale"]) != profile.locale || LocalV2PackageValue.number(audience["exactAge"],3,17) != profile.exactAge || LocalV2PackageValue.text(audience["policyVersion"]) != profile.policyVersion || LocalV2PackageValue.hash(audience["policyChecksum"]) != profile.policyChecksum { continue }
+                try fresh(profile);candidate=try LocalV2PackageCompiler.compile(bytes,review,pinValue,catalog.keys,profile,catalog.platform,territory,wall(),live);guard result==nil else { throw PinKnownRefusal() };result=candidate;candidate=nil
+            }
+            guard let compiled=result else { throw PinKnownRefusal() };try fresh(profile);guard try wall()<compiled.until else { throw PinKnownRefusal() };try mainCurrent();try live();lock.lock();guard !revoked,!closed,!sent,delivery==nil else { lock.unlock();throw PinKnownRefusal() };sent=true;let original=LocalV2OwnedPackageDelivery(self,compiled);delivery=original;result=nil;lock.unlock()
+            try recipient(original);try live();try fresh(profile);guard try wall()<compiled.until else { throw PinKnownRefusal() }
+        } catch { revoke() }
+    }
+    /** Actual native route owner invokes before reusing a still-attached view. */
+    func routeWillChange() { revoke() }
+    fileprivate func revoke() { lock.lock();revoked=true;let original=delivery;lock.unlock();original?.close();writer.cancel(request);startRetirement() }
+    private func startRetirement() { lock.lock();guard retirement==nil else { lock.unlock();return };let original=worker
+        let thread=Thread { [self] in if let original { while !original.isFinished { let condition=writer.condition;condition.lock();_ = condition.wait(until:Date(timeIntervalSinceNow:0.01));condition.unlock() } }
+            DispatchQueue.main.sync { detach() };do { try writer.retire(request);lock.lock();closed=true;lock.unlock() } catch { writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.unlock() }
+        };retirement=thread;lock.unlock();thread.start()
+    }
+    private func detach() { expiry?.cancel();expiry=nil;watch?.cancel();watch=nil;let center=NotificationCenter.default;for observer in observers { center.removeObserver(observer) };observers.removeAll();witness.owner=nil;witness.willMove(toParent:nil);witness.view.removeFromSuperview();witness.removeFromParent() }
+    func close() { guard Thread.isMainThread else { return };revoke();startRetirement() }
+}
+
+#if DEBUG
+/** Isolated software signing fixtures call the actual compiler. No fixture
+ * material can reach the Bundle loader or source-owned production pin JSON. */
+enum PlanetChildNativePackageRuntimeFixture {
+    private static func check(_ value: Bool) throws { guard value else { throw PinKnownRefusal() } }
+    private static func denied(_ body: () throws -> Void) throws { var failed=false;do { try body() } catch { failed=true };try check(failed) }
+    private static func bytes(_ value: Any,sorted: Bool=false) throws -> Data { try JSONSerialization.data(withJSONObject:value,options:sorted ? [.sortedKeys,.withoutEscapingSlashes]:[.withoutEscapingSlashes]) }
+    private final class Fixture {
+        let now: Int64=1791115200000,signer=P256.Signing.PrivateKey(),saved: Data,profile: LocalV2PackageProfile
+        var payload: [String:Any],policy: [String:Any],root: [String:Any],review: [String:Any],pin: [String:Any],key: [String:Any],keys: [[String:Any]]
+        var packageBytes=Data(),reviewBytes=Data()
+        init() throws {
+            let profileBytes=Data(#"{"id":"reader","label":"Native Reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":["nature"],"blockedTopics":["horror"],"soundEnabled":false,"motion":"calm","narrationEnabled":false,"localeLocked":true}"#.utf8)
+            saved=try PlanetChildLocalCanonicalRuntimeFixture.child(profileBytes);let record=try LocalSnapshotV2.decode(saved,policy:LocalSnapshotV2Policy(version:PlanetChildLocalProfileRuntimeFixture.version,checksum:PlanetChildLocalProfileRuntimeFixture.checksum,maximum:1200000,delays:[100,250]));defer { record.close() };profile=try LocalV2PackageProfile(record)
+            payload=["title":"Nature","text":"A tree.","terms":["tree"],"references":[]];let hash=LocalSnapshotV2.hash(try Self.payloadBytes(payload))
+            policy=["id":"start","kind":"activity","sourceVersion":"source.v1","policyVersion":profile.policyVersion,"minAge":3,"maxAge":17,"reviewStatus":"approved",
+                "localizedContent":[["locale":"en","contentChecksum":hash,"reviewStatus":"approved","available":true,"reviewerId":"isolated-editor","reviewedAt":now-1000]],"topics":["nature"],"topicTagsComplete":true,"commercialAvailability":"included-in-base",
+                "rights":["status":"approved","basis":"original","platforms":["android-google","ios-ipados"],"territories":["RU"],"validFrom":now-2000,"expiresAt":NSNull()]]
+            root=["schemaVersion":1,"namespace":"child","packageId":"isolated-package","packageVersion":1,"locale":"en","exactAge":9,"policyVersion":profile.policyVersion,"policyChecksum":profile.policyChecksum,"validFromEpochMs":now-2000,"validUntilEpochMs":now+5000,"home":["kind":"activity","id":"start","contentChecksum":hash],"entities":[]]
+            review=["schemaVersion":1,"kind":"literary-planet-child-release-review-v1","keyId":"child-release-review-isolated-fixture","reviewerId":"isolated-editor","packageId":"isolated-package","packageVersion":1,"packageChecksum":"","policyVersion":profile.policyVersion,"policyChecksum":profile.policyChecksum,"locale":"en","exactAge":9,"readingLevels":[NSNull()],"platforms":["android-google","ios-ipados"],"territories":["RU"],"reviewedAtEpochMs":now-1000,"validFromEpochMs":now-2000,"validUntilEpochMs":now+4000,"entityPolicyChecksums":[]]
+            key=["keyId":"child-release-review-isolated-fixture","reviewerId":"isolated-editor","publicKeyX963Hex":signer.publicKey.x963Representation.map { String(format:"%02x",$0) }.joined()];keys=[key]
+            pin=["packageId":"isolated-package","packageVersion":1,"packageChecksum":"","reviewChecksum":""];try refresh()
+        }
+        private static func payloadBytes(_ row: [String:Any]) throws -> Data { let value=try LocalV2PackageJson.read(bytes(row),131072),m=try LocalV2PackageValue.object(value)
+            return Data(try LocalV2PackageValue.object([("title",m["title"]!),("text",m["text"]!),("terms",m["terms"]!),("references",m["references"]!)]).json(sorted:false).utf8) }
+        func refresh(closure: Bool=true,entities: [[String:Any]]?=nil) throws {
+            if closure { let hash=LocalSnapshotV2.hash(try Self.payloadBytes(payload));var localized=policy["localizedContent"] as! [[String:Any]];localized[0]["contentChecksum"]=hash;policy["localizedContent"]=localized;root["home"]=["kind":"activity","id":"start","contentChecksum":hash]
+                review["entityPolicyChecksums"]=[["kind":policy["kind"]!,"id":policy["id"]!,"payloadChecksum":hash,"policyChecksum":LocalSnapshotV2.hash(try bytes(policy,sorted:true))]] }
+            root["entities"]=entities ?? [["policy":policy,"payload":payload]];packageBytes.resetBytes(in:0..<packageBytes.count);reviewBytes.resetBytes(in:0..<reviewBytes.count);packageBytes=try bytes(root);let hash=LocalSnapshotV2.hash(packageBytes);review["packageChecksum"]=hash;pin["packageChecksum"]=hash;review.removeValue(forKey:"signatureHex")
+            var message=Data("LP-CHILD-RELEASE-REVIEW\0v1\0".utf8);message.append(try bytes(review,sorted:true));defer { message.resetBytes(in:0..<message.count) };review["signatureHex"]=try signer.signature(for:message).rawRepresentation.map { String(format:"%02x",$0) }.joined();reviewBytes=try bytes(review);pin["reviewChecksum"]=LocalSnapshotV2.hash(reviewBytes)
+        }
+        func compile(platform: String="ios-ipados",territory: String="RU",at: Int64?=nil,stop: Int=0) throws -> LocalV2CompiledPackage {
+            let pin=try LocalV2PackageJson.read(bytes(self.pin),65536),keys=try self.keys.map { try LocalV2PackageJson.read(bytes($0),65536) };var calls=0
+            return try LocalV2PackageCompiler.compile(packageBytes,reviewBytes,pin,keys,profile,platform,territory,at ?? now) { calls+=1;if stop>0,calls==stop { throw PinKnownRefusal() } }
+        }
+        deinit { packageBytes.resetBytes(in:0..<packageBytes.count);reviewBytes.resetBytes(in:0..<reviewBytes.count) }
+    }
+    static func run(_ name: String) throws -> Bool {
+        if name=="catalog" {
+            let sourceHash=String(repeating:"a",count:64),catalog: [String:Any]=["schemaVersion":1,"kind":"literary-planet-child-native-assets-v1","platform":"ios-ipados","pinSourceChecksum":sourceHash,"reviewKeys":[],"packages":[]],catalogBytes=try bytes(catalog)
+            var source: [String:Any]=["path":"src/child/childNativeReleasePins.json","sha256":sourceHash],row: [String:Any]=["path":"child-native/catalog-v1.json","bytes":catalogBytes.count,"sha256":LocalSnapshotV2.hash(catalogBytes)]
+            var artifact: [String:Any]=["schemaVersion":1,"kind":"literary-planet-bundled-native-preparation","platform":"ios","channel":"appStore","sourceInputs":["files":[source]],"inventory":[row]]
+            let parsed=try LocalV2PackageCatalog(catalogBytes,bytes(artifact),"ios");try check(parsed.keys.isEmpty && parsed.pins.isEmpty)
+            artifact["channel"]="dev";try denied { _ = try LocalV2PackageCatalog(catalogBytes,bytes(artifact),"ios") };artifact["channel"]="appStore";source["sha256"]=String(repeating:"f",count:64);artifact["sourceInputs"]=["files":[source]];try denied { _ = try LocalV2PackageCatalog(catalogBytes,bytes(artifact),"ios") }
+            source["sha256"]=sourceHash;artifact["sourceInputs"]=["files":[source]];row["sha256"]=String(repeating:"f",count:64);artifact["inventory"]=[row];try denied { _ = try LocalV2PackageCatalog(catalogBytes,bytes(artifact),"ios") };row["sha256"]=LocalSnapshotV2.hash(catalogBytes);artifact["inventory"]=[row];artifact["sourceInputs"]=["files":[source,source]];try denied { _ = try LocalV2PackageCatalog(catalogBytes,bytes(artifact),"ios") };return true
+        }
+        if name=="json" {
+            for value in [Data(#"{"key":1,"\u006bey":2}"#.utf8),Data([0xc3,0x28]),Data("9007199254740992".utf8),Data("-0".utf8),Data("1.0".utf8),Data((String(repeating:"[",count:18)+"0"+String(repeating:"]",count:18)).utf8)] { try denied { _ = try LocalV2PackageJson.read(value,1024) } }
+            let canonical=try LocalV2PackageJson.read(Data(#"{"z":"/Природа","a":[null,true,7]}"#.utf8),1024).json(sorted:true);try check(canonical == #"{"a":[null,true,7],"z":"/Природа"}"#);return true
+        }
+        let f=try Fixture()
+        switch name {
+        case "valid":let compiled=try f.compile();defer { compiled.close() };try check(compiled.packageId=="isolated-package" && compiled.version==1 && compiled.checksum==LocalSnapshotV2.hash(f.packageBytes) && compiled.reviewChecksum==LocalSnapshotV2.hash(f.reviewBytes) && compiled.until==f.now+4000)
+            var payload=try compiled.copy("activity/start",f.now);defer { payload.resetBytes(in:0..<payload.count) };try check(String(decoding:payload,as:UTF8.self)==#"{"title":"Nature","text":"A tree.","terms":["tree"],"references":[]}"#);compiled.close();try denied { _ = try compiled.copy("activity/start",f.now) }
+        case "delivery":let compiled=try f.compile(),copies=LocalV2PackageCopies(compiled);defer { copies.close() };var checks=0
+            let first=try copies.copy("activity/start",{ f.now },{ checks+=1 }),second=try copies.copy("activity/start",{ f.now },{ checks+=1 });try check(checks==4);copies.close();try denied { _ = try first.copy() };try denied { _ = try second.copy() };try denied { _ = try copies.copy("activity/start",{ f.now },{}) }
+            let expiring=LocalV2PackageCopies(try f.compile());defer { expiring.close() };var times=0;try denied { _ = try expiring.copy("activity/start",{ times+=1;return times==1 ? f.now:f.now+4000 },{}) };try check(times==2)
+            let cancelling=LocalV2PackageCopies(try f.compile());defer { cancelling.close() };checks=0;try denied { _ = try cancelling.copy("activity/start",{ f.now },{ checks+=1;if checks==2 { cancelling.close() } }) };try check(checks==2)
+        case "binding":let state=try PlanetChildLocalProfileRuntimeFixture.inspect(f.saved);try check(f.profile.id=="reader" && f.profile.revision==2 && f.profile.exactAge==9 && f.profile.locale=="en" && state.count==2 && state.debt==250 && state.observed==17)
+            let p=try LocalSnapshotV2Policy(version:f.profile.policyVersion,checksum:f.profile.policyChecksum,maximum:1200000,delays:[100,250]),adultBytes=try PlanetChildLocalCanonicalRuntimeFixture.prepare(f.saved,action:"exit-child-mode",target:Data()),adult=try LocalSnapshotV2.decode(adultBytes,policy:p);defer { adult.close() };try denied { _ = try LocalV2PackageProfile(adult) }
+        case "audience":try denied { _ = try f.compile(territory:"US") };try denied { _ = try f.compile(platform:"android-rustore") }
+            for (key,value) in [("locale","ru" as Any),("exactAge",8 as Any),("policyChecksum",String(repeating:"b",count:64) as Any),("readingLevels",["fluent"] as Any)] { let original=f.review[key];f.review[key]=value;try f.refresh(closure:false);try denied { _ = try f.compile() };f.review[key]=original }
+            f.policy["topics"]=["horror"];try f.refresh();try denied { _ = try f.compile() }
+        case "trust":f.keys=[];try denied { _ = try f.compile() };f.keys=[f.key];f.keys[0]["reviewerId"]="foreign";try denied { _ = try f.compile() };f.keys=[f.key]
+            let hash=f.pin["reviewChecksum"];f.pin["reviewChecksum"]=String(repeating:"f",count:64);try denied { _ = try f.compile() };f.pin["reviewChecksum"]=hash;f.review["signatureHex"]=String(repeating:"0",count:128);f.reviewBytes=try bytes(f.review);f.pin["reviewChecksum"]=LocalSnapshotV2.hash(f.reviewBytes);try denied { _ = try f.compile() }
+            f.review["keyId"]="local-qa-1";try f.refresh(closure:false);try denied { _ = try f.compile() }
+        case "closure":f.payload["references"]=[["kind":"writer","id":"missing","contentChecksum":String(repeating:"b",count:64)]];try f.refresh();try denied { _ = try f.compile() };f.payload["references"]=[];try f.refresh()
+            try f.refresh(entities:[["policy":f.policy,"payload":f.payload],["policy":f.policy,"payload":f.payload]]);try denied { _ = try f.compile() };try f.refresh();f.review["entityPolicyChecksums"]=[];try f.refresh(closure:false);try denied { _ = try f.compile() }
+            try f.refresh();f.policy["sourceVersion"]="source.v2";try f.refresh(closure:false);try denied { _ = try f.compile() }
+        case "rights":var rights=f.policy["rights"] as! [String:Any];rights["basis"]="licensed";f.policy["rights"]=rights;try f.refresh();try denied { _ = try f.compile() };rights["basis"]="original";f.policy["rights"]=rights;f.policy["commercialAvailability"]="optional";try f.refresh();try denied { _ = try f.compile() }
+            f.policy["commercialAvailability"]="included-in-base";rights["expiresAt"]=f.now;f.policy["rights"]=rights;try f.refresh();try denied { _ = try f.compile() };rights["expiresAt"]=NSNull();f.policy["rights"]=rights;f.policy["reviewStatus"]="not-reviewed";try f.refresh();try denied { _ = try f.compile() }
+            f.policy["reviewStatus"]="approved";var locale=f.policy["localizedContent"] as! [[String:Any]];locale[0]["reviewedAt"]=f.now+1;f.policy["localizedContent"]=locale;try f.refresh();try denied { _ = try f.compile() }
+        case "escalation":f.root["assets"]=["../../outside"];try f.refresh();try denied { _ = try f.compile() };f.root.removeValue(forKey:"assets");f.policy["kind"]="image";try f.refresh();try denied { _ = try f.compile() };f.policy["kind"]="activity"
+            f.payload["references"]=[["kind":"external-link","id":"adult","contentChecksum":String(repeating:"b",count:64)]];try f.refresh();try denied { _ = try f.compile() };f.payload["references"]=[];f.payload["text"]="bad\0payload";try f.refresh();try denied { _ = try f.compile() }
+            f.payload["text"]=String(repeating:"a",count:32769);try f.refresh();try denied { _ = try f.compile() };f.payload["text"]="A tree.";f.payload["title"]="\u{00a0}Nature";try f.refresh();try denied { _ = try f.compile() }
+        case "expiry":let original=f.packageBytes;try denied { _ = try f.compile(stop:4) };try check(original==f.packageBytes);try denied { _ = try f.compile(at:f.now+4000) };let compiled=try f.compile();defer { compiled.close() };try denied { _ = try compiled.copy("activity/start",f.now+4000) }
+        default:throw PinKnownRefusal()
+        };return true
+    }
+}
+#endif
