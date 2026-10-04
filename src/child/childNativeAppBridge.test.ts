@@ -40,7 +40,7 @@ function fixture() {
     search: vi.fn(async (r: unknown): Promise<unknown> => dataReply(r, [])),
     readCollection: vi.fn(async (r: unknown): Promise<unknown> => dataReply(r, { revision: 0, references: [] })),
     writeCollection: vi.fn(async (r: unknown): Promise<unknown> => { const q = r as { expectedRevision: number; references: ChildEntityReference[] }; return dataReply(r, { revision: q.expectedRevision + 1, references: q.references }); }),
-    addListener: vi.fn(async (_name: "invalidated", listener: (value: unknown) => void) => { order.push("listener"); event = listener; return { remove }; }),
+    addListener: vi.fn(async (_name: "invalidated", listener: (value: unknown) => void): Promise<{ remove(): Promise<void> }> => { order.push("listener"); event = listener; return { remove }; }),
   } satisfies ChildNativeAppPlugin;
   const controller = createChildNativeAppController({ plugin, lifecycle, nowMs: () => Date.now(), timeoutMs: 1_000, requestId: () => (++next).toString(16).padStart(32, "0") });
   controllers.push(controller);
