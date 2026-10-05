@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "ad3b02ef96a58b8952be1db733fc89bac71a0f4f",
+  "headSha": "39462d4578341b0bd17cf04d95ffe114a32ad795",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-05T10:03:10.511Z",
+  "updatedAt": "2026-10-05T13:06:37.078Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Implement the original child journey and Continue flow with protected local per-profile semantic progress and fresh native approved node admission. Existing adult Booky journey authority must not be reused as child approval. Preserve the original globe and current appearance; no open generative chat or child profile upload. GPT-6.1 SOL Ultra authors the complete coherent child journey/progress stage; GPT-6 Astra Ultra reviews, checks and fixes the whole stage before the next SOL stage. Preserve current per-profile appearance, original V1 contracts and local encrypted namespaces, equal RU/EN, Booky/Mr. Booky animation and controls, one canonical globe/renderer/camera plus the existing decorative Booky canvas. Free LOCAL remains accountless; no full child-record upload. Persist canonical references and semantic progress only; never tokens, URLs or approval booleans. Empty genuine review/rights/package/media/resource/scene pins remain DENY; synthetic fixtures never close native OS, editorial, payment or release gates. S03/S16 remain IN_PROGRESS11/36 OPEN; owner7/reviews5, PSP unselected, releaseReady=false. No unchanged QA/build reruns, seventh AVD attempt, report-only D stage or remote/push/merge/deploy/store actions.",
+    "nextAction": "Child Home age-admitted discovery and private local literary passport: implement native-admitted age-specific writer/book discovery, private local literary passport and actual parent-gated history/profile removal while preserving original canonical globe and fresh child authority. GPT-6.1 SOL Ultra authors the next whole coherent stage; GPT-6 Astra Ultra reviews, checks and fixes that whole stage before further SOL development. Preserve existing progress, original native V1 contracts and encrypted local namespaces, equal RU/EN, Booky/Mr. Booky animation and controls, one canonical globe/renderer/camera plus the existing decorative Booky canvas. Free LOCAL stays accountless; no full child-record upload. Empty genuine package/media/resource/scene/review/rights pins remain DENY. Synthetic fixtures and compiled native tests do not prove installed OS storage, rights approval or release acceptance. No unchanged QA/build reruns, seventh AVD attempt, report-only D stage or remote/push/merge/deploy/store actions.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
