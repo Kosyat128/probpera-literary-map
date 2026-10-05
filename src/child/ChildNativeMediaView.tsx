@@ -114,7 +114,11 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
       {selected.transcript && <details open><summary>{text.transcript}</summary><p>{selected.transcript}</p></details>}
       <button type="button" onClick={() => { void close(); }}>{text.close}</button>
     </div>}
-    {phase === "loading" && <p role="status">{text.loading}</p>}
-    {phase === "unavailable" && <p role="status">{text.unavailable}</p>}
+    {/* Preserve page height when native decoding finishes, including at the
+        document scroll limit; a disappearing status must not move the slot. */}
+    <p role="status" aria-hidden={phase !== "loading" && phase !== "unavailable"}
+      style={{ visibility: phase === "loading" || phase === "unavailable" ? "visible" : "hidden" }}>
+      {phase === "unavailable" ? text.unavailable : text.loading}
+    </p>
   </section>;
 }
