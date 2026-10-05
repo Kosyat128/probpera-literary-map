@@ -1,0 +1,155 @@
+import path from "node:path";
+import fs from "node:fs/promises";
+import {createHash,randomUUID} from "node:crypto";
+import {isLocalCliEntry} from "./local-cli-entry.mjs";
+import {nativeRuntimeSources} from "./native-install-runtime.mjs";
+const sha=b=>createHash("sha256").update(b).digest("hex"),copy=v=>JSON.parse(JSON.stringify(v));
+const require=(v,m)=>{if(!v)throw Error("Journey browser fixture: "+m);};
+const within=(r,p)=>{const s=path.relative(r,p);return s&&!s.startsWith("..")&&!path.isAbsolute(s);};
+const profiles=["journey-profile-a","journey-profile-b"];
+
+/** Disposable server seam. It supplies synthetic reviewed DTOs and disk data,
+ * never real native AES, OS owner, editorial/rights or release approval. */
+function nativeSeam(statePath,key){
+ const state={schemaVersion:1,active:profiles[0],locales:{[profiles[0]]:"ru",[profiles[1]]:"en"},version:1,entries:Object.fromEntries(profiles.map(p=>[p,{profileId:p,revision:0,progress:null}]))};
+ let context=null,generation=0,activeJourney=null,denied=false,fault=null,heldAdvance=null;const events=[],token=()=>randomUUID().replaceAll("-","");
+ const locale=()=>state.locales[state.active],suffix=()=>state.active===profiles[0]?"a":"b",hash=()=>locale()==="ru"?"a".repeat(64):"b".repeat(64);
+ const ref=(kind,id)=>({kind,id,contentChecksum:hash()}),home=()=>ref("activity","home-"+suffix()),journeyId=()=>"journey-"+suffix();
+ const nodes=()=>state.version===1?["russia","writer-"+suffix(),"work-"+suffix()]:["russia","work-"+suffix()];
+ const refs=()=>nodes().map(id=>ref(id==="russia"?"country":id.startsWith("writer")?"writer":"work",id));
+ const info=()=>({journeyId:journeyId(),journeyVersion:state.version,contentVersion:state.version,title:locale()==="ru"?"Тестовое путешествие "+suffix().toUpperCase():"Fixture journey "+suffix().toUpperCase(),description:locale()==="ru"?"Синтетические материалы для проверки интерфейса.":"Synthetic content for interface checks.",nodeCount:nodes().length});
+ function entity(reference){const canonical=[home(),ref("activity",journeyId()),...refs()].find(r=>JSON.stringify(r)===JSON.stringify(reference));require(canonical,"fresh synthetic reference");
+  const isHome=canonical.id===home().id,isJourney=canonical.id===journeyId(),ru=locale()==="ru";
+  return {reference:canonical,payload:{title:isHome?(ru?"Детская главная":"Child home"):isJourney?info().title:canonical.kind==="country"?(ru?"Тестовая страна":"Fixture country"):canonical.kind==="writer"?(ru?"Тестовый писатель":"Fixture writer"):(ru?"Тестовое произведение":"Fixture work"),text:ru?"Только синтетический материал интерфейса.":"Synthetic interface content only.",terms:[],references:isHome?[ref("country","russia"),ref("activity",journeyId())]:isJourney?refs():[]}};}
+ async function persist(){const next=statePath+".next";await fs.writeFile(next,JSON.stringify(state,null,2)+"\n");await fs.rename(next,statePath);require(JSON.stringify(JSON.parse(await fs.readFile(statePath,"utf8")))===JSON.stringify(state),"synthetic exact disk readback");}
+ async function read(){const actual=JSON.parse(await fs.readFile(statePath,"utf8"));require(JSON.stringify(actual)===JSON.stringify(state),"fresh synthetic disk state");return actual;}
+ function mint(policy){activeJourney=null;++generation;context={token:token(),generation,revision:generation,selectionRevision:generation,profileRevision:generation,policyVersion:policy.version,policyChecksum:policy.checksum,mode:"child",profileId:state.active,locale:locale(),package:{id:"synthetic-journey-package",version:state.version,checksum:hash()},home:home(),remainingLifetimeMs:60000};}
+ const app=r=>({version:2,requestId:r.requestId,status:"child",reason:null,context:copy(context),profiles:profiles.map(p=>({id:p,label:"Synthetic "+p,exactAge:9,locale:locale()}))});
+ const outcome=(status="restored")=>{const saved=state.entries[state.active];return{status,...copy(saved),journey:denied||!saved.progress?null:{...info(),nodeIds:nodes()},node:denied||!saved.progress?.currentNodeId?null:entity(refs().find(r=>r.id===saved.progress.currentNodeId))};};
+ async function control(input,secret){require(secret===key,"owned fixture key");
+  if(input.action==="snapshot")return{state:copy(state),context:copy(context),activeJourney,advanceHeld:!!heldAdvance?.entered,events:copy(events),nativeAuthority:false};
+  if(input.action==="holdAdvance"){require(!heldAdvance,"single held mutation");let release;const promise=new Promise(resolve=>{release=resolve;});heldAdvance={promise,release,entered:false};return{status:"held"};} if(input.action==="releaseAdvance"){require(heldAdvance?.entered,"entered original mutation");const held=heldAdvance;heldAdvance=null;held.release();return{status:"released"};} if(input.action==="deny"){require(typeof input.value==="boolean","denial boolean");denied=input.value;}
+  else if(input.action==="fault"){require([null,"read","readback"].includes(input.value),"bounded fault");fault=input.value;}
+  else if(input.action==="migrate"){require(input.version===2,"bounded fixture migration");state.version=2;await persist();}
+  else throw Error("Unknown fixture action");return{status:"ok"};}
+ async function command(method,r,policy){require(r?.version===2&&/^[a-f0-9]{32}$/u.test(r.requestId),"closed synthetic correlation");events.push({method,profileId:state.active,locale:locale(),generation});
+  if(method==="bootstrap"||method==="readContext"){await read();mint(policy);return app(r);}
+  if(method==="retire"){require(r.contextToken===null||r.contextToken===context?.token,"original retirement");activeJourney=null;context=null;return{version:2,requestId:r.requestId,status:"retired",contextToken:r.contextToken};}
+  require(context&&r.contextToken===context.token,"current context");
+  if(method==="perform"){if(r.action==="expand-access-settings"){require(r.target?.profileId===state.active&&["ru","en"].includes(r.target?.changes?.locale),"locale action");state.locales[state.active]=r.target.changes.locale;}
+   else if(r.action==="enter-child"){require(profiles.includes(r.target?.profileId),"profile action");state.active=r.target.profileId;}else throw Error("Unsupported fixture action");await persist();mint(policy);return app(r);}
+  const data=value=>({version:2,requestId:r.requestId,status:"ok",contextToken:context.token,generation:context.generation,value});
+  if(method==="readEntity")return data(entity(r.reference));
+  if(["search","listMedia","listScenes"].includes(method))return data([]);
+  if(method==="readCollection")return data({revision:0,references:[]});
+  if(method==="readSceneSelection")return data({profileId:state.active,revision:0,selection:null});
+  if(method==="restoreSceneSelection")return data({status:"absent",profileId:state.active,revision:0,selection:null,scene:null});
+  if(method==="releaseScene")return data({status:"retired",sceneToken:r.sceneToken});
+  if(method==="releaseMedia")return data({status:"retired",presentationToken:r.presentationToken});
+  if(method==="releaseWebResource")return data({status:"retired",resourceToken:r.resourceToken});
+  if(method==="listJourneys")return data(denied?[]:[info()]);
+  if(method==="readJourneyProgress"){if(fault==="read"){fault=null;throw Error("Synthetic native read fault");}return data(copy((await read()).entries[state.active]));}
+  if(method==="closeJourney"){activeJourney=null;return data({status:"retired"});}
+  const saved=state.entries[state.active];require(r.expectedRevision===saved.revision&&r.journeyId===journeyId(),"native seam profile CAS/root");
+  if(denied)return data({...outcome("unavailable"),journey:null,node:null});
+  if(method==="openJourney"){
+   let changed=false;if(!saved.progress){saved.progress={schemaVersion:1,journeyId:journeyId(),journeyVersion:state.version,contentVersion:state.version,currentNodeId:nodes()[0],completedNodeIds:[],selectedCountryId:null,selectedWriterId:null,selectedWorkId:null,lastSafeRoute:"journey"};changed=true;}
+   if(saved.progress.contentVersion!==state.version){saved.progress.contentVersion=state.version;saved.progress.journeyVersion=state.version;if(saved.progress.currentNodeId&&!nodes().includes(saved.progress.currentNodeId))saved.progress.currentNodeId=nodes().find(id=>!saved.progress.completedNodeIds.includes(id))??null;changed=true;}
+   if(changed){saved.revision++;await persist();}activeJourney=journeyId();return data(outcome(changed?"opened":"restored"));}
+  require(method==="advanceJourney"&&activeJourney===journeyId()&&r.currentNodeId===saved.progress?.currentNodeId,"native-owned active node");
+  if(heldAdvance){heldAdvance.entered=true;await heldAdvance.promise;} if(r.action==="restart")saved.progress.currentNodeId=nodes()[0];
+  else{require(r.action==="complete"&&saved.progress.currentNodeId!==null,"explicit completion");const id=saved.progress.currentNodeId;if(!saved.progress.completedNodeIds.includes(id))saved.progress.completedNodeIds.push(id);
+   if(id==="russia")saved.progress.selectedCountryId=id;else if(id.startsWith("writer"))saved.progress.selectedWriterId=id;else saved.progress.selectedWorkId=id;
+   saved.progress.currentNodeId=nodes()[nodes().indexOf(id)+1]??null;}
+  saved.revision++;await persist();const value=outcome();if(fault==="readback"){fault=null;value.revision++;}return data(value);}
+ return{persist,control,command};
+}
+
+const entry=String.raw`
+import {_roots} from "@react-three/fiber";
+import {mountHostApp} from "/src/host/mountHostApp";
+import {createChildNativeAppController,CHILD_NATIVE_LOCAL_POLICY_VERSION,CHILD_NATIVE_LOCAL_POLICY_CHECKSUM} from "/src/child/childNativeAppBridge";
+const key=new URL(location.href).searchParams.get("control")!,listeners=new Set<()=>void>(),state={connectivity:"offline",visibility:"active"};let original:any=null;
+async function post(action:string,input:any){const response=await fetch("/__child_journey_fixture/"+action,{method:"POST",headers:{"content-type":"application/json",...(action==="control"?{"x-fixture-control":key}:{})},body:JSON.stringify(input)});if(!response.ok)throw Error("Synthetic native seam refused "+action);return response.json();}
+const plugin:any={addListener:async()=>({remove:async()=>{}})};
+for(const method of ["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","releaseMedia","listScenes","releaseScene","releaseWebResource","readSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"])plugin[method]=(request:any)=>post("command",{method,request,policy:{version:CHILD_NATIVE_LOCAL_POLICY_VERSION,checksum:CHILD_NATIVE_LOCAL_POLICY_CHECKSUM}});
+const services:any={kind:"android",channel:"dev",preferences:{persistence:"durable",get:async()=>null,set:async()=>false,remove:async()=>false},getSnapshot:()=>state,subscribe:(f:()=>void)=>{listeners.add(f);return()=>listeners.delete(f);},getSystemLanguages:()=>["ru"],openExternalLink:()=>"blocked"};
+const controller=createChildNativeAppController({plugin,lifecycle:services});services.childApp=controller;
+const host=mountHostApp({services,initialization:{language:{status:"ready",value:"ru"},preference:{status:"ready",value:null}},createAdultServices:async()=>{throw Error("Adult journey authority forbidden");}});
+function remember(){const globe=[..._roots.values()][0]?.store.getState();if(!globe)throw Error("Original canonical globe unavailable");original={canvas:globe.gl.domElement,renderer:globe.gl,camera:globe.camera,scene:globe.scene};return inspect();}
+function inspect(){const v=[..._roots.values()][0]?.store.getState();return{phase:controller.getSnapshot().phase,profileId:controller.getSnapshot().context?.profileId,locale:controller.getSnapshot().context?.locale,
+ globeCanvases:document.querySelectorAll("[data-globe-mode] canvas").length,bookyCanvases:document.querySelectorAll("canvas[data-booky-canvas]").length,totalCanvases:document.querySelectorAll("canvas").length,
+ same:!!v&&(!original||(original.canvas===v.gl.domElement&&original.renderer===v.gl&&original.camera===v.camera&&original.scene===v.scene)),node:document.querySelector("[data-child-journey-node]")?.getAttribute("data-child-journey-node")??null,
+ pose:v?v.camera.position.toArray():null,quaternion:v?v.camera.quaternion.toArray():null,text:document.querySelector(".child-native-journeys")?.textContent??null};}
+(window as any).__childJourneyBrowser={remember,inspect,control:(input:any)=>post("control",input),transition:(locale:string)=>controller.perform("expand-access-settings",{profileId:controller.getSnapshot().context?.profileId,changes:{locale}}),switchProfile:(profileId:string)=>controller.perform("enter-child",{profileId}),refresh:()=>controller.refresh(),visibility:async(value:string)=>{state.visibility=value;listeners.forEach(f=>f());await Promise.resolve();return inspect();},unmount:()=>host.unmount()};
+`;
+
+export async function runChildJourneyBrowserFixture(options={}){
+ const root=await fs.realpath(options.rootDir??path.resolve(import.meta.dirname,"../..")),runId=options.runId,output=path.resolve(root,options.outDir??"");
+ require(typeof runId==="string"&&/^[a-f0-9]{32}$/u.test(runId)&&within(root,output)&&output===path.join(root,".tmp","child-journey-browser-"+runId),"exact own output and run ID");
+ const report={schemaVersion:1,kind:"literary-planet-child-journey-browser",root,output,runId,status:"NOT_RUN",nativeAuthority:false,installedStorageAcceptance:false,releaseReady:false,checks:[],captures:[],sourceInputs:await nativeRuntimeSources(root)};
+ if(options.execute!==true)return report;
+ require(typeof options.executablePath==="string"&&path.isAbsolute(options.executablePath),"existing explicit browser executable");await fs.mkdir(output,{recursive:false});
+ const {createServer}=await import("vite"),{default:react}=await import("@vitejs/plugin-react"),{chromium}=await import("playwright");
+ const key=randomUUID().replaceAll("-",""),seam=nativeSeam(path.join(output,"synthetic-state.json"),key);let server=null,browser=null,page=null;
+ await fs.writeFile(path.join(output,"index.html"),'<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><div id="root"></div><script type="module" src="./entry.tsx"></script></body></html>');await fs.writeFile(path.join(output,"entry.tsx"),entry);
+ const observed=()=>page.evaluate(()=>window.__childJourneyBrowser.inspect()),snapshot=()=>page.evaluate(()=>window.__childJourneyBrowser.control({action:"snapshot"}));
+ async function idle(){await page.waitForFunction(()=>{const el=document.querySelector(".child-native-journeys");return el&&!el.getAttribute("aria-busy").includes("true");},undefined,{timeout:30000});}
+ async function stableCamera(){let previous=null,stable=0;for(let attempts=0;attempts<100;attempts++){await page.waitForTimeout(40);const value=await observed();if(value.pose&&previous&&value.pose.every((n,i)=>Math.abs(n-previous.pose[i])<0.00001)&&value.quaternion.every((n,i)=>Math.abs(n-previous.quaternion[i])<0.00001))stable++;else stable=0;if(stable>=3)return value;previous=value;}throw Error('Original camera did not settle');}
+ async function capture(label){const filename=path.join(output,label+".png");await page.screenshot({path:filename});report.captures.push({label,path:filename,sha256:sha(await fs.readFile(filename)),reviewed:false});}
+ function canonical(v,same=true){require(v.globeCanvases===1&&v.bookyCanvases===1&&v.totalCanvases===2&&(!same||v.same),"one original globe, renderer, camera and existing Booky canvas");}
+ try{
+  await seam.persist();server=await createServer({root,configFile:false,envDir:false,envPrefix:[],base:"/",plugins:[react(),{name:"explicit-synthetic-native-child-journey-seam",configureServer(vite){vite.middlewares.use(async(req,res,next)=>{
+   if(!new URL(req.url,"http://127.0.0.1").pathname.startsWith("/__child_journey_fixture/"))return next();try{require(req.method==="POST"&&req.headers["content-type"]==="application/json","JSON fixture request");const parts=[];let size=0;for await(const part of req){size+=part.length;require(size<=65536,"bounded request");parts.push(part);}const input=JSON.parse(Buffer.concat(parts).toString("utf8")),v=req.url.endsWith("/command")?await seam.command(input.method,input.request,input.policy):await seam.control(input,req.headers["x-fixture-control"]);res.setHeader("content-type","application/json");res.end(JSON.stringify(v));}catch{res.statusCode=409;res.end('{"status":"denied","nativeAuthority":false}');}});}}],cacheDir:path.join(output,"vite-cache"),optimizeDeps:{entries:[path.join(output,"index.html")]},
+   define:{__LITERARY_PLANET_EDITION__:JSON.stringify("native"),__LITERARY_PLANET_ANDROID_CHANNEL__:JSON.stringify("dev"),__LITERARY_PLANET_IOS_CHANNEL__:JSON.stringify("dev"),__LITERARY_PLANET_LICENSE_AUTHORITY__:"null",__LITERARY_PLANET_LOCAL_QA__:"false",__YANDEX_METRIKA_COUNTER_ID__:JSON.stringify(""),"import.meta.env.VITE_SUPABASE_URL":JSON.stringify(""),"import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY":JSON.stringify(""),"import.meta.env.VITE_TURNSTILE_SITE_KEY":JSON.stringify("")},server:{host:"127.0.0.1",port:0,strictPort:false,watch:null,fs:{strict:true,allow:[root]}}});
+  await server.listen();const address=server.httpServer.address(),origin="http://127.0.0.1:"+address.port,relative=path.relative(root,path.join(output,"index.html")).replaceAll("\\","/");
+  let errors=[];async function launch(){browser=await chromium.launch({executablePath:options.executablePath,headless:true,args:["--use-angle=swiftshader","--enable-unsafe-swiftshader"]});const ctx=await browser.newContext({viewport:{width:1100,height:820},locale:"ru-RU"});page=await ctx.newPage();errors=[];page.on("pageerror",e=>errors.push(e.message));await page.route("**/*",r=>new URL(r.request().url()).origin===origin?r.continue():r.abort());await page.goto(origin+"/"+relative+"?control="+key,{waitUntil:"domcontentloaded"});await page.waitForFunction(()=>!!window.__childJourneyBrowser,undefined,{timeout:30000});await idle();await page.waitForFunction(()=>{try{return window.__childJourneyBrowser.remember().globeCanvases===1;}catch{return false;}},undefined,{timeout:30000});}
+  await launch();canonical(await observed());require((await snapshot()).state.entries[profiles[0]].progress===null,"first install does not invent progress");
+  await page.getByRole("button",{name:"Путешествовать · Тестовое путешествие A",exact:true}).click();await page.locator('[data-child-journey-node="russia"]').waitFor();await idle();canonical(await observed());await capture("ru-child-journey-first-step");const rotation=page.locator("[data-globe-control=auto-rotate]");if(await rotation.getAttribute("aria-pressed")==="true")await rotation.click();await stableCamera();
+  await page.evaluate(()=>window.__childJourneyBrowser.control({action:"holdAdvance"}));
+  await page.getByRole("button",{name:"Готово · дальше",exact:true}).click();
+  await page.waitForFunction(async()=>!!(await window.__childJourneyBrowser.control({action:"snapshot"})).advanceHeld);
+  await page.getByRole("button",{name:"Главная",exact:true}).click();
+  require(!await page.locator("[data-child-journey-node]").count(),"navigation immediately hides the held mutation node");
+  await page.evaluate(()=>window.__childJourneyBrowser.control({action:"releaseAdvance"}));await idle();
+  await page.getByRole("button",{name:"Продолжить · Тестовое путешествие A",exact:true}).click();
+  await page.locator('[data-child-journey-node="writer-a"]').waitFor();await idle();
+  require((await snapshot()).state.entries[profiles[0]].progress.completedNodeIds.join()==="russia","explicit completion persists only semantic node");
+  report.checks.push({id:"native-child-entry-explicit-completion",status:"PASS",nativeAuthority:false});
+  report.checks.push({id:"navigation-during-write-joins-fresh-continue-revision",status:"PASS",nativeAuthority:false});
+  const beforeCamera=await stableCamera(),beforeLocale=await snapshot();require(await page.evaluate(()=>window.__childJourneyBrowser.transition("en")),"existing protected locale action");await page.locator('[data-child-journey-node="writer-a"]').waitFor();await page.getByRole("heading",{name:"Fixture writer",exact:true}).waitFor();await idle();canonical(await observed());const afterCamera=await stableCamera();require(afterCamera.pose.every((n,i)=>Math.abs(n-beforeCamera.pose[i])<0.0001)&&afterCamera.quaternion.every((n,i)=>Math.abs(n-beforeCamera.quaternion[i])<0.0001),"same canonical camera pose across admitted locale change");require(JSON.stringify((await snapshot()).state.entries)===JSON.stringify(beforeLocale.state.entries),"locale preserves semantic progress");await capture("en-same-root-child-journey");report.checks.push({id:"same-root-locale-fresh-node",status:"PASS",nativeAuthority:false});
+  const beforeRoundTrip=await snapshot();
+  for(const targetLocale of ["ru","en"]){
+   const retiredToken=(await snapshot()).context.token;
+   require(await page.evaluate(value=>window.__childJourneyBrowser.transition(value),targetLocale),"protected language round-trip");
+   await page.locator('[data-child-journey-node="writer-a"]').waitFor();
+   await page.getByRole("heading",{name:targetLocale==="ru"?"Тестовый писатель":"Fixture writer",exact:true}).waitFor();await idle();
+   const afterRoundTrip=await snapshot(),pose=await stableCamera();
+   require(afterRoundTrip.context.token!==retiredToken&&afterRoundTrip.context.locale===targetLocale,"new native context for each locale");
+   require(JSON.stringify(afterRoundTrip.state.entries)===JSON.stringify(beforeRoundTrip.state.entries),"RU EN RU semantic progress unchanged");canonical(await observed());
+   require(pose.pose.every((n,i)=>Math.abs(n-afterCamera.pose[i])<0.0001)&&pose.quaternion.every((n,i)=>Math.abs(n-afterCamera.quaternion[i])<0.0001),"round-trip preserves original camera pose");
+   if(targetLocale==="ru")await capture("ru-return-same-journey");
+  }
+  report.checks.push({id:"same-root-ru-en-ru-semantic-continuity",status:"PASS",nativeAuthority:false});
+  await page.setViewportSize({width:390,height:844});await page.getByRole("button",{name:"Done · next",exact:true}).scrollIntoViewIfNeeded();
+  const phone=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth>innerWidth,buttons:[...document.querySelectorAll(".child-native-journeys button")].map(button=>({height:button.getBoundingClientRect().height,disabled:button.disabled}))}));
+  require(!phone.overflow&&phone.buttons.length>=3&&phone.buttons.every(button=>button.height>=44&&!button.disabled),"phone journey controls are readable with 44px targets and no horizontal overflow");canonical(await observed());await capture("en-phone-child-journey");
+  await page.setViewportSize({width:1100,height:820});report.checks.push({id:"phone-journey-controls",status:"PASS",nativeAuthority:false});
+  await page.getByRole("button",{name:"Back to journeys",exact:true}).click();await idle();await page.getByRole("button",{name:"Continue · Fixture journey A",exact:true}).waitFor();require((await snapshot()).activeJourney===null,"Home retires transient native node");await page.getByRole("button",{name:"Continue · Fixture journey A",exact:true}).click();await page.locator('[data-child-journey-node="writer-a"]').waitFor();
+  await page.getByRole("button",{name:"Travel again",exact:true}).click();await page.locator('[data-child-journey-node="russia"]').waitFor();require((await snapshot()).state.entries[profiles[0]].progress.completedNodeIds.includes("russia"),"restart does not erase completed progress");
+  for(const node of ["writer-a","work-a"]){await page.getByRole("button",{name:"Done · next",exact:true}).click();await page.locator('[data-child-journey-node="'+node+'"]').waitFor();}
+  await page.getByRole("button",{name:"Done · next",exact:true}).click();await page.getByText("Journey complete! Your completed steps are saved.",{exact:true}).waitFor();require((await snapshot()).state.entries[profiles[0]].progress.currentNodeId===null,"final explicit completion");report.checks.push({id:"continue-restart-final-completion",status:"PASS",nativeAuthority:false});
+  require(await page.evaluate(()=>window.__childJourneyBrowser.switchProfile("journey-profile-b")),"second profile");await idle();await page.getByRole("button",{name:"Travel · Fixture journey B",exact:true}).click();await page.locator('[data-child-journey-node="russia"]').waitFor();require((await snapshot()).state.entries[profiles[1]].progress.completedNodeIds.length===0,"profile B does not inherit A completions");canonical(await observed(),false);report.checks.push({id:"profile-isolation",status:"PASS",nativeAuthority:false});
+  require(await page.evaluate(()=>window.__childJourneyBrowser.switchProfile("journey-profile-a")),"first profile return");await idle();await page.getByRole("button",{name:"Continue · Fixture journey A",exact:true}).click();await page.getByText("Journey complete! Your completed steps are saved.",{exact:true}).waitFor();
+  const retired=await page.evaluate(()=>window.__childJourneyBrowser.visibility("background"));require(retired.phase==="sealed"&&!retired.node&&retired.text===null,"clear native journey before background settlement");await page.evaluate(()=>window.__childJourneyBrowser.visibility("active"));await idle();await page.getByText("Journey complete! Your completed steps are saved.",{exact:true}).waitFor();report.checks.push({id:"background-fresh-native-continuity",status:"PASS",nativeAuthority:false});
+  require(errors.length===0,"runtime page errors "+errors.join(";"));await page.evaluate(()=>window.__childJourneyBrowser.unmount());await browser.close();browser=null;
+  await launch();await page.getByRole("button",{name:"Continue · Fixture journey A",exact:true}).waitFor();require(await page.locator("[data-child-journey-node]").count()===0,"fresh process offers explicit Continue");await page.getByRole("button",{name:"Continue · Fixture journey A",exact:true}).click();await page.getByText("Journey complete! Your completed steps are saved.",{exact:true}).waitFor();await capture("en-new-process-continue");report.checks.push({id:"fresh-browser-process-synthetic-disk",status:"PASS",nativeAuthority:false});
+  await page.getByRole("button",{name:"Back to journeys",exact:true}).click();await idle();await page.evaluate(()=>window.__childJourneyBrowser.control({action:"deny",value:true}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await page.getByText("The saved journey is currently unavailable. Its progress stays on this device.",{exact:true}).waitFor();require((await snapshot()).state.entries[profiles[0]].progress.completedNodeIds.length===3&&!await page.locator("[data-child-journey-node]").count(),"denied journey never discards completions or exposes node");
+  await page.evaluate(()=>window.__childJourneyBrowser.control({action:"deny",value:false}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await page.getByRole("button",{name:"Continue · Fixture journey A",exact:true}).click();await page.getByText("Journey complete! Your completed steps are saved.",{exact:true}).waitFor();report.checks.push({id:"fresh-admission-denial-retry",status:"PASS",nativeAuthority:false});
+  await page.getByRole("button",{name:"Travel again",exact:true}).click();await page.locator('[data-child-journey-node="russia"]').waitFor();await page.evaluate(()=>window.__childJourneyBrowser.control({action:"migrate",version:2}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await page.locator('[data-child-journey-node="russia"]').waitFor();require((await snapshot()).state.entries[profiles[0]].progress.completedNodeIds.includes("writer-a"),"update preserves archived completed ID");report.checks.push({id:"semantic-version-migration",status:"PASS",nativeAuthority:false});
+  await page.evaluate(()=>window.__childJourneyBrowser.control({action:"fault",value:"readback"}));await page.getByRole("button",{name:"Done · next",exact:true}).click();await page.waitForFunction(()=>window.__childJourneyBrowser.inspect().phase==="sealed");const uncertain=await snapshot();require(!await page.locator("[data-child-journey-node]").count(),"unknown commit retires visible node");await page.evaluate(()=>window.__childJourneyBrowser.refresh());require((await snapshot()).events.filter(v=>v.method==="bootstrap").length===uncertain.events.filter(v=>v.method==="bootstrap").length,"unknown write stays sealed without replay");report.checks.push({id:"uncertain-save-readback-no-replay",status:"PASS",nativeAuthority:false});
+  require(errors.length===0,"restart runtime errors "+errors.join(";"));await page.evaluate(()=>window.__childJourneyBrowser.unmount());require(JSON.stringify(await nativeRuntimeSources(root))===JSON.stringify(report.sourceInputs),"whole source fingerprint preserved");report.status="PASS";return report;
+ }catch(error){report.status="FAIL";report.error=String(error?.stack??error);if(page&&!page.isClosed()){report.failureObservation=await page.evaluate(()=>({text:document.body.innerText,fixture:window.__childJourneyBrowser?.inspect()})).catch(()=>null);await page.screenshot({path:path.join(output,"failed-page.png")}).catch(()=>{});}throw error;}
+ finally{const cleanup=await Promise.allSettled([Promise.resolve().then(()=>browser?.close()),Promise.resolve().then(()=>server?.close())]);report.cleanup={ownedBrowserClosed:cleanup[0].status==="fulfilled",ownedServerClosed:cleanup[1].status==="fulfilled",nativeAuthority:false};const failed=cleanup.filter(v=>v.status==="rejected");if(failed.length){report.status="FAIL";report.cleanupErrors=failed.map(v=>String(v.reason));}await fs.writeFile(path.join(output,"result.json"),JSON.stringify(report,null,2)+"\n");if(failed.length)throw Error("Owned browser/server cleanup failed; raw errors retained");}
+}
+if(isLocalCliEntry(import.meta.url)){const args=process.argv.slice(2),options={};for(let i=0;i<args.length;i++){if(args[i]==="--execute")options.execute=true;else if(["--root","--out","--run-id","--browser"].includes(args[i])&&args[i+1]&&!args[i+1].startsWith("--"))options[{"--root":"rootDir","--out":"outDir","--run-id":"runId","--browser":"executablePath"}[args[i]]]=args[++i];else throw Error("Use --root exact-root --out own-.tmp-path --run-id32hex [--browser existing-executable --execute]");}const report=await runChildJourneyBrowserFixture(options);process.stdout.write(JSON.stringify({status:report.status,output:report.output,nativeAuthority:false,releaseReady:false})+"\n");}

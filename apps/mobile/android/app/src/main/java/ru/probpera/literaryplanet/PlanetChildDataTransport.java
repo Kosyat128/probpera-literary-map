@@ -221,13 +221,13 @@ final class PlanetChildDataTransport {
     static final class V2Request {
         final String method,id,contextToken,action,collection,query;
         final Map<String,Object> target,reference,owner,layout;final String assetId,presentationToken;
-        final String sceneId,sceneToken,slotId,resourceToken;
+        final String sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId;
         final List<Map<String,Object>> references;
         final long expectedRevision;
         private V2Request(String method,String id,String token,String action,Map<String,Object> target,
-            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken,String sceneId,String sceneToken,String slotId,String resourceToken) {
+            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken,String sceneId,String sceneToken,String slotId,String resourceToken,String journeyId,String currentNodeId) {
             this.method=method;this.id=id;contextToken=token;this.action=action;this.target=target;this.reference=reference;
-            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;this.sceneId=sceneId;this.sceneToken=sceneToken;this.slotId=slotId;this.resourceToken=resourceToken;
+            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;this.sceneId=sceneId;this.sceneToken=sceneToken;this.slotId=slotId;this.resourceToken=resourceToken;this.journeyId=journeyId;this.currentNodeId=currentNodeId;
         }
     }
     private static long v2Integer(Object value,long min,long max) throws Exception {
@@ -262,13 +262,16 @@ final class PlanetChildDataTransport {
     @SuppressWarnings("unchecked")
     static V2Request decodeV2(String method,Map<String,?> value) throws Exception {
         String id=correlation(value==null?null:value.get("requestId")),token=null,action=null,collection=null,query=null;
-        Map<String,Object> target=null,reference=null,owner=null,layout=null;String assetId=null,presentationToken=null,sceneId=null,sceneToken=null,slotId=null,resourceToken=null;List<Map<String,Object>> references=null;long revision=0;
+        Map<String,Object> target=null,reference=null,owner=null,layout=null;String assetId=null,presentationToken=null,sceneId=null,sceneToken=null,slotId=null,resourceToken=null,journeyId=null,currentNodeId=null;List<Map<String,Object>> references=null;long revision=0;
         Map<String,Object> row;
         if("bootstrap".equals(method))row=record(value,"version","requestId");
         else if("retire".equals(method)||"readContext".equals(method))row=record(value,"version","requestId","contextToken");
         else if("perform".equals(method))row=record(value,"version","requestId","contextToken","action","target");
         else if("readEntity".equals(method))row=record(value,"version","requestId","contextToken","reference");
         else if("search".equals(method))row=record(value,"version","requestId","contextToken","query");else if("listMedia".equals(method))row=record(value,"version","requestId","contextToken","owner");else if("presentMedia".equals(method))row=record(value,"version","requestId","contextToken","owner","assetId","layout");else if("releaseMedia".equals(method))row=record(value,"version","requestId","contextToken","presentationToken");
+        else if(Arrays.asList("listJourneys","readJourneyProgress","closeJourney").contains(method))row=record(value,"version","requestId","contextToken");
+        else if("openJourney".equals(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision");
+        else if("advanceJourney".equals(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision","currentNodeId","action");
         else if("readSceneSelection".equals(method))row=record(value,"version","requestId","contextToken");
         else if("rememberSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","expectedRevision");
         else if("restoreSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","expectedRevision");
@@ -307,7 +310,9 @@ final class PlanetChildDataTransport {
         if("releaseScene".equals(method)&&row.get("sceneToken")!=null)sceneToken=correlation(row.get("sceneToken"));
         if("acquireWebResource".equals(method)){sceneToken=correlation(row.get("sceneToken"));slotId=string(row.get("slotId"),10);require(Arrays.asList("skin","stand","background").contains(slotId));}
         if("releaseWebResource".equals(method)&&row.get("resourceToken")!=null)resourceToken=correlation(row.get("resourceToken"));
-        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken);
+        if("openJourney".equals(method)||"advanceJourney".equals(method)){journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));revision=v2Integer(row.get("expectedRevision"),0,"openJourney".equals(method)?MAX_SAFE-1:MAX_SAFE-2);}
+        if("advanceJourney".equals(method)){action=string(row.get("action"),8);require(Arrays.asList("complete","restart").contains(action));Object current=row.get("currentNodeId");if(current!=null)currentNodeId=PlanetChildJourney.identifier(string(current,96));require(currentNodeId!=null||"restart".equals(action));}
+        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId);
     }
     private static Map<String,Object> v2MediaLayout(Object value)throws Exception {
         Map<String,Object> raw=record(value,"x","y","width","height","viewportWidth","viewportHeight"),out=new LinkedHashMap<>();

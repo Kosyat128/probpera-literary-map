@@ -9,7 +9,7 @@ import Capacitor
 public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier="PlanetChildPlugin"
     public let jsName="PlanetChild"
-    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
+    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
     private var transport: PlanetChildLocalV2DataTransport?,owner: PlanetChildLocalV2SDKOwner?
     public override func load() {
         DispatchQueue.main.async { [weak self] in guard let self,let host=self.bridge?.viewController else { return }
@@ -50,6 +50,11 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc public func readSceneSelection(_ call: CAPPluginCall) { invoke("readSceneSelection",call) }
     @objc public func rememberSceneSelection(_ call: CAPPluginCall) { invoke("rememberSceneSelection",call) }
     @objc public func restoreSceneSelection(_ call: CAPPluginCall) { invoke("restoreSceneSelection",call) }
+    @objc public func listJourneys(_ call: CAPPluginCall) { invoke("listJourneys",call) }
+    @objc public func readJourneyProgress(_ call: CAPPluginCall) { invoke("readJourneyProgress",call) }
+    @objc public func openJourney(_ call: CAPPluginCall) { invoke("openJourney",call) }
+    @objc public func advanceJourney(_ call: CAPPluginCall) { invoke("advanceJourney",call) }
+    @objc public func closeJourney(_ call: CAPPluginCall) { invoke("closeJourney",call) }
     #if DEBUG
     func runtimeOriginalContextToken() -> String? { owner?.runtimeOriginalContextToken() }
     func runtimeAppearanceSceneAdmits(_ token: String) -> Bool { owner?.runtimeAppearanceSceneAdmits(token)==true }

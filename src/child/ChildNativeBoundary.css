@@ -24,3 +24,9 @@
 .child-native-media-slot[hidden] { display: none; }
 
 .child-native-scene-controls{display:flex;gap:.6rem;flex-wrap:wrap;padding-block:.75rem}.child-native-scene-controls h2{flex-basis:100%;font-size:1.1rem;margin:.25rem 0}.child-native-scene-controls button{max-inline-size:100%;overflow-wrap:anywhere}
+
+.child-native-journeys { margin-block: 1rem; border-block: 1px solid rgba(180,195,220,.25); padding-block: 1rem; }
+.child-native-journeys ul { list-style: none; padding-inline: 0; }
+.child-native-journeys li + li { margin-block-start: .75rem; }
+.child-native-journeys h2:focus { outline: 2px solid currentColor; outline-offset: .25rem; }
+.child-native-journeys button { min-height: 44px; margin: .25rem; white-space: normal; }

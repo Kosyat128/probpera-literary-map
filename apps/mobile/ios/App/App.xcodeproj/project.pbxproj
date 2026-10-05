@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+        D4B120261005000000000130 /* PlanetChildJourney.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000131 /* PlanetChildJourney.swift */; };
+        D4B120261005000000000132 /* PlanetChildJourneyRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000133 /* PlanetChildJourneyRuntimeTests.swift */; };
         D4B120261005000000000120 /* PlanetChildAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000121 /* PlanetChildAppearance.swift */; };
         D4B120261005000000000122 /* PlanetChildAppearanceRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000123 /* PlanetChildAppearanceRuntimeTests.swift */; };
         D4B120261005000000000110 /* PlanetChildWebResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000111 /* PlanetChildWebResources.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+        D4B120261005000000000131 /* PlanetChildJourney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildJourney.swift; sourceTree = "<group>"; };
+        D4B120261005000000000133 /* PlanetChildJourneyRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildJourneyRuntimeTests.swift; sourceTree = "<group>"; };
         D4B120261005000000000121 /* PlanetChildAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildAppearance.swift; sourceTree = "<group>"; };
         D4B120261005000000000123 /* PlanetChildAppearanceRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildAppearanceRuntimeTests.swift; sourceTree = "<group>"; };
         D4B120261005000000000111 /* PlanetChildWebResources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildWebResources.swift; sourceTree = "<group>"; };
@@ -103,7 +107,7 @@
 /* Begin PBXGroup section */
 		D4B120261002000000000012 /* AppSecureStorageTests */ = {
 			isa = PBXGroup;
-			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */, D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */, C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */, D4B120261004000000000071 /* PlanetChildFirstInstallV2RuntimeTests.swift */, D4B120261005000000000093 /* PlanetChildMediaRuntimeTests.swift */, D4B120261005000000000103 /* PlanetChildResourcesRuntimeTests.swift */, D4B120261005000000000113 /* PlanetChildCanonicalResourceRuntimeTests.swift */, D4B120261005000000000123 /* PlanetChildAppearanceRuntimeTests.swift */,);
+			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */, D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */, C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */, D4B120261004000000000071 /* PlanetChildFirstInstallV2RuntimeTests.swift */, D4B120261005000000000093 /* PlanetChildMediaRuntimeTests.swift */, D4B120261005000000000103 /* PlanetChildResourcesRuntimeTests.swift */, D4B120261005000000000113 /* PlanetChildCanonicalResourceRuntimeTests.swift */, D4B120261005000000000123 /* PlanetChildAppearanceRuntimeTests.swift */, D4B120261005000000000133 /* PlanetChildJourneyRuntimeTests.swift */,);
 			path = AppSecureStorageTests;
 			sourceTree = "<group>";
 		};
@@ -142,6 +146,7 @@
                 D4B120261005000000000101 /* PlanetChildResources.swift */,
                 D4B120261005000000000111 /* PlanetChildWebResources.swift */,
                 D4B120261005000000000121 /* PlanetChildAppearance.swift */,
+                D4B120261005000000000131 /* PlanetChildJourney.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -248,7 +253,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */, D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */, B01A3235360B48736AF4A7E5 /* PlanetChildOwnerPermissionRuntimeTests.swift in Sources */, D4B120261004000000000070 /* PlanetChildFirstInstallV2RuntimeTests.swift in Sources */, D4B120261005000000000092 /* PlanetChildMediaRuntimeTests.swift in Sources */, D4B120261005000000000102 /* PlanetChildResourcesRuntimeTests.swift in Sources */, D4B120261005000000000112 /* PlanetChildCanonicalResourceRuntimeTests.swift in Sources */, D4B120261005000000000122 /* PlanetChildAppearanceRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */, D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */, B01A3235360B48736AF4A7E5 /* PlanetChildOwnerPermissionRuntimeTests.swift in Sources */, D4B120261004000000000070 /* PlanetChildFirstInstallV2RuntimeTests.swift in Sources */, D4B120261005000000000092 /* PlanetChildMediaRuntimeTests.swift in Sources */, D4B120261005000000000102 /* PlanetChildResourcesRuntimeTests.swift in Sources */, D4B120261005000000000112 /* PlanetChildCanonicalResourceRuntimeTests.swift in Sources */, D4B120261005000000000122 /* PlanetChildAppearanceRuntimeTests.swift in Sources */, D4B120261005000000000132 /* PlanetChildJourneyRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
 		504EC3001FED79650016851F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -264,6 +269,7 @@
                 D4B120261005000000000100 /* PlanetChildResources.swift in Sources */,
                 D4B120261005000000000110 /* PlanetChildWebResources.swift in Sources */,
                 D4B120261005000000000120 /* PlanetChildAppearance.swift in Sources */,
+                D4B120261005000000000130 /* PlanetChildJourney.swift in Sources */,
 				9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

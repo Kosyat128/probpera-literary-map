@@ -1,7 +1,8 @@
 import { createChildCanonicalResources } from "./childNativeCanonicalResources";
 import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
-import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { ChildNativeAppController, ChildNativeAppSnapshot, ChildNativeCollection,
   ChildNativeCollectionValue, ChildNativeEntity, ChildNativeAction } from "./childNativeAppBridge";
 import type { ChildEntityReference } from "./childPackage";
@@ -168,6 +169,13 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   const [saved, setSaved] = useState<ChildNativeCollectionValue | null>(null), [savedRows, setSavedRows] = useState<readonly ChildNativeEntity[]>([]);
   const sequence = useRef(0), mounted = useRef(true), context = useRef(c); context.current = c;
   const previousProfile = useRef(c?.profileId ?? retainedProfileId ?? null);
+  const [journeyActive,setJourneyActive]=useState(false),[journeyNavigation,setJourneyNavigation]=useState(0);
+  const journeyIntent=useRef<{profileId:string;journeyId:string}|null>(null);
+  const onJourneyActive=useCallback((active:boolean)=>setJourneyActive(active),[]);
+  const onJourneyIntent=useCallback((journeyId:string|null)=>{
+    const profileId=context.current?.profileId;
+    journeyIntent.current=journeyId&&profileId?{profileId,journeyId}:null;
+  },[]);
   // Only logical route intent survives a seal. Fresh native references and
   // their locale checksums must be resolved again before any text is shown.
   const navigationIntent = useRef<{ profileId: string; current: string | null; history: string[]; collection: ChildNativeCollection | null } | null>(null);
@@ -186,6 +194,11 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   const countries = useMemo<Country[]>(() => roots.filter(row => row.reference.kind === "country").map(row => ({
     id: row.reference.id, name: row.payload.title, description: row.payload.text, writers: [],
   })), [roots]);
+  const onJourneyNode=useCallback((node:ChildNativeEntity|null)=>{
+    if(node?.reference.kind!=="country")return;
+    const country=roots.find(row=>row.reference.kind==="country"&&row.reference.id===node.reference.id);
+    if(country)setSelectedCountry({id:country.reference.id,name:country.payload.title,description:country.payload.text,writers:[]});
+  },[roots]);
   async function resolve(ref: ChildEntityReference): Promise<ChildNativeEntity | null> {
     const row = await controller.readEntity(ref);
     if (!row) return null;
@@ -193,6 +206,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       && row.payload.references.length === 1 ? controller.readEntity(row.payload.references[0]) : row;
   }
   async function open(ref: ChildEntityReference, back = false) {
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
     const original = context.current, attempt = ++sequence.current;
     setLoading(true); setCollection(null); setSaved(null); setSavedRows([]); setSearchResults(null);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
@@ -211,7 +225,8 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     const intent=c?.profileId&&navigationIntent.current?.profileId===c.profileId?navigationIntent.current:null;
     hydratedContext.current=null;
     if(c)previousProfile.current=c.profileId;
-    if(!sameProfile)navigationIntent.current=null;
+    setJourneyActive(false);
+    if(!sameProfile){navigationIntent.current=null;journeyIntent.current=null;}
     setCurrent(null);setRoots([]);setQuery("");setSearchResults(null);setHistory([]);
     setCollection(null);setSaved(null);setSavedRows([]);setScenes([]);setSceneOwner(null);setLoading(true);
     // Keep only a stable canonical country ID/camera intent, never retired copy.
@@ -269,6 +284,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     return () => { alive = false; ++sequence.current; };
   }, [controller, c, snapshot.status, resources]);
   async function search() {
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
     const original = context.current, attempt = ++sequence.current;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
@@ -280,6 +296,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
   async function showCollection(name: ChildNativeCollection) {
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
     const original = context.current, attempt = ++sequence.current;
     setCollection(name); setSaved(null); setSavedRows([]); setSearchResults(null); setLoading(true);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
@@ -333,7 +350,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         {sceneState.persistence==="save-failed"?(language==="ru"?"Не удалось подтвердить сохранение оформления.":"The appearance save could not be confirmed."):(language==="ru"?"Сохранённое оформление сейчас недоступно.":"The saved appearance is currently unavailable.")}
         <button type="button" onClick={()=>{void resources?.restore?.();}}>{language==="ru"?"Повторить восстановление":"Retry restoration"}</button>
       </p>}
-      {!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
+      {!journeyActive&&!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
         <h2>{language==="ru"?"Оформление планеты":"Planet appearance"}</h2>
         {scenes.map(scene=><button key={scene.sceneId} type="button" disabled={sceneState.phase==="preparing"} onClick={()=>{void resources?.select(current.reference,scene.sceneId);}}>{scene.title}</button>)}
         {sceneState.phase==="preparing"&&<p role="status">{sceneState.persistence==="saving"?(language==="ru"?"Сохраняем оформление…":"Saving appearance…"):(language==="ru"?"Восстанавливаем оформление…":"Restoring appearance…")}</p>}
@@ -353,7 +370,12 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         <label>{copy.search}<input value={query} maxLength={240} type="search" autoComplete="off" onChange={event => setQuery(event.currentTarget.value)} /></label>
         <button type="submit">{copy.search}</button>
       </form>
-      {loading ? <p role="status">{copy.loading}</p> : collection ? <>
+      <ChildNativeJourneyView key={c.profileId!} controller={controller} contextToken={c.token} profileId={c.profileId!}
+        language={language} navigationEpoch={journeyNavigation}
+        homeVisible={!loading&&!collection&&searchResults===null&&!!current&&!!c.home&&same(current.reference,c.home)}
+        initialJourneyId={journeyIntent.current?.profileId===c.profileId?journeyIntent.current.journeyId:null}
+        onActiveChange={onJourneyActive} onIntentChange={onJourneyIntent} onNode={onJourneyNode}/>
+      {!journeyActive&&(loading ? <p role="status">{copy.loading}</p> : collection ? <>
         <h2>{copy[collection]}</h2>
         {!savedRows.length && <p>{saved ? copy.empty : copy.bodyUnavailable}</p>}
         <ul>{savedRows.map(row => <li key={row.reference.kind + "/" + row.reference.id}>
@@ -371,7 +393,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
           {ref.kind === "favorite" || ref.kind === "offline-package" ? <button type="button" onClick={() => { void save(ref); }}>{copy.add}</button>
             : <ChildNativeReferenceButton controller={controller} reference={ref} onOpen={() => { void open(ref); }} />}
         </li>)}</ul>
-      </article> : <p role="status">{copy.bodyUnavailable}</p>}
+      </article> : <p role="status">{copy.bodyUnavailable}</p>)}
     </section>
     </>:<ChildNativeClosedView snapshot={snapshot} controller={controller}/>}
   </main>;

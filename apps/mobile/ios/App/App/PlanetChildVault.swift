@@ -8205,6 +8205,7 @@ final class PlanetChildLocalV2DataAdmission {
     fileprivate var store: PlanetChildDataStore?,lease: PlanetChildDataStore.Lease?
     private var sdkCommand: LocalV2SDKCollectionCommand?
     private var sdkAppearanceCommand: LocalV2SDKAppearanceCommand?,sdkAppearanceResults=[PlanetChildDataStore.LocalV2Appearance]()
+    private var sdkJourneyCommand: LocalV2SDKJourneyCommand?,sdkJourneyResults=[PlanetChildDataStore.LocalV2Journey]()
     private var sdkNativeCommand: LocalV2SDKChannel.Command?
     private var sdkCollections=[PlanetChildDataStore.LocalV2Collection]()
     fileprivate init(_ loader: LocalV2NativePackageLoader,_ compiled: LocalV2CompiledPackage) throws { guard loader.delivery?.compiled === compiled,loader.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };try loader.live();self.loader=loader;mutation=nil;self.compiled=compiled;previous=compiled.profile.canonicalContext;future=previous }
@@ -8251,7 +8252,7 @@ final class PlanetChildLocalV2DataAdmission {
     fileprivate func publication() throws { guard let loader,let compiled else { throw PinKnownRefusal() };try LocalV2AdmittedPublication.check(compiled,wall) { try loader.fresh(compiled.profile) } }
     fileprivate func publish<T>(_ work: () throws -> T) throws -> T { lock.lock();defer { lock.unlock() };guard !revoked,let loader,let compiled else { throw PinKnownRefusal() };try LocalV2AdmittedPublication.check(compiled,wall,loader.live);return try work() }
     fileprivate func failed() { revoke();loader?.revoke() }
-    fileprivate func revoke() { lock.lock();revoked=true;let originals=results,collections=sdkCollections,appearances=sdkAppearanceResults;results.removeAll();sdkCollections.removeAll();sdkAppearanceResults.removeAll();lock.unlock();for result in originals { result.close() };for collection in collections { collection.close() };for appearance in appearances { appearance.close() } }
+    fileprivate func revoke() { lock.lock();revoked=true;let originals=results,collections=sdkCollections,appearances=sdkAppearanceResults,journeys=sdkJourneyResults;results.removeAll();sdkCollections.removeAll();sdkAppearanceResults.removeAll();sdkJourneyResults.removeAll();lock.unlock();for result in originals { result.close() };for collection in collections { collection.close() };for appearance in appearances { appearance.close() };for journey in journeys { journey.close() } }
     fileprivate func drain() throws { revoke();if let store { guard let loader else { throw PinKnownRefusal() };try loader.writer.storage.locked { _ in try store.close() };self.store=nil;lease=nil } }
 }
 /** Final freshness may join main only before the ownership lock is taken. */
@@ -8373,7 +8374,7 @@ fileprivate final class LocalV2SDKSurface: UIViewController {
  * after the bootstrap callback returns. Every command runs on that same worker
  * and its original deadline. Closure return is observed natively, never by JS. */
 fileprivate final class LocalV2SDKChannel {
-    fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,appearanceHandoff: LocalV2SDKAppearanceHandoff?,done=false,returned=false,handedOff=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
+    fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,appearanceHandoff: LocalV2SDKAppearanceHandoff?,journeyHandoff: LocalV2SDKJourneyHandoff?,done=false,returned=false,handedOff=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
     private let condition=NSCondition();private var command: Command?,closed=false,ready=false,failure: Error?,joined=false
     private(set) var compiled: LocalV2CompiledPackage?,deadline: UInt64=0
     private weak var mediaSDKOwner: PlanetChildLocalV2SDKOwner?
@@ -8400,14 +8401,17 @@ fileprivate final class LocalV2SDKChannel {
         guard !Thread.isMainThread else { throw PinKnownRefusal() };condition.lock();guard ready,!closed,command==nil else { condition.unlock();throw PinKnownRefusal() }
         let original=Command(work);command=original;condition.broadcast()
         while !original.done && !closed { _=condition.wait(until:Date(timeIntervalSinceNow:0.02)) }
-        let value=original.value,error=original.error,receipt=original.appearanceHandoff
-        original.appearanceHandoff=nil;condition.unlock()
-        if let error { receipt?.unknown();throw error }
-        guard original.done,original.returned,original.handedOff,let value else { receipt?.unknown();throw PinKnownRefusal() }
+        let value=original.value,error=original.error,receipt=original.appearanceHandoff,journey=original.journeyHandoff
+        original.appearanceHandoff=nil;original.journeyHandoff=nil;condition.unlock()
+        if let error { receipt?.unknown();journey?.unknown();throw error }
+        guard original.done,original.returned,original.handedOff,let value else { receipt?.unknown();journey?.unknown();throw PinKnownRefusal() }
         try verified?(original)
         if let receipt {
             guard let handoff,handoff.appearance==nil else { receipt.unknown();throw PinKnownRefusal() }
             handoff.appearance=receipt
+        }
+        if let journey {
+            guard let handoff,handoff.journey==nil else { journey.unknown();throw PinKnownRefusal() };handoff.journey=journey
         }
         return value
     }
@@ -8433,6 +8437,7 @@ final class PlanetChildLocalV2SDKOwner {
     private var mediaEpoch: UInt64=0,mediaPresentations=[String:PlanetChildLocalV2MediaPresentation](),mediaRetiring=[PlanetChildLocalV2MediaPresentation](),mediaReleases=Set<String>()
     private var reader: (LocalV2Writer,LocalV2Request)?,loader: LocalV2NativePackageLoader?,channel: LocalV2SDKChannel?,gate: LocalV2GateHost?,profile: LocalV2ProfileOperation?,rotation: LocalV2SDKPinRotation?,enrollment: LocalV2PinOperation?
     private var firstInstall: (NativeChildFirstInstallV2,OriginalFirstInstallV2)?
+    private var activeJourney: LocalV2JourneyLease?,journeyEpoch: UInt64=0
     private let invalidated: ([String:Any])->Void
     fileprivate final class Context {
         let token: String,generation: UInt64,checksum: String,deadline: UInt64,status: String,metadata: [String:Any],profiles: [[String:Any]]
@@ -8479,7 +8484,7 @@ final class PlanetChildLocalV2SDKOwner {
     func routeWillChange(reason: String="cancelled") {
         let clear={ [self] in surface.seal();concealMedia();expiry?.cancel();expiry=nil }
         if Thread.isMainThread { clear() } else { DispatchQueue.main.sync(execute:clear) }
-        lock.lock();let old=context;context=nil;sealed=true;lock.unlock();channel?.close();loader?.routeWillChange();gate?.routeWillChange();profile?.revoke();rotation?.revoke();if let enrollment { enrollment.owner.writer.cancel(enrollment.request) };if let firstInstall { firstInstall.0.cancel(firstInstall.1) };if let reader { reader.0.cancel(reader.1) }
+        lock.lock();let old=context;context=nil;activeJourney=nil;journeyEpoch &+= 1;sealed=true;lock.unlock();channel?.close();loader?.routeWillChange();gate?.routeWillChange();profile?.revoke();rotation?.revoke();if let enrollment { enrollment.owner.writer.cancel(enrollment.request) };if let firstInstall { firstInstall.0.cancel(firstInstall.1) };if let reader { reader.0.cancel(reader.1) }
         invalidated(["version":2,"contextToken":old?.token as Any? ?? NSNull(),"generation":old?.generation ?? generation,"reason":reason])
         io.async { [self] in do { try joinOwners();lock.lock();sealed=false;lock.unlock() } catch { lock.lock();sealed=true;lock.unlock() } }
     }
@@ -8487,16 +8492,17 @@ final class PlanetChildLocalV2SDKOwner {
     private static func unavailable(_ id: String,reason: String="unavailable") -> [String:Any] { ["version":2,"requestId":id,"status":"unavailable","reason":reason,"context":NSNull(),"profiles":[]] }
     private func refused(_ request: PlanetChildLocalV2Wire.Request,_ reason: String) -> [String:Any] { PlanetChildLocalV2Wire.refusal(request.method,["requestId":request.id,"contextToken":request.token as Any? ?? NSNull()],reason:reason,generation:generation) }
     func execute(_ request: PlanetChildLocalV2Wire.Request,reply: @escaping Reply) {
-        lock.lock();let retirement=request.method=="retire",originalDeadline=context?.deadline,release=["releaseMedia","releaseScene","releaseWebResource"].contains(request.method)
+        lock.lock();let retirement=request.method=="retire",originalDeadline=context?.deadline,release=["releaseMedia","releaseScene","releaseWebResource","closeJourney"].contains(request.method)
         let releaseAllowed=release && !sealed && request.token==context?.token
         let accepted = (retirement || releaseAllowed || !busy && !sealed) && (!retirement || request.token==nil || issuedTokens.contains(request.token!)) && (!release || releaseAllowed) && seen.count<2048 && seen.insert(request.id).inserted
-        let ownsBusy=accepted && !retirement && !release,capturedMediaEpoch=mediaEpoch
+        let ownsBusy=accepted && !retirement && !release,capturedMediaEpoch=mediaEpoch,capturedJourneyEpoch=journeyEpoch
         if ownsBusy { busy=true };lock.unlock()
         guard accepted else { reply(refused(request,"pending"));return }
         // Revocation is admitted while the original decoder owns busy. It does
         // not clear that control state. The native entry fence precedes queueing.
         let fast={ [self] in
-            if release && request.method != "releaseMedia" {
+            if request.method=="closeJourney" { journeyRetireFast() }
+            else if release && request.method != "releaseMedia" {
                 do { try canonicalFastRelease(request) } catch { routeWillChange(reason:"unavailable") }
             } else if release {
                 if let token=request.presentationToken {
@@ -8513,7 +8519,7 @@ final class PlanetChildLocalV2SDKOwner {
             defer { if ownsBusy { lock.lock();busy=false;lock.unlock() } }
             let handoff=LocalV2SDKReply()
             do {
-                let value=try dispatch(request,mediaEpoch:capturedMediaEpoch,handoff:handoff)
+                let value=try dispatch(request,mediaEpoch:capturedMediaEpoch,journeyEpoch:capturedJourneyEpoch,handoff:handoff)
                 guard JSONSerialization.isValidJSONObject(value) else { throw PlanetChildVault.Failure.unavailable }
                 if let appearance=handoff.appearance {
                     guard let channel else { throw PinKnownRefusal() }
@@ -8525,10 +8531,11 @@ final class PlanetChildLocalV2SDKOwner {
                 }
                 // This nonthrowing original SDK callback joins main resolve.
                 // Its delivery is not a distributed exactly-once JS receipt.
-                reply(value);handoff.appearance?.close()
+                if let journey=handoff.journey { guard let channel else { throw PinKnownRefusal() };try journey.validate(on:channel);try journey.finish() }
+                reply(value);handoff.appearance?.close();handoff.journey?.close()
             }
             catch {
-                handoff.appearance?.unknown()
+                handoff.appearance?.unknown();handoff.journey?.unknown()
                 let originalError=error;DispatchQueue.main.sync { surface.seal() };lock.lock();let old=context;context=nil;lock.unlock()
                 do { try joinOwners();lock.lock();let unknown=sealed;lock.unlock();guard !unknown else { reply(refused(request,"pending"));return }
                     if request.method=="perform",let originalDeadline,(try? remaining(originalDeadline)) != nil { reply(try bootstrap(request.id,deadline:originalDeadline,reason:originalError is PinVerificationRefusal ? "blocked":"cancelled")) }
@@ -8537,7 +8544,7 @@ final class PlanetChildLocalV2SDKOwner {
             }
         }
     }
-    private func dispatch(_ r: PlanetChildLocalV2Wire.Request,mediaEpoch capturedMediaEpoch: UInt64,handoff: LocalV2SDKReply) throws -> [String:Any] {
+    private func dispatch(_ r: PlanetChildLocalV2Wire.Request,mediaEpoch capturedMediaEpoch: UInt64,journeyEpoch capturedJourneyEpoch: UInt64,handoff: LocalV2SDKReply) throws -> [String:Any] {
         if r.method != "retire" { try DispatchQueue.main.sync { try attach();mediaObserveGeometry() } }
         switch r.method {
         case "bootstrap":lock.lock();let exists=context != nil;lock.unlock();guard !exists else { throw PinKnownRefusal() };return try bootstrap(r.id,deadline:nil)
@@ -8546,7 +8553,9 @@ final class PlanetChildLocalV2SDKOwner {
         case "retire":try DispatchQueue.main.sync { surface.seal() };lock.lock();context=nil;lock.unlock();try joinOwners();lock.lock();guard !sealed else { lock.unlock();throw PlanetChildVault.Failure.unavailable };lock.unlock();return ["version":2,"requestId":r.id,"status":"retired","contextToken":r.token as Any? ?? NSNull()]
         default:let c=try requireContext(r.token);guard c.status=="child",let channel else { throw PinKnownRefusal() };return try channel.invoke(handoff:handoff) { [self] delivery in
             try requireOriginal(c,delivery);let value: Any
-            if ["readSceneSelection","rememberSceneSelection","restoreSceneSelection"].contains(r.method) {
+            if ["listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"].contains(r.method) {
+                value=try journeyPerform(r,c,delivery,capturedJourneyEpoch)
+            } else if ["readSceneSelection","rememberSceneSelection","restoreSceneSelection"].contains(r.method) {
                 value=try appearancePerform(r,c,delivery)
             } else if ["listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"].contains(r.method) {
                 let scene=try canonicalPerform(r,c,delivery);value=r.method=="listScenes" ? scene["list"]! as Any:scene
@@ -8605,6 +8614,7 @@ final class PlanetChildLocalV2SDKOwner {
         return (seed ? "unenrolled":mode,metadata,profiles)
     }
     private func joinOwners() throws {
+        journeyRetireFast()
         guard !Thread.isMainThread else { throw PinKnownRefusal() };expiry?.cancel();expiry=nil
         canonicalConceal();try canonicalRetireJoined(retireScenes:true)
         channel?.close();if let loader { try DispatchQueue.main.sync { loader.close() };try loader.join();try mediaRetireJoined();self.loader=nil;channel=nil }
@@ -8762,7 +8772,7 @@ extension PlanetChildLocalV2DataAdmission {
     fileprivate func sdkCommandBegan(_ command: LocalV2SDKChannel.Command) throws {
         // serve() owns the loader worker, but does not hold a canonical data
         // transaction. Enter it for the admission fence before assigning work.
-        try withCopy { try check();guard sdkNativeCommand==nil,sdkCommand==nil,sdkAppearanceCommand==nil,!command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };sdkNativeCommand=command }
+        try withCopy { try check();guard sdkNativeCommand==nil,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,!command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };sdkNativeCommand=command }
     }
     fileprivate func sdkCommandReturned(_ command: LocalV2SDKChannel.Command) throws {
         try withCopy { try check();guard sdkNativeCommand === command,command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
@@ -8770,17 +8780,19 @@ extension PlanetChildLocalV2DataAdmission {
         // only after the prior transaction/UI check has fully unwound.
         if let pending=sdkCommand { try completeCollection(pending.id) }
         if let pending=sdkAppearanceCommand { try completeAppearance(pending.id) }
+        if let pending=sdkJourneyCommand { try completeJourney(pending.id) }
     }
     fileprivate func sdkCommandHandedOff(_ command: LocalV2SDKChannel.Command) {
         guard sdkNativeCommand === command,command.returned,command.done else { return };command.handedOff=true
         if let pending=sdkAppearanceCommand,let receipt=pending.completion,let permit=pending.permit {
             command.appearanceHandoff=LocalV2SDKAppearanceHandoff(self,permit,receipt)
         }
-        sdkAppearanceCommand=nil;sdkNativeCommand=nil
+        if let pending=sdkJourneyCommand,let receipt=pending.completion,let permit=pending.permit { command.journeyHandoff=LocalV2SDKJourneyHandoff(self,permit,receipt) }
+        sdkAppearanceCommand=nil;sdkJourneyCommand=nil;sdkNativeCommand=nil
     }
-    fileprivate func sdkCommandFailed(_ command: LocalV2SDKChannel.Command) { guard sdkNativeCommand === command else { return };sdkAppearanceCommand?.completion?.retainUnknown();sdkAppearanceCommand?.completion?.close();if sdkCommand != nil { collectionUnknown() };if sdkAppearanceCommand != nil { appearanceUnknown() };sdkNativeCommand=nil }
+    fileprivate func sdkCommandFailed(_ command: LocalV2SDKChannel.Command) { guard sdkNativeCommand === command else { return };sdkAppearanceCommand?.completion?.retainUnknown();sdkAppearanceCommand?.completion?.close();if sdkCommand != nil { collectionUnknown() };if sdkAppearanceCommand != nil { appearanceUnknown() };sdkJourneyCommand?.completion?.retainUnknown();sdkJourneyCommand?.completion?.close();if sdkJourneyCommand != nil { journeyUnknown() };sdkNativeCommand=nil }
     fileprivate func collection(_ purpose: PlanetChildDataStore.Purpose,expected: UInt64?,replacement: [String:Data]?,id: String) throws -> PlanetChildDataStore.LocalV2Collection {
-        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil else { throw PinKnownRefusal() };let command=LocalV2SDKCollectionCommand(id);if replacement != nil { sdkCommand=command }
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil else { throw PinKnownRefusal() };let command=LocalV2SDKCollectionCommand(id);if replacement != nil { sdkCommand=command }
         do { let result=try loader.withData(self) { try store.admittedCollection(self,lease,purpose,expectedRevision:expected,replacement:replacement,commandId:id) };if replacement != nil { guard sdkCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true };do { try publication();try publish { self.sdkCollections.removeAll(where:{ $0.closedForSDK });guard self.sdkCollections.count<64 else { throw PinKnownRefusal() };self.sdkCollections.append(result);if replacement != nil { command.result=result } };return result } catch { result.close();throw error } }
         catch { if replacement != nil { collectionUnknown() };throw error }
     }
@@ -10241,7 +10253,7 @@ fileprivate extension LocalV2SceneLease {
 }
 /** Private native ownership only. Neither this holder nor its completion
  * receipt is serialized into any wire envelope or accepted from JavaScript. */
-fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff? }
+fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff?;var journey: LocalV2SDKJourneyHandoff? }
 fileprivate final class LocalV2SDKAppearanceHandoff {
     private let admission: PlanetChildLocalV2DataAdmission,permit: PlanetChildLocalV2SceneSelectionPermit,receipt: PlanetChildDataStore.LocalV2AppearanceCompletion
     fileprivate init(_ admission: PlanetChildLocalV2DataAdmission,_ permit: PlanetChildLocalV2SceneSelectionPermit,_ receipt: PlanetChildDataStore.LocalV2AppearanceCompletion) { self.admission=admission;self.permit=permit;self.receipt=receipt }
@@ -10289,7 +10301,7 @@ extension PlanetChildLocalV2DataAdmission {
         try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkAppearanceCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() }
     }
     fileprivate func appearance(expected: UInt64?,permit: PlanetChildLocalV2SceneSelectionPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Appearance {
-        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
         let command=LocalV2SDKAppearanceCommand(id,permit);if permit != nil { sdkAppearanceCommand=command }
         do {
             let result=try loader.withData(self) { try store.admittedAppearance(self,lease,expectedRevision:expected,permit:permit,commandId:id) }
@@ -10344,5 +10356,189 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
 #if DEBUG
 extension PlanetChildLocalV2SDKOwner {
     func runtimeAppearanceSceneAdmits(_ token: String) -> Bool { lock.lock();let scene=canonicalScenes[token],actual = !sealed && scene?.context === context;lock.unlock();return actual && scene?.admits==true }
+}
+#endif
+
+// MARK: Native-owned semantic learning journeys over freshly admitted entities.
+fileprivate struct LocalV2JourneyRoute {
+    typealias V=LocalV2PackageValue
+    let id: String,version: UInt64,title: String,description: String,nodeIds: [String],kinds: [String],references: [V]
+    var summary: [String:Any] { ["journeyId":id,"journeyVersion":version,"contentVersion":version,"title":title,"description":description,"nodeCount":nodeIds.count] }
+    var dto: [String:Any] { var value=summary;value["nodeIds"]=nodeIds;return value }
+    func projection(_ saved: PlanetChildJourney.Progress) throws -> PlanetChildJourney.Progress {
+        guard let current=saved.currentNodeId else { return saved }
+        guard let index=nodeIds.firstIndex(of:current) else { throw PinKnownRefusal() }
+        return try PlanetChildJourney.selectCurrent(saved,nodeId:current,kind:kinds[index])
+    }
+}
+fileprivate enum LocalV2JourneyCompiler {
+    typealias V=LocalV2PackageValue
+    static func payload(_ delivery: LocalV2OwnedPackageDelivery,_ reference: V) throws -> V {
+        let c=delivery.compiled,key=try LocalV2AdmittedEnvelope.checkedRef(c,reference,delivery.owner.wall());try delivery.owner.fresh(c.profile)
+        var bytes=try c.copy(key,delivery.owner.wall());defer { bytes.resetBytes(in:0..<bytes.count) };let value=try LocalV2PackageJson.read(bytes,131072)
+        try delivery.owner.fresh(c.profile);_ = try LocalV2AdmittedEnvelope.checkedRef(c,reference,delivery.owner.wall());return value
+    }
+    static func entity(_ delivery: LocalV2OwnedPackageDelivery,_ reference: V) throws -> [String:Any] { let value=try payload(delivery,reference);return try JSONSerialization.jsonObject(with:Data(V.object([("reference",reference),("payload",value)]).json(sorted:false).utf8)) as! [String:Any] }
+    static func routes(_ delivery: LocalV2OwnedPackageDelivery) throws -> [LocalV2JourneyRoute] {
+        try routes(delivery.compiled,delivery.owner.wall,{ try payload(delivery,$0) },{ try delivery.owner.fresh(delivery.compiled.profile) })
+    }
+    private static func routes(_ c: LocalV2CompiledPackage,_ clock: () throws -> Int64,_ read: (V) throws -> V,_ fence: () throws -> Void) throws -> [LocalV2JourneyRoute] {
+        guard c.version>0,UInt64(c.version)<PlanetChildJourney.maxSafe else { throw PinKnownRefusal() }
+        let home=try LocalV2AdmittedEnvelope.reference(c,c.home,clock()),homePayload=try V.object(read(home));var result=[LocalV2JourneyRoute](),roots=Set<String>()
+        for reference in try V.array(homePayload["references"],64) {
+            let row=try V.object(reference,["kind","id","contentChecksum"]),id=try V.identifier(row["id"])
+            guard try V.text(row["kind"])=="activity",id != String(c.home.dropFirst("activity/".count)),roots.insert(id).inserted else { continue }
+            do { if let route=try route(c,reference,clock,read) { result.append(route) } }
+            catch { try fence() } // Hide an invalid graph; revocation still propagates.
+        };return result
+    }
+    private static func route(_ c: LocalV2CompiledPackage,_ root: V,_ clock: () throws -> Int64,_ read: (V) throws -> V) throws -> LocalV2JourneyRoute? {
+        let rootRow=try V.object(root),id=try V.identifier(rootRow["id"]),rootPayload=try V.object(read(root)),references=try V.array(rootPayload["references"],64);guard !references.isEmpty else { return nil }
+        var ids=[String](),kinds=[String](),seen=Set<String>(),keys=[String:String](),nodes=[String:V]()
+        for reference in references {
+            let row=try V.object(reference,["kind","id","contentChecksum"]),node=try V.identifier(row["id"]),kind=try V.text(row["kind"]),key=try LocalV2AdmittedEnvelope.checkedRef(c,reference,clock())
+            guard ["country","writer","biography","work","character","storyworld","fact","quote","activity","quiz"].contains(kind),node != id,key != c.home,seen.insert(node).inserted else { throw PinKnownRefusal() }
+            ids.append(node);kinds.append(kind);keys[node]=key;nodes[node]=try read(reference)
+        }
+        var visiting=Set<String>(),visited=Set<String>()
+        func walk(_ node: String) throws {
+            if visited.contains(node) { return };guard visiting.insert(node).inserted else { throw PinKnownRefusal() }
+            let value=try V.object(nodes[node]);for child in try V.array(value["references"],64) {
+                let row=try V.object(child,["kind","id","contentChecksum"]),target=try V.identifier(row["id"]),key=try LocalV2AdmittedEnvelope.checkedRef(c,child,clock())
+                guard target != id,key != c.home,target != node else { throw PinKnownRefusal() };_ = try read(child)
+                if let expected=keys[target] { guard expected==key else { throw PinKnownRefusal() };try walk(target) }
+            };visiting.remove(node);visited.insert(node)
+        }
+        for node in ids { try walk(node) }
+        return LocalV2JourneyRoute(id:id,version:UInt64(c.version),title:try V.text(rootPayload["title"]),description:try V.text(rootPayload["text"]),nodeIds:ids,kinds:kinds,references:references)
+    }
+    /** Leaf graph admission runs inside the held canonical native transaction;
+     * it copies only compiled approved bytes and performs no Vault/UI reentry. */
+    static func admittedRoutes(_ c: LocalV2CompiledPackage,_ at: Int64) throws -> [LocalV2JourneyRoute] {
+        try routes(c,{ at },{ reference in let key=try LocalV2AdmittedEnvelope.checkedRef(c,reference,at);var bytes=try c.copy(key,at);defer { bytes.resetBytes(in:0..<bytes.count) };return try LocalV2PackageJson.read(bytes,131072) },{ _ = try c.keys(at) })
+    }
+    #if DEBUG
+    static func fixtureRoutes(_ c: LocalV2CompiledPackage,_ at: Int64) throws -> [LocalV2JourneyRoute] { try admittedRoutes(c,at) }
+    #endif
+}
+fileprivate final class LocalV2JourneyLease {
+    let sdk: PlanetChildLocalV2SDKOwner,context: PlanetChildLocalV2SDKOwner.Context,delivery: LocalV2OwnedPackageDelivery,route: LocalV2JourneyRoute,epoch: UInt64,progress: PlanetChildJourney.Progress
+    init(_ sdk: PlanetChildLocalV2SDKOwner,_ context: PlanetChildLocalV2SDKOwner.Context,_ delivery: LocalV2OwnedPackageDelivery,_ route: LocalV2JourneyRoute,_ epoch: UInt64,_ progress: PlanetChildJourney.Progress) { self.sdk=sdk;self.context=context;self.delivery=delivery;self.route=route;self.epoch=epoch;self.progress=progress }
+}
+/** Only a current original SDK command constructs this write permit. */
+final class PlanetChildLocalV2JourneyPermit {
+    private let lease: LocalV2JourneyLease,command: LocalV2SDKChannel.Command,admission: PlanetChildLocalV2DataAdmission
+    private init(_ lease: LocalV2JourneyLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission) { self.lease=lease;self.command=command;self.admission=admission }
+    fileprivate static func make(_ lease: LocalV2JourneyLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission) throws -> PlanetChildLocalV2JourneyPermit { let result=PlanetChildLocalV2JourneyPermit(lease,command,admission);try admission.withCopy { try result.check(admission) };return result }
+    private func check(_ original: PlanetChildLocalV2DataAdmission,returned: Bool,handedOff: Bool=false) throws {
+        guard original === admission,lease.delivery.data === admission,lease.delivery.owner.delivery === lease.delivery,ObjectIdentifier(Thread.current)==lease.delivery.owner.worker.map(ObjectIdentifier.init),command.returned==returned else { throw PinKnownRefusal() }
+        try admission.check();if handedOff { try admission.journeyHandoffCommand(command) } else { try admission.appearanceNativeCommand(command,returned:returned) }
+        try lease.sdk.journeyCurrent(lease);try lease.delivery.owner.live();guard try lease.delivery.compiled.profile.id==admission.scope().profileId,lease.context.checksum==lease.delivery.compiled.profile.recordChecksum else { throw PinKnownRefusal() }
+        try admission.journeyGraphLeaf(lease.route)
+    }
+    func check(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:false) }
+    func progress(_ original: PlanetChildLocalV2DataAdmission) throws -> PlanetChildJourney.Progress { try check(original);return lease.progress }
+    func profileId(_ original: PlanetChildLocalV2DataAdmission) throws -> String { try check(original);return lease.delivery.compiled.profile.id }
+    fileprivate func completionCurrent(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:true) }
+    fileprivate func handoffCurrent(_ original: PlanetChildLocalV2DataAdmission) throws { guard command.done,command.handedOff,command.error==nil else { throw PinKnownRefusal() };try check(original,returned:true,handedOff:true) }
+    fileprivate func commitCurrent(_ original: PlanetChildLocalV2DataAdmission,_ work: () throws -> Void) throws {
+        guard original === admission,command.returned,command.done,command.handedOff,command.error==nil else { throw PinKnownRefusal() }
+        try lease.sdk.journeyCommitCurrent(lease) { try admission.journeyConsumerLeaf();try lease.delivery.owner.appearanceConsumerLeaf(lease.delivery);try work() }
+    }
+}
+fileprivate final class LocalV2SDKJourneyCommand {
+    let id: String,permit: PlanetChildLocalV2JourneyPermit?;var known=false,ready=false,preparationJoined=false,completed=false,result: PlanetChildDataStore.LocalV2Journey?,completion: PlanetChildDataStore.LocalV2JourneyCompletion?
+    init(_ id: String,_ permit: PlanetChildLocalV2JourneyPermit?) { self.id=id;self.permit=permit }
+}
+fileprivate final class LocalV2SDKJourneyHandoff {
+    private let admission: PlanetChildLocalV2DataAdmission,permit: PlanetChildLocalV2JourneyPermit,receipt: PlanetChildDataStore.LocalV2JourneyCompletion
+    private var commitReady=false,finished=false
+    init(_ admission: PlanetChildLocalV2DataAdmission,_ permit: PlanetChildLocalV2JourneyPermit,_ receipt: PlanetChildDataStore.LocalV2JourneyCompletion) { self.admission=admission;self.permit=permit;self.receipt=receipt }
+    func validate(on channel: LocalV2SDKChannel) throws {
+        guard !commitReady,!finished else { throw PinKnownRefusal() }
+        _ = try channel.invoke(verified:{ [self] original in guard original.returned,original.done,original.handedOff,original.error==nil else { throw PinKnownRefusal() };try permit.commitCurrent(admission) { commitReady=true } }) { [self] delivery in guard delivery.data === admission else { throw PinKnownRefusal() };try admission.withCopy { try permit.handoffCurrent(admission) };return [:] }
+        guard commitReady else { throw PinKnownRefusal() }
+    }
+    func finish() throws { guard commitReady,!finished else { throw PinKnownRefusal() };try receipt.finish();finished=true }
+    func close() { receipt.close() }
+    func unknown() { receipt.retainUnknown();admission.journeyUnknown() }
+    deinit { receipt.close() }
+}
+extension PlanetChildLocalV2DataAdmission {
+    /** Called only under the already held canonical record transaction. No
+     * main queue dispatch or recursive Vault lock occurs inside this leaf. */
+    fileprivate func journeyGraphLeaf(_ route: LocalV2JourneyRoute) throws {
+        try check();guard let compiled,UInt64(compiled.version)==route.version else { throw PinKnownRefusal() };let now=try wall()
+        let graph=try LocalV2JourneyCompiler.admittedRoutes(compiled,now)
+        guard let current=graph.first(where:{ $0.id==route.id }),current.nodeIds==route.nodeIds,current.kinds==route.kinds,current.title==route.title,current.description==route.description else { throw PinKnownRefusal() };try check()
+    }
+    fileprivate func journeyConsumerLeaf() throws { lock.lock();defer { lock.unlock() };guard !revoked,sdkNativeCommand==nil,sdkJourneyCommand==nil else { throw PinKnownRefusal() } }
+    fileprivate func journeyHandoffCommand(_ original: LocalV2SDKChannel.Command) throws { try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkJourneyCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func journey(_ journeyId: String?,expected: UInt64?,permit: PlanetChildLocalV2JourneyPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Journey {
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        let command=LocalV2SDKJourneyCommand(id,permit);if permit != nil { sdkJourneyCommand=command }
+        do { let result=try loader.withData(self) { try store.admittedJourney(self,lease,journeyId:journeyId,expectedRevision:expected,permit:permit,commandId:id) }
+            if permit != nil { guard sdkJourneyCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true }
+            do { try publication();try publish { sdkJourneyResults.removeAll(where:{ $0.closedForSDK });guard sdkJourneyResults.count<64 else { throw PinKnownRefusal() };sdkJourneyResults.append(result);if permit != nil { command.result=result } };return result } catch { result.close();throw error }
+        } catch { if permit != nil { journeyUnknown() };throw error }
+    }
+    func journeyCommandKnown(_ id: String) throws { try check();guard let command=sdkJourneyCommand,command.id==id,!command.known,!command.preparationJoined,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };command.known=true }
+    func journeyCommandReady(_ id: String) throws { try check();guard let command=sdkJourneyCommand,command.id==id,command.known,!command.ready else { throw PinKnownRefusal() };command.ready=true }
+    func journeyCommandJoined(_ id: String) throws { try check();guard let command=sdkJourneyCommand,let native=sdkNativeCommand,native.returned,command.id==id,command.known,command.ready,command.preparationJoined,!command.completed,command.result?.closedForSDK==true,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func completeJourney(_ id: String) throws { guard let loader,let store,let lease,let native=sdkNativeCommand,native.returned,let command=sdkJourneyCommand,command.id==id,command.result?.closedForSDK==true,let permit=command.permit else { throw PinKnownRefusal() };try loader.withData(self) { try permit.completionCurrent(self);command.completion=try store.journeyComplete(self,lease,id);try permit.completionCurrent(self) };command.completed=true }
+    func journeyUnknown() { collectionUnknown() }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    func journeyRetireFast() { lock.lock();activeJourney=nil;journeyEpoch &+= 1;lock.unlock() }
+    func journeyCurrent(_ lease: LocalV2JourneyLease) throws { lock.lock();defer { lock.unlock() };guard !sealed,activeJourney === lease,journeyEpoch==lease.epoch,context === lease.context,loader === lease.delivery.owner,lease.context.deadline==lease.delivery.owner.request.deadline else { throw PinKnownRefusal() } }
+    func journeyCommitCurrent(_ lease: LocalV2JourneyLease,_ work: () throws -> Void) throws { lock.lock();defer { lock.unlock() };guard !sealed,activeJourney === lease,journeyEpoch==lease.epoch,context === lease.context,loader === lease.delivery.owner,lease.context.deadline==lease.delivery.owner.request.deadline else { throw PinKnownRefusal() };try work() }
+    func journeyPerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery,_ capturedEpoch: UInt64) throws -> Any {
+        try requireOriginal(c,delivery);guard let admission=delivery.data,let channel else { throw PinKnownRefusal() }
+        if r.method=="closeJourney" { journeyRetireFast();try admission.publication();return try admission.publish { ["status":"retired"] } }
+        if r.method=="listJourneys" { let routes=try LocalV2JourneyCompiler.routes(delivery);try requireOriginal(c,delivery);try admission.publication();return try admission.publish { routes.map { $0.summary } } }
+        let saved=try admission.journey(r.journeyId,expected:nil,permit:nil,id:r.id);defer { saved.close() };guard saved.profileId==delivery.compiled.profile.id else { throw PinKnownRefusal() }
+        if r.method=="readJourneyProgress" { let response=try saved.dto();try admission.publication();return try admission.publish { response } }
+        guard let requested=r.journeyId,r.expectedRevision==saved.revision else { throw PinKnownRefusal() }
+        func closed(_ status: String) throws -> [String:Any] { try admission.publication();return try admission.publish { ["status":status,"profileId":saved.profileId,"revision":saved.revision,"progress":saved.progress?.dto as Any? ?? NSNull(),"journey":NSNull(),"node":NSNull()] } }
+        let routes=try LocalV2JourneyCompiler.routes(delivery);guard let route=routes.first(where:{ $0.id==requested }) else { journeyRetireFast();return try closed("unavailable") }
+        lock.lock();let original=activeJourney;lock.unlock()
+        if r.method=="advanceJourney" { guard let original,original.context === c,original.delivery === delivery,original.route.id==requested,original.progress==saved.progress,r.currentNodeId==original.progress.currentNodeId else { throw PinKnownRefusal() };try journeyCurrent(original) }
+        var progress=try PlanetChildJourney.migrate(saved.progress,journeyId:requested,version:route.version,nodeIds:route.nodeIds,kinds:route.kinds,restart:r.action=="restart")
+        if r.method=="advanceJourney",r.action=="complete" { guard saved.progress?.journeyVersion==route.version,saved.progress?.contentVersion==route.version,let current=r.currentNodeId else { throw PinKnownRefusal() };progress=try PlanetChildJourney.complete(progress,nodeIds:route.nodeIds,currentNodeId:current,kind:route.kinds[route.nodeIds.firstIndex(of:current)!]) }
+        progress=try route.projection(progress)
+        let node: Any;if let current=progress.currentNodeId,let index=route.nodeIds.firstIndex(of:current) { node=try LocalV2JourneyCompiler.entity(delivery,route.references[index]) } else { node=NSNull() }
+        try requireOriginal(c,delivery);lock.lock();guard !sealed,context === c,journeyEpoch==capturedEpoch,journeyEpoch<9007199254740990 else { lock.unlock();throw PinKnownRefusal() };journeyEpoch+=1;let lease=LocalV2JourneyLease(self,c,delivery,route,journeyEpoch,progress);activeJourney=lease;lock.unlock()
+        var revision=saved.revision
+        if r.method=="advanceJourney" || saved.progress != progress || saved.activeJourneyId != requested {
+            let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2JourneyPermit.make(lease,command,admission),result=try admission.journey(requested,expected:saved.revision,permit:permit,id:r.id);defer { result.close() };revision=result.revision;guard result.progress==progress else { throw PinKnownRefusal() }
+        }
+        try journeyCurrent(lease);let status=r.method=="openJourney" && saved.progress==nil ? "opened":"restored";try admission.publication();var response: [String:Any]?
+        try journeyCommitCurrent(lease) { response=try admission.publish { ["status":status,"profileId":saved.profileId,"revision":revision,"progress":progress.dto,"journey":route.dto,"node":node] } };guard let response else { throw PinKnownRefusal() };return response
+    }
+}
+#if DEBUG
+extension PlanetChildNativePackageRuntimeFixture {
+    /** Isolated signer/policy graph mechanics. This never reaches Bundle pins,
+     * live native SDK owners or child admission factories. */
+    static func journeyGraph(_ name: String) throws -> Bool {
+        let f=try Fixture()
+        if name=="empty" { let c=try f.compile();defer { c.close() };try check(try LocalV2JourneyCompiler.fixtureRoutes(c,f.now).isEmpty);return true }
+        func payload(_ title: String,_ refs: [[String:Any]] = []) -> [String:Any] { ["title":title,"text":"Reviewed text.","terms":["tree"],"references":refs] }
+        func entry(_ kind: String,_ id: String,_ payload: [String:Any]) throws -> [String:Any] { var policy=f.policy;policy["kind"]=kind;policy["id"]=id;policy["localizedContent"]=[["locale":"en","contentChecksum":LocalSnapshotV2.hash(try admittedPayloadBytes(payload)),"reviewStatus":"approved","available":true,"reviewerId":"isolated-editor","reviewedAt":f.now-1000]];return ["policy":policy,"payload":payload] }
+        func reference(_ kind: String,_ id: String,_ payload: [String:Any]) throws -> [String:Any] { ["kind":kind,"id":id,"contentChecksum":LocalSnapshotV2.hash(try admittedPayloadBytes(payload))] }
+        let country=payload("Country"),writer=payload("Writer"),selectedWriterId=name=="duplicate" ? "country-one":"writer-one"
+        let countryRef=try reference("country","country-one",country),writerRef=try reference("writer",selectedWriterId,writer)
+        var refs=[countryRef,writerRef],entities=[[String:Any]]()
+        entities.append(try entry("country","country-one",country));entities.append(try entry("writer",selectedWriterId,writer))
+        if name=="wrapper" { let wrapped=payload("Wrapper",[countryRef]);entities.append(try entry("favorite","favorite-one",wrapped));refs=[try reference("favorite","favorite-one",wrapped)] }
+        let route=payload("Route",refs),rootRef=try reference("activity","route-one",route);entities.append(try entry("activity","route-one",route))
+        f.payload=payload("Home",[rootRef]);entities.insert(try entry("activity","start",f.payload),at:0);f.root["home"]=try reference("activity","start",f.payload)
+        f.review["entityPolicyChecksums"]=try entities.map { raw -> [String:Any] in let policy=raw["policy"] as! [String:Any],value=raw["payload"] as! [String:Any];return ["kind":policy["kind"]!,"id":policy["id"]!,"payloadChecksum":LocalSnapshotV2.hash(try admittedPayloadBytes(value)),"policyChecksum":LocalSnapshotV2.hash(try bytes(policy,sorted:true))] }
+        try f.refresh(closure:false,entities:entities);let c=try f.compile();defer { c.close() }
+        if name=="expiry" { try denied { _=try LocalV2JourneyCompiler.fixtureRoutes(c,f.now+4000) };return true }
+        let routes=try LocalV2JourneyCompiler.fixtureRoutes(c,f.now)
+        if name=="duplicate" || name=="wrapper" { try check(routes.isEmpty) }
+        else { try check(name=="valid" && routes.count==1 && routes[0].nodeIds==["country-one","writer-one"] && routes[0].version==1 && routes[0].id=="route-one") };return true
+    }
 }
 #endif

@@ -300,3 +300,57 @@ describe("native protected appearance data commands (synthetic wire only)",()=>{
   expect(await pending).toBeNull();expect(f.controller.getSnapshot().phase).toBe("sealed");
  });
 });
+
+/** New synthetic protocol/lifecycle cases. No fixture supplies native storage
+ * admission or current release approval. */
+function journeyFixture(){
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin;
+  const progress={schemaVersion:1,journeyId:"journey",journeyVersion:1,contentVersion:1,currentNodeId:"country",completedNodeIds:[] as string[],
+    selectedCountryId:"country",selectedWriterId:null,selectedWorkId:null,lastSafeRoute:"journey"};
+  const info={journeyId:"journey",journeyVersion:1,contentVersion:1,title:"Synthetic journey",description:"Protocol only.",nodeCount:2};
+  const value=(revision=1)=>({status:"opened",profileId:"native-profile",revision,progress:{...progress},journey:{...info,nodeIds:["country","writer"]},node:entity(ref("country","country"))});
+  const list=vi.fn(async(r:unknown)=>f.dataReply(r,[info])),read=vi.fn(async(r:unknown)=>f.dataReply(r,{profileId:"native-profile",revision:0,progress:null}));
+  const open=vi.fn(async(r:unknown)=>f.dataReply(r,value())),advance=vi.fn(async(r:unknown)=>f.dataReply(r,{...value(2),progress:{...progress,currentNodeId:"writer",completedNodeIds:["country"]},node:entity(ref("writer","writer"))}));
+  const close=vi.fn(async(r:unknown)=>f.dataReply(r,{status:"retired"}));Object.assign(plugin,{listJourneys:list,readJourneyProgress:read,openJourney:open,advanceJourney:advance,closeJourney:close});
+  return {...f,list,read,open,advance,close,value};
+}
+describe("native child journey authority and protected semantic continuation",()=>{
+  it("uses dedicated child native methods and sends canonical intent only",async()=>{
+    const f=journeyFixture();await f.controller.start();expect((await f.controller.journeys!.list())?.[0].journeyId).toBe("journey");
+    expect(await f.controller.journeys!.readProgress()).toMatchObject({profileId:"native-profile",revision:0,progress:null});
+    expect(await f.controller.journeys!.open("journey",0)).toMatchObject({progress:{currentNodeId:"country"}});
+    expect(f.open.mock.calls[0][0]).toMatchObject({contextToken:TOKEN,journeyId:"journey",expectedRevision:0});
+    expect(Object.keys(f.open.mock.calls[0][0] as object).sort()).toEqual(["contextToken","expectedRevision","journeyId","requestId","version"]);
+    expect(await f.controller.journeys!.advance(1,"journey","country","complete")).toMatchObject({revision:2,progress:{currentNodeId:"writer",completedNodeIds:["country"]}});
+    expect(f.plugin.perform).not.toHaveBeenCalled();expect(await f.controller.journeys!.close()).toBe(true);
+  });
+  it("adult or blocked child mode cannot dispatch any journey authority",async()=>{
+    for(const native of [nativeContext(1,"adult"),nativeContext(1,"child",false)]){
+      const f=journeyFixture();f.setNative(native);f.plugin.bootstrap.mockImplementation(async r=>appReply(r,native,native.mode==="adult"?"adult":"blocked-child","missing-pins"));await f.controller.start();
+      expect(await f.controller.journeys!.list()).toBeNull();expect(await f.controller.journeys!.open("journey",0)).toBeNull();expect(f.list).not.toHaveBeenCalled();expect(f.open).not.toHaveBeenCalled();
+    }
+  });
+  it("rejects caller URLs malformed nodes unsafe revisions and empty completion before dispatch",async()=>{
+    const f=journeyFixture();await f.controller.start();
+    expect(await f.controller.journeys!.open("https://adult.example",0)).toBeNull();expect(await f.controller.journeys!.open("journey",Number.MAX_SAFE_INTEGER)).toBeNull();
+    expect(await f.controller.journeys!.advance(1,"journey",null,"complete")).toBeNull();expect(await f.controller.journeys!.advance(1,"journey","../node","restart")).toBeNull();expect(f.open).not.toHaveBeenCalled();expect(f.advance).not.toHaveBeenCalled();
+  });
+  it("a mismatched profile or readback after dispatched open seals the host without replay",async()=>{
+    const f=journeyFixture();await f.controller.start();f.open.mockImplementation(async r=>f.dataReply(r,{...f.value(),profileId:"another-profile"}));
+    expect(await f.controller.journeys!.open("journey",0)).toBeNull();expect(f.controller.getSnapshot().phase).toBe("sealed");
+    await f.controller.refresh();expect(f.plugin.bootstrap).toHaveBeenCalledOnce();expect(f.open).toHaveBeenCalledOnce();
+  });
+  it("background retirement joins an already dispatched journey save and prevents retired node publication",async()=>{
+    const f=journeyFixture(),held=deferred<unknown>();await f.controller.start();f.open.mockReturnValueOnce(held.promise);
+    const pending=f.controller.journeys!.open("journey",0);await settle();const request=f.open.mock.calls[0][0];f.visibility("background");expect(f.clear).toHaveBeenCalled();expect(f.controller.getSnapshot().context).toBeNull();
+    held.resolve(f.dataReply(request,f.value()));expect(await pending).toBeNull();await settle();f.visibility("active");await settle();expect(f.plugin.bootstrap).toHaveBeenCalledOnce();expect(f.open).toHaveBeenCalledOnce();
+  });
+  it("fresh native context after a known read preserves semantic progress but returns fresh locale text",async()=>{
+    const f=journeyFixture();await f.controller.start();expect(await f.controller.journeys!.open("journey",0)).not.toBeNull();
+    f.setNative({...nativeContext(2),locale:"ru"});await f.controller.refresh();
+    f.read.mockImplementation(async r=>f.dataReply(r,{profileId:"native-profile",revision:1,progress:f.value().progress}));
+    f.open.mockImplementation(async r=>f.dataReply(r,{...f.value(),status:"restored",node:{...entity(ref("country","country")),payload:{title:"Свежая страна",text:"Новый DTO.",terms:[],references:[]}}}));
+    expect(await f.controller.journeys!.readProgress()).toMatchObject({revision:1});expect(await f.controller.journeys!.open("journey",1)).toMatchObject({node:{payload:{title:"Свежая страна"}}});
+    expect((f.open.mock.calls[1][0] as {contextToken:string}).contextToken).not.toBe(TOKEN);expect(f.advance).not.toHaveBeenCalled();
+  });
+});

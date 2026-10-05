@@ -130,7 +130,7 @@ final class PlanetChildDataStore {
     private static final class Seal {final Scope scope;final String contentBinding;private Seal(Scope scope,String contentBinding){this.scope=scope;this.contentBinding=contentBinding;}}
     private static final class State implements AutoCloseable {
         long generation; String nonce; Scope scope; String admissionBinding,pendingMigration; final TreeMap<String,Seal> seals=new TreeMap<>(); final TreeMap<String, Stored> entries = new TreeMap<>();
-        boolean sdkAppearance;final TreeMap<String,AppearanceEntry> appearances=new TreeMap<>();boolean sdkCollections;String sdkUnboundBirth,sdkUnboundContent;final TreeMap<String,Long> collectionRevisions=new TreeMap<>(),tombstones=new TreeMap<>();
+        boolean sdkJourney;final TreeMap<String,JourneyEntry> journeys=new TreeMap<>();boolean sdkAppearance;final TreeMap<String,AppearanceEntry> appearances=new TreeMap<>();boolean sdkCollections;String sdkUnboundBirth,sdkUnboundContent;final TreeMap<String,Long> collectionRevisions=new TreeMap<>(),tombstones=new TreeMap<>();
         public void close() { for (Stored slot : entries.values()) Arrays.fill(slot.value, (byte) 0); }
     }
     PlanetChildDataStore(Context context) throws Exception { this(context, null); }
@@ -255,7 +255,7 @@ final class PlanetChildDataStore {
             out.writeByte(purpose.ordinal()); out.writeUTF(key); out.writeLong(stored.revision); out.writeUTF(digest(stored.value)); out.writeInt(stored.value.length); out.write(stored.value);
             require(bytes.size()<=MAX_SNAPSHOT_BYTES); }
         if(state.admissionBinding!=null){out.writeInt(0x4c504133);out.writeUTF(state.admissionBinding);out.writeBoolean(state.pendingMigration!=null);if(state.pendingMigration!=null)out.writeUTF(state.pendingMigration);out.writeInt(state.seals.size());for(Seal seal:state.seals.values()){out.writeUTF(seal.scope.tuple);out.writeUTF(seal.contentBinding);}}
-        encodeCollections(state,out);encodeAppearance(state,out);out.flush(); byte[] result=bytes.toByteArray(); require(result.length<=MAX_SNAPSHOT_BYTES); return result; }
+        encodeCollections(state,out);encodeAppearance(state,out);encodeJourney(state,out);out.flush(); byte[] result=bytes.toByteArray(); require(result.length<=MAX_SNAPSHOT_BYTES); return result; }
     }
     private static State decode(byte[] bytes) throws Exception {
         State state=new State(); boolean successful=false; try { DataInputStream in=new DataInputStream(new ByteArrayInputStream(bytes)); require(in.readInt()==0x4c504431);
@@ -265,7 +265,7 @@ final class PlanetChildDataStore {
                 long revision=in.readLong(); require(positive(revision) && revision < MAX_SAFE); String hash=in.readUTF(); require(checksum(hash)); int length=in.readInt(); require(length>0 && length<=MAX_VALUE_BYTES && length<=in.available());
                 byte[] value=new byte[length]; boolean owned=false; try { in.readFully(value); require(digest(value).equals(hash)); envelope(purpose,key,scope,value);
                     require(!state.entries.containsKey(purpose.name()+"\n"+key)); state.entries.put(purpose.name()+"\n"+key,new Stored(revision,value)); owned=true; } finally { if(!owned) Arrays.fill(value,(byte)0); } }
-            if(in.available()>0){require(in.readInt()==0x4c504133);state.admissionBinding=in.readUTF();require(checksum(state.admissionBinding));int pending=in.readUnsignedByte();require(pending==0||pending==1);if(pending==1){state.pendingMigration=in.readUTF();require(checksum(state.pendingMigration));}int seals=in.readInt();require(seals>=0&&seals<=4);for(int i=0;i<seals;i++){Scope saved=Scope.decode(in.readUTF());String content=in.readUTF();require(checksum(content)&&!state.seals.containsKey(saved.profileId));state.seals.put(saved.profileId,new Seal(saved,content));}}if(in.available()>0)decodeCollections(state,in);if(in.available()>0)decodeAppearance(state,in);validateSeals(state);validateCollections(state);validateAppearance(state);
+            if(in.available()>0){require(in.readInt()==0x4c504133);state.admissionBinding=in.readUTF();require(checksum(state.admissionBinding));int pending=in.readUnsignedByte();require(pending==0||pending==1);if(pending==1){state.pendingMigration=in.readUTF();require(checksum(state.pendingMigration));}int seals=in.readInt();require(seals>=0&&seals<=4);for(int i=0;i<seals;i++){Scope saved=Scope.decode(in.readUTF());String content=in.readUTF();require(checksum(content)&&!state.seals.containsKey(saved.profileId));state.seals.put(saved.profileId,new Seal(saved,content));}}if(in.available()>0)decodeCollections(state,in);if(in.available()>0)decodeAppearance(state,in);if(in.available()>0)decodeJourney(state,in);validateSeals(state);validateCollections(state);validateAppearance(state);validateJourney(state);
             require(in.available()==0); successful=true; return state;
         } finally { if(!successful) state.close(); }
     }
@@ -398,7 +398,7 @@ final class PlanetChildDataStore {
         require(state.admissionBinding.equals(admission.previousBinding()));admission.previousSeals(sealBindings(state));
         if(future!=null){Seal previous=state.seals.get(future.profileId);if(admission.createsProfile())require(state.sdkUnboundBirth==null&&previous==null&&state.seals.size()<4);else if(state.sdkUnboundBirth!=null)require(future.profileId.equals(state.sdkUnboundBirth)&&state.sdkUnboundContent.equals(admission.previousContentBinding()));else require(previous!=null&&previous.contentBinding.equals(admission.previousContentBinding()));}
         TreeMap<String,Stored> next=new TreeMap<>();boolean adopted=false;try{for(Map.Entry<String,Stored> entry:state.entries.entrySet()){admission.check();int split=entry.getKey().indexOf('\n');Purpose purpose=Purpose.valueOf(entry.getKey().substring(0,split));String oldKey=entry.getKey().substring(split+1);Scope oldScope=keyScope(purpose,oldKey);Seal oldSeal=state.seals.get(oldScope.profileId);require(oldSeal!=null&&oldScope.tuple.equals(oldSeal.scope.tuple));try(PlanetChildVault.LocalV2MigrationValue value=future==null?null:admission.partition(purpose,oldKey,entry.getValue().value)){if(future==null){require(!next.containsKey(entry.getKey()));next.put(entry.getKey(),new Stored(entry.getValue().revision,entry.getValue().value.clone()));continue;}if(value==null)continue;Scope nextScope=value.changed?future:oldScope;envelope(purpose,value.key,nextScope,value.bytes);if(value.changed)admission.validate(purpose,value.key,value.bytes);long revision=entry.getValue().revision;require(!value.changed||revision<MAX_SAFE-1);String id=purpose.name()+"\n"+value.key;require(!next.containsKey(id));next.put(id,new Stored(revision+(value.changed?1:0),value.bytes.clone()));}}
-            if(future!=null){state.seals.put(future.profileId,new Seal(future,admission.contentBinding()));state.sdkUnboundBirth=null;state.sdkUnboundContent=null;}migrateTombstones(state,future);migrateAppearance(state);require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.admissionBinding=admission.binding();state.pendingMigration=admission.migrationIdentity();state.close();state.entries.clear();state.entries.putAll(next);adopted=true;
+            if(future!=null){state.seals.put(future.profileId,new Seal(future,admission.contentBinding()));state.sdkUnboundBirth=null;state.sdkUnboundContent=null;}migrateTombstones(state,future);migrateAppearance(state);migrateJourney(state);require(state.generation<MAX_SAFE-1);state.generation++;state.nonce=nonce();state.admissionBinding=admission.binding();state.pendingMigration=admission.migrationIdentity();state.close();state.entries.clear();state.entries.putAll(next);adopted=true;
             admission.markDataWrite();pendingMigrationFile(directory,state.pendingMigration);write(directory,state,admission::check);admission.commitCanonical();admittedState(admission,state);return null;
         }finally{if(!adopted)for(Stored slot:next.values())Arrays.fill(slot.value,(byte)0);}
     }});}
@@ -473,7 +473,8 @@ final class PlanetChildDataStore {
         require(runId==null||"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&ApplicationInfo.FLAG_DEBUGGABLE)!=0&&runId.matches("[a-f0-9]{32}"));
         name="literary-planet-child-data-v1"+(runId==null?"":"-synthetic-"+runId);identity=context.getPackageName()+"."+name;
     }
-    private void existingOnly(File directory) throws Exception {existingRecord(directory);require(!knownPending(directory).exists()&&!migrationPending(directory).exists()&&!collectionPending(directory).exists()&&!appearancePending(directory).exists());knownBirth(directory);}
+    private void noPendingOperations(File directory) throws Exception {require(!knownPending(directory).exists()&&!migrationPending(directory).exists()&&!collectionPending(directory).exists()&&!appearancePending(directory).exists()&&!journeyPending(directory).exists());}
+    private void existingOnly(File directory) throws Exception {existingRecord(directory);noPendingOperations(directory);knownBirth(directory);}
     private File migrationPending(File directory) throws Exception {File file=new File(directory,"local-v2-migration.pending");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));return file;}
     private void pendingMigrationFile(File directory,String identity) throws Exception {
         require(identity!=null&&identity.matches("[a-f0-9]{64}"));File file=migrationPending(directory);byte[] marker=identity.getBytes(StandardCharsets.US_ASCII);
@@ -483,7 +484,7 @@ final class PlanetChildDataStore {
         }finally{Arrays.fill(marker,(byte)0);}
     }
     private void existingMigration(File directory,PlanetChildVault.LocalV2DataAdmission admission) throws Exception {
-        existingRecord(directory);require(!knownPending(directory).exists()&&!collectionPending(directory).exists()&&!appearancePending(directory).exists());knownBirth(directory);byte[] actual=boundedRegular(migrationPending(directory),64);
+        existingRecord(directory);require(!knownPending(directory).exists()&&!collectionPending(directory).exists()&&!appearancePending(directory).exists()&&!journeyPending(directory).exists());knownBirth(directory);byte[] actual=boundedRegular(migrationPending(directory),64);
         try{require(new String(actual,StandardCharsets.US_ASCII).equals(admission.migrationIdentity()));}finally{Arrays.fill(actual,(byte)0);}
     }
     private void existingRecord(File directory) throws Exception {
@@ -757,5 +758,108 @@ final class PlanetChildDataStore {
     }
     static boolean fixtureProductionAppearancePending(Context context,String commandId) throws Exception {
         fixtureAppearanceContext(context);require(commandId!=null&&commandId.matches("[a-f0-9]{32}"));File root=new File(context.getNoBackupFilesDir().getCanonicalFile(),"literary-planet-child-data-v1"),file=new File(root,"local-v2-appearance.pending");require(root.getAbsoluteFile().equals(root.getCanonicalFile())&&file.getAbsoluteFile().equals(file.getCanonicalFile()));StructStat info=Os.lstat(file.getPath());require(OsConstants.S_ISREG(info.st_mode)&&info.st_size>0&&info.st_size<=4096);byte[] bytes=new byte[(int)info.st_size];try(FileInputStream input=new FileInputStream(file)){int at=0;while(at<bytes.length){int count=input.read(bytes,at,bytes.length-at);require(count>0);at+=count;}require(input.read()==-1);String[] rows=utf8(bytes).split("\n",-1);return rows.length==10&&"LP-LOCAL-V2-APPEARANCE".equals(rows[0])&&commandId.equals(rows[2]);}finally{Arrays.fill(bytes,(byte)0);}
+    }
+
+    private static final class JourneyEntry {
+        final long revision;final String activeJourneyId;final TreeMap<String,PlanetChildJourney.Progress> values;
+        JourneyEntry(long revision,String activeJourneyId,Map<String,PlanetChildJourney.Progress> values){this.revision=revision;this.activeJourneyId=activeJourneyId;this.values=new TreeMap<>(values);}
+    }
+    static final class JourneyResult implements AutoCloseable {
+        final String profileId,activeJourneyId;final long revision;final PlanetChildJourney.Progress progress;private boolean closed;
+        private JourneyResult(String profileId,long revision,PlanetChildJourney.Progress progress,String activeJourneyId){this.profileId=profileId;this.revision=revision;this.progress=progress;this.activeJourneyId=activeJourneyId;}
+        synchronized Map<String,Object> dto() throws Exception {require(!closed);Map<String,Object> out=new LinkedHashMap<>();out.put("profileId",profileId);out.put("revision",revision);out.put("progress",progress==null?null:progress.dto());return Collections.unmodifiableMap(out);}
+        synchronized boolean closedForSDK(){return closed;}public synchronized void close(){closed=true;}
+    }
+    private static void validateJourney(State state) throws Exception {
+        if(!state.sdkJourney){require(state.journeys.isEmpty());return;}
+        require(state.sdkCollections&&state.sdkAppearance&&state.admissionBinding!=null&&state.sdkUnboundBirth==null&&state.journeys.size()<=4&&state.seals.keySet().containsAll(state.journeys.keySet()));
+        for(Map.Entry<String,JourneyEntry> row:state.journeys.entrySet()){JourneyEntry entry=row.getValue();require(identifier(row.getKey())&&entry.revision>0&&identifier(entry.activeJourneyId)&&entry.values.size()>0&&entry.values.size()<=32&&entry.values.containsKey(entry.activeJourneyId));PlanetChildAppearance.revision(entry.revision);
+            for(Map.Entry<String,PlanetChildJourney.Progress> journey:entry.values.entrySet()){require(journey.getKey().equals(journey.getValue().journeyId));byte[] bytes=journey.getValue().encode();try{require(PlanetChildJourney.decode(bytes).equals(journey.getValue()));}finally{Arrays.fill(bytes,(byte)0);}}
+        }
+    }
+    private static void encodeJourney(State state,DataOutputStream out) throws Exception {
+        validateJourney(state);if(!state.sdkJourney)return;out.writeInt(0x4c504a32);out.writeByte(1);out.writeByte(state.journeys.size());
+        for(Map.Entry<String,JourneyEntry> row:state.journeys.entrySet()){out.writeUTF(row.getKey());JourneyEntry entry=row.getValue();out.writeLong(entry.revision);out.writeUTF(entry.activeJourneyId);out.writeByte(entry.values.size());for(PlanetChildJourney.Progress progress:entry.values.values()){byte[] bytes=progress.encode();try{out.writeInt(bytes.length);out.write(bytes);}finally{Arrays.fill(bytes,(byte)0);}}}
+    }
+    private static void decodeJourney(State state,DataInputStream in) throws Exception {
+        require(in.readInt()==0x4c504a32&&in.readUnsignedByte()==1&&state.sdkAppearance);state.sdkJourney=true;int count=in.readUnsignedByte();require(count<=4);
+        for(int i=0;i<count;i++){String profile=in.readUTF();long revision=in.readLong();String active=in.readUTF();int n=in.readUnsignedByte();require(n>0&&n<=32&&!state.journeys.containsKey(profile));TreeMap<String,PlanetChildJourney.Progress> values=new TreeMap<>();for(int j=0;j<n;j++){int length=in.readInt();require(length>0&&length<=PlanetChildJourney.MAX_BYTES&&length<=in.available());byte[] bytes=new byte[length];try{in.readFully(bytes);PlanetChildJourney.Progress progress=PlanetChildJourney.decode(bytes);require(!values.containsKey(progress.journeyId));values.put(progress.journeyId,progress);}finally{Arrays.fill(bytes,(byte)0);}}state.journeys.put(profile,new JourneyEntry(revision,active,values));}validateJourney(state);
+    }
+    private static long journeyNext(long current,long expected) throws Exception {require(current==expected);return PlanetChildAppearance.next(current);}
+    /** Validate the complete proposed snapshot before any durable marker/write.
+     * A known count/size refusal must not strand an otherwise valid store. */
+    private static void prepareJourneyWrite(State state,String profile,long revision,PlanetChildJourney.Progress progress) throws Exception {
+        JourneyEntry prior=state.journeys.get(profile);TreeMap<String,PlanetChildJourney.Progress> retained=prior==null?new TreeMap<>():new TreeMap<>(prior.values);
+        retained.put(progress.journeyId,progress);require(retained.size()<=32);
+        state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.journeys.put(profile,new JourneyEntry(revision,progress.journeyId,retained));
+        byte[] bounded=encode(state);try{validateJourney(state);}finally{Arrays.fill(bounded,(byte)0);}
+    }
+    private static void migrateJourney(State state) throws Exception {validateJourney(state);require(sealBindings(state).keySet().containsAll(state.journeys.keySet()));}
+    private File journeyPending(File directory) throws Exception {File file=new File(directory,"local-v2-journey.pending");require(file.getAbsoluteFile().equals(file.getCanonicalFile()));return file;}
+    private void exclusiveJourneyMarker(File directory,byte[] marker,Check check) throws Exception {
+        require(marker!=null&&marker.length>0&&marker.length<=4096);FileDescriptor fd=Os.open(journeyPending(directory).getPath(),OsConstants.O_WRONLY|OsConstants.O_CREAT|OsConstants.O_EXCL|OsConstants.O_NOFOLLOW|OsConstants.O_CLOEXEC,0600);
+        try{int at=0;while(at<marker.length){check.check();int n=Os.write(fd,marker,at,marker.length-at);require(n>0);at+=n;}Os.fsync(fd);}finally{Os.close(fd);}syncBirthDirectory(directory);
+    }
+    private byte[] journeyMarkerBytes(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,String commandId,long revision,PlanetChildJourney.Progress progress) throws Exception {
+        byte[] bytes=progress.encode();try{return ("LP-LOCAL-V2-JOURNEY\n"+identity+"\n"+commandId+"\n"+admission.binding()+"\n"+lease.scope.profileId+"\n"+lease.generation+"\n"+lease.nonce+"\n"+revision+"\n"+digest(bytes)+"\n").getBytes(StandardCharsets.US_ASCII);}finally{Arrays.fill(bytes,(byte)0);}
+    }
+    JourneyResult admittedJourney(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,Long expected,PlanetChildVault.LocalV2JourneyProgressPermit permit,String commandId,String requestedJourneyId) throws Exception {
+        require(admission!=null&&lease!=null&&(expected==null)==(permit==null)&&commandId!=null&&commandId.matches("[a-f0-9]{32}"));
+        return locked(directory->{admission.check();existingOnly(directory);try(State state=read(directory)){admittedLive(admission,lease,state);validateJourney(state);String profile=lease.scope.profileId;JourneyEntry prior=state.journeys.get(profile);long revision=prior==null?0:prior.revision;PlanetChildJourney.Progress priorProgress=prior==null?null:prior.values.get(requestedJourneyId==null?prior.activeJourneyId:requestedJourneyId);
+            if(permit==null){JourneyResult result=new JourneyResult(profile,revision,priorProgress,prior==null?null:prior.activeJourneyId);try{admission.check();return result;}catch(Exception failure){result.close();throw failure;}}
+            long next=journeyNext(revision,expected);PlanetChildJourney.Progress progress=permit.progress(admission);require(profile.equals(permit.profileId(admission)));prepareJourneyWrite(state,profile,next,progress);byte[] marker=journeyMarkerBytes(admission,lease,commandId,next,progress);boolean markerAttempted=false;
+            try{markerAttempted=true;exclusiveJourneyMarker(directory,marker,()->permit.check(admission));write(directory,state,()->permit.check(admission));
+                try(State actual=read(directory)){admittedLive(admission,lease,actual);permit.check(admission);JourneyEntry saved=actual.journeys.get(profile);require(saved!=null&&saved.revision==next&&progress.journeyId.equals(saved.activeJourneyId)&&progress.equals(saved.values.get(progress.journeyId)));byte[] before=encode(state),after=encode(actual);try{require(MessageDigest.isEqual(before,after));}finally{Arrays.fill(before,(byte)0);Arrays.fill(after,(byte)0);}}
+                byte[] pending=boundedRegular(journeyPending(directory),4096);try{require(MessageDigest.isEqual(pending,marker));}finally{Arrays.fill(pending,(byte)0);}admission.journeyCommandKnown(commandId);JourneyResult result=new JourneyResult(profile,next,progress,progress.journeyId);try{admission.journeyCommandReady(commandId);return result;}catch(Exception failure){result.close();throw failure;}
+            }catch(Throwable failure){if(markerAttempted){closed=true;}if(failure instanceof Error)throw (Error)failure;throw (Exception)failure;}finally{Arrays.fill(marker,(byte)0);}
+        }});
+    }
+    /** Capture keeps the durable marker until the actual SDK command is done,
+     * its native consumer owns the result, and all final admission fences pass.
+     * Observed completion/callback failure retains DENY, never rollback.
+     * No caller can construct, acknowledge or supply the receipt bytes. */
+    static final class JourneyCompletion implements AutoCloseable {
+        private final PlanetChildDataStore store;private final byte[] marker;private boolean closed,completed;
+        private JourneyCompletion(PlanetChildDataStore store,byte[] marker){this.store=store;this.marker=marker.clone();}
+        synchronized void complete() throws Exception {require(!closed&&!completed);store.locked(directory->{require(!store.closed);File file=store.journeyPending(directory);byte[] actual=store.boundedRegular(file,4096);try{require(MessageDigest.isEqual(actual,marker));Os.remove(file.getPath());store.syncBirthDirectory(directory);return null;}finally{Arrays.fill(actual,(byte)0);}});completed=true;}
+        synchronized void retainUnknown() throws Exception {require(!closed);store.locked(directory->{File file=store.journeyPending(directory);if(!file.exists())store.exclusiveJourneyMarker(directory,marker,()->{});store.closed=true;return null;});}
+        public synchronized void close(){closed=true;Arrays.fill(marker,(byte)0);}
+    }
+    JourneyCompletion journeyComplete(PlanetChildVault.LocalV2DataAdmission admission,Lease lease,String commandId) throws Exception {
+        final JourneyCompletion[] retained=new JourneyCompletion[1];
+        try{return locked(directory->{admission.check();try(State state=read(directory)){admittedLive(admission,lease,state);validateJourney(state);admission.journeyCommandJoined(commandId);JourneyEntry entry=state.journeys.get(lease.scope.profileId);require(entry!=null&&entry.values.get(entry.activeJourneyId)!=null);File marker=journeyPending(directory);byte[] actual=boundedRegular(marker,4096),expected=journeyMarkerBytes(admission,lease,commandId,entry.revision,entry.values.get(entry.activeJourneyId));
+            try{require(MessageDigest.isEqual(actual,expected));retained[0]=new JourneyCompletion(this,expected);admission.check();return retained[0];}finally{Arrays.fill(actual,(byte)0);Arrays.fill(expected,(byte)0);}
+        }});}catch(Throwable failure){if(retained[0]!=null){try{retained[0].retainUnknown();}catch(Throwable sticky){failure.addSuppressed(sticky);}finally{retained[0].close();}}closed=true;if(failure instanceof Error)throw (Error)failure;throw (Exception)failure;}
+    }
+
+    static PlanetChildJourney.Progress fixtureJourneyProgress(String id,String current,List<String> completed) throws Exception {return new PlanetChildJourney.Progress(id,1,1,current,completed,"fixture-country",null,null,"journey");}
+    /** Production snapshot codec/CAS with explicit software fixture values. */
+    static boolean fixtureJourneyScenario(Context context,String name) throws Exception {
+        fixtureAppearanceContext(context);require(Arrays.asList("legacy","cas","isolation","archive","migration","corrupt","capacity").contains(name));
+        if("cas".equals(name)){require(journeyNext(7,7)==8);boolean stale=false,overflow=false;try{journeyNext(7,6);}catch(Exception deny){stale=true;}try{journeyNext(MAX_SAFE-1,MAX_SAFE-1);}catch(Exception deny){overflow=true;}require(stale&&overflow);return true;}
+        if("capacity".equals(name)){try(State state=fixtureAppearanceState()){
+            TreeMap<String,PlanetChildJourney.Progress> values=new TreeMap<>();for(int i=0;i<32;i++){PlanetChildJourney.Progress item=fixtureJourneyProgress("retained-journey-"+i,"fixture-node",Arrays.asList("archived-node"));values.put(item.journeyId,item);}
+            state.sdkAppearance=true;state.sdkJourney=true;state.journeys.put("fixture-reader-one",new JourneyEntry(32,"retained-journey-0",values));
+            byte[] before=encode(state);try{boolean refused=false;try{prepareJourneyWrite(state,"fixture-reader-one",33,fixtureJourneyProgress("new-journey","fixture-node",Collections.emptyList()));}catch(Exception full){refused=true;}require(refused);
+                byte[] unchanged=encode(state);try{require(MessageDigest.isEqual(before,unchanged));}finally{Arrays.fill(unchanged,(byte)0);}
+                PlanetChildJourney.Progress replacement=fixtureJourneyProgress("retained-journey-0","fixture-next",Arrays.asList("archived-node","fixture-node"));prepareJourneyWrite(state,"fixture-reader-one",33,replacement);JourneyEntry entry=state.journeys.get("fixture-reader-one");require(entry.revision==33&&entry.values.size()==32&&replacement.equals(entry.values.get(replacement.journeyId)));for(Map.Entry<String,PlanetChildJourney.Progress> prior:values.entrySet())if(!prior.getKey().equals(replacement.journeyId))require(prior.getValue().equals(entry.values.get(prior.getKey())));
+            }finally{Arrays.fill(before,(byte)0);}return true;
+        }}
+        try(State state=fixtureAppearanceState()){byte[] legacy=encode(state);try{if("legacy".equals(name)){try(State actual=decode(legacy)){byte[] exact=encode(actual);try{require(!actual.sdkJourney&&actual.journeys.isEmpty()&&MessageDigest.isEqual(legacy,exact));}finally{Arrays.fill(exact,(byte)0);}}return true;}
+            state.sdkAppearance=true;state.sdkJourney=true;PlanetChildJourney.Progress first=fixtureJourneyProgress("fixture-journey-one","fixture-node-two",Arrays.asList("fixture-node-one")),archived=fixtureJourneyProgress("fixture-journey-archived",null,Arrays.asList("fixture-node-old")),second=fixtureJourneyProgress("fixture-journey-two","fixture-node-four",Collections.emptyList());
+            TreeMap<String,PlanetChildJourney.Progress> retained=new TreeMap<>();retained.put(first.journeyId,first);retained.put(archived.journeyId,archived);state.journeys.put("fixture-reader-one",new JourneyEntry(3,first.journeyId,retained));state.journeys.put("fixture-reader-two",new JourneyEntry(9,second.journeyId,Collections.singletonMap(second.journeyId,second)));
+            if("archive".equals(name))state.journeys.put("fixture-reader-one",new JourneyEntry(4,archived.journeyId,retained));
+            if("migration".equals(name)){String hash="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb";Scope scope=new Scope("fixture-reader-one",2,7,"en","fixture-policy",hash,"fixture-package-en",2,hash);state.seals.put(scope.profileId,new Seal(scope,hash));state.admissionBinding=hash;migrateJourney(state);require(state.journeys.get(scope.profileId).values.get(first.journeyId).equals(first));}
+            byte[] bytes=encode(state);try{if("corrupt".equals(name)){for(int n=0;n<3;n++){byte[] changed=n==0?Arrays.copyOf(bytes,bytes.length+1):bytes.clone();if(n==1)changed[changed.length-1]=2;if(n==2)changed[changed.length-1]=(byte)255;boolean deny=false;try(State ignored=decode(changed)){}catch(Exception failure){deny=true;}finally{Arrays.fill(changed,(byte)0);}require(deny);}return true;}
+                try(State actual=decode(bytes)){byte[] exact=encode(actual);try{require(MessageDigest.isEqual(bytes,exact)&&actual.journeys.get("fixture-reader-two").revision==9&&second.equals(actual.journeys.get("fixture-reader-two").values.get(second.journeyId)));JourneyEntry one=actual.journeys.get("fixture-reader-one");require(one.values.size()==2&&first.equals(one.values.get(first.journeyId))&&archived.equals(one.values.get(archived.journeyId))&&("archive".equals(name)?one.revision==4&&one.activeJourneyId.equals(archived.journeyId):one.revision==3&&one.activeJourneyId.equals(first.journeyId)));}finally{Arrays.fill(exact,(byte)0);}}
+            }finally{Arrays.fill(bytes,(byte)0);}return true;
+        }finally{Arrays.fill(legacy,(byte)0);}}
+    }
+    static boolean fixtureJourneyPersistence(Context context,String runId,String phase) throws Exception {
+        fixtureAppearanceContext(context);require(runId!=null&&runId.matches("[a-f0-9]{32}")&&Arrays.asList("write","read","pending","pending-reopen").contains(phase));PlanetChildDataStore store="write".equals(phase)?synthetic(context,runId):new PlanetChildDataStore(context,runId,true);return store.locked(directory->{if(!"write".equals(phase))store.existingRecord(directory);
+            if("write".equals(phase)){try(State state=fixtureAppearanceState()){state.sdkAppearance=true;state.sdkJourney=true;PlanetChildJourney.Progress one=fixtureJourneyProgress("fixture-journey-one","fixture-node-two",Arrays.asList("fixture-node-one")),two=fixtureJourneyProgress("fixture-journey-two","fixture-node-four",Collections.emptyList());state.journeys.put("fixture-reader-one",new JourneyEntry(5,one.journeyId,Collections.singletonMap(one.journeyId,one)));state.journeys.put("fixture-reader-two",new JourneyEntry(11,two.journeyId,Collections.singletonMap(two.journeyId,two)));store.write(directory,state,()->{});return true;}}
+            try(State state=store.read(directory)){require(state.journeys.get("fixture-reader-one").revision==5&&state.journeys.get("fixture-reader-one").values.get("fixture-journey-one").completedNodeIds.equals(Arrays.asList("fixture-node-one"))&&state.journeys.get("fixture-reader-two").revision==11);if("read".equals(phase)){store.noPendingOperations(directory);return true;}
+                if("pending".equals(phase)){store.noPendingOperations(directory);byte[] marker=("LP-SOFTWARE-JOURNEY-PENDING\n"+runId+"\n").getBytes(StandardCharsets.US_ASCII);try{store.exclusiveJourneyMarker(directory,marker,()->{});}finally{Arrays.fill(marker,(byte)0);}}require(store.journeyPending(directory).isFile());boolean denied=false;try{store.noPendingOperations(directory);}catch(Exception closed){denied=true;}require(denied);return true;}
+        });
     }
 }

@@ -8,6 +8,8 @@ import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNat
   type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
 import { childNativeAppearanceRevision, childNativeAppearanceFromScene, sameChildNativeAppearance,
   decodeChildNativeProfileAppearance, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
+import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJourneySummaries,
+  decodeChildNativeProfileJourney, decodeChildNativeJourneyResult, type ChildNativeJourneyController } from "./childNativeJourney";
 import localPolicy from "./childNativeLocalV2Policy.json";
 import type { PlatformServices, PreferenceStore } from "../platform/ports";
 
@@ -33,6 +35,11 @@ export interface ChildNativeAppPlugin {
   readSceneSelection?(request: unknown): Promise<unknown>;
   rememberSceneSelection?(request: unknown): Promise<unknown>;
   restoreSceneSelection?(request: unknown): Promise<unknown>;
+  listJourneys?(request: unknown): Promise<unknown>;
+  readJourneyProgress?(request: unknown): Promise<unknown>;
+  openJourney?(request: unknown): Promise<unknown>;
+  advanceJourney?(request: unknown): Promise<unknown>;
+  closeJourney?(request: unknown): Promise<unknown>;
   addListener(event: "invalidated", listener: (value: unknown) => void): Promise<{ remove(): Promise<void> }>;
 }
 export const CHILD_NATIVE_LOCAL_POLICY_VERSION = localPolicy.version;
@@ -64,6 +71,7 @@ export interface ChildNativeCollectionValue {
 }
 export type ChildNativeAction = ParentGateAction | "first-install" | "enroll-pin" | "replace-pin" | "recover-pin" | "create-profile" | "enter-child";
 export interface ChildNativeAppController {
+  readonly journeys?: ChildNativeJourneyController;
   readonly media?: ChildNativeMediaController;
   readonly scenes?: ChildNativeSceneController;
   getSnapshot(): ChildNativeAppSnapshot;
@@ -439,7 +447,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection",
+  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -450,7 +458,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       const original = request(); dispatched = true;
       const raw = await invoke(method, { ...original, contextToken: c.token, ...input });
       if (!current(c, generation)) {
-        if (method === "rememberSceneSelection") uncertain = true;
+        if (["rememberSceneSelection", "openJourney", "advanceJourney"].includes(method)) uncertain = true;
         return null;
       }
       const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
@@ -462,7 +470,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       // An uncorrelated save reply cannot tell us whether native committed.
       // Keep this controller sealed until a new host lifetime independently
       // reads native state; refresh/lifecycle must not replay an uncertain save.
-      if (method === "rememberSceneSelection" && dispatched) uncertain = true;
+      if (["rememberSceneSelection", "openJourney", "advanceJourney"].includes(method) && dispatched) uncertain = true;
       if (snapshot.context === c) { seal("unavailable"); await retire(c); }
       return null;
     }
@@ -471,6 +479,49 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     return work;
   }
   return Object.freeze({
+    journeys: Object.freeze({
+      list() {
+        const c=snapshot.context;
+        if(!c?.profileId||!c.package||typeof options.plugin?.listJourneys!=="function")return Promise.resolve(null);
+        return data("listJourneys",{},raw=>{
+          const values=decodeChildNativeJourneySummaries(raw);
+          return values&&values.every(row=>row.contentVersion===c.package!.version)?values:null;
+        });
+      },
+      readProgress() {
+        const c=snapshot.context;
+        if(!c?.profileId||typeof options.plugin?.readJourneyProgress!=="function")return Promise.resolve(null);
+        return data("readJourneyProgress",{},raw=>decodeChildNativeProfileJourney(raw,c.profileId!));
+      },
+      open(journeyId,expectedRevision) {
+        const c=snapshot.context;
+        if(!c?.profileId||!c.package||!childNativeJourneyId(journeyId)||!childNativeJourneyRevision(expectedRevision)
+          ||typeof options.plugin?.openJourney!=="function")return Promise.resolve(null);
+        return data("openJourney",{journeyId,expectedRevision},raw=>{
+          const value=decodeChildNativeJourneyResult(raw,c.profileId!,journeyId,c.package!.version);
+          return value&&(value.revision===expectedRevision||value.revision===expectedRevision+1)?value:null;
+        });
+      },
+      advance(expectedRevision,journeyId,currentNodeId,action) {
+        const c=snapshot.context;
+        if(!c?.profileId||!c.package||!childNativeJourneyId(journeyId)||!childNativeJourneyRevision(expectedRevision)
+          ||expectedRevision>=Number.MAX_SAFE_INTEGER-1||currentNodeId!==null&&!childNativeJourneyId(currentNodeId)
+          ||action!=="complete"&&action!=="restart"||action==="complete"&&currentNodeId===null
+          ||typeof options.plugin?.advanceJourney!=="function")return Promise.resolve(null);
+        return data("advanceJourney",{expectedRevision,journeyId,currentNodeId,action},raw=>{
+          const value=decodeChildNativeJourneyResult(raw,c.profileId!,journeyId,c.package!.version);
+          if(!value)return null;
+          if(value.status==="unavailable"||value.status==="absent")return value.revision===expectedRevision?value:null;
+          if(value.revision!==expectedRevision+1)return null;
+          return action==="complete"?value.progress?.completedNodeIds.includes(currentNodeId!)?value:null
+            :value.progress?.currentNodeId===value.journey?.nodeIds[0]?value:null;
+        });
+      },
+      async close() {
+        if(typeof options.plugin?.closeJourney!=="function")return true;
+        return await data("closeJourney",{},raw=>childRecord(raw,["status"])?.status==="retired"?true:null)===true;
+      },
+    } satisfies ChildNativeJourneyController),
     scenes:Object.freeze({
       readSelection() {
         const c=snapshot.context;

@@ -52,6 +52,11 @@ public final class PlanetChildPlugin extends Plugin {
     @PluginMethod public void releaseScene(PluginCall call){dispatch("releaseScene",call);}
     @PluginMethod public void acquireWebResource(PluginCall call){dispatch("acquireWebResource",call);}
     @PluginMethod public void releaseWebResource(PluginCall call){dispatch("releaseWebResource",call);}
+    @PluginMethod public void listJourneys(PluginCall call){dispatch("listJourneys",call);}
+    @PluginMethod public void readJourneyProgress(PluginCall call){dispatch("readJourneyProgress",call);}
+    @PluginMethod public void openJourney(PluginCall call){dispatch("openJourney",call);}
+    @PluginMethod public void advanceJourney(PluginCall call){dispatch("advanceJourney",call);}
+    @PluginMethod public void closeJourney(PluginCall call){dispatch("closeJourney",call);}
     @Override protected void handleOnPause(){if(owner!=null)owner.hostPaused();}
     @Override protected void handleOnStop(){if(owner!=null)owner.hostStopped();}
     @Override protected void handleOnDestroy(){if(owner!=null)owner.destroy();}
