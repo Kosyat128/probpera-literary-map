@@ -25,7 +25,7 @@ const packages = Object.freeze({
   "@capacitor/core": "8.5.1", "@capacitor/cli": "8.5.1", "@capacitor/android": "8.5.1", "@capacitor/ios": "8.5.1",
   "@capacitor/app": "8.1.1", "@capacitor/network": "8.0.1", "@capacitor/preferences": "8.0.1", "@capacitor/browser": "8.0.4", "@capacitor/app-launcher": "8.0.1",
 });
-const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE];
+const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_PASSPORT_ASSET_MODULE];
 const attributionFiles = new Set(["assets/country-flags/ATTRIBUTION.md", "fonts/editorial/LICENSE.source-sans-3.md", "fonts/editorial/LICENSE.source-serif-4.md"]);
 const within = (root, file) => { const relative = path.relative(root, file); return relative && relative !== ".." && !relative.startsWith(".." + path.sep) && !path.isAbsolute(relative); };
 function relativePath(value) {
