@@ -66,7 +66,7 @@ final class PlanetChildAppearance {
     static Selection decodeDTO(Object raw) throws Exception {
         Map<?,?> root=object(raw,"schemaVersion","sceneId","owner","skin","stand","background");Object version=root.get("schemaVersion");require((version instanceof Integer||version instanceof Long)&&((Number)version).longValue()==1);
         Map<?,?> owner=object(root.get("owner"),"kind","id"),skin=object(root.get("skin"),"assetId","entityId"),stand=object(root.get("stand"),"geometryId","assetId","entityId"),background=object(root.get("background"),"geometryId","assetId","entityId");
-        return new Selection(text(root.get("sceneId")),new Owner(text(owner.get("kind")),text(owner.get("id"))),new Slot(text(skin.get("assetId")),text(skin.get("entityId"))),new Geometry(text(stand.get("geometryId")),text(stand.get("assetId")),text(stand.get("entityId"))),new Geometry(text(background.get("geometryId")),text(background.get("assetId")),text(background.get("entityId")));
+        return new Selection(text(root.get("sceneId")),new Owner(text(owner.get("kind")),text(owner.get("id"))),new Slot(text(skin.get("assetId")),text(skin.get("entityId"))),new Geometry(text(stand.get("geometryId")),text(stand.get("assetId")),text(stand.get("entityId"))),new Geometry(text(background.get("geometryId")),text(background.get("assetId")),text(background.get("entityId"))));
     }
     /** Debug scheduling barrier pauses actual native post-readback work only;
      * it cannot construct a permit or authorize a command/acknowledgement. */
