@@ -219,6 +219,11 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     if (!c?.home || snapshot.status !== "child") return;
     const original = c, attempt = ++sequence.current; let alive = true;
     void (async () => {
+      // The host flushes this layout effect during the controller's ready
+      // publication. Let its control transaction release busy before issuing
+      // the first read, while stale presentation was already cleared above.
+      await Promise.resolve();
+      if(!alive||!mounted.current||context.current!==original||sequence.current!==attempt)return;
       const home = await controller.readEntity(original.home!);
       const rows: ChildNativeEntity[] = [];
       if (home) for (const ref of home.payload.references) {

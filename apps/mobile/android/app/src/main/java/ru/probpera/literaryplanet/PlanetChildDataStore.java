@@ -717,7 +717,7 @@ final class PlanetChildDataStore {
     static final class AppearanceCompletion implements AutoCloseable {
         private final PlanetChildDataStore store;private final byte[] marker;private boolean closed,completed;
         private AppearanceCompletion(PlanetChildDataStore store,byte[] marker){this.store=store;this.marker=marker.clone();}
-        synchronized void complete() throws Exception {require(!closed&&!completed);store.locked(directory->{require(!store.closed);File file=store.appearancePending(directory);byte[] actual=boundedRegular(file,4096);try{require(MessageDigest.isEqual(actual,marker));Os.remove(file.getPath());store.syncBirthDirectory(directory);return null;}finally{Arrays.fill(actual,(byte)0);}});completed=true;}
+        synchronized void complete() throws Exception {require(!closed&&!completed);store.locked(directory->{require(!store.closed);File file=store.appearancePending(directory);byte[] actual=store.boundedRegular(file,4096);try{require(MessageDigest.isEqual(actual,marker));Os.remove(file.getPath());store.syncBirthDirectory(directory);return null;}finally{Arrays.fill(actual,(byte)0);}});completed=true;}
         synchronized void retainUnknown() throws Exception {require(!closed);store.locked(directory->{File file=store.appearancePending(directory);if(!file.exists())store.exclusiveAppearanceMarker(directory,marker,()->{});store.closed=true;return null;});}
         public synchronized void close(){closed=true;Arrays.fill(marker,(byte)0);}
     }
