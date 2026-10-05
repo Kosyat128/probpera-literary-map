@@ -7949,6 +7949,7 @@ fileprivate final class LocalV2PackageCopies {
 }
 fileprivate final class LocalV2OwnedPackageDelivery {
     let owner: LocalV2NativePackageLoader,compiled: LocalV2CompiledPackage;private let copies: LocalV2PackageCopies;fileprivate var data: PlanetChildLocalV2DataAdmission?
+    fileprivate weak var mediaSDKOwner: PlanetChildLocalV2SDKOwner?
     init(_ owner: LocalV2NativePackageLoader,_ compiled: LocalV2CompiledPackage) { self.owner=owner;self.compiled=compiled;copies=LocalV2PackageCopies(compiled) }
     private func fence() throws { do { guard owner.delivery === self,ObjectIdentifier(Thread.current)==owner.worker.map(ObjectIdentifier.init) else { throw PinKnownRefusal() };try owner.fresh(compiled.profile);try owner.live() } catch { owner.revoke();throw error } }
     func copyHome() throws -> PinOwnedBytes { do { return try copies.copy(compiled.home,owner.wall,fence) } catch { owner.revoke();throw error } }
@@ -7969,7 +7970,7 @@ fileprivate final class LocalV2PackageRouteWitness: UIViewController {
 fileprivate final class LocalV2NativePackageLoader {
     let writer: LocalV2Writer,request: LocalV2Request,host: UIViewController,route: UIView,window: UIWindow,scene: UIWindowScene,root: UIViewController,territory: String
     private let parents: [UIViewController],presenter: UIViewController?,ancestry: [UIView],recipient: (LocalV2OwnedPackageDelivery) throws -> Void
-    private let lock=NSLock(),witness=LocalV2PackageRouteWitness();private var revoked=false,closed=false,sent=false,wallLast: Int64 = -1
+    private let lock=NSLock(),witness=LocalV2PackageRouteWitness();private var revoked=false,closed=false,sent=false,wallLast: Int64 = -1,mediaMetadataLifetime=LocalV2MediaMetadataLifetime()
     private let failureRecipient: ((Error)->Void)?
     fileprivate var worker: Thread?,retirement: Thread?,delivery: LocalV2OwnedPackageDelivery?;private var observers=[NSObjectProtocol](),expiry: DispatchWorkItem?,watch: DispatchWorkItem?
     private static func isWebView(_ view: UIView) -> Bool { guard let type=NSClassFromString("WKWebView") else { return false };return view.isKind(of:type) }
@@ -7989,7 +7990,26 @@ fileprivate final class LocalV2NativePackageLoader {
         do { try current();let now=try writer.clock.nanoseconds();guard request.deadline>now,request.deadline-now<=UInt64(Int.max) else { throw PinKnownRefusal() };DispatchQueue.main.asyncAfter(deadline:.now()+.nanoseconds(Int(request.deadline-now)),execute:expiry);watchOriginal() }
         catch { revoke();startRetirement();throw error }
     }
-    private func watchOriginal() { lock.lock();let done=closed || revoked;lock.unlock();if done { return };do { try current();_ = try writer.packageLocal(request);if let original=delivery { guard try wall()<original.compiled.until else { throw PinKnownRefusal() } };let next=DispatchWorkItem { [weak self] in self?.watchOriginal() };watch=next;DispatchQueue.main.asyncAfter(deadline:.now()+.milliseconds(10),execute:next) } catch { revoke() } }
+    private func watchOriginal() {
+        lock.lock();let done=closed || revoked,metadataUntil=mediaMetadataLifetime.until;lock.unlock();if done { return }
+        do {
+            try current();_ = try writer.packageLocal(request)
+            if let original=delivery {
+                if let metadataUntil {
+                    // List-only alt/transcript bytes share this ORIGINAL native
+                    // package observer; pixel/audio ownership is not required.
+                    try mediaMainCurrent()
+                    if try wall()>=metadataUntil { original.mediaSDKOwner?.mediaMetadataExpired(self);throw PinKnownRefusal() }
+                }
+                guard try wall()<original.compiled.until else { throw PinKnownRefusal() }
+            }
+            let next=DispatchWorkItem { [weak self] in self?.watchOriginal() };watch=next
+            DispatchQueue.main.asyncAfter(deadline:.now()+.milliseconds(10),execute:next)
+        } catch {
+            if metadataUntil != nil { delivery?.mediaSDKOwner?.mediaMetadataUnavailable(self) }
+            revoke()
+        }
+    }
     private func current() throws { guard Thread.isMainThread else { throw PinKnownRefusal() };lock.lock();let denied=revoked || closed;lock.unlock()
         guard !denied,host.viewIfLoaded === route,route.window === window,window.rootViewController === root,window.windowScene === scene,window.isKeyWindow,!window.isHidden,scene.activationState == .foregroundActive,
             UIApplication.shared.applicationState == .active,host.presentedViewController==nil,!host.isBeingDismissed,!host.isMovingFromParent,!route.isHidden,route.alpha>0,witness.parent === host,Locale.current.regionCode==territory,host.presentingViewController === presenter else { throw PinKnownRefusal() }
@@ -8014,14 +8034,22 @@ fileprivate final class LocalV2NativePackageLoader {
     }
     /** Actual native route owner invokes before reusing a still-attached view. */
     func routeWillChange() { revoke() }
-    fileprivate func revoke() { lock.lock();revoked=true;let original=delivery;lock.unlock();original?.close();writer.cancel(request);startRetirement() }
+    fileprivate func revoke() { delivery?.mediaSDKOwner?.packageMediaConceal(self);lock.lock();revoked=true;let original=delivery;lock.unlock();original?.close();writer.cancel(request);startRetirement() }
     private func startRetirement() { lock.lock();guard retirement==nil else { lock.unlock();return };let original=worker
         let thread=Thread { [self] in if let original { while !original.isFinished { let condition=writer.condition;condition.lock();_ = condition.wait(until:Date(timeIntervalSinceNow:0.01));condition.unlock() } }
-            var drained=true;do { try delivery?.data?.drain() } catch { writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.unlock();drained=false }
+            var drained=true;do { try delivery?.data?.drain();try delivery?.mediaSDKOwner?.mediaRetireBeforePackageRelease(self) } catch { writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.unlock();drained=false }
             DispatchQueue.main.sync { detach() };guard drained else { return };do { try writer.retire(request);lock.lock();closed=true;lock.unlock() } catch { writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.unlock() }
         };retirement=thread;lock.unlock();thread.start()
     }
-    private func detach() { expiry?.cancel();expiry=nil;watch?.cancel();watch=nil;let center=NotificationCenter.default;for observer in observers { center.removeObserver(observer) };observers.removeAll();witness.owner=nil;witness.willMove(toParent:nil);witness.view.removeFromSuperview();witness.removeFromParent() }
+    private func detach() {
+        // Runs on main from the actual retirement worker, outside Vault/DataStore
+        // locks. All earlier native watcher callbacks have returned before this
+        // block; cancelled later callbacks see revoked and cannot publish.
+        expiry?.cancel();expiry=nil;watch?.cancel();watch=nil
+        lock.lock();mediaMetadataLifetime=LocalV2MediaMetadataLifetime();lock.unlock()
+        let center=NotificationCenter.default;for observer in observers { center.removeObserver(observer) };observers.removeAll()
+        witness.owner=nil;witness.willMove(toParent:nil);witness.view.removeFromSuperview();witness.removeFromParent()
+    }
     func close() { guard Thread.isMainThread else { return };revoke();startRetirement() }
 }
 
@@ -8313,7 +8341,8 @@ fileprivate enum LocalV2SDKFirstInstallTerminal {
 
 fileprivate final class LocalV2SDKPassthroughView: UIView {
     var interactive=false
-    override func hitTest(_ point: CGPoint,with event: UIEvent?) -> UIView? { interactive ? super.hitTest(point,with:event):nil }
+    weak var mediaOwner: PlanetChildLocalV2SDKOwner?
+    override func hitTest(_ point: CGPoint,with event: UIEvent?) -> UIView? { guard let hit=super.hitTest(point,with:event) else { return nil };return interactive || mediaOwner?.nativeMediaTouch(hit)==true ? hit:nil }
 }
 /** A real native VC sibling of the web view owns all original UIKit hosts.
  * It is never attached beneath WKWebView, and JavaScript cannot synthesize its
@@ -8322,7 +8351,7 @@ fileprivate final class LocalV2SDKSurface: UIViewController {
     weak var owner: PlanetChildLocalV2SDKOwner?
     var locale=Locale.current.languageCode=="ru" ? "ru":"en"
     private let stack=UIStackView();private var continuation: (() -> Void)?,control: UIButton?,cancelControl: UIButton?
-    override func loadView() { view=LocalV2SDKPassthroughView(frame:.zero);view.backgroundColor = .clear }
+    override func loadView() { let route=LocalV2SDKPassthroughView(frame:.zero);route.mediaOwner=owner;view=route;view.backgroundColor = .clear }
     func arm(_ title: String,_ detail: String,_ invoke: (() -> Void)?=nil) -> UIButton {
         clearControls();let route=view as! LocalV2SDKPassthroughView;route.interactive=true;route.backgroundColor=UIColor(red:0.025,green:0.06,blue:0.12,alpha:1)
         stack.axis = .vertical;stack.spacing=20;stack.translatesAutoresizingMaskIntoConstraints=false;view.addSubview(stack);NSLayoutConstraint.activate([stack.leadingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leadingAnchor,constant:28),stack.trailingAnchor.constraint(equalTo:view.safeAreaLayoutGuide.trailingAnchor,constant:-28),stack.centerYAnchor.constraint(equalTo:view.safeAreaLayoutGuide.centerYAnchor)])
@@ -8335,7 +8364,7 @@ fileprivate final class LocalV2SDKSurface: UIViewController {
     @objc private func cancelled() { owner?.routeWillChange() }
     func clearControls() { continuation=nil;control?.removeTarget(self,action:#selector(touched),for:.touchUpInside);cancelControl?.removeTarget(self,action:#selector(cancelled),for:.touchUpInside);control=nil;cancelControl=nil;for view in stack.arrangedSubviews { stack.removeArrangedSubview(view);view.removeFromSuperview() };stack.removeFromSuperview() }
     func reveal() { clearControls();let route=view as! LocalV2SDKPassthroughView;route.interactive=false;route.backgroundColor = .clear }
-    func seal() { clearControls();let route=view as! LocalV2SDKPassthroughView;route.interactive=true;route.backgroundColor=UIColor(red:0.025,green:0.06,blue:0.12,alpha:1) }
+    func seal() { owner?.concealMedia();clearControls();let route=view as! LocalV2SDKPassthroughView;route.interactive=true;route.backgroundColor=UIColor(red:0.025,green:0.06,blue:0.12,alpha:1) }
 }
 
 /** Native command channel retains the actual loader worker and owned delivery
@@ -8345,8 +8374,10 @@ fileprivate final class LocalV2SDKChannel {
     fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,done=false,returned=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
     private let condition=NSCondition();private var command: Command?,closed=false,ready=false,failure: Error?,joined=false
     private(set) var compiled: LocalV2CompiledPackage?,deadline: UInt64=0
+    private weak var mediaSDKOwner: PlanetChildLocalV2SDKOwner?
+    init(_ owner: PlanetChildLocalV2SDKOwner) { mediaSDKOwner=owner }
     func serve(_ delivery: LocalV2OwnedPackageDelivery) throws {
-        condition.lock();guard !closed,!ready else { condition.unlock();throw PinKnownRefusal() };compiled=delivery.compiled;deadline=delivery.owner.request.deadline;ready=true;condition.broadcast();condition.unlock()
+        condition.lock();guard !closed,!ready else { condition.unlock();throw PinKnownRefusal() };compiled=delivery.compiled;deadline=delivery.owner.request.deadline;delivery.mediaSDKOwner=mediaSDKOwner;ready=true;condition.broadcast();condition.unlock()
         defer { condition.lock();joined=true;closed=true;compiled=nil;if let command,!command.done { command.error=PinKnownRefusal();command.done=true };condition.broadcast();condition.unlock() }
         while true {
             condition.lock();if closed { condition.unlock();return };let next=command;if next==nil { _=condition.wait(until:Date(timeIntervalSinceNow:0.01)) };condition.unlock()
@@ -8369,16 +8400,19 @@ final class PlanetChildLocalV2SDKOwner {
     typealias Reply=([String:Any])->Void
     private let io=DispatchQueue(label:"ru.probpera.literaryplanet.child.local-sdk-v2"),lock=NSLock(),vault: PlanetChildVault,policy: LocalSnapshotV2Policy
     private weak var host: UIViewController?
+    private weak var mediaScrollView: UIScrollView?
+    private var mediaOffsetObservation: NSKeyValueObservation?,mediaBoundsObservation: NSKeyValueObservation?
     private let surface=LocalV2SDKSurface(),clock=ApplePinPrimitiveClock()
     private var observers=[NSObjectProtocol](),expiry: DispatchWorkItem?,context: Context?,generation: UInt64=0,seen=Set<String>(),issuedTokens=Set<String>(),sealed=false,busy=false,attached=false
+    private var mediaEpoch: UInt64=0,mediaPresentations=[String:PlanetChildLocalV2MediaPresentation](),mediaRetiring=[PlanetChildLocalV2MediaPresentation](),mediaReleases=Set<String>()
     private var reader: (LocalV2Writer,LocalV2Request)?,loader: LocalV2NativePackageLoader?,channel: LocalV2SDKChannel?,gate: LocalV2GateHost?,profile: LocalV2ProfileOperation?,rotation: LocalV2SDKPinRotation?,enrollment: LocalV2PinOperation?
     private var firstInstall: (NativeChildFirstInstallV2,OriginalFirstInstallV2)?
     private let invalidated: ([String:Any])->Void
-    private struct Context { let token: String,generation: UInt64,checksum: String,deadline: UInt64,status: String,metadata: [String:Any],profiles: [[String:Any]] }
-    static func nativeOwner(host: UIViewController,invalidated: @escaping ([String:Any])->Void) throws -> PlanetChildLocalV2SDKOwner {
-        guard Thread.isMainThread,Bundle.main.bundleIdentifier=="ru.probpera.literaryplanet" else { throw PlanetChildVault.Failure.unavailable };return try PlanetChildLocalV2SDKOwner(host,invalidated)
+    fileprivate struct Context { let token: String,generation: UInt64,checksum: String,deadline: UInt64,status: String,metadata: [String:Any],profiles: [[String:Any]] }
+    static func nativeOwner(host: UIViewController,mediaScrollView: UIScrollView?=nil,invalidated: @escaping ([String:Any])->Void) throws -> PlanetChildLocalV2SDKOwner {
+        guard Thread.isMainThread,Bundle.main.bundleIdentifier=="ru.probpera.literaryplanet" else { throw PlanetChildVault.Failure.unavailable };return try PlanetChildLocalV2SDKOwner(host,invalidated,mediaScrollView)
     }
-    private init(_ host: UIViewController,_ invalidated: @escaping ([String:Any])->Void) throws { self.host=host;vault=try PlanetChildVault();policy=try PlanetChildLocalV2SDKPolicy.policy();self.invalidated=invalidated;surface.owner=self }
+    private init(_ host: UIViewController,_ invalidated: @escaping ([String:Any])->Void,_ mediaScrollView: UIScrollView?) throws { self.host=host;self.mediaScrollView=mediaScrollView;vault=try PlanetChildVault();policy=try PlanetChildLocalV2SDKPolicy.policy();self.invalidated=invalidated;surface.owner=self }
     private static func token(_ bytes: Int=16) throws -> String { var data=Data(count:bytes);defer { data.resetBytes(in:0..<data.count) };guard data.withUnsafeMutableBytes({ SecRandomCopyBytes(kSecRandomDefault,$0.count,$0.baseAddress!) })==errSecSuccess else { throw PlanetChildVault.Failure.unavailable };return data.map { String(format:"%02x",$0) }.joined() }
     private func attach() throws {
         guard Thread.isMainThread,let host,let route=host.viewIfLoaded,let window=route.window,window.isKeyWindow,window.windowScene?.activationState == .foregroundActive,UIApplication.shared.applicationState == .active else { throw PinKnownRefusal() }
@@ -8388,6 +8422,13 @@ final class PlanetChildLocalV2SDKOwner {
             }
         }
     }
+    private func mediaObserveGeometry() {
+        guard Thread.isMainThread,mediaOffsetObservation==nil,let scroll=mediaScrollView,let host,scroll.isDescendant(of:host.view),scroll.window === surface.view.window else { return }
+        mediaOffsetObservation=scroll.observe(\.contentOffset,options:[.old,.new]) { [weak self] _,change in if change.oldValue != change.newValue { self?.mediaGeometryChanged() } }
+        mediaBoundsObservation=scroll.observe(\.bounds,options:[.old,.new]) { [weak self] _,change in if change.oldValue != change.newValue { self?.mediaGeometryChanged() } }
+    }
+    private func mediaGeometryChanged() { if Thread.isMainThread { concealMedia() } else { DispatchQueue.main.async { [weak self] in self?.concealMedia() } } }
+    private func mediaStopGeometry() { guard Thread.isMainThread else { return };mediaOffsetObservation?.invalidate();mediaBoundsObservation?.invalidate();mediaOffsetObservation=nil;mediaBoundsObservation=nil }
     private func ownedPrompt() -> Bool {
         if let rotation { return rotation.ownedPrompt }
         if let enrollment { return enrollment.ownedPrompt }
@@ -8397,7 +8438,7 @@ final class PlanetChildLocalV2SDKOwner {
     }
     func nativeViewWillDisappear() { guard Thread.isMainThread else { routeWillChange();return };if let presented=surface.presentedViewController,presented is LocalV2PinViewController || presented is LocalV2ProfileConfirmation || presented is LocalV2SDKPinInput { return };routeWillChange() }
     func routeWillChange(reason: String="cancelled") {
-        let clear={ [self] in surface.seal();expiry?.cancel();expiry=nil }
+        let clear={ [self] in surface.seal();concealMedia();expiry?.cancel();expiry=nil }
         if Thread.isMainThread { clear() } else { DispatchQueue.main.sync(execute:clear) }
         lock.lock();let old=context;context=nil;sealed=true;lock.unlock();channel?.close();loader?.routeWillChange();gate?.routeWillChange();profile?.revoke();rotation?.revoke();if let enrollment { enrollment.owner.writer.cancel(enrollment.request) };if let firstInstall { firstInstall.0.cancel(firstInstall.1) };if let reader { reader.0.cancel(reader.1) }
         invalidated(["version":2,"contextToken":old?.token as Any? ?? NSNull(),"generation":old?.generation ?? generation,"reason":reason])
@@ -8407,16 +8448,28 @@ final class PlanetChildLocalV2SDKOwner {
     private static func unavailable(_ id: String,reason: String="unavailable") -> [String:Any] { ["version":2,"requestId":id,"status":"unavailable","reason":reason,"context":NSNull(),"profiles":[]] }
     private func refused(_ request: PlanetChildLocalV2Wire.Request,_ reason: String) -> [String:Any] { PlanetChildLocalV2Wire.refusal(request.method,["requestId":request.id,"contextToken":request.token as Any? ?? NSNull()],reason:reason,generation:generation) }
     func execute(_ request: PlanetChildLocalV2Wire.Request,reply: @escaping Reply) {
-        lock.lock();let retirement=request.method=="retire",originalDeadline=context?.deadline
-        let accepted = (retirement || !busy && !sealed) && (!retirement || request.token==nil || issuedTokens.contains(request.token!)) && seen.count<2048 && seen.insert(request.id).inserted
-        if accepted && !retirement { busy=true };lock.unlock()
+        lock.lock();let retirement=request.method=="retire",originalDeadline=context?.deadline,release=request.method=="releaseMedia"
+        let releaseAllowed=release && !sealed && request.token==context?.token
+        let accepted = (retirement || releaseAllowed || !busy && !sealed) && (!retirement || request.token==nil || issuedTokens.contains(request.token!)) && (!release || releaseAllowed) && seen.count<2048 && seen.insert(request.id).inserted
+        let ownsBusy=accepted && !retirement && !release,capturedMediaEpoch=mediaEpoch
+        if ownsBusy { busy=true };lock.unlock()
         guard accepted else { reply(refused(request,"pending"));return }
-        // Retirement remains available while a native operation is busy. Its
-        // real cancellation runs now; the serial worker joins it before reply.
-        if retirement { routeWillChange() }
+        // Revocation is admitted while the original decoder owns busy. It does
+        // not clear that control state. The native entry fence precedes queueing.
+        let fast={ [self] in
+            if release {
+                if let token=request.presentationToken {
+                    lock.lock();let known=mediaPresentations[token]?.permit.token==request.token
+                    if known { mediaReleases.insert(request.id) };lock.unlock()
+                    if known { concealMedia(token) } else { routeWillChange(reason:"unavailable") }
+                } else { concealMedia() }
+            } else if retirement { routeWillChange() }
+            else if request.method=="perform" || request.method=="bootstrap" { surface.seal();concealMedia() }
+        }
+        if Thread.isMainThread { fast() } else { DispatchQueue.main.sync(execute:fast) }
         io.async { [self] in
-            defer { if !retirement { lock.lock();busy=false;lock.unlock() } }
-            do { let value=try dispatch(request);guard JSONSerialization.isValidJSONObject(value) else { throw PlanetChildVault.Failure.unavailable };reply(value) }
+            defer { if ownsBusy { lock.lock();busy=false;lock.unlock() } }
+            do { let value=try dispatch(request,mediaEpoch:capturedMediaEpoch);guard JSONSerialization.isValidJSONObject(value) else { throw PlanetChildVault.Failure.unavailable };reply(value) }
             catch {
                 let originalError=error;DispatchQueue.main.sync { surface.seal() };lock.lock();let old=context;context=nil;lock.unlock()
                 do { try joinOwners();lock.lock();let unknown=sealed;lock.unlock();guard !unknown else { reply(refused(request,"pending"));return }
@@ -8426,20 +8479,29 @@ final class PlanetChildLocalV2SDKOwner {
             }
         }
     }
-    private func dispatch(_ r: PlanetChildLocalV2Wire.Request) throws -> [String:Any] {
-        if r.method != "retire" { try DispatchQueue.main.sync { try attach() } }
+    private func dispatch(_ r: PlanetChildLocalV2Wire.Request,mediaEpoch capturedMediaEpoch: UInt64) throws -> [String:Any] {
+        if r.method != "retire" { try DispatchQueue.main.sync { try attach();mediaObserveGeometry() } }
         switch r.method {
         case "bootstrap":lock.lock();let exists=context != nil;lock.unlock();guard !exists else { throw PinKnownRefusal() };return try bootstrap(r.id,deadline:nil)
         case "readContext":let c=try requireContext(r.token);try fresh(c);return try response(r.id,c)
         case "perform":return try perform(r)
         case "retire":try DispatchQueue.main.sync { surface.seal() };lock.lock();context=nil;lock.unlock();try joinOwners();lock.lock();guard !sealed else { lock.unlock();throw PlanetChildVault.Failure.unavailable };lock.unlock();return ["version":2,"requestId":r.id,"status":"retired","contextToken":r.token as Any? ?? NSNull()]
         default:let c=try requireContext(r.token);guard c.status=="child",let channel else { throw PinKnownRefusal() };return try channel.invoke { [self] delivery in
-            try requireOriginal(c,delivery);let value=try LocalV2SDKData.perform(r,delivery);try requireOriginal(c,delivery);return ["version":2,"requestId":r.id,"status":"ok","contextToken":c.token,"generation":c.generation,"value":value]
+            try requireOriginal(c,delivery);let value: Any
+            if ["listMedia","presentMedia","releaseMedia"].contains(r.method) {
+                do { let media=try mediaPerform(r,c,delivery,capturedMediaEpoch);value=r.method=="listMedia" ? media["list"]! as Any:media }
+                catch PlanetChildLocalV2MediaError.revoked {
+                    if r.method=="presentMedia" { value=["status":"unavailable","presentationToken":NSNull(),"assetId":r.assetId!,"remainingLifetimeMs":0] }
+                    else if r.method=="listMedia" { value=[Any]() }
+                    else { throw PlanetChildVault.Failure.unavailable }
+                }
+            } else { value=try LocalV2SDKData.perform(r,delivery) }
+            try requireOriginal(c,delivery);return ["version":2,"requestId":r.id,"status":"ok","contextToken":c.token,"generation":c.generation,"value":value]
         }
         }
     }
     private func requireContext(_ token: String?) throws -> Context { lock.lock();defer { lock.unlock() };guard !sealed,let c=context,token==c.token else { throw PinKnownRefusal() };return c }
-    private func requireOriginal(_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws { lock.lock();let valid = !sealed && context?.token==c.token && context?.generation==c.generation;lock.unlock();guard valid,loader === delivery.owner,delivery.owner.request.deadline==c.deadline,delivery.compiled.profile.recordChecksum==c.checksum else { throw PinKnownRefusal() };try delivery.owner.fresh(delivery.compiled.profile) }
+    private func requireOriginal(_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws { lock.lock();let valid = !sealed && context?.token==c.token && context?.generation==c.generation;lock.unlock();guard valid,loader === delivery.owner,delivery.owner.request.deadline==c.deadline,delivery.compiled.profile.recordChecksum==c.checksum else { throw PinKnownRefusal() };try delivery.owner.fresh(delivery.compiled.profile);try delivery.owner.mediaMetadataCurrent() }
     private func remaining(_ deadline: UInt64) throws -> UInt64 { let now=try clock.nanoseconds();guard now<deadline else { throw PinKnownRefusal() };let ms=(deadline-now)/1000000;guard ms>0,ms<=60000 else { throw PinKnownRefusal() };return ms }
     private func response(_ id: String,_ c: Context,reason: String?=nil) throws -> [String:Any] { var meta=c.metadata;meta["remainingLifetimeMs"]=try remaining(c.deadline);return ["version":2,"requestId":id,"status":c.status,"reason":reason as Any? ?? (c.status=="blocked-child" ? "missing-pins" as Any:NSNull()),"context":meta,"profiles":c.profiles] }
     private func fresh(_ c: Context) throws { _=try remaining(c.deadline);if let channel,let loader { _=try channel.invoke { delivery in try self.requireOriginal(c,delivery);return [:] };guard loader.request.deadline==c.deadline else { throw PinKnownRefusal() } }
@@ -8458,7 +8520,7 @@ final class PlanetChildLocalV2SDKOwner {
         var status=data.status,compiled: LocalV2CompiledPackage?,deadline=request.deadline
         if status=="child",try LocalV2SDKCatalogState.missingPins(writer,request) { status="blocked-child" }
         if status=="child" {
-            try writer.retire(request);reader=nil;let channel=LocalV2SDKChannel();self.channel=channel
+            try writer.retire(request);reader=nil;let channel=LocalV2SDKChannel(self);self.channel=channel
             let loader=try DispatchQueue.main.sync { try LocalV2NativePackageLoader(vault:vault,host:surface,policy:policy,timeoutMs:30000,originalDeadlineNs:deadline,failed:{ channel.failed($0) },recipient:{ try channel.serve($0) }) };self.loader=loader
             try DispatchQueue.main.sync { try loader.start() }
             do { try channel.awaitReady();compiled=channel.compiled;guard let compiled else { throw PinKnownRefusal() };deadline=loader.request.deadline;guard compiled.profile.recordChecksum==LocalSnapshotV2.hash(bytes) else { throw PinKnownRefusal() } }
@@ -8482,7 +8544,7 @@ final class PlanetChildLocalV2SDKOwner {
     }
     private func joinOwners() throws {
         guard !Thread.isMainThread else { throw PinKnownRefusal() };expiry?.cancel();expiry=nil
-        channel?.close();if let loader { try DispatchQueue.main.sync { loader.close() };try loader.join();self.loader=nil;channel=nil }
+        channel?.close();if let loader { try DispatchQueue.main.sync { loader.close() };try loader.join();try mediaRetireJoined();self.loader=nil;channel=nil }
         if let reader { try reader.0.retire(reader.1);self.reader=nil }
         if let gate { try DispatchQueue.main.sync { gate.close() };try gate.sdkCleanupJoined();self.gate=nil }
         if let profile { profile.revoke();try profile.sdkJoinUnknown();self.profile=nil }
@@ -8877,3 +8939,537 @@ final class PlanetChildLocalV2SDKReadPermit {
     func retainedBirth(_ birth: PlanetChildLocalV2KnownBirth) throws { try check();guard let context,context.profiles[birth.profileId] != nil,birth.policyVersion==writer.policy.version,birth.policyChecksum==writer.policy.checksum,birth.maximum==writer.policy.maximum,birth.delays==writer.policy.delays else { throw PinKnownRefusal() } }
     fileprivate func close() { closed=true;expected.close() }
 }
+
+
+// MARK: Fixed independently reviewed LOCAL2 bundled media. No V1 adapter.
+fileprivate struct LocalV2MediaAsset {
+    typealias V=LocalV2PackageValue
+    let id: String,owner: V,entity: V,payload: V,policy: V,inventoryKey: String,checksum: String,mime: String,role: String,altText: String,transcript: String?,fixedPath: String
+    let bytes: Int,until: Int64
+    func descriptor() throws -> [String:Any] {
+        ["assetId":id,"owner":try JSONSerialization.jsonObject(with:Data(owner.json(sorted:true).utf8)),
+         "entity":try JSONSerialization.jsonObject(with:Data(entity.json(sorted:true).utf8)),"mime":mime,"role":role,"altText":altText,"transcript":transcript as Any? ?? NSNull()]
+    }
+}
+/** The first published media metadata fixes a native expiry ceiling. Later
+ * lists, empty lists, route conceal and null-release cannot renew that ceiling.
+ * Only actual loader retirement discards it after joining its main observer. */
+fileprivate struct LocalV2MediaMetadataLifetime {
+    private(set) var until: Int64?
+    mutating func retain(_ assets: [LocalV2MediaAsset],_ indexUntil: Int64,_ packageUntil: Int64,_ now: Int64) throws {
+        try current(now);guard now>=0,indexUntil>now,packageUntil>now,indexUntil<=packageUntil else { throw PinKnownRefusal() }
+        guard !assets.isEmpty else { return }
+        guard assets.allSatisfy({ $0.until>now && $0.until<=packageUntil }) else { throw PinKnownRefusal() }
+        let selected=assets.reduce(min(indexUntil,packageUntil)) { min($0,$1.until) }
+        until=min(until ?? selected,selected)
+    }
+    func current(_ now: Int64) throws {
+        guard now>=0 else { throw PinKnownRefusal() };if let until { guard now<until else { throw PinKnownRefusal() } }
+    }
+}
+fileprivate final class LocalV2MediaIndex {
+    let assets: [LocalV2MediaAsset],until: Int64,profile: LocalV2PackageProfile
+    init(_ assets: [LocalV2MediaAsset],_ until: Int64,_ profile: LocalV2PackageProfile) { self.assets=assets;self.until=until;self.profile=profile }
+    func owned(_ owner: LocalV2PackageValue) throws -> [LocalV2MediaAsset] {
+        let expected=try owner.json(sorted:true);let rows=try assets.filter { try $0.owner.json(sorted:true)==expected }
+        guard rows.count<=64 else { throw PinKnownRefusal() };return rows
+    }
+}
+fileprivate final class LocalV2MediaCatalog {
+    typealias V=LocalV2PackageValue
+    let keys: [V],pins: [V],platform: String
+    private var inventory=[String:(Int64,String)](),inputs=[String:String](),outputs=[String:[String:V]](),expected=Set(["child-native/media/catalog-v2.json"])
+    init(_ bytes: Data,_ artifactBytes: Data) throws {
+        let a=try V.object(LocalV2PackageJson.read(artifactBytes,2097152)),c=try V.object(LocalV2PackageJson.read(bytes,65536),["schemaVersion","kind","platform","mediaPinSourceChecksum","reviewKeys","manifests"])
+        guard try V.number(a["schemaVersion"],1,1)==1,try V.text(a["kind"])=="literary-planet-bundled-native-preparation",try V.text(a["platform"])=="ios",try V.number(c["schemaVersion"],2,2)==2,try V.text(c["kind"])=="literary-planet-child-native-media-catalog-v2" else { throw PinKnownRefusal() }
+        keys=try V.array(c["reviewKeys"],16);pins=try V.array(c["manifests"],32)
+        let channel=try V.text(a["channel"]),dev=channel=="dev" && c["platform"]?.isNull==true && keys.isEmpty && pins.isEmpty
+        if channel=="appStore" { platform="ios-ipados";guard try V.text(c["platform"])==platform else { throw PinKnownRefusal() } }
+        else if dev { platform="unreleased" } else { throw PinKnownRefusal() }
+        let pinHash=try V.hash(c["mediaPinSourceChecksum"]),source=try V.object(a["sourceInputs"])
+        for value in try V.array(source["files"],20000) { let row=try V.object(value,["path","sha256"]),path=try V.text(row["path"]);guard inputs[path]==nil else { throw PinKnownRefusal() };inputs[path]=try V.hash(row["sha256"]) }
+        guard inputs["src/child/childNativeMediaReleasePins.json"]==pinHash else { throw PinKnownRefusal() }
+        for value in try V.array(a["inventory"],20000) { let row=try V.object(value,["path","bytes","sha256"]),path=try V.text(row["path"]);guard inventory[path]==nil else { throw PinKnownRefusal() };inventory[path]=(try V.number(row["bytes"],1,9007199254740991),try V.hash(row["sha256"])) }
+        let metadata=try V.object(a["childNativeMediaAssets"],["pinSource","outputs"]),pinSource=try V.object(metadata["pinSource"],["path","sha256"])
+        guard try V.text(pinSource["path"])=="src/child/childNativeMediaReleasePins.json",try V.hash(pinSource["sha256"])==pinHash else { throw PinKnownRefusal() }
+        for value in try V.array(metadata["outputs"],20000) {
+            let row=try V.object(value,["output","source","sourceSha256","transformation","outputSha256"]),out=try V.text(row["output"]),path=try V.text(row["source"]),hash=try V.hash(row["sourceSha256"])
+            guard out.hasPrefix("child-native/media/"),outputs[out]==nil,inputs[path]==hash,inventory[out]?.1 == (try V.hash(row["outputSha256"])) else { throw PinKnownRefusal() };outputs[out]=row
+        }
+        guard let projected=outputs["child-native/media/catalog-v2.json"],try V.text(projected["source"])=="src/child/childNativeMediaReleasePins.json",try V.text(projected["transformation"])=="fixed-native-media-pin-projection-v2" else { throw PinKnownRefusal() }
+        try verify("child-native/media/catalog-v2.json",bytes,65536)
+        var ids=Set<String>(),points=Set<String>(),manifests=Set<String>(),hashes=Set<String>()
+        for key in keys { let r=try V.object(key,["keyId","reviewerId","publicKeyX963Hex"]),id=try V.text(r["keyId"]),point=try V.text(r["publicKeyX963Hex"]);_ = try V.identifier(r["reviewerId"])
+            guard V.matches(id,"child-media-review-[A-Za-z0-9_-]{1,48}"),V.matches(point,"04[a-f0-9]{128}"),ids.insert(id).inserted,points.insert(point).inserted else { throw PinKnownRefusal() } }
+        guard pins.isEmpty || !keys.isEmpty else { throw PinKnownRefusal() }
+        for pin in pins {
+            let r=try V.object(pin,["manifestId","manifestVersion","manifestChecksum","reviewChecksum","packageId","packageVersion","packageChecksum"]),id=try V.identifier(r["manifestId"]),version=try V.number(r["manifestVersion"],1,9007199254740991)
+            let sum=try V.hash(r["manifestChecksum"]),review=try V.hash(r["reviewChecksum"]);_ = try V.identifier(r["packageId"]);_ = try V.number(r["packageVersion"],1,9007199254740991);_ = try V.hash(r["packageChecksum"])
+            guard manifests.insert(id+"/"+String(version)).inserted,hashes.insert(sum).inserted else { throw PinKnownRefusal() }
+            try material("child-native/media/manifests/"+sum+".json","src/child/media-release-material/"+sum+"/manifest.json",sum)
+            try material("child-native/media/reviews/"+review+".json","src/child/media-release-material/"+review+"/review.json",review)
+        }
+    }
+    private func material(_ out: String,_ source: String,_ hash: String) throws {
+        guard let row=outputs[out],inventory[out]?.1==hash,try V.text(row["source"])==source,try V.hash(row["sourceSha256"])==hash,try V.text(row["transformation"])=="none",try V.hash(row["outputSha256"])==hash else { throw PinKnownRefusal() };expected.insert(out)
+    }
+    func recordManifest(_ raw: V,_ pin: V) throws {
+        let r=try V.object(raw),p=try V.object(pin)
+        guard try V.identifier(r["manifestId"])==V.identifier(p["manifestId"]),try V.number(r["manifestVersion"],1,9007199254740991)==V.number(p["manifestVersion"],1,9007199254740991),
+            try V.identifier(r["packageId"])==V.identifier(p["packageId"]),try V.number(r["packageVersion"],1,9007199254740991)==V.number(p["packageVersion"],1,9007199254740991),try V.hash(r["packageChecksum"])==V.hash(p["packageChecksum"]) else { throw PinKnownRefusal() }
+        for value in try V.array(r["assets"],512) {
+            let row=try V.object(value),sum=try V.hash(row["sha256"]),name=try V.text(row["inventoryKey"]),mime=try V.text(row["mime"])
+            let ext=try LocalV2MediaCompiler.extensionFor(name,mime),path="child-native/media/assets/"+sum+"."+ext,size=try V.number(row["bytes"],1,Int64(mime=="audio/wav" ? 24*1024*1024:32*1024*1024))
+            try material(path,"src/child/media-release-material/"+sum+"/asset."+ext,sum);guard inventory[path]?.0==size else { throw PinKnownRefusal() }
+        }
+    }
+    func finishInventory() throws {
+        let actual=Set(inventory.keys.filter { $0.hasPrefix("child-native/media/") })
+        guard actual==expected,Set(outputs.keys)==expected else { throw PinKnownRefusal() }
+    }
+    func verify(_ path: String,_ bytes: Data,_ maximum: Int) throws {
+        guard let row=inventory[path],!bytes.isEmpty,bytes.count<=maximum,row.0==Int64(bytes.count),row.1==LocalSnapshotV2.hash(bytes) else { throw PinKnownRefusal() }
+    }
+}
+fileprivate enum LocalV2MediaCompiler {
+    typealias V=LocalV2PackageValue
+    static let kinds=Set(["image","narration","background","skin","stand","accessory"])
+    private static let rootFields=["schemaVersion","kind","manifestId","manifestVersion","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","readingLevels","validFromEpochMs","validUntilEpochMs","assets"]
+    private static let reviewFields=["schemaVersion","kind","keyId","reviewerId","manifestId","manifestVersion","manifestChecksum","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","readingLevels","platforms","territories","reviewedAtEpochMs","validFromEpochMs","validUntilEpochMs","assetChecksums","signatureHex"]
+    private static func epoch(_ value: V?) throws -> Int64 { try V.number(value,0,8640000000000000) }
+    private static func until(_ row: [String:V],_ now: Int64) throws -> Int64 {
+        let begin=try epoch(row["validFromEpochMs"]),end=try epoch(row["validUntilEpochMs"]);guard begin<end,begin<=now,now<end else { throw PinKnownRefusal() };return end
+    }
+    static func extensionFor(_ key: String,_ mime: String) throws -> String {
+        guard V.matches(key,"[a-z0-9][a-z0-9_-]{0,63}\\.(png|jpg|webp|wav)"),let ext=key.split(separator:".").last,
+            ["png":"image/png","jpg":"image/jpeg","webp":"image/webp","wav":"audio/wav"][String(ext)]==mime else { throw PinKnownRefusal() };return String(ext)
+    }
+    static func readings(_ value: V?) throws -> Set<String> {
+        var set=Set<String>();for v in try V.array(value,4) { let key=v.isNull ? "<null>":try V.text(v);guard ["<null>","plain","developing","fluent"].contains(key),set.insert(key).inserted else { throw PinKnownRefusal() } }
+        guard !set.isEmpty else { throw PinKnownRefusal() };return set
+    }
+    private static func text(_ value: V?,_ limit: Int,_ multiline: Bool) throws -> String {
+        let text=try V.text(value);guard !text.isEmpty,text.utf16.count<=limit,text.unicodeScalars.allSatisfy({ $0.value>=32 && $0.value != 127 || multiline && [9,10,13].contains($0.value) }) else { throw PinKnownRefusal() };return text
+    }
+    private static func hash(_ value: V) throws -> String { LocalSnapshotV2.hash(Data(try value.json(sorted:true).utf8)) }
+    private static func signature(_ review: V,_ keys: [V]) throws {
+        let row=try V.object(review);guard case .object(let fields)=review else { throw PinKnownRefusal() };let id=try V.text(row["keyId"]),reviewer=try V.identifier(row["reviewerId"])
+        guard V.matches(id,"child-media-review-[A-Za-z0-9_-]{1,48}") else { throw PinKnownRefusal() }
+        var selected: [String:V]?
+        for key in keys { let r=try V.object(key,["keyId","reviewerId","publicKeyX963Hex"]);if try V.text(r["keyId"])==id,V.identifier(r["reviewerId"])==reviewer { guard selected==nil else { throw PinKnownRefusal() };selected=r } }
+        func raw(_ text: String,_ count: Int) throws -> Data {
+            guard V.matches(text,"[a-f0-9]{\(count*2)}") else { throw PinKnownRefusal() };var bytes=[UInt8]();var at=text.startIndex
+            for _ in 0..<count { let end=text.index(at,offsetBy:2);guard let byte=UInt8(text[at..<end],radix:16) else { throw PinKnownRefusal() };bytes.append(byte);at=end };return Data(bytes)
+        }
+        guard let selected else { throw PinKnownRefusal() };var point=try raw(V.text(selected["publicKeyX963Hex"]),65),sig=try raw(V.text(row["signatureHex"]),64)
+        defer { point.resetBytes(in:0..<point.count);sig.resetBytes(in:0..<sig.count) };guard point.first==4 else { throw PinKnownRefusal() }
+        let key=try P256.Signing.PublicKey(x963Representation:point),signature=try P256.Signing.ECDSASignature(rawRepresentation:sig)
+        var message=Data(("LP-CHILD-NATIVE-MEDIA-REVIEW\0v2\0"+(try V.object(fields.filter { $0.0 != "signatureHex" }).json(sorted:true))).utf8);defer { message.resetBytes(in:0..<message.count) }
+        guard key.x963Representation==point,key.isValidSignature(signature,for:message) else { throw PinKnownRefusal() }
+    }
+    private static func policy(_ value: V,_ reference: [String:V],_ profile: LocalV2PackageProfile,_ platform: String,_ territory: String,_ now: Int64) throws -> Int64? {
+        let r=try V.object(value,["id","kind","sourceVersion","policyVersion","minAge","maxAge","reviewStatus","localizedContent","topics","topicTagsComplete","commercialAvailability","rights"])
+        guard try V.identifier(r["id"])==V.identifier(reference["id"]),try V.text(r["kind"])==V.text(reference["kind"]),kinds.contains(try V.text(r["kind"])),try V.text(r["policyVersion"])==profile.policyVersion,try V.text(r["reviewStatus"])=="approved",try V.bool(r["topicTagsComplete"]),try V.text(r["commercialAvailability"])=="included-in-base" else { throw PinKnownRefusal() };_ = try V.identifier(r["sourceVersion"])
+        let min=try V.number(r["minAge"],3,17),max=try V.number(r["maxAge"],3,17);guard min<=profile.exactAge,profile.exactAge<=max else { throw PinKnownRefusal() }
+        for topic in try V.strings(r["topics"],64,"[a-z0-9][a-z0-9._-]{0,63}") { guard !profile.blocked.contains(topic),profile.allowed==nil || profile.allowed!.contains(topic) else { throw PinKnownRefusal() } }
+        let localized=try V.array(r["localizedContent"],1);guard localized.count==1 else { throw PinKnownRefusal() };let language=try V.object(localized[0],["locale","contentChecksum","reviewStatus","available","reviewerId","reviewedAt"])
+        guard try V.text(language["locale"])==profile.locale,try V.hash(language["contentChecksum"])==V.hash(reference["contentChecksum"]),try V.text(language["reviewStatus"])=="approved",try V.bool(language["available"]),try epoch(language["reviewedAt"])<=now else { throw PinKnownRefusal() };_ = try V.identifier(language["reviewerId"])
+        let rights=try V.object(r["rights"],["status","basis","platforms","territories","validFrom","expiresAt"]),from=try epoch(rights["validFrom"])
+        guard try V.text(rights["status"])=="approved",["original","public-domain"].contains(try V.text(rights["basis"])),try V.strings(rights["platforms"],4,"web-pwa|android-google|android-rustore|ios-ipados").contains(platform),try V.strings(rights["territories"],676,"[A-Z]{2}").contains(territory),from<=now else { throw PinKnownRefusal() }
+        if rights["expiresAt"]?.isNull==true { return nil };let end=try epoch(rights["expiresAt"]);guard from<end,now<end else { throw PinKnownRefusal() };return end
+    }
+    static func compile(_ bytes: Data,_ reviewBytes: Data,_ pin: V,_ keys: [V],_ compiled: LocalV2CompiledPackage,_ now: Int64,_ fence: () throws -> Void) throws -> LocalV2MediaIndex {
+        try fence();let p=try V.object(pin),sum=try V.hash(p["manifestChecksum"]),reviewSum=try V.hash(p["reviewChecksum"])
+        guard sum==LocalSnapshotV2.hash(bytes),reviewSum==LocalSnapshotV2.hash(reviewBytes) else { throw PinKnownRefusal() }
+        let raw=try LocalV2PackageJson.read(bytes,524288),r=try V.object(raw,rootFields),review=try LocalV2PackageJson.read(reviewBytes,524288),a=try V.object(review,reviewFields),profile=compiled.profile
+        guard try V.number(r["schemaVersion"],2,2)==2,try V.text(r["kind"])=="literary-planet-child-native-media-manifest-v2",try V.number(a["schemaVersion"],2,2)==2,try V.text(a["kind"])=="literary-planet-child-native-media-review-v2" else { throw PinKnownRefusal() }
+        let mid=try V.identifier(r["manifestId"]),version=try V.number(r["manifestVersion"],1,9007199254740991)
+        for row in [p,a] { guard try V.identifier(row["manifestId"])==mid,try V.number(row["manifestVersion"],1,9007199254740991)==version,try V.hash(row["manifestChecksum"])==sum else { throw PinKnownRefusal() } }
+        for row in [p,r,a] { guard try V.identifier(row["packageId"])==compiled.packageId,try V.number(row["packageVersion"],1,9007199254740991)==compiled.version,try V.hash(row["packageChecksum"])==compiled.checksum else { throw PinKnownRefusal() } }
+        for row in [r,a] { guard try V.text(row["policyVersion"])==profile.policyVersion,try V.hash(row["policyChecksum"])==profile.policyChecksum,try V.text(row["locale"])==profile.locale,try V.number(row["exactAge"],3,17)==profile.exactAge else { throw PinKnownRefusal() };guard try readings(row["readingLevels"]).contains(profile.reading ?? "<null>") else { throw PinKnownRefusal() } }
+        guard try readings(a["readingLevels"]).isSuperset(of:readings(r["readingLevels"])),try epoch(a["reviewedAtEpochMs"])<=now,try V.strings(a["platforms"],3,"android-google|android-rustore|ios-ipados").contains(compiled.platform),try V.strings(a["territories"],676,"[A-Z]{2}").contains(compiled.territory) else { throw PinKnownRefusal() }
+        var end=min(compiled.until,min(try until(r,now),try until(a,now)));try signature(review,keys);try fence()
+        var approvals=[String:[String:V]]()
+        for value in try V.array(a["assetChecksums"],512) { let row=try V.object(value,["assetId","ownerChecksum","entityChecksum","policyChecksum","binaryChecksum","bytes","mime"]),id=try V.identifier(row["assetId"]);guard approvals[id]==nil else { throw PinKnownRefusal() };approvals[id]=row }
+        var assets=[LocalV2MediaAsset](),ids=Set<String>(),relations=Set<String>(),inventoryKeys=[String:String](),owners=[String:Int]()
+        for value in try V.array(r["assets"],512) {
+            try fence();let entry=try V.object(value,["assetId","owner","entity","payload","policy","inventoryKey","sha256","bytes","mime"]),id=try V.identifier(entry["assetId"]),owner=try V.object(entry["owner"],["kind","id","contentChecksum"]),entity=try V.object(entry["entity"],["kind","id","contentChecksum"])
+            let ownerKind=try V.text(owner["kind"]),ownerId=try V.identifier(owner["id"]),ownerHash=try V.hash(owner["contentChecksum"]),kind=try V.text(entity["kind"]),entityId=try V.identifier(entity["id"]),entityHash=try V.hash(entity["contentChecksum"])
+            guard LocalV2PackageCompiler.kinds.contains(ownerKind),kinds.contains(kind),ids.insert(id).inserted,relations.insert(ownerKind+"/"+ownerId+"/"+kind+"/"+entityId).inserted else { throw PinKnownRefusal() }
+            var ownerBytes=try compiled.copy(ownerKind+"/"+ownerId,now);defer { ownerBytes.resetBytes(in:0..<ownerBytes.count) };guard LocalSnapshotV2.hash(ownerBytes)==ownerHash else { throw PinKnownRefusal() }
+            let ownerName=ownerKind+"/"+ownerId;owners[ownerName,default:0]+=1;guard owners[ownerName]!<=64 else { throw PinKnownRefusal() }
+            let payload=try V.object(entry["payload"],["role","altText","transcript","scriptId","scriptChecksum","performerId","qualityChecksum"]),role=try V.text(payload["role"]),alt=try text(payload["altText"],240,false)
+            guard try hash(entry["payload"]!)==entityHash else { throw PinKnownRefusal() };let mime=try V.text(entry["mime"]),inventory=try V.text(entry["inventoryKey"]),ext=try extensionFor(inventory,mime),sum=try V.hash(entry["sha256"]),size=try V.number(entry["bytes"],1,Int64(mime=="audio/wav" ? 24*1024*1024:32*1024*1024))
+            let identity=sum+"/"+String(size)+"/"+mime
+            guard inventoryKeys[inventory]==nil || inventoryKeys[inventory]==identity else { throw PinKnownRefusal() };inventoryKeys[inventory]=identity;var transcript: String?
+            if kind=="narration" {
+                guard role=="narration",mime=="audio/wav" else { throw PinKnownRefusal() };transcript=try text(payload["transcript"],32768,true);_ = try V.identifier(payload["scriptId"]);_ = try V.identifier(payload["performerId"]);_ = try V.hash(payload["qualityChecksum"])
+                guard try V.hash(payload["scriptChecksum"])==LocalSnapshotV2.hash(Data(transcript!.utf8)) else { throw PinKnownRefusal() }
+            } else { guard mime != "audio/wav",kind=="image" ? ["image","portrait"].contains(role):role==kind,["transcript","scriptId","scriptChecksum","performerId","qualityChecksum"].allSatisfy({ payload[$0]?.isNull==true }) else { throw PinKnownRefusal() } }
+            let rights=try V.object(V.object(entry["policy"])["rights"])
+            guard try V.strings(rights["platforms"],4,"web-pwa|android-google|android-rustore|ios-ipados").isSuperset(of:V.strings(a["platforms"],3,"android-google|android-rustore|ios-ipados")),
+                try V.strings(rights["territories"],676,"[A-Z]{2}").isSuperset(of:V.strings(a["territories"],676,"[A-Z]{2}")) else { throw PinKnownRefusal() }
+            if let expiry=try policy(entry["policy"]!,entity,profile,compiled.platform,compiled.territory,now) { end=min(end,expiry) }
+            guard let approval=approvals.removeValue(forKey:id),try V.hash(approval["ownerChecksum"])==hash(entry["owner"]!),try V.hash(approval["entityChecksum"])==entityHash,try V.hash(approval["policyChecksum"])==hash(entry["policy"]!),try V.hash(approval["binaryChecksum"])==sum,try V.number(approval["bytes"],1,32*1024*1024)==size,try V.text(approval["mime"])==mime else { throw PinKnownRefusal() }
+            assets.append(LocalV2MediaAsset(id:id,owner:entry["owner"]!,entity:entry["entity"]!,payload:entry["payload"]!,policy:entry["policy"]!,inventoryKey:inventory,checksum:sum,mime:mime,role:role,altText:alt,transcript:transcript,fixedPath:"child-native/media/assets/"+sum+"."+ext,bytes:Int(size),until:end))
+        }
+        guard !assets.isEmpty,approvals.isEmpty,now<end else { throw PinKnownRefusal() };try fence();return LocalV2MediaIndex(assets,end,profile)
+    }
+}
+fileprivate extension LocalV2NativePackageLoader {
+    func mediaMainCurrent() throws {
+        guard Thread.isMainThread else { throw PinKnownRefusal() };try current();_ = try writer.packageLocal(request)
+        var actual=try writer.sdkRead(request);defer { actual.resetBytes(in:0..<actual.count) }
+        guard let delivery,LocalSnapshotV2.hash(actual)==delivery.compiled.profile.recordChecksum,try wall()<delivery.compiled.until else { throw PinKnownRefusal() }
+    }
+    /** Armed solely by the actual nonreturned SDK command on THIS original
+     * loader worker, before metadata is returned to its native recipient. */
+    func retainMediaMetadata(_ original: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ index: LocalV2MediaIndex,_ assets: [LocalV2MediaAsset]) throws {
+        guard delivery === original,original.owner === self,!command.returned,
+            ObjectIdentifier(Thread.current)==worker.map(ObjectIdentifier.init),
+            index.profile === original.compiled.profile else { throw PinKnownRefusal() }
+        try fresh(index.profile);let now=try wall()
+        lock.lock();defer { lock.unlock() };guard !revoked,!closed else { throw PinKnownRefusal() }
+        try mediaMetadataLifetime.retain(assets,index.until,original.compiled.until,now)
+    }
+    func mediaMetadataCurrent() throws {
+        let now=try wall();lock.lock();let original=mediaMetadataLifetime;lock.unlock();try original.current(now)
+    }
+    func fixedMediaAsset(_ fixed: String,_ limit: Int) throws -> Data {
+        try live();guard fixed=="child-native/media/catalog-v2.json" || LocalV2PackageValue.matches(fixed,"child-native/media/(manifests|reviews)/[a-f0-9]{64}\\.json") || LocalV2PackageValue.matches(fixed,"child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav)"),limit>0,limit<=32*1024*1024,let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
+        var path=resources;for part in ["public"]+fixed.split(separator:"/").map(String.init) { path.appendPathComponent(part);let info=try path.resourceValues(forKeys:[.isSymbolicLinkKey]);guard info.isSymbolicLink != true,path.resolvingSymlinksInPath().standardizedFileURL==path.standardizedFileURL else { throw PinKnownRefusal() } }
+        let info=try path.resourceValues(forKeys:[.isRegularFileKey,.fileSizeKey]);guard info.isRegularFile==true,let size=info.fileSize,size>0,size<=limit,let stream=InputStream(url:path) else { throw PinKnownRefusal() }
+        var owned=[UInt8](repeating:0,count:size),at=0;stream.open();defer { stream.close();owned.withUnsafeMutableBytes { $0.initializeMemory(as:UInt8.self,repeating:0) } }
+        while at<size { try live();let count=owned.withUnsafeMutableBufferPointer { stream.read($0.baseAddress!.advanced(by:at),maxLength:min(8192,size-at)) };guard count>0 else { throw PinKnownRefusal() };at+=count }
+        var extra: UInt8=0;guard stream.read(&extra,maxLength:1)==0 else { throw PinKnownRefusal() };try live();return Data(owned)
+    }
+}
+fileprivate final class LocalV2FixedMediaProducer {
+    private let delivery: LocalV2OwnedPackageDelivery,loader: LocalV2NativePackageLoader,sdk: PlanetChildLocalV2SDKOwner,epoch: UInt64,token: String,generation: UInt64
+    init(_ delivery: LocalV2OwnedPackageDelivery,_ sdk: PlanetChildLocalV2SDKOwner,_ epoch: UInt64,_ token: String,_ generation: UInt64) { self.delivery=delivery;loader=delivery.owner;self.sdk=sdk;self.epoch=epoch;self.token=token;self.generation=generation }
+    private func fresh() throws { try sdk.mediaInvocationCurrent(epoch,token,generation,delivery);try loader.fresh(delivery.compiled.profile);try sdk.mediaInvocationCurrent(epoch,token,generation,delivery) }
+    func compile() throws -> LocalV2MediaIndex {
+        try fresh();var catalogBytes=try loader.fixedMediaAsset("child-native/media/catalog-v2.json",65536),artifact=try loader.fixedAsset("artifact.json",2097152)
+        defer { catalogBytes.resetBytes(in:0..<catalogBytes.count);artifact.resetBytes(in:0..<artifact.count) }
+        let catalog=try LocalV2MediaCatalog(catalogBytes,artifact),compiled=delivery.compiled;var selected: LocalV2MediaIndex?
+        for pin in catalog.pins {
+            try fresh();let row=try LocalV2PackageValue.object(pin),sum=try LocalV2PackageValue.hash(row["manifestChecksum"]),reviewSum=try LocalV2PackageValue.hash(row["reviewChecksum"])
+            var bytes=try loader.fixedMediaAsset("child-native/media/manifests/"+sum+".json",524288),review=try loader.fixedMediaAsset("child-native/media/reviews/"+reviewSum+".json",524288)
+            defer { bytes.resetBytes(in:0..<bytes.count);review.resetBytes(in:0..<review.count) };try catalog.verify("child-native/media/manifests/"+sum+".json",bytes,524288);try catalog.verify("child-native/media/reviews/"+reviewSum+".json",review,524288)
+            let raw=try LocalV2PackageJson.read(bytes,524288);try catalog.recordManifest(raw,pin)
+            let audience=try LocalV2PackageValue.object(raw)
+            if try LocalV2PackageValue.identifier(row["packageId"]) != compiled.packageId || LocalV2PackageValue.number(row["packageVersion"],1,9007199254740991) != compiled.version || LocalV2PackageValue.hash(row["packageChecksum"]) != compiled.checksum { continue }
+            if try LocalV2PackageValue.text(audience["locale"]) != compiled.profile.locale || LocalV2PackageValue.number(audience["exactAge"],3,17) != compiled.profile.exactAge { continue }
+            if try !LocalV2MediaCompiler.readings(audience["readingLevels"]).contains(compiled.profile.reading ?? "<null>") { continue }
+            guard selected==nil,catalog.platform==compiled.platform else { throw PinKnownRefusal() }
+            selected=try LocalV2MediaCompiler.compile(bytes,review,pin,catalog.keys,compiled,loader.wall()) { try self.fresh() }
+        }
+        try catalog.finishInventory();try fresh()
+        return selected ?? LocalV2MediaIndex([],compiled.until,compiled.profile)
+    }
+}
+/** Private maker only in the original SDK. Codec/presenter can borrow through
+ * actual checks, but cannot construct a permission or substitute callbacks. */
+final class PlanetChildLocalV2MediaPermit {
+    fileprivate let sdk: PlanetChildLocalV2SDKOwner,delivery: LocalV2OwnedPackageDelivery,command: LocalV2SDKChannel.Command,epoch: UInt64,token: String,generation: UInt64,index: LocalV2MediaIndex,asset: LocalV2MediaAsset
+    private let lock=NSLock();private var closed=false,read=false,encoded: PinOwnedBytes?
+    var mime: String { asset.mime };var assetId: String { asset.id };var altText: String { asset.altText };var transcript: String? { asset.transcript };var locale: String { index.profile.locale }
+    var audioEnabled: Bool { (try? LocalV2PackageValue.bool(index.profile.profile["soundEnabled"]))==true && (try? LocalV2PackageValue.bool(index.profile.profile["narrationEnabled"]))==true }
+    private init(_ sdk: PlanetChildLocalV2SDKOwner,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ epoch: UInt64,_ token: String,_ generation: UInt64,_ index: LocalV2MediaIndex,_ asset: LocalV2MediaAsset) {
+        self.sdk=sdk;self.delivery=delivery;self.command=command;self.epoch=epoch;self.token=token;self.generation=generation;self.index=index;self.asset=asset
+    }
+    fileprivate static func make(_ sdk: PlanetChildLocalV2SDKOwner,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ epoch: UInt64,_ token: String,_ generation: UInt64,_ index: LocalV2MediaIndex,_ asset: LocalV2MediaAsset) throws -> PlanetChildLocalV2MediaPermit {
+        let original=PlanetChildLocalV2MediaPermit(sdk,delivery,command,epoch,token,generation,index,asset);try original.workerCurrent();return original
+    }
+    private func opened() throws { lock.lock();let denied=closed;lock.unlock();if denied { throw PlanetChildLocalV2MediaError.revoked } }
+    func workerCurrent() throws {
+        try opened();try sdk.mediaOriginal(self);guard !command.returned,ObjectIdentifier(Thread.current)==delivery.owner.worker.map(ObjectIdentifier.init),delivery.owner.delivery === delivery else { throw PinKnownRefusal() }
+        try delivery.owner.fresh(index.profile);guard try delivery.owner.wall()<index.until else { throw PinKnownRefusal() }
+    }
+    func mainCurrent() throws {
+        try opened();guard Thread.isMainThread else { throw PinKnownRefusal() };try sdk.mediaOriginal(self);try delivery.owner.mediaMainCurrent()
+        guard try delivery.owner.wall()<index.until else { throw PinKnownRefusal() }
+    }
+    func readEncoded() throws -> Data {
+        try workerCurrent();var bytes=try delivery.owner.fixedMediaAsset(asset.fixedPath,asset.bytes);defer { bytes.resetBytes(in:0..<bytes.count) }
+        guard bytes.count==asset.bytes,LocalSnapshotV2.hash(bytes)==asset.checksum else { throw PinKnownRefusal() };try workerCurrent()
+        let owned=PinOwnedBytes(bytes);lock.lock();guard !closed,!read,encoded==nil else { lock.unlock();owned.close();throw PlanetChildLocalV2MediaError.revoked };read=true;encoded=owned;lock.unlock();return try owned.copy()
+    }
+    func releaseEncoded() { lock.lock();let original=encoded;encoded=nil;lock.unlock();original?.close() }
+    func failedPresentation() { sdk.routeWillChange(reason:"unavailable") }
+    func close() { lock.lock();closed=true;let original=encoded;encoded=nil;lock.unlock();original?.close() }
+    deinit { close() }
+}
+fileprivate extension LocalV2SDKChannel {
+    func mediaOriginalCommand(_ delivery: LocalV2OwnedPackageDelivery) throws -> Command {
+        guard ObjectIdentifier(Thread.current)==delivery.owner.worker.map(ObjectIdentifier.init) else { throw PinKnownRefusal() }
+        condition.lock();defer { condition.unlock() };guard !closed,compiled === delivery.compiled,let command,!command.returned else { throw PinKnownRefusal() };return command
+    }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    /** Runs synchronously on native main before any serial enqueue. */
+    func concealMedia(_ selected: String?=nil) {
+        guard Thread.isMainThread else { return };lock.lock()
+        if selected==nil { if mediaEpoch<9007199254740991 { mediaEpoch+=1 } else { sealed=true } }
+        let rows=selected.map { id in mediaPresentations[id].map { [$0] } ?? [] } ?? Array(mediaPresentations.values)
+        for row in rows { mediaPresentations.removeValue(forKey:row.token);mediaRetiring.append(row) };lock.unlock()
+        for row in rows { row.conceal() }
+    }
+    func mediaOriginal(_ permit: PlanetChildLocalV2MediaPermit) throws {
+        lock.lock();let c=context,valid = !sealed && permit.sdk === self && permit.epoch==mediaEpoch && c?.token==permit.token && c?.generation==permit.generation && loader === permit.delivery.owner && c?.checksum==permit.index.profile.recordChecksum && c?.deadline==permit.delivery.owner.request.deadline;lock.unlock()
+        guard valid else { throw PlanetChildLocalV2MediaError.revoked }
+    }
+    func mediaRetireJoined() throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() };lock.lock();let rows=mediaRetiring;mediaRetiring.removeAll();lock.unlock()
+        do { for row in rows { try row.closeJoined();guard row.knownClosed else { throw PlanetChildVault.Failure.unavailable } } }
+        catch { lock.lock();mediaRetiring.append(contentsOf:rows.filter { !$0.knownClosed });sealed=true;lock.unlock();throw error }
+    }
+    func mediaPerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery,_ capturedEpoch: UInt64) throws -> [String:Any] {
+        guard let channel else { throw PinKnownRefusal() }
+        if r.method=="releaseMedia" {
+            lock.lock();let releaseKnown=r.presentationToken==nil || mediaReleases.contains(r.id);lock.unlock();guard releaseKnown else { throw PinKnownRefusal() }
+            try mediaRetireJoined();lock.lock();mediaReleases.remove(r.id);lock.unlock();try requireOriginal(c,delivery)
+            return ["status":"retired","presentationToken":r.presentationToken as Any? ?? NSNull()]
+        }
+        try requireOriginal(c,delivery);lock.lock();let current=capturedEpoch==mediaEpoch;lock.unlock()
+        if !current { if r.method=="presentMedia" { return ["status":"unavailable","presentationToken":NSNull(),"assetId":r.assetId!,"remainingLifetimeMs":0] };throw PlanetChildLocalV2MediaError.revoked }
+        let index=try LocalV2FixedMediaProducer(delivery,self,capturedEpoch,c.token,c.generation).compile();guard let raw=r.mediaOwner else { throw PinKnownRefusal() }
+        let owner=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:raw,options:[.sortedKeys,.withoutEscapingSlashes]),65536)
+        let assets=try index.owned(owner)
+        if r.method=="listMedia" {
+            let command=try channel.mediaOriginalCommand(delivery)
+            try delivery.owner.retainMediaMetadata(delivery,command,index,assets)
+            try mediaInvocationCurrent(capturedEpoch,c.token,c.generation,delivery)
+            try delivery.owner.mediaMetadataCurrent()
+            return ["list":try assets.map { try $0.descriptor() }]
+        }
+        guard r.method=="presentMedia",let id=r.assetId,let asset=assets.first(where:{ $0.id==id }),let layout=r.mediaLayout else { throw PinKnownRefusal() }
+        let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,capturedEpoch,c.token,c.generation,index,asset)
+        var resource: PlanetChildLocalV2MediaResource?,presentation: PlanetChildLocalV2MediaPresentation?,handed=false
+        defer { if !handed && presentation==nil { resource?.close();permit.close() } }
+        do {
+            resource=try PlanetChildLocalV2MediaCodec.decode(permit);try permit.workerCurrent()
+            let token=try Self.token()
+            try DispatchQueue.main.sync {
+                try permit.mainCurrent()
+                let recipient=PlanetChildLocalV2MediaPresentation(token:token,permit:permit,resource:resource!);presentation=recipient
+                lock.lock()
+                let retained=Array(mediaPresentations.values)+mediaRetiring,used=retained.reduce(0) { $0+$1.footprint }
+                guard !sealed,mediaEpoch==capturedEpoch,context?.token==c.token,mediaPresentations.count<64,mediaPresentations[token]==nil,recipient.footprint<=64*1024*1024-used else { lock.unlock();throw PlanetChildLocalV2MediaError.revoked }
+                // Register BEFORE attach, in the same main block. Fast conceal
+                // cannot miss pixels between attach and the worker's return.
+                mediaPresentations[token]=recipient;lock.unlock()
+                try recipient.attach(to:surface.view,layout:layout)
+            }
+            try permit.workerCurrent()
+            let nativeRemaining=try remaining(c.deadline),rightsRemaining=UInt64(max(0,index.until-(try delivery.owner.wall())))
+            guard rightsRemaining>0 else { throw PinKnownRefusal() };handed=true;return ["status":"presented","presentationToken":token,"assetId":id,"remainingLifetimeMs":min(nativeRemaining,rightsRemaining)]
+        } catch {
+            let failure=error
+            if let presentation {
+                do {
+                    try presentation.closeJoined();guard presentation.knownClosed else { throw PlanetChildVault.Failure.unavailable }
+                    lock.lock();mediaPresentations.removeValue(forKey:presentation.token);mediaRetiring.removeAll { $0 === presentation };lock.unlock()
+                } catch {
+                    lock.lock();sealed=true
+                    if !mediaRetiring.contains(where:{ $0 === presentation }) { mediaRetiring.append(presentation) }
+                    lock.unlock();throw error
+                }
+            }
+            if let revoked=failure as? PlanetChildLocalV2MediaError,case .revoked=revoked {
+                return ["status":"unavailable","presentationToken":NSNull(),"assetId":id,"remainingLifetimeMs":0]
+            }
+            throw failure
+        }
+    }
+}
+
+
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    func mediaInvocationCurrent(_ epoch: UInt64,_ token: String,_ generation: UInt64,_ delivery: LocalV2OwnedPackageDelivery) throws {
+        lock.lock();let allowed = !sealed && mediaEpoch==epoch && context?.token==token && context?.generation==generation && loader === delivery.owner && context?.checksum==delivery.compiled.profile.recordChecksum && context?.deadline==delivery.owner.request.deadline;lock.unlock()
+        if !allowed { throw PlanetChildLocalV2MediaError.revoked }
+    }
+    /** Called only by the original loader's real native main watcher. Its
+     * exact live SDK context is invalidated before the PROCESS lane is joined. */
+    func mediaMetadataExpired(_ original: LocalV2NativePackageLoader) {
+        guard Thread.isMainThread else { return };lock.lock()
+        let actual = !sealed && loader === original && context?.status=="child";lock.unlock()
+        if actual { routeWillChange(reason:"expired") }
+    }
+    func mediaMetadataUnavailable(_ original: LocalV2NativePackageLoader) {
+        guard Thread.isMainThread else { return };lock.lock()
+        let actual = !sealed && loader === original && context?.status=="child";lock.unlock()
+        if actual { routeWillChange(reason:"unavailable") }
+    }
+    func packageMediaConceal(_ original: LocalV2NativePackageLoader) {
+        let clear={ [self] in lock.lock();let actual=loader === original;lock.unlock();if actual { concealMedia() } }
+        if Thread.isMainThread { clear() } else { DispatchQueue.main.sync(execute:clear) }
+    }
+    func mediaRetireBeforePackageRelease(_ original: LocalV2NativePackageLoader) throws {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() };lock.lock();let actual=loader === original;lock.unlock();guard actual else { throw PlanetChildVault.Failure.unavailable }
+        DispatchQueue.main.sync { concealMedia();mediaStopGeometry() };try mediaRetireJoined()
+        lock.lock();let joined=mediaPresentations.isEmpty && mediaRetiring.isEmpty;lock.unlock();guard joined else { throw PlanetChildVault.Failure.unavailable }
+    }
+    func nativeMediaTouch(_ view: UIView) -> Bool {
+        guard Thread.isMainThread else { return false };lock.lock();let originals=Array(mediaPresentations.values),allowed = !sealed && context?.status=="child";lock.unlock()
+        return allowed && originals.contains { $0.ownsNativeControl(view) }
+    }
+}
+
+
+
+#if DEBUG
+/** Isolated software material exercises the ACTUAL native media compiler and
+ * codecs. It is never emitted, installed, release-pinned or human-approved. */
+extension PlanetChildNativePackageRuntimeFixture {
+    static func mediaScenario(_ name: String) throws -> Bool {
+        typealias V=LocalV2PackageValue
+        let f=try Fixture()
+        if name=="shared-binary" {
+            var second=f.policy;second["id"]="second"
+            var closure=f.review["entityPolicyChecksums"] as! [[String:Any]],row=closure[0]
+            row["id"]="second";row["policyChecksum"]=LocalSnapshotV2.hash(try bytes(second,sorted:true));closure.append(row);f.review["entityPolicyChecksums"]=closure
+            try f.refresh(closure:false,entities:[["policy":f.policy,"payload":f.payload],["policy":second,"payload":f.payload]])
+        }
+        let compiled=try f.compile();defer { compiled.close() }
+        let imageBytes=PlanetChildNativeMediaRuntimeFixture.png(),imageHash=LocalSnapshotV2.hash(imageBytes),now=f.now
+        let payload: [String:Any]=["role":"portrait","altText":"Isolated owned image","transcript":NSNull(),"scriptId":NSNull(),"scriptChecksum":NSNull(),"performerId":NSNull(),"qualityChecksum":NSNull()]
+        let payloadHash=LocalSnapshotV2.hash(try bytes(payload,sorted:true))
+        var mediaPolicy=f.policy;mediaPolicy["kind"]="image";mediaPolicy["id"]="picture"
+        var language=mediaPolicy["localizedContent"] as! [[String:Any]];language[0]["contentChecksum"]=payloadHash;mediaPolicy["localizedContent"]=language
+        let owner=f.root["home"] as! [String:Any],entity: [String:Any]=["kind":"image","id":"picture","contentChecksum":payloadHash]
+        var entry: [String:Any]=["assetId":"owned-picture","owner":owner,"entity":entity,"payload":payload,"policy":mediaPolicy,"inventoryKey":"owned_picture.png","sha256":imageHash,"bytes":imageBytes.count,"mime":"image/png"]
+        var manifest: [String:Any]=["schemaVersion":2,"kind":"literary-planet-child-native-media-manifest-v2","manifestId":"isolated-media","manifestVersion":1,"packageId":compiled.packageId,"packageVersion":compiled.version,"packageChecksum":compiled.checksum,"policyVersion":compiled.profile.policyVersion,"policyChecksum":compiled.profile.policyChecksum,"locale":compiled.profile.locale,"exactAge":compiled.profile.exactAge,"readingLevels":[NSNull()],"validFromEpochMs":now-1000,"validUntilEpochMs":now+10000,"assets":[entry]]
+        var review: [String:Any]=["schemaVersion":2,"kind":"literary-planet-child-native-media-review-v2","keyId":"child-media-review-isolated","reviewerId":"isolated-editor","manifestId":"isolated-media","manifestVersion":1,"manifestChecksum":"","packageId":compiled.packageId,"packageVersion":compiled.version,"packageChecksum":compiled.checksum,"policyVersion":compiled.profile.policyVersion,"policyChecksum":compiled.profile.policyChecksum,"locale":compiled.profile.locale,"exactAge":compiled.profile.exactAge,"readingLevels":[NSNull()],"platforms":["ios-ipados"],"territories":["RU"],"reviewedAtEpochMs":now-500,"validFromEpochMs":now-1000,"validUntilEpochMs":now+5000,"assetChecksums":[]]
+        var pin: [String:Any]=["manifestId":"isolated-media","manifestVersion":1,"manifestChecksum":"","reviewChecksum":"","packageId":compiled.packageId,"packageVersion":compiled.version,"packageChecksum":compiled.checksum]
+        let key: [String:Any]=["keyId":"child-media-review-isolated","reviewerId":"isolated-editor","publicKeyX963Hex":f.signer.publicKey.x963Representation.map { String(format:"%02x",$0) }.joined()]
+        var manifestBytes=Data(),reviewBytes=Data(),extraEntries=[[String:Any]]()
+        defer { manifestBytes.resetBytes(in:0..<manifestBytes.count);reviewBytes.resetBytes(in:0..<reviewBytes.count) }
+        func refresh(_ closure: Bool=true) throws {
+            let rows=[entry]+extraEntries;manifest["assets"]=rows
+            if closure {
+                review["assetChecksums"]=try rows.map { row in
+                    ["assetId":row["assetId"]!,"ownerChecksum":LocalSnapshotV2.hash(try bytes(row["owner"]!,sorted:true)),"entityChecksum":(row["entity"] as! [String:Any])["contentChecksum"]!,"policyChecksum":LocalSnapshotV2.hash(try bytes(row["policy"]!,sorted:true)),"binaryChecksum":row["sha256"]!,"bytes":row["bytes"]!,"mime":row["mime"]!]
+                }
+            }
+            manifestBytes=try bytes(manifest);let sum=LocalSnapshotV2.hash(manifestBytes);pin["manifestChecksum"]=sum;review["manifestChecksum"]=sum;review.removeValue(forKey:"signatureHex")
+            var message=Data("LP-CHILD-NATIVE-MEDIA-REVIEW\0v2\0".utf8);message.append(try bytes(review,sorted:true));defer { message.resetBytes(in:0..<message.count) }
+            review["signatureHex"]=try f.signer.signature(for:message).rawRepresentation.map { String(format:"%02x",$0) }.joined();reviewBytes=try bytes(review);pin["reviewChecksum"]=LocalSnapshotV2.hash(reviewBytes)
+        }
+        func compile(_ keys: [[String:Any]]?=nil,_ at: Int64?=nil) throws -> LocalV2MediaIndex {
+            try LocalV2MediaCompiler.compile(manifestBytes,reviewBytes,LocalV2PackageJson.read(bytes(pin),65536),try (keys ?? [key]).map { try LocalV2PackageJson.read(bytes($0),65536) },compiled,at ?? now,{})
+        }
+        try refresh()
+        switch name {
+        case "shared-binary":
+            var sibling=entry,other=owner;other["id"]="second";sibling["assetId"]="second-picture";sibling["owner"]=other
+            extraEntries=[sibling];try refresh();try check(compile().assets.count==2)
+            sibling["owner"]=owner;extraEntries=[sibling];try refresh();try denied { _=try compile() }
+            sibling["owner"]=other;sibling["sha256"]=String(repeating:"8",count:64);extraEntries=[sibling];try refresh();try denied { _=try compile() }
+        case "independent-review":
+            try check(compile().assets.count==1)
+            review["readingLevels"]=["fluent",NSNull()];try refresh();try check(compile().assets.count==1)
+            review["readingLevels"]=[NSNull()];try refresh()
+            try denied { _=try compile([]) }
+            review["signatureHex"]=String(repeating:"0",count:128);reviewBytes=try bytes(review);pin["reviewChecksum"]=LocalSnapshotV2.hash(reviewBytes)
+            try denied { _=try compile() }
+        case "owner-payload":
+            var changed=owner;changed["contentChecksum"]=String(repeating:"1",count:64);entry["owner"]=changed;try refresh();try denied { _=try compile() }
+            entry["owner"]=owner;var changedPayload=payload;changedPayload["altText"]="Unreviewed changed localized bytes";entry["payload"]=changedPayload;try refresh();try denied { _=try compile() }
+        case "policy":
+            var deniedPolicy=mediaPolicy;deniedPolicy["topics"]=["horror"];entry["policy"]=deniedPolicy;try refresh();try denied { _=try compile() }
+            deniedPolicy=mediaPolicy;var rights=deniedPolicy["rights"] as! [String:Any];rights["basis"]="licensed";rights["expiresAt"]=now+3000;deniedPolicy["rights"]=rights;entry["policy"]=deniedPolicy;try refresh();try denied { _=try compile() }
+            entry["policy"]=mediaPolicy;manifest["exactAge"]=10;review["exactAge"]=10;try refresh();try denied { _=try compile() }
+            manifest["exactAge"]=9;review["exactAge"]=9;manifest["locale"]="ru";review["locale"]="ru";try refresh();try denied { _=try compile() }
+        case "complete-review":
+            review["assetChecksums"]=[];try refresh(false);try denied { _=try compile() }
+            try refresh();var approvals=review["assetChecksums"] as! [[String:Any]];approvals.append(approvals[0]);review["assetChecksums"]=approvals;try refresh(false);try denied { _=try compile() }
+        case "expiry":
+            var policy=mediaPolicy,rights=policy["rights"] as! [String:Any];rights["expiresAt"]=now+1500;policy["rights"]=rights;entry["policy"]=policy;try refresh()
+            let admitted=try compile();try check(admitted.until==now+1500)
+            var metadata=LocalV2MediaMetadataLifetime()
+            try metadata.retain(admitted.assets,admitted.until,compiled.until,now)
+            try check(metadata.until==now+1500);try metadata.current(now+1499)
+            try denied { try metadata.current(now+1500) }
+            try denied { _=try compile(nil,now+1500) }
+            entry["policy"]=mediaPolicy;try refresh();let later=try compile()
+            try metadata.retain(later.assets,later.until,compiled.until,now+1)
+            try metadata.retain([],later.until,compiled.until,now+2)
+            try check(metadata.until==now+1500)
+            try denied { try metadata.retain(later.assets,later.until,compiled.until,now+1500) }
+            var empty=LocalV2MediaMetadataLifetime();try empty.retain([],later.until,compiled.until,now)
+            try check(empty.until==nil)
+            review["validUntilEpochMs"]=now;try refresh();try denied { _=try compile() }
+        case "audio-fields":
+            var audio=entry,audioPayload: [String:Any]=["role":"narration","altText":"Isolated narration","transcript":"An isolated sourced caption.","scriptId":"script-v1","scriptChecksum":LocalSnapshotV2.hash(Data("An isolated sourced caption.".utf8)),"performerId":"isolated-speaker","qualityChecksum":String(repeating:"2",count:64)]
+            let digest=LocalSnapshotV2.hash(try bytes(audioPayload,sorted:true));var policy=mediaPolicy;policy["kind"]="narration";var locale=language;locale[0]["contentChecksum"]=digest;policy["localizedContent"]=locale
+            let wav=PlanetChildNativeMediaRuntimeFixture.wav();audio["payload"]=audioPayload;audio["entity"]=["kind":"narration","id":"picture","contentChecksum":digest];audio["policy"]=policy;audio["mime"]="audio/wav";audio["inventoryKey"]="owned_audio.wav";audio["sha256"]=LocalSnapshotV2.hash(wav);audio["bytes"]=wav.count;entry=audio;try refresh();try check(compile().assets.first?.transcript=="An isolated sourced caption.")
+            audioPayload["scriptChecksum"]=String(repeating:"3",count:64);entry["payload"]=audioPayload;var reference=entry["entity"] as! [String:Any];reference["contentChecksum"]=LocalSnapshotV2.hash(try bytes(audioPayload,sorted:true));entry["entity"]=reference
+            var localized=policy["localizedContent"] as! [[String:Any]];localized[0]["contentChecksum"]=reference["contentChecksum"];policy["localizedContent"]=localized;entry["policy"]=policy;try refresh();try denied { _=try compile() }
+        default:throw PinKnownRefusal()
+        };return true
+    }
+}
+enum PlanetChildNativeMediaRuntimeFixture {
+    private static func u32(_ value: Int) -> [UInt8] { [UInt8(truncatingIfNeeded:value>>24),UInt8(truncatingIfNeeded:value>>16),UInt8(truncatingIfNeeded:value>>8),UInt8(truncatingIfNeeded:value)] }
+    private static func little(_ value: Int,_ count: Int) -> [UInt8] { (0..<count).map { UInt8(truncatingIfNeeded:value>>($0*8)) } }
+    private static func chunk(_ name: String,_ body: [UInt8]) -> [UInt8] {
+        let b=Array(name.utf8)+body;var crc: UInt32=0xffffffff
+        for byte in b { crc ^= UInt32(byte);for _ in 0..<8 { crc=crc&1==0 ? crc>>1:(crc>>1)^0xedb88320 } }
+        return u32(body.count)+b+u32(Int(crc^0xffffffff))
+    }
+    static func png(_ animated: Bool=false) -> Data {
+        let scan: [UInt8]=[0,255,0,0,255];var a=1,b=0
+        for byte in scan { a=(a+Int(byte))%65521;b=(b+a)%65521 }
+        let zlib: [UInt8]=[0x78,0x01,0x01,5,0,0xfa,0xff]+scan+u32(b<<16|a)
+        return Data([137,80,78,71,13,10,26,10]+chunk("IHDR",u32(1)+u32(1)+[8,6,0,0,0])+(animated ? chunk("acTL",u32(1)+u32(0)):[])+chunk("IDAT",zlib)+chunk("IEND",[]))
+    }
+    static func wav(_ frames: Int=8) -> Data {
+        let format=little(1,2)+little(1,2)+little(8000,4)+little(8000,4)+little(1,2)+little(8,2)
+        let body=Array("WAVEfmt ".utf8)+little(16,4)+format+Array("data".utf8)+little(frames,4)+Array(repeating:UInt8(128),count:frames)
+        return Data(Array("RIFF".utf8)+little(body.count,4)+body)
+    }
+    private static func deny(_ work: () throws -> Void) throws { var denied=false;do { try work() } catch { denied=true };if !denied { throw PlanetChildLocalV2MediaError.malformed } }
+    static func catalog() throws -> Bool {
+        let sourcePath="src/child/childNativeMediaReleasePins.json",sourceHash=LocalSnapshotV2.hash(Data("isolated empty pins, no release authority".utf8))
+        let catalog: [String:Any]=["schemaVersion":2,"kind":"literary-planet-child-native-media-catalog-v2","platform":"ios-ipados","mediaPinSourceChecksum":sourceHash,"reviewKeys":[],"manifests":[]]
+        let bytes=try JSONSerialization.data(withJSONObject:catalog,options:[.sortedKeys,.withoutEscapingSlashes]),sum=LocalSnapshotV2.hash(bytes)
+        var artifact: [String:Any]=["schemaVersion":1,"kind":"literary-planet-bundled-native-preparation","platform":"ios","channel":"appStore","sourceInputs":["files":[["path":sourcePath,"sha256":sourceHash]]],"inventory":[["path":"child-native/media/catalog-v2.json","bytes":bytes.count,"sha256":sum]],"childNativeMediaAssets":["pinSource":["path":sourcePath,"sha256":sourceHash],"outputs":[["output":"child-native/media/catalog-v2.json","source":sourcePath,"sourceSha256":sourceHash,"transformation":"fixed-native-media-pin-projection-v2","outputSha256":sum]]]]
+        func raw() throws -> Data { try JSONSerialization.data(withJSONObject:artifact,options:[.sortedKeys,.withoutEscapingSlashes]) }
+        try LocalV2MediaCatalog(bytes,raw()).finishInventory()
+        var inventory=artifact["inventory"] as! [[String:Any]];inventory.append(["path":"child-native/media/assets/"+String(repeating:"0",count:64)+".png","bytes":1,"sha256":String(repeating:"0",count:64)]);artifact["inventory"]=inventory
+        try deny { try LocalV2MediaCatalog(bytes,raw()).finishInventory() }
+        artifact["inventory"]=Array(inventory.prefix(1));artifact["sourceInputs"]=["files":[["path":sourcePath,"sha256":String(repeating:"0",count:64)]]]
+        try deny { _=try LocalV2MediaCatalog(bytes,raw()) };return true
+    }
+    static func codecs(_ name: String) throws -> Bool {
+        switch name {
+        case "png":
+            let header=try PlanetChildLocalV2MediaCodec.preflight(png(),"image/png");guard header.width==1,header.height==1 else { throw PlanetChildLocalV2MediaError.malformed }
+            try deny { _=try PlanetChildLocalV2MediaCodec.preflight(png(true),"image/png") }
+            var broken=png();broken[broken.count-1]^=1;try deny { _=try PlanetChildLocalV2MediaCodec.preflight(broken,"image/png") }
+            broken=png();broken.append(0);try deny { _=try PlanetChildLocalV2MediaCodec.preflight(broken,"image/png") }
+        case "jpeg-webp":
+            let raster=try PlanetChildLocalV2MediaResource.raster(png(),PlanetChildLocalV2MediaCodec.preflight(png(),"image/png"));defer { raster.close() }
+            // ImageIO and the OS JPEG encoder produce real static encoded bytes.
+            let image=try PlanetChildNativeMediaRuntimeFixture.fixtureImage(raster)
+            guard var jpeg=image.jpegData(compressionQuality:0.75) else { throw PlanetChildLocalV2MediaError.malformed }
+            _=try PlanetChildLocalV2MediaCodec.preflight(jpeg,"image/jpeg");jpeg.append(0);try deny { _=try PlanetChildLocalV2MediaCodec.preflight(jpeg,"image/jpeg") }
+            let body=Array("WEBPVP8L".utf8)+little(5,4)+[0x2f,0,0,0,0,0]
+            let webp=Data(Array("RIFF".utf8)+little(body.count,4)+body);_ = try PlanetChildLocalV2MediaCodec.preflight(webp,"image/webp")
+            let animated=Array("WEBPANIM".utf8)+little(0,4)+Array(body.dropFirst(4));try deny { _=try PlanetChildLocalV2MediaCodec.preflight(Data(Array("RIFF".utf8)+little(animated.count,4)+animated),"image/webp") }
+            try deny { _=try PlanetChildLocalV2MediaCodec.preflight(Data("<svg/>".utf8),"image/svg+xml") }
+        case "pcm":
+            let header=try PlanetChildLocalV2MediaCodec.preflight(wav(),"audio/wav");guard header.sampleRate==8000,header.bits==8,header.channels==1 else { throw PlanetChildLocalV2MediaError.malformed }
+            try deny { _=try PlanetChildLocalV2MediaCodec.preflight(wav(8000*61),"audio/wav") }
+            var invalid=wav();invalid[20]=3;try deny { _=try PlanetChildLocalV2MediaCodec.preflight(invalid,"audio/wav") }
+            invalid=wav();invalid[32]=2;try deny { _=try PlanetChildLocalV2MediaCodec.preflight(invalid,"audio/wav") }
+        case "close":
+            let raster=try PlanetChildLocalV2MediaResource.raster(png(),PlanetChildLocalV2MediaCodec.preflight(png(),"image/png")),pcm=try PlanetChildLocalV2MediaResource.audio(wav(),PlanetChildLocalV2MediaCodec.preflight(wav(),"audio/wav"))
+            guard raster.footprint>0,pcm.footprint>0 else { throw PlanetChildLocalV2MediaError.malformed };raster.close();pcm.close();raster.close();pcm.close();guard raster.footprint==0,pcm.footprint==0 else { throw PlanetChildLocalV2MediaError.malformed }
+        default:throw PlanetChildLocalV2MediaError.malformed
+        };return true
+    }
+}
+#endif

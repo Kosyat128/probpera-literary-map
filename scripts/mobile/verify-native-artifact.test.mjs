@@ -6,6 +6,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { verifyNativeArtifact } from "./verify-native-artifact.mjs";
 import { CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
 import { CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_CATALOG } from "./native-child-package-assets.mjs";
+import { CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_CATALOG } from "./native-child-media-assets.mjs";
 
 const roots = [];
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -22,10 +23,11 @@ async function fixture({ platform = "android", ownership = true } = {}) {
   const pkg = { dependencies: Object.fromEntries(Object.entries(nativePackages).filter(([name]) => name !== "@capacitor/cli")), devDependencies: { "@capacitor/cli": "8.5.1" } };
   const lock = { packages: Object.fromEntries(Object.entries(nativePackages).map(([name, version]) => ["node_modules/" + name, { version, integrity: "sha512-" + Buffer.alloc(64, 1).toString("base64") }])) };
   const config = { appId: "ru.probpera.literaryplanet", appName: "Literary Planet", webDir: "dist-native", loggingBehavior: "debug", android: { path: "apps/mobile/android", allowMixedContent: false }, ios: { path: "apps/mobile/ios" }, server: { hostname: "localhost", androidScheme: "https", iosScheme: "capacitor" } };
-  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE].sort();
+  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE].sort();
   for (const file of sources) await write(file, file.endsWith(".json") ? "{}\n" : "fixture source " + file, root);
   await write("package.json", json(pkg), root); await write("package-lock.json", json(lock), root); await write("capacitor.config.json", json(config), root);
   await write(CHILD_NATIVE_PIN_SOURCE, json({ schemaVersion: 1, kind: "literary-planet-child-native-release-pins-v1", reviewKeys: [], packages: [] }), root);
+  await write(CHILD_NATIVE_MEDIA_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-media-release-pins-v2", reviewKeys: [], manifests: [] }), root);
   const sourceInputs = { sha256: "", files: [] };
   async function refreshSources() {
     sourceInputs.files = await Promise.all(sources.map(async file => ({ path: file, sha256: sha(await readFile(path.join(root, file))) })));
@@ -56,6 +58,13 @@ async function fixture({ platform = "android", ownership = true } = {}) {
   await write(CHILD_NATIVE_CATALOG, catalogBytes);
   artifact.childNativeAssets = { pinSource: { path: CHILD_NATIVE_PIN_SOURCE, sha256: pinChecksum }, outputs: [{ output: CHILD_NATIVE_CATALOG,
     source: CHILD_NATIVE_PIN_SOURCE, sourceSha256: pinChecksum, transformation: "fixed-native-pin-projection-v1", outputSha256: sha(catalogBytes) }] };
+  const mediaPinChecksum = sha(await readFile(path.join(root, CHILD_NATIVE_MEDIA_PIN_SOURCE)));
+  const mediaCatalog = JSON.stringify({ schemaVersion: 2, kind: "literary-planet-child-native-media-catalog-v2", platform: null,
+    mediaPinSourceChecksum: mediaPinChecksum, reviewKeys: [], manifests: [] }) + "\n";
+  await write(CHILD_NATIVE_MEDIA_CATALOG, mediaCatalog);
+  artifact.childNativeMediaAssets = { pinSource: { path: CHILD_NATIVE_MEDIA_PIN_SOURCE, sha256: mediaPinChecksum },
+    outputs: [{ output: CHILD_NATIVE_MEDIA_CATALOG, source: CHILD_NATIVE_MEDIA_PIN_SOURCE, sourceSha256: mediaPinChecksum,
+      transformation: "fixed-native-media-pin-projection-v2", outputSha256: sha(mediaCatalog) }] };
   const walk = async (directory, prefix = "") => {
     const files = [];
     for (const entry of await readdir(directory, { withFileTypes: true })) if (entry.isDirectory()) files.push(...await walk(path.join(directory, entry.name), prefix + entry.name + "/")); else files.push(prefix + entry.name);
@@ -100,8 +109,8 @@ describe("native child package artifact provenance", () => {
   });
   it("rejects unpinned child output and retains genuinely pre-exporter historical bundles", async () => {
     const f = await fixture();await f.write("child-native/packages/" + "a".repeat(64) + ".json", "{}");await f.refresh();expect(codes(await f.audit())).toContain("CHILD_NATIVE_PROVENANCE");
-    await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;
-    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
+    await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;delete f.artifact.childNativeMediaAssets;
+    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
     for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => module !== CHILD_NATIVE_PIN_SOURCE);
     await f.write("module-ownership.json", json(f.owned));await f.refresh();expect((await f.audit({ checkSourceFreshness: false })).findings).toEqual([]);expect(codes(await f.audit())).toContain("SOURCE_INPUT_SET");
   });
@@ -283,5 +292,40 @@ describe("actual bundled native artifact audit", () => {
   });
   it("rejects a build identity copied from another inventory", async () => {
     const f = await fixture(); f.artifact.buildId = "b".repeat(64); await f.write("artifact.json", json(f.artifact)); expect(codes(await f.audit())).toContain("BUILD_ID");
+  });
+});
+
+describe("native child media artifact provenance", () => {
+  it("reconstructs the exact empty independent media projection from current source pins", async () => {
+    const f = await fixture(); expect((await f.audit()).findings).toEqual([]);
+    expect(f.artifact.childNativeMediaAssets.outputs).toHaveLength(1);
+  });
+  it("denies forged media approval even after inventory and build identity are rewritten", async () => {
+    const f = await fixture(), catalog = JSON.parse(await readFile(path.join(f.output, CHILD_NATIVE_MEDIA_CATALOG)));
+    catalog.reviewKeys = [{ keyId: "child-media-review-forged", reviewerId: "caller", publicKeyX963Hex: "04" + "1".repeat(128) }];
+    const bytes = JSON.stringify(catalog) + "\n"; await f.write(CHILD_NATIVE_MEDIA_CATALOG, bytes);
+    f.artifact.childNativeMediaAssets.outputs[0].outputSha256 = sha(bytes); await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_MEDIA_PROVENANCE");
+  });
+  it("requires the actual media emitter input and exact independent pin source", async () => {
+    const f = await fixture(); f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => row.path !== CHILD_NATIVE_MEDIA_ASSET_MODULE);
+    f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files)); await f.saveIdentity();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_MEDIA_PROVENANCE");
+  });
+  it("denies extra binaries and paths despite self-consistent artifact digests", async () => {
+    const f = await fixture(); await f.write("child-native/media/assets/" + "b".repeat(64) + ".png", Buffer.from("unreviewed"));
+    await f.refresh(); expect(codes(await f.audit())).toContain("CHILD_NATIVE_MEDIA_PROVENANCE");
+  });
+  it("denies duplicated output claims and missing media catalog bytes", async () => {
+    const f = await fixture(); f.artifact.childNativeMediaAssets.outputs.push(f.artifact.childNativeMediaAssets.outputs[0]); await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_MEDIA_PROVENANCE");
+    f.artifact.childNativeMediaAssets.outputs.pop(); await rm(path.join(f.output, CHILD_NATIVE_MEDIA_CATALOG)); await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_MEDIA_PROVENANCE");
+  });
+  it("keeps text pins independent when the media source itself becomes malformed", async () => {
+    const f = await fixture(), original = await readFile(path.join(f.root, CHILD_NATIVE_PIN_SOURCE));
+    await f.write(CHILD_NATIVE_MEDIA_PIN_SOURCE, "{}", f.root); await f.refreshSources(); await f.saveIdentity();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_MEDIA_PROVENANCE");
+    expect(await readFile(path.join(f.root, CHILD_NATIVE_PIN_SOURCE))).toEqual(original);
   });
 });

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+        D4B120261005000000000090 /* PlanetChildMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000091 /* PlanetChildMedia.swift */; };
+        D4B120261005000000000092 /* PlanetChildMediaRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261005000000000093 /* PlanetChildMediaRuntimeTests.swift */; };
         D4B120261004000000000080 /* PlanetChildPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261004000000000081 /* PlanetChildPlugin.swift */; };
         D4B120261002000000000030 /* PlanetChildVault.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261002000000000031 /* PlanetChildVault.swift */; };
 		D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+        D4B120261005000000000091 /* PlanetChildMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildMedia.swift; sourceTree = "<group>"; };
+        D4B120261005000000000093 /* PlanetChildMediaRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildMediaRuntimeTests.swift; sourceTree = "<group>"; };
         D4B120261004000000000081 /* PlanetChildPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildPlugin.swift; sourceTree = "<group>"; };
         D4B120261002000000000031 /* PlanetChildVault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetChildVault.swift; sourceTree = "<group>"; };
 		D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetSecureStoreRuntimeTests.swift; sourceTree = "<group>"; };
@@ -87,7 +91,7 @@
 /* Begin PBXGroup section */
 		D4B120261002000000000012 /* AppSecureStorageTests */ = {
 			isa = PBXGroup;
-			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */, D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */, C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */, D4B120261004000000000071 /* PlanetChildFirstInstallV2RuntimeTests.swift */,);
+			children = (D4B120261002000000000011 /* PlanetSecureStoreRuntimeTests.swift */, D4B120261003000000000043 /* PlanetChildDataStoreRuntimeTests.swift */, D4B120261003000000000053 /* PlanetChildDataTransportRuntimeTests.swift */, D4B120261003000000000061 /* PlanetChildProtectedEnvelopeRuntimeTests.swift */, C0FF7F211F918E8932E9003B /* PlanetChildOwnerPermissionRuntimeTests.swift */, D4B120261004000000000071 /* PlanetChildFirstInstallV2RuntimeTests.swift */, D4B120261005000000000093 /* PlanetChildMediaRuntimeTests.swift */,);
 			path = AppSecureStorageTests;
 			sourceTree = "<group>";
 		};
@@ -122,6 +126,7 @@
                 D4B120261003000000000041 /* PlanetChildDataStore.swift */,
                 D4B120261003000000000051 /* PlanetChildDataTransport.swift */,
                 D4B120261004000000000081 /* PlanetChildPlugin.swift */,
+                D4B120261005000000000091 /* PlanetChildMedia.swift */,
 				504EC30B1FED79650016851F /* Main.storyboard */,
 				504EC30E1FED79650016851F /* Assets.xcassets */,
 				504EC3101FED79650016851F /* LaunchScreen.storyboard */,
@@ -228,7 +233,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */, D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */, B01A3235360B48736AF4A7E5 /* PlanetChildOwnerPermissionRuntimeTests.swift in Sources */, D4B120261004000000000070 /* PlanetChildFirstInstallV2RuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		D4B120261002000000000016 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (D4B120261002000000000010 /* PlanetSecureStoreRuntimeTests.swift in Sources */, D4B120261003000000000042 /* PlanetChildDataStoreRuntimeTests.swift in Sources */, D4B120261003000000000052 /* PlanetChildDataTransportRuntimeTests.swift in Sources */, D4B120261003000000000060 /* PlanetChildProtectedEnvelopeRuntimeTests.swift in Sources */, B01A3235360B48736AF4A7E5 /* PlanetChildOwnerPermissionRuntimeTests.swift in Sources */, D4B120261004000000000070 /* PlanetChildFirstInstallV2RuntimeTests.swift in Sources */, D4B120261005000000000092 /* PlanetChildMediaRuntimeTests.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
 		504EC3001FED79650016851F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +245,7 @@
                 D4B120261003000000000040 /* PlanetChildDataStore.swift in Sources */,
                 D4B120261003000000000050 /* PlanetChildDataTransport.swift in Sources */,
                 D4B120261004000000000080 /* PlanetChildPlugin.swift in Sources */,
+                D4B120261005000000000090 /* PlanetChildMedia.swift in Sources */,
 				9582B6832FE993A70072D4E8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

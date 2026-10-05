@@ -40,6 +40,9 @@ public final class PlanetChildPlugin extends Plugin {
     @PluginMethod public void readEntity(PluginCall call){dispatch("readEntity",call);}
     @PluginMethod public void search(PluginCall call){dispatch("search",call);}
     @PluginMethod public void readCollection(PluginCall call){dispatch("readCollection",call);}
+    @com.getcapacitor.PluginMethod public void listMedia(com.getcapacitor.PluginCall call){dispatch("listMedia",call);}
+    @com.getcapacitor.PluginMethod public void presentMedia(com.getcapacitor.PluginCall call){dispatch("presentMedia",call);}
+    @com.getcapacitor.PluginMethod public void releaseMedia(com.getcapacitor.PluginCall call){dispatch("releaseMedia",call);}
     @PluginMethod public void writeCollection(PluginCall call){dispatch("writeCollection",call);}
     @Override protected void handleOnPause(){if(owner!=null)owner.hostPaused();}
     @Override protected void handleOnStop(){if(owner!=null)owner.hostStopped();}

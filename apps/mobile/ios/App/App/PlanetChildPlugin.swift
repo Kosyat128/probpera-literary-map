@@ -9,11 +9,11 @@ import Capacitor
 public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier="PlanetChildPlugin"
     public let jsName="PlanetChild"
-    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
+    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
     private var transport: PlanetChildLocalV2DataTransport?,owner: PlanetChildLocalV2SDKOwner?
     public override func load() {
         DispatchQueue.main.async { [weak self] in guard let self,let host=self.bridge?.viewController else { return }
-            do { let native=try PlanetChildLocalV2SDKOwner.nativeOwner(host:host,invalidated:{ [weak self] value in DispatchQueue.main.async { self?.notifyListeners("invalidated",data:value) } });self.owner=native;self.transport=PlanetChildLocalV2DataTransport(owner:native) }
+            do { let native=try PlanetChildLocalV2SDKOwner.nativeOwner(host:host,mediaScrollView:self.bridge?.webView?.scrollView,invalidated:{ [weak self] value in DispatchQueue.main.async { self?.notifyListeners("invalidated",data:value) } });self.owner=native;self.transport=PlanetChildLocalV2DataTransport(owner:native) }
             catch { self.owner=nil;self.transport=nil }
         }
     }
@@ -31,6 +31,9 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc public func search(_ call: CAPPluginCall) { invoke("search",call) }
     @objc public func readCollection(_ call: CAPPluginCall) { invoke("readCollection",call) }
     @objc public func writeCollection(_ call: CAPPluginCall) { invoke("writeCollection",call) }
+    @objc public func listMedia(_ call: CAPPluginCall) { invoke("listMedia",call) }
+    @objc public func presentMedia(_ call: CAPPluginCall) { invoke("presentMedia",call) }
+    @objc public func releaseMedia(_ call: CAPPluginCall) { invoke("releaseMedia",call) }
     public override func shouldOverrideLoad(_ navigationAction: WKNavigationAction) -> NSNumber? {
         if navigationAction.targetFrame?.isMainFrame != false { owner?.routeWillChange() };return nil
     }

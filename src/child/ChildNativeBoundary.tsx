@@ -1,3 +1,4 @@
+import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { ChildNativeAppController, ChildNativeAppSnapshot, ChildNativeCollection,
   ChildNativeCollectionValue, ChildNativeEntity, ChildNativeAction } from "./childNativeAppBridge";
@@ -170,6 +171,8 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   async function open(ref: ChildEntityReference, back = false) {
     const original = context.current, attempt = ++sequence.current;
     setLoading(true); setCollection(null); setSaved(null); setSavedRows([]); setSearchResults(null);
+    if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) { setCurrent(null); setLoading(false); } return; }
+    if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     const row = await resolve(ref);
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     if (row) { if (!back && current) setHistory(previous => [...previous.slice(-31), current.reference]); setCurrent(row); }
@@ -198,6 +201,7 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   async function search() {
     const original = context.current, attempt = ++sequence.current;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
+    if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
     const result = await controller.search(query);
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     setSearchResults(result); setLoading(false);
@@ -205,6 +209,7 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   async function showCollection(name: ChildNativeCollection) {
     const original = context.current, attempt = ++sequence.current;
     setCollection(name); setSaved(null); setSavedRows([]); setSearchResults(null); setLoading(true);
+    if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
     const value = await controller.readCollection(name), rows: ChildNativeEntity[] = [];
     if (value) for (const ref of value.references) {
       const row = await controller.readEntity(ref); if (!row) break;
@@ -262,7 +267,9 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
         <h2>{copy.search}</h2>{!searchResults.length && <p>{copy.noResults}</p>}
         <ul>{searchResults.map(row => <li key={row.reference.id}><button type="button" onClick={() => { void open(row.reference); }}>{row.payload.title}</button></li>)}</ul>
       </> : current ? <article data-child-native-entity={current.reference.kind + "/" + current.reference.id}>
-        <h2>{current.payload.title}</h2><p className="child-native-text">{current.payload.text}</p>
+        <h2>{current.payload.title}</h2>
+        <ChildNativeMediaView key={c.token + "/" + current.reference.kind + "/" + current.reference.id}
+          controller={controller} owner={current.reference} contextToken={c.token} language={language} /><p className="child-native-text">{current.payload.text}</p>
         <ul>{current.payload.references.map(ref => <li key={ref.kind + "/" + ref.id}>
           {ref.kind === "favorite" || ref.kind === "offline-package" ? <button type="button" onClick={() => { void save(ref); }}>{copy.add}</button>
             : <ChildNativeReferenceButton controller={controller} reference={ref} onOpen={() => { void open(ref); }} />}

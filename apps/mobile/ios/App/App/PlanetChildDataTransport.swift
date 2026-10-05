@@ -333,13 +333,14 @@ final class PlanetChildDataTransport {
  * parsed dictionaries never supply PIN, clock, profile UID or package authority. */
 enum PlanetChildLocalV2Wire {
     enum Failure: Error { case invalid }
-    static let methods = Set(["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection"])
+    static let methods = Set(["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia"])
     static let gateActions = Set(["exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store","initiate-purchase","restore-purchases","open-external","share","account-change","export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial"])
     static let actions = gateActions.union(["first-install","enroll-pin","replace-pin","recover-pin","create-profile","enter-child"])
     static let collections = Set(["favorites","recent","offline"])
     struct Request {
         let method: String, id: String, token: String?, action: String?, target: Data?
         let reference: [String:Any]?, query: String?, collection: String?, expectedRevision: UInt64?, references: [[String:Any]]?
+        let mediaOwner: [String:Any]?,assetId: String?,mediaLayout: PlanetChildLocalV2MediaLayout?,presentationToken: String?
     }
     static func require(_ condition: Bool) throws { if !condition { throw Failure.invalid } }
     static func hex(_ value: Any?, count: Int) throws -> String { guard let value=value as? String,value.utf8.count==count,value.range(of:"\\A[a-f0-9]+\\z",options:.regularExpression) != nil else { throw Failure.invalid };return value }
@@ -354,7 +355,7 @@ enum PlanetChildLocalV2Wire {
     static func decode(_ method: String,_ input: [String:Any]) throws -> Request {
         try require(methods.contains(method));var keys=Set(["version","requestId"])
         if method != "bootstrap" { keys.insert("contextToken") }
-        switch method { case "perform":keys.formUnion(["action","target"]);case "readEntity":keys.insert("reference");case "search":keys.insert("query");case "readCollection":keys.insert("collection");case "writeCollection":keys.formUnion(["collection","expectedRevision","references"]);default:break }
+        switch method { case "perform":keys.formUnion(["action","target"]);case "readEntity":keys.insert("reference");case "search":keys.insert("query");case "readCollection":keys.insert("collection");case "writeCollection":keys.formUnion(["collection","expectedRevision","references"]);case "listMedia":keys.insert("owner");case "presentMedia":keys.formUnion(["owner","assetId","layout"]);case "releaseMedia":keys.insert("presentationToken");default:break }
         try require(Set(input.keys)==keys);_ = try integer(input["version"],minimum:2,maximum:2);let id=try hex(input["requestId"],count:32)
         let token: String?;if method=="bootstrap" || (method=="perform" || method=="retire") && input["contextToken"] is NSNull { token=nil } else { token=try hex(input["contextToken"],count:32) }
         var action: String?,target: Data?,reference: [String:Any]?,query: String?,collection: String?,revision: UInt64?,references: [[String:Any]]?
@@ -368,7 +369,11 @@ enum PlanetChildLocalV2Wire {
         if method=="search" { guard let text=input["query"] as? String,text.utf16.count<=120,text.range(of:"[\\x00-\\x1f\\x7f]",options:.regularExpression)==nil else { throw Failure.invalid };query=text }
         if method=="readCollection" || method=="writeCollection" { guard let name=input["collection"] as? String,collections.contains(name) else { throw Failure.invalid };collection=name }
         if method=="writeCollection" { revision=try integer(input["expectedRevision"]);guard let values=input["references"] as? [Any],values.count<=64 else { throw Failure.invalid };references=try values.map(ref);let identities=references!.map { ($0["kind"] as! String)+"/"+($0["id"] as! String) };try require(Set(identities).count==identities.count) }
-        return Request(method:method,id:id,token:token,action:action,target:target,reference:reference,query:query,collection:collection,expectedRevision:revision,references:references)
+        var mediaOwner: [String:Any]?,assetId: String?,layout: PlanetChildLocalV2MediaLayout?,presentationToken: String?
+        if method=="listMedia" || method=="presentMedia" { mediaOwner=try ref(input["owner"]) }
+        if method=="presentMedia" { guard let asset=input["assetId"] as? String,asset.range(of:"\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z",options:.regularExpression) != nil else { throw Failure.invalid };assetId=asset;layout=try PlanetChildLocalV2MediaLayout.decode(input["layout"]) }
+        if method=="releaseMedia",!(input["presentationToken"] is NSNull) { presentationToken=try hex(input["presentationToken"],count:32) }
+        return Request(method:method,id:id,token:token,action:action,target:target,reference:reference,query:query,collection:collection,expectedRevision:revision,references:references,mediaOwner:mediaOwner,assetId:assetId,mediaLayout:layout,presentationToken:presentationToken)
     }
 }
 
@@ -389,7 +394,7 @@ extension PlanetChildLocalV2Wire {
     static func refusal(_ method: String,_ input: [String:Any],reason: String,generation: UInt64=0) -> [String:Any] {
         let id=(try? hex(input["requestId"],count:32)) ?? String(repeating:"0",count:32),token=(try? hex(input["contextToken"],count:32))
         if method=="retire" { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token as Any? ?? NSNull()] }
-        if ["readEntity","search","readCollection","writeCollection"].contains(method) { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token ?? String(repeating:"0",count:32),"generation":generation,"value":NSNull()] }
+        if ["readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia"].contains(method) { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token ?? String(repeating:"0",count:32),"generation":generation,"value":NSNull()] }
         return ["version":2,"requestId":id,"status":"unavailable","reason":reason,"context":NSNull(),"profiles":[]]
     }
 }

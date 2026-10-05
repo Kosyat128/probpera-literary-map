@@ -1,6 +1,9 @@
 import { childDataArray, childRecord, decodeChildEntityPayload, decodeChildEntityReference,
   type ChildEntityPayload, type ChildEntityReference } from "./childPackage";
 import { PARENT_GATE_ACTIONS, type ParentGateAction } from "./parentGate";
+import { decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildNativeMediaLayout,
+  decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, childNativeMediaOwner, childNativeMediaToken,
+  type ChildNativeMediaController } from "./childNativeMedia";
 import localPolicy from "./childNativeLocalV2Policy.json";
 import type { PlatformServices, PreferenceStore } from "../platform/ports";
 
@@ -15,6 +18,9 @@ export interface ChildNativeAppPlugin {
   search(request: unknown): Promise<unknown>;
   readCollection(request: unknown): Promise<unknown>;
   writeCollection(request: unknown): Promise<unknown>;
+  listMedia?(request: unknown): Promise<unknown>;
+  presentMedia?(request: unknown): Promise<unknown>;
+  releaseMedia?(request: unknown): Promise<unknown>;
   addListener(event: "invalidated", listener: (value: unknown) => void): Promise<{ remove(): Promise<void> }>;
 }
 export const CHILD_NATIVE_LOCAL_POLICY_VERSION = localPolicy.version;
@@ -46,6 +52,7 @@ export interface ChildNativeCollectionValue {
 }
 export type ChildNativeAction = ParentGateAction | "first-install" | "enroll-pin" | "replace-pin" | "recover-pin" | "create-profile" | "enter-child";
 export interface ChildNativeAppController {
+  readonly media?: ChildNativeMediaController;
   getSnapshot(): ChildNativeAppSnapshot;
   subscribe(listener: () => void): () => void;
   /** A concrete host unmounts old providers/routes synchronously. This has no
@@ -196,6 +203,29 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
   let nativeEvents: { remove(): Promise<void> } | null = null;
   let retirement: Promise<boolean> | null = null, dataTail: Promise<void> = Promise.resolve();
   const listeners = new Set<() => void>(), deliveries = new Set<Promise<void>>();
+  let mediaTouched = false, mediaRetirement: Promise<boolean> | null = null;
+  /** Null-token release is REVOCATION ONLY. Native entry conceals/increments
+   * its own presentation epoch before enqueue, so a late decoder cannot paint
+   * after the synchronous host seal. Success still requires actual native joins. */
+  function revokeMedia(c: ChildNativeContext | null): Promise<boolean> {
+    if (mediaRetirement) return mediaRetirement;
+    if (!c || c.mode !== "child" || !mediaTouched || typeof options.plugin?.releaseMedia !== "function") return Promise.resolve(true);
+    const work = (async () => {
+      try {
+        const original = request(), raw = await invoke("releaseMedia", { ...original, contextToken: c.token, presentationToken: null });
+        const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
+        const ok = !!row && row.version === 2 && row.requestId === original.requestId && row.status === "ok"
+          && row.contextToken === c.token && row.generation === c.generation && decodeChildNativeMediaRetirement(row.value, null);
+        if (ok) mediaTouched = false;
+        return ok;
+      } catch { return false; }
+    })();
+    mediaRetirement = work;
+    // Preserve an unsuccessful native revocation until the original context has
+    // actually retired. A held decoder must not erase that result before perform.
+    void work.then(ok => { if (ok && mediaRetirement === work) mediaRetirement = null; });
+    return work;
+  }
   function clearTimer() { if (timer !== null) clearTimeout(timer); timer = null; }
   function publish(next: ChildNativeAppSnapshot) {
     snapshot = next;
@@ -204,6 +234,8 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     }
   }
   function seal(reason: ChildNativeReason | null, phase: ChildNativeAppSnapshot["phase"] = "sealed") {
+    const outgoing = snapshot.context;
+    void revokeMedia(outgoing);
     ++epoch; expiry = 0; clearTimer();
     snapshot = Object.freeze({ phase, status: "unavailable", reason, context: null, profiles: emptyProfiles });
     // Host barrier has no authorization return. Failure keeps native startup closed.
@@ -218,7 +250,8 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     const plugin = options.plugin; if (!plugin || typeof plugin[method] !== "function") throw new Error("Native child unavailable");
     let settled!: () => void; const completion = new Promise<void>(resolve => { settled = resolve; });
     deliveries.add(completion);
-    const raw = Promise.resolve().then(() => plugin[method](request));
+    const call = plugin[method];
+    const raw = Promise.resolve().then(() => call!.call(plugin, request));
     void raw.then(() => { settled(); deliveries.delete(completion); }, () => { settled(); deliveries.delete(completion); });
     return new Promise((resolve, reject) => {
       const deadline = setTimeout(() => { uncertain = true; reject(new Error("Native child unavailable")); }, timeout);
@@ -260,10 +293,12 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     if (retirement) return retirement;
     const work = (async () => {
       try {
+        if (mediaRetirement) await mediaRetirement;
         const original = request(), raw = await invoke("retire", { ...original, contextToken: c?.token ?? null });
         const row = childRecord(raw, ["version", "requestId", "status", "contextToken"]);
         if (!row || row.version !== 2 || row.requestId !== original.requestId || row.status !== "retired"
           || row.contextToken !== (c?.token ?? null) || !await joinedDeliveries()) return false;
+        mediaTouched = false; mediaRetirement = null;
         return true;
       } catch { return false; }
     })();
@@ -328,6 +363,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     try {
       if (uncertain) { await retire(originalContext); return false; }
       await dataTail;
+      if (mediaRetirement && !await mediaRetirement) { await retire(originalContext); return false; }
       if (retirement && !await retirement) throw new Error("Native retirement unavailable");
       const original = request(), dispatched = now();
       // Native perform independently captures, invalidates and joins the real
@@ -352,7 +388,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection",
+  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -375,6 +411,36 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     return work;
   }
   return Object.freeze({
+    media: Object.freeze({
+      list(owner) {
+        const copied = childNativeMediaOwner(owner); if (!copied || typeof options.plugin?.listMedia !== "function") return Promise.resolve(null);
+        return data("listMedia", { owner: copied }, raw => decodeChildNativeMediaAssets(raw, copied));
+      },
+      async present(asset, layout) {
+        const copied = decodeChildNativeMediaAsset(asset), geometry = decodeChildNativeMediaLayout(layout);
+        if (!copied || !geometry || mediaRetirement || typeof options.plugin?.presentMedia !== "function") return null;
+        const c = snapshot.context; if (!c || snapshot.status !== "child") return null;
+        mediaTouched = true;
+        return data("presentMedia", { owner: copied.owner, assetId: copied.assetId, layout: geometry },
+          raw => decodeChildNativeMediaPresentation(raw, copied.assetId));
+      },
+      async release(presentationToken) {
+        if (presentationToken === null) return this.releaseAll();
+        if (!childNativeMediaToken(presentationToken) || typeof options.plugin?.releaseMedia !== "function") return false;
+        const value = await data("releaseMedia", { presentationToken }, raw =>
+          decodeChildNativeMediaRetirement(raw, presentationToken) ? true : null);
+        if (value) mediaTouched = false;
+        return value === true;
+      },
+      async releaseAll() {
+        const c = snapshot.context; if (!c || snapshot.status !== "child") return !mediaTouched;
+        const ok = await revokeMedia(c);
+        await dataTail;
+
+        if (!ok && snapshot.context === c) { seal("unavailable"); await retire(c); }
+        return ok && snapshot.context === c;
+      },
+    } satisfies ChildNativeMediaController),
     getSnapshot: () => snapshot,
     subscribe(listener: () => void) { if (disposed) return () => undefined; listeners.add(listener); return () => { listeners.delete(listener); }; },
     attachPresentationBarrier(clear: () => void) {

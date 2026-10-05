@@ -220,13 +220,13 @@ final class PlanetChildDataTransport {
      * admission, PIN proof, clock samples, package pins, UID or write receipts. */
     static final class V2Request {
         final String method,id,contextToken,action,collection,query;
-        final Map<String,Object> target,reference;
+        final Map<String,Object> target,reference,owner,layout;final String assetId,presentationToken;
         final List<Map<String,Object>> references;
         final long expectedRevision;
         private V2Request(String method,String id,String token,String action,Map<String,Object> target,
-            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs) {
+            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken) {
             this.method=method;this.id=id;contextToken=token;this.action=action;this.target=target;this.reference=reference;
-            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;
+            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;
         }
     }
     private static long v2Integer(Object value,long min,long max) throws Exception {
@@ -261,13 +261,13 @@ final class PlanetChildDataTransport {
     @SuppressWarnings("unchecked")
     static V2Request decodeV2(String method,Map<String,?> value) throws Exception {
         String id=correlation(value==null?null:value.get("requestId")),token=null,action=null,collection=null,query=null;
-        Map<String,Object> target=null,reference=null;List<Map<String,Object>> references=null;long revision=0;
+        Map<String,Object> target=null,reference=null,owner=null,layout=null;String assetId=null,presentationToken=null;List<Map<String,Object>> references=null;long revision=0;
         Map<String,Object> row;
         if("bootstrap".equals(method))row=record(value,"version","requestId");
         else if("retire".equals(method)||"readContext".equals(method))row=record(value,"version","requestId","contextToken");
         else if("perform".equals(method))row=record(value,"version","requestId","contextToken","action","target");
         else if("readEntity".equals(method))row=record(value,"version","requestId","contextToken","reference");
-        else if("search".equals(method))row=record(value,"version","requestId","contextToken","query");
+        else if("search".equals(method))row=record(value,"version","requestId","contextToken","query");else if("listMedia".equals(method))row=record(value,"version","requestId","contextToken","owner");else if("presentMedia".equals(method))row=record(value,"version","requestId","contextToken","owner","assetId","layout");else if("releaseMedia".equals(method))row=record(value,"version","requestId","contextToken","presentationToken");
         else if("readCollection".equals(method))row=record(value,"version","requestId","contextToken","collection");
         else if("writeCollection".equals(method))row=record(value,"version","requestId","contextToken","collection","expectedRevision","references");
         else throw new PlanetChildDataStore.Unavailable();
@@ -292,7 +292,12 @@ final class PlanetChildDataTransport {
                 references=Collections.unmodifiableList(copied);
             }
         }
-        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references);
+        if("listMedia".equals(method)||"presentMedia".equals(method))owner=v2Reference(row.get("owner"));if("presentMedia".equals(method)){assetId=string(row.get("assetId"),96);require(assetId.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));layout=v2MediaLayout(row.get("layout"));}if("releaseMedia".equals(method)&&row.get("presentationToken")!=null)presentationToken=correlation(row.get("presentationToken"));return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken);
+    }
+    private static Map<String,Object> v2MediaLayout(Object value)throws Exception {
+        Map<String,Object> raw=record(value,"x","y","width","height","viewportWidth","viewportHeight"),out=new LinkedHashMap<>();
+        for(String name:Arrays.asList("x","y","width","height","viewportWidth","viewportHeight"))out.put(name,v2Integer(raw.get(name),name.equals("x")||name.equals("y")?0:1,8192));
+        require((Long)out.get("x")+(Long)out.get("width")<=(Long)out.get("viewportWidth")&&(Long)out.get("y")+(Long)out.get("height")<=(Long)out.get("viewportHeight"));return immutable(out);
     }
     /** Capacitor's already-decoded own dictionaries are copied before enqueue.
      * No JSONObject getter/coercion may run during the actual native operation. */
