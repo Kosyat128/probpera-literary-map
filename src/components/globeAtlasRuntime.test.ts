@@ -66,6 +66,7 @@ async function createSourceLeaseFixture(
       save: vi.fn(), restore: () => undefined,
       beginPath: () => undefined, moveTo: () => undefined, lineTo: () => undefined,
       stroke: () => undefined, setLineDash: () => undefined,
+      arc: () => undefined, fill: () => undefined, bezierCurveTo: () => undefined,
     };
     getContext() { return this.context; }
   }
@@ -411,7 +412,7 @@ describe("globe atlas flag highlight settlement", () => {
       fixture.atlas.updateHighlight("russia");
       await expectSettled(fixture, fixture.atlas.highlightTexture.version);
       expect(fixture.requests).toHaveLength(initialRequests + 1);
-      expect(fixture.requests.at(-1)).toMatch(/country-flags\/ru\.svg$/);
+      expect(fixture.requests[fixture.requests.length - 1]).toMatch(/country-flags\/ru\.svg$/);
     } finally { fixture.atlas.dispose(); }
   });
 
@@ -425,7 +426,7 @@ describe("globe atlas flag highlight settlement", () => {
       const versionBeforeImage = fixture.atlas.highlightTexture.version;
       await expectSettled(fixture, versionBeforeImage + 1);
       expect(fixture.requests).toHaveLength(initialRequests + 1);
-      expect(fixture.requests.at(-1)).toMatch(/country-flags\/ru\.svg$/);
+      expect(fixture.requests[fixture.requests.length - 1]).toMatch(/country-flags\/ru\.svg$/);
     } finally { fixture.atlas.dispose(); }
   });
 });
