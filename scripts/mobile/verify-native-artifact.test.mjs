@@ -111,7 +111,7 @@ describe("native child package artifact provenance", () => {
     const f = await fixture();await f.write("child-native/packages/" + "a".repeat(64) + ".json", "{}");await f.refresh();expect(codes(await f.audit())).toContain("CHILD_NATIVE_PROVENANCE");
     await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;delete f.artifact.childNativeMediaAssets;
     f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
-    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => module !== CHILD_NATIVE_PIN_SOURCE);
+    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => ![CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_PIN_SOURCE].includes(module));
     await f.write("module-ownership.json", json(f.owned));await f.refresh();expect((await f.audit({ checkSourceFreshness: false })).findings).toEqual([]);expect(codes(await f.audit())).toContain("SOURCE_INPUT_SET");
   });
 });

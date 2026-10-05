@@ -182,8 +182,8 @@ describe("LOCAL2 media original native delivery barrier", () => {
   });
   it("dispatches nullable revocation immediately during a held decoder and waits its native ACK before perform", async () => {
     const f = fixture(); await f.controller.start(); const decoded = deferred<unknown>(), revoked = deferred<unknown>();
-    f.plugin.presentMedia.mockImplementationOnce(async r => { f.order.push("present"); return decoded.promise; });
-    f.plugin.releaseMedia.mockImplementationOnce(async r => { f.order.push("release"); return revoked.promise; });
+    f.plugin.presentMedia.mockImplementationOnce(async () => { f.order.push("present"); return decoded.promise; });
+    f.plugin.releaseMedia.mockImplementationOnce(async () => { f.order.push("release"); return revoked.promise; });
     const present = f.controller.media!.present(asset(), layout); await settle(); expect(f.plugin.presentMedia).toHaveBeenCalledOnce();
     const action = f.controller.perform("exit-child-mode"); expect(f.controller.getSnapshot().context).toBeNull(); await settle();
     expect(f.plugin.releaseMedia).toHaveBeenCalledOnce(); expect(f.plugin.releaseMedia.mock.calls[0][0]).toMatchObject({ contextToken: TOKEN, presentationToken: null });
