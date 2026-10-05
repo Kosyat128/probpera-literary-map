@@ -1,0 +1,1574 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-native-media-evidence",
+  "status": "IN_PROGRESS",
+  "generatedAt": "2026-10-05T01:24:41.514Z",
+  "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+  "sourceFingerprint": "4699beed06eaea9f7fd02e8a3f547fff47636847ea86e4708a4944d67a14764d",
+  "sourceRows": 1820,
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-browser-fix-a5b\\checkpoint.json",
+    "sha256": "86e9f821451f163402ba1dc7eb2231e91fbe1561e3ad13796a5c098f1e1a2c14",
+    "bytes": 291516
+  },
+  "sourceCommitChain": [
+    {
+      "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+      "sourceFingerprint": "6043a2fa7e9bd4c8c8ebd41b8e8d028fe31d09f603b174dce45d254d897d753f",
+      "checkpoint": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-commit-a2\\checkpoint.json",
+        "sha256": "358f1d72cbeaa1e7d5e4fcc8f85cddd91aa1398e4aa5db1c603345366426e37d",
+        "bytes": 325983
+      }
+    },
+    {
+      "sourceCommit": "5af896d60e568a45741699c04147d80b221940fc",
+      "sourceFingerprint": "024f678c0ecfcd063ad7af5164db425528a360b3a13dbe6677a4b998dc807b25",
+      "checkpoint": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-check-fix-a3\\checkpoint.json",
+        "sha256": "e1e883cb919f68a179137cbf60a8e8c08777cb376e89a8e4596b62b907874a12",
+        "bytes": 292803
+      }
+    },
+    {
+      "sourceCommit": "6c3925507a47fbf53cfc0c4f4b65d91dc71e9928",
+      "sourceFingerprint": "39de84617c8ed3c3f0bfaeb28282dc225bfcb45fec9536e2746559d58ead5242",
+      "checkpoint": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-browser-fix-a4\\checkpoint.json",
+        "sha256": "963b2b0c5a187309486f4213dc72b56092671a1154a184b5e552d2b7317f65db",
+        "bytes": 291499
+      }
+    },
+    {
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "4699beed06eaea9f7fd02e8a3f547fff47636847ea86e4708a4944d67a14764d",
+      "checkpoint": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-browser-fix-a5b\\checkpoint.json",
+        "sha256": "86e9f821451f163402ba1dc7eb2231e91fbe1561e3ad13796a5c098f1e1a2c14",
+        "bytes": 291516
+      }
+    }
+  ],
+  "validation": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-final\\aggregate.json",
+    "sha256": "5789a6ac8ecfc4476a2a279b40e214009a032e1991baba82fc834af24e337db9",
+    "bytes": 79384
+  },
+  "originalAuthorFreeze": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-media\\finalmanifest.json",
+    "sha256": "c0f685f1e00872d0491a5c6b3d6528b49bf40241547489181d2e589ec63e2036",
+    "bytes": 23114
+  },
+  "originalAuthorInput": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\integration-input.json",
+    "sha256": "b9fbadd09dc2b21b53aa4b1fe3e481127eac93aa22db5c70577fd7dfa1bcbf64",
+    "bytes": 17326
+  },
+  "sourcePaths": [
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildMediaRuntimeTest.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataTransport.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildMedia.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPlugin.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+    "apps/mobile/ios/App/App/PlanetChildMedia.swift",
+    "apps/mobile/ios/App/App/PlanetChildPlugin.swift",
+    "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildMediaRuntimeTests.swift",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/native-child-media-assets.mjs",
+    "scripts/mobile/native-child-media-assets.test.mjs",
+    "scripts/mobile/native-install-runtime.mjs",
+    "scripts/mobile/native-install-runtime.test.mjs",
+    "scripts/mobile/verify-native-artifact.mjs",
+    "scripts/mobile/verify-native-artifact.test.mjs",
+    "src/child/ChildNativeBoundary.css",
+    "src/child/ChildNativeBoundary.tsx",
+    "src/child/ChildNativeMediaView.test.tsx",
+    "src/child/ChildNativeMediaView.tsx",
+    "src/child/childNativeAppBridge.ts",
+    "src/child/childNativeMedia.test.ts",
+    "src/child/childNativeMedia.ts",
+    "src/child/childNativeMediaReleasePins.json"
+  ],
+  "changes": [
+    "Native LOCAL2 bundled-media manifest emission, exact native review pins, independent binary inventory verification and native-owned media admission/read/presentation are implemented. Empty authentic pins continue to deny production materials.",
+    "Android/iOS private permit, profile/policy/package/deadline, media worker/recipient ownership and bounded lifecycle are connected through existing plugins and App/controller/UI; original V1 and encrypted inactive namespaces are preserved.",
+    "Astra corrected native ownership/cleanup/audio, controller revocation and mobile visible-slot geometry; equal RU/EN, canonical globe and existing Booky remain."
+  ],
+  "review": {
+    "finalReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-final\\review.json",
+      "sha256": "f6a820801937199688d688a121c0ffa2177348029086fe2cecd4fa6e81a522a6",
+      "bytes": 14832
+    },
+    "finalInput": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-final\\integration-input.json",
+      "sha256": "145af45d21ae3decf3b71c465e108a44beee47f598a2169409f4ec9996c1c897",
+      "bytes": 24052
+    },
+    "initialReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-reviewed-a1\\review.json",
+      "sha256": "d8f89874d9efbe744be2443ccea44e5321c269d66f774cbdfc14a273709339c7",
+      "bytes": 6061
+    },
+    "correctionRefs": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-reviewed-a2\\correction.json",
+        "sha256": "590c27db639890987f08f6bf2b0d820ebc75535773a3f674d029889d83b9d019",
+        "bytes": 1206
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-reviewed-a4\\correction.json",
+        "sha256": "6e1667fe9e7bb09471f287e9f7e87f44b78f4bbca2305362b1b219bdbdcc6011",
+        "bytes": 1521
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-reviewed-a5\\correction.json",
+        "sha256": "6dd42598793756cf0e2db7d1aa3fe4d1ec27dcef4c37cb712672ead67e703a63",
+        "bytes": 1393
+      }
+    ],
+    "semanticScope": "Whole26 coherent emitter/verifier/native compiler/owner/worker/codec/recipient/plugin/App/controller/wire/view stage",
+    "frozenAuthorNotOverwritten": true
+  },
+  "author": {
+    "manifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-media\\finalmanifest.json",
+      "sha256": "c0f685f1e00872d0491a5c6b3d6528b49bf40241547489181d2e589ec63e2036",
+      "bytes": 23114
+    },
+    "input": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\integration-input.json",
+      "sha256": "b9fbadd09dc2b21b53aa4b1fe3e481127eac93aa22db5c70577fd7dfa1bcbf64",
+      "bytes": 17326
+    },
+    "baseline": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\baseline.json",
+      "sha256": "3e58a7665b2ecd3d169761cfb4d1ab53661bb3cc2b970dfdf5a58df828f55c4e",
+      "bytes": 287668
+    },
+    "all26OriginalCandidateBytesUnchanged": true,
+    "failures": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-media\\notes\\author-write-failure-43f470.json",
+        "sha256": "1e058fee2b951f539675a551becacc145e94c3a6531988fbb2c0539a065667df",
+        "bytes": 286,
+        "actualCommandExitCode": 0,
+        "authorWriteSucceeded": false,
+        "correctionToolChunk": "8922b5",
+        "correctiveMetadataToolChunk": "5077d6",
+        "productTestFailure": false,
+        "autoReviewRejection": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-media\\notes\\author-write-failure-0834b2.json",
+        "sha256": "bf23de153bbcb126c797919149735edf66a3035635aec1b705b2c722aff3bdb1",
+        "bytes": 301,
+        "actualCommandExitCode": 1,
+        "authorWriteSucceeded": false,
+        "correctionToolChunk": "f8f1f8",
+        "parentDirectoryMetadataToolChunk": "5536a2",
+        "productTestFailure": false,
+        "autoReviewRejection": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-media\\notes\\author-freeze-collector-failure-a1.json",
+        "sha256": "46f6da4e7592b1e053bb8076c279a06a20d2a0d52a1f49e0149a3c33f16018e5",
+        "bytes": 582,
+        "actualCommandExitCode": 1,
+        "authorWriteAttempted": false,
+        "correctionToolChunk": "90caac",
+        "correctedCommandExitCode": 0,
+        "productTestFailure": false,
+        "autoReviewRejection": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-media\\notes\\author-write-failure-os206.json",
+        "sha256": "f94d9a25f839a5861aef90d6bc229e281193aaa5b6f7831126c5e727e5ff4478",
+        "bytes": 780,
+        "status": "PROCESS_NOT_STARTED",
+        "commandExitCode": null,
+        "osError": 206,
+        "projectWrites": 0,
+        "productChecks": false,
+        "autoReviewRejection": false,
+        "correction": "Bounded compact fixture metadata and whole source manifest chunks finalized only after metadata byte parsing."
+      }
+    ]
+  },
+  "localChecks": {
+    "units": {
+      "status": "PASS_SCOPED_WITH_RETAINED_ORIGINS",
+      "newCaseCount": 48,
+      "passedCaseInstancesIncludingAffectedRegressions": 157,
+      "uniquePassedTitles": 153,
+      "counts": {
+        "emitter": 9,
+        "independentVerifier": 6,
+        "selector": 6,
+        "mediaDTOController": 21,
+        "view": 6
+      },
+      "newGroups": [
+        {
+          "path": "scripts/mobile/native-child-media-assets.test.mjs",
+          "count": 9,
+          "cases": [
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "projects authentic empty media pins without manufacturing review or binary approval",
+              "fullName": "native child fixed media publisher projects authentic empty media pins without manufacturing review or binary approval",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "rejects duplicate escaped pin fields and unknown generated-profile authority",
+              "fullName": "native child fixed media publisher rejects duplicate escaped pin fields and unknown generated-profile authority",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "binds a fixed audience to the original ordered compiled owner text bytes",
+              "fullName": "native child fixed media publisher binds a fixed audience to the original ordered compiled owner text bytes",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "refuses active formats, stale rights, incomplete locale review and caller profile fields",
+              "fullName": "native child fixed media publisher refuses active formats, stale rights, incomplete locale review and caller profile fields",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "requires a separate release-pinned P256 media signature and exact relation closure",
+              "fullName": "native child fixed media publisher requires a separate release-pinned P256 media signature and exact relation closure",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "denies an absent independently reviewed text owner even when media pins exist",
+              "fullName": "native child fixed media publisher denies an absent independently reviewed text owner even when media pins exist",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "writes the source-owned catalog once and refuses replacing an existing output",
+              "fullName": "native child fixed media publisher writes the source-owned catalog once and refuses replacing an existing output",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "rejects nonempty media material in an unselected development audience",
+              "fullName": "native child fixed media publisher rejects nonempty media material in an unselected development audience",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-media-assets.test.mjs",
+              "title": "collects only the independently reviewed owner manifest review and actual static binary source bytes",
+              "fullName": "native child fixed media binary source closure collects only the independently reviewed owner manifest review and actual static binary source bytes",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            }
+          ]
+        },
+        {
+          "path": "scripts/mobile/verify-native-artifact.test.mjs",
+          "count": 6,
+          "cases": [
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+              "title": "reconstructs the exact empty independent media projection from current source pins",
+              "fullName": "native child media artifact provenance reconstructs the exact empty independent media projection from current source pins",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+              "title": "denies forged media approval even after inventory and build identity are rewritten",
+              "fullName": "native child media artifact provenance denies forged media approval even after inventory and build identity are rewritten",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+              "title": "requires the actual media emitter input and exact independent pin source",
+              "fullName": "native child media artifact provenance requires the actual media emitter input and exact independent pin source",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+              "title": "denies extra binaries and paths despite self-consistent artifact digests",
+              "fullName": "native child media artifact provenance denies extra binaries and paths despite self-consistent artifact digests",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+              "title": "denies duplicated output claims and missing media catalog bytes",
+              "fullName": "native child media artifact provenance denies duplicated output claims and missing media catalog bytes",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+              "title": "keeps text pins independent when the media source itself becomes malformed",
+              "fullName": "native child media artifact provenance keeps text pins independent when the media source itself becomes malformed",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-artifact-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+                "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+                "bytes": 2267
+              }
+            }
+          ]
+        },
+        {
+          "path": "scripts/mobile/native-install-runtime.test.mjs",
+          "count": 6,
+          "cases": [
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+              "title": "selects only the ten exact new media methods and preserves the twelve prior App methods",
+              "fullName": "native child media selector selects only the ten exact new media methods and preserves the twelve prior App methods",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-selector-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+                "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+                "bytes": 2191
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+              "title": "requires every exact media start completion and the ten-test terminal summary",
+              "fullName": "native child media selector requires every exact media start completion and the ten-test terminal summary",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-selector-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+                "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+                "bytes": 2191
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+              "title": "rejects wrong classes replayed methods skipped bodies and unmatched media ordinals",
+              "fullName": "native child media selector rejects wrong classes replayed methods skipped bodies and unmatched media ordinals",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-selector-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+                "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+                "bytes": 2191
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+              "title": "binds the one exact new native fixture source without accepting duplicates or absent SHA",
+              "fullName": "native child media selector binds the one exact new native fixture source without accepting duplicates or absent SHA",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-selector-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+                "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+                "bytes": 2191
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+              "title": "admits the exact media command through all three owned offline observations and denies wider selection",
+              "fullName": "native child media selector admits the exact media command through all three owned offline observations and denies wider selection",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-selector-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+                "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+                "bytes": 2191
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+              "title": "rejects mixed selectors iOS or reboot media runs before creating output or dispatching a device",
+              "fullName": "native child media selector rejects mixed selectors iOS or reboot media runs before creating output or dispatching a device",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-selector-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+                "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+                "bytes": 2191
+              }
+            }
+          ]
+        },
+        {
+          "path": "src/child/childNativeMedia.test.ts",
+          "count": 21,
+          "cases": [
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "copies exact image and narration descriptors into immutable data without granting byte access",
+              "fullName": "LOCAL2 native media descriptor projection copies exact image and narration descriptors into immutable data without granting byte access",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "rejects accessor, inherited, hidden and symbol fields without executing caller getters",
+              "fullName": "LOCAL2 native media descriptor projection rejects accessor, inherited, hidden and symbol fields without executing caller getters",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "binds each media role to its exact entity kind and static raster or PCM MIME",
+              "fullName": "LOCAL2 native media descriptor projection binds each media role to its exact entity kind and static raster or PCM MIME",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "requires bounded nonempty captions and narration while image transcript stays null",
+              "fullName": "LOCAL2 native media descriptor projection requires bounded nonempty captions and narration while image transcript stays null",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "accepts only actual text owner references and refuses paths, URLs and changed hashes",
+              "fullName": "LOCAL2 native media descriptor projection accepts only actual text owner references and refuses paths, URLs and changed hashes",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "requires exact owner closure, unique assets and media identities within the 64 row bound",
+              "fullName": "LOCAL2 native media descriptor projection requires exact owner closure, unique assets and media identities within the 64 row bound",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "bounds integral viewport-contained geometry without treating a caller permission as layout",
+              "fullName": "LOCAL2 native media descriptor projection bounds integral viewport-contained geometry without treating a caller permission as layout",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "correlates presentation identity, native remaining lifetime and the exact known refusal",
+              "fullName": "LOCAL2 native media descriptor projection correlates presentation identity, native remaining lifetime and the exact known refusal",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "accepts nullable full-retirement correlation and never a generic cleared or joined flag",
+              "fullName": "LOCAL2 native media descriptor projection accepts nullable full-retirement correlation and never a generic cleared or joined flag",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "keeps an authentic empty media list eligible for text without any presentation or retirement",
+              "fullName": "LOCAL2 media original native delivery barrier keeps an authentic empty media list eligible for text without any presentation or retirement",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "preserves text access when an older plugin has no media methods",
+              "fullName": "LOCAL2 media original native delivery barrier preserves text access when an older plugin has no media methods",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "sends only the current native text owner, asset identity and bounded geometry to presentation",
+              "fullName": "LOCAL2 media original native delivery barrier sends only the current native text owner, asset identity and bounded geometry to presentation",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "refuses invalid media owners, descriptors, geometry and tokens before dispatch",
+              "fullName": "LOCAL2 media original native delivery barrier refuses invalid media owners, descriptors, geometry and tokens before dispatch",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "seals wrong-generation media replies and retires the actual original context",
+              "fullName": "LOCAL2 media original native delivery barrier seals wrong-generation media replies and retires the actual original context",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "dispatches nullable revocation immediately during a held decoder and waits its native ACK before perform",
+              "fullName": "LOCAL2 media original native delivery barrier dispatches nullable revocation immediately during a held decoder and waits its native ACK before perform",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "joins both a concrete pending presentation and nullable native retirement before a new media route",
+              "fullName": "LOCAL2 media original native delivery barrier joins both a concrete pending presentation and nullable native retirement before a new media route",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "keeps an unknown release and retirement closed instead of bootstrapping a successor",
+              "fullName": "LOCAL2 media original native delivery barrier keeps an unknown release and retirement closed instead of bootstrapping a successor",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "expires media with fast nullable revocation and admits a fresh bootstrap only after original retirement",
+              "fullName": "LOCAL2 media original native delivery barrier expires media with fast nullable revocation and admits a fresh bootstrap only after original retirement",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "conceals on background before awaiting media ACK and never publishes an inactive successor",
+              "fullName": "LOCAL2 media original native delivery barrier conceals on background before awaiting media ACK and never publishes an inactive successor",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "coalesces simultaneous full releases but still requires their actual correlated native result",
+              "fullName": "LOCAL2 media original native delivery barrier coalesces simultaneous full releases but still requires their actual correlated native result",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+              "title": "retains a failed revocation while the original decoder is held and never dispatches perform",
+              "fullName": "LOCAL2 media original native delivery barrier retains a failed revocation while the original decoder is held and never dispatches perform",
+              "parameterOccurrence": 1,
+              "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+              "origin": "unit-media-a1",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+                "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+                "bytes": 2143
+              }
+            }
+          ]
+        },
+        {
+          "path": "src/child/ChildNativeMediaView.test.tsx",
+          "count": 6,
+          "cases": [
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+              "title": "renders RU and EN native-owned slots sealed without issuing any render-time RPC",
+              "fullName": "LOCAL2 native media accessible slot renders RU and EN native-owned slots sealed without issuing any render-time RPC",
+              "parameterOccurrence": 1,
+              "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+              "origin": "unit-view-a4",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+                "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+                "bytes": 2101
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+              "title": "exports no DOM media source, byte URL, autonomous playback or second canvas",
+              "fullName": "LOCAL2 native media accessible slot exports no DOM media source, byte URL, autonomous playback or second canvas",
+              "parameterOccurrence": 1,
+              "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+              "origin": "unit-view-a4",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+                "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+                "bytes": 2101
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+              "title": "keeps unrelated owners and native context tokens out of a sealed server frame",
+              "fullName": "LOCAL2 native media accessible slot keeps unrelated owners and native context tokens out of a sealed server frame",
+              "parameterOccurrence": 1,
+              "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+              "origin": "unit-view-a4",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+                "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+                "bytes": 2101
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+              "title": "keeps a host without optional media methods sealed and issues no text or control request",
+              "fullName": "LOCAL2 native media accessible slot keeps a host without optional media methods sealed and issues no text or control request",
+              "parameterOccurrence": 1,
+              "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+              "origin": "unit-view-a4",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+                "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+                "bytes": 2101
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+              "title": "composes with exactly the original calm globe and Booky without a new media renderer",
+              "fullName": "LOCAL2 native media accessible slot composes with exactly the original calm globe and Booky without a new media renderer",
+              "parameterOccurrence": 1,
+              "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+              "origin": "unit-view-a4",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+                "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+                "bytes": 2101
+              }
+            },
+            {
+              "path": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+              "title": "renders neither the media slot nor the globe for blocked child or corrupt ready boundaries",
+              "fullName": "LOCAL2 native media accessible slot renders neither the media slot nor the globe for blocked child or corrupt ready boundaries",
+              "parameterOccurrence": 1,
+              "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+              "origin": "unit-view-a4",
+              "result": {
+                "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+                "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+                "bytes": 2101
+              }
+            }
+          ]
+        }
+      ],
+      "affectedRegressions": {
+        "artifactVerifier": 71,
+        "priorAppControllerBoundary": 27,
+        "priorAppSelector": 11
+      },
+      "results": {
+        "unit-media-a1": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-media-a1\\result.json",
+          "sha256": "714533f1af01c00a9708fb5c11af09bafad6bf8e181990c716eacc1a90c334a2",
+          "bytes": 2143
+        },
+        "unit-bridge-regression-a1": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-bridge-regression-a1\\result.json",
+          "sha256": "20baa430c96a95d7c93434475a6545cc1cabadff24d007bf4622316425ca985f",
+          "bytes": 2182
+        },
+        "unit-selector-a1": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-selector-a1\\result.json",
+          "sha256": "6450ba08e5cb606906bb14b908ae559958a3b48b2221f98aa16443916b08633f",
+          "bytes": 2191
+        },
+        "unit-artifact-a1": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+          "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+          "bytes": 2267
+        },
+        "unit-artifact-a2": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a2\\result.json",
+          "sha256": "1303f89582f815234e2a4677c86e81441b3ebca98d3c8256e19b0dced9bf44f9",
+          "bytes": 2223
+        },
+        "unit-view-a3": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a3\\result.json",
+          "sha256": "80a13cd6edcaf2b815580b04ced6be8eccffac460550bb39074e3cd38f441f70",
+          "bytes": 2100
+        },
+        "unit-view-a4": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-view-a4\\result.json",
+          "sha256": "e8599fabc6b1bcd730af3ed323bdffcd6cfeadf89d67a73380582bd80011c60b",
+          "bytes": 2101
+        }
+      },
+      "originQualification": "Original0ec passed cases retained; two test-only corrections on5af. Production controller/DTO/emitter/verifier/runner unchanged. Current changed view covered by six current4f SSR cases and real browser case. No skipped test relabeled passed; artifact85/86 original failure plus exact failed-one rerun retained."
+    },
+    "typescript": {
+      "status": "PASS",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\tsc-a4\\result.json",
+        "sha256": "fc9407c8218cfea881e5484250a35be52b18df5cd1d47b50e5a69e37cc84a10e",
+        "bytes": 2012
+      },
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "earlierResults": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\tsc-a1\\result.json",
+          "sha256": "52086ae8d36d408214a93bb57a60b8958ce7313444fc71baf7049a8c3ec96d09",
+          "bytes": 2101
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\tsc-a2\\result.json",
+          "sha256": "9d4826afe8725cf6c90df34e635afcb581a28ebbb2b5d3ab6f4996b342602c48",
+          "bytes": 2009
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\tsc-a3\\result.json",
+          "sha256": "e111c25e2ebac171e063f849df6fd8cf0a8dd4291dea20f399e43d67b9cb7991",
+          "bytes": 2011
+        }
+      ]
+    },
+    "browser": {
+      "status": "PASS_THREE_CASES_WITH_EXPLICIT_ORIGINS",
+      "cases": [
+        {
+          "title": "actual host closes a foreign-owner media descriptor before showing its caption",
+          "sourceCommit": "5af896d60e568a45741699c04147d80b221940fc",
+          "attempt": "browser3-a1",
+          "result": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a1\\result.json",
+            "sha256": "c084b9d0d0d917fe1a8ad2fbfc316aee5268cc7a598437f8fabae6d169ab889b",
+            "bytes": 2343
+          },
+          "browserReport": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a1\\browser-output\\browser-report.json",
+            "sha256": "df1fc61c7d8b09cc2fc4f5c9cdc454edfa801e0fa0a3378cbb6618b08f511cee",
+            "bytes": 26961
+          },
+          "qualification": "Synthetic native bridge frontend/lifecycle/geometry only; actual App/controller/adapter/CSS/globe/Booky; no native OS pixel/audio/retirement proof"
+        },
+        {
+          "title": "actual media slot leaves before held decoder and native retirement permit a successor",
+          "sourceCommit": "6c3925507a47fbf53cfc0c4f4b65d91dc71e9928",
+          "attempt": "browser3-a3",
+          "result": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a3\\result.json",
+            "sha256": "7f395ea49a55287ae0858c1c5e505625f073ba27153c13dfbbf8a1164df3e930",
+            "bytes": 2424
+          },
+          "browserReport": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a3\\browser-output\\browser-report.json",
+            "sha256": "6de03be0797380c6e33520eefe2a2799ee830454d57bd92501331c996093f515",
+            "bytes": 19854
+          },
+          "qualification": "Synthetic native bridge frontend/lifecycle/geometry only; actual App/controller/adapter/CSS/globe/Booky; no native OS pixel/audio/retirement proof"
+        },
+        {
+          "title": "actual native media controls and captions stay bilingual with one canonical globe",
+          "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+          "attempt": "browser3-a4",
+          "result": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a4\\result.json",
+            "sha256": "fdf4788ac3dea72bbc3fb0afc59f540dc8f46939c03f09c7f4b18c6bffe512cc",
+            "bytes": 2306
+          },
+          "browserReport": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a4\\browser-output\\browser-report.json",
+            "sha256": "9e3067c65b4dfb9a8f205f47a01ebbb038acf51d1e766df078bac9a73d99e2b4",
+            "bytes": 28454
+          },
+          "qualification": "Synthetic native bridge frontend/lifecycle/geometry only; actual App/controller/adapter/CSS/globe/Booky; no native OS pixel/audio/retirement proof"
+        }
+      ],
+      "currentBilingualCase": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a4\\result.json",
+        "sha256": "fdf4788ac3dea72bbc3fb0afc59f540dc8f46939c03f09c7f4b18c6bffe512cc",
+        "bytes": 2306
+      },
+      "captureReview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-final\\capture-review.json",
+        "sha256": "b9024ab987d4b0ea065a66d559729f653259c141c215bd95462446979c10536f",
+        "bytes": 3332
+      },
+      "captures": [
+        {
+          "locale": "ru",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a4\\browser-output\\native-media-actual-native-90371-al-with-one-canonical-globe\\native-media-ru-390.png",
+          "sha256": "8c660afbcb5e14f1baef31e893732aab2c7a466e1e7461dd3179ee5f421fc448",
+          "bytes": 228254
+        },
+        {
+          "locale": "en",
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a4\\browser-output\\native-media-actual-native-90371-al-with-one-canonical-globe\\native-media-en-390.png",
+          "sha256": "dc2bdc902c2e4a1567d79cf02c76f2af98ea26a833437dad0610b4922bfd5682",
+          "bytes": 214125
+        }
+      ],
+      "originalAndRetryResults": [
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a1\\result.json",
+          "sha256": "c084b9d0d0d917fe1a8ad2fbfc316aee5268cc7a598437f8fabae6d169ab889b",
+          "bytes": 2343
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a3\\result.json",
+          "sha256": "7f395ea49a55287ae0858c1c5e505625f073ba27153c13dfbbf8a1164df3e930",
+          "bytes": 2424
+        },
+        {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a4\\result.json",
+          "sha256": "fdf4788ac3dea72bbc3fb0afc59f540dc8f46939c03f09c7f4b18c6bffe512cc",
+          "bytes": 2306
+        }
+      ],
+      "qualification": "Third foreign-owner case passed5af; held-decoder case passed6c; current4f RU/EN visual/geometry/scroll case passed. No installed native OS or native retirement authority from fixtures."
+    },
+    "jvm": {
+      "status": "PASS_HOST_JVM_CONTAINER_AND_WIRE_ONLY",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-jvm8\\run-eb9e68e7-f69c-4891-ac7f-3af57e752bf6\\result.json",
+        "sha256": "d428cc40e02f5dd81628ede22ef9a21df676b4f8f5f402076456b2c243640897",
+        "bytes": 28673
+      },
+      "compileOrigin": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-jvm8\\run-eb9e68e7-f69c-4891-ac7f-3af57e752bf6\\compile-origin.json",
+        "sha256": "3b6df5672f19e915fe992d92066a3a362f6df64287647729c4c36f2fd7a608e9",
+        "bytes": 409707
+      },
+      "sourceCommit": "5af896d60e568a45741699c04147d80b221940fc",
+      "cases": 8,
+      "productionClasses": 246,
+      "instrumentationClasses": 24,
+      "cachedDependencies": 50,
+      "currentNativeSourceAndClassBytesExact": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-final-native-code-inventory.json",
+      "qualification": "Actual production container and wire mechanics only; no native graphics/audio decode, keychain, UI, worker retirement or device execution."
+    },
+    "android": {
+      "status": "BUILD_AND_ARTIFACT_VERIFICATION_PASS",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\android-prepare-a4\\result.json",
+        "sha256": "a67e43d1495be77ad19422c8cf283e9e593661a0e34fad858794c72ea6c33289",
+        "bytes": 2058
+      },
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "preparation": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\preparation.json",
+        "sha256": "869a081135f78b3185d42486d0dbece8d01bba96ead178a3e5fc6fb55692b0ee",
+        "bytes": 310162
+      },
+      "outputs": [
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\native-artifact.json",
+          "sha256": "a976f9b19e486548254c556832aed5fe9682c575ce55777af68b01124ea6000b",
+          "bytes": 721180
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\app-dev-debug.apk",
+          "sha256": "0bef2faf9233b2434eddeee7d1eda82e6fae1f06234bbbb257e1920de68112ea",
+          "bytes": 70260487
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\app-dev-debug-androidTest.apk",
+          "sha256": "64b8bebd07ecb4bac9edbeb6230022a8a202b5fbc67be34500174c2a3206de27",
+          "bytes": 730419
+        }
+      ],
+      "binarySourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "compiledCodeInspection": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-final-native-code-inventory.json",
+        "sha256": "314fbb0c77c1e8d5a00fa30609c5b876e1b4d518e266023a39c7119626c31200",
+        "bytes": 87299
+      },
+      "newFixtureMethods": 10,
+      "newFixtureStatus": "COMPILED_ONLY_NOT_RUN",
+      "previousPreparation": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\android-prepare-a2\\result.json",
+        "sha256": "4d33a943514db339dfd4b82b9e020046cdde7405ce09aae388e7abac8f0cb58c",
+        "bytes": 2055
+      },
+      "qualification": "Current web bundle and main/test APK. Actual media classes and three code-bearing plugin methods verified in APK DEX;10 instrumentation method bodies compiled, not executed. All246main/24test class bytes equal original5af JVM origin."
+    },
+    "swift": {
+      "newFixtureMethods": 14,
+      "status": "NOT_COMPILED_NOT_RUN",
+      "reason": "Windows host; no owned Mac/device"
+    }
+  },
+  "preservedFailedAttempts": [
+    {
+      "name": "metadata finalization unique-title guard",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\finalization-a1-failure.json",
+        "sha256": "204724a9983eff4c54a350a94741ad16c711079de34e95207546c2a6b49f7acd",
+        "bytes": 1386
+      },
+      "actualProcessExitCode": 1,
+      "qualification": "METADATA_ONLY; no source/product/aggregate writes; actual case occurrence counting correction"
+    },
+    {
+      "name": "unit-artifact-a1",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\unit-artifact-a1\\result.json",
+        "sha256": "0a9d73de287cc16374e261f3ce3827d9d2485edbd041677d434a4a289bdb7c22",
+        "bytes": 2267
+      },
+      "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+      "actualProcessExitCode": 1,
+      "qualification": "ACTUAL_UNIT_ASSERTION_FAILURE"
+    },
+    {
+      "name": "tsc-a1",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\tsc-a1\\result.json",
+        "sha256": "52086ae8d36d408214a93bb57a60b8958ce7313444fc71baf7049a8c3ec96d09",
+        "bytes": 2101
+      },
+      "sourceCommit": "0ec6ea569baa09c85329c2268815faeb3f67f163",
+      "actualProcessExitCode": 2,
+      "qualification": "ACTUAL_TYPESCRIPT_FAILURE"
+    },
+    {
+      "name": "browser3-a1",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a1\\result.json",
+        "sha256": "c084b9d0d0d917fe1a8ad2fbfc316aee5268cc7a598437f8fabae6d169ab889b",
+        "bytes": 2343
+      },
+      "sourceCommit": "5af896d60e568a45741699c04147d80b221940fc",
+      "actualProcessExitCode": 1,
+      "qualification": "ACTUAL_BROWSER_ASSERTION_FAILURE"
+    },
+    {
+      "name": "browser3-a3",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-validation\\browser3-a3\\result.json",
+        "sha256": "7f395ea49a55287ae0858c1c5e505625f073ba27153c13dfbbf8a1164df3e930",
+        "bytes": 2424
+      },
+      "sourceCommit": "6c3925507a47fbf53cfc0c4f4b65d91dc71e9928",
+      "actualProcessExitCode": 1,
+      "qualification": "ACTUAL_BROWSER_ASSERTION_FAILURE"
+    },
+    {
+      "name": "initial integration whitespace",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-commit\\failure.json",
+        "sha256": "5e84d4c49940293310821669f921e67f0f80499600562de4d311ba7f97194ab1",
+        "bytes": 5774
+      },
+      "actualProcessExitCode": 1,
+      "qualification": "GUARDED_INTEGRATION_AFTER26COPY_STAGE_BEFORECOMMIT"
+    },
+    {
+      "name": "status fix LF conversion",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\source-browser-fix-a5\\failure.json",
+        "sha256": "2bca713dcf4dc792a5f51f0e0bfe7179cd49111e33154bd10d9aa8dd7551f328",
+        "bytes": 2492
+      },
+      "actualProcessExitCode": 1,
+      "qualification": "GUARDED_INTEGRATION_AFTER_ONE_VIEW_COPY_STAGE_BEFORECOMMIT; restored original LF only in separate a5b"
+    }
+  ],
+  "reviewToolFailures": [
+    {
+      "tool": "96e376",
+      "exitCode": 1,
+      "category": "REVIEW_SUCCESSOR_EDIT_MATCH_GUARD",
+      "projectWrites": 0,
+      "successorWrites": 0,
+      "reason": "Wrong exact AudioTrack line spelling; assertion failed before writes; corrected from actual source in dddd6c."
+    },
+    {
+      "category": "DELEGATION_THREAD_LIMIT",
+      "processStarted": false,
+      "retry": false
+    }
+  ],
+  "cleanup": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\astra-owned-process-cleanup.json",
+    "sha256": "6c4768d561ce3965a4282a741e4aa5877aa588503fb83635fb8bdf13aefab959",
+    "bytes": 401
+  },
+  "preservation": {
+    "documents5": true,
+    "ownerRegistry": true,
+    "realReleasePins": true,
+    "mediaPinsRemainEmpty": true,
+    "v1Prefixes": true,
+    "lockAndTools": true,
+    "oldJournals": true,
+    "noRemoteOrDeviceActions": true
+  },
+  "remaining": {
+    "originalOwnerConditions": "NOT_RECHECKED",
+    "releaseReady": false,
+    "stageCriteria": "S03/S16 remain OPEN11/36",
+    "acceptanceCriteriaClosed": 0,
+    "originalFailuresNotRelabeled": true,
+    "pendingHumanEditorialLegalReviews": 5,
+    "pendingOwnerInputs": 7,
+    "psp": "UNSELECTED",
+    "genuinePins": "EMPTY_DENY_NO_MANUFACTURED_APPROVAL",
+    "coding": "Protected URL issuer/resolver and native-owned resource admission/read path plus authentic canonical scene media/resource integration remain substantive original work. Select the next SOL block from actual requirements; allowed format names alone do not mandate each decoder.",
+    "requirementCue": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-media-work-20261005\\next-stage-requirement-cues.json",
+      "sha256": "0c073bba0892fed576490de7dba62bb37550115aed8577416ecdc7ef114d8b40",
+      "bytes": 2061
+    },
+    "deviceRuntime": "Android10 COMPILED_ONLY_NOT_RUN; Swift14 NOT_COMPILED_NOT_RUN; graphics/audio/native lifecycle remain unverified",
+    "externalAcceptance": "No Auth/deletion/remote-grant/PSP/store/human rights acceptance claimed"
+  },
+  "localReview": {
+    "model": "gpt-6-astra",
+    "reasoningEffort": "ultra",
+    "scope": "Whole26-path semantic review/check/fix; exact original source origins retained for passing affected cases and leaf native classes."
+  },
+  "checkQualification": "48 new case instances PASS plus affected regressions:157 passing instances and153 unique titles. Unit origins are retained, not all rerun4f. Browser wrong-owner5af, held-decoder6c and current4f bilingual/geometry case PASS separately; original failing whole attempts remain FAIL. JVM8 is real production container/wire mechanics at5af with exact current native source/class bytes; no installed OS/audio/pixel acceptance. Current4f TSC, view6 and Android build PASS.",
+  "notRun": [
+    "Installed Android app and10 new instrumentation methods; native OS graphics/audio/keystore/worker retirement acceptance",
+    "Swift compilation and14 new Swift fixtures; installed iOS native OS acceptance",
+    "Authentic editorial/rights/pins and protected URL transactions",
+    "Real PSP purchases/refunds/restore/reconciliation, configured Auth/deletion and separately authorized remote validation",
+    "Store signing/publication and complete release acceptance"
+  ],
+  "retainedEvidence": {
+    "path": "docs/mobile/evidence/S16/child-local-native-app-bridge-20261004/result.json",
+    "sha256": "30b647bb173a3a169a03032762f0b39d4fea83d54d8eccb99405e467dd4a0061",
+    "qualification": "Prior stage evidence and original failures retain their source/timestamps; NOT_RECHECKED."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Original four owner conditions copied verbatim from original source/timestamp; NOT_RECHECKED.",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "nextAction": "Continue the next substantive original LOCAL S16 protected URL issuer/resolver and native-owned resource admission/read requirement, then authentic canonical scene media/resource integration, using actual requirements22.4/22.5 and current code gaps. Allowed format names alone do not mandate every native decoder. Fixed bundled-media pipeline and App presentation are now locally implemented and whole-stage reviewed; do not repeat that stage. Bind native profile/policy/package and original continuous deadline, recipient ownership and completed worker retirement; absent authentic review/rights/pins deny. Preserve original V1, inactive encrypted child namespaces, original PIN/count/pending/debt/journal/coupled revisions, one canonical globe, existing Booky and equal RU/EN. Free LOCAL remains accountless and never uploads full child records. GPT-6.1 SOL Ultra authors entire coherent stage, GPT-6 Astra Ultra reviews/checks/fixes entire stage, then SOL next. S03/S16 IN_PROGRESS with11/36 criteria OPEN; owner7/reviews5; PSP unselected; releaseReady=false. No unchanged passing checks/build repeats, seventh AVD attempt, report-only D stage or remote/push/merge/deploy.",
+  "mediaImplementedLocally": true,
+  "genuineLocalV2Activation": "Implemented native bridge; authentic release/media pins remain empty and production materials deny.",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "availablePriorDelivery": {
+    "sourceCommit": "b94dcc48ccae7dc97d070cada65c06e1cf1ff745",
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-child-local-snapshot-delivery-20261004-1a360ccc-e112-4c08-a3f6-f656273748be.zip",
+    "sha256": "18d8eb3e0ca4a6eae00c0cb84b7b6c644547e3f85bf8bca2175ff300bb86acd5",
+    "qualification": "Historical delta package; not rebuilt or rebound to this runner source."
+  },
+  "availableCurrentBuilds": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\native-artifact.json",
+      "sha256": "a976f9b19e486548254c556832aed5fe9682c575ce55777af68b01124ea6000b",
+      "bytes": 721180
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\app-dev-debug.apk",
+      "sha256": "0bef2faf9233b2434eddeee7d1eda82e6fae1f06234bbbb257e1920de68112ea",
+      "bytes": 70260487
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-397d8236-d98d-4005-82ff-97984cecb183\\app-dev-debug-androidTest.apk",
+      "sha256": "64b8bebd07ecb4bac9edbeb6230022a8a202b5fbc67be34500174c2a3206de27",
+      "bytes": 730419
+    }
+  ],
+  "runCommands": {
+    "preview": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--host",
+        "127.0.0.1"
+      ]
+    },
+    "affectedPreparation": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "args": [
+        "scripts/mobile/prepare-local-release.mjs",
+        "android"
+      ],
+      "qualification": "Current packet already built; rerun only after a new source change. Device installation requires owner/device conditions."
+    }
+  }
+}
