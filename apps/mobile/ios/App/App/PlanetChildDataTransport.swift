@@ -333,7 +333,7 @@ final class PlanetChildDataTransport {
  * parsed dictionaries never supply PIN, clock, profile UID or package authority. */
 enum PlanetChildLocalV2Wire {
     enum Failure: Error { case invalid }
-    static let methods = Set(["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"])
+    static let methods = Set(["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection"])
     static let gateActions = Set(["exit-child-mode","switch-adult-profile","change-exact-age","change-blocked-topics","open-adult-store","initiate-purchase","restore-purchases","open-external","share","account-change","export-child-data","delete-child-data","diagnostics","expand-access-settings","enable-licensed-pack","view-legal-commercial"])
     static let actions = gateActions.union(["first-install","enroll-pin","replace-pin","recover-pin","create-profile","enter-child"])
     static let collections = Set(["favorites","recent","offline"])
@@ -359,7 +359,7 @@ enum PlanetChildLocalV2Wire {
     static func decode(_ method: String,_ input: [String:Any]) throws -> Request {
         try require(methods.contains(method));var keys=Set(["version","requestId"])
         if method != "bootstrap" { keys.insert("contextToken") }
-        switch method { case "perform":keys.formUnion(["action","target"]);case "readEntity":keys.insert("reference");case "search":keys.insert("query");case "readCollection":keys.insert("collection");case "writeCollection":keys.formUnion(["collection","expectedRevision","references"]);case "listMedia":keys.insert("owner");case "presentMedia":keys.formUnion(["owner","assetId","layout"]);case "releaseMedia":keys.insert("presentationToken");case "listScenes":keys.insert("owner");case "openScene":keys.formUnion(["owner","sceneId"]);case "releaseScene":keys.insert("sceneToken");case "acquireWebResource":keys.formUnion(["sceneToken","slotId"]);case "releaseWebResource":keys.insert("resourceToken");default:break }
+        switch method { case "perform":keys.formUnion(["action","target"]);case "readEntity":keys.insert("reference");case "search":keys.insert("query");case "readCollection":keys.insert("collection");case "writeCollection":keys.formUnion(["collection","expectedRevision","references"]);case "listMedia":keys.insert("owner");case "presentMedia":keys.formUnion(["owner","assetId","layout"]);case "releaseMedia":keys.insert("presentationToken");case "listScenes":keys.insert("owner");case "openScene":keys.formUnion(["owner","sceneId"]);case "releaseScene":keys.insert("sceneToken");case "acquireWebResource":keys.formUnion(["sceneToken","slotId"]);case "releaseWebResource":keys.insert("resourceToken");case "rememberSceneSelection":keys.formUnion(["sceneToken","expectedRevision"]);case "restoreSceneSelection":keys.insert("expectedRevision");default:break }
         try require(Set(input.keys)==keys);_ = try integer(input["version"],minimum:2,maximum:2);let id=try hex(input["requestId"],count:32)
         let token: String?;if method=="bootstrap" || (method=="perform" || method=="retire") && input["contextToken"] is NSNull { token=nil } else { token=try hex(input["contextToken"],count:32) }
         var action: String?,target: Data?,reference: [String:Any]?,query: String?,collection: String?,revision: UInt64?,references: [[String:Any]]?
@@ -380,6 +380,8 @@ enum PlanetChildLocalV2Wire {
         var sceneId: String?,sceneToken: String?,slotId: String?,resourceToken: String?
         if method=="openScene" { guard let id=input["sceneId"] as? String,id.range(of:"\\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\\z",options:.regularExpression) != nil else { throw Failure.invalid };sceneId=id }
         if method=="releaseScene",!(input["sceneToken"] is NSNull) { sceneToken=try hex(input["sceneToken"],count:32) }
+        if method=="rememberSceneSelection" { sceneToken=try hex(input["sceneToken"],count:32);revision=try integer(input["expectedRevision"],maximum:9007199254740989) }
+        if method=="restoreSceneSelection" { revision=try integer(input["expectedRevision"],maximum:9007199254740990) }
         if method=="acquireWebResource" { sceneToken=try hex(input["sceneToken"],count:32);guard let slot=input["slotId"] as? String,["skin","stand","background"].contains(slot) else { throw Failure.invalid };slotId=slot }
         if method=="releaseWebResource",!(input["resourceToken"] is NSNull) { resourceToken=try hex(input["resourceToken"],count:32) }
         return Request(method:method,id:id,token:token,action:action,target:target,reference:reference,query:query,collection:collection,expectedRevision:revision,references:references,mediaOwner:mediaOwner,assetId:assetId,mediaLayout:layout,presentationToken:presentationToken,sceneId:sceneId,sceneToken:sceneToken,slotId:slotId,resourceToken:resourceToken)
@@ -403,7 +405,7 @@ extension PlanetChildLocalV2Wire {
     static func refusal(_ method: String,_ input: [String:Any],reason: String,generation: UInt64=0) -> [String:Any] {
         let id=(try? hex(input["requestId"],count:32)) ?? String(repeating:"0",count:32),token=(try? hex(input["contextToken"],count:32))
         if method=="retire" { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token as Any? ?? NSNull()] }
-        if ["readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"].contains(method) { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token ?? String(repeating:"0",count:32),"generation":generation,"value":NSNull()] }
+        if ["readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection"].contains(method) { return ["version":2,"requestId":id,"status":"unavailable","contextToken":token ?? String(repeating:"0",count:32),"generation":generation,"value":NSNull()] }
         return ["version":2,"requestId":id,"status":"unavailable","reason":reason,"context":NSNull(),"profiles":[]]
     }
 }

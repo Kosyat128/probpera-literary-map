@@ -4914,6 +4914,8 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private void requireWatch(){if(!main.post(watch))throw new IllegalStateException("Original loader watch unavailable");}
         private void live() throws Exception {require(!revoked&&!closed&&worker==Thread.currentThread());writer.live(request);}
         private synchronized long wall() throws Exception {long now=System.currentTimeMillis();if(now<0||now>8640000000000000L||now<wallLast){revoke();throw new PinKnownRefusal();}wallLast=now;return now;}
+        // Held appearance data checks defer native/UI revocation to outer unwind.
+        private synchronized long appearanceWall() throws Exception {long now=System.currentTimeMillis();require(now>=0&&now<=8640000000000000L&&now>=wallLast);wallLast=now;return now;}
         private void mainCurrent() throws Exception {java.util.concurrent.FutureTask<Void> task=new java.util.concurrent.FutureTask<>(()->{current();return null;});require(main.post(task));boolean interrupted=false;try{for(;;)try{task.get();break;}catch(InterruptedException ignored){interrupted=true;}}finally{if(interrupted)Thread.currentThread().interrupt();}}
         private byte[] fixedAsset(String fixed,int bound) throws Exception {live();require(fixed.equals("artifact.json")||fixed.equals("child-native/catalog-v1.json")||fixed.matches("child-native/(packages|reviews)/[a-f0-9]{64}\\.json"));
             byte[] owned=new byte[bound];int used=0;try(java.io.InputStream input=writer.vault.context.getAssets().open("public/"+fixed,android.content.res.AssetManager.ACCESS_STREAMING)){
@@ -4922,7 +4924,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                     request.processClock.sample(request.processLease,current);require(request.currentBytes!=null&&MessageDigest.isEqual(request.currentBytes,current));if(original!=null)original.same(saved);return new LocalV2PackageProfile(saved);}finally{LocalSnapshotV2.wipe(current);}});}catch(Throwable failure){throw writer.failed(request,failure);}finally{writer.finish(request);}}
         private void start(){requireMain();try{current();require(worker==null&&!sent);worker=new Thread(this::run,"planet-child-native-package");worker.start();}catch(Throwable failure){revoke();startRetirement();}}
         private void requireMain(){if(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper())throw new IllegalStateException("Original native main required");}
-        private <T> T withData(LocalV2DataAdmission admission,LocalV2DataWork<T> work) throws Exception {live();mainCurrent();writer.begin(request);try{writer.host(request);return writer.vault.locked(directory->{live();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{request.processClock.sample(request.processLease,actual);require(request.currentBytes!=null&&MessageDigest.isEqual(request.currentBytes,actual));try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,request.policy)){admission.compiled.profile.same(saved);}admission.enter(directory,actual);try{T result=work.run();try{admission.check();return result;}catch(Exception failure){if(result instanceof PlanetChildDataStore.Result)((PlanetChildDataStore.Result)result).close();else if(result instanceof byte[])LocalSnapshotV2.wipe((byte[])result);throw failure;}}finally{admission.leave();}}finally{LocalSnapshotV2.wipe(actual);}});}catch(Throwable failure){throw writer.failed(request,failure);}finally{writer.finish(request);}}
+        private <T> T withData(LocalV2DataAdmission admission,LocalV2DataWork<T> work) throws Exception {live();mainCurrent();writer.begin(request);try{writer.host(request);return writer.vault.locked(directory->{live();writer.completeRecord(directory);byte[] actual=writer.vault.readExact(directory);try{request.processClock.sample(request.processLease,actual);require(request.currentBytes!=null&&MessageDigest.isEqual(request.currentBytes,actual));try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,request.policy)){admission.compiled.profile.same(saved);}admission.enter(directory,actual);try{T result=work.run();try{admission.check();return result;}catch(Exception failure){if(result instanceof PlanetChildDataStore.Result)((PlanetChildDataStore.Result)result).close();else if(result instanceof byte[])LocalSnapshotV2.wipe((byte[])result);else if(result instanceof PlanetChildDataStore.AppearanceResult)((PlanetChildDataStore.AppearanceResult)result).close();throw failure;}}finally{admission.leave();}}finally{LocalSnapshotV2.wipe(actual);}});}catch(Throwable failure){throw writer.failed(request,failure);}finally{writer.finish(request);}}
         private void run(){LocalV2CompiledPackage result=null;try{live();mainCurrent();if(sdkHandoff==null){LocalV2StorageReceipt anchor=writer.reanchor(request);if(anchor!=null)writer.acknowledge(anchor);}else sdkHandoff.check(this);LocalV2PackageProfile profile=fresh(null);if(sdkHandoff!=null)require(profile.recordChecksum.equals(sdkHandoff.checksum));result=new LocalV2FixedPackageProducer(this,profile).compile();fresh(profile);mainCurrent();live();synchronized(this){require(!revoked&&!closed&&!sent&&delivery==null);sent=true;delivery=new LocalV2OwnedPackageDelivery(this,result);result=null;delivery.data=new LocalV2DataAdmission(this,delivery.compiled);}delivery.data.admit();recipient.receive(delivery);live();fresh(profile);require(wall()<delivery.compiled.until);}catch(Throwable failure){this.failure=failure;if(sdkFailure!=null)sdkFailure.accept(failure);revoke();}finally{if(delivery!=null)delivery.close();if(result!=null)result.close();if(sdkHandoff!=null)sdkHandoff.close();startRetirement();}}
         /** Native route owner calls before same-view reuse; Back/detachment
          * and all real background events independently latch revocation. */
@@ -5000,7 +5002,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         boolean initialProfile() throws Exception {check();return loader!=null&&"child".equals(future.mode)&&future.selection==2&&future.revision==2&&future.profiles.size()==1;}
         String migrationIdentity() throws Exception {check();require(mutation!=null);byte[] bytes=("LP-LOCAL-V2-DATA-MIGRATION\0"+mutation.original.id+"\0"+mutation.original.action+"\0"+mutation.original.targetChecksum+"\0"+mutation.original.generation+"\0"+mutation.original.deadline+"\0"+previous.binding+"\0"+future.binding).getBytes(StandardCharsets.UTF_8);try{return digest(bytes);}finally{LocalSnapshotV2.wipe(bytes);}}
         long deadline() {return loader!=null?loader.request.deadline:mutation.original.deadline;}
-        private long wall() throws Exception {return loader!=null?loader.wall():mutation.packageWall();}
+        private long wall() throws Exception {return loader!=null?(appearanceLane?loader.appearanceWall():loader.wall()):mutation.packageWall();}
         private PlanetChildVault vault(){return loader!=null?loader.writer.vault:mutation.host.writer.vault;}
         void check() throws Exception {require(!revoked&&held==Thread.currentThread()&&directory!=null&&expected!=null);if(loader!=null){loader.live();loader.writer.completeRecord(directory);}else{mutation.boundary();mutation.host.writer.completeRecord(directory);}if(compiled!=null)require(wall()<compiled.until);byte[] actual=vault().readExact(directory);try{require(MessageDigest.isEqual(expected,actual));}finally{LocalSnapshotV2.wipe(actual);}if(compiled!=null)synchronized(compiled){require(!compiled.closed);}}
         private void enter(File directory,byte[] actual) throws Exception {require(this.directory==null&&held==null&&!revoked);this.directory=directory;held=Thread.currentThread();expected=actual.clone();try{check();}catch(Exception failure){leave();throw failure;}}
@@ -5019,7 +5021,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private void publication() throws Exception {require(loader!=null);LocalV2AdmittedPublication.check(compiled,this::wall,()->loader.fresh(compiled.profile));}
         private synchronized <T>T publish(LocalV2DataWork<T> work) throws Exception {require(!revoked&&loader!=null);LocalV2AdmittedPublication.check(compiled,this::wall,loader::live);return work.run();}
         private void failed(){revoke();if(loader!=null)loader.revoke();}
-        private synchronized void revoke(){revoked=true;for(LocalV2AdmittedResult result:results)result.close();results.clear();}
+        private synchronized void revoke(){revoked=true;for(LocalV2AdmittedResult result:results)result.close();results.clear();for(PlanetChildDataStore.AppearanceResult result:sdkAppearances)result.close();sdkAppearances.clear();}
         private void drain() throws Exception {revoke();if(store!=null){vault().locked(d->{store.close();return null;});store=null;lease=null;}}
 
         private LocalV2SDKChannel.Command sdkCollectionCommand;
@@ -5039,9 +5041,33 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             }catch(Exception error){failed();throw error;}finally{if(values!=null)for(byte[] bytes:values.values())LocalSnapshotV2.wipe(bytes);result.close();if(revision!=null){require(result.closedForSDK());command.resultClosed=true;}}
         }
         private void sdkCompleteCommand(LocalV2SDKChannel.Command command) throws Exception {
-            if(sdkCollectionCommand==null)return;require(command==sdkCollectionCommand&&command.collectionKnown&&command.resultClosed&&command.returned);
-            publication();loader.withData(this,()->{store.collectionComplete(this,lease,command.id);return null;});require(command.collectionJoined);sdkCollectionCommand=null;
+            if(sdkCollectionCommand!=null){require(command==sdkCollectionCommand&&command.collectionKnown&&command.resultClosed&&command.returned);
+                publication();loader.withData(this,()->{store.collectionComplete(this,lease,command.id);return null;});require(command.collectionJoined);sdkCollectionCommand=null;}
+            if(sdkAppearanceCommand!=null){LocalV2SDKAppearanceCommand pending=sdkAppearanceCommand;require(pending.nativeCommand==command&&pending.result!=null&&pending.result.closedForSDK()&&command.returned);
+                publication();appearanceData(()->{pending.permit.checkJoined(this);command.appearanceCompletion=store.appearanceComplete(this,lease,pending.id);pending.permit.checkJoined(this);return null;});require(pending.joined);sdkAppearanceCommand=null;}
         }
+        private boolean appearanceLane;
+        private <T>T appearanceData(LocalV2DataWork<T> work) throws Exception {require(loader!=null&&loader.worker==Thread.currentThread()&&!appearanceLane);appearanceLane=true;try{return loader.withData(this,work);}finally{appearanceLane=false;}}
+        private LocalV2SDKAppearanceCommand sdkAppearanceCommand;
+        private final java.util.ArrayList<PlanetChildDataStore.AppearanceResult> sdkAppearances=new java.util.ArrayList<>();
+        private PlanetChildDataStore.AppearanceResult sdkAppearance(Long expected,LocalV2SceneSelectionPermit permit,String id) throws Exception {
+            require(loader!=null&&store!=null&&lease!=null&&loader.worker==Thread.currentThread()&&loader.delivery.sdkCommand!=null);
+            LocalV2SDKChannel.Command nativeCommand=loader.delivery.sdkCommand;require(nativeCommand.running&&!nativeCommand.returned&&sdkCollectionCommand==null&&sdkAppearanceCommand==null&&(expected==null)==(permit==null));
+            LocalV2SDKAppearanceCommand pending=new LocalV2SDKAppearanceCommand(id,nativeCommand,permit);if(permit!=null){sdkAppearanceCommand=pending;nativeCommand.appearanceRequestId=id;nativeCommand.appearancePermit=permit;}
+            PlanetChildDataStore.AppearanceResult result=null;boolean handed=false;
+            try{result=appearanceData(()->store.admittedAppearance(this,lease,expected,permit,id));
+                if(permit!=null){require(sdkAppearanceCommand==pending&&pending.known&&pending.ready);pending.preparationJoined=true;PlanetChildAppearance.RuntimeDelay.hold(id);permit.lease.checkWorker();}
+                publication();final PlanetChildDataStore.AppearanceResult owned=result;publish(()->{sdkAppearances.removeIf(PlanetChildDataStore.AppearanceResult::closedForSDK);require(sdkAppearances.size()<64);sdkAppearances.add(owned);if(permit!=null)pending.result=owned;return null;});handed=true;return result;
+            }catch(Throwable failure){if(permit!=null)appearanceUnknown();if(failure instanceof Error)throw (Error)failure;throw (Exception)failure;}finally{if(!handed&&result!=null)result.close();}
+        }
+        private LocalV2SDKAppearanceCommand appearanceCommand(String id) throws Exception {
+            check();LocalV2SDKAppearanceCommand pending=sdkAppearanceCommand;require(pending!=null&&pending.id.equals(id)&&pending.nativeCommand==loader.delivery.sdkCommand&&pending.nativeCommand.running&&loader.worker==Thread.currentThread());return pending;
+        }
+        void appearanceCommandKnown(String id) throws Exception {LocalV2SDKAppearanceCommand pending=appearanceCommand(id);require(!pending.known&&!pending.nativeCommand.returned&&!pending.preparationJoined);pending.known=true;}
+        void appearanceCommandReady(String id) throws Exception {LocalV2SDKAppearanceCommand pending=appearanceCommand(id);require(pending.known&&!pending.ready&&!pending.nativeCommand.returned);pending.ready=true;}
+        void appearanceCommandJoined(String id) throws Exception {LocalV2SDKAppearanceCommand pending=appearanceCommand(id);require(pending.known&&pending.ready&&pending.preparationJoined&&!pending.joined&&pending.nativeCommand.returned&&pending.result!=null&&pending.result.closedForSDK());pending.permit.checkJoined(this);pending.joined=true;}
+        void appearanceUnknown(){if(loader!=null)loader.writer.unknown(loader.request);failed();}
+        private void sdkAppearanceFailed(LocalV2SDKChannel.Command command){if(sdkAppearanceCommand!=null&&sdkAppearanceCommand.nativeCommand==command||command.appearanceCompletion!=null)appearanceUnknown();}
 
     }
     /** Final publication checks run after fresh canonical/UI IO. This leaf
@@ -5766,7 +5792,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
     /** Commands execute on the ORIGINAL loader worker, whose original delivery
      * remains retained. Queue admission is correlation data, not a capability. */
     private static final class LocalV2SDKChannel {
-        private static final class Command {final LocalV2SDKCommand body;final String id=LocalV2AppOwner.random(16);Object value;volatile Exception failure;volatile boolean done;boolean collectionKnown,resultClosed,collectionJoined;volatile boolean running,returned;Command(LocalV2SDKCommand body){this.body=body;}}
+        private static final class Command {final LocalV2SDKCommand body;final String id=LocalV2AppOwner.random(16);Object value;volatile Exception failure;volatile boolean done;boolean collectionKnown,resultClosed,collectionJoined;PlanetChildDataStore.AppearanceCompletion appearanceCompletion;AppearanceHandoff appearanceCommit;LocalV2SceneSelectionPermit appearancePermit;String appearanceRequestId;volatile boolean running,returned,handed;Command(LocalV2SDKCommand body){this.body=body;}}
         private final java.util.ArrayDeque<Command> commands=new java.util.ArrayDeque<>();private LocalV2OwnedPackageDelivery delivery;private boolean closing,ended;private Exception failure;
         private synchronized void failed(Throwable error){failure=error instanceof Exception?(Exception)error:new Unavailable();closing=true;ended=true;for(Command c:commands){c.failure=failure;c.done=true;}commands.clear();notifyAll();}
         private void serve(LocalV2OwnedPackageDelivery original) throws Exception {
@@ -5775,12 +5801,25 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 // Observe the actual original loader even when no JS command is queued;
                 // release this condition before taking the original writer/process fence.
                 original.fence();if(command==null)continue;
-                try{original.fence();require(original.sdkCommand==null);original.sdkCommand=command;command.running=true;Object value=command.body.run(original);command.returned=true;original.fence();original.data.sdkCompleteCommand(command);original.fence();command.running=false;original.sdkCommand=null;synchronized(this){require(!closing);command.value=value;command.done=true;notifyAll();}}
-                catch(Throwable error){synchronized(this){command.failure=error instanceof Exception?(Exception)error:new Unavailable();command.done=true;notifyAll();}throw error;}}
+                try{original.fence();require(original.sdkCommand==null);original.sdkCommand=command;command.running=true;Object value=command.body.run(original);command.returned=true;original.fence();original.data.sdkCompleteCommand(command);if(command.appearanceCompletion!=null){PlanetChildAppearance.RuntimeDelay.holdCompletion(command.appearanceRequestId);original.fence();original.data.appearanceData(()->{command.appearancePermit.checkJoined(original.data);return null;});}original.fence();command.running=false;original.sdkCommand=null;synchronized(this){require(!closing);command.value=value;command.done=true;notifyAll();}}
+                catch(Throwable error){original.data.sdkAppearanceFailed(command);if(command.appearanceCompletion!=null){try{command.appearanceCompletion.retainUnknown();}catch(Throwable sticky){error.addSuppressed(sticky);}finally{command.appearanceCompletion.close();command.appearanceCompletion=null;}}synchronized(this){command.failure=error instanceof Exception?(Exception)error:new Unavailable();command.done=true;notifyAll();}throw error;}}
             }finally{synchronized(this){ended=true;for(Command c:commands){c.failure=new PinKnownRefusal();c.done=true;}commands.clear();notifyAll();}}
         }
         private synchronized LocalV2OwnedPackageDelivery ready(long deadline) throws Exception {while(delivery==null&&!ended&&!closing){long left=deadline-SystemClock.elapsedRealtime();if(left<=0)throw new PinKnownRefusal();wait(Math.min(10,left));}if(failure!=null)throw failure;require(delivery!=null&&!closing&&!ended);return delivery;}
-        private Object invoke(LocalV2SDKCommand body) throws Exception {Command c=new Command(body);synchronized(this){require(delivery!=null&&!closing&&!ended&&commands.size()<64);commands.addLast(c);notifyAll();while(!c.done&&!ended)wait(10);if(c.failure!=null)throw c.failure;if(failure!=null)throw failure;require(c.done&&!closing);return c.value;}}
+        private Object invoke(LocalV2SDKCommand body) throws Exception {Command c=new Command(body);synchronized(this){require(delivery!=null&&!closing&&!ended&&commands.size()<64);commands.addLast(c);notifyAll();while(!c.done&&!ended)wait(10);if(c.failure!=null)throw c.failure;if(failure!=null)throw failure;require(c.done&&!closing);if(c.appearanceCommit!=null)c.appearanceCommit.markCommitted(c);if(c.appearanceCompletion!=null){AppearanceHandoff handoff=new AppearanceHandoff(delivery,c);c.appearanceCompletion=null;return handoff;}return c.value;}}
+        /** Native-only transfer; this receipt is never part of a bridge DTO. */
+        private static final class AppearanceHandoff implements AutoCloseable {
+            final LocalV2OwnedPackageDelivery delivery;final Command command;final Object value;final PlanetChildDataStore.AppearanceCompletion completion;private Command verification;private boolean committed,completed;
+            private AppearanceHandoff(LocalV2OwnedPackageDelivery delivery,Command command) throws Exception {require(command.done&&command.returned&&!command.running&&!command.handed&&command.failure==null&&command.appearanceCompletion!=null);this.delivery=delivery;this.command=command;value=command.value;completion=command.appearanceCompletion;command.handed=true;}
+            private void check(LocalV2AppOwner owner,LocalV2AppOwner.Context context) throws Exception {require(owner.channel!=null&&verification==null&&!committed&&!completed);owner.channel.invoke(original->{require(original==delivery);owner.original(context,original);original.data.appearanceData(()->{command.appearancePermit.checkHanded(original.data);return null;});verification=original.sdkCommand;require(verification!=null&&verification!=command&&verification.running&&!verification.returned&&verification.appearanceCommit==null);verification.appearanceCommit=this;return null;});}
+            // Linearization is the final verifier's actual native consumer handoff.
+            // The owner monitor also orders fast scene release and epoch changes.
+            // This final leaf never acquires Vault/DataStore or joins main/UI.
+            private void markCommitted(Command actual) throws Exception {synchronized(command.appearancePermit.lease.owner){require(!committed&&!completed&&actual==verification&&actual.appearanceCommit==this&&actual.done&&actual.returned&&!actual.running&&!actual.handed&&actual.failure==null);command.appearancePermit.handoffBoundary();actual.handed=true;committed=true;}}
+            private void complete() throws Exception {require(committed&&!completed);completion.complete();completed=true;}
+            private void unknown(Throwable error){try{completion.retainUnknown();}catch(Throwable sticky){error.addSuppressed(sticky);}try{delivery.data.appearanceUnknown();}catch(Throwable sealing){error.addSuppressed(sealing);}}
+            public void close(){completion.close();}
+        }
         private synchronized void post(LocalV2SDKCommand body) throws Exception {require(delivery!=null&&!closing&&!ended&&commands.size()<64);commands.addLast(new Command(body));notifyAll();} private synchronized void close(){closing=true;notifyAll();}
     }
     /** Native sibling of WebView owns an opaque cover and genuine action
@@ -5844,28 +5883,31 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private static java.util.Map<String,Object> unavailable(String id,String reason){return map("version",2L,"requestId",id,"status","unavailable","reason",reason,"context",null,"profiles",java.util.Collections.emptyList());}
         private java.util.Map<String,Object> refusal(PlanetChildDataTransport.V2Request request,String reason){
             if("retire".equals(request.method))return map("version",2L,"requestId",request.id,"status","unavailable","contextToken",request.contextToken);
-            if(java.util.Arrays.asList("readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource").contains(request.method)){
+            if(java.util.Arrays.asList("readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection").contains(request.method)){
                 Context active;synchronized(this){active=context;}
                 return map("version",2L,"requestId",request.id,"status","unavailable","contextToken",request.contextToken,"generation",active==null?generation:active.generation,"value",null);
             }
             return unavailable(request.id,reason);
         }
-        void execute(PlanetChildDataTransport.V2Request request,Reply reply){ long stamp;try{if("releaseScene".equals(request.method)||"releaseWebResource".equals(request.method))fastCanonicalRelease(request);if("releaseMedia".equals(request.method)||java.util.Arrays.asList("bootstrap","perform","retire").contains(request.method))fastMediaConceal();stamp=mediaEpoch;}catch(Exception failure){sealed=true;reply.complete(refusal(request,"pending"));return;} final long capturedMediaEpoch=stamp;final boolean revocationOnly="releaseMedia".equals(request.method)&&request.presentationToken==null||"releaseScene".equals(request.method)&&request.sceneToken==null||"releaseWebResource".equals(request.method)&&request.resourceToken==null;
+        void execute(PlanetChildDataTransport.V2Request request,Reply reply){ long stamp;try{if("releaseScene".equals(request.method)||"releaseWebResource".equals(request.method))fastCanonicalRelease(request);if("releaseMedia".equals(request.method)||"restoreSceneSelection".equals(request.method)||java.util.Arrays.asList("bootstrap","perform","retire").contains(request.method))fastMediaConceal();stamp=mediaEpoch;}catch(Exception failure){sealed=true;reply.complete(refusal(request,"pending"));return;} final long capturedMediaEpoch=stamp;final boolean revocationOnly="releaseMedia".equals(request.method)&&request.presentationToken==null||"releaseScene".equals(request.method)&&request.sceneToken==null||"releaseWebResource".equals(request.method)&&request.resourceToken==null;
             boolean accepted;synchronized(this){accepted=!disposed&&(!busy||revocationOnly)&&!sealed&&seen.size()<2048&&seen.add(request.id);if(accepted&&!revocationOnly)busy=true;}
             if(!accepted){reply.complete(refusal(request,"pending"));return;}
-            io.execute(()->{try{reply.complete(dispatch(request,capturedMediaEpoch));}
-                catch(Throwable failure){try{cover();synchronized(this){context=null;}joinOwners();if(failure instanceof PinKnownRefusal&&"perform".equals(request.method)&&!sealed)reply.complete(bootstrap(request.id,0,"cancelled"));else reply.complete(refusal(request,sealed?"pending":failure instanceof PinKnownRefusal?"expired":"unavailable"));}
+            io.execute(()->{LocalV2SDKChannel.AppearanceHandoff[] handoff=new LocalV2SDKChannel.AppearanceHandoff[1];boolean replyAttempted=false;try{java.util.Map<String,Object> response=dispatch(request,capturedMediaEpoch,handoff);if(handoff[0]!=null)handoff[0].complete();replyAttempted=true;reply.complete(response);}
+                catch(Throwable failure){if(handoff[0]!=null){handoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}try{cover();synchronized(this){context=null;}joinOwners();if(failure instanceof PinKnownRefusal&&"perform".equals(request.method)&&!sealed)reply.complete(bootstrap(request.id,0,"cancelled"));else reply.complete(refusal(request,sealed?"pending":failure instanceof PinKnownRefusal?"expired":"unavailable"));}
                     catch(Throwable cleanup){sealed=true;reply.complete(refusal(request,"pending"));}}
-                finally{synchronized(this){if(!revocationOnly)busy=false;}}});
+                finally{if(handoff[0]!=null)handoff[0].close();synchronized(this){if(!revocationOnly)busy=false;}}});
         }
-        private java.util.Map<String,Object> dispatch(PlanetChildDataTransport.V2Request r,long mediaStamp) throws Exception {
+        private java.util.Map<String,Object> dispatch(PlanetChildDataTransport.V2Request r,long mediaStamp,LocalV2SDKChannel.AppearanceHandoff[] handoff) throws Exception {
             main(()->{attach();return null;});
             if("bootstrap".equals(r.method)){synchronized(this){require(context==null);}return bootstrap(r.id,0,null);}
             if("retire".equals(r.method)){Context old;synchronized(this){old=context;if(r.contextToken!=null)require(old!=null&&old.token.equals(r.contextToken));context=null;}cover();joinOwners();return map("version",2L,"requestId",r.id,"status","retired","contextToken",r.contextToken);}
             if("readContext".equals(r.method)){Context c=current(r.contextToken);fresh(c);return response(r.id,c,null);}
             if("perform".equals(r.method))return perform(r);
-            Context c=current(r.contextToken);require("child".equals(c.status)&&channel!=null);Object value=channel.invoke(delivery->{original(c,delivery);Object out=java.util.Arrays.asList("listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource").contains(r.method)?sceneCommand(r,c,delivery):java.util.Arrays.asList("listMedia","presentMedia","releaseMedia").contains(r.method)?mediaCommand(r,c,delivery,mediaStamp):LocalV2SDKData.perform(r,delivery);original(c,delivery);return out;});
-            fresh(c);return map("version",2L,"requestId",r.id,"status","ok","contextToken",c.token,"generation",c.generation,"value",value);
+            Context c=current(r.contextToken);require("child".equals(c.status)&&channel!=null);Object value=channel.invoke(delivery->{original(c,delivery);Object out=java.util.Arrays.asList("readSceneSelection","rememberSceneSelection","restoreSceneSelection").contains(r.method)?appearanceCommand(r,c,delivery):java.util.Arrays.asList("listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource").contains(r.method)?sceneCommand(r,c,delivery):java.util.Arrays.asList("listMedia","presentMedia","releaseMedia").contains(r.method)?mediaCommand(r,c,delivery,mediaStamp):LocalV2SDKData.perform(r,delivery);original(c,delivery);return out;});
+            if(value instanceof LocalV2SDKChannel.AppearanceHandoff){require(handoff[0]==null);handoff[0]=(LocalV2SDKChannel.AppearanceHandoff)value;value=handoff[0].value;PlanetChildAppearance.RuntimeDelay.holdHandoff(handoff[0].command.appearanceRequestId);handoff[0].check(this,c);}else fresh(c);
+            // Durable finalization occurs in execute after this envelope is ready.
+            // No authority fence follows unlink; JavaScript receipt is not atomic.
+            return map("version",2L,"requestId",r.id,"status","ok","contextToken",c.token,"generation",c.generation,"value",value);
         }
         private void original(Context c,LocalV2OwnedPackageDelivery delivery) throws Exception {current(c.token);require(loader==delivery.owner&&delivery.owner.request.deadline==c.deadline&&delivery.compiled.profile.recordChecksum.equals(c.checksum));delivery.fence();}
         private void fresh(Context c) throws Exception {live(c.deadline);if(channel!=null)channel.invoke(delivery->{original(c,delivery);return null;});else{require(reader!=null&&readRequest!=null);byte[] actual=reader.sdkRead(readRequest);try{require(digest(actual).equals(c.checksum));}finally{LocalSnapshotV2.wipe(actual);}}}
@@ -6008,6 +6050,30 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                     }catch(Exception expired){invalidate("expired");}
                 }};require(main.post(lease.watch));return null;});
         }
+        private Object appearanceCommand(PlanetChildDataTransport.V2Request r,Context c,LocalV2OwnedPackageDelivery d) throws Exception {
+            original(c,d);require(d.mediaOwner==this&&d.data!=null&&d.sdkCommand!=null);LocalV2DataAdmission admission=d.data;
+            if("rememberSceneSelection".equals(r.method)){LocalV2SceneLease lease=scenes.get(r.sceneToken);require(lease!=null&&lease.context==c&&lease.delivery==d);lease.checkWorker();
+                LocalV2SceneSelectionPermit permit=LocalV2SceneSelectionPermit.make(lease,d.sdkCommand,admission);try(PlanetChildDataStore.AppearanceResult result=admission.sdkAppearance(r.expectedRevision,permit,r.id)){lease.checkWorker();java.util.Map<String,Object> response=result.dto();admission.publication();return admission.publish(()->response);}}
+            try(PlanetChildDataStore.AppearanceResult saved=admission.sdkAppearance(null,null,r.id)){require(saved.profileId.equals(d.compiled.profile.id));java.util.Map<String,Object> response=saved.dto();
+                if("readSceneSelection".equals(r.method)){admission.publication();return admission.publish(()->response);}
+                require("restoreSceneSelection".equals(r.method)&&r.expectedRevision==saved.revision);retireMediaJoined();retireCanonicalJoined(null,null,true);original(c,d);
+                if(saved.selection==null)return appearanceClosed(admission,saved,"absent");PlanetChildAppearance.Selection selection=saved.selection;
+                // Fresh fixed package/media/scene compilation and exact logical
+                // projection. No cached approval or renewed lease is reused.
+                d.sceneAssets=null;d.mediaAssets=null;d.resourceCatalog=null;
+                try{try(LocalV2CompiledPackage fresh=new LocalV2FixedPackageProducer(d.owner,d.compiled.profile).compile()){
+                        require(fresh.packageId.equals(d.compiled.packageId)&&fresh.version==d.compiled.version&&fresh.checksum.equals(d.compiled.checksum)&&fresh.reviewChecksum.equals(d.compiled.reviewChecksum)&&fresh.platform.equals(d.compiled.platform)&&fresh.territory.equals(d.compiled.territory)&&fresh.until==d.compiled.until);}
+                    original(c,d);d.mediaAssets=new LocalV2FixedMediaProducer(d).compile();d.sceneAssets=LocalV2SceneCompiler.compileCatalog(d);armMediaExpiry(c,d);
+                }catch(Exception unavailable){original(c,d);return appearanceClosed(admission,saved,"unavailable");}
+                LocalV2Scene selected=d.sceneAssets.get(selection.sceneId);if(selected==null||!selection.equals(sceneProjection(selected)))return appearanceClosed(admission,saved,"unavailable");selected.checkWorker(d);
+                java.util.Map<String,Object> open=map("version",2L,"requestId",r.id,"contextToken",c.token,"owner",selected.owner,"sceneId",selected.id);Object opened=null;
+                try{opened=sceneCommand(PlanetChildDataTransport.decodeV2("openScene",open),c,d);java.util.Map<String,Object> scene=LocalV2PackageJson.object(opened);require("opened".equals(scene.get("status")));String token=LocalV2PackageJson.text(scene.get("sceneToken"));LocalV2SceneLease lease=scenes.get(token);require(lease!=null&&lease.context==c&&lease.delivery==d&&selection.equals(sceneProjection(lease.scene)));lease.checkWorker();
+                    try(PlanetChildDataStore.AppearanceResult reread=admission.sdkAppearance(null,null,r.id)){require(reread.profileId.equals(saved.profileId)&&reread.revision==saved.revision&&selection.equals(reread.selection));}
+                    admission.publication();return admission.publish(()->map("status","restored","profileId",saved.profileId,"revision",saved.revision,"selection",selection.dto(),"scene",scene));
+                }catch(Exception unavailable){if(opened!=null||!scenes.isEmpty()||!webOutputs.isEmpty())retireCanonicalJoined(null,null,true);original(c,d);return appearanceClosed(admission,saved,"unavailable");}
+            }
+        }
+        private java.util.Map<String,Object> appearanceClosed(LocalV2DataAdmission admission,PlanetChildDataStore.AppearanceResult saved,String status) throws Exception {admission.publication();return admission.publish(()->map("status",status,"profileId",saved.profileId,"revision",saved.revision,"selection",saved.selection==null?null:saved.selection.dto(),"scene",null));}
         private java.util.Map<String,Object> sceneUnavailable(PlanetChildDataTransport.V2Request r){return map("status","unavailable","sceneToken",null,"sceneId",r.sceneId,"owner",r.owner,"skin",null,"stand",null,"background",null,"hotspots",java.util.Collections.emptyList(),"remainingLifetimeMs",0L);}
         private Object sceneCommand(PlanetChildDataTransport.V2Request r,Context c,LocalV2OwnedPackageDelivery d)throws Exception {
             original(c,d);require(d.mediaOwner==this);
@@ -6555,4 +6621,43 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         }
     }
 
+    // Independently versioned LOCAL2 appearance. Protected V1 remains exact.
+    private static PlanetChildAppearance.Selection sceneProjection(LocalV2Scene scene) throws Exception {
+        java.util.Map<String,Object> owner=LocalV2PackageJson.object(scene.owner,"kind","id","contentChecksum");
+        LocalV2MediaAsset skin=scene.assets.get("skin"),stand=scene.assets.get("stand"),background=scene.assets.get("background");require(skin!=null&&stand!=null&&background!=null);
+        java.util.Map<String,Object> skinRef=LocalV2PackageJson.object(skin.entity,"kind","id","contentChecksum"),standRef=LocalV2PackageJson.object(stand.entity,"kind","id","contentChecksum"),backgroundRef=LocalV2PackageJson.object(background.entity,"kind","id","contentChecksum");
+        require("skin".equals(skinRef.get("kind"))&&"stand".equals(standRef.get("kind"))&&"background".equals(backgroundRef.get("kind")));
+        java.util.Map<String,Object> standRoot=LocalV2PackageJson.object(scene.root.get("stand"),"geometryId","asset"),backgroundRoot=LocalV2PackageJson.object(scene.root.get("background"),"geometryId","asset");
+        return new PlanetChildAppearance.Selection(scene.id,new PlanetChildAppearance.Owner(LocalV2PackageJson.text(owner.get("kind")),LocalV2PackageJson.identifier(owner.get("id"))),new PlanetChildAppearance.Slot(skin.assetId,LocalV2PackageJson.identifier(skinRef.get("id"))),new PlanetChildAppearance.Geometry(LocalV2PackageJson.text(standRoot.get("geometryId")),stand.assetId,LocalV2PackageJson.identifier(standRef.get("id"))),new PlanetChildAppearance.Geometry(LocalV2PackageJson.text(backgroundRoot.get("geometryId")),background.assetId,LocalV2PackageJson.identifier(backgroundRef.get("id"))));
+    }
+    private static final class LocalV2SDKAppearanceCommand {
+        final String id;final LocalV2SDKChannel.Command nativeCommand;final LocalV2SceneSelectionPermit permit;
+        boolean known,ready,preparationJoined,joined;PlanetChildDataStore.AppearanceResult result;
+        private LocalV2SDKAppearanceCommand(String id,LocalV2SDKChannel.Command nativeCommand,LocalV2SceneSelectionPermit permit){this.id=id;this.nativeCommand=nativeCommand;this.permit=permit;}
+    }
+    /** Private maker captures actual native scene, command and context. Leaf
+     * checks never join main or reenter the already held Vault lock. */
+    static final class LocalV2SceneSelectionPermit {
+        private final LocalV2SceneLease lease;private final LocalV2SDKChannel.Command command;private final LocalV2DataAdmission admission;private final PlanetChildAppearance.Selection projected;private final String profile;private final LocalV2ResourceCatalog catalog;private long wallLast;
+        private LocalV2SceneSelectionPermit(LocalV2SceneLease lease,LocalV2SDKChannel.Command command,LocalV2DataAdmission admission,PlanetChildAppearance.Selection projected) throws Exception {this.lease=lease;this.command=command;this.admission=admission;this.projected=projected;profile=lease.delivery.compiled.profile.id;catalog=lease.delivery.resourceCatalog;wallLast=lease.delivery.owner.wall();}
+        private static LocalV2SceneSelectionPermit make(LocalV2SceneLease lease,LocalV2SDKChannel.Command command,LocalV2DataAdmission admission) throws Exception {lease.checkWorker();require(lease.delivery.data==admission&&lease.delivery.sdkCommand==command&&command.running&&!command.returned);LocalV2SceneSelectionPermit result=new LocalV2SceneSelectionPermit(lease,command,admission,sceneProjection(lease.scene));admission.appearanceData(()->{result.check(admission);return null;});return result;}
+        private void leaf(LocalV2DataAdmission original,boolean returned) throws Exception {leaf(original,returned,false);}
+        private void leaf(LocalV2DataAdmission original,boolean returned,boolean handed) throws Exception {
+            require(original==admission&&lease.delivery.data==admission&&lease.delivery.owner.worker==Thread.currentThread()&&(handed?command.handed&&command.done&&command.returned&&!command.running&&command.failure==null:lease.delivery.sdkCommand==command&&command.running&&command.returned==returned));admission.check();
+            require(admission.scope().profileId.equals(profile));selectionLeaf();admission.check();
+        }
+        private void handoffBoundary() throws Exception {require(command.handed&&command.done&&command.returned&&!command.running&&command.failure==null&&!admission.revoked);selectionLeaf();}
+        private void selectionLeaf() throws Exception {
+            LocalV2AppOwner owner=lease.owner;LocalV2OwnedPackageDelivery delivery=lease.delivery;
+            require(!lease.revoked&&!lease.closed&&!owner.sealed&&!owner.disposed&&owner.context==lease.context&&owner.loader==delivery.owner&&delivery.owner.delivery==delivery&&!delivery.owner.revoked&&!delivery.owner.closed&&owner.canonicalEpoch==lease.epoch&&owner.scenes.get(lease.token)==lease&&lease.handler.epoch()==lease.navigationEpoch
+                &&delivery.sceneAssets!=null&&delivery.sceneAssets.get(lease.scene.id)==lease.scene&&delivery.resourceCatalog==catalog&&catalog!=null&&delivery.compiled.profile.id.equals(profile)&&lease.context.checksum.equals(delivery.compiled.profile.recordChecksum)&&lease.context.deadline==delivery.owner.request.deadline&&projected.equals(sceneProjection(lease.scene)));
+            long now=System.currentTimeMillis();require(now>=wallLast&&now>=lease.scene.from&&now<lease.scene.until);wallLast=now;PlanetChildResources.originalRemaining(lease.context.deadline,SystemClock.elapsedRealtime(),lease.scene.until,now);
+            for(LocalV2MediaAsset asset:lease.scene.assets.values()){require(delivery.mediaAssets!=null&&delivery.mediaAssets.get(asset.assetId)==asset&&asset.from<=now&&now<asset.until);java.util.Map<String,Object> binding=catalog.bindings.get(delivery.compiled.checksum+"/"+asset.assetId);if(binding!=null)require(LocalV2PackageCompiler.epoch(binding.get("validFromEpochMs"))<=now&&now<LocalV2PackageCompiler.epoch(binding.get("validUntilEpochMs")));}
+        }
+        void check(LocalV2DataAdmission original) throws Exception {leaf(original,false);}
+        private void checkJoined(LocalV2DataAdmission original) throws Exception {leaf(original,true);}
+        private void checkHanded(LocalV2DataAdmission original) throws Exception {leaf(original,true,true);}
+        PlanetChildAppearance.Selection selection(LocalV2DataAdmission original) throws Exception {check(original);return projected;}
+        String profileId(LocalV2DataAdmission original) throws Exception {check(original);return profile;}
+    }
 }

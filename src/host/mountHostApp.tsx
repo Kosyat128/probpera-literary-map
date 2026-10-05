@@ -35,7 +35,8 @@ import "../styles/community-layout.css";
 import "../styles/header-preserved.css";
 import "./host.css";
 
-import { ChildNativeClosedView, ChildNativeReadyView, NativeProfileControls } from "../child/ChildNativeBoundary";
+import { ChildNativeClosedView, NativeProfileControls } from "../child/ChildNativeBoundary";
+import { NativeChildSceneHost } from "./NativeChildSceneHost";
 import { childNativePresentationServices, type ChildNativeAppSnapshot } from "../child/childNativeAppBridge";
 import type { PlatformServices } from "../platform/ports";
 
@@ -63,6 +64,18 @@ export function mountHostApp({ services, initialization, createAdultServices }: 
     document.documentElement.lang = value; document.title = value === "ru" ? "Литературная планета" : "Literary Planet";
   }
   let closedOwner: { key: string; persistence: HostLanguagePersistence } | null = null;
+  let childOwner: { key: string; profileId: string; persistence: HostLanguagePersistence } | null = null;
+  function childTree(snapshot: ChildNativeAppSnapshot) {
+    const owner=childOwner;
+    if(!owner)return closed(snapshot,generation);
+    return <BootstrapErrorBoundary key={owner.key}>
+      <PlatformServicesProvider services={publicServices}>
+        <InterfaceLanguageProvider hostLanguage={owner.persistence}>
+          <AppErrorBoundary><NativeChildSceneHost snapshot={snapshot} controller={controller} profileId={owner.profileId}/></AppErrorBoundary>
+        </InterfaceLanguageProvider>
+      </PlatformServicesProvider>
+    </BootstrapErrorBoundary>;
+  }
   function closed(snapshot: ChildNativeAppSnapshot, key: number) {
     const language = snapshot.context?.locale ?? adultLanguage;
     const ownerKey = "sealed-" + key + "-" + language;
@@ -82,9 +95,10 @@ export function mountHostApp({ services, initialization, createAdultServices }: 
   function clearPresentation() {
     if (stopped) return;
     ++generation; activeKey = null;
-    // flushSync completes the actual React provider/route/effect unmount before
-    // the native request is dispatched. It supplies no native commit receipt.
-    flushSync(() => { root.render(closed(controller.getSnapshot(), generation)); });
+    // The actual old child content/effects/material recipients clear synchronously.
+    // Its canonical renderer can remain inert for a same-profile successor.
+    // This barrier supplies no native commit receipt or permission.
+    flushSync(() => { const value=controller.getSnapshot();root.render(childOwner?childTree(value):closed(value,generation)); });
     retireAdult();
   }
   const detachBarrier = controller.attachPresentationBarrier(clearPresentation);
@@ -95,24 +109,24 @@ export function mountHostApp({ services, initialization, createAdultServices }: 
     if (snapshot.phase !== "ready" || snapshot.status === "first-install-required" || snapshot.status === "blocked-child" || !context) {
       // All non-ready publications have already crossed clearPresentation.
       if (snapshot.phase === "ready") { ++generation; activeKey = null; retireAdult(); }
-      root.render(closed(snapshot, generation)); return;
+      root.render(childOwner?childTree(snapshot):closed(snapshot,generation));return;
     }
     if (activeKey === context.token) return;
     const attempt = ++generation;
     activeKey = context.token;
     if (snapshot.status === "child") {
-      const persistence: HostLanguagePersistence = Object.freeze({ initialLanguage: context.locale, persist: async () => false });
+      if(!context.profileId){await controller.suspend();return;}
+      if(!childOwner||childOwner.profileId!==context.profileId) {
+        // A new profile has its own shell, language owner and child state.
+        childOwner={key:"native-child-"+attempt,profileId:context.profileId,
+          persistence:Object.freeze({initialLanguage:context.locale,persist:async()=>false})};
+      }
       locale(context.locale);
-      flushSync(()=>{root.render(<BootstrapErrorBoundary key={context.token}>
-        <PlatformServicesProvider services={publicServices}>
-          <InterfaceLanguageProvider hostLanguage={persistence}>
-            <AppErrorBoundary><ChildNativeReadyView snapshot={snapshot} controller={controller} /></AppErrorBoundary>
-          </InterfaceLanguageProvider>
-        </PlatformServicesProvider>
-      </BootstrapErrorBoundary>);});
+      flushSync(()=>{root.render(childTree(snapshot));});
       return;
     }
     if (snapshot.status !== "adult" && snapshot.status !== "unenrolled") return;
+    if(childOwner){childOwner=null;flushSync(()=>root.render(closed(snapshot,generation)));}
     let candidate: PlatformServices | null = null;
     try {
       // No static adult imports or provider effects are present in the child

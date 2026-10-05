@@ -82,6 +82,16 @@ describe("LOCAL2 native child presentation boundary", () => {
   });
 });
 
+describe("stable retained canonical shell",()=>{
+ it("retains only an inert hidden globe for an already admitted profile while child UI/data are sealed",()=>{
+  const value={...snapshot("unavailable"),phase:"transition" as const},owner=controller(value);
+  const markup=render(<ChildNativeReadyView snapshot={value} controller={owner} retainedProfileId="native-profile"/>);
+  expect(markup).toContain('data-native-child-retained="sealed"');expect(markup).toContain('aria-hidden="true"');
+  expect(markup).toContain("data-fixture-canonical-globe");expect(markup).not.toContain("data-child-native-profile=");
+  expect(markup).not.toContain("child-native-panel");expect(owner.readEntity).not.toHaveBeenCalled();
+  expect(calls.globe.mock.calls[calls.globe.mock.calls.length-1]?.[0]).toMatchObject({childPresentation:true,runtimeActive:false});
+ });
+});
 describe("original canonical resource recipient presentation",()=>{
  it("provides one resource owner and guarded hotspot proposal to the same RU/EN canonical globe",()=>{
   for(const language of ["ru","en"] as const){

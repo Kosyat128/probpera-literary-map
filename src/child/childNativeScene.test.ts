@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import pins from "./childNativeSceneReleasePins.json";
+import { childNativeAppearanceFromScene, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
 import { decodeChildNativeScene, decodeChildNativeScenePins, decodeChildNativeSceneHotspots, decodeChildNativeWebResource,
   decodeChildNativeSceneSummaries } from "./childNativeScene";
 const hash="a".repeat(64), owner={kind:"activity" as const,id:"home",contentChecksum:hash};
@@ -9,6 +10,13 @@ const raw=()=>({status:"opened",sceneToken:"b".repeat(32),sceneId:"fixture-scene
   stand:{geometryId:"stand.base.child-book-cloud",asset:slot("stand")},background:{geometryId:"background.base.library",asset:slot("background")},
   hotspots:[{id:"book",target:owner,position:[0,1,-3],radius:.2}],remainingLifetimeMs:5000});
 describe("closed native scene presentation correlations, no authority",()=>{
+  it("correlates restored choice with each original logical slot rather than accepting a sceneId collision",()=>{
+    const scene=decodeChildNativeScene(raw(),owner,"fixture-scene")!,selection=childNativeAppearanceFromScene(scene)!;
+    const saved={profileId:"reader",revision:1,selection};
+    expect(decodeChildNativeAppearanceRestore({status:"restored",...saved,scene},"reader",saved)?.scene).not.toBeNull();
+    const substituted={...scene,background:{...scene.background,asset:{...scene.background.asset,entity:{...scene.background.asset.entity,id:"other"}}}};
+    expect(decodeChildNativeAppearanceRestore({status:"restored",...saved,scene:substituted},"reader",saved)).toBeNull();
+  });
   it("preserves authentic empty production pins and rejects asserted approval fields",()=>{
     expect(decodeChildNativeScenePins(pins)).toEqual(pins);
     expect(decodeChildNativeScenePins({...pins,approved:true})).toBeNull();

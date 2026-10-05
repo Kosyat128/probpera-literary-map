@@ -8204,6 +8204,7 @@ final class PlanetChildLocalV2DataAdmission {
     private let lock=NSLock();private var revoked=false,results=[LocalV2AdmittedResult](),transaction: LocalV2Transaction?,expected: PinOwnedBytes?,held: ObjectIdentifier?
     fileprivate var store: PlanetChildDataStore?,lease: PlanetChildDataStore.Lease?
     private var sdkCommand: LocalV2SDKCollectionCommand?
+    private var sdkAppearanceCommand: LocalV2SDKAppearanceCommand?,sdkAppearanceResults=[PlanetChildDataStore.LocalV2Appearance]()
     private var sdkNativeCommand: LocalV2SDKChannel.Command?
     private var sdkCollections=[PlanetChildDataStore.LocalV2Collection]()
     fileprivate init(_ loader: LocalV2NativePackageLoader,_ compiled: LocalV2CompiledPackage) throws { guard loader.delivery?.compiled === compiled,loader.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };try loader.live();self.loader=loader;mutation=nil;self.compiled=compiled;previous=compiled.profile.canonicalContext;future=previous }
@@ -8250,7 +8251,7 @@ final class PlanetChildLocalV2DataAdmission {
     fileprivate func publication() throws { guard let loader,let compiled else { throw PinKnownRefusal() };try LocalV2AdmittedPublication.check(compiled,wall) { try loader.fresh(compiled.profile) } }
     fileprivate func publish<T>(_ work: () throws -> T) throws -> T { lock.lock();defer { lock.unlock() };guard !revoked,let loader,let compiled else { throw PinKnownRefusal() };try LocalV2AdmittedPublication.check(compiled,wall,loader.live);return try work() }
     fileprivate func failed() { revoke();loader?.revoke() }
-    fileprivate func revoke() { lock.lock();revoked=true;let originals=results,collections=sdkCollections;results.removeAll();sdkCollections.removeAll();lock.unlock();for result in originals { result.close() };for collection in collections { collection.close() } }
+    fileprivate func revoke() { lock.lock();revoked=true;let originals=results,collections=sdkCollections,appearances=sdkAppearanceResults;results.removeAll();sdkCollections.removeAll();sdkAppearanceResults.removeAll();lock.unlock();for result in originals { result.close() };for collection in collections { collection.close() };for appearance in appearances { appearance.close() } }
     fileprivate func drain() throws { revoke();if let store { guard let loader else { throw PinKnownRefusal() };try loader.writer.storage.locked { _ in try store.close() };self.store=nil;lease=nil } }
 }
 /** Final freshness may join main only before the ownership lock is taken. */
@@ -8372,7 +8373,7 @@ fileprivate final class LocalV2SDKSurface: UIViewController {
  * after the bootstrap callback returns. Every command runs on that same worker
  * and its original deadline. Closure return is observed natively, never by JS. */
 fileprivate final class LocalV2SDKChannel {
-    fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,done=false,returned=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
+    fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,appearanceHandoff: LocalV2SDKAppearanceHandoff?,done=false,returned=false,handedOff=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
     private let condition=NSCondition();private var command: Command?,closed=false,ready=false,failure: Error?,joined=false
     private(set) var compiled: LocalV2CompiledPackage?,deadline: UInt64=0
     private weak var mediaSDKOwner: PlanetChildLocalV2SDKOwner?
@@ -8385,12 +8386,31 @@ fileprivate final class LocalV2SDKChannel {
             try delivery.owner.fresh(delivery.compiled.profile);try delivery.owner.live()
             guard let next else { continue };var value: [String:Any]?,error: Error?
             do { guard let admission=delivery.data else { throw PinKnownRefusal() };try admission.sdkCommandBegan(next);value=try next.work(delivery);next.returned=true;try delivery.owner.fresh(delivery.compiled.profile);try delivery.owner.live();try admission.sdkCommandReturned(next) } catch let failed { delivery.data?.sdkCommandFailed(next);error=failed }
-            condition.lock();next.value=value;next.error=error;next.done=true;command=nil;if error != nil { closed=true };condition.broadcast();condition.unlock();if let error { throw error }
+            condition.lock()
+            // The exact appearance marker is still durable here. Closing
+            // before the native command handoff can only retain/poison it.
+            if closed && error==nil { condition.unlock();delivery.data?.sdkCommandFailed(next);error=PinKnownRefusal();condition.lock() }
+            next.value=value;next.error=error;next.done=true;command=nil;if error != nil { closed=true } else { delivery.data?.sdkCommandHandedOff(next) }
+            condition.broadcast();condition.unlock();if let error { throw error }
         }
     }
     func failed(_ error: Error) { condition.lock();failure=error;closed=true;condition.broadcast();condition.unlock() }
     func awaitReady() throws { condition.lock();defer { condition.unlock() };while !ready && !closed { _=condition.wait(until:Date(timeIntervalSinceNow:0.02)) };guard ready,!closed else { throw failure ?? PinKnownRefusal() } }
-    func invoke(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) throws -> [String:Any] { guard !Thread.isMainThread else { throw PinKnownRefusal() };condition.lock();guard ready,!closed,command==nil else { condition.unlock();throw PinKnownRefusal() };let original=Command(work);command=original;condition.broadcast();while !original.done && !closed { _=condition.wait(until:Date(timeIntervalSinceNow:0.02)) };let value=original.value,error=original.error;condition.unlock();if let error { throw error };guard original.done,let value else { throw PinKnownRefusal() };return value }
+    func invoke(handoff: LocalV2SDKReply?=nil,verified: ((Command) throws -> Void)?=nil,_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) throws -> [String:Any] {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() };condition.lock();guard ready,!closed,command==nil else { condition.unlock();throw PinKnownRefusal() }
+        let original=Command(work);command=original;condition.broadcast()
+        while !original.done && !closed { _=condition.wait(until:Date(timeIntervalSinceNow:0.02)) }
+        let value=original.value,error=original.error,receipt=original.appearanceHandoff
+        original.appearanceHandoff=nil;condition.unlock()
+        if let error { receipt?.unknown();throw error }
+        guard original.done,original.returned,original.handedOff,let value else { receipt?.unknown();throw PinKnownRefusal() }
+        try verified?(original)
+        if let receipt {
+            guard let handoff,handoff.appearance==nil else { receipt.unknown();throw PinKnownRefusal() }
+            handoff.appearance=receipt
+        }
+        return value
+    }
     func close() { condition.lock();closed=true;condition.broadcast();condition.unlock() }
 }
 
@@ -8485,13 +8505,30 @@ final class PlanetChildLocalV2SDKOwner {
                     if known { concealMedia(token) } else { routeWillChange(reason:"unavailable") }
                 } else { concealMedia() }
             } else if retirement { routeWillChange() }
+            else if request.method=="restoreSceneSelection" { concealMedia() }
             else if request.method=="perform" || request.method=="bootstrap" { surface.seal();concealMedia() }
         }
         if Thread.isMainThread { fast() } else { DispatchQueue.main.sync(execute:fast) }
         io.async { [self] in
             defer { if ownsBusy { lock.lock();busy=false;lock.unlock() } }
-            do { let value=try dispatch(request,mediaEpoch:capturedMediaEpoch);guard JSONSerialization.isValidJSONObject(value) else { throw PlanetChildVault.Failure.unavailable };reply(value) }
+            let handoff=LocalV2SDKReply()
+            do {
+                let value=try dispatch(request,mediaEpoch:capturedMediaEpoch,handoff:handoff)
+                guard JSONSerialization.isValidJSONObject(value) else { throw PlanetChildVault.Failure.unavailable }
+                if let appearance=handoff.appearance {
+                    guard let channel else { throw PinKnownRefusal() }
+                    try appearance.validate(on:channel)
+                    // Native command.done, actual consumer ownership, result
+                    // cleanup and all throw-capable admission fences precede
+                    // unlink. No authority check follows durable completion.
+                    try appearance.finish()
+                }
+                // This nonthrowing original SDK callback joins main resolve.
+                // Its delivery is not a distributed exactly-once JS receipt.
+                reply(value);handoff.appearance?.close()
+            }
             catch {
+                handoff.appearance?.unknown()
                 let originalError=error;DispatchQueue.main.sync { surface.seal() };lock.lock();let old=context;context=nil;lock.unlock()
                 do { try joinOwners();lock.lock();let unknown=sealed;lock.unlock();guard !unknown else { reply(refused(request,"pending"));return }
                     if request.method=="perform",let originalDeadline,(try? remaining(originalDeadline)) != nil { reply(try bootstrap(request.id,deadline:originalDeadline,reason:originalError is PinVerificationRefusal ? "blocked":"cancelled")) }
@@ -8500,16 +8537,18 @@ final class PlanetChildLocalV2SDKOwner {
             }
         }
     }
-    private func dispatch(_ r: PlanetChildLocalV2Wire.Request,mediaEpoch capturedMediaEpoch: UInt64) throws -> [String:Any] {
+    private func dispatch(_ r: PlanetChildLocalV2Wire.Request,mediaEpoch capturedMediaEpoch: UInt64,handoff: LocalV2SDKReply) throws -> [String:Any] {
         if r.method != "retire" { try DispatchQueue.main.sync { try attach();mediaObserveGeometry() } }
         switch r.method {
         case "bootstrap":lock.lock();let exists=context != nil;lock.unlock();guard !exists else { throw PinKnownRefusal() };return try bootstrap(r.id,deadline:nil)
         case "readContext":let c=try requireContext(r.token);try fresh(c);return try response(r.id,c)
         case "perform":return try perform(r)
         case "retire":try DispatchQueue.main.sync { surface.seal() };lock.lock();context=nil;lock.unlock();try joinOwners();lock.lock();guard !sealed else { lock.unlock();throw PlanetChildVault.Failure.unavailable };lock.unlock();return ["version":2,"requestId":r.id,"status":"retired","contextToken":r.token as Any? ?? NSNull()]
-        default:let c=try requireContext(r.token);guard c.status=="child",let channel else { throw PinKnownRefusal() };return try channel.invoke { [self] delivery in
+        default:let c=try requireContext(r.token);guard c.status=="child",let channel else { throw PinKnownRefusal() };return try channel.invoke(handoff:handoff) { [self] delivery in
             try requireOriginal(c,delivery);let value: Any
-            if ["listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"].contains(r.method) {
+            if ["readSceneSelection","rememberSceneSelection","restoreSceneSelection"].contains(r.method) {
+                value=try appearancePerform(r,c,delivery)
+            } else if ["listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"].contains(r.method) {
                 let scene=try canonicalPerform(r,c,delivery);value=r.method=="listScenes" ? scene["list"]! as Any:scene
             } else if ["listMedia","presentMedia","releaseMedia"].contains(r.method) {
                 do { let media=try mediaPerform(r,c,delivery,capturedMediaEpoch);value=r.method=="listMedia" ? media["list"]! as Any:media }
@@ -8720,11 +8759,28 @@ fileprivate enum LocalV2SDKData {
     }
 }
 extension PlanetChildLocalV2DataAdmission {
-    fileprivate func sdkCommandBegan(_ command: LocalV2SDKChannel.Command) throws { try check();guard sdkNativeCommand==nil,sdkCommand==nil,!command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };sdkNativeCommand=command }
-    fileprivate func sdkCommandReturned(_ command: LocalV2SDKChannel.Command) throws { try check();guard sdkNativeCommand === command,command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };if let pending=sdkCommand { try completeCollection(pending.id) };sdkNativeCommand=nil }
-    fileprivate func sdkCommandFailed(_ command: LocalV2SDKChannel.Command) { guard sdkNativeCommand === command else { return };if sdkCommand != nil { collectionUnknown() };sdkNativeCommand=nil }
+    fileprivate func sdkCommandBegan(_ command: LocalV2SDKChannel.Command) throws {
+        // serve() owns the loader worker, but does not hold a canonical data
+        // transaction. Enter it for the admission fence before assigning work.
+        try withCopy { try check();guard sdkNativeCommand==nil,sdkCommand==nil,sdkAppearanceCommand==nil,!command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };sdkNativeCommand=command }
+    }
+    fileprivate func sdkCommandReturned(_ command: LocalV2SDKChannel.Command) throws {
+        try withCopy { try check();guard sdkNativeCommand === command,command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+        // These completion routines enter their own data transaction. Invoke
+        // only after the prior transaction/UI check has fully unwound.
+        if let pending=sdkCommand { try completeCollection(pending.id) }
+        if let pending=sdkAppearanceCommand { try completeAppearance(pending.id) }
+    }
+    fileprivate func sdkCommandHandedOff(_ command: LocalV2SDKChannel.Command) {
+        guard sdkNativeCommand === command,command.returned,command.done else { return };command.handedOff=true
+        if let pending=sdkAppearanceCommand,let receipt=pending.completion,let permit=pending.permit {
+            command.appearanceHandoff=LocalV2SDKAppearanceHandoff(self,permit,receipt)
+        }
+        sdkAppearanceCommand=nil;sdkNativeCommand=nil
+    }
+    fileprivate func sdkCommandFailed(_ command: LocalV2SDKChannel.Command) { guard sdkNativeCommand === command else { return };sdkAppearanceCommand?.completion?.retainUnknown();sdkAppearanceCommand?.completion?.close();if sdkCommand != nil { collectionUnknown() };if sdkAppearanceCommand != nil { appearanceUnknown() };sdkNativeCommand=nil }
     fileprivate func collection(_ purpose: PlanetChildDataStore.Purpose,expected: UInt64?,replacement: [String:Data]?,id: String) throws -> PlanetChildDataStore.LocalV2Collection {
-        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil else { throw PinKnownRefusal() };let command=LocalV2SDKCollectionCommand(id);if replacement != nil { sdkCommand=command }
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil else { throw PinKnownRefusal() };let command=LocalV2SDKCollectionCommand(id);if replacement != nil { sdkCommand=command }
         do { let result=try loader.withData(self) { try store.admittedCollection(self,lease,purpose,expectedRevision:expected,replacement:replacement,commandId:id) };if replacement != nil { guard sdkCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true };do { try publication();try publish { self.sdkCollections.removeAll(where:{ $0.closedForSDK });guard self.sdkCollections.count<64 else { throw PinKnownRefusal() };self.sdkCollections.append(result);if replacement != nil { command.result=result } };return result } catch { result.close();throw error } }
         catch { if replacement != nil { collectionUnknown() };throw error }
     }
@@ -9977,8 +10033,11 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         } else if request.method=="releaseWebResource" {
             if let token=request.resourceToken { guard canonicalOutputs[token] != nil || canonicalRetiredOutputs.contains(token) else { lock.unlock();throw PinKnownRefusal() };if let output=canonicalOutputs[token] { outputs=[output] } }
             else { outputs=Array(canonicalOutputs.values) }
-        } else { lock.unlock();throw PinKnownRefusal() };lock.unlock()
-        for scene in scenes { scene.revoke();scene.stopMain() };for output in outputs { output.revoke() }
+        } else { lock.unlock();throw PinKnownRefusal() }
+        // Pure admission revocation shares the appearance commit monitor.
+        // UIKit/output joins remain outside it.
+        for scene in scenes { scene.revoke() };lock.unlock()
+        for scene in scenes { scene.stopMain() };for output in outputs { output.revoke() }
     }
     func canonicalRetireJoined(sceneToken: String?=nil,resourceToken: String?=nil,retireScenes: Bool) throws {
         guard !Thread.isMainThread else { throw PlanetChildLocalV2ResourceError.cleanupUnknown };canonicalRetirement.lock();defer { canonicalRetirement.unlock() }
@@ -10089,5 +10148,201 @@ extension PlanetChildLocalV2SDKOwner {
     /** Observation of an already minted original context. It cannot create or
      * approve an owner, child record, review, SDK command, permit or output. */
     func runtimeOriginalContextToken() -> String? { lock.lock();defer { lock.unlock() };return !sealed && context?.status=="child" ? context?.token:nil }
+}
+#endif
+
+// MARK: Separately versioned protected LOCAL2 profile appearance.
+fileprivate extension LocalV2Scene {
+    func appearanceProjection() throws -> PlanetChildAppearance.Selection {
+        let owner=try LocalV2PackageValue.object(self.owner,["kind","id","contentChecksum"])
+        func slot(_ name: String) throws -> PlanetChildAppearance.Slot {
+            guard let asset=assets[name] else { throw PinKnownRefusal() };let entity=try LocalV2PackageValue.object(asset.entity,["kind","id","contentChecksum"]);guard try LocalV2PackageValue.text(entity["kind"])==name else { throw PinKnownRefusal() }
+            return try PlanetChildAppearance.Slot(assetId:asset.id,entityId:LocalV2PackageValue.identifier(entity["id"]))
+        }
+        let skin=try slot("skin"),stand=try slot("stand"),background=try slot("background")
+        return try PlanetChildAppearance.Selection(sceneId:id,owner:PlanetChildAppearance.Owner(kind:LocalV2PackageValue.text(owner["kind"]),id:LocalV2PackageValue.identifier(owner["id"])),skin:skin,stand:PlanetChildAppearance.Geometry(geometryId:"stand.base.child-book-cloud",assetId:stand.assetId,entityId:stand.entityId),background:PlanetChildAppearance.Geometry(geometryId:"background.base.library",assetId:background.assetId,entityId:background.entityId))
+    }
+}
+/** Sole private maker captures a current ORIGINAL scene/SDK command. No wire,
+ * stable DTO, profileId, approval boolean or another native file constructs it.
+ * Storage checks never dispatch main or reenter the Vault lock. */
+final class PlanetChildLocalV2SceneSelectionPermit {
+    private let lease: LocalV2SceneLease,command: LocalV2SDKChannel.Command,admission: PlanetChildLocalV2DataAdmission,projected: PlanetChildAppearance.Selection,profile: String
+    private init(_ lease: LocalV2SceneLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ selection: PlanetChildAppearance.Selection) { self.lease=lease;self.command=command;self.admission=admission;projected=selection;profile=lease.delivery.compiled.profile.id }
+    fileprivate static func make(_ lease: LocalV2SceneLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission) throws -> PlanetChildLocalV2SceneSelectionPermit {
+        try lease.workerCurrent();guard lease.delivery.data === admission,!command.returned else { throw PinKnownRefusal() };let result=try PlanetChildLocalV2SceneSelectionPermit(lease,command,admission,lease.scene.appearanceProjection());try admission.withCopy { try result.check(admission) };return result
+    }
+    func check(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:false) }
+    fileprivate func completionCurrent(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:true) }
+    fileprivate func handoffCurrent(_ original: PlanetChildLocalV2DataAdmission) throws {
+        guard command.returned,command.done,command.handedOff,command.error==nil else { throw PinKnownRefusal() }
+        try check(original,returned:true,handedOff:true)
+    }
+    fileprivate func commitCurrent(_ original: PlanetChildLocalV2DataAdmission,_ commit: () throws -> Void) throws {
+        guard original === admission,command.returned,command.done,command.handedOff,command.error==nil else { throw PinKnownRefusal() }
+        try lease.sdk.appearanceCommitCurrent(lease) {
+            try admission.appearanceConsumerLeaf()
+            guard lease.delivery.compiled.profile.id==profile,try lease.scene.appearanceProjection()==projected else { throw PinKnownRefusal() }
+            try lease.delivery.owner.appearanceConsumerLeaf(lease.delivery)
+            let wall=try lease.delivery.owner.wall(),now=try lease.delivery.owner.writer.clock.nanoseconds()
+            guard wall>=lease.scene.from else { throw PinKnownRefusal() }
+            try PlanetChildLocalV2ResourceRules.lifetime(lease.deadline,now,wall,min(lease.scene.until,lease.index.until))
+            try commit()
+        }
+    }
+    private func check(_ original: PlanetChildLocalV2DataAdmission,returned: Bool,handedOff: Bool=false) throws {
+        guard original === admission,lease.admits,command.returned==returned,ObjectIdentifier(Thread.current)==lease.delivery.owner.worker.map(ObjectIdentifier.init),lease.delivery.data === admission,lease.delivery.owner.delivery === lease.delivery,
+            lease.delivery.canonicalMediaIndex === lease.index,lease.delivery.canonicalScenes?[lease.scene.id] === lease.scene else { throw PinKnownRefusal() }
+        try admission.check()
+        if handedOff { try admission.appearanceHandoffCommand(command) }
+        else { try admission.appearanceNativeCommand(command,returned:returned) }
+        try lease.sdk.canonicalOriginal(lease)
+        guard try admission.scope().profileId==profile,lease.context.checksum==lease.delivery.compiled.profile.recordChecksum,lease.deadline==lease.delivery.owner.request.deadline,
+            try lease.scene.appearanceProjection()==projected else { throw PinKnownRefusal() }
+        let wall=try lease.delivery.owner.wall(),now=try lease.delivery.owner.writer.clock.nanoseconds();guard wall>=lease.scene.from else { throw PinKnownRefusal() };try PlanetChildLocalV2ResourceRules.lifetime(lease.deadline,now,wall,min(lease.scene.until,lease.index.until))
+        try lease.delivery.owner.mediaMetadataCurrent();try admission.check()
+    }
+    func selection(_ admission: PlanetChildLocalV2DataAdmission) throws -> PlanetChildAppearance.Selection { try check(admission);return projected }
+    func profileId(_ admission: PlanetChildLocalV2DataAdmission) throws -> String { try check(admission);return profile }
+}
+
+/** Final nonjoining leaf only: canonical admission/record checks already ran
+ * on the original worker. This never enters Vault/DataStore or dispatches main. */
+fileprivate extension LocalV2NativePackageLoader {
+    func appearanceConsumerLeaf(_ original: LocalV2OwnedPackageDelivery) throws {
+        lock.lock();let valid = !revoked && !closed && delivery === original;lock.unlock()
+        guard valid else { throw PinKnownRefusal() }
+        _ = try writer.packageLocal(request);try mediaMetadataCurrent()
+        let now=try wall();guard now<original.compiled.until else { throw PinKnownRefusal() }
+        _ = try original.compiled.keys(now)
+    }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    func appearanceCommitCurrent(_ lease: LocalV2SceneLease,_ commit: () throws -> Void) throws {
+        lock.lock();defer { lock.unlock() }
+        guard !sealed,context === lease.context,loader === lease.delivery.owner,channel === lease.channel,
+            canonicalScenes[lease.token] === lease,canonicalEpoch==lease.epoch,mediaEpoch==lease.mediaEpoch,
+            canonicalWeb === lease.web,canonicalHandler === lease.handler,
+            lease.delivery.owner.delivery === lease.delivery,lease.delivery.canonicalMediaIndex === lease.index,
+            lease.delivery.canonicalScenes?[lease.scene.id] === lease.scene,
+            lease.context.checksum==lease.delivery.compiled.profile.recordChecksum,
+            lease.deadline==lease.context.deadline,lease.deadline==lease.delivery.owner.request.deadline else { throw PinKnownRefusal() }
+        // Shares the same monitor as fast scene revoke and epoch/context seal.
+        // No callback that can schedule UI or enter a file lock is allowed here.
+        try lease.appearanceCommit(commit)
+    }
+}
+fileprivate extension LocalV2SceneLease {
+    func appearanceCommit(_ commit: () throws -> Void) throws {
+        // Also excludes display-link/worker lease revocation, whose native
+        // invalidation notification can arrive after its pure revoke flag.
+        lock.lock();defer { lock.unlock() };guard !revoked else { throw PinKnownRefusal() };try commit()
+    }
+}
+/** Private native ownership only. Neither this holder nor its completion
+ * receipt is serialized into any wire envelope or accepted from JavaScript. */
+fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff? }
+fileprivate final class LocalV2SDKAppearanceHandoff {
+    private let admission: PlanetChildLocalV2DataAdmission,permit: PlanetChildLocalV2SceneSelectionPermit,receipt: PlanetChildDataStore.LocalV2AppearanceCompletion
+    fileprivate init(_ admission: PlanetChildLocalV2DataAdmission,_ permit: PlanetChildLocalV2SceneSelectionPermit,_ receipt: PlanetChildDataStore.LocalV2AppearanceCompletion) { self.admission=admission;self.permit=permit;self.receipt=receipt }
+    private var commitReady=false,finished=false
+    func validate(on channel: LocalV2SDKChannel) throws {
+        guard !commitReady,!finished else { throw PinKnownRefusal() }
+        // The callback runs in the actual consumer after every ordinary worker
+        // and channel fence, with no channel/Vault/DataStore lock held.
+        _ = try channel.invoke(verified:{ [self] verification in
+            guard verification.returned,verification.done,verification.handedOff,verification.error==nil else { throw PinKnownRefusal() }
+            try permit.commitCurrent(admission) {
+                guard !commitReady,!finished else { throw PinKnownRefusal() }
+                commitReady=true
+            }
+        }) { [self] delivery in
+            guard delivery.data === admission else { throw PinKnownRefusal() }
+            try admission.withCopy { try permit.handoffCurrent(admission) };return [:]
+        }
+        // commitReady was set by that exact command consumer while the native
+        // owner monitor still excluded fast scene release/epoch retirement.
+        // The marker remains durable until finish; a release after this commit
+        // retires presentation and cannot retroactively undo the stable choice.
+        guard commitReady else { throw PinKnownRefusal() }
+    }
+    func finish() throws {
+        guard commitReady,!finished else { throw PinKnownRefusal() }
+        try receipt.finish();finished=true
+    }
+    func close() { receipt.close() }
+    func unknown() { receipt.retainUnknown();admission.appearanceUnknown() }
+    deinit { receipt.close() }
+}
+fileprivate final class LocalV2SDKAppearanceCommand {
+    let id: String;var known=false,ready=false,preparationJoined=false,completed=false,result: PlanetChildDataStore.LocalV2Appearance?,completion: PlanetChildDataStore.LocalV2AppearanceCompletion?
+    let permit: PlanetChildLocalV2SceneSelectionPermit?
+    init(_ id: String,_ permit: PlanetChildLocalV2SceneSelectionPermit?) { self.id=id;self.permit=permit }
+}
+extension PlanetChildLocalV2DataAdmission {
+    fileprivate func appearanceNativeCommand(_ command: LocalV2SDKChannel.Command,returned: Bool=false) throws { try check();guard sdkNativeCommand === command,command.returned==returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func appearanceConsumerLeaf() throws {
+        lock.lock();defer { lock.unlock() }
+        guard !revoked,sdkNativeCommand==nil,sdkAppearanceCommand==nil else { throw PinKnownRefusal() }
+    }
+    fileprivate func appearanceHandoffCommand(_ original: LocalV2SDKChannel.Command) throws {
+        try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkAppearanceCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() }
+    }
+    fileprivate func appearance(expected: UInt64?,permit: PlanetChildLocalV2SceneSelectionPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Appearance {
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        let command=LocalV2SDKAppearanceCommand(id,permit);if permit != nil { sdkAppearanceCommand=command }
+        do {
+            let result=try loader.withData(self) { try store.admittedAppearance(self,lease,expectedRevision:expected,permit:permit,commandId:id) }
+            if permit != nil { guard sdkAppearanceCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true
+                #if DEBUG
+                try PlanetChildAppearanceRuntimeDelay.hold(id)
+                #endif
+            }
+            do { try publication();try publish { sdkAppearanceResults.removeAll(where:{ $0.closedForSDK });guard sdkAppearanceResults.count<64 else { throw PinKnownRefusal() };sdkAppearanceResults.append(result);if permit != nil { command.result=result } };return result } catch { result.close();throw error }
+        } catch { if permit != nil { appearanceUnknown() };throw error }
+    }
+    func appearanceCommandKnown(_ id: String) throws { try check();guard let command=sdkAppearanceCommand,command.id==id,!command.known,!command.preparationJoined,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };command.known=true }
+    func appearanceCommandReady(_ id: String) throws { try check();guard let command=sdkAppearanceCommand,command.id==id,command.known,!command.ready else { throw PinKnownRefusal() };command.ready=true }
+    func appearanceCommandJoined(_ id: String) throws { try check();guard let command=sdkAppearanceCommand,let native=sdkNativeCommand,native.returned,command.id==id,command.known,command.ready,command.preparationJoined,!command.completed,command.result?.closedForSDK==true,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func completeAppearance(_ id: String) throws { guard let loader,let store,let lease,let native=sdkNativeCommand,native.returned,let command=sdkAppearanceCommand,command.id==id,command.result?.closedForSDK==true else { throw PinKnownRefusal() }
+        // Capture INSIDE work while the pending file remains present. Every
+        // post-work/channel/consumer fence must pass before the final unlink.
+        try loader.withData(self) { guard let permit=command.permit else { throw PinKnownRefusal() };try permit.completionCurrent(self);command.completion=try store.appearanceComplete(self,lease,id);try permit.completionCurrent(self) };command.completed=true
+    }
+    func appearanceUnknown() { collectionUnknown() }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    func appearancePerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws -> [String:Any] {
+        try requireOriginal(c,delivery);guard let admission=delivery.data,let channel else { throw PinKnownRefusal() }
+        if r.method=="rememberSceneSelection" {
+            guard let token=r.sceneToken,let expected=r.expectedRevision else { throw PinKnownRefusal() };lock.lock();let lease=canonicalScenes[token];lock.unlock();guard let lease,lease.context === c,lease.delivery === delivery else { throw PinKnownRefusal() };try lease.workerCurrent()
+            let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2SceneSelectionPermit.make(lease,command,admission),result=try admission.appearance(expected:expected,permit:permit,id:r.id);defer { result.close() };try lease.workerCurrent();let response=try result.dto();try admission.publication();return try admission.publish { response }
+        }
+        let saved=try admission.appearance(expected:nil,permit:nil,id:r.id);defer { saved.close() };let response=try saved.dto();guard saved.profileId==delivery.compiled.profile.id else { throw PinKnownRefusal() }
+        if r.method=="readSceneSelection" { try admission.publication();return try admission.publish { response } }
+        guard r.method=="restoreSceneSelection",r.expectedRevision==saved.revision else { throw PinKnownRefusal() }
+        try mediaRetireJoined();try canonicalRetireJoined(retireScenes:true);try requireOriginal(c,delivery)
+        func closed(_ status: String) -> [String:Any] { ["status":status,"profileId":saved.profileId,"revision":saved.revision,"selection":saved.selection?.dto as Any? ?? NSNull(),"scene":NSNull()] }
+        guard let selection=saved.selection else { try admission.publication();return try admission.publish { closed("absent") } }
+        // Full native fresh compilation; no cached source graph, approval,
+        // payload/hash, lease, URI, media object or renewed deadline is reused.
+        delivery.canonicalScenes=nil;delivery.canonicalMediaIndex=nil
+        let scenes: [String:LocalV2Scene]
+        do { let compiled=try canonicalIndex(c,delivery);scenes=compiled.1 } catch { try requireOriginal(c,delivery);try admission.publication();return try admission.publish { closed("unavailable") } }
+        guard let selected=scenes[selection.sceneId],try selected.appearanceProjection()==selection else { try admission.publication();return try admission.publish { closed("unavailable") } }
+        let owner=try JSONSerialization.jsonObject(with:Data(selected.owner.json(sorted:true).utf8)) as! [String:Any]
+        let open=PlanetChildLocalV2Wire.Request(method:"openScene",id:r.id,token:c.token,action:nil,target:nil,reference:nil,query:nil,collection:nil,expectedRevision:nil,references:nil,mediaOwner:owner,assetId:nil,mediaLayout:nil,presentationToken:nil,sceneId:selected.id)
+        var opened: [String:Any]?
+        do {
+            let scene=try canonicalPerform(open,c,delivery);guard scene["status"] as? String=="opened",let token=scene["sceneToken"] as? String else { throw PinKnownRefusal() };opened=scene
+            lock.lock();let lease=canonicalScenes[token];lock.unlock();guard let lease,lease.context === c,try lease.scene.appearanceProjection()==selection else { throw PinKnownRefusal() };try lease.workerCurrent()
+            let reread=try admission.appearance(expected:nil,permit:nil,id:r.id);defer { reread.close() };guard reread.profileId==saved.profileId,reread.revision==saved.revision,reread.selection==selection else { throw PinKnownRefusal() }
+            try admission.publication();return try admission.publish { ["status":"restored","profileId":saved.profileId,"revision":saved.revision,"selection":selection.dto,"scene":scene] }
+        } catch { let original=error;if opened != nil { try canonicalRetireJoined(retireScenes:true) };try requireOriginal(c,delivery);if original is PlanetChildLocalV2ResourceError { throw original };try admission.publication();return try admission.publish { closed("unavailable") } }
+    }
+}
+#if DEBUG
+extension PlanetChildLocalV2SDKOwner {
+    func runtimeAppearanceSceneAdmits(_ token: String) -> Bool { lock.lock();let scene=canonicalScenes[token],actual = !sealed && scene?.context === context;lock.unlock();return actual && scene?.admits==true }
 }
 #endif

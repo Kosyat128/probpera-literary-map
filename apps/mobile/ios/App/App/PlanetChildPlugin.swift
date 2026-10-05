@@ -9,7 +9,7 @@ import Capacitor
 public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier="PlanetChildPlugin"
     public let jsName="PlanetChild"
-    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
+    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
     private var transport: PlanetChildLocalV2DataTransport?,owner: PlanetChildLocalV2SDKOwner?
     public override func load() {
         DispatchQueue.main.async { [weak self] in guard let self,let host=self.bridge?.viewController else { return }
@@ -20,7 +20,12 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     private func invoke(_ name: String,_ call: CAPPluginCall) {
         let captured=call.options as? [String:Any] ?? [:]
         DispatchQueue.main.async { [weak self] in guard let self,let transport=self.transport else { call.resolve(PlanetChildLocalV2Wire.refusal(name,captured,reason:"unavailable"));return }
-            transport.invoke(name,captured) { result in DispatchQueue.main.async { call.resolve(result) } }
+            transport.invoke(name,captured) { result in
+                // Return only after the actual original SDK resolve has run.
+                // Keep native callback ownership through the actual SDK return.
+                if Thread.isMainThread { call.resolve(result) }
+                else { DispatchQueue.main.sync { call.resolve(result) } }
+            }
         }
     }
     @objc public func bootstrap(_ call: CAPPluginCall) { invoke("bootstrap",call) }
@@ -42,8 +47,12 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public override func shouldOverrideLoad(_ navigationAction: WKNavigationAction) -> NSNumber? {
         if navigationAction.targetFrame?.isMainFrame != false { owner?.routeWillChange() };return nil
     }
+    @objc public func readSceneSelection(_ call: CAPPluginCall) { invoke("readSceneSelection",call) }
+    @objc public func rememberSceneSelection(_ call: CAPPluginCall) { invoke("rememberSceneSelection",call) }
+    @objc public func restoreSceneSelection(_ call: CAPPluginCall) { invoke("restoreSceneSelection",call) }
     #if DEBUG
     func runtimeOriginalContextToken() -> String? { owner?.runtimeOriginalContextToken() }
+    func runtimeAppearanceSceneAdmits(_ token: String) -> Bool { owner?.runtimeAppearanceSceneAdmits(token)==true }
     #endif
     func nativeViewWillDisappear() { owner?.nativeViewWillDisappear() }
     func routeWillChange() { transport?.routeWillChange() }

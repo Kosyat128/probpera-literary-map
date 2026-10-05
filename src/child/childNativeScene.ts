@@ -1,4 +1,5 @@
 import { childDataArray, childRecord, decodeChildEntityReference, type ChildEntityReference } from "./childPackage";
+import type { ChildNativeProfileAppearance, ChildNativeAppearanceRestore } from "./childNativeAppearance";
 import { childNativeMediaOwner, childNativeMediaToken, sameChildNativeMediaReference } from "./childNativeMedia";
 
 /** These closed DTOs correlate a native-owned output. Parsing never verifies a
@@ -33,6 +34,10 @@ export interface ChildNativeWebResource {
 }
 export interface ChildNativeSceneRecipient { clear(): void; join(): Promise<void> }
 export interface ChildNativeSceneController {
+  /** Stable protected profile choice only; decoding grants no native approval. */
+  readSelection(): Promise<ChildNativeProfileAppearance | null>;
+  remember(scene: ChildNativeScene, expectedRevision: number): Promise<ChildNativeProfileAppearance | null>;
+  restore(expected: ChildNativeProfileAppearance): Promise<ChildNativeAppearanceRestore | null>;
   list(owner: ChildEntityReference): Promise<readonly ChildNativeSceneSummary[] | null>;
   open(owner: ChildEntityReference, sceneId: string): Promise<ChildNativeScene | null>;
   acquire(scene: ChildNativeScene, slot: ChildNativeSceneSlot): Promise<ChildNativeWebResource | null>;

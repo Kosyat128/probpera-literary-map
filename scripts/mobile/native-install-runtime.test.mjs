@@ -1,3 +1,4 @@
+import { childLocalV2AppearanceTestMethods, childLocalV2AppearanceFixtureSource, childLocalV2AppearanceFixtureArguments, childLocalV2AppearanceFixturePassed, verifyNativeChildLocalV2AppearanceFixtureSource } from "./native-install-runtime.mjs";
 import { childLocalV2CanonicalResourcesTestMethods,childLocalV2CanonicalResourcesFixtureSource,childLocalV2CanonicalResourcesFixtureArguments,childLocalV2CanonicalResourcesFixturePassed,verifyNativeChildLocalV2CanonicalResourcesFixtureSource } from "./native-install-runtime.mjs";
 import { childLocalV2ResourcesTestMethods, childLocalV2ResourcesFixtureSource, childLocalV2ResourcesFixtureArguments, childLocalV2ResourcesFixturePassed, verifyNativeChildLocalV2ResourcesFixtureSource } from './native-install-runtime.mjs';
 import { childLocalV2MediaTestMethods, childLocalV2MediaFixtureSource, childLocalV2MediaFixtureArguments, childLocalV2MediaFixturePassed, verifyNativeChildLocalV2MediaFixtureSource } from "./native-install-runtime.mjs";
@@ -646,5 +647,35 @@ describe("canonical native decoder fixture selector",()=>{
   for(const bad of ["OK (5 tests)\nINSTRUMENTATION_CODE: -1\n",full.replace("INSTRUMENTATION_STATUS_CODE: 0","INSTRUMENTATION_STATUS_CODE: -3"),
    full+"AssumptionViolatedException: genuine native fixture missing\n",full.replace(klass,"foreign.Class"),full.replace("numtests=5","numtests=4")])
    expect(childLocalV2CanonicalResourcesFixturePassed(bad)).toBe(false);
+ });
+});
+
+
+describe("protected per-profile appearance fixture selector",()=>{
+ const klass="ru.probpera.literaryplanet.PlanetChildAppearanceRuntimeTest",run="c".repeat(32);
+ function observation(){const rows=[];childLocalV2AppearanceTestMethods.forEach((method,index)=>{for(const status of [1,0])rows.push(
+  "INSTRUMENTATION_STATUS: class="+klass,"INSTRUMENTATION_STATUS: test="+method,"INSTRUMENTATION_STATUS: numtests=6",
+  "INSTRUMENTATION_STATUS: current="+(index+1),"INSTRUMENTATION_STATUS: id=AndroidJUnitRunner","INSTRUMENTATION_STATUS_CODE: "+status);
+ });rows.push("INSTRUMENTATION_RESULT: stream=","OK (6 tests)","INSTRUMENTATION_CODE: -1");return rows.join("\n")+"\n";}
+ it("binds exactly six methods and a nonauthority metadata phase",()=>{
+  const args=childLocalV2AppearanceFixtureArguments(run);expect(Object.isFrozen(args)).toBe(true);expect(args).toHaveLength(15);
+  expect(args[7].split(",")).toEqual(childLocalV2AppearanceTestMethods.map(method=>klass+"#"+method));
+  expect(args.slice(11,14)).toEqual(["-e","literaryChildAppearancePhase","local-v2-profile-appearance"]);
+  expect(()=>childLocalV2AppearanceFixtureArguments(run+"0")).toThrow();
+  const row={path:childLocalV2AppearanceFixtureSource,sha256:"d".repeat(64)};
+  expect(verifyNativeChildLocalV2AppearanceFixtureSource([row])).toBe(true);
+  expect(()=>verifyNativeChildLocalV2AppearanceFixtureSource([row,row])).toThrow();
+ });
+ it("requires every actual start and completion and denies assumption or headline acceptance",()=>{
+  const full=observation();expect(childLocalV2AppearanceFixturePassed(full)).toBe(true);
+  for(const bad of ["OK (6 tests)\nINSTRUMENTATION_CODE: -1\n",full.replace("numtests=6","numtests=5"),
+   full.replace(klass,"foreign.Class"),full.replace("INSTRUMENTATION_STATUS_CODE: 0","INSTRUMENTATION_STATUS_CODE: -3"),
+   full+"AssumptionViolatedException: genuine approval missing\n",full.replace("OK (6 tests)","OK (5 tests)")])
+    expect(childLocalV2AppearanceFixturePassed(bad)).toBe(false);
+ });
+ it("denies selector mixing, iOS and reboot before any target interaction",async()=>{
+  for(const options of [{platform:"ios"},{platform:"android",reboot:true},{platform:"android",childLocalV2CanonicalResources:true}]){
+   await expect(runNativeInstallRuntime({rootDir:process.cwd(),childLocalV2Appearance:true,...options})).rejects.toThrow();
+  }
  });
 });

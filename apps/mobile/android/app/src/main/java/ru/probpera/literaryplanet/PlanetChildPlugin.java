@@ -44,6 +44,9 @@ public final class PlanetChildPlugin extends Plugin {
     @com.getcapacitor.PluginMethod public void presentMedia(com.getcapacitor.PluginCall call){dispatch("presentMedia",call);}
     @com.getcapacitor.PluginMethod public void releaseMedia(com.getcapacitor.PluginCall call){dispatch("releaseMedia",call);}
     @PluginMethod public void writeCollection(PluginCall call){dispatch("writeCollection",call);}
+    @PluginMethod public void readSceneSelection(PluginCall call){dispatch("readSceneSelection",call);}
+    @PluginMethod public void rememberSceneSelection(PluginCall call){dispatch("rememberSceneSelection",call);}
+    @PluginMethod public void restoreSceneSelection(PluginCall call){dispatch("restoreSceneSelection",call);}
     @PluginMethod public void listScenes(PluginCall call){dispatch("listScenes",call);}
     @PluginMethod public void openScene(PluginCall call){dispatch("openScene",call);}
     @PluginMethod public void releaseScene(PluginCall call){dispatch("releaseScene",call);}

@@ -149,7 +149,9 @@ const emptyCountries: Country[] = [];
 const emptySceneValue={phase:"empty" as const,revision:0,scene:null,textures:null};
 const emptySceneSnapshot=()=>emptySceneValue;
 const emptySceneSubscribe=()=>()=>undefined;
-export function ChildNativeReadyView({ controller, snapshot }: { controller: ChildNativeAppController; snapshot: ChildNativeAppSnapshot }) {
+export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }: {
+  controller: ChildNativeAppController; snapshot: ChildNativeAppSnapshot; retainedProfileId?: string;
+}) {
   const { language } = useInterfaceLanguage(), copy = labels[language], services = usePlatformServices();
   const c = snapshot.context;
   const resources=useMemo(()=>c?createChildCanonicalResources(controller,c.token):null,[controller,c?.token]);
@@ -165,6 +167,18 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   const [collection, setCollection] = useState<ChildNativeCollection | null>(null);
   const [saved, setSaved] = useState<ChildNativeCollectionValue | null>(null), [savedRows, setSavedRows] = useState<readonly ChildNativeEntity[]>([]);
   const sequence = useRef(0), mounted = useRef(true), context = useRef(c); context.current = c;
+  const previousProfile = useRef(c?.profileId ?? retainedProfileId ?? null);
+  // Only logical route intent survives a seal. Fresh native references and
+  // their locale checksums must be resolved again before any text is shown.
+  const navigationIntent = useRef<{ profileId: string; current: string | null; history: string[]; collection: ChildNativeCollection | null } | null>(null);
+  const hydratedContext = useRef<typeof c>(null);
+  const logicalKey = (ref: ChildEntityReference) => ref.kind + "/" + ref.id;
+  useLayoutEffect(() => {
+    if(c?.profileId && hydratedContext.current === c) navigationIntent.current = {
+      profileId:c.profileId,current:current ? logicalKey(current.reference) : null,
+      history:history.map(logicalKey),collection,
+    };
+  }, [c,current,history,collection]);
   const size = useMemo(() => createBookySizeController({ preferences: services.preferences, enabled: true }), [services.preferences]);
   const sizeSnapshot = useSyncExternalStore(size.subscribe, size.getSnapshot, size.getServerSnapshot);
   useLayoutEffect(() => size.activate(), [size]);
@@ -189,13 +203,21 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     if (row) { if (!back && current) setHistory(previous => [...previous.slice(-31), current.reference]); setCurrent(row); }
     else setCurrent(null);
-    setLoading(false);
+    await resources?.restore?.();
+    if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const sameProfile=!c||previousProfile.current===c.profileId;
+    const intent=c?.profileId&&navigationIntent.current?.profileId===c.profileId?navigationIntent.current:null;
+    hydratedContext.current=null;
+    if(c)previousProfile.current=c.profileId;
+    if(!sameProfile)navigationIntent.current=null;
+    setCurrent(null);setRoots([]);setQuery("");setSearchResults(null);setHistory([]);
+    setCollection(null);setSaved(null);setSavedRows([]);setScenes([]);setSceneOwner(null);setLoading(true);
+    // Keep only a stable canonical country ID/camera intent, never retired copy.
+    setSelectedCountry(previous=>sameProfile&&previous?{id:previous.id,name:"",description:"",writers:[]}:null);
     if (!c?.home || snapshot.status !== "child") return;
     const original = c, attempt = ++sequence.current; let alive = true;
-    setCurrent(null); setRoots([]); setQuery(""); setSearchResults(null); setHistory([]);
-    setCollection(null); setSaved(null); setSavedRows([]); setSelectedCountry(null); setLoading(true);
     void (async () => {
       const home = await controller.readEntity(original.home!);
       const rows: ChildNativeEntity[] = [];
@@ -204,12 +226,43 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
         const row = await controller.readEntity(ref); if (!row) return;
         rows.push(row);
       }
-      if (alive && mounted.current && context.current === original && sequence.current === attempt) {
-        setCurrent(home); setRoots(Object.freeze(rows)); setLoading(false);
+      if(!alive||!mounted.current||context.current!==original||sequence.current!==attempt)return;
+      const valid=()=>alive&&mounted.current&&context.current===original&&sequence.current===attempt;
+      const freshRows=new Map<string,ChildNativeEntity>();
+      if(home)freshRows.set(logicalKey(home.reference),home);
+      for(const row of rows)freshRows.set(logicalKey(row.reference),row);
+      let restoredCollection:ChildNativeCollectionValue|null=null;
+      const restoredRows:ChildNativeEntity[]=[];
+      if(intent?.collection) {
+        restoredCollection=await controller.readCollection(intent.collection);
+        if(!valid())return;
+        if(restoredCollection)for(const ref of restoredCollection.references) {
+          const row=await controller.readEntity(ref);if(!valid())return;
+          if(!row)break;restoredRows.push(row);freshRows.set(logicalKey(row.reference),row);
+        }
+      }
+      // Walk only freshly admitted child references; never manufacture a
+      // destination checksum from a retired reference or an adult index.
+      const wanted=new Set([...(intent?.history??[]),...(intent?.current?[intent.current]:[])]);
+      const queue=[...freshRows.values()].flatMap(row=>row.payload.references);
+      const visited=new Set(freshRows.keys());
+      for(let scanned=0;queue.length&&scanned<256&&[...wanted].some(key=>!freshRows.has(key));scanned++) {
+        const ref=queue.shift()!,key=logicalKey(ref);if(visited.has(key))continue;visited.add(key);
+        const row=await controller.readEntity(ref);if(!valid())return;
+        if(!row)break;freshRows.set(key,row);queue.push(...row.payload.references);
+      }
+      await resources?.restore?.();
+      if (valid()) {
+        hydratedContext.current=original;
+        setCurrent(intent?.current?freshRows.get(intent.current)??home:home);setRoots(Object.freeze(rows));
+        setHistory((intent?.history??[]).flatMap(key=>{const row=freshRows.get(key);return row?[row.reference]:[];}));
+        setCollection(intent?.collection??null);setSaved(restoredCollection);setSavedRows(Object.freeze(restoredRows));
+        setSelectedCountry(previous=>previous?rows.filter(row=>row.reference.kind==="country").map(row=>({id:row.reference.id,name:row.payload.title,description:row.payload.text,writers:[]})).find(row=>row.id===previous.id)??null:null);
+        setLoading(false);
       }
     })();
     return () => { alive = false; ++sequence.current; };
-  }, [controller, c, snapshot.status]);
+  }, [controller, c, snapshot.status, resources]);
   async function search() {
     const original = context.current, attempt = ++sequence.current;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
@@ -218,7 +271,8 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
     if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
     const result = await controller.search(query);
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
-    setSearchResults(result); setLoading(false);
+    setSearchResults(result);await resources?.restore?.();
+    if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
   async function showCollection(name: ChildNativeCollection) {
     const original = context.current, attempt = ++sequence.current;
@@ -232,7 +286,8 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
       rows.push(row);
     }
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
-    setSaved(value); setSavedRows(Object.freeze(rows)); setLoading(false);
+    setSaved(value);setSavedRows(Object.freeze(rows));await resources?.restore?.();
+    if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
   async function remove(ref: ChildEntityReference) {
     if (!collection || !saved || collection === "recent") return;
@@ -248,25 +303,35 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
     await controller.writeCollection(name, value.revision, next);
   }
   useEffect(()=>{let alive=true;setScenes([]);setSceneOwner(null);if(current&&controller.scenes)void controller.scenes.list(current.reference).then(values=>{if(alive){setScenes(values??[]);setSceneOwner(current);}});return()=>{alive=false;};},[controller,current]);
-  if (!c || snapshot.status !== "child") return <ChildNativeClosedView snapshot={snapshot} controller={controller} />;
-  return <main className="child-native-app" data-child-native-phase="ready" data-child-native-profile={c.profileId}>
-    <header className="child-native-header"><h1>{copy.title}</h1><NativeProfileControls controller={controller} snapshot={snapshot} /></header>
+  const admitted=!!c&&snapshot.phase==="ready"&&snapshot.status==="child";
+  const retained=!!retainedProfileId&&!c&&(snapshot.phase==="sealed"||snapshot.phase==="transition");
+  if(!admitted&&!retained)return <ChildNativeClosedView snapshot={snapshot} controller={controller}/>;
+  return <main className="child-native-app" data-child-native-phase={admitted?"ready":"sealed"} data-child-native-profile={admitted?c!.profileId:undefined}>
+    <div className="child-native-canonical-shell" data-native-child-retained={admitted?"active":"sealed"} aria-hidden={!admitted}
+      ref={element=>{if(element)element.inert=!admitted;}}>
     <LiteraryWorldMap countries={countries.length ? countries : emptyCountries} selectedCountry={selectedCountry}
       onCountrySelect={country => {
+        if(!admitted)return;
         const ref = roots.find(row => row.reference.id === country.id)?.reference;
         if (ref) { setSelectedCountry(country); void open(ref); }
       }} childPresentation childResources={resources??undefined} onChildHotspot={target=>{void open(target);}}
-      mode="immersive" forceLoad bookyCalmMotion runtimeActive preserveSceneDuringReload />
+      mode="immersive" forceLoad bookyCalmMotion runtimeActive={admitted} preserveSceneDuringReload />
+    </div>
+    {c&&admitted?<>
+    <header className="child-native-header"><h1>{copy.title}</h1><NativeProfileControls controller={controller} snapshot={snapshot} /></header>
     <aside className="child-native-booky" data-booky-size={sizeSnapshot.size}>
       <PlanetMascotAvatar src={mascotImage} calmMotion active />
       <span>{language === "ru" ? "Книжулик" : "Mr. Booky"}</span>
     </aside>
     <section className="child-native-panel" aria-label={copy.title}>
+      {sceneState.phase==="unavailable"&&<p role="alert" className="child-native-appearance-error">
+        {sceneState.persistence==="save-failed"?(language==="ru"?"Не удалось подтвердить сохранение оформления.":"The appearance save could not be confirmed."):(language==="ru"?"Сохранённое оформление сейчас недоступно.":"The saved appearance is currently unavailable.")}
+        <button type="button" onClick={()=>{void resources?.restore?.();}}>{language==="ru"?"Повторить восстановление":"Retry restoration"}</button>
+      </p>}
       {!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
         <h2>{language==="ru"?"Оформление планеты":"Planet appearance"}</h2>
         {scenes.map(scene=><button key={scene.sceneId} type="button" disabled={sceneState.phase==="preparing"} onClick={()=>{void resources?.select(current.reference,scene.sceneId);}}>{scene.title}</button>)}
-        {sceneState.phase==="preparing"&&<p role="status">{copy.loading}</p>}
-        {sceneState.phase==="unavailable"&&<p role="alert">{copy.bodyUnavailable}</p>}
+        {sceneState.phase==="preparing"&&<p role="status">{sceneState.persistence==="saving"?(language==="ru"?"Сохраняем оформление…":"Saving appearance…"):(language==="ru"?"Восстанавливаем оформление…":"Restoring appearance…")}</p>}
         {!!sceneState.scene?.hotspots.length&&<ul aria-label={language==="ru"?"Материалы оформления":"Scene content"}>
           {sceneState.scene.hotspots.map(hotspot=><li key={hotspot.id}><ChildNativeReferenceButton controller={controller} reference={hotspot.target} onOpen={()=>{void open(hotspot.target);}}/></li>)}
         </ul>}
@@ -303,6 +368,7 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
         </li>)}</ul>
       </article> : <p role="status">{copy.bodyUnavailable}</p>}
     </section>
+    </>:<ChildNativeClosedView snapshot={snapshot} controller={controller}/>}
   </main>;
 }
 function ChildNativeReferenceButton({ controller, reference, onOpen }: {

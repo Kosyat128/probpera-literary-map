@@ -6,6 +6,8 @@ import { decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildN
   type ChildNativeMediaController } from "./childNativeMedia";
 import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeWebResource, decodeChildNativeSceneRetired, childNativeSceneId,
   type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
+import { childNativeAppearanceRevision, childNativeAppearanceFromScene, sameChildNativeAppearance,
+  decodeChildNativeProfileAppearance, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
 import localPolicy from "./childNativeLocalV2Policy.json";
 import type { PlatformServices, PreferenceStore } from "../platform/ports";
 
@@ -28,6 +30,9 @@ export interface ChildNativeAppPlugin {
   releaseScene?(request: unknown): Promise<unknown>;
   acquireWebResource?(request: unknown): Promise<unknown>;
   releaseWebResource?(request: unknown): Promise<unknown>;
+  readSceneSelection?(request: unknown): Promise<unknown>;
+  rememberSceneSelection?(request: unknown): Promise<unknown>;
+  restoreSceneSelection?(request: unknown): Promise<unknown>;
   addListener(event: "invalidated", listener: (value: unknown) => void): Promise<{ remove(): Promise<void> }>;
 }
 export const CHILD_NATIVE_LOCAL_POLICY_VERSION = localPolicy.version;
@@ -63,8 +68,8 @@ export interface ChildNativeAppController {
   readonly scenes?: ChildNativeSceneController;
   getSnapshot(): ChildNativeAppSnapshot;
   subscribe(listener: () => void): () => void;
-  /** A concrete host unmounts old providers/routes synchronously. This has no
-   * authority return; the native operation independently joins its owners. */
+  /** A concrete host synchronously clears old child content/routes/resources.
+   * An inert canonical renderer may remain; native independently joins owners. */
   attachPresentationBarrier(clear: () => void): () => void;
   start(): Promise<void>;
   refresh(): Promise<void>;
@@ -434,21 +439,30 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource",
+  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
     const work = dataTail.then(async () => {
     if (!current(c, generation)) return null;
+    let dispatched = false;
     try {
-      const original = request(), raw = await invoke(method, { ...original, contextToken: c.token, ...input });
-      if (!current(c, generation)) return null;
+      const original = request(); dispatched = true;
+      const raw = await invoke(method, { ...original, contextToken: c.token, ...input });
+      if (!current(c, generation)) {
+        if (method === "rememberSceneSelection") uncertain = true;
+        return null;
+      }
       const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
       if (!row || row.version !== 2 || row.requestId !== original.requestId || row.status !== "ok"
         || row.contextToken !== c.token || row.generation !== c.generation) throw new Error("Native data unavailable");
       const value = decode(row.value); if (value === null || !current(c, generation)) throw new Error("Native data unavailable");
       return value;
     } catch {
+      // An uncorrelated save reply cannot tell us whether native committed.
+      // Keep this controller sealed until a new host lifetime independently
+      // reads native state; refresh/lifecycle must not replay an uncertain save.
+      if (method === "rememberSceneSelection" && dispatched) uncertain = true;
       if (snapshot.context === c) { seal("unavailable"); await retire(c); }
       return null;
     }
@@ -458,6 +472,30 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
   }
   return Object.freeze({
     scenes:Object.freeze({
+      readSelection() {
+        const c=snapshot.context;
+        if(!c?.profileId||typeof options.plugin?.readSceneSelection!=="function")return Promise.resolve(null);
+        return data("readSceneSelection",{},raw=>decodeChildNativeProfileAppearance(raw,c.profileId!));
+      },
+      remember(scene,expectedRevision) {
+        const c=snapshot.context,projected=childNativeAppearanceFromScene(scene);
+        if(!c?.profileId||!projected||!childNativeMediaToken(scene.sceneToken)||sceneRetirement
+          ||!childNativeAppearanceRevision(expectedRevision)||expectedRevision>=Number.MAX_SAFE_INTEGER-1
+          ||typeof options.plugin?.rememberSceneSelection!=="function")return Promise.resolve(null);
+        return data("rememberSceneSelection",{sceneToken:scene.sceneToken,expectedRevision},raw=>{
+          const saved=decodeChildNativeProfileAppearance(raw,c.profileId!);
+          return saved?.revision===expectedRevision+1&&saved.selection&&sameChildNativeAppearance(saved.selection,projected)?saved:null;
+        });
+      },
+      restore(expected) {
+        const c=snapshot.context;
+        if(!c?.profileId||sceneRetirement||typeof options.plugin?.restoreSceneSelection!=="function")return Promise.resolve(null);
+        const copied=decodeChildNativeProfileAppearance(expected,c.profileId);
+        if(!copied)return Promise.resolve(null);
+        // Even an uncertain reply may have minted native scene ownership.
+        sceneTouched=true;
+        return data("restoreSceneSelection",{expectedRevision:copied.revision},raw=>decodeChildNativeAppearanceRestore(raw,c.profileId!,copied));
+      },
       list(owner) {
         const copied=childNativeMediaOwner(owner);if(!copied||typeof options.plugin?.listScenes!=="function")return Promise.resolve(null);
         return data("listScenes",{owner:copied},raw=>decodeChildNativeSceneSummaries(raw,copied));

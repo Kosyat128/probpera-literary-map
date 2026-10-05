@@ -3,6 +3,8 @@ import { createChildNativeAppController, decodeChildNativeAppReply, childNativeP
   CHILD_NATIVE_LOCAL_POLICY_CHECKSUM, CHILD_NATIVE_LOCAL_POLICY_VERSION,
   type ChildNativeAppController, type ChildNativeAppPlugin, type ChildNativeContext } from "./childNativeAppBridge";
 import type { ChildEntityReference } from "./childPackage";
+import { childNativeAppearanceFromScene } from "./childNativeAppearance";
+import { decodeChildNativeScene } from "./childNativeScene";
 import type { PlatformServices, PlatformSnapshot } from "../platform/ports";
 
 // AUTHORED_NOT_RUN. Synthetic correlated native DTOs exercise presentation
@@ -251,5 +253,50 @@ describe("media revocation retires a canonical recipient in the same context",()
   const result=f.controller.media!.release("d".repeat(32));
   expect(clear).toHaveBeenCalledOnce();await settle();expect(release).not.toHaveBeenCalled();
   cleanup.resolve();expect(await result).toBe(true);expect(release).toHaveBeenCalledOnce();
+ });
+});
+
+describe("native protected appearance data commands (synthetic wire only)",()=>{
+ const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:kind,entity:ref(kind,kind),mime:"image/png",checksum:HASH,encodedBytes:16,altText:kind});
+ const scene=()=>decodeChildNativeScene({status:"opened",sceneToken:"d".repeat(32),sceneId:"choice",owner:ref(),skin:slot("skin"),
+  stand:{geometryId:"stand.base.child-book-cloud",asset:slot("stand")},background:{geometryId:"background.base.library",asset:slot("background")},hotspots:[],remainingLifetimeMs:5000},ref(),"choice")!;
+ it("reads an exact profile-bound stable choice and sends only native scene token/revision to remember",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,selection=childNativeAppearanceFromScene(scene())!;
+  plugin.readSceneSelection=vi.fn(async r=>f.dataReply(r,{profileId:"native-profile",revision:1,selection}));
+  plugin.rememberSceneSelection=vi.fn(async r=>f.dataReply(r,{profileId:"native-profile",revision:2,selection}));
+  await f.controller.start();const saved=await f.controller.scenes!.readSelection();expect(saved?.revision).toBe(1);
+  expect(await f.controller.scenes!.remember(scene(),1)).toMatchObject({revision:2,selection});
+  const request=(plugin.rememberSceneSelection as ReturnType<typeof vi.fn>).mock.calls[0][0];
+  expect(Object.keys(request).sort()).toEqual(["version","requestId","contextToken","sceneToken","expectedRevision"].sort());
+ });
+ it("refuses a caller-correlated response for another native profile and seals before publishing",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin;
+  plugin.readSceneSelection=vi.fn(async r=>f.dataReply(r,{profileId:"other",revision:0,selection:null}));
+  await f.controller.start();expect(await f.controller.scenes!.readSelection()).toBeNull();
+  expect(f.controller.getSnapshot().phase).toBe("sealed");expect(f.clear).toHaveBeenCalled();
+ });
+ it("correlates restore with original saved revision/triad and a new native scene",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,selection=childNativeAppearanceFromScene(scene())!;
+  const saved={profileId:"native-profile",revision:2,selection};
+  plugin.restoreSceneSelection=vi.fn(async r=>f.dataReply(r,{status:"restored",...saved,scene:scene()}));
+  plugin.releaseScene=vi.fn(async r=>f.dataReply(r,{status:"retired",sceneToken:(r as {sceneToken:string|null}).sceneToken}));
+  await f.controller.start();expect(await f.controller.scenes!.restore(saved)).toMatchObject({status:"restored",revision:2});
+  await f.controller.scenes!.releaseAll();expect(plugin.releaseScene).toHaveBeenCalled();
+ });
+ it("latches an uncertain native save and blocks same-host refresh or lifecycle retry",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,selection=childNativeAppearanceFromScene(scene())!;
+  plugin.rememberSceneSelection=vi.fn(async r=>f.dataReply(r,{profileId:"native-profile",revision:9,selection}));
+  await f.controller.start();expect(await f.controller.scenes!.remember(scene(),1)).toBeNull();
+  const bootstrapCalls=f.plugin.bootstrap.mock.calls.length;
+  await f.controller.refresh();f.visibility("background");f.visibility("active");await settle();
+  expect(f.controller.getSnapshot().phase).toBe("sealed");expect(f.plugin.bootstrap).toHaveBeenCalledTimes(bootstrapCalls);
+  expect(await f.controller.scenes!.remember(scene(),1)).toBeNull();expect(plugin.rememberSceneSelection).toHaveBeenCalledOnce();
+ });
+ it("late protected selection reads cannot survive lifecycle retirement",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,late=deferred<unknown>();
+  plugin.readSceneSelection=vi.fn(()=>late.promise);await f.controller.start();
+  const pending=f.controller.scenes!.readSelection();await settle();f.visibility("background");
+  late.resolve(f.dataReply((plugin.readSceneSelection as ReturnType<typeof vi.fn>).mock.calls[0][0],{profileId:"native-profile",revision:0,selection:null}));
+  expect(await pending).toBeNull();expect(f.controller.getSnapshot().phase).toBe("sealed");
  });
 });

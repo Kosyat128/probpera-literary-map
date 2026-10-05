@@ -269,6 +269,9 @@ final class PlanetChildDataTransport {
         else if("perform".equals(method))row=record(value,"version","requestId","contextToken","action","target");
         else if("readEntity".equals(method))row=record(value,"version","requestId","contextToken","reference");
         else if("search".equals(method))row=record(value,"version","requestId","contextToken","query");else if("listMedia".equals(method))row=record(value,"version","requestId","contextToken","owner");else if("presentMedia".equals(method))row=record(value,"version","requestId","contextToken","owner","assetId","layout");else if("releaseMedia".equals(method))row=record(value,"version","requestId","contextToken","presentationToken");
+        else if("readSceneSelection".equals(method))row=record(value,"version","requestId","contextToken");
+        else if("rememberSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","expectedRevision");
+        else if("restoreSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","expectedRevision");
         else if("listScenes".equals(method))row=record(value,"version","requestId","contextToken","owner");
         else if("openScene".equals(method))row=record(value,"version","requestId","contextToken","owner","sceneId");
         else if("releaseScene".equals(method))row=record(value,"version","requestId","contextToken","sceneToken");
@@ -300,6 +303,7 @@ final class PlanetChildDataTransport {
         }
         if("listMedia".equals(method)||"presentMedia".equals(method))owner=v2Reference(row.get("owner"));if("presentMedia".equals(method)){assetId=string(row.get("assetId"),96);require(assetId.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));layout=v2MediaLayout(row.get("layout"));}if("releaseMedia".equals(method)&&row.get("presentationToken")!=null)presentationToken=correlation(row.get("presentationToken"));if("listScenes".equals(method)||"openScene".equals(method))owner=v2Reference(row.get("owner"));
         if("openScene".equals(method)){sceneId=string(row.get("sceneId"),96);require(sceneId.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));}
+        if("rememberSceneSelection".equals(method)||"restoreSceneSelection".equals(method)){revision=v2Integer(row.get("expectedRevision"),0,"rememberSceneSelection".equals(method)?MAX_SAFE-2:MAX_SAFE-1);if("rememberSceneSelection".equals(method))sceneToken=correlation(row.get("sceneToken"));}
         if("releaseScene".equals(method)&&row.get("sceneToken")!=null)sceneToken=correlation(row.get("sceneToken"));
         if("acquireWebResource".equals(method)){sceneToken=correlation(row.get("sceneToken"));slotId=string(row.get("slotId"),10);require(Arrays.asList("skin","stand","background").contains(slotId));}
         if("releaseWebResource".equals(method)&&row.get("resourceToken")!=null)resourceToken=correlation(row.get("resourceToken"));

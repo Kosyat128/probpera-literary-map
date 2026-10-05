@@ -59,6 +59,11 @@ const data=(request:any,value:any)=>({version:2,requestId:request.requestId,stat
 const scene={status:"opened",sceneToken,sceneId:"synthetic-original-composition",owner,skin:slots.skin,
  stand:{geometryId:"stand.base.child-book-cloud",asset:slots.stand},background:{geometryId:"background.base.library",asset:slots.background},
  hotspots:[{id:"approved-activity-proposal",target:owner,position:[2,0,0],radius:.2}],remainingLifetimeMs:30000};
+const stableChoice={schemaVersion:1,sceneId:scene.sceneId,owner:{kind:owner.kind,id:owner.id},
+ skin:{assetId:scene.skin.assetId,entityId:scene.skin.entity.id},
+ stand:{geometryId:scene.stand.geometryId,assetId:scene.stand.asset.assetId,entityId:scene.stand.asset.entity.id},
+ background:{geometryId:scene.background.geometryId,assetId:scene.background.asset.assetId,entityId:scene.background.asset.entity.id}};
+let savedChoice:any={profileId:native.profileId,revision:0,selection:null};
 function revoke(){order.push("native-output-revoke");minted.clear();}
 const plugin={
  bootstrap:async(r:any)=>app(r),readContext:async(r:any)=>app(r),perform:async(r:any)=>app(r),
@@ -68,6 +73,16 @@ const plugin={
  listMedia:async(r:any)=>data(r,[]),presentMedia:async(r:any)=>data(r,null),releaseMedia:async(r:any)=>data(r,{status:"retired",presentationToken:r.presentationToken}),
  listScenes:async(r:any)=>data(r,[{sceneId:scene.sceneId,title:"Synthetic original Three fixture",owner}]),
  openScene:async(r:any)=>data(r,scene),
+ readSceneSelection:async(r:any)=>data(r,{...savedChoice}),
+ rememberSceneSelection:async(r:any)=>{
+  if(r.sceneToken!==sceneToken||r.expectedRevision!==savedChoice.revision)throw Error("Synthetic native selection CAS denied");
+  savedChoice={profileId:native.profileId,revision:savedChoice.revision+1,selection:stableChoice};
+  return data(r,{...savedChoice});
+ },
+ restoreSceneSelection:async(r:any)=>{
+  if(r.expectedRevision!==savedChoice.revision)throw Error("Synthetic native restoration CAS denied");
+  return data(r,{status:savedChoice.selection?"restored":"absent",...savedChoice,scene:savedChoice.selection?scene:null});
+ },
  acquireWebResource:async(r:any)=>{
   const slot=slots[r.slotId],resourceToken=(["skin","stand","background"].indexOf(r.slotId)+1).toString(16).padStart(32,"0");
   minted.add(resourceToken);order.push("acquire-"+r.slotId);
