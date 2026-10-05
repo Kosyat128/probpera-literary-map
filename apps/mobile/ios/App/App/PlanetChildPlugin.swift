@@ -9,7 +9,7 @@ import Capacitor
 public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier="PlanetChildPlugin"
     public let jsName="PlanetChild"
-    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
+    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
     private var transport: PlanetChildLocalV2DataTransport?,owner: PlanetChildLocalV2SDKOwner?
     public override func load() {
         DispatchQueue.main.async { [weak self] in guard let self,let host=self.bridge?.viewController else { return }
@@ -55,6 +55,9 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc public func openJourney(_ call: CAPPluginCall) { invoke("openJourney",call) }
     @objc public func advanceJourney(_ call: CAPPluginCall) { invoke("advanceJourney",call) }
     @objc public func closeJourney(_ call: CAPPluginCall) { invoke("closeJourney",call) }
+    @objc public func listDiscovery(_ call: CAPPluginCall) { invoke("listDiscovery",call) }
+    @objc public func readPassport(_ call: CAPPluginCall) { invoke("readPassport",call) }
+    @objc public func recordCountryOpen(_ call: CAPPluginCall) { invoke("recordCountryOpen",call) }
     #if DEBUG
     func runtimeOriginalContextToken() -> String? { owner?.runtimeOriginalContextToken() }
     func runtimeAppearanceSceneAdmits(_ token: String) -> Bool { owner?.runtimeAppearanceSceneAdmits(token)==true }

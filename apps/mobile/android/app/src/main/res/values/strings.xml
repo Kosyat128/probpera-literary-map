@@ -32,4 +32,7 @@
     <string name="native_owner_enroll_title">Confirm Parent PIN setup</string>
     <string name="native_owner_recover_title">Confirm Parent PIN recovery</string>
     <string name="native_owner_device_credential_reason">Use your device screen lock to confirm this action.</string>
+
+    <string name="native_child_delete_history_disclosure">Clear history and literary passport for %1$s (%2$s). Scope: history. Keep this profile, appearance, favorites and offline items. Parent PIN confirmation is required.</string>
+    <string name="native_child_delete_profile_disclosure">Remove profile %1$s (%2$s) and its local data. Scope: profile. Keep sibling profiles and the Parent PIN. Parent PIN confirmation is required.</string>
 </resources>

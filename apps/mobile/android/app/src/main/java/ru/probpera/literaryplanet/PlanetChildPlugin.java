@@ -61,4 +61,7 @@ public final class PlanetChildPlugin extends Plugin {
     @Override protected void handleOnStop(){if(owner!=null)owner.hostStopped();}
     @Override protected void handleOnDestroy(){if(owner!=null)owner.destroy();}
     @Override protected void handleOnNewIntent(android.content.Intent intent){if(owner!=null)owner.nativeRouteInput();}
+    @PluginMethod public void listDiscovery(PluginCall call){dispatch("listDiscovery",call);}
+    @PluginMethod public void readPassport(PluginCall call){dispatch("readPassport",call);}
+    @PluginMethod public void recordCountryOpen(PluginCall call){dispatch("recordCountryOpen",call);}
 }

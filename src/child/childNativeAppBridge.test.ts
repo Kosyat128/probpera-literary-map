@@ -354,3 +354,95 @@ describe("native child journey authority and protected semantic continuation",()
     expect((f.open.mock.calls[1][0] as {contextToken:string}).contextToken).not.toBe(TOKEN);expect(f.advance).not.toHaveBeenCalled();
   });
 });
+// New whole Discovery/Passport stage: AUTHORED_NOT_RUN.
+describe("native child discovery/passport original controller integration", () => {
+  const identity = () => ({ profileId: "native-profile", locale: "en", generation: 1 });
+  const emptyPassport = () => ({ schemaVersion: 1, ...identity(), revision: 0, countries: [], writers: [], works: [], journeys: [],
+    unresolvedCompletedNodeIds: [], badges: { status: "unavailable", items: [] }, downloadedRoutes: { status: "unavailable", items: [] } });
+  it("discovery/Home/passport reads do not create an open or study credit; exact explicit country command does", async () => {
+    const f = fixture(), country = ref("country", "country-a");
+    const methods = Object.assign(f.plugin, {
+      listDiscovery: vi.fn(async (r: unknown) => f.dataReply(r, { ...identity(), shelf: (r as { shelf: string }).shelf, items: [] })),
+      readPassport: vi.fn(async (r: unknown) => f.dataReply(r, emptyPassport())),
+      recordCountryOpen: vi.fn(async (r: unknown) => f.dataReply(r, { ...identity(), revision: 1, country: entity((r as { reference: ChildEntityReference }).reference) })),
+    });
+    await f.controller.start();
+    expect(await f.controller.discovery!.list("writers")).toMatchObject({ shelf: "writers", items: [] });
+    expect(await f.controller.passport!.read()).toMatchObject({ revision: 0, writers: [] });
+    await f.controller.readEntity(country); await f.controller.readCollection("recent");
+    expect(methods.recordCountryOpen).not.toHaveBeenCalled(); expect(f.plugin.writeCollection).not.toHaveBeenCalled();
+    expect(await f.controller.passport!.recordCountryOpen(country)).toMatchObject({ revision: 1, country: { reference: country } });
+    expect(methods.recordCountryOpen).toHaveBeenCalledTimes(1);
+    expect(await f.controller.passport!.recordCountryOpen(ref("writer", "writer-a"))).toBeNull();
+    expect(methods.recordCountryOpen).toHaveBeenCalledTimes(1);
+  });
+  it("retires late native shelf replies after a profile/lifecycle seal", async () => {
+    const f = fixture(), held = deferred<unknown>(); let original: unknown;
+    const methods = Object.assign(f.plugin, { listDiscovery: vi.fn((r: unknown) => { original = r; return held.promise; }) });
+    await f.controller.start(); const reading = f.controller.discovery!.list("writers"); await settle();
+    expect(methods.listDiscovery).toHaveBeenCalledTimes(1); f.visibility("background");
+    held.resolve(f.dataReply(original, { ...identity(), shelf: "writers", items: [entity(ref("writer", "retired-writer"))] }));
+    expect(await reading).toBeNull(); expect(f.controller.getSnapshot().context).toBeNull();
+  });
+  it("rejects inner locale/profile correlation even when the outer native reply matches", async () => {
+    const f = fixture(); Object.assign(f.plugin, { readPassport: vi.fn(async (r: unknown) => f.dataReply(r, { ...emptyPassport(), locale: "ru" })) });
+    await f.controller.start(); expect(await f.controller.passport!.read()).toBeNull(); expect(f.controller.getSnapshot().phase).toBe("sealed");
+  });
+  it("an uncorrelated country-write reply seals without replay or optimistic passport credit", async () => {
+    const f = fixture(); const methods = Object.assign(f.plugin, {
+      recordCountryOpen: vi.fn(async (r: unknown) => ({ ...(f.dataReply(r, { ...identity(), revision: 1, country: entity(ref("country", "country-a")) })), requestId: "e".repeat(32) })),
+    });
+    await f.controller.start(); expect(await f.controller.passport!.recordCountryOpen(ref("country", "country-a"))).toBeNull();
+    const bootstraps = f.plugin.bootstrap.mock.calls.length; await f.controller.refresh(); f.visibility("background"); f.visibility("active"); await settle();
+    expect(methods.recordCountryOpen).toHaveBeenCalledTimes(1); expect(f.plugin.bootstrap).toHaveBeenCalledTimes(bootstraps);
+    expect(f.controller.getSnapshot().context).toBeNull();
+  });
+  it("binds original delete-child-data to one existing profile and explicit history/profile scope before dispatch", async () => {
+    const f = fixture(); await f.controller.start();
+    for (const bad of [null, { profileId: "native-profile", scope: "all" }, { profileId: "sibling-not-in-native-registry", scope: "history" },
+      { profileId: "native-profile", scope: "history", approved: true }]) expect(await f.controller.perform("delete-child-data", bad)).toBe(false);
+    expect(f.plugin.perform).not.toHaveBeenCalled(); expect(f.controller.getSnapshot().status).toBe("child");
+    expect(await f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "history" })).toBe(true);
+    expect(f.plugin.perform.mock.calls[0][0]).toMatchObject({ action: "delete-child-data", contextToken: TOKEN,
+      target: { profileId: "native-profile", scope: "history" } });
+    expect(f.order.indexOf("clear")).toBeLessThan(f.order.indexOf("perform"));
+  });
+  it("lost original removal acknowledgement cannot be replayed by refresh or another deletion", async () => {
+    const f = fixture(); f.plugin.perform.mockImplementation(async () => { throw new Error("Fixture unknown durable outcome"); });
+    await f.controller.start(); expect(await f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "profile" })).toBe(false);
+    const boots = f.plugin.bootstrap.mock.calls.length; await f.controller.refresh();
+    expect(await f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "profile" })).toBe(false);
+    expect(f.plugin.perform).toHaveBeenCalledTimes(1); expect(f.plugin.bootstrap).toHaveBeenCalledTimes(boots); expect(f.controller.getSnapshot().context).toBeNull();
+  });
+});
+// Astra regression: original-removal cancellation during async cleanup and gate wait.
+describe("original child removal cancellation fences", () => {
+  it("cancels before native dispatch while an earlier read is draining", async () => {
+    const f = fixture(), held = deferred<unknown>(); await f.controller.start();
+    f.plugin.readEntity.mockReturnValueOnce(held.promise);
+    const reading = f.controller.readEntity(ref("country", "country-a")); await settle();
+    const request = f.plugin.readEntity.mock.calls[0][0];
+    const removing = f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "history" });
+    await settle(); expect(f.plugin.perform).not.toHaveBeenCalled();
+    const cancelling = f.controller.suspend(); await settle();
+    held.resolve(f.dataReply(request, entity(ref("country", "country-a"))));
+    expect(await reading).toBeNull(); expect(await removing).toBe(false); await cancelling;
+    expect(f.plugin.perform).not.toHaveBeenCalled(); expect(f.controller.getSnapshot().context).toBeNull();
+  });
+  it("a changed removal target revokes the original gate without dispatching a replacement", async () => {
+    const f = fixture(), held = deferred<unknown>(); let original: unknown;
+    await f.controller.start();
+    f.plugin.perform.mockImplementationOnce(r => { original = r; return held.promise; });
+    f.plugin.retire.mockImplementation(async r => {
+      held.resolve(appReply(original, nativeContext(2), "child", "blocked"));
+      const q = r as { requestId: string; contextToken: string | null };
+      return { version: 2, requestId: q.requestId, status: "retired", contextToken: q.contextToken };
+    });
+    const removing = f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "history" });
+    await settle(); expect(f.plugin.perform).toHaveBeenCalledOnce();
+    expect(await f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "profile" })).toBe(false);
+    expect(await removing).toBe(false); expect(f.plugin.perform).toHaveBeenCalledOnce();
+    expect(f.plugin.retire.mock.calls[0][0]).toMatchObject({ contextToken: null });
+    expect(f.controller.getSnapshot().context).toBeNull();
+  });
+});

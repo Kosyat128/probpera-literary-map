@@ -30,4 +30,7 @@
     <string name="native_owner_enroll_title">Подтвердите создание родительского PIN</string>
     <string name="native_owner_recover_title">Подтвердите восстановление родительского PIN</string>
     <string name="native_owner_device_credential_reason">Подтвердите действие кодом блокировки устройства.</string>
+
+    <string name="native_child_delete_history_disclosure">Очистить историю и литературный паспорт: %1$s (%2$s). Область: history. Профиль, оформление, избранное и офлайн-материалы сохранятся. Требуется подтверждение PIN родителя.</string>
+    <string name="native_child_delete_profile_disclosure">Удалить профиль %1$s (%2$s) и его локальные данные. Область: profile. Другие профили и PIN родителя сохранятся. Требуется подтверждение PIN родителя.</string>
 </resources>

@@ -3,6 +3,8 @@ import { createChildCanonicalResources } from "./childNativeCanonicalResources";
 import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
+import { ChildNativeDiscoveryPassportView, type ChildNativeDiscoveryPassportViewName } from "./ChildNativeDiscoveryPassportView";
+import type { ChildNativeRemovalTarget } from "./childNativeDiscoveryPassport";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { ChildNativeAppController, ChildNativeAppSnapshot, ChildNativeCollection,
   ChildNativeCollectionValue, ChildNativeEntity, ChildNativeAction } from "./childNativeAppBridge";
@@ -55,6 +57,8 @@ export function ChildNativeClosedView({ snapshot, controller }: { snapshot: Chil
     {snapshot.status === "first-install-required" ? <>
       <button type="button" onClick={() => { void controller.perform("first-install"); }}>{copy.initialize}</button>
     </> : snapshot.phase !== "transition" && <button type="button" onClick={() => { void controller.refresh(); }}>{copy.retry}</button>}
+    {snapshot.phase === "transition" && <button type="button" onClick={() => { void controller.suspend(); }}>
+      {language === "ru" ? "Отмена" : "Cancel"}</button>}
     {snapshot.status === "blocked-child" && <NativeProfileControls controller={controller} snapshot={snapshot} />}
   </main>;
 }
@@ -67,13 +71,16 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
   const [label, setLabel] = useState(""), [age, setAge] = useState(""), [locale, setLocale] = useState<"ru" | "en">(language);
   const [reading, setReading] = useState<"plain" | "developing" | "fluent" | "">(""), [confirmed, setConfirmed] = useState(false);
   const [error, setError] = useState(false), [topicInput, setTopicInput] = useState("");
+  const [removal, setRemoval] = useState<(ChildNativeRemovalTarget & { contextToken: string; language: "ru" | "en" }) | null>(null);
+  const selectedRemoval = removal && removal.contextToken === state.context?.token && removal.language === language && state.profiles.find(profile => profile.id === removal.profileId);
   const mounted = useRef(true), sequence = useRef(0), trigger = useRef<HTMLButtonElement>(null);
   useLayoutEffect(() => { mounted.current = true; return () => { mounted.current = false; ++sequence.current; }; }, []);
+  useLayoutEffect(() => { setRemoval(null); }, [state.context?.token, language]);
   async function act(action: ChildNativeAction, target: unknown = null) {
     if (busy || state.phase !== "ready") return; const attempt = ++sequence.current;
     setBusy(true); setError(false);
     const ok = await controller.perform(action, target);
-    if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); }
+    if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); if (ok) setRemoval(null); }
   }
   if (state.phase !== "ready" || !state.context) return null;
   const validAge = /^[0-9]{1,2}$/u.test(age) && Number(age) >= 3 && Number(age) <= 17;
@@ -81,14 +88,32 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
   const topicValues = topicInput.trim() === "" ? [] : topicInput.split(",").map(value => value.trim());
   const validTopics = topicValues.length <= 64 && topicValues.every(value => /^[a-z0-9][a-z0-9._-]{0,63}$/u.test(value)) && new Set(topicValues).size === topicValues.length;
   return <section className="child-native-parent" data-child-native-profiles="">
-    <button ref={trigger} type="button" aria-expanded={open} onClick={() => { setOpen(value => !value); setError(false); }}>
+    <button ref={trigger} type="button" aria-expanded={open} onClick={() => { setOpen(value => !value); setError(false); setRemoval(null); }}>
       {state.context.mode === "child" ? copy.parent : copy.profiles}
     </button>
     {open && <div className="child-native-parent-panel" role="region" aria-label={copy.parentDetails}>
       <h2>{copy.profiles}</h2><p>{copy.local}</p>
       {state.status === "unenrolled" ? <button disabled={busy} type="button" onClick={() => { void act("enroll-pin"); }}>{copy.pin}</button> : <>
-        {state.profiles.map(profile => <button key={profile.id} disabled={busy || state.context?.mode === "child" && state.context.profileId === profile.id}
-          type="button" onClick={() => { void act("enter-child", { profileId: profile.id }); }}>{profile.label} · {profile.exactAge}</button>)}
+        {state.profiles.map(profile => <div key={profile.id} className="child-native-profile-row">
+          <button disabled={busy || state.context?.mode === "child" && state.context.profileId === profile.id}
+            type="button" onClick={() => { void act("enter-child", { profileId: profile.id }); }}>{profile.label} · {profile.exactAge}</button>
+          <button disabled={busy} type="button" onClick={() => { setRemoval({ profileId: profile.id, scope: "history", contextToken: state.context!.token, language }); setCreating(false); setEditing(false); }}>
+            {language === "ru" ? "Очистить историю и паспорт" : "Clear history and passport"} · {profile.label}</button>
+          <button disabled={busy} type="button" onClick={() => { setRemoval({ profileId: profile.id, scope: "profile", contextToken: state.context!.token, language }); setCreating(false); setEditing(false); }}>
+            {language === "ru" ? "Удалить профиль" : "Remove profile"} · {profile.label}</button>
+        </div>)}
+        {removal && selectedRemoval && <div className="child-native-removal" role="region"
+          aria-label={language === "ru" ? "Подтверждение удаления" : "Removal confirmation"}>
+          <h3>{selectedRemoval.label}</h3>
+          <p>{removal.scope === "history"
+            ? language === "ru" ? "Очистить историю и литературный паспорт этого профиля? Имя, PIN, оформление, избранное и сохранённые материалы останутся."
+              : "Clear this profile's history and literary passport? Its name, the parent PIN, appearance, favorites and saved content will stay."
+            : language === "ru" ? "Удалить этот профиль и все его данные на устройстве? Другие профили и родительский PIN останутся."
+              : "Remove this profile and all its data on this device? Other profiles and the parent PIN will stay."}</p>
+          <button disabled={busy} type="button" onClick={() => { void act("delete-child-data", { profileId: removal.profileId, scope: removal.scope }); }}>
+            {language === "ru" ? "Подтвердить со взрослым" : "Confirm with an adult"}</button>
+          <button disabled={busy} type="button" onClick={() => setRemoval(null)}>{language === "ru" ? "Отмена" : "Cancel"}</button>
+        </div>}
         {state.context.mode === "child" && <button disabled={busy} type="button" onClick={() => { void act("exit-child-mode"); }}>{copy.exit}</button>}
         {state.context.mode === "child" && <button disabled={busy} type="button" onClick={() => {
           setEditing(value => !value); setCreating(false); setConfirmed(false);
@@ -143,7 +168,7 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
         </form>}
       </>}
       {error && <p role="alert">{copy.failed}</p>}
-      <button type="button" onClick={() => { setOpen(false); trigger.current?.focus(); }}>{copy.close}</button>
+      <button type="button" onClick={() => { setOpen(false); setRemoval(null); trigger.current?.focus(); }}>{copy.close}</button>
     </div>}
   </section>;
 }
@@ -169,10 +194,12 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   const [collection, setCollection] = useState<ChildNativeCollection | null>(null);
   const [saved, setSaved] = useState<ChildNativeCollectionValue | null>(null), [savedRows, setSavedRows] = useState<readonly ChildNativeEntity[]>([]);
   const sequence = useRef(0), mounted = useRef(true), context = useRef(c); context.current = c;
+  const pendingCountryOpen = useRef<{ contextToken: string; profileId: string; attempt: number; reference: ChildEntityReference } | null>(null);
   const previousProfile = useRef(c?.profileId ?? retainedProfileId ?? null);
   const [journeyActive,setJourneyActive]=useState(false),[journeyNavigation,setJourneyNavigation]=useState(0);
+  const [discoveryView, setDiscoveryView] = useState<ChildNativeDiscoveryPassportViewName | null>(null);
   const journeyIntent=useRef<{profileId:string;journeyId:string}|null>(null);
-  const onJourneyActive=useCallback((active:boolean)=>setJourneyActive(active),[]);
+  const onJourneyActive=useCallback((active:boolean)=>{setJourneyActive(active);if(active){setDiscoveryView(null);pendingCountryOpen.current=null;}},[]);
   const onJourneyIntent=useCallback((journeyId:string|null)=>{
     const profileId=context.current?.profileId;
     journeyIntent.current=journeyId&&profileId?{profileId,journeyId}:null;
@@ -207,14 +234,19 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       && row.payload.references.length === 1 ? controller.readEntity(row.payload.references[0]) : row;
   }
   async function open(ref: ChildEntityReference, back = false) {
-    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     const original = context.current, attempt = ++sequence.current;
     setLoading(true); setCollection(null); setSaved(null); setSavedRows([]); setSearchResults(null);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
     if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) { setCurrent(null); setLoading(false); } return; }
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
-    const row = await resolve(ref);
+    let row = await resolve(ref);
+    if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
+    // Record only after this explicit navigation commits its visible article.
+    // A superseded click, hydration, label read or restored cursor is no credit.
+    pendingCountryOpen.current = row?.reference.kind === "country" && original?.profileId
+      ? { contextToken: original.token, profileId: original.profileId, attempt, reference: row.reference } : null;
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     if (row) { if (!back && current) setHistory(previous => [...previous.slice(-31), current.reference]); setCurrent(row); }
     else setCurrent(null);
@@ -224,9 +256,9 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   useLayoutEffect(() => {
     const sameProfile=!c||previousProfile.current===c.profileId;
     const intent=c?.profileId&&navigationIntent.current?.profileId===c.profileId?navigationIntent.current:null;
-    hydratedContext.current=null;
+    hydratedContext.current=null;pendingCountryOpen.current=null;
     if(c)previousProfile.current=c.profileId;
-    setJourneyActive(false);
+    setJourneyActive(false);if(!sameProfile)setDiscoveryView(null);
     if(!sameProfile){navigationIntent.current=null;journeyIntent.current=null;}
     setCurrent(null);setRoots([]);setQuery("");setSearchResults(null);setHistory([]);
     setCollection(null);setSaved(null);setSavedRows([]);setScenes([]);setSceneOwner(null);setLoading(true);
@@ -285,7 +317,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     return () => { alive = false; ++sequence.current; };
   }, [controller, c, snapshot.status, resources]);
   async function search() {
-    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     const original = context.current, attempt = ++sequence.current;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
@@ -297,7 +329,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
   async function showCollection(name: ChildNativeCollection) {
-    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     const original = context.current, attempt = ++sequence.current;
     setCollection(name); setSaved(null); setSavedRows([]); setSearchResults(null); setLoading(true);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
@@ -312,6 +344,18 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     setSaved(value);setSavedRows(Object.freeze(rows));await resources?.restore?.();
     if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
+  async function showDiscoveryPassport(view: ChildNativeDiscoveryPassportViewName) {
+    if (view === "home") { if (context.current?.home) await open(context.current.home, true); return; }
+    const original = context.current, attempt = ++sequence.current;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
+    pendingCountryOpen.current=null;setDiscoveryView(view);setCollection(null);setSaved(null);setSavedRows([]);setSearchResults(null);setLoading(true);
+    resources?.clear();try { await resources?.join(); } catch { await controller.suspend(); return; }
+    if (controller.scenes && !await controller.scenes.releaseAll()) return;
+    if (controller.media && !await controller.media.releaseAll()) return;
+    if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
+    await resources?.restore?.();
+    if (mounted.current && context.current === original && sequence.current === attempt) setLoading(false);
+  }
   async function remove(ref: ChildEntityReference) {
     if (!collection || !saved || collection === "recent") return;
     const original = context.current, attempt = ++sequence.current;
@@ -325,6 +369,17 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     const next = value.references.some(row => same(row, ref)) ? value.references : [...value.references, ref];
     await controller.writeCollection(name, value.revision, next);
   }
+  useEffect(() => {
+    const intent = pendingCountryOpen.current;
+    if (!intent || loading || collection || discoveryView || journeyActive || searchResults !== null || !current
+      || intent.attempt !== sequence.current || c?.token !== intent.contextToken || c.profileId !== intent.profileId
+      || !same(current.reference, intent.reference)) return;
+    // React has committed this exact admitted country article. Consume the
+    // intent once before the native durable receipt; no retry or optimistic
+    // passport count follows a missing/uncertain acknowledgement.
+    pendingCountryOpen.current = null;
+    void controller.passport?.recordCountryOpen(current.reference);
+  }, [controller, c, current, loading, collection, discoveryView, journeyActive, searchResults]);
   useEffect(()=>{let alive=true;setScenes([]);setSceneOwner(null);if(current&&controller.scenes)void controller.scenes.list(current.reference).then(values=>{if(alive){setScenes(values??[]);setSceneOwner(current);}});return()=>{alive=false;};},[controller,current]);
   const admitted=!!c&&snapshot.phase==="ready"&&snapshot.status==="child";
   const retained=!!retainedProfileId&&!c&&(snapshot.phase==="sealed"||snapshot.phase==="transition");
@@ -352,7 +407,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         {sceneState.persistence==="save-failed"?(language==="ru"?"Не удалось подтвердить сохранение оформления.":"The appearance save could not be confirmed."):(language==="ru"?"Сохранённое оформление сейчас недоступно.":"The saved appearance is currently unavailable.")}
         <button type="button" onClick={()=>{void resources?.restore?.();}}>{language==="ru"?"Повторить восстановление":"Retry restoration"}</button>
       </p>}
-      {!journeyActive&&!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
+      {!journeyActive&&!discoveryView&&!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
         <h2>{language==="ru"?"Оформление планеты":"Planet appearance"}</h2>
         {scenes.map(scene=><button key={scene.sceneId} type="button" disabled={sceneState.phase==="preparing"} onClick={()=>{void resources?.select(current.reference,scene.sceneId);}}>{scene.title}</button>)}
         {sceneState.phase==="preparing"&&<p role="status">{sceneState.persistence==="saving"?(language==="ru"?"Сохраняем оформление…":"Saving appearance…"):(language==="ru"?"Восстанавливаем оформление…":"Restoring appearance…")}</p>}
@@ -372,9 +427,13 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         <label>{copy.search}<input value={query} maxLength={240} type="search" autoComplete="off" onChange={event => setQuery(event.currentTarget.value)} /></label>
         <button type="submit">{copy.search}</button>
       </form>
+      <ChildNativeDiscoveryPassportView controller={controller} contextToken={c.token} profileId={c.profileId!} language={language}
+        view={discoveryView ?? "home"} visible={!journeyActive&&!loading&&!collection&&searchResults===null
+          && (!!discoveryView || !!current&&!!c.home&&same(current.reference,c.home))}
+        onRequestView={view => { void showDiscoveryPassport(view); }} onOpen={ref => { void open(ref); }} />
       <ChildNativeJourneyView key={c.profileId!} controller={controller} contextToken={c.token} profileId={c.profileId!}
         language={language} navigationEpoch={journeyNavigation}
-        homeVisible={!loading&&!collection&&searchResults===null&&!!current&&!!c.home&&same(current.reference,c.home)}
+        homeVisible={!discoveryView&&!loading&&!collection&&searchResults===null&&!!current&&!!c.home&&same(current.reference,c.home)}
         initialJourneyId={journeyIntent.current?.profileId===c.profileId?journeyIntent.current.journeyId:null}
         onActiveChange={onJourneyActive} onIntentChange={onJourneyIntent} onNode={onJourneyNode}/>
       {!journeyActive&&(loading ? <p role="status">{copy.loading}</p> : collection ? <>
@@ -387,7 +446,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       </> : searchResults ? <>
         <h2>{copy.search}</h2>{!searchResults.length && <p>{copy.noResults}</p>}
         <ul>{searchResults.map(row => <li key={row.reference.id}><button type="button" onClick={() => { void open(row.reference); }}>{row.payload.title}</button></li>)}</ul>
-      </> : current ? <article data-child-native-entity={current.reference.kind + "/" + current.reference.id}>
+      </> : discoveryView ? null : current ? <article data-child-native-entity={current.reference.kind + "/" + current.reference.id}>
         <h2>{current.payload.title}</h2>
         <ChildNativeMediaView key={c.token + "/" + current.reference.kind + "/" + current.reference.id}
           controller={controller} owner={current.reference} contextToken={c.token} language={language} /><p className="child-native-text">{current.payload.text}</p>
