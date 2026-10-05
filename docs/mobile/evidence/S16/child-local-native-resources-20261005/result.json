@@ -1,0 +1,1119 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-native-resource-evidence",
+  "status": "IN_PROGRESS",
+  "reviewModel": "GPT-6 Astra Ultra",
+  "sourceCommit": "ba3d68d21309a57731b55dd4201c1c75ae5c5b1d",
+  "repositoryHead": "ba3d68d21309a57731b55dd4201c1c75ae5c5b1d",
+  "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+  "rootDir": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+  "sourceRows": 1829,
+  "currentInputs": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-final-inputs-a1.json",
+    "sha256": "14ef7feeb8dee1ceaa5f7df1347c1ec7c5d695ab98115df80c0eee8ed55845a1",
+    "bytes": 280981
+  },
+  "reviewedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-reviewed-manifest-a2.json",
+    "sha256": "2648e61ceac507367278705ae2d1ae4a0c4c567d17591e908af81c51872f36e8",
+    "bytes": 11047
+  },
+  "originalReviewedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-reviewed-manifest-a1.json",
+    "sha256": "6bc1b2bdb0df757efdd205f565cb7e9bb87393ddce267fa52de4fec0974bf1cb",
+    "bytes": 11036
+  },
+  "semanticReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-whole-semantic-review-a1.json",
+    "sha256": "e6157e6a534a42b2aec743b9b21cfd025de78b8454f00ec306e390c5b6f31194",
+    "bytes": 3474
+  },
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-source-checkpoint-a2.json",
+    "sha256": "9e0e78fd7fc985d7964aba17323bfb590ab963323050a5bfe7e8fe13f9531f2d",
+    "bytes": 595658
+  },
+  "integrations": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-integration-a1.json",
+      "sha256": "0b38cf54a5a8eecb307fe3291a7d47e2d6c14013e18a048267acc8b905852103",
+      "bytes": 595415
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-integration-a2.json",
+      "sha256": "cbbcecc54069cc6668a7f2082d9402d2d190f3b6e03cc10874d621e5bc1bb385",
+      "bytes": 594749
+    }
+  ],
+  "rootAdmissions": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\root-author-admission-run-a1.json",
+      "sha256": "10fc6f065d97decc8145244b521a55f9a45d710ebbe010dd35d02d4dfdb9f898",
+      "bytes": 1653
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\root-reviewed-admission-run-a1.json",
+      "sha256": "9e7a6b934ca2e9c3b241b041b48c3c28489bd95e7b69a795a203d25491b2be02",
+      "bytes": 2026
+    }
+  ],
+  "scope": [
+    {
+      "path": "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildResourcesRuntimeTest.java",
+      "sha256": "22558d9baac4d2a40d88ed0b4ebcd59b140a190c6248bb7219a0d1447c453533",
+      "bytes": 12985
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildResources.java",
+      "sha256": "ddebda6df63c139a7f03aac51d37b1eb2994a4286e7f622ceb8c3867bb845853",
+      "bytes": 13593
+    },
+    {
+      "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+      "sha256": "65a24f7923d3104b2f34c92e7b46d756bc4e37f956758a983bcd2fcae708452a",
+      "bytes": 743763
+    },
+    {
+      "path": "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+      "sha256": "498658b6a9ce0ab459a3c0b40918a280e7dbeea4b9e782e614894edac02ce3dd",
+      "bytes": 29071
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildResources.swift",
+      "sha256": "21c87ed34c93eca46972593a1e0b4a5c5e96693b6b236850c16608bcfeea8c88",
+      "bytes": 18991
+    },
+    {
+      "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+      "sha256": "9246256465f1c97cc0c2d16177350dd46656116f55a10de532927033d42ce5c1",
+      "bytes": 904499
+    },
+    {
+      "path": "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildResourcesRuntimeTests.swift",
+      "sha256": "f687032077f12d196f28450f054be0261c4539c263b751b0cb50559d8c3cc5a2",
+      "bytes": 5984
+    },
+    {
+      "path": "scripts/mobile/build-native.mjs",
+      "sha256": "54f2d560e3264e0d7b998ee4aaf97ab57f66f397801d7d8b3f64bf30644d4603",
+      "bytes": 8882
+    },
+    {
+      "path": "scripts/mobile/native-child-resource-assets.mjs",
+      "sha256": "941175ab3c15ec7437ca9c63d5ec4b194e05ef2d4da981f31a20e57f3b481bcd",
+      "bytes": 8197
+    },
+    {
+      "path": "scripts/mobile/native-child-resource-assets.test.mjs",
+      "sha256": "cb78373766801f256a93145ca6b1d7023778155cded8901df93c78d32fe84462",
+      "bytes": 36501
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.mjs",
+      "sha256": "7ea7984d9ba2bba2ebd8197816c6c746abe4c0e55e55ad73041f1cd03d14a51a",
+      "bytes": 121222
+    },
+    {
+      "path": "scripts/mobile/native-install-runtime.test.mjs",
+      "sha256": "94b08150802ab30d7ddd2ec963132ce98003960d1977d8e27699bd4b434818e2",
+      "bytes": 54286
+    },
+    {
+      "path": "scripts/mobile/verify-native-artifact.mjs",
+      "sha256": "f69718c66082a0c63fa7e97bdf46f17de38f2ddbf1d98b91872dc4f5d5ae0565",
+      "bytes": 37659
+    },
+    {
+      "path": "scripts/mobile/verify-native-artifact.test.mjs",
+      "sha256": "dab21e4716051b0a97ae6feade6225787b73ca017b955949366aa4fbea5ce703",
+      "bytes": 39120
+    },
+    {
+      "path": "src/child/childNativeResource.test.ts",
+      "sha256": "d21f56b7ca77b9772c34bd5d12137889f46371fcedbe27a5116aa993dbbd01bf",
+      "bytes": 28021
+    },
+    {
+      "path": "src/child/childNativeResource.ts",
+      "sha256": "7b9a2064c49ea699121396fc789f7cdcb54cfee271ecbe31393f22b40c3d9e74",
+      "bytes": 8281
+    },
+    {
+      "path": "src/child/childNativeResourceReleasePins.json",
+      "sha256": "8c30dca149f42adceeb554fbe95163518dfc8cd44c12db02522f7950310f9b34",
+      "bytes": 111
+    }
+  ],
+  "preserved": {
+    "frozenSOL17": true,
+    "reviewedA1andA2": true,
+    "originalNativeV1Prefixes": true,
+    "originalTextAndMediaPins": true,
+    "resourcePins": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\src\\child\\childNativeResourceReleasePins.json",
+      "sha256": "8c30dca149f42adceeb554fbe95163518dfc8cd44c12db02522f7950310f9b34",
+      "bytes": 111
+    },
+    "protectedDocuments": true,
+    "otherSourceRows": 1812,
+    "toolsAndLock": true,
+    "cleanCheckout": true
+  },
+  "repairsAfterInitialReview": {
+    "files": [
+      "src/child/childNativeResource.ts",
+      "scripts/mobile/native-child-resource-assets.test.mjs"
+    ],
+    "changes": [
+      "ES2020 own-property and final-label indexing equivalents for actual TS2550 failures",
+      "Explicit30000ms bound for actual512resource/524288byte fixture; successful duration15025ms; initial6860ms STACK_TRACE_ERROR remains failed"
+    ],
+    "writeDiagnostic": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-a2-write-diagnostic.json",
+      "sha256": "5d40a0816c5da26a5f2b39faf7841ee426a17b96325b5761689011964a942fff",
+      "bytes": 369
+    }
+  },
+  "runs": {
+    "resource-units-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a1\\result.json",
+      "sha256": "9c7f75636057e2aba8cc57292f681cc4b1f83bc4b9a6de97ff14e458311c3deb",
+      "bytes": 24885,
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+      "pass": false,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a1\\vitest.json",
+          "src/child/childNativeResource.test.ts",
+          "scripts/mobile/native-child-resource-assets.test.mjs"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 1,
+        "signal": null
+      },
+      "testCounts": {
+        "passed": 70,
+        "failed": 1,
+        "pending": 0,
+        "total": 71
+      }
+    },
+    "tsc-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\tsc-a1\\result.json",
+      "sha256": "13cabb7b2e869a05bbfa4b0db307dff97171dd9575f8dd63159d3910d64f9fdb",
+      "bytes": 1807,
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+      "pass": false,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 2,
+        "signal": null
+      }
+    },
+    "resource-units-a2": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a2\\result.json",
+      "sha256": "d264ad76382e6659a62b02f0ca8b725c1cb9602c1f40aecdfbe350a391454f41",
+      "bytes": 24884,
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+      "pass": true,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a2\\vitest.json",
+          "src/child/childNativeResource.test.ts",
+          "scripts/mobile/native-child-resource-assets.test.mjs"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 0,
+        "signal": null
+      },
+      "testCounts": {
+        "passed": 71,
+        "failed": 0,
+        "pending": 0,
+        "total": 71
+      }
+    },
+    "tsc-a2": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\tsc-a2\\result.json",
+      "sha256": "927ab29c8d1c0c92555555e546cee97c341be081dd1803a2b6a951f9699d2966",
+      "bytes": 1804,
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+      "pass": true,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "node_modules/typescript/bin/tsc",
+          "--noEmit"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 0,
+        "signal": null
+      }
+    },
+    "resource-verifier-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-verifier-a1\\result.json",
+      "sha256": "d4698ec683679e1552572d31ea6feb5e9c808de7afd6016f6116ee3443ce4f73",
+      "bytes": 6853,
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+      "pass": true,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-verifier-a1\\vitest.json",
+          "scripts/mobile/verify-native-artifact.test.mjs",
+          "-t",
+          "native child resource artifact provenance"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 0,
+        "signal": null
+      },
+      "testCounts": {
+        "passed": 13,
+        "failed": 0,
+        "pending": 77,
+        "total": 90
+      }
+    },
+    "resource-runner-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-runner-a1\\result.json",
+      "sha256": "2f1b4752e0f2ae437db2ac6b63e486a94ff3341d3b191a7672ee92a127c0ec96",
+      "bytes": 5736,
+      "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+      "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+      "pass": true,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "node_modules/vitest/vitest.mjs",
+          "run",
+          "--maxWorkers=1",
+          "--reporter=json",
+          "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-runner-a1\\vitest.json",
+          "scripts/mobile/native-install-runtime.test.mjs",
+          "-t",
+          "native child resource selector"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 0,
+        "signal": null
+      },
+      "testCounts": {
+        "passed": 10,
+        "failed": 0,
+        "pending": 108,
+        "total": 118
+      }
+    },
+    "android-prepare-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\android-prepare-a1\\result.json",
+      "sha256": "c063b96d570d0cc233ac1eb3b6f11d9b109a1ac7e81b481b5dc6ffbf17d52451",
+      "bytes": 1862,
+      "sourceCommit": "ba3d68d21309a57731b55dd4201c1c75ae5c5b1d",
+      "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+      "pass": true,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "scripts/mobile/prepare-local-release.mjs",
+          "android"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 0,
+        "signal": null
+      }
+    },
+    "native-audit-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\native-audit-a1\\result.json",
+      "sha256": "a90c6681416a5994792729228a4c8623aed11f035ce4ddd24a784af0961fa467",
+      "bytes": 1835,
+      "sourceCommit": "ba3d68d21309a57731b55dd4201c1c75ae5c5b1d",
+      "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+      "pass": true,
+      "command": {
+        "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "args": [
+          "scripts/mobile/verify-native-artifact.mjs"
+        ],
+        "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+        "exitCode": 0,
+        "signal": null
+      }
+    }
+  },
+  "unitCounts": [
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-resource-assets.test.mjs",
+      "passed": 34,
+      "failed": 0
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeResource.test.ts",
+      "passed": 37,
+      "failed": 0
+    }
+  ],
+  "focusedUniqueCases": 94,
+  "caseQualification": "Current37schema+34emitter and TypeScript exact precommit source graph correlated byte-for-byte to sourceba3d68. Verifier13 and runner10 remain original A1 input proofs, not rerun/relabelled; independent native artifact audit is currentba3d68.",
+  "nativeHostChecks": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-semantic-jvm-a1\\result.json",
+      "sha256": "5583222cbf854604bc056715b383de8d8ef1dcd4549d466e53f9554060ecf0f6",
+      "bytes": 3969
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-semantic-jvm-a2\\result.json",
+      "sha256": "297ad50fa2f1eb513fe290f0f9eb8b1df6d8570fc183f592141f344a7ca85bc8",
+      "bytes": 1804
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-semantic-scalars-a1\\result.json",
+      "sha256": "e9f7cdb0eb77444d488a6edd2d471505a7caa3a54f0ddab005d5f8fe1405d387",
+      "bytes": 2045
+    }
+  ],
+  "nativeHostQualification": "Final actual reader with synthetic Claim/Looper dependencies6 cases31assertions; separate scalar HTTP/body/JDK P256 X9638cases79assertions. No real Vault authority, nativeclock, platform TLS handshake, OS socket cancellation or device acceptance.",
+  "androidCompiled": {
+    "methods": 13,
+    "status": "COMPILED_ONLY_NOT_RUN",
+    "actualDEX": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-api-compiled-tests-a1\\result.json",
+      "sha256": "0a85308caa3162f49c26a13256c06749895e215c9094a3235beb2bf5fbbf889d",
+      "bytes": 8619
+    },
+    "apiCompatibility": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-api-compatibility-a1\\result.json",
+      "sha256": "4553fd3ba458d553f34d10f244bfebc2af73bd61d853f69e4fddccdafe252795",
+      "bytes": 10561
+    }
+  },
+  "swift": {
+    "methods": 12,
+    "status": "NOT_COMPILED_NOT_RUN",
+    "review": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-swift-review-note-a1.json",
+      "sha256": "e5b649964f5d7c4daf841020cb6ccb6e9472a9db2945cfb353ecb069a8d3f12e",
+      "bytes": 6248
+    },
+    "payloadIndex": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-swift-payload-index-a1.json",
+      "sha256": "6a541ad624d3bd90926e1cd37a174244ae2d1571c75dabac2fec3cc03d777f5a",
+      "bytes": 4227
+    },
+    "retainedCheck": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-swift-verification-a1\\copy-receipt.json",
+      "sha256": "2a314e61ab38449e84acbe0d68a888cd1bac3d3db2c9ab495303d2d771508ec8",
+      "bytes": 1521
+    },
+    "qualification": "PBX parse/source target binding and source structure only; URLSession/concurrent retirement require Apple runtime"
+  },
+  "androidPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\preparation.json",
+    "sha256": "e416f2c082a2f24344e2cfcb8107298d834f742651e0981f19269eaade21be1d",
+    "bytes": 311801
+  },
+  "binaryReceipt": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\binary.json",
+    "sha256": "355f0b507e5cd0a24a6133db89ed14ca4b63597bb3a10279689017d28db6cc42",
+    "bytes": 203555
+  },
+  "binaries": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\native-artifact.json",
+      "sha256": "e9a032062b39fc99996a896e1c69e242914b92009618eda059b057cbc12cc61a",
+      "bytes": 722470
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\app-dev-debug.apk",
+      "sha256": "4bfbffe1d40304329aed418d6fb33912884deea2bc63c03490170615f91addaa",
+      "bytes": 70683819
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\app-dev-debug-androidTest.apk",
+      "sha256": "67c93d615f7cecef0fc9a2f905e209a78b7037c26a815061836bc3e252273f32",
+      "bytes": 738169
+    }
+  ],
+  "nativeBundle": {
+    "path": ".tmp/mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e/native-bundle",
+    "artifactPath": ".tmp/mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e/native-bundle/artifact.json",
+    "sha256": "e9a032062b39fc99996a896e1c69e242914b92009618eda059b057cbc12cc61a",
+    "files": 1418
+  },
+  "buildId": "33aec696122ecad7f280f6868fb929c5b1f6b8a86cfab4a09d5925521f1b2633",
+  "cleanup": {
+    "temporaryResourceFixturesRemaining": [],
+    "sourceScratchOrToolInstalls": 0,
+    "evidenceAndPriorArtifactsPreserved": true,
+    "unrelatedDeletion": false
+  },
+  "unchangedInputs": [
+    "App/public bridge/media public methods",
+    "Booky and RU/EN content",
+    "Canonical globe Canvas renderer",
+    "Owner7 and pending human reviews5"
+  ],
+  "notRun": [
+    "Android installed nativeOS13",
+    "Swift compiler/XCTest12",
+    "Real native TLS/socket/cancel/clock/keystore/presentation acceptance",
+    "Real Auth/delete/remote grant",
+    "Four original external conditions NOT_RECHECKED"
+  ],
+  "stageStatus": {
+    "S03": "IN_PROGRESS",
+    "S16": "IN_PROGRESS",
+    "openCriteria": "11/36",
+    "PSP": "UNSELECTED",
+    "releaseReady": false
+  },
+  "nextOriginalCoherentStage": "SOL Ultra authors native URI/WebView to ORIGINAL canonical Three texture/scene recipient ownership, child-approved skin/background/stand/hotspot composition and clear-before-frame retirement; then whole Astra Ultra review/check/fix. Preserve genuine empty pins and accountless LOCAL.",
+  "remoteActions": 0,
+  "pushMergeDeployStoreActions": 0,
+  "releaseReady": false,
+  "generatedAt": "2026-10-05T04:01:56.430Z",
+  "validation": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-whole-resource-closure-a1.json",
+    "sha256": "69860e5a306fccb048768ce68bfd4749c88240c37829ea78404d7fdf644d0f79",
+    "bytes": 24478
+  },
+  "originalAuthorFreeze": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-native-resources\\author-manifest-a1.json",
+    "sha256": "7fd88201758538141bd7ff323a9f26eee5d3e30025ec5b073f5f2b1f14a21c49",
+    "bytes": 11297
+  },
+  "sourcePaths": [
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildResourcesRuntimeTest.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildResources.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "apps/mobile/ios/App/App/PlanetChildResources.swift",
+    "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildResourcesRuntimeTests.swift",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/native-child-resource-assets.mjs",
+    "scripts/mobile/native-child-resource-assets.test.mjs",
+    "scripts/mobile/native-install-runtime.mjs",
+    "scripts/mobile/native-install-runtime.test.mjs",
+    "scripts/mobile/verify-native-artifact.mjs",
+    "scripts/mobile/verify-native-artifact.test.mjs",
+    "src/child/childNativeResource.test.ts",
+    "src/child/childNativeResource.ts",
+    "src/child/childNativeResourceReleasePins.json"
+  ],
+  "changes": [
+    "Implemented private LOCAL2 native protected resource claims and fixed bundle/optional vetted HTTPS issuer/resolver/read through existing native media seams, with source-owned platform/catalog/hash/rights/review/TLS/body bounds.",
+    "Implemented actual native read/cancel/recipient retirement and fixed Android byte cleanup plus Swift task/delegate/stream cancellation races. Genuine empty pins continue to deny production materials.",
+    "Added closed source decoder, producer, independent binary provenance and exact13-method native selector; preserved original V1, one canonical globe, Booky and equal RU/EN."
+  ],
+  "localChecks": {
+    "units": {
+      "status": "PASS_SCOPED_WITH_PRECISE_SOURCE_ORIGINS",
+      "newCaseCount": 94,
+      "uniquePassedTitles": 94,
+      "groups": [
+        37,
+        34,
+        13,
+        10
+      ],
+      "qualification": "Current37schema+34emitter and TypeScript exact precommit source graph correlated byte-for-byte to sourceba3d68. Verifier13 and runner10 remain original A1 input proofs, not rerun/relabelled; independent native artifact audit is currentba3d68."
+    },
+    "runs": {
+      "resource-units-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a1\\result.json",
+        "sha256": "9c7f75636057e2aba8cc57292f681cc4b1f83bc4b9a6de97ff14e458311c3deb",
+        "bytes": 24885,
+        "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+        "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+        "pass": false,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a1\\vitest.json",
+            "src/child/childNativeResource.test.ts",
+            "scripts/mobile/native-child-resource-assets.test.mjs"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 1,
+          "signal": null
+        },
+        "testCounts": {
+          "passed": 70,
+          "failed": 1,
+          "pending": 0,
+          "total": 71
+        }
+      },
+      "tsc-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\tsc-a1\\result.json",
+        "sha256": "13cabb7b2e869a05bbfa4b0db307dff97171dd9575f8dd63159d3910d64f9fdb",
+        "bytes": 1807,
+        "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+        "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+        "pass": false,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/typescript/bin/tsc",
+            "--noEmit"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 2,
+          "signal": null
+        }
+      },
+      "resource-units-a2": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a2\\result.json",
+        "sha256": "d264ad76382e6659a62b02f0ca8b725c1cb9602c1f40aecdfbe350a391454f41",
+        "bytes": 24884,
+        "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+        "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+        "pass": true,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-units-a2\\vitest.json",
+            "src/child/childNativeResource.test.ts",
+            "scripts/mobile/native-child-resource-assets.test.mjs"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 0,
+          "signal": null
+        },
+        "testCounts": {
+          "passed": 71,
+          "failed": 0,
+          "pending": 0,
+          "total": 71
+        }
+      },
+      "tsc-a2": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\tsc-a2\\result.json",
+        "sha256": "927ab29c8d1c0c92555555e546cee97c341be081dd1803a2b6a951f9699d2966",
+        "bytes": 1804,
+        "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+        "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+        "pass": true,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/typescript/bin/tsc",
+            "--noEmit"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 0,
+          "signal": null
+        }
+      },
+      "resource-verifier-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-verifier-a1\\result.json",
+        "sha256": "d4698ec683679e1552572d31ea6feb5e9c808de7afd6016f6116ee3443ce4f73",
+        "bytes": 6853,
+        "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+        "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+        "pass": true,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-verifier-a1\\vitest.json",
+            "scripts/mobile/verify-native-artifact.test.mjs",
+            "-t",
+            "native child resource artifact provenance"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 0,
+          "signal": null
+        },
+        "testCounts": {
+          "passed": 13,
+          "failed": 0,
+          "pending": 77,
+          "total": 90
+        }
+      },
+      "resource-runner-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-runner-a1\\result.json",
+        "sha256": "2f1b4752e0f2ae437db2ac6b63e486a94ff3341d3b191a7672ee92a127c0ec96",
+        "bytes": 5736,
+        "sourceCommit": "4f6d739598e79e6c86a7641ff7ec08fc5cf4fc20",
+        "sourceFingerprint": "3ebf08445cb77d547d2f0faedd431d9ff9d97d596bfba16bf0b0d0e46f0c4363",
+        "pass": true,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "node_modules/vitest/vitest.mjs",
+            "run",
+            "--maxWorkers=1",
+            "--reporter=json",
+            "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\resource-runner-a1\\vitest.json",
+            "scripts/mobile/native-install-runtime.test.mjs",
+            "-t",
+            "native child resource selector"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 0,
+          "signal": null
+        },
+        "testCounts": {
+          "passed": 10,
+          "failed": 0,
+          "pending": 108,
+          "total": 118
+        }
+      },
+      "android-prepare-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\android-prepare-a1\\result.json",
+        "sha256": "c063b96d570d0cc233ac1eb3b6f11d9b109a1ac7e81b481b5dc6ffbf17d52451",
+        "bytes": 1862,
+        "sourceCommit": "ba3d68d21309a57731b55dd4201c1c75ae5c5b1d",
+        "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+        "pass": true,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "scripts/mobile/prepare-local-release.mjs",
+            "android"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 0,
+          "signal": null
+        }
+      },
+      "native-audit-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-validation\\native-audit-a1\\result.json",
+        "sha256": "a90c6681416a5994792729228a4c8623aed11f035ce4ddd24a784af0961fa467",
+        "bytes": 1835,
+        "sourceCommit": "ba3d68d21309a57731b55dd4201c1c75ae5c5b1d",
+        "sourceFingerprint": "107bd513878f5eea8a5b56745e7cab0325a87128acaea484758a3e886abb20ca",
+        "pass": true,
+        "command": {
+          "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "args": [
+            "scripts/mobile/verify-native-artifact.mjs"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "exitCode": 0,
+          "signal": null
+        }
+      }
+    },
+    "nativeHost": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-semantic-jvm-a1\\result.json",
+        "sha256": "5583222cbf854604bc056715b383de8d8ef1dcd4549d466e53f9554060ecf0f6",
+        "bytes": 3969
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-semantic-jvm-a2\\result.json",
+        "sha256": "297ad50fa2f1eb513fe290f0f9eb8b1df6d8570fc183f592141f344a7ca85bc8",
+        "bytes": 1804
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-semantic-scalars-a1\\result.json",
+        "sha256": "e9f7cdb0eb77444d488a6edd2d471505a7caa3a54f0ddab005d5f8fe1405d387",
+        "bytes": 2045
+      }
+    ],
+    "nativeHostQualification": "Final actual reader with synthetic Claim/Looper dependencies6 cases31assertions; separate scalar HTTP/body/JDK P256 X9638cases79assertions. No real Vault authority, nativeclock, platform TLS handshake, OS socket cancellation or device acceptance.",
+    "androidCompiled": {
+      "methods": 13,
+      "status": "COMPILED_ONLY_NOT_RUN",
+      "actualDEX": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-api-compiled-tests-a1\\result.json",
+        "sha256": "0a85308caa3162f49c26a13256c06749895e215c9094a3235beb2bf5fbbf889d",
+        "bytes": 8619
+      },
+      "apiCompatibility": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\android-api-compatibility-a1\\result.json",
+        "sha256": "4553fd3ba458d553f34d10f244bfebc2af73bd61d853f69e4fddccdafe252795",
+        "bytes": 10561
+      }
+    },
+    "swift": {
+      "methods": 12,
+      "status": "NOT_COMPILED_NOT_RUN",
+      "review": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-swift-review-note-a1.json",
+        "sha256": "e5b649964f5d7c4daf841020cb6ccb6e9472a9db2945cfb353ecb069a8d3f12e",
+        "bytes": 6248
+      },
+      "payloadIndex": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-swift-payload-index-a1.json",
+        "sha256": "6a541ad624d3bd90926e1cd37a174244ae2d1571c75dabac2fec3cc03d777f5a",
+        "bytes": 4227
+      },
+      "retainedCheck": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\astra-swift-verification-a1\\copy-receipt.json",
+        "sha256": "2a314e61ab38449e84acbe0d68a888cd1bac3d3db2c9ab495303d2d771508ec8",
+        "bytes": 1521
+      },
+      "qualification": "PBX parse/source target binding and source structure only; URLSession/concurrent retirement require Apple runtime"
+    }
+  },
+  "checkQualification": "Current37schema+34emitter and TypeScript exact precommit source graph correlated byte-for-byte to sourceba3d68. Verifier13 and runner10 remain original A1 input proofs, not rerun/relabelled; independent native artifact audit is currentba3d68.",
+  "retainedEvidence": {
+    "path": "docs/mobile/evidence/S16/child-local-native-media-20261005/result.json",
+    "sha256": "ff51cd41a52c8e5c9edc5cc4448b42cfaeab011ffdf6f5db1913c94acb45b188",
+    "qualification": "Prior evidence retains source/timestamps and failures; no unchanged browser/Booky/OS rerun."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Copied exact older source/time conditions; NOT_RECHECKED.",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "nextAction": "SOL Ultra authors native URI/WebView to ORIGINAL canonical Three texture/scene recipient ownership, child-approved skin/background/stand/hotspot composition and clear-before-frame retirement; then whole Astra Ultra review/check/fix. Preserve genuine empty pins and accountless LOCAL. Preserve Booky/Mr. Booky, equal RU/EN, original V1 and inactive encrypted namespaces; one canonical globe/Canvas/camera/renderer. Bind original native profile/policy/package/epoch/deadline and complete native/decoder/GPU retirement before successor frame. Free LOCAL is accountless with no full child-record upload. Missing authentic editorial/rights/pins deny production. S03/S16 remain IN_PROGRESS11/36 OPEN, owner7/reviews5, PSP unselected, releaseReady=false. No unchanged checks/build repeats, seventh AVD attempt, report-only D stage or remote/push/merge/deploy.",
+  "resourceImplementedLocally": true,
+  "stageAccepted": false,
+  "availablePriorDelivery": {
+    "sourceCommit": "b94dcc48ccae7dc97d070cada65c06e1cf1ff745",
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-child-local-snapshot-delivery-20261004-1a360ccc-e112-4c08-a3f6-f656273748be.zip",
+    "sha256": "18d8eb3e0ca4a6eae00c0cb84b7b6c644547e3f85bf8bca2175ff300bb86acd5",
+    "qualification": "Historical delta package; not rebuilt or rebound to this runner source."
+  },
+  "availableCurrentBuilds": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\native-artifact.json",
+      "sha256": "e9a032062b39fc99996a896e1c69e242914b92009618eda059b057cbc12cc61a",
+      "bytes": 722470
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\app-dev-debug.apk",
+      "sha256": "4bfbffe1d40304329aed418d6fb33912884deea2bc63c03490170615f91addaa",
+      "bytes": 70683819
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-8fa40a4d-a754-4df4-b665-07a6820dbe4e\\app-dev-debug-androidTest.apk",
+      "sha256": "67c93d615f7cecef0fc9a2f905e209a78b7037c26a815061836bc3e252273f32",
+      "bytes": 738169
+    }
+  ],
+  "runCommands": {
+    "preview": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "args": [
+        "node_modules/vite/bin/vite.js",
+        "--host",
+        "127.0.0.1"
+      ]
+    },
+    "affectedPreparation": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      },
+      "args": [
+        "scripts/mobile/prepare-local-release.mjs",
+        "android"
+      ],
+      "qualification": "Already built at current source; repeat only for new source changes."
+    }
+  }
+}
