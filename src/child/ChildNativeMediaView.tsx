@@ -23,13 +23,14 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
   const [selected, setSelected] = useState<ChildNativeMediaAsset | null>(null);
   const [phase, setPhase] = useState<"sealed" | "loading" | "ready" | "unavailable">("sealed");
   const slot = useRef<HTMLDivElement>(null), sequence = useRef(0), live = useRef(false), token = useRef<string | null>(null);
+  const anchored = useRef<{ left: number; top: number; right: number; bottom: number; viewportWidth: number; viewportHeight: number } | null>(null);
   const ownerKey = owner.kind + "/" + owner.id + "/" + owner.contentChecksum;
   const current = () => live.current && controller.getSnapshot().status === "child"
     && controller.getSnapshot().context?.token === contextToken;
 
   useEffect(() => {
     live.current = true; const attempt = ++sequence.current;
-    setAssets(null); setSelected(null); setPhase("loading"); token.current = null;
+    setAssets(null); setSelected(null); setPhase("loading"); token.current = null; anchored.current = null;
     void (async () => {
       if (!media) { if (current() && sequence.current === attempt) setPhase("unavailable"); return; }
       const values = await media.list(owner);
@@ -37,7 +38,7 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
       setAssets(values); setPhase(values ? "ready" : "unavailable");
     })();
     return () => {
-      live.current = false; ++sequence.current;
+      live.current = false; ++sequence.current; anchored.current = null;
       token.current = null;
       // The old decoder may not have returned a token yet. Revoke the actual
       // native media epoch before an unmounted slot can receive its pixels.
@@ -46,7 +47,13 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
   }, [controller, media, ownerKey, contextToken]);
   useEffect(() => {
     const hide = () => {
-      if (!current() || !selected || !media) return;
+      if (!current() || !selected || !media || !anchored.current) return;
+      const frame = anchored.current, rect = slot.current?.getBoundingClientRect();
+      // A queued scroll event may describe the deliberate pre-dispatch anchor.
+      // Only unchanged geometry may keep the original pending/native surface.
+      if (rect && rect.left === frame.left && rect.top === frame.top && rect.right === frame.right && rect.bottom === frame.bottom
+        && window.innerWidth === frame.viewportWidth && window.innerHeight === frame.viewportHeight) return;
+      anchored.current = null;
       const attempt = ++sequence.current; token.current = null; setSelected(null); setPhase("loading");
       void media.releaseAll().then(ok => { if (current() && sequence.current === attempt) setPhase(ok ? "ready" : "unavailable"); });
     };
@@ -58,36 +65,40 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
   async function close() {
     if (!current() || !media) return;
     const attempt = ++sequence.current;
-    token.current = null; setPhase("loading"); setSelected(null);
+    token.current = null; anchored.current = null; setPhase("loading"); setSelected(null);
     const ok = await media.releaseAll();
     if (current() && sequence.current === attempt) setPhase(ok ? "ready" : "unavailable");
   }
   async function present(asset: ChildNativeMediaAsset) {
     if (!current() || !media) return;
-    const attempt = ++sequence.current; setPhase("loading"); token.current = null;
+    const attempt = ++sequence.current; setPhase("loading"); token.current = null; anchored.current = null;
     if (!await media.releaseAll() || !current() || sequence.current !== attempt) { if (current() && sequence.current === attempt) setPhase("unavailable"); return; }
     setSelected(asset);
-    // The native surface anchors to an actual bounded visible slot. Wait for
-    // the committed layout, then send geometry only; never a permission flag.
+    // Commit the accessible slot and reveal it before dispatching the original
+    // native worker. Pre-dispatch scrolling grants no native authority.
     await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
     if (!current() || sequence.current !== attempt || !slot.current) return;
+    slot.current.scrollIntoView({ block: "center", inline: "nearest", behavior: "instant" });
+    await new Promise<void>(resolve => requestAnimationFrame(() => requestAnimationFrame(() => resolve())));
+    if (!current() || sequence.current !== attempt || !slot.current) return;
     const rect = slot.current.getBoundingClientRect(), viewportWidth = Math.floor(window.innerWidth), viewportHeight = Math.floor(window.innerHeight);
-    const x = Math.max(0, Math.ceil(rect.left)), y = Math.max(0, Math.ceil(rect.top));
-    const width = Math.floor(Math.min(rect.right, viewportWidth) - x), height = Math.floor(Math.min(rect.bottom, viewportHeight) - y);
-    const layout = decodeChildNativeMediaLayout({ x, y, width, height, viewportWidth, viewportHeight });
+    const x = Math.ceil(rect.left), y = Math.ceil(rect.top);
+    const width = Math.floor(rect.right - x), height = Math.floor(rect.bottom - y);
+    const layout = rect.left >= 0 && rect.top >= 0 && rect.right <= viewportWidth && rect.bottom <= viewportHeight
+      ? decodeChildNativeMediaLayout({ x, y, width, height, viewportWidth, viewportHeight }) : null;
     if (!layout) { setSelected(null); setPhase("unavailable"); return; }
+    anchored.current = { left: rect.left, top: rect.top, right: rect.right, bottom: rect.bottom,
+      viewportWidth: window.innerWidth, viewportHeight: window.innerHeight };
     const result = await media.present(asset, layout);
     if (!current() || sequence.current !== attempt) {
       if (result?.presentationToken && controller.getSnapshot().context?.token === contextToken) await media.release(result.presentationToken);
       return;
     }
     if (result?.status === "presented") { token.current = result.presentationToken; setPhase("ready"); }
-    else { setSelected(null); setPhase("unavailable"); }
+    else { anchored.current = null; setSelected(null); setPhase("unavailable"); }
   }
   return <section className="child-native-media" aria-label={text.title} data-child-native-media-phase={phase}>
     <h3>{text.title}</h3>
-    {phase === "loading" && <p role="status">{text.loading}</p>}
-    {phase === "unavailable" && <p role="status">{text.unavailable}</p>}
     {assets?.length === 0 && <p>{text.empty}</p>}
     {!!assets?.length && <ul className="child-native-media-list">{assets.map(asset => <li key={asset.assetId}>
       <button type="button" disabled={phase === "loading"} onClick={() => { void present(asset); }}>
@@ -103,5 +114,7 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
       {selected.transcript && <details open><summary>{text.transcript}</summary><p>{selected.transcript}</p></details>}
       <button type="button" onClick={() => { void close(); }}>{text.close}</button>
     </div>}
+    {phase === "loading" && <p role="status">{text.loading}</p>}
+    {phase === "unavailable" && <p role="status">{text.unavailable}</p>}
   </section>;
 }
