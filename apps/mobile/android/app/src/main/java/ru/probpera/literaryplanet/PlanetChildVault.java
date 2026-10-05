@@ -4747,7 +4747,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
      * payload is copied and exact hash-checked; close wipes all owned arrays. */
     private static final class LocalV2CompiledPackage implements AutoCloseable {
         final LocalV2PackageProfile profile;final String packageId,checksum,reviewChecksum,platform,territory,home;final long version,until;
-        private final java.util.LinkedHashMap<String,byte[]> payloads;private boolean closed;
+        private final java.util.LinkedHashMap<String,byte[]> payloads;private volatile boolean closed;
         private LocalV2CompiledPackage(LocalV2PackageProfile profile,String id,long version,String checksum,String review,String platform,String territory,String home,long until,java.util.LinkedHashMap<String,byte[]> payloads){
             this.profile=profile;packageId=id;this.version=version;this.checksum=checksum;reviewChecksum=review;this.platform=platform;this.territory=territory;this.home=home;this.until=until;this.payloads=payloads;}
         private synchronized byte[] copy(String key,long now) throws Exception {require(!closed&&now>=0&&now<until);byte[] value=payloads.get(key);require(value!=null);return value.clone();}
@@ -4858,7 +4858,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
      * with that operation; retaining this object cannot renew its lifetime. */
     private static final class LocalV2OwnedPackageDelivery {
         final LocalV2NativePackageLoader owner;final LocalV2CompiledPackage compiled;private final LocalV2PackageCopies copies;private LocalV2DataAdmission data;
-        private volatile LocalV2AppOwner mediaOwner;private java.util.LinkedHashMap<String,LocalV2MediaAsset> mediaAssets;private LocalV2ResourceCatalog resourceCatalog;private volatile LocalV2SDKChannel.Command sdkCommand; private LocalV2OwnedPackageDelivery(LocalV2NativePackageLoader owner,LocalV2CompiledPackage compiled){this.owner=owner;this.compiled=compiled;copies=new LocalV2PackageCopies(compiled);}
+        private volatile LocalV2AppOwner mediaOwner;private volatile java.util.LinkedHashMap<String,LocalV2MediaAsset> mediaAssets;private LocalV2ResourceCatalog resourceCatalog;private volatile java.util.LinkedHashMap<String,LocalV2Scene> sceneAssets;private volatile LocalV2SDKChannel.Command sdkCommand; private LocalV2OwnedPackageDelivery(LocalV2NativePackageLoader owner,LocalV2CompiledPackage compiled){this.owner=owner;this.compiled=compiled;copies=new LocalV2PackageCopies(compiled);}
         private void fence() throws Exception {try{require(owner.delivery==this&&owner.worker==Thread.currentThread());owner.fresh(compiled.profile);owner.live();}catch(Exception failure){owner.revoke();throw failure;}}
         private byte[] copyHome() throws Exception {try{return copies.copy(compiled.home,owner::wall,this::fence);}catch(Exception failure){owner.revoke();throw failure;}}
         private byte[] copyEntity(String kind,String id) throws Exception {require(LocalV2PackageCompiler.KINDS.contains(kind)&&id!=null&&id.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));try{return copies.copy(kind+"/"+id,owner::wall,this::fence);}catch(Exception failure){owner.revoke();throw failure;}}
@@ -5766,7 +5766,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
     /** Commands execute on the ORIGINAL loader worker, whose original delivery
      * remains retained. Queue admission is correlation data, not a capability. */
     private static final class LocalV2SDKChannel {
-        private static final class Command {final LocalV2SDKCommand body;final String id=LocalV2AppOwner.random(16);Object value;Exception failure;boolean done,collectionKnown,resultClosed,collectionJoined;volatile boolean running,returned;Command(LocalV2SDKCommand body){this.body=body;}}
+        private static final class Command {final LocalV2SDKCommand body;final String id=LocalV2AppOwner.random(16);Object value;volatile Exception failure;volatile boolean done;boolean collectionKnown,resultClosed,collectionJoined;volatile boolean running,returned;Command(LocalV2SDKCommand body){this.body=body;}}
         private final java.util.ArrayDeque<Command> commands=new java.util.ArrayDeque<>();private LocalV2OwnedPackageDelivery delivery;private boolean closing,ended;private Exception failure;
         private synchronized void failed(Throwable error){failure=error instanceof Exception?(Exception)error:new Unavailable();closing=true;ended=true;for(Command c:commands){c.failure=failure;c.done=true;}commands.clear();notifyAll();}
         private void serve(LocalV2OwnedPackageDelivery original) throws Exception {
@@ -5774,7 +5774,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             try{for(;;){Command command;synchronized(this){if(commands.isEmpty()&&!closing){long remaining=original.owner.request.deadline-SystemClock.elapsedRealtime();if(remaining<=0)throw new PinKnownRefusal();wait(Math.min(10,remaining));}if(closing)break;command=commands.isEmpty()?null:commands.removeFirst();}
                 // Observe the actual original loader even when no JS command is queued;
                 // release this condition before taking the original writer/process fence.
-                original.owner.live();if(command==null)continue;
+                original.fence();if(command==null)continue;
                 try{original.fence();require(original.sdkCommand==null);original.sdkCommand=command;command.running=true;Object value=command.body.run(original);command.returned=true;original.fence();original.data.sdkCompleteCommand(command);original.fence();command.running=false;original.sdkCommand=null;synchronized(this){require(!closing);command.value=value;command.done=true;notifyAll();}}
                 catch(Throwable error){synchronized(this){command.failure=error instanceof Exception?(Exception)error:new Unavailable();command.done=true;notifyAll();}throw error;}}
             }finally{synchronized(this){ended=true;for(Command c:commands){c.failure=new PinKnownRefusal();c.done=true;}commands.clear();notifyAll();}}
@@ -5795,7 +5795,12 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private android.widget.FrameLayout surface;private android.view.View cover;private android.widget.LinearLayout controls;private android.os.IBinder window;
         private android.app.Application.ActivityLifecycleCallbacks lifecycle;private android.content.BroadcastReceiver screen;
         private android.view.View.OnAttachStateChangeListener attachment;private androidx.activity.OnBackPressedCallback back;private Runnable expiry;
-        private volatile boolean sealed,busy,disposed;private long generation;private volatile Context context;private volatile long mediaEpoch;private volatile PlanetChildMedia.Owner media;private volatile PlanetChildResources resourceRead;private Runnable mediaWatch;private final java.util.Set<String> retiredMedia=new java.util.HashSet<>();
+        private volatile boolean sealed,busy,disposed;private long generation;private volatile Context context;private volatile long mediaEpoch;private volatile PlanetChildMedia.Owner media;private volatile PlanetChildResources resourceRead;private Runnable mediaWatch;private long mediaUntil=Long.MAX_VALUE;
+        private volatile long canonicalEpoch;private final Object canonicalRetirement=new Object();
+        private final java.util.Map<String,LocalV2SceneLease> scenes=new java.util.concurrent.ConcurrentHashMap<>();
+        private final java.util.Map<String,PlanetChildWebResources.Output> webOutputs=new java.util.concurrent.ConcurrentHashMap<>();
+        private final java.util.Set<String> retiredScenes=new java.util.HashSet<>(),retiredWeb=new java.util.HashSet<>();
+        private final java.util.Set<String> retiredMedia=new java.util.HashSet<>();
         private LocalV2Writer reader;private LocalV2Request readRequest;private LocalV2NativePackageLoader loader;private LocalV2SDKChannel channel;
         private LocalV2GateHost gate;private LocalV2ProfileOperation profile;private LocalV2PinOperation enrollment;private LocalV2SDKPinRotation rotation;
         private SDKNativeChildFirstInstall install;private SDKFirstInstallRequest installRequest;
@@ -5839,13 +5844,13 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private static java.util.Map<String,Object> unavailable(String id,String reason){return map("version",2L,"requestId",id,"status","unavailable","reason",reason,"context",null,"profiles",java.util.Collections.emptyList());}
         private java.util.Map<String,Object> refusal(PlanetChildDataTransport.V2Request request,String reason){
             if("retire".equals(request.method))return map("version",2L,"requestId",request.id,"status","unavailable","contextToken",request.contextToken);
-            if(java.util.Arrays.asList("readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia").contains(request.method)){
+            if(java.util.Arrays.asList("readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource").contains(request.method)){
                 Context active;synchronized(this){active=context;}
                 return map("version",2L,"requestId",request.id,"status","unavailable","contextToken",request.contextToken,"generation",active==null?generation:active.generation,"value",null);
             }
             return unavailable(request.id,reason);
         }
-        void execute(PlanetChildDataTransport.V2Request request,Reply reply){ long stamp;try{if("releaseMedia".equals(request.method)||java.util.Arrays.asList("bootstrap","perform","retire").contains(request.method))fastMediaConceal();stamp=mediaEpoch;}catch(Exception failure){sealed=true;reply.complete(refusal(request,"pending"));return;} final long capturedMediaEpoch=stamp;final boolean revocationOnly="releaseMedia".equals(request.method)&&request.presentationToken==null;
+        void execute(PlanetChildDataTransport.V2Request request,Reply reply){ long stamp;try{if("releaseScene".equals(request.method)||"releaseWebResource".equals(request.method))fastCanonicalRelease(request);if("releaseMedia".equals(request.method)||java.util.Arrays.asList("bootstrap","perform","retire").contains(request.method))fastMediaConceal();stamp=mediaEpoch;}catch(Exception failure){sealed=true;reply.complete(refusal(request,"pending"));return;} final long capturedMediaEpoch=stamp;final boolean revocationOnly="releaseMedia".equals(request.method)&&request.presentationToken==null||"releaseScene".equals(request.method)&&request.sceneToken==null||"releaseWebResource".equals(request.method)&&request.resourceToken==null;
             boolean accepted;synchronized(this){accepted=!disposed&&(!busy||revocationOnly)&&!sealed&&seen.size()<2048&&seen.add(request.id);if(accepted&&!revocationOnly)busy=true;}
             if(!accepted){reply.complete(refusal(request,"pending"));return;}
             io.execute(()->{try{reply.complete(dispatch(request,capturedMediaEpoch));}
@@ -5859,7 +5864,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             if("retire".equals(r.method)){Context old;synchronized(this){old=context;if(r.contextToken!=null)require(old!=null&&old.token.equals(r.contextToken));context=null;}cover();joinOwners();return map("version",2L,"requestId",r.id,"status","retired","contextToken",r.contextToken);}
             if("readContext".equals(r.method)){Context c=current(r.contextToken);fresh(c);return response(r.id,c,null);}
             if("perform".equals(r.method))return perform(r);
-            Context c=current(r.contextToken);require("child".equals(c.status)&&channel!=null);Object value=channel.invoke(delivery->{original(c,delivery);Object out=java.util.Arrays.asList("listMedia","presentMedia","releaseMedia").contains(r.method)?mediaCommand(r,c,delivery,mediaStamp):LocalV2SDKData.perform(r,delivery);original(c,delivery);return out;});
+            Context c=current(r.contextToken);require("child".equals(c.status)&&channel!=null);Object value=channel.invoke(delivery->{original(c,delivery);Object out=java.util.Arrays.asList("listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource").contains(r.method)?sceneCommand(r,c,delivery):java.util.Arrays.asList("listMedia","presentMedia","releaseMedia").contains(r.method)?mediaCommand(r,c,delivery,mediaStamp):LocalV2SDKData.perform(r,delivery);original(c,delivery);return out;});
             fresh(c);return map("version",2L,"requestId",r.id,"status","ok","contextToken",c.token,"generation",c.generation,"value",value);
         }
         private void original(Context c,LocalV2OwnedPackageDelivery delivery) throws Exception {current(c.token);require(loader==delivery.owner&&delivery.owner.request.deadline==c.deadline&&delivery.compiled.profile.recordChecksum.equals(c.checksum));delivery.fence();}
@@ -5928,6 +5933,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
 
         /** Revocation-only native entry runs before busy/worker admission. */
         private long fastMediaConceal()throws Exception {
+            fastCanonicalConceal();
             PlanetChildMedia.Owner prior;PlanetChildResources reading;long stamp;synchronized(this){require(mediaEpoch<MAX_SAFE);stamp=++mediaEpoch;prior=media;reading=resourceRead;}if(reading!=null)reading.revoke();
             if(prior!=null)main(()->{prior.concealMain();return null;});return stamp;
         }
@@ -5942,6 +5948,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         }
         private void retireMediaBeforePackageRelease(LocalV2OwnedPackageDelivery original)throws Exception {
             require(original!=null&&original.mediaOwner==this&&original.owner==loader&&android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            retireCanonicalJoined(null,null,true);
             // This terminal original-loader path joins the metadata callback too;
             // ordinary null-release leaves its existing expiry ceiling armed.
             main(()->{if(mediaWatch!=null){main.removeCallbacks(mediaWatch);mediaWatch=null;}return null;});
@@ -5952,16 +5959,91 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private void armMediaExpiry(Context c,LocalV2OwnedPackageDelivery d)throws Exception {
             original(c,d);if(d.mediaAssets==null||d.mediaAssets.isEmpty())return;
             long first=Long.MAX_VALUE;for(LocalV2MediaAsset asset:d.mediaAssets.values()){java.util.Map<String,Object> binding=d.resourceCatalog.bindings.get(d.compiled.checksum+"/"+asset.assetId);long until=binding==null?asset.until:Math.min(asset.until,LocalV2PackageCompiler.epoch(binding.get("validUntilEpochMs")));first=Math.min(first,until);}
+            if(d.sceneAssets!=null)for(LocalV2Scene scene:d.sceneAssets.values())first=Math.min(first,scene.until);
             final long until=first,admittedWall=d.owner.wall();
-            main(()->{require(context==c&&loader==d.owner);if(mediaWatch!=null)return null;
+            main(()->{require(context==c&&loader==d.owner);mediaUntil=mediaWatch==null?until:Math.min(mediaUntil,until);if(mediaWatch!=null)return null;
                 mediaWatch=new Runnable(){long last=admittedWall;public void run(){
                     if(context!=c||sealed||disposed)return;
-                    long wall=System.currentTimeMillis();if(wall<last||wall>=until||SystemClock.elapsedRealtime()>=c.deadline){invalidate("expired");return;}last=wall;
+                    long wall=System.currentTimeMillis();if(wall<last||wall>=mediaUntil||SystemClock.elapsedRealtime()>=c.deadline){invalidate("expired");return;}last=wall;
                     if(!main.postDelayed(this,10))invalidate("pending");
                 }};require(main.post(mediaWatch));return null;
             });original(c,d);
         }
 
+        private void fastCanonicalConceal()throws Exception {
+            java.util.List<LocalV2SceneLease> leases;java.util.List<PlanetChildWebResources.Output> outputs;
+            synchronized(this){require(canonicalEpoch<MAX_SAFE);canonicalEpoch++;leases=new java.util.ArrayList<>(scenes.values());outputs=new java.util.ArrayList<>(webOutputs.values());}
+            for(LocalV2SceneLease lease:leases)lease.revoked=true;for(PlanetChildWebResources.Output out:outputs)out.revoke();
+        }
+        private void fastCanonicalRelease(PlanetChildDataTransport.V2Request r)throws Exception {
+            java.util.List<PlanetChildWebResources.Output> outputs=new java.util.ArrayList<>();
+            synchronized(this){require(context!=null&&context.token.equals(r.contextToken));
+                if("releaseScene".equals(r.method)){
+                    require(r.sceneToken==null||scenes.containsKey(r.sceneToken)||retiredScenes.contains(r.sceneToken));
+                    for(LocalV2SceneLease lease:scenes.values())if(lease.context==context&&(r.sceneToken==null||r.sceneToken.equals(lease.token)))lease.revoked=true;
+                    for(PlanetChildWebResources.Output out:webOutputs.values())if(out.permit.sceneContext(context)&&(r.sceneToken==null||r.sceneToken.equals(out.permit.sceneToken())))outputs.add(out);
+                }else{
+                    require(r.resourceToken==null||webOutputs.containsKey(r.resourceToken)||retiredWeb.contains(r.resourceToken));
+                    for(PlanetChildWebResources.Output out:webOutputs.values())if(out.permit.sceneContext(context)&&(r.resourceToken==null||r.resourceToken.equals(out.token)))outputs.add(out);
+                }
+            }for(PlanetChildWebResources.Output out:outputs)out.revoke();
+        }
+        private void retireCanonicalJoined(String sceneToken,String resourceToken,boolean retireScenes)throws Exception {
+            synchronized(canonicalRetirement){
+            require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());java.util.List<PlanetChildWebResources.Output> outputs=new java.util.ArrayList<>();java.util.List<LocalV2SceneLease> leases=new java.util.ArrayList<>();
+            synchronized(this){for(PlanetChildWebResources.Output out:webOutputs.values())if((sceneToken==null||sceneToken.equals(out.permit.sceneToken()))&&(resourceToken==null||resourceToken.equals(out.token)))outputs.add(out);
+                if(retireScenes)for(LocalV2SceneLease lease:scenes.values())if(sceneToken==null||sceneToken.equals(lease.token)){lease.revoked=true;leases.add(lease);}}
+            for(PlanetChildWebResources.Output out:outputs)out.revoke();
+            for(LocalV2SceneLease lease:leases)main(()->{if(lease.watch!=null){main.removeCallbacks(lease.watch);lease.watch=null;}return null;});
+            for(PlanetChildWebResources.Output out:outputs){out.closeJoined();require(out.knownClosed());out.permit.handler().forget(out);synchronized(this){require(webOutputs.get(out.token)==out&&retiredWeb.size()<2048);webOutputs.remove(out.token);retiredWeb.add(out.token);}}
+            synchronized(this){for(LocalV2SceneLease lease:leases){require(scenes.get(lease.token)==lease&&retiredScenes.size()<2048);for(PlanetChildWebResources.Output out:webOutputs.values())require(!lease.token.equals(out.permit.sceneToken()));scenes.remove(lease.token);retiredScenes.add(lease.token);lease.closed=true;}}
+        }
+        }
+        private void armCanonicalExpiry(LocalV2SceneLease lease)throws Exception {
+            main(()->{require(lease.owner==this&&context==lease.context&&!lease.revoked);lease.handler.currentMain(lease.web,lease.navigationEpoch);
+                lease.watch=new Runnable(){long last=System.currentTimeMillis();public void run(){
+                    if(lease.revoked||lease.closed)return;long wall=System.currentTimeMillis();
+                    try{require(context==lease.context&&scenes.get(lease.token)==lease&&!sealed&&!disposed&&wall>=last&&wall<lease.scene.until&&SystemClock.elapsedRealtime()<lease.context.deadline);
+                        lease.delivery.owner.current();lease.handler.currentMain(lease.web,lease.navigationEpoch);last=wall;require(main.postDelayed(this,10));
+                    }catch(Exception expired){invalidate("expired");}
+                }};require(main.post(lease.watch));return null;});
+        }
+        private java.util.Map<String,Object> sceneUnavailable(PlanetChildDataTransport.V2Request r){return map("status","unavailable","sceneToken",null,"sceneId",r.sceneId,"owner",r.owner,"skin",null,"stand",null,"background",null,"hotspots",java.util.Collections.emptyList(),"remainingLifetimeMs",0L);}
+        private Object sceneCommand(PlanetChildDataTransport.V2Request r,Context c,LocalV2OwnedPackageDelivery d)throws Exception {
+            original(c,d);require(d.mediaOwner==this);
+            if("releaseScene".equals(r.method)){require(r.sceneToken==null||scenes.containsKey(r.sceneToken)||retiredScenes.contains(r.sceneToken));retireCanonicalJoined(r.sceneToken,null,true);original(c,d);return map("status","retired","sceneToken",r.sceneToken);}
+            if("releaseWebResource".equals(r.method)){require(r.resourceToken==null||webOutputs.containsKey(r.resourceToken)||retiredWeb.contains(r.resourceToken));retireCanonicalJoined(null,r.resourceToken,false);original(c,d);return map("status","retired","resourceToken",r.resourceToken);}
+            if(d.mediaAssets==null)d.mediaAssets=new LocalV2FixedMediaProducer(d).compile();armMediaExpiry(c,d);
+            if(d.sceneAssets==null)d.sceneAssets=LocalV2SceneCompiler.compileCatalog(d);armMediaExpiry(c,d);
+            if("listScenes".equals(r.method)||"openScene".equals(r.method))LocalV2MediaCompiler.owner(d,r.owner);
+            if("listScenes".equals(r.method)){java.util.List<Object> out=new java.util.ArrayList<>();for(LocalV2Scene scene:d.sceneAssets.values())if(scene.owner.equals(r.owner)&&d.owner.wall()<scene.until){scene.checkWorker(d);require(out.size()<32);out.add(map("sceneId",scene.id,"title",scene.title,"owner",scene.owner));}return out;}
+            if("openScene".equals(r.method)){
+                LocalV2Scene scene=d.sceneAssets.get(r.sceneId);if(scene==null||!scene.owner.equals(r.owner)||d.owner.wall()>=scene.until)return sceneUnavailable(r);
+                retireCanonicalJoined(null,null,true);scene.checkWorker(d);
+                PlanetChildWebResources handler=main(()->{PlanetChildWebResources actual=((MainActivity)activity).childWebResources();actual.bind(this);return actual;});
+                LocalV2SceneLease lease=new LocalV2SceneLease(this,c,d,scene,handler,canonicalEpoch);synchronized(this){require(scenes.isEmpty()&&webOutputs.isEmpty());scenes.put(lease.token,lease);}armCanonicalExpiry(lease);lease.checkWorker();
+                return map("status","opened","sceneToken",lease.token,"sceneId",scene.id,"owner",scene.owner,"skin",scene.root.get("skin"),"stand",scene.root.get("stand"),"background",scene.root.get("background"),"hotspots",scene.root.get("hotspots"),"remainingLifetimeMs",lease.remaining());
+            }
+            require("acquireWebResource".equals(r.method));LocalV2SceneLease lease;synchronized(this){lease=scenes.get(r.sceneToken);}require(lease!=null&&lease.context==c&&lease.delivery==d);lease.checkWorker();
+            java.util.List<PlanetChildWebResources.Output> previous; synchronized(this){previous=new java.util.ArrayList<>(webOutputs.values());}
+            for(PlanetChildWebResources.Output out:previous)if(out.permit.sceneToken().equals(lease.token)&&out.permit.slotId().equals(r.slotId))retireCanonicalJoined(null,out.token,false);
+            LocalV2MediaAsset asset=lease.scene.assets.get(r.slotId);require(asset!=null);LocalV2MediaPermit permit=new LocalV2MediaPermit(this,c,d,asset,mediaEpoch);
+            LocalV2ResourceClaim claim=new LocalV2ResourceClaim(permit);PlanetChildResources reader=PlanetChildResources.original(claim);byte[] bytes=null;PlanetChildWebResources.Output output=null;boolean handed=false;
+            synchronized(this){permit.checkOutput();require(resourceRead==null);resourceRead=reader;}
+            try{
+                bytes=reader.readOwned();permit.verifyEncoded(bytes);permit.checkWorker();require(reader.knownClosed());reader.closeJoined();require(reader.knownClosed());
+                synchronized(this){require(resourceRead==reader);resourceRead=null;}
+                lease.checkWorker();LocalV2WebOutputPermit ownership=new LocalV2WebOutputPermit(lease,r.slotId,claim,reader,bytes);
+                output=lease.handler.adopt(ownership,bytes);bytes=null;
+                synchronized(this){require(webOutputs.size()<3&&webOutputs.put(output.token,output)==null);}
+                ownership.checkTransferOwner(output);original(c,d);lease.checkWorker();handed=true;
+                return map("status","available","sceneToken",lease.token,"slotId",r.slotId,"resourceToken",output.token,"assetId",asset.assetId,"entity",asset.entity,"mime",asset.mime,"checksum",asset.sha256,"encodedBytes",Long.valueOf(asset.bytes),"uri",output.uri,"remainingLifetimeMs",ownership.remaining());
+            }finally{
+                LocalSnapshotV2.wipe(bytes);try{reader.closeJoined();require(reader.knownClosed());synchronized(this){if(resourceRead==reader)resourceRead=null;}
+                    if(!handed&&output!=null){if(webOutputs.get(output.token)==output)retireCanonicalJoined(null,output.token,false);else{output.revoke();output.closeJoined();require(output.knownClosed());lease.handler.forget(output);}}
+                }catch(Exception unknown){d.owner.writer.unknown(d.owner.request);throw unknown;}
+            }
+        }
         private Object mediaCommand(PlanetChildDataTransport.V2Request r,Context c,LocalV2OwnedPackageDelivery d,long stamp)throws Exception {
             original(c,d);require(d.mediaOwner==this);
             if("releaseMedia".equals(r.method)){
@@ -5991,6 +6073,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
 
         private void joinOwners() throws Exception {
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
+            fastCanonicalConceal();retireCanonicalJoined(null,null,true);
             main(()->{if(mediaWatch!=null){main.removeCallbacks(mediaWatch);mediaWatch=null;}return null;});
             if(reader!=null&&readRequest!=null&&readRequest.sdkPackageLoader!=null){loader=readRequest.sdkPackageLoader;reader=null;readRequest=null;}if(channel!=null)channel.close();if(loader!=null){LocalV2NativePackageLoader old=loader;main(()->{old.close();return null;});old.sdkJoin();loader=null;channel=null;}
             if(reader!=null){reader.retire(readRequest);reader=null;readRequest=null;}
@@ -6041,15 +6124,15 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             owner.channel.post(actual->{owner.original(context,actual);require(actual==delivery&&owner.media==recipient);LocalV2MediaPermit play=new LocalV2MediaPermit(owner,context,actual,asset,epoch);recipient.beginNativePlayback(play);return null;});
         }
         boolean sameOutput(LocalV2MediaPermit other){return other!=null&&owner==other.owner&&context==other.context&&delivery==other.delivery&&asset==other.asset&&epoch==other.epoch;}
-        void nativeStop(PlanetChildMedia.Owner recipient)throws Exception {checkMain();require(owner.media==recipient&&recipient.permit==this);owner.fastMediaConceal();owner.channel.post(actual->{owner.original(context,actual);require(actual==delivery);owner.retireMediaJoined();return null;});}
+        void nativeStop(PlanetChildMedia.Owner recipient)throws Exception {checkMain();require(owner.media==recipient&&recipient.permit==this);if(!owner.scenes.isEmpty()||!owner.webOutputs.isEmpty()){owner.invalidate("cancelled");return;}owner.fastMediaConceal();owner.channel.post(actual->{owner.original(context,actual);require(actual==delivery);owner.retireMediaJoined();return null;});}
         void outputExpired(PlanetChildMedia.Owner recipient){if(owner.media==recipient)owner.invalidate("expired");}
         void unknown(){delivery.owner.writer.unknown(delivery.owner.request);owner.invalidate("pending");}
     }
     private static final class LocalV2MediaAsset {
-        final String assetId,sha256,mime,path,manifestChecksum,reviewChecksum;final int bytes;final long from,until;final java.util.Map<String,Object> owner,entity,payload,policy;
-        private LocalV2MediaAsset(java.util.Map<String,Object> row,long from,long until,String manifestChecksum,String reviewChecksum)throws Exception {
+        final String assetId,sha256,mime,path,manifestChecksum,reviewChecksum;final int bytes;final long from,until;final java.util.Map<String,Object> owner,entity,payload,policy;final java.util.Set<String> reviewPlatforms,reviewTerritories;
+        private LocalV2MediaAsset(java.util.Map<String,Object> row,long from,long until,String manifestChecksum,String reviewChecksum,java.util.Set<String> reviewPlatforms,java.util.Set<String> reviewTerritories)throws Exception {
             assetId=LocalV2PackageJson.identifier(row.get("assetId"));sha256=LocalV2PackageJson.hash(row.get("sha256"));mime=LocalV2PackageJson.text(row.get("mime"));
-            bytes=(int)LocalV2PackageJson.number(row.get("bytes"),1,"audio/wav".equals(mime)?25165824:33554432);this.from=from;this.until=until;this.manifestChecksum=manifestChecksum;this.reviewChecksum=reviewChecksum;policy=LocalV2PackageJson.object(row.get("policy"));
+            bytes=(int)LocalV2PackageJson.number(row.get("bytes"),1,"audio/wav".equals(mime)?25165824:33554432);this.from=from;this.until=until;this.manifestChecksum=manifestChecksum;this.reviewChecksum=reviewChecksum;this.reviewPlatforms=java.util.Collections.unmodifiableSet(new java.util.HashSet<>(reviewPlatforms));this.reviewTerritories=java.util.Collections.unmodifiableSet(new java.util.HashSet<>(reviewTerritories));policy=LocalV2PackageJson.object(row.get("policy"));
             owner=LocalV2PackageJson.object(row.get("owner"));entity=LocalV2PackageJson.object(row.get("entity"));payload=LocalV2PackageJson.object(row.get("payload"));
             path="child-native/media/assets/"+sha256+"."+LocalV2MediaCompiler.extension(mime);
         }
@@ -6058,7 +6141,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
     private static final class LocalV2FixedMediaProducer {
         final LocalV2OwnedPackageDelivery delivery;private LocalV2FixedMediaProducer(LocalV2OwnedPackageDelivery d)throws Exception{d.fence();delivery=d;}
         private byte[] fixed(String path,int bound)throws Exception {
-            require(path.equals("artifact.json")||path.equals(PlanetChildResources.CATALOG)||path.equals("child-native/media/catalog-v2.json")||path.matches("child-native/media/(manifests|reviews)/[a-f0-9]{64}\\.json")||path.matches("child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav)"));
+            require(path.equals("artifact.json")||path.equals("child-native/scenes/catalog-v2.json")||path.matches("child-native/scenes/(manifests|reviews)/[a-f0-9]{64}\\.json")||path.equals(PlanetChildResources.CATALOG)||path.equals("child-native/media/catalog-v2.json")||path.matches("child-native/media/(manifests|reviews)/[a-f0-9]{64}\\.json")||path.matches("child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav)"));
             delivery.fence();byte[] scratch=new byte[bound];int used=0;
             try(java.io.InputStream input=delivery.owner.writer.vault.context.getAssets().open("public/"+path,android.content.res.AssetManager.ACCESS_STREAMING)){
                 for(;;){delivery.owner.live();if(used==bound){require(input.read()==-1);break;}int n=input.read(scratch,used,Math.min(8192,bound-used));if(n<0)break;require(n>0);used+=n;}
@@ -6173,7 +6256,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                     require(inventoryKey.matches("[a-z0-9][a-z0-9_-]{0,63}\\.(png|jpg|webp|wav)")&&inventoryKey.endsWith("."+ext)&&relations.add(owner.get("kind")+"/"+owner.get("id")+"/"+kind+"/"+entityId));
                     String identity=binary+"/"+size+"/"+mime;require(!inventory.containsKey(inventoryKey)||identity.equals(inventory.get(inventoryKey)));inventory.put(inventoryKey,identity);
                     java.util.Map<String,Object> signed=closure.get(id);require(signed!=null&&digest(ownerBytes).equals(signed.get("ownerChecksum"))&&contentHash.equals(signed.get("entityChecksum"))&&digest(policyBytes).equals(signed.get("policyChecksum"))&&binary.equals(signed.get("binaryChecksum"))&&Long.valueOf(size).equals(signed.get("bytes"))&&mime.equals(signed.get("mime")));
-                    long from=Math.max(LocalV2PackageCompiler.epoch(root.get("validFromEpochMs")),Math.max(LocalV2PackageCompiler.epoch(review.get("validFromEpochMs")),LocalV2PackageCompiler.epoch(rights.get("validFrom"))));require(result.put(id,new LocalV2MediaAsset(row,from,end,LocalV2PackageJson.hash(pin.get("manifestChecksum")),LocalV2PackageJson.hash(pin.get("reviewChecksum"))))==null&&now<end);
+                    long from=Math.max(LocalV2PackageCompiler.epoch(root.get("validFromEpochMs")),Math.max(LocalV2PackageCompiler.epoch(review.get("validFromEpochMs")),LocalV2PackageCompiler.epoch(rights.get("validFrom"))));require(result.put(id,new LocalV2MediaAsset(row,from,end,LocalV2PackageJson.hash(pin.get("manifestChecksum")),LocalV2PackageJson.hash(pin.get("reviewChecksum")),platforms,territories))==null&&now<end);
                 }finally{LocalSnapshotV2.wipe(payloadBytes);LocalSnapshotV2.wipe(ownerBytes);LocalSnapshotV2.wipe(policyBytes);}
             }d.fence();return result;
         }
@@ -6209,14 +6292,226 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
     }
     /** Original private local continuation, never server/license authority. */
     static final class LocalV2ResourceClaim {
-        private final LocalV2MediaPermit permit;private final LocalV2ResourceCatalog catalog;private final java.util.Map<String,Object> binding,origin;private final long until;
+        private final LocalV2MediaPermit permit;private final LocalV2ResourceCatalog catalog;private final java.util.Map<String,Object> binding,origin;private final long until;private boolean webTransferred;
         private LocalV2ResourceClaim(LocalV2MediaPermit permit)throws Exception {require(permit!=null);permit.checkWorker();this.permit=permit;catalog=permit.delivery.resourceCatalog;require(catalog!=null);binding=catalog.resolve(permit);origin=binding==null?null:catalog.origins.get(binding.get("originId"));until=binding==null?permit.asset.until:Math.min(permit.asset.until,LocalV2PackageCompiler.epoch(binding.get("validUntilEpochMs")));require(binding==null||origin!=null);checkIssuerWorker();}
-        void checkIssuerWorker()throws Exception {permit.checkWorker();require(permit.delivery.resourceCatalog==catalog&&permit.delivery.mediaAssets.get(permit.asset.assetId)==permit.asset);if(binding!=null){require(catalog.resolve(permit)==binding);require(origin==catalog.origins.get(binding.get("originId")));}PlanetChildResources.originalRemaining(permit.context.deadline,SystemClock.elapsedRealtime(),until,permit.delivery.owner.wall());}
-        void checkRead(PlanetChildResources reader)throws Exception {require(reader!=null&&reader.ownsReadThread()&&permit.owner.resourceRead==reader&&permit.delivery.resourceCatalog==catalog&&permit.delivery.sdkCommand==permit.command&&permit.command.running&&!permit.command.returned);permit.checkOutput();PlanetChildResources.originalRemaining(permit.context.deadline,SystemClock.elapsedRealtime(),until,permit.delivery.owner.wall());}
+        void checkIssuerWorker()throws Exception {require(!webTransferred);permit.checkWorker();require(permit.delivery.resourceCatalog==catalog&&permit.delivery.mediaAssets.get(permit.asset.assetId)==permit.asset);if(binding!=null){require(catalog.resolve(permit)==binding);require(origin==catalog.origins.get(binding.get("originId")));}PlanetChildResources.originalRemaining(permit.context.deadline,SystemClock.elapsedRealtime(),until,permit.delivery.owner.wall());}
+        void checkRead(PlanetChildResources reader)throws Exception {require(!webTransferred&&reader!=null&&reader.ownsReadThread()&&permit.owner.resourceRead==reader&&permit.delivery.resourceCatalog==catalog&&permit.delivery.sdkCommand==permit.command&&permit.command.running&&!permit.command.returned);permit.checkOutput();PlanetChildResources.originalRemaining(permit.context.deadline,SystemClock.elapsedRealtime(),until,permit.delivery.owner.wall());}
         java.io.InputStream openBundle(PlanetChildResources reader)throws Exception {checkRead(reader);require(!remote());return permit.delivery.owner.writer.vault.context.getAssets().open("public/"+permit.asset.path,android.content.res.AssetManager.ACCESS_STREAMING);}
         boolean remote(){return binding!=null;}String origin(){return origin==null?null:(String)origin.get("origin");}String path(){return binding==null?null:(String)binding.get("path");}
         int bytes(){return permit.asset.bytes;}String checksum(){return permit.asset.sha256;}String mime(){return permit.asset.mime;}
         @SuppressWarnings("unchecked") java.util.List<String> tlsKeyChecksums(){return origin==null?java.util.Collections.emptyList():(java.util.List<String>)(java.util.List<?>)origin.get("tlsPublicKeyX963Checksums");}
+    }
+    private static final class LocalV2SceneJson {
+        final String source;int offset,nodes;
+        private LocalV2SceneJson(byte[] bytes,int limit) throws Exception {require(bytes!=null&&bytes.length>0&&bytes.length<=limit);
+            source=StandardCharsets.UTF_8.newDecoder().onMalformedInput(CodingErrorAction.REPORT).onUnmappableCharacter(CodingErrorAction.REPORT).decode(ByteBuffer.wrap(bytes)).toString();}
+        static Object read(byte[] bytes,int limit) throws Exception {LocalV2SceneJson p=new LocalV2SceneJson(bytes,limit);Object result=p.value(0);p.white();require(p.offset==p.source.length());return result;}
+        void white(){while(offset<source.length()&&" \t\r\n".indexOf(source.charAt(offset))>=0)offset++;}
+        boolean take(char c){white();if(offset<source.length()&&source.charAt(offset)==c){offset++;return true;}return false;}
+        Object value(int depth) throws Exception {require(depth<=16&&++nodes<=600000);white();require(offset<source.length());char c=source.charAt(offset);
+            if(c=='"')return string();if(c=='{'){offset++;java.util.LinkedHashMap<String,Object> m=new java.util.LinkedHashMap<>();if(take('}'))return m;
+                do{white();require(offset<source.length()&&source.charAt(offset)=='"');String key=string();require(!m.containsKey(key)&&take(':'));m.put(key,value(depth+1));}while(take(','));require(take('}'));return m;}
+            if(c=='['){offset++;java.util.ArrayList<Object> a=new java.util.ArrayList<>();if(take(']'))return a;do{a.add(value(depth+1));}while(take(','));require(take(']'));return a;}
+            for(String word:new String[]{"true","false","null"})if(source.startsWith(word,offset)){offset+=word.length();return word.equals("null")?null:Boolean.valueOf(word);}
+            int start=offset;if(c=='-')offset++;require(offset<source.length());if(source.charAt(offset)=='0')offset++;else{require(source.charAt(offset)>='1'&&source.charAt(offset)<='9');while(offset<source.length()&&source.charAt(offset)>='0'&&source.charAt(offset)<='9')offset++;}
+            boolean fraction=false;
+            if(offset<source.length()&&source.charAt(offset)=='.'){fraction=true;offset++;int digits=offset;while(offset<source.length()&&source.charAt(offset)>='0'&&source.charAt(offset)<='9')offset++;require(offset>digits);}
+            if(offset<source.length()&&(source.charAt(offset)=='e'||source.charAt(offset)=='E')){fraction=true;offset++;if(offset<source.length()&&(source.charAt(offset)=='+'||source.charAt(offset)=='-'))offset++;int digits=offset;while(offset<source.length()&&source.charAt(offset)>='0'&&source.charAt(offset)<='9')offset++;require(offset>digits);}
+            String number=source.substring(start,offset);require(!number.equals("-0"));
+            if(fraction){double n=Double.parseDouble(number);require(Double.isFinite(n)&&Math.abs(n)<=MAX_SAFE&&Double.doubleToRawLongBits(n)!=Double.doubleToRawLongBits(-0.0d));return Double.valueOf(n);}
+            long result=Long.parseLong(number);require(result>=-MAX_SAFE&&result<=MAX_SAFE);return Long.valueOf(result);
+        }
+        String string() throws Exception {require(source.charAt(offset++)=='"');StringBuilder b=new StringBuilder();boolean ended=false;
+            while(offset<source.length()){char c=source.charAt(offset++);if(c=='"'){ended=true;break;}require(c>=32);
+                if(c=='\\'){require(offset<source.length());c=source.charAt(offset++);switch(c){case '"':case '\\':case '/':break;case 'b':c='\b';break;case 'f':c='\f';break;case 'n':c='\n';break;case 'r':c='\r';break;case 't':c='\t';break;
+                    case 'u':require(offset+4<=source.length());int n=0;for(int i=0;i<4;i++){char digit=source.charAt(offset++);require(digit>='0'&&digit<='9'||digit>='a'&&digit<='f'||digit>='A'&&digit<='F');int h=Character.digit(digit,16);n=n*16+h;}c=(char)n;break;default:throw new PinKnownRefusal();}}
+                b.append(c);}
+            require(ended);String result=b.toString();for(int i=0;i<result.length();i++){char c=result.charAt(i);if(Character.isHighSurrogate(c)){require(i+1<result.length()&&Character.isLowSurrogate(result.charAt(++i)));}else require(!Character.isLowSurrogate(c));}return result;
+        }
+        @SuppressWarnings("unchecked") static java.util.Map<String,Object> object(Object v,String...keys) throws Exception {require(v instanceof java.util.Map);java.util.Map<String,Object> m=(java.util.Map<String,Object>)v;
+            if(keys.length>0){require(m.size()==keys.length);for(String k:keys)require(m.containsKey(k));}return m;}
+        @SuppressWarnings("unchecked") static java.util.List<Object> array(Object v,int max) throws Exception {require(v instanceof java.util.List&&((java.util.List<?>)v).size()<=max);return(java.util.List<Object>)v;}
+        static String text(Object v) throws Exception {require(v instanceof String);return(String)v;}
+        static long number(Object v,long min,long max) throws Exception {require(v instanceof Long);long n=(Long)v;require(n>=min&&n<=max);return n;}
+        static boolean bool(Object v) throws Exception {require(v instanceof Boolean);return(Boolean)v;}
+        static String identifier(Object v) throws Exception {String s=text(v);require(s.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));return s;}
+        static String hash(Object v) throws Exception {String s=text(v);require(s.matches("[a-f0-9]{64}"));return s;}
+        static String json(Object v,boolean sorted) throws Exception {if(v==null)return"null";if(v instanceof String)return quote((String)v);if(v instanceof Long||v instanceof Boolean)return v.toString();
+            if(v instanceof java.util.List){StringBuilder b=new StringBuilder("[");for(Object x:(java.util.List<?>)v){if(b.length()>1)b.append(',');b.append(json(x,sorted));}return b.append(']').toString();}
+            java.util.Map<String,Object> m=object(v);java.util.ArrayList<String> keys=new java.util.ArrayList<>(m.keySet());if(sorted)java.util.Collections.sort(keys);StringBuilder b=new StringBuilder("{");for(String k:keys){if(b.length()>1)b.append(',');b.append(quote(k)).append(':').append(json(m.get(k),sorted));}return b.append('}').toString();}
+        static String quote(String s){StringBuilder b=new StringBuilder("\"");for(int i=0;i<s.length();i++){char c=s.charAt(i);switch(c){case '"':b.append("\\\"");break;case '\\':b.append("\\\\");break;case '\b':b.append("\\b");break;case '\f':b.append("\\f");break;case '\n':b.append("\\n");break;case '\r':b.append("\\r");break;case '\t':b.append("\\t");break;default:if(c<32)b.append(String.format(java.util.Locale.ROOT,"\\u%04x",(int)c));else b.append(c);}}return b.append('"').toString();}
+        static byte[] bytes(Object v,boolean sorted) throws Exception {return json(v,sorted).getBytes(StandardCharsets.UTF_8);}
+        static java.util.Set<String> strings(Object v,int max,String expression) throws Exception {java.util.HashSet<String> result=new java.util.HashSet<>();for(Object x:array(v,max)){String s=text(x);require(s.matches(expression)&&result.add(s));}return result;}
+    }
+    private static final class LocalV2SceneCatalog {
+        static final String CATALOG="child-native/scenes/catalog-v2.json",PINS="src/child/childNativeSceneReleasePins.json";
+        final java.util.List<Object> keys,pins;
+        final java.util.Map<String,String> inputs=new java.util.HashMap<>();
+        final java.util.Map<String,java.util.Map<String,Object>> inventory=new java.util.HashMap<>(),outputs=new java.util.HashMap<>();
+        final java.util.Set<String> expected=new java.util.HashSet<>();
+        private LocalV2SceneCatalog(byte[] bytes,byte[] artifactBytes,String platform)throws Exception {
+            java.util.Map<String,Object> c=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,65536),"schemaVersion","kind","platform","scenePinSourceChecksum","reviewKeys","manifests"),a=LocalV2PackageJson.object(LocalV2PackageJson.read(artifactBytes,2097152));
+            require(Long.valueOf(2).equals(c.get("schemaVersion"))&&"literary-planet-child-native-scene-catalog-v2".equals(c.get("kind"))
+                &&"literary-planet-bundled-native-preparation".equals(a.get("kind"))&&"android".equals(a.get("platform"))&&Boolean.FALSE.equals(a.get("releaseReady"))&&Boolean.FALSE.equals(a.get("productionActionsAuthorized")));
+            boolean empty="dev".equals(a.get("channel"))&&c.get("platform")==null;
+            require(empty||platform.equals(c.get("platform"))&&(("android-google".equals(platform)&&"googlePlay".equals(a.get("channel")))||("android-rustore".equals(platform)&&"ruStore".equals(a.get("channel")))));
+            keys=LocalV2PackageJson.array(c.get("reviewKeys"),16);pins=LocalV2PackageJson.array(c.get("manifests"),32);require(!empty||keys.isEmpty()&&pins.isEmpty());require(pins.isEmpty()||!keys.isEmpty());
+            java.util.HashSet<String> ids=new java.util.HashSet<>(),points=new java.util.HashSet<>(),sums=new java.util.HashSet<>();
+            for(Object raw:keys){java.util.Map<String,Object> key=LocalV2PackageJson.object(raw,"keyId","reviewerId","publicKeyX963Hex");String id=LocalV2PackageJson.text(key.get("keyId")),point=LocalV2PackageJson.text(key.get("publicKeyX963Hex"));
+                require(id.matches("child-scene-review-[A-Za-z0-9_-]{1,48}")&&LocalV2PackageJson.identifier(key.get("reviewerId"))!=null&&point.matches("04[a-f0-9]{128}")&&ids.add(id)&&points.add(point));}
+            ids.clear();expected.add(CATALOG);
+            for(Object raw:pins){java.util.Map<String,Object> pin=LocalV2PackageJson.object(raw,"sceneId","packageId","packageVersion","packageChecksum","manifestChecksum","reviewChecksum");String id=LocalV2PackageJson.identifier(pin.get("sceneId")),hash=LocalV2PackageJson.hash(pin.get("manifestChecksum")),review=LocalV2PackageJson.hash(pin.get("reviewChecksum"));
+                LocalV2PackageJson.identifier(pin.get("packageId"));LocalV2PackageJson.number(pin.get("packageVersion"),1,MAX_SAFE);String packageHash=LocalV2PackageJson.hash(pin.get("packageChecksum"));
+                require(ids.add(packageHash+"/"+id)&&sums.add(hash)&&expected.add("child-native/scenes/manifests/"+hash+".json")&&expected.add("child-native/scenes/reviews/"+review+".json"));}
+            java.util.Map<String,Object> source=LocalV2PackageJson.object(a.get("sourceInputs"),"sha256","files");LocalV2PackageJson.hash(source.get("sha256"));
+            for(Object raw:LocalV2PackageJson.array(source.get("files"),20000)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"path","sha256");require(inputs.put(LocalV2PackageJson.text(row.get("path")),LocalV2PackageJson.hash(row.get("sha256")))==null);}
+            String pinHash=LocalV2PackageJson.hash(c.get("scenePinSourceChecksum"));require(pinHash.equals(inputs.get(PINS))&&inputs.containsKey("scripts/mobile/native-child-scene-assets.mjs")&&inputs.containsKey("src/child/childNativeScene.ts")
+                &&inputs.containsKey("src/child/childNativeCanonicalResources.ts")&&inputs.containsKey("src/components/GlobeChildNativeComposition.tsx"));
+            for(Object raw:LocalV2PackageJson.array(a.get("inventory"),20000)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"path","bytes","sha256");LocalV2PackageJson.number(row.get("bytes"),1,MAX_SAFE);LocalV2PackageJson.hash(row.get("sha256"));require(inventory.put(LocalV2PackageJson.text(row.get("path")),row)==null);}
+            java.util.Map<String,Object> metadata=LocalV2PackageJson.object(a.get("childNativeSceneAssets"),"pinSource","outputs"),pin=LocalV2PackageJson.object(metadata.get("pinSource"),"path","sha256");require(PINS.equals(pin.get("path"))&&pinHash.equals(pin.get("sha256")));
+            for(Object raw:LocalV2PackageJson.array(metadata.get("outputs"),65)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"output","source","sourceSha256","transformation","outputSha256");String path=LocalV2PackageJson.text(row.get("output"));require(expected.contains(path)&&outputs.put(path,row)==null);}
+            require(outputs.keySet().equals(expected));for(String path:inventory.keySet())if(path.startsWith("child-native/scenes/"))require(expected.contains(path));verify(CATALOG,bytes,65536);
+        }
+        void verify(String path,byte[] bytes,int bound)throws Exception {
+            require(expected.contains(path));String hash=digest(bytes);java.util.Map<String,Object> row=inventory.get(path),output=outputs.get(path);
+            require(row!=null&&output!=null&&bytes.length>0&&bytes.length<=bound&&Long.valueOf(bytes.length).equals(row.get("bytes"))&&hash.equals(row.get("sha256"))&&hash.equals(output.get("outputSha256")));
+            String source=path.equals(CATALOG)?PINS:"src/child/scene-release-material/"+hash+"/"+(path.contains("/manifests/")?"manifest.json":"review.json");
+            require(source.equals(output.get("source"))&&inputs.containsKey(source)&&inputs.get(source).equals(output.get("sourceSha256")));
+            require(path.equals(CATALOG)?"fixed-native-scene-pin-projection-v2".equals(output.get("transformation")):"none".equals(output.get("transformation"))&&hash.equals(output.get("sourceSha256")));
+        }
+        void graph(Object raw)throws Exception {
+            String[] paths={"src/components/globeBookCloudStandGeometry.ts","src/components/globeCraftMaterials.ts","src/components/globeLibraryBookGeometry.ts","src/components/globeLibraryGeometry.ts"};
+            String[] hashes={"e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577","2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721","e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c","18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"};
+            long[] sizes={18215,12947,3044,59048};java.util.List<Object> rows=LocalV2PackageJson.array(raw,4);require(rows.size()==4);
+            for(int i=0;i<4;i++){java.util.Map<String,Object> row=LocalV2PackageJson.object(rows.get(i),"path","sha256","bytes");require(paths[i].equals(row.get("path"))&&hashes[i].equals(LocalV2PackageJson.hash(row.get("sha256")))&&hashes[i].equals(inputs.get(paths[i]))&&Long.valueOf(sizes[i]).equals(row.get("bytes")));}
+        }
+    }
+    private static final class LocalV2SceneCompiler {
+        private static final String[] MANIFEST={"schemaVersion","kind","sceneId","title","owner","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum","sourceGraph","skin","stand","background","hotspots","validFromEpochMs","validUntilEpochMs"};
+        private static final String[] REVIEW={"schemaVersion","kind","keyId","reviewerId","sceneId","manifestChecksum","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum","sourceGraphChecksum","platforms","territories","reviewedAtEpochMs","validFromEpochMs","validUntilEpochMs","signatureHex"};
+        private static java.util.LinkedHashMap<String,LocalV2Scene> compileCatalog(LocalV2OwnedPackageDelivery d)throws Exception {
+            d.fence();require(d.mediaAssets!=null&&d.resourceCatalog!=null);LocalV2FixedMediaProducer producer=new LocalV2FixedMediaProducer(d);byte[] catalog=null,artifact=null;
+            try{catalog=producer.fixed(LocalV2SceneCatalog.CATALOG,65536);artifact=producer.fixed("artifact.json",2097152);LocalV2SceneCatalog source=new LocalV2SceneCatalog(catalog,artifact,d.compiled.platform);
+                java.util.LinkedHashMap<String,LocalV2Scene> out=new java.util.LinkedHashMap<>();
+                for(Object raw:source.pins){java.util.Map<String,Object> pin=LocalV2PackageJson.object(raw);String manifest=LocalV2PackageJson.hash(pin.get("manifestChecksum")),review=LocalV2PackageJson.hash(pin.get("reviewChecksum"));byte[] bytes=null,signed=null;
+                    try{String mp="child-native/scenes/manifests/"+manifest+".json",rp="child-native/scenes/reviews/"+review+".json";bytes=producer.fixed(mp,524288);signed=producer.fixed(rp,524288);source.verify(mp,bytes,524288);source.verify(rp,signed,524288);
+                        java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2SceneJson.read(bytes,524288),MANIFEST);source.graph(root.get("sourceGraph"));
+                        require(pin.get("sceneId").equals(root.get("sceneId"))&&pin.get("packageId").equals(root.get("packageId"))&&pin.get("packageVersion").equals(root.get("packageVersion"))&&pin.get("packageChecksum").equals(root.get("packageChecksum")));
+                        if(!d.compiled.packageId.equals(root.get("packageId"))||!Long.valueOf(d.compiled.version).equals(root.get("packageVersion"))||!d.compiled.checksum.equals(root.get("packageChecksum"))
+                            ||!d.compiled.profile.locale.equals(root.get("locale"))||!Long.valueOf(d.compiled.profile.exactAge).equals(root.get("exactAge")))continue;
+                        LocalV2Scene scene=compile(root,signed,pin,source,d);require(out.put(scene.id,scene)==null);
+                    }finally{LocalSnapshotV2.wipe(bytes);LocalSnapshotV2.wipe(signed);}
+                }d.fence();return out;
+            }finally{LocalSnapshotV2.wipe(catalog);LocalSnapshotV2.wipe(artifact);}
+        }
+        private static double finite(Object value,double min,double max)throws Exception {
+            require(value instanceof Long||value instanceof Double);double number=((Number)value).doubleValue();require(Double.isFinite(number)&&number>=min&&number<=max&&Double.doubleToRawLongBits(number)!=Double.doubleToRawLongBits(-0.0d));return number;
+        }
+        private static void hotspots(Object raw,LocalV2OwnedPackageDelivery d)throws Exception {
+            java.util.HashSet<String> ids=new java.util.HashSet<>();for(Object item:LocalV2PackageJson.array(raw,16)){
+                java.util.Map<String,Object> row=LocalV2PackageJson.object(item,"id","target","position","radius");require(ids.add(LocalV2PackageJson.identifier(row.get("id"))));
+                java.util.Map<String,Object> target=LocalV2PackageJson.object(row.get("target"),"kind","id","contentChecksum");LocalV2MediaCompiler.owner(d,target);
+                java.util.List<Object> p=LocalV2PackageJson.array(row.get("position"),3);require(p.size()==3);double x=finite(p.get(0),-10,10),y=finite(p.get(1),-5,5),z=finite(p.get(2),-10,10),radius=finite(row.get("radius"),.05,.6);
+                require(Math.sqrt(x*x+y*y+z*z)-radius>1.3&&Math.hypot(x,z)+radius<12&&y-radius>-6&&y+radius<6.35);
+            }
+        }
+        private static LocalV2MediaAsset slot(Object value,String name,LocalV2OwnedPackageDelivery d,java.util.Map<String,Object> root,java.util.Set<String> platforms,java.util.Set<String> territories)throws Exception {
+            java.util.Map<String,Object> row=LocalV2PackageJson.object(value,"slotId","assetId","entity","mime","checksum","encodedBytes","altText");require(name.equals(row.get("slotId")));
+            LocalV2MediaAsset asset=d.mediaAssets.get(LocalV2PackageJson.identifier(row.get("assetId")));require(asset!=null&&asset.owner.equals(root.get("owner"))&&name.equals(asset.entity.get("kind"))&&name.equals(asset.payload.get("role"))
+                &&asset.entity.equals(LocalV2PackageJson.object(row.get("entity"),"kind","id","contentChecksum"))&&asset.mime.equals(row.get("mime"))&&java.util.Arrays.asList("image/png","image/jpeg","image/webp").contains(asset.mime)
+                &&asset.sha256.equals(LocalV2PackageJson.hash(row.get("checksum")))&&Long.valueOf(asset.bytes).equals(row.get("encodedBytes"))&&asset.payload.get("altText").equals(row.get("altText"))
+                &&asset.manifestChecksum.equals(root.get("mediaManifestChecksum"))&&asset.reviewChecksum.equals(root.get("mediaReviewChecksum"))&&asset.reviewPlatforms.containsAll(platforms)&&asset.reviewTerritories.containsAll(territories));
+            java.util.Map<String,Object> rights=LocalV2PackageJson.object(asset.policy.get("rights"));require(LocalV2PackageJson.strings(rights.get("platforms"),4,"web-pwa|android-google|android-rustore|ios-ipados").containsAll(platforms)
+                &&LocalV2PackageJson.strings(rights.get("territories"),676,"[A-Z]{2}").containsAll(territories));return asset;
+        }
+        private static LocalV2Scene compile(java.util.Map<String,Object> root,byte[] reviewBytes,java.util.Map<String,Object> pin,LocalV2SceneCatalog source,LocalV2OwnedPackageDelivery d)throws Exception {
+            d.fence();long now=d.owner.wall();java.util.Map<String,Object> review=LocalV2PackageJson.object(LocalV2PackageJson.read(reviewBytes,524288),REVIEW);
+            require(Long.valueOf(2).equals(root.get("schemaVersion"))&&"literary-planet-child-native-scene-manifest-v2".equals(root.get("kind"))&&Long.valueOf(2).equals(review.get("schemaVersion"))&&"literary-planet-child-native-scene-review-v2".equals(review.get("kind")));
+            for(String field:new String[]{"sceneId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum"})require(root.get(field).equals(review.get(field)));
+            require(pin.get("manifestChecksum").equals(review.get("manifestChecksum"))&&d.compiled.packageId.equals(root.get("packageId"))&&Long.valueOf(d.compiled.version).equals(root.get("packageVersion"))&&d.compiled.checksum.equals(root.get("packageChecksum"))
+                &&d.compiled.profile.policyVersion.equals(root.get("policyVersion"))&&d.compiled.profile.policyChecksum.equals(root.get("policyChecksum"))&&d.compiled.profile.locale.equals(root.get("locale"))&&Long.valueOf(d.compiled.profile.exactAge).equals(root.get("exactAge")));
+            LocalV2PackageJson.identifier(root.get("sceneId"));String title=LocalV2PackageJson.text(root.get("title"));require(title.length()>0&&title.length()<=240&&!title.matches("(?s).*[\\x00-\\x1f\\x7f].*"));
+            LocalV2MediaCompiler.owner(d,LocalV2PackageJson.object(root.get("owner"),"kind","id","contentChecksum"));LocalV2PackageJson.hash(root.get("mediaManifestChecksum"));LocalV2PackageJson.hash(root.get("mediaReviewChecksum"));
+            LocalV2PackageCompiler.window(root,"validFromEpochMs","validUntilEpochMs",now);LocalV2PackageCompiler.window(review,"validFromEpochMs","validUntilEpochMs",now);
+            require(LocalV2PackageJson.text(review.get("keyId")).matches("child-scene-review-[A-Za-z0-9_-]{1,48}")&&LocalV2PackageJson.identifier(review.get("reviewerId"))!=null&&LocalV2PackageCompiler.epoch(review.get("reviewedAtEpochMs"))<=now);
+            source.graph(root.get("sourceGraph"));byte[] graph=LocalV2PackageJson.bytes(root.get("sourceGraph"),true);try{require(digest(graph).equals(LocalV2PackageJson.hash(review.get("sourceGraphChecksum"))));}finally{LocalSnapshotV2.wipe(graph);}
+            java.util.Set<String> platforms=LocalV2PackageJson.strings(review.get("platforms"),3,"android-google|android-rustore|ios-ipados"),territories=LocalV2PackageJson.strings(review.get("territories"),676,"[A-Z]{2}");require(platforms.contains(d.compiled.platform)&&territories.contains(d.compiled.territory));
+            LocalV2PackageCompiler.signatureDomain(review,source.keys,"LP-CHILD-NATIVE-SCENE-REVIEW\0v2\0");d.fence();
+            java.util.LinkedHashMap<String,LocalV2MediaAsset> assets=new java.util.LinkedHashMap<>();assets.put("skin",slot(root.get("skin"),"skin",d,root,platforms,territories));
+            java.util.Map<String,Object> stand=LocalV2PackageJson.object(root.get("stand"),"geometryId","asset"),background=LocalV2PackageJson.object(root.get("background"),"geometryId","asset");require("stand.base.child-book-cloud".equals(stand.get("geometryId"))&&"background.base.library".equals(background.get("geometryId")));
+            assets.put("stand",slot(stand.get("asset"),"stand",d,root,platforms,territories));assets.put("background",slot(background.get("asset"),"background",d,root,platforms,territories));hotspots(root.get("hotspots"),d);
+            long from=Math.max(LocalV2PackageCompiler.epoch(root.get("validFromEpochMs")),LocalV2PackageCompiler.epoch(review.get("validFromEpochMs"))),until=Math.min(d.compiled.until,Math.min(LocalV2PackageCompiler.epoch(root.get("validUntilEpochMs")),LocalV2PackageCompiler.epoch(review.get("validUntilEpochMs"))));
+            for(LocalV2MediaAsset asset:assets.values()){from=Math.max(from,asset.from);until=Math.min(until,asset.until);}require(from<=now&&now<until);d.fence();return new LocalV2Scene(root,assets,from,until);
+        }
+    }
+    private static final class LocalV2Scene {
+        final String id,title;final java.util.Map<String,Object> root,owner;final java.util.LinkedHashMap<String,LocalV2MediaAsset> assets;final long from,until;
+        LocalV2Scene(java.util.Map<String,Object> root,java.util.LinkedHashMap<String,LocalV2MediaAsset> assets,long from,long until)throws Exception {
+            this.root=root;this.assets=assets;this.from=from;this.until=until;id=LocalV2PackageJson.identifier(root.get("sceneId"));title=LocalV2PackageJson.text(root.get("title"));owner=LocalV2PackageJson.object(root.get("owner"));
+        }
+        void checkWorker(LocalV2OwnedPackageDelivery d)throws Exception {
+            d.fence();long now=d.owner.wall();require(d.sceneAssets!=null&&d.sceneAssets.get(id)==this&&from<=now&&now<until);LocalV2MediaCompiler.owner(d,owner);
+            for(LocalV2MediaAsset asset:assets.values())require(d.mediaAssets.get(asset.assetId)==asset&&asset.from<=now&&now<asset.until);
+            for(Object raw:LocalV2PackageJson.array(root.get("hotspots"),16)){java.util.Map<String,Object> hotspot=LocalV2PackageJson.object(raw,"id","target","position","radius");LocalV2MediaCompiler.owner(d,LocalV2PackageJson.object(hotspot.get("target")));}d.fence();
+        }
+    }
+    private static final class LocalV2SceneLease {
+        final LocalV2AppOwner owner;final LocalV2AppOwner.Context context;final LocalV2OwnedPackageDelivery delivery;final LocalV2Scene scene;
+        final PlanetChildWebResources handler;final android.webkit.WebView web;final String token;final long epoch,navigationEpoch;
+        volatile boolean revoked,closed;Runnable watch;
+        private LocalV2SceneLease(LocalV2AppOwner owner,LocalV2AppOwner.Context context,LocalV2OwnedPackageDelivery delivery,LocalV2Scene scene,PlanetChildWebResources handler,long epoch)throws Exception {
+            owner.original(context,delivery);this.owner=owner;this.context=context;this.delivery=delivery;this.scene=scene;this.handler=handler;web=handler.web();this.epoch=epoch;navigationEpoch=handler.epoch();token=LocalV2AppOwner.random(16);
+        }
+        void checkWorker()throws Exception {owner.original(context,delivery);require(!revoked&&!closed&&owner.canonicalEpoch==epoch&&owner.scenes.get(token)==this);scene.checkWorker(delivery);owner.main(()->{delivery.owner.current();handler.currentMain(web,navigationEpoch);return null;});}
+        long remaining()throws Exception{return PlanetChildResources.originalRemaining(context.deadline,SystemClock.elapsedRealtime(),scene.until,delivery.owner.wall());}
+    }
+    /** Output permission is separately minted ONLY after the original bounded
+     * read and its transport/cancellation workers joined. The acquisition claim
+     * can transfer once; it cannot become reusable command authority. */
+    static final class LocalV2WebOutputPermit {
+        private final LocalV2SceneLease lease;private final LocalV2AppOwner owner;private final LocalV2AppOwner.Context context;
+        private final LocalV2OwnedPackageDelivery delivery;private final LocalV2CompiledPackage compiled;private final LocalV2SDKChannel.Command command;
+        private final LocalV2MediaAsset asset;private final LocalV2ResourceCatalog resourceCatalog;private final java.util.Map<String,Object> binding,origin;
+        private final PlanetChildResources acquisition;private final String token,slotId;private final long mediaEpoch,outputEpoch,deadline,from,until,navigationEpoch;
+        private final android.webkit.WebView web;private long wallLast;private PlanetChildWebResources.Output adoptedOutput;
+        private LocalV2WebOutputPermit(LocalV2SceneLease lease,String slotId,LocalV2ResourceClaim claim,PlanetChildResources acquisition,byte[] bytes)throws Exception {
+            require(lease!=null&&claim!=null&&acquisition!=null&&acquisition.knownClosed());lease.checkWorker();claim.checkIssuerWorker();
+            LocalV2MediaPermit original=claim.permit;require(lease.owner==original.owner&&lease.context==original.context&&lease.delivery==original.delivery&&lease.scene.assets.get(slotId)==original.asset&&original.owner.resourceRead==null);
+            this.lease=lease;owner=original.owner;context=original.context;delivery=original.delivery;compiled=delivery.compiled;command=original.command;asset=original.asset;
+            resourceCatalog=claim.catalog;binding=claim.binding;origin=claim.origin;this.acquisition=acquisition;this.slotId=slotId;token=LocalV2AppOwner.random(16);
+            mediaEpoch=original.epoch;outputEpoch=lease.epoch;deadline=context.deadline;navigationEpoch=lease.navigationEpoch;web=lease.web;
+            from=Math.max(lease.scene.from,binding==null?asset.from:LocalV2PackageCompiler.epoch(binding.get("validFromEpochMs")));
+            until=Math.min(lease.scene.until,claim.until);wallLast=delivery.owner.wall();checkTransfer(bytes);
+            synchronized(claim){require(!claim.webTransferred);claim.webTransferred=true;}
+        }
+        PlanetChildWebResources handler(){return lease.handler;}String token(){return token;}String sceneToken(){return lease.token;}String slotId(){return slotId;}
+        String mime(){return asset.mime;}int bytes(){return asset.bytes;}boolean sceneContext(LocalV2AppOwner.Context original){return original==context;}
+        long remaining()throws Exception{return PlanetChildResources.originalRemaining(deadline,SystemClock.elapsedRealtime(),until,delivery.owner.wall());}
+        void checkTransfer(byte[] bytes)throws Exception {
+            lease.checkWorker();require(acquisition.knownClosed()&&delivery.sdkCommand==command&&command.running&&!command.returned&&asset==lease.scene.assets.get(slotId)&&delivery.mediaAssets.get(asset.assetId)==asset
+                &&delivery.resourceCatalog==resourceCatalog&&(binding==null||resourceCatalog.bindings.get(compiled.checksum+"/"+asset.assetId)==binding&&resourceCatalog.origins.get(binding.get("originId"))==origin));
+            PlanetChildResources.verifyEncoded(bytes,asset.bytes,asset.sha256);PlanetChildMedia.Header header=PlanetChildMedia.preflight(bytes,asset.mime);require(!header.audio());
+            android.graphics.Bitmap decoded=null;try{android.graphics.BitmapFactory.Options options=new android.graphics.BitmapFactory.Options();options.inScaled=false;options.inMutable=false;
+                decoded=android.graphics.BitmapFactory.decodeByteArray(bytes,0,bytes.length,options);require(decoded!=null&&!decoded.isRecycled()&&decoded.getWidth()==header.width&&decoded.getHeight()==header.height&&decoded.getAllocationByteCount()<=67108864);
+                if("skin".equals(slotId))require(decoded.getWidth()==2*decoded.getHeight());
+            }finally{if(decoded!=null&&!decoded.isRecycled())decoded.recycle();}remaining();lease.checkWorker();
+        }
+        synchronized void adoptOutput(PlanetChildWebResources.Output out)throws Exception{require(out!=null&&out.permit==this&&adoptedOutput==null);adoptedOutput=out;}
+        void checkTransferOwner(PlanetChildWebResources.Output out)throws Exception {lease.checkWorker();require(out!=null&&out.permit==this&&adoptedOutput==out&&out.admitsOutput()&&owner.webOutputs.get(token)==out&&acquisition.knownClosed());remaining();}
+        void checkOutput(PlanetChildWebResources.Output out,android.webkit.WebView actual,long navigation)throws Exception {
+            long now;synchronized(this){now=delivery.owner.wall();require(now>=wallLast&&now>=from&&now<until);wallLast=now;}
+            require(out!=null&&out.permit==this&&adoptedOutput==out&&out.admitsOutput()&&out.token.equals(token)&&actual==web&&navigation==navigationEpoch&&lease.handler.epoch()==navigationEpoch
+                &&owner.webOutputs.get(token)==out&&owner.scenes.get(lease.token)==lease&&!owner.sealed&&!owner.disposed&&owner.context==context
+                &&!lease.revoked&&!lease.closed&&owner.canonicalEpoch==outputEpoch&&owner.mediaEpoch==mediaEpoch&&owner.loader==delivery.owner
+                &&delivery.owner.delivery==delivery&&delivery.mediaOwner==owner&&delivery.compiled==compiled&&!compiled.closed&&delivery.mediaAssets.get(asset.assetId)==asset
+                &&lease.scene.assets.get(slotId)==asset&&delivery.sceneAssets.get(lease.scene.id)==lease.scene&&delivery.resourceCatalog==resourceCatalog
+                &&acquisition.knownClosed()&&command.returned&&!command.running&&command.done&&command.failure==null
+                &&!delivery.owner.revoked&&!delivery.owner.closed&&delivery.owner.request.deadline==deadline&&context.deadline==deadline&&context.checksum.equals(compiled.profile.recordChecksum));
+            require(binding==null||resourceCatalog.bindings.get(compiled.checksum+"/"+asset.assetId)==binding&&resourceCatalog.origins.get(binding.get("originId"))==origin);
+            PlanetChildResources.originalRemaining(deadline,SystemClock.elapsedRealtime(),until,now);
+            owner.main(()->{require(owner.context==context&&!lease.revoked&&!owner.sealed&&!owner.disposed);delivery.owner.current();lease.handler.currentMain(actual,navigationEpoch);return null;});
+            require(out.admitsOutput()&&owner.context==context&&!lease.revoked&&!lease.closed&&owner.webOutputs.get(token)==out&&owner.canonicalEpoch==outputEpoch&&owner.mediaEpoch==mediaEpoch);remaining();
+        }
     }
     static LocalV2AppOwner nativeAppOwner(android.app.Activity activity,LocalV2AppOwner.Invalidated invalidated) throws Exception {return new LocalV2AppOwner(activity,invalidated);}
 

@@ -81,3 +81,16 @@ describe("LOCAL2 native child presentation boundary", () => {
     expect(owner.perform).not.toHaveBeenCalled(); expect(owner.readEntity).not.toHaveBeenCalled();
   });
 });
+
+describe("original canonical resource recipient presentation",()=>{
+ it("provides one resource owner and guarded hotspot proposal to the same RU/EN canonical globe",()=>{
+  for(const language of ["ru","en"] as const){
+   calls.globe.mockClear();const value=snapshot("child",language),owner=controller(value);
+   const markup=render(<ChildNativeReadyView snapshot={value} controller={owner}/>,language);
+   expect((markup.match(/data-fixture-canonical-globe/g)||[])).toHaveLength(1);
+   const props=calls.globe.mock.calls[0][0] as {childResources:{getSnapshot():{phase:string}};onChildHotspot:unknown};
+   expect(props.childResources.getSnapshot().phase).toBe("empty");expect(typeof props.onChildHotspot).toBe("function");
+   expect(markup).not.toContain("planet-child-resource:");expect(owner.readEntity).not.toHaveBeenCalled();
+  }
+ });
+});

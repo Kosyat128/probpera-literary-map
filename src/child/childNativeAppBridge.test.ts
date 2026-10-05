@@ -216,3 +216,40 @@ describe("LOCAL2 native owner presentation lifecycle", () => {
     expect(await child.preferences.remove("adult-history")).toBe(false); expect(child.openExternalLink("https://example.invalid")).toBe("blocked"); expect(adult.openExternalLink).not.toHaveBeenCalled(); expect(preferences.set).not.toHaveBeenCalled();
   });
 });
+
+describe("canonical native scene dispatch and joined original recipients",()=>{
+ it("seals real recipient immediately and awaits its actual cleanup before the next native action",async()=>{
+  const f=fixture();await f.controller.start();const cleanup=deferred<void>();
+  const clear=vi.fn(()=>f.order.push("renderer-clear")),join=vi.fn(()=>cleanup.promise);
+  f.controller.scenes!.attachRecipient({clear,join});
+  const action=f.controller.perform("exit-child-mode");expect(clear).toHaveBeenCalledOnce();await settle();
+  expect(join).toHaveBeenCalledOnce();expect(f.plugin.perform).not.toHaveBeenCalled();
+  cleanup.resolve();expect(await action).toBe(true);expect(f.plugin.perform).toHaveBeenCalledOnce();
+ });
+ it("does not accept an unknown decoder/GPU join as retirement acknowledgement",async()=>{
+  const f=fixture();await f.controller.start();
+  f.controller.scenes!.attachRecipient({clear:vi.fn(),join:async()=>{throw Error("GPU completion unknown");}});
+  expect(await f.controller.perform("exit-child-mode")).toBe(false);
+  expect(f.plugin.perform).not.toHaveBeenCalled();expect(f.controller.getSnapshot().context).toBeNull();
+ });
+ it("uses the native exact owner proposal and rejects scene metadata carrying public authority fields",async()=>{
+  const f=fixture();await f.controller.start();
+  const list=vi.fn(async(r:unknown)=>f.dataReply(r,[{sceneId:"fixture",title:"Fixture",owner:ref(),approved:true}]));
+  Object.assign(f.plugin,{listScenes:list});
+  expect(await f.controller.scenes!.list(ref())).toBeNull();expect(list.mock.calls[0][0]).toMatchObject({version:2,contextToken:TOKEN,owner:ref()});
+  expect(f.controller.getSnapshot().context).toBeNull();
+ });
+});
+
+describe("media revocation retires a canonical recipient in the same context",()=>{
+ it("clears and joins the canonical renderer before dispatching native media release",async()=>{
+  const f=fixture();await f.controller.start();const cleanup=deferred<void>();
+  const clear=vi.fn(),join=vi.fn(()=>cleanup.promise);
+  f.controller.scenes!.attachRecipient({clear,join});
+  const release=vi.fn(async(r:unknown)=>f.dataReply(r,{status:"retired",presentationToken:(r as {presentationToken:string}).presentationToken}));
+  Object.assign(f.plugin,{releaseMedia:release});
+  const result=f.controller.media!.release("d".repeat(32));
+  expect(clear).toHaveBeenCalledOnce();await settle();expect(release).not.toHaveBeenCalled();
+  cleanup.resolve();expect(await result).toBe(true);expect(release).toHaveBeenCalledOnce();
+ });
+});

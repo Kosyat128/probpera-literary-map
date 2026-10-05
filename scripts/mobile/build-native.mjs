@@ -8,6 +8,7 @@ import { containedFile, artifactPath, CANONICAL_BOOK_SOURCE_REGISTRY } from "./p
 import { emitChildNativeAssets, CHILD_NATIVE_ASSET_MODULE } from "./native-child-package-assets.mjs";
 import { emitChildNativeMediaAssets, CHILD_NATIVE_MEDIA_ASSET_MODULE } from "./native-child-media-assets.mjs";
 import { emitChildNativeResourceAssets, CHILD_NATIVE_RESOURCE_ASSET_MODULE } from "./native-child-resource-assets.mjs";
+import { emitChildNativeSceneAssets, CHILD_NATIVE_SCENE_ASSET_MODULE } from "./native-child-scene-assets.mjs";
 
 const root = await fs.realpath(fileURLToPath(new URL("../../", import.meta.url)));
 const platform = process.argv[2];
@@ -23,7 +24,7 @@ async function inputs() {
   const paths = execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "--",
     "src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json",
     "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs",
-    CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE,
+    CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE,
   ], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 }).split("\0");
   const files = [];
   for (const relative of [...new Set([...paths, CANONICAL_BOOK_SOURCE_REGISTRY])].filter(p => p && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(p)).sort()) {
@@ -64,6 +65,14 @@ for (const chunk of chunks) {
   if ((await containedFile(staging, chunk.file)).sha256 !== chunk.sha256) throw new Error("Native chunk changed after writeBundle: " + chunk.file);
 }
 await fs.rename(path.join(staging, "native.html"), path.join(staging, "index.html"));
+// The sole custom image scheme is served by the original native WebView owner.
+// It grants no JS/network/asset authority; all executable and connection CSP
+// directives remain closed. Refuse an unexpected source-shell policy.
+const shellPath = path.join(staging, "index.html");
+const shell = await fs.readFile(shellPath, "utf8");
+const imagePolicy = "img-src 'self' data: blob:";
+if (shell.split(imagePolicy).length !== 2 || shell.includes("planet-child-resource:")) throw new Error("Unexpected native image CSP source.");
+await fs.writeFile(shellPath, shell.replace(imagePolicy, imagePolicy + " planet-child-resource:"));
 await fs.writeFile(path.join(staging, "module-ownership.json"), json({ schemaVersion: 1, platform, chunks: chunks.sort((a, b) => a.file.localeCompare(b.file)) }));
 const assetProvenance = [];
 for (const entry of assetSelection.files) {
@@ -81,6 +90,7 @@ for (const entry of assetSelection.files) {
 const childNativeAssets = await emitChildNativeAssets(root, staging, platform, channel);
 const childNativeMediaAssets = await emitChildNativeMediaAssets(root, staging, platform, channel);
 const childNativeResourceAssets = await emitChildNativeResourceAssets(root, staging, platform, channel);
+const childNativeSceneAssets = await emitChildNativeSceneAssets(root, staging, platform, channel);
 async function inventory(dir, prefix = "") {
   const records = [];
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
@@ -107,7 +117,7 @@ if ((await inputs()).sha256 !== sourceInputs.sha256) throw new Error("Source cha
 const buildId = sha(json({ sourceCommit, sourceInputsSha256: sourceInputs.sha256, platform, channel, inventory: files }));
 const artifact = {
   schemaVersion: 1, kind, platform, channel, buildId, sourceCommit, sourceInputs,
-  requiredLocales: ["ru", "en"], nativePackages, assetProvenance, childNativeAssets, childNativeMediaAssets, childNativeResourceAssets, inventory: files,
+  requiredLocales: ["ru", "en"], nativePackages, assetProvenance, childNativeAssets, childNativeMediaAssets, childNativeResourceAssets, childNativeSceneAssets, inventory: files,
   releaseReady: false, productionActionsAuthorized: false,
   limits: ["Bundled implementation snapshot, not native binary/device, store, editorial, rights or owner acceptance.", "No purchase authority is implemented by this shell; release and paid channel readiness remain separate gates."],
 };

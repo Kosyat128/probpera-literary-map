@@ -1,3 +1,4 @@
+import { childLocalV2CanonicalResourcesTestMethods,childLocalV2CanonicalResourcesFixtureSource,childLocalV2CanonicalResourcesFixtureArguments,childLocalV2CanonicalResourcesFixturePassed,verifyNativeChildLocalV2CanonicalResourcesFixtureSource } from "./native-install-runtime.mjs";
 import { childLocalV2ResourcesTestMethods, childLocalV2ResourcesFixtureSource, childLocalV2ResourcesFixtureArguments, childLocalV2ResourcesFixturePassed, verifyNativeChildLocalV2ResourcesFixtureSource } from './native-install-runtime.mjs';
 import { childLocalV2MediaTestMethods, childLocalV2MediaFixtureSource, childLocalV2MediaFixtureArguments, childLocalV2MediaFixturePassed, verifyNativeChildLocalV2MediaFixtureSource } from "./native-install-runtime.mjs";
 import { childLocalV2AppBridgeTestMethods, childLocalV2AppBridgeFixtureSources, childLocalV2AppBridgeFixtureArguments, childLocalV2AppBridgeFixturePassed, verifyNativeChildLocalV2AppBridgeFixtureSources } from './native-install-runtime.mjs';
@@ -626,4 +627,24 @@ describe('native child resource selector', () => {
     for(const field of ['realTlsNetworkAcceptance','realOsMediaUiAcceptance','humanReviewAcceptance','authenticatedReleaseRightsAcceptance','paidAuthorityAcceptance','installedStorageAcceptance','parentGateAdmission'])expect(result.fixture[field]).toBe(false);
     const saved=JSON.parse(await readFile(path.join(root,'.tmp/resources/result.json'),'utf8'));expect(saved.fixture).toEqual(result.fixture);expect(saved.commands).toEqual([]);
   });
+});
+describe("canonical native decoder fixture selector",()=>{
+ const klass="ru.probpera.literaryplanet.PlanetChildCanonicalResourceRuntimeTest",run="a".repeat(32);
+ function observation(){const rows=[];childLocalV2CanonicalResourcesTestMethods.forEach((method,index)=>{for(const status of [1,0])rows.push(
+  "INSTRUMENTATION_STATUS: class="+klass,"INSTRUMENTATION_STATUS: test="+method,"INSTRUMENTATION_STATUS: numtests=5",
+  "INSTRUMENTATION_STATUS: current="+(index+1),"INSTRUMENTATION_STATUS: id=AndroidJUnitRunner","INSTRUMENTATION_STATUS_CODE: "+status);
+ });rows.push("INSTRUMENTATION_RESULT: stream=","OK (5 tests)","INSTRUMENTATION_CODE: -1");return rows.join("\n")+"\n";}
+ it("binds exact five native methods and fixed nonauthority run arguments",()=>{
+  const args=childLocalV2CanonicalResourcesFixtureArguments(run);
+  expect(args).toHaveLength(15);expect(Object.isFrozen(args)).toBe(true);
+  expect(args[7].split(",")).toEqual(childLocalV2CanonicalResourcesTestMethods.map(method=>klass+"#"+method));
+  expect(args.slice(11,14)).toEqual(["-e","literaryChildCanonicalResourcePhase","local-v2-canonical-resource"]);
+  expect(verifyNativeChildLocalV2CanonicalResourcesFixtureSource([{path:childLocalV2CanonicalResourcesFixtureSource,sha256:"b".repeat(64)}])).toBe(true);
+ });
+ it("rejects a headline, assumption/SKIP, wrong class and missing actual completion as five-method PASS",()=>{
+  const full=observation();expect(childLocalV2CanonicalResourcesFixturePassed(full)).toBe(true);
+  for(const bad of ["OK (5 tests)\nINSTRUMENTATION_CODE: -1\n",full.replace("INSTRUMENTATION_STATUS_CODE: 0","INSTRUMENTATION_STATUS_CODE: -3"),
+   full+"AssumptionViolatedException: genuine native fixture missing\n",full.replace(klass,"foreign.Class"),full.replace("numtests=5","numtests=4")])
+   expect(childLocalV2CanonicalResourcesFixturePassed(bad)).toBe(false);
+ });
 });

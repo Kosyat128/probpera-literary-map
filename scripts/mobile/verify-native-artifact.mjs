@@ -11,6 +11,7 @@ import { CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
 import { normalizeChildNativePins, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_CATALOG } from "./native-child-package-assets.mjs";
 import { collectChildNativeMediaOutputs, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE } from "./native-child-media-assets.mjs";
 import { collectChildNativeResourceOutputs, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_CATALOG } from "./native-child-resource-assets.mjs";
+import { collectChildNativeSceneOutputs, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE } from "./native-child-scene-assets.mjs";
 
 const SHA = /^[a-f0-9]{64}$/u;
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -23,7 +24,7 @@ const packages = Object.freeze({
   "@capacitor/core": "8.5.1", "@capacitor/cli": "8.5.1", "@capacitor/android": "8.5.1", "@capacitor/ios": "8.5.1",
   "@capacitor/app": "8.1.1", "@capacitor/network": "8.0.1", "@capacitor/preferences": "8.0.1", "@capacitor/browser": "8.0.4", "@capacitor/app-launcher": "8.0.1",
 });
-const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE];
+const sourceRoots = ["src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE];
 const attributionFiles = new Set(["assets/country-flags/ATTRIBUTION.md", "fonts/editorial/LICENSE.source-sans-3.md", "fonts/editorial/LICENSE.source-serif-4.md"]);
 const within = (root, file) => { const relative = path.relative(root, file); return relative && relative !== ".." && !relative.startsWith(".." + path.sep) && !path.isAbsolute(relative); };
 function relativePath(value) {
@@ -203,7 +204,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
         || actual.get(row.output)?.bytes !== original.bytes.length || !inventory.has(row.output)) throw new Error();
       childOutputs.add(row.output);
     }
-    if ([...actual.keys()].some(name => name.startsWith("child-native/") && !name.startsWith("child-native/media/") && !name.startsWith("child-native/resources/") && !childOutputs.has(name))) throw new Error();
+    if ([...actual.keys()].some(name => name.startsWith("child-native/") && !name.startsWith("child-native/media/") && !name.startsWith("child-native/resources/") && !name.startsWith("child-native/scenes/") && !childOutputs.has(name))) throw new Error();
   } catch { childOutputs.clear();add("CHILD_NATIVE_PROVENANCE", "child-native/", "Child outputs require the exact pinned source bytes, fixed catalog projection, exporter input and complete bounded inventory."); }
   // A separate exact media closure is mechanically reconstructed from current
   // source bytes and independent reviewer pins; text approval grants no media.
@@ -260,6 +261,33 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
       || [...actual.keys()].some(name => name.startsWith("child-native/resources/") && name !== row.output)) throw new Error();
     childOutputs.add(row.output);
   } catch { add("CHILD_NATIVE_RESOURCE_PROVENANCE", "child-native/resources/", "Exact source-owned transport pins/schema/emitter, canonical platform catalog, independent signed media/rights relation and actual binary closure required."); }
+  const claimsScenes = inputMap.has(CHILD_NATIVE_SCENE_ASSET_MODULE) || Object.hasOwn(artifact, "childNativeSceneAssets")
+    || [...actual.keys()].some(name => name.startsWith("child-native/scenes/"));
+  if (claimsScenes) try {
+    const metadata = artifact.childNativeSceneAssets;
+    if (!inputMap.has(CHILD_NATIVE_SCENE_ASSET_MODULE) || !fields(metadata, ["pinSource","outputs"])
+      || !fields(metadata.pinSource, ["path","sha256"]) || metadata.pinSource.path !== CHILD_NATIVE_SCENE_PIN_SOURCE
+      || !SHA.test(metadata.pinSource.sha256) || inputMap.get(CHILD_NATIVE_SCENE_PIN_SOURCE) !== metadata.pinSource.sha256
+      || !Array.isArray(metadata.outputs) || metadata.outputs.length < 1 || metadata.outputs.length > 129) throw new Error();
+    // Reconstruction is compiler-owned even with historical freshness disabled.
+    for (const source of [CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE,
+      "src/child/childNativeScene.ts","src/child/childNativeCanonicalResources.ts","src/components/GlobeChildNativeComposition.tsx",
+      "src/child/childNativeMedia.ts","src/child/childPackage.ts","src/child/childAccessPolicy.ts","src/child/childDataNamespace.ts","src/child/childProfile.ts"])
+      if (inputMap.get(source) !== sha(await regular(root,source))) throw new Error();
+    const expected = await collectChildNativeSceneOutputs(root,artifact.platform,artifact.channel);
+    if (!same(metadata.pinSource,expected.pinSource) || metadata.outputs.length !== expected.outputs.length) throw new Error();
+    const byOutput = new Map(expected.outputs.map(row => [row.output,row])), found = new Set();
+    for (const row of metadata.outputs) {
+      if (!fields(row,["output","source","sourceSha256","transformation","outputSha256"]) || found.has(row.output)) throw new Error();
+      const original = byOutput.get(row.output);
+      if (!original || inputMap.get(row.source) !== original.sourceSha256 || row.source !== original.source
+        || row.sourceSha256 !== original.sourceSha256 || row.transformation !== original.transformation
+        || row.outputSha256 !== original.outputSha256 || actual.get(row.output)?.sha256 !== original.outputSha256
+        || actual.get(row.output)?.bytes !== original.bytes.length || !inventory.has(row.output)) throw new Error();
+      found.add(row.output);childOutputs.add(row.output);
+    }
+    if ([...actual.keys()].some(name => name.startsWith("child-native/scenes/") && !found.has(name))) throw new Error();
+  } catch { add("CHILD_NATIVE_SCENE_PROVENANCE","child-native/scenes/","Exact independently signed scene/package/media/rights/source graph and canonical output inventory required."); }
   const resource = (value, owner, javascript = false) => {
     try {
       if (typeof value !== "string" || !value || /[\\%\u0000-\u0020\u007f]/u.test(value) || value.startsWith("//")) throw new Error();
@@ -293,7 +321,8 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
     const directives = new Map();
     for (const part of (csp.attr("content") ?? "").split(";")) { const [name, ...values] = part.trim().split(/\s+/u); if (!name) continue; if (directives.has(name)) throw new Error(); directives.set(name, values); }
     if (csp.length !== 1 || [...directives.keys()].some(key => !["default-src", "script-src", "connect-src", "img-src", "font-src", "style-src", "object-src", "base-uri", "frame-src", "form-action"].includes(key))
-      || !["default-src", "script-src", "connect-src"].every(key => same(directives.get(key), ["'self'"])) || !["object-src", "base-uri", "frame-src", "form-action"].every(key => same(directives.get(key), ["'none'"]))) add("SHELL_CSP", "index.html", "Native shell must restrict executable, connection, frame and form origins without overriding directives.");
+      || !["default-src", "script-src", "connect-src"].every(key => same(directives.get(key), ["'self'"]))
+      || (claimsScenes && !same(directives.get("img-src"), ["'self'","data:","blob:","planet-child-resource:"])) || !["object-src", "base-uri", "frame-src", "form-action"].every(key => same(directives.get(key), ["'none'"]))) add("SHELL_CSP", "index.html", "Native shell must restrict executable, connection, frame and form origins without overriding directives.");
   } catch { add("SHELL_UNREADABLE", "index.html", "One regular native shell with an unambiguous CSP is required."); }
   const ownedFiles = new Set(), moduleIds = new Set();
   if (actual.has("module-ownership.json")) try {

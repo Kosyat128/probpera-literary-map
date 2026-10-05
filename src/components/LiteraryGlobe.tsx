@@ -1,3 +1,6 @@
+import GlobeChildNativeComposition from "./GlobeChildNativeComposition";
+import type { ChildCanonicalResources } from "../child/childNativeCanonicalResources";
+import type { ChildEntityReference } from "../child/childPackage";
 import { Canvas, type ThreeEvent, useFrame, useThree } from "@react-three/fiber";
 import {
   useCallback,
@@ -163,6 +166,8 @@ interface Props {
   countries: Country[];
   /** Native admitted text presentation; geometry and original controls remain canonical. */
   childPresentation?: boolean;
+  childResources?: ChildCanonicalResources;
+  onChildHotspot?: (target:ChildEntityReference)=>void;
   atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: Writer | null;
@@ -1689,6 +1694,9 @@ function SelectedWriterLocationMarker({
 
 function GlobeScene({
   atlas,
+  childPresentation=false,
+  childResources,
+  onChildHotspot,
   standCustomization,
   backgroundCustomization,
   sceneInspection,
@@ -1728,6 +1736,9 @@ function GlobeScene({
   touchInteractionEnabled,
 }: {
   atlas: GlobeAtlas;
+  childPresentation?: boolean;
+  childResources?: ChildCanonicalResources;
+  onChildHotspot?: (target:ChildEntityReference)=>void;
   standCustomization?: GlobeStandPresentation;
   backgroundCustomization?: GlobeBackgroundPresentation;
   sceneInspection?: GlobeSceneInspectionBridge;
@@ -1861,13 +1872,13 @@ function GlobeScene({
 
   return (
     <>
-      {backgroundCustomization
+      {!childPresentation && (backgroundCustomization
         ? <GlobeIncludedBackground presentation={compositionFrame.background ?? backgroundCustomization} quality={quality.tier}
             editionId={editionId} standId={standCustomization?.displayedId ?? "canonical"} access="adult"
             active={active} autoRotate={autoRotate} reducedMotion={reducedMotion}
             inspection={sceneInspection} globeRef={globeObjectRef} atlasMap={atlas.mapTexture}
             canonicalBackground={canonicalBackground} />
-        : canonicalBackground}
+        : canonicalBackground)}
       <ambientLight intensity={palette.ambientIntensity} color={palette.ambient} />
       <hemisphereLight
         args={[
@@ -1936,10 +1947,12 @@ function GlobeScene({
         active={active && !touchInteractionEnabled && !inspectingStand}
         onCountrySelect={onCountrySelect}
       />
-      {standCustomization
+      {!childPresentation && (standCustomization
         ? <GlobeIncludedStand presentation={compositionFrame.stand ?? standCustomization} quality={quality.tier}
             onInspectionBounds={setStandInspectionBounds} canonicalFrame={canonicalFrame} />
-        : canonicalFrame}
+        : canonicalFrame)}
+      {childPresentation && childResources && onChildHotspot && <GlobeChildNativeComposition resources={childResources}
+        globeRef={globeObjectRef} quality={quality.tier} onHotspot={onChildHotspot} />}
       <MicrostateMarkers
         atlas={atlas}
         countries={countries}
@@ -2007,6 +2020,8 @@ function GlobeScene({
 export default function LiteraryGlobe({
   countries,
   childPresentation = false,
+  childResources,
+  onChildHotspot,
   atlasCountries,
   selectedCountry,
   selectedWriter,
@@ -2984,7 +2999,7 @@ export default function LiteraryGlobe({
       atlasSourceCountries,
       requestedInitialEditionId,
       initialLanguage.current,
-      { signal: controller.signal }
+      { signal: controller.signal, surfaceSourceMode:childPresentation?"child-native-owned":"canonical" }
     )
       .catch(async (error: unknown) => {
         if (controller.signal.aborted) throw error;
@@ -2994,7 +3009,7 @@ export default function LiteraryGlobe({
           atlasSourceCountries,
           DEFAULT_GLOBE_EDITION_ID,
           initialLanguage.current,
-          { signal: controller.signal }
+          { signal: controller.signal, surfaceSourceMode:childPresentation?"child-native-owned":"canonical" }
         );
         failedInitialEditionId = requestedInitialEditionId;
         return fallbackAtlas;
@@ -3007,6 +3022,8 @@ export default function LiteraryGlobe({
           setAtlas(nextAtlas);
           if (compositionRef.current) {
             // The composition scene driver owns preparation, rollback and tokens.
+          } else if(childPresentation) {
+            // Child skin is owned by the independent native scene recipient.
           } else if (failedInitialEditionId) {
             globeStyle.reportFallback(
               failedInitialEditionId,
@@ -3033,6 +3050,7 @@ export default function LiteraryGlobe({
     };
   }, [
     atlasLoadRequest,
+    childPresentation,
     atlasRequested,
     atlasSourceCountries,
     globeStyle.reportFallback,
@@ -3275,7 +3293,7 @@ export default function LiteraryGlobe({
         onCreated={handleWebglCreated}
       >
         <GlobeScene
-          atlas={atlas}
+          atlas={atlas} childPresentation={childPresentation} childResources={childResources} onChildHotspot={onChildHotspot}
           standCustomization={standCustomization}
           backgroundCustomization={isPlanetApplication ? backgroundCustomization : undefined}
           composition={composition}

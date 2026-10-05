@@ -119,3 +119,13 @@ describe("LOCAL2 native media accessible slot", () => {
     expect(calls.globe).not.toHaveBeenCalled(); expect(calls.booky).not.toHaveBeenCalled();
   });
 });
+
+describe("scene resources use canonical Three receiver",()=>{
+ it("keeps exactly one canonical globe owner alongside the original sealed native image/audio slot",()=>{
+  const value=snapshot(),c=controller(value);
+  render(<ChildNativeReadyView snapshot={value} controller={c}/>);
+  const props=calls.globe.mock.calls[calls.globe.mock.calls.length-1]![0] as {childResources:{getSnapshot():{phase:string}};childPresentation:boolean};
+  expect(props.childPresentation).toBe(true);expect(props.childResources.getSnapshot().phase).toBe("empty");
+  expectNoRPC(c);
+ });
+});

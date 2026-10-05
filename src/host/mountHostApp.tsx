@@ -103,13 +103,13 @@ export function mountHostApp({ services, initialization, createAdultServices }: 
     if (snapshot.status === "child") {
       const persistence: HostLanguagePersistence = Object.freeze({ initialLanguage: context.locale, persist: async () => false });
       locale(context.locale);
-      root.render(<BootstrapErrorBoundary key={context.token}>
+      flushSync(()=>{root.render(<BootstrapErrorBoundary key={context.token}>
         <PlatformServicesProvider services={publicServices}>
           <InterfaceLanguageProvider hostLanguage={persistence}>
             <AppErrorBoundary><ChildNativeReadyView snapshot={snapshot} controller={controller} /></AppErrorBoundary>
           </InterfaceLanguageProvider>
         </PlatformServicesProvider>
-      </BootstrapErrorBoundary>);
+      </BootstrapErrorBoundary>);});
       return;
     }
     if (snapshot.status !== "adult" && snapshot.status !== "unenrolled") return;

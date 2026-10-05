@@ -1,3 +1,4 @@
+import WebKit
 import Foundation
 import CoreFoundation
 import CryptoKit
@@ -224,7 +225,14 @@ public class PlanetContentStorePlugin: CAPPlugin, CAPBridgedPlugin {
 @objc(PlanetBridgeViewController)
 class PlanetBridgeViewController: CAPBridgeViewController {
     private let planetChild=PlanetChildPlugin()
+    let childResources=PlanetChildWebResources()
+    override func webViewConfiguration(for instanceConfiguration: InstanceConfiguration) -> WKWebViewConfiguration {
+        let configuration=super.webViewConfiguration(for:instanceConfiguration)
+        configuration.setURLSchemeHandler(childResources,forURLScheme:PlanetChildWebResources.scheme)
+        return configuration
+    }
     override func capacitorDidLoad() {
+        if let web=bridge?.webView { childResources.bindWebView(web,host:self) }
         bridge?.registerPluginInstance(PlanetContentStorePlugin())
         bridge?.registerPluginInstance(PlanetSecureStorePlugin())
         bridge?.registerPluginInstance(planetChild)

@@ -8,7 +8,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-async function createSourceLeaseFixture(failInitialImage = false) {
+async function createSourceLeaseFixture(failInitialImage = false, childNativeOwned = false) {
   vi.resetModules();
   const network = { blocked: false, failNextImage: failInitialImage, holdNextDecode: false };
   const images: FixtureImage[] = [];
@@ -78,7 +78,7 @@ async function createSourceLeaseFixture(failInitialImage = false) {
   vi.stubGlobal("fetch", fetchMock);
   vi.stubGlobal("document", { createElement });
   const { createGlobeAtlas } = await import("./globeAtlas");
-  const atlas = await createGlobeAtlas([], "natural-earth-2026", "ru", { compact: false });
+  const atlas = await createGlobeAtlas([], "natural-earth-2026", "ru", { compact: false, surfaceSourceMode: childNativeOwned ? "child-native-owned" : undefined });
   releaseRuntimeFixtures.push(() => {
     atlas.dispose();
     images.forEach((image) => image.finishDecode());
@@ -333,4 +333,15 @@ describe("globe atlas initialization", () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(createElement).not.toHaveBeenCalled();
   });
+});
+
+describe("child native owned atlas surface",()=>{
+ it("retains original geography/canvas/texture while fetching no adult edition or flag images",async()=>{
+  const f=await createSourceLeaseFixture(false,true),texture=f.atlas.mapTexture,canvas=texture.image;
+  expect(f.images).toHaveLength(0);expect(f.requests).toEqual([]);
+  await f.atlas.setEdition("nasa-blue-marble");await f.atlas.preloadEdition("cassini-1790");
+  f.atlas.updateHighlight("fixture-country");expect(f.images).toHaveLength(0);expect(f.requests).toEqual([]);
+  expect(f.atlas.mapTexture).toBe(texture);expect(f.atlas.mapTexture.image).toBe(canvas);
+  expect(typeof f.atlas.countryAtGeographicCoordinates).toBe("function");
+ });
 });

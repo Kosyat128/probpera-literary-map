@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createChildNativeAppController, CHILD_NATIVE_LOCAL_POLICY_CHECKSUM, CHILD_NATIVE_LOCAL_POLICY_VERSION,
   type ChildNativeAppController, type ChildNativeAppPlugin, type ChildNativeContext } from "./childNativeAppBridge";
 import { childNativeMediaOwner, decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildNativeMediaLayout,
-  decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, type ChildNativeMediaAsset } from "./childNativeMedia";
+  childNativeSlotMedia, decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, type ChildNativeMediaAsset } from "./childNativeMedia";
 import type { ChildEntityReference } from "./childPackage";
 import type { PlatformSnapshot } from "../platform/ports";
 
@@ -263,4 +263,15 @@ describe("LOCAL2 media original native delivery barrier", () => {
     expect(f.plugin.releaseMedia).toHaveBeenCalledOnce(); revoked.resolve(f.dataReply(f.plugin.releaseMedia.mock.calls[0][0], { status: "retired", presentationToken: null }));
     expect(await a).toBe(true); expect(await b).toBe(true); expect(f.controller.getSnapshot().status).toBe("child");
   });
+});
+
+describe("canonical resources are separate from native UIKit media slots",()=>{
+ it("retains text-image/portrait/narration slots and excludes full scene roles after exact descriptor decoding",()=>{
+  for(const kind of ["image","portrait","narration","skin","stand","background","accessory"] as const){
+   const entityKind=kind==="portrait"?"image":kind;
+   const raw={...asset(entityKind),role:kind,entity:ref(entityKind,kind)};
+   const decoded=decodeChildNativeMediaAsset(raw)!;expect(decoded).not.toBeNull();
+   expect(childNativeSlotMedia(decoded)).toBe(["image","portrait","narration"].includes(kind));
+  }
+ });
 });

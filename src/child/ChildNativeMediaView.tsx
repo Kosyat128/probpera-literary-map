@@ -1,3 +1,4 @@
+import { childNativeSlotMedia } from "./childNativeMedia";
 import { useEffect, useRef, useState } from "react";
 import type { ChildEntityReference } from "./childPackage";
 import type { ChildNativeAppController } from "./childNativeAppBridge";
@@ -35,7 +36,7 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
       if (!media) { if (current() && sequence.current === attempt) setPhase("unavailable"); return; }
       const values = await media.list(owner);
       if (!current() || sequence.current !== attempt) return;
-      setAssets(values); setPhase(values ? "ready" : "unavailable");
+      setAssets(values?.filter(childNativeSlotMedia) ?? null); setPhase(values ? "ready" : "unavailable");
     })();
     return () => {
       live.current = false; ++sequence.current; anchored.current = null;

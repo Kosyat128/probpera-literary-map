@@ -266,6 +266,7 @@ function androidOfflineCommandArgs(value) {
           ? copied[12] === 'literaryFirstInstallPhase' && copied[13] === 'first-install-v2'
         : copied[7] === childLocalV2MediaSelection ? copied[12] === 'literaryChildMediaPhase' && copied[13] === 'local-v2-media'
         : copied[7] === childLocalV2ResourcesSelection ? copied[12] === 'literaryChildResourcesPhase' && copied[13] === 'local-v2-resources'
+        : copied[7] === childLocalV2CanonicalResourcesSelection ? copied[12] === 'literaryChildCanonicalResourcePhase' && copied[13] === 'local-v2-canonical-resource'
         : copied[7] === pinVerificationInputClass
           ? copied[12] === 'literaryPinVerificationInputPhase' && copied[13] === 'input'
         : copied[7] === 'ru.probpera.literaryplanet.PlanetChildProtectedEnvelopeRuntimeTest'
@@ -772,6 +773,68 @@ export function childLocalV2ResourcesFixturePassed(text) {
 }
 
 
+
+const childLocalV2CanonicalResourcesClass='ru.probpera.literaryplanet.PlanetChildCanonicalResourceRuntimeTest';
+export const childLocalV2CanonicalResourcesTestMethods=Object.freeze([
+ 'closedWireRejectsCallerURLProofAndCleanupAcknowledgement','opaqueURIsAndNativeFactoriesRemainClosed',
+ 'sceneParserSupportsFractionsWithoutBroadeningOriginalPackageParser','realBoundWebViewDeniesUnknownWrongViewAndMainFrame',
+ 'genuineOriginalOutputDecodesUploadsAndRetiresAfterAcquisitionCommandReturned',
+]);
+export const childLocalV2CanonicalResourcesFixtureSource='apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildCanonicalResourceRuntimeTest.java';
+const childLocalV2CanonicalResourcesClasses=childLocalV2CanonicalResourcesTestMethods.map(()=>childLocalV2CanonicalResourcesClass);
+const childLocalV2CanonicalResourcesSelection=childLocalV2CanonicalResourcesTestMethods.map(method=>childLocalV2CanonicalResourcesClass+'#'+method).join(',');
+export function verifyNativeChildLocalV2CanonicalResourcesFixtureSource(files){
+ check(Array.isArray(files)&&files.filter(row=>row?.path===childLocalV2CanonicalResourcesFixtureSource).length===1
+ &&files.some(row=>row?.path===childLocalV2CanonicalResourcesFixtureSource&&typeof row.sha256==='string'&&row.sha256.length===64&&hash(row.sha256)),'Exact canonical resource fixture source required.');return true;
+}
+export function childLocalV2CanonicalResourcesFixtureArguments(runId){
+ check(typeof runId==='string'&&runId.length===32&&/^[a-f0-9]{32}$/u.test(runId),'Exact own canonical resource fixture run required.');
+ return Object.freeze(['shell','am','instrument','-w','-r','-e','class',childLocalV2CanonicalResourcesSelection,
+ '-e','literaryRunId',runId,'-e','literaryChildCanonicalResourcePhase','local-v2-canonical-resource','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+}
+
+export function childLocalV2CanonicalResourcesFixturePassed(text) {
+  if (typeof text !== 'string' || text.length > 4 * 1024 * 1024 || text.includes('\0')
+    || /FAILURES!!!|INSTRUMENTATION_FAILED|INSTRUMENTATION_ABORTED|Process crashed|AssertionError|shortMsg=|AssumptionViolatedException|\bskipped\b|\b(?:failed|error):/iu.test(text)) return false;
+  const expected = new Map(childLocalV2CanonicalResourcesTestMethods.map((method,index) => [method,childLocalV2CanonicalResourcesClasses[index]])),
+    started = new Set(), completed = new Set(), ordinals = new Set();
+  let fields = new Map(), active = null, summary = false, terminal = false, result = false;
+  for (const line of text.split(/\r?\n/u)) {
+    if (/^OK \([0-9]+ tests?\)[ \t]*$/u.test(line)) {
+      if (!/^OK \(5 tests\)[ \t]*$/u.test(line) || !result || summary || terminal || active || fields.size || completed.size !== 5 || started.size !== 5) return false;
+      summary = true; continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_CODE:')) {
+      if (!/^INSTRUMENTATION_CODE:[ \t]*-1[ \t]*$/u.test(line) || !summary || terminal || active || fields.size) return false;
+      terminal = true; continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_RESULT:')) {
+      if (!line.startsWith('INSTRUMENTATION_RESULT: stream=') || result || summary || terminal || active || fields.size || completed.size !== 5) return false;
+      result = true; continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_STATUS:')) {
+      if (summary || terminal) return false;
+      const field = /^INSTRUMENTATION_STATUS: (class|test|numtests|current|id|stream)=(.*)$/u.exec(line);
+      if (!field || fields.has(field[1])) return false; fields.set(field[1],field[2]); continue;
+    }
+    if (line.startsWith('INSTRUMENTATION_STATUS_CODE:')) {
+      const status = /^INSTRUMENTATION_STATUS_CODE:[ \t]*([01])[ \t]*$/u.exec(line), method = fields.get('test'), ordinal = fields.get('current');
+      if (!status || summary || terminal || expected.get(method) !== fields.get('class') || fields.get('numtests') !== '5'
+        || fields.get('id') !== 'AndroidJUnitRunner' || !/^[1-5]$/u.test(ordinal)) return false;
+      if (status[1] === '1') {
+        if (active || started.has(method) || ordinals.has(ordinal) || Number(ordinal) !== started.size + 1) return false;
+        active = {method,ordinal,klass:fields.get('class')};started.add(method);ordinals.add(ordinal);
+      } else {
+        if (!active || active.method !== method || active.ordinal !== ordinal || active.klass !== fields.get('class') || completed.has(method)) return false;
+        completed.add(method);active = null;
+      }
+      fields = new Map();continue;
+    }
+    if (/^\s*INSTRUMENTATION_(?:STATUS|STATUS_CODE|CODE|RESULT)/u.test(line)) return false;
+  }
+  return summary && terminal && active === null && fields.size === 0 && started.size === 5 && completed.size === 5;
+}
+
 export function bindXctestrun(input, { templateDir, binary, runId, phase }) {
   check(input?.__xctestrun_metadata__?.FormatVersion === 2 && Array.isArray(input.TestConfigurations) && input.TestConfigurations.length === 1,
     'Expected one version-2 XCTest configuration.');
@@ -843,18 +906,22 @@ export async function runNativeInstallRuntime(options = {}) {
   check(options.childLocalV2AppBridge === undefined || typeof options.childLocalV2AppBridge === 'boolean', 'Explicit native App bridge selector required.');
   const childLocalV2AppBridgeOnly = options.childLocalV2AppBridge === true;
   check(options.childLocalV2Media===undefined||typeof options.childLocalV2Media==='boolean','Explicit media selector required.');const childLocalV2MediaOnly=options.childLocalV2Media===true;check(!childLocalV2MediaOnly||platform==='android'&&options.reboot!==true,'Media selector is Android-only and never reboots.');
+  check(options.childLocalV2CanonicalResources===undefined||typeof options.childLocalV2CanonicalResources==='boolean','Explicit canonical resource selector required.');
+  const childLocalV2CanonicalResourcesOnly=options.childLocalV2CanonicalResources===true;
+  check(!childLocalV2CanonicalResourcesOnly||platform==='android'&&(options.reboot===undefined||options.reboot===false),'Canonical resource selector is Android-only and never reboots.');
   check(options.childLocalV2Resources===undefined||typeof options.childLocalV2Resources==='boolean','Explicit native resource selector required.');
   const childLocalV2ResourcesOnly=options.childLocalV2Resources===true;
   check(!childLocalV2ResourcesOnly||platform==='android'&&(options.reboot===undefined||options.reboot===false),'Native resource selector is Android-only and never reboots.');
   check(!childLocalV2AppBridgeOnly || platform === 'android' && options.reboot !== true, 'Native App bridge selection is Android-only and does not reboot a target.');
-  check([pinVerificationInputOnly,childLocalV2PinOperationsOnly,childLocalV2ProfileEntryOnly,childLocalV2AppBridgeOnly,childLocalV2MediaOnly,childLocalV2ResourcesOnly].filter(Boolean).length <= 1, 'Native private fixture selectors cannot be mixed.');
+  check([pinVerificationInputOnly,childLocalV2PinOperationsOnly,childLocalV2ProfileEntryOnly,childLocalV2AppBridgeOnly,childLocalV2MediaOnly,childLocalV2ResourcesOnly,childLocalV2CanonicalResourcesOnly].filter(Boolean).length <= 1, 'Native private fixture selectors cannot be mixed.');
   check(!childLocalV2ProfileEntryOnly || platform === 'android' && options.reboot !== true, 'Local V2 profile-entry selection is Android-only and does not reboot a target.');
   check(!childLocalV2PinOperationsOnly || platform === 'android' && options.reboot !== true, 'Local V2 PIN operations selection is Android-only and does not reboot a target.');
-  const privatePinFixtureOnly = pinVerificationInputOnly || childLocalV2PinOperationsOnly || childLocalV2ProfileEntryOnly || childLocalV2AppBridgeOnly || childLocalV2MediaOnly || childLocalV2ResourcesOnly;
+  const privatePinFixtureOnly = pinVerificationInputOnly || childLocalV2PinOperationsOnly || childLocalV2ProfileEntryOnly || childLocalV2AppBridgeOnly || childLocalV2MediaOnly || childLocalV2ResourcesOnly || childLocalV2CanonicalResourcesOnly;
   check(!pinVerificationInputOnly || platform === 'android' && options.reboot !== true, 'Verification-input selection is Android-only and does not reboot a target.');
   check(platform === 'android' || options.adbServerPort === undefined, 'An ADB server port applies only to Android.');
   const adbServerArgs = androidAdbServerArguments(options.adbServerPort);
   const runId = options.runId ?? randomUUID().replaceAll('-', '');
+  check(!childLocalV2CanonicalResourcesOnly||typeof runId==='string'&&runId.length===32&&/^[a-f0-9]{32}$/u.test(runId),'Exact own canonical fixture run identity required.');
   check(!childLocalV2ResourcesOnly||typeof runId==='string'&&runId.length===32&&/^[a-f0-9]{32}$/u.test(runId),'Exact own resource fixture run identity required.');
   check(/^[a-f0-9]{32}$/u.test(runId), 'Use one exact run UUID without separators.');
   const output = path.resolve(root, options.outDir ?? '.tmp/native-runtime/' + runId);
@@ -866,7 +933,7 @@ export async function runNativeInstallRuntime(options = {}) {
     catch (error) { if (error.code !== 'ENOENT') throw error; await mkdir(parent); }
   }
   await mkdir(output); check(await realpath(output) === output, 'Linked evidence output.');
-  const report = { schemaVersion: 1, kind: childLocalV2ResourcesOnly ? 'literary-planet-child-local-v2-resources-runtime' : childLocalV2MediaOnly ? 'literary-planet-child-local-v2-media-runtime' : childLocalV2AppBridgeOnly ? 'literary-planet-child-local-v2-app-bridge-runtime' : childLocalV2ProfileEntryOnly ? 'literary-planet-child-local-v2-profile-entry-runtime' : childLocalV2PinOperationsOnly ? 'literary-planet-child-local-v2-pin-operations-runtime' : pinVerificationInputOnly ? 'literary-planet-native-pin-verification-input-runtime' : 'literary-planet-native-install-runtime', platform, channel: 'dev', runId,
+  const report = { schemaVersion: 1, kind: childLocalV2CanonicalResourcesOnly ? 'literary-planet-child-local-v2-canonical-resources-runtime' : childLocalV2ResourcesOnly ? 'literary-planet-child-local-v2-resources-runtime' : childLocalV2MediaOnly ? 'literary-planet-child-local-v2-media-runtime' : childLocalV2AppBridgeOnly ? 'literary-planet-child-local-v2-app-bridge-runtime' : childLocalV2ProfileEntryOnly ? 'literary-planet-child-local-v2-profile-entry-runtime' : childLocalV2PinOperationsOnly ? 'literary-planet-child-local-v2-pin-operations-runtime' : pinVerificationInputOnly ? 'literary-planet-native-pin-verification-input-runtime' : 'literary-planet-native-install-runtime', platform, channel: 'dev', runId,
     startedAt: new Date().toISOString(), status: 'NOT_RUN', releaseReady: false, installed: false, hardwareProtectionTested: false,
     checks: [], dependencies: [], commands: [], captures: [], cleanup: {},
     ...(adbServerArgs.length === 0 ? {} : { adbServer: { host: adbServerArgs[1], port: Number(adbServerArgs[3]) } }),
@@ -908,6 +975,10 @@ export async function runNativeInstallRuntime(options = {}) {
       wholeFixtureAcceptance:false,realTlsNetworkAcceptance:false,realOsMediaUiAcceptance:false,humanReviewAcceptance:false,
       authenticatedReleaseRightsAcceptance:false,paidAuthorityAcceptance:false,installedStorageAcceptance:false,parentGateAdmission:false};
     report.limits.push('Thirteen exact selected resource catalog/canonical URL/TLS-key/response/encoded-byte/lifetime/private-construction mechanics do not prove real TLS network, OS-owned media UI, authenticated release/rights/paid authority, installed storage or release acceptance.');
+  }
+  if(childLocalV2CanonicalResourcesOnly){
+    report.fixture={class:childLocalV2CanonicalResourcesClass,selection:childLocalV2CanonicalResourcesSelection,methods:[...childLocalV2CanonicalResourcesTestMethods],source:childLocalV2CanonicalResourcesFixtureSource,tests:5,phase:'local-v2-canonical-resource',scope:'native-canonical-resource-wire-webview-decoder-gpu-ownership',runMetadataOnly:true,wholeFixtureAcceptance:false,genuinePositivePrerequisite:'Separately staged independently signed native package/media/scene/resource fixture and protected LOCAL2 child record on a native target; fixture metadata supplies no authority.',genuinePositiveAcceptance:false};
+    report.limits.push('Positive native output requires real separately staged private native input; absent prerequisites or assumptions are NOT_RUN and never a five-method PASS. This selector does not create approvals or child records.');
   }
   const abort = new AbortController(), interrupt = () => abort.abort();
   process.once('SIGINT', interrupt); process.once('SIGTERM', interrupt);
@@ -1015,6 +1086,7 @@ export async function runNativeInstallRuntime(options = {}) {
     if (childLocalV2AppBridgeOnly) verifyNativeChildLocalV2AppBridgeFixtureSources(receipt.sourceInputs.files);
     if (childLocalV2MediaOnly) verifyNativeChildLocalV2MediaFixtureSource(receipt.sourceInputs.files);
     if (childLocalV2ResourcesOnly) verifyNativeChildLocalV2ResourcesFixtureSource(receipt.sourceInputs.files);
+    if (childLocalV2CanonicalResourcesOnly) verifyNativeChildLocalV2CanonicalResourcesFixtureSource(receipt.sourceInputs.files);
     const webArtifactPath=receipt.webArtifactPath??'dist-native/artifact.json',webArtifactDir=path.posix.dirname(webArtifactPath);
     const audit = await verifyNativeArtifact({ rootDir: root,artifactDir:webArtifactDir }); check(audit.pass && audit.identity?.platform === platform && audit.identity.channel === 'dev'
       && audit.identity.sourceCommit === receipt.sourceCommit, 'Current exact native web preparation audit/source failed.');
@@ -1061,6 +1133,7 @@ export async function runNativeInstallRuntime(options = {}) {
       report.toolchain = { xcode: await command('/usr/bin/xcodebuild', ['-version']), node: process.version };
     }
     record('exact-binary-preflight', 'PASS');
+    if(childLocalV2CanonicalResourcesOnly){report.status='NOT_RUN';record('child-local-v2-canonical-resources','NOT_RUN',report.fixture.genuinePositivePrerequisite);return report;}
     if (options.execute !== true) { record('installed-runtime', 'NOT_RUN', 'Preflight performs no device access. Supply --execute with the explicitly owned target.'); return report; }
     if (platform === 'android') {
       if (!options.serial || !options.avdName) { record('owned-emulator', 'NOT_RUN', 'Supply a fresh explicitly owned run-specific AVD and its emulator serial.'); return report; }
@@ -1072,6 +1145,14 @@ export async function runNativeInstallRuntime(options = {}) {
       check(Number((await adb(['shell', 'getprop', 'ro.build.version.sdk'])).trim()) >= 28, 'Synthetic instrumentation requires API 28 or newer.');
       await offline.verify('owned-target-before-install');
 
+      if(childLocalV2CanonicalResourcesOnly){
+        // Fresh-install runner cannot invent the genuine saved child/reviewed
+        // positive fixture. Preserve exact preflight identity and authored
+        // selection; separately owner-staged invocation remains required.
+        report.status='NOT_RUN';
+        record('child-local-v2-canonical-resources','NOT_RUN',report.fixture.genuinePositivePrerequisite);
+        return report;
+      }
       if(childLocalV2ResourcesOnly){
         await offline.command('install-child-local-v2-resources',['install',binary],60_000);ownedAndroidInstall=true;installedAndroidGeneration='current';
         await offline.command('install-child-local-v2-resources-fixture',['install',path.resolve(root,receipt.testArtifactPath)],60_000);ownedTestInstall=true;
@@ -1331,12 +1412,13 @@ if (isLocalCliEntry(import.meta.url)) {
     else if (name === '--child-local-v2-app-bridge') values.childLocalV2AppBridge = true;
     else if (name === '--child-local-v2-media') values.childLocalV2Media = true;
     else if (name === '--child-local-v2-resources') values.childLocalV2Resources = true;
+    else if (name === '--child-local-v2-canonical-resources') values.childLocalV2CanonicalResources = true;
     else if (name === '--reboot-owned-target') values.reboot = true;
     else if (['--platform', '--receipt', '--out', '--run-id', '--serial', '--avd-name', '--adb-server-port'].includes(name) && typeof args[index + 1] === 'string' && !args[index + 1].startsWith('--')) values[name.slice(2)] = args[++index];
-    else throw new Error('Use --platform android|ios --receipt relative.json --out .tmp/... [--run-id 32hex --serial emulator-N --avd-name LiteraryPlanet-V12-32hex --adb-server-port EVENPORT --execute --reboot-owned-target --pin-verification-input|--child-local-v2-pin-operations|--child-local-v2-profile-entry|--child-local-v2-app-bridge|--child-local-v2-media|--child-local-v2-resources].');
+    else throw new Error('Use --platform android|ios --receipt relative.json --out .tmp/... [--run-id 32hex --serial emulator-N --avd-name LiteraryPlanet-V12-32hex --adb-server-port EVENPORT --execute --reboot-owned-target --pin-verification-input|--child-local-v2-pin-operations|--child-local-v2-profile-entry|--child-local-v2-app-bridge|--child-local-v2-media|--child-local-v2-resources|--child-local-v2-canonical-resources].');
   }
   const report = await runNativeInstallRuntime({ platform: values.platform, receiptPath: values.receipt, outDir: values.out,
-    runId: values['run-id'], serial: values.serial, avdName: values['avd-name'], adbServerPort: values['adb-server-port'] === undefined ? undefined : parseOwnedAdbServerPort(values['adb-server-port']), execute: values.execute, reboot: values.reboot, pinVerificationInput: values.pinVerificationInput, childLocalV2PinOperations: values.childLocalV2PinOperations, childLocalV2ProfileEntry: values.childLocalV2ProfileEntry, childLocalV2AppBridge: values.childLocalV2AppBridge, childLocalV2Media:values.childLocalV2Media, childLocalV2Resources:values.childLocalV2Resources });
+    runId: values['run-id'], serial: values.serial, avdName: values['avd-name'], adbServerPort: values['adb-server-port'] === undefined ? undefined : parseOwnedAdbServerPort(values['adb-server-port']), execute: values.execute, reboot: values.reboot, pinVerificationInput: values.pinVerificationInput, childLocalV2PinOperations: values.childLocalV2PinOperations, childLocalV2ProfileEntry: values.childLocalV2ProfileEntry, childLocalV2AppBridge: values.childLocalV2AppBridge, childLocalV2Media:values.childLocalV2Media, childLocalV2Resources:values.childLocalV2Resources, childLocalV2CanonicalResources:values.childLocalV2CanonicalResources });
   process.stdout.write(json({ status: report.status, platform: report.platform, runId: report.runId, releaseReady: false }));
   process.exitCode = report.status === 'PASS' ? 0 : 2;
 }

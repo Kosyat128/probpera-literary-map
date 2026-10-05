@@ -97,7 +97,7 @@ final class PlanetChildResources {
     // The read worker takes ownership before the final current check, so a
     // revocation immediately after EOF still wipes the completed body.
     private byte[] acquire()throws Exception {
-        checkRead();if(!claim.remote()){InputStream bundled=claim.openBundle(this);boolean accepted=false;try{own(bundled);accepted=true;return boundedBody(bundled,claim.bytes(),claim.checksum());}finally{if(!accepted)bundled.close();}}
+        checkRead();if(!claim.remote()){InputStream bundled=claim.openBundle(this);boolean accepted=false;try{own(bundled);accepted=true;return boundedCurrentBody(bundled);}finally{if(!accepted)bundled.close();}}
         String origin=canonicalOrigin(claim.origin()),path=canonicalPath(claim.checksum(),claim.mime());require(path.equals(claim.path())&&origin.length()+path.length()<=1024);
         String host=new URI(origin).getHost();InetAddress[] addresses=InetAddress.getAllByName(host);require(addresses.length>0&&addresses.length<=16);for(InetAddress address:addresses)require(publicAddress(address));checkRead();
         Socket raw=new Socket();boolean accepted=false;try{own(raw);accepted=true;raw.connect(new InetSocketAddress(addresses[0],443),1000);raw.setSoTimeout(1000);checkRead();
@@ -107,9 +107,15 @@ final class PlanetChildResources {
                 OutputStream output=secure.getOutputStream();byte[] request=("GET "+path+" HTTP/1.1\r\nHost: "+host+"\r\nAccept: "+claim.mime()+"\r\nConnection: close\r\n\r\n").getBytes(StandardCharsets.US_ASCII);try{output.write(request);output.flush();}finally{Arrays.fill(request,(byte)0);}checkRead();
                 InputStream response=secure.getInputStream();own(response);String status=line(response,1024);Map<String,String> headers=new HashMap<>();int total=status.length()+2;
                 for(int count=0;;count++){require(count<64);String header=line(response,8192);total+=header.length()+2;require(total<=16384);if(header.isEmpty())break;int colon=header.indexOf(':');require(colon>0);String name=header.substring(0,colon);require(name.matches("[A-Za-z0-9!#$%&'*+.^_`|~-]+"));String key=name.toLowerCase(Locale.ROOT),value=header.substring(colon+1).trim();require(headers.put(key,value)==null);checkRead();}
-                responseHeaders(status,headers,claim.mime(),claim.bytes());checkRead();return boundedBody(response,claim.bytes(),claim.checksum());
+                responseHeaders(status,headers,claim.mime(),claim.bytes());checkRead();return boundedCurrentBody(response);
             }finally{if(!retained)secure.close();}
         }finally{if(!accepted)raw.close();}
+    }
+    private byte[] boundedCurrentBody(InputStream actual)throws Exception {
+        checkRead();int count=claim.bytes();require(count>0&&count<=MAX_RASTER);byte[] bytes=new byte[count];boolean kept=false;
+        try{int used=0;while(used<count){checkRead();int n=actual.read(bytes,used,Math.min(8192,count-used));checkRead();require(n>0);used+=n;}
+            checkRead();require(actual.read()==-1);checkRead();verifyEncoded(bytes,count,claim.checksum());checkRead();kept=true;return bytes;
+        }finally{if(!kept)Arrays.fill(bytes,(byte)0);}
     }
     byte[] readOwned()throws Exception {
         claim.checkIssuerWorker();synchronized(this){require(worker==null&&!revoked&&!closed);worker=new Thread(()->{byte[] bytes=null;try{bytes=acquire();checkRead();synchronized(this){require(!revoked);owned=bytes;bytes=null;}}catch(Throwable error){failure=error instanceof Exception?(Exception)error:new PlanetChildVault.Unavailable();}finally{if(bytes!=null)Arrays.fill(bytes,(byte)0);cleanupTransport();finished=true;}},"planet-child-resource-read");worker.start();}

@@ -168,9 +168,9 @@ final class PlanetChildLocalV2ResourceReader: NSObject, URLSessionDataDelegate {
         while at<bytes.count {
             try current();try claim.workerCurrent()
             let count=bytes.withUnsafeMutableBufferPointer { stream.read($0.baseAddress!.advanced(by:at),maxLength:min(8192,bytes.count-at)) }
-            guard count>0 else { throw PlanetChildLocalV2ResourceError.refused };at+=count
+            try current();try claim.workerCurrent();guard count>0 else { throw PlanetChildLocalV2ResourceError.refused };at+=count
         }
-        var extra: UInt8=0;guard stream.read(&extra,maxLength:1)==0 else { throw PlanetChildLocalV2ResourceError.refused }
+        try current();try claim.workerCurrent();var extra: UInt8=0;guard stream.read(&extra,maxLength:1)==0 else { throw PlanetChildLocalV2ResourceError.refused }
         try current();try claim.workerCurrent();return Data(bytes)
     }
     /** Called outside Vault/DataStore locks. Unknown cleanup keeps the lane

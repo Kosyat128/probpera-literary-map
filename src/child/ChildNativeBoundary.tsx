@@ -1,3 +1,5 @@
+import { createChildCanonicalResources } from "./childNativeCanonicalResources";
+import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { ChildNativeAppController, ChildNativeAppSnapshot, ChildNativeCollection,
@@ -144,9 +146,17 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
   </section>;
 }
 const emptyCountries: Country[] = [];
+const emptySceneValue={phase:"empty" as const,revision:0,scene:null,textures:null};
+const emptySceneSnapshot=()=>emptySceneValue;
+const emptySceneSubscribe=()=>()=>undefined;
 export function ChildNativeReadyView({ controller, snapshot }: { controller: ChildNativeAppController; snapshot: ChildNativeAppSnapshot }) {
   const { language } = useInterfaceLanguage(), copy = labels[language], services = usePlatformServices();
   const c = snapshot.context;
+  const resources=useMemo(()=>c?createChildCanonicalResources(controller,c.token):null,[controller,c?.token]);
+  const [scenes,setScenes]=useState<readonly ChildNativeSceneSummary[]>([]);
+  const [sceneOwner,setSceneOwner]=useState<ChildNativeEntity|null>(null);
+  const sceneState=useSyncExternalStore(resources?.subscribe??emptySceneSubscribe,resources?.getSnapshot??emptySceneSnapshot,resources?.getSnapshot??emptySceneSnapshot);
+  useLayoutEffect(()=>resources?.activate(),[resources]);
   const [current, setCurrent] = useState<ChildNativeEntity | null>(null), [loading, setLoading] = useState(true);
   const [roots, setRoots] = useState<readonly ChildNativeEntity[]>([]), [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState<readonly ChildNativeEntity[] | null>(null);
@@ -171,6 +181,8 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   async function open(ref: ChildEntityReference, back = false) {
     const original = context.current, attempt = ++sequence.current;
     setLoading(true); setCollection(null); setSaved(null); setSavedRows([]); setSearchResults(null);
+    resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
+    if(controller.scenes&&!await controller.scenes.releaseAll())return;
     if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) { setCurrent(null); setLoading(false); } return; }
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     const row = await resolve(ref);
@@ -201,6 +213,8 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   async function search() {
     const original = context.current, attempt = ++sequence.current;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
+    resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
+    if(controller.scenes&&!await controller.scenes.releaseAll())return;
     if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
     const result = await controller.search(query);
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
@@ -209,6 +223,8 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
   async function showCollection(name: ChildNativeCollection) {
     const original = context.current, attempt = ++sequence.current;
     setCollection(name); setSaved(null); setSavedRows([]); setSearchResults(null); setLoading(true);
+    resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
+    if(controller.scenes&&!await controller.scenes.releaseAll())return;
     if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
     const value = await controller.readCollection(name), rows: ChildNativeEntity[] = [];
     if (value) for (const ref of value.references) {
@@ -231,6 +247,7 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
     const next = value.references.some(row => same(row, ref)) ? value.references : [...value.references, ref];
     await controller.writeCollection(name, value.revision, next);
   }
+  useEffect(()=>{let alive=true;setScenes([]);setSceneOwner(null);if(current&&controller.scenes)void controller.scenes.list(current.reference).then(values=>{if(alive){setScenes(values??[]);setSceneOwner(current);}});return()=>{alive=false;};},[controller,current]);
   if (!c || snapshot.status !== "child") return <ChildNativeClosedView snapshot={snapshot} controller={controller} />;
   return <main className="child-native-app" data-child-native-phase="ready" data-child-native-profile={c.profileId}>
     <header className="child-native-header"><h1>{copy.title}</h1><NativeProfileControls controller={controller} snapshot={snapshot} /></header>
@@ -238,12 +255,22 @@ export function ChildNativeReadyView({ controller, snapshot }: { controller: Chi
       onCountrySelect={country => {
         const ref = roots.find(row => row.reference.id === country.id)?.reference;
         if (ref) { setSelectedCountry(country); void open(ref); }
-      }} childPresentation mode="immersive" forceLoad bookyCalmMotion runtimeActive preserveSceneDuringReload />
+      }} childPresentation childResources={resources??undefined} onChildHotspot={target=>{void open(target);}}
+      mode="immersive" forceLoad bookyCalmMotion runtimeActive preserveSceneDuringReload />
     <aside className="child-native-booky" data-booky-size={sizeSnapshot.size}>
       <PlanetMascotAvatar src={mascotImage} calmMotion active />
       <span>{language === "ru" ? "Книжулик" : "Mr. Booky"}</span>
     </aside>
     <section className="child-native-panel" aria-label={copy.title}>
+      {!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
+        <h2>{language==="ru"?"Оформление планеты":"Planet appearance"}</h2>
+        {scenes.map(scene=><button key={scene.sceneId} type="button" disabled={sceneState.phase==="preparing"} onClick={()=>{void resources?.select(current.reference,scene.sceneId);}}>{scene.title}</button>)}
+        {sceneState.phase==="preparing"&&<p role="status">{copy.loading}</p>}
+        {sceneState.phase==="unavailable"&&<p role="alert">{copy.bodyUnavailable}</p>}
+        {!!sceneState.scene?.hotspots.length&&<ul aria-label={language==="ru"?"Материалы оформления":"Scene content"}>
+          {sceneState.scene.hotspots.map(hotspot=><li key={hotspot.id}><ChildNativeReferenceButton controller={controller} reference={hotspot.target} onOpen={()=>{void open(hotspot.target);}}/></li>)}
+        </ul>}
+      </section>}
       <nav aria-label={copy.title}>
         <button type="button" onClick={() => { if (c.home) { setHistory([]); setSelectedCountry(null); void open(c.home, true); } }}>{copy.home}</button>
         <button type="button" disabled={!history.length} onClick={() => {

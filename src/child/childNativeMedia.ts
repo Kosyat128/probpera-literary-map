@@ -94,3 +94,6 @@ export function decodeChildNativeMediaRetirement(raw: unknown, token: string | n
   const row = childRecord(raw, ["status", "presentationToken"]);
   return !!row && row.status === "retired" && row.presentationToken === token;
 }
+
+/** Scene roles belong to the canonical Three receiver rather than a native image slot. */
+export const childNativeSlotMedia=(asset:ChildNativeMediaAsset):boolean=>["image","portrait","narration"].includes(asset.role);

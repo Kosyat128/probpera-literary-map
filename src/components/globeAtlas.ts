@@ -199,6 +199,8 @@ export function createGlobeHighlightUpdater(
 }
 
 export type CreateGlobeAtlasOptions = {
+  /** Child native recipient owns every surface image; no adult asset fallback. */
+  surfaceSourceMode?: "canonical" | "child-native-owned";
   compact?: boolean;
   signal?: AbortSignal;
 };
@@ -1233,7 +1235,7 @@ export async function createGlobeAtlas(
   const initialVisualStyle = initialEdition.legacySurfaceProfile;
   const [worldGeoJson, sourceMap] = await Promise.all([
     loadWorldGeoJson(),
-    loadEditionMap(initialEditionId, compact, initialLanguage),
+    options.surfaceSourceMode==="child-native-owned"?Promise.resolve(null):loadEditionMap(initialEditionId, compact, initialLanguage),
   ]);
   // React StrictMode intentionally cancels the first effect. Stop before the
   // three large 2D canvases are allocated and painted for that stale mount.
@@ -1324,6 +1326,7 @@ export async function createGlobeAtlas(
     mapHeight,
     initialEdition.overlayProfile
   );
+  if(options.surfaceSourceMode==="child-native-owned") {const ctx=mapCanvas.getContext("2d");if(ctx){ctx.fillStyle="#cbd5d8";ctx.fillRect(0,0,mapCanvas.width,mapCanvas.height);}}
   const mapTexture = configureTexture(new THREE.CanvasTexture(mapCanvas));
   const reliefWidth = Math.min(mapWidth, COMPACT_MAP_WIDTH);
   const reliefHeight = Math.min(mapHeight, COMPACT_MAP_HEIGHT);
@@ -1442,6 +1445,7 @@ export async function createGlobeAtlas(
   };
 
   const loadFlagImage = (countryId: string) => {
+    if(options.surfaceSourceMode==="child-native-owned")return Promise.resolve(null);
     if (disposed) return Promise.resolve(null);
     const loaded = flagImages.get(countryId);
     if (loaded) return Promise.resolve(loaded);
@@ -1729,6 +1733,7 @@ export async function createGlobeAtlas(
     editionId: GlobeEditionId,
     language: InterfaceLanguage = activeLanguage
   ) => {
+    if(options.surfaceSourceMode==="child-native-owned")return;
     if (disposed) return;
     const request = ++visualStyleRequest;
     if (
@@ -1752,6 +1757,7 @@ export async function createGlobeAtlas(
     language: InterfaceLanguage = activeLanguage
   ) => {
     if (disposed) return;
+    if (options.surfaceSourceMode === "child-native-owned") return;
     await preloadGlobeMap(editionId, compact, language);
   };
 

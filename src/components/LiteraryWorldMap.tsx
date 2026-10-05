@@ -1,3 +1,5 @@
+import type { ChildCanonicalResources } from "../child/childNativeCanonicalResources";
+import type { ChildEntityReference } from "../child/childPackage";
 import {
   useCallback,
   useEffect,
@@ -48,6 +50,8 @@ interface Props {
   countries: Country[];
   /** Native compiled child text scope; reuse the canonical scene with sealed adult sources. */
   childPresentation?: boolean;
+  childResources?: ChildCanonicalResources;
+  onChildHotspot?: (target: ChildEntityReference)=>void;
   atlasCountries?: Country[];
   selectedCountry?: Country | null;
   selectedWriter?: WriterProfile | null;
@@ -89,6 +93,8 @@ interface Props {
 export default function LiteraryWorldMap({
   countries,
   childPresentation = false,
+  childResources,
+  onChildHotspot,
   atlasCountries,
   selectedCountry,
   selectedWriter,
@@ -215,6 +221,7 @@ export default function LiteraryWorldMap({
         <LiteraryGlobe
           countries={countries}
           childPresentation={childPresentation}
+            childResources={childResources} onChildHotspot={onChildHotspot}
           atlasCountries={atlasCountries}
           selectedCountry={selectedCountry}
           selectedWriter={selectedWriter}
