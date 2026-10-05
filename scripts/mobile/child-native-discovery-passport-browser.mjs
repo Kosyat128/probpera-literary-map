@@ -183,7 +183,7 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
    // The real renderer deliberately pauses outside the viewport. Visit its
    // actual canvas before requiring new texture uploads; preserve all leases,
    // native deadlines, frame policy, and the original renderer/camera.
-   await page.locator("[data-globe-mode]").scrollIntoViewIfNeeded();
+   await page.locator(".child-native-canonical-shell canvas").scrollIntoViewIfNeeded();
    await page.waitForFunction(()=>{const value=window.__childJourneyBrowser.inspect();return value.viewport.intersects&&value.frameMode!=="never"&&value.group&&value.cover&&value.wall&&value.globeVisible&&value.uploaded.length===3&&value.uploaded.every(Boolean)&&value.glError===0;},undefined,{timeout:30000});const native=await snapshot(),value=await observed();await journal("ready-scene-after-viewport",{observation:value});require(native.appearance.liveScenes===1&&native.appearance.liveResources===3&&value.resourceTokens.length===3&&JSON.stringify([...native.appearance.resourceTokens].sort())===JSON.stringify([...value.resourceTokens].sort()),"exact three current server leases and browser URI resolutions");return value;}
  async function scenesJoined(){await page.waitForFunction(async()=>{const value=await window.__childJourneyBrowser.control({action:"snapshot"}),clean=window.__childJourneyBrowser.inspect().cleanup;return value.appearance.liveScenes===0&&value.appearance.liveResources===0&&clean.surfaceClear&&clean.groupDetached&&clean.gpuRetired&&clean.liveSyntheticResources===0;},undefined,{timeout:10000});}
 
