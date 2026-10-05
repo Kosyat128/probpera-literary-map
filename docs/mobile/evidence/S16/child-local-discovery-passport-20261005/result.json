@@ -1,0 +1,2136 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-discovery-passport-whole-astra-stage-closure",
+  "status": "LOCAL_IMPLEMENTATION_REVIEW_FIX_AND_AVAILABLE_CHECKS_COMPLETE",
+  "generatedAt": "2026-10-05T20:48:49.142Z",
+  "reviewModel": "GPT-6 Astra Ultra",
+  "rootDir": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "sourceCommit": "62bc9f12252b6a742274ddd5079a19a895884113",
+  "repositoryHead": "62bc9f12252b6a742274ddd5079a19a895884113",
+  "sourceFingerprint": "225228a6e2545087abaff9b8cfec66ba7edc59eda408dd2f021d06cb646cdfbc",
+  "sourceRows": 1873,
+  "currentInputs": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\whole-final-inputs-a1.json",
+    "sha256": "c4b20efaca4f502d3a40b2c8dc2a44143e7e9994fa99ee15c28562623fe10f1e",
+    "bytes": 288544
+  },
+  "baseline": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-child-discovery-passport-20261005\\baseline.json",
+    "sha256": "00ecb98866df90a3dc3868167487e1b0e6f34f966b3b55b00d902f0fa2bf4c91",
+    "bytes": 297027
+  },
+  "authorManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-child-discovery-passport-20261005\\manifest.json",
+    "sha256": "c1b5757e3d4d9cf71212193a40cb4ccb28dbe2db99c68e26b0cf6716535443e3",
+    "bytes": 631201
+  },
+  "wholeReviewedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-whole-reviewed-manifest-a1.json",
+    "sha256": "02a64e3d236d6d555c35171a612fac7026d6482d6c8c349a7cf223a278074c9d",
+    "bytes": 652019
+  },
+  "wholeSemanticReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-whole-semantic-review-a1.json",
+    "sha256": "27297b4fad9ed802455103eff1bcc057900f33ccc825b631d20f27687e4874e3",
+    "bytes": 12819
+  },
+  "finalReviewedSource": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-final-reviewed-source-a1.json",
+    "sha256": "1458745050a93c2e91ff6add775348a79b932e7bfd5d265dc7b54397f3419e8c",
+    "bytes": 629049
+  },
+  "reviewedDeltas": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a2.json",
+      "sha256": "16b8120a136a0f6577efe6d85bc56ad19edf8a5d6e269fe7200a8b383dcd3b18",
+      "bytes": 579419
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a3.json",
+      "sha256": "d2babd3aac47d513049943b9d4d371c95b9e21d3d99426bcdf71e6200e08057e",
+      "bytes": 587007
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a4.json",
+      "sha256": "8e3f9b0282936e3a09df66303fe2942c13d8fe5f594fdfabffc348f1df247ba6",
+      "bytes": 582489
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a5.json",
+      "sha256": "5032bfd1fcd87b63cb016e505731eaa5036fb267f656753ebfb71767d0c200aa",
+      "bytes": 582832
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a6.json",
+      "sha256": "f0f8029c8e39401f34dd2efca15af60fc2a98180c63f40568f2b471f4aeb27da",
+      "bytes": 583619
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a7.json",
+      "sha256": "6dcc4ed2a6b041ce3d9160e9fe5b27ab3d9ba77c5d161e3559a1037d6729b15c",
+      "bytes": 584248
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-reviewed-delta-a8.json",
+      "sha256": "e22b39c21824507ea410081867d085191aeb8b2fba7525dc53e648d7893a07a1",
+      "bytes": 584537
+    }
+  ],
+  "integrationCheckpoints": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a2\\checkpoint.json",
+      "sha256": "9845edc29943d78ae00398877d9db727b2423c20b76db426e55b24e7aa9fc47e",
+      "bytes": 333459
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a3\\checkpoint.json",
+      "sha256": "08737bc205da3ae2cf16aece1ad31a0a4b4604e3fab5e6a9afc58625d9d436c5",
+      "bytes": 302479
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a4\\checkpoint.json",
+      "sha256": "78eb1d18457dc7eb132f51a4e236e984476b2776107d4dc963da3b5926ca2fab",
+      "bytes": 300908
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a5\\checkpoint.json",
+      "sha256": "4b4badf9afbe340b21d1c0939e17dc765e2e7d0792c4ba2eceeb46d958e68fba",
+      "bytes": 301274
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a6\\checkpoint.json",
+      "sha256": "caf819930266b6881135b92117d8d07dfe374f39d7b723de5e4afd9c563bb3a4",
+      "bytes": 301574
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a7\\checkpoint.json",
+      "sha256": "bade5703f00303bd171dd024b3965c0e7bd5a47aa209c2c8e2a1fbb3a7df8018",
+      "bytes": 301578
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a8\\checkpoint.json",
+      "sha256": "8f3343c404010028b5b8487974b6c7938ad4d33c04a4986b21de8332de340ced",
+      "bytes": 301921
+    }
+  ],
+  "originalRequirementsIntake": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-journey-work-20261005\\next-original-plan-intake-a1.json",
+    "sha256": "deac5a20d965c9184d2353e8c7655aa12e70fdd8b547604fd4aeacced04b51a1",
+    "bytes": 15299
+  },
+  "originalRequirementsDocuments": [
+    {
+      "path": "docs/mobile/requirements/v12/FINAL_MASTER_CODEX_PROMPT_LITERARY_PLANET_V12_BILINGUAL_RU_EN.txt",
+      "sha256": "e9016b490180b8ac40dbf76aaf1b0baa4b37bc21db33faf6c38e5382ff4a3c23",
+      "bytes": 1381619
+    },
+    {
+      "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+      "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+      "bytes": 7781
+    }
+  ],
+  "wholeScope": {
+    "paths": 24,
+    "newPaths": 9,
+    "sourceRowsBefore": 1864,
+    "sourceRowsAfter": 1873,
+    "protectedInputs": 37,
+    "documents": 6,
+    "originalNativeV1Prefixes": 2
+  },
+  "semanticContracts": {
+    "independentNativeWriterAndWorkAdmission": "REVIEWED_CURRENT_AGE_TOPICS_RIGHTS_POLICY_VERSION_NO_JS_AUTHORITY",
+    "passport": "COUNTRY2048_TYPED_VERSIONED_LEARNING2048_EXPLICIT_VERSIONED_JOURNEY32_WITH_ARCHIVE_PRESERVATION",
+    "countryCredit": "ACTUAL_REACT_COMMIT_OF_MATCHING_EXPLICIT_NAVIGATION_ONLY",
+    "deletion": "ACTUAL_ORIGINAL_NATIVE_DELETE_CHILD_DATA_BRANCH_BOTH_PLATFORMS_WHOLE_STORE_CAS_READBACK_UNKNOWN_SEAL",
+    "profileRemoval": "TARGET_ONLY_PERSONAL_PARTITIONS_REGISTRY_AND_ENCRYPTED_INITIAL_BIRTH_SOURCE_REDACTION_SIBLINGS_PRESERVED",
+    "historyRemoval": "PROFILE_PIN_APPEARANCE_FAVORITES_OFFLINE_PRESERVED",
+    "originAndRecreation": "GENUINE_ORIGINAL_GATE_PIN_DEBT_CONTINUITY_NO_IMPLICIT_SEED",
+    "protected": "ORIGINAL_V1_EXACT37_PROTECTED6_DOCS_PINS_EMPTY_DENY",
+    "canonicalScene": "ORIGINAL_APP_GLOBE_RENDERER_CAMERA_PLUS_EXISTING_DECORATIVE_BOOKY_CANVAS",
+    "locale": "EQUAL_RU_EN_EXACT_CONTEXT_CORRELATION",
+    "privacy": "LOCAL_ACCOUNTLESS_NO_CHILD_UPLOAD_PUBLIC_PROFILE_AI_CHAT_OR_COMMERCE",
+    "badgesAndDownloadedRoutes": "ORIGINAL_REQUIRED_CONTRACTS_STILL_OPEN_UNAVAILABLE_NO_FABRICATED_FACTS"
+  },
+  "resolvedFindings": [
+    {
+      "id": "WEB-R1",
+      "severity": "P1",
+      "status": "RESOLVED",
+      "problem": "Original perform could dispatch after cancellation while cleanup awaited.",
+      "resolution": "Epoch/disposed/uncertain/visibility fenced immediately before native dispatch; pending removal replacement revokes only and cannot enqueue another target."
+    },
+    {
+      "id": "WEB-R2",
+      "severity": "P1",
+      "status": "RESOLVED",
+      "problem": "Pending removal had no closed transition Cancel control; proposal could survive a context or locale replacement.",
+      "resolution": "Closed transition Cancel calls real controller suspend/native retire; exact token/language proposal binding with clear-before-render guard."
+    },
+    {
+      "id": "WEB-R3",
+      "severity": "P2",
+      "status": "RESOLVED",
+      "problem": "Discovery view read and click did not independently check current native locale.",
+      "resolution": "Exact context locale must equal rendered RU/EN locale before read publication or click dispatch."
+    },
+    {
+      "id": "WEB-R4",
+      "severity": "P2",
+      "status": "RESOLVED",
+      "problem": "Authored browser only cancelled a proposal before dispatch and had no removal response behavior.",
+      "resolution": "Added explicitly synthetic actual-App original-dispatch cancellation/history/profile cases; success models native adult return and explicit child re-entry. These are not genuine OS ParentGate acceptance."
+    },
+    {
+      "id": "ANDROID-001",
+      "severity": "P1",
+      "status": "RESOLVED",
+      "problem": "Completing a new version replaced the archived journey completion receipt.",
+      "resolution": "Composite journeyId/journeyVersion/contentVersion identity; exact duplicate idempotent, same-key nodeIds conflict denies, new version appends under32 and old receipt stays immutable.",
+      "paths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPassport.java",
+        "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDiscoveryPassportRuntimeTest.java"
+      ]
+    },
+    {
+      "id": "ANDROID-002",
+      "severity": "P1",
+      "status": "RESOLVED",
+      "problem": "retire during busy original ParentGate was rejected before actual gate revocation; proposal/target cancellation could leave deletion pending.",
+      "resolution": "Native in-flight control is retained by exact request identity. Null lifecycle retire or matching original token revokes before busy rejection; returned retired follows actual queued cleanup joins, unknown stays sealed. Replacement perform cancels and is refused. Gate assignment and live check happen under original owner monitor before main returns.",
+      "paths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDiscoveryPassportRuntimeTest.java"
+      ]
+    },
+    {
+      "id": "ANDROID-003",
+      "severity": "P1",
+      "status": "RESOLVED",
+      "problem": "Author removed original birth/profile membership checks even for unredacted schema1 receipts.",
+      "resolution": "Require original membership in previous/current canonical profile registry, with exception only for genuinely verified schema2 redacted origin; initial-profile content remains non-null and bound.",
+      "paths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java"
+      ]
+    },
+    {
+      "id": "ANDROID-004",
+      "severity": "P2",
+      "status": "RESOLVED",
+      "problem": "512KiB codec cap could reject documented combined2048-country/2048-credit/32-journey capacity at allowed96-character IDs.",
+      "resolution": "2MiB codec cap agrees with Swift; unchanged32MiB whole-store cap can hold four such ledgers. Existing native capacity fixture now asserts combined maximum-length roundtrip, still NOT_RUN.",
+      "paths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPassport.java",
+        "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDiscoveryPassportRuntimeTest.java"
+      ]
+    },
+    {
+      "id": "ANDROID-005",
+      "severity": "P2",
+      "status": "RESOLVED",
+      "problem": "Genuine deletion fixture checked only response registry; it could not observe retained private birth/data-store partitions or exercise blocked-child before origin.",
+      "resolution": "Genuine optional profile-deletion fixture accepts actual child/blocked-child/adult context, then read-only checks real encrypted datastore and genuine birth proof have no removed target; actual OS proof remains required.",
+      "paths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataStore.java",
+        "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildDiscoveryPassportRuntimeTest.java"
+      ]
+    },
+    {
+      "id": "SWIFT-R1",
+      "summary": "Versioned completed journey receipts append, exact same version conflicts deny, full archive fails without partial learning mutation."
+    },
+    {
+      "id": "SWIFT-R2",
+      "summary": "Transient original pending perform retained; route cancellation and matching replacement invalidate it; original gate construction is fenced and assigned on main before cancellation can miss it."
+    },
+    {
+      "id": "SWIFT-R3",
+      "summary": "Unredacted known birth still requires current original profile membership; only verified redacted origin bypasses personal membership."
+    },
+    {
+      "id": "SWIFT-R4",
+      "summary": "New independent writer policy fixtures plus work-policy mismatch and completion archive/atomicity fixtures authored."
+    },
+    {
+      "id": "SWIFT-R5",
+      "summary": "Adjacent inherited cross-type access to LocalV2GateMutation.retired gets fileprivate read access and keeps private write access for original Gate settlement."
+    }
+  ],
+  "nativeReviews": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\android-whole-review-a1.json",
+      "sha256": "25721985625e1aeef6523127b61b04c0e5dfbacaa450cd7d2be532b1092fa9b5",
+      "bytes": 34762
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\swift-whole-review-a1.json",
+      "sha256": "62414f7e28b8ea4aa3b84058d6e132f58c78f40cf99fab80062a28dfeac4837e",
+      "bytes": 31125
+    }
+  ],
+  "webReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\web-whole-review-a1.json",
+    "sha256": "fb7f0bcf8ec52356ce3e04c97b5380bdcc2512f42e3f99441e43219fa130724e",
+    "bytes": 13807
+  },
+  "androidQaSummary": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\android-qa-summary-a1.json",
+    "sha256": "e9e674b0b54fed80e16d5238cd2bea9866cd05c29ac693d877828fd0ee0e8403",
+    "bytes": 98750
+  },
+  "originalProtected": {
+    "inputs": [
+      {
+        "path": "src/App.tsx",
+        "sha256": "d455f42541bf53d0765ce4e9fd06fc23abe621cce694b9ed03f6d8f0da251722",
+        "bytes": 220121
+      },
+      {
+        "path": "src/platform/ports.ts",
+        "sha256": "4d4849a63696eb31b8971c4864b497c5f5632f1baa3f0216398adeea4ff566d1",
+        "bytes": 3553
+      },
+      {
+        "path": "src/platform/adapters/android/AndroidPlatformAdapter.ts",
+        "sha256": "874d245fca5e3b159bef658cdc042b57172c5deb20ea66d3db1a93b63e775b9d",
+        "bytes": 4169
+      },
+      {
+        "path": "src/platform/adapters/ios/IosPlatformAdapter.ts",
+        "sha256": "3faefb74a29cd2b35f1419d74db36322db303b65dc7580d606cfd38fe5988b23",
+        "bytes": 3938
+      },
+      {
+        "path": "src/components/GlobeIncludedStand.tsx",
+        "sha256": "a083080c90c5bbb5f53dc9e7ba4f4498712634a9df67db6ce0e2e12cd4b4d068",
+        "bytes": 8738
+      },
+      {
+        "path": "src/components/GlobeIncludedBackground.tsx",
+        "sha256": "b384ccdc3020598f10a990807e74342dc35e9434e42cad54b11526c10d81634c",
+        "bytes": 8162
+      },
+      {
+        "path": "src/components/useGlobeCompositionScene.ts",
+        "sha256": "30009468d0cdee459441ca5780ea608cdf21b3f6e7055da89c0ce28e435326b5",
+        "bytes": 6427
+      },
+      {
+        "path": "src/components/useGlobeCompositionFrame.ts",
+        "sha256": "530d1303a5af222bf68f72b499b07c8d41a828ca14783912284b6e3963d59cd0",
+        "bytes": 4751
+      },
+      {
+        "path": "src/components/globeBookCloudStandGeometry.ts",
+        "sha256": "e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577",
+        "bytes": 18215
+      },
+      {
+        "path": "src/components/globeLibraryGeometry.ts",
+        "sha256": "18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c",
+        "bytes": 59048
+      },
+      {
+        "path": "src/components/globeLibraryBookGeometry.ts",
+        "sha256": "e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c",
+        "bytes": 3044
+      },
+      {
+        "path": "src/components/globeCraftMaterials.ts",
+        "sha256": "2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721",
+        "bytes": 12947
+      },
+      {
+        "path": "src/planet/globeStands.ts",
+        "sha256": "c6b642aaf738055853925f0876cecab3c684fd75488549cce711fdc19f03df81",
+        "bytes": 3663
+      },
+      {
+        "path": "src/planet/globeBackgrounds.ts",
+        "sha256": "c9a04a0f32ac4da8e263c0d266dff28c56305ca70ce130985b7fb4fe00fd087c",
+        "bytes": 3805
+      },
+      {
+        "path": "src/planet/globeComposition.ts",
+        "sha256": "20b4cabdd678a6fa5b70ab2b4cbaef179f0e7d7c5819e408123eb486ddb0e81f",
+        "bytes": 4302
+      },
+      {
+        "path": "src/child/childNativeReleasePins.json",
+        "sha256": "3f2bec6b4e2ca189153acd5b553aef1f28db63c740b6a28907c2c7980a5c57a5",
+        "bytes": 121
+      },
+      {
+        "path": "src/child/childNativeMediaReleasePins.json",
+        "sha256": "de482d36ae8037882a0ce9156b01e0854ae541331cccb768b97b1d5efd284f4e",
+        "bytes": 111
+      },
+      {
+        "path": "src/child/childNativeResourceReleasePins.json",
+        "sha256": "8c30dca149f42adceeb554fbe95163518dfc8cd44c12db02522f7950310f9b34",
+        "bytes": 111
+      },
+      {
+        "path": "src/host/PlanetMascotAvatar.tsx",
+        "sha256": "377bb6a559d502b3335807c21c0581e2ff5c00187205a533698bc77ba38417a9",
+        "bytes": 1742
+      },
+      {
+        "path": "src/host/bookySizePreference.ts",
+        "sha256": "a987baf02892dd611a78a3757092f5623219ef8653591f97a0ad9be2d0f85107",
+        "bytes": 5825
+      },
+      {
+        "path": "package.json",
+        "sha256": "10e1d5a48308c6f4304df06c3a3064f98def1ff1f8abb44052f4d2d9cbf0dfd8",
+        "bytes": 17160
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+        "bytes": 454352
+      },
+      {
+        "path": "src/child/childNativeSceneReleasePins.json",
+        "sha256": "26cfa95ba6b4d3d4f2885ee12059e12f45adde8ed5e027322f8eddd8d94ba2ca",
+        "bytes": 111
+      },
+      {
+        "path": "AGENTS.md",
+        "sha256": "9a50e3bf65a88728bedf9338261e14e86bf9c95d8d750457f827deb5b0feb207",
+        "bytes": 299731
+      },
+      {
+        "path": "docs/mobile/AUTOPILOT_STATE.json",
+        "sha256": "bcaf3ebd7452b85696eaedd002045029ef237eb7cd25e20dada859f567f1d41a",
+        "bytes": 1278620
+      },
+      {
+        "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+        "sha256": "283752b0bfd6551a26c8fc49b06cd41659e8e70c489bb34e53b081d70069f529",
+        "bytes": 426945
+      },
+      {
+        "path": "docs/mobile/STATUS.md",
+        "sha256": "9bb58f4c4880316946285f34a21226ce9e2930703726ae15328f4af2862107ab",
+        "bytes": 425854
+      },
+      {
+        "path": "docs/mobile/BLOCKERS.md",
+        "sha256": "b7046cf7a04ce253ae4f31fb14ede89bc89b7bb71aecf5ae09471b484eead525",
+        "bytes": 342456
+      },
+      {
+        "path": "docs/mobile/DECISIONS.md",
+        "sha256": "03c9871e2d5ece24e29d755b5ff715c1b8dad2530f883ff89487497eb07426a1",
+        "bytes": 243609
+      },
+      {
+        "path": "src/host/bookyJourneyHost.ts",
+        "sha256": "23f0660756bb5555d900fc418fa996feee84557c64aef3ea16bc3d1fa101099a",
+        "bytes": 4695
+      },
+      {
+        "path": "src/host/planetMascotPersistence.ts",
+        "sha256": "acecf21b7b73339a027b91e094f39e3ddb4a2d6b8d448ad3f272dc41716d3eb2",
+        "bytes": 14040
+      },
+      {
+        "path": "src/host/PlanetMascotControls.tsx",
+        "sha256": "c67ee7dd8adb1a49041e3fccbc8283b17d1a1afc70427c5f4bdf549db0d2597f",
+        "bytes": 93237
+      },
+      {
+        "path": "src/components/LiteraryWorldMap.tsx",
+        "sha256": "0fb21d6270b129f924e25a32d86c4e24813a26b1650c9dfd3fd64077892cc71d",
+        "bytes": 10044
+      },
+      {
+        "path": "src/child/childLocalSnapshotV2.ts",
+        "sha256": "628dded18ba6cca99a71f9ce2d3333bcfc1fe2bd705d831a4959a8fc0fcf9078",
+        "bytes": 16268
+      },
+      {
+        "path": "src/child/childNativeAppearance.ts",
+        "sha256": "e55df6fb3cfaba7adda8065c7627c07b0c6133bee16e111407cbae8965303f0d",
+        "bytes": 7361
+      },
+      {
+        "path": "src/child/childProtectedState.ts",
+        "sha256": "e6901bae3f99cc2a7c0ec9b1920b121627d6a9d9d6624117a685734fc3b27ce5",
+        "bytes": 29867
+      },
+      {
+        "path": "docs/mobile/requirements/v12/12_PLANETKA_GUIDE_LEARNING_JOURNEYS_RU.md",
+        "sha256": "5cc02f6ac6ea324ee0ca7f7c0205b38374fec63cc0daaf72165775f0419a8f0b",
+        "bytes": 7781
+      }
+    ],
+    "documents": [
+      {
+        "path": "AGENTS.md",
+        "sha256": "9a50e3bf65a88728bedf9338261e14e86bf9c95d8d750457f827deb5b0feb207",
+        "bytes": 299731
+      },
+      {
+        "path": "docs/mobile/AUTOPILOT_STATE.json",
+        "sha256": "bcaf3ebd7452b85696eaedd002045029ef237eb7cd25e20dada859f567f1d41a",
+        "bytes": 1278620
+      },
+      {
+        "path": "docs/mobile/NEXT_CODEX_PROMPT.txt",
+        "sha256": "283752b0bfd6551a26c8fc49b06cd41659e8e70c489bb34e53b081d70069f529",
+        "bytes": 426945
+      },
+      {
+        "path": "docs/mobile/STATUS.md",
+        "sha256": "9bb58f4c4880316946285f34a21226ce9e2930703726ae15328f4af2862107ab",
+        "bytes": 425854
+      },
+      {
+        "path": "docs/mobile/BLOCKERS.md",
+        "sha256": "b7046cf7a04ce253ae4f31fb14ede89bc89b7bb71aecf5ae09471b484eead525",
+        "bytes": 342456
+      },
+      {
+        "path": "docs/mobile/DECISIONS.md",
+        "sha256": "03c9871e2d5ece24e29d755b5ff715c1b8dad2530f883ff89487497eb07426a1",
+        "bytes": 243609
+      }
+    ],
+    "v1Prefixes": [
+      {
+        "path": "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "bytes": 275948,
+        "sha256": "c6e6bea931311e6f0087b8ed6cd245925c35ada48ff34ac3eba1f28705213368"
+      },
+      {
+        "path": "apps/mobile/ios/App/App/PlanetChildVault.swift",
+        "bytes": 278183,
+        "sha256": "ffe806d785319d5ba07b30cceb7d43b1e150c955e7b41710da8e76cda6e467f2"
+      }
+    ],
+    "registry": {
+      "path": "docs/mobile/RELEASE_DECISIONS.json",
+      "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+    },
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "d3f1ffaff66191d5b076747da99323d0d4d25da4c46c94aad0676343b36f5208",
+    "toolVersions": {
+      "node": "v24.21.0",
+      "typescript": "5.9.3",
+      "vite": "7.3.6",
+      "vitest": "4.1.10",
+      "@capacitor/core": "8.5.1",
+      "@capacitor/cli": "8.5.1",
+      "@capacitor/android": "8.5.1",
+      "@capacitor/ios": "8.5.1",
+      "@supabase/supabase-js": "2.112.3"
+    },
+    "allExact": true,
+    "genuinePackageMediaResourceScenePins": "EMPTY_DENY"
+  },
+  "nativeBundle": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543\\native-bundle",
+    "artifactPath": ".tmp/mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543/native-bundle/artifact.json",
+    "sha256": "627f85668acf316a88dd6ff88a9957875dbf0da6781d6885d56411752ec343a7",
+    "files": 1419,
+    "artifact": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543\\native-bundle\\artifact.json",
+      "sha256": "627f85668acf316a88dd6ff88a9957875dbf0da6781d6885d56411752ec343a7",
+      "bytes": 725181
+    }
+  },
+  "pwaBundle": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-edb8aaea-0068-4e96-b90b-1f875f40cfdc\\pwa-bundle",
+    "artifactPath": ".tmp/mobile-release-pwa-edb8aaea-0068-4e96-b90b-1f875f40cfdc/pwa-bundle/artifact.json",
+    "sha256": "f0b278210f5c143941f43257cd1c4a5d21c9ebc0e7dc7bcc87eb1e85a42d8ce9",
+    "files": 1425,
+    "artifact": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-edb8aaea-0068-4e96-b90b-1f875f40cfdc\\pwa-bundle\\artifact.json",
+      "sha256": "f0b278210f5c143941f43257cd1c4a5d21c9ebc0e7dc7bcc87eb1e85a42d8ce9",
+      "bytes": 426930
+    }
+  },
+  "binaries": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543\\app-dev-debug.apk",
+      "sha256": "ed9a5bca2174b365449983db114a6afd83c58be56ef3bc451479c71b6ad8c65b",
+      "bytes": 70295762
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543\\app-dev-debug-androidTest.apk",
+      "sha256": "22642c7aee7255e1f43f55100f1db7ae0914ad66df84f07f12d53c112e0c9b8b",
+      "bytes": 773248
+    }
+  ],
+  "currentAndroidPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543\\preparation.json",
+    "sha256": "6acdf15be8449b8ca88775da3882dcff3fcb7ee412fcefd48834a5b60867e960",
+    "bytes": 319716
+  },
+  "binaryReceipt": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-4ec5996b-9305-47cf-8fd6-db914d78f543\\binary.json",
+    "sha256": "feb248c7e0efe802b79e93583fd7063d1e508f0407c30816ae317dd9ebcdbea7",
+    "bytes": 208613
+  },
+  "currentPwaPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-edb8aaea-0068-4e96-b90b-1f875f40cfdc\\preparation.json",
+    "sha256": "493604e4a4016c5fcb8e98de8b2e6e3423c52e3b0e4a0cf8bb19921ec5814355",
+    "bytes": 305664
+  },
+  "currentBuildCompatibility": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-a8\\compatibility-a1\\result.json",
+    "sha256": "f0fa89c2361f898ac51da97fd54e7682c29d1fe32252ee20000264cfec77f3c1",
+    "bytes": 913066
+  },
+  "retainedIndependentBuildAudit": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-audit-a3\\audit-a1\\result.json",
+    "sha256": "4282068cbecb8d32d553b5745080a49172dae0cfffed9c4c69817bc5b81c30a7",
+    "bytes": 324198
+  },
+  "localChecks": {
+    "wholeStageReviewed": true,
+    "units": {
+      "status": "PASS",
+      "uniqueCases": 60,
+      "bridge": 44,
+      "affectedBoundary": 8,
+      "passportDto": 5,
+      "passportView": 3,
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\units-a1\\result.json",
+        "sha256": "9b5cfea46541ada8e1382379f839b5dc040aeb1e7059210405a466e46b14a7ab",
+        "bytes": 2365
+      },
+      "actualVitestReport": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\units-a1\\vitest.json",
+        "sha256": "36087c2f359d2c58e13a6bae9f881be44c064e5940d9f0083121abfd661bc349",
+        "bytes": 25828
+      },
+      "actualSuites": [
+        {
+          "path": "src/child/childNativeAppBridge.test.ts",
+          "passed": 44
+        },
+        {
+          "path": "src/child/ChildNativeBoundary.test.tsx",
+          "passed": 8
+        },
+        {
+          "path": "src/child/childNativeDiscoveryPassport.test.ts",
+          "passed": 5
+        },
+        {
+          "path": "src/child/ChildNativeDiscoveryPassportView.test.tsx",
+          "passed": 3
+        }
+      ],
+      "producerSource": "460415d47534d888b54394c1373596f595c81a70"
+    },
+    "typescript": {
+      "status": "PASS",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\tsc-a1\\result.json",
+        "sha256": "6bf43a1be16ddfa7749088ba2d02b058a61cbdaca1dc9eeb7d26a642d0266307",
+        "bytes": 1877
+      },
+      "actualChildPID": 8888,
+      "actualChildExitCode": 0,
+      "outerObserverExit": "NOT_OBSERVED",
+      "qualification": "Actual TypeScript child exit0; historical outer PID10672 disappeared before terminal observer receipt, stale RUNNING receipt retained. No fabricated terminal exit or repeated compiler run."
+    },
+    "pureJvmPassportCodec": {
+      "status": "PASS",
+      "cases": 8,
+      "assertions": 56,
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\passport-codec-jvm-integrated-a1\\result.json",
+        "sha256": "e2fa8fc4b5c1e3c7297918eb5636291787fd24f5e31fa0f4e95631d57a089926",
+        "bytes": 9884
+      },
+      "actualStdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\passport-codec-jvm-integrated-a1\\codec.stdout.bin",
+        "bytes": 356,
+        "sha256": "ab85f55f845ce9bbf6fd5c7214cab36f46a26762230b74ec414264d0e6bc8927"
+      },
+      "caseNames": [
+        "combined-2048-2048-32-max96-capacity",
+        "versioned-completion-archive-and-conflict",
+        "completion32-idempotence-overflow",
+        "typed-versioned-credit2048-dedup",
+        "country2048-dedup",
+        "restart-decode-keeps-untyped-archives",
+        "malformed-streams-deny",
+        "immutable-defensive-ledger"
+      ],
+      "qualification": "Pure JVM codec cases using exact source and synthetic unavailable exception; not Android OS execution."
+    },
+    "retainedScopes": {
+      "producerSource": "460415d47534d888b54394c1373596f595c81a70",
+      "fullGraphDifferencePaths": [
+        "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+        "scripts/mobile/child-native-discovery-passport-browser.mjs"
+      ],
+      "qualification": "Only Android fixture hook successful return and browser fixture changed after these runs; exact reviewed source lineage retains unchanged TS/Web/test/codec inputs. No producer identity rewritten."
+    },
+    "browser": {
+      "status": "PASS",
+      "cases": 12,
+      "capturesReviewed": 4,
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b7000000000000000000000000000001\\result.json",
+        "sha256": "f6e5fd73ac0394512ef59e7b2c1b81e814e8ab07b5c1c7f844b2da54ab966c9e",
+        "bytes": 2351
+      },
+      "rawResult": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b7000000000000000000000000000001\\result.json",
+        "sha256": "1d6a2cbbbb1d631062ac756f170ec72c390782f20c45198c2da55d51e29f3bdf",
+        "bytes": 230079
+      },
+      "nativeAuthority": false,
+      "installedStorageAcceptance": false,
+      "qualification": "Actual mounted original child App and canonical renderer with bounded synthetic native DTO/service/disk seams. Real browser process restart, exact profile/locale/lifecycle/cancellation/removal dispatch and unknown-write fences; no genuine native Gate/AES/Keychain/device proof."
+    },
+    "android": {
+      "status": "PREPARED_COMPILED_NOT_RUN",
+      "producerSource": "7cc552db9855299fe506ea7aebce5453844a70b1",
+      "mainAndTest": true,
+      "compiledDiscoveryPassportFixtures": 30,
+      "independentlyVerifiedDexDefinitions": 30,
+      "runtimeJUnitAnnotations": 30,
+      "fixtureRuntime": "NOT_RUN",
+      "genuineOsOperatorOptInCases": 5,
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\android-a2\\result.json",
+        "sha256": "b22f4092fe9763f85478864c42d5a6900ee32ab84864b62f8e7f3512af50f035",
+        "bytes": 1907
+      },
+      "qualification": "Actual main/test Java compilation and fresh APKs, strict independent artifact/package/manifest/signature/alignment/public-byte/DEX audit. No installed OS test execution."
+    },
+    "swift": {
+      "status": "NOT_COMPILED_NOT_RUN",
+      "authoredFixtures": 30,
+      "genuineOsOptInCases": 2,
+      "staticSourceAndPbxChecks": 15,
+      "pbxParserAndMembershipChecks": 1,
+      "review": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\swift-whole-review-a1.json",
+        "sha256": "62414f7e28b8ea4aa3b84058d6e132f58c78f40cf99fab80062a28dfeac4837e",
+        "bytes": 31125
+      },
+      "qualification": "Windows static semantics and PBX syntax/membership only; no Apple compiler or runtime."
+    },
+    "pwaStatic": {
+      "status": "PREPARED_AND_STATIC_AUDIT_PASS",
+      "producerSource": "460415d47534d888b54394c1373596f595c81a70",
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\pwa-a1\\result.json",
+        "sha256": "d2c75f6c9b36b50869a0870b738d8255ef82f1a86163b75d28b0af3bd470f91c",
+        "bytes": 1884
+      },
+      "qualification": "Retained production-authority-disabled PWA artifact; final runtime inputs exact via platform-scoped compatibility."
+    },
+    "pwaOfflineRuntime": {
+      "status": "PASS",
+      "cases": 1,
+      "capturesReviewed": 3,
+      "result": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\result.json",
+        "sha256": "b171721df3949a95951e0656daee0e92e8fd2215ec00aa9df08a1c4550c5a405",
+        "bytes": 1469
+      },
+      "captureInventory": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\browser-inventory.json",
+        "sha256": "3def3ae6b8b0621cd7bfbfe17439cb4b6db90f847a7465aeb8e34b0f52dc3ea3",
+        "bytes": 986
+      },
+      "proof": {
+        "producerDelta": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\delta-finally-a1.json",
+          "sha256": "e86c1e5e8520cdfbc41980da4682dc3b79c8bd7050953dc78e25903dbf952411",
+          "bytes": 1940
+        },
+        "producer": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\producer-finally-a1.mjs",
+          "bytes": 11574,
+          "sha256": "bc2e2b7e473f4caf3c6b00914b767dc2aba67bf75ecd4c7eda6b2ec227ea2c6a"
+        },
+        "outerExecution": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a2.execution.json",
+          "sha256": "4b9af9f035257ab80ca1de55325ab9822357fec8b4b1b6f980afa93d3af572b4",
+          "bytes": 699
+        },
+        "currentInputs": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\current-release-inputs.json",
+          "sha256": "c4b20efaca4f502d3a40b2c8dc2a44143e7e9994fa99ee15c28562623fe10f1e",
+          "bytes": 288544
+        },
+        "build": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\build-execution.json",
+          "sha256": "0be3bfba59d65b4982b6671bee83a39010836e5c6614333195bb0adfd8eebc88",
+          "bytes": 323
+        },
+        "artifact": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\artifact.json",
+          "sha256": "281e37d5d5c2ccf988ecf32e6fedc8968c8aa80e12621d07831031a1d7d5cbac",
+          "bytes": 427258
+        },
+        "strictAudit": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\strict-audit.json",
+          "sha256": "0111195b3611ebbd074927c0d16c74076a421502c2c0a14e10faeff552256066",
+          "bytes": 796
+        },
+        "commands": [
+          {
+            "name": "strict-audit",
+            "reference": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\strict-audit.execution.json",
+              "sha256": "f8d998d7cf24e76798b311cc8ccf22d1434681947110d32aebb6527e6bbb5f30",
+              "bytes": 2470
+            },
+            "actualPID": 21600,
+            "exitCode": 0,
+            "stdout": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\strict-audit.stdout.txt",
+              "bytes": 796,
+              "sha256": "0111195b3611ebbd074927c0d16c74076a421502c2c0a14e10faeff552256066"
+            },
+            "stderr": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\strict-audit.stderr.txt",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          },
+          {
+            "name": "browser",
+            "reference": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\browser.execution.json",
+              "sha256": "0f0f72ff9c25c39d9372c60e8071ebf37e95ff210ef0506c1da07d2065b97100",
+              "bytes": 5346
+            },
+            "actualPID": 21496,
+            "exitCode": 0,
+            "stdout": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\browser.stdout.txt",
+              "bytes": 238145,
+              "sha256": "905c4fdc03d2433b6b8e2e6d98f108db31741e56a27942fd3456193a8935543b"
+            },
+            "stderr": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\browser.stderr.txt",
+              "bytes": 0,
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            }
+          }
+        ],
+        "binding": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\binding.json",
+          "sha256": "065fb5b68188531f7226dc002bced115a7d71d979717738c18761c5faf5cfa04",
+          "bytes": 2905
+        },
+        "observation": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\browser-observation.json",
+          "sha256": "0a082ed173801c0385e98592641bbeb14f38da9a4da8a2635c9f77aaf48e36db",
+          "bytes": 2393
+        },
+        "playwrightReport": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\playwright.json",
+          "sha256": "3102ee2111c7b95c7bb4f911cd0c065956f68fb2e7a525f273010f98101aade6",
+          "bytes": 7996
+        },
+        "sourceBefore": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\source-before.json",
+          "sha256": "d520dfeb2c944a8f5adcafb924f39ce9a4b2daec89f8a75de9b75cc11acaecb6",
+          "bytes": 350310
+        },
+        "sourceAfter": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\source-after.json",
+          "sha256": "d520dfeb2c944a8f5adcafb924f39ce9a4b2daec89f8a75de9b75cc11acaecb6",
+          "bytes": 350310
+        },
+        "producerPhases": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\producer.phases.jsonl",
+          "sha256": "5bca5f0bee9faa5ccbe9544547555d92ad0987de6cacbacc5775bcf51ab4c694",
+          "bytes": 4273
+        }
+      },
+      "qaCompilations": {
+        "count": 2,
+        "attempts": [
+          {
+            "attempt": 1,
+            "buildId": "694131a9274604800e7794253f6ccb181e1621b2b09e357366035097d3f2e787",
+            "build": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\build-execution.json",
+              "sha256": "0ac73ee6bb0d37f7db553f538201c01529f3891f61a54695b786f9feaed654fb",
+              "bytes": 323
+            },
+            "artifact": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\artifact.json",
+              "bytes": 427258,
+              "sha256": "11a3c5a7aed345ab99e908fed3b575d65dc754e673b72bed1fe758b514a47e93"
+            },
+            "runtimeStatus": "INCOMPLETE_NO_RUNTIME_PASS"
+          },
+          {
+            "attempt": 2,
+            "buildId": "ee24a378516aefea591b1f1c1056a1ee273b8f1d8524bf3456eb20ef1ace0d2b",
+            "build": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\build-execution.json",
+              "sha256": "0be3bfba59d65b4982b6671bee83a39010836e5c6614333195bb0adfd8eebc88",
+              "bytes": 323
+            },
+            "artifact": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\artifact.json",
+              "sha256": "281e37d5d5c2ccf988ecf32e6fedc8968c8aa80e12621d07831031a1d7d5cbac",
+              "bytes": 427258
+            },
+            "runtimeStatus": "PASS",
+            "result": {
+              "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\actual-a2\\result.json",
+              "sha256": "b171721df3949a95951e0656daee0e92e8fd2215ec00aa9df08a1c4550c5a405",
+              "bytes": 1469
+            }
+          }
+        ],
+        "retainedDeliveryArtifactsRebuilt": false,
+        "qualification": "Two distinct controlled local QA compilations with distinct ephemeral authority generations. A1 cannot be reused with the new signer. These are separate from retained delivery PWA producer460415 and Android producer7cc552, whose artifacts and producer identities are unchanged."
+      },
+      "qualification": "Actual current controlled QA PWA and service worker in a disposable persistent Edge profile, strict real browser localStorage, locally signed QA access. Full browser close/reopen occurs offline before navigation; same verified generation and executable, restored Large, saved access and RU/EN/RU retain one canonical globe scene within the reopened document. This is browser-profile evidence, not installed OS/native-storage/device/store/provider/full visual/stage/release acceptance. Page-origin route fence does not universally constrain service-worker traffic; offline reopening and bounded license request ledger are proved separately."
+    }
+  },
+  "screenReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\whole-screen-review-a1.json",
+    "sha256": "f04b1c4e2dc17e3985858ad9d507636705f56308236095da4eb78957369c01c5",
+    "bytes": 8389
+  },
+  "retainedFailures": {
+    "browser": [
+      {
+        "attempt": 1,
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b1000000000000000000000000000001\\result.json",
+          "sha256": "f8017abe58e3d03f3edcb152d0c48288220b2de28542c63d13e05a73e09786d0",
+          "bytes": 2355
+        },
+        "rawResult": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b1000000000000000000000000000001\\result.json",
+          "sha256": "e8bb5169b262372fbb65a78b6075d19bcde7180afed4e8364e561aa55d0fb2db",
+          "bytes": 249126
+        },
+        "failureImage": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b1000000000000000000000000000001\\failed-page.png",
+          "sha256": "3ad4e7d4c8079e42d94e4945a510faae3e086986ef7d7c94be033fa8c10dff3c",
+          "bytes": 16823
+        },
+        "qualification": "Retained actual failed browser attempt; partial checks do not increase final passing-case count."
+      },
+      {
+        "attempt": 2,
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b2000000000000000000000000000001\\result.json",
+          "sha256": "45b2117e6e702df090d84b3617505e896d768e14bcf35b8d0b5b0650317d940e",
+          "bytes": 2356
+        },
+        "rawResult": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b2000000000000000000000000000001\\result.json",
+          "sha256": "787211f0068685c9612edd9ec2cc39814ad97a34fe76a289b481fdc6584def94",
+          "bytes": 220144
+        },
+        "captureUnavailable": true,
+        "qualification": "Retained actual failed browser attempt; partial checks do not increase final passing-case count."
+      },
+      {
+        "attempt": 3,
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b3000000000000000000000000000001\\result.json",
+          "sha256": "f23046898a0c9bdf504fcff8ddb901e3eec379e0e12e058694c4ceffacc152a4",
+          "bytes": 2355
+        },
+        "rawResult": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b3000000000000000000000000000001\\result.json",
+          "sha256": "a4974c51c4a79a005517899f938244f6eebfd5a1ec07a4145d04313c37bf5b1b",
+          "bytes": 249467
+        },
+        "failureImage": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b3000000000000000000000000000001\\failed-page.png",
+          "sha256": "1c941f0fe2a3d90df13ee646e88b61fce8a45809b47449b5d6a972deb3bbf855",
+          "bytes": 570653
+        },
+        "qualification": "Retained actual failed browser attempt; partial checks do not increase final passing-case count."
+      },
+      {
+        "attempt": 4,
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b4000000000000000000000000000001\\result.json",
+          "sha256": "5ce806fc3ae56b09bf8ec5709622c952e064b05d8becb74690c81588f70b25e1",
+          "bytes": 2355
+        },
+        "rawResult": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b4000000000000000000000000000001\\result.json",
+          "sha256": "f034655737f143b40346632ad725a799a49101e58ae95d6bbce497e9f8237039",
+          "bytes": 277615
+        },
+        "failureImage": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b4000000000000000000000000000001\\failed-page.png",
+          "sha256": "f6c865f1f1f3badbe37f7f23d026e790c94d07d057f58aa03f1389e95b98cb35",
+          "bytes": 504148
+        },
+        "qualification": "Retained actual failed browser attempt; partial checks do not increase final passing-case count."
+      },
+      {
+        "attempt": 5,
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b5000000000000000000000000000001\\result.json",
+          "sha256": "4876581f724edebd66133a6e55cbad48698b9a5120fb08b0cc6676a1275a00bd",
+          "bytes": 2356
+        },
+        "rawResult": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b5000000000000000000000000000001\\result.json",
+          "sha256": "a39f30b3c596a08ab60be1c0ec23905a826950e34f62b9d7e229139ad9714ad8",
+          "bytes": 278672
+        },
+        "failureImage": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b5000000000000000000000000000001\\failed-page.png",
+          "sha256": "49169f3a8bc364974c6b0997fd60d024ca9e1a7d4d64407c9fbadcbee5f35b3d",
+          "bytes": 564140
+        },
+        "qualification": "Retained actual failed browser attempt; partial checks do not increase final passing-case count."
+      },
+      {
+        "attempt": 6,
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\b6000000000000000000000000000001\\result.json",
+          "sha256": "4786b626c8efd1635343d768484c9f21992dc3d78de346ac578a19d230a70288",
+          "bytes": 2356
+        },
+        "rawResult": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b6000000000000000000000000000001\\result.json",
+          "sha256": "4b5c1fbe00531f28dcbd1100eafb88af6e8bca5a172a5198e86518e505e294bc",
+          "bytes": 328079
+        },
+        "failureImage": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-discovery-passport-browser-b6000000000000000000000000000001\\failed-page.png",
+          "sha256": "13869a628031e718cccb6a95a8183fa30014cb78a7bd2afe088d9ac199a2e997",
+          "bytes": 558794
+        },
+        "qualification": "Retained actual failed browser attempt; partial checks do not increase final passing-case count."
+      }
+    ],
+    "pwaOfflineA1": {
+      "status": "INCOMPLETE_NO_RUNTIME_PASS",
+      "diagnostic": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\a1-read-only-diagnostic-receipt.json",
+        "sha256": "376e17d881ef8338706e195e9d602afa81882a432cfd595fbad00a0bddc24771",
+        "bytes": 4948
+      },
+      "windows343Raw": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\windows-343-raw-observations.txt",
+        "sha256": "998292f37a28cda959a7f67666f2fbbc1f4d268ba43c8d0355cba9133a133a26",
+        "bytes": 1419
+      },
+      "build": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\build-execution.json",
+        "sha256": "0ac73ee6bb0d37f7db553f538201c01529f3891f61a54695b786f9feaed654fb",
+        "bytes": 323
+      },
+      "artifact": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\artifact.json",
+        "bytes": 427258,
+        "sha256": "11a3c5a7aed345ab99e908fed3b575d65dc754e673b72bed1fe758b514a47e93"
+      },
+      "outerExecution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1.execution.json",
+        "sha256": "f40309b22ed56a51e820df09914f3d16fbb18830d98350898dd78e26d56c1870",
+        "bytes": 574
+      },
+      "emptyBrowserExecution": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\browser.execution.json",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "browserStdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\browser.stdout.txt",
+        "bytes": 571,
+        "sha256": "059bd7d08923927c3f31982c532ea048939a4b9606092a17868e84c2156cdd2d"
+      },
+      "browserStderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\actual-a1\\browser.stderr.txt",
+        "bytes": 164,
+        "sha256": "2c6012ce22f2f7a6626361adf6dec1eaf35282f14f0593a728857c7d02d5def9"
+      },
+      "producer": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\producer.mjs",
+        "bytes": 11454,
+        "sha256": "5bd74c227cfad88f28af7722411ea0f07b4e29cea28b38e24c372e7f7ffb6d30"
+      },
+      "config": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1\\pwa.config.mjs",
+        "bytes": 2170,
+        "sha256": "ed2e095f0128e3e7029417b823c72771e734c23456fe86e31c28d625311051ec"
+      },
+      "producerPID": 26380,
+      "workerPID": 28388,
+      "producerExitCode": null,
+      "workerExitCode": null,
+      "exitObservation": "NOT_OBSERVED",
+      "resultPresent": false,
+      "timeoutEvidence": {
+        "testMs": 180000,
+        "teardownMs": 240000,
+        "producerExecFileLimitMs": 600000,
+        "traceConfigured": "off",
+        "browserExecutionJsonBytes": 0,
+        "resultJsonPresent": false,
+        "errorContextBytes": 0,
+        "temporaryPngBytes": 0,
+        "threeNamedCapturesPresent": false
+      },
+      "storageReadError": {
+        "win32Error": 343,
+        "sha256": null,
+        "causality": "UNKNOWN",
+        "diagnostic": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\offline-diagnostic-proposal-a1\\a1-read-only-diagnostic-receipt.json",
+          "sha256": "376e17d881ef8338706e195e9d602afa81882a432cfd595fbad00a0bddc24771",
+          "bytes": 4948
+        }
+      },
+      "qualification": "Actual first QA compilation retained; testcase and teardown timeouts, empty browser execution receipt and absent result do not establish a terminal producer or worker exit. Session9092 Unknown process id and later process absence do not supply an exit code. Observed Windows343 cache read failure has UNKNOWN causal relation to the timeout. No runtime PASS, byte hash for unreadable cache data, or completed cleanup claim is inferred."
+    },
+    "androidCompile": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-validation\\android-a1\\result.json",
+      "sha256": "4d10795961cdca55422070de672ab310120c3959ab51aa69edccedc16174fafc",
+      "bytes": 1909
+    },
+    "rootProvenance": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-web-role-validation-attempts-a1.json",
+      "sha256": "378cba2293cd680f31bbf424129f5064b2a3ee90c14e67a9549f971e6c6194a2",
+      "bytes": 6190
+    },
+    "wholeIntake": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\review-intake-a1.execution.json",
+        "sha256": "73ef97e5b07f20fc053cddeb3176f0c5b635b9c3c33b8451d4e11bdfa24d5b2b",
+        "bytes": 169
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\review-intake-a1.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\review-intake-a1.stderr.txt",
+        "sha256": "448ece80b7f28130086d40140a9d601987adebd3da554e795688d75bd93e0392",
+        "bytes": 1164
+      }
+    ],
+    "rootWhitespace": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\source-commit-a1\\failure.json",
+      "sha256": "fdabbac035e0a81aa77db2a27b7453a63eb795db9402fcf6af0e8e5d27faa6de",
+      "bytes": 6001
+    },
+    "executionObservations": [
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\android-a1.execution.json",
+          "sha256": "8a1f5f4f5e9a085892073ca157c79a73a865678725b1fddf560b2aca651b7d95",
+          "bytes": 684
+        },
+        "actualPID": 22064,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\android-a2.execution.json",
+          "sha256": "3d5d5ba0ce16cce68971ba5e9dba7ecf947e27c6c87e05730fda3a77900bf3f5",
+          "bytes": 684
+        },
+        "actualPID": 24948,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a1.execution.json",
+          "sha256": "a5420e87843605dc0d34902868c4222e72b62198f041216ae5acef266d73b748",
+          "bytes": 705
+        },
+        "actualPID": 3252,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a2.execution.json",
+          "sha256": "24f9a35a657d13d1bdc44bfca80db4e43e111028b401a383e711fb03c72141da",
+          "bytes": 706
+        },
+        "actualPID": 17164,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a3.execution.json",
+          "sha256": "82c6af64c6dcdd935b0e3ee7ad754c9c150591d73a957803008b6dd49942c57c",
+          "bytes": 706
+        },
+        "actualPID": 21132,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a4.execution.json",
+          "sha256": "ff8ed1869d13d606c3d65df8125b70e4b10b1ea89839d6af954433c5978cd565",
+          "bytes": 705
+        },
+        "actualPID": 9800,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a5.execution.json",
+          "sha256": "0b75342cb49f2e4d95361a4b17ca116832a3414355a641ee16e46de7a7cb64df",
+          "bytes": 705
+        },
+        "actualPID": 4160,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a6.execution.json",
+          "sha256": "c27ea6cac6a32eb9a10bf8014a7a32273a4986346fc37f865f59e75ef02345a7",
+          "bytes": 706
+        },
+        "actualPID": 26256,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\browser-a7.execution.json",
+          "sha256": "14b84daf8340ab19461ddf25981235a22e3ad32aac74104ded0a6d607b99876b",
+          "bytes": 706
+        },
+        "actualPID": 18844,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-audit-helper-prepare-a2.execution.json",
+          "sha256": "406b8b4cedd651a46e2b6db33b5f4a5d632469b677a4bfd82c107ddf1e2d5a78",
+          "bytes": 240
+        },
+        "actualPID": 9812,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-audit-helper-prepare-a3.execution.json",
+          "sha256": "e27164908ab6216966dcf638ffb696bdcf3d01d11f03d71a0682e8d06583680a",
+          "bytes": 241
+        },
+        "actualPID": 24092,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-a8-a1.execution.json",
+          "sha256": "67eeebb97056cc4d2eda55432903cb3a37683aaa8f90e10e54bb8ed964634000",
+          "bytes": 805
+        },
+        "actualPID": 25664,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-helper-finalize-a7.execution.json",
+          "sha256": "e0f8cf9399b41b6b1043a05ad54d395a913f3d11510bec38b60558001ec63f1c",
+          "bytes": 248
+        },
+        "actualPID": 28208,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-helper-prepare-a5.execution.json",
+          "sha256": "4297f5b462b3af5f133956a0b1eca337df5805a75a185ace447031b61937fba2",
+          "bytes": 247
+        },
+        "actualPID": 25176,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-helper-prepare-a6.execution.json",
+          "sha256": "1019dcff698bb16bd5ce6158f3869bb4c263a6a9ff3ab7a6132819c4f61a6aa2",
+          "bytes": 247
+        },
+        "actualPID": 23116,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-helper-prepare-a7.execution.json",
+          "sha256": "3c38b3a4f2659649cf13c7bb147a70d6b5208e3ed567d0205fe141b03612903c",
+          "bytes": 247
+        },
+        "actualPID": 27216,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\build-compatibility-helper-prepare-a8.execution.json",
+          "sha256": "5e7a78e5de7b1d790e57ad6ed0aa62a59a5ee337989da8594057ce9b3f1aba50",
+          "bytes": 799
+        },
+        "actualPID": 6784,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\codec-a1.execution.json",
+          "sha256": "a9026b19d7b27ef768493f6b25ab98fd9b1d186395e0957d85b5a12f1b5fa7c1",
+          "bytes": 706
+        },
+        "actualPID": 15140,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-android-qa-summary-a1.execution.json",
+          "sha256": "0f1f616ba524efaba842cb0ebb5e35c15d6a5219032ea166deb8afc0a6bcb5e9",
+          "bytes": 600
+        },
+        "actualPID": 24508,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-camera-delta-a6.execution.json",
+          "sha256": "2e5f353199b726c1562727fc76c542613bb0bdad469f5775803a706c4a1891e2",
+          "bytes": 587
+        },
+        "actualPID": 2164,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-deadline-delta-a5.execution.json",
+          "sha256": "6f0c1528aef675c0710083c11ba6161d45a6df6a1d33b6b9ebf3266a83b7d622",
+          "bytes": 591
+        },
+        "actualPID": 8440,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-deadline-delta-a6.execution.json",
+          "sha256": "3231b217b95d80c90f34be3d6a3349b9e3a2414d7bd68aa0087ba8197b747465",
+          "bytes": 592
+        },
+        "actualPID": 10740,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-document-delta-a8.execution.json",
+          "sha256": "e9a7754289770c05d6e3b32fa7a5bc977439402ec3d9ddd350fea64f968b8ac4",
+          "bytes": 592
+        },
+        "actualPID": 17264,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-lifecycle-delta-a7.execution.json",
+          "sha256": "398c4e02f4d14d12fc297d1d6b10fcb9dc2ed900390c1d794c725963fcc8fe27",
+          "bytes": 594
+        },
+        "actualPID": 24376,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-qa-delta-a3.execution.json",
+          "sha256": "2d781a291e698f7b0f844fa25fa90f0cdc11203ddf810d24afea735d30e7669f",
+          "bytes": 579
+        },
+        "actualPID": 6836,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-selector-delta-a4.execution.json",
+          "sha256": "c2f8b58cbd12bf41656e0e56a0b9fc312b04e084d694ac3aab6f1e4fb9292c51",
+          "bytes": 592
+        },
+        "actualPID": 17376,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-whitespace-delta-a2.execution.json",
+          "sha256": "7e2952226c45cb0b3da6aef2a4464145f0ec8f8bb5feb4f22cc3bbba2ae59932",
+          "bytes": 595
+        },
+        "actualPID": 2032,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\freeze-whole-review-a1.execution.json",
+          "sha256": "fac80181412c09d69190ca8778ad4eb5b23bf1a8733d664960f80a54074c44b7",
+          "bytes": 588
+        },
+        "actualPID": 20120,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\independent-build-audit-a3-a1.execution.json",
+          "sha256": "d2f1f2d6f8ac34420f3b7623aa2baf21d947fca9f556701f0588e90b78ed97a4",
+          "bytes": 1165
+        },
+        "actualPID": 6088,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\platform-compatibility-a4-a1.execution.json",
+          "sha256": "0c4fd8afa885474b64128c2a3c7f6a9d78e9a192b40b5948ec84ab4cf34427c0",
+          "bytes": 901
+        },
+        "actualPID": 11276,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\prepare-closure-helper-a2.execution.json",
+          "sha256": "ce3570209abe94cd9bd60048ebf2107acc4b7273053809e3751a9010b419fb4c",
+          "bytes": 234
+        },
+        "actualPID": 12224,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\prepare-closure-helper-a3.execution.json",
+          "sha256": "9ad22a5644c5296a05ff9c3418addcc0d5f876a2aea0e486a30ddc9ab6b27d2e",
+          "bytes": 234
+        },
+        "actualPID": 23944,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\prepare-closure-helper-a4.execution.json",
+          "sha256": "f7da31c493029b6b2ebdc3cd2848c6f62c0f1a00ccee8c4a3411ed0661bdb9d2",
+          "bytes": 315
+        },
+        "actualPID": 19176,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\preserve-preparation-streams-a1.execution.json",
+          "sha256": "a0abbf6dc1da487577ea322d549dc0e6fe40aa77beb0303f48db7624f93ed0b0",
+          "bytes": 606
+        },
+        "actualPID": 15016,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\preserve-preparation-streams-a2.execution.json",
+          "sha256": "8605ac2d7f3d122b9117849e10d5e6c0f05d471da0a74149ba4ba77268dd4b84",
+          "bytes": 605
+        },
+        "actualPID": 5080,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-a1.execution.json",
+          "sha256": "f69b04b41777108eb02e55616bd8e53bd5500fc1ccb11b5f640445e0b6f7fbe3",
+          "bytes": 676
+        },
+        "actualPID": 24444,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-compatibility-a1.execution.json",
+          "sha256": "d6200d8cede4dc21d5cbefb013beed4f6efc1f7b2b73b2f0c0ceb130d06b3e81",
+          "bytes": 901
+        },
+        "actualPID": 23632,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a1.execution.json",
+          "sha256": "f40309b22ed56a51e820df09914f3d16fbb18830d98350898dd78e26d56c1870",
+          "bytes": 574
+        },
+        "actualPID": 26380,
+        "status": "RUNNING",
+        "actualExitCode": null
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\pwa-offline-a2.execution.json",
+          "sha256": "4b9af9f035257ab80ca1de55325ab9822357fec8b4b1b6f980afa93d3af572b4",
+          "bytes": 699
+        },
+        "actualPID": 14264,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\review-intake-a1.execution.json",
+          "sha256": "73ef97e5b07f20fc053cddeb3176f0c5b635b9c3c33b8451d4e11bdfa24d5b2b",
+          "bytes": 169
+        },
+        "actualPID": 18092,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\review-intake-a2.execution.json",
+          "sha256": "6709aa4eb821eec802e677b3ca960088bcf008805b8e0dfe89ab3ec2232fa51d",
+          "bytes": 576
+        },
+        "actualPID": 15376,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-browser-delta-integration-a4.execution.json",
+          "sha256": "93b43acdadd1d65784181a3cb27faceb7bf513645515c75c33527d0b402b4180",
+          "bytes": 624
+        },
+        "actualPID": 22196,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-browser-delta-integration-a5.execution.json",
+          "sha256": "69bbc980c5d0837a1e68c981b0e2099105b675c9976e6ebe2734a669c088ae9e",
+          "bytes": 623
+        },
+        "actualPID": 7100,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-browser-delta-syntax-a4.execution.json",
+          "sha256": "19e13edf81254a89df992535d0c816cafc89a10b541ded287ea16837e50c17e1",
+          "bytes": 723
+        },
+        "actualPID": 21912,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-browser-delta-syntax-a5.execution.json",
+          "sha256": "8bd45161689c224488daa10d99dc25f12a94394d7c6c076cef0671cd93445ba0",
+          "bytes": 723
+        },
+        "actualPID": 15676,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-finish-integration-a2.execution.json",
+          "sha256": "7f5d2449b9336c37166221fe62560f72d8b62d427e66036fd730cfb2b6f79fc0",
+          "bytes": 604
+        },
+        "actualPID": 14140,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-finish-syntax-a2.execution.json",
+          "sha256": "beac70851596d9b7ea92902fe74609770ba372f7fd3e72a5f742f8a213c387e0",
+          "bytes": 615
+        },
+        "actualPID": 9264,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-handoff-adapter-syntax-a1.execution.json",
+          "sha256": "7cb58aba73daf9ac1d99c9e368862ba57d6625cfb6f4f6b9b5c97d7ea19cd839",
+          "bytes": 716
+        },
+        "actualPID": 26112,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a1.execution.json",
+          "sha256": "126c66ba6daa0f132535d6448430f5bad6211e7a24a69f19f267db3e9a1cf7a4",
+          "bytes": 610
+        },
+        "actualPID": 19008,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a6-syntax.execution.json",
+          "sha256": "569c0febf5c2a008e5a8f5d34f8d442c644b346744778d6ffa137ee70fefead8",
+          "bytes": 426
+        },
+        "actualPID": 22152,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a6.execution.json",
+          "sha256": "ebc64f3bf76cc459952ec6bf50e9940579d9b46b84654f2ee0e63431d86cd5c2",
+          "bytes": 624
+        },
+        "actualPID": 24512,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a7-syntax.execution.json",
+          "sha256": "745dca3b6e586dbdcc7d828e8561123f1e60ee0379113eeaede463f27ea4a818",
+          "bytes": 637
+        },
+        "actualPID": 23036,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a7.execution.json",
+          "sha256": "be0f5e87ca898e49bbf1e8bded4d629633eb0bc546b6dd9db9a5b881d25255af",
+          "bytes": 624
+        },
+        "actualPID": 21096,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a8-syntax.execution.json",
+          "sha256": "63c5c61aab44c4457f9d7de61ee83e3fb27b93904aa84534c36c286e712213e2",
+          "bytes": 637
+        },
+        "actualPID": 10228,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-a8.execution.json",
+          "sha256": "596b7c865dcf34cbd44f8c6cc26bc9489a1a3c99d45776c29169c180d9e0381a",
+          "bytes": 624
+        },
+        "actualPID": 10276,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-integration-syntax-a1.execution.json",
+          "sha256": "6b24a5d5ce84078544ee3281d04607f082152b03f0b7113ead54829b6769cc95",
+          "bytes": 621
+        },
+        "actualPID": 1368,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-packet-adapter-syntax-a1.execution.json",
+          "sha256": "961ed7d4d6c871cc1aa2c0ea3e74d497ea76bce17187996aa7a7cb2c1b7dafad",
+          "bytes": 649
+        },
+        "actualPID": 14568,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-packet-adapter-syntax-a2.execution.json",
+          "sha256": "526a8ebd7e18dff18d8a6a6a0a48f5c1075aaeb3c98725cd49f38d6f343663a5",
+          "bytes": 1396
+        },
+        "actualPID": 3904,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-qa-delta-integration-a3.execution.json",
+          "sha256": "aeafb9905b4c30b8eab00114e9d5a6598e4bef86e32d393fe7d011be152f12f4",
+          "bytes": 613
+        },
+        "actualPID": 7788,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\root-qa-delta-syntax-a3.execution.json",
+          "sha256": "61a51e46e63d5cc7cb496c5444a0b261731f887398ec4f66088b796800d7169d",
+          "bytes": 712
+        },
+        "actualPID": 4716,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\stage-browser-fix-a3.execution.json",
+          "sha256": "9c60ee9cd4cdc4a945b124935254ef8ba0325f16da3c512c96a9216380557698",
+          "bytes": 584
+        },
+        "actualPID": 25488,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\stage-browser-fix-a4.execution.json",
+          "sha256": "6214918977593095f39498f88f6001a4514f54baa289d89ea61adbdba4f1ec3d",
+          "bytes": 583
+        },
+        "actualPID": 5380,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\stage-browser-review-a1.execution.json",
+          "sha256": "7308f912c3998758022bfbfe5dc9b78685d664ede404e11cb0b306ebb532d60b",
+          "bytes": 590
+        },
+        "actualPID": 21192,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\stage-browser-review-a2.execution.json",
+          "sha256": "ac2e14aad97cd9a51632a6c80ca2ffa4ab20c5c304b83255baeb39f83842c036",
+          "bytes": 590
+        },
+        "actualPID": 16652,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\stage-web-review-a1.execution.json",
+          "sha256": "62de98a679c9d00de2b21b82f7fd4b600120591fc98005bb6743259b04ad45ed",
+          "bytes": 581
+        },
+        "actualPID": 6980,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\tsc-a1.execution.json",
+          "sha256": "0d52f24d110a450be161937d2ddd7fd5514c81f46a63da3e0eaff834c354ae6a",
+          "bytes": 605
+        },
+        "actualPID": 10672,
+        "status": "RUNNING",
+        "actualExitCode": null
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\units-a1.execution.json",
+          "sha256": "1c6ea75431a7bebf363aac8d9b6cae7d4fe40e1667deaea7858e3933bde064c1",
+          "bytes": 680
+        },
+        "actualPID": 21692,
+        "status": "TERMINAL",
+        "actualExitCode": 0
+      },
+      {
+        "reference": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\whole-closure-a4.execution.json",
+          "sha256": "2d55d7ab53d30556e0c873ff5c11275c1c09a3fdc7955dc59bbb3ecfa9c1dabc",
+          "bytes": 989
+        },
+        "actualPID": 3680,
+        "status": "TERMINAL",
+        "actualExitCode": 1
+      }
+    ],
+    "qualification": "All failed raw attempts and helper/reader/schema failures remain immutable; helper failures are not product failures. Passing authored/source/DEX counts are never native runtime counts."
+  },
+  "retainedPreparationStreams": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\retained-preparation-streams-a1\\mapping.json",
+    "sha256": "4917a40b202b3b2016d9ce38b0f45f0fcdb0f90fbeab1203a0818b2de90e567e",
+    "bytes": 87445
+  },
+  "cleanup": {
+    "closureOwnTerminalReceipt": "NOT_REFERENCED_WHILE_RUNNING_COLLECT_AFTER_OUTPUT_BY_ROOT",
+    "ownedBrowserClosed": true,
+    "ownedServerClosed": true,
+    "pwaOwnedSignerClosed": true,
+    "pwaDisposableProfileRemoved": true,
+    "sourceUnchangedAfterChecks": true,
+    "processExitObservationCompleteness": "PARTIAL_HISTORICAL_EXITS_NOT_OBSERVED",
+    "pwaOfflineA2ProducerExit": 0,
+    "pwaOfflineA1ProducerExit": "NOT_OBSERVED",
+    "pwaOfflineA1WorkerExit": "NOT_OBSERVED",
+    "tscOuterObserverExit": "NOT_OBSERVED",
+    "qualification": "Current passing A2 offline producer and its strict-audit/browser commands have recorded terminal exit0 and passing cleanup assertions. Historical A1 producer26380 and worker28388 terminal exits were not observed; the A1 empty browser receipt, absent result and stale RUNNING outer receipt are retained. TSC outer10672 exit also remains unobserved. Later process absence is not terminal evidence; no blanket all-process completion claim is made."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "NOT_RECHECKED: exact inherited source3c79db7c6d299032a357781861a919f454981daf /2026-10-03T05:43:14.065Z. Current local checks neither replace this historical snapshot nor satisfy its real installed-native, PSP/transactions, human editorial/legal, configured Auth/deletion and authorized remote conditions.",
+  "fourConditionsOrigin": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-journey-work-20261005\\astra-whole-child-journey-closure-a1.json",
+    "sha256": "9ec91cb712b3bec8c877fbd471b9277fa81755994dd6e1d1bb50b57857ce7761",
+    "bytes": 247218
+  },
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "remaining": [
+    "Guide8 original badge-award contract and genuine downloaded-route availability/receipt model remain Codex programming work. Current unavailable categories do not complete the whole passport requirement; no award/download fact fabricated.",
+    "Native current OS credentials/PIN/whole-store CAS/readback/crash/process-death/lifecycle and real original parent removal including birth redaction/recreation remain NOT_RUN. Android30 compiled fixtures, including5 genuineOS/operator opt-in cases, are not executed; Swift30 cases, including2 genuineOS opt-in cases, remain NOT_COMPILED_NOT_RUN.",
+    "Genuine age/topic/rights/policy/version reviewed package/media/resource/scene pins remain EMPTY_DENY; five exact RU/EN human editorial/legal reviews remain pending. Synthetic browser admissions are not genuine native or editorial authority.",
+    "Controlled PWA offline proof covers one real adult Web-port persistent profile case and canonical scene/RUEN/Large. It does not prove installed child native storage, physical device properties, store/PSP access or full acceptance.",
+    "Seven unchanged owner actions, unselected PSP and real purchase/refund/restore/reconciliation, configured Auth/delete with explicit remote-environment authorization, S03 11open/S16 36open and release readiness remain open. No seventh AVD attempt, remote operation, push, merge, deployment or store action performed."
+  ],
+  "nextAction": "Next whole SOL Ultra programming stage: implement the original guide8 reviewed native badge-award contract and genuine downloaded-route availability/receipt facts, with private per-profile versioned provenance, genuine native age/rights admission, bounded encrypted persistence and real parent-gated deletion/invalidation; connect them to the existing RU/EN literary passport without inventing awards or downloaded availability. Then perform whole Astra Ultra review, available checks and fixes before any following SOL stage. Keep genuine pins EMPTY_DENY and release gates open until their original evidence exists.",
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "pushMergeDeployStoreActions": 0,
+  "nextSolStarted": false,
+  "wholeStageClosure": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-discovery-passport-work-20261005\\astra-whole-child-discovery-passport-closure-a1.json",
+    "sha256": "27fdaded2dfbd1bc44f3f3ea69e839138842ce9e45c72c06ca4f9991aabf61c9",
+    "bytes": 111468
+  },
+  "mechanicalReportBase": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-child-discovery-passport-20261005\\baseline.json",
+    "sha256": "00ecb98866df90a3dc3868167487e1b0e6f34f966b3b55b00d902f0fa2bf4c91",
+    "bytes": 297027
+  },
+  "reportQualification": "Exact frozen whole Astra closure copied into the local checkpoint. No application authoring, additional semantic review, new product PASS, external recheck, acceptance change or remote action by this report."
+}
