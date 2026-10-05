@@ -1,8 +1,9 @@
+import { childLocalV2ResourcesTestMethods, childLocalV2ResourcesFixtureSource, childLocalV2ResourcesFixtureArguments, childLocalV2ResourcesFixturePassed, verifyNativeChildLocalV2ResourcesFixtureSource } from './native-install-runtime.mjs';
 import { childLocalV2MediaTestMethods, childLocalV2MediaFixtureSource, childLocalV2MediaFixtureArguments, childLocalV2MediaFixturePassed, verifyNativeChildLocalV2MediaFixtureSource } from "./native-install-runtime.mjs";
 import { childLocalV2AppBridgeTestMethods, childLocalV2AppBridgeFixtureSources, childLocalV2AppBridgeFixtureArguments, childLocalV2AppBridgeFixturePassed, verifyNativeChildLocalV2AppBridgeFixtureSources } from './native-install-runtime.mjs';
 import { afterEach, describe, expect, it } from 'vitest';
 import { createHash } from 'node:crypto';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, lstat } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { bindXctestrun, xctestPassed, instrumentationPassed, nativeRuntimeCommandContext, parseAndroidCertificate, parseAndroidPackage, parseAndroidInstrumentationPackage, runNativeInstallRuntime,
@@ -518,5 +519,111 @@ describe("native child media selector", () => {
     for(const options of [{platform:'ios',childLocalV2Media:true},{platform:'android',childLocalV2Media:true,reboot:true},
       {platform:'android',childLocalV2Media:true,childLocalV2AppBridge:true}])
       await expect(runNativeInstallRuntime({...options,rootDir:path.resolve('.'),outDir:'.tmp/forbidden-media-output'})).rejects.toThrow();
+  });
+});
+
+describe('native child resource selector', () => {
+  const runId='a'.repeat(32),klass='ru.probpera.literaryplanet.PlanetChildResourcesRuntimeTest';
+  const authoredMethods=[
+    'localV2ResourcesEmptyCatalogRequiresExactProducerSourceAndOutput',
+    'localV2ResourcesCatalogRejectsMissingInputsAndOrphanInventory',
+    'localV2ResourcesCatalogRejectsUnknownFieldsAndAmbiguousBindings',
+    'localV2ResourcesCanonicalOriginRejectsCallerAuthorityAndTraversal',
+    'localV2ResourcesCanonicalPathBindsExactHashAndMime',
+    'localV2ResourcesResponseRequiresExactStatusMimeAndLength',
+    'localV2ResourcesBoundedBodyUsesActualBytesAndHash',
+    'localV2ResourcesBoundedBodyRejectsZeroProgressAndOversizedInput',
+    'localV2ResourcesBodyRefusalWipesActualOwnedBuffer',
+    'localV2ResourcesTLSKeyHashRequiresActualP256PublicKey',
+    'localV2ResourcesOriginalDeadlineNeverRenewsSourceLifetime',
+    'localV2ResourcesDNSGateRejectsLocalAndReservedAddresses',
+    'localV2ResourcesPrivateClaimAndWireCannotMintNativeAuthority',
+  ];
+  function transcript(){const lines=[];for(const [index,method] of authoredMethods.entries())for(const status of [1,0])lines.push(
+    'INSTRUMENTATION_STATUS: class='+klass,'INSTRUMENTATION_STATUS: test='+method,
+    'INSTRUMENTATION_STATUS: numtests=13','INSTRUMENTATION_STATUS: current='+(index+1),
+    'INSTRUMENTATION_STATUS: id=AndroidJUnitRunner','INSTRUMENTATION_STATUS_CODE: '+status);
+    return lines.join('\n')+'\nINSTRUMENTATION_RESULT: stream=\nOK (13 tests)\nINSTRUMENTATION_CODE: -1\n';}
+  async function ownRoot(){const root=await mkdtemp(path.join(path.resolve(os.tmpdir()),'literary-native-runtime-test-'));temporary.push(root);return root;}
+  function gateFixture(){const calls=[],records=[];return {calls,records,gate:createAndroidOfflineGate(async args=>{
+    calls.push([...args]);if(args.join(',')==='shell,settings,get,global,airplane_mode_on')return '1\n';
+    if(args.join(',')==='shell,settings,get,global,mobile_data')return '0\n';
+    if(args.join(',')==='shell,cmd,wifi,status')return 'Wifi is disabled\nWifi scanning is only available when wifi is enabled\n';
+    return transcript();},entry=>records.push(entry))};}
+  it('binds every selector method to the actual saved native fixture and fixed phase', async () => {
+    const native=await readFile(new URL('../../'+childLocalV2ResourcesFixtureSource,import.meta.url),'utf8');
+    const methods=[...native.matchAll(/@Test public void (localV2Resources[A-Za-z0-9]+)\(/gu)].map(match=>match[1]);
+    expect(methods).toEqual(authoredMethods);expect(childLocalV2ResourcesTestMethods).toEqual(authoredMethods);
+    expect(methods).toHaveLength(13);expect(native).toContain('"local-v2-resources",b.getString("literaryChildResourcesPhase")');
+    const args=childLocalV2ResourcesFixtureArguments(runId);expect(args).toHaveLength(15);expect(Object.isFrozen(args)).toBe(true);
+    expect(args[7].split(',')).toEqual(authoredMethods.map(method=>klass+'#'+method));
+    expect(args.slice(8)).toEqual(['-e','literaryRunId',runId,'-e','literaryChildResourcesPhase','local-v2-resources','ru.probpera.literaryplanet.dev.test/androidx.test.runner.AndroidJUnitRunner']);
+    expect(childLocalV2MediaTestMethods).toHaveLength(10);expect(childLocalV2AppBridgeTestMethods).toHaveLength(12);
+  });
+  it('rejects malformed nonprimitive uppercase truncated or newline run identities', () => {
+    for(const value of ['',runId+'\n','A'.repeat(32),'a'.repeat(31),'a'.repeat(33),new String(runId),null,undefined])
+      expect(()=>childLocalV2ResourcesFixtureArguments(value)).toThrow();
+  });
+  it('requires one exact current fixture source SHA without substituting media source', () => {
+    expect(verifyNativeChildLocalV2ResourcesFixtureSource([{path:childLocalV2ResourcesFixtureSource,sha256:'b'.repeat(64)}])).toBe(true);
+    for(const rows of [null,[],[{path:childLocalV2MediaFixtureSource,sha256:'b'.repeat(64)}],
+      [{path:childLocalV2ResourcesFixtureSource,sha256:'not-a-hash'}],
+      [{path:childLocalV2ResourcesFixtureSource,sha256:'b'.repeat(64)+'\n'}],
+      [{path:childLocalV2ResourcesFixtureSource,sha256:'b'.repeat(64)},{path:childLocalV2ResourcesFixtureSource,sha256:'b'.repeat(64)}]])
+      expect(()=>verifyNativeChildLocalV2ResourcesFixtureSource(rows)).toThrow();
+  });
+  it('admits only all thirteen exact paired method starts completions and terminal results', () => {
+    const good=transcript();expect(childLocalV2ResourcesFixturePassed(good)).toBe(true);expect(childLocalV2ResourcesFixturePassed(good.replaceAll('\n','\r\n'))).toBe(true);
+    for(const bad of ['OK (13 tests)\nINSTRUMENTATION_CODE: -1\n',good.replace('OK (13 tests)','OK (11 tests)'),
+      good.replace('INSTRUMENTATION_CODE: -1','INSTRUMENTATION_CODE: 0'),good.replace('INSTRUMENTATION_RESULT: stream=\n',''),
+      good.replace('INSTRUMENTATION_STATUS_CODE: 0\n',''),good.replaceAll('numtests=13','numtests=14'),good+'INSTRUMENTATION_CODE: -1\n'])
+      expect(childLocalV2ResourcesFixturePassed(bad)).toBe(false);
+  });
+  it('rejects foreign classes methods runner IDs duplicate fields and replayed starts', () => {
+    const good=transcript();for(const bad of [good.replace(klass,'ru.probpera.literaryplanet.PlanetChildMediaRuntimeTest'),
+      good.replace('test='+authoredMethods[0],'test=foreign'),good.replaceAll(authoredMethods[1],authoredMethods[0]),
+      good.replace('id=AndroidJUnitRunner','id=OtherRunner'),good.replace('INSTRUMENTATION_STATUS: current=1\n',''),
+      good.replace('INSTRUMENTATION_STATUS: current=1\n','INSTRUMENTATION_STATUS: current=1\nINSTRUMENTATION_STATUS: current=1\n'),
+      good.replace('INSTRUMENTATION_STATUS_CODE: 0','INSTRUMENTATION_STATUS_CODE: 1')])expect(childLocalV2ResourcesFixturePassed(bad)).toBe(false);
+  });
+  it('rejects mismatched out of range zero padded or nonsequential resource ordinals', () => {
+    for(const bad of [transcript().replace('current=1\n','current=14\n'),transcript().replace('current=1\n','current=01\n'),
+      transcript().replace('current=1\n','current=0\n'),transcript().replaceAll('current=1\n','current=2\n'),
+      transcript().replace('current=13\n','current=11\n')])expect(childLocalV2ResourcesFixturePassed(bad)).toBe(false);
+  });
+  it('rejects skipped aborted crashed stack error or malformed terminal transcripts', () => {
+    const good=transcript();for(const bad of [good.replace('INSTRUMENTATION_STATUS_CODE: 0','INSTRUMENTATION_STATUS_CODE: -3'),
+      good+'AssumptionViolatedException skipped\n',good+'INSTRUMENTATION_ABORTED\n',good+'Process crashed\n',
+      good+'Error: socket failed\n',good+'java.lang.AssertionError\n',good+'INSTRUMENTATION_STATUS: stack=error\n',
+      good+'\0',good+'  INSTRUMENTATION_CODE: -1\n',good+'INSTRUMENTATION_RESULT: shortMsg=crashed\n'])
+      expect(childLocalV2ResourcesFixturePassed(bad)).toBe(false);
+    expect(childLocalV2ResourcesFixturePassed(null)).toBe(false);
+  });
+  it('passes only the exact resource command after three owned offline observations', async () => {
+    const {calls,records,gate}=gateFixture(),args=childLocalV2ResourcesFixtureArguments(runId);
+    expect(childLocalV2ResourcesFixturePassed(await gate.command('instrument-child-local-v2-resources',args,180000))).toBe(true);
+    expect(calls).toHaveLength(4);expect(calls[3]).toEqual(args);expect(records[0].status).toBe('PASS');
+    for(const mutate of [values=>values[7]+=',ru.probpera.literaryplanet.PlanetChildMediaRuntimeTest',
+      values=>values[7]=klass,values=>values[12]='literaryChildMediaPhase',values=>values[13]='local-v2-media',
+      values=>values[10]=runId+'\n',values=>values[14]='foreign.test/androidx.test.runner.AndroidJUnitRunner']){
+      const changed=[...args];mutate(changed);await expect(gate.command('instrument-child-local-v2-resources',changed)).rejects.toThrow();
+    }expect(calls).toHaveLength(4);
+  });
+  it('rejects every existing private-selector conflict and invalid resource options before output', async () => {
+    const root=await ownRoot();for(const prior of [{pinVerificationInput:true},{childLocalV2PinOperations:true},{childLocalV2ProfileEntry:true},{childLocalV2AppBridge:true},{childLocalV2Media:true}])
+      await expect(runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2Resources:true,...prior})).rejects.toThrow(/cannot be mixed/u);
+    for(const options of [{platform:'ios'},{platform:'android',reboot:true},{platform:'android',reboot:'false'}])
+      await expect(runNativeInstallRuntime({rootDir:root,childLocalV2Resources:true,...options})).rejects.toThrow(/Android-only/u);
+    await expect(runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2Resources:'true'})).rejects.toThrow(/Explicit/u);
+    await expect(runNativeInstallRuntime({rootDir:root,platform:'android',childLocalV2Resources:true,runId:runId+'\n'})).rejects.toThrow(/identity/u);
+    await expect(lstat(path.join(root,'.tmp'))).rejects.toMatchObject({code:'ENOENT'});
+  });
+  it('keeps nonexecuting resource preflight device silent and records only bounded source mechanics', async () => {
+    const root=await ownRoot(),result=await runNativeInstallRuntime({rootDir:root,platform:'android',runId,outDir:'.tmp/resources',childLocalV2Resources:true});
+    expect(result.kind).toBe('literary-planet-child-local-v2-resources-runtime');expect(result.status).toBe('BLOCKED_EXTERNAL');expect(result.commands).toEqual([]);
+    expect(result.fixture.methods).toEqual(authoredMethods);expect(result.fixture.tests).toBe(13);expect(result.fixture.source).toBe(childLocalV2ResourcesFixtureSource);expect(result.fixture.phase).toBe('local-v2-resources');
+    expect(result.installed).toBe(false);expect(result.releaseReady).toBe(false);expect(result.fixture.wholeFixtureAcceptance).toBe(false);
+    for(const field of ['realTlsNetworkAcceptance','realOsMediaUiAcceptance','humanReviewAcceptance','authenticatedReleaseRightsAcceptance','paidAuthorityAcceptance','installedStorageAcceptance','parentGateAdmission'])expect(result.fixture[field]).toBe(false);
+    const saved=JSON.parse(await readFile(path.join(root,'.tmp/resources/result.json'),'utf8'));expect(saved.fixture).toEqual(result.fixture);expect(saved.commands).toEqual([]);
   });
 });

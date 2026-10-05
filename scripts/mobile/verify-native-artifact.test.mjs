@@ -7,11 +7,12 @@ import { verifyNativeArtifact } from "./verify-native-artifact.mjs";
 import { CANONICAL_BOOK_SOURCE_REGISTRY } from "./pwa-artifact.mjs";
 import { CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_CATALOG } from "./native-child-package-assets.mjs";
 import { CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_CATALOG } from "./native-child-media-assets.mjs";
+import { CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_RESOURCE_CATALOG } from "./native-child-resource-assets.mjs";
 
 const roots = [];
 const json = value => JSON.stringify(value, null, 2) + "\n";
 const sha = value => createHash("sha256").update(value).digest("hex");
-async function fixture({ platform = "android", ownership = true } = {}) {
+async function fixture({ platform = "android", channel = "dev", ownership = true } = {}) {
   await mkdir(".tmp", { recursive: true });
   const root = await mkdtemp(path.resolve(".tmp/native-audit-test-")); roots.push(root);
   const output = path.join(root, "dist-native");
@@ -23,8 +24,13 @@ async function fixture({ platform = "android", ownership = true } = {}) {
   const pkg = { dependencies: Object.fromEntries(Object.entries(nativePackages).filter(([name]) => name !== "@capacitor/cli")), devDependencies: { "@capacitor/cli": "8.5.1" } };
   const lock = { packages: Object.fromEntries(Object.entries(nativePackages).map(([name, version]) => ["node_modules/" + name, { version, integrity: "sha512-" + Buffer.alloc(64, 1).toString("base64") }])) };
   const config = { appId: "ru.probpera.literaryplanet", appName: "Literary Planet", webDir: "dist-native", loggingBehavior: "debug", android: { path: "apps/mobile/android", allowMixedContent: false }, ios: { path: "apps/mobile/ios" }, server: { hostname: "localhost", androidScheme: "https", iosScheme: "capacitor" } };
-  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE].sort();
+  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE,
+    "src/child/childNativeResource.ts", "src/child/childPackage.ts", "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts", "src/child/childProfile.ts"].sort();
   for (const file of sources) await write(file, file.endsWith(".json") ? "{}\n" : "fixture source " + file, root);
+  for (const source of [CHILD_NATIVE_RESOURCE_ASSET_MODULE, "src/child/childNativeResource.ts", "src/child/childPackage.ts",
+    "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts", "src/child/childProfile.ts"])
+    await write(source, await readFile(new URL("../../" + source, import.meta.url)), root);
+  await write(CHILD_NATIVE_RESOURCE_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-resource-release-pins-v2", origins: [], resources: [] }), root);
   await write("package.json", json(pkg), root); await write("package-lock.json", json(lock), root); await write("capacitor.config.json", json(config), root);
   await write(CHILD_NATIVE_PIN_SOURCE, json({ schemaVersion: 1, kind: "literary-planet-child-native-release-pins-v1", reviewKeys: [], packages: [] }), root);
   await write(CHILD_NATIVE_MEDIA_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-media-release-pins-v2", reviewKeys: [], manifests: [] }), root);
@@ -52,7 +58,7 @@ async function fixture({ platform = "android", ownership = true } = {}) {
     for (const file of ["assets/app.js", "assets/child.js", "assets/detail.js"]) owned.chunks.push({ file, sha256: sha(await readFile(path.join(output, file))), modules: file === "assets/app.js" ? modules : ["\0fixture/" + file] });
     await write("module-ownership.json", json(owned));
   }
-  const artifact = { schemaVersion: 1, kind: "literary-planet-bundled-native-preparation", platform, channel: "dev", sourceCommit, sourceInputs, requiredLocales: ["ru", "en"], releaseReady: false, productionActionsAuthorized: false, nativePackages, assetProvenance: [{ output: "brand/logo.svg", source: "public/brand/logo.svg", sourceSha256: sha(logo) }], inventory: [], buildId: "" };
+  const artifact = { schemaVersion: 1, kind: "literary-planet-bundled-native-preparation", platform, channel, sourceCommit, sourceInputs, requiredLocales: ["ru", "en"], releaseReady: false, productionActionsAuthorized: false, nativePackages, assetProvenance: [{ output: "brand/logo.svg", source: "public/brand/logo.svg", sourceSha256: sha(logo) }], inventory: [], buildId: "" };
   const pinChecksum = sha(await readFile(path.join(root, CHILD_NATIVE_PIN_SOURCE)));
   const catalogBytes = JSON.stringify({ schemaVersion: 1, kind: "literary-planet-child-native-assets-v1", platform: null, pinSourceChecksum: pinChecksum, reviewKeys: [], packages: [] }) + "\n";
   await write(CHILD_NATIVE_CATALOG, catalogBytes);
@@ -65,6 +71,16 @@ async function fixture({ platform = "android", ownership = true } = {}) {
   artifact.childNativeMediaAssets = { pinSource: { path: CHILD_NATIVE_MEDIA_PIN_SOURCE, sha256: mediaPinChecksum },
     outputs: [{ output: CHILD_NATIVE_MEDIA_CATALOG, source: CHILD_NATIVE_MEDIA_PIN_SOURCE, sourceSha256: mediaPinChecksum,
       transformation: "fixed-native-media-pin-projection-v2", outputSha256: sha(mediaCatalog) }] };
+  const resourcePinChecksum = sha(await readFile(path.join(root, CHILD_NATIVE_RESOURCE_PIN_SOURCE)));
+  const selectedPlatform = platform === "ios" && channel === "appStore" ? "ios-ipados"
+    : platform === "android" && channel === "googlePlay" ? "android-google"
+      : platform === "android" && channel === "ruStore" ? "android-rustore" : null;
+  const resourceCatalog = JSON.stringify({ schemaVersion: 2, kind: "literary-planet-child-native-resource-catalog-v2", platform: selectedPlatform,
+    resourcePinSourceChecksum: resourcePinChecksum, origins: [], resources: [] }) + "\n";
+  await write(CHILD_NATIVE_RESOURCE_CATALOG, resourceCatalog);
+  artifact.childNativeResourceAssets = { pinSource: { path: CHILD_NATIVE_RESOURCE_PIN_SOURCE, sha256: resourcePinChecksum },
+    outputs: [{ output: CHILD_NATIVE_RESOURCE_CATALOG, source: CHILD_NATIVE_RESOURCE_PIN_SOURCE, sourceSha256: resourcePinChecksum,
+      transformation: "fixed-native-resource-pin-projection-v2", outputSha256: sha(resourceCatalog) }] };
   const walk = async (directory, prefix = "") => {
     const files = [];
     for (const entry of await readdir(directory, { withFileTypes: true })) if (entry.isDirectory()) files.push(...await walk(path.join(directory, entry.name), prefix + entry.name + "/")); else files.push(prefix + entry.name);
@@ -109,12 +125,105 @@ describe("native child package artifact provenance", () => {
   });
   it("rejects unpinned child output and retains genuinely pre-exporter historical bundles", async () => {
     const f = await fixture();await f.write("child-native/packages/" + "a".repeat(64) + ".json", "{}");await f.refresh();expect(codes(await f.audit())).toContain("CHILD_NATIVE_PROVENANCE");
-    await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;delete f.artifact.childNativeMediaAssets;
-    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
-    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => ![CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_PIN_SOURCE].includes(module));
+    await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;delete f.artifact.childNativeMediaAssets;delete f.artifact.childNativeResourceAssets;
+    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
+    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => ![CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_RESOURCE_PIN_SOURCE].includes(module));
     await f.write("module-ownership.json", json(f.owned));await f.refresh();expect((await f.audit({ checkSourceFreshness: false })).findings).toEqual([]);expect(codes(await f.audit())).toContain("SOURCE_INPUT_SET");
   });
 });
+
+describe("native child resource artifact provenance", () => {
+  const origin = { id: "fixture-origin", origin: "https://resources.example.org", tlsPublicKeyX963Checksums: ["a".repeat(64)] };
+  const binding = { id: "fixture-resource", packageId: "fixture-package", packageVersion: 1,
+    packageChecksum: "b".repeat(64), policyVersion: "fixture-policy", policyChecksum: "c".repeat(64),
+    manifestChecksum: "d".repeat(64), reviewChecksum: "e".repeat(64), assetId: "fixture-image",
+    assetChecksum: "f".repeat(64), assetBytes: 8, mime: "image/png", originId: origin.id,
+    path: "/objects/" + "f".repeat(64) + ".png", validFromEpochMs: 0, validUntilEpochMs: 8_640_000_000_000_000 };
+  async function replaceCatalog(f, change) {
+    const catalog = JSON.parse(await readFile(path.join(f.output, CHILD_NATIVE_RESOURCE_CATALOG)));
+    change(catalog); const bytes = JSON.stringify(catalog) + "\n";
+    await f.write(CHILD_NATIVE_RESOURCE_CATALOG, bytes);
+    f.artifact.childNativeResourceAssets.outputs[0].outputSha256 = sha(bytes); await f.refresh();
+  }
+  it("reconstructs the authentic empty resource source projection without remote approval", async () => {
+    const f = await fixture(); expect((await f.audit()).findings).toEqual([]);
+    const catalog = JSON.parse(await readFile(path.join(f.output, CHILD_NATIVE_RESOURCE_CATALOG)));
+    expect(catalog.origins).toEqual([]); expect(catalog.resources).toEqual([]);
+    expect(f.artifact.childNativeResourceAssets.outputs).toHaveLength(1);
+    expect(catalog.resourcePinSourceChecksum).toBe(f.artifact.childNativeResourceAssets.pinSource.sha256);
+  });
+  it("rejects substituted catalog origins even after output inventory and build digests are rewritten", async () => {
+    const f = await fixture(); await replaceCatalog(f, catalog => { catalog.origins = [origin]; });
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("rejects another audience platform and substituted resource source checksum", async () => {
+    for (const change of [catalog => { catalog.platform = "android-google"; },
+      catalog => { catalog.resourcePinSourceChecksum = "a".repeat(64); }]) {
+      const f = await fixture(); await replaceCatalog(f, change);
+      expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+    }
+  });
+  it("requires exact resource metadata whenever its compiler input or output is present", async () => {
+    const f = await fixture(); delete f.artifact.childNativeResourceAssets; await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("requires the resource emitter source independently of the general freshness option", async () => {
+    const f = await fixture(); f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => row.path !== CHILD_NATIVE_RESOURCE_ASSET_MODULE);
+    f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files)); await f.saveIdentity();
+    expect(codes(await f.audit({ checkSourceFreshness: false }))).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("binds the actual schema checksum even when historical freshness checks are disabled", async () => {
+    const f = await fixture();
+    f.artifact.sourceInputs.files.find(row => row.path === "src/child/childNativeResource.ts").sha256 = "a".repeat(64);
+    f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files)); await f.saveIdentity();
+    expect(codes(await f.audit({ checkSourceFreshness: false }))).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("binds transitive resource schema validators while historical freshness is disabled", async () => {
+    for (const name of ["childPackage", "childAccessPolicy", "childDataNamespace", "childProfile"]) {
+      const f = await fixture();
+      f.artifact.sourceInputs.files.find(row => row.path === "src/child/" + name + ".ts").sha256 = "a".repeat(64);
+      f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files)); await f.saveIdentity();
+      expect(codes(await f.audit({ checkSourceFreshness: false }))).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+    }
+  });
+  it("rejects malformed current resource pins with an otherwise refreshed source snapshot", async () => {
+    const f = await fixture(); await f.write(CHILD_NATIVE_RESOURCE_PIN_SOURCE, "{}", f.root);
+    await f.refreshSources(); await f.saveIdentity();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("refuses duplicate generated output claims and missing resource catalog bytes", async () => {
+    const f = await fixture(); f.artifact.childNativeResourceAssets.outputs.push(f.artifact.childNativeResourceAssets.outputs[0]); await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+    f.artifact.childNativeResourceAssets.outputs.pop(); await rm(path.join(f.output, CHILD_NATIVE_RESOURCE_CATALOG)); await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("denies orphan resource files despite a self-consistent artifact inventory", async () => {
+    const f = await fixture(); await f.write("child-native/resources/unowned.json", "{}"); await f.refresh();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("denies orphan origin bindings in actual source pins rather than treating a TLS hash as approval", async () => {
+    const f = await fixture({ channel: "googlePlay" });
+    await f.write(CHILD_NATIVE_RESOURCE_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-resource-release-pins-v2",
+      origins: [origin], resources: [] }), f.root); await f.refreshSources(); await f.saveIdentity();
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("requires independently signed media and real binary closure for every optional transport binding", async () => {
+    const f = await fixture({ channel: "googlePlay" });
+    await f.write(CHILD_NATIVE_RESOURCE_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-resource-release-pins-v2",
+      origins: [origin], resources: [binding] }), f.root); await f.refreshSources();
+    const sourceChecksum = sha(await readFile(path.join(f.root, CHILD_NATIVE_RESOURCE_PIN_SOURCE)));
+    f.artifact.childNativeResourceAssets.pinSource.sha256 = sourceChecksum;
+    f.artifact.childNativeResourceAssets.outputs[0].sourceSha256 = sourceChecksum;
+    await replaceCatalog(f, catalog => { catalog.platform = "android-google"; catalog.resourcePinSourceChecksum = sourceChecksum;
+      catalog.origins = [origin]; catalog.resources = [binding]; });
+    expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+  it("rejects an invented projection transformation instead of trusting an artifact output checksum", async () => {
+    const f = await fixture(); f.artifact.childNativeResourceAssets.outputs[0].transformation = "caller-resource-proof";
+    await f.refresh(); expect(codes(await f.audit())).toContain("CHILD_NATIVE_RESOURCE_PROVENANCE");
+  });
+});
+
 describe("canonical registry artifact binding", () => {
   it("accepts the exact native registry module and rejects changed or missing registry source bytes", async () => {
     const f = await fixture();
