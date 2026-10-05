@@ -31,6 +31,8 @@ export default function GlobeChildNativeComposition({resources,globeRef,quality,
     const prior=surface.map;
     function clear() {
       if(cleared)return;cleared=true;
+      // Stop the retiring frame guard before a successor starts preparing.
+      if(owner.current?.clear===clear)owner.current=null;
       if(surface instanceof THREE.MeshPhysicalMaterial && surface.map===snapshot.textures?.skin) {surface.map=null;surface.needsUpdate=true;}
       group.removeFromParent();
       for(const mesh of hotspots) {mesh.userData={};mesh.raycast=()=>undefined;}

@@ -53,4 +53,16 @@ describe("original canonical composition recipient",()=>{
   expect(f.scene.getObjectByName("child-native-approved-composition")).toBeUndefined();
   f.cleanups.reverse().forEach(work=>work());f.globe.geometry.dispose();f.surface.dispose();Object.values(f.textures).forEach(t=>t.dispose());
  });
+ it("does not let an already retired frame cancel the successor before React effect cleanup",async()=>{
+  const f=fixture();
+  // A second appearance choice first clears borrowed maps synchronously.
+  // The next R3F frame can run before React commits the empty/preparing tree.
+  f.resources.clear();
+  expect(f.resources.clear).toHaveBeenCalledTimes(1);expect(f.surface.map).toBeNull();
+  expect(f.scene.getObjectByName("child-native-approved-composition")).toBeUndefined();
+  for(let i=0;i<3;i++)hooks.frames.forEach(frame=>frame());
+  expect(f.resources.clear).toHaveBeenCalledTimes(1);
+  await f.recipient()!.join();expect(f.context.finish).toHaveBeenCalledOnce();
+  f.cleanups.reverse().forEach(work=>work());f.globe.geometry.dispose();f.surface.dispose();Object.values(f.textures).forEach(t=>t.dispose());
+ });
 });
