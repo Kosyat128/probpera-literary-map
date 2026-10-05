@@ -341,7 +341,7 @@ describe("native child journey authority and protected semantic continuation",()
     await f.controller.refresh();expect(f.plugin.bootstrap).toHaveBeenCalledOnce();expect(f.open).toHaveBeenCalledOnce();
   });
   it("background retirement joins an already dispatched journey save and prevents retired node publication",async()=>{
-    const f=journeyFixture(),held=deferred<unknown>();await f.controller.start();f.open.mockReturnValueOnce(held.promise);
+    const f=journeyFixture(),held=deferred<ReturnType<typeof f.dataReply>>();await f.controller.start();f.open.mockReturnValueOnce(held.promise);
     const pending=f.controller.journeys!.open("journey",0);await settle();const request=f.open.mock.calls[0][0];f.visibility("background");expect(f.clear).toHaveBeenCalled();expect(f.controller.getSnapshot().context).toBeNull();
     held.resolve(f.dataReply(request,f.value()));expect(await pending).toBeNull();await settle();f.visibility("active");await settle();expect(f.plugin.bootstrap).toHaveBeenCalledOnce();expect(f.open).toHaveBeenCalledOnce();
   });
