@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import {createHash,randomUUID} from "node:crypto";
 import {isLocalCliEntry} from "./local-cli-entry.mjs";
 import {nativeRuntimeSources} from "./native-install-runtime.mjs";
+import {contentPackageCanonicalJson} from "../../src/planet/contentPackageProtocol.mjs";
 const sha=b=>createHash("sha256").update(b).digest("hex"),copy=v=>JSON.parse(JSON.stringify(v));
 const require=(v,m)=>{if(!v)throw Error("Discovery/passport browser fixture: "+m);};
 const within=(r,p)=>{const s=path.relative(r,p);return s&&!s.startsWith("..")&&!path.isAbsolute(s);};
@@ -38,10 +39,10 @@ function journeySceneSeam({state,profiles,token,read,persist,home,entity,hash,su
 }
 
 
-function nativeSeam(statePath,key){
+function nativeSeam(statePath,key,passportProgram=false){
  const state={schemaVersion:1,registry:[...profiles],mode:"child",active:profiles[0],locales:{[profiles[0]]:"ru",[profiles[1]]:"en"},version:1,entries:Object.fromEntries(profiles.map(p=>[p,{profileId:p,revision:0,progress:null}]))};
- let context=null,generation=0,activeJourney=null,denied=false,workDenied=false,fault=null,heldAdvance=null,heldCountryRead=null,heldRemoval=null;
- state.passports=Object.fromEntries(profiles.map(p=>[p,{revision:0,opened:[],learning:[],archived:[]} ]));const events=[],token=()=>randomUUID().replaceAll("-","");
+ let context=null,generation=0,activeJourney=null,denied=false,workDenied=false,fault=null,heldAdvance=null,heldCountryRead=null,heldRemoval=null,reviewedProgram=false;
+ state.passports=Object.fromEntries(profiles.map(p=>[p,{revision:0,opened:[],learning:[],archived:[],badges:[],routes:[]} ]));const events=[],token=()=>randomUUID().replaceAll("-","");
  const locale=()=>state.locales[state.active],suffix=()=>state.active===profiles[0]?"a":"b",hash=()=>locale()==="ru"?"a".repeat(64):"b".repeat(64);
  const ref=(kind,id)=>({kind,id,contentChecksum:hash()}),home=()=>ref("activity","home-"+suffix()),journeyId=()=>"journey-"+suffix();
  const nodes=()=>state.version===1?["russia","writer-"+suffix(),"work-"+suffix()]:["russia","work-"+suffix()];
@@ -49,6 +50,8 @@ function nativeSeam(statePath,key){
  const refs=()=>nodes().map(id=>ref(nodeKinds().get(id),id));
  const gentle=()=>ref("recommendation","gentle-"+suffix());
  const info=()=>({journeyId:journeyId(),journeyVersion:state.version,contentVersion:state.version,title:locale()==="ru"?"Тестовое путешествие "+suffix().toUpperCase():"Fixture journey "+suffix().toUpperCase(),description:locale()==="ru"?"Синтетические материалы для проверки интерфейса.":"Synthetic content for interface checks.",nodeCount:nodes().length});
+ const routeBytes=()=>contentPackageCanonicalJson({schemaVersion:1,journey:entity(ref("activity",journeyId())),nodes:refs().map(entity)});
+ const availableRoutes=()=>denied||workDenied?[]:state.passports[state.active].routes.filter(row=>row.locale===locale()&&row.contentVersion===state.version&&row.snapshotChecksum===sha(Buffer.from(row.bytes))&&row.bytes===routeBytes()).map(({bytes,locale,...row})=>row);
  function entity(reference){const canonical=[home(),ref("activity",journeyId()),gentle(),...refs()].find(r=>JSON.stringify(r)===JSON.stringify(reference));require(canonical&&(!denied||canonical.id===home().id||canonical.kind==="country")&&(!workDenied||canonical.kind!=="work"&&canonical.kind!=="recommendation"),"fresh synthetic reference");
   const isHome=canonical.id===home().id,isJourney=canonical.id===journeyId(),isGentle=canonical.kind==="recommendation",ru=locale()==="ru";
   return {reference:canonical,payload:{title:isHome?(ru?"Детская главная":"Child home"):isJourney?info().title:isGentle?(ru?"Тестовая мягкая подборка":"Fixture gentle collection"):canonical.kind==="country"?(ru?"Тестовая страна":"Fixture country"):canonical.kind==="writer"?(ru?"Тестовый писатель":"Fixture writer"):(ru?"Тестовое произведение":"Fixture work"),text:ru?"Только синтетический материал интерфейса.":"Synthetic interface content only.",terms:[],references:isHome?[ref("country","russia"),...(!denied?[ref("activity",journeyId())]:[])]:isJourney?refs():isGentle?[ref("work","work-"+suffix())]:[]}};}
@@ -60,6 +63,7 @@ function nativeSeam(statePath,key){
  const outcome=(status="restored")=>{const saved=state.entries[state.active];return{status,...copy(saved),journey:denied||!saved.progress?null:{...info(),nodeIds:nodes()},node:denied||!saved.progress?.currentNodeId?null:entity(refs().find(r=>r.id===saved.progress.currentNodeId))};};
  async function control(input,secret){require(secret===key,"owned fixture key");
   if(input.action==="snapshot")return{state:copy(state),context:copy(context),activeJourney,advanceHeld:!!heldAdvance?.entered,countryReadHeld:!!heldCountryRead?.entered,removalHeld:!!heldRemoval?.entered,appearance:sceneSeam.snapshot(),events:copy(events),nativeAuthority:false};
+  if(input.action==="reviewProgram"){require(passportProgram&&typeof input.value==="boolean","explicit synthetic program review seam only");reviewedProgram=input.value;return{status:"ok",nativeAuthority:false};}
   if(input.action==="holdRemoval"){require(!heldRemoval,"single original removal");let release;const promise=new Promise(resolve=>{release=resolve;});heldRemoval={promise,release,entered:false,cancelled:false};return{status:"held"};}
   if(input.action==="holdCountryRead"){require(!heldCountryRead,"single held country read");let release;const promise=new Promise(resolve=>{release=resolve;});heldCountryRead={promise,release,entered:false};return{status:"held"};}
   if(input.action==="releaseCountryRead"){require(heldCountryRead?.entered,"entered original country read");const held=heldCountryRead;heldCountryRead=null;held.release();return{status:"released"};}
@@ -75,9 +79,10 @@ function nativeSeam(statePath,key){
   if(method==="perform"){if(r.action==="expand-access-settings"){require(r.target?.profileId===state.active&&["ru","en"].includes(r.target?.changes?.locale),"locale action");state.locales[state.active]=r.target.changes.locale;}
    else if(r.action==="enter-child"){require(state.registry.includes(r.target?.profileId),"profile action");state.active=r.target.profileId;state.mode="child";}
    else if(r.action==="delete-child-data"){
-    require(r.target&&Object.keys(r.target).sort().join()==="profileId,scope"&&state.registry.includes(r.target.profileId)&&["history","profile"].includes(r.target.scope),"exact synthetic original removal target");
+    require(r.target&&Object.keys(r.target).sort().join()==="profileId,scope"&&state.registry.includes(r.target.profileId)&&["history","profile","downloads"].includes(r.target.scope),"exact synthetic original removal target");
     const original=heldRemoval;if(original){original.entered=true;await original.promise;heldRemoval=null;if(original.cancelled)return{version:2,requestId:r.requestId,status:"unavailable",reason:"cancelled",context:null,profiles:[]};}
-    state.mode="adult";const id=r.target.profileId;if(r.target.scope==="history"){state.entries[id]={profileId:id,revision:state.entries[id].revision+1,progress:null};state.passports[id]={revision:state.passports[id].revision+1,opened:[],learning:[],archived:[]};}
+    state.mode="adult";const id=r.target.profileId;if(r.target.scope==="history"){state.entries[id]={profileId:id,revision:state.entries[id].revision+1,progress:null};state.passports[id]={revision:state.passports[id].revision+1,opened:[],learning:[],archived:[],badges:[],routes:[]};}
+    else if(r.target.scope==="downloads"){state.passports[id].routes=[];state.passports[id].revision++;}
     else{require(id!==state.active,"fixture removes sibling only; empty registry stays native-only");state.registry=state.registry.filter(p=>p!==id);delete state.entries[id];delete state.passports[id];delete state.choices[id];delete state.locales[id];}
    }else throw Error("Unsupported fixture action");await persist();mint(policy);return app(r);}
   const data=value=>({version:2,requestId:r.requestId,status:"ok",contextToken:context.token,generation:context.generation,value});
@@ -89,10 +94,15 @@ function nativeSeam(statePath,key){
   if(method==="recordCountryOpen"){const country=entity(r.reference);require(country.reference.kind==="country","explicit country-only command");
     const ledger=state.passports[state.active];if(!ledger.opened.includes(country.reference.id)){ledger.opened.push(country.reference.id);ledger.revision++;await persist();}
     const reply=data({...correlation(),revision:ledger.revision,country});if(fault==="country-readback"){fault=null;reply.requestId="e".repeat(32);}return reply;}
+  if(method==="saveJourneyRoute"){
+    const ledger=state.passports[state.active];require(passportProgram&&!denied&&!workDenied&&r.journeyId===journeyId()&&r.expectedRevision===ledger.revision,"synthetic native-owned complete route CAS");
+    const bytes=routeBytes(),route={...info(),snapshotChecksum:sha(Buffer.from(bytes)),byteLength:Buffer.byteLength(bytes)};
+    require(route.byteLength>0&&route.byteLength<=524288,"synthetic whole text byte bound");ledger.routes=ledger.routes.filter(value=>value.journeyId!==route.journeyId);ledger.routes.push({...route,bytes,locale:locale()});ledger.revision++;await persist();await read();
+    return data({...correlation(),revision:ledger.revision,route});}
   if(method==="readPassport"){await read();const ledger=state.passports[state.active],saved=state.entries[state.active],current=refs(),kind=k=>current.filter(r=>r.kind===k);
     const visibleCredits=k=>denied||workDenied&&k==="work"?[]:ledger.learning.filter(r=>r.kind===k&&r.contentVersion===state.version).flatMap(receipt=>{const r=kind(k).find(r=>r.id===receipt.id);return r?[entity(r)]:[];});
     const typed=new Set(ledger.learning.map(r=>r.nodeId));const unresolved=[...new Set([...ledger.archived,...ledger.learning.filter(r=>r.contentVersion!==state.version||!current.some(ref=>ref.kind===r.kind&&ref.id===r.id)).map(r=>r.nodeId),...(saved.progress?.completedNodeIds??[]).filter(id=>!typed.has(id)&&id!=="russia")])];
-    return data({schemaVersion:1,...correlation(),revision:ledger.revision,countries:denied?[]:ledger.opened.flatMap(id=>{const r=kind("country").find(r=>r.id===id);return r?[entity(r)]:[];}),writers:visibleCredits("writer"),works:visibleCredits("work"),journeys:!denied&&saved.progress&&saved.progress.currentNodeId===null&&saved.progress.contentVersion===state.version?[info()]:[],unresolvedCompletedNodeIds:unresolved,badges:{status:"unavailable",items:[]},downloadedRoutes:{status:"unavailable",items:[]}});}
+    return data({schemaVersion:passportProgram?2:1,...correlation(),revision:ledger.revision,countries:denied?[]:ledger.opened.flatMap(id=>{const r=kind("country").find(r=>r.id===id);return r?[entity(r)]:[];}),writers:visibleCredits("writer"),works:visibleCredits("work"),journeys:!denied&&saved.progress&&saved.progress.currentNodeId===null&&saved.progress.contentVersion===state.version?[info()]:[],unresolvedCompletedNodeIds:unresolved,badges:{status:reviewedProgram&&!denied&&!workDenied?"ready":"unavailable",items:reviewedProgram&&!denied&&!workDenied?ledger.badges.filter(value=>value.contentVersion===state.version).map(value=>({...value,title:locale()==="ru"?"Тестовый значок путешествия":"Synthetic journey badge"})):[]},downloadedRoutes:{status:passportProgram?"ready":"unavailable",items:passportProgram?availableRoutes():[]}});}
   if(["search","listMedia"].includes(method))return data([]);
   if(method==="readCollection")return data({revision:0,references:[]});
   const sceneValue=await sceneSeam.command(method,r,data);if(sceneValue!==undefined)return sceneValue;
@@ -103,6 +113,7 @@ function nativeSeam(statePath,key){
   const saved=state.entries[state.active];require(r.expectedRevision===saved.revision&&r.journeyId===journeyId(),"native seam profile CAS/root");
   if(denied)return data({...outcome("unavailable"),journey:null,node:null});
   if(method==="openJourney"){
+   if(passportProgram&&availableRoutes().length){const receipt=state.passports[state.active].routes.find(value=>value.journeyId===r.journeyId&&value.locale===locale());require(receipt&&JSON.parse(receipt.bytes).nodes.length===nodes().length,"synthetic open reads exact persisted route bytes");events.push({method:"openedStoredRouteBytes",profileId:state.active,locale:locale(),snapshotChecksum:receipt.snapshotChecksum});}
    let changed=false;if(!saved.progress){saved.progress={schemaVersion:1,journeyId:journeyId(),journeyVersion:state.version,contentVersion:state.version,currentNodeId:nodes()[0],completedNodeIds:[],selectedCountryId:null,selectedWriterId:null,selectedWorkId:null,lastSafeRoute:"journey"};changed=true;}
    if(saved.progress.contentVersion!==state.version){saved.progress.contentVersion=state.version;saved.progress.journeyVersion=state.version;if(saved.progress.currentNodeId&&!nodes().includes(saved.progress.currentNodeId))saved.progress.currentNodeId=nodes().find(id=>!saved.progress.completedNodeIds.includes(id))??null;changed=true;}
    if(changed){saved.revision++;await persist();}activeJourney=journeyId();return data(outcome(changed?"opened":"restored"));}
@@ -112,6 +123,7 @@ function nativeSeam(statePath,key){
    const kind=nodeKinds().get(id);if(kind==="country")saved.progress.selectedCountryId=id;else if(kind==="writer")saved.progress.selectedWriterId=id;else saved.progress.selectedWorkId=id;
    if(kind==="writer"||kind==="work"){const ledger=state.passports[state.active];if(!ledger.learning.some(r=>r.kind===kind&&r.id===id&&r.contentVersion===state.version)){ledger.learning.push({kind,id,nodeId:id,journeyId:journeyId(),contentVersion:state.version});ledger.revision++;}}
    saved.progress.currentNodeId=nodes()[nodes().indexOf(id)+1]??null;}
+  if(passportProgram&&reviewedProgram&&r.action==="complete"&&saved.progress.currentNodeId===null&&!denied&&!workDenied){const ledger=state.passports[state.active];if(!ledger.badges.some(value=>value.contentVersion===state.version)){ledger.badges.push({badgeId:"synthetic-route-badge",ruleVersion:1,programId:"synthetic-program",programVersion:1,programChecksum:"c".repeat(64),journeyId:journeyId(),journeyVersion:state.version,contentVersion:state.version,title:locale()==="ru"?"Тестовый значок путешествия":"Synthetic journey badge"});ledger.revision++;}}
   saved.revision++;await persist();const value=outcome();if(fault==="readback"){fault=null;value.revision++;}return data(value);}
  return{persist,control,command,register:sceneSeam.register};
 }
@@ -135,7 +147,7 @@ window.Image=class{constructor(){const image=new OriginalImage();Object.definePr
  if(!uri.startsWith("planet-child-resource:")){source.set!.call(image,uri);return;}const m=new RegExp("^planet-child-resource://local/([a-f0-9]{32})$","u").exec(uri),lease=m&&resources.get(m[1]),asset=lease&&lease.contextToken===resolverContext?lease.assetId:null;
  if(!asset||!images.has(asset)){queueMicrotask(()=>image.dispatchEvent(new Event("error")));return;}source.set!.call(image,images.get(asset));}});return image;}} as any;
 const plugin:any={addListener:async()=>({remove:async()=>{}})};
-for(const method of ["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen"])plugin[method]=async(request:any)=>{
+for(const method of ["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource","readSceneSelection","rememberSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute"])plugin[method]=async(request:any)=>{
  const result=await post("command",{method,request,policy:{version:CHILD_NATIVE_LOCAL_POLICY_VERSION,checksum:CHILD_NATIVE_LOCAL_POLICY_CHECKSUM}});
  if(method==="openScene"&&result.value?.status==="opened")lastScene=result.value;
  if(method==="restoreSceneSelection"&&result.value?.status==="restored")lastScene=result.value.scene;
@@ -177,7 +189,7 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
  if(options.execute!==true)return report;
  require(typeof options.executablePath==="string"&&path.isAbsolute(options.executablePath),"existing explicit browser executable");await fs.mkdir(output,{recursive:false});
  const {createServer}=await import("vite"),{default:react}=await import("@vitejs/plugin-react"),{chromium}=await import("playwright");
- const key=randomUUID().replaceAll("-",""),seam=nativeSeam(path.join(output,"synthetic-state.json"),key);let server=null,browser=null,page=null,errors=[],expectedDocumentId=null;
+ const key=randomUUID().replaceAll("-",""),seam=nativeSeam(path.join(output,"synthetic-state.json"),key,options.passportProgram===true);let server=null,browser=null,page=null,errors=[],expectedDocumentId=null;
  await fs.writeFile(path.join(output,"index.html"),'<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><div id="root"></div><script type="module" src="./entry.tsx"></script></body></html>');await fs.writeFile(path.join(output,"entry.tsx"),entry);
  const journal=async(event,detail={})=>{const row={at:new Date().toISOString(),event,...detail};await fs.appendFile(path.join(output,"phases.jsonl"),JSON.stringify(row)+"\n");};
  async function bounded(label,fn,timeoutMs=30000){await journal("begin",{label});let timer;try{const value=await Promise.race([Promise.resolve().then(fn),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error("Timed out: "+label)),timeoutMs);})]);await journal("end",{label});return value;}catch(error){await journal("error",{label,error:String(error)});throw error;}finally{clearTimeout(timer);}}
@@ -265,6 +277,64 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
   report.checks.push({id:"passport-profile-isolation",status:"PASS",nativeAuthority:false});
   require(errors.length===0,"runtime errors "+errors.join(";"));await page.evaluate(()=>window.__childJourneyBrowser.unmount());await browser.close();browser=null;await launch();await idle();await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Completed journeys · 1",exact:true}).waitFor();await capture("en-restarted-local-passport");
   report.checks.push({id:"new-browser-process-synthetic-durable-passport",status:"PASS",nativeAuthority:false});
+  if(options.passportProgram===true){
+    await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
+    await page.getByRole("button",{name:"Download route texts",exact:true}).click();await page.getByText("The route texts are saved on this device.",{exact:true}).waitFor();
+    const stored=(await snapshot()).state.passports[profiles[0]].routes[0];require(stored&&stored.bytes&&sha(Buffer.from(stored.bytes))===stored.snapshotChecksum&&Buffer.byteLength(stored.bytes)===stored.byteLength,"save confirms real synthetic durable complete route bytes/hash");
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Downloaded routes · 1",exact:true}).waitFor();
+    await page.getByText("The texts of these routes are available on this device.",{exact:true}).waitFor();await capture("en-downloaded-native-route-texts");
+    report.checks.push({id:"explicit-route-save-durable-bytes-receipt",status:"PASS",nativeAuthority:false,installedStorageAcceptance:false});
+    await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
+    await page.evaluate(()=>window.__childJourneyBrowser.control({action:"reviewProgram",value:true}));
+    require((await page.evaluate(()=>window.__childJourneyBrowser.readPassport())).badges.items.length===0,"reading newly reviewed program never creates a badge");
+    await page.getByRole("button",{name:"Travel · Fixture journey A",exact:true}).click();await page.getByRole("button",{name:"Travel again",exact:true}).click();
+    for(const node of ["writer-a","work-a"]){await page.getByRole("button",{name:"Done · next",exact:true}).click();await page.locator('[data-child-journey-node="'+node+'"]').waitFor();await idle();}
+    await page.getByRole("button",{name:"Done · next",exact:true}).click();await page.getByText("Journey complete! Your completed steps are saved.",{exact:true}).waitFor();
+    await page.getByRole("button",{name:"Home",exact:true}).click();await idle();
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Badges · 1",exact:true}).waitFor();await page.getByText("Synthetic journey badge",{exact:true}).waitFor();
+    await page.getByRole("button",{name:"Open route · Fixture journey A",exact:true}).click();await page.getByRole("heading",{name:"Fixture journey A",exact:true}).waitFor();
+    require((await snapshot()).events.some(value=>value.method==="openedStoredRouteBytes"),"open native projection consumes decoded persisted verified route bytes");
+    report.checks.push({id:"reviewed-award-only-confirmed-native-completion-and-stored-route-open",status:"PASS",nativeAuthority:false});
+    await page.getByRole("button",{name:"Home",exact:true}).click();await idle();await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+    await page.setViewportSize({width:320,height:844});require(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),"320px badges/routes do not overflow");await capture("en-phone-private-badges-downloaded-routes");await page.setViewportSize({width:1100,height:820});
+    await page.evaluate(()=>window.__childJourneyBrowser.unmount());await browser.close();browser=null;await launch();await idle();
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Badges · 1",exact:true}).waitFor();await page.getByRole("heading",{name:"Downloaded routes · 1",exact:true}).waitFor();
+    require((await snapshot()).state.passports[profiles[0]].routes[0].bytes===stored.bytes,"independent new browser process retains exact saved route bytes and award facts");
+    report.checks.push({id:"badge-route-restart-and-phone-private-projection",status:"PASS",nativeAuthority:false});
+    require(await page.evaluate(()=>window.__childJourneyBrowser.switchProfile("journey-profile-b")),"new badge/route profile isolation");await idle();await readyScene(true);
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Badges · 0",exact:true}).waitFor();await page.getByRole("heading",{name:"Downloaded routes · 0",exact:true}).waitFor();
+    require(await page.evaluate(()=>window.__childJourneyBrowser.switchProfile("journey-profile-a")),"return exact awarded profile");await idle();await readyScene();
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+    await page.evaluate(()=>window.__childJourneyBrowser.control({action:"denyWork",value:true}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();
+    require((await page.evaluate(()=>window.__childJourneyBrowser.readPassport())).downloadedRoutes.items.length===0&&(await snapshot()).state.passports[profiles[0]].routes[0].bytes===stored.bytes,"fresh independent rights refusal hides route availability and retains private provenance");
+    await page.evaluate(()=>window.__childJourneyBrowser.control({action:"denyWork",value:false}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();
+    report.checks.push({id:"award-route-profile-isolation-and-fresh-work-denial",status:"PASS",nativeAuthority:false});
+    await page.getByRole("button",{name:"Ask an adult",exact:true}).click();await page.getByRole("button",{name:"Remove downloaded routes · Synthetic journey-profile-a",exact:true}).click();
+    const beforeDownloads=await snapshot();await page.getByRole("button",{name:"Confirm with an adult",exact:true}).click();await afterOriginalRemoval("downloads");
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Downloaded routes · 0",exact:true}).waitFor();await page.getByRole("heading",{name:"Badges · 1",exact:true}).waitFor();
+    const afterDownloads=await snapshot();require(afterDownloads.state.passports[profiles[0]].routes.length===0&&JSON.stringify(afterDownloads.state.passports[profiles[0]].badges)===JSON.stringify(beforeDownloads.state.passports[profiles[0]].badges)&&JSON.stringify(afterDownloads.state.entries)===JSON.stringify(beforeDownloads.state.entries)&&JSON.stringify(afterDownloads.state.choices)===JSON.stringify(beforeDownloads.state.choices),"original parent downloads clear preserves learning badges appearances and sibling progress");
+    report.checks.push({id:"parent-gated-real-route-byte-removal-exact-partition",status:"PASS",nativeAuthority:false});
+    // RU uses the same original mounted scene and native bridge operations.
+    // The fixture projects a local synthetic badge, never a genuine review.
+    require(await page.evaluate(()=>window.__childJourneyBrowser.transition("ru")),"original RU passport locale action");await idle();
+    await page.getByRole("button",{name:"На главную",exact:true}).click();await idle();
+    await page.getByRole("button",{name:"Скачать тексты маршрута",exact:true}).click();await page.getByText("Тексты маршрута сохранены на устройстве.",{exact:true}).waitFor();
+    const storedRu=(await snapshot()).state.passports[profiles[0]].routes[0];require(storedRu.locale==="ru"&&sha(Buffer.from(storedRu.bytes))===storedRu.snapshotChecksum,"fresh actual synthetic RU route text bytes");
+    await page.getByRole("button",{name:"Мой литературный паспорт",exact:true}).click();await idle();
+    await page.getByRole("heading",{name:"Значки · 1",exact:true}).waitFor();await page.getByRole("heading",{name:"Скачанные маршруты · 1",exact:true}).waitFor();
+    await page.getByText("Тексты этих маршрутов доступны на устройстве.",{exact:true}).waitFor();
+    await page.setViewportSize({width:320,height:844});require(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),"RU320px badges and route text fit");await capture("ru-phone-private-badges-downloaded-routes");await page.setViewportSize({width:1100,height:820});
+    await page.getByRole("button",{name:"Открыть маршрут · Тестовое путешествие A",exact:true}).click();await page.getByRole("heading",{name:"Тестовое путешествие A",exact:true}).waitFor();
+    require((await snapshot()).events.some(value=>value.method==="openedStoredRouteBytes"&&value.locale==="ru"),"RU route opened decoded persisted bytes");
+    await page.getByRole("button",{name:"Главная",exact:true}).click();await idle();
+    await page.getByRole("button",{name:"Спросить взрослого",exact:true}).click();await page.getByRole("button",{name:"Удалить скачанные маршруты · Synthetic journey-profile-a",exact:true}).click();
+    await page.getByText("Удалить тексты скачанных маршрутов этого профиля с устройства? Пройденные шаги, значки, избранное, оформление и другие профили останутся.",{exact:true}).waitFor();
+    await page.getByRole("button",{name:"Подтвердить со взрослым",exact:true}).click();await afterOriginalRemoval("ru-downloads");
+    require((await snapshot()).state.passports[profiles[0]].routes.length===0,"RU parent download removal erases exact persisted route bytes");
+    require(await page.evaluate(()=>window.__childJourneyBrowser.transition("en")),"return original EN locale after RU interactions");await idle();
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+    report.checks.push({id:"ru-badges-route-save-open-removal-original-bridge-phone",status:"PASS",nativeAuthority:false});
+  }
   await page.evaluate(()=>window.__childJourneyBrowser.control({action:"deny",value:true}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();require(!await page.getByRole("button",{name:"Fixture writer",exact:true}).count()&&(await snapshot()).state.passports[profiles[0]].learning.length===2,"revoked display preserves private semantic receipts");await page.getByText("Badges are currently unavailable.",{exact:true}).waitFor();
   await page.evaluate(()=>window.__childJourneyBrowser.control({action:"deny",value:false}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();
   await page.evaluate(()=>window.__childJourneyBrowser.control({action:"migrate",version:2}));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await page.getByText("Earlier completed steps are saved. Some content is currently unavailable.",{exact:true}).waitFor();require((await snapshot()).state.entries[profiles[0]].progress.completedNodeIds.includes("writer-a"),"archived completed ID preserved without displayed guessed kind");
@@ -284,7 +354,7 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
   await page.getByRole("button",{name:"Ask an adult",exact:true}).click();
   await page.getByRole("button",{name:"Clear history and passport · Synthetic journey-profile-a",exact:true}).click();
   const beforeHistory=await snapshot();await page.getByRole("button",{name:"Confirm with an adult",exact:true}).click();await afterOriginalRemoval("history");await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
-  const afterHistory=await snapshot();require(afterHistory.state.entries[profiles[0]].progress===null&&afterHistory.state.passports[profiles[0]].learning.length===0&&afterHistory.state.passports[profiles[0]].opened.length===0,"confirmed synthetic history removal clears semantic facts");
+  const afterHistory=await snapshot();require(afterHistory.state.entries[profiles[0]].progress===null&&afterHistory.state.passports[profiles[0]].learning.length===0&&afterHistory.state.passports[profiles[0]].opened.length===0&&afterHistory.state.passports[profiles[0]].badges.length===0&&afterHistory.state.passports[profiles[0]].routes.length===0,"confirmed synthetic history removal clears semantic facts awards and actual route bytes");
   require(JSON.stringify(afterHistory.state.choices)===JSON.stringify(beforeHistory.state.choices)&&JSON.stringify(afterHistory.state.entries[profiles[1]])===JSON.stringify(beforeHistory.state.entries[profiles[1]]),"history removal preserves appearance and sibling facts");
   await page.getByRole("heading",{name:"Studied writers · 0",exact:true}).waitFor();
   report.checks.push({id:"actual-app-history-removal-confirmed-reprojection",status:"PASS",nativeAuthority:false});
@@ -296,8 +366,8 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
   report.checks.push({id:"actual-app-profile-removal-preserves-sibling",status:"PASS",nativeAuthority:false});
   await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();await freshSession("unknown-country-write");await page.evaluate(()=>window.__childJourneyBrowser.control({action:"fault",value:"country-readback"}));await page.getByRole("button",{name:"Fixture country",exact:true}).click();await page.waitForFunction(()=>window.__childJourneyBrowser.inspect().phase==="sealed");await scenesJoined();const uncertain=await snapshot();await page.evaluate(()=>window.__childJourneyBrowser.refresh());require((await snapshot()).events.filter(e=>e.method==="bootstrap").length===uncertain.events.filter(e=>e.method==="bootstrap").length,"uncertain country receipt seals without replay");
   report.checks.push({id:"unknown-country-write-no-replay",status:"PASS",nativeAuthority:false});
-  require(report.documentLaunches?.length===2&&new Set(report.documentLaunches.map(v=>v.documentId)).size===2,"exactly two explicit browser document lifetimes, with no implicit reload");require(errors.length===0,"restart runtime errors "+errors.join(";"));await page.evaluate(()=>window.__childJourneyBrowser.unmount());require(JSON.stringify(await nativeRuntimeSources(root))===JSON.stringify(report.sourceInputs),"whole source fingerprint preserved");report.status="PASS";return report;
+  const launches=options.passportProgram===true?3:2;require(report.documentLaunches?.length===launches&&new Set(report.documentLaunches.map(v=>v.documentId)).size===launches,"exact explicit browser document lifetimes, with no implicit reload");require(errors.length===0,"restart runtime errors "+errors.join(";"));await page.evaluate(()=>window.__childJourneyBrowser.unmount());require(JSON.stringify(await nativeRuntimeSources(root))===JSON.stringify(report.sourceInputs),"whole source fingerprint preserved");report.status="PASS";return report;
  }catch(error){report.status="FAIL";report.error=String(error?.stack??error);report.failureSeamSnapshot=await seam.control({action:"snapshot"},key).catch(()=>null);report.pageErrors=errors;await fs.writeFile(path.join(output,"failure-before-observation.json"),JSON.stringify(report,null,2)+"\n",{flag:"wx"});if(page&&!page.isClosed()){report.failureObservation=await bounded("failure-observation",()=>page.evaluate(()=>({text:document.body.innerText,fixture:window.__childJourneyBrowser?.inspect()})),5000).catch(error=>({error:String(error)}));await bounded("failure-capture",()=>page.screenshot({path:path.join(output,"failed-page.png"),timeout:5000}),7000).catch(error=>{report.failureCaptureError=String(error);});}throw error;}
  finally{await fs.writeFile(path.join(output,"result-before-cleanup.json"),JSON.stringify(report,null,2)+"\n",{flag:"wx"});const cleanup=await Promise.allSettled([bounded("browser-close",()=>browser?.close(),15000),bounded("server-close",()=>server?.close(),15000)]);report.cleanup={ownedBrowserClosed:cleanup[0].status==="fulfilled",ownedServerClosed:cleanup[1].status==="fulfilled",nativeAuthority:false};const failed=cleanup.filter(v=>v.status==="rejected");if(failed.length){report.status="FAIL";report.cleanupErrors=failed.map(v=>String(v.reason));}await fs.writeFile(path.join(output,"result.json"),JSON.stringify(report,null,2)+"\n");if(failed.length)throw Error("Owned browser/server cleanup failed; raw errors retained");}
 }
-if(isLocalCliEntry(import.meta.url)){const args=process.argv.slice(2),options={};for(let i=0;i<args.length;i++){if(args[i]==="--execute")options.execute=true;else if(["--root","--out","--run-id","--browser"].includes(args[i])&&args[i+1]&&!args[i+1].startsWith("--"))options[{"--root":"rootDir","--out":"outDir","--run-id":"runId","--browser":"executablePath"}[args[i]]]=args[++i];else throw Error("Use --root exact-root --out own-.tmp-path --run-id32hex [--browser existing-executable --execute]");}const report=await runChildDiscoveryPassportBrowserFixture(options);process.stdout.write(JSON.stringify({status:report.status,output:report.output,nativeAuthority:false,releaseReady:false})+"\n");}
+if(isLocalCliEntry(import.meta.url)){const args=process.argv.slice(2),options={};for(let i=0;i<args.length;i++){if(args[i]==="--execute")options.execute=true;else if(args[i]==="--passport-program")options.passportProgram=true;else if(["--root","--out","--run-id","--browser"].includes(args[i])&&args[i+1]&&!args[i+1].startsWith("--"))options[{"--root":"rootDir","--out":"outDir","--run-id":"runId","--browser":"executablePath"}[args[i]]]=args[++i];else throw Error("Use --root exact-root --out own-.tmp-path --run-id32hex [--browser existing-executable --execute --passport-program]");}const report=await runChildDiscoveryPassportBrowserFixture(options);process.stdout.write(JSON.stringify({status:report.status,output:report.output,nativeAuthority:false,releaseReady:false})+"\n");}

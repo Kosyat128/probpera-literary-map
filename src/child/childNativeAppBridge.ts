@@ -13,6 +13,7 @@ import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJour
 import { childNativeDiscoveryShelf, decodeChildNativeDiscovery, decodeChildNativePassport, decodeChildNativeCountryOpen,
   decodeChildNativeRemovalTarget, type ChildNativeDiscoveryController, type ChildNativePassportController } from "./childNativeDiscoveryPassport";
 import localPolicy from "./childNativeLocalV2Policy.json";
+import { decodeChildNativeRouteSave } from "./childNativePassportProgram";
 import type { PlatformServices, PreferenceStore } from "../platform/ports";
 
 /** LOCAL V2 process authority is native. No V1 trusted wall/boot epoch or
@@ -45,6 +46,7 @@ export interface ChildNativeAppPlugin {
   listDiscovery?(request: unknown): Promise<unknown>;
   readPassport?(request: unknown): Promise<unknown>;
   recordCountryOpen?(request: unknown): Promise<unknown>;
+  saveJourneyRoute?(request: unknown): Promise<unknown>;
   addListener(event: "invalidated", listener: (value: unknown) => void): Promise<{ remove(): Promise<void> }>;
 }
 export const CHILD_NATIVE_LOCAL_POLICY_VERSION = localPolicy.version;
@@ -468,7 +470,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen",
+  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -479,7 +481,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       const original = request(); dispatched = true;
       const raw = await invoke(method, { ...original, contextToken: c.token, ...input });
       if (!current(c, generation)) {
-        if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen"].includes(method)) uncertain = true;
+        if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute"].includes(method)) uncertain = true;
         return null;
       }
       const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
@@ -491,7 +493,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       // An uncorrelated save reply cannot tell us whether native committed.
       // Keep this controller sealed until a new host lifetime independently
       // reads native state; refresh/lifecycle must not replay an uncertain save.
-      if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen"].includes(method) && dispatched) uncertain = true;
+      if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute"].includes(method) && dispatched) uncertain = true;
       if (snapshot.context === c) { seal("unavailable"); await retire(c); }
       return null;
     }
@@ -519,6 +521,12 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         if (!c?.profileId || !c.package || !copied || copied.kind !== "country"
           || typeof options.plugin?.recordCountryOpen !== "function") return Promise.resolve(null);
         return data("recordCountryOpen", { reference: copied }, raw => decodeChildNativeCountryOpen(raw, c, copied));
+      },
+      saveJourneyRoute(journeyId, expectedRevision) {
+        const c = snapshot.context;
+        if (!c?.profileId || !c.package || !childNativeJourneyId(journeyId) || !childNativeJourneyRevision(expectedRevision)
+          || expectedRevision >= Number.MAX_SAFE_INTEGER - 1 || typeof options.plugin?.saveJourneyRoute !== "function") return Promise.resolve(null);
+        return data("saveJourneyRoute", { journeyId, expectedRevision }, raw => decodeChildNativeRouteSave(raw, c, journeyId, expectedRevision));
       },
     } satisfies ChildNativePassportController),
     journeys: Object.freeze({

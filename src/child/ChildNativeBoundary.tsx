@@ -5,6 +5,7 @@ import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
 import { ChildNativeDiscoveryPassportView, type ChildNativeDiscoveryPassportViewName } from "./ChildNativeDiscoveryPassportView";
 import type { ChildNativeRemovalTarget } from "./childNativeDiscoveryPassport";
+import { childNativeJourneyId } from "./childNativeJourney";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import type { ChildNativeAppController, ChildNativeAppSnapshot, ChildNativeCollection,
   ChildNativeCollectionValue, ChildNativeEntity, ChildNativeAction } from "./childNativeAppBridge";
@@ -101,13 +102,18 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
             {language === "ru" ? "Очистить историю и паспорт" : "Clear history and passport"} · {profile.label}</button>
           <button disabled={busy} type="button" onClick={() => { setRemoval({ profileId: profile.id, scope: "profile", contextToken: state.context!.token, language }); setCreating(false); setEditing(false); }}>
             {language === "ru" ? "Удалить профиль" : "Remove profile"} · {profile.label}</button>
+          <button disabled={busy} type="button" onClick={() => { setRemoval({ profileId: profile.id, scope: "downloads", contextToken: state.context!.token, language }); setCreating(false); setEditing(false); }}>
+            {language === "ru" ? "Удалить скачанные маршруты" : "Remove downloaded routes"} · {profile.label}</button>
         </div>)}
         {removal && selectedRemoval && <div className="child-native-removal" role="region"
           aria-label={language === "ru" ? "Подтверждение удаления" : "Removal confirmation"}>
           <h3>{selectedRemoval.label}</h3>
           <p>{removal.scope === "history"
-            ? language === "ru" ? "Очистить историю и литературный паспорт этого профиля? Имя, PIN, оформление, избранное и сохранённые материалы останутся."
-              : "Clear this profile's history and literary passport? Its name, the parent PIN, appearance, favorites and saved content will stay."
+            ? language === "ru" ? "Очистить историю, литературный паспорт, значки и скачанные маршруты этого профиля? Имя, PIN, оформление и избранное останутся."
+              : "Clear this profile's history, literary passport, badges and downloaded routes? Its name, the parent PIN, appearance and favorites will stay."
+            : removal.scope === "downloads"
+              ? language === "ru" ? "Удалить тексты скачанных маршрутов этого профиля с устройства? Пройденные шаги, значки, избранное, оформление и другие профили останутся."
+                : "Remove this profile's downloaded route texts from this device? Completed steps, badges, favorites, appearance and other profiles will stay."
             : language === "ru" ? "Удалить этот профиль и все его данные на устройстве? Другие профили и родительский PIN останутся."
               : "Remove this profile and all its data on this device? Other profiles and the parent PIN will stay."}</p>
           <button disabled={busy} type="button" onClick={() => { void act("delete-child-data", { profileId: removal.profileId, scope: removal.scope }); }}>
@@ -430,7 +436,11 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       <ChildNativeDiscoveryPassportView controller={controller} contextToken={c.token} profileId={c.profileId!} language={language}
         view={discoveryView ?? "home"} visible={!journeyActive&&!loading&&!collection&&searchResults===null
           && (!!discoveryView || !!current&&!!c.home&&same(current.reference,c.home))}
-        onRequestView={view => { void showDiscoveryPassport(view); }} onOpen={ref => { void open(ref); }} />
+        onRequestView={view => { void showDiscoveryPassport(view); }} onOpen={ref => { void open(ref); }}
+        onStartJourney={journeyId => {
+          if (context.current !== c || !childNativeJourneyId(journeyId)) return;
+          setDiscoveryView(null); journeyIntent.current = { profileId: c.profileId!, journeyId }; setJourneyNavigation(value => value + 1);
+        }} />
       <ChildNativeJourneyView key={c.profileId!} controller={controller} contextToken={c.token} profileId={c.profileId!}
         language={language} navigationEpoch={journeyNavigation}
         homeVisible={!discoveryView&&!loading&&!collection&&searchResults===null&&!!current&&!!c.home&&same(current.reference,c.home)}

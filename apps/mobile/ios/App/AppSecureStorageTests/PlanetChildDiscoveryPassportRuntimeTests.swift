@@ -130,7 +130,7 @@ final class PlanetChildDiscoveryPassportRuntimeTests: XCTestCase {
         XCTAssertEqual((value["revision"] as? NSNumber)?.uint64Value,try XCTUnwrap(prior["revision"] as? NSNumber).uint64Value+1)
         let retired=try await native(web,"retire",nativeBase(token));XCTAssertEqual(retired["status"] as? String,"retired")
         let (fresh,_)=try await nativeContext(web,plugin),reread=try await native(web,"readPassport",nativeBase(fresh)),protected=try XCTUnwrap(reread["value"] as? [String:Any]);XCTAssertNotEqual(fresh,token);XCTAssertEqual((protected["revision"] as? NSNumber)?.uint64Value,(value["revision"] as? NSNumber)?.uint64Value)
-        let countries=try XCTUnwrap(protected["countries"] as? [[String:Any]]);XCTAssertTrue(countries.contains(where:{ ($0["reference"] as? [String:Any])?["id"] as? String==country["id"] as? String }));XCTAssertEqual((protected["badges"] as? [String:Any])?["status"] as? String,"unavailable");XCTAssertEqual((protected["downloadedRoutes"] as? [String:Any])?["status"] as? String,"unavailable")
+        let countries=try XCTUnwrap(protected["countries"] as? [[String:Any]]);XCTAssertTrue(countries.contains(where:{ ($0["reference"] as? [String:Any])?["id"] as? String==country["id"] as? String }));XCTAssertEqual((protected["badges"] as? [String:Any])?["status"] as? String,"unavailable");XCTAssertEqual((protected["downloadedRoutes"] as? [String:Any])?["status"] as? String,"ready")
     }
     @MainActor func testGenuineOriginalParentGateRemovesDedicatedFixtureProfileAndRedactsOrigin() async throws {
         guard ProcessInfo.processInfo.environment["LITERARY_PLANET_DISCOVERY_REMOVAL_OPERATOR_FIXTURE_AVAILABLE"]=="true" else { throw XCTSkip("NOT_RUN: explicit operator-owned expendable fixture and actual original native PIN controls required") }
@@ -142,5 +142,107 @@ final class PlanetChildDiscoveryPassportRuntimeTests: XCTestCase {
         let result=try await native(web,"perform",removal,timeout:35);XCTAssertEqual(result["status"] as? String,"adult")
         let retained=try XCTUnwrap(result["profiles"] as? [[String:Any]]);XCTAssertFalse(retained.contains(where:{ $0["id"] as? String==profile }));XCTAssertEqual(Set(retained.compactMap { $0["id"] as? String }),Set(profiles.compactMap { $0["id"] as? String }.filter { $0 != profile }))
         XCTAssertTrue(try PlanetChildDataStore.fixtureProductionOrigin(profileId:nil,expectRedacted:true))
+    }
+}
+
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    func testReviewedProgramUsesSignedExactAudienceAndConfirmedNativeFacts() throws {
+        for scenario in ["valid","incomplete","read-only"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testProgramSignatureDomainAndIndependentKeyAdmissionDenyUnknown() throws {
+        for scenario in ["wrong-domain","changed-review","unpinned"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testRulesBindExactJourneyGraphOrderedCompletionAndUniqueBadge() throws {
+        for scenario in ["subset-rule","duplicate-rule","unknown-node"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testCurrentProgramAgeAndTimeRemainIndependentAdmissionGates() throws {
+        for scenario in ["wrong-age","expired-program","award-expiry"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testActualRouteSnapshotContainsFullNestedPayloadClosureAndOpensStoredBytes() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario("snapshot")) }
+    func testSavedRouteExpiredOrChangedPackageNeverAdvertisesAvailability() throws {
+        for scenario in ["expired-route","stale-route"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testSavedSnapshotRejectsCorruptedPayloadAndOrphanGraphRows() throws {
+        for scenario in ["tamper","orphan"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testSavedSnapshotRejectsReorderedClosureAndCallerApprovalField() throws {
+        for scenario in ["reordered","unknown-snapshot-field"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario(scenario),scenario) }
+    }
+    func testOriginalLedgerBytesStayExactBeforeFirstSchema2Mutation() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario("legacy")) }
+    func testAll32RouteReceiptsRetainArchiveAndDenyAtomicOverflow() throws { XCTAssertTrue(try PlanetChildPassportFixtureBytes.capacity(false));XCTAssertTrue(try PlanetChildPassportFixtureBytes.capacity(true)) }
+    func testDownloadsRemovalPreservesLearnedFactsAwardsAndExactSiblingBytes() throws {
+        XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario("download-clear"));XCTAssertTrue(try PlanetChildDataStore.fixturePassportDownloadsIsolation())
+    }
+    func testSaveWireAcceptsOnlyNativeResolvedJourneyIdAndPassportRevision() throws {
+        let request: [String:Any]=["version":2,"requestId":String(repeating:"1",count:32),"contextToken":String(repeating:"2",count:32),"journeyId":"route-one","expectedRevision":7]
+        let decoded=try PlanetChildLocalV2Wire.decode("saveJourneyRoute",request);XCTAssertEqual(decoded.journeyId,"route-one");XCTAssertEqual(decoded.expectedRevision,7)
+        for field in ["bytes","base64","url","approved","badgeId","fullRecords"] { var forged=request;forged[field]="caller-value";XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("saveJourneyRoute",forged),field) }
+    }
+    func testDownloadsRemovalUsesOriginalDeleteChildDataParentActionOnly() throws {
+        let request: [String:Any]=["version":2,"requestId":String(repeating:"1",count:32),"contextToken":String(repeating:"2",count:32),"action":"delete-child-data","target":["profileId":"reader","scope":"downloads"]]
+        XCTAssertEqual(try PlanetChildLocalV2Wire.decode("perform",request).action,"delete-child-data")
+        var forged=request;forged["action"]="delete-downloaded-route";XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("perform",forged))
+    }
+}
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    /** AUTHORED_NOT_COMPILED_NOT_RUN. This invokes the production permit path,
+     * which pure signed-program and codec fixtures cannot exercise. It needs an
+     * operator-owned expendable profile and genuinely admitted installed package. */
+    @MainActor func testGenuineEmptyProgramPinsDoNotBlockExplicitLearningCompletion() async throws {
+        guard ProcessInfo.processInfo.environment["LITERARY_PLANET_BADGES_DOWNLOADS_OPERATOR_FIXTURE_AVAILABLE"]=="true" else {
+            throw XCTSkip("NOT_RUN: dedicated operator-owned installed native badges/downloads fixture required")
+        }
+        let (web,plugin)=try nativeHost(),(token,context)=try await nativeContext(web,plugin)
+        let profile=try XCTUnwrap(context["profileId"] as? String),current=try await native(web,"readContext",nativeBase(token))
+        let profiles=try XCTUnwrap(current["profiles"] as? [[String:Any]])
+        guard profiles.contains(where:{ $0["id"] as? String==profile && ($0["label"] as? String)?.hasPrefix("Native badges downloads fixture ")==true }) else {
+            throw XCTSkip("NOT_RUN: explicit completion may only mutate a dedicated expendable fixture profile")
+        }
+        let passportReply=try await native(web,"readPassport",nativeBase(token)),passport=try XCTUnwrap(passportReply["value"] as? [String:Any])
+        let badges=try XCTUnwrap(passport["badges"] as? [String:Any])
+        guard badges["status"] as? String=="unavailable" else { throw XCTSkip("NOT_RUN: this regression requires independently unavailable program admission") }
+        let beforePassportRevision=try XCTUnwrap(passport["revision"] as? NSNumber).uint64Value
+        let list=try await native(web,"listJourneys",nativeBase(token)),routes=try XCTUnwrap(list["value"] as? [[String:Any]])
+        guard let first=routes.first,let journey=first["journeyId"] as? String else { throw XCTSkip("NOT_RUN: current native-reviewed route required") }
+        let read=try await native(web,"readJourneyProgress",nativeBase(token)),prior=try XCTUnwrap(read["value"] as? [String:Any])
+        var open=nativeBase(token);open["journeyId"]=journey;open["expectedRevision"]=try XCTUnwrap(prior["revision"] as? NSNumber).uint64Value
+        let opened=try await native(web,"openJourney",open),value=try XCTUnwrap(opened["value"] as? [String:Any])
+        let progress=try PlanetChildJourney.Progress.decodeDTO(try XCTUnwrap(value["progress"]))
+        let node=try XCTUnwrap(value["node"] as? [String:Any]),reference=try XCTUnwrap(node["reference"] as? [String:Any])
+        guard let currentNode=progress.currentNodeId,let kind=reference["kind"] as? String,["writer","work"].contains(kind) else {
+            throw XCTSkip("NOT_RUN: fixture route must have a current writer/work node for explicit learning")
+        }
+        let revision=try XCTUnwrap(value["revision"] as? NSNumber).uint64Value
+        var complete=nativeBase(token);complete["journeyId"]=journey;complete["expectedRevision"]=revision;complete["currentNodeId"]=currentNode;complete["action"]="complete"
+        let completed=try await native(web,"advanceJourney",complete)
+        XCTAssertEqual(completed["status"] as? String,"ok")
+        let result=try XCTUnwrap(completed["value"] as? [String:Any]),confirmed=try PlanetChildJourney.Progress.decodeDTO(try XCTUnwrap(result["progress"]))
+        XCTAssertEqual((result["revision"] as? NSNumber)?.uint64Value,revision+1)
+        XCTAssertTrue(confirmed.completedNodeIds.contains(currentNode))
+        let retired=try await native(web,"retire",nativeBase(token));XCTAssertEqual(retired["status"] as? String,"retired")
+        let (fresh,_)=try await nativeContext(web,plugin);XCTAssertNotEqual(fresh,token)
+        let restored=try await native(web,"readJourneyProgress",nativeBase(fresh)),stored=try XCTUnwrap(restored["value"] as? [String:Any])
+        XCTAssertEqual(try PlanetChildJourney.Progress.decodeDTO(try XCTUnwrap(stored["progress"])),confirmed)
+        let reread=try await native(web,"readPassport",nativeBase(fresh)),retained=try XCTUnwrap(reread["value"] as? [String:Any])
+        XCTAssertEqual((retained["revision"] as? NSNumber)?.uint64Value,beforePassportRevision+1)
+        let facts=try XCTUnwrap(retained[kind=="writer" ? "writers":"works"] as? [[String:Any]])
+        XCTAssertTrue(facts.contains(where:{ ($0["reference"] as? [String:Any])?["id"] as? String==currentNode }))
+        let unavailable=try XCTUnwrap(retained["badges"] as? [String:Any])
+        XCTAssertEqual(unavailable["status"] as? String,"unavailable")
+        XCTAssertTrue(try XCTUnwrap(unavailable["items"] as? [[String:Any]]).isEmpty)
+    }
+}
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    func testPassportResultCloseDeniesFurtherReadsAndPreservesDetachedRouteBytes() throws {
+        XCTAssertTrue(try PlanetChildDataStore.fixturePassportResultLifetime())
+    }
+}
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    func testDistinctSignedRereviewPreservesPriorAwardAndCanEarnCurrentReview() throws {
+        XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario("re-reviewed-program"))
     }
 }

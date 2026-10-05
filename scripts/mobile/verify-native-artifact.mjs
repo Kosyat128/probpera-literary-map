@@ -12,6 +12,7 @@ import { normalizeChildNativePins, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_M
 import { collectChildNativeMediaOutputs, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE } from "./native-child-media-assets.mjs";
 import { collectChildNativeResourceOutputs, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_CATALOG } from "./native-child-resource-assets.mjs";
 import { collectChildNativeSceneOutputs, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE } from "./native-child-scene-assets.mjs";
+import { collectChildNativePassportOutputs, CHILD_NATIVE_PASSPORT_ASSET_MODULE, CHILD_NATIVE_PASSPORT_PIN_SOURCE } from "./native-child-passport-assets.mjs";
 
 const SHA = /^[a-f0-9]{64}$/u;
 const json = value => JSON.stringify(value, null, 2) + "\n";
@@ -204,7 +205,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
         || actual.get(row.output)?.bytes !== original.bytes.length || !inventory.has(row.output)) throw new Error();
       childOutputs.add(row.output);
     }
-    if ([...actual.keys()].some(name => name.startsWith("child-native/") && !name.startsWith("child-native/media/") && !name.startsWith("child-native/resources/") && !name.startsWith("child-native/scenes/") && !childOutputs.has(name))) throw new Error();
+    if ([...actual.keys()].some(name => name.startsWith("child-native/") && !name.startsWith("child-native/media/") && !name.startsWith("child-native/resources/") && !name.startsWith("child-native/scenes/") && !name.startsWith("child-native/passport/") && !childOutputs.has(name))) throw new Error();
   } catch { childOutputs.clear();add("CHILD_NATIVE_PROVENANCE", "child-native/", "Child outputs require the exact pinned source bytes, fixed catalog projection, exporter input and complete bounded inventory."); }
   // A separate exact media closure is mechanically reconstructed from current
   // source bytes and independent reviewer pins; text approval grants no media.
@@ -288,6 +289,32 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
     }
     if ([...actual.keys()].some(name => name.startsWith("child-native/scenes/") && !found.has(name))) throw new Error();
   } catch { add("CHILD_NATIVE_SCENE_PROVENANCE","child-native/scenes/","Exact independently signed scene/package/media/rights/source graph and canonical output inventory required."); }
+  const claimsPassport = inputMap.has(CHILD_NATIVE_PASSPORT_ASSET_MODULE) || Object.hasOwn(artifact, "childNativePassportProgramAssets")
+    || [...actual.keys()].some(name => name.startsWith("child-native/passport/"));
+  if (claimsPassport) try {
+    const metadata = artifact.childNativePassportProgramAssets;
+    if (!inputMap.has(CHILD_NATIVE_PASSPORT_ASSET_MODULE) || !fields(metadata, ["pinSource", "outputs"])
+      || !fields(metadata.pinSource, ["path", "sha256"]) || metadata.pinSource.path !== CHILD_NATIVE_PASSPORT_PIN_SOURCE
+      || !SHA.test(metadata.pinSource.sha256) || inputMap.get(CHILD_NATIVE_PASSPORT_PIN_SOURCE) !== metadata.pinSource.sha256
+      || !Array.isArray(metadata.outputs) || metadata.outputs.length < 1 || metadata.outputs.length > 65) throw new Error();
+    for (const source of [CHILD_NATIVE_PASSPORT_ASSET_MODULE, "scripts/mobile/native-child-package-assets.mjs", "src/child/childNativePassportProgram.ts",
+      "src/child/childNativeJourney.ts", "src/child/childPackage.ts", "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts",
+      "src/child/childProfile.ts", "src/planet/contentPackageProtocol.mjs"])
+      if (inputMap.get(source) !== sha(await regular(root, source))) throw new Error();
+    const expected = await collectChildNativePassportOutputs(root, artifact.platform, artifact.channel);
+    if (!same(metadata.pinSource, expected.pinSource) || metadata.outputs.length !== expected.outputs.length) throw new Error();
+    const byOutput = new Map(expected.outputs.map(row => [row.output, row])), found = new Set();
+    for (const row of metadata.outputs) {
+      if (!fields(row, ["output", "source", "sourceSha256", "transformation", "outputSha256"]) || found.has(row.output)) throw new Error();
+      const original = byOutput.get(row.output);
+      if (!original || inputMap.get(row.source) !== original.sourceSha256 || row.source !== original.source
+        || row.sourceSha256 !== original.sourceSha256 || row.transformation !== original.transformation
+        || row.outputSha256 !== original.outputSha256 || actual.get(row.output)?.sha256 !== original.outputSha256
+        || actual.get(row.output)?.bytes !== original.bytes.length || !inventory.has(row.output)) throw new Error();
+      found.add(row.output); childOutputs.add(row.output);
+    }
+    if ([...actual.keys()].some(name => name.startsWith("child-native/passport/") && !found.has(name))) throw new Error();
+  } catch { add("CHILD_NATIVE_PASSPORT_PROVENANCE", "child-native/passport/", "Exact independently signed program/package/review/rules and canonical output inventory required."); }
   const resource = (value, owner, javascript = false) => {
     try {
       if (typeof value !== "string" || !value || /[\\%\u0000-\u0020\u007f]/u.test(value) || value.startsWith("//")) throw new Error();

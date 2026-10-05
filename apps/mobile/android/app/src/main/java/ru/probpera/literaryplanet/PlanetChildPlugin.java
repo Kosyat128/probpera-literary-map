@@ -63,5 +63,6 @@ public final class PlanetChildPlugin extends Plugin {
     @Override protected void handleOnNewIntent(android.content.Intent intent){if(owner!=null)owner.nativeRouteInput();}
     @PluginMethod public void listDiscovery(PluginCall call){dispatch("listDiscovery",call);}
     @PluginMethod public void readPassport(PluginCall call){dispatch("readPassport",call);}
+    @PluginMethod public void saveJourneyRoute(PluginCall call){dispatch("saveJourneyRoute",call);}
     @PluginMethod public void recordCountryOpen(PluginCall call){dispatch("recordCountryOpen",call);}
 }

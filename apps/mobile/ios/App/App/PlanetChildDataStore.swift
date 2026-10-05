@@ -96,7 +96,7 @@ final class PlanetChildDataStore {
         var sdkJourney=false,journeys=[String:JourneyEntry]()
         var sdkPassport=false,passports=[String:PassportEntry]()
         var sdkCollections=false,collectionRevisions=[String:UInt64](),tombstones=[String:UInt64](),sdkUnboundBirth: String?,sdkUnboundContent: String?
-        func wipe() { for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } } }
+        func wipe() { for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } };for profile in Array(passports.keys) { if var entry=passports.removeValue(forKey:profile) { entry.ledger.disposeRouteBytes() } } }
         deinit { wipe() }
     }
     private let name: String, identity: String
@@ -1109,7 +1109,7 @@ extension PlanetChildDataStore {
             try Self.require(revision==expectedRevision);let next=try PlanetChildJourney.next(revision),progress=try permit.progress(admission);try Self.require(try permit.profileId(admission)==profile && journeyId==progress.journeyId)
             var values=prior?.progress ?? [:];values[progress.journeyId]=progress;try Self.require(values.count<=32)
             state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.journeys[profile]=JourneyEntry(revision:next,activeJourneyId:progress.journeyId,progress:values)
-            try Self.recordLearning(state,profile,permit.passportCredit(admission))
+            try Self.recordLearning(state,profile,permit.passportCredit(admission),permit,admission)
             // Validate every retained partition and the whole snapshot size before
             // publishing an unknown-write marker. A deterministic capacity refusal
             // must not turn unchanged durable history into a cold-denied store.
@@ -1197,11 +1197,13 @@ extension PlanetChildDataStore {
 extension PlanetChildDataStore {
     private struct PassportEntry { let revision: UInt64;var ledger: PlanetChildPassport.Ledger }
     final class LocalV2Passport {
-        let profileId: String,revision: UInt64,ledger: PlanetChildPassport.Ledger,journeys: [String:PlanetChildJourney.Progress]
+        let profileId: String,revision: UInt64,journeys: [String:PlanetChildJourney.Progress]
+        private var ledger: PlanetChildPassport.Ledger
         private let lock=NSLock();private var closed=false
         fileprivate init(_ profile: String,_ revision: UInt64,_ ledger: PlanetChildPassport.Ledger,_ journeys: [String:PlanetChildJourney.Progress]) { profileId=profile;self.revision=revision;self.ledger=ledger;self.journeys=journeys }
+        func ownedLedger() throws -> PlanetChildPassport.Ledger { lock.lock();defer { lock.unlock() };try PlanetChildDataStore.require(!closed);return ledger }
         var closedForSDK: Bool { lock.lock();defer { lock.unlock() };return closed }
-        func close() { lock.lock();closed=true;lock.unlock() }
+        func close() { lock.lock();if !closed { closed=true;ledger.disposeRouteBytes() };lock.unlock() }
         deinit { close() }
     }
     final class LocalV2PassportCompletion {
@@ -1231,6 +1233,10 @@ extension PlanetChildDataStore {
             let journeys=state.journeys[profile]?.progress ?? [:]
             for row in entry.ledger.learning { guard let saved=journeys[row.journeyId] else { throw Failure.unavailable };try require(saved.completedNodeIds.contains(row.nodeId)) }
             for row in entry.ledger.completedJourneys { guard let saved=journeys[row.journeyId] else { throw Failure.unavailable };try require(row.nodeIds.allSatisfy({ saved.completedNodeIds.contains($0) })) }
+            for badge in entry.ledger.badges {
+                if badge.trigger=="completed-journey" { try require(entry.ledger.completedJourneys.contains(where:{ $0.journeyId==badge.journeyId && $0.journeyVersion==badge.journeyVersion && $0.contentVersion==badge.contentVersion && badge.nodeIds.allSatisfy($0.nodeIds.contains) })) }
+                else { try require(badge.nodeIds.allSatisfy({ node in entry.ledger.learning.contains(where:{ $0.journeyId==badge.journeyId && $0.journeyVersion==badge.journeyVersion && $0.contentVersion==badge.contentVersion && $0.nodeId==node }) })) }
+            }
         }
     }
     private static func encodePassport(_ state: State,_ writer: Writer) throws {
@@ -1241,9 +1247,10 @@ extension PlanetChildDataStore {
         try require(try reader.number(4)==0x4c505032 && reader.number(1)==1 && state.sdkJourney);state.sdkPassport=true;let count=try reader.number(1);try require(count<=4)
         for _ in 0..<count { let profile=try reader.text(96),revision=try reader.number(8),size=try reader.number(4);try require(state.passports[profile]==nil && size>0 && size<=UInt64(PlanetChildPassport.maximumBytes));var bytes=try reader.data(Int(size));defer { bytes.resetBytes(in:0..<bytes.count) };state.passports[profile]=PassportEntry(revision:revision,ledger:try PlanetChildPassport.Ledger.decode(bytes)) };try validatePassport(state)
     }
-    private static func recordLearning(_ state: State,_ profile: String,_ credit: (PlanetChildPassport.Learning?,PlanetChildPassport.CompletedJourney?)?) throws {
+    private static func recordLearning(_ state: State,_ profile: String,_ credit: (PlanetChildPassport.Learning?,PlanetChildPassport.CompletedJourney?)?,_ permit: PlanetChildLocalV2JourneyPermit?=nil,_ admission: PlanetChildLocalV2DataAdmission?=nil) throws {
         guard let credit,credit.0 != nil || credit.1 != nil else { return }
         let previous=state.passports[profile];var ledger=previous?.ledger ?? PlanetChildPassport.Ledger();try ledger.complete(credit.0,credit.1)
+        if let permit,let admission { try ledger.collect(permit.badgeAwards(admission,ledger)) }
         state.sdkPassport=true;state.passports[profile]=PassportEntry(revision:try PlanetChildJourney.next(previous?.revision ?? 0),ledger:ledger);try validatePassport(state)
     }
     private func passportMarker(_ directory: URL) throws -> URL { let file=directory.appendingPathComponent("local-v2-passport.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file }
@@ -1257,7 +1264,7 @@ extension PlanetChildDataStore {
             try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.validatePassport(state)
             let profile=lease.scope.profileId,prior=state.passports[profile],revision=prior?.revision ?? 0
             guard let expectedRevision,let permit else { try admission.check();return LocalV2Passport(profile,revision,prior?.ledger ?? PlanetChildPassport.Ledger(),state.journeys[profile]?.progress ?? [:]) }
-            try Self.require(revision==expectedRevision);let next=try PlanetChildJourney.next(revision);var ledger=prior?.ledger ?? PlanetChildPassport.Ledger();try ledger.openCountry(permit.countryId(admission));try Self.require(try permit.profileId(admission)==profile)
+            try Self.require(revision==expectedRevision);let next=try PlanetChildJourney.next(revision);var ledger=prior?.ledger ?? PlanetChildPassport.Ledger();try permit.apply(admission,&ledger);try Self.require(try permit.profileId(admission)==profile)
             state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;state.passports[profile]=PassportEntry(revision:next,ledger:ledger)
             var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };let marker=try passportMarker(directory);var expected=try passportMarkerBytes(admission,lease,commandId,next,ledger);defer { expected.resetBytes(in:0..<expected.count) };var attempted=false
             do {
@@ -1277,12 +1284,16 @@ extension PlanetChildDataStore {
     }
     private static func removeChildData(_ state: State,_ next: inout [String:Stored],_ target: PlanetChildLocalV2RemovalTarget) throws {
         try require(state.seals[target.profileId] != nil || state.sdkUnboundBirth==target.profileId)
+        if target.scope=="downloads" {
+            if var entry=state.passports[target.profileId] { entry.ledger.clearDownloads();state.passports[target.profileId]=PassportEntry(revision:try PlanetChildJourney.next(entry.revision),ledger:entry.ledger) }
+            try validatePassport(state);return
+        }
         for compound in Array(next.keys) {
             let pair=compound.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable }
             let scope=try keyScope(purpose,key:pair[1])
             if scope.profileId==target.profileId && (target.scope=="profile" || purpose == .history || purpose == .search) { if var stored=next.removeValue(forKey:compound) { stored.value.resetBytes(in:0..<stored.value.count) } }
         }
-        state.journeys.removeValue(forKey:target.profileId);state.passports.removeValue(forKey:target.profileId)
+        state.journeys.removeValue(forKey:target.profileId);if var removed=state.passports.removeValue(forKey:target.profileId) { removed.ledger.disposeRouteBytes() }
         for key in Array(state.collectionRevisions.keys) { let pair=key.components(separatedBy:"\n");try require(pair.count==2);if pair[0]==target.profileId && (target.scope=="profile" || pair[1]==Purpose.history.rawValue) { state.collectionRevisions.removeValue(forKey:key) } }
         if target.scope=="profile" {
             state.appearances.removeValue(forKey:target.profileId);state.seals.removeValue(forKey:target.profileId)
@@ -1395,6 +1406,47 @@ extension PlanetChildDataStore {
             let row=try object(JSONSerialization.jsonObject(with:plain),keys:["schemaVersion","kind","identity","nonce","emptyChecksum","claimChecksum","payload","signature","publicKey"])
             return row["profile"]==nil && row["before"]==nil && row["after"]==nil && row["profileId"]==nil
         }
+    }
+}
+#endif
+
+#if DEBUG
+extension PlanetChildDataStore {
+    /** Original private removal/codec leaves. No Parent Gate proof is minted. */
+    static func fixturePassportDownloadsIsolation() throws -> Bool {
+        let state=try fixtureAppearanceState();defer { state.wipe() };let first="fixture-reader-one",second="fixture-reader-two",id="route-one"
+        let progress=try PlanetChildJourney.Progress(journeyId:id,journeyVersion:1,contentVersion:1,currentNodeId:nil,completedNodeIds:["node-0","node-1"],selectedCountryId:nil,selectedWriterId:nil,selectedWorkId:nil,lastSafeRoute:"journey")
+        state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true
+        state.journeys[first]=JourneyEntry(revision:7,activeJourneyId:id,progress:[id:progress]);state.journeys[second]=JourneyEntry(revision:11,activeJourneyId:id,progress:[id:progress])
+        var route=try PlanetChildPassportFixtureBytes.route();defer { route.dispose() };var ledger=PlanetChildPassport.Ledger();try ledger.openCountry("country-one")
+        try ledger.complete(PlanetChildPassport.Learning(journeyId:id,nodeId:"node-0",kind:"work",entityId:"node-0",journeyVersion:1,contentVersion:1),PlanetChildPassport.CompletedJourney(journeyId:id,journeyVersion:1,contentVersion:1,nodeIds:["node-0","node-1"]))
+        try ledger.collect([PlanetChildPassport.Badge(badgeId:"fixture-badge",ruleVersion:1,programId:"fixture-program",programVersion:1,programChecksum:String(repeating:"a",count:64),reviewChecksum:String(repeating:"b",count:64),journeyId:id,journeyVersion:1,contentVersion:1,nodeIds:["node-0","node-1"],displayId:"fixture-label",displayChecksum:String(repeating:"c",count:64),trigger:"completed-journey")]);try ledger.save(route)
+        state.passports[first]=PassportEntry(revision:5,ledger:ledger);state.passports[second]=PassportEntry(revision:13,ledger:ledger)
+        let siblingBefore=try state.passports[second]!.ledger.encoded(),profileBefore=try state.passports[first]!.ledger.encoded();var next=retainedEntries(state)
+        try removeChildData(state,&next,PlanetChildLocalV2RemovalTarget(profileId:first,scope:"downloads"))
+        guard let current=state.passports[first] else { throw Failure.unavailable };try require(current.revision==6 && current.ledger.downloadedRoutes.isEmpty && current.ledger.badges==ledger.badges && current.ledger.learning==ledger.learning && current.ledger.completedJourneys==ledger.completedJourneys && current.ledger.countries==ledger.countries)
+        try require(state.journeys[first]?.revision==7 && state.journeys[second]?.revision==11 && state.seals[first] != nil && state.seals[second] != nil && state.passports[second]?.revision==13 && (try state.passports[second]!.ledger.encoded())==siblingBefore && (try current.ledger.encoded()) != profileBefore)
+        var bytes=try encode(state);defer { bytes.resetBytes(in:0..<bytes.count) };let decoded=try decode(bytes);defer { decoded.wipe() };try require(decoded.passports[first]?.ledger.downloadedRoutes.isEmpty==true && decoded.passports[second]?.ledger.downloadedRoutes.count==1);return true
+    }
+}
+#endif
+
+#if DEBUG
+extension PlanetChildDataStore {
+    /** Result lifetime only; no package, native permit or installed OS proof. */
+    static func fixturePassportResultLifetime() throws -> Bool {
+        var route=try PlanetChildPassportFixtureBytes.route();defer { route.dispose() }
+        var ledger=PlanetChildPassport.Ledger();try ledger.save(route);defer { ledger.disposeRouteBytes() }
+        var expected=try ledger.encoded();defer { expected.resetBytes(in:0..<expected.count) }
+        let owner=LocalV2Passport("fixture-reader-one",1,ledger,[:]);defer { owner.close() }
+        ledger.disposeRouteBytes() // The transient encrypted-state owner has closed.
+        var detached=try owner.ownedLedger();defer { detached.disposeRouteBytes() }
+        try require(try detached.encoded()==expected)
+        owner.close() // Lifecycle revocation owns a separate mutable ledger.
+        try require(owner.closedForSDK && (try detached.encoded())==expected)
+        var denied=false
+        do { var after=try owner.ownedLedger();after.disposeRouteBytes() } catch { denied=true }
+        try require(denied);return true
     }
 }
 #endif

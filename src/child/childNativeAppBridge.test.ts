@@ -57,6 +57,27 @@ beforeEach(() => { vi.useFakeTimers(); vi.setSystemTime(0); });
 afterEach(async () => { for (const controller of controllers.splice(0)) await controller.dispose(); vi.useRealTimers(); vi.restoreAllMocks(); });
 
 describe("LOCAL2 native app DTO projection", () => {
+  it("sends only exact route identity and current passport revision and requires a correlated durable route receipt", async () => {
+    const f = fixture(), route = { journeyId: "journey-a", journeyVersion: 1, contentVersion: 1, title: "Synthetic route", description: "Text only.", nodeCount: 2,
+      snapshotChecksum: HASH, byteLength: 1024 };
+    const saveJourneyRoute = vi.fn(async (r: unknown) => f.dataReply(r, { profileId: "native-profile", locale: "en", generation: 1, revision: 5, route }));
+    Object.assign(f.plugin, { saveJourneyRoute }); await f.controller.start();
+    expect(await f.controller.passport!.saveJourneyRoute!("journey-a", 4)).toMatchObject({ revision: 5, route: { snapshotChecksum: HASH } });
+    expect(saveJourneyRoute.mock.calls[0][0]).toEqual({ version: 2, requestId: "2".padStart(32, "0"), contextToken: TOKEN, journeyId: "journey-a", expectedRevision: 4 });
+    expect(await f.controller.passport!.saveJourneyRoute!("../journey-a", 4)).toBeNull(); expect(saveJourneyRoute).toHaveBeenCalledTimes(1);
+  });
+  it("seals an uncorrelated route save without replaying it or refreshing an uncertain commit", async () => {
+    const f = fixture(), saveJourneyRoute = vi.fn(async (r: unknown) => ({ ...f.dataReply(r, {}), requestId: "e".repeat(32) }));
+    Object.assign(f.plugin, { saveJourneyRoute }); await f.controller.start();
+    expect(await f.controller.passport!.saveJourneyRoute!("journey-a", 4)).toBeNull(); expect(f.controller.getSnapshot().phase).toBe("sealed");
+    const bootstraps = f.plugin.bootstrap.mock.calls.length; await f.controller.refresh();
+    expect(saveJourneyRoute).toHaveBeenCalledTimes(1); expect(f.plugin.bootstrap).toHaveBeenCalledTimes(bootstraps);
+  });
+  it("sends download removal only through the original parent action and an existing exact profile target", async () => {
+    const f = fixture(); await f.controller.start();
+    expect(await f.controller.perform("delete-child-data", { profileId: "native-profile", scope: "downloads" })).toBe(true);
+    expect(f.plugin.perform.mock.calls[0][0]).toMatchObject({ action: "delete-child-data", target: { profileId: "native-profile", scope: "downloads" } });
+  });
   it("rejects V1, caller clock/authority fields and noncorrelated replies without invoking accessors", () => {
     const good = appReply({ requestId: REQUEST });
     expect(decodeChildNativeAppReply(good, REQUEST)?.status).toBe("child");

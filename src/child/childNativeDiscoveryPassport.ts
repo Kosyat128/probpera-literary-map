@@ -1,6 +1,8 @@
 import { childDataArray, childRecord, decodeChildEntityPayload, decodeChildEntityReference, type ChildEntityReference } from "./childPackage";
 import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJourneySummaries, type ChildNativeJourneySummary } from "./childNativeJourney";
 import type { ChildNativeContext, ChildNativeEntity } from "./childNativeAppBridge";
+import { decodeChildNativeBadges, decodeChildNativeDownloadedRoutes, type ChildNativeBadge, type ChildNativeDownloadedRoute,
+  type ChildNativePassportSection, type ChildNativeRouteSave } from "./childNativePassportProgram";
 
 /** Native already admits every row independently. These strict presentation
  * DTOs validate structure and correlation, never reproduce age/rights policy. */
@@ -10,12 +12,12 @@ export interface ChildNativeDiscoveryResult {
   readonly shelf: ChildNativeDiscoveryShelf; readonly items: readonly ChildNativeEntity[];
 }
 export interface ChildNativePassport {
-  readonly schemaVersion: 1; readonly profileId: string; readonly locale: "ru" | "en"; readonly generation: number;
+  readonly schemaVersion: 1 | 2; readonly profileId: string; readonly locale: "ru" | "en"; readonly generation: number;
   readonly revision: number; readonly countries: readonly ChildNativeEntity[];
   readonly writers: readonly ChildNativeEntity[]; readonly works: readonly ChildNativeEntity[];
   readonly journeys: readonly ChildNativeJourneySummary[]; readonly unresolvedCompletedNodeIds: readonly string[];
-  readonly badges: Readonly<{ status: "unavailable"; items: readonly never[] }>;
-  readonly downloadedRoutes: Readonly<{ status: "unavailable"; items: readonly never[] }>;
+  readonly badges: ChildNativePassportSection<ChildNativeBadge>;
+  readonly downloadedRoutes: ChildNativePassportSection<ChildNativeDownloadedRoute>;
 }
 export interface ChildNativeCountryOpen {
   readonly profileId: string; readonly locale: "ru" | "en"; readonly generation: number;
@@ -29,12 +31,15 @@ export interface ChildNativePassportController {
   /** Explicit user navigation only; reads, hydration and label prefetch never
    * call this protected native transaction. Null cannot confirm a credit. */
   recordCountryOpen(reference: ChildEntityReference): Promise<ChildNativeCountryOpen | null>;
+  /** Explicit save intent. Native resolves the complete route and writes its
+   * exact local bytes; the caller supplies no approval, files or receipt. */
+  saveJourneyRoute?(journeyId: string, expectedRevision: number): Promise<ChildNativeRouteSave | null>;
 }
-export interface ChildNativeRemovalTarget { readonly profileId: string; readonly scope: "history" | "profile" }
+export interface ChildNativeRemovalTarget { readonly profileId: string; readonly scope: "history" | "profile" | "downloads" }
 export function decodeChildNativeRemovalTarget(raw: unknown): ChildNativeRemovalTarget | null {
   try {
     const row = childRecord(raw, ["profileId", "scope"]);
-    return row && childNativeJourneyId(row.profileId) && (row.scope === "history" || row.scope === "profile")
+    return row && childNativeJourneyId(row.profileId) && (row.scope === "history" || row.scope === "profile" || row.scope === "downloads")
       ? Object.freeze({ profileId: row.profileId, scope: row.scope }) : null;
   } catch { return null; }
 }
@@ -70,23 +75,20 @@ export function decodeChildNativeDiscovery(raw: unknown, c: ChildNativeContext, 
     return items ? Object.freeze({ profileId: c.profileId!, locale: c.locale, generation: c.generation, shelf, items }) : null;
   } catch { return null; }
 }
-function unavailable(raw: unknown): ChildNativePassport["badges"] | null {
-  const row = childRecord(raw, ["status", "items"]), items = row && childDataArray(row.items, 0);
-  return row?.status === "unavailable" && items ? Object.freeze({ status: "unavailable", items: Object.freeze([]) }) : null;
-}
 export function decodeChildNativePassport(raw: unknown, c: ChildNativeContext): ChildNativePassport | null {
   try {
     const row = childRecord(raw, ["schemaVersion", ...bindingFields, "revision", "countries", "writers", "works", "journeys",
       "unresolvedCompletedNodeIds", "badges", "downloadedRoutes"]);
-    if (!row || row.schemaVersion !== 1 || !correlated(row, c) || !childNativeJourneyRevision(row.revision)) return null;
+    if (!row || row.schemaVersion !== 1 && row.schemaVersion !== 2 || !correlated(row, c) || !childNativeJourneyRevision(row.revision)) return null;
     const countries = entities(row.countries, "country", 2048), writers = entities(row.writers, "writer", 2048), works = entities(row.works, "work", 2048);
     const journeys = decodeChildNativeJourneySummaries(row.journeys), unresolved = childDataArray(row.unresolvedCompletedNodeIds, 2048);
-    const badges = unavailable(row.badges), downloadedRoutes = unavailable(row.downloadedRoutes);
+    const badges = decodeChildNativeBadges(row.badges, c.package?.version ?? 0), downloadedRoutes = decodeChildNativeDownloadedRoutes(row.downloadedRoutes, c.package?.version ?? 0);
     if (!countries || !writers || !works || !journeys || journeys.length > 32
       || journeys.some(value => value.contentVersion !== c.package?.version)
       || !unresolved || !unresolved.every(childNativeJourneyId) || new Set(unresolved).size !== unresolved.length
-      || !badges || !downloadedRoutes) return null;
-    return Object.freeze({ schemaVersion: 1, profileId: c.profileId!, locale: c.locale, generation: c.generation, revision: row.revision,
+      || !badges || !downloadedRoutes || row.schemaVersion === 1 && (badges.status !== "unavailable" || downloadedRoutes.status !== "unavailable")
+      || downloadedRoutes.items.reduce((sum, route) => sum + route.byteLength, 0) > 2097152) return null;
+    return Object.freeze({ schemaVersion: row.schemaVersion, profileId: c.profileId!, locale: c.locale, generation: c.generation, revision: row.revision,
       countries, writers, works, journeys, unresolvedCompletedNodeIds: Object.freeze(unresolved as string[]), badges, downloadedRoutes });
   } catch { return null; }
 }

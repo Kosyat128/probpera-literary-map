@@ -272,7 +272,7 @@ final class PlanetChildDataTransport {
         else if("listDiscovery".equals(method))row=record(value,"version","requestId","contextToken","shelf");
         else if("search".equals(method))row=record(value,"version","requestId","contextToken","query");else if("listMedia".equals(method))row=record(value,"version","requestId","contextToken","owner");else if("presentMedia".equals(method))row=record(value,"version","requestId","contextToken","owner","assetId","layout");else if("releaseMedia".equals(method))row=record(value,"version","requestId","contextToken","presentationToken");
         else if(Arrays.asList("listJourneys","readJourneyProgress","closeJourney").contains(method))row=record(value,"version","requestId","contextToken");
-        else if("openJourney".equals(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision");
+        else if("openJourney".equals(method)||"saveJourneyRoute".equals(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision");
         else if("advanceJourney".equals(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision","currentNodeId","action");
         else if("readSceneSelection".equals(method))row=record(value,"version","requestId","contextToken");
         else if("rememberSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","expectedRevision");
@@ -313,7 +313,7 @@ final class PlanetChildDataTransport {
         if("releaseScene".equals(method)&&row.get("sceneToken")!=null)sceneToken=correlation(row.get("sceneToken"));
         if("acquireWebResource".equals(method)){sceneToken=correlation(row.get("sceneToken"));slotId=string(row.get("slotId"),10);require(Arrays.asList("skin","stand","background").contains(slotId));}
         if("releaseWebResource".equals(method)&&row.get("resourceToken")!=null)resourceToken=correlation(row.get("resourceToken"));
-        if("openJourney".equals(method)||"advanceJourney".equals(method)){journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));revision=v2Integer(row.get("expectedRevision"),0,"openJourney".equals(method)?MAX_SAFE-1:MAX_SAFE-2);}
+        if("openJourney".equals(method)||"advanceJourney".equals(method)||"saveJourneyRoute".equals(method)){journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));revision=v2Integer(row.get("expectedRevision"),0,"openJourney".equals(method)?MAX_SAFE-1:MAX_SAFE-2);}
         if("advanceJourney".equals(method)){action=string(row.get("action"),8);require(Arrays.asList("complete","restart").contains(action));Object current=row.get("currentNodeId");if(current!=null)currentNodeId=PlanetChildJourney.identifier(string(current,96));require(currentNodeId!=null||"restart".equals(action));}
         return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,shelf);
     }

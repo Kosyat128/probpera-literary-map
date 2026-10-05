@@ -10,18 +10,20 @@ export const childDiscoveryPassportLabels = {
     unavailable: "Эти материалы сейчас недоступны.", retry: "Проверить снова", home: "На главную",
     private: "Этот паспорт хранится на устройстве. Взрослый может очистить историю в родительских настройках.",
     countries: "Открытые страны", studiedWriters: "Изученные писатели", studiedWorks: "Изученные произведения",
-    journeys: "Завершённые путешествия", badges: "Значки", routes: "Сохранённые маршруты",
+    journeys: "Завершённые путешествия", badges: "Значки", routes: "Скачанные маршруты",
     badgesUnavailable: "Значки пока недоступны.", routesUnavailable: "Сведения о сохранённых маршрутах пока недоступны.",
     learning: "Здесь появляются писатели и произведения после завершённых обучающих шагов путешествия.",
+    routeText: "Тексты этих маршрутов доступны на устройстве.", startRoute: "Открыть маршрут",
     retained: "Ранее пройденные шаги сохранены. Некоторые материалы сейчас недоступны." },
   en: { writers: "Writers for my age", books: "Books for my age", collections: "Gentle collections",
     passport: "My literary passport", loading: "Checking content…", empty: "Nothing here yet.",
     unavailable: "This content is currently unavailable.", retry: "Check again", home: "Back home",
     private: "This passport stays on this device. An adult can clear its history in parent settings.",
     countries: "Opened countries", studiedWriters: "Studied writers", studiedWorks: "Studied works",
-    journeys: "Completed journeys", badges: "Badges", routes: "Saved routes",
+    journeys: "Completed journeys", badges: "Badges", routes: "Downloaded routes",
     badgesUnavailable: "Badges are currently unavailable.", routesUnavailable: "Information about saved routes is currently unavailable.",
     learning: "Writers and works appear here after completed learning steps in a journey.",
+    routeText: "The texts of these routes are available on this device.", startRoute: "Open route",
     retained: "Earlier completed steps are saved. Some content is currently unavailable." },
 } as const;
 export interface ChildNativeDiscoveryPassportViewProps {
@@ -29,6 +31,7 @@ export interface ChildNativeDiscoveryPassportViewProps {
   view: ChildNativeDiscoveryPassportViewName; visible: boolean;
   onRequestView(view: ChildNativeDiscoveryPassportViewName): void;
   onOpen(reference: ChildEntityReference): void;
+  onStartJourney?(journeyId: string): void;
 }
 type Loaded = { key: string; phase: "loading" | "ready" | "unavailable"; discovery: ChildNativeDiscoveryResult | null; passport: ChildNativePassport | null };
 /** Only native projections are displayed. Retired titles are hidden by an
@@ -91,8 +94,20 @@ export function ChildNativeDiscoveryPassportView(props: ChildNativeDiscoveryPass
       <section><h3>{copy.journeys} · {passport.journeys.length}</h3>{!passport.journeys.length && <p>{copy.empty}</p>}
         <ul>{passport.journeys.map(journey => <li key={journey.journeyId}>{journey.title}</li>)}</ul></section>
       {!!passport.unresolvedCompletedNodeIds.length && <p role="status">{copy.retained}</p>}
-      <section><h3>{copy.badges}</h3><p>{copy.badgesUnavailable}</p></section>
-      <section><h3>{copy.routes}</h3><p>{copy.routesUnavailable}</p></section>
+      <section data-child-passport-badges={passport.badges.status}><h3>{copy.badges} · {passport.badges.items.length}</h3>
+        {passport.badges.status === "unavailable" ? <p>{copy.badgesUnavailable}</p> : !passport.badges.items.length ? <p>{copy.empty}</p>
+          : <ul>{passport.badges.items.map(badge => <li key={badge.programChecksum + "/" + badge.badgeId + "/" + badge.ruleVersion}>{badge.title}</li>)}</ul>}
+      </section>
+      <section data-child-passport-downloads={passport.downloadedRoutes.status}><h3>{copy.routes} · {passport.downloadedRoutes.items.length}</h3>
+        {passport.downloadedRoutes.status === "unavailable" ? <p>{copy.routesUnavailable}</p> : !passport.downloadedRoutes.items.length ? <p>{copy.empty}</p>
+          : <><p>{copy.routeText}</p><ul>{passport.downloadedRoutes.items.map(route => <li key={route.journeyId}>
+            <button type="button" onClick={() => {
+              const state = controller.getSnapshot(), context = state.context;
+              if (state.phase === "ready" && state.status === "child" && context?.token === contextToken
+                && context.profileId === profileId && context.locale === language && loaded.key === key) props.onStartJourney?.(route.journeyId);
+            }}>{copy.startRoute} · {route.title}</button>
+          </li>)}</ul></>}
+      </section>
     </div> : <>
       {!state.discovery?.items.length && <p>{copy.empty}</p>}
       <ul>{state.discovery?.items.map(row => <li key={row.reference.kind + "/" + row.reference.id}>

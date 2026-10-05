@@ -8,12 +8,16 @@ export const childJourneyLabels = {
     empty: "Путешествия пока недоступны. Можно исследовать планету.", unavailable: "Это путешествие сейчас недоступно. Ваши пройденные шаги сохранены.",
     error: "Не удалось проверить путешествие.", retry: "Проверить путешествия снова", next: "Готово · дальше", home: "К путешествиям",
     restart: "Пройти ещё раз", completed: "Путешествие завершено!", retained: "Пройденные шаги сохранены.", step: "Шаг", of: "из", done: "Пройдено",
-    savedUnavailable: "Сохранённое путешествие сейчас недоступно. Прогресс остаётся на устройстве." },
+    savedUnavailable: "Сохранённое путешествие сейчас недоступно. Прогресс остаётся на устройстве.",
+    saveRoute: "Скачать тексты маршрута", savingRoute: "Сохраняем тексты маршрута…", routeSaved: "Тексты маршрута сохранены на устройстве.",
+    routeSaveFailed: "Не удалось подтвердить сохранение маршрута." },
   en: { travel: "Travel", continue: "Continue", title: "Literary journeys", loading: "Checking journeys…",
     empty: "Journeys are currently unavailable. You can explore the planet.", unavailable: "This journey is currently unavailable. Your completed steps are saved.",
     error: "The journey could not be checked.", retry: "Check journeys again", next: "Done · next", home: "Back to journeys",
     restart: "Travel again", completed: "Journey complete!", retained: "Your completed steps are saved.", step: "Step", of: "of", done: "Completed",
-    savedUnavailable: "The saved journey is currently unavailable. Its progress stays on this device." },
+    savedUnavailable: "The saved journey is currently unavailable. Its progress stays on this device.",
+    saveRoute: "Download route texts", savingRoute: "Saving route texts…", routeSaved: "The route texts are saved on this device.",
+    routeSaveFailed: "The route save could not be confirmed." },
 } as const;
 export interface ChildNativeJourneyViewProps {
   controller: ChildNativeAppController; contextToken: string; profileId: string; language: "ru" | "en";
@@ -30,13 +34,15 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
   const [routes, setRoutes] = useState<readonly ChildNativeJourneySummary[]>([]), [saved, setSaved] = useState<ChildNativeProfileJourney | null>(null);
   const [result, setResult] = useState<ChildNativeJourneyResult | null>(null), [busy, setBusy] = useState(true);
   const [error, setError] = useState<"read" | "unavailable" | null>(null), [renderEpoch, setRenderEpoch] = useState(navigationEpoch);
+  const [routeSave, setRouteSave] = useState<{ key: string; phase: "saving" | "saved" | "failed" } | null>(null);
   const mounted = useRef(false), sequence = useRef(0), initial = useRef(props.initialJourneyId ?? null), previousNavigation = useRef(navigationEpoch);
+  const savingKey = useRef<string | null>(null);
   const latest = useRef(props); latest.current = props;
   const heading = useRef<HTMLHeadingElement>(null), continueButton = useRef<HTMLButtonElement>(null);
   const alive = (attempt: number) => mounted.current && sequence.current === attempt
-    && latest.current.contextToken === contextToken && latest.current.profileId === profileId
+    && latest.current.contextToken === contextToken && latest.current.profileId === profileId && latest.current.language === language
     && controller.getSnapshot().phase === "ready" && controller.getSnapshot().status === "child"
-    && controller.getSnapshot().context?.token === contextToken;
+    && controller.getSnapshot().context?.token === contextToken && controller.getSnapshot().context?.locale === language;
   async function admit(journeyId: string, revision: number, attempt: number, focus = true) {
     const next = await port?.open(journeyId, revision);
     if (!alive(attempt)) return;
@@ -59,23 +65,23 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
     setBusy(false);
   }
   useLayoutEffect(() => {
-    mounted.current = true; setRoutes([]); setSaved(null); setResult(null); setBusy(true); setError(null);
+    mounted.current = true; setRoutes([]); setSaved(null); setResult(null); setBusy(true); setError(null); setRouteSave(null);
     // Initial/native publication can still be joining its control request.
     void Promise.resolve().then(() => { if (mounted.current) void load(initial.current); });
     return () => { mounted.current = false; ++sequence.current; };
-  }, [controller, contextToken, profileId, port]);
+  }, [controller, contextToken, profileId, language, port]);
   useLayoutEffect(() => {
     if (previousNavigation.current === navigationEpoch) return;
-    previousNavigation.current = navigationEpoch; const attempt = ++sequence.current;
+    previousNavigation.current = navigationEpoch; const attempt = ++sequence.current, requested = latest.current.initialJourneyId ?? null;
     setResult(null); setSaved(null); setError(null); setBusy(true);
-    latest.current.onActiveChange(false); latest.current.onIntentChange(null); initial.current = null;
+    latest.current.onActiveChange(false); latest.current.onIntentChange(requested); initial.current = requested; setRouteSave(null);
     // A dispatched completion may commit after navigation has hidden its node.
     // Join retirement, then read the current revision before offering Continue.
     void (async () => {
       const closed = await port?.close();
       if (!alive(attempt)) return;
       if (!closed) { setBusy(false); setError("read"); return; }
-      await load();
+      await load(requested);
     })();
   }, [navigationEpoch, port]);
   async function begin(journeyId: string) {
@@ -101,6 +107,27 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
     if (!ok) { setBusy(false); setError("read"); return; }
     await load(); queueMicrotask(() => { if (mounted.current) continueButton.current?.focus(); });
   }
+  async function saveRoute(journeyId: string) {
+    if (busy || savingKey.current !== null || !controller.passport?.saveJourneyRoute || !mounted.current) return;
+    const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/"), attempt = sequence.current;
+    if (routeSave?.key === key && routeSave.phase === "saving") return;
+    savingKey.current = key; setRouteSave({ key, phase: "saving" });
+    try {
+      const passport = await controller.passport.read();
+      if (!alive(attempt)) return;
+      const receipt = passport ? await controller.passport.saveJourneyRoute(journeyId, passport.revision) : null;
+      if (!alive(attempt)) return;
+      setRouteSave({ key, phase: receipt ? "saved" : "failed" });
+    } catch { if (alive(attempt)) setRouteSave({ key, phase: "failed" }); }
+    finally { if (savingKey.current === key) savingKey.current = null; }
+  }
+  function routeSaveButton(journeyId: string) {
+    const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/"), phase = routeSave?.key === key ? routeSave.phase : null;
+    return controller.passport?.saveJourneyRoute ? <span className="child-native-route-save">
+      <button type="button" disabled={busy || routeSave?.phase === "saving"} onClick={() => { void saveRoute(journeyId); }}>{phase === "saving" ? copy.savingRoute : copy.saveRoute}</button>
+      {phase === "saved" && <span role="status">{copy.routeSaved}</span>}{phase === "failed" && <span role="alert">{copy.routeSaveFailed}</span>}
+    </span> : null;
+  }
   if (!port || !homeVisible && !result || renderEpoch !== navigationEpoch && result) return null;
   const visible = result?.journey && result.progress ? result : null;
   const offered = saved?.progress && routes.find(route => route.journeyId === saved.progress!.journeyId);
@@ -110,6 +137,7 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
       <button type="button" disabled={busy} onClick={() => { void load(); }}>{copy.retry}</button></div>}
     {visible ? <>
       <h2 ref={heading} tabIndex={-1}>{visible.journey!.title}</h2>
+      {routeSaveButton(visible.journey!.journeyId)}
       <p role="status">{copy.done}: {visible.journey!.nodeIds.filter(id => visible.progress!.completedNodeIds.includes(id)).length} {copy.of} {visible.journey!.nodeCount}</p>
       {visible.node ? <article data-child-journey-node={visible.node.reference.id}>
         <p>{copy.step} {visible.journey!.nodeIds.indexOf(visible.node.reference.id) + 1} {copy.of} {visible.journey!.nodeCount}</p>
@@ -125,7 +153,8 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
       {offered && <button ref={continueButton} type="button" onClick={() => { void begin(offered.journeyId); }}>{copy.continue} · {offered.title}</button>}
       {saved?.progress && !offered && <p role="status">{copy.savedUnavailable}</p>}
       {!routes.length && <p>{copy.empty}</p>}
-      <ul>{routes.map(route => <li key={route.journeyId}><button type="button" onClick={() => { void begin(route.journeyId); }}>{copy.travel} · {route.title}</button><p>{route.description}</p></li>)}</ul>
+      <ul>{routes.map(route => <li key={route.journeyId}><button type="button" onClick={() => { void begin(route.journeyId); }}>{copy.travel} · {route.title}</button>
+        {routeSaveButton(route.journeyId)}<p>{route.description}</p></li>)}</ul>
     </>}
   </section>;
 }

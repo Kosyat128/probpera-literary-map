@@ -9,6 +9,7 @@ import { emitChildNativeAssets, CHILD_NATIVE_ASSET_MODULE } from "./native-child
 import { emitChildNativeMediaAssets, CHILD_NATIVE_MEDIA_ASSET_MODULE } from "./native-child-media-assets.mjs";
 import { emitChildNativeResourceAssets, CHILD_NATIVE_RESOURCE_ASSET_MODULE } from "./native-child-resource-assets.mjs";
 import { emitChildNativeSceneAssets, CHILD_NATIVE_SCENE_ASSET_MODULE } from "./native-child-scene-assets.mjs";
+import { emitChildNativePassportAssets, CHILD_NATIVE_PASSPORT_ASSET_MODULE } from "./native-child-passport-assets.mjs";
 
 const root = await fs.realpath(fileURLToPath(new URL("../../", import.meta.url)));
 const platform = process.argv[2];
@@ -24,7 +25,7 @@ async function inputs() {
   const paths = execFileSync("git", ["ls-files", "-z", "--cached", "--others", "--exclude-standard", "--",
     "src", "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json",
     "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs",
-    CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE,
+    CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_PASSPORT_ASSET_MODULE,
   ], { cwd: root, encoding: "utf8", maxBuffer: 4 * 1024 * 1024 }).split("\0");
   const files = [];
   for (const relative of [...new Set([...paths, CANONICAL_BOOK_SOURCE_REGISTRY])].filter(p => p && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(p)).sort()) {
@@ -91,6 +92,7 @@ const childNativeAssets = await emitChildNativeAssets(root, staging, platform, c
 const childNativeMediaAssets = await emitChildNativeMediaAssets(root, staging, platform, channel);
 const childNativeResourceAssets = await emitChildNativeResourceAssets(root, staging, platform, channel);
 const childNativeSceneAssets = await emitChildNativeSceneAssets(root, staging, platform, channel);
+const childNativePassportProgramAssets = await emitChildNativePassportAssets(root, staging, platform, channel);
 async function inventory(dir, prefix = "") {
   const records = [];
   for (const entry of await fs.readdir(dir, { withFileTypes: true })) {
@@ -117,7 +119,7 @@ if ((await inputs()).sha256 !== sourceInputs.sha256) throw new Error("Source cha
 const buildId = sha(json({ sourceCommit, sourceInputsSha256: sourceInputs.sha256, platform, channel, inventory: files }));
 const artifact = {
   schemaVersion: 1, kind, platform, channel, buildId, sourceCommit, sourceInputs,
-  requiredLocales: ["ru", "en"], nativePackages, assetProvenance, childNativeAssets, childNativeMediaAssets, childNativeResourceAssets, childNativeSceneAssets, inventory: files,
+  requiredLocales: ["ru", "en"], nativePackages, assetProvenance, childNativeAssets, childNativeMediaAssets, childNativeResourceAssets, childNativeSceneAssets, childNativePassportProgramAssets, inventory: files,
   releaseReady: false, productionActionsAuthorized: false,
   limits: ["Bundled implementation snapshot, not native binary/device, store, editorial, rights or owner acceptance.", "No purchase authority is implemented by this shell; release and paid channel readiness remain separate gates."],
 };
