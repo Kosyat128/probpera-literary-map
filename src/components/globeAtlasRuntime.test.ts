@@ -1,4 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import type { Country } from "../data/countries/types";
+import type { GlobeEditionId } from "./globeEditions";
 
 const releaseRuntimeFixtures: Array<() => void> = [];
 
@@ -8,7 +10,11 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-async function createSourceLeaseFixture(failInitialImage = false, childNativeOwned = false) {
+async function createSourceLeaseFixture(
+  failInitialImage = false,
+  childNativeOwned = false,
+  options: { countries?: Country[]; editionId?: GlobeEditionId } = {}
+) {
   vi.resetModules();
   const network = { blocked: false, failNextImage: failInitialImage, holdNextDecode: false };
   const images: FixtureImage[] = [];
@@ -78,7 +84,7 @@ async function createSourceLeaseFixture(failInitialImage = false, childNativeOwn
   vi.stubGlobal("fetch", fetchMock);
   vi.stubGlobal("document", { createElement });
   const { createGlobeAtlas } = await import("./globeAtlas");
-  const atlas = await createGlobeAtlas([], "natural-earth-2026", "ru", { compact: false, surfaceSourceMode: childNativeOwned ? "child-native-owned" : undefined });
+  const atlas = await createGlobeAtlas(options.countries ?? [], options.editionId ?? "natural-earth-2026", "ru", { compact: false, surfaceSourceMode: childNativeOwned ? "child-native-owned" : undefined });
   releaseRuntimeFixtures.push(() => {
     atlas.dispose();
     images.forEach((image) => image.finishDecode());
@@ -344,4 +350,82 @@ describe("child native owned atlas surface",()=>{
   expect(f.atlas.mapTexture).toBe(texture);expect(f.atlas.mapTexture.image).toBe(canvas);
   expect(typeof f.atlas.countryAtGeographicCoordinates).toBe("function");
  });
+});
+
+describe("globe atlas flag highlight settlement", () => {
+  const countries: Country[] = [
+    { id: "russia", code: "RU", name: "Fixture country", description: "", writers: [] },
+  ];
+  type Fixture = Awaited<ReturnType<typeof createSourceLeaseFixture>>;
+
+  async function expectSettled(fixture: Fixture, expectedVersion: number) {
+    // Bounded promise turns reach the real image callback. Assert before waiting
+    // for a task: the old redraw loop starves timers, but finally can dispose it.
+    for (let turn = 0; turn < 8; turn += 1) await Promise.resolve();
+    expect(fixture.atlas.highlightTexture.version).toBe(expectedVersion);
+    await new Promise<void>((resolve) => setTimeout(resolve, 0));
+    expect(fixture.atlas.highlightTexture.version).toBe(expectedVersion);
+  }
+
+  it("settles child native selection and hover without loading any flag or adult image", async () => {
+    const fixture = await createSourceLeaseFixture(false, true, {
+      countries, editionId: "rand-mcnally-1887",
+    });
+    const texture = fixture.atlas.mapTexture, canvas = texture.image;
+    try {
+      fixture.atlas.updateHighlight("russia");
+      await expectSettled(fixture, fixture.atlas.highlightTexture.version);
+      fixture.atlas.updateHighlight(null, "russia");
+      await expectSettled(fixture, fixture.atlas.highlightTexture.version);
+      expect(fixture.images).toHaveLength(0);
+      expect(fixture.requests).toEqual([]);
+      expect(fixture.fetchMock).toHaveBeenCalledOnce();
+      expect(fixture.atlas.mapTexture).toBe(texture);
+      expect(texture.image).toBe(canvas);
+      expect(fixture.createElement).toHaveBeenCalledTimes(3);
+    } finally { fixture.atlas.dispose(); }
+  });
+
+  it("settles canonical selection and hover when the country has no flag code", async () => {
+    const fixture = await createSourceLeaseFixture(false, false, {
+      countries: countries.map(({ code: _code, ...country }) => country),
+      editionId: "rand-mcnally-1887",
+    });
+    try {
+      const initialRequests = fixture.requests.length;
+      fixture.atlas.updateHighlight("russia");
+      await expectSettled(fixture, fixture.atlas.highlightTexture.version);
+      fixture.atlas.updateHighlight(null, "russia");
+      await expectSettled(fixture, fixture.atlas.highlightTexture.version);
+      expect(fixture.requests).toHaveLength(initialRequests);
+    } finally { fixture.atlas.dispose(); }
+  });
+
+  it("keeps the geometry highlight after a failed flag without retrying from its callback", async () => {
+    const fixture = await createSourceLeaseFixture(false, false, {
+      countries, editionId: "rand-mcnally-1887",
+    });
+    try {
+      const initialRequests = fixture.requests.length;
+      fixture.network.blocked = true;
+      fixture.atlas.updateHighlight("russia");
+      await expectSettled(fixture, fixture.atlas.highlightTexture.version);
+      expect(fixture.requests).toHaveLength(initialRequests + 1);
+      expect(fixture.requests.at(-1)).toMatch(/country-flags\/ru\.svg$/);
+    } finally { fixture.atlas.dispose(); }
+  });
+
+  it("repaints once when an actual flag image finishes and then settles", async () => {
+    const fixture = await createSourceLeaseFixture(false, false, {
+      countries, editionId: "rand-mcnally-1887",
+    });
+    try {
+      const initialRequests = fixture.requests.length;
+      fixture.atlas.updateHighlight("russia");
+      const versionBeforeImage = fixture.atlas.highlightTexture.version;
+      await expectSettled(fixture, versionBeforeImage + 1);
+      expect(fixture.requests).toHaveLength(initialRequests + 1);
+      expect(fixture.requests.at(-1)).toMatch(/country-flags\/ru\.svg$/);
+    } finally { fixture.atlas.dispose(); }
+  });
 });

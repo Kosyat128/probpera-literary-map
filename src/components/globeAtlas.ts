@@ -1535,9 +1535,11 @@ export async function createGlobeAtlas(
     highlightContext.restore();
 
     if (!flagImage) {
-      void loadFlagImage(countryId).then(() => {
+      void loadFlagImage(countryId).then((loadedImage) => {
+        // Denied, missing and failed flags keep the existing geometry highlight.
+        // A null result must not schedule another immediately resolved redraw.
         if (
-          !disposed &&
+          loadedImage && !disposed &&
           (activeSelectedCountryId === countryId ||
             activeHoveredCountryId === countryId ||
             activeCandidateCountryId === countryId)
