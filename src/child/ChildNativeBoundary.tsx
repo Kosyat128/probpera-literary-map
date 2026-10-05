@@ -1,3 +1,4 @@
+import { childCanonicalGlobeAtlasCountries, projectChildNativeGlobeCountry, resolveChildGlobeCountry } from "./childCanonicalGlobeGeometry";
 import { createChildCanonicalResources } from "./childNativeCanonicalResources";
 import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
@@ -191,14 +192,14 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   const sizeSnapshot = useSyncExternalStore(size.subscribe, size.getSnapshot, size.getServerSnapshot);
   useLayoutEffect(() => size.activate(), [size]);
   useLayoutEffect(() => { mounted.current = true; return () => { mounted.current = false; ++sequence.current; }; }, []);
-  const countries = useMemo<Country[]>(() => roots.filter(row => row.reference.kind === "country").map(row => ({
-    id: row.reference.id, name: row.payload.title, description: row.payload.text, writers: [],
-  })), [roots]);
+  const countries = useMemo<Country[]>(() => roots.flatMap(row => {
+    const country = projectChildNativeGlobeCountry(row); return country ? [country] : [];
+  }), [roots]);
   const onJourneyNode=useCallback((node:ChildNativeEntity|null)=>{
     if(node?.reference.kind!=="country")return;
-    const country=roots.find(row=>row.reference.kind==="country"&&row.reference.id===node.reference.id);
-    if(country)setSelectedCountry({id:country.reference.id,name:country.payload.title,description:country.payload.text,writers:[]});
-  },[roots]);
+    const country=resolveChildGlobeCountry(node.reference,countries);
+    if(country)setSelectedCountry(country);
+  },[countries]);
   async function resolve(ref: ChildEntityReference): Promise<ChildNativeEntity | null> {
     const row = await controller.readEntity(ref);
     if (!row) return null;
@@ -277,7 +278,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         setCurrent(intent?.current?freshRows.get(intent.current)??home:home);setRoots(Object.freeze(rows));
         setHistory((intent?.history??[]).flatMap(key=>{const row=freshRows.get(key);return row?[row.reference]:[];}));
         setCollection(intent?.collection??null);setSaved(restoredCollection);setSavedRows(Object.freeze(restoredRows));
-        setSelectedCountry(previous=>previous?rows.filter(row=>row.reference.kind==="country").map(row=>({id:row.reference.id,name:row.payload.title,description:row.payload.text,writers:[]})).find(row=>row.id===previous.id)??null:null);
+        setSelectedCountry(previous=>resolveChildGlobeCountry(previous,rows.flatMap(row=>{const country=projectChildNativeGlobeCountry(row);return country?[country]:[];})));
         setLoading(false);
       }
     })();
@@ -331,11 +332,12 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   return <main className="child-native-app" data-child-native-phase={admitted?"ready":"sealed"} data-child-native-profile={admitted?c!.profileId:undefined}>
     <div className="child-native-canonical-shell" data-native-child-retained={admitted?"active":"sealed"} aria-hidden={!admitted}
       ref={element=>{if(element)element.inert=!admitted;}}>
-    <LiteraryWorldMap countries={countries.length ? countries : emptyCountries} selectedCountry={selectedCountry}
-      onCountrySelect={country => {
+    <LiteraryWorldMap countries={countries.length ? countries : emptyCountries} atlasCountries={childCanonicalGlobeAtlasCountries} selectedCountry={selectedCountry}
+      onCountrySelect={hint => {
         if(!admitted)return;
-        const ref = roots.find(row => row.reference.id === country.id)?.reference;
-        if (ref) { setSelectedCountry(country); void open(ref); }
+        const country = resolveChildGlobeCountry(hint,countries);
+        const ref = country && roots.find(row => row.reference.kind === "country" && row.reference.id === country.id)?.reference;
+        if (country && ref) { setSelectedCountry(country); void open(ref); }
       }} childPresentation childResources={resources??undefined} onChildHotspot={target=>{void open(target);}}
       mode="immersive" forceLoad bookyCalmMotion runtimeActive={admitted} preserveSceneDuringReload />
     </div>

@@ -1,3 +1,4 @@
+import { resolveChildGlobeCountry } from "../child/childCanonicalGlobeGeometry";
 import GlobeChildNativeComposition from "./GlobeChildNativeComposition";
 import type { ChildCanonicalResources } from "../child/childNativeCanonicalResources";
 import type { ChildEntityReference } from "../child/childPackage";
@@ -2139,15 +2140,19 @@ export default function LiteraryGlobe({
   useLayoutEffect(() => {
     onLoadStatusChange?.(atlas ? "ready" : atlasError ? "error" : "loading");
   }, [atlas, atlasError, onLoadStatusChange]);
-  const [hoveredCountry, setHoveredCountry] = useState<Country | null>(null);
+  const [storedHoveredCountry, setHoveredCountry] = useState<Country | null>(null);
+  const hoveredCountry = childPresentation ? resolveChildGlobeCountry(storedHoveredCountry, countries) : storedHoveredCountry;
   const [hoveredLaureate, setHoveredLaureate] =
     useState<NobelLayerHover | null>(null);
-  const [viewSample, setViewSample] = useState<GlobeViewSample>({
+  const [storedViewSample, setViewSample] = useState<GlobeViewSample>({
     candidate: null,
     coordinates: null,
     cameraRadius: Math.hypot(...GLOBE_CAMERA_CONFIG.position),
     revision: 0,
   });
+  const viewSample = useMemo(() => childPresentation
+    ? { ...storedViewSample, candidate: resolveChildGlobeCountry(storedViewSample.candidate, countries) }
+    : storedViewSample, [childPresentation, countries, storedViewSample]);
   const [keyboardCandidateActive, setKeyboardCandidateActive] = useState(false);
   useLayoutEffect(() => {
     if (!standInspectionActive) return;
@@ -2237,7 +2242,7 @@ export default function LiteraryGlobe({
   const hoveredNobelYear = hoveredLaureate?.kind === "writer"
     ? getNobelYear(hoveredLaureate.writer)
     : null;
-  const contextualCountry = hoveredCountry ?? selectedCountry ?? null;
+  const contextualCountry = hoveredCountry ?? (childPresentation ? resolveChildGlobeCountry(selectedCountry, countries) : selectedCountry) ?? null;
   const atlasSourceCountries = atlasCountries ?? countries;
   const selectableCountryIds = useMemo(
     () => new Set(countries.map((country) => country.id)),
@@ -2753,12 +2758,13 @@ export default function LiteraryGlobe({
     (country: Country) => {
       if (standInspectionActiveRef.current) return;
       if (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed") return;
-      if (selectableCountryIds.has(country.id)) {
+      const currentCountry = childPresentation ? resolveChildGlobeCountry(country, countries) : country;
+      if (currentCountry && selectableCountryIds.has(currentCountry.id)) {
         setKeyboardCandidateActive(false);
-        onCountrySelect?.(country, "pointer");
+        onCountrySelect?.(currentCountry, "pointer");
       }
     },
-    [onCountrySelect, selectableCountryIds, sceneInspection]
+    [childPresentation, countries, onCountrySelect, selectableCountryIds, sceneInspection]
   );
 
   const handleSceneWriterSelect = useCallback((country: Country, writer: Writer) => {
@@ -2770,12 +2776,13 @@ export default function LiteraryGlobe({
   const handleCountryHover = useCallback(
     (country: Country | null) => {
       if (standInspectionActiveRef.current) return;
+      const currentCountry = childPresentation ? resolveChildGlobeCountry(country, countries) : country;
       const nextCountry =
-        country && selectableCountryIds.has(country.id) ? country : null;
+        currentCountry && selectableCountryIds.has(currentCountry.id) ? currentCountry : null;
       setHoveredCountry(nextCountry);
       onHoverCountryChange?.(nextCountry);
     },
-    [onHoverCountryChange, selectableCountryIds]
+    [childPresentation, countries, onHoverCountryChange, selectableCountryIds]
   );
 
   const handleLaureateHover = useCallback((laureate: NobelLayerHover | null) => {
@@ -3383,7 +3390,7 @@ export default function LiteraryGlobe({
         {keyboardCandidateActive
           ? globeKeyboardCandidateAriaCopy({
               countryName: viewSample.candidate
-                ? countryName(viewSample.candidate.code, viewSample.candidate.name)
+                ? childPresentation ? viewSample.candidate.name : countryName(viewSample.candidate.code, viewSample.candidate.name)
                 : null,
               writerCount: viewSample.candidate?.writers.length,
               selected: viewSample.candidate?.id === selectedCountry?.id,
@@ -3827,7 +3834,7 @@ export default function LiteraryGlobe({
           )}
           <div>
             <span>
-              {countryName(contextualCountry.code, contextualCountry.name)}
+              {childPresentation ? contextualCountry.name : countryName(contextualCountry.code, contextualCountry.name)}
             </span>
             {!childPresentation && <small>
               {number(contextualCountry.writers.length)}{" "}
