@@ -1,0 +1,2582 @@
+{
+  "schemaVersion": 1,
+  "kind": "literary-planet-child-local-canonical-resource-evidence",
+  "status": "IN_PROGRESS",
+  "reviewModel": "GPT-6 Astra Ultra",
+  "generatedAt": "2026-10-05T06:14:04.686Z",
+  "rootDir": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+  "sourceCommit": "2ee57c9296f63035841dddced328d453fd58dcf3",
+  "repositoryHead": "2ee57c9296f63035841dddced328d453fd58dcf3",
+  "sourceFingerprint": "22c8a919e9721000a6bb3b26df5d6f924ee9bfcc5bfc8498c5692b4504926908",
+  "sourceRows": 1843,
+  "scope": [
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildCanonicalResourceRuntimeTest.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataTransport.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPlugin.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildResources.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildWebResources.java",
+    "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+    "apps/mobile/ios/App/App/PlanetChildPlugin.swift",
+    "apps/mobile/ios/App/App/PlanetChildResources.swift",
+    "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "apps/mobile/ios/App/App/PlanetChildWebResources.swift",
+    "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildCanonicalResourceRuntimeTests.swift",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/child-native-canonical-resource-browser.mjs",
+    "scripts/mobile/native-child-scene-assets.mjs",
+    "scripts/mobile/native-child-scene-assets.test.mjs",
+    "scripts/mobile/native-install-runtime.mjs",
+    "scripts/mobile/native-install-runtime.test.mjs",
+    "scripts/mobile/verify-native-artifact.mjs",
+    "scripts/mobile/verify-native-artifact.test.mjs",
+    "src/child/ChildNativeBoundary.css",
+    "src/child/ChildNativeBoundary.test.tsx",
+    "src/child/ChildNativeBoundary.tsx",
+    "src/child/ChildNativeMediaView.test.tsx",
+    "src/child/ChildNativeMediaView.tsx",
+    "src/child/childNativeAppBridge.test.ts",
+    "src/child/childNativeAppBridge.ts",
+    "src/child/childNativeCanonicalResources.test.ts",
+    "src/child/childNativeCanonicalResources.ts",
+    "src/child/childNativeMedia.test.ts",
+    "src/child/childNativeMedia.ts",
+    "src/child/childNativeScene.test.ts",
+    "src/child/childNativeScene.ts",
+    "src/child/childNativeSceneReleasePins.json",
+    "src/components/GlobeChildNativeComposition.test.tsx",
+    "src/components/GlobeChildNativeComposition.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/components/globeAtlas.ts",
+    "src/components/globeAtlasRuntime.test.ts",
+    "src/host/mountHostApp.tsx"
+  ],
+  "baseline": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\baseline.json",
+    "sha256": "bb510eb089d1a31f1c54b3efb6e304baa971ac0cd7dabdf26924d8bf3fbf9706",
+    "bytes": 307073
+  },
+  "authorManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-canonical-resources\\whole-author-manifest-a1.json",
+    "sha256": "fd3aa935ac0dd8e3f597d3c23a542233232240cfdb898b7f8aab7b01dc13ddd7",
+    "bytes": 29903
+  },
+  "reviewedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-whole-reviewed-manifest-a2.json",
+    "sha256": "fc92ea353516f33320ec1b68058e22f62997d09381d33141b043b243debb19ba",
+    "bytes": 349223
+  },
+  "originalReviewedManifest": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-whole-reviewed-manifest-a1.json",
+    "sha256": "c42862e22cefd14c15df261bf39a68d5cf51e47555b257bf42e8f279a49fd6d4",
+    "bytes": 29125
+  },
+  "semanticReview": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-whole-semantic-review-a1.json",
+    "sha256": "7d749295ed1f4691fc03c3730a1f1dd8f4039223c7b3e2a7c7fa5cf0dd2d313a",
+    "bytes": 72604
+  },
+  "integrations": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-integration-a1.json",
+      "sha256": "04f9a41856a284f980f6d6a118282e2df65a8fe8db831e228459726897fa41dd",
+      "bytes": 624205
+    }
+  ],
+  "rootAdmissions": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\author-freeze-admission.json",
+      "sha256": "e9068a30f53c828dbf6118a4b3f4fe883fadf31f39bd5939bcf28e9bc230e028",
+      "bytes": 303542
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\reviewed-freeze-admission-a1.json",
+      "sha256": "ac90dd71d94b05f21b7a585d0c65e5d91f702680edeed43ba65fce250620d977",
+      "bytes": 327357
+    }
+  ],
+  "sourceCheckpoint": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-source-checkpoint-a1.json",
+    "sha256": "bbd6a89bdf67f497cd76903ffe1475612012f52e3bd049c467910cfffee98c32",
+    "bytes": 657600
+  },
+  "currentInputs": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-final-inputs-a1.json",
+    "sha256": "85294a6462eaca77f2a1292a1486bf022df6db67a9887f0543d4de1edbb8582d",
+    "bytes": 283369
+  },
+  "qaFixes": [
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-qa-fixes-a1.json",
+      "sha256": "bddef1af8c5df9a8cc8b42696ec00daa8e96b1312e76ac8540e1137f7fd828c5",
+      "bytes": 2163
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-qa-fixes-a2.json",
+      "sha256": "0adf1cccc1ad280e4b3896e6084defcf0d87402a6227745f85a883fed6c449cd",
+      "bytes": 890
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-qa-fixes-a3.json",
+      "sha256": "ba0311fdd25b1be455a491500491ec7c3b788c3329c759dc4ca370af7b50d39f",
+      "bytes": 736
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-qa-fixes-a4.json",
+      "sha256": "fe700f2ad27c9f04bb4ef403ff183c6b3725aafdd32879c93ebcac766a25bfee",
+      "bytes": 819
+    },
+    {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-qa-fixes-a5.json",
+      "sha256": "fd69e55f8da674241a7b98ac9418a6547b7cd4470d88392304ea29f26ec76654",
+      "bytes": 901
+    }
+  ],
+  "runs": {
+    "units-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\units-a1\\result.json",
+      "sha256": "891031b0bf01547135d4ed3aabf037cbc594805e2a4877f6f81270858f0ea225",
+      "bytes": 33503
+    },
+    "unit-fixes-a2": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\unit-fixes-a2\\result.json",
+      "sha256": "d44e6bed898faa12fe870588bc23247d8c78189fdb13216209cdcb66c98171cd",
+      "bytes": 25041
+    },
+    "scene-emitter-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\scene-emitter-a1\\result.json",
+      "sha256": "516c7bb9868fbf38d30d07bebda116f6da58ab28624c49b6aa10bb1123a1ba22",
+      "bytes": 4320
+    },
+    "verifier-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\verifier-a1\\result.json",
+      "sha256": "677281d500ee1d905db6053e85df00d4bc28bbcede8c3b44a267f34cd8dcbc4d",
+      "bytes": 4008
+    },
+    "selector-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\selector-a1\\result.json",
+      "sha256": "2602d4773de8dbbe136bf0c36db4685a22a84f31acc799e569ea6024f7f7f7ab",
+      "bytes": 3332
+    },
+    "tsc-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\tsc-a1\\result.json",
+      "sha256": "1a262cd3250134c5214f4d7a2aa6927457141d271aec530b5a4f053cb8dcc45a",
+      "bytes": 1820
+    },
+    "tsc-a2": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\tsc-a2\\result.json",
+      "sha256": "26e6b11bdd6dea71d7a8695a3af122ba7ad1e4c4d00242cc821ef3795817a902",
+      "bytes": 1816
+    },
+    "browser-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a1\\result.json",
+      "sha256": "69f1e09019255a3bc6f71693d54fab8baf656a663dced4e22eb84be15b07a982",
+      "bytes": 2112
+    },
+    "browser-a2": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a2\\result.json",
+      "sha256": "9b8a5114ad7f2d32e8a1053daa32f4e5e44e16ea54fcdbd7a690e136c0134f83",
+      "bytes": 2107
+    },
+    "browser-a3": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a3\\result.json",
+      "sha256": "e4b11584b47e00c6fd9aaead63fbf59ac78d53260a0e34fc6f62825c5824d309",
+      "bytes": 2108
+    },
+    "browser-a4": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a4\\result.json",
+      "sha256": "e3d1d5c3becb3a53dec79fa71749b19e59e2972316d2fd3e1412583c213fc55f",
+      "bytes": 2107
+    },
+    "browser-a5": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a5\\result.json",
+      "sha256": "31d388d76446ffb38b5dd00ce1dbf54a9aa2e7707311cb1be27af8a853707370",
+      "bytes": 2104
+    },
+    "android-prepare-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\android-prepare-a1\\result.json",
+      "sha256": "b54847f63a769ce8929c1a240bd017f373d4511aba5c9d6fe9d6f20a21776d5a",
+      "bytes": 1874
+    },
+    "pwa-prepare-a1": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\pwa-prepare-a1\\result.json",
+      "sha256": "a8e304c97dfe178649a68cfbe585938d28ba96c0f0d79cc08404be7c691c9c21",
+      "bytes": 1854
+    }
+  },
+  "focusedPassedCases": 100,
+  "focusedUniqueCases": 100,
+  "focusedUniqueTitles": 97,
+  "unitCounts": [
+    {
+      "group": "Original stage eight unit files",
+      "unique": 89,
+      "finalAffectedRerun": 71,
+      "retainedUnaffected": 18
+    },
+    {
+      "group": "Scene emitter",
+      "passed": 5
+    },
+    {
+      "group": "Independent scene artifact verifier",
+      "passed": 4
+    },
+    {
+      "group": "Native canonical fixture selector",
+      "passed": 2
+    }
+  ],
+  "successfulCases": [
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native app DTO projection rejects V1, caller clock/authority fields and noncorrelated replies without invoking accessors",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native app DTO projection keeps blocked child distinct from adult, unavailable and admitted child",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle requires a concrete presentation barrier and registers native invalidation before bootstrap",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle missing native invalidation registration keeps the first screen sealed",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle stalled native event registration is bounded and a late handle is actually removed",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle first install is an explicit native action with no JS PIN, grant or retirement acknowledgement",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle blocked child keeps only correlated parent actions and cannot request private data",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle seals synchronously and joins tracked old data deliveries before dispatching the native action",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle copies bounded action proposals without getters or mutable caller arrays",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle idle background hides presentation immediately and awaits correlated native retirement",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle a native owner UI pause seals JS while the original busy native action completes",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle ignores stale native events and seals immediately for the exact active token/generation",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle serializes concrete native data calls and discards old replies after a seal",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle rejects wrong-token native data and makes actual retirement precede any later bootstrap",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle does not reopen an unknown retirement acknowledgement",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle expiry creates a fresh native bootstrap only after retiring the original token",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle long native PIN UI retires the expired conservative successor before a fresh bootstrap",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle data wire admits text references and bounded wrapper collections, never media",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle accepts 100 actual recent wrappers and seals search replies above 64",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle child platform projection keeps only read-only Booky size and lifecycle ports",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "canonical native scene dispatch and joined original recipients seals real recipient immediately and awaits its actual cleanup before the next native action",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "canonical native scene dispatch and joined original recipients does not accept an unknown decoder/GPU join as retirement acknowledgement",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "canonical native scene dispatch and joined original recipients uses the native exact owner proposal and rejects scene metadata carrying public authority fields",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "media revocation retires a canonical recipient in the same context clears and joins the canonical renderer before dispatching native media release",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "LOCAL2 native child presentation boundary transition and unknown storage render a closed screen without native data or a globe",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "LOCAL2 native child presentation boundary first-install copy and button appear only for explicit first-install-required status in RU/EN",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "LOCAL2 native child presentation boundary authenticated blocked child exposes a closed parent-request pane and no child contents",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "LOCAL2 native child presentation boundary the admitted child view uses the canonical globe with calm runtime props and no render-time fetch",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "LOCAL2 native child presentation boundary ready view refuses blocked or corrupt state and never renders a child globe in those states",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "LOCAL2 native child presentation boundary profile controls do not render a PIN secret form or execute an action during rendering",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeBoundary.test.tsx",
+      "title": "original canonical resource recipient presentation provides one resource owner and guarded hotspot proposal to the same RU/EN canonical globe",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeCanonicalResources.test.ts",
+      "title": "actual decoder and canonical texture ownership (synthetic native seam only) acquires all three original slots and synchronously detaches the recipient before disposing textures",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeCanonicalResources.test.ts",
+      "title": "actual decoder and canonical texture ownership (synthetic native seam only) holds the real image decode join after cancellation; a late result cannot republish a surface",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeCanonicalResources.test.ts",
+      "title": "actual decoder and canonical texture ownership (synthetic native seam only) a copied equal context cannot own existing decoded textures",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeCanonicalResources.test.ts",
+      "title": "actual decoder and canonical texture ownership (synthetic native seam only) consumes the original conservative dispatch budget during decoding rather than renewing it",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeCanonicalResources.test.ts",
+      "title": "failed concrete recipient cleanup remains sealed does not acknowledge a caught synchronous clear failure as a joined cleanup",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeCanonicalResources.test.ts",
+      "title": "failed concrete recipient cleanup remains sealed removes decoded image sources together with their owned texture references",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection copies exact image and narration descriptors into immutable data without granting byte access",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection rejects accessor, inherited, hidden and symbol fields without executing caller getters",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection binds each media role to its exact entity kind and static raster or PCM MIME",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection requires bounded nonempty captions and narration while image transcript stays null",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection accepts only actual text owner references and refuses paths, URLs and changed hashes",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection requires exact owner closure, unique assets and media identities within the 64 row bound",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection bounds integral viewport-contained geometry without treating a caller permission as layout",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection correlates presentation identity, native remaining lifetime and the exact known refusal",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 native media descriptor projection accepts nullable full-retirement correlation and never a generic cleared or joined flag",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier keeps an authentic empty media list eligible for text without any presentation or retirement",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier preserves text access when an older plugin has no media methods",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier sends only the current native text owner, asset identity and bounded geometry to presentation",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier refuses invalid media owners, descriptors, geometry and tokens before dispatch",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier seals wrong-generation media replies and retires the actual original context",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier dispatches nullable revocation immediately during a held decoder and waits its native ACK before perform",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier retains a failed revocation while the original decoder is held and never dispatches perform",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier joins both a concrete pending presentation and nullable native retirement before a new media route",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier keeps an unknown release and retirement closed instead of bootstrapping a successor",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier expires media with fast nullable revocation and admits a fresh bootstrap only after original retirement",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier conceals on background before awaiting media ACK and never publishes an inactive successor",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "LOCAL2 media original native delivery barrier coalesces simultaneous full releases but still requires their actual correlated native result",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "LOCAL2 native media accessible slot renders RU and EN native-owned slots sealed without issuing any render-time RPC",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "LOCAL2 native media accessible slot exports no DOM media source, byte URL, autonomous playback or second canvas",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "LOCAL2 native media accessible slot keeps unrelated owners and native context tokens out of a sealed server frame",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "LOCAL2 native media accessible slot keeps a host without optional media methods sealed and issues no text or control request",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "LOCAL2 native media accessible slot composes with exactly the original calm globe and Booky without a new media renderer",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "LOCAL2 native media accessible slot renders neither the media slot nor the globe for blocked child or corrupt ready boundaries",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/ChildNativeMediaView.test.tsx",
+      "title": "scene resources use canonical Three receiver keeps exactly one canonical globe owner alongside the original sealed native image/audio slot",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority preserves authentic empty production pins and rejects asserted approval fields",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority copies and freezes every child scene slot, target and geometry tuple",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority does not admit adult geometry IDs or a texture with a different media role",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority rejects hotspot intersecting globe or outside actual room",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority rejects hotspot intersecting globe or outside actual room",
+      "status": "passed",
+      "occurrence": 2,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority rejects hotspot intersecting globe or outside actual room",
+      "status": "passed",
+      "occurrence": 3,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority rejects hotspot intersecting globe or outside actual room",
+      "status": "passed",
+      "occurrence": 4,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority accepts bounded fractional position and native guard target without a navigation URL",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority requires exact scene/slot/entity and immutable native URI correlation",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "closed native scene presentation correlations, no authority rejects duplicate or foreign-owner choices before labels are rendered",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeScene.test.ts",
+      "title": "unambiguous scene metadata tokens rejects newline-suffixed identities/digests and negative zero coordinates",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas retained edition source restores an evicted source offline into the same canvas and texture with current highlights",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas retained edition source fences an already decoding candidate and cancels its queued successor even before the baseline changed",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas retained edition source invalidates old leases without letting their release cancel the current owner",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas retained edition source retains the exact localized source rather than silently substituting the other language",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas retained edition source restores a procedural canonical fallback without retrying its failed source",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas retained edition source invalidates leases and rejects further source work after disposal, including a late decode",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas initialization does not allocate atlas canvases after an in-flight mount is aborted",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "globe atlas initialization retries GeoJSON after a transient first-request failure",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/globeAtlasRuntime.test.ts",
+      "title": "child native owned atlas surface retains original geography/canvas/texture while fetching no adult edition or flag images",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/GlobeChildNativeComposition.test.tsx",
+      "title": "original canonical composition recipient binds native maps to the original surface, book covers and a wall inside full 3D library",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/components/GlobeChildNativeComposition.test.tsx",
+      "title": "original canonical composition recipient fences old material and hotspot recipients before the next original frame",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "units-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeAppBridge.test.ts",
+      "title": "LOCAL2 native owner presentation lifecycle late timed-out bootstrap replies cannot reopen or start an unproven successor lane",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/src/child/childNativeMedia.test.ts",
+      "title": "canonical resources are separate from native UIKit media slots retains text-image/portrait/narration slots and excludes full scene roles after exact descriptor decoding",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "unit-fixes-a2"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-scene-assets.test.mjs",
+      "title": "compiler-owned original scene projection projects genuinely empty pins and emits one exact native catalog without granting scene admission",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "scene-emitter-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-scene-assets.test.mjs",
+      "title": "compiler-owned original scene projection rejects Boolean approvals, missing current source and nonempty pins without independent signer",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "scene-emitter-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-scene-assets.test.mjs",
+      "title": "compiler-owned original scene projection verifies an actual independent P256 signature only for the exact scene domain and reviewed source graph",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "scene-emitter-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-scene-assets.test.mjs",
+      "title": "separate bounded fractional scene source parser accepts exact real hotspot coordinates without widening the original signed package parser",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "scene-emitter-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-child-scene-assets.test.mjs",
+      "title": "separate bounded fractional scene source parser rejects escaped duplicate fields, negative zero, overflow and malformed Unicode",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "scene-emitter-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+      "title": "native original canonical scene artifact provenance reconstructs authentic empty scene pins as one exact catalog and grants no approved scene",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "verifier-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+      "title": "native original canonical scene artifact provenance rejects substituted scene metadata despite recomputed output/build inventory",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "verifier-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+      "title": "native original canonical scene artifact provenance rejects an orphan native scene output and unbound generated shell image policy",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "verifier-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/verify-native-artifact.test.mjs",
+      "title": "native original canonical scene artifact provenance uses current scene compiler even when the general historical comparison is disabled",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "verifier-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+      "title": "canonical native decoder fixture selector binds exact five native methods and fixed nonauthority run arguments",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "selector-a1"
+    },
+    {
+      "file": "D:/CodexProjects/Работа по сайту/literary-planet-v12-work/scripts/mobile/native-install-runtime.test.mjs",
+      "title": "canonical native decoder fixture selector rejects a headline, assumption/SKIP, wrong class and missing actual completion as five-method PASS",
+      "status": "passed",
+      "occurrence": 1,
+      "run": "selector-a1"
+    }
+  ],
+  "caseQualification": "100 focused cases have successful observations across exact source origins, not a single 100-case run at final HEAD. These comprise97distinct file/title keys: four parameter rows intentionally share one title and keep their stable within-suite occurrence identity. Initial89 had87PASS/2FAIL; affected71 passed at32fc50c654ea00df7c8576b00b9a2f030eccc95ffa8f665ed3c44527a608f5f1; unchanged18 retain c63cf9b634928d6b62f636e7d433901a2383be439b97b049d351ae890c157223 attribution, as do emitter5/verifier4/selector2. TypeScript passed at32fc. Only the explicitly synthetic browser fixture script changed afterward; source/test/config bytes for TypeScript and affected71 are exact. Prior failures remain immutable.",
+  "priorRunDeltaToFinal": {
+    "tscA2": [
+      "scripts/mobile/child-native-canonical-resource-browser.mjs"
+    ],
+    "affectedUnitsA2": [
+      "scripts/mobile/child-native-canonical-resource-browser.mjs"
+    ],
+    "initialChecks": [
+      "scripts/mobile/child-native-canonical-resource-browser.mjs",
+      "src/child/ChildNativeMediaView.test.tsx",
+      "src/child/childNativeAppBridge.ts",
+      "src/child/childNativeCanonicalResources.ts",
+      "src/child/childNativeMedia.test.ts",
+      "src/child/childNativeScene.test.ts"
+    ]
+  },
+  "browser": {
+    "report": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\result.json",
+      "sha256": "10404cdfa33d2630fbb5020b31981275d9e76e8fe8b4622a95b6f70c7614bc79",
+      "bytes": 207928
+    },
+    "run": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a5\\result.json",
+      "sha256": "31d388d76446ffb38b5dd00ce1dbf54a9aa2e7707311cb1be27af8a853707370",
+      "bytes": 2104
+    },
+    "locales": [
+      "ru",
+      "en"
+    ],
+    "checks": [
+      {
+        "locale": "ru",
+        "status": "PASS",
+        "scope": "actual-original-three-with-synthetic-native-uri-seam",
+        "before": {
+          "renderer": "same-reference",
+          "camera": "e1b41623-da94-4ef4-acaa-37588052f8d5",
+          "scene": "48ab1fd3-8788-4e3e-8806-c04568771d43",
+          "globe": "7c820b14-7d50-4500-9c4b-40ab50740bec",
+          "canvases": 1,
+          "bookyCanvases": 1,
+          "totalCanvases": 2,
+          "globeRoots": 1
+        },
+        "observed": {
+          "canvases": 1,
+          "bookyCanvases": 1,
+          "totalCanvases": 2,
+          "globeRoots": 1,
+          "sameRenderer": true,
+          "sameCamera": true,
+          "sameScene": true,
+          "sameGlobe": true,
+          "group": true,
+          "cover": true,
+          "wall": true,
+          "hotspot": true,
+          "uploaded": [
+            true,
+            true,
+            true
+          ],
+          "glError": 0,
+          "nativeAuthority": false
+        },
+        "cleanup": {
+          "synchronous": {
+            "surfaceClear": true,
+            "groupDetached": true
+          },
+          "after": {
+            "surfaceClear": true,
+            "groupDetached": true,
+            "disposedTextures": 3,
+            "liveMinted": 0,
+            "retiredContext": true,
+            "gpuResourcesRetired": true
+          },
+          "order": [
+            "acquire-skin",
+            "acquire-stand",
+            "acquire-background",
+            "texture-dispose",
+            "texture-dispose",
+            "texture-dispose",
+            "native-output-revoke",
+            "native-output-revoke"
+          ]
+        },
+        "screenshot": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\ru-original-composition.png",
+          "sha256": "333cb0daeaaea42611437e909c825e2ceeb190200f439ce9e6f0f588909443bd"
+        },
+        "nativeAuthority": false
+      },
+      {
+        "locale": "en",
+        "status": "PASS",
+        "scope": "actual-original-three-with-synthetic-native-uri-seam",
+        "before": {
+          "renderer": "same-reference",
+          "camera": "d3ddf684-0217-473f-87d9-3fd0c4d3b010",
+          "scene": "15f22e7c-df34-4a90-ae4e-f7070060f326",
+          "globe": "ed969b45-e605-4ebb-a4c6-aafc4a861b45",
+          "canvases": 1,
+          "bookyCanvases": 1,
+          "totalCanvases": 2,
+          "globeRoots": 1
+        },
+        "observed": {
+          "canvases": 1,
+          "bookyCanvases": 1,
+          "totalCanvases": 2,
+          "globeRoots": 1,
+          "sameRenderer": true,
+          "sameCamera": true,
+          "sameScene": true,
+          "sameGlobe": true,
+          "group": true,
+          "cover": true,
+          "wall": true,
+          "hotspot": true,
+          "uploaded": [
+            true,
+            true,
+            true
+          ],
+          "glError": 0,
+          "nativeAuthority": false
+        },
+        "cleanup": {
+          "synchronous": {
+            "surfaceClear": true,
+            "groupDetached": true
+          },
+          "after": {
+            "surfaceClear": true,
+            "groupDetached": true,
+            "disposedTextures": 3,
+            "liveMinted": 0,
+            "retiredContext": true,
+            "gpuResourcesRetired": true
+          },
+          "order": [
+            "acquire-skin",
+            "acquire-stand",
+            "acquire-background",
+            "texture-dispose",
+            "texture-dispose",
+            "texture-dispose",
+            "native-output-revoke",
+            "native-output-revoke"
+          ]
+        },
+        "screenshot": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\en-original-composition.png",
+          "sha256": "72d1b005595665662dfaee0d94611f7b75b79b25a924f537da059b083598a090"
+        },
+        "nativeAuthority": false
+      }
+    ],
+    "qualification": "Actual original child native screen, Three renderer/camera/scene/globe, HTMLImage decode, all3 GPU texture uploads and synchronous detach/joined disposal, through an explicitly synthetic native URI adapter only. Exactly one canonical globe canvas/R3F root plus one preserved independent Booky decorative canvas. Not native OS, genuine native URI ownership, real native frame synchronization, production content approval or PWA offline acceptance.",
+    "directViews": {
+      "reviewModel": "GPT-6 Astra Ultra",
+      "screenshots": [
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\ru-original-composition.png",
+          "sha256": "333cb0daeaaea42611437e909c825e2ceeb190200f439ce9e6f0f588909443bd",
+          "bytes": 558069
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\en-original-composition.png",
+          "sha256": "72d1b005595665662dfaee0d94611f7b75b79b25a924f537da059b083598a090",
+          "bytes": 553851
+        }
+      ],
+      "observation": "Both views show original library geometry, book stand, synthetic skin, hotspot and localized controls with preserved Booky/Mr. Booky. Synthetic color assets are transport fixtures, not approved production material or final visual design."
+    }
+  },
+  "browserFailures": [
+    {
+      "run": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a1\\result.json",
+        "sha256": "69f1e09019255a3bc6f71693d54fab8baf656a663dced4e22eb84be15b07a982",
+        "bytes": 2112
+      },
+      "fixture": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a1\\result.json",
+        "sha256": "677ce5dbad7c47b94f7356f812e0ad76684a0e61ad8e6d6361be454301b8a0db",
+        "bytes": 204191
+      },
+      "qualification": "INTERRUPTED before Chrome; raw process exit4294967295 and separate termination record; initial fixture report remains NOT_RUN."
+    },
+    {
+      "run": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a2\\result.json",
+        "sha256": "9b8a5114ad7f2d32e8a1053daa32f4e5e44e16ea54fcdbd7a690e136c0134f83",
+        "bytes": 2107
+      },
+      "fixture": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a2\\result.json",
+        "sha256": "281573708382795f026b185c7fe415a13e9c5db01961c4815735f8ab9449af19",
+        "bytes": 204795
+      },
+      "qualification": "Actual scene-control timeout; no page exception detail until diagnostic improvement."
+    },
+    {
+      "run": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a3\\result.json",
+        "sha256": "e4b11584b47e00c6fd9aaead63fbf59ac78d53260a0e34fc6f62825c5824d309",
+        "bytes": 2108
+      },
+      "fixture": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a3\\result.json",
+        "sha256": "9cb0adfdc04ea6059df756512d63c7456f4724822cae5be4c9215c9301f4b095",
+        "bytes": 205023
+      },
+      "qualification": "Actual stable language persistence violation in synthetic Shell; production provider unchanged."
+    },
+    {
+      "run": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a4\\result.json",
+        "sha256": "e3d1d5c3becb3a53dec79fa71749b19e59e2972316d2fd3e1412583c213fc55f",
+        "bytes": 2107
+      },
+      "fixture": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a4\\result.json",
+        "sha256": "9b1a48be3a7e4ede6e39afda3c3771fe3b37eed103482833f8aef9a00dc01409",
+        "bytes": 205508
+      },
+      "qualification": "Incorrect global canvas assertion included the required existing Booky canvas; exact globe/Booky inventory corrected."
+    }
+  ],
+  "browserTermination": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\browser-a1-termination.json",
+    "sha256": "86ec2edbc14d3da48aa4a73dc060d12e8732f1c3bdea9a36f0da3ca5e5f83a3a",
+    "bytes": 597
+  },
+  "currentAndroidPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\preparation.json",
+    "sha256": "8209b29bafd8480398151dc0de2840567a4e4ce17a4d25bfe9ccbbbd3c9080ea",
+    "bytes": 314301
+  },
+  "androidPreparationRun": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\android-prepare-a1\\result.json",
+    "sha256": "b54847f63a769ce8929c1a240bd017f373d4511aba5c9d6fe9d6f20a21776d5a",
+    "bytes": 1874
+  },
+  "androidAttempts": [
+    {
+      "name": "native-build",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "scripts/mobile/build-native.mjs",
+        "android",
+        "dev"
+      ],
+      "startedAt": "2026-10-05T05:54:31.429Z",
+      "finishedAt": "2026-10-05T05:54:48.031Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-build.stdout.txt",
+        "sha256": "97c31a23ac05b5e9811e1f388b17e4d8a64e8096bf4f5c02fe8118ec162c87c7",
+        "bytes": 10067
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-build.stderr.txt",
+        "sha256": "d9d5e3a1119f071773667df75232d1d5bc2e83045331aecfc404f29232bc31e8",
+        "bytes": 6007
+      }
+    },
+    {
+      "name": "native-audit",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "scripts/mobile/verify-native-artifact.mjs"
+      ],
+      "startedAt": "2026-10-05T05:54:48.035Z",
+      "finishedAt": "2026-10-05T05:54:53.141Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-audit.stdout.txt",
+        "sha256": "ac3254a6b2da324eb9ef573e8f97ddbb583cde9a91d6d9b845b6d6f06fad5fe1",
+        "bytes": 1045
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "jdk-version",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-version"
+      ],
+      "startedAt": "2026-10-05T05:54:54.790Z",
+      "finishedAt": "2026-10-05T05:54:54.907Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\jdk-version.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\jdk-version.stderr.txt",
+        "sha256": "c069ba5b371b2674dc747c7a6b0c76d873e4d0f2586e5fa9d3e20f49c92d9948",
+        "bytes": 300
+      }
+    },
+    {
+      "name": "cap-sync",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "node_modules/@capacitor/cli/bin/capacitor",
+        "sync",
+        "android"
+      ],
+      "startedAt": "2026-10-05T05:54:54.919Z",
+      "finishedAt": "2026-10-05T05:54:56.484Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\cap-sync.stdout.txt",
+        "sha256": "4333ccbc3928119bf5812bab642fc07cb8258057c6190300b4eb129fbac6294b",
+        "bytes": 533
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\cap-sync.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "android-assemble",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-Dorg.gradle.java.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8 -Duser.home=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user\" -Djava.io.tmpdir=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp\"",
+        "-classpath",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+        "org.gradle.wrapper.GradleWrapperMain",
+        "-p",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+        ":app:assembleDevDebug",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=2"
+      ],
+      "startedAt": "2026-10-05T05:54:56.488Z",
+      "finishedAt": "2026-10-05T05:55:32.688Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\android-assemble.stdout.txt",
+        "sha256": "0a12f2793321f45b27a9583b848cb17ac21fd3bdd5675dc35df3531307a1ba71",
+        "bytes": 13884
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\android-assemble.stderr.txt",
+        "sha256": "53a6a6c480423abcb53ee67a8a02838f881b123fe2912b3094f7e2c0201d3af9",
+        "bytes": 455
+      }
+    },
+    {
+      "name": "android-instrumentation-assemble",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-Dorg.gradle.java.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1",
+        "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8 -Duser.home=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user\" -Djava.io.tmpdir=\"D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp\"",
+        "-classpath",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+        "org.gradle.wrapper.GradleWrapperMain",
+        "-p",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+        ":app:assembleDevDebugAndroidTest",
+        "--offline",
+        "--no-daemon",
+        "--max-workers=2"
+      ],
+      "startedAt": "2026-10-05T05:55:32.821Z",
+      "finishedAt": "2026-10-05T05:55:56.384Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\android-instrumentation-assemble.stdout.txt",
+        "sha256": "ac1ed34dbe6132b01287f22c667a8ec34484c478718ff34f10934c3dd57c978d",
+        "bytes": 15116
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\android-instrumentation-assemble.stderr.txt",
+        "sha256": "40e340e0affa3603957ffcc6448a02556cef7ab56bea6177631ff90602c9ce3d",
+        "bytes": 455
+      }
+    },
+    {
+      "name": "apk-badging",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-05T05:55:56.406Z",
+      "finishedAt": "2026-10-05T05:55:56.516Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-badging.stdout.txt",
+        "sha256": "e155131c3fc90d8e07420a50c879fc0bbce9c56906be92535f32c415e750cc52",
+        "bytes": 5432
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-badging.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "apk-manifest",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "xmltree",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug.apk",
+        "--file",
+        "AndroidManifest.xml"
+      ],
+      "startedAt": "2026-10-05T05:55:56.521Z",
+      "finishedAt": "2026-10-05T05:55:56.589Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-manifest.stdout.txt",
+        "sha256": "4c6d097afd08e34ae3044a2913409e64c7f2326ae3043ae126d7de6eb18af6e6",
+        "bytes": 9022
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-manifest.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "apk-signature",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-jar",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-05T05:55:56.594Z",
+      "finishedAt": "2026-10-05T05:55:57.012Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-signature.stdout.txt",
+        "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+        "bytes": 972
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-signature.stderr.txt",
+        "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+        "bytes": 92
+      }
+    },
+    {
+      "name": "apk-alignment",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\zipalign.exe",
+        "-c",
+        "-P",
+        "16",
+        "4",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-05T05:55:57.016Z",
+      "finishedAt": "2026-10-05T05:55:57.085Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-alignment.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\apk-alignment.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "previous-apk-badging",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+        "dump",
+        "badging",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\previous-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-05T05:55:57.090Z",
+      "finishedAt": "2026-10-05T05:55:57.158Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\previous-apk-badging.stdout.txt",
+        "sha256": "e155131c3fc90d8e07420a50c879fc0bbce9c56906be92535f32c415e750cc52",
+        "bytes": 5432
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\previous-apk-badging.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "previous-apk-signature",
+      "command": [
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+        "-Duser.home=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-user",
+        "-Djava.io.tmpdir=D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\tool-temp",
+        "-jar",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\lib\\apksigner.jar",
+        "verify",
+        "--verbose",
+        "--print-certs",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\previous-dev-debug.apk"
+      ],
+      "startedAt": "2026-10-05T05:55:57.162Z",
+      "finishedAt": "2026-10-05T05:55:57.533Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\previous-apk-signature.stdout.txt",
+        "sha256": "8289f86c685f73de50fb3de8bd8f791e4f708dcbd81bf82caaf76b3cd4b650c1",
+        "bytes": 972
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\previous-apk-signature.stderr.txt",
+        "sha256": "d728a2410c28c83d0561d5c0edd70cca730c8ab52bf764287b1ef8d1537479b3",
+        "bytes": 92
+      }
+    }
+  ],
+  "binaryReceipt": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\binary.json",
+    "sha256": "2401964c64da6a1afc8bc715f79cd7c683a7a310bf7cf5f50686fc4c6fd80ce4",
+    "bytes": 205040
+  },
+  "binaries": [
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug.apk",
+      "sha256": "b326fa44d46bdaf587271aafdadaf472fc9cbd85edac2159238b32c3c7928e3c",
+      "bytes": 70295762
+    },
+    {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug-androidTest.apk",
+      "sha256": "ec83120b05c372e875863dc76fcfb712e89cb9e5d9ecaaade0a4e0a8a4acfdd6",
+      "bytes": 745169
+    }
+  ],
+  "nativeBundle": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-bundle",
+    "artifactPath": ".tmp/mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1/native-bundle/artifact.json",
+    "sha256": "0b331f6af9c089ff49dda367dd884b20e32ca730d5f52a22c998b3831fcfa1ea",
+    "files": 1419,
+    "artifact": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-bundle\\artifact.json",
+      "sha256": "0b331f6af9c089ff49dda367dd884b20e32ca730d5f52a22c998b3831fcfa1ea",
+      "bytes": 724066
+    }
+  },
+  "buildId": "1bd4021d7dd0e15be187559a1cd6e0437c93933914bfe9f6db5a7d8f01008132",
+  "independentNativeAudit": {
+    "attempt": {
+      "name": "native-audit",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "scripts/mobile/verify-native-artifact.mjs"
+      ],
+      "startedAt": "2026-10-05T05:54:48.035Z",
+      "finishedAt": "2026-10-05T05:54:53.141Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-audit.stdout.txt",
+        "sha256": "ac3254a6b2da324eb9ef573e8f97ddbb583cde9a91d6d9b845b6d6f06fad5fe1",
+        "bytes": 1045
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "status": "PASS_CURRENT_RAW_SOURCES_AND_ARTIFACT_INTEGRITY",
+    "limitations": [
+      "Preparation integrity only; not a native APK/AAB/IPA, device test, editorial/rights approval, paid-access authority or release approval.",
+      "Module ownership is self-reported build metadata checked against source and emitted bytes; it is not independent source-to-binary reproducibility or arbitrary executable-equivalence proof.",
+      "Literal executable/resource paths are checked statically; constructed runtime URLs and native OS behavior require separate runtime gates."
+    ],
+    "repeatedAfterPreparation": false
+  },
+  "currentPwaPreparation": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\preparation.json",
+    "sha256": "efe9f37b0d2e515f0979ca53d2918ac3eec3dec9ff476765a335a4c6a281dff7",
+    "bytes": 300249
+  },
+  "pwaPreparationRun": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\pwa-prepare-a1\\result.json",
+    "sha256": "a8e304c97dfe178649a68cfbe585938d28ba96c0f0d79cc08404be7c691c9c21",
+    "bytes": 1854
+  },
+  "pwaAttempts": [
+    {
+      "name": "pwa-build",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "scripts/mobile/build-pwa.mjs"
+      ],
+      "startedAt": "2026-10-05T05:54:28.745Z",
+      "finishedAt": "2026-10-05T05:54:50.603Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-build.stdout.txt",
+        "sha256": "46353e2fc155323177cb5f859fc98902852dcc767342e037ef2814669571aa54",
+        "bytes": 8268
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-build.stderr.txt",
+        "sha256": "874ca001f672fe70fb37044c71ad71076524f8de3131cd2fa0a7c9a108a56082",
+        "bytes": 5424
+      }
+    },
+    {
+      "name": "pwa-audit",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "scripts/mobile/verify-pwa-artifact.mjs"
+      ],
+      "startedAt": "2026-10-05T05:54:50.608Z",
+      "finishedAt": "2026-10-05T05:54:55.691Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-audit.stdout.txt",
+        "sha256": "9bbb856c2c75b2978f911870da7f82d686ba68888ee51d18cace9fa310369c04",
+        "bytes": 797
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "pwaBundle": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-bundle",
+    "artifactPath": ".tmp/mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862/pwa-bundle/artifact.json",
+    "sha256": "185b080a6cd8f5049d79d519519611754e8efb9996baa3226f8b0968d3c5d2e6",
+    "files": 1426,
+    "artifact": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-bundle\\artifact.json",
+      "sha256": "185b080a6cd8f5049d79d519519611754e8efb9996baa3226f8b0968d3c5d2e6",
+      "bytes": 502869
+    }
+  },
+  "independentPwaAudit": {
+    "attempt": {
+      "name": "pwa-audit",
+      "command": [
+        "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "scripts/mobile/verify-pwa-artifact.mjs"
+      ],
+      "startedAt": "2026-10-05T05:54:50.608Z",
+      "finishedAt": "2026-10-05T05:54:55.691Z",
+      "exitCode": 0,
+      "signal": null,
+      "errorCode": null,
+      "deadline": false,
+      "stdout": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-audit.stdout.txt",
+        "sha256": "9bbb856c2c75b2978f911870da7f82d686ba68888ee51d18cace9fa310369c04",
+        "bytes": 797
+      },
+      "stderr": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    "status": "PASS_CURRENT_STATIC_ARTIFACT_INTEGRITY",
+    "limitations": [
+      "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+      "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+    ],
+    "repeatedAfterPreparation": false
+  },
+  "androidCompiled": {
+    "methods": 5,
+    "status": "COMPILED_ONLY_NOT_RUN",
+    "actualDEX": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\android-canonical-compiled-a1\\result.json",
+      "sha256": "56d9e38a7b6606bf4e255725b56d4fb814500472ac60e0f99f521651bd0c846c",
+      "bytes": 4100
+    },
+    "qualification": "Exact selected class_data method definitions and nonempty code items in actual newly built test APK, not incidental descriptor strings. No instrumentation, WebView/OS/real decoder authority or installed-device acceptance."
+  },
+  "swift": {
+    "methods": 5,
+    "status": "NOT_COMPILED_NOT_RUN",
+    "pbxBinding": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\swift-canonical-pbx-a1\\result.json",
+      "sha256": "2cdc724774f1b5da5b7d5a213e05ca850e78c9ddba21966e00d21f9acf0990f0",
+      "bytes": 1715
+    },
+    "subreview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\swift-semantic-a1\\review-note-a1.json",
+      "sha256": "2e3432de3464e12005de10ec9bac6c3d9bae923288ae9e61f7bf0e7c7fee5037",
+      "bytes": 6176
+    },
+    "qualification": "New Swift sources and exact app/test target PBX binding parsed only; Apple compiler/XCTest/runtime unavailable and not substituted by Java/browser."
+  },
+  "productionPins": {
+    "scene": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\src\\child\\childNativeSceneReleasePins.json",
+      "sha256": "26cfa95ba6b4d3d4f2885ee12059e12f45adde8ed5e027322f8eddd8d94ba2ca",
+      "bytes": 111
+    },
+    "authenticEmptySceneReviewKeys": 0,
+    "authenticEmptySceneManifests": 0,
+    "packageMediaResourcePinsUnchanged": true,
+    "adultChildReviewedFalseUnpromoted": true,
+    "missingAuthenticApproval": "DENY"
+  },
+  "cleanup": {
+    "time": "2026-10-05T08:59:24.1338720+03:00",
+    "ownedProducerProcesses": [],
+    "temporarySceneEmitterFixturesRemaining": [],
+    "retainedBrowserEvidence": [
+      ".tmp/child-canonical-browser-a1",
+      ".tmp/child-canonical-browser-a2",
+      ".tmp/child-canonical-browser-a3",
+      ".tmp/child-canonical-browser-a4",
+      ".tmp/child-canonical-browser-a5"
+    ],
+    "unrelatedDeletion": false,
+    "toolInstalls": 0,
+    "remoteActions": 0,
+    "observation": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-cleanup-observation-a1.json",
+      "sha256": "02aba2e6c84fbf5fc5914bdd910e90c5579f370a791c04e754eb9ce40a536912",
+      "bytes": 448
+    },
+    "sourceClean": true,
+    "sourceScratchOrToolInstalls": 0,
+    "sourceGraphsAndProtectedFilesUnchangedAfterCheckpoint": true,
+    "retainedBrowserArtifacts": "Own fixtures/caches/screenshots/raw failures retained as local evidence, not imported production source."
+  },
+  "remaining": [
+    "Installed Android five-method instrumentation and genuine native WebView/resource/OS storage/lifecycle/frame behavior NOT_RUN: no suitable owned target and separately staged independently signed native fixture/protected child setup. No seventh AVD attempt.",
+    "Swift five new tests NOT_COMPILED_NOT_RUN; actual WKURLSchemeHandler decode/cancel ordering requires Apple native runtime.",
+    "Authentic child scene/media/package/resource approvals are absent and empty production pins deny admission; adult childReviewed:false/rightsReviewed:false do not grant access.",
+    "PWA output and static artifact audit passed; this native-screen browser fixture does not verify PWA service-worker/offline behavior.",
+    "Owner7/legal5, PSP unselected, real purchase/refund, Auth/deletion, authorized remote and S03/S16 acceptance remain unchanged."
+  ],
+  "stageStatus": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16": "IN_PROGRESS",
+    "S16Open": 36,
+    "ownerActions": 7,
+    "pendingLegalReviews": 5,
+    "PSP": "UNSELECTED"
+  },
+  "nextOriginalCoherentStage": "Preserve and safely restore the selected child appearance across native context and allowed RU/EN profile locale transitions, as required by original22.6 child Home and the language-switch state contract. Scope a protected per-profile scene selection reference, fresh native package/review/rights revalidation, denial of stale/adult choices and original globe state preservation. Never persist resource tokens, URLs or approval booleans. Current ChildCanonicalResources owns only context-lifetime scene state; LocalChildProfile has no appearance reference and native scene maps contain transient permits. This bounded identified coding gap remains independent of external device/legal/PSP gates.",
+  "nextGapEvidence": {
+    "qualification": "Bounded source/requirement review only; not a complete S16 acceptance audit.",
+    "requirement": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\requirements\\v12\\FINAL_MASTER_CODEX_PROMPT_LITERARY_PLANET_V12_BILINGUAL_RU_EN.txt",
+      "sha256": "e9016b490180b8ac40dbf76aaf1b0baa4b37bc21db33faf6c38e5382ff4a3c23",
+      "bytes": 1381619
+    },
+    "requirementSections": [
+      "22.6 ChildHome selected child skin/stand/background, lines8509-8525",
+      "Language switch preserves selected globe edition/skin/stand/background and exact profile, lines12215-12226"
+    ],
+    "sources": [
+      {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\src\\child\\childNativeCanonicalResources.ts",
+        "sha256": "653ea95c43a42f777b073a7d63e3eab54a6a3f723fcdc88f2410d0d94298c977",
+        "bytes": 9094
+      },
+      {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\src\\child\\childProfile.ts",
+        "sha256": "e938dae0e1601f50a2e102d0481fa7b23f9b635c433e2f0429e706e270c976d4",
+        "bytes": 8515
+      },
+      {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\src\\child\\ChildNativeBoundary.tsx",
+        "sha256": "c6e2dec48db1a4bdc5f397b5f6fb4a3506f82e182f326dc19810097e603a8fa6",
+        "bytes": 28095
+      },
+      {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\app\\src\\main\\java\\ru\\probpera\\literaryplanet\\PlanetChildVault.java",
+        "sha256": "c204cb620d6de62c7b6229ca0dea6e1e4b29f219c0f85c4293028054934ef569",
+        "bytes": 789364
+      }
+    ]
+  },
+  "metadataFailure": {
+    "status": "FAILED_GUARD_PRESERVED",
+    "reason": "First wholeclosure metadata attempt assumed100distinct title keys. Actual100cases have97distinct titles because four parameter rows share one title. No product/source action performed by failed helper.",
+    "stdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\whole-closure-a1.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "stderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\whole-closure-a1.stderr.txt",
+      "sha256": "67b9f738d55e2991a470a6caff486ceb51f76390c7d65a3c0f008d5a2645647f",
+      "bytes": 640
+    },
+    "script": {
+      "path": "D:\\CodexData\\Temp\\astra-canonical-close-a1.mjs",
+      "sha256": "eb1091fb6e1e2f1bb8f5c71c9cf1172c0f1c8c104f10b22e7c27bd8c864a6478",
+      "bytes": 14243
+    }
+  },
+  "remoteActions": 0,
+  "pushMergeDeployStoreActions": 0,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "validation": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-whole-canonical-resource-closure-a1.json",
+    "sha256": "e7852cc2852cf3fedcace9a204ab7fe64a6d6e0ea69b3f01fa0ff1a8c770afa8",
+    "bytes": 95453
+  },
+  "originalAuthorFreeze": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\next-local-v2-canonical-resources\\whole-author-manifest-a1.json",
+    "sha256": "fd3aa935ac0dd8e3f597d3c23a542233232240cfdb898b7f8aab7b01dc13ddd7",
+    "bytes": 29903
+  },
+  "sourcePaths": [
+    "apps/mobile/android/app/src/androidTest/java/ru/probpera/literaryplanet/PlanetChildCanonicalResourceRuntimeTest.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/MainActivity.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildDataTransport.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildPlugin.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildResources.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+    "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildWebResources.java",
+    "apps/mobile/ios/App/App.xcodeproj/project.pbxproj",
+    "apps/mobile/ios/App/App/PlanetChildDataTransport.swift",
+    "apps/mobile/ios/App/App/PlanetChildPlugin.swift",
+    "apps/mobile/ios/App/App/PlanetChildResources.swift",
+    "apps/mobile/ios/App/App/PlanetChildVault.swift",
+    "apps/mobile/ios/App/App/PlanetChildWebResources.swift",
+    "apps/mobile/ios/App/App/PlanetContentStorePlugin.swift",
+    "apps/mobile/ios/App/AppSecureStorageTests/PlanetChildCanonicalResourceRuntimeTests.swift",
+    "scripts/mobile/build-native.mjs",
+    "scripts/mobile/child-native-canonical-resource-browser.mjs",
+    "scripts/mobile/native-child-scene-assets.mjs",
+    "scripts/mobile/native-child-scene-assets.test.mjs",
+    "scripts/mobile/native-install-runtime.mjs",
+    "scripts/mobile/native-install-runtime.test.mjs",
+    "scripts/mobile/verify-native-artifact.mjs",
+    "scripts/mobile/verify-native-artifact.test.mjs",
+    "src/child/ChildNativeBoundary.css",
+    "src/child/ChildNativeBoundary.test.tsx",
+    "src/child/ChildNativeBoundary.tsx",
+    "src/child/ChildNativeMediaView.test.tsx",
+    "src/child/ChildNativeMediaView.tsx",
+    "src/child/childNativeAppBridge.test.ts",
+    "src/child/childNativeAppBridge.ts",
+    "src/child/childNativeCanonicalResources.test.ts",
+    "src/child/childNativeCanonicalResources.ts",
+    "src/child/childNativeMedia.test.ts",
+    "src/child/childNativeMedia.ts",
+    "src/child/childNativeScene.test.ts",
+    "src/child/childNativeScene.ts",
+    "src/child/childNativeSceneReleasePins.json",
+    "src/components/GlobeChildNativeComposition.test.tsx",
+    "src/components/GlobeChildNativeComposition.tsx",
+    "src/components/LiteraryGlobe.tsx",
+    "src/components/LiteraryWorldMap.tsx",
+    "src/components/globeAtlas.ts",
+    "src/components/globeAtlasRuntime.test.ts",
+    "src/host/mountHostApp.tsx"
+  ],
+  "changes": [
+    "Implemented native private scene/web-resource capabilities and owned URI delivery to the original canonical Three recipient, including child-reviewed skin/background/stand/hotspot composition.",
+    "Joined actual image/renderer/native cleanup and synchronous surface sealing before successor context; corrected scene/native deadline, DTO, P256 review/rights binding and callback retirement defects.",
+    "Preserved original V1, authentic empty production pins, one canonical globe and existing Booky decorative renderer/controls, equal RU/EN and accountless LOCAL."
+  ],
+  "localChecks": {
+    "units": {
+      "status": "SUCCESSFUL_OCCURRENCE_INVENTORY_WITH_EXACT_ORIGINS",
+      "caseCount": 100,
+      "uniquePassedTitles": 97,
+      "groups": [
+        {
+          "group": "Original stage eight unit files",
+          "unique": 89,
+          "finalAffectedRerun": 71,
+          "retainedUnaffected": 18
+        },
+        {
+          "group": "Scene emitter",
+          "passed": 5
+        },
+        {
+          "group": "Independent scene artifact verifier",
+          "passed": 4
+        },
+        {
+          "group": "Native canonical fixture selector",
+          "passed": 2
+        }
+      ],
+      "qualification": "100 focused cases have successful observations across exact source origins, not a single 100-case run at final HEAD. These comprise97distinct file/title keys: four parameter rows intentionally share one title and keep their stable within-suite occurrence identity. Initial89 had87PASS/2FAIL; affected71 passed at32fc50c654ea00df7c8576b00b9a2f030eccc95ffa8f665ed3c44527a608f5f1; unchanged18 retain c63cf9b634928d6b62f636e7d433901a2383be439b97b049d351ae890c157223 attribution, as do emitter5/verifier4/selector2. TypeScript passed at32fc. Only the explicitly synthetic browser fixture script changed afterward; source/test/config bytes for TypeScript and affected71 are exact. Prior failures remain immutable."
+    },
+    "runs": {
+      "units-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\units-a1\\result.json",
+        "sha256": "891031b0bf01547135d4ed3aabf037cbc594805e2a4877f6f81270858f0ea225",
+        "bytes": 33503
+      },
+      "unit-fixes-a2": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\unit-fixes-a2\\result.json",
+        "sha256": "d44e6bed898faa12fe870588bc23247d8c78189fdb13216209cdcb66c98171cd",
+        "bytes": 25041
+      },
+      "scene-emitter-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\scene-emitter-a1\\result.json",
+        "sha256": "516c7bb9868fbf38d30d07bebda116f6da58ab28624c49b6aa10bb1123a1ba22",
+        "bytes": 4320
+      },
+      "verifier-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\verifier-a1\\result.json",
+        "sha256": "677281d500ee1d905db6053e85df00d4bc28bbcede8c3b44a267f34cd8dcbc4d",
+        "bytes": 4008
+      },
+      "selector-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\selector-a1\\result.json",
+        "sha256": "2602d4773de8dbbe136bf0c36db4685a22a84f31acc799e569ea6024f7f7f7ab",
+        "bytes": 3332
+      },
+      "tsc-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\tsc-a1\\result.json",
+        "sha256": "1a262cd3250134c5214f4d7a2aa6927457141d271aec530b5a4f053cb8dcc45a",
+        "bytes": 1820
+      },
+      "tsc-a2": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\tsc-a2\\result.json",
+        "sha256": "26e6b11bdd6dea71d7a8695a3af122ba7ad1e4c4d00242cc821ef3795817a902",
+        "bytes": 1816
+      },
+      "browser-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a1\\result.json",
+        "sha256": "69f1e09019255a3bc6f71693d54fab8baf656a663dced4e22eb84be15b07a982",
+        "bytes": 2112
+      },
+      "browser-a2": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a2\\result.json",
+        "sha256": "9b8a5114ad7f2d32e8a1053daa32f4e5e44e16ea54fcdbd7a690e136c0134f83",
+        "bytes": 2107
+      },
+      "browser-a3": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a3\\result.json",
+        "sha256": "e4b11584b47e00c6fd9aaead63fbf59ac78d53260a0e34fc6f62825c5824d309",
+        "bytes": 2108
+      },
+      "browser-a4": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a4\\result.json",
+        "sha256": "e3d1d5c3becb3a53dec79fa71749b19e59e2972316d2fd3e1412583c213fc55f",
+        "bytes": 2107
+      },
+      "browser-a5": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a5\\result.json",
+        "sha256": "31d388d76446ffb38b5dd00ce1dbf54a9aa2e7707311cb1be27af8a853707370",
+        "bytes": 2104
+      },
+      "android-prepare-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\android-prepare-a1\\result.json",
+        "sha256": "b54847f63a769ce8929c1a240bd017f373d4511aba5c9d6fe9d6f20a21776d5a",
+        "bytes": 1874
+      },
+      "pwa-prepare-a1": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\pwa-prepare-a1\\result.json",
+        "sha256": "a8e304c97dfe178649a68cfbe585938d28ba96c0f0d79cc08404be7c691c9c21",
+        "bytes": 1854
+      }
+    },
+    "browser": {
+      "report": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\result.json",
+        "sha256": "10404cdfa33d2630fbb5020b31981275d9e76e8fe8b4622a95b6f70c7614bc79",
+        "bytes": 207928
+      },
+      "run": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\astra-validation\\browser-a5\\result.json",
+        "sha256": "31d388d76446ffb38b5dd00ce1dbf54a9aa2e7707311cb1be27af8a853707370",
+        "bytes": 2104
+      },
+      "locales": [
+        "ru",
+        "en"
+      ],
+      "checks": [
+        {
+          "locale": "ru",
+          "status": "PASS",
+          "scope": "actual-original-three-with-synthetic-native-uri-seam",
+          "before": {
+            "renderer": "same-reference",
+            "camera": "e1b41623-da94-4ef4-acaa-37588052f8d5",
+            "scene": "48ab1fd3-8788-4e3e-8806-c04568771d43",
+            "globe": "7c820b14-7d50-4500-9c4b-40ab50740bec",
+            "canvases": 1,
+            "bookyCanvases": 1,
+            "totalCanvases": 2,
+            "globeRoots": 1
+          },
+          "observed": {
+            "canvases": 1,
+            "bookyCanvases": 1,
+            "totalCanvases": 2,
+            "globeRoots": 1,
+            "sameRenderer": true,
+            "sameCamera": true,
+            "sameScene": true,
+            "sameGlobe": true,
+            "group": true,
+            "cover": true,
+            "wall": true,
+            "hotspot": true,
+            "uploaded": [
+              true,
+              true,
+              true
+            ],
+            "glError": 0,
+            "nativeAuthority": false
+          },
+          "cleanup": {
+            "synchronous": {
+              "surfaceClear": true,
+              "groupDetached": true
+            },
+            "after": {
+              "surfaceClear": true,
+              "groupDetached": true,
+              "disposedTextures": 3,
+              "liveMinted": 0,
+              "retiredContext": true,
+              "gpuResourcesRetired": true
+            },
+            "order": [
+              "acquire-skin",
+              "acquire-stand",
+              "acquire-background",
+              "texture-dispose",
+              "texture-dispose",
+              "texture-dispose",
+              "native-output-revoke",
+              "native-output-revoke"
+            ]
+          },
+          "screenshot": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\ru-original-composition.png",
+            "sha256": "333cb0daeaaea42611437e909c825e2ceeb190200f439ce9e6f0f588909443bd"
+          },
+          "nativeAuthority": false
+        },
+        {
+          "locale": "en",
+          "status": "PASS",
+          "scope": "actual-original-three-with-synthetic-native-uri-seam",
+          "before": {
+            "renderer": "same-reference",
+            "camera": "d3ddf684-0217-473f-87d9-3fd0c4d3b010",
+            "scene": "15f22e7c-df34-4a90-ae4e-f7070060f326",
+            "globe": "ed969b45-e605-4ebb-a4c6-aafc4a861b45",
+            "canvases": 1,
+            "bookyCanvases": 1,
+            "totalCanvases": 2,
+            "globeRoots": 1
+          },
+          "observed": {
+            "canvases": 1,
+            "bookyCanvases": 1,
+            "totalCanvases": 2,
+            "globeRoots": 1,
+            "sameRenderer": true,
+            "sameCamera": true,
+            "sameScene": true,
+            "sameGlobe": true,
+            "group": true,
+            "cover": true,
+            "wall": true,
+            "hotspot": true,
+            "uploaded": [
+              true,
+              true,
+              true
+            ],
+            "glError": 0,
+            "nativeAuthority": false
+          },
+          "cleanup": {
+            "synchronous": {
+              "surfaceClear": true,
+              "groupDetached": true
+            },
+            "after": {
+              "surfaceClear": true,
+              "groupDetached": true,
+              "disposedTextures": 3,
+              "liveMinted": 0,
+              "retiredContext": true,
+              "gpuResourcesRetired": true
+            },
+            "order": [
+              "acquire-skin",
+              "acquire-stand",
+              "acquire-background",
+              "texture-dispose",
+              "texture-dispose",
+              "texture-dispose",
+              "native-output-revoke",
+              "native-output-revoke"
+            ]
+          },
+          "screenshot": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\en-original-composition.png",
+            "sha256": "72d1b005595665662dfaee0d94611f7b75b79b25a924f537da059b083598a090"
+          },
+          "nativeAuthority": false
+        }
+      ],
+      "qualification": "Actual original child native screen, Three renderer/camera/scene/globe, HTMLImage decode, all3 GPU texture uploads and synchronous detach/joined disposal, through an explicitly synthetic native URI adapter only. Exactly one canonical globe canvas/R3F root plus one preserved independent Booky decorative canvas. Not native OS, genuine native URI ownership, real native frame synchronization, production content approval or PWA offline acceptance.",
+      "directViews": {
+        "reviewModel": "GPT-6 Astra Ultra",
+        "screenshots": [
+          {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\ru-original-composition.png",
+            "sha256": "333cb0daeaaea42611437e909c825e2ceeb190200f439ce9e6f0f588909443bd",
+            "bytes": 558069
+          },
+          {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\child-canonical-browser-a5\\en-original-composition.png",
+            "sha256": "72d1b005595665662dfaee0d94611f7b75b79b25a924f537da059b083598a090",
+            "bytes": 553851
+          }
+        ],
+        "observation": "Both views show original library geometry, book stand, synthetic skin, hotspot and localized controls with preserved Booky/Mr. Booky. Synthetic color assets are transport fixtures, not approved production material or final visual design."
+      }
+    },
+    "androidCompiled": {
+      "methods": 5,
+      "status": "COMPILED_ONLY_NOT_RUN",
+      "actualDEX": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\android-canonical-compiled-a1\\result.json",
+        "sha256": "56d9e38a7b6606bf4e255725b56d4fb814500472ac60e0f99f521651bd0c846c",
+        "bytes": 4100
+      },
+      "qualification": "Exact selected class_data method definitions and nonempty code items in actual newly built test APK, not incidental descriptor strings. No instrumentation, WebView/OS/real decoder authority or installed-device acceptance."
+    },
+    "swift": {
+      "methods": 5,
+      "status": "NOT_COMPILED_NOT_RUN",
+      "pbxBinding": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\swift-canonical-pbx-a1\\result.json",
+        "sha256": "2cdc724774f1b5da5b7d5a213e05ca850e78c9ddba21966e00d21f9acf0990f0",
+        "bytes": 1715
+      },
+      "subreview": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-canonical-resource-work-20261005\\swift-semantic-a1\\review-note-a1.json",
+        "sha256": "2e3432de3464e12005de10ec9bac6c3d9bae923288ae9e61f7bf0e7c7fee5037",
+        "bytes": 6176
+      },
+      "qualification": "New Swift sources and exact app/test target PBX binding parsed only; Apple compiler/XCTest/runtime unavailable and not substituted by Java/browser."
+    },
+    "independentNativeAudit": {
+      "attempt": {
+        "name": "native-audit",
+        "command": [
+          "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "scripts/mobile/verify-native-artifact.mjs"
+        ],
+        "startedAt": "2026-10-05T05:54:48.035Z",
+        "finishedAt": "2026-10-05T05:54:53.141Z",
+        "exitCode": 0,
+        "signal": null,
+        "errorCode": null,
+        "deadline": false,
+        "stdout": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-audit.stdout.txt",
+          "sha256": "ac3254a6b2da324eb9ef573e8f97ddbb583cde9a91d6d9b845b6d6f06fad5fe1",
+          "bytes": 1045
+        },
+        "stderr": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "status": "PASS_CURRENT_RAW_SOURCES_AND_ARTIFACT_INTEGRITY",
+      "limitations": [
+        "Preparation integrity only; not a native APK/AAB/IPA, device test, editorial/rights approval, paid-access authority or release approval.",
+        "Module ownership is self-reported build metadata checked against source and emitted bytes; it is not independent source-to-binary reproducibility or arbitrary executable-equivalence proof.",
+        "Literal executable/resource paths are checked statically; constructed runtime URLs and native OS behavior require separate runtime gates."
+      ],
+      "repeatedAfterPreparation": false
+    },
+    "independentPwaAudit": {
+      "attempt": {
+        "name": "pwa-audit",
+        "command": [
+          "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "scripts/mobile/verify-pwa-artifact.mjs"
+        ],
+        "startedAt": "2026-10-05T05:54:50.608Z",
+        "finishedAt": "2026-10-05T05:54:55.691Z",
+        "exitCode": 0,
+        "signal": null,
+        "errorCode": null,
+        "deadline": false,
+        "stdout": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-audit.stdout.txt",
+          "sha256": "9bbb856c2c75b2978f911870da7f82d686ba68888ee51d18cace9fa310369c04",
+          "bytes": 797
+        },
+        "stderr": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-audit.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "status": "PASS_CURRENT_STATIC_ARTIFACT_INTEGRITY",
+      "limitations": [
+        "Preparation integrity and current source-input freshness only; not an RC, editorial/rights approval, entitlement authority or deployment approval.",
+        "Static module/HTML/worker configuration checks do not prove browser behavior or arbitrary executable equivalence; real browser and native gates remain required."
+      ],
+      "repeatedAfterPreparation": false
+    }
+  },
+  "checkQualification": "100 focused cases have successful observations across exact source origins, not a single 100-case run at final HEAD. These comprise97distinct file/title keys: four parameter rows intentionally share one title and keep their stable within-suite occurrence identity. Initial89 had87PASS/2FAIL; affected71 passed at32fc50c654ea00df7c8576b00b9a2f030eccc95ffa8f665ed3c44527a608f5f1; unchanged18 retain c63cf9b634928d6b62f636e7d433901a2383be439b97b049d351ae890c157223 attribution, as do emitter5/verifier4/selector2. TypeScript passed at32fc. Only the explicitly synthetic browser fixture script changed afterward; source/test/config bytes for TypeScript and affected71 are exact. Prior failures remain immutable.",
+  "retainedEvidence": {
+    "path": "docs/mobile/evidence/S16/child-local-native-resources-20261005/result.json",
+    "sha256": "5f94a5c6d258a06727d533debedde3874c034cb77cdc21f2cbbfb778ac00f78c",
+    "qualification": "Prior evidence retains source/time/failures and was not rerun."
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Exact older source/time snapshot copied unchanged; NOT_RECHECKED.",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "nextAction": "Preserve and safely restore the selected child appearance across native context and allowed RU/EN profile locale transitions, as required by original22.6 child Home and the language-switch state contract. Scope a protected per-profile scene selection reference, fresh native package/review/rights revalidation, denial of stale/adult choices and original globe state preservation. Never persist resource tokens, URLs or approval booleans. Current ChildCanonicalResources owns only context-lifetime scene state; LocalChildProfile has no appearance reference and native scene maps contain transient permits. This bounded identified coding gap remains independent of external device/legal/PSP gates. Preserve Booky/Mr. Booky and existing animation/controls, equal RU/EN, original V1 and inactive encrypted namespaces; exactly one canonical globe/Canvas/camera/renderer. Free LOCAL remains accountless with no full child-record upload. Missing authentic editorial/rights/pins deny production. S03/S16 stay IN_PROGRESS11/36 OPEN, owner7/reviews5, PSP unselected, releaseReady=false. No unchanged QA/build repeats, seventh AVD attempt, report-only D stage or remote/push/merge/deploy/store.",
+  "canonicalResourcesImplementedLocally": true,
+  "availablePriorDelivery": {
+    "previousSourcePacket": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-native-resource-work-20261005\\local-packet-receipt-a1.json",
+      "sha256": "9e256adb35cf17e406393eae52ae3dd3646bc9492c8f895062fbbf98546557ad",
+      "bytes": 2158
+    },
+    "retained": {
+      "sourceCommit": "b94dcc48ccae7dc97d070cada65c06e1cf1ff745",
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\literary-planet-child-local-snapshot-delivery-20261004-1a360ccc-e112-4c08-a3f6-f656273748be.zip",
+      "sha256": "18d8eb3e0ca4a6eae00c0cb84b7b6c644547e3f85bf8bca2175ff300bb86acd5",
+      "qualification": "Historical delta package; not rebuilt or rebound to this runner source."
+    }
+  },
+  "availableCurrentBuilds": {
+    "android": [
+      {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug.apk",
+        "sha256": "b326fa44d46bdaf587271aafdadaf472fc9cbd85edac2159238b32c3c7928e3c",
+        "bytes": 70295762
+      },
+      {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\app-dev-debug-androidTest.apk",
+        "sha256": "ec83120b05c372e875863dc76fcfb712e89cb9e5d9ecaaade0a4e0a8a4acfdd6",
+        "bytes": 745169
+      }
+    ],
+    "nativeWeb": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-bundle",
+      "artifactPath": ".tmp/mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1/native-bundle/artifact.json",
+      "sha256": "0b331f6af9c089ff49dda367dd884b20e32ca730d5f52a22c998b3831fcfa1ea",
+      "files": 1419,
+      "artifact": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-18ce835e-385a-4ce6-b3b5-e16ffd9429d1\\native-bundle\\artifact.json",
+        "sha256": "0b331f6af9c089ff49dda367dd884b20e32ca730d5f52a22c998b3831fcfa1ea",
+        "bytes": 724066
+      }
+    },
+    "pwa": {
+      "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-bundle",
+      "artifactPath": ".tmp/mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862/pwa-bundle/artifact.json",
+      "sha256": "185b080a6cd8f5049d79d519519611754e8efb9996baa3226f8b0968d3c5d2e6",
+      "files": 1426,
+      "artifact": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-120fcb40-48bc-49f8-923f-f09080425862\\pwa-bundle\\artifact.json",
+        "sha256": "185b080a6cd8f5049d79d519519611754e8efb9996baa3226f8b0968d3c5d2e6",
+        "bytes": 502869
+      }
+    }
+  },
+  "runCommands": {
+    "runtime": {
+      "executable": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "environment": {
+        "ELECTRON_RUN_AS_NODE": "1"
+      }
+    },
+    "androidPreparation": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "args": [
+        "scripts/mobile/prepare-local-release.mjs",
+        "android"
+      ],
+      "qualification": "Already built at current source; repeat only after affected source changes."
+    },
+    "pwaPreparation": {
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "args": [
+        "scripts/mobile/prepare-local-release.mjs",
+        "pwa"
+      ],
+      "qualification": "Already built at current source; repeat only after affected source changes."
+    }
+  }
+}
