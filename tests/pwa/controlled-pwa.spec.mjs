@@ -1448,7 +1448,7 @@ test("saved Booky size survives a full persistent browser restart offline throug
   await mkdir(profile);
   const sizeKey = "probpera-booky-size-v1", visibilityKey = "probpera-booky-adult-v1";
   let context, scene;
-  const errors = [], blockedRequests = [];
+  const errors = [], blockedRequests = [], failedExecutableRequests = [];
   const evidence = { localQaOnly: true, browserChannel: "msedge", persistentLaunches: 0, restarts: 0,
     sameDisposableProfile: true, firstContextClosed: false, offlineBeforeFirstNavigation: false,
     preferenceKey: sizeKey, documents: [], locales: [], screenshots: [], capturesReviewed: false,
@@ -1469,7 +1469,8 @@ test("saved Booky size survives a full persistent browser restart offline throug
     evidence.persistentLaunches++; if (evidence.persistentLaunches > 1) evidence.restarts++;
     const page = context.pages()[0] ?? await context.newPage();
     expect(context.pages()).toHaveLength(1); expect(page.url()).toBe("about:blank");
-    page.on("pageerror", error => errors.push(error.name)); return page;
+    page.on("pageerror", error => errors.push(error.name));
+    page.on("requestfailed", request => { const pathname=new URL(request.url()).pathname;if(/^\/planet\/assets\/.+\.js$/u.test(pathname))failedExecutableRequests.push({pathname,error:request.failure()?.errorText}); }); return page;
   };
   const companion = page => page.locator('.planet-mascot-controls[data-planet-mascot-pet]');
   const authorizedGlobe = async page => {
@@ -1519,6 +1520,12 @@ test("saved Booky size survives a full persistent browser restart offline throug
     await expect(pet.locator('[data-booky-size-state]')).toHaveAttribute("data-booky-size-state", "ready");
     await expect(pet.locator('[data-booky-size-state]')).toHaveAttribute("data-booky-size-error", "");
     await expect.poll(() => page.evaluate(key => localStorage.getItem(key), sizeKey)).toBe("large");
+    // Preference recovery alone cannot prove the required lazy geometry is
+    // available. Assert actual original Booky model import and GPU frames.
+    await expect(pet.locator('[data-planet-mascot-avatar]')).toHaveAttribute("data-renderer-state", "live3d", { timeout: 45_000 });
+    const modelCanvas = pet.locator('[data-booky-canvas]');
+    await expect(modelCanvas).toHaveAttribute("data-booky-context", "ready");
+    await expect.poll(() => modelCanvas.getAttribute("data-booky-render-count").then(Number)).toBeGreaterThan(0);
   };
   const hideForScene = async page => {
     await companion(page).locator('[data-planet-mascot-hide]').tap();
@@ -1541,7 +1548,12 @@ test("saved Booky size survives a full persistent browser restart offline throug
   try {
     const online = await launch(false); await openAuthorized(online);
     const marker = await installed(online), originalUrl = new URL(online.url());
-    const asset = marker.manifest.files.find(file => file.kind === "asset" && /\.js$/u.test(file.url));
+    const ownershipFile=marker.manifest.files.find(file=>file.url==="/planet/module-ownership.json");expect(ownershipFile).toBeDefined();
+    expect(await executable(online,ownershipFile.url)).toEqual({buildId:marker.manifest.buildId,bytes:ownershipFile.bytes,sha256:ownershipFile.sha256});
+    const ownership=await online.evaluate(async()=>{const response=await fetch("/planet/module-ownership.json");if(!response.ok)throw Error("Owned module manifest unavailable");return response.json();});
+    const bookyOwner=ownership.entries.find(entry=>entry.source==="src/host/bookyModel.ts");expect(bookyOwner?.sourceSha256).toMatch(/^[a-f0-9]{64}$/u);expect(bookyOwner.files.length).toBeGreaterThan(0);
+    const ownedExecutables=bookyOwner.files.map(file=>{const entry=marker.manifest.files.find(row=>row.url==="/planet/"+file.file);expect(entry?.sha256).toBe(file.sha256);return entry;});
+    const asset = ownedExecutables.find(file=>/\.js$/u.test(file.url));
     expect(asset).toMatchObject({ url: expect.stringMatching(/^\/planet\/assets\/.+\.js$/u), sha256: expect.stringMatching(/^[a-f0-9]{64}$/u) });
     const expectedExecutable = { buildId: marker.manifest.buildId, bytes: asset.bytes, sha256: asset.sha256 };
     expect(await executable(online, asset.url)).toEqual(expectedExecutable);
@@ -1550,7 +1562,7 @@ test("saved Booky size survives a full persistent browser restart offline throug
     await screenshot(online, "pwa-booky-size-large-before-close.png");
     await hideForScene(online);
     evidence.build = { buildId: marker.manifest.buildId, manifestSha256: marker.manifestSha256,
-      executablePath: asset.url, executable: expectedExecutable };
+      executablePath: asset.url, executable: expectedExecutable, exactBookySourceOwnership:bookyOwner, ownershipManifestSha256:ownershipFile.sha256 };
     evidence.beforeClose = { storedSize: await online.evaluate(key => localStorage.getItem(key), sizeKey),
       confirmedSizeState: "ready", chosenSize: "large", avatarWidth: 80, realWebPreferencePort: true };
     const before = licenseRequests(await control(request, { action: "status" }));
@@ -1567,6 +1579,7 @@ test("saved Booky size survives a full persistent browser restart offline throug
     await expect(companion(cold)).toHaveAttribute("data-planet-mascot-active", "false");
     await authorizedGlobe(cold); expect(await installed(cold)).toEqual(marker);
     expect(await executable(cold, asset.url)).toEqual(expectedExecutable);
+    for(const file of ownedExecutables)expect(await executable(cold,file.url)).toEqual({buildId:marker.manifest.buildId,bytes:file.bytes,sha256:file.sha256});
     await expect.poll(() => cold.evaluate(() => window.__literaryPlanetQaScenes?.()
       .filter(item => document.querySelector("#atlas")?.contains(item.canvas)).length), { timeout: 45_000 }).toBe(1);
     scene = await cold.evaluateHandle(() => ({ document,
@@ -1594,12 +1607,12 @@ test("saved Booky size survives a full persistent browser restart offline throug
         return previous.document === document && previous.scene.canvas.isConnected && Boolean(current?.renderer && current.camera && current.scene)
           && current.renderer === previous.scene.renderer && current.camera === previous.scene.camera && current.scene === previous.scene.scene;
       })).toBe(true);
-      evidence.locales.push({ locale, storedSize: "large", confirmedSizeState: "ready", avatarWidth: 80,
+      evidence.locales.push({ locale, storedSize: "large", confirmedSizeState: "ready", avatarWidth: 80, actualOfflineBookyModelReady: true,
         selectedCountry: "russia", savedVerification: true, sameSceneWithinReopenedDocument: true, canonicalGlobeCanvasCount: 1 });
     }
     const after = licenseRequests(await control(request, { action: "status" })); expect(after).toEqual(before);
     evidence.offlineLicenseApiRequests = after.length - before.length;
-    expect(errors).toEqual([]); expect(blockedRequests).toEqual([]);
+    expect(errors).toEqual([]); expect(blockedRequests).toEqual([]); expect(failedExecutableRequests).toEqual([]);
     expect(evidence.persistentLaunches).toBe(2); expect(evidence.restarts).toBe(1); evidence.completed = true;
   } finally {
     try {
@@ -1614,7 +1627,7 @@ test("saved Booky size survives a full persistent browser restart offline throug
         throw new Error("Refuse cleanup outside the exact disposable Booky-size profile");
       }
       await rm(profile, { recursive: true, force: true }); await rmdir(profileRoot); evidence.profileRemoved = true;
-    } finally { evidence.blockedRequests = blockedRequests;
+    } finally { evidence.blockedRequests = blockedRequests; evidence.failedExecutableRequests=failedExecutableRequests;
       await testInfo.attach("pwa-booky-size-persistent-offline", { body: JSON.stringify(evidence, null, 2), contentType: "application/json" }); }
   }
 });

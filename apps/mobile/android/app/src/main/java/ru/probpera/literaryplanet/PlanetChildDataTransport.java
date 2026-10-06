@@ -221,13 +221,13 @@ final class PlanetChildDataTransport {
     static final class V2Request {
         final String method,id,contextToken,action,collection,query,shelf;
         final Map<String,Object> target,reference,owner,layout;final String assetId,presentationToken;
-        final String sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId;
+        final String sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,tier;
         final List<Map<String,Object>> references;
-        final long expectedRevision;
+        final long expectedRevision,offset;final int byteLength;
         private V2Request(String method,String id,String token,String action,Map<String,Object> target,
-            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken,String sceneId,String sceneToken,String slotId,String resourceToken,String journeyId,String currentNodeId,String shelf) {
+            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken,String sceneId,String sceneToken,String slotId,String resourceToken,String journeyId,String currentNodeId,String shelf,String tier,long offset,int byteLength) {
             this.method=method;this.id=id;contextToken=token;this.action=action;this.target=target;this.reference=reference;
-            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;this.sceneId=sceneId;this.sceneToken=sceneToken;this.slotId=slotId;this.resourceToken=resourceToken;this.journeyId=journeyId;this.currentNodeId=currentNodeId;this.shelf=shelf;
+            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;this.sceneId=sceneId;this.sceneToken=sceneToken;this.slotId=slotId;this.resourceToken=resourceToken;this.journeyId=journeyId;this.currentNodeId=currentNodeId;this.shelf=shelf;this.tier=tier;this.offset=offset;this.byteLength=byteLength;
         }
     }
     private static long v2Integer(Object value,long min,long max) throws Exception {
@@ -262,7 +262,7 @@ final class PlanetChildDataTransport {
     @SuppressWarnings("unchecked")
     static V2Request decodeV2(String method,Map<String,?> value) throws Exception {
         String id=correlation(value==null?null:value.get("requestId")),token=null,action=null,collection=null,query=null;
-        Map<String,Object> target=null,reference=null,owner=null,layout=null;String assetId=null,presentationToken=null,sceneId=null,sceneToken=null,slotId=null,resourceToken=null,journeyId=null,currentNodeId=null,shelf=null;List<Map<String,Object>> references=null;long revision=0;
+        Map<String,Object> target=null,reference=null,owner=null,layout=null;String assetId=null,presentationToken=null,sceneId=null,sceneToken=null,slotId=null,resourceToken=null,journeyId=null,currentNodeId=null,shelf=null,tier=null;List<Map<String,Object>> references=null;long revision=0,offset=0;int byteLength=0;
         Map<String,Object> row;
         if("bootstrap".equals(method))row=record(value,"version","requestId");
         else if("retire".equals(method)||"readContext".equals(method))row=record(value,"version","requestId","contextToken");
@@ -276,13 +276,14 @@ final class PlanetChildDataTransport {
         else if(Arrays.asList("openJourney","saveJourneyRoute","resumeJourneyRoute","cancelJourneyRoute").contains(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision");
         else if("advanceJourney".equals(method))row=record(value,"version","requestId","contextToken","journeyId","expectedRevision","currentNodeId","action");
         else if("readSceneSelection".equals(method))row=record(value,"version","requestId","contextToken");
-        else if("rememberSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","expectedRevision");
+        else if("rememberSceneSelection".equals(method)||"rollbackSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","expectedRevision");
         else if("restoreSceneSelection".equals(method))row=record(value,"version","requestId","contextToken","expectedRevision");
         else if("listScenes".equals(method))row=record(value,"version","requestId","contextToken","owner");
         else if("openScene".equals(method))row=record(value,"version","requestId","contextToken","owner","sceneId");
         else if("releaseScene".equals(method))row=record(value,"version","requestId","contextToken","sceneToken");
-        else if("acquireWebResource".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","slotId");
+        else if("acquireWebResource".equals(method))row=value!=null&&value.containsKey("assetId")?record(value,"version","requestId","contextToken","sceneToken","slotId","assetId","tier"):record(value,"version","requestId","contextToken","sceneToken","slotId");
         else if("releaseWebResource".equals(method))row=record(value,"version","requestId","contextToken","resourceToken");
+        else if("readWebResourceChunk".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","resourceToken","offset","byteLength");
         else if("readCollection".equals(method))row=record(value,"version","requestId","contextToken","collection");
         else if("writeCollection".equals(method))row=record(value,"version","requestId","contextToken","collection","expectedRevision","references");
         else throw new PlanetChildDataStore.Unavailable();
@@ -310,14 +311,15 @@ final class PlanetChildDataTransport {
         }
         if("listMedia".equals(method)||"presentMedia".equals(method))owner=v2Reference(row.get("owner"));if("presentMedia".equals(method)){assetId=string(row.get("assetId"),96);require(assetId.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));layout=v2MediaLayout(row.get("layout"));}if("releaseMedia".equals(method)&&row.get("presentationToken")!=null)presentationToken=correlation(row.get("presentationToken"));if("listScenes".equals(method)||"openScene".equals(method))owner=v2Reference(row.get("owner"));
         if("openScene".equals(method)){sceneId=string(row.get("sceneId"),96);require(sceneId.matches("[A-Za-z0-9][A-Za-z0-9._-]{0,95}"));}
-        if("rememberSceneSelection".equals(method)||"restoreSceneSelection".equals(method)){revision=v2Integer(row.get("expectedRevision"),0,"rememberSceneSelection".equals(method)?MAX_SAFE-2:MAX_SAFE-1);if("rememberSceneSelection".equals(method))sceneToken=correlation(row.get("sceneToken"));}
+        if("rememberSceneSelection".equals(method)||"rollbackSceneSelection".equals(method)||"restoreSceneSelection".equals(method)){revision=v2Integer(row.get("expectedRevision"),0,"restoreSceneSelection".equals(method)?MAX_SAFE-1:"rollbackSceneSelection".equals(method)?MAX_SAFE-2:MAX_SAFE-3);if(!"restoreSceneSelection".equals(method))sceneToken=correlation(row.get("sceneToken"));}
         if("releaseScene".equals(method)&&row.get("sceneToken")!=null)sceneToken=correlation(row.get("sceneToken"));
-        if("acquireWebResource".equals(method)){sceneToken=correlation(row.get("sceneToken"));slotId=string(row.get("slotId"),10);require(Arrays.asList("skin","stand","background").contains(slotId));}
+        if("acquireWebResource".equals(method)){sceneToken=correlation(row.get("sceneToken"));slotId=string(row.get("slotId"),10);if(row.containsKey("assetId")){require(Arrays.asList("model","buffer","texture").contains(slotId));assetId=PlanetChildJourney.identifier(string(row.get("assetId"),96));tier=string(row.get("tier"),8);require(Arrays.asList("high","balanced","economy").contains(tier));}else require(Arrays.asList("skin","stand","background").contains(slotId));}
         if("releaseWebResource".equals(method)&&row.get("resourceToken")!=null)resourceToken=correlation(row.get("resourceToken"));
+        if("readWebResourceChunk".equals(method)){sceneToken=correlation(row.get("sceneToken"));resourceToken=correlation(row.get("resourceToken"));offset=v2Integer(row.get("offset"),0,33554431);byteLength=(int)v2Integer(row.get("byteLength"),1,65536);}
         if("readJourneyRouteDownload".equals(method))journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));
         if(Arrays.asList("openJourney","advanceJourney","saveJourneyRoute","resumeJourneyRoute","cancelJourneyRoute").contains(method)){journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));revision=v2Integer(row.get("expectedRevision"),0,"openJourney".equals(method)?MAX_SAFE-1:MAX_SAFE-2);}
         if("advanceJourney".equals(method)){action=string(row.get("action"),8);require(Arrays.asList("complete","restart").contains(action));Object current=row.get("currentNodeId");if(current!=null)currentNodeId=PlanetChildJourney.identifier(string(current,96));require(currentNodeId!=null||"restart".equals(action));}
-        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,shelf);
+        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,shelf,tier,offset,byteLength);
     }
     private static Map<String,Object> v2MediaLayout(Object value)throws Exception {
         Map<String,Object> raw=record(value,"x","y","width","height","viewportWidth","viewportHeight"),out=new LinkedHashMap<>();

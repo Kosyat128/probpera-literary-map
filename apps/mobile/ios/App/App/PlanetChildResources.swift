@@ -24,7 +24,7 @@ enum PlanetChildLocalV2ResourceRules {
     }
     static func path(_ checksum: String, _ mime: String) throws -> String {
         guard checksum.utf8.count == 64, checksum.range(of: "^[a-f0-9]{64}$", options: .regularExpression) != nil,
-              let ext = ["image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav"][mime]
+              let ext = ["image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav", "model/gltf+json": "gltf", "model/gltf-binary": "glb", "application/octet-stream": "bin"][mime]
         else { throw PlanetChildLocalV2ResourceError.refused }
         return "/objects/" + checksum + "." + ext
     }

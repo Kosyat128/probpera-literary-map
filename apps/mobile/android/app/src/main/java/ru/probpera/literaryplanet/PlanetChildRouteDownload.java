@@ -6,8 +6,8 @@ import java.util.*;
 /** Encrypted catalog data only; current original native permits remain the
  * authority for each independently signed locale generation and shared object. */
 final class PlanetChildRouteDownload {
-    static final int MAX_MEDIA=64,MAX_OBJECTS=8192,MAX_STAGES=128;
-    static final long MAX_OBJECT_BYTES=2147483648L,MAX_POOL_BYTES=4L*MAX_OBJECT_BYTES,MAX_PROGRESS_BYTES=2148007936L;
+    static final int MAX_MEDIA=67,MAX_OBJECTS=8192,MAX_STAGES=128;
+    static final long MAX_OBJECT_BYTES=2248146944L,MAX_POOL_BYTES=4L*MAX_OBJECT_BYTES,MAX_PROGRESS_BYTES=2248671232L;
     private static void require(boolean value)throws Exception {if(!value)throw new PlanetChildDataStore.Unavailable();}
     static final class ObjectRef {
         final String profileId,checksum,mime;final int bytes;

@@ -198,6 +198,23 @@ describe("previous preparation authority and core integrity", () => {
 });
 
 describe("controlled PWA artifact dependency selection", () => {
+  it("owns the actual lazy Booky module and static model dependencies despite arbitrary chunk filenames", async () => {
+    expect(PWA_BOOTSTRAP_ENTRIES.filter(s=>s==="src/host/bookyModel.ts")).toHaveLength(1);
+    const env=await previousFixture(),booky="src/host/bookyModel.ts",dependency="src/host/syntheticGeometry.js",entries=["src/main.js",booky];
+    await env.write("src/main.js",'export const open=()=>import("./host/bookyModel.ts");');
+    await env.write(booky,'import {geometry} from "./syntheticGeometry.js";export const model=()=>geometry;');await env.write(dependency,'export const geometry=[0,1,2];');
+    const files=await Promise.all([...entries,dependency].map(async name=>({path:name,sha256:sha(await readFile(path.join(env.root,name)))}))),inputs={sha256:sha(JSON.stringify(files)),files};let ownership;
+    const bundle=await rollup({input:path.join(env.root,"src/main.js"),plugins:[{name:"actual-booky-ownership",generateBundle(_options,output){ownership=capturePwaModuleOwnership(env.root,output,inputs,entries);}}]});
+    try {
+      const {output}=await bundle.generate({format:"es",entryFileNames:"assets/arbitrary-[hash].js",chunkFileNames:"assets/unrelated-[hash].js",manualChunks:{dependency:[path.join(env.root,dependency)]}}),chunks=output.filter(o=>o.type==="chunk");
+      const names=new Map(chunks.map(c=>[c.fileName,c.facadeModuleId?path.relative(env.root,c.facadeModuleId).replaceAll("\\","/"):"_"+c.fileName]));
+      const manifest=Object.fromEntries(chunks.map(c=>[names.get(c.fileName),{file:c.fileName,imports:c.imports.map(n=>names.get(n))}]));
+      const entry=ownership.entries.find(e=>e.source===booky);expect(entry.sourceSha256).toBe(files.find(f=>f.path===booky).sha256);
+      expect(entry.files.length).toBeGreaterThan(0);expect(bootstrapClosure(manifest,entries,ownership)).toEqual(chunks.map(c=>c.fileName).sort());
+      for(const file of entry.files)expect(file.sha256).toBe(sha(chunks.find(c=>c.fileName===file.file).code));
+      expect(()=>bootstrapClosure(manifest,entries,{...ownership,entries:ownership.entries.filter(e=>e.source!==booky)})).toThrow("ownership");
+    } finally {await bundle.close();}
+  });
   it("captures actual Vite output after internal late preload rewrites and matches the written bytes", async () => {
     const env = await previousFixture();
     await env.write("index.html", '<!doctype html><html><head></head><body><script type="module" src="/src/main.js"></script></body></html>');

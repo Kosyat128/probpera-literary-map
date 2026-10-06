@@ -66,7 +66,7 @@ export function assertChildNativeResourceMediaClosure(binding, media) {
   const asset = assets[0];
   require(asset.sha256 === binding.assetChecksum && asset.bytes === binding.assetBytes && asset.mime === binding.mime,
     "exact approved binary identity");
-  const ext = { "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav" }[asset.mime];
+  const ext = { "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav", "model/gltf+json": "gltf", "model/gltf-binary": "glb", "application/octet-stream": "bin" }[asset.mime];
   const binary = media.outputs.find(row => row.output === "child-native/media/assets/" + asset.sha256 + "." + ext);
   require(binary && binary.bytes.length === asset.bytes && sha(binary.bytes) === asset.sha256, "actual approved binary output");
   const minimum = Math.max(manifest.validFromEpochMs, review.validFromEpochMs, asset.policy.rights.validFrom);

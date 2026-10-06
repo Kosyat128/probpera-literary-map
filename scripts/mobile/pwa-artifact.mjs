@@ -68,6 +68,9 @@ export const PWA_BOOTSTRAP_ENTRIES = Object.freeze([
   "src/planet/books.ts?stage5Load=retry",
   "src/data/articles/catalog.ts",
   "src/components/LiteraryGlobe.tsx",
+  // Booky's original lazy geometry is required after a cold offline restart.
+  // Its finalized Rollup owner and static dependency closure are hash-bound.
+  "src/host/bookyModel.ts",
   "src/components/WriterPanel.tsx",
   "src/components/GlobalSearch.tsx",
   "src/components/CmsHomepageContent.tsx",

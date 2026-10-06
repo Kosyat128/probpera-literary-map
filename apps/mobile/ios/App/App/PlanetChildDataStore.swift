@@ -894,8 +894,8 @@ extension PlanetChildDataStore {
         };try validateAppearance(state)
     }
     private func appearanceMarker(_ directory: URL) throws -> URL { let file=directory.appendingPathComponent("local-v2-appearance.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file }
-    private func appearanceMarkerBytes(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ commandId: String,_ revision: UInt64,_ selection: PlanetChildAppearance.Selection) throws -> Data {
-        var stable=try selection.encoded();defer { stable.resetBytes(in:0..<stable.count) }
+    private func appearanceMarkerBytes(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ commandId: String,_ revision: UInt64,_ selection: PlanetChildAppearance.Selection?) throws -> Data {
+        var stable=try selection?.encoded() ?? Data("LP-LOCAL-V2-APPEARANCE-SELECTION-ABSENT\0v1".utf8);defer { stable.resetBytes(in:0..<stable.count) }
         return Data(("LP-LOCAL-V2-APPEARANCE\n"+identity+"\n"+commandId+"\n"+(try admission.binding())+"\n"+lease.scope.profileId+"\n"+String(lease.generation)+"\n"+lease.nonce+"\n"+String(revision)+"\n"+Self.digest(stable)+"\n").utf8)
     }
     func admittedAppearance(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,expectedRevision: UInt64?,permit: PlanetChildLocalV2SceneSelectionPermit?,commandId: String) throws -> LocalV2Appearance {
@@ -904,7 +904,7 @@ extension PlanetChildDataStore {
             try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.validateAppearance(state)
             let profile=lease.scope.profileId,prior=state.appearances[profile],revision=prior?.revision ?? 0
             guard let expectedRevision,let permit else { let result=LocalV2Appearance(profile,revision,prior?.selection);do { try admission.check();return result } catch { result.close();throw error } }
-            let next=try Self.appearanceNext(revision,expectedRevision),selection=try permit.selection(admission)
+            let next=try Self.appearanceNext(revision,expectedRevision);try permit.capturePrior(admission,profile,revision,prior?.selection,next);let selection=try permit.selection(admission)
             try Self.require(try permit.profileId(admission)==profile);let marker=try appearanceMarker(directory);var markerBytes=try appearanceMarkerBytes(admission,lease,commandId,next,selection);defer { markerBytes.resetBytes(in:0..<markerBytes.count) };var markerAttempted=false
             do {
                 markerAttempted=true;try exclusiveReceiptFile(marker,markerBytes) { try permit.check(admission) };try syncDirectory(directory)
@@ -924,7 +924,7 @@ extension PlanetChildDataStore {
     func appearanceComplete(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ commandId: String) throws -> LocalV2AppearanceCompletion {
         return try locked { directory in
             try admission.check();let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.validateAppearance(state);try admission.appearanceCommandJoined(commandId)
-            guard let entry=state.appearances[lease.scope.profileId],let selection=entry.selection else { throw Failure.unavailable };let marker=try appearanceMarker(directory)
+            guard let entry=state.appearances[lease.scope.profileId] else { throw Failure.unavailable };let selection=entry.selection,marker=try appearanceMarker(directory)
             var actual=try boundedFile(marker,4096),expected=try appearanceMarkerBytes(admission,lease,commandId,entry.revision,selection);defer { actual.resetBytes(in:0..<actual.count);expected.resetBytes(in:0..<expected.count) };try Self.require(actual==expected)
             // Preparation validates but NEVER unlinks. The exact marker stays
             // durable through writer fences and actual command consumer handoff.
@@ -1271,10 +1271,10 @@ extension PlanetChildDataStore {
         try check();guard let folder=try binaryDirectory(directory) else { throw Failure.unavailable };let file=folder.appendingPathComponent(binaryName(profile,object));try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL)
         var encrypted=try boundedFile(file,object.bytes+29);defer { encrypted.resetBytes(in:0..<encrypted.count) };try Self.require(encrypted.count==object.bytes+29 && encrypted.first==1)
         var plain=try AES.GCM.open(AES.GCM.SealedBox(combined:Data(encrypted.dropFirst())),using:key(create:false,directory:directory),authenticating:binaryAAD(profile,object));var handed=false;defer { if !handed { plain.resetBytes(in:0..<plain.count) } }
-        try Self.require(plain.count==object.bytes && Self.digest(plain)==object.checksum);_=try PlanetChildLocalV2MediaCodec.preflight(plain,object.mime);try check();handed=true;return plain
+        try Self.require(plain.count==object.bytes && Self.digest(plain)==object.checksum);try PlanetChildModelImport.cached(plain,object.mime);try check();handed=true;return plain
     }
     private func writeBinary(_ directory: URL,_ profile: String,_ object: PlanetChildPassport.BinaryObject,_ bytes: Data,_ check: () throws -> Void) throws {
-        try check();try Self.require(bytes.count==object.bytes && Self.digest(bytes)==object.checksum);_=try PlanetChildLocalV2MediaCodec.preflight(bytes,object.mime)
+        try check();try Self.require(bytes.count==object.bytes && Self.digest(bytes)==object.checksum);try PlanetChildModelImport.cached(bytes,object.mime)
         guard let folder=try binaryDirectory(directory,create:true) else { throw Failure.unavailable };let file=folder.appendingPathComponent(binaryName(profile,object))
         if FileManager.default.fileExists(atPath:file.path) { var old=try readBinary(directory,profile,object,check);defer { old.resetBytes(in:0..<old.count) };try Self.require(old==bytes);return }
         var retainedBytes=0
@@ -1564,6 +1564,20 @@ extension PlanetChildDataStore {
 
 #if DEBUG
 extension PlanetChildDataStore {
+    /** Isolated project-owned typed bytes through real AES/AAD, not a claim. */
+    static func fixtureTypedObjectPersistence(runId: String,bytes: Data,mime: String,scenario: String) throws -> Bool {
+        let store=try synthetic(runId:runId),profile="fixture-common-model",object=try PlanetChildPassport.BinaryObject(checksum:Self.digest(bytes),mime:mime,bytes:bytes.count)
+        try store.locked { directory in try store.writeBinary(directory,profile,object,bytes,{}) }
+        let reopened=try synthetic(runId:runId)
+        return try reopened.locked { directory in
+            var restored=try reopened.readBinary(directory,profile,object,{});defer { restored.resetBytes(in:0..<restored.count) };try require(restored==bytes)
+            let folder=try reopened.binaryDirectory(directory)!,file=folder.appendingPathComponent(reopened.binaryName(profile,object));var before=try reopened.boundedFile(file,object.bytes+29);defer { before.resetBytes(in:0..<before.count) }
+            if scenario=="cancel" { var denied=false;do { _=try reopened.readBinary(directory,profile,object,{ throw Failure.unavailable }) } catch { denied=true };try require(denied && (try reopened.boundedFile(file,object.bytes+29))==before);return true }
+            if scenario=="rollback" { var invalid=bytes;invalid[0]^=1;var denied=false;do { try reopened.writeBinary(directory,profile,object,invalid,{}) } catch { denied=true };invalid.resetBytes(in:0..<invalid.count);try require(denied && (try reopened.boundedFile(file,object.bytes+29))==before);return true }
+            if scenario=="delete" { try require(Darwin.unlink(file.path)==0);var denied=false;do { _=try reopened.readBinary(directory,profile,object,{}) } catch { denied=true };try require(denied);return true }
+            try require(scenario=="restart" && before.range(of:bytes)==nil);return true
+        }
+    }
     /** AUTHORED_NOT_RUN: real platform AES/key/files in isolated synthetic
      * namespace. This fixture never creates an original native admission. */
     static func fixtureSharedObjectPersistence(runId: String,scenario: String) throws -> Bool {

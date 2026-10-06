@@ -50,3 +50,11 @@ describe("protected profile appearance projection (no native authority)",()=>{
   expect(decodeChildNativeAppearanceRestore({status:"restored",...absent,scene},"p",absent)).toBeNull();
  });
 });
+
+it("decodes a versioned model package from the real protected restore DTO and still rejects an injected field",async()=>{
+  const {common3dFixture}=await import("./childCommon3dFixture"),g=common3dFixture(),id=g.pack.packageId+".v"+g.pack.packageVersion;
+  const modelScene=decodeChildNativeScene({...scene,sceneId:id,modelPackage:g.pack},owner,id)!;
+  const saved={profileId:"p",revision:2,selection:childNativeAppearanceFromScene(modelScene)!},reply={status:"restored",...saved,scene:modelScene};
+  expect(decodeChildNativeAppearanceRestore(reply,"p",saved)?.scene?.modelPackage).toEqual(g.pack);
+  expect(decodeChildNativeAppearanceRestore({...reply,scene:{...modelScene,approved:true}},"p",saved)).toBeNull();
+});

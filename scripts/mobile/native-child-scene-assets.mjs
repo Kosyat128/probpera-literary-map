@@ -4,7 +4,7 @@ import { createHash, webcrypto } from "node:crypto";
 import { build } from "esbuild";
 import { containedFile } from "./pwa-artifact.mjs";
 import { childNativeJson } from "./native-child-package-assets.mjs";
-import { collectChildNativeMediaOutputs, childNativeMediaCanonical } from "./native-child-media-assets.mjs";
+import { collectChildNativeMediaOutputs, childNativeMediaCanonical, sourceBinaryPreflight } from "./native-child-media-assets.mjs";
 
 export const CHILD_NATIVE_SCENE_PIN_SOURCE="src/child/childNativeSceneReleasePins.json";
 export const CHILD_NATIVE_SCENE_ASSET_MODULE="scripts/mobile/native-child-scene-assets.mjs";
@@ -67,12 +67,14 @@ const reviewFields=["schemaVersion","kind","keyId","reviewerId","sceneId","manif
   "policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum","sourceGraphChecksum","platforms","territories","reviewedAtEpochMs",
   "validFromEpochMs","validUntilEpochMs","signatureHex"];
 export async function verifyChildNativeSceneReview(manifest,review,pin,keys,now) {
-  require(exact(review,reviewFields)&&review.schemaVersion===2&&review.kind==="literary-planet-child-native-scene-review-v2"
+  const model=manifest.schemaVersion===3;
+  require(exact(review,model?[...reviewFields,"modelPackageChecksum"]:reviewFields)&&review.schemaVersion===(model?3:2)&&review.kind==="literary-planet-child-native-scene-review-v"+(model?3:2)
     &&window(review,now)&&Number.isSafeInteger(review.reviewedAtEpochMs)&&review.reviewedAtEpochMs>=0&&review.reviewedAtEpochMs<=now
     &&review.manifestChecksum===pin.manifestChecksum,"current independent review");
   for(const field of ["sceneId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum"])
     require(review[field]===manifest[field],"exact reviewed "+field);
   require(review.sourceGraphChecksum===sha(childNativeMediaCanonical(manifest.sourceGraph)),"reviewed source graph");
+  if(model)require(review.modelPackageChecksum===sha(childNativeMediaCanonical(manifest.modelPackage)),"reviewed full model dependency/tier closure");
   require(Array.isArray(review.platforms)&&review.platforms.length>0&&review.platforms.length<=3&&new Set(review.platforms).size===review.platforms.length
     &&review.platforms.every(p=>["android-google","android-rustore","ios-ipados"].includes(p))
     &&Array.isArray(review.territories)&&review.territories.length>0&&review.territories.length<=676&&new Set(review.territories).size===review.territories.length
@@ -82,7 +84,7 @@ export async function verifyChildNativeSceneReview(manifest,review,pin,keys,now)
   const publicKey=await webcrypto.subtle.importKey("raw",Buffer.from(key.publicKeyX963Hex,"hex"),{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
   const unsigned={...review};delete unsigned.signatureHex;
   require(await webcrypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},publicKey,Buffer.from(review.signatureHex,"hex"),
-    Buffer.concat([Buffer.from(CHILD_NATIVE_SCENE_REVIEW_DOMAIN),childNativeMediaCanonical(unsigned)])),"authentic independent signature");
+    Buffer.concat([Buffer.from(model?"LP-CHILD-NATIVE-SCENE-REVIEW\0v3\0":CHILD_NATIVE_SCENE_REVIEW_DOMAIN),childNativeMediaCanonical(unsigned)])),"authentic independent signature");
 }
 export async function collectChildNativeSceneOutputs(root,platform,channel,now=Date.now()) {
   root=await fs.realpath(root);require(Number.isSafeInteger(now)&&now>=0,"explicit source time");
@@ -105,17 +107,19 @@ export async function collectChildNativeSceneOutputs(root,platform,channel,now=D
       reviewFile=await source(root,"src/child/scene-release-material/"+pin.reviewChecksum+"/review.json");
     require(file.sha256===pin.manifestChecksum&&reviewFile.sha256===pin.reviewChecksum,"exact original reviewed bytes");
     const manifest=childNativeSceneJson(file.bytes,524288),review=childNativeJson(reviewFile.bytes,524288);
-    require(exact(manifest,manifestFields)&&manifest.schemaVersion===2&&manifest.kind==="literary-planet-child-native-scene-manifest-v2"
+    const hasModels=manifest.schemaVersion===3;
+    require(exact(manifest,hasModels?[...manifestFields,"modelPackage"]:manifestFields)&&(manifest.schemaVersion===2||hasModels)&&manifest.kind==="literary-planet-child-native-scene-manifest-v"+manifest.schemaVersion
       &&window(manifest,now)&&["ru","en"].includes(manifest.locale)&&Number.isInteger(manifest.exactAge)&&manifest.exactAge>=3&&manifest.exactAge<=17,
       "exact native scene manifest");
     for(const field of ["sceneId","packageId","packageVersion","packageChecksum"])require(manifest[field]===pin[field],"fixed pin relation");
     const projected=schema.decodeChildNativeScene({status:"opened",sceneToken:"0".repeat(32),sceneId:manifest.sceneId,owner:manifest.owner,
-      skin:manifest.skin,stand:manifest.stand,background:manifest.background,hotspots:manifest.hotspots,remainingLifetimeMs:1},manifest.owner,manifest.sceneId);
+      skin:manifest.skin,stand:manifest.stand,background:manifest.background,hotspots:manifest.hotspots,remainingLifetimeMs:1,...(hasModels?{modelPackage:manifest.modelPackage}:{})},manifest.owner,manifest.sceneId);
     require(projected&&typeof manifest.title==="string"&&manifest.title.length>0&&manifest.title.length<=240
       &&!/[\u0000-\u001f\u007f]/u.test(manifest.title),"bounded original scene recipient metadata");
-    require(Array.isArray(manifest.sourceGraph)&&manifest.sourceGraph.length===schema.CHILD_NATIVE_SCENE_SOURCE_PATHS.length,"whole geometry source graph");
+    const expectedSources=hasModels?schema.CHILD_NATIVE_MODEL_SOURCE_PATHS:schema.CHILD_NATIVE_SCENE_SOURCE_PATHS;
+    require(Array.isArray(manifest.sourceGraph)&&manifest.sourceGraph.length===expectedSources.length,"whole geometry source graph");
     for(let i=0;i<manifest.sourceGraph.length;i++) {
-      const row=manifest.sourceGraph[i];require(exact(row,["path","sha256","bytes"])&&row.path===schema.CHILD_NATIVE_SCENE_SOURCE_PATHS[i],"fixed ordered source graph");
+      const row=manifest.sourceGraph[i];require(exact(row,["path","sha256","bytes"])&&row.path===expectedSources[i],"fixed ordered source graph");
       const original=await source(root,row.path,2*1024*1024);require(row.sha256===original.sha256&&row.bytes===original.size,"actual original source identity");
     }
     await verifyChildNativeSceneReview(manifest,review,pin,pins.reviewKeys,now);
@@ -140,6 +144,7 @@ export async function collectChildNativeSceneOutputs(root,platform,channel,now=D
         &&manifest.validFromEpochMs>=asset.policy.rights.validFrom
         &&(asset.policy.rights.expiresAt===null||manifest.validUntilEpochMs<=asset.policy.rights.expiresAt),"scene cannot extend asset rights");
     }
+    if(hasModels)await validateChildNativeModelClosure(root,projected.modelPackage,manifest,review,mediaManifest,media.outputs,schema);
     const text=await source(root,"src/child/release-material/"+pin.packageChecksum+"/package.json",8*1024*1024);
     require(text.sha256===pin.packageChecksum,"actual original child index package");
     const packageData=childNativeJson(text.bytes,8*1024*1024);
@@ -152,6 +157,37 @@ export async function collectChildNativeSceneOutputs(root,platform,channel,now=D
   }
   require(new Set(outputs.map(o=>o.output)).size===outputs.length,"no scene output ambiguity");
   return {pinSource:{path:CHILD_NATIVE_SCENE_PIN_SOURCE,sha256:pinFile.sha256},outputs};
+}
+/** Independent signed scene review binds every version, tier and dependency;
+ * existing media review/rights and resource collectors bind their raw bytes. */
+export async function validateChildNativeModelClosure(root,modelPackage,manifest,review,mediaManifest,mediaOutputs,schema=undefined,preflight=undefined) {
+  schema??=await actualSchema(root);
+  preflight??=await sourceBinaryPreflight(root);
+  const pack=schema.decodeCommon3dPackage(modelPackage);require(pack&&manifest.sceneId===pack.packageId+".v"+pack.packageVersion,"versioned exact model package");
+  for(const tier of pack.tiers) {
+    let decoded=0,triangles=0;
+    for(const model of tier.models) {
+      const buffers=new Map(),images=new Map();let bytes;
+      for(const resource of [model.model,...model.dependencies]) {
+        const assets=mediaManifest.assets.filter(a=>a.assetId===resource.assetId);require(assets.length===1,"unique model dependency media asset");const asset=assets[0];
+        require(sha(childNativeMediaCanonical(asset.owner))===sha(childNativeMediaCanonical(manifest.owner))&&asset.entity.kind===model.slotId
+          &&asset.entity.id===resource.entity.id&&asset.entity.contentChecksum===resource.entity.contentChecksum&&asset.payload.role===model.slotId
+          &&asset.sha256===resource.checksum&&asset.bytes===resource.encodedBytes&&asset.mime===resource.mime,"exact model dependency current media identity");
+        require(review.platforms.every(p=>asset.policy.rights.platforms.includes(p))&&review.territories.every(t=>asset.policy.rights.territories.includes(t))
+          &&manifest.validFromEpochMs>=asset.policy.rights.validFrom&&(asset.policy.rights.expiresAt===null||manifest.validUntilEpochMs<=asset.policy.rights.expiresAt),"model does not expand current rights");
+        const ext={"model/gltf+json":"gltf","model/gltf-binary":"glb","application/octet-stream":"bin","image/png":"png","image/jpeg":"jpg","image/webp":"webp"}[resource.mime];
+        const binary=mediaOutputs.find(o=>o.output==="child-native/media/assets/"+resource.checksum+"."+ext);
+        require(binary&&sha(binary.bytes)===resource.checksum&&binary.bytes.length===resource.encodedBytes,"compiled raw model dependency output");
+        if(resource.kind==="model")bytes=new Uint8Array(binary.bytes);
+        else if(resource.kind==="buffer")buffers.set(resource.alias,new Uint8Array(binary.bytes));
+        else { const header=preflight(new Uint8Array(binary.bytes),resource.mime);require(header?.kind==="image","actual model raster preflight");images.set(resource.alias,Math.ceil(header.width*header.height*16/3));decoded+=images.get(resource.alias);require(decoded<=tier.maxDecodedBytes,"tier texture mip budget"); }
+      }
+      const checked=schema.decodeCommon3dModel(bytes,model,buffers,tier);decoded+=checked.decodedBytes;triangles+=checked.triangles;
+      for(const [alias,cost] of images) { const uses=(checked.raw.textures??[]).filter(t=>(checked.raw.images??[])[t.source]?.uri===alias).length;decoded+=Math.max(0,uses-1)*cost; }
+      require(decoded<=tier.maxDecodedBytes&&triangles<=tier.maxTriangles,"whole tier decoded budget");
+    }
+  }
+  return pack;
 }
 export async function emitChildNativeSceneAssets(root,staging,platform,channel) {
   require(await fs.realpath(staging)===path.resolve(staging),"owned staging directory");

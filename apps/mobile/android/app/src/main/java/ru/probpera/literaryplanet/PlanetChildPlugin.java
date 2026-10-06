@@ -46,12 +46,14 @@ public final class PlanetChildPlugin extends Plugin {
     @PluginMethod public void writeCollection(PluginCall call){dispatch("writeCollection",call);}
     @PluginMethod public void readSceneSelection(PluginCall call){dispatch("readSceneSelection",call);}
     @PluginMethod public void rememberSceneSelection(PluginCall call){dispatch("rememberSceneSelection",call);}
+    @PluginMethod public void rollbackSceneSelection(PluginCall call){dispatch("rollbackSceneSelection",call);}
     @PluginMethod public void restoreSceneSelection(PluginCall call){dispatch("restoreSceneSelection",call);}
     @PluginMethod public void listScenes(PluginCall call){dispatch("listScenes",call);}
     @PluginMethod public void openScene(PluginCall call){dispatch("openScene",call);}
     @PluginMethod public void releaseScene(PluginCall call){dispatch("releaseScene",call);}
     @PluginMethod public void acquireWebResource(PluginCall call){dispatch("acquireWebResource",call);}
     @PluginMethod public void releaseWebResource(PluginCall call){dispatch("releaseWebResource",call);}
+    @PluginMethod public void readWebResourceChunk(PluginCall call){dispatch("readWebResourceChunk",call);}
     @PluginMethod public void listJourneys(PluginCall call){dispatch("listJourneys",call);}
     @PluginMethod public void readJourneyProgress(PluginCall call){dispatch("readJourneyProgress",call);}
     @PluginMethod public void openJourney(PluginCall call){dispatch("openJourney",call);}

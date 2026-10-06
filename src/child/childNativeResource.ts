@@ -6,7 +6,7 @@ import { childDataArray, childRecord } from "./childPackage";
 export const CHILD_NATIVE_RESOURCE_PIN_KIND = "literary-planet-child-native-resource-release-pins-v2";
 export const CHILD_NATIVE_RESOURCE_CATALOG_KIND = "literary-planet-child-native-resource-catalog-v2";
 export const CHILD_NATIVE_RESOURCE_TRANSFORM = "fixed-native-resource-pin-projection-v2";
-export type ChildNativeResourceMime = "image/png" | "image/jpeg" | "image/webp" | "audio/wav";
+export type ChildNativeResourceMime = "image/png" | "image/jpeg" | "image/webp" | "audio/wav" | "model/gltf+json" | "model/gltf-binary" | "application/octet-stream";
 export interface ChildNativeResourceOrigin {
   readonly id: string;
   readonly origin: string;
@@ -41,7 +41,7 @@ const hash = (x: unknown): x is string => typeof x === "string" && /^[a-f0-9]{64
 const integer = (x: unknown, min: number, max: number): x is number => typeof x === "number"
   && Number.isSafeInteger(x) && !Object.is(x, -0) && x >= min && x <= max;
 const epoch = (x: unknown): x is number => integer(x, 0, 8_640_000_000_000_000);
-const extensions = Object.freeze({ "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav" } as const);
+const extensions = Object.freeze({ "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav", "model/gltf+json": "gltf", "model/gltf-binary": "glb", "application/octet-stream": "bin" } as const);
 const mime = (x: unknown): x is ChildNativeResourceMime => typeof x === "string" && Object.prototype.hasOwnProperty.call(extensions, x);
 
 /** Canonical release source only. Actual native DNS/trust/TLS/read checks

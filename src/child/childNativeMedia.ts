@@ -6,7 +6,7 @@ import { childDataArray, childRecord, decodeChildEntityReference, type ChildEnti
 export const CHILD_NATIVE_MEDIA_METHODS = Object.freeze(["listMedia", "presentMedia", "releaseMedia"] as const);
 export const CHILD_NATIVE_MEDIA_ROLES = Object.freeze(["image", "portrait", "narration", "background", "skin", "stand", "accessory"] as const);
 export type ChildNativeMediaRole = typeof CHILD_NATIVE_MEDIA_ROLES[number];
-export type ChildNativeMediaMime = "image/png" | "image/jpeg" | "image/webp" | "audio/wav";
+export type ChildNativeMediaMime = "image/png" | "image/jpeg" | "image/webp" | "audio/wav" | "model/gltf+json" | "model/gltf-binary" | "application/octet-stream";
 export interface ChildNativeMediaAsset {
   readonly assetId: string;
   readonly owner: ChildEntityReference;
@@ -56,10 +56,11 @@ export function decodeChildNativeMediaAsset(raw: unknown): ChildNativeMediaAsset
   const owner = row && childNativeMediaOwner(row.owner), entity = row && decodeChildEntityReference(row.entity);
   if (!row || !owner || !entity || !mediaKinds.has(entity.kind) || !ident(row.assetId)
     || !(CHILD_NATIVE_MEDIA_ROLES as readonly unknown[]).includes(row.role) || !plainText(row.altText, 240) || /[\u0000-\u001f\u007f]/u.test(row.altText)
-    || !["image/png", "image/jpeg", "image/webp", "audio/wav"].includes(row.mime as string)) return null;
+    || !["image/png", "image/jpeg", "image/webp", "audio/wav", "model/gltf+json", "model/gltf-binary", "application/octet-stream"].includes(row.mime as string)) return null;
   if (entity.kind === "narration") {
     if (row.role !== "narration" || row.mime !== "audio/wav" || !plainText(row.transcript, 32768)) return null;
   } else if (row.mime === "audio/wav" || row.transcript !== null
+    || !String(row.mime).startsWith("image/") && !["stand","background"].includes(row.role as string)
     || (entity.kind === "image" ? !["image", "portrait"].includes(row.role as string) : row.role !== entity.kind)) return null;
   return Object.freeze({ assetId: row.assetId, owner, entity, mime: row.mime as ChildNativeMediaMime,
     role: row.role as ChildNativeMediaRole, altText: row.altText, transcript: row.transcript as string | null });

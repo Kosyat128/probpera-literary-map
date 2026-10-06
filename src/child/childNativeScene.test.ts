@@ -1,8 +1,9 @@
 import { describe, expect, it } from "vitest";
 import pins from "./childNativeSceneReleasePins.json";
 import { childNativeAppearanceFromScene, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
-import { decodeChildNativeScene, decodeChildNativeScenePins, decodeChildNativeSceneHotspots, decodeChildNativeWebResource,
+import { decodeChildNativeScene, decodeChildNativeScenePins, decodeChildNativeSceneHotspots, decodeChildNativeWebResource, decodeChildNativeModelWebResource, decodeChildNativeModelChunk,
   decodeChildNativeSceneSummaries } from "./childNativeScene";
+import { common3dFixture } from "./childCommon3dFixture";
 const hash="a".repeat(64), owner={kind:"activity" as const,id:"home",contentChecksum:hash};
 const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:String(kind),entity:{kind,id:kind,contentChecksum:hash},
   mime:"image/png" as const,checksum:hash,encodedBytes:256,altText:"Original fixture "+kind});
@@ -60,5 +61,15 @@ describe("unambiguous scene metadata tokens",()=>{
   const input=raw();input.skin.checksum+="\n";expect(decodeChildNativeScene(input,owner,input.sceneId)).toBeNull();
   const id=raw();id.sceneId+="\n";expect(decodeChildNativeScene(id,owner,id.sceneId)).toBeNull();
   expect(decodeChildNativeSceneHotspots([{id:"point",target:owner,position:[-0,1,3],radius:.2}])).toBeNull();
+ });
+});
+describe("closed authenticated typed chunk correlations (AUTHORED_NOT_RUN)",()=>{
+ it("accepts only the exact borrowed output, byte range, binary MIME and canonical Base64",()=>{
+  const g=common3dFixture(),id=g.pack.packageId+".v"+g.pack.packageVersion,s=decodeChildNativeScene({...raw(),sceneId:id,modelPackage:g.pack},owner,id)!,r=s.modelPackage!.tiers[1].models[0].dependencies[0];
+  const output=decodeChildNativeModelWebResource({status:"available",sceneToken:s.sceneToken,slotId:r.kind,resourceToken:"c".repeat(32),assetId:r.assetId,entity:r.entity,mime:r.mime,checksum:r.checksum,encodedBytes:r.encodedBytes,uri:"planet-child-resource://local/"+"c".repeat(32),remainingLifetimeMs:3000},s,r)!;
+  const chunk={status:"available",sceneToken:s.sceneToken,resourceToken:output.resourceToken,offset:0,totalBytes:r.encodedBytes,mime:r.mime,encodedBase64:Buffer.from(g.buffer).toString("base64"),remainingLifetimeMs:2500};
+  expect(decodeChildNativeModelChunk(chunk,s,output,r,0,r.encodedBytes)).not.toBeNull();
+  for(const patch of [{sceneToken:"d".repeat(32)},{resourceToken:"e".repeat(32)},{offset:1},{totalBytes:r.encodedBytes+1},{mime:"image/png"},{remainingLifetimeMs:0},{encodedBase64:chunk.encodedBase64+"\n"},{encodedBase64:"AB=="},{uri:output.uri}])expect(decodeChildNativeModelChunk({...chunk,...patch},s,output,r,0,r.encodedBytes)).toBeNull();
+  expect(decodeChildNativeModelChunk(chunk,s,output,r,-0,r.encodedBytes)).toBeNull();expect(decodeChildNativeModelChunk(chunk,s,output,r,0,65537)).toBeNull();expect(decodeChildNativeModelChunk(chunk,s,output,r,r.encodedBytes,1)).toBeNull();
  });
 });

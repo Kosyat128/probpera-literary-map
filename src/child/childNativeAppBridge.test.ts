@@ -5,6 +5,7 @@ import { createChildNativeAppController, decodeChildNativeAppReply, childNativeP
 import type { ChildEntityReference } from "./childPackage";
 import { childNativeAppearanceFromScene } from "./childNativeAppearance";
 import { decodeChildNativeScene } from "./childNativeScene";
+import { common3dFixture } from "./childCommon3dFixture";
 import type { PlatformServices, PlatformSnapshot } from "../platform/ports";
 
 // AUTHORED_NOT_RUN. Synthetic correlated native DTOs exercise presentation
@@ -282,6 +283,15 @@ describe("native protected appearance data commands (synthetic wire only)",()=>{
  const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:kind,entity:ref(kind,kind),mime:"image/png",checksum:HASH,encodedBytes:16,altText:kind});
  const scene=()=>decodeChildNativeScene({status:"opened",sceneToken:"d".repeat(32),sceneId:"choice",owner:ref(),skin:slot("skin"),
   stand:{geometryId:"stand.base.child-book-cloud",asset:slot("stand")},background:{geometryId:"background.base.library",asset:slot("background")},hotspots:[],remainingLifetimeMs:5000},ref(),"choice")!;
+ it("reads authenticated model bytes through exact closed native chunk requests and blocks caller resources",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,g=common3dFixture(),id=g.pack.packageId+".v"+g.pack.packageVersion,s=decodeChildNativeScene({...scene(),sceneId:id,modelPackage:g.pack},ref(),id)!,r=s.modelPackage!.tiers[1].models[0].model;
+  plugin.acquireWebResource=vi.fn(async input=>f.dataReply(input,{status:"available",sceneToken:s.sceneToken,slotId:r.kind,resourceToken:"f".repeat(32),assetId:r.assetId,entity:r.entity,mime:r.mime,checksum:r.checksum,encodedBytes:r.encodedBytes,uri:"planet-child-resource://local/"+"f".repeat(32),remainingLifetimeMs:4000}));
+  plugin.readWebResourceChunk=vi.fn(async input=>{const q=input as {offset:number;byteLength:number};return f.dataReply(input,{status:"available",sceneToken:s.sceneToken,resourceToken:"f".repeat(32),offset:q.offset,totalBytes:r.encodedBytes,mime:r.mime,encodedBase64:Buffer.from(g.bytes.subarray(q.offset,q.offset+q.byteLength)).toString("base64"),remainingLifetimeMs:3000});});
+  plugin.releaseScene=vi.fn(async input=>f.dataReply(input,{status:"retired",sceneToken:(input as {sceneToken:string|null}).sceneToken}));await f.controller.start();const output=await f.controller.scenes!.acquireModel!(s,r,"balanced");expect(output).not.toBeNull();
+  expect(await f.controller.scenes!.readModelChunk!(s,output!,r,0,16)).toMatchObject({offset:0,totalBytes:r.encodedBytes,mime:r.mime});
+  const request=(plugin.readWebResourceChunk as ReturnType<typeof vi.fn>).mock.calls[0][0];expect(Object.keys(request).sort()).toEqual(["version","requestId","contextToken","sceneToken","resourceToken","offset","byteLength"].sort());expect(request).toMatchObject({contextToken:TOKEN,sceneToken:s.sceneToken,resourceToken:output!.resourceToken,offset:0,byteLength:16});
+  expect(await f.controller.scenes!.readModelChunk!(s,output!,{...r},0,16)).toBeNull();expect(await f.controller.scenes!.readModelChunk!(s,output!,r,0,65537)).toBeNull();expect(await f.controller.scenes!.readModelChunk!(s,output!,r,-0,16)).toBeNull();expect(plugin.readWebResourceChunk).toHaveBeenCalledTimes(1);
+ });
  it("reads an exact profile-bound stable choice and sends only native scene token/revision to remember",async()=>{
   const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,selection=childNativeAppearanceFromScene(scene())!;
   plugin.readSceneSelection=vi.fn(async r=>f.dataReply(r,{profileId:"native-profile",revision:1,selection}));
@@ -290,6 +300,14 @@ describe("native protected appearance data commands (synthetic wire only)",()=>{
   expect(await f.controller.scenes!.remember(scene(),1)).toMatchObject({revision:2,selection});
   const request=(plugin.rememberSceneSelection as ReturnType<typeof vi.fn>).mock.calls[0][0];
   expect(Object.keys(request).sort()).toEqual(["version","requestId","contextToken","sceneToken","expectedRevision"].sort());
+ });
+ it("reserves a monotonic revision for rollback before admitting remember",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,selection=childNativeAppearanceFromScene(scene())!;
+  plugin.rememberSceneSelection=vi.fn(async request=>f.dataReply(request,{profileId:"native-profile",revision:Number.MAX_SAFE_INTEGER-2,selection}));
+  await f.controller.start();expect(await f.controller.scenes!.remember(scene(),Number.MAX_SAFE_INTEGER-2)).toBeNull();
+  expect(plugin.rememberSceneSelection).not.toHaveBeenCalled();expect(f.controller.getSnapshot().phase).toBe("ready");
+  expect(await f.controller.scenes!.remember(scene(),Number.MAX_SAFE_INTEGER-3)).toMatchObject({revision:Number.MAX_SAFE_INTEGER-2,selection});
+  expect(plugin.rememberSceneSelection).toHaveBeenCalledOnce();
  });
  it("refuses a caller-correlated response for another native profile and seals before publishing",async()=>{
   const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin;
@@ -304,6 +322,23 @@ describe("native protected appearance data commands (synthetic wire only)",()=>{
   plugin.releaseScene=vi.fn(async r=>f.dataReply(r,{status:"retired",sceneToken:(r as {sceneToken:string|null}).sceneToken}));
   await f.controller.start();expect(await f.controller.scenes!.restore(saved)).toMatchObject({status:"restored",revision:2});
   await f.controller.scenes!.releaseAll();expect(plugin.releaseScene).toHaveBeenCalled();
+ });
+ it("rolls back only an exact native scene token/revision and correlates a nullable prior choice",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin;
+  plugin.rollbackSceneSelection=vi.fn(async request=>f.dataReply(request,{profileId:"native-profile",revision:4,selection:null}));
+  await f.controller.start();expect(await f.controller.scenes!.rollback!(scene(),3)).toEqual({profileId:"native-profile",revision:4,selection:null});
+  const input=(plugin.rollbackSceneSelection as ReturnType<typeof vi.fn>).mock.calls[0][0];
+  expect(Object.keys(input).sort()).toEqual(["version","requestId","contextToken","sceneToken","expectedRevision"].sort());expect(input).toMatchObject({contextToken:TOKEN,sceneToken:scene().sceneToken,expectedRevision:3});
+  expect(await f.controller.scenes!.rollback!(scene(),Number.MAX_SAFE_INTEGER-1)).toBeNull();expect(plugin.rollbackSceneSelection).toHaveBeenCalledTimes(1);
+ });
+ it("cold-restores native v3 model dependencies through the actual bridge decoder",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,g=common3dFixture(),id=g.pack.packageId+".v"+g.pack.packageVersion,s=decodeChildNativeScene({...scene(),sceneId:id,modelPackage:g.pack},ref(),id)!;
+  const saved={profileId:"native-profile",revision:2,selection:childNativeAppearanceFromScene(s)!};
+  plugin.restoreSceneSelection=vi.fn(async request=>f.dataReply(request,{status:"restored",...saved,scene:s}));
+  plugin.releaseScene=vi.fn(async request=>f.dataReply(request,{status:"retired",sceneToken:(request as {sceneToken:string|null}).sceneToken}));
+  await f.controller.start();const restored=await f.controller.scenes!.restore(saved);
+  expect(restored?.scene?.modelPackage?.packageId).toBe(g.pack.packageId);expect(restored?.scene?.modelPackage?.tiers).toHaveLength(3);
+  expect(f.controller.getSnapshot().phase).toBe("ready");await f.controller.scenes!.releaseAll();
  });
  it("latches an uncertain native save and blocks same-host refresh or lifecycle retry",async()=>{
   const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,selection=childNativeAppearanceFromScene(scene())!;

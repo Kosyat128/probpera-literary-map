@@ -136,9 +136,9 @@ export function decodeChildNativeRouteMediaDownload(raw: unknown, snapshotByteLe
     const row = childRecord(raw, ["locale", "audioStatus", "audioItemCount", "imageItemCount", "transcriptByteLength", "mediaByteLength"]);
     if (!row || row.locale !== "ru" && row.locale !== "en" || row.audioStatus !== "downloaded" && row.audioStatus !== "text-only"
       || !revision(snapshotByteLength) || snapshotByteLength < 1 || snapshotByteLength > 524288
-      || !revision(row.audioItemCount) || !revision(row.imageItemCount) || row.audioItemCount + row.imageItemCount > 64
+      || !revision(row.audioItemCount) || !revision(row.imageItemCount) || row.audioItemCount + row.imageItemCount > (sharedObjects ? 67 : 64)
       || !revision(row.transcriptByteLength) || !revision(row.mediaByteLength)
-      || row.transcriptByteLength > 524288 || row.mediaByteLength > 2147483648
+      || row.transcriptByteLength > 524288 || row.mediaByteLength > (sharedObjects ? 2248146944 : 2147483648)
       || (!sharedObjects && row.mediaByteLength + row.transcriptByteLength >= snapshotByteLength)
       || (row.audioStatus === "downloaded") !== (row.audioItemCount > 0)
       || (row.audioItemCount > 0) !== (row.transcriptByteLength > 0)

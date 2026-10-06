@@ -84,7 +84,8 @@ export function decodeChildNativeAppearanceRestore(raw: unknown, profileId: stri
     if (value.status === "absent") return !saved.selection && value.scene === null ? Object.freeze({ ...saved, status: "absent", scene: null }) : null;
     if (value.status === "unavailable") return saved.selection && value.scene === null ? Object.freeze({ ...saved, status: "unavailable", scene: null }) : null;
     if (value.status !== "restored" || !saved.selection) return null;
-    const row = childRecord(value.scene, ["status", "sceneToken", "sceneId", "owner", "skin", "stand", "background", "hotspots", "remainingLifetimeMs"]);
+    const fields = ["status", "sceneToken", "sceneId", "owner", "skin", "stand", "background", "hotspots", "remainingLifetimeMs"];
+    const row = childRecord(value.scene, fields) ?? childRecord(value.scene, [...fields, "modelPackage"]);
     const owner = row && childRecord(row.owner, ["kind", "id", "contentChecksum"]);
     if (!row || !owner || owner.kind !== saved.selection.owner.kind || owner.id !== saved.selection.owner.id) return null;
     const scene = decodeChildNativeScene(value.scene, owner as unknown as ChildEntityReference, saved.selection.sceneId);

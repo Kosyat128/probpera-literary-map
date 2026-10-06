@@ -64,7 +64,7 @@ enum PlanetChildPassport {
         let checksum: String,mime: String,bytes: Int
         init(checksum: String,mime: String,bytes: Int) throws {
             try PlanetChildPassport.checksum(checksum)
-            try PlanetChildJourney.require(["image/png","image/jpeg","image/webp","audio/wav"].contains(mime) && bytes>0 && bytes<=(mime=="audio/wav" ? 25165824:33554432))
+            try PlanetChildJourney.require(["image/png","image/jpeg","image/webp","audio/wav","model/gltf+json","model/gltf-binary","application/octet-stream"].contains(mime) && bytes>0 && bytes<=(mime=="audio/wav" ? 25165824:33554432))
             self.checksum=checksum;self.mime=mime;self.bytes=bytes
         }
     }

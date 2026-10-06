@@ -38,7 +38,7 @@ final class PlanetChildResources {
     }
     static String canonicalPath(String checksum,String mime)throws Exception {
         require(checksum!=null&&checksum.matches("[a-f0-9]{64}"));String extension;
-        if("image/png".equals(mime))extension="png";else if("image/jpeg".equals(mime))extension="jpg";else if("image/webp".equals(mime))extension="webp";else{require("audio/wav".equals(mime));extension="wav";}
+        if("audio/wav".equals(mime))extension="wav";else extension=PlanetChildModelImport.extension(mime);
         return "/objects/"+checksum+"."+extension;
     }
     static long originalRemaining(long deadline,long continuousNow,long until,long wallNow)throws Exception {

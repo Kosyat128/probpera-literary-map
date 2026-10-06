@@ -4,7 +4,7 @@ import { PARENT_GATE_ACTIONS, type ParentGateAction } from "./parentGate";
 import { decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildNativeMediaLayout,
   decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, childNativeMediaOwner, childNativeMediaToken,
   type ChildNativeMediaController } from "./childNativeMedia";
-import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeWebResource, decodeChildNativeSceneRetired, childNativeSceneId,
+import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeWebResource, decodeChildNativeModelWebResource, decodeChildNativeModelChunk, decodeChildNativeSceneRetired, childNativeSceneId,
   type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
 import { childNativeAppearanceRevision, childNativeAppearanceFromScene, sameChildNativeAppearance,
   decodeChildNativeProfileAppearance, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
@@ -35,9 +35,11 @@ export interface ChildNativeAppPlugin {
   openScene?(request: unknown): Promise<unknown>;
   releaseScene?(request: unknown): Promise<unknown>;
   acquireWebResource?(request: unknown): Promise<unknown>;
+  readWebResourceChunk?(request: unknown): Promise<unknown>;
   releaseWebResource?(request: unknown): Promise<unknown>;
   readSceneSelection?(request: unknown): Promise<unknown>;
   rememberSceneSelection?(request: unknown): Promise<unknown>;
+  rollbackSceneSelection?(request: unknown): Promise<unknown>;
   restoreSceneSelection?(request: unknown): Promise<unknown>;
   listJourneys?(request: unknown): Promise<unknown>;
   readJourneyProgress?(request: unknown): Promise<unknown>;
@@ -474,7 +476,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
+  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "readWebResourceChunk" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "rollbackSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -485,7 +487,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       const original = request(); dispatched = true;
       const raw = await invoke(method, { ...original, contextToken: c.token, ...input });
       if (!current(c, generation)) {
-        if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method)) uncertain = true;
+        if (["rememberSceneSelection", "rollbackSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method)) uncertain = true;
         return null;
       }
       const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
@@ -497,7 +499,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       // An uncorrelated save reply cannot tell us whether native committed.
       // Keep this controller sealed until a new host lifetime independently
       // reads native state; refresh/lifecycle must not replay an uncertain save.
-      if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method) && dispatched) uncertain = true;
+      if (["rememberSceneSelection", "rollbackSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method) && dispatched) uncertain = true;
       if (snapshot.context === c) { seal("unavailable"); await retire(c); }
       return null;
     }
@@ -604,11 +606,21 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       remember(scene,expectedRevision) {
         const c=snapshot.context,projected=childNativeAppearanceFromScene(scene);
         if(!c?.profileId||!projected||!childNativeMediaToken(scene.sceneToken)||sceneRetirement
-          ||!childNativeAppearanceRevision(expectedRevision)||expectedRevision>=Number.MAX_SAFE_INTEGER-1
+          ||!childNativeAppearanceRevision(expectedRevision)||expectedRevision>=Number.MAX_SAFE_INTEGER-2
           ||typeof options.plugin?.rememberSceneSelection!=="function")return Promise.resolve(null);
         return data("rememberSceneSelection",{sceneToken:scene.sceneToken,expectedRevision},raw=>{
           const saved=decodeChildNativeProfileAppearance(raw,c.profileId!);
           return saved?.revision===expectedRevision+1&&saved.selection&&sameChildNativeAppearance(saved.selection,projected)?saved:null;
+        });
+      },
+      rollback(scene, expectedRevision) {
+        const c = snapshot.context;
+        if (!c?.profileId || !childNativeMediaToken(scene.sceneToken) || sceneRetirement
+          || !childNativeAppearanceRevision(expectedRevision) || expectedRevision >= Number.MAX_SAFE_INTEGER - 1
+          || typeof options.plugin?.rollbackSceneSelection !== "function") return Promise.resolve(null);
+        return data("rollbackSceneSelection", { sceneToken: scene.sceneToken, expectedRevision }, raw => {
+          const saved = decodeChildNativeProfileAppearance(raw, c.profileId!);
+          return saved?.revision === expectedRevision + 1 ? saved : null;
         });
       },
       restore(expected) {
@@ -634,6 +646,22 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
           ||![scene.skin,scene.stand.asset,scene.background.asset].includes(slot))return Promise.resolve(null);
         sceneTouched=true;
         return data("acquireWebResource",{sceneToken:scene.sceneToken,slotId:slot.slotId},raw=>decodeChildNativeWebResource(raw,scene,slot));
+      },
+      acquireModel(scene,resource,tier) {
+        const admitted=scene.modelPackage?.tiers.find(t=>t.tier===tier);
+        if(!admitted || !admitted.models.some(m=>m.model===resource||m.dependencies.includes(resource))
+          || !childNativeMediaToken(scene.sceneToken)||sceneRetirement||typeof options.plugin?.acquireWebResource!=="function")return Promise.resolve(null);
+        sceneTouched=true;
+        return data("acquireWebResource",{sceneToken:scene.sceneToken,slotId:resource.kind,assetId:resource.assetId,tier},raw=>decodeChildNativeModelWebResource(raw,scene,resource));
+      },
+      readModelChunk(scene,output,resource,offset,byteLength) {
+        const owned=scene.modelPackage?.tiers.some(t=>t.models.some(m=>[m.model,...m.dependencies].includes(resource)));
+        if(!owned || resource.kind==="texture" || output.sceneToken!==scene.sceneToken || output.assetId!==resource.assetId
+          || !childNativeMediaToken(scene.sceneToken) || !childNativeMediaToken(output.resourceToken) || sceneRetirement
+          || !Number.isSafeInteger(offset) || Object.is(offset,-0) || offset<0 || offset>=resource.encodedBytes
+          || !Number.isSafeInteger(byteLength) || byteLength<1 || byteLength>65536 || byteLength>resource.encodedBytes-offset
+          || typeof options.plugin?.readWebResourceChunk!=="function")return Promise.resolve(null);
+        return data("readWebResourceChunk",{sceneToken:scene.sceneToken,resourceToken:output.resourceToken,offset,byteLength},raw=>decodeChildNativeModelChunk(raw,scene,output,resource,offset,byteLength));
       },
       async releaseResource(resourceToken) {
         if(resourceToken!==null&&!childNativeMediaToken(resourceToken))return false;

@@ -26,7 +26,7 @@ const readings = [null, "plain", "developing", "fluent"];
 const platforms = ["android-google", "android-rustore", "ios-ipados"];
 const textKinds = ["country", "writer", "biography", "work", "character", "storyworld", "fact", "quote", "activity", "quiz", "search-result", "recommendation", "favorite", "recent", "offline-package", "deep-link"];
 const mediaKinds = ["image", "narration", "background", "skin", "stand", "accessory"];
-const extensions = { "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav" };
+const extensions = { "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav", "model/gltf+json": "gltf", "model/gltf-binary": "glb", "application/octet-stream": "bin" };
 const manifestFields = ["schemaVersion", "kind", "manifestId", "manifestVersion", "packageId", "packageVersion", "packageChecksum",
   "policyVersion", "policyChecksum", "locale", "exactAge", "readingLevels", "validFromEpochMs", "validUntilEpochMs", "assets"];
 const reviewFields = ["schemaVersion", "kind", "keyId", "reviewerId", "manifestId", "manifestVersion", "manifestChecksum",
@@ -162,12 +162,12 @@ export function validateChildNativeMediaManifest(bytes, pin, textPackageBytes, n
         && payload.transcript.length > 0 && payload.transcript.length <= 32768 && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/u.test(payload.transcript)
         && id(payload.scriptId) && id(payload.performerId) && payload.scriptChecksum === sha(Buffer.from(payload.transcript, "utf8"))
         && checksum(payload.qualityChecksum), "reviewed narration script/performer/quality provenance");
-    } else require(asset.mime !== "audio/wav" && (entity.kind === "image" ? ["image", "portrait"].includes(payload.role) : payload.role === entity.kind)
+    } else require(asset.mime !== "audio/wav" && (asset.mime.startsWith("image/") || ["stand","background"].includes(entity.kind)) && (entity.kind === "image" ? ["image", "portrait"].includes(payload.role) : payload.role === entity.kind)
       && ["transcript", "scriptId", "scriptChecksum", "performerId", "qualityChecksum"].every(key => payload[key] === null), "static image role");
     require(sha(canonical(payload)) === entity.contentChecksum, "media payload pin");
     policy(asset.policy, manifest, entity, entity.contentChecksum, now);
     const ext = extensions[asset.mime];
-    require(ext && typeof asset.inventoryKey === "string" && /^[a-z0-9][a-z0-9_-]{0,63}\.(png|jpg|webp|wav)$/u.test(asset.inventoryKey)
+    require(ext && typeof asset.inventoryKey === "string" && /^[a-z0-9][a-z0-9_-]{0,63}\.(png|jpg|webp|wav|gltf|glb|bin)$/u.test(asset.inventoryKey)
       && asset.inventoryKey.endsWith("." + ext) && checksum(asset.sha256) && integer(asset.bytes, 1, asset.mime === "audio/wav" ? 24 * 1024 * 1024 : 32 * 1024 * 1024), "fixed binary identity/MIME/bounds");
     const relation = owner.kind + "/" + owner.id + "/" + entity.kind + "/" + entity.id;
     require(!relations.has(relation), "ambiguous owner/media relationship"); relations.add(relation);
@@ -218,7 +218,7 @@ async function ownedSource(root, name, maximum) {
   for (const part of name.split("/")) { current = path.join(current, part); require(!(await fs.lstat(current)).isSymbolicLink(), "linked source"); }
   const file = await containedFile(root, name); require(file.size > 0 && file.size <= maximum, "owned source size"); return file;
 }
-async function sourceBinaryPreflight(root) {
+export async function sourceBinaryPreflight(root) {
   // Reuse only the source-owned pure container/resource validator. It mints no
   // challenge, epoch, permit or rights. Native admission and actual decode
   // remain independent on the original LOCAL2 worker.
@@ -282,7 +282,10 @@ export async function collectChildNativeMediaOutputs(root, platform, channel, no
       const ext = extensions[asset.mime], name = "src/child/media-release-material/" + asset.sha256 + "/asset." + ext;
       const binary = await ownedSource(root, name, asset.mime === "audio/wav" ? 24 * 1024 * 1024 : 32 * 1024 * 1024);
       require(binary.sha256 === asset.sha256 && binary.size === asset.bytes, "actual pinned binary bytes");
-      require(preflight(new Uint8Array(binary.bytes), asset.mime), "static raster/PCM container and decoded resource bounds");
+      if(asset.mime.startsWith("image/")||asset.mime==="audio/wav")require(preflight(new Uint8Array(binary.bytes), asset.mime), "static raster/PCM container and decoded resource bounds");
+      // Typed model/buffer decode happens against the complete reviewed scene
+      // dependency closure; a container-only MIME probe never admits a model.
+      else require(["model/gltf+json","model/gltf-binary","application/octet-stream"].includes(asset.mime)&&["stand","background"].includes(asset.entity.kind),"typed model dependency only");
       if (asset.mime === "audio/wav") {
         const qualityName = "src/child/media-release-material/" + asset.payload.qualityChecksum + "/quality.json";
         const quality = await ownedSource(root, qualityName, 65536);

@@ -38,7 +38,7 @@ final class PlanetChildWebResources: NSObject, WKURLSchemeHandler {
     func adopt(_ permit: PlanetChildLocalV2WebOutputPermit,_ bytes: Data) throws -> Output {
         try permit.transferCurrent(bytes);guard permit.handler === self else { throw Self.refused() };let output=Output(self,permit,bytes)
         do {
-            condition.lock();guard outputs.count<3,outputs[output.token]==nil else { condition.unlock();throw Self.refused() };condition.unlock()
+            condition.lock();guard outputs.count<134,outputs[output.token]==nil else { condition.unlock();throw Self.refused() };condition.unlock()
             try permit.adopt(output);condition.lock();guard outputs[output.token]==nil else { condition.unlock();throw Self.refused() };outputs[output.token]=output;condition.unlock();return output
         } catch {
             let original=error;output.revoke();try output.closeJoined();guard output.knownClosed else { throw PlanetChildLocalV2ResourceError.cleanupUnknown };throw original
@@ -107,6 +107,13 @@ final class PlanetChildWebResources: NSObject, WKURLSchemeHandler {
         var admits: Bool { condition.lock();defer { condition.unlock() };return !revoked && !closed && encoded.count==permit.bytes }
         fileprivate func reserve(_ job: ObjectIdentifier) throws { condition.lock();defer { condition.unlock() };guard !revoked,!closed,jobs.count<4,jobs.insert(job).inserted else { throw PlanetChildWebResources.refused() } }
         fileprivate func complete(_ job: ObjectIdentifier) { condition.lock();jobs.remove(job);condition.broadcast();condition.unlock() }
+        func reserveBridge(_ job: ObjectIdentifier) throws { try reserve(job) }
+        func completeBridge(_ job: ObjectIdentifier) { complete(job) }
+        func bridgeChunk(_ at: Int,_ count: Int) throws -> Data {
+            condition.lock();defer { condition.unlock() }
+            guard !Thread.isMainThread,!revoked,!closed,at>=0,count>0,count<=65536,encoded.count==permit.bytes,at<=encoded.count-count else { throw PlanetChildWebResources.refused() }
+            return Data(encoded[at..<at+count])
+        }
         fileprivate func chunk(_ at: Int) throws -> Data { condition.lock();defer { condition.unlock() };guard !revoked,!closed,at>=0,at<encoded.count,encoded.count==permit.bytes else { throw PlanetChildWebResources.refused() };return Data(encoded[at..<min(encoded.count,at+8192)]) }
         func revoke() { condition.lock();revoked=true;condition.unlock();handler.revoke(self) }
         func closeJoined() throws {

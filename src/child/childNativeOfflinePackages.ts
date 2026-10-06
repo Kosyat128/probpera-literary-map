@@ -7,8 +7,8 @@ import type { ChildNativePassportController } from "./childNativeDiscoveryPasspo
 /** Presentation counters describe checked local storage only. Current native
  * package/review/rights/profile/parent claims independently own every read,
  * acquisition, activation and playback. No approval or acquisition URL enters JS. */
-export const CHILD_NATIVE_ROUTE_OBJECT_LIMIT = 66;
-export const CHILD_NATIVE_ROUTE_ACQUISITION_BYTES = 2_148_007_936;
+export const CHILD_NATIVE_ROUTE_OBJECT_LIMIT = 69;
+export const CHILD_NATIVE_ROUTE_ACQUISITION_BYTES = 2_248_671_232;
 export interface ChildNativeRouteAcquisition {
   readonly status: "absent" | "staging" | "ready" | "cancelled";
   readonly journeyId: string; readonly locale: "ru" | "en";
@@ -35,8 +35,8 @@ export function decodeChildNativeRouteDownload(raw: unknown, c: ChildNativeConte
       || (a.totalItems as number) > CHILD_NATIVE_ROUTE_OBJECT_LIMIT || (a.totalBytes as number) > CHILD_NATIVE_ROUTE_ACQUISITION_BYTES
       || (a.completedItems as number) > (a.totalItems as number) || (a.downloadedBytes as number) > (a.totalBytes as number)
       || (a.sharedItems as number) > (a.completedItems as number) || (a.reusedItems as number) > (a.completedItems as number)) return null;
-    if (expectedRevision !== undefined && (!revision(expectedRevision) || expectedRevision >= Number.MAX_SAFE_INTEGER - 130
-      || row.revision <= expectedRevision || row.revision > expectedRevision + 130)) return null;
+    if (expectedRevision !== undefined && (!revision(expectedRevision) || expectedRevision >= Number.MAX_SAFE_INTEGER - 136
+      || row.revision <= expectedRevision || row.revision > expectedRevision + 136)) return null;
     let route: ChildNativeDownloadedRoute | null = null;
     if (a.status === "absent" || a.status === "cancelled") {
       if (row.route !== null || a.completedItems !== 0 || a.totalItems !== 0 || a.downloadedBytes !== 0 || a.totalBytes !== 0

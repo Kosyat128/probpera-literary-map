@@ -8452,7 +8452,7 @@ final class PlanetChildLocalV2SDKOwner {
     private weak var canonicalWeb: WKWebView?
     private var canonicalHandler: PlanetChildWebResources?,canonicalEpoch: UInt64=0
     private let canonicalRetirement=NSLock()
-    private var canonicalScenes=[String:LocalV2SceneLease](),canonicalOutputs=[String:PlanetChildWebResources.Output](),canonicalRetiredScenes=Set<String>(),canonicalRetiredOutputs=Set<String>()
+    private var canonicalScenes=[String:LocalV2SceneLease](),canonicalOutputs=[String:PlanetChildWebResources.Output](),canonicalRetiredScenes=Set<String>(),canonicalRetiredOutputs=Set<String>(),canonicalActiveScene: String?
     private var mediaEpoch: UInt64=0,mediaPresentations=[String:PlanetChildLocalV2MediaPresentation](),mediaRetiring=[PlanetChildLocalV2MediaPresentation](),mediaReleases=Set<String>()
     private var reader: (LocalV2Writer,LocalV2Request)?,loader: LocalV2NativePackageLoader?,channel: LocalV2SDKChannel?,gate: LocalV2GateHost?,profile: LocalV2ProfileOperation?,rotation: LocalV2SDKPinRotation?,enrollment: LocalV2PinOperation?
     private var firstInstall: (NativeChildFirstInstallV2,OriginalFirstInstallV2)?
@@ -8533,7 +8533,6 @@ final class PlanetChildLocalV2SDKOwner {
                     if known { concealMedia(token) } else { routeWillChange(reason:"unavailable") }
                 } else { concealMedia() }
             } else if retirement { routeWillChange() }
-            else if request.method=="restoreSceneSelection" { concealMedia() }
             else if request.method=="perform" || request.method=="bootstrap" { surface.seal();concealMedia() }
         }
         if Thread.isMainThread { fast() } else { DispatchQueue.main.sync(execute:fast) }
@@ -8555,10 +8554,10 @@ final class PlanetChildLocalV2SDKOwner {
                 // Its delivery is not a distributed exactly-once JS receipt.
                 if let journey=handoff.journey { guard let channel else { throw PinKnownRefusal() };try journey.validate(on:channel);try journey.finish() }
                 if let passport=handoff.passport { guard let channel else { throw PinKnownRefusal() };try passport.validate(on:channel);try passport.finish() }
-                reply(value);handoff.appearance?.close();handoff.journey?.close();handoff.passport?.close()
+                if let chunk=handoff.chunk { try chunk.resolve(value,reply) } else { reply(value) };handoff.chunk?.close();handoff.appearance?.close();handoff.journey?.close();handoff.passport?.close()
             }
             catch {
-                handoff.appearance?.unknown();handoff.journey?.unknown();handoff.passport?.unknown()
+                handoff.chunk?.close();handoff.appearance?.unknown();handoff.journey?.unknown();handoff.passport?.unknown()
                 let originalError=error;DispatchQueue.main.sync { surface.seal() };lock.lock();let old=context;context=nil;lock.unlock()
                 do { try joinOwners();lock.lock();let unknown=sealed;lock.unlock();guard !unknown else { reply(refused(request,"pending"));return }
                     if request.method=="perform",let originalDeadline,(try? remaining(originalDeadline)) != nil { reply(try bootstrap(request.id,deadline:originalDeadline,reason:originalError is PinVerificationRefusal ? "blocked":"cancelled")) }
@@ -8580,10 +8579,10 @@ final class PlanetChildLocalV2SDKOwner {
                 value=try passportPerform(r,c,delivery)
             } else if ["listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"].contains(r.method) {
                 value=try journeyPerform(r,c,delivery,capturedJourneyEpoch)
-            } else if ["readSceneSelection","rememberSceneSelection","restoreSceneSelection"].contains(r.method) {
+            } else if ["readSceneSelection","rememberSceneSelection","rollbackSceneSelection","restoreSceneSelection"].contains(r.method) {
                 value=try appearancePerform(r,c,delivery)
-            } else if ["listScenes","openScene","releaseScene","acquireWebResource","releaseWebResource"].contains(r.method) {
-                let scene=try canonicalPerform(r,c,delivery);value=r.method=="listScenes" ? scene["list"]! as Any:scene
+            } else if ["listScenes","openScene","releaseScene","acquireWebResource","readWebResourceChunk","releaseWebResource"].contains(r.method) {
+                let scene=try canonicalPerform(r,c,delivery,handoff:handoff);value=r.method=="listScenes" ? scene["list"]! as Any:scene
             } else if ["listMedia","presentMedia","releaseMedia"].contains(r.method) {
                 do { let media=try mediaPerform(r,c,delivery,capturedMediaEpoch);value=r.method=="listMedia" ? media["list"]! as Any:media }
                 catch PlanetChildLocalV2MediaError.revoked {
@@ -9104,7 +9103,7 @@ fileprivate final class LocalV2MediaIndex {
     init(_ assets: [LocalV2MediaAsset],_ until: Int64,_ profile: LocalV2PackageProfile) { self.assets=assets;self.until=until;self.profile=profile }
     func owned(_ owner: LocalV2PackageValue) throws -> [LocalV2MediaAsset] {
         let expected=try owner.json(sorted:true);let rows=try assets.filter { try $0.owner.json(sorted:true)==expected }
-        guard rows.count<=64 else { throw PinKnownRefusal() };return rows
+        guard rows.count<=67 else { throw PinKnownRefusal() };return rows
     }
 }
 fileprivate final class LocalV2MediaCatalog {
@@ -9176,8 +9175,8 @@ fileprivate enum LocalV2MediaCompiler {
         let begin=try epoch(row["validFromEpochMs"]),end=try epoch(row["validUntilEpochMs"]);guard begin<end,begin<=now,now<end else { throw PinKnownRefusal() };return end
     }
     static func extensionFor(_ key: String,_ mime: String) throws -> String {
-        guard V.matches(key,"[a-z0-9][a-z0-9_-]{0,63}\\.(png|jpg|webp|wav)"),let ext=key.split(separator:".").last,
-            ["png":"image/png","jpg":"image/jpeg","webp":"image/webp","wav":"audio/wav"][String(ext)]==mime else { throw PinKnownRefusal() };return String(ext)
+        guard V.matches(key,"[a-z0-9][a-z0-9_-]{0,63}\\.(png|jpg|webp|wav|gltf|glb|bin)"),let ext=key.split(separator:".").last,
+            ["png":"image/png","jpg":"image/jpeg","webp":"image/webp","wav":"audio/wav","gltf":"model/gltf+json","glb":"model/gltf-binary","bin":"application/octet-stream"][String(ext)]==mime else { throw PinKnownRefusal() };return String(ext)
     }
     static func readings(_ value: V?) throws -> Set<String> {
         var set=Set<String>();for v in try V.array(value,4) { let key=v.isNull ? "<null>":try V.text(v);guard ["<null>","plain","developing","fluent"].contains(key),set.insert(key).inserted else { throw PinKnownRefusal() } }
@@ -9232,7 +9231,7 @@ fileprivate enum LocalV2MediaCompiler {
             let ownerKind=try V.text(owner["kind"]),ownerId=try V.identifier(owner["id"]),ownerHash=try V.hash(owner["contentChecksum"]),kind=try V.text(entity["kind"]),entityId=try V.identifier(entity["id"]),entityHash=try V.hash(entity["contentChecksum"])
             guard LocalV2PackageCompiler.kinds.contains(ownerKind),kinds.contains(kind),ids.insert(id).inserted,relations.insert(ownerKind+"/"+ownerId+"/"+kind+"/"+entityId).inserted else { throw PinKnownRefusal() }
             var ownerBytes=try compiled.copy(ownerKind+"/"+ownerId,now);defer { ownerBytes.resetBytes(in:0..<ownerBytes.count) };guard LocalSnapshotV2.hash(ownerBytes)==ownerHash else { throw PinKnownRefusal() }
-            let ownerName=ownerKind+"/"+ownerId;owners[ownerName,default:0]+=1;guard owners[ownerName]!<=64 else { throw PinKnownRefusal() }
+            let ownerName=ownerKind+"/"+ownerId;owners[ownerName,default:0]+=1;guard owners[ownerName]!<=67 else { throw PinKnownRefusal() }
             let payload=try V.object(entry["payload"],["role","altText","transcript","scriptId","scriptChecksum","performerId","qualityChecksum"]),role=try V.text(payload["role"]),alt=try text(payload["altText"],240,false)
             guard try hash(entry["payload"]!)==entityHash else { throw PinKnownRefusal() };let mime=try V.text(entry["mime"]),inventory=try V.text(entry["inventoryKey"]),ext=try extensionFor(inventory,mime),sum=try V.hash(entry["sha256"]),size=try V.number(entry["bytes"],1,Int64(mime=="audio/wav" ? 24*1024*1024:32*1024*1024))
             let identity=sum+"/"+String(size)+"/"+mime
@@ -9242,7 +9241,7 @@ fileprivate enum LocalV2MediaCompiler {
                 guard try V.hash(payload["scriptChecksum"])==LocalSnapshotV2.hash(Data(transcript!.utf8)),let provenance else { throw PinKnownRefusal() }
                 var raw=try provenance(V.hash(payload["qualityChecksum"]));defer { raw.resetBytes(in:0..<raw.count) }
                 _=try PlanetChildLocalV2NarrationProvenanceCodec.validate(raw,entry["payload"]!,profile.locale);audioProvenance=Data(Array(raw));try fence()
-            } else { guard mime != "audio/wav",kind=="image" ? ["image","portrait"].contains(role):role==kind,["transcript","scriptId","scriptChecksum","performerId","qualityChecksum"].allSatisfy({ payload[$0]?.isNull==true }) else { throw PinKnownRefusal() } }
+            } else { guard mime != "audio/wav",mime.hasPrefix("image/") || ["stand","background"].contains(kind),kind=="image" ? ["image","portrait"].contains(role):role==kind,["transcript","scriptId","scriptChecksum","performerId","qualityChecksum"].allSatisfy({ payload[$0]?.isNull==true }) else { throw PinKnownRefusal() } }
             let rights=try V.object(V.object(entry["policy"])["rights"])
             guard try V.strings(rights["platforms"],4,"web-pwa|android-google|android-rustore|ios-ipados").isSuperset(of:V.strings(a["platforms"],3,"android-google|android-rustore|ios-ipados")),
                 try V.strings(rights["territories"],676,"[A-Z]{2}").isSuperset(of:V.strings(a["territories"],676,"[A-Z]{2}")) else { throw PinKnownRefusal() }
@@ -9273,7 +9272,7 @@ fileprivate extension LocalV2NativePackageLoader {
         let now=try wall();lock.lock();let original=mediaMetadataLifetime;lock.unlock();try original.current(now)
     }
     func fixedMediaAsset(_ fixed: String,_ limit: Int) throws -> Data {
-        try live();guard fixed=="child-native/passport/catalog-v1.json" || LocalV2PackageValue.matches(fixed,"child-native/passport/[a-f0-9]{64}/(program|review)\\.json") || fixed=="child-native/scenes/catalog-v2.json" || LocalV2PackageValue.matches(fixed,"child-native/scenes/(manifests|reviews)/[a-f0-9]{64}\\.json") || fixed=="child-native/resources/catalog-v2.json" || fixed=="child-native/media/catalog-v2.json" || LocalV2PackageValue.matches(fixed,"child-native/media/(manifests|reviews|provenance)/[a-f0-9]{64}\\.json") || LocalV2PackageValue.matches(fixed,"child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav)"),limit>0,limit<=32*1024*1024,let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
+        try live();guard fixed=="child-native/passport/catalog-v1.json" || LocalV2PackageValue.matches(fixed,"child-native/passport/[a-f0-9]{64}/(program|review)\\.json") || fixed=="child-native/scenes/catalog-v2.json" || LocalV2PackageValue.matches(fixed,"child-native/scenes/(manifests|reviews)/[a-f0-9]{64}\\.json") || fixed=="child-native/resources/catalog-v2.json" || fixed=="child-native/media/catalog-v2.json" || LocalV2PackageValue.matches(fixed,"child-native/media/(manifests|reviews|provenance)/[a-f0-9]{64}\\.json") || LocalV2PackageValue.matches(fixed,"child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav|gltf|glb|bin)"),limit>0,limit<=32*1024*1024,let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
         var path=resources;for part in ["public"]+fixed.split(separator:"/").map(String.init) { path.appendPathComponent(part);let info=try path.resourceValues(forKeys:[.isSymbolicLinkKey]);guard info.isSymbolicLink != true,path.resolvingSymlinksInPath().standardizedFileURL==path.standardizedFileURL else { throw PinKnownRefusal() } }
         let info=try path.resourceValues(forKeys:[.isRegularFileKey,.fileSizeKey]);guard info.isRegularFile==true,let size=info.fileSize,size>0,size<=limit,let stream=InputStream(url:path) else { throw PinKnownRefusal() }
         var owned=[UInt8](repeating:0,count:size),at=0;stream.open();defer { stream.close();owned.withUnsafeMutableBytes { $0.initializeMemory(as:UInt8.self,repeating:0) } }
@@ -9386,9 +9385,9 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             try delivery.owner.retainMediaMetadata(delivery,command,index,assets)
             try mediaInvocationCurrent(capturedEpoch,c.token,c.generation,delivery)
             try delivery.owner.mediaMetadataCurrent()
-            return ["list":try assets.map { try $0.descriptor() }]
+            return ["list":try assets.filter { $0.mime.hasPrefix("image/") || $0.mime=="audio/wav" }.map { try $0.descriptor() }]
         }
-        guard r.method=="presentMedia",let id=r.assetId,let asset=assets.first(where:{ $0.id==id }),let layout=r.mediaLayout else { throw PinKnownRefusal() }
+        guard r.method=="presentMedia",let id=r.assetId,let asset=assets.first(where:{ $0.id==id }),asset.mime.hasPrefix("image/") || asset.mime=="audio/wav",let layout=r.mediaLayout else { throw PinKnownRefusal() }
         let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,capturedEpoch,c.token,c.generation,index,asset)
         var resource: PlanetChildLocalV2MediaResource?,presentation: PlanetChildLocalV2MediaPresentation?,handed=false
         defer { if !handed && presentation==nil { resource?.close();permit.close() } }
@@ -9625,6 +9624,7 @@ enum PlanetChildNativeMediaRuntimeFixture {
 // MARK: Private native LOCAL2 original resource catalog and claim.
 fileprivate final class LocalV2ResourceCatalog {
     typealias V=LocalV2PackageValue
+    let rawChecksum: String
     final class Binding {
         let packageId: String,packageVersion: Int64,packageChecksum: String,policyVersion: String,policyChecksum: String
         let manifestChecksum: String,reviewChecksum: String,assetId: String,assetChecksum: String,mime: String,originId: String,path: String
@@ -9636,6 +9636,7 @@ fileprivate final class LocalV2ResourceCatalog {
     private let origins: [String:PlanetChildLocalV2ResourceHTTPS]
     private let bindings: [String:Binding]
     init(_ bytes: Data,_ artifactBytes: Data,_ mediaBytes: Data) throws {
+        rawChecksum=LocalSnapshotV2.hash(bytes)
         let c=try V.object(LocalV2PackageJson.read(bytes,524288),["schemaVersion","kind","platform","resourcePinSourceChecksum","origins","resources"])
         let a=try V.object(LocalV2PackageJson.read(artifactBytes,2097152)),m=try V.object(LocalV2PackageJson.read(mediaBytes,65536))
         guard try V.number(c["schemaVersion"],2,2)==2,try V.text(c["kind"])=="literary-planet-child-native-resource-catalog-v2",
@@ -9740,7 +9741,7 @@ final class PlanetChildLocalV2ResourceClaim {
     }
     fileprivate func transferOnce() throws { try workerCurrent();transferLock.lock();defer { transferLock.unlock() };guard !webTransferred else { throw PlanetChildLocalV2ResourceError.revoked };webTransferred=true }
     func fixedBundleURL() throws -> URL {
-        try workerCurrent();guard https==nil,LocalV2PackageValue.matches(permit.asset.fixedPath,"child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav)"),let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
+        try workerCurrent();guard https==nil,LocalV2PackageValue.matches(permit.asset.fixedPath,"child-native/media/assets/[a-f0-9]{64}\\.(png|jpg|webp|wav|gltf|glb|bin)"),let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
         var path=resources
         for part in ["public"]+permit.asset.fixedPath.split(separator:"/").map(String.init) {
             path.appendPathComponent(part);let info=try path.resourceValues(forKeys:[.isSymbolicLinkKey])
@@ -9912,15 +9913,20 @@ fileprivate final class LocalV2SceneCatalog {
         guard try V.text(out["source"])==source,try inputs[source]==V.hash(out["sourceSha256"]),try V.text(out["transformation"])==(path==Self.fixed ? "fixed-native-scene-pin-projection-v2":"none"),try path==Self.fixed || V.hash(out["sourceSha256"])==hash else { throw PinKnownRefusal() }
     }
     func graph(_ value: LocalV2SceneValue?) throws {
-        guard let value else { throw PinKnownRefusal() };let rows=try V.array(value.package(),4)
+        guard let value else { throw PinKnownRefusal() };let rows=try V.array(value.package(),8)
         let paths=["src/components/globeBookCloudStandGeometry.ts","src/components/globeCraftMaterials.ts","src/components/globeLibraryBookGeometry.ts","src/components/globeLibraryGeometry.ts"]
         let hashes=["e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577","2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721","e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c","18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"],sizes: [Int64]=[18215,12947,3044,59048]
-        guard rows.count==4 else { throw PinKnownRefusal() };for i in 0..<4 { let row=try V.object(rows[i],["path","sha256","bytes"]);guard try V.text(row["path"])==paths[i],try V.hash(row["sha256"])==hashes[i],inputs[paths[i]]==hashes[i],try V.number(row["bytes"],1,9007199254740991)==sizes[i] else { throw PinKnownRefusal() } }
+        guard rows.count==4 || rows.count==8 else { throw PinKnownRefusal() };for i in 0..<4 { let row=try V.object(rows[i],["path","sha256","bytes"]);guard try V.text(row["path"])==paths[i],try V.hash(row["sha256"])==hashes[i],inputs[paths[i]]==hashes[i],try V.number(row["bytes"],1,9007199254740991)==sizes[i] else { throw PinKnownRefusal() } }
+        if rows.count==8 {
+            let modelPaths=["src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildModelImport.java","apps/mobile/ios/App/App/PlanetChildModelImport.swift"]
+            for i in 0..<4 { let row=try V.object(rows[i+4],["path","sha256","bytes"]);guard try V.text(row["path"])==modelPaths[i],try inputs[modelPaths[i]]==V.hash(row["sha256"]),try V.number(row["bytes"],1,2097152)>0 else { throw PinKnownRefusal() } }
+        }
     }
 }
 fileprivate final class LocalV2Scene {
+    let modelPackage: PlanetChildModelImport.Package?
     let root: [String:LocalV2SceneValue],id: String,title: String,owner: LocalV2PackageValue,assets: [String:LocalV2MediaAsset],from: Int64,until: Int64
-    init(_ root: [String:LocalV2SceneValue],_ assets: [String:LocalV2MediaAsset],_ from: Int64,_ until: Int64) throws { self.root=root;self.assets=assets;self.from=from;self.until=until;id=try LocalV2SceneValue.identifier(root["sceneId"]);title=try LocalV2SceneValue.text(root["title"]);owner=try root["owner"]!.package() }
+    init(_ root: [String:LocalV2SceneValue],_ assets: [String:LocalV2MediaAsset],_ from: Int64,_ until: Int64) throws { self.root=root;self.assets=assets;self.from=from;self.until=until;id=try LocalV2SceneValue.identifier(root["sceneId"]);title=try LocalV2SceneValue.text(root["title"]);owner=try root["owner"]!.package();modelPackage=try root["modelPackage"].map { try PlanetChildModelImport.package($0.bridgeValue()) } }
 }
 fileprivate enum LocalV2SceneCompiler {
     typealias V=LocalV2PackageValue
@@ -9936,7 +9942,9 @@ fileprivate enum LocalV2SceneCompiler {
         let catalog=try LocalV2SceneCatalog(bytes,artifact),package=delivery.compiled;var result=[String:LocalV2Scene]()
         for raw in catalog.pins { try fence();let pin=try V.object(raw),hash=try V.hash(pin["manifestChecksum"]),reviewHash=try V.hash(pin["reviewChecksum"]),mp="child-native/scenes/manifests/"+hash+".json",rp="child-native/scenes/reviews/"+reviewHash+".json"
             var manifest=try loader.fixedMediaAsset(mp,524288),review=try loader.fixedMediaAsset(rp,524288);defer { manifest.resetBytes(in:0..<manifest.count);review.resetBytes(in:0..<review.count) };try catalog.verify(mp,manifest,524288);try catalog.verify(rp,review,524288)
-            let root=try S.object(LocalV2SceneJson.read(manifest,524288),fields);try catalog.graph(root["sourceGraph"])
+            let value=try LocalV2SceneJson.read(manifest,524288),base=try S.object(value),model=try S.number(base["schemaVersion"],2,3)==3
+            let root=try S.object(value,model ? fields+["modelPackage"]:fields);try catalog.graph(root["sourceGraph"])
+            guard try S.array(root["sourceGraph"],8).count==(model ? 8:4) else { throw PinKnownRefusal() }
             guard try S.identifier(root["sceneId"])==V.identifier(pin["sceneId"]),try S.identifier(root["packageId"])==V.identifier(pin["packageId"]),try S.number(root["packageVersion"],1,9007199254740991)==V.number(pin["packageVersion"],1,9007199254740991),try S.hash(root["packageChecksum"])==V.hash(pin["packageChecksum"]) else { throw PinKnownRefusal() }
             if try S.identifier(root["packageId"]) != package.packageId || S.number(root["packageVersion"],1,9007199254740991) != package.version || S.hash(root["packageChecksum"]) != package.checksum || S.text(root["locale"]) != package.profile.locale || S.number(root["exactAge"],3,17) != package.profile.exactAge { continue }
             guard catalog.platform==package.platform else { throw PinKnownRefusal() };let scene=try compile(root,review,pin,catalog,package,index,loader.wall());guard result[scene.id]==nil else { throw PinKnownRefusal() };result[scene.id]=scene;try fence()
@@ -9957,8 +9965,10 @@ fileprivate enum LocalV2SceneCompiler {
         }
     }
     private static func compile(_ root: [String:S],_ signed: Data,_ pin: [String:V],_ catalog: LocalV2SceneCatalog,_ package: LocalV2CompiledPackage,_ index: LocalV2MediaIndex,_ now: Int64) throws -> LocalV2Scene {
-        let review=try LocalV2PackageJson.read(signed,524288),r=try V.object(review,reviewFields)
-        guard try S.number(root["schemaVersion"],2,2)==2,try S.text(root["kind"])=="literary-planet-child-native-scene-manifest-v2",try V.number(r["schemaVersion"],2,2)==2,try V.text(r["kind"])=="literary-planet-child-native-scene-review-v2" else { throw PinKnownRefusal() }
+        let version=try S.number(root["schemaVersion"],2,3),review=try LocalV2PackageJson.read(signed,524288),r=try V.object(review,version==3 ? reviewFields+["modelPackageChecksum"]:reviewFields)
+        guard try S.text(root["kind"])=="literary-planet-child-native-scene-manifest-v"+String(version),try V.number(r["schemaVersion"],version,version)==version,try V.text(r["kind"])=="literary-planet-child-native-scene-review-v"+String(version) else { throw PinKnownRefusal() }
+        var models: PlanetChildModelImport.Package?
+        if version==3 { guard let raw=root["modelPackage"] else { throw PinKnownRefusal() };models=try PlanetChildModelImport.package(raw.bridgeValue());guard let models,try S.identifier(root["sceneId"])==models.id+".v"+String(models.version),try V.hash(r["modelPackageChecksum"])==LocalSnapshotV2.hash(Data(raw.json(sorted:true).utf8)) else { throw PinKnownRefusal() } }
         for name in ["sceneId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum"] { guard let field=root[name],try field.package().json(sorted:true)==r[name]?.json(sorted:true) else { throw PinKnownRefusal() } }
         guard try V.hash(r["manifestChecksum"])==V.hash(pin["manifestChecksum"]),try S.identifier(root["packageId"])==package.packageId,try S.number(root["packageVersion"],1,9007199254740991)==package.version,try S.hash(root["packageChecksum"])==package.checksum,
             try S.text(root["policyVersion"])==package.profile.policyVersion,try S.hash(root["policyChecksum"])==package.profile.policyChecksum,try S.text(root["locale"])==package.profile.locale,try S.number(root["exactAge"],3,17)==package.profile.exactAge else { throw PinKnownRefusal() }
@@ -9968,7 +9978,14 @@ fileprivate enum LocalV2SceneCompiler {
         var from=max(try S.number(root["validFromEpochMs"],0,8640000000000000),try V.number(r["validFromEpochMs"],0,8640000000000000)),until=min(package.until,min(try S.number(root["validUntilEpochMs"],0,8640000000000000),try V.number(r["validUntilEpochMs"],0,8640000000000000)))
         guard try S.number(root["validFromEpochMs"],0,8640000000000000)<S.number(root["validUntilEpochMs"],0,8640000000000000),try V.number(r["validFromEpochMs"],0,8640000000000000)<V.number(r["validUntilEpochMs"],0,8640000000000000) else { throw PinKnownRefusal() }
         let stand=try S.object(root["stand"],["geometryId","asset"]),background=try S.object(root["background"],["geometryId","asset"]);guard try S.text(stand["geometryId"])=="stand.base.child-book-cloud",try S.text(background["geometryId"])=="background.base.library" else { throw PinKnownRefusal() }
-        let assets=["skin":try slot(root["skin"],"skin",root,index,platforms,territories),"stand":try slot(stand["asset"],"stand",root,index,platforms,territories),"background":try slot(background["asset"],"background",root,index,platforms,territories)];for asset in assets.values { from=max(from,asset.sourceFrom);until=min(until,min(asset.until,index.until)) };guard from<=now,now<until else { throw PinKnownRefusal() };try hotspots(root["hotspots"],package,now);return try LocalV2Scene(root,assets,from,until)
+        var assets=["skin":try slot(root["skin"],"skin",root,index,platforms,territories),"stand":try slot(stand["asset"],"stand",root,index,platforms,territories),"background":try slot(background["asset"],"background",root,index,platforms,territories)]
+        if let models { for tier in models.tiers { for model in tier.models { for resource in [model.model]+model.dependencies {
+            guard let asset=index.assets.first(where:{ $0.id==resource.id }),asset.role==model.slot,asset.mime==resource.mime,asset.checksum==resource.checksum,asset.bytes==resource.bytes else { throw PinKnownRefusal() }
+            let entity=try JSONSerialization.data(withJSONObject:resource.entity,options:[.sortedKeys,.withoutEscapingSlashes]),rights=try V.object(V.object(asset.policy)["rights"])
+            guard Data(try asset.entity.json(sorted:true).utf8)==entity,try asset.owner.json(sorted:true)==root["owner"]!.package().json(sorted:true),try S.hash(root["mediaManifestChecksum"])==asset.manifestChecksum,try S.hash(root["mediaReviewChecksum"])==asset.reviewChecksum,asset.reviewPlatforms.isSuperset(of:platforms),asset.reviewTerritories.isSuperset(of:territories),try V.strings(rights["platforms"],4,"web-pwa|android-google|android-rustore|ios-ipados").isSuperset(of:platforms),try V.strings(rights["territories"],676,"[A-Z]{2}").isSuperset(of:territories) else { throw PinKnownRefusal() }
+            assets["common:"+resource.id]=asset
+        } } } };guard assets.count<=67 else { throw PinKnownRefusal() }
+        for asset in assets.values { from=max(from,asset.sourceFrom);until=min(until,min(asset.until,index.until)) };guard from<=now,now<until else { throw PinKnownRefusal() };try hotspots(root["hotspots"],package,now);return try LocalV2Scene(root,assets,from,until)
     }
     fileprivate static func signature(_ review: V,_ keys: [V]) throws {
         let row=try V.object(review);guard case .object(let fields)=review else { throw PinKnownRefusal() };let id=try V.text(row["keyId"]),reviewer=try V.identifier(row["reviewerId"])
@@ -9982,7 +9999,8 @@ fileprivate enum LocalV2SceneCompiler {
         guard let selected else { throw PinKnownRefusal() };var point=try raw(V.text(selected["publicKeyX963Hex"]),65),sig=try raw(V.text(row["signatureHex"]),64)
         defer { point.resetBytes(in:0..<point.count);sig.resetBytes(in:0..<sig.count) };guard point.first==4 else { throw PinKnownRefusal() }
         let key=try P256.Signing.PublicKey(x963Representation:point),signature=try P256.Signing.ECDSASignature(rawRepresentation:sig)
-        var message=Data(("LP-CHILD-NATIVE-SCENE-REVIEW\0v2\0"+(try V.object(fields.filter { $0.0 != "signatureHex" }).json(sorted:true))).utf8);defer { message.resetBytes(in:0..<message.count) }
+        let domain=try V.number(row["schemaVersion"],2,3)==3 ? "LP-CHILD-NATIVE-SCENE-REVIEW\0v3\0":"LP-CHILD-NATIVE-SCENE-REVIEW\0v2\0"
+        var message=Data((domain+(try V.object(fields.filter { $0.0 != "signatureHex" }).json(sorted:true))).utf8);defer { message.resetBytes(in:0..<message.count) }
         guard key.x963Representation==point,key.isValidSignature(signature,for:message) else { throw PinKnownRefusal() }
     }
 }
@@ -9990,6 +10008,38 @@ fileprivate enum LocalV2SceneCompiler {
 /** Original native scene object. Its display-link check runs before each
  * native frame; release synchronously denies every output before any join. */
 fileprivate final class LocalV2SceneLease: NSObject {
+    fileprivate var selectedModelTier: PlanetChildModelImport.Tier?,modelProbes=[String:PlanetChildModelImport.Probe](),topologyTokens: Set<String>?
+    fileprivate var rollbackSelection: PlanetChildAppearance.Selection?,rollbackPriorRevision: UInt64=0,rollbackCommittedRevision: UInt64=0,rollbackPreviousToken: String?
+    fileprivate var rollbackCaptured=false,rollbackArmed=false,rollbackConsumed=false,commonTextureBytes=[String:Int](),legacyTextureBytes=[String:Int]()
+    private func commonDecodedBytes() -> Int {
+        var uses=[String:Int]()
+        if let tier=selectedModelTier { for model in tier.models { if let probe=modelProbes[model.model.id] { for resource in model.dependencies where resource.kind=="texture" { uses[resource.id,default:0]+=probe.textureUses[resource.alias,default:0] } } } }
+        return modelProbes.values.reduce(0,{ $0+$1.decodedBytes })+commonTextureBytes.reduce(0,{ $0+$1.value*max(1,uses[String($1.key.dropFirst("common:".count)),default:0]) })
+    }
+    func imageDecoded(_ slot: String,_ bytes: Int) throws {
+        try workerCurrent();topologyTokens=nil;guard bytes>0,bytes<=67108864 else { throw PinKnownRefusal() }
+        if slot.hasPrefix("common:") { guard let tier=selectedModelTier else { throw PinKnownRefusal() };commonTextureBytes[slot]=(bytes*4+2)/3;guard commonDecodedBytes()<=tier.decodedBytes else { throw PinKnownRefusal() } }
+        else { legacyTextureBytes[slot]=bytes;guard legacyTextureBytes.values.reduce(0,+)<=3*67108864 else { throw PinKnownRefusal() } }
+        try workerCurrent()
+    }
+    func modelResource(_ id: String,_ kind: String,_ tier: String) throws -> String {
+        try workerCurrent();guard let selected=scene.modelPackage?.tiers.first(where:{ $0.id==tier }),selectedModelTier==nil || selectedModelTier?.id==tier,
+            selected.models.contains(where:{ ([$0.model]+$0.dependencies).contains(where:{ $0.id==id && $0.kind==kind }) }),scene.assets["common:"+id] != nil else { throw PinKnownRefusal() }
+        selectedModelTier=selected;topologyTokens=nil;return "common:"+id
+    }
+    func probe(_ key: String,_ encoded: Data) throws {
+        try workerCurrent();topologyTokens=nil;guard let tier=selectedModelTier else { throw PinKnownRefusal() }
+        let id=String(key.dropFirst("common:".count));var seen=false
+        for model in tier.models {
+            if model.model.id==id { modelProbes[id]=try PlanetChildModelImport.model(encoded,model,tier);seen=true }
+            for resource in model.dependencies where resource.id==id {
+                guard let probe=modelProbes[model.model.id] else { throw PinKnownRefusal() }
+                if resource.kind=="buffer" { try probe.buffer(resource.alias,encoded) };seen=true
+            }
+        }
+        guard seen else { throw PinKnownRefusal() };let decoded=commonDecodedBytes(),triangles=modelProbes.values.reduce(0) { $0+$1.triangles }
+        guard decoded<=tier.decodedBytes,triangles<=tier.triangles else { throw PinKnownRefusal() };try workerCurrent()
+    }
     let sdk: PlanetChildLocalV2SDKOwner,context: PlanetChildLocalV2SDKOwner.Context,delivery: LocalV2OwnedPackageDelivery,index: LocalV2MediaIndex,scene: LocalV2Scene,channel: LocalV2SDKChannel
     let handler: PlanetChildWebResources,web: WKWebView,token: String,epoch: UInt64,mediaEpoch: UInt64,navigation: UInt64,deadline: UInt64
     private let lock=NSLock();private var revoked=false,watch: CADisplayLink?
@@ -10041,10 +10091,11 @@ final class PlanetChildLocalV2WebOutputPermit {
     fileprivate static func make(_ lease: LocalV2SceneLease,_ claim: PlanetChildLocalV2ResourceClaim,_ reader: PlanetChildLocalV2ResourceReader,_ slot: String,_ token: String,_ encoded: Data) throws -> PlanetChildLocalV2WebOutputPermit {
         try lease.workerCurrent();try claim.workerCurrent();guard reader.knownClosed,claim.permit.sdk === lease.sdk,claim.permit.delivery === lease.delivery,claim.permit.index === lease.index,lease.scene.assets[slot] === claim.permit.asset,claim.permit.epoch==lease.mediaEpoch else { throw PinKnownRefusal() }
         try lease.sdk.canonicalAcquisitionJoined(reader);try PlanetChildLocalV2ResourceRules.encoded(encoded,claim.bytes,claim.checksum)
-        let header=try PlanetChildLocalV2MediaCodec.preflight(encoded,claim.mime);guard header.mime != "audio/wav",slot != "skin" || header.width==header.height*2 else { throw PlanetChildLocalV2MediaError.malformed }
-        // Real native raster allocation/decoding, joined and cleared before the
-        // WebKit borrow. Metadata width/height can never approve a skin.
-        try autoreleasepool { let raster=try PlanetChildLocalV2MediaResource.raster(encoded,header);raster.close();guard raster.footprint==0 else { throw PlanetChildLocalV2ResourceError.cleanupUnknown } }
+        if slot.hasPrefix("common:") { try lease.probe(slot,encoded) }
+        if claim.mime.hasPrefix("image/") {
+            let header=try PlanetChildLocalV2MediaCodec.preflight(encoded,claim.mime);guard slot != "skin" || header.width==header.height*2 else { throw PlanetChildLocalV2MediaError.malformed }
+            try autoreleasepool { let raster=try PlanetChildLocalV2MediaResource.raster(encoded,header);raster.close();guard raster.footprint==0 else { throw PlanetChildLocalV2ResourceError.cleanupUnknown } };try lease.imageDecoded(slot,header.width*header.height*4)
+        } else { guard slot.hasPrefix("common:"),["model/gltf+json","model/gltf-binary","application/octet-stream"].contains(claim.mime) else { throw PinKnownRefusal() } }
         try lease.workerCurrent();try claim.workerCurrent();let output=PlanetChildLocalV2WebOutputPermit(lease,claim,reader,slot,token);try claim.transferOnce();try output.transferCurrent(encoded);return output
     }
     func transferCurrent(_ encoded: Data) throws {
@@ -10054,6 +10105,19 @@ final class PlanetChildLocalV2WebOutputPermit {
     func adopt(_ output: PlanetChildWebResources.Output) throws {
         try lease.workerCurrent();guard output.permit === self,output.token==token,!command.returned,reader.knownClosed else { throw PinKnownRefusal() }
         lock.lock();defer { lock.unlock() };guard !adopted,original==nil else { throw PinKnownRefusal() };adopted=true;original=output
+    }
+    fileprivate func topologyWorker(_ output: PlanetChildWebResources.Output) throws {
+        try lease.workerCurrent();let actual=try lease.channel.mediaOriginalCommand(lease.delivery)
+        guard !Thread.isMainThread,actual !== command,!actual.returned,slotId.hasPrefix("common:"),["model/gltf+json","model/gltf-binary","application/octet-stream"].contains(mime) else { throw PinKnownRefusal() }
+        try outputCurrent(output,lease.web,lease.navigation);try lease.workerCurrent()
+    }
+    fileprivate func topologyCopy(_ output: PlanetChildWebResources.Output) throws -> Data {
+        try topologyWorker(output);let job=NSObject(),id=ObjectIdentifier(job);try output.reserveBridge(id);defer { withExtendedLifetime(job) { output.completeBridge(id) } }
+        var copy=Data();copy.reserveCapacity(bytes)
+        do {
+            while copy.count<bytes { try topologyWorker(output);var part=try output.bridgeChunk(copy.count,min(65536,bytes-copy.count));copy.append(part);part.resetBytes(in:0..<part.count) }
+            try PlanetChildLocalV2ResourceRules.encoded(copy,bytes,asset.checksum);try topologyWorker(output);return copy
+        } catch { copy.resetBytes(in:0..<copy.count);throw error }
     }
     func outputCurrent(_ output: PlanetChildWebResources.Output,_ web: WKWebView,_ navigation: UInt64) throws {
         lock.lock();let actual=adopted && original === output;lock.unlock();guard actual,output.permit === self,output.admits,web === lease.web,navigation==lease.navigation,reader.knownClosed else { throw PinKnownRefusal() }
@@ -10112,7 +10176,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             for output in outputs { try output.closeJoined();guard output.knownClosed else { throw PlanetChildLocalV2ResourceError.cleanupUnknown };try output.permit.handler.forget(output)
                 lock.lock();guard canonicalOutputs[output.token] === output,canonicalRetiredOutputs.count<2048 else { sealed=true;lock.unlock();throw PlanetChildLocalV2ResourceError.cleanupUnknown };canonicalOutputs.removeValue(forKey:output.token);canonicalRetiredOutputs.insert(output.token);lock.unlock()
             }
-            lock.lock();for scene in scenes { guard canonicalScenes[scene.token] === scene,!canonicalOutputs.values.contains(where:{ $0.permit.lease === scene }),canonicalRetiredScenes.count<2048 else { sealed=true;lock.unlock();throw PlanetChildLocalV2ResourceError.cleanupUnknown };canonicalScenes.removeValue(forKey:scene.token);canonicalRetiredScenes.insert(scene.token) };lock.unlock()
+            lock.lock();for scene in scenes { guard canonicalScenes[scene.token] === scene,!canonicalOutputs.values.contains(where:{ $0.permit.lease === scene }),canonicalRetiredScenes.count<2048 else { sealed=true;lock.unlock();throw PlanetChildLocalV2ResourceError.cleanupUnknown };canonicalScenes.removeValue(forKey:scene.token);if canonicalActiveScene==scene.token { canonicalActiveScene=nil };canonicalRetiredScenes.insert(scene.token) };lock.unlock()
         } catch { lock.lock();sealed=true;lock.unlock();throw error }
     }
     func canonicalSceneInvalidated(_ original: LocalV2SceneLease) {
@@ -10133,21 +10197,33 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         if let cached=delivery.canonicalScenes { scenes=cached } else { scenes=try LocalV2SceneCompiler.compileCatalog(delivery,index) { try self.requireOriginal(c,delivery);try self.mediaInvocationCurrent(epoch,c.token,c.generation,delivery) };delivery.canonicalScenes=scenes }
         try requireOriginal(c,delivery);try mediaInvocationCurrent(epoch,c.token,c.generation,delivery);guard try delivery.owner.wall()<index.until else { throw PinKnownRefusal() };return (index,scenes)
     }
-    func canonicalPerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws -> [String:Any] {
+    func canonicalPerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery,handoff: LocalV2SDKReply?=nil) throws -> [String:Any] {
         try requireOriginal(c,delivery);guard let channel,let handler=canonicalHandler,let web=canonicalWeb else { throw PinKnownRefusal() }
         if r.method=="releaseScene" { try canonicalRetireJoined(sceneToken:r.sceneToken,retireScenes:true);try requireOriginal(c,delivery);return ["status":"retired","sceneToken":r.sceneToken as Any? ?? NSNull()] }
         if r.method=="releaseWebResource" { try canonicalRetireJoined(resourceToken:r.resourceToken,retireScenes:false);try requireOriginal(c,delivery);return ["status":"retired","resourceToken":r.resourceToken as Any? ?? NSNull()] }
+        if r.method=="readWebResourceChunk" {
+            guard let sceneToken=r.sceneToken,let resourceToken=r.resourceToken,let offset=r.offset,let count=r.byteLength else { throw PinKnownRefusal() }
+            lock.lock();let original=canonicalOutputs[resourceToken];lock.unlock()
+            guard let output=original else { return ["status":"unavailable","sceneToken":sceneToken,"resourceToken":resourceToken] }
+            guard output.permit.lease.context === c,output.permit.lease.token==sceneToken,output.permit.slotId.hasPrefix("common:"),["model/gltf+json","model/gltf-binary","application/octet-stream"].contains(output.permit.mime),let handoff,handoff.chunk==nil else { throw PinKnownRefusal() }
+            let permit=output.permit;try permit.outputCurrent(output,web,permit.lease.navigation)
+            let command=try channel.mediaOriginalCommand(delivery),chunk=try LocalV2SDKChunkHandoff(output,command,offset,count);handoff.chunk=chunk
+            try permit.outputCurrent(output,web,permit.lease.navigation);try requireOriginal(c,delivery);let remaining=try permit.remainingTransfer()
+            return ["status":"available","sceneToken":sceneToken,"resourceToken":resourceToken,"offset":offset,"totalBytes":permit.bytes,"mime":permit.mime,"encodedBase64":try chunk.encoded(),"remainingLifetimeMs":remaining]
+        }
         if r.method=="acquireWebResource" {
-            guard let sceneToken=r.sceneToken,let slot=r.slotId else { throw PinKnownRefusal() };lock.lock();let lease=canonicalScenes[sceneToken];let old=canonicalOutputs.values.filter { $0.permit.lease.token==sceneToken && $0.permit.slotId==slot };lock.unlock();guard let lease,lease.context === c,let asset=lease.scene.assets[slot] else { throw PinKnownRefusal() };try lease.workerCurrent()
+            guard let sceneToken=r.sceneToken,let wireSlot=r.slotId else { throw PinKnownRefusal() };lock.lock();let original=canonicalScenes[sceneToken];lock.unlock();guard let lease=original,lease.context === c else { throw PinKnownRefusal() }
+            let slot: String;if let id=r.assetId,let tier=r.tier { slot=try lease.modelResource(id,wireSlot,tier) } else { guard ["skin","stand","background"].contains(wireSlot) else { throw PinKnownRefusal() };slot=wireSlot }
+            lock.lock();let old=canonicalOutputs.values.filter { $0.permit.lease.token==sceneToken && $0.permit.slotId==slot };lock.unlock();guard let asset=lease.scene.assets[slot] else { throw PinKnownRefusal() };try lease.workerCurrent()
             for output in old { output.revoke();try canonicalRetireJoined(resourceToken:output.token,retireScenes:false) };try lease.workerCurrent()
             let command=try channel.mediaOriginalCommand(delivery),acquisition=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,lease.mediaEpoch,c.token,c.generation,lease.index,asset);defer { acquisition.close() }
             let (claim,reader,originalBytes)=try canonicalRead(acquisition);var encoded=originalBytes;defer { encoded.resetBytes(in:0..<encoded.count) }
             let permit=try PlanetChildLocalV2WebOutputPermit.make(lease,claim,reader,slot,Self.token(),encoded);var output: PlanetChildWebResources.Output?,registered=false
             do {
                 let transferred=try handler.adopt(permit,encoded);output=transferred;try lease.workerCurrent();lock.lock();let used=canonicalOutputs.values.reduce(0) { $0+$1.permit.bytes }
-                guard !sealed,context === c,canonicalScenes[sceneToken] === lease,canonicalOutputs.count<3,canonicalOutputs[permit.token]==nil,asset.bytes<=64*1024*1024-used else { lock.unlock();throw PinKnownRefusal() };canonicalOutputs[permit.token]=transferred;registered=true;lock.unlock()
+                guard !sealed,context === c,canonicalScenes[sceneToken] === lease,canonicalOutputs.count<134,canonicalOutputs.values.filter({ $0.permit.lease === lease }).count<67,canonicalOutputs[permit.token]==nil,asset.bytes<=128*1024*1024-used else { lock.unlock();throw PinKnownRefusal() };canonicalOutputs[permit.token]=transferred;registered=true;lock.unlock()
                 try lease.workerCurrent();let remaining=try permit.remainingTransfer()
-                return ["status":"available","sceneToken":sceneToken,"slotId":slot,"resourceToken":permit.token,"assetId":asset.id,"entity":try JSONSerialization.jsonObject(with:Data(asset.entity.json(sorted:true).utf8)),"mime":asset.mime,"checksum":asset.checksum,"encodedBytes":asset.bytes,"uri":transferred.uri,"remainingLifetimeMs":remaining]
+                return ["status":"available","sceneToken":sceneToken,"slotId":wireSlot,"resourceToken":permit.token,"assetId":asset.id,"entity":try JSONSerialization.jsonObject(with:Data(asset.entity.json(sorted:true).utf8)),"mime":asset.mime,"checksum":asset.checksum,"encodedBytes":asset.bytes,"uri":transferred.uri,"remainingLifetimeMs":remaining]
             } catch { let original=error;if let output { output.revoke();do { if registered { try canonicalRetireJoined(resourceToken:output.token,retireScenes:false) } else { try output.closeJoined();try handler.forget(output) } } catch { lock.lock();sealed=true;lock.unlock();throw PlanetChildLocalV2ResourceError.cleanupUnknown } };throw original }
         }
         let (index,scenes)=try canonicalIndex(c,delivery);guard let raw=r.mediaOwner else { throw PinKnownRefusal() }
@@ -10163,11 +10239,11 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         if r.method=="listScenes" { return ["list":try selected.map { scene in ["sceneId":scene.id,"title":scene.title,"owner":try JSONSerialization.jsonObject(with:Data(scene.owner.json(sorted:true).utf8))] }] }
         guard r.method=="openScene",let id=r.sceneId else { throw PinKnownRefusal() }
         guard let scene=selected.first(where:{ $0.id==id }) else { return ["status":"unavailable","sceneToken":NSNull(),"sceneId":id,"owner":raw,"skin":NSNull(),"stand":NSNull(),"background":NSNull(),"hotspots":[],"remainingLifetimeMs":0] }
-        try canonicalRetireJoined(retireScenes:true);try requireOriginal(c,delivery);lock.lock();let sceneEpoch=canonicalEpoch,originalMediaEpoch=mediaEpoch;lock.unlock()
+        lock.lock();let pending=canonicalScenes.values.filter { $0.token != canonicalActiveScene };lock.unlock();for lease in pending { try canonicalRetireJoined(sceneToken:lease.token,retireScenes:true) };try requireOriginal(c,delivery);lock.lock();let sceneEpoch=canonicalEpoch,originalMediaEpoch=mediaEpoch;lock.unlock()
         let lease=LocalV2SceneLease(self,c,delivery,index,scene,channel,handler,web,try Self.token(),sceneEpoch,originalMediaEpoch)
         do {
-            try DispatchQueue.main.sync { try handler.currentMain(web,lease.navigation);try delivery.owner.mediaMainCurrent();lock.lock();guard !sealed,context === c,canonicalEpoch==sceneEpoch,mediaEpoch==originalMediaEpoch,canonicalScenes.isEmpty else { lock.unlock();throw PinKnownRefusal() };canonicalScenes[lease.token]=lease;lock.unlock();try lease.armMain() }
-            try lease.workerCurrent();return ["status":"opened","sceneToken":lease.token,"sceneId":id,"owner":raw,"skin":try scene.root["skin"]!.bridgeValue(),"stand":try scene.root["stand"]!.bridgeValue(),"background":try scene.root["background"]!.bridgeValue(),"hotspots":try scene.root["hotspots"]!.bridgeValue(),"remainingLifetimeMs":try lease.remaining()]
+            try DispatchQueue.main.sync { try handler.currentMain(web,lease.navigation);try delivery.owner.mediaMainCurrent();lock.lock();guard !sealed,context === c,canonicalEpoch==sceneEpoch,mediaEpoch==originalMediaEpoch,canonicalScenes.count<2 else { lock.unlock();throw PinKnownRefusal() };canonicalScenes[lease.token]=lease;lock.unlock();try lease.armMain() }
+            try lease.workerCurrent();var reply: [String:Any]=["status":"opened","sceneToken":lease.token,"sceneId":id,"owner":raw,"skin":try scene.root["skin"]!.bridgeValue(),"stand":try scene.root["stand"]!.bridgeValue(),"background":try scene.root["background"]!.bridgeValue(),"hotspots":try scene.root["hotspots"]!.bridgeValue(),"remainingLifetimeMs":try lease.remaining()];if let models=scene.root["modelPackage"] { reply["modelPackage"]=try models.bridgeValue() };return reply
         } catch { let original=error;lease.revoke();lock.lock();let registered=canonicalScenes[lease.token] === lease;lock.unlock();if registered { try canonicalRetireJoined(sceneToken:lease.token,retireScenes:true) } else { DispatchQueue.main.sync { lease.stopMain() } };throw original }
     }
 }
@@ -10227,10 +10303,24 @@ fileprivate extension LocalV2Scene {
  * stable DTO, profileId, approval boolean or another native file constructs it.
  * Storage checks never dispatch main or reenter the Vault lock. */
 final class PlanetChildLocalV2SceneSelectionPermit {
-    private let lease: LocalV2SceneLease,command: LocalV2SDKChannel.Command,admission: PlanetChildLocalV2DataAdmission,projected: PlanetChildAppearance.Selection,profile: String
-    private init(_ lease: LocalV2SceneLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ selection: PlanetChildAppearance.Selection) { self.lease=lease;self.command=command;self.admission=admission;projected=selection;profile=lease.delivery.compiled.profile.id }
+    private let lease: LocalV2SceneLease,command: LocalV2SDKChannel.Command,admission: PlanetChildLocalV2DataAdmission,projected: PlanetChildAppearance.Selection?,source: PlanetChildAppearance.Selection,profile: String,rollback: Bool;private var capturedPrior=false
+    private init(_ lease: LocalV2SceneLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ selection: PlanetChildAppearance.Selection?,_ rollback: Bool=false) throws { self.lease=lease;self.command=command;self.admission=admission;projected=selection;self.rollback=rollback;source=try lease.scene.appearanceProjection();profile=lease.delivery.compiled.profile.id }
     fileprivate static func make(_ lease: LocalV2SceneLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission) throws -> PlanetChildLocalV2SceneSelectionPermit {
-        try lease.workerCurrent();guard lease.delivery.data === admission,!command.returned else { throw PinKnownRefusal() };let result=try PlanetChildLocalV2SceneSelectionPermit(lease,command,admission,lease.scene.appearanceProjection());try admission.withCopy { try result.check(admission) };return result
+        try lease.workerCurrent();try lease.sdk.canonicalTopology(lease);guard lease.delivery.data === admission,!command.returned,!lease.rollbackCaptured else { throw PinKnownRefusal() };let result=try PlanetChildLocalV2SceneSelectionPermit(lease,command,admission,lease.scene.appearanceProjection());try admission.withCopy { try result.check(admission) };return result
+    }
+    fileprivate static func makeRollback(_ lease: LocalV2SceneLease,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ expected: UInt64) throws -> PlanetChildLocalV2SceneSelectionPermit {
+        try lease.workerCurrent();try lease.sdk.canonicalTopology(lease);try lease.sdk.appearanceRollbackCurrent(lease,expected)
+        if let selection=lease.rollbackSelection { guard let scene=lease.delivery.canonicalScenes?[selection.sceneId],try scene.appearanceProjection()==selection else { throw PinKnownRefusal() };try LocalV2SceneCompiler.reference(scene.owner,lease.delivery.compiled,lease.delivery.owner.wall());try LocalV2SceneCompiler.hotspots(scene.root["hotspots"],lease.delivery.compiled,lease.delivery.owner.wall()) }
+        let result=try PlanetChildLocalV2SceneSelectionPermit(lease,command,admission,lease.rollbackSelection,true);try admission.withCopy { try result.check(admission) };return result
+    }
+    /** admittedAppearance invokes this inside the original native store CAS. */
+    func capturePrior(_ original: PlanetChildLocalV2DataAdmission,_ profile: String,_ revision: UInt64,_ prior: PlanetChildAppearance.Selection?,_ next: UInt64) throws {
+        try check(original);guard self.profile==profile,!capturedPrior,next==(try PlanetChildAppearance.next(revision)) else { throw PinKnownRefusal() }
+        try lease.sdk.captureAppearancePrior(lease,revision,prior,next,rollback,source);capturedPrior=true
+    }
+    private func projectionCurrent() throws {
+        guard try lease.scene.appearanceProjection()==source else { throw PinKnownRefusal() }
+        if rollback { try lease.sdk.appearanceRollbackLeaf(lease,capturedPrior,projected) }
     }
     func check(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:false) }
     fileprivate func completionCurrent(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:true) }
@@ -10240,9 +10330,9 @@ final class PlanetChildLocalV2SceneSelectionPermit {
     }
     fileprivate func commitCurrent(_ original: PlanetChildLocalV2DataAdmission,_ commit: () throws -> Void) throws {
         guard original === admission,command.returned,command.done,command.handedOff,command.error==nil else { throw PinKnownRefusal() }
-        try lease.sdk.appearanceCommitCurrent(lease) {
+        try lease.sdk.appearanceCommitCurrent(lease,rollback:rollback) {
             try admission.appearanceConsumerLeaf()
-            guard lease.delivery.compiled.profile.id==profile,try lease.scene.appearanceProjection()==projected else { throw PinKnownRefusal() }
+            guard lease.delivery.compiled.profile.id==profile else { throw PinKnownRefusal() };try projectionCurrent()
             try lease.delivery.owner.appearanceConsumerLeaf(lease.delivery)
             let wall=try lease.delivery.owner.wall(),now=try lease.delivery.owner.writer.clock.nanoseconds()
             guard wall>=lease.scene.from else { throw PinKnownRefusal() }
@@ -10258,11 +10348,11 @@ final class PlanetChildLocalV2SceneSelectionPermit {
         else { try admission.appearanceNativeCommand(command,returned:returned) }
         try lease.sdk.canonicalOriginal(lease)
         guard try admission.scope().profileId==profile,lease.context.checksum==lease.delivery.compiled.profile.recordChecksum,lease.deadline==lease.delivery.owner.request.deadline,
-            try lease.scene.appearanceProjection()==projected else { throw PinKnownRefusal() }
+            try lease.scene.appearanceProjection()==source else { throw PinKnownRefusal() };try projectionCurrent()
         let wall=try lease.delivery.owner.wall(),now=try lease.delivery.owner.writer.clock.nanoseconds();guard wall>=lease.scene.from else { throw PinKnownRefusal() };try PlanetChildLocalV2ResourceRules.lifetime(lease.deadline,now,wall,min(lease.scene.until,lease.index.until))
         try lease.delivery.owner.mediaMetadataCurrent();try admission.check()
     }
-    func selection(_ admission: PlanetChildLocalV2DataAdmission) throws -> PlanetChildAppearance.Selection { try check(admission);return projected }
+    func selection(_ admission: PlanetChildLocalV2DataAdmission) throws -> PlanetChildAppearance.Selection? { try check(admission);return projected }
     func profileId(_ admission: PlanetChildLocalV2DataAdmission) throws -> String { try check(admission);return profile }
 }
 
@@ -10278,7 +10368,22 @@ fileprivate extension LocalV2NativePackageLoader {
     }
 }
 fileprivate extension PlanetChildLocalV2SDKOwner {
-    func appearanceCommitCurrent(_ lease: LocalV2SceneLease,_ commit: () throws -> Void) throws {
+    func appearanceRollbackCurrent(_ lease: LocalV2SceneLease,_ expected: UInt64) throws {
+        lock.lock();defer { lock.unlock() };guard !sealed,context === lease.context,canonicalScenes[lease.token] === lease,canonicalActiveScene==lease.token,lease.rollbackCaptured,lease.rollbackArmed,!lease.rollbackConsumed,expected==lease.rollbackCommittedRevision else { throw PinKnownRefusal() }
+    }
+    func captureAppearancePrior(_ lease: LocalV2SceneLease,_ revision: UInt64,_ prior: PlanetChildAppearance.Selection?,_ next: UInt64,_ rollback: Bool,_ source: PlanetChildAppearance.Selection) throws {
+        lock.lock();defer { lock.unlock() };guard !sealed,context === lease.context,canonicalScenes[lease.token] === lease else { throw PinKnownRefusal() }
+        if rollback { guard lease.rollbackArmed,!lease.rollbackConsumed,lease.rollbackCommittedRevision==revision,prior==source,canonicalActiveScene==lease.token else { throw PinKnownRefusal() };lease.rollbackConsumed=true }
+        else { guard !lease.rollbackCaptured else { throw PinKnownRefusal() };if let token=canonicalActiveScene { guard let current=canonicalScenes[token],current.context === lease.context,current.delivery === lease.delivery,try current.scene.appearanceProjection()==prior else { throw PinKnownRefusal() } };lease.rollbackSelection=prior;lease.rollbackPriorRevision=revision;lease.rollbackCommittedRevision=next;lease.rollbackPreviousToken=canonicalActiveScene;lease.rollbackCaptured=true }
+    }
+    func appearanceRollbackLeaf(_ lease: LocalV2SceneLease,_ captured: Bool,_ projected: PlanetChildAppearance.Selection?) throws {
+        // Called under the original worker fences; at commit the owner lock is
+        // already held, so this leaf must not acquire it or dispatch main.
+        guard lease.rollbackCaptured,lease.rollbackArmed,lease.rollbackConsumed==captured,canonicalActiveScene==lease.token,projected==lease.rollbackSelection else { throw PinKnownRefusal() }
+        if let projected { guard let scene=lease.delivery.canonicalScenes?[projected.sceneId],try scene.appearanceProjection()==projected else { throw PinKnownRefusal() };let wall=try lease.delivery.owner.wall();guard wall>=scene.from,wall<scene.until else { throw PinKnownRefusal() };for asset in scene.assets.values { guard wall>=asset.sourceFrom,wall<asset.until else { throw PinKnownRefusal() };if let catalog=lease.index.resources { _=try catalog.selectedBinding(lease.delivery.compiled,asset,wall) } } }
+        if let token=lease.rollbackPreviousToken { guard let prior=canonicalScenes[token],prior.context === lease.context,prior.delivery === lease.delivery,prior.admits,prior.epoch==lease.epoch,prior.navigation==lease.navigation,let projected,try prior.scene.appearanceProjection()==projected,prior.delivery.canonicalScenes?[prior.scene.id] === prior.scene else { throw PinKnownRefusal() };try canonicalModelReadyLocked(prior);let wall=try prior.delivery.owner.wall();guard wall>=prior.scene.from,wall<prior.scene.until else { throw PinKnownRefusal() } }
+    }
+    func appearanceCommitCurrent(_ lease: LocalV2SceneLease,rollback: Bool=false,_ commit: () throws -> Void) throws {
         lock.lock();defer { lock.unlock() }
         guard !sealed,context === lease.context,loader === lease.delivery.owner,channel === lease.channel,
             canonicalScenes[lease.token] === lease,canonicalEpoch==lease.epoch,mediaEpoch==lease.mediaEpoch,
@@ -10289,8 +10394,38 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             lease.deadline==lease.context.deadline,lease.deadline==lease.delivery.owner.request.deadline else { throw PinKnownRefusal() }
         // Shares the same monitor as fast scene revoke and epoch/context seal.
         // No callback that can schedule UI or enter a file lock is allowed here.
-        try lease.appearanceCommit(commit)
+        try canonicalModelReadyLocked(lease)
+        try lease.appearanceCommit { try commit();if rollback { guard lease.rollbackArmed,lease.rollbackConsumed,canonicalActiveScene==lease.token else { throw PinKnownRefusal() };canonicalActiveScene=lease.rollbackPreviousToken;lease.rollbackArmed=false } else { guard lease.rollbackCaptured,!lease.rollbackArmed,!lease.rollbackConsumed else { throw PinKnownRefusal() };canonicalActiveScene=lease.token;lease.rollbackArmed=true } }
     }
+    /** The original worker checks the complete own selected-tier closure before
+     * store CAS; final handoff only compares native immutable output identities. */
+    func canonicalTopology(_ lease: LocalV2SceneLease) throws {
+        guard lease.scene.modelPackage != nil else { return };try lease.workerCurrent();lease.topologyTokens=nil
+        lock.lock();let tier=lease.selectedModelTier,outputs=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits };do { try canonicalModelReadyLocked(lease,requireTopology:false);lock.unlock() } catch { lock.unlock();throw error }
+        guard let tier else { throw PinKnownRefusal() };var copies=[String:Data](),copiedBytes=0
+        defer { for id in Array(copies.keys) { if var bytes=copies.removeValue(forKey:id) { bytes.resetBytes(in:0..<bytes.count) } } }
+        for resource in tier.models.flatMap({ [$0.model]+$0.dependencies }) where ["model","buffer"].contains(resource.kind) && copies[resource.id]==nil {
+            guard let output=outputs.first(where:{ $0.permit.slotId=="common:"+resource.id && $0.permit.asset === lease.scene.assets["common:"+resource.id] }) else { throw PinKnownRefusal() }
+            copiedBytes+=resource.bytes;guard copiedBytes<=67108864 else { throw PinKnownRefusal() };copies[resource.id]=try output.permit.topologyCopy(output)
+        }
+        let current={ try lease.workerCurrent();guard outputs.allSatisfy({ $0.admits }) else { throw PinKnownRefusal() } }
+        for model in tier.models {
+            guard let probe=lease.modelProbes[model.model.id],let encoded=copies[model.model.id] else { throw PinKnownRefusal() };var buffers=[String:Data]()
+            for resource in model.dependencies where resource.kind=="buffer" { guard let bytes=copies[resource.id],buffers[resource.alias]==nil else { throw PinKnownRefusal() };buffers[resource.alias]=bytes }
+            try probe.closure(encoded,buffers,current)
+        }
+        for output in outputs where ["model/gltf+json","model/gltf-binary","application/octet-stream"].contains(output.permit.mime) { try output.permit.topologyWorker(output) }
+        try lease.workerCurrent();lock.lock();defer { lock.unlock() };let actual=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits }
+        guard Set(actual.map { $0.token })==Set(outputs.map { $0.token }) else { throw PinKnownRefusal() };lease.topologyTokens=Set(outputs.map { $0.token });try canonicalModelReadyLocked(lease)
+    }
+    private func canonicalModelReadyLocked(_ lease: LocalV2SceneLease,requireTopology: Bool=true) throws {
+        guard lease.scene.modelPackage != nil else { return }
+        guard let tier=lease.selectedModelTier,lease.modelProbes.count==tier.models.count else { throw PinKnownRefusal() }
+        let needed=Set(["skin","stand","background"]+tier.models.flatMap { ([$0.model]+$0.dependencies).map { "common:"+$0.id } })
+        let outputs=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits }
+        guard (!requireTopology || lease.topologyTokens==Set(outputs.map { $0.token })),needed.isSubset(of:Set(outputs.map { $0.permit.slotId })),outputs.allSatisfy({ lease.scene.assets[$0.permit.slotId] === $0.permit.asset }) else { throw PinKnownRefusal() }
+    }
+    func canonicalModelReady(_ lease: LocalV2SceneLease) throws { try lease.workerCurrent();lock.lock();defer { lock.unlock() };try canonicalModelReadyLocked(lease) }
 }
 fileprivate extension LocalV2SceneLease {
     func appearanceCommit(_ commit: () throws -> Void) throws {
@@ -10301,7 +10436,25 @@ fileprivate extension LocalV2SceneLease {
 }
 /** Private native ownership only. Neither this holder nor its completion
  * receipt is serialized into any wire envelope or accepted from JavaScript. */
-fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff?;var journey: LocalV2SDKJourneyHandoff?;var passport: LocalV2SDKPassportHandoff? }
+fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff?;var journey: LocalV2SDKJourneyHandoff?;var passport: LocalV2SDKPassportHandoff?;var chunk: LocalV2SDKChunkHandoff? }
+/** Output-owned copy and callback reservation survive the actual native SDK
+ * resolve. Teardown revokes first, joins this callback, then wipes the owner. */
+fileprivate final class LocalV2SDKChunkHandoff {
+    private let output: PlanetChildWebResources.Output,command: LocalV2SDKChannel.Command,job=NSObject()
+    private var bytes=Data(),closed=false
+    init(_ output: PlanetChildWebResources.Output,_ command: LocalV2SDKChannel.Command,_ offset: Int,_ count: Int) throws {
+        self.output=output;self.command=command;try output.reserveBridge(ObjectIdentifier(job))
+        do { bytes=try output.bridgeChunk(offset,count) } catch { output.completeBridge(ObjectIdentifier(job));throw error }
+    }
+    func encoded() throws -> String { guard !closed,!bytes.isEmpty,bytes.count<=65536 else { throw PinKnownRefusal() };return bytes.base64EncodedString() }
+    func resolve(_ value: [String:Any],_ reply: PlanetChildLocalV2SDKOwner.Reply) throws {
+        guard !Thread.isMainThread,!closed else { throw PinKnownRefusal() };let permit=output.permit,lease=permit.lease
+        try lease.channel.outputCommandCurrent(command,lease.delivery)
+        try DispatchQueue.main.sync { try lease.channel.outputCommandCurrent(command,lease.delivery);try permit.outputCurrent(output,lease.web,lease.navigation);reply(value) }
+    }
+    func close() { guard !closed else { return };bytes.resetBytes(in:0..<bytes.count);bytes.removeAll(keepingCapacity:false);closed=true;output.completeBridge(ObjectIdentifier(job)) }
+    deinit { close() }
+}
 fileprivate final class LocalV2SDKAppearanceHandoff {
     private let admission: PlanetChildLocalV2DataAdmission,permit: PlanetChildLocalV2SceneSelectionPermit,receipt: PlanetChildDataStore.LocalV2AppearanceCompletion
     fileprivate init(_ admission: PlanetChildLocalV2DataAdmission,_ permit: PlanetChildLocalV2SceneSelectionPermit,_ receipt: PlanetChildDataStore.LocalV2AppearanceCompletion) { self.admission=admission;self.permit=permit;self.receipt=receipt }
@@ -10374,21 +10527,37 @@ extension PlanetChildLocalV2DataAdmission {
 fileprivate extension PlanetChildLocalV2SDKOwner {
     func appearancePerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws -> [String:Any] {
         try requireOriginal(c,delivery);guard let admission=delivery.data,let channel else { throw PinKnownRefusal() }
-        if r.method=="rememberSceneSelection" {
+        if r.method=="rememberSceneSelection" || r.method=="rollbackSceneSelection" {
             guard let token=r.sceneToken,let expected=r.expectedRevision else { throw PinKnownRefusal() };lock.lock();let lease=canonicalScenes[token];lock.unlock();guard let lease,lease.context === c,lease.delivery === delivery else { throw PinKnownRefusal() };try lease.workerCurrent()
-            let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2SceneSelectionPermit.make(lease,command,admission),result=try admission.appearance(expected:expected,permit:permit,id:r.id);defer { result.close() };try lease.workerCurrent();let response=try result.dto();try admission.publication();return try admission.publish { response }
+            // make computes original output topology before CAS; its final leaf
+            // and commit still require the exact native topology attestation.
+            let command=try channel.mediaOriginalCommand(delivery);let permit: PlanetChildLocalV2SceneSelectionPermit;do { permit=try r.method=="rollbackSceneSelection" ? PlanetChildLocalV2SceneSelectionPermit.makeRollback(lease,command,admission,expected):PlanetChildLocalV2SceneSelectionPermit.make(lease,command,admission) } catch { if r.method=="rollbackSceneSelection" { admission.appearanceUnknown();lock.lock();sealed=true;lock.unlock() };throw error };let result=try admission.appearance(expected:expected,permit:permit,id:r.id);defer { result.close() };try lease.workerCurrent();let response=try result.dto();try admission.publication();return try admission.publish { response }
         }
         let saved=try admission.appearance(expected:nil,permit:nil,id:r.id);defer { saved.close() };let response=try saved.dto();guard saved.profileId==delivery.compiled.profile.id else { throw PinKnownRefusal() }
         if r.method=="readSceneSelection" { try admission.publication();return try admission.publish { response } }
         guard r.method=="restoreSceneSelection",r.expectedRevision==saved.revision else { throw PinKnownRefusal() }
-        try mediaRetireJoined();try canonicalRetireJoined(retireScenes:true);try requireOriginal(c,delivery)
+        try requireOriginal(c,delivery)
         func closed(_ status: String) -> [String:Any] { ["status":status,"profileId":saved.profileId,"revision":saved.revision,"selection":saved.selection?.dto as Any? ?? NSNull(),"scene":NSNull()] }
         guard let selection=saved.selection else { try admission.publication();return try admission.publish { closed("absent") } }
         // Full native fresh compilation; no cached source graph, approval,
         // payload/hash, lease, URI, media object or renewed deadline is reused.
-        delivery.canonicalScenes=nil;delivery.canonicalMediaIndex=nil
         let scenes: [String:LocalV2Scene]
-        do { let compiled=try canonicalIndex(c,delivery);scenes=compiled.1 } catch { try requireOriginal(c,delivery);try admission.publication();return try admission.publish { closed("unavailable") } }
+        do {
+            lock.lock();let epoch=mediaEpoch;lock.unlock()
+            // Reverify signatures, all source bytes, rights and dependency
+            // closure. Equal immutable catalogs retain their original objects
+            // so the last valid ResourceClaims remain current during preload.
+            let freshIndex=try LocalV2FixedMediaProducer(delivery,self,epoch,c.token,c.generation).compile()
+            let freshScenes=try LocalV2SceneCompiler.compileCatalog(delivery,freshIndex) { try self.requireOriginal(c,delivery);try self.mediaInvocationCurrent(epoch,c.token,c.generation,delivery) }
+            if let retained=delivery.canonicalMediaIndex,let retainedScenes=delivery.canonicalScenes {
+                func mediaIdentity(_ a: LocalV2MediaAsset) throws -> String { try [a.id,a.checksum,a.mime,String(a.bytes),a.manifestChecksum,a.reviewChecksum,a.owner.json(sorted:true),a.entity.json(sorted:true),a.payload.json(sorted:true),a.policy.json(sorted:true),a.inventoryKey,a.fixedPath,String(a.sourceFrom),String(a.sourceUntil),String(a.until)].joined(separator:"\u{0}") }
+                guard retained.profile === freshIndex.profile,retained.until==freshIndex.until,retained.resources?.rawChecksum==freshIndex.resources?.rawChecksum,
+                    try retained.assets.map(mediaIdentity).sorted()==freshIndex.assets.map(mediaIdentity).sorted(),Set(retainedScenes.keys)==Set(freshScenes.keys) else { throw PinKnownRefusal() }
+                for (id,current) in freshScenes { guard let original=retainedScenes[id],original.from==current.from,original.until==current.until,Set(original.assets.keys)==Set(current.assets.keys),
+                    try LocalV2SceneValue.object(original.root.map { ($0.key,$0.value) }).json(sorted:true)==LocalV2SceneValue.object(current.root.map { ($0.key,$0.value) }).json(sorted:true) else { throw PinKnownRefusal() } }
+                scenes=retainedScenes
+            } else { delivery.canonicalMediaIndex=freshIndex;delivery.canonicalScenes=freshScenes;scenes=freshScenes }
+        } catch { try requireOriginal(c,delivery);try admission.publication();return try admission.publish { closed("unavailable") } }
         guard let selected=scenes[selection.sceneId],try selected.appearanceProjection()==selection else { try admission.publication();return try admission.publish { closed("unavailable") } }
         let owner=try JSONSerialization.jsonObject(with:Data(selected.owner.json(sorted:true).utf8)) as! [String:Any]
         let open=PlanetChildLocalV2Wire.Request(method:"openScene",id:r.id,token:c.token,action:nil,target:nil,reference:nil,query:nil,collection:nil,expectedRevision:nil,references:nil,mediaOwner:owner,assetId:nil,mediaLayout:nil,presentationToken:nil,sceneId:selected.id)
@@ -10398,7 +10567,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             lock.lock();let lease=canonicalScenes[token];lock.unlock();guard let lease,lease.context === c,try lease.scene.appearanceProjection()==selection else { throw PinKnownRefusal() };try lease.workerCurrent()
             let reread=try admission.appearance(expected:nil,permit:nil,id:r.id);defer { reread.close() };guard reread.profileId==saved.profileId,reread.revision==saved.revision,reread.selection==selection else { throw PinKnownRefusal() }
             try admission.publication();return try admission.publish { ["status":"restored","profileId":saved.profileId,"revision":saved.revision,"selection":selection.dto,"scene":scene] }
-        } catch { let original=error;if opened != nil { try canonicalRetireJoined(retireScenes:true) };try requireOriginal(c,delivery);if original is PlanetChildLocalV2ResourceError { throw original };try admission.publication();return try admission.publish { closed("unavailable") } }
+        } catch { let original=error;if let opened,let token=opened["sceneToken"] as? String { try canonicalRetireJoined(sceneToken:token,retireScenes:true) };try requireOriginal(c,delivery);if original is PlanetChildLocalV2ResourceError { throw original };try admission.publication();return try admission.publish { closed("unavailable") } }
     }
 }
 #if DEBUG
@@ -10689,7 +10858,7 @@ final class PlanetChildLocalV2PassportPermit {
             guard method=="resumeJourneyRoute",let prior=ledger.routeDownloads.first(where:{ $0.manifest.journeyId==route.id && $0.manifest.locale==c.profile.locale }),prior.completed<assets.count else { throw PinKnownRefusal() };stage=prior
             guard try LocalV2SavedRouteCompiler.available(stage.manifest,c,[route],delivery.owner.wall()) != nil else { throw PinKnownRefusal() }
             let asset=assets[stage.completed],object=try PlanetChildPassport.BinaryObject(checksum:asset.checksum,mime:asset.mime,bytes:asset.bytes),permit=try PlanetChildLocalV2MediaPermit.make(sdk,delivery,command,sdk.capturedMediaEpoch(),context.token,context.generation,index,asset);defer { permit.close() }
-            var bytes=try permit.readEncoded();defer { bytes.resetBytes(in:0..<bytes.count) };try permit.validateEncodedHeader(PlanetChildLocalV2MediaCodec.preflight(bytes,asset.mime));try permit.workerCurrent()
+            var bytes=try permit.readEncoded();defer { bytes.resetBytes(in:0..<bytes.count) };try PlanetChildModelImport.cached(bytes,asset.mime);if asset.mime.hasPrefix("image/") || asset.mime=="audio/wav" { try permit.validateEncodedHeader(PlanetChildLocalV2MediaCodec.preflight(bytes,asset.mime)) };try permit.workerCurrent()
             result.downloadObject=object;result.downloadBytes=Data(Array(bytes));stage.completed+=1
             if ledger.binaryObjects.contains(object) { stage.reused+=1 }
         }
@@ -10706,8 +10875,8 @@ final class PlanetChildLocalV2PassportPermit {
     func validateBinary(_ original: PlanetChildLocalV2DataAdmission,_ object: PlanetChildPassport.BinaryObject,_ bytes: Data) throws {
         try check(original);guard let index=delivery.compiled.savedRouteMediaIndex,bytes.count==object.bytes,LocalSnapshotV2.hash(bytes)==object.checksum else { throw PinKnownRefusal() }
         let assets=index.assets.filter { $0.checksum==object.checksum && $0.mime==object.mime && $0.bytes==object.bytes };guard !assets.isEmpty else { throw PinKnownRefusal() }
-        let header=try PlanetChildLocalV2MediaCodec.preflight(bytes,object.mime)
-        if object.mime=="audio/wav" { for asset in assets { guard let provenance=asset.audioProvenanceBytes else { throw PinKnownRefusal() };try PlanetChildLocalV2NarrationProvenanceCodec.duration(PlanetChildLocalV2NarrationProvenanceCodec.validate(provenance,asset.payload,delivery.compiled.profile.locale),header) } }
+        try PlanetChildModelImport.cached(bytes,object.mime)
+        if object.mime=="audio/wav" { let header=try PlanetChildLocalV2MediaCodec.preflight(bytes,object.mime);for asset in assets { guard let provenance=asset.audioProvenanceBytes else { throw PinKnownRefusal() };try PlanetChildLocalV2NarrationProvenanceCodec.duration(PlanetChildLocalV2NarrationProvenanceCodec.validate(provenance,asset.payload,delivery.compiled.profile.locale),header) } }
         try check(original)
     }
     private func check(_ original: PlanetChildLocalV2DataAdmission,returned: Bool,handedOff: Bool=false) throws {
@@ -11031,7 +11200,7 @@ enum PlanetChildPassportRouteCodec {
         if schema>=2 {
             var references=[String:V]();for (key,entry) in byKey { references[key]=try V.object(entry)["reference"] }
             var language: String?,prior: String?
-            for row in try V.array(root["media"],LocalV2SavedRouteMediaCodec.maximumItems) { let id=try LocalV2SavedRouteMediaCodec.validate(row,references,&language,shared:schema==3);guard prior==nil || prior!<id else { throw PinKnownRefusal() };prior=id }
+            for row in try V.array(root["media"],schema==3 ? LocalV2SavedRouteMediaCodec.maximumItems:64) { let id=try LocalV2SavedRouteMediaCodec.validate(row,references,&language,shared:schema==3);guard prior==nil || prior!<id else { throw PinKnownRefusal() };prior=id }
             guard locale==nil || language==nil || language==locale else { throw PinKnownRefusal() }
         };return String(first.dropFirst("activity/".count))
     }
@@ -11352,7 +11521,7 @@ enum PlanetChildPassportFixtureBytes {
  * P256-compiled index supplies current review/rights/age and package authority. */
 fileprivate enum LocalV2SavedRouteMediaCodec {
     typealias V=LocalV2PackageValue
-    static let maximumItems=64
+    static let maximumItems=67
     static let fields=["assetId","owner","entity","payload","policy","inventoryKey","sha256","bytes","mime","locale","manifestChecksum","reviewChecksum","sourceFromEpochMs","sourceUntilEpochMs","reviewPlatforms","reviewTerritories","encodedBase64","audioProvenanceBase64"]
     static func decoded(_ row: [String:V]) throws -> Data {
         let text=try V.text(row["encodedBase64"]),size=try V.number(row["bytes"],1,Int64(PlanetChildPassport.maximumRouteBytes))
@@ -11380,7 +11549,7 @@ fileprivate enum LocalV2SavedRouteMediaCodec {
             let transcript=try V.text(payload["transcript"]);guard mime=="audio/wav",role=="narration",!transcript.isEmpty,transcript.utf16.count<=32768,transcript.unicodeScalars.allSatisfy({ $0.value>=32 && $0.value != 127 || [9,10,13].contains($0.value) }),LocalSnapshotV2.hash(Data(transcript.utf8))==(try V.hash(payload["scriptChecksum"])) else { throw PinKnownRefusal() }
             _=try V.identifier(payload["scriptId"]);_=try V.identifier(payload["performerId"]);_=try V.hash(payload["qualityChecksum"])
         } else {
-            guard ["image/png","image/jpeg","image/webp"].contains(mime),["image","background","skin","stand","accessory"].contains(kind),kind=="image" ? ["image","portrait"].contains(role):role==kind,["transcript","scriptId","scriptChecksum","performerId","qualityChecksum"].allSatisfy({ payload[$0]?.isNull==true }) else { throw PinKnownRefusal() }
+            guard ["image/png","image/jpeg","image/webp"].contains(mime) || shared && ["stand","background"].contains(kind) && ["model/gltf+json","model/gltf-binary","application/octet-stream"].contains(mime),["image","background","skin","stand","accessory"].contains(kind),kind=="image" ? ["image","portrait"].contains(role):role==kind,["transcript","scriptId","scriptChecksum","performerId","qualityChecksum"].allSatisfy({ payload[$0]?.isNull==true }) else { throw PinKnownRefusal() }
         }
         let policy=try V.object(row["policy"],["id","kind","sourceVersion","policyVersion","minAge","maxAge","reviewStatus","localizedContent","topics","topicTagsComplete","commercialAvailability","rights"])
         guard try V.identifier(policy["id"])==V.identifier(entity["id"]),try V.text(policy["kind"])==kind else { throw PinKnownRefusal() }
@@ -11396,13 +11565,13 @@ fileprivate enum LocalV2SavedRouteMediaCodec {
     }
     static func rows(_ saved: PlanetChildPassport.SavedRoute) throws -> [V] {
         let root=try V.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes))
-        if try V.number(root["schemaVersion"],1,3)==1 { return [] };return try V.array(root["media"],maximumItems)
+        let schema=try V.number(root["schemaVersion"],1,3);if schema==1 { return [] };return try V.array(root["media"],schema==3 ? maximumItems:64)
     }
     static func projection(_ saved: PlanetChildPassport.SavedRoute) throws -> [String:Any] {
         var audio=0,images=0,transcripts=0,mediaBytes=0
         for raw in try rows(saved) {
             let row=try V.object(raw,fields);mediaBytes+=Int(try V.number(row["bytes"],1,Int64(33554432)))
-            if try V.text(row["mime"])=="audio/wav" { audio+=1;transcripts+=Data(try V.text(V.object(row["payload"])["transcript"]).utf8).count } else { images+=1 }
+            if try V.text(row["mime"])=="audio/wav" { audio+=1;transcripts+=Data(try V.text(V.object(row["payload"])["transcript"]).utf8).count } else if try V.text(row["mime"]).hasPrefix("image/") { images+=1 }
         }
         return ["locale":saved.locale,"audioStatus":audio>0 ? "downloaded":"text-only","audioItemCount":audio,"imageItemCount":images,"transcriptByteLength":transcripts,"mediaByteLength":mediaBytes]
     }
@@ -11412,7 +11581,7 @@ fileprivate extension LocalV2SavedRouteCompiler {
         guard index.profile === c.profile,now>=0,now<index.until else { throw PinKnownRefusal() }
         let closure=try LocalV2AdmittedEnvelope.closure(c,"activity/"+route.id,now);var owners=Set<String>()
         for entry in closure { guard let ref=try V.object(entry)["reference"] else { throw PinKnownRefusal() };owners.insert(try ref.json(sorted:true)) }
-        var chosen=try index.assets.filter { owners.contains(try $0.owner.json(sorted:true)) }
+        var chosen=try index.assets.filter { ($0.mime.hasPrefix("image/") || $0.mime=="audio/wav") && owners.contains(try $0.owner.json(sorted:true)) }
         if includeCommon {
             guard let scenes=c.savedRouteScenes else { throw PinKnownRefusal() }
             let home=try LocalV2AdmittedEnvelope.reference(c,c.home,now),homeJSON=try home.json(sorted:true)
@@ -11420,13 +11589,13 @@ fileprivate extension LocalV2SavedRouteCompiler {
                 let owner=try scene.owner.json(sorted:true);guard owners.contains(owner) || owner==homeJSON else { continue }
                 guard scene.from<=now,now<scene.until else { throw PinKnownRefusal() };try LocalV2SceneCompiler.reference(scene.owner,c,now)
                 for (slot,asset) in scene.assets {
-                    guard ["skin","stand","background"].contains(slot),index.assets.contains(where:{ $0 === asset }),try asset.owner.json(sorted:true)==owner else { throw PinKnownRefusal() }
+                    guard ["skin","stand","background"].contains(slot) || scene.modelPackage != nil && slot=="common:"+asset.id,index.assets.contains(where:{ $0 === asset }),try asset.owner.json(sorted:true)==owner else { throw PinKnownRefusal() }
                     if !chosen.contains(where:{ $0.id==asset.id }) { chosen.append(asset) }
                 }
             }
         }
         let assets=chosen.sorted { $0.id<$1.id }
-        guard assets.count<=LocalV2SavedRouteMediaCodec.maximumItems else { throw PinKnownRefusal() };return assets
+        guard assets.count<=(includeCommon ? LocalV2SavedRouteMediaCodec.maximumItems:64) else { throw PinKnownRefusal() };return assets
     }
     static func mediaRow(_ asset: LocalV2MediaAsset,_ locale: String,_ encoded: String) -> V {
         .object([("assetId",.string(asset.id)),("owner",asset.owner),("entity",asset.entity),("payload",asset.payload),("policy",asset.policy),("inventoryKey",.string(asset.inventoryKey)),("sha256",.string(asset.checksum)),("bytes",.integer(Int64(asset.bytes))),("mime",.string(asset.mime)),("locale",.string(locale)),("manifestChecksum",.string(asset.manifestChecksum)),("reviewChecksum",.string(asset.reviewChecksum)),("sourceFromEpochMs",.integer(asset.sourceFrom)),("sourceUntilEpochMs",.integer(asset.sourceUntil)),("reviewPlatforms",.array(asset.reviewPlatforms.sorted().map(V.string))),("reviewTerritories",.array(asset.reviewTerritories.sorted().map(V.string))),("encodedBase64",.string(encoded)),("audioProvenanceBase64",asset.audioProvenanceBytes.map { .string($0.base64EncodedString()) } ?? .null)])
@@ -11444,7 +11613,7 @@ fileprivate extension LocalV2SavedRouteCompiler {
     /** Reserve the full canonical snapshot, including text, metadata and raw
      * voice evidence, before acquiring another asset on the native worker. */
     static func captureCapacity(_ text: V,_ rows: [V],_ asset: LocalV2MediaAsset,_ locale: String) throws {
-        guard rows.count<LocalV2SavedRouteMediaCodec.maximumItems,asset.bytes>0 else { throw PinKnownRefusal() }
+        guard rows.count<64,asset.bytes>0 else { throw PinKnownRefusal() }
         let root=try V.object(text,["schemaVersion","journey","nodes"])
         guard let journey=root["journey"],let nodes=root["nodes"] else { throw PinKnownRefusal() }
         var values=rows;values.append(mediaRow(asset,locale,""))

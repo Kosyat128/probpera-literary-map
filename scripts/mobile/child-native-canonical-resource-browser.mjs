@@ -19,6 +19,7 @@ import {InterfaceLanguageProvider} from "/src/i18n/InterfaceLanguage";
 import {PlatformServicesProvider} from "/src/platform/PlatformServices";
 import "/src/index.css";
 const locale=new URL(location.href).searchParams.get("locale")==="ru"?"ru":"en";
+const modelMode=new URL(location.href).searchParams.get("composition")==="model";
 const hash="a".repeat(64),token="b".repeat(32),sceneToken="c".repeat(32);
 const owner={kind:"activity",id:"home",contentChecksum:hash};
 const state={connectivity:"online",visibility:"active"};
@@ -59,6 +60,18 @@ const data=(request:any,value:any)=>({version:2,requestId:request.requestId,stat
 const scene={status:"opened",sceneToken,sceneId:"synthetic-original-composition",owner,skin:slots.skin,
  stand:{geometryId:"stand.base.child-book-cloud",asset:slots.stand},background:{geometryId:"background.base.library",asset:slots.background},
  hotspots:[{id:"approved-activity-proposal",target:owner,position:[2,0,0],radius:.2}],remainingLifetimeMs:30000};
+const typed:any={},typedBytes=new Map<string,Uint8Array>();
+if(modelMode){
+ const binary=new Uint8Array(42),view=new DataView(binary.buffer);[-.5,-1.5,0,.5,-1.5,0,0,-1.2,0].forEach((v,i)=>view.setFloat32(i*4,v,true));[0,1,2].forEach((v,i)=>view.setUint16(36+i*2,v,true));
+ const raw={asset:{version:"2.0",generator:"project-owned-synthetic"},scene:0,scenes:[{nodes:[0]}],nodes:[{mesh:0}],meshes:[{primitives:[{attributes:{POSITION:0},indices:1}]}],buffers:[{uri:"vertices.bin",byteLength:42}],bufferViews:[{buffer:0,byteLength:36},{buffer:0,byteOffset:36,byteLength:6}],accessors:[{bufferView:0,componentType:5126,count:3,type:"VEC3"},{bufferView:1,componentType:5123,count:3,type:"SCALAR"}]};
+ const bytes=new TextEncoder().encode(JSON.stringify(raw));
+ for(const [id,mime,alias,kind,b] of [["synthetic-model","model/gltf+json","fixture.gltf","model",bytes],["synthetic-buffer","application/octet-stream","vertices.bin","buffer",binary]] as const){
+  const resourceToken=(kind==="model"?4:5).toString(16).padStart(32,"0"),blob=new Blob([b],{type:mime});blobs.set(resourceToken,URL.createObjectURL(blob));typedBytes.set(resourceToken,b);
+  typed[id]={assetId:id,entity:{kind:"stand",id,contentChecksum:hash},mime,alias,kind,checksum:await digest(await blob.arrayBuffer()),encodedBytes:blob.size,resourceToken};
+ }
+ const resource=(id:string)=>{const {resourceToken,...r}=typed[id];return r;},model={slotId:"stand",model:resource("synthetic-model"),dependencies:[resource("synthetic-buffer")],bounds:{min:[-1,-2,-1],max:[1,-1.1,1]}};
+ Object.assign(scene,{sceneId:"synthetic-model-package.v1",modelPackage:{schemaVersion:1,packageId:"synthetic-model-package",packageVersion:1,minAppVersion:1,formatProfile:"gltf2-static-v1",tiers:["high","balanced","economy"].map(tier=>({tier,maxDecodedBytes:1024,maxTriangles:1,models:[model]}))}});
+}
 const stableChoice={schemaVersion:1,sceneId:scene.sceneId,owner:{kind:owner.kind,id:owner.id},
  skin:{assetId:scene.skin.assetId,entityId:scene.skin.entity.id},
  stand:{geometryId:scene.stand.geometryId,assetId:scene.stand.asset.assetId,entityId:scene.stand.asset.entity.id},
@@ -84,10 +97,17 @@ const plugin={
   return data(r,{status:savedChoice.selection?"restored":"absent",...savedChoice,scene:savedChoice.selection?scene:null});
  },
  acquireWebResource:async(r:any)=>{
-  const slot=slots[r.slotId],resourceToken=(["skin","stand","background"].indexOf(r.slotId)+1).toString(16).padStart(32,"0");
+  const slot=typed[r.assetId]??slots[r.slotId],resourceToken=typed[r.assetId]?.resourceToken??(["skin","stand","background"].indexOf(r.slotId)+1).toString(16).padStart(32,"0");
+  if(!slot||typed[r.assetId]&&!["high","balanced","economy"].includes(r.tier))throw Error("Unknown measured synthetic resource tier");
   minted.add(resourceToken);order.push("acquire-"+r.slotId);
   return data(r,{status:"available",sceneToken,slotId:r.slotId,resourceToken,assetId:slot.assetId,entity:slot.entity,mime:slot.mime,
    checksum:slot.checksum,encodedBytes:slot.encodedBytes,uri:"planet-child-resource://local/"+resourceToken,remainingLifetimeMs:25000});
+ },
+ readWebResourceChunk:async(r:any)=>{
+  const bytes=typedBytes.get(r.resourceToken),resource=Object.values(typed).find((v:any)=>v.resourceToken===r.resourceToken) as any;
+  if(r.sceneToken!==sceneToken||!minted.has(r.resourceToken)||!bytes||!resource||resource.kind==="texture"||!Number.isSafeInteger(r.offset)||r.offset<0||!Number.isSafeInteger(r.byteLength)||r.byteLength<1||r.byteLength>65536||r.offset>bytes.length-r.byteLength)throw Error("Unknown or unbounded synthetic chunk");
+  let raw="";for(const b of bytes.subarray(r.offset,r.offset+r.byteLength))raw+=String.fromCharCode(b);order.push("read-"+resource.kind);
+  return data(r,{status:"available",sceneToken,resourceToken:r.resourceToken,offset:r.offset,totalBytes:bytes.length,mime:resource.mime,encodedBase64:btoa(raw),remainingLifetimeMs:24000});
  },
  releaseScene:async(r:any)=>{revoke();return data(r,{status:"retired",sceneToken:r.sceneToken});},
  releaseWebResource:async(r:any)=>{if(r.resourceToken===null)revoke();else minted.delete(r.resourceToken);return data(r,{status:"retired",resourceToken:r.resourceToken});},
@@ -104,7 +124,7 @@ function Shell(){const snapshot=useSyncExternalStore(controller.subscribe,contro
 controller.attachPresentationBarrier(()=>flushSync(()=>root.render(<Shell/>)));
 flushSync(()=>root.render(<Shell/>));await controller.start();
 const store=()=>[..._roots.values()][0]?.store.getState();
-let original:any=null,captured:any=null;const trackedTextures=new WeakSet<THREE.Texture>();
+let original:any=null,captured:any=null;const trackedTextures=new WeakSet<THREE.Texture>(),trackedModels=new WeakSet<THREE.Mesh>();
 function surface(scene:THREE.Scene){let result:THREE.Mesh|null=null;scene.traverse(obj=>{
  if(obj instanceof THREE.Mesh&&obj.geometry instanceof THREE.SphereGeometry&&obj.geometry.parameters.radius===1&&obj.material instanceof THREE.MeshPhysicalMaterial)result=obj;
 });return result;}
@@ -117,13 +137,15 @@ function remember(){const value=store();if(!value)throw Error("Original R3F stor
 function inspect(){const value=store();if(!value||!original)throw Error("Original recipient unavailable");
  const group=value.scene.getObjectByName("child-native-approved-composition"),globe=surface(value.scene);
  const covers=group?.getObjectByName("book-cloud-rounded-covers"),wall=group?.getObjectByName("library-child-gallery");
- const textures=[globe?.material?.map,covers?.material?.map,wall?.material?.map];
+ const model=group?.getObjectByName("child-common-3d:synthetic-model");let modelMesh:THREE.Mesh|null=null;model?.traverse(o=>{if(o instanceof THREE.Mesh)modelMesh=o;});
+ if(modelMesh&&!trackedModels.has(modelMesh)){trackedModels.add(modelMesh);modelMesh.userData.draws=0;modelMesh.onAfterRender=()=>{modelMesh!.userData.draws++;};value.invalidate();}
+ const textures=[globe?.material?.map,...(modelMode?[]:[covers?.material?.map]),wall?.material?.map];
  const gpu=value.gl.getContext();const uploaded=textures.map(texture=>Boolean(texture instanceof THREE.Texture&&value.gl.properties.get(texture).__webglTexture
   &&value.gl.properties.get(texture).__version===texture.version));
  captured={group,globe,textures,renderer:value.gl};for(const texture of textures)if(texture instanceof THREE.Texture&&!trackedTextures.has(texture)){trackedTextures.add(texture);texture.addEventListener("dispose",()=>order.push("texture-dispose"));}
  return {...canvasInventory(),sameRenderer:value.gl===original.renderer,sameCamera:value.camera===original.camera,
   sameScene:value.scene===original.scene,sameGlobe:globe===original.globe,group:!!group,cover:!!covers,wall:!!wall,
-  hotspot:!!group?.getObjectByName("child-hotspot:approved-activity-proposal"),uploaded,glError:gpu.getError(),nativeAuthority:false};
+  hotspot:!!group?.getObjectByName("child-hotspot:approved-activity-proposal"),modelMode,model:!!model,modelVertices:modelMesh?.geometry.getAttribute("position").count??0,modelDraws:modelMesh?.userData.draws??0,uploaded,glError:gpu.getError(),nativeAuthority:false};
 }
 async function retire(){if(!captured)throw Error("No uploaded recipient captured");
  const task=controller.suspend();const synchronous={surfaceClear:captured.globe.material.map===null,groupDetached:captured.group.parent===null};
@@ -133,7 +155,7 @@ async function retire(){if(!captured)throw Error("No uploaded recipient captured
   gpuResourcesRetired:captured.textures.every(texture=>!captured.renderer.properties.get(texture).__webglTexture)};
  return {synchronous,after,order:[...order]};
 }
-(window as any).__childCanonicalBrowser={remember,inspect,retire,locale,fixture:"real-original-three-synthetic-native-uri-seam",nativeAuthority:false};
+(window as any).__childCanonicalBrowser={remember,inspect,retire,locale,modelMode,fixture:"real-original-three-synthetic-native-uri-seam",nativeAuthority:false};
 `;
 export async function prepareChildCanonicalResourceBrowserFixture(options={}){
  const root=await fs.realpath(options.rootDir??fileURLToPath(new URL("../../",import.meta.url)));
@@ -150,8 +172,8 @@ export async function prepareChildCanonicalResourceBrowserFixture(options={}){
  await fs.writeFile(path.join(output,"entry.tsx"),entry);await fs.writeFile(path.join(output,"index.html"),html);
  const report={schemaVersion:1,kind:"literary-planet-child-canonical-resource-browser-fixture",runId,status:"NOT_RUN",root,output,
   fixtureSource:{entrySha256:sha(entry),htmlSha256:sha(html)},sourceInputs:await nativeRuntimeSources(root),checks:[],releaseReady:false,nativeAuthority:false,
-  scope:"Real original browser WebView-image decoder, original Three material/geometry/GPU/frame cleanup through an explicitly synthetic native URI seam.",
-  limits:["No native SDK owner, installed Android/iOS acceptance, authenticated package/review/rights authority or production approval.","No model/remote APIs or downloaded dependencies.","Native positive fixture remains separately staged and NOT_RUN without actual native prerequisites."]};
+  scope:"Real original browser image and typed glTF-buffer decode, original Three material/geometry/GPU/frame cleanup through an explicitly synthetic native URI seam.",
+  limits:["No native SDK owner, installed Android/iOS acceptance, authenticated package/review/rights authority or production approval.","No remote asset APIs or downloaded dependencies.","Native positive fixture remains separately staged and NOT_RUN without actual native prerequisites."]};
  await fs.writeFile(path.join(output,"result.json"),JSON.stringify(report,null,2)+"\n");return report;
 }
 export async function runChildCanonicalResourceBrowserFixture(options={}){
@@ -173,30 +195,30 @@ export async function runChildCanonicalResourceBrowserFixture(options={}){
   progress("listen-local-server");await server.listen();const address=server.httpServer.address();require(address&&typeof address!=="string","actual local server");
   const origin="http://127.0.0.1:"+address.port,relative=path.relative(report.root,path.join(report.output,"index.html")).replaceAll("\\","/");
   progress("launch-existing-browser");browser=await chromium.launch({executablePath:options.executablePath,headless:true,args:["--use-angle=swiftshader","--enable-unsafe-swiftshader"]});
-  for(const locale of ["ru","en"]){
+  for(const [locale,composition] of [["ru","procedural"],["en","procedural"],["ru","model"],["en","model"]]){
    progress("locale-"+locale);
    const context=await browser.newContext({viewport:{width:1100,height:820},locale:locale==="ru"?"ru-RU":"en-US"});
    const page=await context.newPage(),errors=[];currentPage=page;
    page.on("pageerror",error=>{errors.push(error.message);progress("page-error: "+error.message);});
    page.on("console",message=>{if(message.type()==="error")progress("console-error: "+message.text());});
    await page.route("**/*",route=>{const url=new URL(route.request().url());return url.origin===origin?route.continue():route.abort();});
-   await page.goto(origin+"/"+relative+"?locale="+locale,{waitUntil:"domcontentloaded"});
+   await page.goto(origin+"/"+relative+"?locale="+locale+"&composition="+composition,{waitUntil:"domcontentloaded"});
    await page.getByRole("button",{name:"Synthetic original Three fixture",exact:true}).waitFor({timeout:30000});
    await page.waitForFunction(()=>{try{const value=window.__childCanonicalBrowser.remember();return value.canvases===1&&value.globeRoots===1;}catch{return false;}},undefined,{timeout:30000});
    const before=await page.evaluate(()=>window.__childCanonicalBrowser.remember());
    await page.getByRole("button",{name:"Synthetic original Three fixture",exact:true}).click();
    await page.waitForSelector('[data-child-scene-phase="ready"]',{timeout:30000});
-   await page.waitForFunction(()=>{try{return window.__childCanonicalBrowser.inspect().uploaded.every(Boolean);}catch{return false;}},undefined,{timeout:30000});
+   await page.waitForFunction(()=>{try{const v=window.__childCanonicalBrowser.inspect();return v.uploaded.every(Boolean)&&(!v.modelMode||v.modelDraws>0);}catch{return false;}},undefined,{timeout:30000});
    const observed=await page.evaluate(()=>window.__childCanonicalBrowser.inspect());
    require(before.canvases===1&&observed.canvases===1&&before.globeRoots===1&&observed.globeRoots===1
     &&before.bookyCanvases===1&&observed.bookyCanvases===1&&before.totalCanvases===2&&observed.totalCanvases===2&&observed.sameRenderer&&observed.sameCamera&&observed.sameScene&&observed.sameGlobe
-    &&observed.group&&observed.cover&&observed.wall&&observed.hotspot&&observed.uploaded.every(Boolean)&&observed.glError===0,"actual original geometry/material/GPU upload identity");
-   const imagePath=path.join(report.output,locale+"-original-composition.png");await page.screenshot({path:imagePath});
+    &&observed.group&&(composition==="model"?observed.model&&observed.modelVertices===3&&observed.modelDraws>0:observed.cover)&&observed.wall&&observed.hotspot&&observed.uploaded.every(Boolean)&&observed.glError===0,"actual original geometry/material/GPU upload identity");
+   const imagePath=path.join(report.output,locale+"-"+composition+"-original-composition.png");await page.screenshot({path:imagePath});
    const cleanup=await page.evaluate(()=>window.__childCanonicalBrowser.retire());
    require(cleanup.synchronous.surfaceClear&&cleanup.synchronous.groupDetached&&cleanup.after.surfaceClear&&cleanup.after.groupDetached
-    &&cleanup.after.disposedTextures===3&&cleanup.after.liveMinted===0&&cleanup.after.retiredContext&&cleanup.after.gpuResourcesRetired,"clear-before-frame and actual decoder/native-seam/GPU retirement");
+    &&cleanup.after.disposedTextures===(composition==="model"?2:3)&&cleanup.after.liveMinted===0&&cleanup.after.retiredContext&&cleanup.after.gpuResourcesRetired,"clear-before-frame and actual decoder/native-seam/GPU retirement");
    require(errors.length===0,"browser execution errors: "+errors.join("; "));
-   report.checks.push({locale,status:"PASS",scope:"actual-original-three-with-synthetic-native-uri-seam",before,observed,cleanup,screenshot:{path:imagePath,sha256:sha(await fs.readFile(imagePath))},nativeAuthority:false});
+   report.checks.push({locale,composition,status:"PASS",scope:"actual-original-three-with-synthetic-native-uri-seam",before,observed,cleanup,screenshot:{path:imagePath,sha256:sha(await fs.readFile(imagePath))},nativeAuthority:false});
    await context.close();
   }
   require(JSON.stringify(await nativeRuntimeSources(report.root))===JSON.stringify(report.sourceInputs),"full source/configuration fingerprint unchanged during browser run");
