@@ -26,7 +26,7 @@ const extension = { "model/gltf+json": "gltf", "model/gltf-binary": "glb", "appl
 export function decodeCommon3dResource(raw: unknown, slotId: string): Common3dResource | null {
   const r = childRecord(raw, ["assetId", "entity", "mime", "checksum", "encodedBytes", "alias", "kind"]), e = r && decodeChildEntityReference(r.entity);
   if (!r || !e || e.kind !== slotId || !id(r.assetId) || typeof r.checksum !== "string" || !/^[a-f0-9]{64}$/u.test(r.checksum)
-    || !integer(r.encodedBytes, 1, 33_554_432) || typeof r.mime !== "string" || !Object.hasOwn(extension, r.mime)
+    || !integer(r.encodedBytes, 1, 33_554_432) || typeof r.mime !== "string" || !Object.prototype.hasOwnProperty.call(extension, r.mime)
     || typeof r.alias !== "string" || !/^[a-z0-9][a-z0-9_-]{0,63}\.(gltf|glb|bin|png|jpg|webp)$/u.test(r.alias)
     || !r.alias.endsWith("." + extension[r.mime as Common3dMime])
     || (r.kind === "model" ? !r.mime.startsWith("model/") : r.kind === "buffer" ? r.mime !== "application/octet-stream" : r.kind !== "texture" || !r.mime.startsWith("image/"))) return null;
@@ -81,9 +81,9 @@ export function parseCommon3dJson(bytes: Uint8Array): Record<string, unknown> {
     if (token === "{") { stack.push(new Set()); key = true; }
     else if (token === "[") { stack.push(null); key = false; }
     else if (token === "}" || token === "]") { stack.pop(); key = false; }
-    else if (token === ",") key = stack.at(-1) !== null;
+    else if (token === ",") key = stack[stack.length - 1] !== null;
     else if (token === ":") key = false;
-    else if (token.startsWith('"') && key) { const decoded = JSON.parse(token); const set = stack.at(-1); demand(set && !set.has(decoded), "duplicate JSON field"); set.add(decoded); key = false; }
+    else if (token.startsWith('"') && key) { const decoded = JSON.parse(token); const set = stack[stack.length - 1]; demand(set && !set.has(decoded), "duplicate JSON field"); set.add(decoded); key = false; }
     demand(stack.length <= 16, "JSON depth");
   }
   const value: unknown = JSON.parse(source); demand(value && typeof value === "object" && !Array.isArray(value), "JSON object");
@@ -97,7 +97,7 @@ export interface Common3dDocument {
 type Obj = Record<string, any>;
 function fields(raw: unknown, required: string[], optional: string[] = []): Obj {
   demand(raw && typeof raw === "object" && !Array.isArray(raw), "object");
-  demand(Object.keys(raw).every(k => [...required, ...optional].includes(k)) && required.every(k => Object.hasOwn(raw, k)), "closed glTF fields");
+  demand(Object.keys(raw).every(k => [...required, ...optional].includes(k)) && required.every(k => Object.prototype.hasOwnProperty.call(raw, k)), "closed glTF fields");
   return raw as Obj;
 }
 function list(raw: unknown, max: number): any[] { demand(Array.isArray(raw) && raw.length <= max, "glTF array budget"); return raw; }

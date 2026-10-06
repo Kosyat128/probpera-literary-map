@@ -92,7 +92,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         if (kind === "restore") { const restored = await scenes.restore(saved); if (!restored || !current()) return false; if (restored.status === "absent") { if (!active) publish("empty"); committed = true; return true; } if (restored.status !== "restored") return false; scene = restored.scene; }
         else scene = entity && sceneId ? await scenes.open(entity, sceneId) : null;
         if (!scene || !current()) return false; deadline = start + scene.remainingLifetimeMs;
-        const maps: Partial<ChildCanonicalTextures> = {};
+        const maps: { skin?: THREE.Texture; stand?: THREE.Texture; background?: THREE.Texture } = {};
         for (const slot of [scene.skin, scene.stand.asset, scene.background.asset]) { const dispatched = now(), output = await scenes.acquire(scene, slot); if (!output || !current()) return false; deadline = Math.min(deadline, dispatched + output.remainingLifetimeMs); const decoded = await image(output.uri, slot.slotId === "skin", ticket, () => deadline, textures); if (!decoded || !current()) return false; maps[slot.slotId] = decoded; }
         if (!maps.skin || !maps.stand || !maps.background) return false;
         if (scene.modelPackage) {

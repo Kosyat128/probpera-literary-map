@@ -80,6 +80,6 @@ describe("full surrounding environment geometry clearance",()=>{
   const f=environment(true);expect(decodeCommon3dPackage(f.pack)).not.toBeNull();expect(()=>decodeCommon3dModel(f.bytes,f.model,new Map([["vertices.bin",f.buffer]]),f.pack.tiers[1])).toThrow("triangle globe clearance");
  });
  it("rejects zero-area geometry instead of counting it as a rendered full-3D face",()=>{
-  const f=common3dFixture();f.buffer.fill(0,0,36);expect(()=>decodeCommon3dModel(f.bytes,f.model,f.buffers,f.pack.tiers[1])).toThrow("nondegenerate");
+  const f=common3dFixture(),view=new DataView(f.buffer.buffer);for(let vertex=0;vertex<3;vertex++)[-.5,-1.5,0].forEach((n,axis)=>view.setFloat32(vertex*12+axis*4,n,true));expect(()=>decodeCommon3dModel(f.bytes,f.model,f.buffers,f.pack.tiers[1])).toThrow("nondegenerate");
  });
 });

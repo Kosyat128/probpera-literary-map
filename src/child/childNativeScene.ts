@@ -111,7 +111,7 @@ export function decodeChildNativeSceneSummaries(raw: unknown, owner: ChildEntity
 export function decodeChildNativeScene(raw: unknown, owner: ChildEntityReference, id: string): ChildNativeScene | null {
   const fields = ["status","sceneToken","sceneId","owner","skin","stand","background","hotspots","remainingLifetimeMs"];
   const row = childRecord(raw, fields) ?? childRecord(raw, [...fields,"modelPackage"]);
-  const modelPackage = row && Object.hasOwn(row,"modelPackage") ? decodeCommon3dPackage(row.modelPackage) : undefined;
+  const modelPackage = row && Object.prototype.hasOwnProperty.call(row,"modelPackage") ? decodeCommon3dPackage(row.modelPackage) : undefined;
   const reference = row && childNativeMediaOwner(row.owner), skin = row && decodeChildNativeSceneSlot(row.skin,"skin");
   const s = row && childRecord(row.stand, ["geometryId","asset"]), b = row && childRecord(row.background, ["geometryId","asset"]);
   const stand = s && decodeChildNativeSceneSlot(s.asset,"stand"), background = b && decodeChildNativeSceneSlot(b.asset,"background");
@@ -120,7 +120,7 @@ export function decodeChildNativeScene(raw: unknown, owner: ChildEntityReference
     || !reference || !sameChildNativeMediaReference(reference,owner) || !skin || !stand || !background || !hotspots
     || s?.geometryId !== "stand.base.child-book-cloud" || b?.geometryId !== "background.base.library"
     || !number(row.remainingLifetimeMs,1,60000) || new Set([skin.assetId,stand.assetId,background.assetId]).size !== 3
-    || Object.hasOwn(row,"modelPackage") && (!modelPackage || id !== modelPackage.packageId+".v"+modelPackage.packageVersion)) return null;
+    || Object.prototype.hasOwnProperty.call(row,"modelPackage") && (!modelPackage || id !== modelPackage.packageId+".v"+modelPackage.packageVersion)) return null;
   return Object.freeze({ status:"opened", sceneToken:row.sceneToken,sceneId:id,owner:reference,skin,
     stand:Object.freeze({geometryId:s.geometryId,asset:stand}),background:Object.freeze({geometryId:b.geometryId,asset:background}),
     hotspots,remainingLifetimeMs:row.remainingLifetimeMs,...(modelPackage?{modelPackage}:{}) });

@@ -39,7 +39,7 @@ function fixture() {
     restore:vi.fn(async(expected:ChildNativeProfileAppearance):Promise<ChildNativeAppearanceRestore|null>=>{
       if(expected.revision!==saved.revision)return null;return {...saved,status:saved.selection?"restored":"absent",scene:saved.selection?scene:null};
     }),
-    list:vi.fn(async()=>[]),open:vi.fn(async()=>scene),acquire:vi.fn(async(_scene:ChildNativeScene,asset:ChildNativeSceneSlot)=>({status:"available",sceneToken:scene.sceneToken,
+    list:vi.fn(async()=>[]),open:vi.fn(async():Promise<ChildNativeScene|null>=>scene),acquire:vi.fn(async(_scene:ChildNativeScene,asset:ChildNativeSceneSlot)=>({status:"available",sceneToken:scene.sceneToken,
     slotId:asset.slotId,resourceToken:"d".repeat(32),assetId:asset.assetId,entity:asset.entity,mime:asset.mime,checksum:asset.checksum,
     encodedBytes:asset.encodedBytes,uri:"planet-child-resource://local/"+"d".repeat(32),remainingLifetimeMs:4000})),
     releaseResource:vi.fn(async()=>true),release:vi.fn(async()=>true),releaseAll:vi.fn(async()=>true),
@@ -84,7 +84,7 @@ describe("versioned typed model transaction through the original scene port",()=
  function modelFixture(){
   const f=fixture(),g=common3dFixture(),id=g.pack.packageId+".v"+g.pack.packageVersion;
   const modelScene=decodeChildNativeScene({...f.scene,sceneToken:"e".repeat(32),sceneId:id,modelPackage:g.pack},owner,id)!;
-  const acquireModel=vi.fn(async(scene:ChildNativeScene,r:Common3dResource,tier:Common3dTierId)=>({status:"available" as const,sceneToken:scene.sceneToken,slotId:r.kind,resourceToken:"f".repeat(32),assetId:r.assetId,entity:r.entity,mime:r.mime,checksum:r.checksum,encodedBytes:r.encodedBytes,uri:"planet-child-resource://local/"+r.assetId,remainingLifetimeMs:4000}));
+  const acquireModel=vi.fn(async(scene:ChildNativeScene,r:Common3dResource,_tier:Common3dTierId)=>({status:"available" as const,sceneToken:scene.sceneToken,slotId:r.kind,resourceToken:"f".repeat(32),assetId:r.assetId,entity:r.entity,mime:r.mime,checksum:r.checksum,encodedBytes:r.encodedBytes,uri:"planet-child-resource://local/"+r.assetId,remainingLifetimeMs:4000}));
   const readModelChunk=vi.fn(async(scene:ChildNativeScene,output:any,r:Common3dResource,offset:number,byteLength:number)=>{const bytes=r.kind==="model"?g.bytes:g.buffer;return {status:"available" as const,sceneToken:scene.sceneToken,resourceToken:output.resourceToken,offset,totalBytes:r.encodedBytes,mime:r.mime,encodedBase64:Buffer.from(bytes.subarray(offset,offset+byteLength)).toString("base64"),remainingLifetimeMs:3500};});
   Object.assign(f.scenes,{acquireModel,readModelChunk});vi.stubGlobal("crypto",webcrypto);
   const fetcher=vi.fn(()=>Promise.reject(Error("Typed native URI must never use fetch")));vi.stubGlobal("fetch",fetcher);

@@ -15,6 +15,7 @@ const REVIEW_HASH = "d".repeat(64), ASSET_HASH = "e".repeat(64), KEY_HASH = "f".
 const SOURCE_HASH = "1".repeat(64), OTHER_HASH = "2".repeat(64);
 const EXTENSIONS: Readonly<Record<ChildNativeResourceMime, string>> = {
   "image/png": "png", "image/jpeg": "jpg", "image/webp": "webp", "audio/wav": "wav",
+  "model/gltf+json": "gltf", "model/gltf-binary": "glb", "application/octet-stream": "bin",
 };
 function binding(patch: Partial<ChildNativeResourceBinding> = {}): ChildNativeResourceBinding {
   return { id: "binding-one", packageId: "package-one", packageVersion: 1, packageChecksum: PACKAGE_HASH,
@@ -127,7 +128,7 @@ describe("fixed HTTPS origin and content-addressed path boundaries", () => {
     for (const hash of [undefined, null, 1, {}, "", ASSET_HASH.slice(1), `${ASSET_HASH}e`, ASSET_HASH.toUpperCase(),
       `${"e".repeat(63)}g`, ` ${ASSET_HASH}`, `${ASSET_HASH}\n`]) expect(childNativeResourcePath(hash, "image/png")).toBeNull();
     for (const mime of [undefined, null, {}, "image/svg+xml", "image/gif", "image/jpg", "image/PNG",
-      "image/png; charset=utf-8", "video/mp4", "audio/mp3", "audio/x-wav", "application/octet-stream"])
+      "image/png; charset=utf-8", "video/mp4", "audio/mp3", "audio/x-wav", "model/gltf", "model/gltf+json; charset=utf-8"])
       expect(childNativeResourcePath(ASSET_HASH, mime)).toBeNull();
   });
 
@@ -230,9 +231,10 @@ describe("binding scalar, byte and time limits", () => {
       expect(decodeChildNativeResourceBinding({ ...binding(), packageVersion })).toBeNull();
   });
 
-  it("accepts exact raster/audio encoded byte caps and refuses the first excess byte", () => {
+  it("accepts exact raster/audio/model/buffer encoded byte caps and refuses the first excess byte", () => {
     for (const [mime, limit] of [["image/png", 33_554_432], ["image/jpeg", 33_554_432],
-      ["image/webp", 33_554_432], ["audio/wav", 25_165_824]] as const) {
+      ["image/webp", 33_554_432], ["audio/wav", 25_165_824], ["model/gltf+json", 33_554_432],
+      ["model/gltf-binary", 33_554_432], ["application/octet-stream", 33_554_432]] as const) {
       const value = binding({ mime, path: `/objects/${ASSET_HASH}.${EXTENSIONS[mime]}` });
       expect(decodeChildNativeResourceBinding({ ...value, assetBytes: 1 })).not.toBeNull();
       expect(decodeChildNativeResourceBinding({ ...value, assetBytes: limit })).not.toBeNull();

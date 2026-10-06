@@ -45,8 +45,10 @@ describe("native independent locale acquisition presentation", () => {
   });
   it("requires observed monotonic durable revision and bounded progress without converting read facts to a mutation receipt", () => {
     expect(decodeChildNativeRouteDownload(staged(10), c, "route-one", 9)?.revision).toBe(10);
-    for (const value of [staged(9), staged(140), { ...staged(), acquisition: { ...staged().acquisition, totalItems: 67 } },
-      { ...staged(), acquisition: { ...staged().acquisition, totalBytes: 2148007937 } }]) expect(decodeChildNativeRouteDownload(value, c, "route-one", 9)).toBeNull();
+    expect(decodeChildNativeRouteDownload(staged(145), c, "route-one", 9)?.revision).toBe(145);
+    expect(decodeChildNativeRouteDownload({ ...staged(), acquisition: { ...staged().acquisition, totalItems: 69, totalBytes: 2248671232 } }, c, "route-one", 9)).not.toBeNull();
+    for (const value of [staged(9), staged(146), { ...staged(), acquisition: { ...staged().acquisition, totalItems: 70 } },
+      { ...staged(), acquisition: { ...staged().acquisition, totalBytes: 2248671233 } }]) expect(decodeChildNativeRouteDownload(value, c, "route-one", 9)).toBeNull();
   });
   it("never invokes accessors on a restored acquisition", () => {
     const value = staged(), getter = vi.fn(() => value.acquisition); Object.defineProperty(value, "acquisition", { enumerable: true, get: getter });
@@ -96,6 +98,6 @@ describe("native independent locale acquisition presentation", () => {
   it("bounded uncompleted native steps pause while leaving the last checked stage available for a later explicit intent", async () => {
     let revision = 10; const resume = vi.fn(async () => parsed(staged(revision++))), options = { ...callbacks(), resume: true };
     const result = await continueChildNativeRouteDownload(port({ resumeJourneyRoute: resume }), "route-one", 9, options);
-    expect(result.status).toBe("paused"); expect(resume).toHaveBeenCalledTimes(69); expect(result.value).not.toBeNull();
+    expect(result.status).toBe("paused"); expect(resume).toHaveBeenCalledTimes(72); expect(result.value).not.toBeNull();
   });
 });

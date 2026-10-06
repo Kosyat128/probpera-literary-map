@@ -115,7 +115,7 @@ public final class PlanetChildCommon3dRuntimeTest {
         Map<String,Object> p=pack();assertEquals(6,PlanetChildModelImport.bindings(p).size());PlanetChildModelImport.validateSceneId(p,"synthetic-common.v2");
         denied(()->PlanetChildModelImport.validateSceneId(p,"synthetic-common.v1"));denied(()->PlanetChildModelImport.resolve(p,"high","texture","common-buffer"));
         Map<String,Object> tier=(Map<String,Object>)((List<?>)p.get("tiers")).get(0);tier.put("tier","economy");denied(()->PlanetChildModelImport.bindings(p));tier.put("tier","high");
-        Map<String,Object> model=(Map<String,Object>)((List<?>)tier.get("models")).get(0);model.put("bounds",map("min",Arrays.asList(-1L,-1L,-1L),"max",Arrays.asList(1L,1L,1L)));denied(()->PlanetChildModelImport.bindings(p));
+        Map<String,Object> model=(Map<String,Object>)((List<?>)tier.get("models")).get(0);model.put("bounds",map("min",Arrays.asList(-13L,-1L,-1L),"max",Arrays.asList(1L,1L,1L)));denied(()->PlanetChildModelImport.bindings(p));
     }
     @Test public void NativeTypedAcquisitionWireCannotAddUriOrSkipTierBinding()throws Exception {
         Map<String,Object> r=map("version",2L,"requestId","1".repeat(32),"contextToken","2".repeat(32),"sceneToken","3".repeat(32),"slotId","model","assetId","common-model","tier","balanced");
