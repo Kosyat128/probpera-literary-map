@@ -1,3 +1,11 @@
+<!-- child-local-route-media-downloads-20261006:begin -->
+Code 91a1f2f308ae68a4153a6c28270080e691ff6952; evidence docs/mobile/evidence/S16/child-local-route-media-downloads-20261006/result.json.
+Whole SOL Ultra authoring and whole Astra Ultra review/check/fix COMPLETE LOCALLY; source rows 1881. Actual checks, source qualifications and retained failures are preserved in the frozen whole-stage closure.
+Original native V1, protected content, RU/EN, Booky and the canonical globe remain preserved. Synthetic browser authority and compiled fixtures do not establish installed native OS storage, genuine review/rights approval or release acceptance.
+Four original conditions retain their exact older snapshot, NOT_RECHECKED. Acceptance and owner decisions remain unchanged; stageAccepted=false; releaseReady=false; remoteActions=0.
+Next: Next whole SOL Ultra programming stage: implement the original125 section5 native child offline-package coordinator, reusing existing private native resource/package and original Web-cache contracts. Separate authenticated common binary objects from RU/EN text/search/audio generations, retain checked shared objects across allowed locale changes, persist bounded staged acquisition progress and resume after interruption, and activate a new locale generation atomically only after its complete signature/checksum/current review-rights validation. Preserve active prior data on cancellation/failure, fresh native profile/age/parent authority, parent clear and version/rights invalidation, sibling partitions, no autoplay and English text fallback. Keep genuine pins EMPTY_DENY. Then perform one whole Astra Ultra review/check/fix before any following SOL stage.
+<!-- child-local-route-media-downloads-20261006:end -->
+
 <!-- child-local-badges-downloads-20261005:begin -->
 Code 7162b21b297f0be8736fd5910a41cf0d3f311ba5; evidence docs/mobile/evidence/S16/child-local-badges-downloads-20261005/result.json.
 Whole SOL Ultra authoring and whole Astra Ultra review/check/fix COMPLETE LOCALLY; source rows 1879. Actual checks, source qualifications and retained failures are preserved in the frozen whole-stage closure.
