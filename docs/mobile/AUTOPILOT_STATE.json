@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "62bc9f12252b6a742274ddd5079a19a895884113",
+  "headSha": "7162b21b297f0be8736fd5910a41cf0d3f311ba5",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-05T20:48:49.142Z",
+  "updatedAt": "2026-10-06T04:30:52.598Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Next whole SOL Ultra programming stage: implement the original guide8 reviewed native badge-award contract and genuine downloaded-route availability/receipt facts, with private per-profile versioned provenance, genuine native age/rights admission, bounded encrypted persistence and real parent-gated deletion/invalidation; connect them to the existing RU/EN literary passport without inventing awards or downloaded availability. Then perform whole Astra Ultra review, available checks and fixes before any following SOL stage. Keep genuine pins EMPTY_DENY and release gates open until their original evidence exists.",
+    "nextAction": "Next whole SOL Ultra programming stage: extend the existing TEXT-only persisted downloaded routes under original guide sections5/10/12 and 123_BILINGUAL_CHILD_PLANETKA_AUDIO_RU_EN sections6/8/9 to required reviewed per-locale media/transcript bytes. Reuse existing ChildNativeJourneyView to ChildNativeMediaView and native players; preserve genuine parent consent, interruption/no autoplay after resume, parent removal and version/rights invalidation, with English text fallback. Do not add duplicate media UI/service or invent approved voices/assets. Then perform one whole Astra Ultra review/check/fix before the following SOL stage. Preserve EMPTY_DENY and all original acceptance gates.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",

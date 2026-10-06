@@ -1,3 +1,11 @@
+<!-- child-local-badges-downloads-20261005:begin -->
+Code 7162b21b297f0be8736fd5910a41cf0d3f311ba5; evidence docs/mobile/evidence/S16/child-local-badges-downloads-20261005/result.json.
+Whole SOL Ultra authoring and whole Astra Ultra review/check/fix COMPLETE LOCALLY; source rows 1879. Actual checks, source qualifications and retained failures are preserved in the frozen whole-stage closure.
+Original native V1, protected content, RU/EN, Booky and the canonical globe remain preserved. Synthetic browser authority and compiled fixtures do not establish installed native OS storage, genuine review/rights approval or release acceptance.
+Four original conditions retain their exact older snapshot, NOT_RECHECKED. Acceptance and owner decisions remain unchanged; stageAccepted=false; releaseReady=false; remoteActions=0.
+Next: Next whole SOL Ultra programming stage: extend the existing TEXT-only persisted downloaded routes under original guide sections5/10/12 and 123_BILINGUAL_CHILD_PLANETKA_AUDIO_RU_EN sections6/8/9 to required reviewed per-locale media/transcript bytes. Reuse existing ChildNativeJourneyView to ChildNativeMediaView and native players; preserve genuine parent consent, interruption/no autoplay after resume, parent removal and version/rights invalidation, with English text fallback. Do not add duplicate media UI/service or invent approved voices/assets. Then perform one whole Astra Ultra review/check/fix before the following SOL stage. Preserve EMPTY_DENY and all original acceptance gates.
+<!-- child-local-badges-downloads-20261005:end -->
+
 <!-- child-local-discovery-passport-20261005:begin -->
 Code 62bc9f12252b6a742274ddd5079a19a895884113; evidence docs/mobile/evidence/S16/child-local-discovery-passport-20261005/result.json.
 Whole SOL Ultra authoring and whole Astra Ultra review/check/fix COMPLETE LOCALLY; source rows 1873. Actual checks, source qualifications and retained failures are preserved in the frozen whole-stage closure.
