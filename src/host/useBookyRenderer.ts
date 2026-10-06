@@ -3,6 +3,8 @@ import type { WebGLRenderer, WebGLRenderTarget } from "three";
 import { BOOKY_LOOK_MS, bookyReactionDuration, boundedBookyLook, createBookyPose, hasBookyReactionChanged,
   type BookyInput } from "./bookyAnimation";
 
+import { createBookyAttention, type BookyAttentionKind } from "./bookyAttention";
+
 export type BookyRendererState = "loading" | "live3d" | "fallback";
 type RendererSnapshot = Readonly<{ state: BookyRendererState; active: boolean }>;
 // recoveryAttempt is fixed for this canvas lifetime. Only explicit recovery uses it.
@@ -27,7 +29,16 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     if (!canvas) return;
     let alive = true, failed = false, contextLost = false, restorationAttempted = false, hasRendered = false;
     let environmentDirty = true;
-    let intersecting = true, pageVisible = document.visibilityState !== "hidden";
+    const attention = createBookyAttention();
+    let attentionTimer: ReturnType<typeof setTimeout> | null = null;
+    let refreshAttention: (() => void) | null = null;
+    let manualAttentionOwner = () => true;
+    const clearAttention = () => {
+      attention.clear();
+      if (attentionTimer !== null) clearTimeout(attentionTimer);
+      attentionTimer = null;
+    };
+    let intersecting = typeof IntersectionObserver === "undefined", pageVisible = document.visibilityState !== "hidden";
     let renderer: WebGLRenderer | null = null, model: OwnedModel | null = null;
     let environment: WebGLRenderTarget | null = null;
     let disposeShadow: (() => void) | null = null;
@@ -74,10 +85,18 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     };
     const fallback = () => {
       if (!alive || failed) return;
-      failed = true; stopFrame(); clearRecovery(); clearFirstFrameDeadline(); disposeGraphics();
+      failed = true; clearAttention(); stopFrame(); clearRecovery(); clearFirstFrameDeadline(); disposeGraphics();
       canvas.dataset.bookyContext = "unavailable"; publish();
     };
+    const refreshInitialDeadline = () => {
+      // Initial loading must also reach a recoverable portrait. An inactive
+      // initial viewport is paused; an explicit retry keeps its original deadline.
+      if (committed.current.recoveryAttempt) return;
+      if (!isActive() || hasRendered) { clearFirstFrameDeadline(); return; }
+      if (firstFrameDeadline === null) firstFrameDeadline = setTimeout(fallback, RETRY_FIRST_FRAME_TIMEOUT_MS);
+    };
     const requestFrame = () => {
+      refreshInitialDeadline();
       if (!isActive() || !draw || animationFrame) return;
       animationFrame = requestAnimationFrame(time => {
         animationFrame = 0;
@@ -85,9 +104,52 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
         try { draw?.(time); } catch { fallback(); }
       });
     };
+    const observeAttention = (kind: BookyAttentionKind, x: number, y: number) => {
+      if (!isActive() || manualAttentionOwner()) return;
+      const deadline = attention.offer(kind, { x, y }, canvas.getBoundingClientRect(),
+        { width: window.innerWidth, height: window.innerHeight }, performance.now(), reducedMotion);
+      if (deadline === null) return;
+      if (attentionTimer !== null) clearTimeout(attentionTimer);
+      refreshAttention?.();
+      attentionTimer = setTimeout(() => { attentionTimer = null; attention.clear(); refreshAttention?.(); },
+        Math.max(0, deadline - performance.now()));
+    };
+    const targetPoint = (target: EventTarget | null) => {
+      if (!(target instanceof Element) || !target.isConnected || target.closest('[hidden], [inert], [aria-hidden="true"]')) return null;
+      const bounds = target.getBoundingClientRect();
+      return bounds.width > 0 && bounds.height > 0 ? { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2 } : null;
+    };
+    const onAttentionPointer = (event: PointerEvent) => {
+      if (event.isPrimary && (event.pointerType === "mouse" || event.pointerType === "pen") && event.buttons === 0)
+        observeAttention("pointer", event.clientX, event.clientY);
+    };
+    const onAttentionPress = (event: PointerEvent) => {
+      if (!event.isPrimary || event.button !== 0) return;
+      const control = event.target instanceof Element ? event.target.closest('button, a, input, select, textarea, [role="button"], [role="tab"]') : null;
+      const point = targetPoint(control);
+      observeAttention("press", point?.x ?? event.clientX, point?.y ?? event.clientY);
+    };
+    const onAttentionFocus = (event: FocusEvent) => {
+      const point = targetPoint(event.target); if (point) observeAttention("focus", point.x, point.y);
+    };
+    const onAttentionKeyboardClick = (event: MouseEvent) => {
+      if (event.detail !== 0) return;
+      const point = targetPoint(event.target); if (point) observeAttention("press", point.x, point.y);
+    };
+    const leaveAttention = () => { clearAttention(); refreshAttention?.(); };
+    const onAttentionLeave = (event: PointerEvent) => {
+      if (event.relatedTarget === null && event.pointerType !== "touch") leaveAttention();
+    };
+    const observeOptions = { capture: true, passive: true } as const;
+    document.addEventListener("pointermove", onAttentionPointer, observeOptions);
+    document.addEventListener("pointerout", onAttentionLeave, observeOptions);
+    window.addEventListener("blur", leaveAttention);
+    document.addEventListener("pointerdown", onAttentionPress, observeOptions);
+    document.addEventListener("focusin", onAttentionFocus, observeOptions);
+    document.addEventListener("click", onAttentionKeyboardClick, observeOptions);
     const visibility = () => {
       pageVisible = document.visibilityState !== "hidden";
-      if (!isActive()) { stopFrame(); settlePose?.(); }
+      if (!isActive()) { stopFrame(); settlePose?.(); refreshInitialDeadline(); }
       else { refreshSize?.(); requestFrame(); }
       publish();
     };
@@ -100,7 +162,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
       event.preventDefault();
       if (!alive || failed) return;
       contextLost = true; canvas.dataset.bookyContext = "lost";
-      stopFrame(); settlePose?.(); publish();
+      stopFrame(); settlePose?.(); refreshInitialDeadline(); publish();
       if (restorationAttempted || !lossExtension) { fallback(); return; }
       restorationAttempted = true;
       // One extension request after this event, plus one bounded deadline.
@@ -129,15 +191,25 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
       // Both enabling and disabling calm movement retire the old reaction.
       // Only another explicit gesture may start a fresh animation afterward.
       if (policyChanged) { stopFrame(); settlePose?.(); }
-      if (!isActive()) { stopFrame(); settlePose?.(); } else requestFrame();
+      if (!isActive()) { stopFrame(); settlePose?.(); refreshInitialDeadline(); } else requestFrame();
       publish();
     } };
     const ownedRuntime = runtime.current;
+    // Observe before imports/initial deadline: an offscreen initial avatar
+    // cannot spend its visible-first-frame budget while code is loading.
+    if (typeof IntersectionObserver !== "undefined") {
+      intersection = new IntersectionObserver(entries => {
+        const entry = entries[entries.length - 1];
+        if (!entry || !alive) return;
+        intersecting = entry.isIntersecting && entry.intersectionRatio > 0; visibility();
+      }); intersection.observe(canvas);
+    }
     publish();
 
     // An explicit retry must finish even if imports or the first frame never arrive.
     // A timed-out lifetime cannot later allocate resources or replace the fallback.
     if (committed.current.recoveryAttempt) firstFrameDeadline = setTimeout(fallback, RETRY_FIRST_FRAME_TIMEOUT_MS);
+    else refreshInitialDeadline();
 
     // A discarded StrictMode activation cannot allocate a model or context.
     void Promise.all([import("three"), import("./bookyModel"),
@@ -149,7 +221,7 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
         renderer.setClearColor(0x000000, 0);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
-        renderer.toneMappingExposure = 1.02;
+        renderer.toneMappingExposure = .94;
         renderer.shadowMap.enabled = true;
         renderer.shadowMap.type = THREE.PCFSoftShadowMap;
         lossExtension = renderer.getContext().getExtension("WEBGL_lose_context");
@@ -176,17 +248,17 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
             environmentDirty = false; previous?.dispose();
           } finally { pmrem?.dispose(); room.dispose(); }
         };
-        scene.environmentIntensity = .38;
-        scene.add(new THREE.HemisphereLight(0xfff3dd, 0x465950, 1.0));
-        const key = new THREE.DirectionalLight(0xfff4e4, 2.5);
+        scene.environmentIntensity = .28;
+        scene.add(new THREE.HemisphereLight(0xfff3dd, 0x465950, .32));
+        const key = new THREE.DirectionalLight(0xfff4e4, 3.9);
         key.position.set(-3, 4, 5); key.castShadow = true;
         key.shadow.mapSize.set(512, 512);
         Object.assign(key.shadow.camera, { left: -2, right: 2, top: 2, bottom: -2, near: .1, far: 15 });
         key.shadow.camera.updateProjectionMatrix();
-        key.shadow.bias = -.0003; key.shadow.normalBias = .006;
+        key.shadow.bias = -.0003; key.shadow.normalBias = .003;
         disposeShadow = () => key.shadow.dispose();
         scene.add(key);
-        const fill = new THREE.DirectionalLight(0xe2ecff, .65);
+        const fill = new THREE.DirectionalLight(0xe2ecff, .28);
         fill.position.set(3, 1.5, 3); scene.add(fill);
         model.group.updateMatrixWorld(true);
         const bounds = new THREE.Box3().setFromObject(model.group);
@@ -217,11 +289,25 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           camera.top = halfHeight; camera.bottom = -halfHeight; camera.updateProjectionMatrix();
         };
         settlePose = () => {
+          clearAttention();
           reactionStarted = null; lookStarted = 0;
           look = goalLook = startLook = boundedBookyLook(committed.current.lookAt);
         };
+        const ownedMotion = (value: RendererInput) => value.interaction === "dragging"
+          || value.interaction === "walking" || value.interaction === "pointing";
+        manualAttentionOwner = () => ownedMotion(current);
+        refreshAttention = () => {
+          if (!isActive() || reactionStarted !== null || manualAttentionOwner()) return;
+          const next = boundedBookyLook(attention.read(performance.now()) ?? current.lookAt);
+          if (next.x === goalLook.x && next.y === goalLook.y) return;
+          startLook = look; goalLook = next; lookStarted = reducedMotion ? 0 : performance.now();
+          if (reducedMotion) look = next;
+          requestFrame();
+        };
         updatePose = value => {
-          const nextLook = boundedBookyLook(value.lookAt);
+          if (hasBookyReactionChanged(current, value) || ownedMotion(value) || !value.active) clearAttention();
+          const nextLook = boundedBookyLook(reactionStarted !== null || ownedMotion(value)
+            ? value.lookAt : attention.read(performance.now()) ?? value.lookAt);
           if (nextLook.x !== goalLook.x || nextLook.y !== goalLook.y) {
             startLook = look; goalLook = nextLook; lookStarted = performance.now();
           }
@@ -240,7 +326,8 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           const eased = blend * blend * (3 - 2 * blend);
           look = { x: startLook.x + (goalLook.x - startLook.x) * eased, y: startLook.y + (goalLook.y - startLook.y) * eased };
           const progress = reactionStarted === null || reducedMotion ? null : (time - reactionStarted) / bookyReactionDuration(current);
-          if (progress !== null && progress >= 1) reactionStarted = null;
+          const reactionFinished = progress !== null && progress >= 1;
+          if (reactionFinished) reactionStarted = null;
           pose(current, look, reactionStarted === null ? null : progress, reducedMotion);
           renderer.render(scene, camera);
           renderCount += 1; hasRendered = true; clearFirstFrameDeadline();
@@ -248,19 +335,15 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
           canvas.dataset.bookyAnimating = String(blend < 1 || reactionStarted !== null);
           canvas.dataset.bookyReducedMotion = String(reducedMotion);
           canvas.dataset.bookyInteraction = current.interaction;
+          canvas.dataset.bookyLookX = look.x.toFixed(4); canvas.dataset.bookyLookY = look.y.toFixed(4);
           publish();
+          // A recent input may wait behind a finite gesture, but never interrupts it.
+          if (reactionFinished) refreshAttention?.();
           if (blend < 1 || reactionStarted !== null) requestFrame();
         };
         canvas.dataset.bookyContext = "ready"; canvas.dataset.bookyRenderCount = "0";
         if (typeof ResizeObserver !== "undefined") {
           observer = new ResizeObserver(() => { refreshSize?.(); requestFrame(); }); observer.observe(canvas);
-        }
-        if (typeof IntersectionObserver !== "undefined") {
-          intersection = new IntersectionObserver(entries => {
-            const entry = entries[entries.length - 1];
-            if (!entry || !alive) return;
-            intersecting = entry.isIntersecting && entry.intersectionRatio > 0; visibility();
-          }); intersection.observe(canvas);
         }
         window.addEventListener("resize", visibility);
         refreshSize();
@@ -271,7 +354,13 @@ export function useBookyRenderer(canvasRef: RefObject<HTMLCanvasElement | null>,
     }, fallback);
 
     return () => {
-      alive = false;
+      alive = false; clearAttention(); refreshAttention = null;
+      document.removeEventListener("pointermove", onAttentionPointer, true);
+      document.removeEventListener("pointerout", onAttentionLeave, true);
+      window.removeEventListener("blur", leaveAttention);
+      document.removeEventListener("pointerdown", onAttentionPress, true);
+      document.removeEventListener("focusin", onAttentionFocus, true);
+      document.removeEventListener("click", onAttentionKeyboardClick, true);
       if (runtime.current === ownedRuntime) runtime.current = null;
       stopFrame(); clearRecovery(); clearFirstFrameDeadline(); observer?.disconnect(); intersection?.disconnect();
       window.removeEventListener("resize", visibility);

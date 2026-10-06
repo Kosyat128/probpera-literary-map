@@ -85,6 +85,18 @@ describe("Booky's finite explicit gestures", () => {
     expect(bookyReactionDuration(input)).toBeLessThanOrEqual(2400);
   });
 
+  it("turns the resting book and eyes toward bounded input without a repeating idle motion", () => {
+    const { rig, pose, snapshot } = fixture();
+    pose(neutral, { x: 1, y: -.5 }, null, false);
+    expect(rig.body.rotation.y).toBeCloseTo(.18, 8); expect(rig.body.rotation.x).toBeCloseTo(-.03, 8);
+    expect(rig.pupils.every(pupil => pupil.position.x > 0 && pupil.position.y > 0)).toBe(true);
+    const right = snapshot(); for (let repeat = 0; repeat < 10; repeat++) { pose(neutral, { x: 1, y: -.5 }, null, false); expect(snapshot()).toEqual(right); }
+    pose(neutral, { x: -1, y: .5 }, null, false);
+    expect(rig.body.rotation.y).toBeCloseTo(-.18, 8); expect(rig.body.rotation.x).toBeCloseTo(.03, 8);
+    pose(neutral, { x: 0, y: 0 }, null, false);
+    expect(rig.body.rotation.toArray().slice(0, 3)).toEqual([0, 0, 0]);
+  });
+
   it("keeps invalid elapsed samples and pointer coordinates out of rig transforms", () => {
     const { pose, snapshot } = fixture();
     for (const interaction of BOOKY_GESTURES) {
@@ -331,7 +343,7 @@ describe("Booky's finite explicit gestures", () => {
         expect(snapshot().every(Number.isFinite)).toBe(true);
         expect(rig.rightArm.rotation.z).toBeGreaterThanOrEqual(-.06); expect(rig.rightArm.rotation.z).toBeLessThanOrEqual(.16);
         expect(Math.abs(rig.body.rotation.z)).toBeLessThanOrEqual(.060001);
-        expect(Math.abs(rig.body.rotation.y)).toBeLessThanOrEqual(interaction === "twirl" ? Math.PI * 2 + .100001 : .100001);
+        expect(Math.abs(rig.body.rotation.y)).toBeLessThanOrEqual(interaction === "twirl" ? Math.PI * 2 + .180001 : .180001);
         expect(rig.body.position.y).toBeLessThanOrEqual(.060001); expect(rig.body.position.y).toBeGreaterThanOrEqual(-.012001);
         expect(rig.body.scale.y).toBeLessThanOrEqual(1.035001);
       }

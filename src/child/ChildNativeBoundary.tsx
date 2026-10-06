@@ -13,7 +13,7 @@ import type { ChildEntityReference } from "./childPackage";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import LiteraryWorldMap from "../components/LiteraryWorldMap";
 import type { Country } from "../data/countries/types";
-import PlanetMascotAvatar from "../host/PlanetMascotAvatar";
+import BookyPlayControl from "../host/BookyPlayControl";
 import { createBookySizeController } from "../host/bookySizePreference";
 import { usePlatformServices } from "../platform/PlatformServices";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
@@ -405,7 +405,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     {c&&admitted?<>
     <header className="child-native-header"><h1>{copy.title}</h1><NativeProfileControls controller={controller} snapshot={snapshot} /></header>
     <aside className="child-native-booky" data-booky-size={sizeSnapshot.size}>
-      <PlanetMascotAvatar src={mascotImage} calmMotion active />
+      <BookyPlayControl key={c.token} src={mascotImage} context="child" className="child-native-booky__play" calmMotion active={admitted} />
       <span>{language === "ru" ? "Книжулик" : "Mr. Booky"}</span>
     </aside>
     <section className="child-native-panel" aria-label={copy.title}>

@@ -97,8 +97,10 @@ describe("original articulated Mr. Booky model", () => {
       const rig = model.rig, pose = createBookyPose(rig);
       const members = [rig.body, rig.leftArm, rig.rightArm, rig.frontCover, rig.bookmark,
         rig.leftLeg, rig.rightLeg, rig.leftFoot, rig.rightFoot, ...rig.eyes, ...rig.upperLids, ...rig.pupils, ...rig.brows, rig.mouth];
-      const transforms = () => members.map(object => [...object.position.toArray(),
-        ...object.quaternion.toArray(), ...object.scale.toArray()]);
+      const transforms = () => [
+        ...members.map(object => [...object.position.toArray(), ...object.quaternion.toArray(), ...object.scale.toArray()]),
+        ...["left", "right"].map(side => Array.from((model.group.getObjectByName(`booky-soft-upper-lid-${side}`) as THREE.Mesh).geometry.getAttribute("position").array)),
+      ];
       const rest = transforms();
       const neutral: BookyInput = { mood: "idle", interaction: "rest", lookAt: { x: 0, y: 0 },
         reactionKey: 0, active: true };
@@ -151,6 +153,57 @@ describe("original articulated Mr. Booky model", () => {
       for (let index = 0; index < restored.length; index++) {
         restored[index].forEach((value, coordinate) => expect(value).toBeCloseTo(rest[index][coordinate], 12));
       }
+    } finally { model.dispose(); }
+  });
+
+  it("keeps partial eyelids on their curved shell, independently closes the wink and reopens without drift", () => {
+    const model = createBookyModel();
+    try {
+      const left = model.group.getObjectByName("booky-soft-upper-lid-left") as THREE.Mesh;
+      const right = model.group.getObjectByName("booky-soft-upper-lid-right") as THREE.Mesh;
+      const positions = (mesh: THREE.Mesh) => Array.from(mesh.geometry.getAttribute("position").array);
+      const originalLeft = positions(left), originalRight = positions(right);
+      expect(left.geometry).not.toBe(right.geometry);
+      const normal = new THREE.Vector3(), expected = new THREE.Vector3();
+      for (const closure of [.1, .25, .5, .62, .8, 1]) {
+        model.rig.setEyelidClosure(0, closure);
+        const vertex = left.geometry.getAttribute("position"), normals = left.geometry.getAttribute("normal");
+        for (let index = 0; index < vertex.count; index++) {
+          const x = vertex.getX(index) / .214, y = vertex.getY(index) / .253, z = vertex.getZ(index) / .130;
+          // A partially closed cap must stay outside the eye rather than shrink to a chord.
+          expect(x * x + y * y + z * z).toBeCloseTo(1, 5);
+          normal.fromBufferAttribute(normals, index); expected.set(x / .214, y / .253, z / .130).normalize();
+          expect(normal.length()).toBeCloseTo(1, 5); expect(normal.dot(expected)).toBeGreaterThan(.9999);
+        }
+        expect(positions(right)).toEqual(originalRight);
+      }
+      // Rays from the real oblique avatar camera must hit the curved lid
+      // before covered sclera samples, including both lateral upper regions.
+      const bounds = new THREE.Box3().setFromObject(model.group, true), center = bounds.getCenter(new THREE.Vector3());
+      const cameraDirection = center.clone().sub(center.clone().add(new THREE.Vector3(-1.85, 1.8, 6))).normalize();
+      const sclera = model.group.getObjectByName("booky-sclera-left") as THREE.Mesh;
+      for (const closure of [.25, .5, .8, 1]) {
+        model.rig.setEyelidClosure(0, closure); model.group.updateMatrixWorld(true);
+        for (const x of [-.075, 0, .075]) {
+          const y = closure < .5 ? .19 : .05;
+          const z = .082 * Math.sqrt(1 - (x / .205) ** 2 - (y / .237) ** 2);
+          const target = sclera.localToWorld(new THREE.Vector3(x, y, z));
+          const ray = new THREE.Raycaster(target.clone().addScaledVector(cameraDirection, -2), cameraDirection);
+          const coverHits: THREE.Intersection[] = [], eyeHits: THREE.Intersection[] = [];
+          THREE.Mesh.prototype.raycast.call(left, ray, coverHits); THREE.Mesh.prototype.raycast.call(sclera, ray, eyeHits);
+          expect(coverHits.length).toBeGreaterThan(0); expect(eyeHits.length).toBeGreaterThan(0);
+          expect(Math.min(...coverHits.map(hit => hit.distance))).toBeLessThan(Math.min(...eyeHits.map(hit => hit.distance)));
+        }
+      }
+      model.rig.setEyelidClosure(0, 0); expect(positions(left)).toEqual(originalLeft);
+      const neutral: BookyInput = { mood: "idle", interaction: "rest", lookAt: { x: 0, y: 0 }, reactionKey: 0, active: true };
+      const pose = createBookyPose(model.rig), wink = { ...neutral, interaction: "wink" as const };
+      pose(wink, neutral.lookAt, .5, false); expect(positions(left)).not.toEqual(originalLeft); expect(positions(right)).toEqual(originalRight);
+      pose(wink, neutral.lookAt, null, true); const stillWink = positions(left);
+      for (const phase of [0, .25, .5, 1]) { pose(wink, neutral.lookAt, phase, true); expect(positions(left)).toEqual(stillWink); }
+      pose(neutral, neutral.lookAt, null, false); expect(positions(left)).toEqual(originalLeft); expect(positions(right)).toEqual(originalRight);
+      const version = (left.geometry.getAttribute("position") as THREE.BufferAttribute).version;
+      pose(neutral, neutral.lookAt, null, false); expect((left.geometry.getAttribute("position") as THREE.BufferAttribute).version).toBe(version);
     } finally { model.dispose(); }
   });
 
@@ -252,13 +305,13 @@ describe("original articulated Mr. Booky model", () => {
         return result;
       };
       const frame = model.group.getObjectByName("booky-magnifier-gold-frame")!;
-      for (const yaw of [-.10, 0, .10]) for (const tilt of [-.06, .06]) for (const raised of [-.06, 0, .16]) {
-        model.rig.body.rotation.set(0, yaw, tilt); model.rig.rightArm.rotation.z = raised;
+      for (const yaw of [-.18, 0, .18]) for (const pitch of [-.06, 0, .06]) for (const tilt of [-.06, .06]) for (const raised of [-.06, 0, .16]) {
+        model.rig.body.rotation.set(pitch, yaw, tilt); model.rig.rightArm.rotation.z = raised;
         model.group.updateMatrixWorld(true);
         const face = projected(model.rig.eyes[1]), magnifier = projected(frame);
         // A visible gap remains even at the smallest 88px control. This checks
         // the actual rendered projection, not only world-space separation.
-        expect((magnifier.min.x - face.max.x) * 44, `yaw=${yaw}, tilt=${tilt}, arm=${raised}`).toBeGreaterThan(1);
+        expect((magnifier.min.x - face.max.x) * 44, `yaw=${yaw}, pitch=${pitch}, tilt=${tilt}, arm=${raised}`).toBeGreaterThan(1);
         expect(magnifier.max.x).toBeLessThan(1); expect(magnifier.max.y).toBeLessThan(1);
       }
     } finally { model.dispose(); }

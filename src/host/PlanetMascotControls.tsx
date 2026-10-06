@@ -716,11 +716,8 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
       move({ left: intent.origin.left + dx, top: intent.origin.top + dy });
       return;
     }
-    if (readerPaused || event.pointerType !== "mouse" && event.pointerType !== "pen") return;
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = Math.max(-1, Math.min(1, (event.clientX - bounds.left) / Math.max(1, bounds.width) * 2 - 1));
-    const y = Math.max(-1, Math.min(1, (event.clientY - bounds.top) / Math.max(1, bounds.height) * 2 - 1));
-    setPointerLook(previous => previous && Math.abs(previous.x - x) < .025 && Math.abs(previous.y - y) < .025 ? previous : { x, y });
+    // Passive gaze belongs to the renderer; React handles only the explicit drag.
+    // A hover must never override calm motion, a gesture, walking or a pointed target.
   };
   const guidedLook = open && highlight ? {
     x: Math.max(-1, Math.min(1, (highlight.left + highlight.width / 2 - petPosition.left - petSize.width / 2) / Math.max(1, view.width / 2))),
@@ -897,7 +894,6 @@ export default function PlanetMascotControls({ controller, snapshot, screen, cou
           if (intent.source === "avatar" && intent.moved) suppressAvatarClick.current = true;
           drag.current = null; setGesture("rest");
         }}
-        onPointerLeave={() => { if (!drag.current) { setPointerLook(null); setGesture("rest"); } }}
         onClick={event => {
           if (event.detail > 0 && suppressAvatarClick.current) { suppressAvatarClick.current = false; return; }
           const current = controller.getSnapshot();

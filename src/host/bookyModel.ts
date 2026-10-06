@@ -17,6 +17,7 @@ export interface BookyRig {
   readonly pupils: readonly [THREE.Group, THREE.Group];
   readonly brows: readonly [THREE.Group, THREE.Group];
   readonly mouth: THREE.Group;
+  readonly setEyelidClosure: (index: number, closure: number) => void;
 }
 export interface OwnedBookyModel {
   readonly group: THREE.Group;
@@ -92,31 +93,31 @@ export function createBookyModel(): OwnedBookyModel {
       value.userData.provenance = "authored-in-project"; value.needsUpdate = true;
       textures.add(value); return value;
     };
-    const leather = finish(new THREE.MeshPhysicalMaterial({ color: "#407c55", roughness: .68,
+    const leather = finish(new THREE.MeshPhysicalMaterial({ color: "#286c42", roughness: .51,
       map: texture("booky-leather-albedo", albedo, true), roughnessMap: texture("booky-leather-roughness", roughness),
-      normalMap: texture("booky-leather-normal", normal), normalScale: new THREE.Vector2(.16, .16),
-      clearcoat: .16, clearcoatRoughness: .58 })); leather.name = "booky-sage-leather";
-    const darkGreen = finish(leather.clone()); darkGreen.color.set("#2b6247"); darkGreen.name = "booky-emerald-binding";
-    const frontGreen = finish(leather.clone()); frontGreen.color.set("#4c855b"); frontGreen.name = "booky-sage-front";
+      normalMap: texture("booky-leather-normal", normal), normalScale: new THREE.Vector2(.26, .26),
+      clearcoat: .30, clearcoatRoughness: .38 })); leather.name = "booky-sage-leather";
+    const darkGreen = finish(leather.clone()); darkGreen.color.set("#194f32"); darkGreen.name = "booky-emerald-binding";
+    const frontGreen = finish(leather.clone()); frontGreen.color.set("#34764a"); frontGreen.name = "booky-sage-front";
     const ivory = finish(new THREE.MeshStandardMaterial({ color: "#f3e7cc", roughness: .79 })); ivory.name = "booky-ivory-paper";
     const leafEdge = finish(new THREE.MeshStandardMaterial({ color: "#fff4dc", roughness: .68 }));
-    const gold = finish(new THREE.MeshStandardMaterial({ color: "#c9a15a", metalness: .78, roughness: .32, envMapIntensity: .55 })); gold.name = "booky-gilt";
+    const gold = finish(new THREE.MeshStandardMaterial({ color: "#d8a344", metalness: .94, roughness: .18, envMapIntensity: 2.2 })); gold.name = "booky-gilt";
     const white = finish(new THREE.MeshPhysicalMaterial({ color: "#fff4e5", roughness: .61, clearcoat: .06, envMapIntensity: .25 })); white.name = "booky-soft-glove";
-    const purple = finish(new THREE.MeshPhysicalMaterial({ color: "#8b57ac", roughness: .67, clearcoat: .05 }));
-    const brown = finish(new THREE.MeshStandardMaterial({ color: "#483329", roughness: .69 }));
-    const cheek = finish(new THREE.MeshStandardMaterial({ color: "#b79881", roughness: .88 })); cheek.name = "booky-soft-cheek";
+    const purple = finish(new THREE.MeshPhysicalMaterial({ color: "#7828a4", roughness: .44, clearcoat: .22 }));
+    const brown = finish(new THREE.MeshPhysicalMaterial({ color: "#483329", roughness: .40, clearcoat: .28, clearcoatRoughness: .25 }));
+    const cheek = finish(new THREE.MeshStandardMaterial({ color: "#34764a", roughness: .66 })); cheek.name = "booky-soft-cheek";
     // Readable dark pupils remain dark under the renderer's broad environment.
     // Only the small authored catchlights are white, never the whole pupil.
     const pupilInk = finish(new THREE.MeshStandardMaterial({ color: "#090b10", roughness: .56, envMapIntensity: .08 }));
-    const eyeWhite = finish(new THREE.MeshPhysicalMaterial({ color: "#fff7e9", roughness: .56, clearcoat: .04, envMapIntensity: .12 }));
+    const eyeWhite = finish(new THREE.MeshPhysicalMaterial({ color: "#fff5e9", roughness: .32, clearcoat: .24, envMapIntensity: .20 }));
     const sparkle = finish(new THREE.MeshStandardMaterial({ color: "#fffcf4", roughness: .46,
       emissive: "#fff5e6", emissiveIntensity: .06, envMapIntensity: .1 }));
-    const mouthInside = finish(new THREE.MeshStandardMaterial({ color: "#633c37", roughness: .82 }));
-    const tonguePink = finish(new THREE.MeshStandardMaterial({ color: "#cb8986", roughness: .71 }));
-    const irisFinish = finish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .53, clearcoat: .08, envMapIntensity: .20 }));
-    const glass = finish(new THREE.MeshPhysicalMaterial({ color: "#cee4e4", transparent: true, opacity: .16,
-      roughness: .18, metalness: 0, clearcoat: .15, clearcoatRoughness: .35, envMapIntensity: .16, depthWrite: false })); glass.name = "booky-magnifying-glass";
-    const glassGlint = finish(new THREE.MeshBasicMaterial({ color: "#f1fdff", transparent: true, opacity: .54, depthWrite: false }));
+    const mouthInside = finish(new THREE.MeshStandardMaterial({ color: "#421b21", roughness: .65 }));
+    const tonguePink = finish(new THREE.MeshStandardMaterial({ color: "#d57585", roughness: .52 }));
+    const irisFinish = finish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .32, clearcoat: .34, envMapIntensity: .14 }));
+    const glass = finish(new THREE.MeshPhysicalMaterial({ color: "#b9dbe3", transparent: true, opacity: .56,
+      roughness: .12, metalness: 0, clearcoat: .65, clearcoatRoughness: .12, envMapIntensity: .45, depthWrite: false })); glass.name = "booky-magnifying-glass";
+    const glassGlint = finish(new THREE.MeshBasicMaterial({ color: "#f1fdff", transparent: true, opacity: .82, depthWrite: false }));
 
     const sphere = own(new THREE.SphereGeometry(1, 24, 16));
     const transformed = (source: THREE.BufferGeometry, position: Point, scale: Point = [1, 1, 1], rotation: Point = [0, 0, 0]) => {
@@ -256,7 +257,7 @@ export function createBookyModel(): OwnedBookyModel {
     line(bx, -by + corner, bx, by - corner); arc(bx, by - corner, bx, by, bx - corner, by);
     line(bx - corner, by, -bx + corner, by); arc(-bx + corner, by, -bx, by, -bx, by - corner);
     line(-bx, by - corner, -bx, -by + corner); arc(-bx, -by + corner, -bx, -by, -bx + corner, -by);
-    const border = own(new THREE.TubeGeometry(borderPath, 128, .007, 6, true));
+    const border = own(new THREE.TubeGeometry(borderPath, 128, .0105, 6, true));
     mesh(frontCover, "booky-gold-cover-tooling", border, gold);
 
     const bookmark = node(body, "booky-bookmark", [-.40, .754, 0]);
@@ -361,7 +362,7 @@ export function createBookyModel(): OwnedBookyModel {
         positions.push(Math.cos(a) * r, Math.sin(a) * r, .006 * Math.sqrt(Math.max(0, 1 - r * r)));
         uvs.push(Math.cos(a) * r * .5 + .5, Math.sin(a) * r * .5 + .5);
         const fiber = Math.sin(a * 31 + r * 7) * .5 + Math.sin(a * 19 - r * 4) * .3;
-        color.setHSL(.755 + fiber * .012, .40, .30 + Math.sin(r * Math.PI) * .12 + fiber * .016);
+        color.setHSL(.735 + fiber * .007, .76, (.12 + Math.sin(r * Math.PI) * .15 + fiber * .016) * (.82 - Math.sin(a) * .28));
         if (row === rows) color.multiplyScalar(.72);
         colors.push(color.r, color.g, color.b);
       }
@@ -382,34 +383,72 @@ export function createBookyModel(): OwnedBookyModel {
       return result;
     };
     const iris = irisGeometry(), eyes: THREE.Group[] = [], upperLids: THREE.Group[] = [], pupils: THREE.Group[] = [], brows: THREE.Group[] = [];
-    const upperLidGeometry = own(new THREE.SphereGeometry(1, 20, 12));
-    upperLidGeometry.scale(.220, .016, .012);
+    // Evaluate the curved shell itself: interpolation between distant cap
+    // positions would contract the lid and expose white crescents mid-blink.
+    // Two small owned buffers deform only when closure changes; no morph texture.
+    const lidColumns = 20, lidRows = 10, lidStride = lidColumns + 1;
+    const lidIndices: number[] = [], lidUvs: number[] = [];
+    for (let row = 0; row <= lidRows; row++) for (let col = 0; col <= lidColumns; col++) {
+      lidUvs.push(col / lidColumns, row / lidRows);
+      if (row < lidRows && col < lidColumns) {
+        const a = row * lidStride + col;
+        lidIndices.push(a, a + 1, a + lidStride, a + 1, a + lidStride + 1, a + lidStride);
+      }
+    }
+    const lidGeometries = [0, 1].map(() => {
+      const geometry = own(new THREE.BufferGeometry());
+      geometry.setAttribute("position", new THREE.Float32BufferAttribute(new Float32Array((lidRows + 1) * lidStride * 3), 3).setUsage(THREE.DynamicDrawUsage));
+      geometry.setAttribute("normal", new THREE.Float32BufferAttribute(new Float32Array((lidRows + 1) * lidStride * 3), 3).setUsage(THREE.DynamicDrawUsage));
+      geometry.setAttribute("uv", new THREE.Float32BufferAttribute(lidUvs, 2)); geometry.setIndex(lidIndices);
+      return geometry;
+    });
+    const lidClosures = [NaN, NaN], lidNormal = new THREE.Vector3();
+    const setEyelidClosure = (index: number, value: number) => {
+      if (disposed || (index !== 0 && index !== 1)) return;
+      const closure = Number.isFinite(value) ? THREE.MathUtils.clamp(value, 0, 1) : 0;
+      if (closure === lidClosures[index]) return;
+      lidClosures[index] = closure;
+      const geometry = lidGeometries[index], positions = geometry.getAttribute("position"), normals = geometry.getAttribute("normal");
+      const limit = .10 + closure * (Math.PI * .985 - .10);
+      for (let row = 0; row <= lidRows; row++) for (let col = 0; col <= lidColumns; col++) {
+        const theta = row / lidRows * limit, phi = col / lidColumns * Math.PI;
+        const x = Math.cos(phi) * Math.sin(theta), y = Math.cos(theta), z = Math.sin(phi) * Math.sin(theta);
+        const at = row * lidStride + col;
+        positions.setXYZ(at, x * .214, y * .253, z * .130);
+        lidNormal.set(x / .214, y / .253, z / .130).normalize();
+        normals.setXYZ(at, lidNormal.x, lidNormal.y, lidNormal.z);
+      }
+      positions.needsUpdate = true; normals.needsUpdate = true;
+      geometry.computeBoundingBox(); geometry.computeBoundingSphere();
+    };
+    setEyelidClosure(0, 0); setEyelidClosure(1, 0);
     // Capped rounded brows and a broader iris give a gentle, attentive face at
     // 88px too. Independent soft lids leave the eye and pupil shapes intact.
     const browShape = sweep([[-.145, -.006, 0], [-.075, .052, .008], [.04, .066, .008], [.139, .018, 0]],
-      [.009, .025, .023, .009], 22, 10);
+      [.010, .038, .033, .008], 22, 10);
     for (const [side, x] of [["left", -.237], ["right", .237]] as const) {
       const eye = node(frontCover, `booky-eye-${side}`, facePosition(x, .215, .274)); eyes.push(eye);
-      mesh(eye, `booky-eye-socket-${side}`, ellipsoid([0, .001, -.011], [.215, .249, .034]), frontGreen);
-      mesh(eye, `booky-sclera-${side}`, ellipsoid([0, 0, 0], [.205, .237, .044]), eyeWhite);
-      // Open lower edge .244 clears the sclera's .237 upper edge. A blink
-      // grows down from the fixed .276 top, in front of the iris/pupil depth.
-      const upperLid = node(eye.parent!, `booky-upper-lid-${side}`, [eye.position.x, eye.position.y + .260, eye.position.z + .080]);
+      mesh(eye, `booky-eye-socket-${side}`, ellipsoid([0, .001, -.011], [.215, .249, .034]), brown);
+      mesh(eye, `booky-sclera-${side}`, ellipsoid([0, 0, 0], [.205, .237, .082]), eyeWhite);
+      // The open cap clears the sclera; each bounded closure rolls its edge
+      // down the same shell, in front of the preserved pupil and catchlights.
+      const upperLid = node(eye.parent!, `booky-upper-lid-${side}`, [eye.position.x, eye.position.y, eye.position.z]);
       upperLids.push(upperLid);
-      mesh(upperLid, `booky-soft-upper-lid-${side}`, upperLidGeometry, frontGreen);
-      const pupil = node(eye, `booky-pupil-${side}`, [.006, -.014, .047]); pupils.push(pupil);
-      const colored = mesh(pupil, `booky-iris-${side}`, iris, irisFinish); colored.scale.set(.137, .166, 1);
-      mesh(pupil, `booky-pupil-ink-${side}`, ellipsoid([0, 0, .007], [.102, .130, .009]), pupilInk);
-      fused(pupil, `booky-eye-catchlights-${side}`, [ellipsoid([-.035, .061, .016], [.022, .029, .005]),
-        ellipsoid([.037, -.041, .014], [.007, .009, .003])], sparkle);
-      const brow = node(frontCover, `booky-brow-${side}`, facePosition(x, side === "left" ? .499 : .508, .282)); brows.push(brow);
+      mesh(upperLid, `booky-soft-upper-lid-${side}`, lidGeometries[side === "left" ? 0 : 1], frontGreen);
+      const pupil = node(eye, `booky-pupil-${side}`, [.006, -.014, .074]); pupils.push(pupil);
+      const colored = mesh(pupil, `booky-iris-${side}`, iris, irisFinish); colored.scale.set(.144, .173, 1);
+      mesh(pupil, `booky-pupil-ink-${side}`, ellipsoid([0, 0, .007], [.091, .121, .012]), pupilInk);
+      fused(pupil, `booky-eye-catchlights-${side}`, [ellipsoid([-.032, .065, .022], [.026, .034, .006]),
+        ellipsoid([.038, -.039, .020], [.009, .011, .004])], sparkle);
+      const brow = node(frontCover, `booky-brow-${side}`, facePosition(x, side === "left" ? .542 : .552, .282)); brows.push(brow);
       const browMesh = mesh(brow, `booky-sculpted-brow-${side}`, browShape, brown);
       browMesh.rotation.z = side === "left" ? .035 : -.025;
     }
     mesh(frontCover, "booky-soft-nose", ellipsoid(facePosition(.005, -.055, .275), [.048, .036, .025]), frontGreen);
-    fused(frontCover, "booky-smile-cheeks", [ellipsoid(facePosition(-.330, -.106, .264), [.080, .048, .012]),
-      ellipsoid(facePosition(.330, -.106, .264), [.080, .048, .012])], cheek);
-    const mouth = node(frontCover, "booky-mouth", facePosition(0, -.253, .267));
+    fused(frontCover, "booky-smile-cheeks", [ellipsoid(facePosition(-.330, -.106, .264), [.074, .040, .008]),
+      ellipsoid(facePosition(.330, -.106, .264), [.074, .040, .008])], cheek);
+    const mouth = node(frontCover, "booky-mouth", facePosition(0, -.230, .275));
+    mouth.scale.set(1.12, 1.22, 1);
     mesh(mouth, "booky-smile-cavity", shape(s => {
       s.moveTo(-.231, .030); s.bezierCurveTo(-.100, -.015, .102, -.014, .237, .041);
       s.bezierCurveTo(.151, -.194, -.140, -.196, -.231, .030); s.closePath();
@@ -574,6 +613,7 @@ export function createBookyModel(): OwnedBookyModel {
       geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2)); geometry.setIndex(indices); geometry.computeVertexNormals();
       return geometry;
     })();
+    leftGlove.rotateZ(Math.PI / 3); leftGlove.scale(1.22, 1.22, 1.10);
     mesh(leftHand, "booky-left-open-glove", leftGlove, white);
     const leftCuff = torus(.074, .018, [0, 0, 0]);
     leftCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(-1, .15, .30).normalize()));
@@ -670,19 +710,20 @@ export function createBookyModel(): OwnedBookyModel {
     if (!rightGlove) throw new Error("booky-right-glove-merge-failed");
     own(rightGlove);
     for (const part of rightPalm) { part.dispose(); geometries.delete(part); }
+    rightGlove.translate(-.085, -.04, -.025); rightGlove.scale(1.12, 1.12, 1.10); rightGlove.translate(.085, .04, .025);
     mesh(rightHand, "booky-right-grip-glove", rightGlove, white);
     const rightCuff = torus(.074, .018, [0, 0, 0]);
     rightCuff.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(new THREE.Vector3(0, 0, 1), new THREE.Vector3(.8, .4, .3).normalize()));
     rightCuff.translate(-.014, -.007, -.008); mesh(rightHand, "booky-right-cuff", rightCuff, white);
-    const magnifier = node(rightHand, "booky-magnifier", [.085, .04, .025]); magnifier.rotation.z = .12;
+    const magnifier = node(rightHand, "booky-magnifier", [.085, .04, .025]); magnifier.rotation.z = .12; magnifier.scale.set(1.10, 1.10, 1);
     mesh(magnifier, "booky-magnifier-handle", sweep([[0, -.205, .018], [0, .080, .018], [0, .375, .018]],
       [.039, .035, .032], 16, 12), darkGreen);
     const lensCenter: Point = [0, .625, .018];
-    const frameParts = [torus(.235, .021, [0, .625, .046]), torus(.235, .018, [0, .625, -.009])];
+    const frameParts = [torus(.235, .028, [0, .625, .046]), torus(.235, .018, [0, .625, -.009])];
     for (const y of [-.191, .337, .371]) frameParts.push(torus(.038, .012, [0, y, .018], [Math.PI / 2, 0, 0]));
     fused(magnifier, "booky-magnifier-gold-frame", frameParts, gold);
     const lens = mesh(magnifier, "booky-magnifier-lens", ellipsoid(lensCenter, [.221, .221, .027]), glass); lens.renderOrder = 1;
-    const reflection = sweep([[-.158, .693, .040], [-.146, .752, .041], [-.096, .791, .040]], [.008, .015, .007], 14, 8);
+    const reflection = ellipsoid([-.106, .723, .062], [.027, .062, .008]);
     mesh(magnifier, "booky-magnifier-highlight", reflection, glassGlint).renderOrder = 2;
 
     const rig: BookyRig = Object.freeze({ body, frontCover, bookmark, leftArm, rightArm,
@@ -690,7 +731,7 @@ export function createBookyModel(): OwnedBookyModel {
       eyes: Object.freeze(eyes) as unknown as readonly [THREE.Group, THREE.Group],
       upperLids: Object.freeze(upperLids) as unknown as readonly [THREE.Group, THREE.Group],
       pupils: Object.freeze(pupils) as unknown as readonly [THREE.Group, THREE.Group],
-      brows: Object.freeze(brows) as unknown as readonly [THREE.Group, THREE.Group], mouth });
+      brows: Object.freeze(brows) as unknown as readonly [THREE.Group, THREE.Group], mouth, setEyelidClosure });
     group.updateMatrixWorld(true);
     return Object.freeze({ group, rig, dispose });
   } catch (error) { dispose(); throw error; }

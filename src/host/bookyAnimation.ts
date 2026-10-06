@@ -22,6 +22,7 @@ type BookyRig = {
   pupils: readonly [Object3D, Object3D];
   brows: readonly [Object3D, Object3D];
   mouth: Object3D;
+  setEyelidClosure?: (index: number, closure: number) => void;
   frontCover: Object3D;
   bookmark: Object3D;
   leftLeg?: Object3D;
@@ -104,9 +105,9 @@ export function createBookyPose(rig: BookyRig) {
     }
     const inspect = envelope * Math.sin(progress * Math.PI * 2);
     const rocking = envelope * Math.sin(progress * Math.PI * 4);
-    rig.body.rotation.y += look.x * (curious ? .05 : sway ? .085 : .10)
+    rig.body.rotation.y += look.x * (curious ? .05 : sway ? .085 : .18)
       + (curious ? .035 + inspect * .009 : sway ? rocking * .012 : 0);
-    rig.body.rotation.x += look.y * .025 + (nod ? .045 + doubleNod * .105 : reassuring ? .025 : 0);
+    rig.body.rotation.x += look.y * .06 + (nod ? .045 + doubleNod * .105 : reassuring ? .025 : 0);
     rig.body.rotation.z += dragging ? -.075 * look.x : -.018 * look.x;
     if (greeting) rig.body.rotation.z += .025 + wave * .012;
     if (curious) rig.body.rotation.z += -.030 - envelope * .005 + inspect * .006;
@@ -130,7 +131,9 @@ export function createBookyPose(rig: BookyRig) {
       pupil.position.x += curious ? .020 + look.x * .004 + inspect * .005 : look.x * .021;
       pupil.position.y += curious ? .009 - look.y * .004 + inspect * .003 : -look.y * .016 - (nod ? .005 : 0);
       const upperLid = rig.upperLids?.[index];
-      if (upperLid) {
+      if (rig.setEyelidClosure) {
+        rig.setEyelidClosure(index, index === 0 && wink ? winkClose : blink);
+      } else if (upperLid) {
         const closure = index === 0 && wink ? winkClose : blink;
         // The .016 open half-height becomes .270 at closure. Move the centre
         // by the same .254 growth to keep the upper edge fixed throughout.
