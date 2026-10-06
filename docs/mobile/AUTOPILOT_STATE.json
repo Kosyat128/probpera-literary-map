@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "91a1f2f308ae68a4153a6c28270080e691ff6952",
+  "headSha": "5461afefed847a8cdb6c538963510b462f2b0b4e",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-06T06:37:45.307Z",
+  "updatedAt": "2026-10-06T08:10:49.239Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Next whole SOL Ultra programming stage: implement the original125 section5 native child offline-package coordinator, reusing existing private native resource/package and original Web-cache contracts. Separate authenticated common binary objects from RU/EN text/search/audio generations, retain checked shared objects across allowed locale changes, persist bounded staged acquisition progress and resume after interruption, and activate a new locale generation atomically only after its complete signature/checksum/current review-rights validation. Preserve active prior data on cancellation/failure, fresh native profile/age/parent authority, parent clear and version/rights invalidation, sibling partitions, no autoplay and English text fallback. Keep genuine pins EMPTY_DENY. Then perform one whole Astra Ultra review/check/fix before any following SOL stage.",
+    "nextAction": "Next whole SOL Ultra programming stage: implement the original16 section9 and17 sections4,6-9 signed common 3D asset pipeline end to end: bounded versioned model/buffer/texture/tier dependency compiler, typed Android/iOS acquisition through existing native ResourceClaim and authenticated common-object coordinator, and a consumer in the original canonical Canvas with preload/warm/apply/read/restore/delete and prior-valid rollback. Use project-owned synthetic fixtures for local authoring. Preserve independent RU/EN generations, original current scene/media/review/rights/profile/parent checks, latest-wins and disposal. Add platform import/decode probes and meaningful malformed/dependency/version/cancel/cold-resume/rollback tests. Admit glTF/GLB or KTX2 only for actually checked platform/tier capability; a MIME widening or disconnected helper is not completion. Follow with one whole Astra Ultra review/check/fix before another SOL block. First address the observed existing Booky offline dynamic dependency gap in this same coherent asset-pipeline scope: Include the existing Booky dynamic import/dependency closure in the authenticated PWA offline bootstrap using exact source-to-output manifest ownership, then assert actual offline3D readiness after a full browser restart while preserving original canonical globe/Booky state. Treat this as first dependency-closure repair in the original16/17 model-package pipeline, not an owner prerequisite.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
