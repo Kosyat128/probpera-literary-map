@@ -285,12 +285,14 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
   report.checks.push({id:"new-browser-process-synthetic-durable-passport",status:"PASS",nativeAuthority:false});
   if(options.passportProgram===true){
     await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
+    await freshSession("explicit-route-save");
     await page.getByRole("button",{name:"Download route texts",exact:true}).click();await page.getByText("The route texts are saved on this device.",{exact:true}).waitFor();
     const stored=(await snapshot()).state.passports[profiles[0]].routes[0];require(stored&&stored.bytes&&sha(Buffer.from(stored.bytes))===stored.snapshotChecksum&&Buffer.byteLength(stored.bytes)===stored.byteLength,"save confirms real synthetic durable complete route bytes/hash");
     await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Downloaded routes · 1",exact:true}).waitFor();
     await page.getByText("The texts of these routes are available on this device.",{exact:true}).waitFor();await capture("en-downloaded-native-route-texts");
     report.checks.push({id:"explicit-route-save-durable-bytes-receipt",status:"PASS",nativeAuthority:false,installedStorageAcceptance:false});
     await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
+    await freshSession("reviewed-award-and-stored-route");
     await page.evaluate(()=>window.__childJourneyBrowser.control({action:"reviewProgram",value:true}));
     require((await page.evaluate(()=>window.__childJourneyBrowser.readPassport())).badges.items.length===0,"reading newly reviewed program never creates a badge");
     await page.getByRole("button",{name:"Travel · Fixture journey A",exact:true}).click();await page.getByRole("button",{name:"Travel again",exact:true}).click();
@@ -301,8 +303,11 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
     await page.getByRole("button",{name:"Open route · Fixture journey A",exact:true}).click();await page.getByRole("heading",{name:"Fixture journey A",exact:true}).waitFor();
     require((await snapshot()).events.some(value=>value.method==="openedStoredRouteBytes"),"open native projection consumes decoded persisted verified route bytes");
     report.checks.push({id:"reviewed-award-only-confirmed-native-completion-and-stored-route-open",status:"PASS",nativeAuthority:false});
-    await page.getByRole("button",{name:"Home",exact:true}).click();await idle();await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+    await page.getByRole("button",{name:"Home",exact:true}).click();await idle();
     await resetFixtureCameraAfterJourney("en-badges-after-replayed-journey");
+    await freshSession("awarded-route-phone-capture");
+    await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+    await page.getByRole("heading",{name:"Badges · 1",exact:true}).waitFor();await page.getByRole("heading",{name:"Downloaded routes · 1",exact:true}).waitFor();
     await page.setViewportSize({width:320,height:844});require(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),"320px badges/routes do not overflow");await capture("en-phone-private-badges-downloaded-routes");await page.setViewportSize({width:1100,height:820});
     await page.evaluate(()=>window.__childJourneyBrowser.unmount());await browser.close();browser=null;await launch();await idle();
     await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Badges · 1",exact:true}).waitFor();await page.getByRole("heading",{name:"Downloaded routes · 1",exact:true}).waitFor();
