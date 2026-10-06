@@ -7,10 +7,12 @@ import { decodeChildNativeMediaLayout, type ChildNativeMediaAsset } from "./chil
 const copy = {
   ru: { title: "Изображения и озвучивание", loading: "Проверяем материал…", unavailable: "Этот материал сейчас недоступен.",
     show: "Открыть изображение", audio: "Открыть озвучивание", close: "Закрыть материал", transcript: "Текст озвучивания",
-    play: "Включите воспроизведение кнопкой на устройстве.", image: "Изображение", caption: "Подпись", empty: "Для этого материала пока нет доступных изображений или озвучивания." },
+    play: "Включите воспроизведение кнопкой на устройстве.", image: "Изображение", caption: "Подпись", language: "Русский",
+    empty: "Для этого материала пока нет доступных изображений или озвучивания. Его русский текст можно читать." },
   en: { title: "Images and narration", loading: "Checking the material…", unavailable: "This material is currently unavailable.",
     show: "Open image", audio: "Open narration", close: "Close material", transcript: "Narration transcript",
-    play: "Start playback with the control on your device.", image: "Image", caption: "Caption", empty: "No images or narration are currently available for this material." },
+    play: "Start playback with the control on your device.", image: "Image", caption: "Caption", language: "English",
+    empty: "No images or narration are currently available for this material. You can read its English text." },
 } as const;
 
 /** A real native-owned pixel/audio slot. JS owns only accessible captions and
@@ -20,23 +22,29 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
   controller: ChildNativeAppController; owner: ChildEntityReference; contextToken: string; language: "ru" | "en";
 }) {
   const text = copy[language], media = controller.media;
-  const [assets, setAssets] = useState<readonly ChildNativeMediaAsset[] | null>(null);
-  const [selected, setSelected] = useState<ChildNativeMediaAsset | null>(null);
+  const ownerKey = owner.kind + "/" + owner.id + "/" + owner.contentChecksum;
+  const renderKey = contextToken + "/" + language + "/" + ownerKey;
+  const [loaded, setLoaded] = useState<{ key: string; assets: readonly ChildNativeMediaAsset[] | null } | null>(null);
+  const [selection, setSelection] = useState<{ key: string; asset: ChildNativeMediaAsset } | null>(null);
+  const assets = loaded?.key === renderKey ? loaded.assets : null;
+  const selected = selection?.key === renderKey ? selection.asset : null;
+  const setSelected = (asset: ChildNativeMediaAsset | null) => setSelection(asset ? { key: renderKey, asset } : null);
   const [phase, setPhase] = useState<"sealed" | "loading" | "ready" | "unavailable">("sealed");
   const slot = useRef<HTMLDivElement>(null), sequence = useRef(0), live = useRef(false), token = useRef<string | null>(null);
   const anchored = useRef<{ left: number; top: number; right: number; bottom: number; viewportWidth: number; viewportHeight: number } | null>(null);
-  const ownerKey = owner.kind + "/" + owner.id + "/" + owner.contentChecksum;
-  const current = () => live.current && controller.getSnapshot().status === "child"
-    && controller.getSnapshot().context?.token === contextToken;
+  const current = () => live.current && controller.getSnapshot().phase === "ready" && controller.getSnapshot().status === "child"
+    && controller.getSnapshot().context?.token === contextToken && controller.getSnapshot().context?.locale === language;
 
   useEffect(() => {
     live.current = true; const attempt = ++sequence.current;
-    setAssets(null); setSelected(null); setPhase("loading"); token.current = null; anchored.current = null;
+    setLoaded(null); setSelected(null); setPhase("loading"); token.current = null; anchored.current = null;
     void (async () => {
       if (!media) { if (current() && sequence.current === attempt) setPhase("unavailable"); return; }
-      const values = await media.list(owner);
-      if (!current() || sequence.current !== attempt) return;
-      setAssets(values?.filter(childNativeSlotMedia) ?? null); setPhase(values ? "ready" : "unavailable");
+      try {
+        const values = await media.list(owner);
+        if (!current() || sequence.current !== attempt) return;
+        setLoaded({ key: renderKey, assets: values?.filter(childNativeSlotMedia) ?? null }); setPhase(values ? "ready" : "unavailable");
+      } catch { if (current() && sequence.current === attempt) { setLoaded(null); setPhase("unavailable"); } }
     })();
     return () => {
       live.current = false; ++sequence.current; anchored.current = null;
@@ -45,7 +53,7 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
       // native media epoch before an unmounted slot can receive its pixels.
       if (controller.getSnapshot().context?.token === contextToken) void media?.releaseAll();
     };
-  }, [controller, media, ownerKey, contextToken]);
+  }, [controller, media, ownerKey, contextToken, language]);
   useEffect(() => {
     const hide = () => {
       if (!current() || !selected || !media || !anchored.current) return;
@@ -98,12 +106,12 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
     if (result?.status === "presented") { token.current = result.presentationToken; setPhase("ready"); }
     else { anchored.current = null; setSelected(null); setPhase("unavailable"); }
   }
-  return <section className="child-native-media" aria-label={text.title} data-child-native-media-phase={phase}>
+  return <section className="child-native-media" aria-label={text.title + " · " + text.language} lang={language} data-child-native-media-phase={phase}>
     <h3>{text.title}</h3>
     {assets?.length === 0 && <p>{text.empty}</p>}
     {!!assets?.length && <ul className="child-native-media-list">{assets.map(asset => <li key={asset.assetId}>
       <button type="button" disabled={phase === "loading"} onClick={() => { void present(asset); }}>
-        {asset.role === "narration" ? text.audio : text.show}: {asset.altText}
+        {asset.role === "narration" ? text.audio : text.show}: {asset.altText} · {text.language}
       </button>
     </li>)}</ul>}
     <div ref={slot} hidden={!selected} className="child-native-media-slot" role={selected?.role === "narration" ? "group" : "img"}
@@ -112,9 +120,13 @@ export function ChildNativeMediaView({ controller, owner, contextToken, language
     </div>
     {selected && <div className="child-native-media-caption">
       <p>{selected.altText}</p>
-      {selected.transcript && <details open><summary>{text.transcript}</summary><p>{selected.transcript}</p></details>}
       <button type="button" onClick={() => { void close(); }}>{text.close}</button>
     </div>}
+    {/* Transcript disclosures follow the native slot so expanding text cannot
+        move an already anchored native surface onto the disclosure. */}
+    <div className="child-native-media-caption">{assets?.filter(asset => asset.transcript).map(asset => <details key={renderKey + "/" + asset.assetId}>
+      <summary>{text.transcript} · {text.language}</summary><p>{asset.transcript}</p>
+    </details>)}</div>
     {/* Preserve page height when native decoding finishes, including at the
         document scroll limit; a disappearing status must not move the slot. */}
     <p role="status" aria-hidden={phase !== "loading" && phase !== "unavailable"}

@@ -246,3 +246,33 @@ extension PlanetChildDiscoveryPassportRuntimeTests {
         XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.passportProgramScenario("re-reviewed-program"))
     }
 }
+
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    func testDownloadedRouteIdentitySeparatesLocalesWithinOneProfile() throws {
+        var en=try PlanetChildPassportFixtureBytes.route();defer { en.dispose() }
+        var ru=try PlanetChildPassport.SavedRoute(journeyId:en.journeyId,journeyVersion:en.journeyVersion,contentVersion:en.contentVersion,packageId:en.packageId,packageVersion:en.packageVersion,packageChecksum:en.packageChecksum,packageReviewChecksum:en.packageReviewChecksum,policyVersion:en.policyVersion,policyChecksum:en.policyChecksum,locale:"ru",exactAge:en.exactAge,bytes:en.bytes);defer { ru.dispose() }
+        var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() };try ledger.save(en);try ledger.save(ru);XCTAssertEqual(ledger.downloadedRoutes.count,2)
+        try ledger.save(en);XCTAssertEqual(ledger.downloadedRoutes.count,2);XCTAssertEqual(Set(ledger.downloadedRoutes.map { $0.locale }),Set(["ru","en"]))
+        var changed=try PlanetChildPassportFixtureBytes.route(textLength:1);defer { changed.dispose() };try ledger.save(changed)
+        XCTAssertEqual(ledger.downloadedRoutes.first(where:{ $0.locale=="ru" }),ru);XCTAssertEqual(ledger.downloadedRoutes.first(where:{ $0.locale=="en" }),changed)
+        var encoded=try ledger.encoded();defer { encoded.resetBytes(in:0..<encoded.count) };var restored=try PlanetChildPassport.Ledger.decode(encoded);defer { restored.disposeRouteBytes() };XCTAssertEqual(restored,ledger)
+        ledger.clearDownloads();XCTAssertTrue(ledger.downloadedRoutes.isEmpty)
+    }
+    func testDownloadedRouteCountIsSharedAcrossLocalesAndOverflowIsAtomic() throws {
+        var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() }
+        for at in 0..<16 {
+            var en=try PlanetChildPassportFixtureBytes.route("route-\(at)");defer { en.dispose() }
+            var ru=try PlanetChildPassport.SavedRoute(journeyId:en.journeyId,journeyVersion:en.journeyVersion,contentVersion:en.contentVersion,packageId:en.packageId,packageVersion:en.packageVersion,packageChecksum:en.packageChecksum,packageReviewChecksum:en.packageReviewChecksum,policyVersion:en.policyVersion,policyChecksum:en.policyChecksum,locale:"ru",exactAge:en.exactAge,bytes:en.bytes);defer { ru.dispose() }
+            try ledger.save(en);try ledger.save(ru)
+        }
+        XCTAssertEqual(ledger.downloadedRoutes.count,32)
+        var before=try ledger.encoded();defer { before.resetBytes(in:0..<before.count) }
+        var overflow=try PlanetChildPassportFixtureBytes.route("route-overflow");defer { overflow.dispose() }
+        XCTAssertThrowsError(try ledger.save(overflow));XCTAssertEqual(try ledger.encoded(),before)
+        var replacement=try PlanetChildPassportFixtureBytes.route("route-0",textLength:1);defer { replacement.dispose() }
+        let sibling=ledger.downloadedRoutes.first(where:{ $0.journeyId=="route-0" && $0.locale=="ru" })
+        try ledger.save(replacement);XCTAssertEqual(ledger.downloadedRoutes.count,32)
+        XCTAssertEqual(ledger.downloadedRoutes.first(where:{ $0.journeyId=="route-0" && $0.locale=="ru" }),sibling)
+    }
+}

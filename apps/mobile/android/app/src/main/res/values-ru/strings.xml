@@ -31,7 +31,13 @@
     <string name="native_owner_recover_title">Подтвердите восстановление родительского PIN</string>
     <string name="native_owner_device_credential_reason">Подтвердите действие кодом блокировки устройства.</string>
 
-    <string name="native_child_delete_history_disclosure">Очистить историю и литературный паспорт: %1$s (%2$s). Область: history. Удаляются изученное, значки и сохранённый текст маршрутов. Профиль, оформление, избранное и другие офлайн-материалы сохранятся. Требуется подтверждение PIN родителя.</string>
+    <string name="native_child_delete_history_disclosure">Очистить историю и литературный паспорт: %1$s (%2$s). Область: history. Удаляются изученное, значки, сохранённый текст маршрутов, аудио, изображения и транскрипты. Профиль, оформление, избранное и другие офлайн-материалы сохранятся. Требуется подтверждение PIN родителя.</string>
     <string name="native_child_delete_profile_disclosure">Удалить профиль %1$s (%2$s) и его локальные данные. Область: profile. Другие профили и PIN родителя сохранятся. Требуется подтверждение PIN родителя.</string>
-    <string name="native_child_delete_downloads_disclosure">Удалить весь сохранённый текст маршрутов: %1$s (%2$s). Изученное, значки, профиль, оформление и избранное сохранятся. Требуется подтверждение PIN родителя.</string>
+    <string name="native_child_delete_downloads_disclosure">Удалить сохранённый текст маршрутов, аудио, изображения и транскрипты: %1$s (%2$s). Изученное, значки, профиль, оформление и избранное сохранятся. Требуется подтверждение PIN родителя.</string>
+    <string name="native_child_audio_play">Слушать русскую озвучку</string>
+    <string name="native_child_audio_stop">Остановить русскую озвучку</string>
+    <string name="native_child_audio_mute">Выключить звук русской озвучки</string>
+    <string name="native_child_audio_unmute">Включить звук русской озвучки</string>
+    <string name="native_child_audio_volume">Громкость русской озвучки</string>
+    <string name="native_child_audio_transcript">Текст русской озвучки</string>
 </resources>

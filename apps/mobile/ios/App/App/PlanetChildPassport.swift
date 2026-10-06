@@ -52,10 +52,10 @@ enum PlanetChildPassport {
             for sum in [packageChecksum,packageReviewChecksum,policyChecksum] { try PlanetChildPassport.checksum(sum) }
             try PlanetChildJourney.require(["ru","en"].contains(locale) && (3...17).contains(exactAge) && !bytes.isEmpty && bytes.count<=PlanetChildPassport.maximumRouteBytes)
             self.journeyId=journeyId;self.journeyVersion=journeyVersion;self.contentVersion=contentVersion;self.packageId=packageId;self.packageVersion=packageVersion;self.packageChecksum=packageChecksum;self.packageReviewChecksum=packageReviewChecksum;self.policyVersion=policyVersion;self.policyChecksum=policyChecksum;self.locale=locale;self.exactAge=exactAge;self.bytes=Data(Array(bytes));self.snapshotChecksum=PlanetChildPassport.digest(bytes)
-            try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes)==journeyId)
+            try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes,locale:locale)==journeyId)
         }
         mutating func dispose() { bytes.resetBytes(in:0..<bytes.count);bytes.removeAll() }
-        func validate() throws { try PlanetChildJourney.require(!bytes.isEmpty && bytes.count<=PlanetChildPassport.maximumRouteBytes && PlanetChildPassport.digest(bytes)==snapshotChecksum);try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes)==journeyId) }
+        func validate() throws { try PlanetChildJourney.require(!bytes.isEmpty && bytes.count<=PlanetChildPassport.maximumRouteBytes && PlanetChildPassport.digest(bytes)==snapshotChecksum);try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes,locale:locale)==journeyId) }
     }
     struct Ledger: Equatable {
         var countries=[String](),learning=[Learning](),completedJourneys=[CompletedJourney]()
@@ -63,7 +63,7 @@ enum PlanetChildPassport {
         func validate() throws {
             try PlanetChildJourney.require(countries.count<=maximumCountries && Set(countries).count==countries.count && learning.count<=maximumLearning && Set(learning.map { $0.identity }).count==learning.count && completedJourneys.count<=maximumJourneys && Set(completedJourneys.map { $0.identity }).count==completedJourneys.count)
             for id in countries { _=try PlanetChildJourney.identifier(id) }
-            try PlanetChildJourney.require((schemaVersion==1 || schemaVersion==2) && (schemaVersion==2 || badges.isEmpty && downloadedRoutes.isEmpty) && badges.count<=maximumBadges && Set(badges.map { $0.identity }).count==badges.count && downloadedRoutes.count<=maximumRoutes && Set(downloadedRoutes.map { $0.journeyId }).count==downloadedRoutes.count)
+            try PlanetChildJourney.require((schemaVersion==1 || schemaVersion==2) && (schemaVersion==2 || badges.isEmpty && downloadedRoutes.isEmpty) && badges.count<=maximumBadges && Set(badges.map { $0.identity }).count==badges.count && downloadedRoutes.count<=maximumRoutes && Set(downloadedRoutes.map { $0.journeyId+"\n"+$0.locale }).count==downloadedRoutes.count)
             var total=0
             for route in downloadedRoutes { try route.validate();try PlanetChildJourney.require(route.bytes.count<=maximumRouteTotalBytes-total);total+=route.bytes.count }
         }
@@ -77,7 +77,7 @@ enum PlanetChildPassport {
         }
         mutating func save(_ route: SavedRoute) throws {
             var next=self;next.schemaVersion=2
-            if let index=next.downloadedRoutes.firstIndex(where:{ $0.journeyId==route.journeyId }) { next.downloadedRoutes[index].dispose();next.downloadedRoutes[index]=route }
+            if let index=next.downloadedRoutes.firstIndex(where:{ $0.journeyId==route.journeyId && $0.locale==route.locale }) { next.downloadedRoutes[index].dispose();next.downloadedRoutes[index]=route }
             else { try PlanetChildJourney.require(next.downloadedRoutes.count<maximumRoutes);next.downloadedRoutes.append(route) }
             try next.validate();self=next
         }

@@ -65,8 +65,8 @@ describe("LOCAL2 native media accessible slot", () => {
     const c = controller();
     const ru = render(<ChildNativeMediaView controller={c} owner={owner} contextToken={TOKEN} language="ru" />, "ru");
     const en = render(<ChildNativeMediaView controller={c} owner={owner} contextToken={TOKEN} language="en" />, "en");
-    expect(ru).toContain('aria-label="Изображения и озвучивание"'); expect(ru).toContain('aria-label="Изображение"');
-    expect(en).toContain('aria-label="Images and narration"'); expect(en).toContain('aria-label="Image"');
+    expect(ru).toContain('aria-label="Изображения и озвучивание · Русский"'); expect(ru).toContain('aria-label="Изображение"');
+    expect(en).toContain('aria-label="Images and narration · English"'); expect(en).toContain('aria-label="Image"');
     for (const markup of [ru, en]) {
       expect(markup).toContain('data-child-native-media-phase="sealed"');
       expect(markup).toContain('data-child-native-media-slot="owned-native"');

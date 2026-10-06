@@ -216,7 +216,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
     if (!inputMap.has(CHILD_NATIVE_MEDIA_ASSET_MODULE) || !fields(metadata, ["pinSource", "outputs"])
       || !fields(metadata.pinSource, ["path", "sha256"]) || metadata.pinSource.path !== CHILD_NATIVE_MEDIA_PIN_SOURCE
       || inputMap.get(CHILD_NATIVE_MEDIA_PIN_SOURCE) !== metadata.pinSource.sha256
-      || !Array.isArray(metadata.outputs) || metadata.outputs.length > 577) throw new Error();
+      || !Array.isArray(metadata.outputs) || metadata.outputs.length > 1089) throw new Error();
     const expected = await collectChildNativeMediaOutputs(root, artifact.platform, artifact.channel);
     if (!same(metadata.pinSource, expected.pinSource) || metadata.outputs.length !== expected.outputs.length) throw new Error();
     const byOutput = new Map(expected.outputs.map(row => [row.output, row]));
@@ -233,7 +233,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
       found.add(row.output); childOutputs.add(row.output);
     }
     if ([...actual.keys()].some(name => name.startsWith("child-native/media/") && !found.has(name))) throw new Error();
-  } catch { add("CHILD_NATIVE_MEDIA_PROVENANCE", "child-native/media/", "Exact independent media pins, exporter input, reviewed relationships and binary source/output inventory required."); }
+  } catch { add("CHILD_NATIVE_MEDIA_PROVENANCE", "child-native/media/", "Exact independent media pins, exporter input, reviewed relationships, narration provenance and binary source/output inventory required."); }
   // Fixed transport source data grants no native capability. Reconstruct it
   // independently through the actual source schema and the signed media/binary
   // collector; the artifact cannot invent an origin, approval or output digest.

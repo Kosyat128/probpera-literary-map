@@ -39,9 +39,9 @@ function journeySceneSeam({state,profiles,token,read,persist,home,entity,hash,su
 }
 
 
-function nativeSeam(statePath,key,passportProgram=false){
+function nativeSeam(statePath,key,passportProgram=false,routeMedia=false){
  const state={schemaVersion:1,registry:[...profiles],mode:"child",active:profiles[0],locales:{[profiles[0]]:"ru",[profiles[1]]:"en"},version:1,entries:Object.fromEntries(profiles.map(p=>[p,{profileId:p,revision:0,progress:null}]))};
- let context=null,generation=0,activeJourney=null,denied=false,workDenied=false,fault=null,heldAdvance=null,heldCountryRead=null,heldRemoval=null,reviewedProgram=false;
+ let context=null,generation=0,activeJourney=null,denied=false,workDenied=false,fault=null,heldAdvance=null,heldCountryRead=null,heldRemoval=null,reviewedProgram=false,narrationConsent=false,englishAudio=true;
  state.passports=Object.fromEntries(profiles.map(p=>[p,{revision:0,opened:[],learning:[],archived:[],badges:[],routes:[]} ]));const events=[],token=()=>randomUUID().replaceAll("-","");
  const locale=()=>state.locales[state.active],suffix=()=>state.active===profiles[0]?"a":"b",hash=()=>locale()==="ru"?"a".repeat(64):"b".repeat(64);
  const ref=(kind,id)=>({kind,id,contentChecksum:hash()}),home=()=>ref("activity","home-"+suffix()),journeyId=()=>"journey-"+suffix();
@@ -50,7 +50,17 @@ function nativeSeam(statePath,key,passportProgram=false){
  const refs=()=>nodes().map(id=>ref(nodeKinds().get(id),id));
  const gentle=()=>ref("recommendation","gentle-"+suffix());
  const info=()=>({journeyId:journeyId(),journeyVersion:state.version,contentVersion:state.version,title:locale()==="ru"?"Тестовое путешествие "+suffix().toUpperCase():"Fixture journey "+suffix().toUpperCase(),description:locale()==="ru"?"Синтетические материалы для проверки интерфейса.":"Synthetic content for interface checks.",nodeCount:nodes().length});
- const routeBytes=()=>contentPackageCanonicalJson({schemaVersion:1,journey:entity(ref("activity",journeyId())),nodes:refs().map(entity)});
+ const mediaRows=()=>{
+  if(!routeMedia||locale()==="en"&&!englishAudio)return [];
+  // Silent PCM and fictitious source reports exist only in this disposable seam.
+  const binary=Buffer.alloc(364);binary.write("RIFF");binary.writeUInt32LE(356,4);binary.write("WAVE",8);binary.write("fmt ",12);binary.writeUInt32LE(16,16);binary.writeUInt16LE(1,20);binary.writeUInt16LE(1,22);binary.writeUInt32LE(8000,24);binary.writeUInt32LE(16000,28);binary.writeUInt16LE(2,32);binary.writeUInt16LE(16,34);binary.write("data",36);binary.writeUInt32LE(320,40);
+  const transcript=locale()==="ru"?"Только синтетический русский текст озвучивания.":"Synthetic English narration transcript only.";
+  const provenance={schemaVersion:1,kind:"literary-planet-child-narration-provenance-v1",scriptId:"fixture-script-"+locale(),scriptChecksum:sha(Buffer.from(transcript)),performerId:"fixture-performer",licensorId:"fixture-licensor",locale:locale(),accent:"Synthetic fixture",pronunciationNotes:"Synthetic notes.",durationMs:20,loudnessReport:"Synthetic report.",qualityReport:"Synthetic report.",reducedAudioFallback:"same-locale-text",voiceKind:"human-original"};
+  const quality=Buffer.from(JSON.stringify(provenance)+"\n"),payload={role:"narration",altText:locale()==="ru"?"Тестовое озвучивание":"Fixture narration",transcript,scriptId:provenance.scriptId,scriptChecksum:provenance.scriptChecksum,performerId:provenance.performerId,qualityChecksum:sha(quality)};
+  return [{assetId:"fixture-narration-"+locale(),owner:ref("country","russia"),entity:{kind:"narration",id:"fixture-narration-"+locale(),contentChecksum:sha(Buffer.from(contentPackageCanonicalJson(payload)))},payload,policy:{fixtureOnly:true},inventoryKey:"fixture-"+locale()+".wav",sha256:sha(binary),bytes:binary.length,mime:"audio/wav",locale:locale(),manifestChecksum:sha(Buffer.from("fixture-manifest-"+locale())),reviewChecksum:sha(Buffer.from("fixture-review-"+locale())),sourceFromEpochMs:0,sourceUntilEpochMs:8_640_000_000_000_000,reviewPlatforms:["android-google"],reviewTerritories:["RU"],encodedBase64:binary.toString("base64"),audioProvenanceBase64:quality.toString("base64")}];
+ };
+ const routeBytes=()=>contentPackageCanonicalJson({schemaVersion:2,journey:entity(ref("activity",journeyId())),nodes:refs().map(entity),media:mediaRows()});
+ const mediaStatus=()=>{const rows=mediaRows();return {locale:locale(),audioStatus:rows.length?"downloaded":"text-only",audioItemCount:rows.length,imageItemCount:0,transcriptByteLength:rows.reduce((n,row)=>n+Buffer.byteLength(row.payload.transcript),0),mediaByteLength:rows.reduce((n,row)=>n+row.bytes,0)};};
  const availableRoutes=()=>denied||workDenied?[]:state.passports[state.active].routes.filter(row=>row.locale===locale()&&row.contentVersion===state.version&&row.snapshotChecksum===sha(Buffer.from(row.bytes))&&row.bytes===routeBytes()).map(({bytes,locale,...row})=>row);
  function entity(reference){const canonical=[home(),ref("activity",journeyId()),gentle(),...refs()].find(r=>JSON.stringify(r)===JSON.stringify(reference));require(canonical&&(!denied||canonical.id===home().id||canonical.kind==="country")&&(!workDenied||canonical.kind!=="work"&&canonical.kind!=="recommendation"),"fresh synthetic reference");
   const isHome=canonical.id===home().id,isJourney=canonical.id===journeyId(),isGentle=canonical.kind==="recommendation",ru=locale()==="ru";
@@ -64,6 +74,8 @@ function nativeSeam(statePath,key,passportProgram=false){
  async function control(input,secret){require(secret===key,"owned fixture key");
   if(input.action==="snapshot")return{state:copy(state),context:copy(context),activeJourney,advanceHeld:!!heldAdvance?.entered,countryReadHeld:!!heldCountryRead?.entered,removalHeld:!!heldRemoval?.entered,appearance:sceneSeam.snapshot(),events:copy(events),nativeAuthority:false};
   if(input.action==="reviewProgram"){require(passportProgram&&typeof input.value==="boolean","explicit synthetic program review seam only");reviewedProgram=input.value;return{status:"ok",nativeAuthority:false};}
+  if(input.action==="narrationConsent"){require(routeMedia&&typeof input.value==="boolean","explicit synthetic consent seam");narrationConsent=input.value;return{status:"ok",nativeAuthority:false};}
+  if(input.action==="englishAudio"){require(routeMedia&&typeof input.value==="boolean","explicit synthetic English audio absence");englishAudio=input.value;return{status:"ok",nativeAuthority:false};}
   if(input.action==="holdRemoval"){require(!heldRemoval,"single original removal");let release;const promise=new Promise(resolve=>{release=resolve;});heldRemoval={promise,release,entered:false,cancelled:false};return{status:"held"};}
   if(input.action==="holdCountryRead"){require(!heldCountryRead,"single held country read");let release;const promise=new Promise(resolve=>{release=resolve;});heldCountryRead={promise,release,entered:false};return{status:"held"};}
   if(input.action==="releaseCountryRead"){require(heldCountryRead?.entered,"entered original country read");const held=heldCountryRead;heldCountryRead=null;held.release();return{status:"released"};}
@@ -96,14 +108,18 @@ function nativeSeam(statePath,key,passportProgram=false){
     const reply=data({...correlation(),revision:ledger.revision,country});if(fault==="country-readback"){fault=null;reply.requestId="e".repeat(32);}return reply;}
   if(method==="saveJourneyRoute"){
     const ledger=state.passports[state.active];require(passportProgram&&!denied&&!workDenied&&r.journeyId===journeyId()&&r.expectedRevision===ledger.revision,"synthetic native-owned complete route CAS");
-    const bytes=routeBytes(),route={...info(),snapshotChecksum:sha(Buffer.from(bytes)),byteLength:Buffer.byteLength(bytes)};
-    require(route.byteLength>0&&route.byteLength<=524288,"synthetic whole text byte bound");ledger.routes=ledger.routes.filter(value=>value.journeyId!==route.journeyId);ledger.routes.push({...route,bytes,locale:locale()});ledger.revision++;await persist();await read();
+    const bytes=routeBytes(),route={...info(),snapshotChecksum:sha(Buffer.from(bytes)),byteLength:Buffer.byteLength(bytes),media:mediaStatus()};
+    require(route.byteLength>0&&route.byteLength<=524288,"synthetic whole route byte bound");ledger.routes=ledger.routes.filter(value=>value.journeyId!==route.journeyId||value.locale!==locale());ledger.routes.push({...route,bytes,locale:locale()});ledger.revision++;await persist();await read();
     return data({...correlation(),revision:ledger.revision,route});}
   if(method==="readPassport"){await read();const ledger=state.passports[state.active],saved=state.entries[state.active],current=refs(),kind=k=>current.filter(r=>r.kind===k);
     const visibleCredits=k=>denied||workDenied&&k==="work"?[]:ledger.learning.filter(r=>r.kind===k&&r.contentVersion===state.version).flatMap(receipt=>{const r=kind(k).find(r=>r.id===receipt.id);return r?[entity(r)]:[];});
     const typed=new Set(ledger.learning.map(r=>r.nodeId));const unresolved=[...new Set([...ledger.archived,...ledger.learning.filter(r=>r.contentVersion!==state.version||!current.some(ref=>ref.kind===r.kind&&ref.id===r.id)).map(r=>r.nodeId),...(saved.progress?.completedNodeIds??[]).filter(id=>!typed.has(id)&&id!=="russia")])];
     return data({schemaVersion:passportProgram?2:1,...correlation(),revision:ledger.revision,countries:denied?[]:ledger.opened.flatMap(id=>{const r=kind("country").find(r=>r.id===id);return r?[entity(r)]:[];}),writers:visibleCredits("writer"),works:visibleCredits("work"),journeys:!denied&&saved.progress&&saved.progress.currentNodeId===null&&saved.progress.contentVersion===state.version?[info()]:[],unresolvedCompletedNodeIds:unresolved,badges:{status:reviewedProgram&&!denied&&!workDenied?"ready":"unavailable",items:reviewedProgram&&!denied&&!workDenied?ledger.badges.filter(value=>value.contentVersion===state.version).map(value=>({...value,title:locale()==="ru"?"Тестовый значок путешествия":"Synthetic journey badge"})):[]},downloadedRoutes:{status:passportProgram?"ready":"unavailable",items:passportProgram?availableRoutes():[]}});}
-  if(["search","listMedia"].includes(method))return data([]);
+  if(method==="search")return data([]);
+  if(method==="listMedia")return data(mediaRows().filter(row=>JSON.stringify(row.owner)===JSON.stringify(r.owner)).map(row=>({assetId:row.assetId,owner:row.owner,entity:row.entity,mime:row.mime,role:row.payload.role,altText:row.payload.altText,transcript:row.payload.transcript})));
+  if(method==="presentMedia"){const asset=mediaRows().find(row=>row.assetId===r.assetId&&JSON.stringify(row.owner)===JSON.stringify(r.owner));require(asset,"exact synthetic source media");
+   if(!narrationConsent)return data({status:"unavailable",assetId:r.assetId,presentationToken:null,remainingLifetimeMs:0});
+   const stored=state.passports[state.active].routes.find(row=>row.locale===locale()&&row.journeyId===journeyId());require(stored&&sha(Buffer.from(stored.bytes))===stored.snapshotChecksum&&JSON.parse(stored.bytes).media.some(row=>row.assetId===asset.assetId&&sha(Buffer.from(row.encodedBase64,"base64"))===asset.sha256),"synthetic checked persisted media bytes");events.push({method:"presentedStoredRouteMedia",assetId:asset.assetId,locale:locale(),nativeAuthority:false});return data({status:"presented",assetId:r.assetId,presentationToken:token(),remainingLifetimeMs:60000});}
   if(method==="readCollection")return data({revision:0,references:[]});
   const sceneValue=await sceneSeam.command(method,r,data);if(sceneValue!==undefined)return sceneValue;
   if(method==="releaseMedia")return data({status:"retired",presentationToken:r.presentationToken});
@@ -183,13 +199,14 @@ function inspect(){const v=store(),globe=v&&surface(v.scene),group=v?.scene.getO
 `;
 
 export async function runChildDiscoveryPassportBrowserFixture(options={}){
+ require(options.routeMedia!==true||options.passportProgram===true,"media author fixture requires the whole passport program fixture");
  const root=await fs.realpath(options.rootDir??path.resolve(import.meta.dirname,"../..")),runId=options.runId,output=path.resolve(root,options.outDir??"");
  require(typeof runId==="string"&&/^[a-f0-9]{32}$/u.test(runId)&&within(root,output)&&output===path.join(root,".tmp","child-discovery-passport-browser-"+runId),"exact own output and run ID");
  const report={schemaVersion:1,kind:"literary-planet-child-discovery-passport-browser",root,output,runId,status:"NOT_RUN",nativeAuthority:false,installedStorageAcceptance:false,releaseReady:false,appearanceFixture:"original-canonical-sphere-material-and-GPU-with-synthetic-PNGs-only",checks:[],captures:[],sourceInputs:await nativeRuntimeSources(root)};
  if(options.execute!==true)return report;
  require(typeof options.executablePath==="string"&&path.isAbsolute(options.executablePath),"existing explicit browser executable");await fs.mkdir(output,{recursive:false});
  const {createServer}=await import("vite"),{default:react}=await import("@vitejs/plugin-react"),{chromium}=await import("playwright");
- const key=randomUUID().replaceAll("-",""),seam=nativeSeam(path.join(output,"synthetic-state.json"),key,options.passportProgram===true);let server=null,browser=null,page=null,errors=[],expectedDocumentId=null;
+ const key=randomUUID().replaceAll("-",""),seam=nativeSeam(path.join(output,"synthetic-state.json"),key,options.passportProgram===true,options.routeMedia===true);let server=null,browser=null,page=null,errors=[],expectedDocumentId=null;
  await fs.writeFile(path.join(output,"index.html"),'<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head><body><div id="root"></div><script type="module" src="./entry.tsx"></script></body></html>');await fs.writeFile(path.join(output,"entry.tsx"),entry);
  const journal=async(event,detail={})=>{const row={at:new Date().toISOString(),event,...detail};await fs.appendFile(path.join(output,"phases.jsonl"),JSON.stringify(row)+"\n");};
  async function bounded(label,fn,timeoutMs=30000){await journal("begin",{label});let timer;try{const value=await Promise.race([Promise.resolve().then(fn),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error("Timed out: "+label)),timeoutMs);})]);await journal("end",{label});return value;}catch(error){await journal("error",{label,error:String(error)});throw error;}finally{clearTimeout(timer);}}
@@ -286,11 +303,35 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
   if(options.passportProgram===true){
     await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
     await freshSession("explicit-route-save");
-    await page.getByRole("button",{name:"Download route texts",exact:true}).click();await page.getByText("The route texts are saved on this device.",{exact:true}).waitFor();
+    await page.getByRole("button",{name:"Download route",exact:true}).click();await page.getByText("The route is saved on this device.",{exact:false}).waitFor();
     const stored=(await snapshot()).state.passports[profiles[0]].routes[0];require(stored&&stored.bytes&&sha(Buffer.from(stored.bytes))===stored.snapshotChecksum&&Buffer.byteLength(stored.bytes)===stored.byteLength,"save confirms real synthetic durable complete route bytes/hash");
     await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByRole("heading",{name:"Downloaded routes · 1",exact:true}).waitFor();
-    await page.getByText("The texts of these routes are available on this device.",{exact:true}).waitFor();await capture("en-downloaded-native-route-texts");
+    await page.getByText("The texts of these routes are saved on this device.",{exact:true}).waitFor();await capture("en-downloaded-native-route-texts");
     report.checks.push({id:"explicit-route-save-durable-bytes-receipt",status:"PASS",nativeAuthority:false,installedStorageAcceptance:false});
+    if(options.routeMedia===true){
+      const rows=JSON.parse(stored.bytes).media;require(rows.length===1&&rows[0].locale==="en"&&sha(Buffer.from(rows[0].encodedBase64,"base64"))===rows[0].sha256&&sha(Buffer.from(rows[0].audioProvenanceBase64,"base64"))===rows[0].payload.qualityChecksum&&sha(Buffer.from(rows[0].payload.transcript))===rows[0].payload.scriptChecksum,"synthetic complete exact PCM/transcript/provenance bytes");
+      await page.getByText("English · Narration and its transcript are downloaded.",{exact:true}).waitFor();
+      await page.getByRole("button",{name:"Open route · Fixture journey A",exact:true}).click();await page.getByRole("button",{name:"Travel again",exact:true}).click();await page.locator('[data-child-journey-node="russia"]').waitFor();await idle();
+      await page.getByText("Narration transcript · English",{exact:true}).click();await page.getByText(rows[0].payload.transcript,{exact:true}).waitFor();
+      const presentsBefore=(await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length;
+      await page.getByRole("button",{name:"Open narration: Fixture narration · English",exact:true}).click();await page.getByText("This material is currently unavailable.",{exact:true}).waitFor();
+      require((await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length===presentsBefore,"synthetic disabled consent refuses presentation while text transcript remains");
+      await page.evaluate(()=>window.__childJourneyBrowser.control({action:"narrationConsent",value:true}));
+      await page.getByRole("button",{name:"Open narration: Fixture narration · English",exact:true}).click();await page.getByText("Start playback with the control on your device.",{exact:true}).waitFor();
+      const presented=(await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length;require(presented===presentsBefore+1,"one explicit presentation consumes checked persisted fixture bytes");
+      const transcriptGeometry=await page.evaluate(()=>{const slot=document.querySelector('[data-child-native-media-slot="owned-native"]'),details=slot?.parentElement?.querySelector("details");if(!slot||!details)throw Error("current native slot and transcript disclosure required");if(details.querySelector("summary").getBoundingClientRect().height<44||getComputedStyle(details.querySelector("p")).whiteSpace!=="pre-wrap")throw Error("accessible transcript target and original whitespace required");const rect=slot.getBoundingClientRect(),text=details.getBoundingClientRect();if(text.top<rect.bottom)throw Error("transcript must follow anchored native slot");return{x:rect.x,y:rect.y,width:rect.width,height:rect.height};});
+      await page.getByText("Narration transcript · English",{exact:true}).click();
+      const collapsedGeometry=await page.locator('[data-child-native-media-slot="owned-native"]').boundingBox();require(JSON.stringify(collapsedGeometry)===JSON.stringify(transcriptGeometry),"closing transcript preserves actual native slot geometry");
+      await page.getByText("Narration transcript · English",{exact:true}).click();await page.getByText(rows[0].payload.transcript,{exact:true}).waitFor();
+      const expandedGeometry=await page.locator('[data-child-native-media-slot="owned-native"]').boundingBox();require(JSON.stringify(expandedGeometry)===JSON.stringify(transcriptGeometry),"opening transcript preserves actual native slot geometry");
+      await capture("en-route-media-transcript-before-native-play");
+      await page.evaluate(()=>window.__childJourneyBrowser.visibility("background"));await page.waitForFunction(()=>window.__childJourneyBrowser.inspect().phase==="sealed");await scenesJoined();
+      await page.evaluate(()=>window.__childJourneyBrowser.visibility("active"));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await readyScene();
+      require((await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length===presented,"foreground creates no presentation replay or autoplay");
+      await page.evaluate(()=>window.__childJourneyBrowser.control({action:"narrationConsent",value:false}));
+      await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+      report.checks.push({id:"route-media-exact-english-bytes-transcript-consent-and-no-resume-autoplay",status:"PASS",nativeAuthority:false,nativePlayerAcceptance:false});
+    }
     await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
     await freshSession("reviewed-award-and-stored-route");
     await page.evaluate(()=>window.__childJourneyBrowser.control({action:"reviewProgram",value:true}));
@@ -330,17 +371,31 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
     // The fixture projects a local synthetic badge, never a genuine review.
     require(await page.evaluate(()=>window.__childJourneyBrowser.transition("ru")),"original RU passport locale action");await idle();
     await page.getByRole("button",{name:"На главную",exact:true}).click();await idle();
-    await page.getByRole("button",{name:"Скачать тексты маршрута",exact:true}).click();await page.getByText("Тексты маршрута сохранены на устройстве.",{exact:true}).waitFor();
+    await page.getByRole("button",{name:"Скачать маршрут",exact:true}).click();await page.getByText("Маршрут сохранён на устройстве.",{exact:false}).waitFor();
     const storedRu=(await snapshot()).state.passports[profiles[0]].routes[0];require(storedRu.locale==="ru"&&sha(Buffer.from(storedRu.bytes))===storedRu.snapshotChecksum,"fresh actual synthetic RU route text bytes");
     await page.getByRole("button",{name:"Мой литературный паспорт",exact:true}).click();await idle();
     await page.getByRole("heading",{name:"Значки · 1",exact:true}).waitFor();await page.getByRole("heading",{name:"Скачанные маршруты · 1",exact:true}).waitFor();
-    await page.getByText("Тексты этих маршрутов доступны на устройстве.",{exact:true}).waitFor();
+    await page.getByText("Тексты этих маршрутов сохранены на устройстве.",{exact:true}).waitFor();
     await page.setViewportSize({width:320,height:844});require(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),"RU320px badges and route text fit");await capture("ru-phone-private-badges-downloaded-routes");await page.setViewportSize({width:1100,height:820});
+    if(options.routeMedia===true){
+      await page.getByText("Русский · Озвучивание и его текст скачаны.",{exact:true}).waitFor();
+      await page.evaluate(()=>window.__childJourneyBrowser.control({action:"englishAudio",value:false}));
+      require(await page.evaluate(()=>window.__childJourneyBrowser.transition("en")),"original allowed EN locale with missing EN audio");await idle();
+      await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();await page.getByRole("button",{name:"Download route",exact:true}).click();
+      await page.getByText("The route is saved on this device.",{exact:false}).waitFor();
+      const rows=(await snapshot()).state.passports[profiles[0]].routes,ru=rows.find(row=>row.locale==="ru"),en=rows.find(row=>row.locale==="en");
+      require(rows.length===2&&ru.bytes===storedRu.bytes&&en.media.audioStatus==="text-only"&&en.media.audioItemCount===0&&JSON.parse(en.bytes).media.length===0,"separate exact locale cache and English text fallback never Russian audio");
+      await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();await page.getByText("English · Narration is not downloaded. You can read the route text.",{exact:true}).waitFor();
+      require(!await page.getByText("Русский · Озвучивание и его текст скачаны.",{exact:true}).count(),"EN passport never relabels RU narration as EN audio");
+      await page.setViewportSize({width:320,height:844});require(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),"English media status fits320px");await capture("en-phone-route-text-fallback-separate-locale-audio");await page.setViewportSize({width:1100,height:820});
+      require(await page.evaluate(()=>window.__childJourneyBrowser.transition("ru")),"restore RU private downloaded route");await idle();await page.getByText("Русский · Озвучивание и его текст скачаны.",{exact:true}).waitFor();
+      report.checks.push({id:"separate-ru-en-route-audio-status-and-english-text-fallback",status:"PASS",nativeAuthority:false});
+    }
     await page.getByRole("button",{name:"Открыть маршрут · Тестовое путешествие A",exact:true}).click();await page.getByRole("heading",{name:"Тестовое путешествие A",exact:true}).waitFor();
     require((await snapshot()).events.some(value=>value.method==="openedStoredRouteBytes"&&value.locale==="ru"),"RU route opened decoded persisted bytes");
     await page.getByRole("button",{name:"Главная",exact:true}).click();await idle();
     await page.getByRole("button",{name:"Спросить взрослого",exact:true}).click();await page.getByRole("button",{name:"Удалить скачанные маршруты · Synthetic journey-profile-a",exact:true}).click();
-    await page.getByText("Удалить тексты скачанных маршрутов этого профиля с устройства? Пройденные шаги, значки, избранное, оформление и другие профили останутся.",{exact:true}).waitFor();
+    await page.getByText("Удалить скачанные тексты, изображения, озвучивание и тексты озвучивания маршрутов этого профиля с устройства? Пройденные шаги, значки, избранное, оформление и другие профили останутся.",{exact:true}).waitFor();
     await page.getByRole("button",{name:"Подтвердить со взрослым",exact:true}).click();await afterOriginalRemoval("ru-downloads");
     require((await snapshot()).state.passports[profiles[0]].routes.length===0,"RU parent download removal erases exact persisted route bytes");
     require(await page.evaluate(()=>window.__childJourneyBrowser.transition("en")),"return original EN locale after RU interactions");await idle();
@@ -382,4 +437,4 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
  }catch(error){report.status="FAIL";report.error=String(error?.stack??error);report.failureSeamSnapshot=await seam.control({action:"snapshot"},key).catch(()=>null);report.pageErrors=errors;await fs.writeFile(path.join(output,"failure-before-observation.json"),JSON.stringify(report,null,2)+"\n",{flag:"wx"});if(page&&!page.isClosed()){report.failureObservation=await bounded("failure-observation",()=>page.evaluate(()=>({text:document.body.innerText,fixture:window.__childJourneyBrowser?.inspect()})),5000).catch(error=>({error:String(error)}));await bounded("failure-capture",()=>page.screenshot({path:path.join(output,"failed-page.png"),timeout:5000}),7000).catch(error=>{report.failureCaptureError=String(error);});}throw error;}
  finally{await fs.writeFile(path.join(output,"result-before-cleanup.json"),JSON.stringify(report,null,2)+"\n",{flag:"wx"});const cleanup=await Promise.allSettled([bounded("browser-close",()=>browser?.close(),15000),bounded("server-close",()=>server?.close(),15000)]);report.cleanup={ownedBrowserClosed:cleanup[0].status==="fulfilled",ownedServerClosed:cleanup[1].status==="fulfilled",nativeAuthority:false};const failed=cleanup.filter(v=>v.status==="rejected");if(failed.length){report.status="FAIL";report.cleanupErrors=failed.map(v=>String(v.reason));}await fs.writeFile(path.join(output,"result.json"),JSON.stringify(report,null,2)+"\n");if(failed.length)throw Error("Owned browser/server cleanup failed; raw errors retained");}
 }
-if(isLocalCliEntry(import.meta.url)){const args=process.argv.slice(2),options={};for(let i=0;i<args.length;i++){if(args[i]==="--execute")options.execute=true;else if(args[i]==="--passport-program")options.passportProgram=true;else if(["--root","--out","--run-id","--browser"].includes(args[i])&&args[i+1]&&!args[i+1].startsWith("--"))options[{"--root":"rootDir","--out":"outDir","--run-id":"runId","--browser":"executablePath"}[args[i]]]=args[++i];else throw Error("Use --root exact-root --out own-.tmp-path --run-id32hex [--browser existing-executable --execute --passport-program]");}const report=await runChildDiscoveryPassportBrowserFixture(options);process.stdout.write(JSON.stringify({status:report.status,output:report.output,nativeAuthority:false,releaseReady:false})+"\n");}
+if(isLocalCliEntry(import.meta.url)){const args=process.argv.slice(2),options={};for(let i=0;i<args.length;i++){if(args[i]==="--execute")options.execute=true;else if(args[i]==="--passport-program")options.passportProgram=true;else if(args[i]==="--route-media"){options.routeMedia=true;options.passportProgram=true;}else if(["--root","--out","--run-id","--browser"].includes(args[i])&&args[i+1]&&!args[i+1].startsWith("--"))options[{"--root":"rootDir","--out":"outDir","--run-id":"runId","--browser":"executablePath"}[args[i]]]=args[++i];else throw Error("Use --root exact-root --out own-.tmp-path --run-id32hex [--browser existing-executable --execute --passport-program --route-media]");}const report=await runChildDiscoveryPassportBrowserFixture(options);process.stdout.write(JSON.stringify({status:report.status,output:report.output,nativeAuthority:false,releaseReady:false})+"\n");}

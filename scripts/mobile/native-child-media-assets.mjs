@@ -36,6 +36,41 @@ const policyFields = ["id", "kind", "sourceVersion", "policyVersion", "minAge", 
   "topics", "topicTagsComplete", "commercialAvailability", "rights"];
 export const childNativeMediaSha256 = sha;
 export const childNativeMediaCanonical = canonical;
+/** The independently signed media payload pins the raw provenance document by
+ * qualityChecksum. These factual source fields add no editorial approval. */
+export function validateChildNativeNarrationProvenance(bytes, asset, locale, durationMs) {
+  require(asset?.mime === "audio/wav" && asset.payload?.role === "narration" && sha(bytes) === asset.payload.qualityChecksum,
+    "exact signed narration provenance bytes");
+  const value = childNativeJson(bytes, 65536), bounded = (text, max) => typeof text === "string" && text.length > 0
+    && text.length <= max && text.trim() === text && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/u.test(text);
+  require(exact(value, ["schemaVersion", "kind", "scriptId", "scriptChecksum", "performerId", "licensorId", "locale", "accent",
+    "pronunciationNotes", "durationMs", "loudnessReport", "qualityReport", "reducedAudioFallback", "voiceKind"])
+    && value.schemaVersion === 1 && value.kind === "literary-planet-child-narration-provenance-v1"
+    && id(value.scriptId) && checksum(value.scriptChecksum) && value.scriptId === asset.payload.scriptId && value.scriptChecksum === asset.payload.scriptChecksum
+    && id(value.performerId) && value.performerId === asset.payload.performerId && id(value.licensorId) && value.locale === locale
+    && ["ru", "en"].includes(locale) && bounded(value.accent, 96) && !/[\u0000-\u001f\u007f]/u.test(value.accent) && bounded(value.pronunciationNotes, 8192)
+    && bounded(value.loudnessReport, 8192) && bounded(value.qualityReport, 8192) && integer(value.durationMs, 1, 60000)
+    && typeof durationMs === "number" && Number.isFinite(durationMs) && durationMs > 0 && durationMs <= 60000 && Math.abs(value.durationMs - durationMs) <= 1
+    && value.reducedAudioFallback === "same-locale-text" && ["human-original", "human-licensed"].includes(value.voiceKind),
+    "complete locale/script/performer/licensor/pronunciation/duration/quality/fallback provenance");
+  return value;
+}
+export function childNativeNarrationDurationMs(bytes) {
+  require(Buffer.isBuffer(bytes) && bytes.length >= 44 && bytes.length <= 24 * 1024 * 1024
+    && bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WAVE", "bounded PCM source");
+  let offset = 12, rate = 0, block = 0, data = -1;
+  while (offset + 8 <= bytes.length) {
+    const size = bytes.readUInt32LE(offset + 4), end = offset + 8 + size;
+    require(end <= bytes.length, "complete PCM source chunk");
+    const tag = bytes.toString("ascii", offset, offset + 4);
+    if (tag === "fmt ") { require(size >= 16 && rate === 0, "unique PCM format"); rate = bytes.readUInt32LE(offset + 12); block = bytes.readUInt16LE(offset + 20); }
+    if (tag === "data") { require(data === -1, "unique PCM data"); data = size; }
+    offset = end + (size % 2);
+  }
+  require(rate > 0 && block > 0 && data > 0 && data % block === 0 && offset === bytes.length, "whole PCM duration");
+  const duration = data / block / rate * 1000; require(Number.isFinite(duration) && duration > 0 && duration <= 60000, "bounded narration duration");
+  return duration;
+}
 export function normalizeChildNativeMediaPins(bytes) {
   const pins = childNativeJson(bytes, 65536);
   require(exact(pins, ["schemaVersion", "kind", "reviewKeys", "manifests"]) && pins.schemaVersion === 2
@@ -248,11 +283,17 @@ export async function collectChildNativeMediaOutputs(root, platform, channel, no
       const binary = await ownedSource(root, name, asset.mime === "audio/wav" ? 24 * 1024 * 1024 : 32 * 1024 * 1024);
       require(binary.sha256 === asset.sha256 && binary.size === asset.bytes, "actual pinned binary bytes");
       require(preflight(new Uint8Array(binary.bytes), asset.mime), "static raster/PCM container and decoded resource bounds");
+      if (asset.mime === "audio/wav") {
+        const qualityName = "src/child/media-release-material/" + asset.payload.qualityChecksum + "/quality.json";
+        const quality = await ownedSource(root, qualityName, 65536);
+        validateChildNativeNarrationProvenance(quality.bytes, asset, manifest.locale, childNativeNarrationDurationMs(binary.bytes));
+        add("child-native/media/provenance/" + asset.payload.qualityChecksum + ".json", { ...quality, name: qualityName });
+      }
       allBinaries.add(asset.sha256 + "." + ext); require(allBinaries.size <= 512, "global binary quota");
       add("child-native/media/assets/" + asset.sha256 + "." + ext, { ...binary, name });
     }
   }
-  require(outputs.size <= 577, "bounded complete media output inventory");
+  require(outputs.size <= 1089, "bounded complete media and narration provenance output inventory");
   return { pinSource: { path: CHILD_NATIVE_MEDIA_PIN_SOURCE, sha256: source.sha256 },
     outputs: [...outputs.values()].sort((a, b) => a.output < b.output ? -1 : a.output > b.output ? 1 : 0) };
 }

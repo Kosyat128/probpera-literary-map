@@ -59,7 +59,8 @@ afterEach(async () => { for (const controller of controllers.splice(0)) await co
 describe("LOCAL2 native app DTO projection", () => {
   it("sends only exact route identity and current passport revision and requires a correlated durable route receipt", async () => {
     const f = fixture(), route = { journeyId: "journey-a", journeyVersion: 1, contentVersion: 1, title: "Synthetic route", description: "Text only.", nodeCount: 2,
-      snapshotChecksum: HASH, byteLength: 1024 };
+      snapshotChecksum: HASH, byteLength: 1024, media: { locale: "en", audioStatus: "text-only", audioItemCount: 0,
+        imageItemCount: 0, transcriptByteLength: 0, mediaByteLength: 0 } };
     const saveJourneyRoute = vi.fn(async (r: unknown) => f.dataReply(r, { profileId: "native-profile", locale: "en", generation: 1, revision: 5, route }));
     Object.assign(f.plugin, { saveJourneyRoute }); await f.controller.start();
     expect(await f.controller.passport!.saveJourneyRoute!("journey-a", 4)).toMatchObject({ revision: 5, route: { snapshotChecksum: HASH } });

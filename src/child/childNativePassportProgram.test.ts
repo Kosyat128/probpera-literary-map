@@ -15,7 +15,8 @@ const program = () => ({ schemaVersion: 1, kind: "literary-planet-child-passport
 const badge = () => ({ badgeId: "learning-badge", ruleVersion: 1, programId: "program-a", programVersion: 2, programChecksum: hash,
   journeyId: "journey-a", journeyVersion: 3, contentVersion: 3, title: "Synthetic badge DTO" });
 const route = () => ({ journeyId: "journey-a", journeyVersion: 3, contentVersion: 3, title: "Synthetic route DTO", description: "Text only.", nodeCount: 3,
-  snapshotChecksum: hash, byteLength: 1024 });
+  snapshotChecksum: hash, byteLength: 1024, media: { locale: "en", audioStatus: "text-only", audioItemCount: 0,
+    imageItemCount: 0, transcriptByteLength: 0, mediaByteLength: 0 } });
 const emptyPassport = () => ({ schemaVersion: 2, ...binding, revision: 4, countries: [], writers: [], works: [], journeys: [], unresolvedCompletedNodeIds: [],
   badges: { status: "ready", items: [badge()] }, downloadedRoutes: { status: "ready", items: [route()] } });
 describe("native passport program source and factual projections", () => {
@@ -64,6 +65,19 @@ describe("native passport program source and factual projections", () => {
     for (const delta of [{ profileId: "profile-b" }, { locale: "ru" }, { generation: 3 }, { revision: 4 }, { revision: 6 }, { complete: true }])
       expect(decodeChildNativeRouteSave({ ...receipt, ...delta }, context, "journey-a", 4)).toBeNull();
     expect(decodeChildNativeRouteSave(receipt, context, "other", 4)).toBeNull();
+    expect(decodeChildNativeRouteSave({ ...receipt, route: { ...route(), media: { ...route().media, locale: "ru" } } }, context, "journey-a", 4)).toBeNull();
+  });
+  it("binds per-locale checked audio/transcript byte facts without manufacturing permission to play", () => {
+    const saved = { ...route(), media: { locale: "en", audioStatus: "downloaded", audioItemCount: 1,
+      imageItemCount: 0, transcriptByteLength: 32, mediaByteLength: 256 } };
+    const decoded = decodeChildNativeDownloadedRoutes({ status: "ready", items: [saved] }, 3)!;
+    expect(decoded.items[0].media.audioStatus).toBe("downloaded"); expect(Object.isFrozen(decoded.items[0].media)).toBe(true);
+    for (const delta of [{ audioStatus: "text-only" }, { audioItemCount: 0 }, { transcriptByteLength: 0 }, { mediaByteLength: 0 },
+      { locale: "fr" }, { imageItemCount: 64 }, { mediaByteLength: 1024 }, { consent: true }, { playable: true }, { sourceUrl: "file:///fixture.wav" }])
+      expect(decodeChildNativeDownloadedRoutes({ status: "ready", items: [{ ...saved, media: { ...saved.media, ...delta } }] }, 3)).toBeNull();
+    expect(decodeChildNativePassport({ ...emptyPassport(), downloadedRoutes: { status: "ready", items: [{ ...saved, media: { ...saved.media, locale: "ru" } }] } }, context)).toBeNull();
+    const getter = vi.fn(() => saved.media); Object.defineProperty(saved, "media", { enumerable: true, get: getter });
+    expect(decodeChildNativeDownloadedRoutes({ status: "ready", items: [saved] }, 3)).toBeNull(); expect(getter).not.toHaveBeenCalled();
   });
   it("keeps v1 unavailable compatibility but prevents v1 from manufacturing the new factual categories", () => {
     expect(decodeChildNativePassport(emptyPassport(), context)?.schemaVersion).toBe(2);

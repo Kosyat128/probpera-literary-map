@@ -2,6 +2,8 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import type { ChildNativeAppController, ChildNativeEntity } from "./childNativeAppBridge";
 import type { ChildNativeJourneyResult, ChildNativeJourneySummary, ChildNativeProfileJourney } from "./childNativeJourney";
+import type { ChildNativeRouteMediaDownload } from "./childNativePassportProgram";
+import { childNativeRouteAudioStatus } from "./ChildNativeDiscoveryPassportView";
 
 export const childJourneyLabels = {
   ru: { travel: "Путешествовать", continue: "Продолжить", title: "Литературные путешествия", loading: "Проверяем путешествия…",
@@ -9,14 +11,14 @@ export const childJourneyLabels = {
     error: "Не удалось проверить путешествие.", retry: "Проверить путешествия снова", next: "Готово · дальше", home: "К путешествиям",
     restart: "Пройти ещё раз", completed: "Путешествие завершено!", retained: "Пройденные шаги сохранены.", step: "Шаг", of: "из", done: "Пройдено",
     savedUnavailable: "Сохранённое путешествие сейчас недоступно. Прогресс остаётся на устройстве.",
-    saveRoute: "Скачать тексты маршрута", savingRoute: "Сохраняем тексты маршрута…", routeSaved: "Тексты маршрута сохранены на устройстве.",
+    saveRoute: "Скачать маршрут", savingRoute: "Сохраняем маршрут…", routeSaved: "Маршрут сохранён на устройстве.",
     routeSaveFailed: "Не удалось подтвердить сохранение маршрута." },
   en: { travel: "Travel", continue: "Continue", title: "Literary journeys", loading: "Checking journeys…",
     empty: "Journeys are currently unavailable. You can explore the planet.", unavailable: "This journey is currently unavailable. Your completed steps are saved.",
     error: "The journey could not be checked.", retry: "Check journeys again", next: "Done · next", home: "Back to journeys",
     restart: "Travel again", completed: "Journey complete!", retained: "Your completed steps are saved.", step: "Step", of: "of", done: "Completed",
     savedUnavailable: "The saved journey is currently unavailable. Its progress stays on this device.",
-    saveRoute: "Download route texts", savingRoute: "Saving route texts…", routeSaved: "The route texts are saved on this device.",
+    saveRoute: "Download route", savingRoute: "Saving route…", routeSaved: "The route is saved on this device.",
     routeSaveFailed: "The route save could not be confirmed." },
 } as const;
 export interface ChildNativeJourneyViewProps {
@@ -34,7 +36,7 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
   const [routes, setRoutes] = useState<readonly ChildNativeJourneySummary[]>([]), [saved, setSaved] = useState<ChildNativeProfileJourney | null>(null);
   const [result, setResult] = useState<ChildNativeJourneyResult | null>(null), [busy, setBusy] = useState(true);
   const [error, setError] = useState<"read" | "unavailable" | null>(null), [renderEpoch, setRenderEpoch] = useState(navigationEpoch);
-  const [routeSave, setRouteSave] = useState<{ key: string; phase: "saving" | "saved" | "failed" } | null>(null);
+  const [routeSave, setRouteSave] = useState<{ key: string; phase: "saving" | "saved" | "failed"; media?: ChildNativeRouteMediaDownload } | null>(null);
   const mounted = useRef(false), sequence = useRef(0), initial = useRef(props.initialJourneyId ?? null), previousNavigation = useRef(navigationEpoch);
   const savingKey = useRef<string | null>(null);
   const latest = useRef(props); latest.current = props;
@@ -117,7 +119,7 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
       if (!alive(attempt)) return;
       const receipt = passport ? await controller.passport.saveJourneyRoute(journeyId, passport.revision) : null;
       if (!alive(attempt)) return;
-      setRouteSave({ key, phase: receipt ? "saved" : "failed" });
+      setRouteSave({ key, phase: receipt ? "saved" : "failed", ...(receipt ? { media: receipt.route.media } : {}) });
     } catch { if (alive(attempt)) setRouteSave({ key, phase: "failed" }); }
     finally { if (savingKey.current === key) savingKey.current = null; }
   }
@@ -125,7 +127,8 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
     const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/"), phase = routeSave?.key === key ? routeSave.phase : null;
     return controller.passport?.saveJourneyRoute ? <span className="child-native-route-save">
       <button type="button" disabled={busy || routeSave?.phase === "saving"} onClick={() => { void saveRoute(journeyId); }}>{phase === "saving" ? copy.savingRoute : copy.saveRoute}</button>
-      {phase === "saved" && <span role="status">{copy.routeSaved}</span>}{phase === "failed" && <span role="alert">{copy.routeSaveFailed}</span>}
+      {phase === "saved" && <span role="status">{copy.routeSaved} {routeSave?.media && childNativeRouteAudioStatus(language, routeSave.media)}</span>}
+      {phase === "failed" && <span role="alert">{copy.routeSaveFailed}</span>}
     </span> : null;
   }
   if (!port || !homeVisible && !result || renderEpoch !== navigationEpoch && result) return null;

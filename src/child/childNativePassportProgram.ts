@@ -30,6 +30,14 @@ export interface ChildNativeBadge {
 }
 export interface ChildNativeDownloadedRoute extends ChildNativeJourneySummary {
   readonly snapshotChecksum: string; readonly byteLength: number;
+  /** Native checked persisted bytes, separately from permission to play. */
+  readonly media: ChildNativeRouteMediaDownload;
+}
+export interface ChildNativeRouteMediaDownload {
+  readonly locale: "ru" | "en";
+  readonly audioStatus: "downloaded" | "text-only";
+  readonly audioItemCount: number; readonly imageItemCount: number;
+  readonly transcriptByteLength: number; readonly mediaByteLength: number;
 }
 export interface ChildNativePassportSection<T> { readonly status: "ready" | "unavailable"; readonly items: readonly T[] }
 export interface ChildNativeRouteSave {
@@ -110,12 +118,28 @@ export function decodeChildNativeBadges(raw: unknown, contentVersion: number): C
 }
 export function decodeChildNativeDownloadedRoute(raw: unknown, contentVersion: number): ChildNativeDownloadedRoute | null {
   try {
-    const row = childRecord(raw, ["journeyId", "journeyVersion", "contentVersion", "title", "description", "nodeCount", "snapshotChecksum", "byteLength"]);
+    const row = childRecord(raw, ["journeyId", "journeyVersion", "contentVersion", "title", "description", "nodeCount", "snapshotChecksum", "byteLength", "media"]);
     if (!row || !childNativePassportHash(row.snapshotChecksum) || !positive(row.byteLength) || row.byteLength > 524288) return null;
+    const media = decodeChildNativeRouteMediaDownload(row.media, row.byteLength);
+    if (!media) return null;
     const summaries = decodeChildNativeJourneySummaries([{ journeyId: row.journeyId, journeyVersion: row.journeyVersion, contentVersion: row.contentVersion,
       title: row.title, description: row.description, nodeCount: row.nodeCount }]);
     return summaries?.length === 1 && summaries[0].contentVersion === contentVersion && summaries[0].journeyVersion === contentVersion
-      ? Object.freeze({ ...summaries[0], snapshotChecksum: row.snapshotChecksum, byteLength: row.byteLength }) : null;
+      ? Object.freeze({ ...summaries[0], snapshotChecksum: row.snapshotChecksum, byteLength: row.byteLength, media }) : null;
+  } catch { return null; }
+}
+export function decodeChildNativeRouteMediaDownload(raw: unknown, snapshotByteLength: number): ChildNativeRouteMediaDownload | null {
+  try {
+    const row = childRecord(raw, ["locale", "audioStatus", "audioItemCount", "imageItemCount", "transcriptByteLength", "mediaByteLength"]);
+    if (!row || row.locale !== "ru" && row.locale !== "en" || row.audioStatus !== "downloaded" && row.audioStatus !== "text-only"
+      || !revision(snapshotByteLength) || snapshotByteLength < 1 || snapshotByteLength > 524288
+      || !revision(row.audioItemCount) || !revision(row.imageItemCount) || row.audioItemCount + row.imageItemCount > 64
+      || !revision(row.transcriptByteLength) || !revision(row.mediaByteLength)
+      || row.mediaByteLength + row.transcriptByteLength >= snapshotByteLength
+      || (row.audioStatus === "downloaded") !== (row.audioItemCount > 0)
+      || (row.audioItemCount > 0) !== (row.transcriptByteLength > 0)
+      || (row.audioItemCount + row.imageItemCount > 0) !== (row.mediaByteLength > 0)) return null;
+    return Object.freeze({ ...row }) as unknown as ChildNativeRouteMediaDownload;
   } catch { return null; }
 }
 export function decodeChildNativeDownloadedRoutes(raw: unknown, contentVersion: number): ChildNativePassportSection<ChildNativeDownloadedRoute> | null {
@@ -128,6 +152,7 @@ export function decodeChildNativeRouteSave(raw: unknown, context: ChildNativeCon
     return row && id(context.profileId) && row.profileId === context.profileId && row.locale === context.locale
       && row.generation === context.generation && positive(row.generation) && revision(expectedRevision)
       && expectedRevision < Number.MAX_SAFE_INTEGER - 1 && row.revision === expectedRevision + 1 && route?.journeyId === journeyId
+      && route.media.locale === context.locale
       ? Object.freeze({ profileId: context.profileId, locale: context.locale, generation: context.generation, revision: row.revision, route }) : null;
   } catch { return null; }
 }

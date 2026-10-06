@@ -137,7 +137,7 @@ enum PlanetChildLocalV2MediaCodec {
     }
     static func decode(_ permit: PlanetChildLocalV2MediaPermit) throws -> PlanetChildLocalV2MediaResource {
         try permit.workerCurrent();var bytes=try permit.readEncoded();defer { bytes.resetBytes(in:0..<bytes.count) }
-        let header=try preflight(bytes,permit.mime);try permit.workerCurrent()
+        let header=try preflight(bytes,permit.mime);try permit.validateEncodedHeader(header);try permit.workerCurrent()
         let result: PlanetChildLocalV2MediaResource=try autoreleasepool {
             if header.mime=="audio/wav" { return try PlanetChildLocalV2MediaResource.audio(bytes,header) }
             return try PlanetChildLocalV2MediaResource.raster(bytes,header)
@@ -191,27 +191,55 @@ final class PlanetChildLocalV2MediaResource {
  * Audio permission is the actual native button touch, not a JS action/callback. */
 final class PlanetChildLocalV2MediaPresentation: NSObject {
     let token: String,permit: PlanetChildLocalV2MediaPermit
-    private let resource: PlanetChildLocalV2MediaResource,container=UIView(),picture=UIImageView(),label=UILabel(),play=UIButton(type:.system),stop=UIButton(type:.system)
+    private let resource: PlanetChildLocalV2MediaResource,container=UIView(),picture=UIImageView(),label=UILabel(),play=UIButton(type:.system),stop=UIButton(type:.system),mute=UIButton(type:.system),volume=UISlider(),transcriptScroll=UIScrollView()
     private let engine=AVAudioEngine(),player=AVAudioPlayerNode(),lock=NSLock()
-    private var concealed=false,closed=false,playing=false,watch: DispatchWorkItem?,engineAttached=false
+    private static weak var audiblePresentation: PlanetChildLocalV2MediaPresentation?
+    private var concealed=false,closed=false,playing=false,watch: DispatchWorkItem?,engineAttached=false,sessionActive=false,lastAudibleVolume: Float=1,playbackSequence: UInt64=0
+    private var observers=[NSObjectProtocol]()
     private weak var attachedParent: UIView?;private var attachedBounds=CGRect.zero
     var footprint: Int { resource.footprint }
-    func ownsNativeControl(_ view: UIView) -> Bool { lock.lock();let allowed = !concealed && !closed;lock.unlock();return allowed && (view === play || view === stop) && view.isUserInteractionEnabled && !view.isHidden }
+    func ownsNativeControl(_ view: UIView) -> Bool {
+        lock.lock();let allowed = !concealed && !closed;lock.unlock()
+        return allowed && Self.ownsTranscriptControl(view,in:transcriptScroll) && view.isUserInteractionEnabled && !view.isHidden
+    }
+    /** The passthrough surface must retain native transcript scroll gestures,
+     * including hits on stack/slider descendants, inside this presentation. */
+    static func ownsTranscriptControl(_ view: UIView,in scroll: UIScrollView) -> Bool {
+        scroll.superview != nil && (view === scroll || view.isDescendant(of:scroll))
+    }
     init(token: String,permit: PlanetChildLocalV2MediaPermit,resource: PlanetChildLocalV2MediaResource) { self.token=token;self.permit=permit;self.resource=resource;super.init() }
     func attach(to parent: UIView,layout: PlanetChildLocalV2MediaLayout) throws {
         guard Thread.isMainThread else { throw PlanetChildLocalV2MediaError.revoked };try permit.mainCurrent()
         lock.lock();let denied=concealed || closed;lock.unlock();guard !denied else { throw PlanetChildLocalV2MediaError.revoked }
         attachedParent=parent;attachedBounds=parent.bounds;container.frame=try layout.frame(in:parent.bounds);container.backgroundColor = .clear;container.clipsToBounds=true;container.accessibilityIdentifier="child-native-media-"+permit.assetId
         if let image=resource.image {
-            picture.image=UIImage(cgImage:image);picture.contentMode = .scaleAspectFit;picture.frame=container.bounds;picture.autoresizingMask=[.flexibleWidth,.flexibleHeight];picture.isAccessibilityElement=true;picture.accessibilityLabel=permit.altText;container.addSubview(picture)
+            picture.image=UIImage(cgImage:image);picture.contentMode = .scaleAspectFit;picture.frame=container.bounds;picture.autoresizingMask=[.flexibleWidth,.flexibleHeight];picture.isAccessibilityElement=true;picture.accessibilityLabel=permit.altText;picture.accessibilityLanguage=permit.locale;container.addSubview(picture)
         } else if resource.audio != nil {
-            let stack=UIStackView();stack.axis = .vertical;stack.spacing=8;stack.frame=container.bounds;stack.autoresizingMask=[.flexibleWidth,.flexibleHeight]
-            label.text=permit.transcript;label.numberOfLines=3;label.font = .preferredFont(forTextStyle:.body);label.adjustsFontForContentSizeCategory=true
-            let ru=permit.locale=="ru";play.setTitle(ru ? "Слушать":"Play",for:.normal);stop.setTitle(ru ? "Стоп":"Stop",for:.normal)
-            play.accessibilityLabel=permit.altText;play.isEnabled=permit.audioEnabled;stop.isEnabled=false
-            play.heightAnchor.constraint(greaterThanOrEqualToConstant:44).isActive=true;stop.heightAnchor.constraint(greaterThanOrEqualToConstant:44).isActive=true
-            play.addTarget(self,action:#selector(touchedPlay),for:.touchUpInside);stop.addTarget(self,action:#selector(touchedStop),for:.touchUpInside)
-            for v in [label,play,stop] { stack.addArrangedSubview(v) };container.addSubview(stack)
+            guard permit.audioEnabled,let transcript=permit.transcript,!transcript.isEmpty else { throw PlanetChildLocalV2MediaError.revoked }
+            // The complete same-locale transcript remains readable with voice
+            // muted, large type, VoiceOver and a small native media viewport.
+            let scroll=transcriptScroll,stack=UIStackView();scroll.frame=container.bounds;scroll.autoresizingMask=[.flexibleWidth,.flexibleHeight];stack.axis = .vertical;stack.spacing=8;stack.translatesAutoresizingMaskIntoConstraints=false
+            container.addSubview(scroll);scroll.addSubview(stack)
+            NSLayoutConstraint.activate([stack.leadingAnchor.constraint(equalTo:scroll.contentLayoutGuide.leadingAnchor),stack.trailingAnchor.constraint(equalTo:scroll.contentLayoutGuide.trailingAnchor),stack.topAnchor.constraint(equalTo:scroll.contentLayoutGuide.topAnchor),stack.bottomAnchor.constraint(equalTo:scroll.contentLayoutGuide.bottomAnchor),stack.widthAnchor.constraint(equalTo:scroll.frameLayoutGuide.widthAnchor)])
+            label.text=transcript;label.numberOfLines=0;label.font = .preferredFont(forTextStyle:.body);label.adjustsFontForContentSizeCategory=true;label.isAccessibilityElement=true;label.accessibilityLanguage=permit.locale
+            let ru=permit.locale=="ru";play.setTitle(ru ? "Слушать":"Play",for:.normal);stop.setTitle(ru ? "Стоп":"Stop",for:.normal);mute.setTitle(ru ? "Выключить голос":"Mute voice",for:.normal)
+            play.accessibilityLabel=(ru ? "Слушать на русском: ":"Listen in English: ")+permit.altText;stop.accessibilityLabel=ru ? "Остановить озвучивание":"Stop narration";mute.accessibilityLabel=ru ? "Выключить голос":"Mute voice"
+            for control in [play,stop,mute] { control.accessibilityLanguage=permit.locale;control.heightAnchor.constraint(greaterThanOrEqualToConstant:44).isActive=true }
+            volume.minimumValue=0;volume.maximumValue=1;volume.value=1;volume.accessibilityLabel=ru ? "Громкость озвучивания":"Narration volume";volume.accessibilityLanguage=permit.locale;volume.heightAnchor.constraint(greaterThanOrEqualToConstant:44).isActive=true
+            play.isEnabled=true;stop.isEnabled=false
+            play.addTarget(self,action:#selector(touchedPlay),for:.touchUpInside);stop.addTarget(self,action:#selector(touchedStop),for:.touchUpInside);mute.addTarget(self,action:#selector(touchedMute),for:.touchUpInside);volume.addTarget(self,action:#selector(changedVolume),for:.valueChanged)
+            for v in [label,play,stop,mute,volume] { stack.addArrangedSubview(v) }
+            let center=NotificationCenter.default
+            for name in [AVAudioSession.interruptionNotification,UIApplication.willResignActiveNotification,UIAccessibility.voiceOverStatusDidChangeNotification,UIAccessibility.reduceMotionStatusDidChangeNotification] {
+                observers.append(center.addObserver(forName:name,object:nil,queue:.main) { [weak self] _ in self?.pausePlayback() })
+            }
+            observers.append(center.addObserver(forName:AVAudioSession.routeChangeNotification,object:nil,queue:.main) { [weak self] note in
+                let reason=(note.userInfo?[AVAudioSessionRouteChangeReasonKey] as? NSNumber)?.uintValue
+                // Setting our category during an explicit native Play touch
+                // does not authorize any subsequent automatic restart.
+                if reason != AVAudioSession.RouteChangeReason.categoryChange.rawValue { self?.pausePlayback() }
+            })
+            observers.append(center.addObserver(forName:AVAudioSession.mediaServicesWereResetNotification,object:nil,queue:.main) { [weak self] _ in self?.conceal();self?.permit.failedPresentation() })
         } else { throw PlanetChildLocalV2MediaError.malformed }
         try permit.mainCurrent();parent.addSubview(container);try permit.mainCurrent();schedule()
     }
@@ -223,26 +251,54 @@ final class PlanetChildLocalV2MediaPresentation: NSObject {
         guard Thread.isMainThread,permit.audioEnabled,let buffer=resource.audio else { return }
         do {
             try permit.mainCurrent();lock.lock();let denied=concealed || closed || playing;lock.unlock();guard !denied else { return }
-            // No microphone, URL, autoplay, remote session or exported buffer.
+            if let other=Self.audiblePresentation,other !== self { other.pausePlayback() };try permit.mainCurrent()
+            guard playbackSequence<9007199254740991 else { throw PlanetChildLocalV2MediaError.revoked };playbackSequence+=1;let originalSequence=playbackSequence
+            let session=AVAudioSession.sharedInstance();try session.setCategory(.playback,mode:.spokenAudio,options:[]);try permit.mainCurrent();try session.setActive(true);sessionActive=true;Self.audiblePresentation=self
             if !engineAttached { engine.attach(player);engine.connect(player,to:engine.mainMixerNode,format:buffer.format);engineAttached=true }
-            player.stop();player.scheduleBuffer(buffer,at:nil,options:[])
+            engine.mainMixerNode.outputVolume=volume.value;player.stop()
+            player.scheduleBuffer(buffer,at:nil,options:[],completionCallbackType:.dataPlayedBack) { [weak self] _ in DispatchQueue.main.async { guard let self,self.playbackSequence==originalSequence else { return };self.pausePlayback() } }
             try permit.mainCurrent();try engine.start();try permit.mainCurrent();player.play()
             lock.lock();playing=true;lock.unlock();play.isEnabled=false;stop.isEnabled=true
         } catch { conceal();permit.failedPresentation() }
     }
-    @objc private func touchedStop() {
-        guard Thread.isMainThread else { return };player.stop();engine.pause();lock.lock();playing=false;let denied=concealed || closed;lock.unlock();play.isEnabled = !denied && permit.audioEnabled;stop.isEnabled=false
+    /** Interruption end, Bluetooth/headphone change, application resume and
+     * accessibility changes never call Play. Only a fresh native touch may. */
+    private func pausePlayback() {
+        guard Thread.isMainThread else { return };if playbackSequence<9007199254740991 { playbackSequence+=1 };player.stop();engine.pause();lock.lock();playing=false;let denied=concealed || closed;lock.unlock()
+        if sessionActive,Self.audiblePresentation === self {
+            do { try AVAudioSession.sharedInstance().setActive(false,options:.notifyOthersOnDeactivation);Self.audiblePresentation=nil;sessionActive=false }
+            catch { conceal();permit.failedPresentation();return }
+        } else { sessionActive=false }
+        do { if !denied { try permit.mainCurrent() };play.isEnabled = !denied && permit.audioEnabled;stop.isEnabled=false }
+        catch { conceal();permit.failedPresentation() }
     }
-    /** Fast native entry fence: no queue, IO lock, worker join or caller ACK. */
+    @objc private func touchedStop() { pausePlayback() }
+    @objc private func changedVolume() {
+        guard Thread.isMainThread else { return }
+        do { try permit.mainCurrent();engine.mainMixerNode.outputVolume=volume.value;if volume.value>0 { lastAudibleVolume=volume.value };updateMuteCopy() }
+        catch { conceal();permit.failedPresentation() }
+    }
+    @objc private func touchedMute() {
+        guard Thread.isMainThread else { return }
+        do { try permit.mainCurrent();if volume.value>0 { lastAudibleVolume=volume.value;volume.value=0 } else { volume.value=max(0.1,lastAudibleVolume) };engine.mainMixerNode.outputVolume=volume.value;updateMuteCopy() }
+        catch { conceal();permit.failedPresentation() }
+    }
+    private func updateMuteCopy() {
+        let ru=permit.locale=="ru",muted=volume.value==0
+        let text=muted ? (ru ? "Включить голос":"Unmute voice"):(ru ? "Выключить голос":"Mute voice")
+        mute.setTitle(text,for:.normal);mute.accessibilityLabel=text;volume.accessibilityValue=String(Int((volume.value*100).rounded()))+"%"
+    }
+    /** Fast native entry fence. Resource/session cleanup joins on the worker. */
     func conceal() {
-        guard Thread.isMainThread else { return };lock.lock();concealed=true;lock.unlock();watch?.cancel();watch=nil
-        container.isHidden=true;container.layer.removeAllAnimations();picture.image=nil;label.text=nil;play.isEnabled=false;stop.isEnabled=false;player.stop();engine.pause();container.removeFromSuperview()
+        guard Thread.isMainThread else { return };if playbackSequence<9007199254740991 { playbackSequence+=1 };lock.lock();concealed=true;playing=false;lock.unlock();watch?.cancel();watch=nil
+        for observer in observers { NotificationCenter.default.removeObserver(observer) };observers.removeAll()
+        container.isHidden=true;container.layer.removeAllAnimations();picture.image=nil;label.text=nil;play.isEnabled=false;stop.isEnabled=false;mute.isEnabled=false;volume.isEnabled=false;player.stop();engine.pause();container.removeFromSuperview()
     }
-    /** Called by original loader worker AFTER fast conceal. Native resources
-     * remain retained until real main cleanup and audio-engine stop return. */
     func closeJoined() throws {
         guard !Thread.isMainThread else { throw PlanetChildLocalV2MediaError.revoked }
-        DispatchQueue.main.sync { conceal();play.removeTarget(self,action:#selector(touchedPlay),for:.touchUpInside);stop.removeTarget(self,action:#selector(touchedStop),for:.touchUpInside) }
+        try DispatchQueue.main.sync { conceal();play.removeTarget(self,action:#selector(touchedPlay),for:.touchUpInside);stop.removeTarget(self,action:#selector(touchedStop),for:.touchUpInside);mute.removeTarget(self,action:#selector(touchedMute),for:.touchUpInside);volume.removeTarget(self,action:#selector(changedVolume),for:.valueChanged)
+            if sessionActive,Self.audiblePresentation === self { try AVAudioSession.sharedInstance().setActive(false,options:.notifyOthersOnDeactivation);Self.audiblePresentation=nil };sessionActive=false
+        }
         player.stop();engine.stop()
         if engineAttached { engine.disconnectNodeOutput(player);engine.detach(player);engineAttached=false }
         resource.close();permit.close();lock.lock();closed=true;playing=false;lock.unlock()

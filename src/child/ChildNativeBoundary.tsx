@@ -112,8 +112,8 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
             ? language === "ru" ? "Очистить историю, литературный паспорт, значки и скачанные маршруты этого профиля? Имя, PIN, оформление и избранное останутся."
               : "Clear this profile's history, literary passport, badges and downloaded routes? Its name, the parent PIN, appearance and favorites will stay."
             : removal.scope === "downloads"
-              ? language === "ru" ? "Удалить тексты скачанных маршрутов этого профиля с устройства? Пройденные шаги, значки, избранное, оформление и другие профили останутся."
-                : "Remove this profile's downloaded route texts from this device? Completed steps, badges, favorites, appearance and other profiles will stay."
+              ? language === "ru" ? "Удалить скачанные тексты, изображения, озвучивание и тексты озвучивания маршрутов этого профиля с устройства? Пройденные шаги, значки, избранное, оформление и другие профили останутся."
+                : "Remove this profile's downloaded route texts, images, narration and transcripts from this device? Completed steps, badges, favorites, appearance and other profiles will stay."
             : language === "ru" ? "Удалить этот профиль и все его данные на устройстве? Другие профили и родительский PIN останутся."
               : "Remove this profile and all its data on this device? Other profiles and the parent PIN will stay."}</p>
           <button disabled={busy} type="button" onClick={() => { void act("delete-child-data", { profileId: removal.profileId, scope: removal.scope }); }}>

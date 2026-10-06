@@ -87,6 +87,7 @@ export function decodeChildNativePassport(raw: unknown, c: ChildNativeContext): 
       || journeys.some(value => value.contentVersion !== c.package?.version)
       || !unresolved || !unresolved.every(childNativeJourneyId) || new Set(unresolved).size !== unresolved.length
       || !badges || !downloadedRoutes || row.schemaVersion === 1 && (badges.status !== "unavailable" || downloadedRoutes.status !== "unavailable")
+      || downloadedRoutes.items.some(route => route.media.locale !== c.locale)
       || downloadedRoutes.items.reduce((sum, route) => sum + route.byteLength, 0) > 2097152) return null;
     return Object.freeze({ schemaVersion: row.schemaVersion, profileId: c.profileId!, locale: c.locale, generation: c.generation, revision: row.revision,
       countries, writers, works, journeys, unresolvedCompletedNodeIds: Object.freeze(unresolved as string[]), badges, downloadedRoutes });

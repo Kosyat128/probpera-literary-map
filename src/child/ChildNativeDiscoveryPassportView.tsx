@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import type { ChildEntityReference } from "./childPackage";
 import type { ChildNativeAppController, ChildNativeEntity } from "./childNativeAppBridge";
 import type { ChildNativeDiscoveryResult, ChildNativeDiscoveryShelf, ChildNativePassport } from "./childNativeDiscoveryPassport";
+import type { ChildNativeRouteMediaDownload } from "./childNativePassportProgram";
 
 export type ChildNativeDiscoveryPassportViewName = ChildNativeDiscoveryShelf | "passport" | "home";
 export const childDiscoveryPassportLabels = {
@@ -13,7 +14,9 @@ export const childDiscoveryPassportLabels = {
     journeys: "Завершённые путешествия", badges: "Значки", routes: "Скачанные маршруты",
     badgesUnavailable: "Значки пока недоступны.", routesUnavailable: "Сведения о сохранённых маршрутах пока недоступны.",
     learning: "Здесь появляются писатели и произведения после завершённых обучающих шагов путешествия.",
-    routeText: "Тексты этих маршрутов доступны на устройстве.", startRoute: "Открыть маршрут",
+    routeText: "Тексты этих маршрутов сохранены на устройстве.", startRoute: "Открыть маршрут",
+    audioSaved: "Озвучивание и его текст скачаны.", audioMissing: "Озвучивание не скачано. Можно читать текст маршрута.",
+    ru: "Русский", en: "Английский",
     retained: "Ранее пройденные шаги сохранены. Некоторые материалы сейчас недоступны." },
   en: { writers: "Writers for my age", books: "Books for my age", collections: "Gentle collections",
     passport: "My literary passport", loading: "Checking content…", empty: "Nothing here yet.",
@@ -23,9 +26,15 @@ export const childDiscoveryPassportLabels = {
     journeys: "Completed journeys", badges: "Badges", routes: "Downloaded routes",
     badgesUnavailable: "Badges are currently unavailable.", routesUnavailable: "Information about saved routes is currently unavailable.",
     learning: "Writers and works appear here after completed learning steps in a journey.",
-    routeText: "The texts of these routes are available on this device.", startRoute: "Open route",
+    routeText: "The texts of these routes are saved on this device.", startRoute: "Open route",
+    audioSaved: "Narration and its transcript are downloaded.", audioMissing: "Narration is not downloaded. You can read the route text.",
+    ru: "Russian", en: "English",
     retained: "Earlier completed steps are saved. Some content is currently unavailable." },
 } as const;
+export function childNativeRouteAudioStatus(language: "ru" | "en", media: ChildNativeRouteMediaDownload): string {
+  const copy = childDiscoveryPassportLabels[language];
+  return copy[media.locale] + " · " + (media.audioStatus === "downloaded" ? copy.audioSaved : copy.audioMissing);
+}
 export interface ChildNativeDiscoveryPassportViewProps {
   controller: ChildNativeAppController; contextToken: string; profileId: string; language: "ru" | "en";
   view: ChildNativeDiscoveryPassportViewName; visible: boolean;
@@ -101,6 +110,7 @@ export function ChildNativeDiscoveryPassportView(props: ChildNativeDiscoveryPass
       <section data-child-passport-downloads={passport.downloadedRoutes.status}><h3>{copy.routes} · {passport.downloadedRoutes.items.length}</h3>
         {passport.downloadedRoutes.status === "unavailable" ? <p>{copy.routesUnavailable}</p> : !passport.downloadedRoutes.items.length ? <p>{copy.empty}</p>
           : <><p>{copy.routeText}</p><ul>{passport.downloadedRoutes.items.map(route => <li key={route.journeyId}>
+            <p data-child-route-audio={route.media.audioStatus} lang={language}>{childNativeRouteAudioStatus(language, route.media)}</p>
             <button type="button" onClick={() => {
               const state = controller.getSnapshot(), context = state.context;
               if (state.phase === "ready" && state.status === "child" && context?.token === contextToken
