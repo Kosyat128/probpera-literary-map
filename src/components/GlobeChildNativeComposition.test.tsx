@@ -7,20 +7,22 @@ import GlobeChildNativeComposition from "./GlobeChildNativeComposition";
 
 // Actual original geometry/material ownership with mocked hook and GPU scheduling.
 // The independent browser case exercises the original GPU. This unit grants no native authority.
-const hooks=vi.hoisted(()=>({effects:[] as Array<()=>void|(()=>void)>,frames:[] as Array<()=>void>,three:null as unknown}));
+const hooks=vi.hoisted(()=>({effects:[] as Array<()=>void|(()=>void)>,frames:[] as Array<()=>void>,priorities:[] as number[],three:null as unknown}));
 vi.mock("react",async original=>({...await original<typeof import("react")>(),
  useRef:(value:unknown)=>({current:value}),useLayoutEffect:(work:()=>void|(()=>void))=>{hooks.effects.push(work);}}));
-vi.mock("@react-three/fiber",()=>({useThree:()=>hooks.three,useFrame:(work:()=>void)=>{hooks.frames.push(work);}}));
+vi.mock("@react-three/fiber",()=>({useThree:()=>hooks.three,useFrame:(work:()=>void,priority=0)=>{hooks.frames.push(work);hooks.priorities.push(priority);}}));
 const hash="a".repeat(64),owner={kind:"activity" as const,id:"home",contentChecksum:hash};
 const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:kind,entity:{kind,id:kind,contentChecksum:hash},mime:"image/png",checksum:hash,encodedBytes:128,altText:kind});
-async function fixture(renderFails=false){
+async function fixture(renderFails=false,withBackgroundModel=false){
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(),surface=new THREE.MeshPhysicalMaterial();
  const globe=new THREE.Mesh(new THREE.SphereGeometry(1,12,8),surface);scene.add(globe);
  const native=decodeChildNativeScene({status:"opened",sceneToken:"b".repeat(32),sceneId:"fixture",owner,skin:slot("skin"),
  stand:{geometryId:"stand.base.child-book-cloud",asset:slot("stand")},background:{geometryId:"background.base.library",asset:slot("background")},
  hotspots:[{id:"activity-one",target:owner,position:[2,0,0],radius:.2}],remainingLifetimeMs:5000},owner,"fixture")!;
  const textures={skin:new THREE.Texture(),stand:new THREE.Texture(),background:new THREE.Texture()};
- const bundle:ChildCanonicalBundle={scene:native,textures,models:new Map(),tier:"economy"};
+ const backgroundRoot=new THREE.Group(),backgroundGeometry=new THREE.BoxGeometry(6,6,6),backgroundMaterial=new THREE.MeshStandardMaterial({side:THREE.DoubleSide});
+ const backgroundMesh=new THREE.Mesh(backgroundGeometry,backgroundMaterial);backgroundRoot.add(backgroundMesh);
+ const bundle:ChildCanonicalBundle={scene:native,textures,models:withBackgroundModel?new Map([["background",{root:backgroundRoot,decodedBytes:1024,triangles:12,dispose:()=>{backgroundRoot.removeFromParent();backgroundGeometry.dispose();backgroundMaterial.dispose();}}]]):new Map(),tier:"economy"};
  let current=true,recipient:ChildNativeSceneRecipient|null=null,renderer:((b:ChildCanonicalBundle)=>Promise<ChildCanonicalRenderStage|null>)|null=null;
  const context={isContextLost:()=>false,finish:vi.fn(),getError:()=>0,NO_ERROR:0};
  const previousTarget=new THREE.WebGLRenderTarget(8,8),viewport=new THREE.Vector4(7,8,111,222),scissor=new THREE.Vector4(1,2,33,44);
@@ -40,11 +42,21 @@ async function fixture(renderFails=false){
  GlobeChildNativeComposition({resources,globeRef:{current:globe},quality:"economy",onHotspot:vi.fn()});
  const cleanups=hooks.effects.splice(0).map(work=>work()).filter((v):v is ()=>void=>typeof v==="function");
  expect(renderer).toBeTypeOf("function");const stage=await (renderer as unknown as (b:ChildCanonicalBundle)=>Promise<ChildCanonicalRenderStage|null>)(bundle);
- return {scene,camera,gl,globe,surface,textures,context,resources,stage,previousTarget,viewport,scissor,recipient:()=>recipient,cleanups,current:(v:boolean)=>{current=v;},
- dispose(){cleanups.reverse().forEach(work=>work());previousTarget.dispose();globe.geometry.dispose();surface.dispose();Object.values(textures).forEach(t=>t.dispose());}};
+ return {scene,camera,gl,globe,surface,textures,context,resources,stage,backgroundMesh,backgroundMaterial,previousTarget,viewport,scissor,recipient:()=>recipient,cleanups,current:(v:boolean)=>{current=v;},
+ dispose(){cleanups.reverse().forEach(work=>work());previousTarget.dispose();globe.geometry.dispose();surface.dispose();backgroundRoot.removeFromParent();backgroundGeometry.dispose();backgroundMaterial.dispose();Object.values(textures).forEach(t=>t.dispose());}};
 }
-afterEach(()=>{hooks.effects.length=0;hooks.frames.length=0;vi.clearAllMocks();});
+afterEach(()=>{hooks.effects.length=0;hooks.frames.length=0;hooks.priorities.length=0;vi.clearAllMocks();});
 describe("original canonical composition staged recipient",()=>{
+ it("keeps enclosing background depth out of the canonical globe draw",async()=>{
+  const f=await fixture(false,true);f.stage!.commit();expect(f.backgroundMesh.parent?.parent?.name).toBe("child-native-approved-composition");
+  expect(f.backgroundMesh.renderOrder).toBeLessThan(f.globe.renderOrder);expect(f.backgroundMaterial.depthWrite).toBe(false);
+  expect(f.surface.depthWrite).toBe(true);expect(f.globe.parent).toBe(f.scene);f.dispose();
+ });
+ it("skips the original render as soon as the actual context is lost before the queued loss event",async()=>{
+  const f=await fixture();f.stage!.commit();f.gl.render.mockClear();const lost=vi.spyOn(f.context,"isContextLost").mockReturnValue(true);
+  expect(hooks.priorities).toEqual([-10000,1]);hooks.frames.forEach(frame=>frame());expect(f.gl.render).not.toHaveBeenCalled();expect(f.resources.clear).toHaveBeenCalledOnce();expect(f.surface.map).toBeNull();
+  lost.mockReturnValue(false);hooks.frames.forEach(frame=>frame());expect(f.gl.render).toHaveBeenCalledExactlyOnceWith(f.scene,f.camera);expect(f.scene.children).toEqual([f.globe]);f.dispose();
+ });
  it("warms the canonical skin and geometry off state and restores borrowed renderer state before apply",async()=>{
   const f=await fixture(),originalGeometryDispose=vi.spyOn(f.globe.geometry,"dispose");
   expect(f.stage).not.toBeNull();expect(f.scene.children).toEqual([f.globe]);expect(f.surface.map).toBeNull();

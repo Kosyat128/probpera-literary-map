@@ -44,7 +44,17 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
           if (!(cover instanceof THREE.Mesh) || !(cover.material instanceof THREE.MeshStandardMaterial)) throw new Error("Original book cover slot unavailable");
           const material = cover.material.clone(); material.map = bundle.textures.stand; material.needsUpdate = true; borrowed.push(material); cover.material = material;
         }
-        if (backgroundModel) group.add(backgroundModel.root);
+        if (backgroundModel) {
+          // A surrounding decorative room may intersect the camera's path.
+          // Draw its walls before canonical objects without writing their depth.
+          // Signed geometry and picking checks still apply to this branch.
+          backgroundModel.root.traverse(object => {
+            if (!(object instanceof THREE.Mesh)) return;
+            object.renderOrder = -100;
+            for (const material of Array.isArray(object.material) ? object.material : [object.material]) material.depthWrite = false;
+          });
+          group.add(backgroundModel.root);
+        }
         else {
           background = createGlobeLibrary(currentQuality.current); group.add(background.group);
           const geo = new THREE.PlaneGeometry(2.4, 1.5); geometry.push(geo);
@@ -108,5 +118,14 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
     canvas.addEventListener("pointerup", pick); return () => canvas.removeEventListener("pointerup", pick);
   }, [camera, gl, resources, globeRef]);
   useFrame(() => { if (owner.current && (!resources.isCurrent() || gl.getContext().isContextLost())) resources.clear(); }, -10000);
+  // The WebGL loss event is queued after the context actually becomes lost.
+  // Render through the original renderer after other frame updates, checking
+  // the actual context rather than Three's event-dependent internal flag.
+  useFrame(() => {
+    const context = gl.getContext();
+    if (context.isContextLost()) { if (owner.current) resources.clear(); return; }
+    try { gl.render(scene, camera); }
+    catch (error) { if (!context.isContextLost()) throw error; resources.clear(); }
+  }, 1);
   return null;
 }
