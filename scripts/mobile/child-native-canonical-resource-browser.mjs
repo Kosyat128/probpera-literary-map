@@ -131,7 +131,8 @@ function surface(scene:THREE.Scene){let result:THREE.Mesh|null=null;scene.traver
 const canvasInventory=()=>({canvases:document.querySelectorAll("[data-globe-mode] canvas").length,bookyCanvases:document.querySelectorAll("canvas[data-booky-canvas]").length,totalCanvases:document.querySelectorAll("canvas").length,globeRoots:_roots.size});
 function remember(){const value=store();if(!value)throw Error("Original R3F store unavailable");
  const globe=surface(value.scene);if(!globe)throw Error("Original canonical sphere unavailable");
- original={renderer:value.gl,camera:value.camera,scene:value.scene,globe,canvas:value.gl.domElement};
+ if(!(globe.material.map instanceof THREE.Texture))throw Error("Original public atlas texture unavailable");
+ original={renderer:value.gl,camera:value.camera,scene:value.scene,globe,canvas:value.gl.domElement,publicMap:globe.material.map};
  return {renderer:value.gl.uuid??value.gl.domElement.dataset.renderer??"same-reference",camera:value.camera.uuid,scene:value.scene.uuid,globe:globe.uuid,...canvasInventory()};
 }
 function inspect(){const value=store();if(!value||!original)throw Error("Original recipient unavailable");
@@ -148,11 +149,11 @@ function inspect(){const value=store();if(!value||!original)throw Error("Origina
   hotspot:!!group?.getObjectByName("child-hotspot:approved-activity-proposal"),modelMode,model:!!model,modelVertices:modelMesh?.geometry.getAttribute("position").count??0,modelDraws:modelMesh?.userData.draws??0,uploaded,glError:gpu.getError(),nativeAuthority:false};
 }
 async function retire(){if(!captured)throw Error("No uploaded recipient captured");
- const task=controller.suspend();const synchronous={surfaceClear:captured.globe.material.map===null,groupDetached:captured.group.parent===null};
+ const task=controller.suspend();const synchronous={surfaceRestored:captured.globe.material.map===original.publicMap,childSurfaceCleared:captured.textures.every(texture=>captured.globe.material.map!==texture),groupDetached:captured.group.parent===null};
  await task;await new Promise(requestAnimationFrame);
- const after={surfaceClear:captured.globe.material.map===null,groupDetached:captured.group.parent===null,
+ const after={surfaceRestored:captured.globe.material.map===original.publicMap,childSurfaceCleared:captured.textures.every(texture=>captured.globe.material.map!==texture),groupDetached:captured.group.parent===null,
   disposedTextures:order.filter(v=>v==="texture-dispose").length,liveMinted:minted.size,retiredContext:controller.getSnapshot().context===null,
-  gpuResourcesRetired:captured.textures.every(texture=>!captured.renderer.properties.get(texture).__webglTexture)};
+  ownedImagesCleared:captured.textures.every(texture=>texture.image===null),gpuResourcesRetired:captured.textures.every(texture=>!captured.renderer.properties.get(texture).__webglTexture)};
  return {synchronous,after,order:[...order]};
 }
 (window as any).__childCanonicalBrowser={remember,inspect,retire,locale,modelMode,fixture:"real-original-three-synthetic-native-uri-seam",nativeAuthority:false};
@@ -215,8 +216,9 @@ export async function runChildCanonicalResourceBrowserFixture(options={}){
     &&observed.group&&(composition==="model"?observed.model&&observed.modelVertices===3&&observed.modelDraws>0:observed.cover)&&observed.wall&&observed.hotspot&&observed.uploaded.every(Boolean)&&observed.glError===0,"actual original geometry/material/GPU upload identity");
    const imagePath=path.join(report.output,locale+"-"+composition+"-original-composition.png");await page.screenshot({path:imagePath});
    const cleanup=await page.evaluate(()=>window.__childCanonicalBrowser.retire());
-   require(cleanup.synchronous.surfaceClear&&cleanup.synchronous.groupDetached&&cleanup.after.surfaceClear&&cleanup.after.groupDetached
-    &&cleanup.after.disposedTextures===(composition==="model"?2:3)&&cleanup.after.liveMinted===0&&cleanup.after.retiredContext&&cleanup.after.gpuResourcesRetired,"clear-before-frame and actual decoder/native-seam/GPU retirement");
+   report.currentObservation={locale,composition,before,observed,cleanup};
+   require(cleanup.synchronous.surfaceRestored&&cleanup.synchronous.childSurfaceCleared&&cleanup.synchronous.groupDetached&&cleanup.after.surfaceRestored&&cleanup.after.childSurfaceCleared&&cleanup.after.groupDetached
+    &&cleanup.after.disposedTextures===(composition==="model"?2:3)&&cleanup.after.liveMinted===0&&cleanup.after.retiredContext&&cleanup.after.ownedImagesCleared&&cleanup.after.gpuResourcesRetired,"public atlas restored before frame; private scene textures, images, native URI seam and GPU ownership retired");
    require(errors.length===0,"browser execution errors: "+errors.join("; "));
    report.checks.push({locale,composition,status:"PASS",scope:"actual-original-three-with-synthetic-native-uri-seam",before,observed,cleanup,screenshot:{path:imagePath,sha256:sha(await fs.readFile(imagePath))},nativeAuthority:false});
    await context.close();
