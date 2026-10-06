@@ -91,7 +91,7 @@ describe("versioned typed model transaction through the original scene port",()=
   return {...f,g,id,modelScene,acquireModel,readModelChunk,fetcher};
  }
  it("imports real buffers, warms the original recipient, then remembers and commits in order",async()=>{
-  const f=modelFixture(),events:string[]=[],commit=vi.fn(()=>events.push("commit")),rollback=vi.fn();
+  const f=modelFixture(),events:string[]=[],commit=vi.fn(()=>{events.push("commit");}),rollback=vi.fn();
   f.scenes.open.mockResolvedValueOnce(f.modelScene);f.scenes.remember.mockImplementationOnce(async(scene,expected)=>{events.push("remember");return {profileId:"native-profile",revision:expected+1,selection:childNativeAppearanceFromScene(scene)};});
   f.resources.attachRenderer!("balanced",async b=>{expect(b.models.get("stand")?.root.children.length).toBe(1);events.push("warm");return {commit,rollback};});
   expect(await f.resources.select(owner,f.id)).toBe(true);expect(events).toEqual(["warm","remember","commit"]);
@@ -242,9 +242,9 @@ describe("latest intent through acknowledged native CAS and native-owned rollbac
  });
  it("reverts protected choice if the final renderer commit refuses the warmed stage",async()=>{
   const f=fixture();expect(await f.resources.select(owner,"fixture")).toBe(true);const before=f.resources.getSnapshot(),chosen={...f.scene,sceneToken:"e".repeat(32)};
-  f.scenes.open.mockResolvedValueOnce(chosen);const rollback=vi.fn();f.resources.attachRenderer!("balanced",async()=>({commit(){throw Error("Original canvas retired after warm");},rollback}));
+  f.scenes.open.mockResolvedValueOnce(chosen);const rollback=vi.fn(),join=vi.fn(async()=>undefined);f.resources.attachRenderer!("balanced",async()=>({commit(){throw Error("Original canvas retired after warm");},rollback,join}));
   expect(await f.resources.select(owner,"fixture")).toBe(false);expect(f.resources.getSnapshot().textures).toBe(before.textures);expect(f.resources.isCurrent()).toBe(true);
-  expect(f.scenes.rollback).toHaveBeenCalledWith(chosen,2);expect(f.saved().selection).toEqual(childNativeAppearanceFromScene(f.scene));expect(rollback).toHaveBeenCalledTimes(1);await f.resources.dispose();
+  expect(f.scenes.rollback).toHaveBeenCalledWith(chosen,2);expect(f.saved().selection).toEqual(childNativeAppearanceFromScene(f.scene));expect(rollback).toHaveBeenCalledTimes(1);expect(join).toHaveBeenCalledTimes(1);await f.resources.dispose();
  });
  it("does not leave an acknowledged native choice installed after synchronous clear during CAS",async()=>{
   const f=fixture(),nativeRemember=f.scenes.remember.getMockImplementation()!;let finish!:()=>void;const hold=new Promise<void>(done=>{finish=done;});

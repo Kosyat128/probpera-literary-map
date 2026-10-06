@@ -147,7 +147,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
   }
   // Historical artifacts predating this import retain their existing snapshot.
   // Any artifact that claims the registry module must still bind its exact input.
-  for (const required of sourceRoots.filter(name => name !== "src" && (checkSourceFreshness || ![CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE].includes(name)))) if (!inputMap.has(required)) add("SOURCE_INPUT_SET", required, "Required native build/configuration input is missing.");
+  for (const required of sourceRoots.filter(name => name !== "src" && (checkSourceFreshness || ![CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_PASSPORT_ASSET_MODULE].includes(name)))) if (!inputMap.has(required)) add("SOURCE_INPUT_SET", required, "Required native build/configuration input is missing.");
   if (sha(json({ sourceCommit: artifact.sourceCommit, sourceInputsSha256: inputs?.sha256, platform: artifact.platform, channel: artifact.channel, inventory: artifact.inventory })) !== artifact.buildId) add("BUILD_ID", "artifact.json", "Build identity does not bind the exact source, platform/channel and inventory.");
   try {
     const config = await readJson(root, "capacitor.config.json");

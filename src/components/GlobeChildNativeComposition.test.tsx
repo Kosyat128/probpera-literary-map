@@ -15,6 +15,7 @@ vi.mock("@react-three/fiber",()=>({useThree:()=>hooks.three,useFrame:(work:()=>v
 const hash="a".repeat(64),owner={kind:"activity" as const,id:"home",contentChecksum:hash};
 const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:kind,entity:{kind,id:kind,contentChecksum:hash},mime:"image/png",checksum:hash,encodedBytes:128,altText:kind});
 async function fixture(renderFails=false,withBackgroundModel=false,engine=false,staticFallback=false){
+ vi.stubGlobal("document",{get visibilityState(){return "visible";},querySelector:()=>null,addEventListener:vi.fn(),removeEventListener:vi.fn()});
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(),surface=new THREE.MeshPhysicalMaterial();
  const globe=new THREE.Mesh(new THREE.SphereGeometry(1,12,8),surface);scene.add(globe);
  let native=decodeChildNativeScene({status:"opened",sceneToken:"b".repeat(32),sceneId:"fixture",owner,skin:slot("skin"),
@@ -49,7 +50,7 @@ async function fixture(renderFails=false,withBackgroundModel=false,engine=false,
  return {scene,camera,gl,globe,surface,textures,context,resources,stage,bundle,publicMap,prepare:renderer as unknown as (b:ChildCanonicalBundle)=>Promise<ChildCanonicalRenderStage|null>,backgroundMesh,backgroundMaterial,previousTarget,viewport,scissor,recipient:()=>recipient,cleanups,current:(v:boolean)=>{current=v;},
  dispose(){cleanups.reverse().forEach(work=>work());previousTarget.dispose();globe.geometry.dispose();surface.dispose();backgroundRoot.removeFromParent();backgroundGeometry.dispose();backgroundMaterial.dispose();Object.values(textures).forEach(t=>t?.dispose());publicMap?.dispose();visibility?.mockRestore();}};
 }
-afterEach(()=>{hooks.effects.length=0;hooks.frames.length=0;hooks.priorities.length=0;vi.restoreAllMocks();});
+afterEach(()=>{hooks.effects.length=0;hooks.frames.length=0;hooks.priorities.length=0;vi.restoreAllMocks();vi.unstubAllGlobals();});
 describe("original canonical composition staged recipient",()=>{
  it("keeps enclosing background depth out of the canonical globe draw",async()=>{
   const f=await fixture(false,true);await f.stage!.commit();f.stage!.finalize?.();expect(f.backgroundMesh.parent?.parent?.name).toBe("child-native-approved-composition");

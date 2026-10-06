@@ -12,7 +12,10 @@ export interface ChildSceneEncodedCache {
 type Entry = { bytes: Uint8Array; sceneToken: string; expiresAt: number };
 type Pending = { bytes: Uint8Array; key: string; sceneToken: string; expiresAt: number; cancelled: boolean };
 const safe = (n: number, maximum: number) => Number.isSafeInteger(n) && !Object.is(n, -0) && n >= 0 && n <= maximum;
-const digest = async (bytes: Uint8Array) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))].map(n => n.toString(16).padStart(2, "0")).join("");
+const digest = async (bytes: Uint8Array) => {
+  if (!(bytes.buffer instanceof ArrayBuffer)) throw new Error("Owned unshared hash input required");
+  return [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes as Uint8Array<ArrayBuffer>))].map(n => n.toString(16).padStart(2, "0")).join("");
+};
 /** Encoded copies only: never a scene lease, decoded geometry, texture or GPU
  * root. One cache captures one native context. Original deadlines, pending
  * hash copies and byte peaks are bounded; this LRU never prunes the native

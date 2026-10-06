@@ -1261,7 +1261,6 @@ function GlobeSurface({
   quality,
   globeObjectRef,
   touchInteractionEnabled,
-  childPreloadPaused,
 }: {
   atlas: GlobeAtlas;
   visualStyle: GlobeVisualStyle;
@@ -1274,7 +1273,6 @@ function GlobeSurface({
   quality: GlobeQualityProfile;
   globeObjectRef: RefObject<THREE.Mesh>;
   touchInteractionEnabled: boolean;
-  childPreloadPaused?: boolean;
 }) {
   const surfaceMaterial = globeSurfaceMaterials[visualStyle];
   const hoveredCountryId = useRef<string | null>(null);
@@ -1425,7 +1423,6 @@ function MicrostateMarker({
   onCountrySelect,
   onCountryHover,
   touchInteractionEnabled,
-  childPreloadPaused,
 }: {
   country: Country;
   coordinates: [number, number];
@@ -1435,7 +1432,6 @@ function MicrostateMarker({
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   touchInteractionEnabled: boolean;
-  childPreloadPaused?: boolean;
 }) {
   const pointerGesture = useRef<GlobePointerGesture | null>(null);
   const position = geographicToSphere(coordinates[1], coordinates[0], 1.016);
@@ -1603,7 +1599,6 @@ function MicrostateMarkers({
   onCountrySelect,
   onCountryHover,
   touchInteractionEnabled,
-  childPreloadPaused,
 }: {
   atlas: GlobeAtlas;
   countries: Country[];
@@ -1613,7 +1608,6 @@ function MicrostateMarkers({
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   touchInteractionEnabled: boolean;
-  childPreloadPaused?: boolean;
 }) {
   const microstates = useMemo(
     () =>

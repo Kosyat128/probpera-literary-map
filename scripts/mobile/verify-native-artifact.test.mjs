@@ -1,3 +1,4 @@
+import { CHILD_NATIVE_PASSPORT_ASSET_MODULE, CHILD_NATIVE_PASSPORT_PIN_SOURCE, CHILD_NATIVE_PASSPORT_CATALOG } from "./native-child-passport-assets.mjs";
 import { CHILD_NATIVE_SCENE_PIN_SOURCE,CHILD_NATIVE_SCENE_ASSET_MODULE,CHILD_NATIVE_SCENE_CATALOG } from "./native-child-scene-assets.mjs";
 import path from "node:path";
 import { mkdir, mkdtemp, readFile, writeFile, readdir, rm, symlink } from "node:fs/promises";
@@ -25,7 +26,7 @@ async function fixture({ platform = "android", channel = "dev", ownership = true
   const pkg = { dependencies: Object.fromEntries(Object.entries(nativePackages).filter(([name]) => name !== "@capacitor/cli")), devDependencies: { "@capacitor/cli": "8.5.1" } };
   const lock = { packages: Object.fromEntries(Object.entries(nativePackages).map(([name, version]) => ["node_modules/" + name, { version, integrity: "sha512-" + Buffer.alloc(64, 1).toString("base64") }])) };
   const config = { appId: "ru.probpera.literaryplanet", appName: "Literary Planet", webDir: "dist-native", loggingBehavior: "debug", android: { path: "apps/mobile/android", allowMixedContent: false }, ios: { path: "apps/mobile/ios" }, server: { hostname: "localhost", androidScheme: "https", iosScheme: "capacitor" } };
-  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE, CHILD_NATIVE_SCENE_ASSET_MODULE,
+  const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_PASSPORT_ASSET_MODULE, CHILD_NATIVE_PASSPORT_PIN_SOURCE, "src/child/childNativePassportProgram.ts", "src/child/childNativeJourney.ts", "src/planet/contentPackageProtocol.mjs",
     "src/child/childNativeResource.ts", "src/child/childPackage.ts", "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts", "src/child/childProfile.ts","src/child/childNativeScene.ts","src/child/childNativeCanonicalResources.ts","src/child/childNativeMedia.ts","src/components/GlobeChildNativeComposition.tsx","src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts"].sort();
   for (const file of sources) await write(file, file.endsWith(".json") ? "{}\n" : "fixture source " + file, root);
   for (const source of [CHILD_NATIVE_RESOURCE_ASSET_MODULE, "src/child/childNativeResource.ts", "src/child/childPackage.ts",
@@ -34,6 +35,9 @@ async function fixture({ platform = "android", channel = "dev", ownership = true
   for (const source of [CHILD_NATIVE_SCENE_ASSET_MODULE,CHILD_NATIVE_MEDIA_ASSET_MODULE,"src/child/childNativeScene.ts",
     "src/child/childNativeCanonicalResources.ts","src/child/childNativeMedia.ts","src/components/GlobeChildNativeComposition.tsx","src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts"])
     await write(source,await readFile(new URL("../../"+source,import.meta.url)),root);
+  for(const source of [CHILD_NATIVE_PASSPORT_ASSET_MODULE,CHILD_NATIVE_ASSET_MODULE,"src/child/childNativePassportProgram.ts","src/child/childNativeJourney.ts","src/planet/contentPackageProtocol.mjs"])
+    await write(source,await readFile(new URL("../../"+source,import.meta.url)),root);
+  await write(CHILD_NATIVE_PASSPORT_PIN_SOURCE,json({schemaVersion:1,kind:"literary-planet-child-passport-program-release-pins-v1",reviewKeys:[],programs:[]}),root);
   await write(CHILD_NATIVE_SCENE_PIN_SOURCE,json({schemaVersion:2,kind:"literary-planet-child-native-scene-release-pins-v2",reviewKeys:[],manifests:[]}),root);
   await write(CHILD_NATIVE_RESOURCE_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-resource-release-pins-v2", origins: [], resources: [] }), root);
   await write("package.json", json(pkg), root); await write("package-lock.json", json(lock), root); await write("capacitor.config.json", json(config), root);
@@ -101,6 +105,12 @@ async function fixture({ platform = "android", channel = "dev", ownership = true
   await write(CHILD_NATIVE_SCENE_CATALOG,sceneCatalog);
   artifact.childNativeSceneAssets={pinSource:{path:CHILD_NATIVE_SCENE_PIN_SOURCE,sha256:scenePinChecksum},outputs:[{output:CHILD_NATIVE_SCENE_CATALOG,
     source:CHILD_NATIVE_SCENE_PIN_SOURCE,sourceSha256:scenePinChecksum,transformation:"fixed-native-scene-pin-projection-v2",outputSha256:sha(sceneCatalog)}]};
+  const passportPinChecksum=sha(await readFile(path.join(root,CHILD_NATIVE_PASSPORT_PIN_SOURCE)));
+  const passportCatalog=JSON.stringify({schemaVersion:1,kind:"literary-planet-child-passport-program-catalog-v1",platform:selectedPlatform,
+    programPinSourceChecksum:passportPinChecksum,reviewKeys:[],programs:[]})+"\n";
+  await write(CHILD_NATIVE_PASSPORT_CATALOG,passportCatalog);
+  artifact.childNativePassportProgramAssets={pinSource:{path:CHILD_NATIVE_PASSPORT_PIN_SOURCE,sha256:passportPinChecksum},outputs:[{output:CHILD_NATIVE_PASSPORT_CATALOG,
+    source:CHILD_NATIVE_PASSPORT_PIN_SOURCE,sourceSha256:passportPinChecksum,transformation:"fixed-native-passport-program-pin-projection-v1",outputSha256:sha(passportCatalog)}]};
   async function refresh() {
     artifact.inventory = [];
     for (const file of (await walk(output)).filter(file => file !== "artifact.json")) { const bytes = await readFile(path.join(output, file)); artifact.inventory.push({ path: file, bytes: bytes.length, sha256: sha(bytes) }); }
@@ -136,9 +146,9 @@ describe("native child package artifact provenance", () => {
   });
   it("rejects unpinned child output and retains genuinely pre-exporter historical bundles", async () => {
     const f = await fixture();await f.write("child-native/packages/" + "a".repeat(64) + ".json", "{}");await f.refresh();expect(codes(await f.audit())).toContain("CHILD_NATIVE_PROVENANCE");
-    await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;delete f.artifact.childNativeMediaAssets;delete f.artifact.childNativeResourceAssets;delete f.artifact.childNativeSceneAssets;
-    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
-    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => ![CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_RESOURCE_PIN_SOURCE,CHILD_NATIVE_SCENE_PIN_SOURCE].includes(module));
+    await rm(path.join(f.output, "child-native"), { recursive: true });delete f.artifact.childNativeAssets;delete f.artifact.childNativeMediaAssets;delete f.artifact.childNativeResourceAssets;delete f.artifact.childNativeSceneAssets;delete f.artifact.childNativePassportProgramAssets;
+    f.artifact.sourceInputs.files = f.artifact.sourceInputs.files.filter(row => ![CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE, CHILD_NATIVE_PASSPORT_ASSET_MODULE, CHILD_NATIVE_PASSPORT_PIN_SOURCE].includes(row.path));f.artifact.sourceInputs.sha256 = sha(json(f.artifact.sourceInputs.files));
+    for (const chunk of f.owned.chunks) chunk.modules = chunk.modules.filter(module => ![CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_RESOURCE_PIN_SOURCE,CHILD_NATIVE_SCENE_PIN_SOURCE,CHILD_NATIVE_PASSPORT_PIN_SOURCE].includes(module));
     await f.write("module-ownership.json", json(f.owned));await f.refresh();expect((await f.audit({ checkSourceFreshness: false })).findings).toEqual([]);expect(codes(await f.audit())).toContain("SOURCE_INPUT_SET");
   });
 });
@@ -468,6 +478,14 @@ describe("native original canonical scene artifact provenance",()=>{
   expect(codes(await f.audit())).toContain("CHILD_NATIVE_SCENE_PROVENANCE");
   await rm(path.join(f.output,"child-native/scenes/orphan.json"));await f.write("index.html",f.html.replace(" planet-child-resource:",""));await f.refresh();
   expect(codes(await f.audit())).toContain("SHELL_CSP");
+ });
+ it("keeps exact scene and passport provenance when a claimed historical compiler input is removed",async()=>{
+  const f=await fixture(),original=f.artifact.sourceInputs.files;
+  for(const [module,code] of [[CHILD_NATIVE_SCENE_ASSET_MODULE,"CHILD_NATIVE_SCENE_PROVENANCE"],[CHILD_NATIVE_PASSPORT_ASSET_MODULE,"CHILD_NATIVE_PASSPORT_PROVENANCE"]]){
+   f.artifact.sourceInputs.files=original.filter(row=>row.path!==module);f.artifact.sourceInputs.sha256=sha(json(f.artifact.sourceInputs.files));await f.saveIdentity();
+   expect(codes(await f.audit({checkSourceFreshness:false}))).toContain(code);
+  }
+  f.artifact.sourceInputs.files=original;f.artifact.sourceInputs.sha256=sha(json(original));await f.saveIdentity();expect((await f.audit({checkSourceFreshness:false})).findings).toEqual([]);
  });
  it("pins imported engine, cache and transition semantics even with historical comparison disabled",async()=>{
   const f=await fixture();

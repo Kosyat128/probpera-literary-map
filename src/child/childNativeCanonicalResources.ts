@@ -38,7 +38,10 @@ type Owned = { bundle: ChildCanonicalBundle; deadline: number; decodedBytes: num
 type Intent = { kind: "select" | "restore"; entity?: ChildEntityReference; sceneId?: string };
 type Retry = { tier: Common3dTierId; staticFallback: boolean; deadline: number; intent: Intent };
 class ChildSceneTierError extends Error {}
-const digest = async (value: Uint8Array) => [...new Uint8Array(await crypto.subtle.digest("SHA-256", value))].map(b => b.toString(16).padStart(2, "0")).join("");
+const digest = async (value: Uint8Array) => {
+  if (!(value.buffer instanceof ArrayBuffer)) throw new Error("Owned unshared hash input required");
+  return [...new Uint8Array(await crypto.subtle.digest("SHA-256", value as Uint8Array<ArrayBuffer>))].map(b => b.toString(16).padStart(2, "0")).join("");
+};
 /** Previous valid composition remains live through warm, native CAS and the
  * bounded same-renderer transition. Presentation metadata/cache never grants
  * authority, renews a native lease or supplies another composition owner. */
@@ -151,6 +154,13 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
       await previousWork; if (!valid(ticket, retry?.deadline)) return false;
       let scene: ChildNativeScene | null = null, deadline = retry?.deadline ?? Infinity, candidate: Owned | null = null, stage: ChildCanonicalRenderStage | null = null, committed = false;
       const textures = new Set<THREE.Texture>(), bytes = new Set<Uint8Array>(), models = new Map<"stand" | "background", Common3dImported>();
+      let rollbackWork: Promise<void> | null = null;
+      const rollbackStage = () => rollbackWork ??= (async () => {
+        let failed = false;
+        try { await stage?.rollback(); } catch { failed = true; }
+        try { await stage?.join?.(); } catch { failed = true; }
+        if (failed) throw new ChildSceneCleanupError("Renderer rollback or join failed");
+      })();
       const current = () => valid(ticket, deadline) && !abort.signal.aborted;
       let requestTimer: ReturnType<typeof setTimeout> | null = null;
       const narrowDeadline = (next: number) => {
@@ -264,7 +274,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         const rollbackNative = async () => {
           // Join the actual renderer rollback before allowing queued C to read
           // the durable choice. The rollback snapshot is native-owned only.
-          try { await stage?.rollback(); await stage?.join?.(); } catch { broken = true; }
+          try { await rollbackStage(); } catch { broken = true; }
           const reverted = await Promise.resolve().then(() => scenes.rollback?.(scene!, remembered.revision)).catch(() => null);
           const same = reverted && reverted.profileId === saved.profileId && (saved.selection === null ? reverted.selection === null : reverted.selection !== null && sameChildNativeAppearance(saved.selection, reverted.selection));
           if (broken || !reverted || !same || reverted.revision !== remembered.revision + 1 || originalClear !== clearSequence || !valid(undefined, deadline)) {
@@ -312,7 +322,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
       } finally {
         if (requestTimer !== null) clearTimeout(requestTimer);
         if (!committed) {
-          try { await stage?.rollback(); await stage?.join?.(); } catch { broken = true; clear(); void controller.suspend().catch(() => undefined); }
+          try { await rollbackStage(); } catch { broken = true; clear(); void controller.suspend().catch(() => undefined); }
           if (candidate) retire(candidate);
           else retireParts(scene?.sceneToken, models, textures, bytes);
           if (scene && scene.sceneToken !== active?.bundle.scene.sceneToken) {

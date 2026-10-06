@@ -141,6 +141,13 @@ describe("engine transaction through current synthetic native seam; no rights/de
     expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(false); expect(f.resources.getSnapshot().textures).toBeNull(); expect(f.controller.suspend).toHaveBeenCalled();
     await expect(f.resources.join()).rejects.toThrow("cleanup failed");
   });
+  it("joins a throwing renderer rollback exactly once before sealing uncertain ownership", async () => {
+    const f = fixture(), rollback = vi.fn(() => { throw new Error("rollback observer failed"); }), join = vi.fn(async () => undefined);
+    f.stage.mockImplementationOnce(async () => ({ residentBytes: 0, commit: async () => { throw new Error("commit refused"); }, rollback, join }));
+    expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(false);
+    expect(rollback).toHaveBeenCalledOnce(); expect(join).toHaveBeenCalledOnce(); expect(f.controller.suspend).toHaveBeenCalled();
+    await expect(f.resources.join()).rejects.toThrow("cleanup failed");
+  });
   it("never starts a fallback lease when the declined native owner cannot be released", async () => {
     const f = fixture(); f.scenes.acquireModel.mockImplementation(async (s, r, tier) => f.decline(s, r, tier)); f.scenes.release.mockResolvedValue(false);
     expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(false); expect(f.scenes.open).toHaveBeenCalledOnce(); expect(f.controller.suspend).toHaveBeenCalled();
