@@ -30,6 +30,7 @@ export interface ChildNativeBadge {
 }
 export interface ChildNativeDownloadedRoute extends ChildNativeJourneySummary {
   readonly snapshotChecksum: string; readonly byteLength: number;
+  readonly storage?: "shared-objects";
   /** Native checked persisted bytes, separately from permission to play. */
   readonly media: ChildNativeRouteMediaDownload;
 }
@@ -118,24 +119,27 @@ export function decodeChildNativeBadges(raw: unknown, contentVersion: number): C
 }
 export function decodeChildNativeDownloadedRoute(raw: unknown, contentVersion: number): ChildNativeDownloadedRoute | null {
   try {
-    const row = childRecord(raw, ["journeyId", "journeyVersion", "contentVersion", "title", "description", "nodeCount", "snapshotChecksum", "byteLength", "media"]);
+    const row = childRecord(raw, ["journeyId", "journeyVersion", "contentVersion", "title", "description", "nodeCount", "snapshotChecksum", "byteLength", "media"])
+      ?? childRecord(raw, ["journeyId", "journeyVersion", "contentVersion", "title", "description", "nodeCount", "snapshotChecksum", "byteLength", "media", "storage"]);
     if (!row || !childNativePassportHash(row.snapshotChecksum) || !positive(row.byteLength) || row.byteLength > 524288) return null;
-    const media = decodeChildNativeRouteMediaDownload(row.media, row.byteLength);
+    if ("storage" in row && row.storage !== "shared-objects") return null;
+    const media = decodeChildNativeRouteMediaDownload(row.media, row.byteLength, row.storage === "shared-objects");
     if (!media) return null;
     const summaries = decodeChildNativeJourneySummaries([{ journeyId: row.journeyId, journeyVersion: row.journeyVersion, contentVersion: row.contentVersion,
       title: row.title, description: row.description, nodeCount: row.nodeCount }]);
     return summaries?.length === 1 && summaries[0].contentVersion === contentVersion && summaries[0].journeyVersion === contentVersion
-      ? Object.freeze({ ...summaries[0], snapshotChecksum: row.snapshotChecksum, byteLength: row.byteLength, media }) : null;
+      ? Object.freeze({ ...summaries[0], snapshotChecksum: row.snapshotChecksum, byteLength: row.byteLength, media, ...(row.storage === "shared-objects" ? { storage: "shared-objects" as const } : {}) }) : null;
   } catch { return null; }
 }
-export function decodeChildNativeRouteMediaDownload(raw: unknown, snapshotByteLength: number): ChildNativeRouteMediaDownload | null {
+export function decodeChildNativeRouteMediaDownload(raw: unknown, snapshotByteLength: number, sharedObjects = false): ChildNativeRouteMediaDownload | null {
   try {
     const row = childRecord(raw, ["locale", "audioStatus", "audioItemCount", "imageItemCount", "transcriptByteLength", "mediaByteLength"]);
     if (!row || row.locale !== "ru" && row.locale !== "en" || row.audioStatus !== "downloaded" && row.audioStatus !== "text-only"
       || !revision(snapshotByteLength) || snapshotByteLength < 1 || snapshotByteLength > 524288
       || !revision(row.audioItemCount) || !revision(row.imageItemCount) || row.audioItemCount + row.imageItemCount > 64
       || !revision(row.transcriptByteLength) || !revision(row.mediaByteLength)
-      || row.mediaByteLength + row.transcriptByteLength >= snapshotByteLength
+      || row.transcriptByteLength > 524288 || row.mediaByteLength > 2147483648
+      || (!sharedObjects && row.mediaByteLength + row.transcriptByteLength >= snapshotByteLength)
       || (row.audioStatus === "downloaded") !== (row.audioItemCount > 0)
       || (row.audioItemCount > 0) !== (row.transcriptByteLength > 0)
       || (row.audioItemCount + row.imageItemCount > 0) !== (row.mediaByteLength > 0)) return null;

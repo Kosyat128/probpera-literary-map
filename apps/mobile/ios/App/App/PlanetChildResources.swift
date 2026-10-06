@@ -77,16 +77,21 @@ final class PlanetChildLocalV2ResourceReader: NSObject, URLSessionDataDelegate {
     private let delegates = OperationQueue()
     private var session: URLSession?, task: URLSessionDataTask?, bundleStream: InputStream?
     private let encoded: PlanetChildLocalV2ResourceBuffer
+    private var cachedBytes: Data?
     private var started = false, cancelled = false, completed = false, invalidated = false, joined = false, transferred = false
     private var responseAccepted = false, trustAccepted = false, failure: Error?
     // Reservations precede dropping condition: cancellation/retirement cannot
     // report joined while a captured native task is still being resumed or cancelled.
     private var nativeCalls = 0
-    init(_ claim: PlanetChildLocalV2ResourceClaim) {
-        self.claim = claim;encoded=PlanetChildLocalV2ResourceBuffer(claim.bytes)
+    init(_ claim: PlanetChildLocalV2ResourceClaim,cached: Data?=nil) {
+        self.claim = claim;encoded=PlanetChildLocalV2ResourceBuffer(claim.bytes);cachedBytes=cached.map { Data(Array($0)) }
         super.init()
         delegates.name = "ru.probpera.literaryplanet.child.resource.delegate-v2"
         delegates.maxConcurrentOperationCount = 1
+    }
+    deinit {
+        encoded.close()
+        if cachedBytes != nil { cachedBytes!.resetBytes(in:0..<cachedBytes!.count);cachedBytes=nil }
     }
     private func refuse(_ error: Error) {
         condition.lock(); if failure == nil { failure = error }; cancelled = true
@@ -113,9 +118,13 @@ final class PlanetChildLocalV2ResourceReader: NSObject, URLSessionDataDelegate {
     func read() throws -> Data {
         try claim.workerCurrent()
         condition.lock(); guard !started, !cancelled else { condition.unlock(); throw PlanetChildLocalV2ResourceError.revoked }
-        started = true; condition.unlock()
+        started = true;var ownedCached=cachedBytes;cachedBytes=nil;if ownedCached != nil { nativeCalls+=1 };condition.unlock()
         do {
-            if let location = claim.https {
+            if let cached=ownedCached {
+                defer { if ownedCached != nil { ownedCached!.resetBytes(in:0..<ownedCached!.count);ownedCached=nil };condition.lock();nativeCalls-=1;condition.broadcast();condition.unlock() }
+                try claim.workerCurrent();try PlanetChildLocalV2ResourceRules.encoded(cached,claim.bytes,claim.checksum)
+                condition.lock();guard !cancelled else { condition.unlock();throw PlanetChildLocalV2ResourceError.revoked };do { try encoded.append(cached) } catch { condition.unlock();throw error };completed=true;invalidated=true;condition.unlock();try claim.workerCurrent()
+            } else if let location = claim.https {
                 let seconds = try claim.remainingSeconds()
                 let configuration = URLSessionConfiguration.ephemeral
                 configuration.urlCache = nil; configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -178,7 +187,7 @@ final class PlanetChildLocalV2ResourceReader: NSObject, URLSessionDataDelegate {
     func closeJoined(preserveEncoded: Bool = false) throws {
         guard !Thread.isMainThread, OperationQueue.current !== delegates else { throw PlanetChildLocalV2ResourceError.cleanupUnknown }
         condition.lock()
-        if joined { if !preserveEncoded { encoded.close() }; condition.unlock(); return }
+        if joined { if !preserveEncoded { encoded.close();if cachedBytes != nil { cachedBytes!.resetBytes(in:0..<cachedBytes!.count);cachedBytes=nil } }; condition.unlock(); return }
         let owned = session, original = task, calls = session != nil || task != nil
         if calls { nativeCalls += 1 }
         if session == nil && task == nil && bundleStream == nil { completed = true; invalidated = true }
@@ -198,7 +207,7 @@ final class PlanetChildLocalV2ResourceReader: NSObject, URLSessionDataDelegate {
             _ = condition.wait(until: Date(timeIntervalSinceNow: 0.02))
         }
         task = nil; session = nil; joined = true
-        if !preserveEncoded { encoded.close() }
+        if !preserveEncoded { encoded.close();if cachedBytes != nil { cachedBytes!.resetBytes(in:0..<cachedBytes!.count);cachedBytes=nil } }
         condition.unlock()
     }
     var knownClosed: Bool { condition.lock(); defer { condition.unlock() }; return joined && invalidated && nativeCalls == 0 && task == nil && session == nil && bundleStream == nil && delegates.operationCount == 0 }

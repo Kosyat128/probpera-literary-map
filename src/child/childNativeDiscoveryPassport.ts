@@ -1,5 +1,6 @@
 import { childDataArray, childRecord, decodeChildEntityPayload, decodeChildEntityReference, type ChildEntityReference } from "./childPackage";
 import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJourneySummaries, type ChildNativeJourneySummary } from "./childNativeJourney";
+import type { ChildNativeRouteDownload } from "./childNativeOfflinePackages";
 import type { ChildNativeContext, ChildNativeEntity } from "./childNativeAppBridge";
 import { decodeChildNativeBadges, decodeChildNativeDownloadedRoutes, type ChildNativeBadge, type ChildNativeDownloadedRoute,
   type ChildNativePassportSection, type ChildNativeRouteSave } from "./childNativePassportProgram";
@@ -33,7 +34,11 @@ export interface ChildNativePassportController {
   recordCountryOpen(reference: ChildEntityReference): Promise<ChildNativeCountryOpen | null>;
   /** Explicit save intent. Native resolves the complete route and writes its
    * exact local bytes; the caller supplies no approval, files or receipt. */
-  saveJourneyRoute?(journeyId: string, expectedRevision: number): Promise<ChildNativeRouteSave | null>;
+  saveJourneyRoute?(journeyId: string, expectedRevision: number): Promise<ChildNativeRouteSave | ChildNativeRouteDownload | null>;
+  /** Read-only facts; never starts/resumes background acquisition. */
+  readJourneyRouteDownload?(journeyId: string): Promise<ChildNativeRouteDownload | null>;
+  resumeJourneyRoute?(journeyId: string, expectedRevision: number): Promise<ChildNativeRouteDownload | null>;
+  cancelJourneyRoute?(journeyId: string, expectedRevision: number): Promise<ChildNativeRouteDownload | null>;
 }
 export interface ChildNativeRemovalTarget { readonly profileId: string; readonly scope: "history" | "profile" | "downloads" }
 export function decodeChildNativeRemovalTarget(raw: unknown): ChildNativeRemovalTarget | null {

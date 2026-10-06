@@ -3,6 +3,7 @@ import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import type { ChildNativeAppController, ChildNativeEntity } from "./childNativeAppBridge";
 import type { ChildNativeJourneyResult, ChildNativeJourneySummary, ChildNativeProfileJourney } from "./childNativeJourney";
 import type { ChildNativeRouteMediaDownload } from "./childNativePassportProgram";
+import { continueChildNativeRouteDownload, type ChildNativeRouteDownload } from "./childNativeOfflinePackages";
 import { childNativeRouteAudioStatus } from "./ChildNativeDiscoveryPassportView";
 
 export const childJourneyLabels = {
@@ -12,14 +13,18 @@ export const childJourneyLabels = {
     restart: "Пройти ещё раз", completed: "Путешествие завершено!", retained: "Пройденные шаги сохранены.", step: "Шаг", of: "из", done: "Пройдено",
     savedUnavailable: "Сохранённое путешествие сейчас недоступно. Прогресс остаётся на устройстве.",
     saveRoute: "Скачать маршрут", savingRoute: "Сохраняем маршрут…", routeSaved: "Маршрут сохранён на устройстве.",
-    routeSaveFailed: "Не удалось подтвердить сохранение маршрута." },
+    routeSaveFailed: "Не удалось подтвердить сохранение маршрута.",
+    resumeDownload: "Продолжить загрузку", cancelDownload: "Отменить загрузку", stagedDownload: "Загрузка приостановлена. Проверенные файлы сохранены.",
+    cancelledDownload: "Загрузка отменена. Ранее сохранённые маршруты остаются на устройстве.", checkedFiles: "Проверено файлов" },
   en: { travel: "Travel", continue: "Continue", title: "Literary journeys", loading: "Checking journeys…",
     empty: "Journeys are currently unavailable. You can explore the planet.", unavailable: "This journey is currently unavailable. Your completed steps are saved.",
     error: "The journey could not be checked.", retry: "Check journeys again", next: "Done · next", home: "Back to journeys",
     restart: "Travel again", completed: "Journey complete!", retained: "Your completed steps are saved.", step: "Step", of: "of", done: "Completed",
     savedUnavailable: "The saved journey is currently unavailable. Its progress stays on this device.",
     saveRoute: "Download route", savingRoute: "Saving route…", routeSaved: "The route is saved on this device.",
-    routeSaveFailed: "The route save could not be confirmed." },
+    routeSaveFailed: "The route save could not be confirmed.",
+    resumeDownload: "Resume download", cancelDownload: "Cancel download", stagedDownload: "Download paused. Checked files are saved.",
+    cancelledDownload: "Download cancelled. Previously saved routes stay on this device.", checkedFiles: "Files checked" },
 } as const;
 export interface ChildNativeJourneyViewProps {
   controller: ChildNativeAppController; contextToken: string; profileId: string; language: "ru" | "en";
@@ -36,9 +41,10 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
   const [routes, setRoutes] = useState<readonly ChildNativeJourneySummary[]>([]), [saved, setSaved] = useState<ChildNativeProfileJourney | null>(null);
   const [result, setResult] = useState<ChildNativeJourneyResult | null>(null), [busy, setBusy] = useState(true);
   const [error, setError] = useState<"read" | "unavailable" | null>(null), [renderEpoch, setRenderEpoch] = useState(navigationEpoch);
-  const [routeSave, setRouteSave] = useState<{ key: string; phase: "saving" | "saved" | "failed"; media?: ChildNativeRouteMediaDownload } | null>(null);
+  const [routeSave, setRouteSave] = useState<{ key: string; phase: "saving" | "saved" | "paused" | "cancelled" | "failed"; media?: ChildNativeRouteMediaDownload; acquisition?: ChildNativeRouteDownload["acquisition"] } | null>(null);
   const mounted = useRef(false), sequence = useRef(0), initial = useRef(props.initialJourneyId ?? null), previousNavigation = useRef(navigationEpoch);
-  const savingKey = useRef<string | null>(null);
+  const savingKey = useRef<string | null>(null), cancelDownload = useRef(false);
+  const [downloadFacts, setDownloadFacts] = useState<Readonly<Record<string, ChildNativeRouteDownload>>>({});
   const latest = useRef(props); latest.current = props;
   const heading = useRef<HTMLHeadingElement>(null), continueButton = useRef<HTMLButtonElement>(null);
   const alive = (attempt: number) => mounted.current && sequence.current === attempt
@@ -63,11 +69,21 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
     const [available, progress] = values;
     if (!available || !progress) { setRoutes([]); setSaved(null); setError("read"); setBusy(false); return; }
     setRoutes(available); setSaved(progress);
+    if (controller.passport?.readJourneyRouteDownload) {
+      const facts: Record<string, ChildNativeRouteDownload> = {};
+      for (const route of available) {
+        if (!alive(attempt)) return;
+        const value = await controller.passport.readJourneyRouteDownload(route.journeyId);
+        if (!alive(attempt)) return;
+        if (value) facts[route.journeyId] = value;
+      }
+      setDownloadFacts(Object.freeze(facts));
+    }
     if (resume) { await admit(resume, progress.revision, attempt, false); return; }
     setBusy(false);
   }
   useLayoutEffect(() => {
-    mounted.current = true; setRoutes([]); setSaved(null); setResult(null); setBusy(true); setError(null); setRouteSave(null);
+    mounted.current = true; setRoutes([]); setSaved(null); setResult(null); setBusy(true); setError(null); setRouteSave(null); setDownloadFacts({});
     // Initial/native publication can still be joining its control request.
     void Promise.resolve().then(() => { if (mounted.current) void load(initial.current); });
     return () => { mounted.current = false; ++sequence.current; };
@@ -112,23 +128,60 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
   async function saveRoute(journeyId: string) {
     if (busy || savingKey.current !== null || !controller.passport?.saveJourneyRoute || !mounted.current) return;
     const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/"), attempt = sequence.current;
-    if (routeSave?.key === key && routeSave.phase === "saving") return;
-    savingKey.current = key; setRouteSave({ key, phase: "saving" });
+    savingKey.current = key; cancelDownload.current = false; setRouteSave({ key, phase: "saving" });
     try {
       const passport = await controller.passport.read();
       if (!alive(attempt)) return;
-      const receipt = passport ? await controller.passport.saveJourneyRoute(journeyId, passport.revision) : null;
+      if (!passport) { setRouteSave({ key, phase: "failed" }); return; }
+      const pending = await controller.passport.readJourneyRouteDownload?.(journeyId) ?? null;
       if (!alive(attempt)) return;
-      setRouteSave({ key, phase: receipt ? "saved" : "failed", ...(receipt ? { media: receipt.route.media } : {}) });
+      const receipt = await continueChildNativeRouteDownload(controller.passport, journeyId, pending?.revision ?? passport.revision, {
+        resume: pending?.acquisition.status === "staging", alive: () => alive(attempt), cancelled: () => cancelDownload.current,
+        progress: value => {
+          if (!alive(attempt)) return;
+          setDownloadFacts(prior => Object.freeze({ ...prior, [journeyId]: value }));
+          setRouteSave({ key, phase: "saving", acquisition: value.acquisition });
+        },
+      });
+      if (!alive(attempt)) return;
+      const value = receipt.value;
+      if (value && "acquisition" in value) setDownloadFacts(prior => Object.freeze({ ...prior, [journeyId]: value }));
+      setRouteSave({ key, phase: receipt.status === "saved" ? "saved" : receipt.status === "paused" ? "paused"
+        : receipt.status === "cancelled" ? "cancelled" : "failed", ...(value?.route ? { media: value.route.media } : {}),
+        ...(value && "acquisition" in value ? { acquisition: value.acquisition } : {}) });
+    } catch { if (alive(attempt)) setRouteSave({ key, phase: "failed" }); }
+    finally { if (savingKey.current === key) savingKey.current = null; }
+  }
+  async function cancelStagedRoute(journeyId: string) {
+    const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/");
+    if (savingKey.current === key) { cancelDownload.current = true; return; }
+    if (busy || savingKey.current !== null || !controller.passport?.cancelJourneyRoute) return;
+    const attempt = sequence.current; savingKey.current = key; setRouteSave({ key, phase: "saving" });
+    try {
+      const pending = await controller.passport.readJourneyRouteDownload?.(journeyId) ?? null;
+      if (!alive(attempt)) return;
+      const value = pending ? await controller.passport.cancelJourneyRoute(journeyId, pending.revision) : null;
+      if (!alive(attempt)) return;
+      if (value) setDownloadFacts(prior => Object.freeze({ ...prior, [journeyId]: value }));
+      setRouteSave({ key, phase: value?.acquisition.status === "ready" && value.route ? "saved"
+        : value?.acquisition.status === "cancelled" ? "cancelled" : "failed", ...(value?.route ? { media: value.route.media } : {}) });
     } catch { if (alive(attempt)) setRouteSave({ key, phase: "failed" }); }
     finally { if (savingKey.current === key) savingKey.current = null; }
   }
   function routeSaveButton(journeyId: string) {
-    const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/"), phase = routeSave?.key === key ? routeSave.phase : null;
+    const key = [contextToken, profileId, language, navigationEpoch, journeyId].join("/"), state = routeSave?.key === key ? routeSave : null;
+    const stored = downloadFacts[journeyId], pending = state?.acquisition ?? stored?.acquisition, staged = pending?.status === "staging";
+    const ready = state?.phase === "saved" || !state && stored?.acquisition.status === "ready", media = state?.media ?? stored?.route?.media;
     return controller.passport?.saveJourneyRoute ? <span className="child-native-route-save">
-      <button type="button" disabled={busy || routeSave?.phase === "saving"} onClick={() => { void saveRoute(journeyId); }}>{phase === "saving" ? copy.savingRoute : copy.saveRoute}</button>
-      {phase === "saved" && <span role="status">{copy.routeSaved} {routeSave?.media && childNativeRouteAudioStatus(language, routeSave.media)}</span>}
-      {phase === "failed" && <span role="alert">{copy.routeSaveFailed}</span>}
+      <button type="button" disabled={busy || savingKey.current !== null} onClick={() => { void saveRoute(journeyId); }}>
+        {state?.phase === "saving" ? copy.savingRoute : staged ? copy.resumeDownload : copy.saveRoute}</button>
+      {(state?.phase === "saving" || staged) && controller.passport?.cancelJourneyRoute
+        && <button type="button" disabled={busy} onClick={() => { void cancelStagedRoute(journeyId); }}>{copy.cancelDownload}</button>}
+      {pending && (staged || state?.phase === "saving") && <span role="status">{copy.checkedFiles}: {pending.completedItems} / {pending.totalItems}</span>}
+      {staged && state?.phase !== "saving" && <span role="status">{copy.stagedDownload}</span>}
+      {ready && <span role="status">{copy.routeSaved} {media && childNativeRouteAudioStatus(language, media)}</span>}
+      {state?.phase === "cancelled" && <span role="status">{copy.cancelledDownload}</span>}
+      {state?.phase === "failed" && <span role="alert">{copy.routeSaveFailed}</span>}
     </span> : null;
   }
   if (!port || !homeVisible && !result || renderEpoch !== navigationEpoch && result) return null;

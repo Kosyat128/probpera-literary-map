@@ -468,3 +468,32 @@ describe("original child removal cancellation fences", () => {
     expect(f.controller.getSnapshot().context).toBeNull();
   });
 });
+
+// New independent package command correlation; AUTHORED_NOT_RUN.
+describe("LOCAL2 offline acquisition command lifetime", () => {
+  const acquisition = (revision: number, status = "staging") => ({ profileId: "native-profile", locale: "en", generation: 1, revision, route: null,
+    acquisition: { status, journeyId: "journey-a", locale: "en", completedItems: status === "cancelled" ? 0 : 1, totalItems: status === "cancelled" ? 0 : 2,
+      downloadedBytes: status === "cancelled" ? 0 : 512, totalBytes: status === "cancelled" ? 0 : 1024, sharedItems: 0, reusedItems: 0 } });
+  it("read restores staging facts only and resume/cancel send identity plus the observed revision without caller files or authority", async () => {
+    const f=fixture(), read=vi.fn(async (r:unknown)=>f.dataReply(r,acquisition(7))), resume=vi.fn(async (r:unknown)=>f.dataReply(r,acquisition(8))),
+      cancel=vi.fn(async (r:unknown)=>f.dataReply(r,acquisition(9,"cancelled")));
+    Object.assign(f.plugin,{readJourneyRouteDownload:read,resumeJourneyRoute:resume,cancelJourneyRoute:cancel});await f.controller.start();
+    expect((await f.controller.passport!.readJourneyRouteDownload!("journey-a"))?.revision).toBe(7);expect(resume).not.toHaveBeenCalled();
+    expect((await f.controller.passport!.resumeJourneyRoute!("journey-a",7))?.revision).toBe(8);
+    expect((await f.controller.passport!.cancelJourneyRoute!("journey-a",8))?.acquisition.status).toBe("cancelled");
+    expect(read.mock.calls[0][0]).toEqual({version:2,requestId:"2".padStart(32,"0"),contextToken:TOKEN,journeyId:"journey-a"});
+    expect(resume.mock.calls[0][0]).toEqual({version:2,requestId:"3".padStart(32,"0"),contextToken:TOKEN,journeyId:"journey-a",expectedRevision:7});
+    expect(cancel.mock.calls[0][0]).toEqual({version:2,requestId:"4".padStart(32,"0"),contextToken:TOKEN,journeyId:"journey-a",expectedRevision:8});
+  });
+  it("a late resume after parent/profile retirement seals the uncertain command and never automatically retries it",async()=>{
+    const f=fixture(),pending=deferred<unknown>(),resume=vi.fn(async()=>pending.promise);Object.assign(f.plugin,{resumeJourneyRoute:resume});await f.controller.start();
+    const work=f.controller.passport!.resumeJourneyRoute!("journey-a",7);await settle();f.event({version:2,contextToken:TOKEN,generation:1,reason:"pending"});
+    pending.resolve({version:2,requestId:"2".padStart(32,"0"),status:"ok",contextToken:TOKEN,generation:1,value:acquisition(8)});
+    expect(await work).toBeNull();const bootstraps=f.plugin.bootstrap.mock.calls.length;await f.controller.refresh();expect(resume).toHaveBeenCalledTimes(1);expect(f.plugin.bootstrap).toHaveBeenCalledTimes(bootstraps);
+  });
+  it("uncorrelated cancellation cannot claim completion or trigger another acquisition",async()=>{
+    const f=fixture(),cancel=vi.fn(async(r:unknown)=>({...f.dataReply(r,acquisition(8,"cancelled")),requestId:"f".repeat(32)}));Object.assign(f.plugin,{cancelJourneyRoute:cancel});await f.controller.start();
+    expect(await f.controller.passport!.cancelJourneyRoute!("journey-a",7)).toBeNull();expect(f.controller.getSnapshot().phase).toBe("sealed");
+    await f.controller.refresh();expect(cancel).toHaveBeenCalledTimes(1);
+  });
+});

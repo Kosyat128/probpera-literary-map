@@ -7838,6 +7838,7 @@ fileprivate final class LocalV2PackageProfile {
 fileprivate final class LocalV2CompiledPackage {
     let profile: LocalV2PackageProfile,packageId: String,version: Int64,checksum: String,reviewChecksum: String,platform: String,territory: String,home: String,until: Int64
     fileprivate var savedRouteMediaIndex: LocalV2MediaIndex?
+    fileprivate var savedRouteScenes: [String:LocalV2Scene]?
     private var payloads: [String:PinOwnedBytes],closed=false;private let lock=NSLock();private let entityOrder: [String]
     init(_ profile: LocalV2PackageProfile,_ id: String,_ version: Int64,_ checksum: String,_ review: String,_ platform: String,_ territory: String,_ home: String,_ until: Int64,_ payloads: [String:PinOwnedBytes],_ order: [String]) {
         self.profile=profile;packageId=id;self.version=version;self.checksum=checksum;reviewChecksum=review;self.platform=platform;self.territory=territory;self.home=home;self.until=until;self.payloads=payloads;entityOrder=order
@@ -7845,7 +7846,7 @@ fileprivate final class LocalV2CompiledPackage {
     func copy(_ key: String,_ now: Int64) throws -> Data { lock.lock();defer { lock.unlock() };guard !closed,now>=0,now<until,let payload=payloads[key] else { throw PinKnownRefusal() };return try payload.copy() }
     func migrationReference(_ key: String,_ expectedHash: String,_ now: Int64) throws -> String? { lock.lock();defer { lock.unlock() };guard !closed,now>=0,now<until else { throw PinKnownRefusal() };guard let owned=payloads[key] else { return nil };var payload=try owned.copy();defer { payload.resetBytes(in:0..<payload.count) };return LocalSnapshotV2.hash(payload)==expectedHash ? key:nil }
     func keys(_ now: Int64) throws -> [String] { lock.lock();defer { lock.unlock() };guard !closed,now>=0,now<until,entityOrder.count==payloads.count,Set(entityOrder).count==entityOrder.count,entityOrder.allSatisfy({ payloads[$0] != nil }) else { throw PinKnownRefusal() };return entityOrder }
-    func close() { lock.lock();closed=true;for payload in payloads.values { payload.close() };payloads.removeAll();savedRouteMediaIndex=nil;lock.unlock() }
+    func close() { lock.lock();closed=true;for payload in payloads.values { payload.close() };payloads.removeAll();savedRouteMediaIndex=nil;savedRouteScenes=nil;lock.unlock() }
     deinit { close() }
 }
 fileprivate enum LocalV2PackageCompiler {
@@ -8575,7 +8576,7 @@ final class PlanetChildLocalV2SDKOwner {
         case "retire":try DispatchQueue.main.sync { surface.seal() };lock.lock();context=nil;lock.unlock();try joinOwners();lock.lock();guard !sealed else { lock.unlock();throw PlanetChildVault.Failure.unavailable };lock.unlock();return ["version":2,"requestId":r.id,"status":"retired","contextToken":r.token as Any? ?? NSNull()]
         default:let c=try requireContext(r.token);guard c.status=="child",let channel else { throw PinKnownRefusal() };return try channel.invoke(handoff:handoff) { [self] delivery in
             try requireOriginal(c,delivery);let value: Any
-            if ["listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute"].contains(r.method) {
+            if ["listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].contains(r.method) {
                 value=try passportPerform(r,c,delivery)
             } else if ["listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"].contains(r.method) {
                 value=try journeyPerform(r,c,delivery,capturedJourneyEpoch)
@@ -9752,8 +9753,11 @@ final class PlanetChildLocalV2ResourceClaim {
 
 fileprivate extension PlanetChildLocalV2SDKOwner {
     func mediaReadResource(_ permit: PlanetChildLocalV2MediaPermit) throws -> Data {
-        if let cached=try mediaReadSavedRouteResource(permit) { return cached }
-        let claim=try PlanetChildLocalV2ResourceClaim.make(permit),reader=PlanetChildLocalV2ResourceReader(claim),id=ObjectIdentifier(reader)
+        let claim=try PlanetChildLocalV2ResourceClaim.make(permit)
+        var cached=try permit.delivery.data?.binaryObject(permit)
+        if cached==nil { cached=try mediaReadSavedRouteResource(permit) }
+        defer { if cached != nil { cached!.resetBytes(in:0..<cached!.count) } }
+        let reader=PlanetChildLocalV2ResourceReader(claim,cached:cached),id=ObjectIdentifier(reader)
         try permit.workerCurrent();lock.lock()
         guard !sealed,mediaEpoch==permit.epoch,context?.token==permit.token,mediaReaders.isEmpty else { lock.unlock();throw PlanetChildLocalV2MediaError.revoked }
         mediaReaders[id]=reader;lock.unlock()
@@ -10116,7 +10120,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         original.revoke();for output in outputs { output.revoke() };routeWillChange(reason:"expired")
     }
     private func canonicalRead(_ permit: PlanetChildLocalV2MediaPermit) throws -> (PlanetChildLocalV2ResourceClaim,PlanetChildLocalV2ResourceReader,Data) {
-        let claim=try PlanetChildLocalV2ResourceClaim.make(permit),reader=PlanetChildLocalV2ResourceReader(claim),id=ObjectIdentifier(reader);try permit.workerCurrent()
+        let claim=try PlanetChildLocalV2ResourceClaim.make(permit);var cached=try permit.delivery.data?.binaryObject(permit);defer { if cached != nil { cached!.resetBytes(in:0..<cached!.count) } };let reader=PlanetChildLocalV2ResourceReader(claim,cached:cached),id=ObjectIdentifier(reader);try permit.workerCurrent()
         lock.lock();guard !sealed,mediaEpoch==permit.epoch,context?.token==permit.token,mediaReaders.isEmpty else { lock.unlock();throw PinKnownRefusal() };mediaReaders[id]=reader;lock.unlock()
         do { let bytes=try reader.read();guard reader.knownClosed else { throw PlanetChildLocalV2ResourceError.cleanupUnknown };lock.lock();mediaReaders.removeValue(forKey:id);lock.unlock();do { try permit.workerCurrent() } catch { var wipe=bytes;wipe.resetBytes(in:0..<wipe.count);throw error };return (claim,reader,bytes) }
         catch { let original=error;reader.cancel();do { try reader.closeJoined();guard reader.knownClosed else { throw PlanetChildLocalV2ResourceError.cleanupUnknown };lock.lock();mediaReaders.removeValue(forKey:id);lock.unlock() } catch { lock.lock();sealed=true;lock.unlock();throw PlanetChildLocalV2ResourceError.cleanupUnknown };throw original }
@@ -10570,8 +10574,9 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         let passport=try admission.passport(expected:nil,permit:nil,id:r.id);defer { passport.close() };var passportLedger=try passport.ownedLedger();defer { passportLedger.disposeRouteBytes() };var storedNodes: [String:LocalV2PackageValue]?
         if let stored=passportLedger.downloadedRoutes.first(where:{ $0.journeyId==requested && $0.locale==delivery.compiled.profile.locale }) {
             do {
-                delivery.compiled.savedRouteMediaIndex=try LocalV2FixedMediaProducer(delivery,self,capturedMediaEpoch(),c.token,c.generation).compile()
+                try prepareDownloadMedia(c,delivery)
                 if try LocalV2SavedRouteCompiler.available(stored,delivery.compiled,routes,delivery.owner.wall()) != nil {
+                try admission.verifyBinaryObjects(PlanetChildPassportRouteCodec.objects(stored).map { $0.1 })
                 let opened=try LocalV2SavedRouteCompiler.open(stored,route);route=opened.0;storedNodes=opened.1
             } } catch { delivery.compiled.savedRouteMediaIndex=nil;try requireOriginal(c,delivery) }
         }
@@ -10656,6 +10661,7 @@ fileprivate enum LocalV2DiscoveryCompiler {
 final class PlanetChildLocalV2PassportPermit {
     private let sdk: PlanetChildLocalV2SDKOwner,context: PlanetChildLocalV2SDKOwner.Context,delivery: LocalV2OwnedPackageDelivery,command: LocalV2SDKChannel.Command,admission: PlanetChildLocalV2DataAdmission,reference: LocalV2PackageValue?
     private var savedRoute: PlanetChildPassport.SavedRoute?
+    private var download: PlanetChildPassport.Download?,cancelJourney: String?,downloadObject: PlanetChildPassport.BinaryObject?,downloadBytes: Data?,activateDownload=false
     private init(_ sdk: PlanetChildLocalV2SDKOwner,_ c: PlanetChildLocalV2SDKOwner.Context,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ reference: LocalV2PackageValue?,_ savedRoute: PlanetChildPassport.SavedRoute?=nil) { self.sdk=sdk;context=c;self.delivery=delivery;self.command=command;self.admission=admission;self.reference=reference;self.savedRoute=savedRoute }
     fileprivate static func make(_ sdk: PlanetChildLocalV2SDKOwner,_ c: PlanetChildLocalV2SDKOwner.Context,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ reference: LocalV2PackageValue) throws -> PlanetChildLocalV2PassportPermit { let result=PlanetChildLocalV2PassportPermit(sdk,c,delivery,command,admission,reference);try admission.withCopy { try result.check(admission) };return result }
     fileprivate static func makeRoute(_ sdk: PlanetChildLocalV2SDKOwner,_ c: PlanetChildLocalV2SDKOwner.Context,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ route: LocalV2JourneyRoute) throws -> PlanetChildLocalV2PassportPermit {
@@ -10663,19 +10669,61 @@ final class PlanetChildLocalV2PassportPermit {
         var snapshot=try LocalV2SavedRouteCompiler.capture(sdk,c,delivery,command,route);defer { snapshot.dispose() };try delivery.owner.fresh(delivery.compiled.profile)
         let result=PlanetChildLocalV2PassportPermit(sdk,c,delivery,command,admission,nil,snapshot);try admission.withCopy { try result.check(admission) };return result
     }
+    fileprivate static func makeCancellation(_ sdk: PlanetChildLocalV2SDKOwner,_ context: PlanetChildLocalV2SDKOwner.Context,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ journey: String) throws -> PlanetChildLocalV2PassportPermit {
+        _=try PlanetChildJourney.identifier(journey);try delivery.owner.fresh(delivery.compiled.profile);let result=PlanetChildLocalV2PassportPermit(sdk,context,delivery,command,admission,nil);result.cancelJourney=journey;try result.check(admission);return result
+    }
+    fileprivate static func makeDownload(_ sdk: PlanetChildLocalV2SDKOwner,_ context: PlanetChildLocalV2SDKOwner.Context,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ admission: PlanetChildLocalV2DataAdmission,_ route: LocalV2JourneyRoute,_ ledger: PlanetChildPassport.Ledger,_ method: String) throws -> PlanetChildLocalV2PassportPermit {
+        try delivery.owner.fresh(delivery.compiled.profile)
+        let result=PlanetChildLocalV2PassportPermit(sdk,context,delivery,command,admission,nil),c=delivery.compiled
+        if method=="cancelJourneyRoute" { result.cancelJourney=route.id;try result.check(admission);return result }
+        guard let index=c.savedRouteMediaIndex else { throw PinKnownRefusal() }
+        let assets=try LocalV2SavedRouteCompiler.selected(c,route,index,delivery.owner.wall(),includeCommon:true)
+        var stage: PlanetChildPassport.Download
+        if method=="saveJourneyRoute" {
+            if let prior=ledger.routeDownloads.first(where:{ $0.manifest.journeyId==route.id && $0.manifest.locale==c.profile.locale }) {
+                guard try LocalV2SavedRouteCompiler.eligible(prior.manifest,c,[route],delivery.owner.wall())==nil else { throw PinKnownRefusal() }
+            }
+            let manifest=try LocalV2SavedRouteCompiler.snapshot(c,route,delivery.owner.wall(),media:assets.map { LocalV2SavedRouteCompiler.sharedMediaRow($0,c.profile.locale) },shared:true)
+            stage=try PlanetChildPassport.Download(manifest:manifest)
+        } else {
+            guard method=="resumeJourneyRoute",let prior=ledger.routeDownloads.first(where:{ $0.manifest.journeyId==route.id && $0.manifest.locale==c.profile.locale }),prior.completed<assets.count else { throw PinKnownRefusal() };stage=prior
+            guard try LocalV2SavedRouteCompiler.available(stage.manifest,c,[route],delivery.owner.wall()) != nil else { throw PinKnownRefusal() }
+            let asset=assets[stage.completed],object=try PlanetChildPassport.BinaryObject(checksum:asset.checksum,mime:asset.mime,bytes:asset.bytes),permit=try PlanetChildLocalV2MediaPermit.make(sdk,delivery,command,sdk.capturedMediaEpoch(),context.token,context.generation,index,asset);defer { permit.close() }
+            var bytes=try permit.readEncoded();defer { bytes.resetBytes(in:0..<bytes.count) };try permit.validateEncodedHeader(PlanetChildLocalV2MediaCodec.preflight(bytes,asset.mime));try permit.workerCurrent()
+            result.downloadObject=object;result.downloadBytes=Data(Array(bytes));stage.completed+=1
+            if ledger.binaryObjects.contains(object) { stage.reused+=1 }
+        }
+        result.savedRoute=stage.manifest;result.download=stage;result.activateDownload=stage.completed==assets.count
+        try delivery.owner.fresh(c.profile);try result.check(admission);return result
+    }
+    func stageMutation(_ original: PlanetChildLocalV2DataAdmission) throws -> Bool { try check(original);return cancelJourney != nil || download != nil && !activateDownload }
+    func binaryWrite(_ original: PlanetChildLocalV2DataAdmission) throws -> (PlanetChildPassport.BinaryObject,Data)? {
+        try check(original);guard let object=downloadObject,let bytes=downloadBytes else { return nil };return (object,Data(Array(bytes)))
+    }
+    func activationObjects(_ original: PlanetChildLocalV2DataAdmission) throws -> [PlanetChildPassport.BinaryObject] {
+        try check(original);guard activateDownload,let savedRoute else { return [] };return try PlanetChildPassportRouteCodec.objects(savedRoute).map { $0.1 }
+    }
+    func validateBinary(_ original: PlanetChildLocalV2DataAdmission,_ object: PlanetChildPassport.BinaryObject,_ bytes: Data) throws {
+        try check(original);guard let index=delivery.compiled.savedRouteMediaIndex,bytes.count==object.bytes,LocalSnapshotV2.hash(bytes)==object.checksum else { throw PinKnownRefusal() }
+        let assets=index.assets.filter { $0.checksum==object.checksum && $0.mime==object.mime && $0.bytes==object.bytes };guard !assets.isEmpty else { throw PinKnownRefusal() }
+        let header=try PlanetChildLocalV2MediaCodec.preflight(bytes,object.mime)
+        if object.mime=="audio/wav" { for asset in assets { guard let provenance=asset.audioProvenanceBytes else { throw PinKnownRefusal() };try PlanetChildLocalV2NarrationProvenanceCodec.duration(PlanetChildLocalV2NarrationProvenanceCodec.validate(provenance,asset.payload,delivery.compiled.profile.locale),header) } }
+        try check(original)
+    }
     private func check(_ original: PlanetChildLocalV2DataAdmission,returned: Bool,handedOff: Bool=false) throws {
         guard original === admission,delivery.data === admission,delivery.owner.delivery === delivery,ObjectIdentifier(Thread.current)==delivery.owner.worker.map(ObjectIdentifier.init),command.returned==returned else { throw PinKnownRefusal() }
         try admission.check();if handedOff { try admission.passportHandoffCommand(command) } else { try admission.appearanceNativeCommand(command,returned:returned) }
         try sdk.passportCurrent(context,delivery);try delivery.owner.live();guard context.checksum==delivery.compiled.profile.recordChecksum,try admission.scope().profileId==delivery.compiled.profile.id else { throw PinKnownRefusal() }
         if let reference {
             guard savedRoute==nil else { throw PinKnownRefusal() };let key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,reference,delivery.owner.wall());guard key.hasPrefix("country/") else { throw PinKnownRefusal() }
-        } else { guard let savedRoute else { throw PinKnownRefusal() };try admission.savedRouteLeaf(savedRoute) }
+        } else if let savedRoute { try admission.savedRouteLeaf(savedRoute) } else { guard cancelJourney != nil else { throw PinKnownRefusal() } }
     }
     func check(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:false) }
     func apply(_ original: PlanetChildLocalV2DataAdmission,_ ledger: inout PlanetChildPassport.Ledger) throws {
-        try check(original);if let savedRoute { try ledger.save(savedRoute) } else { guard let reference else { throw PinKnownRefusal() };try ledger.openCountry(LocalV2PackageValue.identifier(LocalV2PackageValue.object(reference)["id"])) };try check(original)
+        try check(original);if let cancelJourney { try ledger.cancelDownload(cancelJourney,delivery.compiled.profile.locale) } else if let download { if activateDownload { try ledger.activate(download,downloadObject) } else { try ledger.stage(download,downloadObject) } } else if let savedRoute { try ledger.save(savedRoute) } else { guard let reference else { throw PinKnownRefusal() };try ledger.openCountry(LocalV2PackageValue.identifier(LocalV2PackageValue.object(reference)["id"])) };try check(original)
     }
     func profileId(_ original: PlanetChildLocalV2DataAdmission) throws -> String { try check(original);return delivery.compiled.profile.id }
+    fileprivate func stageMutationAfterReturn(_ original: PlanetChildLocalV2DataAdmission) throws -> Bool { try check(original,returned:true);return cancelJourney != nil || download != nil && !activateDownload }
     fileprivate func completionCurrent(_ original: PlanetChildLocalV2DataAdmission) throws { try check(original,returned:true) }
     fileprivate func handoffCurrent(_ original: PlanetChildLocalV2DataAdmission) throws { guard command.done,command.handedOff,command.error==nil else { throw PinKnownRefusal() };try check(original,returned:true,handedOff:true) }
     fileprivate func commitCurrent(_ original: PlanetChildLocalV2DataAdmission,_ work: () throws -> Void) throws {
@@ -10684,7 +10732,7 @@ final class PlanetChildLocalV2PassportPermit {
             if let savedRoute { try admission.savedRouteConsumerLeaf(savedRoute) };try work()
         }
     }
-    deinit { savedRoute?.dispose() }
+    deinit { savedRoute?.dispose();download?.dispose();if downloadBytes != nil { downloadBytes!.resetBytes(in:0..<downloadBytes!.count) } }
 }
 fileprivate final class LocalV2SDKPassportCommand {
     let id: String,permit: PlanetChildLocalV2PassportPermit;var known=false,ready=false,preparationJoined=false,completed=false,result: PlanetChildDataStore.LocalV2Passport?,completion: PlanetChildDataStore.LocalV2PassportCompletion?
@@ -10705,6 +10753,16 @@ fileprivate final class LocalV2SDKPassportHandoff {
     deinit { receipt.close() }
 }
 extension PlanetChildLocalV2DataAdmission {
+    fileprivate func binaryObject(_ permit: PlanetChildLocalV2MediaPermit) throws -> Data? {
+        try permit.workerCurrent();guard permit.delivery.data === self,let loader,let store,let lease else { throw PinKnownRefusal() }
+        let object=try PlanetChildPassport.BinaryObject(checksum:permit.asset.checksum,mime:permit.asset.mime,bytes:permit.asset.bytes)
+        let result=try loader.withData(self) { try store.admittedBinaryObject(self,lease,object) };var handed=false;defer { if !handed, var bytes=result { bytes.resetBytes(in:0..<bytes.count) } }
+        try permit.workerCurrent();handed=true;return result
+    }
+    fileprivate func verifyBinaryObjects(_ objects: [PlanetChildPassport.BinaryObject]) throws {
+        guard let loader,let store,let lease else { throw PinKnownRefusal() };try check()
+        for object in objects { guard var bytes=try loader.withData(self,{ try store.admittedBinaryObject(self,lease,object) }) else { throw PinKnownRefusal() };bytes.resetBytes(in:0..<bytes.count);try check() }
+    }
     fileprivate func passportWall() throws -> Int64 { try wall() }
     fileprivate func savedRouteLeaf(_ saved: PlanetChildPassport.SavedRoute) throws {
         try check();guard let compiled else { throw PinKnownRefusal() };let now=try wall(),routes=try LocalV2JourneyCompiler.admittedRoutes(compiled,now)
@@ -10725,6 +10783,7 @@ extension PlanetChildLocalV2DataAdmission {
             do { try publication();try publish { sdkPassportResults.removeAll(where:{ $0.closedForSDK });guard sdkPassportResults.count<64 else { throw PinKnownRefusal() };sdkPassportResults.append(result);command?.result=result };return result } catch { result.close();throw error }
         } catch { if permit != nil { passportUnknown() };throw error }
     }
+    func passportStageMutation(_ id: String) throws -> Bool { try check();guard let command=sdkPassportCommand,command.id==id else { throw PinKnownRefusal() };return try command.permit.stageMutationAfterReturn(self) }
     func passportCommandKnown(_ id: String) throws { try check();guard let command=sdkPassportCommand,command.id==id,!command.known,!command.preparationJoined,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };command.known=true }
     func passportCommandReady(_ id: String) throws { try check();guard let command=sdkPassportCommand,command.id==id,command.known,!command.ready else { throw PinKnownRefusal() };command.ready=true }
     func passportCommandJoined(_ id: String) throws { try check();guard let command=sdkPassportCommand,let native=sdkNativeCommand,native.returned,command.id==id,command.known,command.ready,command.preparationJoined,!command.completed,command.result?.closedForSDK==true,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
@@ -10732,6 +10791,15 @@ extension PlanetChildLocalV2DataAdmission {
     func passportUnknown() { collectionUnknown() }
 }
 fileprivate extension PlanetChildLocalV2SDKOwner {
+    /** Acquire only the original signed scene catalog. The procedural geometry
+     * stays in the existing pinned application source graph; its reviewed raster
+     * slots join the same object coordinator as ordinary route media. */
+    func prepareDownloadMedia(_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws {
+        try requireOriginal(c,delivery);let epoch=capturedMediaEpoch()
+        let index=try LocalV2FixedMediaProducer(delivery,self,epoch,c.token,c.generation).compile()
+        let scenes=try LocalV2SceneCompiler.compileCatalog(delivery,index) { try self.requireOriginal(c,delivery);try self.mediaInvocationCurrent(epoch,c.token,c.generation,delivery) }
+        try requireOriginal(c,delivery);delivery.compiled.savedRouteMediaIndex=index;delivery.compiled.savedRouteScenes=scenes
+    }
     func passportCurrent(_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws { lock.lock();defer { lock.unlock() };guard !sealed,context === c,loader === delivery.owner,c.deadline==delivery.owner.request.deadline else { throw PinKnownRefusal() } }
     func passportCommitCurrent(_ c: Context,_ delivery: LocalV2OwnedPackageDelivery,_ work: () throws -> Void) throws { lock.lock();defer { lock.unlock() };guard !sealed,context === c,loader === delivery.owner,c.deadline==delivery.owner.request.deadline else { throw PinKnownRefusal() };try work() }
     func passportPerform(_ r: PlanetChildLocalV2Wire.Request,_ c: Context,_ delivery: LocalV2OwnedPackageDelivery) throws -> Any {
@@ -10746,16 +10814,46 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             let result=try admission.passport(expected:saved.revision,permit:permit,id:r.id);defer { result.close() };try requireOriginal(c,delivery);try admission.publication()
             return try admission.publish { ["profileId":profile,"locale":locale,"generation":c.generation,"revision":result.revision,"country":entity] }
         }
-        if r.method=="saveJourneyRoute" {
-            guard let id=r.journeyId,r.expectedRevision==saved.revision,let route=try LocalV2JourneyCompiler.routes(delivery).first(where:{ $0.id==id }) else { throw PinKnownRefusal() }
-            let original=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2PassportPermit.makeRoute(self,c,delivery,original,admission,route),result=try admission.passport(expected:saved.revision,permit:permit,id:r.id);defer { result.close() }
-            var resultLedger=try result.ownedLedger();defer { resultLedger.disposeRouteBytes() }
-            guard let stored=resultLedger.downloadedRoutes.first(where:{ $0.journeyId==id && $0.locale==locale }),let item=try LocalV2SavedRouteCompiler.available(stored,compiled,[route],delivery.owner.wall()) else { throw PinKnownRefusal() }
-            try requireOriginal(c,delivery);try admission.publication();return try admission.publish { ["profileId":profile,"locale":locale,"generation":c.generation,"revision":result.revision,"route":item] }
+        if r.method=="cancelJourneyRoute" {
+            guard let id=r.journeyId,r.expectedRevision==saved.revision else { throw PinKnownRefusal() }
+            let prior=savedLedger.routeDownloads.first { $0.manifest.journeyId==id && $0.manifest.locale==locale },original=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2PassportPermit.makeCancellation(self,c,delivery,original,admission,id)
+            let result=try admission.passport(expected:saved.revision,permit:permit,id:r.id);defer { result.close() };var ledger=try result.ownedLedger();defer { ledger.disposeRouteBytes() }
+            var item: [String:Any]?,active: PlanetChildPassport.SavedRoute?
+            if prior==nil,let stored=ledger.downloadedRoutes.first(where:{ $0.journeyId==id && $0.locale==locale }) {
+                do { try prepareDownloadMedia(c,delivery);let routes=try LocalV2JourneyCompiler.routes(delivery);item=try LocalV2SavedRouteCompiler.eligible(stored,compiled,routes,delivery.owner.wall()) }
+                catch { try requireOriginal(c,delivery);item=nil }
+                if item != nil { try admission.verifyBinaryObjects(PlanetChildPassportRouteCodec.objects(stored).map { $0.1 });active=stored }
+            }
+            try requireOriginal(c,delivery);try admission.publication()
+            return try admission.publish { ["profileId":profile,"locale":locale,"generation":c.generation,"revision":result.revision,"route":item as Any? ?? NSNull(),"acquisition":try LocalV2SavedRouteCompiler.downloadStatus(nil,active,id,locale,item==nil)] }
+        }
+        if ["saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute"].contains(r.method) {
+            guard let id=r.journeyId,let route=try LocalV2JourneyCompiler.routes(delivery).first(where:{ $0.id==id }) else { throw PinKnownRefusal() }
+            try prepareDownloadMedia(c,delivery)
+            let oldStage=savedLedger.routeDownloads.first { $0.manifest.journeyId==id && $0.manifest.locale==locale }
+            let metadataNow=try delivery.owner.wall()
+            let eligibleStage=try oldStage.flatMap { try LocalV2SavedRouteCompiler.eligible($0.manifest,compiled,[route],metadataNow)==nil ? nil:$0 }
+            if let eligibleStage { try admission.verifyBinaryObjects(PlanetChildPassportRouteCodec.objects(eligibleStage.manifest).prefix(eligibleStage.completed).map { $0.1 }) }
+            if r.method=="resumeJourneyRoute",eligibleStage==nil { throw PinKnownRefusal() }
+            if r.method=="readJourneyRouteDownload" {
+                let active=savedLedger.downloadedRoutes.first { $0.journeyId==id && $0.locale==locale }
+                let item=try active.flatMap { try LocalV2SavedRouteCompiler.eligible($0,compiled,[route],metadataNow) }
+                if item != nil,let active { try admission.verifyBinaryObjects(PlanetChildPassportRouteCodec.objects(active).map { $0.1 }) }
+                try requireOriginal(c,delivery);try admission.publication()
+                return try admission.publish { ["profileId":profile,"locale":locale,"generation":c.generation,"revision":saved.revision,"route":eligibleStage==nil ? item as Any? ?? NSNull():NSNull(),"acquisition":try LocalV2SavedRouteCompiler.downloadStatus(eligibleStage,item==nil ? nil:active,id,locale)] }
+            }
+            guard r.expectedRevision==saved.revision else { throw PinKnownRefusal() }
+            let original=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2PassportPermit.makeDownload(self,c,delivery,original,admission,route,savedLedger,r.method)
+            let result=try admission.passport(expected:saved.revision,permit:permit,id:r.id);defer { result.close() };var ledger=try result.ownedLedger();defer { ledger.disposeRouteBytes() }
+            let stage=ledger.routeDownloads.first { $0.manifest.journeyId==id && $0.manifest.locale==locale },active=ledger.downloadedRoutes.first { $0.journeyId==id && $0.locale==locale }
+            let cancelled=r.method=="cancelJourneyRoute" && (oldStage != nil || active==nil)
+            let item=cancelled || stage != nil ? nil:try active.flatMap { try LocalV2SavedRouteCompiler.available($0,compiled,[route],delivery.owner.wall()) }
+            try requireOriginal(c,delivery);try admission.publication()
+            return try admission.publish { ["profileId":profile,"locale":locale,"generation":c.generation,"revision":result.revision,"route":item as Any? ?? NSNull(),"acquisition":try LocalV2SavedRouteCompiler.downloadStatus(stage,item==nil ? nil:active,id,locale,cancelled)] }
         }
         guard r.method=="readPassport" else { throw PinKnownRefusal() }
         var downloadsAvailable=true
-        do { compiled.savedRouteMediaIndex=try LocalV2FixedMediaProducer(delivery,self,capturedMediaEpoch(),c.token,c.generation).compile() }
+        do { try prepareDownloadMedia(c,delivery) }
         catch { try requireOriginal(c,delivery);compiled.savedRouteMediaIndex=nil;downloadsAvailable=false }
         let now=try delivery.owner.wall(),available=Set(try compiled.keys(now)),routes=try LocalV2JourneyCompiler.routes(delivery);var countries=[[String:Any]](),writers=[[String:Any]](),works=[[String:Any]](),known=Set<String>(),shown=Set<String>(),unresolved=[String](),seen=Set<String>()
         func unresolvedNode(_ node: String) { if seen.insert(node).inserted { unresolved.append(node) } }
@@ -10776,7 +10874,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         } catch { try requireOriginal(c,delivery) } // Independent program admission cannot hide countries or learning.
         var downloads=[[String:Any]]()
         for stored in savedLedger.downloadedRoutes where downloadsAvailable {
-            do { if let item=try LocalV2SavedRouteCompiler.available(stored,compiled,routes,delivery.owner.wall()) { downloads.append(item) } }
+            do { if let item=try LocalV2SavedRouteCompiler.available(stored,compiled,routes,delivery.owner.wall()) { try admission.verifyBinaryObjects(PlanetChildPassportRouteCodec.objects(stored).map { $0.1 });downloads.append(item) } }
             catch { try requireOriginal(c,delivery) } // Expired/disallowed route provenance remains private in storage.
         }
         guard countries.count<=2048,writers.count<=2048,works.count<=2048,journeys.count<=32,unresolved.count<=2048,awards.count<=PlanetChildPassport.maximumBadges,downloads.count<=32 else { throw PinKnownRefusal() };try requireOriginal(c,delivery);try admission.publication()
@@ -10898,9 +10996,18 @@ extension PlanetChildNativePackageRuntimeFixture {
 /** Structural decoding does not authorize a route. Reject noncanonical bytes,
  * orphan/duplicate entities, mismatched payload hashes and reordered graphs. */
 enum PlanetChildPassportRouteCodec {
+    static func shared(_ saved: PlanetChildPassport.SavedRoute) throws -> Bool {
+        try LocalV2PackageValue.number(LocalV2PackageValue.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes))["schemaVersion"],1,3)==3
+    }
+    static func objects(_ saved: PlanetChildPassport.SavedRoute) throws -> [(String,PlanetChildPassport.BinaryObject)] {
+        guard try shared(saved) else { return [] };return try LocalV2SavedRouteMediaCodec.rows(saved).map { value in
+            let row=try LocalV2PackageValue.object(value,LocalV2SavedRouteMediaCodec.fields)
+            return (try LocalV2PackageValue.identifier(row["assetId"]),try PlanetChildPassport.BinaryObject(checksum:LocalV2PackageValue.hash(row["sha256"]),mime:LocalV2PackageValue.text(row["mime"]),bytes:Int(LocalV2PackageValue.number(row["bytes"],1,33554432))))
+        }
+    }
     static func validate(_ bytes: Data,locale: String?=nil) throws -> String {
         typealias V=LocalV2PackageValue
-        let raw=try LocalV2PackageJson.read(bytes,PlanetChildPassport.maximumRouteBytes),untyped=try V.object(raw),schema=try V.number(untyped["schemaVersion"],1,2)
+        let raw=try LocalV2PackageJson.read(bytes,PlanetChildPassport.maximumRouteBytes),untyped=try V.object(raw),schema=try V.number(untyped["schemaVersion"],1,3)
         let root=try V.object(raw,schema==1 ? ["schemaVersion","journey","nodes"]:["schemaVersion","journey","nodes","media"])
         guard Data(try raw.json(sorted:true).utf8)==bytes,let journey=root["journey"] else { throw PinKnownRefusal() }
         let entries=[journey]+(try V.array(root["nodes"],2047));var keys=[String](),byKey=[String:V](),refsByKey=[String:[V]]()
@@ -10921,21 +11028,28 @@ enum PlanetChildPassportRouteCodec {
             }
         }
         guard ordered==keys else { throw PinKnownRefusal() }
-        if schema==2 {
+        if schema>=2 {
             var references=[String:V]();for (key,entry) in byKey { references[key]=try V.object(entry)["reference"] }
             var language: String?,prior: String?
-            for row in try V.array(root["media"],LocalV2SavedRouteMediaCodec.maximumItems) { let id=try LocalV2SavedRouteMediaCodec.validate(row,references,&language);guard prior==nil || prior!<id else { throw PinKnownRefusal() };prior=id }
+            for row in try V.array(root["media"],LocalV2SavedRouteMediaCodec.maximumItems) { let id=try LocalV2SavedRouteMediaCodec.validate(row,references,&language,shared:schema==3);guard prior==nil || prior!<id else { throw PinKnownRefusal() };prior=id }
             guard locale==nil || language==nil || language==locale else { throw PinKnownRefusal() }
         };return String(first.dropFirst("activity/".count))
     }
 }
 fileprivate enum LocalV2SavedRouteCompiler {
     typealias V=LocalV2PackageValue
-    static func snapshot(_ c: LocalV2CompiledPackage,_ route: LocalV2JourneyRoute,_ now: Int64,media: [V]?=nil) throws -> PlanetChildPassport.SavedRoute {
+    /** Eligibility is a projection only: stale signed metadata is hidden, while
+     * retained bytes, progress and the prior active generation stay untouched.
+     * Catalog decoding and actual binary integrity errors are never swallowed. */
+    static func eligible(_ saved: PlanetChildPassport.SavedRoute,_ c: LocalV2CompiledPackage,_ routes: [LocalV2JourneyRoute],_ now: Int64) throws -> [String:Any]? {
+        try saved.validate()
+        do { return try available(saved,c,routes,now) } catch { return nil }
+    }
+    static func snapshot(_ c: LocalV2CompiledPackage,_ route: LocalV2JourneyRoute,_ now: Int64,media: [V]?=nil,shared: Bool=false) throws -> PlanetChildPassport.SavedRoute {
         guard UInt64(c.version)==route.version else { throw PinKnownRefusal() }
         let graph=try LocalV2JourneyCompiler.admittedRoutes(c,now);guard let current=graph.first(where:{ $0.id==route.id }),current.nodeIds==route.nodeIds,current.kinds==route.kinds else { throw PinKnownRefusal() }
         let closure=try LocalV2AdmittedEnvelope.closure(c,"activity/"+route.id,now);guard let journey=closure.first,closure.count>1,closure.count<=2048 else { throw PinKnownRefusal() }
-        var fields: [(String,V)]=[("schemaVersion",.integer(media==nil ? 1:2)),("journey",journey),("nodes",.array(Array(closure.dropFirst())))];if let media { fields.append(("media",.array(media))) }
+        var fields: [(String,V)]=[("schemaVersion",.integer(media==nil ? 1:shared ? 3:2)),("journey",journey),("nodes",.array(Array(closure.dropFirst())))];if let media { fields.append(("media",.array(media))) }
         var bytes=Data(try V.object(fields).json(sorted:true).utf8);defer { bytes.resetBytes(in:0..<bytes.count) }
         guard try PlanetChildPassportRouteCodec.validate(bytes)==route.id else { throw PinKnownRefusal() }
         return try PlanetChildPassport.SavedRoute(journeyId:route.id,journeyVersion:route.version,contentVersion:route.version,packageId:c.packageId,packageVersion:UInt64(c.version),packageChecksum:c.checksum,packageReviewChecksum:c.reviewChecksum,policyVersion:c.profile.policyVersion,policyChecksum:c.profile.policyChecksum,locale:c.profile.locale,exactAge:Int(c.profile.exactAge),bytes:bytes)
@@ -10948,7 +11062,7 @@ fileprivate enum LocalV2SavedRouteCompiler {
         let root=try V.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes));guard let journey=root["journey"],let nodes=root["nodes"] else { throw PinKnownRefusal() }
         var text=Data(try V.object([("schemaVersion",.integer(1)),("journey",journey),("nodes",nodes)]).json(sorted:true).utf8);defer { text.resetBytes(in:0..<text.count) }
         guard text==actual.bytes else { return nil };try mediaCurrent(saved,c,route,now)
-        var item=route.summary;item["snapshotChecksum"]=saved.snapshotChecksum;item["byteLength"]=saved.bytes.count;item["media"]=try LocalV2SavedRouteMediaCodec.projection(saved);return item
+        var item=route.summary;item["snapshotChecksum"]=saved.snapshotChecksum;item["byteLength"]=saved.bytes.count;item["media"]=try LocalV2SavedRouteMediaCodec.projection(saved);if try PlanetChildPassportRouteCodec.shared(saved) { item["storage"]="shared-objects" };return item
     }
 }
 fileprivate final class LocalV2PassportProgramCatalog {
@@ -11207,6 +11321,19 @@ enum PlanetChildPassportFixtureBytes {
         let root=try entry("activity",id,payload("Route",refs,0));var bytes=Data(try V.object([("schemaVersion",.integer(1)),("journey",root),("nodes",.array(entries))]).json(sorted:true).utf8);defer { bytes.resetBytes(in:0..<bytes.count) }
         return try PlanetChildPassport.SavedRoute(journeyId:id,journeyVersion:1,contentVersion:1,packageId:"fixture-package",packageVersion:1,packageChecksum:String(repeating:"a",count:64),packageReviewChecksum:String(repeating:"b",count:64),policyVersion:"fixture-policy",policyChecksum:String(repeating:"c",count:64),locale:"en",exactAge:9,bytes:bytes)
     }
+    /** Structural fixture only: no signed native index or original admission. */
+    static func sharedRoute(_ id: String="route-one",locale: String="en") throws -> (PlanetChildPassport.SavedRoute,PlanetChildPassport.BinaryObject,Data) {
+        typealias V=LocalV2PackageValue
+        var base=try route(id);defer { base.dispose() };let root=try V.object(LocalV2PackageJson.read(base.bytes,PlanetChildPassport.maximumRouteBytes)),nodes=try V.array(root["nodes"],2047),owner=try V.object(nodes[0])["reference"]!
+        let png=PlanetChildNativeMediaRuntimeFixture.png(),object=try PlanetChildPassport.BinaryObject(checksum:LocalSnapshotV2.hash(png),mime:"image/png",bytes:png.count)
+        let payload=V.object([("role",.string("portrait")),("altText",.string(locale=="en" ? "Fixture image":"Фикстура изображения")),("transcript",.null),("scriptId",.null),("scriptChecksum",.null),("performerId",.null),("qualityChecksum",.null)])
+        let entity=V.object([("kind",.string("image")),("id",.string("fixture-image")),("contentChecksum",.string(LocalSnapshotV2.hash(Data(try payload.json(sorted:true).utf8))))])
+        let policy=V.object([("id",.string("fixture-image")),("kind",.string("image")),("sourceVersion",.integer(1)),("policyVersion",.string("fixture-policy")),("minAge",.integer(3)),("maxAge",.integer(17)),("reviewStatus",.string("fixture-only")),("localizedContent",.array([])),("topics",.array([])),("topicTagsComplete",.bool(false)),("commercialAvailability",.null),("rights",.null)])
+        let row=V.object([("assetId",.string("fixture-image")),("owner",owner),("entity",entity),("payload",payload),("policy",policy),("inventoryKey",.string("fixture_image.png")),("sha256",.string(object.checksum)),("bytes",.integer(Int64(object.bytes))),("mime",.string(object.mime)),("locale",.string(locale)),("manifestChecksum",.string(String(repeating:"d",count:64))),("reviewChecksum",.string(String(repeating:"e",count:64))),("sourceFromEpochMs",.integer(0)),("sourceUntilEpochMs",.integer(8640000000000000)),("reviewPlatforms",.array([.string("ios-ipados")])),("reviewTerritories",.array([.string("RU")])),("encodedBase64",.null),("audioProvenanceBase64",.null)])
+        var bytes=Data(try V.object([("schemaVersion",.integer(3)),("journey",root["journey"]!),("nodes",root["nodes"]!),("media",.array([row]))]).json(sorted:true).utf8);defer { bytes.resetBytes(in:0..<bytes.count) }
+        let saved=try PlanetChildPassport.SavedRoute(journeyId:id,journeyVersion:base.journeyVersion,contentVersion:base.contentVersion,packageId:base.packageId,packageVersion:base.packageVersion,packageChecksum:base.packageChecksum,packageReviewChecksum:base.packageReviewChecksum,policyVersion:base.policyVersion,policyChecksum:base.policyChecksum,locale:locale,exactAge:base.exactAge,bytes:bytes)
+        return (saved,object,png)
+    }
     static func capacity(_ total: Bool) throws -> Bool {
         var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() }
         let count=total ? 4:32
@@ -11232,10 +11359,12 @@ fileprivate enum LocalV2SavedRouteMediaCodec {
         guard text.utf8.count==((Int(size)+2)/3)*4,let bytes=Data(base64Encoded:text),bytes.count==Int(size),bytes.base64EncodedString()==text,LocalSnapshotV2.hash(bytes)==(try V.hash(row["sha256"])) else { throw PinKnownRefusal() }
         return bytes
     }
-    static func validate(_ value: V,_ references: [String:V],_ locale: inout String?) throws -> String {
+    static func validate(_ value: V,_ references: [String:V],_ locale: inout String?,shared: Bool=false) throws -> String {
         let row=try V.object(value,fields),id=try V.identifier(row["assetId"]),owner=try V.object(row["owner"],["kind","id","contentChecksum"]),entity=try V.object(row["entity"],["kind","id","contentChecksum"])
         let ownerKey=(try V.text(owner["kind"]))+"/"+(try V.identifier(owner["id"]))
-        guard let reference=references[ownerKey],try reference.json(sorted:true)==row["owner"]!.json(sorted:true) else { throw PinKnownRefusal() }
+        _=try V.hash(owner["contentChecksum"]);guard try LocalV2PackageCompiler.kinds.contains(V.text(owner["kind"])) else { throw PinKnownRefusal() }
+        if let reference=references[ownerKey] { guard try reference.json(sorted:true)==row["owner"]!.json(sorted:true) else { throw PinKnownRefusal() } }
+        else { guard shared,try ["skin","stand","background"].contains(V.text(entity["kind"])) else { throw PinKnownRefusal() } }
         let language=try V.text(row["locale"]);guard ["ru","en"].contains(language),locale==nil || locale==language else { throw PinKnownRefusal() };locale=language
         let mime=try V.text(row["mime"]),kind=try V.text(entity["kind"]),inventory=try V.text(row["inventoryKey"])
         _=try V.identifier(entity["id"]);_=try LocalV2MediaCompiler.extensionFor(inventory,mime)
@@ -11255,36 +11384,62 @@ fileprivate enum LocalV2SavedRouteMediaCodec {
         }
         let policy=try V.object(row["policy"],["id","kind","sourceVersion","policyVersion","minAge","maxAge","reviewStatus","localizedContent","topics","topicTagsComplete","commercialAvailability","rights"])
         guard try V.identifier(policy["id"])==V.identifier(entity["id"]),try V.text(policy["kind"])==kind else { throw PinKnownRefusal() }
-        var binary=try decoded(row);defer { binary.resetBytes(in:0..<binary.count) };let header=try PlanetChildLocalV2MediaCodec.preflight(binary,mime)
+        let object=try PlanetChildPassport.BinaryObject(checksum:V.hash(row["sha256"]),mime:mime,bytes:Int(V.number(row["bytes"],1,33554432)))
+        var header: PlanetChildLocalV2MediaCodec.Header?
+        if shared { guard row["encodedBase64"]?.isNull==true else { throw PinKnownRefusal() } }
+        else { var binary=try decoded(row);defer { binary.resetBytes(in:0..<binary.count) };guard binary.count==object.bytes else { throw PinKnownRefusal() };header=try PlanetChildLocalV2MediaCodec.preflight(binary,mime) }
         if kind=="narration" {
             let encoded=try V.text(row["audioProvenanceBase64"]);guard encoded.utf8.count<=87384,var provenance=Data(base64Encoded:encoded),provenance.base64EncodedString()==encoded else { throw PinKnownRefusal() };defer { provenance.resetBytes(in:0..<provenance.count) }
-            let duration=try PlanetChildLocalV2NarrationProvenanceCodec.validate(provenance,rawPayload,language);try PlanetChildLocalV2NarrationProvenanceCodec.duration(duration,header)
+            let duration=try PlanetChildLocalV2NarrationProvenanceCodec.validate(provenance,rawPayload,language);if let header { try PlanetChildLocalV2NarrationProvenanceCodec.duration(duration,header) }
         } else { guard row["audioProvenanceBase64"]?.isNull==true else { throw PinKnownRefusal() } }
         return id
     }
     static func rows(_ saved: PlanetChildPassport.SavedRoute) throws -> [V] {
         let root=try V.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes))
-        if try V.number(root["schemaVersion"],1,2)==1 { return [] };return try V.array(root["media"],maximumItems)
+        if try V.number(root["schemaVersion"],1,3)==1 { return [] };return try V.array(root["media"],maximumItems)
     }
     static func projection(_ saved: PlanetChildPassport.SavedRoute) throws -> [String:Any] {
         var audio=0,images=0,transcripts=0,mediaBytes=0
         for raw in try rows(saved) {
-            let row=try V.object(raw,fields);mediaBytes+=Int(try V.number(row["bytes"],1,Int64(PlanetChildPassport.maximumRouteBytes)))
+            let row=try V.object(raw,fields);mediaBytes+=Int(try V.number(row["bytes"],1,Int64(33554432)))
             if try V.text(row["mime"])=="audio/wav" { audio+=1;transcripts+=Data(try V.text(V.object(row["payload"])["transcript"]).utf8).count } else { images+=1 }
         }
         return ["locale":saved.locale,"audioStatus":audio>0 ? "downloaded":"text-only","audioItemCount":audio,"imageItemCount":images,"transcriptByteLength":transcripts,"mediaByteLength":mediaBytes]
     }
 }
 fileprivate extension LocalV2SavedRouteCompiler {
-    static func selected(_ c: LocalV2CompiledPackage,_ route: LocalV2JourneyRoute,_ index: LocalV2MediaIndex,_ now: Int64) throws -> [LocalV2MediaAsset] {
+    static func selected(_ c: LocalV2CompiledPackage,_ route: LocalV2JourneyRoute,_ index: LocalV2MediaIndex,_ now: Int64,includeCommon: Bool=false) throws -> [LocalV2MediaAsset] {
         guard index.profile === c.profile,now>=0,now<index.until else { throw PinKnownRefusal() }
         let closure=try LocalV2AdmittedEnvelope.closure(c,"activity/"+route.id,now);var owners=Set<String>()
         for entry in closure { guard let ref=try V.object(entry)["reference"] else { throw PinKnownRefusal() };owners.insert(try ref.json(sorted:true)) }
-        let assets=try index.assets.filter { owners.contains(try $0.owner.json(sorted:true)) }.sorted { $0.id<$1.id }
+        var chosen=try index.assets.filter { owners.contains(try $0.owner.json(sorted:true)) }
+        if includeCommon {
+            guard let scenes=c.savedRouteScenes else { throw PinKnownRefusal() }
+            let home=try LocalV2AdmittedEnvelope.reference(c,c.home,now),homeJSON=try home.json(sorted:true)
+            for scene in scenes.values {
+                let owner=try scene.owner.json(sorted:true);guard owners.contains(owner) || owner==homeJSON else { continue }
+                guard scene.from<=now,now<scene.until else { throw PinKnownRefusal() };try LocalV2SceneCompiler.reference(scene.owner,c,now)
+                for (slot,asset) in scene.assets {
+                    guard ["skin","stand","background"].contains(slot),index.assets.contains(where:{ $0 === asset }),try asset.owner.json(sorted:true)==owner else { throw PinKnownRefusal() }
+                    if !chosen.contains(where:{ $0.id==asset.id }) { chosen.append(asset) }
+                }
+            }
+        }
+        let assets=chosen.sorted { $0.id<$1.id }
         guard assets.count<=LocalV2SavedRouteMediaCodec.maximumItems else { throw PinKnownRefusal() };return assets
     }
     static func mediaRow(_ asset: LocalV2MediaAsset,_ locale: String,_ encoded: String) -> V {
         .object([("assetId",.string(asset.id)),("owner",asset.owner),("entity",asset.entity),("payload",asset.payload),("policy",asset.policy),("inventoryKey",.string(asset.inventoryKey)),("sha256",.string(asset.checksum)),("bytes",.integer(Int64(asset.bytes))),("mime",.string(asset.mime)),("locale",.string(locale)),("manifestChecksum",.string(asset.manifestChecksum)),("reviewChecksum",.string(asset.reviewChecksum)),("sourceFromEpochMs",.integer(asset.sourceFrom)),("sourceUntilEpochMs",.integer(asset.sourceUntil)),("reviewPlatforms",.array(asset.reviewPlatforms.sorted().map(V.string))),("reviewTerritories",.array(asset.reviewTerritories.sorted().map(V.string))),("encodedBase64",.string(encoded)),("audioProvenanceBase64",asset.audioProvenanceBytes.map { .string($0.base64EncodedString()) } ?? .null)])
+    }
+    static func sharedMediaRow(_ asset: LocalV2MediaAsset,_ locale: String) -> V {
+        guard case .object(let fields)=mediaRow(asset,locale,"") else { preconditionFailure() }
+        return .object(fields.map { ($0.0,$0.0=="encodedBase64" ? .null:$0.1) })
+    }
+    static func downloadStatus(_ stage: PlanetChildPassport.Download?,_ ready: PlanetChildPassport.SavedRoute?,_ journey: String,_ locale: String,_ cancelled: Bool=false) throws -> [String:Any] {
+        guard let manifest=stage?.manifest ?? ready else { return ["status":cancelled ? "cancelled":"absent","journeyId":journey,"locale":locale,"completedItems":0,"totalItems":0,"downloadedBytes":0,"totalBytes":0,"sharedItems":0,"reusedItems":0] }
+        let objects=try PlanetChildPassportRouteCodec.objects(manifest),completed=stage?.completed ?? objects.count
+        let selected=objects.prefix(completed),bytes=selected.reduce(manifest.bytes.count) { $0+$1.1.bytes },total=objects.reduce(manifest.bytes.count) { $0+$1.1.bytes }
+        return ["status":stage==nil ? "ready":"staging","journeyId":journey,"locale":locale,"completedItems":completed+2,"totalItems":objects.count+2,"downloadedBytes":bytes,"totalBytes":total,"sharedItems":selected.filter { $0.1.mime != "audio/wav" }.count,"reusedItems":stage?.reused ?? manifest.reusedItems]
     }
     /** Reserve the full canonical snapshot, including text, metadata and raw
      * voice evidence, before acquiring another asset on the native worker. */
@@ -11317,13 +11472,13 @@ fileprivate extension LocalV2SavedRouteCompiler {
      * No asset acquisition, file read, DataStore call or SDK reentry here. */
     static func mediaCurrent(_ saved: PlanetChildPassport.SavedRoute,_ c: LocalV2CompiledPackage,_ route: LocalV2JourneyRoute,_ now: Int64) throws {
         let root=try V.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes))
-        if try V.number(root["schemaVersion"],1,2)==1 { return }
+        if try V.number(root["schemaVersion"],1,3)==1 { return }
         guard let index=c.savedRouteMediaIndex else { throw PinKnownRefusal() }
-        let assets=try selected(c,route,index,now),rows=try LocalV2SavedRouteMediaCodec.rows(saved);guard rows.count==assets.count else { throw PinKnownRefusal() }
+        let assets=try selected(c,route,index,now,includeCommon:PlanetChildPassportRouteCodec.shared(saved)),rows=try LocalV2SavedRouteMediaCodec.rows(saved);guard rows.count==assets.count else { throw PinKnownRefusal() }
         for (raw,asset) in zip(rows,assets) {
             let row=try V.object(raw,LocalV2SavedRouteMediaCodec.fields)
             guard now>=asset.sourceFrom,now<asset.sourceUntil,now<asset.until,asset.reviewPlatforms.contains(c.platform),asset.reviewTerritories.contains(c.territory),
-                try raw.json(sorted:true)==mediaRow(asset,c.profile.locale,V.text(row["encodedBase64"])).json(sorted:true) else { throw PinKnownRefusal() }
+                try raw.json(sorted:true)==(try PlanetChildPassportRouteCodec.shared(saved) ? sharedMediaRow(asset,c.profile.locale):mediaRow(asset,c.profile.locale,V.text(row["encodedBase64"]))).json(sorted:true) else { throw PinKnownRefusal() }
         }
     }
 }
@@ -11338,7 +11493,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         var ledger=try saved.ownedLedger();defer { ledger.disposeRouteBytes() }
         let c=permit.delivery.compiled,now=try permit.delivery.owner.wall(),routes=try LocalV2JourneyCompiler.admittedRoutes(c,now)
         c.savedRouteMediaIndex=permit.index
-        for route in ledger.downloadedRoutes where route.locale==c.profile.locale {
+        for route in ledger.downloadedRoutes where route.locale==c.profile.locale && !(try PlanetChildPassportRouteCodec.shared(route)) {
             // Invalid route entries remain private. Never expose their bytes.
             let available: Bool
             do { available=try LocalV2SavedRouteCompiler.available(route,c,routes,now) != nil }
@@ -11415,19 +11570,25 @@ extension PlanetChildNativePackageRuntimeFixture {
         let graph=try LocalV2JourneyCompiler.admittedRoutes(c,f.now);guard let route=graph.first else { throw PinKnownRefusal() }
         let transcript=name=="capture-capacity" ? String(repeating:"English narration. ",count:1500):"The English fixture transcript.\nSecond line.",scriptHash=LocalSnapshotV2.hash(Data(transcript.utf8))
         var provenance: [String:Any]=["schemaVersion":1,"kind":"literary-planet-child-narration-provenance-v1","scriptId":"fixture-script","scriptChecksum":scriptHash,"performerId":"fixture-speaker","licensorId":"fixture-owner","locale":"en","accent":"Neutral English","pronunciationNotes":"Software fixture notes only.","durationMs":1,"loudnessReport":"Software fixture loudness only.","qualityReport":"Software fixture quality only.","reducedAudioFallback":"same-locale-text","voiceKind":"human-original"]
+        if name=="shared-large" { provenance["durationMs"]=60000 }
         if name=="provenance-locale" { provenance["locale"]="ru" }
         if name=="voice-kind" { provenance["voiceKind"]="cloned-celebrity" }
         var provenanceBytes=try bytes(provenance,sorted:true);defer { provenanceBytes.resetBytes(in:0..<provenanceBytes.count) }
         let audioPayload: [String:Any]=["role":"narration","altText":"English fixture narration","transcript":transcript,"scriptId":"fixture-script","scriptChecksum":scriptHash,"performerId":"fixture-speaker","qualityChecksum":LocalSnapshotV2.hash(provenanceBytes)]
         let imagePayload: [String:Any]=["role":"portrait","altText":"English fixture portrait","transcript":NSNull(),"scriptId":NSNull(),"scriptChecksum":NSNull(),"performerId":NSNull(),"qualityChecksum":NSNull()]
-        let wav=PlanetChildNativeMediaRuntimeFixture.wav(),png=PlanetChildNativeMediaRuntimeFixture.png()
+        var wav=name=="shared-large" ? PlanetChildNativeMediaRuntimeFixture.wav(2880000):PlanetChildNativeMediaRuntimeFixture.wav();if name=="shared-large" { for byte in 0..<4 { wav[24+byte]=UInt8(truncatingIfNeeded:48000>>(8*byte));wav[28+byte]=UInt8(truncatingIfNeeded:48000>>(8*byte)) } };let png=PlanetChildNativeMediaRuntimeFixture.png()
         func media(_ id: String,_ kind: String,_ owner: [String:Any],_ payload: [String:Any],_ binary: Data,_ mime: String,_ filename: String) throws -> [String:Any] {
             let hash=LocalSnapshotV2.hash(try bytes(payload,sorted:true));var policy=f.policy;policy["kind"]=kind;policy["id"]=id
             policy["localizedContent"]=[["locale":"en","contentChecksum":hash,"reviewStatus":"approved","available":true,"reviewerId":"isolated-editor","reviewedAt":f.now-1000]]
             return ["assetId":id,"owner":owner,"entity":["kind":kind,"id":id,"contentChecksum":hash],"payload":payload,"policy":policy,"inventoryKey":filename,"sha256":LocalSnapshotV2.hash(binary),"bytes":binary.count,"mime":mime]
         }
         let audio=try media("audio-one","narration",writerRef,audioPayload,wav,"audio/wav","fixture_audio.wav"),image=try media("image-one","image",workRef,imagePayload,png,"image/png","fixture_image.png")
-        let assets=name=="text-fallback" ? [image]:[audio,image]
+        var assets=name=="text-fallback" ? [image]:[audio,image]
+        let sceneScenario=["shared-home-scene","shared-scene-expired","shared-scene-foreign-owner","shared-unbound-home"].contains(name)
+        if sceneScenario {
+            let home=try ref("activity","start",f.payload)
+            for kind in ["skin","stand","background"] { var payload=imagePayload;payload["role"]=kind;assets.append(try media("home-"+kind,kind,home,payload,png,"image/png","fixture_"+kind+".png")) }
+        }
         let manifest: [String:Any]=["schemaVersion":2,"kind":"literary-planet-child-native-media-manifest-v2","manifestId":"fixture-media","manifestVersion":1,"packageId":c.packageId,"packageVersion":c.version,"packageChecksum":c.checksum,"policyVersion":c.profile.policyVersion,"policyChecksum":c.profile.policyChecksum,"locale":"en","exactAge":9,"readingLevels":[NSNull()],"validFromEpochMs":f.now-1000,"validUntilEpochMs":f.now+5000,"assets":assets]
         let manifestBytes=try bytes(manifest),manifestHash=LocalSnapshotV2.hash(manifestBytes)
         let key: [String:Any]=["keyId":"child-media-review-fixture","reviewerId":"isolated-editor","publicKeyX963Hex":f.signer.publicKey.x963Representation.map { String(format:"%02x",$0) }.joined()]
@@ -11439,11 +11600,49 @@ extension PlanetChildNativePackageRuntimeFixture {
             return try LocalV2MediaCompiler.compile(manifestBytes,signed,LocalV2PackageJson.read(bytes(pin),65536),[LocalV2PackageJson.read(bytes(key),65536)],c,f.now,provenance:{ hash in guard LocalSnapshotV2.hash(provenanceBytes)==hash else { throw PinKnownRefusal() };return provenanceBytes },{})
         }
         if ["provenance-locale","voice-kind"].contains(name) { try denied { _=try index() };return true }
-        let current=try index();c.savedRouteMediaIndex=current
+        let current=try index();c.savedRouteMediaIndex=current;c.savedRouteScenes=[:]
+        if sceneScenario {
+            let home=try ref("activity","start",f.payload),root=try LocalV2SceneValue.object(LocalV2SceneJson.read(bytes(["sceneId":"home-scene","title":"Software scene selection fixture","owner":name=="shared-scene-foreign-owner" ? workRef:home]),4096))
+            var slots=[String:LocalV2MediaAsset]();for kind in ["skin","stand","background"] { slots[kind]=current.assets.first { $0.id=="home-"+kind }! }
+            if name != "shared-unbound-home" { c.savedRouteScenes=["home-scene":try LocalV2Scene(root,slots,f.now-1000,name=="shared-scene-expired" ? f.now:f.now+2000)] }
+            if name=="shared-scene-expired" || name=="shared-scene-foreign-owner" { try denied { _=try LocalV2SavedRouteCompiler.selected(c,route,current,f.now,includeCommon:true) };return true }
+            let selected=try LocalV2SavedRouteCompiler.selected(c,route,current,f.now,includeCommon:true)
+            try check(selected.count==(name=="shared-unbound-home" ? 2:5))
+            var compact=try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:current.assets.sorted { $0.id<$1.id }.map { LocalV2SavedRouteCompiler.sharedMediaRow($0,"en") },shared:true);defer { compact.dispose() }
+            if name=="shared-unbound-home" { try check(try LocalV2SavedRouteCompiler.eligible(compact,c,graph,f.now)==nil) }
+            else { try check(try LocalV2SavedRouteCompiler.available(compact,c,graph,f.now) != nil);try check(try PlanetChildPassportRouteCodec.objects(compact).count==5) }
+            return true
+        }
         let rows=try current.assets.sorted { $0.id<$1.id }.map { asset in LocalV2SavedRouteCompiler.mediaRow(asset,"en",(asset.mime=="audio/wav" ? wav:png).base64EncodedString()) }
-        var saved=try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:rows);defer { saved.dispose() }
+        var saved=try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:name=="shared-large" ? current.assets.sorted { $0.id<$1.id }.map { LocalV2SavedRouteCompiler.sharedMediaRow($0,"en") }:rows,shared:name=="shared-large");defer { saved.dispose() }
         func withRows(_ values: [V]) throws -> PlanetChildPassport.SavedRoute { try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:values) }
         switch name {
+        case "shared-signed","shared-stale","shared-transcript","shared-expiry","shared-large","shared-late-cancel","shared-stale-replacement":
+            let references=current.assets.sorted { $0.id<$1.id }.map { LocalV2SavedRouteCompiler.sharedMediaRow($0,"en") }
+            var compact=try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:references,shared:true);defer { compact.dispose() }
+            let ready=try LocalV2SavedRouteCompiler.available(compact,c,graph,f.now);try check(ready?["storage"] as? String=="shared-objects" && !(String(decoding:compact.bytes,as:UTF8.self).contains(wav.base64EncodedString())))
+            if name=="shared-late-cancel" {
+                let objects=try PlanetChildPassportRouteCodec.objects(compact).map { $0.1 };try check(objects.count==2)
+                var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() }
+                try ledger.stage(PlanetChildPassport.Download(manifest:compact,completed:1),objects[0]);try ledger.activate(PlanetChildPassport.Download(manifest:compact,completed:2),objects[1])
+                let before=try ledger.encoded();try ledger.cancelDownload(compact.journeyId,compact.locale);try check(try ledger.encoded()==before)
+                guard let active=ledger.downloadedRoutes.first else { throw PinKnownRefusal() }
+                let terminal=try LocalV2SavedRouteCompiler.downloadStatus(nil,active,active.journeyId,active.locale,true)
+                try check(terminal["status"] as? String=="ready" && terminal["completedItems"] as? Int==4 && terminal["totalItems"] as? Int==4 && terminal["downloadedBytes"] as? Int==terminal["totalBytes"] as? Int)
+            }
+            if name=="shared-large" { let summary=try LocalV2SavedRouteMediaCodec.projection(compact);try check(wav.count>PlanetChildPassport.maximumRouteBytes && compact.bytes.count<PlanetChildPassport.maximumRouteBytes && summary["mediaByteLength"] as? Int==wav.count+png.count);_=try PlanetChildLocalV2MediaCodec.preflight(wav,"audio/wav") }
+            if name=="shared-expiry" { try denied { _=try LocalV2SavedRouteCompiler.available(compact,c,graph,f.now+4000) } }
+            if name=="shared-stale" { review["reviewedAtEpochMs"]=f.now-499;c.savedRouteMediaIndex=try index();try denied { _=try LocalV2SavedRouteCompiler.available(compact,c,graph,f.now) } }
+            if name=="shared-stale-replacement" {
+                let objects=try PlanetChildPassportRouteCodec.objects(compact).map { $0.1 };var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() }
+                try ledger.save(saved);try ledger.stage(PlanetChildPassport.Download(manifest:compact,completed:1),objects[0]);var before=try ledger.encoded();defer { before.resetBytes(in:0..<before.count) }
+                review["reviewedAtEpochMs"]=f.now-499;let updated=try index();c.savedRouteMediaIndex=updated
+                try check(try LocalV2SavedRouteCompiler.eligible(compact,c,graph,f.now)==nil);try check(try ledger.encoded()==before)
+                var replacement=try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:updated.assets.sorted { $0.id<$1.id }.map { LocalV2SavedRouteCompiler.sharedMediaRow($0,"en") },shared:true);defer { replacement.dispose() }
+                try check(try LocalV2SavedRouteCompiler.available(replacement,c,graph,f.now) != nil);try ledger.stage(PlanetChildPassport.Download(manifest:replacement))
+                try check(ledger.downloadedRoutes==[saved] && ledger.routeDownloads.count==1 && ledger.routeDownloads[0].completed==0 && ledger.routeDownloads[0].manifest.snapshotChecksum==replacement.snapshotChecksum && ledger.binaryObjects.isEmpty)
+            }
+            if name=="shared-transcript" { var changed=references,row=try V.object(changed[0]),payload=try V.object(row["payload"]);payload["transcript"] = .string("Unreviewed replacement");row["payload"] = .object(payload.sorted { $0.key<$1.key }.map { ($0.key,$0.value) });changed[0] = .object(row.sorted { $0.key<$1.key }.map { ($0.key,$0.value) });try denied { var invalid=try LocalV2SavedRouteCompiler.snapshot(c,route,f.now,media:changed,shared:true);invalid.dispose() } }
         case "media-unavailable-text-current":
             c.savedRouteMediaIndex=nil;try denied { _=try LocalV2SavedRouteCompiler.available(saved,c,graph,f.now) }
             let currentGraph=try LocalV2JourneyCompiler.admittedRoutes(c,f.now);var text=try LocalV2SavedRouteCompiler.snapshot(c,currentGraph[0],f.now);defer { text.dispose() }

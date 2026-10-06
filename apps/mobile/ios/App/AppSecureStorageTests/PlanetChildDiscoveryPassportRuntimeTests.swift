@@ -276,3 +276,63 @@ extension PlanetChildDiscoveryPassportRuntimeTests {
         XCTAssertEqual(ledger.downloadedRoutes.first(where:{ $0.journeyId=="route-0" && $0.locale=="ru" }),sibling)
     }
 }
+
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    /** AUTHORED_NOT_RUN. Fixture codecs/files do not supply native release pins. */
+    func testSharedObjectsKeepOriginalPerObjectBounds() throws {
+        for mime in ["image/png","image/jpeg","image/webp","audio/wav"] { let max=mime=="audio/wav" ? 25165824:33554432;_ = try PlanetChildPassport.BinaryObject(checksum:String(repeating:"a",count:64),mime:mime,bytes:max);XCTAssertThrowsError(try PlanetChildPassport.BinaryObject(checksum:String(repeating:"a",count:64),mime:mime,bytes:max+1)) }
+        XCTAssertThrowsError(try PlanetChildPassport.BinaryObject(checksum:String(repeating:"a",count:64),mime:"model/gltf-binary",bytes:1))
+    }
+    func testInterruptedStageCodecRetainsActualPrefixAndActivePrior() throws {
+        var (route,object,binary)=try PlanetChildPassportFixtureBytes.sharedRoute();defer { route.dispose();binary.resetBytes(in:0..<binary.count) }
+        var prior=try PlanetChildPassportFixtureBytes.route();defer { prior.dispose() };var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() };try ledger.save(prior)
+        try ledger.stage(PlanetChildPassport.Download(manifest:route,completed:1,reused:0),object)
+        var bytes=try ledger.encoded();defer { bytes.resetBytes(in:0..<bytes.count) };var restored=try PlanetChildPassport.Ledger.decode(bytes);defer { restored.disposeRouteBytes() }
+        XCTAssertEqual(restored,ledger);XCTAssertEqual(restored.downloadedRoutes,[prior]);XCTAssertEqual(restored.routeDownloads.first?.completed,1);XCTAssertEqual(restored.binaryObjects,[object]);var active=PlanetChildPassport.Ledger();try active.save(prior);defer { active.disposeRouteBytes() };XCTAssertEqual(try restored.immutableDownloadChecksum(),active.immutableDownloadChecksum())
+    }
+    func testSharedLocaleGenerationsReuseOneObjectWithoutInlineBytes() throws {
+        var (en,object,binary)=try PlanetChildPassportFixtureBytes.sharedRoute();defer { en.dispose();binary.resetBytes(in:0..<binary.count) };var (ru,_,ruBinary)=try PlanetChildPassportFixtureBytes.sharedRoute(locale:"ru");defer { ru.dispose();ruBinary.resetBytes(in:0..<ruBinary.count) }
+        var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() };try ledger.activate(PlanetChildPassport.Download(manifest:en,completed:1),object);try ledger.activate(PlanetChildPassport.Download(manifest:ru,completed:1,reused:1),object)
+        XCTAssertEqual(ledger.binaryObjects,[object]);XCTAssertEqual(Set(ledger.downloadedRoutes.map { $0.locale }),Set(["ru","en"]));XCTAssertNotEqual(en.snapshotChecksum,ru.snapshotChecksum);XCTAssertFalse(String(decoding:en.bytes,as:UTF8.self).contains(binary.base64EncodedString()))
+    }
+    func testStageCancellationPreservesActivePriorLocaleAndFacts() throws {
+        var (en,object,binary)=try PlanetChildPassportFixtureBytes.sharedRoute();defer { en.dispose();binary.resetBytes(in:0..<binary.count) };var (ru,_,other)=try PlanetChildPassportFixtureBytes.sharedRoute(locale:"ru");defer { ru.dispose();other.resetBytes(in:0..<other.count) }
+        var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() };try ledger.openCountry("country-one");try ledger.activate(PlanetChildPassport.Download(manifest:ru,completed:1),object);let before=ledger.downloadedRoutes
+        try ledger.stage(PlanetChildPassport.Download(manifest:en,completed:1),object);try ledger.cancelDownload(en.journeyId,"en")
+        XCTAssertTrue(ledger.routeDownloads.isEmpty);XCTAssertEqual(ledger.downloadedRoutes,before);XCTAssertEqual(ledger.binaryObjects,[object]);XCTAssertEqual(ledger.countries,["country-one"])
+        // Late cancel after activation never rolls back a committed generation.
+        try ledger.activate(PlanetChildPassport.Download(manifest:en,completed:1),object);let ready=ledger.downloadedRoutes;try ledger.cancelDownload(en.journeyId,"en");XCTAssertEqual(ledger.downloadedRoutes,ready)
+    }
+    func testIncompleteOrMissingCatalogCannotActivateOrResetProgress() throws {
+        var (route,object,binary)=try PlanetChildPassportFixtureBytes.sharedRoute();defer { route.dispose();binary.resetBytes(in:0..<binary.count) };var ledger=PlanetChildPassport.Ledger();defer { ledger.disposeRouteBytes() };try ledger.stage(PlanetChildPassport.Download(manifest:route));let before=try ledger.encoded()
+        XCTAssertThrowsError(try ledger.activate(PlanetChildPassport.Download(manifest:route),nil));XCTAssertEqual(try ledger.encoded(),before)
+        XCTAssertThrowsError(try ledger.stage(PlanetChildPassport.Download(manifest:route,completed:1),nil));XCTAssertEqual(try ledger.encoded(),before)
+        XCTAssertThrowsError(try PlanetChildPassport.Download(manifest:route,completed:2));XCTAssertThrowsError(try PlanetChildPassport.Download(manifest:route,completed:1,reused:2));_ = object
+    }
+    func testCompactGenerationStillNeedsFreshSignedExactMetadata() throws { for scenario in ["shared-signed","shared-stale","shared-transcript","shared-expiry","shared-large"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.downloadedRouteMedia(scenario),scenario) } }
+    func testSharedBlobCiphertextRestartIntegrityAndProfileCleanup() throws { for scenario in ["restart","missing","tamper","profile-aad","clear","ciphertext"] { XCTAssertTrue(try PlanetChildDataStore.fixtureSharedObjectPersistence(runId:UUID().uuidString.replacingOccurrences(of:"-",with:"").lowercased(),scenario:scenario),scenario) } }
+    func testLateCancelReturnsCompletedReadyTerminalWithoutRollingBackGeneration() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.downloadedRouteMedia("shared-late-cancel")) }
+    func testRouteDownloadWireHasNoBinaryOrAuthorityInputs() throws {
+        let base: [String:Any]=["version":2,"requestId":String(repeating:"1",count:32),"contextToken":String(repeating:"2",count:32),"journeyId":"route-one"]
+        _ = try PlanetChildLocalV2Wire.decode("readJourneyRouteDownload",base)
+        for method in ["resumeJourneyRoute","cancelJourneyRoute"] { var input=base;input["expectedRevision"]=7;_ = try PlanetChildLocalV2Wire.decode(method,input);for field in ["bytes","url","sha256","approved","profileId","fullRecord"] { var wrong=input;wrong[field]="caller";XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode(method,wrong),field) } }
+    }
+}
+
+
+extension PlanetChildDiscoveryPassportRuntimeTests {
+    func testLargeAdmittedBinaryUsesEncryptedObjectsBeyondInlineManifestCap() throws { XCTAssertTrue(try PlanetChildDataStore.fixtureLargeSharedBinary(runId:UUID().uuidString.replacingOccurrences(of:"-",with:"").lowercased())) }
+    func testAuthenticatedInterruptedStageReceiptBindsExactBeforeAfterAndActiveFacts() throws {
+        for scenario in ["before","after","aead-tamper","unknown-hash","wrong-profile","wrong-generation","active-facts"] { XCTAssertTrue(try PlanetChildDataStore.fixtureInterruptedStageReceipt(runId:UUID().uuidString.replacingOccurrences(of:"-",with:"").lowercased(),scenario:scenario),scenario) }
+    }
+    func testKilledStageTemporaryCanOnlyBeDiscardedUnderExactBeforeAndFreshFence() throws {
+        for scenario in ["partial-temporary","empty-temporary","after-temporary-denied","revoked-temporary-denied"] { XCTAssertTrue(try PlanetChildDataStore.fixtureInterruptedStageReceipt(runId:UUID().uuidString.replacingOccurrences(of:"-",with:"").lowercased(),scenario:scenario),scenario) }
+    }
+    func testCommonHomeSceneSlotsJoinSharedDownloadClosureUnderCurrentMetadata() throws {
+        for scenario in ["shared-home-scene","shared-scene-expired","shared-scene-foreign-owner","shared-unbound-home"] { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.downloadedRouteMedia(scenario),scenario) }
+    }
+    func testStaleStageEligibilityPreservesBytesAndExplicitReplacementPreservesActivePrior() throws {
+        XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.downloadedRouteMedia("shared-stale-replacement"))
+    }
+}

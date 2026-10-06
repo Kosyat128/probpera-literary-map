@@ -46,6 +46,7 @@ enum PlanetChildPassport {
     struct SavedRoute: Equatable {
         let journeyId: String,journeyVersion: UInt64,contentVersion: UInt64,packageId: String,packageVersion: UInt64,packageChecksum: String,packageReviewChecksum: String,policyVersion: String,policyChecksum: String,locale: String,exactAge: Int,snapshotChecksum: String
         private(set) var bytes: Data
+        var reusedItems=0
         init(journeyId: String,journeyVersion: UInt64,contentVersion: UInt64,packageId: String,packageVersion: UInt64,packageChecksum: String,packageReviewChecksum: String,policyVersion: String,policyChecksum: String,locale: String,exactAge: Int,bytes: Data) throws {
             for id in [journeyId,packageId,policyVersion] { _=try PlanetChildJourney.identifier(id) }
             for version in [journeyVersion,contentVersion,packageVersion] { try PlanetChildJourney.require(version>0 && version<PlanetChildJourney.maxSafe) }
@@ -55,17 +56,73 @@ enum PlanetChildPassport {
             try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes,locale:locale)==journeyId)
         }
         mutating func dispose() { bytes.resetBytes(in:0..<bytes.count);bytes.removeAll() }
-        func validate() throws { try PlanetChildJourney.require(!bytes.isEmpty && bytes.count<=PlanetChildPassport.maximumRouteBytes && PlanetChildPassport.digest(bytes)==snapshotChecksum);try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes,locale:locale)==journeyId) }
+        func validate() throws { try PlanetChildJourney.require(!bytes.isEmpty && bytes.count<=PlanetChildPassport.maximumRouteBytes && PlanetChildPassport.digest(bytes)==snapshotChecksum);try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.validate(bytes,locale:locale)==journeyId);try PlanetChildJourney.require(reusedItems>=0 && reusedItems<=(try PlanetChildPassportRouteCodec.objects(self)).count) }
+    }
+    /** Technical descriptors share the authenticated whole-record ledger with
+     * active/staged locale generations. They never grant content authority. */
+    struct BinaryObject: Equatable {
+        let checksum: String,mime: String,bytes: Int
+        init(checksum: String,mime: String,bytes: Int) throws {
+            try PlanetChildPassport.checksum(checksum)
+            try PlanetChildJourney.require(["image/png","image/jpeg","image/webp","audio/wav"].contains(mime) && bytes>0 && bytes<=(mime=="audio/wav" ? 25165824:33554432))
+            self.checksum=checksum;self.mime=mime;self.bytes=bytes
+        }
+    }
+    struct Download: Equatable {
+        var manifest: SavedRoute,completed: Int,reused: Int
+        init(manifest: SavedRoute,completed: Int=0,reused: Int=0) throws { self.manifest=manifest;self.completed=completed;self.reused=reused;try validate() }
+        var identity: String { manifest.journeyId+"\n"+manifest.locale }
+        func validate() throws {
+            try manifest.validate();try PlanetChildJourney.require(try PlanetChildPassportRouteCodec.shared(manifest))
+            let count=try PlanetChildPassportRouteCodec.objects(manifest).count
+            try PlanetChildJourney.require(completed>=0 && completed<=count && reused>=0 && reused<=completed)
+        }
+        mutating func dispose() { manifest.dispose() }
     }
     struct Ledger: Equatable {
         var countries=[String](),learning=[Learning](),completedJourneys=[CompletedJourney]()
         var schemaVersion: UInt64=1,badges=[Badge](),downloadedRoutes=[SavedRoute]()
+        var binaryObjects=[BinaryObject](),routeDownloads=[Download]()
         func validate() throws {
             try PlanetChildJourney.require(countries.count<=maximumCountries && Set(countries).count==countries.count && learning.count<=maximumLearning && Set(learning.map { $0.identity }).count==learning.count && completedJourneys.count<=maximumJourneys && Set(completedJourneys.map { $0.identity }).count==completedJourneys.count)
             for id in countries { _=try PlanetChildJourney.identifier(id) }
-            try PlanetChildJourney.require((schemaVersion==1 || schemaVersion==2) && (schemaVersion==2 || badges.isEmpty && downloadedRoutes.isEmpty) && badges.count<=maximumBadges && Set(badges.map { $0.identity }).count==badges.count && downloadedRoutes.count<=maximumRoutes && Set(downloadedRoutes.map { $0.journeyId+"\n"+$0.locale }).count==downloadedRoutes.count)
+            try PlanetChildJourney.require((1...3).contains(schemaVersion) && (schemaVersion>=2 || badges.isEmpty && downloadedRoutes.isEmpty) && (schemaVersion==3 || binaryObjects.isEmpty && routeDownloads.isEmpty) && badges.count<=maximumBadges && Set(badges.map { $0.identity }).count==badges.count && downloadedRoutes.count<=maximumRoutes && Set(downloadedRoutes.map { $0.journeyId+"\n"+$0.locale }).count==downloadedRoutes.count)
             var total=0
             for route in downloadedRoutes { try route.validate();try PlanetChildJourney.require(route.bytes.count<=maximumRouteTotalBytes-total);total+=route.bytes.count }
+            try PlanetChildJourney.require(routeDownloads.count<=maximumRoutes && Set(routeDownloads.map { $0.identity }).count==routeDownloads.count && binaryObjects.count<=2048 && Set(binaryObjects.map { $0.checksum }).count==binaryObjects.count)
+            for stage in routeDownloads { try stage.validate();try PlanetChildJourney.require(stage.manifest.bytes.count<=maximumRouteTotalBytes-total);total+=stage.manifest.bytes.count }
+            let required=try requiredObjects();try PlanetChildJourney.require(required.count==binaryObjects.count)
+            var binaryTotal=0
+            for object in binaryObjects { try PlanetChildJourney.require(required[object.checksum]==object && object.bytes<=2147483648-binaryTotal);binaryTotal+=object.bytes }
+        }
+        func immutableDownloadChecksum() throws -> String {
+            var frozen=self;frozen.routeDownloads.removeAll();let required=try frozen.requiredObjects();frozen.binaryObjects=frozen.binaryObjects.filter { required[$0.checksum] != nil }
+            if frozen.binaryObjects.isEmpty && !(try frozen.downloadedRoutes.contains(where:{ try PlanetChildPassportRouteCodec.shared($0) })) { frozen.schemaVersion=frozen.badges.isEmpty && frozen.downloadedRoutes.isEmpty ? 1:2 }
+            else { frozen.schemaVersion=3 }
+            var bytes=try frozen.encoded();defer { bytes.resetBytes(in:0..<bytes.count) };return PlanetChildPassport.digest(bytes)
+        }
+        func requiredObjects() throws -> [String:BinaryObject] {
+            var required=[String:BinaryObject]()
+            func retain(_ object: BinaryObject) throws { if let prior=required[object.checksum] { try PlanetChildJourney.require(prior==object) };required[object.checksum]=object }
+            for route in downloadedRoutes where try PlanetChildPassportRouteCodec.shared(route) { for (_,object) in try PlanetChildPassportRouteCodec.objects(route) { try retain(object) } }
+            for stage in routeDownloads { for (_,object) in try PlanetChildPassportRouteCodec.objects(stage.manifest).prefix(stage.completed) { try retain(object) } }
+            return required
+        }
+        private mutating func collectObjects() throws { let required=try requiredObjects();binaryObjects=binaryObjects.filter { required[$0.checksum] != nil }.sorted { $0.checksum<$1.checksum } }
+        mutating func stage(_ value: Download,_ object: BinaryObject?=nil) throws {
+            var next=self;next.schemaVersion=3
+            if let object { if let old=next.binaryObjects.first(where:{ $0.checksum==object.checksum }) { try PlanetChildJourney.require(old==object) } else { next.binaryObjects.append(object) } }
+            if let index=next.routeDownloads.firstIndex(where:{ $0.identity==value.identity }) { next.routeDownloads[index]=value } else { next.routeDownloads.append(value) }
+            try next.collectObjects();try next.validate();self=next
+        }
+        mutating func activate(_ value: Download,_ object: BinaryObject?) throws {
+            var next=self;try next.stage(value,object);try PlanetChildJourney.require(value.completed==(try PlanetChildPassportRouteCodec.objects(value.manifest)).count)
+            next.routeDownloads.removeAll { $0.identity==value.identity };var activated=value.manifest;activated.reusedItems=value.reused
+            if let index=next.downloadedRoutes.firstIndex(where:{ $0.journeyId==value.manifest.journeyId && $0.locale==value.manifest.locale }) { next.downloadedRoutes[index]=activated } else { next.downloadedRoutes.append(activated) }
+            next.schemaVersion=3;try next.collectObjects();try next.validate();self=next
+        }
+        mutating func cancelDownload(_ journey: String,_ locale: String) throws {
+            var next=self;next.schemaVersion=3;next.routeDownloads.removeAll { $0.manifest.journeyId==journey && $0.manifest.locale==locale };try next.collectObjects();try next.validate();self=next
         }
         mutating func collect(_ awards: [Badge]) throws {
             var next=self
@@ -73,16 +130,16 @@ enum PlanetChildPassport {
                 if let old=next.badges.first(where:{ $0.identity==award.identity }) { try PlanetChildJourney.require(old==award) }
                 else { try PlanetChildJourney.require(next.badges.count<maximumBadges);next.badges.append(award) }
             }
-            if !awards.isEmpty { next.schemaVersion=2 };try next.validate();self=next
+            if !awards.isEmpty { next.schemaVersion=max(next.schemaVersion,2) };try next.validate();self=next
         }
         mutating func save(_ route: SavedRoute) throws {
-            var next=self;next.schemaVersion=2
+            var next=self;next.schemaVersion=max(next.schemaVersion,2)
             if let index=next.downloadedRoutes.firstIndex(where:{ $0.journeyId==route.journeyId && $0.locale==route.locale }) { next.downloadedRoutes[index].dispose();next.downloadedRoutes[index]=route }
             else { try PlanetChildJourney.require(next.downloadedRoutes.count<maximumRoutes);next.downloadedRoutes.append(route) }
             try next.validate();self=next
         }
-        mutating func clearDownloads() { schemaVersion=2;disposeRouteBytes();downloadedRoutes.removeAll() }
-        mutating func disposeRouteBytes() { for index in downloadedRoutes.indices { downloadedRoutes[index].dispose() } }
+        mutating func clearDownloads() { schemaVersion=max(schemaVersion,2);disposeRouteBytes();downloadedRoutes.removeAll();routeDownloads.removeAll();binaryObjects.removeAll() }
+        mutating func disposeRouteBytes() { for index in downloadedRoutes.indices { downloadedRoutes[index].dispose() };for index in routeDownloads.indices { routeDownloads[index].dispose() } }
         mutating func openCountry(_ id: String) throws {
             _=try PlanetChildJourney.identifier(id)
             if !countries.contains(id) { try PlanetChildJourney.require(countries.count<maximumCountries);countries.append(id) }
@@ -105,24 +162,30 @@ enum PlanetChildPassport {
             for row in learning { try w.text(row.journeyId);try w.text(row.nodeId);try w.number(row.kind=="writer" ? 1:2,1);try w.text(row.entityId);try w.number(row.journeyVersion,8);try w.number(row.contentVersion,8) }
             try w.number(UInt64(completedJourneys.count),1)
             for row in completedJourneys { try w.text(row.journeyId);try w.number(row.journeyVersion,8);try w.number(row.contentVersion,8);try w.number(UInt64(row.nodeIds.count),1);for id in row.nodeIds { try w.text(id) } }
-            if schemaVersion==2 {
+            if schemaVersion>=2 {
                 try w.number(UInt64(badges.count),2)
                 for row in badges { try w.text(row.badgeId);try w.number(row.ruleVersion,8);try w.text(row.programId);try w.number(row.programVersion,8);try w.text(row.programChecksum);try w.text(row.reviewChecksum);try w.text(row.journeyId);try w.number(row.journeyVersion,8);try w.number(row.contentVersion,8);try w.number(UInt64(row.nodeIds.count),1);for node in row.nodeIds { try w.text(node) };try w.text(row.displayId);try w.text(row.displayChecksum);try w.number(row.trigger=="completed-journey" ? 1:2,1) }
                 try w.number(UInt64(downloadedRoutes.count),1)
-                for row in downloadedRoutes { try w.text(row.journeyId);try w.number(row.journeyVersion,8);try w.number(row.contentVersion,8);try w.text(row.packageId);try w.number(row.packageVersion,8);try w.text(row.packageChecksum);try w.text(row.packageReviewChecksum);try w.text(row.policyVersion);try w.text(row.policyChecksum);try w.text(row.locale);try w.number(UInt64(row.exactAge),1);try w.text(row.snapshotChecksum);try w.number(UInt64(row.bytes.count),4);try w.data(row.bytes) }
+                for row in downloadedRoutes { try w.route(row);if schemaVersion==3 { try w.number(UInt64(row.reusedItems),1) } }
+                if schemaVersion==3 {
+                    try w.number(UInt64(binaryObjects.count),2)
+                    for object in binaryObjects.sorted(by:{ $0.checksum<$1.checksum }) { try w.text(object.checksum);try w.text(object.mime);try w.number(UInt64(object.bytes),4) }
+                    try w.number(UInt64(routeDownloads.count),1)
+                    for stage in routeDownloads { try w.route(stage.manifest);try w.number(UInt64(stage.completed),1);try w.number(UInt64(stage.reused),1) }
+                }
             }
             return w.bytes
         }
         static func decode(_ bytes: Data) throws -> Ledger {
             try PlanetChildJourney.require(!bytes.isEmpty && bytes.count<=maximumBytes);var r=Reader(bytes:bytes)
-            try PlanetChildJourney.require(try r.number(4)==0x4c504c31);let schema=try r.number(1);try PlanetChildJourney.require(schema==1 || schema==2)
+            try PlanetChildJourney.require(try r.number(4)==0x4c504c31);let schema=try r.number(1);try PlanetChildJourney.require((1...3).contains(schema))
             var value=Ledger();var handed=false;defer { if !handed { value.disposeRouteBytes() } };value.schemaVersion=schema;let countries=try r.number(2);try PlanetChildJourney.require(countries<=UInt64(maximumCountries))
             for _ in 0..<countries { value.countries.append(try r.text()) }
             let count=try r.number(2);try PlanetChildJourney.require(count<=UInt64(maximumLearning))
             for _ in 0..<count { let route=try r.text(),node=try r.text(),kind=try r.number(1);try PlanetChildJourney.require(kind==1 || kind==2);value.learning.append(try Learning(journeyId:route,nodeId:node,kind:kind==1 ? "writer":"work",entityId:r.text(),journeyVersion:r.number(8),contentVersion:r.number(8))) }
             let journeys=try r.number(1);try PlanetChildJourney.require(journeys<=UInt64(maximumJourneys))
             for _ in 0..<journeys { let route=try r.text(),version=try r.number(8),content=try r.number(8),nodes=try r.number(1);try PlanetChildJourney.require(nodes>0 && nodes<=64);var ids=[String]();for _ in 0..<nodes { ids.append(try r.text()) };value.completedJourneys.append(try CompletedJourney(journeyId:route,journeyVersion:version,contentVersion:content,nodeIds:ids)) }
-            if schema==2 {
+            if schema>=2 {
                 let count=try r.number(2);try PlanetChildJourney.require(count<=UInt64(maximumBadges))
                 for _ in 0..<count {
                     let badge=try r.text(),rule=try r.number(8),program=try r.text(),programVersion=try r.number(8),sum=try r.text(),review=try r.text(),route=try r.text(),version=try r.number(8),content=try r.number(8),count=try r.number(1);try PlanetChildJourney.require(count>0 && count<=64)
@@ -130,11 +193,12 @@ enum PlanetChildPassport {
                     value.badges.append(try Badge(badgeId:badge,ruleVersion:rule,programId:program,programVersion:programVersion,programChecksum:sum,reviewChecksum:review,journeyId:route,journeyVersion:version,contentVersion:content,nodeIds:nodes,displayId:display,displayChecksum:displaySum,trigger:trigger==1 ? "completed-journey":"completed-learning"))
                 }
                 let routes=try r.number(1);try PlanetChildJourney.require(routes<=UInt64(maximumRoutes));var total=0
-                for _ in 0..<routes {
-                    let id=try r.text(),version=try r.number(8),content=try r.number(8),package=try r.text(),packageVersion=try r.number(8),sum=try r.text(),review=try r.text(),policy=try r.text(),policySum=try r.text(),locale=try r.text(),age=try r.number(1),snapshotSum=try r.text(),size=try r.number(4)
-                    try PlanetChildJourney.require(size>0 && size<=UInt64(maximumRouteBytes) && size<=UInt64(maximumRouteTotalBytes-total));total+=Int(size)
-                    var snapshot=try r.data(Int(size));defer { snapshot.resetBytes(in:0..<snapshot.count) }
-                    let route=try SavedRoute(journeyId:id,journeyVersion:version,contentVersion:content,packageId:package,packageVersion:packageVersion,packageChecksum:sum,packageReviewChecksum:review,policyVersion:policy,policyChecksum:policySum,locale:locale,exactAge:Int(age),bytes:snapshot);try PlanetChildJourney.require(route.snapshotChecksum==snapshotSum);value.downloadedRoutes.append(route)
+                for _ in 0..<routes { var route=try r.route();if schema==3 { route.reusedItems=Int(try r.number(1)) };try PlanetChildJourney.require(route.bytes.count<=maximumRouteTotalBytes-total);total+=route.bytes.count;value.downloadedRoutes.append(route) }
+                if schema==3 {
+                    let count=try r.number(2);try PlanetChildJourney.require(count<=2048);var prior: String?
+                    for _ in 0..<count { let object=try BinaryObject(checksum:r.text(),mime:r.text(),bytes:Int(r.number(4)));try PlanetChildJourney.require(prior==nil || prior!<object.checksum);prior=object.checksum;value.binaryObjects.append(object) }
+                    let count=try r.number(1);try PlanetChildJourney.require(count<=UInt64(maximumRoutes))
+                    for _ in 0..<count { let route=try r.route();try PlanetChildJourney.require(route.bytes.count<=maximumRouteTotalBytes-total);total+=route.bytes.count;value.routeDownloads.append(try Download(manifest:route,completed:Int(r.number(1)),reused:Int(r.number(1)))) }
                 }
             }
             try PlanetChildJourney.require(r.position==bytes.count);try value.validate();var exact=try value.encoded();defer { exact.resetBytes(in:0..<exact.count) };try PlanetChildJourney.require(exact==bytes);handed=true;return value
@@ -142,12 +206,21 @@ enum PlanetChildPassport {
     }
     private struct Writer {
         var bytes=Data()
+        mutating func route(_ row: SavedRoute) throws {
+            try text(row.journeyId);try number(row.journeyVersion,8);try number(row.contentVersion,8);try text(row.packageId);try number(row.packageVersion,8);try text(row.packageChecksum);try text(row.packageReviewChecksum);try text(row.policyVersion);try text(row.policyChecksum);try text(row.locale);try number(UInt64(row.exactAge),1);try text(row.snapshotChecksum);try number(UInt64(row.bytes.count),4);try data(row.bytes)
+        }
         mutating func number(_ value: UInt64,_ count: Int) throws { try PlanetChildJourney.require(bytes.count+count<=maximumBytes);for shift in stride(from:(count-1)*8,through:0,by:-8) { bytes.append(UInt8(truncatingIfNeeded:value>>shift)) } }
         mutating func data(_ value: Data) throws { try PlanetChildJourney.require(value.count<=maximumBytes-bytes.count);bytes.append(value) }
         mutating func text(_ value: String) throws { let data=Data(value.utf8);try PlanetChildJourney.require(!data.isEmpty && data.count<=96 && bytes.count+data.count+2<=maximumBytes);try number(UInt64(data.count),2);bytes.append(data) }
     }
     private struct Reader {
         let bytes: Data;var position=0
+        mutating func route() throws -> SavedRoute {
+            let id=try text(),version=try number(8),content=try number(8),package=try text(),packageVersion=try number(8),sum=try text(),review=try text(),policy=try text(),policySum=try text(),locale=try text(),age=try number(1),snapshotSum=try text(),size=try number(4)
+            try PlanetChildJourney.require(size>0 && size<=UInt64(maximumRouteBytes));var snapshot=try data(Int(size));defer { snapshot.resetBytes(in:0..<snapshot.count) }
+            let route=try SavedRoute(journeyId:id,journeyVersion:version,contentVersion:content,packageId:package,packageVersion:packageVersion,packageChecksum:sum,packageReviewChecksum:review,policyVersion:policy,policyChecksum:policySum,locale:locale,exactAge:Int(age),bytes:snapshot)
+            try PlanetChildJourney.require(route.snapshotChecksum==snapshotSum);return route
+        }
         mutating func number(_ count: Int) throws -> UInt64 { try PlanetChildJourney.require(count>0 && count<=bytes.count-position);var value: UInt64=0;for _ in 0..<count { value=(value<<8)|UInt64(bytes[position]);position+=1 };return value }
         mutating func data(_ count: Int) throws -> Data { try PlanetChildJourney.require(count>=0 && count<=bytes.count-position);defer { position+=count };return Data(bytes[position..<position+count]) }
         mutating func text() throws -> String { let count=try number(2);try PlanetChildJourney.require(count>0 && count<=96 && count<=UInt64(bytes.count-position));defer { position+=Int(count) };guard let value=String(data:bytes[position..<position+Int(count)],encoding:.utf8) else { throw PlanetChildJourney.Failure.unavailable };return value }

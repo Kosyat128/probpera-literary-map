@@ -118,7 +118,7 @@ final class PlanetChildResources {
         }finally{if(!kept)Arrays.fill(bytes,(byte)0);}
     }
     byte[] readOwned()throws Exception {
-        claim.checkIssuerWorker();synchronized(this){require(worker==null&&!revoked&&!closed);worker=new Thread(()->{byte[] bytes=null;try{bytes=acquire();checkRead();synchronized(this){require(!revoked);owned=bytes;bytes=null;}}catch(Throwable error){failure=error instanceof Exception?(Exception)error:new PlanetChildVault.Unavailable();}finally{if(bytes!=null)Arrays.fill(bytes,(byte)0);cleanupTransport();finished=true;}},"planet-child-resource-read");worker.start();}
+        claim.checkIssuerWorker();final byte[] cached=claim.cachedIssuerOwned();try{synchronized(this){require(worker==null&&!revoked&&!closed);worker=new Thread(()->{byte[] bytes=cached;try{if(bytes==null)bytes=acquire();checkRead();synchronized(this){require(!revoked);owned=bytes;bytes=null;}}catch(Throwable error){failure=error instanceof Exception?(Exception)error:new PlanetChildVault.Unavailable();}finally{if(bytes!=null)Arrays.fill(bytes,(byte)0);cleanupTransport();finished=true;}},"planet-child-resource-read");worker.start();}}catch(Throwable failure){if(cached!=null)Arrays.fill(cached,(byte)0);throw failure;}
         boolean transferred=false;try{while(!finished){claim.checkIssuerWorker();worker.join(10);}claim.checkIssuerWorker();joinThreads();claim.checkIssuerWorker();byte[] result;synchronized(this){require(!revoked&&failure==null&&cleanupFailure==null&&owned!=null&&socket==null&&input==null&&(worker==null||!worker.isAlive())&&(cancelWorker==null||!cancelWorker.isAlive()));result=owned;owned=null;closed=true;}transferred=true;return result;}
         finally{if(!transferred){revoke();closeJoined();}}
     }

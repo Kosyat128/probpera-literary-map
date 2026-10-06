@@ -13,6 +13,7 @@ import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJour
 import { childNativeDiscoveryShelf, decodeChildNativeDiscovery, decodeChildNativePassport, decodeChildNativeCountryOpen,
   decodeChildNativeRemovalTarget, type ChildNativeDiscoveryController, type ChildNativePassportController } from "./childNativeDiscoveryPassport";
 import localPolicy from "./childNativeLocalV2Policy.json";
+import { decodeChildNativeRouteDownload } from "./childNativeOfflinePackages";
 import { decodeChildNativeRouteSave } from "./childNativePassportProgram";
 import type { PlatformServices, PreferenceStore } from "../platform/ports";
 
@@ -47,6 +48,9 @@ export interface ChildNativeAppPlugin {
   readPassport?(request: unknown): Promise<unknown>;
   recordCountryOpen?(request: unknown): Promise<unknown>;
   saveJourneyRoute?(request: unknown): Promise<unknown>;
+  readJourneyRouteDownload?(request: unknown): Promise<unknown>;
+  resumeJourneyRoute?(request: unknown): Promise<unknown>;
+  cancelJourneyRoute?(request: unknown): Promise<unknown>;
   addListener(event: "invalidated", listener: (value: unknown) => void): Promise<{ remove(): Promise<void> }>;
 }
 export const CHILD_NATIVE_LOCAL_POLICY_VERSION = localPolicy.version;
@@ -470,7 +474,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute",
+  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -481,7 +485,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       const original = request(); dispatched = true;
       const raw = await invoke(method, { ...original, contextToken: c.token, ...input });
       if (!current(c, generation)) {
-        if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute"].includes(method)) uncertain = true;
+        if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method)) uncertain = true;
         return null;
       }
       const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
@@ -493,7 +497,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       // An uncorrelated save reply cannot tell us whether native committed.
       // Keep this controller sealed until a new host lifetime independently
       // reads native state; refresh/lifecycle must not replay an uncertain save.
-      if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute"].includes(method) && dispatched) uncertain = true;
+      if (["rememberSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method) && dispatched) uncertain = true;
       if (snapshot.context === c) { seal("unavailable"); await retire(c); }
       return null;
     }
@@ -526,7 +530,26 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         const c = snapshot.context;
         if (!c?.profileId || !c.package || !childNativeJourneyId(journeyId) || !childNativeJourneyRevision(expectedRevision)
           || expectedRevision >= Number.MAX_SAFE_INTEGER - 1 || typeof options.plugin?.saveJourneyRoute !== "function") return Promise.resolve(null);
-        return data("saveJourneyRoute", { journeyId, expectedRevision }, raw => decodeChildNativeRouteSave(raw, c, journeyId, expectedRevision));
+        return data("saveJourneyRoute", { journeyId, expectedRevision }, raw => decodeChildNativeRouteSave(raw, c, journeyId, expectedRevision)
+          ?? decodeChildNativeRouteDownload(raw, c, journeyId, expectedRevision));
+      },
+      readJourneyRouteDownload(journeyId) {
+        const c = snapshot.context;
+        if (!c?.profileId || !c.package || !childNativeJourneyId(journeyId)
+          || typeof options.plugin?.readJourneyRouteDownload !== "function") return Promise.resolve(null);
+        return data("readJourneyRouteDownload", { journeyId }, raw => decodeChildNativeRouteDownload(raw, c, journeyId));
+      },
+      resumeJourneyRoute(journeyId, expectedRevision) {
+        const c = snapshot.context;
+        if (!c?.profileId || !c.package || !childNativeJourneyId(journeyId) || !childNativeJourneyRevision(expectedRevision)
+          || expectedRevision >= Number.MAX_SAFE_INTEGER - 130 || typeof options.plugin?.resumeJourneyRoute !== "function") return Promise.resolve(null);
+        return data("resumeJourneyRoute", { journeyId, expectedRevision }, raw => decodeChildNativeRouteDownload(raw, c, journeyId, expectedRevision));
+      },
+      cancelJourneyRoute(journeyId, expectedRevision) {
+        const c = snapshot.context;
+        if (!c?.profileId || !c.package || !childNativeJourneyId(journeyId) || !childNativeJourneyRevision(expectedRevision)
+          || expectedRevision >= Number.MAX_SAFE_INTEGER - 130 || typeof options.plugin?.cancelJourneyRoute !== "function") return Promise.resolve(null);
+        return data("cancelJourneyRoute", { journeyId, expectedRevision }, raw => decodeChildNativeRouteDownload(raw, c, journeyId, expectedRevision));
       },
     } satisfies ChildNativePassportController),
     journeys: Object.freeze({

@@ -14,6 +14,9 @@ final class PlanetChildDataStore {
     static let maxSlots = 4096, maxBatch = 64
     private static let maxSafe: UInt64 = 9007199254740991
     private static let processLock = NSLock()
+    // Technical process ownership only. Fresh original SDK admission supplies
+    // all profile/parent authority when retiring an interrupted prior lease.
+    private static let offlineProcessEpoch=UUID().uuidString.replacingOccurrences(of:"-",with:"").lowercased()
     enum Failure: Error { case unavailable }
     enum Purpose: String, CaseIterable { case search, history, cache, offline }
     struct Scope {
@@ -94,7 +97,7 @@ final class PlanetChildDataStore {
         var entries: [String: Stored] = [:]
         var sdkAppearance=false,appearances=[String:AppearanceEntry]()
         var sdkJourney=false,journeys=[String:JourneyEntry]()
-        var sdkPassport=false,passports=[String:PassportEntry]()
+        var sdkPassport=false,passports=[String:PassportEntry](),offlineProcess: String?
         var sdkCollections=false,collectionRevisions=[String:UInt64](),tombstones=[String:UInt64](),sdkUnboundBirth: String?,sdkUnboundContent: String?
         func wipe() { for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } };for profile in Array(passports.keys) { if var entry=passports.removeValue(forKey:profile) { entry.ledger.disposeRouteBytes() } } }
         deinit { wipe() }
@@ -240,7 +243,7 @@ final class PlanetChildDataStore {
             let scope = try PlanetChildDataStore.keyScope(purpose,key:pieces[1]); try PlanetChildDataStore.envelope(purpose,key:pieces[1],scope:scope,bytes:slot.value); try PlanetChildDataStore.require(PlanetChildDataStore.positive(slot.revision) && slot.revision < PlanetChildDataStore.maxSafe)
             try writer.text(purpose.rawValue); try writer.text(pieces[1]); try writer.number(slot.revision,bytes:8); try writer.text(PlanetChildDataStore.digest(slot.value)); try writer.number(UInt64(slot.value.count),bytes:4); try writer.data(slot.value) }
         if let binding=state.admissionBinding { try writer.number(0x4c504133,bytes:4);try writer.text(binding);try writer.byte(state.pendingMigration==nil ? 0:1);if let pending=state.pendingMigration { try writer.text(pending) };try writer.number(UInt64(state.seals.count),bytes:4);for id in state.seals.keys.sorted() { let seal=state.seals[id]!;try writer.text(seal.scope.tuple);try writer.text(seal.contentBinding) } }
-        try encodeCollections(state,writer);try encodeAppearance(state,writer);try encodeJourney(state,writer);try encodePassport(state,writer);return writer.result()
+        try encodeCollections(state,writer);try encodeAppearance(state,writer);try encodeJourney(state,writer);try encodePassport(state,writer);if let process=state.offlineProcess { try require(process.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && state.admissionBinding != nil);try writer.number(0x4c504f33,bytes:4);try writer.text(process) };return writer.result()
     }
     private static func decode(_ bytes: Data) throws -> State {
         let state = State(); var success = false; defer { if !success { state.wipe() } }; var reader = Reader(bytes:bytes)
@@ -251,7 +254,7 @@ final class PlanetChildDataStore {
             let revision = try reader.number(8), hash = try reader.text(64), length = try reader.number(4); try PlanetChildDataStore.require(PlanetChildDataStore.positive(revision) && revision < PlanetChildDataStore.maxSafe && PlanetChildDataStore.checksum(hash) && length > 0 && length <= UInt64(PlanetChildDataStore.maxValueBytes))
             var value = try reader.data(Int(length)); defer { value.resetBytes(in:0..<value.count) }; try PlanetChildDataStore.require(PlanetChildDataStore.digest(value) == hash); try PlanetChildDataStore.envelope(purpose,key:key,scope:scope,bytes:value)
             let id = purpose.rawValue + "\n" + key; try PlanetChildDataStore.require(state.entries[id] == nil); state.entries[id] = Stored(revision:revision,value:Data(Array(value)))
-        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };if reader.position<bytes.count { try decodeCollections(state,&reader) };if reader.position<bytes.count { try decodeAppearance(state,&reader) };if reader.position<bytes.count { try decodeJourney(state,&reader) };if reader.position<bytes.count { try decodePassport(state,&reader) };try validatePassport(state);try validateSeals(state);try validateCollections(state);try validateAppearance(state);try validateJourney(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
+        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };if reader.position<bytes.count { try decodeCollections(state,&reader) };if reader.position<bytes.count { try decodeAppearance(state,&reader) };if reader.position<bytes.count { try decodeJourney(state,&reader) };if reader.position<bytes.count { try decodePassport(state,&reader) };if reader.position<bytes.count { try require(try reader.number(4)==0x4c504f33);state.offlineProcess=try reader.text(32);try require(state.offlineProcess!.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && state.admissionBinding != nil) };try validatePassport(state);try validateSeals(state);try validateCollections(state);try validateAppearance(state);try validateJourney(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
     }
     private func read(_ directory: URL) throws -> State {
         let file = try record(directory), fd = Darwin.open(file.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC); try Self.require(fd >= 0); defer { Darwin.close(fd) }
@@ -358,7 +361,7 @@ final class PlanetChildDataStore {
     private func admittedLive(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ state: State) throws { try admittedState(admission,state);try Self.require(state.pendingMigration==nil && !closed && active === lease && lease.owner === self && lease.admission === admission && state.scope != nil && state.generation==lease.generation && state.nonce==lease.nonce && state.scope?.tuple==lease.scope.tuple) }
     func admit(_ admission: PlanetChildLocalV2DataAdmission) throws -> Lease { try locked { directory in
         try admission.check();try existingOnly(directory);let birth=try knownBirth(directory);try admission.knownBirth(birth)
-        try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require(state.scope==nil && state.pendingMigration==nil)
+        try Self.require(!closed && active==nil);let state=try read(directory);defer { state.wipe() };try Self.require((state.scope==nil || state.offlineProcess != nil && state.offlineProcess != Self.offlineProcessEpoch) && state.pendingMigration==nil)
         let current=try admission.scope()
         if state.admissionBinding==nil {
             try Self.require(try state.seals.isEmpty && state.generation==0 && state.entries.isEmpty && admission.initialProfileId()==birth.profileId && current.profileId==birth.profileId && admission.contentBinding()==birth.profileContentBinding)
@@ -368,8 +371,9 @@ final class PlanetChildDataStore {
             if state.sdkUnboundBirth==current.profileId { try Self.require(try birth.profileId==current.profileId && birth.profileContentBinding==admission.contentBinding() && state.sdkUnboundContent==birth.profileContentBinding);state.seals[current.profileId]=Seal(scope:current,contentBinding:try admission.contentBinding());state.sdkUnboundBirth=nil;state.sdkUnboundContent=nil }
         }
         try admittedState(admission,state)
+        if let ledger=state.passports[current.profileId]?.ledger { for object in ledger.binaryObjects { var bytes=try readBinary(directory,current.profileId,object,admission.check);bytes.resetBytes(in:0..<bytes.count) } }
         for (id,stored) in state.entries { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };if try Self.keyScope(purpose,key:pair[1]).profileId==current.profileId { try admission.validate(purpose,pair[1],stored.value) } }
-        try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.scope=current;try write(directory,state:state,check:admission.check);try admittedState(admission,state);let lease=Lease(owner:self,scope:current,generation:state.generation,nonce:state.nonce,admission:admission);active=lease;return lease
+        try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.scope=current;state.offlineProcess=Self.offlineProcessEpoch;state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;try write(directory,state:state,check:admission.check);try admittedState(admission,state);let lease=Lease(owner:self,scope:current,generation:state.generation,nonce:state.nonce,admission:admission);active=lease;return lease
     } }
     func admittedOperation(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease) throws -> Cancellation { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);let now=try Self.now(),deadline=try admission.deadlineMs();try Self.require(now<deadline && deadline-now<=60000);return Cancellation(owner:self,lease:lease,deadline:deadline) } }
     func admittedQuery(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ original: Result,_ purpose: Purpose,_ key: String) throws -> Slot { try locked { directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.require(try Self.keyScope(purpose,key:key).tuple==lease.scope.tuple);guard let captured=original.get(purpose,key:key) else { throw Failure.unavailable };let saved=state.entries[purpose.rawValue+"\n"+key];try Self.require(captured.revision==(saved?.revision ?? state.tombstones[purpose.rawValue+"\n"+key] ?? 0) && captured.checksum==saved.map { Self.digest($0.value) });if let saved { try admission.validate(purpose,key,saved.value) };let copied=Slot(revision:saved?.revision ?? state.tombstones[purpose.rawValue+"\n"+key] ?? 0,value:saved?.value);do { try admission.check();return copied } catch { copied.dispose();throw error } } }
@@ -410,7 +414,7 @@ final class PlanetChildDataStore {
         } else { next=Self.retainedEntries(state) }
         if let removal=try admission.childRemoval() { try Self.removeChildData(state,&next,removal) }
         try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.admissionBinding=try admission.binding();state.pendingMigration=try admission.migrationIdentity()
-        try Self.migrateTombstones(state,future);try Self.migrateAppearance(state,admission.futureProfiles());try Self.migrateJourney(state,admission.futureProfiles());try Self.migratePassport(state,admission.futureProfiles());state.wipe();state.entries=next;adopted=true;var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try redactKnownBirth(directory,admission);try admission.commitCanonical();try admittedState(admission,state)
+        try Self.migrateTombstones(state,future);try Self.migrateAppearance(state,admission.futureProfiles());try Self.migrateJourney(state,admission.futureProfiles());try Self.migratePassport(state,admission.futureProfiles());for id in Array(state.entries.keys) { if var value=state.entries.removeValue(forKey:id) { value.value.resetBytes(in:0..<value.value.count) } };state.entries=next;adopted=true;var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try redactKnownBirth(directory,admission);try admission.commitCanonical();try admittedState(admission,state)
     } }
     func migrationReadback(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
         try admission.check();try existingOnly(directory,migration:admission);let birth=try knownBirth(directory);try admission.knownBirth(birth)
@@ -429,7 +433,7 @@ final class PlanetChildDataStore {
         let marker=try migrationMarker(directory);var bytes=try migrationMarkerBytes(admission);defer { bytes.resetBytes(in:0..<bytes.count) };var clearing=false
         do {
             state.pendingMigration=nil;try write(directory,state:state,check:admission.check);try admittedState(admission,state);try exactMigrationMarker(directory,admission)
-            try admission.acknowledgeCanonical();try admission.prepareMigrationRelease();closed=true
+            if let removal=try admission.childRemoval() { try pruneBinaries(directory,state,removal.profileId,admission.check) };try admission.acknowledgeCanonical();try admission.prepareMigrationRelease();closed=true
             // Native observers/UI/worker/recipient and original retirement have
             // completed. Removal is the last fallible publication operation.
             clearing=true;try Self.require(Darwin.unlink(marker.path)==0);try syncDirectory(directory)
@@ -616,7 +620,7 @@ final class PlanetChildDataStore {
         name="literary-planet-child-data-v1"+(runId.map { "-synthetic-"+$0 } ?? "");identity=bundle+"."+name
     }
     private func existingOnly(_ directory: URL,migration: PlanetChildLocalV2DataAdmission?=nil) throws {
-        try Self.require(!FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path))
+        try Self.require(!FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportStageMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path))
         let pending=try migrationMarker(directory)
         if FileManager.default.fileExists(atPath:pending.path) { guard let migration else { throw Failure.unavailable };try exactMigrationMarker(directory,migration) } else { try Self.require(migration==nil) }
         let base=try record(directory),staged=try record(directory,suffix:".new")
@@ -808,7 +812,7 @@ extension PlanetChildDataStore {
             guard let bundle=Bundle.main.bundleIdentifier,bundle=="ru.probpera.literaryplanet" else { throw Failure.unavailable };let parent=try FileManager.default.url(for:.applicationSupportDirectory,in:.userDomainMask,appropriateFor:nil,create:false).resolvingSymlinksInPath().standardizedFileURL,name="literary-planet-child-data-v1",directory=parent.appendingPathComponent(name,isDirectory:true);var state=stat();try require(Darwin.lstat(directory.path,&state) != 0 && errno==ENOENT)
             let query: [String:Any]=[kSecClass as String:kSecClassGenericPassword,kSecAttrService as String:bundle+"."+name,kSecAttrAccount as String:"child-data-aes-v1",kSecAttrSynchronizable as String:kSecAttrSynchronizableAny,kSecUseAuthenticationUI as String:kSecUseAuthenticationUIFail];try require(SecItemCopyMatching(query as CFDictionary,nil)==errSecItemNotFound);try permit.check();return
         }
-        let store=try localV2ExistingOnly();try store.locked { directory in try permit.check();try store.existingOnly(directory);let birth=try store.knownBirth(directory);try permit.retainedBirth(birth);let state=try store.read(directory);defer { state.wipe() };try require(state.scope==nil && state.pendingMigration==nil)
+        let store=try PlanetChildDataStore(runId:nil,deferredBirth:true);try store.locked { directory in try permit.check();let birth=try store.knownBirth(directory);try permit.retainedBirth(birth);try store.recoverOfflineStage(directory,permit);try store.existingOnly(directory);let state=try store.read(directory);defer { state.wipe() };try require((state.scope==nil || state.offlineProcess != nil && state.offlineProcess != Self.offlineProcessEpoch) && state.pendingMigration==nil)
             let profiles=try permit.profiles();if state.admissionBinding==nil { try knownUnboundOrigin(state,id:birth.profileId,nonce:birth.nonce,content:birth.profileContentBinding,empty:birth.emptyChecksum,profiles:profiles) }
             else { try require(try state.admissionBinding==permit.binding());try knownProfiles(state,profiles) };try permit.check()
         }
@@ -1207,19 +1211,20 @@ extension PlanetChildDataStore {
         deinit { close() }
     }
     final class LocalV2PassportCompletion {
-        private let lock=NSLock(),store: PlanetChildDataStore;private var marker: Data,closed=false,finished=false
-        fileprivate init(_ store: PlanetChildDataStore,_ marker: Data) { self.store=store;self.marker=Data(Array(marker)) }
+        private let lock=NSLock(),store: PlanetChildDataStore;private var marker: Data,closed=false,finished=false;private let staging: Bool
+        fileprivate init(_ store: PlanetChildDataStore,_ marker: Data,staging: Bool=false) { self.store=store;self.marker=Data(Array(marker));self.staging=staging }
         func finish() throws {
             lock.lock();defer { lock.unlock() };try PlanetChildDataStore.require(!closed && !finished)
             do { try store.locked { directory in
-                try PlanetChildDataStore.require(!store.closed);let file=try store.passportMarker(directory)
+                try PlanetChildDataStore.require(!store.closed);let file=try staging ? store.passportStageMarker(directory):store.passportMarker(directory)
                 var actual=try store.boundedFile(file,4096);defer { actual.resetBytes(in:0..<actual.count) };try PlanetChildDataStore.require(actual==marker)
+                let state=try store.read(directory);defer { state.wipe() };try PlanetChildDataStore.validatePassport(state);let fields=staging ? try store.stageFields(marker,directory):String(decoding:marker,as:UTF8.self).components(separatedBy:"\n");try PlanetChildDataStore.require(fields.count>=5 && PlanetChildDataStore.identifier(fields[4]));try store.pruneBinaries(directory,state,fields[4]) { try PlanetChildDataStore.require(!store.closed) }
                 try PlanetChildDataStore.require(Darwin.unlink(file.path)==0);try store.syncDirectory(directory)
             } } catch { retainMarker();throw error }
             finished=true
         }
         private func retainMarker() {
-            do { try store.locked { directory in let file=try store.passportMarker(directory);if !FileManager.default.fileExists(atPath:file.path) { try store.exclusiveReceiptFile(file,marker) {};try store.syncDirectory(directory) };store.closed=true } } catch { store.closed=true }
+            do { try store.locked { directory in let file=try staging ? store.passportStageMarker(directory):store.passportMarker(directory);if !FileManager.default.fileExists(atPath:file.path) { try store.exclusiveReceiptFile(file,marker) {};try store.syncDirectory(directory) };store.closed=true } } catch { store.closed=true }
         }
         func retainUnknown() { lock.lock();defer { lock.unlock() };guard !closed else { return };retainMarker() }
         func close() { lock.lock();defer { lock.unlock() };if !closed { closed=true;marker.resetBytes(in:0..<marker.count) } }
@@ -1253,6 +1258,105 @@ extension PlanetChildDataStore {
         if let permit,let admission { try ledger.collect(permit.badgeAwards(admission,ledger)) }
         state.sdkPassport=true;state.passports[profile]=PassportEntry(revision:try PlanetChildJourney.next(previous?.revision ?? 0),ledger:ledger);try validatePassport(state)
     }
+    private func binaryDirectory(_ directory: URL,create: Bool=false) throws -> URL? {
+        let folder=directory.appendingPathComponent("local-v2-route-objects",isDirectory:true);try Self.require(folder.resolvingSymlinksInPath().standardizedFileURL==folder.standardizedFileURL)
+        var info=stat()
+        if lstat(folder.path,&info) != 0 { try Self.require(errno==ENOENT);guard create else { return nil };try FileManager.default.createDirectory(at:folder,withIntermediateDirectories:false,attributes:[.posixPermissions:0o700,.protectionKey:FileProtectionType.complete]);try syncDirectory(directory) }
+        else { try Self.require(info.st_mode & mode_t(S_IFMT)==mode_t(S_IFDIR)) }
+        var value=folder;var settings=URLResourceValues();settings.isExcludedFromBackup=true;try value.setResourceValues(settings);return value
+    }
+    private func binaryName(_ profile: String,_ object: PlanetChildPassport.BinaryObject) -> String { Self.digest(Data(profile.utf8))+"-"+object.checksum+".aes" }
+    private func binaryAAD(_ profile: String,_ object: PlanetChildPassport.BinaryObject) -> Data { Data((identity+"\nLP-LOCAL-V2-ROUTE-OBJECT-v1\n"+profile+"\n"+object.checksum+"\n"+object.mime+"\n"+String(object.bytes)+"\n").utf8) }
+    private func readBinary(_ directory: URL,_ profile: String,_ object: PlanetChildPassport.BinaryObject,_ check: () throws -> Void) throws -> Data {
+        try check();guard let folder=try binaryDirectory(directory) else { throw Failure.unavailable };let file=folder.appendingPathComponent(binaryName(profile,object));try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL)
+        var encrypted=try boundedFile(file,object.bytes+29);defer { encrypted.resetBytes(in:0..<encrypted.count) };try Self.require(encrypted.count==object.bytes+29 && encrypted.first==1)
+        var plain=try AES.GCM.open(AES.GCM.SealedBox(combined:Data(encrypted.dropFirst())),using:key(create:false,directory:directory),authenticating:binaryAAD(profile,object));var handed=false;defer { if !handed { plain.resetBytes(in:0..<plain.count) } }
+        try Self.require(plain.count==object.bytes && Self.digest(plain)==object.checksum);_=try PlanetChildLocalV2MediaCodec.preflight(plain,object.mime);try check();handed=true;return plain
+    }
+    private func writeBinary(_ directory: URL,_ profile: String,_ object: PlanetChildPassport.BinaryObject,_ bytes: Data,_ check: () throws -> Void) throws {
+        try check();try Self.require(bytes.count==object.bytes && Self.digest(bytes)==object.checksum);_=try PlanetChildLocalV2MediaCodec.preflight(bytes,object.mime)
+        guard let folder=try binaryDirectory(directory,create:true) else { throw Failure.unavailable };let file=folder.appendingPathComponent(binaryName(profile,object))
+        if FileManager.default.fileExists(atPath:file.path) { var old=try readBinary(directory,profile,object,check);defer { old.resetBytes(in:0..<old.count) };try Self.require(old==bytes);return }
+        var retainedBytes=0
+        for entry in try FileManager.default.contentsOfDirectory(at:folder,includingPropertiesForKeys:nil) where entry.lastPathComponent.hasPrefix(Self.digest(Data(profile.utf8))+"-") {
+            try check();var info=stat();try Self.require(entry.resolvingSymlinksInPath().standardizedFileURL==entry.standardizedFileURL && lstat(entry.path,&info)==0 && info.st_mode & mode_t(S_IFMT)==mode_t(S_IFREG) && info.st_size>=0 && info.st_size<=33554461 && Int(info.st_size)<=2147483648+2048*29-retainedBytes);retainedBytes+=Int(info.st_size)
+        };try Self.require(object.bytes+29<=2147483648+2048*29-retainedBytes)
+        let staged=folder.appendingPathComponent(binaryName(profile,object)+".new");try Self.require(staged.resolvingSymlinksInPath().standardizedFileURL==staged.standardizedFileURL)
+        // Only a fresh, fully verified original resource can replace this own
+        // unindexed prepublication temporary file. Never recover missing bytes.
+        if FileManager.default.fileExists(atPath:staged.path) { var info=stat();try Self.require(lstat(staged.path,&info)==0 && info.st_mode & mode_t(S_IFMT)==mode_t(S_IFREG));try check();try Self.require(Darwin.unlink(staged.path)==0) }
+        let sealed=try AES.GCM.seal(bytes,using:key(create:false,directory:directory),authenticating:binaryAAD(profile,object));guard let combined=sealed.combined else { throw Failure.unavailable };var encrypted=Data([1]);encrypted.append(combined);defer { encrypted.resetBytes(in:0..<encrypted.count) }
+        try exclusiveReceiptFile(staged,encrypted,check);try syncDirectory(folder);try check();try Self.require(Darwin.rename(staged.path,file.path)==0);try syncDirectory(folder)
+        var exact=try readBinary(directory,profile,object,check);defer { exact.resetBytes(in:0..<exact.count) };try Self.require(exact==bytes);try check()
+    }
+    /** The full snapshot is the sole catalog. Pruning happens while a durable
+     * deny marker still fences the original command/migration completion. */
+    private func pruneBinaries(_ directory: URL,_ state: State,_ profile: String,_ check: () throws -> Void) throws {
+        guard let folder=try binaryDirectory(directory) else { return };var kept=Set<String>()
+        for (profile,entry) in state.passports { for object in entry.ledger.binaryObjects { kept.insert(binaryName(profile,object)) } }
+        for file in try FileManager.default.contentsOfDirectory(at:folder,includingPropertiesForKeys:nil) {
+            guard file.lastPathComponent.hasPrefix(Self.digest(Data(profile.utf8))+"-") else { continue }
+            try check();try Self.require(file.lastPathComponent.range(of:#"\A[a-f0-9]{64}-[a-f0-9]{64}\.aes(?:\.new)?\z"#,options:.regularExpression) != nil && file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL)
+            var info=stat();try Self.require(lstat(file.path,&info)==0 && info.st_mode & mode_t(S_IFMT)==mode_t(S_IFREG))
+            if !kept.contains(file.lastPathComponent) { try Self.require(Darwin.unlink(file.path)==0) }
+        };try syncDirectory(folder);try check()
+    }
+    func admittedBinaryObject(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ object: PlanetChildPassport.BinaryObject) throws -> Data? {
+        try locked { directory in
+            try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state)
+            guard state.passports[lease.scope.profileId]?.ledger.binaryObjects.contains(object)==true else { return nil }
+            return try readBinary(directory,lease.scope.profileId,object,admission.check)
+        }
+    }
+    private func passportStageMarker(_ directory: URL) throws -> URL { let file=directory.appendingPathComponent("local-v2-passport-stage.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file }
+    private func stageAAD() -> Data { Data((identity+"\nLP-LOCAL-V2-STAGE-RECEIPT-v1").utf8) }
+    private func stageReceipt(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ command: String,_ revision: UInt64,_ before: String,_ after: String,_ immutable: String,_ directory: URL) throws -> Data {
+        var plain=Data((["LP-LOCAL-V2-STAGE-RECEIPT-v1",identity,command,try admission.binding(),lease.scope.profileId,String(lease.generation),lease.nonce,String(revision),before,after,immutable,""]).joined(separator:"\n").utf8);defer { plain.resetBytes(in:0..<plain.count) }
+        let sealed=try AES.GCM.seal(plain,using:key(create:false,directory:directory),authenticating:stageAAD());guard let combined=sealed.combined else { throw Failure.unavailable };var encoded=Data([1]);encoded.append(combined);return encoded
+    }
+    private func stageFields(_ encrypted: Data,_ directory: URL) throws -> [String] {
+        try Self.require(encrypted.first==1 && encrypted.count<=4096);var plain=try AES.GCM.open(AES.GCM.SealedBox(combined:Data(encrypted.dropFirst())),using:key(create:false,directory:directory),authenticating:stageAAD());defer { plain.resetBytes(in:0..<plain.count) }
+        guard let text=String(data:plain,encoding:.utf8) else { throw Failure.unavailable };let fields=text.components(separatedBy:"\n")
+        try Self.require(fields.count==12 && fields[0]=="LP-LOCAL-V2-STAGE-RECEIPT-v1" && fields[1]==identity && fields[11].isEmpty && fields[2].range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && [3,8,9,10].allSatisfy({ Self.checksum(fields[$0]) }) && Self.identifier(fields[4]) && fields[6].range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil)
+        for index in [5,7] { guard let value=UInt64(fields[index]),value>0,value<Self.maxSafe,String(value)==fields[index] else { throw Failure.unavailable } };return fields
+    }
+    private func validateStageBase(_ fields: [String],_ state: State) throws {
+        var base=try Self.encode(state);defer { base.resetBytes(in:0..<base.count) };let hash=Self.digest(base)
+        try Self.require(fields.count==12 && fields[3]==state.admissionBinding && fields[5]==String(state.generation) && fields[6]==state.nonce && state.scope?.profileId==fields[4] && (hash==fields[8] || hash==fields[9]))
+        let ledger=state.passports[fields[4]]?.ledger ?? PlanetChildPassport.Ledger();try Self.require(try ledger.immutableDownloadChecksum()==fields[10])
+        if hash==fields[9] { try Self.require(state.passports[fields[4]]?.revision==UInt64(fields[7])) }
+        else { try Self.require((state.passports[fields[4]]?.revision ?? 0)+1==UInt64(fields[7])) }
+    }
+    /** A killed writer may leave zero or partial ciphertext. Only the exact
+     * authenticated before-state permits retiring its uncommitted temporary;
+     * none of these bytes are decoded, adopted, or treated as completion. */
+    private func discardInterruptedStageTemporary(_ directory: URL,_ fields: [String],_ state: State,_ check: () throws -> Void) throws {
+        try validateStageBase(fields,state);let staged=try record(directory,suffix:".new")
+        guard FileManager.default.fileExists(atPath:staged.path) else { return }
+        var base=try Self.encode(state);defer { base.resetBytes(in:0..<base.count) };try Self.require(Self.digest(base)==fields[8])
+        try check();let fd=Darwin.open(staged.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC);try Self.require(fd>=0);defer { Darwin.close(fd) }
+        var opened=stat(),named=stat();try Self.require(fstat(fd,&opened)==0 && lstat(staged.path,&named)==0 && opened.st_mode & mode_t(S_IFMT)==mode_t(S_IFREG) && opened.st_ino==named.st_ino && opened.st_dev==named.st_dev && opened.st_size>=0 && opened.st_size<=off_t(Self.maxSnapshotBytes+29))
+        try check();try Self.require(Darwin.unlink(staged.path)==0);try syncDirectory(directory);try check()
+    }
+    /** Restart never adopts a .new snapshot or supplies a profile capability.
+     * An authenticated stage receipt may retire only an interrupted technical
+     * lease with exact before/after CAS and unchanged active semantic facts. */
+    private func recoverOfflineStage(_ directory: URL,_ permit: PlanetChildLocalV2SDKReadPermit) throws {
+        try permit.check();let state=try read(directory);defer { state.wipe() }
+        guard let process=state.offlineProcess,process != Self.offlineProcessEpoch else { return }
+        try Self.require(state.pendingMigration==nil && !FileManager.default.fileExists(atPath:try migrationMarker(directory).path) && !FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path))
+        try Self.require(try state.admissionBinding==permit.binding());try Self.knownProfiles(state,permit.profiles());try Self.validatePassport(state)
+        let marker=try passportStageMarker(directory),staged=try record(directory,suffix:".new")
+        if FileManager.default.fileExists(atPath:marker.path) {
+            var encoded=try boundedFile(marker,4096);defer { encoded.resetBytes(in:0..<encoded.count) };let fields=try stageFields(encoded,directory);try validateStageBase(fields,state)
+            try discardInterruptedStageTemporary(directory,fields,state,permit.check)
+            for (profile,entry) in state.passports { for object in entry.ledger.binaryObjects { var bytes=try readBinary(directory,profile,object,permit.check);bytes.resetBytes(in:0..<bytes.count) } }
+            try permit.check();try Self.require(Darwin.unlink(marker.path)==0);try syncDirectory(directory)
+        } else { try Self.require(!FileManager.default.fileExists(atPath:staged.path)) }
+        // Actual fresh DataAdmission later replaces the prior technical lease.
+        // This read proof neither writes a new profile nor grants a data lease.
+        if let profile=state.scope?.profileId { try pruneBinaries(directory,state,profile,permit.check) };try permit.check()
+    }
     private func passportMarker(_ directory: URL) throws -> URL { let file=directory.appendingPathComponent("local-v2-passport.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file }
     private func passportMarkerBytes(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ commandId: String,_ revision: UInt64,_ ledger: PlanetChildPassport.Ledger) throws -> Data {
         var bytes=try ledger.encoded();defer { bytes.resetBytes(in:0..<bytes.count) }
@@ -1264,9 +1368,14 @@ extension PlanetChildDataStore {
             try admission.check();try existingOnly(directory);let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.validatePassport(state)
             let profile=lease.scope.profileId,prior=state.passports[profile],revision=prior?.revision ?? 0
             guard let expectedRevision,let permit else { try admission.check();return LocalV2Passport(profile,revision,prior?.ledger ?? PlanetChildPassport.Ledger(),state.journeys[profile]?.progress ?? [:]) }
+            var before=try Self.encode(state);defer { before.resetBytes(in:0..<before.count) };let immutable=try (prior?.ledger ?? PlanetChildPassport.Ledger()).immutableDownloadChecksum()
             try Self.require(revision==expectedRevision);let next=try PlanetChildJourney.next(revision);var ledger=prior?.ledger ?? PlanetChildPassport.Ledger();try permit.apply(admission,&ledger);try Self.require(try permit.profileId(admission)==profile)
+            // Stage the encrypted exact object before the catalog CAS. An
+            // interrupted unindexed object is never exposed as saved content.
+            if let (object,owned)=try permit.binaryWrite(admission) { try pruneBinaries(directory,state,profile) { try permit.check(admission) };var bytes=owned;defer { bytes.resetBytes(in:0..<bytes.count) };try permit.validateBinary(admission,object,bytes);try writeBinary(directory,profile,object,bytes) { try permit.check(admission) } }
+            for object in try permit.activationObjects(admission) { try Self.require(ledger.binaryObjects.contains(object));var bytes=try readBinary(directory,profile,object) { try permit.check(admission) };defer { bytes.resetBytes(in:0..<bytes.count) };try permit.validateBinary(admission,object,bytes) }
             state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;state.passports[profile]=PassportEntry(revision:next,ledger:ledger)
-            var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };let marker=try passportMarker(directory);var expected=try passportMarkerBytes(admission,lease,commandId,next,ledger);defer { expected.resetBytes(in:0..<expected.count) };var attempted=false
+            var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };let staging=try permit.stageMutation(admission),marker=try staging ? passportStageMarker(directory):passportMarker(directory);var expected=try staging ? stageReceipt(admission,lease,commandId,next,Self.digest(before),Self.digest(prepared),immutable,directory):passportMarkerBytes(admission,lease,commandId,next,ledger);defer { expected.resetBytes(in:0..<expected.count) };var attempted=false
             do {
                 attempted=true;try exclusiveReceiptFile(marker,expected) { try permit.check(admission) };try syncDirectory(directory);try write(directory,state:state) { try permit.check(admission) }
                 let actual=try read(directory);defer { actual.wipe() };try admittedLive(admission,lease,actual);try permit.check(admission)
@@ -1279,7 +1388,9 @@ extension PlanetChildDataStore {
     func passportComplete(_ admission: PlanetChildLocalV2DataAdmission,_ lease: Lease,_ commandId: String) throws -> LocalV2PassportCompletion {
         try locked { directory in try admission.check();let state=try read(directory);defer { state.wipe() };try admittedLive(admission,lease,state);try Self.validatePassport(state);try admission.passportCommandJoined(commandId)
             guard let entry=state.passports[lease.scope.profileId] else { throw Failure.unavailable }
-            var actual=try boundedFile(passportMarker(directory),4096),expected=try passportMarkerBytes(admission,lease,commandId,entry.revision,entry.ledger);defer { actual.resetBytes(in:0..<actual.count);expected.resetBytes(in:0..<expected.count) };try Self.require(actual==expected);try admission.check();return LocalV2PassportCompletion(self,expected)
+            let staging=try admission.passportStageMutation(commandId),marker=try staging ? passportStageMarker(directory):passportMarker(directory);var actual=try boundedFile(marker,4096);defer { actual.resetBytes(in:0..<actual.count) }
+            if staging { let fields=try stageFields(actual,directory);var bytes=try Self.encode(state);defer { bytes.resetBytes(in:0..<bytes.count) };try Self.require(try fields[2]==commandId && fields[3]==admission.binding() && fields[4]==lease.scope.profileId && fields[5]==String(lease.generation) && fields[6]==lease.nonce && fields[7]==String(entry.revision) && fields[9]==Self.digest(bytes) && fields[10]==entry.ledger.immutableDownloadChecksum()) }
+            else { var expected=try passportMarkerBytes(admission,lease,commandId,entry.revision,entry.ledger);defer { expected.resetBytes(in:0..<expected.count) };try Self.require(actual==expected) };try admission.check();return LocalV2PassportCompletion(self,actual,staging:staging)
         }
     }
     private static func removeChildData(_ state: State,_ next: inout [String:Stored],_ target: PlanetChildLocalV2RemovalTarget) throws {
@@ -1447,6 +1558,72 @@ extension PlanetChildDataStore {
         var denied=false
         do { var after=try owner.ownedLedger();after.disposeRouteBytes() } catch { denied=true }
         try require(denied);return true
+    }
+}
+#endif
+
+#if DEBUG
+extension PlanetChildDataStore {
+    /** AUTHORED_NOT_RUN: real platform AES/key/files in isolated synthetic
+     * namespace. This fixture never creates an original native admission. */
+    static func fixtureSharedObjectPersistence(runId: String,scenario: String) throws -> Bool {
+        let store=try synthetic(runId:runId),first="fixture-reader-one",second="fixture-reader-two"
+        var (route,object,png)=try PlanetChildPassportFixtureBytes.sharedRoute();defer { route.dispose();png.resetBytes(in:0..<png.count) }
+        let state=try fixtureAppearanceState();defer { state.wipe() };state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;state.offlineProcess=String(repeating:"a",count:32)
+        var ledger=PlanetChildPassport.Ledger();try ledger.openCountry("country-one");try ledger.stage(PlanetChildPassport.Download(manifest:route,completed:1),object)
+        state.passports[first]=PassportEntry(revision:7,ledger:ledger);state.passports[second]=PassportEntry(revision:11,ledger:ledger)
+        try store.locked { directory in try store.writeBinary(directory,first,object,png,{});try store.writeBinary(directory,second,object,png,{});try store.write(directory,state:state,check:{}) }
+        let reopened=try synthetic(runId:runId)
+        return try reopened.locked { directory in
+            let restored=try reopened.read(directory);defer { restored.wipe() };try require(restored.passports[first]?.ledger.routeDownloads.first?.completed==1 && restored.passports[first]?.revision==7 && restored.passports[second]?.revision==11)
+            var bytes=try reopened.readBinary(directory,first,object,{});defer { bytes.resetBytes(in:0..<bytes.count) };try require(bytes==png)
+            let folder=try reopened.binaryDirectory(directory)!,file=folder.appendingPathComponent(reopened.binaryName(first,object)),sibling=folder.appendingPathComponent(reopened.binaryName(second,object));var siblingBefore=try reopened.boundedFile(sibling,object.bytes+29);defer { siblingBefore.resetBytes(in:0..<siblingBefore.count) }
+            if scenario=="missing" { try require(Darwin.unlink(file.path)==0);var denied=false;do { var invalid=try reopened.readBinary(directory,first,object,{});invalid.resetBytes(in:0..<invalid.count) } catch { denied=true };try require(denied && restored.passports[first]?.ledger.routeDownloads.first?.completed==1);return true }
+            if scenario=="tamper" { var raw=try reopened.boundedFile(file,object.bytes+29);defer { raw.resetBytes(in:0..<raw.count) };raw[raw.count-1]^=1;try raw.write(to:file);var denied=false;do { var invalid=try reopened.readBinary(directory,first,object,{});invalid.resetBytes(in:0..<invalid.count) } catch { denied=true };try require(denied && restored.passports[first]?.revision==7);return true }
+            if scenario=="profile-aad" { let foreign=folder.appendingPathComponent(reopened.binaryName("fixture-other",object));try siblingBefore.write(to:foreign);var denied=false;do { var invalid=try reopened.readBinary(directory,"fixture-other",object,{});invalid.resetBytes(in:0..<invalid.count) } catch { denied=true };try require(denied);return true }
+            if scenario=="clear" { var next=retainedEntries(restored);try removeChildData(restored,&next,PlanetChildLocalV2RemovalTarget(profileId:first,scope:"downloads"));try reopened.write(directory,state:restored,check:{});try reopened.pruneBinaries(directory,restored,first,{});try require(!FileManager.default.fileExists(atPath:file.path) && FileManager.default.fileExists(atPath:sibling.path) && (try reopened.boundedFile(sibling,object.bytes+29))==siblingBefore && restored.passports[first]?.ledger.countries==["country-one"] && restored.passports[second]?.revision==11);return true }
+            if scenario=="ciphertext" { let raw=try reopened.boundedFile(file,object.bytes+29);try require(raw.range(of:png)==nil && raw.count==png.count+29);return true }
+            try require(scenario=="restart" && restored.offlineProcess==String(repeating:"a",count:32));return true
+        }
+    }
+}
+#endif
+
+#if DEBUG
+extension PlanetChildDataStore {
+    static func fixtureLargeSharedBinary(runId: String) throws -> Bool {
+        let store=try synthetic(runId:runId);var wav=PlanetChildNativeMediaRuntimeFixture.wav(2880000);defer { wav.resetBytes(in:0..<wav.count) };for byte in 0..<4 { wav[24+byte]=UInt8(truncatingIfNeeded:48000>>(8*byte));wav[28+byte]=UInt8(truncatingIfNeeded:48000>>(8*byte)) }
+        let object=try PlanetChildPassport.BinaryObject(checksum:Self.digest(wav),mime:"audio/wav",bytes:wav.count);try require(object.bytes>PlanetChildPassport.maximumRouteBytes)
+        try store.locked { try store.writeBinary($0,"fixture-reader-one",object,wav,{}) }
+        let reopened=try synthetic(runId:runId);return try reopened.locked { directory in var actual=try reopened.readBinary(directory,"fixture-reader-one",object,{});defer { actual.resetBytes(in:0..<actual.count) };try require(actual==wav);return true }
+    }
+    static func fixtureInterruptedStageReceipt(runId: String,scenario: String) throws -> Bool {
+        let store=try synthetic(runId:runId),profile="fixture-reader-one",state=try fixtureAppearanceState();defer { state.wipe() };state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;state.scope=state.seals[profile]!.scope;state.generation=2;state.nonce=String(repeating:"2",count:32);state.offlineProcess=String(repeating:"a",count:32)
+        var (route,_,binary)=try PlanetChildPassportFixtureBytes.sharedRoute();defer { route.dispose();binary.resetBytes(in:0..<binary.count) };var before=try encode(state);defer { before.resetBytes(in:0..<before.count) };let immutable=try PlanetChildPassport.Ledger().immutableDownloadChecksum()
+        var ledger=PlanetChildPassport.Ledger();try ledger.stage(PlanetChildPassport.Download(manifest:route));state.passports[profile]=PassportEntry(revision:1,ledger:ledger);var after=try encode(state);defer { after.resetBytes(in:0..<after.count) }
+        return try store.locked { directory in
+            var plain=Data((["LP-LOCAL-V2-STAGE-RECEIPT-v1",store.identity,String(repeating:"3",count:32),state.admissionBinding!,profile,String(state.generation),state.nonce,"1",digest(before),digest(after),immutable,""]).joined(separator:"\n").utf8);defer { plain.resetBytes(in:0..<plain.count) };let sealed=try AES.GCM.seal(plain,using:store.key(create:false,directory:directory),authenticating:store.stageAAD());var encrypted=Data([1]);encrypted.append(sealed.combined!);defer { encrypted.resetBytes(in:0..<encrypted.count) }
+            if scenario=="aead-tamper" { encrypted[encrypted.count-1]^=1;var denied=false;do { _=try store.stageFields(encrypted,directory) } catch { denied=true };try require(denied);return true }
+            var fields=try store.stageFields(encrypted,directory);try store.validateStageBase(fields,state)
+            if ["partial-temporary","empty-temporary","after-temporary-denied","revoked-temporary-denied"].contains(scenario) {
+                let old=try decode(before);defer { old.wipe() };try store.write(directory,state:old,check:{})
+                let file=try store.record(directory,suffix:".new");defer { _=Darwin.unlink(file.path) }
+                let partial=scenario=="empty-temporary" ? Data():Data([1,2,3,4]);try partial.write(to:file)
+                var original=try store.boundedFile(store.record(directory),Self.maxSnapshotBytes+29);defer { original.resetBytes(in:0..<original.count) }
+                if scenario=="after-temporary-denied" || scenario=="revoked-temporary-denied" {
+                    var refused=false;do { try store.discardInterruptedStageTemporary(directory,fields,scenario=="after-temporary-denied" ? state:old) { if scenario=="revoked-temporary-denied" { throw Failure.unavailable } } } catch { refused=true }
+                    try require(refused && FileManager.default.fileExists(atPath:file.path))
+                } else { try store.discardInterruptedStageTemporary(directory,fields,old,{});try require(!FileManager.default.fileExists(atPath:file.path)) }
+                try require(try original==store.boundedFile(store.record(directory),Self.maxSnapshotBytes+29));return true
+            }
+            if scenario=="before" { let old=try decode(before);defer { old.wipe() };try store.validateStageBase(fields,old);return true }
+            if scenario=="after" { try require(state.passports[profile]?.ledger.routeDownloads.count==1);return true }
+            if scenario=="unknown-hash" { fields[9]=String(repeating:"f",count:64) }
+            if scenario=="wrong-profile" { fields[4]="fixture-reader-two" }
+            if scenario=="wrong-generation" { fields[5]="3" }
+            if scenario=="active-facts" { var changed=ledger;try changed.openCountry("country-forged");state.passports[profile]=PassportEntry(revision:1,ledger:changed);var altered=try encode(state);defer { altered.resetBytes(in:0..<altered.count) };fields[9]=digest(altered) }
+            var denied=false;do { try store.validateStageBase(fields,state) } catch { denied=true };try require(denied);return true
+        }
     }
 }
 #endif
