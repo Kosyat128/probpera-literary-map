@@ -77,4 +77,27 @@ describe("same renderer transition clock and last-valid rollback", () => {
     await expect(broken.commit()).rejects.toThrow("retired"); await expect(broken.work.join()).rejects.toThrow("cleanup failed");
     expect(broken.candidate.parent).toBeNull(); expect(broken.surface.map).toBe(broken.oldMap); broken.dispose();
   });
+  it("holds one visible completed preview and restores the original branch order and rig on later abort", async () => {
+    const f = fixture(true), originalChildren = f.scene.children.slice(); await f.commit(); f.work.presentPreview();
+    expect(f.surface.map).toBe(f.nextMap); expect(f.prior.parent).toBeNull(); expect(f.candidate.parent).toBe(f.scene);
+    expect(f.newMaterial.depthWrite).toBe(true); expect(f.newMaterial.transparent).toBe(false);
+    f.abort.abort(); await f.work.join();
+    expect(f.scene.children).toEqual(originalChildren); expect(f.surface.map).toBe(f.oldMap);
+    expect(f.gl.toneMappingExposure).toBe(1); expect(f.oldLight.intensity).toBe(2); expect(f.newLight.intensity).toBe(4);
+    expect(() => f.work.finalize()).toThrow(); f.dispose();
+  });
+  it("keeps the original absolute deadline after fade completion even when no more frames arrive", async () => {
+    vi.useFakeTimers(); const f = fixture(), work = f.commit(); await vi.advanceTimersByTimeAsync(300); f.at(300); await work;
+    f.work.presentPreview(); await vi.advanceTimersByTimeAsync(4699);
+    expect(f.surface.map).toBe(f.nextMap); expect(f.prior.parent).toBeNull();
+    await vi.advanceTimersByTimeAsync(1);
+    expect(f.surface.map).toBe(f.oldMap); expect(f.prior.parent).toBe(f.scene); expect(f.candidate.parent).toBeNull();
+    expect(() => f.work.finalize()).toThrow(); await f.work.join(); f.dispose();
+  });
+  it("finalizes a held preview once and releases its pending deadline and abort listener", async () => {
+    vi.useFakeTimers(); const f = fixture(true); await f.commit(); f.work.presentPreview(); f.work.finalize();
+    f.abort.abort(); await vi.advanceTimersByTimeAsync(6000);
+    expect(f.surface.map).toBe(f.nextMap); expect(f.prior.parent).toBeNull(); expect(f.candidate.parent).toBe(f.scene);
+    expect(() => f.work.finalize()).toThrow(); await f.work.join(); f.dispose();
+  });
 });

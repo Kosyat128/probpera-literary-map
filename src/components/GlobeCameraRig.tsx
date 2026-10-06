@@ -64,6 +64,7 @@ export type GlobeCameraMotionSource =
   | "manual"
   | "command"
   | "auto"
+  | "scene-return"
   | "projection";
 
 export type GlobeCameraCancellationSource =
@@ -118,6 +119,8 @@ export type GlobeCameraRigProps = {
   viewInsets?: Partial<ViewInsets> | null;
   standInspection?: GlobeStandInspectionBridge;
   standInspectionBounds?: GlobeRenderedStandBounds | null;
+  /** A preview/Explore lease, not a second camera or serialized camera state. */
+  inspectionSession?: string | null;
   onInteractionStart?: () => void;
   onInteractionEnd?: () => void;
   onPhaseChange?: (phase: GlobeCameraPhase) => void;
@@ -148,9 +151,10 @@ type ActiveFlight = {
   inspection: { sessionId: number; returning: boolean; fromZoom: number; toZoom: number };
 });
 
+type CameraPose = { position: THREE.Vector3; target: THREE.Vector3; quaternion: THREE.Quaternion; up: THREE.Vector3; zoom: number };
 type InspectionSession = {
   request: GlobeStandInspectionRequest;
-  original: { position: THREE.Vector3; target: THREE.Vector3; quaternion: THREE.Quaternion; up: THREE.Vector3; zoom: number };
+  original: CameraPose;
   focusKey: string | null;
   phase: GlobeStandInspectionEvent["phase"];
   framedStandId: string | null;
@@ -262,6 +266,7 @@ export default function GlobeCameraRig({
   viewInsets,
   standInspection,
   standInspectionBounds = null,
+  inspectionSession = null,
   onInteractionStart,
   onInteractionEnd,
   onPhaseChange,
@@ -281,6 +286,8 @@ export default function GlobeCameraRig({
   const initializedRef = useRef(false);
   const phaseRef = useRef<GlobeCameraPhase>("idle");
   const inspectionRef = useRef<InspectionSession | null>(null);
+  const sceneCameraRef = useRef<{ key: string; original: CameraPose; focusKey: string | null } | null>(null);
+  const seenSceneCameraKey = useRef<string | null>(null);
   const closedInspectionRef = useRef(0);
   const inspectionBridgeRef = useRef(standInspection);
   useLayoutEffect(() => { inspectionBridgeRef.current = standInspection; }, [standInspection]);
@@ -344,6 +351,7 @@ export default function GlobeCameraRig({
       settingsRef.current.autoRotate &&
       !settingsRef.current.reducedMotion &&
       !inspectionRef.current &&
+      !sceneCameraRef.current &&
       !flightRef.current &&
       !settlingRef.current &&
       !manualInteractionRef.current;
@@ -407,25 +415,31 @@ export default function GlobeCameraRig({
     inspectionBridgeRef.current?.onState({ sessionId: session.request.sessionId, phase, ...(reason ? { reason } : {}) });
   }, []);
 
+  const restoreCameraPose = useCallback((original: CameraPose, restorePosition: boolean) => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    // Flush accumulated OrbitControls deltas without allowing them to alter the
+    // saved pose (or the current pose that a newer geographic intent will use).
+    const position = restorePosition ? original.position : camera.position.clone();
+    const target = restorePosition ? original.target : controls.target.clone();
+    controls.autoRotate = false; controls.enableDamping = false;
+    controls.minDistance = 0; controls.maxDistance = Infinity;
+    controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI; controls.update();
+    camera.position.copy(position); controls.target.copy(target); camera.up.copy(original.up);
+    if (camera instanceof THREE.PerspectiveCamera) {
+      camera.zoom = original.zoom;
+      applyPerspectiveViewInsets(camera, size.width, size.height, baseInsetsRef.current);
+    }
+    controls.update();
+    if (restorePosition) { camera.position.copy(position); camera.quaternion.copy(original.quaternion); }
+    controls.minDistance = GLOBE_SAFE_CAMERA_RADIUS; controls.maxDistance = GLOBE_MAX_CAMERA_RADIUS;
+  }, [camera, size.height, size.width]);
+
   const finishInspection = useCallback((restorePosition: boolean, reason: GlobeStandInspectionEvent["reason"], notify = true) => {
     const session = inspectionRef.current, controls = controlsRef.current;
     if (!session || !controls) return;
     cancelMotion("superseded");
-    // Flush accumulated OrbitControls deltas without allowing them to alter the
-    // saved pose (or the current pose that a newer geographic intent will use).
-    const position = restorePosition ? session.original.position : camera.position.clone();
-    const target = restorePosition ? session.original.target : controls.target.clone();
-    controls.autoRotate = false; controls.enableDamping = false;
-    controls.minDistance = 0; controls.maxDistance = Infinity;
-    controls.minPolarAngle = 0; controls.maxPolarAngle = Math.PI; controls.update();
-    camera.position.copy(position); controls.target.copy(target); camera.up.copy(session.original.up);
-    if (camera instanceof THREE.PerspectiveCamera) {
-      camera.zoom = session.original.zoom;
-      applyPerspectiveViewInsets(camera, size.width, size.height, baseInsetsRef.current);
-    }
-    controls.update();
-    if (restorePosition) { camera.position.copy(position); camera.quaternion.copy(session.original.quaternion); }
-    controls.minDistance = GLOBE_SAFE_CAMERA_RADIUS; controls.maxDistance = GLOBE_MAX_CAMERA_RADIUS;
+    restoreCameraPose(session.original, restorePosition);
     inspectionRef.current = null;
     closedInspectionRef.current = Math.max(closedInspectionRef.current, session.request.sessionId);
     if (manualInteractionRef.current) { manualInteractionRef.current = false; callbacksRef.current.onInteractionEnd?.(); }
@@ -433,7 +447,7 @@ export default function GlobeCameraRig({
     emitViewChange("stand-return"); emitViewSettled("stand-return");
     if (settingsRef.current.active) invalidate();
     if (notify) reportInspection(session, "closed", reason);
-  }, [camera, cancelMotion, emitViewChange, emitViewSettled, invalidate, reportInspection, size.height, size.width, syncRestingControls]);
+  }, [cancelMotion, emitViewChange, emitViewSettled, invalidate, reportInspection, restoreCameraPose, syncRestingControls]);
   const finishInspectionRef = useRef(finishInspection);
   useLayoutEffect(() => { finishInspectionRef.current = finishInspection; }, [finishInspection]);
 
@@ -474,6 +488,7 @@ export default function GlobeCameraRig({
       // A genuinely new country/writer/home intent owns navigation. Remove the
       // optical inspection state but do not replay its old geographic pose.
       if (inspectionRef.current) finishInspection(false, "superseded");
+      sceneCameraRef.current = null;
 
       cancelMotion("superseded");
       const destination = globeCameraDestination({
@@ -592,6 +607,42 @@ export default function GlobeCameraRig({
   }, [camera, syncRestingControls]);
 
   const inspectionFocusKey = focusIntent ? globeCameraIntentKey(focusIntent) : null;
+  const finishSceneCamera = useCallback((restore: boolean) => {
+    const session = sceneCameraRef.current;
+    if (!session) return;
+    sceneCameraRef.current = null;
+    if (inspectionRef.current) finishInspection(false, restore ? "returned" : "superseded");
+    cancelMotion("superseded");
+    if (restore) restoreCameraPose(session.original, true);
+    if (manualInteractionRef.current) { manualInteractionRef.current = false; callbacksRef.current.onInteractionEnd?.(); }
+    syncRestingControls(); emitViewChange("scene-return"); emitViewSettled("scene-return");
+    if (settingsRef.current.active && !gl.getContext().isContextLost()) invalidate();
+  }, [cancelMotion, emitViewChange, emitViewSettled, finishInspection, gl, invalidate, restoreCameraPose, syncRestingControls]);
+  const finishSceneCameraRef = useRef(finishSceneCamera);
+  useLayoutEffect(() => { finishSceneCameraRef.current = finishSceneCamera; }, [finishSceneCamera]);
+  useLayoutEffect(() => {
+    const controls = controlsRef.current, session = sceneCameraRef.current;
+    if (!controls || !(camera instanceof THREE.PerspectiveCamera)) return;
+    const superseded = session && inspectionFocusKey !== null && session.focusKey !== inspectionFocusKey;
+    if (session && (session.key !== inspectionSession || superseded || gl.getContext().isContextLost())) {
+      finishSceneCamera(!superseded);
+    }
+    if (inspectionSession !== seenSceneCameraKey.current) {
+      if (!inspectionSession) seenSceneCameraKey.current = null;
+      if (inspectionSession && active && !gl.getContext().isContextLost()) {
+        seenSceneCameraKey.current = inspectionSession;
+        const original = inspectionRef.current?.original ?? { position: camera.position.clone(), target: controls.target.clone(),
+          quaternion: camera.quaternion.clone(), up: camera.up.clone(), zoom: camera.zoom };
+        sceneCameraRef.current = { key: inspectionSession, original, focusKey: inspectionFocusKey };
+        cancelMotion("superseded"); syncRestingControls();
+      }
+    }
+  }, [active, camera, cancelMotion, finishSceneCamera, gl, inspectionFocusKey, inspectionSession, syncRestingControls]);
+  useEffect(() => {
+    const lost = () => finishSceneCameraRef.current(true);
+    gl.domElement.addEventListener("webglcontextlost", lost);
+    return () => { gl.domElement.removeEventListener("webglcontextlost", lost); finishSceneCameraRef.current(true); };
+  }, [gl]);
   useLayoutEffect(() => {
     const controls = controlsRef.current;
     if (!controls) return;

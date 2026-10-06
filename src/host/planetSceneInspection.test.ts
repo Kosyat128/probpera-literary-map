@@ -6,9 +6,45 @@ const adult: PlanetSceneInspectionContext = Object.freeze({ enabled: true, acces
   editorOpen: false, appliedBackgroundId: STUDY, displayedBackgroundId: STUDY });
 
 describe("transient adult writer-study inspection authority", () => {
+  it("admits only a rendered temporary study and withdraws Explore before applying or preparing again", () => {
+    const controller=createPlanetSceneInspectionController();
+    controller.registerTarget({}, {backgroundId:STUDY,canActivate:()=>true});
+    const preview={...adult,editorOpen:true,appliedBackgroundId:"background.base.library",previewReady:false};
+    controller.setContext(preview);expect(controller.open()).toBe(false);
+    controller.setContext({...preview,previewReady:true});expect(controller.open()).toBe(true);
+    const session=controller.getSnapshot().sessionId;expect(session).toEqual(expect.any(Number));
+    expect(controller.openObject()).toBe(true);expect(controller.getSnapshot().sessionId).toBe(session);
+    controller.setContext(preview);expect(controller.getSnapshot()).toEqual({available:false,mode:"closed",sessionId:null});
+    controller.dispose();
+  });
+
+  it("requires the native shown-resource lease and its fresh admission for child Explore", () => {
+    const controller=createPlanetSceneInspectionController();let admitted=true;
+    const child={...adult,access:"child" as const,editorOpen:true,previewReady:true,
+      appliedBackgroundId:"native-original",displayedBackgroundId:"native-preview"};
+    controller.setContext(child);
+    controller.registerTarget({}, {backgroundId:"native-preview",canActivate:()=>true});
+    expect(controller.open()).toBe(false); // Included metadata cannot become native admission.
+    controller.registerTarget({}, {kind:"native",backgroundId:"native-preview",canActivate:()=>admitted});
+    expect(controller.open()).toBe(true);admitted=false;controller.refreshTarget();
+    expect(controller.getSnapshot().available).toBe(false);expect(controller.openObject()).toBe(false);
+    admitted=true;controller.setContext({...child,displayedBackgroundId:"new-profile-token"});
+    expect(controller.getSnapshot()).toEqual({available:false,mode:"closed",sessionId:null});
+    expect(controller.open()).toBe(false);controller.dispose();
+  });
+
+  it("keeps one camera lease through object inspection and never reuses it after closing", () => {
+    const controller=createPlanetSceneInspectionController();controller.setContext(adult);
+    controller.registerTarget({}, {backgroundId:STUDY,canActivate:()=>true});controller.open();
+    const first=controller.getSnapshot().sessionId!;controller.openObject();controller.closeObject();controller.open();
+    expect(controller.getSnapshot().sessionId).toBe(first);controller.close();
+    expect(controller.getSnapshot().sessionId).toBeNull();controller.open();
+    expect(controller.getSnapshot().sessionId).toBeGreaterThan(first);controller.dispose();
+  });
+
   it("denies every unavailable context and ignores retired registration leases", () => {
     const controller = createPlanetSceneInspectionController(), ready = vi.fn(() => true);
-    expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed" });
+    expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed", sessionId: null });
     expect(controller.open()).toBe(false);
     const resource = {}, oldRelease = controller.registerTarget(resource, { backgroundId: STUDY, canActivate: ready });
     expect(ready).not.toHaveBeenCalled();
@@ -17,18 +53,18 @@ describe("transient adult writer-study inspection authority", () => {
       { appliedBackgroundId: "background.base.library" }, { displayedBackgroundId: "background.base.library" },
       { appliedBackgroundId: "background.base.writer-study-unknown" }]) {
       controller.setContext({ ...adult, ...override });
-      expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed" });
+      expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed", sessionId: null });
       expect(controller.open()).toBe(false); expect(controller.openObject()).toBe(false);
       controller.setContext(adult); expect(controller.open()).toBe(true); expect(controller.openObject()).toBe(true);
     }
     // Registering the same shown resource renews its lease, not its identity.
     const renewedRelease = controller.registerTarget(resource, { backgroundId: STUDY, canActivate: ready });
-    oldRelease(); expect(controller.getSnapshot()).toEqual({ available: true, mode: "object" });
+    oldRelease(); expect(controller.getSnapshot()).toEqual({ available: true, mode: "object", sessionId: expect.any(Number) });
     const replacementRelease = controller.registerTarget({}, { backgroundId: STUDY, canActivate: ready });
-    expect(controller.getSnapshot()).toEqual({ available: true, mode: "closed" });
+    expect(controller.getSnapshot()).toEqual({ available: true, mode: "closed", sessionId: null });
     expect(controller.open()).toBe(true); renewedRelease();
     expect(controller.getSnapshot().mode).toBe("scene");
-    replacementRelease(); expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed" });
+    replacementRelease(); expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed", sessionId: null });
     controller.registerTarget({}, { backgroundId: "background.base.library", canActivate: ready });
     expect(controller.open()).toBe(false);
     controller.dispose();
@@ -49,16 +85,16 @@ describe("transient adult writer-study inspection authority", () => {
     expect(controller.openObject()).toBe(true); controller.closeObject();
     expect(controller.getSnapshot().mode).toBe("scene");
     ready = false; expect(controller.openObject()).toBe(false);
-    expect(controller.getSnapshot()).toEqual({ available: false, mode: "scene" });
+    expect(controller.getSnapshot()).toEqual({ available: false, mode: "scene", sessionId: expect.any(Number) });
     ready = true; expect(controller.openObject()).toBe(true);
     const order: string[] = [];
     const stop = controller.subscribe(() => { if (controller.getSnapshot().mode === "closed") order.push("closed"); });
     expect(controller.openBooks(() => { callback(); order.push("books"); })).toBe(true);
     expect(order).toEqual(["closed", "books"]); expect(callback).toHaveBeenCalledTimes(1);
-    expect(first).toEqual({ available: true, mode: "closed" });
+    expect(first).toEqual({ available: true, mode: "closed", sessionId: null });
     expect(controller.open()).toBe(true); expect(controller.openObject()).toBe(true);
     ready = false; expect(controller.openBooks(callback)).toBe(false);
-    expect(callback).toHaveBeenCalledTimes(1); expect(controller.getSnapshot()).toEqual({ available: false, mode: "object" });
+    expect(callback).toHaveBeenCalledTimes(1); expect(controller.getSnapshot()).toEqual({ available: false, mode: "object", sessionId: expect.any(Number) });
     controller.close(); expect(controller.getSnapshot().mode).toBe("closed");
     stop(); controller.dispose();
   });
@@ -69,10 +105,10 @@ describe("transient adult writer-study inspection authority", () => {
     const release = controller.registerTarget({}, { backgroundId: STUDY, canActivate: () => { duringRead?.(); return ready; } });
     expect(controller.open()).toBe(true); expect(controller.openObject()).toBe(true);
     ready = false; controller.refreshTarget();
-    expect(controller.getSnapshot()).toEqual({ available: false, mode: "object" });
+    expect(controller.getSnapshot()).toEqual({ available: false, mode: "object", sessionId: expect.any(Number) });
     const waiting = controller.getSnapshot(); controller.refreshTarget(); expect(controller.getSnapshot()).toBe(waiting);
     expect(controller.openObject()).toBe(false); expect(controller.getSnapshot().mode).toBe("object");
-    ready = true; controller.refreshTarget(); expect(controller.getSnapshot()).toEqual({ available: true, mode: "object" });
+    ready = true; controller.refreshTarget(); expect(controller.getSnapshot()).toEqual({ available: true, mode: "object", sessionId: expect.any(Number) });
     // The renderer revokes an old target while its canActivate is on the stack.
     duringRead = () => { duringRead = undefined; release(); controller.registerTarget({}, { backgroundId: STUDY, canActivate: () => true }); };
     expect(controller.openObject()).toBe(false); expect(controller.getSnapshot().mode).toBe("closed");
@@ -81,7 +117,7 @@ describe("transient adult writer-study inspection authority", () => {
     controller.subscribe(() => { if (controller.getSnapshot().mode === "closed") controller.dispose(); });
     controller.subscribe(notified);
     expect(controller.openBooks(callback)).toBe(false); expect(callback).not.toHaveBeenCalled();
-    expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed" });
+    expect(controller.getSnapshot()).toEqual({ available: false, mode: "closed", sessionId: null });
     const final = controller.getSnapshot(), calls = notified.mock.calls.length, staleReady = vi.fn(() => true);
     controller.setContext(adult); controller.registerTarget({}, { backgroundId: STUDY, canActivate: staleReady });
     controller.refreshTarget(); controller.close(); controller.closeObject(); controller.dispose(); release();

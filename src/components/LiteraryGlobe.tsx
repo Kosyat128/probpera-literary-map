@@ -1991,6 +1991,8 @@ function GlobeScene({
       )}
       <GlobeCameraRig
         standInspection={standInspection}
+        inspectionSession={composition?.snapshot.previewSession != null
+          ? `adult-preview:${composition.snapshot.previewSession}` : sceneInspection?.cameraSession}
         standInspectionBounds={standCustomization ? standInspectionBounds : null}
         focusIntent={focusIntent}
         controlRequest={controlRequest}
@@ -3221,8 +3223,16 @@ export default function LiteraryGlobe({
       onWheelCapture={() => markPrewarmInputActivity(420)}
       onKeyDownCapture={(event) => {
         markPrewarmInputActivity(420);
-        if (sourceDialogRef.current?.open || standInspectionActiveRef.current || (sceneInspection && sceneInspection.controller.getSnapshot().mode !== "closed")
+        if (sourceDialogRef.current?.open || standInspectionActiveRef.current
           || (event.target instanceof Element && event.target.closest("[data-globe-skin-guide][open]"))) return;
+        const inspectionMode = sceneInspection?.controller.getSnapshot().mode;
+        if (inspectionMode && inspectionMode !== "closed") {
+          if (event.key === "Escape") {
+            event.preventDefault(); event.stopPropagation();
+            if (inspectionMode === "object") sceneInspection!.controller.closeObject(); else sceneInspection!.controller.close();
+          }
+          return;
+        }
         if (event.key !== "Escape" || !touchActivationPolicy.escapeDeactivates) {
           return;
         }

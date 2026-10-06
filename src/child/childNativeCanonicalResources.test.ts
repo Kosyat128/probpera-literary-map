@@ -53,6 +53,11 @@ function fixture() {
 }
 afterEach(()=>{vi.unstubAllGlobals();vi.useRealTimers();});
 describe("actual decoder and canonical texture ownership (synthetic native seam only)",()=>{
+  it("never calls a renderless selection a visible preview",async()=>{
+    const f=fixture();expect(await f.resources.preview(owner,"fixture")).toBe(false);
+    expect(f.scenes.open).not.toHaveBeenCalled();expect(f.scenes.remember).not.toHaveBeenCalled();
+    expect(await f.resources.applyPreview()).toBe(false);expect(await f.resources.cancelPreview()).toBe(false);await f.resources.dispose();
+  });
   it("acquires all three original slots and synchronously detaches the recipient before disposing textures",async()=>{
     const f=fixture(),order:string[]=[];
     f.resources.attachRecipient({clear:()=>{order.push("detach");},join:async()=>{order.push("join");}});

@@ -1,5 +1,5 @@
 import { childCanonicalGlobeAtlasCountries, projectChildNativeGlobeCountry, resolveChildGlobeCountry } from "./childCanonicalGlobeGeometry";
-import { createChildCanonicalResources } from "./childNativeCanonicalResources";
+import { createChildCanonicalResources, type ChildCanonicalSnapshot } from "./childNativeCanonicalResources";
 import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
@@ -17,6 +17,7 @@ import BookyPlayControl from "../host/BookyPlayControl";
 import { createBookySizeController } from "../host/bookySizePreference";
 import { usePlatformServices } from "../platform/PlatformServices";
 import mascotImage from "../assets/mascots/knizhulyk-green-v1.png";
+import { createPlanetSceneInspectionController } from "../host/planetSceneInspection";
 import "./ChildNativeBoundary.css";
 
 const same = (a: ChildEntityReference, b: ChildEntityReference) => a.kind === b.kind && a.id === b.id && a.contentChecksum === b.contentChecksum;
@@ -179,7 +180,7 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
   </section>;
 }
 const emptyCountries: Country[] = [];
-const emptySceneValue={phase:"empty" as const,revision:0,scene:null,textures:null};
+const emptySceneValue: ChildCanonicalSnapshot={phase:"empty",revision:0,scene:null,textures:null,preview:null};
 const emptySceneSnapshot=()=>emptySceneValue;
 const emptySceneSubscribe=()=>()=>undefined;
 export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }: {
@@ -191,6 +192,15 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   const [scenes,setScenes]=useState<readonly ChildNativeSceneSummary[]>([]);
   const [sceneOwner,setSceneOwner]=useState<ChildNativeEntity|null>(null);
   const sceneState=useSyncExternalStore(resources?.subscribe??emptySceneSubscribe,resources?.getSnapshot??emptySceneSnapshot,resources?.getSnapshot??emptySceneSnapshot);
+  const sceneInspection=useMemo(()=>createPlanetSceneInspectionController(),[resources]);
+  const inspectionState=useSyncExternalStore(sceneInspection.subscribe,sceneInspection.getSnapshot,sceneInspection.getSnapshot);
+  const sceneMarkerRef=useRef<HTMLButtonElement>(null), sceneTriggerRef=useRef<HTMLButtonElement|null>(null), exploreTriggerRef=useRef<HTMLButtonElement>(null);
+  const [sceneError,setSceneError]=useState(false);
+  const shownScene=sceneState.preview?.phase==="ready"||sceneState.preview?.phase==="applying"?sceneState.preview.scene:sceneState.scene;
+  const sceneInspectionBridge=useMemo(()=>({controller:sceneInspection,markerRef:sceneMarkerRef,mode:inspectionState.mode,
+    cameraSession:sceneState.preview?`child-preview:${c?.token}:${sceneState.preview.revision}`
+      :inspectionState.sessionId===null?null:`child-explore:${c?.token}:${inspectionState.sessionId}`}),
+    [sceneInspection,inspectionState.mode,inspectionState.sessionId,sceneState.preview?.revision,c?.token]);
   useLayoutEffect(()=>resources?.activate(),[resources]);
   const [current, setCurrent] = useState<ChildNativeEntity | null>(null), [loading, setLoading] = useState(true);
   const [roots, setRoots] = useState<readonly ChildNativeEntity[]>([]), [query, setQuery] = useState("");
@@ -239,9 +249,17 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     return ["search-result", "recommendation", "favorite", "recent", "offline-package", "deep-link"].includes(row.reference.kind)
       && row.payload.references.length === 1 ? controller.readEntity(row.payload.references[0]) : row;
   }
-  async function open(ref: ChildEntityReference, back = false) {
-    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
+  async function leaveScene(original: typeof c, attempt: number) {
+    sceneInspection.close();
+    const preview=resources?.getSnapshot().preview;
+    if(preview&&!await resources?.cancelPreview(preview.revision))return false;
+    return mounted.current&&!!original&&context.current===original&&sequence.current===attempt
+      &&controller.getSnapshot().phase==="ready"&&controller.getSnapshot().context?.token===original.token;
+  }
+  async function open(ref: ChildEntityReference, back = false, onCommit?: () => void) {
     const original = context.current, attempt = ++sequence.current;
+    if(!await leaveScene(original,attempt))return;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     setLoading(true); setCollection(null); setSaved(null); setSavedRows([]); setSearchResults(null);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
@@ -254,7 +272,8 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     pendingCountryOpen.current = row?.reference.kind === "country" && original?.profileId
       ? { contextToken: original.token, profileId: original.profileId, attempt, reference: row.reference } : null;
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
-    if (row) { if (!back && current) setHistory(previous => [...previous.slice(-31), current.reference]); setCurrent(row); }
+    if (row) { if (!back && current) setHistory(previous => [...previous.slice(-31), current.reference]); setCurrent(row);
+      if(row.reference.kind==="country"){const country=resolveChildGlobeCountry(row.reference,countries);if(country)setSelectedCountry(country);} onCommit?.(); }
     else setCurrent(null);
     await resources?.restore?.();
     if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
@@ -323,8 +342,9 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     return () => { alive = false; ++sequence.current; };
   }, [controller, c, snapshot.status, resources]);
   async function search() {
-    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     const original = context.current, attempt = ++sequence.current;
+    if(!await leaveScene(original,attempt))return;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
@@ -335,8 +355,9 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     if(mounted.current&&context.current===original&&sequence.current===attempt)setLoading(false);
   }
   async function showCollection(name: ChildNativeCollection) {
-    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     const original = context.current, attempt = ++sequence.current;
+    if(!await leaveScene(original,attempt))return;
+    setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     setCollection(name); setSaved(null); setSavedRows([]); setSearchResults(null); setLoading(true);
     resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
@@ -353,6 +374,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   async function showDiscoveryPassport(view: ChildNativeDiscoveryPassportViewName) {
     if (view === "home") { if (context.current?.home) await open(context.current.home, true); return; }
     const original = context.current, attempt = ++sequence.current;
+    if(!await leaveScene(original,attempt))return;
     setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
     pendingCountryOpen.current=null;setDiscoveryView(view);setCollection(null);setSaved(null);setSavedRows([]);setSearchResults(null);setLoading(true);
     resources?.clear();try { await resources?.join(); } catch { await controller.suspend(); return; }
@@ -388,6 +410,61 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   }, [controller, c, current, loading, collection, discoveryView, journeyActive, searchResults]);
   useEffect(()=>{let alive=true;setScenes([]);setSceneOwner(null);if(current&&controller.scenes)void controller.scenes.list(current.reference).then(values=>{if(alive){setScenes(values??[]);setSceneOwner(current);}});return()=>{alive=false;};},[controller,current]);
   const admitted=!!c&&snapshot.phase==="ready"&&snapshot.status==="child";
+  const sceneUiVisible=admitted&&!journeyActive&&!discoveryView&&!loading&&!collection&&searchResults===null&&!!current;
+  const previousPreviewRevision=useRef<number|null>(null);
+  const previousInspectionMode=useRef(inspectionState.mode);
+  useLayoutEffect(()=>{
+    const prior=previousInspectionMode.current;previousInspectionMode.current=inspectionState.mode;
+    if(prior!=="closed"&&inspectionState.mode==="closed"&&inspectionState.available&&sceneUiVisible){
+      const focused=document.activeElement;
+      if(focused===document.body||focused instanceof Element&&(focused.tagName==="CANVAS"||focused.hasAttribute("data-globe-style")||focused.closest(".child-native-scene-controls")))
+        exploreTriggerRef.current?.focus({preventScroll:true});
+    }
+  },[inspectionState.mode,inspectionState.available,sceneUiVisible]);
+  useLayoutEffect(()=>{
+    const prior=previousPreviewRevision.current;previousPreviewRevision.current=sceneState.preview?.revision??null;
+    if(prior!==null&&!sceneState.preview&&sceneUiVisible&&sceneTriggerRef.current?.isConnected){
+      const focused=document.activeElement;
+      if(focused===document.body||focused instanceof Element&&focused.closest(".child-native-scene-controls"))sceneTriggerRef.current.focus({preventScroll:true});
+    }
+  },[sceneState.preview,sceneUiVisible]);
+  useLayoutEffect(()=>{
+    const ready=sceneState.preview?sceneState.preview.phase==="ready":sceneState.phase==="ready";
+    sceneInspection.setContext({enabled:admitted,access:admitted?"child":"blocked",visible:sceneUiVisible,
+      editorOpen:!!sceneState.preview,previewReady:ready,appliedBackgroundId:sceneState.scene?.sceneToken??"",displayedBackgroundId:shownScene?.sceneToken??""});
+    if(!resources||!shownScene||!ready)return;
+    const shownToken=shownScene.sceneToken;
+    return sceneInspection.registerTarget(shownScene,{kind:"native",backgroundId:shownToken,canActivate:()=>{
+      const now=resources.getSnapshot(),shown=now.preview?.phase==="ready"?now.preview.scene:!now.preview&&now.phase==="ready"?now.scene:null;
+      return !!shown&&shown.sceneToken===shownToken&&resources.isCurrent()&&shown.hotspots.length>0
+        &&(!shown.modelPackage?.engineComposition||shown.modelPackage.engineComposition.items.every(item=>item.explore));
+    }});
+  },[sceneInspection,resources,admitted,sceneUiVisible,sceneState,shownScene]);
+  useLayoutEffect(()=>{
+    if(!sceneUiVisible){sceneInspection.close();const preview=resources?.getSnapshot().preview;if(preview)void resources?.cancelPreview(preview.revision);}
+  },[sceneUiVisible,resources,sceneInspection]);
+  useLayoutEffect(()=>()=>{sceneInspection.setContext({enabled:false,access:"blocked",visible:false,editorOpen:false,
+    appliedBackgroundId:"",displayedBackgroundId:""});},[sceneInspection]);
+  const startPreview=(sceneId:string,trigger:HTMLButtonElement)=>{
+    if(!resources||!current||!sceneUiVisible||sceneOwner!==current||!scenes.some(scene=>scene.sceneId===sceneId))return;
+    const original=context.current,attempt=++sequence.current;sceneTriggerRef.current=trigger;sceneInspection.close();setSceneError(false);
+    void resources.preview(current.reference,sceneId).then(ready=>{if(mounted.current&&context.current===original&&sequence.current===attempt&&!ready)setSceneError(true);});
+  };
+  const finishPreview=(apply:boolean,expectedRevision:number|undefined)=>{
+    const preview=resources?.getSnapshot().preview;
+    if(!resources||!preview||expectedRevision!==preview.revision||apply&&preview.phase!=="ready")return;
+    const original=context.current,attempt=++sequence.current;sceneInspection.close();setSceneError(false);
+    void (apply?resources.applyPreview(preview.revision):resources.cancelPreview(preview.revision)).then(done=>{
+      if(!mounted.current||context.current!==original||sequence.current!==attempt)return;
+      if(!done)setSceneError(true);else if(sceneTriggerRef.current?.isConnected)sceneTriggerRef.current.focus({preventScroll:true});
+    });
+  };
+  const openHotspot=(target:ChildEntityReference)=>{
+    const shown=resources?.getSnapshot(),scene=shown?.preview?.phase==="ready"?shown.preview.scene:!shown?.preview&&shown?.phase==="ready"?shown.scene:null;
+    if(sceneInspection.getSnapshot().mode==="closed"||!sceneInspection.getSnapshot().available||!resources?.isCurrent()
+      ||!scene?.hotspots.some(hotspot=>same(hotspot.target,target)))return;
+    void open(target);
+  };
   const retained=!!retainedProfileId&&!c&&(snapshot.phase==="sealed"||snapshot.phase==="transition");
   if(!admitted&&!retained)return <ChildNativeClosedView snapshot={snapshot} controller={controller}/>;
   return <main className="child-native-app" data-child-native-phase={admitted?"ready":"sealed"} data-child-native-profile={admitted?c!.profileId:undefined}>
@@ -398,8 +475,8 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         if(!admitted)return;
         const country = resolveChildGlobeCountry(hint,countries);
         const ref = country && roots.find(row => row.reference.kind === "country" && row.reference.id === country.id)?.reference;
-        if (country && ref) { setSelectedCountry(country); void open(ref); }
-      }} childPresentation childResources={resources??undefined} onChildHotspot={target=>{void open(target);}}
+        if (country && ref) { void open(ref); }
+      }} childPresentation childResources={resources??undefined} onChildHotspot={openHotspot} sceneInspection={sceneInspectionBridge}
       mode="immersive" forceLoad bookyCalmMotion runtimeActive={admitted} preserveSceneDuringReload />
     </div>
     {c&&admitted?<>
@@ -413,18 +490,31 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         {sceneState.persistence==="save-failed"?(language==="ru"?"Не удалось подтвердить сохранение оформления.":"The appearance save could not be confirmed."):(language==="ru"?"Сохранённое оформление сейчас недоступно.":"The saved appearance is currently unavailable.")}
         <button type="button" onClick={()=>{void resources?.restore?.();}}>{language==="ru"?"Повторить восстановление":"Retry restoration"}</button>
       </p>}
-      {!journeyActive&&!discoveryView&&!loading&&!collection&&searchResults===null&&!!scenes.length&&current&&sceneOwner===current&&<section className="child-native-scene-controls" aria-busy={sceneState.phase==="preparing"} data-child-scene-phase={sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}>
+      {sceneUiVisible&&(sceneOwner===current&&!!scenes.length||!!shownScene?.hotspots.length||!!sceneState.preview)&&<section className="child-native-scene-controls" aria-busy={sceneState.preview?.phase==="preparing"||sceneState.preview?.phase==="applying"} data-child-scene-phase={sceneState.preview?.phase??sceneState.phase} aria-label={language==="ru"?"Оформление планеты":"Planet appearance"}
+        onKeyDown={event=>{if(event.key!=="Escape")return;event.preventDefault();event.stopPropagation();
+          if(sceneInspection.getSnapshot().mode!=="closed"){sceneInspection.close();exploreTriggerRef.current?.focus({preventScroll:true});}else finishPreview(false,sceneState.preview?.revision);}}>
         <h2>{language==="ru"?"Оформление планеты":"Planet appearance"}</h2>
-        {scenes.map(scene=><button key={scene.sceneId} type="button" disabled={sceneState.phase==="preparing"} onClick={()=>{void resources?.select(current.reference,scene.sceneId);}}>{scene.title}</button>)}
-        {sceneState.phase==="preparing"&&<p role="status">{sceneState.persistence==="saving"?(language==="ru"?"Сохраняем оформление…":"Saving appearance…"):(language==="ru"?"Восстанавливаем оформление…":"Restoring appearance…")}</p>}
-        {!!sceneState.scene?.hotspots.length&&<ul aria-label={language==="ru"?"Материалы оформления":"Scene content"}>
-          {sceneState.scene.hotspots.map(hotspot=><li key={hotspot.id}><ChildNativeReferenceButton controller={controller} reference={hotspot.target} onOpen={()=>{void open(hotspot.target);}}/></li>)}
+        {sceneOwner===current&&scenes.map(scene=><button key={scene.sceneId} type="button" disabled={sceneState.preview?.phase==="applying"}
+          onClick={event=>startPreview(scene.sceneId,event.currentTarget)}>{scene.title}</button>)}
+        {sceneState.preview&&<>
+          <p role="status" aria-live="polite">{sceneState.preview.phase==="preparing"?(language==="ru"?"Готовим временный предпросмотр…":"Preparing temporary preview…")
+            :sceneState.preview.phase==="applying"?(language==="ru"?"Подтверждаем сохранение…":"Confirming saved appearance…")
+              :(language==="ru"?"Временный предпросмотр. Выбор ещё не сохранён.":"Temporary preview. Your choice has not been saved.")}</p>
+          <button type="button" disabled={sceneState.preview.phase!=="ready"} onClick={()=>finishPreview(true,sceneState.preview?.revision)}>{language==="ru"?"Применить":"Apply"}</button>
+          <button type="button" onClick={()=>finishPreview(false,sceneState.preview?.revision)}>{language==="ru"?"Отмена":"Cancel"}</button>
+        </>}
+        {sceneError&&<p role="alert">{language==="ru"?"Предпросмотр не применён. Проверьте доступное оформление и попробуйте снова.":"The preview was not applied. Check the available appearance and try again."}</p>}
+        {(inspectionState.available||inspectionState.mode!=="closed")&&<button ref={exploreTriggerRef} type="button" aria-expanded={inspectionState.mode!=="closed"}
+          aria-controls="child-native-scene-content" onClick={()=>{if(inspectionState.mode!=="closed")sceneInspection.close();else sceneInspection.open();}}>
+          {inspectionState.mode!=="closed"?(language==="ru"?"Завершить осмотр":"Finish exploring"):(language==="ru"?"Осмотреть сцену":"Explore scene")}</button>}
+        {inspectionState.mode!=="closed"&&inspectionState.available&&!!shownScene?.hotspots.length&&<ul id="child-native-scene-content" aria-label={language==="ru"?"Материалы оформления":"Scene content"}>
+          {shownScene.hotspots.map(hotspot=><li key={shownScene.sceneToken+hotspot.id}><ChildNativeReferenceButton controller={controller} reference={hotspot.target} onOpen={()=>openHotspot(hotspot.target)}/></li>)}
         </ul>}
       </section>}
       <nav aria-label={copy.title}>
-        <button type="button" onClick={() => { if (c.home) { setHistory([]); setSelectedCountry(null); void open(c.home, true); } }}>{copy.home}</button>
+        <button type="button" onClick={() => { if (c.home) { void open(c.home, true,()=>{setHistory([]);setSelectedCountry(null);}); } }}>{copy.home}</button>
         <button type="button" disabled={!history.length} onClick={() => {
-          const ref = history[history.length - 1]; setHistory(previous => previous.slice(0, -1)); if (ref) void open(ref, true);
+          const ref = history[history.length - 1]; if (ref) void open(ref, true,()=>setHistory(previous=>previous.slice(0,-1)));
         }}>{copy.back}</button>
         {(["favorites", "recent", "offline"] as const).map(name => <button type="button" key={name} aria-pressed={collection === name}
           onClick={() => { void showCollection(name); }}>{copy[name]}</button>)}
@@ -439,12 +529,14 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         onRequestView={view => { void showDiscoveryPassport(view); }} onOpen={ref => { void open(ref); }}
         onStartJourney={journeyId => {
           if (context.current !== c || !childNativeJourneyId(journeyId)) return;
-          setDiscoveryView(null); journeyIntent.current = { profileId: c.profileId!, journeyId }; setJourneyNavigation(value => value + 1);
+          const attempt=++sequence.current;void leaveScene(c,attempt).then(joined=>{if(!joined)return;
+            setDiscoveryView(null);journeyIntent.current={profileId:c.profileId!,journeyId};setJourneyNavigation(value=>value+1);});
         }} />
       <ChildNativeJourneyView key={c.profileId!} controller={controller} contextToken={c.token} profileId={c.profileId!}
         language={language} navigationEpoch={journeyNavigation}
         homeVisible={!discoveryView&&!loading&&!collection&&searchResults===null&&!!current&&!!c.home&&same(current.reference,c.home)}
         initialJourneyId={journeyIntent.current?.profileId===c.profileId?journeyIntent.current.journeyId:null}
+        beforeNavigate={()=>leaveScene(context.current,sequence.current)}
         onActiveChange={onJourneyActive} onIntentChange={onJourneyIntent} onNode={onJourneyNode}/>
       {!journeyActive&&(loading ? <p role="status">{copy.loading}</p> : collection ? <>
         <h2>{copy[collection]}</h2>

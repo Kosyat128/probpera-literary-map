@@ -1,19 +1,24 @@
 export type PlanetSceneInspectionSnapshot = Readonly<{
   available: boolean;
   mode: "closed" | "scene" | "object";
+  sessionId: number | null;
 }>;
 export type PlanetSceneInspectionContext = Readonly<{
   enabled: boolean;
-  access: "adult" | "blocked";
+  access: "adult" | "child" | "blocked";
   visible: boolean;
   editorOpen: boolean;
   appliedBackgroundId: string;
   displayedBackgroundId: string;
+  /** Ready, reversible display acknowledged by the existing composition owner. */
+  previewReady?: boolean;
 }>;
 export type PlanetSceneInspectionTarget = Readonly<{
   backgroundId: string;
   /** Consult the currently shown resource and its actual rendered-frame readiness. */
   canActivate: () => boolean;
+  /** Native content is admitted only by its resource owner, never this UI controller. */
+  kind?: "included" | "native";
 }>;
 export interface PlanetSceneInspectionController {
   getSnapshot(): PlanetSceneInspectionSnapshot;
@@ -33,19 +38,19 @@ type Mode = PlanetSceneInspectionSnapshot["mode"];
 type Lease = PlanetSceneInspectionTarget & { key: object };
 const STUDY = "background.base.writer-study";
 
-/** Transient adult interaction authority; no scene, DOM, content or storage ownership. */
+/** Transient interaction intent; actual resource/native admission stays with the registered owner. */
 export function createPlanetSceneInspectionController(): PlanetSceneInspectionController {
-  let snapshot: PlanetSceneInspectionSnapshot = Object.freeze({ available: false, mode: "closed" });
+  let snapshot: PlanetSceneInspectionSnapshot = Object.freeze({ available: false, mode: "closed", sessionId: null });
   let context: PlanetSceneInspectionContext | null = null;
   let target: Lease | null = null;
-  let revision = 0, disposed = false, evaluating = false;
+  let revision = 0, sessionSequence = 0, disposed = false, evaluating = false;
   const listeners = new Set<() => void>();
-  const allowed = () => !disposed && context?.enabled === true && context.access === "adult"
-    && context.visible === true && context.editorOpen === false
-    && context.appliedBackgroundId === STUDY && context.displayedBackgroundId === STUDY;
+  const allowed = () => !disposed && context?.enabled === true && context.visible === true
+    && (context.editorOpen ? context.previewReady === true : context.appliedBackgroundId === context.displayedBackgroundId)
+    && (context.access === "adult" ? context.displayedBackgroundId === STUDY : context.access === "child");
   function publish(available: boolean, mode: Mode) {
     if (snapshot.available === available && snapshot.mode === mode) return;
-    const next = Object.freeze({ available, mode }); snapshot = next;
+    const next = Object.freeze({ available, mode, sessionId: mode === "closed" ? null : snapshot.sessionId ?? ++sessionSequence }); snapshot = next;
     for (const listener of [...listeners]) {
       if (snapshot !== next) break;
       if (listeners.has(listener)) {
@@ -55,7 +60,8 @@ export function createPlanetSceneInspectionController(): PlanetSceneInspectionCo
   }
   function readiness() {
     const epoch = revision, lease = target;
-    const eligible = allowed() && lease?.backgroundId === STUDY;
+    const eligible = allowed() && lease?.backgroundId === context?.displayedBackgroundId
+      && (context?.access === "child" ? lease?.kind === "native" : lease?.kind !== "native");
     let available = false;
     // A reentrant query cannot recursively invoke the renderer's readiness port.
     // Any authority mutation it triggers fences the outer result below.
@@ -93,14 +99,15 @@ export function createPlanetSceneInspectionController(): PlanetSceneInspectionCo
     setContext(value) {
       if (disposed) return;
       const next = Object.freeze({ enabled: value.enabled, access: value.access, visible: value.visible,
-        editorOpen: value.editorOpen, appliedBackgroundId: value.appliedBackgroundId, displayedBackgroundId: value.displayedBackgroundId });
+        editorOpen: value.editorOpen, appliedBackgroundId: value.appliedBackgroundId, displayedBackgroundId: value.displayedBackgroundId,
+        previewReady: value.previewReady === true });
       if (context && Object.keys(next).every(key => next[key as keyof typeof next] === context![key as keyof typeof next])) return;
       ++revision; context = next; refresh();
     },
     registerTarget(key, value) {
       if (disposed) return () => undefined;
       const sameResource = target?.key === key;
-      const lease: Lease = Object.freeze({ key, backgroundId: value.backgroundId, canActivate: value.canActivate });
+      const lease: Lease = Object.freeze({ key, backgroundId: value.backgroundId, canActivate: value.canActivate, kind: value.kind ?? "included" });
       ++revision; target = lease; refresh(sameResource ? undefined : "closed");
       return () => {
         if (disposed || target !== lease) return;

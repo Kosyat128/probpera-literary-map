@@ -8,7 +8,7 @@ import type { Common3dResource, Common3dTierId } from "./childCommon3d";
 import { childSceneEngineFixture } from "./childSceneEngineFixture";
 function fixture() {
   const f = childSceneEngineFixture(), events: string[] = [], images: any[] = [];
-  let time = 0, opened = 0, sealed = false, paused = false, value = f.scene(), current: ChildCanonicalBundle | null = null;
+  let time = 0, opened = 0, sealed = false, paused = false, exploring = false, reducedMotion = false, value = f.scene(), current: ChildCanonicalBundle | null = null;
   const context = { token: "b".repeat(32), profileId: "synthetic-profile", package: { id: "synthetic-text", version: 1, checksum: "a".repeat(64) } };
   let saved: ChildNativeProfileAppearance = { profileId: context.profileId, revision: 0, selection: null };
   const prior = new Map<string, { saved: ChildNativeProfileAppearance; revision: number }>();
@@ -55,16 +55,18 @@ function fixture() {
   const stage = vi.fn(async (bundle: ChildCanonicalBundle): Promise<ChildCanonicalRenderStage> => {
     const previous = current;
     return { residentBytes: 0, commit: vi.fn(async () => { events.push("render-commit:" + bundle.scene.sceneId); }),
+      presentPreview: () => { events.push("preview:" + bundle.scene.sceneId); current = bundle; },
       finalize: () => { events.push("finalize:" + bundle.scene.sceneId); current = bundle; },
       rollback: () => { events.push("render-rollback:" + bundle.scene.sceneId); current = previous; }, join: async () => undefined };
   });
-  resources.attachRenderer!("high", stage, () => ({ editionId: "synthetic-edition", platform: "web", exploring: false, visible: true, reducedMotion: false, preloadPaused: paused }));
+  resources.attachRenderer!("high", stage, () => ({ editionId: "synthetic-edition", platform: "web", exploring, visible: true, reducedMotion, preloadPaused: paused }));
   function setVersion(version: number) { const raw = structuredClone(f.raw); raw.modelPackageVersion = version; raw.sceneId = f.g.pack.packageId + ".v" + version; value = f.scene(raw); }
   const decline = (s: ChildNativeScene, r: Common3dResource, tier: Common3dTierId) => ({
     status: "budget-declined" as const, sceneId: s.sceneId, slotId: r.kind, assetId: r.assetId, tier, entity: r.entity,
     mime: r.mime, checksum: r.checksum, encodedBytes: r.encodedBytes, remainingLifetimeMs: 4000, reason: "decoded-budget" as const,
   });
-  return { ...f, events, images, scenes, controller, resources, stage, decline, setVersion, setScene: (s: ChildNativeScene) => { value = s; }, at: (at: number) => { time = at; }, pause: (value: boolean) => { paused = value; resources.refreshEnvironment!(); }, current: () => current, saved: () => saved };
+  return { ...f, events, images, scenes, controller, resources, stage, decline, setVersion, setScene: (s: ChildNativeScene) => { value = s; }, at: (at: number) => { time = at; }, pause: (value: boolean) => { paused = value; resources.refreshEnvironment!(); }, current: () => current, saved: () => saved,
+    inspect: (value: boolean, calm = false) => { exploring = value; reducedMotion = calm; resources.refreshEnvironment!(); } };
 }
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 describe("engine transaction through current synthetic native seam; no rights/device authority", () => {
@@ -152,5 +154,117 @@ describe("engine transaction through current synthetic native seam; no rights/de
     const f = fixture(); f.scenes.acquireModel.mockImplementation(async (s, r, tier) => f.decline(s, r, tier)); f.scenes.release.mockResolvedValue(false);
     expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(false); expect(f.scenes.open).toHaveBeenCalledOnce(); expect(f.controller.suspend).toHaveBeenCalled();
     await expect(f.resources.join()).rejects.toThrow("cleanup failed");
+  });
+  it("shows B without native persistence and cancels back to the exact retained A resources", async () => {
+    const f = fixture(); expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(true);
+    const baseline = f.resources.getSnapshot(), saved = f.saved(); f.setVersion(2);
+    expect(await f.resources.preview(f.owner, f.g.pack.packageId + ".v2")).toBe(true);
+    const held = f.resources.getSnapshot().preview!, candidate = f.current()!;
+    expect(held).toMatchObject({ phase: "ready", scene: { sceneId: candidate.scene.sceneId } });
+    expect(f.resources.getSnapshot().textures).toBe(baseline.textures); expect(f.saved()).toBe(saved);
+    expect(f.scenes.remember).toHaveBeenCalledOnce(); expect(f.resources.isCurrent()).toBe(true);
+    expect(await f.resources.cancelPreview(held.revision)).toBe(true);
+    expect(f.resources.getSnapshot()).toMatchObject({ phase: "ready", preview: null, persistence: "saved" });
+    expect(f.resources.getSnapshot().textures).toBe(baseline.textures); expect(f.current()?.textures).toBe(baseline.textures);
+    expect(baseline.textures!.skin.image).not.toBeNull(); expect(candidate.textures.skin.image).toBeNull();
+    expect(f.saved()).toBe(saved); expect(f.scenes.rollback).not.toHaveBeenCalled();
+    expect(f.scenes.release).toHaveBeenCalledWith(candidate.scene.sceneToken); await f.resources.dispose();
+  });
+  it("applies only the exact ready revision after a fresh native read, retaining A until CAS acknowledgement", async () => {
+    const f = fixture(); await f.resources.select(f.owner, f.raw.sceneId); const baseline = f.resources.getSnapshot(); f.setVersion(2);
+    expect(await f.resources.preview(f.owner, f.g.pack.packageId + ".v2")).toBe(true);
+    const revision = f.resources.getSnapshot().preview!.revision, candidate = f.current()!;
+    expect(await f.resources.applyPreview(revision - 1)).toBe(false);
+    const remember = f.scenes.remember.getMockImplementation()!; let release!: () => void;
+    const wait = new Promise<void>(resolve => { release = resolve; });
+    f.scenes.remember.mockImplementationOnce(async (scene, expected) => { await wait; return remember(scene, expected); });
+    const applied = f.resources.applyPreview(revision);
+    expect(f.resources.getSnapshot().preview).toMatchObject({ phase: "applying", revision });
+    expect(await f.resources.applyPreview(revision)).toBe(false);
+    await vi.waitFor(() => expect(f.scenes.remember).toHaveBeenCalledTimes(2));
+    expect(f.scenes.readSelection).toHaveBeenCalledTimes(3); expect(f.resources.getSnapshot().textures).toBe(baseline.textures);
+    expect(baseline.textures!.skin.image).not.toBeNull(); release(); expect(await applied).toBe(true);
+    expect(f.resources.getSnapshot().preview).toBeNull(); expect(f.resources.getSnapshot().textures).toBe(candidate.textures);
+    expect(baseline.textures!.skin.image).toBeNull(); expect(f.saved().selection?.sceneId).toBe(candidate.scene.sceneId);
+    expect(f.events.filter(event => event === "finalize:" + candidate.scene.sceneId)).toHaveLength(1); await f.resources.dispose();
+  });
+  it("does not grant older cancel navigation after its subscriber starts a newer preview", async () => {
+    const f=fixture();await f.resources.select(f.owner,f.raw.sceneId);f.setVersion(2);
+    expect(await f.resources.preview(f.owner,f.g.pack.packageId+".v2")).toBe(true);
+    const revision=f.resources.getSnapshot().preview!.revision;let armed=true,replacement:Promise<boolean>|null=null;
+    const stop=f.resources.subscribe(()=>{
+      if(armed&&!f.resources.getSnapshot().preview){armed=false;f.setVersion(3);replacement=f.resources.preview(f.owner,f.g.pack.packageId+".v3");}
+    });
+    expect(await f.resources.cancelPreview(revision)).toBe(false);stop();expect(await replacement).toBe(true);
+    const current=f.resources.getSnapshot().preview!;expect(current.scene?.sceneId).toBe(f.g.pack.packageId+".v3");
+    expect(await f.resources.applyPreview(revision)).toBe(false);expect(await f.resources.cancelPreview(current.revision)).toBe(true);
+    await f.resources.dispose();
+  });
+  it("joins a cancelled B before preparing C and refuses stale apply without writing either preview", async () => {
+    const f = fixture(); await f.resources.select(f.owner, f.raw.sceneId); const saved = f.saved(); f.setVersion(2);
+    const prepare = f.stage.getMockImplementation()!; let release!: () => void;
+    const wait = new Promise<void>(resolve => { release = resolve; });
+    f.stage.mockImplementationOnce(async bundle => ({ ...await prepare(bundle), join: () => wait }));
+    expect(await f.resources.preview(f.owner, f.g.pack.packageId + ".v2")).toBe(true);
+    const previous = f.resources.getSnapshot().preview!.revision; f.setVersion(3);
+    const latest = f.resources.preview(f.owner, f.g.pack.packageId + ".v3");
+    await vi.waitFor(() => expect(f.events).toContain("render-rollback:" + f.g.pack.packageId + ".v2"));
+    expect(f.scenes.open).toHaveBeenCalledTimes(2); expect(await f.resources.applyPreview(previous)).toBe(false);
+    release(); expect(await latest).toBe(true); expect(f.scenes.open).toHaveBeenCalledTimes(3);
+    expect(f.events.indexOf("release:" + "2".padStart(32, "0"))).toBeLessThan(f.events.indexOf("open:3"));
+    expect(f.saved()).toBe(saved); expect(f.scenes.remember).toHaveBeenCalledOnce();
+    await f.resources.cancelPreview(f.resources.getSnapshot().preview!.revision); await f.resources.dispose();
+  });
+  it("keeps a compatible inspection and calm change inside the same preview lease and revision", async () => {
+    const f = fixture(); await f.resources.select(f.owner, f.raw.sceneId); f.setVersion(2);
+    expect(await f.resources.preview(f.owner, f.g.pack.packageId + ".v2")).toBe(true);
+    const held = f.resources.getSnapshot().preview!, opened = f.scenes.open.mock.calls.length;
+    const deadline = f.current()!.preparation!.absoluteDeadline;
+    f.inspect(true, true); f.inspect(false);
+    expect(f.resources.getSnapshot().preview).toEqual(held); expect(f.resources.isCurrent()).toBe(true);
+    expect(f.scenes.open).toHaveBeenCalledTimes(opened); expect(f.current()!.preparation!.absoluteDeadline).toBe(deadline);
+    await f.resources.cancelPreview(held.revision); await f.resources.dispose();
+  });
+  it("expires a held shorter candidate back to A without a write or lease renewal", async () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    const f = fixture(); await f.resources.select(f.owner, f.raw.sceneId); const baseline = f.resources.getSnapshot();
+    f.setVersion(2); const raw = structuredClone(f.raw); raw.modelPackageVersion = 2; raw.sceneId = f.g.pack.packageId + ".v2";
+    f.setScene({ ...f.scene(raw), remainingLifetimeMs: 1200 });
+    expect(await f.resources.preview(f.owner, raw.sceneId)).toBe(true); f.at(1199); await vi.advanceTimersByTimeAsync(1199);
+    expect(f.resources.getSnapshot().preview?.phase).toBe("ready"); f.at(1200); await vi.advanceTimersByTimeAsync(1);
+    expect(f.resources.getSnapshot().preview).toBeNull(); expect(f.resources.getSnapshot().textures).toBe(baseline.textures);
+    expect(baseline.textures!.skin.image).not.toBeNull(); expect(f.resources.isCurrent()).toBe(true);
+    expect(f.scenes.remember).toHaveBeenCalledOnce(); expect(f.scenes.open).toHaveBeenCalledTimes(2); await f.resources.dispose();
+  });
+  it("bounds the preview by the original baseline deadline even when the candidate has a longer lease", async () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    const f = fixture(); f.setScene({ ...f.scene(), remainingLifetimeMs: 1200 }); await f.resources.select(f.owner, f.raw.sceneId);
+    f.at(500); await vi.advanceTimersByTimeAsync(500); f.setVersion(2);
+    expect(await f.resources.preview(f.owner, f.g.pack.packageId + ".v2")).toBe(true);
+    expect(f.current()!.preparation!.absoluteDeadline).toBe(1200); f.at(1200); await vi.advanceTimersByTimeAsync(700);
+    expect(f.resources.getSnapshot().preview).toBeNull(); expect(f.resources.isCurrent()).toBe(false);
+    expect(f.scenes.remember).toHaveBeenCalledOnce(); expect(f.scenes.open).toHaveBeenCalledTimes(2); await f.resources.dispose();
+  });
+  it("rolls back an acknowledged apply when Cancel wins while native CAS is pending", async () => {
+    const f = fixture(); await f.resources.select(f.owner, f.raw.sceneId); const saved = f.saved(); f.setVersion(2);
+    await f.resources.preview(f.owner, f.g.pack.packageId + ".v2"); const revision = f.resources.getSnapshot().preview!.revision;
+    const candidate = f.current()!, remember = f.scenes.remember.getMockImplementation()!; let release!: () => void;
+    const wait = new Promise<void>(resolve => { release = resolve; });
+    f.scenes.remember.mockImplementationOnce(async (scene, expected) => { await wait; return remember(scene, expected); });
+    const applied = f.resources.applyPreview(revision); await vi.waitFor(() => expect(f.scenes.remember).toHaveBeenCalledTimes(2));
+    const cancelled = f.resources.cancelPreview(revision); release();
+    expect(await applied).toBe(false); expect(await cancelled).toBe(true);
+    expect(f.saved().selection).toEqual(saved.selection); expect(f.scenes.rollback).toHaveBeenCalledWith(candidate.scene, 2);
+    expect(f.events.indexOf("render-rollback:" + candidate.scene.sceneId)).toBeLessThan(f.events.indexOf("native-rollback:" + candidate.scene.sceneId));
+    expect(f.events).not.toContain("finalize:" + candidate.scene.sceneId); await f.resources.dispose();
+  });
+  it("refuses preview without reversible rendering and refuses apply after the durable baseline changed", async () => {
+    const f = fixture(); f.stage.mockImplementationOnce(async () => ({ residentBytes: 0, commit: vi.fn(), finalize: vi.fn(), rollback: vi.fn() }));
+    expect(await f.resources.preview(f.owner, f.raw.sceneId)).toBe(false); expect(f.scenes.remember).not.toHaveBeenCalled();
+    await f.resources.select(f.owner, f.raw.sceneId); f.setVersion(2); await f.resources.preview(f.owner, f.g.pack.packageId + ".v2");
+    const revision = f.resources.getSnapshot().preview!.revision;
+    f.scenes.readSelection.mockResolvedValueOnce({ ...f.saved(), revision: f.saved().revision + 1 });
+    expect(await f.resources.applyPreview(revision)).toBe(false); expect(f.scenes.remember).toHaveBeenCalledOnce();
+    expect(f.resources.getSnapshot().preview).toBeNull(); expect(f.resources.isCurrent()).toBe(true); await f.resources.dispose();
   });
 });

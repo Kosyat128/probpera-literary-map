@@ -77,8 +77,8 @@ export default function PlanetSceneInspectionControls({ controller, markerRef, o
         // External unavailability may already have moved focus to another
         // panel. Only restore this trigger while it remains an available UI.
         const active = document.activeElement;
-        if (active === document.body || (active instanceof Element && active.closest(
-          ".planet-scene-inspection, .planet-scene-inspection__dialog, .planet-scene-inspection__marker"))) {
+        if (active === document.body || (active instanceof Element && (active.tagName === "CANVAS" || active.hasAttribute("data-globe-style") || active.closest(
+          ".planet-scene-inspection, .planet-scene-inspection__dialog, .planet-scene-inspection__marker")))) {
           toggleRef.current?.focus({ preventScroll: true });
         }
       }

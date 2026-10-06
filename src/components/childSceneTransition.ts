@@ -61,6 +61,7 @@ const engineRig = (engine: ChildEngineComposition, baselineExposure: number): Ri
 export interface ChildSceneTransition {
   commit(options: ChildSceneCommitOptions): Promise<void>;
   advance(now: number): void;
+  presentPreview(): void;
   rollback(): void;
   finalize(): void;
   join(): Promise<void>;
@@ -72,7 +73,7 @@ export interface ChildSceneTransition {
 export function createChildSceneTransition({ gl, scene, surface, prior, candidate, nextSkin, blend, rig, engine, baselineExposure, visible, reducedMotion, invalidate, currentClock }:
   { gl: THREE.WebGLRenderer; scene: THREE.Scene; surface: THREE.MeshPhysicalMaterial; prior: THREE.Group | null; candidate: THREE.Group; nextSkin: THREE.Texture; blend: ChildSkinBlend;
     rig: ChildSceneRig; engine: ChildEngineComposition; baselineExposure: number; visible: () => boolean; reducedMotion: () => boolean; invalidate: () => void; currentClock: () => number }): ChildSceneTransition {
-  let options: ChildSceneCommitOptions | null = null, started = -1, last = -1, settled = false, successful = false, finalized = false, rolledBack = false;
+  let options: ChildSceneCommitOptions | null = null, started = -1, last = -1, settled = false, successful = false, presented = false, finalized = false, rolledBack = false;
   let timer: ReturnType<typeof setTimeout> | null = null, restoreHook: (() => void) | null = null, cleanupFailed = false;
   let resolve!: () => void, reject!: (error: Error) => void, promise: Promise<void> | null = null;
   const previousMap = surface.map, originalRig = rigSnapshot(gl, rig), targetRig = engineRig(engine, baselineExposure), oldStates = materials(prior), newStates = materials(candidate);
@@ -103,7 +104,13 @@ export function createChildSceneTransition({ gl, scene, surface, prior, candidat
   function abort() { rollback(); }
   function live(at: number) { return options && !rolledBack && !options.signal.aborted && options.isCurrent() && visible() && !gl.getContext().isContextLost() && Number.isFinite(at) && at >= last && at < options.absoluteDeadline; }
   function step(at: number) {
-    if (settled || !options) return;
+    if (!options) return;
+    if (settled) {
+      if (successful && !finalized) {
+        try { if (!live(at)) rollback(); else last = at; } catch { rollback(); }
+      }
+      return;
+    }
     try {
       if (!live(at)) { rollback(); return; } last = at;
       const duration = reducedMotion() ? 0 : engine.transition.durationMs, fraction = duration === 0 ? 1 : Math.max(0, Math.min(1, (at - started) / duration)), p = fraction * fraction * (3 - 2 * fraction);
@@ -118,8 +125,28 @@ export function createChildSceneTransition({ gl, scene, surface, prior, candidat
       gl.toneMappingExposure = originalRig.exposure + (targetRig.exposure - originalRig.exposure) * p;
       invalidate();
       if (!live(at)) { rollback(); return; }
-      if (fraction === 1) { cleanupClock(); settled = successful = true; resolve(); }
+      if (fraction === 1) {
+        // Completion may enter a user inspection interval. Keep the ORIGINAL
+        // absolute deadline and abort listener until apply or rollback.
+        if (timer !== null) clearTimeout(timer);
+        timer = setTimeout(abort, Math.max(1, options.absoluteDeadline - at));
+        settled = successful = true; resolve();
+      }
     } catch { rollback(); }
+  }
+  function presentPreview() {
+    try {
+      const at = currentClock(); if (!successful || finalized || !live(at)) throw new Error("Current completed transition required");
+      if (presented) return;
+      restoreHook?.(); restoreHook = null; surface.map = nextSkin; surface.needsUpdate = true;
+      restore(newStates); restore(oldStates);
+      for (const s of [...oldLights, ...newLights]) s.light.intensity = s.intensity;
+      // Retain the prior owned branch for exact cancel, but stop rendering it
+      // once the fade completes. Preview does not keep two visible heavy scenes.
+      prior?.removeFromParent(); writeRig(gl, rig, targetRig); invalidate();
+      if (!live(currentClock())) throw new Error("Scene retired during presentation");
+      presented = true;
+    } catch (error) { rollback(); throw error; }
   }
   return Object.freeze({
     commit(next: ChildSceneCommitOptions) {
@@ -141,16 +168,13 @@ export function createChildSceneTransition({ gl, scene, surface, prior, candidat
       return promise;
     },
     advance: step,
+    presentPreview,
     rollback,
     finalize() {
       try {
-        const at = currentClock(); if (!successful || finalized || !live(at)) throw new Error("Current completed transition required");
-        cleanupClock(); restoreHook?.(); restoreHook = null; surface.map = nextSkin; surface.needsUpdate = true;
-        restore(newStates); restore(oldStates);
-        for (const s of [...oldLights, ...newLights]) s.light.intensity = s.intensity;
-        prior?.removeFromParent(); writeRig(gl, rig, targetRig); invalidate();
+        presentPreview();
         if (!live(currentClock())) throw new Error("Scene retired during finalization");
-        finalized = true;
+        cleanupClock(); finalized = true;
       } catch (error) { rollback(); throw error; }
     },
     async join() { if (promise) await promise.catch(() => undefined); if (cleanupFailed) throw new Error("Scene transition cleanup failed"); },

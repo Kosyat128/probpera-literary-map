@@ -19,24 +19,37 @@ export interface ChildCanonicalBundle {
 }
 export interface ChildCanonicalRenderStage {
   commit(options?: ChildSceneCommitOptions): void | Promise<void>;
+  presentPreview?(): void | Promise<void>;
   rollback(): void | Promise<void>; finalize?(): void; join?(): Promise<void>; readonly residentBytes?: number;
 }
 export type ChildCanonicalEnvironment = Omit<ChildEngineEnvironment, "exactAge" | "contentVersion">;
+export interface ChildCanonicalPreviewSnapshot {
+  readonly revision: number; readonly phase: "preparing" | "ready" | "applying"; readonly scene: ChildNativeScene | null;
+}
 export interface ChildCanonicalSnapshot {
   readonly phase: "empty" | "preparing" | "ready" | "unavailable"; readonly revision: number; readonly scene: ChildNativeScene | null; readonly textures: ChildCanonicalTextures | null;
   readonly models?: ChildCanonicalBundle["models"]; readonly renderClass?: "geometry" | "3d-lite" | "static";
   readonly persistence?: "restoring" | "saving" | "saved" | "restore-failed" | "save-failed" | null;
+  /** Top-level resources remain the applied baseline until explicit apply. */
+  readonly preview?: ChildCanonicalPreviewSnapshot | null;
 }
 export interface ChildCanonicalResources {
   getSnapshot(): ChildCanonicalSnapshot; subscribe(listener: () => void): () => void; isCurrent(): boolean;
   select(owner: ChildEntityReference, sceneId: string): Promise<boolean>; restore?(): Promise<boolean>;
+  preview(owner: ChildEntityReference, sceneId: string): Promise<boolean>;
+  applyPreview(expectedRevision?: number): Promise<boolean>; cancelPreview(expectedRevision?: number): Promise<boolean>;
   attachRenderer?(tier: Common3dTierId, stage: (bundle: ChildCanonicalBundle) => Promise<ChildCanonicalRenderStage | null>, environment?: () => ChildCanonicalEnvironment): () => void;
   setTier?(tier: Common3dTierId): void; refreshEnvironment?(): void;
   attachRecipient(recipient: ChildNativeSceneRecipient): () => void; clear(): void; join(): Promise<void>; dispose(): Promise<void>; activate(): () => void;
 }
 type Owned = { bundle: ChildCanonicalBundle; deadline: number; decodedBytes: number; residentBytes: number; textures: Set<THREE.Texture>; bytes: Set<Uint8Array> };
-type Intent = { kind: "select" | "restore"; entity?: ChildEntityReference; sceneId?: string };
+type Intent = { kind: "select" | "restore" | "preview"; entity?: ChildEntityReference; sceneId?: string };
 type Retry = { tier: Common3dTierId; staticFallback: boolean; deadline: number; intent: Intent };
+type PreviewRequest = {
+  revision: number; ticket: number; phase: ChildCanonicalPreviewSnapshot["phase"]; owned: Owned | null; cancelled: boolean;
+  ready(value: boolean): void; decision: Promise<boolean>; decide(apply: boolean): void;
+  completion: Promise<boolean>; complete(value: boolean): void;
+};
 class ChildSceneTierError extends Error {}
 const digest = async (value: Uint8Array) => {
   if (!(value.buffer instanceof ArrayBuffer)) throw new Error("Owned unshared hash input required");
@@ -52,6 +65,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
   let environment: (() => ChildCanonicalEnvironment) | null = null;
   let timer: ReturnType<typeof setTimeout> | null = null, pendingAbort: AbortController | null = null, tail = Promise.resolve();
   let latestIntent: Intent | null = null, lastEnvironmentKey = "";
+  let previewRequest: PreviewRequest | null = null;
   const listeners = new Set<() => void>(), recipients = new Set<ChildNativeSceneRecipient>(), workers = new Set<Promise<unknown>>(), cancels = new Set<() => void>();
   const parent = controller.getSnapshot().context;
   function now() { const at = clock(); if (!Number.isFinite(at) || at < lastNow) { broken = true; throw new Error("Child monotonic clock unavailable"); } lastNow = at; return at; }
@@ -72,15 +86,16 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     }
     return !signal.aborted && valid(ticket, deadline());
   }
-  function compatible(bundle: ChildCanonicalBundle) {
+  function compatible(bundle: ChildCanonicalBundle, retained = false) {
     const engine = bundle.scene.modelPackage?.engineComposition;
     if (!engine) return true; const view = currentEnvironment();
-    return !!view && childEngineCompatible(engine, bundle.scene, view, bundle.tier);
+    return !!view && childEngineCompatible(engine, bundle.scene, retained ? { ...view, exploring: false } : view, bundle.tier);
   }
   function publish(phase: ChildCanonicalSnapshot["phase"], owned: Owned | null = null, persistence: ChildCanonicalSnapshot["persistence"] = null) {
     const engine = owned?.bundle.scene.modelPackage?.engineComposition;
     state = Object.freeze({ phase, revision: epoch, scene: owned?.bundle.scene ?? null, textures: owned?.bundle.textures ?? null,
-      ...(owned ? { models: owned.bundle.models } : {}), ...(engine && owned ? { renderClass: owned.bundle.staticFallback ? "static" as const : owned.bundle.tier === "economy" ? "3d-lite" as const : "geometry" as const } : {}), persistence });
+      ...(owned ? { models: owned.bundle.models } : {}), ...(engine && owned ? { renderClass: owned.bundle.staticFallback ? "static" as const : owned.bundle.tier === "economy" ? "3d-lite" as const : "geometry" as const } : {}), persistence,
+      preview: previewRequest && !previewRequest.cancelled ? Object.freeze({ revision: previewRequest.revision, phase: previewRequest.phase, scene: previewRequest.owned?.bundle.scene ?? null }) : null });
     for (const listener of [...listeners]) if (listeners.has(listener)) try { listener(); } catch { broken = true; }
   }
   function retireParts(sceneToken: string | undefined, models: ChildCanonicalBundle["models"], textures: Set<THREE.Texture>, bytes: Set<Uint8Array>) {
@@ -97,6 +112,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
   function track<T>(work: Promise<T>) { workers.add(work); void work.then(() => workers.delete(work), () => workers.delete(work)); return work; }
   function clear() {
     ++epoch; ++clearSequence; pendingAbort?.abort(); pendingAbort = null; cache.clear();
+    if (previewRequest) { previewRequest.cancelled = true; previewRequest.decide(false); previewRequest = null; }
     for (const cancel of [...cancels]) cancel(); if (timer !== null) clearTimeout(timer); timer = null;
     for (const r of [...recipients]) try { r.clear(); } catch { broken = true; }
     retire(active); active = null; publish("empty");
@@ -143,20 +159,32 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
       if (!current()) throw new Error("Child model retired"); return result;
     } catch (error) { result.fill(0); throw error; }
   }
-  async function choose(kind: "select" | "restore", entity?: ChildEntityReference, sceneId?: string, retry?: Retry): Promise<boolean> {
-    const scenes = controller.scenes; if (!scenes || !valid() || retry && latestIntent !== retry.intent) return false;
+  async function choose(kind: Intent["kind"], entity?: ChildEntityReference, sceneId?: string, retry?: Retry, preview?: PreviewRequest): Promise<boolean> {
+    const scenes = controller.scenes; if (!scenes || !valid() || retry && latestIntent !== retry.intent || kind === "preview" && (!preview || !renderer)) return false;
     const intent = retry?.intent ?? { kind, entity, sceneId }; if (!retry) latestIntent = intent;
+    const replacingPreview = previewRequest !== null;
     const ticket = ++epoch, requestedTier = retry?.tier ?? tier, staticFallback = retry?.staticFallback ?? false, originalClear = clearSequence;
     pendingAbort?.abort(); for (const cancel of [...cancels]) cancel(); const abort = new AbortController(); pendingAbort = abort;
+    if (previewRequest && previewRequest !== preview) { previewRequest.cancelled = true; previewRequest.decide(false); }
+    previewRequest = preview ?? null;
+    if (preview) { if (!preview.revision) preview.revision = ticket; preview.ticket = ticket; preview.phase = "preparing"; preview.owned = null; }
+    const cancelDecision = () => {
+      if (!preview) return; preview.cancelled = true; preview.decide(false);
+      // Notify only after all synchronous renderer abort recipients restored A.
+      queueMicrotask(() => { if (previewRequest === preview && preview.cancelled && state.preview) publish(state.phase, active, state.persistence); });
+    };
+    abort.signal.addEventListener("abort", cancelDecision, { once: true });
     const previousWork = tail; let releaseTail!: () => void; tail = new Promise(resolve => { releaseTail = resolve; });
     let nextRetry: Retry | null = null;
     const work = (async () => {
       await previousWork; if (!valid(ticket, retry?.deadline)) return false;
       let scene: ChildNativeScene | null = null, deadline = retry?.deadline ?? Infinity, candidate: Owned | null = null, stage: ChildCanonicalRenderStage | null = null, committed = false;
       const textures = new Set<THREE.Texture>(), bytes = new Set<Uint8Array>(), models = new Map<"stand" | "background", Common3dImported>();
+      const previousPersistence = state.persistence ?? null;
       let rollbackWork: Promise<void> | null = null;
       const rollbackStage = () => rollbackWork ??= (async () => {
         let failed = false;
+        if (preview?.owned) preview.cancelled = true;
         try { await stage?.rollback(); } catch { failed = true; }
         try { await stage?.join?.(); } catch { failed = true; }
         if (failed) throw new ChildSceneCleanupError("Renderer rollback or join failed");
@@ -167,9 +195,15 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         deadline = Math.min(deadline, next); if (requestTimer !== null) clearTimeout(requestTimer);
         requestTimer = setTimeout(() => { abort.abort(); for (const cancel of [...cancels]) cancel(); }, Math.max(1, deadline - now()));
       };
-      if (!active) publish("preparing", null, kind === "restore" ? "restoring" : "saving");
+      if (preview) publish(active ? "ready" : "empty", active, previousPersistence);
+      else if (!active) publish("preparing", null, kind === "restore" ? "restoring" : "saving");
       try {
         const saved = await scenes.readSelection(); if (!saved || saved.profileId !== parent?.profileId || !current()) return false;
+        if (preview && active) {
+          const baseline = childNativeAppearanceFromScene(active.bundle.scene);
+          if (!baseline || !saved.selection || !sameChildNativeAppearance(baseline, saved.selection)) return false;
+          narrowDeadline(active.deadline);
+        }
         const start = now();
         if (kind === "restore") {
           const restored = await scenes.restore(saved); if (!restored || !current()) return false;
@@ -269,6 +303,24 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         }
         const projected = childNativeAppearanceFromScene(scene); if (!projected || !current()) return false;
         if (kind === "restore" && (!saved.selection || !sameChildNativeAppearance(saved.selection, projected))) return false;
+        if (preview) {
+          // The existing serialized worker owns the entire inspection interval.
+          // No durable write or prior-resource retirement precedes user apply.
+          if (!stage?.presentPreview || !stage.finalize) return false;
+          await stage.commit({ signal: abort.signal, isCurrent: () => current() && !!candidate && compatible(candidate.bundle), absoluteDeadline: deadline });
+          if (!current() || !compatible(candidate.bundle)) return false;
+          preview.owned = candidate;
+          await stage.presentPreview();
+          if (!current() || !compatible(candidate.bundle)) return false;
+          preview.phase = "ready"; publish(active ? "ready" : "empty", active, previousPersistence);
+          if (!current() || previewRequest !== preview || preview.cancelled) return false;
+          preview.ready(true);
+          if (!await preview.decision || !current()) return false;
+          const fresh = await scenes.readSelection();
+          if (!fresh || !current() || fresh.profileId !== saved.profileId || fresh.revision !== saved.revision
+            || (fresh.selection === null) !== (saved.selection === null)
+            || fresh.selection && saved.selection && !sameChildNativeAppearance(fresh.selection, saved.selection)) return false;
+        }
         const remembered = await scenes.remember(scene, saved.revision);
         if (!remembered || remembered.profileId !== parent?.profileId || remembered.revision !== saved.revision + 1 || !remembered.selection || !sameChildNativeAppearance(remembered.selection, projected)) return false;
         const rollbackNative = async () => {
@@ -284,7 +336,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         };
         if (!current()) return await rollbackNative();
         try {
-          await stage?.commit({ signal: abort.signal, isCurrent: () => current() && !!candidate && compatible(candidate.bundle), absoluteDeadline: deadline });
+          if (!preview) await stage?.commit({ signal: abort.signal, isCurrent: () => current() && !!candidate && compatible(candidate.bundle), absoluteDeadline: deadline });
           if (!current() || !compatible(candidate.bundle)) return await rollbackNative();
           stage?.finalize?.();
           // Finalization can dispatch synchronous Three/host observers. Never
@@ -292,6 +344,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
           if (!current() || !compatible(candidate.bundle)) { broken = true; return await rollbackNative(); }
         } catch { return await rollbackNative(); }
         const prior = active; active = candidate; candidate = null; committed = true;
+        if (previewRequest === preview) previewRequest = null;
         // Always retire/release the prior native lease, even if notification or
         // one disposal observer fails. Unknown cleanup seals the local owner.
         try {
@@ -321,6 +374,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         return false;
       } finally {
         if (requestTimer !== null) clearTimeout(requestTimer);
+        abort.signal.removeEventListener("abort", cancelDecision);
         if (!committed) {
           try { await rollbackStage(); } catch { broken = true; clear(); void controller.suspend().catch(() => undefined); }
           if (candidate) retire(candidate);
@@ -330,38 +384,90 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
             try { if (!await scenes.release(scene.sceneToken)) { broken = true; clear(); void controller.suspend().catch(() => undefined); } } catch { broken = true; clear(); void controller.suspend().catch(() => undefined); }
           }
           if (ticket === epoch && valid()) {
-            if (active && valid(undefined, active.deadline)) publish("ready", active, kind === "restore" ? "restore-failed" : "save-failed");
-            else { retire(active); active = null; publish("unavailable", null, kind === "restore" ? "restore-failed" : "save-failed"); }
+            const persistence = preview && preview.phase !== "applying" ? previousPersistence : kind === "restore" ? "restore-failed" : "save-failed";
+            if (active && valid(undefined, active.deadline)) publish("ready", active, persistence);
+            else { retire(active); active = null; publish(preview ? "empty" : "unavailable", null, persistence); }
           }
         }
         if (pendingAbort === abort) pendingAbort = null;
       }
     })();
-    const result = await track(work).finally(releaseTail);
+    const completion = track(work).finally(releaseTail);
+    if ((preview || replacingPreview) && ticket === epoch && valid()) publish(active ? "ready" : "empty", active, state.persistence);
+    const result = await completion;
     // Fresh native lease, after releasing/joining the declined candidate. The
     // original absolute deadline is carried; a later user intent wins the race.
     const retryNext = nextRetry as Retry | null;
-    if (!result && retryNext && ticket === epoch && latestIntent === intent && valid(undefined, retryNext.deadline)) return choose(kind, entity, sceneId, retryNext);
+    if (!result && retryNext && ticket === epoch && latestIntent === intent && valid(undefined, retryNext.deadline)) return choose(kind, entity, sceneId, retryNext, preview);
     return result;
+  }
+  function preview(entity: ChildEntityReference, id: string): Promise<boolean> {
+    let ready!: (value: boolean) => void, decide!: (value: boolean) => void, complete!: (value: boolean) => void;
+    const readiness = new Promise<boolean>(resolve => { ready = resolve; });
+    const request: PreviewRequest = { revision: 0, ticket: 0, phase: "preparing", owned: null, cancelled: false, ready,
+      decision: new Promise(resolve => { decide = resolve; }), decide: value => decide(value),
+      completion: new Promise(resolve => { complete = resolve; }), complete: value => complete(value) };
+    const finish = (result: boolean) => {
+      if (broken) { clear(); void controller.suspend().catch(() => undefined); }
+      else if (previewRequest === request) { previewRequest = null; publish(state.phase, active, state.persistence); }
+      request.ready(false); request.complete(result);
+    };
+    void choose("preview", entity, id, undefined, request).then(finish, () => { broken = true; clear(); void controller.suspend().catch(() => undefined); finish(false); });
+    return readiness;
+  }
+  async function applyPreview(expectedRevision?: number): Promise<boolean> {
+    const request = previewRequest, owned = request?.owned;
+    if (!request || request.cancelled || request.phase !== "ready" || expectedRevision !== undefined && expectedRevision !== request.revision
+      || !owned) return false;
+    if (!valid(request.ticket, owned.deadline) || !compatible(owned.bundle)) { await cancelPreview(request.revision); return false; }
+    request.phase = "applying"; publish(state.phase, active, state.persistence); request.decide(true);
+    return request.completion;
+  }
+  async function cancelPreview(expectedRevision?: number): Promise<boolean> {
+    const request = previewRequest;
+    if (!request || expectedRevision !== undefined && expectedRevision !== request.revision) return false;
+    const ticket = epoch + (request.cancelled ? 0 : 1);
+    if (!request.cancelled) {
+      request.cancelled = true; ++epoch; pendingAbort?.abort(); request.decide(false);
+      publish(state.phase, active, state.persistence);
+    }
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+    const joined = await Promise.race([request.completion.then(() => true), new Promise<false>(resolve => {
+      timeout = setTimeout(() => resolve(false), 5000);
+    })]);
+    if (timeout !== undefined) clearTimeout(timeout);
+    // A timeout grants no navigation; the original worker still owns cleanup.
+    // A later B likewise cannot be consumed by the older cancellation of A.
+    return joined && epoch === ticket && previewRequest === null && admitted();
   }
   function refreshEnvironment() {
     const key = environmentKey(), changed = key !== lastEnvironmentKey; lastEnvironmentKey = key;
-    if (active && !compatible(active.bundle)) {
+    const held = previewRequest?.owned;
+    // Inspection changes presentation, not the captured selection or lease.
+    // The hidden baseline need not itself support Explore; it must still meet
+    // the original age/edition/platform/visibility requirements for rollback.
+    if (active && !compatible(active.bundle, !!held)) {
       const token = active.bundle.scene.sceneToken; clear();
       track(Promise.resolve(controller.scenes?.release(token)).then(ok => { if (ok === false) return controller.suspend(); }));
+    } else if (held) {
+      if (!compatible(held.bundle)) void cancelPreview(previewRequest!.revision);
     } else if (pendingAbort && changed) { ++epoch; pendingAbort.abort(); pendingAbort = null; }
   }
   const owner: ChildNativeSceneRecipient = { clear, join }; let detachOwner: (() => void) | undefined;
   return Object.freeze({
     getSnapshot: () => state, subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener); }; },
-    isCurrent: () => !!active && state.phase === "ready" && valid(undefined, active.deadline) && compatible(active.bundle),
+    isCurrent: () => {
+      const shown = previewRequest?.owned;
+      if (shown && !previewRequest!.cancelled) return valid(previewRequest!.ticket, shown.deadline) && compatible(shown.bundle);
+      return !!active && state.phase === "ready" && valid(undefined, active.deadline) && compatible(active.bundle, !!shown);
+    },
     activate() { if (disposed) throw new Error("Child resources disposed"); if (!detachOwner) detachOwner = controller.scenes?.attachRecipient(owner); return () => { clear(); detachOwner?.(); detachOwner = undefined; }; },
-    select: (entity: ChildEntityReference, id: string) => choose("select", entity, id), restore: () => choose("restore"), clear, join, refreshEnvironment,
+    select: (entity: ChildEntityReference, id: string) => choose("select", entity, id), restore: () => choose("restore"), preview, applyPreview, cancelPreview, clear, join, refreshEnvironment,
     attachRenderer(nextTier: Common3dTierId, next: (bundle: ChildCanonicalBundle) => Promise<ChildCanonicalRenderStage | null>, nextEnvironment?: () => ChildCanonicalEnvironment) {
       if (renderer) throw new Error("One original composition renderer required"); tier = nextTier; renderer = next; environment = nextEnvironment ?? null; lastEnvironmentKey = environmentKey();
       return () => { if (renderer === next) { clear(); renderer = null; environment = null; } };
     },
-    setTier(nextTier: Common3dTierId) { if (nextTier === tier || disposed) return; tier = nextTier; if (pendingAbort && latestIntent) void choose(latestIntent.kind, latestIntent.entity, latestIntent.sceneId); else if (active) void choose("restore"); },
+    setTier(nextTier: Common3dTierId) { if (nextTier === tier || disposed) return; tier = nextTier; if (previewRequest) void choose("restore"); else if (pendingAbort && latestIntent) void choose(latestIntent.kind, latestIntent.entity, latestIntent.sceneId); else if (active) void choose("restore"); },
     attachRecipient(recipient: ChildNativeSceneRecipient) {
       if (disposed) throw new Error("Child resource recipient retired"); recipients.add(recipient);
       return () => { recipient.clear(); recipients.delete(recipient); track(Promise.resolve().then(() => recipient.join()).catch(error => { broken = true; throw error; })); };

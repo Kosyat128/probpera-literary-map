@@ -8,6 +8,7 @@ import { CHILD_ENGINE_FIXED_RESIDENT_BYTES, childEngineProceduralReserve, ChildS
 import { createBookCloudStandGeometry } from "./globeBookCloudStandGeometry";
 import { createGlobeLibrary } from "./globeLibraryGeometry";
 import type { GlobeQualityTier } from "./globeQuality";
+import { beginGlobePointerGesture, updateGlobePointerGesture, isGlobePointerTap, type GlobePointerGesture } from "./globeInteraction";
 import { advanceChildSceneAmbience, createChildSceneTransition, createChildSkinBlend, prepareChildBranchFade, type ChildSceneTransition, type ChildSceneRig, type ChildSceneCommitOptions } from "./childSceneTransition";
 
 export interface ChildNativeCompositionProps {
@@ -15,15 +16,17 @@ export interface ChildNativeCompositionProps {
   onHotspot(target: ChildEntityReference): void;
   editionId?: string; active?: boolean; exploring?: boolean; reducedMotion?: boolean; preloadPaused?: boolean;
 }
-type RenderOwner = { clear(): void; group: THREE.Group; hotspots: THREE.Mesh[]; publicMap: THREE.Texture | null; engine?: ChildEngineComposition; startedAt: number };
+type RenderOwner = { clear(): void; group: THREE.Group; hotspots: THREE.Mesh[]; publicMap: THREE.Texture | null; engine?: ChildEngineComposition; startedAt: number; ready: boolean };
+type PreviewFrame = { finish(): void; cancel(): void };
 /** Lives in the original GlobeScene. The actual renderer/camera/globe warms and
  * transitions its branches. Booky remains its existing screen avatar; reading
  * that anchor never moves its controls, canvas, animation or retained state. */
 export default function GlobeChildNativeComposition({ resources, globeRef, quality, onHotspot, editionId = "", active = true, exploring = false, reducedMotion = false, preloadPaused = false }: ChildNativeCompositionProps) {
   const { scene, gl, camera, invalidate } = useThree();
-  const owner = useRef<RenderOwner | null>(null), click = useRef(onHotspot), currentQuality = useRef(quality);
+  const owner = useRef<RenderOwner | null>(null), previewOwner = useRef<RenderOwner | null>(null), click = useRef(onHotspot), currentQuality = useRef(quality);
   const view = useRef({ editionId, active, exploring, reducedMotion, preloadPaused }), transition = useRef<ChildSceneTransition | null>(null);
   const rig = useRef<ChildSceneRig | null>(null), baselineExposure = useRef(gl.toneMappingExposure), lastFrame = useRef(-1), ambienceTime = useRef(0);
+  const previewFrames = useRef(new Set<PreviewFrame>());
   useLayoutEffect(() => { view.current = { editionId, active, exploring, reducedMotion, preloadPaused }; resources.refreshEnvironment?.(); }, [resources, editionId, active, exploring, reducedMotion, preloadPaused]);
   useLayoutEffect(() => { currentQuality.current = quality; resources.setTier?.(quality); }, [quality, resources]);
   useLayoutEffect(() => { click.current = onHotspot; }, [onHotspot]);
@@ -41,6 +44,7 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
     const cleanup = () => {
       transition.current?.rollback(); transition.current = null;
       for (const pending of [...staged]) pending.clear();
+      previewOwner.current?.clear(); previewOwner.current = null;
       owner.current?.clear(); owner.current = null; resetRig();
     };
     const finishGpu = async () => {
@@ -76,13 +80,33 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
       const hotspots: THREE.Mesh[] = [], borrowed: THREE.Material[] = [], geometry: THREE.BufferGeometry[] = [];
       let stand: ReturnType<typeof createBookCloudStandGeometry> | undefined, background: ReturnType<typeof createGlobeLibrary> | undefined;
       let extraResidentBytes = 0, actualTriangles = 0;
-      let cleared = false, warmingStage = true, disposedStage = false, applied = false, localTransition: ChildSceneTransition | null = null, prior: RenderOwner | null = null;
+      let cleared = false, warmingStage = true, disposedStage = false, applied = false, previewing = false, promoted = false, localTransition: ChildSceneTransition | null = null, prior: RenderOwner | null = null;
+      let priorParent: THREE.Object3D | null = null, priorIndex = -1;
+      let priorAmbienceTime: number | null = null;
+      let legacyRig: { ambient: THREE.Color; key: THREE.Color; ambientIntensity: number; keyIntensity: number; exposure: number } | null = null;
+      let previewFrame: PreviewFrame | null = null, previewShown: Promise<void> | null = null;
       const pending = { clear }; staged.add(pending); bundle.preparation?.signal.addEventListener("abort", clear, { once: true });
       function clear() {
         if (cleared) return; cleared = true; staged.delete(pending); bundle.preparation?.signal.removeEventListener("abort", clear);
+        previewFrame?.cancel();
         localTransition?.rollback(); if (transition.current === localTransition) transition.current = null;
+        if (previewOwner.current?.clear === clear) previewOwner.current = null;
         const owns = owner.current?.clear === clear; if (owns) owner.current = null;
         if (applied && surface instanceof THREE.MeshPhysicalMaterial && surface.map === bundle.textures.skin) { surface.map = owns ? publicMap : previousSurfaceMap; surface.needsUpdate = true; if (owns) resetRig(); }
+        if (previewing && !promoted && !engine && prior && priorParent) {
+          try {
+            if (prior.group.parent !== priorParent) priorParent.add(prior.group);
+            const index = priorParent.children.indexOf(prior.group);
+            if (priorIndex >= 0 && index !== priorIndex) { priorParent.children.splice(index, 1); priorParent.children.splice(priorIndex, 0, prior.group); }
+          } catch { cleanupFailed = true; }
+        }
+        if (previewing && !promoted && legacyRig) {
+          ambient.color.copy(legacyRig.ambient); key.color.copy(legacyRig.key);
+          ambient.intensity = legacyRig.ambientIntensity; key.intensity = legacyRig.keyIntensity; gl.toneMappingExposure = legacyRig.exposure;
+        }
+        if (!promoted && priorAmbienceTime !== null) {
+          ambienceTime.current = priorAmbienceTime; lastFrame.current = -1;
+        }
         try { group.removeFromParent(); } catch { cleanupFailed = true; } for (const h of hotspots) { h.userData = {}; h.raycast = () => undefined; }
         if (!warmingStage) disposeStage(); safeInvalidate();
       }
@@ -252,20 +276,50 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
           async commit(options?: ChildSceneCommitOptions) {
             if (cleared || !liveAnchors()) throw new Error("Original composition retired");
             prior = owner.current;
+            priorAmbienceTime = ambienceTime.current;
+            priorParent = prior?.group.parent ?? null; priorIndex = prior && priorParent ? priorParent.children.indexOf(prior.group) : -1;
             if (engine) {
               if (!options || !blend) throw new Error("Current native transaction required");
               localTransition = createChildSceneTransition({ gl, scene, surface, prior: prior?.group ?? null, candidate: group, nextSkin: bundle.textures.skin, blend,
                 rig: localRig, engine, baselineExposure: baselineExposure.current, visible: liveAnchors, reducedMotion: () => view.current.reducedMotion, invalidate: safeInvalidate, currentClock: () => performance.now() });
               transition.current = localTransition; await localTransition.commit({ ...options, isCurrent: () => options.isCurrent() && liveAnchors() });
             } else {
+              legacyRig = { ambient: ambient.color.clone(), key: key.color.clone(), ambientIntensity: ambient.intensity, keyIntensity: key.intensity, exposure: gl.toneMappingExposure };
               scene.add(group); surface.map = bundle.textures.skin; surface.needsUpdate = true; applied = true;
             }
+          },
+          presentPreview() {
+            if (previewShown) return previewShown;
+            if (cleared || !liveAnchors() || !applied && !localTransition) throw new Error("Current shown preview required");
+            localTransition?.presentPreview();
+            // Set before observer callbacks so failed legacy detach can restore.
+            previewing = true;
+            if (!engine) { prior?.group.removeFromParent(); resetRig(); }
+            if (cleared || !liveAnchors()) throw new Error("Preview retired during presentation");
+            if (transition.current === localTransition) transition.current = null;
+            previewOwner.current = { clear, group, hotspots, publicMap, engine, startedAt: performance.now(), ready: false };
+            previewShown = new Promise<void>((resolve, reject) => {
+              const retire = () => { if (previewFrame) previewFrames.current.delete(previewFrame); previewFrame = null; };
+              previewFrame = {
+                finish() {
+                  const shown = previewOwner.current;
+                  if (cleared || !liveAnchors() || shown?.clear !== clear || !view.current.active || document.visibilityState !== "visible") {
+                    retire(); reject(new Error("Preview retired before its visible frame")); return;
+                  }
+                  shown.ready = true; retire(); resolve();
+                },
+                cancel() { retire(); reject(new Error("Preview frame retired")); },
+              };
+              previewFrames.current.add(previewFrame);
+            });
+            safeInvalidate(); return previewShown;
           },
           finalize() {
             if (cleared || !liveAnchors()) throw new Error("Current completed composition required");
             localTransition?.finalize(); if (!engine) resetRig(); if (transition.current === localTransition) transition.current = null;
-            applied = true; staged.delete(pending); bundle.preparation?.signal.removeEventListener("abort", clear);
-            owner.current = { clear, group, hotspots, publicMap, engine, startedAt: performance.now() }; prior?.clear(); safeInvalidate();
+            applied = promoted = true; staged.delete(pending); bundle.preparation?.signal.removeEventListener("abort", clear);
+            if (previewOwner.current?.clear === clear) previewOwner.current = null;
+            owner.current = { clear, group, hotspots, publicMap, engine, startedAt: performance.now(), ready: true }; prior?.clear(); safeInvalidate();
           },
           rollback: clear,
           async join() { await localTransition?.join(); await finishGpu(); if (cleanupFailed) throw new Error("Original renderer disposal failed"); },
@@ -294,25 +348,46 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
   }, [gl, resources]);
   useLayoutEffect(() => {
     const canvas = gl.domElement;
+    let gesture: GlobePointerGesture | null = null, gestureOwner: RenderOwner | null = null;
+    const reset = () => { gesture = null; gestureOwner = null; };
+    const eligible = () => {
+      const value = previewOwner.current ?? owner.current;
+      return value?.ready && view.current.active && view.current.exploring && document.visibilityState === "visible"
+        && !transition.current && resources.isCurrent() && !gl.getContext().isContextLost() ? value : null;
+    };
+    const begin = (event: PointerEvent) => {
+      // A second pointer retires the whole tap. Camera orbit/pinch/scroll keep
+      // their original listeners; this observer never captures or cancels input.
+      if (gesture && event.pointerId !== gesture.pointerId) { reset(); return; }
+      gestureOwner = eligible(); gesture = gestureOwner ? beginGlobePointerGesture(event) : null;
+    };
+    const move = (event: PointerEvent) => { gesture = updateGlobePointerGesture(gesture, event); };
     const pick = (event: PointerEvent) => {
-      const value = owner.current; if (!value || transition.current || !resources.isCurrent() || gl.getContext().isContextLost()) return;
-      if (value.engine) {
-        if (!view.current.exploring) return;
-        const box = document.querySelector<HTMLElement>("[data-planet-mascot-avatar]")?.getBoundingClientRect(), pad = value.engine.anchors.bookyPaddingPx;
-        if (box && event.clientX >= box.left - pad && event.clientX <= box.right + pad && event.clientY >= box.top - pad && event.clientY <= box.bottom + pad) return;
-      }
+      const value = eligible(), tap = value === gestureOwner && isGlobePointerTap(gesture, event); reset();
+      if (!value || !tap) return;
+      const box = document.querySelector<HTMLElement>("[data-planet-mascot-avatar]")?.getBoundingClientRect(), pad = value.engine?.anchors.bookyPaddingPx ?? 0;
+      if (box && event.clientX >= box.left - pad && event.clientX <= box.right + pad && event.clientY >= box.top - pad && event.clientY <= box.bottom + pad) return;
       const rect = canvas.getBoundingClientRect(); if (rect.width <= 0 || rect.height <= 0) return;
       const ray = new THREE.Raycaster(); ray.setFromCamera(new THREE.Vector2((event.clientX - rect.left) / rect.width * 2 - 1, -(event.clientY - rect.top) / rect.height * 2 + 1), camera);
       const globe = globeRef.current, hit = ray.intersectObjects(globe ? [globe, ...value.hotspots] : value.hotspots, false)[0];
-      const target = hit?.object.userData.target as ChildEntityReference | undefined; if (target && resources.isCurrent()) click.current(target);
+      const target = hit?.object.userData.target as ChildEntityReference | undefined; if (target && eligible() === value) click.current(target);
     };
-    canvas.addEventListener("pointerup", pick); return () => canvas.removeEventListener("pointerup", pick);
+    const observers: Array<[string, EventListener]> = [["pointerdown", begin as EventListener], ["pointermove", move as EventListener],
+      ["pointerup", pick as EventListener], ["pointercancel", reset], ["pointerleave", reset], ["lostpointercapture", reset], ["contextmenu", reset]];
+    for (const [type, observer] of observers) canvas.addEventListener(type, observer, { passive: true });
+    document.addEventListener("visibilitychange", reset);
+    return () => { reset(); for (const [type, observer] of observers) canvas.removeEventListener(type, observer); document.removeEventListener("visibilitychange", reset); };
   }, [camera, gl, resources, globeRef]);
   useFrame(() => {
     const at = performance.now(), previous = lastFrame.current; lastFrame.current = at;
-    if (owner.current && (!resources.isCurrent() || gl.getContext().isContextLost())) { resources.clear(); return; }
+    if ((previewOwner.current || owner.current) && (!resources.isCurrent() || gl.getContext().isContextLost())) {
+      const held = previewOwner.current && resources.getSnapshot?.().preview;
+      if (held && !gl.getContext().isContextLost()) void resources.cancelPreview(held.revision);
+      else resources.clear();
+      return;
+    }
     transition.current?.advance(at);
-    const value = owner.current;
+    const value = previewOwner.current ?? owner.current;
     if (!transition.current && value?.engine && rig.current) {
       if (view.current.active && document.visibilityState === "visible" && !view.current.reducedMotion && previous >= 0) ambienceTime.current += Math.min(50, Math.max(0, at - previous));
       advanceChildSceneAmbience(gl, rig.current, value.engine, baselineExposure.current, ambienceTime.current, view.current.active && document.visibilityState === "visible", view.current.reducedMotion);
@@ -322,8 +397,17 @@ export default function GlobeChildNativeComposition({ resources, globeRef, quali
   // original renderer, checking its actual context before every visible pass.
   useFrame(() => {
     const context = gl.getContext();
-    if (context.isContextLost()) { if (owner.current || transition.current) resources.clear(); return; }
-    try { gl.render(scene, camera); } catch (error) { if (!context.isContextLost()) throw error; resources.clear(); }
+    if (context.isContextLost()) { if (previewOwner.current || owner.current || transition.current) resources.clear(); return; }
+    try {
+      gl.render(scene, camera);
+      if (context.isContextLost()) { resources.clear(); return; }
+      if (previewFrames.current.size && context.getError() !== context.NO_ERROR) {
+        for (const frame of [...previewFrames.current]) frame.cancel();
+        const held = resources.getSnapshot?.().preview; if (held) void resources.cancelPreview(held.revision);
+        return;
+      }
+      for (const frame of [...previewFrames.current]) frame.finish();
+    } catch (error) { if (!context.isContextLost()) throw error; resources.clear(); }
   }, 1);
   return null;
 }

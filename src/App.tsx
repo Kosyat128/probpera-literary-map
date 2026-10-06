@@ -640,7 +640,8 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
   const inspectionSnapshot = useSyncExternalStore(sceneInspection.subscribe, sceneInspection.getSnapshot, sceneInspection.getSnapshot);
   const manuscriptMarkerRef = useRef<HTMLButtonElement>(null);
   const sceneInspectionBridge = useMemo(() => ({ controller: sceneInspection, markerRef: manuscriptMarkerRef,
-    mode: inspectionSnapshot.mode }), [sceneInspection, inspectionSnapshot.mode]);
+    mode: inspectionSnapshot.mode, cameraSession: inspectionSnapshot.sessionId === null ? null : `adult-explore:${inspectionSnapshot.sessionId}` }),
+    [sceneInspection, inspectionSnapshot.mode, inspectionSnapshot.sessionId]);
   useEffect(() => () => {
     // Pure transient controller: invalidate late actions on unmount while
     // allowing React StrictMode to re-establish the same instance's context.
@@ -2602,6 +2603,7 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
     onState: standInspection.report,
   }), [standInspectionSnapshot, standInspectionInsets, standInspection, customizationAvailable, composition.snapshot.editor]);
   const canInspectStand = customizationAvailable && composition.snapshot.editor !== null
+    && composition.snapshot.saveState !== "saving"
     && isIncludedGlobeStandId(composition.snapshot.displayed.standId)
     && (composition.snapshot.phase === "idle" || composition.snapshot.phase === "preview")
     && standInspectionSnapshot.phase === "closed";
@@ -2613,16 +2615,18 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
     composition.controller.setVisibility(available);
     const displayed = composition.controller.getSnapshot();
     standInspection.setContext({ enabled: isPlanetApplication && displayed.phase !== "error", visible: available,
-      editorOpen: displayed.editor !== null, ready: displayed.phase === "idle" || displayed.phase === "preview",
+      editorOpen: displayed.editor !== null, ready: displayed.saveState !== "saving" && (displayed.phase === "idle" || displayed.phase === "preview"),
       standId: displayed.displayed.standId, renderRevision: displayed.renderRevision });
     sceneInspection.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
-      visible: available, editorOpen: composition.snapshot.editor !== null,
-      appliedBackgroundId: composition.snapshot.applied.backgroundId,
-      displayedBackgroundId: composition.snapshot.displayed.backgroundId });
+      visible: available && standInspectionSnapshot.phase === "closed", editorOpen: displayed.editor !== null,
+      previewReady: displayed.phase === "preview" && displayed.saveState !== "saving",
+      appliedBackgroundId: displayed.applied.backgroundId,
+      displayedBackgroundId: displayed.displayed.backgroundId });
   }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
     atlasExperience.state.filtersOpen, platformVisibility, composition.controller, isPlanetApplication, customizationSceneReady,
     sceneInspection, composition.snapshot.editor, composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId,
-    standInspection, customizationAvailable, composition.snapshot.displayed.standId, composition.snapshot.renderRevision, composition.snapshot.phase]);
+    standInspection, customizationAvailable, composition.snapshot.displayed.standId, composition.snapshot.renderRevision,
+    composition.snapshot.phase, composition.snapshot.saveState, standInspectionSnapshot.phase]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";
@@ -3204,7 +3208,11 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
                   inspection={{ phase: standInspectionSnapshot.phase, available: canInspectStand,
                     onStart: standInspection.start, onReturn: standInspection.returnToGlobe, onInsetsChange: updateStandInspectionInsets }} />
                   <PlanetSceneInspectionControls controller={sceneInspection} markerRef={manuscriptMarkerRef}
-                    onOpenBooks={() => { cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true); }} />
+                    onOpenBooks={() => { cancelNativeNavigation(); const intent = mascotFocusSequence.current;
+                      void composition.controller.cancelAndWait().then(joined => {
+                      if (!joined || mascotFocusSequence.current !== intent) return;
+                      cancelNativeNavigation(); requestBookRuntime(); setBookLoadRequested(true); setNativeCollectionOpen(true);
+                    }); }} />
                 </> : undefined}
                 showNobelLaureates={
                   atlasFilter === "nobel" ||

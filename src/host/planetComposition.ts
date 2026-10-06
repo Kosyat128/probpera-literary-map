@@ -11,6 +11,8 @@ import {
 
 export const PLANET_COMPOSITION_CONFIRMATION_TIMEOUT_MS = 5_000;
 export const PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS = 5_000;
+/** One bounded inspection session; changing tabs/candidates never renews it. */
+export const PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS = 60_000;
 export type PlanetCompositionSnapshot = Readonly<{
   applied: GlobeCompositionSelection;
   displayed: GlobeCompositionSelection;
@@ -18,6 +20,7 @@ export type PlanetCompositionSnapshot = Readonly<{
   phase: "idle" | "preparing" | "preview" | "error";
   editor: "stand" | "background" | null;
   saveState: "idle" | "saving" | "failed";
+  previewSession: number | null;
   reason: "render-failed" | "preview-timeout" | "invalid-preference" | "preference-unavailable" | "incompatible" | null;
 }>;
 export interface PlanetCompositionController {
@@ -34,6 +37,7 @@ export interface PlanetCompositionController {
   failRendering(revision: number): boolean;
   apply(): boolean;
   cancel(): void;
+  cancelAndWait(): Promise<boolean>;
   retrySave(): boolean;
   refreshEnvironment(): void;
 }
@@ -47,24 +51,25 @@ export type PlanetCompositionOptions = Readonly<{
   readLegacyEdition?: () => unknown;
 }>;
 
-interface PreferenceQueue { tail: Promise<void>; revision: number; }
+interface PreferenceQueue { tail: Promise<void>; revision: number; recovery: string | null; }
 const queues = new WeakMap<PreferenceStore, PreferenceQueue>();
 let commitSequence = 0;
 function queueFor(preferences: PreferenceStore) {
   let queue = queues.get(preferences);
-  if (!queue) { queue = { tail: Promise.resolve(), revision: 0 }; queues.set(preferences, queue); }
+  if (!queue) { queue = { tail: Promise.resolve(), revision: 0, recovery: null }; queues.set(preferences, queue); }
   return queue;
 }
 const partKeys = Object.freeze({ edition: "editionId", stand: "standId", background: "backgroundId" } as const);
 type PendingKind = "restore" | "migration" | "edition" | "preview" | "environment";
-type SaveOperation = { result: Promise<boolean>; outcome: boolean | undefined };
+type SaveOperation = { result: Promise<boolean>; outcome: boolean | undefined; cancelled: boolean;
+  selection: GlobeCompositionSelection; baseline: GlobeCompositionSelection; epoch: number; intent: number };
 
 /** One local preference record; rendering, atlas leases and durable storage remain port responsibilities. */
 export function createPlanetCompositionController(options: PlanetCompositionOptions): PlanetCompositionController {
   const { preferences, enabled, access, getEnvironment, readLegacyEdition } = options;
   const initialSnapshot: PlanetCompositionSnapshot = Object.freeze({
     applied: DEFAULT_GLOBE_COMPOSITION_SELECTION, displayed: DEFAULT_GLOBE_COMPOSITION_SELECTION,
-    renderRevision: 0, phase: "idle", editor: null, saveState: "idle", reason: null,
+    renderRevision: 0, phase: "idle", editor: null, saveState: "idle", reason: null, previewSession: null,
   });
   let snapshot = initialSnapshot;
   let active = false, visible = true;
@@ -77,10 +82,19 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
   let readTimer: ReturnType<typeof setTimeout> | null = null;
   let frameTimer: ReturnType<typeof setTimeout> | null = null;
   let saveTimer: ReturnType<typeof setTimeout> | null = null;
+  let inspectionTimer: ReturnType<typeof setTimeout> | null = null, inspectionSequence = 0;
   const current = (epoch: number) => active && lifetime === epoch;
   const clearRead = () => { if (readTimer !== null) clearTimeout(readTimer); readTimer = null; };
   const clearFrame = () => { if (frameTimer !== null) clearTimeout(frameTimer); frameTimer = null; };
   const clearSave = () => { if (saveTimer !== null) clearTimeout(saveTimer); saveTimer = null; };
+  const clearInspection = () => { if (inspectionTimer !== null) clearTimeout(inspectionTimer); inspectionTimer = null; };
+  function retireSave() {
+    if (saveOperation && saveOperation.outcome === undefined) {
+      saveOperation.cancelled = true;
+      if (snapshot.saveState === "saving") snapshot = Object.freeze({ ...snapshot, saveState: "failed" });
+    }
+    clearSave();
+  }
   function compatible(selection: unknown): selection is GlobeCompositionSelection {
     if (!enabled || access !== "adult") return false;
     try { return validateGlobeCompositionSelection(selection, getEnvironment?.() ?? { qualityTier: "high", access }); }
@@ -89,20 +103,31 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
   function publish(next: PlanetCompositionSnapshot) {
     snapshot = Object.freeze(next);
     for (const listener of [...listeners]) {
-      if (!active) break;
+      if (!active || snapshot !== next) break;
       if (!listeners.has(listener)) continue;
       try { listener(); } catch { /* Observers cannot own a composition transaction. */ }
     }
   }
   function fenceHydration() {
+    retireSave();
     ++intent; ++readRevision;
     hydrationFinished = true;
     clearRead();
   }
   function rollback(reason: PlanetCompositionSnapshot["reason"], close: boolean) {
-    clearFrame(); ready.clear(); pending = null;
+    retireSave(); clearFrame(); clearInspection(); ready.clear(); pending = null;
     publish({ ...snapshot, displayed: snapshot.applied, renderRevision: snapshot.renderRevision + 1,
-      editor: close ? null : snapshot.editor, phase: reason ? "error" : "idle", reason });
+      editor: close ? null : snapshot.editor, phase: reason ? "error" : "idle", reason, previewSession: null });
+  }
+  function inspectionSession() {
+    if (snapshot.previewSession !== null) return snapshot.previewSession;
+    const session = ++inspectionSequence, epoch = lifetime;
+    clearInspection();
+    inspectionTimer = setTimeout(() => {
+      if (!current(epoch) || snapshot.previewSession !== session) return;
+      fenceHydration(); rollback("preview-timeout", true);
+    }, PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS);
+    return session;
   }
   function prepare(selection: GlobeCompositionSelection, kind: PendingKind, editor = snapshot.editor) {
     clearFrame(); ready.clear(); pending = kind;
@@ -117,41 +142,77 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
   }
   function watchSave(operation: SaveOperation) {
     clearSave();
-    if (operation.outcome !== undefined) {
-      publish({ ...snapshot, saveState: operation.outcome ? "idle" : "failed" });
-      return;
-    }
+    if (operation.outcome !== undefined) return;
     const epoch = lifetime;
     saveTimer = setTimeout(() => {
       if (!current(epoch) || saveOperation !== operation) return;
       saveTimer = null;
-      publish({ ...snapshot, saveState: "failed" });
+      operation.cancelled = true;
+      rollback("preference-unavailable", false);
+      if (saveOperation === operation) publish({ ...snapshot, saveState: "failed" });
     }, PLANET_COMPOSITION_CONFIRMATION_TIMEOUT_MS);
   }
-  function save(selection: GlobeCompositionSelection, next = snapshot) {
+  function save(selection: GlobeCompositionSelection, next = snapshot, recoveryOnly = false) {
     // A correlation token, never an authorization proof; entropy also separates independent runtimes.
     const commitId = `composition-${Date.now().toString(36)}-${(++commitSequence).toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
     const raw = serializeGlobeComposition({ schemaVersion: 1, commitId, selection });
-    if (raw === null) { publish({ ...next, saveState: "failed" }); return; }
+    const baseline = snapshot.applied;
+    const original = serializeGlobeComposition({ schemaVersion: 1, commitId: `${commitId}-rollback`, selection: baseline });
+    if (raw === null || original === null) { rollback("preference-unavailable", false); publish({ ...snapshot, saveState: "failed" }); return; }
     const queue = queueFor(preferences), revision = ++queue.revision;
-    const result = queue.tail.then(async () => {
-      // An unstarted older commit may be superseded; a started port write must settle first.
-      if (queue.revision !== revision) return false;
-      try { return await preferences.set(GLOBE_COMPOSITION_PREFERENCE_KEY, raw) === true; }
+    const operation: SaveOperation = { result: Promise.resolve(false), outcome: undefined, cancelled: false,
+      selection, baseline, epoch: lifetime, intent };
+    const write = async (value: string) => {
+      try { return await preferences.set(GLOBE_COMPOSITION_PREFERENCE_KEY, value) === true; }
       catch { return false; }
+    };
+    const owns = () => !operation.cancelled && current(operation.epoch) && visible && intent === operation.intent
+      && saveOperation === operation && queue.revision === revision && compatible(selection)
+      && (recoveryOnly || sameGlobeComposition(snapshot.displayed, selection));
+    const result = queue.tail.then(async () => {
+      // A started write and its compensating baseline write are one queue item.
+      // Timeout/cancel cannot let a late candidate overwrite the next intent.
+      if (!owns() || queue.revision !== revision) return false;
+      if (queue.recovery !== null) {
+        const recovery = queue.recovery;
+        if (!await write(recovery)) return false;
+        if (queue.recovery === recovery) queue.recovery = null;
+        if (!owns()) return false;
+      }
+      queue.recovery = original;
+      const saved = await write(raw);
+      if (saved && owns()) {
+        queue.recovery = null;
+        operation.outcome = true;
+        clearSave();
+        if (!recoveryOnly) clearInspection();
+        // Publish the committed baseline in this continuation, before observers
+        // or another intent can run between acknowledgment and ownership transfer.
+        publish(recoveryOnly ? { ...snapshot, saveState: "idle" }
+          : { ...snapshot, applied: copyGlobeCompositionSelection(selection), phase: "idle",
+            previewSession: null, reason: null, saveState: "idle" });
+        return true;
+      }
+      // Even false/rejected confirmation may follow a performed port write.
+      // Keep uncertainty in the shared queue until the old selection is confirmed.
+      if (await write(original)) queue.recovery = null;
+      return false;
     });
     queue.tail = result.then(() => undefined, () => undefined);
-    const operation: SaveOperation = { result, outcome: undefined };
+    operation.result = result;
     saveOperation = operation;
     watchSave(operation);
     // Queue and ownership exist before reentrant scene/UI listeners run.
-    publish({ ...next, saveState: "saving" });
+    publish({ ...next, applied: baseline, saveState: "saving" });
     void result.then(saved => {
       operation.outcome = saved;
       if (!active || saveOperation !== operation) return;
       clearSave();
-      // Port confirmation is not a power-loss durability guarantee on best-effort stores.
-      publish({ ...snapshot, saveState: saved ? "idle" : "failed" });
+      if (saved) return;
+      const cancelled = operation.cancelled;
+      if (!cancelled && intent === operation.intent && !recoveryOnly) rollback("preference-unavailable", false);
+      if (saveOperation !== operation) return;
+      publish({ ...snapshot, saveState: cancelled && queue.recovery === null ? "idle" : "failed" });
     });
   }
   function hydrate(epoch: number) {
@@ -177,6 +238,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
           prior = queue.tail; await prior;
           if (!ownsRead()) return;
         } while (prior !== queue.tail);
+        if (queue.recovery !== null) { unavailable("preference-unavailable"); return; }
         const queueRevision = queue.revision;
         const read = async (key: string) => {
           const value = await preferences.get(key);
@@ -231,11 +293,11 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       return () => {
         if (!current(epoch)) return;
         active = false; ++lifetime; ++readRevision;
-        clearRead(); clearFrame(); clearSave(); ready.clear();
+        retireSave(); clearRead(); clearFrame(); clearInspection(); ready.clear();
         if ((pending === "restore" || pending === "migration") && intent === 0) hydrationFinished = false;
         pending = null;
         snapshot = Object.freeze({ ...snapshot, displayed: snapshot.applied, editor: null,
-          phase: "idle", reason: null, renderRevision: snapshot.renderRevision + 1 });
+          phase: "idle", reason: null, previewSession: null, renderRevision: snapshot.renderRevision + 1 });
       };
     },
     setVisibility(nextVisible: boolean) {
@@ -269,20 +331,24 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       // is in flight; neither may become part of the user's uncommitted draft.
       fenceHydration(); clearFrame(); ready.clear(); pending = null;
       publish({ ...snapshot, displayed: snapshot.applied, editor, phase: "idle", reason: null,
-        renderRevision: snapshot.renderRevision + 1 });
+        renderRevision: snapshot.renderRevision + 1, previewSession: inspectionSession() });
       return true;
     },
     preview(part: "stand" | "background", id: string) {
       if (!active || !visible || snapshot.editor !== part || (part !== "stand" && part !== "background")) return false;
       const selection = { ...snapshot.displayed, [partKeys[part]]: id };
       if (!compatible(selection)) return false;
-      fenceHydration(); prepare(selection, "preview"); return true;
+      fenceHydration();
+      const session = inspectionSession();
+      snapshot = Object.freeze({ ...snapshot, previewSession: session });
+      prepare(selection, "preview"); return true;
     },
     requestEdition(id: GlobeEditionId) {
       if (!active || !visible) return false;
       const selection = { ...snapshot.applied, editionId: id };
       if (!compatible(selection)) return false;
-      fenceHydration(); prepare(selection, "edition", null); return true;
+      fenceHydration(); clearInspection(); snapshot = Object.freeze({ ...snapshot, previewSession: null });
+      prepare(selection, "edition", null); return true;
     },
     acknowledgePartRendered(part: GlobeCompositionPart, revision: number, id: string) {
       if (!active || !visible || snapshot.phase !== "preparing" || snapshot.renderRevision !== revision
@@ -296,9 +362,9 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       clearFrame(); ready.clear(); pending = null;
       if (kind === "preview") publish({ ...snapshot, phase: "preview", reason: null });
       else {
-        const next: PlanetCompositionSnapshot = { ...snapshot, applied: snapshot.displayed, phase: "idle", reason: null };
+        const next: PlanetCompositionSnapshot = { ...snapshot, phase: "preview", reason: null };
         if (kind === "edition" || kind === "migration") save(snapshot.displayed, next);
-        else publish(next);
+        else publish({ ...next, applied: snapshot.displayed, phase: "idle" });
       }
       return true;
     },
@@ -308,18 +374,33 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       rollback("render-failed", false); return true;
     },
     apply() {
-      if (!active || !visible || snapshot.phase !== "preview" || snapshot.editor === null || !compatible(snapshot.displayed)) return false;
+      if (!active || !visible || snapshot.phase !== "preview" || snapshot.saveState === "saving" || snapshot.editor === null || !compatible(snapshot.displayed)) return false;
       fenceHydration(); clearFrame(); ready.clear(); pending = null;
-      save(snapshot.displayed, { ...snapshot, applied: snapshot.displayed, phase: "idle", reason: null });
+      save(snapshot.displayed, { ...snapshot, reason: null });
       return true;
     },
     cancel,
+    async cancelAndWait() {
+      if (!active || !visible) return false;
+      // Own this cancellation before notifying subscribers: a synchronous
+      // newer choice must not become this older navigation's authority.
+      const ticket = intent + 1, epoch = lifetime, queue = queueFor(preferences), tail = queue.tail;
+      cancel();
+      if (!current(epoch) || intent !== ticket || queue.tail !== tail) return false;
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const joined = await Promise.race([tail.then(() => true), new Promise<false>(resolve => {
+        timer = setTimeout(() => resolve(false), PLANET_COMPOSITION_CONFIRMATION_TIMEOUT_MS);
+      })]);
+      if (timer !== undefined) clearTimeout(timer);
+      return joined && current(epoch) && visible && intent === ticket && queue.tail === tail && queue.recovery === null;
+    },
     retrySave() {
-      if (!active || snapshot.saveState !== "failed" || !compatible(snapshot.applied)) return false;
-      save(snapshot.applied); return true;
+      if (!active || !visible || snapshot.saveState !== "failed" || !compatible(snapshot.applied)) return false;
+      save(snapshot.applied, snapshot, true); return true;
     },
     refreshEnvironment() {
       if (!active) return;
+      if (snapshot.saveState === "saving") rollback(null, true);
       if (!compatible(snapshot.displayed)) {
         ++readRevision; clearRead();
         rollback("incompatible", true); return;

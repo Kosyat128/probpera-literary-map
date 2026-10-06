@@ -31,6 +31,8 @@ export interface ChildNativeJourneyViewProps {
   navigationEpoch: number; homeVisible: boolean; initialJourneyId?: string | null;
   onActiveChange(active: boolean): void; onIntentChange(journeyId: string | null): void;
   onNode(node: ChildNativeEntity | null): void;
+  /** Join the existing scene preview rollback before opening a content route. */
+  beforeNavigate?(): Promise<boolean>;
 }
 /** Child Continue uses only fresh native content. A stable logical intent may
  * survive a same-profile locale/context transition, but retired node text,
@@ -52,6 +54,10 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
     && controller.getSnapshot().phase === "ready" && controller.getSnapshot().status === "child"
     && controller.getSnapshot().context?.token === contextToken && controller.getSnapshot().context?.locale === language;
   async function admit(journeyId: string, revision: number, attempt: number, focus = true) {
+    if(latest.current.beforeNavigate&&!await latest.current.beforeNavigate()){
+      if(alive(attempt)){setBusy(false);setError("read");}return;
+    }
+    if(!alive(attempt))return;
     const next = await port?.open(journeyId, revision);
     if (!alive(attempt)) return;
     setBusy(false);

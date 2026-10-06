@@ -19,8 +19,8 @@ export const planetStandCopy = {
       preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Подставка и фон применяются вместе.",
       failed: "Предпросмотр не открылся. Прежнее оформление восстановлено.",
       apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
-      saveFailed: "Сохранение не подтверждено. Оформление применено, но при следующем запуске выбор может сброситься.",
-      retry: "Повторить сохранение",
+      saveFailed: "Сохранение не подтверждено. Прежнее оформление показано снова; сохранение прежнего выбора ещё может требовать повтора.",
+      retry: "Подтвердить прежний выбор",
       names: { canonical: "Фирменное оформление", "stand.base.three-whales": "Три кита",
         "stand.base.portrait-pushkin": "Александр Пушкин", "stand.base.portrait-hemingway": "Эрнест Хемингуэй", "stand.base.portrait-tolstoy": "Лев Толстой", "stand.base.museum": "Музейная", "stand.base.wood": "Деревянная", "stand.base.book-stack": "Стопка книг", "stand.base.child-book-cloud": "Книга на облаке" },
     },
@@ -30,8 +30,8 @@ export const planetStandCopy = {
       preparing: "Preparing preview…", preview: "Preview. The stand and background will be applied together.",
       failed: "The preview could not be shown. Your previous appearance has been restored.",
       apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
-      saveFailed: "Saving could not be confirmed. The appearance is applied, but your choice may reset the next time you open the app.",
-      retry: "Try saving again",
+      saveFailed: "Saving could not be confirmed. Your previous appearance is shown again; restoring the saved choice may still need a retry.",
+      retry: "Confirm previous choice",
       names: { canonical: "Original frame", "stand.base.three-whales": "Three whales",
         "stand.base.portrait-pushkin": "Alexander Pushkin", "stand.base.portrait-hemingway": "Ernest Hemingway", "stand.base.portrait-tolstoy": "Leo Tolstoy", "stand.base.museum": "Museum", "stand.base.wood": "Wooden", "stand.base.book-stack": "Stack of books", "stand.base.child-book-cloud": "Book on a cloud" },
     },
@@ -47,8 +47,8 @@ export const planetBackgroundCopy = {
       preparing: "Готовим предпросмотр…", preview: "Предпросмотр. Подставка и фон применяются вместе.",
       failed: "Предпросмотр не открылся. Прежнее оформление восстановлено.",
       apply: "Применить", cancel: "Отмена", saving: "Сохраняем выбор…",
-      saveFailed: "Сохранение не подтверждено. Оформление применено, но при следующем запуске выбор может сброситься.",
-      retry: "Повторить сохранение",
+      saveFailed: "Сохранение не подтверждено. Прежнее оформление показано снова; сохранение прежнего выбора ещё может требовать повтора.",
+      retry: "Подтвердить прежний выбор",
       names: { "background.base.site-starfield": "Звёздное небо", "background.base.library": "Библиотека", "background.base.writer-study": "Кабинет писателя" },
     },
     en: {
@@ -57,8 +57,8 @@ export const planetBackgroundCopy = {
       preparing: "Preparing preview…", preview: "Preview. The stand and background will be applied together.",
       failed: "The preview could not be shown. Your previous appearance has been restored.",
       apply: "Apply", cancel: "Cancel", saving: "Saving your choice…",
-      saveFailed: "Saving could not be confirmed. The appearance is applied, but your choice may reset the next time you open the app.",
-      retry: "Try saving again",
+      saveFailed: "Saving could not be confirmed. Your previous appearance is shown again; restoring the saved choice may still need a retry.",
+      retry: "Confirm previous choice",
       names: { "background.base.site-starfield": "Starry sky", "background.base.library": "Library", "background.base.writer-study": "Writer's study" },
     },
   },
@@ -170,7 +170,7 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
       </p>
       <div className="planet-stand-controls__actions">
         <button type="button" data-planet-stand-apply={isStand ? "" : undefined} data-planet-background-apply={isStand ? undefined : ""}
-          disabled={current.phase !== "preview"}
+          disabled={current.phase !== "preview" || current.saveState === "saving"}
           onClick={() => { select.current?.focus({ preventScroll: true }); activeController.apply(); }}>{copy.apply}</button>
         <button type="button" data-planet-stand-cancel={isStand ? "" : undefined}
           data-planet-background-cancel={isStand ? undefined : ""} onClick={onClose}>{copy.cancel}</button>

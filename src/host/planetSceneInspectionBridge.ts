@@ -6,4 +6,6 @@ export type GlobeSceneInspectionBridge = Readonly<{
   controller: PlanetSceneInspectionController;
   markerRef: RefObject<HTMLButtonElement>;
   mode: "closed" | "scene" | "object";
+  /** Opaque transient session; camera values remain exclusively in GlobeCameraRig. */
+  cameraSession?: string | null;
 }>;

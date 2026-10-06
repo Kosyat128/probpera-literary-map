@@ -155,7 +155,7 @@ function BackgroundFrame({ presentation, quality, editionId, standId, access,
         const owner = ownership.current;
         return access === "adult" && active && !gl.getContext().isContextLost()
           && owner?.alive === true && owner.acknowledged && owner.key === shown.key
-          && owner.id === "background.base.writer-study" && callbacks.current.appliedId === owner.id
+          && owner.id === "background.base.writer-study"
           && callbacks.current.displayedId === owner.id;
       }} />}
   </> : canonicalBackground;

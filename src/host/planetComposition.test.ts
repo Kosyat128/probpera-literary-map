@@ -8,7 +8,7 @@ import { GLOBE_STAND_PREFERENCE_KEY } from "../planet/globeStands";
 import { GLOBE_BACKGROUND_PREFERENCE_KEY } from "../planet/globeBackgrounds";
 import {
   createPlanetCompositionController, PLANET_COMPOSITION_CONFIRMATION_TIMEOUT_MS,
-  PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS, type PlanetCompositionController, type PlanetCompositionOptions,
+  PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS, PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS, type PlanetCompositionController, type PlanetCompositionOptions,
 } from "./planetComposition";
 
 const editionKey = "probpera.globe-edition.v2", styleKey = "probpera.globe-style.v1";
@@ -54,6 +54,76 @@ function draftCombination(controller: PlanetCompositionController, standId = "st
   expect(controller.open("background")).toBe(true); expect(controller.preview("background", backgroundId)).toBe(true);
   return controller.getSnapshot();
 }
+
+describe("confirmed preview transactions", () => {
+  it("retains the original applied resources until the whole selection is acknowledged", async () => {
+    const f=fixture(), held=deferred<boolean>(); activate(f.controller); await flush();
+    f.preferences.set.mockImplementationOnce(async(name,value)=>{const yes=await held.promise;if(yes)f.memory.set(name,value);return yes;});
+    applyStand(f.controller);await flush();
+    expect(f.controller.getSnapshot()).toMatchObject({applied:defaults,displayed:selection({standId:"stand.base.wood"}),saveState:"saving",phase:"preview"});
+    expect(f.controller.apply()).toBe(false);held.resolve(true);await flush();
+    expect(f.controller.getSnapshot()).toMatchObject({applied:selection({standId:"stand.base.wood"}),saveState:"idle",phase:"idle",previewSession:null});
+  });
+
+  it("joins a cancelled late write and its original-selection compensation before navigation", async () => {
+    const f=fixture(), held=deferred<boolean>();activate(f.controller);await flush();
+    f.preferences.set.mockImplementationOnce(async(name,value)=>{await held.promise;f.memory.set(name,value);return true;});
+    applyStand(f.controller);await flush();let completed=false;
+    const joined=f.controller.cancelAndWait().then(value=>{completed=true;return value;});await flush();
+    expect(completed).toBe(false);expect(f.controller.getSnapshot().applied).toEqual(defaults);
+    held.resolve(true);expect(await joined).toBe(true);await flush();
+    expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(defaults);
+    expect(f.preferences.set.mock.calls.map(([,value])=>parseGlobeComposition(value)?.selection.standId)).toEqual(["stand.base.wood","canonical"]);
+  });
+
+  it("does not navigate after a newer preview replaces the cancelled intent", async () => {
+    const f=fixture(), held=deferred<boolean>();activate(f.controller);await flush();f.preferences.set.mockReturnValueOnce(held.promise);
+    applyStand(f.controller);await flush();const joined=f.controller.cancelAndWait();
+    draftCombination(f.controller);frame(f.controller);held.resolve(true);expect(await joined).toBe(false);
+    expect(f.controller.getSnapshot()).toMatchObject({applied:defaults,phase:"preview"});
+  });
+
+  it("cannot advance the committed baseline while an uncertain earlier write remains unrepaired", async () => {
+    const f=fixture();activate(f.controller);await flush();f.preferences.set.mockResolvedValue(false);
+    applyStand(f.controller);await flush();expect(f.preferences.set).toHaveBeenCalledTimes(2);
+    applyStand(f.controller,"stand.base.book-stack");await flush();
+    expect(f.preferences.set).toHaveBeenCalledTimes(3); // Recovery only; the new candidate was never written.
+    expect(f.controller.getSnapshot()).toMatchObject({applied:defaults,displayed:defaults,saveState:"failed"});
+    f.preferences.set.mockImplementation(async(name,value)=>{f.memory.set(name,value);return true;});
+    expect(f.controller.retrySave()).toBe(true);await flush();
+    expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(defaults);
+    expect(f.controller.getSnapshot().saveState).toBe("idle");
+  });
+
+  it("does not adopt a newer choice made synchronously during cancel notification", async () => {
+    const f=fixture();activate(f.controller);await flush();draftCombination(f.controller);frame(f.controller);
+    let once=true;const stop=f.controller.subscribe(()=>{
+      if(once&&f.controller.getSnapshot().editor===null){once=false;draftCombination(f.controller,"stand.base.museum");frame(f.controller);}
+    });
+    expect(await f.controller.cancelAndWait()).toBe(false);stop();
+    expect(f.controller.getSnapshot()).toMatchObject({applied:defaults,phase:"preview",displayed:{standId:"stand.base.museum"}});
+    expect(f.preferences.set).not.toHaveBeenCalled();
+  });
+
+  it("bounds the complete ready inspection session without renewing it for another candidate", async () => {
+    vi.useFakeTimers();const f=fixture();activate(f.controller);await flush();
+    draftCombination(f.controller);frame(f.controller);const session=f.controller.getSnapshot().previewSession;
+    await vi.advanceTimersByTimeAsync(PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS-1000);
+    f.controller.open("stand");f.controller.preview("stand","stand.base.wood");frame(f.controller);
+    expect(f.controller.getSnapshot().previewSession).toBe(session);
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(f.controller.getSnapshot()).toMatchObject({applied:defaults,displayed:defaults,editor:null,previewSession:null,reason:"preview-timeout"});
+    expect(f.preferences.set).not.toHaveBeenCalled();
+  });
+
+  it("compensates an unconfirmed write even when the port changed storage before returning false", async () => {
+    const f=fixture();activate(f.controller);await flush();
+    f.preferences.set.mockImplementationOnce(async(name,value)=>{f.memory.set(name,value);return false;});
+    applyStand(f.controller);await flush();
+    expect(parseGlobeComposition(f.memory.get(key))?.selection).toEqual(defaults);
+    expect(f.controller.getSnapshot()).toMatchObject({applied:defaults,displayed:defaults,saveState:"failed"});
+  });
+});
 
 describe("receipt-bound whole globe composition lifecycle", () => {
   it("performs no constructor, public-site or blocked-policy IO", async () => {
@@ -268,11 +338,12 @@ describe("receipt-bound whole globe composition lifecycle", () => {
     expect(f.controller.open("stand")).toBe(false);
   });
 
-  it("retains the applied composition after failed persistence and retries only that whole selection", async () => {
+  it("restores the confirmed baseline after failed persistence and retries that baseline without applying a later draft", async () => {
     const f = fixture(); f.preferences.set.mockResolvedValueOnce(false); activate(f.controller); await flush();
-    const applied = draftCombination(f.controller, "stand.base.wood").displayed;
+    const applied = f.controller.getSnapshot().applied;
+    draftCombination(f.controller, "stand.base.wood");
     frame(f.controller); expect(f.controller.apply()).toBe(true); await flush();
-    expect(f.controller.getSnapshot()).toMatchObject({ applied, saveState: "failed" });
+    expect(f.controller.getSnapshot()).toMatchObject({ applied, displayed: applied, saveState: "failed" });
     const draft = draftCombination(f.controller, "stand.base.book-stack", "background.base.writer-study");
     expect(f.controller.retrySave()).toBe(true); await flush();
     const saved = parseGlobeComposition(f.memory.get(key))!;
@@ -294,8 +365,10 @@ describe("receipt-bound whole globe composition lifecycle", () => {
     const reads = f.preferences.get.mock.calls.length; activate(next); await flush(); expect(f.preferences.get).toHaveBeenCalledTimes(reads);
     held.resolve(true); await flush();
     expect(f.preferences.set).toHaveBeenCalledTimes(2);
-    expect(next.getSnapshot()).toMatchObject({ phase: "preparing", displayed: selection({ standId: "stand.base.book-stack" }) });
-    frame(next); expect(next.getSnapshot().applied.standId).toBe("stand.base.book-stack");
+    // Unmount cancels the queued second candidate too; only the original
+    // baseline may hydrate after the timed-out first write is compensated.
+    expect(next.getSnapshot()).toMatchObject({ phase: "preparing", displayed: defaults });
+    frame(next); expect(next.getSnapshot().applied).toEqual(defaults);
   });
 
   it("drops superseded unstarted writes and ignores an older failure after a newer successful commit", async () => {
@@ -303,7 +376,7 @@ describe("receipt-bound whole globe composition lifecycle", () => {
     activate(f.controller); await flush(); applyStand(f.controller, "stand.base.museum"); await flush();
     applyStand(f.controller, "stand.base.wood"); applyStand(f.controller, "stand.base.book-stack"); await flush();
     held.resolve(false); await flush();
-    expect(f.preferences.set).toHaveBeenCalledTimes(2);
+    expect(f.preferences.set).toHaveBeenCalledTimes(3);
     expect(parseGlobeComposition(f.memory.get(key))?.selection.standId).toBe("stand.base.book-stack");
     expect(f.controller.getSnapshot()).toMatchObject({ saveState: "idle", applied: selection({ standId: "stand.base.book-stack" }) });
   });
@@ -339,7 +412,7 @@ describe("receipt-bound whole globe composition lifecycle", () => {
     draftCombination(f.controller); const old = parts(f.controller);
     stop(); activate(f.controller);
     expect(f.controller.acknowledgeRendered(old.revision, old.displayed)).toBe(false);
-    expect(f.controller.getSnapshot()).toMatchObject({ displayed: selection({ standId: "stand.base.wood" }), editor: null });
+    expect(f.controller.getSnapshot()).toMatchObject({ displayed: defaults, editor: null });
   });
 
   it("registers ownership before notifications so reentrant cancel cannot authorize the obsolete composition", async () => {
