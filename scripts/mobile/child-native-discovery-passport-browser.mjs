@@ -336,6 +336,7 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
       await page.evaluate(()=>window.__childJourneyBrowser.visibility("active"));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await page.locator('.child-native-media[data-child-native-media-phase="ready"]').waitFor();require(!await page.locator('[data-child-native-media-slot="owned-native"]').isVisible(),"foreground fresh media list does not reopen native slot");
       require((await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length===presented,"foreground creates no presentation replay or autoplay");
       await page.evaluate(()=>window.__childJourneyBrowser.control({action:"narrationConsent",value:false}));
+      await page.getByRole("button",{name:"Home",exact:true}).click();await idle();
       await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
       await resetFixtureCameraAfterJourney("media-foreground-after-country-step");require((await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length===presented,"original camera controls do not replay narration");
       report.checks.push({id:"route-media-exact-english-bytes-transcript-consent-and-no-resume-autoplay",status:"PASS",nativeAuthority:false,nativePlayerAcceptance:false});
