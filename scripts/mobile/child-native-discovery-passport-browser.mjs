@@ -246,6 +246,12 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
   record.after=await stableCamera();canonical(record.after);require(JSON.stringify((await snapshot()).state)===JSON.stringify(before.state),"visible camera reset preserves all private semantic state at "+label);(report.additionalCameraFixtureResets??=[]).push(record);
  }
  async function capture(label){await readyScene();const filename=path.join(output,label+".png");await bounded("capture:"+label,()=>page.screenshot({path:filename,fullPage:true,timeout:15000}),20000);report.captures.push({label,path:filename,sha256:sha(await fs.readFile(filename)),fullPage:true,reviewed:false,nativeAuthority:false});}
+ async function captureNativeMediaViewport(label){
+   const inspect=()=>page.evaluate(()=>{const view=document.querySelector('.child-native-media'),slot=view?.querySelector('[data-child-native-media-slot="owned-native"]'),details=view?.querySelector('details[open]');if(!view||view.getAttribute('data-child-native-media-phase')!=='ready'||!slot||slot.hidden||!details)throw Error('completed native slot and readable transcript required');const r=slot.getBoundingClientRect();if(r.left<0||r.top<0||r.right>innerWidth||r.bottom>innerHeight)throw Error('owned slot must remain in actual viewport');return {x:r.x,y:r.y,width:r.width,height:r.height,viewportWidth:innerWidth,viewportHeight:innerHeight,scrollX,scrollY};});
+   const geometry=await inspect(),owner=await observed();require(owner.documentId===expectedDocumentId&&owner.same&&owner.globeCanvases===1&&owner.bookyCanvases===1&&owner.totalCanvases===2&&owner.globeRoots===1&&owner.glError===0,'same original renderer owner while media viewport is visible');
+   const filename=path.join(output,label+'.png');await bounded('capture:'+label,()=>page.screenshot({path:filename,fullPage:false,timeout:15000}),20000);require(JSON.stringify(await inspect())===JSON.stringify(geometry),'native viewport capture preserves anchored slot and transcript');
+   report.captures.push({label,path:filename,sha256:sha(await fs.readFile(filename)),fullPage:false,viewKind:'actual-owned-native-media-viewport',geometry,sceneObservation:owner,reviewed:false,nativeAuthority:false});
+  }
  function canonical(v,same=true){require(v.documentId===expectedDocumentId,"same explicit browser document");require(v.globeCanvases===1&&v.bookyCanvases===1&&v.totalCanvases===2&&v.globeRoots===1&&v.group&&v.cover&&v.wall&&v.hotspot&&v.globeVisible&&v.uploaded.length===3&&v.uploaded.every(Boolean)&&v.glError===0&&(!same||v.same),"visible original sphere, real material and three GPU uploads with one original renderer/camera and existing Booky canvas");}
  try{
   await seam.persist();server=await createServer({root,configFile:false,envDir:false,envPrefix:[],base:"/",plugins:[react(),{name:"explicit-synthetic-native-child-journey-seam",configureServer(vite){vite.middlewares.use(async(req,res,next)=>{
@@ -325,12 +331,13 @@ export async function runChildDiscoveryPassportBrowserFixture(options={}){
       const collapsedGeometry=await page.locator('[data-child-native-media-slot="owned-native"]').boundingBox();require(JSON.stringify(collapsedGeometry)===JSON.stringify(transcriptGeometry),"closing transcript preserves actual native slot geometry");
       await page.getByText("Narration transcript · English",{exact:true}).click();await page.getByText(rows[0].payload.transcript,{exact:true}).waitFor();
       const expandedGeometry=await page.locator('[data-child-native-media-slot="owned-native"]').boundingBox();require(JSON.stringify(expandedGeometry)===JSON.stringify(transcriptGeometry),"opening transcript preserves actual native slot geometry");
-      await capture("en-route-media-transcript-before-native-play");
+      await captureNativeMediaViewport("en-route-media-transcript-before-native-play");
       await page.evaluate(()=>window.__childJourneyBrowser.visibility("background"));await page.waitForFunction(()=>window.__childJourneyBrowser.inspect().phase==="sealed");await scenesJoined();
-      await page.evaluate(()=>window.__childJourneyBrowser.visibility("active"));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await readyScene();
+      await page.evaluate(()=>window.__childJourneyBrowser.visibility("active"));await page.evaluate(()=>window.__childJourneyBrowser.refresh());await idle();await page.locator('.child-native-media[data-child-native-media-phase="ready"]').waitFor();require(!await page.locator('[data-child-native-media-slot="owned-native"]').isVisible(),"foreground fresh media list does not reopen native slot");
       require((await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length===presented,"foreground creates no presentation replay or autoplay");
       await page.evaluate(()=>window.__childJourneyBrowser.control({action:"narrationConsent",value:false}));
       await page.getByRole("button",{name:"My literary passport",exact:true}).click();await idle();
+      await resetFixtureCameraAfterJourney("media-foreground-after-country-step");require((await snapshot()).events.filter(row=>row.method==="presentedStoredRouteMedia").length===presented,"original camera controls do not replay narration");
       report.checks.push({id:"route-media-exact-english-bytes-transcript-consent-and-no-resume-autoplay",status:"PASS",nativeAuthority:false,nativePlayerAcceptance:false});
     }
     await page.getByRole("button",{name:"Back home",exact:true}).click();await idle();
