@@ -87,7 +87,7 @@ describe("original canonical composition staged recipient",()=>{
   const abort=new AbortController(),committed=f.stage!.commit({signal:abort.signal,isCurrent:()=>true,absoluteDeadline:10000});
   const animate=hooks.frames[hooks.priorities.indexOf(-10000)],draw=hooks.frames[hooks.priorities.indexOf(1)];
   time=300;animate();await committed;f.stage!.finalize?.();time=350;animate();
-  const light=f.scene.getObjectByName("child-scene-key") as THREE.Light,before=light.intensity;
+  const light=f.scene.getObjectByName("child-scene-ambient") as THREE.Light,before=light.intensity;
   f.gl.compileAsync.mockImplementation(async()=>undefined);
   const textures={skin:new THREE.Texture(),stand:new THREE.Texture(),background:new THREE.Texture()};
   const engine=f.bundle.scene.modelPackage!.engineComposition!;
