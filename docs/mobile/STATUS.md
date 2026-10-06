@@ -1,3 +1,11 @@
+<!-- child-common-3d-assets-20261006:begin -->
+Code 1357551bc8da649c50c32d3b0dd17dc6343e017c; evidence docs/mobile/evidence/S16/child-common-3d-assets-20261006/result.json.
+Whole common3D asset-pipeline stage development/review/fix and available local QA completed by GPT-6.1 SOL Ultra; exact source rows1894. Current results and retained earlier scopes preserve their producer/source qualifications in the frozen whole closure.
+Only13 original criteria and11 global requirements OPEN -> IN_PROGRESS, and S14 NOT_STARTED -> IN_PROGRESS. No PASSED criterion or acceptance closure is inferred.
+Current Android artifacts are compiled/audited locally. Installed native OS/storage/CAS/lifecycle, device instrumentation, Swift execution and genuine catalog/editorial/legal authority remain unverified or pending. The four original external conditions retain NOT_RECHECKED; stageAccepted=false; releaseReady=false; remoteActions=0.
+Next: SOL Ultra: after this whole current asset-pipeline available-QA closure/report/packet, continue the next original full engine slice in the existing canonical Canvas: original16 §§4–6 and17 §§6–9 scene/Booky anchor and item compatibility metadata, controlled same-renderer transition with light/exposure/ambience state and last-valid rollback, and bounded LOD/Economy/static fallback and cache policy. Keep existing signed gltf2-static-v1 consumer/resource authority and RU/EN/canonical selection intact; use project-owned connected fixtures, fix/review the full resulting graph first, then root exact integration and affected local QA. Broader KTX2/Basis/Draco/Meshopt/baked formats remain denied until actual decoder/platform/cost checks. Genuine licensed catalog/editorial approvals/native installed OS/realAuth/delete/remote grants/PSP purchase/refund remain separate external gates; do not fake them or choose a provider.
+<!-- child-common-3d-assets-20261006:end -->
+
 <!-- child-local-bilingual-offline-packages-20261006:begin -->
 Code 5461afefed847a8cdb6c538963510b462f2b0b4e; evidence docs/mobile/evidence/S16/child-local-bilingual-offline-packages-20261006/result.json.
 Whole SOL Ultra authoring and whole Astra Ultra review/check/fix COMPLETE LOCALLY; source rows 1886. Actual current checks, scoped PWA runtime evidence, source qualifications and retained failures/diagnostics are preserved in the frozen whole-stage closure.

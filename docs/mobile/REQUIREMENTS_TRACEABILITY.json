@@ -2226,7 +2226,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [
         "src/child/childAccessPolicy.ts",
         "src/child/childProfile.ts"
@@ -2339,7 +2339,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [
         "src/child/parentGate.ts",
         "src/child/parentPinVerification.ts"
@@ -2946,7 +2946,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -2961,7 +2961,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -2976,7 +2976,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -2991,7 +2991,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -3006,7 +3006,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -3021,7 +3021,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -3036,7 +3036,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -3682,7 +3682,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],
@@ -4869,7 +4869,7 @@
       "platforms": [
         "all"
       ],
-      "status": "OPEN",
+      "status": "IN_PROGRESS",
       "implementationFiles": [],
       "tests": [],
       "evidence": [],

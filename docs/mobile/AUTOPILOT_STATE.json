@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "5461afefed847a8cdb6c538963510b462f2b0b4e",
+  "headSha": "1357551bc8da649c50c32d3b0dd17dc6343e017c",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-06T08:10:49.239Z",
+  "updatedAt": "2026-10-06T17:10:24.455Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -3188,7 +3188,7 @@
         },
         {
           "id": "S13.CUSTOM-002",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3442,7 +3442,7 @@
     {
       "id": "S14",
       "name": "Full-3D background engine",
-      "status": "NOT_STARTED",
+      "status": "IN_PROGRESS",
       "criteria": [
         {
           "id": "S14.acceptance",
@@ -3462,7 +3462,7 @@
         },
         {
           "id": "S14.CHILD-004",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3470,7 +3470,7 @@
         },
         {
           "id": "S14.CUSTOM-003",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3478,7 +3478,7 @@
         },
         {
           "id": "S14.CUSTOM-004",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3486,7 +3486,7 @@
         },
         {
           "id": "S14.CUSTOM-005",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3494,7 +3494,7 @@
         },
         {
           "id": "S14.CUSTOM-006",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3502,7 +3502,7 @@
         },
         {
           "id": "S14.CUSTOM-007",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3510,7 +3510,7 @@
         },
         {
           "id": "S14.CUSTOM-008",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3518,7 +3518,7 @@
         },
         {
           "id": "S14.MOD-042",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -3526,7 +3526,7 @@
         },
         {
           "id": "S14.PERF-002",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -4985,7 +4985,7 @@
         },
         {
           "id": "S16.CHILD-004",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S16/child-policy-foundation-20261002/result.json"
           ],
@@ -5035,7 +5035,7 @@
         },
         {
           "id": "S16.CHILD-009",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [
             "docs/mobile/evidence/S16/parent-gate-foundation-20261002/result.json"
           ],
@@ -5101,7 +5101,7 @@
         },
         {
           "id": "S16.CONTENT-004",
-          "status": "OPEN",
+          "status": "IN_PROGRESS",
           "evidence": [],
           "commit": null,
           "lastValidatedAt": null,
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Next whole SOL Ultra programming stage: implement the original16 section9 and17 sections4,6-9 signed common 3D asset pipeline end to end: bounded versioned model/buffer/texture/tier dependency compiler, typed Android/iOS acquisition through existing native ResourceClaim and authenticated common-object coordinator, and a consumer in the original canonical Canvas with preload/warm/apply/read/restore/delete and prior-valid rollback. Use project-owned synthetic fixtures for local authoring. Preserve independent RU/EN generations, original current scene/media/review/rights/profile/parent checks, latest-wins and disposal. Add platform import/decode probes and meaningful malformed/dependency/version/cancel/cold-resume/rollback tests. Admit glTF/GLB or KTX2 only for actually checked platform/tier capability; a MIME widening or disconnected helper is not completion. Follow with one whole Astra Ultra review/check/fix before another SOL block. First address the observed existing Booky offline dynamic dependency gap in this same coherent asset-pipeline scope: Include the existing Booky dynamic import/dependency closure in the authenticated PWA offline bootstrap using exact source-to-output manifest ownership, then assert actual offline3D readiness after a full browser restart while preserving original canonical globe/Booky state. Treat this as first dependency-closure repair in the original16/17 model-package pipeline, not an owner prerequisite.",
+    "nextAction": "SOL Ultra: after this whole current asset-pipeline available-QA closure/report/packet, continue the next original full engine slice in the existing canonical Canvas: original16 §§4–6 and17 §§6–9 scene/Booky anchor and item compatibility metadata, controlled same-renderer transition with light/exposure/ambience state and last-valid rollback, and bounded LOD/Economy/static fallback and cache policy. Keep existing signed gltf2-static-v1 consumer/resource authority and RU/EN/canonical selection intact; use project-owned connected fixtures, fix/review the full resulting graph first, then root exact integration and affected local QA. Broader KTX2/Basis/Draco/Meshopt/baked formats remain denied until actual decoder/platform/cost checks. Genuine licensed catalog/editorial approvals/native installed OS/realAuth/delete/remote grants/PSP purchase/refund remain separate external gates; do not fake them or choose a provider.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
