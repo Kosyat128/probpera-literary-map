@@ -17,6 +17,13 @@ export const CHILD_NATIVE_MODEL_SOURCE_PATHS = Object.freeze([...CHILD_NATIVE_SC
   "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildModelImport.java",
   "apps/mobile/ios/App/App/PlanetChildModelImport.swift",
 ] as const);
+export const CHILD_NATIVE_ENGINE_SOURCE_PATHS = Object.freeze([...CHILD_NATIVE_MODEL_SOURCE_PATHS,
+  "src/child/childSceneEngine.ts", "src/child/childSceneEncodedCache.ts", "src/components/childSceneTransition.ts",
+  "src/child/childNativeScene.ts", "src/child/childNativeCanonicalResources.ts", "src/components/GlobeChildNativeComposition.tsx",
+  "apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java",
+  "apps/mobile/ios/App/App/PlanetChildVault.swift",
+] as const);
+export { decodeChildEngineComposition, childEngineBaseDecodedBytes, childEngineProceduralReserve, CHILD_ENGINE_FIXED_RESIDENT_BYTES } from "./childSceneEngine";
 export type ChildNativeSceneSlotId = "skin" | "stand" | "background";
 export type ChildNativeSceneMime = "image/png" | "image/jpeg" | "image/webp";
 export interface ChildNativeSceneSlot {
@@ -45,11 +52,29 @@ export interface ChildNativeModelWebResource {
   readonly status: "available"; readonly sceneToken: string; readonly slotId: "model" | "buffer" | "texture"; readonly resourceToken: string;
   readonly assetId: string; readonly entity: ChildEntityReference; readonly mime: Common3dMime;
   readonly checksum: string; readonly encodedBytes: number; readonly uri: string; readonly remainingLifetimeMs: number;
+  readonly dimensions?: Readonly<{ width: number; height: number }>;
 }
 export interface ChildNativeModelChunk {
   readonly status: "available"; readonly sceneToken: string; readonly resourceToken: string;
   readonly offset: number; readonly totalBytes: number; readonly mime: Common3dMime;
   readonly encodedBase64: string; readonly remainingLifetimeMs: number;
+}
+export interface ChildNativeSceneBudgetDecline {
+  readonly status: "budget-declined"; readonly sceneId: string; readonly slotId: ChildNativeSceneSlotId | "model" | "buffer" | "texture";
+  readonly assetId: string; readonly tier: Common3dTierId | null; readonly entity: ChildEntityReference;
+  readonly mime: ChildNativeSceneMime | Common3dMime; readonly checksum: string; readonly encodedBytes: number;
+  readonly remainingLifetimeMs: number; readonly reason: "decoded-budget" | "triangle-budget";
+}
+/** A private current native command's capacity response, carrying no resource
+ * permit/URI. An arbitrary null or failed data check is never a budget reason. */
+export function decodeChildNativeSceneBudgetDecline(raw: unknown, scene: ChildNativeScene, resource: ChildNativeSceneSlot | Common3dResource, tier: Common3dTierId | null): ChildNativeSceneBudgetDecline | null {
+  if (!scene.modelPackage?.engineComposition) return null;
+  const row = childRecord(raw, ["status", "sceneId", "slotId", "assetId", "tier", "entity", "mime", "checksum", "encodedBytes", "remainingLifetimeMs", "reason"]);
+  const entity = row && decodeChildEntityReference(row.entity), slotId = "kind" in resource ? resource.kind : resource.slotId;
+  if (!row || row.status !== "budget-declined" || row.sceneId !== scene.sceneId || row.slotId !== slotId || row.assetId !== resource.assetId || row.tier !== tier
+    || !entity || !sameChildNativeMediaReference(entity, resource.entity) || row.mime !== resource.mime || row.checksum !== resource.checksum || row.encodedBytes !== resource.encodedBytes
+    || !number(row.remainingLifetimeMs, 1, 60000) || !["decoded-budget", "triangle-budget"].includes(row.reason as string)) return null;
+  return Object.freeze({ ...row, entity }) as unknown as ChildNativeSceneBudgetDecline;
 }
 export interface ChildNativeSceneController {
   /** Stable protected profile choice only; decoding grants no native approval. */
@@ -60,8 +85,8 @@ export interface ChildNativeSceneController {
   restore(expected: ChildNativeProfileAppearance): Promise<ChildNativeAppearanceRestore | null>;
   list(owner: ChildEntityReference): Promise<readonly ChildNativeSceneSummary[] | null>;
   open(owner: ChildEntityReference, sceneId: string): Promise<ChildNativeScene | null>;
-  acquire(scene: ChildNativeScene, slot: ChildNativeSceneSlot): Promise<ChildNativeWebResource | null>;
-  acquireModel?(scene: ChildNativeScene, resource: Common3dResource, tier: Common3dTierId): Promise<ChildNativeModelWebResource | null>;
+  acquire(scene: ChildNativeScene, slot: ChildNativeSceneSlot): Promise<ChildNativeWebResource | ChildNativeSceneBudgetDecline | null>;
+  acquireModel?(scene: ChildNativeScene, resource: Common3dResource, tier: Common3dTierId): Promise<ChildNativeModelWebResource | ChildNativeSceneBudgetDecline | null>;
   readModelChunk?(scene: ChildNativeScene, output: ChildNativeModelWebResource, resource: Common3dResource, offset: number, byteLength: number): Promise<ChildNativeModelChunk | null>;
   releaseResource(token: string | null): Promise<boolean>;
   release(token: string | null): Promise<boolean>;
@@ -121,17 +146,26 @@ export function decodeChildNativeScene(raw: unknown, owner: ChildEntityReference
     || s?.geometryId !== "stand.base.child-book-cloud" || b?.geometryId !== "background.base.library"
     || !number(row.remainingLifetimeMs,1,60000) || new Set([skin.assetId,stand.assetId,background.assetId]).size !== 3
     || Object.prototype.hasOwnProperty.call(row,"modelPackage") && (!modelPackage || id !== modelPackage.packageId+".v"+modelPackage.packageVersion)) return null;
+  if (modelPackage?.engineComposition) {
+    const engine = modelPackage.engineComposition, actual = { skin, stand, background };
+    if (engine.sceneId !== id || engine.items.some(item => item.assetId !== actual[item.slotId].assetId || item.contentChecksum !== actual[item.slotId].entity.contentChecksum
+      || (["skin", "stand", "background"] as const).some(slot => !item.partners[slot].includes(actual[slot].assetId)))) return null;
+  }
   return Object.freeze({ status:"opened", sceneToken:row.sceneToken,sceneId:id,owner:reference,skin,
     stand:Object.freeze({geometryId:s.geometryId,asset:stand}),background:Object.freeze({geometryId:b.geometryId,asset:background}),
     hotspots,remainingLifetimeMs:row.remainingLifetimeMs,...(modelPackage?{modelPackage}:{}) });
 }
 export function decodeChildNativeModelWebResource(raw: unknown, scene: ChildNativeScene, resource: Common3dResource): ChildNativeModelWebResource | null {
-  const row = childRecord(raw,["status","sceneToken","slotId","resourceToken","assetId","entity","mime","checksum","encodedBytes","uri","remainingLifetimeMs"]);
+  const fields = ["status","sceneToken","slotId","resourceToken","assetId","entity","mime","checksum","encodedBytes","uri","remainingLifetimeMs"];
+  const raster = !!scene.modelPackage?.engineComposition && resource.kind === "texture";
+  const row = childRecord(raw, raster ? [...fields, "dimensions"] : fields);
+  const dimensions = raster && row ? childRecord(row.dimensions, ["width", "height"]) : null;
+  if (raster && (!dimensions || !number(dimensions.width, 1, 4096) || !number(dimensions.height, 1, 4096))) return null;
   const entity = row && decodeChildEntityReference(row.entity);
   if (!row || row.status!=="available" || row.sceneToken!==scene.sceneToken || row.slotId!==resource.kind || !childNativeMediaToken(row.resourceToken)
     || row.uri!=="planet-child-resource://local/"+row.resourceToken || row.assetId!==resource.assetId || !entity || !sameChildNativeMediaReference(entity,resource.entity)
     || row.mime!==resource.mime || row.checksum!==resource.checksum || row.encodedBytes!==resource.encodedBytes || !number(row.remainingLifetimeMs,1,60000)) return null;
-  return Object.freeze({...row,entity}) as unknown as ChildNativeModelWebResource;
+  return Object.freeze({...row,entity,...(dimensions ? {dimensions:Object.freeze({...dimensions})} : {})}) as unknown as ChildNativeModelWebResource;
 }
 export function decodeChildNativeWebResource(raw: unknown, scene: ChildNativeScene, slot: ChildNativeSceneSlot): ChildNativeWebResource | null {
   const row = childRecord(raw, ["status","sceneToken","slotId","resourceToken","assetId","entity","mime","checksum","encodedBytes","uri","remainingLifetimeMs"]);

@@ -4,7 +4,7 @@ import { PARENT_GATE_ACTIONS, type ParentGateAction } from "./parentGate";
 import { decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildNativeMediaLayout,
   decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, childNativeMediaOwner, childNativeMediaToken,
   type ChildNativeMediaController } from "./childNativeMedia";
-import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeWebResource, decodeChildNativeModelWebResource, decodeChildNativeModelChunk, decodeChildNativeSceneRetired, childNativeSceneId,
+import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeSceneBudgetDecline, decodeChildNativeWebResource, decodeChildNativeModelWebResource, decodeChildNativeModelChunk, decodeChildNativeSceneRetired, childNativeSceneId,
   type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
 import { childNativeAppearanceRevision, childNativeAppearanceFromScene, sameChildNativeAppearance,
   decodeChildNativeProfileAppearance, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
@@ -645,14 +645,14 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         if(!childNativeMediaToken(scene.sceneToken)||sceneRetirement||typeof options.plugin?.acquireWebResource!=="function"
           ||![scene.skin,scene.stand.asset,scene.background.asset].includes(slot))return Promise.resolve(null);
         sceneTouched=true;
-        return data("acquireWebResource",{sceneToken:scene.sceneToken,slotId:slot.slotId},raw=>decodeChildNativeWebResource(raw,scene,slot));
+        return data("acquireWebResource",{sceneToken:scene.sceneToken,slotId:slot.slotId},raw=>decodeChildNativeWebResource(raw,scene,slot) ?? decodeChildNativeSceneBudgetDecline(raw,scene,slot,null));
       },
       acquireModel(scene,resource,tier) {
         const admitted=scene.modelPackage?.tiers.find(t=>t.tier===tier);
         if(!admitted || !admitted.models.some(m=>m.model===resource||m.dependencies.includes(resource))
           || !childNativeMediaToken(scene.sceneToken)||sceneRetirement||typeof options.plugin?.acquireWebResource!=="function")return Promise.resolve(null);
         sceneTouched=true;
-        return data("acquireWebResource",{sceneToken:scene.sceneToken,slotId:resource.kind,assetId:resource.assetId,tier},raw=>decodeChildNativeModelWebResource(raw,scene,resource));
+        return data("acquireWebResource",{sceneToken:scene.sceneToken,slotId:resource.kind,assetId:resource.assetId,tier},raw=>decodeChildNativeModelWebResource(raw,scene,resource) ?? decodeChildNativeSceneBudgetDecline(raw,scene,resource,tier));
       },
       readModelChunk(scene,output,resource,offset,byteLength) {
         const owned=scene.modelPackage?.tiers.some(t=>t.models.some(m=>[m.model,...m.dependencies].includes(resource)));

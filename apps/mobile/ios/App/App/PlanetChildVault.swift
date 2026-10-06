@@ -9912,14 +9912,17 @@ fileprivate final class LocalV2SceneCatalog {
         let source=path==Self.fixed ? Self.pinPath:"src/child/scene-release-material/"+hash+"/"+(path.contains("/manifests/") ? "manifest.json":"review.json")
         guard try V.text(out["source"])==source,try inputs[source]==V.hash(out["sourceSha256"]),try V.text(out["transformation"])==(path==Self.fixed ? "fixed-native-scene-pin-projection-v2":"none"),try path==Self.fixed || V.hash(out["sourceSha256"])==hash else { throw PinKnownRefusal() }
     }
-    func graph(_ value: LocalV2SceneValue?) throws {
-        guard let value else { throw PinKnownRefusal() };let rows=try V.array(value.package(),8)
+    func graph(_ value: LocalV2SceneValue?,_ version: Int64=0) throws {
+        guard let value else { throw PinKnownRefusal() };let rows=try V.array(value.package(),version==4 ? 16:8)
         let paths=["src/components/globeBookCloudStandGeometry.ts","src/components/globeCraftMaterials.ts","src/components/globeLibraryBookGeometry.ts","src/components/globeLibraryGeometry.ts"]
         let hashes=["e50e21659f3439b8bd3cd457cbe20f16bfd47f40eaedc3355151daf6450f3577","2c19145443374e631cf40dbf20a8b55d38bd8a41e1c0d025dc3ec10fbbe47721","e3034c2bd4391f1b08410c3c1f41165e880c7225f957a42ef4780e87eeaf7e0c","18c2af40ee169eeac5416aa59effe1e50cbea92359a7f1e0d0f8f8972dddaf7c"],sizes: [Int64]=[18215,12947,3044,59048]
-        guard rows.count==4 || rows.count==8 else { throw PinKnownRefusal() };for i in 0..<4 { let row=try V.object(rows[i],["path","sha256","bytes"]);guard try V.text(row["path"])==paths[i],try V.hash(row["sha256"])==hashes[i],inputs[paths[i]]==hashes[i],try V.number(row["bytes"],1,9007199254740991)==sizes[i] else { throw PinKnownRefusal() } }
-        if rows.count==8 {
+        guard version==4 ? rows.count==16:version==3 ? rows.count==8:version==2 ? rows.count==4:rows.count==4 || rows.count==8 else { throw PinKnownRefusal() };for i in 0..<4 { let row=try V.object(rows[i],["path","sha256","bytes"]);guard try V.text(row["path"])==paths[i],try V.hash(row["sha256"])==hashes[i],inputs[paths[i]]==hashes[i],try V.number(row["bytes"],1,9007199254740991)==sizes[i] else { throw PinKnownRefusal() } }
+        if rows.count>=8 {
             let modelPaths=["src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildModelImport.java","apps/mobile/ios/App/App/PlanetChildModelImport.swift"]
             for i in 0..<4 { let row=try V.object(rows[i+4],["path","sha256","bytes"]);guard try V.text(row["path"])==modelPaths[i],try inputs[modelPaths[i]]==V.hash(row["sha256"]),try V.number(row["bytes"],1,2097152)>0 else { throw PinKnownRefusal() } }
+            if version==4 { let enginePaths=["src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts","src/child/childNativeScene.ts","src/child/childNativeCanonicalResources.ts","src/components/GlobeChildNativeComposition.tsx","apps/mobile/android/app/src/main/java/ru/probpera/literaryplanet/PlanetChildVault.java","apps/mobile/ios/App/App/PlanetChildVault.swift"]
+                for i in 0..<enginePaths.count { let row=try V.object(rows[i+8],["path","sha256","bytes"]);guard try V.text(row["path"])==enginePaths[i],try inputs[enginePaths[i]]==V.hash(row["sha256"]),try V.number(row["bytes"],1,2097152)>0 else { throw PinKnownRefusal() } }
+            }
         }
     }
 }
@@ -9942,9 +9945,9 @@ fileprivate enum LocalV2SceneCompiler {
         let catalog=try LocalV2SceneCatalog(bytes,artifact),package=delivery.compiled;var result=[String:LocalV2Scene]()
         for raw in catalog.pins { try fence();let pin=try V.object(raw),hash=try V.hash(pin["manifestChecksum"]),reviewHash=try V.hash(pin["reviewChecksum"]),mp="child-native/scenes/manifests/"+hash+".json",rp="child-native/scenes/reviews/"+reviewHash+".json"
             var manifest=try loader.fixedMediaAsset(mp,524288),review=try loader.fixedMediaAsset(rp,524288);defer { manifest.resetBytes(in:0..<manifest.count);review.resetBytes(in:0..<review.count) };try catalog.verify(mp,manifest,524288);try catalog.verify(rp,review,524288)
-            let value=try LocalV2SceneJson.read(manifest,524288),base=try S.object(value),model=try S.number(base["schemaVersion"],2,3)==3
-            let root=try S.object(value,model ? fields+["modelPackage"]:fields);try catalog.graph(root["sourceGraph"])
-            guard try S.array(root["sourceGraph"],8).count==(model ? 8:4) else { throw PinKnownRefusal() }
+            let value=try LocalV2SceneJson.read(manifest,524288),base=try S.object(value),version=try S.number(base["schemaVersion"],2,4),model=version>=3
+            let root=try S.object(value,version==4 ? fields+["modelPackage","engineComposition"]:model ? fields+["modelPackage"]:fields);try catalog.graph(root["sourceGraph"],version)
+            guard try S.array(root["sourceGraph"],16).count==(version==4 ? 16:model ? 8:4) else { throw PinKnownRefusal() }
             guard try S.identifier(root["sceneId"])==V.identifier(pin["sceneId"]),try S.identifier(root["packageId"])==V.identifier(pin["packageId"]),try S.number(root["packageVersion"],1,9007199254740991)==V.number(pin["packageVersion"],1,9007199254740991),try S.hash(root["packageChecksum"])==V.hash(pin["packageChecksum"]) else { throw PinKnownRefusal() }
             if try S.identifier(root["packageId"]) != package.packageId || S.number(root["packageVersion"],1,9007199254740991) != package.version || S.hash(root["packageChecksum"]) != package.checksum || S.text(root["locale"]) != package.profile.locale || S.number(root["exactAge"],3,17) != package.profile.exactAge { continue }
             guard catalog.platform==package.platform else { throw PinKnownRefusal() };let scene=try compile(root,review,pin,catalog,package,index,loader.wall());guard result[scene.id]==nil else { throw PinKnownRefusal() };result[scene.id]=scene;try fence()
@@ -9965,16 +9968,16 @@ fileprivate enum LocalV2SceneCompiler {
         }
     }
     private static func compile(_ root: [String:S],_ signed: Data,_ pin: [String:V],_ catalog: LocalV2SceneCatalog,_ package: LocalV2CompiledPackage,_ index: LocalV2MediaIndex,_ now: Int64) throws -> LocalV2Scene {
-        let version=try S.number(root["schemaVersion"],2,3),review=try LocalV2PackageJson.read(signed,524288),r=try V.object(review,version==3 ? reviewFields+["modelPackageChecksum"]:reviewFields)
+        let version=try S.number(root["schemaVersion"],2,4),review=try LocalV2PackageJson.read(signed,524288),r=try V.object(review,version==4 ? reviewFields+["modelPackageChecksum","engineCompositionChecksum"]:version==3 ? reviewFields+["modelPackageChecksum"]:reviewFields)
         guard try S.text(root["kind"])=="literary-planet-child-native-scene-manifest-v"+String(version),try V.number(r["schemaVersion"],version,version)==version,try V.text(r["kind"])=="literary-planet-child-native-scene-review-v"+String(version) else { throw PinKnownRefusal() }
         var models: PlanetChildModelImport.Package?
-        if version==3 { guard let raw=root["modelPackage"] else { throw PinKnownRefusal() };models=try PlanetChildModelImport.package(raw.bridgeValue());guard let models,try S.identifier(root["sceneId"])==models.id+".v"+String(models.version),try V.hash(r["modelPackageChecksum"])==LocalSnapshotV2.hash(Data(raw.json(sorted:true).utf8)) else { throw PinKnownRefusal() } }
+        if version>=3 { guard let raw=root["modelPackage"] else { throw PinKnownRefusal() };models=try PlanetChildModelImport.package(raw.bridgeValue());guard let models,try S.identifier(root["sceneId"])==models.id+".v"+String(models.version),try V.hash(r["modelPackageChecksum"])==LocalSnapshotV2.hash(Data(raw.json(sorted:true).utf8)) else { throw PinKnownRefusal() } }
         for name in ["sceneId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum"] { guard let field=root[name],try field.package().json(sorted:true)==r[name]?.json(sorted:true) else { throw PinKnownRefusal() } }
         guard try V.hash(r["manifestChecksum"])==V.hash(pin["manifestChecksum"]),try S.identifier(root["packageId"])==package.packageId,try S.number(root["packageVersion"],1,9007199254740991)==package.version,try S.hash(root["packageChecksum"])==package.checksum,
             try S.text(root["policyVersion"])==package.profile.policyVersion,try S.hash(root["policyChecksum"])==package.profile.policyChecksum,try S.text(root["locale"])==package.profile.locale,try S.number(root["exactAge"],3,17)==package.profile.exactAge else { throw PinKnownRefusal() }
-        let title=try S.text(root["title"]);guard !title.isEmpty,title.utf16.count<=240,title.range(of:"[\\x00-\\x1f\\x7f]",options:.regularExpression)==nil else { throw PinKnownRefusal() };try reference(root["owner"]!.package(),package,now);try catalog.graph(root["sourceGraph"])
+        let title=try S.text(root["title"]);guard !title.isEmpty,title.utf16.count<=240,title.range(of:"[\\x00-\\x1f\\x7f]",options:.regularExpression)==nil else { throw PinKnownRefusal() };try reference(root["owner"]!.package(),package,now);try catalog.graph(root["sourceGraph"],version)
         var graph=Data(try root["sourceGraph"]!.package().json(sorted:true).utf8);defer { graph.resetBytes(in:0..<graph.count) };guard try V.hash(r["sourceGraphChecksum"])==LocalSnapshotV2.hash(graph),try V.number(r["reviewedAtEpochMs"],0,8640000000000000)<=now else { throw PinKnownRefusal() }
-        let platforms=try V.strings(r["platforms"],3,"android-google|android-rustore|ios-ipados"),territories=try V.strings(r["territories"],676,"[A-Z]{2}");guard platforms.contains(package.platform),territories.contains(package.territory) else { throw PinKnownRefusal() };try signature(review,catalog.keys)
+        let platforms=try V.strings(r["platforms"],3,"android-google|android-rustore|ios-ipados"),territories=try V.strings(r["territories"],676,"[A-Z]{2}");guard platforms.contains(package.platform),territories.contains(package.territory) else { throw PinKnownRefusal() };if version==4 { try LocalV2SceneEngine.check(root,r,package.profile.exactAge,package.version,package.platform) };try signature(review,catalog.keys)
         var from=max(try S.number(root["validFromEpochMs"],0,8640000000000000),try V.number(r["validFromEpochMs"],0,8640000000000000)),until=min(package.until,min(try S.number(root["validUntilEpochMs"],0,8640000000000000),try V.number(r["validUntilEpochMs"],0,8640000000000000)))
         guard try S.number(root["validFromEpochMs"],0,8640000000000000)<S.number(root["validUntilEpochMs"],0,8640000000000000),try V.number(r["validFromEpochMs"],0,8640000000000000)<V.number(r["validUntilEpochMs"],0,8640000000000000) else { throw PinKnownRefusal() }
         let stand=try S.object(root["stand"],["geometryId","asset"]),background=try S.object(root["background"],["geometryId","asset"]);guard try S.text(stand["geometryId"])=="stand.base.child-book-cloud",try S.text(background["geometryId"])=="background.base.library" else { throw PinKnownRefusal() }
@@ -9999,7 +10002,7 @@ fileprivate enum LocalV2SceneCompiler {
         guard let selected else { throw PinKnownRefusal() };var point=try raw(V.text(selected["publicKeyX963Hex"]),65),sig=try raw(V.text(row["signatureHex"]),64)
         defer { point.resetBytes(in:0..<point.count);sig.resetBytes(in:0..<sig.count) };guard point.first==4 else { throw PinKnownRefusal() }
         let key=try P256.Signing.PublicKey(x963Representation:point),signature=try P256.Signing.ECDSASignature(rawRepresentation:sig)
-        let domain=try V.number(row["schemaVersion"],2,3)==3 ? "LP-CHILD-NATIVE-SCENE-REVIEW\0v3\0":"LP-CHILD-NATIVE-SCENE-REVIEW\0v2\0"
+        let version=try V.number(row["schemaVersion"],2,4),domain=version==4 ? "LP-CHILD-NATIVE-SCENE-REVIEW\0v4\0":version==3 ? "LP-CHILD-NATIVE-SCENE-REVIEW\0v3\0":"LP-CHILD-NATIVE-SCENE-REVIEW\0v2\0"
         var message=Data((domain+(try V.object(fields.filter { $0.0 != "signatureHex" }).json(sorted:true))).utf8);defer { message.resetBytes(in:0..<message.count) }
         guard key.x963Representation==point,key.isValidSignature(signature,for:message) else { throw PinKnownRefusal() }
     }
@@ -10011,21 +10014,26 @@ fileprivate final class LocalV2SceneLease: NSObject {
     fileprivate var selectedModelTier: PlanetChildModelImport.Tier?,modelProbes=[String:PlanetChildModelImport.Probe](),topologyTokens: Set<String>?
     fileprivate var rollbackSelection: PlanetChildAppearance.Selection?,rollbackPriorRevision: UInt64=0,rollbackCommittedRevision: UInt64=0,rollbackPreviousToken: String?
     fileprivate var rollbackCaptured=false,rollbackArmed=false,rollbackConsumed=false,commonTextureBytes=[String:Int](),legacyTextureBytes=[String:Int]()
-    private func commonDecodedBytes() -> Int {
+    private func commonDecodedBytes(_ textures: [String:Int]?=nil) -> Int {
         var uses=[String:Int]()
         if let tier=selectedModelTier { for model in tier.models { if let probe=modelProbes[model.model.id] { for resource in model.dependencies where resource.kind=="texture" { uses[resource.id,default:0]+=probe.textureUses[resource.alias,default:0] } } } }
-        return modelProbes.values.reduce(0,{ $0+$1.decodedBytes })+commonTextureBytes.reduce(0,{ $0+$1.value*max(1,uses[String($1.key.dropFirst("common:".count)),default:0]) })
+        return modelProbes.values.reduce(0,{ $0+$1.decodedBytes })+(textures ?? commonTextureBytes).reduce(0,{ $0+$1.value*max(1,uses[String($1.key.dropFirst("common:".count)),default:0]) })
     }
-    func imageDecoded(_ slot: String,_ bytes: Int) throws {
+    func imageWillDecode(_ slot: String,_ width: Int,_ height: Int) throws {
+        guard scene.root["engineComposition"] != nil else { return };try workerCurrent()
+        if slot.hasPrefix("common:") { guard let tier=selectedModelTier else { throw PinKnownRefusal() };var pending=commonTextureBytes;pending[slot]=(width*height*16+2)/3;let memory=commonDecodedBytes(pending),draws=modelProbes.values.reduce(0) { $0+$1.triangles };guard memory<=tier.decodedBytes else { throw PinKnownRefusal() };try LocalV2SceneEngine.budget(scene.root,tier.id,memory,draws) }
+        else { try LocalV2SceneEngine.dimensions(scene.root,slot,width,height);var keys=Set(legacyTextureBytes.keys);keys.insert(slot);try LocalV2SceneEngine.partialBudget(scene.root,keys,selectedModelTier?.id,commonDecodedBytes()) };try workerCurrent()
+    }
+    func imageDecoded(_ slot: String,_ bytes: Int,_ width: Int,_ height: Int) throws {
         try workerCurrent();topologyTokens=nil;guard bytes>0,bytes<=67108864 else { throw PinKnownRefusal() }
         if slot.hasPrefix("common:") { guard let tier=selectedModelTier else { throw PinKnownRefusal() };commonTextureBytes[slot]=(bytes*4+2)/3;guard commonDecodedBytes()<=tier.decodedBytes else { throw PinKnownRefusal() } }
-        else { legacyTextureBytes[slot]=bytes;guard legacyTextureBytes.values.reduce(0,+)<=3*67108864 else { throw PinKnownRefusal() } }
+        else { try LocalV2SceneEngine.dimensions(scene.root,slot,width,height);legacyTextureBytes[slot]=bytes;try LocalV2SceneEngine.partialBudget(scene.root,Set(legacyTextureBytes.keys),selectedModelTier?.id,commonDecodedBytes());guard legacyTextureBytes.values.reduce(0,+)<=3*67108864 else { throw PinKnownRefusal() } };if let tier=selectedModelTier { try LocalV2SceneEngine.budget(scene.root,tier.id,commonDecodedBytes(),modelProbes.values.reduce(0) { $0+$1.triangles }) }
         try workerCurrent()
     }
     func modelResource(_ id: String,_ kind: String,_ tier: String) throws -> String {
         try workerCurrent();guard let selected=scene.modelPackage?.tiers.first(where:{ $0.id==tier }),selectedModelTier==nil || selectedModelTier?.id==tier,
             selected.models.contains(where:{ ([$0.model]+$0.dependencies).contains(where:{ $0.id==id && $0.kind==kind }) }),scene.assets["common:"+id] != nil else { throw PinKnownRefusal() }
-        selectedModelTier=selected;topologyTokens=nil;return "common:"+id
+        try LocalV2SceneEngine.policy(scene.root,tier);selectedModelTier=selected;topologyTokens=nil;return "common:"+id
     }
     func probe(_ key: String,_ encoded: Data) throws {
         try workerCurrent();topologyTokens=nil;guard let tier=selectedModelTier else { throw PinKnownRefusal() }
@@ -10038,7 +10046,7 @@ fileprivate final class LocalV2SceneLease: NSObject {
             }
         }
         guard seen else { throw PinKnownRefusal() };let decoded=commonDecodedBytes(),triangles=modelProbes.values.reduce(0) { $0+$1.triangles }
-        guard decoded<=tier.decodedBytes,triangles<=tier.triangles else { throw PinKnownRefusal() };try workerCurrent()
+        guard decoded<=tier.decodedBytes,triangles<=tier.triangles else { throw PinKnownRefusal() };try LocalV2SceneEngine.budget(scene.root,tier.id,decoded,triangles);try workerCurrent()
     }
     let sdk: PlanetChildLocalV2SDKOwner,context: PlanetChildLocalV2SDKOwner.Context,delivery: LocalV2OwnedPackageDelivery,index: LocalV2MediaIndex,scene: LocalV2Scene,channel: LocalV2SDKChannel
     let handler: PlanetChildWebResources,web: WKWebView,token: String,epoch: UInt64,mediaEpoch: UInt64,navigation: UInt64,deadline: UInt64
@@ -10088,15 +10096,21 @@ final class PlanetChildLocalV2WebOutputPermit {
     private init(_ lease: LocalV2SceneLease,_ claim: PlanetChildLocalV2ResourceClaim,_ reader: PlanetChildLocalV2ResourceReader,_ slot: String,_ token: String) {
         self.lease=lease;command=claim.permit.command;asset=claim.permit.asset;catalog=claim.catalog;binding=claim.binding;self.reader=reader;slotId=slot;self.token=token;handler=lease.handler;mime=asset.mime;bytes=asset.bytes;deadline=claim.deadline;from=max(lease.scene.from,claim.effectiveFrom);until=min(lease.scene.until,claim.effectiveUntil)
     }
-    fileprivate static func make(_ lease: LocalV2SceneLease,_ claim: PlanetChildLocalV2ResourceClaim,_ reader: PlanetChildLocalV2ResourceReader,_ slot: String,_ token: String,_ encoded: Data) throws -> PlanetChildLocalV2WebOutputPermit {
+    fileprivate static func preflightOriginal(_ lease: LocalV2SceneLease,_ claim: PlanetChildLocalV2ResourceClaim,_ reader: PlanetChildLocalV2ResourceReader,_ slot: String,_ encoded: Data) throws -> [String:Int]? {
         try lease.workerCurrent();try claim.workerCurrent();guard reader.knownClosed,claim.permit.sdk === lease.sdk,claim.permit.delivery === lease.delivery,claim.permit.index === lease.index,lease.scene.assets[slot] === claim.permit.asset,claim.permit.epoch==lease.mediaEpoch else { throw PinKnownRefusal() }
         try lease.sdk.canonicalAcquisitionJoined(reader);try PlanetChildLocalV2ResourceRules.encoded(encoded,claim.bytes,claim.checksum)
-        if slot.hasPrefix("common:") { try lease.probe(slot,encoded) }
+        var dimensions: [String:Int]?;if slot.hasPrefix("common:") { try lease.probe(slot,encoded) }
         if claim.mime.hasPrefix("image/") {
             let header=try PlanetChildLocalV2MediaCodec.preflight(encoded,claim.mime);guard slot != "skin" || header.width==header.height*2 else { throw PlanetChildLocalV2MediaError.malformed }
-            try autoreleasepool { let raster=try PlanetChildLocalV2MediaResource.raster(encoded,header);raster.close();guard raster.footprint==0 else { throw PlanetChildLocalV2ResourceError.cleanupUnknown } };try lease.imageDecoded(slot,header.width*header.height*4)
+            if slot.hasPrefix("common:"),lease.scene.root["engineComposition"] != nil { dimensions=["width":header.width,"height":header.height] };try lease.imageWillDecode(slot,header.width,header.height);try autoreleasepool { let raster=try PlanetChildLocalV2MediaResource.raster(encoded,header);raster.close();guard raster.footprint==0 else { throw PlanetChildLocalV2ResourceError.cleanupUnknown } };try lease.imageDecoded(slot,header.width*header.height*4,header.width,header.height)
         } else { guard slot.hasPrefix("common:"),["model/gltf+json","model/gltf-binary","application/octet-stream"].contains(claim.mime) else { throw PinKnownRefusal() } }
-        try lease.workerCurrent();try claim.workerCurrent();let output=PlanetChildLocalV2WebOutputPermit(lease,claim,reader,slot,token);try claim.transferOnce();try output.transferCurrent(encoded);return output
+        try lease.workerCurrent();try claim.workerCurrent();return dimensions
+    }
+    fileprivate static func make(_ lease: LocalV2SceneLease,_ claim: PlanetChildLocalV2ResourceClaim,_ reader: PlanetChildLocalV2ResourceReader,_ slot: String,_ token: String,_ encoded: Data) throws -> PlanetChildLocalV2WebOutputPermit {
+        if lease.scene.root["engineComposition"]==nil { _=try preflightOriginal(lease,claim,reader,slot,encoded) }
+        try lease.workerCurrent();try claim.workerCurrent();guard reader.knownClosed,claim.permit.sdk === lease.sdk,claim.permit.delivery === lease.delivery,claim.permit.index === lease.index,lease.scene.assets[slot] === claim.permit.asset,claim.permit.epoch==lease.mediaEpoch else { throw PinKnownRefusal() }
+        try lease.sdk.canonicalAcquisitionJoined(reader);try PlanetChildLocalV2ResourceRules.encoded(encoded,claim.bytes,claim.checksum)
+        let output=PlanetChildLocalV2WebOutputPermit(lease,claim,reader,slot,token);try claim.transferOnce();try output.transferCurrent(encoded);return output
     }
     func transferCurrent(_ encoded: Data) throws {
         try lease.workerCurrent();guard !command.returned,reader.knownClosed,asset === lease.scene.assets[slotId],asset === lease.index.assets.first(where:{ $0.id==asset.id }),lease.index.resources === catalog,deadline==lease.deadline else { throw PinKnownRefusal() }
@@ -10105,6 +10119,11 @@ final class PlanetChildLocalV2WebOutputPermit {
     func adopt(_ output: PlanetChildWebResources.Output) throws {
         try lease.workerCurrent();guard output.permit === self,output.token==token,!command.returned,reader.knownClosed else { throw PinKnownRefusal() }
         lock.lock();defer { lock.unlock() };guard !adopted,original==nil else { throw PinKnownRefusal() };adopted=true;original=output
+    }
+    fileprivate func staticWorker(_ output: PlanetChildWebResources.Output) throws {
+        try lease.workerCurrent();let actual=try lease.channel.mediaOriginalCommand(lease.delivery)
+        guard !Thread.isMainThread,actual !== command,!actual.returned,lease.selectedModelTier==nil,try LocalV2SceneEngine.staticAllowed(lease.scene.root),["skin","background"].contains(slotId) else { throw PinKnownRefusal() }
+        try outputCurrent(output,lease.web,lease.navigation);try lease.workerCurrent()
     }
     fileprivate func topologyWorker(_ output: PlanetChildWebResources.Output) throws {
         try lease.workerCurrent();let actual=try lease.channel.mediaOriginalCommand(lease.delivery)
@@ -10218,12 +10237,21 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             for output in old { output.revoke();try canonicalRetireJoined(resourceToken:output.token,retireScenes:false) };try lease.workerCurrent()
             let command=try channel.mediaOriginalCommand(delivery),acquisition=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,lease.mediaEpoch,c.token,c.generation,lease.index,asset);defer { acquisition.close() }
             let (claim,reader,originalBytes)=try canonicalRead(acquisition);var encoded=originalBytes;defer { encoded.resetBytes(in:0..<encoded.count) }
+            var dimensions: [String:Int]?
+            if lease.scene.root["engineComposition"] != nil {
+                do { dimensions=try PlanetChildLocalV2WebOutputPermit.preflightOriginal(lease,claim,reader,slot,encoded) }
+                catch let declined as LocalV2SceneBudgetDeclined {
+                    try requireOriginal(c,delivery);try lease.workerCurrent();try acquisition.workerCurrent();try claim.workerCurrent();guard reader.knownClosed,try LocalV2SceneValue.number(lease.scene.root["schemaVersion"],4,4)==4 else { throw PinKnownRefusal() };try PlanetChildLocalV2ResourceRules.encoded(encoded,claim.bytes,claim.checksum)
+                    let now=try delivery.owner.writer.clock.nanoseconds(),wall=try delivery.owner.wall(),until=min(lease.scene.until,claim.effectiveUntil);guard now<claim.deadline else { throw PinKnownRefusal() };let remaining=min((claim.deadline-now)/1000000,UInt64(max(0,until-wall)));guard remaining>0,remaining<=60000 else { throw PinKnownRefusal() }
+                    return ["status":"budget-declined","sceneId":lease.scene.id,"slotId":wireSlot,"assetId":asset.id,"tier":r.tier.map { $0 as Any } ?? NSNull(),"entity":try JSONSerialization.jsonObject(with:Data(asset.entity.json(sorted:true).utf8)),"mime":asset.mime,"checksum":asset.checksum,"encodedBytes":asset.bytes,"remainingLifetimeMs":remaining,"reason":declined.reason]
+                }
+            }
             let permit=try PlanetChildLocalV2WebOutputPermit.make(lease,claim,reader,slot,Self.token(),encoded);var output: PlanetChildWebResources.Output?,registered=false
             do {
                 let transferred=try handler.adopt(permit,encoded);output=transferred;try lease.workerCurrent();lock.lock();let used=canonicalOutputs.values.reduce(0) { $0+$1.permit.bytes }
                 guard !sealed,context === c,canonicalScenes[sceneToken] === lease,canonicalOutputs.count<134,canonicalOutputs.values.filter({ $0.permit.lease === lease }).count<67,canonicalOutputs[permit.token]==nil,asset.bytes<=128*1024*1024-used else { lock.unlock();throw PinKnownRefusal() };canonicalOutputs[permit.token]=transferred;registered=true;lock.unlock()
                 try lease.workerCurrent();let remaining=try permit.remainingTransfer()
-                return ["status":"available","sceneToken":sceneToken,"slotId":wireSlot,"resourceToken":permit.token,"assetId":asset.id,"entity":try JSONSerialization.jsonObject(with:Data(asset.entity.json(sorted:true).utf8)),"mime":asset.mime,"checksum":asset.checksum,"encodedBytes":asset.bytes,"uri":transferred.uri,"remainingLifetimeMs":remaining]
+                var reply: [String:Any]=["status":"available","sceneToken":sceneToken,"slotId":wireSlot,"resourceToken":permit.token,"assetId":asset.id,"entity":try JSONSerialization.jsonObject(with:Data(asset.entity.json(sorted:true).utf8)),"mime":asset.mime,"checksum":asset.checksum,"encodedBytes":asset.bytes,"uri":transferred.uri,"remainingLifetimeMs":remaining];if wireSlot=="texture",r.tier != nil,let dimensions { reply["dimensions"]=dimensions };return reply
             } catch { let original=error;if let output { output.revoke();do { if registered { try canonicalRetireJoined(resourceToken:output.token,retireScenes:false) } else { try output.closeJoined();try handler.forget(output) } } catch { lock.lock();sealed=true;lock.unlock();throw PlanetChildLocalV2ResourceError.cleanupUnknown } };throw original }
         }
         let (index,scenes)=try canonicalIndex(c,delivery);guard let raw=r.mediaOwner else { throw PinKnownRefusal() }
@@ -10243,7 +10271,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         let lease=LocalV2SceneLease(self,c,delivery,index,scene,channel,handler,web,try Self.token(),sceneEpoch,originalMediaEpoch)
         do {
             try DispatchQueue.main.sync { try handler.currentMain(web,lease.navigation);try delivery.owner.mediaMainCurrent();lock.lock();guard !sealed,context === c,canonicalEpoch==sceneEpoch,mediaEpoch==originalMediaEpoch,canonicalScenes.count<2 else { lock.unlock();throw PinKnownRefusal() };canonicalScenes[lease.token]=lease;lock.unlock();try lease.armMain() }
-            try lease.workerCurrent();var reply: [String:Any]=["status":"opened","sceneToken":lease.token,"sceneId":id,"owner":raw,"skin":try scene.root["skin"]!.bridgeValue(),"stand":try scene.root["stand"]!.bridgeValue(),"background":try scene.root["background"]!.bridgeValue(),"hotspots":try scene.root["hotspots"]!.bridgeValue(),"remainingLifetimeMs":try lease.remaining()];if let models=scene.root["modelPackage"] { reply["modelPackage"]=try models.bridgeValue() };return reply
+            try lease.workerCurrent();var reply: [String:Any]=["status":"opened","sceneToken":lease.token,"sceneId":id,"owner":raw,"skin":try scene.root["skin"]!.bridgeValue(),"stand":try scene.root["stand"]!.bridgeValue(),"background":try scene.root["background"]!.bridgeValue(),"hotspots":try scene.root["hotspots"]!.bridgeValue(),"remainingLifetimeMs":try lease.remaining()];if scene.root["modelPackage"] != nil { reply["modelPackage"]=try LocalV2SceneEngine.wire(scene.root) };return reply
         } catch { let original=error;lease.revoke();lock.lock();let registered=canonicalScenes[lease.token] === lease;lock.unlock();if registered { try canonicalRetireJoined(sceneToken:lease.token,retireScenes:true) } else { DispatchQueue.main.sync { lease.stopMain() } };throw original }
     }
 }
@@ -10402,6 +10430,10 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
     func canonicalTopology(_ lease: LocalV2SceneLease) throws {
         guard lease.scene.modelPackage != nil else { return };try lease.workerCurrent();lease.topologyTokens=nil
         lock.lock();let tier=lease.selectedModelTier,outputs=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits };do { try canonicalModelReadyLocked(lease,requireTopology:false);lock.unlock() } catch { lock.unlock();throw error }
+        if tier==nil,try LocalV2SceneEngine.staticAllowed(lease.scene.root) {
+            try LocalV2SceneEngine.staticBudget(lease.scene.root);for output in outputs { try output.permit.staticWorker(output) };try lease.workerCurrent()
+            lock.lock();defer { lock.unlock() };let actual=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits };guard Set(actual.map { $0.token })==Set(outputs.map { $0.token }) else { throw PinKnownRefusal() };lease.topologyTokens=Set(actual.map { $0.token });try canonicalModelReadyLocked(lease);return
+        }
         guard let tier else { throw PinKnownRefusal() };var copies=[String:Data](),copiedBytes=0
         defer { for id in Array(copies.keys) { if var bytes=copies.removeValue(forKey:id) { bytes.resetBytes(in:0..<bytes.count) } } }
         for resource in tier.models.flatMap({ [$0.model]+$0.dependencies }) where ["model","buffer"].contains(resource.kind) && copies[resource.id]==nil {
@@ -10420,6 +10452,10 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
     }
     private func canonicalModelReadyLocked(_ lease: LocalV2SceneLease,requireTopology: Bool=true) throws {
         guard lease.scene.modelPackage != nil else { return }
+        if lease.selectedModelTier==nil,try LocalV2SceneEngine.staticAllowed(lease.scene.root) {
+            let outputs=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits };guard lease.modelProbes.isEmpty,lease.commonTextureBytes.isEmpty,Set(outputs.map { $0.permit.slotId })==Set(["skin","background"]),outputs.count==2,
+                (!requireTopology || lease.topologyTokens==Set(outputs.map { $0.token })),outputs.allSatisfy({ lease.scene.assets[$0.permit.slotId] === $0.permit.asset }) else { throw PinKnownRefusal() };try LocalV2SceneEngine.staticBudget(lease.scene.root);return
+        }
         guard let tier=lease.selectedModelTier,lease.modelProbes.count==tier.models.count else { throw PinKnownRefusal() }
         let needed=Set(["skin","stand","background"]+tier.models.flatMap { ([$0.model]+$0.dependencies).map { "common:"+$0.id } })
         let outputs=canonicalOutputs.values.filter { $0.permit.lease === lease && $0.admits }
@@ -11872,3 +11908,53 @@ extension PlanetChildNativePackageRuntimeFixture {
     }
 }
 #endif
+
+/** Strict integer-only v4 constraints. These values narrow a scene whose
+ * original package, profile, rights and resource capabilities already passed. */
+fileprivate struct LocalV2SceneBudgetDeclined: Error { let reason: String }
+fileprivate enum LocalV2SceneEngine {
+    typealias S=LocalV2SceneValue
+    typealias V=LocalV2PackageValue
+    static let slots=["skin","stand","background"],tiers=["high","balanced","economy"]
+    private static func list(_ value: S?,_ maximum: Int,_ pattern: String,_ empty: Bool=false) throws -> Set<String> { let result=try S.strings(value,maximum,pattern);guard empty || !result.isEmpty else { throw PinKnownRefusal() };return result }
+    private static func rgb(_ value: S?) throws { let values=try S.array(value,3);guard values.count==3 else { throw PinKnownRefusal() };for value in values { _=try S.number(value,0,255) } }
+    static func decode(_ raw: S?) throws -> [String:S] {
+        let e=try S.object(raw,["schemaVersion","profile","sceneId","modelPackageId","modelPackageVersion","items","textures","anchors","tiers","lighting","ambience","transition","fallback"])
+        guard try S.number(e["schemaVersion"],1,1)==1,try S.text(e["profile"])=="canonical-scene-v1" else { throw PinKnownRefusal() };_=try S.identifier(e["sceneId"]);_=try S.identifier(e["modelPackageId"]);_=try S.number(e["modelPackageVersion"],1,9007199254740991)
+        let items=try S.array(e["items"],3),textures=try S.array(e["textures"],3),policies=try S.array(e["tiers"],3);guard items.count==3,textures.count==3,policies.count==3 else { throw PinKnownRefusal() }
+        for i in 0..<3 {
+            let item=try S.object(items[i],["slotId","assetId","contentChecksum","editions","partners","accessoryIds","booky","explore","childSafe","minAge","maxAge","platforms","tiers","minAppVersion","minContentVersion","rightsBinding"])
+            guard try S.text(item["slotId"])==slots[i] else { throw PinKnownRefusal() };let id=try S.identifier(item["assetId"]);_=try S.hash(item["contentChecksum"]);_=try list(item["editions"],32,"[A-Za-z0-9][A-Za-z0-9._-]{0,95}")
+            let partners=try S.object(item["partners"],slots);for slot in slots { _=try list(partners[slot],16,"[A-Za-z0-9][A-Za-z0-9._-]{0,95}") }
+            guard try S.array(item["accessoryIds"],0).isEmpty,try S.text(item["booky"])=="preserve-existing",try S.bool(item["childSafe"]),try S.text(item["rightsBinding"])=="current-native-scene" else { throw PinKnownRefusal() };_=try S.bool(item["explore"])
+            let age=try S.number(item["minAge"],3,17);_=try S.number(item["maxAge"],age,17);_=try list(item["platforms"],3,"android|ios|web");_=try list(item["tiers"],3,"high|balanced|economy");_=try S.number(item["minAppVersion"],1,1);_=try S.number(item["minContentVersion"],1,9007199254740991)
+            let texture=try S.object(textures[i],["slotId","assetId","width","height"]),w=try S.number(texture["width"],1,4096),h=try S.number(texture["height"],1,4096);guard try S.text(texture["slotId"])==slots[i],try S.identifier(texture["assetId"])==id,i != 0 || w==h*2 else { throw PinKnownRefusal() }
+            let policy=try S.object(policies[i],["tier","classification","maxDecodedBytes","maxResidentBytes","maxTriangles","maxEncodedCacheBytes"]),decoded=try S.number(policy["maxDecodedBytes"],1,67108864),resident=try S.number(policy["maxResidentBytes"],decoded,134217728)
+            guard try S.text(policy["tier"])==tiers[i],try S.text(policy["classification"])==(i==2 ? "3d-lite":"geometry"),try S.number(policy["maxEncodedCacheBytes"],0,4194304)<=resident else { throw PinKnownRefusal() };_=try S.number(policy["maxTriangles"],1,200000)
+            if i>0 { let prior=try S.object(policies[i-1]);for key in ["maxDecodedBytes","maxResidentBytes","maxTriangles","maxEncodedCacheBytes"] { guard try S.number(policy[key],0,134217728)<=S.number(prior[key],0,134217728) else { throw PinKnownRefusal() } } }
+        }
+        let a=try S.object(e["anchors"],["globe","booky","camera","stand","bookyPaddingPx"]);guard try S.text(a["globe"])=="canonical-origin",try S.text(a["booky"])=="existing-screen-avatar",try S.text(a["camera"])=="preserve-live",try S.text(a["stand"])=="canonical-below-globe" else { throw PinKnownRefusal() };_=try S.number(a["bookyPaddingPx"],0,48)
+        let l=try S.object(e["lighting"],["ambientRgb","ambientMilli","keyRgb","keyMilli","exposurePermille"]);try rgb(l["ambientRgb"]);try rgb(l["keyRgb"]);_=try S.number(l["ambientMilli"],0,1500);_=try S.number(l["keyMilli"],0,2000);_=try S.number(l["exposurePermille"],750,1250)
+        let m=try S.object(e["ambience"],["animation","amplitudePermille","periodMs","audio"]),animation=try S.text(m["animation"]),amplitude=try S.number(m["amplitudePermille"],0,50);guard animation=="gentle-light" || animation=="none" && amplitude==0,try S.text(m["audio"])=="silent" else { throw PinKnownRefusal() };_=try S.number(m["periodMs"],4000,20000)
+        let t=try S.object(e["transition"],["durationMs","timeoutMs","reducedMotion"]),duration=try S.number(t["durationMs"],0,700);_=try S.number(t["timeoutMs"],duration+250,2000);guard try S.text(t["reducedMotion"])=="instant" else { throw PinKnownRefusal() }
+        let f=try S.object(e["fallback"],["staticAllowed","preserveSkin","preserveBooky"]);_=try S.bool(f["staticAllowed"]);guard try S.bool(f["preserveSkin"]),try S.bool(f["preserveBooky"]) else { throw PinKnownRefusal() };return e
+    }
+    static func check(_ root: [String:S],_ review: [String:V],_ age: Int64,_ contentVersion: Int64,_ platform: String) throws {
+        let e=try decode(root["engineComposition"]),pack=try S.object(root["modelPackage"]);guard try S.identifier(e["sceneId"])==S.identifier(root["sceneId"]),try S.identifier(e["modelPackageId"])==S.identifier(pack["packageId"]),try S.number(e["modelPackageVersion"],1,9007199254740991)==S.number(pack["packageVersion"],1,9007199254740991),let raw=root["engineComposition"],try V.hash(review["engineCompositionChecksum"])==LocalSnapshotV2.hash(Data(raw.json(sorted:true).utf8)) else { throw PinKnownRefusal() }
+        let selected=[try S.object(root["skin"]),try S.object(S.object(root["stand"])["asset"]),try S.object(S.object(root["background"])["asset"])],items=try S.array(e["items"],3),audience=platform.hasPrefix("android-") ? "android":platform=="ios-ipados" ? "ios":""
+        guard !audience.isEmpty else { throw PinKnownRefusal() }
+        for i in 0..<3 { let item=try S.object(items[i]),partners=try S.object(item["partners"]),platforms=try list(item["platforms"],3,"android|ios|web")
+            guard try S.identifier(item["assetId"])==S.identifier(selected[i]["assetId"]),try S.hash(item["contentChecksum"])==S.hash(S.object(selected[i]["entity"])["contentChecksum"]),try age>=S.number(item["minAge"],3,17),try age<=S.number(item["maxAge"],3,17),try contentVersion>=S.number(item["minContentVersion"],1,9007199254740991),platforms.contains(audience) else { throw PinKnownRefusal() }
+            for k in 0..<3 { guard try list(partners[slots[k]],16,"[A-Za-z0-9][A-Za-z0-9._-]{0,95}").contains(S.identifier(selected[k]["assetId"])) else { throw PinKnownRefusal() } }
+            for reviewed in try V.strings(review["platforms"],3,"android-google|android-rustore|ios-ipados") { guard platforms.contains(reviewed.hasPrefix("android-") ? "android":"ios") else { throw PinKnownRefusal() } }
+        }
+    }
+    static func wire(_ root: [String:S]) throws -> Any { guard let core=root["modelPackage"] else { throw PinKnownRefusal() };if try S.number(root["schemaVersion"],2,4) != 4 { return try core.bridgeValue() };_=try decode(root["engineComposition"]);guard let raw=root["engineComposition"] else { throw PinKnownRefusal() };return ["schemaVersion":2,"modelPackage":try core.bridgeValue(),"engineComposition":try raw.bridgeValue(),"engineCompositionChecksum":LocalSnapshotV2.hash(Data(raw.json(sorted:true).utf8))] as [String:Any] }
+    @discardableResult static func policy(_ root: [String:S],_ tier: String?) throws -> [String:S]? { guard let raw=root["engineComposition"] else { return nil };let e=try S.object(raw),selected=tier ?? "high";if let tier { for item in try S.array(e["items"],3) { guard try list(S.object(item)["tiers"],3,"high|balanced|economy").contains(tier) else { throw PinKnownRefusal() } } };for value in try S.array(e["tiers"],3) { let row=try S.object(value);if try S.text(row["tier"])==selected { return row } };throw PinKnownRefusal() }
+    static func base(_ root: [String:S],_ fallback: Bool=false) throws -> Int { guard let raw=root["engineComposition"] else { return 0 };var sum: Int64=0;for value in try S.array(S.object(raw)["textures"],3) { let texture=try S.object(value);if try !fallback || S.text(texture["slotId"]) != "stand" { sum+=(try S.number(texture["width"],1,4096)*S.number(texture["height"],1,4096)*16+2)/3 } };return Int(sum) }
+    static func dimensions(_ root: [String:S],_ slot: String,_ width: Int,_ height: Int) throws { guard let raw=root["engineComposition"] else { return };for value in try S.array(S.object(raw)["textures"],3) { let texture=try S.object(value);if try S.text(texture["slotId"])==slot { guard try S.number(texture["width"],1,4096)==Int64(width),try S.number(texture["height"],1,4096)==Int64(height) else { throw PinKnownRefusal() };return } };throw PinKnownRefusal() }
+    static func budget(_ root: [String:S],_ tier: String?,_ common: Int,_ triangles: Int) throws { if let p=try policy(root,tier) { let memory=try base(root)+common,cap=try Int(S.number(p["maxDecodedBytes"],1,67108864)),draws=try Int(S.number(p["maxTriangles"],1,200000));if memory>cap { throw LocalV2SceneBudgetDeclined(reason:"decoded-budget") };if triangles>draws { throw LocalV2SceneBudgetDeclined(reason:"triangle-budget") } } }
+    static func partialBudget(_ root: [String:S],_ keys: Set<String>,_ tier: String?,_ common: Int) throws { guard let p=try policy(root,tier),let raw=root["engineComposition"] else { return };var memory=common;for value in try S.array(S.object(raw)["textures"],3) { let texture=try S.object(value);if try keys.contains(S.text(texture["slotId"])) { memory+=Int((try S.number(texture["width"],1,4096)*S.number(texture["height"],1,4096)*16+2)/3) } };let cap=try Int(S.number(p["maxDecodedBytes"],1,67108864));if memory>cap { throw LocalV2SceneBudgetDeclined(reason:"decoded-budget") } }
+    static func staticAllowed(_ root: [String:S]) throws -> Bool { guard let raw=root["engineComposition"] else { return false };return try S.bool(S.object(S.object(raw)["fallback"])["staticAllowed"]) }
+    static func staticBudget(_ root: [String:S]) throws { guard try staticAllowed(root),let p=try policy(root,"economy") else { throw PinKnownRefusal() };let memory=try base(root,true),cap=try Int(S.number(p["maxDecodedBytes"],1,67108864));if memory>cap { throw LocalV2SceneBudgetDeclined(reason:"decoded-budget") } }
+}

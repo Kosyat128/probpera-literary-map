@@ -11,7 +11,7 @@ const empty={schemaVersion:2,kind:"literary-planet-child-native-scene-release-pi
 async function fixture(){
  await mkdir(".tmp",{recursive:true});const root=await mkdtemp(path.resolve(".tmp/native-scene-test-"));roots.push(root);
  async function put(relative,bytes){await mkdir(path.dirname(path.join(root,relative)),{recursive:true});await writeFile(path.join(root,relative),bytes);}
- for(const source of ["childNativeScene.ts","childCommon3d.ts","childNativeMedia.ts","childPackage.ts","childAccessPolicy.ts","childDataNamespace.ts","childProfile.ts"])
+ for(const source of ["childNativeScene.ts","childCommon3d.ts","childSceneEngine.ts","childNativeMedia.ts","childPackage.ts","childAccessPolicy.ts","childDataNamespace.ts","childProfile.ts"])
   await put("src/child/"+source,await readFile(new URL("../../src/child/"+source,import.meta.url)));
  await put(CHILD_NATIVE_SCENE_PIN_SOURCE,json(empty));
  await put("src/child/childNativeMediaReleasePins.json",json({schemaVersion:2,kind:"literary-planet-child-native-media-release-pins-v2",reviewKeys:[],manifests:[]}));

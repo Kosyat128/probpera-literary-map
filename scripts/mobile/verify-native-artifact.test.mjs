@@ -26,13 +26,13 @@ async function fixture({ platform = "android", channel = "dev", ownership = true
   const lock = { packages: Object.fromEntries(Object.entries(nativePackages).map(([name, version]) => ["node_modules/" + name, { version, integrity: "sha512-" + Buffer.alloc(64, 1).toString("base64") }])) };
   const config = { appId: "ru.probpera.literaryplanet", appName: "Literary Planet", webDir: "dist-native", loggingBehavior: "debug", android: { path: "apps/mobile/android", allowMixedContent: false }, ios: { path: "apps/mobile/ios" }, server: { hostname: "localhost", androidScheme: "https", iosScheme: "capacitor" } };
   const sources = ["src/App.tsx", "src/host/mountHostApp.tsx", `src/platform/adapters/${platform}/entry.ts`, `src/platform/adapters/${platform}/${platform === "android" ? "Android" : "Ios"}PlatformAdapter.ts`, "native.html", "vite.native.config.ts", "vite.config.ts", "tsconfig.json", "package.json", "package-lock.json", "capacitor.config.json", "scripts/mobile/build-native.mjs", "scripts/mobile/native-base-assets.json", "scripts/mobile/pwa-artifact.mjs", CANONICAL_BOOK_SOURCE_REGISTRY, CHILD_NATIVE_PIN_SOURCE, CHILD_NATIVE_ASSET_MODULE, CHILD_NATIVE_MEDIA_PIN_SOURCE, CHILD_NATIVE_MEDIA_ASSET_MODULE, CHILD_NATIVE_RESOURCE_PIN_SOURCE, CHILD_NATIVE_RESOURCE_ASSET_MODULE, CHILD_NATIVE_SCENE_PIN_SOURCE, CHILD_NATIVE_SCENE_ASSET_MODULE,
-    "src/child/childNativeResource.ts", "src/child/childPackage.ts", "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts", "src/child/childProfile.ts","src/child/childNativeScene.ts","src/child/childNativeCanonicalResources.ts","src/child/childNativeMedia.ts","src/components/GlobeChildNativeComposition.tsx"].sort();
+    "src/child/childNativeResource.ts", "src/child/childPackage.ts", "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts", "src/child/childProfile.ts","src/child/childNativeScene.ts","src/child/childNativeCanonicalResources.ts","src/child/childNativeMedia.ts","src/components/GlobeChildNativeComposition.tsx","src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts"].sort();
   for (const file of sources) await write(file, file.endsWith(".json") ? "{}\n" : "fixture source " + file, root);
   for (const source of [CHILD_NATIVE_RESOURCE_ASSET_MODULE, "src/child/childNativeResource.ts", "src/child/childPackage.ts",
     "src/child/childAccessPolicy.ts", "src/child/childDataNamespace.ts", "src/child/childProfile.ts"])
     await write(source, await readFile(new URL("../../" + source, import.meta.url)), root);
   for (const source of [CHILD_NATIVE_SCENE_ASSET_MODULE,CHILD_NATIVE_MEDIA_ASSET_MODULE,"src/child/childNativeScene.ts",
-    "src/child/childNativeCanonicalResources.ts","src/child/childNativeMedia.ts","src/components/GlobeChildNativeComposition.tsx"])
+    "src/child/childNativeCanonicalResources.ts","src/child/childNativeMedia.ts","src/components/GlobeChildNativeComposition.tsx","src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts"])
     await write(source,await readFile(new URL("../../"+source,import.meta.url)),root);
   await write(CHILD_NATIVE_SCENE_PIN_SOURCE,json({schemaVersion:2,kind:"literary-planet-child-native-scene-release-pins-v2",reviewKeys:[],manifests:[]}),root);
   await write(CHILD_NATIVE_RESOURCE_PIN_SOURCE, json({ schemaVersion: 2, kind: "literary-planet-child-native-resource-release-pins-v2", origins: [], resources: [] }), root);
@@ -468,6 +468,14 @@ describe("native original canonical scene artifact provenance",()=>{
   expect(codes(await f.audit())).toContain("CHILD_NATIVE_SCENE_PROVENANCE");
   await rm(path.join(f.output,"child-native/scenes/orphan.json"));await f.write("index.html",f.html.replace(" planet-child-resource:",""));await f.refresh();
   expect(codes(await f.audit())).toContain("SHELL_CSP");
+ });
+ it("pins imported engine, cache and transition semantics even with historical comparison disabled",async()=>{
+  const f=await fixture();
+  for(const source of ["src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts"]){
+   const original=await readFile(path.join(f.root,source));await f.write(source,"substituted engine source",f.root);
+   expect(codes(await f.audit({checkSourceFreshness:false}))).toContain("CHILD_NATIVE_SCENE_PROVENANCE");await f.write(source,original,f.root);
+  }
+  expect((await f.audit({checkSourceFreshness:false})).findings).toEqual([]);
  });
  it("uses current scene compiler even when the general historical comparison is disabled",async()=>{
   const f=await fixture();await f.write("src/child/childNativeScene.ts","substituted schema",f.root);

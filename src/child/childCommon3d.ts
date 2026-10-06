@@ -1,3 +1,4 @@
+import { decodeChildEngineComposition, type ChildEngineComposition } from "./childSceneEngine";
 import { childDataArray, childRecord, decodeChildEntityReference, type ChildEntityReference } from "./childPackage";
 
 /** A checked static glTF subset, not a general glTF/extension capability. Native
@@ -19,6 +20,7 @@ export interface Common3dTier {
 export interface Common3dPackage {
   readonly schemaVersion: 1; readonly packageId: string; readonly packageVersion: number; readonly minAppVersion: 1;
   readonly formatProfile: typeof COMMON_3D_PROFILE; readonly tiers: readonly Common3dTier[];
+  readonly engineComposition?: ChildEngineComposition; readonly engineCompositionChecksum?: string;
 }
 const id = (x: unknown): x is string => typeof x === "string" && /^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$/u.test(x);
 const integer = (x: unknown, min = 0, max = Number.MAX_SAFE_INTEGER): x is number => typeof x === "number" && Number.isSafeInteger(x) && !Object.is(x, -0) && x >= min && x <= max;
@@ -33,6 +35,18 @@ export function decodeCommon3dResource(raw: unknown, slotId: string): Common3dRe
   return Object.freeze({ ...r, entity: e }) as unknown as Common3dResource;
 }
 export function decodeCommon3dPackage(raw: unknown): Common3dPackage | null {
+  // New wire envelope only; the original six-key schema1 remains exact. Native
+  // manifest/reviewv4 binds this engine checksum separately from core package1.
+  try {
+  const envelope = childRecord(raw, ["schemaVersion", "modelPackage", "engineComposition", "engineCompositionChecksum"]);
+  if (envelope?.schemaVersion === 2) {
+    const original = childRecord(envelope.modelPackage, ["schemaVersion", "packageId", "packageVersion", "minAppVersion", "formatProfile", "tiers"]);
+    if (!original || original.schemaVersion !== 1) return null;
+    const core = decodeCommon3dPackage(original), engine = decodeChildEngineComposition(envelope.engineComposition);
+    if (!core || !engine || engine.modelPackageId !== core.packageId || engine.modelPackageVersion !== core.packageVersion
+      || typeof envelope.engineCompositionChecksum !== "string" || !/^[a-f0-9]{64}$/u.test(envelope.engineCompositionChecksum)) return null;
+    return Object.freeze({ ...core, engineComposition: engine, engineCompositionChecksum: envelope.engineCompositionChecksum });
+  }
   try {
     const p = childRecord(raw, ["schemaVersion", "packageId", "packageVersion", "minAppVersion", "formatProfile", "tiers"]), ts = p && childDataArray(p.tiers, 3);
     if (!p || p.schemaVersion !== 1 || !id(p.packageId) || !integer(p.packageVersion, 1) || p.minAppVersion !== 1 || p.formatProfile !== COMMON_3D_PROFILE || ts?.length !== 3) return null;
@@ -67,6 +81,7 @@ export function decodeCommon3dPackage(raw: unknown): Common3dPackage | null {
     }
     if (identities.size > 64) return null;
     return Object.freeze({ schemaVersion: 1, packageId: p.packageId, packageVersion: p.packageVersion, minAppVersion: 1, formatProfile: COMMON_3D_PROFILE, tiers: Object.freeze(tiers) });
+  } catch { return null; }
   } catch { return null; }
 }
 

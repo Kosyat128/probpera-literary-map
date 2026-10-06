@@ -273,6 +273,7 @@ export async function verifyNativeArtifact({ rootDir = process.cwd(), artifactDi
     // Reconstruction is compiler-owned even with historical freshness disabled.
     for (const source of [CHILD_NATIVE_SCENE_ASSET_MODULE, CHILD_NATIVE_MEDIA_ASSET_MODULE,
       "src/child/childNativeScene.ts","src/child/childNativeCanonicalResources.ts","src/components/GlobeChildNativeComposition.tsx",
+      "src/child/childCommon3d.ts","src/child/childCommon3dImport.ts","src/child/childSceneEngine.ts","src/child/childSceneEncodedCache.ts","src/components/childSceneTransition.ts",
       "src/child/childNativeMedia.ts","src/child/childPackage.ts","src/child/childAccessPolicy.ts","src/child/childDataNamespace.ts","src/child/childProfile.ts"])
       if (inputMap.get(source) !== sha(await regular(root,source))) throw new Error();
     const expected = await collectChildNativeSceneOutputs(root,artifact.platform,artifact.channel);

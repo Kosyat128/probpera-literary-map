@@ -1261,6 +1261,7 @@ function GlobeSurface({
   quality,
   globeObjectRef,
   touchInteractionEnabled,
+  childPreloadPaused,
 }: {
   atlas: GlobeAtlas;
   visualStyle: GlobeVisualStyle;
@@ -1273,6 +1274,7 @@ function GlobeSurface({
   quality: GlobeQualityProfile;
   globeObjectRef: RefObject<THREE.Mesh>;
   touchInteractionEnabled: boolean;
+  childPreloadPaused?: boolean;
 }) {
   const surfaceMaterial = globeSurfaceMaterials[visualStyle];
   const hoveredCountryId = useRef<string | null>(null);
@@ -1423,6 +1425,7 @@ function MicrostateMarker({
   onCountrySelect,
   onCountryHover,
   touchInteractionEnabled,
+  childPreloadPaused,
 }: {
   country: Country;
   coordinates: [number, number];
@@ -1432,6 +1435,7 @@ function MicrostateMarker({
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   touchInteractionEnabled: boolean;
+  childPreloadPaused?: boolean;
 }) {
   const pointerGesture = useRef<GlobePointerGesture | null>(null);
   const position = geographicToSphere(coordinates[1], coordinates[0], 1.016);
@@ -1599,6 +1603,7 @@ function MicrostateMarkers({
   onCountrySelect,
   onCountryHover,
   touchInteractionEnabled,
+  childPreloadPaused,
 }: {
   atlas: GlobeAtlas;
   countries: Country[];
@@ -1608,6 +1613,7 @@ function MicrostateMarkers({
   onCountrySelect?: (country: Country) => void;
   onCountryHover: (country: Country | null) => void;
   touchInteractionEnabled: boolean;
+  childPreloadPaused?: boolean;
 }) {
   const microstates = useMemo(
     () =>
@@ -1735,6 +1741,7 @@ function GlobeScene({
   onViewSample,
   focusRequest,
   touchInteractionEnabled,
+  childPreloadPaused,
 }: {
   atlas: GlobeAtlas;
   childPresentation?: boolean;
@@ -1777,6 +1784,7 @@ function GlobeScene({
   onViewSample: (sample: GlobeViewSample) => void;
   focusRequest?: GlobeExplicitFocusRequest | null;
   touchInteractionEnabled: boolean;
+  childPreloadPaused?: boolean;
 }) {
   const compositionFrame = useGlobeCompositionFrame({ presentation: composition, atlas,
     prepared: preparedCompositionSource, editionId, stand: standCustomization,
@@ -1953,7 +1961,8 @@ function GlobeScene({
             onInspectionBounds={setStandInspectionBounds} canonicalFrame={canonicalFrame} />
         : canonicalFrame)}
       {childPresentation && childResources && onChildHotspot && <GlobeChildNativeComposition resources={childResources}
-        globeRef={globeObjectRef} quality={quality.tier} onHotspot={onChildHotspot} />}
+        globeRef={globeObjectRef} quality={quality.tier} onHotspot={onChildHotspot} editionId={editionId}
+        active={active} reducedMotion={reducedMotion} preloadPaused={childPreloadPaused} exploring={!!sceneInspection && sceneInspection.mode !== "closed"} />}
       <MicrostateMarkers
         atlas={atlas}
         countries={countries}
@@ -3330,6 +3339,7 @@ export default function LiteraryGlobe({
           active={globeActive}
           mobile={mobileGlobe}
           viewInsets={cameraViewInsets}
+          childPreloadPaused={interactionPaused || cameraFlightActive || cameraControlsActive}
           onCameraPhaseChange={setCameraPhase}
           onCameraFocusStarted={setStartedCameraIntent}
           onCameraFocusCancelled={setCancelledCameraMotion}

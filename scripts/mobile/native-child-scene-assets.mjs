@@ -67,14 +67,14 @@ const reviewFields=["schemaVersion","kind","keyId","reviewerId","sceneId","manif
   "policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum","sourceGraphChecksum","platforms","territories","reviewedAtEpochMs",
   "validFromEpochMs","validUntilEpochMs","signatureHex"];
 export async function verifyChildNativeSceneReview(manifest,review,pin,keys,now) {
-  const model=manifest.schemaVersion===3;
-  require(exact(review,model?[...reviewFields,"modelPackageChecksum"]:reviewFields)&&review.schemaVersion===(model?3:2)&&review.kind==="literary-planet-child-native-scene-review-v"+(model?3:2)
+  const engine=manifest.schemaVersion===4,model=manifest.schemaVersion===3||engine,version=engine?4:model?3:2;
+  require(exact(review,engine?[...reviewFields,"modelPackageChecksum","engineCompositionChecksum"]:model?[...reviewFields,"modelPackageChecksum"]:reviewFields)&&review.schemaVersion===version&&review.kind==="literary-planet-child-native-scene-review-v"+version
     &&window(review,now)&&Number.isSafeInteger(review.reviewedAtEpochMs)&&review.reviewedAtEpochMs>=0&&review.reviewedAtEpochMs<=now
     &&review.manifestChecksum===pin.manifestChecksum,"current independent review");
   for(const field of ["sceneId","packageId","packageVersion","packageChecksum","policyVersion","policyChecksum","locale","exactAge","mediaManifestChecksum","mediaReviewChecksum"])
     require(review[field]===manifest[field],"exact reviewed "+field);
   require(review.sourceGraphChecksum===sha(childNativeMediaCanonical(manifest.sourceGraph)),"reviewed source graph");
-  if(model)require(review.modelPackageChecksum===sha(childNativeMediaCanonical(manifest.modelPackage)),"reviewed full model dependency/tier closure");
+  if(model)require(review.modelPackageChecksum===sha(childNativeMediaCanonical(manifest.modelPackage)),"reviewed full model dependency/tier closure"); if(engine)require(review.engineCompositionChecksum===sha(childNativeMediaCanonical(manifest.engineComposition)),"reviewed full engine composition");
   require(Array.isArray(review.platforms)&&review.platforms.length>0&&review.platforms.length<=3&&new Set(review.platforms).size===review.platforms.length
     &&review.platforms.every(p=>["android-google","android-rustore","ios-ipados"].includes(p))
     &&Array.isArray(review.territories)&&review.territories.length>0&&review.territories.length<=676&&new Set(review.territories).size===review.territories.length
@@ -84,7 +84,7 @@ export async function verifyChildNativeSceneReview(manifest,review,pin,keys,now)
   const publicKey=await webcrypto.subtle.importKey("raw",Buffer.from(key.publicKeyX963Hex,"hex"),{name:"ECDSA",namedCurve:"P-256"},false,["verify"]);
   const unsigned={...review};delete unsigned.signatureHex;
   require(await webcrypto.subtle.verify({name:"ECDSA",hash:"SHA-256"},publicKey,Buffer.from(review.signatureHex,"hex"),
-    Buffer.concat([Buffer.from(model?"LP-CHILD-NATIVE-SCENE-REVIEW\0v3\0":CHILD_NATIVE_SCENE_REVIEW_DOMAIN),childNativeMediaCanonical(unsigned)])),"authentic independent signature");
+    Buffer.concat([Buffer.from(engine?"LP-CHILD-NATIVE-SCENE-REVIEW\0v4\0":model?"LP-CHILD-NATIVE-SCENE-REVIEW\0v3\0":CHILD_NATIVE_SCENE_REVIEW_DOMAIN),childNativeMediaCanonical(unsigned)])),"authentic independent signature");
 }
 export async function collectChildNativeSceneOutputs(root,platform,channel,now=Date.now()) {
   root=await fs.realpath(root);require(Number.isSafeInteger(now)&&now>=0,"explicit source time");
@@ -107,16 +107,16 @@ export async function collectChildNativeSceneOutputs(root,platform,channel,now=D
       reviewFile=await source(root,"src/child/scene-release-material/"+pin.reviewChecksum+"/review.json");
     require(file.sha256===pin.manifestChecksum&&reviewFile.sha256===pin.reviewChecksum,"exact original reviewed bytes");
     const manifest=childNativeSceneJson(file.bytes,524288),review=childNativeJson(reviewFile.bytes,524288);
-    const hasModels=manifest.schemaVersion===3;
-    require(exact(manifest,hasModels?[...manifestFields,"modelPackage"]:manifestFields)&&(manifest.schemaVersion===2||hasModels)&&manifest.kind==="literary-planet-child-native-scene-manifest-v"+manifest.schemaVersion
+    const hasEngine=manifest.schemaVersion===4,hasModels=manifest.schemaVersion===3||hasEngine;
+    require(exact(manifest,hasEngine?[...manifestFields,"modelPackage","engineComposition"]:hasModels?[...manifestFields,"modelPackage"]:manifestFields)&&(manifest.schemaVersion===2||hasModels)&&manifest.kind==="literary-planet-child-native-scene-manifest-v"+manifest.schemaVersion
       &&window(manifest,now)&&["ru","en"].includes(manifest.locale)&&Number.isInteger(manifest.exactAge)&&manifest.exactAge>=3&&manifest.exactAge<=17,
       "exact native scene manifest");
     for(const field of ["sceneId","packageId","packageVersion","packageChecksum"])require(manifest[field]===pin[field],"fixed pin relation");
     const projected=schema.decodeChildNativeScene({status:"opened",sceneToken:"0".repeat(32),sceneId:manifest.sceneId,owner:manifest.owner,
-      skin:manifest.skin,stand:manifest.stand,background:manifest.background,hotspots:manifest.hotspots,remainingLifetimeMs:1,...(hasModels?{modelPackage:manifest.modelPackage}:{})},manifest.owner,manifest.sceneId);
+      skin:manifest.skin,stand:manifest.stand,background:manifest.background,hotspots:manifest.hotspots,remainingLifetimeMs:1,...(hasModels?{modelPackage:hasEngine?{schemaVersion:2,modelPackage:manifest.modelPackage,engineComposition:manifest.engineComposition,engineCompositionChecksum:review.engineCompositionChecksum}:manifest.modelPackage}:{})},manifest.owner,manifest.sceneId);
     require(projected&&typeof manifest.title==="string"&&manifest.title.length>0&&manifest.title.length<=240
       &&!/[\u0000-\u001f\u007f]/u.test(manifest.title),"bounded original scene recipient metadata");
-    const expectedSources=hasModels?schema.CHILD_NATIVE_MODEL_SOURCE_PATHS:schema.CHILD_NATIVE_SCENE_SOURCE_PATHS;
+    const expectedSources=hasEngine?schema.CHILD_NATIVE_ENGINE_SOURCE_PATHS:hasModels?schema.CHILD_NATIVE_MODEL_SOURCE_PATHS:schema.CHILD_NATIVE_SCENE_SOURCE_PATHS;
     require(Array.isArray(manifest.sourceGraph)&&manifest.sourceGraph.length===expectedSources.length,"whole geometry source graph");
     for(let i=0;i<manifest.sourceGraph.length;i++) {
       const row=manifest.sourceGraph[i];require(exact(row,["path","sha256","bytes"])&&row.path===expectedSources[i],"fixed ordered source graph");
@@ -144,7 +144,7 @@ export async function collectChildNativeSceneOutputs(root,platform,channel,now=D
         &&manifest.validFromEpochMs>=asset.policy.rights.validFrom
         &&(asset.policy.rights.expiresAt===null||manifest.validUntilEpochMs<=asset.policy.rights.expiresAt),"scene cannot extend asset rights");
     }
-    if(hasModels)await validateChildNativeModelClosure(root,projected.modelPackage,manifest,review,mediaManifest,media.outputs,schema);
+    if(hasModels){const measured=new Map();await validateChildNativeModelClosure(root,manifest.modelPackage,manifest,review,mediaManifest,media.outputs,schema,undefined,measured);if(hasEngine)await validateChildNativeEngineClosure(root,manifest,review,media.outputs,schema,undefined,measured);}
     const text=await source(root,"src/child/release-material/"+pin.packageChecksum+"/package.json",8*1024*1024);
     require(text.sha256===pin.packageChecksum,"actual original child index package");
     const packageData=childNativeJson(text.bytes,8*1024*1024);
@@ -160,13 +160,13 @@ export async function collectChildNativeSceneOutputs(root,platform,channel,now=D
 }
 /** Independent signed scene review binds every version, tier and dependency;
  * existing media review/rights and resource collectors bind their raw bytes. */
-export async function validateChildNativeModelClosure(root,modelPackage,manifest,review,mediaManifest,mediaOutputs,schema=undefined,preflight=undefined) {
+export async function validateChildNativeModelClosure(root,modelPackage,manifest,review,mediaManifest,mediaOutputs,schema=undefined,preflight=undefined,measured=undefined) {
   schema??=await actualSchema(root);
   preflight??=await sourceBinaryPreflight(root);
   const pack=schema.decodeCommon3dPackage(modelPackage);require(pack&&manifest.sceneId===pack.packageId+".v"+pack.packageVersion,"versioned exact model package");
   for(const tier of pack.tiers) {
-    let decoded=0,triangles=0;
-    for(const model of tier.models) {
+    let decoded=0,triangles=0,peakEncodedBytes=0;
+    for(const model of tier.models) { peakEncodedBytes=Math.max(peakEncodedBytes,[model.model,...model.dependencies].filter(r=>r.kind!=="texture").reduce((sum,r)=>sum+r.encodedBytes,0));
       const buffers=new Map(),images=new Map();let bytes;
       for(const resource of [model.model,...model.dependencies]) {
         const assets=mediaManifest.assets.filter(a=>a.assetId===resource.assetId);require(assets.length===1,"unique model dependency media asset");const asset=assets[0];
@@ -186,8 +186,45 @@ export async function validateChildNativeModelClosure(root,modelPackage,manifest
       for(const [alias,cost] of images) { const uses=(checked.raw.textures??[]).filter(t=>(checked.raw.images??[])[t.source]?.uri===alias).length;decoded+=Math.max(0,uses-1)*cost; }
       require(decoded<=tier.maxDecodedBytes&&triangles<=tier.maxTriangles,"whole tier decoded budget");
     }
+    measured?.set(tier.tier,{decodedBytes:decoded,triangles,peakEncodedBytes});
   }
   return pack;
+}
+/** v4 engine values constrain the existing signed/native scene; they never
+ * grant media rights, a profile or a resource capability. Raster dimensions
+ * and complete tier costs come from the actual compiled binary outputs. */
+export async function validateChildNativeEngineClosure(root,manifest,review,mediaOutputs,schema=undefined,preflight=undefined,measured=undefined) {
+  schema??=await actualSchema(root);preflight??=await sourceBinaryPreflight(root);
+  const engine=schema.decodeChildEngineComposition(manifest.engineComposition),pack=schema.decodeCommon3dPackage(manifest.modelPackage);
+  require(engine&&pack&&engine.sceneId===manifest.sceneId&&engine.modelPackageId===pack.packageId
+    &&engine.modelPackageVersion===pack.packageVersion&&manifest.sceneId===pack.packageId+".v"+pack.packageVersion,"exact engine scene/model version binding");
+  require(review.engineCompositionChecksum===sha(childNativeMediaCanonical(engine)),"strict engine composition checksum");
+  require(Number.isSafeInteger(manifest.exactAge)&&manifest.exactAge>=3&&manifest.exactAge<=17
+    &&Number.isSafeInteger(manifest.packageVersion)&&manifest.packageVersion>=1,"original engine profile/content version");
+  const slots=[manifest.skin,manifest.stand.asset,manifest.background.asset],platform=p=>p==="ios-ipados"?"ios":p==="android-google"||p==="android-rustore"?"android":null;
+  require(schema.CHILD_ENGINE_FIXED_RESIDENT_BYTES===65536,"fixed reviewed engine residency allowance"); let base=0,baseResident=0,baseEncodedPeak=0;
+  for(let i=0;i<3;i++){
+    const item=engine.items[i],texture=engine.textures[i],slot=slots[i];
+    require(item.assetId===slot.assetId&&item.contentChecksum===slot.entity.contentChecksum
+      &&manifest.exactAge>=item.minAge&&manifest.exactAge<=item.maxAge&&manifest.packageVersion>=item.minContentVersion
+      &&review.platforms.every(p=>platform(p)&&item.platforms.includes(platform(p)))
+      &&slots.every(s=>item.partners[s.slotId].includes(s.assetId)),"engine narrows current slots/profile/native audience");
+    const ext={"image/png":"png","image/jpeg":"jpg","image/webp":"webp"}[slot.mime],matches=mediaOutputs.filter(o=>o.output==="child-native/media/assets/"+slot.checksum+"."+ext);
+    require(ext&&matches.length===1&&matches[0].bytes.length===slot.encodedBytes&&sha(matches[0].bytes)===slot.checksum,"actual engine base raster output");
+    const header=preflight(new Uint8Array(matches[0].bytes),slot.mime);
+    require(header?.kind==="image"&&header.width===texture.width&&header.height===texture.height,"measured engine raster dimensions");
+    const mip=Math.ceil(header.width*header.height*16/3);base+=mip;baseResident+=mip+header.width*header.height*4;baseEncodedPeak=Math.max(baseEncodedPeak,slot.encodedBytes);
+  }
+  require(measured instanceof Map&&measured.size===3,"actual complete model tier costs");
+  let eligible=false;
+  for(const policy of engine.tiers){const cost=measured.get(policy.tier);require(cost&&Number.isSafeInteger(cost.decodedBytes)&&cost.decodedBytes>=0&&Number.isSafeInteger(cost.triangles)&&cost.triangles>=0&&Number.isSafeInteger(cost.peakEncodedBytes)&&cost.peakEncodedBytes>=0,"actual measured engine tier");
+    const selected=pack.tiers.find(t=>t.tier===policy.tier),procedural=schema.childEngineProceduralReserve(policy.tier,!selected.models.some(m=>m.slotId==="stand"),!selected.models.some(m=>m.slotId==="background"),(manifest.hotspots??[]).length);
+    const resident=baseResident+2*cost.decodedBytes+Math.max(baseEncodedPeak,2*cost.peakEncodedBytes+6*Math.min(65536,cost.peakEncodedBytes))+schema.CHILD_ENGINE_FIXED_RESIDENT_BYTES+procedural.residentBytes;if(engine.items.every(item=>item.tiers.includes(policy.tier))&&base+cost.decodedBytes<=policy.maxDecodedBytes&&cost.triangles+procedural.triangles<=policy.maxTriangles&&resident<=policy.maxResidentBytes)eligible=true;}
+  const economy=engine.tiers[2],staticBytes=engine.textures.filter(t=>t.slotId!=="stand").reduce((sum,t)=>sum+Math.ceil(t.width*t.height*16/3),0);
+  const staticResident=engine.textures.filter(t=>t.slotId!=="stand").reduce((sum,t)=>sum+Math.ceil(t.width*t.height*16/3)+t.width*t.height*4,0)
+    +Math.max(manifest.skin.encodedBytes,manifest.background.asset.encodedBytes)+schema.CHILD_ENGINE_FIXED_RESIDENT_BYTES+schema.childEngineProceduralReserve("economy",false,false,(manifest.hotspots??[]).length,true).residentBytes;
+  require(eligible||engine.fallback.staticAllowed&&engine.items.every(item=>item.tiers.includes("economy"))&&staticBytes<=economy.maxDecodedBytes&&staticResident<=economy.maxResidentBytes&&schema.childEngineProceduralReserve("economy",false,false,(manifest.hotspots??[]).length,true).triangles<=economy.maxTriangles,"at least one actual bounded engine candidate");
+  return engine;
 }
 export async function emitChildNativeSceneAssets(root,staging,platform,channel) {
   require(await fs.realpath(staging)===path.resolve(staging),"owned staging directory");
