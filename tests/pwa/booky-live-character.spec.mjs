@@ -148,7 +148,7 @@ test.beforeAll(async () => {
           }
         });
         const transform=object=>({uuid:object.uuid,position:object.position.toArray(),rotation:object.rotation.toArray().slice(0,3),scale:object.scale.toArray()});
-        const rig=Object.fromEntries(Object.entries(model.rig).map(([key,value])=>[key,Array.isArray(value)?value.map(transform):transform(value)]));
+        if(typeof model.rig.setEyelidClosure!=='function')throw Error('BookyRig eyelid method missing');const rig=Object.fromEntries(Object.entries(model.rig).filter(([key])=>key!=='setEyelidClosure').map(([key,value])=>[key,Array.isArray(value)?value.map(transform):transform(value)]));
         const bounds=new THREE.Box3().setFromObject(model.group),canonical=current();
         return{rendererId:record.id,canvasId:canvas.dataset.observedBookyCanvas,scene:record.scene.uuid,camera:record.camera.uuid,model:model.group.uuid,
           independentFromGlobe:!!canonical&&record.renderer!==canonical.renderer&&record.camera!==canonical.camera&&record.scene!==canonical.scene&&canvas!==canonical.canvas,
