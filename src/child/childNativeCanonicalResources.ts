@@ -97,7 +97,13 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
       const wake = () => {
         try {
           if (admission !== rendererAdmission || admission.abort.signal.aborted || !valid(ticket, deadline)) finish(false);
-          else if (renderer && environment?.().visible) finish(true);
+          else {
+            const view = environment?.();
+            // Navigation closes inspection in the DOM owner before the R3F
+            // root commits that environment. Join that same closure before
+            // acquiring a restored scene; its late commit must not abort A.
+            if (renderer && view?.visible && !view.exploring) finish(true);
+          }
         } catch { finish(false); }
       };
       admission.wake = wake; admission.abort.signal.addEventListener("abort", cancelled, { once: true });

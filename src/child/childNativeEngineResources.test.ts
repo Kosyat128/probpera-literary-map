@@ -77,6 +77,50 @@ function fixture(deferRenderer = false) {
 }
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 describe("engine transaction through current synthetic native seam; no rights/device authority", () => {
+  it("joins the renderer inspection exit before restoring A without reopening or extending its original lease", async () => {
+    const f = fixture(), originalScene = { ...f.scene(), remainingLifetimeMs: 1200 };
+    f.setScene(originalScene); f.savedChoice(); f.inspect(true);
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.restore).toHaveBeenCalledOnce());
+    expect(f.scenes.acquire).not.toHaveBeenCalled(); expect(f.scenes.acquireModel).not.toHaveBeenCalled();
+    expect(f.stage).not.toHaveBeenCalled(); expect(f.scenes.remember).not.toHaveBeenCalled();
+    f.at(500); f.inspect(false); expect(await pending).toBe(true);
+    expect(f.scenes.readSelection).toHaveBeenCalledOnce(); expect(f.scenes.restore).toHaveBeenCalledOnce();
+    expect(f.scenes.open).not.toHaveBeenCalled(); expect(f.scenes.acquire).toHaveBeenCalledTimes(3);
+    expect(f.stage.mock.calls[0][0].preparation!.absoluteDeadline).toBe(1200);
+    expect(f.scenes.remember).toHaveBeenCalledExactlyOnceWith(originalScene, 1);
+    expect(f.saved()).toMatchObject({ revision: 2, selection: { sceneId: f.raw.sceneId } });
+    expect(f.resources.getSnapshot().phase).toBe("ready"); await f.resources.dispose();
+  });
+  it.each(["cancel", "expiry", "readiness-bound"] as const)("%s while awaiting inspection exit retires the original restoration without late acquisition", async reason => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    const f = fixture(), scene = { ...f.scene(), remainingLifetimeMs: reason === "readiness-bound" ? 8000 : 1200 };
+    f.setScene(scene); f.savedChoice(); f.inspect(true);
+    const pending = f.resources.restore!();
+    for (let n = 0; n < 30; n++) await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.acquire).not.toHaveBeenCalled();
+    if (reason === "cancel") expect(await f.resources.cancelAndWait()).toBe(true);
+    else { const elapsed = reason === "expiry" ? 1200 : 5000; f.at(elapsed); await vi.advanceTimersByTimeAsync(elapsed); }
+    expect(await pending).toBe(false); await f.resources.join();
+    expect(f.scenes.release).toHaveBeenCalledExactlyOnceWith(scene.sceneToken, scene);
+    f.inspect(false); await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.open).not.toHaveBeenCalled();
+    expect(f.scenes.acquire).not.toHaveBeenCalled(); expect(f.scenes.acquireModel).not.toHaveBeenCalled();
+    expect(f.stage).not.toHaveBeenCalled(); expect(f.scenes.remember).not.toHaveBeenCalled();
+    expect(f.saved().revision).toBe(1); await f.resources.dispose();
+  });
+  it("still aborts a new inspection change after restoration has begun acquiring resources", async () => {
+    const f = fixture(); f.savedChoice();
+    let release!: () => void; const held = new Promise<void>(resolve => { release = resolve; });
+    const acquire = f.scenes.acquire.getMockImplementation()!;
+    f.scenes.acquire.mockImplementationOnce(async (scene, slot) => { await held; return acquire(scene, slot); });
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.acquire).toHaveBeenCalledOnce());
+    f.inspect(true); release(); expect(await pending).toBe(false);
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.acquire).toHaveBeenCalledOnce();
+    expect(f.scenes.acquireModel).not.toHaveBeenCalled(); expect(f.stage).not.toHaveBeenCalled();
+    expect(f.scenes.remember).not.toHaveBeenCalled(); expect(f.scenes.release).toHaveBeenCalledOnce();
+    f.inspect(false); await Promise.resolve(); expect(f.scenes.restore).toHaveBeenCalledOnce();
+    expect(f.saved().revision).toBe(1); await f.resources.dispose();
+  });
   it("joins delayed Canvas attachment and visibility in one original restore lease, using the attached tier", async () => {
     const f = fixture(true); f.savedChoice(); f.show(false);
     const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.restore).toHaveBeenCalledOnce());
