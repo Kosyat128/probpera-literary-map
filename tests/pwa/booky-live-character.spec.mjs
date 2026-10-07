@@ -688,6 +688,17 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     retained(await actual(page),preservedView);
     result.observations.background={beforeBackground,inactive,resumed,canonicalTransition,resumedGlobe,preservedView};
 
+    // A new native context offers saved tour progress for explicit resumption.
+    // Resume through the actual UI before checking graphics recovery.
+    await toggle.click();await expect(panel(page)).toBeVisible();await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','0');
+    await expect(page.locator('[data-planet-mascot-resume-offer]')).toBeVisible();
+    await page.locator('[data-planet-mascot-resume]').click();
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-current-route','overview');
+    await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','1');
+    await toggle.click();await expect(panel(page)).toHaveCount(0);
+    result.observations.resumedTour={route:await pet(page).getAttribute('data-planet-mascot-current-route'),
+      step:await pet(page).getAttribute('data-planet-mascot-step'),panel:await pet(page).getAttribute('data-planet-mascot-panel-state')};
+
     // The first genuine loss recovers the same renderer/model. A second loss
     // exercises the product's bounded fallback; neither recovery nor context
     // events are stubbed, and the canonical globe context is never selected.
