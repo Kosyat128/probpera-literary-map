@@ -88,17 +88,19 @@ const softMaximum = (a: number, b: number, width: number) => Math.max(a, b) + Ma
 function openHand() {
   const columns = 112, rows = 10, points: THREE.Vector3[] = [], triangles: number[] = [];
   const origin = new THREE.Vector3(), forward = new THREE.Vector3(0, 0, 1), backward = new THREE.Vector3(0, 0, -1);
-  // The fingers curl out of the palm plane. Their real rounded tips now stand
-  // forward of the palm crown, instead of ending as nearly coplanar flutes.
+  // Keep the classic full palm and opposed thumb. The four free digits have
+  // broad proximal pads and individually rounded distal capsules; their tips
+  // curl forward and separate within almost the same outer hand envelope.
   const paths = [
-    { radius: .047, points: [[-.048, .036, .012], [-.115, .089, .039], [-.172, .121, .050]] },
-    { radius: .047, points: [[-.065, -.035, .010], [-.131, -.093, .057], [-.171, -.128, .074]] },
-    { radius: .048, points: [[-.034, -.050, .005], [-.093, -.123, .055], [-.126, -.172, .073]] },
-    { radius: .046, points: [[.004, -.051, .001], [-.040, -.137, .050], [-.074, -.185, .069]] },
-    { radius: .043, points: [[.040, -.041, -.003], [.005, -.126, .044], [-.024, -.173, .062]] },
-    { radius: .052, points: [[.025, .005, -.012], [.082, .006, -.015]] },
-  ].map(path => ({ radius: path.radius, points: path.points.map(p => new THREE.Vector3(...p as [number, number, number])) }));
-  const segments = paths.flatMap(path => path.points.slice(1).map((b, index) => ({ a: path.points[index], b, radius: path.radius })));
+    { radius: .047, tipRadius: .047, points: [[-.048, .036, .012], [-.115, .089, .039], [-.172, .121, .050]] },
+    { radius: .047, tipRadius: .041, points: [[-.065, -.035, .010], [-.131, -.093, .057], [-.180, -.125, .090]] },
+    { radius: .048, tipRadius: .042, points: [[-.034, -.050, .005], [-.093, -.123, .055], [-.128, -.180, .094]] },
+    { radius: .046, tipRadius: .040, points: [[.004, -.051, .001], [-.040, -.137, .050], [-.063, -.193, .089]] },
+    { radius: .043, tipRadius: .037, points: [[.040, -.041, -.003], [.005, -.126, .044], [.001, -.171, .080]] },
+    { radius: .052, tipRadius: .052, points: [[.025, .005, -.012], [.082, .006, -.015]] },
+  ].map(path => ({ radius: path.radius, tipRadius: path.tipRadius, points: path.points.map(p => new THREE.Vector3(...p as [number, number, number])) }));
+  const segments = paths.flatMap(path => path.points.slice(1).map((b, index) =>
+    ({ a: path.points[index], b, radius: index === path.points.length - 2 ? path.tipRadius : path.radius })));
   const outline = Array.from({ length: columns }, (_, col) => {
     const angle = col / columns * TAU, direction = new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0);
     let radius = 1 / Math.sqrt((direction.x / .128) ** 2 + (direction.y / .116) ** 2);
@@ -148,7 +150,7 @@ function openHand() {
 }
 
 /** A real shaft lining remains fixed. Outside it the skin follows a rounded
- * heel and three curved capsule fingers, with a separate opposing thumb path.
+ * heel and four curved capsule fingers, with a separate opposing thumb path.
  * Their continuous radial envelope joins the volumes without intersecting
  * roots. There is no cone taper or shallow bump-only finger approximation. */
 function gripHand() {
@@ -165,21 +167,30 @@ function gripHand() {
     const sector = TAU / 12, middle = (Math.floor(phi / sector) + .5) * sector;
     return shaftRadius(y) * Math.cos(sector / 2) / Math.cos(phi - middle) + .0004;
   };
-  const fingerArcs = [.091, -.004, -.099].map(centerY => Array.from({ length: 15 }, (_, i) => {
+  // This frozen side-support field belongs to the palm/wrist, not the visible
+  // digit count. Keeping it exact protects every sewn cuff-boundary vertex.
+  const wristSupportArcs = [.091, -.004, -.099].map(centerY => Array.from({ length: 15 }, (_, i) => {
     const phi = -.75 + i / 14 * 2.95;
     return new THREE.Vector3(Math.cos(phi) * .069, centerY + .014 * Math.cos(phi - .65), BOOKY_GRIP_SHAFT.axisZ + Math.sin(phi) * .069);
   }));
-  const roundedArcs = [.088, -.004, -.097].map((centerY, digit) => ({
-    radius: [.043, .045, .042][digit],
+  // Four real wrapped capsule volumes plus the separate opposed thumb.
+  // Their .077 spacing leaves rounded crease valleys in the same full skin;
+  // the smaller lowermost volume is the little finger, not an extra heel bump.
+  const roundedArcs = [.085, .008, -.069, -.146].map((centerY, digit) => ({
+    radius: [.041, .043, .041, .036][digit],
     points: Array.from({ length: 15 }, (_, i) => {
       const phi = -.78 + i / 14 * 2.95, bend = .025 * Math.sin(phi - .40) + .006 * Math.cos(phi * 2);
-      return new THREE.Vector3(Math.cos(phi) * [.066, .068, .066][digit], centerY + bend,
+      return new THREE.Vector3(Math.cos(phi) * [.066, .068, .066, .061][digit], centerY + bend,
         BOOKY_GRIP_SHAFT.axisZ + Math.sin(phi) * .070);
     }),
   }));
   const thumb = [new THREE.Vector3(-.113, -.078, BOOKY_GRIP_SHAFT.axisZ + .012),
     new THREE.Vector3(-.112, -.030, BOOKY_GRIP_SHAFT.axisZ + .064),
     new THREE.Vector3(-.078, .031, BOOKY_GRIP_SHAFT.axisZ + .087)];
+  // Only the visible wrap gets this shorter rounded thenar pad. The original
+  // thumb above still owns the protected side-entry/wrist support envelope.
+  const roundedThumb = [thumb[0], new THREE.Vector3(-.112, -.030, BOOKY_GRIP_SHAFT.axisZ + .072),
+    new THREE.Vector3(-.090, .024, BOOKY_GRIP_SHAFT.axisZ + .100)];
   const palmCenter = new THREE.Vector3(-.057, -.066, BOOKY_GRIP_SHAFT.axisZ - .015), palmAxes = new THREE.Vector3(.123, .154, .083);
   const palmExit = (origin: THREE.Vector3, direction: THREE.Vector3) => {
     const o = origin.clone().sub(palmCenter).divide(palmAxes), d = direction.clone().divide(palmAxes);
@@ -192,7 +203,7 @@ function gripHand() {
     outer.push(Array.from({ length: columns }, (_, col) => {
       const phi = col / columns * TAU, direction = new THREE.Vector3(Math.cos(phi), 0, Math.sin(phi));
       let radius = softMaximum(shaftRadius(y) + .0065, palmExit(origin, direction), .008);
-      for (const arc of fingerArcs) {
+      for (const arc of wristSupportArcs) {
         let finger = 0;
         for (let i = 0; i < arc.length - 1; i++) finger = Math.max(finger, capsuleExit(origin, direction, arc[i], arc[i + 1], .048));
         radius = softMaximum(radius, finger, .007);
@@ -201,17 +212,25 @@ function gripHand() {
       for (let i = 0; i < thumb.length - 1; i++) opposedThumb = Math.max(opposedThumb, capsuleExit(origin, direction, thumb[i], thumb[i + 1], i === 0 ? .047 : .043));
       radius = softMaximum(radius, opposedThumb, .007);
       // Preserve every proven side-entry/wrist vertex exactly. Away from that
-      // sector the three digits cross the shaft obliquely, with distinct round
+      // sector the four digits cross the shaft obliquely, with distinct round
       // sections and a continuous merge into the opposing thumb and heel.
       const wrap = THREE.MathUtils.smoothstep(Math.cos(phi), -.88, -.32);
       if (wrap > 0) {
         let rounded = softMaximum(shaftRadius(y) + .0065, palmExit(origin, direction), .010);
         for (const arc of roundedArcs) {
           let finger = 0;
-          for (let i = 0; i < arc.points.length - 1; i++) finger = Math.max(finger, capsuleExit(origin, direction, arc.points[i], arc.points[i + 1], arc.radius));
-          rounded = softMaximum(rounded, finger, .012);
+          for (let i = 0; i < arc.points.length - 1; i++) {
+            // Broad middle knuckle and a genuinely tapered round end, with
+            // full capsule volume retained inside the common glove surface.
+            const t = (i + .5) / (arc.points.length - 1), sectionRadius = arc.radius - .003 + .005 * Math.sin(Math.PI * t) ** 2;
+            finger = Math.max(finger, capsuleExit(origin, direction, arc.points[i], arc.points[i + 1], sectionRadius));
+          }
+          rounded = softMaximum(rounded, finger, .008);
         }
-        rounded = softMaximum(rounded, opposedThumb, .014);
+        let thumbPad = 0;
+        for (let i = 0; i < roundedThumb.length - 1; i++) thumbPad = Math.max(thumbPad,
+          capsuleExit(origin, direction, roundedThumb[i], roundedThumb[i + 1], i === 0 ? .047 : .041));
+        rounded = softMaximum(rounded, thumbPad, .010);
         radius = THREE.MathUtils.lerp(radius, rounded, wrap);
       }
       const id = points.length; points.push(toHand(origin.clone().addScaledVector(direction, radius))); return id;
@@ -289,7 +308,7 @@ function gripHand() {
   }
   const cap = points.length; points.push(toHand(new THREE.Vector3(capX, cuff.y, cuff.z)));
   for (let i = 0; i < previous.length; i++) triangles.push(cap, previous[i], previous[(i + 1) % previous.length]);
-  const result = geometry(points, triangles, "closed shaft-lined wrapping palm with opposed thumb, three broad integral pads, sewn side-entry wrist");
+  const result = geometry(points, triangles, "closed shaft-lined wrapping palm with four broad integral fingers, opposed thumb and sewn side-entry wrist");
   result.userData.shaftFrame = BOOKY_GRIP_SHAFT;
   result.userData.wristFrame = BOOKY_GRIP_WRIST;
   return result;

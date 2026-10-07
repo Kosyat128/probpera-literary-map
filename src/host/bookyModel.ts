@@ -115,19 +115,25 @@ export function createBookyModel(): OwnedBookyModel {
     gloveFinish.vertexColors = true; gloveFinish.roughness = .42; gloveFinish.clearcoat = .12;
     gloveFinish.clearcoatRoughness = .32; gloveFinish.envMapIntensity = .50;
     const purple = finish(new THREE.MeshPhysicalMaterial({ color: "#7828a4", roughness: .44, clearcoat: .22 }));
-    const brown = finish(new THREE.MeshPhysicalMaterial({ color: "#483329", roughness: .40, clearcoat: .28, clearcoatRoughness: .25 }));
+    const brown = finish(new THREE.MeshPhysicalMaterial({ color: "#483329", roughness: .48, clearcoat: .16, clearcoatRoughness: .33 }));
     // Readable dark pupils remain dark under the renderer's broad environment.
     // Only the small authored catchlights are white, never the whole pupil.
     const pupilInk = finish(new THREE.MeshPhysicalMaterial({ color: "#090611", roughness: .17, clearcoat: .7, clearcoatRoughness: .13, envMapIntensity: .14 }));
-    const eyeWhite = finish(new THREE.MeshPhysicalMaterial({ color: "#fff5e9", roughness: .32, clearcoat: .24, envMapIntensity: .20 }));
+    const eyeWhite = finish(new THREE.MeshPhysicalMaterial({ color: "#fff8f1", roughness: .38, clearcoat: .14, envMapIntensity: .20 }));
     const sparkle = finish(new THREE.MeshStandardMaterial({ color: "#fffcf4", roughness: .46,
       emissive: "#fff5e6", emissiveIntensity: .06, envMapIntensity: .1 }));
     const mouthInside = finish(new THREE.MeshStandardMaterial({ color: "#421b21", roughness: .65 }));
     const tonguePink = finish(new THREE.MeshPhysicalMaterial({ color: "#dc7282", roughness: .42, clearcoat: .28, clearcoatRoughness: .25 }));
-    const irisFinish = finish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .19, clearcoat: .75, clearcoatRoughness: .18, envMapIntensity: .24 }));
+    const irisFinish = finish(new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .26, clearcoat: .48, clearcoatRoughness: .24, envMapIntensity: .24 }));
     const glass = finish(new THREE.MeshPhysicalMaterial({ color: "#ffffff", transparent: true, opacity: .38,
-      roughness: .025, metalness: 0, ior: 1.48,
-      clearcoat: 0, clearcoatRoughness: .045, envMapIntensity: 1.35, depthWrite: false })); glass.name = "booky-magnifying-glass";
+      roughness: .065, metalness: 0, ior: 1.48, specularColor: "#d3ffff",
+      clearcoat: 0, clearcoatRoughness: .045, envMapIntensity: 1.35, depthWrite: false,
+      // The shader tone-maps genuine reflected radiance before choosing legal
+      // display coverage. ONE consumes the single final premultiplied output.
+      // This is a display compositing approximation for a transparent canvas.
+      premultipliedAlpha: true, blending: THREE.CustomBlending, blendEquation: THREE.AddEquation,
+      blendSrc: THREE.OneFactor, blendDst: THREE.OneMinusSrcAlphaFactor,
+      blendSrcAlpha: THREE.OneFactor, blendDstAlpha: THREE.OneMinusSrcAlphaFactor })); glass.name = "booky-magnifying-glass";
 
     const sphere = own(new THREE.SphereGeometry(1, 20, 14));
     const transformed = (source: THREE.BufferGeometry, position: Point, scale: Point = [1, 1, 1], rotation: Point = [0, 0, 0]) => {
@@ -411,7 +417,7 @@ export function createBookyModel(): OwnedBookyModel {
           // Retained radial clearance accommodates the real .008 backside;
           // the analytical normal belongs to this deformed surface itself.
           // Matching angular indices preserve the actual stitched topology.
-          for (const [angle, tone] of [[0, 1], [.30, .99], [.62, .97], [.96, .94], [1.28, .90]]) {
+          for (const [angle, tone] of [[0, 1], [.30, 1], [.62, .99], [.96, .97], [1.28, .95]]) {
             const ring = boundary.map((_, i) => {
               const p = eyePocketPoint(holeIndex, angle, i / boundary.length * TAU), id = add(p.x, p.y, p.z, tone);
               const eye = eyeSurfaces[holeIndex], scale = new THREE.Vector3(eye.scaleX, eye.scaleY, 1);
@@ -422,7 +428,7 @@ export function createBookyModel(): OwnedBookyModel {
             });
             connect(previous, ring); previous = ring;
           }
-          const pole = eyePocketPoint(holeIndex, Math.PI / 2, 0), floor = add(pole.x, pole.y, pole.z, .85);
+          const pole = eyePocketPoint(holeIndex, Math.PI / 2, 0), floor = add(pole.x, pole.y, pole.z, .93);
           const eye = eyeSurfaces[holeIndex], scale = new THREE.Vector3(eye.scaleX, eye.scaleY, 1);
           const local = pole.clone().sub(eye.center).applyQuaternion(eye.frame.clone().invert()).divide(scale);
           fixedPocketNormals.set(floor, eyeGradient(new THREE.Vector3(), local.x, local.y, local.z, eye.pocket)
@@ -715,6 +721,83 @@ export function createBookyModel(): OwnedBookyModel {
       geometry.setAttribute("uv", new THREE.Float32BufferAttribute(uvs, 2)); geometry.setIndex(indices); geometry.computeVertexNormals();
       geometry.userData.topology = "closed ankle-vamp-toe cross-section skin"; return geometry;
     };
+    // Both full white ankle rolls bridge the actual boot rim and green leg.
+    // Work in shoe-local coordinates BEFORE each foot's final child scale.
+    // The owned leg skin supplies the aperture; the rounded meridian stays
+    // visibly above the boot edge rather than collapsing into a white hairline.
+    const ankleCollar = (x: number, upper: THREE.BufferGeometry, legGeometry: THREE.BufferGeometry, foot: THREE.Group, childScale: THREE.Vector3) => {
+      const collar = torus(.069, .015, [0, 0, 0]);
+      const upperPositions = upper.getAttribute("position"), columns = 40;
+      const rimStart = upperPositions.count - columns - 2; // last ring, before its two closure poles
+      const bootCentre = new THREE.Vector2(0, -.044), bootY = upperPositions.getY(rimStart) + 1.045;
+      const lipY = bootY + .028, inverseFoot = foot.quaternion.clone().invert();
+      type Section = readonly [THREE.Vector2, THREE.Vector2];
+      const bootSection: Section[] = [], legSection: Section[] = [];
+      for (let col = 0; col < columns; col++) {
+        const a = rimStart + col, b = rimStart + (col + 1) % columns;
+        bootSection.push([new THREE.Vector2(upperPositions.getX(a) - x, upperPositions.getZ(a) - .05),
+          new THREE.Vector2(upperPositions.getX(b) - x, upperPositions.getZ(b) - .05)]);
+      }
+      const legPositions = legGeometry.getAttribute("position"), legIndex = legGeometry.getIndex()!;
+      const legVertices = Array.from({ length: legPositions.count }, (_, i) =>
+        new THREE.Vector3().fromBufferAttribute(legPositions, i).sub(foot.position).applyQuaternion(inverseFoot).divide(childScale));
+      for (let i = 0; i < legIndex.count; i += 3) {
+        const triangle = [legVertices[legIndex.getX(i)], legVertices[legIndex.getX(i + 1)], legVertices[legIndex.getX(i + 2)]];
+        const cuts: THREE.Vector3[] = [];
+        for (let edge = 0; edge < 3; edge++) {
+          const a = triangle[edge], b = triangle[(edge + 1) % 3], dy = b.y - a.y;
+          if (Math.abs(dy) < 1e-12) continue;
+          const t = (lipY - a.y) / dy;
+          if (t < 0 || t > 1) continue;
+          const p = a.clone().lerp(b, t);
+          if (!cuts.some(q => q.distanceToSquared(p) < 1e-18)) cuts.push(p);
+        }
+        if (cuts.length === 2) legSection.push([new THREE.Vector2(cuts[0].x, cuts[0].z), new THREE.Vector2(cuts[1].x, cuts[1].z)]);
+      }
+      if (legSection.length < 3) throw new Error("booky-collar-leg-section");
+      const legCentre = new THREE.Vector2();
+      for (const [a, b] of legSection) legCentre.add(a).add(b);
+      legCentre.divideScalar(legSection.length * 2);
+      const sectionRadius = (section: Section[], centre: THREE.Vector2, angle: number) => {
+        const dx = Math.cos(angle), dz = Math.sin(angle);
+        let radius = 0;
+        for (const [a, b] of section) {
+          const ax = a.x - centre.x, az = a.y - centre.y, sx = b.x - a.x, sz = b.y - a.y;
+          const determinant = dx * sz - dz * sx;
+          if (Math.abs(determinant) < 1e-12) continue;
+          const along = (ax * sz - az * sx) / determinant, edge = (ax * dz - az * dx) / determinant;
+          if (edge >= -1e-8 && edge <= 1 + 1e-8) radius = Math.max(radius, along);
+        }
+        if (!(radius > .009 && Number.isFinite(radius))) throw new Error("booky-collar-section-ray");
+        return radius;
+      };
+      const position = collar.getAttribute("position"), uv = collar.getAttribute("uv");
+      for (let i = 0; i < position.count; i++) {
+        const angle = uv.getX(i) * TAU, meridian = uv.getY(i) * TAU;
+        const t = (1 - Math.sin(meridian)) / 2;
+        const lower = sectionRadius(bootSection, bootCentre, angle) - .007;
+        const upper = sectionRadius(legSection, legCentre, angle) + .004;
+        const radius = THREE.MathUtils.lerp(lower, upper, t) + .015 * Math.cos(meridian);
+        const cx = THREE.MathUtils.lerp(bootCentre.x, legCentre.x, t), cz = THREE.MathUtils.lerp(bootCentre.y, legCentre.y, t);
+        // Two nested radial loops at each height form a closed rounded band.
+        // It seats 6mm into the boot, rises 28mm above it, and has a soft
+        // 15mm radial roll. The upper aperture clears the actual leg by 4mm;
+        // source fitting alone is not a claim of complete contact in motion.
+        position.setXYZ(i, x + cx + Math.cos(angle) * radius,
+          bootY - .006 + .034 * t - 1.045, cz + Math.sin(angle) * radius + .05);
+      }
+      collar.computeVertexNormals();
+      // Torus UV seams duplicate vertices; share their physical shading normal.
+      const normal = collar.getAttribute("normal"), average = new THREE.Vector3();
+      const joinNormal = (a: number, b: number) => {
+        average.set(normal.getX(a) + normal.getX(b), normal.getY(a) + normal.getY(b), normal.getZ(a) + normal.getZ(b)).normalize();
+        normal.setXYZ(a, average.x, average.y, average.z); normal.setXYZ(b, average.x, average.y, average.z);
+      };
+      for (let row = 0; row <= 8; row++) joinNormal(row * 49, row * 49 + 48);
+      for (let col = 0; col <= 48; col++) joinNormal(col, 8 * 49 + col);
+      collar.computeBoundingBox(); collar.computeBoundingSphere();
+      return collar;
+    };
     for (const [side, x] of [["left", -.33], ["right", .203]] as const) {
       // Preserve the authored neutral vertices, but give each whole leg a hip
       // hidden inside the cover and each complete sneaker its own ankle.
@@ -724,7 +807,9 @@ export function createBookyModel(): OwnedBookyModel {
       legGeometry.translate(-x, .73, 0);
       mesh(leg, side === "left" ? "booky-legs" : "booky-legs-right", legGeometry, leather);
       const shoeUpper = [bootUpper(x)];
-      const shoeWhite = [trimColour(shoeSole(x), "#ead8bf"), trimColour(torus(.079, .020, [x, -.952, .007], [Math.PI / 2, 0, 0]), "#fff1dc")];
+      const collar = ankleCollar(x, shoeUpper[0], legGeometry, foot,
+        new THREE.Vector3(side === "left" ? 1.18 : 1.24, side === "left" ? 1.02 : .94, 1.21));
+      const shoeWhite = [trimColour(shoeSole(x), "#ead8bf"), trimColour(collar, "#fff1dc")];
       const shoeLaces: THREE.BufferGeometry[] = [];
       for (const z of [.119, .174]) {
         const top = (dx: number) => {
@@ -768,8 +853,9 @@ export function createBookyModel(): OwnedBookyModel {
         uvs.push(Math.cos(a) * r * .5 + .5, Math.sin(a) * r * .5 + .5);
         const fiber = Math.sin(a * 31 + r * 7) * .5 + Math.sin(a * 19 - r * 4) * .3;
         color.setHSL(.765 + fiber * .007, .90, (.095 + Math.sin(r * Math.PI) * .165 + fiber * .017) * (.88 - Math.sin(a) * .22));
-        // The dark limbus occupies only the narrow outer edge of the iris.
-        if (r > .94) color.multiplyScalar(1 - .56 * (r - .94) / .06);
+        // A narrow continuous limbus keeps the iris integrated into its white,
+        // without the broad near-black outer band and bright concentric coating.
+        color.multiplyScalar(1 - .22 * THREE.MathUtils.smoothstep(r, .965, 1));
         colors.push(color.r, color.g, color.b);
       }
       for (let col = 0; col < columns; col++) indices.push(0, 1 + col, 2 + col);
@@ -868,15 +954,21 @@ export function createBookyModel(): OwnedBookyModel {
       geometry.computeBoundingBox(); geometry.computeBoundingSphere();
     };
     setEyelidClosure(0, 0); setEyelidClosure(1, 0);
-    // Capped rounded brows and a broader iris give a gentle, attentive face at
-    // 88px too. Independent soft lids leave the eye and pupil shapes intact.
-    const browOutline = new THREE.Shape();
-    browOutline.moveTo(-.128, -.035); browOutline.bezierCurveTo(-.086, .047, .040, .091, .098, .061);
-    browOutline.bezierCurveTo(.126, .046, .126, .003, .100, -.004);
-    browOutline.bezierCurveTo(.032, .019, -.060, .011, -.128, -.035); browOutline.closePath();
-    // A single domed leaf has a pointed tail and a rounded head, with no tube
-    // radius join or hemispherical tip seam across the visible eyebrow.
-    const browShape = sculptedSolid(browOutline, [.018, .032], r => .013 + .029 * (1 - r * r), -.007, 5);
+    // One smooth curved oval per brow, with a fine tail and a padded head.
+    // This injective deformation of the existing sphere removes the radial
+    // fan's wedge shoulder. Its inverse-transpose normals follow the real skin.
+    const browShape = own(sphere.clone()), browPositions = browShape.getAttribute("position"),
+      browNormals = browShape.getAttribute("normal"), browNormal = new THREE.Vector3();
+    for (let i = 0; i < browPositions.count; i++) {
+      const u = browPositions.getX(i), v = browPositions.getY(i), w = browPositions.getZ(i);
+      const width = .119, height = .031 * (.70 + .30 * u), depth = .028 * (.78 + .22 * u);
+      const centerY = .042 * (1 - u * u) + .027 * u - .010;
+      const centerSlope = -.084 * u + .027, heightSlope = .031 * .30, depthSlope = .028 * .22;
+      const ny = v / height, nz = w / depth;
+      browPositions.setXYZ(i, width * u, centerY + height * v, .011 + depth * w);
+      browNormal.set((u - (centerSlope + heightSlope * v) * ny - depthSlope * w * nz) / width, ny, nz).normalize();
+      browNormals.setXYZ(i, browNormal.x, browNormal.y, browNormal.z);
+    }
     for (const surface of eyeSurfaces) {
       const side = surface.side;
       const eye = node(frontCover, `booky-eye-${side}`, surface.center.toArray() as unknown as Point); eyes.push(eye);
@@ -906,7 +998,9 @@ export function createBookyModel(): OwnedBookyModel {
       browMesh.scale.set(side === "left" ? 1.05 : -.93, side === "left" ? 1.02 : .96, .82);
       eye.userData.surface = { frame: surface.frame.toArray(), sclera: surface.sclera.toArray(), lid: surface.lid.toArray(), pocket: surface.pocket.toArray(), taper: eyeTaper };
     }
-    mesh(frontCover, "booky-soft-nose", ellipsoid(facePosition(.040, -.002, .280), [.054, .038, .030]), frontGreen);
+    // Rotate the fuller oval around its own centre; the face attachment stays fixed.
+    mesh(frontCover, "booky-soft-nose", transformed(sphere, facePosition(.040, -.002, .280),
+      [.054, .044, .043], [.08, -.10, .32]), frontGreen);
     const mouth = node(frontCover, "booky-mouth", mouthSurface.position);
     mouth.scale.set(mouthSurface.scaleX, mouthSurface.scaleY, 1);
     // Capture the final common rest after the complete sockets, lips and cover.
@@ -987,15 +1081,35 @@ export function createBookyModel(): OwnedBookyModel {
     for (const y of [-.236, .211, .239]) frameParts.push(torus(.038, .012, [0, y, .018], [Math.PI / 2, 0, 0]));
     fused(magnifier, "booky-magnifier-gold-frame", frameParts, gold);
     const lensGeometry = own(new THREE.SphereGeometry(1, 32, 20));
-    lensGeometry.scale(.273, .273, .074); lensGeometry.translate(0, .510, .018);
-    // Reflect and refract the renderer-owned environment on the actual curved
-    // dielectric surface. Direct specular lights remain physical. This is a
-    // single-pass environment approximation, not opaque-scene transmission.
-    // No separate reflection decals or extra environment resource is owned.
+    // Real spherical biconvex surfaces spread their normals across the visible
+    // aperture. The previous flat ellipsoid concentrated reflections at its edge.
+    // Radius and central sag preserve the admitted aperture and depth bounds.
+    const lensRadius = .273, lensSag = .074, lensCurvature = (lensRadius ** 2 + lensSag ** 2) / (2 * lensSag);
+    const lensRimDepth = Math.sqrt(lensCurvature ** 2 - lensRadius ** 2);
+    const lensPositions = lensGeometry.getAttribute("position"), lensNormals = lensGeometry.getAttribute("normal"),
+      lensNormal = new THREE.Vector3();
+    for (let i = 0; i < lensPositions.count; i++) {
+      const x = lensPositions.getX(i) * lensRadius, y = lensPositions.getY(i) * lensRadius, z = lensPositions.getZ(i);
+      const side = Math.abs(z) < 1e-6 ? 0 : Math.sign(z), root = Math.sqrt(Math.max(0, lensCurvature ** 2 - x * x - y * y));
+      lensPositions.setXYZ(i, x, y + .510, .018 + side * Math.max(0, root - lensRimDepth));
+      lensNormal.set(x, y, side * root).normalize();
+      lensNormals.setXYZ(i, lensNormal.x, lensNormal.y, lensNormal.z);
+    }
+    // Standard physical direct/indirect specular stays intact. Only refraction
+    // is the single-interface borrowed-environment approximation; the transparent
+    // background is unrefracted. No scene capture or new environment is owned.
+    // The final display coverage is a transparent-canvas approximation, not an
+    // exact HDR composite of a refracted opaque scene.
     glass.onBeforeCompile = shader => {
-      shader.fragmentShader = shader.fragmentShader.replace("#include <opaque_fragment>", "\n        vec3 bookyGlassView = isOrthographic ? vec3(0.0, 0.0, 1.0) : normalize(vViewPosition);\n        vec3 bookyGlassNormal = normalize(normal);\n        float bookyGlassFacing = clamp(abs(dot(bookyGlassNormal, bookyGlassView)), 0.0, 1.0);\n        float bookyGlassF0 = pow((1.48 - 1.0) / (1.48 + 1.0), 2.0);\n        float bookyGlassFresnel = bookyGlassF0 + (1.0 - bookyGlassF0) * pow(1.0 - bookyGlassFacing, 5.0);\n        outgoingLight = reflectedLight.directSpecular;\n        #ifdef ENVMAP_TYPE_CUBE_UV\n          vec3 bookyReflectionDirection = inverseTransformDirection(reflect(-bookyGlassView, bookyGlassNormal), viewMatrix);\n          vec3 bookyRefractionDirection = inverseTransformDirection(refract(-bookyGlassView, bookyGlassNormal, 1.0 / 1.48), viewMatrix);\n          vec3 bookyReflected = textureCubeUV(envMap, bookyReflectionDirection, roughnessFactor).rgb * envMapIntensity;\n          vec3 bookyTransmitted = textureCubeUV(envMap, bookyRefractionDirection, roughnessFactor).rgb * envMapIntensity;\n          float bookyGlassPath = 0.148 / max(bookyGlassFacing, 0.20);\n          vec3 bookyAbsorption = exp(-vec3(0.80, 0.20, 0.10) * bookyGlassPath);\n          outgoingLight += mix(bookyTransmitted * bookyAbsorption, bookyReflected, bookyGlassFresnel);\n        #endif\n        diffuseColor.a = 0.12 + 0.86 * bookyGlassFresnel;\n        #include <opaque_fragment>\n");
+      shader.uniforms.bookyLensCurvature = { value: lensCurvature };
+      shader.uniforms.bookyLensRimDepth = { value: lensRimDepth };
+      shader.vertexShader = shader.vertexShader.replace("#include <common>", "#include <common>\nvarying vec3 vBookyLensLocal;")
+        .replace("#include <begin_vertex>", "#include <begin_vertex>\nvBookyLensLocal = position - vec3(0.0, 0.510, 0.018);");
+      shader.fragmentShader = shader.fragmentShader.replace("#include <common>", "#include <common>\nvarying vec3 vBookyLensLocal;\nuniform float bookyLensCurvature;\nuniform float bookyLensRimDepth;")
+        .replace("#include <opaque_fragment>", "\n        vec3 bookyGlassView = isOrthographic ? vec3(0.0, 0.0, 1.0) : normalize(vViewPosition);\n        vec3 bookyGlassNormal = normalize(normal);\n        float bookyGlassFacing = clamp(abs(dot(bookyGlassNormal, bookyGlassView)), 0.0, 1.0);\n        float bookyGlassF0 = pow((1.48 - 1.0) / (1.48 + 1.0), 2.0);\n        float bookyGlassFresnel = bookyGlassF0 + (1.0 - bookyGlassF0) * pow(1.0 - bookyGlassFacing, 5.0);\n        float bookyTransmissionWeight = (1.0 - bookyGlassFresnel) * (0.08 + 0.30 * pow(1.0 - bookyGlassFacing, 2.0));\n        // Keep the actual physical light/environment response, including its\n        // directional GGX lobes, material Fresnel and PMREM multiple scattering.\n        outgoingLight = reflectedLight.directSpecular + reflectedLight.indirectSpecular;\n        #ifdef ENVMAP_TYPE_CUBE_UV\n          vec3 bookyRefractionDirection = inverseTransformDirection(refract(-bookyGlassView, bookyGlassNormal, 1.0 / 1.48), viewMatrix);\n          vec3 bookyTransmitted = textureCubeUV(envMap, envMapRotation * bookyRefractionDirection, roughnessFactor).rgb * envMapIntensity;\n          float bookyRadiusSquared = dot(vBookyLensLocal.xy, vBookyLensLocal.xy);\n          float bookyThickness = 2.0 * max(0.0, sqrt(max(bookyLensCurvature * bookyLensCurvature - bookyRadiusSquared, 0.0)) - bookyLensRimDepth);\n          float bookyInsideCosine = sqrt(max(0.0001, 1.0 - (1.0 - bookyGlassFacing * bookyGlassFacing) / (1.48 * 1.48)));\n          vec3 bookyAbsorption = exp(-vec3(1.40, 0.20, 0.08) * bookyThickness / bookyInsideCosine);\n          outgoingLight += bookyTransmissionWeight * bookyTransmitted * bookyAbsorption;\n        #else\n          bookyTransmissionWeight = 0.0;\n        #endif\n        diffuseColor.a = bookyGlassFresnel + bookyTransmissionWeight;\n        #include <opaque_fragment>\n")
+        .replace("#include <premultiplied_alpha_fragment>", "\n        // At this point stock tone mapping and output colour conversion have\n        // already run on the real optical radiance, not on radiance/coverage.\n        // Effective display coverage must contain that signal on an alpha canvas.\n        // Reflection position/shape still comes only from geometry, view and lights.\n        float bookyDisplaySignal = max(max(gl_FragColor.r, gl_FragColor.g), gl_FragColor.b);\n        gl_FragColor.a = clamp(max(gl_FragColor.a, bookyDisplaySignal), 0.0, 1.0);\n        gl_FragColor.rgb /= max(gl_FragColor.a, 0.0001);\n        #include <premultiplied_alpha_fragment>\n");
     };
-    glass.customProgramCacheKey = () => "booky-dielectric-environment-glass-v1";
+    glass.customProgramCacheKey = () => "booky-biconvex-physical-glass-v3";
     const lens = mesh(magnifier, "booky-magnifier-lens", lensGeometry, glass); lens.renderOrder = 1;
     for (const [index, foot] of feet.entries()) {
       for (const child of foot.children) child.scale.set(index === 0 ? 1.18 : 1.24, index === 0 ? 1.02 : .94, 1.21);
