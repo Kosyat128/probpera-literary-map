@@ -21,6 +21,8 @@ export type PlanetCompositionSnapshot = Readonly<{
   editor: "stand" | "background" | null;
   saveState: "idle" | "saving" | "failed";
   previewSession: number | null;
+  /** Repaints an already confirmed preview; never a new inspection grant. */
+  environmentRepaint: boolean;
   reason: "render-failed" | "preview-timeout" | "invalid-preference" | "preference-unavailable" | "incompatible" | null;
 }>;
 export interface PlanetCompositionController {
@@ -69,7 +71,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
   const { preferences, enabled, access, getEnvironment, readLegacyEdition } = options;
   const initialSnapshot: PlanetCompositionSnapshot = Object.freeze({
     applied: DEFAULT_GLOBE_COMPOSITION_SELECTION, displayed: DEFAULT_GLOBE_COMPOSITION_SELECTION,
-    renderRevision: 0, phase: "idle", editor: null, saveState: "idle", reason: null, previewSession: null,
+    renderRevision: 0, phase: "idle", editor: null, saveState: "idle", reason: null, previewSession: null, environmentRepaint: false,
   });
   let snapshot = initialSnapshot;
   let active = false, visible = true;
@@ -117,7 +119,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
   function rollback(reason: PlanetCompositionSnapshot["reason"], close: boolean) {
     retireSave(); clearFrame(); clearInspection(); ready.clear(); pending = null;
     publish({ ...snapshot, displayed: snapshot.applied, renderRevision: snapshot.renderRevision + 1,
-      editor: close ? null : snapshot.editor, phase: reason ? "error" : "idle", reason, previewSession: null });
+      editor: close ? null : snapshot.editor, phase: reason ? "error" : "idle", reason, previewSession: null, environmentRepaint: false });
   }
   function inspectionSession() {
     if (snapshot.previewSession !== null) return snapshot.previewSession;
@@ -129,7 +131,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
     }, PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS);
     return session;
   }
-  function prepare(selection: GlobeCompositionSelection, kind: PendingKind, editor = snapshot.editor) {
+  function prepare(selection: GlobeCompositionSelection, kind: PendingKind, editor = snapshot.editor, environmentRepaint = false) {
     clearFrame(); ready.clear(); pending = kind;
     const revision = snapshot.renderRevision + 1, epoch = lifetime;
     frameTimer = setTimeout(() => {
@@ -138,7 +140,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       rollback("preview-timeout", false);
     }, PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS);
     publish({ ...snapshot, displayed: copyGlobeCompositionSelection(selection), renderRevision: revision,
-      editor, phase: "preparing", reason: null });
+      editor, phase: "preparing", reason: null, environmentRepaint });
   }
   function watchSave(operation: SaveOperation) {
     clearSave();
@@ -297,7 +299,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
         if ((pending === "restore" || pending === "migration") && intent === 0) hydrationFinished = false;
         pending = null;
         snapshot = Object.freeze({ ...snapshot, displayed: snapshot.applied, editor: null,
-          phase: "idle", reason: null, previewSession: null, renderRevision: snapshot.renderRevision + 1 });
+          phase: "idle", reason: null, previewSession: null, environmentRepaint: false, renderRevision: snapshot.renderRevision + 1 });
       };
     },
     setVisibility(nextVisible: boolean) {
@@ -330,7 +332,7 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       // Opening an editor is new intent if restore or an immediate edition change
       // is in flight; neither may become part of the user's uncommitted draft.
       fenceHydration(); clearFrame(); ready.clear(); pending = null;
-      publish({ ...snapshot, displayed: snapshot.applied, editor, phase: "idle", reason: null,
+      publish({ ...snapshot, displayed: snapshot.applied, editor, phase: "idle", reason: null, environmentRepaint: false,
         renderRevision: snapshot.renderRevision + 1, previewSession: inspectionSession() });
       return true;
     },
@@ -360,9 +362,9 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
         || !pending || ready.size !== 3 || !compatible(selection) || !sameGlobeComposition(selection, snapshot.displayed)) return false;
       const kind = pending;
       clearFrame(); ready.clear(); pending = null;
-      if (kind === "preview") publish({ ...snapshot, phase: "preview", reason: null });
+      if (kind === "preview") publish({ ...snapshot, phase: "preview", reason: null, environmentRepaint: false });
       else {
-        const next: PlanetCompositionSnapshot = { ...snapshot, phase: "preview", reason: null };
+        const next: PlanetCompositionSnapshot = { ...snapshot, phase: "preview", reason: null, environmentRepaint: false };
         if (kind === "edition" || kind === "migration") save(snapshot.displayed, next);
         else publish({ ...next, applied: snapshot.displayed, phase: "idle" });
       }
@@ -408,7 +410,9 @@ export function createPlanetCompositionController(options: PlanetCompositionOpti
       if (!visible) { clearFrame(); ready.clear(); return; }
       // Preserve the requested transaction, but a changed environment needs three new part receipts.
       const kind = pending ?? (snapshot.phase === "preview" ? "preview" : "environment");
-      prepare(snapshot.displayed, kind);
+      const repaint = snapshot.editor !== null && snapshot.previewSession !== null && snapshot.saveState !== "saving"
+        && (snapshot.phase === "preview" || (snapshot.phase === "preparing" && snapshot.environmentRepaint));
+      prepare(snapshot.displayed, kind, snapshot.editor, repaint);
       hydrate(lifetime);
     },
   });

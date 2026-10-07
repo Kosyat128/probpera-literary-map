@@ -89,7 +89,9 @@ export interface ChildNativeSceneController {
   acquireModel?(scene: ChildNativeScene, resource: Common3dResource, tier: Common3dTierId): Promise<ChildNativeModelWebResource | ChildNativeSceneBudgetDecline | null>;
   readModelChunk?(scene: ChildNativeScene, output: ChildNativeModelWebResource, resource: Common3dResource, offset: number, byteLength: number): Promise<ChildNativeModelChunk | null>;
   releaseResource(token: string | null): Promise<boolean>;
-  release(token: string | null): Promise<boolean>;
+  /** Exact admitted scene identity may join its original bulk-revocation ACK
+   * during lifecycle cleanup; it grants no fresh native/data authority. */
+  release(token: string | null, scene?: ChildNativeScene): Promise<boolean>;
   releaseAll(): Promise<boolean>;
   /** Privately captured concrete renderer cleanup only. Neither an ID nor the
    * completion of this callback can grant native admission. */

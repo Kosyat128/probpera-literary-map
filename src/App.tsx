@@ -696,13 +696,19 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
     onContextRestored: () => setCustomizationSceneReady(true),
     onEditionChange: composition.controller.cancel,
   }), [composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId, composition.snapshot.renderRevision, composition.controller]);
-  const compositionEnvironmentKey = `${language}:${graphics.qualityTier}`;
-  const previousCompositionEnvironment = useRef(compositionEnvironmentKey);
+  const previousCompositionEnvironment = useRef({ language, qualityTier: graphics.qualityTier });
   useLayoutEffect(() => {
-    if (previousCompositionEnvironment.current === compositionEnvironmentKey) return;
-    previousCompositionEnvironment.current = compositionEnvironmentKey;
-    composition.controller.refreshEnvironment();
-  }, [compositionEnvironmentKey, composition.controller]);
+    const previous = previousCompositionEnvironment.current;
+    if (previous.language === language && previous.qualityTier === graphics.qualityTier) return;
+    previousCompositionEnvironment.current = { language, qualityTier: graphics.qualityTier };
+    const current = composition.controller.getSnapshot();
+    // Only the Natural Earth atlas contains localized pixels. A UI-language
+    // change on a static edition preserves its confirmed preview and open
+    // scene object; quality or localized pixels still need fresh frame receipts.
+    const localizedAtlas = current.applied.editionId === "natural-earth-2026"
+      || current.displayed.editionId === "natural-earth-2026";
+    if (previous.qualityTier !== graphics.qualityTier || localizedAtlas) composition.controller.refreshEnvironment();
+  }, [language, graphics.qualityTier, composition.controller]);
   const [nativeCollectionOpen, setNativeCollectionOpen] = useState(() => isPlanetApplication && addressRequestsCollection());
   const [mascotReaderEntry, setMascotReaderEntry] = useState<Readonly<{ key: string; intentRevision: number }> | null>(null);
   const [planetLaunchComplete, setPlanetLaunchComplete] = useState(false);
@@ -2620,13 +2626,14 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
     sceneInspection.setContext({ enabled: isPlanetApplication, access: isPlanetApplication ? "adult" : "blocked",
       visible: available && standInspectionSnapshot.phase === "closed", editorOpen: displayed.editor !== null,
       previewReady: displayed.phase === "preview" && displayed.saveState !== "saving",
+      previewRepainting: displayed.phase === "preparing" && displayed.environmentRepaint && displayed.saveState !== "saving",
       appliedBackgroundId: displayed.applied.backgroundId,
       displayedBackgroundId: displayed.displayed.backgroundId });
   }, [nativeCollectionOpen, globalSearchOpen, communityOpen, atlasSearchOpen,
     atlasExperience.state.filtersOpen, platformVisibility, composition.controller, isPlanetApplication, customizationSceneReady,
     sceneInspection, composition.snapshot.editor, composition.snapshot.applied.backgroundId, composition.snapshot.displayed.backgroundId,
     standInspection, customizationAvailable, composition.snapshot.displayed.standId, composition.snapshot.renderRevision,
-    composition.snapshot.phase, composition.snapshot.saveState, standInspectionSnapshot.phase]);
+    composition.snapshot.phase, composition.snapshot.environmentRepaint, composition.snapshot.saveState, standInspectionSnapshot.phase]);
 
   const readerName =
     user?.user_metadata?.display_name || user?.email?.split("@")[0] || "";

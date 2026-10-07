@@ -96,7 +96,7 @@ describe("resource-owned navigation cancellation barrier",()=>{
     expect(await selection).toBe(false);expect(await leaving).toBe(true);
     expect(decode).not.toHaveBeenCalled();expect(f.images[0].src).toBe("");
     expect(f.scenes.acquire).toHaveBeenCalledOnce();expect(f.scenes.remember).not.toHaveBeenCalled();
-    expect(f.scenes.release).toHaveBeenCalledWith(f.scene.sceneToken);expect(f.controller.suspend).not.toHaveBeenCalled();
+    expect(f.scenes.release).toHaveBeenCalledWith(f.scene.sceneToken, f.scene);expect(f.controller.suspend).not.toHaveBeenCalled();
     expect(f.resources.getSnapshot().textures).toBeNull();await f.resources.dispose();
   });
   it.each(["restore","select"] as const)("joins an invisible pending %s and releases its late native lease before granting navigation",async(kind)=>{
@@ -112,8 +112,8 @@ describe("resource-owned navigation cancellation barrier",()=>{
     await Promise.resolve();await Promise.resolve();expect(settled).toBe(false);
     expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(baseline.textures!.skin.image).not.toBeNull();
     deliver();expect(await pending).toBe(false);expect(await leaving).toBe(true);
-    expect(f.scenes.release).toHaveBeenCalledWith(candidate.sceneToken);
-    expect(f.scenes.release).not.toHaveBeenCalledWith(f.scene.sceneToken);
+    expect(f.scenes.release).toHaveBeenCalledWith(candidate.sceneToken, candidate);
+    expect(f.scenes.release).not.toHaveBeenCalledWith(f.scene.sceneToken, f.scene);
     expect(f.scenes.acquire).toHaveBeenCalledTimes(3);expect(f.scenes.remember).toHaveBeenCalledOnce();
     expect(f.saved()).toBe(saved);expect(f.resources.getSnapshot().textures).toBe(baseline.textures);
     expect(f.resources.isCurrent()).toBe(true);expect(f.controller.suspend).not.toHaveBeenCalled();await f.resources.dispose();
@@ -149,12 +149,12 @@ describe("resource-owned navigation cancellation barrier",()=>{
     let settled=false;const leaving=f.resources.cancelAndWait().then(value=>{settled=true;return value;});
     f.at(4999);await vi.advanceTimersByTimeAsync(4999);expect(settled).toBe(false);
     f.at(5000);await vi.advanceTimersByTimeAsync(1);expect(await leaving).toBe(false);
-    expect(f.scenes.rollback).not.toHaveBeenCalled();expect(f.scenes.release).not.toHaveBeenCalledWith(candidate.sceneToken);
+    expect(f.scenes.rollback).not.toHaveBeenCalled();expect(f.scenes.release).not.toHaveBeenCalledWith(candidate.sceneToken, candidate);
     expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(baseline.textures!.skin.image).not.toBeNull();
     expect(f.controller.suspend).not.toHaveBeenCalled();expect(f.scenes.releaseAll).not.toHaveBeenCalled();
     acknowledge();expect(await pending).toBe(false);await f.resources.join();
     expect(f.scenes.rollback).toHaveBeenCalledWith(candidate,2);
-    expect(f.saved()).toEqual({...saved,revision:3});expect(f.scenes.release).toHaveBeenCalledWith(candidate.sceneToken);
+    expect(f.saved()).toEqual({...saved,revision:3});expect(f.scenes.release).toHaveBeenCalledWith(candidate.sceneToken, candidate);
     expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(f.resources.isCurrent()).toBe(true);
     expect(f.controller.suspend).not.toHaveBeenCalled();expect(f.scenes.open).toHaveBeenCalledTimes(2);
     f.at(11999);await vi.advanceTimersByTimeAsync(6999);expect(f.resources.isCurrent()).toBe(true);
@@ -184,7 +184,7 @@ describe("versioned typed model transaction through the original scene port",()=
   const f=modelFixture();f.resources.attachRenderer!("balanced",async()=>({commit(){},rollback(){}}));expect(await f.resources.select(owner,"fixture")).toBe(true);
   const prior=f.resources.getSnapshot(),saved=f.saved();f.scenes.open.mockResolvedValueOnce(f.modelScene);f.g.buffer[0]^=1;
   expect(await f.resources.select(owner,f.id)).toBe(false);expect(f.resources.getSnapshot().textures).toBe(prior.textures);expect(f.resources.isCurrent()).toBe(true);expect(f.saved()).toBe(saved);
-  expect(f.scenes.release).toHaveBeenCalledWith(f.modelScene.sceneToken);expect(f.scenes.releaseAll).not.toHaveBeenCalled();await f.resources.dispose();
+  expect(f.scenes.release).toHaveBeenCalledWith(f.modelScene.sceneToken, f.modelScene);expect(f.scenes.releaseAll).not.toHaveBeenCalled();await f.resources.dispose();
  });
  it("rolls back an offstate warm failure and never writes the native choice",async()=>{
   const f=modelFixture();f.scenes.open.mockResolvedValueOnce(f.modelScene);f.resources.attachRenderer!("balanced",async()=>null);
@@ -298,7 +298,7 @@ describe("durable profile selection and fresh restoration (synthetic native seam
   f.scenes.remember.mockImplementationOnce(async(scene,revision)=>{await gate;return remembered(scene,revision);});const first=f.resources.select(owner,"fixture");
   for(let n=0;n<120&&f.scenes.remember.mock.calls.length<2;n++)await Promise.resolve();expect(f.scenes.remember).toHaveBeenCalledTimes(2);
   const queued=f.resources.select(owner,"fixture");finish();expect(await first).toBe(false);expect(await queued).toBe(false);
-  expect(f.resources.getSnapshot().scene?.sceneToken).toBe(f.scene.sceneToken);expect(f.resources.isCurrent()).toBe(true);expect(f.scenes.rollback).toHaveBeenCalledWith(next,2);expect(f.saved()).toMatchObject({revision:3,selection:childNativeAppearanceFromScene(f.scene)});expect(f.scenes.release).not.toHaveBeenCalledWith(f.scene.sceneToken);expect(f.scenes.release).toHaveBeenCalledWith(next.sceneToken);await f.resources.dispose();
+  expect(f.resources.getSnapshot().scene?.sceneToken).toBe(f.scene.sceneToken);expect(f.resources.isCurrent()).toBe(true);expect(f.scenes.rollback).toHaveBeenCalledWith(next,2);expect(f.saved()).toMatchObject({revision:3,selection:childNativeAppearanceFromScene(f.scene)});expect(f.scenes.release).not.toHaveBeenCalledWith(f.scene.sceneToken, f.scene);expect(f.scenes.release).toHaveBeenCalledWith(next.sceneToken, next);await f.resources.dispose();
  });
 });
 
@@ -341,13 +341,13 @@ describe("latest intent through acknowledged native CAS and native-owned rollbac
   const f=fixture();expect(await f.resources.select(owner,"fixture")).toBe(true);const next={...f.scene,sceneToken:"e".repeat(32)};
   f.scenes.open.mockResolvedValueOnce(next);f.scenes.rollback.mockRejectedValueOnce(Error("Native rollback reply transport failed"));
   f.resources.attachRenderer!("balanced",async()=>({commit(){throw Error("Original canvas unavailable");},rollback(){}}));
-  expect(await f.resources.select(owner,"fixture")).toBe(false);expect(f.resources.isCurrent()).toBe(false);expect(f.controller.suspend).toHaveBeenCalled();expect(f.scenes.release).toHaveBeenCalledWith(next.sceneToken);await expect(f.resources.dispose()).rejects.toThrow("cleanup failed");
+  expect(await f.resources.select(owner,"fixture")).toBe(false);expect(f.resources.isCurrent()).toBe(false);expect(f.controller.suspend).toHaveBeenCalled();expect(f.scenes.release).toHaveBeenCalledWith(next.sceneToken, next);await expect(f.resources.dispose()).rejects.toThrow("cleanup failed");
  });
  it("continues image wipe and native release when staged rollback cleanup throws",async()=>{
   const f=fixture();expect(await f.resources.select(owner,"fixture")).toBe(true);const next={...f.scene,sceneToken:"e".repeat(32)};f.scenes.open.mockResolvedValueOnce(next);
   f.resources.attachRenderer!("balanced",async()=>({commit(){throw Error("Original canvas unavailable");},rollback(){throw Error("Borrowed renderer cleanup failed");}}));
   expect(await f.resources.select(owner,"fixture")).toBe(false);expect(f.scenes.rollback).toHaveBeenCalledWith(next,2);expect(f.saved().selection).toEqual(childNativeAppearanceFromScene(f.scene));expect(f.images.every(image=>image.value==="")).toBe(true);
-  expect(f.scenes.release).toHaveBeenCalledWith(next.sceneToken);expect(f.resources.isCurrent()).toBe(false);expect(f.controller.suspend).toHaveBeenCalled();await expect(f.resources.dispose()).rejects.toThrow("cleanup failed");
+  expect(f.scenes.release).toHaveBeenCalledWith(next.sceneToken, next);expect(f.resources.isCurrent()).toBe(false);expect(f.controller.suspend).toHaveBeenCalled();await expect(f.resources.dispose()).rejects.toThrow("cleanup failed");
  });
  it("seals rather than acknowledging an unconfirmed durable rollback",async()=>{
   const f=fixture();expect(await f.resources.select(owner,"fixture")).toBe(true);f.scenes.rollback.mockResolvedValueOnce(null);

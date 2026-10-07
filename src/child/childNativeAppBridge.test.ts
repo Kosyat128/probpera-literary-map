@@ -283,6 +283,75 @@ describe("native protected appearance data commands (synthetic wire only)",()=>{
  const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:kind,entity:ref(kind,kind),mime:"image/png",checksum:HASH,encodedBytes:16,altText:kind});
  const scene=()=>decodeChildNativeScene({status:"opened",sceneToken:"d".repeat(32),sceneId:"choice",owner:ref(),skin:slot("skin"),
   stand:{geometryId:"stand.base.child-book-cloud",asset:slot("stand")},background:{geometryId:"background.base.library",asset:slot("background")},hotspots:[],remainingLifetimeMs:5000},ref(),"choice")!;
+ it.each(["open","restore"] as const)("joins the exact held bulk retirement for an admitted %s scene before fresh foreground bootstrap",async(kind)=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,ack=deferred<unknown>();
+  const saved={profileId:"native-profile",revision:1,selection:childNativeAppearanceFromScene(scene())!};
+  plugin.openScene=vi.fn(async request=>f.dataReply(request,scene()));
+  plugin.restoreSceneSelection=vi.fn(async request=>f.dataReply(request,{status:"restored",...saved,scene:scene()}));
+  plugin.releaseScene=vi.fn(()=>ack.promise);
+  await f.controller.start();const scenes=f.controller.scenes!;
+  const owned=kind==="open"?await scenes.open(ref(),"choice"):(await scenes.restore(saved))?.scene;
+  if(!owned)throw Error("Exact admitted scene required");
+  let cleanup=Promise.resolve(),joined=false;
+  scenes.attachRecipient({clear:()=>{cleanup=Promise.resolve().then(async()=>{
+    if(!await scenes.release(owned.sceneToken,owned))throw Error("Original retirement unconfirmed");joined=true;
+  });},join:()=>cleanup});
+  f.visibility("background");await settle();
+  expect(f.controller.getSnapshot().phase).toBe("sealed");expect(joined).toBe(false);
+  expect(plugin.releaseScene).toHaveBeenCalledOnce();
+  const request=(plugin.releaseScene as ReturnType<typeof vi.fn>).mock.calls[0][0];
+  expect(request).toMatchObject({contextToken:TOKEN,sceneToken:null});
+  expect(await scenes.release(owned.sceneToken,{...owned})).toBe(false);
+  expect(await scenes.release("e".repeat(32),owned)).toBe(false);
+  expect(plugin.bootstrap).toHaveBeenCalledOnce();
+  ack.resolve(f.dataReply(request,{status:"retired",sceneToken:null}));await cleanup;await settle();
+  expect(joined).toBe(true);expect(plugin.retire).toHaveBeenCalledOnce();
+  f.setNative(nativeContext(2));f.visibility("active");await settle();
+  expect(plugin.bootstrap).toHaveBeenCalledTimes(2);
+  expect(f.controller.getSnapshot()).toMatchObject({phase:"ready",context:{generation:2,token:"2".padStart(32,"0")}});
+  expect(plugin.releaseScene).toHaveBeenCalledOnce();
+ });
+ it("refuses an uncorrelated original bulk ACK and keeps foreground admission sealed",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,ack=deferred<unknown>();
+  plugin.openScene=vi.fn(async request=>f.dataReply(request,scene()));plugin.releaseScene=vi.fn(()=>ack.promise);
+  await f.controller.start();const scenes=f.controller.scenes!,owned=await scenes.open(ref(),"choice");
+  if(!owned)throw Error("Exact admitted scene required");
+  let cleanup=Promise.resolve(),joined: boolean|null=null;
+  scenes.attachRecipient({clear:()=>{cleanup=Promise.resolve().then(async()=>{
+    joined=await scenes.release(owned.sceneToken,owned);if(!joined)throw Error("Uncorrelated retirement");
+  });},join:()=>cleanup});
+  f.visibility("background");await settle();
+  const request=(plugin.releaseScene as ReturnType<typeof vi.fn>).mock.calls[0][0];
+  ack.resolve({...f.dataReply(request,{status:"retired",sceneToken:null}),contextToken:"e".repeat(32)});
+  await expect(cleanup).rejects.toThrow("Uncorrelated retirement");await settle();expect(joined).toBe(false);
+  f.setNative(nativeContext(2));f.visibility("active");await f.controller.refresh();await settle();
+  expect(f.controller.getSnapshot().phase).toBe("sealed");expect(plugin.bootstrap).toHaveBeenCalledOnce();
+ });
+ it("never lends an earlier successful revoke receipt to a newly opened scene in the same context",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin;
+  plugin.openScene=vi.fn(async request=>f.dataReply(request,{...scene(),sceneToken:((plugin.openScene as ReturnType<typeof vi.fn>).mock.calls.length===1?"d":"e").repeat(32)}));
+  plugin.releaseScene=vi.fn(async request=>f.dataReply(request,{status:"retired",sceneToken:(request as {sceneToken:string|null}).sceneToken}));
+  await f.controller.start();const scenes=f.controller.scenes!,a=await scenes.open(ref(),"choice");if(!a)throw Error("Scene A required");
+  expect(await scenes.releaseAll()).toBe(true);expect(await scenes.release(a.sceneToken,a)).toBe(true);
+  const b=await scenes.open(ref(),"choice");if(!b)throw Error("Scene B required");
+  expect(await scenes.release(b.sceneToken,{...b})).toBe(false);expect(plugin.releaseScene).toHaveBeenCalledOnce();
+  expect(await scenes.release(b.sceneToken,b)).toBe(true);expect(plugin.releaseScene).toHaveBeenCalledTimes(2);
+  expect((plugin.releaseScene as ReturnType<typeof vi.fn>).mock.calls[1][0]).toMatchObject({contextToken:TOKEN,sceneToken:b.sceneToken});
+  expect(await scenes.release(b.sceneToken,b)).toBe(true);expect(plugin.releaseScene).toHaveBeenCalledTimes(2);
+ });
+ it("joins the original cohort when an in-flight individual release reply arrives after sealing",async()=>{
+  const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,individual=deferred<unknown>();
+  plugin.openScene=vi.fn(async request=>f.dataReply(request,scene()));
+  plugin.releaseScene=vi.fn(request=>(request as {sceneToken:string|null}).sceneToken===null
+    ?Promise.resolve(f.dataReply(request,{status:"retired",sceneToken:null})):individual.promise);
+  await f.controller.start();const scenes=f.controller.scenes!,owned=await scenes.open(ref(),"choice");if(!owned)throw Error("Scene required");
+  const releasing=scenes.release(owned.sceneToken,owned);await settle();f.visibility("background");await settle();
+  const request=(plugin.releaseScene as ReturnType<typeof vi.fn>).mock.calls[0][0];
+  individual.resolve(f.dataReply(request,{status:"retired",sceneToken:owned.sceneToken}));
+  expect(await releasing).toBe(true);await settle();expect(plugin.releaseScene).toHaveBeenCalledTimes(2);
+  f.setNative(nativeContext(2));f.visibility("active");await settle();
+  expect(f.controller.getSnapshot()).toMatchObject({phase:"ready",context:{generation:2}});
+ });
  it("reads authenticated model bytes through exact closed native chunk requests and blocks caller resources",async()=>{
   const f=fixture(),plugin=f.plugin as ChildNativeAppPlugin,g=common3dFixture(),id=g.pack.packageId+".v"+g.pack.packageVersion,s=decodeChildNativeScene({...scene(),sceneId:id,modelPackage:g.pack},ref(),id)!,r=s.modelPackage!.tiers[1].models[0].model;
   plugin.acquireWebResource=vi.fn(async input=>f.dataReply(input,{status:"available",sceneToken:s.sceneToken,slotId:r.kind,resourceToken:"f".repeat(32),assetId:r.assetId,entity:r.entity,mime:r.mime,checksum:r.checksum,encodedBytes:r.encodedBytes,uri:"planet-child-resource://local/"+"f".repeat(32),remainingLifetimeMs:4000}));

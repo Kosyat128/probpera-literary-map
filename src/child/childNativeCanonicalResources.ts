@@ -363,7 +363,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         finally {
           retire(prior);
           if (prior && prior.bundle.scene.sceneToken !== scene.sceneToken) {
-            try { if (!await scenes.release(prior.bundle.scene.sceneToken)) broken = true; } catch { broken = true; }
+            try { if (!await scenes.release(prior.bundle.scene.sceneToken, prior.bundle.scene)) broken = true; } catch { broken = true; }
           }
         }
         if (broken) { clear(); void controller.suspend().catch(() => undefined); return false; }
@@ -387,7 +387,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
           else retireParts(scene?.sceneToken, models, textures, bytes);
           if (scene && scene.sceneToken !== active?.bundle.scene.sceneToken) {
             cache.retireScene(scene.sceneToken);
-            try { if (!await scenes.release(scene.sceneToken)) { broken = true; clear(); void controller.suspend().catch(() => undefined); } } catch { broken = true; clear(); void controller.suspend().catch(() => undefined); }
+            try { if (!await scenes.release(scene.sceneToken, scene)) { broken = true; clear(); void controller.suspend().catch(() => undefined); } } catch { broken = true; clear(); void controller.suspend().catch(() => undefined); }
           }
           if (ticket === epoch && valid()) {
             const persistence = preview && preview.phase !== "applying" ? previousPersistence : kind === "restore" ? "restore-failed" : "save-failed";
@@ -476,8 +476,8 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     // The hidden baseline need not itself support Explore; it must still meet
     // the original age/edition/platform/visibility requirements for rollback.
     if (active && !compatible(active.bundle, !!held)) {
-      const token = active.bundle.scene.sceneToken; clear();
-      track(Promise.resolve(controller.scenes?.release(token)).then(ok => { if (ok === false) return controller.suspend(); }));
+      const scene = active.bundle.scene; clear();
+      track(Promise.resolve(controller.scenes?.release(scene.sceneToken, scene)).then(ok => { if (ok === false) return controller.suspend(); }));
     } else if (held) {
       if (!compatible(held.bundle)) void cancelPreview(previewRequest!.revision);
     } else if (pendingAbort && changed) { ++epoch; pendingAbort.abort(); pendingAbort = null; }

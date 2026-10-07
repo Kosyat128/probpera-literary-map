@@ -124,10 +124,10 @@ describe("engine transaction through current synthetic native seam; no rights/de
     f.at(3501); expect(f.resources.isCurrent()).toBe(false); await f.resources.dispose();
   });
   it("releases prior native owners even when a subscriber throws after finalized commit", async () => {
-    const f = fixture(); expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(true); f.setVersion(2);
+    const f = fixture(); expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(true); const previous = f.resources.getSnapshot().scene; f.setVersion(2);
     f.resources.subscribe(() => { throw new Error("subscriber failure"); });
     expect(await f.resources.select(f.owner, f.g.pack.packageId + ".v2")).toBe(false);
-    expect(f.scenes.release).toHaveBeenCalledWith("1".padStart(32, "0")); expect(f.controller.suspend).toHaveBeenCalled(); expect(f.resources.getSnapshot().textures).toBeNull();
+    expect(f.scenes.release).toHaveBeenCalledWith("1".padStart(32, "0"), previous); expect(f.controller.suspend).toHaveBeenCalled(); expect(f.resources.getSnapshot().textures).toBeNull();
   });
   it("pauses new acquisition during original camera gestures and resumes within the same original lease", async () => {
     const f = fixture(); f.pause(true); const select = f.resources.select(f.owner, f.raw.sceneId);
@@ -168,7 +168,7 @@ describe("engine transaction through current synthetic native seam; no rights/de
     expect(f.resources.getSnapshot().textures).toBe(baseline.textures); expect(f.current()?.textures).toBe(baseline.textures);
     expect(baseline.textures!.skin.image).not.toBeNull(); expect(candidate.textures.skin.image).toBeNull();
     expect(f.saved()).toBe(saved); expect(f.scenes.rollback).not.toHaveBeenCalled();
-    expect(f.scenes.release).toHaveBeenCalledWith(candidate.scene.sceneToken); await f.resources.dispose();
+    expect(f.scenes.release).toHaveBeenCalledWith(candidate.scene.sceneToken, candidate.scene); await f.resources.dispose();
   });
   it("applies only the exact ready revision after a fresh native read, retaining A until CAS acknowledgement", async () => {
     const f = fixture(); await f.resources.select(f.owner, f.raw.sceneId); const baseline = f.resources.getSnapshot(); f.setVersion(2);
@@ -283,8 +283,8 @@ describe("engine transaction through current synthetic native seam; no rights/de
     await Promise.resolve();await Promise.resolve();expect(settled).toBe(false);
     expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(baseline.textures!.skin.image).not.toBeNull();
     acknowledgeRemember();await vi.waitFor(()=>expect(f.scenes.rollback).toHaveBeenCalledOnce());expect(settled).toBe(false);
-    expect(f.scenes.release).not.toHaveBeenCalledWith(candidate.scene.sceneToken);
-    acknowledgeRollback();await vi.waitFor(()=>expect(f.scenes.release).toHaveBeenCalledWith(candidate.scene.sceneToken));expect(settled).toBe(false);
+    expect(f.scenes.release).not.toHaveBeenCalledWith(candidate.scene.sceneToken, candidate.scene);
+    acknowledgeRollback();await vi.waitFor(()=>expect(f.scenes.release).toHaveBeenCalledWith(candidate.scene.sceneToken, candidate.scene));expect(settled).toBe(false);
     acknowledgeRelease();expect(await applying).toBe(false);await cancelling;expect(await leaving).toBe(true);
     expect(f.saved()).toEqual({...saved,revision:3});expect(f.current()?.textures).toBe(baseline.textures);
     expect(candidate.textures.skin.image).toBeNull();expect(baseline.textures!.skin.image).not.toBeNull();

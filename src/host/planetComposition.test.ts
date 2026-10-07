@@ -6,6 +6,7 @@ import {
 } from "../planet/globeComposition";
 import { GLOBE_STAND_PREFERENCE_KEY } from "../planet/globeStands";
 import { GLOBE_BACKGROUND_PREFERENCE_KEY } from "../planet/globeBackgrounds";
+import { createPlanetSceneInspectionController } from "./planetSceneInspection";
 import {
   createPlanetCompositionController, PLANET_COMPOSITION_CONFIRMATION_TIMEOUT_MS,
   PLANET_COMPOSITION_PREVIEW_TIMEOUT_MS, PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS, type PlanetCompositionController, type PlanetCompositionOptions,
@@ -56,6 +57,51 @@ function draftCombination(controller: PlanetCompositionController, standId = "st
 }
 
 describe("confirmed preview transactions", () => {
+  it("holds the same Natural Earth preview object while fresh environment receipts are pending, without granting actions", async () => {
+    const f=fixture(), inspection=createPlanetSceneInspectionController();
+    f.memory.set(key,raw(selection({editionId:"natural-earth-2026"})));
+    activate(f.controller);await flush();frame(f.controller);
+    draftCombination(f.controller,"stand.base.wood","background.base.writer-study");frame(f.controller);
+    inspection.registerTarget({}, {backgroundId:"background.base.writer-study",canActivate:()=>true});
+    const sync=()=>{const s=f.controller.getSnapshot();inspection.setContext({enabled:true,access:"adult",visible:true,
+      editorOpen:s.editor!==null,previewReady:s.phase==="preview"&&s.saveState!=="saving",
+      previewRepainting:s.phase==="preparing"&&s.environmentRepaint&&s.saveState!=="saving",
+      appliedBackgroundId:s.applied.backgroundId,displayedBackgroundId:s.displayed.backgroundId});};
+    const stop=f.controller.subscribe(sync);sync();expect(inspection.open()).toBe(true);expect(inspection.openObject()).toBe(true);
+    const session=inspection.getSnapshot().sessionId, previewSession=f.controller.getSnapshot().previewSession;
+    f.controller.refreshEnvironment();const old=f.controller.getSnapshot();
+    expect(old).toMatchObject({phase:"preparing",environmentRepaint:true,previewSession});
+    expect(inspection.getSnapshot()).toEqual({mode:"object",available:false,sessionId:session});
+    const navigate=vi.fn();expect(inspection.openBooks(navigate)).toBe(false);expect(navigate).not.toHaveBeenCalled();
+    expect(f.controller.apply()).toBe(false);
+    f.controller.refreshEnvironment();const repaint=f.controller.getSnapshot();
+    expect(repaint.environmentRepaint).toBe(true);expect(repaint.previewSession).toBe(previewSession);
+    expect(f.controller.acknowledgeRendered(old.renderRevision,old.displayed)).toBe(false);
+    for(const part of ["stand","background"] as const)expect(f.controller.acknowledgePartRendered(part,repaint.renderRevision,repaint.displayed[part==="stand"?"standId":"backgroundId"])).toBe(true);
+    expect(f.controller.acknowledgeRendered(repaint.renderRevision,repaint.displayed)).toBe(false);
+    expect(inspection.getSnapshot().available).toBe(false);
+    expect(f.controller.acknowledgePartRendered("edition",repaint.renderRevision,repaint.displayed.editionId)).toBe(true);
+    expect(f.controller.acknowledgeRendered(repaint.renderRevision,repaint.displayed)).toBe(true);
+    expect(inspection.getSnapshot()).toEqual({mode:"object",available:true,sessionId:session});
+    expect(f.controller.getSnapshot().environmentRepaint).toBe(false);expect(f.preferences.set).not.toHaveBeenCalled();
+    f.controller.refreshEnvironment();f.controller.failRendering(f.controller.getSnapshot().renderRevision);
+    expect(inspection.getSnapshot()).toEqual({mode:"closed",available:false,sessionId:null});
+    expect(f.controller.getSnapshot()).toMatchObject({environmentRepaint:false,reason:"render-failed"});stop();inspection.dispose();
+  });
+
+  it("never marks first preparation as a repaint or renews the original inspection deadline through repeated repaint", async () => {
+    vi.useFakeTimers();const f=fixture();activate(f.controller);await flush();
+    draftCombination(f.controller,"stand.base.wood","background.base.writer-study");
+    f.controller.refreshEnvironment();expect(f.controller.getSnapshot().environmentRepaint).toBe(false);frame(f.controller);
+    const session=f.controller.getSnapshot().previewSession;
+    await vi.advanceTimersByTimeAsync(PLANET_COMPOSITION_INSPECTION_TIMEOUT_MS-1000);
+    f.controller.refreshEnvironment();expect(f.controller.getSnapshot()).toMatchObject({environmentRepaint:true,previewSession:session});frame(f.controller);
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(f.controller.getSnapshot()).toMatchObject({environmentRepaint:false,previewSession:null,editor:null,reason:"preview-timeout"});
+    draftCombination(f.controller);frame(f.controller);f.controller.refreshEnvironment();f.controller.setVisibility(false);
+    expect(f.controller.getSnapshot()).toMatchObject({environmentRepaint:false,previewSession:null,editor:null,displayed:defaults});
+  });
+
   it("retains the original applied resources until the whole selection is acknowledged", async () => {
     const f=fixture(), held=deferred<boolean>(); activate(f.controller); await flush();
     f.preferences.set.mockImplementationOnce(async(name,value)=>{const yes=await held.promise;if(yes)f.memory.set(name,value);return yes;});

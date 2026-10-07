@@ -6,6 +6,36 @@ const adult: PlanetSceneInspectionContext = Object.freeze({ enabled: true, acces
   editorOpen: false, appliedBackgroundId: STUDY, displayedBackgroundId: STUDY });
 
 describe("transient adult writer-study inspection authority", () => {
+  it("retains only an existing adult same-resource object through repaint and never grants fresh activation", () => {
+    const controller=createPlanetSceneInspectionController(),ready=vi.fn(()=>true),key={};
+    const preview={...adult,editorOpen:true,appliedBackgroundId:"background.base.library",previewReady:true};
+    const repaint={...preview,previewReady:false,previewRepainting:true};
+    controller.registerTarget(key,{backgroundId:STUDY,canActivate:ready});controller.setContext(repaint);
+    expect(controller.open()).toBe(false);expect(ready).not.toHaveBeenCalled();
+    controller.setContext(preview);expect(controller.open()).toBe(true);expect(controller.openObject()).toBe(true);
+    const session=controller.getSnapshot().sessionId;ready.mockClear();controller.setContext(repaint);
+    controller.refreshTarget();expect(controller.openObject()).toBe(false);
+    const navigate=vi.fn();expect(controller.openBooks(navigate)).toBe(false);expect(navigate).not.toHaveBeenCalled();
+    expect(ready).not.toHaveBeenCalled();expect(controller.getSnapshot()).toEqual({available:false,mode:"object",sessionId:session});
+    controller.setContext(preview);expect(controller.getSnapshot()).toEqual({available:true,mode:"object",sessionId:session});
+    controller.setContext(repaint);controller.registerTarget({}, {backgroundId:STUDY,canActivate:ready});
+    expect(controller.getSnapshot()).toEqual({available:false,mode:"closed",sessionId:null});controller.dispose();
+  });
+
+  it("closes repaint intent on revoked context or readiness provenance and never admits the adult repaint path for child resources", () => {
+    for(const override of [{visible:false},{enabled:false},{access:"blocked" as const},{previewRepainting:false},
+      {displayedBackgroundId:"background.base.library"},{editorOpen:false}]){
+      const controller=createPlanetSceneInspectionController(),preview={...adult,editorOpen:true,appliedBackgroundId:"background.base.library",previewReady:true};
+      controller.registerTarget({}, {backgroundId:STUDY,canActivate:()=>true});controller.setContext(preview);controller.open();controller.openObject();
+      controller.setContext({...preview,previewReady:false,previewRepainting:true,...override});
+      expect(controller.getSnapshot()).toEqual({available:false,mode:"closed",sessionId:null});controller.dispose();
+    }
+    const controller=createPlanetSceneInspectionController(),child={...adult,access:"child" as const,editorOpen:true,previewReady:true};
+    controller.registerTarget({}, {kind:"native",backgroundId:STUDY,canActivate:()=>true});controller.setContext(child);controller.open();controller.openObject();
+    controller.setContext({...child,previewReady:false,previewRepainting:true});
+    expect(controller.getSnapshot()).toEqual({available:false,mode:"closed",sessionId:null});controller.dispose();
+  });
+
   it("admits only a rendered temporary study and withdraws Explore before applying or preparing again", () => {
     const controller=createPlanetSceneInspectionController();
     controller.registerTarget({}, {backgroundId:STUDY,canActivate:()=>true});

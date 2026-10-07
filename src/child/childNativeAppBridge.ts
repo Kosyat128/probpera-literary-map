@@ -5,7 +5,7 @@ import { decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildN
   decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, childNativeMediaOwner, childNativeMediaToken,
   type ChildNativeMediaController } from "./childNativeMedia";
 import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeSceneBudgetDecline, decodeChildNativeWebResource, decodeChildNativeModelWebResource, decodeChildNativeModelChunk, decodeChildNativeSceneRetired, childNativeSceneId,
-  type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
+  type ChildNativeScene, type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
 import { childNativeAppearanceRevision, childNativeAppearanceFromScene, sameChildNativeAppearance,
   decodeChildNativeProfileAppearance, decodeChildNativeAppearanceRestore } from "./childNativeAppearance";
 import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJourneySummaries,
@@ -243,6 +243,19 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
   let mediaTouched = false, mediaRetirement: Promise<boolean> | null = null;
   let sceneTouched = false, sceneRetirement: Promise<boolean> | null = null;
   const sceneRecipients = new Set<ChildNativeSceneRecipient>(), sceneDrains = new Set<Promise<void>>();
+  type SceneCleanupOwnership = { context: ChildNativeContext; retirement: Promise<boolean> | null; released: boolean };
+  // Exact decoded DTO identity binds cleanup to its original admitted context.
+  // A retired DTO only joins that context's actual native revocation receipt;
+  // it cannot dispatch data, acquire resources, or admit a replacement context.
+  const sceneOwnership = new WeakMap<ChildNativeScene, SceneCleanupOwnership>();
+  const liveSceneOwnership = new Set<SceneCleanupOwnership>();
+  function ownScene(scene: ChildNativeScene | null, context: ChildNativeContext) {
+    if (scene) {
+      const owner: SceneCleanupOwnership = { context, retirement: null, released: false };
+      sceneOwnership.set(scene, owner); liveSceneOwnership.add(owner);
+    }
+    return scene;
+  }
   function clearSceneRecipients() {
     for (const recipient of [...sceneRecipients]) {
       try {
@@ -259,15 +272,21 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     if(sceneRetirement)return sceneRetirement;
     if(!c||c.mode!=="child"||!sceneTouched)return Promise.resolve(true);
     if(typeof options.plugin?.releaseScene!=="function"){uncertain=true;return Promise.resolve(false);}
+    const retiring = [...liveSceneOwnership].filter(owner => owner.context === c);
     const work=(async()=>{
       try {
         const original=request(),raw=await invoke("releaseScene",{...original,contextToken:c.token,sceneToken:null});
         const row=childRecord(raw,["version","requestId","status","contextToken","generation","value"]);
         const ok=!!row&&row.version===2&&row.requestId===original.requestId&&row.status==="ok"&&row.contextToken===c.token
           &&row.generation===c.generation&&decodeChildNativeSceneRetired(row.value,"sceneToken",null);
-        if(ok)sceneTouched=false;return ok;
+        if(ok) {
+          sceneTouched=false;
+          for (const owner of retiring) { owner.released=true; liveSceneOwnership.delete(owner); }
+        }
+        return ok;
       } catch {return false;}
     })();
+    for (const owner of retiring) owner.retirement=work;
     sceneRetirement=work;void work.then(ok=>{if(ok&&sceneRetirement===work)sceneRetirement=null;});return work;
   }
   /** Null-token release is REVOCATION ONLY. Native entry conceals/increments
@@ -630,16 +649,20 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         if(!copied)return Promise.resolve(null);
         // Even an uncertain reply may have minted native scene ownership.
         sceneTouched=true;
-        return data("restoreSceneSelection",{expectedRevision:copied.revision},raw=>decodeChildNativeAppearanceRestore(raw,c.profileId!,copied));
+        return data("restoreSceneSelection",{expectedRevision:copied.revision},raw=>{
+          const restored=decodeChildNativeAppearanceRestore(raw,c.profileId!,copied);
+          if(restored?.scene)ownScene(restored.scene,c);
+          return restored;
+        });
       },
       list(owner) {
         const copied=childNativeMediaOwner(owner);if(!copied||typeof options.plugin?.listScenes!=="function")return Promise.resolve(null);
         return data("listScenes",{owner:copied},raw=>decodeChildNativeSceneSummaries(raw,copied));
       },
       open(owner,sceneId) {
-        const copied=childNativeMediaOwner(owner);
-        if(!copied||!childNativeSceneId(sceneId)||sceneRetirement||typeof options.plugin?.openScene!=="function")return Promise.resolve(null);
-        sceneTouched=true;return data("openScene",{owner:copied,sceneId},raw=>decodeChildNativeScene(raw,copied,sceneId));
+        const c=snapshot.context,copied=childNativeMediaOwner(owner);
+        if(!c||!copied||!childNativeSceneId(sceneId)||sceneRetirement||typeof options.plugin?.openScene!=="function")return Promise.resolve(null);
+        sceneTouched=true;return data("openScene",{owner:copied,sceneId},raw=>ownScene(decodeChildNativeScene(raw,copied,sceneId),c));
       },
       acquire(scene,slot) {
         if(!childNativeMediaToken(scene.sceneToken)||sceneRetirement||typeof options.plugin?.acquireWebResource!=="function"
@@ -667,9 +690,20 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         if(resourceToken!==null&&!childNativeMediaToken(resourceToken))return false;
         return await data("releaseWebResource",{resourceToken},raw=>decodeChildNativeSceneRetired(raw,"resourceToken",resourceToken)?true:null)===true;
       },
-      async release(sceneToken) {
-        if(sceneToken===null)return this.releaseAll();if(!childNativeMediaToken(sceneToken))return false;
-        return await data("releaseScene",{sceneToken},raw=>decodeChildNativeSceneRetired(raw,"sceneToken",sceneToken)?true:null)===true;
+      async release(sceneToken, scene) {
+        if(sceneToken===null)return scene ? false : this.releaseAll();
+        if(!childNativeMediaToken(sceneToken))return false;
+        const owner=scene ? sceneOwnership.get(scene) : undefined;
+        if(scene && (!owner || scene.sceneToken!==sceneToken))return false;
+        if(owner?.retirement)return await owner.retirement;
+        if(owner?.released)return true;
+        if(owner && snapshot.context!==owner.context)return false;
+        const released=await data("releaseScene",{sceneToken},raw=>decodeChildNativeSceneRetired(raw,"sceneToken",sceneToken)?true:null)===true;
+        // A seal may occur while an ordinary release is queued/in flight. Its
+        // exact original cohort's bulk ACK, never an absent context, can join it.
+        if(owner?.retirement)return await owner.retirement;
+        if(released && owner){owner.released=true;liveSceneOwnership.delete(owner);}
+        return released;
       },
       async releaseAll() {
         const c=snapshot.context,ok=sceneRetirement?await sceneRetirement:await revokeScenes(c);await dataTail;

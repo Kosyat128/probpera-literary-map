@@ -12,6 +12,8 @@ export type PlanetSceneInspectionContext = Readonly<{
   displayedBackgroundId: string;
   /** Ready, reversible display acknowledged by the existing composition owner. */
   previewReady?: boolean;
+  /** Existing adult preview repaint only; holds intent without fresh actions. */
+  previewRepainting?: boolean;
 }>;
 export type PlanetSceneInspectionTarget = Readonly<{
   backgroundId: string;
@@ -45,8 +47,10 @@ export function createPlanetSceneInspectionController(): PlanetSceneInspectionCo
   let target: Lease | null = null;
   let revision = 0, sessionSequence = 0, disposed = false, evaluating = false;
   const listeners = new Set<() => void>();
+  const holdingRepaint = () => snapshot.mode !== "closed" && context?.access === "adult"
+    && context.editorOpen && context.previewReady !== true && context.previewRepainting === true;
   const allowed = () => !disposed && context?.enabled === true && context.visible === true
-    && (context.editorOpen ? context.previewReady === true : context.appliedBackgroundId === context.displayedBackgroundId)
+    && (context.editorOpen ? context.previewReady === true || holdingRepaint() : context.appliedBackgroundId === context.displayedBackgroundId)
     && (context.access === "adult" ? context.displayedBackgroundId === STUDY : context.access === "child");
   function publish(available: boolean, mode: Mode) {
     if (snapshot.available === available && snapshot.mode === mode) return;
@@ -65,7 +69,7 @@ export function createPlanetSceneInspectionController(): PlanetSceneInspectionCo
     let available = false;
     // A reentrant query cannot recursively invoke the renderer's readiness port.
     // Any authority mutation it triggers fences the outer result below.
-    if (eligible && lease && !evaluating) {
+    if (eligible && lease && !holdingRepaint() && !evaluating) {
       evaluating = true;
       try { available = lease.canActivate() === true; } catch { available = false; }
       finally { evaluating = false; }
@@ -100,7 +104,7 @@ export function createPlanetSceneInspectionController(): PlanetSceneInspectionCo
       if (disposed) return;
       const next = Object.freeze({ enabled: value.enabled, access: value.access, visible: value.visible,
         editorOpen: value.editorOpen, appliedBackgroundId: value.appliedBackgroundId, displayedBackgroundId: value.displayedBackgroundId,
-        previewReady: value.previewReady === true });
+        previewReady: value.previewReady === true, previewRepainting: value.previewRepainting === true });
       if (context && Object.keys(next).every(key => next[key as keyof typeof next] === context![key as keyof typeof next])) return;
       ++revision; context = next; refresh();
     },
