@@ -140,7 +140,7 @@ describe("original articulated Mr. Booky model", () => {
       const celebration: BookyInput = { ...neutral, mood: "celebrate" };
       pose(celebration, look, .34, true);
       const reduced = transforms();
-      expect(rig.eyes[0].scale.y).toBe(1);
+      rig.eyes.forEach((eye, index) => expect(eye.scale.equals(eyeScales[index])).toBe(true));
       expect(rig.frontCover.rotation.y).toBeCloseTo(0, 12);
       expect(rig.bookmark.rotation.z).toBeCloseTo(0, 12);
       pose(celebration, look, .72, true);
@@ -164,15 +164,33 @@ describe("original articulated Mr. Booky model", () => {
       const positions = (mesh: THREE.Mesh) => Array.from(mesh.geometry.getAttribute("position").array);
       const originalLeft = positions(left), originalRight = positions(right);
       expect(left.geometry).not.toBe(right.geometry);
+      const surface = model.rig.eyes[0].userData.surface as {
+        sclera: [number, number, number]; lid: [number, number, number]; pocket: [number, number, number];
+        taper: { strength: number; slope: number; height: number };
+      };
+      expect(surface.taper.strength).toBeGreaterThanOrEqual(0);
+      expect(surface.taper.strength).toBeLessThan(.5);
+      expect(surface.taper.slope).toBeGreaterThan(0); expect(surface.taper.height).toBeGreaterThan(0);
+      surface.sclera.forEach((axis, index) => {
+        expect(axis).toBeLessThan(surface.lid[index]); expect(surface.lid[index]).toBeLessThan(surface.pocket[index]);
+      });
+      const [sx, sy, sz] = surface.lid, { strength, slope, height } = surface.taper;
       const normal = new THREE.Vector3(), expected = new THREE.Vector3();
       for (const closure of [.1, .25, .5, .62, .8, 1]) {
         model.rig.setEyelidClosure(0, closure);
         const vertex = left.geometry.getAttribute("position"), normals = left.geometry.getAttribute("normal");
         for (let index = 0; index < vertex.count; index++) {
-          const x = vertex.getX(index) / .214, y = vertex.getY(index) / .253, z = vertex.getZ(index) / .130;
-          // A partially closed cap must stay outside the eye rather than shrink to a chord.
+          const px = vertex.getX(index), py = vertex.getY(index), pz = vertex.getZ(index);
+          const taper = Math.tanh(slope * py / height), width = 1 - strength * (1 + taper);
+          const derivative = -strength * slope / height * (1 - taper * taper);
+          const x = px / (sx * width), y = py / sy, z = pz / sz;
+          // Invert the shared positive taper before applying the same shell
+          // tolerance. A partial lid still cannot contract onto a flat chord.
           expect(x * x + y * y + z * z).toBeCloseTo(1, 5);
-          normal.fromBufferAttribute(normals, index); expected.set(x / .214, y / .253, z / .130).normalize();
+          normal.fromBufferAttribute(normals, index);
+          expected.set(px / (sx * sx * width * width),
+            py / (sy * sy) - px * px * derivative / (sx * sx * width * width * width),
+            pz / (sz * sz)).normalize();
           expect(normal.length()).toBeCloseTo(1, 5); expect(normal.dot(expected)).toBeGreaterThan(.9999);
         }
         expect(positions(right)).toEqual(originalRight);
@@ -328,11 +346,30 @@ describe("original articulated Mr. Booky model", () => {
     for (const texture of a.textures) expect(b.textures.has(texture)).toBe(false);
     const irisLeft = first.group.getObjectByName("booky-iris-left") as THREE.Mesh;
     const irisRight = first.group.getObjectByName("booky-iris-right") as THREE.Mesh;
-    expect(irisLeft.geometry).toBe(irisRight.geometry);
+    // Each iris follows its own gaze and curved sclera. Mutable position and
+    // normal buffers therefore belong to that eye, while resources remain
+    // independently owned between complete model instances.
+    expect(irisLeft.geometry).not.toBe(irisRight.geometry);
+    const irisAttributes = [irisLeft, irisRight].map(iris =>
+      [iris.geometry.getAttribute("position"), iris.geometry.getAttribute("normal")]);
+    for (let index = 0; index < irisAttributes[0].length; index++) {
+      expect(irisAttributes[0][index]).not.toBe(irisAttributes[1][index]);
+      expect(irisAttributes[0][index].array).not.toBe(irisAttributes[1][index].array);
+    }
+    const leftBefore = Array.from(irisAttributes[0][0].array), rightBefore = Array.from(irisAttributes[1][0].array);
+    const leftRest = first.rig.pupils[0].position.clone();
+    first.rig.pupils[0].position.x += .010; first.rig.pupils[0].updateMatrix();
+    expect(Array.from(irisAttributes[0][0].array)).not.toEqual(leftBefore);
+    expect(Array.from(irisAttributes[1][0].array)).toEqual(rightBefore);
+    first.rig.pupils[0].position.copy(leftRest); first.rig.pupils[0].updateMatrix();
     createBookyPose(first.rig)({ mood: "idle", interaction: "walking", lookAt: { x: 0, y: 0 },
       reactionKey: 1, active: true }, { x: 0, y: 0 }, .3125, false);
     first.group.updateMatrixWorld(true);
+    const irisBeforeDispose = irisAttributes.map(attributes => attributes.map(attribute => Array.from(attribute.array)));
     first.dispose(); first.dispose();
+    for (const pupil of first.rig.pupils) { pupil.position.x += .020; pupil.updateMatrix(); }
+    irisAttributes.forEach((attributes, eye) => attributes.forEach((attribute, index) =>
+      expect(Array.from(attribute.array)).toEqual(irisBeforeDispose[eye][index])));
     expect(first.group.children).toHaveLength(0);
     for (const spy of spies) expect(spy).toHaveBeenCalledTimes(1);
     for (const spy of otherSpies) expect(spy).not.toHaveBeenCalled();
@@ -341,7 +378,7 @@ describe("original articulated Mr. Booky model", () => {
 });
 
 it.each([
-  { name: "booky-right-grip-glove", components: 4 },
+  { name: "booky-right-grip-glove", components: 1 },
   { name: "booky-left-open-glove", components: 1 },
 ])("keeps $name closed and oriented with $components continuous surfaces", ({ name, components }) => {
   const model = createBookyModel();

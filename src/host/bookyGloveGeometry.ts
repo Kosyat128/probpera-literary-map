@@ -34,6 +34,26 @@ function geometry(points: THREE.Vector3[], triangles: number[], topology: string
   result.setAttribute("position", new THREE.Float32BufferAttribute(used.flatMap(p => [p.x, p.y, p.z]), 3));
   result.setAttribute("uv", new THREE.Float32BufferAttribute(used.flatMap(p => [p.x + .5, p.y + .5]), 2));
   result.setIndex(indices); result.computeVertexNormals(); result.computeBoundingBox(); result.computeBoundingSphere();
+  // A small local cavity response follows actual concave skin, not painted
+  // finger stripes. This is a curvature cue, not a claim of traced occlusion.
+  const neighborSums = new Float64Array(used.length * 3), neighborCounts = new Uint16Array(used.length);
+  for (let at = 0; at < indices.length; at += 3) for (let corner = 0; corner < 3; corner++) {
+    const id = indices[at + corner];
+    for (const offset of [1, 2]) {
+      const next = used[indices[at + (corner + offset) % 3]];
+      neighborSums[id * 3] += next.x; neighborSums[id * 3 + 1] += next.y; neighborSums[id * 3 + 2] += next.z; neighborCounts[id]++;
+    }
+  }
+  const normals = result.getAttribute("normal"), colors = new Float32Array(used.length * 3);
+  for (let id = 0; id < used.length; id++) {
+    const count = neighborCounts[id], p = used[id];
+    const cavity = count ? (neighborSums[id * 3] / count - p.x) * normals.getX(id)
+      + (neighborSums[id * 3 + 1] / count - p.y) * normals.getY(id)
+      + (neighborSums[id * 3 + 2] / count - p.z) * normals.getZ(id) : 0;
+    const tone = 1 - .10 * THREE.MathUtils.smoothstep(cavity, .0005, .0040);
+    colors.set([tone, tone, tone], id * 3);
+  }
+  result.setAttribute("color", new THREE.BufferAttribute(colors, 3));
   result.userData.topology = topology;
   return result;
 }
@@ -68,12 +88,14 @@ const softMaximum = (a: number, b: number, width: number) => Math.max(a, b) + Ma
 function openHand() {
   const columns = 112, rows = 10, points: THREE.Vector3[] = [], triangles: number[] = [];
   const origin = new THREE.Vector3(), forward = new THREE.Vector3(0, 0, 1), backward = new THREE.Vector3(0, 0, -1);
+  // The fingers curl out of the palm plane. Their real rounded tips now stand
+  // forward of the palm crown, instead of ending as nearly coplanar flutes.
   const paths = [
     { radius: .047, points: [[-.048, .036, .012], [-.115, .089, .039], [-.172, .121, .050]] },
-    { radius: .047, points: [[-.065, -.035, .010], [-.131, -.093, .032], [-.171, -.128, .031]] },
-    { radius: .048, points: [[-.034, -.050, .005], [-.093, -.123, .032], [-.126, -.172, .028]] },
-    { radius: .046, points: [[.004, -.051, .001], [-.040, -.137, .028], [-.074, -.185, .020]] },
-    { radius: .043, points: [[.040, -.041, -.003], [.005, -.126, .018], [-.024, -.173, .011]] },
+    { radius: .047, points: [[-.065, -.035, .010], [-.131, -.093, .057], [-.171, -.128, .074]] },
+    { radius: .048, points: [[-.034, -.050, .005], [-.093, -.123, .055], [-.126, -.172, .073]] },
+    { radius: .046, points: [[.004, -.051, .001], [-.040, -.137, .050], [-.074, -.185, .069]] },
+    { radius: .043, points: [[.040, -.041, -.003], [.005, -.126, .044], [-.024, -.173, .062]] },
     { radius: .052, points: [[.025, .005, -.012], [.082, .006, -.015]] },
   ].map(path => ({ radius: path.radius, points: path.points.map(p => new THREE.Vector3(...p as [number, number, number])) }));
   const segments = paths.flatMap(path => path.points.slice(1).map((b, index) => ({ a: path.points[index], b, radius: path.radius })));
@@ -148,11 +170,11 @@ function gripHand() {
     return new THREE.Vector3(Math.cos(phi) * .069, centerY + .014 * Math.cos(phi - .65), BOOKY_GRIP_SHAFT.axisZ + Math.sin(phi) * .069);
   }));
   const roundedArcs = [.088, -.004, -.097].map((centerY, digit) => ({
-    radius: [.047, .049, .046][digit],
+    radius: [.043, .045, .042][digit],
     points: Array.from({ length: 15 }, (_, i) => {
-      const phi = -.78 + i / 14 * 2.95, bend = .011 * Math.cos(phi - .65) + .005 * Math.sin(phi * 2);
-      return new THREE.Vector3(Math.cos(phi) * [.070, .072, .070][digit], centerY + bend,
-        BOOKY_GRIP_SHAFT.axisZ + Math.sin(phi) * .073);
+      const phi = -.78 + i / 14 * 2.95, bend = .025 * Math.sin(phi - .40) + .006 * Math.cos(phi * 2);
+      return new THREE.Vector3(Math.cos(phi) * [.066, .068, .066][digit], centerY + bend,
+        BOOKY_GRIP_SHAFT.axisZ + Math.sin(phi) * .070);
     }),
   }));
   const thumb = [new THREE.Vector3(-.113, -.078, BOOKY_GRIP_SHAFT.axisZ + .012),
@@ -179,8 +201,8 @@ function gripHand() {
       for (let i = 0; i < thumb.length - 1; i++) opposedThumb = Math.max(opposedThumb, capsuleExit(origin, direction, thumb[i], thumb[i + 1], i === 0 ? .047 : .043));
       radius = softMaximum(radius, opposedThumb, .007);
       // Preserve every proven side-entry/wrist vertex exactly. Away from that
-      // sector the three real digit arcs have a fuller round knuckle envelope
-      // and a softer continuous merge into the opposing thumb and heel.
+      // sector the three digits cross the shaft obliquely, with distinct round
+      // sections and a continuous merge into the opposing thumb and heel.
       const wrap = THREE.MathUtils.smoothstep(Math.cos(phi), -.88, -.32);
       if (wrap > 0) {
         let rounded = softMaximum(shaftRadius(y) + .0065, palmExit(origin, direction), .010);
