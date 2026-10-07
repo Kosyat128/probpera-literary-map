@@ -68,6 +68,10 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
   let timer: ReturnType<typeof setTimeout> | null = null, pendingAbort: AbortController | null = null, tail = Promise.resolve();
   let latestIntent: Intent | null = null, lastEnvironmentKey = "";
   let previewRequest: PreviewRequest | null = null;
+  // A fresh native context can publish before React's separate Canvas root
+  // attaches its recipient. Only this pre-acquisition restore may join that
+  // attachment; it never opens a second lease or relaxes signed admission.
+  let rendererAdmission: { abort: AbortController; wake?: () => void } | null = null;
   const listeners = new Set<() => void>(), recipients = new Set<ChildNativeSceneRecipient>(), workers = new Set<Promise<unknown>>(), cancels = new Set<() => void>();
   const parent = controller.getSnapshot().context;
   function now() { const at = clock(); if (!Number.isFinite(at) || at < lastNow) { broken = true; throw new Error("Child monotonic clock unavailable"); } lastNow = at; return at; }
@@ -79,6 +83,30 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     return view && profile && parent?.package ? { ...view, exactAge: profile.exactAge, contentVersion: parent.package.version } : null;
   }
   function environmentKey() { const v = environment?.(); return v ? JSON.stringify([v.editionId, v.platform, v.exploring, v.visible, v.reducedMotion]) : ""; }
+  function awaitRenderer(admission: NonNullable<typeof rendererAdmission>, ticket: number, deadline: number): Promise<boolean> {
+    return new Promise(resolve => {
+      let finished = false, timeout: ReturnType<typeof setTimeout> | undefined;
+      const finish = (ready: boolean) => {
+        if (finished) return; finished = true;
+        if (timeout !== undefined) clearTimeout(timeout);
+        admission.abort.signal.removeEventListener("abort", cancelled);
+        if (admission.wake === wake) admission.wake = undefined;
+        resolve(ready);
+      };
+      const cancelled = () => finish(false);
+      const wake = () => {
+        try {
+          if (admission !== rendererAdmission || admission.abort.signal.aborted || !valid(ticket, deadline)) finish(false);
+          else if (renderer && environment?.().visible) finish(true);
+        } catch { finish(false); }
+      };
+      admission.wake = wake; admission.abort.signal.addEventListener("abort", cancelled, { once: true });
+      // This bound is contained inside the original dispatch-based lease.
+      // Expiry releases that exact scene; a late attachment cannot replay it.
+      try { timeout = setTimeout(cancelled, Math.max(1, Math.min(5000, deadline - now()))); wake(); }
+      catch { finish(false); }
+    });
+  }
   async function preloadReady(ticket: number, deadline: () => number, signal: AbortSignal): Promise<boolean> {
     while (!signal.aborted && valid(ticket, deadline()) && environment?.().preloadPaused) {
       await new Promise<void>(resolve => {
@@ -165,8 +193,11 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     const scenes = controller.scenes; if (!scenes || !valid() || retry && latestIntent !== retry.intent || kind === "preview" && (!preview || !renderer)) return false;
     const intent = retry?.intent ?? { kind, entity, sceneId }; if (!retry) latestIntent = intent;
     const replacingPreview = previewRequest !== null;
-    const ticket = ++epoch, requestedTier = retry?.tier ?? tier, staticFallback = retry?.staticFallback ?? false, originalClear = clearSequence;
+    const ticket = ++epoch, staticFallback = retry?.staticFallback ?? false, originalClear = clearSequence;
+    let requestedTier = retry?.tier ?? tier;
     pendingAbort?.abort(); for (const cancel of [...cancels]) cancel(); const abort = new AbortController(); pendingAbort = abort;
+    const admission = kind === "restore" && !active ? { abort, wake: undefined as (() => void) | undefined } : null;
+    rendererAdmission = admission;
     if (previewRequest && previewRequest !== preview) { previewRequest.cancelled = true; previewRequest.decide(false); }
     previewRequest = preview ?? null;
     if (preview) { if (!preview.revision) preview.revision = ticket; preview.ticket = ticket; preview.phase = "preparing"; preview.owned = null; }
@@ -179,7 +210,11 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     const previousWork = tail; let releaseTail!: () => void; tail = new Promise(resolve => { releaseTail = resolve; });
     let nextRetry: Retry | null = null;
     const work = (async () => {
-      await previousWork; if (!valid(ticket, retry?.deadline)) return false;
+      await previousWork; if (!valid(ticket, retry?.deadline)) {
+        if (rendererAdmission === admission) rendererAdmission = null;
+        if (pendingAbort === abort) pendingAbort = null;
+        return false;
+      }
       let scene: ChildNativeScene | null = null, deadline = retry?.deadline ?? Infinity, candidate: Owned | null = null, stage: ChildCanonicalRenderStage | null = null, committed = false;
       const textures = new Set<THREE.Texture>(), bytes = new Set<Uint8Array>(), models = new Map<"stand" | "background", Common3dImported>();
       const previousPersistence = state.persistence ?? null;
@@ -217,7 +252,13 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
           if (restored.status !== "restored") return false;
         } else scene = entity && sceneId ? await scenes.open(entity, sceneId) : null;
         if (!scene || !current()) return false; narrowDeadline(start + scene.remainingLifetimeMs);
-        const engine = scene.modelPackage?.engineComposition, policy = engine?.tiers.find(p => p.tier === requestedTier);
+        const engine = scene.modelPackage?.engineComposition;
+        if (engine && admission && !await awaitRenderer(admission, ticket, deadline)) return false;
+        // Attachment supplies the actual tier. No native resources have been
+        // acquired, so this is the first admission, not a retry/lease renewal.
+        if (admission && !retry) requestedTier = tier;
+        if (rendererAdmission === admission) rendererAdmission = null;
+        const policy = engine?.tiers.find(p => p.tier === requestedTier);
         if (engine) {
           const view = currentEnvironment();
           if (!view || !policy || !renderer || !childEngineCompatible(engine, scene, view, requestedTier, false)
@@ -379,6 +420,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         }
         return false;
       } finally {
+        if (rendererAdmission === admission) rendererAdmission = null;
         if (requestTimer !== null) clearTimeout(requestTimer);
         abort.signal.removeEventListener("abort", cancelDecision);
         if (!committed) {
@@ -480,6 +522,10 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
       track(Promise.resolve(controller.scenes?.release(scene.sceneToken, scene)).then(ok => { if (ok === false) return controller.suspend(); }));
     } else if (held) {
       if (!compatible(held.bundle)) void cancelPreview(previewRequest!.revision);
+    } else if (rendererAdmission?.abort === pendingAbort) {
+      // Until the first acquisition, the current worker admits the freshly
+      // attached environment. All later changes retain ordinary cancellation.
+      rendererAdmission?.wake?.();
     } else if (pendingAbort && changed) { ++epoch; pendingAbort.abort(); pendingAbort = null; }
   }
   const owner: ChildNativeSceneRecipient = { clear, join }; let detachOwner: (() => void) | undefined;
@@ -494,9 +540,12 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     select: (entity: ChildEntityReference, id: string) => choose("select", entity, id), restore: () => choose("restore"), preview, applyPreview, cancelPreview, cancelAndWait, clear, join, refreshEnvironment,
     attachRenderer(nextTier: Common3dTierId, next: (bundle: ChildCanonicalBundle) => Promise<ChildCanonicalRenderStage | null>, nextEnvironment?: () => ChildCanonicalEnvironment) {
       if (renderer) throw new Error("One original composition renderer required"); tier = nextTier; renderer = next; environment = nextEnvironment ?? null; lastEnvironmentKey = environmentKey();
+      rendererAdmission?.wake?.();
       return () => { if (renderer === next) { clear(); renderer = null; environment = null; } };
     },
-    setTier(nextTier: Common3dTierId) { if (nextTier === tier || disposed) return; tier = nextTier; if (previewRequest) void choose("restore"); else if (pendingAbort && latestIntent) void choose(latestIntent.kind, latestIntent.entity, latestIntent.sceneId); else if (active) void choose("restore"); },
+    setTier(nextTier: Common3dTierId) { if (nextTier === tier || disposed) return; tier = nextTier;
+      if (rendererAdmission?.abort === pendingAbort && pendingAbort) { rendererAdmission?.wake?.(); return; }
+      if (previewRequest) void choose("restore"); else if (pendingAbort && latestIntent) void choose(latestIntent.kind, latestIntent.entity, latestIntent.sceneId); else if (active) void choose("restore"); },
     attachRecipient(recipient: ChildNativeSceneRecipient) {
       if (disposed) throw new Error("Child resource recipient retired"); recipients.add(recipient);
       return () => { recipient.clear(); recipients.delete(recipient); track(Promise.resolve().then(() => recipient.join()).catch(error => { broken = true; throw error; })); };

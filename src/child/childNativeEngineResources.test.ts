@@ -6,10 +6,11 @@ import { childNativeAppearanceFromScene, type ChildNativeProfileAppearance } fro
 import type { ChildNativeScene, ChildNativeSceneSlot, ChildNativeModelWebResource, ChildNativeSceneBudgetDecline } from "./childNativeScene";
 import type { Common3dResource, Common3dTierId } from "./childCommon3d";
 import { childSceneEngineFixture } from "./childSceneEngineFixture";
-function fixture() {
+function fixture(deferRenderer = false) {
   const f = childSceneEngineFixture(), events: string[] = [], images: any[] = [];
   let time = 0, opened = 0, sealed = false, paused = false, exploring = false, reducedMotion = false, value = f.scene(), current: ChildCanonicalBundle | null = null;
   const context = { token: "b".repeat(32), profileId: "synthetic-profile", package: { id: "synthetic-text", version: 1, checksum: "a".repeat(64) } };
+  let visible = true, currentContext = context;
   let saved: ChildNativeProfileAppearance = { profileId: context.profileId, revision: 0, selection: null };
   const prior = new Map<string, { saved: ChildNativeProfileAppearance; revision: number }>();
   class ImageFixture {
@@ -48,7 +49,7 @@ function fixture() {
     release: vi.fn(async (token: string | null) => { events.push("release:" + token); return true; }),
     releaseAll: vi.fn(async () => true), releaseResource: vi.fn(async () => true), attachRecipient: vi.fn(() => () => undefined),
   };
-  const controller = { scenes, getSnapshot: () => ({ phase: sealed ? "sealed" : "ready", status: sealed ? "unavailable" : "child", context,
+  const controller = { scenes, getSnapshot: () => ({ phase: sealed ? "sealed" : "ready", status: sealed ? "unavailable" : "child", context: currentContext,
     profiles: [{ id: context.profileId, label: "Synthetic", exactAge: 9, locale: "en" }] }),
     suspend: vi.fn(async () => { sealed = true; }) } as unknown as ChildNativeAppController;
   const resources = createChildCanonicalResources(controller, context.token, () => time); resources.activate();
@@ -59,17 +60,93 @@ function fixture() {
       finalize: () => { events.push("finalize:" + bundle.scene.sceneId); current = bundle; },
       rollback: () => { events.push("render-rollback:" + bundle.scene.sceneId); current = previous; }, join: async () => undefined };
   });
-  resources.attachRenderer!("high", stage, () => ({ editionId: "synthetic-edition", platform: "web", exploring, visible: true, reducedMotion, preloadPaused: paused }));
+  const attachRenderer = (nextTier: Common3dTierId = "high") => resources.attachRenderer!(nextTier, stage,
+    () => ({ editionId: "synthetic-edition", platform: "web", exploring, visible, reducedMotion, preloadPaused: paused }));
+  if (!deferRenderer) attachRenderer();
   function setVersion(version: number) { const raw = structuredClone(f.raw); raw.modelPackageVersion = version; raw.sceneId = f.g.pack.packageId + ".v" + version; value = f.scene(raw); }
   const decline = (s: ChildNativeScene, r: Common3dResource, tier: Common3dTierId) => ({
     status: "budget-declined" as const, sceneId: s.sceneId, slotId: r.kind, assetId: r.assetId, tier, entity: r.entity,
     mime: r.mime, checksum: r.checksum, encodedBytes: r.encodedBytes, remainingLifetimeMs: 4000, reason: "decoded-budget" as const,
   });
-  return { ...f, events, images, scenes, controller, resources, stage, decline, setVersion, setScene: (s: ChildNativeScene) => { value = s; }, at: (at: number) => { time = at; }, pause: (value: boolean) => { paused = value; resources.refreshEnvironment!(); }, current: () => current, saved: () => saved,
+  return { ...f, events, images, scenes, controller, resources, stage, decline, setVersion, attachRenderer,
+    savedChoice: () => { saved = { profileId: context.profileId, revision: 1, selection: childNativeAppearanceFromScene(value) }; },
+    show: (next: boolean) => { visible = next; resources.refreshEnvironment!(); },
+    replaceContext: () => { currentContext = { ...context }; resources.refreshEnvironment!(); },
+    setScene: (s: ChildNativeScene) => { value = s; }, at: (at: number) => { time = at; }, pause: (value: boolean) => { paused = value; resources.refreshEnvironment!(); }, current: () => current, saved: () => saved,
     inspect: (value: boolean, calm = false) => { exploring = value; reducedMotion = calm; resources.refreshEnvironment!(); } };
 }
 afterEach(() => { vi.unstubAllGlobals(); vi.useRealTimers(); });
 describe("engine transaction through current synthetic native seam; no rights/device authority", () => {
+  it("joins delayed Canvas attachment and visibility in one original restore lease, using the attached tier", async () => {
+    const f = fixture(true); f.savedChoice(); f.show(false);
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.restore).toHaveBeenCalledOnce());
+    f.resources.setTier!("economy"); f.attachRenderer("economy"); await Promise.resolve();
+    expect(f.scenes.acquire).not.toHaveBeenCalled(); expect(f.scenes.open).not.toHaveBeenCalled();
+    f.show(true); expect(await pending).toBe(true);
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.acquire).toHaveBeenCalledTimes(3);
+    expect(f.stage.mock.calls[0][0].tier).toBe("economy"); expect(f.scenes.remember).toHaveBeenCalledOnce();
+    expect(f.resources.getSnapshot().phase).toBe("ready"); await f.resources.dispose();
+  });
+  it("does not replay a fresh restoration when the Canvas tier attaches during its pending native selection read", async () => {
+    const f = fixture(true); f.savedChoice();
+    let release!: () => void; const held = new Promise<void>(resolve => { release = resolve; });
+    const read = f.scenes.readSelection.getMockImplementation()!;
+    f.scenes.readSelection.mockImplementationOnce(async () => { await held; return read(); });
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.readSelection).toHaveBeenCalledOnce());
+    f.resources.setTier!("economy"); f.attachRenderer("economy"); await Promise.resolve();
+    expect(f.scenes.restore).not.toHaveBeenCalled(); expect(f.scenes.acquire).not.toHaveBeenCalled();
+    release(); expect(await pending).toBe(true);
+    expect(f.scenes.readSelection).toHaveBeenCalledOnce(); expect(f.scenes.restore).toHaveBeenCalledOnce();
+    expect(f.scenes.open).not.toHaveBeenCalled(); expect(f.stage.mock.calls[0][0].tier).toBe("economy");
+    expect(f.scenes.acquire).toHaveBeenCalledTimes(3); expect(f.scenes.remember).toHaveBeenCalledOnce(); await f.resources.dispose();
+  });
+  it("renderer readiness cannot admit stale signed engine metadata from a delayed restore", async () => {
+    const f = fixture(true), scene = f.scene();
+    const stale = { ...scene, modelPackage: { ...scene.modelPackage!, engineCompositionChecksum: "0".repeat(64) } };
+    f.setScene(stale); f.savedChoice();
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.restore).toHaveBeenCalledOnce());
+    f.attachRenderer(); expect(await pending).toBe(false);
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.open).not.toHaveBeenCalled();
+    expect(f.scenes.acquire).not.toHaveBeenCalled(); expect(f.scenes.acquireModel).not.toHaveBeenCalled();
+    expect(f.stage).not.toHaveBeenCalled(); expect(f.scenes.remember).not.toHaveBeenCalled();
+    expect(f.scenes.release).toHaveBeenCalledExactlyOnceWith(stale.sceneToken, stale);
+    expect(f.controller.suspend).not.toHaveBeenCalled(); await f.resources.dispose();
+  });
+  it.each(["cancel", "clear", "context", "detach"] as const)("joins %s during fresh renderer admission and never replays the retired lease", async reason => {
+    const f = fixture(true); f.savedChoice(); f.show(false);
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.restore).toHaveBeenCalledOnce());
+    if (reason === "cancel") expect(await f.resources.cancelAndWait()).toBe(true);
+    else if (reason === "clear") f.resources.clear();
+    else if (reason === "context") f.replaceContext();
+    else f.attachRenderer()();
+    expect(await pending).toBe(false); await f.resources.join();
+    f.show(true); if (reason !== "context") f.attachRenderer(); await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.acquire).not.toHaveBeenCalled();
+    expect(f.scenes.remember).not.toHaveBeenCalled(); expect(f.scenes.release).toHaveBeenCalledOnce();
+    expect(f.scenes.release.mock.calls[0][0]).toBe(f.scene().sceneToken);
+    expect(f.controller.suspend).not.toHaveBeenCalled(); await f.resources.dispose();
+  });
+  it.each([1200, 8000])("renderer admission expires inside the unchanged %i ms original lease and cannot replay on late attachment", async lifetime => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout"] });
+    const f = fixture(true); f.setScene({ ...f.scene(), remainingLifetimeMs: lifetime }); f.savedChoice();
+    const pending = f.resources.restore!();
+    for (let n = 0; n < 30; n++) await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.acquire).not.toHaveBeenCalled();
+    const elapsed = Math.min(lifetime, 5000); f.at(elapsed); await vi.advanceTimersByTimeAsync(elapsed);
+    expect(await pending).toBe(false); expect(f.scenes.release).toHaveBeenCalledOnce();
+    f.attachRenderer(); await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.acquire).not.toHaveBeenCalled();
+    expect(f.scenes.remember).not.toHaveBeenCalled(); await f.resources.dispose();
+  });
+  it("a newer explicit selection cancels renderer admission and is the only later native acquisition", async () => {
+    const f = fixture(true); f.savedChoice();
+    const pending = f.resources.restore!(); await vi.waitFor(() => expect(f.scenes.restore).toHaveBeenCalledOnce());
+    f.setVersion(2); const next = f.resources.select(f.owner, f.g.pack.packageId + ".v2"); f.attachRenderer();
+    expect(await pending).toBe(false); expect(await next).toBe(true);
+    expect(f.scenes.restore).toHaveBeenCalledOnce(); expect(f.scenes.open).toHaveBeenCalledOnce();
+    expect(f.scenes.acquire).toHaveBeenCalledTimes(3); expect(f.scenes.remember).toHaveBeenCalledOnce();
+    expect(f.resources.getSnapshot().scene?.sceneId).toBe(f.g.pack.packageId + ".v2"); await f.resources.dispose();
+  });
   it("keeps A until B transition completion and rolls native B back before the queued latest C reads", async () => {
     const f = fixture(); expect(await f.resources.select(f.owner, f.raw.sceneId)).toBe(true); const a = f.resources.getSnapshot().textures!.skin;
     f.setVersion(2); let started = false;
