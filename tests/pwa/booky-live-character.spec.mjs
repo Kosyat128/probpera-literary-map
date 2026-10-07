@@ -491,11 +491,29 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     const ru=languageControls.locator('[data-interface-language="ru"]');
     const en=languageControls.locator('[data-interface-language="en"]');
     await expect(ru).toBeVisible();await expect(en).toBeVisible();await twoFrames(page);bounds=await toggle.boundingBox();
-    const conflicting={x:4,y:4};
-    const neutralHit=await page.evaluate(({x,y})=>{const hit=document.elementFromPoint(x,y),pet=document.querySelector('[data-planet-mascot-pet]');
-      return{hit:!!hit,tag:hit?.tagName??null,insidePet:!!hit&&!!pet&&(hit===pet||pet.contains(hit)),
-        interactive:!!hit?.closest('button,a[href],input,select,textarea,summary,[role="button"],[role="link"],[contenteditable="true"],[tabindex]')};},conflicting);
+    const neutralHit=await page.evaluate(()=>{
+      const panel=document.querySelector('[data-atlas-application-menu-panel]'),target=panel?.querySelector('.atlas-application-menu-language-title');
+      const pet=document.querySelector('[data-planet-mascot-pet]'),r=target?.getBoundingClientRect(),point=r?{x:r.left+r.width/2,y:r.top+r.height/2}:null;
+      const hit=point?document.elementFromPoint(point.x,point.y):null,shifted=point?document.elementFromPoint(point.x-1,point.y):null;
+      const interactive='button,a[href],input,select,textarea,summary,[role="button"],[role="link"],[contenteditable="true"],[tabindex]';
+      const control=hit?.closest(interactive),shiftedControl=shifted?.closest(interactive);
+      const languageButtons=[...panel?.querySelectorAll('.interface-language-control button')??[]].map(button=>{const b=button.getBoundingClientRect();
+        return{language:button.getAttribute('data-interface-language'),left:b.left,top:b.top,right:b.right,bottom:b.bottom,x:b.left+b.width/2,y:b.top+b.height/2};});
+      return{point,hit:!!hit,tag:hit?.tagName??null,targetClass:target?.className??null,
+        targetRect:r?{left:r.left,top:r.top,right:r.right,bottom:r.bottom}:null,
+        insidePanel:!!hit&&!!panel&&panel.contains(hit),insideTarget:!!hit&&!!target&&(hit===target||target.contains(hit)),
+        shiftedInsideTarget:!!shifted&&!!target&&(shifted===target||target.contains(shifted)),
+        insidePet:!!hit&&!!pet&&(hit===pet||pet.contains(hit)),interactive:!!control||!!shiftedControl,
+        control:control?{tag:control.tagName,role:control.getAttribute('role'),tabindex:control.getAttribute('tabindex')}:null,
+        inViewport:!!point&&point.x>1&&point.y>0&&point.x<innerWidth&&point.y<innerHeight,
+        outsideLanguageControls:!!point&&languageButtons.length===2&&languageButtons.every(button=>
+          (point.x<button.left||point.x>button.right||point.y<button.top||point.y>button.bottom)&&
+          (point.x-1<button.left||point.x-1>button.right||point.y<button.top||point.y>button.bottom)),languageButtons};
+    });
+    result.observations.attentionConflictTarget=neutralHit;const conflicting=neutralHit.point;
     expect(neutralHit.hit).toBe(true);expect(neutralHit.insidePet).toBe(false);expect(neutralHit.interactive).toBe(false);
+    expect(neutralHit.insidePanel).toBe(true);expect(neutralHit.insideTarget).toBe(true);expect(neutralHit.shiftedInsideTarget).toBe(true);
+    expect(neutralHit.inViewport).toBe(true);expect(neutralHit.outsideLanguageControls).toBe(true);
     const pupilPositions=value=>value.rig.pupils.map(pupil=>pupil.position);
     await page.evaluate(()=>{
       const types=['focusin','keydown','pointerdown','pointermove','pointerout','pointerup','click'];
