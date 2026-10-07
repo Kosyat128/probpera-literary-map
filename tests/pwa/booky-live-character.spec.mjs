@@ -516,7 +516,7 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     expect(neutralHit.inViewport).toBe(true);expect(neutralHit.outsideLanguageControls).toBe(true);
     const pupilPositions=value=>value.rig.pupils.map(pupil=>pupil.position);
     await page.evaluate(()=>{
-      const types=['focusin','keydown','pointerdown','pointermove','pointerout','pointerup','click'];
+      const types=['focusin','keydown','pointerdown','pointermove','pointerout','pointerup','click','dragstart','dragend','pointercancel'];
       const describe=value=>value instanceof Element?{tag:value.tagName,
         control:value.closest('.interface-language-control button')?.getAttribute('data-interface-language')?.toUpperCase()??null,
         avatar:!!value.closest('[data-planet-mascot-avatar]'),toggle:!!value.closest('[data-planet-mascot-toggle]')}:null;
@@ -565,9 +565,17 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
       await expect(ru).toBeFocused();
       const beforePress=await character(page),pressBounds=await ru.boundingBox();
+      const pressPoint={x:pressBounds.x+4,y:pressBounds.y+pressBounds.height/2};
+      const pressedHit=await page.evaluate(({x,y})=>{const hit=document.elementFromPoint(x,y),
+        button=document.querySelector('[data-atlas-application-menu-panel] .interface-language-control [data-interface-language="ru"]'),closest=hit?.closest('.interface-language-control button');
+        return{tag:hit?.tagName??null,control:closest?.getAttribute('data-interface-language')?.toUpperCase()??null,
+          sameButton:!!hit&&hit===button,closestRuButton:!!closest&&closest===button};},pressPoint);
+      result.observations.pressTargetDiagnostic={pressPoint,pressedHit};
+      expect(pressedHit.tag).toBe('BUTTON');expect(pressedHit.control).toBe('RU');
+      expect(pressedHit.sameButton).toBe(true);expect(pressedHit.closestRuButton).toBe(true);
       // A genuine press released outside the control avoids activating the
       // language menu, whose normal click correctly closes it and moves focus.
-      await page.mouse.move(pressBounds.x+pressBounds.width/2,pressBounds.y+pressBounds.height/2);
+      await page.mouse.move(pressPoint.x,pressPoint.y);
       await page.mouse.down();await twoFrames(page);
       await expect(ru).toBeFocused();
       await expect.poll(async()=>JSON.stringify(pupilPositions(await character(page))))
@@ -579,10 +587,12 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       await page.mouse.move(conflicting.x-1,conflicting.y);await twoFrames(page);
       const pressHeld=await character(page);
       const pressTiming=await page.evaluate(()=>{const events=window.__bookyPressFocusProbe.events;
-        return{event:events.filter(event=>event.type==='pointerdown'&&event.control==='RU').at(-1),now:performance.now()};});
-      result.observations.pressFocusDiagnostic={conflicting,neutralHit,pointerBeforeFocus,focusLook,focusHeld,focusTiming,
+        const event=events.filter(event=>event.type==='pointerdown'&&event.control==='RU').at(-1),now=performance.now();
+        return{event,now,nativeDragEvents:events.filter(value=>['dragstart','dragend','pointercancel'].includes(value.type)&&value.at>=event?.at&&value.at<=now)};});
+      result.observations.pressFocusDiagnostic={conflicting,neutralHit,pressPoint,pressedHit,pointerBeforeFocus,focusLook,focusHeld,focusTiming,
         pressLook,pressHeld,pressTiming,events:await page.evaluate(()=>window.__bookyPressFocusProbe.events)};
       expect(pressTiming.event?.isTrusted).toBe(true);expect(pressTiming.event?.pointerType).toBe('mouse');
+      expect(pressTiming.event?.target?.tag).toBe('BUTTON');expect(pressTiming.nativeDragEvents).toEqual([]);
       expect(await page.evaluate(at=>window.__bookyPressFocusProbe.events.filter(event=>event.type==='focusin'&&event.at>=at),pressTiming.event.at)).toEqual([]);
       expect(pressTiming.now-pressTiming.event.at).toBeLessThan(600);
       expect(pupilPositions(pressHeld)).toEqual(pupilPositions(pressLook));
