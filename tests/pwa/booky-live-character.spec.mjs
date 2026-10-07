@@ -623,12 +623,17 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     bounds=await toggle.boundingBox();await page.touchscreen.tap(bounds.x+bounds.width/2,bounds.y+bounds.height/2);
     await expect(panel(page)).toHaveCount(0);await toggle.focus();await page.keyboard.press('Enter');await expect(panel(page)).toBeVisible();
     await page.locator('[data-planet-mascot-move]').focus();await page.keyboard.press('Home');
-    await page.mouse.move(2,2);await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
+    await page.locator('[data-booky-stop-gesture]').click();await page.mouse.move(2,2);
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-interaction','rest');
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
     const neutralGuidanceReference=await character(page);
+    result.observations.neutralGuidance={character:neutralGuidanceReference,
+      observedInteraction:await page.locator('[data-booky-canvas]').getAttribute('data-booky-interaction')};
 
     await page.locator('[data-planet-mascot-route="overview"]').click();
     await expect(page.locator('[data-planet-mascot-highlight="search"]')).toBeVisible();
     await page.mouse.move(2,2);
+    await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-interaction','pointing');
     await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
     const guided=await character(page);
     expect(guided.rig.brows[0].position[1]).toBeGreaterThan(neutralGuidanceReference.rig.brows[0].position[1]);
