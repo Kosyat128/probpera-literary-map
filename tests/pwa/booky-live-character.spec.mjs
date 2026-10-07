@@ -491,15 +491,27 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     const ru=languageControls.locator('[data-interface-language="ru"]');
     const en=languageControls.locator('[data-interface-language="en"]');
     await expect(ru).toBeVisible();await expect(en).toBeVisible();await twoFrames(page);bounds=await toggle.boundingBox();
-    const conflicting={x:bounds.x+bounds.width-8,y:bounds.y+bounds.height/2};
+    const conflicting={x:4,y:4};
+    const neutralHit=await page.evaluate(({x,y})=>{const hit=document.elementFromPoint(x,y),pet=document.querySelector('[data-planet-mascot-pet]');
+      return{hit:!!hit,tag:hit?.tagName??null,insidePet:!!hit&&!!pet&&(hit===pet||pet.contains(hit)),
+        interactive:!!hit?.closest('button,a[href],input,select,textarea,summary,[role="button"],[role="link"],[contenteditable="true"],[tabindex]')};},conflicting);
+    expect(neutralHit.hit).toBe(true);expect(neutralHit.insidePet).toBe(false);expect(neutralHit.interactive).toBe(false);
     const pupilPositions=value=>value.rig.pupils.map(pupil=>pupil.position);
     await page.evaluate(()=>{
-      const events=[],observe=event=>{const target=event.target;
+      const types=['focusin','keydown','pointerdown','pointermove','pointerout','pointerup','click'];
+      const describe=value=>value instanceof Element?{tag:value.tagName,
+        control:value.closest('.interface-language-control button')?.getAttribute('data-interface-language')?.toUpperCase()??null,
+        avatar:!!value.closest('[data-planet-mascot-avatar]'),toggle:!!value.closest('[data-planet-mascot-toggle]')}:null;
+      const events=[],observe=event=>{const target=event.target,canvas=document.querySelector('[data-booky-canvas]');
         events.push({type:event.type,isTrusted:event.isTrusted,at:performance.now(),
           pointerType:event.pointerType??null,detail:event.detail??null,
-          control:target instanceof Element?target.closest('.interface-language-control button')?.getAttribute('data-interface-language')?.toUpperCase()??null:null});};
-      for(const type of ['focusin','keydown','pointerdown','pointermove'])document.addEventListener(type,observe,true);
-      window.__bookyPressFocusProbe={events,stop(){for(const type of ['focusin','keydown','pointerdown','pointermove'])document.removeEventListener(type,observe,true);return events;}};
+          button:event.button??null,buttons:event.buttons??null,clientX:event.clientX??null,clientY:event.clientY??null,
+          target:describe(target),relatedTarget:describe(event.relatedTarget),
+          control:target instanceof Element?target.closest('.interface-language-control button')?.getAttribute('data-interface-language')?.toUpperCase()??null:null,
+          canvas:canvas?{lookX:canvas.dataset.bookyLookX??null,lookY:canvas.dataset.bookyLookY??null,
+            interaction:canvas.dataset.bookyInteraction??null,renderCount:Number(canvas.dataset.bookyRenderCount),animating:canvas.dataset.bookyAnimating??null}:null});};
+      for(const type of types)document.addEventListener(type,observe,true);
+      window.__bookyPressFocusProbe={events,stop(){for(const type of types)document.removeEventListener(type,observe,true);return events;}};
     });
     try{
       await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
@@ -538,7 +550,7 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       // A genuine press released outside the control avoids activating the
       // language menu, whose normal click correctly closes it and moves focus.
       await page.mouse.move(pressBounds.x+pressBounds.width/2,pressBounds.y+pressBounds.height/2);
-      await page.mouse.down();
+      await page.mouse.down();await twoFrames(page);
       await expect(ru).toBeFocused();
       await expect.poll(async()=>JSON.stringify(pupilPositions(await character(page))))
         .not.toBe(JSON.stringify(pupilPositions(beforePress)));
@@ -550,6 +562,8 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       const pressHeld=await character(page);
       const pressTiming=await page.evaluate(()=>{const events=window.__bookyPressFocusProbe.events;
         return{event:events.filter(event=>event.type==='pointerdown'&&event.control==='RU').at(-1),now:performance.now()};});
+      result.observations.pressFocusDiagnostic={conflicting,neutralHit,pointerBeforeFocus,focusLook,focusHeld,focusTiming,
+        pressLook,pressHeld,pressTiming,events:await page.evaluate(()=>window.__bookyPressFocusProbe.events)};
       expect(pressTiming.event?.isTrusted).toBe(true);expect(pressTiming.event?.pointerType).toBe('mouse');
       expect(await page.evaluate(at=>window.__bookyPressFocusProbe.events.filter(event=>event.type==='focusin'&&event.at>=at),pressTiming.event.at)).toEqual([]);
       expect(pressTiming.now-pressTiming.event.at).toBeLessThan(600);
@@ -616,16 +630,30 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     await page.locator('[data-planet-mascot-next]').click();await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','1');
     const reducedNext=await layout(page);expect(reducedNext.leaf.animation).toBe('none');
     expect(Number.parseFloat(reducedNext.leaf.duration)).toBeLessThanOrEqual(.00002);result.observations.reducedMotion=await live(page);
-    await stablePose(page);const preservedView=await actual(page);
+    await stablePose(page);const beforeBackground=await actual(page);
+    const originalCanonical=await page.evaluateHandle(()=>window.__bookyLiveFixture.scenes().find(value=>document.querySelector('#atlas')?.contains(value.canvas)));
 
     await page.evaluate(()=>window.__bookyLiveFixture.setVisible(false));await expect(pet(page)).toHaveCount(0);
+    expect(await originalCanonical.evaluate(root=>root.canvas.isConnected)).toBe(false);
     await expect.poll(async()=>{const value=await owners(page);return value.renderers.every(item=>item.disposed)&&value.models.every(item=>item.disposed)}).toBe(true);
     const inactive=await owners(page);await twoFrames(page);expect(await owners(page)).toEqual(inactive);
     expect(inactive.renderers.every(item=>item.disposed&&item.disposeCalls===1)).toBe(true);
     expect(inactive.models.every(item=>item.disposed&&item.disposeCalls===1)).toBe(true);
     await page.evaluate(()=>window.__bookyLiveFixture.setVisible(true));await ready(page);await expect(panel(page)).toHaveCount(0);
-    const resumed=await live(page);expect(resumed.character.model).not.toBe(desktop.character.model);retained(await actual(page),preservedView);
-    result.observations.background={inactive,resumed};
+    const resumed=await live(page);expect(resumed.character.model).not.toBe(desktop.character.model);
+    const canonicalTransition=await originalCanonical.evaluate(previous=>{
+      const roots=window.__bookyLiveFixture.scenes().filter(value=>document.querySelector('#atlas')?.contains(value.canvas)),root=roots[0];
+      return{count:roots.length,previousCanvasConnected:previous.canvas.isConnected,canvasChanged:!!root&&root.canvas!==previous.canvas,
+        rendererChanged:!!root&&root.renderer!==previous.renderer,sceneChanged:!!root&&root.scene!==previous.scene};});
+    expect(canonicalTransition).toEqual({count:1,previousCanvasConnected:false,canvasChanged:true,rendererChanged:true,sceneChanged:true});
+    await originalCanonical.dispose();
+    const resumedGlobe=await actual(page);expect(resumedGlobe.selection).toEqual(beforeBackground.selection);expect(resumedGlobe.url).toBe(beforeBackground.url);
+    const resumedOwners=await owners(page);
+    expect(resumedOwners.renderers.slice(0,inactive.renderers.length)).toEqual(inactive.renderers);
+    expect(resumedOwners.models.slice(0,inactive.models.length)).toEqual(inactive.models);
+    await page.evaluate(()=>window.__bookyLiveFixture.remember());await stablePose(page);const preservedView=await actual(page);
+    retained(await actual(page),preservedView);
+    result.observations.background={beforeBackground,inactive,resumed,canonicalTransition,resumedGlobe,preservedView};
 
     // The first genuine loss recovers the same renderer/model. A second loss
     // exercises the product's bounded fallback; neither recovery nor context
