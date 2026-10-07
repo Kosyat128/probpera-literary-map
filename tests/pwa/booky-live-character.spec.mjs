@@ -728,7 +728,13 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     await toggle.click();await expect(panel(page)).toBeVisible();await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','1');
     await page.locator('[data-planet-mascot-back]').click();await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','0');
     retained(await actual(page),preservedView);result.observations.fallback={layout:await layout(page),owners:await owners(page),globe:await actual(page)};
-    await page.locator('[data-planet-mascot-hide]').click();await expect(page.locator('[data-booky-canvas]')).toHaveCount(0);
+    await page.locator('[data-planet-mascot-collapse]').click();await expect(panel(page)).toHaveCount(0);
+    const hideActions=page.locator('[data-booky-actions-toggle]');await expect(hideActions).toBeVisible();await hideActions.click();
+    await expect(hideActions).toHaveAttribute('aria-expanded','true');await expect(page.locator('[data-planet-mascot-hide]')).toBeVisible();
+    result.observations.hideControls={panelState:await pet(page).getAttribute('data-planet-mascot-panel-state'),
+      actionsExpanded:await hideActions.getAttribute('aria-expanded'),hideVisible:await page.locator('[data-planet-mascot-hide]').isVisible()};
+    await page.locator('[data-planet-mascot-hide]').click();await expect(pet(page)).toHaveAttribute('data-planet-mascot-visibility','hidden');
+    await expect(page.locator('[data-booky-canvas]')).toHaveCount(0);
     const retired=await owners(page);await twoFrames(page);expect(await owners(page)).toEqual(retired);
     expect(retired.renderers.every(item=>item.disposed&&item.disposeCalls===1)).toBe(true);
     expect(retired.models.every(item=>item.disposed&&item.disposeCalls===1)).toBe(true);result.observations.retired=retired;
