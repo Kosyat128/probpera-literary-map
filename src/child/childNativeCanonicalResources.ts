@@ -259,7 +259,11 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         } else scene = entity && sceneId ? await scenes.open(entity, sceneId) : null;
         if (!scene || !current()) return false; narrowDeadline(start + scene.remainingLifetimeMs);
         const engine = scene.modelPackage?.engineComposition;
-        if (engine && admission && !await awaitRenderer(admission, ticket, deadline)) return false;
+        // The canonical consumer also renders legacy scenes. Its attached
+        // environment must finish leaving inspection before a restore starts.
+        // Receiver-only legacy and older renderers without an environment keep
+        // their existing admission contract; engine scenes require one.
+        if (admission && (engine || (renderer && environment)) && !await awaitRenderer(admission, ticket, deadline)) return false;
         // Attachment supplies the actual tier. No native resources have been
         // acquired, so this is the first admission, not a retry/lease renewal.
         if (admission && !retry) requestedTier = tier;

@@ -79,7 +79,12 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
   };
 }) {
   const { language } = useInterfaceLanguage();
-  const [tab, setTab] = useState<"stand" | "background">("stand");
+  const [lastTab, setLastTab] = useState<"stand" | "background">("stand");
+  // The open owner wins over the remembered tab, including public Menu/Booky
+  // actions. Keep the last local choice only when neither view is open (or
+  // when legacy independent owners both report open).
+  const tab = snapshot.isOpen !== backgroundSnapshot.isOpen
+    ? snapshot.isOpen ? "stand" : "background" : lastTab;
   const isStand = tab === "stand";
   const current = isStand ? snapshot : backgroundSnapshot;
   const copy = isStand ? planetStandCopy.locales[language] : planetBackgroundCopy.locales[language];
@@ -123,7 +128,7 @@ export default function PlanetStandControls({ controller, snapshot, backgroundCo
   const switchTab = (next: "stand" | "background") => {
     if (next === tab) return;
     // Both tabs edit the same draft. Closing the panel owns whole-draft rollback.
-    if ((next === "stand" ? controller : backgroundController).open()) setTab(next);
+    if ((next === "stand" ? controller : backgroundController).open()) setLastTab(next);
   };
   return <div className="planet-stand-controls" data-planet-stand-controls="" data-stand-inspecting={inspecting ? "true" : undefined}>
     <button type="button" className="planet-stand-controls__toggle" data-planet-stand-toggle=""

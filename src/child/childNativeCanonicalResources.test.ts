@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createChildCanonicalResources } from "./childNativeCanonicalResources";
+import { createChildCanonicalResources, type ChildCanonicalBundle } from "./childNativeCanonicalResources";
 import type { ChildNativeAppController } from "./childNativeAppBridge";
 import { childNativeAppearanceFromScene, type ChildNativeAppearanceRestore, type ChildNativeProfileAppearance } from "./childNativeAppearance";
 import { decodeChildNativeScene, type ChildNativeSceneRecipient, type ChildNativeScene, type ChildNativeSceneSlot } from "./childNativeScene";
@@ -53,6 +53,39 @@ function fixture(resourceLifetimeMs=4000,stallImageLoad=false) {
 }
 afterEach(()=>{vi.unstubAllGlobals();vi.useRealTimers();});
 describe("actual decoder and canonical texture ownership (synthetic native seam only)",()=>{
+  it("joins the attached legacy renderer inspection exit before its one original restoration",async()=>{
+    const f=fixture(),scene={...f.scene,remainingLifetimeMs:1200};f.savedChoice(scene);const before=f.saved();
+    f.scenes.restore.mockResolvedValueOnce({...before,status:"restored",scene});
+    let exploring=true;const commit=vi.fn();
+    const stage=vi.fn(async(bundle:ChildCanonicalBundle)=>{
+      expect(bundle.preparation!.absoluteDeadline).toBe(1200);return {commit,rollback(){}};
+    });
+    f.resources.attachRenderer!("balanced",stage,()=>({editionId:"synthetic-edition",platform:"web",exploring,visible:true,reducedMotion:false}));
+    const pending=f.resources.restore!();await vi.waitFor(()=>expect(f.scenes.restore).toHaveBeenCalledOnce());
+    expect(f.scenes.acquire).not.toHaveBeenCalled();expect(stage).not.toHaveBeenCalled();expect(f.scenes.remember).not.toHaveBeenCalled();
+    f.at(500);exploring=false;f.resources.refreshEnvironment!();expect(await pending).toBe(true);
+    expect(f.scenes.restore).toHaveBeenCalledExactlyOnceWith(before);expect(f.scenes.open).not.toHaveBeenCalled();
+    expect(f.scenes.acquire.mock.calls.map(call=>call[1].slotId)).toEqual(["skin","stand","background"]);
+    expect(f.scenes.remember).toHaveBeenCalledExactlyOnceWith(scene,before.revision);expect(commit).toHaveBeenCalledOnce();
+    expect(f.saved().revision).toBe(before.revision+1);expect(f.resources.isCurrent()).toBe(true);await f.resources.dispose();
+  });
+  it.each(["cancel","expiry"] as const)("%s while an attached legacy renderer leaves inspection cannot acquire or replay later",async reason=>{
+    vi.useFakeTimers({toFake:["setTimeout","clearTimeout"]});
+    const f=fixture(),scene={...f.scene,remainingLifetimeMs:1200};f.savedChoice(scene);const before=f.saved();
+    f.scenes.restore.mockResolvedValueOnce({...before,status:"restored",scene});
+    let exploring=true;const stage=vi.fn(async()=>({commit(){},rollback(){}}));
+    f.resources.attachRenderer!("balanced",stage,()=>({editionId:"synthetic-edition",platform:"web",exploring,visible:true,reducedMotion:false}));
+    const pending=f.resources.restore!();for(let n=0;n<30;n++)await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce();expect(f.scenes.acquire).not.toHaveBeenCalled();
+    if(reason==="cancel")expect(await f.resources.cancelAndWait()).toBe(true);
+    else{f.at(1200);await vi.advanceTimersByTimeAsync(1200);}
+    expect(await pending).toBe(false);await f.resources.join();
+    expect(f.scenes.release).toHaveBeenCalledExactlyOnceWith(scene.sceneToken,scene);
+    exploring=false;f.resources.refreshEnvironment!();await Promise.resolve();
+    expect(f.scenes.restore).toHaveBeenCalledOnce();expect(f.scenes.open).not.toHaveBeenCalled();
+    expect(f.scenes.acquire).not.toHaveBeenCalled();expect(stage).not.toHaveBeenCalled();expect(f.scenes.remember).not.toHaveBeenCalled();
+    expect(f.saved()).toBe(before);await f.resources.dispose();
+  });
   it("never calls a renderless selection a visible preview",async()=>{
     const f=fixture();expect(await f.resources.preview(owner,"fixture")).toBe(false);
     expect(f.scenes.open).not.toHaveBeenCalled();expect(f.scenes.remember).not.toHaveBeenCalled();
