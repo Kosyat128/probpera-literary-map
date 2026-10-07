@@ -32,9 +32,46 @@ test.beforeAll(async () => {
     import{parseBookyPreference}from'./src/host/planetMascotPreference';
     import{bookyReactionDuration}from'./src/host/bookyAnimation';
     import{createAndroidPlatformAdapter}from'./src/platform/adapters/android/AndroidPlatformAdapter';
+    import{CHILD_NATIVE_LOCAL_POLICY_VERSION,CHILD_NATIVE_LOCAL_POLICY_CHECKSUM}from'./src/child/childNativeAppBridge';
     const handles=[];let active=true;
     const subscribe=async(event,listener)=>{const handle={event,listener,removed:false,async remove(){handle.removed=true}};handles.push(handle);return handle};
-    const bindings={core:{getPlatform:()=> 'android',isNativePlatform:()=>true,isPluginAvailable:()=>true},
+    // Controlled LOCAL2 unenrolled/adult DTOs only; no native PIN/storage/rights
+    // authority or child access. The actual adapter/controller owns admission,
+    // presentation barriers, the real clock, expiry and lifecycle retirement.
+    let childGeneration=0,childContext=null,childExpiresAt=0,retiredChildToken=null;
+    const childRequest=input=>{
+      if(input?.version!==2||typeof input.requestId!=='string'||!/^[a-f0-9]{32}$/.test(input.requestId))throw Error('Invalid controlled native request');
+      return input.requestId;
+    };
+    const childReply=input=>{
+      const requestId=childRequest(input);
+      if(!childContext||performance.now()>=childExpiresAt)throw Error('Controlled adult context unavailable');
+      return{version:2,requestId,status:'unenrolled',reason:null,profiles:[],
+        context:{...childContext,remainingLifetimeMs:Math.ceil(childExpiresAt-performance.now())}};
+    };
+    const denyChild=async()=>{throw Error('Child and PIN operations are unavailable in this adult source fixture')};
+    const child={
+      bootstrap:async input=>{
+        childRequest(input);const generation=++childGeneration;
+        childContext={token:generation.toString(16).padStart(32,'0'),generation,revision:generation+1,
+          selectionRevision:generation+1,profileRevision:generation+1,policyVersion:CHILD_NATIVE_LOCAL_POLICY_VERSION,
+          policyChecksum:CHILD_NATIVE_LOCAL_POLICY_CHECKSUM,mode:'adult',profileId:null,locale:'ru',package:null,home:null};
+        childExpiresAt=performance.now()+60000;return childReply(input);
+      },
+      readContext:async input=>{
+        if(input.contextToken!==childContext?.token)throw Error('Controlled adult context mismatch');
+        return childReply(input);
+      },
+      retire:async input=>{
+        const requestId=childRequest(input);
+        if(input.contextToken!==null&&input.contextToken!==childContext?.token&&input.contextToken!==retiredChildToken)throw Error('Controlled retirement context mismatch');
+        retiredChildToken=childContext?.token??retiredChildToken;childContext=null;childExpiresAt=0;
+        return{version:2,requestId,status:'retired',contextToken:input.contextToken};
+      },
+      perform:denyChild,readEntity:denyChild,search:denyChild,readCollection:denyChild,writeCollection:denyChild,
+      addListener:async(event,listener)=>{if(event!=='invalidated')throw Error('Invalid controlled native event');return subscribe(event,listener)},
+    };
+    const bindings={child,core:{getPlatform:()=> 'android',isNativePlatform:()=>true,isPluginAvailable:()=>true},
       app:{getAppLanguage:async()=>({value:'ru-RU'}),getState:async()=>({isActive:active}),getLaunchUrl:async()=>undefined,addListener:subscribe},
       network:{getStatus:async()=>({connected:true,connectionType:'wifi'}),addListener:subscribe},
       preferences:{get:async({key})=>({value:await window.__osPreference('get',key)}),
@@ -145,12 +182,17 @@ test.beforeAll(async () => {
         for(let i=0;i<2;i++){root.invalidate();await new Promise(requestAnimationFrame)}return window.__bookyLiveFixture.sample();},
     };
     createAndroidPlatformAdapter({bindings,channel:'dev'}).then(host=>{
-      const actualDownloads=host.services.downloads;
-      const observed=Object.freeze(Object.fromEntries(Object.entries(actualDownloads).map(([name,value])=>[name,
-        typeof value!=='function'?value:(...args)=>{if(!['subscribe','getSnapshot','getInspection','dispose'].includes(name))downloadCalls.push(name);
-          return value.apply(actualDownloads,args)}])));
-      return mountHostApp({...host,services:Object.freeze({...host.services,downloads:observed})});
-    }).catch(error=>{window.__bookyLiveFixtureError=error.message});
+      // Adult recipients are created only after the actual bootstrap owner admits
+      // an unenrolled/adult context; initial sealed services retain childApp.
+      const createAdultServices=async()=>{
+        const adult=await host.createAdultServices(),actualDownloads=adult.downloads;
+        const observed=Object.freeze(Object.fromEntries(Object.entries(actualDownloads).map(([name,value])=>[name,
+          typeof value!=='function'?value:(...args)=>{if(!['subscribe','getSnapshot','getInspection','dispose'].includes(name))downloadCalls.push(name);
+            return value.apply(actualDownloads,args)}])));
+        return Object.freeze({...adult,downloads:observed});
+      };
+      return mountHostApp({...host,createAdultServices});
+    }).catch(error=>{window.__bookyLiveFixtureError=error.stack??error.message});
   ` }, bundle: true, write: false, metafile: true, outdir: output, entryNames: 'booky-live-character', assetNames: 'assets/[name]-[hash]',
     publicPath: '/fixture/', format: 'iife', platform: 'browser', target: 'es2020', jsx: 'automatic', logLevel: 'silent',
     define: { 'process.env.NODE_ENV': '"development"', 'import.meta.env': JSON.stringify({ BASE_URL: '/', DEV: false, PROD: true,
