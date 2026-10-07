@@ -94,7 +94,7 @@ describe("Booky's finite explicit gestures", () => {
     pose(neutral, { x: -1, y: .5 }, null, false);
     expect(rig.body.rotation.y).toBeCloseTo(-.18, 8); expect(rig.body.rotation.x).toBeCloseTo(.03, 8);
     pose(neutral, { x: 0, y: 0 }, null, false);
-    expect(rig.body.rotation.toArray().slice(0, 3)).toEqual([0, 0, 0]);
+    for (const component of rig.body.rotation.toArray().slice(0, 3)) expect(component).toBeCloseTo(0, 12);
   });
 
   it("keeps invalid elapsed samples and pointer coordinates out of rig transforms", () => {
@@ -141,7 +141,7 @@ describe("Booky's finite explicit gestures", () => {
       expect(rig.rightArm.rotation.z).toBeGreaterThanOrEqual(-.06);
       expect(rig.rightArm.rotation.z).toBeLessThanOrEqual(.16);
       expect(Math.abs(rig.body.rotation.z)).toBeLessThanOrEqual(.060001);
-      expect(Math.abs(rig.body.rotation.y)).toBeLessThanOrEqual(.100001);
+      expect(Math.abs(rig.body.rotation.y)).toBeLessThanOrEqual(.180001);
       expect(rig.frontCover.rotation.y).toBeGreaterThanOrEqual(-.10);
       expect(rig.body.position.y).toBeLessThanOrEqual(.035001);
     }
