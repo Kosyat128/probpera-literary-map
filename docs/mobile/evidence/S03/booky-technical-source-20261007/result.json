@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "kind": "booky-current-technical-source-checkpoint",
+  "stageId": "S03",
+  "criterionId": "S03.acceptance",
+  "status": "IN_PROGRESS_ART_NOT_APPROVED",
+  "sourceAdmissionOnly": true,
+  "technicalReviewAccepted": true,
+  "artApprovalStatus": "NOT_APPROVED",
+  "identity": {
+    "sourceCommit": "cf6b0c821a3199e5971f5673be98559e6a5e92bd",
+    "repositoryHeadAtQA": "cf6b0c821a3199e5971f5673be98559e6a5e92bd",
+    "sourceFingerprint": "5f2f9283e62364cd0f05ad955516a5fd41c666d043ac3ff80ce2652e797a55cb",
+    "sourceRows": 1910,
+    "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+    "toolsFingerprint": "d3f1ffaff66191d5b076747da99323d0d4d25da4c46c94aad0676343b36f5208"
+  },
+  "integratedPaths": [
+    {
+      "path": "src/host/bookyModel.ts",
+      "sha256": "64011b9e8ce464c1044b361986a58416db08c6a782ec43de92a22f958e49633d",
+      "bytes": 74894
+    },
+    {
+      "path": "src/host/bookyGloveGeometry.ts",
+      "sha256": "3f9517711337ea69515ef311bc065a7f6bf35a253292067110b4dd5db2ae982c",
+      "bytes": 18950
+    },
+    {
+      "path": "src/host/bookyModel.test.ts",
+      "sha256": "dde02abd44dccc449cc8e97f46138a8f1ec4efb1dad7bfffefa0cebddd623c95",
+      "bytes": 27831
+    }
+  ],
+  "protectedSource": {
+    "rows": 1907,
+    "unchanged": true,
+    "fingerprint": "78993d0e3624e34d150da8464cc2822505120e792e29669da28c0f37f231a266",
+    "animationTestUnchanged": true
+  },
+  "actualLocalQA": {
+    "pass": true,
+    "scope": "ONE_TSC_AND_220_SOURCE_CASES_IN_EXACTLY_10_FILES",
+    "beforeAfterUnchanged": true,
+    "tsc": {
+      "pid": 24464,
+      "actualProcessVersion": "v24.21.0",
+      "naturalExitCode": 0
+    },
+    "vitest": {
+      "pid": 2884,
+      "actualProcessVersion": "v24.21.0",
+      "naturalExitCode": 0,
+      "cases": 220,
+      "passed": 220,
+      "failed": 0,
+      "pending": 0,
+      "todo": 0,
+      "sourceFiles": 10,
+      "excluded": "docs/**"
+    }
+  },
+  "isolatedCPU": {
+    "pid": 20124,
+    "actualProcessVersion": "v24.21.0",
+    "naturalExitCode": 0,
+    "elapsedSeconds": 4.1612133,
+    "checks": 22,
+    "passed": 22,
+    "failed": 0,
+    "strictOriginalRows": 54,
+    "clearanceGreaterThanPx": 1,
+    "minClearancePx": 1.3363602782100972,
+    "selfShellIntersections": 0,
+    "triangles": 49614,
+    "meshes": 40
+  },
+  "isolatedGPU": {
+    "pid": 13824,
+    "actualProcessVersion": "v24.21.0",
+    "naturalExitCode": 0,
+    "elapsedSeconds": 6.3209999,
+    "glError": 0,
+    "shaderErrors": [],
+    "errors": [],
+    "readPixelsStallWarnings": 1,
+    "comparisonCaptured": true,
+    "samePNGDirectlyReviewed": true,
+    "artApproved": false,
+    "roomEnvironmentPresent": true,
+    "lensAppearanceCause": "POSSIBLE_FRESNEL_ALPHA_UNDERWEIGHTING_INFERENCE_ONLY"
+  },
+  "retainedOldFailure": {
+    "sourceCommit": "9e727d8de0a01fcf031aa8f8735e181c53cedb6a",
+    "tscNaturalExitCode": 2,
+    "vitestNaturalExitCode": 1,
+    "actualCases": 230,
+    "actualFiles": 11,
+    "passed": 225,
+    "failed": 5,
+    "sourceOnlyCases": 220,
+    "sourceOnlyPassed": 215,
+    "sourceOnlyFailed": 5,
+    "accidentalHistoricalDocsCases": 10,
+    "logsPreserved": true,
+    "older226Passed4FailedRecordsAlsoUnchanged": true,
+    "correction": "Only docs/** selector exclusion; no deleted tests, thresholds or weakened assertions."
+  },
+  "checkpointScope": {
+    "existingDocuments": 4,
+    "newS03EvidenceResults": 1,
+    "stageStatusesChanged": false,
+    "criterionStatusesChanged": false,
+    "ownerInputsChanged": false,
+    "sevenKnownOwnerInputsPreserved": true,
+    "fiveRUENReviewsPreserved": true,
+    "fourOld3c79Conditions": "NOT_RECHECKED",
+    "pspSelection": "UNSELECTED",
+    "s03OpenGates": 11,
+    "s03Acceptance": "IN_PROGRESS",
+    "s16UnresolvedCriteria": 36,
+    "requirementsAndStageChecks": "INHERITED_UNCHANGED_INPUTS_NOT_RERUN"
+  },
+  "nextAction": "Continue the active Astra author and parallel Astra source-construction review outside R toward the original preferred Booky PNG. Retain the genuine nose/brow improvements from the already tested reference-sculpt-optics-a1 proposal (model 5ae3cc059e795d927e5944be12917375cf251365f3427826a52c210dfe0860f4, glove 5f0ca7b38b96204dbaa4b94498684e792006b93342f2c52ce833825f1d9d4b18), but do not integrate that whole proposal: its actual comparison 7858bbed remains NOT_APPROVED because the open hand is a paddle, the grip has fused strips, irises are washed pale lavender and the lens remains weak. Build genuinely three-dimensional rounded distinct digits, palm and thumb; restore deep purple irises and use the existing stock physical material/light response for lens specular reflections. Necessary hand-generator construction changes within the existing owners may replace former internal byte-identity guards, while preserving actual motion, wrist/shaft contact, tangent continuity, manifold/self-intersection/ray checks, all original 54 strict >1px clearance rows, 50k/resource/disposal caps, camera, lights, rig, one canonical globe, animations and RU/EN. No cosmetic coefficient loops or further integration/TSC/Vitest on unchanged R. The upcoming coherent anatomical refactor has unknown future pins, NOT_RUN and NOT_INTEGRATED; these labels do not describe the already CPU/GPU-tested rejected 5ae3/5f0c proposal. Current admitted R source remains cf6b0c821a3199e5971f5673be98559e6a5e92bd with one actual local TSC and all 220 source cases in exactly 10 files passed; its e1094cec art comparison remains NOT_APPROVED. Preserve every old failure, preferred static PNG and all existing owner/acceptance gates. After an actually reviewed source correction, require its genuine safety preflight, root integration and current focused QA before final-source PWA/offline/native builds and remaining original-plan acceptance. Active work continues; no stage, criterion, installed-native or release acceptance is granted by this checkpoint.",
+  "futureAstraSource": {
+    "status": "ACTIVE_COHERENT_ANATOMICAL_REFACTOR_SOURCE_ONLY_OUTSIDE_R",
+    "pinsKnown": false,
+    "run": false,
+    "integrated": false,
+    "passClaim": false,
+    "distinctFromAlreadyTestedRejectedSculptProposal": true
+  },
+  "preferredStaticPNGPreserved": true,
+  "canonicalGlobePreserved": true,
+  "animationsAndRUENPreserved": true,
+  "actualFullAppQA": false,
+  "currentFinalSourceBuilds": false,
+  "currentPWAOfflineAcceptance": false,
+  "installedNativeAcceptance": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "proofs": {
+    "sourceInputs": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\finish-detail-integration-a1\\inputs-after-integration.json",
+      "sha256": "103fbb14e39f7608d0d60ec2c6671acc40130b20dc04fb392b6efd619e59cccc",
+      "bytes": 294723
+    },
+    "integration": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\finish-detail-integration-a1\\result.json",
+      "sha256": "9fb7434e35454a67b09fe6ae7da864921c811338e9157d15d28902bf04c636e0",
+      "bytes": 15081
+    },
+    "technicalSourceReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\finish-detail-integration-a1\\final-reviewed-source.json",
+      "sha256": "96c61f999510d22059a781f73023c8e95740e94183f55bc1506aa00693052481",
+      "bytes": 3153
+    },
+    "localQA": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\final-local-qa\\booky-finish-detail-integrated-a1\\result.json",
+      "sha256": "29d1489feb8c9c0df33c05505080581743432ccf7105d82ea7a41fccd45e4285",
+      "bytes": 14824
+    },
+    "tscTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\final-local-qa\\booky-finish-detail-integrated-a1\\tsc\\terminal.json",
+      "sha256": "2991fb30567dfcbfde7ec36c31896501f345d2e4682d560173fb97673c140f52",
+      "bytes": 3085
+    },
+    "vitestTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\final-local-qa\\booky-finish-detail-integrated-a1\\source220\\terminal.json",
+      "sha256": "1b5d1b317471756ace80ed9f21242f775d9214ad95a328da08c4d47613af66ed",
+      "bytes": 3809
+    },
+    "inheritedRequirementsAndStage": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\finish-detail-integration-a1\\inherited-required-checks.json",
+      "sha256": "d11c37a8823373789b750481027a9d7d61756ae1bc240e2ca904a02007530454",
+      "bytes": 893
+    },
+    "oldFailedQA": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\final-local-qa\\booky-forms-integrated-a1\\result.json",
+      "sha256": "dd8383dc996157ce4da5a27465d7bb4384936972da1b34dad86a08dfdb2cf862",
+      "bytes": 13452
+    },
+    "cpuTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-finish-detail-a1\\cpu-preflight-a1.terminal.json",
+      "sha256": "e0842fa1aec6c90c87c1a47f652c7cbfa54ccb338ff1f9607a24b9bdc2d7c7f5",
+      "bytes": 5405
+    },
+    "gpuTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-finish-detail-a1\\render-diagnostic-a1.terminal.json",
+      "sha256": "bcc7bf0ddb95cf9496866f4fc31fd9d1ddbd653d6abe477c4dd2f1daa981da9a",
+      "bytes": 5383
+    },
+    "comparisonResult": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-finish-detail-a1\\base-view-diagnostic\\result.json",
+      "sha256": "ff56d747c473baf44485afd0dd342f70276dba07ffa9ed77c8352994f24f2cef",
+      "bytes": 4458
+    },
+    "comparisonPNG": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-finish-detail-a1\\base-view-diagnostic\\reference-vs-model.png",
+      "sha256": "e1094cec92aeb4f8e4f292005ca58f9d890222299d39b7285e6b0c7c519721ee",
+      "bytes": 474937
+    },
+    "independentArtReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-finish-detail-a1\\independent-admission-a1.result.json",
+      "sha256": "acaf6e8b818a58fc463e5bdf35a240ad5da1d67ac8c078799f078358aaf2f854",
+      "bytes": 20729
+    },
+    "sculptSourceGate": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-sculpt-optics-a1\\independent-source-gate-a1.json",
+      "sha256": "b18d4d3e8dfcd0dd0efa4e3488c196b657e59d0a7ec4a7d53043ced951cc9787",
+      "bytes": 2690
+    },
+    "sculptCpuTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-sculpt-optics-a1\\cpu-preflight-a1.terminal.json",
+      "sha256": "961bb4278d0a786fc7db8c6d7c29d5e6f6191c1fee860fd7e2b6c6efcd2aa93a",
+      "bytes": 5405
+    },
+    "sculptGpuTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-sculpt-optics-a1\\render-diagnostic-a1.terminal.json",
+      "sha256": "9f4fecc58413dc770270fb4766b7dc70cb658d168f382cd99483b52dd3b8d83e",
+      "bytes": 5383
+    },
+    "sculptComparisonResult": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-sculpt-optics-a1\\base-view-diagnostic\\result.json",
+      "sha256": "cf8487a53e400a6b08995b259928e9ee32a86b8fcfaf571386674784f5e37e42",
+      "bytes": 4525
+    },
+    "sculptComparisonPNG": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-sculpt-optics-a1\\base-view-diagnostic\\reference-vs-model.png",
+      "sha256": "7858bbedcae4844159b1051fd96cd62f379d30fccbc772150827479160e88aec",
+      "bytes": 475339
+    },
+    "sculptIndependentReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\reference-sculpt-optics-a1\\independent-admission-a1.result.json",
+      "sha256": "1eec974c274e5446566761de9f94512d50a44b4918c9dcd813c160abfcf13e0d",
+      "bytes": 23188
+    }
+  },
+  "checkpointPreparedAt": "2026-10-07T11:03:51.763Z",
+  "testedRejectedSculptProposal": {
+    "candidate": "reference-sculpt-optics-a1",
+    "integrated": false,
+    "artApprovalStatus": "NOT_APPROVED",
+    "rootDirectSamePNGReview": true,
+    "candidateSourcePins": [
+      {
+        "path": "src/host/bookyModel.ts",
+        "sha256": "5ae3cc059e795d927e5944be12917375cf251365f3427826a52c210dfe0860f4",
+        "bytes": 76775
+      },
+      {
+        "path": "src/host/bookyGloveGeometry.ts",
+        "sha256": "5f0ca7b38b96204dbaa4b94498684e792006b93342f2c52ce833825f1d9d4b18",
+        "bytes": 20207
+      },
+      {
+        "path": "src/host/bookyModel.test.ts",
+        "sha256": "dde02abd44dccc449cc8e97f46138a8f1ec4efb1dad7bfffefa0cebddd623c95",
+        "bytes": 27831
+      },
+      {
+        "path": "cpu-preflight-a1.input.cjs",
+        "sha256": "eeec184d7b48fe5d8a9dc17c42cd957cca013987b606927df90f9619f8694656",
+        "bytes": 34690
+      }
+    ],
+    "actualCPU": {
+      "pid": 21700,
+      "actualProcessVersion": "v24.21.0",
+      "naturalExitCode": 0,
+      "checks": 22,
+      "passed": 22,
+      "failed": 0,
+      "strictOriginalRows": 54,
+      "clearanceGreaterThanPx": 1,
+      "minClearancePx": 1.34030736386927,
+      "selfShellIntersections": 0,
+      "triangles": 49646
+    },
+    "actualGPU": {
+      "pid": 25232,
+      "actualProcessVersion": "v24.21.0",
+      "naturalExitCode": 0,
+      "glError": 0,
+      "errors": [],
+      "comparisonPNG": "7858bbedcae4844159b1051fd96cd62f379d30fccbc772150827479160e88aec",
+      "PNGBytes": 475339
+    },
+    "genuineImprovementsToKeep": [
+      "nose",
+      "brows"
+    ],
+    "rejectionFindings": [
+      "open hand paddle",
+      "right grip fused strips",
+      "washed pale lavender irises",
+      "weak lens reflections"
+    ],
+    "localProductQAForProposal": false,
+    "wholeProposalIntegrationAdmitted": false,
+    "noRuntimeNotRunMislabel": true
+  }
+}
