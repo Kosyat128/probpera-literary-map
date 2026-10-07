@@ -258,6 +258,59 @@ describe("engine transaction through current synthetic native seam; no rights/de
     expect(f.events.indexOf("render-rollback:" + candidate.scene.sceneId)).toBeLessThan(f.events.indexOf("native-rollback:" + candidate.scene.sceneId));
     expect(f.events).not.toContain("finalize:" + candidate.scene.sceneId); await f.resources.dispose();
   });
+  it("joins a publicly hidden cancellation through native rollback acknowledgement and candidate release before navigation", async () => {
+    const f=fixture();expect(await f.resources.select(f.owner,f.raw.sceneId)).toBe(true);
+    const baseline=f.resources.getSnapshot(),saved=f.saved();f.setVersion(2);
+    expect(await f.resources.preview(f.owner,f.g.pack.packageId+".v2")).toBe(true);
+    const revision=f.resources.getSnapshot().preview!.revision,candidate=f.current()!;
+    const remember=f.scenes.remember.getMockImplementation()!,rollback=f.scenes.rollback.getMockImplementation()!,release=f.scenes.release.getMockImplementation()!;
+    let acknowledgeRemember!:()=>void,acknowledgeRollback!:()=>void,acknowledgeRelease!:()=>void,written!:()=>void;
+    const remembered=new Promise<void>(resolve=>{acknowledgeRemember=resolve;}),rolledBack=new Promise<void>(resolve=>{acknowledgeRollback=resolve;}),
+      released=new Promise<void>(resolve=>{acknowledgeRelease=resolve;}),committed=new Promise<void>(resolve=>{written=resolve;});
+    f.scenes.remember.mockImplementationOnce(async(scene,expected)=>{
+      const reply=await remember(scene,expected);written();await remembered;return reply;
+    });
+    f.scenes.rollback.mockImplementationOnce(async(scene,expected)=>{
+      const reply=await rollback(scene,expected);await rolledBack;f.events.push("rollback-ack");return reply;
+    });
+    f.scenes.release.mockImplementationOnce(async token=>{
+      const reply=await release(token);await released;f.events.push("candidate-release-ack");return reply;
+    });
+    const applying=f.resources.applyPreview(revision);await committed;
+    expect(f.saved()).toMatchObject({revision:2,selection:{sceneId:candidate.scene.sceneId}});
+    const cancelling=f.resources.cancelPreview(revision);expect(f.resources.getSnapshot().preview).toBeNull();
+    let settled=false;const leaving=f.resources.cancelAndWait().then(value=>{settled=true;return value;});
+    await Promise.resolve();await Promise.resolve();expect(settled).toBe(false);
+    expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(baseline.textures!.skin.image).not.toBeNull();
+    acknowledgeRemember();await vi.waitFor(()=>expect(f.scenes.rollback).toHaveBeenCalledOnce());expect(settled).toBe(false);
+    expect(f.scenes.release).not.toHaveBeenCalledWith(candidate.scene.sceneToken);
+    acknowledgeRollback();await vi.waitFor(()=>expect(f.scenes.release).toHaveBeenCalledWith(candidate.scene.sceneToken));expect(settled).toBe(false);
+    acknowledgeRelease();expect(await applying).toBe(false);await cancelling;expect(await leaving).toBe(true);
+    expect(f.saved()).toEqual({...saved,revision:3});expect(f.current()?.textures).toBe(baseline.textures);
+    expect(candidate.textures.skin.image).toBeNull();expect(baseline.textures!.skin.image).not.toBeNull();
+    expect(f.scenes.release).not.toHaveBeenCalledWith(baseline.scene!.sceneToken);
+    expect(f.events).not.toContain("finalize:"+candidate.scene.sceneId);expect(f.controller.suspend).not.toHaveBeenCalled();
+    // The existing route may clear and freshly read only after this grant.
+    f.resources.clear();await f.resources.join();expect(await f.scenes.readSelection()).toEqual({...saved,revision:3});
+    expect(f.events.indexOf("rollback-ack")).toBeLessThan(f.events.indexOf("candidate-release-ack"));
+    expect(f.events.indexOf("candidate-release-ack")).toBeLessThan(f.events.lastIndexOf("read:3"));await f.resources.dispose();
+  });
+  it("refuses an old navigation grant when cancellation publication synchronously starts a new preview", async () => {
+    const f=fixture();expect(await f.resources.select(f.owner,f.raw.sceneId)).toBe(true);
+    const baseline=f.resources.getSnapshot(),saved=f.saved();f.setVersion(2);
+    expect(await f.resources.preview(f.owner,f.g.pack.packageId+".v2")).toBe(true);const oldCandidate=f.current()!;
+    let armed=true,replacement:Promise<boolean>|null=null;
+    const stop=f.resources.subscribe(()=>{
+      if(armed&&!f.resources.getSnapshot().preview){armed=false;f.setVersion(3);replacement=f.resources.preview(f.owner,f.g.pack.packageId+".v3");}
+    });
+    const leaving=f.resources.cancelAndWait();expect(await leaving).toBe(false);stop();expect(await replacement).toBe(true);
+    const current=f.resources.getSnapshot().preview!;
+    expect(current).toMatchObject({phase:"ready",scene:{sceneId:f.g.pack.packageId+".v3"}});
+    expect(f.current()?.scene.sceneToken).toBe(current.scene!.sceneToken);expect(f.current()?.textures.skin.image).not.toBeNull();
+    expect(oldCandidate.textures.skin.image).toBeNull();expect(f.resources.getSnapshot().textures).toBe(baseline.textures);
+    expect(f.saved()).toBe(saved);expect(f.scenes.remember).toHaveBeenCalledOnce();expect(f.controller.suspend).not.toHaveBeenCalled();
+    expect(await f.resources.cancelPreview(current.revision)).toBe(true);await f.resources.dispose();
+  });
   it("refuses preview without reversible rendering and refuses apply after the durable baseline changed", async () => {
     const f = fixture(); f.stage.mockImplementationOnce(async () => ({ residentBytes: 0, commit: vi.fn(), finalize: vi.fn(), rollback: vi.fn() }));
     expect(await f.resources.preview(f.owner, f.raw.sceneId)).toBe(false); expect(f.scenes.remember).not.toHaveBeenCalled();

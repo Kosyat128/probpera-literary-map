@@ -22,6 +22,11 @@
 }
 
 .planet-stand-controls button:disabled { opacity: 0.55; cursor: default; }
+/* Explore may inspect a temporary composition. Keep its editor state alive,
+   but expose one panel at a time; Escape/Finish exploring restores Apply/Cancel. */
+.literary-globe:is([data-planet-scene-inspection="scene"], [data-planet-scene-inspection="object"]) .planet-stand-controls {
+  visibility: hidden;
+}
 .planet-stand-controls button:focus-visible, .planet-stand-controls select:focus-visible {
   outline: 2px solid var(--planet-accent, #e2bb60);
   outline-offset: 3px;

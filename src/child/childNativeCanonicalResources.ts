@@ -38,6 +38,8 @@ export interface ChildCanonicalResources {
   select(owner: ChildEntityReference, sceneId: string): Promise<boolean>; restore?(): Promise<boolean>;
   preview(owner: ChildEntityReference, sceneId: string): Promise<boolean>;
   applyPreview(expectedRevision?: number): Promise<boolean>; cancelPreview(expectedRevision?: number): Promise<boolean>;
+  /** Navigation joins the private transaction even after Cancel hides its UI. */
+  cancelAndWait(): Promise<boolean>;
   attachRenderer?(tier: Common3dTierId, stage: (bundle: ChildCanonicalBundle) => Promise<ChildCanonicalRenderStage | null>, environment?: () => ChildCanonicalEnvironment): () => void;
   setTier?(tier: Common3dTierId): void; refreshEnvironment?(): void;
   attachRecipient(recipient: ChildNativeSceneRecipient): () => void; clear(): void; join(): Promise<void>; dispose(): Promise<void>; activate(): () => void;
@@ -206,9 +208,13 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
         }
         const start = now();
         if (kind === "restore") {
-          const restored = await scenes.restore(saved); if (!restored || !current()) return false;
+          const restored = await scenes.restore(saved);
+          // A cancelled read may still deliver an owned native lease. Capture
+          // it for finally cleanup before rejecting the obsolete presentation.
+          if (restored?.status === "restored") scene = restored.scene;
+          if (!restored || !current()) return false;
           if (restored.status === "absent") { if (!active) publish("empty"); committed = true; return true; }
-          if (restored.status !== "restored") return false; scene = restored.scene;
+          if (restored.status !== "restored") return false;
         } else scene = entity && sceneId ? await scenes.open(entity, sceneId) : null;
         if (!scene || !current()) return false; narrowDeadline(start + scene.remainingLifetimeMs);
         const engine = scene.modelPackage?.engineComposition, policy = engine?.tiers.find(p => p.tier === requestedTier);
@@ -440,6 +446,29 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
     // A later B likewise cannot be consumed by the older cancellation of A.
     return joined && epoch === ticket && previewRequest === null && admitted();
   }
+  async function cancelAndWait(): Promise<boolean> {
+    if (!admitted()) return false;
+    // Capture ownership before abort/publish can synchronously start a newer
+    // intent. Public preview=null does not mean its native CAS has joined.
+    const request = previewRequest, abort = pendingAbort, pending = [...workers], originalTail = tail, transports = [...cancels];
+    const originalClear = clearSequence, intent = latestIntent, ticket = ++epoch;
+    if (request) { request.cancelled = true; request.decide(false); }
+    abort?.abort();
+    for (const cancel of transports) cancel();
+    if (pendingAbort === abort) pendingAbort = null;
+    // A reentrant subscriber may own B now. Do not publish over that successor.
+    if (epoch === ticket) publish(state.phase, active, state.persistence);
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+    const joined = await Promise.race([
+      Promise.all([originalTail, ...pending, ...(request ? [request.completion] : [])]).then(() => true, () => false),
+      new Promise<false>(resolve => { timeout = setTimeout(() => resolve(false), 5000); }),
+    ]);
+    if (timeout !== undefined) clearTimeout(timeout);
+    // Timeout denies navigation, but leaves the original worker responsible
+    // for late compensation/cleanup. Only clear() may retire the baseline.
+    return joined && epoch === ticket && clearSequence === originalClear && latestIntent === intent
+      && previewRequest === null && admitted();
+  }
   function refreshEnvironment() {
     const key = environmentKey(), changed = key !== lastEnvironmentKey; lastEnvironmentKey = key;
     const held = previewRequest?.owned;
@@ -462,7 +491,7 @@ export function createChildCanonicalResources(controller: ChildNativeAppControll
       return !!active && state.phase === "ready" && valid(undefined, active.deadline) && compatible(active.bundle, !!shown);
     },
     activate() { if (disposed) throw new Error("Child resources disposed"); if (!detachOwner) detachOwner = controller.scenes?.attachRecipient(owner); return () => { clear(); detachOwner?.(); detachOwner = undefined; }; },
-    select: (entity: ChildEntityReference, id: string) => choose("select", entity, id), restore: () => choose("restore"), preview, applyPreview, cancelPreview, clear, join, refreshEnvironment,
+    select: (entity: ChildEntityReference, id: string) => choose("select", entity, id), restore: () => choose("restore"), preview, applyPreview, cancelPreview, cancelAndWait, clear, join, refreshEnvironment,
     attachRenderer(nextTier: Common3dTierId, next: (bundle: ChildCanonicalBundle) => Promise<ChildCanonicalRenderStage | null>, nextEnvironment?: () => ChildCanonicalEnvironment) {
       if (renderer) throw new Error("One original composition renderer required"); tier = nextTier; renderer = next; environment = nextEnvironment ?? null; lastEnvironmentKey = environmentKey();
       return () => { if (renderer === next) { clear(); renderer = null; environment = null; } };

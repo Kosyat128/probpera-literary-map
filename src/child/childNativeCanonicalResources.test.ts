@@ -9,19 +9,19 @@ import { webcrypto } from "node:crypto";
 const hash="a".repeat(64),owner={kind:"activity" as const,id:"home",contentChecksum:hash};
 const slot=(kind:"skin"|"stand"|"background")=>({slotId:kind,assetId:kind,entity:{kind,id:kind,contentChecksum:hash},
   mime:"image/png",checksum:hash,encodedBytes:256,altText:kind});
-function fixture() {
+function fixture(resourceLifetimeMs=4000,stallImageLoad=false) {
   let time=0;const context={token:"b".repeat(32),profileId:"native-profile"};
   let snapshot={phase:"ready",status:"child",context};
   const scene=decodeChildNativeScene({status:"opened",sceneToken:"c".repeat(32),sceneId:"fixture",owner,skin:slot("skin"),
     stand:{geometryId:"stand.base.child-book-cloud",asset:slot("stand")},background:{geometryId:"background.base.library",asset:slot("background")},
-    hotspots:[],remainingLifetimeMs:5000},owner,"fixture")!;
+    hotspots:[],remainingLifetimeMs:resourceLifetimeMs+1000},owner,"fixture")!;
   const images:ImageFixture[]=[];let hold=false;
   class ImageFixture {
     crossOrigin="";decoding="";naturalWidth=32;naturalHeight=16;
     onload:(()=>void)|null=null;onerror:(()=>void)|null=null;value="";
     release:(()=>void)|null=null;readonly decodingWork:Promise<void>;
     constructor(){images.push(this);this.decodingWork=hold?new Promise<void>(resolve=>{this.release=resolve;}):Promise.resolve();hold=false;}
-    set src(v:string){this.value=v;queueMicrotask(()=>this.onload?.());}get src(){return this.value;}
+    set src(v:string){this.value=v;if(!stallImageLoad)queueMicrotask(()=>this.onload?.());}get src(){return this.value;}
     removeAttribute(){this.value="";}decode(){return this.decodingWork;}
   }
   vi.stubGlobal("Image",ImageFixture);
@@ -41,7 +41,7 @@ function fixture() {
     }),
     list:vi.fn(async()=>[]),open:vi.fn(async():Promise<ChildNativeScene|null>=>scene),acquire:vi.fn(async(_scene:ChildNativeScene,asset:ChildNativeSceneSlot)=>({status:"available",sceneToken:scene.sceneToken,
     slotId:asset.slotId,resourceToken:"d".repeat(32),assetId:asset.assetId,entity:asset.entity,mime:asset.mime,checksum:asset.checksum,
-    encodedBytes:asset.encodedBytes,uri:"planet-child-resource://local/"+"d".repeat(32),remainingLifetimeMs:4000})),
+    encodedBytes:asset.encodedBytes,uri:"planet-child-resource://local/"+"d".repeat(32),remainingLifetimeMs:resourceLifetimeMs})),
     releaseResource:vi.fn(async()=>true),release:vi.fn(async()=>true),releaseAll:vi.fn(async()=>true),
     attachRecipient:vi.fn((r:ChildNativeSceneRecipient)=>{recipient=r;return()=>{recipient=null;};})};
   const controller={scenes,getSnapshot:()=>snapshot,suspend:vi.fn(async()=>undefined)} as unknown as ChildNativeAppController;
@@ -82,6 +82,84 @@ describe("actual decoder and canonical texture ownership (synthetic native seam 
     const f=fixture();f.hold();const work=f.resources.select(owner,"fixture");
     for(let n=0;n<12&&f.images.length===0;n++)await Promise.resolve();
     f.at(6000);f.images[0].release?.();expect(await work).toBe(false);expect(f.resources.getSnapshot().phase).toBe("unavailable");await f.resources.dispose();
+  });
+});
+
+describe("resource-owned navigation cancellation barrier",()=>{
+  it("cancels a stalled pre-onload image without decoding or waiting for its original deadline",async()=>{
+    vi.useFakeTimers({toFake:["setTimeout","clearTimeout"]});
+    const f=fixture(4000,true),selection=f.resources.select(owner,"fixture");
+    for(let n=0;n<20&&f.images.length===0;n++)await Promise.resolve();
+    expect(f.images).toHaveLength(1);expect(f.images[0].src).toMatch(/^planet-child-resource:/);
+    const decode=vi.spyOn(f.images[0],"decode"),leaving=f.resources.cancelAndWait();
+    // No timer advancement: only cancellation can settle this transport.
+    expect(await selection).toBe(false);expect(await leaving).toBe(true);
+    expect(decode).not.toHaveBeenCalled();expect(f.images[0].src).toBe("");
+    expect(f.scenes.acquire).toHaveBeenCalledOnce();expect(f.scenes.remember).not.toHaveBeenCalled();
+    expect(f.scenes.release).toHaveBeenCalledWith(f.scene.sceneToken);expect(f.controller.suspend).not.toHaveBeenCalled();
+    expect(f.resources.getSnapshot().textures).toBeNull();await f.resources.dispose();
+  });
+  it.each(["restore","select"] as const)("joins an invisible pending %s and releases its late native lease before granting navigation",async(kind)=>{
+    const f=fixture();expect(await f.resources.select(owner,"fixture")).toBe(true);
+    const baseline=f.resources.getSnapshot(),saved=f.saved(),candidate={...f.scene,sceneToken:"e".repeat(32)};
+    let deliver!:()=>void;const reply=new Promise<void>(resolve=>{deliver=resolve;});
+    if(kind==="restore")f.scenes.restore.mockImplementationOnce(async()=>{await reply;return {...saved,status:"restored" as const,scene:candidate};});
+    else f.scenes.open.mockImplementationOnce(async()=>{await reply;return candidate;});
+    const pending=kind==="restore"?f.resources.restore!():f.resources.select(owner,"fixture");
+    await vi.waitFor(()=>expect(kind==="restore"?f.scenes.restore.mock.calls.length:f.scenes.open.mock.calls.length).toBe(kind==="restore"?1:2));
+    expect(f.resources.getSnapshot().preview??null).toBeNull();
+    let settled=false;const leaving=f.resources.cancelAndWait().then(value=>{settled=true;return value;});
+    await Promise.resolve();await Promise.resolve();expect(settled).toBe(false);
+    expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(baseline.textures!.skin.image).not.toBeNull();
+    deliver();expect(await pending).toBe(false);expect(await leaving).toBe(true);
+    expect(f.scenes.release).toHaveBeenCalledWith(candidate.sceneToken);
+    expect(f.scenes.release).not.toHaveBeenCalledWith(f.scene.sceneToken);
+    expect(f.scenes.acquire).toHaveBeenCalledTimes(3);expect(f.scenes.remember).toHaveBeenCalledOnce();
+    expect(f.saved()).toBe(saved);expect(f.resources.getSnapshot().textures).toBe(baseline.textures);
+    expect(f.resources.isCurrent()).toBe(true);expect(f.controller.suspend).not.toHaveBeenCalled();await f.resources.dispose();
+  });
+  it("grants an admitted idle owner without clearing it but refuses lifecycle or context revocation before acknowledgement",async()=>{
+    const f=fixture();expect(await f.resources.cancelAndWait()).toBe(true);
+    expect(f.scenes.readSelection).not.toHaveBeenCalled();expect(f.scenes.releaseAll).not.toHaveBeenCalled();
+    expect(await f.resources.select(owner,"fixture")).toBe(true);const baseline=f.resources.getSnapshot();
+    expect(await f.resources.cancelAndWait()).toBe(true);expect(f.resources.getSnapshot().textures).toBe(baseline.textures);
+    expect(baseline.textures!.skin.image).not.toBeNull();expect(f.scenes.remember).toHaveBeenCalledOnce();
+    const oldContext=f.resources.cancelAndWait();f.replaceContext();expect(await oldContext).toBe(false);
+    f.resources.clear();await f.resources.dispose();expect(await f.resources.cancelAndWait()).toBe(false);
+
+    const stopped=fixture();stopped.hold();const decoding=stopped.resources.select(owner,"fixture");
+    await vi.waitFor(()=>expect(stopped.images).toHaveLength(1));
+    const leaving=stopped.resources.cancelAndWait();stopped.seal();stopped.images[0].release!();
+    expect(await decoding).toBe(false);expect(await leaving).toBe(false);
+    expect(stopped.resources.getSnapshot().textures).toBeNull();expect(stopped.scenes.remember).not.toHaveBeenCalled();
+    await stopped.resources.dispose();
+  });
+  it("times out navigation after five seconds without abandoning late CAS compensation or renewing the baseline lease",async()=>{
+    vi.useFakeTimers({toFake:["setTimeout","clearTimeout"]});
+    const f=fixture(12000);expect(await f.resources.select(owner,"fixture")).toBe(true);
+    const baseline=f.resources.getSnapshot(),saved=f.saved(),candidate={...f.scene,sceneToken:"e".repeat(32)};
+    f.scenes.open.mockResolvedValueOnce(candidate);
+    const remember=f.scenes.remember.getMockImplementation()!;
+    let acknowledge!:()=>void,written!:()=>void;
+    const held=new Promise<void>(resolve=>{acknowledge=resolve;}),committed=new Promise<void>(resolve=>{written=resolve;});
+    f.scenes.remember.mockImplementationOnce(async(scene,revision)=>{
+      const reply=await remember(scene,revision);written();await held;return reply;
+    });
+    const pending=f.resources.select(owner,"fixture");await committed;expect(f.saved().revision).toBe(2);
+    let settled=false;const leaving=f.resources.cancelAndWait().then(value=>{settled=true;return value;});
+    f.at(4999);await vi.advanceTimersByTimeAsync(4999);expect(settled).toBe(false);
+    f.at(5000);await vi.advanceTimersByTimeAsync(1);expect(await leaving).toBe(false);
+    expect(f.scenes.rollback).not.toHaveBeenCalled();expect(f.scenes.release).not.toHaveBeenCalledWith(candidate.sceneToken);
+    expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(baseline.textures!.skin.image).not.toBeNull();
+    expect(f.controller.suspend).not.toHaveBeenCalled();expect(f.scenes.releaseAll).not.toHaveBeenCalled();
+    acknowledge();expect(await pending).toBe(false);await f.resources.join();
+    expect(f.scenes.rollback).toHaveBeenCalledWith(candidate,2);
+    expect(f.saved()).toEqual({...saved,revision:3});expect(f.scenes.release).toHaveBeenCalledWith(candidate.sceneToken);
+    expect(f.resources.getSnapshot().textures).toBe(baseline.textures);expect(f.resources.isCurrent()).toBe(true);
+    expect(f.controller.suspend).not.toHaveBeenCalled();expect(f.scenes.open).toHaveBeenCalledTimes(2);
+    f.at(11999);await vi.advanceTimersByTimeAsync(6999);expect(f.resources.isCurrent()).toBe(true);
+    f.at(12000);await vi.advanceTimersByTimeAsync(1);expect(f.resources.isCurrent()).toBe(false);
+    expect(baseline.textures!.skin.image).toBeNull();expect(f.scenes.releaseAll).toHaveBeenCalledOnce();await f.resources.dispose();
   });
 });
 

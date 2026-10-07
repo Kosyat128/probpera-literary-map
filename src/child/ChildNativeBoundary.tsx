@@ -249,22 +249,26 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
     return ["search-result", "recommendation", "favorite", "recent", "offline-package", "deep-link"].includes(row.reference.kind)
       && row.payload.references.length === 1 ? controller.readEntity(row.payload.references[0]) : row;
   }
-  async function leaveScene(original: typeof c, attempt: number) {
-    sceneInspection.close();
-    const preview=resources?.getSnapshot().preview;
-    if(preview&&!await resources?.cancelPreview(preview.revision))return false;
+  function navigationCurrent(original: typeof c, attempt: number) {
     return mounted.current&&!!original&&context.current===original&&sequence.current===attempt
       &&controller.getSnapshot().phase==="ready"&&controller.getSnapshot().context?.token===original.token;
   }
+  async function leaveScene(original: typeof c, attempt: number) {
+    sceneInspection.close();
+    if(resources&&!await resources.cancelAndWait())return false;
+    return navigationCurrent(original,attempt);
+  }
   async function open(ref: ChildEntityReference, back = false, onCommit?: () => void) {
     const original = context.current, attempt = ++sequence.current;
-    if(!await leaveScene(original,attempt))return;
+    if(!await leaveScene(original,attempt)||!navigationCurrent(original,attempt))return;
     setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     setLoading(true); setCollection(null); setSaved(null); setSavedRows([]); setSearchResults(null);
-    resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
+    resources?.clear();try{await resources?.join();}catch{if(navigationCurrent(original,attempt))await controller.suspend();return;}
+    if(!navigationCurrent(original,attempt))return;
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
-    if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) { setCurrent(null); setLoading(false); } return; }
-    if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
+    if(!navigationCurrent(original,attempt))return;
+    if (controller.media && !await controller.media.releaseAll()) { if (navigationCurrent(original,attempt)) { setCurrent(null); setLoading(false); } return; }
+    if(!navigationCurrent(original,attempt))return;
     let row = await resolve(ref);
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     // Record only after this explicit navigation commits its visible article.
@@ -343,12 +347,15 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   }, [controller, c, snapshot.status, resources]);
   async function search() {
     const original = context.current, attempt = ++sequence.current;
-    if(!await leaveScene(original,attempt))return;
+    if(!await leaveScene(original,attempt)||!navigationCurrent(original,attempt))return;
     setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     setCollection(null); setSaved(null); setSavedRows([]); setLoading(true);
-    resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
+    resources?.clear();try{await resources?.join();}catch{if(navigationCurrent(original,attempt))await controller.suspend();return;}
+    if(!navigationCurrent(original,attempt))return;
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
-    if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
+    if(!navigationCurrent(original,attempt))return;
+    if (controller.media && !await controller.media.releaseAll()) { if (navigationCurrent(original,attempt)) setLoading(false); return; }
+    if(!navigationCurrent(original,attempt))return;
     const result = await controller.search(query);
     if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
     setSearchResults(result);await resources?.restore?.();
@@ -356,14 +363,18 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   }
   async function showCollection(name: ChildNativeCollection) {
     const original = context.current, attempt = ++sequence.current;
-    if(!await leaveScene(original,attempt))return;
+    if(!await leaveScene(original,attempt)||!navigationCurrent(original,attempt))return;
     setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;setDiscoveryView(null);pendingCountryOpen.current=null;
     setCollection(name); setSaved(null); setSavedRows([]); setSearchResults(null); setLoading(true);
-    resources?.clear();try{await resources?.join();}catch{await controller.suspend();return;}
+    resources?.clear();try{await resources?.join();}catch{if(navigationCurrent(original,attempt))await controller.suspend();return;}
+    if(!navigationCurrent(original,attempt))return;
     if(controller.scenes&&!await controller.scenes.releaseAll())return;
-    if (controller.media && !await controller.media.releaseAll()) { if (context.current === original) setLoading(false); return; }
+    if(!navigationCurrent(original,attempt))return;
+    if (controller.media && !await controller.media.releaseAll()) { if (navigationCurrent(original,attempt)) setLoading(false); return; }
+    if(!navigationCurrent(original,attempt))return;
     const value = await controller.readCollection(name), rows: ChildNativeEntity[] = [];
     if (value) for (const ref of value.references) {
+      if(!navigationCurrent(original,attempt))return;
       const row = await controller.readEntity(ref); if (!row) break;
       rows.push(row);
     }
@@ -374,13 +385,15 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
   async function showDiscoveryPassport(view: ChildNativeDiscoveryPassportViewName) {
     if (view === "home") { if (context.current?.home) await open(context.current.home, true); return; }
     const original = context.current, attempt = ++sequence.current;
-    if(!await leaveScene(original,attempt))return;
+    if(!await leaveScene(original,attempt)||!navigationCurrent(original,attempt))return;
     setJourneyNavigation(value=>value+1);setJourneyActive(false);journeyIntent.current=null;
     pendingCountryOpen.current=null;setDiscoveryView(view);setCollection(null);setSaved(null);setSavedRows([]);setSearchResults(null);setLoading(true);
-    resources?.clear();try { await resources?.join(); } catch { await controller.suspend(); return; }
+    resources?.clear();try { await resources?.join(); } catch { if(navigationCurrent(original,attempt))await controller.suspend(); return; }
+    if(!navigationCurrent(original,attempt))return;
     if (controller.scenes && !await controller.scenes.releaseAll()) return;
+    if(!navigationCurrent(original,attempt))return;
     if (controller.media && !await controller.media.releaseAll()) return;
-    if (!mounted.current || context.current !== original || sequence.current !== attempt) return;
+    if(!navigationCurrent(original,attempt))return;
     await resources?.restore?.();
     if (mounted.current && context.current === original && sequence.current === attempt) setLoading(false);
   }
@@ -529,7 +542,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
         onRequestView={view => { void showDiscoveryPassport(view); }} onOpen={ref => { void open(ref); }}
         onStartJourney={journeyId => {
           if (context.current !== c || !childNativeJourneyId(journeyId)) return;
-          const attempt=++sequence.current;void leaveScene(c,attempt).then(joined=>{if(!joined)return;
+          const attempt=++sequence.current;void leaveScene(c,attempt).then(joined=>{if(!joined||!navigationCurrent(c,attempt))return;
             setDiscoveryView(null);journeyIntent.current={profileId:c.profileId!,journeyId};setJourneyNavigation(value=>value+1);});
         }} />
       <ChildNativeJourneyView key={c.profileId!} controller={controller} contextToken={c.token} profileId={c.profileId!}
