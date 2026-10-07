@@ -443,8 +443,11 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
 
     // Real App focus and press priority: trusted browser input, read-only rig
     // observations, no synthetic dispatch or assigned character transforms.
-    const ru=page.locator('.native-planet-app .interface-language-control button').filter({hasText:/^RU$/u});
-    const en=page.locator('.native-planet-app .interface-language-control button').filter({hasText:/^EN$/u});
+    const menuToggle=page.locator('.atlas-application-chrome [data-atlas-action="toggle-menu"]');
+    await menuToggle.click();
+    const languageControls=page.locator('[data-atlas-application-menu-panel] .interface-language-control');
+    const ru=languageControls.locator('[data-interface-language="ru"]');
+    const en=languageControls.locator('[data-interface-language="en"]');
     await expect(ru).toBeVisible();await expect(en).toBeVisible();
     const conflicting={x:bounds.x+bounds.width-8,y:bounds.y+bounds.height/2};
     const pupilPositions=value=>value.rig.pupils.map(pupil=>pupil.position);
@@ -452,7 +455,7 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       const events=[],observe=event=>{const target=event.target;
         events.push({type:event.type,isTrusted:event.isTrusted,at:performance.now(),
           pointerType:event.pointerType??null,detail:event.detail??null,
-          control:target instanceof Element?target.closest('.interface-language-control button')?.textContent?.trim()??null:null});};
+          control:target instanceof Element?target.closest('.interface-language-control button')?.getAttribute('data-interface-language')?.toUpperCase()??null:null});};
       for(const type of ['focusin','keydown','pointerdown','pointermove'])document.addEventListener(type,observe,true);
       window.__bookyPressFocusProbe={events,stop(){for(const type of ['focusin','keydown','pointerdown','pointermove'])document.removeEventListener(type,observe,true);return events;}};
     });
@@ -490,14 +493,18 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
       await expect(ru).toBeFocused();
       const beforePress=await character(page),pressBounds=await ru.boundingBox();
-      await page.mouse.click(pressBounds.x+pressBounds.width/2,pressBounds.y+pressBounds.height/2);
+      // A genuine press released outside the control avoids activating the
+      // language menu, whose normal click correctly closes it and moves focus.
+      await page.mouse.move(pressBounds.x+pressBounds.width/2,pressBounds.y+pressBounds.height/2);
+      await page.mouse.down();
       await expect(ru).toBeFocused();
       await expect.poll(async()=>JSON.stringify(pupilPositions(await character(page))))
         .not.toBe(JSON.stringify(pupilPositions(beforePress)));
       await expect(page.locator('[data-booky-canvas]')).toHaveAttribute('data-booky-animating','false');
       const pressLook=await character(page);
       expect(pupilPositions(pressLook)).not.toEqual(pupilPositions(pointerBeforeFocus));
-      await page.mouse.move(conflicting.x,conflicting.y);await twoFrames(page);
+      await page.mouse.move(conflicting.x,conflicting.y);await page.mouse.up();
+      await page.mouse.move(conflicting.x-1,conflicting.y);await twoFrames(page);
       const pressHeld=await character(page);
       const pressTiming=await page.evaluate(()=>{const events=window.__bookyPressFocusProbe.events;
         return{event:events.filter(event=>event.type==='pointerdown'&&event.control==='RU').at(-1),now:performance.now()};});
@@ -514,7 +521,8 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
       result.observations.pressFocus={actualFlowValidated:true,pointerBeforeFocus,focusLook,focusHeld,focusTiming,
         pressLook,pressHeld,pressTiming,afterPriority,trustedKeyboardFocusHeldAgainstPointer:true,
         trustedPointerPressHeldAgainstPointer:true,events:await page.evaluate(()=>window.__bookyPressFocusProbe.events)};
-    }finally{await page.evaluate(()=>window.__bookyPressFocusProbe.stop());}
+    }finally{await page.evaluate(()=>window.__bookyPressFocusProbe.stop());await page.keyboard.press('Escape');}
+    await expect(menuToggle).toHaveAttribute('aria-expanded','false');
     const origin=(await layout(page)).pet;
     await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.down();
     await page.mouse.move(bounds.x+bounds.width/2-48,bounds.y+bounds.height/2-24,{steps:4});
@@ -549,7 +557,7 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     expect(Number.parseFloat(nextPage.leaf.duration)).toBeGreaterThan(0);expect(nextPage.leaf.scrollTop).toBe(0);
     result.observations.pageTurn={before:firstPage.leaf,after:nextPage.leaf,character:await character(page)};
     await page.locator('[data-planet-mascot-back]').click();await expect(pet(page)).toHaveAttribute('data-planet-mascot-step','0');
-    await page.locator('.native-planet-app .interface-language-control button').filter({hasText:/^EN$/u}).click();
+    await menuToggle.click();await en.click();
     await expect(page.locator('html')).toHaveAttribute('lang','en');await page.setViewportSize({width:320,height:844});
     await expect(panel(page).getByRole('heading',{name:'Mr. Booky',exact:true})).toBeVisible();
     const narrow=await live(page);retained(await actual(page),baseline,false);result.observations.narrow=narrow;
