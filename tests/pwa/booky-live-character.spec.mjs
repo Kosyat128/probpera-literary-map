@@ -448,7 +448,7 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
     const languageControls=page.locator('[data-atlas-application-menu-panel] .interface-language-control');
     const ru=languageControls.locator('[data-interface-language="ru"]');
     const en=languageControls.locator('[data-interface-language="en"]');
-    await expect(ru).toBeVisible();await expect(en).toBeVisible();
+    await expect(ru).toBeVisible();await expect(en).toBeVisible();await twoFrames(page);bounds=await toggle.boundingBox();
     const conflicting={x:bounds.x+bounds.width-8,y:bounds.y+bounds.height/2};
     const pupilPositions=value=>value.rig.pupils.map(pupil=>pupil.position);
     await page.evaluate(()=>{
@@ -522,7 +522,7 @@ test('live Mr. Booky model responds to direct interaction while the canonical gl
         pressLook,pressHeld,pressTiming,afterPriority,trustedKeyboardFocusHeldAgainstPointer:true,
         trustedPointerPressHeldAgainstPointer:true,events:await page.evaluate(()=>window.__bookyPressFocusProbe.events)};
     }finally{await page.evaluate(()=>window.__bookyPressFocusProbe.stop());await page.keyboard.press('Escape');}
-    await expect(menuToggle).toHaveAttribute('aria-expanded','false');
+    await expect(menuToggle).toHaveAttribute('aria-expanded','false');await twoFrames(page);bounds=await toggle.boundingBox();
     const origin=(await layout(page)).pet;
     await page.mouse.move(bounds.x+bounds.width/2,bounds.y+bounds.height/2);await page.mouse.down();
     await page.mouse.move(bounds.x+bounds.width/2-48,bounds.y+bounds.height/2-24,{steps:4});
