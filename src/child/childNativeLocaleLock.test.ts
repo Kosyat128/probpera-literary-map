@@ -35,6 +35,10 @@ function fixture(initialLock: boolean | undefined, admitted = true) {
     }),
     retire: vi.fn(async (r: unknown) => { const q = r as { requestId: string; contextToken: string | null };
       return { version: 2, requestId: q.requestId, status: "retired", contextToken: q.contextToken }; }),
+    readEntity: vi.fn(async (_request: unknown): Promise<unknown> => null),
+    search: vi.fn(async (_request: unknown): Promise<unknown> => null),
+    readCollection: vi.fn(async (_request: unknown): Promise<unknown> => null),
+    writeCollection: vi.fn(async (_request: unknown): Promise<unknown> => null),
     addListener: vi.fn(async () => ({ remove: async () => undefined })),
   };
   const controller = createChildNativeAppController({ plugin,
