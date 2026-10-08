@@ -1,0 +1,5 @@
+.child-native-reading { min-width: 0; }
+.child-native-reading-passage { margin-block: 1rem; }
+.child-native-reading-target { white-space: pre-wrap; overflow-wrap: anywhere; }
+.child-native-reading-target:focus { outline: 2px solid currentColor; outline-offset: 4px; }
+.child-native-reading button { max-width: 100%; white-space: normal; }

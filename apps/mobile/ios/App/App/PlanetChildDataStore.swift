@@ -1,4 +1,5 @@
 import Foundation
+import CoreFoundation
 import Security
 import CryptoKit
 import Darwin
@@ -97,9 +98,10 @@ final class PlanetChildDataStore {
         var entries: [String: Stored] = [:]
         var sdkAppearance=false,appearances=[String:AppearanceEntry]()
         var sdkJourney=false,journeys=[String:JourneyEntry]()
+        var sdkReading=false,reading=[String:[String:ReadingEntry]]()
         var sdkPassport=false,passports=[String:PassportEntry](),offlineProcess: String?
         var sdkCollections=false,collectionRevisions=[String:UInt64](),tombstones=[String:UInt64](),sdkUnboundBirth: String?,sdkUnboundContent: String?
-        func wipe() { for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } };for profile in Array(passports.keys) { if var entry=passports.removeValue(forKey:profile) { entry.ledger.disposeRouteBytes() } } }
+        func wipe() {reading.removeAll();for key in Array(entries.keys) { if var stored = entries.removeValue(forKey:key) { stored.value.resetBytes(in: 0..<stored.value.count) } };for profile in Array(passports.keys) { if var entry=passports.removeValue(forKey:profile) { entry.ledger.disposeRouteBytes() } } }
         deinit { wipe() }
     }
     private let name: String, identity: String
@@ -158,7 +160,7 @@ final class PlanetChildDataStore {
         try PlanetChildDataStore.require(PlanetChildDataStore.entityKind(kind) && PlanetChildDataStore.identifier(id) && PlanetChildDataStore.checksum(hash)); return (kind, id, hash)
     }
     private static func payload(_ value: Any) throws -> [(String,String,String)] {
-        let row = try PlanetChildDataStore.object(value, keys: ["title","text","terms","references"]), title = try PlanetChildDataStore.text(row["title"]!), body = try PlanetChildDataStore.text(row["text"]!)
+        guard let base=value as? [String:Any] else{throw Failure.unavailable};let row = try PlanetChildDataStore.object(value, keys:base["readingAnchors"]==nil ? ["title","text","terms","references"]:["title","text","terms","references","readingAnchors"]), title = try PlanetChildDataStore.text(row["title"]!), body = try PlanetChildDataStore.text(row["text"]!);if let anchors=row["readingAnchors"]{_ = try PlanetChildReadingPosition.anchors(anchors,body)}
         try PlanetChildDataStore.require(!title.isEmpty && title.utf16.count <= 240 && body.utf16.count <= 32768
             && title.range(of: "[\\x00-\\x1f\\x7f]", options: .regularExpression) == nil && body.range(of: "[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]", options: .regularExpression) == nil)
         guard let terms = row["terms"] as? [Any], terms.count <= 64, let rawReferences = row["references"] as? [Any], rawReferences.count <= 64 else { throw Failure.unavailable }
@@ -235,7 +237,7 @@ final class PlanetChildDataStore {
         mutating func data(_ count: Int) throws -> Data { try PlanetChildDataStore.require(count >= 0 && count <= bytes.count-position); defer { position += count }; return Data(Array(bytes[position..<position+count])) }
         mutating func text(_ max: Int) throws -> String { let count = try number(4); try PlanetChildDataStore.require(count <= UInt64(max)); var data = try self.data(Int(count)); defer { data.resetBytes(in:0..<data.count) }; guard let value = String(data:data,encoding:.utf8) else { throw Failure.unavailable }; return value }
     }
-    private static func validateSeals(_ state: State) throws {if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.pendingMigration==nil);return };try Self.require((state.pendingMigration==nil || Self.checksum(state.pendingMigration!)) && Self.checksum(state.admissionBinding!) && (!state.seals.isEmpty || state.sdkUnboundBirth != nil || state.sdkPassport && state.entries.isEmpty && state.appearances.isEmpty && state.journeys.isEmpty && state.passports.isEmpty) && state.seals.count<=4);for (id,seal) in state.seals { try Self.require(id==seal.scope.profileId && Self.checksum(seal.contentBinding)) };if let scope=state.scope { try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) };for id in state.entries.keys { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let scope=try Self.keyScope(purpose,key:pair[1]);try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) } }
+    private static func validateSeals(_ state: State) throws {if state.admissionBinding==nil { try Self.require(state.seals.isEmpty && state.pendingMigration==nil);return };try Self.require((state.pendingMigration==nil || Self.checksum(state.pendingMigration!)) && Self.checksum(state.admissionBinding!) && (!state.seals.isEmpty || state.sdkUnboundBirth != nil || state.sdkPassport && state.entries.isEmpty && state.appearances.isEmpty && state.journeys.isEmpty && state.passports.isEmpty && state.reading.isEmpty) && state.seals.count<=4);for (id,seal) in state.seals { try Self.require(id==seal.scope.profileId && Self.checksum(seal.contentBinding)) };if let scope=state.scope { try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) };for id in state.entries.keys { let pair=id.components(separatedBy:"\n");guard pair.count==2,let purpose=Purpose(rawValue:pair[0]) else { throw Failure.unavailable };let scope=try Self.keyScope(purpose,key:pair[1]);try Self.require(state.seals[scope.profileId]?.scope.tuple==scope.tuple) } }
     private static func encode(_ state: State) throws -> Data {try validateSeals(state);
         let writer = Writer(); try writer.number(0x4c504431,bytes:4); try writer.number(state.generation,bytes:8); try writer.text(state.nonce); try writer.byte(state.scope == nil ? 0 : 1)
         if let scope = state.scope { try writer.text(scope.tuple) }; try PlanetChildDataStore.require(state.entries.count <= PlanetChildDataStore.maxSlots); try writer.number(UInt64(state.entries.count),bytes:4)
@@ -243,7 +245,7 @@ final class PlanetChildDataStore {
             let scope = try PlanetChildDataStore.keyScope(purpose,key:pieces[1]); try PlanetChildDataStore.envelope(purpose,key:pieces[1],scope:scope,bytes:slot.value); try PlanetChildDataStore.require(PlanetChildDataStore.positive(slot.revision) && slot.revision < PlanetChildDataStore.maxSafe)
             try writer.text(purpose.rawValue); try writer.text(pieces[1]); try writer.number(slot.revision,bytes:8); try writer.text(PlanetChildDataStore.digest(slot.value)); try writer.number(UInt64(slot.value.count),bytes:4); try writer.data(slot.value) }
         if let binding=state.admissionBinding { try writer.number(0x4c504133,bytes:4);try writer.text(binding);try writer.byte(state.pendingMigration==nil ? 0:1);if let pending=state.pendingMigration { try writer.text(pending) };try writer.number(UInt64(state.seals.count),bytes:4);for id in state.seals.keys.sorted() { let seal=state.seals[id]!;try writer.text(seal.scope.tuple);try writer.text(seal.contentBinding) } }
-        try encodeCollections(state,writer);try encodeAppearance(state,writer);try encodeJourney(state,writer);try encodePassport(state,writer);if let process=state.offlineProcess { try require(process.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && state.admissionBinding != nil);try writer.number(0x4c504f33,bytes:4);try writer.text(process) };return writer.result()
+        try encodeCollections(state,writer);try encodeAppearance(state,writer);try encodeJourney(state,writer);try encodePassport(state,writer);if let process=state.offlineProcess { try require(process.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && state.admissionBinding != nil);try writer.number(0x4c504f33,bytes:4);try writer.text(process) };try encodeReading(state,writer);return writer.result()
     }
     private static func decode(_ bytes: Data) throws -> State {
         let state = State(); var success = false; defer { if !success { state.wipe() } }; var reader = Reader(bytes:bytes)
@@ -254,7 +256,7 @@ final class PlanetChildDataStore {
             let revision = try reader.number(8), hash = try reader.text(64), length = try reader.number(4); try PlanetChildDataStore.require(PlanetChildDataStore.positive(revision) && revision < PlanetChildDataStore.maxSafe && PlanetChildDataStore.checksum(hash) && length > 0 && length <= UInt64(PlanetChildDataStore.maxValueBytes))
             var value = try reader.data(Int(length)); defer { value.resetBytes(in:0..<value.count) }; try PlanetChildDataStore.require(PlanetChildDataStore.digest(value) == hash); try PlanetChildDataStore.envelope(purpose,key:key,scope:scope,bytes:value)
             let id = purpose.rawValue + "\n" + key; try PlanetChildDataStore.require(state.entries[id] == nil); state.entries[id] = Stored(revision:revision,value:Data(Array(value)))
-        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };if reader.position<bytes.count { try decodeCollections(state,&reader) };if reader.position<bytes.count { try decodeAppearance(state,&reader) };if reader.position<bytes.count { try decodeJourney(state,&reader) };if reader.position<bytes.count { try decodePassport(state,&reader) };if reader.position<bytes.count { try require(try reader.number(4)==0x4c504f33);state.offlineProcess=try reader.text(32);try require(state.offlineProcess!.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && state.admissionBinding != nil) };try validatePassport(state);try validateSeals(state);try validateCollections(state);try validateAppearance(state);try validateJourney(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
+        };if reader.position<bytes.count { try Self.require(try reader.number(4)==0x4c504133);state.admissionBinding=try reader.text(64);try Self.require(Self.checksum(state.admissionBinding!));let pending=try reader.number(1);try Self.require(pending<=1);if pending==1 { state.pendingMigration=try reader.text(64);try Self.require(Self.checksum(state.pendingMigration!)) };let count=try reader.number(4);try Self.require(count<=4);for _ in 0..<count { let scope=try Scope.decode(reader.text(2048)),content=try reader.text(64);try Self.require(Self.checksum(content) && state.seals[scope.profileId]==nil);state.seals[scope.profileId]=Seal(scope:scope,contentBinding:content) } };if reader.position<bytes.count { try decodeCollections(state,&reader) };if reader.position<bytes.count { try decodeAppearance(state,&reader) };if reader.position<bytes.count { try decodeJourney(state,&reader) };if reader.position<bytes.count { try decodePassport(state,&reader) };if reader.position<bytes.count { try require(try reader.number(4)==0x4c504f33);state.offlineProcess=try reader.text(32);try require(state.offlineProcess!.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil && state.admissionBinding != nil) };if reader.position<bytes.count {try decodeReading(state,&reader)};try validateReading(state);try validatePassport(state);try validateSeals(state);try validateCollections(state);try validateAppearance(state);try validateJourney(state); try PlanetChildDataStore.require(reader.position == bytes.count); success = true; return state
     }
     private func read(_ directory: URL) throws -> State {
         let file = try record(directory), fd = Darwin.open(file.path,O_RDONLY|O_NOFOLLOW|O_CLOEXEC); try Self.require(fd >= 0); defer { Darwin.close(fd) }
@@ -414,7 +416,7 @@ final class PlanetChildDataStore {
         } else { next=Self.retainedEntries(state) }
         if let removal=try admission.childRemoval() { try Self.removeChildData(state,&next,removal) }
         try Self.require(state.generation<Self.maxSafe-1);state.generation+=1;state.nonce=try Self.nonce();state.admissionBinding=try admission.binding();state.pendingMigration=try admission.migrationIdentity()
-        try Self.migrateTombstones(state,future);try Self.migrateAppearance(state,admission.futureProfiles());try Self.migrateJourney(state,admission.futureProfiles());try Self.migratePassport(state,admission.futureProfiles());for id in Array(state.entries.keys) { if var value=state.entries.removeValue(forKey:id) { value.value.resetBytes(in:0..<value.value.count) } };state.entries=next;adopted=true;var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try redactKnownBirth(directory,admission);try admission.commitCanonical();try admittedState(admission,state)
+        try Self.migrateTombstones(state,future);try Self.migrateAppearance(state,admission.futureProfiles());try Self.migrateJourney(state,admission.futureProfiles());try Self.migratePassport(state,admission.futureProfiles());try Self.migrateReading(state,admission.futureProfiles());for id in Array(state.entries.keys) { if var value=state.entries.removeValue(forKey:id) { value.value.resetBytes(in:0..<value.value.count) } };state.entries=next;adopted=true;var prepared=try Self.encode(state);defer { prepared.resetBytes(in:0..<prepared.count) };try admission.markDataWrite();try stageMigrationMarker(directory,admission);try write(directory,state:state,check:admission.check);try redactKnownBirth(directory,admission);try admission.commitCanonical();try admittedState(admission,state)
     } }
     func migrationReadback(_ admission: PlanetChildLocalV2DataAdmission) throws { try locked { directory in
         try admission.check();try existingOnly(directory,migration:admission);let birth=try knownBirth(directory);try admission.knownBirth(birth)
@@ -620,7 +622,7 @@ final class PlanetChildDataStore {
         name="literary-planet-child-data-v1"+(runId.map { "-synthetic-"+$0 } ?? "");identity=bundle+"."+name
     }
     private func existingOnly(_ directory: URL,migration: PlanetChildLocalV2DataAdmission?=nil) throws {
-        try Self.require(!FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportStageMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path))
+        try Self.require(!FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportStageMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path) && !FileManager.default.fileExists(atPath:try readingMarker(directory).path))
         let pending=try migrationMarker(directory)
         if FileManager.default.fileExists(atPath:pending.path) { guard let migration else { throw Failure.unavailable };try exactMigrationMarker(directory,migration) } else { try Self.require(migration==nil) }
         let base=try record(directory),staged=try record(directory,suffix:".new")
@@ -861,9 +863,9 @@ extension PlanetChildDataStore {
             }
             downloads=selected.keys.sorted().map { selected[$0]! }
         }
-        return ["collections":collections,"appearance":["revision":appearance?.revision ?? 0,"selection":appearance?.selection?.dto as Any? ?? NSNull()],
+        var projection:[String:Any]=["collections":collections,"appearance":["revision":appearance?.revision ?? 0,"selection":appearance?.selection?.dto as Any? ?? NSNull()],
             "journeys":["revision":journeys?.revision ?? 0,"activeJourneyId":journeys?.activeJourneyId as Any? ?? NSNull(),"progress":progress],
-            "passport":["revision":passport?.revision ?? 0,"countries":countries,"credits":credits,"completedJourneys":completed,"awards":awards,"routes":routes],"downloads":["objects":objects,"routes":downloads]]
+            "passport":["revision":passport?.revision ?? 0,"countries":countries,"credits":credits,"completedJourneys":completed,"awards":awards,"routes":routes],"downloads":["objects":objects,"routes":downloads]];if let positions=state.reading[profile]{projection["readingPositions"]=positions.keys.sorted().map{key -> [String:Any] in let row=positions[key]!;return ["revision":row.revision,"position":row.position.dto]}};return projection
     }
     static func sdkInspectOriginal(_ permit: PlanetChildLocalV2SDKReadPermit) throws {
         try permit.check()
@@ -1403,7 +1405,7 @@ extension PlanetChildDataStore {
     private func recoverOfflineStage(_ directory: URL,_ permit: PlanetChildLocalV2SDKReadPermit) throws {
         try permit.check();let state=try read(directory);defer { state.wipe() }
         guard let process=state.offlineProcess,process != Self.offlineProcessEpoch else { return }
-        try Self.require(state.pendingMigration==nil && !FileManager.default.fileExists(atPath:try migrationMarker(directory).path) && !FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path))
+        try Self.require(state.pendingMigration==nil && !FileManager.default.fileExists(atPath:try migrationMarker(directory).path) && !FileManager.default.fileExists(atPath:try collectionMarker(directory).path) && !FileManager.default.fileExists(atPath:try appearanceMarker(directory).path) && !FileManager.default.fileExists(atPath:try journeyMarker(directory).path) && !FileManager.default.fileExists(atPath:try passportMarker(directory).path) && !FileManager.default.fileExists(atPath:try originRedactionFile(directory).path) && !FileManager.default.fileExists(atPath:try readingMarker(directory).path))
         try Self.require(try state.admissionBinding==permit.binding());try Self.knownProfiles(state,permit.profiles());try Self.validatePassport(state)
         let marker=try passportStageMarker(directory),staged=try record(directory,suffix:".new")
         if FileManager.default.fileExists(atPath:marker.path) {
@@ -1463,7 +1465,7 @@ extension PlanetChildDataStore {
             let scope=try keyScope(purpose,key:pair[1])
             if scope.profileId==target.profileId && (target.scope=="profile" || purpose == .history || purpose == .search) { if var stored=next.removeValue(forKey:compound) { stored.value.resetBytes(in:0..<stored.value.count) } }
         }
-        state.journeys.removeValue(forKey:target.profileId);if var removed=state.passports.removeValue(forKey:target.profileId) { removed.ledger.disposeRouteBytes() }
+        state.reading.removeValue(forKey:target.profileId);state.journeys.removeValue(forKey:target.profileId);if var removed=state.passports.removeValue(forKey:target.profileId) { removed.ledger.disposeRouteBytes() }
         for key in Array(state.collectionRevisions.keys) { let pair=key.components(separatedBy:"\n");try require(pair.count==2);if pair[0]==target.profileId && (target.scope=="profile" || pair[1]==Purpose.history.rawValue) { state.collectionRevisions.removeValue(forKey:key) } }
         if target.scope=="profile" {
             state.appearances.removeValue(forKey:target.profileId);state.seals.removeValue(forKey:target.profileId)
@@ -1740,6 +1742,138 @@ extension PlanetChildDataStore {
         if name=="revision-digest" { state.collectionRevisions["fixture-reader-one\ncache"]=6;var after=try PlanetChildParentExportCodec.wrap(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"));defer { after.resetBytes(in:0..<after.count) };try require(digest(before) != digest(after));return true }
         if name=="corrupt" { var actual=try encode(state);defer { actual.resetBytes(in:0..<actual.count) };actual.append(0);var denied=false;do { let unexpected=try decode(actual);unexpected.wipe() } catch { denied=true };try require(denied);return true }
         var invalid=fixtureParentExportProfile();invalid["verifier"]="SECRET";var denied=false;do { var unexpected=try PlanetChildParentExportCodec.wrap(invalid,parentExportProjection(state,"fixture-reader-one"));unexpected.resetBytes(in:0..<unexpected.count) } catch { denied=true };try require(denied);return true
+    }
+}
+#endif
+/** Personal bookmark identity is canonical entity/anchor only; signed localized maps provide correspondence. */
+enum PlanetChildReadingPosition {
+    static let maxSafe:UInt64=9_007_199_254_740_991
+    enum Failure:Error { case refused }
+    static func require(_ value:Bool)throws { if !value { throw Failure.refused } }
+    static func id(_ raw:Any?)throws -> String { guard let value=raw as? String,value.range(of:#"\A[A-Za-z0-9][A-Za-z0-9._-]{0,95}\z"#,options:.regularExpression) != nil else { throw Failure.refused };return value }
+    static func number(_ raw:Any?,_ min:UInt64,_ max:UInt64)throws -> UInt64 { guard let n=raw as? NSNumber,CFGetTypeID(n) != CFBooleanGetTypeID(),String(cString:n.objCType) != "f",String(cString:n.objCType) != "d",n.int64Value>=0 else { throw Failure.refused };let value=n.uint64Value;try require(value>=min && value<=max);return value }
+    static func object(_ raw:Any?,_ fields:[String])throws -> [String:Any] { guard let value=raw as? [String:Any],Set(value.keys)==Set(fields) else { throw Failure.refused };return value }
+    struct Record:Equatable {
+        let kind:String,id:String,anchorVersion:UInt64,anchorId:String
+        init(_ kind:String,_ id:String,_ version:UInt64,_ anchor:String)throws { try PlanetChildReadingPosition.require(["country","writer","biography","work","character","storyworld","fact","quote","activity","quiz"].contains(kind) && version>0 && version<PlanetChildReadingPosition.maxSafe);self.kind=kind;self.id=try PlanetChildReadingPosition.id(id);anchorVersion=version;anchorId=try PlanetChildReadingPosition.id(anchor) }
+        var key:String { kind+"/"+id }
+        var dto:[String:Any] { ["schemaVersion":UInt64(1),"entity":["kind":kind,"id":id],"anchorVersion":anchorVersion,"anchorId":anchorId] }
+    }
+    static func decode(_ raw:Any?)throws -> Record { let value=try object(raw,["schemaVersion","entity","anchorVersion","anchorId"]),entity=try object(value["entity"],["kind","id"]);_ = try number(value["schemaVersion"],1,1);guard let kind=entity["kind"] as? String else { throw Failure.refused };return try Record(kind,id(entity["id"]),number(value["anchorVersion"],1,maxSafe-1),id(value["anchorId"])) }
+    static func anchors(_ raw:Any?,_ expectedText:String)throws -> [String:Any] {
+        let value=try object(raw,["schemaVersion","anchorVersion","segments","narration"]);_ = try number(value["schemaVersion"],1,1);let version=try number(value["anchorVersion"],1,maxSafe-1)
+        guard let segments=value["segments"] as? [Any],!segments.isEmpty,segments.count<=128 else { throw Failure.refused };var ids=Set<String>(),checked=[[String:Any]](),joined=""
+        for raw in segments { let segment=try object(raw,["anchorId","text"]),anchor=try id(segment["anchorId"]);guard ids.insert(anchor).inserted,let text=segment["text"] as? String,!text.isEmpty,text.utf16.count<=32768,text.range(of:#"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]"#,options:.regularExpression)==nil else { throw Failure.refused };joined+=text;try require(joined.utf16.count<=32768);checked.append(["anchorId":anchor,"text":text]) }
+        try require(joined==expectedText);var narration:Any=NSNull()
+        if let raw=value["narration"],!(raw is NSNull) { let n=try object(raw,["assetId","sha256","sampleRate","frameCount","cues"]),asset=try id(n["assetId"]),rate=try number(n["sampleRate"],8000,48000),frames=try number(n["frameCount"],1,maxSafe-1);guard let hash=n["sha256"] as? String,hash.range(of:#"\A[a-f0-9]{64}\z"#,options:.regularExpression) != nil,frames<=rate*60,let cues=n["cues"] as? [Any],cues.count==checked.count else { throw Failure.refused };var result=[[String:Any]](),previous:UInt64=0
+            for (i,raw) in cues.enumerated() { let cue=try object(raw,["anchorId","startFrame","endFrame"]),anchor=try id(cue["anchorId"]),start=try number(cue["startFrame"],0,frames-1),end=try number(cue["endFrame"],1,frames);try require(anchor==(checked[i]["anchorId"] as? String) && start==previous && end>start);previous=end;result.append(["anchorId":anchor,"startFrame":start,"endFrame":end]) };try require(previous==frames);narration=["assetId":asset,"sha256":hash,"sampleRate":rate,"frameCount":frames,"cues":result]
+        }
+        return ["schemaVersion":UInt64(1),"anchorVersion":version,"segments":checked,"narration":narration]
+    }
+    static func membership(_ record:Record,_ reference:[String:Any],_ raw:Any?,_ text:String)throws { let map=try anchors(raw,text),version=try number(map["anchorVersion"],1,maxSafe-1);try require((reference["kind"] as? String)==record.kind && (reference["id"] as? String)==record.id && version==record.anchorVersion);guard let segments=map["segments"] as? [[String:Any]],segments.contains(where:{$0["anchorId"] as? String==record.anchorId}) else { throw Failure.refused } }
+}
+extension PlanetChildDataStore {
+    private struct ReadingEntry { let revision:UInt64,position:PlanetChildReadingPosition.Record }
+    final class LocalV2Reading {
+        let profileId:String,revision:UInt64,position:PlanetChildReadingPosition.Record?
+        private let lock=NSLock();private var closed=false
+        fileprivate init(_ profile:String,_ revision:UInt64,_ position:PlanetChildReadingPosition.Record?){profileId=profile;self.revision=revision;self.position=position}
+        func dto()throws -> [String:Any] { lock.lock();defer { lock.unlock() };try PlanetChildDataStore.require(!closed);return ["profileId":profileId,"revision":revision,"position":position?.dto as Any? ?? NSNull()] }
+        var closedForSDK:Bool {lock.lock();defer {lock.unlock()};return closed}
+        func close(){lock.lock();closed=true;lock.unlock()}
+        deinit {close()}
+    }
+    private static func validateReading(_ state:State)throws {
+        if !state.sdkReading {try require(state.reading.isEmpty);return}
+        try require(state.sdkPassport && state.offlineProcess != nil && state.admissionBinding != nil && state.sdkUnboundBirth==nil && state.reading.count<=4 && Set(state.reading.keys).isSubset(of:Set(state.seals.keys)))
+        for (profile,rows) in state.reading { _ = try PlanetChildReadingPosition.id(profile);try require(!rows.isEmpty && rows.count<=512);for (key,row) in rows {try require(row.revision>0 && row.revision<maxSafe && key==row.position.key && PlanetChildReadingPosition.decode(row.position.dto)==row.position)} }
+    }
+    private static func encodeReading(_ state:State,_ writer:Writer)throws {
+        try validateReading(state);guard state.sdkReading else {return};try writer.number(0x4c505231,bytes:4);try writer.number(1,bytes:1);try writer.number(UInt64(state.reading.count),bytes:1)
+        for profile in state.reading.keys.sorted(){let rows=state.reading[profile]!;try writer.text(profile);try writer.number(UInt64(rows.count),bytes:2);for key in rows.keys.sorted(){let row=rows[key]!;try writer.number(row.revision,bytes:8);try writer.text(row.position.kind);try writer.text(row.position.id);try writer.number(row.position.anchorVersion,bytes:8);try writer.text(row.position.anchorId)}}
+    }
+    private static func decodeReading(_ state:State,_ reader:inout Reader)throws {
+        try require(try reader.number(4)==0x4c505231 && reader.number(1)==1 && state.sdkPassport && state.offlineProcess != nil);state.sdkReading=true;let count=try reader.number(1);try require(count<=4)
+        for _ in 0..<count {let profile=try reader.text(96),n=try reader.number(2);try require(n>0 && n<=512 && state.reading[profile]==nil);var rows=[String:ReadingEntry]();for _ in 0..<n {let revision=try reader.number(8),record=try PlanetChildReadingPosition.Record(reader.text(16),reader.text(96),reader.number(8),reader.text(96));try require(rows[record.key]==nil);rows[record.key]=ReadingEntry(revision:revision,position:record)};state.reading[profile]=rows};try validateReading(state)
+    }
+    private static func migrateReading(_ state:State,_ profiles:[String:String])throws {try validateReading(state);try require(Set(state.reading.keys).isSubset(of:Set(profiles.keys)))}
+    private func readingMarker(_ directory:URL)throws -> URL {let file=directory.appendingPathComponent("local-v2-reading.pending");try Self.require(file.resolvingSymlinksInPath().standardizedFileURL==file.standardizedFileURL);return file}
+    private func readingMarkerBytes(_ admission:PlanetChildLocalV2DataAdmission,_ lease:Lease,_ commandId:String,_ row:ReadingEntry)throws -> Data {return Data(("LP-LOCAL-V2-READING\n"+identity+"\n"+commandId+"\n"+(try admission.binding())+"\n"+lease.scope.profileId+"\n"+String(lease.generation)+"\n"+lease.nonce+"\n"+String(row.revision)+"\n"+row.position.key+"\n"+String(row.position.anchorVersion)+"\n"+row.position.anchorId+"\n").utf8)}
+    func admittedReading(_ admission:PlanetChildLocalV2DataAdmission,_ lease:Lease,key:String,expectedRevision:UInt64?,permit:PlanetChildLocalV2ReadingPermit?,commandId:String)throws -> LocalV2Reading {
+        try Self.require((expectedRevision==nil)==(permit==nil) && commandId.range(of:#"\A[a-f0-9]{32}\z"#,options:.regularExpression) != nil)
+        return try locked {directory in try admission.check();try existingOnly(directory);let state=try read(directory);defer{state.wipe()};try admittedLive(admission,lease,state);try Self.validateReading(state)
+            let profile=lease.scope.profileId,prior=state.reading[profile]?[key],revision=prior?.revision ?? 0
+            guard let expectedRevision,let permit else {let result=LocalV2Reading(profile,revision,prior?.position);do{try admission.check();return result}catch{result.close();throw error}}
+            try Self.require(revision==expectedRevision && permit.profileId(admission)==profile);if let prior{try permit.prior(admission,prior.position)};let record=try permit.position(admission);try Self.require(record.key==key);let next=try PlanetChildJourney.next(revision);var rows=state.reading[profile] ?? [:];rows[key]=ReadingEntry(revision:next,position:record);try Self.require(rows.count<=512 && state.offlineProcess != nil);state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;state.sdkReading=true;state.reading[profile]=rows
+            var prepared=try Self.encode(state),markerBytes=try readingMarkerBytes(admission,lease,commandId,rows[key]!);defer{prepared.resetBytes(in:0..<prepared.count);markerBytes.resetBytes(in:0..<markerBytes.count)};let marker=try readingMarker(directory);var attempted=false
+            do{attempted=true;try exclusiveReceiptFile(marker,markerBytes){try permit.check(admission)};try syncDirectory(directory);try write(directory,state:state){try permit.check(admission)}
+                let actual=try read(directory);defer{actual.wipe()};try admittedLive(admission,lease,actual);try permit.check(admission);try Self.require(actual.reading[profile]?[key]?.revision==next && actual.reading[profile]?[key]?.position==record)
+                var after=try Self.encode(actual),pending=try boundedFile(marker,4096);defer{after.resetBytes(in:0..<after.count);pending.resetBytes(in:0..<pending.count)};try Self.require(prepared==after && pending==markerBytes);try admission.readingCommandKnown(commandId);let result=LocalV2Reading(profile,next,record);do{try admission.readingCommandReady(commandId);return result}catch{result.close();throw error}
+            }catch{if attempted{closed=true};throw error}
+        }
+    }
+    func readingComplete(_ admission:PlanetChildLocalV2DataAdmission,_ lease:Lease,_ commandId:String,_ key:String)throws -> LocalV2ReadingCompletion {
+        try locked {directory in try admission.check();let state=try read(directory);defer{state.wipe()};try admittedLive(admission,lease,state);try Self.validateReading(state);try admission.readingCommandJoined(commandId);guard let row=state.reading[lease.scope.profileId]?[key] else{throw Failure.unavailable}
+            var actual=try boundedFile(readingMarker(directory),4096),expected=try readingMarkerBytes(admission,lease,commandId,row);defer{actual.resetBytes(in:0..<actual.count);expected.resetBytes(in:0..<expected.count)};try Self.require(actual==expected);try admission.check();return LocalV2ReadingCompletion(self,expected)
+        }
+    }
+}
+extension PlanetChildDataStore {
+    final class LocalV2ReadingCompletion {
+        private let lock=NSLock();private var marker: Data,closed=false,finished=false
+        private let store: PlanetChildDataStore
+        fileprivate init(_ store: PlanetChildDataStore,_ marker: Data) { self.store=store;self.marker=Data(Array(marker)) }
+        func finish() throws {
+            lock.lock();defer { lock.unlock() };try PlanetChildDataStore.require(!closed && !finished)
+            do { try store.locked { directory in
+                try PlanetChildDataStore.require(!store.closed)
+                let file=try store.readingMarker(directory)
+                var actual=try store.boundedFile(file,4096);defer { actual.resetBytes(in:0..<actual.count) }
+                try PlanetChildDataStore.require(actual==marker)
+                // The native result consumer owns the completed command and all
+                // dispatch/canonical fences have returned.
+                // No authority check follows this durable completion boundary.
+                try PlanetChildDataStore.require(Darwin.unlink(file.path)==0);try store.syncDirectory(directory)
+            } } catch {
+                // Exact-marker restoration after an I/O failure is conservative;
+                // a partial/existing marker is never removed or overwritten.
+                do { try store.locked { directory in
+                    let file=try store.readingMarker(directory)
+                    if !FileManager.default.fileExists(atPath:file.path) { try store.exclusiveReceiptFile(file,marker) {};try store.syncDirectory(directory) }
+                    store.closed=true
+                } } catch { store.closed=true }
+                throw error
+            }
+            finished=true
+        }
+        func retainUnknown() {
+            lock.lock();defer { lock.unlock() };guard !closed else { return }
+            do { try store.locked { directory in
+                let file=try store.readingMarker(directory)
+                // Preserve an existing or partial unknown marker exactly.
+                if !FileManager.default.fileExists(atPath:file.path) { try store.exclusiveReceiptFile(file,marker) {};try store.syncDirectory(directory) }
+                store.closed=true
+            } } catch { store.closed=true }
+        }
+        func close() { lock.lock();defer { lock.unlock() };if !closed { closed=true;marker.resetBytes(in:0..<marker.count) } }
+        deinit { close() }
+    }
+
+}
+
+#if DEBUG
+extension PlanetChildDataStore {
+    static func fixtureReadingScenario(_ name:String)throws -> Bool {
+        try require(["legacy","codec","migration","history","profile","downloads","capacity","unknown-anchor"].contains(name));let state=try fixtureAppearanceState();defer{state.wipe()}
+        if name=="legacy"{var before=try encode(state);defer{before.resetBytes(in:0..<before.count)};let restored=try decode(before);defer{restored.wipe()};var exact=try encode(restored);defer{exact.resetBytes(in:0..<exact.count)};try require(!restored.sdkReading && restored.reading.isEmpty && before==exact);return true}
+        let first="fixture-reader-one",second="fixture-reader-two",a=try PlanetChildReadingPosition.Record("work","Work.ONE",1,"Passage.ONE"),b=try PlanetChildReadingPosition.Record("writer","Writer.TWO",2,"Passage.TWO")
+        state.sdkCollections=true;state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true;state.offlineProcess=String(repeating:"a",count:32);state.sdkReading=true;state.reading[first]=[a.key:ReadingEntry(revision:7,position:a)];state.reading[second]=[b.key:ReadingEntry(revision:11,position:b)]
+        var original=try encode(state);defer{original.resetBytes(in:0..<original.count)};let restored=try decode(original);defer{restored.wipe()};try require(restored.reading[first]?[a.key]?.position==a && restored.reading[second]?[b.key]?.revision==11)
+        if name=="migration"{try migrateReading(restored,["fixture-reader-one":String(repeating:"a",count:64),"fixture-reader-two":String(repeating:"a",count:64)]);try require(restored.reading[first]?[a.key]?.revision==7)}
+        if ["history","profile","downloads"].contains(name){var next=retainedEntries(restored);try removeChildData(restored,&next,PlanetChildLocalV2RemovalTarget(profileId:first,scope:name));try require(restored.reading[second]?[b.key]?.position==b);try require(name=="downloads" ? restored.reading[first]?[a.key]?.position==a:restored.reading[first]==nil);try validateReading(restored)}
+        if name=="capacity"{var rows=[String:ReadingEntry]();for i in 0..<512{let record=try PlanetChildReadingPosition.Record("work","Entry."+String(i),1,"Anchor");rows[record.key]=ReadingEntry(revision:UInt64(i+1),position:record)};restored.reading[first]=rows;var bounded=try encode(restored);defer{bounded.resetBytes(in:0..<bounded.count)};let retained=try decode(bounded);defer{retained.wipe()};let extra=try PlanetChildReadingPosition.Record("work","Entry.EXTRA",1,"Anchor");rows[extra.key]=ReadingEntry(revision:513,position:extra);restored.reading[first]=rows;var refused=false;do{var invalid=try encode(restored);invalid.resetBytes(in:0..<invalid.count)}catch{refused=true};try require(refused && retained.reading[first]?.count==512);var exact=try encode(retained);defer{exact.resetBytes(in:0..<exact.count)};try require(exact==bounded)}
+        if name=="unknown-anchor"{let anchors:[String:Any]=["schemaVersion":UInt64(1),"anchorVersion":UInt64(2),"segments":[["anchorId":"Passage.NEW","text":"New text"]],"narration":NSNull()],reference:[String:Any]=["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)];var refused=false;do{try PlanetChildReadingPosition.membership(a,reference,anchors,"New text")}catch{refused=true};var exact=try encode(restored);defer{exact.resetBytes(in:0..<exact.count)};try require(refused && original==exact && restored.reading[first]?[a.key]?.position==a)}
+        return true
     }
 }
 #endif

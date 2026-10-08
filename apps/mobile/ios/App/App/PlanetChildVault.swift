@@ -4764,6 +4764,7 @@ fileprivate final class LocalV2Request {
     fileprivate var pinOperation: LocalV2PinOperation?
     fileprivate var profileOperation: LocalV2ProfileOperation?
     fileprivate var sdkRotation: LocalV2SDKPinRotation?,sdkPinMutation: LocalV2SDKPinMutation?
+    fileprivate var childLocaleOriginal: LocalV2ChildLocaleOriginal?
     fileprivate var mutationUnacknowledged=false
     fileprivate var opened=false,cancelled=false,sealed=false,retiring=false,retired=false,workers=0,events=0,cleanup=0
     fileprivate var workerThread: ObjectIdentifier?
@@ -6927,10 +6928,14 @@ enum PlanetChildParentExportCodec {
         var bytes=Data(try LocalV2PackageJson.read(raw,maximumBytes).json(sorted:true).utf8)
         guard !bytes.isEmpty,bytes.count<=maximumBytes else { bytes.resetBytes(in:0..<bytes.count);throw PlanetChildVault.Failure.unavailable };return bytes
     }
-    static func wrap(_ profile: [String:Any],_ personal: [String:Any]) throws -> Data {
+
+    static func validatePersonal(_ personal:[String:Any])throws {
+        let required=Set(["collections","appearance","journeys","passport","downloads"]);guard required.isSubset(of:Set(personal.keys)),Set(personal.keys).isSubset(of:required.union(["readingPositions"])) else{throw PinKnownRefusal()}
+        if let raw=personal["readingPositions"]{guard let rows=raw as? [[String:Any]],rows.count<=512 else{throw PinKnownRefusal()};var entities=Set<String>();for raw in rows{let row=try PlanetChildReadingPosition.object(raw,["revision","position"]);_ = try PlanetChildReadingPosition.number(row["revision"],1,PlanetChildReadingPosition.maxSafe-1);let position=try PlanetChildReadingPosition.decode(row["position"]);guard entities.insert(position.key).inserted else{throw PinKnownRefusal()}}}
+    }    static func wrap(_ profile: [String:Any],_ personal: [String:Any]) throws -> Data {
         let required=["id","label","exactAge","ageBand","locale","ageConfirmedAt","readingLevel","allowedTopics","blockedTopics","soundEnabled","motion","narrationEnabled"]
-        guard Set(required).isSubset(of:Set(profile.keys)),Set(profile.keys).isSubset(of:Set(required+["localeLocked","localePolicy"])),Set(personal.keys)==Set(["collections","appearance","journeys","passport","downloads"]) else { throw PinKnownRefusal() }
-        var raw=try JSONSerialization.data(withJSONObject:profile,options:[.sortedKeys,.withoutEscapingSlashes]);defer { raw.resetBytes(in:0..<raw.count) }
+        guard Set(required).isSubset(of:Set(profile.keys)),Set(profile.keys).isSubset(of:Set(required+["localeLocked","localePolicy"])) else { throw PinKnownRefusal() }
+        try validatePersonal(personal);var raw=try JSONSerialization.data(withJSONObject:profile,options:[.sortedKeys,.withoutEscapingSlashes]);defer { raw.resetBytes(in:0..<raw.count) }
         let row=try LocalV2PackageValue.object(LocalV2PackageJson.read(raw,65536));var fields=required.map { ($0,row[$0]!) };if let locked=row["localeLocked"] { fields.append(("localeLocked",locked)) };if let policy=row["localePolicy"] { fields.append(("localePolicy",try LocalV2SDKProfileDraft.localePolicy(policy,currentLocale:LocalV2PackageValue.text(row["locale"])))) }
         var ordered=Data(try LocalV2PackageValue.object(fields).json(sorted:false).utf8);defer { ordered.resetBytes(in:0..<ordered.count) };_ = try PlanetChildVault.ProtectedEnvelope.localV2ProfileId(ordered)
         var out=personal;out["schemaVersion"]=1;out["format"]="literary-planet-child-personal-data";out["profile"]=profile;return try canonical(out)
@@ -7013,7 +7018,7 @@ final class PlanetChildLocalV2ExportReadPermit {
     func profileId() throws -> String { try check();return selected }
     func retainedBirth(_ birth: PlanetChildLocalV2KnownBirth) throws { try check();let policy=host.operations.writer.policy;guard (birth.redacted || context.profiles[birth.profileId] != nil),birth.policyVersion==policy.version,birth.policyChecksum==policy.checksum,birth.maximum==policy.maximum,birth.delays==policy.delays else { throw PinKnownRefusal() } }
     func encode(_ personal: [String:Any]) throws -> Data {
-        try check();guard Set(personal.keys)==Set(["collections","appearance","journeys","passport","downloads"]) else { throw PinKnownRefusal() }
+        try check();try PlanetChildParentExportCodec.validatePersonal(personal)
         var bytes=try PlanetChildParentExportCodec.wrap(profile,personal);do { try check();return bytes } catch { bytes.resetBytes(in:0..<bytes.count);throw error }
     }
     fileprivate func close() { closed=true;expected.close();profile.removeAll() }
@@ -7886,7 +7891,17 @@ enum PlanetChildLocalCanonicalRuntimeFixture {
 
 /** Bounded strict data, independent of UI/OS authority. Tuple objects retain
  * payload order; duplicate decoded spellings are refused before interpretation. */
-fileprivate indirect enum LocalV2PackageValue {
+
+fileprivate enum LocalV2ReadingPayload {
+    typealias V=LocalV2PackageValue
+    static func shape(_ value:V?)throws -> [String:V] {let map=try V.object(value);return try V.object(value,map["readingAnchors"]==nil ? ["title","text","terms","references"]:["title","text","terms","references","readingAnchors"])}
+    static func anchors(_ value:V,_ text:String)throws -> V {
+        var raw=Data(try value.json(sorted:false).utf8);defer{raw.resetBytes(in:0..<raw.count)};_ = try PlanetChildReadingPosition.anchors(JSONSerialization.jsonObject(with:raw),text)
+        let map=try V.object(value,["schemaVersion","anchorVersion","segments","narration"]);let segments=try V.array(map["segments"],128).map{raw -> V in let row=try V.object(raw,["anchorId","text"]);return .object([("anchorId",row["anchorId"]!),("text",row["text"]!)])};var narration=V.null
+        if let value=map["narration"],!value.isNull {let n=try V.object(value,["assetId","sha256","sampleRate","frameCount","cues"]),cues=try V.array(n["cues"],128).map{raw -> V in let row=try V.object(raw,["anchorId","startFrame","endFrame"]);return .object([("anchorId",row["anchorId"]!),("startFrame",row["startFrame"]!),("endFrame",row["endFrame"]!)])};narration = .object([("assetId",n["assetId"]!),("sha256",n["sha256"]!),("sampleRate",n["sampleRate"]!),("frameCount",n["frameCount"]!),("cues",.array(cues))])}
+        return .object([("schemaVersion",.integer(1)),("anchorVersion",map["anchorVersion"]!),("segments",.array(segments)),("narration",narration)])
+    }
+}fileprivate indirect enum LocalV2PackageValue {
     case null,bool(Bool),integer(Int64),string(String),array([LocalV2PackageValue]),object([(String,LocalV2PackageValue)])
     var isNull: Bool { if case .null=self { return true };return false }
     func json(sorted: Bool) throws -> String {
@@ -7999,10 +8014,10 @@ fileprivate enum LocalV2PackageCompiler {
     private static func clean(_ value: String,_ maximum: Int,_ multiline: Bool,_ nonempty: Bool) -> Bool { guard value.utf16.count<=maximum,(!nonempty || !value.isEmpty) else { return false }
         let whitespace=CharacterSet(charactersIn:"\u{0009}\u{000a}\u{000b}\u{000c}\u{000d}\u{0020}\u{00a0}\u{1680}\u{2000}\u{2001}\u{2002}\u{2003}\u{2004}\u{2005}\u{2006}\u{2007}\u{2008}\u{2009}\u{200a}\u{2028}\u{2029}\u{202f}\u{205f}\u{3000}\u{feff}")
         if !multiline,value.trimmingCharacters(in:whitespace) != value { return false };return value.unicodeScalars.allSatisfy { $0.value>=32 && $0.value != 127 || multiline && [9,10,13].contains($0.value) } }
-    fileprivate static func payload(_ value: V?) throws -> Data { let row=try V.object(value,["title","text","terms","references"]),title=try V.text(row["title"]),text=try V.text(row["text"])
+    fileprivate static func payload(_ value: V?) throws -> Data { let row=try LocalV2ReadingPayload.shape(value),title=try V.text(row["title"]),text=try V.text(row["text"])
         guard clean(title,240,false,true),clean(text,32768,true,false) else { throw PinKnownRefusal() };var terms=Set<String>();for value in try V.array(row["terms"],64) { let term=try V.text(value);guard clean(term,80,false,true),terms.insert(term).inserted else { throw PinKnownRefusal() } }
         var refs=[V](),seen=Set<String>();for value in try V.array(row["references"],64) { let key=try ref(value),entry=try V.object(value);guard seen.insert(key).inserted else { throw PinKnownRefusal() };refs.append(.object([("kind",entry["kind"]!),("id",entry["id"]!),("contentChecksum",entry["contentChecksum"]!)])) }
-        return Data(try V.object([("title",.string(title)),("text",.string(text)),("terms",row["terms"]!),("references",.array(refs))]).json(sorted:false).utf8)
+        var fields:[(String,V)]=[("title",.string(title)),("text",.string(text)),("terms",row["terms"]!),("references",.array(refs))];if let anchors=row["readingAnchors"]{fields.append(("readingAnchors",try LocalV2ReadingPayload.anchors(anchors,text)))};return Data(try V.object(fields).json(sorted:false).utf8)
     }
     private static func policy(_ value: V?,_ profile: LocalV2PackageProfile,_ platform: String,_ territory: String,_ now: Int64,_ checksum: String) throws -> Int64? {
         let row=try V.object(value,policyFields),kind=try V.text(row["kind"]);_ = try V.identifier(row["id"]);_ = try V.identifier(row["sourceVersion"])
@@ -8348,25 +8363,27 @@ final class PlanetChildLocalV2MigrationValue { let key: String,changed: Bool;pri
  * construct it. DataStore check never schedules main or acquires Vault again;
  * every I/O boundary rereads the exact canonical record under the held lock. */
 final class PlanetChildLocalV2DataAdmission {
-    private let loader: LocalV2NativePackageLoader?,mutation: LocalV2GateMutation?,compiled: LocalV2CompiledPackage?,previous: LocalV2CanonicalContext,future: LocalV2CanonicalContext
+    private let loader: LocalV2NativePackageLoader?,mutation: LocalV2GateMutation?,childLocale: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter?,compiled: LocalV2CompiledPackage?,previous: LocalV2CanonicalContext,future: LocalV2CanonicalContext
     private let lock=NSLock();private var revoked=false,results=[LocalV2AdmittedResult](),transaction: LocalV2Transaction?,expected: PinOwnedBytes?,held: ObjectIdentifier?
     fileprivate var store: PlanetChildDataStore?,lease: PlanetChildDataStore.Lease?
     private var sdkCommand: LocalV2SDKCollectionCommand?
     private var sdkAppearanceCommand: LocalV2SDKAppearanceCommand?,sdkAppearanceResults=[PlanetChildDataStore.LocalV2Appearance]()
+    private var sdkReadingCommand:LocalV2SDKReadingCommand?,sdkReadingResults=[PlanetChildDataStore.LocalV2Reading]()
     private var sdkJourneyCommand: LocalV2SDKJourneyCommand?,sdkJourneyResults=[PlanetChildDataStore.LocalV2Journey]()
     private var sdkPassportCommand: LocalV2SDKPassportCommand?,sdkPassportResults=[PlanetChildDataStore.LocalV2Passport]()
     private var sdkNativeCommand: LocalV2SDKChannel.Command?
     private var sdkCollections=[PlanetChildDataStore.LocalV2Collection]()
-    fileprivate init(_ loader: LocalV2NativePackageLoader,_ compiled: LocalV2CompiledPackage) throws { guard loader.delivery?.compiled === compiled,loader.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };try loader.live();self.loader=loader;mutation=nil;self.compiled=compiled;previous=compiled.profile.canonicalContext;future=previous }
+    fileprivate init(_ loader: LocalV2NativePackageLoader,_ compiled: LocalV2CompiledPackage) throws { guard loader.delivery?.compiled === compiled,loader.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };try loader.live();self.loader=loader;mutation=nil;childLocale=nil;self.compiled=compiled;previous=compiled.profile.canonicalContext;future=previous }
     fileprivate init(_ mutation: LocalV2GateMutation,_ compiled: LocalV2CompiledPackage?,_ previous: LocalV2CanonicalContext,_ future: LocalV2CanonicalContext) throws {
         guard mutation.previousContext === previous,(future.mode=="adult" ? compiled==nil:compiled != nil) else { throw PinKnownRefusal() }
         if let compiled { guard mutation.compatible === compiled,compiled.profile.contextBinding==future.binding else { throw PinKnownRefusal() } }
-        try mutation.boundary();loader=nil;self.mutation=mutation;self.compiled=compiled;self.previous=previous;self.future=future
+        try mutation.boundary();loader=nil;self.mutation=mutation;childLocale=nil;self.compiled=compiled;self.previous=previous;self.future=future
     }
+    fileprivate init(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter,_ compiled: LocalV2CompiledPackage,_ previous: LocalV2CanonicalContext,_ future: LocalV2CanonicalContext) throws { guard child.original.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current),child.compatible === compiled,child.previousContext === previous,child.futureContext === future,compiled.profile.contextBinding==future.binding else { throw PinKnownRefusal() };try child.boundary();loader=nil;mutation=nil;childLocale=child;self.compiled=compiled;self.previous=previous;self.future=future }
     func scope() throws -> PlanetChildDataStore.Scope { try check();guard let compiled,future.mode=="child" else { throw PinKnownRefusal() };return try LocalV2AdmittedEnvelope.dataScope(compiled) }
     func binding() throws -> String { try check();return future.binding }
     func knownBirth(_ birth: PlanetChildLocalV2KnownBirth) throws {
-        try check();let policy=loader?.writer.policy ?? mutation!.host.operations.writer.policy;guard birth.maximum==policy.maximum,birth.delays==policy.delays,birth.policyVersion==previous.policyVersion,birth.policyChecksum==previous.policyChecksum,(birth.redacted || previous.profiles[birth.profileId] != nil) else { throw PinKnownRefusal() }
+        try check();let policy=loader?.writer.policy ?? childLocale?.writer.policy ?? mutation!.host.operations.writer.policy;guard birth.maximum==policy.maximum,birth.delays==policy.delays,birth.policyVersion==previous.policyVersion,birth.policyChecksum==previous.policyChecksum,(birth.redacted || previous.profiles[birth.profileId] != nil) else { throw PinKnownRefusal() }
     }
     func childRemoval() throws -> PlanetChildLocalV2RemovalTarget? { try check();guard let mutation,mutation.original.action=="delete-child-data" else { return nil };var bytes=try mutation.target.copy();defer { bytes.resetBytes(in:0..<bytes.count) };let target=try LocalV2ChildRemoval.decode(bytes);guard previous.profiles[target.profileId] != nil,(target.scope=="profile" ? future.profiles[target.profileId]==nil:future.profiles==previous.profiles),future.mode=="adult" else { throw PinKnownRefusal() };return target }
     func migrationScope() throws -> PlanetChildDataStore.Scope? { try check();if future.mode=="adult" { return nil };return try scope() }
@@ -8377,14 +8394,14 @@ final class PlanetChildLocalV2DataAdmission {
     func previousBinding() throws -> String { try check();return previous.binding }
     func contentBinding() throws -> String { try check();guard let binding=future.profiles[future.id] else { throw PinKnownRefusal() };return binding }
     func previousContentBinding() throws -> String { try check();guard let binding=previous.profiles[future.id] else { throw PinKnownRefusal() };return binding }
-    func migrationIdentity() throws -> String { try check();guard let mutation else { throw PinKnownRefusal() };var bytes=Data(("LP-LOCAL-V2-DATA-MIGRATION\0"+mutation.original.id+"\0"+mutation.original.action+"\0"+mutation.original.targetChecksum+"\0"+String(mutation.original.generation)+"\0"+String(mutation.original.deadline)+"\0"+previous.binding+"\0"+future.binding).utf8);defer { bytes.resetBytes(in:0..<bytes.count) };return LocalSnapshotV2.hash(bytes) }
-    func acknowledgeCanonical() throws { try check();guard let mutation,let request=mutation.request,mutation.canonicalAcknowledged,!request.mutationUnacknowledged else { throw PinKnownRefusal() };try mutation.boundary();let writer=mutation.host.operations.writer;var actual=try transaction!.read();defer { actual.resetBytes(in:0..<actual.count) };writer.condition.lock();defer { writer.condition.unlock() };try writer.processClock.requireBound(request,actual) }
-    func requireMigrationRetirement() throws { try check();guard let mutation else { throw PinKnownRefusal() };try mutation.host.operations.writer.gateRetirementFence(mutation) }
-    func prepareMigrationRelease() throws { try requireMigrationRetirement();guard let mutation else { throw PinKnownRefusal() };try mutation.host.operations.writer.prepareGateRetirementRelease(mutation) }
-    func migrationUnknown() { guard let mutation,let request=mutation.request else { return };let writer=mutation.host.operations.writer;writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.broadcast();writer.condition.unlock() }
-    func deadlineMs() throws -> UInt64 { let ns=loader?.request.deadline ?? mutation!.original.deadline;return ns/1_000_000 }
-    private func wall() throws -> Int64 { if let loader { return try loader.wall() };return try mutation!.packageWall() }
-    func check() throws { lock.lock();let denied=revoked;lock.unlock();guard !denied,held==ObjectIdentifier(Thread.current),let transaction,let expected else { throw PinKnownRefusal() };if let loader { try loader.live() } else { try mutation!.boundary() };if let compiled { guard try wall()<compiled.until else { throw PinKnownRefusal() };_ = try compiled.keys(wall()) };var actual=try transaction.read(),before=try expected.copy();defer { actual.resetBytes(in:0..<actual.count);before.resetBytes(in:0..<before.count) };guard actual==before else { throw PlanetChildVault.Failure.unavailable } }
+    func migrationIdentity() throws -> String { try check();if let childLocale { return try childLocale.migrationIdentity() };guard let mutation else { throw PinKnownRefusal() };var bytes=Data(("LP-LOCAL-V2-DATA-MIGRATION\0"+mutation.original.id+"\0"+mutation.original.action+"\0"+mutation.original.targetChecksum+"\0"+String(mutation.original.generation)+"\0"+String(mutation.original.deadline)+"\0"+previous.binding+"\0"+future.binding).utf8);defer { bytes.resetBytes(in:0..<bytes.count) };return LocalSnapshotV2.hash(bytes) }
+    func acknowledgeCanonical() throws { try check();if let childLocale { guard let request=childLocale.request,childLocale.canonicalAcknowledged,!request.mutationUnacknowledged,request.receipt?.known==true,request.receipt?.settled==true else { throw PinKnownRefusal() };try childLocale.boundary();var actual=try transaction!.read();defer { actual.resetBytes(in:0..<actual.count) };childLocale.writer.condition.lock();defer { childLocale.writer.condition.unlock() };try childLocale.writer.processClock.requireBound(request,actual);return };guard let mutation,let request=mutation.request,mutation.canonicalAcknowledged,!request.mutationUnacknowledged else { throw PinKnownRefusal() };try mutation.boundary();let writer=mutation.host.operations.writer;var actual=try transaction!.read();defer { actual.resetBytes(in:0..<actual.count) };writer.condition.lock();defer { writer.condition.unlock() };try writer.processClock.requireBound(request,actual) }
+    func requireMigrationRetirement() throws { try check();if let childLocale { try childLocale.completionBoundary();return };guard let mutation else { throw PinKnownRefusal() };try mutation.host.operations.writer.gateRetirementFence(mutation) }
+    func prepareMigrationRelease() throws { try requireMigrationRetirement();if let childLocale { try childLocale.writer.childLocalePrepareRelease(childLocale);return };guard let mutation else { throw PinKnownRefusal() };try mutation.host.operations.writer.prepareGateRetirementRelease(mutation) }
+    func migrationUnknown() { if let childLocale { childLocale.retainUnknown(childLocale.original,PlanetChildVault.Failure.unavailable);return };guard let mutation,let request=mutation.request else { return };let writer=mutation.host.operations.writer;writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.broadcast();writer.condition.unlock() }
+    func deadlineMs() throws -> UInt64 { let ns=loader?.request.deadline ?? childLocale?.original.deadline ?? mutation!.original.deadline;return ns/1_000_000 }
+    private func wall() throws -> Int64 { if let loader { return try loader.wall() };if let childLocale { return try childLocale.packageWall() };return try mutation!.packageWall() }
+    func check() throws { lock.lock();let denied=revoked;lock.unlock();guard !denied,held==ObjectIdentifier(Thread.current),let transaction,let expected else { throw PinKnownRefusal() };if let loader { try loader.live() } else if let childLocale { try childLocale.boundary() } else { try mutation!.boundary() };if let compiled { guard try wall()<compiled.until else { throw PinKnownRefusal() };_ = try compiled.keys(wall()) };var actual=try transaction.read(),before=try expected.copy();defer { actual.resetBytes(in:0..<actual.count);before.resetBytes(in:0..<before.count) };guard actual==before else { throw PlanetChildVault.Failure.unavailable } }
     fileprivate func compiledProfileSame(_ saved: LocalSnapshotV2) throws { guard let compiled else { throw PinKnownRefusal() };try compiled.profile.same(saved) }
     fileprivate func enter(_ transaction: LocalV2Transaction,_ actual: Data) throws { guard self.transaction==nil,held==nil else { throw PinKnownRefusal() };self.transaction=transaction;held=ObjectIdentifier(Thread.current);expected=PinOwnedBytes(actual);do { try check() } catch { leave();throw error } }
     fileprivate func leave() { expected?.close();expected=nil;transaction=nil;held=nil }
@@ -8392,8 +8409,8 @@ final class PlanetChildLocalV2DataAdmission {
     func migrate(_ purpose: PlanetChildDataStore.Purpose,_ value: Data) throws -> Data? { try check();guard let compiled else { throw PinKnownRefusal() };var next=try LocalV2AdmittedEnvelope.migrate(compiled,purpose,value,wall());do { try check();return next } catch { if next != nil { next!.resetBytes(in:0..<next!.count) };throw error } }
     func partition(_ purpose: PlanetChildDataStore.Purpose,_ key: String,_ value: Data) throws -> PlanetChildLocalV2MigrationValue? { try check();guard let compiled else { throw PinKnownRefusal() };let next=try LocalV2AdmittedEnvelope.partition(compiled,purpose,key,value,wall());do { try check();return next } catch { next?.close();throw error } }
     func migratedKey(_ purpose: PlanetChildDataStore.Purpose,_ value: Data) throws -> String { try check();guard let compiled else { throw PinKnownRefusal() };let s=try scope();if purpose == .search || purpose == .history { return s.key(purpose) };let row=try LocalV2PackageValue.object(LocalV2PackageJson.read(value,PlanetChildDataStore.maxValueBytes)),entries=try LocalV2PackageValue.array(row["entries"],4096);guard let first=entries.first,let ref=try LocalV2PackageValue.object(first)["reference"] else { throw PinKnownRefusal() };let id=try LocalV2AdmittedEnvelope.checkedRef(compiled,ref,wall()),pair=id.split(separator:"/");return try s.itemKey(purpose,kind:String(pair[0]),id:String(pair[1])) }
-    func markDataWrite() throws { try check();mutation?.dataWrote=true }
-    func commitCanonical() throws { try check();guard let mutation,let transaction,let expected,let request=mutation.request else { throw PinKnownRefusal() };var before=try expected.copy();defer { before.resetBytes(in:0..<before.count) };try mutation.host.operations.writer.gateCompatibleCommit(mutation,request,transaction,before);var after=try mutation.next!.copy();defer { after.resetBytes(in:0..<after.count) };self.expected?.close();self.expected=PinOwnedBytes(after);try check() }
+    func markDataWrite() throws { try check();mutation?.dataWrote=true;childLocale?.dataWrote=true }
+    func commitCanonical() throws { try check();guard let transaction,let expected else { throw PinKnownRefusal() };var before=try expected.copy();defer { before.resetBytes(in:0..<before.count) };var after: Data;if let childLocale { try childLocale.writer.childLocaleCommit(childLocale,transaction,before);after=try childLocale.plan.bytes.copy() } else { guard let mutation,let request=mutation.request else { throw PinKnownRefusal() };try mutation.host.operations.writer.gateCompatibleCommit(mutation,request,transaction,before);after=try mutation.next!.copy() };defer { after.resetBytes(in:0..<after.count) };self.expected?.close();self.expected=PinOwnedBytes(after);try check() }
     fileprivate func admit() throws { guard let loader,store==nil,compiled != nil else { throw PinKnownRefusal() };try loader.withData(self) { self.store=try PlanetChildDataStore.localV2ExistingOnly();self.lease=try self.store!.admit(self) } }
     fileprivate func batch(_ reads: [PlanetChildDataStore.ReadKey],_ writes: [PlanetChildDataStore.Mutation]) throws -> LocalV2AdmittedResult { guard let loader,let store,let lease else { throw PinKnownRefusal() };var result: PlanetChildDataStore.Result?;defer { result?.dispose();for write in writes { write.dispose() } }
         do { result=try loader.withData(self) { let cancel=try store.admittedOperation(self,lease);return try store.admittedTransact(self,lease,reads:reads,writes:writes,cancellation:cancel) };let owned=LocalV2AdmittedResult(self,result!);result=nil;var handed=false;defer { if !handed { owned.close() } };try publication();try publish { guard self.results.count<64 else { throw PinKnownRefusal() };self.results.append(owned) };handed=true;return owned } catch { revoke();loader.revoke();throw error }
@@ -8402,7 +8419,7 @@ final class PlanetChildLocalV2DataAdmission {
     fileprivate func publication() throws { guard let loader,let compiled else { throw PinKnownRefusal() };try LocalV2AdmittedPublication.check(compiled,wall) { try loader.fresh(compiled.profile) } }
     fileprivate func publish<T>(_ work: () throws -> T) throws -> T { lock.lock();defer { lock.unlock() };guard !revoked,let loader,let compiled else { throw PinKnownRefusal() };try LocalV2AdmittedPublication.check(compiled,wall,loader.live);return try work() }
     fileprivate func failed() { revoke();loader?.revoke() }
-    fileprivate func revoke() { lock.lock();revoked=true;let originals=results,collections=sdkCollections,appearances=sdkAppearanceResults,journeys=sdkJourneyResults,passports=sdkPassportResults;results.removeAll();sdkCollections.removeAll();sdkAppearanceResults.removeAll();sdkJourneyResults.removeAll();sdkPassportResults.removeAll();lock.unlock();for result in originals { result.close() };for collection in collections { collection.close() };for appearance in appearances { appearance.close() };for journey in journeys { journey.close() };for passport in passports { passport.close() } }
+    fileprivate func revoke() { lock.lock();revoked=true;let originals=results,collections=sdkCollections,appearances=sdkAppearanceResults,journeys=sdkJourneyResults,reading=sdkReadingResults,passports=sdkPassportResults;results.removeAll();sdkCollections.removeAll();sdkAppearanceResults.removeAll();sdkJourneyResults.removeAll();sdkReadingResults.removeAll();sdkPassportResults.removeAll();lock.unlock();for result in originals { result.close() };for collection in collections { collection.close() };for appearance in appearances { appearance.close() };for journey in journeys { journey.close() };for result in reading { result.close() };for passport in passports { passport.close() } }
     fileprivate func drain() throws { revoke();if let store { guard let loader else { throw PinKnownRefusal() };try loader.writer.storage.locked { _ in try store.close() };self.store=nil;lease=nil } }
 }
 /** Final freshness may join main only before the ownership lock is taken. */
@@ -8420,13 +8437,14 @@ fileprivate final class LocalV2AdmittedResult {
 /** Fixed Bundle producer reuses either the real loader or the original Gate
  * mutation lane. Future profile compilation cannot mint a second request. */
 fileprivate final class LocalV2FixedPackageProducer {
-    private let loader: LocalV2NativePackageLoader?,mutation: LocalV2GateMutation?,profile: LocalV2PackageProfile
-    init(_ loader: LocalV2NativePackageLoader,_ profile: LocalV2PackageProfile) { self.loader=loader;mutation=nil;self.profile=profile }
-    init(_ mutation: LocalV2GateMutation,_ profile: LocalV2PackageProfile) { loader=nil;self.mutation=mutation;self.profile=profile }
-    private func live() throws { if let loader { try loader.live() } else { try mutation!.boundary() } }
-    private func fresh() throws { if let loader { try loader.fresh(profile) } else { try mutation!.packageFresh() } }
-    private func wall() throws -> Int64 { if let loader { return try loader.wall() };return try mutation!.packageWall() }
-    private func territory() throws -> String { let value=loader?.territory ?? mutation!.territory;guard let value,value==Locale.current.regionCode else { throw PinKnownRefusal() };return value }
+    private let loader: LocalV2NativePackageLoader?,mutation: LocalV2GateMutation?,childLocale: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter?,profile: LocalV2PackageProfile
+    init(_ loader: LocalV2NativePackageLoader,_ profile: LocalV2PackageProfile) { self.loader=loader;mutation=nil;childLocale=nil;self.profile=profile }
+    init(_ mutation: LocalV2GateMutation,_ profile: LocalV2PackageProfile) { loader=nil;self.mutation=mutation;childLocale=nil;self.profile=profile }
+    init(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter,_ profile: LocalV2PackageProfile) { loader=nil;mutation=nil;childLocale=child;self.profile=profile }
+    private func live() throws { if let loader { try loader.live() } else if let childLocale { try childLocale.boundary() } else { try mutation!.boundary() } }
+    private func fresh() throws { if let loader { try loader.fresh(profile) } else if let childLocale { try childLocale.packageFresh() } else { try mutation!.packageFresh() } }
+    private func wall() throws -> Int64 { if let loader { return try loader.wall() };if let childLocale { return try childLocale.packageWall() };return try mutation!.packageWall() }
+    private func territory() throws -> String { let value=loader?.territory ?? childLocale?.territory ?? mutation!.territory;guard let value,value==Locale.current.regionCode else { throw PinKnownRefusal() };return value }
     private func asset(_ fixed: String,_ limit: Int) throws -> Data { if let loader { return try loader.fixedAsset(fixed,limit) };try live();guard fixed=="artifact.json" || fixed=="child-native/catalog-v1.json" || LocalV2PackageValue.matches(fixed,"child-native/(packages|reviews)/[a-f0-9]{64}\\.json"),let resources=Bundle.main.resourceURL else { throw PinKnownRefusal() }
         var current=resources;for part in (["public"]+fixed.split(separator:"/").map(String.init)) { current.appendPathComponent(part);let values=try current.resourceValues(forKeys:[.isSymbolicLinkKey]);guard values.isSymbolicLink != true,current.resolvingSymlinksInPath().standardizedFileURL==current.standardizedFileURL else { throw PinKnownRefusal() } }
         let values=try current.resourceValues(forKeys:[.isRegularFileKey,.fileSizeKey]);guard values.isRegularFile==true,let size=values.fileSize,size>0,size<=limit,let stream=InputStream(url:current) else { throw PinKnownRefusal() };var bytes=[UInt8](repeating:0,count:limit),used=0;stream.open();defer { stream.close();bytes.withUnsafeMutableBytes { $0.initializeMemory(as:UInt8.self,repeating:0) } }
@@ -8524,7 +8542,7 @@ fileprivate final class LocalV2SDKSurface: UIViewController {
  * after the bootstrap callback returns. Every command runs on that same worker
  * and its original deadline. Closure return is observed natively, never by JS. */
 fileprivate final class LocalV2SDKChannel {
-    fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,appearanceHandoff: LocalV2SDKAppearanceHandoff?,journeyHandoff: LocalV2SDKJourneyHandoff?,passportHandoff: LocalV2SDKPassportHandoff?,done=false,returned=false,handedOff=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
+    fileprivate final class Command { let work: (LocalV2OwnedPackageDelivery) throws -> [String:Any];var value: [String:Any]?,error: Error?,appearanceHandoff: LocalV2SDKAppearanceHandoff?,journeyHandoff: LocalV2SDKJourneyHandoff?,readingHandoff:LocalV2SDKReadingHandoff?,passportHandoff: LocalV2SDKPassportHandoff?,done=false,returned=false,handedOff=false;init(_ work: @escaping (LocalV2OwnedPackageDelivery) throws -> [String:Any]) { self.work=work } }
     private let condition=NSCondition();private var command: Command?,closed=false,ready=false,failure: Error?,joined=false
     private(set) var compiled: LocalV2CompiledPackage?,deadline: UInt64=0
     private weak var mediaSDKOwner: PlanetChildLocalV2SDKOwner?
@@ -8551,10 +8569,10 @@ fileprivate final class LocalV2SDKChannel {
         guard !Thread.isMainThread else { throw PinKnownRefusal() };condition.lock();guard ready,!closed,command==nil else { condition.unlock();throw PinKnownRefusal() }
         let original=Command(work);command=original;condition.broadcast()
         while !original.done && !closed { _=condition.wait(until:Date(timeIntervalSinceNow:0.02)) }
-        let value=original.value,error=original.error,receipt=original.appearanceHandoff,journey=original.journeyHandoff,passport=original.passportHandoff
-        original.appearanceHandoff=nil;original.journeyHandoff=nil;original.passportHandoff=nil;condition.unlock()
-        if let error { receipt?.unknown();journey?.unknown();passport?.unknown();throw error }
-        guard original.done,original.returned,original.handedOff,let value else { receipt?.unknown();journey?.unknown();passport?.unknown();throw PinKnownRefusal() }
+        let value=original.value,error=original.error,receipt=original.appearanceHandoff,journey=original.journeyHandoff,passport=original.passportHandoff,reading=original.readingHandoff
+        original.readingHandoff=nil;original.appearanceHandoff=nil;original.journeyHandoff=nil;original.passportHandoff=nil;condition.unlock()
+        if let error { receipt?.unknown();journey?.unknown();reading?.unknown();passport?.unknown();throw error }
+        guard original.done,original.returned,original.handedOff,let value else { receipt?.unknown();journey?.unknown();reading?.unknown();passport?.unknown();throw PinKnownRefusal() }
         try verified?(original)
         if let receipt {
             guard let handoff,handoff.appearance==nil else { receipt.unknown();throw PinKnownRefusal() }
@@ -8563,6 +8581,7 @@ fileprivate final class LocalV2SDKChannel {
         if let journey {
             guard let handoff,handoff.journey==nil else { journey.unknown();throw PinKnownRefusal() };handoff.journey=journey
         }
+        if let reading {guard let handoff,handoff.reading==nil else{reading.unknown();throw PinKnownRefusal()};handoff.reading=reading}
         if let passport { guard let handoff,handoff.passport==nil else { passport.unknown();throw PinKnownRefusal() };handoff.passport=passport }
         return value
     }
@@ -8578,6 +8597,205 @@ fileprivate final class LocalV2PendingParentRequest {
     init(_ request: PlanetChildLocalV2Wire.Request) { id=request.id;token=request.token }
     func matches(_ token: String?) -> Bool { token != nil && token==self.token }
 }
+fileprivate struct LocalV2ChildLocaleCommand {
+    let id: String,token: String,profileId: String,locale: String
+    let generation: UInt64,expectedProfileRevision: UInt64
+    init(id: String,token: String,generation: UInt64,profileId: String,revision: UInt64,locale: String) throws {
+        guard LocalV2PackageValue.matches(id,"[a-f0-9]{32}"),LocalV2PackageValue.matches(token,"[a-f0-9]{32}"),
+            generation>0,generation<=9007199254740991,revision>0,revision<9007199254740991,
+            LocalV2PackageValue.matches(profileId,"[A-Za-z0-9][A-Za-z0-9._-]{0,95}"),["ru","en"].contains(locale) else { throw PinKnownRefusal() }
+        self.id=id;self.token=token;self.generation=generation;self.profileId=profileId;expectedProfileRevision=revision;self.locale=locale
+    }
+    // Future strict Wire.Request accepts only version2/requestId/contextToken/
+    // generation/profileId/expectedProfileRevision/locale. No supplied clock or grant.
+}
+fileprivate final class LocalV2ChildLocalePlan {
+    let beforeChecksum: String,afterChecksum: String,profileId: String,previousLocale: String,locale: String
+    let bytes: PinOwnedBytes
+    init(_ before: LocalSnapshotV2,_ command: LocalV2ChildLocaleCommand,_ previous: String,_ next: Data) throws {
+        var old=try before.copyCanonicalBytes();defer { old.resetBytes(in:0..<old.count) }
+        beforeChecksum=LocalSnapshotV2.hash(old);afterChecksum=LocalSnapshotV2.hash(next);profileId=command.profileId;previousLocale=previous;locale=command.locale;bytes=PinOwnedBytes(next)
+    }
+    func close(){ bytes.close() }
+    deinit { close() }
+}
+fileprivate extension PlanetChildVault.ProtectedEnvelope {
+    // PURE ONLY: no prepared bytes are a storage permission or an admitted context.
+    static func localV2PrepareChildLocale(_ before: LocalSnapshotV2,_ command: LocalV2ChildLocaleCommand) throws -> LocalV2ChildLocalePlan {
+        try require(before.fields.revision<9007199254740991 && before.journal.revision<9007199254740991)
+        var raw=try before.copyProtectedBytes();defer { raw.resetBytes(in:0..<raw.count) };let storage=Storage(raw);defer { storage.wipe() };let p=Cursor(storage)
+        try p.field("schemaVersion",first:true);_ = try p.number(2,2);try p.field("revision");try require(p.number(1,9007199254740991)==before.fields.revision)
+        try p.field("mode");try require(p.asciiString()=="child");try p.field("selectionRevision");let selection=try p.number(1,9007199254740991);try require(selection<9007199254740991)
+        try p.field("profileRevision");let revision=try p.number(1,9007199254740991);try require(revision==command.expectedProfileRevision && revision<9007199254740991)
+        try p.field("policyChecksum");try require(p.asciiString()==before.policy.checksum);try p.field("registryChecksum");let oldSum=try p.asciiString()
+        try p.field("registry");let registryStart=p.index;guard let active=try registry(p,version:before.policy.version),active==command.profileId else { throw PinKnownRefusal() };let registryEnd=p.index
+        var oldRegistry=raw.subdata(in:registryStart..<registryEnd);defer { oldRegistry.resetBytes(in:0..<oldRegistry.count) };try require(LocalSnapshotV2.hash(oldRegistry)==oldSum)
+        let registryStorage=Storage(oldRegistry);defer { registryStorage.wipe() };let r=Cursor(registryStorage)
+        try r.field("schemaVersion",first:true);_ = try r.number(1,1);try r.field("policyVersion");try require(r.asciiString()==before.policy.version);try r.field("activeProfileId");try require(r.asciiString()==active)
+        try r.field("profiles");try r.token("[");var profiles=[Data](),selected: Int?
+        defer { for index in profiles.indices { profiles[index].resetBytes(in:0..<profiles[index].count) } }
+        if !r.take("]") { repeat { let start=r.index,id=try profile(r);if id==active { try require(selected==nil);selected=profiles.count };profiles.append(oldRegistry.subdata(in:start..<r.index)) } while r.take(",");try r.token("]") }
+        try r.token("}");try require(r.index==oldRegistry.count);guard let selected else { throw PinKnownRefusal() }
+        let fields=try LocalV2PackageValue.object(LocalV2PackageJson.read(profiles[selected],65536))
+        guard case .bool(false)?=fields["localeLocked"],let rawPolicy=fields["localePolicy"] else { throw PinKnownRefusal() }
+        let previous=try LocalV2PackageValue.text(fields["locale"]);try require(previous != command.locale)
+        let policy=try LocalV2SDKProfileDraft.localePolicy(rawPolicy,currentLocale:previous),policyFields=try LocalV2PackageValue.object(policy,["schemaVersion","allowedLocales"])
+        let allowed=try LocalV2PackageValue.array(policyFields["allowedLocales"],2).map { try LocalV2PackageValue.text($0) };try require(allowed.contains(command.locale))
+        guard let original=String(data:profiles[selected],encoding:.utf8),let marker=original.range(of:",\"locale\":") else { throw PinKnownRefusal() }
+        try require(original.range(of:",\"locale\":",range:marker.upperBound..<original.endIndex)==nil)
+        let oldValue=LocalV2PackageValue.quote(previous);try require(original[marker.upperBound...].hasPrefix(oldValue))
+        let end=original.index(marker.upperBound,offsetBy:oldValue.count),changed=String(original[..<marker.upperBound])+LocalV2PackageValue.quote(command.locale)+String(original[end...])
+        var profileBytes=Data(changed.utf8);defer { profileBytes.resetBytes(in:0..<profileBytes.count) };let checkedStorage=Storage(profileBytes);defer { checkedStorage.wipe() };let checked=Cursor(checkedStorage)
+        try require(profile(checked)==active && checked.index==profileBytes.count)
+        profiles[selected].resetBytes(in:0..<profiles[selected].count);profiles[selected]=Data(Array(profileBytes))
+        var nextRegistry=Data("{\"schemaVersion\":1,\"policyVersion\":\(LocalV2PackageValue.quote(before.policy.version)),\"activeProfileId\":\(LocalV2PackageValue.quote(active)),\"profiles\":[".utf8)
+        defer { nextRegistry.resetBytes(in:0..<nextRegistry.count) };for index in profiles.indices { if index>0 { nextRegistry.append(44) };nextRegistry.append(profiles[index]) };nextRegistry.append(Data("]}".utf8))
+        var protectedBytes=Data("{\"schemaVersion\":2,\"revision\":\(before.fields.revision+1),\"mode\":\"child\",\"selectionRevision\":\(selection+1),\"profileRevision\":\(revision+1),\"policyChecksum\":\(LocalV2PackageValue.quote(before.policy.checksum)),\"registryChecksum\":\(LocalV2PackageValue.quote(LocalSnapshotV2.hash(nextRegistry))),\"registry\":".utf8)
+        defer { protectedBytes.resetBytes(in:0..<protectedBytes.count) };protectedBytes.append(nextRegistry);protectedBytes.append(Data(",\"pin\":".utf8));protectedBytes.append(raw.suffix(from:before.fields.pinStart))
+        // Original PIN/attempts/credential/logical suffix is not regenerated/reset.
+        let next=try LocalSnapshotV2.wrapper(protectedBytes,policy:before.policy,rootRevision:before.fields.revision+1,journalRevision:before.journal.revision+1,pin:before.fields.pin);defer { next.close() }
+        var bytes=try next.copyCanonicalBytes();defer { bytes.resetBytes(in:0..<bytes.count) };return try LocalV2ChildLocalePlan(before,command,previous,bytes)
+    }
+    static func localV2ValidateChildLocale(_ before: LocalSnapshotV2,_ after: LocalSnapshotV2,_ command: LocalV2ChildLocaleCommand) throws {
+        try require(LocalSnapshotV2.samePolicy(before,after));let expected=try localV2PrepareChildLocale(before,command);defer { expected.close() }
+        var wanted=try expected.bytes.copy(),actual=try after.copyCanonicalBytes();defer { wanted.resetBytes(in:0..<wanted.count);actual.resetBytes(in:0..<actual.count) };try require(wanted==actual)
+    }
+}
+fileprivate final class LocalV2ChildLocaleOriginal {
+    let owner: PlanetChildLocalV2SDKOwner,context: PlanetChildLocalV2SDKOwner.Context,command: LocalV2ChildLocaleCommand,deadline: UInt64,before: PinOwnedBytes,checksum: String
+    fileprivate let lock=NSLock();private var cancelled=false
+    fileprivate var worker: Thread?,request: LocalV2Request?
+    fileprivate init(_ owner: PlanetChildLocalV2SDKOwner,_ context: PlanetChildLocalV2SDKOwner.Context,_ command: LocalV2ChildLocaleCommand,_ bytes: Data) {
+        self.owner=owner;self.context=context;self.command=command;deadline=context.deadline;checksum=context.checksum;before=PinOwnedBytes(bytes)
+    }
+    func revoke(){ lock.lock();cancelled=true;lock.unlock() }
+    func current() throws { lock.lock();let denied=cancelled;lock.unlock();guard !denied else { throw PinKnownRefusal() };try owner.childLocaleOriginalLive(self) }
+    func close(){ before.close() }
+    deinit { close() }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    // Same-file extension can inspect actual private context; caller cannot mint it.
+    func captureChildLocaleOriginal(_ command: LocalV2ChildLocaleCommand,_ actualBytes: Data) throws -> LocalV2ChildLocaleOriginal {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() };let original=try requireContext(command.token);try fresh(original)
+        lock.lock();let exclusive=busy && !sealed && context === original && seen.contains(command.id);lock.unlock()
+        guard exclusive,original.status=="child",original.generation==command.generation,
+            original.metadata["profileId"] as? String==command.profileId,
+            original.metadata["profileRevision"] as? Int64==Int64(command.expectedProfileRevision),LocalSnapshotV2.hash(actualBytes)==original.checksum else { throw PinKnownRefusal() }
+        _ = try remaining(original.deadline);return LocalV2ChildLocaleOriginal(self,original,command,actualBytes)
+    }
+    func childLocaleOriginalLive(_ original: LocalV2ChildLocaleOriginal) throws {
+        lock.lock();let denied=sealed || !busy || pendingChildLocale?.original !== original;lock.unlock();guard original.owner === self,!denied else { throw PinKnownRefusal() };_ = try remaining(original.deadline)
+    }
+}
+// Private native-owner-only methods, filled by ChildLocaleAdapter in this SDK owner;
+// no JS or fixture factory may implement these methods in production. Each method
+// checks pendingChildLocale === original plus native lifecycle/worker ownership.
+fileprivate protocol LocalV2ChildLocaleNativePort: AnyObject {
+    func workerReturned(_ original: LocalV2ChildLocaleOriginal)
+    func captureActual(_ command: LocalV2ChildLocaleCommand) throws -> LocalV2ChildLocaleOriginal
+    func sealAndJoinOriginalOwners(_ original: LocalV2ChildLocaleOriginal) throws
+    func claimClosedOriginalClock(_ original: LocalV2ChildLocaleOriginal) throws -> LocalV2Request
+    func originalBoundary(_ original: LocalV2ChildLocaleOriginal) throws
+    func compileFuture(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan) throws -> LocalV2CompiledPackage
+    func preflightCanonicalContinuity(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ compiled: LocalV2CompiledPackage) throws
+    func makeChildLocaleAdmission(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ compiled: LocalV2CompiledPackage) throws -> PlanetChildLocalV2DataAdmission
+    func migrateAndAcknowledgeReadback(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ admission: PlanetChildLocalV2DataAdmission) throws
+    func completeAfterActualWorkerJoined(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ admission: PlanetChildLocalV2DataAdmission) throws
+    func releasePreparedNativeLane(_ original: LocalV2ChildLocaleOriginal)
+    func bootstrapOriginalDeadline(_ original: LocalV2ChildLocaleOriginal) throws -> [String:Any]
+    func retireNoWrite(_ original: LocalV2ChildLocaleOriginal) throws
+    func retainUnknown(_ original: LocalV2ChildLocaleOriginal,_ error: Error)
+}
+fileprivate final class LocalV2ChildLocaleWorkState {
+    let lock=NSLock();var plan: LocalV2ChildLocalePlan?,compiled: LocalV2CompiledPackage?,admission: PlanetChildLocalV2DataAdmission?,failure: Error?,mayHaveWritten=false
+}
+fileprivate enum LocalV2ChildLocaleTransaction {
+    static func run(_ native: LocalV2ChildLocaleNativePort,_ command: LocalV2ChildLocaleCommand) throws -> [String:Any] {
+        guard !Thread.isMainThread else { throw PinKnownRefusal() };let original=try native.captureActual(command),state=LocalV2ChildLocaleWorkState();var completed=false,workerJoined=false,cleanupKnown=false
+        defer {
+            state.lock.lock();let plan=state.plan,compiled=state.compiled;state.lock.unlock()
+            if completed || cleanupKnown { compiled?.close();plan?.close();original.close() }
+        }
+        do {
+            try original.current();try native.originalBoundary(original);try native.sealAndJoinOriginalOwners(original);try original.current()
+            let request=try native.claimClosedOriginalClock(original);guard request.deadline==original.deadline else { throw PinKnownRefusal() };original.request=request
+            let worker=Thread {
+                defer { native.workerReturned(original) }
+                do {
+                    try original.current();try native.originalBoundary(original);var before=try original.before.copy();defer { before.resetBytes(in:0..<before.count) }
+                    let old=try LocalSnapshotV2.decode(before,policy:original.owner.childLocalePolicy);defer { old.close() }
+                    let plan=try PlanetChildVault.ProtectedEnvelope.localV2PrepareChildLocale(old,command);state.lock.lock();state.plan=plan;state.lock.unlock()
+                    let compiled=try native.compileFuture(original,plan);state.lock.lock();state.compiled=compiled;state.lock.unlock()
+                    guard compiled.profile.recordChecksum==plan.afterChecksum,compiled.profile.id==command.profileId,compiled.profile.locale==command.locale else { throw PinKnownRefusal() }
+                    try native.preflightCanonicalContinuity(original,plan,compiled);try original.current();try native.originalBoundary(original)
+                    let admission=try native.makeChildLocaleAdmission(original,plan,compiled);state.lock.lock();state.admission=admission;state.mayHaveWritten=true;state.lock.unlock()
+                    try native.migrateAndAcknowledgeReadback(original,plan,admission);try original.current();try native.originalBoundary(original)
+                } catch { state.lock.lock();state.failure=error;state.lock.unlock() }
+            }
+            worker.name="lp-child-locale-canonical";original.worker=worker;worker.start()
+            // Actual native Thread terminal, not an acknowledgement count or DTO.
+            while !worker.isFinished { Thread.sleep(forTimeInterval:0.001) };workerJoined=true
+            state.lock.lock();let error=state.failure,plan=state.plan,admission=state.admission;state.lock.unlock();if let error { throw error }
+            guard let plan,let admission else { throw PinKnownRefusal() };try original.current();try native.originalBoundary(original)
+            try native.completeAfterActualWorkerJoined(original,plan,admission);native.releasePreparedNativeLane(original);completed=true
+            return try native.bootstrapOriginalDeadline(original)
+        } catch {
+            state.lock.lock();let write=state.mayHaveWritten;state.lock.unlock()
+            if !completed { if original.worker != nil && !workerJoined || write { native.retainUnknown(original,error) }
+                else { do { try native.retireNoWrite(original);cleanupKnown=true } catch let cleanup { native.retainUnknown(original,cleanup) } } }
+            throw error
+        }
+    }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    // Read-only operational policy accessor, no new policy/owner factory.
+    var childLocalePolicy: LocalSnapshotV2Policy { policy }
+}
+
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    func childLocalePendingOriginal(_ original: LocalV2ChildLocaleOriginal) -> Bool { lock.lock();defer { lock.unlock() };return !sealed && busy && pendingChildLocale?.original === original }
+}
+
+fileprivate extension LocalV2Writer {
+    func childLocaleClosedOriginalFence(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) throws {
+        try child.baseBoundary();let now=try clock.nanoseconds();condition.lock();defer { condition.unlock() };guard active==nil,processClock.preparingOwner==nil,!processClock.invalidated,child.oldRequest.retired,!child.oldRequest.sealed,child.oldRequest.workers==0,child.oldRequest.events==0,child.oldRequest.cleanup==0,processClock.known?.checksum==child.original.checksum else { throw PinKnownRefusal() };try processClock.observe(now);guard now<child.original.deadline else { throw PinKnownRefusal() }
+    }
+    func childLocaleBegin(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) throws {
+        let request=child.request!;guard request.childLocaleOriginal === child.original,child.original.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };try start(request,opened:false);_ = try current(request)
+        var before=try child.original.before.copy();defer { before.resetBytes(in:0..<before.count) };condition.lock();request.expected=PinOwnedBytes(before);request.opened=true;condition.unlock()
+    }
+    func childLocaleCommit(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter,_ transaction: LocalV2Transaction,_ before: Data) throws {
+        let request=child.request!;try child.boundary();guard request.childLocaleOriginal === child.original,request.workerThread==ObjectIdentifier(Thread.current),LocalSnapshotV2.hash(before)==child.original.checksum else { throw PinKnownRefusal() }
+        let old=try LocalSnapshotV2.decode(before,policy:policy);defer { old.close() };var after=try child.plan.bytes.copy();defer { after.resetBytes(in:0..<after.count) };let next=try LocalSnapshotV2.decode(after,policy:policy);defer { next.close() };try PlanetChildVault.ProtectedEnvelope.localV2ValidateChildLocale(old,next,child.command)
+        condition.lock();request.mutationUnacknowledged=true;condition.unlock();child.wrote=true;try write(transaction,request,before,after,permission:child.boundary)
+        condition.lock();do { try processClock.stageChildLocale(request,after,next,child.original);request.expected?.close();request.expected=PinOwnedBytes(after);condition.unlock() } catch { condition.unlock();throw error }
+    }
+    func childLocaleMigrate(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) throws {
+        let request=child.request!;do { try child.packageFresh();child.dataStore=try PlanetChildDataStore.localV2ExistingOnly()
+            try storage.locked { transaction in try child.boundary();var actual=try transaction.read(),before=try child.original.before.copy();defer { actual.resetBytes(in:0..<actual.count);before.resetBytes(in:0..<before.count) };condition.lock();do { try processClock.requireBound(request,actual);condition.unlock() } catch { condition.unlock();throw error };guard actual==before else { throw PlanetChildVault.Failure.unavailable };try child.admission.enter(transaction,actual);defer { child.admission.leave() };try child.dataStore.migrate(child.admission) }
+            finish(request)
+        } catch { fail(request,error,publication:child.wrote || child.dataWrote);childLocaleFinishIfStarted(request);throw error }
+        var after=try child.plan.bytes.copy();defer { after.resetBytes(in:0..<after.count) };let next=try LocalSnapshotV2.decode(after,policy:policy);defer { next.close() };var receipt: LocalV2StorageReceipt?
+        try publish(request,next,after,false) { original in try child.boundary();guard original.request === request,request.childLocaleOriginal === child.original else { throw PinKnownRefusal() };receipt=original };guard let receipt else { throw PlanetChildVault.Failure.unavailable };try settle(receipt,known:true);child.canonicalAcknowledged=true
+        try storage.locked { transaction in try child.boundary();var actual=try transaction.read();defer { actual.resetBytes(in:0..<actual.count) };condition.lock();do { try processClock.requireBound(request,actual);condition.unlock() } catch { condition.unlock();throw error };guard actual==after else { throw PlanetChildVault.Failure.unavailable };try child.admission.enter(transaction,actual);defer { child.admission.leave() };try child.dataStore.migrationReadback(child.admission) };child.known=true;try child.boundary()
+    }
+    func childLocaleFinishIfStarted(_ request: LocalV2Request?) { guard let request else { return };condition.lock();let own=request.workers==1 && request.workerThread==ObjectIdentifier(Thread.current);condition.unlock();if own { finish(request) } }
+    func childLocaleHoldRetirement(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) throws {
+        try child.completionBoundary();let request=child.request!;condition.lock();guard active === request,request.owner === self,!request.retiring,!request.retired,request.workers==0,request.events==0,!request.cancelled,!request.sealed,request.receipt?.known==true,request.receipt?.settled==true,!request.mutationUnacknowledged else { condition.unlock();throw PinKnownRefusal() };request.retiring=true;request.cleanup=1;condition.unlock()
+        DispatchQueue.main.sync { for observer in request.observers { NotificationCenter.default.removeObserver(observer) };request.observers.removeAll() };child.retirementHeld=true;try childLocaleRetirementFence(child)
+    }
+    func childLocaleRetirementFence(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) throws {
+        try child.baseBoundary();let request=child.request!,now=try clock.nanoseconds();condition.lock();defer { condition.unlock() };guard active === request,request.owner === self,request.childLocaleOriginal === child.original,request.process==getpid(),processClock.matches(policy),!processClock.invalidated,child.original.worker?.isFinished==true,child.retirementHeld,child.known,child.canonicalAcknowledged,request.retiring,!request.retired || child.retirementReady,request.workers==0,request.events==0,request.cleanup==1,request.observers.isEmpty,!request.cancelled,!request.sealed,!request.mutationUnacknowledged,request.receipt?.known==true,request.receipt?.settled==true,processClock.known?.checksum==child.plan.afterChecksum else { throw PinKnownRefusal() };try processClock.observe(now);guard now>=request.last,now<request.deadline else { throw PinKnownRefusal() };request.last=now
+    }
+    func childLocalePrepareRelease(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) throws { try childLocaleRetirementFence(child);let request=child.request!;condition.lock();defer { condition.unlock() };try processClock.prepareNativeRetirementRelease(request);child.retirementReady=true;request.retired=true }
+    func childLocaleReleasePrepared(_ child: PlanetChildLocalV2SDKOwner.ChildLocaleAdapter) { let request=child.request!;condition.lock();defer { condition.unlock() };request.cleanup=0;request.wipe();request.expected=nil;request.sample=nil;request.receipt=nil;request.reservation=nil;processClock.releasePreparedNativeRetirement(request);condition.broadcast() }
+}
+fileprivate extension LocalV2ProcessClock {
+    func stageChildLocale(_ request: LocalV2Request,_ bytes: Data,_ snapshot: LocalSnapshotV2,_ original: LocalV2ChildLocaleOriginal) throws {
+        guard request.childLocaleOriginal === original,original.request === request,original.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current),original.owner.childLocalePendingOriginal(original) else { throw PinKnownRefusal() };try original.current();var before=try original.before.copy();defer { before.resetBytes(in:0..<before.count) };let old=try LocalSnapshotV2.decode(before,policy:snapshot.policy);defer { old.close() };try PlanetChildVault.ProtectedEnvelope.localV2ValidateChildLocale(old,snapshot,original.command);try stage(request,bytes,snapshot)
+    }
+}
+
 final class PlanetChildLocalV2SDKOwner {
     typealias Reply=([String:Any])->Void
     private let io=DispatchQueue(label:"ru.probpera.literaryplanet.child.local-sdk-v2"),lock=NSLock(),vault: PlanetChildVault,policy: LocalSnapshotV2Policy
@@ -8594,7 +8812,7 @@ final class PlanetChildLocalV2SDKOwner {
     private var mediaEpoch: UInt64=0,mediaPresentations=[String:PlanetChildLocalV2MediaPresentation](),mediaRetiring=[PlanetChildLocalV2MediaPresentation](),mediaReleases=Set<String>()
     private var reader: (LocalV2Writer,LocalV2Request)?,loader: LocalV2NativePackageLoader?,channel: LocalV2SDKChannel?,gate: LocalV2GateHost?,profile: LocalV2ProfileOperation?,rotation: LocalV2SDKPinRotation?,enrollment: LocalV2PinOperation?
     private var firstInstall: (NativeChildFirstInstallV2,OriginalFirstInstallV2)?
-    private var pendingParentRequest: LocalV2PendingParentRequest?;private var exportCustody: ExportCustody?
+    private var pendingParentRequest: LocalV2PendingParentRequest?;private var exportCustody: ExportCustody?;private var pendingChildLocale: ChildLocaleAdapter?
     private var activeJourney: LocalV2JourneyLease?,journeyEpoch: UInt64=0
     private let invalidated: ([String:Any])->Void
     fileprivate final class Context {
@@ -8639,7 +8857,7 @@ final class PlanetChildLocalV2SDKOwner {
         return false
     }
     func nativeViewWillDisappear() { guard Thread.isMainThread else { routeWillChange();return };if exportCustody?.ownsPicker==true { return };if let presented=surface.presentedViewController,presented is LocalV2PinViewController || presented is LocalV2ProfileConfirmation || presented is LocalV2SDKPinInput { return };routeWillChange() }
-    func routeWillChange(reason: String="cancelled") { exportCustody?.cancel()
+    func routeWillChange(reason: String="cancelled") { lock.lock();let child=pendingChildLocale;lock.unlock();child?.original?.revoke();if let child,let request=child.request { child.writer.cancel(request) };exportCustody?.cancel()
         let clear={ [self] in surface.seal();concealMedia();expiry?.cancel();expiry=nil }
         if Thread.isMainThread { clear() } else { DispatchQueue.main.sync(execute:clear) }
         lock.lock();pendingParentRequest?.cancelled=true;let old=context;context=nil;activeJourney=nil;journeyEpoch &+= 1;sealed=true;lock.unlock();channel?.close();loader?.routeWillChange();gate?.routeWillChange();profile?.revoke();rotation?.revoke();if let enrollment { enrollment.owner.writer.cancel(enrollment.request) };if let firstInstall { firstInstall.0.cancel(firstInstall.1) };if let reader { reader.0.cancel(reader.1) }
@@ -8651,7 +8869,7 @@ final class PlanetChildLocalV2SDKOwner {
     private func refused(_ request: PlanetChildLocalV2Wire.Request,_ reason: String) -> [String:Any] { PlanetChildLocalV2Wire.refusal(request.method,["requestId":request.id,"contextToken":request.token as Any? ?? NSNull()],reason:reason,generation:generation) }
     func execute(_ request: PlanetChildLocalV2Wire.Request,reply: @escaping Reply) {
         lock.lock();let retirement=request.method=="retire",originalDeadline=context?.deadline,release=["releaseMedia","releaseScene","releaseWebResource","closeJourney"].contains(request.method)
-        let cancelReplacement=busy && request.method=="perform" && pendingParentRequest?.matches(request.token)==true
+        let cancelReplacement=busy && (request.method=="perform" || request.method=="changeChildLocale") && (pendingParentRequest?.matches(request.token)==true || pendingChildLocale?.command.token==request.token)
         if cancelReplacement { pendingParentRequest?.cancelled=true }
         let releaseAllowed=release && !sealed && request.token==context?.token
         let accepted = (retirement || releaseAllowed || !busy && !sealed) && (!retirement || request.token==nil || issuedTokens.contains(request.token!)) && (!release || releaseAllowed) && seen.count<2048 && seen.insert(request.id).inserted
@@ -8671,7 +8889,7 @@ final class PlanetChildLocalV2SDKOwner {
                     if known { concealMedia(token) } else { routeWillChange(reason:"unavailable") }
                 } else { concealMedia() }
             } else if retirement { routeWillChange() }
-            else if request.method=="perform" || request.method=="bootstrap" { surface.seal();concealMedia() }
+            else if request.method=="perform" || request.method=="changeChildLocale" || request.method=="bootstrap" { surface.seal();concealMedia() }
         }
         if Thread.isMainThread { fast() } else { DispatchQueue.main.sync(execute:fast) }
         io.async { [self] in
@@ -8690,12 +8908,13 @@ final class PlanetChildLocalV2SDKOwner {
                 }
                 // This nonthrowing original SDK callback joins main resolve.
                 // Its delivery is not a distributed exactly-once JS receipt.
+                if let reading=handoff.reading {guard let channel else{throw PinKnownRefusal()};try reading.validate(on:channel);try reading.finish()}
                 if let journey=handoff.journey { guard let channel else { throw PinKnownRefusal() };try journey.validate(on:channel);try journey.finish() }
                 if let passport=handoff.passport { guard let channel else { throw PinKnownRefusal() };try passport.validate(on:channel);try passport.finish() }
-                if let chunk=handoff.chunk { try chunk.resolve(value,reply) } else { reply(value) };handoff.chunk?.close();handoff.appearance?.close();handoff.journey?.close();handoff.passport?.close()
+                if let chunk=handoff.chunk { try chunk.resolve(value,reply) } else { reply(value) };handoff.chunk?.close();handoff.appearance?.close();handoff.journey?.close();handoff.reading?.close();handoff.passport?.close()
             }
             catch {
-                handoff.chunk?.close();handoff.appearance?.unknown();handoff.journey?.unknown();handoff.passport?.unknown()
+                handoff.chunk?.close();handoff.appearance?.unknown();handoff.journey?.unknown();handoff.reading?.unknown();handoff.passport?.unknown()
                 let originalError=error;DispatchQueue.main.sync { surface.seal() };lock.lock();let old=context;context=nil;lock.unlock()
                 do { try joinOwners();lock.lock();let unknown=sealed;lock.unlock();guard !unknown else { reply(refused(request,"pending"));return }
                     if request.method=="perform",request.action=="export-child-data",originalError is PinKnownRefusal || originalError is PinVerificationRefusal {
@@ -8716,11 +8935,13 @@ final class PlanetChildLocalV2SDKOwner {
         switch r.method {
         case "bootstrap":lock.lock();let exists=context != nil;lock.unlock();guard !exists else { throw PinKnownRefusal() };return try bootstrap(r.id,deadline:nil)
         case "readContext":let c=try requireContext(r.token);try fresh(c);return try response(r.id,c)
+        case "changeChildLocale":let child=try ChildLocaleAdapter(self,r);return try LocalV2ChildLocaleTransaction.run(child,child.command)
         case "perform":return try perform(r)
         case "retire":try DispatchQueue.main.sync { surface.seal() };lock.lock();context=nil;lock.unlock();try joinOwners();lock.lock();guard !sealed else { lock.unlock();throw PlanetChildVault.Failure.unavailable };lock.unlock();return ["version":2,"requestId":r.id,"status":"retired","contextToken":r.token as Any? ?? NSNull()]
         default:let c=try requireContext(r.token);guard c.status=="child",let channel else { throw PinKnownRefusal() };return try channel.invoke(handoff:handoff) { [self] delivery in
             try requireOriginal(c,delivery);let value: Any
-            if ["listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].contains(r.method) {
+            if ["readReadingPosition","rememberReadingPosition"].contains(r.method){value=try readingPerform(r,c,delivery)
+            }else if ["listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].contains(r.method) {
                 value=try passportPerform(r,c,delivery)
             } else if ["listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney"].contains(r.method) {
                 value=try journeyPerform(r,c,delivery,capturedJourneyEpoch)
@@ -8783,6 +9004,7 @@ final class PlanetChildLocalV2SDKOwner {
         return (seed ? "unenrolled":mode,metadata,profiles)
     }
     private func joinOwners() throws {
+        if let pendingChildLocale { guard pendingChildLocale.joiningOriginal,pendingChildLocale.controlThread==ObjectIdentifier(Thread.current) else { throw PlanetChildVault.Failure.unavailable } }
         if let exportCustody { exportCustody.cancel();exportCustody.close();guard exportCustody.retired else { throw PlanetChildVault.Failure.unavailable };self.exportCustody=nil }
         journeyRetireFast()
         guard !Thread.isMainThread else { throw PinKnownRefusal() };do { try PlanetChildParentExportFiles.cleanResidue(FileManager.default.temporaryDirectory.resolvingSymlinksInPath().standardizedFileURL) } catch { lock.lock();sealed=true;lock.unlock();throw error };expiry?.cancel();expiry=nil
@@ -8807,7 +9029,7 @@ final class PlanetChildLocalV2SDKOwner {
         init(_ owner: PlanetChildLocalV2SDKOwner,_ request: PlanetChildLocalV2Wire.Request,_ snapshot: Data,_ deadline: UInt64) throws {
             guard request.action=="export-child-data",let target=request.target,!snapshot.isEmpty,snapshot.count<=PlanetChildParentExportCodec.maximumBytes else { throw PinKnownRefusal() }
             let targetRow=try LocalV2PackageValue.object(LocalV2PackageJson.read(target,4096),["profileId"]),selected=try LocalV2PackageValue.identifier(targetRow["profileId"])
-            let root=try LocalV2PackageValue.object(LocalV2PackageJson.read(snapshot,PlanetChildParentExportCodec.maximumBytes),["schemaVersion","format","profile","collections","appearance","journeys","passport","downloads"])
+            let value=try LocalV2PackageJson.read(snapshot,PlanetChildParentExportCodec.maximumBytes),rawRoot=try LocalV2PackageValue.object(value),root=try LocalV2PackageValue.object(value,rawRoot["readingPositions"]==nil ? ["schemaVersion","format","profile","collections","appearance","journeys","passport","downloads"]:["schemaVersion","format","profile","collections","appearance","journeys","passport","downloads","readingPositions"])
             guard try LocalV2PackageValue.number(root["schemaVersion"],1,1)==1,try LocalV2PackageValue.text(root["format"])=="literary-planet-child-personal-data",try LocalV2PackageValue.identifier(LocalV2PackageValue.object(root["profile"])["id"])==selected else { throw PinKnownRefusal() }
             owner.lock.lock();let original=owner.pendingParentRequest;owner.lock.unlock();guard let original,original.id==request.id,original.token==request.token,!original.cancelled else { throw PinKnownRefusal() }
             self.owner=owner;self.request=request;originalPending=original;self.deadline=deadline;profileId=selected;bytes=snapshot;count=snapshot.count;checksum=LocalSnapshotV2.hash(snapshot);super.init();try current()
@@ -8874,6 +9096,73 @@ final class PlanetChildLocalV2SDKOwner {
             var cleaned=true;if let file=temporaryFile { if Darwin.unlink(file.path) != 0 && errno != ENOENT { cleaned=false } };if let directory=temporaryDirectory { if Darwin.rmdir(directory.path) != 0 && errno != ENOENT { cleaned=false } };temporaryFile=nil;temporaryDirectory=nil;bytes.resetBytes(in:0..<bytes.count);bytes.removeAll();cleanupKnown=cleaned;if !cleaned { owner.lock.lock();owner.sealed=true;owner.lock.unlock() }
         }
     }
+        fileprivate final class ChildLocaleAdapter: LocalV2ChildLocaleNativePort {
+        let owner: PlanetChildLocalV2SDKOwner,command: LocalV2ChildLocaleCommand,controlThread: ObjectIdentifier
+        var original: LocalV2ChildLocaleOriginal!,writer: LocalV2Writer!,oldRequest: LocalV2Request!,request: LocalV2Request!
+        var plan: LocalV2ChildLocalePlan!,compatible: LocalV2CompiledPackage!,previousContext: LocalV2CanonicalContext!,futureContext: LocalV2CanonicalContext!
+        var admission: PlanetChildLocalV2DataAdmission!,dataStore: PlanetChildDataStore!
+        var joiningOriginal=false,wrote=false,dataWrote=false,canonicalAcknowledged=false,known=false,retired=false,retirementHeld=false,retirementReady=false
+        private var previousEntities=Set<String>(),previousHome: String?,wallLast: Int64=0
+        fileprivate var territory: String?
+        init(_ owner: PlanetChildLocalV2SDKOwner,_ r: PlanetChildLocalV2Wire.Request) throws {
+            guard let token=r.token,let generation=r.childLocaleGeneration,let profile=r.childLocaleProfileId,let revision=r.expectedRevision,let locale=r.childLocale else { throw PinKnownRefusal() }
+            self.owner=owner;command=try LocalV2ChildLocaleCommand(id:r.id,token:token,generation:generation,profileId:profile,revision:revision,locale:locale);controlThread=ObjectIdentifier(Thread.current)
+        }
+        func workerReturned(_ original: LocalV2ChildLocaleOriginal) { if original === self.original { writer.childLocaleFinishIfStarted(request) } }
+        func captureActual(_ command: LocalV2ChildLocaleCommand) throws -> LocalV2ChildLocaleOriginal {
+            guard command.id==self.command.id,ObjectIdentifier(Thread.current)==controlThread else { throw PinKnownRefusal() };let c=try owner.requireContext(command.token);try owner.fresh(c)
+            owner.lock.lock();let valid=owner.busy && owner.pendingChildLocale==nil,loader=owner.loader,channel=owner.channel;owner.lock.unlock()
+            guard valid,let loader,let channel else { throw PinKnownRefusal() };writer=loader.writer;oldRequest=loader.request;var actual=Data();defer { actual.resetBytes(in:0..<actual.count) }
+            _ = try channel.invoke { delivery in try self.owner.requireOriginal(c,delivery);guard delivery.owner === loader else { throw PinKnownRefusal() };self.previousEntities=Set(try delivery.compiled.keys(delivery.owner.wall()));self.previousHome=delivery.compiled.home;actual=try self.writer.sdkRead(self.oldRequest);return [:] }
+            original=try owner.captureChildLocaleOriginal(command,actual);owner.lock.lock();defer { owner.lock.unlock() };guard owner.pendingChildLocale==nil,owner.context === c else { throw PinKnownRefusal() };owner.pendingChildLocale=self;return original
+        }
+        fileprivate func baseBoundary() throws {
+            guard let original else { throw PinKnownRefusal() };try original.current();owner.lock.lock();let same=owner.pendingChildLocale === self && !retired;owner.lock.unlock();guard same else { throw PinKnownRefusal() }
+            try DispatchQueue.main.sync { _ = try self.owner.remaining(original.deadline);guard self.owner.surface.view.window?.isKeyWindow==true,self.owner.surface.viewIfLoaded?.window != nil,self.owner.surface.presentedViewController==nil else { throw PinKnownRefusal() } }
+        }
+        fileprivate func boundary() throws { try baseBoundary();if let request { if retirementHeld { try writer.childLocaleRetirementFence(self) } else { _ = try writer.current(request) } } }
+        func originalBoundary(_ original: LocalV2ChildLocaleOriginal) throws { guard original === self.original else { throw PinKnownRefusal() };try boundary() }
+        func sealAndJoinOriginalOwners(_ original: LocalV2ChildLocaleOriginal) throws {
+            guard original === self.original,ObjectIdentifier(Thread.current)==controlThread else { throw PinKnownRefusal() };try boundary();try DispatchQueue.main.sync { self.owner.surface.seal() };owner.lock.lock();guard owner.context === original.context else { owner.lock.unlock();throw PinKnownRefusal() };owner.context=nil;joiningOriginal=true;owner.lock.unlock()
+            defer { joiningOriginal=false };try owner.joinOwners();guard oldRequest.retired,!oldRequest.sealed,writer.active==nil else { throw PinKnownRefusal() };try boundary()
+        }
+        func claimClosedOriginalClock(_ original: LocalV2ChildLocaleOriginal) throws -> LocalV2Request {
+            guard original === self.original else { throw PinKnownRefusal() };try boundary();try writer.childLocaleClosedOriginalFence(self)
+            request=try DispatchQueue.main.sync { try self.writer.request(host:self.owner.surface,timeoutMs:1,originalDeadlineNs:original.deadline) };request.childLocaleOriginal=original;return request
+        }
+        fileprivate func packageWall() throws -> Int64 { try boundary();let at=Date().timeIntervalSince1970*1000;guard at.isFinite,at>=0,at<=8640000000000000,Int64(at)>=wallLast else { throw PinKnownRefusal() };wallLast=Int64(at);return wallLast }
+        fileprivate func packageFresh() throws { try boundary();try writer.storage.locked { transaction in var actual=try transaction.read(),before=try self.original.before.copy();defer { actual.resetBytes(in:0..<actual.count);before.resetBytes(in:0..<before.count) };self.writer.condition.lock();do { try self.writer.processClock.requireBound(self.request,actual);self.writer.condition.unlock() } catch { self.writer.condition.unlock();throw error };guard actual==before else { throw PlanetChildVault.Failure.unavailable };try self.boundary() } }
+        func compileFuture(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan) throws -> LocalV2CompiledPackage {
+            guard original === self.original,original.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };self.plan=plan;try writer.childLocaleBegin(self)
+            var before=try original.before.copy(),after=try plan.bytes.copy();defer { before.resetBytes(in:0..<before.count);after.resetBytes(in:0..<after.count) };let old=try LocalSnapshotV2.decode(before,policy:writer.policy),next=try LocalSnapshotV2.decode(after,policy:writer.policy);defer { old.close();next.close() }
+            try PlanetChildVault.ProtectedEnvelope.localV2ValidateChildLocale(old,next,command);previousContext=try LocalV2CanonicalContext(old);futureContext=try LocalV2CanonicalContext(next);territory=Locale.current.regionCode;guard let territory,LocalV2PackageValue.matches(territory,"[A-Z]{2}") else { throw PinKnownRefusal() }
+            compatible=try LocalV2FixedPackageProducer(self,LocalV2PackageProfile(next)).compile();return compatible
+        }
+        func preflightCanonicalContinuity(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ compiled: LocalV2CompiledPackage) throws {
+            guard original === self.original,self.plan === plan,compatible === compiled,compiled.profile.id==command.profileId,compiled.profile.revision==Int64(command.expectedProfileRevision)+1,compiled.profile.contextBinding==futureContext.binding,let previousHome,previousEntities.contains(previousHome) else { throw PinKnownRefusal() }
+            try packageFresh();let keys=try compiled.keys(packageWall());guard keys.contains(previousHome) else { throw PinKnownRefusal() }
+            for key in keys { let parts=key.split(separator:"/");guard parts.count==2 else { throw PinKnownRefusal() };_ = try LocalV2PackageValue.identifier(.string(String(parts[1]))) }
+            // Target compiler supplies fresh age/topic/rights membership. Existing
+            // canonical profile journey/passport/appearance IDs remain private ledgers.
+            try packageFresh()
+        }
+        func makeChildLocaleAdmission(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ compiled: LocalV2CompiledPackage) throws -> PlanetChildLocalV2DataAdmission {
+            guard original === self.original,self.plan === plan,compatible === compiled else { throw PinKnownRefusal() };try boundary();admission=try PlanetChildLocalV2DataAdmission(self,compiled,previousContext,futureContext);return admission
+        }
+        func migrateAndAcknowledgeReadback(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ admission: PlanetChildLocalV2DataAdmission) throws {
+            guard original === self.original,self.plan === plan,self.admission === admission else { throw PinKnownRefusal() };try writer.childLocaleMigrate(self)
+        }
+        fileprivate func completionBoundary() throws { try baseBoundary();guard ObjectIdentifier(Thread.current)==controlThread,original.worker?.isFinished==true,known,canonicalAcknowledged,oldRequest.retired,!oldRequest.sealed,owner.loader==nil,owner.channel==nil,owner.reader==nil else { throw PinKnownRefusal() };if retirementHeld { try writer.childLocaleRetirementFence(self) } }
+        func completeAfterActualWorkerJoined(_ original: LocalV2ChildLocaleOriginal,_ plan: LocalV2ChildLocalePlan,_ admission: PlanetChildLocalV2DataAdmission) throws { guard original === self.original,self.plan === plan,self.admission === admission else { throw PinKnownRefusal() };try completionBoundary();try writer.childLocaleHoldRetirement(self)
+            try writer.storage.locked { transaction in try self.completionBoundary();var actual=try transaction.read(),expected=try plan.bytes.copy();defer { actual.resetBytes(in:0..<actual.count);expected.resetBytes(in:0..<expected.count) };guard actual==expected else { throw PlanetChildVault.Failure.unavailable };self.writer.condition.lock();do { try self.writer.processClock.requireBound(self.request,actual);self.writer.condition.unlock() } catch { self.writer.condition.unlock();throw error };try admission.enter(transaction,actual);defer { admission.leave() };try self.dataStore.migrationComplete(admission) }
+        }
+        func releasePreparedNativeLane(_ original: LocalV2ChildLocaleOriginal) { writer.childLocaleReleasePrepared(self);admission.revoke();retired=true;owner.lock.lock();if owner.pendingChildLocale === self { owner.pendingChildLocale=nil };owner.lock.unlock() }
+        func bootstrapOriginalDeadline(_ original: LocalV2ChildLocaleOriginal) throws -> [String:Any] { guard original === self.original,retired else { throw PinKnownRefusal() };_ = try owner.remaining(original.deadline);return try owner.bootstrap(command.id,deadline:original.deadline) }
+        func retireNoWrite(_ original: LocalV2ChildLocaleOriginal) throws { guard original === self.original,!wrote,!dataWrote,original.worker==nil || original.worker!.isFinished else { throw PinKnownRefusal() };if let request { writer.childLocaleFinishIfStarted(request);try writer.retire(request) };retired=true;owner.lock.lock();if owner.pendingChildLocale === self { owner.pendingChildLocale=nil };owner.lock.unlock() }
+        func retainUnknown(_ original: LocalV2ChildLocaleOriginal,_ error: Error) { guard original === self.original else { return };original.revoke();owner.lock.lock();owner.sealed=true;owner.lock.unlock();if let request { writer.condition.lock();writer.processClock.invalidate(request);request.sealed=true;writer.condition.broadcast();writer.condition.unlock() };writer?.childLocaleFinishIfStarted(request) }
+        fileprivate func migrationIdentity() throws -> String { try boundary();var bytes=Data(("LP-LOCAL-V2-CHILD-LOCALE\0"+command.id+"\0"+command.token+"\0"+String(command.generation)+"\0"+String(original.deadline)+"\0"+plan.afterChecksum+"\0"+previousContext.binding+"\0"+futureContext.binding).utf8);defer { bytes.resetBytes(in:0..<bytes.count) };return LocalSnapshotV2.hash(bytes) }
+    }
+
     private func parentRequestCurrent(_ r: PlanetChildLocalV2Wire.Request) throws { lock.lock();defer { lock.unlock() };guard !sealed,let original=pendingParentRequest,original.id==r.id,original.token==r.token,!original.cancelled else { throw PinKnownRefusal() } }
     private func perform(_ r: PlanetChildLocalV2Wire.Request) throws -> [String:Any] {
         try parentRequestCurrent(r)
@@ -9059,7 +9348,7 @@ extension PlanetChildLocalV2DataAdmission {
     fileprivate func sdkCommandBegan(_ command: LocalV2SDKChannel.Command) throws {
         // serve() owns the loader worker, but does not hold a canonical data
         // transaction. Enter it for the admission fence before assigning work.
-        try withCopy { try check();guard sdkNativeCommand==nil,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,!command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };sdkNativeCommand=command }
+        try withCopy { try check();guard sdkNativeCommand==nil,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,!command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };sdkNativeCommand=command }
     }
     fileprivate func sdkCommandReturned(_ command: LocalV2SDKChannel.Command) throws {
         try withCopy { try check();guard sdkNativeCommand === command,command.returned,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
@@ -9067,7 +9356,7 @@ extension PlanetChildLocalV2DataAdmission {
         // only after the prior transaction/UI check has fully unwound.
         if let pending=sdkCommand { try completeCollection(pending.id) }
         if let pending=sdkAppearanceCommand { try completeAppearance(pending.id) }
-        if let pending=sdkJourneyCommand { try completeJourney(pending.id) }
+        if let pending=sdkJourneyCommand { try completeJourney(pending.id) };if let pending=sdkReadingCommand {try completeReading(pending.id)}
         if let pending=sdkPassportCommand { try completePassport(pending.id) }
     }
     fileprivate func sdkCommandHandedOff(_ command: LocalV2SDKChannel.Command) {
@@ -9077,9 +9366,10 @@ extension PlanetChildLocalV2DataAdmission {
         }
         if let pending=sdkJourneyCommand,let receipt=pending.completion,let permit=pending.permit { command.journeyHandoff=LocalV2SDKJourneyHandoff(self,permit,receipt) }
         if let pending=sdkPassportCommand,let receipt=pending.completion { command.passportHandoff=LocalV2SDKPassportHandoff(self,pending.permit,receipt) }
-        sdkAppearanceCommand=nil;sdkJourneyCommand=nil;sdkPassportCommand=nil;sdkNativeCommand=nil
+        if let pending=sdkReadingCommand,let receipt=pending.completion,let permit=pending.permit{command.readingHandoff=LocalV2SDKReadingHandoff(self,permit,receipt)}
+        sdkReadingCommand=nil;sdkAppearanceCommand=nil;sdkJourneyCommand=nil;sdkPassportCommand=nil;sdkNativeCommand=nil
     }
-    fileprivate func sdkCommandFailed(_ command: LocalV2SDKChannel.Command) { guard sdkNativeCommand === command else { return };sdkAppearanceCommand?.completion?.retainUnknown();sdkAppearanceCommand?.completion?.close();if sdkCommand != nil { collectionUnknown() };if sdkAppearanceCommand != nil { appearanceUnknown() };sdkJourneyCommand?.completion?.retainUnknown();sdkJourneyCommand?.completion?.close();if sdkJourneyCommand != nil { journeyUnknown() };sdkPassportCommand?.completion?.retainUnknown();sdkPassportCommand?.completion?.close();if sdkPassportCommand != nil { passportUnknown() };sdkNativeCommand=nil }
+    fileprivate func sdkCommandFailed(_ command: LocalV2SDKChannel.Command) { guard sdkNativeCommand === command else { return };sdkAppearanceCommand?.completion?.retainUnknown();sdkAppearanceCommand?.completion?.close();if sdkCommand != nil { collectionUnknown() };if sdkAppearanceCommand != nil { appearanceUnknown() };sdkJourneyCommand?.completion?.retainUnknown();sdkJourneyCommand?.completion?.close();if sdkJourneyCommand != nil { journeyUnknown() };sdkPassportCommand?.completion?.retainUnknown();sdkPassportCommand?.completion?.close();if sdkPassportCommand != nil { passportUnknown() };sdkReadingCommand?.completion?.retainUnknown();sdkReadingCommand?.completion?.close();if sdkReadingCommand != nil{readingUnknown()};sdkNativeCommand=nil }
     fileprivate func collection(_ purpose: PlanetChildDataStore.Purpose,expected: UInt64?,replacement: [String:Data]?,id: String) throws -> PlanetChildDataStore.LocalV2Collection {
         guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil else { throw PinKnownRefusal() };let command=LocalV2SDKCollectionCommand(id);if replacement != nil { sdkCommand=command }
         do { let result=try loader.withData(self) { try store.admittedCollection(self,lease,purpose,expectedRevision:expected,replacement:replacement,commandId:id) };if replacement != nil { guard sdkCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true };do { try publication();try publish { self.sdkCollections.removeAll(where:{ $0.closedForSDK });guard self.sdkCollections.count<64 else { throw PinKnownRefusal() };self.sdkCollections.append(result);if replacement != nil { command.result=result } };return result } catch { result.close();throw error } }
@@ -10841,7 +11131,7 @@ fileprivate extension LocalV2SceneLease {
 }
 /** Private native ownership only. Neither this holder nor its completion
  * receipt is serialized into any wire envelope or accepted from JavaScript. */
-fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff?;var journey: LocalV2SDKJourneyHandoff?;var passport: LocalV2SDKPassportHandoff?;var chunk: LocalV2SDKChunkHandoff? }
+fileprivate final class LocalV2SDKReply { var appearance: LocalV2SDKAppearanceHandoff?;var journey: LocalV2SDKJourneyHandoff?;var reading:LocalV2SDKReadingHandoff?;var passport: LocalV2SDKPassportHandoff?;var chunk: LocalV2SDKChunkHandoff? }
 /** Output-owned copy and callback reservation survive the actual native SDK
  * resolve. Teardown revokes first, joins this callback, then wipes the owner. */
 fileprivate final class LocalV2SDKChunkHandoff {
@@ -10907,7 +11197,7 @@ extension PlanetChildLocalV2DataAdmission {
         try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkAppearanceCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() }
     }
     fileprivate func appearance(expected: UInt64?,permit: PlanetChildLocalV2SceneSelectionPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Appearance {
-        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
         let command=LocalV2SDKAppearanceCommand(id,permit);if permit != nil { sdkAppearanceCommand=command }
         do {
             let result=try loader.withData(self) { try store.admittedAppearance(self,lease,expectedRevision:expected,permit:permit,commandId:id) }
@@ -11090,6 +11380,72 @@ final class PlanetChildLocalV2JourneyPermit {
         try lease.sdk.journeyCommitCurrent(lease) { try admission.journeyConsumerLeaf();try lease.delivery.owner.appearanceConsumerLeaf(lease.delivery);try work() }
     }
 }
+
+/** Issued by the actual current native SDK command, never from a JS permission bit. */
+final class PlanetChildLocalV2ReadingPermit {
+    private let sdk:PlanetChildLocalV2SDKOwner,context:PlanetChildLocalV2SDKOwner.Context,delivery:LocalV2OwnedPackageDelivery,command:LocalV2SDKChannel.Command,admission:PlanetChildLocalV2DataAdmission,reference:[String:Any],record:PlanetChildReadingPosition.Record
+    private init(_ sdk:PlanetChildLocalV2SDKOwner,_ context:PlanetChildLocalV2SDKOwner.Context,_ delivery:LocalV2OwnedPackageDelivery,_ command:LocalV2SDKChannel.Command,_ reference:[String:Any],_ record:PlanetChildReadingPosition.Record){self.sdk=sdk;self.context=context;self.delivery=delivery;self.command=command;admission=delivery.data!;self.reference=reference;self.record=record}
+    fileprivate static func make(_ sdk:PlanetChildLocalV2SDKOwner,_ context:PlanetChildLocalV2SDKOwner.Context,_ delivery:LocalV2OwnedPackageDelivery,_ command:LocalV2SDKChannel.Command,_ r:PlanetChildLocalV2Wire.Request)throws -> PlanetChildLocalV2ReadingPermit {
+        guard let reference=r.reference,let record=r.readingPosition,delivery.data != nil else{throw PinKnownRefusal()};let result=PlanetChildLocalV2ReadingPermit(sdk,context,delivery,command,reference,record);try result.admission.withCopy{try result.check(result.admission)};return result
+    }
+    private func check(_ original:PlanetChildLocalV2DataAdmission,returned:Bool,handed:Bool=false)throws {
+        guard original === admission,delivery.data === admission,delivery.owner.delivery === delivery,delivery.owner.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current),command.returned==returned else{throw PinKnownRefusal()}
+        try admission.check();if handed {try admission.readingHandoffCommand(command)}else{try admission.appearanceNativeCommand(command,returned:returned)};try sdk.readingCurrent(context,delivery);try delivery.owner.live()
+        let referenceValue=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096),key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,referenceValue,admission.passportWall());guard key==record.key else{throw PinKnownRefusal()};var bytes=try delivery.compiled.copy(key,admission.passportWall());defer{bytes.resetBytes(in:0..<bytes.count)}
+        let payload=try LocalV2PackageValue.object(LocalV2PackageJson.read(bytes,131072));guard let raw=payload["readingAnchors"] else{throw PinKnownRefusal()};let foundation=try JSONSerialization.jsonObject(with:Data(raw.json(sorted:false).utf8));try PlanetChildReadingPosition.membership(record,reference,foundation,LocalV2PackageValue.text(payload["text"]));try admission.check()
+    }
+    func check(_ original:PlanetChildLocalV2DataAdmission)throws {try check(original,returned:false)}
+    func profileId(_ original:PlanetChildLocalV2DataAdmission)throws -> String {try check(original);return delivery.compiled.profile.id}
+    func prior(_ original:PlanetChildLocalV2DataAdmission,_ prior:PlanetChildReadingPosition.Record)throws {try check(original);var bytes=try delivery.compiled.copy(record.key,original.passportWall());defer{bytes.resetBytes(in:0..<bytes.count)};let payload=try LocalV2PackageValue.object(LocalV2PackageJson.read(bytes,131072));guard let raw=payload["readingAnchors"] else{throw PinKnownRefusal()};var anchors=Data(try raw.json(sorted:false).utf8);defer{anchors.resetBytes(in:0..<anchors.count)};try PlanetChildReadingPosition.membership(prior,reference,JSONSerialization.jsonObject(with:anchors),LocalV2PackageValue.text(payload["text"]));try check(original)}
+    func position(_ original:PlanetChildLocalV2DataAdmission)throws -> PlanetChildReadingPosition.Record {try check(original);return record}
+    fileprivate var key:String {record.key}
+    fileprivate func completionCurrent(_ original:PlanetChildLocalV2DataAdmission)throws {try check(original,returned:true)}
+    fileprivate func handoffCurrent(_ original:PlanetChildLocalV2DataAdmission)throws {guard command.done,command.handedOff,command.error==nil else{throw PinKnownRefusal()};try check(original,returned:true,handed:true)}
+    fileprivate func commitCurrent(_ original:PlanetChildLocalV2DataAdmission,_ work:()throws -> Void)throws {guard original === admission,command.returned,command.done,command.handedOff,command.error==nil else{throw PinKnownRefusal()};try sdk.readingCommitCurrent(context,delivery){try admission.readingConsumerLeaf();try delivery.owner.appearanceConsumerLeaf(delivery);try work()}}
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    func readingCurrent(_ current:Context,_ delivery:LocalV2OwnedPackageDelivery)throws {lock.lock();defer{lock.unlock()};guard !sealed,host != nil,context === current,loader === delivery.owner,delivery.owner.delivery === delivery,current.deadline==delivery.owner.request.deadline,current.checksum==delivery.compiled.profile.recordChecksum else{throw PinKnownRefusal()}}
+    func readingCommitCurrent(_ current:Context,_ delivery:LocalV2OwnedPackageDelivery,_ work:()throws -> Void)throws {lock.lock();defer{lock.unlock()};guard !sealed,host != nil,context === current,loader === delivery.owner,delivery.owner.delivery === delivery,current.deadline==delivery.owner.request.deadline,current.checksum==delivery.compiled.profile.recordChecksum else{throw PinKnownRefusal()};try work()}
+    func readingPerform(_ r:PlanetChildLocalV2Wire.Request,_ current:Context,_ delivery:LocalV2OwnedPackageDelivery)throws -> [String:Any] {
+        try requireOriginal(current,delivery);guard let admission=delivery.data,let channel,let reference=r.reference else{throw PinKnownRefusal()};let referenceValue=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096),key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,referenceValue,delivery.owner.wall())
+        if r.method=="readReadingPosition" {let result=try admission.reading(key,expected:nil,permit:nil,id:r.id);defer{result.close()};return try result.dto()}
+        guard r.method=="rememberReadingPosition",let expected=r.expectedRevision else{throw PinKnownRefusal()};let native=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2ReadingPermit.make(self,current,delivery,native,r),result=try admission.reading(key,expected:expected,permit:permit,id:r.id);defer{result.close()};guard result.position==r.readingPosition else{throw PinKnownRefusal()};return try result.dto()
+    }
+}fileprivate final class LocalV2SDKReadingCommand {
+    let id: String,permit: PlanetChildLocalV2ReadingPermit?;var known=false,ready=false,preparationJoined=false,completed=false,result: PlanetChildDataStore.LocalV2Reading?,completion: PlanetChildDataStore.LocalV2ReadingCompletion?
+    init(_ id: String,_ permit: PlanetChildLocalV2ReadingPermit?) { self.id=id;self.permit=permit }
+}
+fileprivate final class LocalV2SDKReadingHandoff {
+    private let admission: PlanetChildLocalV2DataAdmission,permit: PlanetChildLocalV2ReadingPermit,receipt: PlanetChildDataStore.LocalV2ReadingCompletion
+    private var commitReady=false,finished=false
+    init(_ admission: PlanetChildLocalV2DataAdmission,_ permit: PlanetChildLocalV2ReadingPermit,_ receipt: PlanetChildDataStore.LocalV2ReadingCompletion) { self.admission=admission;self.permit=permit;self.receipt=receipt }
+    func validate(on channel: LocalV2SDKChannel) throws {
+        guard !commitReady,!finished else { throw PinKnownRefusal() }
+        _ = try channel.invoke(verified:{ [self] original in guard original.returned,original.done,original.handedOff,original.error==nil else { throw PinKnownRefusal() };try permit.commitCurrent(admission) { commitReady=true } }) { [self] delivery in guard delivery.data === admission else { throw PinKnownRefusal() };try admission.withCopy { try permit.handoffCurrent(admission) };return [:] }
+        guard commitReady else { throw PinKnownRefusal() }
+    }
+    func finish() throws { guard commitReady,!finished else { throw PinKnownRefusal() };try receipt.finish();finished=true }
+    func close() { receipt.close() }
+    func unknown() { receipt.retainUnknown();admission.readingUnknown() }
+    deinit { receipt.close() }
+}
+extension PlanetChildLocalV2DataAdmission {
+    fileprivate func readingConsumerLeaf() throws { lock.lock();defer { lock.unlock() };guard !revoked,sdkNativeCommand==nil,sdkReadingCommand==nil else { throw PinKnownRefusal() } }
+    fileprivate func readingHandoffCommand(_ original: LocalV2SDKChannel.Command) throws { try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func reading(_ key:String,expected: UInt64?,permit: PlanetChildLocalV2ReadingPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Reading {
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        let command=LocalV2SDKReadingCommand(id,permit);if permit != nil { sdkReadingCommand=command }
+        do { let result=try loader.withData(self) { try store.admittedReading(self,lease,key:key,expectedRevision:expected,permit:permit,commandId:id) }
+            if permit != nil { guard sdkReadingCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true }
+            do { try publication();try publish { sdkReadingResults.removeAll(where:{ $0.closedForSDK });guard sdkReadingResults.count<64 else { throw PinKnownRefusal() };sdkReadingResults.append(result);if permit != nil { command.result=result } };return result } catch { result.close();throw error }
+        } catch { if permit != nil { readingUnknown() };throw error }
+    }
+    func readingCommandKnown(_ id: String) throws { try check();guard let command=sdkReadingCommand,command.id==id,!command.known,!command.preparationJoined,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() };command.known=true }
+    func readingCommandReady(_ id: String) throws { try check();guard let command=sdkReadingCommand,command.id==id,command.known,!command.ready else { throw PinKnownRefusal() };command.ready=true }
+    func readingCommandJoined(_ id: String) throws { try check();guard let command=sdkReadingCommand,let native=sdkNativeCommand,native.returned,command.id==id,command.known,command.ready,command.preparationJoined,!command.completed,command.result?.closedForSDK==true,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func completeReading(_ id: String) throws { guard let loader,let store,let lease,let native=sdkNativeCommand,native.returned,let command=sdkReadingCommand,command.id==id,command.result?.closedForSDK==true,let permit=command.permit else { throw PinKnownRefusal() };try loader.withData(self) { try permit.completionCurrent(self);command.completion=try store.readingComplete(self,lease,id,permit.key);try permit.completionCurrent(self) };command.completed=true }
+    func readingUnknown() { collectionUnknown() }
+}
 fileprivate final class LocalV2SDKJourneyCommand {
     let id: String,permit: PlanetChildLocalV2JourneyPermit?;var known=false,ready=false,preparationJoined=false,completed=false,result: PlanetChildDataStore.LocalV2Journey?,completion: PlanetChildDataStore.LocalV2JourneyCompletion?
     init(_ id: String,_ permit: PlanetChildLocalV2JourneyPermit?) { self.id=id;self.permit=permit }
@@ -11117,9 +11473,9 @@ extension PlanetChildLocalV2DataAdmission {
         guard let current=graph.first(where:{ $0.id==route.id }),current.nodeIds==route.nodeIds,current.kinds==route.kinds,current.title==route.title,current.description==route.description else { throw PinKnownRefusal() };try check()
     }
     fileprivate func journeyConsumerLeaf() throws { lock.lock();defer { lock.unlock() };guard !revoked,sdkNativeCommand==nil,sdkJourneyCommand==nil else { throw PinKnownRefusal() } }
-    fileprivate func journeyHandoffCommand(_ original: LocalV2SDKChannel.Command) throws { try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func journeyHandoffCommand(_ original: LocalV2SDKChannel.Command) throws { try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
     fileprivate func journey(_ journeyId: String?,expected: UInt64?,permit: PlanetChildLocalV2JourneyPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Journey {
-        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
         let command=LocalV2SDKJourneyCommand(id,permit);if permit != nil { sdkJourneyCommand=command }
         do { let result=try loader.withData(self) { try store.admittedJourney(self,lease,journeyId:journeyId,expectedRevision:expected,permit:permit,commandId:id) }
             if permit != nil { guard sdkJourneyCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true }
@@ -11348,9 +11704,9 @@ extension PlanetChildLocalV2DataAdmission {
         guard try LocalV2SavedRouteCompiler.available(saved,compiled,routes,now) != nil else { throw PinKnownRefusal() }
     }
     fileprivate func passportConsumerLeaf() throws { lock.lock();defer { lock.unlock() };guard !revoked,sdkNativeCommand==nil,sdkPassportCommand==nil else { throw PinKnownRefusal() } }
-    fileprivate func passportHandoffCommand(_ original: LocalV2SDKChannel.Command) throws { try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkPassportCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
+    fileprivate func passportHandoffCommand(_ original: LocalV2SDKChannel.Command) throws { try check();guard let current=sdkNativeCommand,current !== original,!current.returned,original.returned,original.done,original.handedOff,original.error==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,loader?.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current) else { throw PinKnownRefusal() } }
     fileprivate func passport(expected: UInt64?,permit: PlanetChildLocalV2PassportPermit?,id: String) throws -> PlanetChildDataStore.LocalV2Passport {
-        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
+        guard let loader,let store,let lease,let native=sdkNativeCommand,!native.returned,sdkCommand==nil,sdkAppearanceCommand==nil,sdkJourneyCommand==nil,sdkPassportCommand==nil,sdkReadingCommand==nil,(expected==nil)==(permit==nil) else { throw PinKnownRefusal() }
         let command=permit.map { LocalV2SDKPassportCommand(id,$0) };if let command { sdkPassportCommand=command }
         do { let result=try loader.withData(self) { try store.admittedPassport(self,lease,expectedRevision:expected,permit:permit,commandId:id) }
             if let command { guard sdkPassportCommand === command,command.known,command.ready else { result.close();throw PinKnownRefusal() };command.preparationJoined=true }
@@ -11781,7 +12137,7 @@ fileprivate extension LocalV2SavedRouteCompiler {
      * node payloads from the durable snapshot, without caller bytes or URLs. */
     static func open(_ saved: PlanetChildPassport.SavedRoute,_ current: LocalV2JourneyRoute) throws -> (LocalV2JourneyRoute,[String:V]) {
         guard try PlanetChildPassportRouteCodec.validate(saved.bytes)==current.id else { throw PinKnownRefusal() }
-        let snapshot=try V.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes)),journey=try V.object(snapshot["journey"],["reference","payload"]),payload=try V.object(journey["payload"],["title","text","terms","references"]),references=try V.array(payload["references"],64)
+        let snapshot=try V.object(LocalV2PackageJson.read(saved.bytes,PlanetChildPassport.maximumRouteBytes)),journey=try V.object(snapshot["journey"],["reference","payload"]),payload=try LocalV2ReadingPayload.shape(journey["payload"]),references=try V.array(payload["references"],64)
         let ids=try references.map { try V.identifier(V.object($0)["id"]) },kinds=try references.map { try V.text(V.object($0)["kind"]) }
         guard ids==current.nodeIds,kinds==current.kinds else { throw PinKnownRefusal() };var nodes=[String:V]()
         for entry in try V.array(snapshot["nodes"],2047) { let reference=try V.object(V.object(entry)["reference"],["kind","id","contentChecksum"]),key=(try V.text(reference["kind"]))+"/"+(try V.identifier(reference["id"]));guard nodes[key]==nil else { throw PinKnownRefusal() };nodes[key]=entry }
@@ -12327,3 +12683,20 @@ fileprivate enum LocalV2SceneEngine {
     static func staticAllowed(_ root: [String:S]) throws -> Bool { guard let raw=root["engineComposition"] else { return false };return try S.bool(S.object(S.object(raw)["fallback"])["staticAllowed"]) }
     static func staticBudget(_ root: [String:S]) throws { guard try staticAllowed(root),let p=try policy(root,"economy") else { throw PinKnownRefusal() };let memory=try base(root,true),cap=try Int(S.number(p["maxDecodedBytes"],1,67108864));if memory>cap { throw LocalV2SceneBudgetDeclined(reason:"decoded-budget") } }
 }
+#if DEBUG
+extension PlanetChildLocalV2SDKRuntimeFixture {
+    static func childLocaleTransition(_ name:String)throws -> Bool {
+        guard ["valid","locked","legacy","missing-policy","current-only","wrong-profile","wrong-revision","no-op"].contains(name) else{throw PinKnownRefusal()}
+        let both=#"{"schemaVersion":1,"allowedLocales":["en","ru"]}"#,only=#"{"schemaVersion":1,"allowedLocales":["en"]}"#
+        let lock=name=="legacy" ? "":",\"localeLocked\":"+(name=="locked" ? "true":"false"),policy=name=="missing-policy" ? "":",\"localePolicy\":"+(name=="current-only" ? only:both)
+        var profile=Data((#"{"id":"reader","label":"Fixture reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":[],"soundEnabled":false,"motion":"calm","narrationEnabled":false"# + lock+policy+"}").utf8);defer{profile.resetBytes(in:0..<profile.count)}
+        var enrolled=try PlanetChildLocalProfileRuntimeFixture.enrolled(),raw=try PlanetChildLocalProfileRuntimeFixture.transition(enrolled,profile:profile);defer{enrolled.resetBytes(in:0..<enrolled.count);raw.resetBytes(in:0..<raw.count)}
+        let rules=try LocalSnapshotV2Policy(version:PlanetChildLocalProfileRuntimeFixture.version,checksum:PlanetChildLocalProfileRuntimeFixture.checksum,maximum:1200000,delays:[100,250]),before=try LocalSnapshotV2.decode(raw,policy:rules);defer{before.close()}
+        let command=try LocalV2ChildLocaleCommand(id:String(repeating:"d",count:32),token:String(repeating:"e",count:32),generation:1,profileId:name=="wrong-profile" ? "Sibling":"reader",revision:name=="wrong-revision" ? 1:before.fields.profileRevision,locale:name=="no-op" ? "en":"ru")
+        var refused=false
+        do{let plan=try PlanetChildVault.ProtectedEnvelope.localV2PrepareChildLocale(before,command);defer{plan.close()};guard name=="valid" else{return false};var next=try plan.bytes.copy();defer{next.resetBytes(in:0..<next.count)};let after=try LocalSnapshotV2.decode(next,policy:rules);defer{after.close()};try PlanetChildVault.ProtectedEnvelope.localV2ValidateChildLocale(before,after,command)
+            let oldRoot=try LocalV2PackageValue.object(LocalV2PackageJson.read(raw,131072)),newRoot=try LocalV2PackageValue.object(LocalV2PackageJson.read(next,131072)),oldRecord=try LocalV2PackageValue.object(oldRoot["protectedRecord"]),newRecord=try LocalV2PackageValue.object(newRoot["protectedRecord"]);guard try oldRecord["pin"]!.json(sorted:false)==newRecord["pin"]!.json(sorted:false),after.fields.revision==before.fields.revision+1,after.journal.revision==before.journal.revision+1 else{throw PinKnownRefusal()};return true
+        }catch{refused=true};guard refused,name != "valid" else{throw PinKnownRefusal()};return true
+    }
+}
+#endif

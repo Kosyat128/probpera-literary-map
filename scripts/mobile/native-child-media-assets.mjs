@@ -6,6 +6,8 @@ import { containedFile } from "./pwa-artifact.mjs";
 import { childNativeJson, normalizeChildNativePins, CHILD_NATIVE_PIN_SOURCE, CHILD_RELEASE_REVIEW_PREFIX } from "./native-child-package-assets.mjs";
 import { contentPackageCanonicalJson } from "../../src/planet/contentPackageProtocol.mjs";
 
+import { decodeReadingAnchors } from "../../src/child/childReadingPositionProtocol.mjs";
+
 export const CHILD_NATIVE_MEDIA_PIN_SOURCE = "src/child/childNativeMediaReleasePins.json";
 export const CHILD_NATIVE_MEDIA_ASSET_MODULE = "scripts/mobile/native-child-media-assets.mjs";
 export const CHILD_NATIVE_MEDIA_CATALOG = "child-native/media/catalog-v2.json";
@@ -94,15 +96,18 @@ function reference(value, allowed) {
     && checksum(value.contentChecksum), "exact owner/media reference"); return value;
 }
 function actualTextOwner(entry) {
-  require(exact(entry, ["policy", "payload"]) && exact(entry.payload, ["title", "text", "terms", "references"])
+  const hasAnchors = !!entry?.payload && Object.hasOwn(entry.payload, "readingAnchors");
+  require(exact(entry, ["policy", "payload"]) && exact(entry.payload, ["title", "text", "terms", "references", ...(hasAnchors ? ["readingAnchors"] : [])])
     && entry.policy && textKinds.includes(entry.policy.kind) && id(entry.policy.id)
     && typeof entry.payload.title === "string" && typeof entry.payload.text === "string"
     && array(entry.payload.terms, 64, value => typeof value === "string")
     && array(entry.payload.references, 64, value => exact(value, ["kind", "id", "contentChecksum"]) && textKinds.includes(value.kind) && id(value.id) && checksum(value.contentChecksum)), "actual compiled owner payload schema");
-  const payload = entry.payload;
+  const payload = entry.payload, readingAnchors = hasAnchors ? decodeReadingAnchors(payload.readingAnchors, payload.text) : null;
+  require(!hasAnchors || readingAnchors, "explicit owner logical anchors");
   const bytes = Buffer.from(JSON.stringify({ title: payload.title, text: payload.text, terms: payload.terms,
-    references: payload.references.map(ref => ({ kind: ref.kind, id: ref.id, contentChecksum: ref.contentChecksum })) }));
-  return { kind: entry.policy.kind, id: entry.policy.id, contentChecksum: sha(bytes) };
+    references: payload.references.map(ref => ({ kind: ref.kind, id: ref.id, contentChecksum: ref.contentChecksum })),
+    ...(readingAnchors ? { readingAnchors } : {}) }));
+  return { kind: entry.policy.kind, id: entry.policy.id, contentChecksum: sha(bytes), readingAnchors };
 }
 function currentWindow(value, now) {
   require(epoch(now) && epoch(value.validFromEpochMs) && epoch(value.validUntilEpochMs)
@@ -174,6 +179,16 @@ export function validateChildNativeMediaManifest(bytes, pin, textPackageBytes, n
     const identity = asset.sha256 + "/" + asset.bytes + "/" + asset.mime;
     require(!inventory.has(asset.inventoryKey) || inventory.get(asset.inventoryKey) === identity, "ambiguous inventory identity");
     inventory.set(asset.inventoryKey, identity);
+  }
+  // Explicit cues bind a real narration asset of this exact reviewed owner;
+  // decoded sample rate/frame count is checked later against the actual WAV.
+  for (const known of owners.values()) if (known.readingAnchors?.narration) {
+    const cueMap = known.readingAnchors.narration;
+    const matching = manifest.assets.filter(asset => asset.assetId === cueMap.assetId
+      && asset.owner.kind === known.kind && asset.owner.id === known.id
+      && asset.owner.contentChecksum === known.contentChecksum && asset.entity.kind === "narration"
+      && asset.mime === "audio/wav" && asset.sha256 === cueMap.sha256);
+    require(matching.length === 1, "logical narration cues belong to the exact owner asset");
   }
   return manifest;
 }
@@ -282,11 +297,19 @@ export async function collectChildNativeMediaOutputs(root, platform, channel, no
       const ext = extensions[asset.mime], name = "src/child/media-release-material/" + asset.sha256 + "/asset." + ext;
       const binary = await ownedSource(root, name, asset.mime === "audio/wav" ? 24 * 1024 * 1024 : 32 * 1024 * 1024);
       require(binary.sha256 === asset.sha256 && binary.size === asset.bytes, "actual pinned binary bytes");
-      if(asset.mime.startsWith("image/")||asset.mime==="audio/wav")require(preflight(new Uint8Array(binary.bytes), asset.mime), "static raster/PCM container and decoded resource bounds");
+      let header = null;
+      if(asset.mime.startsWith("image/")||asset.mime==="audio/wav") {
+        header = preflight(new Uint8Array(binary.bytes), asset.mime);
+        require(header, "static raster/PCM container and decoded resource bounds");
+      }
       // Typed model/buffer decode happens against the complete reviewed scene
       // dependency closure; a container-only MIME probe never admits a model.
       else require(["model/gltf+json","model/gltf-binary","application/octet-stream"].includes(asset.mime)&&["stand","background"].includes(asset.entity.kind),"typed model dependency only");
       if (asset.mime === "audio/wav") {
+        const owner = pack.entities.find(entry => entry.policy.kind === asset.owner.kind && entry.policy.id === asset.owner.id);
+        const cues = actualTextOwner(owner).readingAnchors?.narration;
+        if (cues?.assetId === asset.assetId) require(header?.kind === "audio" && header.sampleRate === cues.sampleRate
+          && header.frames === cues.frameCount && binary.sha256 === cues.sha256, "exact decoded logical narration cue frames");
         const qualityName = "src/child/media-release-material/" + asset.payload.qualityChecksum + "/quality.json";
         const quality = await ownedSource(root, qualityName, 65536);
         validateChildNativeNarrationProvenance(quality.bytes, asset, manifest.locale, childNativeNarrationDurationMs(binary.bytes));

@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, useState } from "react";
+import { ChildNativeReadingView } from "./ChildNativeReadingView";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import type { ChildNativeAppController, ChildNativeEntity } from "./childNativeAppBridge";
 import type { ChildNativeJourneyResult, ChildNativeJourneySummary, ChildNativeProfileJourney } from "./childNativeJourney";
@@ -203,7 +204,9 @@ export function ChildNativeJourneyView(props: ChildNativeJourneyViewProps) {
       <p role="status">{copy.done}: {visible.journey!.nodeIds.filter(id => visible.progress!.completedNodeIds.includes(id)).length} {copy.of} {visible.journey!.nodeCount}</p>
       {visible.node ? <article data-child-journey-node={visible.node.reference.id}>
         <p>{copy.step} {visible.journey!.nodeIds.indexOf(visible.node.reference.id) + 1} {copy.of} {visible.journey!.nodeCount}</p>
-        <h3>{visible.node.payload.title}</h3><p className="child-native-text">{visible.node.payload.text}</p>
+        <h3>{visible.node.payload.title}</h3>
+        <ChildNativeReadingView key={contextToken + "/reading/" + visible.node.reference.id} controller={controller}
+          reference={visible.node.reference} payload={visible.node.payload} contextToken={contextToken} language={language} />
         <ChildNativeMediaView key={contextToken + "/journey/" + visible.node.reference.id} controller={controller}
           owner={visible.node.reference} contextToken={contextToken} language={language} />
         <button type="button" disabled={busy} onClick={() => { void advance("complete"); }}>{copy.next}</button>

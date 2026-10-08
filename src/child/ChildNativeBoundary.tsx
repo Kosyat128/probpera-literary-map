@@ -3,7 +3,9 @@ import { createChildCanonicalResources, type ChildCanonicalSnapshot } from "./ch
 import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
+import { ChildNativeReadingView } from "./ChildNativeReadingView";
 import { ChildPrivacyNotice } from "./ChildPrivacyNotice";
+import { ChildNativeLocaleControl } from "./ChildNativeLocaleControl";
 import { ParentChildLocaleLockControl } from "./ParentChildLocaleLockControl";
 import { ParentChildLocalePolicyControl } from "./ParentChildLocalePolicyControl";
 import type { ChildLocalePolicy } from "./childProfile";
@@ -549,7 +551,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       mode="immersive" forceLoad bookyCalmMotion runtimeActive={admitted} preserveSceneDuringReload />
     </div>
     {c&&admitted?<>
-    <header className="child-native-header"><h1>{copy.title}</h1><NativeProfileControls controller={controller} snapshot={snapshot} /></header>
+    <header className="child-native-header"><h1>{copy.title}</h1><ChildNativeLocaleControl controller={controller} snapshot={snapshot} /><NativeProfileControls controller={controller} snapshot={snapshot} /></header>
     <aside className="child-native-booky" data-booky-size={sizeSnapshot.size}>
       <BookyPlayControl key={c.token} src={mascotImage} context="child" className="child-native-booky__play" calmMotion active={admitted} />
       <span>{language === "ru" ? "Книжулик" : "Mr. Booky"}</span>
@@ -621,7 +623,8 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       </> : discoveryView ? null : current ? <article data-child-native-entity={current.reference.kind + "/" + current.reference.id}>
         <h2>{current.payload.title}</h2>
         <ChildNativeMediaView key={c.token + "/" + current.reference.kind + "/" + current.reference.id}
-          controller={controller} owner={current.reference} contextToken={c.token} language={language} /><p className="child-native-text">{current.payload.text}</p>
+          controller={controller} owner={current.reference} contextToken={c.token} language={language} /><ChildNativeReadingView key={c.token + "/" + current.reference.kind + "/" + current.reference.id}
+            controller={controller} reference={current.reference} payload={current.payload} contextToken={c.token} language={language} />
         <ul>{current.payload.references.map(ref => <li key={ref.kind + "/" + ref.id}>
           {ref.kind === "favorite" || ref.kind === "offline-package" ? <button type="button" onClick={() => { void save(ref); }}>{copy.add}</button>
             : <ChildNativeReferenceButton controller={controller} reference={ref} onOpen={() => { void open(ref); }} />}

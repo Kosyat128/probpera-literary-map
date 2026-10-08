@@ -35,8 +35,11 @@ public final class PlanetChildPlugin extends Plugin {
     }
     @PluginMethod public void bootstrap(PluginCall call){dispatch("bootstrap",call);}
     @PluginMethod public void readContext(PluginCall call){dispatch("readContext",call);}
+    @PluginMethod public void changeChildLocale(PluginCall call){dispatch("changeChildLocale",call);}
     @PluginMethod public void perform(PluginCall call){dispatch("perform",call);}
     @PluginMethod public void retire(PluginCall call){dispatch("retire",call);}
+    @PluginMethod public void readReadingPosition(PluginCall call){dispatch("readReadingPosition",call);}
+    @PluginMethod public void rememberReadingPosition(PluginCall call){dispatch("rememberReadingPosition",call);}
     @PluginMethod public void readEntity(PluginCall call){dispatch("readEntity",call);}
     @PluginMethod public void search(PluginCall call){dispatch("search",call);}
     @PluginMethod public void readCollection(PluginCall call){dispatch("readCollection",call);}

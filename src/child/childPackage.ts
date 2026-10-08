@@ -4,12 +4,16 @@ import { decodeChildDataScope, type ChildDataScope } from "./childDataNamespace"
 import { childProfileAllowsLocale, decodeChildProfiles } from "./childProfile";
 import type { ChildPackageChallenge } from "./childStartup";
 
+import { decodeChildReadingAnchors, type ChildReadingAnchors } from "./childReadingPosition";
+
 export const CHILD_PACKAGE_MAX_BYTES = 8 * 1024 * 1024;
 export const CHILD_PACKAGE_MAX_ENTITIES = 4096;
 export interface ChildEntityReference { readonly kind: ChildEntityKind; readonly id: string; readonly contentChecksum: string }
 export interface ChildEntityPayload {
   readonly title: string; readonly text: string; readonly terms: readonly string[];
   readonly references: readonly ChildEntityReference[];
+  /** Optional explicit reviewed alignment; missing legacy maps are never inferred. */
+  readonly readingAnchors?: ChildReadingAnchors;
 }
 export interface ChildIndexedEntity {
   readonly reference: ChildEntityReference; readonly payload: ChildEntityPayload;
@@ -70,20 +74,30 @@ const text = (value: unknown, limit: number, multiline = false): value is string
   && value.length <= limit && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/u.test(value)
   && (multiline || !/[\r\n\t]/u.test(value));
 export function decodeChildEntityPayload(value: unknown): ChildEntityPayload | null {
-  const row = childRecord(value, ["title", "text", "terms", "references"]);
-  if (!row || !text(row.title, 240) || !row.title || row.title.trim() !== row.title || !text(row.text, 32768, true)) return null;
-  const rawTerms = childDataArray(row.terms, 64), rawReferences = childDataArray(row.references, 64);
-  if (!rawTerms || !rawReferences || rawTerms.some(term => !text(term, 80) || !term || term.trim() !== term)
-    || new Set(rawTerms).size !== rawTerms.length) return null;
-  const references = rawReferences.map(decodeChildEntityReference);
-  if (references.some(item => item === null) || new Set(references.map(item => `${item!.kind}/${item!.id}`)).size !== references.length) return null;
-  return Object.freeze({ title: row.title, text: row.text, terms: Object.freeze(rawTerms as string[]),
-    references: Object.freeze(references as ChildEntityReference[]) });
+  try {
+    const hasAnchors = !!value && typeof value === "object" && Object.prototype.hasOwnProperty.call(value, "readingAnchors");
+    const row = childRecord(value, ["title", "text", "terms", "references", ...(hasAnchors ? ["readingAnchors"] : [])]);
+    if (!row || !text(row.title, 240) || !row.title || row.title.trim() !== row.title || !text(row.text, 32768, true)) return null;
+    const rawTerms = childDataArray(row.terms, 64), rawReferences = childDataArray(row.references, 64);
+    if (!rawTerms || !rawReferences || rawTerms.some(term => !text(term, 80) || !term || term.trim() !== term)
+      || new Set(rawTerms).size !== rawTerms.length) return null;
+    const references = rawReferences.map(decodeChildEntityReference);
+    const readingAnchors = hasAnchors ? decodeChildReadingAnchors(row.readingAnchors, row.text) : null;
+    if (references.some(item => item === null) || new Set(references.map(item => item!.kind + "/" + item!.id)).size !== references.length
+      || hasAnchors && !readingAnchors) return null;
+    return Object.freeze({ title: row.title, text: row.text, terms: Object.freeze(rawTerms as string[]),
+      references: Object.freeze(references as ChildEntityReference[]), ...(readingAnchors ? { readingAnchors } : {}) });
+  } catch { return null; }
 }
 /** A deterministic payload representation whose digest is independently reviewed. */
 export function childPayloadBytes(value: ChildEntityPayload): Uint8Array {
+  const descriptor = Object.getOwnPropertyDescriptor(value, "readingAnchors");
+  const readingAnchors = descriptor && descriptor.enumerable && "value" in descriptor
+    ? decodeChildReadingAnchors(descriptor.value, value.text) : null;
+  if (descriptor && !readingAnchors) throw new TypeError("Invalid explicit child reading anchors");
   return new TextEncoder().encode(JSON.stringify({ title: value.title, text: value.text, terms: value.terms,
-    references: value.references.map(ref => ({ kind: ref.kind, id: ref.id, contentChecksum: ref.contentChecksum })) }));
+    references: value.references.map(ref => ({ kind: ref.kind, id: ref.id, contentChecksum: ref.contentChecksum })),
+    ...(readingAnchors ? { readingAnchors } : {}) }));
 }
 const key = (reference: Pick<ChildEntityReference, "kind" | "id">) => `${reference.kind}/${reference.id}`;
 /** Immutable snapshot before any asynchronous port receives mutable input. */

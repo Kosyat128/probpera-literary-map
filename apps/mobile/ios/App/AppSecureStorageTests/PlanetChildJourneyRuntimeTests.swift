@@ -130,4 +130,20 @@ final class PlanetChildJourneyRuntimeTests: XCTestCase {
         var open=nativeBase(fresh);open["journeyId"]=progress.journeyId;open["expectedRevision"]=try XCTUnwrap(protected["revision"] as? NSNumber).uint64Value;let resumed=try await native(web,"openJourney",open),value=try XCTUnwrap(resumed["value"] as? [String:Any]);XCTAssertEqual(value["status"] as? String,"restored");let migrated=try PlanetChildJourney.Progress.decodeDTO(try XCTUnwrap(value["progress"]));XCTAssertEqual(migrated.completedNodeIds,progress.completedNodeIds)
     }
 
+    // AUTHORED_NOT_COMPILED_NOT_RUN: isolated typed fixtures never mint native CHILD admission.
+    func testChildLocalePureTransitionRequiresExplicitParentPolicyAndPreservesPin() throws {
+        for name in ["valid","locked","legacy","missing-policy","current-only","wrong-profile","wrong-revision","no-op"] { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.childLocaleTransition(name),name) }
+    }
+    func testCanonicalReadingLedgerRetainsLegacySiblingAndUnknownAnchorWithoutCapacityLoss() throws {
+        for name in ["legacy","codec","migration","history","profile","downloads","capacity","unknown-anchor"] { XCTAssertTrue(try PlanetChildDataStore.fixtureReadingScenario(name),name) }
+    }
+    func testSignedReadingAnchorsAndPrivateWireRefuseAliasesCapabilitiesAndMalformedCas() throws {
+        let record=try PlanetChildReadingPosition.Record("work","Work.ONE",1,"Passage.ONE"),reference:[String:Any]=["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)],anchors:[String:Any]=["schemaVersion":1,"anchorVersion":1,"segments":[["anchorId":"Passage.ONE","text":"One"]],"narration":NSNull()]
+        XCTAssertEqual(try PlanetChildReadingPosition.decode(record.dto),record);try PlanetChildReadingPosition.membership(record,reference,anchors,"One")
+        var invalid=record.dto;invalid["schemaVersion"]=true;XCTAssertThrowsError(try PlanetChildReadingPosition.decode(invalid));invalid=record.dto;invalid["locale"]="ru";XCTAssertThrowsError(try PlanetChildReadingPosition.decode(invalid))
+        var duplicate=anchors;duplicate["segments"]=[["anchorId":"Passage.ONE","text":"O"],["anchorId":"Passage.ONE","text":"ne"]];XCTAssertThrowsError(try PlanetChildReadingPosition.anchors(duplicate,"One"));let unknown=try PlanetChildReadingPosition.Record("work","Work.ONE",2,"Passage.ONE");XCTAssertThrowsError(try PlanetChildReadingPosition.membership(unknown,reference,anchors,"One"))
+        var gap=anchors;gap["narration"]=["assetId":"Audio.ONE","sha256":String(repeating:"a",count:64),"sampleRate":8000,"frameCount":8000,"cues":[["anchorId":"Passage.ONE","startFrame":1,"endFrame":8000]]] as [String:Any];XCTAssertThrowsError(try PlanetChildReadingPosition.anchors(gap,"One"))
+        var write:[String:Any]=["version":2,"requestId":String(repeating:"1",count:32),"contextToken":String(repeating:"2",count:32),"reference":reference,"expectedRevision":0,"position":record.dto];XCTAssertEqual(try PlanetChildLocalV2Wire.decode("rememberReadingPosition",write).readingPosition,record)
+        for key in ["profileId","approved","url","locale","anchorMap"] { var extra=write;extra[key]=true;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("rememberReadingPosition",extra)) };for value:Any in [true,-1,0.5,9007199254740990] { write["expectedRevision"]=value;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("rememberReadingPosition",write)) }
+    }
 }

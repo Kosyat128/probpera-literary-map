@@ -9,7 +9,7 @@ import Capacitor
 public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier="PlanetChildPlugin"
     public let jsName="PlanetChild"
-    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","perform","retire","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","readWebResourceChunk","releaseWebResource","readSceneSelection","rememberSceneSelection","rollbackSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
+    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","changeChildLocale","perform","retire","readReadingPosition","rememberReadingPosition","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","readWebResourceChunk","releaseWebResource","readSceneSelection","rememberSceneSelection","rollbackSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
     private var transport: PlanetChildLocalV2DataTransport?,owner: PlanetChildLocalV2SDKOwner?
     public override func load() {
         DispatchQueue.main.async { [weak self] in guard let self,let host=self.bridge?.viewController else { return }
@@ -30,8 +30,11 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     }
     @objc public func bootstrap(_ call: CAPPluginCall) { invoke("bootstrap",call) }
     @objc public func readContext(_ call: CAPPluginCall) { invoke("readContext",call) }
+    @objc public func changeChildLocale(_ call: CAPPluginCall) { invoke("changeChildLocale",call) }
     @objc public func perform(_ call: CAPPluginCall) { invoke("perform",call) }
     @objc public func retire(_ call: CAPPluginCall) { invoke("retire",call) }
+    @objc public func readReadingPosition(_ call:CAPPluginCall){invoke("readReadingPosition",call)}
+    @objc public func rememberReadingPosition(_ call:CAPPluginCall){invoke("rememberReadingPosition",call)}
     @objc public func readEntity(_ call: CAPPluginCall) { invoke("readEntity",call) }
     @objc public func search(_ call: CAPPluginCall) { invoke("search",call) }
     @objc public func readCollection(_ call: CAPPluginCall) { invoke("readCollection",call) }

@@ -15,6 +15,7 @@ import { childNativeDiscoveryShelf, decodeChildNativeDiscovery, decodeChildNativ
 import { CHILD_NATIVE_EXPORT_IDLE, childNativeExportProfileId, decodeChildNativeExportReply,
   type ChildNativeExportReceipt, type ChildNativeExportState } from "./childNativeExport";
 import { decodeChildLocalePolicy, sameChildLocalePolicy, type ChildLocalePolicy } from "./childProfile";
+import { decodeChildReadingPosition, decodeChildNativeReadingPosition, type ChildNativeReadingPositionController } from "./childReadingPosition";
 import localPolicy from "./childNativeLocalV2Policy.json";
 import { decodeChildNativeRouteDownload } from "./childNativeOfflinePackages";
 import { decodeChildNativeRouteSave } from "./childNativePassportProgram";
@@ -25,8 +26,11 @@ import type { PlatformServices, PreferenceStore } from "../platform/ports";
 export interface ChildNativeAppPlugin {
   bootstrap(request: unknown): Promise<unknown>;
   readContext(request: unknown): Promise<unknown>;
+  changeChildLocale?(request: unknown): Promise<unknown>;
   perform(request: unknown): Promise<unknown>;
   retire(request: unknown): Promise<unknown>;
+  readReadingPosition?(request: unknown): Promise<unknown>;
+  rememberReadingPosition?(request: unknown): Promise<unknown>;
   readEntity(request: unknown): Promise<unknown>;
   search(request: unknown): Promise<unknown>;
   readCollection(request: unknown): Promise<unknown>;
@@ -91,6 +95,7 @@ export interface ChildNativeCollectionValue {
 }
 export type ChildNativeAction = ParentGateAction | "first-install" | "enroll-pin" | "replace-pin" | "recover-pin" | "create-profile" | "enter-child";
 export interface ChildNativeAppController {
+  readonly reading?: ChildNativeReadingPositionController;
   readonly discovery?: ChildNativeDiscoveryController;
   readonly passport?: ChildNativePassportController;
   readonly journeys?: ChildNativeJourneyController;
@@ -110,6 +115,7 @@ export interface ChildNativeAppController {
   /** A context-bound proposal to the existing native Parent Gate. */
   setProfileLocaleLocked?(expectedContext: ChildNativeContext, locked: boolean): Promise<boolean>;
   setProfileLocalePolicy?(expectedContext: ChildNativeContext, policy: ChildLocalePolicy): Promise<boolean>;
+  changeChildLocale?(expectedContext: ChildNativeContext, locale: "ru" | "en"): Promise<boolean>;
   suspend(): Promise<void>;
   dispose(): Promise<void>;
   readEntity(reference: ChildEntityReference): Promise<ChildNativeEntity | null>;
@@ -252,6 +258,7 @@ export interface ChildNativeAppOptions {
 export function createChildNativeAppController(options: ChildNativeAppOptions): ChildNativeAppController {
   const timeout = options.timeoutMs ?? 60_000, now = options.nowMs ?? (() => performance.now()), nextId = options.requestId ?? randomId;
   if (!Number.isInteger(timeout) || timeout < 1 || timeout > 60_000) throw new RangeError("Invalid native child timeout");
+  let localeInFlight = false;
   let snapshot = sealed, epoch = 0, expiry = 0, timer: ReturnType<typeof setTimeout> | null = null;
   let removalInFlight = false;
   let exportState = CHILD_NATIVE_EXPORT_IDLE;
@@ -510,12 +517,55 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
+    async function changeChildLocale(expectedContext: ChildNativeContext, locale: "ru" | "en"): Promise<boolean> {
+    const prior = snapshot, c = prior.context, selected = prior.profiles.find(profile => profile.id === c?.profileId);
+    const policy = c && selected && decodeChildLocalePolicy(selected.localePolicy, c.locale);
+    if (!c || c !== expectedContext || prior.status !== "child" || c.mode !== "child" || !current(c, epoch)
+      || !barrier || selected?.locale !== c.locale || selected.localeLocked !== false || !policy
+      || !["ru", "en"].includes(locale) || locale === c.locale || !policy.allowedLocales.includes(locale)
+      || typeof options.plugin?.changeChildLocale !== "function") return false;
+    const deadline = expiry; busy = true; localeInFlight = true; resumeAfterControl = false;
+    const acceptedEpoch = epoch + 1; let dispatched = false; seal(null, "transition");
+    try {
+      await dataTail;
+      if (sceneRetirement && !await sceneRetirement || !await joinedSceneRecipients()
+        || mediaRetirement && !await mediaRetirement || retirement && !await retirement) throw new Error("Locale retirement unavailable");
+      if (disposed || uncertain || visibility !== "active" || epoch !== acceptedEpoch || now() >= deadline) {
+        await retire(c); return false;
+      }
+      const identity = request(), dispatchAt = now(); dispatched = true;
+      const raw = await invoke("changeChildLocale", { ...identity, contextToken: c.token, generation: c.generation,
+        profileId: c.profileId, expectedProfileRevision: c.profileRevision, locale });
+      const next = decodeChildNativeAppReply(raw, identity.requestId), successor = next?.context;
+      const saved = next?.profiles.find(profile => profile.id === c.profileId);
+      if (disposed || uncertain || epoch !== acceptedEpoch || visibility !== "active" || now() >= deadline
+        || !next || next.phase !== "ready" || next.status !== "child" || next.reason !== null || !successor
+        || successor.token === c.token || successor.generation <= c.generation || successor.mode !== "child"
+        || successor.profileId !== c.profileId || successor.locale !== locale || !successor.package || !successor.home
+        || successor.revision !== c.revision + 1 || successor.selectionRevision !== c.selectionRevision + 1
+        || successor.profileRevision !== c.profileRevision + 1 || successor.policyVersion !== c.policyVersion
+        || successor.policyChecksum !== c.policyChecksum || saved?.locale !== locale || saved.localeLocked !== false
+        || saved.label !== selected.label || saved.exactAge !== selected.exactAge || !sameChildLocalePolicy(saved.localePolicy, policy)
+        || next.profiles.length !== prior.profiles.length || prior.profiles.some(profile => profile.id !== c.profileId
+          && !next.profiles.some(other => other.id === profile.id && other.label === profile.label && other.exactAge === profile.exactAge
+            && other.locale === profile.locale && other.localeLocked === profile.localeLocked && (other.localePolicy === undefined && profile.localePolicy === undefined || sameChildLocalePolicy(other.localePolicy, profile.localePolicy))))
+        || !await joinedDeliveries() || now() >= deadline || !admit(next, dispatchAt)) {
+        uncertain = true; seal("unavailable"); await retire(successor ?? null); return false;
+      }
+      // Provider language follows only this genuinely admitted fresh native context.
+      return true;
+    } catch {
+      if (dispatched) uncertain = true;
+      seal("unavailable"); await retire(dispatched ? null : c); return false;
+    } finally { localeInFlight = false; busy = false; resumeAfterControl = false; }
+  }
   async function suspend(): Promise<void> {
     cancelExport();
     const previous = snapshot.context; seal("blocked");
     if (!await retire(previous)) uncertain = true;
   }
   async function perform(action: ChildNativeAction, target?: unknown): Promise<boolean> {
+    if (busy && localeInFlight) { await suspend(); return false; }
     if (action === "export-child-data") {
       let row: Record<string, unknown> | null;
       try { row = childRecord(target, ["profileId"]); } catch { return false; }
@@ -574,7 +624,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "readWebResourceChunk" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "rollbackSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
+  async function data<T>(method: "readReadingPosition" | "rememberReadingPosition" | "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "readWebResourceChunk" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "rollbackSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -585,7 +635,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       const original = request(); dispatched = true;
       const raw = await invoke(method, { ...original, contextToken: c.token, ...input });
       if (!current(c, generation)) {
-        if (["rememberSceneSelection", "rollbackSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method)) uncertain = true;
+        if (["rememberReadingPosition", "rememberSceneSelection", "rollbackSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method)) uncertain = true;
         return null;
       }
       const row = childRecord(raw, ["version", "requestId", "status", "contextToken", "generation", "value"]);
@@ -597,7 +647,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       // An uncorrelated save reply cannot tell us whether native committed.
       // Keep this controller sealed until a new host lifetime independently
       // reads native state; refresh/lifecycle must not replay an uncertain save.
-      if (["rememberSceneSelection", "rollbackSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method) && dispatched) uncertain = true;
+      if (["rememberReadingPosition", "rememberSceneSelection", "rollbackSceneSelection", "openJourney", "advanceJourney", "recordCountryOpen", "saveJourneyRoute", "resumeJourneyRoute", "cancelJourneyRoute"].includes(method) && dispatched) uncertain = true;
       if (snapshot.context === c) { seal("unavailable"); await retire(c); }
       return null;
     }
@@ -606,7 +656,23 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     return work;
   }
   return Object.freeze({
-    discovery: Object.freeze({
+
+    reading: Object.freeze({
+      readReadingPosition(ref) {
+        const c = snapshot.context, copied = reference(ref);
+        if (!c?.profileId || !copied || typeof options.plugin?.readReadingPosition !== "function") return Promise.resolve(null);
+        return data("readReadingPosition", { reference: copied },
+          raw => decodeChildNativeReadingPosition(raw, c.profileId!, copied));
+      },
+      rememberReadingPosition(ref, expectedRevision, value) {
+        const c = snapshot.context, copied = reference(ref), position = decodeChildReadingPosition(value);
+        if (!c?.profileId || !copied || !position || !Number.isSafeInteger(expectedRevision) || Object.is(expectedRevision, -0) || expectedRevision < 0
+          || expectedRevision >= Number.MAX_SAFE_INTEGER - 1 || position.entity.kind !== copied.kind || position.entity.id !== copied.id
+          || typeof options.plugin?.rememberReadingPosition !== "function") return Promise.resolve(null);
+        return data("rememberReadingPosition", { reference: copied, expectedRevision, position },
+          raw => decodeChildNativeReadingPosition(raw, c.profileId!, copied, expectedRevision, position));
+      },
+    } satisfies ChildNativeReadingPositionController),    discovery: Object.freeze({
       list(shelf) {
         const c = snapshot.context;
         if (!c?.profileId || !c.package || !childNativeDiscoveryShelf(shelf)
@@ -850,7 +916,8 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
           if (disposed || (c ? row.contextToken !== c.token || row.generation !== c.generation : !busy)) return;
           cancelExport();
           const reason = row.reason === "cancelled" ? "blocked" : row.reason as ChildNativeReason;
-          if (busy) { resumeAfterControl = true; seal(reason); }
+          if (localeInFlight) { uncertain = true; resumeAfterControl = false; seal(reason); void retire(null); }
+          else if (busy) { resumeAfterControl = true; seal(reason); }
           else { seal(reason); void retire(c); }
         });
         const handle = await registration;
@@ -865,12 +932,13 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
           // Actual native owner UI may temporarily pause the app. During an
           // original control request its SDK owns that distinction; JS hides
           // every private tree, waits its real completion, then retires/restores.
-          if (busy) { resumeAfterControl = true; seal("blocked"); } else void suspend();
+          if (localeInFlight) { uncertain = true; resumeAfterControl = false; seal("blocked"); void retire(null); }
+          else if (busy) { resumeAfterControl = true; seal("blocked"); } else void suspend();
         } else if (!uncertain) void bootstrap();
       });
       await bootstrap();
     },
-    refresh: bootstrap, perform, suspend, exportChildData, getExportSnapshot: () => exportState,
+    refresh: bootstrap, perform, suspend, exportChildData, changeChildLocale, getExportSnapshot: () => exportState,
     async setProfileLocalePolicy(expectedContext: ChildNativeContext, policy: ChildLocalePolicy) {
       const original = snapshot, c = original.context;
       const selected = original.profiles.find(profile => profile.id === c?.profileId);

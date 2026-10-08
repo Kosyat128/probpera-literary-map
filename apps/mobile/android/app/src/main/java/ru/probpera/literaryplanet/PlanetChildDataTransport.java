@@ -223,11 +223,11 @@ final class PlanetChildDataTransport {
         final Map<String,Object> target,reference,owner,layout;final String assetId,presentationToken;
         final String sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,tier;
         final List<Map<String,Object>> references;
-        final long expectedRevision,offset;final int byteLength;
+        final PlanetChildReadingPosition.Record readingPosition;final long expectedRevision,offset,childLocaleGeneration;final String childLocaleProfileId,childLocale;final int byteLength;
         private V2Request(String method,String id,String token,String action,Map<String,Object> target,
-            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken,String sceneId,String sceneToken,String slotId,String resourceToken,String journeyId,String currentNodeId,String shelf,String tier,long offset,int byteLength) {
+            Map<String,Object> reference,String collection,String query,long revision,List<Map<String,Object>> refs,Map<String,Object> owner,Map<String,Object> layout,String assetId,String presentationToken,String sceneId,String sceneToken,String slotId,String resourceToken,String journeyId,String currentNodeId,String shelf,String tier,long offset,int byteLength,long childLocaleGeneration,String childLocaleProfileId,String childLocale,PlanetChildReadingPosition.Record readingPosition) {
             this.method=method;this.id=id;contextToken=token;this.action=action;this.target=target;this.reference=reference;
-            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;this.sceneId=sceneId;this.sceneToken=sceneToken;this.slotId=slotId;this.resourceToken=resourceToken;this.journeyId=journeyId;this.currentNodeId=currentNodeId;this.shelf=shelf;this.tier=tier;this.offset=offset;this.byteLength=byteLength;
+            this.collection=collection;this.query=query;expectedRevision=revision;references=refs;this.owner=owner;this.layout=layout;this.assetId=assetId;this.presentationToken=presentationToken;this.sceneId=sceneId;this.sceneToken=sceneToken;this.slotId=slotId;this.resourceToken=resourceToken;this.journeyId=journeyId;this.currentNodeId=currentNodeId;this.shelf=shelf;this.tier=tier;this.offset=offset;this.byteLength=byteLength;this.childLocaleGeneration=childLocaleGeneration;this.childLocaleProfileId=childLocaleProfileId;this.childLocale=childLocale;this.readingPosition=readingPosition;
         }
     }
     private static long v2Integer(Object value,long min,long max) throws Exception {
@@ -267,6 +267,7 @@ final class PlanetChildDataTransport {
         if("bootstrap".equals(method))row=record(value,"version","requestId");
         else if("retire".equals(method)||"readContext".equals(method))row=record(value,"version","requestId","contextToken");
         else if("perform".equals(method))row=record(value,"version","requestId","contextToken","action","target");
+        else if("changeChildLocale".equals(method))row=record(value,"version","requestId","contextToken","generation","profileId","expectedProfileRevision","locale");
         else if("readEntity".equals(method)||"recordCountryOpen".equals(method))row=record(value,"version","requestId","contextToken","reference");
         else if("readPassport".equals(method))row=record(value,"version","requestId","contextToken");
         else if("listDiscovery".equals(method))row=record(value,"version","requestId","contextToken","shelf");
@@ -284,6 +285,8 @@ final class PlanetChildDataTransport {
         else if("acquireWebResource".equals(method))row=value!=null&&value.containsKey("assetId")?record(value,"version","requestId","contextToken","sceneToken","slotId","assetId","tier"):record(value,"version","requestId","contextToken","sceneToken","slotId");
         else if("releaseWebResource".equals(method))row=record(value,"version","requestId","contextToken","resourceToken");
         else if("readWebResourceChunk".equals(method))row=record(value,"version","requestId","contextToken","sceneToken","resourceToken","offset","byteLength");
+        else if("readReadingPosition".equals(method))row=record(value,"version","requestId","contextToken","reference");
+        else if("rememberReadingPosition".equals(method))row=record(value,"version","requestId","contextToken","reference","expectedRevision","position");
         else if("readCollection".equals(method))row=record(value,"version","requestId","contextToken","collection");
         else if("writeCollection".equals(method))row=record(value,"version","requestId","contextToken","collection","expectedRevision","references");
         else throw new PlanetChildDataStore.Unavailable();
@@ -319,7 +322,9 @@ final class PlanetChildDataTransport {
         if("readJourneyRouteDownload".equals(method))journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));
         if(Arrays.asList("openJourney","advanceJourney","saveJourneyRoute","resumeJourneyRoute","cancelJourneyRoute").contains(method)){journeyId=PlanetChildJourney.identifier(string(row.get("journeyId"),96));revision=v2Integer(row.get("expectedRevision"),0,"openJourney".equals(method)?MAX_SAFE-1:MAX_SAFE-2);}
         if("advanceJourney".equals(method)){action=string(row.get("action"),8);require(Arrays.asList("complete","restart").contains(action));Object current=row.get("currentNodeId");if(current!=null)currentNodeId=PlanetChildJourney.identifier(string(current,96));require(currentNodeId!=null||"restart".equals(action));}
-        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,shelf,tier,offset,byteLength);
+        PlanetChildReadingPosition.Record readingPosition=null;if("readReadingPosition".equals(method)||"rememberReadingPosition".equals(method)){reference=v2Reference(row.get("reference"));if("rememberReadingPosition".equals(method)){revision=v2Integer(row.get("expectedRevision"),0,MAX_SAFE-2);readingPosition=PlanetChildReadingPosition.decode(v2Copy(row.get("position"),0,new int[]{0}));require(readingPosition.kind.equals(reference.get("kind"))&&readingPosition.id.equals(reference.get("id")));}}
+        long childGeneration=0;String childProfile=null,childLocale=null;if("changeChildLocale".equals(method)){childGeneration=v2Integer(row.get("generation"),1,MAX_SAFE-1);revision=v2Integer(row.get("expectedProfileRevision"),1,MAX_SAFE-1);childProfile=PlanetChildJourney.identifier(string(row.get("profileId"),96));childLocale=string(row.get("locale"),2);require(Arrays.asList("ru","en").contains(childLocale));}
+        return new V2Request(method,id,token,action,target,reference,collection,query,revision,references,owner,layout,assetId,presentationToken,sceneId,sceneToken,slotId,resourceToken,journeyId,currentNodeId,shelf,tier,offset,byteLength,childGeneration,childProfile,childLocale,readingPosition);
     }
     private static Map<String,Object> v2MediaLayout(Object value)throws Exception {
         Map<String,Object> raw=record(value,"x","y","width","height","viewportWidth","viewportHeight"),out=new LinkedHashMap<>();
