@@ -4713,8 +4713,8 @@ export default function App({ productHelp, nativeProfileControls }: { productHel
             <a
               href={safeHomepageHref(
                 coreTrust?.buttonUrl ||
-                  "mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале",
-                "mailto:probperasite@yandex.ru?subject=Исправление%20в%20материале"
+                  `mailto:probperasite@yandex.ru?subject=${encodeURIComponent(t("Исправление в материале"))}`,
+                `mailto:probperasite@yandex.ru?subject=${encodeURIComponent(t("Исправление в материале"))}`
               )}
               {...cmsCoreFieldMarker(
                 "trust",

@@ -643,6 +643,7 @@ const englishInterfaceText: Record<string, string> = {
   "Читатель видит не только готовый текст, но и правила, по которым сведения попадают в энциклопедию.":
     "Readers see not only the finished text, but also the rules by which information enters the encyclopedia.",
   "Сообщить об ошибке": "Report an error",
+  "Исправление в материале": "Correction to published content",
   "Редакционная политика": "Editorial policy",
   "Авторские статьи сохраняют индивидуальный голос. Фактические утверждения, даты, имена и библиография проверяются отдельно; спорные сведения помечаются, а не выдаются за установленные.":
     "Original articles retain their individual voice. Factual claims, dates, names and bibliography are checked separately; disputed information is labelled rather than presented as settled fact.",
