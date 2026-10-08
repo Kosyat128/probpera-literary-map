@@ -101,3 +101,82 @@ describe("interface accessibility AST locale branches", () => {
     </>; }`)).toEqual(["Без перевода", "Утечка в вызове"]);
   });
 });
+
+describe("interface accessibility localized templates", () => {
+  const numericRating = (array, before = "") => `function View() {
+    const { language } = useInterfaceLanguage();
+    return ${array}.map((score) => (${before}<button aria-label={
+      language === "en" ? \`\${score} out of 5\` : \`\${score} из 5\`
+    } />));
+  }`;
+
+  it("accepts the real rating label on a fresh literal numeric array", () => {
+    expect(findings(numericRating("[1, 2, 3, 4, 5]"))).toEqual([]);
+  });
+
+  it("accepts the real mascot templates with the same immutable locale-selected name", () => {
+    expect(findings(view('shown ? ru ? `Подсказки: ${name}` : `Tips from ${name}` : ru ? `Показать: ${name}` : `Show ${name}`',
+      'const { language } = useInterfaceLanguage(); const ru = language === "ru", name = ru ? "Книжулик" : "Mr. Booky";'))).toEqual([]);
+  });
+
+  it("accepts nested templates and repeated immutable substitutions independently", () => {
+    expect(findings(view('ru ? `Подсказки: ${name}` : `Tips ${name}: ${alias} ${`again ${name}`}`',
+      'const { language } = useInterfaceLanguage(); const ru = language === "ru"; const name = ru ? "Книжулик" : "Mr. Booky"; const alias = name;'))).toEqual([]);
+  });
+
+  it.each(['["Утечка"]', '[1, ...unknownScores]', 'unknownScores'])
+  ("refuses an unproven map value: %s", (array) => {
+    expect(findings(numericRating(array))).toContain(" из 5");
+  });
+
+  it.each(['score = "Утечка", ', '([score] = ["Утечка"]), ', 'eval("score = value"), ',
+    '(() => { score = "Утечка"; })(), ', '(() => { for (score of values) {} })(), ',
+    '(eval as typeof eval)("score = value"), ', 'eval!("score = value"), '])
+  ("refuses callback mutation or eval: %s", (before) => {
+    expect(findings(numericRating("[1, 2, 3]", before))).toContain(" из 5");
+  });
+
+  it("does not trust a same-named parameter in a nested callback", () => {
+    expect(findings(`function View() {
+      const { language } = useInterfaceLanguage();
+      return [1, 2].map((score) => unknown.map((score) => <button title={
+        language === "en" ? \`\${score} out of 5\` : \`\${score} из 5\`
+      } />));
+    }`)).toContain(" из 5");
+  });
+
+  it.each([
+    'const name = "Утечка";',
+    'const leaked = "Утечка"; const name = leaked;',
+    'const name = ru ? "Книжулик" : "Утечка";',
+    'let name = "Mr. Booky";',
+    'const name = getName();',
+    'const name = other ? "Mr. Booky" : "Книжулик";',
+    'const name = alias; const alias = name;',
+  ])("refuses unsafe or opaque template substitutions: %s", (declarations) => {
+    expect(findings(view('ru ? `Подсказки: ${name}` : `Tips ${name}`',
+      'const { language } = useInterfaceLanguage(); const ru = language === "ru"; ' + declarations)))
+      .toContain("Подсказки: ");
+  });
+
+  it.each(['`Tips Утечка ${name}`', '`Tips ${name} Утечка`', '`Tips ${`Утечка ${name}`}`', '`Tips ${"Утечка"}`'])
+  ("refuses Cyrillic in English template segments and nested substitutions: %s", (english) => {
+    expect(findings(view('ru ? "Подсказки" : ' + english,
+      'const { language } = useInterfaceLanguage(); const ru = language === "ru"; const name = "Mr. Booky";')))
+      .toContain("Подсказки");
+  });
+
+  it("does not borrow a different hook binding for an English substitution", () => {
+    expect(findings(view('ru ? `Подсказки: ${name}` : `Tips ${name}`',
+      'const { language } = useInterfaceLanguage(); const ru = language === "ru"; const { language: second } = useInterfaceLanguage(); const name = second === "ru" ? "Книжулик" : "Mr. Booky";')))
+      .toContain("Подсказки: ");
+  });
+
+  it("does not resolve a shadowed name to the outer localized constant", () => {
+    expect(findings(`function View() {
+      const { language } = useInterfaceLanguage(); const ru = language === "ru";
+      const name = ru ? "Книжулик" : "Mr. Booky";
+      return (name) => <button title={ru ? \`Подсказки: \${name}\` : \`Tips \${name}\`} />;
+    }`)).toContain("Подсказки: ");
+  });
+});
