@@ -67,7 +67,7 @@ export function PronunciationDraftEditor({ catalog, previewAction }: {
     try {
       url = URL.createObjectURL(new Blob([serialized], { type: "application/json;charset=utf-8" }));
       const link = document.createElement("a"); link.href = url; link.download = name;
-      document.body.append(link); try { link.click(); } finally { link.remove(); }
+      document.body.appendChild(link); try { link.click(); } finally { link.remove(); }
       setNotice("Рабочая копия подготовлена для сохранения. Проверьте сохранённый файл перед закрытием формы.");
       // Preparing a browser download is not an observed disk-save ACK; dirty remains.
     } catch { setNotice("Не удалось подготовить файл. Форма сохранена."); }
