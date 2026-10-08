@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, extname, join, relative, resolve } from "node:path";
 import ts from "typescript";
+import { createAccessibilityCyrillicFinder } from "./lib/interface-i18n-accessibility.mjs";
 
 const projectRoot = process.cwd();
 const sourceRoot = join(projectRoot, "src");
@@ -106,35 +107,12 @@ function staticTranslationCalls() {
   return calls;
 }
 
-function untranslatedCyrillicInAccessibility(node, insideTranslation = false) {
-  if (
-    ts.isCallExpression(node) &&
-    ts.isIdentifier(node.expression) &&
-    (node.expression.text === "t" ||
-      node.expression.text === "translateInterfaceText")
-  ) {
-    return [];
-  }
-
-  const findings = [];
-  if (
-    !insideTranslation &&
-    (ts.isStringLiteralLike(node) || ts.isNoSubstitutionTemplateLiteral(node)) &&
-    cyrillicPattern.test(node.text)
-  ) {
-    findings.push(node.text);
-  }
-  ts.forEachChild(node, (child) => {
-    findings.push(...untranslatedCyrillicInAccessibility(child, insideTranslation));
-  });
-  return findings;
-}
-
 function rawVisitorLeaks(relativePaths) {
   const leaks = [];
   for (const relativePath of relativePaths) {
     const filePath = resolve(projectRoot, relativePath);
     const source = parse(filePath);
+    const findAccessibilityCyrillic = createAccessibilityCyrillicFinder(source, dictionaryPath);
     const addLeak = (node, kind, text) => {
       const line = source.getLineAndCharacterOfPosition(node.getStart()).line + 1;
       leaks.push({ file: `${relativePath}:${line}`, kind, text: text.trim() });
@@ -148,7 +126,7 @@ function rawVisitorLeaks(relativePaths) {
         accessibilityAttributes.has(node.name.getText(source)) &&
         node.initializer
       ) {
-        for (const text of untranslatedCyrillicInAccessibility(node.initializer)) {
+        for (const text of findAccessibilityCyrillic(node.initializer)) {
           addLeak(node, node.name.getText(source), text);
         }
       }
