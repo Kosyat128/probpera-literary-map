@@ -5,6 +5,8 @@ import { build } from "esbuild";
 import { containedFile } from "./pwa-artifact.mjs";
 import { childNativeJson, normalizeChildNativePins, CHILD_NATIVE_PIN_SOURCE, CHILD_RELEASE_REVIEW_PREFIX } from "./native-child-package-assets.mjs";
 import { contentPackageCanonicalJson } from "../../src/planet/contentPackageProtocol.mjs";
+import { decodeNarrationProvenanceFields } from "../../src/planet/pronunciationDictionaryProtocol.mjs";
+export { createNarrationPronunciationDraft as createChildNativeNarrationPronunciationDraft } from "../../src/planet/pronunciationDictionaryProtocol.mjs";
 
 import { decodeReadingAnchors } from "../../src/child/childReadingPositionProtocol.mjs";
 
@@ -55,6 +57,7 @@ export function validateChildNativeNarrationProvenance(bytes, asset, locale, dur
     && typeof durationMs === "number" && Number.isFinite(durationMs) && durationMs > 0 && durationMs <= 60000 && Math.abs(value.durationMs - durationMs) <= 1
     && value.reducedAudioFallback === "same-locale-text" && ["human-original", "human-licensed"].includes(value.voiceKind),
     "complete locale/script/performer/licensor/pronunciation/duration/quality/fallback provenance");
+  require(decodeNarrationProvenanceFields(value), "shared strict narration source-field contract");
   return value;
 }
 export function childNativeNarrationDurationMs(bytes) {

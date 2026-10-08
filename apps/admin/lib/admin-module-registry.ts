@@ -22,6 +22,7 @@ export const adminModuleRegistry = [
   { entry: ["▥", "Редакционные досье книг", "/library/dossiers"], sidebar: false },
   { entry: ["◎", "Страны и авторы", "/editorial-database"], sidebar: true },
   { entry: ["→", "Маршруты Книжулика", "/journeys"], sidebar: true },
+  { entry: ["Aa", "Произношение · черновики", "/pronunciation"], sidebar: true },
   { entry: ["EN", "Premium English", "/translations"], sidebar: true },
   { entry: ["▤", "Рубрики и теги", "/categories"], sidebar: true },
   { entry: ["▧", "Медиатека", "/media"], sidebar: true },
