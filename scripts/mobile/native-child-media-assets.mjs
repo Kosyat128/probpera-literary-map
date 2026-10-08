@@ -236,16 +236,20 @@ async function ownedSource(root, name, maximum) {
   for (const part of name.split("/")) { current = path.join(current, part); require(!(await fs.lstat(current)).isSymbolicLink(), "linked source"); }
   const file = await containedFile(root, name); require(file.size > 0 && file.size <= maximum, "owned source size"); return file;
 }
-export async function sourceBinaryPreflight(root) {
+async function sourceBinaryValidators(root) {
   // Reuse only the source-owned pure container/resource validator. It mints no
   // challenge, epoch, permit or rights. Native admission and actual decode
   // remain independent on the original LOCAL2 worker.
-  const module = await build({ absWorkingDir: root, entryPoints: ["src/child/childMediaDecode.ts"],
+  const module = await build({ absWorkingDir: root, entryPoints: ["src/child/childNarrationSignal.ts"],
     bundle: true, write: false, format: "esm", platform: "node", logLevel: "silent" });
   require(module.outputFiles?.length === 1, "one fixed binary preflight");
   const compiled = await import("data:text/javascript;base64," + Buffer.from(module.outputFiles[0].contents).toString("base64"));
   require(typeof compiled.preflightChildMedia === "function", "actual bounded source binary validator");
-  return compiled.preflightChildMedia;
+  require(typeof compiled.analyzeChildNarrationSignal === "function", "actual bounded source narration signal analyzer");
+  return Object.freeze({ preflight: compiled.preflightChildMedia, signal: compiled.analyzeChildNarrationSignal });
+}
+export async function sourceBinaryPreflight(root) {
+  return (await sourceBinaryValidators(root)).preflight;
 }
 export async function collectChildNativeMediaOutputs(root, platform, channel, now = Date.now()) {
   root = await fs.realpath(root);
@@ -264,7 +268,8 @@ export async function collectChildNativeMediaOutputs(root, platform, channel, no
     platform: selected, mediaPinSourceChecksum: source.sha256, reviewKeys: pins.reviewKeys, manifests: pins.manifests }) + "\n");
   add(CHILD_NATIVE_MEDIA_CATALOG, { name: CHILD_NATIVE_MEDIA_PIN_SOURCE, sha256: source.sha256, bytes: catalog }, CHILD_NATIVE_MEDIA_TRANSFORM);
   const textSource = await ownedSource(root, CHILD_NATIVE_PIN_SOURCE, 65536), textPins = normalizeChildNativePins(textSource.bytes);
-  const allBinaries = new Set(), preflight = pins.manifests.length ? await sourceBinaryPreflight(root) : null;
+  const allBinaries = new Set(), validators = pins.manifests.length ? await sourceBinaryValidators(root) : null;
+  const preflight = validators?.preflight;
   for (const pin of pins.manifests) {
     const textPin = textPins.packages.find(row => row.packageId === pin.packageId && row.packageVersion === pin.packageVersion && row.packageChecksum === pin.packageChecksum);
     require(textPin, "actual independently pinned text owner package missing");
@@ -317,12 +322,19 @@ export async function collectChildNativeMediaOutputs(root, platform, channel, no
         const quality = await ownedSource(root, qualityName, 65536);
         validateChildNativeNarrationProvenance(quality.bytes, asset, manifest.locale, childNativeNarrationDurationMs(binary.bytes));
         add("child-native/media/provenance/" + asset.payload.qualityChecksum + ".json", { ...quality, name: qualityName });
+        const signal = validators.signal(new Uint8Array(binary.bytes));
+        require(signal && signal.sourceSha256 === binary.sha256 && signal.sourceBytes === binary.size
+          && signal.format.sampleRate === header.sampleRate && signal.format.frameCount === header.frames
+          && signal.format.channels === header.channels && signal.format.bits === header.bits
+          && signal.narrationStatus === "requires-human-review", "nondegenerate byte-bound narration signal; human review still required");
+        add("child-native/media/signal/" + binary.sha256 + ".json",
+          { ...binary, name, bytes: canonical(signal) }, "pcm-signal-measurement-v1");
       }
       allBinaries.add(asset.sha256 + "." + ext); require(allBinaries.size <= 512, "global binary quota");
       add("child-native/media/assets/" + asset.sha256 + "." + ext, { ...binary, name });
     }
   }
-  require(outputs.size <= 1089, "bounded complete media and narration provenance output inventory");
+  require(outputs.size <= 1601, "bounded complete media and narration provenance output inventory");
   return { pinSource: { path: CHILD_NATIVE_MEDIA_PIN_SOURCE, sha256: source.sha256 },
     outputs: [...outputs.values()].sort((a, b) => a.output < b.output ? -1 : a.output > b.output ? 1 : 0) };
 }

@@ -5,7 +5,7 @@ import path from "node:path";
 import { validateChildNativeNarrationProvenance, childNativeNarrationDurationMs, collectChildNativeMediaOutputs,
   childNativeMediaCanonical as canonical, CHILD_NATIVE_MEDIA_REVIEW_PREFIX } from "./native-child-media-assets.mjs";
 
-// AUTHORED_NOT_RUN. Disposable metadata and silent PCM confer no human review,
+// AUTHORED_NOT_RUN. Disposable metadata and synthetic PCM confer no human review,
 // original voice, licensed source, native consent or OS storage authority.
 const sha = value => createHash("sha256").update(value).digest("hex");
 const encode = value => Buffer.from(JSON.stringify(value) + "\n", "utf8");
@@ -71,6 +71,9 @@ describe("complete signed narration publisher output", () => {
       await fs.cp(path.resolve("src"), path.join(root, "src"), { recursive: true });
       const now = 2_000_000, checksum = "a".repeat(64), transcript = "Synthetic English narration transcript only.";
       const quality = encode({ ...provenance(), scriptChecksum: sha(Buffer.from(transcript)) }), binary = pcm();
+      // Nonconstant synthetic samples exercise technical measurements only.
+      // This is not a recording, pronunciation review or a human voice.
+      for (let frame = 0; frame < 160; frame++) binary.writeInt16LE(frame % 4 < 2 ? 1000 : -1000, 44 + frame * 2);
       const textPayload = { title: "Synthetic owner", text: "Synthetic current text.", terms: [], references: [] };
       const owner = { kind: "activity", id: "home", contentChecksum: sha(Buffer.from(JSON.stringify(textPayload))) };
       const payload = { role: "narration", altText: "Synthetic narration", transcript, scriptId: "synthetic-script",
@@ -120,7 +123,18 @@ describe("complete signed narration publisher output", () => {
       await expect(collectChildNativeMediaOutputs(root, "android", "googlePlay", now)).rejects.toThrow();
       await write(qualityPath, quality);
       const result = await collectChildNativeMediaOutputs(root, "android", "googlePlay", now);
-      expect(result.outputs).toHaveLength(5);
+      expect(result.outputs).toHaveLength(6);
+      const signal = result.outputs.find(value => value.output === "child-native/media/signal/" + row.sha256 + ".json");
+      expect(signal).toMatchObject({ source: "src/child/media-release-material/" + row.sha256 + "/asset.wav",
+        sourceSha256: row.sha256, transformation: "pcm-signal-measurement-v1" });
+      expect(signal.outputSha256).toBe(sha(signal.bytes));
+      expect(JSON.parse(signal.bytes.toString("utf8"))).toMatchObject({
+        sourceSha256: row.sha256, sourceBytes: binary.length, format: { channels: 1, bits: 16, sampleRate: 8000, frameCount: 160, durationMs: 20 },
+        zeroFrames: 0, negativeRailSamples: 0, positiveRailSamples: 0, dcMean: 0,
+        narrationStatus: "requires-human-review", refusalReason: null, loudnessStandard: "NOT_LUFS",
+        humanReview: "PENDING", voiceApproved: false, rightsApproved: false, releaseReady: false,
+      });
+      expect(result.outputs.find(value => value.output === "child-native/media/assets/" + row.sha256 + ".wav").bytes).toEqual(binary);
       const output = result.outputs.find(value => value.output === "child-native/media/provenance/" + payload.qualityChecksum + ".json");
       expect(output).toMatchObject({ source: qualityPath, sourceSha256: sha(quality), outputSha256: sha(quality) });
       expect(output.bytes).toEqual(quality);
