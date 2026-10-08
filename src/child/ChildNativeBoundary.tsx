@@ -3,6 +3,7 @@ import { createChildCanonicalResources, type ChildCanonicalSnapshot } from "./ch
 import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
+import { ChildPrivacyNotice } from "./ChildPrivacyNotice";
 import { ChildNativeDiscoveryPassportView, type ChildNativeDiscoveryPassportViewName } from "./ChildNativeDiscoveryPassportView";
 import type { ChildNativeRemovalTarget } from "./childNativeDiscoveryPassport";
 import { childNativeJourneyId } from "./childNativeJourney";
@@ -530,6 +531,7 @@ export function ChildNativeReadyView({ controller, snapshot, retainedProfileId }
       <span>{language === "ru" ? "Книжулик" : "Mr. Booky"}</span>
     </aside>
     <section className="child-native-panel" aria-label={copy.title}>
+      <ChildPrivacyNotice language={language} />
       {sceneState.phase==="unavailable"&&<p role="alert" className="child-native-appearance-error">
         {sceneState.persistence==="save-failed"?(language==="ru"?"Не удалось подтвердить сохранение оформления.":"The appearance save could not be confirmed."):(language==="ru"?"Сохранённое оформление сейчас недоступно.":"The saved appearance is currently unavailable.")}
         <button type="button" onClick={()=>{void resources?.restore?.();}}>{language==="ru"?"Повторить восстановление":"Retry restoration"}</button>

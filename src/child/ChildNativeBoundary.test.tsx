@@ -147,3 +147,25 @@ describe("parent child-data export presentation", () => {
     expect(owner.perform).not.toHaveBeenCalled();
   });
 });
+
+describe("child privacy notice integration", () => {
+  it.each(["ru", "en"] as const)("makes the notice reachable in the admitted %s child panel without a protected action", language => {
+    const value = snapshot("child", language), owner = controller(value), platform = services();
+    const html = render(<ChildNativeReadyView snapshot={value} controller={owner} />, language, platform);
+    expect(html).toContain('data-child-native-privacy="local-v1"'); expect(html).toContain(`lang="${language}"`);
+    expect(html).toContain(language === "ru" ? "<summary>О твоих данных</summary>" : "<summary>About your information</summary>");
+    expect(owner.perform).not.toHaveBeenCalled(); expect(owner.readEntity).not.toHaveBeenCalled();
+    expect(owner.readCollection).not.toHaveBeenCalled(); expect(platform.openExternalLink).not.toHaveBeenCalled();
+    expect(platform.preferences.get).not.toHaveBeenCalled(); expect(platform.preferences.set).not.toHaveBeenCalled();
+    expect(platform.preferences.remove).not.toHaveBeenCalled();
+  });
+  it("does not expose a child notice from uncertain, transitioning or blocked child content", () => {
+    const values = [snapshot("unavailable"), { ...snapshot("unavailable"), phase: "transition" as const }, snapshot("blocked-child")];
+    for (const value of values) {
+      const owner = controller(value);
+      const html = render(<ChildNativeReadyView snapshot={value} controller={owner} retainedProfileId="native-profile" />);
+      expect(html).not.toContain("data-child-native-privacy"); expect(html).not.toContain("<summary>About your information</summary>");
+      expect(owner.perform).not.toHaveBeenCalled(); expect(owner.readEntity).not.toHaveBeenCalled();
+    }
+  });
+});
