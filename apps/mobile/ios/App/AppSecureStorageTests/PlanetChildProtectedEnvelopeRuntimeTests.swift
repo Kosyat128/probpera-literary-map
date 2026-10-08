@@ -222,4 +222,13 @@ final class PlanetChildProtectedEnvelopeRuntimeTests: XCTestCase {
         let parsed = try decode(epochRecord); defer { parsed.close() }
         XCTAssertFalse(try parsed.isUnenrolled())
     }
+    func testLocaleLockDraftPreservesPinSiblingAndOtherProfileFields() throws {
+        for scenario in ["lock","unlock","legacy","parent-language"] { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localeLockDraft(scenario)) }
+    }
+    func testLocaleLockDraftRejectsNSNumberOneStringNullAndSiblingTargets() throws {
+        for scenario in ["number","string","null","sibling"] { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localeLockDraft(scenario)) }
+    }
+    func testLocaleLockSummaryKeepsLegacyUnknownAndRejectsCorruptTypes() throws {
+        XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localeLockDraft("summary"))
+    }
 }

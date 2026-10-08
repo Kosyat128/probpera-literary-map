@@ -8760,7 +8760,7 @@ final class PlanetChildLocalV2SDKOwner {
         let root=try LocalV2PackageValue.object(LocalV2PackageJson.read(bytes,131072)),p=seed ? root:try LocalV2PackageValue.object(root["protectedRecord"])
         if !seed { let saved=try LocalSnapshotV2.decode(bytes,policy:policy);saved.close() }
         let registry=try LocalV2PackageValue.object(p["registry"]),mode=try LocalV2PackageValue.text(p["mode"]);var profiles=[[String:Any]](),locale=Locale.current.languageCode=="ru" ? "ru":"en";let selected=registry["activeProfileId"]?.isNull==true ? nil:try LocalV2PackageValue.identifier(registry["activeProfileId"])
-        for profile in try LocalV2PackageValue.array(registry["profiles"],4) { let row=try LocalV2PackageValue.object(profile),id=try LocalV2PackageValue.identifier(row["id"]),lang=try LocalV2PackageValue.text(row["locale"]);profiles.append(["id":id,"label":try LocalV2PackageValue.text(row["label"]),"exactAge":try LocalV2PackageValue.number(row["exactAge"],3,17),"locale":lang]);if id==selected { locale=lang } }
+        for profile in try LocalV2PackageValue.array(registry["profiles"],4) { let row=try LocalV2PackageValue.object(profile),id=try LocalV2PackageValue.identifier(row["id"]),lang=try LocalV2PackageValue.text(row["locale"]);profiles.append(try LocalV2SDKProfileDraft.summary(row));if id==selected { locale=lang } }
         guard mode=="adult" || mode=="child" && selected != nil else { throw PinKnownRefusal() }
         let metadata: [String:Any]=["revision":try LocalV2PackageValue.number(p["revision"],1,9007199254740991),"selectionRevision":try LocalV2PackageValue.number(p["selectionRevision"],1,9007199254740991),"profileRevision":try LocalV2PackageValue.number(p["profileRevision"],1,9007199254740991),"policyVersion":policy.version,"policyChecksum":policy.checksum,"mode":mode,"profileId":selected as Any? ?? NSNull(),"locale":locale]
         return (seed ? "unenrolled":mode,metadata,profiles)
@@ -8919,6 +8919,12 @@ final class PlanetChildLocalV2SDKOwner {
 fileprivate enum LocalV2SDKProfileDraft {
     typealias V=LocalV2PackageValue
     static let fields=["label","exactAge","locale","readingLevel","allowedTopics","blockedTopics","soundEnabled","motion","narrationEnabled"]
+    static func summary(_ profile: [String:V]) throws -> [String:Any] {
+        var result: [String:Any]=["id":try V.identifier(profile["id"]),"label":try V.text(profile["label"]),"exactAge":try V.number(profile["exactAge"],3,17),"locale":try V.text(profile["locale"])]
+        // Only the typed canonical bool reaches the wire. No NSNumber bridge.
+        if let value=profile["localeLocked"] { result["localeLocked"]=try V.bool(value) }
+        return result
+    }
     static func profile(_ bytes: Data,placeholder: String) throws -> Data {
         let root=try V.object(LocalV2PackageJson.read(bytes,65536)),draft: [String:V]
         if root.keys.contains("createProfile") { draft=try V.object(try V.object(.object(root.map { ($0.key,$0.value) }),["createProfile"])["createProfile"]) } else { draft=root }
@@ -8935,8 +8941,11 @@ fileprivate enum LocalV2SDKProfileDraft {
         var selected: [(String,V)]?;for value in try V.array(registry["profiles"],4) { if try V.identifier(V.object(value)["id"])==id,case .object(let rows)=value { selected=rows } };guard let selected else { throw PinKnownRefusal() };var changes=[String:V]()
         if action=="change-exact-age" { let age=try V.number(draft["exactAge"],3,17);changes["exactAge"] = .integer(age);changes["ageBand"] = .string(age<=5 ? "3-5":age<=8 ? "6-8":age<=11 ? "9-11":age<=14 ? "12-14":"15-17");let formatter=ISO8601DateFormatter();formatter.formatOptions=[.withInternetDateTime,.withFractionalSeconds];formatter.timeZone=TimeZone(secondsFromGMT:0);changes["ageConfirmedAt"] = .string(formatter.string(from:Date())) }
         else if action=="change-blocked-topics" { changes["blockedTopics"]=draft["blockedTopics"] }
-        else { changes=try V.object(draft["changes"]);guard !changes.isEmpty,Set(changes.keys).isSubset(of:Set(["readingLevel","allowedTopics","locale","soundEnabled","motion","narrationEnabled"])) else { throw PinKnownRefusal() } }
-        let bytes=Data(try V.object(selected.map { ($0.0,changes[$0.0] ?? $0.1) }).json(sorted:false).utf8);_ = try PlanetChildVault.ProtectedEnvelope.localV2ProfileId(bytes);return bytes
+        else { changes=try V.object(draft["changes"]);guard !changes.isEmpty,Set(changes.keys).isSubset(of:Set(["readingLevel","allowedTopics","locale","soundEnabled","motion","narrationEnabled","localeLocked"])) else { throw PinKnownRefusal() };if let locked=changes["localeLocked"] { _ = try V.bool(locked) } }
+        var rows=selected.map { ($0.0,changes[$0.0] ?? $0.1) }
+        // The optional canonical field belongs last, including legacy records.
+        if !selected.contains(where:{ $0.0=="localeLocked" }),let locked=changes["localeLocked"] { rows.append(("localeLocked",locked)) }
+        let bytes=Data(try V.object(rows).json(sorted:false).utf8);_ = try PlanetChildVault.ProtectedEnvelope.localV2ProfileId(bytes);return bytes
     }
     static func creation(_ bytes: Data) throws -> Data { var p=try profile(bytes,placeholder:"native-pending");defer { p.resetBytes(in:0..<p.count) };guard case .object(let rows)=try LocalV2PackageJson.read(p,65536) else { throw PinKnownRefusal() };return Data(try V.object([("createProfile",.object(rows.filter { $0.0 != "id" }))]).json(sorted:false).utf8) }
 }
@@ -9253,6 +9262,41 @@ enum PlanetChildLocalV2SDKRuntimeFixture {
         do { try invocation.live(invocation.deadline);return false } catch { return true }
     }
     static func profile(_ bytes: Data) throws -> Data { try LocalV2SDKProfileDraft.profile(bytes,placeholder:"native-pending") }
+    /** AUTHORED_NOT_RUN: draft/canonical byte mechanics, no storage or admission. */
+    static func localeLockDraft(_ scenario: String) throws -> Bool {
+        guard ["lock","unlock","legacy","number","string","null","sibling","summary","parent-language"].contains(scenario) else { throw PinKnownRefusal() }
+        typealias V=LocalV2PackageValue
+        let legacy=scenario=="legacy" || scenario=="summary",initial=scenario=="lock" ? "false":"true"
+        var profile=Data((#"{"id":"reader","label":"Fixture reader","exactAge":9,"ageBand":"9-11","locale":"en","ageConfirmedAt":"2026-10-01T12:00:00.000Z","readingLevel":null,"allowedTopics":null,"blockedTopics":[],"soundEnabled":false,"motion":"calm","narrationEnabled":false"# + (legacy ? "":",\"localeLocked\":"+initial) + "}").utf8)
+        defer { profile.resetBytes(in:0..<profile.count) }
+        let original=try V.object(LocalV2PackageJson.read(profile,65536))
+        if scenario=="summary" {
+            guard try LocalV2SDKProfileDraft.summary(original)["localeLocked"]==nil else { throw PinKnownRefusal() }
+            for locked in [true,false] { var row=original;row["localeLocked"] = .bool(locked);let dto=try LocalV2SDKProfileDraft.summary(row);guard let value=dto["localeLocked"] as? NSNumber,CFGetTypeID(value)==CFBooleanGetTypeID(),value.boolValue==locked else { throw PinKnownRefusal() } }
+            for bad in [V.integer(1),.string("false"),.null] { var row=original;row["localeLocked"]=bad;do { _ = try LocalV2SDKProfileDraft.summary(row);return false } catch {} };return true
+        }
+        var before=try PlanetChildLocalCanonicalRuntimeFixture.child(profile);defer { before.resetBytes(in:0..<before.count) }
+        let root=try V.object(LocalV2PackageJson.read(before,131072));guard case .object(let protectedRows)?=root["protectedRecord"],case .object(let profileRows)=try LocalV2PackageJson.read(profile,65536) else { throw PinKnownRefusal() }
+        let p=try V.object(root["protectedRecord"]),registry=try V.object(p["registry"])
+        let sibling=V.object(profileRows.map { ($0.0,$0.0=="id" ? .string("sibling"):$0.0=="label" ? .string("Sibling"):$0.1) })
+        let nextRegistry=V.object([("schemaVersion",registry["schemaVersion"]!),("policyVersion",registry["policyVersion"]!),("activeProfileId",registry["activeProfileId"]!),("profiles",.array([try LocalV2PackageJson.read(profile,65536),sibling]))])
+        let sum=LocalSnapshotV2.hash(Data(try nextRegistry.json(sorted:false).utf8))
+        let replacement=V.object(protectedRows.map { ($0.0,$0.0=="registry" ? nextRegistry:$0.0=="registryChecksum" ? .string(sum):$0.1) })
+        var two=try PlanetChildLocalCanonicalRuntimeFixture.repack(before,protectedText:replacement.json(sorted:false));defer { two.resetBytes(in:0..<two.count) }
+        let locked: Any
+        switch scenario { case "unlock":locked=false;case "number":locked=NSNumber(value:1);case "string":locked="false";case "null":locked=NSNull();default:locked=true }
+        var target=try JSONSerialization.data(withJSONObject:["profileId":scenario=="sibling" ? "sibling":"reader","changes":scenario=="parent-language" ? ["locale":"ru"]:["localeLocked":locked]],options:[.sortedKeys]);defer { target.resetBytes(in:0..<target.count) }
+        if ["number","string","null","sibling"].contains(scenario) { do { _ = try LocalV2SDKProfileDraft.edit(two,action:"expand-access-settings",target:target);return false } catch { return true } }
+        var edited=try LocalV2SDKProfileDraft.edit(two,action:"expand-access-settings",target:target);defer { edited.resetBytes(in:0..<edited.count) }
+        let changed=try V.object(LocalV2PackageJson.read(edited,65536)),expected=scenario != "unlock"
+        guard try V.bool(changed["localeLocked"])==expected else { throw PinKnownRefusal() }
+        for key in original.keys where key != "localeLocked" && !(scenario=="parent-language" && key=="locale") { guard try original[key]!.json(sorted:false)==changed[key]!.json(sorted:false) else { throw PinKnownRefusal() } }
+        if scenario=="parent-language" { guard try V.text(changed["locale"])=="ru",try V.bool(changed["localeLocked"]) else { throw PinKnownRefusal() } }
+        if legacy { guard String(decoding:edited,as:UTF8.self).hasSuffix(",\"localeLocked\":true}") else { throw PinKnownRefusal() } }
+        var after=try PlanetChildLocalCanonicalRuntimeFixture.prepare(two,action:"expand-access-settings",target:edited);defer { after.resetBytes(in:0..<after.count) }
+        guard try PlanetChildLocalProfileRuntimeFixture.pinTail(two)==PlanetChildLocalProfileRuntimeFixture.pinTail(after),try PlanetChildLocalCanonicalRuntimeFixture.retainedProfileJson(after,id:"sibling")==sibling.json(sorted:false) else { throw PinKnownRefusal() }
+        return true
+    }
     static func pinSuccessor() throws -> Bool {
         var bytes=try PlanetChildLocalProfileRuntimeFixture.enrolled(count:2,observed:17,pending:String(repeating:"f",count:64));defer { bytes.resetBytes(in:0..<bytes.count) }
         let p=try LocalSnapshotV2Policy(version:PlanetChildLocalProfileRuntimeFixture.version,checksum:PlanetChildLocalProfileRuntimeFixture.checksum,maximum:1200000,delays:[100,250]),old=try LocalSnapshotV2.decode(bytes,policy:p);defer { old.close() }

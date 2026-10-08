@@ -71,6 +71,8 @@ export interface ChildNativeContext {
 }
 export interface ChildNativeProfileSummary {
   readonly id: string; readonly label: string; readonly exactAge: number; readonly locale: "ru" | "en";
+  /** Absent in legacy records: unknown, never an inferred unlocked state. */
+  readonly localeLocked?: boolean;
 }
 export interface ChildNativeAppSnapshot {
   readonly phase: "sealed" | "transition" | "ready" | "disposed";
@@ -102,6 +104,8 @@ export interface ChildNativeAppController {
   start(): Promise<void>;
   refresh(): Promise<void>;
   perform(action: ChildNativeAction, target?: unknown): Promise<boolean>;
+  /** A context-bound proposal to the existing native Parent Gate. */
+  setProfileLocaleLocked?(expectedContext: ChildNativeContext, locked: boolean): Promise<boolean>;
   suspend(): Promise<void>;
   dispose(): Promise<void>;
   readEntity(reference: ChildEntityReference): Promise<ChildNativeEntity | null>;
@@ -145,7 +149,9 @@ function collectionValue(value: unknown, maximum = 64): ChildNativeCollectionVal
   return row && safe(row.revision) && references ? Object.freeze({ revision: row.revision, references }) : null;
 }
 function summary(value: unknown): ChildNativeProfileSummary | null {
-  const row = childRecord(value, ["id", "label", "exactAge", "locale"]);
+  const row = childRecord(value, ["id", "label", "exactAge", "locale"])
+    ?? childRecord(value, ["id", "label", "exactAge", "locale", "localeLocked"]);
+  if (row && Object.prototype.hasOwnProperty.call(row, "localeLocked") && typeof row.localeLocked !== "boolean") return null;
   if (!row || !id(row.id) || typeof row.label !== "string" || row.label.length < 1 || row.label.length > 80
     || row.label.trim() !== row.label || /[\u0000-\u001f\u007f]/u.test(row.label)
     || !safe(row.exactAge) || row.exactAge < 3 || row.exactAge > 17 || row.locale !== "ru" && row.locale !== "en") return null;
@@ -857,6 +863,24 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       await bootstrap();
     },
     refresh: bootstrap, perform, suspend, exportChildData, getExportSnapshot: () => exportState,
+    async setProfileLocaleLocked(expectedContext: ChildNativeContext, locked: boolean) {
+      const original = snapshot, c = original.context;
+      const selected = original.profiles.find(profile => profile.id === c?.profileId);
+      if (typeof locked !== "boolean" || !c || c !== expectedContext || c.mode !== "child"
+        || !current(c, epoch) || !selected || selected.locale !== c.locale || selected.localeLocked === locked) return false;
+      // This is the same authenticated native settings action. No provider flag,
+      // new admission, or replacement Parent Gate is introduced here.
+      await perform("expand-access-settings", { profileId: c.profileId, changes: { localeLocked: locked } });
+      const next = snapshot, successor = next.context;
+      const saved = next.profiles.find(profile => profile.id === c.profileId);
+      // Package availability is separate: an authenticated blocked-child
+      // readback can confirm a setting without admitting child content.
+      return next.phase === "ready" && (next.status === "child" || next.status === "blocked-child") && next.reason === null
+        && !!successor && current(successor, epoch) && successor.mode === "child" && successor.profileId === c.profileId
+        && successor.token !== c.token && successor.generation > c.generation && successor.revision > c.revision
+        && successor.selectionRevision > c.selectionRevision && successor.profileRevision > c.profileRevision
+        && successor.locale === c.locale && saved?.locale === c.locale && saved.localeLocked === locked;
+    },
     async dispose() {
       if (disposed) return; const previous = snapshot.context; disposed = true; cancelExport();
       lifecycleStop?.(); lifecycleStop = null; seal("blocked", "disposed");

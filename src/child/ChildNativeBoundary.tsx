@@ -4,6 +4,7 @@ import type { ChildNativeSceneSummary } from "./childNativeScene";
 import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
 import { ChildPrivacyNotice } from "./ChildPrivacyNotice";
+import { ParentChildLocaleLockControl } from "./ParentChildLocaleLockControl";
 import { ChildNativeDiscoveryPassportView, type ChildNativeDiscoveryPassportViewName } from "./ChildNativeDiscoveryPassportView";
 import type { ChildNativeRemovalTarget } from "./childNativeDiscoveryPassport";
 import { childNativeJourneyId } from "./childNativeJourney";
@@ -114,6 +115,13 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
     const ok = await controller.perform(action, target);
     if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); if (ok) setRemoval(null); }
   }
+  async function actLocaleLock(locked: boolean) {
+    if (busy || state.phase !== "ready" || !state.context || !controller.setProfileLocaleLocked) return;
+    const attempt = ++sequence.current, original = state.context;
+    setBusy(true); setError(false);
+    const ok = await controller.setProfileLocaleLocked(original, locked);
+    if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); }
+  }
   if (state.phase !== "ready" || !state.context) return null;
   const validAge = /^[0-9]{1,2}$/u.test(age) && Number(age) >= 3 && Number(age) <= 17;
   const validLabel = label.trim() === label && label.length > 0 && label.length <= 80 && !/[\u0000-\u001f\u007f]/u.test(label);
@@ -178,6 +186,8 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
               <option value="ru">Русский</option><option value="en">English</option></select></label>
             <button type="submit" disabled={busy}>{copy.save}</button>
           </form>
+          <ParentChildLocaleLockControl snapshot={live} expectedContext={state.context} disabled={busy || !controller.setProfileLocaleLocked}
+            onRequest={locked => { void actLocaleLock(locked); }} />
           <form onSubmit={event => { event.preventDefault(); void act("expand-access-settings", { profileId: state.context!.profileId, changes: { readingLevel: reading || null } }); }}>
             <label>{copy.reading}<select value={reading} onChange={event => setReading(event.currentTarget.value as typeof reading)}>
               <option value="">{copy.none}</option><option value="plain">{copy.plain}</option>

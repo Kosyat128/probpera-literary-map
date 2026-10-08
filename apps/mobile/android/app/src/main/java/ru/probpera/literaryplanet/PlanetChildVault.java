@@ -5329,6 +5329,12 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private static java.util.Map<String,Object> exact(java.util.Map<String,Object> value,String... names) throws Exception {
             require(value!=null&&value.size()==names.length&&value.keySet().equals(new java.util.HashSet<>(Arrays.asList(names))));return value;
         }
+        static java.util.Map<String,Object> summary(java.util.Map<String,Object> profile) throws Exception {
+            java.util.Map<String,Object> result=LocalV2AppOwner.map("id",LocalV2PackageJson.identifier(profile.get("id")),"label",LocalV2PackageJson.text(profile.get("label")),"exactAge",LocalV2PackageJson.number(profile.get("exactAge"),3,17),"locale",LocalV2PackageJson.text(profile.get("locale")));
+            // Legacy absence remains absent; corrupt data never becomes false.
+            if(profile.containsKey("localeLocked")){Object value=profile.get("localeLocked");require(value instanceof Boolean);result.put("localeLocked",value);}
+            return result;
+        }
         private static java.util.List<Object> topics(Object raw) throws Exception {
             java.util.List<Object> values=LocalV2PackageJson.array(raw,64);java.util.HashSet<String> seen=new java.util.HashSet<>();
             for(Object value:values){String topic=LocalV2PackageJson.text(value);require(topic.matches("[a-z0-9][a-z0-9._-]{0,63}")&&seen.add(topic));}return new java.util.ArrayList<>(values);
@@ -5376,13 +5382,13 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 long age=LocalV2PackageJson.number(target.get("exactAge"),3,17);profile.put("exactAge",age);profile.put("ageBand",ageBand(age));profile.put("ageConfirmedAt",confirmedAt());
             }else if("change-blocked-topics".equals(action))profile.put("blockedTopics",topics(target.get("blockedTopics")));
             else{
-                java.util.Map<String,Object> changes=LocalV2PackageJson.object(target.get("changes"));require(!changes.isEmpty()&&changes.size()<=6);
+                java.util.Map<String,Object> changes=LocalV2PackageJson.object(target.get("changes"));require(!changes.isEmpty()&&changes.size()<=7);
                 for(java.util.Map.Entry<String,Object> change:changes.entrySet()){
                     String key=change.getKey();Object value=change.getValue();
                     if("readingLevel".equals(key))require(value==null||Arrays.asList("plain","developing","fluent").contains(value));
                     else if("allowedTopics".equals(key)){if(value!=null)value=topics(value);}
                     else if("locale".equals(key))require(Arrays.asList("ru","en").contains(value));
-                    else if("soundEnabled".equals(key)||"narrationEnabled".equals(key))require(value instanceof Boolean);
+                    else if("soundEnabled".equals(key)||"narrationEnabled".equals(key)||"localeLocked".equals(key))require(value instanceof Boolean);
                     else if("motion".equals(key))require(Arrays.asList("system","calm").contains(value));
                     else throw new PinKnownRefusal();profile.put(key,value);
                 }
@@ -5390,6 +5396,38 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             byte[] bytes=LocalV2PackageJson.bytes(profile,false);try{require(id.equals(LocalV2InitialProfile.profileId(bytes)));return bytes;}
             catch(Exception failure){LocalSnapshotV2.wipe(bytes);throw failure;}
         }
+    }
+
+    /** AUTHORED_NOT_RUN: original draft/canonical byte mechanics only; no vault,
+     * Gate permission, PIN UI, storage write, or child admission is constructed. */
+    static boolean fixtureAppLocaleLock(String scenario) throws Exception {
+        require(Arrays.asList("lock","unlock","legacy","number","string","null","sibling","summary","parent-language").contains(scenario));
+        LocalSnapshotV2Policy policy=LocalV2AppPolicy.policy();String a="a".repeat(64),b="b".repeat(64),c="c".repeat(64);
+        java.util.Map<String,Object> proposal=LocalV2AppOwner.map("label","Fixture reader","exactAge",9L,"locale","en","readingLevel",null,"allowedTopics",null,"blockedTopics",java.util.Collections.emptyList(),"soundEnabled",false,"motion","calm","narrationEnabled",false);
+        java.util.Map<String,Object> first=LocalV2AppProfileDraft.nativeProfile(proposal,"fixture-reader"),second=new java.util.LinkedHashMap<>(first);second.put("id","fixture-sibling");second.put("label","Sibling");
+        if("lock".equals(scenario))first.put("localeLocked",false);if("legacy".equals(scenario)||"summary".equals(scenario))first.remove("localeLocked");
+        if("summary".equals(scenario)){
+            require(!LocalV2AppProfileDraft.summary(first).containsKey("localeLocked"));
+            for(Object value:new Object[]{true,false}){first.put("localeLocked",value);require(value.equals(LocalV2AppProfileDraft.summary(first).get("localeLocked")));}
+            for(Object value:new Object[]{1L,"false",null}){first.put("localeLocked",value);boolean denied=false;try{LocalV2AppProfileDraft.summary(first);}catch(Exception expected){denied=true;}require(denied);}return true;
+        }
+        String siblingText=LocalV2PackageJson.json(second,false),registry=LocalV2PackageJson.json(LocalV2AppOwner.map("schemaVersion",1L,"policyVersion",policy.version,"activeProfileId","fixture-reader","profiles",Arrays.asList(first,second)),false);
+        String pin="{\"schemaVersion\":1,\"policyVersion\":"+LocalSnapshotV2.quoted(policy.version)+",\"revision\":1,\"credentialId\":"+LocalSnapshotV2.quoted(b)+",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":600000,\"saltHex\":"+LocalSnapshotV2.quoted(a)+",\"hashHex\":"+LocalSnapshotV2.quoted(c)+"},\"attempts\":{\"count\":0,\"blockedUntilMs\":0,\"lastObservedMs\":0,\"pendingAttemptId\":null}}";
+        byte[] protectedBytes=("{\"schemaVersion\":2,\"revision\":2,\"mode\":\"child\",\"selectionRevision\":2,\"profileRevision\":2,\"policyChecksum\":"+LocalSnapshotV2.quoted(policy.checksum)+",\"registryChecksum\":"+LocalSnapshotV2.quoted(digest(registry.getBytes(StandardCharsets.UTF_8)))+",\"registry\":"+registry+",\"pin\":"+pin+",\"clock\":{\"schemaVersion\":2,\"logicalMs\":0}}").getBytes(StandardCharsets.UTF_8),wire=null,target=null;
+        Object locked="unlock".equals(scenario)?false:"number".equals(scenario)?1L:"string".equals(scenario)?"false":"null".equals(scenario)?null:true;
+        java.util.Map<String,Object> edit=LocalV2AppOwner.map("profileId","sibling".equals(scenario)?"fixture-sibling":"fixture-reader","changes","parent-language".equals(scenario)?LocalV2AppOwner.map("locale","ru"):LocalV2AppOwner.map("localeLocked",locked));
+        try{wire=LocalSnapshotV2.wire(protectedBytes,policy,1,2,1,b,0,null,0,0);try(LocalSnapshotV2 before=LocalSnapshotV2.decode(wire,policy)){
+            if(Arrays.asList("number","string","null","sibling").contains(scenario)){boolean denied=false;try{target=LocalV2AppProfileDraft.settings(before,"expand-access-settings",edit);}catch(Exception expected){denied=true;}require(denied);return true;}
+            target=LocalV2AppProfileDraft.settings(before,"expand-access-settings",edit);java.util.Map<String,Object> changed=LocalV2PackageJson.object(LocalV2PackageJson.read(target,65536));require(locked.equals(changed.get("localeLocked")));
+            for(String key:first.keySet())if(!"localeLocked".equals(key)&&!("parent-language".equals(scenario)&&"locale".equals(key)))require(java.util.Objects.equals(first.get(key),changed.get(key)));
+            if("parent-language".equals(scenario))require("ru".equals(changed.get("locale"))&&Boolean.TRUE.equals(changed.get("localeLocked")));
+            if("legacy".equals(scenario))require(new String(target,StandardCharsets.UTF_8).endsWith(",\"localeLocked\":true}"));
+            LocalV2CanonicalTransition prepared=LocalV2CanonicalTransition.prepare(before,"expand-access-settings",target);
+            try(LocalSnapshotV2 after=LocalSnapshotV2.decode(prepared.bytes,policy)){LocalV2CanonicalTransition.validate(before,after,"expand-access-settings",target);byte[] old=before.copy(),next=after.copy();try{
+                require(MessageDigest.isEqual(Arrays.copyOfRange(old,before.pinStart,before.pinEnd),Arrays.copyOfRange(next,after.pinStart,after.pinEnd)));require(new String(next,StandardCharsets.UTF_8).contains(siblingText));
+                require(locked.equals(LocalV2AppProfileDraft.summary(changed).get("localeLocked")));return true;
+            }finally{LocalSnapshotV2.wipe(old);LocalSnapshotV2.wipe(next);}}finally{LocalSnapshotV2.wipe(prepared.bytes);}
+        }}finally{LocalSnapshotV2.wipe(protectedBytes);LocalSnapshotV2.wipe(wire);LocalSnapshotV2.wipe(target);}
     }
 
     private interface SDKFirstInstallRecipient { void completed(SDKFirstInstallReceipt receipt) throws Exception; }
@@ -6187,7 +6225,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(actual,MAX_BYTES)),record;boolean seed;
                 try(LocalEmptySeedV2 s=LocalEmptySeedV2.decode(actual,policy.version,policy.checksum)){seed=true;record=root;}catch(Exception enrolled){seed=false;try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,policy)){record=LocalV2PackageJson.object(root.get("protectedRecord"));}}
                 java.util.Map<String,Object> registry=LocalV2PackageJson.object(record.get("registry"));java.util.List<Object> profiles=new java.util.ArrayList<>();String locale=java.util.Locale.getDefault().getLanguage().equals("ru")?"ru":"en";String selected=registry.get("activeProfileId")==null?null:LocalV2PackageJson.identifier(registry.get("activeProfileId"));
-                for(Object row:LocalV2PackageJson.array(registry.get("profiles"),4)){java.util.Map<String,Object> p=LocalV2PackageJson.object(row);String uid=LocalV2PackageJson.identifier(p.get("id"));profiles.add(map("id",uid,"label",LocalV2PackageJson.text(p.get("label")),"exactAge",LocalV2PackageJson.number(p.get("exactAge"),3,17),"locale",p.get("locale")));if(uid.equals(selected))locale=LocalV2PackageJson.text(p.get("locale"));}
+                for(Object row:LocalV2PackageJson.array(registry.get("profiles"),4)){java.util.Map<String,Object> p=LocalV2PackageJson.object(row);String uid=LocalV2PackageJson.identifier(p.get("id"));profiles.add(LocalV2AppProfileDraft.summary(p));if(uid.equals(selected))locale=LocalV2PackageJson.text(p.get("locale"));}
                 String mode=LocalV2PackageJson.text(record.get("mode")),status=seed?"unenrolled":mode;require("adult".equals(mode)||"child".equals(mode)&&selected!=null);
                 reader.sdkInspectData(readRequest,actual);
                 LocalV2CompiledPackage compiled=null;

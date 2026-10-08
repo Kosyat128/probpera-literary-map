@@ -156,4 +156,13 @@ public class PlanetChildProtectedEnvelopeRuntimeTest {
             value.replace("\"epochAnchor\":null", "\"epochAnchor\":{\"epochAnchorMs\":100,\"validUntilEpochMs\":100,\"proofChecksum\":\"" + POLICY + "\"}"),
             value.replace("\"epochAnchor\":null", "\"epochAnchor\":{\"epochAnchorMs\":8640000000000001,\"validUntilEpochMs\":8640000000000002,\"proofChecksum\":\"" + POLICY + "\"}") }) rejected(bad);
     }
+    @Test public void localeLockParentDraftPreservesPinSiblingAndOtherProfileFields() throws Exception {
+        for(String scenario:new String[]{"lock","unlock","legacy","parent-language"})assertTrue(PlanetChildVault.fixtureAppLocaleLock(scenario));
+    }
+    @Test public void localeLockDraftRejectsNumericStringNullAndSiblingTargets() throws Exception {
+        for(String scenario:new String[]{"number","string","null","sibling"})assertTrue(PlanetChildVault.fixtureAppLocaleLock(scenario));
+    }
+    @Test public void localeLockSummaryKeepsLegacyUnknownAndRejectsCorruptTypes() throws Exception {
+        assertTrue(PlanetChildVault.fixtureAppLocaleLock("summary"));
+    }
 }
