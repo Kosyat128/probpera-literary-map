@@ -9,7 +9,7 @@ import Capacitor
 public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier="PlanetChildPlugin"
     public let jsName="PlanetChild"
-    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","changeChildLocale","perform","retire","readReadingPosition","rememberReadingPosition","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","readWebResourceChunk","releaseWebResource","readSceneSelection","rememberSceneSelection","rollbackSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
+    public let pluginMethods: [CAPPluginMethod]=["bootstrap","readContext","changeChildLocale","perform","retire","readReadingPosition","rememberReadingPosition","readEntity","search","readCollection","writeCollection","listMedia","presentMedia","resumeNarration","releaseMedia","listScenes","openScene","releaseScene","acquireWebResource","readWebResourceChunk","releaseWebResource","readSceneSelection","rememberSceneSelection","rollbackSceneSelection","restoreSceneSelection","listJourneys","readJourneyProgress","openJourney","advanceJourney","closeJourney","listDiscovery","readPassport","recordCountryOpen","saveJourneyRoute","readJourneyRouteDownload","resumeJourneyRoute","cancelJourneyRoute"].map { CAPPluginMethod(name:$0,returnType:CAPPluginReturnPromise) }
     private var transport: PlanetChildLocalV2DataTransport?,owner: PlanetChildLocalV2SDKOwner?
     public override func load() {
         DispatchQueue.main.async { [weak self] in guard let self,let host=self.bridge?.viewController else { return }
@@ -41,6 +41,7 @@ public final class PlanetChildPlugin: CAPPlugin, CAPBridgedPlugin {
     @objc public func writeCollection(_ call: CAPPluginCall) { invoke("writeCollection",call) }
     @objc public func listMedia(_ call: CAPPluginCall) { invoke("listMedia",call) }
     @objc public func presentMedia(_ call: CAPPluginCall) { invoke("presentMedia",call) }
+    @objc public func resumeNarration(_ call: CAPPluginCall) { invoke("resumeNarration",call) }
     @objc public func releaseMedia(_ call: CAPPluginCall) { invoke("releaseMedia",call) }
     @objc public func listScenes(_ call: CAPPluginCall) { invoke("listScenes",call) }
     @objc public func openScene(_ call: CAPPluginCall) { invoke("openScene",call) }

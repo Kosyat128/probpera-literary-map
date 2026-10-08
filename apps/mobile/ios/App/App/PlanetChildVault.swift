@@ -8949,10 +8949,10 @@ final class PlanetChildLocalV2SDKOwner {
                 value=try appearancePerform(r,c,delivery)
             } else if ["listScenes","openScene","releaseScene","acquireWebResource","readWebResourceChunk","releaseWebResource"].contains(r.method) {
                 let scene=try canonicalPerform(r,c,delivery,handoff:handoff);value=r.method=="listScenes" ? scene["list"]! as Any:scene
-            } else if ["listMedia","presentMedia","releaseMedia"].contains(r.method) {
+            } else if ["listMedia","presentMedia","resumeNarration","releaseMedia"].contains(r.method) {
                 do { let media=try mediaPerform(r,c,delivery,capturedMediaEpoch);value=r.method=="listMedia" ? media["list"]! as Any:media }
                 catch PlanetChildLocalV2MediaError.revoked {
-                    if r.method=="presentMedia" { value=["status":"unavailable","presentationToken":NSNull(),"assetId":r.assetId!,"remainingLifetimeMs":0] }
+                    if r.method=="resumeNarration" { value=narrationUnavailable(r.assetId!) } else if r.method=="presentMedia" { value=["status":"unavailable","presentationToken":NSNull(),"assetId":r.assetId!,"remainingLifetimeMs":0] }
                     else if r.method=="listMedia" { value=[Any]() }
                     else { throw PlanetChildVault.Failure.unavailable }
                 }
@@ -9912,6 +9912,7 @@ fileprivate enum LocalV2MediaCompiler {
     }
 }
 fileprivate extension LocalV2NativePackageLoader {
+    func mediaOutputCurrent()throws {lock.lock();let denied=revoked || closed;lock.unlock();guard !denied else{throw PinKnownRefusal()};_ = try writer.packageLocal(request);try mediaMetadataCurrent()}
     func mediaMainCurrent() throws {
         guard Thread.isMainThread else { throw PinKnownRefusal() };try current();_ = try writer.packageLocal(request)
         var actual=try writer.sdkRead(request);defer { actual.resetBytes(in:0..<actual.count) }
@@ -9973,7 +9974,7 @@ fileprivate final class LocalV2FixedMediaProducer {
  * actual checks, but cannot construct a permission or substitute callbacks. */
 final class PlanetChildLocalV2MediaPermit {
     fileprivate let sdk: PlanetChildLocalV2SDKOwner,delivery: LocalV2OwnedPackageDelivery,command: LocalV2SDKChannel.Command,epoch: UInt64,token: String,generation: UInt64,index: LocalV2MediaIndex,asset: LocalV2MediaAsset
-    private let lock=NSLock();private var closed=false,read=false,encoded: PinOwnedBytes?
+    private let lock=NSLock();private var closed=false,read=false,encoded: PinOwnedBytes?;fileprivate var cue:LocalV2NarrationCue?
     var mime: String { asset.mime };var assetId: String { asset.id };var altText: String { asset.altText };var transcript: String? { asset.transcript };var locale: String { index.profile.locale }
     var audioEnabled: Bool { (try? LocalV2PackageValue.bool(index.profile.profile["soundEnabled"]))==true && (try? LocalV2PackageValue.bool(index.profile.profile["narrationEnabled"]))==true }
     private init(_ sdk: PlanetChildLocalV2SDKOwner,_ delivery: LocalV2OwnedPackageDelivery,_ command: LocalV2SDKChannel.Command,_ epoch: UInt64,_ token: String,_ generation: UInt64,_ index: LocalV2MediaIndex,_ asset: LocalV2MediaAsset) {
@@ -9996,11 +9997,168 @@ final class PlanetChildLocalV2MediaPermit {
         guard bytes.count==asset.bytes,LocalSnapshotV2.hash(bytes)==asset.checksum else { throw PinKnownRefusal() };try workerCurrent()
         let owned=PinOwnedBytes(bytes);lock.lock();guard !closed,!read,encoded==nil else { lock.unlock();owned.close();throw PlanetChildLocalV2MediaError.revoked };read=true;encoded=owned;lock.unlock();return try owned.copy()
     }
+    var hasNarrationCue:Bool {cue != nil}
+    func preparedStartFrame()throws -> Int {if let cue{try cue.live();return cue.map.startFrame};return 0}
+    fileprivate func outputCurrent()throws {try opened();try sdk.mediaOriginal(self);try delivery.owner.mediaOutputCurrent();guard try delivery.owner.wall()<index.until else{throw PlanetChildLocalV2MediaError.revoked}}
+    func prepareNativePlay(_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64){guard Thread.isMainThread,let cue,recipient.nativePlayCurrent(sequence) else{return};sdk.narrationPlay(cue,recipient,sequence)}
+    func observeNativeFrame(_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64,_ frame:Int,stop:Bool)throws {if let cue{try cue.offer(recipient,sequence,frame,stop)}}
     func releaseEncoded() { lock.lock();let original=encoded;encoded=nil;lock.unlock();original?.close() }
     func failedPresentation() { sdk.routeWillChange(reason:"unavailable") }
-    func close() { lock.lock();closed=true;let original=encoded;encoded=nil;lock.unlock();original?.close() }
+    func close() { lock.lock();closed=true;let original=encoded;encoded=nil;cue=nil;lock.unlock();original?.close() }
     deinit { close() }
 }
+
+/** Signed correspondence only. Source frames are never a persisted identity. */
+fileprivate final class LocalV2NarrationMap {
+    let reference:[String:Any],saved:PlanetChildReadingPosition.Record,cues:[[String:Any]],sampleRate:Int,frameCount:Int,startFrame:Int,assetId:String,sha256:String
+    private init(_ reference:[String:Any],_ saved:PlanetChildReadingPosition.Record,_ cues:[[String:Any]],_ rate:Int,_ frames:Int,_ start:Int,_ asset:String,_ hash:String){self.reference=reference;self.saved=saved;self.cues=cues;sampleRate=rate;frameCount=frames;startFrame=start;assetId=asset;sha256=hash}
+    static func resolve(_ saved:PlanetChildReadingPosition.Record,_ reference:[String:Any],_ payload:LocalV2PackageValue,_ asset:LocalV2MediaAsset)throws -> LocalV2NarrationMap {
+                return try resolve(saved,reference,payload,asset.id,asset.checksum,asset.transcript)
+    }
+    static func resolve(_ saved:PlanetChildReadingPosition.Record,_ reference:[String:Any],_ payload:LocalV2PackageValue,_ assetId:String,_ sha256:String,_ transcript:String?)throws -> LocalV2NarrationMap {
+        let value=try LocalV2PackageValue.object(payload),text=try LocalV2PackageValue.text(value["text"]);guard transcript==text,let raw=value["readingAnchors"] else{throw PinKnownRefusal()}
+        let foundation=try JSONSerialization.jsonObject(with:Data(raw.json(sorted:false).utf8));try PlanetChildReadingPosition.membership(saved,reference,foundation,text)
+        let anchors=try PlanetChildReadingPosition.anchors(foundation,text),audio=try PlanetChildReadingPosition.object(anchors["narration"],["assetId","sha256","sampleRate","frameCount","cues"])
+        guard audio["assetId"] as? String==assetId,audio["sha256"] as? String==sha256,let cues=audio["cues"] as? [[String:Any]] else{throw PinKnownRefusal()}
+        let rate=Int(try PlanetChildReadingPosition.number(audio["sampleRate"],8000,48000)),frames=Int(try PlanetChildReadingPosition.number(audio["frameCount"],1,UInt64(rate*60)))
+        guard let cue=cues.first(where:{$0["anchorId"] as? String==saved.anchorId}) else{throw PinKnownRefusal()};let start=Int(try PlanetChildReadingPosition.number(cue["startFrame"],0,UInt64(frames-1)))
+        return LocalV2NarrationMap(reference,saved,cues,rate,frames,start,assetId,sha256)
+    }
+    func at(_ frame:Int)throws -> PlanetChildReadingPosition.Record {
+        guard frame>=0,frame<frameCount else{throw PinKnownRefusal()}
+        for cue in cues {let start=try PlanetChildReadingPosition.number(cue["startFrame"],0,UInt64(frameCount-1)),end=try PlanetChildReadingPosition.number(cue["endFrame"],1,UInt64(frameCount));if UInt64(frame)>=start && UInt64(frame)<end {return try PlanetChildReadingPosition.Record(saved.kind,saved.id,saved.anchorVersion,PlanetChildReadingPosition.id(cue["anchorId"]))}}
+        throw PinKnownRefusal()
+    }
+    func header(_ h:PlanetChildLocalV2MediaCodec.Header)throws {guard h.mime=="audio/wav",h.sampleRate==sampleRate,h.count/(h.channels*h.bits/8)==frameCount else{throw PinKnownRefusal()}}
+}
+/** Actual recipient and source observations retain the original context/deadline.
+ * All durable work uses the existing selected-profile C2 CAS and native handoff. */
+/** Pure coalescing state. Only the actual recipient supplies observed frames;
+ * this type cannot create a permit, context, store writer or completion credit. */
+fileprivate final class LocalV2NarrationFrames {
+    private let lock=NSLock();private var latest = -1,terminal=false,running=false,finished=false
+    func observe(_ frame:Int,_ stop:Bool)throws -> Bool {lock.lock();defer{lock.unlock()};guard frame >= -1,frame>=latest else{throw PinKnownRefusal()};if finished{return false};latest=frame;terminal = terminal || stop;return true}
+    func isRunning()->Bool {lock.lock();defer{lock.unlock()};return running}
+    func begin()->Bool {lock.lock();defer{lock.unlock()};if running || finished{return false};running=true;return true}
+    func next()throws -> Int {lock.lock();defer{lock.unlock()};guard running,!finished else{throw PinKnownRefusal()};return latest}
+    func finishKnown(_ frame:Int)throws -> Bool {lock.lock();defer{lock.unlock()};guard running,!finished,frame<=latest else{throw PinKnownRefusal()};if latest>frame{return false};running=false;finished=terminal;return true}
+    func isTerminal()->Bool {lock.lock();defer{lock.unlock()};return terminal}
+    func isFinished()->Bool {lock.lock();defer{lock.unlock()};return finished}
+    func unscheduled(){lock.lock();running=false;lock.unlock()}
+}
+
+fileprivate final class LocalV2NarrationCue {
+    let permit:PlanetChildLocalV2MediaPermit,map:LocalV2NarrationMap,context:PlanetChildLocalV2SDKOwner.Context
+    private let lock=NSLock();private var revision:UInt64,saved:PlanetChildReadingPosition.Record,headerKnown=false,invalid=false;private let frames=LocalV2NarrationFrames()
+    init(_ permit:PlanetChildLocalV2MediaPermit,_ map:LocalV2NarrationMap,_ context:PlanetChildLocalV2SDKOwner.Context,_ revision:UInt64)throws {guard permit.cue==nil,revision>0,revision<PlanetChildReadingPosition.maxSafe-1,permit.audioEnabled,permit.asset.role=="narration" else{throw PinKnownRefusal()};self.permit=permit;self.map=map;self.context=context;self.revision=revision;saved=map.saved}
+    func live()throws {try permit.outputCurrent();lock.lock();let denied=invalid;lock.unlock();guard !denied,permit.cue === self,permit.audioEnabled,permit.asset.id==map.assetId,permit.asset.checksum==map.sha256,try LocalV2AdmittedEnvelope.same(permit.asset.owner,LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:map.reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096)) else{throw PlanetChildLocalV2MediaError.revoked}}
+    func decoded(_ header:PlanetChildLocalV2MediaCodec.Header)throws {try permit.workerCurrent();try map.header(header);lock.lock();headerKnown=true;lock.unlock();try live()}
+    func rowCurrent(_ delivery:LocalV2OwnedPackageDelivery)throws {
+        try live();guard delivery === permit.delivery,let admission=delivery.data else{throw PinKnownRefusal()};lock.lock();let known=headerKnown,expected=revision,prior=saved;lock.unlock();guard known else{throw PinKnownRefusal()}
+        let reference=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:map.reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096),key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,reference,delivery.owner.wall()),row=try admission.reading(key,expected:nil,permit:nil,id:PlanetChildLocalV2SDKOwner.narrationId());defer{row.close()}
+        guard row.revision==expected,row.position==prior else{throw PlanetChildLocalV2MediaError.revoked};try live()
+    }
+    func prepared(_ recipient:PlanetChildLocalV2MediaPresentation,_ remaining:UInt64)throws -> [String:Any] {
+        try permit.workerCurrent();try live();guard permit.sdk.narrationOwned(recipient,permit) else{throw PinKnownRefusal()};lock.lock();let known=headerKnown,actual=revision;lock.unlock();guard known,!recipient.knownClosed else{throw PinKnownRefusal()}
+        return ["status":"prepared","presentationToken":recipient.token,"assetId":map.assetId,"remainingLifetimeMs":remaining,"readingRevision":actual,"anchorVersion":map.saved.anchorVersion,"anchorId":map.saved.anchorId,"sampleRate":map.sampleRate,"frameCount":map.frameCount,"startFrame":map.startFrame]
+    }
+    func observedLeaf(_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64,_ frame:Int)throws {try live();lock.lock();let known=headerKnown;lock.unlock();guard known,permit.sdk.narrationOwned(recipient,permit),recipient.observationCurrent(sequence,frame) else{throw PinKnownRefusal()};_ = try map.at(frame)}
+    func consumerLeaf(_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64,_ frame:Int)throws {lock.lock();let known=headerKnown && !invalid;lock.unlock();guard known,permit.sdk.narrationConsumerOwned(recipient,permit),recipient.observationCurrent(sequence,frame) else{throw PinKnownRefusal()};_ = try map.at(frame)}
+    func offer(_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64,_ frame:Int,_ stop:Bool)throws {
+        if frame>=0 {try observedLeaf(recipient,sequence,frame)}
+        lock.lock();defer{lock.unlock()};guard try frames.observe(frame,stop) else{return}
+        if !stop,!frames.isRunning(),frame>=0,try map.at(frame)==saved{return};guard frames.begin() else{return}
+        permit.sdk.narrationCheckpoint(self,recipient,sequence)
+    }
+    func checkpoint(_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64) {
+        let sdk=permit.sdk;var active:LocalV2SDKReply?,claimed=false,writeStarted=false,settled=false
+        defer {
+            active?.reading?.close();if !settled{frames.unscheduled()}
+            if frames.isFinished() || !settled && frames.isTerminal(){sdk.narrationRetire(recipient)}
+            if claimed{sdk.narrationRelease()}
+        }
+        do {
+            guard sdk.narrationClaim(self,recipient) else{return};claimed=true;guard let channel=sdk.narrationChannel() else{throw PinKnownRefusal()}
+            while true {
+                let frame=try frames.next()
+                if frame>=0 {
+                    try observedLeaf(recipient,sequence,frame);let target=try map.at(frame);lock.lock();let expected=revision,prior=saved;lock.unlock()
+                    if prior != target {
+                        let reply=LocalV2SDKReply();active=reply;writeStarted=false;var changed=false
+                        _ = try channel.invoke(handoff:reply){[self] delivery in
+                            try sdk.narrationOriginal(context,delivery);try observedLeaf(recipient,sequence,frame);guard let admission=delivery.data else{throw PinKnownRefusal()}
+                            let reference=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:map.reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096),key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,reference,delivery.owner.wall()),row=try admission.reading(key,expected:nil,permit:nil,id:PlanetChildLocalV2SDKOwner.narrationId())
+                            let matches=row.revision==expected && row.position==prior;row.close();if !matches{lock.lock();invalid=true;lock.unlock();return [:]}
+                            let command=try channel.mediaOriginalCommand(delivery),write=try PlanetChildLocalV2ReadingPermit.observed(self,recipient,sequence,frame,command,target);writeStarted=true
+                            let result=try admission.reading(key,expected:expected,permit:write,id:PlanetChildLocalV2SDKOwner.narrationId());defer{result.close()};guard result.revision==expected+1,result.position==target else{throw PinKnownRefusal()};changed=true;return try result.dto()
+                        }
+                        guard changed,let handoff=reply.reading else{throw PinKnownRefusal()}
+                        try handoff.validate(on:channel);try handoff.finish();lock.lock();revision=expected+1;saved=target;lock.unlock()
+                        handoff.close();reply.reading=nil;active=nil;writeStarted=false
+                    }
+                }
+                // The latest actual observation is drained only AFTER the
+                // preceding result, worker, consumer and marker are KNOWN joined.
+                if try frames.finishKnown(frame){settled=true;break}
+            }
+        }catch {
+            lock.lock();invalid=true;lock.unlock();if writeStarted{active?.reading?.unknown();permit.delivery.data?.readingUnknown()};permit.failedPresentation()
+        }
+    }
+}
+fileprivate extension PlanetChildLocalV2SDKOwner {
+    static func narrationId()throws -> String {try token()}
+    func narrationConsumerOwned(_ recipient:PlanetChildLocalV2MediaPresentation,_ permit:PlanetChildLocalV2MediaPermit)->Bool { !sealed && mediaPresentations[recipient.token] === recipient && recipient.permit === permit }
+    func narrationOwned(_ recipient:PlanetChildLocalV2MediaPresentation,_ permit:PlanetChildLocalV2MediaPermit)->Bool {lock.lock();defer{lock.unlock()};return !sealed && mediaPresentations[recipient.token] === recipient && recipient.permit === permit}
+    func narrationClaim(_ cue:LocalV2NarrationCue,_ recipient:PlanetChildLocalV2MediaPresentation)->Bool {lock.lock();defer{lock.unlock()};guard !busy,!sealed,context === cue.context,mediaPresentations[recipient.token] === recipient,recipient.permit === cue.permit else{return false};busy=true;return true}
+    func narrationRelease(){lock.lock();busy=false;lock.unlock()}
+    func narrationChannel()->LocalV2SDKChannel? {channel}
+    func narrationOriginal(_ c:Context,_ delivery:LocalV2OwnedPackageDelivery)throws {try requireOriginal(c,delivery)}
+    func narrationRetire(_ recipient:PlanetChildLocalV2MediaPresentation) {
+        // Runs on the same serial owner lane after the actual CAS/handoff. Queued
+        // later observations cannot reacquire a removed/closed recipient.
+        do {try DispatchQueue.main.sync{concealMedia(recipient.token)};try mediaRetireJoined()}
+        catch{lock.lock();sealed=true;lock.unlock();routeWillChange(reason:"unavailable")}
+    }
+    func narrationCheckpoint(_ cue:LocalV2NarrationCue,_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64){io.async{cue.checkpoint(recipient,sequence)}}
+    func narrationPlay(_ cue:LocalV2NarrationCue,_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64){
+        io.async{[self] in
+            var claimed=false;defer{if claimed{narrationRelease()}}
+            do {
+                guard narrationClaim(cue,recipient) else{throw PlanetChildLocalV2MediaError.revoked};claimed=true;guard let channel else{throw PinKnownRefusal()}
+                _ = try channel.invoke{[self] delivery in try requireOriginal(cue.context,delivery);try cue.rowCurrent(delivery);return [:]}
+                try DispatchQueue.main.sync{guard recipient.nativePlayCurrent(sequence),narrationOwned(recipient,cue.permit) else{throw PlanetChildLocalV2MediaError.revoked};try recipient.beginReservedPlayback(sequence)}
+            }catch{DispatchQueue.main.async{recipient.conceal();cue.permit.failedPresentation()}}
+        }
+    }
+    func narrationUnavailable(_ id:String)->[String:Any]{["status":"unavailable","presentationToken":NSNull(),"assetId":id,"remainingLifetimeMs":0,"readingRevision":NSNull(),"anchorVersion":NSNull(),"anchorId":NSNull(),"sampleRate":0,"frameCount":0,"startFrame":0]}
+    func resumeNarration(_ r:PlanetChildLocalV2Wire.Request,_ c:Context,_ delivery:LocalV2OwnedPackageDelivery,_ epoch:UInt64,_ index:LocalV2MediaIndex,_ owner:LocalV2PackageValue,_ assets:[LocalV2MediaAsset])throws -> [String:Any] {
+        guard let id=r.assetId,let expected=r.expectedRevision,let asset=assets.first(where:{$0.id==id}),asset.mime=="audio/wav",asset.role=="narration",let layout=r.mediaLayout,let admission=delivery.data,let channel else{throw PinKnownRefusal()};try requireOriginal(c,delivery)
+        let key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,owner,delivery.owner.wall()),row=try admission.reading(key,expected:nil,permit:nil,id:r.id);let revision=row.revision,saved=row.position;row.close()
+        guard revision==expected,let saved else{return narrationUnavailable(id)}
+        let payload=try LocalV2JourneyCompiler.payload(delivery,owner),reference=try JSONSerialization.jsonObject(with:Data(owner.json(sorted:false).utf8)) as! [String:Any],map:LocalV2NarrationMap
+        do{map=try LocalV2NarrationMap.resolve(saved,reference,payload,asset)}catch{return narrationUnavailable(id)}
+        let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,epoch,c.token,c.generation,index,asset)
+        guard permit.audioEnabled else{permit.close();return narrationUnavailable(id)}
+        let cue=try LocalV2NarrationCue(permit,map,c,revision);permit.cue=cue
+        var resource:PlanetChildLocalV2MediaResource?,presentation:PlanetChildLocalV2MediaPresentation?,handed=false
+        defer{if !handed && presentation==nil{resource?.close();permit.close()}}
+        do {
+            resource=try PlanetChildLocalV2MediaCodec.decode(permit);try cue.rowCurrent(delivery);let token=try Self.token()
+            try DispatchQueue.main.sync{
+                try permit.mainCurrent();let recipient=PlanetChildLocalV2MediaPresentation(token:token,permit:permit,resource:resource!);presentation=recipient
+                lock.lock();let retained=Array(mediaPresentations.values)+mediaRetiring,used=retained.reduce(0){$0+$1.footprint};guard !sealed,mediaEpoch==epoch,context === c,mediaPresentations.count<64,mediaPresentations[token]==nil,recipient.footprint<=64*1024*1024-used else{lock.unlock();throw PlanetChildLocalV2MediaError.revoked}
+                mediaPresentations[token]=recipient;lock.unlock();try recipient.attach(to:surface.view,layout:layout)
+            }
+            try permit.workerCurrent();try cue.rowCurrent(delivery);let remaining=min(try remaining(c.deadline),UInt64(max(0,index.until-(try delivery.owner.wall()))));guard remaining>0,let presentation else{throw PinKnownRefusal()}
+            let receipt=try cue.prepared(presentation,remaining);handed=true;return receipt
+        }catch{
+            let failure=error;if let presentation {do{try presentation.closeJoined();guard presentation.knownClosed else{throw PlanetChildVault.Failure.unavailable};lock.lock();mediaPresentations.removeValue(forKey:presentation.token);mediaRetiring.removeAll{$0 === presentation};lock.unlock()}catch{lock.lock();sealed=true;if !mediaRetiring.contains(where:{$0 === presentation}){mediaRetiring.append(presentation)};lock.unlock();throw error}}
+            if let revoked=failure as? PlanetChildLocalV2MediaError,case .revoked=revoked{return narrationUnavailable(id)};throw failure
+        }
+    }
+}
+
 fileprivate extension LocalV2SDKChannel {
     func mediaOriginalCommand(_ delivery: LocalV2OwnedPackageDelivery) throws -> Command {
         guard ObjectIdentifier(Thread.current)==delivery.owner.worker.map(ObjectIdentifier.init) else { throw PinKnownRefusal() }
@@ -10046,6 +10204,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             try delivery.owner.mediaMetadataCurrent()
             return ["list":try assets.filter { $0.mime.hasPrefix("image/") || $0.mime=="audio/wav" }.map { try $0.descriptor() }]
         }
+        if r.method=="resumeNarration" {return try resumeNarration(r,c,delivery,capturedEpoch,index,owner,assets)}
         guard r.method=="presentMedia",let id=r.assetId,let asset=assets.first(where:{ $0.id==id }),asset.mime.hasPrefix("image/") || asset.mime=="audio/wav",let layout=r.mediaLayout else { throw PinKnownRefusal() }
         let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,capturedEpoch,c.token,c.generation,index,asset)
         var resource: PlanetChildLocalV2MediaResource?,presentation: PlanetChildLocalV2MediaPresentation?,handed=false
@@ -11383,12 +11542,19 @@ final class PlanetChildLocalV2JourneyPermit {
 
 /** Issued by the actual current native SDK command, never from a JS permission bit. */
 final class PlanetChildLocalV2ReadingPermit {
-    private let sdk:PlanetChildLocalV2SDKOwner,context:PlanetChildLocalV2SDKOwner.Context,delivery:LocalV2OwnedPackageDelivery,command:LocalV2SDKChannel.Command,admission:PlanetChildLocalV2DataAdmission,reference:[String:Any],record:PlanetChildReadingPosition.Record
+    private let sdk:PlanetChildLocalV2SDKOwner,context:PlanetChildLocalV2SDKOwner.Context,delivery:LocalV2OwnedPackageDelivery,command:LocalV2SDKChannel.Command,admission:PlanetChildLocalV2DataAdmission,reference:[String:Any],record:PlanetChildReadingPosition.Record;private var narrationCue:LocalV2NarrationCue?,narrationRecipient:PlanetChildLocalV2MediaPresentation?,narrationSequence:UInt64=0,narrationFrame:Int = -1
     private init(_ sdk:PlanetChildLocalV2SDKOwner,_ context:PlanetChildLocalV2SDKOwner.Context,_ delivery:LocalV2OwnedPackageDelivery,_ command:LocalV2SDKChannel.Command,_ reference:[String:Any],_ record:PlanetChildReadingPosition.Record){self.sdk=sdk;self.context=context;self.delivery=delivery;self.command=command;admission=delivery.data!;self.reference=reference;self.record=record}
     fileprivate static func make(_ sdk:PlanetChildLocalV2SDKOwner,_ context:PlanetChildLocalV2SDKOwner.Context,_ delivery:LocalV2OwnedPackageDelivery,_ command:LocalV2SDKChannel.Command,_ r:PlanetChildLocalV2Wire.Request)throws -> PlanetChildLocalV2ReadingPermit {
         guard let reference=r.reference,let record=r.readingPosition,delivery.data != nil else{throw PinKnownRefusal()};let result=PlanetChildLocalV2ReadingPermit(sdk,context,delivery,command,reference,record);try result.admission.withCopy{try result.check(result.admission)};return result
     }
+    fileprivate static func observed(_ cue:LocalV2NarrationCue,_ recipient:PlanetChildLocalV2MediaPresentation,_ sequence:UInt64,_ frame:Int,_ command:LocalV2SDKChannel.Command,_ record:PlanetChildReadingPosition.Record)throws -> PlanetChildLocalV2ReadingPermit {
+        try cue.observedLeaf(recipient,sequence,frame);guard try cue.map.at(frame)==record,cue.permit.delivery.data != nil else{throw PinKnownRefusal()}
+        let result=PlanetChildLocalV2ReadingPermit(cue.permit.sdk,cue.context,cue.permit.delivery,command,cue.map.reference,record);result.narrationCue=cue;result.narrationRecipient=recipient;result.narrationSequence=sequence;result.narrationFrame=frame;try result.admission.withCopy{try result.check(result.admission)};return result
+    }
+    private func narrationLeaf()throws {if let narrationCue{guard let narrationRecipient else{throw PinKnownRefusal()};try narrationCue.observedLeaf(narrationRecipient,narrationSequence,narrationFrame);guard try narrationCue.map.at(narrationFrame)==record else{throw PinKnownRefusal()}}}
+    private func narrationConsumerLeaf()throws {if let narrationCue{guard let narrationRecipient else{throw PinKnownRefusal()};try narrationCue.consumerLeaf(narrationRecipient,narrationSequence,narrationFrame)}}
     private func check(_ original:PlanetChildLocalV2DataAdmission,returned:Bool,handed:Bool=false)throws {
+        try narrationLeaf()
         guard original === admission,delivery.data === admission,delivery.owner.delivery === delivery,delivery.owner.worker.map(ObjectIdentifier.init)==ObjectIdentifier(Thread.current),command.returned==returned else{throw PinKnownRefusal()}
         try admission.check();if handed {try admission.readingHandoffCommand(command)}else{try admission.appearanceNativeCommand(command,returned:returned)};try sdk.readingCurrent(context,delivery);try delivery.owner.live()
         let referenceValue=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096),key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,referenceValue,admission.passportWall());guard key==record.key else{throw PinKnownRefusal()};var bytes=try delivery.compiled.copy(key,admission.passportWall());defer{bytes.resetBytes(in:0..<bytes.count)}
@@ -11401,7 +11567,7 @@ final class PlanetChildLocalV2ReadingPermit {
     fileprivate var key:String {record.key}
     fileprivate func completionCurrent(_ original:PlanetChildLocalV2DataAdmission)throws {try check(original,returned:true)}
     fileprivate func handoffCurrent(_ original:PlanetChildLocalV2DataAdmission)throws {guard command.done,command.handedOff,command.error==nil else{throw PinKnownRefusal()};try check(original,returned:true,handed:true)}
-    fileprivate func commitCurrent(_ original:PlanetChildLocalV2DataAdmission,_ work:()throws -> Void)throws {guard original === admission,command.returned,command.done,command.handedOff,command.error==nil else{throw PinKnownRefusal()};try sdk.readingCommitCurrent(context,delivery){try admission.readingConsumerLeaf();try delivery.owner.appearanceConsumerLeaf(delivery);try work()}}
+    fileprivate func commitCurrent(_ original:PlanetChildLocalV2DataAdmission,_ work:()throws -> Void)throws {guard original === admission,command.returned,command.done,command.handedOff,command.error==nil else{throw PinKnownRefusal()};try narrationLeaf();try sdk.readingCommitCurrent(context,delivery){try narrationConsumerLeaf();try admission.readingConsumerLeaf();try delivery.owner.appearanceConsumerLeaf(delivery);try work()}}
 }
 fileprivate extension PlanetChildLocalV2SDKOwner {
     func readingCurrent(_ current:Context,_ delivery:LocalV2OwnedPackageDelivery)throws {lock.lock();defer{lock.unlock()};guard !sealed,host != nil,context === current,loader === delivery.owner,delivery.owner.delivery === delivery,current.deadline==delivery.owner.request.deadline,current.checksum==delivery.compiled.profile.recordChecksum else{throw PinKnownRefusal()}}
@@ -12472,7 +12638,7 @@ extension PlanetChildLocalV2MediaPermit {
         if header.mime=="audio/wav" {
             guard let provenance=asset.audioProvenanceBytes else { throw PinKnownRefusal() }
             let duration=try PlanetChildLocalV2NarrationProvenanceCodec.validate(provenance,asset.payload,locale)
-            try PlanetChildLocalV2NarrationProvenanceCodec.duration(duration,header)
+            try PlanetChildLocalV2NarrationProvenanceCodec.duration(duration,header);try cue?.decoded(header)
         }
         try workerCurrent()
     }
@@ -12697,6 +12863,40 @@ extension PlanetChildLocalV2SDKRuntimeFixture {
         do{let plan=try PlanetChildVault.ProtectedEnvelope.localV2PrepareChildLocale(before,command);defer{plan.close()};guard name=="valid" else{return false};var next=try plan.bytes.copy();defer{next.resetBytes(in:0..<next.count)};let after=try LocalSnapshotV2.decode(next,policy:rules);defer{after.close()};try PlanetChildVault.ProtectedEnvelope.localV2ValidateChildLocale(before,after,command)
             let oldRoot=try LocalV2PackageValue.object(LocalV2PackageJson.read(raw,131072)),newRoot=try LocalV2PackageValue.object(LocalV2PackageJson.read(next,131072)),oldRecord=try LocalV2PackageValue.object(oldRoot["protectedRecord"]),newRecord=try LocalV2PackageValue.object(newRoot["protectedRecord"]);guard try oldRecord["pin"]!.json(sorted:false)==newRecord["pin"]!.json(sorted:false),after.fields.revision==before.fields.revision+1,after.journal.revision==before.journal.revision+1 else{throw PinKnownRefusal()};return true
         }catch{refused=true};guard refused,name != "valid" else{throw PinKnownRefusal()};return true
+    }
+}
+#endif
+
+
+#if DEBUG
+extension PlanetChildLocalV2SDKRuntimeFixture {
+    /** Pure exact parser/header fixtures; no native CHILD context or writer. */
+    static func narrationWave(_ rate:Int,_ frames:Int)throws -> Data {
+        guard rate>=8000,rate<=48000,frames>0,frames<=48000*60 else{throw PinKnownRefusal()};var a=[UInt8](repeating:0,count:44+frames*2)
+        func ascii(_ at:Int,_ s:String){for (i,b) in s.utf8.enumerated(){a[at+i]=b}}
+        func integer(_ at:Int,_ n:Int,_ length:Int){for i in 0..<length{a[at+i]=UInt8((n>>(8*i))&255)}}
+        ascii(0,"RIFF");integer(4,36+frames*2,4);ascii(8,"WAVE");ascii(12,"fmt ");integer(16,16,4);integer(20,1,2);integer(22,1,2);integer(24,rate,4);integer(28,rate*2,4);integer(32,2,2);integer(34,16,2);ascii(36,"data");integer(40,frames*2,4);for i in 0..<frames{integer(44+i*2,i+1,2)};return Data(a)
+    }
+    /** Pure three-cue delayed-settlement case; no context, permit or store is fabricated. */
+    static func narrationDelayedTerminal()throws -> Bool {
+        let reference:[String:Any]=["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)],anchors:[String:Any]=["schemaVersion":1,"anchorVersion":1,"segments":[["anchorId":"Passage.ONE","text":"One "],["anchorId":"Passage.TWO","text":"two "],["anchorId":"Passage.THREE","text":"three"]],"narration":["assetId":"Audio.ONE","sha256":String(repeating:"b",count:64),"sampleRate":8000,"frameCount":12,"cues":[["anchorId":"Passage.ONE","startFrame":0,"endFrame":4],["anchorId":"Passage.TWO","startFrame":4,"endFrame":8],["anchorId":"Passage.THREE","startFrame":8,"endFrame":12]]]]
+        let payload=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:["text":"One two three","readingAnchors":anchors],options:[.sortedKeys,.withoutEscapingSlashes]),131072),saved=try PlanetChildReadingPosition.Record("work","Work.ONE",1,"Passage.ONE"),map=try LocalV2NarrationMap.resolve(saved,reference,payload,"Audio.ONE",String(repeating:"b",count:64),"One two three")
+        let frames=LocalV2NarrationFrames();guard try frames.observe(4,false),frames.begin() else{throw PinKnownRefusal()};let inFlight=try frames.next();guard inFlight==4,try map.at(inFlight).anchorId=="Passage.TWO" else{throw PinKnownRefusal()}
+        // C/end arrives while B's known settlement has not yet completed.
+        guard try frames.observe(11,true),!frames.begin(),try !frames.finishKnown(inFlight) else{throw PinKnownRefusal()};let latest=try frames.next()
+        guard latest==11,try map.at(latest).anchorId=="Passage.THREE",try map.at(latest).key==saved.key,try frames.finishKnown(latest),frames.isTerminal(),frames.isFinished(),!frames.begin(),try !frames.observe(11,true) else{throw PinKnownRefusal()}
+        // A settled nonterminal worker leaves a later terminal successor owned.
+        let successor=LocalV2NarrationFrames();guard try successor.observe(4,false),successor.begin(),try successor.finishKnown(4),try successor.observe(11,true),successor.begin(),try successor.next()==11,try successor.finishKnown(11),successor.isFinished() else{throw PinKnownRefusal()};return true
+    }
+    static func narrationCue(_ name:String)throws -> Bool {
+        let reference:[String:Any]=["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)],anchors:[String:Any]=["schemaVersion":1,"anchorVersion":1,"segments":[["anchorId":"Passage.ONE","text":"One "],["anchorId":"Passage.TWO","text":"two"]],"narration":["assetId":"Audio.ONE","sha256":String(repeating:"b",count:64),"sampleRate":8000,"frameCount":8,"cues":[["anchorId":"Passage.ONE","startFrame":0,"endFrame":4],["anchorId":"Passage.TWO","startFrame":4,"endFrame":8]]]]
+        let payload=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:["text":"One two","readingAnchors":anchors],options:[.sortedKeys,.withoutEscapingSlashes]),131072),saved=try PlanetChildReadingPosition.Record("work","Work.ONE",name=="unknown" ? 2:1,"Passage.TWO")
+        do {
+            let map=try LocalV2NarrationMap.resolve(saved,reference,payload,name=="asset" ? "Other.ONE":"Audio.ONE",String(repeating:name=="digest" ? "c":"b",count:64),name=="transcript" ? "Another transcript":"One two")
+            if name=="outside"{_ = try map.at(8);return false}
+            var wave=try narrationWave(name=="sample-rate" ? 16000:8000,name=="full-frame-count" ? 7:8);defer{wave.resetBytes(in:0..<wave.count)};try map.header(PlanetChildLocalV2MediaCodec.preflight(wave,"audio/wav"))
+            guard map.startFrame==4,try map.at(3).anchorId=="Passage.ONE",try map.at(4).anchorId=="Passage.TWO",try map.at(7).anchorId=="Passage.TWO",try map.at(7).key==saved.key else{throw PinKnownRefusal()};return name=="valid"
+        }catch{if name=="valid"{throw error};return ["unknown","asset","digest","transcript","sample-rate","full-frame-count","outside"].contains(name)}
     }
 }
 #endif

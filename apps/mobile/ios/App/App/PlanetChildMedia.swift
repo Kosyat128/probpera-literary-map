@@ -135,11 +135,12 @@ enum PlanetChildLocalV2MediaCodec {
         }
         throw PlanetChildLocalV2MediaError.unsupported
     }
+    static func sourceFrame(_ full:Int,_ start:Int,_ rendered:Int64)throws -> Int {guard full>0,start>=0,start<full,rendered>=0,rendered<=Int64(full-start) else{throw PlanetChildLocalV2MediaError.malformed};return min(full-1,start+Int(rendered))}
     static func decode(_ permit: PlanetChildLocalV2MediaPermit) throws -> PlanetChildLocalV2MediaResource {
         try permit.workerCurrent();var bytes=try permit.readEncoded();defer { bytes.resetBytes(in:0..<bytes.count) }
         let header=try preflight(bytes,permit.mime);try permit.validateEncodedHeader(header);try permit.workerCurrent()
         let result: PlanetChildLocalV2MediaResource=try autoreleasepool {
-            if header.mime=="audio/wav" { return try PlanetChildLocalV2MediaResource.audio(bytes,header) }
+            if header.mime=="audio/wav" { return try PlanetChildLocalV2MediaResource.audio(bytes,header,startFrame:try permit.preparedStartFrame()) }
             return try PlanetChildLocalV2MediaResource.raster(bytes,header)
         }
         do { try permit.workerCurrent();permit.releaseEncoded();return result } catch { result.close();throw error }
@@ -149,7 +150,7 @@ enum PlanetChildLocalV2MediaCodec {
  * Conceal clears actual output immediately; close releases/zeros all owned
  * sources after the original native command has returned. */
 final class PlanetChildLocalV2MediaResource {
-    fileprivate var image: CGImage?,audio: AVAudioPCMBuffer?
+    fileprivate var image: CGImage?,audio: AVAudioPCMBuffer?;fileprivate var sourceStartFrame=0,sourceFrameCount=0
     private var pixels=Data(),closed=false;private let lock=NSLock()
     var footprint: Int { lock.lock();defer { lock.unlock() };return pixels.count+(image.map { $0.width*$0.height*4 } ?? 0)+(audio.map { Int($0.frameCapacity)*Int($0.format.channelCount)*4 } ?? 0) }
     private init() {}
@@ -167,14 +168,14 @@ final class PlanetChildLocalV2MediaResource {
             guard let image=context.makeImage() else { throw PlanetChildLocalV2MediaError.malformed };return image
         };handed=true;return r
     }
-    static func audio(_ bytes: Data,_ h: PlanetChildLocalV2MediaCodec.Header) throws -> PlanetChildLocalV2MediaResource {
+    static func audio(_ bytes: Data,_ h: PlanetChildLocalV2MediaCodec.Header,startFrame:Int=0) throws -> PlanetChildLocalV2MediaResource {
         let r=PlanetChildLocalV2MediaResource();var handed=false;defer { if !handed { r.close() } }
-        let frames=h.count/(h.channels*h.bits/8)
+        let fullFrames=h.count/(h.channels*h.bits/8);guard startFrame>=0,startFrame<fullFrames else {throw PlanetChildLocalV2MediaError.malformed};let frames=fullFrames-startFrame;r.sourceStartFrame=startFrame;r.sourceFrameCount=fullFrames
         guard let format=AVAudioFormat(standardFormatWithSampleRate:Double(h.sampleRate),channels:AVAudioChannelCount(h.channels)),
             let buffer=AVAudioPCMBuffer(pcmFormat:format,frameCapacity:AVAudioFrameCount(frames)),let planes=buffer.floatChannelData else { throw PlanetChildLocalV2MediaError.malformed }
         buffer.frameLength=AVAudioFrameCount(frames)
         bytes.withUnsafeBytes { raw in let a=raw.bindMemory(to:UInt8.self)
-            for frame in 0..<frames { for channel in 0..<h.channels { let p=h.offset+(frame*h.channels+channel)*h.bits/8
+            for frame in 0..<frames { for channel in 0..<h.channels { let p=h.offset+((startFrame+frame)*h.channels+channel)*h.bits/8
                 let sample: Float=h.bits==8 ? Float(Int(a[p])-128)/128:Float(Int16(bitPattern:UInt16(a[p])|UInt16(a[p+1])<<8))/32768
                 planes[channel][frame]=sample
             } }
@@ -195,7 +196,7 @@ final class PlanetChildLocalV2MediaPresentation: NSObject {
     private let engine=AVAudioEngine(),player=AVAudioPlayerNode(),lock=NSLock()
     private static weak var audiblePresentation: PlanetChildLocalV2MediaPresentation?
     private var concealed=false,closed=false,playing=false,watch: DispatchWorkItem?,engineAttached=false,sessionActive=false,lastAudibleVolume: Float=1,playbackSequence: UInt64=0
-    private var observers=[NSObjectProtocol]()
+    private var observers=[NSObjectProtocol]();private var nativePlayReservation:UInt64?,nativePlayConsumed=false,observedSequence:UInt64=0,observedSourceFrame:Int = -1,observedValid=false
     private weak var attachedParent: UIView?;private var attachedBounds=CGRect.zero
     var footprint: Int { resource.footprint }
     func ownsNativeControl(_ view: UIView) -> Bool {
@@ -245,34 +246,63 @@ final class PlanetChildLocalV2MediaPresentation: NSObject {
     }
     private func schedule() {
         guard Thread.isMainThread else { return };lock.lock();let done=concealed || closed;lock.unlock();if done { return }
-        do { guard let attachedParent,container.superview === attachedParent,attachedParent.bounds==attachedBounds else { throw PlanetChildLocalV2MediaError.revoked };try permit.mainCurrent();let next=DispatchWorkItem { [weak self] in self?.schedule() };watch=next;DispatchQueue.main.asyncAfter(deadline:.now()+.milliseconds(10),execute:next) } catch { conceal();permit.failedPresentation() }
+        do { guard let attachedParent,container.superview === attachedParent,attachedParent.bounds==attachedBounds else { throw PlanetChildLocalV2MediaError.revoked };try permit.mainCurrent();if playing {try observeSourceFrame()};let next=DispatchWorkItem { [weak self] in self?.schedule() };watch=next;DispatchQueue.main.asyncAfter(deadline:.now()+.milliseconds(10),execute:next) } catch { conceal();permit.failedPresentation() }
     }
     @objc private func touchedPlay() {
-        guard Thread.isMainThread,permit.audioEnabled,let buffer=resource.audio else { return }
+        guard Thread.isMainThread,permit.audioEnabled,resource.audio != nil else { return }
         do {
-            try permit.mainCurrent();lock.lock();let denied=concealed || closed || playing;lock.unlock();guard !denied else { return }
-            if let other=Self.audiblePresentation,other !== self { other.pausePlayback() };try permit.mainCurrent()
-            guard playbackSequence<9007199254740991 else { throw PlanetChildLocalV2MediaError.revoked };playbackSequence+=1;let originalSequence=playbackSequence
-            let session=AVAudioSession.sharedInstance();try session.setCategory(.playback,mode:.spokenAudio,options:[]);try permit.mainCurrent();try session.setActive(true);sessionActive=true;Self.audiblePresentation=self
-            if !engineAttached { engine.attach(player);engine.connect(player,to:engine.mainMixerNode,format:buffer.format);engineAttached=true }
-            engine.mainMixerNode.outputVolume=volume.value;player.stop()
-            player.scheduleBuffer(buffer,at:nil,options:[],completionCallbackType:.dataPlayedBack) { [weak self] _ in DispatchQueue.main.async { guard let self,self.playbackSequence==originalSequence else { return };self.pausePlayback() } }
-            try permit.mainCurrent();try engine.start();try permit.mainCurrent();player.play()
-            lock.lock();playing=true;lock.unlock();play.isEnabled=false;stop.isEnabled=true
-        } catch { conceal();permit.failedPresentation() }
+            try permit.mainCurrent();lock.lock();let denied=concealed || closed || playing || nativePlayReservation != nil || (permit.hasNarrationCue && nativePlayConsumed);lock.unlock();guard !denied else { return }
+            guard playbackSequence<9007199254740991 else {throw PlanetChildLocalV2MediaError.revoked};playbackSequence+=1;let sequence=playbackSequence
+            nativePlayReservation=sequence;play.isEnabled=false
+            if permit.hasNarrationCue {permit.prepareNativePlay(self,sequence)}else{try beginReservedPlayback(sequence)}
+        }catch{conceal();permit.failedPresentation()}
+    }
+    /** Only touchedPlay creates this private reservation. A queued worker never
+     * creates a touch, and interruption/conceal invalidates the original one. */
+    func nativePlayCurrent(_ sequence:UInt64) -> Bool {
+        guard Thread.isMainThread else {return false};lock.lock();defer{lock.unlock()};return !concealed && !closed && !playing && nativePlayReservation==sequence && playbackSequence==sequence
+    }
+    func beginReservedPlayback(_ sequence:UInt64)throws {
+        guard nativePlayCurrent(sequence),permit.audioEnabled,let buffer=resource.audio else{throw PlanetChildLocalV2MediaError.revoked};try permit.mainCurrent()
+        if let other=Self.audiblePresentation,other !== self {other.pausePlayback()};try permit.mainCurrent();guard nativePlayCurrent(sequence) else{throw PlanetChildLocalV2MediaError.revoked}
+        let session=AVAudioSession.sharedInstance();try session.setCategory(.playback,mode:.spokenAudio,options:[]);try permit.mainCurrent();try session.setActive(true);sessionActive=true;Self.audiblePresentation=self
+        if !engineAttached {engine.attach(player);engine.connect(player,to:engine.mainMixerNode,format:buffer.format);engineAttached=true}
+        engine.mainMixerNode.outputVolume=volume.value;player.stop();lock.lock();observedSequence=sequence;observedSourceFrame = -1;observedValid=true;lock.unlock()
+        player.scheduleBuffer(buffer,at:nil,options:[],completionCallbackType:.dataPlayedBack){[weak self] _ in DispatchQueue.main.async{
+            guard let self,self.playbackSequence==sequence else{return}
+            do {let frame=try self.pauseForCheckpoint();if self.permit.hasNarrationCue {try self.permit.observeNativeFrame(self,sequence,frame,stop:true)}else{self.pausePlayback()}}
+            catch{self.conceal();self.permit.failedPresentation()}
+        }}
+        try permit.mainCurrent();try engine.start();try permit.mainCurrent();guard nativePlayCurrent(sequence) else{throw PlanetChildLocalV2MediaError.revoked};player.play();nativePlayReservation=nil;if permit.hasNarrationCue{nativePlayConsumed=true}
+        lock.lock();playing=true;lock.unlock();play.isEnabled=false;stop.isEnabled=true
+    }
+    /** Actual rendered node samples, not submitted bytes or a wall-clock estimate.
+     * The retained full signed frame count bounds the decoded suffix. */
+    private func observeSourceFrame()throws {
+        guard Thread.isMainThread,playing,let buffer=resource.audio else{return};try permit.mainCurrent()
+        guard let node=player.lastRenderTime,let time=player.playerTime(forNodeTime:node) else{return}
+        guard time.isSampleTimeValid,time.sampleRate==buffer.format.sampleRate,time.sampleTime>=0,time.sampleTime<=AVAudioFramePosition(buffer.frameLength) else{throw PlanetChildLocalV2MediaError.malformed}
+        let frame=try PlanetChildLocalV2MediaCodec.sourceFrame(resource.sourceFrameCount,resource.sourceStartFrame,time.sampleTime);lock.lock();let previous=observedSourceFrame;lock.unlock();guard frame>=resource.sourceStartFrame,frame>=previous else{throw PlanetChildLocalV2MediaError.malformed}
+        lock.lock();observedSourceFrame=frame;let sequence=observedSequence;lock.unlock();try permit.observeNativeFrame(self,sequence,frame,stop:false)
+    }
+    func observationCurrent(_ sequence:UInt64,_ frame:Int) -> Bool {
+        lock.lock();defer{lock.unlock()};return !concealed && !closed && sequence>0 && observedValid && observedSequence==sequence && frame>=resource.sourceStartFrame && frame<=observedSourceFrame && frame<resource.sourceFrameCount
+    }
+    func pauseForCheckpoint()throws -> Int {
+        guard Thread.isMainThread else{throw PlanetChildLocalV2MediaError.revoked};try permit.mainCurrent();try observeSourceFrame();player.pause();engine.pause();lock.lock();playing=false;let frame=observedSourceFrame;lock.unlock();play.isEnabled=false;stop.isEnabled=false;return frame
     }
     /** Interruption end, Bluetooth/headphone change, application resume and
      * accessibility changes never call Play. Only a fresh native touch may. */
     private func pausePlayback() {
-        guard Thread.isMainThread else { return };if playbackSequence<9007199254740991 { playbackSequence+=1 };player.stop();engine.pause();lock.lock();playing=false;let denied=concealed || closed;lock.unlock()
+        guard Thread.isMainThread else { return };nativePlayReservation=nil;if playbackSequence<9007199254740991 { playbackSequence+=1 };player.stop();engine.pause();lock.lock();playing=false;observedValid=false;let denied=concealed || closed;lock.unlock()
         if sessionActive,Self.audiblePresentation === self {
             do { try AVAudioSession.sharedInstance().setActive(false,options:.notifyOthersOnDeactivation);Self.audiblePresentation=nil;sessionActive=false }
             catch { conceal();permit.failedPresentation();return }
         } else { sessionActive=false }
-        do { if !denied { try permit.mainCurrent() };play.isEnabled = !denied && permit.audioEnabled;stop.isEnabled=false }
+        do { if !denied { try permit.mainCurrent() };play.isEnabled = !denied && permit.audioEnabled && !(permit.hasNarrationCue && nativePlayConsumed);stop.isEnabled=false }
         catch { conceal();permit.failedPresentation() }
     }
-    @objc private func touchedStop() { pausePlayback() }
+    @objc private func touchedStop() {if !permit.hasNarrationCue {pausePlayback();return};do{let frame=try pauseForCheckpoint();try permit.observeNativeFrame(self,observedSequence,frame,stop:true)}catch{conceal();permit.failedPresentation()}}
     @objc private func changedVolume() {
         guard Thread.isMainThread else { return }
         do { try permit.mainCurrent();engine.mainMixerNode.outputVolume=volume.value;if volume.value>0 { lastAudibleVolume=volume.value };updateMuteCopy() }
@@ -290,7 +320,7 @@ final class PlanetChildLocalV2MediaPresentation: NSObject {
     }
     /** Fast native entry fence. Resource/session cleanup joins on the worker. */
     func conceal() {
-        guard Thread.isMainThread else { return };if playbackSequence<9007199254740991 { playbackSequence+=1 };lock.lock();concealed=true;playing=false;lock.unlock();watch?.cancel();watch=nil
+        guard Thread.isMainThread else { return };nativePlayReservation=nil;if playbackSequence<9007199254740991 { playbackSequence+=1 };lock.lock();concealed=true;playing=false;observedValid=false;lock.unlock();watch?.cancel();watch=nil
         for observer in observers { NotificationCenter.default.removeObserver(observer) };observers.removeAll()
         container.isHidden=true;container.layer.removeAllAnimations();picture.image=nil;label.text=nil;play.isEnabled=false;stop.isEnabled=false;mute.isEnabled=false;volume.isEnabled=false;player.stop();engine.pause();container.removeFromSuperview()
     }

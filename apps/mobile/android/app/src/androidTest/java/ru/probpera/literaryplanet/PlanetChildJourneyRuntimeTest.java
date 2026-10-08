@@ -100,4 +100,22 @@ public final class PlanetChildJourneyRuntimeTest {
         Map<String,Object> write=base("2".repeat(32));write.put("reference",reference);write.put("expectedRevision",0L);write.put("position",record.dto());assertEquals(record,PlanetChildDataTransport.decodeV2("rememberReadingPosition",write).readingPosition);
         for(String key:Arrays.asList("profileId","approved","url","locale","anchorMap")){Map<String,Object> untrusted=new LinkedHashMap<>(write);untrusted.put(key,true);denied(()->PlanetChildDataTransport.decodeV2("rememberReadingPosition",untrusted));}for(Object invalid:Arrays.asList(true,-1L,0.5d,9007199254740990L)){Map<String,Object> bad=new LinkedHashMap<>(write);bad.put("expectedRevision",invalid);denied(()->PlanetChildDataTransport.decodeV2("rememberReadingPosition",bad));}
     }
+
+    // AUTHORED_NOT_RUN: no synthetic context/PIN/player admission.
+    @Test public void narrationResumeWireRejectsCallerFramesMapsAndUnsafeReadingRevision() throws Exception {
+        Map<String,Object> resume=base("2".repeat(32));resume.put("owner",map("kind","work","id","Work.ONE","contentChecksum","a".repeat(64)));resume.put("assetId","Audio.ONE");resume.put("layout",map("x",0L,"y",0L,"width",320L,"height",240L,"viewportWidth",320L,"viewportHeight",640L));resume.put("expectedReadingRevision",1L);
+        PlanetChildDataTransport.V2Request decoded=PlanetChildDataTransport.decodeV2("resumeNarration",resume);assertEquals(1L,decoded.expectedRevision);assertEquals("Audio.ONE",decoded.assetId);assertNull(decoded.readingPosition);
+        for(String key:Arrays.asList("position","anchorMap","sha256","startFrame","seconds","url","approved","profileId")){Map<String,Object> bad=new LinkedHashMap<>(resume);bad.put(key,true);denied(()->PlanetChildDataTransport.decodeV2("resumeNarration",bad));}
+        for(Object value:Arrays.asList(true,-1L,-0.0d,0.5d,9007199254740990L)){Map<String,Object> bad=new LinkedHashMap<>(resume);bad.put("expectedReadingRevision",value);denied(()->PlanetChildDataTransport.decodeV2("resumeNarration",bad));}
+    }
+    @Test public void narrationCueRequiresKnownStoredAnchorExactTranscriptDigestAndFullPcmHeader() throws Exception {
+        for(String name:Arrays.asList("valid","unknown","asset","digest","transcript","sample-rate","full-frame-count","outside"))assertTrue(name,PlanetChildVault.fixtureNarrationCue(name));
+    }
+    @Test public void renderedNarrationFramesApplySignedStartOnceAndNeverCreateCompletionIdentity() throws Exception {
+        assertEquals(4L,PlanetChildMedia.sourceFrame(8,4,0));assertEquals(7L,PlanetChildMedia.sourceFrame(8,4,3));assertEquals(7L,PlanetChildMedia.sourceFrame(8,4,4));assertEquals(0L,PlanetChildMedia.sourceFrame(8,0,0));
+        denied(()->PlanetChildMedia.sourceFrame(8,4,5));denied(()->PlanetChildMedia.sourceFrame(8,4,-1));denied(()->PlanetChildMedia.sourceFrame(8,8,0));denied(()->PlanetChildMedia.sourceFrame(0,0,0));
+    }
+
+    @Test public void delayedNarrationCasDrainsLastRenderedCueBeforeTerminalRetirement() throws Exception { assertTrue(PlanetChildVault.fixtureNarrationDelayedTerminal()); }
+
 }

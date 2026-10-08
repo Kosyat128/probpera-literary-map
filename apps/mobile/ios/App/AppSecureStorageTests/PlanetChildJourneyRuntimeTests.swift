@@ -146,4 +146,22 @@ final class PlanetChildJourneyRuntimeTests: XCTestCase {
         var write:[String:Any]=["version":2,"requestId":String(repeating:"1",count:32),"contextToken":String(repeating:"2",count:32),"reference":reference,"expectedRevision":0,"position":record.dto];XCTAssertEqual(try PlanetChildLocalV2Wire.decode("rememberReadingPosition",write).readingPosition,record)
         for key in ["profileId","approved","url","locale","anchorMap"] { var extra=write;extra[key]=true;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("rememberReadingPosition",extra)) };for value:Any in [true,-1,0.5,9007199254740990] { write["expectedRevision"]=value;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("rememberReadingPosition",write)) }
     }
+
+    // AUTHORED_NOT_COMPILED_NOT_RUN: pure contracts never mint native admission.
+    func testNarrationResumeWireRejectsCallerFramesMapsAndUnsafeReadingRevision() throws {
+        let resume:[String:Any]=["version":2,"requestId":String(repeating:"1",count:32),"contextToken":String(repeating:"2",count:32),"owner":["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)],"assetId":"Audio.ONE","layout":["x":0,"y":0,"width":320,"height":240,"viewportWidth":320,"viewportHeight":640],"expectedReadingRevision":1]
+        let decoded=try PlanetChildLocalV2Wire.decode("resumeNarration",resume);XCTAssertEqual(decoded.expectedRevision,1);XCTAssertEqual(decoded.assetId,"Audio.ONE");XCTAssertNil(decoded.readingPosition)
+        for key in ["position","anchorMap","sha256","startFrame","seconds","url","approved","profileId"]{var bad=resume;bad[key]=true;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("resumeNarration",bad))}
+        for value:Any in [true,-1,-0.0,0.5,9007199254740990]{var bad=resume;bad["expectedReadingRevision"]=value;XCTAssertThrowsError(try PlanetChildLocalV2Wire.decode("resumeNarration",bad))}
+    }
+    func testNarrationCueRequiresKnownStoredAnchorExactTranscriptDigestAndFullPcmHeader() throws {
+        for name in ["valid","unknown","asset","digest","transcript","sample-rate","full-frame-count","outside"]{XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.narrationCue(name),name)}
+    }
+    func testRenderedNarrationFramesApplySignedStartOnceAndNeverCreateCompletionIdentity() throws {
+        XCTAssertEqual(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,0),4);XCTAssertEqual(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,3),7);XCTAssertEqual(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,4),7);XCTAssertEqual(try PlanetChildLocalV2MediaCodec.sourceFrame(8,0,0),0)
+        XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,5));XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,-1));XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(8,8,0));XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(0,0,0))
+    }
+
+    func testDelayedNarrationCasDrainsLastRenderedCueBeforeTerminalRetirement() throws { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.narrationDelayedTerminal()) }
+
 }

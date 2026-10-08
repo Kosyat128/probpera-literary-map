@@ -35,6 +35,7 @@ final class PlanetChildMedia {
     private static int u24(byte[] b,int p)throws Exception {require(p>=0&&p+3<=b.length);return (b[p]&255)|((b[p+1]&255)<<8)|((b[p+2]&255)<<16);}
     private static Header image(long w,long h)throws Exception {require(w>0&&h>0&&w<=MAX_DIMENSION&&h<=MAX_DIMENSION&&w*h<=MAX_PIXELS);return new Header((int)w,(int)h,0,0,0,0,0);}
     /** Container/resource validation alone grants no content or playback. */
+    static long sourceFrame(int full,int start,long rendered)throws Exception {require(full>0&&start>=0&&start<full&&rendered>=0&&rendered<=full-start);return Math.min(full-1L,start+rendered);}
     static Header preflight(byte[] b,String mime)throws Exception {
         require(b!=null&&b.length>0&&b.length<=("audio/wav".equals(mime)?MAX_AUDIO_BYTES:MAX_IMAGE_BYTES));
         if("image/png".equals(mime)){
@@ -97,12 +98,13 @@ final class PlanetChildMedia {
         private volatile AudioTrack track;
         private volatile Thread playback;
         private volatile Exception playbackFailure;
+        private volatile long observedSourceFrame=-1,observedSequence;private int sourceStartFrame;
         private FrameLayout view;
         private Button play,stop,mute;private android.widget.SeekBar volumeControl;private volatile float volume=0.7f;private AudioManager audioManager;private AudioManager.OnAudioFocusChangeListener focusListener;private android.media.AudioDeviceCallback devices;private android.content.BroadcastReceiver noisy;private boolean noisyRegistered,focusGranted;private final android.os.Handler main=new android.os.Handler(Looper.getMainLooper());private Runnable watch;
         private Owner(PlanetChildVault.LocalV2MediaPermit permit,byte[] owned)throws Exception {
             require(permit!=null);this.permit=permit;permit.checkWorker();token=permit.presentationToken();
             encoded=owned;boolean ready=false;
-            try{permit.verifyEncoded(encoded);header=preflight(encoded,permit.mime());
+            try{permit.verifyEncoded(encoded);header=preflight(encoded,permit.mime());permit.validateCueHeader(header);
                 if(header.audio())pcm=Arrays.copyOfRange(encoded,header.offset,header.offset+header.length);
                 else{BitmapFactory.Options bounds=new BitmapFactory.Options();bounds.inJustDecodeBounds=true;BitmapFactory.decodeByteArray(encoded,0,encoded.length,bounds);
                     require(header.width==bounds.outWidth&&header.height==bounds.outHeight&&permit.mime().equals(bounds.outMimeType));
@@ -129,6 +131,12 @@ final class PlanetChildMedia {
                 permit.registerMain(this,view,layout);permit.checkMain();watch=new Runnable(){public void run(){if(closed||concealed)return;try{permit.checkMain();require(playbackFailure==null);require(main.postDelayed(this,10));}catch(Exception expired){concealMain();permit.outputExpired(Owner.this);}}};require(main.post(watch));return null;
             });permit.checkWorker();
         }
+        /** Source-frame observations come only from this owned AudioTrack, never JS or elapsed seconds. */
+        private void observePlayback(AudioTrack actual)throws Exception {permit.checkOutput();require(track==actual&&header!=null&&header.audio()&&!closed&&!concealed);if(actual.getPlayState()==AudioTrack.PLAYSTATE_STOPPED)return;long played=Integer.toUnsignedLong(actual.getPlaybackHeadPosition()),full=header.length/(header.channels*header.bits/8);require(played<=full-sourceStartFrame);long frame=sourceFrame((int)full,sourceStartFrame,played);require(frame>=observedSourceFrame);observedSourceFrame=frame;permit.observedFrames(this,observedSequence,frame);}
+        boolean ownsPlaybackThread(){return playback==Thread.currentThread();}
+        long observedFrame(){return observedSourceFrame;}long observationSequence(){return observedSequence;}
+        boolean observationCurrent(long sequence,long frame){return !closed&&!concealed&&sequence>0&&sequence==observedSequence&&header!=null&&frame>=sourceStartFrame&&frame<header.length/(header.channels*header.bits/8)&&frame<=observedSourceFrame;}
+        void pauseForCheckpointMain()throws Exception {permit.checkMain();AudioTrack actual=track;if(actual!=null){observePlayback(actual);require(actual.setVolume(0f)==AudioTrack.SUCCESS);actual.pause();}if(play!=null)play.setEnabled(false);if(stop!=null)stop.setEnabled(false);}
         /** Revocation is immediate; later joins establish retirement. */
         void concealMain() {
             concealed=true;AudioTrack actual=track;if(actual!=null)try{actual.setVolume(0f);actual.pause();}catch(Throwable error){playbackFailure=new PlanetChildVault.Unavailable();}
@@ -146,12 +154,13 @@ final class PlanetChildMedia {
         private void releaseAudioFocusMain(){if(audioManager!=null){if(devices!=null){audioManager.unregisterAudioDeviceCallback(devices);devices=null;}if(focusGranted&&focusListener!=null)audioManager.abandonAudioFocus(focusListener);}if(noisyRegistered){permit.surface().getContext().unregisterReceiver(noisy);noisyRegistered=false;}noisy=null;focusListener=null;focusGranted=false;audioManager=null;}
         void beginNativePlayback(PlanetChildVault.LocalV2MediaPermit playPermit)throws Exception {
             require(permit.sameOutput(playPermit));playPermit.checkWorker();require(header!=null&&header.audio()&&permit.audioAllowed()&&!closed&&!concealed&&playback==null&&pcm!=null);
+            sourceStartFrame=permit.preparedStartFrame();int totalFrames=header.length/(header.channels*header.bits/8);require(sourceStartFrame>=0&&sourceStartFrame<totalFrames&&observedSequence<9007199254740991L);observedSequence++;observedSourceFrame=-1;
             acquireAudioFocus(playPermit);int channel=header.channels==1?AudioFormat.CHANNEL_OUT_MONO:AudioFormat.CHANNEL_OUT_STEREO;
             int encoding=header.bits==8?AudioFormat.ENCODING_PCM_8BIT:AudioFormat.ENCODING_PCM_16BIT;
             int minimum=AudioTrack.getMinBufferSize(header.rate,channel,encoding);require(minimum>0&&minimum<=MAX_AUDIO_BYTES);
             AudioTrack actual=new AudioTrack(AudioManager.STREAM_MUSIC,header.rate,channel,encoding,Math.max(minimum,4096),AudioTrack.MODE_STREAM);
             boolean retained=false;try{require(actual.getState()==AudioTrack.STATE_INITIALIZED&&actual.setVolume(volume)==AudioTrack.SUCCESS);playPermit.checkWorker();track=actual;
-                playback=new Thread(()->{try{permit.checkOutput();actual.play();int at=0;while(at<pcm.length){permit.checkOutput();require(!concealed&&!closed);int count=actual.write(pcm,at,Math.min(4096,pcm.length-at),AudioTrack.WRITE_NON_BLOCKING);require(count>=0);if(count==0){Thread.sleep(1);continue;}at+=count;}long frames=pcm.length/(header.channels*header.bits/8);while(Integer.toUnsignedLong(actual.getPlaybackHeadPosition())<frames){permit.checkOutput();require(!concealed&&!closed);Thread.sleep(2);}actual.stop();}
+                playback=new Thread(()->{try{permit.checkOutput();actual.play();int at=sourceStartFrame*(header.channels*header.bits/8);while(at<pcm.length){permit.checkOutput();require(!concealed&&!closed);int count=actual.write(pcm,at,Math.min(4096,pcm.length-at),AudioTrack.WRITE_NON_BLOCKING);require(count>=0&&count%(header.channels*header.bits/8)==0);observePlayback(actual);if(count==0){Thread.sleep(1);continue;}at+=count;}long frames=pcm.length/(header.channels*header.bits/8)-sourceStartFrame;while(Integer.toUnsignedLong(actual.getPlaybackHeadPosition())<frames){permit.checkOutput();require(!concealed&&!closed);observePlayback(actual);Thread.sleep(2);}observePlayback(actual);permit.nativePlaybackFinished(this,observedSequence,observedSourceFrame);actual.stop();}
                     catch(Exception failure){if(!concealed&&!closed)playbackFailure=failure;}finally{try{actual.setVolume(0f);actual.pause();}catch(Throwable ignored){}try{permit.onMain(()->{releaseAudioFocusMain();return null;});}catch(Exception cleanup){playbackFailure=cleanup;}}},"planet-child-owned-pcm");
                 playback.start();retained=true;
             }finally{if(!retained)actual.release();}

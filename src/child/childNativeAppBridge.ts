@@ -2,7 +2,8 @@ import { childDataArray, childRecord, decodeChildEntityPayload, decodeChildEntit
   type ChildEntityPayload, type ChildEntityReference } from "./childPackage";
 import { PARENT_GATE_ACTIONS, type ParentGateAction } from "./parentGate";
 import { decodeChildNativeMediaAsset, decodeChildNativeMediaAssets, decodeChildNativeMediaLayout,
-  decodeChildNativeMediaPresentation, decodeChildNativeMediaRetirement, childNativeMediaOwner, childNativeMediaToken,
+  decodeChildNativeMediaPresentation, decodeChildNativeNarrationResume, decodeChildNativeMediaRetirement,
+  childNativeNarrationAsset, childNativeNarrationRevision, childNativeMediaOwner, childNativeMediaToken,
   type ChildNativeMediaController } from "./childNativeMedia";
 import { decodeChildNativeSceneSummaries, decodeChildNativeScene, decodeChildNativeSceneBudgetDecline, decodeChildNativeWebResource, decodeChildNativeModelWebResource, decodeChildNativeModelChunk, decodeChildNativeSceneRetired, childNativeSceneId,
   type ChildNativeScene, type ChildNativeSceneController, type ChildNativeSceneRecipient } from "./childNativeScene";
@@ -37,6 +38,7 @@ export interface ChildNativeAppPlugin {
   writeCollection(request: unknown): Promise<unknown>;
   listMedia?(request: unknown): Promise<unknown>;
   presentMedia?(request: unknown): Promise<unknown>;
+  resumeNarration?(request: unknown): Promise<unknown>;
   releaseMedia?(request: unknown): Promise<unknown>;
   listScenes?(request: unknown): Promise<unknown>;
   openScene?(request: unknown): Promise<unknown>;
@@ -624,7 +626,7 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
-  async function data<T>(method: "readReadingPosition" | "rememberReadingPosition" | "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "readWebResourceChunk" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "rollbackSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
+  async function data<T>(method: "readReadingPosition" | "rememberReadingPosition" | "readEntity" | "search" | "readCollection" | "writeCollection" | "listMedia" | "presentMedia" | "resumeNarration" | "releaseMedia" | "listScenes" | "openScene" | "releaseScene" | "acquireWebResource" | "readWebResourceChunk" | "releaseWebResource" | "readSceneSelection" | "rememberSceneSelection" | "rollbackSceneSelection" | "restoreSceneSelection" | "listJourneys" | "readJourneyProgress" | "openJourney" | "advanceJourney" | "closeJourney" | "listDiscovery" | "readPassport" | "recordCountryOpen" | "saveJourneyRoute" | "readJourneyRouteDownload" | "resumeJourneyRoute" | "cancelJourneyRoute",
     input: Record<string, unknown>, decode: (value: unknown) => T | null): Promise<T | null> {
     const c = snapshot.context, generation = epoch;
     if (!c || snapshot.status !== "child" || !c.package || !current(c, generation)) return null;
@@ -876,6 +878,18 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
         return data("presentMedia", { owner: copied.owner, assetId: copied.assetId, layout: geometry },
           raw => decodeChildNativeMediaPresentation(raw, copied.assetId));
       },
+      ...(typeof options.plugin?.resumeNarration === "function" && typeof options.plugin?.readReadingPosition === "function"
+        && typeof options.plugin?.releaseMedia === "function" ? {
+        async resumeNarration(asset: Parameters<NonNullable<ChildNativeMediaController["resumeNarration"]>>[0],
+          layout: Parameters<NonNullable<ChildNativeMediaController["resumeNarration"]>>[1], expectedReadingRevision: number) {
+          const copied = decodeChildNativeMediaAsset(asset), geometry = decodeChildNativeMediaLayout(layout);
+          if (!copied || !geometry || !childNativeNarrationAsset(copied) || !childNativeNarrationRevision(expectedReadingRevision) || mediaRetirement) return null;
+          const c = snapshot.context; if (!c?.profileId || snapshot.status !== "child") return null;
+          mediaTouched = true;
+          return data("resumeNarration", { owner: copied.owner, assetId: copied.assetId, layout: geometry, expectedReadingRevision },
+            raw => decodeChildNativeNarrationResume(raw, copied.assetId, expectedReadingRevision));
+        },
+      } : {}),
       async release(presentationToken) {
         if (presentationToken === null) return this.releaseAll();
         if (!childNativeMediaToken(presentationToken) || typeof options.plugin?.releaseMedia !== "function") return false;
