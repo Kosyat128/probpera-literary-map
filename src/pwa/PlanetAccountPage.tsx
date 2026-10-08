@@ -7,6 +7,7 @@ import { useInterfaceLanguage, type InterfaceLanguage } from "../i18n/InterfaceL
 import { setHeadMetadataValue, setMetadataAttribute } from "../i18n/headMetadata";
 import { loadSupabaseClient } from "../lib/loadSupabaseClient";
 import { canonicalJournalOrigin } from "../platform/distribution";
+import SupportIntake from "../support/SupportIntake";
 import { createPlanetAccountClient, PlanetAccountError, safePwaReturnPath, type PlanetAccountConfiguration, type PlanetAccountDeletionStatus } from "./accountAccess";
 import { planetAccountCopy } from "./accountCopy";
 import { planetAccountRoute, type PlanetAccountMode } from "./accountRoutes";
@@ -244,6 +245,7 @@ export default function PlanetAccountPage({ mode }: { mode: PlanetAccountMode })
       {mode === "access" && !modalOpen && !receipt ? <PlanetPasswordRecovery onSignIn={() => void signInAgain()} /> : null}
       {mode === "access" && config && sandboxSession && !receipt ? <SandboxPaymentPanel language={language} config={config}
         subject={sandboxSession.user.id} token={sandboxSession.access_token} isCurrent={sandboxCurrent} /> : null}
+      <SupportIntake />
       <nav className="planet-account__links" aria-label={t("Основная навигация")}>
         <a href={`/${language}/${mode === "access" ? "delete-account" : "planet-account"}/${returnQuery}`}>{mode === "access" ? copy.deleteLink : copy.accessLink}</a>
         <a href="/stati/">{copy.journal}</a><a href="mailto:probperasite@yandex.ru">{copy.support}</a>

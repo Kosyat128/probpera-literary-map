@@ -1,6 +1,7 @@
 import type { ReactNode, SyntheticEvent } from "react";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import { canonicalJournalOrigin } from "../platform/distribution";
+import SupportIntake from "../support/SupportIntake";
 
 /** Implementation copy only. The synchronized legal/release workflow must
  * review it before production; this is not an approved privacy policy. */
@@ -71,6 +72,7 @@ export default function PwaHelp({ embedded = false, devicePanel }: { embedded?: 
           <h2>{copy.dataHeading}</h2>
           <p>{copy.data}</p>
           <p>{copy.online}</p>
+          <SupportIntake allowPrefilledEmail />
           <nav className="pwa-help__links" aria-label={copy.links}>
             <a {...accountLinkProps("planet-account", language)}>{copy.account}</a>
             <a {...accountLinkProps("delete-account", language)}>{copy.deletion}</a>

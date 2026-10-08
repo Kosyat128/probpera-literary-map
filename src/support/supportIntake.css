@@ -1,0 +1,16 @@
+.support-intake { min-width: 0; margin-block: 1.25rem; }
+.support-intake > summary { min-height: 44px; padding-block: .75rem; cursor: pointer; font-weight: 600; }
+.support-intake p { overflow-wrap: anywhere; }
+.support-intake__fields { display: grid; gap: .5rem; min-width: 0; }
+.support-intake__fields > :is(select, textarea) {
+  box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: .5rem .75rem;
+  font: inherit; line-height: 1.5; color: inherit; background: var(--account-surface, var(--paper, #fffaf2));
+  border: 1px solid var(--account-line, #dacbdc); border-radius: .625rem;
+}
+.support-intake textarea { resize: vertical; overflow-wrap: anywhere; }
+.support-intake__open { display: inline-flex; align-items: center; min-height: 44px; justify-self: start; color: inherit; text-underline-offset: .2em; }
+.support-intake :is(summary, select, textarea, a):focus-visible { outline: 3px solid var(--account-focus, #4b087c); outline-offset: 3px; }
+@media (forced-colors: active) {
+  .support-intake__fields > :is(select, textarea) { color: CanvasText; background: Canvas; border-color: ButtonText; }
+  .support-intake :is(summary, select, textarea, a):focus-visible { outline-color: Highlight; }
+}
