@@ -1,0 +1,582 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_LOCAL_PARENT_ALLOWED_LOCALE_POLICY_NOT_FULL_BIL009_OR_RELEASE",
+  "generatedAt": "2026-10-08T03:13:40.984Z",
+  "sourceCommit": "48a4df5df30a30e397c79e107340194ee2672acf",
+  "reviewedHead": "48a4df5df30a30e397c79e107340194ee2672acf",
+  "sourceFingerprint": "5346f667792396f2eed12c9ee7f71e65f8aea083042d3965765dcc4c5e7a9dac",
+  "sourceRows": 1921,
+  "actualCheckpointPid": 22340,
+  "changes": [
+    "Versioned optional parent-chosen RU/EN policy and genuine existing Parent Gate proposal/readback",
+    "Legacy absence remains current-only with no automatic storage normalization",
+    "Secondary pure requests require explicit unlocked state and configured allowed target before package/route reads",
+    "Both native strict codecs, optional ordering, nested-field comparison, full-profile confirmation and exports retain policy",
+    "Actual RU/EN parent control preserves current locale and refuses excluded parent locale saves",
+    "Sixteen structural native scenarios per platform authored; compile is not runtime acceptance"
+  ],
+  "proofs": {
+    "qa": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\helper-next-a1\\qa-run-a1\\result.json",
+      "sha256": "1b7042658f1f55b9d7e1098c73ae8cdb006018defb581e0b9bb96807dd3d440d",
+      "bytes": 79420
+    },
+    "qaRootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\helper-next-a1\\qa-root-a1\\terminal.json",
+      "sha256": "78793e2558064dc789e997271807fb3d6dad1e43b5c4b2bf87790a85e469c066",
+      "bytes": 291
+    },
+    "acceptedManifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\manifest.json",
+      "sha256": "061d65fc3ac3d392e7a25e44e86408d88fc3652756a5fdd93fe1e987a6d0111b",
+      "bytes": 14402
+    },
+    "sourceReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\source-review-sol-a2.json",
+      "sha256": "badf52b55fce82e0debe7d72b2eab711c09ee813862b98b9741a77827b569649",
+      "bytes": 13695
+    },
+    "integration": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\helper-next-a1\\integration-run-a1\\result.json",
+      "sha256": "9682076833dd726742c3da3446405f80c661b77ff7b0483662e4ad62603bc3d3",
+      "bytes": 11880
+    },
+    "integrationRootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\helper-next-a1\\integration-root-a1\\terminal.json",
+      "sha256": "fb3ccd3f6cc6eaafde969f21eedf9ac0ef1f77feb47819525d34a69c9ddff080",
+      "bytes": 292
+    }
+  },
+  "qa": {
+    "rootPid": 7756,
+    "tscPid": 2508,
+    "unitPid": 25452,
+    "javaPid": 33892,
+    "actualExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "passedAffectedCases": 275,
+    "passedNewCases": 23,
+    "passedModifiedCases": 5,
+    "actualCasesByFile": [
+      {
+        "file": "src/child/childLocalePolicy.test.ts",
+        "cases": 6
+      },
+      {
+        "file": "src/child/childNativeLocalePolicy.test.ts",
+        "cases": 8
+      },
+      {
+        "file": "src/child/ParentChildLocalePolicyControl.test.tsx",
+        "cases": 6
+      },
+      {
+        "file": "src/child/childStartup.test.ts",
+        "cases": 75
+      },
+      {
+        "file": "src/child/childIndex.test.ts",
+        "cases": 53
+      },
+      {
+        "file": "src/child/childProfile.test.ts",
+        "cases": 35
+      },
+      {
+        "file": "src/child/childProtectedState.test.ts",
+        "cases": 31
+      },
+      {
+        "file": "src/child/childLocalSnapshotV2.test.ts",
+        "cases": 45
+      },
+      {
+        "file": "src/child/childNativeLocaleLock.test.ts",
+        "cases": 16
+      }
+    ],
+    "failed": 0,
+    "skipped": 0,
+    "todo": 0,
+    "taskLines": [
+      "> Task :app:compileDevDebugJavaWithJavac",
+      "> Task :app:compileDevDebugAndroidTestJavaWithJavac"
+    ],
+    "offline": true,
+    "noBuildCache": true,
+    "sourceUnchanged": true
+  },
+  "nativeFixtures": "16 structural scenarios per platform AUTHORED_NOT_RUN; Android main/test sources compiled only; Swift NOT_COMPILED_NOT_RUN",
+  "browser": "NOT_RUN_FOR_COMBINED_PARENT_LOCK_AND_ALLOWED_POLICY_UI",
+  "installedOSAcceptance": "NOT_VERIFIED",
+  "humanReadabilityLegal": "PENDING",
+  "retainedOriginalFailure": {
+    "helper": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-locale-lock-reviewed-source-a1.mjs",
+      "sha256": "7233d4b41a53dc22e3eab3564caf7a0a9838f379db5a1f82b0391d5847a12864",
+      "bytes": 15678
+    },
+    "failure": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\failure.json",
+      "sha256": "9b2c06b7f4455b3b90aa60deba5d1152b36f4747afd0b1954070190456a90610",
+      "bytes": 5855
+    },
+    "rootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-root-a1\\terminal.json",
+      "sha256": "81c13adeec20a6120172487334d5c7cf0b2d4dbe9389176f23f769ab91917411",
+      "bytes": 292
+    },
+    "rootStdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-root-a1\\stdout.bin",
+      "sha256": "880fcfd57c509e84eb74f0092ffe78c18585df032fb666d4a6952b5ee2d86548",
+      "bytes": 544
+    },
+    "rootStderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-root-a1\\stderr.bin",
+      "sha256": "085927cf606d658d0f13e1421b042088e2445fa97725f2b24129d3d02d48b21d",
+      "bytes": 545
+    },
+    "tscTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\tsc\\terminal.json",
+      "sha256": "df0b848a514e1b16e8ea4b21123f018ee3c7056f897e48f64b352b5e47319c9e",
+      "bytes": 3252
+    },
+    "tscStdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\tsc\\stdout.bin",
+      "sha256": "13bdcb08e869d3a049991e5c7ab21eb5f8a74c497b6085f4da7f8bb6eef30939",
+      "bytes": 498
+    },
+    "tscStderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\tsc\\stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "originalRootPid": 11960,
+    "originalRootExitCode": 1,
+    "originalTscPid": 15336,
+    "originalTscExitCode": 2,
+    "originalUnits": "NOT_RUN",
+    "originalJava": "NOT_RUN",
+    "qualification": "ORIGINAL_NATURAL_FAIL_RETAINED_NOT_PASS"
+  },
+  "retainedFailureQualification": "Inherited immutable locale-lock root11960/TSC15336 failure and reviewed four-method repair; not rerun/reclassified here. Earlier recorded failures also remain unchanged.",
+  "currentStandardArtifacts": {
+    "sourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+    "rootPid": 23236,
+    "rootNaturalExitCode": 0,
+    "compiled": [
+      {
+        "mode": "pwa",
+        "actualPid": 27860,
+        "exitCode": 0,
+        "naturalCloseObserved": true,
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\pwa\\terminal.json",
+          "sha256": "80ed3e9a582d0f44ad8658f0a7de9c71acef5d13cf2a65d9c6eab935b4a90ace",
+          "bytes": 3244
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\preparation.json",
+          "sha256": "b059eba047010ed192a6e7a996b410baf5190fbd2f47ef430ea7c69a8c8fdbbf",
+          "bytes": 312761
+        },
+        "web": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\pwa-bundle",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\pwa-bundle\\artifact.json",
+            "sha256": "6a95cd44893032d728dbc0d7ab44d72a11717b831cc1e3b88c94d419b4b5ddec",
+            "bytes": 429417
+          },
+          "artifactSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "preparationSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "buildId": "44eae19dce8e9c0d0d7a23810bc48a5790e691c6dbb7263ea6902a62fa0177dd",
+          "inventoryRows": 1425,
+          "inventorySha256": "7e5b3438029ff0dec51891f7b0f4fbb3ee1032f8d56f541745bdeaffddd3645c",
+          "sourceInputRows": 1176,
+          "sourceInputsSha256": "08e29b7bf813e81076ad26bdfba13fe33d716c6fb377c4aeb36e1bafffd2bce2",
+          "qualification": "Original standard build/audit/retainBundle already checked web bytes; wrapper reads retained metadata only"
+        },
+        "binary": null,
+        "mainAPK": null,
+        "testAPK": null,
+        "instrumentationCompiled": null,
+        "qualification": "Original standard SHA; no binary/web rehash; compiled, not installed"
+      },
+      {
+        "mode": "android",
+        "actualPid": 17196,
+        "exitCode": 0,
+        "naturalCloseObserved": true,
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\android\\terminal.json",
+          "sha256": "6ada2219aab816fa81bc70e3b6fe3f0301e1b48dfc382dad4d41c14eef6fc39a",
+          "bytes": 3276
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\preparation.json",
+          "sha256": "bea47eab461dbda8b104870a52f52b1b5eabd7af95c0af6ba4c87d635d8b30ba",
+          "bytes": 326813
+        },
+        "web": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\native-bundle",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\native-bundle\\artifact.json",
+            "sha256": "ee26c1858600d6fe9a3256f0a3b05d4c11ee6ff55555c2e6cf527e513a7995d7",
+            "bytes": 728664
+          },
+          "artifactSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "preparationSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "buildId": "c41e7408052ab51948338d9eedc09dadd17af46bb90d45c891d36136dbe53892",
+          "inventoryRows": 1420,
+          "inventorySha256": "959ac63e4706b05a8fec9028b60abb672fc65195cf075b5a68c69be13f4167ce",
+          "sourceInputRows": 1180,
+          "sourceInputsSha256": "7c2dfd651da3f29e71f08aea25d4134e97fd695aa272f34c058d56a1d691e642",
+          "qualification": "Original standard build/audit/retainBundle already checked web bytes; wrapper reads retained metadata only"
+        },
+        "binary": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\binary.json",
+          "sha256": "c754325861cc3497e14533eca4e9b78f67286deb6f116741cf48b3f2b7ce0651",
+          "bytes": 213077
+        },
+        "mainAPK": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\app-dev-debug.apk",
+          "sha256": "afa7d80ce6974bf8937e9816f47af01edd05e2f5cd88fd7f815102cb72d72c78",
+          "bytes": 70775044,
+          "shaQualification": "Original actual preparation SHA; wrapper validates path/size, no duplicate web/APK rehash"
+        },
+        "testAPK": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\app-dev-debug-androidTest.apk",
+          "sha256": "dfccd669ffa69b921eaf32bc2a3ed65806b39155bf207d9dba7341e45f509e93",
+          "bytes": 823070,
+          "shaQualification": "Original actual preparation SHA; wrapper validates path/size, no duplicate web/APK rehash"
+        },
+        "instrumentationCompiled": true,
+        "qualification": "Original standard SHA; no binary/web rehash; compiled, not installed"
+      }
+    ],
+    "installed": false,
+    "store": false,
+    "releaseReady": false
+  },
+  "artifactQualification": "Inherited retained PWA/main+test APKs built from source3d7, NOT rebuilt or rebound to current locale-policy source48a4df5d; older bounded d039/e97 packet is not this source release",
+  "priorCheckpoint": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-locale-lock-20261008\\result.json",
+    "sha256": "c7bb19aa2e63a1faeeec18b762beda607c7ad39e8a7482197a61ba8eb106e773",
+    "bytes": 27753
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsOrigin": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-journey-work-20261005\\astra-whole-child-journey-closure-a1.json",
+    "sha256": "9ec91cb712b3bec8c877fbd471b9277fa81755994dd6e1d1bb50b57857ce7761",
+    "bytes": 247218
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Exact inherited source/time/status snapshot, NOT_RECHECKED by this local code QA",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "newNoticeReviews": {
+    "humanReadabilityRuEn": "PENDING",
+    "legalTerritory": "PENDING"
+  },
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "criterionMapping": [],
+  "formalStatusChanges": 0,
+  "criterion": {
+    "id": "S16.BIL-009",
+    "status": "OPEN",
+    "fullCriterionApproved": false,
+    "pending": [
+      "Genuine ungated child locale transition and native atomic admission",
+      "Language-neutral reading/narration position continuity",
+      "One combined parent controls browser scope",
+      "Swift/native runtime/installed OS and human acceptance"
+    ]
+  },
+  "booky": {
+    "sourceOwnersUnchanged": true,
+    "scope": "Both fitted white ankle rings and rounded five-digit gloves retained; exact current source/image reviewed by Astra, no repeated 3D QA"
+  },
+  "originalSixDependentTasks": "UNCHANGED_BY_RAW_TAILS_AND_DEEP_STATE",
+  "nextAction": "Continue original S16.BIL-009 with actual child-native-locale-transition-a2 production adapters on source48a4df5d/FP5346f667/1921: strict child command/plugin/transport, actual original AppOwner and lifecycle/deadline, typed native writer/process-clock, target-package preflight, joined recipients/workers, durable migration/native ACK/closed readback and fresh context admission. Finish canonical language-neutral reading/narration position continuity and use the same globe/provider. Parent allowed-language policy and lock are implemented with local QA only; full BIL009 remains OPEN. Finish the one combined RU-keyboard/EN-touch 320px browser fixture after its frozen source review and binding to actual report HEAD; no lock-only or old suites rerun. Preserve all S03/S16 criteria, original failures, six dependent tasks, four original conditions NOT_RECHECKED, PSP UNSELECTED, seven owner actions/five human reviews. Swift/native fixture runtime/installed OS/human acceptance pending. Retained standard artifacts remain source3d7 and older bounded packet remains d039/e97; prepare fresh builds/package once the coherent remaining production batch is complete. No unchanged AVD attempt, report-only D stage, remote/push/merge/deploy/store.",
+  "artAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "gitMutations": 0,
+  "lexicalState": {
+    "onlyChangedValues": [
+      "headSha",
+      "updatedAt",
+      "resume.nextAction"
+    ],
+    "outsideValuesByteExact": true,
+    "mixedCrLfCount": 45
+  }
+}
