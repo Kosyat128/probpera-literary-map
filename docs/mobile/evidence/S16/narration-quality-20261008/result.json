@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "status": "LOCAL_QUALITY_BATCH_VERIFIED_WITH_CONFIRMED_FOLLOWUP_DEFECTS",
+  "generatedAt": "2026-10-08T11:45:31.477Z",
+  "sourceCommit": "d29beca74090e936cbcc945e4f234573ad704d72",
+  "mobileSourceCommit": "55a1c6aab1bdfa08aa1c3f3d87a4d1f1ec5f4417",
+  "sourceFingerprint": "72c49b6fb824c709f7d6fba46a173ba815b695049a6c6f5644cccee046f50253",
+  "commonSourceRows": 1944,
+  "adminSourceRows": 440,
+  "sourceIdentityQualification": "Whole repository/code source d29; common mobile graph source55 excludes apps/admin. Documentation does not change application inputs.",
+  "implementation": [
+    {
+      "commit": "7cb4e615b41c329ef9fd8c8f8f75d2d3b365072d",
+      "change": "Canonical RU/EN pronunciation protocol; recoverable staff drafts with current-revision import/preview fences and original script/provenance. Prepared download does not acknowledge disk save."
+    },
+    {
+      "commit": "55a1c6aab1bdfa08aa1c3f3d87a4d1f1ec5f4417",
+      "change": "Immutable original-PCM SHA/peak/RMS/DC/zero/rail diagnostics; reject provably silent/constant/exclusively rail-valued narration, no waveform rewrite or LUFS/human approval. Native media labels wrap and preserve44px targets."
+    },
+    {
+      "commit": "d29beca74090e936cbcc945e4f234573ad704d72",
+      "change": "Actual DOM appendChild corrects demonstrated admin TypeScript download incompatibility."
+    }
+  ],
+  "checks": {
+    "units": {
+      "status": "PASS_LOCAL",
+      "receipt": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-quality-coherent-qa-run-root-a4\\result.json",
+        "sha256": "059a63ec87264c5ccf17ebfe23725d6b64ca7b8723648e8ca8fc9415567c4e39",
+        "bytes": 41109
+      },
+      "rootPid": 35916,
+      "vitestPid": 32392,
+      "cases": 57,
+      "files": 7,
+      "failed": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "appTypeScript": {
+      "status": "RETAINED_PASS_IDENTICAL_ENTIRE_APP_INPUT_GRAPH",
+      "pid": 19892,
+      "exitCode": 0,
+      "rerun": false,
+      "qualification": "RETAINED19892_IDENTICAL_ENTIRE_APP_INPUT_GRAPH_ADMIN_ONLY_CORRECTION"
+    },
+    "adminTypeScript": {
+      "status": "PASS_LOCAL",
+      "pid": 29188,
+      "exitCode": 0
+    },
+    "mobileInterface": {
+      "status": "PASS_BOUNDED_PRESENTATION_ONLY",
+      "receipt": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-interface-quality-a2\\browser-run-root-a2\\result.json",
+        "sha256": "3b36f88dae19049ffd0f036abe75fb1402f24e07936cab2f558e9b79f2b570e7",
+        "bytes": 77831
+      },
+      "rootPid": 27828,
+      "screenshots": 4,
+      "directCaptureReview": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-interface-quality-a2\\capture-review-root-a2.json",
+      "scope": "Actual ChildNativeMediaActions; RU keyboard/EN touch320px,100/200 percent text. Synthetic metadata and callback/native storage ports; full App/globe/native OS not verified."
+    },
+    "pronunciationEditorInteraction": {
+      "status": "NOT_RUN",
+      "qualification": "Three existing component tests use static SSR; mounted browser interaction capsule separately authored."
+    },
+    "nativeJava": {
+      "status": "RETAINED_COMPILE_ONLY_NOT_RERUN",
+      "rootPid": 31716,
+      "childPid": 20352,
+      "exitCode": 0,
+      "tasks": [
+        ":app:compileDevDebugJavaWithJavac",
+        ":app:compileDevDebugAndroidTestJavaWithJavac"
+      ],
+      "fixtureRuntime": "NOT_RUN"
+    },
+    "swift": "NOT_COMPILED_NOT_RUN",
+    "installedOS": "NOT_VERIFIED",
+    "actualPlayback": "NOT_VERIFIED",
+    "realStaffAuth": "NOT_VERIFIED",
+    "humanVoiceAndRights": "PENDING"
+  },
+  "builds": {
+    "status": "PASS_LOCAL_PREPARATION_NOT_INSTALLED_ACCEPTANCE",
+    "qualificationReceipt": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-quality-build-qualification-a1\\qualification-run-root-a1\\result.json",
+      "sha256": "6b07e796a0bc317984ae6c8a758e831366b5b5c955b376664c8ca92527536beb",
+      "bytes": 26074
+    },
+    "qualifierPid": 28476,
+    "children": [
+      {
+        "mode": "pwa",
+        "pid": 32856,
+        "parentPid": 34192,
+        "exitCode": 0
+      },
+      {
+        "mode": "android",
+        "pid": 23380,
+        "parentPid": 34192,
+        "exitCode": 0
+      }
+    ],
+    "repeated": false,
+    "originalRoot": {
+      "pid": 34192,
+      "exitCode": 1,
+      "status": "FAIL_RETAINED",
+      "reason": "Predicate equated whole Android package source d29 with common mobile55; both actual standard children exited0."
+    },
+    "pwaPath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-6526834a-45e6-4615-8747-a0abeaafa2f6\\pwa-bundle",
+    "androidPath": "C:\\Users\\User\\Documents\\ChatGPT\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-79e4f360-7afc-475e-ac87-6cb89516a809",
+    "apks": [
+      {
+        "name": "app-dev-debug.apk",
+        "sha256": "71411dc66ca07d144fb450d2dc103f9d058da6c1a81ceb8fcdf716ae19d3b3ec",
+        "bytes": 70775044
+      },
+      {
+        "name": "app-dev-debug-androidTest.apk",
+        "sha256": "14395e8c39dcc1412e524a01fd2ac84151d1f01d620186e7a7110f82b64717f2",
+        "bytes": 826216
+      }
+    ],
+    "qualification": "Pre-fix d29 source; dev ID/debug signing; no installation/store/iOS acceptance."
+  },
+  "internalPacket": {
+    "status": "PASS_CURRENT_INTERNAL_PACKET_ASSEMBLY_NOT_ACCEPTANCE",
+    "receipt": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-current-handoff-a2\\packet-run-root-a1\\result.json",
+      "sha256": "afcca6000ed4f370aa4e9fa663cd54c720018876d8b624aaa5e3f2456c70192c",
+      "bytes": 12070
+    },
+    "rootPid": 25436,
+    "archive": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-current-handoff-a2\\packet-run-root-a1\\current-internal-packet.zip",
+      "sha256": "1e0e69030ef6252d16b75499664088cd7932ba20848887d025ae75676b38ea0f",
+      "bytes": 218503953,
+      "compression": "stored",
+      "library": "fflate@0.8.3",
+      "archivedEntries": {
+        "scope": "Exact ordinary stored ZIP central/local metadata, entry sizes, nonoverlapping complete local coverage, and SHA256 of every archived entry against the planned packet inventory; no extraction to disk.",
+        "centralDirectoryVerified": true,
+        "entrySha256Verified": true,
+        "filesVerified": 3942,
+        "rawBytesVerified": 217763757,
+        "zip64": false,
+        "crcVerification": "NOT_RUN"
+      }
+    },
+    "inventory": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\narration-current-handoff-a2\\packet-run-root-a1\\current-internal-packet\\INVENTORY.json",
+      "sha256": "011d37687f107035ac5ef3dfc93ff290a5f34914fa68af4154618503d5056878",
+      "bytes": 722574
+    },
+    "rawSourceFiles": 2385,
+    "qualification": "1944 common rows+440 admin files+vitest config,1426 prepared PWA files,both dev APKs and bounded evidence. Scope omits full repository public/history; no proved restore/rebuild.",
+    "restore": "NOT_RUN",
+    "crc": "NOT_RUN",
+    "sourceRebuild": "NOT_RUN",
+    "precedingFollowupDefects": true,
+    "productChecksRepeated": false
+  },
+  "confirmedPendingDefects": [
+    {
+      "id": "ANDROID_OBSERVATION_SERIALIZATION",
+      "status": "CONFIRMED_NOT_FIXED",
+      "owner": "GPT-6 Astra Ultra",
+      "detail": "PlanetChildMedia.java worker/pause observations can regress or offer older frames after newer frames."
+    },
+    {
+      "id": "FIRST_PLAY_CANONICAL_CHECKPOINT",
+      "status": "CONFIRMED_NOT_FIXED",
+      "owner": "GPT-6 Astra Ultra",
+      "detail": "Normal presentMedia on Android/iOS does not install the signed canonical narration cue; first-listen progress is not persisted."
+    },
+    {
+      "id": "RIFF_PADDING_PREFLIGHT",
+      "status": "CONFIRMED_NOT_FIXED",
+      "owner": "GPT-6 Astra Ultra",
+      "detail": "Shared WAV preflight accepts nonzero odd-chunk padding which both native decoders reject."
+    }
+  ],
+  "preservedFailures": [
+    {
+      "pid": 31476,
+      "exitCode": 1,
+      "reason": "Qualification refused .env.example before tests."
+    },
+    {
+      "pid": 33908,
+      "exitCode": 1,
+      "reason": "Admin TypeScript append incompatibility; Vitest not run."
+    },
+    {
+      "pid": 4912,
+      "exitCode": 1,
+      "diagnosticPid": 32420,
+      "reason": "Fixture-only h1 overflow at enlarged text; new fixture uses actual h2. Original FAIL retained."
+    },
+    {
+      "pid": 34192,
+      "exitCode": 1,
+      "reason": "Build orchestration predicate failed after successful standard children; builds not repeated."
+    },
+    {
+      "pid": 31728,
+      "exitCode": 1,
+      "reason": "Earlier narration QA FAIL retained."
+    },
+    {
+      "pid": 13336,
+      "exitCode": 1,
+      "reason": "Earlier Java signature/dev guard FAIL retained."
+    }
+  ],
+  "originalConditions": {
+    "snapshotCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "snapshotAt": "2026-10-03T05:43:14.065Z",
+    "currentRecheck": "NOT_RECHECKED",
+    "conditions": [
+      {
+        "id": "INSTALLED_NATIVE_APP",
+        "status": "NOT_VERIFIED",
+        "dependency": "Owned Android test target; iOS Mac/Xcode. Six AVD boot failures retained."
+      },
+      {
+        "id": "PSP_AND_REAL_TRANSACTIONS",
+        "status": "NOT_RUN",
+        "dependency": "PSP UNSELECTED user-confirmed; merchant/test environment,prices,receipts and real transaction evidence missing."
+      },
+      {
+        "id": "RU_EN_EDITORIAL_LEGAL_VOICE",
+        "status": "PENDING",
+        "dependency": "Five human reviews; approved legal/entity/rights and factual RU/EN materials; licensed real human voice files/listening."
+      },
+      {
+        "id": "AUTH_DELETION_REMOTE_ENVIRONMENT",
+        "status": "NOT_RUN",
+        "dependency": "Configured exact Auth/deletion target,ordinary test accounts,separate environment-specific remote grant."
+      }
+    ]
+  },
+  "ownerActionIds": [
+    "DEVICE-ANDROID",
+    "DEVICE-IOS",
+    "PSP-DECISION",
+    "EDITORIAL-LEGAL",
+    "AUTH-ENVIRONMENT",
+    "REMOTE-GRANT",
+    "STORE-SIGNING"
+  ],
+  "ownerQualification": "Existing full seven-action snapshot/five human reviews retained in packet; no new owner question/remote action.",
+  "modelRouting": {
+    "ordinary": "GPT-6.1 SOL Ultra",
+    "all3d": "GPT-6 Astra Ultra",
+    "complex": "GPT-6 Astra Ultra",
+    "persistedIn": "AGENTS.md",
+    "globalMemoryModified": false
+  },
+  "formalAcceptance": {
+    "S03": "IN_PROGRESS",
+    "S03Open": 11,
+    "S16Unresolved": 36,
+    "BIL009": "OPEN",
+    "criterionTransitions": 0,
+    "releaseReady": false,
+    "fullPortraitArt": "NOT_APPROVED"
+  },
+  "invariants": {
+    "canonicalGlobe": "PRESERVED",
+    "bookyModel": "PRESERVED",
+    "bothWhiteAnkleRingsAndFiveDigitGloves": "PRESERVED",
+    "sixEmptyDenyFactories": "PRESERVED",
+    "originalPcm": "NOT_REWRITTEN",
+    "remoteActions": 0
+  },
+  "nextAction": "Continue actual pending quality work. GPT-6 Astra Ultra owns confirmed complex defects: serialize Android playback observations without the closeJoined owner monitor; connect first-play Android/iOS signed canonical narration cues with nullable prior-position CAS0 and save only actual playback-observed frames; align shared WAV preflight with native zero RIFF padding validation while preserving original PCM bytes. Independently review fresh isolated proposals before integration. Review/run the actual mounted PronunciationDraftEditor browser interaction capsule; existing three SSR tests do not establish interaction acceptance. Fix only demonstrated editor/interface defects. GPT-6.1 SOL Ultra handles routine development/review. After the coherent source batch perform affected checks and refresh builds/internal packet once. Current d29 code/common mobile55 has qualified57 units, app/admin TypeScript, four bounded RU/EN presentation captures, PWA/dev main+test APK and218503953-byte internal packet, all preceding these newly confirmed defects. Preserve every original FAIL, endings/history, formal OPEN statuses, six EMPTY_DENY/null factories, Booky rings/five-digit gloves and the single canonical globe. Native OS/playback/Swift/human voice/actual staff Auth remain unverified; four original conditions historical NOT_RECHECKED, PSP UNSELECTED, seven owner actions/five human reviews/six dependent tasks retained. No unchanged QA/build/AVD repetition, report-only D stage, remote/push/merge/deploy/store.",
+  "releaseReady": false
+}
