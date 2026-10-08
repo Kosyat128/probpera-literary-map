@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "444180873d8c8e53b919f015942fcef5f7c8d2ee",
+  "headSha": "3d7f339884da924299650b178660ae22dda7950f",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-08T00:23:53.207Z",
+  "updatedAt": "2026-10-08T01:31:59.418Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Finish independent source review of the frozen original S16.CHPRIV-007 age-appropriate RU/EN notice proposal in D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1 (manifest SHA c7f49b5c7451f6e512f93881d43ac52764f24725998751b24b2908e476f0a76a; not integrated and not run). Obtain root exact-source admission and integrate only the reviewed scope, then run only its eight new tests, TypeScript and relevant browser presentation checks. Batch fresh PWA/Android APK preparations after this production batch is complete. Current standard artifacts and the completed bounded packet remain Booky source d039; current source444 has export TSC/90 selected units/two fresh Java compile tasks only. Do not repeat unchanged Booky model, App/offline, export90, nativeJava checks or finished Booky packaging. Preserve original Parent Gate, native custody, EMPTY_DENY and all existing content/state. Native13 fixtures AUTHORED_NOT_RUN, Swift NOT_RUN, installed OS NOT_VERIFIED. Four old conditions NOT_RECHECKED, PSP UNSELECTED, seven owner actions, five pending human RU/EN reviews and all S03/S16 criteria/statuses stay unchanged. No seventh unchanged AVD attempt, report-only D stage, remote operation, push, merge, deploy or store action.",
+    "nextAction": "Continue original S16.BIL-009: freeze the isolated proposal, independent review/root admission before integration. Connect parent lock/unlock via expand-access-settings Gate, strict boolean/legacy/draft native readback and bridge/state controls. NativeChildSceneHost follows context.locale; unlocked switching needs canonical native locale transition, no UI-only flag/fake context/admission/EMPTY_DENY relaxation. Only new affected checks; completed privacy/Booky/export90/nativeJava/App/offline/build/packet evidence must not repeat. Preserve six dependent tasks, all S03/S16 criteria, four old conditions NOT_RECHECKED, PSP unselected, seven owner actions and five human reviews; new notice readability/legal pending. Native13/Swift/installed OS unverified. No unchanged seventh AVD, report-only D stage, remote/push/merge/deploy/store.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",

@@ -1,0 +1,631 @@
+{
+  "schemaVersion": 1,
+  "status": "COMPLETED_LOCAL_PRIVACY_SOURCE_BATCH_NOT_FORMAL_ACCEPTANCE",
+  "generatedAt": "2026-10-08T01:31:59.418Z",
+  "sourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+  "reviewedHead": "3d7f339884da924299650b178660ae22dda7950f",
+  "sourceFingerprint": "d6667dc8e8418c7d1dc7cb6946b72c1820291d4852ad41f2ce9a854e5882c77d",
+  "sourceRows": 1914,
+  "proofs": {
+    "qa": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\qa-four-remaining-run-a1\\result.json",
+      "sha256": "720f255d1b43e6ab7c47812a148dcbc0be361e1a5657e7783c5deb012adfc721",
+      "bytes": 20751
+    },
+    "qaRoot": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\qa-four-remaining-root-a1\\terminal.json",
+      "sha256": "e6057a26c410faf0b165515c1e854bd9b0a4ef5329c19d54e581bbc909da0fc3",
+      "bytes": 292
+    },
+    "browser": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-run-a2\\result.json",
+      "sha256": "d45013c9548aa5bdacb386f2247085a8a3dbc9d92be083638ff096cbf57652ee",
+      "bytes": 30372
+    },
+    "browserRoot": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-root-a2\\terminal.json",
+      "sha256": "dd7f8379b4a811ac998e8c650fef241924f202e483963ca53588c0cd542a6e70",
+      "bytes": 292
+    },
+    "captures": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\capture-review-root-a2.json",
+      "sha256": "bd246f4e8d0e38dac23fe0e3b868c8caaf8b49ebb5124041cc7c6d00e8ae19ac",
+      "bytes": 2618
+    },
+    "build": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\result.json",
+      "sha256": "444d68ea2f295267887e75c1db78539f9bacb27fb2cba2c355417ddd617db6f4",
+      "bytes": 40612
+    },
+    "buildRoot": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-root-a1\\terminal.json",
+      "sha256": "290c3d2f2c6d2c82ed7b5d13c750272c6a9442c81d62958bb4940c203856d189",
+      "bytes": 292
+    }
+  },
+  "qa": {
+    "tscPass": true,
+    "newCases": 8,
+    "failed": 0,
+    "originalPass4": 4,
+    "remainingPass4": 4,
+    "originalNaturalFail": {
+      "status": "NATURAL_FAIL",
+      "pid": 8396,
+      "exitCode": 1,
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\qa-root-a1\\terminal.json",
+        "sha256": "b19405fa4f57b7881af43596462cdf7e3bcf1cfb260f7ef616111eb5232c90d0",
+        "bytes": 291
+      },
+      "failure": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\qa-run-a1\\failure.json",
+        "sha256": "cec8b93f3aedc9cb749900deb434b51172e607ce92a96f30f9b5aca0265c8d63",
+        "bytes": 9729
+      },
+      "reason": "Quoted it.each object locale titles excluded four cases; postprocess guard correctly retained original natural FAIL"
+    },
+    "oldTwelveSkipped": true,
+    "oldChecksRepeated": false
+  },
+  "browser": {
+    "receipt": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-run-a2\\result.json",
+      "sha256": "d45013c9548aa5bdacb386f2247085a8a3dbc9d92be083638ff096cbf57652ee",
+      "bytes": 30372
+    },
+    "captureReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\capture-review-root-a2.json",
+      "sha256": "bd246f4e8d0e38dac23fe0e3b868c8caaf8b49ebb5124041cc7c6d00e8ae19ac",
+      "bytes": 2618
+    },
+    "scope": "LOCAL_PRESENTATION_ONLY",
+    "captures": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-run-a2\\01-ru-wide-keyboard-focus.png",
+        "bytes": 36002,
+        "sha256": "f6041f882b3b38c64cf3931da7587706ced099186e81e4ecd5f54a035ad4fc4d",
+        "humanReviewed": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-run-a2\\02-en-320-touch.png",
+        "bytes": 29279,
+        "sha256": "35d4d2015cdfa800a43dee28054603833180e759f3c422dd620088d80e7978db",
+        "humanReviewed": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-run-a2\\03-ru-320-notice-font-200-percent.png",
+        "bytes": 117720,
+        "sha256": "d74a918988623d3d5f2b6d9ee25edf4336cdd8334c55b2179f96e12472242841",
+        "humanReviewed": false
+      }
+    ],
+    "retained": {
+      "pins": {
+        "originalHelper": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\run-browser-presentation-a1.mjs",
+          "sha256": "c9952ad0b87d48f64f7064b2b04bbde247336843da01fa488536194bf363f3ad",
+          "bytes": 19138
+        },
+        "originalFailure": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-run-a1\\result.json",
+          "sha256": "278ccc990d1d5cf01e9301f6b05a6c7bcfdf40f2ee61b98082fcc622edee364c",
+          "bytes": 6211
+        },
+        "originalTerminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-root-a1\\terminal.json",
+          "sha256": "77c4840a073e747403caf5fe8fa2b899703b7334f52876bde0b3bace482216ec",
+          "bytes": 292
+        },
+        "diagnostic": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-diagnostic-run-a1\\result.json",
+          "sha256": "4529c0d68ff18bcb3e45e2e3682e42d8ee4159ed9e7d1c0f4926d73249c98578",
+          "bytes": 28450
+        },
+        "diagnosticTerminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\browser-diagnostic-root-a1\\terminal.json",
+          "sha256": "f5a1a5b8d5ee257deadb4222323d364c4000eda9ed43be41077a20f0031606c0",
+          "bytes": 292
+        }
+      },
+      "originalRoot": {
+        "pid": 21388,
+        "exitCode": 1,
+        "status": "NATURAL_FAIL_RETAINED"
+      },
+      "diagnosticRoot": {
+        "pid": 18024,
+        "exitCode": 0,
+        "status": "DIAGNOSTIC_CAPTURED_NOT_QA"
+      },
+      "qualification": "Closed details paragraphs had layout rects while checkVisibility was false and details-content was hidden; rect counts remain measurements; all original semantic thresholds retained"
+    },
+    "limitations": {
+      "simulatedChildDisplay": true,
+      "nativeAdmission": false,
+      "actualBoundaryMounted": false,
+      "appGlobeBookyRendered": false,
+      "noticeAndOriginalPanelCss": true,
+      "font200": "NOTICE_FONT_ONLY_EQUIVALENT_REFLOW; not browser zoom or OS Dynamic Type",
+      "screenReader": "NOT_RUN",
+      "humanReadabilityRuEn": "PENDING",
+      "legalTerritory": "PENDING",
+      "installedNative": "NOT_RUN",
+      "screenshotsHumanReviewed": false,
+      "criteriaClosed": false,
+      "productionWrites": 0,
+      "oldExportTestsRepeated": false,
+      "standardAppBuild": false
+    },
+    "rootTechnicalReview": "PASS_LOCAL_UI_SCOPE_ONLY"
+  },
+  "currentStandardArtifacts": {
+    "sourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+    "rootPid": 23236,
+    "rootNaturalExitCode": 0,
+    "compiled": [
+      {
+        "mode": "pwa",
+        "actualPid": 27860,
+        "exitCode": 0,
+        "naturalCloseObserved": true,
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\pwa\\terminal.json",
+          "sha256": "80ed3e9a582d0f44ad8658f0a7de9c71acef5d13cf2a65d9c6eab935b4a90ace",
+          "bytes": 3244
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\preparation.json",
+          "sha256": "b059eba047010ed192a6e7a996b410baf5190fbd2f47ef430ea7c69a8c8fdbbf",
+          "bytes": 312761
+        },
+        "web": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\pwa-bundle",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\pwa-bundle\\artifact.json",
+            "sha256": "6a95cd44893032d728dbc0d7ab44d72a11717b831cc1e3b88c94d419b4b5ddec",
+            "bytes": 429417
+          },
+          "artifactSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "preparationSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "buildId": "44eae19dce8e9c0d0d7a23810bc48a5790e691c6dbb7263ea6902a62fa0177dd",
+          "inventoryRows": 1425,
+          "inventorySha256": "7e5b3438029ff0dec51891f7b0f4fbb3ee1032f8d56f541745bdeaffddd3645c",
+          "sourceInputRows": 1176,
+          "sourceInputsSha256": "08e29b7bf813e81076ad26bdfba13fe33d716c6fb377c4aeb36e1bafffd2bce2",
+          "qualification": "Original standard build/audit/retainBundle already checked web bytes; wrapper reads retained metadata only"
+        },
+        "binary": null,
+        "mainAPK": null,
+        "testAPK": null,
+        "instrumentationCompiled": null,
+        "qualification": "Original standard SHA; no binary/web rehash; compiled, not installed"
+      },
+      {
+        "mode": "android",
+        "actualPid": 17196,
+        "exitCode": 0,
+        "naturalCloseObserved": true,
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\android\\terminal.json",
+          "sha256": "6ada2219aab816fa81bc70e3b6fe3f0301e1b48dfc382dad4d41c14eef6fc39a",
+          "bytes": 3276
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\preparation.json",
+          "sha256": "bea47eab461dbda8b104870a52f52b1b5eabd7af95c0af6ba4c87d635d8b30ba",
+          "bytes": 326813
+        },
+        "web": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\native-bundle",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\native-bundle\\artifact.json",
+            "sha256": "ee26c1858600d6fe9a3256f0a3b05d4c11ee6ff55555c2e6cf527e513a7995d7",
+            "bytes": 728664
+          },
+          "artifactSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "preparationSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "buildId": "c41e7408052ab51948338d9eedc09dadd17af46bb90d45c891d36136dbe53892",
+          "inventoryRows": 1420,
+          "inventorySha256": "959ac63e4706b05a8fec9028b60abb672fc65195cf075b5a68c69be13f4167ce",
+          "sourceInputRows": 1180,
+          "sourceInputsSha256": "7c2dfd651da3f29e71f08aea25d4134e97fd695aa272f34c058d56a1d691e642",
+          "qualification": "Original standard build/audit/retainBundle already checked web bytes; wrapper reads retained metadata only"
+        },
+        "binary": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\binary.json",
+          "sha256": "c754325861cc3497e14533eca4e9b78f67286deb6f116741cf48b3f2b7ce0651",
+          "bytes": 213077
+        },
+        "mainAPK": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\app-dev-debug.apk",
+          "sha256": "afa7d80ce6974bf8937e9816f47af01edd05e2f5cd88fd7f815102cb72d72c78",
+          "bytes": 70775044,
+          "shaQualification": "Original actual preparation SHA; wrapper validates path/size, no duplicate web/APK rehash"
+        },
+        "testAPK": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\app-dev-debug-androidTest.apk",
+          "sha256": "dfccd669ffa69b921eaf32bc2a3ed65806b39155bf207d9dba7341e45f509e93",
+          "bytes": 823070,
+          "shaQualification": "Original actual preparation SHA; wrapper validates path/size, no duplicate web/APK rehash"
+        },
+        "instrumentationCompiled": true,
+        "qualification": "Original standard SHA; no binary/web rehash; compiled, not installed"
+      }
+    ],
+    "installed": false,
+    "store": false,
+    "releaseReady": false
+  },
+  "priorExport": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\parent-profile-export-20261008\\result.json",
+    "sha256": "f29a4780bd744a05fd0074f4af09d86bc8ff6d94fc08bb4d5e227afe9a9e5000",
+    "bytes": 28176
+  },
+  "packet": {
+    "receipt": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\booky-cuffs-final-bounded-packet-receipt-a2.json",
+      "sha256": "042aa5cf8d032a6ec71acaf4b6ba9c4c519d87b9a157754dfdb8d3fab609832e",
+      "bytes": 13222
+    },
+    "sourceCommit": "d03997b8bb1021f19141c897b3f539bf33a88562",
+    "reviewedHead": "e97b5d16c24d7df1479e895a73547f6bf0458cfa",
+    "sourceFingerprint": "7c1e95367f6c9b43396ce3efbe7af8afa584c0f9f7e516b62904c20866aecb25",
+    "actualRootPid": 28400,
+    "naturalTermination": true,
+    "exitCode": 0,
+    "rootLaunch": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\root-owned-cuffs-packet-recovery-a2\\launch.json",
+      "sha256": "a0ff31baab04fe6dd158aed7e4b05e15830819f1ee1222672170c74eaf30c55d",
+      "bytes": 1040
+    },
+    "rootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\root-owned-cuffs-packet-recovery-a2\\terminal.json",
+      "sha256": "0c83ad4cd1edd4279b2b8203940b426543de5469911be745cd06d1c76d4aa941",
+      "bytes": 292
+    },
+    "archive": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\lp-v12-booky-cuffs-bounded-e97b5d16-a2.zip",
+      "sha256": "03e8e08e3af89b9ba06bafb646cfcc04fd92487420507ac20876782c2bcbac45",
+      "bytes": 756501526,
+      "compression": "stored",
+      "library": "fflate@0.8.3",
+      "archivedEntries": {
+        "scope": "Exact ordinary stored ZIP central/local metadata, entry sizes, nonoverlapping complete local coverage, and SHA256 of every archived entry against the planned packet inventory; no extraction to disk.",
+        "centralDirectoryVerified": true,
+        "entrySha256Verified": true,
+        "filesVerified": 10305,
+        "rawBytesVerified": 753724488,
+        "zip64": false,
+        "crcVerification": "NOT_RUN"
+      }
+    },
+    "manifest": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\lp-v12-booky-cuffs-bounded-e97b5d16-a2\\PACKET_MANIFEST.json",
+      "sha256": "859401d4b0a7e9f7a3a02e3558f87e197fdf3c2d80d60acbe5eddbb5a3087274",
+      "bytes": 2329356
+    },
+    "archiveRehashedByCheckpoint": false,
+    "globalHistoricalProofCoverage": false,
+    "rawProofCoverageStatus": "PARTIAL_RAW_PROOF_COVERAGE",
+    "crc": "NOT_RUN",
+    "extraction": "NOT_RUN",
+    "restore": "NOT_RUN",
+    "rebuild": "NOT_RUN",
+    "baseBundleReadOrCopied": false,
+    "originalFailuresPreserved": [
+      {
+        "actualPid": 4756,
+        "exitCode": 1,
+        "qualification": "original Git empty-bundle refusal"
+      },
+      {
+        "actualPid": 21864,
+        "exitCode": 1,
+        "qualification": "recovery-a1 prewrite budget refusal"
+      }
+    ],
+    "currentS16Packet": false,
+    "releaseReady": false
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsOrigin": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-journey-work-20261005\\astra-whole-child-journey-closure-a1.json",
+    "sha256": "9ec91cb712b3bec8c877fbd471b9277fa81755994dd6e1d1bb50b57857ce7761",
+    "bytes": 247218
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "NOT_RECHECKED; inherited exact old source/time/statuses; current local QA does not close these conditions",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "newNoticeReviews": {
+    "humanReadabilityRuEn": "PENDING",
+    "legalTerritory": "PENDING"
+  },
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "criterionMapping": [],
+  "formalStatusChanges": 0,
+  "booky": {
+    "rawOwnersUnchanged": true,
+    "parentReportedScopedReview": "Ankle rings fitted; four digits and opposing thumb per hand; no scoped defect",
+    "fullPortraitApproval": false
+  },
+  "nativeFixtures": {
+    "authored": 13,
+    "execution": "AUTHORED_NOT_RUN",
+    "instrumentationCompiled": true
+  },
+  "swift": "NOT_RUN",
+  "installedOSAcceptance": "NOT_VERIFIED",
+  "originalSixDependentTasks": "UNCHANGED_BY_RAW_TAILS_AND_DEEP_STATE",
+  "nextAction": "Continue original S16.BIL-009: freeze the isolated proposal, independent review/root admission before integration. Connect parent lock/unlock via expand-access-settings Gate, strict boolean/legacy/draft native readback and bridge/state controls. NativeChildSceneHost follows context.locale; unlocked switching needs canonical native locale transition, no UI-only flag/fake context/admission/EMPTY_DENY relaxation. Only new affected checks; completed privacy/Booky/export90/nativeJava/App/offline/build/packet evidence must not repeat. Preserve six dependent tasks, all S03/S16 criteria, four old conditions NOT_RECHECKED, PSP unselected, seven owner actions and five human reviews; new notice readability/legal pending. Native13/Swift/installed OS unverified. No unchanged seventh AVD, report-only D stage, remote/push/merge/deploy/store.",
+  "artAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "gitMutations": 0
+}
