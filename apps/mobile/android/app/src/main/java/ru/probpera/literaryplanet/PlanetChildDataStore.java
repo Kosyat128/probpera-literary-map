@@ -624,6 +624,95 @@ final class PlanetChildDataStore {
     }
     /** Actual original reader already holds Vault. Inspection has no lease,
      * package scope or key birth and cannot adopt an unknown empty namespace. */
+    /** One read of the actual encrypted store under Vault -> DataStore locks.
+     * This permission is native original-Gate-owned; no compiled content/right
+     * permission is created. Values, scopes, filenames and keys never leave. */
+    static byte[] sdkParentExport(PlanetChildVault.LocalV2ExportReadPermit permit) throws Exception {
+        permit.check(); PlanetChildDataStore store=new PlanetChildDataStore(permit.context());
+        return store.locked(directory->{
+            permit.check();store.existingRecord(directory);store.noPendingOperations(directory);
+            byte[] plain=store.knownPlain(directory),claim=null,before=null,after=null,result=null;boolean handed=false;
+            try {
+                PlanetChildVault.LocalV2KnownBirth birth=permit.knownBirth(store.identity,plain);
+                claim=store.boundedRegular(store.birthMarker(directory),4096);require(digest(claim).equals(birth.claimChecksum));
+                try(State state=store.read(directory)) {
+                    require(state.scope==null&&state.pendingMigration==null);
+                    Map<String,String> profiles=permit.profiles();
+                    if(state.admissionBinding==null)knownUnboundOrigin(state,birth.profileId,birth.nonce,birth.contentBinding,birth.emptyChecksum,profiles);
+                    else require(state.admissionBinding.equals(permit.binding())&&sealBindings(state).equals(profiles));
+                    before=encode(state);Map<String,Object> personal=parentExportProjection(state,permit.profileId());
+                    result=permit.encode(personal);permit.check();
+                    try(State readback=store.read(directory)){after=encode(readback);require(MessageDigest.isEqual(before,after));}
+                    permit.check();handed=true;return result;
+                }
+            } finally {Arrays.fill(plain,(byte)0);if(claim!=null)Arrays.fill(claim,(byte)0);if(before!=null)Arrays.fill(before,(byte)0);if(after!=null)Arrays.fill(after,(byte)0);if(!handed&&result!=null)Arrays.fill(result,(byte)0);}
+        });
+    }
+    private static Map<String,Object> exportRow(Object... fields) {
+        Map<String,Object> row=new LinkedHashMap<>();for(int i=0;i<fields.length;i+=2)row.put((String)fields[i],fields[i+1]);return row;
+    }
+    private static Map<String,Object> exportReference(JSONObject ref)throws Exception {
+        reference(ref);return exportRow("kind",text(ref.get("kind")),"id",text(ref.get("id")),"contentChecksum",text(ref.get("contentChecksum")));
+    }
+    /** Deliberate allow-list: cached/licensed payloads and route snapshots are
+     * not copied. Native scopes, boot/attempt state and sibling identities do
+     * not occur in this model. Empty data is allowed only in a decoded store. */
+    private static Map<String,Object> parentExportProjection(State state,String profile)throws Exception {
+        require(identifier(profile));validateSeals(state);validateCollections(state);validateAppearance(state);validateJourney(state);validatePassport(state);validateDownloads(state);
+        Map<String,Object> collections=new LinkedHashMap<>();
+        for(Purpose purpose:new Purpose[]{Purpose.cache,Purpose.history,Purpose.offline,Purpose.search}){
+            List<Object> refs=new ArrayList<>();long revision=state.collectionRevisions.getOrDefault(profile+"\n"+purpose.name(),0L);
+            for(Map.Entry<String,Stored> item:state.entries.entrySet()){
+                String[] parts=item.getKey().split("\n",-1);require(parts.length==2);if(!purpose.name().equals(parts[0]))continue;
+                Scope scope=keyScope(purpose,parts[1]);if(!profile.equals(scope.profileId))continue;
+                envelope(purpose,parts[1],scope,item.getValue().value);
+                JSONObject row=new JSONObject(utf8(item.getValue().value));
+                if(purpose==Purpose.history||purpose==Purpose.search){JSONArray rows=row.getJSONArray("references");for(int i=0;i<rows.length();i++)refs.add(exportReference(rows.getJSONObject(i)));if(purpose==Purpose.search)revision=item.getValue().revision;}
+                else refs.add(exportReference(row.getJSONArray("entries").getJSONObject(0).getJSONObject("reference")));
+            }
+            require(refs.size()<=(purpose==Purpose.history?100:purpose==Purpose.search?MAX_SLOTS:64));
+            collections.put(purpose==Purpose.cache?"favorites":purpose==Purpose.history?"recent":purpose==Purpose.offline?"offline":"search",exportRow("revision",revision,"references",refs));
+        }
+        AppearanceEntry appearance=state.appearances.get(profile);JourneyEntry journeys=state.journeys.get(profile);PassportEntry passport=state.passports.get(profile);
+        List<Object> progress=new ArrayList<>();if(journeys!=null)for(PlanetChildJourney.Progress saved:journeys.values.values())progress.add(saved.dto());
+        List<Object> countries=new ArrayList<>(),credits=new ArrayList<>(),completed=new ArrayList<>(),awards=new ArrayList<>(),routes=new ArrayList<>();
+        if(passport!=null){PlanetChildPassport.Ledger ledger=passport.ledger;countries.addAll(ledger.countries);
+            for(PlanetChildPassport.Credit c:ledger.credits)credits.add(exportRow("journeyId",c.journeyId,"journeyVersion",c.journeyVersion,"contentVersion",c.contentVersion,"nodeId",c.nodeId,"kind",c.kind,"entityId",c.entityId));
+            for(PlanetChildPassport.CompletedJourney c:ledger.completedJourneys)completed.add(exportRow("journeyId",c.journeyId,"journeyVersion",c.journeyVersion,"contentVersion",c.contentVersion,"nodeIds",c.nodeIds));
+            for(PlanetChildPassport.Award a:ledger.awards)awards.add(exportRow("programId",a.programId,"programVersion",a.programVersion,"badgeId",a.badgeId,"ruleVersion",a.ruleVersion,"journeyId",a.journeyId,"journeyVersion",a.journeyVersion,"contentVersion",a.contentVersion,"trigger",a.trigger,"nodeIds",a.nodeIds));
+            for(PlanetChildPassport.Route route:ledger.routes)routes.add(exportRow("journeyId",route.journeyId,"journeyVersion",route.journeyVersion,"contentVersion",route.contentVersion,"locale",route.locale,"bytes",(long)route.byteLength(),"sha256",route.snapshotChecksum));
+        }
+        List<Object> objects=new ArrayList<>(),stages=new ArrayList<>();
+        for(PlanetChildRouteDownload.ObjectRef ref:state.downloads.objects.values())if(profile.equals(ref.profileId))objects.add(exportRow("sha256",ref.checksum,"mime",ref.mime,"bytes",(long)ref.bytes));
+        for(PlanetChildRouteDownload.Stage stage:state.downloads.stages.values())if(profile.equals(stage.profileId))stages.add(exportRow("journeyId",stage.route.journeyId,"locale",stage.route.locale,"status",stage.ready()?"saved":"partial","completedMediaItems",(long)stage.completed,"totalMediaItems",(long)stage.objects().size(),"reusedMediaItems",(long)stage.reused));
+        return exportRow("collections",collections,"appearance",exportRow("revision",appearance==null?0L:appearance.revision,"selection",appearance==null||appearance.selection==null?null:appearance.selection.dto()),
+            "journeys",exportRow("revision",journeys==null?0L:journeys.revision,"activeJourneyId",journeys==null?null:journeys.activeJourneyId,"progress",progress),
+            "passport",exportRow("revision",passport==null?0L:passport.revision,"countries",countries,"credits",credits,"completedJourneys",completed,"awards",awards,"routes",routes),
+            "downloads",exportRow("objects",objects,"routes",stages));
+    }
+    /** Explicit synthetic codec fixture. It returns project-authored bytes only;
+     * no read permit, native Gate, OS saved receipt or runtime PASS is minted. */
+    private static Map<String,Object> fixtureParentExportProfile(){return exportRow("id","fixture-reader-one","label","Читатель","exactAge",9L,"ageBand","9-11","locale","ru","ageConfirmedAt","2026-10-01T00:00:00.000Z","readingLevel","plain","allowedTopics",null,"blockedTopics",Collections.emptyList(),"soundEnabled",false,"motion","calm","narrationEnabled",false,"localeLocked",false);}
+    static byte[] fixtureParentExportBytes(Context context,boolean populated)throws Exception {
+        fixtureAppearanceContext(context);try(State state=populated?fixturePassportState():new State()){
+            state.nonce="11111111111111111111111111111111";
+            if(populated){fixtureRouteFacts(context,state,"fixture-reader-one");fixtureRouteFacts(context,state,"fixture-reader-two");Scope scope=state.seals.get("fixture-reader-one").scope;String key=scope.itemKey(Purpose.cache,"favorite","favorite-one");Stored saved=state.entries.get(Purpose.cache.name()+"\n"+key);
+                JSONObject envelope=new JSONObject(utf8(saved.value));envelope.getJSONArray("entries").getJSONObject(0).getJSONObject("payload").put("text","LICENSED-BODY-SENTINEL");Arrays.fill(saved.value,(byte)0);state.entries.put(Purpose.cache.name()+"\n"+key,new Stored(saved.revision,envelope.toString().getBytes(StandardCharsets.UTF_8)));}
+            Map<String,Object> profile=fixtureParentExportProfile();
+            byte[] before=encode(state);try{byte[] bytes=PlanetChildVault.parentExportCodec(profile,parentExportProjection(state,"fixture-reader-one"));byte[] after=encode(state);try{require(MessageDigest.isEqual(before,after));return bytes;}finally{Arrays.fill(after,(byte)0);}}finally{Arrays.fill(before,(byte)0);}
+        }
+    }
+    static boolean fixtureParentExportScenario(Context context,String scenario)throws Exception {
+        fixtureAppearanceContext(context);require(Arrays.asList("isolation","revision-digest","corrupt","no-secret-profile").contains(scenario));
+        try(State state=fixturePassportState()){
+            byte[] before=PlanetChildVault.parentExportCodec(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"));
+            try{if("isolation".equals(scenario)){PassportEntry sibling=state.passports.get("fixture-reader-two");state.passports.put("fixture-reader-two",new PassportEntry(sibling.revision+1,new PlanetChildPassport.Ledger(Arrays.asList("sibling-secret-country"),Collections.emptyList())));state.appearances.put("fixture-reader-two",new AppearanceEntry(99,fixtureAppearanceSelection("two")));byte[] after=PlanetChildVault.parentExportCodec(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"));try{require(MessageDigest.isEqual(before,after)&&!utf8(after).contains("sibling-secret")&&!utf8(after).contains("fixture-reader-two"));return true;}finally{Arrays.fill(after,(byte)0);}}
+                if("revision-digest".equals(scenario)){Map<String,Object> first=parentExportProjection(state,"fixture-reader-one");state.collectionRevisions.put("fixture-reader-one\ncache",6L);Map<String,Object> second=parentExportProjection(state,"fixture-reader-one");byte[] a=PlanetChildVault.parentExportCodec(fixtureParentExportProfile(),first),b=PlanetChildVault.parentExportCodec(fixtureParentExportProfile(),second);try{require(!digest(a).equals(digest(b)));return true;}finally{Arrays.fill(a,(byte)0);Arrays.fill(b,(byte)0);}}
+                if("corrupt".equals(scenario)){byte[] actual=encode(state),broken=Arrays.copyOf(actual,actual.length+1);try{boolean denied=false;try(State unexpected=decode(broken)){}catch(Exception failure){denied=true;}require(denied);return true;}finally{Arrays.fill(actual,(byte)0);Arrays.fill(broken,(byte)0);}}
+                Map<String,Object> invalid=fixtureParentExportProfile();invalid.put("verifier","SECRET");boolean denied=false;try{byte[] unexpected=PlanetChildVault.parentExportCodec(invalid,parentExportProjection(state,"fixture-reader-one"));Arrays.fill(unexpected,(byte)0);}catch(Exception failure){denied=true;}require(denied);return true;
+            }finally{Arrays.fill(before,(byte)0);}
+        }
+    }
     static void sdkInspectOriginal(PlanetChildVault.LocalV2SDKReadPermit permit) throws Exception {
         permit.check();Context context=permit.context();if(permit.originalEmptyRegistry()){
             File directory=new File(context.getNoBackupFilesDir().getCanonicalFile(),"literary-planet-child-data-v1");require(directory.getAbsoluteFile().equals(directory.getCanonicalFile()));boolean absent=false;try{Os.lstat(directory.getPath());}catch(android.system.ErrnoException missing){require(missing.errno==OsConstants.ENOENT);absent=true;}require(absent);KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);require(!keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));permit.check();return;

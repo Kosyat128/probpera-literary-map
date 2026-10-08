@@ -1,4 +1,5 @@
 import Foundation
+import CryptoKit
 import Security
 import XCTest
 @testable import App
@@ -158,5 +159,49 @@ extension PlanetChildDataStoreRuntimeTests {
     func testLocalV2AppCollectionPendingDeniesUnknownReopen() throws {
         let id=try bootstrapRunId("c1"),files=try bootstrapFiles(id),store=try PlanetChildDataStore.synthetic(runId:id);try store.close();let original=try Data(contentsOf:files.record),pending=files.directory.appendingPathComponent("local-v2-collection.pending"),bytes=Data("unknown-original-command-retirement-retained".utf8);try bytes.write(to:pending,options:.withoutOverwriting)
         XCTAssertThrowsError(try PlanetChildDataStore.fixtureLocalV2ExistingOnly(runId:id));XCTAssertEqual(try Data(contentsOf:pending),bytes);XCTAssertEqual(try Data(contentsOf:files.record),original)
+    }
+}
+
+/** Authored local synthetic codec/retirement tests, never installed OS acceptance. */
+extension PlanetChildDataStoreRuntimeTests {
+    func testParentExportEmptySelectedSnapshotHasSharedAndroidGolden() throws {
+        var bytes=try PlanetChildDataStore.fixtureParentExportBytes(populated:false);defer { bytes.resetBytes(in:0..<bytes.count) }
+        let golden=#"{"appearance":{"revision":0,"selection":null},"collections":{"favorites":{"references":[],"revision":0},"offline":{"references":[],"revision":0},"recent":{"references":[],"revision":0},"search":{"references":[],"revision":0}},"downloads":{"objects":[],"routes":[]},"format":"literary-planet-child-personal-data","journeys":{"activeJourneyId":null,"progress":[],"revision":0},"passport":{"awards":[],"completedJourneys":[],"countries":[],"credits":[],"revision":0,"routes":[]},"profile":{"ageBand":"9-11","ageConfirmedAt":"2026-10-01T00:00:00.000Z","allowedTopics":null,"blockedTopics":[],"exactAge":9,"id":"fixture-reader-one","label":"Читатель","locale":"ru","localeLocked":false,"motion":"calm","narrationEnabled":false,"readingLevel":"plain","soundEnabled":false},"schemaVersion":1}"#;XCTAssertEqual(String(decoding:bytes,as:UTF8.self),golden);XCTAssertEqual(bytes.count,793)
+        XCTAssertEqual(SHA256.hash(data:bytes).map { String(format:"%02x",$0) }.joined(),"d33055e464252f3ac33b17592291bec577872139a194e3e776ce25642de20331")
+    }
+    func testParentExportProjectionIncludesSemanticsAndExcludesSiblingAndLicensedBody() throws {
+        var bytes=try PlanetChildDataStore.fixtureParentExportBytes(populated:true),again=try PlanetChildDataStore.fixtureParentExportBytes(populated:true);defer { bytes.resetBytes(in:0..<bytes.count);again.resetBytes(in:0..<again.count) };XCTAssertEqual(bytes,again)
+        let root=try JSONSerialization.jsonObject(with:bytes) as! [String:Any],collections=root["collections"] as! [String:Any],favorites=collections["favorites"] as! [String:Any];XCTAssertEqual(root.count,8);XCTAssertEqual((root["profile"] as! [String:Any])["id"] as? String,"fixture-reader-one");XCTAssertEqual(favorites["revision"] as? Int,5);XCTAssertEqual((favorites["references"] as! [[String:Any]])[0]["id"] as? String,"favorite-one")
+        XCTAssertEqual((root["appearance"] as! [String:Any])["revision"] as? Int,5);XCTAssertEqual((root["journeys"] as! [String:Any])["revision"] as? Int,7);let passport=root["passport"] as! [String:Any];XCTAssertEqual(passport["revision"] as? Int,3);XCTAssertEqual((passport["credits"] as! [Any]).count,2);XCTAssertEqual((passport["completedJourneys"] as! [Any]).count,1);let route=(passport["routes"] as! [[String:Any]])[0];XCTAssertEqual(route.count,6);XCTAssertGreaterThan(route["bytes"] as! Int,0);XCTAssertEqual((route["sha256"] as! String).count,64);XCTAssertNil(route["snapshot"]);XCTAssertNil(route["url"])
+        let text=String(decoding:bytes,as:UTF8.self);for forbidden in ["fixture-reader-two","LICENSED-BODY-SENTINEL","\"pin\"","\"verifier\"","\"salt\"","\"kdf\"","\"attemptJournal\"","\"contextToken\"","http://","https://","\"payload\""] { XCTAssertFalse(text.contains(forbidden),forbidden) }
+    }
+    func testParentExportSiblingWritesKeepDigestButSelectedRevisionChangesIt() throws {
+        XCTAssertTrue(try PlanetChildDataStore.fixtureParentExportScenario("isolation"));XCTAssertTrue(try PlanetChildDataStore.fixtureParentExportScenario("revision-digest"))
+    }
+    func testParentExportCorruptSnapshotAndProfileSecretsHaveNoEmptyFallback() throws {
+        XCTAssertTrue(try PlanetChildDataStore.fixtureParentExportScenario("corrupt"));XCTAssertTrue(try PlanetChildDataStore.fixtureParentExportScenario("no-secret-profile"))
+    }
+    func testParentExportReadbackRejectsPartialExtraChangedCancelledAndRetiredOriginal() throws {
+        for scenario in ["complete","partial","extra","digest","cancel","zero-read","expiry-replay","readonly-action"] { XCTAssertTrue(try PlanetChildParentExportCodec.fixtureReadback(scenario),scenario) }
+    }
+    func testParentExportWrongPINRetainsNativeAttemptDebtWithoutPermission() {
+        let joined=expectation(description:"synthetic original mismatch terminal joined")
+        DispatchQueue.global().async { defer { joined.fulfill() };do { let value=try PlanetChildLocalPinOperationRuntimeFixture.run(.mismatch);XCTAssertTrue(value.passed);XCTAssertFalse(value.matched);XCTAssertTrue(value.replyKnown);XCTAssertEqual(value.count,1);XCTAssertFalse(value.pending) } catch { XCTFail(String(describing:error)) } };wait(for:[joined],timeout:10)
+    }
+    func testParentExportCrashResidueRetiresFixedFileAndDeniesUnknownSiblingFile() {
+        let joined=expectation(description:"native fixed-file residue cleanup joined")
+        DispatchQueue.global().async { defer { joined.fulfill() };do {
+            let root=FileManager.default.temporaryDirectory.appendingPathComponent("synthetic-parent-export-"+UUID().uuidString,isDirectory:true);try FileManager.default.createDirectory(at:root,withIntermediateDirectories:false);defer { try? FileManager.default.removeItem(at:root) }
+            let owned=root.appendingPathComponent("literary-planet-child-export-"+String(repeating:"a",count:32),isDirectory:true);try FileManager.default.createDirectory(at:owned,withIntermediateDirectories:false);try Data("synthetic-private-bytes".utf8).write(to:owned.appendingPathComponent("child-personal-data.json"));try PlanetChildParentExportFiles.cleanResidue(root);XCTAssertFalse(FileManager.default.fileExists(atPath:owned.path))
+            try FileManager.default.createDirectory(at:owned,withIntermediateDirectories:false);let other=owned.appendingPathComponent("unexpected-file");try Data("preserve-unknown".utf8).write(to:other);XCTAssertThrowsError(try PlanetChildParentExportFiles.cleanResidue(root));XCTAssertEqual(try Data(contentsOf:other),Data("preserve-unknown".utf8))
+        } catch { XCTFail(String(describing:error)) } };wait(for:[joined],timeout:10)
+    }
+    func testParentExportCrashResidueExcessIsNotPartiallySwept() {
+        let joined=expectation(description:"bounded residue refusal joined")
+        DispatchQueue.global().async { defer { joined.fulfill() };do {
+            let root=FileManager.default.temporaryDirectory.appendingPathComponent("synthetic-parent-export-bound-"+UUID().uuidString,isDirectory:true);try FileManager.default.createDirectory(at:root,withIntermediateDirectories:false);defer { try? FileManager.default.removeItem(at:root) }
+            for index in 0..<33 { let name="literary-planet-child-export-"+String(format:"%032x",index);try FileManager.default.createDirectory(at:root.appendingPathComponent(name,isDirectory:true),withIntermediateDirectories:false) }
+            XCTAssertThrowsError(try PlanetChildParentExportFiles.cleanResidue(root));XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath:root.path).count,33)
+        } catch { XCTFail(String(describing:error)) } };wait(for:[joined],timeout:10)
     }
 }

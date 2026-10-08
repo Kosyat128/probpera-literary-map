@@ -3736,13 +3736,14 @@ final class PlanetChildVault {
                 else require(operation.comparison!=null&&operation.comparison.consumed&&!operation.comparison.closed&&operation.comparison.outcome==outcome);}
             this.operation=operation;gate=operation.gate;kind=operation.kind;this.outcome=outcome;this.checksum=checksum;
         }
-        private PinVerificationOutcome consume(LocalV2GateRequest original) throws Exception {
+        private PinVerificationOutcome consume(LocalV2GateRequest original) throws Exception {return consumeTerminal(original,false);}
+        private PinVerificationOutcome consumeTerminal(LocalV2GateRequest original,boolean exportMismatch) throws Exception {
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
             synchronized(operation.writer){require(!disposed&&!consumed&&settled&&operation.reply==this&&operation.finished
                 &&operation.knownSettlement&&!operation.closedRevoked&&operation.request.retired&&operation.request.detached&&!operation.request.sealed
                 &&operation.worker!=null&&!operation.worker.isAlive()&&operation.cancelWorker==null
                 &&operation.kind==LocalV2PinKind.verify&&gate==original&&original!=null&&operation.originalChallenge==original.originalHostChallenge
-                &&operation.finalAcknowledged&&operation.platformCompared&&outcome==PinVerificationOutcome.match);
+                &&operation.finalAcknowledged&&operation.platformCompared&&(exportMismatch?"export-child-data".equals(original.action)&&outcome==PinVerificationOutcome.mismatch:outcome==PinVerificationOutcome.match));
                 operation.request.processClock.closedReadback(operation.request.processLease,checksum);
                 consumed=true;}
             // Spend before any fresh read; failure/uncertainty cannot retry the
@@ -4125,7 +4126,7 @@ final class PlanetChildVault {
         private final byte[] target;private final android.view.ViewParent[] ancestry;
         private final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
         private volatile LocalV2GateInvocation invocation;private volatile LocalV2Request request;private volatile LocalV2PinOperation operation;
-        private volatile boolean closed,revoked;private long generation;private Thread worker;private long sdkDeadline;private volatile Throwable sdkFailure;private volatile LocalV2GateMutation mutation;private Thread retirement;
+        private volatile boolean closed,revoked;private long generation;private Thread worker;private long sdkDeadline;private volatile Throwable sdkFailure;private volatile LocalV2GateMutation mutation;private volatile LocalV2ExportRead exportRead;private Thread retirement;
         private android.app.Application.ActivityLifecycleCallbacks lifecycle;private android.content.BroadcastReceiver screen;
         private androidx.activity.OnBackPressedCallback back;private android.view.View.OnAttachStateChangeListener attachment;
         private android.view.ViewTreeObserver.OnWindowFocusChangeListener focus;private android.view.ViewTreeObserver.OnGlobalLayoutListener layout;private Runnable expiry;
@@ -4200,7 +4201,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 operation=writer.verificationOperation(request,gate,scope.locale);try(LocalSnapshotV2 snapshot=LocalSnapshotV2.decode(operation.original,policy)){scope.initial(snapshot);}
                 onMain(()->{current(false);return null;});operation.start(reply->{original.live(SystemClock.elapsedRealtime());require(reply!=null&&reply.operation==operation&&reply.gate==gate);delivered[0]=reply;});
                 operation.worker.join();operation.joinCancel();LocalV2PinReply reply=delivered[0];require(reply!=null);original.live(SystemClock.elapsedRealtime());
-                operation.settle(reply,PinReplyDelivery.known);retired=true;original.live(SystemClock.elapsedRealtime());require(reply.consume(gate)==PinVerificationOutcome.match);
+                operation.settle(reply,PinReplyDelivery.known);retired=true;original.live(SystemClock.elapsedRealtime());boolean exportMismatch="export-child-data".equals(original.action)&&reply.outcome==PinVerificationOutcome.mismatch;require(reply.consumeTerminal(gate,exportMismatch)==(exportMismatch?PinVerificationOutcome.mismatch:PinVerificationOutcome.match));
                 // The final exact canonical read remains scoped to the same
                 // native operation after all original workers/recipients join.
                 try{writer.vault.locked(directory->{original.live(SystemClock.elapsedRealtime());writer.completeRecord(directory);byte[] bytes=writer.vault.readExact(directory);
@@ -4209,12 +4210,13 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 catch(Throwable failure){if(!(failure instanceof PinKnownRefusal))synchronized(request.processClock){
                         if(request.processClock.active==null&&request.processClock.pending==null&&request.processClock.known!=null&&request.processClock.known.checksum.equals(reply.checksum))request.processClock.invalidateLocked();}
                     throw failure;}
+                if(exportMismatch)throw new PinKnownRefusal();
                 onMain(()->{current(false);require(invocation==original&&operation.gate==gate);request.processClock.closedReadback(request.processLease,reply.checksum);
                     byte[] payload=original.transfer(reply,SystemClock.elapsedRealtime());
-                    try{if(LocalV2CanonicalTransition.handles(original.action))mutation=new LocalV2GateMutation(this,original,reply,payload);else dispatch.perform(original.action,payload);}
+                    try{if(LocalV2CanonicalTransition.handles(original.action))mutation=new LocalV2GateMutation(this,original,reply,payload);else if("export-child-data".equals(original.action))exportRead=new LocalV2ExportRead(this,original,reply,payload);else dispatch.perform(original.action,payload);}
                     finally{LocalSnapshotV2.wipe(payload);}return null;});
-                if(mutation!=null)mutation.perform();
-            }catch(Throwable failure){sdkFailure=failure;revoke();}
+                if(mutation!=null)mutation.perform();if(exportRead!=null)exportRead.perform();
+            }catch(Throwable failure){sdkFailure=failure;revoke();if(exportRead!=null)exportRead.close();}
             finally{if(request!=null&&!retired&&!request.retired){try{writer.cancel(request);if(operation!=null&&operation.worker!=null){operation.worker.join();operation.joinCancel();}
                         LocalV2PinReply reply=delivered[0];if(reply!=null&&!reply.settled)operation.settle(reply,PinReplyDelivery.uncertain);else writer.retire(request);
                     }catch(Throwable ignored){writer.unknown(request);}}
@@ -4243,6 +4245,128 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private void sdkAwait(long deadline) throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());while(worker==null&&!closed&&!revoked){require(SystemClock.elapsedRealtime()<deadline);Thread.sleep(10);}require(worker!=null);}
         private void sdkCleanupJoined() throws Exception {require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());if(worker!=null)worker.join();if(retirement!=null)retirement.join();require(closed&&(request==null||request.retired&&!request.sealed&&!request.processClock.invalid)&&writer.active==null);if(mutation!=null)require(mutation.retired&&mutation.known);}
         private void sdkJoin() throws Exception {sdkCleanupJoined();if(sdkFailure!=null){if(sdkFailure instanceof Exception)throw(Exception)sdkFailure;throw new Unavailable();}}    }
+    /** Structural serialization/readback leaves; neither mints native Gate or
+     * file permission. The exact production branches use these same leaves. */
+    static byte[] parentExportCodec(java.util.Map<String,Object> profile,java.util.Map<String,Object> personal)throws Exception {
+        byte[] profileBytes=LocalV2PackageJson.bytes(profile,false);try{LocalV2InitialProfile.profileId(profileBytes);}finally{LocalSnapshotV2.wipe(profileBytes);}
+        LocalV2PackageJson.object(personal,"collections","appearance","journeys","passport","downloads");
+        java.util.Map<String,Object> out=new java.util.LinkedHashMap<>();out.put("schemaVersion",1L);out.put("format","literary-planet-child-personal-data");out.put("profile",profile);out.putAll(personal);
+        byte[] bytes=LocalV2PackageJson.bytes(out,true);boolean handed=false;try{require(bytes.length>0&&bytes.length<=LocalV2ParentExport.MAX_BYTES);handed=true;return bytes;}finally{if(!handed)LocalSnapshotV2.wipe(bytes);}
+    }
+    private interface ParentExportCheck {void check()throws Exception;}
+    private static void parentExportReadback(java.io.InputStream in,int count,String expected,ParentExportCheck check)throws Exception {
+        require(in!=null&&count>0&&count<=LocalV2ParentExport.MAX_BYTES&&ProtectedEnvelope.hash(expected)&&check!=null);
+        MessageDigest digest=MessageDigest.getInstance("SHA-256");byte[] buffer=new byte[32768];int total=0;
+        try{for(;;){check.check();int n=in.read(buffer);if(n==-1)break;require(n>0&&total<=count-n);digest.update(buffer,0,n);total+=n;}check.check();require(total==count);byte[] actual=digest.digest();try{require(LocalV2PinOperation.hex(actual).equals(expected));}finally{LocalSnapshotV2.wipe(actual);}check.check();}
+        finally{LocalSnapshotV2.wipe(buffer);}
+    }
+    static boolean fixtureParentExportReadback(android.content.Context context,String scenario)throws Exception {
+        require(context!=null&&"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE)!=0);
+        require(Arrays.asList("complete","partial","extra","digest","cancel","zero-read","expiry-replay","readonly-action").contains(scenario));
+        if("readonly-action".equals(scenario)){require(!LocalV2CanonicalTransition.handles("export-child-data"));return true;}
+        if("expiry-replay".equals(scenario)){byte[] target="{\"profileId\":\"fixture-reader-one\"}".getBytes(StandardCharsets.UTF_8);LocalV2GateInvocation invocation=new LocalV2GateInvocation("export-child-data",target,1,100,10,10);try{boolean refused=false;try{invocation.transfer(null,101);}catch(Exception deny){refused=true;}require(refused);refused=false;try{invocation.live(102);}catch(Exception deny){refused=true;}require(refused);LocalV2GateInvocation expired=new LocalV2GateInvocation("export-child-data",target,2,100,10,10);try{refused=false;try{expired.live(110);}catch(Exception deny){refused=true;}require(refused);}finally{expired.close();}return true;}finally{invocation.close();LocalSnapshotV2.wipe(target);}}
+        byte[] body="{\"fixture\":\"readback-only\"}".getBytes(StandardCharsets.UTF_8),input=body.clone();try{
+            if("partial".equals(scenario)){LocalSnapshotV2.wipe(input);input=Arrays.copyOf(body,body.length-1);}if("extra".equals(scenario)){LocalSnapshotV2.wipe(input);input=Arrays.copyOf(body,body.length+1);}if("digest".equals(scenario))input[0]^=1;
+            final int[] fences={0};boolean refused=false;java.io.InputStream stream="zero-read".equals(scenario)?new java.io.InputStream(){public int read(){return 0;}public int read(byte[] b){return 0;}}:new java.io.ByteArrayInputStream(input);
+            try{parentExportReadback(stream,body.length,digest(body),()->{if("cancel".equals(scenario)&&++fences[0]==2)throw new PinKnownRefusal();});}catch(Exception deny){refused=true;}require(refused!=scenario.equals("complete"));return true;
+        }finally{LocalSnapshotV2.wipe(body);LocalSnapshotV2.wipe(input);}
+    }
+    /** Native read permission exists only on the original Gate worker, after
+     * its actual PIN reply is settled/consumed and exact canonical readback.
+     * It cannot write/admit content, survive retirement or cross the bridge. */
+    static final class LocalV2ExportReadPermit {
+        private final LocalV2GateHost host;private final LocalV2GateInvocation original;private final LocalV2PinReply reply;
+        private final File directory;private final Thread worker;private final byte[] expected;private final LocalV2DataContext data;
+        private final String selected;private final java.util.Map<String,Object> profile;private boolean closed;
+        private LocalV2ExportReadPermit(LocalV2GateHost host,LocalV2GateInvocation original,LocalV2PinReply reply,File directory,byte[] bytes,byte[] target)throws Exception {
+            require(Thread.currentThread()==host.worker&&host.invocation==original&&"export-child-data".equals(original.action));
+            java.util.Map<String,Object> row=LocalV2PackageJson.object(LocalV2PackageJson.read(target,4096),"profileId");selected=LocalV2PackageJson.identifier(row.get("profileId"));
+            this.host=host;this.original=original;this.reply=reply;this.directory=directory;worker=Thread.currentThread();
+            try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(bytes,host.policy)){data=new LocalV2DataContext(saved);require(data.profiles.containsKey(selected));
+                java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,MAX_BYTES)),registry=LocalV2PackageJson.object(LocalV2PackageJson.object(root.get("protectedRecord")).get("registry"));
+                java.util.Map<String,Object> chosen=null;for(Object item:LocalV2PackageJson.array(registry.get("profiles"),4)){java.util.Map<String,Object> p=LocalV2PackageJson.object(item);if(selected.equals(p.get("id")))chosen=p;}require(chosen!=null);
+                profile=new java.util.LinkedHashMap<>();for(String key:new String[]{"id","label","exactAge","ageBand","locale","ageConfirmedAt","readingLevel","allowedTopics","blockedTopics","soundEnabled","motion","narrationEnabled"}){require(chosen.containsKey(key));profile.put(key,chosen.get(key));}if(chosen.containsKey("localeLocked"))profile.put("localeLocked",chosen.get("localeLocked"));
+            }expected=bytes.clone();try{check();}catch(Throwable failure){LocalSnapshotV2.wipe(expected);profile.clear();throw failure;}
+        }
+        void check()throws Exception {
+            require(!closed&&Thread.currentThread()==worker&&worker==host.worker&&host.invocation==original&&!host.revoked&&!host.closed&&host.operation==reply.operation
+                &&reply.gate==original.original&&reply.operation.originalChallenge==original&&reply.operation.knownSettlement&&reply.settled&&reply.consumed&&!reply.disposed
+                &&reply.operation.platformCompared&&reply.operation.finalAcknowledged&&reply.outcome==PinVerificationOutcome.match&&reply.operation.request.retired&&reply.operation.request.detached);
+            original.execution(reply,SystemClock.elapsedRealtime());host.request.processClock.closedReadback(host.request.processLease,reply.checksum);
+            host.writer.completeRecord(directory);byte[] actual=host.writer.vault.readExact(directory);
+            try{require(MessageDigest.isEqual(expected,actual)&&digest(actual).equals(reply.checksum));try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(actual,host.policy)){original.scope.same(saved);require(data.binding.equals(new LocalV2DataContext(saved).binding));}}finally{LocalSnapshotV2.wipe(actual);}
+        }
+        android.content.Context context()throws Exception{check();return host.writer.vault.context;}
+        String profileId()throws Exception{check();return selected;}String binding()throws Exception{check();return data.binding;}
+        java.util.Map<String,String> profiles()throws Exception{check();return data.profiles;}
+        LocalV2KnownBirth knownBirth(String identity,byte[] plain)throws Exception{check();LocalV2KnownBirth birth=LocalV2KnownBirth.verify(host.writer.vault.context,identity,plain);require(birth.profileId==null||data.profiles.containsKey(birth.profileId));check();return birth;}
+        byte[] encode(java.util.Map<String,Object> personal)throws Exception {
+            check();LocalV2PackageJson.object(personal,"collections","appearance","journeys","passport","downloads");
+            byte[] bytes=parentExportCodec(profile,personal);boolean handed=false;try{require(bytes.length>0&&bytes.length<=LocalV2ParentExport.MAX_BYTES);check();handed=true;return bytes;}finally{if(!handed)LocalSnapshotV2.wipe(bytes);}
+        }
+        private void close(){closed=true;LocalSnapshotV2.wipe(expected);profile.clear();}
+    }
+    private static final class LocalV2ExportRead {
+        final LocalV2GateHost host;final LocalV2GateInvocation original;final LocalV2PinReply reply;private final byte[] target;private byte[] snapshot;private boolean ready,taken;
+        private LocalV2ExportRead(LocalV2GateHost host,LocalV2GateInvocation original,LocalV2PinReply reply,byte[] target){this.host=host;this.original=original;this.reply=reply;this.target=target.clone();}
+        private void perform()throws Exception {
+            try{host.onMain(()->{host.current(false);return null;});snapshot=host.writer.vault.locked(directory->{
+                host.writer.completeRecord(directory);byte[] bytes=host.writer.vault.readExact(directory);LocalV2ExportReadPermit permit=null;
+                try{permit=new LocalV2ExportReadPermit(host,original,reply,directory,bytes,target);return PlanetChildDataStore.sdkParentExport(permit);}
+                finally{if(permit!=null)permit.close();LocalSnapshotV2.wipe(bytes);}});
+                host.onMain(()->{host.current(false);original.execution(reply,SystemClock.elapsedRealtime());host.request.processClock.closedReadback(host.request.processLease,reply.checksum);ready=true;return null;});
+            }finally{LocalSnapshotV2.wipe(target);if(!ready)close();}
+        }
+        private synchronized byte[] take()throws Exception{require(ready&&!taken&&host.closed&&!host.revoked&&host.sdkFailure==null&&host.request.retired&&!host.request.sealed&&host.writer.active==null);taken=true;byte[] bytes=snapshot;snapshot=null;require(bytes!=null);return bytes;}
+        private synchronized void close(){LocalSnapshotV2.wipe(target);LocalSnapshotV2.wipe(snapshot);snapshot=null;}
+    }
+    /** Native-only one-use file custody. It starts after the read permission and
+     * original Gate have retired. Expected system-picker pause cannot reopen a
+     * child context or extend its deadline. Explicit cancellation still wins. */
+    private static final class LocalV2ParentExport implements AutoCloseable {
+        static final int MAX_BYTES=4194304;final LocalV2AppOwner owner;final PlanetChildDataTransport.V2Request request;final String profileId,sha256;final long deadline;private byte[] bytes;
+        private androidx.activity.result.ActivityResultLauncher<android.content.Intent> launcher;private final java.util.concurrent.CountDownLatch returned=new java.util.concurrent.CountDownLatch(1);
+        private volatile boolean pickerPending,cancelled,received,closed,cleanupKnown;private android.net.Uri destination;private String outcome="cancelled";private long last;
+        private LocalV2ParentExport(LocalV2AppOwner owner,PlanetChildDataTransport.V2Request request,byte[] snapshot,long deadline)throws Exception{
+            require(snapshot!=null&&snapshot.length>0&&snapshot.length<=MAX_BYTES&&"export-child-data".equals(request.action));this.owner=owner;this.request=request;this.deadline=deadline;
+            java.util.Map<String,Object> target=LocalV2PackageJson.object(request.target,"profileId");profileId=LocalV2PackageJson.identifier(target.get("profileId"));
+            java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(snapshot,MAX_BYTES),"schemaVersion","format","profile","collections","appearance","journeys","passport","downloads");
+            require(Long.valueOf(1).equals(root.get("schemaVersion"))&&"literary-planet-child-personal-data".equals(root.get("format"))&&profileId.equals(LocalV2PackageJson.object(root.get("profile")).get("id")));
+            bytes=snapshot;sha256=digest(snapshot);last=SystemClock.elapsedRealtime();current();
+        }
+        private synchronized void current()throws Exception{long now=SystemClock.elapsedRealtime();require(!closed&&!cancelled&&!owner.disposed&&!owner.sealed&&owner.activeControl==request&&now>=last&&now<deadline);last=now;}
+        private synchronized boolean ownsPicker(){return pickerPending&&!closed&&!cancelled&&owner.activeControl==request&&owner.context==null&&owner.gate==null&&owner.loader==null&&owner.reader==null;}
+        private synchronized void cancel(){cancelled=true;pickerPending=false;returned.countDown();}
+        private void receive(androidx.activity.result.ActivityResult result){
+            synchronized(this){if(closed||cancelled||received||!pickerPending)return;received=true;pickerPending=false;
+                if(result!=null&&result.getResultCode()==android.app.Activity.RESULT_OK){outcome="error";if(result.getData()!=null){android.net.Uri uri=result.getData().getData();if(uri!=null&&"content".equals(uri.getScheme()))destination=uri;}}
+                returned.countDown();}
+        }
+        private java.util.Map<String,Object> save()throws Exception{
+            final int count=bytes.length;
+            try{owner.main(()->{current();require(owner.activity.hasWindowFocus()&&owner.context==null&&owner.gate==null&&owner.loader==null&&owner.reader==null);
+                launcher=((MainActivity)owner.activity).getActivityResultRegistry().register("planet-child-export-"+request.id,new androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult(),this::receive);
+                android.content.Intent intent=new android.content.Intent(android.content.Intent.ACTION_CREATE_DOCUMENT).addCategory(android.content.Intent.CATEGORY_OPENABLE).setType("application/json").putExtra(android.content.Intent.EXTRA_TITLE,"literary-planet-child-data.json");
+                synchronized(this){current();pickerPending=true;}try{launcher.launch(intent);}catch(Throwable error){cancel();throw error;}return null;});
+                while(!returned.await(10,java.util.concurrent.TimeUnit.MILLISECONDS))current();
+                if(cancelled)return terminal(count,"cancelled");current();
+                if(destination==null)return terminal(count,outcome);
+                try{writeVerified();current();outcome="saved";}catch(Throwable failure){outcome=cancelled?"cancelled":"error";removePartial();}
+                return terminal(count,outcome);
+            }catch(Throwable failure){if(destination!=null)removePartial();return terminal(count,cancelled||SystemClock.elapsedRealtime()>=deadline?"cancelled":"error");}
+            finally{close();}
+        }
+        private java.util.Map<String,Object> terminal(int count,String result){close();return cleanupKnown?receipt(count,result):owner.refusal(request,"pending");}
+        private java.util.Map<String,Object> receipt(int count,String result){return LocalV2AppOwner.map("version",2L,"requestId",request.id,"status","export","receipt",LocalV2AppOwner.map("requestId",request.id,"profileId",profileId,"schemaVersion",1L,"sha256",sha256,"bytes",(long)count,"outcome",result));}
+        private void writeVerified()throws Exception {
+            current();android.content.ContentResolver resolver=owner.activity.getContentResolver();
+            try(android.os.ParcelFileDescriptor fd=resolver.openFileDescriptor(destination,"rwt")){require(fd!=null);try(java.io.FileOutputStream out=new android.os.ParcelFileDescriptor.AutoCloseOutputStream(fd)){
+                for(int at=0;at<bytes.length;){current();int count=Math.min(32768,bytes.length-at);out.write(bytes,at,count);at+=count;}out.flush();current();out.getFD().sync();}}
+            try(java.io.InputStream in=resolver.openInputStream(destination)){parentExportReadback(in,bytes.length,sha256,this::current);}current();
+        }
+        private void removePartial(){try{android.provider.DocumentsContract.deleteDocument(owner.activity.getContentResolver(),destination);}catch(Throwable unavailable){/* OS/provider may retain a partial document; never a saved receipt. */}}
+        public void close(){synchronized(this){if(closed)return;closed=true;pickerPending=false;cancelled=true;returned.countDown();}try{owner.main(()->{if(launcher!=null){launcher.unregister();launcher=null;}return null;});cleanupKnown=true;}catch(Exception unavailable){cleanupKnown=false;owner.sealed=true;}LocalSnapshotV2.wipe(bytes);bytes=null;}
+    }
     /** A prepared byte transition is data, never admission or permission. The
      * original Gate below is the only consumer allowed to write its adult exit.
      * Profile/access changes retain the previous safe record until an actual
@@ -5943,7 +6067,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private final java.util.Set<String> retiredMedia=new java.util.HashSet<>();
         private LocalV2Writer reader;private LocalV2Request readRequest;private LocalV2NativePackageLoader loader;private LocalV2SDKChannel channel;
         private LocalV2GateHost gate;private LocalV2ProfileOperation profile;private LocalV2PinOperation enrollment;private LocalV2SDKPinRotation rotation;
-        private SDKNativeChildFirstInstall install;private SDKFirstInstallRequest installRequest;
+        private SDKNativeChildFirstInstall install;private SDKFirstInstallRequest installRequest;private volatile LocalV2ParentExport exportCustody;
         private static final class Context {
             final String token,checksum,status;final long generation,deadline;final java.util.Map<String,Object> metadata;final java.util.List<Object> profiles;
             Context(String token,String checksum,String status,long generation,long deadline,java.util.Map<String,Object> metadata,java.util.List<Object> profiles){this.token=token;this.checksum=checksum;this.status=status;this.generation=generation;this.deadline=deadline;this.metadata=metadata;this.profiles=profiles;}
@@ -5986,7 +6110,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             android.widget.FrameLayout.LayoutParams cp=new android.widget.FrameLayout.LayoutParams(-1,-2,android.view.Gravity.CENTER);surface.addView(controls,cp);controls.setVisibility(android.view.View.GONE);
             ((android.view.ViewGroup)parent).addView(surface,new android.view.ViewGroup.LayoutParams(-1,-1));
             lifecycle=new android.app.Application.ActivityLifecycleCallbacks(){public void onActivityCreated(android.app.Activity a,android.os.Bundle b){}public void onActivityStarted(android.app.Activity a){}public void onActivityResumed(android.app.Activity a){}
-                public void onActivityPaused(android.app.Activity a){if(a==activity&&!ownedPrompt())invalidate("cancelled");}public void onActivityStopped(android.app.Activity a){if(a==activity)invalidate("cancelled");}
+                public void onActivityPaused(android.app.Activity a){if(a==activity&&!ownedPrompt()&&!ownedExportPicker())invalidate("cancelled");}public void onActivityStopped(android.app.Activity a){if(a==activity&&!ownedExportPicker())invalidate("cancelled");}
                 public void onActivityDestroyed(android.app.Activity a){if(a==activity)dispose();}public void onActivitySaveInstanceState(android.app.Activity a,android.os.Bundle b){}};
             activity.getApplication().registerActivityLifecycleCallbacks(lifecycle);
             screen=new android.content.BroadcastReceiver(){public void onReceive(android.content.Context c,android.content.Intent i){invalidate("cancelled");}};android.content.IntentFilter filter=new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF);
@@ -6030,9 +6154,13 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             boolean accepted;synchronized(this){accepted=!disposed&&(!busy||revocationOnly)&&!sealed&&seen.size()<2048&&seen.add(request.id);if(accepted&&!revocationOnly){busy=true;if("perform".equals(request.method))activeControl=request;}}
             if(!accepted){reply.complete(refusal(request,"pending"));return;}
             io.execute(()->{LocalV2SDKChannel.PassportHandoff[] passportHandoff=new LocalV2SDKChannel.PassportHandoff[1];LocalV2SDKChannel.JourneyHandoff[] journeyHandoff=new LocalV2SDKChannel.JourneyHandoff[1];LocalV2SDKChannel.AppearanceHandoff[] handoff=new LocalV2SDKChannel.AppearanceHandoff[1];WebChunkHandoff[] chunkHandoff=new WebChunkHandoff[1];boolean replyAttempted=false;try{java.util.Map<String,Object> response=dispatch(request,capturedMediaEpoch,capturedJourneyEpoch,handoff,journeyHandoff,passportHandoff,chunkHandoff);if(passportHandoff[0]!=null)passportHandoff[0].complete();if(journeyHandoff[0]!=null)journeyHandoff[0].complete();if(handoff[0]!=null)handoff[0].complete();if(chunkHandoff[0]!=null){main(()->{chunkHandoff[0].publish(response,reply);return null;});}else{replyAttempted=true;reply.complete(response);}}
-                catch(Throwable failure){if(chunkHandoff[0]!=null){try{chunkHandoff[0].close();if(!chunkHandoff[0].replyAttempted){Context c=current(request.contextToken);fresh(c);main(()->{current(request.contextToken);reply.complete(map("version",2L,"requestId",request.id,"status","ok","contextToken",c.token,"generation",c.generation,"value",chunkUnavailable(request)));return null;});return;}}catch(Throwable cleanup){failure.addSuppressed(cleanup);}}if(passportHandoff[0]!=null){passportHandoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}if(journeyHandoff[0]!=null){journeyHandoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}if(handoff[0]!=null){handoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}try{cover();synchronized(this){context=null;}joinOwners();if(failure instanceof PinKnownRefusal&&"perform".equals(request.method)&&!sealed)reply.complete(bootstrap(request.id,0,"cancelled"));else reply.complete(refusal(request,sealed?"pending":failure instanceof PinKnownRefusal?"expired":"unavailable"));}
+                catch(Throwable failure){if(chunkHandoff[0]!=null){try{chunkHandoff[0].close();if(!chunkHandoff[0].replyAttempted){Context c=current(request.contextToken);fresh(c);main(()->{current(request.contextToken);reply.complete(map("version",2L,"requestId",request.id,"status","ok","contextToken",c.token,"generation",c.generation,"value",chunkUnavailable(request)));return null;});return;}}catch(Throwable cleanup){failure.addSuppressed(cleanup);}}if(passportHandoff[0]!=null){passportHandoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}if(journeyHandoff[0]!=null){journeyHandoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}if(handoff[0]!=null){handoff[0].unknown(failure);if(replyAttempted){invalidate("pending");return;}}try{cover();synchronized(this){context=null;}joinOwners();if(failure instanceof PinKnownRefusal&&"perform".equals(request.method)&&"export-child-data".equals(request.action)&&!sealed){main(()->{controls.removeAllViews();controls.setVisibility(android.view.View.GONE);return null;});reply.complete(exportRefusal(request,"cancelled"));}else if(failure instanceof PinKnownRefusal&&"perform".equals(request.method)&&!sealed)reply.complete(bootstrap(request.id,0,"cancelled"));else reply.complete(refusal(request,sealed?"pending":failure instanceof PinKnownRefusal?"expired":"unavailable"));}
                     catch(Throwable cleanup){sealed=true;reply.complete(refusal(request,"pending"));}}
                 finally{if(chunkHandoff[0]!=null)chunkHandoff[0].close();if(passportHandoff[0]!=null)passportHandoff[0].close();if(journeyHandoff[0]!=null)journeyHandoff[0].close();if(handoff[0]!=null)handoff[0].close();synchronized(this){if(activeControl==request)activeControl=null;if(!revocationOnly)busy=false;}}});
+        }
+        private java.util.Map<String,Object> exportRefusal(PlanetChildDataTransport.V2Request request,String outcome)throws Exception {
+            require("perform".equals(request.method)&&"export-child-data".equals(request.action));LocalV2AppProfileDraft.exact(request.target,"profileId");String profile=LocalV2PackageJson.identifier(request.target.get("profileId"));
+            return map("version",2L,"requestId",request.id,"status","export","receipt",map("requestId",request.id,"profileId",profile,"schemaVersion",1L,"sha256",null,"bytes",0L,"outcome",outcome));
         }
         private java.util.Map<String,Object> dispatch(PlanetChildDataTransport.V2Request r,long mediaStamp,long journeyStamp,LocalV2SDKChannel.AppearanceHandoff[] handoff,LocalV2SDKChannel.JourneyHandoff[] journeyHandoff,LocalV2SDKChannel.PassportHandoff[] passportHandoff,WebChunkHandoff[] chunkHandoff) throws Exception {
             main(()->{attach();return null;});
@@ -6089,11 +6217,18 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 String name=action;byte[] target=r.target==null?new byte[0]:LocalV2PackageJson.bytes(r.target,false);
                 try{
                     if("create-profile".equals(action)){LocalSnapshotV2.wipe(target);target=LocalV2AppProfileDraft.additional(r.target);name="expand-access-settings";}
-                    else if("enter-child".equals(action)){LocalV2AppProfileDraft.exact(r.target,"profileId");name="expand-access-settings";}
+                    else if("enter-child".equals(action)){LocalV2AppProfileDraft.exact(r.target,"profileId");name="expand-access-settings";}else if("export-child-data".equals(action)){LocalV2AppProfileDraft.exact(r.target,"profileId");boolean present=false;for(Object raw:prior.profiles)if(r.target.get("profileId").equals(LocalV2PackageJson.object(raw).get("id")))present=true;require(present);}
                     else if("change-exact-age".equals(action)||"change-blocked-topics".equals(action)||"expand-access-settings".equals(action)&&r.target!=null&&r.target.containsKey("changes")){byte[] before=vault.locked(directory->vault.readExact(directory));try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(before,policy)){LocalSnapshotV2.wipe(target);target=LocalV2AppProfileDraft.settings(saved,action,r.target);}finally{LocalSnapshotV2.wipe(before);}}
                     final String originalAction=name;final byte[] originalTarget=target;java.util.concurrent.atomic.AtomicBoolean unsupported=new java.util.concurrent.atomic.AtomicBoolean();
-                    gate=main(()->{synchronized(this){live(deadline);android.widget.Button control=arm("delete-child-data".equals(originalAction)?deletionCaption(prior,originalTarget):actionCaption(originalAction,(String)prior.metadata.get("locale")),null);gate=new LocalV2GateHost(vault,activity,surface,control,policy,originalAction,originalTarget,1,1,deadline,(a,b)->{if(!LocalV2CanonicalTransition.handles(a)){unsupported.set(true);throw new PinKnownRefusal();}/* Preserve the original native control until sdkJoin has detached every Gate observer. */});return gate;}});
-                    gate.sdkAwait(deadline);gate.sdkJoin();gate=null;if(unsupported.get())return bootstrap(r.id,deadline,"unsupported");
+                    gate=main(()->{synchronized(this){live(deadline);android.widget.Button control=arm("delete-child-data".equals(originalAction)?deletionCaption(prior,originalTarget):"export-child-data".equals(originalAction)?exportCaption(prior,originalTarget):actionCaption(originalAction,(String)prior.metadata.get("locale")),null);gate=new LocalV2GateHost(vault,activity,surface,control,policy,originalAction,originalTarget,1,1,deadline,(a,b)->{if(!LocalV2CanonicalTransition.handles(a)){unsupported.set(true);throw new PinKnownRefusal();}/* Preserve the original native control until sdkJoin has detached every Gate observer. */});return gate;}});
+                                        gate.sdkAwait(deadline);gate.sdkJoin();
+                    if("export-child-data".equals(originalAction)){
+                        require(gate.exportRead!=null);byte[] snapshot=gate.exportRead.take();gate=null;
+                        try{LocalV2ParentExport custody=new LocalV2ParentExport(this,r,snapshot,deadline);snapshot=null;exportCustody=custody;
+                            try{return custody.save();}finally{custody.close();exportCustody=null;main(()->{controls.removeAllViews();controls.setVisibility(android.view.View.GONE);return null;});}}
+                        finally{LocalSnapshotV2.wipe(snapshot);}
+                    }
+                    gate=null;if(unsupported.get())return bootstrap(r.id,deadline,"unsupported");
                 }finally{LocalSnapshotV2.wipe(target);}
             }
             return bootstrap(r.id,deadline,null);
@@ -6349,32 +6484,35 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             finally{LocalSnapshotV2.wipe(bytes);if(!handed&&recipient!=null&&!recipient.knownClosed()){try{recipient.closeJoined();}catch(Exception unknown){d.owner.writer.unknown(d.owner.request);throw unknown;}}}
         }
 
-        private void joinOwners() throws Exception {retireJourney();
+        private void joinOwners() throws Exception {LocalV2ParentExport originalExport=exportCustody;if(originalExport!=null){originalExport.cancel();originalExport.close();exportCustody=null;}retireJourney();
             require(android.os.Looper.myLooper()!=android.os.Looper.getMainLooper());
             fastCanonicalConceal();retireCanonicalJoined(null,null,true);
             main(()->{if(mediaWatch!=null){main.removeCallbacks(mediaWatch);mediaWatch=null;}return null;});
             if(reader!=null&&readRequest!=null&&readRequest.sdkPackageLoader!=null){loader=readRequest.sdkPackageLoader;reader=null;readRequest=null;}if(channel!=null)channel.close();if(loader!=null){LocalV2NativePackageLoader old=loader;main(()->{old.close();return null;});old.sdkJoin();loader=null;channel=null;}
             if(reader!=null){reader.retire(readRequest);reader=null;readRequest=null;}
-            if(gate!=null){LocalV2GateHost old=gate;main(()->{old.close();return null;});old.sdkCleanupJoined();gate=null;}
+            if(gate!=null){LocalV2GateHost old=gate;main(()->{old.close();return null;});old.sdkCleanupJoined();if(old.exportRead!=null)old.exportRead.close();gate=null;}
             if(profile!=null){profile.revoke();profile.sdkCleanupJoined();profile=null;}
             if(rotation!=null){rotation.revoke();rotation.joinedCleanup();rotation=null;}
             if(enrollment!=null){LocalV2PinOperation old=enrollment;old.revoke();if(old.worker!=null)old.worker.join();old.joinCancel();if(old.reply!=null&&!old.reply.settled)old.settle(old.reply,PinReplyDelivery.uncertain);else if(!old.request.retired)old.writer.retire(old.request);require(!old.request.sealed);enrollment=null;}
             if(installRequest!=null&&!installRequest.retired){install.cancel(installRequest);if(installRequest.worker!=null)installRequest.worker.join();if(installRequest.receipt!=null&&!installRequest.receipt.settled)install.settle(installRequest.receipt,PinReplyDelivery.uncertain);install.retire(installRequest);install=null;installRequest=null;}
         }
-        void invalidate(String reason){try{fastMediaConceal();}catch(Exception failure){sealed=true;}if(!java.util.Arrays.asList("cancelled","expired","unavailable","pending","corrupt").contains(reason))reason="unavailable";
+        void invalidate(String reason){LocalV2ParentExport originalExport=exportCustody;if(originalExport!=null)originalExport.cancel();try{fastMediaConceal();}catch(Exception failure){sealed=true;}if(!java.util.Arrays.asList("cancelled","expired","unavailable","pending","corrupt").contains(reason))reason="unavailable";
             Context old;synchronized(this){old=context;context=null;retireJourney();sealed=true;}try{cover();}catch(Exception failure){sealed=true;}
             if(channel!=null)channel.close();if(loader!=null)loader.revoke();if(gate!=null)gate.revoke();if(profile!=null)profile.revoke();if(rotation!=null)rotation.revoke();if(enrollment!=null)enrollment.revoke();if(installRequest!=null)install.cancel(installRequest);if(reader!=null)try{reader.cancel(readRequest);}catch(Exception failure){reader.unknown(readRequest);}
             invalidated.receive(map("version",2L,"contextToken",old==null?null:old.token,"generation",old==null?generation:old.generation,"reason",reason));
             io.execute(()->{try{joinOwners();synchronized(this){if(!disposed)sealed=false;}}catch(Throwable failure){sealed=true;}});
         }
 
-        private String deletionCaption(Context prior,byte[] target)throws Exception {
+        private String exportCaption(Context prior,byte[] target)throws Exception {
+            java.util.Map<String,Object> fixed=LocalV2PackageJson.object(LocalV2PackageJson.read(target,4096),"profileId");String id=LocalV2PackageJson.identifier(fixed.get("profileId"));
+            for(Object row:prior.profiles){java.util.Map<String,Object> profile=LocalV2PackageJson.object(row);if(id.equals(profile.get("id")))return actionCaption("export-child-data",(String)prior.metadata.get("locale"))+" · "+profile.get("label")+" ("+id+")";}throw new PinKnownRefusal();
+        }        private String deletionCaption(Context prior,byte[] target)throws Exception {
             LocalV2DeletionTarget removal=LocalV2DeletionTarget.parse(target);java.util.Map<String,Object> selected=null;for(Object raw:prior.profiles){java.util.Map<String,Object> profile=LocalV2PackageJson.object(raw);if(removal.profileId.equals(profile.get("id")))selected=profile;}require(selected!=null);
             android.content.res.Configuration config=new android.content.res.Configuration(activity.getResources().getConfiguration());config.setLocales(new android.os.LocaleList(java.util.Locale.forLanguageTag((String)prior.metadata.get("locale"))));
             return activity.createConfigurationContext(config).getString("history".equals(removal.scope)?R.string.native_child_delete_history_disclosure:"downloads".equals(removal.scope)?R.string.native_child_delete_downloads_disclosure:R.string.native_child_delete_profile_disclosure,selected.get("label"),removal.profileId);
         }
         private String actionCaption(String action,String locale) throws Exception {android.content.res.Configuration config=new android.content.res.Configuration(activity.getResources().getConfiguration());config.setLocales(new android.os.LocaleList(java.util.Locale.forLanguageTag(locale)));return activity.createConfigurationContext(config).getString(PinVerificationNativeInput.actionResource(action));}
-        void hostPaused(){if(!ownedPrompt())invalidate("cancelled");}void hostStopped(){invalidate("cancelled");}void nativeRouteInput(){invalidate("cancelled");}void destroy(){dispose();}
+        private boolean ownedExportPicker(){LocalV2ParentExport original=exportCustody;return original!=null&&original.ownsPicker();}void hostPaused(){if(!ownedPrompt()&&!ownedExportPicker())invalidate("cancelled");}void hostStopped(){if(!ownedExportPicker())invalidate("cancelled");}void nativeRouteInput(){invalidate("cancelled");}void destroy(){dispose();}
         void dispose(){synchronized(this){if(disposed)return;disposed=true;}invalidate("cancelled");io.execute(()->{try{joinOwners();main(()->{if(expiry!=null)main.removeCallbacks(expiry);if(back!=null)back.remove();if(screen!=null)activity.unregisterReceiver(screen);if(lifecycle!=null)activity.getApplication().unregisterActivityLifecycleCallbacks(lifecycle);if(surface!=null){surface.removeOnAttachStateChangeListener(attachment);android.view.ViewParent p=surface.getParent();if(p instanceof android.view.ViewGroup)((android.view.ViewGroup)p).removeView(surface);}return null;});}catch(Throwable failure){sealed=true;}finally{io.shutdown();}});}
     }
 

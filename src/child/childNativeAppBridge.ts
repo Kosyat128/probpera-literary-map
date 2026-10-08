@@ -12,6 +12,8 @@ import { childNativeJourneyId, childNativeJourneyRevision, decodeChildNativeJour
   decodeChildNativeProfileJourney, decodeChildNativeJourneyResult, type ChildNativeJourneyController } from "./childNativeJourney";
 import { childNativeDiscoveryShelf, decodeChildNativeDiscovery, decodeChildNativePassport, decodeChildNativeCountryOpen,
   decodeChildNativeRemovalTarget, type ChildNativeDiscoveryController, type ChildNativePassportController } from "./childNativeDiscoveryPassport";
+import { CHILD_NATIVE_EXPORT_IDLE, childNativeExportProfileId, decodeChildNativeExportReply,
+  type ChildNativeExportReceipt, type ChildNativeExportState } from "./childNativeExport";
 import localPolicy from "./childNativeLocalV2Policy.json";
 import { decodeChildNativeRouteDownload } from "./childNativeOfflinePackages";
 import { decodeChildNativeRouteSave } from "./childNativePassportProgram";
@@ -89,6 +91,9 @@ export interface ChildNativeAppController {
   readonly journeys?: ChildNativeJourneyController;
   readonly media?: ChildNativeMediaController;
   readonly scenes?: ChildNativeSceneController;
+  /** A native save result only, never a context/PIN/content capability. */
+  exportChildData?(profileId: string): Promise<ChildNativeExportReceipt | null>;
+  getExportSnapshot?(): ChildNativeExportState;
   getSnapshot(): ChildNativeAppSnapshot;
   subscribe(listener: () => void): () => void;
   /** A concrete host synchronously clears old child content/routes/resources.
@@ -235,6 +240,10 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
   if (!Number.isInteger(timeout) || timeout < 1 || timeout > 60_000) throw new RangeError("Invalid native child timeout");
   let snapshot = sealed, epoch = 0, expiry = 0, timer: ReturnType<typeof setTimeout> | null = null;
   let removalInFlight = false;
+  let exportState = CHILD_NATIVE_EXPORT_IDLE;
+  let pendingExport: { readonly profileId: string; readonly context: ChildNativeContext; readonly deadline: number;
+    requestId: string | null; cancelled: boolean; dispatched: boolean } | null = null;
+  const exportRequestIds = new Set<string>();
   let started = false, disposed = false, busy = false, uncertain = false, resumeAfterControl = false, visibility = options.lifecycle.getSnapshot().visibility;
   let lifecycleStop: (() => void) | null = null, barrier: (() => void) | null = null;
   let nativeEvents: { remove(): Promise<void> } | null = null;
@@ -320,6 +329,12 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
     for (const listener of [...listeners]) if (listeners.has(listener)) {
       try { listener(); } catch { /* A presentation observer cannot grant native authority. */ }
     }
+  }
+  function observeExport(phase: ChildNativeExportState["phase"], receipt: ChildNativeExportReceipt | null = null) {
+    exportState = Object.freeze({ phase, receipt }); publish(snapshot);
+  }
+  function cancelExport() {
+    if (pendingExport) { pendingExport.cancelled = true; observeExport("unavailable"); }
   }
   function seal(reason: ChildNativeReason | null, phase: ChildNativeAppSnapshot["phase"] = "sealed") {
     const outgoing = snapshot.context;
@@ -438,11 +453,61 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
     }
   }
+  /** Native keeps all data and save-destination custody. An expected OS picker
+   * pause seals JS but cannot turn this result into a renewed child context. */
+  async function exportChildData(profileId: string): Promise<ChildNativeExportReceipt | null> {
+    if (busy && pendingExport) { await suspend(); return null; }
+    const c = snapshot.context;
+    if (!childNativeExportProfileId(profileId) || !c || !current(c, epoch) || !barrier
+      || snapshot.status === "unenrolled" || !snapshot.profiles.some(profile => profile.id === profileId)) return null;
+    const original = { profileId, context: c, deadline: expiry, requestId: null as string | null, cancelled: false, dispatched: false };
+    pendingExport = original; busy = true; resumeAfterControl = false; seal(null, "transition");
+    const originalEpoch = epoch; observeExport("saving");
+    const live = () => !disposed && !uncertain && pendingExport === original && !original.cancelled;
+    try {
+      await dataTail;
+      if (sceneRetirement && !await sceneRetirement || !await joinedSceneRecipients()
+        || mediaRetirement && !await mediaRetirement || retirement && !await retirement) throw new Error("Export retirement unavailable");
+      if (!live() || epoch !== originalEpoch || visibility !== "active" || now() >= original.deadline) { await retire(c); return null; }
+      const requestIdentity = request(), dispatched = now();
+      if (!Number.isFinite(dispatched) || dispatched < 0 || exportRequestIds.size >= 2048 || exportRequestIds.has(requestIdentity.requestId))
+        throw new Error("Export request identity unavailable");
+      exportRequestIds.add(requestIdentity.requestId); original.requestId = requestIdentity.requestId; original.dispatched = true;
+      const raw = await invoke("perform", { ...requestIdentity, contextToken: c.token, action: "export-child-data", target: Object.freeze({ profileId }) });
+      if (!live()) return null;
+      const receipt = decodeChildNativeExportReply(raw, requestIdentity.requestId, profileId), completed = now();
+      if (!receipt || !Number.isFinite(completed) || completed < dispatched || completed >= original.deadline
+        || completed >= dispatched + timeout || !await joinedDeliveries()) throw new Error("Export result unavailable");
+      if (!live()) return null;
+      const joinedAt = now();
+      if (!Number.isFinite(joinedAt) || joinedAt < completed || joinedAt >= original.deadline || joinedAt >= dispatched + timeout)
+        throw new Error("Export completion expired");
+      // Spend this original result before observers can propose cancellation or
+      // replacement. It contains no reusable host/context authority.
+      pendingExport = null; resumeAfterControl = true; observeExport("complete", receipt);
+      return receipt;
+    } catch {
+      if (original.dispatched) uncertain = true;
+      observeExport("unavailable"); if (!disposed) seal("unavailable"); await retire(null); return null;
+    } finally {
+      if (pendingExport === original) pendingExport = null;
+      if (exportState.phase === "saving") observeExport("unavailable");
+      busy = false;
+      if (resumeAfterControl && !disposed && !uncertain && visibility === "active") { resumeAfterControl = false; void bootstrap(); }
+    }
+  }
   async function suspend(): Promise<void> {
+    cancelExport();
     const previous = snapshot.context; seal("blocked");
     if (!await retire(previous)) uncertain = true;
   }
   async function perform(action: ChildNativeAction, target?: unknown): Promise<boolean> {
+    if (action === "export-child-data") {
+      let row: Record<string, unknown> | null;
+      try { row = childRecord(target, ["profileId"]); } catch { return false; }
+      return !!row && childNativeExportProfileId(row.profileId) && (await exportChildData(row.profileId))?.outcome === "saved";
+    }
+    if (busy && pendingExport) { await suspend(); return false; }
     // A replacement proposal only cancels the accepted original removal. It
     // cannot replace its authenticated target or enqueue a second operation.
     if (busy && removalInFlight) { await suspend(); return false; }
@@ -766,9 +831,10 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
           const row = childRecord(raw, ["version", "contextToken", "generation", "reason"]), c = snapshot.context;
           if (!row || row.version !== 2 || row.contextToken !== null && !tokens(row.contextToken)
             || !safe(row.generation) || !["cancelled", "expired", "unavailable", "pending", "corrupt"].includes(row.reason as string)) {
-            uncertain = true; seal("unavailable"); void retire(c); return;
+            uncertain = true; cancelExport(); seal("unavailable"); void retire(c); return;
           }
           if (disposed || (c ? row.contextToken !== c.token || row.generation !== c.generation : !busy)) return;
+          cancelExport();
           const reason = row.reason === "cancelled" ? "blocked" : row.reason as ChildNativeReason;
           if (busy) { resumeAfterControl = true; seal(reason); }
           else { seal(reason); void retire(c); }
@@ -790,9 +856,9 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       });
       await bootstrap();
     },
-    refresh: bootstrap, perform, suspend,
+    refresh: bootstrap, perform, suspend, exportChildData, getExportSnapshot: () => exportState,
     async dispose() {
-      if (disposed) return; const previous = snapshot.context; disposed = true;
+      if (disposed) return; const previous = snapshot.context; disposed = true; cancelExport();
       lifecycleStop?.(); lifecycleStop = null; seal("blocked", "disposed");
       await retire(previous);
       try { await nativeEvents?.remove(); } catch { uncertain = true; }

@@ -187,4 +187,29 @@ public class PlanetChildDataStoreRuntimeTest {
             KeyStore keys=KeyStore.getInstance("AndroidKeyStore");keys.load(null);assertTrue(keys.containsAlias(context.getPackageName()+"."+directory.getName()+".aes"));
         }finally{Arrays.fill(cipher,(byte)0);Arrays.fill(pending,(byte)0);}
     }
+    /** Authored local synthetic codec tests; no OS picker/native authority PASS. */
+    @Test public void parentExportEmptySelectedSnapshotHasSharedSwiftGolden()throws Exception {
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();byte[] bytes=PlanetChildDataStore.fixtureParentExportBytes(context,false);
+        try{String golden="{\"appearance\":{\"revision\":0,\"selection\":null},\"collections\":{\"favorites\":{\"references\":[],\"revision\":0},\"offline\":{\"references\":[],\"revision\":0},\"recent\":{\"references\":[],\"revision\":0},\"search\":{\"references\":[],\"revision\":0}},\"downloads\":{\"objects\":[],\"routes\":[]},\"format\":\"literary-planet-child-personal-data\",\"journeys\":{\"activeJourneyId\":null,\"progress\":[],\"revision\":0},\"passport\":{\"awards\":[],\"completedJourneys\":[],\"countries\":[],\"credits\":[],\"revision\":0,\"routes\":[]},\"profile\":{\"ageBand\":\"9-11\",\"ageConfirmedAt\":\"2026-10-01T00:00:00.000Z\",\"allowedTopics\":null,\"blockedTopics\":[],\"exactAge\":9,\"id\":\"fixture-reader-one\",\"label\":\"Читатель\",\"locale\":\"ru\",\"localeLocked\":false,\"motion\":\"calm\",\"narrationEnabled\":false,\"readingLevel\":\"plain\",\"soundEnabled\":false},\"schemaVersion\":1}";assertEquals(golden,new String(bytes,StandardCharsets.UTF_8));assertEquals(793,bytes.length);
+            byte[] digest=java.security.MessageDigest.getInstance("SHA-256").digest(bytes);StringBuilder hash=new StringBuilder();for(byte part:digest)hash.append(String.format(java.util.Locale.ROOT,"%02x",part&255));assertEquals("d33055e464252f3ac33b17592291bec577872139a194e3e776ce25642de20331",hash.toString());Arrays.fill(digest,(byte)0);
+        }finally{Arrays.fill(bytes,(byte)0);}
+    }
+    @Test public void parentExportPersonalProjectionIncludesSemanticsAndExcludesSiblingAndLicensedBody()throws Exception {
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();byte[] bytes=PlanetChildDataStore.fixtureParentExportBytes(context,true),again=PlanetChildDataStore.fixtureParentExportBytes(context,true);
+        try{assertArrayEquals(bytes,again);String text=new String(bytes,StandardCharsets.UTF_8);JSONObject root=new JSONObject(text);assertEquals(8,root.length());assertEquals("fixture-reader-one",root.getJSONObject("profile").getString("id"));
+            JSONObject collections=root.getJSONObject("collections");assertEquals(5,collections.getJSONObject("favorites").getLong("revision"));assertEquals("favorite-one",collections.getJSONObject("favorites").getJSONArray("references").getJSONObject(0).getString("id"));assertEquals(9,collections.getJSONObject("recent").getLong("revision"));
+            assertEquals(5,root.getJSONObject("appearance").getLong("revision"));assertEquals(7,root.getJSONObject("journeys").getLong("revision"));assertEquals(3,root.getJSONObject("passport").getLong("revision"));assertEquals(2,root.getJSONObject("passport").getJSONArray("credits").length());assertEquals(1,root.getJSONObject("passport").getJSONArray("completedJourneys").length());JSONObject route=root.getJSONObject("passport").getJSONArray("routes").getJSONObject(0);assertEquals(6,route.length());assertTrue(route.getLong("bytes")>0);assertTrue(route.getString("sha256").matches("[a-f0-9]{64}"));assertFalse(route.has("snapshot"));assertFalse(route.has("url"));assertFalse(text.contains("Root text"));assertFalse(text.contains("Writer text"));
+            for(String forbidden:Arrays.asList("fixture-reader-two","LICENSED-BODY-SENTINEL","http://","https://"))assertFalse(forbidden,text.contains(forbidden));
+            for(String forbidden:Arrays.asList("pin","verifier","salt","kdf","attemptJournal","contextToken","payload"))assertFalse(forbidden,text.contains("\""+forbidden+"\""));
+        }finally{Arrays.fill(bytes,(byte)0);Arrays.fill(again,(byte)0);}
+    }
+    @Test public void parentExportSiblingWritesDoNotChangeSelectedDigestAndSelectedRevisionDoes()throws Exception {
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();assertTrue(PlanetChildDataStore.fixtureParentExportScenario(context,"isolation"));assertTrue(PlanetChildDataStore.fixtureParentExportScenario(context,"revision-digest"));
+    }
+    @Test public void parentExportCorruptSnapshotAndProfileSecretFieldsHaveNoEmptyFallback()throws Exception {
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();assertTrue(PlanetChildDataStore.fixtureParentExportScenario(context,"corrupt"));assertTrue(PlanetChildDataStore.fixtureParentExportScenario(context,"no-secret-profile"));
+    }
+    @Test public void parentExportSavedReadbackRequiresCompleteExactDigestAndLiveOriginalOwner()throws Exception {
+        Context context=InstrumentationRegistry.getInstrumentation().getTargetContext();for(String scenario:Arrays.asList("complete","partial","extra","digest","cancel","zero-read","expiry-replay","readonly-action"))assertTrue(scenario,PlanetChildVault.fixtureParentExportReadback(context,scenario));
+    }
 }

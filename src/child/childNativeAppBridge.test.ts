@@ -601,3 +601,121 @@ describe("LOCAL2 offline acquisition command lifetime", () => {
     await f.controller.refresh();expect(cancel).toHaveBeenCalledTimes(1);
   });
 });
+
+// AUTHORED_NOT_RUN. Exact native save receipts do not provide PIN/OS/rights proof.
+function exportReply(input: unknown, outcome: "saved" | "cancelled" | "error" = "saved", captured = outcome === "saved") {
+  const request = input as { requestId: string; target: { profileId: string } };
+  return { version: 2, requestId: request.requestId, status: "export", receipt: { requestId: request.requestId,
+    profileId: request.target.profileId, schemaVersion: 1, sha256: captured ? HASH : null, bytes: captured ? 256 : 0, outcome } };
+}
+describe("parent child-data native export original-operation custody", () => {
+  it("clears before dispatch and sends only the exact current profile and request identity", async () => {
+    const f = fixture(); await f.controller.start(); f.plugin.perform.mockImplementation(async r => { f.order.push("export"); return exportReply(r); });
+    const priorClears = f.clear.mock.calls.length;
+    const pending = f.controller.exportChildData!("native-profile");
+    expect(f.clear).toHaveBeenCalledTimes(priorClears + 1); expect(f.controller.getSnapshot().context).toBeNull();
+    expect(f.controller.getExportSnapshot!()).toEqual({ phase: "saving", receipt: null });
+    const receipt = await pending; expect(receipt?.outcome).toBe("saved");
+    expect(f.plugin.perform.mock.calls[0][0]).toEqual({ version: 2, requestId: "2".padStart(32, "0"), contextToken: TOKEN,
+      action: "export-child-data", target: { profileId: "native-profile" } });
+    expect(f.order.indexOf("clear", f.order.indexOf("bootstrap") + 1)).toBeLessThan(f.order.indexOf("export"));
+    expect(f.controller.getExportSnapshot!()).toEqual({ phase: "complete", receipt });
+    expect(f.plugin.readEntity).not.toHaveBeenCalled(); expect(f.plugin.readCollection).not.toHaveBeenCalled();
+  });
+  it("joins earlier private reads and actual canonical recipients before arming native export", async () => {
+    const f = fixture(), held = deferred<unknown>(), gpu = deferred<void>(); await f.controller.start();
+    f.plugin.readEntity.mockReturnValueOnce(held.promise); f.plugin.perform.mockImplementation(async r => exportReply(r));
+    const recipient = { clear: vi.fn(), join: vi.fn(() => gpu.promise) }; f.controller.scenes!.attachRecipient(recipient);
+    const reading = f.controller.readEntity(ref()); await settle(); const exporting = f.controller.exportChildData!("native-profile");
+    await settle(); expect(recipient.clear).toHaveBeenCalled(); expect(f.plugin.perform).not.toHaveBeenCalled();
+    held.resolve(f.dataReply(f.plugin.readEntity.mock.calls[0][0], entity())); expect(await reading).toBeNull();
+    await settle(); expect(f.plugin.perform).not.toHaveBeenCalled(); gpu.resolve(); expect((await exporting)?.outcome).toBe("saved");
+  });
+  it("rejects unknown targets or secret-bearing generic proposals before dispatch", async () => {
+    const f = fixture(); await f.controller.start();
+    for (const profile of ["sibling", "../native-profile", ""]) expect(await f.controller.exportChildData!(profile)).toBeNull();
+    expect(await f.controller.perform("export-child-data", { profileId: "native-profile", pin: "1234" })).toBe(false);
+    const getter = vi.fn(() => "native-profile"), target = Object.defineProperty({}, "profileId", { enumerable: true, get: getter });
+    expect(await f.controller.perform("export-child-data", target)).toBe(false); expect(getter).not.toHaveBeenCalled();
+    expect(f.plugin.perform).not.toHaveBeenCalled();
+  });
+  it("does not confuse a restored context or wrong profile receipt with a saved export", async () => {
+    for (const reply of ["bootstrap", "wrong-profile", "stale-request", "missing-save-proof"] as const) {
+      const f = fixture(); await f.controller.start(); f.plugin.perform.mockImplementation(async r => {
+        const value = exportReply(r);
+        if (reply === "bootstrap") return appReply(r, nativeContext(2, "adult"));
+        if (reply === "wrong-profile") value.receipt.profileId = "sibling";
+        if (reply === "stale-request") value.receipt.requestId = "e".repeat(32);
+        if (reply === "missing-save-proof") { value.receipt.bytes = 0; value.receipt.sha256 = null; }
+        return value;
+      });
+      expect(await f.controller.exportChildData!("native-profile")).toBeNull();
+      expect(f.controller.getExportSnapshot!()).toEqual({ phase: "unavailable", receipt: null });
+      const bootstraps = f.plugin.bootstrap.mock.calls.length; await f.controller.refresh();
+      expect(f.plugin.bootstrap).toHaveBeenCalledTimes(bootstraps); expect(f.plugin.perform).toHaveBeenCalledOnce();
+    }
+  });
+  it("returns genuine cancellation and partial write error without generic saved success", async () => {
+    for (const outcome of ["cancelled", "error"] as const) {
+      const f = fixture(); await f.controller.start(); f.plugin.perform.mockImplementation(async r => exportReply(r, outcome, outcome === "error"));
+      expect(await f.controller.perform("export-child-data", { profileId: "native-profile" })).toBe(false);
+      expect(f.controller.getExportSnapshot!()).toMatchObject({ phase: "complete", receipt: { outcome } });
+    }
+  });
+  it("allows a parent personal-data receipt while authentic catalog pins still deny content", async () => {
+    const f = fixture(); f.plugin.bootstrap.mockImplementation(async r => appReply(r, nativeContext(1, "child", false), "blocked-child", "missing-pins"));
+    f.plugin.perform.mockImplementation(async r => exportReply(r)); await f.controller.start();
+    expect((await f.controller.exportChildData!("native-profile"))?.outcome).toBe("saved"); await settle();
+    expect(f.controller.getSnapshot().status).toBe("blocked-child"); expect(await f.controller.readEntity(ref())).toBeNull();
+    expect(f.plugin.readEntity).not.toHaveBeenCalled();
+  });
+  it("keeps expected OS-picker background sealed and accepts only the inert original receipt", async () => {
+    const f = fixture(), held = deferred<unknown>(); await f.controller.start(); f.plugin.perform.mockReturnValueOnce(held.promise);
+    const exporting = f.controller.exportChildData!("native-profile"); await settle(); const original = f.plugin.perform.mock.calls[0][0];
+    f.visibility("background"); expect(f.controller.getSnapshot().context).toBeNull(); await settle(); expect(f.plugin.retire).not.toHaveBeenCalled();
+    held.resolve(exportReply(original)); expect((await exporting)?.outcome).toBe("saved");
+    expect(f.controller.getSnapshot().context).toBeNull(); expect(f.plugin.bootstrap).toHaveBeenCalledOnce();
+    f.setNative(nativeContext(2)); f.visibility("active"); await settle();
+    expect(f.plugin.bootstrap).toHaveBeenCalledTimes(2); expect(f.controller.getSnapshot().context?.token).not.toBe(TOKEN);
+    expect(f.controller.getExportSnapshot!().receipt?.outcome).toBe("saved");
+  });
+  it("explicit cancellation rejects a late save receipt and never dispatches a replacement", async () => {
+    const f = fixture(), held = deferred<unknown>(); await f.controller.start(); f.plugin.perform.mockReturnValueOnce(held.promise);
+    const exporting = f.controller.exportChildData!("native-profile"); await settle(); const original = f.plugin.perform.mock.calls[0][0];
+    const replacement = f.controller.exportChildData!("sibling"); await settle();
+    held.resolve(exportReply(original)); expect(await exporting).toBeNull(); expect(await replacement).toBeNull();
+    expect(f.plugin.perform).toHaveBeenCalledOnce(); expect(f.plugin.retire).toHaveBeenCalledOnce();
+    expect(f.controller.getExportSnapshot!()).toEqual({ phase: "unavailable", receipt: null });
+  });
+  it("native wrong-PIN/cancel invalidation cannot be repaired by a later saved-shaped receipt", async () => {
+    const f = fixture(), held = deferred<unknown>(); await f.controller.start(); f.plugin.perform.mockReturnValueOnce(held.promise);
+    const exporting = f.controller.exportChildData!("native-profile"); await settle(); const original = f.plugin.perform.mock.calls[0][0];
+    f.event({ version: 2, contextToken: null, generation: 1, reason: "cancelled" });
+    held.resolve(exportReply(original)); expect(await exporting).toBeNull();
+    expect(f.controller.getExportSnapshot!()).toEqual({ phase: "unavailable", receipt: null });
+  });
+  it("retains the original deadline and refuses stale/replayed or late native completion", async () => {
+    const f = fixture(), held = deferred<unknown>(); f.setNative(nativeContext(1, "child", true, 100)); await f.controller.start();
+    f.plugin.perform.mockReturnValueOnce(held.promise); const exporting = f.controller.exportChildData!("native-profile"); await settle();
+    const original = f.plugin.perform.mock.calls[0][0]; vi.setSystemTime(100); held.resolve(exportReply(original));
+    expect(await exporting).toBeNull(); expect(f.controller.getExportSnapshot!().receipt).toBeNull();
+    const g = fixture(); await g.controller.start(); let first: ReturnType<typeof exportReply> | null = null;
+    g.plugin.perform.mockImplementation(async r => first ?? (first = exportReply(r)));
+    expect((await g.controller.exportChildData!("native-profile"))?.outcome).toBe("saved"); await settle();
+    expect(await g.controller.exportChildData!("native-profile")).toBeNull(); expect(g.controller.getExportSnapshot!().receipt).toBeNull();
+  });
+  it("missing callback times out without saved success or automatic retry", async () => {
+    const f = fixture(), held = deferred<unknown>(); await f.controller.start(); f.plugin.perform.mockReturnValueOnce(held.promise);
+    const exporting = f.controller.exportChildData!("native-profile"); await settle(); const original = f.plugin.perform.mock.calls[0][0];
+    await vi.advanceTimersByTimeAsync(1_000); held.resolve(exportReply(original)); expect(await exporting).toBeNull();
+    const count = f.plugin.bootstrap.mock.calls.length; f.visibility("background"); f.visibility("active"); await settle();
+    expect(f.plugin.bootstrap).toHaveBeenCalledTimes(count); expect(f.plugin.perform).toHaveBeenCalledOnce();
+  });
+  it("dispose revokes the exact original native custody and cannot publish its late receipt", async () => {
+    const f = fixture(), held = deferred<unknown>(); await f.controller.start(); f.plugin.perform.mockReturnValueOnce(held.promise);
+    const exporting = f.controller.exportChildData!("native-profile"); await settle(); const original = f.plugin.perform.mock.calls[0][0];
+    const disposal = f.controller.dispose(); await settle(); held.resolve(exportReply(original));
+    expect(await exporting).toBeNull(); await disposal; expect(f.controller.getSnapshot().phase).toBe("disposed");
+    expect(f.controller.getExportSnapshot!().receipt).toBeNull();
+  });
+});

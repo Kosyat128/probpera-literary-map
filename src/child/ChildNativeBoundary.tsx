@@ -10,6 +10,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, use
 import type { ChildNativeAppController, ChildNativeAppSnapshot, ChildNativeCollection,
   ChildNativeCollectionValue, ChildNativeEntity, ChildNativeAction } from "./childNativeAppBridge";
 import type { ChildEntityReference } from "./childPackage";
+import { CHILD_NATIVE_EXPORT_IDLE, decodeChildNativeExportReceipt } from "./childNativeExport";
 import { useInterfaceLanguage } from "../i18n/InterfaceLanguage";
 import LiteraryWorldMap from "../components/LiteraryWorldMap";
 import type { Country } from "../data/countries/types";
@@ -49,11 +50,39 @@ const labels = {
     sound: "Sound", narration: "Narration", lock: "Only an adult can change language", calm: "Calm motion",
     topics: "Blocked topics", blockedTopicsHelp: "Topic codes, separated by commas", ageAction: "Confirm age", topicAction: "Change topics" },
 } as const;
+const idleExportSnapshot = () => CHILD_NATIVE_EXPORT_IDLE;
+/** Only the exact native receipt can report a saved file. This observation
+ * remains available while the original private child tree is sealed. */
+export function ParentChildExportStatus({ controller }: { controller: ChildNativeAppController }) {
+  const state = useSyncExternalStore(controller.subscribe, controller.getExportSnapshot ?? idleExportSnapshot, controller.getExportSnapshot ?? idleExportSnapshot);
+  const { language } = useInterfaceLanguage();
+  if (state.phase === "idle") return null;
+  const receipt = state.receipt && decodeChildNativeExportReceipt(state.receipt, state.receipt.requestId, state.receipt.profileId);
+  const copy = language === "ru" ? {
+    saving: "Сохраняем копию данных со взрослым…", saved: "Файл экспорта сохранён.", cancelled: "Экспорт отменён.",
+    error: "Не удалось сохранить файл экспорта.", unavailable: "Сохранение экспорта не подтверждено." }
+    : { saving: "Saving a data copy with an adult…", saved: "The export file was saved.", cancelled: "Export cancelled.",
+      error: "The export file could not be saved.", unavailable: "The export save could not be confirmed." };
+  const outcome = state.phase === "complete" && receipt ? receipt.outcome : null;
+  const message = state.phase === "saving" ? copy.saving : outcome ? copy[outcome] : copy.unavailable;
+  return <p role={outcome === "error" || state.phase === "unavailable" || state.phase === "complete" && !receipt ? "alert" : "status"}
+    aria-live="polite" data-child-native-export={state.phase}>{message}</p>;
+}
+export function NativeProfileExportControl({ controller, profileId, label, disabled = false }: {
+  controller: ChildNativeAppController; profileId: string; label: string; disabled?: boolean;
+}) {
+  const state = useSyncExternalStore(controller.subscribe, controller.getExportSnapshot ?? idleExportSnapshot, controller.getExportSnapshot ?? idleExportSnapshot);
+  const { language } = useInterfaceLanguage();
+  return <button disabled={disabled || state.phase === "saving" || typeof controller.exportChildData !== "function"}
+    type="button" onClick={() => { void controller.exportChildData?.(profileId); }}>
+    {language === "ru" ? "Сохранить копию данных со взрослым" : "Save a data copy with an adult"} · {label}</button>;
+}
 export function ChildNativeClosedView({ snapshot, controller }: { snapshot: ChildNativeAppSnapshot; controller: ChildNativeAppController }) {
   const { language } = useInterfaceLanguage(), copy = labels[language];
   const waiting = snapshot.phase === "transition" || snapshot.phase === "sealed" && snapshot.reason === null;
   return <main className="child-native-closed" data-child-native-phase={snapshot.phase}>
     <h1>{copy.title}</h1>
+    {snapshot.status !== "blocked-child" && <ParentChildExportStatus controller={controller} />}
     <p role={waiting || snapshot.status === "first-install-required" ? "status" : "alert"}>{waiting ? copy.waiting
       : snapshot.status === "first-install-required" ? copy.initializeText : snapshot.status === "blocked-child" ? copy.content : copy.unavailable}</p>
     {snapshot.status === "first-install-required" ? <>
@@ -93,10 +122,12 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
     <button ref={trigger} type="button" aria-expanded={open} onClick={() => { setOpen(value => !value); setError(false); setRemoval(null); }}>
       {state.context.mode === "child" ? copy.parent : copy.profiles}
     </button>
+    <ParentChildExportStatus controller={controller} />
     {open && <div className="child-native-parent-panel" role="region" aria-label={copy.parentDetails}>
       <h2>{copy.profiles}</h2><p>{copy.local}</p>
       {state.status === "unenrolled" ? <button disabled={busy} type="button" onClick={() => { void act("enroll-pin"); }}>{copy.pin}</button> : <>
         {state.profiles.map(profile => <div key={profile.id} className="child-native-profile-row">
+          <NativeProfileExportControl controller={controller} profileId={profile.id} label={profile.label} disabled={busy} />
           <button disabled={busy || state.context?.mode === "child" && state.context.profileId === profile.id}
             type="button" onClick={() => { void act("enter-child", { profileId: profile.id }); }}>{profile.label} · {profile.exactAge}</button>
           <button disabled={busy} type="button" onClick={() => { setRemoval({ profileId: profile.id, scope: "history", contextToken: state.context!.token, language }); setCreating(false); setEditing(false); }}>

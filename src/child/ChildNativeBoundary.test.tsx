@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { InterfaceLanguageProvider } from "../i18n/InterfaceLanguage";
 import { PlatformServicesProvider } from "../platform/PlatformServices";
 import type { PlatformServices } from "../platform/ports";
-import { ChildNativeClosedView, ChildNativeReadyView, NativeProfileControls } from "./ChildNativeBoundary";
+import { ChildNativeClosedView, ChildNativeReadyView, NativeProfileControls, NativeProfileExportControl, ParentChildExportStatus } from "./ChildNativeBoundary";
 import { CHILD_NATIVE_LOCAL_POLICY_CHECKSUM, CHILD_NATIVE_LOCAL_POLICY_VERSION,
   type ChildNativeAppController, type ChildNativeAppSnapshot } from "./childNativeAppBridge";
 
@@ -103,4 +103,47 @@ describe("original canonical resource recipient presentation",()=>{
    expect(markup).not.toContain("planet-child-resource:");expect(owner.readEntity).not.toHaveBeenCalled();
   }
  });
+});
+
+// AUTHORED_NOT_RUN. Rendering verifies truthful RU/EN receipt presentation only.
+describe("parent child-data export presentation", () => {
+  const receipt = (outcome: "saved" | "cancelled" | "error" = "saved") => ({ requestId: "c".repeat(32), profileId: "native-profile",
+    schemaVersion: 1 as const, sha256: outcome === "saved" ? HASH : null, bytes: outcome === "saved" ? 256 : 0, outcome });
+  it("offers an explicit bilingual parent save action without reading data or exporting during render", () => {
+    for (const language of ["ru", "en"] as const) {
+      const owner = Object.assign(controller(snapshot("adult", language)), { exportChildData: vi.fn(async () => receipt()) });
+      const markup = render(<NativeProfileExportControl controller={owner} profileId="native-profile" label="Native saved profile" />, language);
+      expect(markup).toContain(language === "ru" ? "Сохранить копию данных со взрослым" : "Save a data copy with an adult");
+      expect(markup).not.toContain("disabled"); expect(markup).not.toContain(HASH); expect(markup).not.toContain("ageConfirmedAt");
+      expect(owner.exportChildData).not.toHaveBeenCalled(); expect(owner.perform).not.toHaveBeenCalled(); expect(owner.readCollection).not.toHaveBeenCalled();
+    }
+  });
+  it("reports saved cancelled and error only from their strict completed receipt in both languages", () => {
+    const text = { ru: { saved: "Файл экспорта сохранён.", cancelled: "Экспорт отменён.", error: "Не удалось сохранить файл экспорта." },
+      en: { saved: "The export file was saved.", cancelled: "Export cancelled.", error: "The export file could not be saved." } };
+    for (const language of ["ru", "en"] as const) for (const outcome of ["saved", "cancelled", "error"] as const) {
+      const owner = Object.assign(controller(snapshot("adult", language)), { getExportSnapshot: () => ({ phase: "complete" as const, receipt: receipt(outcome) }) });
+      const markup = render(<ParentChildExportStatus controller={owner} />, language);
+      expect(markup).toContain(text[language][outcome]); expect(markup).toContain(outcome === "error" ? 'role="alert"' : 'role="status"');
+      expect(markup).not.toContain("native-profile"); expect(markup).not.toContain(HASH); expect(owner.perform).not.toHaveBeenCalled();
+    }
+  });
+  it("keeps saving visible on the sealed tree without rendering child or profile data", () => {
+    for (const language of ["ru", "en"] as const) {
+      const value = { ...snapshot("unavailable", language), phase: "transition" as const },
+        owner = Object.assign(controller(value), { getExportSnapshot: () => ({ phase: "saving" as const, receipt: null }), exportChildData: vi.fn(async () => null) });
+      const markup = render(<ChildNativeClosedView snapshot={value} controller={owner} />, language);
+      expect(markup).toContain(language === "ru" ? "Сохраняем копию данных со взрослым…" : "Saving a data copy with an adult…");
+      expect(markup).not.toContain("Native saved profile"); expect(markup).not.toContain("data-fixture-canonical-globe");
+      expect(owner.exportChildData).not.toHaveBeenCalled(); expect(owner.readEntity).not.toHaveBeenCalled();
+    }
+  });
+  it("cannot display saved from an incomplete receipt or an unsupported export port", () => {
+    const owner = Object.assign(controller(snapshot("adult")), { getExportSnapshot: () => ({ phase: "complete" as const,
+      receipt: { ...receipt(), bytes: 0, sha256: null } }) });
+    const markup = render(<ParentChildExportStatus controller={owner} />);
+    expect(markup).toContain("The export save could not be confirmed."); expect(markup).not.toContain("The export file was saved.");
+    expect(render(<NativeProfileExportControl controller={owner} profileId="native-profile" label="Reader" />)).toContain("disabled");
+    expect(owner.perform).not.toHaveBeenCalled();
+  });
 });

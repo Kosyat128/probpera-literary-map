@@ -48,6 +48,7 @@ export default function CountryFlagIcon({
     <img
       className={`country-flag-icon ${className}`.trim()}
       src={source}
+      draggable={false}
       alt={decorative ? "" : countryName}
       width={size}
       height={size}

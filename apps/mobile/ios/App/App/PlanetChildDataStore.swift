@@ -806,6 +806,65 @@ extension PlanetChildDataStore {
 extension PlanetChildDataStore {
     /** No namespace creation for an empty parent registry; read inspection
      * neither mints a lease nor adopts a missing/orphan/partially born store. */
+    /** Read-only original native Gate permission. Both encrypted native owners
+     * are fenced; the complete actual DataStore is read back before custody. */
+    static func sdkParentExport(_ permit: PlanetChildLocalV2ExportReadPermit) throws -> Data {
+        try permit.check();let store=try PlanetChildDataStore(runId:nil,deferredBirth:true)
+        return try store.locked { directory in
+            try permit.check();try store.existingOnly(directory);let birth=try store.knownBirth(directory);try permit.retainedBirth(birth)
+            let state=try store.read(directory);defer { state.wipe() };try require(state.scope==nil && state.pendingMigration==nil && state.offlineProcess==nil)
+            let profiles=try permit.profiles();if state.admissionBinding==nil { try knownUnboundOrigin(state,id:birth.profileId,nonce:birth.nonce,content:birth.profileContentBinding,empty:birth.emptyChecksum,profiles:profiles) }
+            else { try require(try state.admissionBinding==permit.binding());try knownProfiles(state,profiles) }
+            var before=try encode(state),result=try permit.encode(parentExportProjection(state,profile:permit.profileId()));var handed=false
+            defer { before.resetBytes(in:0..<before.count);if !handed { result.resetBytes(in:0..<result.count) } }
+            try permit.check();let actual=try store.read(directory);defer { actual.wipe() };var readback=try encode(actual);defer { readback.resetBytes(in:0..<readback.count) }
+            try require(before==readback);try permit.check();handed=true;return result
+        }
+    }
+    /** Explicit personal-data whitelist. Stored content/route bodies, scopes,
+     * security state and sibling identities are never serialized. */
+    private static func parentExportProjection(_ state: State,profile: String) throws -> [String:Any] {
+        try require(identifier(profile));try validateCollections(state);try validateAppearance(state);try validateJourney(state);try validatePassport(state)
+        var collections=[String:Any]()
+        for purpose in [Purpose.cache,.history,.offline,.search] {
+            var references=[[String:Any]](),revision=state.collectionRevisions[profile+"\n"+purpose.rawValue] ?? 0
+            for key in state.entries.keys.sorted() {
+                let split=key.components(separatedBy:"\n");try require(split.count==2);guard split[0]==purpose.rawValue else { continue }
+                let scope=try keyScope(purpose,key:split[1]);guard scope.profileId==profile else { continue };let stored=state.entries[key]!
+                try envelope(purpose,key:split[1],scope:scope,bytes:stored.value);let row=try JSONSerialization.jsonObject(with:stored.value) as! [String:Any]
+                let roots: [Any]
+                if purpose == .history || purpose == .search { roots=row["references"] as! [Any];if purpose == .search { revision=stored.revision } }
+                else { roots=[(row["entries"] as! [[String:Any]])[0]["reference"]!] }
+                for raw in roots { let ref=try reference(raw);references.append(["kind":ref.0,"id":ref.1,"contentChecksum":ref.2]) }
+            }
+            try require(references.count<=(purpose == .history ? 100:purpose == .search ? maxSlots:64))
+            collections[purpose == .cache ? "favorites":purpose == .history ? "recent":purpose == .offline ? "offline":"search"]=["revision":revision,"references":references]
+        }
+        let appearance=state.appearances[profile],journeys=state.journeys[profile],passport=state.passports[profile]
+        let progress=journeys.map { entry in entry.progress.keys.sorted().map { entry.progress[$0]!.dto } } ?? []
+        var countries=[String](),credits=[[String:Any]](),completed=[[String:Any]](),awards=[[String:Any]](),routes=[[String:Any]](),objects=[[String:Any]](),downloads=[[String:Any]]()
+        if let passport {
+            let ledger=passport.ledger;countries=ledger.countries
+            for c in ledger.learning { credits.append(["journeyId":c.journeyId,"journeyVersion":c.journeyVersion,"contentVersion":c.contentVersion,"nodeId":c.nodeId,"kind":c.kind,"entityId":c.entityId]) }
+            for c in ledger.completedJourneys { completed.append(["journeyId":c.journeyId,"journeyVersion":c.journeyVersion,"contentVersion":c.contentVersion,"nodeIds":c.nodeIds]) }
+            for a in ledger.badges { awards.append(["programId":a.programId,"programVersion":a.programVersion,"badgeId":a.badgeId,"ruleVersion":a.ruleVersion,"journeyId":a.journeyId,"journeyVersion":a.journeyVersion,"contentVersion":a.contentVersion,"trigger":a.trigger,"nodeIds":a.nodeIds]) }
+            for route in ledger.downloadedRoutes { routes.append(["journeyId":route.journeyId,"journeyVersion":route.journeyVersion,"contentVersion":route.contentVersion,"locale":route.locale,"bytes":route.bytes.count,"sha256":route.snapshotChecksum]) }
+            for object in ledger.binaryObjects.sorted(by:{ $0.checksum<$1.checksum }) { objects.append(["sha256":object.checksum,"mime":object.mime,"bytes":object.bytes]) }
+            var selected=[String:[String:Any]]()
+            for route in ledger.downloadedRoutes {
+                let items=try PlanetChildPassportRouteCodec.objects(route).count
+                selected[route.journeyId+"\n"+route.locale]=["journeyId":route.journeyId,"locale":route.locale,"status":"saved","completedMediaItems":items,"totalMediaItems":items,"reusedMediaItems":route.reusedItems]
+            }
+            for stage in ledger.routeDownloads {
+                let items=try PlanetChildPassportRouteCodec.objects(stage.manifest).count
+                selected[stage.identity]=["journeyId":stage.manifest.journeyId,"locale":stage.manifest.locale,"status":stage.completed==items ? "saved":"partial","completedMediaItems":stage.completed,"totalMediaItems":items,"reusedMediaItems":stage.reused]
+            }
+            downloads=selected.keys.sorted().map { selected[$0]! }
+        }
+        return ["collections":collections,"appearance":["revision":appearance?.revision ?? 0,"selection":appearance?.selection?.dto as Any? ?? NSNull()],
+            "journeys":["revision":journeys?.revision ?? 0,"activeJourneyId":journeys?.activeJourneyId as Any? ?? NSNull(),"progress":progress],
+            "passport":["revision":passport?.revision ?? 0,"countries":countries,"credits":credits,"completedJourneys":completed,"awards":awards,"routes":routes],"downloads":["objects":objects,"routes":downloads]]
+    }
     static func sdkInspectOriginal(_ permit: PlanetChildLocalV2SDKReadPermit) throws {
         try permit.check()
         if try permit.emptyProfiles() && permit.emptyMayBeAbsent() {
@@ -1638,6 +1697,49 @@ extension PlanetChildDataStore {
             if scenario=="active-facts" { var changed=ledger;try changed.openCountry("country-forged");state.passports[profile]=PassportEntry(revision:1,ledger:changed);var altered=try encode(state);defer { altered.resetBytes(in:0..<altered.count) };fields[9]=digest(altered) }
             var denied=false;do { try store.validateStageBase(fields,state) } catch { denied=true };try require(denied);return true
         }
+    }
+}
+#endif
+
+#if DEBUG
+extension PlanetChildDataStore {
+    private static func fixtureParentExportProfile() -> [String:Any] {
+        ["id":"fixture-reader-one","label":"Читатель","exactAge":9,"ageBand":"9-11","locale":"ru","ageConfirmedAt":"2026-10-01T00:00:00.000Z","readingLevel":"plain","allowedTopics":NSNull(),"blockedTopics":[String](),"soundEnabled":false,"motion":"calm","narrationEnabled":false,"localeLocked":false]
+    }
+    private static func fixtureParentExportState() throws -> State {
+        let state=try fixtureAppearanceState();state.sdkAppearance=true;state.sdkJourney=true;state.sdkPassport=true
+        for profile in state.seals.keys {
+            let progress=try PlanetChildJourney.Progress(journeyId:"journey-one",journeyVersion:2,contentVersion:2,currentNodeId:nil,completedNodeIds:["node-one","node-two","z-retired-node"],selectedCountryId:"country-one",selectedWriterId:nil,selectedWorkId:nil,lastSafeRoute:"journey")
+            state.journeys[profile]=JourneyEntry(revision:7,activeJourneyId:"journey-one",progress:["journey-one":progress])
+            var ledger=PlanetChildPassport.Ledger();try ledger.openCountry("country-one");try ledger.complete(PlanetChildPassport.Learning(journeyId:"journey-one",nodeId:"node-one",kind:"writer",entityId:"writer-one",journeyVersion:2,contentVersion:2),nil)
+            try ledger.complete(PlanetChildPassport.Learning(journeyId:"journey-one",nodeId:"node-two",kind:"work",entityId:"work-one",journeyVersion:2,contentVersion:2),PlanetChildPassport.CompletedJourney(journeyId:"journey-one",journeyVersion:2,contentVersion:2,nodeIds:["node-one","node-two"]))
+            var route=try PlanetChildPassportFixtureBytes.route("journey-one");defer { route.dispose() };try ledger.save(route)
+            state.passports[profile]=PassportEntry(revision:3,ledger:ledger);state.appearances[profile]=AppearanceEntry(revision:5,selection:try fixtureAppearanceSelection())
+            let scope=state.seals[profile]!.scope,scopeDTO: [String:Any]=["schemaVersion":1,"namespace":"child","profileId":scope.profileId,"profileRevision":scope.profileRevision,"exactAge":scope.exactAge,"locale":scope.locale,"policyVersion":scope.policyVersion,"policyChecksum":scope.policyChecksum,"packageId":scope.packageId,"packageVersion":scope.packageVersion,"packageChecksum":scope.packageChecksum]
+            state.entries["history\n"+scope.key(.history)]=Stored(revision:7,value:try JSONSerialization.data(withJSONObject:["schemaVersion":1,"scope":scopeDTO,"references":[Any]()],options:.sortedKeys));state.collectionRevisions[collectionId(scope,.history)]=9
+            for purpose in [Purpose.cache,.offline] {
+                let kind=purpose == .cache ? "favorite":"offline-package",id=kind+"-one",key=try scope.itemKey(purpose,kind:kind,id:id)
+                let row: [String:Any]=["reference":["kind":kind,"id":id,"contentChecksum":scope.packageChecksum],"payload":["title":"Fixture","text":"LICENSED-BODY-SENTINEL","terms":[Any](),"references":[Any]()]]
+                state.entries[purpose.rawValue+"\n"+key]=Stored(revision:11,value:try JSONSerialization.data(withJSONObject:["schemaVersion":1,"scope":scopeDTO,"entries":[row]],options:.sortedKeys));state.collectionRevisions[collectionId(scope,purpose)]=5
+            }
+        };return state
+    }
+    /** Synthetic actual codec state, never native read permission or admission. */
+    static func fixtureParentExportBytes(populated: Bool) throws -> Data {
+        let state=try populated ? fixtureParentExportState():State();state.nonce=String(repeating:"1",count:32);defer { state.wipe() }
+        var before=try encode(state);defer { before.resetBytes(in:0..<before.count) };var snapshot=try PlanetChildParentExportCodec.wrap(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"))
+        do { var after=try encode(state);defer { after.resetBytes(in:0..<after.count) };try require(before==after);return snapshot } catch { snapshot.resetBytes(in:0..<snapshot.count);throw error }
+    }
+    static func fixtureParentExportScenario(_ name: String) throws -> Bool {
+        try require(["isolation","revision-digest","corrupt","no-secret-profile"].contains(name));let state=try fixtureParentExportState();defer { state.wipe() }
+        var before=try PlanetChildParentExportCodec.wrap(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"));defer { before.resetBytes(in:0..<before.count) }
+        if name=="isolation" {
+            let sibling=state.passports["fixture-reader-two"]!;var ledger=sibling.ledger;try ledger.openCountry("sibling-secret-country");state.passports["fixture-reader-two"]=PassportEntry(revision:sibling.revision+1,ledger:ledger);state.appearances["fixture-reader-two"]=AppearanceEntry(revision:99,selection:try fixtureAppearanceSelection("two"))
+            var after=try PlanetChildParentExportCodec.wrap(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"));defer { after.resetBytes(in:0..<after.count) };try require(before==after && !String(decoding:after,as:UTF8.self).contains("fixture-reader-two"));return true
+        }
+        if name=="revision-digest" { state.collectionRevisions["fixture-reader-one\ncache"]=6;var after=try PlanetChildParentExportCodec.wrap(fixtureParentExportProfile(),parentExportProjection(state,"fixture-reader-one"));defer { after.resetBytes(in:0..<after.count) };try require(digest(before) != digest(after));return true }
+        if name=="corrupt" { var actual=try encode(state);defer { actual.resetBytes(in:0..<actual.count) };actual.append(0);var denied=false;do { let unexpected=try decode(actual);unexpected.wipe() } catch { denied=true };try require(denied);return true }
+        var invalid=fixtureParentExportProfile();invalid["verifier"]="SECRET";var denied=false;do { var unexpected=try PlanetChildParentExportCodec.wrap(invalid,parentExportProjection(state,"fixture-reader-one"));unexpected.resetBytes(in:0..<unexpected.count) } catch { denied=true };try require(denied);return true
     }
 }
 #endif
