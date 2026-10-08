@@ -1,3 +1,17 @@
+## Current S16 parent-profile export checkpoint — 2026-10-08
+
+Integrated source 444180873d8c8e53b919f015942fcef5f7c8d2ee; fingerprint 2c42746ed42483fa12099653daf7cac012714f495533fc2b7e0e69638940e6bb; 1912 rows. Parent Gate-protected local export now has reviewed client/native code for the selected child profile, strict save/cancel/error receipts and owned temporary-file cleanup. Original native PIN authority and closed readback remain required; export receipts do not admit a child context. Booky model and glove owners remain unchanged.
+
+One actual local QA cycle passed: root PID 27576, TSC PID 28064 exit 0; Vitest PID 22276, 90/90 assertions in exactly three files; Java PID 27724, both exact app/main and androidTest compile tasks executed with offline/no-build-cache. Original 821-byte compiler stderr is retained. Native13 fixtures are AUTHORED_NOT_RUN; Swift NOT_RUN; installed OS/file-picker and secure storage acceptance NOT_VERIFIED. No new APK/PWA artifact or formal criterion acceptance is claimed.
+
+The bounded Booky packet completed under root PID 28400 at source d039 / reviewed HEAD e97; 10305 entries passed byte-SHA and ZIP metadata checks. Historical proof coverage remains partial, releaseReady=false; CRC, extraction, restore and rebuild NOT_RUN. The packet and standard artifacts do not represent current S16 source444. Original PID 4756 Git FAIL and PID 21864 prewrite-budget FAIL remain preserved.
+
+Original four external conditions retain exact source/time/status and NOT_RECHECKED; PSP UNSELECTED, seven owner actions and five human RU/EN reviews remain pending. S03:11 OPEN plus acceptance IN_PROGRESS; S16:36 unresolved. No stage, criterion, acceptance or mapping change; remoteActions=0.
+
+Evidence: docs/mobile/evidence/S16/parent-profile-export-20261008/result.json. Next: original S16.CHPRIV-007 age-appropriate RU/EN notice in isolated parent-child-privacy-a1; independent review/root integration, its eight new tests, TypeScript and browser presentation. Fresh PWA/Android APK preparations follow the completed production batch. No old QA/build/Booky packet rerun, seventh unchanged AVD attempt, remote/push/merge/deploy/store action or report-only D stage.
+
+Historical checkpoint text below is preserved byte-for-byte.
+
 ## Current Booky checkpoint — 2026-10-08 (requested cuffs and fingers integrated)
 
 Source d03997b8bb1021f19141c897b3f539bf33a88562; fingerprint 7c1e95367f6c9b43396ce3efbe7af8afa584c0f9f7e516b62904c20866aecb25; 1910 rows. Both original boot ankle rings restored/fitted and classic rounded gloves refined with four fingers and an opposing thumb per hand. Existing boots, face, rig, animations, controls, equal RU/EN and canonical globe preserved. Whole preferred portrait likeness remains NOT_APPROVED.
