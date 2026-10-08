@@ -1,5 +1,5 @@
 /** Explicit local preparation; never exports CMS, installs or contacts services. */
-import fs from 'node:fs/promises';import path from 'node:path';import {spawn}from'node:child_process';import {randomUUID}from'node:crypto';import {fileURLToPath}from'node:url';import {captureReleaseInputs,sha256}from'./release-readiness.mjs';import {nativeRuntimeSources,parseAndroidPackage,parseAndroidCertificate,inspectPreviousAndroidApk,createPreviousAndroidArtifact,validatePreviousAndroidArtifact}from'./native-install-runtime.mjs';
+import fs from 'node:fs/promises';import path from 'node:path';import {spawn}from'node:child_process';import {randomUUID}from'node:crypto';import {fileURLToPath}from'node:url';import {captureReleaseInputs,sha256}from'./release-readiness.mjs';import {nativeRuntimeSourceRoots,nativeRuntimeSources,parseAndroidPackage,parseAndroidCertificate,inspectPreviousAndroidApk,createPreviousAndroidArtifact,validatePreviousAndroidArtifact}from'./native-install-runtime.mjs';
 import {verifyNativeArtifact} from './verify-native-artifact.mjs';
 import {isLocalCliEntry} from './local-cli-entry.mjs';
 import {verifyCopiedPublic} from './ios-simulator-build.mjs';
@@ -9,13 +9,12 @@ const ownData=value=>value!==null&&typeof value==='object'&&!Array.isArray(value
 const dense=value=>Array.isArray(value)&&Object.keys(value).length===value.length&&Object.keys(value).every((key,index)=>key===String(index));
 const requireTrue=(condition,message)=>{if(condition!==true)throw new Error(message);};
 const resumePath=value=>typeof value==='string'&&/^\.tmp\/mobile-release-android-[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}\/preparation\.json$/u.test(value);
-const nativeSourceRoots=['src','apps/mobile/android','apps/mobile/ios','native.html','vite.native.config.ts','vite.config.ts','tsconfig.json','package.json','package-lock.json','capacitor.config.json','scripts/mobile/build-native.mjs','scripts/mobile/native-base-assets.json','scripts/mobile/pwa-artifact.mjs'];
 
 export function validateAndroidResumeSources(previousFiles,currentInputs){
  requireTrue(dense(previousFiles)&&previousFiles.length>0&&previousFiles.length<=12000&&ownData(currentInputs)&&dense(currentInputs.files)&&currentInputs.files.length>0&&currentInputs.files.length<=12000,'Missing bounded prior/current raw source set.');
  const validFile=file=>ownData(file)&&Object.keys(file).sort().join(',')==='path,sha256'&&typeof file.path==='string'&&hash(file.sha256);
  requireTrue(previousFiles.every(validFile)&&currentInputs.files.every(validFile),'Malformed source entry.');
- const previous=previousFiles.filter(file=>nativeSourceRoots.some(prefix=>file.path===prefix||file.path.startsWith(prefix+'/'))&&!/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(file.path));
+ const previous=previousFiles.filter(file=>nativeRuntimeSourceRoots.some(prefix=>file.path===prefix||file.path.startsWith(prefix+'/'))&&!/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(file.path));
  requireTrue(JSON.stringify(previous)===JSON.stringify(currentInputs.files),'Compiled native app/config source set or raw bytes changed since the failed attempt.');
  return true;
 }

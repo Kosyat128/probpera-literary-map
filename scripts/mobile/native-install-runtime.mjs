@@ -175,11 +175,11 @@ export function verifyNativeProtectedFixtureSources(files) {
     'Missing required structural envelope fixture source binding.');
   return true;
 }
+export const nativeRuntimeSourceRoots = Object.freeze(['src', 'apps/mobile/android', 'apps/mobile/ios', 'native.html', 'vite.native.config.ts', 'vite.config.ts',
+    'tsconfig.json', 'package.json', 'package-lock.json', 'capacitor.config.json', 'scripts/mobile/build-native.mjs', 'scripts/mobile/native-base-assets.json', 'scripts/mobile/pwa-artifact.mjs', 'scripts/mobile/native-child-package-assets.mjs']);
 export async function nativeRuntimeSources(rootDir) {
   const root = await realpath(rootDir);
-  const roots = ['src', 'apps/mobile/android', 'apps/mobile/ios', 'native.html', 'vite.native.config.ts', 'vite.config.ts',
-    'tsconfig.json', 'package.json', 'package-lock.json', 'capacitor.config.json', 'scripts/mobile/build-native.mjs', 'scripts/mobile/native-base-assets.json', 'scripts/mobile/pwa-artifact.mjs', 'scripts/mobile/native-child-package-assets.mjs'];
-  const names = execFileSync('git', ['-c', 'safe.directory=' + root, 'ls-files', '-z', '--cached', '--others', '--exclude-standard', '--', ...roots],
+  const names = execFileSync('git', ['-c', 'safe.directory=' + root, 'ls-files', '-z', '--cached', '--others', '--exclude-standard', '--', ...nativeRuntimeSourceRoots],
     { cwd: root, encoding: 'utf8', maxBuffer: 4 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] }).split('\0');
   const files = [];
   for (const filename of [...new Set(names.filter(name => name && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(name)))].sort())
