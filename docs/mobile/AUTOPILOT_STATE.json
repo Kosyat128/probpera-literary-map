@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "48a4df5df30a30e397c79e107340194ee2672acf",
+  "headSha": "5ed051815e0c4f5dbbb6357500b2cabe1e461452",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-08T03:13:40.984Z",
+  "updatedAt": "2026-10-08T05:16:15.379Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue original S16.BIL-009 with actual child-native-locale-transition-a2 production adapters on source48a4df5d/FP5346f667/1921: strict child command/plugin/transport, actual original AppOwner and lifecycle/deadline, typed native writer/process-clock, target-package preflight, joined recipients/workers, durable migration/native ACK/closed readback and fresh context admission. Finish canonical language-neutral reading/narration position continuity and use the same globe/provider. Parent allowed-language policy and lock are implemented with local QA only; full BIL009 remains OPEN. Finish the one combined RU-keyboard/EN-touch 320px browser fixture after its frozen source review and binding to actual report HEAD; no lock-only or old suites rerun. Preserve all S03/S16 criteria, original failures, six dependent tasks, four original conditions NOT_RECHECKED, PSP UNSELECTED, seven owner actions/five human reviews. Swift/native fixture runtime/installed OS/human acceptance pending. Retained standard artifacts remain source3d7 and older bounded packet remains d039/e97; prepare fresh builds/package once the coherent remaining production batch is complete. No unchanged AVD attempt, report-only D stage, remote/push/merge/deploy/store.",
+    "nextAction": "Continue the coordinated isolated child-narration-resume-a1 batch in D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-resume-a1: native owner sol_parent_export_review and client owner sol_next_local_gap_after_export must connect actual signed canonical narration cues to native prepare/pause/seek/resume and playback-observed canonical checkpoint plus truthful current-context readback. Do not invent alignment, audio seconds or credit. Integrated child locale transition and canonical reading ledger have local retained TSC/221 Vitest assertions plus proper Node TAP and first Android Java compile QA; full S16.BIL-009 remains OPEN. Actual native audio seek, Swift compilation/runtime, installed OS and human acceptance remain pending. The prior source48a 320px RU-keyboard/EN-touch parent-controls fixture is bounded presentation evidence only; it does not admit current child/audio/native Gate/OS/full App/globe. Preserve original root17824/1 FAIL, browser3132/1 FAIL, older failures, original six dependent tasks, four original conditions NOT_RECHECKED, PSP UNSELECTED, seven owner actions and five human reviews. Retained standard PWA/main+test APKs remain source3d7 and older bounded packet d039/e97. Complete coherent affected QA and the bounded browser flow, then prepare fresh builds/package once the remaining production batch is complete. Preserve both white ankle rings, five-digit gloves and the one canonical globe; no unchanged AVD retry, repeated old QA, report-only D stage, remote/push/merge/deploy/store.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",

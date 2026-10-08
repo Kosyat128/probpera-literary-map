@@ -1,0 +1,1679 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_LOCAL_CHILD_LOCALE_READING_PARTIAL_NOT_FULL_BIL009_OR_RELEASE",
+  "generatedAt": "2026-10-08T05:16:15.379Z",
+  "actualCheckpointPid": 3968,
+  "sourceCommit": "5ed051815e0c4f5dbbb6357500b2cabe1e461452",
+  "reviewedHead": "5ed051815e0c4f5dbbb6357500b2cabe1e461452",
+  "sourceFingerprint": "bd899b582d14d254770241a7cf89581d1ed823f0289cfd5190a8f9cc403173fd",
+  "sourceRows": 1935,
+  "changes": [
+    "Actual registered child locale command with original-context lifecycle/deadline, selected-profile CAS, explicit unlocked allowed-target package preflight, joined native ACK/closed readback",
+    "Signed canonical reading anchor map and strict versioned ledger preserve legacy payload/hash bytes; unknown prior mapping refuses resume/write",
+    "Actual Journey/ReadingView wiring binds private content to original context and performs genuine reading ledger readback; native narration seek remains pending"
+  ],
+  "proofs": {
+    "checkpointInput": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\checkpoint-merged-admission.root.bound.json",
+      "sha256": "6c900d8c507990d88d42cbfd4fa9635278c5b2de53c99eac293fc16c546a2fd2",
+      "bytes": 5103
+    },
+    "helper": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\checkpoint-merged-root-a1.mjs",
+      "sha256": "49a46b8d9452b4c5c12104fb6edfcc6b57c23175fd0e9f05ed9f605ffe6be5da",
+      "bytes": 27723
+    },
+    "qa": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\result.json",
+      "sha256": "8cdffd2d4d033351cebda4e7d7725f1ef76a30db7011d2fd6df007b35af3c11a",
+      "bytes": 58705
+    },
+    "qaRoot": {
+      "terminal": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-root-a2\\terminal.json",
+        "sha256": "6065d5e0e46a0da3e032d72d341507fd569e5ce6935bb9f3037edddfd9b6268b",
+        "bytes": 292
+      },
+      "launch": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-root-a2\\launch.json",
+        "sha256": "469b0406f0dfba71b1cda5827789e174d7fc33106157fd86193aa5fa54199a64",
+        "bytes": 1118
+      },
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-root-a2\\stdout.bin",
+        "sha256": "13938f53d1e11284910f4a09d4dc9ffcec3e59af7d7ef6de338dfade69ed5f3e",
+        "bytes": 1603
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-root-a2\\stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "launcherInput": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-launch.root.bound.json",
+        "sha256": "354eefc20d9431cad612b0e593988f97b6b0df41a92936cb245add9efd46ec7f",
+        "bytes": 1647
+      }
+    },
+    "followupFreeze": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-freeze-a2.json",
+      "sha256": "ae83c2c725887dffa0277dba08b62c5683e2bce0e4feacc226522d371805d395",
+      "bytes": 7275
+    },
+    "integration": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\integration-run-a1\\result.json",
+      "sha256": "734f861f31d2504f3f1ef32b097a7bc59c2a342aef8367104f8c11bdec2ff964",
+      "bytes": 23227
+    },
+    "integrationRootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\integration-root-a1\\terminal.json",
+      "sha256": "aa1b2a1a53662a338aa0ebb8bb50fed1f846b08ca6a16462ff879873bf4e0167",
+      "bytes": 292
+    },
+    "mergePlan": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\root-merge-plan.bound.json",
+      "sha256": "ca33bae82d2f8ffc2190a8a6bc5f80f0d03c0ff1ae7a5c74601623f6401da4b4",
+      "bytes": 10509
+    },
+    "bundles": [
+      {
+        "id": "native",
+        "manifest": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-native-locale-transition-a2\\manifest.json",
+          "sha256": "32a9ff0b2478f80c04d73ec6672625ced5945bcd14c1e8b7c652af10fcb010ec",
+          "bytes": 21120
+        },
+        "review": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-native-locale-transition-a2\\source-review-sol-a2-final.json",
+          "sha256": "a566920be8320066403aa5a5ca77ffaad8ef5c2668691399dd8db3423a6e00a9",
+          "bytes": 14241
+        },
+        "focusedCases": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-native-locale-transition-a2\\focused-cases.json",
+          "sha256": "88b28aaf27840e673cc4357b0c248ed79ee8872897bd5846ddac39cd7b62a801",
+          "bytes": 2457
+        }
+      },
+      {
+        "id": "reading",
+        "manifest": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-reading-position-a2\\manifest.json",
+          "sha256": "3a610e7a2a458844c14bde677163cf80fba9ba873d2677405579281b04ef0a5e",
+          "bytes": 18184
+        },
+        "review": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-reading-position-a2\\source-review-sol-a2.json",
+          "sha256": "5d876dc4039b677a444eec5ee4f6c8976ba74bacf253da576ede3c455ed9aef8",
+          "bytes": 11173
+        },
+        "focusedCases": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-reading-position-a2\\focused-cases.json",
+          "sha256": "810d53f975163ec6811cb3b012e3ead7307fc27e32d125fa702caee3f6b414d6",
+          "bytes": 5256
+        }
+      }
+    ]
+  },
+  "qa": {
+    "actualRootPid": 12964,
+    "status": "PASS_LOCAL_RETAINED_TSC_221_VITEST_AND_NEW_NODE_JAVAC_ORIGINAL_FAIL_RETAINED",
+    "retainedTsc": {
+      "process": {
+        "record": {
+          "mode": "tsc",
+          "startedAt": "2026-10-08T04:50:24.906Z",
+          "finishedAt": "2026-10-08T04:50:46.459Z",
+          "actualPid": 19912,
+          "actualParentPid": 17824,
+          "actualExitCode": 0,
+          "signal": null,
+          "naturalCloseObserved": true,
+          "naturalStatus": "PASS",
+          "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "executable": {
+            "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+            "bytes": 237988664,
+            "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+          },
+          "processRuntimeQualification": "Original child preload pid/version/path observed",
+          "args": [
+            "--import",
+            "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGNoaWxkLWxvY2FsZS1yZWFkaW5nLWludGVncmF0aW9uLWExXFxxYS1ydW4tYTFcXHRzY1xccnVudGltZS5qc29uIixKU09OLnN0cmluZ2lmeSh7cGlkOnByb2Nlc3MucGlkLHBhcmVudFBpZDpwcm9jZXNzLnBwaWQsdmVyc2lvbjpwcm9jZXNzLnZlcnNpb24sZXhlY1BhdGg6cHJvY2Vzcy5leGVjUGF0aCxlbGVjdHJvblJ1bkFzTm9kZTpwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSxhcmd2OnByb2Nlc3MuYXJndn0sbnVsbCwyKSsnXG4nLHtmbGFnOid3eCd9KTtpZihwcm9jZXNzLnZlcnNpb24hPT0ndjI0LjIxLjAnfHxwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSE9PScxJyl0aHJvdyBFcnJvcignT1dORURfQ0hJTERfUlVOVElNRV9DSEFOR0VEJyk7",
+            "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\typescript\\lib\\tsc.js",
+            "--noEmit"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "launch": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\tsc\\launch.json",
+            "sha256": "9ea47f9310339a439682a720275a3f9714fd29c4fa8d47c283908359bc89b9c8",
+            "bytes": 1275
+          },
+          "runtime": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\tsc\\runtime.json",
+            "sha256": "ca42d8b8116e823cdc4e987bce2c3f61fa90d6e93d9447dfd62628ace83df222",
+            "bytes": 412
+          },
+          "runtimeValid": true,
+          "runtimeError": null,
+          "stdout": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\tsc\\stdout.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "stderr": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\tsc\\stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "spawnError": null,
+          "receiptError": null,
+          "deadlineReported": false,
+          "deviceTested": false
+        },
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\tsc\\terminal.json",
+          "sha256": "cff5bf1ba47d20f1ccd1b1ebc83fe2aa5f7b5eb045da0956c3b01553a8b8816c",
+          "bytes": 3290
+        }
+      },
+      "qualification": "ORIGINAL_NATURAL_PASS_NOT_REPEATED"
+    },
+    "retainedVitest": {
+      "process": {
+        "record": {
+          "mode": "units",
+          "startedAt": "2026-10-08T04:50:48.430Z",
+          "finishedAt": "2026-10-08T04:50:53.728Z",
+          "actualPid": 2904,
+          "actualParentPid": 17824,
+          "actualExitCode": 1,
+          "signal": null,
+          "naturalCloseObserved": true,
+          "naturalStatus": "FAIL",
+          "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "executable": {
+            "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+            "bytes": 237988664,
+            "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+          },
+          "processRuntimeQualification": "Original child preload pid/version/path observed",
+          "args": [
+            "--import",
+            "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGNoaWxkLWxvY2FsZS1yZWFkaW5nLWludGVncmF0aW9uLWExXFxxYS1ydW4tYTFcXHVuaXRzXFxydW50aW1lLmpzb24iLEpTT04uc3RyaW5naWZ5KHtwaWQ6cHJvY2Vzcy5waWQscGFyZW50UGlkOnByb2Nlc3MucHBpZCx2ZXJzaW9uOnByb2Nlc3MudmVyc2lvbixleGVjUGF0aDpwcm9jZXNzLmV4ZWNQYXRoLGVsZWN0cm9uUnVuQXNOb2RlOnByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFLGFyZ3Y6cHJvY2Vzcy5hcmd2fSxudWxsLDIpKydcbicse2ZsYWc6J3d4J30pO2lmKHByb2Nlc3MudmVyc2lvbiE9PSd2MjQuMjEuMCd8fHByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFIT09JzEnKXRocm93IEVycm9yKCdPV05FRF9DSElMRF9SVU5USU1FX0NIQU5HRUQnKTs=",
+            "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+            "run",
+            "src/child/childReadingPosition.test.ts",
+            "src/child/childReadingSession.test.ts",
+            "src/child/ChildNativeReadingView.test.tsx",
+            "scripts/mobile/native-child-reading-position-assets.test.mjs",
+            "src/child/childNativeChildLocale.test.ts",
+            "src/child/ChildNativeLocaleControl.test.tsx",
+            "src/child/childNativeAppBridge.test.ts",
+            "src/child/ChildNativeBoundary.test.tsx",
+            "src/child/childNativeLocaleLock.test.ts",
+            "src/child/childNativeLocalePolicy.test.ts",
+            "src/child/childIndex.test.ts",
+            "src/child/ChildNativeJourneyView.test.tsx",
+            "scripts/mobile/native-child-package-assets.test.mjs",
+            "scripts/mobile/native-child-media-assets.test.mjs",
+            "--exclude=docs/**",
+            "--reporter=json",
+            "--outputFile=D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\vitest.json"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "launch": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\launch.json",
+            "sha256": "a7a4d17ca978c7750bbd8a7ca543102228c4d6e836b5ba5c76fc7d33099d2865",
+            "bytes": 2242
+          },
+          "runtime": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\runtime.json",
+            "sha256": "09b1851b41d26ceec9f242f77d60781b91dd0717194c22520b64a121b8f61781",
+            "bytes": 1373
+          },
+          "runtimeValid": true,
+          "runtimeError": null,
+          "stdout": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\stdout.bin",
+            "sha256": "8caefc1d182c18ad257e6603f64d75a7a602bb34cd7ac1a8e51ea8e88d7947ef",
+            "bytes": 689,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "stderr": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "spawnError": null,
+          "receiptError": null,
+          "deadlineReported": false,
+          "deviceTested": false
+        },
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\terminal.json",
+          "sha256": "26f59c3917673c2d711ec7318fdae8e1dcb96d6f1f8e3939e11e7cc23783fdad",
+          "bytes": 4268
+        }
+      },
+      "report": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\units\\vitest.json",
+        "sha256": "8f6ec0968877e738ff5fffc97de71395466e5f69fdfcd897b8a70ba4bd6009a3",
+        "bytes": 92222
+      },
+      "passedFiles": 13,
+      "passedCases": 221,
+      "passedFocusedCases": 46,
+      "actualFocusedFullTitles": [
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal refuses legacy policy absence and every lock except explicit false",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal refuses a cloned context and a no-op locale without dispatch",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal joins old presentation and sends only the dedicated native correlation fields",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal accepts a configured selected profile with an unchanged legacy sibling without policy",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal rejects an old native context and never retries bootstrap",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal rejects an unrelated target package context revision",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal rejects sibling changes in an otherwise fresh native reply",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal rejects wrong policy and expired original deadline after a native reply",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal seals immediately on background and refuses a late native successor",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 actual child locale proposal a replacement proposal only retires the accepted original",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 real reading bridge returns truthful absence from the native current profile",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 real reading bridge requires exact CAS increment and canonical position ACK",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 real reading bridge refuses malformed and mismatched proposals before native write",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "fullTitle": "S16 BIL009 real reading bridge uncorrelated reading write ACK seals and cannot refresh old authority",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/ChildNativeLocaleControl.test.tsx",
+          "fullTitle": "S16 BIL009 child native locale control shows allowed native locale proposals with original current locale pressed and disabled",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/ChildNativeLocaleControl.test.tsx",
+          "fullTitle": "S16 BIL009 child native locale control hides controls for parent-locked and unknown legacy lock",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/ChildNativeLocaleControl.test.tsx",
+          "fullTitle": "S16 BIL009 child native locale control does not advertise another language when parent configured current-only policy",
+          "bundleId": "native"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec keeps canonical entity and anchor identity across explicitly aligned RU and EN without localized offsets",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec preserves legacy four-field payload bytes and includes only explicitly owned valid anchors",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec refuses unknown schemas duplicate IDs holes inconsistent text and inferred empty segments",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec refuses accessors and hostile reflection traps without evaluating content getters",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec refuses locale seconds checksum completion wrapper entities and invalid stable IDs in bookmarks",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec returns deeply frozen copied graphs and preserves case-sensitive canonical IDs",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec retains unknown saved anchors but refuses their resume without guessing version or entity mappings",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec distinguishes authentic absence from transport failure and requires owner-matched revision-incremented ACK",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "fullTitle": "S16 BIL009 canonical reading position codec binds explicit narration cues to complete ordered frames while keeping frames out of the bookmark",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session performs no RPC before activation and reads authentic absence without writing or granting completion",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session writes only an explicit known anchor and paints only exact native revision-incremented ACK",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session preserves the original unknown anchor without automatic remap overwrite or retry",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session refuses same-revision sibling mismatched-anchor and null ACK without optimistic replacement",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session ignores a late read after locale generation package or selected owner changes even if the token is reused",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session ignores a late save after synchronous lifecycle sealing with no replay",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session rejects inactive expired adult package-absent and mismatched-locale contexts before dispatch",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session refuses a duplicate save and refresh during an outstanding explicit write",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session supports effect cleanup and fresh reactivation while ignoring the first late reply",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session retains read/save failures honestly and retries only on an explicit refresh",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "fullTitle": "S16 BIL009 current-context reading session keeps legacy plain text and an absent native reading port free of synthetic ledger calls",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "fullTitle": "S16 BIL009 native reader position presentation has complete RU and EN actions with honest unknown and unconfirmed-save wording",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "fullTitle": "S16 BIL009 native reader position presentation renders explicit aligned text safely with disabled initial actions and no RPC or invented saved position",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "fullTitle": "S16 BIL009 native reader position presentation preserves original plain text when signed anchors or the real reading port are absent",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "fullTitle": "S16 BIL009 native reader position presentation clears text and controls for locale token package or CHILD context mismatch",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "fullTitle": "S16 BIL009 native reader position presentation hides anchored legacy and no-port private text on same-token selected-owner or package replacement during render",
+          "bundleId": "reading"
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "fullTitle": "S16 BIL009 native reader position presentation refuses malformed explicit anchors without silently falling back to unreviewed text",
+          "bundleId": "reading"
+        },
+        {
+          "file": "scripts/mobile/native-child-reading-position-assets.test.mjs",
+          "fullTitle": "S16 BIL009 signed logical anchor publisher seams retains the exact legacy owner hash and includes explicit anchor bytes in the reviewed localized owner",
+          "bundleId": "reading"
+        },
+        {
+          "file": "scripts/mobile/native-child-reading-position-assets.test.mjs",
+          "fullTitle": "S16 BIL009 signed logical anchor publisher seams requires a real matching narration relation for the explicit signed cue asset and checksum",
+          "bundleId": "reading"
+        },
+        {
+          "file": "scripts/mobile/native-child-reading-position-assets.test.mjs",
+          "fullTitle": "S16 BIL009 signed logical anchor publisher seams refuses invalid optional alignment instead of upgrading or silently stripping it",
+          "bundleId": "reading"
+        }
+      ],
+      "passedCasesByFile": [
+        {
+          "file": "src/child/childIndex.test.ts",
+          "cases": 53
+        },
+        {
+          "file": "src/child/childNativeAppBridge.test.ts",
+          "cases": 71
+        },
+        {
+          "file": "src/child/ChildNativeBoundary.test.tsx",
+          "cases": 15
+        },
+        {
+          "file": "src/child/childNativeChildLocale.test.ts",
+          "cases": 14
+        },
+        {
+          "file": "src/child/ChildNativeJourneyView.test.tsx",
+          "cases": 3
+        },
+        {
+          "file": "src/child/ChildNativeLocaleControl.test.tsx",
+          "cases": 3
+        },
+        {
+          "file": "src/child/childNativeLocaleLock.test.ts",
+          "cases": 16
+        },
+        {
+          "file": "src/child/childNativeLocalePolicy.test.ts",
+          "cases": 8
+        },
+        {
+          "file": "src/child/ChildNativeReadingView.test.tsx",
+          "cases": 6
+        },
+        {
+          "file": "src/child/childReadingPosition.test.ts",
+          "cases": 9
+        },
+        {
+          "file": "src/child/childReadingSession.test.ts",
+          "cases": 11
+        },
+        {
+          "file": "scripts/mobile/native-child-media-assets.test.mjs",
+          "cases": 9
+        },
+        {
+          "file": "scripts/mobile/native-child-reading-position-assets.test.mjs",
+          "cases": 3
+        }
+      ],
+      "overallOriginalVitestPass": false,
+      "qualification": "PARTIAL_ASSERTIONS_PASS_ORIGINAL_RUN_FAIL_NODE_TEST_SELECTOR"
+    },
+    "nodePackage": {
+      "process": {
+        "record": {
+          "mode": "node-package",
+          "startedAt": "2026-10-08T05:07:05.730Z",
+          "finishedAt": "2026-10-08T05:07:06.021Z",
+          "actualPid": 23508,
+          "actualParentPid": 12964,
+          "actualExitCode": 0,
+          "signal": null,
+          "naturalCloseObserved": true,
+          "naturalStatus": "PASS",
+          "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+          "executable": {
+            "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+            "bytes": 237988664,
+            "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+          },
+          "processRuntimeQualification": "Original child preload pid/version/path observed",
+          "args": [
+            "--import",
+            "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXGNoaWxkLWxvY2FsZS1yZWFkaW5nLWludGVncmF0aW9uLWExXFxxYS1mb2xsb3d1cC1ydW4tYTJcXG5vZGUtcGFja2FnZVxccnVudGltZS5qc29uIixKU09OLnN0cmluZ2lmeSh7cGlkOnByb2Nlc3MucGlkLHBhcmVudFBpZDpwcm9jZXNzLnBwaWQsdmVyc2lvbjpwcm9jZXNzLnZlcnNpb24sZXhlY1BhdGg6cHJvY2Vzcy5leGVjUGF0aCxlbGVjdHJvblJ1bkFzTm9kZTpwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSxhcmd2OnByb2Nlc3MuYXJndn0sbnVsbCwyKSsnXG4nLHtmbGFnOid3eCd9KTtpZihwcm9jZXNzLnZlcnNpb24hPT0ndjI0LjIxLjAnfHxwcm9jZXNzLmVudi5FTEVDVFJPTl9SVU5fQVNfTk9ERSE9PScxJyl0aHJvdyBFcnJvcignT1dORURfQ0hJTERfUlVOVElNRV9DSEFOR0VEJyk7",
+            "--test",
+            "--test-isolation=none",
+            "--test-reporter=tap",
+            "scripts/mobile/native-child-package-assets.test.mjs"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+          "launch": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\node-package\\launch.json",
+            "sha256": "c304979330b9faffc1aa9117474e35fa48019eca899e76e88829b90a6c4bd157",
+            "bytes": 1301
+          },
+          "runtime": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\node-package\\runtime.json",
+            "sha256": "ad85db518f333e722aab435fed3fe47aa1d628c58ae4f49c9192c010860c6448",
+            "bytes": 335
+          },
+          "runtimeValid": true,
+          "runtimeError": null,
+          "stdout": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\node-package\\stdout.bin",
+            "sha256": "556819d569d236e2a6dc672119fc2eac9a0aa05d079a79732a47ca4b703d7723",
+            "bytes": 3527,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "stderr": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\node-package\\stderr.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "spawnError": null,
+          "receiptError": null,
+          "deadlineReported": false,
+          "deviceTested": false
+        },
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\node-package\\terminal.json",
+          "sha256": "148696f591ea64c5bbc9a1b74754db25d45af056fd98ffbcbdd793777c818f66",
+          "bytes": 3391
+        }
+      },
+      "tap": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\node-package\\stdout.bin",
+        "sha256": "556819d569d236e2a6dc672119fc2eac9a0aa05d079a79732a47ca4b703d7723",
+        "bytes": 3527,
+        "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+      },
+      "summary": {
+        "tests": 14,
+        "suites": 1,
+        "pass": 14,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "plans": [
+        {
+          "depth": 4,
+          "parents": [
+            "native child package release assets"
+          ],
+          "count": 14
+        },
+        {
+          "depth": 0,
+          "parents": [],
+          "count": 1
+        }
+      ],
+      "tree": [
+        {
+          "depth": 4,
+          "ordinal": 1,
+          "title": "rejects duplicate decoded keys and malformed UTF-8 before interpretation",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets rejects duplicate decoded keys and malformed UTF-8 before interpretation",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 2,
+          "title": "retains empty production trust and rejects QA keys or caller source paths",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets retains empty production trust and rejects QA keys or caller source paths",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 3,
+          "title": "requires distinct complete package and review release pins",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets requires distinct complete package and review release pins",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 4,
+          "title": "signature and flags cannot replace the independently pinned reviewer",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets signature and flags cannot replace the independently pinned reviewer",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 5,
+          "title": "binds reading level, saved age, locale, native platform and territory",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets binds reading level, saved age, locale, native platform and territory",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 6,
+          "title": "enforces exclusive expiry and denies future review or publication",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets enforces exclusive expiry and denies future review or publication",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 7,
+          "title": "rejects incomplete, duplicate or substituted policy and payload review closure",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets rejects incomplete, duplicate or substituted policy and payload review closure",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 8,
+          "title": "a separately signed text review cannot admit unimplemented media",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets a separately signed text review cannot admit unimplemented media",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 9,
+          "title": "exports only an empty fixed catalog without transport or material guesses",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets exports only an empty fixed catalog without transport or material guesses",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 10,
+          "title": "exports exact pinned signed text through the actual shared compiler and rejects changed policy",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets exports exact pinned signed text through the actual shared compiler and rejects changed policy",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 11,
+          "title": "fixed catalog output cannot overwrite existing bytes",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets fixed catalog output cannot overwrite existing bytes",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 12,
+          "title": "owned child output refuses a linked directory before writing outside staging",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets owned child output refuses a linked directory before writing outside staging",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 13,
+          "title": "pin quotas, duplicate identity and unsafe versions fail before source loading",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets pin quotas, duplicate identity and unsafe versions fail before source loading",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 4,
+          "ordinal": 14,
+          "title": "pin source cannot be replaced by a linked external file",
+          "parents": [
+            "native child package release assets"
+          ],
+          "fullTitle": "native child package release assets pin source cannot be replaced by a linked external file",
+          "status": "passed",
+          "type": "test"
+        },
+        {
+          "depth": 0,
+          "ordinal": 1,
+          "title": "native child package release assets",
+          "parents": [],
+          "fullTitle": "native child package release assets",
+          "status": "passed",
+          "type": "suite"
+        }
+      ],
+      "fullTestTitles": [
+        "native child package release assets rejects duplicate decoded keys and malformed UTF-8 before interpretation",
+        "native child package release assets retains empty production trust and rejects QA keys or caller source paths",
+        "native child package release assets requires distinct complete package and review release pins",
+        "native child package release assets signature and flags cannot replace the independently pinned reviewer",
+        "native child package release assets binds reading level, saved age, locale, native platform and territory",
+        "native child package release assets enforces exclusive expiry and denies future review or publication",
+        "native child package release assets rejects incomplete, duplicate or substituted policy and payload review closure",
+        "native child package release assets a separately signed text review cannot admit unimplemented media",
+        "native child package release assets exports only an empty fixed catalog without transport or material guesses",
+        "native child package release assets exports exact pinned signed text through the actual shared compiler and rejects changed policy",
+        "native child package release assets fixed catalog output cannot overwrite existing bytes",
+        "native child package release assets owned child output refuses a linked directory before writing outside staging",
+        "native child package release assets pin quotas, duplicate identity and unsafe versions fail before source loading",
+        "native child package release assets pin source cannot be replaced by a linked external file"
+      ],
+      "qualification": "FIRST_PROPER_COMPLETE_NODE_TEST_SUITE_SAME_OWNED_PROCESS"
+    },
+    "androidCompile": {
+      "process": {
+        "record": {
+          "mode": "android-compile",
+          "startedAt": "2026-10-08T05:07:07.976Z",
+          "finishedAt": "2026-10-08T05:07:29.192Z",
+          "actualPid": 21120,
+          "actualParentPid": 12964,
+          "actualExitCode": 0,
+          "signal": null,
+          "naturalCloseObserved": true,
+          "naturalStatus": "PASS",
+          "command": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+          "executable": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+            "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55",
+            "bytes": 50304
+          },
+          "processRuntimeQualification": "Pinned original JVM executable and OS pid/natural close observed; Java version not separately sampled",
+          "args": [
+            "-Dorg.gradle.appname=gradlew",
+            "-classpath",
+            "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+            "org.gradle.wrapper.GradleWrapperMain",
+            "--offline",
+            "--no-daemon",
+            "--no-build-cache",
+            "--console=plain",
+            ":app:compileDevDebugJavaWithJavac",
+            ":app:compileDevDebugAndroidTestJavaWithJavac"
+          ],
+          "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android",
+          "launch": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\android-compile\\launch.json",
+            "sha256": "fb69a405458565c93f9683bc255bf92af92a8dcff9c0f4568bf02ff21da370ac",
+            "bytes": 842
+          },
+          "runtime": null,
+          "runtimeValid": true,
+          "runtimeError": null,
+          "stdout": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\android-compile\\stdout.bin",
+            "sha256": "8e6c6d0d1168d17d9d1c476e4b542b742b355f95502378b6fed2b26aef0fb0dd",
+            "bytes": 9344,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "stderr": {
+            "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\android-compile\\stderr.bin",
+            "sha256": "ceb2d233e8123fceede05556708c2269518f130330e3f5107eb23102e7bcd0fe",
+            "bytes": 821,
+            "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+          },
+          "spawnError": null,
+          "receiptError": null,
+          "deadlineReported": false,
+          "deviceTested": false
+        },
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-followup-run-a2\\android-compile\\terminal.json",
+          "sha256": "9edddb844c336843df8659a19d77484f34f99b71c372e133e609721675a3978c",
+          "bytes": 2708
+        }
+      },
+      "actualTaskLines": [
+        "> Task :app:compileDevDebugJavaWithJavac",
+        "> Task :app:compileDevDebugAndroidTestJavaWithJavac"
+      ],
+      "toolPins": [
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\java\\jdk-21.0.12.1+1\\bin\\java.exe",
+          "sha256": "82051fdab26319d77d20cc0065045d05ec00b3e3d05f44935d7c06b96b621d55",
+          "bytes": 50304
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.jar",
+          "sha256": "7d3a4ac4de1c32b59bc6a4eb8ecb8e612ccd0cf1ae1e99f66902da64df296172",
+          "bytes": 43764
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\apps\\mobile\\android\\gradle\\wrapper\\gradle-wrapper.properties",
+          "sha256": "05fcb55a155233ee632da57149d1ba3cd39a001701ae00e0c20782fbaf6c378b",
+          "bytes": 340
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\wrapper\\dists\\gradle-8.14.3-bin\\cv11ve7ro1n3o1j4so8xd9n66\\gradle-8.14.3-bin.zip.ok",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\gradle-user\\wrapper\\dists\\gradle-8.14.3-bin\\cv11ve7ro1n3o1j4so8xd9n66\\gradle-8.14.3\\lib\\gradle-launcher-8.14.3.jar",
+          "sha256": "f59f13bf282e831e726da3dcf17e31f9c4bb9410ad0671136dd2aae7a890dd57",
+          "bytes": 327155
+        },
+        {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\native-tools\\android-sdk\\build-tools\\36.0.0\\aapt2.exe",
+          "sha256": "babf3122e515ddb954c5ac4669e085ce990536c035e3072de30127bddd6e3608",
+          "bytes": 5423200
+        }
+      ],
+      "offline": true,
+      "noBuildCache": true,
+      "cachedCompilationAccepted": false,
+      "appJavaCompiled": true,
+      "androidTestJavaCompiled": true,
+      "assembledAPK": false,
+      "nativeFixturesExecuted": false
+    },
+    "passedAffectedCases": 235,
+    "passedFocusedCases": 46,
+    "failedAffectedCases": 0,
+    "tscRepeated": false,
+    "vitestPassedFilesRepeated": false,
+    "sourceUnchanged": true,
+    "fixtureCorrection": {
+      "manifest": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\node-fixture-correction-a1\\manifest.json",
+        "sha256": "b3cac4461478ae2f8b2164b950585061314b9f7491eca2880761e6bf63834dee",
+        "bytes": 2474
+      },
+      "rootSourceReviewed": true,
+      "sourceCommit": "5ed051815e0c4f5dbbb6357500b2cabe1e461452",
+      "sourceFingerprint": "bd899b582d14d254770241a7cf89581d1ed823f0289cfd5190a8f9cc403173fd",
+      "baseline": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\node-fixture-correction-a1\\baseline.mjs",
+        "sha256": "bf0bd16ed28cdb3e74a1fa48d0f70799bc01c8f3c39027a73f1d5db5226eaa1d",
+        "bytes": 15765
+      },
+      "candidate": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\node-fixture-correction-a1\\candidate.mjs",
+        "sha256": "31eb730cf313413e682f379e8b10f910fd580dc6f113363dbc72d6a2c33faa5f",
+        "bytes": 15828
+      },
+      "path": "scripts/mobile/native-child-package-assets.test.mjs",
+      "allOtherSourceBytesPreserved": true,
+      "reconstructedOriginalFingerprint": "89d418b9894671c70f99a71caa0edb0f0bd11faa4938edae7b0e61caa64d0570"
+    }
+  },
+  "retainedCurrentFailure": {
+    "failure": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-run-a1\\failure.json",
+      "sha256": "4ff3151569f4da4221096f39e180176074dfb23f0d89617f0e6a4cc0fe90971f",
+      "bytes": 11014
+    },
+    "rootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-locale-reading-integration-a1\\qa-root-a1\\terminal.json",
+      "sha256": "358434830b625b17836754392bf964d49c7bf48e2c147b0fc690a1373d646c94",
+      "bytes": 292
+    },
+    "rootPid": 17824,
+    "exitCode": 1,
+    "originalOverallPass": false,
+    "qualification": "Original QA/Vitest natural FAIL retained; its TSC19912 PASS and thirteen files/221 assertions/46 focused cases are retained through exact sole-fixture reverse graph, never reclassified as an overall original PASS"
+  },
+  "retainedOriginalFailure": {
+    "helper": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-locale-lock-reviewed-source-a1.mjs",
+      "sha256": "7233d4b41a53dc22e3eab3564caf7a0a9838f379db5a1f82b0391d5847a12864",
+      "bytes": 15678
+    },
+    "failure": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\failure.json",
+      "sha256": "9b2c06b7f4455b3b90aa60deba5d1152b36f4747afd0b1954070190456a90610",
+      "bytes": 5855
+    },
+    "rootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-root-a1\\terminal.json",
+      "sha256": "81c13adeec20a6120172487334d5c7cf0b2d4dbe9389176f23f769ab91917411",
+      "bytes": 292
+    },
+    "rootStdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-root-a1\\stdout.bin",
+      "sha256": "880fcfd57c509e84eb74f0092ffe78c18585df032fb666d4a6952b5ee2d86548",
+      "bytes": 544
+    },
+    "rootStderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-root-a1\\stderr.bin",
+      "sha256": "085927cf606d658d0f13e1421b042088e2445fa97725f2b24129d3d02d48b21d",
+      "bytes": 545
+    },
+    "tscTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\tsc\\terminal.json",
+      "sha256": "df0b848a514e1b16e8ea4b21123f018ee3c7056f897e48f64b352b5e47319c9e",
+      "bytes": 3252
+    },
+    "tscStdout": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\tsc\\stdout.bin",
+      "sha256": "13bdcb08e869d3a049991e5c7ab21eb5f8a74c497b6085f4da7f8bb6eef30939",
+      "bytes": 498
+    },
+    "tscStderr": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-lock-a1\\qa-run-a1\\tsc\\stderr.bin",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "originalRootPid": 11960,
+    "originalRootExitCode": 1,
+    "originalTscPid": 15336,
+    "originalTscExitCode": 2,
+    "originalUnits": "NOT_RUN",
+    "originalJava": "NOT_RUN",
+    "qualification": "ORIGINAL_NATURAL_FAIL_RETAINED_NOT_PASS"
+  },
+  "priorParentControlsBrowser": {
+    "result": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a3\\browser-run-a1\\result.json",
+      "sha256": "efff87c42e2a76eca47d4fdd6e6673dae5ca756323824e531e8175bf283721df",
+      "bytes": 29476
+    },
+    "rootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a3\\browser-root-a1\\terminal.json",
+      "sha256": "6e159420c0b062897be6ff0cb2c59b7831de86508d9c06d0c451795f8c18f824",
+      "bytes": 291
+    },
+    "captureReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a3\\capture-review-root-a1.json",
+      "sha256": "cc76fe5ae4a7eec98c19cbffe4de2e76d1c08b9c82e920b64c5f787e3bd1bf39",
+      "bytes": 9651
+    },
+    "sourceCommit": "48a4df5df30a30e397c79e107340194ee2672acf",
+    "sourceFingerprint": "5346f667792396f2eed12c9ee7f71e65f8aea083042d3965765dcc4c5e7a9dac",
+    "sourceRows": 1921,
+    "observations": 27,
+    "screenshots": 2,
+    "qualification": "Prior bounded 320px RU keyboard/EN touch actual parent-control presentation fixture; synthetic blocked child metadata/callbacks, NOT current child/audio/native Gate/OS/full App/3D or human acceptance",
+    "limits": {
+      "precedingFailedBrowserAttempt": {
+        "result": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a2\\browser-run-a1\\result.json",
+          "sha256": "620fc9527bc0fde3785ff5d179712cbb0e405c859b088b25def17dbb0a4dd889",
+          "bytes": 11575
+        },
+        "admission": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a2\\browser-admission-root-bound-a1.json",
+          "sha256": "5df831af77f06b348607f65c2fdea0d793aff46458a9c68caa54db35b5da59b5",
+          "bytes": 3008
+        },
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a2\\browser-root-a1\\terminal.json",
+          "sha256": "d970390d239800982a50cdb85b54e3d599cb93806e378ab633f5231fdf9bd6e7",
+          "bytes": 291
+        },
+        "terminalContent": {
+          "stdoutSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "finishedAt": "2026-10-08T03:27:35.4396854Z",
+          "exitCode": 1,
+          "pid": 3132,
+          "naturalTermination": true
+        },
+        "rootReportedSession": {
+          "id": 5159,
+          "closed": true
+        },
+        "process": {
+          "pid": 3132,
+          "node": "v24.21.0",
+          "execPath": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+        },
+        "pass": false,
+        "sourceUnchanged": true,
+        "failure": "locator.selectOption: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-child-native-profiles]').getByLabel('Язык профиля', { exact: true })\u001b[22m\n",
+        "originalObservations": [
+          {
+            "label": "ru-initial-connected-current-only",
+            "policy": "legacy-current-only",
+            "lock": "locked",
+            "busy": false,
+            "callbackCount": 0,
+            "pending": null,
+            "geometry": {
+              "viewport": 320,
+              "documentWidth": 320,
+              "bodyWidth": 320,
+              "textOutside": 0,
+              "scopes": [
+                {
+                  "kind": "policy",
+                  "left": 36,
+                  "right": 284,
+                  "buttons": [
+                    {
+                      "text": "Подтвердить языки со взрослым",
+                      "width": 216,
+                      "height": 64.375
+                    }
+                  ],
+                  "checkboxes": [
+                    {
+                      "width": 24,
+                      "height": 24,
+                      "labelWidth": 216,
+                      "labelHeight": 30
+                    },
+                    {
+                      "width": 24,
+                      "height": 24,
+                      "labelWidth": 216,
+                      "labelHeight": 30
+                    }
+                  ]
+                },
+                {
+                  "kind": "lock",
+                  "left": 36,
+                  "right": 284,
+                  "buttons": [
+                    {
+                      "text": "Зафиксировать язык со взрослым",
+                      "width": 248,
+                      "height": 64.375
+                    },
+                    {
+                      "text": "Снять фиксацию со взрослым",
+                      "width": 248,
+                      "height": 64.375
+                    }
+                  ],
+                  "checkboxes": []
+                }
+              ]
+            }
+          },
+          {
+            "label": "ru-draft-without-saved-grant",
+            "policy": "legacy-current-only",
+            "lock": "locked",
+            "busy": false,
+            "callbackCount": 0,
+            "pending": null
+          },
+          {
+            "label": "ru-policy-busy-without-optimism",
+            "policy": "legacy-current-only",
+            "lock": "locked",
+            "busy": true,
+            "callbackCount": 1,
+            "pending": "policy"
+          },
+          {
+            "label": "ru-confirmed-both-lock-preserved",
+            "policy": [
+              "ru",
+              "en"
+            ],
+            "lock": "locked",
+            "busy": false,
+            "callbackCount": 2,
+            "pending": null
+          },
+          {
+            "label": "ru-confirmed-narrow-lock-preserved",
+            "policy": [
+              "ru"
+            ],
+            "lock": "locked",
+            "busy": false,
+            "callbackCount": 3,
+            "pending": null
+          }
+        ],
+        "screenshots": [],
+        "observationCount": 5,
+        "localeCoverage": "RU_PARTIAL_ONLY",
+        "enAttempted": false,
+        "sourceBefore": {
+          "repositoryHead": "7ea8bd859a536e2ff0ecbdccd78fd538362a82dd",
+          "sourceCommit": "48a4df5df30a30e397c79e107340194ee2672acf",
+          "sourceFingerprint": "5346f667792396f2eed12c9ee7f71e65f8aea083042d3965765dcc4c5e7a9dac",
+          "sourceRows": 1921,
+          "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+          "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+          "toolsFingerprint": "d3f1ffaff66191d5b076747da99323d0d4d25da4c46c94aad0676343b36f5208",
+          "clean": true
+        },
+        "sourceAfter": {
+          "repositoryHead": "7ea8bd859a536e2ff0ecbdccd78fd538362a82dd",
+          "sourceCommit": "48a4df5df30a30e397c79e107340194ee2672acf",
+          "sourceFingerprint": "5346f667792396f2eed12c9ee7f71e65f8aea083042d3965765dcc4c5e7a9dac",
+          "sourceRows": 1921,
+          "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
+          "lockSha256": "21c4b839c5771537bbf4aa57a2128c374200c6cd3b2e1674096c3f4b89b4c75e",
+          "toolsFingerprint": "d3f1ffaff66191d5b076747da99323d0d4d25da4c46c94aad0676343b36f5208",
+          "clean": true
+        },
+        "qualification": "Actual immutable A2 FAIL; no successful combined flow, no PNG, no EN. These are preceding observations, never A3 results."
+      },
+      "simulatedBlockedChildMetadata": true,
+      "actualClosedBoundaryMounted": true,
+      "actualParentControlsMounted": true,
+      "actualPolicyControlMounted": true,
+      "actualLockControlMounted": true,
+      "controllerCallbacks": "SYNTHETIC_PRESENTATION_ONLY",
+      "supplementalParentSelectSetup": "DOM_SELECTOPTION_NOT_TRUSTED_INPUT_PROOF",
+      "pendingSnapshot": "SYNTHETIC_READY_READBACK_HELD_TO_INSPECT_LOCAL_BUSY_UI",
+      "nativeGate": "NOT_VERIFIED",
+      "nativeOS": "NOT_VERIFIED",
+      "nativeStorage": "NOT_VERIFIED",
+      "childContentAdmission": false,
+      "globeBookyAppAcceptance": false,
+      "screenReader": "NOT_RUN",
+      "humanReadabilityRuEn": "PENDING",
+      "fixtureTypeScript": "NOT_RUN",
+      "humanScreenshotReview": "PENDING",
+      "criteriaClosed": false,
+      "repositoryWrites": 0,
+      "oldPrivacyAppBookyGpuBrowserRepeated": false
+    }
+  },
+  "retainedParentBrowserFailure": {
+    "result": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a2\\browser-run-a1\\result.json",
+      "sha256": "620fc9527bc0fde3785ff5d179712cbb0e405c859b088b25def17dbb0a4dd889",
+      "bytes": 11575
+    },
+    "rootTerminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-locale-policy-a2\\browser-policy-lock-a2\\browser-root-a1\\terminal.json",
+      "sha256": "d970390d239800982a50cdb85b54e3d599cb93806e378ab633f5231fdf9bd6e7",
+      "bytes": 291
+    },
+    "pid": 3132,
+    "exitCode": 1,
+    "pass": false,
+    "observations": 5,
+    "screenshots": 0,
+    "qualification": "Original exact getByLabel select locator timeout retained; corrected follow-up does not rewrite this FAIL"
+  },
+  "nativeFixtures": "Android main and androidTest Java COMPILE_ONLY; authored native fixtures NOT_RUN. Swift NOT_COMPILED_NOT_RUN",
+  "browser": "NO_NEW_CURRENT_CHILD_LOCALE_READING_BROWSER_RUN",
+  "installedOSAcceptance": "NOT_VERIFIED",
+  "audioSeek": "PENDING_INTERNAL_CODE",
+  "humanReadabilityLegal": "PENDING",
+  "priorCheckpoint": {
+    "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\docs\\mobile\\evidence\\S16\\child-locale-policy-20261008\\result.json",
+    "sha256": "1e6ad26717733b7dd547cd13a44f794da465d2f5d2d7e0202efa602616f0c4e2",
+    "bytes": 29355
+  },
+  "currentStandardArtifacts": {
+    "sourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+    "rootPid": 23236,
+    "rootNaturalExitCode": 0,
+    "compiled": [
+      {
+        "mode": "pwa",
+        "actualPid": 27860,
+        "exitCode": 0,
+        "naturalCloseObserved": true,
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\pwa\\terminal.json",
+          "sha256": "80ed3e9a582d0f44ad8658f0a7de9c71acef5d13cf2a65d9c6eab935b4a90ace",
+          "bytes": 3244
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\preparation.json",
+          "sha256": "b059eba047010ed192a6e7a996b410baf5190fbd2f47ef430ea7c69a8c8fdbbf",
+          "bytes": 312761
+        },
+        "web": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\pwa-bundle",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-06bf3727-7479-493e-814b-b201aa47d7c0\\pwa-bundle\\artifact.json",
+            "sha256": "6a95cd44893032d728dbc0d7ab44d72a11717b831cc1e3b88c94d419b4b5ddec",
+            "bytes": 429417
+          },
+          "artifactSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "preparationSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "buildId": "44eae19dce8e9c0d0d7a23810bc48a5790e691c6dbb7263ea6902a62fa0177dd",
+          "inventoryRows": 1425,
+          "inventorySha256": "7e5b3438029ff0dec51891f7b0f4fbb3ee1032f8d56f541745bdeaffddd3645c",
+          "sourceInputRows": 1176,
+          "sourceInputsSha256": "08e29b7bf813e81076ad26bdfba13fe33d716c6fb377c4aeb36e1bafffd2bce2",
+          "qualification": "Original standard build/audit/retainBundle already checked web bytes; wrapper reads retained metadata only"
+        },
+        "binary": null,
+        "mainAPK": null,
+        "testAPK": null,
+        "instrumentationCompiled": null,
+        "qualification": "Original standard SHA; no binary/web rehash; compiled, not installed"
+      },
+      {
+        "mode": "android",
+        "actualPid": 17196,
+        "exitCode": 0,
+        "naturalCloseObserved": true,
+        "terminal": {
+          "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\parent-child-privacy-a1\\build-run-a1\\android\\terminal.json",
+          "sha256": "6ada2219aab816fa81bc70e3b6fe3f0301e1b48dfc382dad4d41c14eef6fc39a",
+          "bytes": 3276
+        },
+        "preparation": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\preparation.json",
+          "sha256": "bea47eab461dbda8b104870a52f52b1b5eabd7af95c0af6ba4c87d635d8b30ba",
+          "bytes": 326813
+        },
+        "web": {
+          "directory": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\native-bundle",
+          "artifact": {
+            "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\native-bundle\\artifact.json",
+            "sha256": "ee26c1858600d6fe9a3256f0a3b05d4c11ee6ff55555c2e6cf527e513a7995d7",
+            "bytes": 728664
+          },
+          "artifactSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "preparationSourceCommit": "3d7f339884da924299650b178660ae22dda7950f",
+          "buildId": "c41e7408052ab51948338d9eedc09dadd17af46bb90d45c891d36136dbe53892",
+          "inventoryRows": 1420,
+          "inventorySha256": "959ac63e4706b05a8fec9028b60abb672fc65195cf075b5a68c69be13f4167ce",
+          "sourceInputRows": 1180,
+          "sourceInputsSha256": "7c2dfd651da3f29e71f08aea25d4134e97fd695aa272f34c058d56a1d691e642",
+          "qualification": "Original standard build/audit/retainBundle already checked web bytes; wrapper reads retained metadata only"
+        },
+        "binary": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\binary.json",
+          "sha256": "c754325861cc3497e14533eca4e9b78f67286deb6f116741cf48b3f2b7ce0651",
+          "bytes": 213077
+        },
+        "mainAPK": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\app-dev-debug.apk",
+          "sha256": "afa7d80ce6974bf8937e9816f47af01edd05e2f5cd88fd7f815102cb72d72c78",
+          "bytes": 70775044,
+          "shaQualification": "Original actual preparation SHA; wrapper validates path/size, no duplicate web/APK rehash"
+        },
+        "testAPK": {
+          "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-7c9dbc21-46d8-4997-950d-f01bc0e0d4b3\\app-dev-debug-androidTest.apk",
+          "sha256": "dfccd669ffa69b921eaf32bc2a3ed65806b39155bf207d9dba7341e45f509e93",
+          "bytes": 823070,
+          "shaQualification": "Original actual preparation SHA; wrapper validates path/size, no duplicate web/APK rehash"
+        },
+        "instrumentationCompiled": true,
+        "qualification": "Original standard SHA; no binary/web rehash; compiled, not installed"
+      }
+    ],
+    "installed": false,
+    "store": false,
+    "releaseReady": false
+  },
+  "artifactQualification": "Inherited source3d7 PWA/main+test APKs and older bounded d039/e97 packet; NOT rebuilt or rebound to the current child locale/reading source",
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsOrigin": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-journey-work-20261005\\astra-whole-child-journey-closure-a1.json",
+    "sha256": "9ec91cb712b3bec8c877fbd471b9277fa81755994dd6e1d1bb50b57857ce7761",
+    "bytes": 247218
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Exact inherited source/time/status snapshot NOT_RECHECKED",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "newNoticeReviews": {
+    "humanReadabilityRuEn": "PENDING",
+    "legalTerritory": "PENDING"
+  },
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "criterionMapping": [],
+  "originalSixDependentTasks": "UNCHANGED_BY_RAW_TAILS_AND_DEEP_STATE",
+  "formalStatusChanges": 0,
+  "criterion": {
+    "id": "S16.BIL-009",
+    "status": "OPEN",
+    "fullCriterionApproved": false,
+    "pending": [
+      "Actual native signed-cue narration pause/seek/resume",
+      "Swift/native fixture runtime, installed OS and human acceptance"
+    ]
+  },
+  "booky": {
+    "bothOwnersByteExact": true,
+    "oneCanonicalGlobePreserved": true,
+    "new3DQA": false
+  },
+  "nextAction": "Continue the coordinated isolated child-narration-resume-a1 batch in D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-resume-a1: native owner sol_parent_export_review and client owner sol_next_local_gap_after_export must connect actual signed canonical narration cues to native prepare/pause/seek/resume and playback-observed canonical checkpoint plus truthful current-context readback. Do not invent alignment, audio seconds or credit. Integrated child locale transition and canonical reading ledger have local retained TSC/221 Vitest assertions plus proper Node TAP and first Android Java compile QA; full S16.BIL-009 remains OPEN. Actual native audio seek, Swift compilation/runtime, installed OS and human acceptance remain pending. The prior source48a 320px RU-keyboard/EN-touch parent-controls fixture is bounded presentation evidence only; it does not admit current child/audio/native Gate/OS/full App/globe. Preserve original root17824/1 FAIL, browser3132/1 FAIL, older failures, original six dependent tasks, four original conditions NOT_RECHECKED, PSP UNSELECTED, seven owner actions and five human reviews. Retained standard PWA/main+test APKs remain source3d7 and older bounded packet d039/e97. Complete coherent affected QA and the bounded browser flow, then prepare fresh builds/package once the remaining production batch is complete. Preserve both white ankle rings, five-digit gloves and the one canonical globe; no unchanged AVD retry, repeated old QA, report-only D stage, remote/push/merge/deploy/store.",
+  "artAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0,
+  "gitMutations": 0,
+  "lexicalState": {
+    "onlyChangedValues": [
+      "headSha",
+      "updatedAt",
+      "resume.nextAction"
+    ],
+    "outsideValuesByteExact": true,
+    "mixedCrLfCount": 45
+  }
+}
