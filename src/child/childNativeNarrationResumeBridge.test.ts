@@ -130,7 +130,10 @@ describe("S16 BIL009 narration native preparation wire", () => {
   });
   it("joins held preparation and the actual native revocation ACK before the existing parent route can advance", async () => {
     const f = fixture(); await f.controller.start(); const held = deferred<unknown>(), revoked = deferred<unknown>();
-    f.plugin.resumeNarration.mockReturnValueOnce(held.promise); f.plugin.releaseMedia.mockReturnValueOnce(revoked.promise);
+    f.plugin.resumeNarration.mockReturnValueOnce(held.promise);
+    f.plugin.releaseMedia.mockImplementationOnce((_q: unknown): Promise<unknown> => {
+      f.order.push("release"); return revoked.promise;
+    });
     const pending = f.controller.media!.resumeNarration!(narration, layout, 3); await settle();
     const action = f.controller.perform("exit-child-mode"); await settle();
     expect(f.controller.getSnapshot().context).toBeNull(); expect(f.plugin.perform).not.toHaveBeenCalled();

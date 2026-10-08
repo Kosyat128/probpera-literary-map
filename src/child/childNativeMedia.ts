@@ -124,8 +124,11 @@ export const childNativeNarrationRevision = (value: unknown): value is number =>
   integer(value, 0, Number.MAX_SAFE_INTEGER - 2);
 export function decodeChildNativeNarrationResume(raw: unknown, assetId: string,
   expectedReadingRevision: number): ChildNativeNarrationResumePresentation | null {
-  const row = childRecord(raw, ["status", "presentationToken", "assetId", "remainingLifetimeMs", "readingRevision",
-    "anchorVersion", "anchorId", "sampleRate", "frameCount", "startFrame"]);
+  let row: Record<string, unknown> | null;
+  try {
+    row = childRecord(raw, ["status", "presentationToken", "assetId", "remainingLifetimeMs", "readingRevision",
+      "anchorVersion", "anchorId", "sampleRate", "frameCount", "startFrame"]);
+  } catch { return null; }
   if (!row || row.assetId !== assetId || !childNativeNarrationRevision(expectedReadingRevision)) return null;
   if (row.status === "prepared") {
     if (!childNativeMediaToken(row.presentationToken) || !integer(row.remainingLifetimeMs, 1, 60000)
