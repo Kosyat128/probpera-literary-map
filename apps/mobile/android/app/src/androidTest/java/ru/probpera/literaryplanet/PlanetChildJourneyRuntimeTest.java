@@ -109,13 +109,13 @@ public final class PlanetChildJourneyRuntimeTest {
         for(Object value:Arrays.asList(true,-1L,-0.0d,0.5d,9007199254740990L)){Map<String,Object> bad=new LinkedHashMap<>(resume);bad.put("expectedReadingRevision",value);denied(()->PlanetChildDataTransport.decodeV2("resumeNarration",bad));}
     }
     @Test public void narrationCueRequiresKnownStoredAnchorExactTranscriptDigestAndFullPcmHeader() throws Exception {
-        for(String name:Arrays.asList("valid","unknown","asset","digest","transcript","sample-rate","full-frame-count","outside"))assertTrue(name,PlanetChildVault.fixtureNarrationCue(name));
+        for(String name:Arrays.asList("valid","unknown","asset","digest","transcript","sample-rate","full-frame-count","outside"))assertTrue(name,PlanetChildVault.fixtureNarrationCue(context,name));
     }
     @Test public void renderedNarrationFramesApplySignedStartOnceAndNeverCreateCompletionIdentity() throws Exception {
         assertEquals(4L,PlanetChildMedia.sourceFrame(8,4,0));assertEquals(7L,PlanetChildMedia.sourceFrame(8,4,3));assertEquals(7L,PlanetChildMedia.sourceFrame(8,4,4));assertEquals(0L,PlanetChildMedia.sourceFrame(8,0,0));
         denied(()->PlanetChildMedia.sourceFrame(8,4,5));denied(()->PlanetChildMedia.sourceFrame(8,4,-1));denied(()->PlanetChildMedia.sourceFrame(8,8,0));denied(()->PlanetChildMedia.sourceFrame(0,0,0));
     }
 
-    @Test public void delayedNarrationCasDrainsLastRenderedCueBeforeTerminalRetirement() throws Exception { assertTrue(PlanetChildVault.fixtureNarrationDelayedTerminal()); }
+    @Test public void delayedNarrationCasDrainsLastRenderedCueBeforeTerminalRetirement() throws Exception { assertTrue(PlanetChildVault.fixtureNarrationDelayedTerminal(context)); }
 
 }
