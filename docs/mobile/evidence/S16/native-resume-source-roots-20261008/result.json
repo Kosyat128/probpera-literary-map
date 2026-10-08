@@ -1,0 +1,125 @@
+{
+  "status": "PASS_FOCUSED_CLI_SOURCE_ROOTS_REGRESSION_NOT_ACCEPTANCE",
+  "pass": true,
+  "actualRootPid": 13636,
+  "input": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\config-bound-root-a1.json",
+    "sha256": "2f2ea9675bd6b6236acb67235622df54568efb5eb27f514767114c27b7723a78",
+    "bytes": 1939
+  },
+  "proposal": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-a1\\manifest.json",
+    "bytes": 4168,
+    "sha256": "e0d2df9097e6a07878e996da53e021b8ef2eaf0a7007c38ede38ca00bb200db3"
+  },
+  "process": {
+    "record": {
+      "mode": "focused-native-resume-cli",
+      "startedAt": "2026-10-08T17:31:48.830Z",
+      "finishedAt": "2026-10-08T17:31:51.506Z",
+      "actualPid": 19784,
+      "actualParentPid": 13636,
+      "actualExitCode": 0,
+      "signal": null,
+      "naturalCloseObserved": true,
+      "naturalStatus": "PASS",
+      "command": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+      "executable": {
+        "path": "C:\\Users\\User\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+        "bytes": 237988664,
+        "qualification": "Actual owned Code Node24 path/size; no repeated binary rehash"
+      },
+      "processRuntimeQualification": "Original child preload pid/version/path observed",
+      "args": [
+        "--import",
+        "data:text/javascript;base64,aW1wb3J0IGZzIGZyb20gJ25vZGU6ZnMnO2ZzLndyaXRlRmlsZVN5bmMoIkQ6XFxDb2RleERhdGFcXC5jb2RleFxcdmlzdWFsaXphdGlvbnNcXDIwMjZcXDEwXFwwMlxcMDFhMGZkMzUtMzg2NS03OTczLThmNGMtMGM3YTAxNDhkZjQ3XFxyZWxlYXNlLWNvbXBsZXRpb25cXGFkdmFuY2VkLWJvb2t5LXdvcmstMjAyNjEwMDZcXG5hdGl2ZS1yZXN1bWUtc291cmNlLXJvb3RzLXFhLXByZXAtYTFcXHJ1bi1yb290LWExXFxmb2N1c2VkLW5hdGl2ZS1yZXN1bWUtY2xpXFxydW50aW1lLmpzb24iLEpTT04uc3RyaW5naWZ5KHtwaWQ6cHJvY2Vzcy5waWQscGFyZW50UGlkOnByb2Nlc3MucHBpZCx2ZXJzaW9uOnByb2Nlc3MudmVyc2lvbixleGVjUGF0aDpwcm9jZXNzLmV4ZWNQYXRoLGVsZWN0cm9uUnVuQXNOb2RlOnByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFLGFyZ3Y6cHJvY2Vzcy5hcmd2fSxudWxsLDIpKydcbicse2ZsYWc6J3d4J30pO2lmKHByb2Nlc3MudmVyc2lvbiE9PSd2MjQuMjEuMCd8fHByb2Nlc3MuZW52LkVMRUNUUk9OX1JVTl9BU19OT0RFIT09JzEnKXRocm93IEVycm9yKCdPV05FRF9DSElMRF9SVU5USU1FX0NIQU5HRUQnKTs=",
+        "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\node_modules\\vitest\\vitest.mjs",
+        "run",
+        "scripts/mobile/prepare-local-release.test.mjs",
+        "--no-file-parallelism",
+        "--maxWorkers=1",
+        "--reporter=json",
+        "--outputFile",
+        "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\vitest-results.json"
+      ],
+      "cwd": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work",
+      "launch": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\focused-native-resume-cli\\launch.json",
+        "sha256": "e48c57d8583ecf8a6d85cb01d42e88f0bac89ce1d67718a085afd4d4e4206607",
+        "bytes": 1690
+      },
+      "runtime": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\focused-native-resume-cli\\runtime.json",
+        "sha256": "ab2cea63c0ee4daedbd6024cc141086312a63804fcfa6114d80532f195544b8c",
+        "bytes": 769
+      },
+      "runtimeValid": true,
+      "runtimeError": null,
+      "stdout": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\focused-native-resume-cli\\stdout.bin",
+        "sha256": "19835681aabc88f80382e1f174ebe0495801f72ca1abb9636c72d7292f5935e8",
+        "bytes": 224,
+        "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+      },
+      "stderr": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\focused-native-resume-cli\\stderr.bin",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "qualification": "ACTUAL_COMPLETE_LOG_SHA"
+      },
+      "spawnError": null,
+      "receiptError": null,
+      "deadlineReported": false,
+      "deviceTested": false
+    },
+    "terminal": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\focused-native-resume-cli\\terminal.json",
+      "sha256": "3d947d25b2235a1482f79b6475468d1e94a76f5e707d02b386d5f054531a86a5",
+      "bytes": 3811
+    }
+  },
+  "report": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\vitest-results.json",
+    "sha256": "29bcc1a8d1f991f7bfdf5584ff25ace3dabf9fae4ba388fc866a40c787521f2b",
+    "bytes": 1868
+  },
+  "parseError": null,
+  "graphError": null,
+  "cases": [
+    {
+      "fullName": "resumes an unchanged real native source capture containing the package asset generator",
+      "status": "passed"
+    },
+    {
+      "fullName": "refuses a raw-byte-only change to the package asset generator",
+      "status": "passed"
+    },
+    {
+      "fullName": "does not invent the generator hash for an older receipt that omitted the input",
+      "status": "passed"
+    },
+    {
+      "fullName": "refuses a newly added native source even when every historical raw hash still matches",
+      "status": "passed"
+    }
+  ],
+  "before": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\before-full.json",
+    "sha256": "a591999dc8065c5deb6eab4634d5aa9d09c3cdd344a1f27114b846e7e4e307d0",
+    "bytes": 300336
+  },
+  "after": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-source-roots-qa-prep-a1\\run-root-a1\\after-full.json",
+    "sha256": "a591999dc8065c5deb6eab4634d5aa9d09c3cdd344a1f27114b846e7e4e307d0",
+    "bytes": 300336
+  },
+  "actualNewSourceCommit": "be94424e3dda6bba72801e04271fd15ca00d34ea",
+  "actualNewFingerprint": "8ffed83f7e872c9e89084abdbede3cf25a003ac142e274aaede7c47f7b4e6e07",
+  "actualNewRows": 1945,
+  "releaseReady": false,
+  "criteriaClosed": 0,
+  "repositorySourceWrites": 0,
+  "repositoryGitWrites": 0,
+  "remoteActions": 0,
+  "fixtureGit": "Existing test initializes/removes only its guarded owned OS-temp synthetic repositories"
+}

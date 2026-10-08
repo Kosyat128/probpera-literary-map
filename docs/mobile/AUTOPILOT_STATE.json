@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "a873daadbbb68be990f0d86402e1d4053dc2f840",
+  "headSha": "be94424e3dda6bba72801e04271fd15ca00d34ea",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-08T17:17:15.629Z",
+  "updatedAt": "2026-10-08T17:52:09.3111785Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Применить проверенное Astra исправление единого списка 14 native source roots из native-resume-source-roots-a1 к трём файлам; выполнить один прогон четырёх новых регрессий и сохранить новую контрольную точку, не повышая результаты прежнего пакета K до новой проверки приложения.",
+    "nextAction": "Реализовать локальную RU/EN помощь ребёнку S16.BIL-088 из child-help-bil088-a1 после проверки Astra; проверить только изменённый интерфейс. Native/human/PSP/Auth/remote условия открыты; пакет K и дополнение be944 сохраняют свои исходные идентичности.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13702,6 +13702,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
+    "nativeResumeSourceRoots20261008": {"generatedAt":"2026-10-08T17:52:09.3111785Z","sourceCommit":"be94424e3dda6bba72801e04271fd15ca00d34ea","commonFingerprint":"8ffed83f7e872c9e89084abdbede3cf25a003ac142e274aaede7c47f7b4e6e07","commonRows":1945,"evidence":"docs/mobile/evidence/S16/native-resume-source-roots-20261008/result.json","status":"PASS_FOCUSED_CLI_SOURCE_ROOTS_REGRESSION_NOT_ACCEPTANCE","qaRootPid":13636,"qaChildPid":19784,"uniqueCases":4,"failed":0,"skipped":0,"todo":0,"packetSupplement":{"manifest":"D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-release-supplement-root-a1\\manifest.json","manifestSha256":"80b218a8a36df6b6b661c27d1ba322433d1098b4494073902e23f5fb622a9d21","zip":"D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\native-resume-release-supplement-root-a1\\native-resume-release-supplement-be94424e.zip","zipSha256":"b981bea055eaa626acc59a44dbf7de99fe66deecd5ae815c7cc17b9297d50400","bytes":246328,"entries":22,"crc":"NOT_RUN","freshBuild":false},"packetBaseSource":"a873daadbbb68be990f0d86402e1d4053dc2f840","releaseReady":false,"criterionTransitions":0},
     "s16NarrationDefects20261008": {
       "generatedAt": "2026-10-08T17:17:15.629Z",
       "evidence": "docs/mobile/evidence/S16/narration-defects-20261008/result.json",
