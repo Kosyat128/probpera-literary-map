@@ -162,6 +162,9 @@ final class PlanetChildJourneyRuntimeTests: XCTestCase {
         XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,5));XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(8,4,-1));XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(8,8,0));XCTAssertThrowsError(try PlanetChildLocalV2MediaCodec.sourceFrame(0,0,0))
     }
 
+    func testFirstNarrationMapStartsAtSignedFirstCueWithOptionalExactPrior()throws {
+        for name in ["empty","existing","zero-with-prior","positive-without-prior","stale-version","wrong-entity","unknown-anchor"]{XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.narrationBeginning(name),name)}
+    }
     func testDelayedNarrationCasDrainsLastRenderedCueBeforeTerminalRetirement() throws { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.narrationDelayedTerminal()) }
 
 }

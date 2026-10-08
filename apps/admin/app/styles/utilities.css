@@ -328,3 +328,69 @@
 .journey-draft-open-file::file-selector-button:hover {
   border-color: var(--orange-soft);
 }
+
+.pronunciation-editor,
+.pronunciation-editor > *,
+.pronunciation-editor .field,
+.pronunciation-editor :is(input, select, textarea) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.pronunciation-editor {
+  overflow-wrap: anywhere;
+}
+
+.pronunciation-editor fieldset {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 14px;
+}
+
+.pronunciation-editor details[open] > :not(summary) {
+  margin-block-start: 12px;
+}
+
+.pronunciation-editor summary {
+  min-block-size: 44px;
+  padding-block: 10px;
+  cursor: pointer;
+}
+
+.pronunciation-editor summary:focus-visible {
+  outline: 3px solid rgba(255, 118, 25, 0.42);
+  outline-offset: 2px;
+}
+
+.pronunciation-editor .button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pronunciation-editor .button-row > button {
+  flex: 1 1 220px;
+  min-inline-size: 44px;
+  max-inline-size: 100%;
+  min-block-size: 44px;
+  padding: 12px 16px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+
+.pronunciation-editor input[type="file"]::file-selector-button {
+  min-block-size: 44px;
+  max-inline-size: 100%;
+  margin-inline-end: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.045);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}

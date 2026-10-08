@@ -39,6 +39,42 @@ public final class PlanetChildMediaRuntimeTest {
           "childNativeMediaAssets",map("pinSource",map("path","src/child/childNativeMediaReleasePins.json","sha256",pin),"outputs",Collections.singletonList(map("output","child-native/media/catalog-v2.json","source","src/child/childNativeMediaReleasePins.json","sourceSha256",pin,"transformation","fixed-native-media-pin-projection-v2","outputSha256",sum))));
         return new Map[]{c,a};
     }
+    /** Actual private catalog methods, complete six-file closure; no signature, permit or human review. */
+    @SuppressWarnings("unchecked") private static void signalCatalog(String mutation)throws Exception {
+        byte[] binary=wav(1,1,8),quality=json(map("fixture","quality catalog bytes only")),signal=json(map("fixture","diagnostic catalog bytes only")),review=json(map("fixture","catalog shape only, no review authority"));
+        String binaryHash=sha(binary),qualityHash=sha(quality),reviewHash=sha(review),pinHash="a".repeat(64),packageHash="b".repeat(64),pinSource="src/child/childNativeMediaReleasePins.json",binarySource="src/child/media-release-material/"+binaryHash+"/asset.wav",signalPath="child-native/media/signal/"+binaryHash+".json";
+        Map<String,Object> asset=map("assetId","fixture-audio","owner",owner(),"entity",map("kind","narration"),"payload",map("qualityChecksum",qualityHash),"policy",map(),"inventoryKey","fixture.wav","sha256",binaryHash,"bytes",(long)binary.length,"mime","audio/wav");
+        Map<String,Object> root=map("schemaVersion",2L,"kind","literary-planet-child-native-media-manifest-v2","manifestId","fixture-media","manifestVersion",1L,"packageId","fixture-package","packageVersion",1L,"packageChecksum",packageHash,"policyVersion",1L,"policyChecksum",packageHash,"locale","ru","exactAge",9L,"readingLevels",Collections.singletonList("plain"),"validFromEpochMs",1L,"validUntilEpochMs",2L,"assets",Collections.singletonList(asset));
+        byte[] manifest=json(root);String manifestHash=sha(manifest),manifestPath="child-native/media/manifests/"+manifestHash+".json",reviewPath="child-native/media/reviews/"+reviewHash+".json";
+        Map<String,Object> pin=map("manifestId","fixture-media","manifestVersion",1L,"manifestChecksum",manifestHash,"reviewChecksum",reviewHash,"packageId","fixture-package","packageVersion",1L,"packageChecksum",packageHash);
+        boolean empty="empty-orphan".equals(mutation);
+        Map<String,Object> c=map("schemaVersion",2L,"kind","literary-planet-child-native-media-catalog-v2","platform",empty?null:"android-google","mediaPinSourceChecksum",pinHash,"reviewKeys",empty?Collections.emptyList():Collections.singletonList(map("keyId","child-media-review-fixture","reviewerId","fixture","publicKeyX963Hex","04"+"1".repeat(128))),"manifests",empty?Collections.emptyList():Collections.singletonList(pin));
+        String[] paths={"child-native/media/catalog-v2.json",manifestPath,reviewPath,"child-native/media/assets/"+binaryHash+".wav","child-native/media/provenance/"+qualityHash+".json",signalPath};
+        String[] origins={pinSource,"src/child/media-release-material/"+manifestHash+"/manifest.json","src/child/media-release-material/"+reviewHash+"/review.json",binarySource,"src/child/media-release-material/"+qualityHash+"/quality.json",binarySource};
+        String[] hashes={pinHash,manifestHash,reviewHash,binaryHash,qualityHash,binaryHash};byte[][] bodies={json(c),manifest,review,binary,quality,signal};
+        List<Object> inputs=new ArrayList<>(),inventory=new ArrayList<>(),outputs=new ArrayList<>();Set<String> seen=new HashSet<>();inputs.add(map("path","scripts/mobile/native-child-media-assets.mjs","sha256","c".repeat(64)));
+        for(int i=0;i<paths.length;i++){if(seen.add(origins[i]))inputs.add(map("path",origins[i],"sha256",hashes[i]));inventory.add(map("path",paths[i],"bytes",(long)bodies[i].length,"sha256",sha(bodies[i])));outputs.add(map("output",paths[i],"source",origins[i],"sourceSha256",hashes[i],"transformation",i==0?"fixed-native-media-pin-projection-v2":i==5?"pcm-signal-measurement-v1":"none","outputSha256",sha(bodies[i])));}
+        Map<String,Object> diagnostic=(Map<String,Object>)outputs.get(5);
+        switch(mutation){
+            case "valid":break;
+            case "missing":inventory.remove(5);outputs.remove(5);break;
+            case "wrong-source":String otherHash="e".repeat(64),other="src/child/media-release-material/"+otherHash+"/asset.wav";inputs.add(map("path",other,"sha256",otherHash));diagnostic.put("source",other);diagnostic.put("sourceSha256",otherHash);break;
+            case "wrong-source-sha":diagnostic.put("sourceSha256","e".repeat(64));break;
+            case "wrong-transform":diagnostic.put("transformation","none");break;
+            case "wrong-output-sha":diagnostic.put("outputSha256","e".repeat(64));break;
+            case "oversized":((Map<String,Object>)inventory.get(5)).put("bytes",65537L);break;
+            case "orphan":Map<String,Object> orphan=new LinkedHashMap<>(diagnostic);String path="child-native/media/signal/"+"e".repeat(64)+".json";orphan.put("output",path);outputs.add(orphan);inventory.add(map("path",path,"bytes",(long)signal.length,"sha256",sha(signal)));break;
+            case "empty-orphan":inventory=new ArrayList<>(Arrays.asList(inventory.get(0),inventory.get(5)));outputs=new ArrayList<>(Arrays.asList(outputs.get(0),outputs.get(5)));break;
+            default:throw new IllegalArgumentException("Unknown catalog fixture mutation");
+        }
+        Map<String,Object> a=map("kind","literary-planet-bundled-native-preparation","platform","android","channel",empty?"dev":"googlePlay","releaseReady",false,"productionActionsAuthorized",false,"sourceInputs",map("sha256","c".repeat(64),"files",inputs),"inventory",inventory,"childNativeMediaAssets",map("pinSource",map("path",pinSource,"sha256",pinHash),"outputs",outputs));
+        Object actual=catalog(c,a);Method verify=catalogClass().getDeclaredMethod("verify",String.class,byte[].class,int.class),record=catalogClass().getDeclaredMethod("addManifest",Map.class,Map.class),complete=catalogClass().getDeclaredMethod("complete");verify.setAccessible(true);record.setAccessible(true);complete.setAccessible(true);
+        if(!empty){verify.invoke(actual,manifestPath,manifest,524288);verify.invoke(actual,reviewPath,review,524288);record.invoke(actual,root,pin);}complete.invoke(actual);
+    }
+    @Test public void localV2NarrationSignalCompletesOriginalNonemptyCatalogOnly()throws Exception {signalCatalog("valid");}
+    @Test public void localV2NarrationSignalRejectsSubstitutionMissingAndOrphanDiagnostics()throws Exception {
+        for(String mutation:Arrays.asList("missing","wrong-source","wrong-source-sha","wrong-transform","wrong-output-sha","oversized","orphan","empty-orphan"))denied(()->signalCatalog(mutation));
+    }
     @Test public void localV2MediaWireBindsExactOwnerAndRejectsCallerProofs()throws Exception {
         Map<String,Object> r=base();r.put("owner",owner());assertEquals("reviewed",PlanetChildDataTransport.decodeV2("listMedia",r).owner.get("id"));
         r.put("verified",true);denied(()->PlanetChildDataTransport.decodeV2("listMedia",r));r.remove("verified");r.put("owner",map("kind","image","id","reviewed","contentChecksum","a".repeat(64)));denied(()->PlanetChildDataTransport.decodeV2("listMedia",r));r.put("owner",owner());r.put("url","https://example.invalid/a.png");denied(()->PlanetChildDataTransport.decodeV2("listMedia",r));

@@ -9782,7 +9782,7 @@ fileprivate final class LocalV2MediaCatalog {
         for value in try V.array(a["inventory"],20000) { let row=try V.object(value,["path","bytes","sha256"]),path=try V.text(row["path"]);guard inventory[path]==nil else { throw PinKnownRefusal() };inventory[path]=(try V.number(row["bytes"],1,9007199254740991),try V.hash(row["sha256"])) }
         let metadata=try V.object(a["childNativeMediaAssets"],["pinSource","outputs"]),pinSource=try V.object(metadata["pinSource"],["path","sha256"])
         guard try V.text(pinSource["path"])=="src/child/childNativeMediaReleasePins.json",try V.hash(pinSource["sha256"])==pinHash else { throw PinKnownRefusal() }
-        for value in try V.array(metadata["outputs"],20000) {
+        for value in try V.array(metadata["outputs"],1601) {
             let row=try V.object(value,["output","source","sourceSha256","transformation","outputSha256"]),out=try V.text(row["output"]),path=try V.text(row["source"]),hash=try V.hash(row["sourceSha256"])
             guard out.hasPrefix("child-native/media/"),outputs[out]==nil,inputs[path]==hash,inventory[out]?.1 == (try V.hash(row["outputSha256"])) else { throw PinKnownRefusal() };outputs[out]=row
         }
@@ -9803,6 +9803,14 @@ fileprivate final class LocalV2MediaCatalog {
     private func material(_ out: String,_ source: String,_ hash: String) throws {
         guard let row=outputs[out],inventory[out]?.1==hash,try V.text(row["source"])==source,try V.hash(row["sourceSha256"])==hash,try V.text(row["transformation"])=="none",try V.hash(row["outputSha256"])==hash else { throw PinKnownRefusal() };expected.insert(out)
     }
+    /** Diagnostic closure only; no signal field can grant review or native playback. */
+    private func signalDiagnostic(_ binaryHash:String)throws {
+        let path="child-native/media/signal/"+binaryHash+".json",source="src/child/media-release-material/"+binaryHash+"/asset.wav"
+        guard let row=outputs[path],let file=inventory[path],file.0>0,file.0<=65536,inputs[source]==binaryHash,
+            try V.text(row["source"])==source,try V.hash(row["sourceSha256"])==binaryHash,
+            try V.text(row["transformation"])=="pcm-signal-measurement-v1",try V.hash(row["outputSha256"])==file.1 else{throw PinKnownRefusal()}
+        expected.insert(path)
+    }
     func recordManifest(_ raw: V,_ pin: V) throws {
         let r=try V.object(raw),p=try V.object(pin)
         guard try V.identifier(r["manifestId"])==V.identifier(p["manifestId"]),try V.number(r["manifestVersion"],1,9007199254740991)==V.number(p["manifestVersion"],1,9007199254740991),
@@ -9813,7 +9821,9 @@ fileprivate final class LocalV2MediaCatalog {
             try material(path,"src/child/media-release-material/"+sum+"/asset."+ext,sum);guard inventory[path]?.0==size else { throw PinKnownRefusal() }
             let entity=try V.object(row["entity"]);if try V.text(entity["kind"])=="narration" {
                 let quality=try V.hash(V.object(row["payload"])["qualityChecksum"]);try material("child-native/media/provenance/"+quality+".json","src/child/media-release-material/"+quality+"/quality.json",quality)
+                guard mime=="audio/wav" else{throw PinKnownRefusal()};try signalDiagnostic(sum)
             }
+            guard expected.count<=1601 else{throw PinKnownRefusal()}
         }
     }
     func finishInventory() throws {
@@ -10024,6 +10034,17 @@ fileprivate final class LocalV2NarrationMap {
         guard let cue=cues.first(where:{$0["anchorId"] as? String==saved.anchorId}) else{throw PinKnownRefusal()};let start=Int(try PlanetChildReadingPosition.number(cue["startFrame"],0,UInt64(frames-1)))
         return LocalV2NarrationMap(reference,saved,cues,rate,frames,start,assetId,sha256)
     }
+    static func fromBeginning(_ reference:[String:Any],_ payload:LocalV2PackageValue,_ assetId:String,_ sha256:String,_ transcript:String?)throws -> LocalV2NarrationMap {
+        let value=try LocalV2PackageValue.object(payload),text=try LocalV2PackageValue.text(value["text"]);guard let raw=value["readingAnchors"] else{throw PinKnownRefusal()}
+        let foundation=try JSONSerialization.jsonObject(with:Data(raw.json(sorted:false).utf8)),anchors=try PlanetChildReadingPosition.anchors(foundation,text)
+        guard let segments=anchors["segments"] as? [[String:Any]],let first=segments.first,let kind=reference["kind"] as? String else{throw PinKnownRefusal()}
+        let beginning=try PlanetChildReadingPosition.Record(kind,PlanetChildReadingPosition.id(reference["id"]),PlanetChildReadingPosition.number(anchors["anchorVersion"],1,PlanetChildReadingPosition.maxSafe-1),PlanetChildReadingPosition.id(first["anchorId"]))
+        let map=try resolve(beginning,reference,payload,assetId,sha256,transcript);guard map.startFrame==0 else{throw PinKnownRefusal()};return map
+    }
+    func validatePrior(_ revision:UInt64,_ prior:PlanetChildReadingPosition.Record?)throws {
+        guard revision<PlanetChildReadingPosition.maxSafe-1,(revision==0)==(prior==nil) else{throw PinKnownRefusal()};guard let prior else{return}
+        guard prior.kind==saved.kind,prior.id==saved.id,prior.anchorVersion==saved.anchorVersion,cues.contains(where:{$0["anchorId"] as? String==prior.anchorId}) else{throw PinKnownRefusal()}
+    }
     func at(_ frame:Int)throws -> PlanetChildReadingPosition.Record {
         guard frame>=0,frame<frameCount else{throw PinKnownRefusal()}
         for cue in cues {let start=try PlanetChildReadingPosition.number(cue["startFrame"],0,UInt64(frameCount-1)),end=try PlanetChildReadingPosition.number(cue["endFrame"],1,UInt64(frameCount));if UInt64(frame)>=start && UInt64(frame)<end {return try PlanetChildReadingPosition.Record(saved.kind,saved.id,saved.anchorVersion,PlanetChildReadingPosition.id(cue["anchorId"]))}}
@@ -10049,8 +10070,8 @@ fileprivate final class LocalV2NarrationFrames {
 
 fileprivate final class LocalV2NarrationCue {
     let permit:PlanetChildLocalV2MediaPermit,map:LocalV2NarrationMap,context:PlanetChildLocalV2SDKOwner.Context
-    private let lock=NSLock();private var revision:UInt64,saved:PlanetChildReadingPosition.Record,headerKnown=false,invalid=false;private let frames=LocalV2NarrationFrames()
-    init(_ permit:PlanetChildLocalV2MediaPermit,_ map:LocalV2NarrationMap,_ context:PlanetChildLocalV2SDKOwner.Context,_ revision:UInt64)throws {guard permit.cue==nil,revision>0,revision<PlanetChildReadingPosition.maxSafe-1,permit.audioEnabled,permit.asset.role=="narration" else{throw PinKnownRefusal()};self.permit=permit;self.map=map;self.context=context;self.revision=revision;saved=map.saved}
+    private let lock=NSLock();private var revision:UInt64,saved:PlanetChildReadingPosition.Record?,headerKnown=false,invalid=false;private let frames=LocalV2NarrationFrames()
+    init(_ permit:PlanetChildLocalV2MediaPermit,_ map:LocalV2NarrationMap,_ context:PlanetChildLocalV2SDKOwner.Context,_ revision:UInt64,_ prior:PlanetChildReadingPosition.Record?)throws {guard permit.cue==nil,permit.audioEnabled,permit.asset.role=="narration" else{throw PinKnownRefusal()};try map.validatePrior(revision,prior);self.permit=permit;self.map=map;self.context=context;self.revision=revision;saved=prior}
     func live()throws {try permit.outputCurrent();lock.lock();let denied=invalid;lock.unlock();guard !denied,permit.cue === self,permit.audioEnabled,permit.asset.id==map.assetId,permit.asset.checksum==map.sha256,try LocalV2AdmittedEnvelope.same(permit.asset.owner,LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:map.reference,options:[.sortedKeys,.withoutEscapingSlashes]),4096)) else{throw PlanetChildLocalV2MediaError.revoked}}
     func decoded(_ header:PlanetChildLocalV2MediaCodec.Header)throws {try permit.workerCurrent();try map.header(header);lock.lock();headerKnown=true;lock.unlock();try live()}
     func rowCurrent(_ delivery:LocalV2OwnedPackageDelivery)throws {
@@ -10131,6 +10152,17 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
             }catch{DispatchQueue.main.async{recipient.conceal();cue.permit.failedPresentation()}}
         }
     }
+    /** Opening signed narration reads an optional prior bookmark; only observed playback can save it. */
+    func prepareNarrationFromBeginning(_ permit:PlanetChildLocalV2MediaPermit,_ c:Context,_ owner:LocalV2PackageValue,_ requestId:String)throws {
+        guard permit.mime=="audio/wav",permit.asset.role=="narration" else{return};try permit.workerCurrent()
+        let delivery=permit.delivery,payload=try LocalV2JourneyCompiler.payload(delivery,owner),value=try LocalV2PackageValue.object(payload)
+        guard let raw=value["readingAnchors"],!raw.isNull else{return}
+        let foundation=try JSONSerialization.jsonObject(with:Data(raw.json(sorted:false).utf8)),anchors=try PlanetChildReadingPosition.anchors(foundation,LocalV2PackageValue.text(value["text"]))
+        guard let audio=anchors["narration"] as? [String:Any],audio["assetId"] as? String==permit.assetId else{return}
+        let reference=try JSONSerialization.jsonObject(with:Data(owner.json(sorted:false).utf8)) as! [String:Any],map=try LocalV2NarrationMap.fromBeginning(reference,payload,permit.assetId,permit.asset.checksum,permit.transcript)
+        guard let admission=delivery.data else{throw PinKnownRefusal()};let key=try LocalV2AdmittedEnvelope.checkedRef(delivery.compiled,owner,delivery.owner.wall()),row=try admission.reading(key,expected:nil,permit:nil,id:requestId);defer{row.close()}
+        permit.cue=try LocalV2NarrationCue(permit,map,c,row.revision,row.position)
+    }
     func narrationUnavailable(_ id:String)->[String:Any]{["status":"unavailable","presentationToken":NSNull(),"assetId":id,"remainingLifetimeMs":0,"readingRevision":NSNull(),"anchorVersion":NSNull(),"anchorId":NSNull(),"sampleRate":0,"frameCount":0,"startFrame":0]}
     func resumeNarration(_ r:PlanetChildLocalV2Wire.Request,_ c:Context,_ delivery:LocalV2OwnedPackageDelivery,_ epoch:UInt64,_ index:LocalV2MediaIndex,_ owner:LocalV2PackageValue,_ assets:[LocalV2MediaAsset])throws -> [String:Any] {
         guard let id=r.assetId,let expected=r.expectedRevision,let asset=assets.first(where:{$0.id==id}),asset.mime=="audio/wav",asset.role=="narration",let layout=r.mediaLayout,let admission=delivery.data,let channel else{throw PinKnownRefusal()};try requireOriginal(c,delivery)
@@ -10140,7 +10172,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         do{map=try LocalV2NarrationMap.resolve(saved,reference,payload,asset)}catch{return narrationUnavailable(id)}
         let command=try channel.mediaOriginalCommand(delivery),permit=try PlanetChildLocalV2MediaPermit.make(self,delivery,command,epoch,c.token,c.generation,index,asset)
         guard permit.audioEnabled else{permit.close();return narrationUnavailable(id)}
-        let cue=try LocalV2NarrationCue(permit,map,c,revision);permit.cue=cue
+        let cue=try LocalV2NarrationCue(permit,map,c,revision,saved);permit.cue=cue
         var resource:PlanetChildLocalV2MediaResource?,presentation:PlanetChildLocalV2MediaPresentation?,handed=false
         defer{if !handed && presentation==nil{resource?.close();permit.close()}}
         do {
@@ -10211,7 +10243,7 @@ fileprivate extension PlanetChildLocalV2SDKOwner {
         defer { if !handed && presentation==nil { resource?.close();permit.close() } }
         do {
             guard asset.mime != "audio/wav" || permit.audioEnabled else { throw PlanetChildLocalV2MediaError.revoked }
-            resource=try PlanetChildLocalV2MediaCodec.decode(permit);try permit.workerCurrent()
+            try prepareNarrationFromBeginning(permit,c,owner,r.id);resource=try PlanetChildLocalV2MediaCodec.decode(permit);try permit.cue?.rowCurrent(delivery);try permit.workerCurrent()
             let token=try Self.token()
             try DispatchQueue.main.sync {
                 try permit.mainCurrent()
@@ -10407,6 +10439,48 @@ enum PlanetChildNativeMediaRuntimeFixture {
         try deny { try LocalV2MediaCatalog(bytes,raw()).finishInventory() }
         artifact["inventory"]=Array(inventory.prefix(1));artifact["sourceInputs"]=["files":[["path":sourcePath,"sha256":String(repeating:"0",count:64)]]]
         try deny { _=try LocalV2MediaCatalog(bytes,raw()) };return true
+    }
+    /** Complete six-file catalog mechanics only. Synthetic metadata grants no signature, permit or human review. */
+    static func signalCatalog(_ mutation:String)throws {
+        guard ["valid","missing","wrong-source","wrong-source-sha","wrong-transform","wrong-output-sha","oversized","orphan","empty-orphan"].contains(mutation) else{throw PlanetChildLocalV2MediaError.malformed}
+        func json(_ value:[String:Any])throws -> Data {try JSONSerialization.data(withJSONObject:value,options:[.sortedKeys,.withoutEscapingSlashes])}
+        let pinSource="src/child/childNativeMediaReleasePins.json",pinHash=String(repeating:"a",count:64),packageHash=String(repeating:"b",count:64)
+        let binary=wav(),binaryHash=LocalSnapshotV2.hash(binary),quality=try json(["fixture":"quality catalog bytes only"]),signal=try json(["fixture":"diagnostic catalog bytes only"]),review=try json(["fixture":"catalog shape only, no review authority"])
+        let qualityHash=LocalSnapshotV2.hash(quality),reviewHash=LocalSnapshotV2.hash(review),binarySource="src/child/media-release-material/"+binaryHash+"/asset.wav",signalPath="child-native/media/signal/"+binaryHash+".json"
+        let asset:[String:Any]=["assetId":"fixture-audio","owner":["kind":"writer","id":"fixture-owner","contentChecksum":packageHash],"entity":["kind":"narration"],"payload":["qualityChecksum":qualityHash],"policy":[:],"inventoryKey":"fixture.wav","sha256":binaryHash,"bytes":binary.count,"mime":"audio/wav"]
+        let root:[String:Any]=["schemaVersion":2,"kind":"literary-planet-child-native-media-manifest-v2","manifestId":"fixture-media","manifestVersion":1,"packageId":"fixture-package","packageVersion":1,"packageChecksum":packageHash,"policyVersion":1,"policyChecksum":packageHash,"locale":"ru","exactAge":9,"readingLevels":["plain"],"validFromEpochMs":1,"validUntilEpochMs":2,"assets":[asset]]
+        let manifestBytes=try json(root),manifestHash=LocalSnapshotV2.hash(manifestBytes)
+        let pin:[String:Any]=["manifestId":"fixture-media","manifestVersion":1,"manifestChecksum":manifestHash,"reviewChecksum":reviewHash,"packageId":"fixture-package","packageVersion":1,"packageChecksum":packageHash]
+        let empty=mutation=="empty-orphan"
+        var catalog:[String:Any]=["schemaVersion":2,"kind":"literary-planet-child-native-media-catalog-v2","platform":"ios-ipados","mediaPinSourceChecksum":pinHash,"reviewKeys":[["keyId":"child-media-review-fixture","reviewerId":"fixture","publicKeyX963Hex":"04"+String(repeating:"1",count:128)]],"manifests":[pin]]
+        if empty {catalog["platform"]=NSNull();catalog["reviewKeys"]=[[String:Any]]();catalog["manifests"]=[[String:Any]]()}
+        let catalogBytes=try json(catalog),manifestPath="child-native/media/manifests/"+manifestHash+".json",reviewPath="child-native/media/reviews/"+reviewHash+".json"
+        var inputs=[String:String](),inventory=[[String:Any]](),outputs=[[String:Any]]()
+        func add(_ path:String,_ source:String,_ sourceHash:String,_ bytes:Data,_ transformation:String="none"){
+            inputs[source]=sourceHash;let hash=LocalSnapshotV2.hash(bytes)
+            inventory.append(["path":path,"bytes":bytes.count,"sha256":hash]);outputs.append(["output":path,"source":source,"sourceSha256":sourceHash,"transformation":transformation,"outputSha256":hash])
+        }
+        add("child-native/media/catalog-v2.json",pinSource,pinHash,catalogBytes,"fixed-native-media-pin-projection-v2")
+        add(manifestPath,"src/child/media-release-material/"+manifestHash+"/manifest.json",manifestHash,manifestBytes)
+        add(reviewPath,"src/child/media-release-material/"+reviewHash+"/review.json",reviewHash,review)
+        add("child-native/media/assets/"+binaryHash+".wav",binarySource,binaryHash,binary)
+        add("child-native/media/provenance/"+qualityHash+".json","src/child/media-release-material/"+qualityHash+"/quality.json",qualityHash,quality)
+        add(signalPath,binarySource,binaryHash,signal,"pcm-signal-measurement-v1")
+        switch mutation {
+        case "missing":inventory.removeLast();outputs.removeLast()
+        case "wrong-source":let otherHash=String(repeating:"e",count:64),other="src/child/media-release-material/"+otherHash+"/asset.wav";inputs[other]=otherHash;outputs[5]["source"]=other;outputs[5]["sourceSha256"]=otherHash
+        case "wrong-source-sha":outputs[5]["sourceSha256"]=String(repeating:"e",count:64)
+        case "wrong-transform":outputs[5]["transformation"]="none"
+        case "wrong-output-sha":outputs[5]["outputSha256"]=String(repeating:"e",count:64)
+        case "oversized":inventory[5]["bytes"]=65537
+        case "orphan":add("child-native/media/signal/"+String(repeating:"e",count:64)+".json",binarySource,binaryHash,signal,"pcm-signal-measurement-v1")
+        case "empty-orphan":inventory=[inventory[0],inventory[5]];outputs=[outputs[0],outputs[5]]
+        default:break
+        }
+        let artifact:[String:Any]=["schemaVersion":1,"kind":"literary-planet-bundled-native-preparation","platform":"ios","channel":empty ? "dev":"appStore","sourceInputs":["files":inputs.keys.sorted().map{["path":$0,"sha256":inputs[$0]!]}],"inventory":inventory,"childNativeMediaAssets":["pinSource":["path":pinSource,"sha256":pinHash],"outputs":outputs]]
+        let actual=try LocalV2MediaCatalog(catalogBytes,json(artifact))
+        if !empty {try actual.verify(manifestPath,manifestBytes,524288);try actual.verify(reviewPath,review,524288);try actual.recordManifest(LocalV2PackageJson.read(manifestBytes,524288),LocalV2PackageJson.read(json(pin),4096))}
+        try actual.finishInventory()
     }
     static func codecs(_ name: String) throws -> Bool {
         switch name {
@@ -12887,6 +12961,16 @@ extension PlanetChildLocalV2SDKRuntimeFixture {
         guard latest==11,try map.at(latest).anchorId=="Passage.THREE",try map.at(latest).key==saved.key,try frames.finishKnown(latest),frames.isTerminal(),frames.isFinished(),!frames.begin(),try !frames.observe(11,true) else{throw PinKnownRefusal()}
         // A settled nonterminal worker leaves a later terminal successor owned.
         let successor=LocalV2NarrationFrames();guard try successor.observe(4,false),successor.begin(),try successor.finishKnown(4),try successor.observe(11,true),successor.begin(),try successor.next()==11,try successor.finishKnown(11),successor.isFinished() else{throw PinKnownRefusal()};return true
+    }
+    /** Pure signed-map and nullable prior validation, not a fabricated native CAS. */
+    static func narrationBeginning(_ name:String)throws -> Bool {
+        guard ["empty","existing","zero-with-prior","positive-without-prior","stale-version","wrong-entity","unknown-anchor"].contains(name) else{throw PinKnownRefusal()}
+        let reference:[String:Any]=["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)],anchors:[String:Any]=["schemaVersion":1,"anchorVersion":1,"segments":[["anchorId":"Passage.ONE","text":"One "],["anchorId":"Passage.TWO","text":"two"]],"narration":["assetId":"Audio.ONE","sha256":String(repeating:"b",count:64),"sampleRate":8000,"frameCount":8,"cues":[["anchorId":"Passage.ONE","startFrame":0,"endFrame":4],["anchorId":"Passage.TWO","startFrame":4,"endFrame":8]]]]
+        let payload=try LocalV2PackageJson.read(JSONSerialization.data(withJSONObject:["text":"One two","readingAnchors":anchors],options:[.sortedKeys,.withoutEscapingSlashes]),131072),map=try LocalV2NarrationMap.fromBeginning(reference,payload,"Audio.ONE",String(repeating:"b",count:64),"One two")
+        guard map.startFrame==0,map.saved.anchorId=="Passage.ONE",try map.at(4).anchorId=="Passage.TWO" else{throw PinKnownRefusal()}
+        let prior:PlanetChildReadingPosition.Record?=try ["empty","positive-without-prior"].contains(name) ? nil:PlanetChildReadingPosition.Record("work",name=="wrong-entity" ? "Other.ONE":"Work.ONE",name=="stale-version" ? 2:1,name=="unknown-anchor" ? "Unknown.ONE":"Passage.TWO")
+        let revision:UInt64=["empty","zero-with-prior"].contains(name) ? 0:7
+        do{try map.validatePrior(revision,prior);return name=="empty" || name=="existing"}catch{return name != "empty" && name != "existing"}
     }
     static func narrationCue(_ name:String)throws -> Bool {
         let reference:[String:Any]=["kind":"work","id":"Work.ONE","contentChecksum":String(repeating:"a",count:64)],anchors:[String:Any]=["schemaVersion":1,"anchorVersion":1,"segments":[["anchorId":"Passage.ONE","text":"One "],["anchorId":"Passage.TWO","text":"two"]],"narration":["assetId":"Audio.ONE","sha256":String(repeating:"b",count:64),"sampleRate":8000,"frameCount":8,"cues":[["anchorId":"Passage.ONE","startFrame":0,"endFrame":4],["anchorId":"Passage.TWO","startFrame":4,"endFrame":8]]]]

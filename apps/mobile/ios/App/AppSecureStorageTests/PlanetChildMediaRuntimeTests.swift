@@ -14,6 +14,10 @@ final class PlanetChildMediaRuntimeTests: XCTestCase {
     func testLocalV2MediaExpiryIntersectsPackageReviewAndRights() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.mediaScenario("expiry")) }
     func testLocalV2MediaNarrationRequiresExactScriptPerformerAndQuality() throws { XCTAssertTrue(try PlanetChildNativePackageRuntimeFixture.mediaScenario("audio-fields")) }
     func testLocalV2MediaCatalogRejectsOrphansAndSubstitutedSource() throws { XCTAssertTrue(try PlanetChildNativeMediaRuntimeFixture.catalog()) }
+    func testNarrationSignalCompletesOriginalNonemptyCatalogOnly()throws {XCTAssertNoThrow(try PlanetChildNativeMediaRuntimeFixture.signalCatalog("valid"))}
+    func testNarrationSignalRejectsSubstitutionMissingAndOrphanDiagnostics()throws {
+        for mutation in ["missing","wrong-source","wrong-source-sha","wrong-transform","wrong-output-sha","oversized","orphan","empty-orphan"]{XCTAssertThrowsError(try PlanetChildNativeMediaRuntimeFixture.signalCatalog(mutation),mutation)}
+    }
     func testLocalV2MediaStaticPNGRejectsAnimationCRCAndTail() throws { XCTAssertTrue(try PlanetChildNativeMediaRuntimeFixture.codecs("png")) }
     func testLocalV2MediaJPEGAndWebPRejectAnimationAndTail() throws { XCTAssertTrue(try PlanetChildNativeMediaRuntimeFixture.codecs("jpeg-webp")) }
     func testLocalV2MediaPCMRejectsCodecDurationAndMisalignment() throws { XCTAssertTrue(try PlanetChildNativeMediaRuntimeFixture.codecs("pcm")) }

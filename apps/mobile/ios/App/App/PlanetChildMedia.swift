@@ -282,6 +282,8 @@ final class PlanetChildLocalV2MediaPresentation: NSObject {
         guard Thread.isMainThread,playing,let buffer=resource.audio else{return};try permit.mainCurrent()
         guard let node=player.lastRenderTime,let time=player.playerTime(forNodeTime:node) else{return}
         guard time.isSampleTimeValid,time.sampleRate==buffer.format.sampleRate,time.sampleTime>=0,time.sampleTime<=AVAudioFramePosition(buffer.frameLength) else{throw PlanetChildLocalV2MediaError.malformed}
+        // A prepared/started node with zero rendered samples creates no bookmark.
+        if time.sampleTime==0{return}
         let frame=try PlanetChildLocalV2MediaCodec.sourceFrame(resource.sourceFrameCount,resource.sourceStartFrame,time.sampleTime);lock.lock();let previous=observedSourceFrame;lock.unlock();guard frame>=resource.sourceStartFrame,frame>=previous else{throw PlanetChildLocalV2MediaError.malformed}
         lock.lock();observedSourceFrame=frame;let sequence=observedSequence;lock.unlock();try permit.observeNativeFrame(self,sequence,frame,stop:false)
     }

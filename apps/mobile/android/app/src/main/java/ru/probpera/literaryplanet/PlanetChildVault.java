@@ -6840,7 +6840,7 @@ private static final class LocalV2ChildLocaleTransaction {
             PlanetChildMedia.Owner recipient=null;byte[] bytes=null;boolean handed=false;
             try{
                 LocalV2MediaPermit permit=new LocalV2MediaPermit(this,c,d,asset,stamp);
-                if("audio/wav".equals(asset.mime)&&!permit.audioAllowed())return mediaUnavailable(r.assetId);bytes=new LocalV2FixedMediaProducer(d).read(permit);recipient=PlanetChildMedia.Owner.decode(permit,bytes);bytes=null;
+                if("audio/wav".equals(asset.mime)&&!permit.audioAllowed())return mediaUnavailable(r.assetId);prepareNarrationFromBeginning(permit,r.id);bytes=new LocalV2FixedMediaProducer(d).read(permit);recipient=PlanetChildMedia.Owner.decode(permit,bytes);bytes=null;if(permit.cue!=null)permit.cue.rowCurrent(d);
                 recipient.publish(r.layout);original(c,d);permit.checkWorker();
                 long remaining=Math.min(c.deadline-SystemClock.elapsedRealtime(),permit.outputUntil-d.owner.wall());require(remaining>0&&remaining<=60000);
                 handed=true;return map("status","presented","presentationToken",recipient.token,"assetId",asset.assetId,"remainingLifetimeMs",remaining);
@@ -6848,6 +6848,16 @@ private static final class LocalV2ChildLocaleTransaction {
             finally{LocalSnapshotV2.wipe(bytes);if(!handed&&recipient!=null&&!recipient.knownClosed()){try{recipient.closeJoined();}catch(Exception unknown){d.owner.writer.unknown(d.owner.request);throw unknown;}}}
         }
 
+        /** Preparing an explicitly signed from-beginning map never creates a bookmark. */
+        private void prepareNarrationFromBeginning(LocalV2MediaPermit permit,String requestId)throws Exception {
+            if(!"audio/wav".equals(permit.asset.mime)||!"narration".equals(permit.asset.payload.get("role")))return;
+            LocalV2OwnedPackageDelivery d=permit.delivery;permit.checkWorker();String key=LocalV2SDKData.reference(d,permit.asset.owner);
+            java.util.Map<String,Object> payload=LocalV2SDKData.payload(d,key);Object raw=payload.get("readingAnchors");if(raw==null)return;
+            java.util.Map<String,Object> anchors=PlanetChildReadingPosition.anchors(raw,LocalV2PackageJson.text(payload.get("text")));Object audio=anchors.get("narration");
+            if(audio==null||!permit.asset.assetId.equals(LocalV2PackageJson.object(audio).get("assetId")))return;
+            LocalV2NarrationMap map=LocalV2NarrationMap.fromBeginning(permit.asset.owner,payload,permit.asset.assetId,permit.asset.sha256,permit.transcript());
+            try(PlanetChildDataStore.ReadingResult row=d.data.sdkReading(null,null,requestId,key)){permit.cue=new LocalV2NarrationCue(permit,map,row.revision,row.position);}
+        }
         private static java.util.Map<String,Object> narrationUnavailable(String id){return map("status","unavailable","presentationToken",null,"assetId",id,"remainingLifetimeMs",0L,"readingRevision",null,"anchorVersion",null,"anchorId",null,"sampleRate",0L,"frameCount",0L,"startFrame",0L);}
         private Object resumeNarration(PlanetChildDataTransport.V2Request r,Context c,LocalV2OwnedPackageDelivery d,long stamp)throws Exception {
             original(c,d);if(stamp!=mediaEpoch)return narrationUnavailable(r.assetId);LocalV2MediaAsset asset=d.mediaAssets.get(r.assetId);
@@ -6857,7 +6867,7 @@ private static final class LocalV2ChildLocaleTransaction {
             try(PlanetChildDataStore.ReadingResult row=d.data.sdkReading(null,null,r.id,key)){saved=row.position;revision=row.revision;}
             if(saved==null||revision!=r.expectedRevision||revision<=0||revision>=MAX_SAFE-1)return narrationUnavailable(r.assetId);
             LocalV2NarrationMap mapping;try{mapping=LocalV2NarrationMap.resolve(saved,r.owner,LocalV2SDKData.payload(d,key),asset.assetId,asset.sha256,permit.transcript());}catch(Exception unavailable){return narrationUnavailable(r.assetId);}
-            LocalV2NarrationCue cue=new LocalV2NarrationCue(permit,mapping,revision);permit.cue=cue;retireMediaJoined();
+            LocalV2NarrationCue cue=new LocalV2NarrationCue(permit,mapping,revision,saved);permit.cue=cue;retireMediaJoined();
             PlanetChildMedia.Owner recipient=null;byte[] bytes=null;boolean handed=false;
             try{bytes=new LocalV2FixedMediaProducer(d).read(permit);recipient=PlanetChildMedia.Owner.decode(permit,bytes);bytes=null;cue.rowCurrent(d);recipient.publish(r.layout);original(c,d);permit.checkWorker();
                 long remaining=Math.min(c.deadline-SystemClock.elapsedRealtime(),permit.outputUntil-d.owner.wall());require(remaining>0&&remaining<=60000);java.util.Map<String,Object> reply=cue.prepared(recipient,remaining);handed=true;return reply;
@@ -6950,6 +6960,15 @@ private static final class LocalV2ChildLocaleTransaction {
         }catch(Exception refused){if("valid".equals(name))throw refused;return java.util.Arrays.asList("unknown","asset","digest","transcript","sample-rate","full-frame-count","outside").contains(name);}
     }
 
+    /** Pure first-map/prior contract only; never creates a context, permit or CAS write. */
+    static boolean fixtureNarrationBeginning(android.content.Context context,String name)throws Exception {
+        require(context!=null&&"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE)!=0);
+        require(java.util.Arrays.asList("empty","existing","zero-with-prior","positive-without-prior","stale-version","wrong-entity","unknown-anchor").contains(name));
+        java.util.Map<String,Object> ref=LocalV2AppOwner.map("kind","work","id","Work.ONE","contentChecksum","a".repeat(64)),anchors=LocalV2AppOwner.map("schemaVersion",1L,"anchorVersion",1L,"segments",java.util.Arrays.asList(LocalV2AppOwner.map("anchorId","Passage.ONE","text","One "),LocalV2AppOwner.map("anchorId","Passage.TWO","text","two")),"narration",LocalV2AppOwner.map("assetId","Audio.ONE","sha256","b".repeat(64),"sampleRate",8000L,"frameCount",8L,"cues",java.util.Arrays.asList(LocalV2AppOwner.map("anchorId","Passage.ONE","startFrame",0L,"endFrame",4L),LocalV2AppOwner.map("anchorId","Passage.TWO","startFrame",4L,"endFrame",8L))));
+        LocalV2NarrationMap map=LocalV2NarrationMap.fromBeginning(ref,LocalV2AppOwner.map("text","One two","readingAnchors",anchors),"Audio.ONE","b".repeat(64),"One two");require(map.startFrame==0&&map.saved.anchorId.equals("Passage.ONE")&&map.at(4).anchorId.equals("Passage.TWO"));
+        PlanetChildReadingPosition.Record prior=java.util.Arrays.asList("empty","positive-without-prior").contains(name)?null:new PlanetChildReadingPosition.Record("work","wrong-entity".equals(name)?"Other.ONE":"Work.ONE","stale-version".equals(name)?2:1,"unknown-anchor".equals(name)?"Unknown.ONE":"Passage.TWO");long revision=java.util.Arrays.asList("empty","zero-with-prior").contains(name)?0:7;
+        try{map.validatePrior(revision,prior);return "empty".equals(name)||"existing".equals(name);}catch(Exception refused){return !"empty".equals(name)&&!"existing".equals(name);}
+    }
     /** Pure three-cue delayed-settlement case, not native admission/CAS execution. */
     static boolean fixtureNarrationDelayedTerminal(android.content.Context context)throws Exception {
         require(context!=null&&"ru.probpera.literaryplanet.dev".equals(context.getPackageName())&&(context.getApplicationInfo().flags&android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE)!=0);java.util.Map<String,Object> ref=LocalV2AppOwner.map("kind","work","id","Work.ONE","contentChecksum","a".repeat(64)),anchors=LocalV2AppOwner.map("schemaVersion",1L,"anchorVersion",1L,"segments",java.util.Arrays.asList(LocalV2AppOwner.map("anchorId","Passage.ONE","text","One "),LocalV2AppOwner.map("anchorId","Passage.TWO","text","two "),LocalV2AppOwner.map("anchorId","Passage.THREE","text","three")),"narration",LocalV2AppOwner.map("assetId","Audio.ONE","sha256","b".repeat(64),"sampleRate",8000L,"frameCount",12L,"cues",java.util.Arrays.asList(LocalV2AppOwner.map("anchorId","Passage.ONE","startFrame",0L,"endFrame",4L),LocalV2AppOwner.map("anchorId","Passage.TWO","startFrame",4L,"endFrame",8L),LocalV2AppOwner.map("anchorId","Passage.THREE","startFrame",8L,"endFrame",12L))));
@@ -6977,6 +6996,17 @@ private static final class LocalV2ChildLocaleTransaction {
             java.util.List<java.util.Map<String,Object>> cues=new java.util.ArrayList<>();for(Object raw:LocalV2PackageJson.array(audio.get("cues"),128)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"anchorId","startFrame","endFrame");cues.add(java.util.Collections.unmodifiableMap(new java.util.LinkedHashMap<>(row)));if(record.anchorId.equals(row.get("anchorId")))start=(int)LocalV2PackageJson.number(row.get("startFrame"),0,frames-1);}
             require(start>=0);return new LocalV2NarrationMap(reference,record,cues,rate,frames,start,asset,sha);
         }
+        private static LocalV2NarrationMap fromBeginning(java.util.Map<String,Object> reference,java.util.Map<String,Object> payload,String asset,String sha,String transcript)throws Exception {
+            String text=LocalV2PackageJson.text(payload.get("text"));java.util.Map<String,Object> anchors=PlanetChildReadingPosition.anchors(payload.get("readingAnchors"),text);
+            java.util.List<Object> segments=LocalV2PackageJson.array(anchors.get("segments"),128);require(!segments.isEmpty());java.util.Map<String,Object> first=LocalV2PackageJson.object(segments.get(0),"anchorId","text");
+            PlanetChildReadingPosition.Record beginning=new PlanetChildReadingPosition.Record(LocalV2PackageJson.text(reference.get("kind")),LocalV2PackageJson.identifier(reference.get("id")),(Long)anchors.get("anchorVersion"),LocalV2PackageJson.identifier(first.get("anchorId")));
+            LocalV2NarrationMap map=resolve(beginning,reference,payload,asset,sha,transcript);require(map.startFrame==0);return map;
+        }
+        private void validatePrior(long revision,PlanetChildReadingPosition.Record prior)throws Exception {
+            require(revision>=0&&revision<MAX_SAFE-1&&(revision==0)==(prior==null));if(prior==null)return;
+            require(prior.kind.equals(saved.kind)&&prior.id.equals(saved.id)&&prior.anchorVersion==saved.anchorVersion);boolean found=false;
+            for(java.util.Map<String,Object> cue:cues)found|=prior.anchorId.equals(cue.get("anchorId"));require(found);
+        }
         private PlanetChildReadingPosition.Record at(long frame)throws Exception {require(frame>=0&&frame<frameCount);for(java.util.Map<String,Object> cue:cues)if(frame>=(Long)cue.get("startFrame")&&frame<(Long)cue.get("endFrame"))return new PlanetChildReadingPosition.Record(saved.kind,saved.id,saved.anchorVersion,(String)cue.get("anchorId"));throw new PinKnownRefusal();}
         private void header(PlanetChildMedia.Header h)throws Exception {require(h!=null&&h.audio()&&h.rate==sampleRate&&h.length/(h.channels*h.bits/8)==frameCount);}
     }
@@ -6997,16 +7027,16 @@ private static final class LocalV2ChildLocaleTransaction {
     private static final class LocalV2NarrationCue {
         final LocalV2MediaPermit permit;final LocalV2NarrationMap map;private long readingRevision;private PlanetChildReadingPosition.Record saved;
         private boolean headerKnown,invalid;private final LocalV2NarrationFrames frames=new LocalV2NarrationFrames();
-        private LocalV2NarrationCue(LocalV2MediaPermit permit,LocalV2NarrationMap map,long revision)throws Exception {require(permit.cue==null&&revision>0&&revision<MAX_SAFE-1&&permit.audioAllowed()&&"narration".equals(permit.asset.payload.get("role")));this.permit=permit;this.map=map;readingRevision=revision;saved=map.saved;}
+        private LocalV2NarrationCue(LocalV2MediaPermit permit,LocalV2NarrationMap map,long revision,PlanetChildReadingPosition.Record prior)throws Exception {require(permit.cue==null&&permit.audioAllowed()&&"narration".equals(permit.asset.payload.get("role")));map.validatePrior(revision,prior);this.permit=permit;this.map=map;readingRevision=revision;saved=prior;}
         private void live()throws Exception {permit.checkOutput();require(permit.cue==this&&!invalid&&permit.audioAllowed()&&permit.delivery.mediaAssets.get(map.assetId)==permit.asset&&permit.asset.owner.equals(map.reference)&&permit.asset.sha256.equals(map.sha256));}
         private void decoded(PlanetChildMedia.Header header)throws Exception {permit.checkWorker();map.header(header);headerKnown=true;live();}
         private synchronized long revision(){return readingRevision;}
-        private void rowCurrent(LocalV2OwnedPackageDelivery actual)throws Exception {live();require(actual==permit.delivery&&headerKnown);String key=LocalV2SDKData.reference(actual,map.reference);try(PlanetChildDataStore.ReadingResult row=actual.data.sdkReading(null,null,LocalV2AppOwner.random(16),key)){synchronized(this){require(row.revision==readingRevision&&saved.equals(row.position));}}live();}
+        private void rowCurrent(LocalV2OwnedPackageDelivery actual)throws Exception {live();require(actual==permit.delivery&&headerKnown);String key=LocalV2SDKData.reference(actual,map.reference);try(PlanetChildDataStore.ReadingResult row=actual.data.sdkReading(null,null,LocalV2AppOwner.random(16),key)){synchronized(this){require(row.revision==readingRevision&&java.util.Objects.equals(saved,row.position));}}live();}
         private java.util.Map<String,Object> prepared(PlanetChildMedia.Owner recipient,long remaining)throws Exception {permit.checkWorker();live();require(headerKnown&&recipient.permit==permit&&permit.owner.media==recipient&&!recipient.knownClosed());return LocalV2AppOwner.map("status","prepared","presentationToken",recipient.token,"assetId",map.assetId,"remainingLifetimeMs",remaining,"readingRevision",revision(),"anchorVersion",map.saved.anchorVersion,"anchorId",map.saved.anchorId,"sampleRate",(long)map.sampleRate,"frameCount",(long)map.frameCount,"startFrame",(long)map.startFrame);}
         private void observedLeaf(PlanetChildMedia.Owner recipient,long sequence,long frame)throws Exception {live();require(headerKnown&&permit.owner.media==recipient&&recipient.permit==permit&&recipient.observationCurrent(sequence,frame));map.at(frame);}
         private void offer(PlanetChildMedia.Owner recipient,long sequence,long frame,boolean stop)throws Exception {
             if(frame>=0)observedLeaf(recipient,sequence,frame);
-            synchronized(this){if(!frames.observe(frame,stop))return;if(!stop&&!frames.running()&&frame>=0&&saved.equals(map.at(frame)))return;if(!frames.begin())return;}
+            synchronized(this){if(!frames.observe(frame,stop))return;if(!stop&&!frames.running()&&frame>=0&&java.util.Objects.equals(saved,map.at(frame)))return;if(!frames.begin())return;}
             permit.owner.io.execute(()->checkpoint(recipient,sequence));
         }
         private void checkpoint(PlanetChildMedia.Owner recipient,long sequence) {
@@ -7015,8 +7045,8 @@ private static final class LocalV2ChildLocaleTransaction {
                 synchronized(owner){if(owner.busy||owner.sealed||owner.disposed||owner.context!=permit.context||owner.media!=recipient)return;owner.busy=true;claimed=true;}
                 for(;;){final long frame=frames.next();
                     if(frame>=0){observedLeaf(recipient,sequence,frame);final PlanetChildReadingPosition.Record target=map.at(frame);final long expected;final PlanetChildReadingPosition.Record prior;synchronized(this){expected=readingRevision;prior=saved;}
-                        if(!prior.equals(target)){Object result=owner.channel.invoke(actual->{owner.original(permit.context,actual);observedLeaf(recipient,sequence,frame);String key=LocalV2SDKData.reference(actual,map.reference);
-                            try(PlanetChildDataStore.ReadingResult row=actual.data.sdkReading(null,null,LocalV2AppOwner.random(16),key)){if(row.revision!=expected||!prior.equals(row.position)){synchronized(this){invalid=true;}return null;}}
+                        if(!java.util.Objects.equals(prior,target)){Object result=owner.channel.invoke(actual->{owner.original(permit.context,actual);observedLeaf(recipient,sequence,frame);String key=LocalV2SDKData.reference(actual,map.reference);
+                            try(PlanetChildDataStore.ReadingResult row=actual.data.sdkReading(null,null,LocalV2AppOwner.random(16),key)){if(row.revision!=expected||!java.util.Objects.equals(prior,row.position)){synchronized(this){invalid=true;}return null;}}
                             LocalV2ReadingPermit write=LocalV2ReadingPermit.observed(this,recipient,sequence,frame,target);try(PlanetChildDataStore.ReadingResult row=actual.data.sdkReading(expected,write,LocalV2AppOwner.random(16),key)){require(row.revision==expected+1&&target.equals(row.position));return row.dto();}});
                             if(result==null)return;require(result instanceof LocalV2SDKChannel.ReadingHandoff);handoff=(LocalV2SDKChannel.ReadingHandoff)result;handoff.check(owner,permit.context);handoff.complete();
                             synchronized(this){readingRevision=expected+1;saved=target;}handoff.close();handoff=null;
@@ -7105,7 +7135,7 @@ private static final class LocalV2ChildLocaleTransaction {
             for(Object raw:LocalV2PackageJson.array(artifact.get("inventory"),20000)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"path","bytes","sha256");String name=LocalV2PackageJson.text(row.get("path"));LocalV2PackageJson.number(row.get("bytes"),1,MAX_SAFE);LocalV2PackageJson.hash(row.get("sha256"));require(inventory.put(name,row)==null);}
             java.util.Map<String,Object> metadata=LocalV2PackageJson.object(artifact.get("childNativeMediaAssets"),"pinSource","outputs"),pin=LocalV2PackageJson.object(metadata.get("pinSource"),"path","sha256");
             String pinHash=LocalV2PackageJson.hash(catalog.get("mediaPinSourceChecksum"));require("src/child/childNativeMediaReleasePins.json".equals(pin.get("path"))&&pinHash.equals(pin.get("sha256"))&&inputs.containsKey(pin.get("path"))&&pinHash.equals(inputs.get(pin.get("path")).get("sha256")));
-            for(Object raw:LocalV2PackageJson.array(metadata.get("outputs"),1089)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"output","source","sourceSha256","transformation","outputSha256");String output=LocalV2PackageJson.text(row.get("output"));require(output.startsWith("child-native/media/")&&outputs.put(output,row)==null);}
+            for(Object raw:LocalV2PackageJson.array(metadata.get("outputs"),1601)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"output","source","sourceSha256","transformation","outputSha256");String output=LocalV2PackageJson.text(row.get("output"));require(output.startsWith("child-native/media/")&&outputs.put(output,row)==null);}
             expected.add("child-native/media/catalog-v2.json");verify("child-native/media/catalog-v2.json",catalogBytes,65536);
         }
         private void verify(String path,byte[] bytes,int bound)throws Exception {java.util.Map<String,Object> row=inventory.get(path);require(row!=null&&bytes.length>0&&bytes.length<=bound&&bytes.length==LocalV2PackageJson.number(row.get("bytes"),1,bound)&&digest(bytes).equals(row.get("sha256")));provenance(path,digest(bytes));}
@@ -7117,10 +7147,19 @@ private static final class LocalV2ChildLocaleTransaction {
             require(source.equals(row.get("source"))&&inputs.containsKey(source)&&inputs.get(source).get("sha256").equals(row.get("sourceSha256")));
             require(path.endsWith("catalog-v2.json")?"fixed-native-media-pin-projection-v2".equals(row.get("transformation")):"none".equals(row.get("transformation"))&&hash.equals(row.get("sourceSha256")));
         }
+        /** Diagnostic closure only. Signal measurements never issue a media permit or review. */
+        private void signalDiagnostic(String binaryHash)throws Exception {
+            String path="child-native/media/signal/"+binaryHash+".json",source="src/child/media-release-material/"+binaryHash+"/asset.wav";
+            java.util.Map<String,Object> row=outputs.get(path),file=inventory.get(path);require(row!=null&&file!=null);
+            LocalV2PackageJson.number(file.get("bytes"),1,65536);String outputHash=LocalV2PackageJson.hash(row.get("outputSha256"));
+            require(outputHash.equals(file.get("sha256"))&&source.equals(row.get("source"))&&binaryHash.equals(row.get("sourceSha256"))
+                &&inputs.containsKey(source)&&binaryHash.equals(inputs.get(source).get("sha256"))&&"pcm-signal-measurement-v1".equals(row.get("transformation")));
+            expected.add(path);
+        }
         private void addManifest(java.util.Map<String,Object> root,java.util.Map<String,Object> pin)throws Exception {
             require(root.get("manifestId").equals(pin.get("manifestId"))&&root.get("manifestVersion").equals(pin.get("manifestVersion"))&&root.get("packageId").equals(pin.get("packageId"))&&root.get("packageVersion").equals(pin.get("packageVersion"))&&root.get("packageChecksum").equals(pin.get("packageChecksum")));
             for(Object raw:LocalV2PackageJson.array(root.get("assets"),512)){java.util.Map<String,Object> row=LocalV2PackageJson.object(raw,"assetId","owner","entity","payload","policy","inventoryKey","sha256","bytes","mime");String hash=LocalV2PackageJson.hash(row.get("sha256")),mime=LocalV2PackageJson.text(row.get("mime")),path="child-native/media/assets/"+hash+"."+LocalV2MediaCompiler.extension(mime);
-                long bytes=LocalV2PackageJson.number(row.get("bytes"),1,"audio/wav".equals(mime)?25165824:33554432);require(inventory.containsKey(path)&&bytes==LocalV2PackageJson.number(inventory.get(path).get("bytes"),1,33554432));provenance(path,hash);expected.add(path);if("narration".equals(LocalV2PackageJson.object(row.get("entity")).get("kind"))){String quality=LocalV2PackageJson.hash(LocalV2PackageJson.object(row.get("payload")).get("qualityChecksum")),qualityPath="child-native/media/provenance/"+quality+".json";require(inventory.containsKey(qualityPath));LocalV2PackageJson.number(inventory.get(qualityPath).get("bytes"),1,65536);provenance(qualityPath,quality);expected.add(qualityPath);}require(expected.size()<=1089);}
+                long bytes=LocalV2PackageJson.number(row.get("bytes"),1,"audio/wav".equals(mime)?25165824:33554432);require(inventory.containsKey(path)&&bytes==LocalV2PackageJson.number(inventory.get(path).get("bytes"),1,33554432));provenance(path,hash);expected.add(path);if("narration".equals(LocalV2PackageJson.object(row.get("entity")).get("kind"))){String quality=LocalV2PackageJson.hash(LocalV2PackageJson.object(row.get("payload")).get("qualityChecksum")),qualityPath="child-native/media/provenance/"+quality+".json";require(inventory.containsKey(qualityPath));LocalV2PackageJson.number(inventory.get(qualityPath).get("bytes"),1,65536);provenance(qualityPath,quality);expected.add(qualityPath);require("audio/wav".equals(mime));signalDiagnostic(hash);}require(expected.size()<=1601);}
         }
         private void complete()throws Exception {require(outputs.keySet().equals(expected));for(String path:inventory.keySet())if(path.startsWith("child-native/media/"))require(expected.contains(path));}
     }

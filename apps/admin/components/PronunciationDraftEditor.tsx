@@ -84,46 +84,57 @@ export function PronunciationDraftEditor({ catalog, previewAction }: {
     } catch { setNotice("Импорт отклонён или форма изменилась во время чтения. Текущие RU/EN сохранены."); }
     finally { input.value = ""; }
   }
-  return <section className="panel site-copy-editor" aria-busy={state.busy} aria-labelledby={prefix + "-heading"}>
+  return <section className="panel site-copy-editor pronunciation-editor" aria-busy={state.busy} aria-labelledby={prefix + "-heading"}>
     <h2 id={prefix + "-heading"}>Фонетические пометки RU/EN</h2>
     <p>Только черновик. Произношение вводит редактор; проверка формы не означает редакционного одобрения. Голос не генерируется.</p>
-    <label>Найти каноническое название<input value={query} onChange={event => setQuery(event.currentTarget.value)} /></label>
-    <label>Страна, писатель или произведение<select value={pronunciationReferenceKey(state.target) ?? ""} onChange={event => choose(event.currentTarget.value)}>
-      <option value="">Выберите название</option>
-      {visibleChoices.map(item => <option key={pronunciationReferenceKey(item.ref)} value={pronunciationReferenceKey(item.ref) ?? ""}>
-        {item.spelling.ru} · {item.spelling.en} · {pronunciationReferenceKey(item.ref)}
-      </option>)}
-    </select></label>
+    <label className="field" htmlFor={prefix + "-query"}><span id={prefix + "-query-label"}>Найти каноническое название</span>
+      <input id={prefix + "-query"} aria-labelledby={prefix + "-query-label"} value={query} onChange={event => setQuery(event.currentTarget.value)} /></label>
+    <label className="field" htmlFor={prefix + "-target"}><span id={prefix + "-target-label"}>Страна, писатель или произведение</span>
+      <select id={prefix + "-target"} aria-labelledby={prefix + "-target-label"} value={pronunciationReferenceKey(state.target) ?? ""} onChange={event => choose(event.currentTarget.value)}>
+        <option value="">Выберите название</option>
+        {visibleChoices.map(item => <option key={pronunciationReferenceKey(item.ref)} value={pronunciationReferenceKey(item.ref) ?? ""}>
+          {item.spelling.ru} · {item.spelling.en} · {pronunciationReferenceKey(item.ref)}
+        </option>)}
+      </select></label>
     <p>{choices.length} доступных названий; показаны первые 100 совпадений. Написание берётся из текущего публичного каталога.</p>
     {selected && <p>Каноническое написание: <span lang="ru">{selected.spelling.ru}</span> / <span lang="en">{selected.spelling.en}</span></p>}
     {(["ru", "en"] as const).map(locale => <fieldset key={locale} disabled={!selected || !working}>
       <legend>{locale.toUpperCase()} · пометки редактора</legend>
-      <label>Фонетическая запись {locale.toUpperCase()}<input lang={locale} value={annotationValue(locale, "phonetic")}
-        onChange={event => updateAnnotation(locale, "phonetic", event.currentTarget.value)} /></label>
-      <label>Примечания {locale.toUpperCase()}<textarea lang={locale} value={annotationValue(locale, "notes")}
-        onChange={event => updateAnnotation(locale, "notes", event.currentTarget.value)} /></label>
+      <label className="field" htmlFor={prefix + "-" + locale + "-phonetic"}>
+        <span id={prefix + "-" + locale + "-phonetic-label"}>Фонетическая запись {locale.toUpperCase()}</span>
+        <input id={prefix + "-" + locale + "-phonetic"} aria-labelledby={prefix + "-" + locale + "-phonetic-label"} lang={locale} value={annotationValue(locale, "phonetic")}
+          onChange={event => updateAnnotation(locale, "phonetic", event.currentTarget.value)} /></label>
+      <label className="field" htmlFor={prefix + "-" + locale + "-notes"}>
+        <span id={prefix + "-" + locale + "-notes-label"}>Примечания {locale.toUpperCase()}</span>
+        <textarea id={prefix + "-" + locale + "-notes"} aria-labelledby={prefix + "-" + locale + "-notes-label"} lang={locale} value={annotationValue(locale, "notes")}
+          onChange={event => updateAnnotation(locale, "notes", event.currentTarget.value)} /></label>
     </fieldset>)}
-    <details><summary>Рабочий JSON словаря</summary><label>Данные RU/EN<textarea value={state.dictionary}
-      onChange={event => { session.edit({ dictionary: event.currentTarget.value }); setNotice(""); }} /></label></details>
+    <details><summary>Рабочий JSON словаря</summary>
+      <label className="field" htmlFor={prefix + "-dictionary"}><span id={prefix + "-dictionary-label"}>Данные RU/EN</span>
+        <textarea id={prefix + "-dictionary"} aria-labelledby={prefix + "-dictionary-label"} value={state.dictionary}
+          onChange={event => { session.edit({ dictionary: event.currentTarget.value }); setNotice(""); }} /></label></details>
     <details><summary>Черновик для проверки источника озвучки</summary>
       <p>Вставьте существующий документ narration provenance и точный текст его сценария. Сведения об исполнителе и правах сохраняются.
         После изменения пометок нужна отдельная проверка и обновление исходных хешей; экспорт не разрешает озвучку.</p>
-      <label>Исходный narration provenance JSON<textarea value={state.provenance}
-        onChange={event => { session.edit({ provenance: event.currentTarget.value }); setNotice(""); }} /></label>
-      <label>Точный текст сценария<textarea value={state.scriptText}
-        onChange={event => { session.edit({ scriptText: event.currentTarget.value }); setNotice(""); }} /></label>
+      <label className="field" htmlFor={prefix + "-provenance"}><span id={prefix + "-provenance-label"}>Исходный narration provenance JSON</span>
+        <textarea id={prefix + "-provenance"} aria-labelledby={prefix + "-provenance-label"} value={state.provenance}
+          onChange={event => { session.edit({ provenance: event.currentTarget.value }); setNotice(""); }} /></label>
+      <label className="field" htmlFor={prefix + "-script"}><span id={prefix + "-script-label"}>Точный текст сценария</span>
+        <textarea id={prefix + "-script"} aria-labelledby={prefix + "-script-label"} value={state.scriptText}
+          onChange={event => { session.edit({ scriptText: event.currentTarget.value }); setNotice(""); }} /></label>
     </details>
     <div className="button-row">
-      <button type="button" disabled={state.busy || !currentCatalog} onClick={() => { setNotice(""); void session.preview(previewAction); }}>Проверить и показать пометки</button>
-      <button type="button" onClick={() => download("pronunciation.workspace.json", session.workspace())}>Сохранить рабочую копию</button>
-      <button type="button" disabled={!state.validated || state.busy} onClick={() => {
+      <button className="button" type="button" disabled={state.busy || !currentCatalog} onClick={() => { setNotice(""); void session.preview(previewAction); }}>Проверить и показать пометки</button>
+      <button className="button-secondary" type="button" onClick={() => download("pronunciation.workspace.json", session.workspace())}>Сохранить рабочую копию</button>
+      <button className="button-secondary" type="button" disabled={!state.validated || state.busy} onClick={() => {
         if (state.validated) download("pronunciation.dictionary.draft.json", contentPackageCanonicalJson(state.validated) + "\n");
       }}>Экспортировать проверенный draft словаря</button>
-      <button type="button" disabled={!state.narrationDraft || state.busy} onClick={() => {
+      <button className="button-secondary" type="button" disabled={!state.narrationDraft || state.busy} onClick={() => {
         if (state.narrationDraft) download("narration.pronunciation.draft.json", contentPackageCanonicalJson(state.narrationDraft) + "\n");
       }}>Экспортировать draft narration provenance</button>
     </div>
-    <label>Открыть рабочую копию<input type="file" accept="application/json,.json" onChange={importWorkspace} /></label>
+    <label className="field" htmlFor={prefix + "-workspace"}><span id={prefix + "-workspace-label"}>Открыть рабочую копию</span>
+      <input id={prefix + "-workspace"} aria-labelledby={prefix + "-workspace-label"} type="file" accept="application/json,.json" onChange={importWorkspace} /></label>
     {state.error && <p role="alert">{state.error}</p>}{notice && <p role="status">{notice}</p>}
     {state.validated && <section aria-label="Предпросмотр фонетических пометок">
       <h3>Предпросмотр · без воспроизведения голоса</h3>

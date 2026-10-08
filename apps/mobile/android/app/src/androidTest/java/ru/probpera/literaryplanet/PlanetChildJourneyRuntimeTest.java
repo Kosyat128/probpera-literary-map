@@ -116,6 +116,9 @@ public final class PlanetChildJourneyRuntimeTest {
         denied(()->PlanetChildMedia.sourceFrame(8,4,5));denied(()->PlanetChildMedia.sourceFrame(8,4,-1));denied(()->PlanetChildMedia.sourceFrame(8,8,0));denied(()->PlanetChildMedia.sourceFrame(0,0,0));
     }
 
+    @Test public void firstNarrationMapStartsAtSignedFirstCueWithOptionalExactPrior()throws Exception {
+        for(String name:Arrays.asList("empty","existing","zero-with-prior","positive-without-prior","stale-version","wrong-entity","unknown-anchor"))assertTrue(name,PlanetChildVault.fixtureNarrationBeginning(context,name));
+    }
     @Test public void delayedNarrationCasDrainsLastRenderedCueBeforeTerminalRetirement() throws Exception { assertTrue(PlanetChildVault.fixtureNarrationDelayedTerminal(context)); }
 
 }

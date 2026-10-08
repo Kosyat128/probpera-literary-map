@@ -130,7 +130,7 @@ export function preflightChildMedia(input: unknown, mime: ChildMediaMime): Child
       let dataBytes: number | null = null, chunks = 0;
       while (at < b.length) {
         if (++chunks > 4096 || at + 8 > b.length) return null;
-        const length = v.getUint32(at + 4, true), p = at + 8, next = p + length + (length & 1); if (next > b.length) return null;
+        const length = v.getUint32(at + 4, true), p = at + 8, next = p + length + (length & 1); if (next > b.length || (length & 1) !== 0 && b[p + length] !== 0) return null;
         if (ascii(at, "fmt ")) {
           if (format || at !== 12 || length !== 16 || v.getUint16(p, true) !== 1) return null;
           const channels = v.getUint16(p + 2, true), sampleRate = v.getUint32(p + 4, true), bits = v.getUint16(p + 14, true);

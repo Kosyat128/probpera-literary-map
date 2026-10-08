@@ -37,6 +37,29 @@ describe("byte-bound objective narration PCM diagnostics", () => {
       expect(report?.narrationStatus).toBe("requires-human-review");
     }
   });
+  it("accepts original zero-padded mono8 data and refuses a nonzero pad required closed by both native decoders", () => {
+    const bytes = wav([[0], [64], [-64]], 8), before = bytes.slice();
+    expect(analyzeChildNarrationSignal(bytes)).toMatchObject({
+      sourceSha256: contentPackageHash(before), sourceBytes: before.length,
+      format: { channels: 1, bits: 8, frameCount: 3 }, narrationStatus: "requires-human-review",
+    });
+    expect(bytes).toEqual(before);
+    const changed = bytes.slice(); changed[changed.length - 1] = 1; const refusedBefore = changed.slice();
+    expect(analyzeChildNarrationSignal(changed)).toBeNull(); expect(changed).toEqual(refusedBefore);
+  });
+  it("binds an original odd ancillary chunk and refuses its nonzero pad without rewriting PCM", () => {
+    const source = wav([[0], [1000], [-1000], [0]]), bytes = new Uint8Array(source.length + 10);
+    bytes.set(source.subarray(0, 36)); bytes.set([74, 85, 78, 75, 1, 0, 0, 0, 23, 0], 36);
+    bytes.set(source.subarray(36), 46); new DataView(bytes.buffer).setUint32(4, bytes.length - 8, true);
+    const before = bytes.slice(), report = analyzeChildNarrationSignal(bytes), original = analyzeChildNarrationSignal(source);
+    expect(report).toMatchObject({ sourceSha256: contentPackageHash(before), sourceBytes: before.length,
+      narrationStatus: "requires-human-review" });
+    expect(report?.sourceSha256).not.toBe(original?.sourceSha256);
+    expect(report?.peakAbsolute).toBe(original?.peakAbsolute); expect(report?.rmsAmplitude).toBe(original?.rmsAmplitude);
+    expect(bytes).toEqual(before);
+    const changed = bytes.slice(); changed[45] = 255; const refusedBefore = changed.slice();
+    expect(analyzeChildNarrationSignal(changed)).toBeNull(); expect(changed).toEqual(refusedBefore);
+  });
   it("interprets unsigned8 midpoint as zero and refuses completely silent input", () => {
     for (const bits of [8, 16] as const) {
       const report = analyzeChildNarrationSignal(wav([[0, 0], [0, 0], [0, 0]], bits));
