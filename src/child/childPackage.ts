@@ -1,7 +1,7 @@
 import { CHILD_ENTITY_KINDS, evaluateChildAccess, type ChildAccessInput, type ChildEntityKind,
   type ChildPlatform } from "./childAccessPolicy";
 import { decodeChildDataScope, type ChildDataScope } from "./childDataNamespace";
-import { decodeChildProfiles } from "./childProfile";
+import { childProfileAllowsLocale, decodeChildProfiles } from "./childProfile";
 import type { ChildPackageChallenge } from "./childStartup";
 
 export const CHILD_PACKAGE_MAX_BYTES = 8 * 1024 * 1024;
@@ -102,8 +102,7 @@ export function copyChildPackageChallenge(value: unknown, nowEpochMs: number): C
       || (route.kind === "home" ? route.entityId !== null : !id(route.entityId))) return null;
     const profile = decodeChildProfiles({ schemaVersion: 1, policyVersion: selection.policyVersion,
       activeProfileId: selection.profileId, profiles: [root.profile] }, { now: nowEpochMs, policyVersion: selection.policyVersion });
-    if (!profile.registry || profile.registry.profiles[0].localeLocked === true
-      && profile.registry.profiles[0].locale !== request.locale) return null;
+    if (!profile.registry || !childProfileAllowsLocale(profile.registry.profiles[0], request.locale)) return null;
     return Object.freeze({ generation: root.generation, request: Object.freeze({ locale: request.locale,
       route: Object.freeze(route) }), selection: Object.freeze(selection), profile: profile.registry.profiles[0] }) as unknown as ChildPackageChallenge;
   } catch { return null; }

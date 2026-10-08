@@ -222,6 +222,15 @@ final class PlanetChildProtectedEnvelopeRuntimeTests: XCTestCase {
         let parsed = try decode(epochRecord); defer { parsed.close() }
         XCTAssertFalse(try parsed.isUnenrolled())
     }
+    func testLocalePolicyParentDraftPreservesPinSiblingLegacyAndOptionalOrder() throws {
+        for scenario in ["add","narrow","parent-allowed","legacy","policy-only-lock","policy-first-unlock"] { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localePolicyDraft(scenario)) }
+    }
+    func testLocalePolicyDraftAndSummaryRejectMalformedOrDisallowedEdits() throws {
+        for scenario in ["parent-denied","sibling","boolean-version","string-version","empty","duplicate","excluded-current","extra","duplicate-policy-fields"] { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localePolicyDraft(scenario)) }
+    }
+    func testLocalePolicySummaryExportAndConfirmationPreservePlainLanguages() throws {
+        XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localePolicyDraft("summary-export"))
+    }
     func testLocaleLockDraftPreservesPinSiblingAndOtherProfileFields() throws {
         for scenario in ["lock","unlock","legacy","parent-language"] { XCTAssertTrue(try PlanetChildLocalV2SDKRuntimeFixture.localeLockDraft(scenario)) }
     }

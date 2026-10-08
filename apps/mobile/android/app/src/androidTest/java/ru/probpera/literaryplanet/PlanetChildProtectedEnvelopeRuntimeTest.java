@@ -156,6 +156,16 @@ public class PlanetChildProtectedEnvelopeRuntimeTest {
             value.replace("\"epochAnchor\":null", "\"epochAnchor\":{\"epochAnchorMs\":100,\"validUntilEpochMs\":100,\"proofChecksum\":\"" + POLICY + "\"}"),
             value.replace("\"epochAnchor\":null", "\"epochAnchor\":{\"epochAnchorMs\":8640000000000001,\"validUntilEpochMs\":8640000000000002,\"proofChecksum\":\"" + POLICY + "\"}") }) rejected(bad);
     }
+    @Test public void localePolicyParentDraftPreservesPinSiblingLegacyAndOptionalOrder() throws Exception {
+        for(String scenario:new String[]{"add","narrow","parent-allowed","legacy","policy-only-lock","policy-first-unlock"})assertTrue(PlanetChildVault.fixtureAppLocalePolicy(scenario));
+    }
+    @Test public void localePolicyDraftAndSummaryRejectMalformedOrDisallowedEdits() throws Exception {
+        for(String scenario:new String[]{"parent-denied","sibling","boolean-version","string-version","empty","duplicate","excluded-current","extra","duplicate-policy-fields"})assertTrue(PlanetChildVault.fixtureAppLocalePolicy(scenario));
+    }
+    @Test public void localePolicySummaryExportAndConfirmationPreservePlainLanguages() throws Exception {
+        assertTrue(PlanetChildVault.fixtureAppLocalePolicy("summary-export"));
+    }
+
     @Test public void localeLockParentDraftPreservesPinSiblingAndOtherProfileFields() throws Exception {
         for(String scenario:new String[]{"lock","unlock","legacy","parent-language"})assertTrue(PlanetChildVault.fixtureAppLocaleLock(scenario));
     }

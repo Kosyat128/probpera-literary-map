@@ -5,6 +5,8 @@ import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
 import { ChildPrivacyNotice } from "./ChildPrivacyNotice";
 import { ParentChildLocaleLockControl } from "./ParentChildLocaleLockControl";
+import { ParentChildLocalePolicyControl } from "./ParentChildLocalePolicyControl";
+import type { ChildLocalePolicy } from "./childProfile";
 import { ChildNativeDiscoveryPassportView, type ChildNativeDiscoveryPassportViewName } from "./ChildNativeDiscoveryPassportView";
 import type { ChildNativeRemovalTarget } from "./childNativeDiscoveryPassport";
 import { childNativeJourneyId } from "./childNativeJourney";
@@ -115,6 +117,13 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
     const ok = await controller.perform(action, target);
     if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); if (ok) setRemoval(null); }
   }
+  async function actLocalePolicy(policy: ChildLocalePolicy) {
+    if (busy || state.phase !== "ready" || !state.context || !controller.setProfileLocalePolicy) return;
+    const attempt = ++sequence.current, original = state.context;
+    setBusy(true); setError(false);
+    const ok = await controller.setProfileLocalePolicy(original, policy);
+    if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); }
+  }
   async function actLocaleLock(locked: boolean) {
     if (busy || state.phase !== "ready" || !state.context || !controller.setProfileLocaleLocked) return;
     const attempt = ++sequence.current, original = state.context;
@@ -123,6 +132,8 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
     if (mounted.current && sequence.current === attempt) { setBusy(false); setError(!ok); }
   }
   if (state.phase !== "ready" || !state.context) return null;
+  const selectedLocalePolicy = state.profiles.find(profile => profile.id === state.context?.profileId)?.localePolicy;
+  const localePermitted = !selectedLocalePolicy || selectedLocalePolicy.allowedLocales.includes(locale);
   const validAge = /^[0-9]{1,2}$/u.test(age) && Number(age) >= 3 && Number(age) <= 17;
   const validLabel = label.trim() === label && label.length > 0 && label.length <= 80 && !/[\u0000-\u001f\u007f]/u.test(label);
   const topicValues = topicInput.trim() === "" ? [] : topicInput.split(",").map(value => value.trim());
@@ -181,11 +192,14 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
             <small>{copy.blockedTopicsHelp}</small>
             <button type="submit" disabled={busy || !validTopics}>{copy.topicAction}</button>
           </form>
-          <form onSubmit={event => { event.preventDefault(); void act("expand-access-settings", { profileId: state.context!.profileId, changes: { locale } }); }}>
+          <form onSubmit={event => { event.preventDefault(); if (localePermitted) void act("expand-access-settings", { profileId: state.context!.profileId, changes: { locale } }); }}>
             <label>{copy.locale}<select value={locale} onChange={event => setLocale(event.currentTarget.value as "ru" | "en")}>
               <option value="ru">Русский</option><option value="en">English</option></select></label>
-            <button type="submit" disabled={busy}>{copy.save}</button>
+            {!localePermitted && <p role="status">{language === "ru" ? "Сначала разрешите этот язык со взрослым ниже." : "First allow this language with an adult below."}</p>}
+            <button type="submit" disabled={busy || !localePermitted}>{copy.save}</button>
           </form>
+          <ParentChildLocalePolicyControl snapshot={live} expectedContext={state.context} disabled={busy || !controller.setProfileLocalePolicy}
+            onRequest={policy => { void actLocalePolicy(policy); }} />
           <ParentChildLocaleLockControl snapshot={live} expectedContext={state.context} disabled={busy || !controller.setProfileLocaleLocked}
             onRequest={locked => { void actLocaleLock(locked); }} />
           <form onSubmit={event => { event.preventDefault(); void act("expand-access-settings", { profileId: state.context!.profileId, changes: { readingLevel: reading || null } }); }}>

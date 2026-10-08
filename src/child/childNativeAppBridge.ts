@@ -14,6 +14,7 @@ import { childNativeDiscoveryShelf, decodeChildNativeDiscovery, decodeChildNativ
   decodeChildNativeRemovalTarget, type ChildNativeDiscoveryController, type ChildNativePassportController } from "./childNativeDiscoveryPassport";
 import { CHILD_NATIVE_EXPORT_IDLE, childNativeExportProfileId, decodeChildNativeExportReply,
   type ChildNativeExportReceipt, type ChildNativeExportState } from "./childNativeExport";
+import { decodeChildLocalePolicy, sameChildLocalePolicy, type ChildLocalePolicy } from "./childProfile";
 import localPolicy from "./childNativeLocalV2Policy.json";
 import { decodeChildNativeRouteDownload } from "./childNativeOfflinePackages";
 import { decodeChildNativeRouteSave } from "./childNativePassportProgram";
@@ -73,6 +74,8 @@ export interface ChildNativeProfileSummary {
   readonly id: string; readonly label: string; readonly exactAge: number; readonly locale: "ru" | "en";
   /** Absent in legacy records: unknown, never an inferred unlocked state. */
   readonly localeLocked?: boolean;
+  /** Legacy absence exposes only the current locale, without a stored upgrade. */
+  readonly localePolicy?: ChildLocalePolicy;
 }
 export interface ChildNativeAppSnapshot {
   readonly phase: "sealed" | "transition" | "ready" | "disposed";
@@ -106,6 +109,7 @@ export interface ChildNativeAppController {
   perform(action: ChildNativeAction, target?: unknown): Promise<boolean>;
   /** A context-bound proposal to the existing native Parent Gate. */
   setProfileLocaleLocked?(expectedContext: ChildNativeContext, locked: boolean): Promise<boolean>;
+  setProfileLocalePolicy?(expectedContext: ChildNativeContext, policy: ChildLocalePolicy): Promise<boolean>;
   suspend(): Promise<void>;
   dispose(): Promise<void>;
   readEntity(reference: ChildEntityReference): Promise<ChildNativeEntity | null>;
@@ -149,13 +153,17 @@ function collectionValue(value: unknown, maximum = 64): ChildNativeCollectionVal
   return row && safe(row.revision) && references ? Object.freeze({ revision: row.revision, references }) : null;
 }
 function summary(value: unknown): ChildNativeProfileSummary | null {
-  const row = childRecord(value, ["id", "label", "exactAge", "locale"])
-    ?? childRecord(value, ["id", "label", "exactAge", "locale", "localeLocked"]);
+  const fields = ["id", "label", "exactAge", "locale"];
+  const row = childRecord(value, fields) ?? childRecord(value, [...fields, "localeLocked"])
+    ?? childRecord(value, [...fields, "localePolicy"]) ?? childRecord(value, [...fields, "localeLocked", "localePolicy"]);
   if (row && Object.prototype.hasOwnProperty.call(row, "localeLocked") && typeof row.localeLocked !== "boolean") return null;
   if (!row || !id(row.id) || typeof row.label !== "string" || row.label.length < 1 || row.label.length > 80
     || row.label.trim() !== row.label || /[\u0000-\u001f\u007f]/u.test(row.label)
     || !safe(row.exactAge) || row.exactAge < 3 || row.exactAge > 17 || row.locale !== "ru" && row.locale !== "en") return null;
-  return Object.freeze(row as unknown as ChildNativeProfileSummary);
+  const hasPolicy = Object.prototype.hasOwnProperty.call(row, "localePolicy");
+  const policy = hasPolicy ? decodeChildLocalePolicy(row.localePolicy, row.locale) : null;
+  if (hasPolicy && !policy) return null;
+  return Object.freeze({ ...row, ...(policy ? { localePolicy: policy } : {}) } as unknown as ChildNativeProfileSummary);
 }
 function context(value: unknown): ChildNativeContext | null {
   const row = childRecord(value, contextFields);
@@ -863,6 +871,21 @@ export function createChildNativeAppController(options: ChildNativeAppOptions): 
       await bootstrap();
     },
     refresh: bootstrap, perform, suspend, exportChildData, getExportSnapshot: () => exportState,
+    async setProfileLocalePolicy(expectedContext: ChildNativeContext, policy: ChildLocalePolicy) {
+      const original = snapshot, c = original.context;
+      const selected = original.profiles.find(profile => profile.id === c?.profileId);
+      const copied = c && decodeChildLocalePolicy(policy, c.locale);
+      if (!copied || !c || c !== expectedContext || c.mode !== "child" || !current(c, epoch)
+        || !selected || selected.locale !== c.locale || sameChildLocalePolicy(selected.localePolicy, copied)) return false;
+      await perform("expand-access-settings", { profileId: c.profileId, changes: { localePolicy: copied } });
+      const next = snapshot, successor = next.context, saved = next.profiles.find(profile => profile.id === c.profileId);
+      return next.phase === "ready" && (next.status === "child" || next.status === "blocked-child") && next.reason === null
+        && !!successor && current(successor, epoch) && successor.mode === "child" && successor.profileId === c.profileId
+        && successor.token !== c.token && successor.generation > c.generation && successor.revision > c.revision
+        && successor.selectionRevision > c.selectionRevision && successor.profileRevision > c.profileRevision
+        && successor.locale === c.locale && saved?.locale === c.locale && saved.localeLocked === selected.localeLocked
+        && sameChildLocalePolicy(saved.localePolicy, copied);
+    },
     async setProfileLocaleLocked(expectedContext: ChildNativeContext, locked: boolean) {
       const original = snapshot, c = original.context;
       const selected = original.profiles.find(profile => profile.id === c?.profileId);

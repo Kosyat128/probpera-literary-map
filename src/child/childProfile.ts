@@ -5,6 +5,7 @@ export const CHILD_PROFILE_LIMIT = 4;
 export const CHILD_PROFILE_MAX_LENGTH = 65_536;
 export type ChildAgeBand = "3-5" | "6-8" | "9-11" | "12-14" | "15-17";
 export type ChildReadingLevel = "plain" | "developing" | "fluent";
+export type ChildLocalePolicy = Readonly<{ schemaVersion: 1; allowedLocales: readonly ("ru" | "en")[] }>;
 export type LocalChildProfile = Readonly<{
   id: string;
   label: string;
@@ -18,8 +19,10 @@ export type LocalChildProfile = Readonly<{
   soundEnabled: boolean;
   motion: "calm" | "system";
   narrationEnabled: boolean;
-  /** Parent-controlled registry setting; absent/false permits a reviewed locale change. */
+  /** A missing lock is unknown; secondary child locales require explicit false. */
   localeLocked?: boolean;
+  /** Written only by a parent setting. Legacy absence stays current-locale only. */
+  localePolicy?: ChildLocalePolicy;
 }>;
 export type ChildProfileRegistry = Readonly<{
   schemaVersion: 1;
@@ -80,14 +83,42 @@ function topics(value: unknown): readonly string[] | null {
     || new Set(items).size !== items.length) return null;
   return Object.freeze(items as string[]);
 }
+/** Pure descriptor validation, not parent authentication or child admission. */
+export function decodeChildLocalePolicy(value: unknown, currentLocale: unknown): ChildLocalePolicy | null {
+  try {
+    const row = dataObject(value), allowed = row && dataArray(row.allowedLocales, 2);
+    if (currentLocale !== "ru" && currentLocale !== "en" || !row || !exact(row, ["schemaVersion", "allowedLocales"])
+      || row.schemaVersion !== 1 || !allowed || !allowed.length
+      || allowed.some(locale => locale !== "ru" && locale !== "en") || new Set(allowed).size !== allowed.length
+      || !allowed.includes(currentLocale)) return null;
+    return Object.freeze({ schemaVersion: 1, allowedLocales: Object.freeze(allowed as ("ru" | "en")[]) });
+  } catch { return null; }
+}
+export function sameChildLocalePolicy(a: ChildLocalePolicy | undefined, b: ChildLocalePolicy | undefined): boolean {
+  return !!a && !!b && a.schemaVersion === b.schemaVersion && a.allowedLocales.length === b.allowedLocales.length
+    && a.allowedLocales.every((locale, index) => locale === b.allowedLocales[index]);
+}
+/** Current-only legacy fallback is ephemeral; it does not upgrade stored data. */
+export function childProfileAllowsLocale(value: unknown, locale: unknown): boolean {
+  try {
+    const row = dataObject(value);
+    if (!row || row.locale !== "ru" && row.locale !== "en" || locale !== "ru" && locale !== "en"
+      || Object.prototype.hasOwnProperty.call(row, "localeLocked") && typeof row.localeLocked !== "boolean") return false;
+    const hasPolicy = Object.prototype.hasOwnProperty.call(row, "localePolicy");
+    const policy = hasPolicy ? decodeChildLocalePolicy(row.localePolicy, row.locale) : null;
+    if (hasPolicy && !policy) return false;
+    return locale === row.locale || row.localeLocked === false && !!policy?.allowedLocales.includes(locale);
+  } catch { return false; }
+}
 const profileFields = ["id", "label", "exactAge", "locale", "ageConfirmedAt", "readingLevel", "allowedTopics",
   "blockedTopics", "soundEnabled", "motion", "narrationEnabled"];
 function profile(value: unknown, now: number): LocalChildProfile | null {
   const data = dataObject(value);
   if (!data) return null;
   const hasLocaleLock = Object.prototype.hasOwnProperty.call(data, "localeLocked");
+  const hasLocalePolicy = Object.prototype.hasOwnProperty.call(data, "localePolicy");
   const fields = [...profileFields, ...(Object.prototype.hasOwnProperty.call(data, "ageBand") ? ["ageBand"] : []),
-    ...(hasLocaleLock ? ["localeLocked"] : [])];
+    ...(hasLocaleLock ? ["localeLocked"] : []), ...(hasLocalePolicy ? ["localePolicy"] : [])];
   if (!exact(data, fields) || !identifier(data.id)
     || typeof data.label !== "string" || data.label.length < 1 || data.label.length > 80
     || data.label.trim() !== data.label || /[\u0000-\u001f\u007f]/u.test(data.label)
@@ -101,13 +132,15 @@ function profile(value: unknown, now: number): LocalChildProfile | null {
     || typeof data.soundEnabled !== "boolean" || typeof data.narrationEnabled !== "boolean"
     || hasLocaleLock && typeof data.localeLocked !== "boolean"
     || data.motion !== "calm" && data.motion !== "system") return null;
+  const localePolicy = hasLocalePolicy ? decodeChildLocalePolicy(data.localePolicy, data.locale) : null;
+  if (hasLocalePolicy && !localePolicy) return null;
   const blockedTopics = topics(data.blockedTopics);
   const allowedTopics = data.allowedTopics === null ? null : topics(data.allowedTopics);
   if (!blockedTopics || data.allowedTopics !== null && !allowedTopics) return null;
   return Object.freeze({ id: data.id, label: data.label, exactAge: data.exactAge, ageBand: childAgeBand(data.exactAge)!,
     locale: data.locale, ageConfirmedAt: data.ageConfirmedAt, readingLevel: data.readingLevel, allowedTopics, blockedTopics,
     soundEnabled: data.soundEnabled, motion: data.motion, narrationEnabled: data.narrationEnabled,
-    ...(hasLocaleLock ? { localeLocked: data.localeLocked as boolean } : {}) });
+    ...(hasLocaleLock ? { localeLocked: data.localeLocked as boolean } : {}), ...(localePolicy ? { localePolicy } : {}) });
 }
 
 /** Strict restoration seam for future local adapters. Invalid/missing/newer

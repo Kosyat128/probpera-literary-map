@@ -1,4 +1,4 @@
-import { decodeChildProfiles, type LocalChildProfile } from "./childProfile";
+import { childProfileAllowsLocale, decodeChildProfiles, type LocalChildProfile } from "./childProfile";
 import { decodeChildDataScope, sameChildDataScope, type ChildDataScope } from "./childDataNamespace";
 
 export interface ChildStartupRoute {
@@ -166,7 +166,7 @@ export function createChildStartup(options: ChildStartupOptions) {
     // Enforce the authenticated parent's locale rule before any package or
     // route reader. Every start and ready-view revalidation uses this pipeline.
     if (!profile || decoded?.registry?.activeProfileId !== restored.profileId ||
-      profile.localeLocked === true && profile.locale !== intent.locale) { stop(operation, "sealed"); return; }
+      !childProfileAllowsLocale(profile, intent.locale)) { stop(operation, "sealed"); return; }
     const policyProof = data(await policy(scoped, signal), ["status", "challenge"]);
     if (!current(operation)) return;
     if (policyProof?.status !== "verified" || policyProof.challenge !== scoped) { stop(operation, "sealed"); return; }

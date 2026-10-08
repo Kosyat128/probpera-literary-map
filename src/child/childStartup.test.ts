@@ -636,23 +636,22 @@ describe("sealed child-only startup boundary", () => {
     expect(f.route).toHaveBeenCalledTimes(2);
   });
 
-  it("permits an absent or false lock to choose another locale but still requires that locale's package approval", async () => {
+  it("keeps a legacy absent policy current-only even with an absent or false lock before package approval", async () => {
     for (const localeLocked of [undefined, false]) {
-      for (const approved of [true, false]) {
-        const f = fixture("ru"), startup = createChildStartup(f.options);
-        if (localeLocked !== undefined) Object.assign(f.state.registry.profiles[0], { localeLocked });
-        f.state.scope = { ...f.state.scope, locale: "en" };
-        if (!approved) replaceProof(f, "pack", proof => ({ ...proof, status: "denied" }));
-        expect(await startup.start(intent("en"))).toEqual({ status: approved ? "ready" : "sealed" });
-        expect(f.pack).toHaveBeenCalledTimes(1);
-        expect(f.pack.mock.calls[0][0].profile.locale).toBe("ru");
-        expect(f.route).toHaveBeenCalledTimes(approved ? 1 : 0);
-      }
+      const f = fixture("ru"), startup = createChildStartup(f.options);
+      if (localeLocked !== undefined) Object.assign(f.state.registry.profiles[0], { localeLocked });
+      const original = JSON.stringify(f.state.registry);
+      f.state.scope = { ...f.state.scope, locale: "en" };
+      expect(await startup.start(intent("en"))).toEqual({ status: "sealed" });
+      expect(f.calls).toEqual(["mode", "profile"]); expect(f.pack).not.toHaveBeenCalled(); expect(f.route).not.toHaveBeenCalled();
+      expect(JSON.stringify(f.state.registry)).toBe(original);
     }
   });
 
   it("rechecks the parent's lock before every ready-view callback even when a profile port supplies stale selection coordinates", async () => {
     const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
+    // Explicit synthetic policy isolates lock revalidation; it is no native grant.
+    Object.assign(f.state.registry.profiles[0], { localeLocked: false, localePolicy: { schemaVersion: 1, allowedLocales: ["ru", "en"] } });
     f.state.scope = { ...f.state.scope, locale: "en" };
     expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
     Object.assign(f.state.registry.profiles[0], { localeLocked: true });
@@ -680,6 +679,8 @@ describe("sealed child-only startup boundary", () => {
 
   it("restores the lock freshly after background and foreground instead of resuming an unlocked locale", async () => {
     const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
+    // Explicit synthetic policy isolates lock revalidation; it is no native grant.
+    Object.assign(f.state.registry.profiles[0], { localeLocked: false, localePolicy: { schemaVersion: 1, allowedLocales: ["ru", "en"] } });
     f.state.scope = { ...f.state.scope, locale: "en" };
     expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
     startup.background();
@@ -726,5 +727,31 @@ describe("sealed child-only startup boundary", () => {
     expect(f.policy).not.toHaveBeenCalled();
     expect(f.pack).not.toHaveBeenCalled();
     expect(f.route).not.toHaveBeenCalled();
+  });
+  it("requires a permitted secondary locale's independently approved package", async () => {
+    for (const approved of [true, false]) {
+      const f = fixture("ru"), startup = createChildStartup(f.options);
+      Object.assign(f.state.registry.profiles[0], { localeLocked: false, localePolicy: { schemaVersion: 1, allowedLocales: ["ru", "en"] } });
+      f.state.scope = { ...f.state.scope, locale: "en" };
+      if (!approved) replaceProof(f, "pack", proof => ({ ...proof, status: "denied" }));
+      expect(await startup.start(intent("en"))).toEqual({ status: approved ? "ready" : "sealed" });
+      expect(f.pack).toHaveBeenCalledTimes(1); expect(f.route).toHaveBeenCalledTimes(approved ? 1 : 0);
+    }
+  });
+  it("rechecks an allowed-locale narrowing before a ready callback without content reads", async () => {
+    const f = fixture("ru"), startup = createChildStartup(f.options), visit = vi.fn();
+    Object.assign(f.state.registry.profiles[0], { localeLocked: false, localePolicy: { schemaVersion: 1, allowedLocales: ["ru", "en"] } });
+    f.state.scope = { ...f.state.scope, locale: "en" };
+    expect(await startup.start(intent("en"))).toEqual({ status: "ready" });
+    Object.assign(f.state.registry.profiles[0], { localePolicy: { schemaVersion: 1, allowedLocales: ["ru"] } });
+    f.calls.length = 0; expect(await startup.visitReady(visit)).toBe(false);
+    expect(f.calls).toEqual(["mode", "profile"]); expect(visit).not.toHaveBeenCalled();
+    expect(startup.getSnapshot()).toEqual({ phase: "sealed" });
+  });
+  it("refuses a malformed allowed-locale policy before policy package and route ports", async () => {
+    const f = fixture("ru"), startup = createChildStartup(f.options);
+    Object.assign(f.state.registry.profiles[0], { localeLocked: false, localePolicy: { schemaVersion: true, allowedLocales: ["ru", "en"] } });
+    expect(await startup.start(intent("ru"))).toEqual({ status: "sealed" });
+    expect(f.calls).toEqual(["mode", "profile"]); expect(f.policy).not.toHaveBeenCalled(); expect(f.pack).not.toHaveBeenCalled(); expect(f.route).not.toHaveBeenCalled();
   });
 });

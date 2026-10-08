@@ -557,7 +557,8 @@ describe("child scope generation, cancellation, bounded time and CAS races", () 
 
   it("retires a previously approved unlocked locale before rejecting locked readmission or an old route/view", async () => {
     const f = fixture("en"), visitor = vi.fn();
-    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false } };
+    // Explicit synthetic policy keeps this test focused on lock retirement; no native grant.
+    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false, localePolicy: { schemaVersion: 1, allowedLocales: ["ru", "en"] } } };
     const proof = await f.admit();
     const oldRoute: ChildRouteChallenge = { ...f.state.current, scope: proof.scope, validUntilEpochMs: proof.validUntilEpochMs };
     expect(await f.index.routePort.verify(oldRoute, new AbortController().signal)).toMatchObject({ status: "verified" });
@@ -579,7 +580,8 @@ describe("child scope generation, cancellation, bounded time and CAS races", () 
 
   it("refuses a late source after lock mutation even if a synthetic host still reports current", async () => {
     const f = fixture("en"), entered = deferred<void>(), late = deferred<unknown>();
-    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false } };
+    // Explicit synthetic policy keeps this test focused on lock retirement; no native grant.
+    f.state.current = { ...f.challenge, profile: { ...f.challenge.profile, locale: "ru", localeLocked: false, localePolicy: { schemaVersion: 1, allowedLocales: ["ru", "en"] } } };
     const index = createVerifiedChildIndex({ ...f.options, isCurrent: () => true });
     f.source.load.mockImplementationOnce(() => { entered.resolve(); return late.promise; });
     const pending = index.packagePort.verify(f.state.current, new AbortController().signal);

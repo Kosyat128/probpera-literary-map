@@ -148,7 +148,14 @@ final class PlanetChildVault {
             p.field("blockedTopics", false); topics(p);
             p.field("soundEnabled", false); p.bool();
             p.field("motion", false); String motion = p.string(); require(motion.equals("calm") || motion.equals("system"));
-            p.field("narrationEnabled", false); p.bool(); if (p.take(",\"localeLocked\":")) p.bool(); p.token("}"); return id;
+            p.field("narrationEnabled", false); p.bool(); if (p.take(",\"localeLocked\":")) p.bool();
+            if (p.take(",\"localePolicy\":")) localePolicy(p,locale); p.token("}"); return id;
+        }
+        private static void localePolicy(Cursor p,String currentLocale) throws Exception {
+            p.field("schemaVersion",true);p.number(1,1);p.field("allowedLocales",false);p.token("[");
+            java.util.HashSet<String> allowed=new java.util.HashSet<>();
+            do{String locale=p.string();require((locale.equals("ru")||locale.equals("en"))&&allowed.add(locale)&&allowed.size()<=2);}while(p.take(","));
+            p.token("]");p.token("}");require(allowed.contains(currentLocale));
         }
         private static boolean ecmaSpace(char value) {
             return value == 9 || value == 10 || value == 11 || value == 12 || value == 13 || value == 32 || value == 160
@@ -4285,7 +4292,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             try(LocalSnapshotV2 saved=LocalSnapshotV2.decode(bytes,host.policy)){data=new LocalV2DataContext(saved);require(data.profiles.containsKey(selected));
                 java.util.Map<String,Object> root=LocalV2PackageJson.object(LocalV2PackageJson.read(bytes,MAX_BYTES)),registry=LocalV2PackageJson.object(LocalV2PackageJson.object(root.get("protectedRecord")).get("registry"));
                 java.util.Map<String,Object> chosen=null;for(Object item:LocalV2PackageJson.array(registry.get("profiles"),4)){java.util.Map<String,Object> p=LocalV2PackageJson.object(item);if(selected.equals(p.get("id")))chosen=p;}require(chosen!=null);
-                profile=new java.util.LinkedHashMap<>();for(String key:new String[]{"id","label","exactAge","ageBand","locale","ageConfirmedAt","readingLevel","allowedTopics","blockedTopics","soundEnabled","motion","narrationEnabled"}){require(chosen.containsKey(key));profile.put(key,chosen.get(key));}if(chosen.containsKey("localeLocked"))profile.put("localeLocked",chosen.get("localeLocked"));
+                profile=new java.util.LinkedHashMap<>();for(String key:new String[]{"id","label","exactAge","ageBand","locale","ageConfirmedAt","readingLevel","allowedTopics","blockedTopics","soundEnabled","motion","narrationEnabled"}){require(chosen.containsKey(key));profile.put(key,chosen.get(key));}if(chosen.containsKey("localeLocked"))profile.put("localeLocked",chosen.get("localeLocked"));if(chosen.containsKey("localePolicy"))profile.put("localePolicy",LocalV2AppProfileDraft.localePolicy(chosen.get("localePolicy"),LocalV2PackageJson.text(chosen.get("locale"))));
             }expected=bytes.clone();try{check();}catch(Throwable failure){LocalSnapshotV2.wipe(expected);profile.clear();throw failure;}
         }
         void check()throws Exception {
@@ -4382,7 +4389,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             ProtectedEnvelope.Cursor p=new ProtectedEnvelope.Cursor(text);p.token("{");
             do{String key=p.string();p.token(":");int start=p.index,depth=0;boolean quoted=false,escaped=false;
                 while(p.index<text.length()){char c=text.charAt(p.index);if(quoted){p.index++;if(escaped)escaped=false;else if(c=='\\')escaped=true;else if(c=='\"')quoted=false;continue;}
-                    if(c=='\"')quoted=true;else if(c=='[')depth++;else if(c==']')depth--;else if(depth==0&&(c==','||c=='}'))break;p.index++;}
+                    if(c=='\"')quoted=true;else if(c=='['||c=='{')depth++;else if(c==']'||c=='}'&&depth>0)depth--;else if(depth==0&&(c==','||c=='}'))break;p.index++;}
                 require(p.index>start&&depth==0&&!quoted&&fields.put(key,text.substring(start,p.index))==null);
             }while(p.take(","));p.token("}");require(p.index==text.length());return fields;
         }
@@ -4412,7 +4419,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                         java.util.HashSet<String> permitted=new java.util.HashSet<>();
                         if("change-exact-age".equals(action))permitted.addAll(Arrays.asList("exactAge","ageBand","ageConfirmedAt"));
                         else if("change-blocked-topics".equals(action))permitted.add("blockedTopics");
-                        else permitted.addAll(Arrays.asList("readingLevel","allowedTopics","locale","soundEnabled","motion","narrationEnabled","localeLocked"));
+                        else permitted.addAll(Arrays.asList("readingLevel","allowedTopics","locale","soundEnabled","motion","narrationEnabled","localeLocked","localePolicy"));
                         java.util.HashSet<String> keys=new java.util.HashSet<>(oldFields.keySet());keys.addAll(nextFields.keySet());
                         for(String key:keys)if(!java.util.Objects.equals(oldFields.get(key),nextFields.get(key))){require(permitted.contains(key));registryChanged=true;}
                         require(registryChanged);profiles.set(selected,proposal);
@@ -4698,6 +4705,11 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
         private boolean ownedOwnerPause(){return phase==LocalV2ProfilePhase.owner&&promptOutstanding&&!ownerReturned&&!cancelled&&!finished&&signal!=null&&crypto!=null&&crypto.getSignature()==signing;}
         private void joinCancel() throws Exception {Thread original;synchronized(writer){original=cancelWorker;}if(original!=null){original.join();synchronized(writer){require(request.pinCancelCalls==0);cancelWorker=null;}}}
         private static String confirmationValue(org.json.JSONObject profile,String field,boolean ru) throws Exception {
+            if(field.equals("localePolicy")){
+                if(!profile.has(field))return (ru?"Только текущий язык: ":"Current language only: ")+confirmationValue(profile,"locale",ru);
+                java.util.Map<String,Object> policy=LocalV2AppProfileDraft.localePolicy(LocalV2PackageJson.read(profile.getJSONObject(field).toString().getBytes(StandardCharsets.UTF_8),65536),profile.getString("locale"));
+                java.util.ArrayList<String> languages=new java.util.ArrayList<>();for(Object locale:LocalV2PackageJson.array(policy.get("allowedLocales"),2))languages.add("ru".equals(locale)?(ru?"Русский":"Russian"):(ru?"Английский":"English"));return android.text.TextUtils.join(", ",languages);
+            }
             if(!profile.has(field))return ru?"не задано":"not set";
             Object value=profile.get(field);
             if(value==org.json.JSONObject.NULL)return field.equals("allowedTopics")?(ru?"Все темы, кроме запрещённых":"All topics except blocked topics"):(ru?"не задано":"not set");
@@ -5333,7 +5345,15 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             java.util.Map<String,Object> result=LocalV2AppOwner.map("id",LocalV2PackageJson.identifier(profile.get("id")),"label",LocalV2PackageJson.text(profile.get("label")),"exactAge",LocalV2PackageJson.number(profile.get("exactAge"),3,17),"locale",LocalV2PackageJson.text(profile.get("locale")));
             // Legacy absence remains absent; corrupt data never becomes false.
             if(profile.containsKey("localeLocked")){Object value=profile.get("localeLocked");require(value instanceof Boolean);result.put("localeLocked",value);}
+            if(profile.containsKey("localePolicy"))result.put("localePolicy",localePolicy(profile.get("localePolicy"),LocalV2PackageJson.text(profile.get("locale"))));
             return result;
+        }
+        static java.util.Map<String,Object> localePolicy(Object raw,String currentLocale) throws Exception {
+            java.util.Map<String,Object> policy=exact(LocalV2PackageJson.object(raw),"schemaVersion","allowedLocales");
+            LocalV2PackageJson.number(policy.get("schemaVersion"),1,1);require(Arrays.asList("ru","en").contains(currentLocale));
+            java.util.List<Object> allowed=LocalV2PackageJson.array(policy.get("allowedLocales"),2);java.util.HashSet<String> seen=new java.util.HashSet<>();require(!allowed.isEmpty());
+            for(Object item:allowed){String locale=LocalV2PackageJson.text(item);require(Arrays.asList("ru","en").contains(locale)&&seen.add(locale));}
+            require(seen.contains(currentLocale));return LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",new java.util.ArrayList<>(allowed));
         }
         private static java.util.List<Object> topics(Object raw) throws Exception {
             java.util.List<Object> values=LocalV2PackageJson.array(raw,64);java.util.HashSet<String> seen=new java.util.HashSet<>();
@@ -5382,7 +5402,7 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                 long age=LocalV2PackageJson.number(target.get("exactAge"),3,17);profile.put("exactAge",age);profile.put("ageBand",ageBand(age));profile.put("ageConfirmedAt",confirmedAt());
             }else if("change-blocked-topics".equals(action))profile.put("blockedTopics",topics(target.get("blockedTopics")));
             else{
-                java.util.Map<String,Object> changes=LocalV2PackageJson.object(target.get("changes"));require(!changes.isEmpty()&&changes.size()<=7);
+                java.util.Map<String,Object> changes=LocalV2PackageJson.object(target.get("changes"));require(!changes.isEmpty()&&changes.size()<=8);
                 for(java.util.Map.Entry<String,Object> change:changes.entrySet()){
                     String key=change.getKey();Object value=change.getValue();
                     if("readingLevel".equals(key))require(value==null||Arrays.asList("plain","developing","fluent").contains(value));
@@ -5390,9 +5410,14 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
                     else if("locale".equals(key))require(Arrays.asList("ru","en").contains(value));
                     else if("soundEnabled".equals(key)||"narrationEnabled".equals(key)||"localeLocked".equals(key))require(value instanceof Boolean);
                     else if("motion".equals(key))require(Arrays.asList("system","calm").contains(value));
-                    else throw new PinKnownRefusal();profile.put(key,value);
+                    else if(!"localePolicy".equals(key))throw new PinKnownRefusal();profile.put(key,value);
                 }
             }
+            // Canonical optional order also handles adding a lock to a policy-only legacy profile.
+            boolean hasLock=profile.containsKey("localeLocked"),hasPolicy=profile.containsKey("localePolicy");
+            Object locked=profile.remove("localeLocked"),allowed=profile.remove("localePolicy");
+            if(hasLock)profile.put("localeLocked",locked);
+            if(hasPolicy)profile.put("localePolicy",localePolicy(allowed,LocalV2PackageJson.text(profile.get("locale"))));
             byte[] bytes=LocalV2PackageJson.bytes(profile,false);try{require(id.equals(LocalV2InitialProfile.profileId(bytes)));return bytes;}
             catch(Exception failure){LocalSnapshotV2.wipe(bytes);throw failure;}
         }
@@ -5426,6 +5451,68 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             try(LocalSnapshotV2 after=LocalSnapshotV2.decode(prepared.bytes,policy)){LocalV2CanonicalTransition.validate(before,after,"expand-access-settings",target);byte[] old=before.copy(),next=after.copy();try{
                 require(MessageDigest.isEqual(Arrays.copyOfRange(old,before.pinStart,before.pinEnd),Arrays.copyOfRange(next,after.pinStart,after.pinEnd)));require(new String(next,StandardCharsets.UTF_8).contains(siblingText));
                 require(locked.equals(LocalV2AppProfileDraft.summary(changed).get("localeLocked")));return true;
+            }finally{LocalSnapshotV2.wipe(old);LocalSnapshotV2.wipe(next);}}finally{LocalSnapshotV2.wipe(prepared.bytes);}
+        }}finally{LocalSnapshotV2.wipe(protectedBytes);LocalSnapshotV2.wipe(wire);LocalSnapshotV2.wipe(target);}
+    }
+
+    /** AUTHORED_NOT_RUN: selected draft/codec mechanics only, never native authority. */
+    static boolean fixtureAppLocalePolicy(String scenario) throws Exception {
+        require(Arrays.asList("add","narrow","parent-allowed","parent-denied","legacy","policy-only-lock","sibling","boolean-version","string-version","empty","duplicate","excluded-current","extra","summary-export","policy-first-unlock","duplicate-policy-fields").contains(scenario));
+        LocalSnapshotV2Policy policy=LocalV2AppPolicy.policy();String a="a".repeat(64),b="b".repeat(64),c="c".repeat(64);
+        java.util.Map<String,Object> proposal=LocalV2AppOwner.map("label","Fixture reader","exactAge",9L,"locale","en","readingLevel",null,"allowedTopics",null,"blockedTopics",java.util.Collections.emptyList(),"soundEnabled",false,"motion","calm","narrationEnabled",false);
+        java.util.Map<String,Object> first=LocalV2AppProfileDraft.nativeProfile(proposal,"fixture-reader"),second=new java.util.LinkedHashMap<>(first);second.put("id","fixture-sibling");second.put("label","Sibling");
+        java.util.Map<String,Object> both=LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",Arrays.asList("ru","en")),only=LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",Arrays.asList("en"));
+        if(Arrays.asList("narrow","parent-allowed","policy-only-lock","summary-export","duplicate-policy-fields").contains(scenario))first.put("localePolicy",both);
+        if("parent-denied".equals(scenario))first.put("localePolicy",only);
+        if("policy-only-lock".equals(scenario)||"legacy".equals(scenario)||"policy-first-unlock".equals(scenario))first.remove("localeLocked");
+        if("duplicate-policy-fields".equals(scenario)){
+            String valid=LocalV2PackageJson.json(first,false);
+            for(String tail:new String[]{",\"localeLocked\":false}",",\"localePolicy\":"+LocalV2PackageJson.json(both,false)+"}"}){byte[] duplicate=(valid.substring(0,valid.length()-1)+tail).getBytes(StandardCharsets.UTF_8);boolean denied=false;try{LocalV2InitialProfile.profileId(duplicate);}catch(Exception expected){denied=true;}finally{LocalSnapshotV2.wipe(duplicate);}require(denied);}return true;
+        }
+        if("summary-export".equals(scenario)){
+            java.util.Map<String,Object> summary=LocalV2AppProfileDraft.summary(first);require(both.equals(summary.get("localePolicy"))&&Boolean.TRUE.equals(summary.get("localeLocked")));
+            byte[] exported=parentExportCodec(first,LocalV2AppOwner.map("collections",null,"appearance",null,"journeys",null,"passport",null,"downloads",null));
+            try{java.util.Map<String,Object> out=LocalV2PackageJson.object(LocalV2PackageJson.read(exported,65536));require(both.equals(LocalV2PackageJson.object(out.get("profile")).get("localePolicy")));}finally{LocalSnapshotV2.wipe(exported);}
+            org.json.JSONObject display=new org.json.JSONObject(LocalV2PackageJson.json(first,false));require(LocalV2ProfileOperation.confirmationValue(display,"localePolicy",true).equals("Русский, Английский")&&LocalV2ProfileOperation.confirmationValue(display,"localePolicy",false).equals("Russian, English"));return true;
+        }
+        Object proposed="narrow".equals(scenario)?only:both;
+        if("boolean-version".equals(scenario))proposed=LocalV2AppOwner.map("schemaVersion",true,"allowedLocales",Arrays.asList("en"));
+        if("string-version".equals(scenario))proposed=LocalV2AppOwner.map("schemaVersion","1","allowedLocales",Arrays.asList("en"));
+        if("empty".equals(scenario))proposed=LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",java.util.Collections.emptyList());
+        if("duplicate".equals(scenario))proposed=LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",Arrays.asList("en","en"));
+        if("excluded-current".equals(scenario))proposed=LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",Arrays.asList("ru"));
+        if("extra".equals(scenario))proposed=LocalV2AppOwner.map("schemaVersion",1L,"allowedLocales",Arrays.asList("en"),"extra",false);
+        boolean invalid=Arrays.asList("boolean-version","string-version","empty","duplicate","excluded-current","extra").contains(scenario);
+        if(invalid){java.util.Map<String,Object> bad=new java.util.LinkedHashMap<>(first);bad.put("localePolicy",proposed);boolean denied=false;try{LocalV2AppProfileDraft.summary(bad);}catch(Exception expected){denied=true;}require(denied);}
+        String siblingText=LocalV2PackageJson.json(second,false),registry=LocalV2PackageJson.json(LocalV2AppOwner.map("schemaVersion",1L,"policyVersion",policy.version,"activeProfileId","fixture-reader","profiles",Arrays.asList(first,second)),false);
+        String pin="{\"schemaVersion\":1,\"policyVersion\":"+LocalSnapshotV2.quoted(policy.version)+",\"revision\":1,\"credentialId\":"+LocalSnapshotV2.quoted(b)+",\"verifier\":{\"algorithm\":\"PBKDF2-HMAC-SHA256\",\"iterations\":600000,\"saltHex\":"+LocalSnapshotV2.quoted(a)+",\"hashHex\":"+LocalSnapshotV2.quoted(c)+"},\"attempts\":{\"count\":0,\"blockedUntilMs\":0,\"lastObservedMs\":0,\"pendingAttemptId\":null}}";
+        byte[] protectedBytes=("{\"schemaVersion\":2,\"revision\":2,\"mode\":\"child\",\"selectionRevision\":2,\"profileRevision\":2,\"policyChecksum\":"+LocalSnapshotV2.quoted(policy.checksum)+",\"registryChecksum\":"+LocalSnapshotV2.quoted(digest(registry.getBytes(StandardCharsets.UTF_8)))+",\"registry\":"+registry+",\"pin\":"+pin+",\"clock\":{\"schemaVersion\":2,\"logicalMs\":0}}").getBytes(StandardCharsets.UTF_8),wire=null,target=null;
+        java.util.Map<String,Object> changes="parent-allowed".equals(scenario)||"parent-denied".equals(scenario)?LocalV2AppOwner.map("locale","ru"):"legacy".equals(scenario)?LocalV2AppOwner.map("readingLevel","plain"):"policy-only-lock".equals(scenario)?LocalV2AppOwner.map("localeLocked",true):LocalV2AppOwner.map("localePolicy",proposed);
+        java.util.Map<String,Object> edit=LocalV2AppOwner.map("profileId","sibling".equals(scenario)?"fixture-sibling":"fixture-reader","changes",changes);
+        try{wire=LocalSnapshotV2.wire(protectedBytes,policy,1,2,1,b,0,null,0,0);try(LocalSnapshotV2 before=LocalSnapshotV2.decode(wire,policy)){
+            if(invalid||"parent-denied".equals(scenario)||"sibling".equals(scenario)){boolean denied=false;try{target=LocalV2AppProfileDraft.settings(before,"expand-access-settings",edit);}catch(Exception expected){denied=true;}require(denied);return true;}
+            target=LocalV2AppProfileDraft.settings(before,"expand-access-settings",edit);java.util.Map<String,Object> changed=LocalV2PackageJson.object(LocalV2PackageJson.read(target,65536));
+            for(String key:first.keySet())if(!changes.containsKey(key))require(java.util.Objects.equals(first.get(key),changed.get(key)));
+            if("legacy".equals(scenario))require(!changed.containsKey("localePolicy")&&!changed.containsKey("localeLocked"));
+            if("parent-allowed".equals(scenario))require("ru".equals(changed.get("locale"))&&Boolean.TRUE.equals(changed.get("localeLocked")));
+            if("policy-only-lock".equals(scenario))require(new String(target,StandardCharsets.UTF_8).endsWith(",\"localeLocked\":true,\"localePolicy\":{\"schemaVersion\":1,\"allowedLocales\":[\"ru\",\"en\"]}}"));
+            LocalV2CanonicalTransition prepared=LocalV2CanonicalTransition.prepare(before,"expand-access-settings",target);
+            try(LocalSnapshotV2 after=LocalSnapshotV2.decode(prepared.bytes,policy)){LocalV2CanonicalTransition.validate(before,after,"expand-access-settings",target);byte[] old=before.copy(),next=after.copy();try{
+                require(MessageDigest.isEqual(Arrays.copyOfRange(old,before.pinStart,before.pinEnd),Arrays.copyOfRange(next,after.pinStart,after.pinEnd)));require(new String(next,StandardCharsets.UTF_8).contains(siblingText));require(MessageDigest.isEqual(wire,old));
+                LocalV2DataContext oldContext=new LocalV2DataContext(before),nextContext=new LocalV2DataContext(after);require(nextContext.revision==oldContext.revision+1&&nextContext.selection==oldContext.selection+1);
+                if("policy-first-unlock".equals(scenario)){
+                    require(!changed.containsKey("localeLocked")&&both.equals(changed.get("localePolicy")));
+                    byte[] unlock=null;LocalV2CanonicalTransition unlocked=null;
+                    try{unlock=LocalV2AppProfileDraft.settings(after,"expand-access-settings",LocalV2AppOwner.map("profileId","fixture-reader","changes",LocalV2AppOwner.map("localeLocked",false)));
+                        require(new String(unlock,StandardCharsets.UTF_8).endsWith(",\"localeLocked\":false,\"localePolicy\":{\"schemaVersion\":1,\"allowedLocales\":[\"ru\",\"en\"]}}"));
+                        unlocked=LocalV2CanonicalTransition.prepare(after,"expand-access-settings",unlock);try(LocalSnapshotV2 last=LocalSnapshotV2.decode(unlocked.bytes,policy)){LocalV2CanonicalTransition.validate(after,last,"expand-access-settings",unlock);byte[] finalBytes=last.copy();try{
+                            require(MessageDigest.isEqual(Arrays.copyOfRange(old,before.pinStart,before.pinEnd),Arrays.copyOfRange(finalBytes,last.pinStart,last.pinEnd))&&new String(finalBytes,StandardCharsets.UTF_8).contains(siblingText));
+                            LocalV2DataContext finalContext=new LocalV2DataContext(last);require(finalContext.revision==oldContext.revision+2&&finalContext.selection==oldContext.selection+2);
+                            java.util.Map<String,Object> saved=LocalV2PackageJson.object(LocalV2PackageJson.read(unlock,65536));require(Boolean.FALSE.equals(LocalV2AppProfileDraft.summary(saved).get("localeLocked"))&&both.equals(saved.get("localePolicy")));
+                        }finally{LocalSnapshotV2.wipe(finalBytes);}}
+                    }finally{LocalSnapshotV2.wipe(unlock);if(unlocked!=null)LocalSnapshotV2.wipe(unlocked.bytes);}
+                }
+                return true;
             }finally{LocalSnapshotV2.wipe(old);LocalSnapshotV2.wipe(next);}}finally{LocalSnapshotV2.wipe(prepared.bytes);}
         }}finally{LocalSnapshotV2.wipe(protectedBytes);LocalSnapshotV2.wipe(wire);LocalSnapshotV2.wipe(target);}
     }
@@ -5975,10 +6062,12 @@ private LocalV2GateHost(PlanetChildVault vault,android.app.Activity host,android
             if(creation){LocalV2PackageJson.object(value,"createProfile");require(invocation.generatedProfileId!=null);profile=new org.json.JSONObject(LocalV2PackageJson.json(value.get("createProfile"),false));require(profile.getString("id").equals(invocation.generatedProfileId));}
             else if(value.containsKey("profileId")){LocalV2PackageJson.object(value,"profileId");String id=LocalV2PackageJson.identifier(value.get("profileId"));org.json.JSONArray profiles=new org.json.JSONObject(new String(original,StandardCharsets.UTF_8)).getJSONObject("protectedRecord").getJSONObject("registry").getJSONArray("profiles");
                 for(int i=0;i<profiles.length();i++){org.json.JSONObject candidate=profiles.getJSONObject(i);if(id.equals(candidate.getString("id"))){require(profile==null);profile=candidate;}}require(profile!=null);}
+            else if(value.containsKey("id")){require("child".equals(invocation.scope.context.mode)&&LocalV2InitialProfile.profileId(invocation.target).equals(invocation.scope.context.profileId));profile=new org.json.JSONObject(new String(invocation.target,StandardCharsets.UTF_8));}
             else return;
-            android.widget.TextView purpose=text(ui,16);purpose.setText(creation?(ru?"Подтвердите дополнительный локальный профиль и детский режим":"Confirm the additional local profile and child mode"):(ru?"Подтвердите выбранный детский профиль":"Confirm the selected child profile"));content.addView(purpose);
+            boolean settings=!creation&&value.containsKey("id");
+            android.widget.TextView purpose=text(ui,16);purpose.setText(creation?(ru?"Подтвердите дополнительный локальный профиль и детский режим":"Confirm the additional local profile and child mode"):settings?(ru?"Подтвердите настройки детского профиля":"Confirm child profile settings"):(ru?"Подтвердите выбранный детский профиль":"Confirm the selected child profile"));content.addView(purpose);
             String[][] fields={{"label","Имя","Label"},{"exactAge","Точный возраст","Exact age"},{"ageBand","Возрастная группа","Age band"},{"locale","Язык","Language"},{"ageConfirmedAt","Подтверждение возраста","Age confirmation"},
-                {"readingLevel","Уровень чтения","Reading level"},{"allowedTopics","Разрешённые темы","Allowed topics"},{"blockedTopics","Закрытые темы","Blocked topics"},{"soundEnabled","Звук","Sound"},{"motion","Движение","Motion"},{"narrationEnabled","Озвучивание","Narration"},{"localeLocked","Фиксация языка","Language lock"}};
+                {"readingLevel","Уровень чтения","Reading level"},{"allowedTopics","Разрешённые темы","Allowed topics"},{"blockedTopics","Закрытые темы","Blocked topics"},{"soundEnabled","Звук","Sound"},{"motion","Движение","Motion"},{"narrationEnabled","Озвучивание","Narration"},{"localeLocked","Фиксация языка","Language lock"},{"localePolicy","Разрешённые языки","Allowed languages"}};
             for(String[] field:fields){android.widget.TextView row=text(ui,14);row.setText(field[ru?1:2]+": "+LocalV2ProfileOperation.confirmationValue(profile,field[0],ru));content.addView(row);}
         }
         private void presentInput(){try{live();android.content.Context ui=localeContext();dialog=new android.app.Dialog(request.activity);dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(false);
