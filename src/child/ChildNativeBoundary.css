@@ -41,3 +41,7 @@
 .child-native-privacy{margin-block:1rem;border:1px solid #bdaab9;border-radius:1rem;background:#fffdf8;overflow-wrap:anywhere}
 .child-native-privacy>summary{box-sizing:border-box;min-block-size:44px;padding:.8rem 1rem;font-weight:600;cursor:pointer}.child-native-privacy>summary:focus-visible{outline:3px solid #7d53b8;outline-offset:3px;border-radius:.8rem}
 .child-native-privacy-copy{padding:0 1rem .65rem;line-height:1.6}.child-native-privacy-copy p{margin-block:.65rem}
+
+.child-native-help{min-inline-size:0;max-inline-size:20rem;margin-block:.5rem 0;color:#342338}
+.child-native-help-actions{display:flex;flex-wrap:wrap;gap:.5rem;padding-block:.25rem .5rem}
+.child-native-help-actions button{max-inline-size:100%;white-space:normal;overflow-wrap:anywhere}

@@ -5,6 +5,7 @@ import { ChildNativeMediaView } from "./ChildNativeMediaView";
 import { ChildNativeJourneyView } from "./ChildNativeJourneyView";
 import { ChildNativeReadingView } from "./ChildNativeReadingView";
 import { ChildPrivacyNotice } from "./ChildPrivacyNotice";
+import { ChildHelp } from "./ChildHelp";
 import { ChildNativeLocaleControl } from "./ChildNativeLocaleControl";
 import { ParentChildLocaleLockControl } from "./ParentChildLocaleLockControl";
 import { ParentChildLocalePolicyControl } from "./ParentChildLocalePolicyControl";
@@ -144,6 +145,9 @@ export function NativeProfileControls({ controller, snapshot }: { controller: Ch
     <button ref={trigger} type="button" aria-expanded={open} onClick={() => { setOpen(value => !value); setError(false); setRemoval(null); }}>
       {state.context.mode === "child" ? copy.parent : copy.profiles}
     </button>
+    {state.context.mode === "child" && !open && <ChildHelp language={language}
+      askAdultLabel={copy.parent} closeLabel={copy.close} disabled={busy}
+      onAskAdult={() => { trigger.current?.click(); trigger.current?.focus({ preventScroll: true }); }} />}
     <ParentChildExportStatus controller={controller} />
     {open && <div className="child-native-parent-panel" role="region" aria-label={copy.parentDetails}>
       <h2>{copy.profiles}</h2><p>{copy.local}</p>
