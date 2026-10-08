@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 1,
+  "status": "PASS_LOCAL_CANONICAL_NARRATION_BATCH_NOT_ACCEPTANCE",
+  "generatedAt": "2026-10-08T07:54:31.0639042Z",
+  "sourceCommit": "aabfce7a844408213fb3853d125c5f607d76da8a",
+  "reviewedHead": "aabfce7a844408213fb3853d125c5f607d76da8a",
+  "sourceFingerprint": "ee85991346bf6ba7031d9387a2df38d0e45af954a55d577c4ca9a0f7551db5e0",
+  "sourceRows": 1938,
+  "changes": [
+    "Native signed canonical narration prepare/seek/resume and observed revision-fenced checkpoint integrated.",
+    "Hostile native reply refusal and held release ordering corrected.",
+    "Synthetic Android fixture helpers bound to actual .dev/debuggable Context; two Java errors fixed."
+  ],
+  "proofs": {
+    "qa": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\audio-java-only-followup-run-root-a2\\result.json",
+      "sha256": "edcb5960198432b4f24db7818def9ef4d8b589c024db001bd08ed40e0fe0d355",
+      "bytes": 27636
+    },
+    "qaRoot": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\audio-java-only-followup-root-a2\\terminal.json",
+      "sha256": "e79b2a6d280e70ff2456689612159a0a3cb5b9f2b45c9fb3fd6451afd16502e4",
+      "bytes": 292
+    },
+    "browser": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-browser-a2\\browser-run-a1\\result.json",
+      "sha256": "74adebd7d7cb6502ba9673c6bb82acc16f237e072cba44109b7ec94402fbd75e",
+      "bytes": 104305
+    },
+    "browserRoot": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-browser-a2\\browser-root-a1\\terminal.json",
+      "sha256": "58f34bdfaf101278d21effb4336efdfb37a243998e116ffdc9f2deb0263eacd5",
+      "bytes": 292
+    },
+    "captureReview": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-browser-a2\\capture-review-root-a1.json",
+      "sha256": "4f2706779782834fefb996056738740f6fdd3a76e12d50d3964e720b0190d817",
+      "bytes": 1823
+    },
+    "builds": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\audio-current-builds-run-root-a1\\result.json",
+      "sha256": "a48afee33d1c2642e8050b33b9b9be8e76b12a2c49577fc522696971f5644e70",
+      "bytes": 13680
+    },
+    "buildRoot": {
+      "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\audio-current-builds-root-a1\\terminal.json",
+      "sha256": "550bda96135ea7a70ce603e8340c44c92bb5448ca72f59f8248fc7ab32779a6e",
+      "bytes": 291
+    }
+  },
+  "qa": {
+    "rootPid": 31716,
+    "exitCode": 0,
+    "javaPid": 20352,
+    "javaExitCode": 0,
+    "executedJavaTaskLines": [
+      "> Task :app:compileDevDebugJavaWithJavac",
+      "> Task :app:compileDevDebugAndroidTestJavaWithJavac"
+    ],
+    "retainedTscPid": 13988,
+    "tscQualification": "RETAINED13988_SUCCESS_SAME_ALL_TYPESCRIPT_TRANSITIVE_SOURCE_GRAPH",
+    "uniqueUnitCases": 126,
+    "retainedOriginalPassedCases": 84,
+    "correctedAffectedPassedCases": 42,
+    "coverageComposition": "RETAINED84_FROM31728_AND42_FROM13336_JAVA_ONLY_CURRENT_EXECUTION",
+    "focusedCases": 26,
+    "unitRerunDuringJavaCorrection": false,
+    "failedSkippedTodo": 0
+  },
+  "originalFailures": [
+    {
+      "rootPid": 31728,
+      "exitCode": 1,
+      "status": "FAIL_RETAINED",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-resume-a1\\audio-qa-run-a2\\failure.json",
+        "sha256": "b4fc8435913d8cc5b0fba07bd13efc4f38c62e4d9a4b095b8f396fb4e59dfff9",
+        "bytes": 10513
+      },
+      "qualification": "Initial126 units124PASS2FAIL; Java not reached"
+    },
+    {
+      "rootPid": 13336,
+      "exitCode": 1,
+      "status": "FAIL_RETAINED",
+      "ref": {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-resume-a1\\audio-qa-composed-followup-run-a2\\failure.json",
+        "sha256": "137196d37649d68ecc4488501c108aa8f0f8862081f9976776e17789237c4164",
+        "bytes": 14103
+      },
+      "qualification": "TSC and42 units PASS; main Javac BuildConfig error; androidTest not reached"
+    }
+  ],
+  "browser": {
+    "rootPid": 36684,
+    "exitCode": 0,
+    "scope": "LOCAL_CONNECTED_COMPONENT_PRESENTATION_ONLY",
+    "observations": 15,
+    "captures": [
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-browser-a2\\browser-run-a1\\ru-320-reading-narration.png",
+        "sha256": "ce32d0949172b250938113a8cc81828922e1130ba3a9d7bd5a2d38d773f0682d",
+        "bytes": 30861,
+        "humanReviewed": false
+      },
+      {
+        "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-browser-a2\\browser-run-a1\\en-320-reading-narration.png",
+        "sha256": "2101228a2898e44788fd2c9d94266bfab742f8e8e70bd21a12caf809a2fb0a6d",
+        "bytes": 29404,
+        "humanReviewed": false
+      }
+    ],
+    "directlyViewedCaptures": 2,
+    "pageErrors": 0,
+    "consoleWarnings": 0,
+    "deniedPageRequests": 0,
+    "cleanup": {
+      "contextsClosed": 2,
+      "browserClosed": true,
+      "serverClosed": true
+    },
+    "limits": {
+      "simulatedPorts": true,
+      "actualClientBridgeComponentsCodecsCss": true,
+      "nativeAdmission": false,
+      "nativePlayPCMStorageOS": "NOT_VERIFIED",
+      "fixtureTypeScript": "NOT_RUN",
+      "screenReader": "NOT_RUN",
+      "humanReadabilityLegal": "PENDING",
+      "humanScreenshotReview": "PENDING",
+      "criteriaClosed": false,
+      "repositoryWrites": 0,
+      "AppBoundaryGlobeBooky": "NOT_MOUNTED"
+    }
+  },
+  "currentStandardArtifacts": [
+    {
+      "mode": "pwa",
+      "receipt": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-pwa-f03ebfd8-655f-4377-a10b-d4503f2c10fc\\preparation.json",
+        "sha256": "50be0547b91679c47272200072495642e7aef156c11a1108957d72eb28832549",
+        "bytes": 316745
+      },
+      "binary": null,
+      "outputs": [
+        {
+          "path": ".tmp/mobile-release-pwa-f03ebfd8-655f-4377-a10b-d4503f2c10fc/pwa-artifact.json",
+          "sha256": "13c4d3dc3e9f9c94b0a372425b5634963981b4f988a9918f92a95c06b391eb63",
+          "bytes": 507963
+        }
+      ],
+      "pwaBundle": {
+        "path": ".tmp/mobile-release-pwa-f03ebfd8-655f-4377-a10b-d4503f2c10fc/pwa-bundle",
+        "artifactPath": ".tmp/mobile-release-pwa-f03ebfd8-655f-4377-a10b-d4503f2c10fc/pwa-bundle/artifact.json",
+        "sha256": "13c4d3dc3e9f9c94b0a372425b5634963981b4f988a9918f92a95c06b391eb63",
+        "files": 1426
+      },
+      "nativeBundle": null,
+      "qualification": "LOCAL_BUILD_AND_AUDIT_ONLY_NOT_INSTALLED_NOT_STORE_NOT_ACCEPTANCE"
+    },
+    {
+      "mode": "android",
+      "receipt": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87\\preparation.json",
+        "sha256": "d80caa664dc21dfc8b2ae480f032c128c9c04f44f927a978aae408489e2a4a02",
+        "bytes": 330797
+      },
+      "binary": {
+        "path": "D:\\CodexProjects\\Работа по сайту\\literary-planet-v12-work\\.tmp\\mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87\\binary.json",
+        "sha256": "e9c4476f751f6570995fb688b1fdd82da8f6a274fef21a7a8b6f2262abba0601",
+        "bytes": 214740
+      },
+      "outputs": [
+        {
+          "path": ".tmp/mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87/native-artifact.json",
+          "sha256": "182906ec6e26415ea9b0885bdd2098792cf116891b295aa0324660801fa4c605",
+          "bytes": 730109
+        },
+        {
+          "path": ".tmp/mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87/app-dev-debug.apk",
+          "sha256": "1cd9d92852b02a7f147977d21a835c5c1dfb72a8d62303a4552ae0441f52c0ce",
+          "bytes": 70775044
+        },
+        {
+          "path": ".tmp/mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87/app-dev-debug-androidTest.apk",
+          "sha256": "14395e8c39dcc1412e524a01fd2ac84151d1f01d620186e7a7110f82b64717f2",
+          "bytes": 826216
+        }
+      ],
+      "pwaBundle": null,
+      "nativeBundle": {
+        "path": ".tmp/mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87/native-bundle",
+        "artifactPath": ".tmp/mobile-release-android-f80076dd-7ffd-4c7f-a93f-187d89d35a87/native-bundle/artifact.json",
+        "sha256": "182906ec6e26415ea9b0885bdd2098792cf116891b295aa0324660801fa4c605",
+        "files": 1420
+      },
+      "qualification": "LOCAL_BUILD_AND_AUDIT_ONLY_NOT_INSTALLED_NOT_STORE_NOT_ACCEPTANCE"
+    }
+  ],
+  "artifactQualification": "CURRENT_SOURCE_LOCAL_PWA_ANDROID_DEV_MAIN_TEST_NOT_INSTALLED_NOT_STORE_NOT_ACCEPTANCE",
+  "nativeFixtures": "COMPILED_ONLY_NOT_RUN",
+  "swift": "NOT_COMPILED_NOT_RUN",
+  "installedOSAcceptance": "NOT_VERIFIED",
+  "audioSeek": "SOURCE_IMPLEMENTED_NATIVE_RUNTIME_NOT_RUN",
+  "quality": {
+    "actualRecordingListening": "NOT_RUN_NO_REVIEWED_RECORDINGS",
+    "humanPronunciation": "PENDING",
+    "measuredSignalGate": "AUTHORING_ISOLATED_NOT_INTEGRATED_NOT_RUN",
+    "pronunciationDictionary": "A1_SOURCE_BLOCKER_RECOVERY_ENVELOPE_NOT_INTEGRATED_NOT_RUN",
+    "premiumFullAppInterfaceAcceptance": "PENDING",
+    "screenReader": "NOT_RUN"
+  },
+  "fourOriginalConditions": {
+    "schemaVersion": 1,
+    "kind": "literary-planet-four-original-conditions",
+    "sourceCommit": "3c79db7c6d299032a357781861a919f454981daf",
+    "generatedAt": "2026-10-03T05:43:14.065Z",
+    "releaseReady": false,
+    "stageAccepted": false,
+    "productionActionsAuthorized": false,
+    "conditions": [
+      {
+        "id": "installed-native-os",
+        "status": "NOT_RUN",
+        "compiledAndroid": true,
+        "compiledIOS": false,
+        "actualInstalledApplication": false,
+        "prefs": "NOT_RUN",
+        "secrets": "NOT_RUN",
+        "lifecycle": "NOT_RUN",
+        "ownedSoftwareEmulatorBootstrap": "FAIL",
+        "ownedAvdProofId": "owned-avd-final-attempt"
+      },
+      {
+        "id": "chosen-psp-and-real-transactions",
+        "status": "BLOCKED_EXTERNAL",
+        "ownerSelected": false,
+        "provisionalCandidate": "YooKassa sandbox",
+        "candidateContractEvidence": "Retained scoped local contracts in prior immutable packet",
+        "realPurchaseRefundRestoreReconcile": "NOT_RUN",
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      },
+      {
+        "id": "reviewed-ru-en-editorial-legal",
+        "status": "PENDING",
+        "items": [
+          {
+            "id": "account-service-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-648ff0900f3fd16f",
+                "sha256": "648ff0900f3fd16fa76d475d757f022b091e2240b0316a30e0bd7f78be9e6d87",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-f71f331c26e7ced8",
+                "sha256": "f71f331c26e7ced81622c8a95beea58177f4c7d9105cbfe70dd10af1f84fa463",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "password-recovery-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ad116fa67cbf2f80",
+                "sha256": "ad116fa67cbf2f80f56264727febfc4ab7324baa006c931b243696ec83495609",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-0ac226f6dc2fd10c",
+                "sha256": "0ac226f6dc2fd10c3695b913db7d0444561b3b429d295ce960c1ffe7e881a78f",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "auth-errors-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-ec772f41b057aff3",
+                "sha256": "ec772f41b057aff359f91b061d3798d59042fd0d11e4299270e16c9a3b54733f",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-36a957fa9cd5979e",
+                "sha256": "36a957fa9cd5979ed3db67f323a345d0c26ad66813aa93a0211ecaa54221e967",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "sandbox-payment-copy",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "source-16f4d31500f2df98",
+                "sha256": "16f4d31500f2df98ff8d3948208e8e9bf5daa9584c7dafcc9a3828400a60906b",
+                "representation": "typescript-object-source"
+              },
+              "en": {
+                "version": "source-cb958b6a410ce26d",
+                "sha256": "cb958b6a410ce26d6755b296e96966ff206f0cb26394f6dd789e152f6e3c69c7",
+                "representation": "typescript-object-source"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          },
+          {
+            "id": "account-deletion-disclosure",
+            "status": "PENDING",
+            "locales": {
+              "ru": {
+                "version": "draft-ad5e930404c20802",
+                "sha256": "ad5e930404c20802be1faa261b2eaa700b3ceb88baafa5c42d1d5418135d414e",
+                "representation": "plaintext-draft"
+              },
+              "en": {
+                "version": "draft-6a33158124526fb6",
+                "sha256": "6a33158124526fb67e7c0585ba651a9f16efafdbf42515e60ff53066f2a79854",
+                "representation": "plaintext-draft"
+              }
+            },
+            "registryReference": {
+              "path": "docs/mobile/RELEASE_DECISIONS.json",
+              "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+            }
+          }
+        ]
+      },
+      {
+        "id": "configured-auth-deletion-and-remote-grant",
+        "status": "NOT_RUN",
+        "localContracts": "Retained scoped observations; broad critical-source-witness qualification remains incomplete",
+        "realAuth": "NOT_RUN",
+        "realDeletion": "NOT_RUN",
+        "remoteAuthorization": "BLOCKED_EXTERNAL",
+        "remoteOperations": 0,
+        "registryReference": {
+          "path": "docs/mobile/RELEASE_DECISIONS.json",
+          "sha256": "2b1aec64cfa083d3e01eaab50492c533e06e3ecb33b9294394298b237814e922"
+        }
+      }
+    ]
+  },
+  "fourConditionsOrigin": {
+    "path": "D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\child-local-journey-work-20261005\\astra-whole-child-journey-closure-a1.json",
+    "sha256": "9ec91cb712b3bec8c877fbd471b9277fa81755994dd6e1d1bb50b57857ce7761",
+    "bytes": 247218
+  },
+  "fourConditionsRechecked": false,
+  "fourConditionsQualification": "Older original external snapshot NOT_RECHECKED; local QA is not external acceptance",
+  "ownerActions": [
+    {
+      "id": "DEVICE-ANDROID",
+      "type": "infrastructure",
+      "object": "Owned isolated Android emulator or test device",
+      "done": "Real secure-store plugin, main/test APK preparation and bounded offline runtime runner; verified project-local Emulator37.2.12 and Android36 image installed; six owned AVD attempts retained without a booted guest",
+      "required": "Provide an owned eligible booted Android target and exact runner binding; installed SDK alone does not close the retained software-emulator boot timeout or OS storage checks",
+      "where": "Project-local Android SDK / own device",
+      "secretNames": [],
+      "closesWith": "Exact APK install plus process/system restart, background, update/reinstall and synthetic OS-storage cases; physical hardware guarantees separate"
+    },
+    {
+      "id": "DEVICE-IOS",
+      "type": "infrastructure",
+      "object": "Compatible macOS/Xcode runner and owned Simulator/device",
+      "done": "Current native iOS sources, Keychain registration and existing simulator runner",
+      "required": "Make the pinned macOS/Xcode environment available; Windows cannot compile/run iOS",
+      "where": "Owned Mac / explicitly authorized CI run",
+      "secretNames": [
+        "Apple signing identity only for store build"
+      ],
+      "closesWith": "Pinned simulator build/runtime and device checks; signed release remains separate"
+    },
+    {
+      "id": "PSP-DECISION",
+      "type": "commercial-decision",
+      "object": "PSP selection, merchant, actual prices/refund/channel policy",
+      "done": "One YooKassa sandbox candidate and local exact-money/order/webhook/reconciliation contracts",
+      "required": "Choose or reject the candidate; approve merchant and product prices/receipts/region/channel rules",
+      "where": "Owner merchant and store consoles",
+      "secretNames": [
+        "PLANET_YOOKASSA_SANDBOX_JSON (mode/channel/shopId/catalogVersion/amountMinor/returnUrl)",
+        "PLANET_YOOKASSA_SANDBOX_SECRET"
+      ],
+      "closesWith": "Separate authorized real sandbox purchase/refund/restore/reconcile; no production approval inferred"
+    },
+    {
+      "id": "EDITORIAL-LEGAL",
+      "type": "editorial-and-legal-decision",
+      "object": "Exact RU/EN versions above and DD-01..DD-06",
+      "done": "Existing author content preserved; exact locale hashes and current SDK/data-flow inventory",
+      "required": "Supply missing legal entity/contact/jurisdiction/retention/rights decisions and exact-version human RU/EN approval",
+      "where": "docs/mobile/RELEASE_DECISIONS.json and existing deletion disclosure draft",
+      "secretNames": [],
+      "closesWith": "Agent synchronizes drafts from the decisions; exact SHA-bound human approval and both real localized UI checks"
+    },
+    {
+      "id": "AUTH-ENVIRONMENT",
+      "type": "access-and-configuration",
+      "object": "Exact separate staging Auth/Storage/Data API project, email/captcha/redirect/deletion processor",
+      "done": "Canonical client/server/local fixtures and staged RLS migrations",
+      "required": "Identify staging endpoint/project, two ordinary test-account IDs, email delivery/redirect configuration and reviewed migration history/backup",
+      "where": "Owner canonical Supabase staging project",
+      "secretNames": [
+        "VITE_SUPABASE_URL",
+        "VITE_SUPABASE_PUBLISHABLE_KEY",
+        "VITE_TURNSTILE_SITE_KEY",
+        "SUPABASE_URL",
+        "SUPABASE_PUBLISHABLE_KEY",
+        "SUPABASE_SERVICE_ROLE_KEY",
+        "PLANET_ORIGIN",
+        "PLANET_COOKIE_NAME",
+        "PLANET_LICENSE_ISSUER",
+        "PLANET_LICENSE_AUDIENCE",
+        "PLANET_LICENSE_PRODUCT",
+        "PLANET_LICENSE_KID",
+        "PLANET_GRANT_SECONDS",
+        "PLANET_OFFLINE_SECONDS",
+        "PLANET_RECENT_AUTH_SECONDS",
+        "PLANET_COOKIE_AES_KEY",
+        "PLANET_SIGNING_PRIVATE_JWK",
+        "PLANET_LICENSE_RATE_LIMIT",
+        "PLANET_LICENSE_RATE_WINDOW_SECONDS",
+        "PLANET_DELETION_DISCLOSURE_JSON",
+        "Reviewed deletion processor --policy file (not an environment variable)"
+      ],
+      "closesWith": "Authorized real email/session/revocation/two-user RLS and durable deletion with exact test-object cleanup"
+    },
+    {
+      "id": "REMOTE-GRANT",
+      "type": "permission",
+      "object": "Separately provided environment-specific authorization",
+      "done": "Entirely offline exact-environment preflight; no grant fabricated",
+      "required": "Owner names endpoint/project/environment/run/expiry, allowed reads/writes/migrations/fixture deletions, two exact test-account IDs and limits",
+      "where": "Separate explicit owner instruction; record its evidence reference",
+      "secretNames": [],
+      "closesWith": "node scripts/mobile/remote-preflight.mjs --plan <exact-request.json> --authorization <provided-owner-grant.json>; PASS only verifies matching permission offline"
+    },
+    {
+      "id": "STORE-SIGNING",
+      "type": "access-and-commercial-decision",
+      "object": "Owner signing and approved channel commerce for Play/RuStore/AppStore",
+      "done": "Pinned platform/flavor separation; local dev artifacts retain releaseReady=false",
+      "required": "Provide existing owner signing strategy/accounts/contracts and operation-specific store/CI authorization when requested",
+      "where": "Owner store consoles/key manager",
+      "secretNames": [
+        "Owner signing keys/certificates/profiles; names only, never chat values"
+      ],
+      "closesWith": "Compatible signed update and exact-channel paid/restore/refund store checks"
+    }
+  ],
+  "pendingLegalReviews": 5,
+  "newNoticeReviews": {
+    "humanReadabilityRuEn": "PENDING",
+    "legalTerritory": "PENDING"
+  },
+  "acceptance": [
+    {
+      "id": "S03",
+      "status": "IN_PROGRESS",
+      "openCount": 11
+    },
+    {
+      "id": "S16",
+      "status": "IN_PROGRESS",
+      "openCount": 36
+    }
+  ],
+  "criterionMapping": [],
+  "originalSixDependentTasks": "UNCHANGED_BY_RAW_TAILS_AND_DEEP_STATE",
+  "formalStatusChanges": 0,
+  "criterion": "S16.BIL-009",
+  "criterionStatus": "OPEN",
+  "booky": {
+    "bothOwnersByteExact": true,
+    "oneCanonicalGlobePreserved": true,
+    "new3DQA": false
+  },
+  "olderInternalPacket": "d039/e97 PARTIAL_NOT_CURRENT; refreshed quality batch package PENDING",
+  "nextAction": "Continue original quality work: correct the confirmed recovery-envelope blocker in fresh pronunciation-dictionary-a2; retain A1 SOURCE_ONLY rejection. Independently review/integrate canonical RU/EN dictionary/editor/producer, then complete narration-signal-quality-a1 against final accepted producer: bounded original-PCM SHA/peak/RMS/DC/zero diagnostics and refusal of provably silent/constant narration, no waveform rewrite or human/LUFS approval. Fix only concrete non3D native interface gaps. ALL3D GPT-6 Astra Ultra; other development/review GPT-6.1 SOL Ultra. Current sourceaabf has retained qualified TSC/126 unique units, actual two uncached Java compiles, bounded320px RU/EN browser/two direct captures and fresh standard PWA/Android dev main+test APK. No unchanged QA/build/AVD repetition. Prepare refreshed internal release handoff/package after coherent quality batch; oldd039/e97 packet is partial/older. Preserve every original FAIL, criterion/cache history, six EMPTY_DENY/null factories, both ankle rings/five-digit gloves and single canonical globe. NativePCM/OS/Swift/realAuth/human voice/legal remain unverified; four original conditions NOT_RECHECKED, PSP UNSELECTED/seven inputs/five reviews/six dependent tasks unchanged. No report-only D stage or remote/push/merge/deploy/store.",
+  "artAccepted": false,
+  "stageAccepted": false,
+  "releaseReady": false,
+  "remoteActions": 0
+}

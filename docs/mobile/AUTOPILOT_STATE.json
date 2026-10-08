@@ -3,9 +3,9 @@
   "repository": "Kosyat128/probpera-literary-map",
   "branch": "codex/literary-planet-v12-bilingual-final-autopilot",
   "baseSha": "0a348bd4202e3fa1558d88183549f7576a361c4b",
-  "headSha": "5ed051815e0c4f5dbbb6357500b2cabe1e461452",
+  "headSha": "aabfce7a844408213fb3853d125c5f607d76da8a",
   "status": "IN_PROGRESS",
-  "updatedAt": "2026-10-08T05:16:15.379Z",
+  "updatedAt": "2026-10-08T07:54:31.0639042Z",
   "currentStageId": "S03",
   "currentCriterionId": "S03.acceptance",
   "stages": [
@@ -13321,7 +13321,7 @@
   ],
   "resume": {
     "firstOpenCriterion": "S03.acceptance",
-    "nextAction": "Continue the coordinated isolated child-narration-resume-a1 batch in D:\\CodexData\\.codex\\visualizations\\2026\\10\\02\\01a0fd35-3865-7973-8f4c-0c7a0148df47\\release-completion\\advanced-booky-work-20261006\\child-narration-resume-a1: native owner sol_parent_export_review and client owner sol_next_local_gap_after_export must connect actual signed canonical narration cues to native prepare/pause/seek/resume and playback-observed canonical checkpoint plus truthful current-context readback. Do not invent alignment, audio seconds or credit. Integrated child locale transition and canonical reading ledger have local retained TSC/221 Vitest assertions plus proper Node TAP and first Android Java compile QA; full S16.BIL-009 remains OPEN. Actual native audio seek, Swift compilation/runtime, installed OS and human acceptance remain pending. The prior source48a 320px RU-keyboard/EN-touch parent-controls fixture is bounded presentation evidence only; it does not admit current child/audio/native Gate/OS/full App/globe. Preserve original root17824/1 FAIL, browser3132/1 FAIL, older failures, original six dependent tasks, four original conditions NOT_RECHECKED, PSP UNSELECTED, seven owner actions and five human reviews. Retained standard PWA/main+test APKs remain source3d7 and older bounded packet d039/e97. Complete coherent affected QA and the bounded browser flow, then prepare fresh builds/package once the remaining production batch is complete. Preserve both white ankle rings, five-digit gloves and the one canonical globe; no unchanged AVD retry, repeated old QA, report-only D stage, remote/push/merge/deploy/store.",
+    "nextAction": "Continue original quality work: correct the confirmed recovery-envelope blocker in fresh pronunciation-dictionary-a2; retain A1 SOURCE_ONLY rejection. Independently review/integrate canonical RU/EN dictionary/editor/producer, then complete narration-signal-quality-a1 against final accepted producer: bounded original-PCM SHA/peak/RMS/DC/zero diagnostics and refusal of provably silent/constant narration, no waveform rewrite or human/LUFS approval. Fix only concrete non3D native interface gaps. ALL3D GPT-6 Astra Ultra; other development/review GPT-6.1 SOL Ultra. Current sourceaabf has retained qualified TSC/126 unique units, actual two uncached Java compiles, bounded320px RU/EN browser/two direct captures and fresh standard PWA/Android dev main+test APK. No unchanged QA/build/AVD repetition. Prepare refreshed internal release handoff/package after coherent quality batch; oldd039/e97 packet is partial/older. Preserve every original FAIL, criterion/cache history, six EMPTY_DENY/null factories, both ankle rings/five-digit gloves and single canonical globe. NativePCM/OS/Swift/realAuth/human voice/legal remain unverified; four original conditions NOT_RECHECKED, PSP UNSELECTED/seven inputs/five reviews/six dependent tasks unchanged. No report-only D stage or remote/push/merge/deploy/store.",
     "contextFiles": [
       "AGENTS.md",
       "docs/mobile/AUTOPILOT_STATE.json",
@@ -13702,6 +13702,7 @@
   },
   "requirementsHash": "a3cfdba220ee667886d193c3fffc9a9eb144d3611a4ec65f106d519534166732",
   "verificationCache": {
+    "childNarrationResume": {"sourceCommit":"aabfce7a844408213fb3853d125c5f607d76da8a","sourceFingerprint":"ee85991346bf6ba7031d9387a2df38d0e45af954a55d577c4ca9a0f7551db5e0","sourceRows":1938,"qualifiedLocalPass":true,"uniqueUnitCases":126,"freshJavaCompiles":2,"browserScope":"LOCAL_CONNECTED_COMPONENT_PRESENTATION_ONLY","browserCaptures":2,"buildSourceCommit":"aabfce7a844408213fb3853d125c5f607d76da8a","evidence":"docs/mobile/evidence/S16/child-narration-resume-20261008/result.json","nativeRuntime":"NOT_RUN","releaseReady":false},
     "childLocalParentOwner": {
       "sourceCommit": "32e3250063e1e6284470af2761ad765983e68781",
       "evidence": "docs/mobile/evidence/S16/child-local-parent-owner-20261004/result.json",
