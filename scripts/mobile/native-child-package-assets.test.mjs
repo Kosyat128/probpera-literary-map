@@ -101,7 +101,7 @@ describe("native child package release assets", () => {
   });
   it("exports exact pinned signed text through the actual shared compiler and rejects changed policy", async () => {
     await ownedFixture(async (root, stage) => {
-      for (const name of ["childPackage.ts", "childAccessPolicy.ts", "childDataNamespace.ts", "childProfile.ts"])
+      for (const name of ["childPackage.ts", "childAccessPolicy.ts", "childDataNamespace.ts", "childProfile.ts", "childReadingPosition.ts", "childReadingPositionProtocol.mjs"])
         await fs.copyFile(new URL("../../src/child/" + name, import.meta.url), path.join(root, "src/child", name));
       const now = Date.now(), policyChecksum = "a".repeat(64), payload = { title: "Nature", text: "A tree.", terms: ["tree"], references: [] }, payloadChecksum = sha(bytes(payload));
       const policy = { id: "start", kind: "activity", sourceVersion: "source.v1", policyVersion: "child-access.v12", minAge: 3, maxAge: 17, reviewStatus: "approved",
